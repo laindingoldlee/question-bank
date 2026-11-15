@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1522601_shoelace_theorem
+% Stable identity: aops-topic-1522601-q01
+For vertices $(x_1,y_1),\dots,(x_n,y_n)$ listed in order around the polygon, the shoelace formula gives the signed value
+\[
+\dfrac{1}{2}\sum_{i=1}^{n}\left(x_iy_{i+1}-x_{i+1}y_i\right)\qquad(\text{with }x_{n+1}=x_1,\ y_{n+1}=y_1),
+\]
+which is $+$(area) when the vertices go around counterclockwise and $-$(area) when they go clockwise. The area is its absolute value.
+
+\textbf{Counterclockwise order} $(0,0),(4,0),(4,4),(0,4)$:
+\[
+\dfrac{1}{2}\left[(0\cdot0-4\cdot0)+(4\cdot4-4\cdot0)+(4\cdot4-0\cdot4)+(0\cdot0-0\cdot4)\right]=\dfrac{1}{2}(0+16+16+0)=16 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw((-0.6,0)--(5,0),Arrow(6));draw((0,-0.6)--(0,5),Arrow(6));
+label("$x$",(5,0),E);label("$y$",(0,5),N);
+pair A=(0,0),B=(4,0),C=(4,4),D=(0,4);
+draw(A--B--C--D--cycle,blue+linewidth(1));
+draw(arc((2,2.3),0.8,30,330),red,Arrow(6));
+label("counterclockwise",(2,0.75),fontsize(8pt)+red);
+label("$(0,0)$",A,SW);label("$(4,0)$",B,S);label("$(4,4)$",C,NE);label("$(0,4)$",D,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Clockwise order} $(0,0),(0,4),(4,4),(4,0)$: every product pair is swapped, so each term changes sign and the result is $-16$.
+
+So $-16$ just means the vertices were listed clockwise; the area is $|-16|=\boxed{16}$. (The vertices must be listed in order around the polygon, in either direction; listing them in a crossing order such as $(0,0),(4,4),(4,0),(0,4)$ gives a wrong value.)

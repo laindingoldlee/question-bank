@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2383430_an_interesting_problem
+% Stable identity: aops-topic-2383430-q01
+Since $m\le\sqrt x<n$, the longest side is $n$, so it is the hypotenuse:
+
+\begin{asy}
+usepackage("amsmath");
+size(2.6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(3,0), A=(0,4);
+draw(A--B--C--cycle,linewidth(0.9));
+draw((0.3,0)--(0.3,0.3)--(0,0.3));
+label("$m$",(B+C)/2,S); label("$\sqrt{x}$",(A+B)/2,W); label("$n$",(A+C)/2,NE);
+\end{asy}
+
+\[n^2=m^2+x,\qquad\text{i.e.}\qquad x=n^2-m^2.\]
+The condition $m\le\sqrt x$ means $m^2\le x=n^2-m^2$, i.e. $n^2\ge2m^2$; and $x\le100$ means $n^2\le100+m^2$. Conversely, any positive integers $m,n$ with $2m^2\le n^2\le100+m^2$ give a valid $x=n^2-m^2\ge m^2\ge1$ (and then $\sqrt x<n$ automatically). Also $m^2\le x\le100$ forces $m\le10$, and $m=10$ would need $n^2=200$, which is impossible.
+
+We list, for each $m$, the values $x=n^2-m^2$:
+\begin{itemize}
+\item $m=1$, $2\le n\le10$: $x=3,8,15,24,35,48,63,80,99$;
+\item $m=2$, $3\le n\le10$: $x=5,12,21,32,45,60,77,96$;
+\item $m=3$, $5\le n\le10$: $x=16,27,40,55,72,91$;
+\item $m=4$, $6\le n\le10$: $x=20,33,48,65,84$;
+\item $m=5$, $8\le n\le11$: $x=39,56,75,96$;
+\item $m=6$, $9\le n\le11$: $x=45,64,85$;
+\item $m=7$, $10\le n\le12$: $x=51,72,95$;
+\item $m=8$, $n=12$: $x=80$;
+\item $m=9$, $n=13$: $x=88$.
+\end{itemize}
+This is $9+8+6+5+4+3+3+1+1=40$ entries, but $48$, $96$, $45$, $72$ and $80$ each appear twice. So there are $40-5=\boxed{35}$ values of $x$.

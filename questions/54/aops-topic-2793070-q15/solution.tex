@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2793070_2016_geometry_bee__guts_rounds__sets_57
+% Stable identity: aops-topic-2793070-q15
+Let $\alpha,\beta,\gamma$ be the minor half-central angles for chords $6,7,8$. Each lies between $30^\circ$ and $60^\circ$, so each is less than the sum of the other two. Thus none of these three consecutive arcs can be major: choosing a major arc would make their total exceed $360^\circ$. Also $\sin\alpha=\dfrac{3}{5}$, $\sin\gamma=\dfrac{4}{5}$, so $\alpha+\gamma=90^\circ$. The three known arcs total $180^\circ+2\beta>180^\circ$, leaving a minor arc $DA$ with half-angle $90^\circ-\beta$. Hence $DA=10\cos\beta=10\sqrt{1-\dfrac{49}{100}}=\boxed{\sqrt{51}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real a=2asin(.6),b=2asin(.7),c=2asin(.8);pair A=(5,0),B=5*(cos(a),sin(a)),C=5*(cos(a+b),sin(a+b)),D=5*(cos(a+b+c),sin(a+b+c));draw(circle((0,0),5));draw(A--B--C--D--cycle);label("$A$",A,E);label("$B$",B,N);label("$C$",C,W);label("$D$",D,S);
+\end{asy}

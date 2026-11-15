@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1097217_pythagorean_practice
+% Stable identity: aops-topic-1097217-q01
+In the sketch (not to scale) the right angle is at $A$. By the Pythagorean theorem,
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4.5,0),C=(0,1.5);
+draw(A--B--C--cycle,linewidth(0.9));
+draw((0.22,0)--(0.22,0.22)--(0,0.22));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NW);
+label("$x$",(A+B)/2,S);
+label("$9\sqrt{33}$",(A+C)/2,W);
+label("$x+1$",(B+C)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+(x+1)^2-x^2=\left(9\sqrt{33}\right)^2 .
+\]
+The left side is a difference of squares, $(x+1)^2-x^2=2x+1$, and the right side is $81\cdot33=2673$. So $2x+1=2673$, $x=1336$, and the hypotenuse is $x+1=\boxed{1337}$.

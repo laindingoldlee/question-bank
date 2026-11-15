@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2325105_hard_geo
+% Stable identity: aops-topic-2325105-q01
+\textbf{Which sides are parallel.} If $AB\parallel CD$, then since also $AB=CD$, the quadrilateral $ABCD$ would be a parallelogram, forcing $BC=AD$; but $BC=1\ne2=AD$. Hence $BC\parallel AD$.
+
+\textbf{Height.} Drop perpendiculars $BP$ and $CQ$ to $AD$. Then $PQ=BC=1$ and $BP=CQ$, so the right triangles $ABP$ and $DCQ$ have equal hypotenuses $AB=CD=1$ and equal legs, hence $AP=QD$. As $AP+PQ+QD=AD=2$, we get $AP=QD=\dfrac12$, and
+\[h=BP=\sqrt{1-\dfrac14}=\dfrac{\sqrt3}{2}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), D=(2,0), B=(0.5,sqrt(3)/2), C=(1.5,sqrt(3)/2), P=(0.5,0), Q=(1.5,0);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,blue); draw(B--D,blue);
+draw(B--P,dashed); draw(C--Q,dashed);
+draw(P+(0,0.08)--P+(0.08,0.08)--P+(0.08,0)); draw(Q+(0,0.08)--Q+(-0.08,0.08)--Q+(-0.08,0));
+label("$A$",A,SW); label("$D$",D,SE); label("$B$",B,NW); label("$C$",C,NE);
+label("$P$",P,S); label("$Q$",Q,S);
+label("$1$",(A+B)/2,W); label("$1$",(B+C)/2,N); label("$1$",(C+D)/2,E);
+label("$\dfrac12$",(A+P)/2,S,fontsize(8pt)); label("$\dfrac12$",(Q+D)/2,S,fontsize(8pt));
+label("$h$",(0.5,0.12),W);
+\end{asy}
+
+\textbf{Area.} \[\dfrac{BC+AD}{2}\cdot BP=\dfrac{1+2}{2}\cdot\dfrac{\sqrt3}{2}=\boxed{\dfrac{3\sqrt3}{4}}.\]
+
+\textbf{Diagonals.} With $A=(0,0)$, $D=(2,0)$, $B=\left(\dfrac12,\dfrac{\sqrt3}2\right)$ and $C=\left(\dfrac32,\dfrac{\sqrt3}2\right)$,
+\[AC=\sqrt{\dfrac94+\dfrac34}=\sqrt3,\qquad BD=\sqrt{\dfrac94+\dfrac34}=\sqrt3,\]
+so both diagonals have length $\boxed{\sqrt3}$. (The trapezoid is half of a regular hexagon of side $1$ cut along a long diagonal.)

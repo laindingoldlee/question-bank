@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2258394_two_ssa_triangles
+% Stable identity: aops-topic-2258394-q01
+Draw the ray from $A$ making $40^\circ$ with $AB$. The vertex $C$ lies on this ray at distance $10$ from $B$, so it is an intersection of the ray with the circle of radius $10$ about $B$. The distance from $B$ to the ray is $13\sin40^\circ\approx8.36<10$, and both intersection points $C_1$ (nearer to $A$) and $C_2$ lie on the ray beyond $A$, which gives the two triangles.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real t1=13*Cos(40)-sqrt(100-(13*Sin(40))^2), t2=13*Cos(40)+sqrt(100-(13*Sin(40))^2);
+pair A=(0,0), B=(13,0), C1=t1*dir(40), C2=t2*dir(40);
+draw(A--B,linewidth(0.9)); draw(A--C2,linewidth(0.9));
+draw(B--C1,blue+linewidth(0.9)); draw(B--C2,red+linewidth(0.9));
+draw(arc(A,1.6,0,40)); label("$40^\circ$",A+2.3*dir(20),fontsize(8pt));
+dot(A); dot(B); dot(C1,blue); dot(C2,red);
+label("$A$",A,SW); label("$B$",B,SE); label("$C_1$",C1,NW,blue); label("$C_2$",C2,N,red);
+label("$13$",(6.5,0),S); label("$10$",(B+C1)/2,dir(-60),blue); label("$10$",(B+C2)/2,NE,red);
+draw(arc(C1,0.9,degrees(B-C1)-360,40)); draw(arc(C2,0.9,220,degrees(B-C2))); label("$x$",C1+1.3*dir(12),fontsize(8pt)); label("$x$",C2+1.2*dir(-115),fontsize(8pt));
+\end{asy}
+
+Since $BC_1=BC_2=10$, triangle $BC_1C_2$ is isosceles; let $x=\angle BC_1C_2=\angle BC_2C_1$.
+\begin{itemize}
+\item In triangle $ABC_2$, the angle at $C_2$ is $x$, so $\angle ABC_2=180^\circ-40^\circ-x=140^\circ-x$.
+\item In triangle $ABC_1$, the angle at $C_1$ is $180^\circ-x$ (supplementary to $\angle BC_1C_2$), so $\angle ABC_1=180^\circ-40^\circ-(180^\circ-x)=x-40^\circ$.
+\end{itemize}
+The sum of the two values of $\angle B$ is $(140^\circ-x)+(x-40^\circ)=\boxed{100^\circ}$.
+
+(With the law of sines: $\sin C=\dfrac{13\sin40^\circ}{10}\approx0.836$, so $C\approx56.7^\circ$ or $C\approx123.3^\circ$, giving $B\approx83.3^\circ$ or $B\approx16.7^\circ$; their sum is $280^\circ-180^\circ=100^\circ$.)

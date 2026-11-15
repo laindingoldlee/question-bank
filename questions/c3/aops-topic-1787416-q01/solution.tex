@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1787416_extension_question
+% Stable identity: aops-topic-1787416-q01
+Triangle $ADC$ has a right angle at $D$, so
+\[
+AD^2+DC^2=13^2=169,\qquad \dfrac{1}{2}\,AD\cdot DC=30\ \Longrightarrow\ AD\cdot DC=60 .
+\]
+Then $(AD+DC)^2=169+120=289$ and $(AD-DC)^2=169-120=49$, so $AD+DC=17$, $|AD-DC|=7$, and $\{AD,DC\}=\{12,5\}$.
+
+\textbf{Case $AD=12$, $DC=5$.} In right triangle $ADB$, $BD=\sqrt{15^2-12^2}=9$. In an acute triangle the foot of an altitude lies between the other two vertices, so $BC=BD+DC=14$ and
+\[
+[ABC]=\dfrac{1}{2}\cdot14\cdot12=84 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(14,0),A=(9,12),D=(9,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,linewidth(0.8));
+draw((9,0)--(9,0.7)--(8.3,0.7)--(8.3,0),linewidth(0.5));
+fill(A--D--C--cycle,lightgray+opacity(0.5));
+draw(A--B--C--cycle,linewidth(0.9));draw(A--D,linewidth(0.8));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);
+label("$15$",(A+B)/2,NW);label("$13$",(A+C)/2,NE);
+label("$12$",(9,6),W);
+label("$9$",(4.5,0),S);label("$5$",(11.5,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Case $AD=5$, $DC=12$.} Then $BD=\sqrt{225-25}=10\sqrt2$, and the area $\dfrac{1}{2}\cdot5\,(10\sqrt2+12)=30+25\sqrt2$ is not an integer. (This triangle, with $BC=10\sqrt2+12$, is not even acute: $15^2+13^2=394<BC^2$.)
+
+Hence the area of triangle $ABC$ is $\boxed{84}$; it is the $13$-$14$-$15$ triangle.

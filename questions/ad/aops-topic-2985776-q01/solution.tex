@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2985776_right_angles_in_an_equilateral_triangle
+% Stable identity: aops-topic-2985776-q01
+Let the side be $s$. In right triangle $XPB$, $\angle B=60^\circ$, so $BP=BX\cos60^\circ=\dfrac{BX}2$; similarly $CQ=\dfrac{CY}2$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real s=6;pair B=(0,0),C=(s,0),A=s*dir(60);pair X=B+2.2*dir(60),Y=C+2.6*dir(120);pair P=(X.x,0),Q=(Y.x,0);
+draw(A--B--C--cycle);draw(X--P,dashed);draw(Y--Q,dashed);
+draw(P+(0.25,0)--P+(0.25,0.25)--P+(0,0.25));draw(Q+(-0.25,0)--Q+(-0.25,0.25)--Q+(0,0.25));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$X$",X,W);label("$Y$",Y,E);label("$P$",P,S);label("$Q$",Q,S);
+\end{asy}
+
+Since $BP+CQ=\dfrac{BX+CY}2\le s$, the points lie in the order $B,P,Q,C$ (possibly $P=Q$), so
+\[PQ=s-\dfrac{BX}2-\dfrac{CY}2=s-\dfrac{s-AX}2-\dfrac{s-AY}2=\dfrac{AX+AY}2.\]
+Hence $AX+AY=2PQ$. $\blacksquare$

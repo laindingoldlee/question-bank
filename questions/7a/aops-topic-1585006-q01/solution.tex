@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1585006_arrangements_help
+% Stable identity: aops-topic-1585006-q01
+Let $E_n$ and $O_n$ be the numbers of colourings of a row of $n$ plates with an even and with an odd number of red plates.
+
+\textbf{Two equations.} Every colouring is counted once in $E_n+O_n$, so $E_n+O_n=3^n$. For the difference, choose the set of red plates first: with $k$ red plates there are $\dbinom nk2^{n-k}$ colourings (the other plates are blue or yellow). Hence, by the binomial theorem,
+\[
+E_n-O_n=\sum_{k=0}^{n}(-1)^k\dbinom nk2^{n-k}=(2-1)^n=1 .
+\]
+Adding the two equations gives $2E_n=3^n+1$, so
+\[
+E_n=\boxed{\dfrac{3^n+1}{2}}.
+\]
+
+\textbf{The other form.} $2+\dfrac{3\left(3^{n-1}-1\right)}{2}=\dfrac{4+3^n-3}{2}=\dfrac{3^n+1}{2}$, so the formula found from a pattern agrees with the proven one for every $n\ge1$. (For example, $n=1$: only blue or yellow, $2$ ways; $n=2$: $5$ ways, namely the four blue/yellow rows and red-red.) $\blacksquare$

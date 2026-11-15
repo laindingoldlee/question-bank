@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1586476_combinatorics_problem
+% Stable identity: aops-topic-1586476-q01
+An arrangement is determined by the positions of the two blue beads. Rotating and turning over the circle keeps the number of red beads between them on the shorter side, so classify by the distance between the blue beads around the circle: they can be adjacent, separated by one red bead, or opposite each other (two red beads on each side).
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+void ring(pair o,int k){
+  for(int i=0;i<6;++i) draw(o+dir(90-60*i)--o+dir(90-60*(i+1)),gray);
+  for(int i=0;i<6;++i){pair q=o+dir(90-60*i);
+    pen c=(i==0||i==k)?blue:red;
+    fill(circle(q,0.22),c);draw(circle(q,0.22));}
+}
+ring((0,0),1);ring((3,0),2);ring((6,0),3);
+label("adjacent",(0,-1.6));label("one apart",(3,-1.6));label("opposite",(6,-1.6));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Any two arrangements with the same distance are related by a rotation (and, if needed, a reflection), and arrangements with different distances are not, because rotations and reflections preserve distances around the circle. Hence there are $\boxed{3}$ arrangements. (Allowing only rotations gives the same answer, since each of these three patterns is symmetric under a reflection.)

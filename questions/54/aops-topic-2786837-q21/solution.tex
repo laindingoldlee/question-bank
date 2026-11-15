@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2786837_2017_mbmt_guts_round_r1630_p610p2630__montgomery_blair_math_tournament
+% Stable identity: aops-topic-2786837-q21
+Each face of the big cube consists of $25$ unit squares, each of which is a blue face of exactly one small cube. So the small cubes have $6\cdot25=150$ blue faces in total.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair dz=(0.45,0.35);
+fill((0,0)--(5,0)--(5,5)--(0,5)--cycle,rgb(0.75,0.85,1));
+fill((0,5)--(5,5)--(5,5)+5*dz--(0,5)+5*dz--cycle,rgb(0.65,0.78,1));
+fill((5,0)--(5,0)+5*dz--(5,5)+5*dz--(5,5)--cycle,rgb(0.55,0.7,0.95));
+for(int i=0;i<=5;++i){draw((i,0)--(i,5));draw((0,i)--(5,i));
+draw((i,5)--(i,5)+5*dz);draw((0,5)+i*dz--(5,5)+i*dz);
+draw((5,i)--(5,i)+5*dz);draw((5,0)+i*dz--(5,5)+i*dz);}
+label("$5$",(2.5,0),S);label("$5$",(0,2.5),W);label("$5$",(5,0)+2.5*dz,SE);
+\end{asy}
+
+The average is $\dfrac{150}{125}=\boxed{\dfrac65}$.

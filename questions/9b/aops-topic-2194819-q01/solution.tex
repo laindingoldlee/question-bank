@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2194819_random_marathon
+% Stable identity: aops-topic-2194819-q01
+The lines have only two directions, so each such parallelogram has two opposite sides on two of the horizontal lines and the other two sides on two of the vertical lines; conversely, any two horizontal and any two vertical lines bound exactly one parallelogram (here a rectangle).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<10;++i) draw((-0.5,i*0.6)--(8.0,i*0.6),gray(0.4));
+for(int j=0;j<8;++j) draw((j,-0.4)--(j,5.8),gray(0.4));
+fill((2,1.2)--(5,1.2)--(5,4.2)--(2,4.2)--cycle,paleblue);
+draw((2,1.2)--(5,1.2)--(5,4.2)--(2,4.2)--cycle,blue+linewidth(1.2));
+draw((-0.5,1.2)--(8,1.2),red+linewidth(1)); draw((-0.5,4.2)--(8,4.2),red+linewidth(1));
+draw((2,-0.4)--(2,5.8),deepgreen+linewidth(1)); draw((5,-0.4)--(5,5.8),deepgreen+linewidth(1));
+\end{asy}
+
+So the number of parallelograms is
+\[\dbinom{10}{2}\dbinom82=45\cdot28=\boxed{1260}.\]

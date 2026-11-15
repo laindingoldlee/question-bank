@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2795007_2011_tx_mmc__texas__mathworks_math_contest
+% Stable identity: aops-topic-2795007-q12
+In right triangle $ABD$ (right angle at $D$), $\sin B=\dfrac{AD}{AB}=\dfrac25$. In right triangle $ADC$, $\angle C=90^\circ-\angle B$, so $\dfrac{AD}{AC}=\sin C=\cos B=\sqrt{1-\dfrac4{25}}=\dfrac{\sqrt{21}}5$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real ab=5, ad=2; real bd=sqrt(ab^2-ad^2);
+pair D=(0,0),A=(0,ad),B=(-bd,0),C=(ad^2/bd,0);
+draw(A--B--C--cycle);draw(A--D,dashed);
+draw(D+(0.2,0)--D+(0.2,0.2)--D+(0,0.2));draw(A+0.25*dir(A--B)--A+0.25*dir(A--B)+0.25*dir(A--C)--A+0.25*dir(A--C));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);
+\end{asy}
+
+Therefore $\dfrac{AC}{AD}=\dfrac5{\sqrt{21}}=\boxed{\dfrac{5\sqrt{21}}{21}}$.
+
+(Equivalently $\dfrac1{AD^2}=\dfrac1{AB^2}+\dfrac1{AC^2}$.)

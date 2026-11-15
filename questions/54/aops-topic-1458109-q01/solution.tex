@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1458109_beads_maximum
+% Stable identity: aops-topic-1458109-q01
+Number the beads $1,2,\dots,n$. Two beads with exactly $10$ (or $15$) beads between them are $11$ (or $16$) places apart, so beads $i$ and $j$ must have the same colour whenever $|i-j|\in\{11,16\}$.
+
+\textbf{$n\ge26$ forces one colour.} In the sequence
+\[
+11,22,6,17,1,12,23,7,18,2,13,24,8,19,3,14,25,9,20,4,15,26,10,21,5,16
+\]
+consecutive terms differ by $11$ or $16$, and every number from $1$ to $26$ appears. So beads $1$ to $26$ all have the same colour. If $n>26$, every later bead $k$ is $11$ places after bead $k-11$, so by induction all beads have the same colour.
+
+\textbf{$n=25$ is possible.} Colour beads $5,10,16,21$ black and the other $21$ beads white. Within $1,\dots,25$ the beads that are $11$ or $16$ places from one of $5,10,16,21$ are
+\[
+5\colon\ 16,21;\qquad 10\colon\ 21;\qquad 16\colon\ 5;\qquad 21\colon\ 10,5,
+\]
+all black, so every forced pair has equal colours, and not all beads are the same colour.
+
+The largest possible number of beads is $\boxed{25}$.

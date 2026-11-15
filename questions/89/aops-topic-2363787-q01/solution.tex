@@ -1,0 +1,47 @@
+% Source: https://artofproblemsolving.com/community/c3h2363787_tough_construction
+% Stable identity: aops-topic-2363787-q01
+\textbf{Key fact.} In any triangle $ABC$, the excircle opposite $A$ touches the rays $AB$ and $AC$ (beyond $B$ and $C$) at points $T_B$, $T_C$ with $AT_B=AT_C=s$. Indeed, if it touches $BC$ at $X$, equal tangent segments give $BT_B=BX$ and $CT_C=CX$, so
+\[AT_B+AT_C=AB+BX+AC+CX=AB+BC+CA=2s,\]
+and $AT_B=AT_C$.
+
+\textbf{Construction.}
+\begin{enumerate}
+\item Draw the angle $\alpha$ with vertex $A$, and mark $T_B$, $T_C$ on its two rays with $AT_B=AT_C=s$.
+\item The perpendiculars to the rays at $T_B$ and $T_C$ meet at $J$; draw the circle $\omega$ with centre $J$ through $T_B$ and $T_C$. Its radius is $\rho=s\tan\dfrac{\alpha}{2}$, and $AJ=\dfrac{s}{\cos\dfrac\alpha2}$.
+\item Draw the circle $\gamma$ with centre $A$ and radius $h$.
+\item Draw a common internal tangent $\ell$ of $\gamma$ and $\omega$ (a line touching both, with the two circles on opposite sides). For example: draw the circle with centre $J$ and radius $\rho+h$, a tangent $AK$ to it from $A$, the point $P$ on $JK$ with $JP=\rho$, and the line through $P$ parallel to $AK$.
+\item Let $\ell$ meet the two rays at $B$ and $C$.
+\end{enumerate}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real al=70, s=6, h=2.4;
+pair A=(0,0);
+pair TB=s*dir(al/2), TC=s*dir(-al/2);
+real AJ=s/Cos(al/2), rho=s*Tan(al/2);
+pair J=(AJ,0);
+real th=aSin((rho+h)/AJ);
+pair u=dir(-th);
+pair K=sqrt(AJ^2-(rho+h)^2)*u;
+pair P=J+rho*unit(K-J);
+pair B=extension(P,P+u,A,TB), C=extension(P,P+u,A,TC);
+pair nv=rotate(90)*u; pair H=A+dot(P-A,nv)*nv;
+draw(A--1.15*TB,gray); draw(A--1.15*TC,gray);
+draw(circle(J,rho),blue); draw(circle(A,h),red+dashed);
+draw((B+0.25*(B-C))--(C+0.12*(C-B)),linewidth(0.6));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--H,red); draw(J--TB,dotted); draw(J--TC,dotted);
+dot(A); dot(B); dot(C); dot(J,blue); dot(TB,blue); dot(TC,blue); dot(H,red);
+label("$A$",A,W); label("$B$",B,dir(165)); label("$C$",C,SW); label("$J$",J,E,blue);
+label("$T_B$",TB,NW,blue); label("$T_C$",TC,dir(-110),blue); label("$h$",(A+H)/2,dir(-64),red);
+label("$s$",(A+TB)/2+(0,0.35),NW); label("$s$",(A+TC)/2-(0,0.35),SW);
+draw(arc(A,0.9,-al/2,al/2)); label("$\alpha$",A+0.62*dir(-10),fontsize(8pt));
+\end{asy}
+
+\textbf{Proof.} The line $\ell$ separates $A$ from $\omega$, and $T_B$, $T_C$ lie on $\omega$ but not on $\ell$, so $\ell$ crosses the segments $AT_B$ and $AT_C$ at interior points $B$ and $C$. Then $\angle BAC=\alpha$. The distance from $A$ to $\ell$ is the radius $h$ of $\gamma$, so the altitude from $A$ is $h$. The circle $\omega$ touches the lines $AB$, $AC$, $BC$ and lies on the far side of $BC$ from $A$, so it is the excircle opposite $A$; by the key fact the semiperimeter is $AT_B=s$.
+
+\textbf{Existence.} Conversely, in any such triangle, $BC$ is a common internal tangent of $\gamma$ and the excircle, which is the circle $\omega$ of step 2 (it touches the rays at distance $s$ from $A$). A common internal tangent exists exactly when the circles do not overlap, that is, when $AJ\ge h+\rho$:
+\[\dfrac{s}{\cos\dfrac\alpha2}\ge h+s\tan\dfrac\alpha2\iff h\le s\cdot\dfrac{1-\sin\dfrac\alpha2}{\cos\dfrac\alpha2}.\]
+When the inequality is strict there are two internal tangents, symmetric about $AJ$, giving two mirror-image (congruent) triangles; in the case of equality there is one, and the triangle is isosceles. $\blacksquare$

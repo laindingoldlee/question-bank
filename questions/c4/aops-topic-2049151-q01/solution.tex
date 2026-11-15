@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2049151_geometry_problem
+% Stable identity: aops-topic-2049151-q01
+Let $H$ be the foot of the perpendicular from $Z$ to line $XY$. If $\angle XYZ$ were obtuse, then $X$ and $H$ would lie on opposite sides of $Y$, so $XZ>ZY=17$, contradicting $XZ=10$. Hence $\angle XYZ$ is acute, $H$ lies on ray $YX$, and
+\[ZH=17\cdot\dfrac{8}{17}=8,\qquad YH=\sqrt{17^2-8^2}=15 .\]
+Since $XZ=10$, the point $X$ satisfies $XH=\sqrt{10^2-8^2}=6$, so $X$ is one of the two points $X_1,X_2$ on ray $YH$ with $YX_1=15-6=9$ and $YX_2=15+6=21$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair Y=(0,0), Z=(15,8), H=(15,0), X1=(9,0), X2=(21,0);
+draw(Y--X2,linewidth(0.9));
+draw(Y--Z,linewidth(0.9));
+draw(Z--X1,blue+linewidth(0.9));draw(Z--X2,red+linewidth(0.9));
+draw(Z--H,dashed);
+draw((15,0)--(15,0.6)--(14.4,0.6)--(14.4,0));
+dot(Y);dot(Z);dot(H);dot(X1);dot(X2);
+label("$Y$",Y,SW);label("$Z$",Z,N);label("$H$",H,S);label("$X_1$",X1,S);label("$X_2$",X2,S);
+label("$17$",(Y+Z)/2,NW);label("$8$",(Z+H)/2,E);
+label("$10$",(Z+X1)/2,W,blue);label("$10$",(Z+X2)/2,NE,red);
+label("$6$",(X1+H)/2,S);label("$6$",(H+X2)/2,S);label("$9$",(Y+X1)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Both give valid triangles, with areas
+\[\dfrac{1}{2}\cdot9\cdot8=36\qquad\text{and}\qquad\dfrac{1}{2}\cdot21\cdot8=84 .\]
+The positive difference is $84-36=\boxed{48}$ (equivalently $\dfrac{1}{2}\cdot X_1X_2\cdot ZH=\dfrac{1}{2}\cdot12\cdot8$).

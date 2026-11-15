@@ -1,0 +1,42 @@
+% Source: https://artofproblemsolving.com/community/c3h1423277_how_do_i_solve_this
+% Stable identity: aops-topic-1423277-q01
+The region $R=\{(x,y): |x|-5\le y\le 4-x^2\}$ is bounded (the graphs meet where $x^2+|x|-9=0$), convex (it lies above a convex function and below a concave one) and symmetric about the $y$-axis.
+
+\textbf{The centre can be taken on the $y$-axis.} If a disc of radius $r$ lies in $R$, so does its mirror image, and by convexity so does the disc of radius $r$ centred at the midpoint of the two centres (each of its points is the midpoint of a point of the disc and the mirror point of the other). So let the centre be $O=(0,k)$.
+
+\textbf{Distance to the parabola.} For a point $(x,4-x^2)$, the squared distance to $O$ is $x^2+(4-k-x^2)^2=t+(4-k-t)^2$ with $t=x^2\ge0$. For $k<\dfrac{7}{2}$ this is smallest at $t=\dfrac{7}{2}-k$, giving $\dfrac{15}{4}-k$.
+
+\textbf{Distance to the V.} The right branch is the line $x-y-5=0$; the distance from $O$ is $\dfrac{k+5}{\sqrt2}$ (the foot $\left(\dfrac{k+5}{2},\dfrac{k-5}{2}\right)$ has positive $x$, so it is on the branch), and the left branch gives the same by symmetry.
+
+The radius is $r(k)=\min\left(\sqrt{\dfrac{15}{4}-k},\,\dfrac{k+5}{\sqrt2}\right)$; the first expression decreases and the second increases with $k$, so the best $k$ makes them equal:
+\[
+\dfrac{(k+5)^2}{2}=\dfrac{15}{4}-k\;\Longrightarrow\;2k^2+24k+35=0\;\Longrightarrow\;k=-6+\dfrac{\sqrt{74}}{2}\approx-1.70 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return 4-x^2;} real g(real x){return abs(x)-5;}
+real xi=(-1+sqrt(37))/2;
+fill(graph(f,-xi,xi)--graph(g,xi,-xi)--cycle,palegreen);
+draw((-4,0)--(4,0),gray,Arrow(4)); draw((0,-5.8)--(0,5),gray,Arrow(4));
+label("$x$",(4,0),E,gray); label("$y$",(0,5),N,gray);
+draw(graph(f,-2.9,2.9),blue+linewidth(0.9)); draw(graph(g,-3.6,3.6),heavygreen+linewidth(0.9));
+pair O=(0,-1.6988); real r=2.3343;
+draw(circle(O,r),red+linewidth(0.9));
+pair T1=((O.y+5)/2,(O.y+5)/2-5); real xt=sqrt(3.5-O.y); pair T2=(xt,4-xt^2);
+draw(O--T1,red+dashed); draw(O--T2,red+dashed); dot(O,red); dot(T1); dot(T2);
+label("$O$",O,W,red); label("$y=4-x^2$",(-1.5,f(-1.5)),W,blue); label("$y=|x|-5$",(3.4,g(3.4)),E,heavygreen);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then
+\[
+r^2=\dfrac{15}{4}-k=\dfrac{39}{4}-\dfrac{\sqrt{74}}{2}=\dfrac{39-2\sqrt{74}}{4}\approx5.45,
+\]
+and the area of the largest circle is
+\[
+\boxed{\dfrac{(39-2\sqrt{74})\pi}{4}}\approx17.1 .
+\]

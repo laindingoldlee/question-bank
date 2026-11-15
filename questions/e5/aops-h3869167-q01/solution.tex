@@ -1,0 +1,16 @@
+For a square-lattice walk, the transformed coordinates $u=x+y$ and $v=x-y$ each change by $\pm1$, independently determining one of the four step directions. Thus the number of length-$2k$ returns is $R_{2k}=\binom{2k}{k}^2$, and the number of walks from the origin to $(1,1)$ is
+\[
+A_{2k}=\binom{2k}{k+1}\binom{2k}{k}.
+\]
+In particular $A_2=2,A_4=24,A_6=300$ and $R_2=4,R_4=36$.
+
+Let $F_{2k}$ count walks that first visit $(1,1)$ at time $2k$. Decomposing by the first visit gives
+\[
+F_2=2,\quad F_4=24-2\cdot4=16,\quad
+F_6=300-2\cdot36-16\cdot4=164.
+\]
+A length-eight return that visits the forbidden point must first do so at time $2,4$, or $6$. After the first visit, the remaining walk to the origin is unrestricted and counted by the corresponding $A$ value. Therefore the forbidden count is
+\[
+F_2A_6+F_4A_4+F_6A_2=600+384+328=1312.
+\]
+Subtracting from $R_8=\binom84^2=4900$ gives $\boxed{3588}$.

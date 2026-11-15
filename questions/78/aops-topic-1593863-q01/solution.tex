@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1593863_pls_explain_this_problem_pls
+% Stable identity: aops-topic-1593863-q01
+In a parallelogram opposite sides are equal, $AB=CD$ and $AD=BC$, so the perimeter is $2(AB+AD)=10$, giving $AB+AD=5$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(2.2,0),D=(0.9,1.6),C=B+D;
+draw(A--B--C--D--cycle,linewidth(0.9));draw(B--D,blue+linewidth(1));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The perimeter of triangle $ABD$ is $AB+AD+BD=8$, so
+\[
+BD=8-(AB+AD)=8-5=\boxed{3\text{ cm}}.
+\]

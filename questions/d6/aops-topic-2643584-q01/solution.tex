@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2643584_how_is_this_inequality_so_good
+% Stable identity: aops-topic-2643584-q01
+\emph{The right side.} The numbers $a-b$, $b-c$, $c-a$ add up to $0$, and $x+y+z=0$ implies $x^3+y^3+z^3=3xyz$. So the right side equals $125(a-b)(b-c)(c-a)$.
+
+\emph{The left side.} For positive $x,y$ put
+\[t(x,y)=\dfrac{x^9+x^8y+x^7y^2+\cdots+y^9}{x^9+y^9},\qquad\text{so that}\qquad x^{10}-y^{10}=(x-y)\left(x^9+y^9\right)t(x,y).\]
+Clearly $t(x,y)>0$. Group the ten terms of the numerator into the five pairs $x^{9-k}y^k+x^ky^{9-k}$, $k=0,1,2,3,4$. For each pair,
+\[x^9+y^9-x^{9-k}y^k-x^ky^{9-k}=\left(x^{9-k}-y^{9-k}\right)\left(x^k-y^k\right)\ge0,\]
+because both factors have the sign of $x-y$. Hence the numerator is at most $5\left(x^9+y^9\right)$, i.e. $0<t(x,y)\le5$.
+
+\emph{Comparison.} With $T=t(a,b)\,t(b,c)\,t(c,a)$ we have $0<T\le125$ and the left side equals $(a-b)(b-c)(c-a)\,T$. Therefore
+\[\text{LHS}-\text{RHS}=(a-b)(b-c)(c-a)\,(T-125).\]
+Since $a\ge b\ge c$, the factors $a-b$ and $b-c$ are nonnegative and $c-a\le0$, so $(a-b)(b-c)(c-a)\le0$; also $T-125\le0$. The product of two nonpositive numbers is nonnegative, which proves the inequality. $\blacksquare$

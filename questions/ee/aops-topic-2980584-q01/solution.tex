@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2980584_equation_of_triangle_area_please_help
+% Stable identity: aops-topic-2980584-q01
+Halving the side divides the area by $4$, so $A_n=\boxed{\dfrac{32}{4^n}}$, a geometric sequence (an exponential function of $n$, whose graph is a decaying curve, not a line). The infinite sum is $\dfrac{32}{1-\dfrac14}=\boxed{\dfrac{128}3}$.
+
+(The true area of an equilateral triangle of side $s$ is $\dfrac{\sqrt3}4s^2$, so the actual areas are $\dfrac{\sqrt3}{8}A_n$; the forum post used $\dfrac{s^2}{2}$, which has the same ratios.)
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(8,0),C=8*dir(60);draw(A--B--C--cycle);
+pair a=(B+C)/2,bb=(A+C)/2,c=(A+B)/2;draw(a--bb--c--cycle);pair a2=(bb+c)/2,b2=(a+c)/2,c2=(a+bb)/2;draw(a2--b2--c2--cycle);
+label("$8$",(A+B)/2,S);label("$4$",(a+bb)/2,N);
+\end{asy}

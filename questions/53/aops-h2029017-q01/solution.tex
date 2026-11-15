@@ -1,0 +1,21 @@
+Scale to $A=(0,0),B=(1,0),C=(u,v)$ and put $r=u^2+v^2$, $s=(u-1)^2+v^2$. Acuteness gives $0<u<1$, $v>0$, and $r-u>0$. Orthogonal projection and the two parallel-line conditions give
+\[
+A_1=B+\dfrac{1-u}{s}(C-B),\quad B_1=\dfrac{u}{r} C,\quad
+K=\left(\dfrac{u}{r},0\right),\quad M=\left(\dfrac{r-u}{s},0\right).
+\]
+For the vectors $\mathbf p=A-A_1,\mathbf q=K-A_1$ and $\mathbf p'=B-B_1,\mathbf q'=M-B_1$, direct expansion gives
+\[
+\mathbf p\cdot\mathbf q=\mathbf p'\cdot\mathbf q'
+=\dfrac{v^2(r-u)}{rs}>0,
+\]
+\[
+|\det(\mathbf p,\mathbf q)|=|\det(\mathbf p',\mathbf q')|
+=\dfrac{uv(1-u)}{rs}.
+\]
+Both angles are acute and their tangents, the absolute determinant divided by the dot product, are equal. Hence the angles themselves are equal.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(6,0),C=(2,4),D=(3,3),E=(1.2,2.4),K=(3.6,0),M=(1.5,0);draw(A--B--C--cycle);draw(A--D,blue);draw(B--E,blue);draw(E--K,red);draw(D--M,red);draw(D--K,dashed);draw(E--M,dashed);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$A_1$",D,NE);label("$B_1$",E,NW);label("$K$",K,S);label("$M$",M,S);
+\end{asy}

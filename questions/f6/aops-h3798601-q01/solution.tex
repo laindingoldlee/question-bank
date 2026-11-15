@@ -1,0 +1,7 @@
+The original area is $\dfrac{1}{2}\cdot8\cdot8=32$. Each medial triangle is similar to its parent with length scale $\dfrac{1}{2}$, hence area scale $\dfrac{1}{4}$. Three repetitions give area $32(\dfrac{1}{4})^3=\boxed{\dfrac{1}{2}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),C=(8,0),G=(8,8);draw(A--C--G--cycle);pair[] p={A,C,G};for(int k=0;k<3;++k){pair[] q={(p[0]+p[1])/2,(p[1]+p[2])/2,(p[2]+p[0])/2};if(k==2)fill(q[0]--q[1]--q[2]--cycle,lightblue);draw(q[0]--q[1]--q[2]--cycle);p=q;}label("$A$",A,(-1,-1));label("$C$",C,(1,-1));label("$G$",G,(1,1));label("$8$",(4,0),(0,-1));label("$8$",(8,4),(1,0));
+\end{asy}

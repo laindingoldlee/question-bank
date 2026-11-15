@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2164069_geometry_problem
+% Stable identity: aops-topic-2164069-q01
+Write $\alpha=\angle BAC=\angle DAE$ and $\beta=\angle ABC$, $\gamma=\angle ACB$. Since the triangle is acute, the feet $X$, $Y$, $Z$ lie on the sides (not on their extensions).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(2,5.2), B=(0,0), C=(6,0);
+pair ft(pair P, pair X, pair Y){return X+dot(P-X,Y-X)/dot(Y-X,Y-X)*(Y-X);}
+pair X=ft(A,B,C), Y=ft(B,C,A), Z=ft(C,A,B);
+draw(A--(A+1.25*(B-A)),gray); draw(A--(A+1.2*(C-A)),gray);
+label("$D$",A+1.25*(B-A),SW,gray); label("$E$",A+1.2*(C-A),SE,gray);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--X,dashed); draw(B--Y,dashed); draw(C--Z,dashed);
+draw(X--Y--Z--cycle,red+linewidth(1));
+draw(arc(X,0.6,degrees(Z-X),180),blue); draw(arc(X,0.75,0,degrees(Y-X)),blue);
+draw(arc(A,0.6,degrees(B-A),degrees(C-A)),blue);
+dot(A); dot(B); dot(C); dot(X); dot(Y); dot(Z);
+label("$A$",A,N); label("$B$",B,NW); label("$C$",C,NE);
+label("$X$",X,S); label("$Y$",Y,NE); label("$Z$",Z,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Triangle $BXZ$ is similar to triangle $BAC$.} In right triangle $AXB$ (right angle at $X$), $BX=AB\cos\beta$; in right triangle $CZB$ (right angle at $Z$), $BZ=BC\cos\beta$. So
+\[\dfrac{BX}{BA}=\dfrac{BZ}{BC}=\cos\beta,\]
+and the triangles $BXZ$ and $BAC$ share the angle at $B$. By SAS similarity, $\triangle BXZ\sim\triangle BAC$, with $X$ corresponding to $A$; hence $\angle BXZ=\angle BAC=\alpha$.
+
+\textbf{Likewise,} $CX=CA\cos\gamma$ and $CY=CB\cos\gamma$, so $\triangle CXY\sim\triangle CAB$ and $\angle CXY=\angle CAB=\alpha$.
+
+\textbf{Conclusion.} Since $X$ lies between $B$ and $C$, the three angles at $X$ on the side of $A$ add up to $180^\circ$:
+\[\angle YXZ=180^\circ-\angle BXZ-\angle CXY=180^\circ-2\alpha=180^\circ-2\angle DAE,\]
+which depends only on the fixed angle $\angle DAE$, not on the positions of $B$ and $C$. $\blacksquare$

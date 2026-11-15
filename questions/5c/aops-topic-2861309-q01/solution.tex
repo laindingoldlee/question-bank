@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2861309_area_of_triangle_maximized_when_equilateral
+% Stable identity: aops-topic-2861309-q01
+The area is a continuous function of the three points on the circle, which range over a closed bounded set, so a maximum is attained.
+
+\textbf{Claim.} In a triangle of maximum area, $AB=AC$. Keep $B,C$ fixed. The area is $\dfrac12BC\cdot h$, where $h$ is the distance from $A$ to line $BC$. Among points of the circle, $h$ is largest at the midpoint $A'$ of the arc $BC$ that is farther from line $BC$, i.e. the point where the perpendicular bisector of $BC$ meets the circle on the far side. This point is unique, and it satisfies $A'B=A'C$. If $AB\ne AC$, then $A\ne A'$ and replacing $A$ by $A'$ strictly increases the area.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);pair A=dir(145),B=dir(210),C=dir(330),P=dir(90);
+draw(circle(O,1));draw(A--B--C--cycle);draw(P--B,dashed);draw(P--C,dashed);draw(P--(0,B.y),dotted);
+dot(O);label("$O$",O,E);label("$A$",A,NW);label("$B$",B,SW);label("$C$",C,SE);label("$A'$",P,N);
+\end{asy}
+
+Applying the claim at every vertex, a maximal triangle has $AB=AC$ and $BA=BC$, so it is equilateral. All equilateral triangles inscribed in the circle are congruent, so the maximum is attained exactly by the equilateral triangles. $\blacksquare$

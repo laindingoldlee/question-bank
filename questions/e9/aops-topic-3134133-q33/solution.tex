@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h3134133_2011_lmt_spring_guts_round_p25p36__lexington_mathematical_tournament
+% Stable identity: aops-topic-3134133-q33
+Label cells $0,\ldots,15$ row by row from southwest. An arrangement is a bijection $f$ from cells to adjacent cells, with $f(0)=1$ and no pair $f(i)=j,f(j)=i$. The following exhaustive backtracking chooses each token destination once, rejecting an occupied destination or a two-cycle as soon as it occurs. Every valid arrangement appears exactly once. It yields $\boxed{44}$.
+\begin{verbatim}
+adj=[[j for j in range(16)
+      if abs(i//4-j//4)+abs(i%4-j%4)==1] for i in range(16)]
+f=[-1]*16
+f[0]=1
+count=0
+def dfs(i,used):
+    global count
+    if i==16:
+        count+=1
+        return
+    for j in adj[i]:
+        if not (used>>j)&1 and f[j]!=i:
+            f[i]=j
+            dfs(i+1,used|(1<<j))
+            f[i]=-1
+dfs(1,2)
+assert count==44
+\end{verbatim}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=0;i<=4;++i){draw((i,0)--(i,4));draw((0,i)--(4,i));}for(int j=0;j<4;++j)for(int i=0;i<4;++i)label(string(4j+i),(i+.5,j+.5));draw((.5,.5)--(1.5,.5),blue,Arrow);label("forced first move",(2,-.5));
+\end{asy}

@@ -1,0 +1,11 @@
+The altitude from $A$ to $BC$ has length $\sqrt{20^2-12^2}=16$, so the triangle area is $\dfrac{1}{2}\cdot24\cdot16=192$. Its circumradius is
+\[R=\dfrac{AB\cdot AC\cdot BC}{4[ABC]}=\dfrac{20\cdot20\cdot24}{4\cdot192}=\dfrac{25}{2}.\]
+The cyclic order is $A,D,B,C$. By Ptolemy's theorem,
+\[AB\cdot CD=AD\cdot BC+BD\cdot AC=15\cdot24+7\cdot20=500.\]
+Hence $CD=25=2R$. A chord attains length $2R$ only when it passes through the center, so $CD$ is a diameter.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,16),B=(-12,0),C=(12,0),D=(-12,7),O=(0,3.5);draw(circle(O,12.5));draw(A--B--C--cycle);draw(A--D--B);draw(C--D,blue);dot(O);label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));label("$D$",D,(-1,1));label("$O$",O,(0,-1));label("$15$",midpoint(A--D),(-1,1));label("$7$",midpoint(D--B),(-1,0));
+\end{asy}

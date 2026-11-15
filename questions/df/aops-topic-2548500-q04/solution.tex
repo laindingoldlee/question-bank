@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2548500_a_problem_a_day_keeps_rustiness_away
+% Stable identity: aops-topic-2548500-q04
+Let Jane and Jenny arrive $x$ and $y$ minutes after $1$ pm; the point $(x,y)$ is uniform in the square $[0,60]\times[0,60]$ of area $3600$.
+
+\textbf{(a)} They meet exactly when $|x-y|\le20$. The complement consists of two right triangles with legs $40$, of total area $40^2=1600$. So the probability is $\dfrac{3600-1600}{3600}=\boxed{\dfrac59}$.
+
+\textbf{(b)} Jane is present during $[x,x+20]$ and Lily during $[30,60]$. These overlap exactly when $x+20\ge30$, so Jane avoids Lily exactly when $x<10$; similarly Jenny avoids Lily exactly when $y<10$. If $x,y<10$ then $|x-y|<10\le20$, so Jane and Jenny certainly meet. Hence the required region is the square $[0,10)\times[0,10)$, and the probability is
+\[\dfrac{10^2}{60^2}=\boxed{\dfrac1{36}}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+fill((0,0)--(20,0)--(60,40)--(60,60)--(40,60)--(0,20)--cycle,mediumgray+opacity(0.35));
+fill((0,0)--(10,0)--(10,10)--(0,10)--cycle,gray(0.35));
+draw((0,0)--(60,0)--(60,60)--(0,60)--cycle);
+draw((20,0)--(60,40));draw((0,20)--(40,60));
+draw((10,0)--(10,10)--(0,10),linewidth(0.8));
+label("$0$",(0,0),SW);label("$10$",(10,0),S);label("$20$",(20,0),S);label("$60$",(60,0),S);
+label("$20$",(0,20),W);label("$60$",(0,60),W);label("$10$",(0,10),W);
+label("$x$ (Jane)",(30,-8));label(rotate(90)*"$y$ (Jenny)",(-11,30));
+label("$|x-y|\le20$",(36,30),fontsize(9pt));
+\end{asy}
+
+In the sketch, the light band is where Jane and Jenny meet and the dark square is the event in (b).

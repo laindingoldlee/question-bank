@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1868912_geometry_section_13__exercise_6
+% Stable identity: aops-topic-1868912-q01
+For three different points on a line, the middle one is the one whose distances to the other two add up to the distance between those two. So $AO+AY=OY$ says that $A$ is between $O$ and $Y$. Since $A$ is to the right of $O$, the point $Y$ is to the right of $A$. Also $K$ is between $O$ and $A$. Hence the order from left to right is
+\[
+\boxed{O,\ K,\ A,\ Y}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real[] xs={0,1.6,3.2,5.4};string[] nm={"$O$","$K$","$A$","$Y$"};
+draw((-0.8,0)--(6.2,0),linewidth(0.8),Arrows(6));
+for(int i=0;i<4;++i){dot((xs[i],0));label(nm[i],(xs[i],0),N);}
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Check: with this order every condition holds, and no other order satisfies all three.)

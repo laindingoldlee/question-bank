@@ -1,0 +1,7 @@
+For $N$ uniform independent points on the unit circle, a cyclic angular gap divided by $2\pi$ has density $(N-1)(1-t)^{N-2}$ on $0<t<1$. Summing signed center-triangle areas therefore gives $E_N=\dfrac{N(N-1)}{2}\int_0^1\sin(2\pi t)(1-t)^{N-2}\,dt$. Expanding the sine and integrating each term yields $E_N=\pi\left(1-\dfrac{(2\pi)^2}{(N+1)(N+2)}+\dfrac{(2\pi)^4}{(N+1)(N+2)(N+3)(N+4)}-\cdots\right)$. Alternating-series bounds give $E_{277}<3.14<E_{278}$, with $E_{278}\approx3.14000582118$. Adding another point can only enlarge the convex hull, so $E_N$ is nondecreasing. Hence $\boxed{N=278}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+draw(circle((0,0),1));pair[] P={dir(10),dir(75),dir(150),dir(205),dir(260),dir(320)};draw(P[0]--P[1]--P[2]--P[3]--P[4]--P[5]--cycle);for(int i=0;i<P.length;++i){draw((0,0)--P[i],dashed);label(string(i+1),P[i],P[i]);}label("$O$",(0,0),(0,-1));
+\end{asy}

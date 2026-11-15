@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1254020_intersecting_lines
+% Stable identity: aops-topic-1254020-q01
+In triangle $ABC$, $\angle ACB+\angle ABC=180^\circ-\angle BAC$. The angle $\angle BAC$ is either $28^\circ$ or $152^\circ$, depending on which rays from $A$ contain $B$ and $C$, and both occur. So the possible values are $152^\circ$ and $28^\circ$, with average $\boxed{90^\circ}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0); draw(-2*dir(14)--2.4*dir(14)); draw(-2*dir(-14)--2.4*dir(-14));
+pair B=2*dir(14),C=1.6*dir(-14),C2=-1.6*dir(-14);
+draw(B--C,blue); draw(B--C2,red); dot(A);dot(B);dot(C);dot(C2);
+label("$A$",A,N); label("$B$",B,N); label("$C$",C,S); label("$C'$",C2,N); label("$m$",2.4*dir(14),E); label("$n$",2.4*dir(-14),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

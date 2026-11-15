@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2160689_basic_geometry
+% Stable identity: aops-topic-2160689-q10
+The volume of a rectangular prism is the product of its three edge lengths:
+\[7\cdot7\cdot8=\boxed{392}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair d=(0.45,0.3)*7;
+pair O=(0,0), X=(7,0), Y=(0,8);
+draw(O--X--X+Y--Y--cycle,linewidth(0.9));
+draw(Y--Y+d--X+Y+d--X+Y); draw(X--X+d--X+Y+d);
+draw(O--d,dashed); draw(d--d+X,dashed); draw(d--d+Y,dashed);
+label("$7$",(3.5,0),S); label("$8$",(0,4),W); label("$7$",X+d/2,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

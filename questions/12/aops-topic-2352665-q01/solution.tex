@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2352665_permutation_and_combinations
+% Stable identity: aops-topic-2352665-q01
+Number the positions $1$ to $26$; $z$ is in position $1$. Let $y$ be in position $p$ and $x$ in position $q$, with $p,q\in\{2,\dots,26\}$, $p\ne q$. There are $p-2$ letters between $z$ and $y$ and $|q-p|-1$ letters between $y$ and $x$, so the condition is
+\[p-2<|q-p|-1\iff|q-p|\ge p.\]
+If $x$ comes before $y$ ($q<p$), then $|q-p|=p-q<p$, which fails. So $x$ comes after $y$ and $q-p\ge p$, that is, $2p\le q\le26$. This needs $p\le13$, and for each $p=2,\dots,13$ there are $27-2p$ choices of $q$:
+\[\sum_{p=2}^{13}(27-2p)=23+21+\cdots+3+1=12^2=144.\]
+The other $23$ letters fill the remaining positions in $23!$ ways, so the number of permutations is
+\[144\cdot23!=6\cdot24\cdot23!=6\cdot24!.\]
+The answer is $\boxed{\textbf{(B) }6\cdot24!}$.

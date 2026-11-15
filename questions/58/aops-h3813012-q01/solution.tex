@@ -1,0 +1,6 @@
+Cut the cycle at $0$ and regard it as the interval of states $0,1,\ldots,N$ with both endpoints absorbing and $N=1000$. The expected time $E_i$ satisfies
+\[
+E_0=E_N=0,\qquad E_i=1+\dfrac{E_{i-1}+E_{i+1}}{2}.
+\]
+The function $E_i=i(N-i)$ satisfies these equations by substitution. It is unique: the difference of two solutions has zero second difference, hence is linear, and vanishes at both endpoints.
+The expectation is finite, since from any state there is a uniformly positive probability of hitting an endpoint in the next $N$ steps, giving a geometric tail bound. Thus the recurrence applies to the actual expectations, and $\boxed{E_1=N-1=999}$.

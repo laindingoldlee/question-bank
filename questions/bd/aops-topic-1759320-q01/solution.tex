@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1759320_hill_cipher
+% Stable identity: aops-topic-1759320-q01
+\textbf{Reduction to primes.} $\gcd(\det,26)=1$ means $\det\not\equiv0\pmod2$ and $\det\not\equiv0\pmod{13}$. The determinant modulo $p$ depends only on the entries modulo $p$. By the Chinese remainder theorem, an entry uniform on $\{0,\dots,25\}$ corresponds to a pair (entry mod $2$, entry mod $13$) uniform on $\{0,1\}\times\{0,\dots,12\}$, with the two components independent. So the events ``$\det\not\equiv0\pmod2$'' and ``$\det\not\equiv0\pmod{13}$'' are independent, and the matrix mod $p$ is a uniformly random matrix over the field $\mathbb Z_p$.
+
+\textbf{Counting over $\mathbb Z_p$.} An $n\times n$ matrix over $\mathbb Z_p$ has nonzero determinant exactly when its rows are linearly independent. The first row can be any of the $p^n-1$ nonzero vectors, the second any vector outside the $p$ multiples of the first, the third outside the $p^2$ combinations of the first two, and so on. So the probability of a nonzero determinant is
+\[
+\dfrac{(p^n-1)(p^n-p)\cdots(p^n-p^{n-1})}{p^{n^2}}=\prod_{i=1}^{n}\left(1-\dfrac{1}{p^i}\right).
+\]
+(b) Therefore
+\[
+P(\text{not invertible})=\boxed{1-\prod_{i=1}^{n}\left(1-\dfrac{1}{2^i}\right)\left(1-\dfrac{1}{13^i}\right)}.
+\]
+(a) For $n=2$: modulo $2$ the probability is $\dfrac{1}{2}\cdot\dfrac{3}{4}=\dfrac{3}{8}$ (there are $6$ invertible matrices out of $16$); modulo $13$ it is $\dfrac{12}{13}\cdot\dfrac{168}{169}=\dfrac{2016}{2197}$. Hence the probability of being invertible is $\dfrac{3}{8}\cdot\dfrac{2016}{2197}=\dfrac{756}{2197}$, and the probability of not being invertible is
+\[
+1-\dfrac{756}{2197}=\boxed{\dfrac{1441}{2197}}\approx0.656 .
+\]
+(In counts: $6\cdot168\cdot156=157248$ of the $26^4=456976$ matrices are invertible.)

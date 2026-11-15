@@ -1,0 +1,18 @@
+A $k$-face is obtained by choosing which $k$ coordinates may vary over $[0,1]$, then fixing every other coordinate at $0$ or $1$. There are
+\[
+\boxed{\binom nk2^{n-k}}
+\]
+such faces. Thus the requested counts are
+\[
+\boxed{2^{2026}},\quad
+\boxed{2026\cdot2^{2025}},\quad
+\boxed{\binom{2026}{2}2^{2024}},\quad
+\boxed{\binom{2026}{3}2^{2023}}.
+\]
+The same coordinate-choice principle covers $k=0$ and $k=n$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair u=(3,0),v=(1,1),w=(0,3),O=(0,0);fill(O--u--u+w--w--cycle,lightblue);draw(O--u--u+v--v--cycle);draw(w--u+w--u+v+w--v+w--cycle);draw(O--w);draw(u--u+w);draw(v--v+w);draw(u+v--u+v+w);label("Two free coordinates; one fixed",(2,-.7));
+\end{asy}

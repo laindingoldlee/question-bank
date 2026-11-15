@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2014358_largest_area
+% Stable identity: aops-topic-2014358-q01
+Let the two sides perpendicular to the wall have length $w$; then the side parallel to the wall has length $60-2w$, where $w$ is an integer with $1\le w\le29$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+draw((-1,6)--(32,6),linewidth(2)+gray(0.4));
+label("wall",(31,6),N);
+draw((0,6)--(0,0)--(30,0)--(30,6),blue+linewidth(1));
+fill((0,0)--(30,0)--(30,6)--(0,6)--cycle,paleblue+opacity(0.4));
+label("$w$",(0,3),W); label("$w$",(30,3),E); label("$60-2w$",(15,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The area is
+\[
+A(w)=w(60-2w)=-2w^2+60w=450-2(w-15)^2 .
+\]
+This is at most $450$, with equality exactly at $w=15$, which is an allowed integer (sides $15$, $30$, $15$ metres). The largest area is $\boxed{450}$ square metres.

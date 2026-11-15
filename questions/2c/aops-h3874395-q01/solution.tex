@@ -1,0 +1,22 @@
+Put $C=(0,0)$, $D=(40,0)$. Solving $BC=25$ and $BD=39$ gives $B=(\dfrac{44}{5},\dfrac{117}{5})$, taking $B$ above $CD$. Since $P$ is on the perpendicular bisector, write $P=(20,t)$; then $PC=PD$.
+
+The tangent powers of $P$ to the two circles are equal, so $P$ is on their radical axis $AB$. Thus $A$ is the intersection of $PB$ with the $x$-axis. Parametrising that line gives
+\[
+\overline{PA}\,\overline{PB}
+=\dfrac{t}{t-\dfrac{117}{5}}\left[\left(\dfrac{56}{5}\right)^2+
+\left(t-\dfrac{117}{5}\right)^2\right],
+\]
+where the product uses directed distances on the common line. Equating this to $PC^2=400+t^2$ simplifies to
+\[
+(t+15)(3t-80)=0.
+\]
+For $t=\dfrac{80}{3}$, the $x$-coordinate of $A$ is $-\dfrac{500}{7}$, outside $CD$. For $t=-15$, it is $\dfrac{125}{8}$, inside $CD$. Therefore
+\[
+\boxed{PC=\sqrt{20^2+15^2}=25}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair C=(0,0),D=(40,0),B=(44.0/5,117.0/5),A=(125.0/8,0),P=(20,-15),K1=(125.0/16,125.0/12),K2=(445.0/16,65.0/4);draw(circle(K1,length(K1-C)),gray);draw(circle(K2,length(K2-D)),gray);draw(B--C--D--cycle);draw(P--B,blue);draw(C--P--D,red);label("$C$",C,(-1,0));label("$D$",D,(1,0));label("$B$",B,(0,1));label("$A$",A,SW);label("$P$",P,(0,-1));
+\end{asy}

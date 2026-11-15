@@ -1,0 +1,17 @@
+Put $v=\dfrac{y}{\sqrt3}$. Draw three rays from $O$ with successive angles $150^\circ,90^\circ,120^\circ$, and take points $U,V,W$ at distances $x,v,z$, respectively. The cosine law gives
+\[
+UV^2=x^2+v^2+\sqrt3xv=25,\quad
+VW^2=v^2+z^2=9,\quad
+WU^2=z^2+x^2+zx=16.
+\]
+Since all three angular gaps are less than $180^\circ$, $O$ lies inside triangle $UVW$. Its sides are $3,4,5$, so it is right-angled and its area is $6$. Adding the three areas around $O$ gives
+\[
+6=\dfrac{xv}{4}+\dfrac{vz}{2}+\dfrac{\sqrt3zx}{4}.
+\]
+Multiplying by $4\sqrt3$ and substituting $v=\dfrac{y}{\sqrt3}$ yields $xy+2yz+3zx=24\sqrt3$. The desired value is $\boxed{1728}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0),U=(2.779256492,0),V=2.396106218dir(150),W=1.805180044dir(240);draw(U--V--W--cycle);draw(O--U,blue);draw(O--V,blue);draw(O--W,blue);label("$U$",U,E);label("$V$",V,NW);label("$W$",W,S);label("$O$",O,N);label("$x$",O--U,S);label("$v$",O--V,SW);label("$z$",O--W,E);label("$5$",U--V,N);label("$3$",V--W,W);label("$4$",W--U,SE);
+\end{asy}

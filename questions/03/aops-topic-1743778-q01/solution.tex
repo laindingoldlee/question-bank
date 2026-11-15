@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1743778_2015_mathcounts_chapter_sprint_24
+% Stable identity: aops-topic-1743778-q01
+The reflection is $A'(4,2)$, $B'(-1,2)$, $C'(1,5)$. Both triangles have their bases on the line $y=2$, and the overlap lies above the segment from $B'(-1,2)$ to $B(1,2)$, bounded by side $BC$ of the first triangle and side $B'C'$ of the second.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(-4,2),B=(1,2),C=(-1,5),A1=(4,2),B1=(-1,2),C1=(1,5),X=(0,3.5);
+draw((-5,0)--(5,0),gray,Arrow(5));draw((0,-0.5)--(0,6.2),gray,Arrow(5));
+fill(B1--B--X--cycle,lightgray);
+draw(A--B--C--cycle,linewidth(0.9));draw(A1--B1--C1--cycle,blue+linewidth(0.9));
+dot(A);dot(B);dot(C);dot(A1);dot(B1);dot(C1);dot(X);
+label("$A$",A,SW);label("$B$",B,S);label("$C$",C,N);
+label("$A'$",A1,SE,blue);label("$B'$",B1,S,blue);label("$C'$",C1,N,blue);
+label("$X$",X,dir(15));label("$x$",(5,0),S);label("$y$",(0,6.2),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Line $BC$ has slope $\dfrac{5-2}{-1-1}=-\dfrac{3}{2}$, so it is $y=2-\dfrac{3}{2}(x-1)$; by symmetry $B'C'$ is $y=2+\dfrac{3}{2}(x+1)$. They meet on the $y$-axis at $X=(0,3.5)$. The other sides $AC$ and $A'C'$ lie outside this region (for example $AC$ is at $x\le-1$). So the overlap is triangle $B'BX$ with base $2$ and height $1.5$, of area $\dfrac{1}{2}\cdot2\cdot1.5=\boxed{1.5}$.

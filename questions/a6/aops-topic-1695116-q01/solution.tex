@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1695116_perpendicular_bisecting
+% Stable identity: aops-topic-1695116-q01
+Use coordinates with $A=(-a,0)$ and $B=(a,0)$. A point $(x,y)$ is on both circles when
+\[
+(x+a)^2+y^2=r^2\qquad\text{and}\qquad(x-a)^2+y^2=r^2 .
+\]
+Subtracting gives $4ax=0$, so $x=0$, and then $y^2=r^2-a^2$.
+
+\textbf{(a)} If $r>a$, there are exactly two common points, $P=\left(0,\sqrt{r^2-a^2}\right)$ and $P'=\left(0,-\sqrt{r^2-a^2}\right)$. Both lie on the $y$-axis, which is the line through the midpoint $(0,0)$ of $AB$ perpendicular to $AB$: the perpendicular bisector. (Without coordinates: each intersection point is at distance $r$ from both $A$ and $B$, and the points equidistant from $A$ and $B$ form the perpendicular bisector; two distinct such points determine it.) If $r<a$ there are no common points at all, since $y^2<0$ is impossible; this matches the triangle inequality, as a common point $P$ would need $PA+PB\ge AB$, i.e.\ $2r\ge2a$.
+
+\textbf{(b)} If $r=a$, then $y=0$: the two circles touch at the single point $M=(0,0)$, the midpoint of $AB$. One point does not determine a line, so the construction gives the midpoint but not the perpendicular bisector. That is why the radius must be $\boxed{\text{greater than half of }AB}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+real a=1.6;
+picture p1,p2;
+pair A=(-a,0),B=(a,0);
+real r=2.3; real yy=sqrt(r^2-a^2);
+draw(p1,arc(A,r,-53,53),gray);draw(p1,arc(B,r,127,233),gray);
+draw(p1,A--B,linewidth(0.9));draw(p1,(0,yy+0.35)--(0,-yy-0.35),blue+dashed);
+dot(p1,A);dot(p1,B);dot(p1,(0,yy));dot(p1,(0,-yy));
+label(p1,"$A$",A,W);label(p1,"$B$",B,E);label(p1,"$P$",(0,yy),dir(15));label(p1,"$P'$",(0,-yy),dir(-15));
+label(p1,"$r>a$",(0,-yy-0.9));
+draw(p2,arc(A,a,-60,60),gray);draw(p2,arc(B,a,120,240),gray);
+draw(p2,A--B,linewidth(0.9));
+dot(p2,A);dot(p2,B);dot(p2,(0,0),red);
+label(p2,"$A$",A,W);label(p2,"$B$",B,E);label(p2,"$M$",(0.42,-0.3),red);
+label(p2,"$r=a$",(0,-yy-0.9));
+add(p1);add(shift(6.2,0)*p2);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

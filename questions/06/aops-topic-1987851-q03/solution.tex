@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1987851_skeletons_of_cubes
+% Stable identity: aops-topic-1987851-q03
+The skeleton has the $8$ corner cubes plus $n-2$ cubes inside each of the $12$ edges, so it uses $8+12(n-2)=12n-16$ cubes. Completing the cube needs $n^3-(12n-16)$ more cubes. Setting these equal,
+\[
+12n-16=n^3-12n+16\iff n^3-24n+32=0\iff(n-4)(n^2+4n-8)=0 .
+\]
+The quadratic factor has roots $-2\pm2\sqrt3$, which are not positive integers, so $n=4$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair o=(0.45,0.32);
+pair pr(real x,real y,real z){return (x,z)+y*o;}
+void cube(int i,int j,int k){
+  path fr=pr(i,j,k)--pr(i+1,j,k)--pr(i+1,j,k+1)--pr(i,j,k+1)--cycle;
+  path tp=pr(i,j,k+1)--pr(i+1,j,k+1)--pr(i+1,j+1,k+1)--pr(i,j+1,k+1)--cycle;
+  path rt=pr(i+1,j,k)--pr(i+1,j+1,k)--pr(i+1,j+1,k+1)--pr(i+1,j,k+1)--cycle;
+  filldraw(fr,white,linewidth(0.5)); filldraw(tp,gray(0.88),linewidth(0.5)); filldraw(rt,gray(0.75),linewidth(0.5));
+}
+int n=4;
+bool onedge(int i,int j,int k){ int c=0; if(i==0||i==n-1) ++c; if(j==0||j==n-1) ++c; if(k==0||k==n-1) ++c; return c>=2; }
+for(int j=n-1;j>=0;--j) for(int k=0;k<n;++k) for(int i=0;i<n;++i) if(onedge(i,j,k)) cube(i,j,k);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The $4\times4\times4$ skeleton (shown) uses $12\cdot4-16=\boxed{32}$ cubes, and $64-32=32$ cubes fill it in.

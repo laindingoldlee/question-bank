@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2301718_arrange_the_numbers
+% Stable identity: aops-topic-2301718-q01
+Only remainders modulo $3$ matter: $21,51\equiv0$, $31,61\equiv1$ and $41,71\equiv2\pmod3$. Let the row be $a_1,a_2,\dots,a_6$. The conditions are that $a_1+a_2+a_3+a_4$, $a_2+a_3+a_4+a_5$ and $a_3+a_4+a_5+a_6$ are multiples of $3$. Subtracting consecutive sums, $a_5\equiv a_1$ and $a_6\equiv a_2\pmod 3$.
+
+Each remainder occurs for exactly two of the numbers. If $a_1\equiv a_2$, four numbers would share a remainder, which is impossible. So positions $1,5$ hold the two numbers of one remainder class, positions $2,6$ the two numbers of another class, and positions $3,4$ the third class, say with remainders $r$, $s$ and $t$. Since $r+s+t=0+1+2\equiv0$,
+\[a_1+a_2+a_3+a_4\equiv r+s+2t\equiv t\pmod3,\]
+so we need $t=0$: positions $3$ and $4$ hold $21$ and $51$, and then all three sums are multiples of $3$.
+
+Count: choose which of the classes $\{31,61\}$, $\{41,71\}$ goes to positions $1,5$ ($2$ ways), order each of the three pairs ($2\cdot2\cdot2$ ways). The total is $2\cdot8=\boxed{16}$.

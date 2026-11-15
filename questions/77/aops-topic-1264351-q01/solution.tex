@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1264351_geometry_with_probability_washington_state_comp_math_probl
+% Stable identity: aops-topic-1264351-q01
+Let $h=3\sqrt3$ be the height. The blue triangle $BKC$ has area $\dfrac{1}{2}\cdot6\cdot d$, where $d$ is the distance from $K$ to $BC$, and it exceeds half of the area $\dfrac{1}{2}\cdot6\cdot h$ exactly when $d>\dfrac {h}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(6,0),A=(3,3*sqrt(3));
+pair P=(A+B)/2,Q=(A+C)/2;
+fill(P--Q--A--cycle,lightblue);
+draw(A--B--C--cycle,linewidth(1)); draw(P--Q,dashed);
+pair K=(3.2,3.6); dot(K); draw(B--K--C,blue);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$K$",K,E);
+draw((7,0)--(7,3*sqrt(3)),Arrows); label("$h$",(7,2.6),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The points of the triangle at distance more than $\dfrac {h}{2}$ from $BC$ form the small triangle above the midline (shaded), which is similar to $ABC$ with ratio $\dfrac{1}{2}$ and so has $\dfrac{1}{4}$ of its area. The probability is $\boxed{\dfrac{1}{4}}$.

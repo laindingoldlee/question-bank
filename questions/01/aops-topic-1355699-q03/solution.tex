@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1355699_chrimstas_special_day_17suprise
+% Stable identity: aops-topic-1355699-q03
+The altitude $AM$ bisects the base, so $AM=\sqrt{8^2-4^2}=4\sqrt3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair foot(pair P,pair A,pair B){return A+dot(P-A,B-A)/dot(B-A,B-A)*(B-A);}
+pair B=(0,0),C=(8,0),A=(4,4*sqrt(3)),M=(4,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--M,dashed); draw(ra(M,C-M,A-M,0.5));
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$M$",M,S);
+label("$8$",(A+B)/2,NW); label("$8$",(A+C)/2,NE); label("$4\sqrt{3}$",(A+M)/2,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The area is $\dfrac{1}{2}\cdot8\cdot4\sqrt3=16\sqrt3$ and the perimeter is $24$, so the ratio is
+\[
+\dfrac{16\sqrt3}{24}=\boxed{\dfrac{2\sqrt3}{3}}.
+\]

@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1445674_how_many_digits_1_
+% Stable identity: aops-topic-1445674-q01
+The number with $k$ ones is $\dfrac{10^k-1}{9}$, so
+\[
+9S=\sum_{k=1}^{96}(10^k-1)=\dfrac{10^{97}-10}{9}-96,\qquad 81S=10^{97}-10-864=10^{97}-874 .
+\]
+Now split $10^{97}-874=10^7\left(10^{90}-1\right)+\left(10^7-874\right)$. Since $10^9-1=999999999=81\cdot12345679$,
+\[
+\dfrac{10^{90}-1}{81}=12345679\cdot\left(1+10^9+10^{18}+\cdots+10^{81}\right),
+\]
+which is the block $012345679$ written ten times (without the very first $0$). Also $\dfrac{10^7-874}{81}=\dfrac{9999126}{81}=123446$, a number with fewer than $7$ digits. Therefore
+\[
+S=10^7\cdot\dfrac{10^{90}-1}{81}+123446=\underbrace{12345679\,012345679\cdots012345679}_{\text{ten blocks}}\,0123446 ,
+\]
+a $96$-digit number. Each of the ten blocks contains one digit $1$, and the tail $0123446$ contains one more. So $S$ contains $\boxed{11}$ digits $1$.

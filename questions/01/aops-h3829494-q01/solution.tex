@@ -1,0 +1,8 @@
+The rotation group has $60$ elements: the image of a chosen vertex has $12$ choices and, once it is chosen, a chosen incident edge has $5$ rotational placements. These choices specify a unique orientation-preserving symmetry.
+There are $12!$ labelled vertex placements, and no nonidentity rotation fixes a placement of distinct people. Each rotational equivalence class therefore contains $60$ placements, giving $\boxed{\dfrac{12!}{60}}$. The same reasoning applies to the thirty edge positions, giving $\boxed{\dfrac{30!}{60}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real f=(1+sqrt(5))/2;triple[] v;for(int a=-1;a<=1;a+=2)for(int b=-1;b<=1;b+=2){v.push((0,a,b*f));v.push((a,b*f,0));v.push((b*f,0,a));}pair proj(triple p){return (p.x+.42p.z,p.y+.23p.z);}for(int i=0;i<12;++i)for(int j=i+1;j<12;++j)if(abs(length(v[i]-v[j])-2)<.0001)draw(proj(v[i])--proj(v[j]),gray);for(int i=0;i<12;++i){dot(proj(v[i]));label(string(i+1),proj(v[i]),unit(proj(v[i])));}
+\end{asy}

@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1349057_christmas_special_day_3
+% Stable identity: aops-topic-1349057-q01
+By the Pythagorean theorem the hypotenuse is
+\[
+\sqrt{3^2+8^2}=\sqrt{9+64}=\boxed{\sqrt{73}},
+\]
+which cannot be simplified because $73$ is prime.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(0,0),B=(8,0),C=(0,3);
+draw(A--B--C--cycle,linewidth(0.9)); draw(ra(A,B-A,C-A,0.5));
+label("$8$",(A+B)/2,S); label("$3$",(A+C)/2,W); label("$\sqrt{73}$",(B+C)/2,NE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1926988_selfsimilarity
+% Stable identity: aops-topic-1926988-q01
+\textbf{(a)} For $c=0$ we get $a_1=\sqrt0=0$ and then $a_{n+1}=\sqrt{a_n}=0$ for every $n$, so $L(0)=\boxed{0}$. The self-similarity equation only says: \emph{if} the limit $x$ exists, then $x=\sqrt x$. It narrows the value down to $0$ or $1$ but cannot choose between them; the sequence itself decides, and here it is constantly $0$. So $1$ is an extraneous root.
+
+\textbf{(b)} Let $c>0$ and let $r=\dfrac{1+\sqrt{1+4c}}{2}$, the positive root of $x^2=c+x$.
+\begin{itemize}
+\item \emph{Bounded:} $r^2=c+r>c$ gives $a_1=\sqrt c<r$, and if $a_n<r$ then $a_{n+1}=\sqrt{c+a_n}<\sqrt{c+r}=r$. By induction $a_n<r$ for all $n$.
+\item \emph{Increasing:} $a_2=\sqrt{c+\sqrt c}>\sqrt c=a_1$, and if $a_{n+1}>a_n$ then $a_{n+2}=\sqrt{c+a_{n+1}}>\sqrt{c+a_n}=a_{n+1}$.
+\end{itemize}
+An increasing sequence bounded above converges, say to $L$. Letting $n\to\infty$ in $a_{n+1}^2=c+a_n$ gives $L^2=c+L$, and $L\ge a_1>0$. The roots of $x^2-x-c=0$ are $r>0$ and $\dfrac{1-\sqrt{1+4c}}{2}<0$, so $L=r=\dfrac{1+\sqrt{1+4c}}{2}$.
+
+\textbf{(c)} As $c\to0^+$, $\sqrt{1+4c}\to1$, so $L(c)\to\dfrac{1+1}{2}=1$. But $L(0)=0$. So the function $L$ jumps at $c=0$: for every $c>0$ the value is the larger root of $x^2=c+x$, while for $c=0$ the sequence never leaves $0$.

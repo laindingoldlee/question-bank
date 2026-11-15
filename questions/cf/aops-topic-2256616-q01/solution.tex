@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2256616_mock_amc_8
+% Stable identity: aops-topic-2256616-q01
+Two points $P$ and $Q$ on a circle split it into two arcs; the smaller is the \emph{minor arc} and the larger the \emph{major arc}, and together they make the whole circle, $360^\circ$. If the minor arc measures $m$ degrees and the major arc $M$ degrees, then
+\[M+m=360,\qquad M-m=100.\]
+Subtracting, $2m=260$, so $m=130$ (and $M=230$).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0); real a1=-65, a2=65;
+draw(arc(O,1,a1,a2),red+linewidth(1.6));
+draw(arc(O,1,a2,a1+360),blue+linewidth(0.9));
+pair P=dir(a1), Q=dir(a2);
+dot(P); dot(Q); dot(O);
+draw(O--P,dashed); draw(O--Q,dashed);
+label("$P$",P,SE); label("$Q$",Q,NE); label("$O$",O,W);
+label("$130^\circ$",dir(0)*1.03,E,red);
+label("$230^\circ$",dir(180)*1.03,W,blue);
+\end{asy}
+
+The answer is $\boxed{\text{(C)}\ 130}$.

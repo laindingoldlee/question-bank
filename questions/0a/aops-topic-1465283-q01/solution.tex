@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1465283_triangle_inscribed_in_a_circle
+% Stable identity: aops-topic-1465283-q01
+Let $O$ be the midpoint of $AB$. Complete the right triangle to a rectangle $ACBD$ by taking $D$ with $\vec{D}=\vec{A}+\vec{B}-\vec{C}$; it has right angles at all four vertices. The diagonals of a rectangle are equal and bisect each other, so $O$, the midpoint of diagonal $AB$, is also the midpoint of diagonal $CD$, and
+\[
+OC=\dfrac{1}{2}CD=\dfrac{1}{2}AB=OA=OB .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair O=(0,0); real R=2;
+pair A=R*dir(180),B=R*dir(0),C=R*dir(62);
+draw(circle(O,R),linewidth(0.8));
+draw(A--B--C--cycle,linewidth(0.9));
+pair D=-C;
+draw(A--D--B,red+dashed);draw(C--D,red+dashed);
+draw(ra(C,A-C,B-C,0.2));
+dot(O);dot(A);dot(B);dot(C);dot(D,red);
+label("$O$",O,1.6*dir(-60));label("$D$",D,dir(242),red);label("$A$",A,W);label("$B$",B,E);label("$C$",C,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $O$ is equidistant from $A$, $B$ and $C$. Three non-collinear points lie on exactly one circle, and its centre is the unique point equidistant from them; hence $O$ is the centre of the given circle. Since the centre $O$ lies on chord $AB$, the chord $AB$ is a diameter. $\blacksquare$
+
+(Alternatively, by the inscribed angle theorem the arc $AB$ not containing $C$ measures $2\cdot90^\circ=180^\circ$, so it is a semicircle.)

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2785012_2018_pimc_team_round__pi_math_contest__for_elementary
+% Stable identity: aops-topic-2785012-q05
+A midpoint square has diagonals equal to the previous square's side, so it has half the previous area. Four constructions multiply area by $(\dfrac{1}{2})^4=\dfrac{1}{16}$. Hence $\boxed{[ABCD]:[QRST]=16:1}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] p={(0,0),(4,0),(4,4),(0,4)};for(int j=0;j<5;++j){draw(p[0]--p[1]--p[2]--p[3]--cycle);pair[] q;for(int k=0;k<4;++k)q.push((p[k]+p[(k+1)%4])/2);p=q;}label("$ABCD$",(0,0),SW);label("$QRST$",(2,2));
+\end{asy}

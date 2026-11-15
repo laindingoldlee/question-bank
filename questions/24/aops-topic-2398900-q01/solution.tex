@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2398900_modular_arithmetic
+% Stable identity: aops-topic-2398900-q01
+Simplify each congruence:
+\begin{itemize}
+\item $2\cdot3=6\equiv1\pmod5$, so multiplying by $3$: $x\equiv3\pmod5$.
+\item $3x\equiv9\pmod6$ means $6\mid3(x-3)$, i.e. $2\mid x-3$: $x\equiv1\pmod2$. (Here $3$ has no inverse mod $6$, so we divide the modulus as well.)
+\item $4\cdot2=8\equiv1\pmod7$, so $x\equiv2\pmod7$.
+\item $5\cdot9=45\equiv1\pmod{11}$, so $x\equiv9\cdot9=81\equiv4\pmod{11}$.
+\end{itemize}
+The moduli $5,2,7,11$ are pairwise coprime, so by the Chinese remainder theorem there is a unique solution modulo $770$. Combine step by step:
+\begin{itemize}
+\item $x\equiv3\pmod5$ and $x$ odd: $x\equiv3\pmod{10}$.
+\item Among $3,13,23,\dots$ the first that is $\equiv2\pmod7$ is $23$: $x\equiv23\pmod{70}$.
+\item $x=23+70k\equiv1+4k\pmod{11}$, and $1+4k\equiv4$ gives $4k\equiv3$, so $k\equiv3\cdot3=9\pmod{11}$ (as $4\cdot3\equiv1$). Then $x=23+630=653$.
+\end{itemize}
+The solution is $\boxed{x\equiv653\pmod{770}}$. Check: $2\cdot653=1306\equiv1\pmod5$, $3\cdot653-9=1950=6\cdot325$, $4\cdot653=2612=7\cdot373+1$, $5\cdot653-9=3256=11\cdot296$.

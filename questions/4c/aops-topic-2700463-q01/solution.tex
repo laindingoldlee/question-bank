@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2700463_onetrick_problem
+% Stable identity: aops-topic-2700463-q01
+The sides are $6\cdot13$, $6\cdot14$, $6\cdot15$. Drop the altitude to the side $84$; it splits the side into $x$ and $84-x$ with $78^2-x^2=90^2-(84-x)^2$, giving $x=30$ and altitude $\sqrt{78^2-30^2}=72$. (These are the $5$-$12$-$13$ and $9$-$12$-$15$ right triangles scaled by $6$.) The area is $\dfrac12\cdot84\cdot72=\boxed{3024}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(84,0),A=(30,72),H=(30,0);
+draw(A--B--C--cycle,linewidth(0.8));draw(A--H,dashed);draw(H+(3,0)--H+(3,3)--H+(0,3));
+label("$78$",(A+B)/2,NW,fontsize(8pt));label("$90$",(A+C)/2,NE,fontsize(8pt));label("$30$",(B+H)/2,S,fontsize(8pt));label("$54$",(H+C)/2,S,fontsize(8pt));label("$72$",(A+H)/2,E,fontsize(8pt));
+\end{asy}

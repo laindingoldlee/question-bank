@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2386442_recursion
+% Stable identity: aops-topic-2386442-q01
+Give the squares coordinates $(i,j)$, $0\le i,j\le4$, with $X=(0,0)$ and $Y=(4,4)$. Let $f(i,j)$ be the number of move sequences from $X$ to $(i,j)$. The last move into $(i,j)$ comes either from a square $(i',j)$ to its left or from a square $(i,j')$ below it, so
+\[f(i,j)=\sum_{i'<i}f(i',j)+\sum_{j'<j}f(i,j'),\qquad f(0,0)=1 .\]
+Filling in the board row by row from the bottom ($j=0$ is the bottom row, and the entries in each row are for $i=0,1,2,3,4$):
+\begin{center}
+\begin{tabular}{c|ccccc}
+$j=4$ & 8 & 28 & 94 & 289 & 838\\
+$j=3$ & 4 & 12 & 37 & 106 & 289\\
+$j=2$ & 2 & 5 & 14 & 37 & 94\\
+$j=1$ & 1 & 2 & 5 & 12 & 28\\
+$j=0$ & 1 & 1 & 2 & 4 & 8
+\end{tabular}
+\end{center}
+For example $f(1,1)=f(0,1)+f(1,0)=2$ and $f(2,1)=f(0,1)+f(1,1)+f(2,0)=1+2+2=5$. Hence the number of sequences is $f(4,4)=\boxed{838}$.
+
+(Check by another count: if the rightward moves form a composition of $4$ into $p$ parts and the upward moves a composition of $4$ into $q$ parts, there are $\dbinom{3}{p-1}\dbinom{3}{q-1}$ ways to choose the move lengths and $\dbinom{p+q}{p}$ ways to interleave the two kinds of moves; summing over $1\le p,q\le4$ also gives $838$.)

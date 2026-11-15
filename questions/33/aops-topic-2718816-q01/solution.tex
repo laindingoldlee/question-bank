@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2718816_calculate_the_bp_value
+% Stable identity: aops-topic-2718816-q01
+Tangent segments from a point to a circle are equal. If the incircle touches $AB$, $BC$, $CA$ at $F$, $P$, $E$, write $BF=BP=x$, $CP=CE=y$, $AE=AF=z$. Then $x+y=11$, $y+z=9$, $z+x=10$, so $x+y+z=15$ and $BP=x=15-9=\boxed{6}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(11,0);real x=70/11;pair A=(x,sqrt(100-x^2));
+pair I=(11*A+9*B+10*C)/30;real r=I.y;pair P=(I.x,0);
+draw(A--B--C--cycle,linewidth(0.8));draw(circle(I,r));dot(I);dot(P);draw(I--P,dashed);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$P$",P,S);label("$O$",I,NE,fontsize(8pt));
+label("$10$",(A+B)/2,NW,fontsize(8pt));label("$9$",(A+C)/2,NE,fontsize(8pt));
+\end{asy}

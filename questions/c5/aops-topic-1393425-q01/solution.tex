@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1393425_mathcounts_2013_state_target
+% Stable identity: aops-topic-1393425-q01
+The hypotenuse is $AB=\sqrt{24^2+7^2}=25$. The smallest angle is opposite the shortest side $BC=7$, so it is $\angle A$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair C=(0,0),A=(24,0),B=(0,7);
+pair D=A+dot(C-A,unit(B-A))*unit(B-A);
+pair Ep=D*(25/49);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--D,red+linewidth(0.9));
+draw(A--Ep,blue+dashed);
+draw(ra(C,A-C,B-C,0.9)); draw(ra(D,A-D,C-D,0.8));
+dot(A);dot(B);dot(C);dot(D);dot(Ep);
+label("$A$",A,SE);label("$B$",B,N);label("$C$",C,SW);label("$D$",D,NE);label("$E$",Ep,1.4*dir(25));
+label("$24$",(12,0),S);label("$7$",(0,3.5),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the right triangle $ACD$, the bisector of $\angle CAD=\angle A$ meets the opposite side $CD$ at $E$. We have $CD=\dfrac{AC\cdot BC}{AB}=\dfrac{168}{25}$ and $AD=\dfrac{AC^2}{AB}=\dfrac{576}{25}$ (from $\triangle ACD\sim\triangle ABC$). By the angle bisector theorem in triangle $ACD$,
+\[
+\dfrac{DE}{EC}=\dfrac{AD}{AC}=\dfrac{576}{25\cdot24}=\dfrac{24}{25},
+\]
+so
+\[
+ED=\dfrac{24}{49}\,CD=\dfrac{24}{49}\cdot\dfrac{168}{25}=\boxed{\dfrac{576}{175}} .
+\]

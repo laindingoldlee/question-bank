@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h2030753_geometry_problem
+% Stable identity: aops-topic-2030753-q01
+Let $\beta=\angle ABC$. Since $CA<CB$, we have $\beta<45^\circ$, so $\angle CAB=90^\circ-\beta>\beta$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), A=(0,3), B=(6,0);
+pair D=(27/12,0);
+pair F=A+dot(C-A,unit(B-A))*unit(B-A);
+pair Ept=2F-A;
+pair X=extension(A,D,C,Ept);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,blue); draw(C--Ept,red);
+draw(C+(0.3,0)--C+(0.3,0.3)--C+(0,0.3));
+pair u=unit(A-X), v=unit(C-X);
+draw(X+0.25u--X+0.25u+0.25v--X+0.25v);
+dot(A);dot(B);dot(C);dot(D);dot(Ept);dot(X);
+label("$A$",A,N); label("$B$",B,E); label("$C$",C,SW); label("$D$",D,S); label("$E$",Ept,NE); label("$X$",X,E);
+label("$\beta$",B+(-0.75,0.13)); label("$\beta$",A+0.75*unit(unit(D-A)+unit(B-A)));
+label("$2\beta$",C+0.75*dir(66),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The points exist on the sides.} $D$ is where the perpendicular bisector of $AB$ meets line $BC$; since $\angle DAB=\angle DBA=\beta<\angle CAB$, the ray $AD$ lies inside angle $CAB$, so $D$ is on segment $BC$. For $E$: $\angle CEA=\angle CAE=90^\circ-\beta$, so $\angle ACE=180^\circ-2(90^\circ-\beta)=2\beta<90^\circ=\angle ACB$; hence ray $CE$ lies inside angle $ACB$ and $E$ is on segment $AB$.
+
+\textbf{Angles.} Because $DA=DB$, triangle $DAB$ is isosceles and $\angle DAB=\beta$, so
+\[\angle CAD=\angle CAB-\angle DAB=(90^\circ-\beta)-\beta=90^\circ-2\beta.\]
+Because $CA=CE$, as computed above $\angle ACE=2\beta$.
+
+Let $X$ be the intersection of $AD$ and $CE$ (both segments lie inside the triangle, and $X$ lies inside angle $ACB$). In triangle $AXC$,
+\[
+\angle AXC=180^\circ-\angle XAC-\angle XCA=180^\circ-(90^\circ-2\beta)-2\beta=90^\circ.
+\]
+Hence $AD\perp CE$. $\blacksquare$

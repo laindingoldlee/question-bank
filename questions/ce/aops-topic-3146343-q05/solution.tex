@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h3146343_2022_lmt_fall_theme_round__part_2__world_cup_lexington_math_tournament
+% Stable identity: aops-topic-3146343-q05
+Let $E(a,b,u,v)$ be expected future goals when scores are $a,b$ and shot counts $u,v$. If $a>b+5-v$ or $b>a+5-u$, it is 0. At a five-shot tie, a sudden-death pair has expected 1 goal and is decisive with probability $\dfrac{1}{2}$, so its continuation expectation satisfies $T=1+\dfrac{1}{2}T$, yielding $T=2$. Otherwise average the score and miss outcomes for the next team, adding 1 in the scoring branch. The exact recurrence below evaluates every reachable state.
+\begin{verbatim}
+from fractions import Fraction as F
+from functools import lru_cache
+@lru_cache(None)
+def E(a,b,u,v):
+    if a>b+5-v or b>a+5-u:return F(0)
+    if u==v==5:return F(2) if a==b else F(0)
+    if u==v:return (1+E(a+1,b,u+1,v)+E(a,b,u+1,v))/2
+    return (1+E(a,b+1,u,v+1)+E(a,b,u,v+1))/2
+assert E(0,0,0,0)==F(321,64)
+\end{verbatim}
+Therefore $\dfrac{A}{B}=\dfrac{321}{64}$ and $\boxed{1000A+B=321064}$.

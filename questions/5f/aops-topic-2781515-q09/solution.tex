@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2781515_2021_mcamc_live_round_sets_14__middlesex_county_academy_math_competition
+% Stable identity: aops-topic-2781515-q09
+Both sides are even, so it suffices to count positive solutions and double. Necessarily $0<x\le7$ and the cosine must be positive. On $(0,\dfrac{1}{2})$ the difference $7\cos(\pi x)-x$ decreases from 7 to a negative value, so has one root. On each interval $(2k-\dfrac{1}{2},2k+\dfrac{1}{2})$ for $k=1,2,3$, the difference is negative at the endpoints and positive at the centre. Its second derivative is strictly negative throughout each interval; its derivative strictly decreases, so it has exactly two roots there. There are seven positive roots and no zero root, hence $\boxed{14}$ real roots.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+import graph;real f(real x){return 7*cos(pi*x);}draw(graph(f,0,7),blue);draw((0,0)--(7,7),red);draw((0,0)--(7.4,0),Arrow);label("$x$",(7.4,0),E);label("$7\cos(\pi x)$",(2,7),N);label("$y=x$",(7,7),NE);
+\end{asy}

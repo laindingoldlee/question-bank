@@ -1,0 +1,36 @@
+Write $B=(t,-2t-2)$ and $C=(u,-2)$. The centroid condition gives $A=(-t-u,2t+4)$. The distance condition is $|t-u-2|=2$, so $u=t$ or $u=t-4$.
+The equality $AB^2=AC^2$ simplifies to
+\[
+15t^2+24t-3u^2=0.
+\]
+If $u=t$, this becomes $12t(t+2)=0$. The root $t=0$ gives $B=C$ and is excluded; $t=-2$ gives
+\[
+\boxed{A=(4,0),\quad B=(-2,2),\quad C=(-2,-2)}.
+\]
+If $u=t-4$, it becomes $12(t^2+4t-4)=0$, so $t=-2\pm2\sqrt2$. Thus the other two solutions are
+\[
+\boxed{\begin{aligned}
+A&=(8\mp4\sqrt2,\ \pm4\sqrt2),\\
+B&=(-2\pm2\sqrt2,\ 2\mp4\sqrt2),\\
+C&=(-6\pm2\sqrt2,\ -2).
+\end{aligned}}
+\]
+Each gives distinct noncollinear vertices and satisfies all the original equations. There are therefore three triangles.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(4,0),B=(-2,2),C=(-2,-2);draw(A--B--C--cycle);draw((-3,0)--(5,0),gray);draw((0,-3)--(0,3),gray);dot((0,0));label("$O$",(0,0),(0,-1));label("$A$",A,(1,0));label("$B$",B,NW);label("$C$",C,SW);
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real s=1;pair A=(8-s*4sqrt(2),s*4sqrt(2)),B=(-2+s*2sqrt(2),2-s*4sqrt(2)),C=(-6+s*2sqrt(2),-2);draw(A--B--C--cycle);dot((0,0));label("$O$",(0,0),(0,1));label("$A$",A,(1,0));label("$B$",B,s>0?SE:NW);label("$C$",C,(-1,0));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real s=-1;pair A=(8-s*4sqrt(2),s*4sqrt(2)),B=(-2+s*2sqrt(2),2-s*4sqrt(2)),C=(-6+s*2sqrt(2),-2);draw(A--B--C--cycle);dot((0,0));label("$O$",(0,0),(0,1));label("$A$",A,(1,0));label("$B$",B,s>0?SE:NW);label("$C$",C,(-1,0));
+\end{asy}

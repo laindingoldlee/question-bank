@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1282775_geometry_power_of_a_point
+% Stable identity: aops-topic-1282775-q01
+Let $M$ be the midpoint of $O_1O_2$ and $d=O_1O_2$. By the median-length formula (or by vectors with origin $M$),
+\[
+XO_1^2+XO_2^2=2XM^2+\dfrac{d^2}{2}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O1=(0,0),O2=(4,0),M=(2,0); draw(circle(O1,1.2),blue); draw(circle(O2,0.8),blue); draw(circle(M,1.8),red+dashed);
+dot("$O_1$",O1,S); dot("$O_2$",O2,S); dot("$M$",M,S); pair X=M+1.8*dir(70); dot("$X$",X,N); draw(X--O1,gray); draw(X--O2,gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the condition $XO_1^2-r_1^2+XO_2^2-r_2^2=k$ becomes
+\[
+XM^2=\dfrac{k+r_1^2+r_2^2}{2}-\dfrac{d^2}{4}=:\rho .
+\]
+Hence the locus is
+\begin{itemize}
+\item the circle with centre $M$ (the midpoint of $O_1O_2$) and radius $\sqrt\rho$ if $\rho>0$;
+\item the single point $M$ if $\rho=0$;
+\item empty if $\rho<0$. $\blacksquare$
+\end{itemize}

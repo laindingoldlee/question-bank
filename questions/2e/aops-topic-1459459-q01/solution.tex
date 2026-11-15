@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1459459_algebra_manipulation_problem
+% Stable identity: aops-topic-1459459-q01
+\textbf{(a)} The function $f(x)=\sqrt[3]{x+20}+\sqrt[3]{x-20}$ is continuous and strictly increasing (a sum of two increasing functions), so it takes the value $\sqrt[3]{30}$ at most once. Now $27<30<64$ gives $3<\sqrt[3]{30}<4$, and
+\[
+f(19)=\sqrt[3]{39}-1<4-1=3<\sqrt[3]{30},\qquad f(20)=\sqrt[3]{40}>\sqrt[3]{30}.
+\]
+So there is exactly one solution, and $19<x<20$: $n=\boxed{19}$.
+
+\textbf{(b)} Let $u=\sqrt[3]{x+20}$, $v=\sqrt[3]{x-20}$ and $p=\sqrt[3]{30}$, so $u+v=p$. Cubing, $u^3+v^3+3uv(u+v)=p^3$, that is $2x+3p\,uv=30$ and
+\[
+uv=\dfrac{30-2x}{3p}.
+\]
+Cubing again, with $u^3v^3=x^2-400$ and $(3p)^3=27\cdot30=810$:
+\[
+810\left(x^2-400\right)=(30-2x)^3=27000-5400x+360x^2-8x^3,
+\]
+which simplifies to $8x^3+450x^2+5400x-351000=0$, i.e. $g(x)=4x^3+225x^2+2700x-175500=0$. So the solution of the equation is a root of $g$.
+
+Now $g'(x)=12x^2+450x+2700=6(2x+15)(x+30)$, so $g$ increases up to $x=-30$, decreases on $[-30,-7.5]$ and increases afterwards. Its local maximum is $g(-30)=-108000+202500-81000-175500=-162000<0$, so $g$ is negative for all $x\le-7.5$ and has exactly one real root, which is therefore the solution $x\approx19.97$. (The solution is not a nice closed form; by Cardano's formula it is an expression in nested cube roots.)

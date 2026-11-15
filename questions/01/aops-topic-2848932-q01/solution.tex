@@ -1,0 +1,5 @@
+% Source: https://artofproblemsolving.com/community/c3h2848932_magical_mystery_cure
+% Stable identity: aops-topic-2848932-q01
+Model the arrangement as a permutation in $S_5$. Each cast composes the current permutation with a uniformly random derangement. The transition probabilities $P(\sigma\to\tau)$ depend only on $\sigma^{-1}\tau$ (or $\tau\sigma^{-1}$), so every column of the transition matrix sums to $1$: the chain is doubly stochastic, and the uniform distribution on the $120$ permutations is stationary.
+
+The chain is irreducible, since derangements generate $S_5$ (for example, $5$-cycles and products of a $2$-cycle and a $3$-cycle, which are odd, are derangements, and they generate the whole group). By Kac's lemma, the expected return time to a state equals $\dfrac1{\pi(\text{state})}$, so the expected number of casts to return to the identity is $\boxed{120}$.

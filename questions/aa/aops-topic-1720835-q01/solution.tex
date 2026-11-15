@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1720835_2019_mathcounts_handbook_transformations_stretch_2
+% Stable identity: aops-topic-1720835-q01
+Translating $B(-3,4)$ left $3$ units and down $4$ units gives $C(-3-3,\,4-4)=(-6,0)$. (Not $(0,-6)$: ``left'' changes the $x$-coordinate and ``down'' changes the $y$-coordinate.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair A=(0,0),B=(-3,4),C=(-6,0);
+draw((-7,0)--(1.2,0),Arrow(TeXHead));draw((0,-1)--(0,5.2),Arrow(TeXHead));
+for(int i=-6;i<=0;++i) draw((i,-0.08)--(i,0.08),linewidth(0.4));
+for(int j=1;j<=4;++j) draw((-0.08,j)--(0.08,j),linewidth(0.4));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--(-3,0),dashed);
+dot(A);dot(B);dot(C);
+label("$A(0,0)$",A,SE);label("$B(-3,4)$",B,N);label("$C(-6,0)$",C,dir(-110)*1.3);
+label("$5$",(A+B)/2,NE);label("$5$",(B+C)/2,NW);label("$6$",(-3,0),1.6*S);
+label("$x$",(1.2,0),N);label("$y$",(0,5.2),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The side lengths are
+\[
+AB=\sqrt{3^2+4^2}=5,\qquad BC=\sqrt{3^2+4^2}=5,\qquad AC=6,
+\]
+since $C$ lies on the $x$-axis $6$ units from $A$. The perimeter is $5+5+6=\boxed{16}$.

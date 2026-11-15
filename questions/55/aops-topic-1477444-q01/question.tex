@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1477444_question_from_handbook
+% Stable identity: aops-topic-1477444-q01
+The net of a square pyramid, shown below, is a square with an equilateral triangle on each of its sides. The side length of the square can be expressed as $6x-6$ or as $2x+14$, for the same value of $x$. When the net is folded to form a square pyramid, its surface area can be expressed in simplest radical form as $a^2\left(b+\sqrt{c}\right)$, where $a$, $b$, $c$ are positive integers. What is the value of $a+b+c$?
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real s=3; real h=s*sqrt(3)/2;
+pair A=(0,0),B=(s,0),C=(s,s),D=(0,s);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--(s/2,-h)--B,linewidth(0.9)); draw(B--(s+h,s/2)--C,linewidth(0.9)); draw(C--(s/2,s+h)--D,linewidth(0.9)); draw(D--(-h,s/2)--A,linewidth(0.9));
+label("$6x-6$",(s/2,0),S); label(rotate(90)*"$2x+14$",(0,s/2),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

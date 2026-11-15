@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h3184463_2019_abmc_speed_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3184463-q24
+Let $E_n$ be the expected remaining time from integer $n$. Set $E_n=0$ for $n\ge10$. For $2\le n\le9$, conditioning gives $E_n=1+\dfrac{1}{2}E_{n+1}+\dfrac{1}{2}E_{n^2}$, evaluated backwards. At 0 and 1, squaring is a self-loop, giving $E_0=2+E_1$ and $E_1=2+E_2$. Exact rational evaluation follows:
+\begin{verbatim}
+from fractions import Fraction as F
+e={n:F(0) for n in range(10,82)}
+for n in range(9,1,-1):e[n]=1+(e[n+1]+e[n*n])/2
+e[1]=2+e[2]
+e[0]=2+e[1]
+assert e[0]==F(925,128)
+\end{verbatim}
+Thus the expectation is $\boxed{\dfrac{925}{128}\text{ minutes}}$.

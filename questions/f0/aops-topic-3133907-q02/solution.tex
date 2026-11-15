@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3133907_what_i_learned_in_middle_school
+% Stable identity: aops-topic-3133907-q02
+There are $\binom{100}{3}=161700$ total triples. The grid has $180$ adjacent cell pairs; each lies in $98$ triples. If a triple contains two adjacency edges, they share a middle cell. The number of such edge pairs is $4\binom22+32\binom32+64\binom42=484$, using corner, boundary and interior degrees. No three cells form a cycle of three adjacency edges, because the grid is bipartite. Inclusion--exclusion therefore gives $161700-180\cdot98+484=\boxed{144544}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=0;i<=10;++i){draw((i,0)--(i,10),gray);draw((0,i)--(10,i),gray);}pair[] dots={(1.5,1.5),(3.5,4.5),(7.5,7.5)};for(pair p:dots)dot(p);label("no shared-edge pair",(5,-.7));
+\end{asy}

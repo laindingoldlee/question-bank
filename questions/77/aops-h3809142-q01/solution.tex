@@ -1,0 +1,10 @@
+The vector space of polynomials $Ax^2+Bxy+Cy^2+Dx+Ey+F$ has dimension six. Evaluation at the five points defines a linear map into $\mathbb R^5$.
+This map has rank five: for each point $P_i$, partition the other four points into two pairs and multiply the equations of the two joining lines. The resulting quadratic vanishes at the other four points but not at $P_i$, because no joining line contains a third point. Its evaluation vector is a nonzero multiple of the $i$th coordinate vector.
+
+The kernel therefore has dimension one. A nonzero polynomial in it gives a conic through the five points, unique up to scalar. It cannot have degree at most one, since five such points cannot lie on a line. Nor can it factor into two real lines, whose union could contain at most four of the points. An imaginary or isolated-point degenerate conic also cannot contain five real points. Thus the conic is nondegenerate.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] P;for(real t:new real[]{0,60,130,215,290})P.push((2*Cos(t),Sin(t)));draw(xscale(2)*unitcircle,gray);draw(P[1]--P[2],blue);draw(P[3]--P[4],red);for(int i=0;i<5;++i){dot(P[i]);label("$P_"+string(i+1)+"$",P[i],unit(P[i]));}
+\end{asy}

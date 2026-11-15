@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2326721_quadratic_equations
+% Stable identity: aops-topic-2326721-q01
+The system is unchanged by the cyclic shift $x\to y\to z\to x$, so we may move any variable to any position.
+
+\textbf{The largest variable is at most $13$.} Let $M$ be the largest of $x,y,z$. Its equation has the form $M^2=3u+10v$ with $u,v\le M$, so $M^2\le13M$. Since $M^2\ge0$, this forces $M\ge0$ and then $M\le13$.
+
+\textbf{The smallest variable is $\le0$ or $\ge13$.} Let $m$ be the smallest. Its equation is $m^2=3u+10v$ with $u,v\ge m$, so $m^2\ge13m$, that is, $m(m-13)\ge0$: either $m\le0$ or $m\ge13$.
+
+\textbf{Case $m\ge13$.} Then all three variables are between $13$ and $13$, so $x=y=z=13$, and indeed $169=39+130$.
+
+\textbf{Case $m\le0$.} Shift cyclically so that $x=m$ is the smallest.
+\begin{itemize}
+\item If $x=0$, then $3y+10z=x^2=0$ with $y,z\ge0$, so $y=z=0$.
+\item If $x<0$: from $y^2=3z+10x\ge0$ we get $3z\ge-10x>0$, so $z>0$ and $0<-x\le\dfrac{3z}{10}$, hence $x^2\le\dfrac{9z^2}{100}$. From $z^2=3x+10y\ge0$ we get $10y\ge-3x>0$, so $y>0$. Then the first equation gives $x^2=3y+10z>10z$. Together, $10z<\dfrac{9z^2}{100}$, so $z>\dfrac{1000}{9}>13$, contradicting $z\le M\le13$.
+\end{itemize}
+
+So the only real solutions are $\boxed{(0,0,0)\text{ and }(13,13,13)}$.

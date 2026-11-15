@@ -1,0 +1,8 @@
+Every two-by-two block must have four different colours, since every pair of its cells shares an edge or a vertex. Partition the board into one hundred disjoint two-by-two blocks. Each contains exactly one red cell, so there are $\boxed{100}$ red cells.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pen[] c={lightred,lightblue,lightgreen,white};for(int x=0;x<4;++x)for(int y=0;y<4;++y)filldraw(box((x,y),(x+1,y+1)),c[2*(x%2)+y%2]);draw(box((0,0),(2,2)),black+linewidth(1.5));
+label("Bold border: one block of four distinct colours",(2,-.5));
+\end{asy}

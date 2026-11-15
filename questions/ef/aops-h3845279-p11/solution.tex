@@ -1,0 +1,11 @@
+Opposite vertices of a parallelogram have the same midpoint, so their drift sums are equal. Thus the missing drift is one of
+\[
+8+17-35=-10,\quad 8+35-17=26,\quad17+35-8=44.
+\]
+The largest candidate is attainable: the points $(4,4),(22,-5),(31,13),(13,22)$ form a square, because consecutive side vectors $(18,-9)$ and $(9,18)$ have equal lengths and zero dot product. Their drifts are $8,17,44,35$. Therefore the answer is $\boxed{44}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(4,4),B=(22,-5),C=(31,13),D=(13,22);draw(A--B--C--D--cycle);draw(A--C,dashed);draw(B--D,dashed);label("$8$",A,W);label("$17$",B,S);label("$44$",C,E);label("$35$",D,N);label("Labels are drifts",(17,-10));
+\end{asy}

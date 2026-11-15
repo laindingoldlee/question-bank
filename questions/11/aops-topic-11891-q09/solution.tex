@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h11891_toppers_random_nats_problems
+% Stable identity: aops-topic-11891-q09
+Any $3$ vertices of a cube form a triangle, because no three vertices of a cube lie on a line (every line meets the cube's vertex set in at most $2$ points). So the number of triangles is
+\[
+\dbinom{8}{3}=\boxed{56}.
+\]
+For a unit cube they come in three shapes:
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair d=(0.45,0.32);
+pair[] V(pair o){return new pair[]{o,o+(1,0),o+(1,0)+d,o+d,o+(0,1),o+(1,1),o+(1,1)+d,o+(0,1)+d};}
+void cub(pair o){pair[] v=V(o);
+  draw(v[0]--v[1]--v[5]--v[4]--cycle); draw(v[1]--v[2]--v[6]--v[5]); draw(v[4]--v[7]--v[6]);
+  draw(v[0]--v[3],dashed); draw(v[3]--v[2],dashed); draw(v[3]--v[7],dashed);}
+pair o1=(0,0),o2=(2.2,0),o3=(4.4,0);
+cub(o1);cub(o2);cub(o3);
+pair[] a=V(o1),b=V(o2),c=V(o3);
+filldraw(a[0]--a[1]--a[5]--cycle,lightred+opacity(0.5),red);
+filldraw(b[0]--b[1]--b[6]--cycle,lightblue+opacity(0.5),blue);
+filldraw(c[1]--c[4]--c[6]--cycle,palegreen+opacity(0.5),heavygreen);
+label("$1,1,\sqrt2$",(o1+(0.6,-0.1)),S,red); label("$1,\sqrt2,\sqrt3$",(o2+(0.6,-0.1)),S,blue); label("$\sqrt2,\sqrt2,\sqrt2$",(o3+(0.6,-0.1)),S,heavygreen);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+$24$ right isosceles triangles with sides $1,1,\sqrt2$ (four in each face), $24$ right triangles with sides $1,\sqrt2,\sqrt3$, and $8$ equilateral triangles with side $\sqrt2$; indeed $24+24+8=56$.

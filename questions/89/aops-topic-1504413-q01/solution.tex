@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1504413_triangle_altitude_problem_from_mathcounts_1990
+% Stable identity: aops-topic-1504413-q01
+If the area is $T$, the altitude to a side of length $s$ is $\dfrac{2T}{s}$. So the altitudes are inversely proportional to the sides: the shortest altitude is the one to the longest side ($80$), and the longest altitude is the one to the shortest side ($40$). In the sketch (vertices renamed $A,B,C$; the angle at $C$ is obtuse, since $40^2+60^2<80^2$, so the altitude from $B$ meets the extension of $AC$):
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(80,0);real x=(40^2-60^2+80^2)/(2*80);pair C=(x,sqrt(40^2-x^2));
+pair Fc=(C.x,0);pair Fb=A+dot(B-A,unit(C-A))*unit(C-A);
+void ra(pair F,pair U,pair V,real q){draw(F+q*unit(U-F)--F+q*unit(U-F)+q*unit(V-F)--F+q*unit(V-F));}
+draw(C--Fb,gray+dashed);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--Fc,blue+linewidth(1));draw(B--Fb,red+linewidth(1));
+ra(Fc,B,C,2.5);ra(Fb,A,B,2.5);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NW);
+label("$80$",(A+B)/2+(8,0),S);label("$40$",(A+C)/2,NW);label("$60$",(B+C)/2+(-4,-1),SW);
+label("$h_{80}$",(C+Fc)/2,W,blue);label("$h_{40}$",(B+Fb)/2,NE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+K=\dfrac{h_{80}}{h_{40}}=\dfrac{\dfrac{2T}{80}}{\dfrac{2T}{40}}=\dfrac{40}{80}=\boxed{\dfrac{1}{2}}.
+\]
+(For the record, Heron's formula gives $T=300\sqrt{15}$, so $h_{80}=\dfrac{15\sqrt{15}}{2}$ and $h_{40}=15\sqrt{15}$.)

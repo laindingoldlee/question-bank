@@ -1,0 +1,45 @@
+% Source: https://artofproblemsolving.com/community/c3h1445746_three_polygons
+% Stable identity: aops-topic-1445746-q01
+A polygon with $n$ sides has $d(n)=\dfrac{n(n-3)}{2}$ diagonals: each of the $n$ vertices is joined by a diagonal to the $n-3$ vertices other than itself and its two neighbours, and each diagonal is counted from both ends. For example, a hexagon has $\dfrac{6\cdot3}{2}=9$ diagonals:
+
+\begin{asy}
+usepackage("amsmath");
+size(3.6cm);
+defaultpen(fontsize(10pt));
+pair[] P={(0.0000,2.0000),(-1.7321,1.0000),(-1.7321,-1.0000),(-0.0000,-2.0000),(1.7321,-1.0000),(1.7321,1.0000)};
+draw(P[0]--P[2],blue);
+draw(P[0]--P[3],blue);
+draw(P[0]--P[4],blue);
+draw(P[1]--P[3],blue);
+draw(P[1]--P[4],blue);
+draw(P[1]--P[5],blue);
+draw(P[2]--P[4],blue);
+draw(P[2]--P[5],blue);
+draw(P[3]--P[5],blue);
+draw(P[0]--P[1]--P[2]--P[3]--P[4]--P[5]--cycle,linewidth(1));
+for(int i=0;i<6;++i) dot(P[i]);
+label("$6$ sides, $9$ diagonals",(0,-2.55));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The values of $d(n)$ are
+\[
+\begin{array}{c|cccccccccccc}
+n&3&4&5&6&7&8&9&10&11&12&13&14\\ \hline
+d(n)&0&2&5&9&14&20&27&35&44&54&65&77
+\end{array}
+\]
+and $d(15)=90$, $d(16)=104>97$. Let the three polygons have $a\le b\le c$ sides with $d(a)+d(b)+d(c)=97$. Since $3d(c)\ge97$, we need $d(c)\ge33$, so $c\ge10$; and $c\le15$. Go through the possible values of $c$:
+\begin{itemize}
+\item $c=15$: $d(a)+d(b)=7=2+5$, so $(a,b)=(4,5)$.
+\item $c=14$: $d(a)+d(b)=20=0+20$, so $(a,b)=(3,8)$ (the other splits $2+18$, $5+15$, $9+11$, $14+6$ use non-values).
+\item $c=13$: $d(a)+d(b)=32=5+27$, so $(a,b)=(5,9)$.
+\item $c=12$: $d(a)+d(b)=43$ with $d(b)\le54$; no two values from the table add to $43$.
+\item $c=11$: $d(a)+d(b)=53=9+44$, so $(a,b)=(6,11)$.
+\item $c=10$: $d(a)+d(b)=62=27+35$, so $(a,b)=(9,10)$.
+\end{itemize}
+(For each $c$ every pair of table values with the required sum and $b\le c$ was checked.) The triples are $(4,5,15)$, $(3,8,14)$, $(5,9,13)$, $(6,11,11)$ and $(9,10,10)$, so the total number of sides can be
+\[
+\boxed{24,\ 25,\ 27,\ 28\ \text{or}\ 29} .
+\]
+The data do not determine the total uniquely.

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1280432_congruent_circles
+% Stable identity: aops-topic-1280432-q01
+Let all coins have radius $r$. A coin touching the central coin has its centre at distance $2r$ from the central centre $O$. Two touching coins with centres $P,Q$ do not overlap, so $PQ\ge2r$; in triangle $OPQ$ with $OP=OQ=2r$ this means $\angle POQ\ge60^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real r=1; draw(circle((0,0),r),red); for(int k=0;k<6;++k){ pair c=2r*dir(60k); draw(circle(c,r),blue); draw((0,0)--c,gray+dashed);} dot((0,0));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The angles around $O$ between consecutive touching coins sum to $360^\circ$, so there are at most $\dfrac{360^\circ}{60^\circ}=6$. Six coins placed at $60^\circ$ intervals do fit, each touching its neighbours. The answer is $\boxed{6}$.

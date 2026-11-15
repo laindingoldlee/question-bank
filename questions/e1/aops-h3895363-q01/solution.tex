@@ -1,0 +1,8 @@
+Choose a sufficiently large rectangular period, so neighbour counting can be performed with opposite boundaries identified. If it contains $M$ mines and $S$ safe cells, count adjacent mine--safe pairs. Every safe cell contributes one, while every mine contributes at most eight, so $S\le8M$. Hence the density is $\dfrac{M}{M+S}\ge\dfrac{1}{9}$. Equality is attained by placing mines at cells whose two integer coordinates are both divisible by $3$. Each safe cell is adjacent to exactly one such mine; the $3\times3$ repeating tile contains one mine.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"s", "s", "s"}, {"s", "M", "s"}, {"s", "s", "s"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("repeat this tile in both directions",(1.5,-3.2));
+\end{asy}

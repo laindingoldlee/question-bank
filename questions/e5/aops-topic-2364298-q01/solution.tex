@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2364298_can_you_avoid_the_pitfall
+% Stable identity: aops-topic-2364298-q01
+Suppose you guess green for exactly $k$ doors and red for the other $100-k$.
+\begin{itemize}
+\item $k=0$: exactly the $99$ red doors are right, so you earn $\$99$ for certain.
+\item $k\ge1$: with probability $\dfrac{k}{100}$ the green object is behind one of your green doors; then $1+(100-k)=101-k$ guesses are right. Otherwise (probability $\dfrac{100-k}{100}$) only the $99-k$ red doors among your red guesses are right. The bonus is possible only when $k=1$. So the expected earnings are
+\[\dfrac{k(101-k)+(100-k)(99-k)}{100}+[k=1]\cdot\dfrac{97}{100}=99-\dfrac{98k}{100}+[k=1]\cdot\dfrac{97}{100}.\]
+For $k=1$ this is $99-0.98+0.97=98.99$, and for $k\ge2$ it is at most $99-1.96=97.04$.
+\end{itemize}
+A random choice of guesses is a mixture of these strategies, so its expected value is an average of the numbers above and cannot be larger. The best strategy is to $\boxed{\text{guess red for every door}}$, with expected (and guaranteed) earnings of $\boxed{\$99}$. The tempting single green guess loses one cent on average: it would pay off only if the bonus were more than $\$98$.

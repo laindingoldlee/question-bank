@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2796294_2017_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2796294-q02
+The total volume is $24\cdot5+9\cdot2=138$ cubic inches, shared over a total base area $24+9=33$ square inches at a common depth $h$. So $h=\dfrac{138}{33}=\dfrac{46}{11}=\boxed{4\dfrac{2}{11}}$ inches (below both heights of $6$ in).
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+void box(pair o,real w,real d,real h,real f){pair x=(w,0),y=0.45*(d,d)*0.7,z=(0,h);
+fill(o--o+x--o+x+(0,f)--o+(0,f)--cycle,lightgray);draw(o--o+x--o+x+z--o+z--cycle);draw(o+z--o+z+y--o+x+z+y--o+x+z);draw(o+x--o+x+y--o+x+y+z);}
+box((0,0),6,4,6,46/11);box((9,0),3,3,6,46/11);label("$A$",(3,-0.5),S);label("$B$",(10.5,-0.5),S);draw((13.5,0)--(13.5,46/11),Arrows);label("$h$",(13.5,2),E);
+\end{asy}

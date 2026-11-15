@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2567607_aops_open_mathcounts_year_2_problems
+% Stable identity: aops-topic-2567607-q03
+The denominator is $\dfrac{16\cdot17}2=136=8\cdot17$. Let $T=n+n^2+\cdots+n^{16}$; we need $8\mid T$ and $17\mid T$.
+
+\textbf{Modulo $17$.} If $17\mid n$, then $17\mid T$. If $n\equiv1$, then $T\equiv16\not\equiv0$. Otherwise $n-1$ is invertible modulo $17$ and $(n-1)T=n^{17}-n\equiv0$ by Fermat's little theorem, so $17\mid T$. So the condition is $n\not\equiv1\pmod{17}$: $16$ of the $17$ residues.
+
+\textbf{Modulo $8$.} If $n$ is odd, $n^2\equiv1\pmod8$, so the even powers are $\equiv1$ and the odd powers are $\equiv n$, and $T\equiv8+8n\equiv0$. If $n\equiv0\pmod8$, $T\equiv0$. If $n\equiv4\pmod8$, every power from $n^2$ on is divisible by $16$, so $T\equiv4$. If $n\equiv2$ or $6\pmod8$, then $n^2\equiv4$ and the higher powers are $\equiv0$, so $T\equiv n+4\equiv6$ or $2$. So the condition holds for $5$ of the $8$ residues.
+
+By the Chinese remainder theorem, the residues modulo $136$ correspond to pairs of residues modulo $8$ and $17$, so $5\cdot16=80$ of the $136$ residues work. Since $17000=136\cdot125$, the numbers $1,\dots,17000$ cover each residue modulo $136$ exactly $125$ times, and the probability is
+\[\dfrac{80}{136}=\boxed{\dfrac{10}{17}}.\]

@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1883620_probability_and_geo
+% Stable identity: aops-topic-1883620-q01
+Place the square at $[0,2]\times[0,2]$ and let the point be $P=(x,y)$, uniformly distributed in the square. Each triangle has a side of the square (length $2$) as base, and its height is the distance from $P$ to that side, so the four areas are
+\[
+y,\quad 2-y,\quad x,\quad 2-x
+\]
+(bottom, top, left and right triangles).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(2,0),C=(2,2),D=(0,2),P=(1.25,0.8);
+real t=2/3;
+pen sh=rgb(0.85,0.92,1);
+fill(A--(t,0)--(0,t)--cycle,sh);fill(B--(2-t,0)--(2,t)--cycle,sh);
+fill(C--(2,2-t)--(2-t,2)--cycle,sh);fill(D--(t,2)--(0,2-t)--cycle,sh);
+draw((t,0)--(0,t),blue);draw((2-t,0)--(2,t),blue);draw((2,2-t)--(2-t,2),blue);draw((t,2)--(0,2-t),blue);
+draw(A--B--C--D--cycle,linewidth(1));
+draw(P--A);draw(P--B);draw(P--C);draw(P--D);
+draw(P--(1.25,0),dashed);draw(P--(0,0.8),dashed);
+dot(P);label("$P$",P,N);
+label("$x$",(0.62,0.8),N,fontsize(9pt));label("$y$",(1.25,0.4),E,fontsize(9pt));
+label("$2$",(0,1),W);
+label("$\dfrac{2}{3}$",(t/2,0),S,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Two opposite triangles always have total area $2$. Two adjacent triangles have total area $x+y$, $(2-x)+y$, $(2-x)+(2-y)$ or $x+(2-y)$, i.e.\ the sum of the distances from $P$ to two adjacent sides. So the condition holds exactly when $P$ lies in one of the four corner triangles cut off by the lines $x+y=\dfrac{2}{3}$, etc. (shaded). Each is a right isosceles triangle with legs $\dfrac{2}{3}$ and area $\dfrac{2}{9}$, and they do not overlap. Hence the probability is
+\[
+\dfrac{4\cdot\dfrac{2}{9}}{4}=\boxed{\dfrac{2}{9}}.
+\]

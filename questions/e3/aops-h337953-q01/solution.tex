@@ -1,0 +1,7 @@
+Use $x=5X$, $y=3Y$. The ellipse becomes the unit circle, and the tangent slopes become $15$ and $-\dfrac{1}{15}$, which are perpendicular. The transformed parallelogram is therefore a square circumscribed about the unit circle, of side $2$ and area $4$. The coordinate scaling multiplies area by $5\cdot3=15$. Hence the required area is $\boxed{60}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;real U=3*sqrt(226),V=sqrt(226)/5;pair f(real u,real v){real x=(v-u)/(9+1/25.0);return (x,u+9*x);}pair A=f(U,V),B=f(-U,V),C=f(-U,-V),D=f(U,-V);draw(A--B--C--D--cycle);draw(graph(new pair(real t){return (5*cos(t),3*sin(t));},0,2*pi),blue);label("$m=9$",(A+D)/2,W);label("$m=-\dfrac{1}{25}$",(A+B)/2,N);dot((0,0));
+\end{asy}

@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1735595_trouble_with_math_problem
+% Stable identity: aops-topic-1735595-q01
+Both points lie above the line $y=x$. Reflect the start $(-1,4)$ in the line $y=x$ to get $(4,-1)$. For any point $X$ on the line, the distance from $(-1,4)$ to $X$ equals the distance from $(4,-1)$ to $X$, so the route length is at least the straight distance from $(4,-1)$ to $(12,21)$, with equality when $X$ lies on that segment:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair P=(-1,4),Q=(12,21),P2=(4,-1),X=(48/7,48/7);
+draw((-2.5,0)--(13,0),gray(0.5),Arrow(TeXHead));draw((0,-2.5)--(0,22),gray(0.5),Arrow(TeXHead));
+label("$x$",(13,0),S,gray(0.3));label("$y$",(0,22),W,gray(0.3));
+draw((-2,-2)--(13,13),blue+linewidth(0.9));label("$y=x$",(13,13),E,blue);
+draw(P--X--Q,linewidth(0.9));draw(X--P2,dashed);draw(P--P2,dotted);
+dot(P);dot(Q);dot(P2);dot(X);
+label("$(-1,4)$",P,W);label("$(12,21)$",Q,E);label("$(4,-1)$",P2,E);label("$X$",X,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The shortest route has length $\sqrt{(12-4)^2+(21+1)^2}=\sqrt{64+484}=\sqrt{548}=\boxed{2\sqrt{137}}\approx23.4$.

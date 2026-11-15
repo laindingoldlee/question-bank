@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2635426_trapezoid_proof_problem
+% Stable identity: aops-topic-2635426-q01
+The condition says $\sin(A+B)=1$. Since $0^\circ<A+B<360^\circ$, this forces $A+B=90^\circ$.
+
+Because $AB>CD$ and $A+B<180^\circ$, the legs $AD$ and $BC$ extended beyond $D$ and $C$ meet at a point $P$, and in triangle $PAB$
+\[\angle APB=180^\circ-(A+B)=90^\circ.\]
+Since $DC\parallel AB$, triangle $PDC$ is the image of triangle $PAB$ under the dilation centred at $P$ with ratio $\dfrac{CD}{AB}$. This dilation maps the midpoint $M$ of $AB$ to the midpoint $N$ of $DC$, so $P$, $N$, $M$ are collinear with $N$ between $P$ and $M$.
+
+The midpoint of the hypotenuse of a right triangle is equidistant from the three vertices, so in the right triangles $PAB$ and $PDC$,
+\[PM=\dfrac{AB}{2},\qquad PN=\dfrac{CD}{2}.\]
+Therefore $MN=PM-PN=\dfrac{AB-CD}{2}$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(10,0),P=6.4279*dir(50);
+pair D=P+0.4*(A-P),C=P+0.4*(B-P),M=(A+B)/2,Nm=(D+C)/2;
+draw(A--B--C--D--cycle,linewidth(0.8));draw(D--P--C,dashed);draw(P--M,dashed);
+pair u=unit(A-P),v=unit(B-P);draw(P+0.4u--P+0.4u+0.4v--P+0.4v);
+dot(M);dot(Nm);dot(P);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$P$",P,N);label("$M$",M,S);label("$N$",Nm,dir(-35));
+\end{asy}

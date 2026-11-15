@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2670013_a_proving_problem_part_24
+% Stable identity: aops-topic-2670013-q01
+Every digit except the last is followed by a digit at most $9$, so it satisfies $3a_i-1\le9$, i.e. $a_i\le3$.
+\begin{itemize}
+\item One digit: $1,\dots,9$, giving $9$ numbers.
+\item Two digits: $a_1=1$ needs $a_2\ge2$ ($8$ choices); $a_1=2$ needs $a_2\ge5$ ($5$); $a_1=3$ needs $a_2\ge8$ ($2$). Total $15$.
+\item Three digits: $a_2\le3$ and $a_2\ge3a_1-1$ force $a_1=1$, $a_2\in\{2,3\}$. Then $a_2=2$ needs $a_3\ge5$ ($5$ choices) and $a_2=3$ needs $a_3\ge8$ ($2$). Total $7$.
+\item Four or more digits: $a_1\ge1$ forces $a_2\ge2$ and then $a_3\ge5>3$, but $a_3$ is not the last digit. Impossible.
+\end{itemize}
+So there are $9+15+7=\boxed{31}$ very uphill numbers.

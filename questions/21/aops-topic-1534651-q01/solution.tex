@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1534651_proof_number_theory
+% Stable identity: aops-topic-1534651-q01
+Let $N=\overline{abcde}$, so $10000\le N\le99999$, and let $S$ be the sum of the five powers. The possible values of $x^x$ for a digit $x$ are
+\[
+0,1\mapsto1,\quad 2\mapsto4,\quad 3\mapsto27,\quad 4\mapsto256,\quad 5\mapsto3125,\quad 6\mapsto46656,\quad 7\mapsto823543,\ \dots
+\]
+Since $7^7>99999$, every digit is at most $6$. Let $k$ be the number of digits equal to $6$.
+
+\textbf{$k\ge2$.} Then $S\ge2\cdot46656+3=93315$, so $N\ge93315$ and $a=9$, contradicting $a\le6$.
+
+\textbf{$k=0$.} Then $S\le5\cdot3125=15625$, so $a=1$; then $S\le1+4\cdot3125=12501$, so $N\le12501$ and $b\le2$, $b^b\le4$; but then $S\le1+4+3\cdot3125=9380<10000$, a contradiction.
+
+\textbf{$k=1$.} Now $46660\le S\le46656+4\cdot3125=59156$, so $a\in\{4,5\}$, and the digit $6$ is one of $b,c,d,e$.
+
+\emph{$a=4$.} Then $S\ge256+46656+3=46915$, so $N\ge46915$, which forces $b=6$. Then $c,d,e\le5$ and $N\le46555<46915$, a contradiction.
+
+\emph{$a=5$.} Then $S=3125+46656+(\text{the three other terms})=49781+(\text{three terms from }\{1,4,27,256,3125\})$.
+\begin{itemize}
+\item If $b=6$: $N=\overline{56cde}\in[56000,56555]$, so $c^c+d^d+e^e\ge6219$. That needs two of $c,d,e$ equal to $5$, and then $S\in\{56032,56035,56058,56287\}$ (third digit $0$ or $1$, $2$, $3$, $4$). None of these has two digits $5$ among its last three digits, a contradiction.
+\item If $b\ne6$: the $6$ is among $c,d,e$; let $y,z$ be the terms of the other two of $c,d,e$. Then $S=49781+b^b+y+z$ and $50000+1000b\le N<51000+1000b$.
+\begin{itemize}
+\item $b=5$: $y+z\in[2094,3093]$; but a sum of two terms is at most $512$ or at least $3126$.
+\item $b=4$: $y+z\in[3963,4962]$; the sums with a $3125$ are $3126$ to $3381$, or $6250$. Impossible.
+\item $b=3$: $y+z\in[3192,4191]$ forces $y+z=3125+256$, so $\{c,d,e\}=\{4,5,6\}$; but $S=53189$ does not end in a permutation of $4,5,6$.
+\item $b=2$: $y+z\in[2215,3214]$ gives $S\in\{52911,52914,52937\}$, none of which contains the digit $6$.
+\item $b\in\{0,1\}$: $y+z\in[218,2217]$ gives $y+z\in\{257,260,283,512\}$, so a $4$ is among $c,d,e$, and $S\in\{50039,50042,50065,50294\}$. None of these has both a digit $4$ and a digit $6$ among its last three digits.
+\end{itemize}
+\end{itemize}
+Every case leads to a contradiction, so no such five-digit number exists. $\blacksquare$

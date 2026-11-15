@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1284134_halp_on_a_question
+% Stable identity: aops-topic-1284134-q01
+Extend $CA$ beyond $A$ to a point $D$ with $AD=AB=c$, so $CD=b+c$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),C=(4,0); real Bang=25; pair B=extension(A,A+dir(2*Bang),C,C+dir(180-Bang));
+pair Dp=A-(abs(B-A),0);
+draw(A--B--C--cycle); draw(Dp--A,dashed); draw(Dp--B,blue);
+label("$A$",A,S); label("$B$",B,N); label("$C$",C,SE); label("$D$",Dp,SW);
+label("$c$",(Dp+A)/2,S); label("$b$",(A+C)/2,S); label("$a$",(B+C)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangle $ABD$ is isosceles, and its exterior angle at $A$ is $\angle BAC$, so
+\[
+\angle ADB=\angle ABD=\dfrac{\angle BAC}{2}=\angle ABC .
+\]
+Triangles $CDB$ and $CBA$ share the angle at $C$, and $\angle CDB=\angle CBA$. So they are similar, with $D\leftrightarrow B$, $B\leftrightarrow A$, $C\leftrightarrow C$. Hence
+\[
+\dfrac{CD}{CB}=\dfrac{CB}{CA}\implies a^2=CB^2=CA\cdot CD=b(b+c)=b^2+bc. \qquad\blacksquare
+\]

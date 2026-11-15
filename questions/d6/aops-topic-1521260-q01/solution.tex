@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1521260_hard_cryptarithm
+% Stable identity: aops-topic-1521260-q01
+Let $c_1,c_2,c_3$ be the carries out of the units, tens and hundreds columns.
+
+\textbf{$M$, $O$, $S$.} The sum of two four-digit numbers is less than $20000$, so $M=1$. In the thousands column $S+1+c_3=10+O$, so $S\ge8$ and $O=S+c_3-9\le1$; since $O\ne M=1$, $O=0$ and $S+c_3=9$.
+
+\textbf{$c_3=0$.} The hundreds column says $E+0+c_2=N+10c_3$. If $c_3=1$, then $E+c_2=N+10\ge10$ forces $E=9$, $c_2=1$, $N=0=O$, impossible. So $c_3=0$, $S=9$, and $E+c_2=N$; since $N\ne E$, $c_2=1$ and $N=E+1$.
+
+\textbf{$R$.} The tens column says $N+R+c_1=E+10$, i.e.\ $E+1+R+c_1=E+10$, so $R=9-c_1$. As $R\ne S=9$, $c_1=1$ and $R=8$.
+
+\textbf{$D$, $E$, $Y$.} The units column says $D+E=Y+10$. The letters $D,E,N,Y$ use digits from $\{2,3,4,5,6,7\}$ (the digits $0,1,8,9$ are taken), with $N=E+1$. Since $Y\ge2$, $D+E\ge12$ with $D\le7$, so $E\ge5$; $E=6$ would give $N=7$ and then $D\le5$, too small. So $E=5$, $N=6$, and $D\ge7$ gives $D=7$, $Y=2$.
+
+The unique solution is
+\[
+S=9,\ E=5,\ N=6,\ D=7,\ M=1,\ O=0,\ R=8,\ Y=2:\qquad 9567+1085=\boxed{10652}.
+\]

@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h3157002_2017_lmt_individual_round__lexington_mathematical_tournament
+% Stable identity: aops-topic-3157002-q24
+Process rows in order, recording the six current column totals. For each row choose its two one-columns, rejecting any choice that would raise a total above 2. This recurrence counts every matrix exactly once; after six rows retain only the state $(2,2,2,2,2,2)$.
+\begin{verbatim}
+from collections import defaultdict
+from itertools import combinations
+D={(0,)*6:1}
+for row in range(6):
+ E=defaultdict(int)
+ for state,count in D.items():
+  for i,j in combinations(range(6),2):
+   if state[i]<2 and state[j]<2:
+    t=list(state);t[i]+=1;t[j]+=1
+    E[tuple(t)]+=count
+ D=E
+assert D[(2,)*6]==67950
+\end{verbatim}
+The answer is $\boxed{67950}$.

@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2156721_pie_practice
+% Stable identity: aops-topic-2156721-q07
+\textbf{(a)} For example, with $x=y=z=1$, the union has $1$ element if $A=B=C=\{1\}$ and $3$ elements if $A=\{1\}$, $B=\{2\}$, $C=\{3\}$.
+
+\textbf{(b)} We show that every element of $A\cup B\cup C$ is counted exactly once by the right-hand side (elements outside the union are not counted at all). Take an element in exactly $k$ of the three sets, where $k\in\{1,2,3\}$.
+\begin{itemize}
+\item In $x+y+z$ it is counted $k$ times.
+\item In $|A\cap B|+|A\cap C|+|B\cap C|$ it is counted once for each pair of sets containing it: $\dbinom k2$ times.
+\item In $|A\cap B\cap C|$ it is counted $\dbinom k3$ times.
+\end{itemize}
+So it contributes $k-\dbinom k2+\dbinom k3$, which is $1-0+0=1$ for $k=1$, $2-1+0=1$ for $k=2$ and $3-3+1=1$ for $k=3$. Hence the right-hand side equals $|A\cup B\cup C|$. $\blacksquare$

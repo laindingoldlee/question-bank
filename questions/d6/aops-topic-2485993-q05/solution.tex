@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2485993_some_problems
+% Stable identity: aops-topic-2485993-q05
+Let the frog be at $(x,y)$ and put $u=x+y$, $v=x-y$. The four jumps change $(u,v)$ as follows:
+\[\text{right}:(+1,+1),\quad\text{left}:(-1,-1),\quad\text{up}:(+1,-1),\quad\text{down}:(-1,+1).\]
+These are the four sign pairs, each with probability $\dfrac14=\dfrac12\cdot\dfrac12$. So in each jump the change of $u$ and the change of $v$ are independent, each $+1$ or $-1$ with probability $\dfrac12$, and over the $60$ jumps $u$ and $v$ perform two independent walks of $\pm1$ steps.
+
+The frog is at the origin exactly when $u=v=0$. A $\pm1$ walk is at $0$ after $60$ steps when exactly $30$ of its steps are $+1$, which has probability $\dbinom{60}{30}\cdot\dfrac{1}{2^{60}}$. By independence the answer is
+\[\boxed{\dbinom{60}{30}^2\cdot\dfrac{1}{4^{60}}}\approx0.0105.\]
+
+(Equivalently, counting the paths with $k$ right, $k$ left, $30-k$ up and $30-k$ down jumps gives $\displaystyle\sum_{k=0}^{30}\dfrac{60!}{k!^2(30-k)!^2}=\dbinom{60}{30}\sum_{k=0}^{30}\dbinom{30}{k}^2=\dbinom{60}{30}^2$ by Vandermonde's identity.)

@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2388968_christmas1000th_post_problems
+% Stable identity: aops-topic-2388968-q32
+Work in the vertical plane, with $O$ at the origin, east to the right and up positive: $H=(10,0)$ and $K=(-5,-20)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), H=(10,0), C=(-5,-20);
+draw((-9,0)--(13,0),linewidth(0.8));
+label("ground",(-8,0),N,fontsize(8pt));
+draw(H--C,brown+linewidth(1)); draw(O--C,red+dashed);
+draw(C--(-5,0),dotted);
+dot(O);dot(H);dot(C);
+label("$O$",O,N); label("$H$",H,N); label("$K$",C,SW);
+label("$10$",(5,0),N,fontsize(8pt)); label("$5$",(-2.5,0),N,fontsize(8pt)); label("$20$",(-5,-10),W,fontsize(8pt));
+draw(arc(H,2.2,180,degrees(C-H)),gray); label("$53.1^\circ$",H+3.4*dir(200),fontsize(7pt));
+draw(arc(O,2.4,180,degrees(C-O)),gray); label("$76.0^\circ$",O+3.6*dir(220),fontsize(7pt));
+\end{asy}
+
+\textbf{(a)} From $H$ to $K$ the tunnel goes $15$ m west and $20$ m down, so its angle $\theta$ below the horizontal satisfies $\tan\theta=\dfrac{20}{15}=\dfrac43$, and $\theta\approx\boxed{53.1^\circ}$ (this is the angle $OHK$).
+
+\textbf{(b)} From $O$ to $K$ the robot goes $5$ m west and $20$ m down, a distance of
+\[\sqrt{5^2+20^2}=\sqrt{425}=\boxed{5\sqrt{17}\text{ m}}\approx20.6\text{ m},\]
+heading west at an angle $\varphi$ below the horizontal with $\tan\varphi=\dfrac{20}{5}=4$, i.e. $\varphi\approx\boxed{76.0^\circ}$.

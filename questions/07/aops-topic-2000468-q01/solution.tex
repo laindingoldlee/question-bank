@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2000468_help_me_pls_
+% Stable identity: aops-topic-2000468-q01
+Let $f(x)=x^3-3x$, so $a_{k+1}=f(a_k)$ (indices mod $100$).
+
+\textbf{All $|a_k|\le2$.} If $|x|>2$ then $x^2-3>1$, so $|f(x)|=|x|\,|x^2-3|>|x|>2$. If some $|a_k|>2$, then going once around the cycle, $|a_k|<|a_{k+1}|<\dots<|a_k|$, a contradiction.
+
+\textbf{Trigonometric substitution.} Write $a_1=2\cos\theta$ with $0\le\theta\le\pi$. Since $\cos3t=4\cos^3t-3\cos t$, we get $f(2\cos t)=8\cos^3t-6\cos t=2\cos3t$. Hence $a_k=2\cos(3^{k-1}\theta)$ and the last equation becomes, with $M=3^{100}$,
+\[
+\cos(M\theta)=\cos\theta\iff M\theta=\pm\theta+2\pi j\iff \theta=\dfrac{2\pi j}{M-1}\ \text{ or }\ \theta=\dfrac{2\pi j}{M+1}
+\]
+for integers $j$. Conversely each such $\theta$ gives a solution, and the whole solution is determined by $a_1$.
+
+\textbf{Counting.} For $\theta\in[0,\pi]$, the first family gives $j=0,1,\dots,\dfrac{M-1}{2}$, i.e.\ $\dfrac{M+1}{2}$ values; the second gives $j=0,1,\dots,\dfrac{M+1}{2}$, i.e.\ $\dfrac{M+3}{2}$ values. A common value $\dfrac{2\pi j}{M-1}=\dfrac{2\pi j'}{M+1}$ means $j(M+1)=j'(M-1)$; since $\gcd(M-1,M+1)=2$, $\dfrac{M-1}{2}$ divides $j$, so the only common values are $\theta=0$ and $\theta=\pi$. Distinct $\theta\in[0,\pi]$ give distinct $a_1=2\cos\theta$, so the number of solutions is
+\[
+\dfrac{M+1}{2}+\dfrac{M+3}{2}-2=M .
+\]
+\textbf{Answer.} The solutions are $a_k=2\cos(3^{k-1}\theta)$ for $k=1,\dots,100$, where $\theta=\dfrac{2\pi j}{3^{100}-1}$ or $\theta=\dfrac{2\pi j}{3^{100}+1}$ for an integer $j$; there are exactly $\boxed{3^{100}}$ real solutions. (This is the most possible: $a_1$ is a root of $f^{(100)}(x)=x$, a polynomial equation of degree $3^{100}$.)

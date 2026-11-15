@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1272889_coordinate_reflection_problem
+% Stable identity: aops-topic-1272889-q01
+The line is $x-2y-\dfrac{7}{2}=0$, with normal vector $(1,-2)$. The image is $P-2t(1,-2)$, where $t=\dfrac{5-14-\dfrac{7}{2}}{1^2+2^2}=-\dfrac{5}{2}$ and the foot of the perpendicular is $P-t(1,-2)=\left(\dfrac{15}{2},2\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw((-1,-2.25)--(12,4.25),gray); pair P=(5,7),Q=(10,-3),Fp=(7.5,2); draw(P--Q,red+dashed); dot("$(5,7)$",P,N); dot("$(10,-3)$",Q,S); dot(Fp); label("$y=\dfrac{1}{2}x-\dfrac{7}{4}$",(12,4.25),E,gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the image is $(5,7)+5(1,-2)=\boxed{(10,-3)}$. (Check: the midpoint $\left(\dfrac{15}{2},2\right)$ lies on the line, and the segment has slope $-2$, perpendicular to the line's slope $\dfrac{1}{2}$.)

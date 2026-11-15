@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2918049_argentina_nmo_round_2_intercollegiate_geo__level_1_1995__2005
+% Stable identity: aops-topic-2918049-q03
+$\angle A=105^\circ$, so each third is $35^\circ$. In triangle $ABP$, $\angle APB=180^\circ-37^\circ-35^\circ=108^\circ$, so the line $AP$ makes an angle of $72^\circ$ with $BC$, namely $\angle APC=72^\circ$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(5,0);pair A=extension(B,B+dir(37),C,C+dir(142));pair P=extension(A,A+(rotate(35)*(B-A)),B,C);pair Q=extension(A,A+(rotate(70)*(B-A)),B,C);
+pair D=extension(B,B+(A-P),C,C+(A-Q));draw(A--B--C--cycle);draw(A--P);draw(A--Q);draw(B--D,dashed);draw(C--D,dashed);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$P$",P,S);label("$Q$",Q,S);label("$D$",D,N);
+\end{asy}
+
+Since $BD\parallel PA$ and $D$ lies on the same side of $BC$ as $A$, the angle $\angle DBC$ equals the corresponding angle $\angle APC=\boxed{72^\circ}$ (checked by coordinates).

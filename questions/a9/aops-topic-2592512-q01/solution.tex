@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2592512_eulers_totent_function_inquiry
+% Stable identity: aops-topic-2592512-q01
+\textbf{(a)} $12$ has $d(12)=6$ divisors, so the formula gives $12-6+1=7$. But the numbers from $1$ to $12$ that are relatively prime to $12$ are $1,5,7,11$, so $\varphi(12)=4$.
+
+\textbf{(b)} A number can share a factor with $n$ without dividing $n$: for example $\gcd(10,12)=2$, but $10\nmid12$. The numbers not relatively prime to $n$ are the multiples (up to $n$) of the prime factors of $n$, not just its divisors. (The formula is correct only when these coincide, which happens just for $n=1$, $n=4$ and $n$ prime: if $n=pm$ is composite, with $p$ its smallest prime factor and $m\ge3$, then $p(m-1)$ shares the factor $p$ with $n$ but does not divide $n$, since $m-1\nmid m$; and $m=2$ forces $n=4$.)
+
+\textbf{(c)} Count the numbers that share a prime factor with $n$ by inclusion--exclusion. For $n=12=2^2\cdot3$, the multiples of $2$ or $3$ up to $12$ number $6+4-2=8$, so $\varphi(12)=12-8=4$. For $n=100=2^2\cdot5^2$, the multiples of $2$ or $5$ up to $100$ number $50+20-10=60$, so $\varphi(100)=40$. In general $\varphi(n)=n\prod_{p\mid n}\left(1-\dfrac1p\right)$, and
+\[\boxed{\varphi(12)=4,\qquad\varphi(100)=40}.\]

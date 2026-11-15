@@ -1,0 +1,9 @@
+For $n=19$, consecutive occurrences of any one color must be separated by at least five cyclic positions. Each color occurs at most $\left\lfloor\dfrac{19}{5}\right\rfloor=3$ times, so six colors cover at most 18 vertices. Thus 19 is impossible.
+
+For a construction, concatenate blocks $12345$ and $123456$ around the polygon. Successive occurrences of any color are at least five positions apart, including across the closing boundary. The five integers $20,21,22,23,24$ are respectively $4\cdot5,3\cdot5+6,2\cdot5+2\cdot6,5+3\cdot6,4\cdot6$. Adding blocks of length 5 gives every integer at least 20. Hence the largest impossible value is $\boxed{19}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+int n=20;pen[] col={red,blue,green,purple,orange};for(int i=0;i<n;++i){pair P=dir(90-360*i/n);draw(P--dir(90-360*(i+1)/n),gray);dot(P,col[i%5]+4);label(string(i%5+1),1.16P);}label("$20=5+5+5+5$",(0,0));
+\end{asy}

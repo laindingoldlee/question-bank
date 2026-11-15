@@ -1,0 +1,11 @@
+The other vertices are $B=(v,u)$, $C=(-v,u)$, $D=(-v,-u)$, $E=(v,-u)$. The rectangle $BCDE$ has area $4uv$. Triangle $ABE$ has vertical base $BE=2u$ and horizontal height $u-v$, so its area is $u(u-v)$. The pentagon is their union, giving
+\[
+451=u^2+3uv=u(u+3v).
+\]
+Now $451=11\cdot41$. Since $u+3v>u>v>0$, the possible ordered factor pairs are $(1,451)$ and $(11,41)$. The first gives $v=150$, violating $v<u$. The second gives $u=11,v=10$. Thus $\boxed{u+v=21}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real u=11,v=10;pair A=(u,v),B=(v,u),C=(-v,u),D=(-v,-u),E=(v,-u);draw(A--B--C--D--E--cycle);draw(B--E,dashed);label("$A=(u,v)$",A,(1,0));label("$B=(v,u)$",B,(0,1));label("$C$",C,(-1,1));label("$D$",D,(-1,-1));label("$E$",E,(1,-1));
+\end{asy}

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1853695_geometry_question
+% Stable identity: aops-topic-1853695-q01
+Let the legs be $a,b$ and the hypotenuse $c$. By Pythagoras $a^2+b^2=c^2$, so the sum of the squares is $2c^2=1682$, giving $c^2=841$ and $c=29$. Then $a+b=70-29=41$ and $a^2+b^2=841$, so
+\[
+2ab=(a+b)^2-(a^2+b^2)=1681-841=840,\qquad ab=420 .
+\]
+So $a$ and $b$ are the roots of $t^2-41t+420=0$, i.e.\ $(t-20)(t-21)=0$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),A=(21,0),B=(0,20);
+draw(A--B--C--cycle,linewidth(1));
+draw((1.4,0)--(1.4,1.4)--(0,1.4),linewidth(0.5));
+label("$C$",C,SW);label("$A$",A,SE);label("$B$",B,NW);
+label("$21$",(A+C)/2,S);label("$20$",(B+C)/2,W);label("$29$",(A+B)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The sides are $\boxed{20,\ 21\text{ and }29}$. Check: $20+21+29=70$ and $20^2+21^2+29^2=400+441+841=1682$.

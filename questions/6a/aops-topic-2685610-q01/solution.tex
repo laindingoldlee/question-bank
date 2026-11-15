@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2685610_counting_problem
+% Stable identity: aops-topic-2685610-q01
+\textbf{(a)} Number the people $1,\ldots,n$ in their original order, so the forbidden neighbours are the $n-1$ pairs $\{i,i+1\}$. For a set $S$ of these pairs let $N(S)$ be the number of seatings in which every pair in $S$ sits together; $N(\varnothing)=n!$. By inclusion--exclusion,
+\[a_n=\sum_S(-1)^{|S|}N(S),\]
+the sum running over all sets $S$ of forbidden pairs.
+
+Let $|S|=k\ge1$. The pairs in $S$ join the people into maximal runs of consecutive integers, say $j$ runs. If a run $m,m+1,\ldots,m+\ell$ ($\ell\ge1$ pairs) must have all its pairs adjacent, then each inner person sits between his two run neighbours, so the run occupies a block of consecutive chairs in increasing or in decreasing order ($2$ ways). Gluing each run into a single block leaves $n-k$ objects (each pair in $S$ reduces the count by one), which can be arranged in $(n-k)!$ ways. So $N(S)=2^j(n-k)!$.
+
+It remains to count the sets of $k$ pairs that form exactly $j$ runs. Think of the $n-1$ pairs as positions in a line, $k$ of them chosen. The chosen positions form $j$ blocks of consecutive positions: their lengths are a composition of $k$ into $j$ positive parts, in $\dbinom{k-1}{j-1}$ ways, and the blocks go into $j$ different gaps among the $n-k$ gaps around the $n-1-k$ unchosen positions, in $\dbinom{n-k}{j}$ ways. Hence there are $\dbinom{k-1}{j-1}\dbinom{n-k}{j}$ such sets, each contributing $(-1)^k2^j(n-k)!$, which gives the formula. $\blacksquare$
+
+\textbf{(b)} For $n=6$ the inner sums are:
+\begin{itemize}
+\item $k=1$: $2\cdot1\cdot5=10$;
+\item $k=2$: $2\cdot1\cdot4+4\cdot1\cdot6=32$;
+\item $k=3$: $2\cdot1\cdot3+4\cdot2\cdot3+8\cdot1\cdot1=38$;
+\item $k=4$: $2\cdot1\cdot2+4\cdot3\cdot1=16$ (the term $j=3$ vanishes, as $\dbinom23=0$);
+\item $k=5$: $2\cdot1\cdot1=2$.
+\end{itemize}
+Therefore
+\[a_6=720-120\cdot10+24\cdot32-6\cdot38+2\cdot16-1\cdot2=720-1200+768-228+32-2=\boxed{90}.\]
+(The same formula gives $a_4=2$, $a_5=14$ and $a_7=646$; evaluated by computer for $26$ people, it gives $a_{26}=54406969991009281966468810$.)

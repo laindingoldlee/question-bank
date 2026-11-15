@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2524300_intersections_between_parabola_and_circle
+% Stable identity: aops-topic-2524300-q01
+\textbf{At most $4$.} Let the circle be $(x-h)^2+(y-k)^2=\rho^2$. A common point $(x,y)$ has $y=ax^2+bx+c$, so its $x$-coordinate satisfies
+\[(x-h)^2+\left(ax^2+bx+c-k\right)^2-\rho^2=0.\]
+The left side is a polynomial in $x$ of degree $4$ with leading coefficient $a^2\ne0$, so it has at most $4$ real roots. Each intersection point is determined by its $x$-coordinate (because $y=ax^2+bx+c$), so there are at most $4$ intersection points.
+
+\textbf{Four can occur.} Take the parabola $y=2x^2-5$, which contains $(\pm1,-3)$ and $(\pm2,3)$, and the circle with centre $\left(0,\dfrac14\right)$ and radius $\dfrac{\sqrt{185}}{4}$:
+\[1^2+\left(-3-\dfrac14\right)^2=1+\dfrac{169}{16}=\dfrac{185}{16},\qquad 2^2+\left(3-\dfrac14\right)^2=4+\dfrac{121}{16}=\dfrac{185}{16},\]
+and by symmetry the circle also passes through $(-1,-3)$ and $(-2,3)$. So these four points are common to both curves.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return 2*x^2-5;}
+pair Oc=(0,0.25); real r=sqrt(185)/4;
+draw((-4.2,0)--(4.2,0),gray,Arrow(5)); draw((0,-5.6)--(0,5.8),gray,Arrow(5));
+label("$x$",(4.2,0),E); label("$y$",(0,5.8),N);
+draw(graph(f,-2.3,2.3),blue+linewidth(0.9));
+draw(circle(Oc,r),red+linewidth(0.9));
+pair[] pts={(-2,3),(-1,-3),(1,-3),(2,3)};
+for(pair p:pts) dot(p);
+label("$(2,3)$",(2,3),E,fontsize(8pt)); label("$(-2,3)$",(-2,3),W,fontsize(8pt));
+label("$(1,-3)$",(1,-3),SE,fontsize(8pt)); label("$(-1,-3)$",(-1,-3),SW,fontsize(8pt));
+label("$y=2x^2-5$",(2.3,f(2.3)),E,blue+fontsize(8pt));
+\end{asy}
+
+The maximum is $\boxed{4}$. (The condition $a>1$ plays no role: the same holds for any $a\ne0$.)

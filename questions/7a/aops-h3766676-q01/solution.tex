@@ -1,0 +1,8 @@
+Alice first covers the top cells in columns $2,3$. Bob can now play only in column $1$ or $4$. If he chooses column $1$, Alice covers the bottom cells in columns $3,4$; if he chooses column $4$, she covers the bottom cells in columns $1,2$. In either case every column contains an occupied cell, so Bob has no vertical move and loses.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"B", "A1", "A1", ""}, {"B", "", "A2", "A2"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("Case: Bob chooses column 1; reflect for column 4",(2.0,-2.2));
+\end{asy}

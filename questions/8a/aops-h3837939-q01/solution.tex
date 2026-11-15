@@ -1,0 +1,15 @@
+By rotational symmetry fix $u=1$ and let $v=e^{\dfrac{2\pi ik}{2019}}$, with $k$ uniform on $\{1,\ldots,2018\}$. Then
+\[
+|1+v|^2=2+2\cos\dfrac{2\pi k}{2019}\ge1
+\]
+exactly when the angle is at most $120^\circ$ or at least $240^\circ$. Since $2019=3\cdot673$, the valid indices are $1\le k\le673$ and $1346\le k\le2018$, including both equality endpoints. There are $1346$ successes, so
+\[
+\boxed{\Pr=\dfrac{1346}{2018}=\dfrac{673}{1009}}.
+\]
+The same ratio holds if the pair is selected without order.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(unitcircle);draw(arc((0,0),1,0,120),blue+2);draw(arc((0,0),1,240,360),blue+2);dot((1,0));label("$u=1$",(1,0),E);draw((0,0)--dir(120),dashed);draw((0,0)--dir(240),dashed);label("$120^\circ$",dir(120),NW);label("$240^\circ$",dir(240),SW);label("Allowed arcs (excluding u)",(0,-1.5));
+\end{asy}

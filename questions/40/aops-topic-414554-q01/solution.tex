@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h414554_1998_ajhsme_21
+% Stable identity: aops-topic-414554-q01
+Look at the four horizontal layers from above (shaded cubes touch the box):
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+void grid(pair o,bool all){
+ for(int i=0;i<4;++i) for(int j=0;j<4;++j){
+  bool inner=(i==1||i==2)&&(j==1||j==2);
+  path sq=shift(o+(i,j))*unitsquare;
+  if(all||!inner) fill(sq,paleblue);
+  draw(sq,gray(0.3));
+ }}
+grid((0,0),true);grid((5.5,0),false);
+label("bottom layer",(2,-0.5));label("each of the 3 upper layers",(7.5,-0.5));
+label("$16$",(2,4.45));label("$12$",(7.5,4.45));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item All $16$ cubes of the bottom layer touch the bottom.
+\item In each of the other $3$ layers, the $12$ cubes on the border touch a side; the central $2\times2$ block does not (and the top is open).
+\end{itemize}
+So $16+3\cdot12=52$ cubes touch a side or the bottom. Equivalently, the cubes that touch nothing form a $2\times2\times3$ block of $12$, and $64-12=52$. The answer is $\boxed{\text{(B)}\ 52}$.

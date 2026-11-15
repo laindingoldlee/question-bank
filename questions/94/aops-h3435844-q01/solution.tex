@@ -1,0 +1,44 @@
+Since $OA\perp AD$, triangle $OAD$ is right isosceles. Choose
+\[
+O=(0,0),\quad D=(\sqrt2,0),\quad
+A=E+\left(0,\dfrac{1}{\sqrt2}\right),\quad E=\left(\dfrac{1}{\sqrt2},0\right).
+\]
+Thus (a) $\boxed{OE=\dfrac{1}{\sqrt2}}$.
+
+Write line $BC$ as $y=m(x-\sqrt2)$. It cuts the unit circle twice, so its distance from $O$ is less than $1$, giving $m^2<1$. Also $F=\left(\dfrac{1}{\sqrt2},-\dfrac{m}{\sqrt2}\right)$, hence
+\[
+[OEF]=\dfrac{|m|}{4}.
+\]
+The circle $ADO$ has diameter $OD$ and equation $x^2+y^2-\sqrt2x=0$. Intersecting with the secant gives
+\[
+H=\left(\dfrac{\sqrt2m^2}{1+m^2},-\dfrac{\sqrt2m}{1+m^2}\right),\quad
+FH=\dfrac{1-m^2}{\sqrt{2(1+m^2)}}.
+\]
+
+(b) Put $t=m^2$. The condition gives $6(1-t)^2=1+t$, or $(2t-1)(3t-5)=0$. Only $t=\dfrac{1}{2}$ satisfies $t<1$. Therefore $\boxed{[OEF]=\dfrac{\sqrt2}{8}}$.
+
+(c) A chord of length $\sqrt3$ in a unit circle is at distance $\dfrac{1}{2}$ from its center. Thus $\dfrac{2m^2}{1+m^2}=\dfrac{1}{4}$, giving $m^2=\dfrac{1}{7}$ and $\boxed{[OEF]=\dfrac{\sqrt7}{28}}$.
+
+(d) The angle at $E$ is right. Its internal bisector through $B$ has $B=E+(t,\pm t)$, where $t>0$ and the sign is that of $F_y$. The unit-circle equation gives $t=\dfrac{\sqrt3-1}{2\sqrt2}$. Thus
+\[
+B_x=\dfrac{\sqrt3+1}{2\sqrt2},\qquad
+|B_y|=\dfrac{\sqrt3-1}{2\sqrt2},
+\]
+and
+\[
+|m|=\dfrac{|B_y|}{\sqrt2-B_x}
+=\dfrac{\sqrt3-1}{3-\sqrt3}=\dfrac{1}{\sqrt3}.
+\]
+Hence $\boxed{[OEF]=\dfrac{\sqrt3}{12}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real m=-1/2,s=1/sqrt(2);pair O=(0,0),D=(sqrt(2),0),A=(s,s),E=(s,0),F=(s,-m*s),H=(sqrt(2)*m*m/(1+m*m),-sqrt(2)*m/(1+m*m));real xb=(sqrt(2)*m*m+sqrt(1-m*m))/(1+m*m),xc=(sqrt(2)*m*m-sqrt(1-m*m))/(1+m*m);pair B=(xb,m*(xb-sqrt(2))),C=(xc,m*(xc-sqrt(2)));draw(unitcircle,gray);draw(circle(E,s),lightblue);draw(A--D--O--A);draw(C--D,blue);draw(A--F,red);dot(E);dot(F);dot(H);label("$O$",O,SW);label("$D$",D,E);label("$A$",A,N);label("$E$",E,S);label("$F$",F,NE);label("$H$",H,NW);label("$B$",B,NE);label("$C$",C,W);
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real m=1/2,s=1/sqrt(2);pair O=(0,0),D=(sqrt(2),0),A=(s,s),E=(s,0),F=(s,-m*s),H=(sqrt(2)*m*m/(1+m*m),-sqrt(2)*m/(1+m*m));real xb=(sqrt(2)*m*m+sqrt(1-m*m))/(1+m*m),xc=(sqrt(2)*m*m-sqrt(1-m*m))/(1+m*m);pair B=(xb,m*(xb-sqrt(2))),C=(xc,m*(xc-sqrt(2)));draw(unitcircle,gray);draw(circle(E,s),lightblue);draw(A--D--O--A);draw(C--D,blue);draw(A--F,red);dot(E);dot(F);dot(H);label("$O$",O,SW);label("$D$",D,E);label("$A$",A,N);label("$E$",E,S);label("$F$",F,NE);label("$H$",H,NW);label("$B$",B,NE);label("$C$",C,W);
+\end{asy}

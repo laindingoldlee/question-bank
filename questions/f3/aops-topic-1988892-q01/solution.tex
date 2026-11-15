@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1988892_aops_volume_2_complex_numbers_verification
+% Stable identity: aops-topic-1988892-q01
+In the complex plane the number $x+yi$ ($x,y$ real) is the point $(x,y)$: the real part is the horizontal coordinate and the imaginary part is the vertical coordinate. Write $w=x_1+y_1i$ and $z=x_2+y_2i$. Then
+\[
+z-w=(x_2-x_1)+(y_2-y_1)i,\qquad\text{so}\qquad \operatorname{Re}(z-w)=x_2-x_1,\quad \operatorname{Im}(z-w)=y_2-y_1 .
+\]
+The line through the points $(x_1,y_1)$ and $(x_2,y_2)$, with $x_2\ne x_1$, has slope
+\[
+\dfrac{y_2-y_1}{x_2-x_1}=\dfrac{\operatorname{Im}(z-w)}{\operatorname{Re}(z-w)} .\qquad\blacksquare
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+draw((-0.3,0)--(5,0),Arrow(TeXHead)); draw((0,-0.3)--(0,4),Arrow(TeXHead));
+label("$\operatorname{Re}$",(5,0),E); label("$\operatorname{Im}$",(0,4),N);
+pair w=(1,1), z=(4,3);
+draw(w--z,linewidth(1)); draw(w--(4,1),dashed); draw((4,1)--z,dashed);
+dot(w);dot(z);
+label("$w$",w,W); label("$z$",z,N);
+label("$x_2-x_1$",(2.5,1),S); label("$y_2-y_1$",(4,2),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Note that $\operatorname{Im}(z-w)$ is the real number $y_2-y_1$, not $(y_2-y_1)i$; nothing is ``replaced by $i$''. If $\operatorname{Re}(z)=\operatorname{Re}(w)$, the line is vertical and has no slope.)

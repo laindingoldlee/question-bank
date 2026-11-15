@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h2071077_weve_reached__40000_topics
+% Stable identity: aops-topic-2071077-q02
+Since \(a+b>c\) and \(c\) is the largest, there is a triangle \(ABC\) with \(BC=a\), \(CA=b\), \(AB=c\). Its largest angle is \(C\), and \(a^2+b^2>c^2\) gives \(C<90^\circ\), so the triangle is acute.
+
+By the law of cosines, if \(P\) is a point inside the triangle with
+\[
+\angle BPC=90^\circ,\qquad \angle CPA=120^\circ,\qquad \angle APB=150^\circ,
+\]
+then \(x=PC\), \(y=PB\), \(z=PA\) work:
+\[
+a^2=x^2+y^2,\qquad b^2=x^2+z^2-2xz\cos120^\circ=x^2+xz+z^2,\qquad c^2=y^2+z^2-2yz\cos150^\circ=y^2+\sqrt3\,yz+z^2 .
+\]
+(The three angles add to \(360^\circ\), as they must around an interior point.) It remains to find \(P\).
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(4,0), A=(27/8,sqrt(36-(27/8)^2));
+pair P=(2.31546,1.97496);
+pair Hc=B+dot(C-B,unit(A-B))*unit(A-B);
+pair Hb=C+dot(B-C,unit(A-C))*unit(A-C);
+draw(arc((2,0),2,0,180),gray+dashed);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(P--A,blue); draw(P--B,blue); draw(P--C,blue);
+dot(A);dot(B);dot(C);dot(P);dot(Hb,gray);dot(Hc,gray);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$P$",P,S);
+label("$H_c$",Hc,2*W,gray); label("$H_b$",Hb,E,gray);
+label("$z$",(A+P)/2,W,blue); label("$y$",(B+P)/2,NW,blue); label("$x$",(C+P)/2,NE,blue);
+label("$a$",(B+C)/2,S); label("$b$",(A+C)/2,E); label("$c$",(A+B)/2,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Existence of \(P\).} Let \(\omega\) be the semicircle on diameter \(BC\) on the same side of \(BC\) as \(A\); its points \(X\ne B,C\) are exactly the points on that side with \(\angle BXC=90^\circ\). Let \(H_c\) and \(H_b\) be the feet of the altitudes from \(C\) and \(B\). Because the triangle is acute, they lie strictly inside the sides \(AB\) and \(AC\), and they lie on \(\omega\) (\(\angle BH_cC=\angle BH_bC=90^\circ\)). The line \(AB\) meets the circle only at \(B\) and \(H_c\), and \(AC\) only at \(C\) and \(H_b\). So the open arc \(\gamma\) of \(\omega\) from \(H_c\) to \(H_b\) does not meet the sides of the triangle. It leaves \(H_c\) towards the interior (the arc from \(B\) to \(H_c\) lies outside, beyond line \(AB\), since \(\angle B<90^\circ\)), so \(\gamma\) lies inside the triangle.
+
+For \(X\) on \(\gamma\), \(\angle AXB+\angle AXC=360^\circ-90^\circ=270^\circ\), and \(f(X)=\angle AXB\) varies continuously along \(\gamma\). As \(X\to H_c\), \(X\) approaches a point of segment \(AB\), so \(f\to 180^\circ\). As \(X\to H_b\), \(\angle AXC\to 180^\circ\), so \(f\to 90^\circ\). By the intermediate value theorem there is \(P\) on \(\gamma\) with \(\angle APB=150^\circ\), and then \(\angle CPA=270^\circ-150^\circ=120^\circ\) and \(\angle BPC=90^\circ\).
+
+Thus \(x=PC\), \(y=PB\), \(z=PA\) are positive numbers satisfying all three equations. \(\blacksquare\)

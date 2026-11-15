@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h2162391_rmo_p1_geometry
+% Stable identity: aops-topic-2162391-q01
+Choose coordinates with $B=(-1,0)$, $C=(1,0)$ and $A=(0,a)$, where $a>0$ (this only fixes the scale, $BC=2$, and uses the symmetry of the isosceles triangle).
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real a=1.6; real k=(a^2-1)/(2*a);
+pair A=(0,a), B=(-1,0), C=(1,0), O=(0,k), D=(-1,2*k);
+real t=(a^2+1)/(2*a^2); pair Ep=A+t*(B-A);
+draw(circle(O,a-k),gray(0.55));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--D,dashed);
+draw(D--Ep,red+linewidth(1));
+draw((-1.35,0)--(1.35,0),gray(0.75)); draw((0,-0.65)--(0,1.85),gray(0.75));
+dot(A); dot(B); dot(C); dot(O); dot(D); dot(Ep,red);
+label("$A(0,a)$",A,N); label("$B(-1,0)$",B,S); label("$C(1,0)$",C,S);
+label("$O(0,k)$",O,NE); label("$D(-1,2k)$",D,W); label("$E$",Ep,E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The centre $O$ lies on the perpendicular bisector of $BC$, the $y$-axis, so $O=(0,k)$ for some $k$. From $OA=OC$ we get $(a-k)^2=1+k^2$, that is, $a^2-2ak=1$, so
+\[k=\dfrac{a^2-1}{2a}.\]
+Since $CD$ is a diameter, $O$ is the midpoint of $CD$, and $D=2O-C=(-1,2k)$.
+
+The points of line $AB$ are $A+t(B-A)=\left(-t,\ a(1-t)\right)$, and for such a point $E$ we have $AE=t\cdot AB$; $E$ lies on the segment $AB$ exactly when $0\le t\le1$. The line through $D$ parallel to $AC$ has direction $C-A=(1,-a)$. So $E$ lies on it exactly when
+\[\left(-t,\ a(1-t)\right)-(-1,\ 2k)=\left(1-t,\ a(1-t)-2k\right)\]
+is a multiple of $(1,-a)$, that is, when $a(1-t)-2k=-a(1-t)$, or $1-t=\dfrac {k}{a}$. Hence
+\[t=1-\dfrac{k}{a}=1-\dfrac{a^2-1}{2a^2}=\dfrac{a^2+1}{2a^2}.\]
+With $E$ on the segment $AB$, the condition $AE:EB=2:1$ means $t=\dfrac{AE}{AB}=\dfrac{2}{3}$. Therefore
+\[\dfrac{a^2+1}{2a^2}=\dfrac{2}{3}\iff 3a^2+3=4a^2\iff a^2=3 .\]
+Then $AB=AC=\sqrt{1+a^2}=2=BC$, so triangle $ABC$ is equilateral. $\blacksquare$
+
+\emph{Remark.} The condition that $E$ lies on the \emph{segment} $AB$ matters. We have $t\le1$ exactly when $a\ge1$, that is, when $\angle BAC\le90^\circ$. If $\angle BAC$ is obtuse, the parallel through $D$ meets line $AB$ beyond $B$, and then $AE:EB=t:(t-1)=2:1$ gives $t=2$, $a^2=\dfrac{1}{3}$: an isosceles triangle with apex angle $120^\circ$.

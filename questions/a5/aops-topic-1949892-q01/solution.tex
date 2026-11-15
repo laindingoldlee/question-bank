@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1949892_volume_q
+% Stable identity: aops-topic-1949892-q01
+The volume is the cylinder plus the hemisphere:
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+real r=3,h=8,k=0.3;
+draw(ellipse((0,0),r,r*k));
+draw((-r,0)--(-r,h));draw((r,0)--(r,h));
+draw(shift((0,h))*scale(r,r*k)*arc((0,0),1,180,360));draw(shift((0,h))*scale(r,r*k)*arc((0,0),1,0,180),dashed);
+draw(arc((0,h),r,0,180));
+draw((0,0)--(r,0),blue);label("$3$",(r/2,0),S,blue);
+draw((r+0.6,0)--(r+0.6,h),Arrows(TeXHead));label("$8$",(r+0.6,h/2),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+\pi\cdot3^2\cdot8+\dfrac{2}{3}\pi\cdot3^3=72\pi+18\pi=90\pi\text{ cubic inches}.
+\]
+Eating and melting together remove $4\pi+2\pi=6\pi$ cubic inches per minute, so the popsicle is gone after
+\[
+\dfrac{90\pi}{6\pi}=\boxed{15}\text{ minutes}.
+\]

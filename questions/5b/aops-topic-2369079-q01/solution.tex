@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2369079_points_on_a_circle_probability
+% Stable identity: aops-topic-2369079-q01
+\textbf{Counting the choices.} First choose the $6$ endpoints, in $\dbinom96=84$ ways, and then pair them up. Six points can be split into $3$ pairs in $5\cdot3\cdot1=15$ ways (the first point has $5$ possible partners, the first remaining point then has $3$, and the last two are paired). So there are $84\cdot15=1260$ equally likely choices.
+
+\textbf{Non-crossing pairings.} Six points on a circle are in convex position; number them $1$ to $6$ around the circle. Two chords cross exactly when their endpoints alternate around the circle. If point $1$ is joined to point $j$, the points on each side of the chord $1j$ must be paired among themselves, so each side must contain an even number of points: $j=2,4$ or $6$.
+\begin{itemize}
+\item $j=2$: points $3,4,5,6$ must be paired without crossing: $\{34,56\}$ or $\{36,45\}$, $2$ ways;
+\item $j=4$: the pairs $23$ and $56$ are forced, $1$ way;
+\item $j=6$: points $2,3,4,5$: $\{23,45\}$ or $\{25,34\}$, $2$ ways.
+\end{itemize}
+So $5$ of the $15$ pairings are non-crossing (this is the Catalan number $C_3=5$):
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+void hexpic(pair c, int[] m){
+  draw(circle(c,1),gray);
+  pair[] P; for(int k=0;k<6;++k) P.push(c+dir(90-60k));
+  for(int k=0;k<3;++k) draw(P[m[2k]]--P[m[2k+1]],blue+linewidth(0.9));
+  for(int k=0;k<6;++k){dot(P[k]); label("$"+string(k+1)+"$",c+1.25*dir(90-60k),fontsize(7pt));}
+}
+hexpic((0,0),new int[]{0,1,2,3,4,5});
+hexpic((2.8,0),new int[]{1,2,3,4,5,0});
+hexpic((5.6,0),new int[]{0,1,2,5,3,4});
+hexpic((1.4,-2.8),new int[]{0,3,1,2,4,5});
+hexpic((4.2,-2.8),new int[]{0,5,1,4,2,3});
+\end{asy}
+
+Hence the number of favourable choices is $84\cdot5$, and the probability is
+\[\dfrac{84\cdot5}{84\cdot15}=\boxed{\dfrac13}.\]
+(The number $9$ does not matter: whichever $6$ points are used, $5$ of the $15$ pairings are non-crossing.)

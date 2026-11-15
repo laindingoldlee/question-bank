@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3517866_very_easy_euclidean_construction_without_compass
+% Stable identity: aops-topic-3517866-q01
+Choose distinct $B,C$ on $l$ and distinct $B^{\prime},C^{\prime}$ on $m$ so that $T=BB^{\prime}\cap CC^{\prime}$ is finite. Choose $D$ on $AB$ in a generic position, and set $D^{\prime}=TD\cap AB^{\prime}$. Finally set $V=CD\cap C^{\prime}D^{\prime}$. Draw $AV$. To prove it is parallel to the given lines, apply Desargues' theorem to triangles $BCD$ and $B^{\prime}C^{\prime}D^{\prime}$. Their corresponding-vertex lines meet at $T$. Hence the intersections of corresponding side lines are collinear. Two are $BD\cap B^{\prime}D^{\prime}=A$ and $CD\cap C^{\prime}D^{\prime}=V$; the third is the common point at infinity of the parallel lines $BC$ and $B^{\prime}C^{\prime}$. Therefore $AV$ has their direction, as required. The construction uses only joins and finite intersections; the point at infinity occurs in the proof, not as a construction operation. Generic auxiliary choices avoid coincident lines and infinite intersections other than the known parallel pair.
+\begin{asy}
+usepackage("amsmath");
+import geometry;
+size(260);
+pair A=(5,3),B=(0,0),C=(4,0),Bp=(1,1),Cp=(3,1),T=(2,2),D=(1,.6),Dp=(13.0/9,11.0/9),V=(-11,3);draw((-12,0)--(6,0));draw((-12,1)--(6,1));draw(V--A,blue);draw(B--T^^C--T^^A--B^^A--Bp^^T--D^^C--V^^Cp--V,dashed);label("$A$",A,NE);label("$B$",B,S);label("$C$",C,S);label("$B^{\prime}$",Bp,W);label("$C^{\prime}$",Cp,E);label("$T$",T,N);label("$D$",D,SW);label("$D^{\prime}$",Dp,NW);label("$V$",V,NW);label("$l$",(6,0),E);label("$m$",(6,1),E);
+\end{asy}

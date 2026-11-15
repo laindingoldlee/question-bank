@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3156797_1000th_post_math_story
+% Stable identity: aops-topic-3156797-q204
+A partition disregards the order of its positive summands. Starting with the empty partition of zero, successively allow each possible part. The update $ p(n)\gets p(n)+p(n-j)$ adds exactly partitions containing a part $ j $ after removing one such part. Ascending $ n $ permits repeated parts. The exact recurrence gives $\boxed{56,77,101,135,176}$:
+\begin{verbatim}
+p=[1]+[0]*15
+for j in range(1,16):
+    for n in range(j,16):p[n]+=p[n-j]
+assert p[11:16]==[56,77,101,135,176]
+\end{verbatim}

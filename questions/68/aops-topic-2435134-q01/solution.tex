@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2435134_math_day_at_the_beach
+% Stable identity: aops-topic-2435134-q01
+Divisibility by $3$ depends only on the remainders modulo $3$, and the remainder of $x_n$ is determined by those of $x_{n-1}$ and $x_{n-2}$. Computing modulo $3$:
+\[\begin{array}{c|cccccccccc}
+n&1&2&3&4&5&6&7&8&9&10\\\hline
+x_n\bmod3&1&1&2&2&0&2&1&0&1&1
+\end{array}\]
+(for example $x_3\equiv1+1=2$, $x_4\equiv2^2+1\equiv2$, $x_5\equiv2^2+2\equiv0$). Since $(x_9,x_{10})\equiv(1,1)\equiv(x_1,x_2)$, the remainders repeat with period $8$, and in each block of $8$ consecutive terms exactly two (positions $5$ and $8$) are divisible by $3$.
+
+Now $2018=8\cdot252+2$. The first $2016$ terms form $252$ full blocks, with $2\cdot252=504$ multiples of $3$, and the last two terms are $\equiv x_1,x_2\equiv1$. So $\boxed{504}$ of the numbers are divisible by $3$.

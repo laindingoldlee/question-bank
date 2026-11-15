@@ -1,0 +1,6 @@
+Start with one cluster per input point, storing its member indices, size and coordinate sum. While more than $k$ clusters remain: compute each centre as sum divided by size; examine every pair of centres; select a closest pair, using a fixed tie rule; replace that pair by the union, adding their sizes and coordinate sums. Return the remaining member sets. This implements precisely the stated centroid algorithm. It need not reproduce meaningful external categories: nonconvex groups, differing scales, outliers and equal-distance ambiguities can all make geometric proximity disagree with the intended labels. The mathematical procedure still returns a partition.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair[] P={(0,0),(.4,.6),(.8,.2),(3,2),(3.4,2.2),(3.1,2.7)};for(int i=0;i<6;++i){dot(P[i],i<3?blue:red);label("$P_{"+string(i+1)+"}$",P[i],i==1||i==5?(0,1):(0,-1));}pair U=(P[0]+P[1]+P[2])/3,V=(P[3]+P[4]+P[5])/3;draw(U--V,dashed);dot(U);dot(V);draw(U--U+(-1,1),gray);draw(V--V+(1,1),gray);label("centroid",U+(-1,1));label("centroid",V+(1,1));
+\end{asy}
+

@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2551425_ohmc_1115
+% Stable identity: aops-topic-2551425-q14
+The space diagonal is $s\sqrt3$ and the $12$ edges have total length $12s$. So
+\[s\sqrt3\cdot(12s)^2=s^5\qquad\Longrightarrow\qquad s^2=144\sqrt3\qquad\Longrightarrow\qquad s=12\sqrt[4]3.\]
+Since $1.31^2=1.7161$ and $1.32^2=1.7424$, we get $1.31^4\approx2.945<3$ and $1.32^4\approx3.036>3$, so $1.31<\sqrt[4]3<1.32$, so $15.72<s<15.84$. The nearest whole number is $\boxed{16}$, answer $\textbf{(C)}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair P(real x,real y,real z){return (x+0.55*y,z+0.4*y);}
+draw(P(0,0,0)--P(1,0,0)--P(1,0,1)--P(0,0,1)--cycle,linewidth(0.8));
+draw(P(1,0,0)--P(1,1,0)--P(1,1,1)--P(1,0,1),linewidth(0.8));
+draw(P(0,0,1)--P(0,1,1)--P(1,1,1),linewidth(0.8));
+draw(P(0,0,0)--P(0,1,0)--P(1,1,0),dashed);draw(P(0,1,0)--P(0,1,1),dashed);
+draw(P(0,0,0)--P(1,1,1),red+linewidth(0.9));
+label("$s$",(P(0,0,0)+P(1,0,0))/2,S);
+label("$s\sqrt3$",P(0.55,0.55,0.55),NW,red);
+\end{asy}

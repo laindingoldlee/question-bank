@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2396907_2017_national_target_8
+% Stable identity: aops-topic-2396907-q01
+Do casework on the letter taken from the first set. A code is a string of $4$ letters, and we must count distinct strings.
+\begin{itemize}
+\item \textbf{$K$ or $M$.} The three letters from the second set are any $3$ of $W,X,Y,Z$ ($4$ choices), all four letters are distinct, and they can be arranged in $4!=24$ ways: $4\cdot24=96$ codes each, $192$ in total.
+\item \textbf{$X$.} If the second set gives $\{W,Y,Z\}$, the letters are $W,X,Y,Z$: $24$ codes. If the second set includes $X$ (with $2$ of $W,Y,Z$: $3$ choices), the letters are $X,X$ and two others: $\dfrac{4!}{2!}=12$ codes each, $36$ in total.
+\item \textbf{$Z$.} If the second set gives $\{W,X,Y\}$, the letters are again $W,X,Y,Z$; these $24$ codes were already counted. If it includes $Z$ ($3$ choices), we get $Z,Z$ and two others: $36$ new codes.
+\end{itemize}
+Codes with $K$, codes with $M$, codes with two $X$'s, codes with two $Z$'s and the arrangements of $WXYZ$ are all different, so the total is
+\[192+24+36+36=\boxed{288}.\]

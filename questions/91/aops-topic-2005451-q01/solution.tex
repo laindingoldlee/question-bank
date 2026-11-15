@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2005451_thanksgiving_mock_amc_8_25_big_brain_integers
+% Stable identity: aops-topic-2005451-q01
+Words with representation $n$ correspond to ways of cutting the digit string of $n$ into blocks, each block being a one-digit number $1$--$9$ or a two-digit number $10$--$26$. Let $g(i)$ be the number of ways to cut the first $i$ digits. Then $g(0)=1$, $g(1)\le1$, and
+\[
+g(i)=[\,d_i\ne0\,]\,g(i-1)+[\,\overline{d_{i-1}d_i}\in\{10,\dots,26\}\,]\,g(i-2)\le g(i-1)+g(i-2).
+\]
+By induction $g(i)\le F_{i+1}$, where $F_1=F_2=1$, $F_{k+1}=F_k+F_{k-1}$ are the Fibonacci numbers. For $11$ digits, $g(11)\le F_{12}=144$, and equality holds only if every inequality above is an equality: every digit is nonzero (so $g(1)=1$ and every last digit can stand alone) and every pair of consecutive digits forms a number from $10$ to $26$.
+
+With no zero digits, a pair $\overline{uv}$ lies in $10$--$26$ exactly when $u=1$, or $u=2$ and $v\le6$. So the first ten digits are all $1$ or $2$ (each starts a pair); among them, a $2$ followed by a $1$ or $2$ is fine automatically. The last digit can be any of $1$--$9$ if the tenth digit is $1$, and any of $1$--$6$ if the tenth digit is $2$. Hence the count is
+\[
+2^9\,(9+6)=512\cdot15=7680 .
+\]
+The answer is $\boxed{\textbf{(B)}\ 7680}$.

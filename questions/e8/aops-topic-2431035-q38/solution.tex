@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2431035_500th_celebration_post
+% Stable identity: aops-topic-2431035-q38
+The volume is $7$ cubic units. The middle cube has all six faces covered. Each of the six outer cubes has one face glued to the middle cube and its other $5$ faces exposed (the outer cubes do not touch each other, since they sit on opposite or adjacent faces of the middle cube and only meet along edges at most).
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair pr(triple t){return (t.x+0.45*t.y, t.z+0.32*t.y);}
+pen fr=rgb(0.85,0.9,1), tp=rgb(0.95,0.97,1), sd=rgb(0.7,0.8,0.95);
+void face(triple a, triple b2, triple c, triple d, pen p){filldraw(pr(a)--pr(b2)--pr(c)--pr(d)--cycle,p,black+0.7);}
+void cube(triple o){
+  real x=o.x, y=o.y, z=o.z;
+  face((x,y,z),(x+1,y,z),(x+1,y,z+1),(x,y,z+1),fr);
+  face((x+1,y,z),(x+1,y+1,z),(x+1,y+1,z+1),(x+1,y,z+1),sd);
+  face((x,y,z+1),(x+1,y,z+1),(x+1,y+1,z+1),(x,y+1,z+1),tp);
+}
+triple[] cs={(0,1,0),(0,0,-1),(-1,0,0),(0,0,0),(1,0,0),(0,0,1),(0,-1,0)};
+for(triple c:cs) cube(c);
+\end{asy}
+
+So the surface area is $6\cdot5=30$ square units, and the ratio is $\boxed{\textbf{(D) }7:30}$.

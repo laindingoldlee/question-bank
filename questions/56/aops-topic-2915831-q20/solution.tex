@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2915831_2022_bmmt_team_round__berkley_mini_math_tournament_spring
+% Stable identity: aops-topic-2915831-q20
+Let the inradius be $r$. The tangent lengths from the right-angle vertices $B,D$ are $r$, so those from $A,E$ are $4-r$, and those from $C$ are $9-r$. In particular $0<r<4$ and $AE=8-2r$. Equal tangent lengths at $A,E$ imply their half-angles have equal cotangents, hence their angles are equal; write this angle as $\theta$. The pentagon angle sum gives $2\theta+\angle C=360^\circ$. Set $u=\cot(\dfrac{\theta}{2})=\dfrac{4-r}{r}$. Then $\cot(\dfrac{\angle C}{2})=-\cot\theta=\dfrac{1-u^2}{2u}=\dfrac{9-r}{r}$. Clearing denominators yields $r^2-17r+44=0$. The root below 4 is $r=\dfrac{17-\sqrt{113}}{2}$. Consequently $\boxed{AE=\sqrt{113}-9}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real r=(17-sqrt(113))/2;pair B=(0,0),C=(9,0),A=(0,4),I=(r,r),v=unit(C-I),D=I+2*dot(B-I,v)*v-(B-I),Ept=I+2*dot(A-I,v)*v-(A-I);draw(A--B--C--D--Ept--cycle);draw(circle(I,r),blue);label("$A$",A,W);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NE);label("$E$",Ept,NW);label("$I$",I,N);
+\end{asy}

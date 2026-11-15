@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2334992_simple_algebrageometry
+% Stable identity: aops-topic-2334992-q01
+The keys fell at some moment in the last $10$ minutes. In $10$ minutes Alan runs $3\cdot600=1800$ m $=1.8$ km, so wherever the keys fell, Alan has run at most $1.8$ km since then, and the place $X$ is at most $1.8$ km (in a straight line) from where he is now.
+
+Conversely, every point $X$ within $1.8$ km of his present position is possible: he could have dropped the keys at $X$ and then run straight here, which takes at most $10$ minutes.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real R=1.8;
+draw(circle((0,0),R),blue+linewidth(0.9));
+fill(circle((0,0),R),lightblue+opacity(0.3));
+pair X=1.25*dir(130);
+draw(X..(0.2,1.1)..(0.9,0.3)..(0,0),red+dashed,Arrow(5));
+dot((0,0)); dot(X,red);
+label("Alan now",(0,0),SW,fontsize(8pt)); label("$X$",X,W,red);
+draw((0,0)--R*dir(-30)); label("$1.8$ km",0.5*R*dir(-30),SW,fontsize(8pt));
+\end{asy}
+
+So the keys are somewhere in a disc of radius $1.8$ km, of area
+\[\pi\cdot1.8^2=3.24\pi\approx10.18\ \text{km}^2,\]
+and in the worst case the search takes $\boxed{3.24\pi\approx10.2\text{ hours}}$, about $10$ hours. (The $30$ minutes of running before the check are irrelevant.)

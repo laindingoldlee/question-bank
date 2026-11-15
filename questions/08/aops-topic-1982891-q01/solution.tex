@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1982891_intermediate_algebra
+% Stable identity: aops-topic-1982891-q01
+Let $s=a+b+c$, $q=ab+bc+ca$, $p=abc$, and
+\[
+E_k=\dfrac{a^k}{(a-b)(a-c)}+\dfrac{b^k}{(b-c)(b-a)}+\dfrac{c^k}{(c-a)(c-b)} .
+\]
+\textbf{$E_0=E_1=0$ and $E_2=1$.} By Lagrange interpolation, every polynomial $f$ of degree at most $2$ satisfies
+\[
+f(x)=f(a)\dfrac{(x-b)(x-c)}{(a-b)(a-c)}+f(b)\dfrac{(x-c)(x-a)}{(b-c)(b-a)}+f(c)\dfrac{(x-a)(x-b)}{(c-a)(c-b)},
+\]
+since both sides have degree at most $2$ and agree at $a,b,c$. Comparing $x^2$ coefficients for $f=1,x,x^2$ gives $E_0=0$, $E_1=0$, $E_2=1$.
+
+\textbf{$E_3$ and $E_4$.} Each of $a,b,c$ is a root of $t^3-st^2+qt-p$, so $t^{k+3}=st^{k+2}-qt^{k+1}+pt^k$ for $t=a,b,c$, and therefore $E_{k+3}=sE_{k+2}-qE_{k+1}+pE_k$. Thus $E_3=s$ and $E_4=s^2-q$.
+
+\textbf{The sum.} Since $b+c=s-a$ and so on, the given expression equals
+\[
+sE_3-E_4=s^2-(s^2-q)=q .
+\]
+So it simplifies to $\boxed{ab+bc+ca}$. (Check: $a=0,b=1,c=2$ gives $0+\dfrac{2}{(-1)(1)}+\dfrac{8}{(2)(1)}=-2+4=2=ab+bc+ca$.)

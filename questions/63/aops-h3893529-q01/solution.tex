@@ -1,0 +1,9 @@
+Let $\theta=\angle CAD$. Triangle $ACD$ is isosceles, so $\angle ADC=\dfrac{180^\circ-\theta}{2}$. The trapezoid has equal base angles, so $\angle BAD=\angle ADC$. As $\angle BAD=45^\circ+\theta$, we obtain $\theta=30^\circ$.
+
+The height is $h=AC\sin30^\circ=5$. Drop perpendiculars from $B,C$ to $AD$, with equal overhangs $x$. The horizontal projection of $AC$ is $AD-x=10\cos30^\circ=5\sqrt3$. Since $BC=AD-2x$, this is also the average of the bases. The area is $5\sqrt3\cdot5=\boxed{25\sqrt3}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real x=10-5*sqrt(3);pair A=(0,0),B=(x,5),C=(10-x,5),D=(10,0);draw(A--B--C--D--cycle);draw(A--C,blue);draw(B--(x,0),dashed);draw(C--(10-x,0),dashed);label("$A$",A,(-1,-1));label("$B$",B,(0,1));label("$C$",C,(0,1));label("$D$",D,(1,-1));label("$10$",(5,0),(0,-1));label("$5$",midpoint(C--(10-x,0)),(1,0));label("$30^\circ$",(2,.4));
+\end{asy}

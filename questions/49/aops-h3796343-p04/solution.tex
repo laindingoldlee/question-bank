@@ -1,0 +1,7 @@
+The parallelogram has height $504\div42=12$. Every horizontal cross-section of its overlap with the rectangle has length at most $24$, so overlap area is at most $24\cdot12=288$. This is attainable: take parallelogram vertices $(0,0),(42,0),(51,12),(9,12)$ and rectangle $[13,37]\times[-4.5,16.5]$. Every section of the parallelogram at heights $0$ through $12$ contains $[13,37]$. Its sloping side is $\sqrt{9^2+12^2}=15$. The least uncovered area is $24\cdot21-288=\boxed{216}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+filldraw((0,0)--(42,0)--(51,12)--(9,12)--cycle,lightgray);draw(box((13,-4.5),(37,16.5)),blue+1);filldraw(box((13,0),(37,12)),lightblue);label("42",(21,0),S);label("15",(4.5,6),W);label("24",(25,16.5),N);label("21",(37,6),E);label("overlap",(25,6));
+\end{asy}

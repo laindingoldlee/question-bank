@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2287377_table_15times15
+% Stable identity: aops-topic-2287377-q01
+The claim is false: the table can be tiled.
+
+First, there is no area obstruction: $15\cdot15=225=45\cdot5$, so a tiling would use $45$ pieces. To disprove the claim it is enough to exhibit one tiling. The figure shows a tiling by $45$ Y-pieces (thick lines separate the pieces; the colours only help to tell neighbouring pieces apart).
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+string[] g={"AAAAMNNNNODDDDC","BAMMMMNQOOPDICC","BLLLLQQQQOPIIJC","BBLUTTTTSOPPIJC","BUUUUTSSSSPRIJJ","VVVVkkkkjRRRRJK","WVqqqqkjjYYYYKK","WWrqppppjlmYZXK","WrrrrponjlmZZXK","WissssonllmmZXX","iihsgoonnlmbZXH","EihggfonebbbbHH","EihhgfeeeeaaaaH","EEhFgffdccccaGH","EFFFFfddddcGGGG"};
+string L="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrs";
+string cm="313123300210202311032022011221020102113310212";
+pen[] pal={rgb(0.72,0.84,1),rgb(1,0.82,0.62),rgb(0.78,0.94,0.7),rgb(0.98,0.76,0.84)};
+for(int r=0;r<15;++r) for(int c=0;c<15;++c){
+  int k=find(L,substr(g[r],c,1));
+  int ci=(int)substr(cm,k,1);
+  fill(shift(c,14-r)*unitsquare,pal[ci]);
+}
+for(int i=0;i<=15;++i){draw((i,0)--(i,15),gray(0.6)+linewidth(0.3)); draw((0,i)--(15,i),gray(0.6)+linewidth(0.3));}
+for(int r=0;r<15;++r) for(int c=0;c<15;++c){
+  if(c<14 && substr(g[r],c,1)!=substr(g[r],c+1,1)) draw((c+1,14-r)--(c+1,15-r),linewidth(1.1));
+  if(r<14 && substr(g[r],c,1)!=substr(g[r+1],c,1)) draw((c,14-r)--(c+1,14-r),linewidth(1.1));
+}
+draw((0,0)--(15,0)--(15,15)--(0,15)--cycle,linewidth(1.4));
+\end{asy}
+
+Each of the $45$ outlined regions consists of four squares in a straight line together with one square attached to the second square of that line, so each is a Y-piece in some position (rotated and possibly turned over). The pieces do not overlap and cover all $225$ squares. Therefore the claim is $\boxed{\text{false}}$: a $15\times15$ table can be tiled with Y-pieces. $\blacksquare$
+
+(Finding such a tiling by hand takes patience. A natural first attempt, splitting the table into blocks that are easy to tile, such as $5\times10$ rectangles, does not work, because $225$ is not a multiple of $50$; the pieces in the figure interlock across the whole table.)

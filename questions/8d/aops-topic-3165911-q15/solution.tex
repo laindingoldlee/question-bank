@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3165911_2019_spring_lmt_individual_round__lexington_mathematical_tournament
+% Stable identity: aops-topic-3165911-q15
+Let there be $v$ stations. A connected union of nine lines contains a spanning tree with $v-1$ edges. Choosing a line containing each tree edge shows that at most $v-1$ lines connect all stations. Since eight never suffice, $v\ge10$. A cycle of ten stations, with each line consisting of one cycle edge, attains $v=10$. Now in any minimal configuration, suppose a line had at least two edges. Choose nine lines containing it; their union is connected. Extend the edges of that path to a spanning tree (a forest always extends in a connected graph). The tree has nine edges, at least two supplied by the same line, so at most eight distinct lines supply all its edges, contradicting the hypothesis. A line with no edge would also be impossible: a connected union of nine containing it would already be a connected union of eight. Thus each line has one edge and two stations. The average is $\boxed2$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] v;for(int k=0;k<10;++k)v.push(2dir(90+36*k));for(int k=0;k<10;++k){draw(v[k]--v[(k+1)%10]);dot(v[k]);label(string(k+1),1.15v[k]);}label("ten single-edge lines",(0,-2.8));
+\end{asy}

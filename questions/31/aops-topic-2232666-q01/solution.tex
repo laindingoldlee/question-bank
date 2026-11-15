@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2232666_is_there_a_way_to_do_this
+% Stable identity: aops-topic-2232666-q01
+Let $G_k$ be the largest integer dividing $n^k-n$ for all $n$. We prove (c) first.
+
+\textbf{(c) Primes that divide.} Let $p$ be prime with $(p-1)\mid(k-1)$. If $p\mid n$, then $p\mid n^k-n$. Otherwise Fermat's little theorem gives $n^{p-1}\equiv1\pmod p$, hence $n^{k-1}\equiv1$ and $p\mid n(n^{k-1}-1)=n^k-n$.
+
+\textbf{No square factor.} For a prime $p$, take $n=p$: $p^k-p=p\left(p^{k-1}-1\right)$ and $p\nmid p^{k-1}-1$, so $p^2\nmid p^k-p$. Hence $G_k$ is squarefree.
+
+\textbf{Primes that do not divide.} Let $p$ be prime with $(p-1)\nmid(k-1)$, and let $g$ be a primitive root modulo $p$. Its order is $p-1$, so $g^{k-1}\not\equiv1\pmod p$; also $p\nmid g$. Thus $p\nmid g\left(g^{k-1}-1\right)=g^k-g$.
+
+Therefore $G_k$ is exactly the product of the primes $p$ with $(p-1)\mid(k-1)$. $\blacksquare$
+
+This agrees with the given values: for $k=3,5,7,9$ the primes are $\{2,3\}$, $\{2,3,5\}$, $\{2,3,7\}$, $\{2,3,5\}$ (note $9$ is not prime), giving $6,30,42,30$.
+
+\textbf{(a)} $k-1=10$ has divisors $1,2,5,10$, and $p-1\in\{1,2,5,10\}$ gives the primes $2,3,11$ ($p=6$ is not prime). So $G_{11}=2\cdot3\cdot11=\boxed{66}$. Without primitive roots: $66\mid n^{11}-n$ by the first step, and $G_{11}$ divides $2^{11}-2=2046=2\cdot3\cdot11\cdot31$, while $31\nmid3^{11}-3=177144$; so $G_{11}=66$.
+
+\textbf{(b)} $k-1=12$ has divisors $1,2,3,4,6,12$, giving the primes $2,3,5,7,13$. So $G_{13}=2\cdot3\cdot5\cdot7\cdot13=\boxed{2730}$. (Directly: $G_{13}$ divides $2^{13}-2=8190=2\cdot3^2\cdot5\cdot7\cdot13$ and is squarefree.)

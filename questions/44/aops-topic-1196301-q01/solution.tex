@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1196301_geo_prob
+% Stable identity: aops-topic-1196301-q01
+\textbf{Every rhombus is a parallelogram.} Let $ABCD$ be a rhombus with all sides equal to $s$, and draw the diagonal $AC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),D=4*dir(65),C=B+D; draw(A--B--C--D--cycle,linewidth(0.9)); draw(A--C,dashed);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW); label("$s$",(A+B)/2,S); label("$s$",(B+C)/2,E); label("$s$",(C+D)/2,N); label("$s$",(A+D)/2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangles $ABC$ and $CDA$ have $AB=CD$, $BC=DA$ and the common side $AC$, so they are congruent (SSS). Hence $\angle BAC=\angle DCA$, and these are alternate angles for the lines $AB$ and $CD$ with transversal $AC$, so $AB\parallel CD$. Similarly $\angle BCA=\angle DAC$ gives $BC\parallel AD$. Both pairs of opposite sides are parallel, so $ABCD$ is a parallelogram.
+
+\textbf{Not every parallelogram is a rhombus}: a $1\times2$ rectangle is a parallelogram whose sides are not all equal.

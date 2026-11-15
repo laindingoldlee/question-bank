@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1216035_3d_geo
+% Stable identity: aops-topic-1216035-q01
+Work in decimetres: the cone has base radius $4.5$ and height $10.8$, so its slant height is $\sqrt{4.5^2+10.8^2}=\sqrt{136.89}=11.7$. The largest ball touches the base and the slanted surface, so in the vertical cross-section through the axis it is the incircle of an isosceles triangle with sides $11.7$, $11.7$, $9$:
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(-4.5,0),B=(4.5,0),T=(0,10.8),I=(0,3);
+draw(A--B--T--cycle,linewidth(0.9)); draw(circle(I,3),blue); dot(I); draw(I--(0,0),dashed); label("$3$",(0,1.5),E);
+draw(T--(0,0),dotted); label("$10.8$",(0,7),E); label("$4.5$",(-2.25,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[r=\dfrac{\text{Area}}{\text{semiperimeter}}=\dfrac{\dfrac{1}{2}\cdot9\cdot10.8}{\dfrac{11.7+11.7+9}{2}}=\dfrac{48.6}{16.2}=3.\]
+Its volume is $\dfrac{4}{3}\pi\cdot3^3=36\pi$ cubic decimetres, so its mass is $\boxed{36\pi}$ kilograms.

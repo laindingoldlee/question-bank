@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2669400_111th_post_solving_problems
+% Stable identity: aops-topic-2669400-q27
+The centre $(h,k)$ is equidistant from the three points. From the first two,
+\[(h+3)^2+(k+4)^2=(h-3)^2+(k+6)^2\iff12h-4k=20\iff3h-k=5,\]
+and from the last two,
+\[(h-3)^2+(k+6)^2=(h-11)^2+(k+2)^2\iff16h+8k=80\iff2h+k=10.\]
+So $h=3$, $k=4$. The radius is the distance from $(3,4)$ to $(3,-6)$, namely $10$. Centre $\boxed{(3,4)}$, radius $\boxed{10}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair P1=(-3,-4),P2=(3,-6),P3=(11,-2),O=(3,4);
+draw(circle(O,10),linewidth(0.8));draw(P1--P2--P3,gray);
+draw((-1,-8)--(5,10),dashed);draw((8,-6)--(-0.5,11),dashed);dot(P1);dot(P2);dot(P3);dot(O);
+label("$(-3,-4)$",P1,W,fontsize(7pt));label("$(3,-6)$",P2,SE,fontsize(7pt));label("$(11,-2)$",P3,E,fontsize(7pt));label("$(3,4)$",O+(0.4,0.3),E,fontsize(7pt));
+\end{asy}

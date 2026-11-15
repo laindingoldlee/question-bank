@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3267915_2023_lmt_fall_guts_round_p16p27___lexington_mathematical_tournament
+% Stable identity: aops-topic-3267915-q20
+The base circumradius is $\dfrac{2}{\sqrt3}$, so the altitude is $h=\sqrt{4-\dfrac{4}{3}}=\dfrac{2\sqrt6}{3}$. Put the base plane at height zero and the apex at height $h$. For an axis point at height $z\le h$, its distance to each side plane is $\dfrac{h-z}{3}$. To see the factor, the base inradius is $\rho=\dfrac{1}{\sqrt3}$; in the perpendicular section through an edge midpoint the side plane is represented by a line joining $(0,h)$ to $(\rho,0)$, giving distance $\dfrac{\rho(h-z)}{\sqrt{h^2+\rho^2}}=\dfrac{h-z}{3}$.
+Tangency to the base requires radius $|z|$, so $|z|=\dfrac{h-z}{3}$. For $z\ge0$ this gives $z=\dfrac{h}{4}$; for $z<0$ it gives $z=-\dfrac{h}{2}$. Thus radii are $\dfrac{\sqrt6}{6}$ and $\dfrac{\sqrt6}{3}$. Their volumes sum to
+\[\dfrac{4\pi}{3}\left[\left(\dfrac{\sqrt6}{6}\right)^3+\left(\dfrac{\sqrt6}{3}\right)^3\right]=\boxed{\dfrac{\pi\sqrt6}{3}}.\]
+\begin{asy}
+usepackage("amsmath"); size(220);
+real h=2*sqrt(6)/3,rho=1/sqrt(3);pair D=(0,h),Ep=(0,0),F=(rho,0),O1=(0,h/4),O2=(0,-h/2);draw((-1.7,0)--(1.7,0));draw(D--(1.6,-1.6*h/rho+h));draw(D--(-1.6,-1.6*h/rho+h),gray+dashed);draw(D--(0,-1.8),dashed);draw(circle(O1,h/4),blue);draw(circle(O2,h/2),red);dot(D);dot(Ep);dot(F);dot(O1);dot(O2);label("$D$",D,N);label("$E$",Ep,W);label("$F$",F,NE);label("$O_1$",O1,W);label("$O_2$",O2,W);label("$\rho$",(rho/2,0),S);label("Axis section; dashed reflected side is auxiliary",(0,-3.4));
+\end{asy}

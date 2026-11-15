@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1622135_2013_amc_10a_16
+% Stable identity: aops-topic-1622135-q01
+The reflection $(x,y)\mapsto(16-x,y)$ sends the triangle $T$ with vertices $(6,5)$, $(8,-3)$, $(9,1)$ to the triangle $T'$ with vertices $(10,5)$, $(8,-3)$, $(7,1)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair P1=(6,5),P2=(8,-3),P3=(9,1),Q1=(10,5),Q3=(7,1),K=(8,7/3);
+fill(P2--P3--K--Q3--cycle,lightgray);
+draw((8,-3.8)--K,dashed+gray);draw((8,4.75)--(8,5.6),dashed+gray);label("$x=8$",(8,5.6),N,gray);
+draw(P1--P2--P3--cycle,linewidth(0.9));draw(Q1--P2--Q3--cycle,blue+linewidth(0.9));
+dot(P1);dot(P2);dot(P3);dot(Q1);dot(Q3);dot(K);
+label("$(6,5)$",P1,NW);label("$(10,5)$",Q1,NE,blue);label("$(8,-3)$",P2,SE);
+label("$(9,1)$",P3,E);label("$(7,1)$",Q3,W,blue);
+label("$\left(8,\dfrac{7}{3}\right)$",(8,4.0),fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Area of each triangle.} By the shoelace formula,
+\[
+[T]=\dfrac{1}{2}\left|6(-3-1)+8(1-5)+9(5+3)\right|=\dfrac{1}{2}\left|-24-32+72\right|=8,
+\]
+and $[T']=8$ as well.
+
+\textbf{The kite is the overlap.} The side of $T$ through $(6,5)$ and $(8,-3)$ passes through $(7,1)$, and the side of $T'$ through $(10,5)$ and $(8,-3)$ passes through $(9,1)$. The top side of $T$ (through $(6,5)$ and $(9,1)$) and the top side of $T'$ (through $(10,5)$ and $(7,1)$) meet on the mirror line at $\left(8,\dfrac{7}{3}\right)$, since the first has equation $y=5-\dfrac{4}{3}(x-6)$, which gives $y=\dfrac{7}{3}$ at $x=8$. So the region common to both triangles is the kite with vertices $(8,-3)$, $(9,1)$, $\left(8,\dfrac{7}{3}\right)$, $(7,1)$, shaded in the figure. Its diagonals have lengths $9-7=2$ and $\dfrac{7}{3}+3=\dfrac{16}{3}$, so its area is $\dfrac{1}{2}\cdot2\cdot\dfrac{16}{3}=\dfrac{16}{3}$.
+
+\textbf{The union.} The student's kite is the \emph{intersection} $T\cap T'$, not the union. The union consists of both triangles, with the kite counted once:
+\[
+[T\cup T']=[T]+[T']-[T\cap T']=8+8-\dfrac{16}{3}=\boxed{\textbf{(E) }\dfrac{32}{3}}.
+\]

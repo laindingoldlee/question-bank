@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2594794_graphs_of_functions
+% Stable identity: aops-topic-2594794-q01
+\textbf{(a)} A point $(a,b)$ lies on $y=f(x)$ exactly when $b=f(a)$, and then $(4-a,b)$ lies on $y=f(4-x)$, because $f(4-(4-a))=f(a)=b$; the converse is the same computation. The points $(a,b)$ and $(4-a,b)$ are mirror images in the line $x=2$, since their midpoint is $(2,b)$.
+
+\textbf{(b)} Replacing $x$ by $-x$ reflects a graph in the $y$-axis, and replacing $x$ by $x-h$ shifts it $h$ units to the right.
+\begin{itemize}
+\item Reflect first: $y=f(-x)$; then shift $4$ units to the \emph{right}: $y=f(-(x-4))=f(4-x)$.
+\item Shift first, $4$ units to the \emph{left}: $y=f(x+4)$; then reflect: $y=f(-x+4)=f(4-x)$.
+\end{itemize}
+The student's order (reflect, then shift left) gives $y=f(-(x+4))=f(-x-4)$, which is wrong in general. The order matters because the reflection also reverses the direction of any later shift.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return sqrt(x);} real g(real x){return sqrt(4-x);}
+draw((-2.5,0)--(6.5,0),Arrow(4));draw((0,-0.4)--(0,3),Arrow(4));
+draw(graph(f,0,6),linewidth(0.9));draw(graph(g,-2,4),linewidth(0.9)+dashed);
+draw((2,-0.4)--(2,2.8),dotted);
+pair Pp=(1,1),Qq=(3,1);dot(Pp);dot(Qq);draw(Pp--Qq,gray);
+label("$y=f(x)$",(6,f(6)),N,fontsize(8pt));label("$y=f(4-x)$",(-2,g(-2)),N,fontsize(8pt));label("$x=2$",(2,2.8),N,fontsize(8pt));
+label("$(a,b)$",Pp,NW,fontsize(8pt));label("$(4-a,b)$",Qq,NE,fontsize(8pt));
+\end{asy}
+
+In the sketch $f(x)=\sqrt x$; the dashed curve $y=\sqrt{4-x}$ is its mirror image in $x=2$.

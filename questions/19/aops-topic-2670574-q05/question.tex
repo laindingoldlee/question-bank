@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2670574_some_actually_good_proving_problems
+% Stable identity: aops-topic-2670574-q05
+The seven tetrominoes $I,O,T,S,Z,L,J$ (the Tetris pieces, each made of four unit squares) are shown below.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+void piece(pair[] c,pair off){for(int i=0;i<c.length;++i) filldraw(shift(off+c[i])*unitsquare,lightgray,black);}
+pair[] pI={(0,0),(1,0),(2,0),(3,0)};pair[] pO={(0,0),(1,0),(0,1),(1,1)};pair[] pT={(0,1),(1,1),(2,1),(1,0)};
+pair[] pS={(0,0),(1,0),(1,1),(2,1)};pair[] pZ={(0,1),(1,1),(1,0),(2,0)};pair[] pL={(0,0),(0,1),(0,2),(1,0)};pair[] pJ={(1,0),(1,1),(1,2),(0,0)};
+piece(pI,(0,4));piece(pO,(5.5,4));piece(pT,(9,4));piece(pS,(13.5,4));
+piece(pZ,(0,0));piece(pL,(4.5,0));piece(pJ,(7.5,0));
+label("$I$",(2,4),S);label("$O$",(6.5,4),S);label("$T$",(10.5,4),S);label("$S$",(15,4),S);
+label("$Z$",(1.5,0),S);label("$L$",(5,0),S);label("$J$",(8.5,0),S);
+\end{asy}
+
+Prove that it is impossible to place one copy of each of the seven pieces on a unit grid, without overlaps (rotations and reflections allowed), so that together they form a rectangle.

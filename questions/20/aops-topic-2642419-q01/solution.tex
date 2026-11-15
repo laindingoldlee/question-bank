@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2642419_concentric_cirles_and_stuff
+% Stable identity: aops-topic-2642419-q01
+Since $OM\perp TM$, $TM=\sqrt{OT^2-OM^2}=\sqrt{27-9}=3\sqrt2$. Then $MN=3\sqrt2$ is a chord of circle $B$ with $OM^2+ON^2=9+9=18=MN^2$, so $\angle MON=90^\circ$. There are two such points $N$, on either side of line $OM$. For the one on the same side as $T$, $\angle TMN=45^\circ$; for the other ($N'$ in the figure), $\angle TMN'=135^\circ$. So $N$ is on the side of $T$.
+
+Now $ON\perp OM$ and $TM\perp OM$, so $ON\parallel TM$ and $TMON$ is a right trapezoid with parallel sides $TM=3\sqrt2$, $ON=3$ and height $OM=3$:
+\[[TMON]=\dfrac{3\sqrt2+3}{2}\cdot3=\dfrac{9\left(1+\sqrt2\right)}{2}.\]
+So $a=9$, $b=1$, $c=2$, $d=2$ (forced, since $c$ squarefree and $\gcd(a,d)=1$), and
+\[(ac-b)(a+2b)=(18-1)(9+2)=\boxed{187}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),M=(3,0),T=(3,3*sqrt(2)),Np=(0,3),N2=(0,-3);
+draw(circle(O,3*sqrt(3)),gray);draw(circle(O,3),gray);
+fill(T--M--O--Np--cycle,lightgray);
+draw((3,-1.5)--(3,5.4),gray);
+draw(T--M--O--Np--cycle,linewidth(0.8));draw(M--Np,dashed);draw(M--N2,dotted);draw(O--T,dashed);
+draw(M+(-0.3,0)--M+(-0.3,0.3)--M+(0,0.3));draw((0.3,0)--(0.3,0.3)--(0,0.3));
+dot(O);dot(M);dot(T);dot(Np);dot(N2);
+label("$O$",O,SW);label("$M$",M,SE);label("$T$",T,E);label("$N$",Np,NW);label("$N'$",N2,SW);
+label("$3\sqrt2$",(T+M)/2,E);label("$3$",(O+M)/2,S);label("$3$",(O+Np)/2,W);label("$\ell$",(3,5.4),E);
+\end{asy}

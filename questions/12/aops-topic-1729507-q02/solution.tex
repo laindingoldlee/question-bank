@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1729507_cyclic_hexagon
+% Stable identity: aops-topic-1729507-q02
+The bases add up to $23$ and differ by $17$, so they are $20$ and $3$; the legs add up to $23$ and differ by $7$, so they are $15$ and $8$. Let $ABCD$ have bases $AB=20$, $DC=3$ and legs $AD=8$, $BC=15$. Through $C$ draw $CE\parallel DA$ with $E$ on $AB$. Then $AECD$ is a parallelogram, $AE=3$, $CE=8$ and $EB=17$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real h=120/17,p=64/17; pair A=(0,0),B=(20,0),D=(p,h),C=(p+3,h),Ep=(3,0);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(C--Ep,dashed+blue);
+pair u=unit(Ep-C),w=unit(B-C);draw(C+0.7*u--C+0.7*u+0.7*w--C+0.7*w,blue);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,N);label("$E$",Ep,S);
+label("$8$",(A+D)/2,W);label("$15$",(B+C)/2,NE);label("$3$",(C+D)/2,N);
+label("$3$",(A+Ep)/2,S);label("$17$",(Ep+B)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangle $ECB$ has sides $8,15,17$, and $8^2+15^2=17^2$, so it has a right angle at $C$. Its height to $EB$, which is the height of the trapezoid, is
+\[
+h=\dfrac{8\cdot15}{17}=\dfrac{120}{17}.
+\]
+The area is $\dfrac{20+3}{2}\cdot\dfrac{120}{17}=\dfrac{1380}{17}$, a reduced fraction, so $x-y=1380-17=\boxed{1363}$.

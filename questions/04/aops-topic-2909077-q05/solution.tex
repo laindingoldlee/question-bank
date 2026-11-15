@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2909077_problem_topic
+% Stable identity: aops-topic-2909077-q05
+For an acute triangle, the orthic triangle has angles $180^\circ-2A$, $180^\circ-2B$, $180^\circ-2C$. Writing each angle as $60^\circ+\varepsilon$, the deviation transforms as $\varepsilon\mapsto-2\varepsilon$. After $n$ steps the deviations are $(-2)^n\cdot(-0.001^\circ,0,0.001^\circ)$. The triangle stays acute while all angles are below $90^\circ$, i.e. while $0.001\cdot2^n<30$. Since $2^{14}=16384$ and $2^{15}=32768$, the first obtuse triangle occurs at $n=\boxed{15}$.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(5,0),C=(2.5,4.3);pair Ha=A+dot(B-A,C-A)*0+((B+C)/2-A)*0;pair F1=C+dot(A-C,B-C)/dot(B-C,B-C)*(B-C)-A*0;draw(A--B--C--cycle);pair Da=B+dot(A-B,C-B)/dot(C-B,C-B)*(C-B),Db=A+dot(B-A,C-A)/dot(C-A,C-A)*(C-A),Dc=A+dot(C-A,B-A)/dot(B-A,B-A)*(B-A);draw(Da--Db--Dc--cycle,dashed);label("$A_0$",A,SW);label("$B_0$",B,SE);label("$C_0$",C,N);label("$A_1$",Da,NE);label("$B_1$",Db,NW);label("$C_1$",Dc,S);
+\end{asy}

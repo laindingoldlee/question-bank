@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2530068_problems_for_anniversary_and_unpostban
+% Stable identity: aops-topic-2530068-q05
+By the angle bisector theorem, $\dfrac{BD}{DC}=\dfrac{AB}{AC}=\dfrac68$, so $BD=3$ and $DC=4$. Stewart's theorem for the cevian $AD$ gives
+\[AB^2\cdot DC+AC^2\cdot BD=BC\left(AD^2+BD\cdot DC\right):\qquad 36\cdot4+64\cdot3=7\left(AD^2+12\right).\]
+So $336=7AD^2+84$, $AD^2=36$ and $AD=\boxed{6}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(7,0);
+real x=(36-64+49)/14; pair A=(x,sqrt(36-x^2));
+pair D=(3,0);
+draw(A--B--C--cycle,linewidth(0.8)); draw(A--D,red+linewidth(0.9));
+real a1=degrees(B-A), a2=degrees(D-A), a3=degrees(C-A);
+draw(arc(A,0.9,a1,a2)); draw(arc(A,1.05,a2,a3));
+dot(D);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);
+label("$6$",(A+B)/2,NW);label("$8$",(A+C)/2,NE);label("$3$",(B+D)/2,S);label("$4$",(D+C)/2,S);
+\end{asy}

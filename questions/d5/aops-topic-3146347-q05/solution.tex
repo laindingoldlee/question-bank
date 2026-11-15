@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3146347_2022_lmt_fall_theme_round__part_3__ephram__lexington_math_tournament
+% Stable identity: aops-topic-3146347-q05
+In each column there are initially four empty cells between the pawns. Every move reduces this gap by 1. Either player has a move whenever some gap is positive, so the game ends after exactly 24 moves, twelve by each. Let $w_i$ be white advances in column $i$. At termination $0\le w_i\le4$ and $\sum w_i=12$; black advances are $4-w_i$. Conversely any such vector is reachable: alternate white and black moves toward their prescribed targets, never exceeding either target. The count by inclusion-exclusion is $\binom{17}{5}-6\binom{12}{5}+\binom62\binom75=6188-4752+315=\boxed{1751}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int k=0;k<=6;++k){draw((k,0)--(k,6),gray);draw((0,k)--(6,k),gray);}for(int k=0;k<6;++k){draw(circle((k+.5,.5),.23));fill(circle((k+.5,5.5),.23),black);}draw((6.5,.5)--(6.5,2),blue,Arrow);draw((6.5,5.5)--(6.5,4),red,Arrow);label("initial position",(3,-.5));
+\end{asy}

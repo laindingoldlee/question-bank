@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2523692_congruents_in_triangle
+% Stable identity: aops-topic-2523692-q01
+Here $\angle BAC=180^\circ-40^\circ-80^\circ=60^\circ$ and $\angle ABD=\angle DBC=20^\circ$.
+
+\textbf{Where $E$ lies.} In triangle $ABD$, $\angle ADB=180^\circ-60^\circ-20^\circ=100^\circ>60^\circ=\angle BAD$, so $AB>BD$ (the larger side is opposite the larger angle). Hence $E$, with $BE=BA$, lies on the ray $BD$ beyond $D$.
+
+\textbf{$A$, $B$, $C$, $E$ are concyclic.} Triangle $ABE$ is isosceles with $BA=BE$ and apex angle $20^\circ$, so $\angle BEA=\angle BAE=80^\circ$. Thus $\angle AEB=80^\circ=\angle ACB$. The segments $AC$ and $BE$ cross at $D$ (as $D$ lies between $B$ and $E$), so $ABCE$ is a convex quadrilateral with its vertices in this order; in particular $E$ and $C$ lie on the same side of $AB$, and $B$ and $C$ lie on the same side of $AE$. So $E$ and $C$ see the segment $AB$ under equal angles from the same side, and $A,B,C,E$ lie on one circle.
+
+\textbf{$CE=AE$.} Since $\angle BAE=80^\circ>60^\circ=\angle BAC$, the ray $AC$ lies between $AB$ and $AE$, and $\angle CAE=80^\circ-60^\circ=20^\circ$. On the circle, the inscribed angles $\angle ACE$ and $\angle ABE$ stand on the same arc $AE$ (as $B$ and $C$ lie on the same side of $AE$), so $\angle ACE=\angle ABE=20^\circ$. Triangle $ACE$ has equal angles at $A$ and $C$, so $CE=AE$.
+
+\textbf{$AD=AE$.} In triangle $ADE$: $\angle DAE=\angle CAE=20^\circ$, $\angle AED=\angle AEB=80^\circ$, and $\angle ADE=180^\circ-\angle ADB=80^\circ$. The angles at $D$ and $E$ are equal, so $AD=AE$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(Sin(60),0), A=Sin(80)*dir(40);
+pair D=extension(B,B+dir(20),A,C), Ep=B+Sin(80)*dir(20);
+pair cc(pair P,pair Q,pair R){pair m1=(P+Q)/2, m2=(Q+R)/2; return extension(m1,m1+rotate(90)*(Q-P),m2,m2+rotate(90)*(R-Q));}
+pair O=cc(A,B,C); real R=abs(A-O);
+draw(circle(O,R),gray+dashed);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(B--Ep,linewidth(0.8)); draw(A--Ep,blue); draw(C--Ep,blue);
+draw(arc(B,0.18,0,20)); draw(arc(B,0.21,20,40));
+label("$20^\circ$",B+0.3*dir(10),fontsize(7pt)); label("$20^\circ$",B+0.33*dir(31),fontsize(7pt));
+pair m1=(A+D)/2, m2=(C+Ep)/2;
+draw(shift(m1)*rotate(degrees(D-A))*((0,-0.02)--(0,0.02)),red+linewidth(0.9));
+draw(shift(m2)*rotate(degrees(Ep-C))*((0,-0.02)--(0,0.02)),red+linewidth(0.9));
+dot(D); dot(Ep);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,W); label("$E$",Ep,E);
+\end{asy}
+
+Therefore $AD=AE=CE$. $\blacksquare$

@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h3134466_2012_lmt_spring_guts_round_p13p24_lexington_mathematical_tournament
+% Stable identity: aops-topic-3134466-q20
+Total paths number $\binom{10}4=210$. The number through $(x,y)$ is $B(x,y)=\binom{x+y}x\binom{10-x-y}{4-x}$, so allowed paths number $210-B(x,y)$. Over the 33 possible forbidden points, the least blocked count is 1 (at $(4,0)$ or $(0,6)$), and the greatest is 126 (at $(0,1)$ or $(4,5)$). The finite exact table calculation below verifies both extrema. Hence the requested difference is $(210-1)-(210-126)=\boxed{125}$.
+\begin{verbatim}
+from math import comb
+blocked={(x,y):comb(x+y,x)*comb(10-x-y,4-x)
+ for x in range(5) for y in range(7)
+ if (x,y) not in [(0,0),(4,6)]}
+assert len(blocked)==33
+assert min(blocked.values())==1 and max(blocked.values())==126
+\end{verbatim}
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int x=0;x<=4;++x)draw((x,0)--(x,6),gray);for(int y=0;y<=6;++y)draw((0,y)--(4,y),gray);dot((0,1),red);dot((4,0),blue);label("126 paths blocked",(0,1),W);label("1 path blocked",(4,0),E);
+\end{asy}

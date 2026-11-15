@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2386090_100_posts
+% Stable identity: aops-topic-2386090-q24
+\textbf{Simplify.} Since $x\left(x^2+x+1\right)=x^3+x^2+x$,
+\[y=x+\dfrac{1}{x^2+x+1}.\]
+The denominator $x^2+x+1=\left(x+\dfrac12\right)^2+\dfrac34\ge\dfrac34$ is never $0$, so there are no vertical asymptotes.
+
+\textbf{Asymptote.} The extra term $\dfrac{1}{x^2+x+1}$ is positive and tends to $0$ as $x\to\pm\infty$, so the graph lies above the line $y=x$ and approaches it at both ends. The gap is largest, $\dfrac43$, at $x=-\dfrac12$, where $y=-\dfrac12+\dfrac43=\dfrac56$.
+
+\textbf{Intercepts.} The numerator factors as $(x+1)\left(x^2+1\right)$, so the only $x$-intercept is $(-1,0)$; the $y$-intercept is $(0,1)$.
+
+\textbf{Shape.} The derivative is
+\[y'=1-\dfrac{2x+1}{\left(x^2+x+1\right)^2}=\dfrac{\left(x^2+x+1\right)^2-(2x+1)}{\left(x^2+x+1\right)^2}=\dfrac{x^2\left(x^2+2x+3\right)}{\left(x^2+x+1\right)^2}\ge0,\]
+with equality only at $x=0$. So the function is increasing everywhere, with a horizontal tangent (a stationary point of inflection) at $(0,1)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return x+1/(x^2+x+1);}
+real xa=-4, xb=4;
+draw((xa,xa)--(xb,xb),dashed+gray(0.4));
+draw(graph(f,xa,xb,400),blue+linewidth(0.9));
+draw((xa,0)--(xb+0.4,0),Arrow(6)); draw((0,xa)--(0,xb+0.6),Arrow(6));
+label("$x$",(xb+0.4,0),E); label("$y$",(0,xb+0.6),N);
+dot((-1,0)); dot((0,1));
+label("$(-1,0)$",(-1,0),NW); label("$(0,1)$",(0,1),NW);
+label("$y=x$",(xb,xb),SE,gray(0.3));
+\end{asy}

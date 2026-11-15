@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1600139_urgent_help
+% Stable identity: aops-topic-1600139-q01
+\textbf{The method.} Divide by $16$ repeatedly and record the remainders:
+\[
+2457=16\cdot153+9,\qquad 153=16\cdot9+9,\qquad 9=16\cdot0+9 .
+\]
+Reading the remainders from last to first gives $2457=\boxed{999_{16}}$.
+
+\textbf{Why it works.} If $N=d_k16^k+\dots+d_116+d_0$ with digits $0\le d_i\le15$, then
+\[
+N=16\left(d_k16^{k-1}+\dots+d_1\right)+d_0 ,
+\]
+so $d_0$ is the remainder of $N$ on division by $16$ and the quotient is the number with base-$16$ digits $d_k\ldots d_1$. Repeating the division peels off $d_1$, then $d_2$, and so on, until the quotient is $0$. Indeed $9\cdot16^2+9\cdot16+9=2304+144+9=2457$.

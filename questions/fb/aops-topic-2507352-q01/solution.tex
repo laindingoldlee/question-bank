@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2507352_finding_points_from_midpoint_of_segment
+% Stable identity: aops-topic-2507352-q01
+\textbf{(a)} Let $B=(x_2,y_2)$. The midpoint formula says
+\[m_1=\dfrac{x_1+x_2}{2},\qquad m_2=\dfrac{y_1+y_2}{2},\]
+so $x_2=2m_1-x_1$ and $y_2=2m_2-y_1$. Equivalently, the step from $A$ to $M$ is repeated from $M$ to $B$: $B=M+(M-A)$.
+
+\textbf{(b)} $B=(2\cdot2-(-3),\;2\cdot(-1)-5)=\boxed{(7,-7)}$. Check: going from $A$ to $M$ adds $5$ to $x$ and $-6$ to $y$; doing the same again from $M$ reaches $(7,-7)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(-3,5), M=(2,-1), B=(7,-7);
+draw((-4.5,0)--(8.5,0),Arrow(6)); draw((0,-8.5)--(0,6.5),Arrow(6));
+label("$x$",(8.5,0),E); label("$y$",(0,6.5),N);
+draw(A--B,linewidth(0.9));
+draw(A--(M.x,A.y),dashed); draw(M--(M.x,A.y),dashed); draw(M--(B.x,M.y),dashed); draw(B--(B.x,M.y),dashed);
+label("$+5$",(1,A.y),N,fontsize(8pt)); label("$-6$",(M.x,(A.y+M.y)/2),E,fontsize(8pt));
+label("$+5$",((M.x+B.x)/2,M.y),N,fontsize(8pt)); label("$-6$",(B.x,(M.y+B.y)/2),E,fontsize(8pt));
+dot(A); dot(M); dot(B);
+label("$A(-3,5)$",A,W); label("$M(2,-1)$",M,SW,Fill(white)); label("$B(7,-7)$",B,SW);
+\end{asy}

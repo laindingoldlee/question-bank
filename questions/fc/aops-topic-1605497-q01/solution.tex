@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1605497_probably_easy_for_you_guys_need_help
+% Stable identity: aops-topic-1605497-q01
+\textbf{Upper bound.} Two distinct lines meet in at most $1$ point, and a line meets a circle in at most $2$ points. There are $\dbinom42=6$ pairs of lines and $4$ line--circle pairs, so the number of intersection points is at most
+\[
+6\cdot1+4\cdot2=14 .
+\]
+
+\textbf{The bound is attained.} Take four lines through points near the centre of the circle, with four different directions, so that every line is a secant (meets the circle twice), no two are parallel, no three pass through one point, and no crossing of two lines lies on the circle. Then all $6+8=14$ intersection points are distinct:
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+draw(unitcircle,linewidth(0.9));
+real[] nrm={75.5,98,134.8,42.5}; real[] off={0.141,0.091,-0.28,-0.156};
+pen[] pc={blue,red,deepgreen,purple};
+pair[] P,D;
+for(int i=0;i<4;++i){P[i]=off[i]*dir(nrm[i]); D[i]=dir(nrm[i]+90);}
+for(int i=0;i<4;++i){draw(P[i]-1.55*D[i]--P[i]+1.55*D[i],pc[i]);
+  pair[] X=intersectionpoints(P[i]-2*D[i]--P[i]+2*D[i],unitcircle); for(int k=0;k<X.length;++k) dot(X[k]); }
+for(int i=0;i<4;++i) for(int j=i+1;j<4;++j) dot(extension(P[i],P[i]+D[i],P[j],P[j]+D[j]));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The six crossings of the lines lie inside the circle and the eight points where the lines cross the circle lie on it.) So the maximum is $\boxed{14}$.
+
+A quick way to see the count without drawing: add the figures one at a time. Each new line can cross each earlier line once and the circle twice, so the lines add $2$, $1+2$, $2+2$, $3+2$ new points, a total of $2+3+4+5=14$.

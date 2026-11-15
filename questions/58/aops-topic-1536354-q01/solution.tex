@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1536354_157590
+% Stable identity: aops-topic-1536354-q01
+Let $M$ be the midpoint of $AB$ and $H$ the foot of the altitude from $C$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=4*0.965926*(0.965926,0.258819);
+pair M=(2,0),H=(C.x,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--M,heavygreen+dashed);draw(C--H,blue);
+real s=0.12;draw(H+(0,s)--H+(s,s)--H+(s,0),blue);
+pair u=unit(A-C),v=unit(B-C);draw(C+s*u--C+s*u+s*v--C+s*v);
+dot(M);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$M$",M,S);label("$H$",H,S);
+draw(arc(A,0.9,0,15),red);label("$15^\circ$",A+0.95*dir(7.5),E,red);
+draw(arc(M,0.4,0,degrees(C-M)),heavygreen);label("$30^\circ$",M+0.42*dir(degrees(C-M)/2),dir(degrees(C-M)/2),heavygreen);
+label("$\dfrac {c}{2}$",(3.3,0.36),heavygreen);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(a)} In a right triangle the midpoint of the hypotenuse is the centre of the circumcircle, so $MA=MC=MB=\dfrac {c}{2}$. Triangle $AMC$ is isosceles with $\angle MCA=\angle A=15^\circ$, so the exterior angle $\angle CMB=15^\circ+15^\circ=30^\circ$. In the right triangle $CHM$ the side $CH$ is opposite the $30^\circ$ angle, so it is half of the hypotenuse $MC$:
+\[
+CH=\dfrac{1}{2}\cdot\dfrac {c}{2}=\dfrac {c}{4} .\qquad\blacksquare
+\]
+
+\textbf{(b)} Let $a=BC$ and $b=AC$. Then $a^2+b^2=c^2$, and computing the area in two ways gives $ab=c\cdot CH=\dfrac{c^2}{4}$. Hence
+\[
+(b+a)^2=c^2+\dfrac{c^2}{2}=\dfrac{3c^2}{2},\qquad (b-a)^2=c^2-\dfrac{c^2}{2}=\dfrac{c^2}{2},
+\]
+so $b+a=\dfrac{\sqrt6}{2}c$ and $b-a=\dfrac{\sqrt2}{2}c$ (as $b>a$, the longer leg being opposite the larger angle). Therefore
+\[
+\boxed{BC=\dfrac{\sqrt6-\sqrt2}{4}\,c,\qquad AC=\dfrac{\sqrt6+\sqrt2}{4}\,c}.
+\]
+So the sides of a $15$-$75$-$90$ triangle are in the ratio $(\sqrt6-\sqrt2):(\sqrt6+\sqrt2):4$, and its altitude to the hypotenuse is a quarter of the hypotenuse.

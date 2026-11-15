@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2784863_2016_winmac_guts_round__sets_610__winchester_math_competition
+% Stable identity: aops-topic-2784863-q21
+For a $ k $-dimensional face, choose its $ k $ varying coordinates and fix the other $ 4-k $ coordinates at either endpoint. Thus the count is $\binom4k2^{4-k}$. Vertices, edges, and squares number 16,32,24 respectively, summing to $\boxed{72}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] P={(0,0),(2,0),(2,2),(0,2),(0.7,0.7),(2.7,0.7),(2.7,2.7),(0.7,2.7)};int[][] ed={{0,1},{1,2},{2,3},{3,0},{4,5},{5,6},{6,7},{7,4},{0,4},{1,5},{2,6},{3,7}};for(int[] e:ed){draw(P[e[0]]--P[e[1]]);draw((P[e[0]]+(4,1))--(P[e[1]]+(4,1)));}for(pair p:P)draw(p--(p+(4,1)),gray);label("projected tesseract",(3,4));
+\end{asy}

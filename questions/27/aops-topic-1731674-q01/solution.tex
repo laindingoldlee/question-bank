@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1731674_simple_math_problem
+% Stable identity: aops-topic-1731674-q01
+An amount is $3a+5b$ with $0\le a,b\le20$, not both $0$; all amounts lie between $1$ and $3\cdot20+5\cdot20=160$ cents.
+
+\textbf{Symmetry.} Using $a$ threes and $b$ fives leaves $20-a$ threes and $20-b$ fives, worth $160-(3a+5b)$. So $v$ can be made if and only if $160-v$ can be made (counting $0$ as made by no stamps).
+
+\textbf{Amounts up to $80$.} For $1\le v\le80$ take $a\in\{0,1,2,3,4\}$ with $3a\equiv v\pmod5$. If $v\ge3a$, then $b=\dfrac{v-3a}{5}\le16$, so $v=3a+5b$ with both counts at most $20$. The condition $v\ge3a$ fails only for $v=1,2,4,7$ (which need $a=2,4,3,4$), and these four amounts are clearly impossible. So in $1\le v\le80$ exactly $1,2,4,7$ cannot be made.
+
+\textbf{Amounts from $80$ to $160$.} By the symmetry, $v$ with $80\le v\le159$ is impossible exactly when $160-v\in\{1,2,4,7\}$, i.e.\ $v\in\{159,158,156,153\}$, and $160$ itself is possible.
+
+So $8$ of the $160$ amounts $1,2,\dots,160$ are impossible, and $160-8=\boxed{152}$ amounts can be made.

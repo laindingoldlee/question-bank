@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1562225_mathcounts_nationals_question_i_think
+% Stable identity: aops-topic-1562225-q01
+The region $|x|+|y|\le9$ is a square with vertices $(\pm9,0)$ and $(0,\pm9)$; its diagonals have length $18$, so its area is $\dfrac{18\cdot18}{2}=162$.
+
+The condition $-5\le x\le4$ cuts off two triangles:
+\begin{itemize}
+\item the part with $x>4$: vertices $(9,0)$, $(4,5)$, $(4,-5)$, area $\dfrac{1}{2}\cdot10\cdot5=25$;
+\item the part with $x<-5$: vertices $(-9,0)$, $(-5,4)$, $(-5,-4)$, area $\dfrac{1}{2}\cdot8\cdot4=16$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+fill((-5,-4)--(-5,4)--(0,9)--(4,5)--(4,-5)--(0,-9)--cycle,paleblue);
+draw((9,0)--(0,9)--(-9,0)--(0,-9)--cycle,linewidth(0.8));
+draw((-5,-10)--(-5,10),red+dashed);draw((4,-10)--(4,10),red+dashed);
+draw((-10.5,0)--(10.5,0),gray,Arrow(TeXHead));draw((0,-10.5)--(0,10.5),gray,Arrow(TeXHead));
+label("$x$",(10.5,0),E,gray);label("$y$",(0,10.5),N,gray);
+draw((-5,-4)--(-5,4)--(0,9)--(4,5)--(4,-5)--(0,-9)--cycle,blue+linewidth(1));
+label("$9$",(9,0),NE);label("$-9$",(-9,0),NW);
+label("$x=-5$",(-5,-10),S,red);label("$x=4$",(4,-10),S,red);
+label("$(4,5)$",(4,5),E);label("$(-5,4)$",(-5,4),W);
+label("$25$",(5.6,0.9));label("$16$",(-6.2,0.9));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the area is $162-25-16=\boxed{121}$.
+
+A shortcut for similar questions: at abscissa $x$ the region has height $2(9-|x|)$, a linear function on each side of $0$, so the area is a sum of trapezoids: $\dfrac{(8+18)}{2}\cdot5+\dfrac{(18+10)}{2}\cdot4=65+56=121$.

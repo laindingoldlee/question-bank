@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2668968_proving_problems_thread
+% Stable identity: aops-topic-2668968-q09
+The base is a disc of area $\pi r^2$.
+
+Cut the lateral surface along a slant line and unroll it. It becomes a sector of a circle of radius $\ell$ (every point of the base circle is at distance $\ell$ from the apex). Its arc is the base circumference $2\pi r$. A full circle of radius $\ell$ has circumference $2\pi\ell$, so the sector is the fraction $\dfrac{2\pi r}{2\pi\ell}=\dfrac r\ell$ of that circle, and its area is
+\[\dfrac r\ell\cdot\pi\ell^2=\pi r\ell.\]
+Hence the total surface area is $\boxed{\pi r^2+\pi r\ell}$, which equals $\pi r^2+\pi r\sqrt{r^2+h^2}$ in terms of the height $h$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real r=1,h=1.8;real l=sqrt(r^2+h^2);
+draw(ellipse((0,0),r,0.28*r),linewidth(0.8));draw((-r,0)--(0,h)--(r,0),linewidth(0.8));
+draw((0,0)--(r,0),dashed);draw((0,0)--(0,h),dashed);
+label("$r$",(r/2,0),S,fontsize(8pt));label("$\ell$",(r/2,h/2),NE,fontsize(8pt));
+pair c=(3.6,0.9);real th=360*r/l;
+draw(arc(c,l,90-th/2,90+th/2),linewidth(0.8));draw(c--c+l*dir(90-th/2),linewidth(0.8));draw(c--c+l*dir(90+th/2),linewidth(0.8));
+label("$\ell$",c+0.5*l*dir(90-th/2),SE,fontsize(8pt));label("arc $2\pi r$",c+l*dir(90),N,fontsize(8pt));dot(c);
+\end{asy}

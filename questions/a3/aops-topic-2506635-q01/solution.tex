@@ -1,0 +1,48 @@
+% Source: https://artofproblemsolving.com/community/c3h2506635_the_soda_can_problem
+% Stable identity: aops-topic-2506635-q01
+Use coordinates attached to the can: the axis is the $z$-axis, the bottom is $z=0$, the top is $z=12$, and the cross-sections are the disc $x^2+y^2\le9$. Tilt the can so that the side $x=3$ goes down.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real t=45;
+transform T=rotate(-t);
+pair P(real x,real z){return T*(x,z);}
+path can=P(-3,0)--P(3,0)--P(3,12)--P(-3,12)--cycle;
+pair Q=P(1,12);
+path liq=P(-3,0)--P(3,0)--P(3,12)--P(1,12)--P(-3,8)--cycle;
+fill(liq,rgb(0.75,0.85,1));
+draw(can,linewidth(0.9));
+draw(P(-1,12)--P(1,12),white+linewidth(2.5));
+dot(P(-1,12)); dot(Q,red);
+draw(P(-3,8)--Q,blue+linewidth(0.8));
+draw(P(-3,8)-(1.5,0)--Q+(1.5,0),dashed+gray);
+draw(P(0,0)--P(0,13.5),dotted);
+draw(P(0,0)--P(0,0)+(0,4),dotted);
+label("hole",P(0,12)+(0,1.25),fontsize(8pt));
+label("$X$",Q,NE,red+fontsize(8pt));
+label("surface $z=x+11$",(P(-3,8)+Q)/2,S,blue+fontsize(8pt));
+label("axis",P(0,13.5),E,fontsize(8pt));
+label("$12$",(P(3,0)+P(3,12))/2,SE,fontsize(8pt)); label("$6$",(P(-3,0)+P(3,0))/2,SW,fontsize(8pt));
+draw(arc(P(0,0),3,90,90-t),Arrow(4)); label("$45^\circ$",P(0,0)+3.6*dir(90-t/2),fontsize(8pt));
+\end{asy}
+
+\textbf{The surface.} When the axis makes $45^\circ$ with the vertical, a horizontal plane makes $45^\circ$ with the cross-sections, and it is higher up the can (larger $z$) on the lowered side (larger $x$). So the surface has the form $z=x+k$. The lowest point of the hole is the point $X=(1,0,12)$ of its rim nearest the lowered side; the soda just reaches it, so $12=1+k$ and the surface is $z=x+11$.
+
+Since $x+11\ge8>0$ on the disc, the bottom is covered, and the soda fills the region below $z=\min(12,\,x+11)$. (Where $x>1$ the soda presses against the lid; it touches the hole only at $X$.)
+
+\textbf{The volume.} Slicing parallel to the $yz$-plane, the slice at $x$ has width $2\sqrt{9-x^2}$, so
+\[V=\iint_{x^2+y^2\le9}\min(12,\,x+11)\,dA=\iint(x+11)\,dA-\iint_{x>1}(x-1)\,dA.\]
+By symmetry $\iint x\,dA=0$, so the first integral is $11\cdot9\pi=99\pi$. For the second,
+\[\iint_{x>1}(x-1)\,dA=\int_1^3 2x\sqrt{9-x^2}\,dx-\int_1^3 2\sqrt{9-x^2}\,dx.\]
+\begin{itemize}
+\item $\displaystyle\int_1^3 2x\sqrt{9-x^2}\,dx=\left[-\dfrac23\left(9-x^2\right)^{\dfrac32}\right]_1^3=\dfrac23\cdot8^{\dfrac32}=\dfrac{32\sqrt2}{3}$.
+\item $\displaystyle\int_1^3 2\sqrt{9-x^2}\,dx$ is the area of the part of the disc with $x\ge1$, a circular segment: $9\arccos\dfrac13-1\cdot\sqrt{9-1}=9\arccos\dfrac13-2\sqrt2$.
+\end{itemize}
+So the second integral is $\dfrac{32\sqrt2}{3}+2\sqrt2-9\arccos\dfrac13=\dfrac{38\sqrt2}{3}-9\arccos\dfrac13$, and the soda left is
+\[V=99\pi-\dfrac{38\sqrt2}{3}+9\arccos\dfrac13.\]
+
+\textbf{The answer.} The full can held $\pi\cdot3^2\cdot12=108\pi$, so Bob drank
+\[108\pi-V=\boxed{9\pi+\dfrac{38\sqrt2}{3}-9\arccos\dfrac13\approx35.11}\]
+cubic units.

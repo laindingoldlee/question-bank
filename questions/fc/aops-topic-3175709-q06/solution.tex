@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3175709_2022_abmc_accuracy_round__actonboxborough_math_competition
+% Stable identity: aops-topic-3175709-q06
+There are $\binom94=126$ paths. Through $(6,7)$ there are $\binom42\binom52=60$; through $(7,10)$ there are $\binom61=6$. A north-west path cannot visit both forbidden points, because either order would require a south or east step. Thus the answer is $126-60-6=\boxed{60}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int x=4;x<=8;++x)draw((x,5)--(x,10),gray);for(int y=5;y<=10;++y)draw((4,y)--(8,y),gray);dot("start",(8,5),SE);dot("finish",(4,10),NW);dot("forbidden",(6,7),E);dot("forbidden",(7,10),N);
+\end{asy}

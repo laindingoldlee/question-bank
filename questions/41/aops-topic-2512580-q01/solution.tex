@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2512580_what_theorem_was_this_again
+% Stable identity: aops-topic-2512580-q01
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(7,0),C=(2.2,4.6);
+pair X=(2.9,1.5);
+pair U=extension(X,X+(C-B),A,B), R=extension(X,X+(C-B),A,C);
+pair T=extension(X,X+(C-A),A,B), Q=extension(X,X+(C-A),B,C);
+pair Sp=extension(X,X+(B-A),A,C), P=extension(X,X+(B-A),B,C);
+fill(X--P--Q--cycle,rgb(0.85,0.92,1)); fill(X--R--Sp--cycle,rgb(0.85,0.95,0.85)); fill(X--T--U--cycle,rgb(1,0.88,0.85));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(U--R,blue); draw(T--Q,red); draw(Sp--P,deepgreen);
+dot(X); dot(U);dot(R);dot(T);dot(Q);dot(Sp);dot(P);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$X$",X,1.5*dir(-65));
+label("$T$",T,S);label("$U$",U,S);label("$Q$",Q,NE);label("$P$",P,NE);label("$S$",Sp,W);label("$R$",R,W);
+\end{asy}
+
+\textbf{Three small similar triangles.} In triangle $XTU$ (with $T$, $U$ on $AB$), the side $XT$ is parallel to $CA$ and $XU$ is parallel to $CB$, so its angles at $T$ and $U$ equal the angles $A$ and $B$ of triangle $ABC$. Hence $\triangle TUX\sim\triangle ABC$ with ratio $t=\dfrac{TU}{AB}$, and the side $UX$ corresponds to $BC$:
+\[UX=t\cdot BC.\]
+Likewise, in triangle $SRX$ (with $S$, $R$ on $CA$), $XS\parallel AB$ and $XR\parallel BC$, so $\triangle SXR\sim\triangle ABC$ (with $S,X,R$ corresponding to $A,B,C$) with ratio $s=\dfrac{RS}{CA}$, and
+\[XR=s\cdot BC.\]
+
+\textbf{Along $BC$.} Quadrilateral $UXPB$ has $UX\parallel BP$ and $XP\parallel UB$, so it is a parallelogram and $BP=UX$. Quadrilateral $XRCQ$ has $XR\parallel QC$ and $XQ\parallel RC$, so it is a parallelogram and $QC=XR$.
+
+Since $X$ is inside the triangle, it lies between $U$ and $R$ on segment $UR$, and $UR<BC$ (triangle $AUR$ is a smaller copy of $ABC$). So $BP+QC=UX+XR=UR<BC$: the points lie in the order $B,P,Q,C$, and
+\[BC=BP+PQ+QC=t\cdot BC+PQ+s\cdot BC.\]
+Dividing by $BC$:
+\[\dfrac{PQ}{BC}+\dfrac{RS}{CA}+\dfrac{TU}{AB}=\dfrac{PQ}{BC}+s+t=1.\ \blacksquare\]

@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2852530_right_triangle_abc_with_d_the_midpoint_of_ac_find_angle_bdc
+% Stable identity: aops-topic-2852530-q01
+The midpoint of the hypotenuse is the circumcentre, so $DA=DB=DC$. Triangle $ABD$ is isosceles with $\angle DBA=\angle DAB=\alpha$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),A=(0,3),C=(4,0),D=(A+C)/2;draw(A--B--C--cycle);draw(B--D);draw((0,0.25)--(0.25,0.25)--(0.25,0));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NE);label("$\alpha$",A,5*dir(-70));label("$\alpha$",B,6*dir(55));
+\end{asy}
+
+$\angle BDC$ is an exterior angle of $\triangle ABD$, so $\angle BDC=\angle DAB+\angle DBA=\boxed{2\alpha}$.

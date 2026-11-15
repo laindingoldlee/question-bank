@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1889369_interesting_consecutive_factorial_products
+% Stable identity: aops-topic-1889369-q01
+Suppose $n!\,(n+1)!=m!$. Since $m!\ge(n+1)!$, we have $m\ge n+1$.
+
+\textbf{Claim: $m\le10$.} Suppose $m\ge11$. Then there are two primes in $\left(\dfrac {m}{2},m\right]$, so at least one of them, call it $q$, is different from $n+1$. As $q\le m<2q$, the prime $q$ divides $m!$ exactly once.
+\begin{itemize}
+\item If $q\ge n+2$, then $q$ divides none of the factors $1,2,\dots,n+1$ of $n!\,(n+1)!$, so it does not divide $n!\,(n+1)!$ at all.
+\item If $q\le n$, then $q\le n<n+1\le m<2q$, so $q$ divides $n!$ exactly once and $(n+1)!$ exactly once; hence $q^2$ divides $n!\,(n+1)!$.
+\end{itemize}
+Both cases contradict $n!\,(n+1)!=m!$. So $m\le10$.
+
+\textbf{Checking.} Then $n\le m-1\le9$. The values of $n!\,(n+1)!$ for $n=1,\dots,6$ are
+\[
+2,\quad12,\quad144,\quad2880,\quad86400,\quad3628800,
+\]
+and for $n\ge7$ the product exceeds $10!=3628800$. The factorials up to $10!$ are
+\[
+1,\ 2,\ 6,\ 24,\ 120,\ 720,\ 5040,\ 40320,\ 362880,\ 3628800 .
+\]
+The only matches are $1!\cdot2!=2=2!$ and $6!\cdot7!=3628800=10!$.
+
+So the answer is $\boxed{n=1\text{ and }n=6}$.

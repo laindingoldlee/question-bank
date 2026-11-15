@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2319369_100th_post_problems
+% Stable identity: aops-topic-2319369-q68
+The base is $(16-2x)$ by $(12-2x)$ inches and the height is $x$, so
+\[\boxed{V(x)=x(16-2x)(12-2x)=4x^3-56x^2+192x},\qquad 0<x<6.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(16,0)--(16,12)--(0,12)--cycle,linewidth(0.9));
+real x=2.5;
+for(pair c: new pair[]{(0,0),(16-x,0),(16-x,12-x),(0,12-x)}) filldraw(shift(c)*box((0,0),(x,x)),lightgray,black);
+draw((x,x)--(16-x,x)--(16-x,12-x)--(x,12-x)--cycle,dashed);
+label("$16$",(8,0),S); label("$12$",(0,6),W); label("$x$",(x/2,12),N); label("$x$",(16,12-x/2),E);
+label("$16-2x$",(8,x),N); label("$12-2x$",(x,6),E);
+\end{asy}

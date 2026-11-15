@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1681387_circles_and_tangent
+% Stable identity: aops-topic-1681387-q01
+Let the bisector of $\angle BAT$ meet the circle again at $M$; $M$ lies on the arc $AB$ inside the angle (red in the figure).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=(0,-1),T=(1.7,-1),Bq=dir(35),M=dir(-27.5);
+draw(circle(O,1),gray);
+draw((-0.6,-1)--T,linewidth(0.8));draw(A--Bq,linewidth(0.8));
+draw(A--M,blue+dashed);
+draw(arc(O,1,-90,35),red+linewidth(1.1));
+dot(A);dot(Bq);dot(M);dot(O);
+label("$A$",A,S);label("$T$",T,S);label("$B$",Bq,NE);label("$M$",M,E);label("$O$",O,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the tangent-chord angle theorem, the angle between the tangent $AT$ and the chord $AM$ is half the arc $AM$ inside it:
+\[
+\angle TAM=\dfrac{1}{2}\,\overset{\frown}{AM}.
+\]
+The angle $\angle MAB$ is an inscribed angle, so it is half the arc $MB$ that it subtends (the one not containing $A$): $\angle MAB=\dfrac{1}{2}\,\overset{\frown}{MB}$. Since $AM$ bisects $\angle BAT$, $\angle TAM=\angle MAB$, hence $\overset{\frown}{AM}=\overset{\frown}{MB}$. The arcs $AM$ and $MB$ together make up the arc $AB$ inside the angle, so $M$ is its midpoint. $\blacksquare$

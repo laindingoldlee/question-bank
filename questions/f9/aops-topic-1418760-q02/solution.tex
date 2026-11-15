@@ -1,0 +1,42 @@
+% Source: https://artofproblemsolving.com/community/c3h1418760_construction_geometry
+% Stable identity: aops-topic-1418760-q02
+\textbf{Analysis.} Let $I$ be the incentre. Since $BI$ and $CI$ bisect the angles at $B$ and $C$,
+\[
+\angle BIC=180^\circ-\dfrac{\angle B+\angle C}{2}=180^\circ-\dfrac{180^\circ-\alpha}{2}=90^\circ+\dfrac{\alpha}{2}.
+\]
+So $I$ lies on the arc of points (on one side of $BC$) from which $BC$ is seen at the angle $90^\circ+\dfrac{\alpha}{2}$; and $I$ is at distance $r$ from $BC$, so it lies on the line $\ell$ parallel to $BC$ at distance $r$.
+
+\textbf{Construction.}
+\begin{enumerate}
+\item Draw $BC=a$ and the line $\ell$ parallel to $BC$ at distance $r$ (dashed grey).
+\item Construct the arc over $BC$ that sees $BC$ at angle $90^\circ+\dfrac{\alpha}{2}$ (dashed blue; the angle $90^\circ+\dfrac{\alpha}{2}$ is constructed from a right angle and the bisector of $\alpha$).
+\item Let $I$ be an intersection of $\ell$ with the arc, and draw the circle with centre $I$ and radius $r$ (red); it touches $BC$.
+\item Draw from $B$ and from $C$ the second tangents to this circle (the reflections of line $BC$ in $BI$ and in $CI$). They meet at $A$.
+\end{enumerate}
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(6,0),A=(1.5,4.5);
+real a=length(C-B),b=length(A-C),c=length(B-A);
+pair I=(a*A+b*B+c*C)/(a+b+c); real r=I.y;
+real k=((I.x-3)^2+I.y^2-9)/(2*I.y); pair Z=(3,k); real R=length(B-Z);
+draw((-1,r)--(7,r),gray+dashed);
+real t1=degrees(B-Z),t2=degrees(C-Z); draw(arc(Z,R,t2,t1+360*(t1<t2?0:1)),blue+dashed);
+draw(circle(I,r),red);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--I,gray); draw(C--I,gray);
+dot(A);dot(B);dot(C);dot(I,red);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$I$",I,N,red);
+label("$a$",(B+C)/2,S); label("$\ell$",(7,r),E,gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Proof.} The circle touches all three sides, so it is the incircle of $ABC$ and the inradius is $r$; $BI$ and $CI$ are angle bisectors, so $\dfrac{\angle B+\angle C}{2}=180^\circ-\angle BIC=90^\circ-\dfrac{\alpha}{2}$, hence $\angle B+\angle C=180^\circ-\alpha<180^\circ$ (so the two tangents really meet, on the same side as $I$) and $\angle A=\alpha$.
+
+\textbf{When it works.} The highest point of the arc is above the midpoint of $BC$, at height $h=\dfrac {a}{2}\cot\left(45^\circ+\dfrac{\alpha}{4}\right)=\dfrac {a}{2}\tan\left(45^\circ-\dfrac{\alpha}{4}\right)$. So the construction is possible exactly when
+\[
+r\le\dfrac {a}{2}\tan\left(45^\circ-\dfrac{\alpha}{4}\right).
+\]
+For $r<h$ there are two intersection points, symmetric in the perpendicular bisector of $BC$, giving two mirror-image (congruent) triangles; for $r=h$ the triangle is isosceles with $AB=AC$.

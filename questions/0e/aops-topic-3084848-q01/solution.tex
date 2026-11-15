@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3084848_regular_triangular_prism_3d_geometry_problem_need_help
+% Stable identity: aops-topic-3084848-q01
+Place $ A=(0,0,0),C=(6,0,0),B=(3,3\sqrt3,0)$, with the prism edges parallel to the $ z $ axis. Then $ N=(3,3\sqrt3,3\sqrt3)$. Since $ M=2N-A $, we obtain $ M=(6,6\sqrt3,6\sqrt3)$. Plane $ ACC\prime $ is $ y=0 $, so the distance is the absolute $ y $ coordinate, $\boxed{6\sqrt3}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair pr(real x,real y,real z){return (x+0.45*y+0.2*z,0.6*y+0.8*z);}real h=6*sqrt(3);pair A=pr(0,0,0),B=pr(3,3*sqrt(3),0),C=pr(6,0,0),Ap=pr(0,0,h),Bp=pr(3,3*sqrt(3),h),Cp=pr(6,0,h),Nn=(B+Bp)/2,M=2*Nn-A;draw(A--B--C--cycle^^Ap--Bp--Cp--cycle^^A--Ap^^B--Bp^^C--Cp);draw(A--M,dashed);draw(M--Cp,blue);dot(Nn);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,SE);label("$A\prime$",Ap,W);label("$B\prime$",Bp,N);label("$C\prime$",Cp,W);label("$N$",Nn,W);label("$M$",M,NE);label("$6\sqrt3$",(M+Cp)/2,N);
+\end{asy}

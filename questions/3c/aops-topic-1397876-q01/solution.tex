@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1397876_easy_vectors
+% Stable identity: aops-topic-1397876-q01
+\textbf{(a)} By the triangle rule, $\overrightarrow{MP}=\overrightarrow{MN}+\overrightarrow{NP}$. With $\overrightarrow{MP}=2\,\overrightarrow{MN}$ this gives
+\[
+\overrightarrow{NP}=\overrightarrow{MN}=-\overrightarrow{NM}.
+\]
+So $N$ is the midpoint of $MP$, and $\overrightarrow{NM}$ and $\overrightarrow{NP}$ have the same length and opposite directions.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair M=(0,0),N=(3,0),P=(6,0);
+draw(N--M,red+linewidth(1),Arrow(TeXHead));
+draw(N--P,blue+linewidth(1),Arrow(TeXHead));
+dot(M);dot(N);dot(P);
+label("$M$",M,S);label("$N$",N,S);label("$P$",P,S);
+label("$\overrightarrow{NM}$",(M+N)/2+(0,0.3),N,red);
+label("$\overrightarrow{NP}$",(N+P)/2+(0,0.3),N,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Suppose $\overrightarrow{NM}=\overrightarrow{NP}$. Then $\overrightarrow{NM}=-\overrightarrow{NM}$, so $2\,\overrightarrow{NM}=\vec 0$ and $M=N$, contrary to the assumption. Hence $\overrightarrow{NM}\ne\overrightarrow{NP}$.
+
+\textbf{(b)} Take $M=N=P$. Then $\overrightarrow{MP}=\vec0=2\,\overrightarrow{MN}$, so the condition holds, but $\overrightarrow{NM}=\overrightarrow{NP}=\vec0$. So without $M\ne N$ the statement is false.

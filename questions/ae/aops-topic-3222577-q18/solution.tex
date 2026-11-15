@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3222577_2016_kvs_aops_tournament_round_1_3x8__24_problems
+% Stable identity: aops-topic-3222577-q18
+The upper-right edge has equation $\sqrt3x+y=\sqrt3R$. Substituting the square vertex $(1,1)$ gives $R=1+\dfrac{1}{\sqrt3}$. Similar regular hexagons have area ratio equal to squared circumradius ratio, so the answer is $\dfrac{1}{R^2}=\dfrac{3}{4+2\sqrt3}=\boxed{3-\dfrac{3\sqrt3}{2}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real R=1+1/sqrt(3);path h1,h2;for(int k=0;k<6;++k){h1=h1--dir(60*k);h2=h2--R*dir(60*k);}draw(h1--cycle,blue);draw(h2--cycle);draw(unitcircle);draw((-1,-1)--(1,-1)--(1,1)--(-1,1)--cycle,red);dot((0,0));label("$O$",(0,0),S);label("$(1,1)$",(1,1),NE);label("$(R,0)$",(R,0),E);
+\end{asy}

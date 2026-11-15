@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1978261_subtraction_problem_combinatorics
+% Stable identity: aops-topic-1978261-q01
+\emph{Forced digits.} $\mathrm{HANOI}\ge10000$ and the difference is at most $999$, so $\mathrm{IMSO}\ge10000-999=9001$, giving $I=9$; and $\mathrm{HANOI}\le9999+999=10998$, giving $H=1$, $A=0$. The other letters $N,O,M,S$ are distinct digits from $\{2,3,\dots,8\}$.
+
+\emph{The condition.} The difference is
+\[
+(10009+100N+10O)-(9000+100M+10S+O)=1009-100(M-N)+9O-10S .
+\]
+Here $-62\le9O-10S\le52$. If $M<N$ the difference exceeds $1009-62>999$. If $M>N$ then $M-N\le6$ and the difference lies between $1009-600-62=347$ and $1009-100+52=961$, a three-digit number. So the difference has three digits exactly when $N<M$.
+
+\emph{Counting values of $\mathrm{IMSO}$.} $\mathrm{IMSO}$ is determined by $(M,S,O)$, distinct digits from $\{2,\dots,8\}$: $7\cdot6\cdot5=210$ triples. A triple is possible when some digit $N\in\{2,\dots,8\}$ smaller than $M$ is different from $S$ and $O$. It fails when every digit of $\{2,\dots,8\}$ below $M$ is $S$ or $O$:
+\begin{itemize}
+\item $M=2$: no digit below, all $6\cdot5=30$ triples fail;
+\item $M=3$: fails when $2\in\{S,O\}$: $5+5=10$ triples;
+\item $M=4$: fails when $\{S,O\}=\{2,3\}$: $2$ triples;
+\item $M\ge5$: there are at least $3$ digits below $M$, so it never fails.
+\end{itemize}
+So there are $210-42=\boxed{168}$ values of $\mathrm{IMSO}$.
+
+The student's $420$ counts the pairs $(N,M)$ with $N<M$ together with $S$ and $O$, i.e.\ it counts the subtractions, not the values of $\mathrm{IMSO}$; different $N$ with the same $M,S,O$ (e.g.\ $10739-9823$ and $10639-9823$) give the same $\mathrm{IMSO}$.

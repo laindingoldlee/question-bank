@@ -1,0 +1,8 @@
+Let t be the trickster count and k the knight count. A knave can answer yes only if next to a trickster, so at most $2t$ knaves answer yes. Adding all non-knaves gives at most $3t+k\le3(t+k)$ yes answers. Since there are 17 yes answers, at least six people are not knaves, leaving at most 33 knaves.
+For attainment, use six tricksters, all answering yes, separated cyclically by groups of $1,2,2,2,2,24$ knaves. Exactly eleven knaves are adjacent to a trickster and answer yes, while the other twenty-two answer no. Thus there are $6+11=17$ yes answers and 22 no answers, attaining $\boxed{33}$ knaves.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[] a={"T","L","T","L","L","T","L","L","T","L","L","T","L","L","T","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L"};pair[] p;for(int i=0;i<39;++i)p.push(4dir(90-360.0*i/39));for(int i=0;i<39;++i){draw(p[i]--p[(i+1)%39],gray);label(a[i],p[i],a[i]=="T"?red:blue);}
+\end{asy}

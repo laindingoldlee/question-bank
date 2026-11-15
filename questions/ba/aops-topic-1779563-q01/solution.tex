@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1779563_interesting_problem
+% Stable identity: aops-topic-1779563-q01
+Let $n=2019$, let $R$ be the circumradius and $r$ the inradius (apothem) of the polygon. The figure shows a regular $12$-gon with the same notation; $O$ is the centre and the dashed circle is the incircle.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+int n=12; real R=1; real r=R*cos(pi/n);
+pair O=(0,0);
+pair[] P; for(int k=0;k<n;++k) P.push(R*dir(90+360*k/n));
+path g=P[0]; for(int k=1;k<n;++k) g=g--P[k]; g=g--cycle;
+draw(g,linewidth(0.9));
+draw(circle(O,r),dashed+gray);
+pair Mid=(P[6]+P[7])/2;
+draw(O--Mid,blue+linewidth(0.7)); draw(O--P[7],dashed);
+dot(O); label("$O$",O,N);
+label("$r$",(O+Mid)/2,dir(degrees(Mid-O)-90),blue);
+label("$R$",(O+P[7])/2,dir(degrees(P[7]-O)+90));
+pair u=unit(P[7]-P[6]); pair v=(-u.y,u.x);
+draw(Mid+0.05*u--Mid+0.05*u+0.05*v--Mid+0.05*v);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Cutting the polygon into $n$ triangles with apex $O$, each with base a side and height $r$, gives
+\[
+\text{Area}=\dfrac{1}{2}\cdot(\text{perimeter})\cdot r=\dfrac{1}{2}\cdot2\pi\cdot r=\pi r .
+\]
+\textbf{Upper bound.} The polygon contains its incircle, and its perimeter is longer than the circumference of that circle, so $2\pi>2\pi r$, i.e.\ $r<1$.
+
+\textbf{Lower bound.} The polygon is inscribed in its circumcircle, so its perimeter is shorter than that circumference: $2\pi<2\pi R$, i.e.\ $R>1$. Also $r=R\cos\dfrac{\pi}{n}$ and $\dfrac{\pi} {n}<0.01$, so $r>\cos0.01>1-\dfrac{0.01^2}{2}>0.99$.
+
+Hence $3.11<0.99\pi<\text{Area}<\pi<3.15$, and the area to the nearest integer is $\boxed{3}$. (Exactly, the area is $\dfrac{\pi^2}{n}\cot\dfrac{\pi}{n}\approx3.14159$, extremely close to the area $\pi$ of a circle of perimeter $2\pi$.)

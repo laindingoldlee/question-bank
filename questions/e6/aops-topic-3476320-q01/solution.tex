@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h3476320_abcdef_and_a_1b_1c_1d_1e_1f_1_are_two_regular_hexagons_sharing_the_same_center
+% Stable identity: aops-topic-3476320-q01
+Scale the outer circumradius to 1. Then $OA=OB=AB=1$ and the angle between vectors $OA,OB$ is $60^\circ$. Since $A_1=\dfrac{3}{5}A+\dfrac{2}{5}B$, we have $OA_1^2=\dfrac{9}{25}+\dfrac{4}{25}+2\dfrac{3}{5}\dfrac{2}{5}\cos60^\circ=\dfrac{19}{25}$. Regular hexagons are similar and their area ratio equals the square of the circumradius ratio, so the answer is $\boxed{\dfrac{19}{25}}$.
+\begin{asy}
+import geometry; usepackage("amsmath"); size(240);
+pair O=(0,0),A=dir(0),B=dir(60),P=.6*A+.4*B;for(int k=0;k<6;++k){draw(dir(60*k)--dir(60*(k+1)));draw(rotate(60*k)*P--rotate(60*(k+1))*P,blue);}draw(O--A^^O--B^^O--P,dashed);label("$O$",O,SW);label("$A$",A,E);label("$B$",B,N);label("$A_1$",P,NE);
+\end{asy}

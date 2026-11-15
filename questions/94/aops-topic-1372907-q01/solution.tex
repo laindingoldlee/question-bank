@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1372907_tangent_circles
+% Stable identity: aops-topic-1372907-q01
+Let $O$ be the centre of the triangle and $r$ the common radius. By the symmetry of the configuration, the three centres form an equilateral triangle with centre $O$ and side $2r$ (the circles are mutually tangent), so each centre is at distance $\dfrac{2r}{\sqrt3}$ from $O$. The centre of the circle touching $BC$ lies on the segment $OM$ to the midpoint $M$ of $BC$, at distance $r$ from $BC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real r=2-sqrt(3), d=2*r/sqrt(3);
+pair B=(0,0),C=(2,0),A=(1,sqrt(3)),O=(1,1/sqrt(3));
+pair P1=O+d*dir(-90),P2=O+d*dir(30),P3=O+d*dir(150);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(circle(P1,r),blue); draw(circle(P2,r),blue); draw(circle(P3,r),blue);
+draw(P1--P2--P3--cycle,gray+dashed);
+draw(O--(1,0),red+dashed);
+dot(O);dot(P1);dot(P2);dot(P3);dot((1,0));
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); pair LO=(0.52,0.36); draw(LO--O,gray+linewidth(0.3)); label("$O$",LO,SW,fontsize(9pt));
+label("$M$",(1,0),S);
+label("$r$",(1,r/2),E,red+fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The inradius of the big triangle is $OM=\dfrac{2}{2\sqrt3}=\dfrac{1}{\sqrt3}$, so
+\[
+\dfrac{2r}{\sqrt3}+r=\dfrac{1}{\sqrt3}\iff r(2+\sqrt3)=1\iff r=\dfrac{1}{2+\sqrt3}=2-\sqrt3 .
+\]
+So $a=2$, $b=3$ and $3a+b=\boxed{9}$.
+
+(The other natural arrangement, with each circle in a corner touching two sides, gives $r=\dfrac{\sqrt3-1}{2}$, which is not of the form $a-\sqrt b$; it also has each circle touching two sides rather than one.)

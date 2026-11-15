@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2578020_two_circles_and_a_square
+% Stable identity: aops-topic-2578020-q01
+Let the square have side $s$. The inscribed circle has radius $r=\dfrac s2$, half the side. The circumscribed circle has radius $R$ equal to half the diagonal, $R=\dfrac{s\sqrt2}2=r\sqrt2$ (Pythagorean theorem).
+
+So $R^2=2r^2$, and the larger circle has twice the area of the smaller one: $2\cdot7=\boxed{14}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real s=2;pair O=(0,0);
+draw(circle(O,s*sqrt(2)/2),linewidth(0.8));
+draw(box((-s/2,-s/2),(s/2,s/2)));
+draw(circle(O,s/2));
+draw(O--(s/2,0));draw(O--(s/2,s/2),dashed);
+dot(O);label("$O$",O,W);
+label("$r$",(s/4,0),S);label("$R$",(s/4,s/4),NW);
+dot((s/2,0));dot((s/2,s/2));
+\end{asy}

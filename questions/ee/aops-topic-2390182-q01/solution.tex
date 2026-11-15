@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2390182_a2b2c2_problem
+% Stable identity: aops-topic-2390182-q01
+\textbf{(a)} $(a,b,c)=(4,3,5)$ satisfies $4^2+3^2=5^2$, and $b=3$ is not divisible by $4$. (Only one of the two legs has to be a multiple of $4$; which one is called $a$ and which $b$ is up to us.)
+
+\textbf{(b)} We use two facts about squares: an even square $(2k)^2=4k^2$ is divisible by $4$, and an odd square $(2k+1)^2=4k(k+1)+1$ leaves remainder $1$ when divided by $4$.
+
+\textbf{Step 1: $a$ and $b$ are not both odd.} Otherwise $c^2=a^2+b^2$ would leave remainder $1+1=2$ when divided by $4$, which no square does.
+
+\textbf{Step 2: if exactly one leg is even, it is divisible by $4$.} Say $a$ is odd and $b$ is even (the other case is the same with $a$ and $b$ exchanged). Then $c^2=a^2+b^2$ is odd, so $c$ is odd, and $c>a$. Hence $c-a$ and $c+a$ are both even and positive; write $c-a=2u$ and $c+a=2v$ with positive integers $u,v$. Then
+\[b^2=c^2-a^2=(c-a)(c+a)=4uv .\]
+Since $u+v=c$ is odd, one of $u$, $v$ is even, so $uv$ is even and $8\mid b^2$. If $b=2w$ with $w$ odd, then $b^2=4w^2$ would leave remainder $4$ when divided by $8$ (as $w^2$ is odd). So $w$ is even and $4\mid b$.
+
+\textbf{Step 3: the case where both legs are even.} Then $c^2=a^2+b^2$ is even, so $c$ is even, and $\left(\dfrac a2,\dfrac b2,\dfrac c2\right)$ is again a triple of positive integers with $\left(\dfrac a2\right)^2+\left(\dfrac b2\right)^2=\left(\dfrac c2\right)^2$. Repeat this halving as long as both legs are even. It must stop, since the legs get smaller each time; say it stops after $k\ge1$ halvings, at the triple $\left(\dfrac{a}{2^k},\dfrac{b}{2^k},\dfrac{c}{2^k}\right)$, which has an odd leg. By Step 1 its other leg is even, and by Step 2 that leg is divisible by $4$. Multiplying back by $2^k$, the corresponding leg of $(a,b,c)$ is divisible by $4\cdot2^k$, and in particular by $4$.
+
+So in every case $\boxed{4\mid a\ \text{or}\ 4\mid b}$. $\blacksquare$

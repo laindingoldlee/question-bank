@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1677825_oops_bad_combo_problem
+% Stable identity: aops-topic-1677825-q01
+\textbf{Remove the inequality.} Introduce a slack variable $a_7=510-(a_1+\cdots+a_6)\ge0$. EV spreads correspond one-to-one to nonnegative integer solutions of
+\[
+a_1+a_2+\cdots+a_7=510\qquad\text{with }a_1,\dots,a_6\le252 .
+\]
+
+\textbf{Count by inclusion-exclusion.} Without the upper bounds, stars and bars gives $\dbinom{510+6}{6}=\dbinom{516}{6}$ solutions. If a particular $a_i$ ($i\le6$) has $a_i\ge253$, substituting $a_i'=a_i-253$ leaves a sum of $257$, with $\dbinom{263}{6}$ solutions. If two of them are at least $253$, the remaining sum is $510-506=4$, with $\dbinom{10}{6}$ solutions. Three cannot exceed $252$ at once, since $3\cdot253>510$. Therefore the number of EV spreads is
+\[
+\dbinom{516}{6}-6\dbinom{263}{6}+15\dbinom{10}{6}=\boxed{22\,858\,382\,491\,812}.
+\]
+(The three terms are $25\,462\,191\,460\,608$, $6\cdot433\,968\,161\,991=2\,603\,808\,971\,946$ and $15\cdot210=3150$.)

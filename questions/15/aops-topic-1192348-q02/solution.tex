@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h1192348_expected_value
+% Stable identity: aops-topic-1192348-q02
+The fourth card is a uniformly random card of the deck (its position in a shuffled deck is random), so its expected value is $7$. The two kept cards have expected sum $21-E[\min]$, where $\min$ is the lowest of the first three.
+
+$E[\min]=\sum_{k=1}^{13}P(\min\ge k)$, and $P(\min\ge k)=\dfrac{\dbinom{4(14-k)}{3}}{\dbinom{52}{3}}$ (all three cards come from the $4(14-k)$ cards of rank at least $k$). Since
+\[\sum_{m=1}^{13}\dbinom{4m}{3}=81900\qquad\text{and}\qquad\dbinom{52}{3}=22100,\]
+$E[\min]=\dfrac{81900}{22100}=\dfrac{63}{17}$. The expected sum is
+\[21-\dfrac{63}{17}+7=\boxed{\dfrac{413}{17}}\approx24.29.\]

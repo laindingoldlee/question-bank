@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h419773_2003_amc_8_problem_1a_cube
+% Stable identity: aops-topic-419773-q01
+A cube has $12$ edges (four on the top face, four on the bottom face and four vertical ones), $8$ corners (four on top, four on the bottom) and $6$ faces:
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair o=(0.45,0.35);
+pair[] f={(0,0),(1,0),(1,1),(0,1)};
+draw(f[0]--f[1]--f[2]--f[3]--cycle,linewidth(0.9));
+draw(f[1]--f[1]+o--f[2]+o--f[3]+o--f[3],linewidth(0.9)); draw(f[2]--f[2]+o,linewidth(0.9));
+draw(f[0]--f[0]+o--f[1]+o^^f[0]+o--f[3]+o,dashed);
+for(int i=0;i<4;++i){dot(f[i]);dot(f[i]+o);}
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the sum is $12+8+6=26$, answer $\boxed{\textbf{(E)}\ 26}$. (As a check, Euler's formula $V-E+F=8-12+6=2$ holds.)

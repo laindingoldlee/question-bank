@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h1244550_area_of_triangle
+% Stable identity: aops-topic-1244550-q01
+Let the right angle be at $C$, the hypotenuse $AB=15$, and let $D$ be the foot of the height $h=CD$ to the hypotenuse.
+
+\textbf{Thales.} Since $\angle ACB=90^\circ$, the point $C$ lies on the circle with diameter $AB$. Its centre is the midpoint $O$ of $AB$, and its radius is $7.5$:
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(15,0),O=(7.5,0); real t=118; pair C=O+7.5*dir(t), D=(C.x,0);
+draw(arc(O,7.5,0,180),gray(0.5)+dashed);
+draw((-0.5,8)--(15.5,8),red+dashed); label("height $8$",(15.5,8),E,red+fontsize(9pt));
+draw(A--B--C--cycle,linewidth(1)); draw(C--D,blue); draw(O--C,deepgreen+dashed);
+pair u=unit(A-C), v=unit(B-C); real s=0.7; draw(C+s*u--C+s*u+s*v--C+s*v);
+draw((D.x,0.6)--(D.x+0.6,0.6)--(D.x+0.6,0));
+dot(A);dot(B);dot(C);dot(D);dot(O);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NW);label("$D$",D,S);label("$O$",O,S);
+label("$h$",(C+D)/2,W,blue+fontsize(9pt)); label("$7.5$",(O+C)/2,NE,deepgreen+fontsize(9pt));
+draw((0,-1.6)--(15,-1.6),Arrows(TeXHead)); label("$15$",(7.5,-1.6),S,fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence
+\[
+h=CD\le CO=7.5<8 ,
+\]
+because $CD$ is the perpendicular from $C$ to $AB$, and a perpendicular is never longer than another segment from $C$ to the line. So the height to a hypotenuse of $15$ is at most $7.5$, and a height of $8$ is impossible.
+
+\textbf{Algebraic check.} With legs $a$, $b$ we would need $a^2+b^2=225$ and $ab=15\cdot8=120$ (twice the area computed in two ways). Then
+\[
+(a-b)^2=a^2+b^2-2ab=225-240=-15<0 ,
+\]
+which is impossible for real $a$, $b$. So $\boxed{\text{no such triangle exists}}$, and the ``answer'' $60$ is meaningless.

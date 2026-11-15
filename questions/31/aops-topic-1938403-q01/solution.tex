@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1938403_jazzyzs_graph_jhmmc_2019_7th_grade_problem_28
+% Stable identity: aops-topic-1938403-q01
+The vertices are $V_1=(0,0)$ and $V_2=(0,4)$. The parabolas meet where $x^2=4-x^2$, i.e.\ $x=\pm\sqrt2$, $y=2$: $A=(-\sqrt2,2)$, $B=(\sqrt2,2)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return x^2;} real g(real x){return 4-x^2;}
+draw((-2.6,0)--(2.6,0),Arrows(TeXHead));draw((0,-0.6)--(0,4.8),Arrows(TeXHead));
+draw(graph(f,-2.1,2.1),blue+linewidth(0.9));draw(graph(g,-2.1,2.1),red+linewidth(0.9));
+pair V1=(0,0),V2=(0,4),A=(-sqrt(2),2),B=(sqrt(2),2);
+draw(A--V1--B--V2--cycle,linewidth(1));
+dot(V1);dot(V2);dot(A);dot(B);
+label("$V_1$",V1,SE);label("$V_2$",V2,NE);label("$A$",A,W);label("$B$",B,E);
+label("$y=x^2$",(2.1,4.41),E,blue);label("$y=4-x^2$",(2.1,-0.41),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Each side joins $(\pm\sqrt2,2)$ to $(0,0)$ or $(0,4)$, so by the distance formula every side has length $\sqrt{2+4}=\sqrt6$ (the quadrilateral is a rhombus). The perimeter is $\boxed{4\sqrt6}$.

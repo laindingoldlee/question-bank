@@ -1,0 +1,7 @@
+The twelve integer vectors of length five, in counterclockwise order, are $(5,0),(4,3),(3,4),(0,5),(-3,4),(-4,3),(-5,0),(-4,-3),(-3,-4),(0,-5),(3,-4),(4,-3)$. Reversing the old segment adds six to its direction index, and taking the next lattice direction adds one more. Thus each step advances seven indices modulo twelve. The pivots in one period, starting with the first, are $(5,0),(1,-3),(4,1),(4,-4),(1,0),(5,-3),(0,-3),(4,0),(1,-4),(1,1),(4,-3),(0,0)$, then $(5,0)$ again. Since $2026-1\equiv9\pmod{12}$, the requested pivot is $(1,1)$ and $\boxed{|m+n|=2}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair[] P={(5,0),(1,-3),(4,1),(4,-4),(1,0)};draw((0,0)--P[0],dashed);for(int i=0;i<P.length-1;++i)draw(P[i]--P[i+1],Arrow);for(int i=0;i<P.length;++i)label(string(i+1),P[i],i%2==0?(0,1):(0,-1));
+\end{asy}

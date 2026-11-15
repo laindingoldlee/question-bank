@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3446637_2022_amc8_question_23
+% Stable identity: aops-topic-3446637-q01
+The two differently colored lines cannot intersect. A diagonal intersects every other line, so the two lines must be parallel rows or parallel columns. Count the row case. If exactly two rows are uniform, one of each symbol, choose the nonuniform row in $3$ ways, assign symbols to the other rows in $2$ ways, and fill the nonuniform row in $2^3-2=6$ ways: $36$ configurations. If all three rows are uniform, $2^3-2=6$ assignments use both symbols. Thus there are $42$ row configurations and $42$ column configurations. They are disjoint because opposite uniform rows prevent any uniform column. Total $\boxed{84}$, choice (D).
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=0;i<=3;++i){draw((i,0)--(i,3));draw((0,i)--(3,i));}for(int j=0;j<3;++j){label("$\triangle$",(j+.5,2.5));label("$\bigcirc$",(j+.5,.5));}label("$\triangle$",(.5,1.5));label("$\bigcirc$",(1.5,1.5));label("$\triangle$",(2.5,1.5));
+\end{asy}

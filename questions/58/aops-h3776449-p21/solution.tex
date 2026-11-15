@@ -1,0 +1,11 @@
+Track the number of paths arriving in the four columns after each row. Starting from the two white top squares, the vectors are
+\[
+(1,0,1,0),\quad(0,2,0,1),\quad(2,0,3,0),\quad(0,5,0,3).
+\]
+Each entry is the sum of the two diagonally preceding entries, with off-board entries zero. The total is $\boxed{5+3=8}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+int[][] a={{1,0,1,0},{0,2,0,1},{2,0,3,0},{0,5,0,3}};for(int r=0;r<4;++r)for(int c=0;c<4;++c){filldraw(box((c,-r),(c+1,1-r)),(r+c)%2==0?white:lightgray);if(a[r][c]>0)label("$"+string(a[r][c])+"$",(c+.5,.5-r));}
+\end{asy}

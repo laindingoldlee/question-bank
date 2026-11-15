@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1766801_tricky_trapezium
+% Stable identity: aops-topic-1766801-q01
+Triangles $AOB$ and $COD$ are similar (alternate angles at the parallel sides), with ratio $\dfrac{AB}{CD}$, so $\dfrac{AB^2}{CD^2}=k$ and $AB=\sqrt k\,CD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real k=2.25, c=3, a=sqrt(k)*c;
+pair D=(0,0),C=(c,0),A=(-0.8,2.6),B=A+(a,0);
+pair O=extension(A,C,B,D);
+draw(A--B--C--D--cycle,linewidth(0.9));draw(A--C,blue);draw(B--D,blue);
+dot(O);
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);label("$O$",O,dir(-90)*1.2);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Use coordinates $D=(0,0)$, $C=(c,0)$, $A=(p,h)$, $B=(p+a,h)$ with $a=AB=\sqrt k\,c$. Then
+\[
+AD^2-BC^2=p^2-(p+a-c)^2=(c-a)(2p+a-c),
+\]
+\[
+AC^2-BD^2=(p-c)^2-(p+a)^2=-(a+c)(2p+a-c).
+\]
+The assumption $AC\ne BD$ means $2p+a-c\ne0$, so
+\[
+\dfrac{AD^2-BC^2}{AC^2-BD^2}=\dfrac{a-c}{a+c}=\boxed{\dfrac{\sqrt k-1}{\sqrt k+1}} .
+\]
+(The figure uses $k=\dfrac{9}{4}$, so the ratio is $\dfrac{1}{5}$.)

@@ -1,0 +1,15 @@
+The angles around the vertex must sum to $360^\circ$:
+\[90+k\left(180-\dfrac{360}{n}\right)=360.\]
+Thus $n=\dfrac{4k}{2k-3}$. The denominator must be positive, so $k\ge2$. Since $n\ge3$, $4k\ge6k-9$, giving $k\le4$. Testing $k=2,3,4$ gives $n=8,4,\dfrac{16}{5}$ respectively. The integer solutions are $\boxed{(n,k)=(8,2),(4,3)}$. Both are realizable locally: one square with two octagons, or four squares.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0);draw(box(O,(1,1)));for(int j=0;j<2;++j){real a=90+135j;pair p=O;path g=p;for(int i=0;i<7;++i){p+=dir(a+45i);g=g--p;}filldraw(g--cycle,j==0?lightblue:lightgray);}label("$90^\circ$",(.35,.35));label("$135^\circ$",.5dir(157.5));label("$135^\circ$",.5dir(292.5));dot(O);
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=-1;x<=0;++x)for(int y=-1;y<=0;++y)draw(box((x,y),(x+1,y+1)));dot((0,0));label("four right angles",(0,-1.5));
+\end{asy}

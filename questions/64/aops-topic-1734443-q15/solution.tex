@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1734443_geometry_questions_from_a_local_math_competition
+% Stable identity: aops-topic-1734443-q15
+Put the river on the $x$-axis, the ninja at $N=(0,5)$ and the dojo at $D=(10,10)$. Reflect the dojo in the river to $D'=(10,-10)$. For any point $X$ on the river, $XD=XD'$, so the route length is $NX+XD'\ge ND'$, with equality when $X$ is on segment $ND'$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair Nn=(0,5),Dj=(10,10),D2=(10,-10),X=(10/3,0);
+draw((-1.5,0)--(12,0),blue+linewidth(1.2));label("river",(12,0),E,blue);
+draw(Nn--X--Dj,linewidth(0.9));draw(X--D2,dashed);draw(Dj--D2,dotted);
+dot(Nn);dot(Dj);dot(D2);dot(X);
+label("$N$",Nn,W);label("$D$",Dj,E);label("$D'$",D2,E);label("$X$",X,dir(250));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The shortest distance is $ND'=\sqrt{10^2+15^2}=\sqrt{325}=\boxed{5\sqrt{13}}\approx18.0$ miles (stopping at the point $\dfrac{10}{3}$ miles east of the start).

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1217031_points_on_a_circle
+% Stable identity: aops-topic-1217031-q01
+Call a diameter \emph{good} if neither of its endpoints is one of the marked points. All but finitely many diameters are good. For a good diameter $d$, with a chosen side called ``left'', let $f(d)$ be the number of marked points on its left.
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),1));
+real[] t={10,35,62,100,128,150,200,230,248,275,300,330,345};
+for(real a: t) dot(dir(a));
+draw(dir(80)--dir(260),blue+linewidth(0.8)); label("$d$",dir(80),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Start with a good diameter $d_0$ and rotate it continuously by $180^\circ$. At the end it is the same line with left and right exchanged, so the count goes from $k=f(d_0)$ to $888-k$.
+
+While the diameter rotates, $f$ changes only when an endpoint passes a marked point. If one endpoint passes a marked point, that point switches sides and $f$ changes by exactly $1$. If both endpoints pass marked points at once, these two points are diametrically opposite; one moves from left to right and the other from right to left, so $f$ does not change. Hence $f$ moves in steps of $0$ or $\pm1$, always taking its values at good positions.
+
+The values $k$ and $888-k$ lie on opposite sides of $444$ (or one of them equals $444$), so on the way $f$ takes the value $444$ at some good diameter. That diameter has $444$ points on each side and none on it.

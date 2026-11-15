@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1510734_mathcounts_probability_stretch_problem_2
+% Stable identity: aops-topic-1510734-q01
+The inner circle has area $\pi\cdot1^2=\pi$, and each of its six congruent sectors has area $\dfrac{\pi}{6}$. The whole board has area $\pi\cdot2^2=4\pi$:
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),2),linewidth(0.9));draw(circle((0,0),1),linewidth(0.9));
+for(int i=0;i<4;++i) fill(arc((0,0),1,90+60*i,150+60*i)--(0,0)--cycle,paleyellow);
+draw(circle((0,0),1),linewidth(0.9));
+for(int i=0;i<6;++i) draw((0,0)--2*dir(90+60*i),linewidth(0.9));
+for(int i=0;i<4;++i) label("$"+string(i+1)+"$",0.6*dir(120+60*i));
+draw((0,0)--dir(30),blue+linewidth(1.2));label("$1$",0.5*dir(30),dir(120),blue);
+draw((0,0)--2*dir(-30),red+linewidth(1.2));label("$2$",1.5*dir(-30),dir(60),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The numbered inner sectors are shaded; which four of the six are numbered does not matter.) The four numbered sectors have total area $\dfrac{4\pi}{6}=\dfrac{2\pi}{3}$, so the probability is
+\[
+\dfrac{\dfrac{2\pi}{3}}{4\pi}=\dfrac{1}{6}\approx\boxed{0.17}.
+\]

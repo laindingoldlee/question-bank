@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1992356_geometry_problem
+% Stable identity: aops-topic-1992356-q01
+The two angle conditions say that triangles $DPQ$ and $DAB$ are similar, with $D\leftrightarrow D$, $P\leftrightarrow A$, $Q\leftrightarrow B$. Use complex numbers with $D=0$, $A=a$, $B=b$. Then $C=b-a$, $O=\dfrac {b}{2}$ (the midpoint of $BD$), and
+\[
+P=\dfrac{A+O}{2}=\dfrac{2a+b}{4},\qquad Q=\dfrac{B+C}{2}=\dfrac{2b-a}{2}.
+\]
+A similarity fixing $D=0$ is either $z\mapsto wz$ (same orientation) or $z\mapsto w\bar z$ (opposite orientation) for some complex $w\ne0$.
+
+\emph{Opposite orientation.} Rotating and scaling about $D$ we may take $a=1$. Then $P=w$ and $Q=w\bar b$, so $Q=P\bar b$, that is $\dfrac{2b-1}{2}=\dfrac{(2+b)\bar b}{4}$, or $4b-2=2\bar b+|b|^2$. Taking imaginary parts gives $4\operatorname{Im}b=-2\operatorname{Im}b$, so $\operatorname{Im} b=0$ and $A,B,D$ would be collinear, which is impossible.
+
+\emph{Same orientation.} Then $P=wa$ and $Q=wb$, so $Pb=Qa$:
+\[
+\dfrac{(2a+b)b}{4}=\dfrac{(2b-a)a}{2}\iff b^2-2ab+2a^2=0\iff (b-a)^2=-a^2\iff b-a=\pm ia .
+\]
+Now $b-a$ is the vector $\overrightarrow{AB}$ and $-a$ is $\overrightarrow{AD}$, so $AB=AD$ and $AB\perp AD$: the parallelogram is a square. Conversely, in a square both conditions hold: $\angle DPQ=90^\circ=\angle DAB$ and $\angle DQP=45^\circ=\angle DBA$ (in the figure, with $A=(0,0)$, $P=\left(\dfrac{1}{4},\dfrac{1}{4}\right)$, $Q=\left(1,\dfrac{1}{2}\right)$, $D=(0,1)$, one checks $\overrightarrow{PD}\cdot\overrightarrow{PQ}=0$ and $PD=PQ$).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(1,0), C=(1,1), D=(0,1), O=(0.5,0.5), P=(0.25,0.25), Q=(1,0.5);
+fill(D--P--Q--cycle,palegray);
+draw(A--B--C--D--cycle,linewidth(1));
+draw(A--C,gray(0.5)); draw(B--D,gray(0.5));
+draw(D--P--Q--cycle,linewidth(0.9));
+dot(A);dot(B);dot(C);dot(D);dot(O);dot(P);dot(Q);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$O$",O,N);label("$P$",P,SE);label("$Q$",Q,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence $ABCD$ is a square of side $1$, and its area is $\boxed{1}$.

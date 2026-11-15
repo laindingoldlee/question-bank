@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3167127_2022_lmt_spring_guts_round_p1p15_lexington_mathematical_tournament
+% Stable identity: aops-topic-3167127-q12
+The full lines create at most four regions. The two rays together can cross those two lines in at most three distinct points: to cross both perpendicular lines, a ray starting off them must point into the open $90^\circ$ sector toward the opposite quadrant, and two perpendicular directions cannot both lie strictly in that sector. The ray portions in a disk have at most two connected components. Adding a component crossing existing boundaries $k$ times creates at most $k+1$ regions, so the rays add at most $3+2=5$, giving an upper bound of nine. To attain it, use the coordinate axes, a disk centered at $(-1,1)$ with radius $2.3$, and rays from $(2,1)$ in directions $(-1,-1)$ and $(-1,1)$. Their common endpoint lies outside the disk; the first crosses the axes at $(1,0),(0,-1)$ and the second at $(0,3)$, all strictly inside. The two separate chords add five regions to the four from the axes. Thus the maximum is $\boxed9$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(circle((-1,1),2.3));draw((-4,0)--(2,0),gray);draw((0,-2)--(0,4),gray);draw((2,1)--(-2.5,-3.5),blue,Arrow);draw((2,1)--(-2.5,5.5),blue,Arrow);label("$V(2,1)$",(2,1),E);dot((-1,1));label("center",(-1,1),W);
+\end{asy}

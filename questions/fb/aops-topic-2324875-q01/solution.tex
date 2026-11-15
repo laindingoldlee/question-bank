@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2324875_geometry_problem
+% Stable identity: aops-topic-2324875-q01
+Use position vectors. Since $R$ is on $CA$ with $RA=\dfrac13CA$, and $Q$ is on $BC$ with $BQ=\dfrac23BC$,
+\[R=\dfrac{2A+C}{3},\qquad Q=\dfrac{B+2C}{3}.\]
+Let $X$ be the reflection of $Q$ in $R$, that is, $X=2R-Q$, so that $R$ is the midpoint of $QX$. Then
+\[X=\dfrac{4A+2C-B-2C}{3}=\dfrac{4A-B}{3}=A+\dfrac{A-B}{3}.\]
+So $X$ lies on line $AB$, beyond $A$ (on the opposite side of $A$ from $B$), with $AX=\dfrac13AB$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(6,0), C=(1,4);
+pair R=(2*A+C)/3, Q=(B+2*C)/3, X=2*R-Q;
+pair P=(23/21,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(X--A,dashed);
+draw(P--R,blue); draw(P--Q,blue); draw(R--Q,red); draw(R--X,red+dashed); draw(P--X,blue+dashed);
+pair u=unit(Q-R), v=unit(P-R);
+draw(R+0.25*u--R+0.25*u+0.25*v--R+0.25*v);
+dot(A); dot(B); dot(C); dot(P); dot(Q); dot(R); dot(X);
+label("$A$",A,S); label("$B$",B,SE); label("$C$",C,N); label("$P$",P,S);
+label("$Q$",Q,NE); label("$R$",R,NW); label("$X$",X,S);
+\end{asy}
+
+Since $\angle PRQ=90^\circ$, the line $PR$ is perpendicular to $QX$ at its midpoint $R$: it is the perpendicular bisector of $QX$. (Here $P\ne R$, because $P$ is on $AB$, $R$ is on $CA$, and $R\ne A$.) Hence $PQ=PX$, and in the isosceles triangle $PQX$ the segment $PR$ from the apex to the midpoint of the base bisects the apex angle:
+\[\angle RPQ=\angle RPX.\]
+Finally, $P$ lies on the segment $AB$ (and $P\ne A$), while $X$ lies on the extension of $BA$ beyond $A$; so seen from $P$, the points $A$ and $X$ are in the same direction, and the rays $PA$ and $PX$ coincide. Therefore
+\[\angle APR=\angle XPR=\angle RPQ.\qquad\blacksquare\]

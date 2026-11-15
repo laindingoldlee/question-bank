@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2234750_williams_clock
+% Stable identity: aops-topic-2234750-q01
+Measure time $t$ in hours after 12:00 PM. The correct minute hand has turned $360t$ degrees. The broken hand turns $180^\circ$ per hour plus $60^\circ$ at each whole hour, so (counting the jump at a whole hour $t$) it has turned
+\[B(t)=180t+60\lfloor t\rfloor\ \text{degrees}.\]
+The hands point the same way exactly when
+\[D(t)=360t-B(t)=180t-60\lfloor t\rfloor\]
+is a multiple of $360$. During the hour $k\le t<k+1$, $D$ increases continuously from $120k$ towards $120k+180$; at $t=k+1$ the jump makes it drop to $120(k+1)$.
+\begin{itemize}
+\item $k=3j$: $D$ runs over $[360j,\,360j+180)$, which contains the multiple $360j$ only at $t=3j$.
+\item $k=3j+1$: $D$ runs over $[360j+120,\,360j+300)$: no multiple of $360$.
+\item $k=3j+2$: $D$ runs over $[360j+240,\,360j+420)$, containing $360(j+1)$ when $180t-60(3j+2)=360(j+1)$, that is $t=3j+\dfrac{8}{3}$.
+\end{itemize}
+So after 12:00 PM the hands agree at
+\[t=\dfrac{8}{3},\ 3,\ \dfrac{17}{3},\ 6,\ \ldots,\ 3j-\dfrac{1}{3},\ 3j,\ \ldots,\]
+two times in every three hours. The $20$th time is $t=30$ (the second time with $j=10$), just after the jump at 6:00 AM the next day. By then the broken hand has turned
+\[B(30)=180\cdot30+60\cdot30=\boxed{7200^\circ},\]
+exactly $20$ full turns (while the correct hand has made $30$).

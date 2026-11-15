@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1257672_grid_problem
+% Stable identity: aops-topic-1257672-q01
+After $t$ seconds Jack's coordinates sum to $t$ and Max's to $14-t$, so they can only be at the same dot when $t=7$, on the line $x+y=7$ (and in $7$ moves neither can leave the grid).
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<8;++i) for(int j=0;j<8;++j) dot((i,j),gray);
+draw((0,7)--(7,0),red+dashed); dot((0,0)); dot((7,7));
+label("Jack",(0,0),SW); label("Max",(7,7),NE);
+draw((0,0)--(2,0)--(2,3)--(4,3),blue+linewidth(1)); draw((7,7)--(7,5)--(5,5)--(5,4)--(4,4)--(4,3),heavygreen+linewidth(1)); dot((4,3),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Jack is at $(k,7-k)$ after $7$ seconds with probability $\dfrac{\dbinom7k}{2^7}$ ($k$ right moves). Max is at the same dot if he made $7-k$ left moves, with probability $\dfrac{\dbinom7{7-k}}{2^7}=\dfrac{\dbinom7k}{2^7}$. The moves are independent, so
+\[P=\sum_{k=0}^7\dfrac{\dbinom7k^2}{2^{14}}=\dfrac{\dbinom{14}{7}}{2^{14}}=\dfrac{3432}{16384}=\boxed{\dfrac{429}{2048}}.\]

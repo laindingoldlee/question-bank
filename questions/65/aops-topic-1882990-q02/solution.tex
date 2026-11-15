@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1882990_geometry_practice
+% Stable identity: aops-topic-1882990-q02
+In a $30^\circ$-$60^\circ$-$90^\circ$ triangle the shorter leg is half the hypotenuse and the longer leg is $\sqrt3$ times the shorter leg. So the legs are $6$ and $6\sqrt3$ centimetres.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6*sqrt(3),0),C=(0,6);
+draw(A--B--C--cycle,linewidth(1));
+draw((0.6,0)--(0.6,0.6)--(0,0.6));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$6$",(0,3),W);label("$6\sqrt3$",(3*sqrt(3),0),S);label("$12$",(B+C)/2,NE);
+label("$30^\circ$",B+(-2.4,0.5));label("$60^\circ$",C+1.6*dir(-60));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The area of the triangle is $\dfrac{1}{2}\cdot6\cdot6\sqrt3=18\sqrt3$ square centimetres. So the circle has diameter $18\sqrt3$ cm and radius $9\sqrt3$ cm.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);real r=9*sqrt(3);
+draw(circle(O,r),linewidth(1));
+draw((-r,0)--(r,0),dashed);dot(O);dot((-r,0));dot((r,0));
+label("$d=18\sqrt3$",(0,0),N);label("$r=9\sqrt3$",(r/2,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Its area is $\pi\left(9\sqrt3\right)^2=\boxed{243\pi}$ square centimetres.

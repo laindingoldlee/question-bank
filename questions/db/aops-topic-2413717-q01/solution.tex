@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2413717_dividing_a_parallelogram
+% Stable identity: aops-topic-2413717-q01
+Let $O$ be the centre of the rectangle (where its diagonals meet) and $P$ the centre of the circle. We show that the required line is the line $OP$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), Pc=(-2,0.6);
+draw(box((-4,-2.5),(4,2.5)),linewidth(0.8));
+draw((-4,-2.5)--(4,2.5),gray+dashed); draw((-4,2.5)--(4,-2.5),gray+dashed);
+draw(circle(Pc,1.1),linewidth(0.8));
+draw((-4,1.2)--(4,-1.2),red+linewidth(1));
+dot(O); dot(Pc);
+label("$O$",O,dir(270)); label("$P$",Pc,dir(80));
+label("$\ell$",(3.4,-1.02),N,red);
+\end{asy}
+
+\textbf{Lemma.} Let $\mathcal C$ be the circle, with centre $Z=P$, or the boundary of the rectangle, with centre $Z=O$. A line $\ell$ divides $\mathcal C$ into two parts of equal length if and only if $\ell$ passes through $Z$.
+
+\emph{If.} The half-turn about $Z$ maps $\mathcal C$ onto itself (both the circle and the rectangle are symmetric about their centres) and maps a line through $Z$ onto itself, swapping its two sides. So it carries the part of $\mathcal C$ on one side of $\ell$ onto the part on the other side, and these parts have equal length.
+
+\emph{Only if.} Suppose $\ell$ misses $Z$. Let $\ell'$ be the line through $Z$ parallel to $\ell$, let $H$ be the open half-plane bounded by $\ell$ that does not contain $Z$, and let $H'$ be the open half-plane bounded by $\ell'$ that contains $H$. The line $\ell'$ passes through the interior point $Z$ and cannot contain a side of the rectangle, so it meets $\mathcal C$ in just two points, and by the first part the part of $\mathcal C$ in $H'$ has exactly half the length of $\mathcal C$. Near a point where $\ell'$ meets $\mathcal C$, the curve crosses $\ell'$, so it has an arc of positive length in $H'$ arbitrarily close to $\ell'$, that is, inside the strip between $\ell'$ and $\ell$, which lies outside $H$. Hence the part of $\mathcal C$ in $H$ is strictly shorter than half of $\mathcal C$, the remaining part is strictly longer, and $\ell$ does not halve $\mathcal C$. $\square$
+
+By the lemma, a line halves the circumference of the circle exactly when it passes through $P$, and halves the perimeter of the rectangle exactly when it passes through $O$. Since $O\ne P$, there is exactly one line through both points. The required cut is $\boxed{\text{the line through the centre of the circle and the centre of the rectangle}}$, and it is the only one.
+
+(If the two centres coincided, every line through the common centre would work.)

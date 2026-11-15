@@ -1,0 +1,9 @@
+The centroid gives $AG=2GM=10$. Since $G$ lies inside $\angle A$, the two angles made by $AG$ with $AB,AC$ have sines $\dfrac{8}{10},\dfrac{6}{10}$. Because the perpendicular feet lie on the side segments, both angles are acute; their sines show that they are complementary. Thus $\angle A=90^\circ$. The median to the hypotenuse is $AM=15$, hence $BC=30$. Put $A=(0,0),B=(b,0),C=(0,c)$. Then $G=(\dfrac{b}{3},\dfrac{c}{3})$, so $c=24,b=18$. The sides are $\boxed{18,24,30}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(18,0),(0,24)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));pair G=(6,8),M=(9,12),P=(6,0),Q=(0,8);draw(p[0]--M);draw(G--P,dashed);draw(G--Q,dashed);label("$G$",G,(1,0));label("$M$",M,(1,1));label("$P$",P,(0,-1));label("$Q$",Q,(-1,0));
+\end{asy}
+

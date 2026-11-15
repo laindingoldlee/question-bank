@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1536653_geometry
+% Stable identity: aops-topic-1536653-q02
+The midpoint triangle $PQR$ has sides equal to half the sides of $ABC$, so it is equilateral:
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(2,3.464102),B=(0,0),C=(4,0);
+pair P=(A+B)/2,Q=(A+C)/2,R=(B+C)/2,M=(3.1,0),Sx=(3.550000,2.684679);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(P--Q--R--cycle,dashed+gray(0.5));
+draw(P--M--Sx--cycle,heavygreen+linewidth(0.9));
+draw(Q--Sx,red+linewidth(1.2));draw(R--M,red+linewidth(1.2));
+dot(P);dot(Q);dot(R);dot(M);dot(Sx);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$P$",P,W);label("$Q$",Q,1.5*dir(0));label("$R$",R,S);label("$M$",M,S);label("$S$",Sx,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Orient the figure as drawn, with $B$, $C$ on a horizontal line and $A$ above. Let $\rho$ be the rotation about $P$ by $60^\circ$ anticlockwise. Since $PR=PQ$ and $\angle RPQ=60^\circ$, with $Q$ obtained from $R$ by turning anticlockwise about $P$, we have $\rho(R)=Q$.
+
+The point $\rho(M)$ satisfies $P\rho(M)=PM$ and $\angle MP\rho(M)=60^\circ$, so $P$, $M$, $\rho(M)$ form an equilateral triangle; there are exactly two such triangles on segment $PM$, one on each side of line $PM$. It is the apex on the left of the directed line $P\to M$. To see that this is the side away from $B$, use coordinates $B=(0,0)$, $C=(4,0)$, $A=(2,2\sqrt3)$, so $P=(1,\sqrt3)$, $R=(2,0)$, and $M=(m,0)$ with $m\ge2$. The cross product of $M-P=(m-1,-\sqrt3)$ and $B-P=(-1,-\sqrt3)$ is
+\[
+(m-1)(-\sqrt3)-(-\sqrt3)(-1)=-\sqrt3\,m<0 ,
+\]
+so $B$ is on the right of $P\to M$. Hence $\rho(M)$ is on the other side of line $PM$ from $B$, that is, $\rho(M)=S$.
+
+A rotation preserves distances, so
+\[
+QS=\rho(R)\rho(M)=RM .\qquad\blacksquare
+\]

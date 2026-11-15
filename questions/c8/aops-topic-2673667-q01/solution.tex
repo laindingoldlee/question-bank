@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2673667_help_on_geometry_problem
+% Stable identity: aops-topic-2673667-q01
+Since $AP=BP$, triangle $ABP$ is isosceles and $\angle PAB=\angle B$. Then
+\[\angle PAC=90^\circ-\angle PAB=90^\circ-\angle B=\angle C,\]
+so triangle $APC$ is isosceles with $PA=PC$. Hence $BP=AP=CP$. $\blacksquare$ (So $P$ is the midpoint of the hypotenuse.)
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(0,3),C=(4,0),P=(B+C)/2;
+draw(A--B--C--cycle,linewidth(0.8));draw(A--P,dashed);draw((0,0.3)--(0.3,0.3)--(0.3,0));dot(P);
+label("$A$",A,SW);label("$B$",B,N);label("$C$",C,SE);label("$P$",P,NE);
+void tk(pair a,pair b){pair m=(a+b)/2,u=0.12*unit(b-a);draw((m-rotate(90)*u)--(m+rotate(90)*u));}
+tk(A,P);tk(B,P);tk(P,C);
+\end{asy}

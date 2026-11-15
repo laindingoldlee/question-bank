@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1212132_amc_12_2007_19_problem
+% Stable identity: aops-topic-1212132-q01
+After taping, side $BC$ (length $6$) wraps around to become the circumference of the base, so $2\pi r=6$ and $r=\dfrac{3}{\pi}$. The height of the cylinder is the distance between the taped sides $AB$ and $DC$, which is the height of the rhombus on base $AB$: $h=6\sin\angle ABC$. The volume is
+\[\pi r^2h=\pi\cdot\dfrac{9}{\pi^2}\cdot6\sin\angle ABC=\dfrac{54}{\pi}\sin\angle ABC=6,\]
+so $\sin\angle ABC=\boxed{\dfrac{\pi}{9}}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real t=asin(pi/9); pair A=(0,0),B=(6,0),C=B+6*dir(180-degrees(t)),D=A+6*dir(180-degrees(t));
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(C--(C.x,0),dashed);
+label("$A$",A,S); label("$B$",B,S); label("$C$",C,N); label("$D$",D,N); label("$6$",(A+B)/2,S); label("$h$",(C.x,C.y/2),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

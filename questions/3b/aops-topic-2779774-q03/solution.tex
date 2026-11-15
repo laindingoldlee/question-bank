@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2779774_2015_tjimo_team_round__thomas_jefferson_intermediate_math_open
+% Stable identity: aops-topic-2779774-q03
+Six cuts suffice: cut at distances 1 and 2 in each of three coordinate directions. For necessity, consider the final central unit cube. All six of its faces lie inside the original cube, so all six must be created by cuts. One planar cut can create at most one face of this particular final cube. Rearranging pieces cannot change that fact. Thus at least six cuts are required, and the minimum is $\boxed6 $.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair u=(3,0),v=(1,1),w=(0,3);draw((0,0)--u--(u+v)--(u+v+w)--(v+w)--w--cycle);draw(u--(u+w)--w^^(u+w)--(u+v+w));for(int k=1;k<3;++k){draw(k*u/3--(k*u/3+w));draw(k*w/3--(u+k*w/3));draw((u+k*v/3)--(u+k*v/3+w));draw((u+k*w/3)--(u+v+k*w/3));draw((w+k*u/3)--(w+v+k*u/3));draw((w+k*v/3)--(w+u+k*v/3));}label("side $3$",u/2,S);
+\end{asy}

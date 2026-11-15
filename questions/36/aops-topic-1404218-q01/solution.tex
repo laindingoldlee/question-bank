@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1404218_geometry
+% Stable identity: aops-topic-1404218-q01
+The distance from the centre to a vertex is half a diagonal:
+\[
+\sqrt{(6+1)^2+(4-1)^2}=\sqrt{49+9}=\sqrt{58}.
+\]
+So the diagonal is $d=2\sqrt{58}$, and the area of a square is $\dfrac{d^2}{2}=\dfrac{4\cdot58}{2}=\boxed{116}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair O=(-1,1),V=(6,4);
+pair V2=O+rotate(90)*(V-O),V3=O+rotate(180)*(V-O),V4=O+rotate(270)*(V-O);
+xaxis("$x$",-9,8,Arrow(TeXHead)); yaxis("$y$",-7,9,Arrow(TeXHead));
+draw(V--V2--V3--V4--cycle,linewidth(0.9));
+draw(O--V,red+dashed); draw(O--V2,gray+dashed);
+dot(O);dot(V);dot(V2);dot(V3);dot(V4);
+label("$(-1,1)$",O,W); label("$(6,4)$",V,E); label("$(-4,8)$",V2,N); label("$(-8,-2)$",V3,W); label("$(2,-6)$",V4,E);
+label("$\sqrt{58}$",(O+V)/2,dir(110),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Rotating the vertex by $90^\circ$ about the centre gives the other vertices $(-4,8)$, $(-8,-2)$, $(2,-6)$; the side is $\sqrt{(6+4)^2+(4-8)^2}=\sqrt{116}$.)

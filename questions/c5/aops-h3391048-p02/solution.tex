@@ -1,0 +1,9 @@
+The homothety centered at $A$ sending the inner circle to the outer circle maps $B$ to a point $T$ of the outer circle on ray $AB$. It sends the tangent at $B$ to the tangent at $T$, so chord $CD$ is parallel to the tangent at $T$. The radius to $T$ is therefore perpendicular to $CD$, making $T$ a midpoint of one of the arcs $CD$.
+
+Since the homothety ratio exceeds $1$, $B$ lies strictly between $A$ and $T$. The chord line through $B$ separates $A$ and $T$, so $T$ is on the arc $CD$ that does not contain $A$. Consequently arcs $CT$ and $TD$ are equal, and their subtended angles $CAT,TAD$ are equal. As rays $AT,AB$ coincide, the result follows.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0),A=(-3,0),I=(-1.5,0),B=I+1.5dir(60),T=A+2*(B-A),v=dir(150);real d=dot(B,v),q=sqrt(d*d+9-dot(B,B));pair C=B+(-d+q)*v,D=B+(-d-q)*v;draw(circle(O,3));draw(circle(I,1.5),blue);draw(C--D);draw(A--C);draw(A--D);draw(A--T,red);draw(O--T,dashed);label("$A$",A,(-1,0));label("$B$",B,SE);label("$C$",C,NW);label("$D$",D,SE);label("$T$",T,NE);
+\end{asy}

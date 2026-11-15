@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3542743_math_problem_i_cant_figure_out_how_to_do_without_bashing
+% Stable identity: aops-topic-3542743-q01
+The outdegree exceeds indegree only at $M$, so a complete route must start there and end at $T$. For an explicit count, let $F(v,S)$ be the number of ways to finish at $T$ from vertex $v$ using exactly the unused edge set $S$. Set $F(T,\varnothing)=1$, other empty-set values zero, and use
+\[F(v,S)=\sum_{(v,w)\in S}F(w,S\setminus\{(v,w)\}).\]
+This exhausts routes uniquely by their next directed edge. Evaluating on the nine listed edges gives first-edge contributions $12$ for $M\to A$, $12$ for $M\to H$, and $8$ for $M\to T$. The answer is $\boxed{32}$.
+\begin{asy}
+size(7cm);
+pair M=(0,0),A=(3,0),T=(3,3),H=(0,3);draw(M--A--T--H--cycle);draw(M--T,Arrow);label("$M$",M,SW);label("$A$",A,SE);label("$T$",T,NE);label("$H$",H,NW);label("Sides: both directions",(1.5,-.6));
+\end{asy}

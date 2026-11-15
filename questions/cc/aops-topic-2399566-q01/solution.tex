@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2399566_need_a_little_help_on_this_algebra_problem
+% Stable identity: aops-topic-2399566-q01
+With $x$ movies and $y$ games ($x,y\ge0$ integers) the constraints are
+\[2x+20y\le180\iff x+10y\le90\quad(\text{time}),\qquad10x+40y\le600\iff x+4y\le60\quad(\text{money}),\]
+and the number of new friends is $x+3y$.
+
+The point $(90,0)$ satisfies the time constraint but not the money constraint: $90$ movies cost $\$900$. The best point must satisfy \emph{both} constraints, so the corners of the feasible region are $(0,0)$, $(60,0)$, $(40,5)$ and $(0,9)$, where $(40,5)$ is the intersection of $x+10y=90$ and $x+4y=60$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real sx=0.1;
+pair O=(0,0), P1=(60*sx,0), P2=(40*sx,5*0.4), P3=(0,9*0.4);
+fill(O--P1--P2--P3--cycle,rgb(0.85,0.92,1));
+draw((90*sx,0)--(0,9*0.4),red); draw((60*sx,0)--(0,15*0.4),blue);
+draw((-0.2,0)--(10.4,0),Arrow(6)); draw((0,-0.2)--(0,6.6),Arrow(6));
+label("$x$ (movies)",(10.4,0),E); label("$y$ (games)",(0,6.6),N);
+dot(P1); dot(P2); dot(P3); dot((90*sx,0),red);
+label("$(60,0)$",P1,S); label("$(40,5)$",P2,NE); label("$(0,9)$",P3,W); label("$(90,0)$",(90*sx,0),S,red);
+label("time: $x+10y=90$",(7.0,1.6),NE,red); label("money: $x+4y=60$",(1.6,4.6),E,blue);
+\end{asy}
+
+At the corners $x+3y$ equals $0$, $60$, $55$ and $27$. In fact the maximum can be seen directly: for every feasible point,
+\[x+3y\le x+4y\le60,\]
+with equality only when $y=0$ and $x=60$. So I should watch $\boxed{60\text{ movies}}$ and buy no games, making $60$ new friends.

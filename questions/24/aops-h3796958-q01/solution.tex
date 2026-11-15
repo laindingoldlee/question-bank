@@ -1,0 +1,7 @@
+The diagonal would enter a new cell at each interior vertical or horizontal grid-line crossing. At an interior lattice point both crossings coincide and must be counted only once. There are $499+799$ crossings before correcting, and $\gcd(500,800)-1=99$ coincidences. Including the starting cell gives $1+499+799-99=\boxed{1200}$. Equivalently, the diagonal consists of 100 primitive $5\times8$ blocks, crossing twelve cells in each.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int i=0;i<=8;++i)draw((i,0)--(i,5),gray);for(int j=0;j<=5;++j)draw((0,j)--(8,j),gray);draw((0,0)--(8,5),blue+linewidth(1.5));label("$8$",(4,0),(0,-1));label("$5$",(0,2.5),(-1,0));label("One of 100 primitive blocks",(4,-1));
+\end{asy}

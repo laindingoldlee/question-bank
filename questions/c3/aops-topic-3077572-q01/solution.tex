@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h3077572_problems_for_math
+% Stable identity: aops-topic-3077572-q01
+A three-digit palindrome has the form $\overline{aba}$, with $1\le a\le9$ and $0\le b\le9$, so there are $90$. Trial division gives exactly fifteen prime palindromes: $101,131,151,181,191,313,353,373,383,727,757,787,797,919,929$. Hence the nonprime count is $90-15=\boxed{75}$. The following complete test confirms that none are missed.
+\begin{verbatim}
+from math import isqrt
+prime=lambda n:all(n%d for d in range(2,isqrt(n)+1))
+p=[101*a+10*b for a in range(1,10) for b in range(10)
+   if prime(101*a+10*b)]
+assert p==[101,131,151,181,191,313,353,373,383,727,757,787,797,919,929]
+\end{verbatim}

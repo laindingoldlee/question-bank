@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1761513_algebra_problem
+% Stable identity: aops-topic-1761513-q01
+\textbf{$x\le y$.} If $x<y$, then $y^{x-y}<1\le x^y$, impossible. If $x=y$, then $x^x=1$, so $x=y=1$, which works.
+
+\textbf{$x>y$.} If $y=1$, then $x=1$, a contradiction; so $y\ge2$. Since $x>y$, $y^{x-y}=x^y>y^y$, so $x-y>y$. Put $r=\dfrac{x-y}{y}>1$. For each prime $p$, comparing exponents gives $y\,v_p(x)=(x-y)\,v_p(y)$, i.e.\ $v_p(x)=r\,v_p(y)$; hence $x=y^r$. But $x=y(1+r)$, so
+\[
+y^{r-1}=r+1 .
+\]
+Write $r=\dfrac {p}{q}$ in lowest terms. Raising to the power $q$: $y^{p-q}=\left(\dfrac{p+q}{q}\right)^q$. The left side is an integer, while $\gcd(p+q,q)=\gcd(p,q)=1$, so the right side is an integer only if $q=1$. Thus $r$ is an integer, $r\ge2$, and $y^{r-1}=r+1$ with $y\ge2$.
+\begin{itemize}
+\item $r=2$: $y=3$, $x=y(1+r)=9$. Check: $9^3=729=3^6$.
+\item $r=3$: $y^2=4$, $y=2$, $x=8$. Check: $8^2=64=2^6$.
+\item $r\ge4$: $y^{r-1}\ge2^{r-1}>r+1$ (true for $r=4$ since $8>5$, and the left side doubles while the right side grows by $1$), no solution.
+\end{itemize}
+The solutions are $\boxed{(x,y)=(1,1),\ (8,2),\ (9,3)}$.

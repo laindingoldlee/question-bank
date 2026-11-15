@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1744022_geo_questions
+% Stable identity: aops-topic-1744022-q02
+The edge is $10$ yards $=30$ feet, equal to the rope length. Put the corner $T$ at the origin, with the house occupying the octant region $0\le x,y\le30$, $-30\le z\le0$, the ground being the plane $z=-30$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real a=3; pair k=(0.5,0.35);
+pair T=(a,a)+a*k;
+draw((0,0)--(a,0)--(a,a)--(0,a)--cycle,linewidth(0.9));
+draw((0,a)--(0,a)+a*k--T--(a,a),linewidth(0.9));draw((a,0)--(a,0)+a*k--T,linewidth(0.9));
+draw((0,0)--a*k,dashed+gray);draw(a*k--(0,a)+a*k,dashed+gray);draw(a*k--(a,0)+a*k,dashed+gray);
+draw(circle(T,a),blue+linewidth(0.8));
+draw(shift(T)*xscale(a)*yscale(0.35*a)*unitcircle,blue+dashed);
+dot(T);label("$T$",T,NE);draw(T--T+(0,a),blue);label("$30$",T+(0,a/2),E,blue);
+label("$30$",(a/2,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+With the rope taut in a straight line the falcon reaches every point within $30$ feet of $T$ that is not inside the house, and it can never be farther than $30$ feet from $T$. The ball of radius $30$ about $T$ lies entirely above the ground (its lowest point is at ground level). Its eighth in the octant $x\ge0,y\ge0,z\le0$ lies inside the house, since each coordinate of such a point has absolute value at most $30$. Points of that octant outside the house have a coordinate beyond $30$ in absolute value, so they are more than $30$ feet from $T$ even when the rope wraps around the house. So the region is the other seven eighths of the ball:
+\[
+\dfrac{7}{8}\cdot\dfrac{4}{3}\pi\cdot30^3=\boxed{31500\pi}\text{ cubic feet}.
+\]

@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1785658_tmsca_ns_problems
+% Stable identity: aops-topic-1785658-q01
+A regular dodecagon has $12$ equal central angles (each subtended by one side at the centre), and together they make a full turn. So each measures $\dfrac{360^\circ}{12}=\boxed{30^\circ}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+pair[] V; for(int i=0;i<12;++i) V.push(dir(30*i));
+for(int i=0;i<12;++i) draw(V[i]--V[(i+1)%12],linewidth(0.8));
+draw(O--V[0],linewidth(0.7));draw(O--V[1],linewidth(0.7));
+draw(arc(O,0.35,0,30),blue+linewidth(0.7));
+label("$30^\circ$",0.55*dir(15),blue+fontsize(8pt));
+dot(O);label("$O$",O,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

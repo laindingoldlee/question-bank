@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1422067_triangle
+% Stable identity: aops-topic-1422067-q01
+The centroid $G$ is the common point of the three medians, and its coordinates are the averages of the vertices' coordinates:
+\[
+G=\left(\dfrac{4+2-4}{3},\ \dfrac{8-6+4}{3}\right)=\boxed{\left(\dfrac{2}{3},\,2\right)} .
+\]
+(Check on one median: the midpoint of $BC$ is $(-1,-1)$, and the point two thirds of the way from $A(4,8)$ to $(-1,-1)$ is $\left(4-\dfrac{10}{3},\,8-6\right)=\left(\dfrac{2}{3},2\right)$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(4,8),B=(2,-6),C=(-4,4),G=(A+B+C)/3;
+draw((-5.5,0)--(5.5,0),gray,Arrow(TeXHead)); draw((0,-4.5)--(0,9.5),gray,Arrow(TeXHead));
+label("$x$",(5.5,0),E,gray); label("$y$",(0,9.5),N,gray);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--(B+C)/2,blue+dashed); draw(B--(A+C)/2,blue+dashed); draw(C--(A+B)/2,blue+dashed);
+dot(A);dot(B);dot(C);dot(G,red);
+label("$A(4,8)$",A,NE); label("$B(2,-6)$",B,S); label("$C(-4,4)$",C,W);
+label("$G$",G+1.4*dir(199),red); label("$G=\left(\dfrac{2}{3},2\right)$",(3.5,2),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

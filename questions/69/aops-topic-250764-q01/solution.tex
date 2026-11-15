@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h250764_magic_triangle
+% Stable identity: aops-topic-250764-q01
+The sum of all six numbers is $75$. Adding the three side sums counts each vertex twice and each midpoint once, so $3S=75+V$, where $V$ is the vertex sum. This is at most $13+14+15=42$, giving $S\le39$. Put $13,14,15$ at the vertices and $12,10,11$ between the pairs $(13,14),(14,15),(15,13)$, respectively. Each side then sums to $39$, attaining the bound. Thus $\boxed{39}$, choice (D).
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(4,0),C=(2,3.46);draw(A--B--C--cycle);pair[] P={A,B,C,(A+B)/2,(B+C)/2,(C+A)/2};int[] V={13,14,15,12,10,11};for(int i=0;i<6;++i){filldraw(circle(P[i],.28),white,black);label(string(V[i]),P[i]);}
+\end{asy}

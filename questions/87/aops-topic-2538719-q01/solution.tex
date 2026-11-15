@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2538719_hard_functional_equation_problem
+% Stable identity: aops-topic-2538719-q01
+The assertion is \textbf{false}.
+
+\emph{Idea.} For fixed $x,y$, $f$ is a quadratic in $z$: $z^2+(xy)z+\left(x^2+y^2\right)$. Its two roots sum to $-xy$ (Vieta), so replacing $z$ by the ``other root'' $-xy-z$ should not change $f$.
+
+\emph{Counterexample.} Take $p=x$, $q=y$, $r=-z-xy$. Then
+\begin{align*}
+f(x,y,-z-xy)&=x^2+y^2+(z+xy)^2-xy(z+xy)\\
+&=x^2+y^2+z^2+2xyz+x^2y^2-xyz-x^2y^2\\
+&=x^2+y^2+z^2+xyz=f(x,y,z).
+\end{align*}
+But $r=-z-xy$ has degree $2$, so $(p,q,r)$ is not a signed permutation of $x,y,z$. $\blacksquare$
+
+(Composing such moves with the signed permutations gives infinitely many solutions.)

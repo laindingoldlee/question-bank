@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2200611_200th_post_even_though_i_passed_it
+% Stable identity: aops-topic-2200611-q03
+The radius is $6$. The distance from $O$ to $CD$ is $\sqrt{6^2-\left(3\sqrt3\right)^2}=\sqrt{36-27}=3$, so in the right triangle with hypotenuse $OD=6$ and leg $3$ the angle at $O$ between $OD$ and the perpendicular is $60^\circ$, and $\angle COD=120^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0); real R=6;
+pair A=(-6,0), B=(6,0), C=(-3*sqrt(3),3), D=(3*sqrt(3),3);
+fill(A--B--arc(O,R,0,30)--D--C--arc(O,R,150,180)--cycle,lightgray);
+fill(A--B--D--C--cycle,lightgray);
+draw(circle(O,R)); draw(A--B,linewidth(0.9)); draw(C--D,linewidth(0.9));
+draw(O--C,blue+dashed); draw(O--D,blue+dashed); draw(O--(0,3),red+dashed);
+dot(O);dot(A);dot(B);dot(C);dot(D);
+label("$A$",A,W); label("$B$",B,E); label("$C$",C,NW); label("$D$",D,NE); label("$O$",O,S);
+label("$3$",(0,1.5),E,red); label("$6$",(O+D)/2,SE,blue);
+\end{asy}
+
+The region is the half disc on the side of $CD$ minus the circular segment beyond $CD$. The segment has area
+\[\dfrac{120}{360}\cdot36\pi-\dfrac{1}{2}\cdot6\cdot6\sin120^\circ=12\pi-9\sqrt3.\]
+So the region has area
+\[18\pi-\left(12\pi-9\sqrt3\right)=6\pi+9\sqrt3,\]
+and $a+b+c=6+9+3=\boxed{18}$.

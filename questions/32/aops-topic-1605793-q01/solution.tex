@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1605793_2018_mathcounts_school_sprint_12
+% Stable identity: aops-topic-1605793-q01
+Let the square have side $s$; the original fence has length $4s$. The new fence joins the midpoints of two opposite sides, so it is parallel to the other two sides and has length $s$:
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real s=4;
+draw((0,0)--(s,0)--(s,s)--(0,s)--cycle,linewidth(1));
+draw((s/2,0)--(s/2,s),red+linewidth(1)+dashed);
+dot((s/2,0),red);dot((s/2,s),red);
+label("$s$",(s/2,0),S);label("$s$",(0,s/2),W);label("$s$",(s/2,s),N);label("$s$",(s,s/2),E);
+label("new fence",(s/2,s/2),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The fencing grows from $4s$ to $5s$, an increase of $\dfrac{s}{4s}=\dfrac{1}{4}$, that is, $\boxed{25\%}$.

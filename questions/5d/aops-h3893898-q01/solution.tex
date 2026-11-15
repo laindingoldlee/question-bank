@@ -1,0 +1,7 @@
+Write $a=BC$, $b=CA$, $c=AB$, $s=\dfrac{a+b+c}{2}$, and inradius $r$. If the incircle touches $AB$ at $T$ and has centre $I$, equal tangent lengths give $AT=s-a$. The right triangle $AIT$ gives $\tan\dfrac{A}{2}=\dfrac{r}{s-a}$. The asserted diameter formula is equivalent to $r=\dfrac{s-a}{\sqrt3}$, hence to $\tan\dfrac{A}{2}=\dfrac{1}{\sqrt3}$. Since $0<\dfrac{A}{2}<90^\circ$, this is equivalent to $\dfrac{A}{2}=30^\circ$, or $\boxed{A=60^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(5,0),C=(2,2*sqrt(3));real a=abs(B-C),b=4,c=5;pair I=(a*A+b*B+c*C)/(a+b+c),T=(I.x,0);draw(A--B--C--cycle);draw(circle(I,I.y));draw(A--I--T,dashed);label("A",A,SW);label("B",B,SE);label("C",C,N);label("I",I,N);label("T",T,S);label("$s-a$",(A+T)/2,S);label("$r$",(I+T)/2,E);
+\end{asy}

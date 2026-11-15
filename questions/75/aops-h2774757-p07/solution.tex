@@ -1,0 +1,7 @@
+Five numbers in $[-1,1]$ have four consecutive gaps totaling at most $2$, so their smallest gap is at most $\dfrac{1}{2}$. Thus the sum is at most $\dfrac{3}{2}$. Equality is achieved by the points $(-1,-\dfrac{1}{2},0),(-\dfrac{1}{2},-1,\dfrac{1}{2}),(0,\dfrac{1}{2},-1),(\dfrac{1}{2},1,1),(1,0,-\dfrac{1}{2})$. Each lies on the surface, and each coordinate list is a permutation of $-1,-\dfrac{1}{2},0,\dfrac{1}{2},1$. The maximum is $\boxed{\dfrac{3}{2}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair pr(real x,real y,real z){return (x+.45*y,z+.3*y);}for(int z=-1;z<=1;z+=2)draw(pr(-1,-1,z)--pr(1,-1,z)--pr(1,1,z)--pr(-1,1,z)--cycle);for(int x=-1;x<=1;x+=2)for(int y=-1;y<=1;y+=2)draw(pr(x,y,-1)--pr(x,y,1));dot(pr(-1,-.5,0),red);dot(pr(-.5,-1,.5),red);dot(pr(0,.5,-1),red);dot(pr(.5,1,1),red);dot(pr(1,0,-.5),red);
+\end{asy}

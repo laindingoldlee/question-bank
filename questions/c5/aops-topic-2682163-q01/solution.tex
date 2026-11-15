@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2682163_diagram_for_this_problem
+% Stable identity: aops-topic-2682163-q01
+So $BE$ and $BF$ trisect $\angle ABC$ ($BE$ nearer to $BA$), and $CF$ and $CE$ trisect $\angle ACB$ ($CE$ nearer to $CB$). Thus $E$ is where the trisector of $B$ nearer $BA$ meets the trisector of $C$ nearer $CB$, $F$ is where the trisector of $B$ nearer $BC$ meets the trisector of $C$ nearer $CA$, and $D$ is where the two trisectors nearest $BC$ meet.
+
+Let $\angle ABC=3\beta$ and $\angle ACB=3\gamma$. Then $3\beta+3\gamma=180^\circ-78^\circ=102^\circ$, so $\beta+\gamma=34^\circ$. In triangle $DBC$, $\angle DBC=\angle FBC=\beta$ and $\angle DCB=\angle ECB=\gamma$, so
+\[\angle BDC=180^\circ-(\beta+\gamma)=\boxed{146^\circ}.\]
+(By vertical angles, $\angle EDF=146^\circ$ as well.) The sketch uses $\angle B=48^\circ$ and $\angle C=54^\circ$; the answer does not depend on this split.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(6,0);
+pair A=extension(B,B+dir(48),C,C+dir(126));
+pair Ee=extension(B,B+dir(32),C,C+dir(162)),F=extension(B,B+dir(16),C,C+dir(144)),D=extension(B,B+dir(16),C,C+dir(162));
+draw(A--B--C--cycle,linewidth(0.8));
+draw(B--Ee);draw(B--F);draw(C--Ee);draw(C--F);
+dot(D);dot(Ee);dot(F);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$E$",Ee,N);label("$F$",F,N);label("$D$",D,S);
+label("$78^\circ$",A,8*S,fontsize(7pt));
+\end{asy}

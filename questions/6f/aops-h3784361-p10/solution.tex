@@ -1,0 +1,16 @@
+Put $E=(0,0),B=(-y,0),C=(x,0)$, and let $A=d(\cos\alpha,\sin\alpha)$, with $0<\alpha<\pi$. Write $s$ for the semiperimeter of $ABC$. The reflection condition gives $AB=s-y$ and $AC=s-x$, so both small triangles have semiperimeter $\sigma=\dfrac{s+d}{2}$. Comparing their areas gives $\dfrac{x}{y}=\dfrac{11}{4}$.
+Let $t=\tan(\dfrac{\alpha}{2})>0$. The small incenters are $(-4t,4)$ and $(\dfrac{11}{t},11)$. Their separation therefore gives $4t+\dfrac{11}{t}=24$, so $t=\dfrac{1}{2}$ or $\dfrac{11}{2}$. Put $L=s-d>0$. Tangent lengths from $E$ in the two small triangles give
+\[
+y-\dfrac{L}{2}=4t,\qquad x-\dfrac{L}{2}=\dfrac{11}{t}.
+\]
+Using $\dfrac{x}{y}=\dfrac{11}{4}$ yields $L=\dfrac{88(\dfrac{1}{t}-t)}{7}$. Since $L>0$, we must have $t=\dfrac{1}{2}$. Consequently $L=\dfrac{132}{7}$, $y=\dfrac{80}{7}$, $x=\dfrac{220}{7}$, and $(\cos\alpha,\sin\alpha)=(\dfrac{3}{5},\dfrac{4}{5})$.
+Now $AB=d+L-y=d+\dfrac{52}{7}$. Its squared coordinate length is $d^2+2dy(\dfrac{3}{5})+y^2$. Equating these expressions yields $d=66$. Thus $s=\dfrac{594}{7}$, altitude $h=\dfrac{264}{5}$, and $BC=\dfrac{300}{7}$. The desired inradius is
+\[
+\boxed{\dfrac{h\,BC}{2s}=\dfrac{40}{3}}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(39.6,52.8),B=(-80./7,0),C=(220./7,0),E=(0,0),D=(140./7,0),I1=(-2,4),I2=(22,11);draw(A--B--C--cycle);draw(A--E,blue);draw(circle(I1,4),red);draw(circle(I2,11),red);draw(I1--I2,dashed);label('$A$',A,N);label('$B$',B,SW);label('$C$',C,SE);label('$E$',E,S);label('$D$',D,S);dot(D);
+\end{asy}

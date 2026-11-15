@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2538275_perimeter_from_diagonal
+% Stable identity: aops-topic-2538275-q01
+Let the side be $s$, so $P=4s$. The diagonal $AC$ is the hypotenuse of the right triangle $ABC$ with legs $s$ and $s$, so by the Pythagorean theorem $d^2=s^2+s^2=2s^2$ and $d=s\sqrt2$. Hence $s=\dfrac d{\sqrt2}$ and
+\[P=4s=\dfrac{4d}{\sqrt2}=2\sqrt2\,d.\ \blacksquare\]
+
+\begin{asy}
+usepackage("amsmath");
+size(3.2cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(3,0),C=(3,3),D=(0,3);
+draw(A--B--C--D--cycle,linewidth(0.8));draw(A--C,dashed);
+draw((0.25,0)--(0.25,0.25)--(0,0.25));draw((2.75,0)--(2.75,0.25)--(3,0.25));
+label("$s$",(A+B)/2,S);label("$s$",(B+C)/2,E);label("$d$",(1.55,1.45),NW);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+\end{asy}

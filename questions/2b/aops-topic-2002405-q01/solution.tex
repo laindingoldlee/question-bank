@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2002405_lakecomo224s_math_problem_set
+% Stable identity: aops-topic-2002405-q01
+Label the hexagon $ABCDEF$ with centre $O$.
+
+Any two distinct points are two vertices of exactly two equilateral triangles, one on each side of the segment joining them (for example, side $AB$ gives triangles $ABO$ and $ABP$ in the figure). There are $\binom62=15$ pairs of hexagon vertices, giving $30$ triangles counted with multiplicity.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair[] H; for(int k=0;k<6;++k) H[k]=dir(60*k);
+draw(H[0]--H[1]--H[2]--H[3]--H[4]--H[5]--cycle,linewidth(1));
+string[] nm={"$A$","$B$","$C$","$D$","$E$","$F$"};
+for(int k=0;k<6;++k){dot(H[k]); label(nm[k],H[k],dir(60*k));}
+draw(H[0]--H[2]--H[4]--cycle,blue+dashed);
+pair Y=H[0]+(H[1]-H[0])*dir(-60);
+draw(H[0]--H[1]--Y--cycle,red); dot(Y,red); label("$P$",Y,E,red);
+draw(H[0]--(0,0)--H[1],red+dotted); dot((0,0)); label("$O$",(0,0),SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+A triangle is counted once for each of its sides whose endpoints are both hexagon vertices. If two of its sides have this property, all three of its vertices are hexagon vertices. The only equilateral triangles with all three vertices among the hexagon's vertices are $ACE$ and $BDF$, and each of them is counted $3$ times. Every other triangle has exactly two hexagon vertices and is counted once.
+
+So the number of distinct triangles is $30-2\cdot2=\boxed{26}$.

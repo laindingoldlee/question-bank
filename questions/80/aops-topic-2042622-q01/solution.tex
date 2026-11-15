@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2042622_graph_question
+% Stable identity: aops-topic-2042622-q01
+The given line has slope \(-\dfrac{1}{2}\), so a perpendicular line has slope \(2\); through the origin it is \(y=2x\).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw((-0.5,0)--(9.5,0),Arrow(4)); draw((0,-0.5)--(0,17.5),Arrow(4));
+fill((0,0)--(8,0)--(8,16)--cycle,paleblue);
+draw((0,0)--(8.6,17.2),blue+linewidth(0.9));
+draw((0,6)--(9,1.5),gray);
+draw((8,0)--(8,16),dashed);
+label("$y=2x$",(8.6,17.2),W,blue); label("$y=-\dfrac{x}{2}+6$",(0,6),W,gray);
+label("$8$",(8,0),S); label("$(8,16)$",(8,16),E);
+label("$x$",(9.5,0),E); label("$y$",(0,17.5),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For \(0\le x\le8\) the region between \(y=2x\) and the \(x\)-axis is a right triangle with legs \(8\) and \(2\cdot8=16\). Its area is
+\[
+\dfrac{1}{2}\cdot8\cdot16=\boxed{64}.
+\]

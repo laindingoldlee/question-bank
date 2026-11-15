@@ -1,0 +1,9 @@
+Put $B=(-1,0),C=(1,0)$ and the small circle centre at $I=(0,r)$, where $r=2-\sqrt3=\tan15^\circ$. The tangent-length identity gives $AI^2=1+r^2$. Also $BI^2=CI^2=1+r^2$, so $A,B,C$ lie on a circle centred at $I$. Because $A$ is above $BC$, its inscribed angle subtends the lower arc $BC$. In the isosceles triangle $BIC$, the half-central angle has tangent $\dfrac{1}{r} = \tan 75^\circ$, so $\angle BIC=150^\circ$. Thus $\boxed{\angle BAC=75^\circ}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+real r=2-sqrt(3),R=sqrt(1+r*r);pair B=(-1,0),C=(1,0),I=(0,r),A=(0,r+R);draw(A--B--C--cycle);draw(circle(I,r));draw(circle(I,R),dashed);pair T=I+(r*sqrt(1-r*r/(R*R)),r*r/R);draw(A--T);dot(T);label("$T$",T,(1,1));draw(I--B);draw(I--C);label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));label("$I$",I,(1,0));
+\end{asy}
+

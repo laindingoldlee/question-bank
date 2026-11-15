@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h2188841_classical_troll_problem
+% Stable identity: aops-topic-2188841-q01
+The angles: $\angle BAC=180^\circ-2\cdot80^\circ=20^\circ$ and $AB=AC$. In triangle $BPC$, $\angle PCB=180^\circ-80^\circ-30^\circ=70^\circ$, so $\angle ACP=80^\circ-70^\circ=10^\circ$ and $\angle APC=180^\circ-30^\circ=150^\circ$.
+
+\textbf{Construction.} Draw the equilateral triangle $BCD$ with $D$ on the same side of $BC$ as $A$ (shaded).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm,9cm);
+defaultpen(fontsize(10pt));
+pair B=(-1,0), C=(1,0); pair A=(0,tan(radians(80)));
+pair P=extension(B,A,C,C+dir(110));
+pair D=(0,sqrt(3));
+fill(B--C--D--cycle,paleyellow);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--P,blue+linewidth(0.9));
+draw(B--D--C,heavygreen+dashed); draw(A--D,heavygreen+dashed);
+dot(A); dot(B); dot(C); dot(P); dot(D);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$P$",P,W); label("$D$",D,E);
+draw(arc(A,0.8,-100,-80)); label("$20^\circ$",A+1.15*dir(-90),fontsize(8pt));
+draw(arc(B,0.35,0,80)); label("$80^\circ$",B+0.62*dir(40),fontsize(8pt));
+draw(arc(P,0.45,-100.6,-70),blue); label("$30^\circ$",P+0.75*dir(-86),blue+fontsize(8pt));
+draw(arc(C,0.3,110,180),blue); label("$70^\circ$",C+0.55*dir(150),blue+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $DB=DC$ and $AB=AC$, both $A$ and $D$ lie on the perpendicular bisector of $BC$, which is also the bisector of $\angle BAC$; and $D$ lies inside triangle $ABC$, because $\angle DBC=60^\circ<80^\circ=\angle ABC$ and likewise at $C$. Hence
+\[\angle BAD=\dfrac{20^\circ}{2}=10^\circ,\qquad\angle ABD=80^\circ-60^\circ=20^\circ .\]
+
+\textbf{Congruent triangles.} Compare triangles $ABD$ and $CAP$:
+\[\angle BAD=10^\circ=\angle ACP,\qquad AB=CA,\qquad\angle ABD=20^\circ=\angle CAP .\]
+In triangle $ABD$ the side $AB$ lies between the angles at $A$ and $B$; in triangle $CAP$ the side $CA$ lies between the angles at $C$ and $A$. So by ASA, triangle $ABD$ is congruent to triangle $CAP$, with $A\leftrightarrow C$, $B\leftrightarrow A$, $D\leftrightarrow P$. Therefore
+\[AP=BD=BC,\]
+the last equality because triangle $BCD$ is equilateral. $\blacksquare$
+
+\emph{Remark (with trigonometry).} By the law of sines in triangle $APC$, $AP=\dfrac{AC\sin10^\circ}{\sin150^\circ}=2AC\sin10^\circ$, and in the isosceles triangle $ABC$, $BC=2AC\sin10^\circ$ as well.

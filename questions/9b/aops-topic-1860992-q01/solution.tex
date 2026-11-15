@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1860992_how_many_n_digit_integers
+% Stable identity: aops-topic-1860992-q01
+(a) For $n=1$ all three digits are allowed: $a_1=3$. For $n=2$, all $9$ strings except $11$: $a_2=8$. Now let $n\ge3$ and sort the allowed strings of length $n$ by the last digit.
+\begin{itemize}
+\item Last digit $2$ or $3$: the first $n-1$ digits form any allowed string, so there are $2a_{n-1}$ such strings.
+\item Last digit $1$: the digit before it must be $2$ or $3$, and the first $n-2$ digits form any allowed string, so there are $2a_{n-2}$ such strings.
+\end{itemize}
+Hence $a_n=2a_{n-1}+2a_{n-2}$. This gives $3,8,22,60,164,448,\dots$. (Setting $a_0=1$, for the empty string, the recurrence also holds at $n=2$: $2\cdot3+2\cdot1=8$.)
+
+(b) The characteristic equation $r^2=2r+2$ has roots $r=1\pm\sqrt3$, so $a_n=\alpha(1+\sqrt3)^n+\beta(1-\sqrt3)^n$. The conditions $a_0=1$ and $a_1=3$ give $\alpha+\beta=1$ and $\alpha-\beta=\dfrac{2}{\sqrt3}$. Since $(1\pm\sqrt3)^2=2(2\pm\sqrt3)$, this can be written as
+\[
+\boxed{a_n=\dfrac{(1+\sqrt3)^{n+2}-(1-\sqrt3)^{n+2}}{4\sqrt3}}.
+\]
+Check: $n=1$ gives $\dfrac{(10+6\sqrt3)-(10-6\sqrt3)}{4\sqrt3}=3$, and $n=2$ gives $\dfrac{32\sqrt3}{4\sqrt3}=8$.

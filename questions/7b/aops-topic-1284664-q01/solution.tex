@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1284664_geometry
+% Stable identity: aops-topic-1284664-q01
+The legs satisfy $a+b=42-18=24$ and $a^2+b^2=18^2=324$, so $2ab=24^2-324=252$ and the area is $\dfrac{ab}{2}=63$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair C=(0,0),A=(15.62,0),B=(0,8.38); real r=3;
+draw(A--B--C--cycle); draw(circle((r,r),r),blue); draw(ra(C,(1,0),(0,1),0.8)); dot((r,r)); label("$I$",(r,r),NE);
+draw((r,r)--(r,0),red); label("$r$",(r,r/2),E,red); label("$18$",(A+B)/2,NE); label("$A$",A,SE); label("$B$",B,NW); label("$C$",C,SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+With semiperimeter $s=21$, the inradius is $r=\dfrac{\text{area}}{s}=\dfrac{63}{21}=\boxed{3}$. (Equivalently, in a right triangle $r=\dfrac{a+b-c}{2}=\dfrac{24-18}{2}=3$.)

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2796222_star_question
+% Stable identity: aops-topic-2796222-q01
+Each tip angle is an inscribed angle subtending the arc between the two neighbouring points that are joined to it, avoiding the tip. The points split the circle into $n$ arcs of $\dfrac{360^\circ}n$; the arc opposite a tip consists of the arcs not between the tip and its two neighbours, i.e. $n-2k$ small arcs.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+int n=7,k=3;pair[] P;for(int i=0;i<n;++i) P.push(dir(90+360*i/n));for(int i=0;i<n;++i) draw(P[i]--P[(i+k)%n]);for(int i=0;i<n;++i) dot(P[i]);label("tip",P[0],N);
+\end{asy}
+
+So each tip angle is $\dfrac12(n-2k)\dfrac{360^\circ}n$, and the $n$ tips sum to $180^\circ(n-2k)$. For the usual five-pointed star, $S(5,2)$, this is $180^\circ$.
+
+For seven points: $S(7,2)$ gives $\boxed{540^\circ}$ and $S(7,3)$ gives $\boxed{180^\circ}$.

@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2014003_a_few_hard_math_problems_that_get_increasingly_harder
+% Stable identity: aops-topic-2014003-q04
+\textbf{(a)} Positive lengths $x,y,z$ are the sides of a (nondegenerate) triangle exactly when each is less than the sum of the other two:
+\[
+z<x+y,\qquad x<y+z,\qquad y<x+z .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(5,0), C=(1.6,2.4);
+draw(A--B--C--cycle,linewidth(0.9));
+label("$x$",(A+B)/2,S); label("$y$",(B+C)/2,NE); label("$z$",(A+C)/2,NW);
+dot(A); dot(B); dot(C);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The last two inequalities say $z>x-y$ and $z>y-x$, that is $z>|x-y|$. So the possible third sides are exactly
+\[
+|x-y|<z<x+y .
+\]
+Every such $z$ works, since then all three triangle inequalities hold.
+
+\textbf{(b)} The integers strictly between $|x-y|$ and $x+y$ are $|x-y|+1,\dots,x+y-1$, which number
+\[
+(x+y-1)-|x-y|=\boxed{2\min(x,y)-1}.
+\]
+For example, with sides $3$ and $7$ the third side can be $5,6,7,8,9$: five values, and $2\cdot3-1=5$.

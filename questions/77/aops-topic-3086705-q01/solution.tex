@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3086705_angles_in_circles
+% Stable identity: aops-topic-3086705-q01
+If both centres are a point $O$, its perpendicular distances to the three sides equal the inradius. The sides are chords of the same circumcircle at equal distances from its centre; a chord at distance $d$ in radius $R$ has length $2\sqrt{R^2-d^2}$, so all three sides are equal. Conversely the symmetry of an equilateral triangle makes both centres the intersection of its medians. For a nonequilateral triangle with angles $60^\circ,50^\circ,70^\circ$, the incenter still satisfies $\angle BIC=90^\circ+\dfrac{60^\circ}{2}=120^\circ$, but the centres cannot coincide by the proved criterion.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair B=(0,0),C=(1,0),A=sin(70*pi/180)/sin(60*pi/180)*dir(50);real aa=abs(B-C),bb=abs(A-C),cc=abs(A-B);pair I=(aa*A+bb*B+cc*C)/(aa+bb+cc),O=(0.5,(dot(A,A)-A.x)/(2*A.y));draw(A--B--C--cycle);draw(B--I--C,blue);dot(I);dot(O);label("$A:60^\circ$",A,N);label("$B:50^\circ$",B,SW);label("$C:70^\circ$",C,SE);label("$I$",I,W);label("$O$",O,E);
+\end{asy}

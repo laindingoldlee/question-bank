@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1610913_generalised_permutation
+% Stable identity: aops-topic-1610913-q01
+ENGINEERING has E$\times3$, N$\times3$, G$\times2$, I$\times2$, R$\times1$; the vowels are E and I.
+
+\textbf{All five-letter words.} Classify by the pattern of repeated letters. A letter can be used three times only if it is E or N, and twice only if it is E, N, G or I.
+\begin{itemize}
+\item $3+2$: triple from $\{E,N\}$ ($2$), pair from the other three letters with two copies ($3$): $6$ choices, each with $\dfrac{5!}{3!\,2!}=10$ orders: $60$.
+\item $3+1+1$: triple ($2$), two singles from the other $4$ letters ($6$): $12\cdot\dfrac{5!}{3!}=240$.
+\item $2+2+1$: two pairs from $\{E,N,G,I\}$ ($6$), a single from the other $3$ letters ($3$): $18\cdot\dfrac{5!}{2!\,2!}=540$.
+\item $2+1+1+1$: a pair ($4$), three singles from the other $4$ letters ($4$): $16\cdot\dfrac{5!}{2!}=960$.
+\item $1+1+1+1+1$: all five letters once: $5!=120$.
+\end{itemize}
+Total: $60+240+540+960+120=1920$.
+
+\textbf{Words with no vowel} use only N$\times3$, G$\times2$, R$\times1$, six letters of which five are used, so exactly one is left out:
+\[
+\text{omit N: }\dfrac{5!}{2!\,2!}=30,\qquad\text{omit G: }\dfrac{5!}{3!}=20,\qquad\text{omit R: }\dfrac{5!}{3!\,2!}=10,
+\]
+$60$ in all.
+
+So the number of words with at least one vowel is $1920-60=\boxed{1860}$.
+
+\emph{A shortcut for longer words.} The total is $5!$ times the coefficient of $x^5$ in the exponential generating function $\left(1+x+\dfrac{x^2}{2!}+\dfrac{x^3}{3!}\right)^2\left(1+x+\dfrac{x^2}{2!}\right)^2(1+x)$, one factor per letter; this replaces the casework by a polynomial multiplication.

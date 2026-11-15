@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1753684_counting_and_geometry_problems
+% Stable identity: aops-topic-1753684-q01
+The base angles are $\angle B=\angle C=\dfrac{180^\circ-34^\circ}{2}=73^\circ$. The centre $P$ of the inscribed circle is the incentre, where the angle bisectors meet, so $\angle PAC=17^\circ$ and $\angle PCA=36.5^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real b=(180-34)/2;
+pair B=(-2,0),C=(2,0),A=(0,2*Tan(b));
+real r=2*Tan(b/2); pair P=(0,r);
+draw(circle(P,r),blue+linewidth(0.7));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(P--A,dashed);draw(P--C,dashed);
+dot(P);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$P$",P,W);
+draw(arc(A,2.4,degrees(B-A),degrees(C-A)),linewidth(0.6));label("$34^\circ$",A+2.95*dir(-98.5),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In triangle $APC$,
+\[
+\angle APC=180^\circ-17^\circ-36.5^\circ=\boxed{126.5^\circ}
+\]
+(in general $\angle APC=90^\circ+\dfrac{1}{2}\angle B$).

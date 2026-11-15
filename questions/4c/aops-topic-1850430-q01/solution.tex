@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1850430_combinatorics
+% Stable identity: aops-topic-1850430-q01
+We prove more generally: if $n\ge3$ different numbers are written around a circle, there are exactly $n-3$ good pairs. For $n=99$ this gives $\boxed{96}$.
+
+\textbf{Base case $n=3$.} Any two of the three numbers are neighbours, so there are no pairs to consider: $0=3-3$ good pairs.
+
+\textbf{Inductive step.} Let $n\ge4$, let $s$ be the smallest number on the circle, and let $x,y$ be its two neighbours.
+\begin{itemize}
+\item $x$ and $y$ are not neighbours (between them lie $s$ on one side and $n-3\ge1$ numbers on the other), and the arc between them containing only $s$ shows that $\{x,y\}$ is good.
+\item A pair containing $s$ is never good: both arcs of a non-neighbouring pair are nonempty, and $s$ is not greater than any number.
+\end{itemize}
+Now erase $s$, so that $x$ and $y$ become neighbours, leaving a circle of $n-1$ numbers. Consider any pair $\{u,v\}\ne\{x,y\}$ of numbers other than $s$. They are neighbours on the new circle exactly when they were neighbours on the old one (the only new adjacency is $x$--$y$). Their two arcs on the new circle are the old arcs with $s$ deleted; no arc becomes empty, because an old arc consisting of $s$ alone would mean $\{u,v\}=\{x,y\}$. Since $s<u,v$, deleting $s$ from an arc does not change whether $u$ and $v$ exceed everything on it. So $\{u,v\}$ is good on the new circle exactly when it was good on the old one.
+
+Hence the old circle has exactly one more good pair than the new one (namely $\{x,y\}$), and by induction it has $(n-1-3)+1=n-3$ good pairs, whatever the order. For $99$ numbers there are always $96$ good pairs.

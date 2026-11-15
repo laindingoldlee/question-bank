@@ -1,0 +1,19 @@
+The squarefree part of an integer is the product of primes occurring to odd exponent. Two integers have square product exactly when their squarefree parts agree. Thus each column must pair two numbers from the same squarefree class.
+
+Among numbers at most $23$, the only classes containing at least two members are
+\[
+1:\{1,4,9,16\},\quad
+2:\{2,8,18\},\quad
+3:\{3,12\},\quad
+5:\{5,20\}.
+\]
+They allow at most two, one, one, and one disjoint pairs. To obtain five columns all these capacities must be used. Each row then has squarefree-part product $1^2\cdot2\cdot3\cdot5=30$, not a square. Therefore $n\ge24$.
+
+At $n=24$, use the grid below. The row products are $324=18^2$ and $147456=384^2$; the column products are $4,144,16,36,144$, all squares. All ten entries are distinct. Thus $\boxed{n=24}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"1", "9", "2", "3", "6"}, {"4", "16", "8", "12", "24"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("A construction attaining n = 24",(2.5,-2.2));
+\end{asy}

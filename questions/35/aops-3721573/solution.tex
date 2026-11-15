@@ -1,0 +1,8 @@
+Put $AB=7t$, $BC=6t$, $CD=2t$. The shared hypotenuse satisfies $AC^2=85t^2$, so $AD^2=85t^2-4t^2=81t^2$ and $AD=9t$. The diagonal divides the convex quadrilateral into two right triangles, hence $120=\dfrac{1}{2}(7t)(6t)+\dfrac{1}{2}(9t)(2t)=30t^2$. Thus $t=2$ and the perimeter is $(7+6+2+9)t=\boxed{48\text{ cm}}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair A=(0,0),B=(7,0),C=(7,6),D=(459/85,612/85);draw(A--B--C--D--cycle);draw(A--C,dashed);label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$C$",C,(1,0));label("$D$",D,(-1,1));label("$7t$",(A+B)/2,(0,-1));label("$6t$",(B+C)/2,(1,0));label("$2t$",(C+D)/2,(1,1));label("$9t$",(A+D)/2,(-1,1));
+void ra(pair U,pair V,pair W,real s){pair u=s*unit(U-V),w=s*unit(W-V);draw(V+u--V+u+w--V+w);}
+ra(A,B,C,.45);ra(A,D,C,.35);
+\end{asy}
+

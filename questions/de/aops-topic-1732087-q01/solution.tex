@@ -1,0 +1,46 @@
+% Source: https://artofproblemsolving.com/community/c3h1732087_a_few_geo_questions
+% Stable identity: aops-topic-1732087-q01
+Let the circles have centres $O_1$ (radius $c$) and $O_2$ (radius $r$) and meet at $P$ and $Q$, so $PQ=a$. The line $O_1O_2$ is the perpendicular bisector of $PQ$; let it meet $PQ$ at its midpoint $M$. In right triangle $O_1MP$,
+\[
+O_1M=\sqrt{c^2-\dfrac{a^2}{4}}=\dfrac{1}{2}\sqrt{4c^2-a^2}=:d .
+\]
+Since $d<c<b=O_1O_2$, the centre $O_2$ cannot lie between $M$ and $O_1$. So there are two cases.
+
+\textbf{Centres on opposite sides of the chord} (the usual picture): $O_2M=b-d$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+pair O1=(-4,0),O2=(3,0),Pp=(0,3),Q=(0,-3);
+draw(circle(O1,5),linewidth(0.8));draw(circle(O2,sqrt(18)),linewidth(0.8));
+draw(Pp--Q,red+linewidth(0.8));draw(O1--O2,dashed);draw(O1--Pp,blue);draw(O2--Pp,deepgreen);
+draw((0,0)--(0.4,0)--(0.4,0.4)--(0,0.4));
+dot(O1);dot(O2);dot(Pp);dot(Q);
+label("$O_1$",O1,W);label("$O_2$",O2,E);label("$P$",Pp,2.5*N);label("$Q$",Q,2.5*S);
+label("$c$",(O1+Pp)/2,NW,blue);label("$r$",(O2+Pp)/2,NE,deepgreen);
+label("$a$",(0,-0.9),E,red);label("$b$",(-2.6,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Centres on the same side}, with $O_1$ between $M$ and $O_2$: $O_2M=b+d$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair O1=(-4,0),O2=(-11,0),Pp=(0,3),Q=(0,-3);
+draw(circle(O2,sqrt(130)),linewidth(0.8));draw(circle(O1,5),linewidth(0.8));
+draw(Pp--Q,red+linewidth(0.8));draw(O2--(0,0),dashed);draw(O1--Pp,blue);draw(O2--Pp,deepgreen);
+dot(O1);dot(O2);dot(Pp);dot(Q);
+label("$O_1$",O1,S);label("$O_2$",O2,S);label("$P$",Pp,NE);label("$Q$",Q,SE);
+label("$c$",(O1+Pp)/2,SE,blue);label("$r$",(O2+Pp)/2,N,deepgreen);
+label("$a$",(0,-1.4),W,red);label("$b$",(O1+O2)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In right triangle $O_2MP$, $r^2=\dfrac{a^2}{4}+O_2M^2=\dfrac{a^2}{4}+b^2\mp2bd+d^2=b^2+c^2\mp2bd$. Hence
+\[
+\boxed{r=\sqrt{b^2+c^2-b\sqrt{4c^2-a^2}}\quad\text{or}\quad r=\sqrt{b^2+c^2+b\sqrt{4c^2-a^2}}},
+\]
+the first when the centres are on opposite sides of the common chord and the second when they are on the same side. (The figures use $a=6$, $c=5$, $b=7$, giving $r=\sqrt{18}$ and $r=\sqrt{130}$.)

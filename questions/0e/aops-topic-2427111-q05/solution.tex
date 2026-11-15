@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2427111_several_problems_that_i_made
+% Stable identity: aops-topic-2427111-q05
+Let the common radius be $AB=2$ (slopes do not depend on the scale) and put $A=(0,0)$, $B=(2,0)$. The circles meet where $x=1$, and the lower point is $C=\left(1,-\sqrt3\right)$. On the line $y=-\sqrt3$:
+\begin{itemize}
+\item $\omega_A$: $x^2=4-3=1$, so the other point is $D=\left(-1,-\sqrt3\right)$;
+\item $\omega_B$: $(x-2)^2=1$, so the other point is $E=\left(3,-\sqrt3\right)$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real u=3;
+pair A=(0,0),B=(u,0),C=(u/2,-u*sqrt(3)/2),D=(-u/2,-u*sqrt(3)/2),Ep=(3u/2,-u*sqrt(3)/2);
+draw(circle(A,u),gray); draw(circle(B,u),gray);
+draw((-1.1u,C.y)--(2.1u,C.y),dashed);
+draw(A--B--Ep--D--cycle,linewidth(0.8));
+draw(A--D,red+linewidth(1.1)); draw(B--D,blue+linewidth(1.1)); draw(A--Ep,gray+dotted);
+dot(A); dot(B); dot(C); dot(D); dot(Ep);
+label("$A$",A,NW); label("$B$",B,NE); label("$C$",C,S); label("$D$",D,SW); label("$E$",Ep,SE); label("$L$",(2.1u,C.y),E);
+\end{asy}
+
+Trapezoid $ABED$ has bases $AB$ and $DE$, legs $AD$ and $BE$, and diagonals $AE$ and $BD$. Their slopes are
+\[AD:\ \dfrac{-\sqrt3}{-1}=\sqrt3,\qquad BE:\ \dfrac{-\sqrt3}{1}=-\sqrt3,\qquad AE:\ \dfrac{-\sqrt3}{3},\qquad BD:\ \dfrac{-\sqrt3}{-3}=\dfrac{\sqrt3}{3}.\]
+The positive ones are the leg $AD$ and the diagonal $BD$, and
+\[\sqrt3+\dfrac{\sqrt3}{3}=\dfrac{4\sqrt3}{3}.\]
+So $a=4$, $b=3$, $c=3$ and $abc=\boxed{36}$.

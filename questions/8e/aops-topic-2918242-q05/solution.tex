@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2918242_argentina_nmo_round_2_intercollegiate_geo__level_1_200616
+% Stable identity: aops-topic-2918242-q05
+Since $AP=AB=AD$, triangle $ADP$ is isosceles with $\angle APD=\angle ADP=10^\circ$, so $\angle DAP=160^\circ$. The ray $AP$ makes $160^\circ$ with $AD$, on either side of line $AD$.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1);pair P1=dir(250),P2=dir(-70);draw(A--B--C--D--cycle);draw(D--P1--A);draw(D--P2--A,dashed);draw(B--P1);draw(B--P2,dashed);
+label("$A$",A,W);label("$B$",B,E);label("$C$",C,NE);label("$D$",D,NW);label("$P_1$",P1,S);label("$P_2$",P2,S);
+\end{asy}
+
+If $P$ is on the opposite side of line $AD$ from $B$, then $\angle BAP=360^\circ-90^\circ-160^\circ=110^\circ$ and $\angle APB=\dfrac{180^\circ-110^\circ}2=35^\circ$. If $P$ is on the same side, then $\angle BAP=160^\circ-90^\circ=70^\circ$ and $\angle APB=55^\circ$. Both points are outside the square, so $\angle APB=\boxed{35^\circ\text{ or }55^\circ}$.

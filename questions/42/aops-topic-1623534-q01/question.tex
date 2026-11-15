@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1623534_proving_a_triangle_theorem
+% Stable identity: aops-topic-1623534-q01
+An equilateral triangle is divided into small congruent equilateral triangles by lines parallel to its sides, with $n$ rows of small triangles (each side of the big triangle is $n$ times the side of a small triangle). The figure shows $n=5$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real h=sqrt(3)/2;int n=5;
+pair V(int i,int j){return (j-i/2,-i*h);}
+for(int i=0;i<n;++i)for(int j=0;j<=i;++j)draw(V(i,j)--V(i+1,j)--V(i+1,j+1)--cycle,linewidth(0.7));
+draw(V(0,0)--V(n,0)--V(n,n)--cycle,linewidth(1.1));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For even $n$ the total number of triangles of all sizes in the figure is $\dfrac{n(n+2)(2n+1)}{8}$, but this expression is not an integer when $n$ is odd.
+\begin{enumerate}
+\item[(a)] Find the number of triangles of all sizes when $n=5$ and when $n=7$.
+\item[(b)] Prove that for every odd $n$ the number of triangles is $\dfrac{n(n+2)(2n+1)-1}{8}$.
+\end{enumerate}

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2501508_amc_8_problem_25_2015
+% Stable identity: aops-topic-2501508-q01
+One-inch squares are cut from the corners of a $5$-inch square. In the remaining region a square is placed as in the figure: each of its four vertices lies on a side of the $5$-inch square, and each of its sides passes through the inner corner of one of the cut-out squares.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real a=(5-sqrt(5))/2;
+fill(box((0,0),(1,1)),gray(0.6)); fill(box((4,0),(5,1)),gray(0.6)); fill(box((4,4),(5,5)),gray(0.6)); fill(box((0,4),(1,5)),gray(0.6));
+draw((1,0)--(4,0)--(4,1)--(5,1)--(5,4)--(4,4)--(4,5)--(1,5)--(1,4)--(0,4)--(0,1)--(1,1)--cycle,linewidth(0.9));
+draw(box((0,0),(5,5)),dashed+gray);
+filldraw((a,0)--(5,a)--(5-a,5)--(0,5-a)--cycle,rgb(0.8,0.9,1),blue+linewidth(0.8));
+label("$1$",(0,0.5),W,fontsize(8pt)); draw((0,-0.45)--(5,-0.45),Arrows(4)); label("$5$",(2.5,-0.45),S,fontsize(8pt));
+\end{asy}
+
+\begin{enumerate}
+\item[(a)] Find the area of the tilted square.
+\item[(b)] One solution splits each corner triangle (between the tilted square and a corner of the $5$-inch square) into two triangles that meet at the inner corner of the cut-out, and says that both have height $1$. Explain why this is true even though the square is tilted.
+\end{enumerate}

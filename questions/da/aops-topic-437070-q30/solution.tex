@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h437070_2007_mathcounts_nationals_30_geometry
+% Stable identity: aops-topic-437070-q30
+Let $r$ be the reflection and $c$ the rotation; $r^2$ and $c^3$ are the identity, and $rc^ar=c^{-a}$ (a reflection reverses the direction of a rotation).
+
+The number of reflections must be even, since each reflection reverses the orientation of the labels. So a sequence of five moves has $0$, $2$ or $4$ reflections.
+\begin{itemize}
+\item $0$ reflections: $c^5=c^2\ne$ identity.
+\item $2$ reflections: the sequence is $c^a\,r\,c^b\,r\,c^d$ with $a+b+d=3$, and it equals $c^{a-b+d}=c^{3-2b}$. This is the identity when $3\mid 2b$, i.e. $b=0$ or $b=3$. For $b=3$: $a=d=0$, $1$ sequence ($rcccr$). For $b=0$: $a+d=3$, $4$ sequences ($cccrr$, $ccrrc$, $crrcc$, $rrccc$).
+\item $4$ reflections and one rotation: the result is $c^{\pm1}\ne$ identity.
+\end{itemize}
+So there are $\boxed{5}$ sequences.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,1.732),B=(-1,0),C=(1,0); draw(A--B--C--cycle,linewidth(0.9)); draw((0,-0.3)--(0,2.1),red+dashed);
+label("top",A,N); dot((0,0.577)); draw(arc((0,0.577),0.35,90,-150),blue,Arrow); label("$120^\circ$",(0.4,0.75),E,blue+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

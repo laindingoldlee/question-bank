@@ -1,0 +1,9 @@
+Assign each unoriented line its direction angle in $[0^\circ,180^\circ)$. If two angles coincide, the angle between those lines is zero and the claim follows. Otherwise arrange the seven angles cyclically. The seven gaps, including the wraparound gap, sum to $180^\circ$, so one is at most $\dfrac{180^\circ}{7}<26^\circ$. The corresponding lines make an angle no greater than that gap.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+for(int k=0;k<7;++k){real t=k*180/7;draw(-2dir(t)--2dir(t));label("$\ell_{"+string(k+1)+"}$",2dir(t),dir(t));}
+\end{asy}
+

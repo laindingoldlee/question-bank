@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1719242_help_in_transformations
+% Stable identity: aops-topic-1719242-q01
+\textbf{Case 1: $O$ lies on $l$.} Then $O$ is fixed by the rotation, so $l'$ also passes through $O$, and the ray of $l$ starting at $O$ in a chosen direction is turned through the angle $a$ into a ray of $l'$. So $l$ and $l'$ meet at $O$ at the angle $a$.
+
+\textbf{Case 2: $O$ is not on $l$.} Let $F$ be the foot of the perpendicular from $O$ to $l$, and let $F'$ be the image of $F$. A rotation preserves distances and angles, so $OF'=OF$, $OF'\perp l'$ and $F'$ is the foot of the perpendicular from $O$ to $l'$; moreover $\angle FOF'=a$.
+
+Turning a line through $90^\circ$ about any point gives a line perpendicular to it. Turn line $OF$ through $90^\circ$: the result is parallel to $l$. Turn line $OF'$ through $90^\circ$ in the same sense: the result is parallel to $l'$. Since line $OF'$ is line $OF$ turned through $a$, the line parallel to $l'$ is the line parallel to $l$ turned through $a$. As $0^\circ<a<180^\circ$, these directions are different, so $l$ and $l'$ are not parallel and meet at a point $P$; and the two lines through $P$ make the angles $a$ and $180^\circ-a$ with each other. So one of the angles between $l$ and $l'$ is $a$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+void ra(pair P,pair Q,pair R,real s){pair u=unit(Q-P),v=unit(R-P);draw(P+s*u--P+s*u+s*v--P+s*v,linewidth(0.5));}
+pair O=(0,0),F=(0,-2),Fp=rotate(60)*F;
+pair u=unit(Fp); pair d=rotate(90)*u;
+pair P=extension(F,F+(1,0),Fp,Fp+d);
+draw((-1.6,-2)--(3.2,-2),linewidth(0.9));
+draw(Fp-1.6*d--Fp+1.9*d,linewidth(0.9)+deepgreen);
+draw(O--F,dashed);draw(O--Fp,dashed);
+ra(F,O,P,0.22);ra(Fp,O,P,0.22);
+draw(arc(O,0.55,-90,-30),linewidth(0.6));label("$a$",O+0.85*dir(-60));
+draw(arc(P,0.45,0,60),linewidth(0.6));label("$a$",P+0.75*dir(30));
+dot(O);dot(F);dot(Fp);dot(P);
+label("$O$",O,N);label("$F$",F,S);label("$F'$",Fp,dir(-20));label("$P$",P,dir(-60));
+label("$l$",(-1.6,-2),W);label("$l'$",Fp+1.9*d,N,deepgreen);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the figure ($a=60^\circ$) the quadrilateral $OFPF'$ has right angles at $F$ and $F'$, so $\angle FPF'=360^\circ-90^\circ-90^\circ-a=180^\circ-a$, and the angle between $l'$ and the extension of $FP$ beyond $P$ is $a$.

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3313012_a_sequence_of_floor_functions
+% Stable identity: aops-topic-3313012-q01
+Let $A=\sum_{k=1}^{100}\lfloor\dfrac{10000}{k}\rfloor$ and $T=\sum_{k=1}^{10000}\lfloor\dfrac{10000}{k}\rfloor$. The latter counts ordered positive integer pairs $(u,v)$ with $uv\le10000$. Every such pair has $u\le100$ or $v\le100$; each of these sets has size $A$, and their intersection is the entire $100\times100$ square. Thus $T=2A-10000$. The requested difference is $A-(T-A)=2A-T=\boxed{10000}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real f(real x){return 10000/x;}import graph;draw((0,0)--(340,0),Arrow);draw((0,0)--(0,340),Arrow);fill((0,0)--(100,0)--(100,100)--(0,100)--cycle,lightblue);draw(graph(f,30,330),blue);draw((100,0)--(100,330),dashed);draw((0,100)--(330,100),dashed);label("$100$",(100,0),S);label("$100$",(0,100),W);label("$uv=10000$",(220,70),N);label("$u$",(340,0),S);label("$v$",(0,340),W);
+\end{asy}

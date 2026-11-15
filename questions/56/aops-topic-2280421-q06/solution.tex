@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2280421_some_algebra_problems
+% Stable identity: aops-topic-2280421-q06
+Write each term as $\dfrac{a^4}{a\cdot c(a^2+bc)}=\dfrac{a^4}{a^3c+abc\cdot c}$, and similarly. By the Cauchy-Schwarz inequality in Engel form ($\sum\dfrac{u_i^2}{v_i}\ge\dfrac{(\sum u_i)^2}{\sum v_i}$ with $u_i=a^2,b^2,c^2$),
+\[\text{LHS}\ge\dfrac{(a^2+b^2+c^2)^2}{(a^3c+b^3a+c^3b)+abc(a+b+c)}.\]
+So it suffices to prove
+\[2(a^2+b^2+c^2)^2\ge3(a^3c+b^3a+c^3b)+3abc(a+b+c). \tag{1}\]
+
+\textbf{Step 1.} $(a^2+b^2+c^2)^2\ge3(a^3c+b^3a+c^3b)$. This follows from the identity
+\[(a^2+b^2+c^2)^2-3(a^3c+b^3a+c^3b)=\dfrac{1}{2}\sum_{\mathrm{cyc}}\left(a^2-2ac+bc-b^2+ab\right)^2,\]
+where the sum is over the cyclic shifts $a\to b\to c\to a$ (it can be checked by expanding).
+
+\textbf{Step 2.} $(a^2+b^2+c^2)^2\ge3abc(a+b+c)$. Indeed $a^2+b^2+c^2\ge ab+bc+ca$, and with $x=ab$, $y=bc$, $z=ca$,
+\[(ab+bc+ca)^2=(x+y+z)^2\ge3(xy+yz+zx)=3abc(a+b+c).\]
+
+Adding the two steps gives (1). Equality holds for $a=b=c$, where each term equals $\dfrac{1}{2}$.

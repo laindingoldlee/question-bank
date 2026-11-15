@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2434748_200th_post_problems
+% Stable identity: aops-topic-2434748-q09
+The diameter is $FE=9+16+9=34$, so the radius is $17$. Since $FD=AE$, the centre $O$ of the semicircle is the midpoint of $DA$, so $OD=8$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0); real R=17;
+pair Fp=(-17,0),D=(-8,0),A=(8,0),Ep=(17,0),C=(-8,15),B=(8,15);
+draw(arc(O,R,0,180),linewidth(0.9)); draw(Fp--Ep,linewidth(0.9));
+draw(A--B--C--D,linewidth(0.9));
+draw(O--C,red+linewidth(0.9));
+dot(Fp);dot(D);dot(A);dot(Ep);dot(B);dot(C);dot(O);
+label("$F$",Fp,S);label("$D$",D,S);label("$A$",A,S);label("$E$",Ep,S);label("$B$",B,NE);label("$C$",C,NW);label("$O$",O,S);
+label("$8$",(D+O)/2,S);label("$17$",(O+C)/2,E,red);label("$15$",(C+D)/2,W);
+\end{asy}
+
+The vertex $C$ is on the arc, so $OC=17$, and $CD\perp FE$. By the Pythagorean theorem in right triangle $ODC$,
+\[CD=\sqrt{17^2-8^2}=\sqrt{225}=15.\]
+The area of $ABCD$ is $DA\cdot CD=16\cdot15=240$, so the answer is $\boxed{\textbf{(A) }240}$.

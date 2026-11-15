@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1547765_excellent_math_problem_from_a_local_math_contest
+% Stable identity: aops-topic-1547765-q01
+Suppose $n$ coins make $100$ cents, with $a,b,c,d,e$ coins of $5,10,25,50,100$ cents and $p=n-(a+b+c+d+e)$ pennies. Subtracting $1$ cent for each coin from the total gives
+\[
+4a+9b+24c+49d+99e=100-n .\qquad(*)
+\]
+Conversely, any nonnegative solution of $(*)$ with $a+b+c+d+e\le n$ gives a valid set of coins (fill up with $p\ge0$ pennies).
+
+\textbf{$n=77$ is impossible.} Then the right side of $(*)$ is $23$, so $c=d=e=0$ and $4a+9b=23$; but $b=0,1,2$ leaves $23,14,5$, none divisible by $4$.
+
+\textbf{Every $n\le76$ is possible.}
+\begin{itemize}
+\item $20\le n\le76$: then $24\le100-n\le80$. Every integer $m\ge24$ can be written as $4a+9b$ with $a,b\ge0$ (the largest exception is $4\cdot9-4-9=23$; e.g.\ $24,25,26,27=4\cdot6,\ 4\cdot4+9,\ 4\cdot2+18,\ 27$, then add $4$'s). Since $a+b\le\dfrac {m}{4}\le\dfrac{100-m}{1}=n$ when $m\le80$, the pennies are enough: use $a$ nickels, $b$ dimes and $n-a-b$ pennies.
+\item $1\le n\le19$: $100$; $50,50$; $50,25,25$; four quarters; $50,25,10,10,5$. With $q$ quarters ($q=0,1,2,3$) the remaining $100-25q$ cents can be made of dimes and nickels with any number of coins from $\dfrac{100-25q}{10}$ rounded up to $\dfrac{100-25q}{5}$ (replace a dime by two nickels, one coin at a time). This gives $q+3,\dots,q+5$ coins for $q=3$, i.e.\ $6,7,8$; $7,\dots,12$ for $q=2$; $9,\dots,16$ for $q=1$; $10,\dots,20$ for $q=0$. Together every $n$ from $1$ to $20$ is covered.
+\end{itemize}
+Hence the answer is $\boxed{77}$. (For the record, the impossible values are exactly $n=77,81,85,86,89,90,93,94,95,97,98,99$, those with $100-n\in\{23,19,15,14,11,10,7,6,5,3,2,1\}$.)

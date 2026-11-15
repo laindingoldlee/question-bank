@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1888593_number_theory_puzzle
+% Stable identity: aops-topic-1888593-q01
+The number must be divisible by $\operatorname{lcm}(1,2,\dots,10)=2520=8\cdot9\cdot5\cdot7$; conversely divisibility by $2520$ gives divisibility by all of $1,\dots,10$.
+\begin{itemize}
+\item The digit sum is $0+1+\cdots+9=45$, so divisibility by $9$ is automatic.
+\item Divisibility by $10$ forces the last digit $0$; this also gives divisibility by $5$.
+\item With last digit $0$, the last three digits are $\overline{pq0}=10\cdot\overline{pq}$, and $8\mid10\cdot\overline{pq}$ exactly when $4\mid\overline{pq}$. So the two-digit number formed by the $8$th and $9$th digits must be a multiple of $4$.
+\item Divisibility by $7$ must be checked directly.
+\end{itemize}
+Now search upwards. The smallest candidates start with $12345$, followed by the digits $6,7,8,9$ in some order and then $0$. The two-digit endings from $\{6,7,8,9\}$ divisible by $4$ are $68$, $76$, $96$, giving six candidates:
+\[
+\begin{array}{ll}
+1234578960\equiv6, & 1234579680\equiv5,\quad 1234587960\equiv4,\\
+1234589760\equiv5, & 1234597680\equiv1,\quad 1234598760\equiv3 \pmod 7,
+\end{array}
+\]
+none divisible by $7$. With the start $12346$ the remaining digits are $5,7,8,9$, and none of $58,78,98$ (the possible endings with an even last digit) is a multiple of $4$; so there is no candidate. With the start $12347$ the remaining digits are $5,6,8,9$, with endings $56,68,96$; the two smallest candidates are
+\[
+1234758960\equiv1\pmod7\qquad\text{and}\qquad 1234759680=2520\cdot489984 .
+\]
+So the smallest such number is $\boxed{1234759680}$.

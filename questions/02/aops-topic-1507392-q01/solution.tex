@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1507392_help_with_wilsons_theorem
+% Stable identity: aops-topic-1507392-q01
+Let $m=n+1\ge2$ and $r=n!\bmod m$, so $0\le r\le n$ and $\left\lfloor\dfrac {r}{n}\right\rfloor$ is $1$ if $r=n$ and $0$ otherwise.
+
+\textbf{$m$ prime.} By Wilson's theorem $(m-1)!=n!\equiv-1\equiv n\pmod m$, so $r=n$, the floor is $1$, and $f(n)=(n-1)+2=n+1$.
+
+\textbf{$m$ composite.} We show $r<n$, so the floor is $0$ and $f(n)=2$.
+\begin{itemize}
+\item If $m=ab$ with $1<a<b<m$, then $a$ and $b$ are different factors of $(m-1)!$, so $m\mid(m-1)!$ and $r=0<n$.
+\item If $m=q^2$ with $q$ prime and $q>2$, then $q$ and $2q$ are different numbers less than $m$ (as $2q<q^2$), so $q\cdot2q=2m$ divides $(m-1)!$ and again $r=0$.
+\item If $m=4$, then $n=3$ and $3!=6\equiv2\pmod4$, so $r=2<3$.
+\end{itemize}
+
+\textbf{Consequences.} Every value of $f$ is either $2$ or a prime $n+1$, so it is prime. Every odd prime $p$ equals $f(p-1)$, and $2=f(1)=f(3)$. $\blacksquare$
+
+(So the formula is correct but useless for finding primes: computing $n!\bmod(n+1)$ is as hard as testing $n+1$ for primality directly. Note that it is $n+1$, not the input $n$, that is tested: for example $f(2)=3$ although the input $2$ is prime, and $f(4)=5$.)

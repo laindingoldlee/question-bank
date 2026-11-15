@@ -1,0 +1,57 @@
+% Source: https://artofproblemsolving.com/community/c3h1580306_stupid_geometry
+% Stable identity: aops-topic-1580306-q01
+\textbf{Translating the angle condition.} In triangle $ABC$, $\angle BAC+\angle ACB=180^\circ-\angle ABC$, and in triangle $AED$, $\angle EAD+\angle ADE=180^\circ-\angle AED$. So the condition says
+\[
+\angle ABC+\angle AED=180^\circ .
+\]
+
+\textbf{Rotating a triangle.} Since $AE=AB$, rotate triangle $AED$ about $A$ so that $E$ goes to $B$; let $D$ go to $D'$. Then $BD'=ED=9$, $AD'=AD$ and $\angle ABD'=\angle AED$. Place $D'$ on the side of line $AB$ away from $C$. Then
+\[
+\angle CBD'=\angle ABC+\angle ABD'=\angle ABC+\angle AED=180^\circ,
+\]
+so $C$, $B$, $D'$ are collinear with $B$ between them and $CD'=5+9=14$.
+
+\textbf{Comparing triangles.} Triangles $ACD$ and $ACD'$ have $AC$ in common, $AD=AD'$ and $CD=14=CD'$, so they are congruent (SSS) and have equal areas. Also $[ABC]+[ABD']=[ACD']$ because $B$ lies on $CD'$, and $[ABD']=[AED]$. For the convex pentagon, the diagonals $AC$, $AD$ split it into three triangles, so
+\[
+[ABCDE]=[ABC]+[ACD]+[ADE]=\bigl([ABC]+[ABD']\bigr)+[ACD]=[ACD']+[ACD']=2[ACD'] .
+\]
+
+\textbf{Maximising.} Triangle $ACD'$ has base $CD'=14$, and its height is the distance from $A$ to line $CD'$, which is at most $AB=16$ because $B$ lies on that line. Hence
+\[
+[ABCDE]=2\cdot\dfrac{1}{2}\cdot14\cdot h\le14\cdot16=224,
+\]
+with equality exactly when $AB\perp CD'$, i.e.\ $\angle ABC=90^\circ$ and then $\angle AED=90^\circ$.
+
+\textbf{The maximum is attained.} Take right angles at $B$ and $E$. Then $AC=\sqrt{16^2+5^2}=\sqrt{281}$ and $AD=\sqrt{16^2+9^2}=\sqrt{337}$, and triangle $ACD$ with sides $\sqrt{281}\approx16.8$, $\sqrt{337}\approx18.4$, $14$ exists; gluing triangles $ABC$, $ACD$, $ADE$ along $AC$ and $AD$ gives a convex pentagon (its angle at $A$ is about $93.4^\circ$). Its area is
+\[
+\dfrac{1}{2}\cdot16\cdot5+\dfrac{1}{2}\cdot16\cdot9+[ACD]=40+72+112=224,
+\]
+where $[ACD]=[ACD']=\dfrac{1}{2}\cdot14\cdot16=112$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0);
+real phi=-140, d=93.42355635812011;
+pair B=16*dir(phi), C=B+5*dir(phi+90);
+pair Ep=16*dir(phi+d), D=Ep+9*dir(phi+d-90);
+pair Dp=B-9*dir(phi+90);
+draw(A--B--C--D--Ep--cycle,linewidth(0.9));
+draw(A--C^^A--D,gray);
+draw(B--Dp--A,red+dashed);
+real s=0.9;
+draw(B+s*dir(phi+180)--B+s*dir(phi+180)+s*dir(phi+90)--B+s*dir(phi+90));
+draw(Ep+s*dir(phi+d+180)--Ep+s*dir(phi+d+180)+s*dir(phi+d-90)--Ep+s*dir(phi+d-90));
+dot(Dp,red);
+label("$A$",A,N);label("$B$",B,dir(200));label("$C$",C,SW);label("$D$",D,SE);label("$E$",Ep,E);
+label("$D'$",Dp,NE,red);
+label("$16$",(A+B)/2,dir(phi+90));label("$16$",(A+Ep)/2,dir(phi+d-90));
+label("$5$",(B+C)/2,dir(phi));label("$14$",(C+D)/2,S);label("$9$",(D+Ep)/2,dir(phi+d));
+label("$9$",(B+Dp)/2,dir(phi),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The sketch shows the maximal pentagon with its right angles at $B$ and $E$; the red dashed triangle $ABD'$ is triangle $AED$ rotated about $A$, and $C$, $B$, $D'$ lie on one line.)
+
+The maximum possible area is $\boxed{224}$.

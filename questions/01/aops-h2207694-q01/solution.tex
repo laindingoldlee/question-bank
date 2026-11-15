@@ -1,0 +1,19 @@
+Take $A=(0,0)$, $B=(13,0)$, $C=(\dfrac{99}{13},\dfrac{168}{13})$. Then $M=(\dfrac{13}{2},0)$ and $N=\dfrac{C}{2}$. A circle through $B,M$ has equation
+\[
+x^2+y^2-\dfrac{39}{2}x+vy+\dfrac{169}{2}=0.
+\]
+A circle through $C,N$ has constant term $\dfrac{225}{2}$, since its power at $A$ is $AC\cdot AN=\dfrac{225}{2}$. Their radical axis is horizontal exactly when the $x$ coefficients agree. Substituting $C$ then gives the second circle as
+\[
+x^2+y^2-\dfrac{39}{2}x-\dfrac{117}{8}y+\dfrac{225}{2}=0.
+\]
+Write $P=M+t(N-M)$. Substitution gives $7(t-1)(7t-4)=0$. The root $t=1$ is $N$ and degenerates the construction, so $t=\dfrac{4}{7}$. Thus $P=(\dfrac{129}{26},\dfrac{48}{13})$ and
+\[
+AP^2=\dfrac{153}{4},\qquad \boxed{m+n=157}.
+\]
+The first circle then has $v=-\dfrac{169}{24}$; the horizontal radical line has a second intersection $Q=(\dfrac{189}{13},\dfrac{48}{13})$ distinct from $P$, verifying the required configuration.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(13,0),C=(99.0/13,168.0/13),M=(6.5,0),N=C/2,P=(129.0/26,48.0/13),Q=(189.0/13,48.0/13),K1=(39.0/4,169.0/48),K2=(39.0/4,117.0/16);draw(A--B--C--cycle);draw(M--N);draw(circle(K1,length(K1-B)),blue);draw(circle(K2,length(K2-C)),gray);draw(P--Q,red);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,(0,1));label("$M$",M,(0,-1));label("$N$",N,(-1,0));label("$P$",P,(-1,0));label("$Q$",Q,(1,0));
+\end{asy}

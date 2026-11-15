@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2477421_cauchy_schwarz_inequality
+% Stable identity: aops-topic-2477421-q01
+Put $u=x-3$ and $v=y-4$, so $u^2+v^2=49$. Then
+\[x^2+y^2=(u+3)^2+(v+4)^2=u^2+v^2+6u+8v+25=74+2(3u+4v).\]
+By the Cauchy--Schwarz inequality,
+\[|3u+4v|\le\sqrt{3^2+4^2}\,\sqrt{u^2+v^2}=5\cdot7=35,\]
+so $3u+4v\ge-35$ and
+\[x^2+y^2\ge74-70=4.\]
+Equality in Cauchy--Schwarz holds when $(u,v)$ is a negative multiple of $(3,4)$: $(u,v)=-\dfrac75(3,4)=\left(-\dfrac{21}5,-\dfrac{28}5\right)$, i.e. $(x,y)=\left(-\dfrac65,-\dfrac85\right)$. Indeed $(x-3)^2+(y-4)^2=\dfrac{441+784}{25}=49$ and $x^2+y^2=\dfrac{36+64}{25}=4$.
+
+The minimum is $\boxed{4}$.
+
+\emph{Geometric meaning.} $(x,y)$ runs over the circle with centre $C(3,4)$ and radius $7$, and $x^2+y^2=OP^2$ for $P=(x,y)$. Since $OC=5<7$, the origin lies inside the circle, and the closest point of the circle is $P=\left(-\dfrac65,-\dfrac85\right)$ on ray $CO$ beyond $O$, at distance $7-5=2$ from $O$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), C=(3,4), P=(-1.2,-1.6), Q=(5.4,7.2);
+draw((-5,0)--(10.8,0),Arrow(6)); draw((0,-3.6)--(0,11.6),Arrow(6));
+label("$x$",(10.8,0),E); label("$y$",(0,11.6),N);
+draw(circle(C,7),blue+linewidth(0.9));
+draw(P--C,red+linewidth(0.9)); draw(C--(C+7*dir(200)),dashed);
+dot(O); dot(C); dot(P);
+label("$O$",O,dir(150)); label("$C(3,4)$",C,E); label("$P$",P,SW);
+label("$7$",C+3.5*dir(200),dir(290));
+label("$5$",(1.5,2),dir(-40),fontsize(8pt)); label("$2$",(-0.6,-0.8),dir(150),fontsize(8pt));
+\end{asy}

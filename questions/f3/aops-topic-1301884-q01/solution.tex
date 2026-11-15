@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1301884_quadilateral
+% Stable identity: aops-topic-1301884-q01
+Triangles $ADC$ and $BCD$ have $AD=BC$, the common side $DC$, and equal included angles $\angle ADC=\angle BCD$, so they are congruent (SAS); hence $AC=BD$ and, by symmetry, reflecting in the perpendicular bisector $\ell$ of $DC$ (through $E$) swaps $D$ and $C$, and swaps the rays $DA$ and $CB$ (the angles at $D$ and $C$ are equal and on the same side of $DC$), so it sends $A$ to the point of ray $CB$ at distance $AD$ from $C$, which is $B$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0),C=(6,0),A=(-1,3),B=(7,3),E=(3,0);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(A--C,gray+dashed); draw(B--D,gray+dashed); draw((3,-0.5)--(3,3.6),red+dashed);
+label("$A$",A,NW); label("$B$",B,NE); label("$C$",C,SE); label("$D$",D,SW); label("$E$",E,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $ABCD$ is symmetric about $\ell$. Therefore:
+(A) True: $\ell$ is the perpendicular bisector of $AB$ and passes through $E$.
+(B) True: $AB\perp\ell$ and $DC\perp\ell$, so $AB\parallel DC$ (an isosceles trapezium, possibly a rectangle).
+(C) True: the reflection swaps the angles at $A$ and $B$.
+(D) False in general: $AD$ and $BC$ may be parallel (rectangle) or meet at any angle.
+
+Answer: $\boxed{\text{(A), (B) and (C)}}$.

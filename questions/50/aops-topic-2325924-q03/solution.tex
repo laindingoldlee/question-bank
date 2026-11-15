@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2325924_halloween_problem_set
+% Stable identity: aops-topic-2325924-q03
+An equilateral triangle with side $2$ has area $\dfrac{\sqrt3}{4}\cdot2^2=\sqrt3$, and a semicircle of radius $3$ has area $\dfrac12\pi\cdot3^2=\dfrac{9\pi}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+path tri=(0,0)--(2,0)--(1,sqrt(3))--cycle;
+filldraw(shift(-3,1.2)*tri,rgb(1,0.85,0.4)); filldraw(shift(1,1.2)*tri,rgb(1,0.85,0.4));
+filldraw(arc((0,-0.5),3,180,360)--cycle,rgb(1,0.85,0.4));
+label("$2$",(-2,1.2),S); label("$2$",(2,1.2),S);
+draw((0,-0.5)--(3,-0.5),red); label("$3$",(1.5,-0.5),N,red); dot((0,-0.5));
+\end{asy}
+
+The total is $2\sqrt3+\dfrac{9\pi}{2}=\boxed{\textbf{(A) }\dfrac{4\sqrt3+9\pi}{2}}$.

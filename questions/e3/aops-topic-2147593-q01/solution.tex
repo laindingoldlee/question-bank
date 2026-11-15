@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2147593_2015_mathcounts_national_sprint_round_number_27
+% Stable identity: aops-topic-2147593-q01
+Put $A=(0,0)$, $B=(s,0)$, $D=(0,s)$, where $s$ is the side. Line $AE$ makes $60^\circ$ with $AB$, so it is $\sqrt3x-y=0$. The circle is tangent to $x=0$ and $y=s$ and lies in the square, so its centre is $O=(r,s-r)$. It lies on the side of line $AE$ away from the triangle (where $\sqrt3x-y<0$), and its distance to the line equals $r$:
+\[\dfrac{(s-r)-\sqrt3\,r}{2}=r\qquad\Longrightarrow\qquad s=\left(3+\sqrt3\right)r.\]
+With $r=9-3\sqrt3$:
+\[s=\left(3+\sqrt3\right)\left(9-3\sqrt3\right)=27-9\sqrt3+9\sqrt3-9=\boxed{18}.\]
+(The point of tangency on line $AE$ is at distance $\dfrac{r+\sqrt3(s-r)}{2}=s-r\approx14.2<18$ from $A$, so it lies on side $AE$, as required.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real s=18,r=9-3*sqrt(3);
+pair A=(0,0),B=(s,0),C=(s,s),D=(0,s),Ep=(s/2,s*sqrt(3)/2),O=(r,s-r);
+pair T=((O.x+sqrt(3)*O.y)/4)*(1,sqrt(3));
+draw(A--B--C--D--cycle,linewidth(0.8));draw(A--Ep--B);
+draw(circle(O,r));
+draw(O--(0,O.y),dashed);draw(O--(O.x,s),dashed);draw(O--T,dashed);
+dot(O);dot(T);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$E$",Ep,N);label("$O$",O,S);
+label("$r$",(O+T)/2,SE,fontsize(8pt));label("$60^\circ$",A,5*dir(30),fontsize(8pt));label("$18$",(A+B)/2,S);
+\end{asy}

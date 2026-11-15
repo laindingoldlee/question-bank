@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h11311_mathcounts_problems_3
+% Stable identity: aops-topic-11311-q07
+The circumference is $20\cdot0.5+20\cdot8=10+160=170$ feet.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real R=3; draw(circle((0,0),R),linewidth(0.9));
+for(int i=0;i<20;++i){pair p=R*dir(90+18*i); fill(shift(p)*rotate(90+18*i)*box((-0.12,-0.12),(0.12,0.12)),black);}
+draw(arc((0,0),R+0.35,90+18*4,90+18*5),Arrows(TeXHead));
+label("$8$ ft",(R+0.65)*dir(90+18*4.5),dir(90+18*4.5));
+label("$20$ posts",(0,0));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+A circle of circumference $C$ has radius $\dfrac{C}{2\pi}$ and area $\pi\left(\dfrac{C}{2\pi}\right)^2=\dfrac{C^2}{4\pi}$, so the area is
+\[
+\dfrac{170^2}{4\pi}=\dfrac{28900}{4\pi}=\dfrac{7225}{\pi}\approx2299.8\ \text{square feet},
+\]
+which rounds to $\boxed{2300}$.

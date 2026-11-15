@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1638506_introduction_to_geometry_problem
+% Stable identity: aops-topic-1638506-q01
+Let $\alpha$ (at $P$) and $\beta$ (at $Q$) be the two interior angles on the same side of $t$, with $\alpha+\beta=180^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair P=(1.6,0),Q=(3.4,2.4);
+draw((-1,0)--(6,0),linewidth(0.9));draw((-1,2.4)--(6,2.4),linewidth(0.9));
+pair u=unit(Q-P);draw(P-0.9*u--Q+0.9*u,linewidth(0.9));
+real t=degrees(u);
+draw(arc(P,0.55,0,t),red);label("$\alpha$",P+0.9*dir(t/2),red);
+draw(arc(Q,0.55,180+t,360),blue);label("$\beta$",Q+0.9*dir((180+t+360)/2),blue);
+label("$\ell$",(6,0),E);label("$m$",(6,2.4),E);label("$t$",Q+0.9*u,NE);
+label("$P$",P,SE);label("$Q$",Q,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Suppose, for contradiction, that $\ell$ and $m$ are not parallel, so they meet at a point $R$ (not on $t$, since $\ell\ne t$ and $m\ne t$). Then $P$, $Q$, $R$ form a triangle.
+
+\emph{Case 1: $R$ is on the same side of $t$ as the angles $\alpha$ and $\beta$.} Then the angles of triangle $PQR$ at $P$ and $Q$ are $\alpha$ and $\beta$, so they add up to $180^\circ$, leaving $0^\circ$ for the angle at $R$. This is impossible, because the angles of a triangle add up to $180^\circ$ and each is positive.
+
+\emph{Case 2: $R$ is on the other side of $t$.} Then the angles of the triangle at $P$ and $Q$ are the supplements $180^\circ-\alpha$ and $180^\circ-\beta$, which add up to $360^\circ-180^\circ=180^\circ$. Again the angle at $R$ would be $0^\circ$, impossible.
+
+Hence $\ell$ and $m$ do not meet: they are parallel. $\blacksquare$
+
+\textbf{Another way.} The angle at $Q$ on the other side of $t$, adjacent to $\beta$ along $m$, is $180^\circ-\beta=\alpha$. So a pair of alternate interior angles are equal ($\alpha$ at $P$ and $180^\circ-\beta$ at $Q$), and lines cut by a transversal with equal alternate interior angles are parallel.

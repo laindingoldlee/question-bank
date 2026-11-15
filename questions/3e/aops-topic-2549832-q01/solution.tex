@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2549832_arithmetic_math_1
+% Stable identity: aops-topic-2549832-q01
+The volume of a frustum with base radii $R$, $r$ and height $h$ is $\dfrac{\pi h}{3}\left(R^2+Rr+r^2\right)$, so each cup holds
+\[\dfrac{7\pi}{3}\left(36+18+9\right)=147\pi\approx461.8\ \text{cm}^3.\]
+The juice is $115.5$ litres $=115500$ cm$^3$. Now $250\cdot147\pi=36750\pi$, and $\dfrac{115500}{36750}=\dfrac{22}{7}>\pi$, so $250$ cups use less than $115500$ cm$^3$. On the other hand $251\cdot147\pi>36897\cdot3.14>115800>115500$. So $\boxed{250}$ cups can be filled completely. (With the approximation $\pi\approx\dfrac{22}{7}$, the $250$ cups use up exactly all the juice.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw(ellipse((0,7),6,1.5),linewidth(0.8));
+draw(xscale(3)*yscale(0.75)*arc((0,0),1,180,360),linewidth(0.8)); draw(xscale(3)*yscale(0.75)*arc((0,0),1,0,180),dashed);
+draw((-6,7)--(-3,0),linewidth(0.8));draw((6,7)--(3,0),linewidth(0.8));
+draw((0,0)--(0,7),dashed);draw((0,7)--(6,7));draw((0,0)--(3,0));
+label("$6$",(3,7),S);label("$3$",(1.5,0),N,Fill(white));label("$7$",(0,3.5),W);
+\end{asy}

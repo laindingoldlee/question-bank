@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2362688_3003_in_pascals_triangle
+% Stable identity: aops-topic-2362688-q01
+An entry $\dbinom nk=3003$ has $1\le k\le n-1$, and by symmetry we may first take $k\le\dfrac n2$. For fixed $k$, $\dbinom nk$ is strictly increasing in $n\ge k$, so each $k$ gives at most one $n$.
+\begin{itemize}
+\item $k=1$: $n=3003$.
+\item $k=2$: $\dfrac{n(n-1)}{2}=3003$ gives $n=78$.
+\item $k=3$: $n(n-1)(n-2)=18018$, but $27\cdot26\cdot25=17550<18018<19656=28\cdot27\cdot26$. None.
+\item $k=4$: $n(n-1)(n-2)(n-3)=72072$, but $57120=17\cdot16\cdot15\cdot14<72072<18\cdot17\cdot16\cdot15=73440$. None.
+\item $k=5$: $\dbinom{15}{5}=3003$. \quad $k=6$: $\dbinom{14}{6}=3003$.
+\item $k\ge7$: since $n\ge2k$, $\dbinom nk\ge\dbinom{2k}{k}\ge\dbinom{14}{7}=3432>3003$. None.
+\end{itemize}
+In each of the four cases $k\ne\dfrac n2$, so each gives two entries, $\dbinom nk$ and $\dbinom n{n-k}$. Hence $3003$ appears
+\[\dbinom{3003}{1},\ \dbinom{3003}{3002},\ \dbinom{78}{2},\ \dbinom{78}{76},\ \dbinom{15}{5},\ \dbinom{15}{10},\ \dbinom{14}{6},\ \dbinom{14}{8},\]
+that is, $\boxed{8}$ times.

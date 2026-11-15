@@ -1,0 +1,3 @@
+Determine the residue of $x$ modulo 64 one binary digit at a time. Suppose $x\equiv r\pmod{2^k}$ is known, with $0\le r<2^k$; initially $k=0,r=0$. Choose $M=2^k-r$ and $N=2^{k+1}$. These are allowed for $k=0,\ldots,5$. Since $2^k$ divides $x+M$, the gcd is $2^k$ or $2^{k+1}$, distinguishing the two possible residues modulo $2^{k+1}$.
+
+After six queries, at most two candidates in $1,\ldots,99$ remain; if two remain, write them $a,a+64$. Choose $N=3$ and $M\in\{1,2,3\}$ with $a+M\equiv0\pmod3$. As $64\equiv1\pmod3$, the gcd is 3 for $a$ and 1 for $a+64$. This seventh query determines $x$.

@@ -1,0 +1,9 @@
+For two axis-parallel rectangles to have disjoint interiors, their interior projections must be disjoint in at least one coordinate direction; otherwise the two projection overlaps would form a positive-area overlap.
+
+In that separating direction, the side lengths of the two rectangles are at least $2$ and $3$. Thus the square side must be at least $2+3=5$. A square of side $5$ works: place the first rectangle in $[0,2]\times[0,3]$ and the second in $[2,5]\times[0,4]$. Therefore the minimum square area is $\boxed{25}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(box((0,0),(5,5)));filldraw(box((0,0),(2,3)),lightblue);filldraw(box((2,0),(5,4)),lightred);label("$2\times3$",(1,1.5));label("$3\times4$",(3.5,2));label("$5$",(.0,0)--(5,0),S);
+\end{asy}

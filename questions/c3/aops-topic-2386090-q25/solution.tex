@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h2386090_100_posts
+% Stable identity: aops-topic-2386090-q25
+\textbf{Zeros and asymptotes.} The graph crosses the $x$-axis at $x=-2$, $1$ and $3$, and has vertical asymptotes $x=-1$ and $x=2$ (where the numerator is $8$ and $-4$, not $0$). The $y$-intercept is $\dfrac{(-1)(2)(-3)}{(1)(-2)}=-3$.
+
+Expanding, the numerator is $x^3-2x^2-5x+6$ and the denominator is $x^2-x-2$, and division gives
+\[y=x-1+\dfrac{-4(x-1)}{(x+1)(x-2)}.\]
+So $y=x-1$ is an oblique asymptote; the graph meets it only at $(1,0)$.
+
+\textbf{Signs.} Counting negative factors on each interval:
+\[\begin{array}{c|cccccc}
+\text{interval}&x<-2&-2<x<-1&-1<x<1&1<x<2&2<x<3&x>3\\\hline
+\text{sign of }y&-&+&-&+&-&+
+\end{array}\]
+Hence $y\to+\infty$ as $x\to-1^-$ and $y\to-\infty$ as $x\to-1^+$; $y\to+\infty$ as $x\to2^-$ and $y\to-\infty$ as $x\to2^+$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real k=0.5;
+real f(real x){return k*(x-1)*(x+2)*(x-3)/((x+1)*(x-2));}
+real xa=-6, xb=7, ya=-12*k, yb=12*k;
+draw(graph(f,xa,-1.01,600),blue+linewidth(0.9));
+draw(graph(f,-0.99,1.99,600),blue+linewidth(0.9));
+draw(graph(f,2.01,xb,600),blue+linewidth(0.9));
+draw((-1,ya)--(-1,yb),dashed+gray(0.4)); draw((2,ya)--(2,yb),dashed+gray(0.4));
+draw((xa,k*(xa-1))--(xb,k*(xb-1)),dashed+gray(0.4));
+clip(box((xa,ya),(xb,yb)));
+draw((xa,0)--(xb+0.4,0),Arrow(6)); draw((0,ya)--(0,yb+0.4),Arrow(6));
+label("$x$",(xb+0.4,0),E); label("$y$",(0,yb+0.4),N);
+dot((-2,0)); dot((1,0)); dot((3,0)); dot((0,-3*k));
+label("$-2$",(-2,0),NW); label("$1$",(1,0),SE); label("$3$",(3,0),SE); label("$-3$",(0,-3*k),W);
+label("$x=-1$",(-1,ya),S,gray(0.3)); label("$x=2$",(2,ya),S,gray(0.3)); label("$y=x-1$",(xb,k*(xb-1)),E,gray(0.3));
+\end{asy}
+
+So the graph has three branches: the left one rises from $-\infty$ along $y=x-1$, crosses the axis at $-2$ and climbs up the asymptote $x=-1$; the middle one comes up from $-\infty$ next to $x=-1$, passes through $(0,-3)$ and $(1,0)$ and goes up to $+\infty$ next to $x=2$; the right one comes up from $-\infty$ next to $x=2$, crosses the axis at $3$ and then follows $y=x-1$.

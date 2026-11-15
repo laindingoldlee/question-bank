@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2326058_halloween_problem_set
+% Stable identity: aops-topic-2326058-q03
+Choose a zombie $a$ who shot as many skeletons as possible (there are finitely many zombies).
+
+Since no zombie shot every skeleton, there is a skeleton $y$ that $a$ did not shoot. Every skeleton was shot by somebody, so some zombie $b$ shot $y$; then $b\ne a$.
+
+Now compare the sets of skeletons shot by $a$ and by $b$. If $b$ had shot every skeleton that $a$ shot, then $b$, who also shot $y$, would have shot more skeletons than $a$, contradicting the choice of $a$. So there is a skeleton $x$ that $a$ shot and $b$ did not shoot; $x\ne y$ because $a$ shot $x$ but not $y$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair a=(0,1.6), bb=(0,0), x=(3,1.6), y=(3,0);
+draw(a--x,blue+linewidth(1),Arrow(7)); draw(bb--y,blue+linewidth(1),Arrow(7));
+draw(a--y,red+dashed); draw(bb--x,red+dashed);
+dot(a); dot(bb); dot(x); dot(y);
+label("zombie $a$",a,W); label("zombie $b$",bb,W); label("skeleton $x$",x,E); label("skeleton $y$",y,E);
+label("shot",(a+x)/2,N,blue+fontsize(8pt)); label("shot",(bb+y)/2,S,blue+fontsize(8pt));
+label("not shot",(1.5,0.8),red+fontsize(8pt),Fill(white));
+\end{asy}
+
+Then $a$ shot $x$, $b$ shot $y$, $a$ did not shoot $y$, and $b$ did not shoot $x$, as required. $\blacksquare$

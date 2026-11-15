@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2593709_amc_10_problems
+% Stable identity: aops-topic-2593709-q08
+All five maps fix the origin and send the coordinate axes to the coordinate axes. An isometry of this kind returns $T$ to itself only if it fixes $(4,0)$ (the only vertex at distance $4$ from the origin) and $(0,3)$, so it must be the identity. So we count sequences whose composition is the identity. Write $R$ for the $180^\circ$ rotation, and $X$, $Y$ for the two reflections; note $XY=YX=R$ and $XX=YY=\text{identity}$.
+
+A reflection reverses orientation, so the number of reflections used must be even: $0$ or $2$.
+
+\textbf{No reflections.} Measuring rotations in quarter turns $1,2,3$, we need three of them with sum divisible by $4$, i.e. sum $4$ or $8$: the orders of $1,1,2$ and of $2,3,3$, giving $3+3=6$ sequences.
+
+\textbf{Two reflections and one rotation $\rho$.}
+\begin{itemize}
+\item If the reflections are adjacent (patterns reflection, reflection, $\rho$ or $\rho$, reflection, reflection), they compose to the identity if they are equal and to $R$ if they are different. Since $\rho$ is not the identity, we need two different reflections and $\rho=R$: $2$ orders of $X,Y$ for each pattern, $4$ sequences.
+\item If $\rho$ is in the middle, the composition is $F_2\rho F_1$. Conjugating a rotation by a reflection reverses it, so for $F_1=F_2$ we get $\rho^{-1}\ne\text{identity}$. For $F_1\ne F_2$ we need $\rho=F_2^{-1}F_1^{-1}=F_2F_1=R$, giving $2$ sequences.
+\end{itemize}
+The total is $6+4+2=\boxed{\textbf{(A) }12}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+draw((-5,0)--(5,0),gray,Arrow);draw((0,-1.5)--(0,5.2),gray,Arrow);
+filldraw(O--(4,0)--(0,3)--cycle,lightgray,linewidth(0.8));
+draw(O--(-3,0)--(0,4)--cycle,dashed+linewidth(0.8));
+dot((4,0));dot((0,3));dot((-3,0));dot((0,4));
+label("$T$",(1.2,0.9));label("$(4,0)$",(4,0),S);label("$(0,3)$",(0,3),E);
+label("$T'$",(-0.95,1.1));label("$(0,4)$",(0,4),W);label("$(-3,0)$",(-3,0),S);
+label("$x$",(5,0),E);label("$y$",(0,5.2),N);
+\end{asy}
+
+The triangle $T$ (shaded) and, dashed, its image $T'$ under the $90^\circ$ rotation, which does not return $T$ to its position.

@@ -1,0 +1,7 @@
+Direct each match edge from winner to loser. Starting at a player, repeatedly choose someone who defeated the current player. Eventually a vertex repeats, producing a directed cycle. Choose a shortest cycle $v_1\to v_2\to\cdots\to v_k\to v_1$. It has length at least 3. If $k>3$, the match between $v_1$ and $v_3$ gives either $v_3\to v_1$, producing a 3-cycle, or $v_1\to v_3$, allowing $v_2$ to be omitted. Either gives a shorter cycle, a contradiction. Thus a 3-cycle exists.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,1.7),B=(-1,0),C=(1,0);draw(A--B,Arrow);draw(B--C,Arrow);draw(C--A,Arrow);label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));label("winner to loser",(0,-.7));
+\end{asy}

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2388520_potd_1224
+% Stable identity: aops-topic-2388520-q01
+A square has side length $6$. A semicircle is drawn inside the square, with the bottom side of the square as its diameter. A line tangent to the semicircle at a point $P$ meets the left side of the square at $X$ and the right side at $Y$, and $XY=4\sqrt3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real s=6; pair A=(0,0), B=(s,0), C=(s,s), D=(0,s), O=(3,0);
+real t=60; pair P=O+3*dir(t);
+pair X=(0,3*sqrt(3)), Y=(6,sqrt(3));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(arc(O,3,0,180)); draw(A--B);
+draw(X--Y,blue+linewidth(0.9));
+dot(X); dot(Y); dot(P);
+label("$X$",X,W); label("$Y$",Y,E); label("$P$",P,dir(t));
+label("$6$",(3,0),S);
+\end{asy}
+
+Find $XP^2+PY^2$.

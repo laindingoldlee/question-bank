@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1557923_hard_combinatorics_problems
+% Stable identity: aops-topic-1557923-q01
+For a pair of showing numbers $\{a,b\}$ let $V(a,b)$ be the best expected net amount Boris can still obtain from that position. Since he may stop or pay $2$ and reroll one die,
+\[
+V(a,b)=\max\Bigl(ab,\ -2+\dfrac{1}{4}\sum_{x=1}^{4}V(x,b),\ -2+\dfrac{1}{4}\sum_{x=1}^{4}V(a,x)\Bigr).
+\]
+
+\textbf{A candidate strategy.} Stop with $\{4,4\},\{3,4\},\{3,3\}$; otherwise reroll the smaller die. Its values are found from linear equations:
+\begin{itemize}
+\item With a $4$ and a die showing $1$ or $2$: rerolling the small die gives value $v_4$ with $v_4=-2+\dfrac{1}{4}(v_4+v_4+12+16)$, so $v_4=10$.
+\item With a $3$ and a die showing $1$ or $2$: $v_3=-2+\dfrac{1}{4}(v_3+v_3+9+12)$, so $v_3=\dfrac{13}{2}$.
+\item With $\{1,1\},\{1,2\},\{2,2\}$: rerolling one die gives $v=-2+\dfrac{1}{4}\left(v+v+\dfrac{13}{2}+10\right)$, so $v=\dfrac{17}{4}$.
+\end{itemize}
+
+\textbf{These values satisfy the equation above}, i.e.\ no single deviation helps:
+\begin{itemize}
+\item $\{4,4\}$: rerolling gives $-2+\dfrac{10+10+12+16}{4}=10<16$; $\{3,4\}$: rerolling the $3$ gives $10$, rerolling the $4$ gives $-2+\dfrac{\dfrac{13}{2}+\dfrac{13}{2}+9+12}{4}=\dfrac{13}{2}$, both $<12$; $\{3,3\}$: rerolling gives $\dfrac{13}{2}<9$.
+\item $\{4,1\},\{4,2\}$: $10$ beats stopping ($4$ or $8$) and beats rerolling the $4$, which gives $-2+\dfrac{\dfrac{17}{4}+\dfrac{17}{4}+\dfrac{13}{2}+10}{4}=\dfrac{17}{4}$.
+\item $\{3,1\},\{3,2\}$: $\dfrac{13}{2}$ beats stopping ($3$ or $6$) and rerolling the $3$ ($\dfrac{17}{4}$).
+\item $\{1,1\},\{1,2\},\{2,2\}$: $\dfrac{17}{4}$ beats stopping ($1$, $2$ or $4$), and both possible rerolls give $\dfrac{17}{4}$.
+\end{itemize}
+Because $V$ is at least the payout in every position and at least the expected value of any one paid reroll, the quantity ``$V$ of the current position minus the money spent so far'' can never increase in expectation, whatever Boris does; so no strategy does better than $V$, and the strategy above achieves $V$.
+
+\textbf{Expected gain.} Over the $16$ equally likely initial rolls: four rolls ($\{1,1\},\{1,2\},\{2,1\},\{2,2\}$) are worth $\dfrac{17}{4}$, four (a $3$ with a $1$ or $2$) are worth $\dfrac{13}{2}$, four (a $4$ with a $1$ or $2$) are worth $10$, and the rest give $9+12+12+16=49$. Hence
+\[
+\dfrac{4\cdot\dfrac{17}{4}+4\cdot\dfrac{13}{2}+4\cdot10+49}{16}=\dfrac{17+26+40+49}{16}=\dfrac{132}{16}=\boxed{\dfrac{33}{4}}\text{ dollars}.
+\]

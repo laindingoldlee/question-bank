@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1586571_arrangement_of_beads_in_a_necklace_counting_and_probability
+% Stable identity: aops-topic-1586571-q01
+Use Burnside's lemma: the number of different necklaces is the average, over the $12$ symmetries of the hexagon (six rotations and six reflections), of the number of bead arrangements each symmetry leaves unchanged.
+
+Without symmetry, the beads can be placed in $\dfrac{6!}{2!\,2!\,2!}=90$ ways.
+
+\textbf{Rotations.}
+\begin{itemize}
+\item The identity fixes all $90$ arrangements.
+\item Rotations by $1$ or $5$ places fix only one-colour necklaces: $0$.
+\item Rotations by $2$ or $4$ places fix arrangements of period $2$, in which each colour occurs $3$ times: $0$.
+\item The rotation by $3$ places fixes arrangements of period $3$, pattern $xyz\,xyz$ with $x,y,z$ the three colours in some order: $3!=6$.
+\end{itemize}
+
+\textbf{Reflections.}
+\begin{itemize}
+\item Three reflections pass through two opposite beads and swap the other four in two pairs. The paired beads use each colour an even number of times, so the two fixed beads have the same colour ($3$ choices) and the two pairs take the other two colours ($2$ ways): $6$ each.
+\item Three reflections pass through the midpoints of opposite sides and swap the beads in three pairs, which take the three colours in $3!=6$ ways: $6$ each.
+\end{itemize}
+
+The total number of fixed arrangements is $90+6+3\cdot6+3\cdot6=132$, so the number of necklaces is
+\[
+\dfrac{132}{12}=\boxed{11}.
+\]

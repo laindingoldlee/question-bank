@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2035824_circumscribable_polygons
+% Stable identity: aops-topic-2035824-q01
+\textbf{(a)} Suppose a circle with centre $I$ and radius $r$ lies inside the polygon and touches every side. Then $I$ is at distance $r$ from the two side lines through each vertex $V$, and lies inside the angle at $V$. A point inside an angle that is equidistant from its two arms lies on the bisector of the angle. So every interior angle bisector passes through $I$.
+
+Conversely, suppose all the interior angle bisectors pass through a point $I$. A point on the bisector of the angle at $V$ is equidistant from the two sides at $V$. Going round the polygon, the distances from $I$ to the lines of consecutive sides are equal, so $I$ is at the same distance $r$ from every side line. Moreover $I$ lies on the bisector ray at each vertex, so it lies inside every angle of the polygon, i.e. on the inner side of every side line; for a convex polygon the intersection of these half-planes is the polygon itself, so $I$ is inside it. The disc with centre $I$ and radius $r$ lies on the inner side of every side line, hence inside the polygon, and it touches each side line at the foot of the perpendicular from $I$. That point lies in the polygon and on the side line, so it lies on the side itself (for a convex polygon, the points of the polygon on a side line form exactly that side). Hence the circle touches every side, and the polygon is tangential.
+
+\textbf{(b)} The two tangent segments from a vertex to the circle are equal; call their common length $t_i$ for vertex $A_i$. Each side is made of two tangent segments, so $a_i=t_i+t_{i+1}$ (with $t_{2m+1}=t_1$). Then
+\[a_1-a_2+a_3-a_4+\cdots-a_{2m}=(t_1+t_2)-(t_2+t_3)+(t_3+t_4)-\cdots-(t_{2m}+t_1)=0,\]
+since every $t_i$ appears once with each sign. This is the required equality. $\blacksquare$
+
+For a quadrilateral, (b) is the familiar condition $AB+CD=BC+DA$, and there it is also sufficient. For more sides the side lengths alone do not decide the question. For example, an equilateral hexagon with angles $100^\circ,140^\circ,120^\circ,100^\circ,140^\circ,120^\circ$ exists (it is centrally symmetric, with exterior angles adding up to $360^\circ$) and satisfies (b). It is not tangential: the tangent lengths would satisfy $t_i=r\cot\dfrac{A_i}{2}$ and $t_i+t_{i+1}=s$ (the common side length), forcing $t_1=t_3$ and hence $A_1=A_3$, but $100^\circ\ne120^\circ$. The general test is the concurrence in (a). In the sketch, the dashed angle bisectors meet at the incentre $I$, and the blue points are the points of tangency.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real[] t={0,68,128,190,250,305};
+pair[] T; pair[] V;
+for(int i=0;i<6;++i) T.push(dir(t[i]));
+for(int i=0;i<6;++i){real a=t[i], c=(i==5 ? 360 : t[i+1]); V.push(dir((a+c)/2)/Cos((c-a)/2));}
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,linewidth(0.8));
+draw(unitcircle);
+pair I=(0,0);
+for(int i=0;i<6;++i){draw(V[i]--I,dashed);dot(T[i],blue);}
+dot(I);label("$I$",I,SW,fontsize(9pt));
+for(int i=0;i<6;++i) label("$A_"+string(i+1)+"$",V[i],unit(V[i]));
+\end{asy}

@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2699086_hard_geometry_problem_about_cyclic_quadrilaterals
+% Stable identity: aops-topic-2699086-q01
+Since $ABCD$ is cyclic, $\angle B+\angle D=180^\circ$, so $\cos D=-\cos B$. The law of cosines in triangles $ABC$ and $ADC$ gives
+\[AC^2=a^2+b^2-2ab\cos B=c^2+d^2+2cd\cos B.\]
+Hence $\cos B=\dfrac{a^2+b^2-c^2-d^2}{2(ab+cd)}$, and
+\[AC^2=a^2+b^2-\dfrac{ab\left(a^2+b^2-c^2-d^2\right)}{ab+cd}=\dfrac{cd\left(a^2+b^2\right)+ab\left(c^2+d^2\right)}{ab+cd}=\dfrac{(ac+bd)(ad+bc)}{ab+cd}.\]
+The formula for $BD^2$ follows in the same way from triangles $ABD$ and $CBD$, with the roles of the side pairs exchanged. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair A=dir(110),B=dir(200),C=dir(290),D=dir(20);
+draw(unitcircle,gray);draw(A--B--C--D--cycle,linewidth(0.8));draw(A--C,dashed);draw(B--D,dashed);
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,S);label("$D$",D,E);
+label("$a$",(A+B)/2,NW,fontsize(8pt));label("$b$",(B+C)/2,SW,fontsize(8pt));label("$c$",(C+D)/2,SE,fontsize(8pt));label("$d$",(D+A)/2,NE,fontsize(8pt));
+\end{asy}

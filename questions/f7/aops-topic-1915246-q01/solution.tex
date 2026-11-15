@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1915246_meow_nya_logic_puzzle_2
+% Stable identity: aops-topic-1915246-q01
+\textbf{A key lemma.} For a yes-or-no question $Q$, let $E(Q)$ be the question ``If I asked you $Q$, would you answer Meow?'' If Truecat or Liecat is asked $E(Q)$, the answer is Meow exactly when $Q$ is true.
+
+\emph{Proof.} Check the four cases.
+\begin{itemize}
+\item Truecat, Meow $=$ yes: Truecat would answer $Q$ with Meow exactly when $Q$ is true, so $E(Q)$ is true exactly when $Q$ is true, and the truthful answer is Meow ($=$ yes) exactly then.
+\item Truecat, Meow $=$ no: Truecat would answer $Q$ with Meow exactly when $Q$ is false; so $E(Q)$ is false exactly when $Q$ is true, and the truthful answer ``no'' is Meow exactly then.
+\item Liecat, Meow $=$ yes: Liecat would answer $Q$ with Meow ($=$ yes) exactly when $Q$ is false; so $E(Q)$ is false exactly when $Q$ is true, and the lying answer ``yes'' $=$ Meow comes exactly then.
+\item Liecat, Meow $=$ no: Liecat would answer $Q$ with ``no'' $=$ Meow exactly when $Q$ is true; so $E(Q)$ is true exactly when $Q$ is true, and the lying answer ``no'' $=$ Meow comes exactly then.
+\end{itemize}
+In every case the answer is Meow exactly when $Q$ is true. $\blacksquare$ (The question $E(Q)$ is about facts and the cat's own behaviour, so it causes no paradox.)
+
+\textbf{(a) Three questions.} Call the cats $A$, $B$, $C$.
+\begin{enumerate}
+\item Ask $A$: $E(\text{``Is }B\text{ Randomcat?''})$. If the answer is Meow, then either $A$ is Randomcat, or $A$ is not and (by the lemma) $B$ is Randomcat; in both cases $C$ is \emph{not} Randomcat. If the answer is Nya, then either $A$ is Randomcat, or $A$ is not and $B$ is not Randomcat; in both cases $B$ is not Randomcat. Either way we know a cat $X\ne A$ that is not Randomcat.
+\item Ask $X$: $E(\text{``Are you Truecat?''})$. By the lemma, Meow means $X$ is Truecat and Nya means $X$ is Liecat.
+\item Ask $X$: $E(\text{``Is }A\text{ Randomcat?''})$. By the lemma this tells us whether $A$ is Randomcat. The other cat besides $X$ and $A$ then gets the remaining name.
+\end{enumerate}
+After three questions every cat is identified.
+
+\textbf{(b) Two questions are not enough.} There are $3!=6$ possible ways to assign the names. With two questions there are at most $4$ possible answer sequences (Meow-Meow, Meow-Nya, Nya-Meow, Nya-Nya), even if the second question depends on the first answer. The final conclusion depends only on the answers, so a two-question strategy can only ever announce at most $4$ different assignments. Some assignment is then never announced, and if it is the true one, the strategy fails, whatever the cats answer.
+
+So the least number of questions that always suffices is $\boxed{3}$.

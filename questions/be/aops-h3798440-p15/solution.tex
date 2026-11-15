@@ -1,0 +1,7 @@
+Subtracting consecutive four-cell sums shows that entries four places apart in a row or column are equal. Thus the seven row totals have the pattern $r_1,r_2,r_3,r_4,r_1,r_2,r_3$. The first four rows total $7\cdot19=133$, by summing their four-cell vertical blocks. Therefore the full total is $2\cdot133-r_4=235$, giving the central row total $\boxed{r_4=31}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int r=0;r<7;++r){if(r==3)fill(box((0,-r),(7,1-r)),lightblue);for(int c=0;c<7;++c)draw(box((c,-r),(c+1,1-r)),gray);label("$r_"+string(r%4+1)+"$",(7.3,.5-r),(1,0));}
+\end{asy}

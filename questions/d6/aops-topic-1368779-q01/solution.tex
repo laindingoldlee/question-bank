@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1368779_isosceles_triangles
+% Stable identity: aops-topic-1368779-q01
+Let the triangle be $ABC$ with $AB=AC=10$, let $M$ be the midpoint of the base $BC$, and suppose the perpendicular bisector of the leg $AB$ passes through $M$.
+
+Every point of the perpendicular bisector of $AB$ is equidistant from $A$ and $B$, so $MA=MB$. Also $MB=MC$ because $M$ is the midpoint of $BC$. So $M$ is equidistant from $A$, $B$ and $C$: it is the circumcentre, and it lies on side $BC$. Then $BC$ is a diameter of the circumcircle, and by Thales' theorem $\angle BAC=90^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair ft(pair P,pair A,pair B){return A+dot(P-A,unit(B-A))*unit(B-A);}
+real h=5*sqrt(2);
+pair A=(0,h),B=(-h,0),C=(h,0),M=(0,0),K=(A+B)/2;
+draw(A--B--C--cycle,linewidth(0.9));
+draw(M--(K+0.45*(K-M)),red+dashed); draw(A--M,gray+dashed);
+draw(ra(K,A-K,M-K,0.35),red); draw(ra(M,C-M,A-M,0.35),gray);
+draw(ra(A,B-A,C-A,0.35));
+dot(K); dot(M);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$M$",M,S); label("$K$",K+(-0.25,0),W);
+label("$10$",(A+C)/2,NE);
+path tk(pair P,pair d){return P+0.25*unit(rotate(90)*d)--P-0.25*unit(rotate(90)*d);}
+draw(tk((A+K)/2,A-B)); draw(tk((K+B)/2,A-B));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The figure shows $K$, the midpoint of $AB$, and the perpendicular bisector $KM$.) So $ABC$ is an isosceles right triangle with legs $10$, and by the Pythagorean theorem the base is
+\[BC=\sqrt{10^2+10^2}=\boxed{10\sqrt2}.\]

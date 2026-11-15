@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1202977_math_counts_handbook
+% Stable identity: aops-topic-1202977-q01
+By the median-length formula (Apollonius, a case of Stewart's theorem), $DG^2=\dfrac{2DE^2+2DF^2-EF^2}{4}$. So
+\[196=72+162-EF^2,\qquad EF^2=38,\qquad EF=\boxed{\sqrt{38}}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0),X=(6,0); real c=(36+81-38)/(2*6*9); pair Y=9*dir(degrees(acos(c))); pair G=(X+Y)/2;
+draw(D--X--Y--cycle,linewidth(0.9)); draw(D--G,blue); dot(G);
+label("$D$",D,SW); label("$E$",X,SE); label("$F$",Y,N); label("$G$",G,E); label("$6$",(D+X)/2,S); label("$9$",(D+Y)/2,NW); label("$7$",(D+G)/2,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

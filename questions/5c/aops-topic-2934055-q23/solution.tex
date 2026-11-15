@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2934055_2016_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2934055-q23
+Take $B=(0,0),C=(9,0),A=(\dfrac{9}{2},9\dfrac{\sqrt3}{2}),D=(4,0)$. Write $E=A+u(C-A),F=A+v(B-A)$, with $0\le u,v\le1$. Because $DE$ and $DF$ have equal length and are perpendicular, $\overrightarrow{DF}$ is the 90-degree counterclockwise rotation of $\overrightarrow{DE}$; the other rotation would put $F$ below $BC$. Equating coordinates gives $1-9v=-9\sqrt3(1-u)$ and $9\sqrt3(1-v)=1+9u$. Solving yields $u=\dfrac{14-4\sqrt3}{9},v=\dfrac{13-5\sqrt3}{9}$, both in $[0,1]$. Thus $EA+FA=9(u+v)=\boxed{27-9\sqrt3}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair B=(0,0),C=(9,0),A=(4.5,4.5*sqrt(3)),D=(4,0);real u=(14-4*sqrt(3))/9,v=(13-5*sqrt(3))/9;pair Ep=A+u*(C-A),F=A+v*(B-A);draw(A--B--C--cycle);draw(D--Ep--F--cycle,blue);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$E$",Ep,E);label("$F$",F,W);
+\end{asy}

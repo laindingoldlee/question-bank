@@ -1,0 +1,11 @@
+Put the circumcircle on the complex unit circle, with $A_i=\omega^{i-1}$ and $\omega=e^{2\pi \dfrac{i}{19}}$. A chord through unit complex numbers $u,v$ has equation $z+uv\overline z=u+v$. Applying this to the two lines gives
+\[X+\omega^4\overline X=1+\omega^4,\qquad X+\omega^5\overline X=\omega^2+\omega^3.\]
+Solving and simplifying yields $X=\omega^4+\omega^3-\omega$. Hence
+\[\dfrac{A_7-X}{A_5-X}=\dfrac{\omega^6-\omega^4-\omega^3+\omega}{\omega-\omega^3}=1-\omega^3.\]
+For $0<\theta<2\pi$, $1-e^{i\theta}=-2i\sin(\dfrac{\theta}{2})e^{i\dfrac{\theta}{2}}$. Here $\theta=\dfrac{6\pi}{19}$, so the principal argument is $\dfrac{3\pi}{19}-\dfrac{\pi}{2}=-\dfrac{13\pi}{38}$. Its absolute value is the angle between the two rays. The answer is $\boxed{\dfrac{13\pi}{38}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair w=dir(360/19),X=w^4+w^3-w;pair[] P;for(int i=0;i<19;++i)P.push(w^i);for(int i=0;i<19;++i)draw(P[i]--P[(i+1)%19],gray);draw(P[0]--X--P[3],dashed);draw(P[2]--X);draw(P[6]--X--P[4],blue);int[] k={0,2,3,4,6};for(int j:k)label("$A_{"+string(j+1)+"}$",P[j],P[j]);label("$X$",X,(0,1));
+\end{asy}

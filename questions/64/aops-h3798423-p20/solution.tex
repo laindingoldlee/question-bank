@@ -1,0 +1,9 @@
+Scale the square to side one and put $A=(0,0),B=(1,0),C=(1,1),D=(0,1)$. Perpendicularity and the side condition give $E=(1+t,t)$ for $t>0$. The length condition yields $(1+t)^2+t^2=2$, so $t=\dfrac{\sqrt3-1}{2}$. Hence
+\[\tan\angle BAE=\dfrac{t}{1+t}=2-\sqrt3=\tan15^\circ.\]
+The angle is acute, so $\boxed{15^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1),E=((1+sqrt(3))/2,(sqrt(3)-1)/2);draw(A--B--C--D--cycle);draw(B--D,dashed);draw(B--E);draw(A--E,blue);pair[] p={A,B,C,D,E};string[] s={"A","B","C","D","E"};for(int i=0;i<5;++i)label("$"+s[i]+"$",p[i],i==0?(-1,-1):(i==1?(0,-1):(i==2?(0,1):(i==3?(-1,1):(1,0)))));
+\end{asy}

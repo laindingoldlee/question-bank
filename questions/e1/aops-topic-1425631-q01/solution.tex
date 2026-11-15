@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1425631_intro_to_geometry_typo
+% Stable identity: aops-topic-1425631-q01
+\textbf{(a)} Three positive numbers form a triangle exactly when each is less than the sum of the other two, that is, when
+\[
+|a-b|<c<a+b .
+\]
+Suppose $a\ne b$. Joshua may choose $c=\min\left(|a-b|,\dfrac{a}{2}\right)$, which is positive and smaller than $a$. Then $c\le|a-b|$, so the triangle inequality fails and $a,b,c$ do not form a triangle, contradicting the hypothesis. Hence $a=b$.
+
+(Conversely, if $a=b$ then every $c$ with $0<c<a$ works: $|a-b|=0<c<a<2a=a+b$.)
+
+\textbf{(b)} The hypothesis is about \emph{every} choice of $c<a$, not one choice. With $a=6$ and $b=4$, the choice $c=5$ does give a triangle, but Joshua could also choose $c=1$, and $4+1<6$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0);
+draw(A--B,linewidth(1));
+draw(arc(A,4,-25,60),blue); draw(arc(B,1,90,270),red);
+draw(A--4*dir(40),blue+dashed); draw(B--B+dir(150),red+dashed);
+dot(A);dot(B);
+label("$6$",(3,0),S); label("$4$",2*dir(40),NW,blue); label("$1$",B+0.5*dir(150),N,red);
+label("$A$",A,W); label("$B$",B,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+the circles of radii $4$ and $1$ about the ends of a segment of length $6$ do not meet, so there is no triangle. So $a=6$, $b=4$ does not satisfy the hypothesis, and it is not a counterexample.

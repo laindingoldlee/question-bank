@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2593709_amc_10_problems
+% Stable identity: aops-topic-2593709-q10
+Compare the winning chances of the options for a given roll.
+\begin{itemize}
+\item Reroll none: wins (probability $1$) exactly when the sum is already $7$.
+\item Reroll one die, keeping two dice with sum $s$: wins with probability $\dfrac16$ if $s\le6$, and $0$ if $s\ge7$.
+\item Reroll two dice, keeping one die $x$: the two new dice must total $7-x$, which happens in $6-x$ of the $36$ outcomes, so the probability is $\dfrac{6-x}{36}\le\dfrac{5}{36}$.
+\item Reroll all three: there are $\dbinom62=15$ ordered triples with sum $7$, so the probability is $\dfrac{15}{216}=\dfrac{2.5}{36}$.
+\end{itemize}
+If the sum is $7$, he keeps everything. Otherwise, if some pair of dice sums to at most $6$, rerolling the third die ($\dfrac{6}{36}$) beats every other option. So he rerolls exactly two dice only when every pair sums to at least $7$ and the best two-dice option beats rerolling all three. That option keeps the smallest die $x$ and needs $\dfrac{6-x}{36}>\dfrac{2.5}{36}$, i.e. $x\le3$.
+
+So we count rolls whose smallest die is $x\le3$ and where every pair sums to at least $7$. The other two dice must each be at least $7-x$; then they are larger than $x$, and their own sum is at least $8$. For each $x\in\{1,2,3\}$ there are $3$ positions for the smallest die and $x$ choices ($7-x$ to $6$) for each of the other two dice:
+\[3\left(1^2+2^2+3^2\right)=42\text{ rolls},\qquad\dfrac{42}{216}=\boxed{\textbf{(A) }\dfrac{7}{36}}.\]

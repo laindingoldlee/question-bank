@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1783613_mc_problem
+% Stable identity: aops-topic-1783613-q01
+Draw through $A$ the line parallel to $BC$; it meets $FE$ at $G$ and $DC$ at $K$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0),C=(4,0),A=(0.5,3),B=(3.5,3);
+real t=15/31;
+pair F=A+t*(D-A),Ep=B+t*(C-B),K=(1,0),G=A+t*(K-A);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(F--Ep,linewidth(0.9));
+draw(A--K,dashed);
+dot(F);dot(Ep);dot(G);dot(K);
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);
+label("$F$",F,W);label("$E$",Ep,E);label("$G$",G,NE);label("$K$",K,S);
+label("$3$",(A+B)/2,N);label("$1$",(D+K)/2,S);label("$3$",(K+C)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+$ABEG$ and $ABCK$ are parallelograms, so $GE=KC=AB=3$ and $DK=4-3=1$. Since $FG\parallel DK$, triangles $AFG$ and $ADK$ are similar with ratio $\dfrac{AF}{AD}=\dfrac{15}{31}$, so $FG=\dfrac{15}{31}\cdot1=\dfrac{15}{31}$. Therefore
+\[
+EF=FG+GE=\dfrac{15}{31}+3=\boxed{\dfrac{108}{31}}.
+\]
+(The trapezoid need not be isosceles for this argument; the height does not matter either.)

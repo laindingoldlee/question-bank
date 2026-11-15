@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3326257_mock_state_problems
+% Stable identity: aops-topic-3326257-q27
+Let $\phi=\dfrac{1+\sqrt5}{2}$. A standard regular icosahedron has vertices $(0,\pm1,\pm\phi)$, $(\pm1,\pm\phi,0)$ and $(\pm\phi,0,\pm1)$, with edge 2 and circumradius $\sqrt{\phi+2}$. Its 20 equilateral faces each have area $\sqrt3$. The face through $(0,1,\phi),(1,\phi,0),(\phi,0,1)$ lies on $x+y+z=1+\phi=\phi^2$, at distance $\dfrac{\phi^2}{\sqrt3}$ from the origin. Symmetry gives this same face distance throughout. Decomposing into 20 face pyramids gives volume $\dfrac{20\phi^2}{3}$. Scaling to circumradius 1 divides by $(\phi+2)^{\dfrac{3}{2}}$, resulting in $\dfrac{2}{3}\sqrt{10+2\sqrt5}$ after using $\phi^2=\phi+1$. Thus the required volume is $\boxed{\dfrac{4}{3}\pi-\dfrac{2}{3}\sqrt{10+2\sqrt5}}$, and the requested sum is $\boxed{29}$.
+\begin{asy}
+import geometry;
+usepackage("amsmath");
+size(270);
+real f=(1+sqrt(5))/2;real[] xx={0,0,0,0,1,1,-1,-1,f,f,-f,-f},yy={1,1,-1,-1,f,-f,f,-f,0,0,0,0},zz={f,-f,f,-f,0,0,0,0,1,-1,1,-1};pair[] P;for(int i=0;i<12;++i)P.push((xx[i]+.35zz[i],yy[i]+.2zz[i]));for(int i=0;i<12;++i)for(int j=i+1;j<12;++j)if(abs((xx[i]-xx[j])^2+(yy[i]-yy[j])^2+(zz[i]-zz[j])^2-4)<.001)draw(P[i]--P[j]);for(int i=0;i<12;++i)dot(P[i]);label("regular icosahedron: projected coordinates",(0,-2.5));
+\end{asy}

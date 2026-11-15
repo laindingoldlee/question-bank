@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2149513_polynomial
+% Stable identity: aops-topic-2149513-q01
+Completing the squares, the condition is
+\[(x-1)^2+(y+1)^2=4,\]
+so the point $(x,y)$ lies on the circle with centre $C(1,-1)$ and radius $2$. Also $x^2+y^2=OP^2$, the square of the distance from the origin $O$ to the point $P=(x,y)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair C=(1,-1), O=(0,0); real r=2;
+pair F=C+r*unit(C-O);
+draw((-1.6,0)--(4,0),Arrow(6)); draw((0,-3.9)--(0,1.8),Arrow(6));
+label("$x$",(4,0),E); label("$y$",(0,1.8),N);
+draw(circle(C,r),blue+linewidth(0.9));
+draw(O--F,red+linewidth(1));
+dot(O); dot(C); dot(F,red);
+label("$O$",O,NW); label("$C(1,-1)$",C,NE);
+label("$F$",F,SE,red);
+label("$\sqrt2$",(O+C)/2,SW,red); label("$2$",(C+F)/2,SW,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $OC=\sqrt2$, the triangle inequality gives $OP\le OC+CP=\sqrt2+2$, with equality at the point $F$ where the ray from $O$ through $C$ meets the circle, namely $F=\left(1+\sqrt2,\,-1-\sqrt2\right)$. Hence the largest value of $x^2+y^2$ is
+\[\left(2+\sqrt2\right)^2=6+4\sqrt2,\]
+and since $\sqrt{32}=4\sqrt2$, the largest value of $x^2+y^2-\sqrt{32}$ is $\boxed{6}$.

@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2583065_cone_problem
+% Stable identity: aops-topic-2583065-q01
+\textbf{(a)} In the cross-section through the axis, the radius of a circle at distance $s$ from $V$ is $s\tan\theta$ (right triangle with angle $\theta$ at $V$). So
+\[r_1=h\tan\theta,\qquad r_2=(h+d)\tan\theta,\]
+and the ratio of the areas is
+\[\dfrac{\pi r_2^2}{\pi r_1^2}=\boxed{\left(\dfrac{h+d}{h}\right)^2}.\]
+It does not depend on $\theta$: the two circles are similar figures with scale factor $\dfrac{h+d}h$.
+
+\textbf{(b)} Keep $\theta$ and $d$ fixed. For $h=d$ the ratio is $4$, but for $h=2d$ it is $\dfrac94$. So $\theta$ and $d$ do not determine the ratio. It is determined once we also know the distance $h$ from the apex to the nearer section, or equivalently one of the radii, since $h=\dfrac{r_1}{\tan\theta}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real th=24, h=1.4, D=3.6; real t=Tan(th);
+pair V=(0,0);
+pair A1=(-h*t,-h),B1=(h*t,-h),A2=(-D*t,-D),B2=(D*t,-D);
+draw(V--A2,linewidth(0.8));draw(V--B2,linewidth(0.8));
+draw(shift(0,-h)*xscale(h*t)*yscale(0.22*h*t)*unitcircle);
+draw(shift(0,-D)*xscale(D*t)*yscale(0.22*D*t)*unitcircle);
+draw(V--(0,-D),dashed);
+draw((0,-h)--B1);draw((0,-D)--B2);
+draw(arc(V,0.55,-90-th,-90));
+label("$\theta$",V+0.75*dir(-90-th/2),fontsize(9pt));
+dot(V);label("$V$",V,N);
+draw((-D*t-0.5,0)--(-D*t-0.5,-h),Arrows(5));label("$h$",(-D*t-0.5,-h/2),W);
+draw((-D*t-0.5,-h)--(-D*t-0.5,-D),Arrows(5));label("$d$",(-D*t-0.5,-(h+D)/2),W);
+draw((-D*t-0.7,0)--(-D*t-0.3,0));draw((-D*t-0.7,-h)--(-D*t-0.3,-h));draw((-D*t-0.7,-D)--(-D*t-0.3,-D));
+label("$r_1$",((h*t)/2,-h+0.22*h*t),N,fontsize(9pt));label("$r_2$",((D*t)/2,-D),N,fontsize(9pt));
+\end{asy}

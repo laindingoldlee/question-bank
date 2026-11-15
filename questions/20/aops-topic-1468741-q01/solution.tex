@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1468741_a_question_about_modular_arithmetic
+% Stable identity: aops-topic-1468741-q01
+Use the Euclidean algorithm on $3120$ and $17$:
+\[
+3120=183\cdot17+9,\qquad17=1\cdot9+8,\qquad9=1\cdot8+1 .
+\]
+Working backwards,
+\[
+1=9-8=9-(17-9)=2\cdot9-17=2(3120-183\cdot17)-17=2\cdot3120-367\cdot17 .
+\]
+So $17\cdot(-367)\equiv1\pmod{3120}$, and $d=-367+3120=\boxed{2753}$. Then $de=46801=15\cdot3120+1$, so $k=\boxed{15}$.
+
+Alternatively, solve for $k$ directly: we need $17\mid3120k+1$. Since $3120\equiv9\pmod{17}$, this says $9k\equiv-1\equiv16\pmod{17}$. As $9\cdot2=18\equiv1$, multiplying by $2$ gives $k\equiv32\equiv15\pmod{17}$, so $k=15$ and $d=\dfrac{15\cdot3120+1}{17}=2753$. In general, $k$ (and $d$) are found by the extended Euclidean algorithm, which takes only about as many steps as the number of digits involved.

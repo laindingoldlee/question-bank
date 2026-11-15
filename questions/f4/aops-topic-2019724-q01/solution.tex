@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2019724_geo_ratios
+% Stable identity: aops-topic-2019724-q01
+Let $PQ=2a$ and call the other two points $R$ and $T$. The remaining five segments $PR,QR,PT,QT,RT$ have lengths $a,a,a,a,b$.
+
+If $R$ is not on segment $PQ$, the triangle inequality in triangle $PQR$ (or the strict inequality for a point off segment $PQ$) gives $PR+QR>2a$, so $PR$ and $QR$ cannot both equal $a$; one of them is $b$. The same holds for $T$. Since only one segment has length $b$, at least one of $R,T$, say $R$, lies on segment $PQ$ with $PR=QR=a$: $R$ is the midpoint of $PQ$.
+
+Now $PT,QT,RT$ are $a,a,b$ in some order. If $PT=QT=a$, then $T$ would also be the midpoint of $PQ$, i.e. $T=R$, which is impossible. So $RT=a$ and one of $PT,QT$, say $PT$, equals $a$. Then triangle $PRT$ is equilateral with side $a$, and $b=QT$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real a=2;
+pair P=(0,0), Rr=(a,0), Q=(2a,0), T=(a/2,a*sqrt(3)/2);
+draw(P--Q,linewidth(0.9)); draw(P--T--Rr,linewidth(0.9)); draw(T--Q,red+linewidth(0.9));
+dot(P);dot(Q);dot(Rr);dot(T);
+label("$P$",P,SW); label("$Q$",Q,SE); label("$R$",Rr,S); label("$T$",T,N);
+label("$a$",(P+Rr)/2,S); label("$a$",(Rr+Q)/2,S); label("$a$",(P+T)/2,NW); label("$a$",(T+Rr)/2,NE);
+label("$b$",(T+Q)/2,NE,red);
+draw((0,-0.55)--(2a,-0.55),Arrows(5)); label("$2a$",(a,-0.55),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Place $P=(0,0)$, $R=(a,0)$, $Q=(2a,0)$ and $T=\left(\dfrac {a}{2},\dfrac{\sqrt3}{2}a\right)$. Then
+\[
+b=QT=\sqrt{\left(\dfrac{3a}{2}\right)^2+\dfrac{3a^2}{4}}=\sqrt3\,a .
+\]
+(Equivalently, $\angle PTQ=90^\circ$ because $T$ lies on the circle with diameter $PQ$.) So $\dfrac {b}{a}=\boxed{\sqrt3}$.

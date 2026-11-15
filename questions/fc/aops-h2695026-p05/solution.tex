@@ -1,0 +1,15 @@
+There are $\binom92=36$ pairs, and each triple contains three pairs, so necessarily $3n=36$ and $\boxed{n=12}$. Label the people $1$ through $9$ in the displayed array. A construction is
+\[
+123,\ 456,\ 789;\qquad147,\ 258,\ 369;
+\]
+\[
+159,\ 267,\ 348;\qquad168,\ 249,\ 357.
+\]
+Identify the array positions with pairs of residues modulo $3$. The four families are the three lines of each direction: horizontal, vertical, and the two slopes $1,-1$. Two distinct positions determine exactly one of these lines, proving that every pair occurs exactly once.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}
+\end{asy}

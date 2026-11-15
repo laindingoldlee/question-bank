@@ -1,0 +1,15 @@
+Each horizontal row is initially a route from fire to trees, and the five rows are disjoint. Thus at least one firebreak is needed per row; with exactly five, there is one in each. Number the middle columns $1,\ldots,4$, and write $c_r$ for the firebreak column in row $r$.
+
+The condition is exactly $|c_{r+1}-c_r|\le1$. If a gap is at least $2$, fire can move along the row whose break is farther right, cross vertically at a column strictly between the two breaks, and continue right in the other row. Conversely, when all gaps are at most $1$, squares strictly left of their row's break have no side-adjacent route to squares strictly right of the break; the breaks form a barrier.
+
+Let $v_r(j)$ count valid first $r$ rows ending in column $j$. Then $v_1=(1,1,1,1)$ and $v_{r+1}(j)=v_r(j-1)+v_r(j)+v_r(j+1)$, omitting out-of-range terms. The next vectors are
+\[
+(2,3,3,2),\ (5,8,8,5),\ (13,21,21,13),\ (34,55,55,34).
+\]
+Hence the answer is $\boxed{178}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+int[] c={2,3,2,2,1};for(int r=0;r<5;++r)for(int x=0;x<6;++x){pen p=x==0?lightred:(x==5?lightblue:lightgray);if(x==c[r])p=gray(.35);filldraw(box((x,-r),(x+1,1-r)),p);if(x==0)label("F",(x+.5,.5-r));if(x==5)label("T",(x+.5,.5-r));}label("Example barrier",(3,-5));
+\end{asy}

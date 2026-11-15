@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1745995_warmup_13_problem_158
+% Stable identity: aops-topic-1745995-q01
+$P$ and $R$ are opposite vertices, and they have the same $y$-coordinate, so the diagonal $PR$ is horizontal with length $25$. The diagonals of a rectangle are equal, so $QS=25$; its vertical component is $24$, so its horizontal component is $\sqrt{25^2-24^2}=7$. Place the centre (the common midpoint of the diagonals) at the origin: $P=(-12.5,0)$, $R=(12.5,0)$, $Q=(3.5,12)$, $S=(-3.5,-12)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair P=(-12.5,0),Q=(3.5,12),R=(12.5,0),T=(-3.5,-12);
+draw(P--Q--R--T--cycle,linewidth(0.9));
+draw(P--R,dashed+gray);draw(Q--T,dashed+gray);
+dot(P);dot(Q);dot(R);dot(T);
+label("$P$",P,W);label("$Q$",Q,N);label("$R$",R,E);label("$S$",T,S);
+label("$20$",(P+Q)/2+0.5*dir(127),dir(127));label("$15$",(Q+R)/2+0.5*dir(37),dir(37));
+draw((-12.5,-17)--(12.5,-17),Arrows(5));draw((-12.5,-1.5)--(-12.5,-18),dotted);draw((12.5,-1.5)--(12.5,-18),dotted);
+label("$25$",(0,-17),S);
+draw((-17,-12)--(-17,12),Arrows(5));draw((-5,-12)--(-18,-12),dotted);draw((2,12)--(-18,12),dotted);
+label("$24$",(-17,0),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then
+\[
+PQ=\sqrt{16^2+12^2}=20,\qquad QR=\sqrt{9^2+12^2}=15,
+\]
+and $\overrightarrow{PQ}\cdot\overrightarrow{QR}=16\cdot9+12\cdot(-12)=0$, as it must be. (Taking $Q=(-3.5,12)$, $S=(3.5,-12)$ instead just swaps the two side lengths.) The perimeter is $2(20+15)=\boxed{70}$.

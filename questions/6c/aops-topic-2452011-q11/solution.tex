@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2452011_ash_ketchum_problems
+% Stable identity: aops-topic-2452011-q11
+\textbf{Key fact (British flag theorem).} For any point $X$ and any rectangle $ABCD$, $XA^2+XC^2=XB^2+XD^2$. Indeed, take coordinates $A=(0,0)$, $B=(w,0)$, $C=(w,h)$, $D=(0,h)$ and $X=(x,y)$. Then
+\begin{align*}
+XA^2+XC^2&=x^2+y^2+(x-w)^2+(y-h)^2,\\
+XB^2+XD^2&=(x-w)^2+y^2+x^2+(y-h)^2,
+\end{align*}
+and the two sums are equal.
+
+Hence $XD^2=XA^2+XC^2-XB^2=9+49-25=33$, and Ash is $\boxed{\sqrt{33}}$ from corner $D$.
+
+Such a room exists: with $X$ at the origin, $A=\left(-\sqrt5,-2\right)$, $B=\left(\sqrt{21},-2\right)$, $C=\left(\sqrt{21},\sqrt{28}\right)$, $D=\left(-\sqrt5,\sqrt{28}\right)$ gives $XA=3$, $XB=5$, $XC=7$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair X=(0,0);
+pair A=(-sqrt(5),-2), B=(sqrt(21),-2), C=(sqrt(21),sqrt(28)), D=(-sqrt(5),sqrt(28));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(X--A,blue); draw(X--B,blue); draw(X--C,blue); draw(X--D,red+dashed);
+dot(X);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW); label("$X$",X,W);
+label("$3$",(X+A)/2,NW,blue); label("$5$",(X+B)/2,N,blue); label("$7$",(X+C)/2,NW,blue); label("$\sqrt{33}$",(X+D)/2,NE,red);
+\end{asy}

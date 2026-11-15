@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2314756_problem_i_wrote
+% Stable identity: aops-topic-2314756-q01
+For a fixed pair $(w,x)$, the number of ordered pairs $(y,z)$ of positive integers with $yz=m$, where $m=\min(w,x)$, is $d(m)$, the number of positive divisors of $m$. So we count the pairs $(w,x)$ with $wx\le48$ by $m=\min(w,x)$.
+
+If $\min(w,x)=m$, then one of $w,x$ equals $m$ and the other is an integer $t\ge m$ with $mt\le48$, that is, $m\le t\le\left\lfloor\dfrac{48}{m}\right\rfloor$. This needs $m^2\le48$, so $m\le6$. The number of pairs is $2\left(\left\lfloor\dfrac{48}{m}\right\rfloor-m\right)+1$ (the pair $(m,m)$ is counted once):
+\[\begin{array}{c|cccccc}
+m&1&2&3&4&5&6\\\hline
+\left\lfloor\dfrac{48}{m}\right\rfloor&48&24&16&12&9&8\\
+\text{pairs }(w,x)&95&45&27&17&9&5\\
+d(m)&1&2&2&3&2&4
+\end{array}\]
+The number of quadruples is
+\[95\cdot1+45\cdot2+27\cdot2+17\cdot3+9\cdot2+5\cdot4=95+90+54+51+18+20=\boxed{328}.\]

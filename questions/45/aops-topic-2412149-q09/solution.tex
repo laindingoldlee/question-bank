@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2412149_100th_post
+% Stable identity: aops-topic-2412149-q09
+Exterior angles sum to $360^\circ$, so it has $\dfrac{360}5=\boxed{72}$ sides.
+\begin{asy}
+usepackage("amsmath");
+size(2.5cm);
+defaultpen(fontsize(10pt));
+pair[] V;for(int k=0;k<12;++k){V.push(dir(30*k));}for(int k=0;k<12;++k){draw(V[k]--V[(k+1)%12]);}pair E0=V[1]+0.8*(V[1]-V[0]);draw(V[1]--E0,dashed);draw(arc(V[1],0.3,degrees(E0-V[1]),degrees(V[2]-V[1])));label("exterior",V[1],E);
+\end{asy}

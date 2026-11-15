@@ -1,0 +1,16 @@
+Write $r=\sqrt3$. With $A=(0,0),B=(6,0),C=(6,6),D=(0,6)$, the slopes of $DE,DF$ are $-r,-\dfrac{1}{r}$. Therefore
+\[
+E=(2r,0),\quad F=(6,6-2r),\quad
+G=(3r-3,3r-3),\quad H=(9-3r,9-3r).
+\]
+These are obtained by intersecting the respective lines with the sides and with $y=x$. Applying the shoelace formula to the ordered vertices $B,E,G,H,F$, the signed doubled area is
+\[
+2r(3r-3)+(9-3r)(6-2r)-6(9-3r)-6(6-2r)=-12r.
+\]
+Hence the area is $\boxed{6\sqrt3}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(6,0),C=(6,6),D=(0,6);draw(A--B--C--D--cycle);label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$C$",C,(1,1));label("$D$",D,(-1,1));real r=sqrt(3);pair E=(2*r,0),F=(6,6-2*r),G=(3*r-3,3*r-3),H=(9-3*r,9-3*r);filldraw(B--E--G--H--F--cycle,lightblue);draw(A--C,dashed);draw(D--E);draw(D--F);label("$E$",E,(0,-1));label("$F$",F,(1,0));label("$G$",G,(-1,0));label("$H$",H,(0,1));
+\end{asy}

@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2422915_problems_for_2000_posts
+% Stable identity: aops-topic-2422915-q01
+\textbf{Answer:} with probability $1$, $R$'s total eventually overtakes $N$'s, but the expected waiting time is infinite: $E[T]=\infty$.
+
+\textbf{Setup.} Let $D_t$ be the number of wins of $R$ minus the number of wins of $N$ after day $t$, so $D_0=-95$ and $D_1=-94$. Each day $D$ goes up by $1$ (an \emph{up-day}, won by $R$) or down by $1$ (a \emph{down-day}, won by $N$). Since $D$ moves in steps of $1$, $T$ is the first day with $D_T=1$.
+
+\textbf{Climbs.} Suppose that $D=d$ at the end of some day. The \emph{climb} from $d$ consists of the following days up to the first day on which $D=d+1$ (it might never end). The next day's winner depends only on the last day's winner, not on the value of $D$ or on earlier days, so a climb behaves in the same way for every $d$, and depends only on whether the last day was an up-day or a down-day. Let
+\begin{itemize}
+\item $\alpha$ be the probability that a climb ends, and $a$ its expected length in days (possibly $\infty$), when the last day was an up-day;
+\item $\beta$ and $b$ be the same quantities when the last day was a down-day.
+\end{itemize}
+Two observations make these computable:
+\begin{itemize}
+\item a climb always ends with an up-day, so the climb that follows it starts after an up-day;
+\item if during a climb from $d$ the next day is a down-day, then $D=d-1$, and the climb from $d$ can only end after the climb from $d-1$ (which starts after a down-day) and then another climb from $d$ (which starts after an up-day).
+\end{itemize}
+
+\textbf{The climbs end with probability $1$.} Looking at the first day of a climb, the observations give
+\[\alpha=\dfrac{9}{11}+\dfrac{2}{11}\,\beta\alpha,\qquad\beta=\dfrac{2}{11}+\dfrac{9}{11}\,\beta\alpha.\]
+(For example, after an up-day the climb ends at once with probability $\dfrac9{11}$; otherwise two climbs, one starting after a down-day and one after an up-day, must both end.) Put $\gamma=\alpha\beta$. Then $\alpha=\dfrac{9+2\gamma}{11}$ and $\beta=\dfrac{2+9\gamma}{11}$, so
+\[121\gamma=(9+2\gamma)(2+9\gamma)=18+85\gamma+18\gamma^2\iff18(\gamma-1)^2=0.\]
+Hence $\gamma=1$, and then $\alpha=\beta=1$. Day $1$ is an up-day with $D_1=-94$, so $R$ overtakes $N$ after $95$ successive climbs, each starting after an up-day and each ending with probability $1$. So $T$ is finite with probability $1$: $R$'s total will overtake $N$'s.
+
+\textbf{The expected time is infinite.} In the same way, by linearity of expectation (all lengths are nonnegative, so the equations hold even when a value is infinite),
+\[a=1+\dfrac{2}{11}(b+a),\qquad b=1+\dfrac{9}{11}(b+a).\]
+If $a$ were finite, the first equation would make $b=\dfrac{11(a-1)}{2}-a$ finite too, and adding the two equations would give $a+b=2+(a+b)$, which is impossible. So $a=\infty$. The first climb starts after day $1$, an up-day, and $T$ is at least $1$ plus the length of this climb, so $E[T]\ge1+a=\infty$. Hence $\boxed{E[T]=\infty}$: although $R$ is certain to overtake $N$ eventually, there is no finite expected number of days.
+
+(Intuitively, the walk has no drift: runs of consecutive $R$ wins and runs of consecutive $N$ wins have the same length distribution, with mean $\dfrac{11}{2}$ days. Such a walk reaches every level, but the expected time to do so is infinite.)

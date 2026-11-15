@@ -1,0 +1,7 @@
+Any two of the cube's eight distinct vertices determine a unique segment, so there are $\binom82=\boxed{28}$ segments. Equivalently, these are $12$ edges, $12$ face diagonals, and $4$ space diagonals.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair f(real x,real y,real z){return (x+.45y,z+.3y);}pair[] V;for(int x=0;x<2;++x)for(int y=0;y<2;++y)for(int z=0;z<2;++z)V.push(f(x,y,z));for(int i=0;i<8;++i)for(int j=i+1;j<8;++j)draw(V[i]--V[j],lightgray);for(pair P:V)dot(P,black+4bp);
+\end{asy}

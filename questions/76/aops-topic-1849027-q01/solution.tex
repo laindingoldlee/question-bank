@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1849027_kootrapali_mock_questions
+% Stable identity: aops-topic-1849027-q01
+Let $N=1357^{1357}$. Two facts do all the work.
+
+\textbf{Size.} Since $1357<10^4$, we have $N<10^{4\cdot1357}=10^{5428}$, so $N$ has at most $5428$ digits and
+\[
+f(N)\le9\cdot5428=48852 .
+\]
+A positive integer that is at most $48852$ has digit sum at most $3+9+9+9+9=39$ (attained by $39999$), so $f(f(N))\le39$. A positive integer that is at most $39$ has digit sum at most $3+9=12$, so $f(f(f(N)))\le12$.
+
+\textbf{Residue modulo $9$.} Since $10\equiv1\pmod9$, every number is congruent to its digit sum modulo $9$, so $f(f(f(N)))\equiv N\pmod9$. Now $1357\equiv1+3+5+7=16\equiv7\pmod9$, and $7^3=343=9\cdot38+1\equiv1\pmod9$. As $1357=3\cdot452+1$,
+\[
+N\equiv7^{1357}=\left(7^3\right)^{452}\cdot7\equiv7\pmod9 .
+\]
+
+So $f(f(f(N)))$ is a positive integer that is at most $12$ and congruent to $7$ modulo $9$. The only such number is $7$, so
+\[
+f\bigl(f\bigl(f\bigl(1357^{1357}\bigr)\bigr)\bigr)=\boxed{7}.
+\]
+(Indeed, $f(N)=19258$ and $f(19258)=25$.)

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2518771_rj5303707_birthday_problems
+% Stable identity: aops-topic-2518771-q04
+The top and bottom are discs of area $\pi\cdot4^2=16\pi$ each, and the curved side unrolls into a rectangle of width $2\pi\cdot4=8\pi$ and height $7$, of area $56\pi$. So the total surface area is
+\[2\cdot16\pi+56\pi=88\pi\approx276.46\text{ square inches}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+real r=4, h=7, k=0.35;
+path bot=xscale(r)*yscale(r*k)*unitcircle;
+draw(shift(0,h)*bot,linewidth(0.8));
+draw(xscale(r)*yscale(r*k)*arc((0,0),1,180,360),linewidth(0.8));
+draw(xscale(r)*yscale(r*k)*arc((0,0),1,0,180),dashed);
+draw((-r,0)--(-r,h),linewidth(0.8)); draw((r,0)--(r,h),linewidth(0.8));
+draw((0,h)--(r,h),blue); label("$4$",(r/2,h),N,blue);
+draw((r+0.6,0)--(r+0.6,h),Arrows(5)); label("$7$",(r+0.6,h/2),E);
+dot((0,h));
+\end{asy}
+
+The price per square inch is
+\[\dfrac{29}{88\pi}\approx0.1049\text{ dollars},\]
+which is $\boxed{\$0.10}$ to the nearest cent (about $10.5$ cents).

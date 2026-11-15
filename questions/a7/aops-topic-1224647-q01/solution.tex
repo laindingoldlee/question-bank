@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1224647_does_this_solution_work
+% Stable identity: aops-topic-1224647-q01
+Let the diagonals meet at $O$, with $OA=a$, $OB=b$, $OC=c$, $OD=d$. The four triangles at $O$ are right-angled, so by Pythagoras
+\[AB^2+CD^2=(a^2+b^2)+(c^2+d^2)=(b^2+c^2)+(d^2+a^2)=BC^2+DA^2.\ \blacksquare\]
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=(-2.5,0),C=(1.5,0),B=(0,-1.8),D=(0,2.2);
+draw(A--B--C--D--cycle,linewidth(1)); draw(A--C,gray); draw(B--D,gray);
+draw((0.2,0)--(0.2,0.2)--(0,0.2));
+label("$A$",A,W);label("$B$",B,S);label("$C$",C,E);label("$D$",D,N);label("$O$",O,SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(For any quadrilateral, expanding with vectors gives $AB^2-BC^2+CD^2-DA^2=2(\vec C-\vec A)\cdot(\vec B-\vec D)$, which is $0$ exactly when $AC\perp BD$; so the converse also holds.)

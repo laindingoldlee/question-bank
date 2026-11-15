@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3165957_2022_lmt_spring_accuracy_problem_6
+% Stable identity: aops-topic-3165957-q01
+Place $O_1=(0,0)$, $O_2=(6,0)$, $P_1=(2,0)$, $P_2=(4,0)$. The center of $\omega$ is $(3,t)$ and its radius squared is $1+t^2$. Its equation is $x^2+y^2-6x-2ty+8=0$. Intersecting it with $x^2+y^2=4$ gives $3x+ty=6$, so the other intersection is $Q_1=(\dfrac{2(9-t^2)}{t^2+9},\dfrac{12t}{t^2+9})$. By reflection, the vector $O_2Q_2$ is $(-u,v)$ when $O_1Q_1=(u,v)$. Parallelism forces $2uv=0$. If $t=0$, the first two circles are tangent, contrary to distinct intersections. Hence $u=0$, so $t^2=9$. The desired area is $\pi(1+t^2)=\boxed{10\pi}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair O1=(0,0),O2=(6,0),O=(3,-3),P1=(2,0),P2=(4,0),Q1=(0,-2),Q2=(6,-2);draw(circle(O1,2));draw(circle(O2,2));draw(circle(O,sqrt(10)));draw(O1--O2,dashed);draw(O1--Q1^^O2--Q2,blue);label("$O_1$",O1,N);label("$O_2$",O2,N);label("$O$",O,S);label("$P_1$",P1,NE);label("$P_2$",P2,NW);label("$Q_1$",Q1,W);label("$Q_2$",Q2,E);
+\end{asy}

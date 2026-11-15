@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1778662_values_with_coins
+% Stable identity: aops-topic-1778662-q01
+\textbf{Fewest coins for an amount.} Take a collection with the fewest coins for an amount $n$. It has at most $4$ pennies (five pennies could be replaced by one nickel), at most $1$ nickel (two nickels by a dime), at most $2$ dimes (three dimes by a quarter and a nickel), and not both $2$ dimes and a nickel (these make a quarter). So the coins other than quarters are worth at most $20+4=24$ cents, which forces the number of quarters to be $q=\left\lfloor\dfrac {n}{25}\right\rfloor$ and the rest to be worth $r=n-25q\le24$. The rest is then made greedily, with
+\[
+c(r)=\left\lfloor\dfrac {r}{10}\right\rfloor+\left\lfloor\dfrac{r\bmod10}{5}\right\rfloor+(r\bmod5)
+\]
+coins, and the fewest coins for $n$ is $q+c(r)$. For $0\le r\le18$ we have $c(r)\le5$ (the largest values are $c(9)=c(14)=c(18)=5$), while $c(19)=1+1+4=6$.
+
+\textbf{The least amount.} An amount below $69$ has $q\le1$, giving at most $1+6=7$ coins, or $q=2$ and $r\le18$, giving at most $2+5=7$ coins. The amount $69=2\cdot25+19$ needs $2+6=8$ coins. So the least amount that cannot be made with fewer than eight coins is $\boxed{69}$ cents.

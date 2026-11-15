@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2534026_five_equal_balls
+% Stable identity: aops-topic-2534026-q01
+The centres of the four lower balls are at height $r$ and form a square of side $2r$ (neighbouring balls touch), whose diagonal is $2\sqrt2\,r$. By symmetry the centre of the top ball is directly above the centre of the square, at horizontal distance $\sqrt2\,r$ from each lower centre. It touches each lower ball, so its distance to each lower centre is $2r$, and its height above the lower centres is
+\[\sqrt{(2r)^2-\left(\sqrt2\,r\right)^2}=\sqrt2\,r.\]
+So the top centre is at height $r+\sqrt2\,r$, and the farthest point of the top ball is at height
+\[\boxed{\left(2+\sqrt2\right)r}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real s2=sqrt(2);
+draw((-4,0)--(4,0),linewidth(0.8));
+pair C1=(-s2,1),C2=(s2,1),C5=(0,1+s2);
+draw(circle(C1,1));draw(circle(C2,1));draw(circle(C5,1),linewidth(0.8));
+pair Fp=(0,1);
+draw(C1--C5,dashed);draw(C1--Fp--C5,dashed);draw(Fp+(-0.15,0)--Fp+(-0.15,0.15)--Fp+(0,0.15));
+dot(C1);dot(C5);
+pair Top=(0,2+s2);dot(Top);
+draw((3,0)--(3,2+s2),Arrows(4));label("$(2+\sqrt2)r$",(3,1.2+s2/2),E);
+draw((0,2+s2)--(3,2+s2),dotted);
+label("$\sqrt2\,r$",(-0.7,1),S,fontsize(8pt));label("$2r$",(-1.06,1.35),NW,fontsize(8pt));
+\end{asy}
+
+The sketch is the vertical cross-section through two diagonally opposite lower balls.

@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2452011_ash_ketchum_problems
+% Stable identity: aops-topic-2452011-q03
+The cylinder with radius $k$ and height $(23-k)^2$ has volume $\pi k^2(23-k)^2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+real r=1.3, h=2.4, e=0.32;
+path fr=shift(0,0)*xscale(r)*yscale(e*r)*arc((0,0),1,180,360);
+path bk=xscale(r)*yscale(e*r)*arc((0,0),1,0,180);
+fill(xscale(r)*yscale(e*r)*unitcircle,white);
+draw(shift(0,h)*xscale(r)*yscale(e*r)*unitcircle,linewidth(0.8));
+draw(fr,linewidth(0.8)); draw(bk,dashed);
+draw((-r,0)--(-r,h),linewidth(0.8)); draw((r,0)--(r,h),linewidth(0.8));
+dot((0,h)); draw((0,h)--(r,h),blue); label("$k$",(r/2,h+e*r),N,blue);
+draw((r+0.25,0)--(r+0.25,h),red,Arrows(4)); label("$(23-k)^2$",(r+0.25,h/2),E,red);
+\end{asy}
+
+So the total volume is $\pi T$ with
+\[T=\sum_{k=1}^{22}k^2(23-k)^2=\sum_{k=1}^{22}\left(23k-k^2\right)^2=529\sum_{k=1}^{22}k^2-46\sum_{k=1}^{22}k^3+\sum_{k=1}^{22}k^4.\]
+With $n=22$:
+\begin{align*}
+\sum k^2&=\dfrac{n(n+1)(2n+1)}{6}=\dfrac{22\cdot23\cdot45}{6}=3795,\\
+\sum k^3&=\left(\dfrac{n(n+1)}{2}\right)^2=253^2=64009,\\
+\sum k^4&=\dfrac{n(n+1)(2n+1)\left(3n^2+3n-1\right)}{30}=\dfrac{22\cdot23\cdot45\cdot1517}{30}=1151403.
+\end{align*}
+Hence
+\[T=529\cdot3795-46\cdot64009+1151403=2007555-2944414+1151403=214544,\]
+and the volume of the cake is $\boxed{214544\pi}$.

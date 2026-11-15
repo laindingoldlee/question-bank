@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1389331_modular_arithmetic
+% Stable identity: aops-topic-1389331-q01
+Work modulo $8$ and modulo $125$. By Kummer's theorem, the exponent of a prime $p$ in $\dbinom{n}{k}$ equals the number of carries when $k$ and $n-k$ are added in base $p$. Here $k=41$ and $n-k=986$.
+
+\textbf{Modulo $8$.} In base $2$, $41=101001_2$ and $986=1111011010_2$; adding them produces $7$ carries, so $2^7$ divides the binomial coefficient and it is $\equiv0\pmod8$.
+
+\textbf{Modulo $125$.} In base $5$,
+\[
+1027=13102_5,\qquad 41=00131_5,\qquad 986=12421_5 .
+\]
+Adding $41$ and $986$ gives carries in the $5^1$ and $5^2$ places only, so the exponent of $5$ is exactly $2$: $\dbinom{1027}{41}=25M$ with $5\nmid M$. To find $M$ modulo $5$ use Anton's congruence (a refinement of Lucas's theorem): if $e$ carries occur, then
+\[
+(-1)^e\,\dfrac{1}{p^e}\dbinom{n}{k}\equiv\prod_j\dfrac{n_j!}{k_j!\,r_j!}\pmod p,
+\]
+where $n_j$, $k_j$, $r_j$ are the base-$p$ digits of $n$, $k$ and $r=n-k$. The digit triples $(n_j,k_j,r_j)$, from the units place up, are $(2,1,1)$, $(0,3,2)$, $(1,1,4)$, $(3,0,2)$, $(1,0,1)$, so modulo $5$
+\[
+M\equiv\dfrac{2!}{1!\,1!}\cdot\dfrac{0!}{3!\,2!}\cdot\dfrac{1!}{1!\,4!}\cdot\dfrac{3!}{0!\,2!}\cdot\dfrac{1!}{0!\,1!}\equiv2\cdot\dfrac{1}{12}\cdot\dfrac{1}{24}\cdot3\cdot1\equiv2\cdot3\cdot4\cdot3\equiv2\pmod 5,
+\]
+using $12\equiv2$ (inverse $3$) and $24\equiv4$ (inverse $4$). Hence $\dbinom{1027}{41}=25M\equiv50\pmod{125}$.
+
+\textbf{Combine.} The numbers below $1000$ that are $\equiv50\pmod{125}$ are $50,175,300,425,550,675,800,925$; the only multiple of $8$ among them is $800$. The remainder is $\boxed{800}$.

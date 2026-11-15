@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2025677_geo_angle_chasing
+% Stable identity: aops-topic-2025677-q01
+Let the quadrilateral be $ABCD$ with $AB=BC=CD=s$ and longest side $DA=L$, so $AC=BD=L$.
+
+Triangles $ABD$ and $DCA$ are congruent (SSS: $AB=DC$, $BD=CA$, $AD$ common), so $\angle BAD=\angle CDA$. Triangles $ABC$ and $DCB$ are congruent (SSS: $AB=DC$, $AC=DB$, $BC$ common), so $\angle ABC=\angle DCB$. The angles sum to $360^\circ$, so $\angle A+\angle B=180^\circ$; hence $AD\parallel BC$, and also $\angle A+\angle C=180^\circ$, so $ABCD$ is cyclic.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=dir(90+36), B=dir(90+36+72), C=dir(90+36+144), D=dir(90+36+216);
+draw(unitcircle, gray+dashed);
+draw(A--B--C--D--cycle, linewidth(0.9));
+draw(A--C, blue); draw(B--D, blue);
+dot(A); dot(B); dot(C); dot(D);
+label("$A$", A, NW); label("$B$", B, SW); label("$C$", C, SE); label("$D$", D, NE);
+label("$s$", (A+B)/2, W); label("$s$", (B+C)/2, S); label("$s$", (C+D)/2, E); label("$L$", (A+D)/2, N);
+label("$108^\circ$", 0.7*B+0.05*(0,1), fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+On the circumcircle, equal chords cut off equal arcs. Let each of the arcs $AB$, $BC$, $CD$ (not containing the other vertices) measure $\alpha$; then arc $DA$ measures $360^\circ-3\alpha$, with $0<\alpha<120^\circ$. A chord subtending an arc $\varphi$ has length $2R\sin\dfrac{\varphi}{2}$. Chord $AC$ subtends the arc $ABC$ of measure $2\alpha$, and chord $AD$ subtends $360^\circ-3\alpha$, so $AC=AD$ gives
+\[
+\sin\alpha=\sin\left(180^\circ-\dfrac{3\alpha}{2}\right)=\sin\dfrac{3\alpha}{2}.
+\]
+With $0<\alpha<120^\circ$, this means either $\alpha=\dfrac{3\alpha}{2}$ (impossible) or $\alpha+\dfrac{3\alpha}{2}=180^\circ$, i.e.\ $\alpha=72^\circ$. Then arc $DA=144^\circ>72^\circ$, so $DA$ is indeed the longest side: $A,B,C,D$ are four vertices of a regular pentagon.
+
+The inscribed angle $\angle ABC$ subtends the arc $ADC$ of measure $360^\circ-2\alpha=216^\circ$, so $\angle ABC=\angle BCD=108^\circ$, while $\angle BAD=\angle CDA=\dfrac{2\alpha}{2}=72^\circ$. The largest angle is $\boxed{108^\circ}$.

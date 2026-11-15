@@ -1,0 +1,6 @@
+Use $A=(0,0),B=(2r,0),C=(s,0),P=(0,p),Q=(0,q)$. Perpendicularity gives $pq=-2rs$. The circle through B,P,Q has constant term pq, so its other horizontal intercept is $R=(-s,0)$. Thus diagonal BR has fixed length $2r+s$, and quadrilateral area is $\dfrac{(2r+s)|p-q|}{2}$. Since p,q have opposite signs and fixed product, the minimum occurs at $p=-q=\sqrt{2rs}$. Hence $F(r,s)=\sqrt{2rs}$. Test $1\le r\le20$, $1\le s<2r$, retaining perfect squares $2rs$. The nonzero counts by r are: one each for $r=2,4,6,10,12,14,20$; three each for $r=8,16$; two for $r=9$; and five for $r=18$. The total is $\boxed{20}$. The computation audit lists all pairs.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair A=(0,0),B=(8,0),C=(2,0),P=(0,4),Q=(0,-4),R=(-2,0);draw(circle((3,0),5));draw(B--P--R--Q--cycle,blue);draw(P--C^^B--Q,dashed);draw(R--B^^P--Q,gray);label("$A$",A,(-1,-1));label("$B$",B,(1,0));label("$C$",C,(0,1));label("$P$",P,(0,1));label("$Q$",Q,(0,-1));label("$R$",R,(-1,0));
+\end{asy}
+

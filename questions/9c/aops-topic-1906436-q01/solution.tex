@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1906436_martian_music
+% Stable identity: aops-topic-1906436-q01
+Measure time in half-beats: a measure is $10$ units and the note lengths are $8,4,2,1$ units. Let $f(n)$ be the number of ways to fill $n$ units with notes. The first note has $9$ pitches and a length $\ell\in\{1,2,4,8\}$ with $\ell\le n$, and the rest is filled in $f(n-\ell)$ ways. So, with $f(0)=1$ and $f(m)=0$ for $m<0$,
+\[
+f(n)=9\bigl(f(n-1)+f(n-2)+f(n-4)+f(n-8)\bigr).
+\]
+This gives
+\[
+\begin{array}{c|cccccc}
+n&0&1&2&3&4&5\\\hline
+f(n)&1&9&90&891&8838&87642
+\end{array}
+\qquad
+\begin{array}{c|ccccc}
+n&6&7&8&9&10\\\hline
+f(n)&869130&8618967&85472424&847611378&8405577198
+\end{array}
+\]
+For example $f(4)=9(891+90+1)=8838$ and $f(10)=9(847611378+85472424+869130+90)=8405577198$.
+
+No note crosses the bar line, so the two measures are filled independently, and the number of two-measure pieces is
+\[
+f(10)^2=8405577198^2=\boxed{70653728031537531204}\approx7.07\times10^{19}.
+\]

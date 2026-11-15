@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h3181916_2021_abmc_online_november_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3181916-q15
+Order the sides $a\le b\le c$. Their condition is $(1+\dfrac{3}{a})(1+\dfrac{3}{b})(1+\dfrac{3}{c})=3$. A side $a=1$ is impossible; since all three factors are at most $1+\dfrac{3}{a}$, we have $a\le6$. If $b\ge32$, then $3=(1+\dfrac{3}{a})(1+\dfrac{3}{b})(1+\dfrac{3}{c})\le\dfrac{5}{2}(\dfrac{35}{32})^2=\dfrac{6125}{2048}<3$, a contradiction. Therefore $b\le31$. Solving the volume equation gives
+\[c=\dfrac{3(a+3)(b+3)}{2ab-3a-3b-9}.\]
+The following finite exact enumeration checks all possible ordered sides:
+\begin{verbatim}
+solutions=[]
+for a in range(2,7):
+    for b in range(a,32):
+        den=2*a*b-3*a-3*b-9
+        num=3*(a+3)*(b+3)
+        if den>0 and num%den==0 and num//den>=b:
+            c=num//den
+            solutions.append((a*b*c,a,b,c))
+assert max(solutions)==(9120,2,16,285)
+\end{verbatim}
+The maximizing box has sides $2,16,285$, and indeed $5\cdot19\cdot288=3\cdot9120$. The greatest volume is $\boxed{9120}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(5,0),C=(6,1),D=(1,1);draw(A--B--C--D--cycle);draw((A+(0,2))--(B+(0,2))--(C+(0,2))--(D+(0,2))--cycle);draw(A--(A+(0,2))^^B--(B+(0,2))^^C--(C+(0,2))^^D--(D+(0,2)));label("$a$",(A+B)/2,S);label("$b$",(B+C)/2,SE);label("$c$",A+(0,1),W);label("Not to scale",(3,-1));
+\end{asy}

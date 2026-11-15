@@ -1,0 +1,13 @@
+Every strip length is at most $2016$, so the total covered area is at most
+\[
+1+2+\cdots+2016=\dfrac{2016\cdot2017}{2}.
+\]
+Hence $2016n$ is at most this quantity and $n\le1008$.
+
+To attain $1008$, use $1008$ columns of height $2016$. For each $k=1,\ldots,1007$, split column $k$ into vertical strips of lengths $k$ and $2016-k$. Leave the last column as one strip of length $2016$. Every length from $1$ to $2016$ except $1008$ occurs exactly once. This tiles the board with distinct lengths, proving $\boxed{n=1008}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=0;x<3;++x){int k=x+1;filldraw(box((x,0),(x+1,k)),lightblue,black);filldraw(box((x,k),(x+1,8)),lightyellow,black);label(string(k),(x+.5,k/2.0));label(string(8-k),(x+.5,(8+k)/2.0));}filldraw(box((3,0),(4,8)),lightgreen,black);label("8",(3.5,4));label("smaller analogue: $8$ by $4$",(2,-.5));
+\end{asy}

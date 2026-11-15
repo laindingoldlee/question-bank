@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2471091_similar_to_langleys_adventitious_angles
+% Stable identity: aops-topic-2471091-q01
+Here $\angle B=\angle C=80^\circ$ and $\angle A=20^\circ$. Take $BC=1$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(1,0),A=(0.5,0.5*tan(80*pi/180));pair E=extension(B,B+dir(70),A,C),D=extension(C,C+dir(120),A,B);
+draw(A--B--C--cycle);draw(B--E);draw(C--D);draw(D--E,dashed);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,W);label("$E$",E,E);
+\end{asy}
+
+In $\triangle BCE$: $\angle BEC=30^\circ$, so $BE=\dfrac{\sin80^\circ}{\sin30^\circ}=2\sin80^\circ$. In $\triangle BCD$: $\angle BDC=40^\circ$, so $BD=\dfrac{\sin60^\circ}{\sin40^\circ}$.
+
+In $\triangle BDE$, $\angle DBE=10^\circ$. Let $\angle DEB=x$, so $\angle BDE=170^\circ-x$, and by the law of sines
+\[\dfrac{\sin(170^\circ-x)}{\sin x}=\dfrac{BE}{BD}=\dfrac{2\sin80^\circ\sin40^\circ}{\sin60^\circ}.\]
+From $\sin\theta\sin(60^\circ-\theta)\sin(60^\circ+\theta)=\dfrac14\sin3\theta$ with $\theta=20^\circ$, $\sin20^\circ\sin40^\circ\sin80^\circ=\dfrac{\sqrt3}8$, so the right side equals $\dfrac{\sqrt3}{4\sin20^\circ}\cdot\dfrac2{\sqrt3}=\dfrac1{2\sin20^\circ}=\dfrac{\sin150^\circ}{\sin20^\circ}$. Thus $x=20^\circ$ works, and it is the only solution because $\dfrac{\sin(170^\circ-x)}{\sin x}=\sin170^\circ\cot x-\cos170^\circ$ is strictly decreasing on $(0^\circ,170^\circ)$. So $\angle DEB=\boxed{20^\circ}$.

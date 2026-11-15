@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2300050_tricky_recursive_relationship
+% Stable identity: aops-topic-2300050-q01
+Let $p_k=a^k+b^k+c^k$ and let $e_1=a+b+c$, $e_2=ab+bc+ca$, $e_3=abc$. Then $a,b,c$ are the roots of $t^3-e_1t^2+e_2t-e_3=0$.
+
+From $p_1^2=p_2+2e_2$: $1=2+2e_2$, so $e_2=-\dfrac12$.
+
+Multiplying $t^3=e_1t^2-e_2t+e_3$ by $t^{k-3}$ and adding the equations for $t=a,b,c$ gives Newton's recurrence
+\[p_k=e_1p_{k-1}-e_2p_{k-2}+e_3p_{k-3}\qquad(k\ge3),\quad p_0=3.\]
+For $k=3$: $3=1\cdot2+\dfrac12\cdot1+3e_3$, so $e_3=\dfrac16$.
+
+For $k=4$:
+\[p_4=1\cdot3+\dfrac12\cdot2+\dfrac16\cdot1=\boxed{\dfrac{25}{6}}.\]

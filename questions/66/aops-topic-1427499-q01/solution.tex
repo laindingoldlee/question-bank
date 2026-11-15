@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1427499_inscribed_sphere_question
+% Stable identity: aops-topic-1427499-q01
+Cut the cone by a plane through its axis. The section is the isosceles triangle $VAB$ with base $AB=12$, height $VM=10$ and slant sides $VA=VB=\sqrt{6^2+10^2}=2\sqrt{34}$, and the sphere appears as the incircle of this triangle, with centre $O$ on $VM$ and radius $r$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(-6,0),B=(6,0),V=(0,10),O=(0,3.3971),M=(0,0);
+real r=3.3971;
+draw(A--B--V--cycle,linewidth(0.9));
+draw(circle(O,r),blue);
+pair F=V+dot(O-V,unit(A-V))*unit(A-V);
+draw(V--M,gray+dashed); draw(O--F,red); draw(O--M,red);
+draw(ra(M,B-M,V-M,0.5)); draw(ra(F,V-F,O-F,0.5));
+dot(O); dot(F);
+label("$V$",V,N); label("$A$",A,SW); label("$B$",B,SE); label("$M$",M,S); label("$O$",O,E); label("$F$",F,W);
+label("$r$",(O+M)/2,E,red); label("$r$",(O+F)/2,N,red);
+label("$6$",(3,0),S); label("$2\sqrt{34}$",(3,5),NE);
+draw((-7.3,0)--(-7.3,10),Arrows(4)); draw((-7.6,10)--(-0.3,10),dotted); draw((-7.6,0)--(-6.3,0),dotted); label("$10$",(-7.3,5),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The area of the triangle is $\dfrac{1}{2}\cdot12\cdot10=60$, and its semiperimeter is $\dfrac{12+4\sqrt{34}}{2}=6+2\sqrt{34}$. Since area $=r\cdot$ semiperimeter,
+\[
+r=\dfrac{60}{6+2\sqrt{34}}=\dfrac{30}{3+\sqrt{34}}=\dfrac{30(\sqrt{34}-3)}{34-9}=\dfrac{6\sqrt{34}-18}{5}.
+\]
+So $a=6$, $b=34$, $c=18$, $d=5$ (the numbers $6,18,5$ have no common factor, and $34$ is square-free), and
+\[
+\dfrac{ab}{cd}=\dfrac{204}{90}=\dfrac{34}{15}.
+\]
+The requested sum is $34+15=\boxed{49}$.

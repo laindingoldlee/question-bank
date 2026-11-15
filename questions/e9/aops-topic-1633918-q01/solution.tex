@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1633918_april_fools_mock_amc_8_23_circle_geo
+% Stable identity: aops-topic-1633918-q01
+The radius $ON$ is perpendicular to the tangent $PN$, so triangle $PNO$ is right-angled at $N$ and $PN=\sqrt{13^2-5^2}=12$. Also $PQ=PO+OQ=13+5=18$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),P=(-13,0),Q=(5,0);
+pair Nn=5*dir(180-aCos(5/13));
+pair R=P+dot(Q-P,unit(Nn-P))*unit(Nn-P);
+draw(circle(O,5));
+draw(P--Q,linewidth(0.8));draw(P--R,linewidth(0.8));draw(R--Q,linewidth(0.8));
+draw(O--Nn,blue+dashed);
+pair u=unit(P-Nn),w=unit(O-Nn);draw(Nn+0.6*u--Nn+0.6*u+0.6*w--Nn+0.6*w);
+pair u2=unit(P-R),w2=unit(Q-R);draw(R+0.6*u2--R+0.6*u2+0.6*w2--R+0.6*w2);
+dot(O);
+label("$O$",O,S);label("$P$",P,W);label("$Q$",Q,SE);label("$N$",Nn,NW);label("$R$",R,N);
+label("$5$",(O+Nn)/2,E,blue);label("$13$",(P+O)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangles $PNO$ and $PRQ$ both have a right angle ($N$ and $R$) and share the angle at $P$, so they are similar with ratio $\dfrac{PQ}{PO}=\dfrac{18}{13}$:
+\[
+PR=\dfrac{18}{13}\cdot PN=\dfrac{216}{13},\qquad RQ=\dfrac{18}{13}\cdot ON=\dfrac{90}{13}.
+\]
+Since $R$ lies beyond $N$ on ray $PN$ ($PR>PN$), $NR=PR-PN=\dfrac{216-156}{13}=\dfrac{60}{13}$. Hence
+\[
+NR+RQ=\dfrac{60}{13}+\dfrac{90}{13}=\boxed{\textbf{(A)}\ \dfrac{150}{13}}.
+\]

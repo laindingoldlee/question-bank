@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2267740_help_with_counting_problem_bijections
+% Stable identity: aops-topic-2267740-q01
+\textbf{(a)} Only the circular order of the six points $C,O,P,S,E,T$ matters, and all $5!=120$ circular orders of these six points are equally likely (each arises from the same number of arrangements of all nine points).
+
+\textbf{When are the triangles disjoint?} If $C,O,P$ are consecutive among the six points, then $S,E,T$ are consecutive too, and a chord separating the two arcs puts the triangles on opposite sides of it: they do not meet. Otherwise, going around the circle we meet points of the two triangles alternately at least four times, so there are $X_1,X_2\in\{C,O,P\}$ and $Y_1,Y_2\in\{S,E,T\}$ in the circular order $X_1,Y_1,X_2,Y_2$. Then the chords $X_1X_2$ and $Y_1Y_2$ cross, and these chords are sides of the triangles, so the triangles intersect.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+void pts(pair c, real[] ang, string[] nm, pen[] col){
+  for(int i=0;i<ang.length;++i){ pair p=c+dir(ang[i]); dot(p,col[i]); label("$"+nm[i]+"$",c+1.17*dir(ang[i]),col[i]); }
+}
+pair c1=(0,0), c2=(3,0);
+draw(circle(c1,1)); draw(circle(c2,1));
+draw(c1+dir(40)--c1+dir(90)--c1+dir(140)--cycle,blue+linewidth(0.8));
+draw(c1+dir(220)--c1+dir(270)--c1+dir(320)--cycle,red+linewidth(0.8));
+draw(c2+dir(90)--c2+dir(210)--c2+dir(330)--cycle,blue+linewidth(0.8));
+draw(c2+dir(30)--c2+dir(150)--c2+dir(270)--cycle,red+linewidth(0.8));
+pts(c1,new real[]{90,140,40,220,270,320},new string[]{"C","O","P","S","E","T"},new pen[]{blue,blue,blue,red,red,red});
+pts(c2,new real[]{90,210,330,150,270,30},new string[]{"C","O","P","S","E","T"},new pen[]{blue,blue,blue,red,red,red});
+label("disjoint",(0,-1.45)); label("intersecting",(3,-1.45));
+\end{asy}
+
+\textbf{Counting.} Circular orders with $C,O,P$ consecutive: arrange the block $\{C,O,P\}$ and the block $\{S,E,T\}$ around the circle (one way), then order inside each block: $3!\cdot3!=36$. So
+\[P(\text{disjoint})=\dfrac{36}{120}=\dfrac{3}{10},\qquad P(\text{intersect})=1-\dfrac{3}{10}=\boxed{\dfrac{7}{10}}.\]
+
+\textbf{(b)} The total $8!$ counts circular arrangements of all nine points, so the favourable count must also place $M$, $U$, $R$ as distinct points among the others. Once the six points $C,O,P,S,E,T$ are in a fixed circular order, the three other letters can be inserted in $6\cdot7\cdot8=336$ ways (several letters may go into the same gap, and their order matters), not $\dbinom63=20$. With $336$:
+\[\dfrac{36\cdot336}{8!}=\dfrac{12096}{40320}=\dfrac{3}{10},\]
+in agreement with (a). (The student's expression also gives the probability of \emph{not} intersecting, so the intersecting probability is $1$ minus it.)

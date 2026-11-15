@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1613384_sort_of_a_hard_question
+% Stable identity: aops-topic-1613384-q01
+Work modulo $1000=8\cdot125$, and use the Chinese remainder theorem: a residue mod $1000$ is determined by its residues mod $8$ and mod $125$.
+
+\textbf{Two facts.} (i) $2$ is a primitive root mod $125$: its order divides $100$, and $2^{50}\equiv-1$, $2^{20}\equiv76\not\equiv1\pmod{125}$, so the order is $100$. (ii) $3$ is also a primitive root mod $125$ ($3^{50}\equiv-1$ and $3^{20}\equiv26$), while $7$ has order $20$ mod $125$ ($7^4=2401\equiv26$, $7^{20}\equiv1$, $7^{10}\equiv-1$).
+
+\textbf{$x=0,5$.} $0^y=0$ gives $\{0\}$. $5^y\bmod1000$ is $5,25,125,625,125,625,\dots$, giving $\{5,25,125,625\}$. No other base gives a multiple of $5$, so these $5$ values are counted only here.
+
+\textbf{$x=2,4,6,8$ (even, not multiples of $5$).} For $y\ge3$, $2^y\equiv0\pmod8$ and $2^y \bmod 125$ runs through all $100$ units mod $125$. So $\{2^y\}$ consists of $2$, $4$ and the $100$ residues $\equiv0\pmod8$ that are prime to $5$: $102$ values. The powers $4^y=2^{2y}$ and $8^y=2^{3y}$ are among them. For $6^y$: if $y\ge3$, then $6^y\equiv0\pmod8$ and is prime to $5$, so it is already counted; $y=1,2$ give $6$ and $36$, which are new (they are $\equiv6$ and $\equiv4\pmod8$, and the only listed residues not divisible by $8$ are $2$ and $4$). So the even bases give $102+2=104$ values.
+
+\textbf{$x=1,3,7,9$ (units).} The powers of $3$ mod $1000$ form a cyclic group of order $\operatorname{lcm}(2,100)=100$ (the order of $3$ mod $8$ is $2$); it contains $1=3^{100}$ and all powers of $9=3^2$. The powers of $7$ form a group of order $\operatorname{lcm}(2,20)=20$. Since $7\equiv 3^m\pmod{125}$ for some $m$, the power $7^k$ agrees mod $125$ with $3^{mk}$; mod $8$, $7^k\equiv7$ for odd $k$, which is not a power of $3$ mod $8$ (those are $1,3$), while for even $k$, $7^k\equiv1\equiv3^{mk}\pmod 8$ because $mk$ is even. So exactly the $10$ powers $7^k$ with $k$ odd are new. The units give $100+10=110$ values.
+
+\textbf{Total.} The four groups of values are disjoint (multiples of $5$; even non-multiples of $5$; units), so the number of values is
+\[
+5+104+110=\boxed{219}.
+\]

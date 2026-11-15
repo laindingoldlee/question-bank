@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2489361_some_fun_problems
+% Stable identity: aops-topic-2489361-q05
+Place the centre $O$ of the hexagon at the origin with
+\[A=(2,0),\ B=(1,\sqrt3),\ C=(-1,\sqrt3),\ E=(-2,0),\ G=(-1,-\sqrt3),\ I=(1,-\sqrt3).\]
+$AE$ and $BG$ are long diagonals through $O$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(2,0),B=(1,sqrt(3)),C=(-1,sqrt(3)),Ee=(-2,0),G=(-1,-sqrt(3)),I=(1,-sqrt(3)),O=(0,0);
+pair P=(0,-2*sqrt(3)/3),Q=(-0.5,-sqrt(3)/2);
+fill(A--O--Q--P--cycle,rgb(1,0.85,0.6));
+draw(A--B--C--Ee--G--I--cycle,linewidth(0.8));
+draw(B--A--G--cycle,blue); draw(A--I--Ee--cycle,red);
+dot(O); dot(P); dot(Q);
+label("$A$",A,E); label("$B$",B,NE); label("$C$",C,NW); label("$E$",Ee,W); label("$G$",G,SW); label("$I$",I,SE);
+label("$O$",O,N); label("$P$",P,S); label("$Q$",Q,W);
+\end{asy}
+
+Triangle $AIE$ lies on or below the line $AE$ (the $x$-axis), and the part of triangle $BAG$ below the $x$-axis is triangle $OAG$, because side $BG$ crosses the $x$-axis at $O$. So the common region is the part of triangle $OAG$ inside triangle $AIE$.
+\begin{itemize}
+\item Line $AI$ is $\sqrt3x-y=2\sqrt3$; at $O$ and $G$ the left side is $0$ and $-\sqrt3+\sqrt3=0$, both less than $2\sqrt3$, as at $E$. So triangle $OAG$ lies entirely on the same side of $AI$ as triangle $AIE$.
+\item Line $IE$ is $y=-\dfrac{x+2}{\sqrt3}$. It meets $AG$ (that is, $y=\dfrac{x-2}{\sqrt3}$) at $P=\left(0,-\dfrac{2\sqrt3}{3}\right)$ and $OG$ (that is, $y=\sqrt3x$) at $Q=\left(-\dfrac12,-\dfrac{\sqrt3}{2}\right)$, and it separates $G$ from $O$ and $A$.
+\end{itemize}
+So the common region is the quadrilateral $AOQP$, which is triangle $OAG$ with triangle $GQP$ cut off. By the shoelace formula,
+\[[OAG]=\dfrac12\left|2\cdot(-\sqrt3)-0\cdot(-1)\right|=\sqrt3,\qquad[GQP]=\dfrac12\left|\dfrac12\cdot\dfrac{\sqrt3}{3}-\dfrac{\sqrt3}{2}\cdot1\right|=\dfrac{\sqrt3}{6},\]
+using the vectors $Q-G=\left(\dfrac12,\dfrac{\sqrt3}{2}\right)$ and $P-G=\left(1,\dfrac{\sqrt3}{3}\right)$. The area is
+\[\sqrt3-\dfrac{\sqrt3}{6}=\boxed{\dfrac{5\sqrt3}{6}}.\]

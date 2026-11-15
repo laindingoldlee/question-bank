@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1889248_arithmetic_problem
+% Stable identity: aops-topic-1889248-q01
+The condition is $1000\mid1978^n-1978^m=1978^m\left(1978^{\,n-m}-1\right)$, with $1000=8\cdot125$.
+
+\textbf{The factor $8$.} The second factor is odd, so $8\mid1978^m=2^m\cdot989^m$, which means $m\ge3$.
+
+\textbf{The factor $125$.} Since $5\nmid1978$, we need $125\mid1978^k-1$ with $k=n-m$. Now $1978=15\cdot125+103$, so we need $103^k\equiv1\pmod{125}$.
+\begin{itemize}
+\item Modulo $5$: $103\equiv3$, and the powers of $3$ modulo $5$ are $3,4,2,1$, so $4\mid k$.
+\item Write $k=4j$. Modulo $125$, $103\equiv-22$, $22^2=484\equiv-16$, so $103^4\equiv(-16)^2=256\equiv6$. We need $6^j\equiv1\pmod{125}$.
+\item By the binomial theorem $6^{25}=(1+5)^{25}=1+25\cdot5+\dbinom{25}{2}5^2+\cdots\equiv1\pmod{125}$, since every term after the first is a multiple of $125$. So the order of $6$ modulo $125$ divides $25$. It is not $1$, and $6^5=7776=62\cdot125+26\equiv26$, so it is not $5$. Hence the order is $25$ and $25\mid j$.
+\end{itemize}
+So $100\mid k$, and conversely $k=100$ works. Therefore $n-m\ge100$, and
+\[
+m+n=2m+(n-m)\ge6+100=106,
+\]
+with equality exactly for $m=3$, $n=103$. The answer is $\boxed{(m,n)=(3,103)}$, with $m+n=106$.

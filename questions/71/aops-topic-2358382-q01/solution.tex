@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2358382_a_inequalityequation_word_problem
+% Stable identity: aops-topic-2358382-q01
+\textbf{(a)} The new room is a rectangle with sides $2x$ and $x-5$ (so $x>5$), and its perimeter is
+\[2\bigl(2x+(x-5)\bigr)=6x-10.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real x=13;
+draw((0,0)--(x,0)--(x,x)--(0,x)--cycle,dashed+gray);
+draw((0,0)--(2x,0)--(2x,x-5)--(0,x-5)--cycle,linewidth(1));
+label("$x$",(0,x/2+2),W,gray); label("$x$",(x/2,x),N,gray);
+label("$2x$",(x,0),S); label("$x-5$",(2x,(x-5)/2),E);
+label("old room",(x/2,x-2),gray+fontsize(8pt)); label("new room",(1.5*x,(x-5)/2),fontsize(8pt));
+\end{asy}
+
+The budget does not fix the perimeter; it only gives a range of allowed values, so the situation is described by a (compound) \textbf{inequality}:
+\[55\le6x-10\le90.\]
+Adding $10$ gives $65\le6x\le100$, so
+\[\boxed{\dfrac{65}{6}\le x\le\dfrac{50}{3}},\]
+that is, the original side was between about $10.83$ and $16.67$ feet (and the condition $x>5$ holds automatically). If ``between $55$ and $90$'' is meant to exclude the end values, the inequalities are strict: $55<6x-10<90$.
+
+\textbf{(b)} The cost is $2.60(6x-10)$ dollars, which is least when the perimeter is $55$ feet and greatest when it is $90$ feet: from $2.60\cdot55=\boxed{\$143}$ to $2.60\cdot90=\boxed{\$234}$.

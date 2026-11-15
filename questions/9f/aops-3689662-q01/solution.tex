@@ -1,0 +1,6 @@
+$z^2+4=(u^2-v^2+4)+2uvi$, so the value is real exactly when $uv=0$. If $v=0$, the slice is $y=u^2+4$; if $u=0$, it is $y=4-v^2$. The roots on the latter slice are $v=\pm2$, or $\boxed{z=\pm2i}$. A general complex input and complex output require four real coordinates; these two parabolas represent only the slice where the output is real.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+real f(real x){return x*x+4;}real g(real x){return 4-x*x;}draw((-2.5,0)--(2.5,0),gray);draw((0,-1)--(0,8),gray);draw(graph(f,-2,2),blue);label("real input $u$",(0,8.7));draw(shift(7,0)*graph(g,-2.2,2.2),red);draw((4.5,0)--(9.5,0),gray);draw((7,-1)--(7,5),gray);label("imaginary input $iv$",(7,-2));label("$v=-2$",(5,-.4),(0,-1));label("$v=2$",(9,-.4),(0,-1));
+\end{asy}
+

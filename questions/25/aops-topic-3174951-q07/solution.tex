@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3174951_2019_dmc_individual_theme_round__deerfield_math_competition__shrek
+% Stable identity: aops-topic-3174951-q07
+The tangent at $(t,t^2)$ is $y=2tx-t^2$, with $x$-intercept $\dfrac{t}{2}$. Thus each step halves the positive starting abscissa. The corresponding right triangle has base $\dfrac{t}{2}$ and height $t^2$, so its area is $\dfrac{t^3}{4}$. For $t=1,\dfrac{1}{2},\dfrac{1}{4}$, the areas are $\dfrac{1}{4},\dfrac{1}{32},\dfrac{1}{256}$, whose sum is $\boxed{\dfrac{73}{256}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+import graph;real f(real x){return x*x;}draw(graph(f,0,1.15));draw((0,0)--(1.2,0),Arrow);for(int j=0;j<3;++j){real t=1/(2^j);draw((t,0)--(t,t*t)--(t/2,0),blue);label("$P_{"+string(2*j)+"}$",(t,0),S);label("$P_{"+string(2*j+1)+"}$",(t,t*t),NW);}label("$P_6$",(.125,0),S);
+\end{asy}

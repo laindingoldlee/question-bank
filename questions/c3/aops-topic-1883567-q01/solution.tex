@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1883567_5yx_jhmmc
+% Stable identity: aops-topic-1883567-q01
+If the side changes from $s$ to $1.2s$, the surface area $6s^2$ is multiplied by $1.2^2=1.44$ and the volume $s^3$ by $1.2^3=1.728$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+void drawcube(pair o,real s,string lab){pair d=(0.45*s,0.35*s);
+draw(shift(o)*((0,0)--(s,0)--(s,s)--(0,s)--cycle),linewidth(0.9));
+draw(o+(0,s)--o+(0,s)+d--o+(s,s)+d--o+(s,s));draw(o+(s,0)--o+(s,0)+d--o+(s,s)+d);
+draw(o+d--o+(0,s)+d,dashed);draw(o+d--o+(s,0)+d,dashed);draw(o--o+d,dashed);
+label(lab,o+(s/2,0),S);}
+drawcube((0,0),2,"$s$");
+drawcube((4,0),2.4,"$1.2s$");
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $x=44$ and $y=72.8$, and
+\[
+5(y-x)=5\cdot28.8=\boxed{144}.
+\]

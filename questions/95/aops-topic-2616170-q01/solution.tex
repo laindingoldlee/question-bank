@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2616170_jmpsc_accuracy_problem_3
+% Stable identity: aops-topic-2616170-q01
+All sides of a regular octagon are equal, so each side has length $\dfrac{90}{3}=30$. The square has side $30$, so its area is $30^2=\boxed{900}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real s=30; real R=s/(2*Sin(22.5));
+pair[] V; for(int i=0;i<8;++i) V.push(R*dir(247.5+45*i));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--V[7]--cycle,linewidth(0.8));
+pair P=V[0],Q=V[1]; pair d=(0,-s);
+filldraw(P--Q--(Q+d)--(P+d)--cycle,lightgray,linewidth(0.8));
+label("$30$",(P+Q)/2,N); label("$30$",(Q+Q+d)/2,E);
+label("square",(P+Q+d/2*2)/2+(0,0),fontsize(9pt));
+\end{asy}

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3289568_how_many_isosceles_triangles
+% Stable identity: aops-topic-3289568-q01
+From any vertex the squared distances to the other seven are $1,1,2,2,3,3,4$. There are three pairs at equal distance, each defining an isosceles apex. Their base squared lengths are respectively $2,4,2$, so none is equilateral and no triangle has two counted apexes. The answer is $8\cdot3=\boxed{24}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(3,0),C=(4,1),D=(1,1),Aa=(0,4.24),Bb=(3,4.24),Cc=(4,5.24),Dd=(1,5.24);draw(A--B--C--D--cycle^^Aa--Bb--Cc--Dd--cycle^^A--Aa^^B--Bb^^C--Cc^^D--Dd);draw(B--D^^B--Aa^^D--Aa,blue);label("$1$",A--B,S);label("$1$",B--C,SE);label("$\sqrt2$",A--Aa,W);
+\end{asy}

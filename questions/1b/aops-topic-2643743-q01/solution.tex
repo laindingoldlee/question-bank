@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2643743_doubt_about_geometric_sequence_and_triangle
+% Stable identity: aops-topic-2643743-q01
+The largest side is $ar^2$, so the only triangle inequality that can fail is
+\[a+ar>ar^2\iff r^2-r-1<0\iff r<\dfrac{1+\sqrt5}{2}.\]
+(The other two, $a+ar^2>ar$ and $ar+ar^2>a$, hold automatically for $r\ge1$.) So the possible ratios are
+\[\boxed{1\le r<\dfrac{1+\sqrt5}{2}},\]
+and the triangle need not be equilateral: for example $r=\dfrac32$ gives the triangle with sides $4,6,9$, since $4+6>9$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0),Q=(9,0),R=(61/18,sqrt(16-(61/18)^2));
+draw(P--Q--R--cycle,linewidth(0.8));
+label("$9$",(P+Q)/2,S);label("$4$",(P+R)/2,NW);label("$6$",(Q+R)/2,NE);
+\end{asy}

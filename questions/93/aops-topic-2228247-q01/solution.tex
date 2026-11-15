@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2228247_cyclic_quadrilaterals
+% Stable identity: aops-topic-2228247-q01
+The angles of a quadrilateral add up to $360^\circ$, so
+\[\angle DAB+\angle ADC=360^\circ-140^\circ-110^\circ=110^\circ .\]
+$O$ lies on the bisectors of the angles at $A$ and $D$, so in triangle $AOD$
+\[\angle AOD=180^\circ-\dfrac{1}{2}\left(\angle DAB+\angle ADC\right)=180^\circ-55^\circ=\boxed{125^\circ}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0);
+pair B=2.6*dir(70); pair C=B+3*dir(30); real q=C.y/Sin(40); pair D=C+q*dir(-40);
+pair O=extension(A,A+dir(35),D,D+dir(160));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--O,blue); draw(D--O,blue);
+dot(O); label("$O$",O,N);
+label("$A$",A,SW);label("$B$",B,NW);label("$C$",C,NE);label("$D$",D,SE);
+label("$140^\circ$",B+0.55*dir(320),fontsize(8pt)); label("$110^\circ$",C+0.6*dir(265),fontsize(8pt));
+label("$35^\circ$",A+1.1*dir(17.5),blue+fontsize(8pt)); label("$20^\circ$",D+1.5*dir(170),blue+fontsize(8pt));
+\end{asy}
+
+(The sketch uses $\angle DAB=70^\circ$ and $\angle ADC=40^\circ$; only their sum matters.)
+
+\textbf{Why the circle is impossible.} If $ABCD$ were inscribed in a circle with centre $O$, then $OA=OD$, so $\angle DAO=\angle ADO$, and the given conditions would force $\angle DAB=\angle ADC$. But a cyclic quadrilateral has $\angle DAB=180^\circ-\angle BCD=70^\circ$ and $\angle ADC=180^\circ-\angle ABC=40^\circ$, which are different. (The given conditions say that $O$ lies on two angle bisectors, as for the centre of a circle \emph{inscribed} in $ABCD$.)

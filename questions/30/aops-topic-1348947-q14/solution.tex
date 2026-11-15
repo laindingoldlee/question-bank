@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1348947_problem_compilation
+% Stable identity: aops-topic-1348947-q14
+\textbf{Structure of the solutions.} Let $(a,b)$ be a pair of nonnegative integers, not both $0$, with $\dfrac{a^2+b^2}{ab+1}=k$ an integer, and $a\ge b$. Then $a$ is a root of $t^2-kb\,t+b^2-k=0$, whose other root is $a'=kb-a=\dfrac{b^2-k}{a}$ (an integer).
+\begin{itemize}
+\item $a'<b$: $a'=\dfrac{b^2-k}{a}<\dfrac{b^2}{a}\le b$ (if $b=0$ the pair is $(a,0)$ with $k=a^2$, see below).
+\item $a'\ge0$: if $a'\le-1$, then $a'^2-kba'+b^2-k\ge a'^2+kb+b^2-k>0$ (as $b\ge1$), contradicting that $a'$ is a root.
+\end{itemize}
+So $(a,b)\mapsto(b,a')$ gives a solution with the same $k$ and a smaller larger entry. Repeating, we reach a pair $(m,0)$, and then $k=\dfrac{m^2}{1}=m^2$. Running the steps backwards, every solution with $k=m^2$ consists of two consecutive terms of the sequence
+\[
+x_0=0,\quad x_1=m,\quad x_{j+1}=m^2x_j-x_{j-1}:\qquad 0,\ m,\ m^3,\ m^5-m,\ m^7-2m^3,\ \dots,
+\]
+and conversely consecutive terms are solutions (the relation $x_{j+1}^2+x_j^2=m^2(x_{j+1}x_j+1)$ is preserved by the step and holds for $(m,0)$).
+
+\textbf{The search.} So $a=x_j$ for some $m\ge1$, $j\ge1$, with $b=x_{j-1}$ or $x_{j+1}$, and $b\ge1$.
+\begin{itemize}
+\item $j=1$: $a=m$, and the only positive partner is $b=m^3$, a cube.
+\item $j=2$: $a=m^3$ is a cube.
+\item $j\ge3$: $x_3=m^5-m$, and for $m\ge4$ already $x_3\ge1020$, so only $m=2,3$ matter. For $m=2$ the sequence is $0,2,8,30,112,418,1560,\dots$; for $m=3$ it is $0,3,27,240,2133,\dots$
+\end{itemize}
+The three-digit candidates are $112$ (partners $30$, $418$), $418$ (partners $112$, $1560$) and $240$ (partners $27$, $2133$). None of $112,418,240$ is a cube, and $418$ has the non-cube partner $112$: indeed $\dfrac{418^2+112^2}{418\cdot112+1}=\dfrac{187268}{46817}=4$. The largest is $a=\boxed{418}$.

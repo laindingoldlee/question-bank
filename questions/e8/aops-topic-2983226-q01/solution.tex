@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2983226_circles_circles_circles
+% Stable identity: aops-topic-2983226-q01
+Since $OQ\perp PQ$, $\cos\angle OPQ=\dfrac{PQ}{OP}$ with $PQ=\sqrt{144-108}=6$, so $\angle OPQ=60^\circ$ and the bisector makes $30^\circ$ with $PO$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=12,r=6*sqrt(3);pair O=(0,0),P=(-12,0);pair Q=r*dir(150);
+draw(circle(O,r));draw(circle(O,R),gray);draw(P--Q);draw(O--Q,dashed);draw(O--P,dashed);
+pair d=dir(-30);pair U=P+30*d;
+path bis=P--(P+30*dir(30));
+pair[] I=intersectionpoints(bis,circle(O,r));draw(P--I[1]);
+pair Fo=P+dot(O-P,dir(30))*dir(30);draw(O--Fo,dotted);
+dot(O);dot(P);dot(Q);dot(I[0]);dot(I[1]);
+label("$O$",O,SE);label("$P$",P,W);label("$Q$",Q,N);label("$\omega_1$",r*dir(250),S);
+\end{asy}
+
+The distance from $O$ to the bisector is $OP\sin30^\circ=6$. The chord it cuts from $\omega_1$ has length $x=2\sqrt{(6\sqrt3)^2-6^2}=2\sqrt{72}$, so $x^2=4\cdot72=\boxed{288}$.

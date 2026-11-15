@@ -1,0 +1,7 @@
+The diagonal of the $a$ by $b$ base has length $d$ with $d^2=a^2+b^2$. That base diagonal and the vertical edge $c$ are perpendicular, so the space diagonal $D$ satisfies $D^2=d^2+c^2=a^2+b^2+c^2$. In orthogonal coordinates, project a point onto the first $n-1$ coordinate directions. Its projection-distance squared is $x_1^2+\cdots+x_{n-1}^2$ by induction; the remaining displacement $x_n$ is perpendicular. Another application of Pythagoras gives distance $\boxed{\sqrt{x_1^2+\cdots+x_n^2}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0),A=(4,0),B=(6,1.5),C=(2,1.5),v=(0,3);draw(O--A--B--C--cycle);draw((O+v)--(A+v)--(B+v)--(C+v)--cycle);draw(O--(O+v));draw(A--(A+v));draw(B--(B+v));draw(C--(C+v),dashed);draw(O--B,blue+dashed);draw(O--(B+v),red);label("$a$",(O+A)/2,(0,-1));label("$b$",(A+B)/2,(1,0));label("$c$",B+v/2,(1,0));label("$D$",(O+B+v)/2,(0,1));label("$O$",O,(-1,-1));
+\end{asy}

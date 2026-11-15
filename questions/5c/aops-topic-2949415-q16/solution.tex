@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2949415_2021_emcc_guts_round_p13_p24_exeter_math_club_competition
+% Stable identity: aops-topic-2949415-q16
+The minimizing number uses consecutive primes, with nonincreasing positive exponents: moving an exponent to a smaller unused prime, or swapping an inverted pair, reduces the number without changing its divisor count. Thus enumerate multiplicative partitions of the desired divisor count, using factors one larger than the successive exponents. The following complete recurrence gives $f(200)=498960$ and $f(50)=6480$, hence the quotient is $\boxed{77}$.
+\begin{verbatim}
+from functools import lru_cache
+primes=[2,3,5,7,11,13,17,19]
+@lru_cache(None)
+def f(d,i=0,cap=200):
+    if d==1: return 1
+    return min((primes[i]**(v-1)*f(d//v,i+1,v-1)
+                for v in range(2,min(d,cap+1)+1)
+                if d%v==0),default=float('inf'))
+assert f(200)==498960 and f(50)==6480
+assert f(200)//f(50)==77
+\end{verbatim}

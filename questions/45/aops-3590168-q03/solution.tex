@@ -1,0 +1,6 @@
+The kth line meets the previous k-1 lines in at most k-1 distinct interior points, so it adds at most k regions. The total is at most $1+1+2+\cdots+6=\boxed{22}$. Choose six nonparallel lines with all pairwise intersections inside the circle and no three concurrent; small generic perturbations of six diameters achieve this, attaining every increment.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+draw(circle((0,0),3));for(int i=0;i<6;++i){pair u=dir(25*i+7),v=(.012*i*i-.09)*(rotate(90)*u);real h=sqrt(9-dot(v,v));draw(v-h*u--v+h*u,blue);}label("six lines in general position",(0,-3.5));
+\end{asy}
+

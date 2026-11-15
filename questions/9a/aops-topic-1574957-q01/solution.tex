@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h1574957_fun_trig_problem
+% Stable identity: aops-topic-1574957-q01
+\textbf{Equal sines.} Let $\theta=\angle APD=\angle BPC$ (vertical angles). Note that $\sin102^\circ=\sin78^\circ$, since the angles are supplementary.
+
+\textbf{Triangle $APD$.} Here $\angle ADP=\angle ADB=78^\circ$, and the law of sines gives
+\[
+\dfrac{AP}{\sin78^\circ}=\dfrac{AD}{\sin\theta}\qquad\Longrightarrow\qquad\sin\theta=\dfrac{AD\sin78^\circ}{AP}=\dfrac{2\sin78^\circ}{3}.
+\]
+
+\textbf{Triangle $BPC$.} Here $\angle BCP=\angle ACB=102^\circ$, so
+\[
+\dfrac{BP}{\sin102^\circ}=\dfrac{BC}{\sin\theta}\qquad\Longrightarrow\qquad BP=\dfrac{9\sin78^\circ}{\sin\theta}=\dfrac{9\sin78^\circ\cdot3}{2\sin78^\circ}=\boxed{\dfrac{27}{2}}.
+\]
+In short, $BP=\dfrac{BC\cdot AP}{AD}$.
+
+\textbf{The figure exists.} $\sin\theta=\dfrac{2}{3}\sin78^\circ\approx0.652$, and $\theta$ must be acute because triangle $BPC$ already has an angle of $102^\circ$; so $\theta\approx40.7^\circ$. Then triangle $APD$ has angles $78^\circ$, $\theta$, $102^\circ-\theta$ and triangle $BPC$ has angles $102^\circ$, $\theta$, $78^\circ-\theta$, all positive, and putting them together at $P$ gives a convex quadrilateral:
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+real d2r=pi/180; real th=asin(2*sin(78*d2r)/3);
+pair P=(0,0);
+pair A=3*dir(0);
+real PD=3*sin(pi-78*d2r-th)/sin(78*d2r);
+pair D=PD*dir(th/d2r);
+real PC=9*sin(78*d2r-th)/sin(th);
+pair C=PC*dir(180);
+real PB=13.5; pair B=PB*dir(th/d2r+180);
+draw(A--B--C--D--cycle,linewidth(0.9));draw(A--C);draw(B--D);
+draw(arc(D,1.0,degrees(A-D),degrees(B-D)),blue);label("$78^\circ$",D+1.45*dir((degrees(A-D)+degrees(B-D))/2),blue+fontsize(8pt));
+draw(arc(C,1.4,degrees(B-C),degrees(A-C)),red);label("$102^\circ$",C+2.0*dir((degrees(B-C)+degrees(A-C))/2),red+fontsize(8pt));
+label("$A$",A,E);label("$B$",B,S);label("$C$",C,W);label("$D$",D,N);label("$P$",P,dir(-60));
+label("$2$",(A+D)/2,NE);label("$3$",(A+P)/2,S);label("$9$",(B+C)/2,SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\emph{Remark.} With the originally posted data $AD=3$, $AP=2$, the same computation would need $\sin\theta=\dfrac{3}{2}\sin78^\circ>1$, so no such quadrilateral exists (the formula would give $BP=6$). In triangle $APD$ the side $AP$ opposite the $78^\circ$ angle must be at least $AD\sin78^\circ$.

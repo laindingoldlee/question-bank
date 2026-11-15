@@ -1,0 +1,57 @@
+% Source: https://artofproblemsolving.com/community/c3h2532320_angle_between_heights
+% Stable identity: aops-topic-2532320-q01
+The altitude from $A$ is perpendicular to $BC$, and the altitude from $B$ is perpendicular to $CA$. Rotating both lines through $90^\circ$ turns them into lines parallel to $BC$ and $CA$. So the angles between the two altitude lines are the same as the angles between the lines $BC$ and $CA$, namely $\angle C$ and $180^\circ-\angle C$. The acute one is $80^\circ$, so $\angle C=80^\circ$ or $\angle C=100^\circ$.
+
+Both values occur.
+\begin{itemize}
+\item $\angle C=80^\circ$: in the acute triangle with angles $60^\circ,40^\circ,80^\circ$ at $A,B,C$, the altitudes $AD$ and $BE$ meet at the orthocentre $H$ inside the triangle. From quadrilateral $CDHE$, $\angle DHE=360^\circ-90^\circ-90^\circ-80^\circ=100^\circ$, so the acute angle between the altitudes, $\angle BHD=\angle AHE$, is $80^\circ$.
+\item $\angle C=100^\circ$: in the triangle with angles $45^\circ,35^\circ,100^\circ$, the feet $D$ and $E$ lie on the extensions of $BC$ and $AC$ beyond $C$, and the altitude lines meet at $H$ beyond $C$. In quadrilateral $HDCE$ the angles at $D$ and $E$ are right and the angle at $C$ is $\angle DCE=\angle ACB=100^\circ$ (vertical angles), so $\angle AHB=80^\circ$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(5,0);
+pair C=extension(A,A+dir(60),B,B+dir(140));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,unit(V-U))*unit(V-U);}
+pair D=ft(A,B,C), Ep=ft(B,C,A);
+pair H=extension(A,D,B,Ep);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(A--D,blue); draw(B--Ep,blue);
+real s=0.15;
+draw(D+s*unit(B-D)--D+s*unit(B-D)+s*unit(A-D)--D+s*unit(A-D));
+draw(Ep+s*unit(A-Ep)--Ep+s*unit(A-Ep)+s*unit(B-Ep)--Ep+s*unit(B-Ep));
+real a1=degrees(B-H)-360, a2=degrees(D-H);
+draw(arc(H,0.3,a1,a2),red);
+label("$80^\circ$",H+0.55*dir((a1+a2)/2),red+fontsize(8pt));
+draw(arc(C,0.3,degrees(A-C),degrees(B-C)),red);
+label("$80^\circ$",C+0.5*dir(-80),red+fontsize(8pt));
+dot(H);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,NE);label("$E$",Ep,NW);label("$H$",H,dir(280));
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(5,0);
+pair C=extension(A,A+dir(45),B,B+dir(145));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,unit(V-U))*unit(V-U);}
+pair D=ft(A,B,C), Ep=ft(B,C,A);
+pair H=extension(A,D,B,Ep);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(C--D,dashed); draw(C--Ep,dashed);
+draw(A--H,blue); draw(B--H,blue);
+real s=0.1;
+draw(D+s*unit(C-D)--D+s*unit(C-D)+s*unit(A-D)--D+s*unit(A-D));
+draw(Ep+s*unit(C-Ep)--Ep+s*unit(C-Ep)+s*unit(B-Ep)--Ep+s*unit(B-Ep));
+draw(arc(H,0.22,degrees(A-H),degrees(B-H)),red);
+label("$80^\circ$",H+0.42*dir(-90),red+fontsize(7pt));
+draw(arc(C,0.22,degrees(B-C),degrees(A-C)),red);
+label("$100^\circ$",C+0.42*dir(-90),red+fontsize(7pt));
+dot(H);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,1.5*W);label("$D$",D,W);label("$E$",Ep,E);label("$H$",H,N);
+\end{asy}
+
+So $\angle ACB=\boxed{80^\circ\text{ or }100^\circ}$; if the triangle is acute, it is $80^\circ$.

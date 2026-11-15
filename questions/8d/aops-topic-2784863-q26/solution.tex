@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2784863_2016_winmac_guts_round__sets_610__winchester_math_competition
+% Stable identity: aops-topic-2784863-q26
+A meridian arc of length $\pi $ on a radius 2 sphere changes angular position by $\dfrac{\pi}{2}$. The northern parallel has radius $ 2\cos(\phi+\dfrac{\pi}{2})=-2\sin\phi $. Its circumference is $\pi $, so its radius is $\dfrac{1}{2}$. The southern endpoint has distance $|2\cos(\phi-\dfrac{\pi}{2})|=|2\sin\phi|$ from the polar axis, which is the same radius. Thus the answer is $\boxed{\dfrac{1}{2}}$ mile.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(circle((0,0),2));draw((0,-2)--(0,2),dashed);real f=-asin(0.25);pair P=2*(cos(f),sin(f)),Q=2*(cos(f+pi/2),sin(f+pi/2)),R=2*(cos(f-pi/2),sin(f-pi/2));dot(P);dot(Q);dot(R);draw((0,Q.y)--Q^^(0,R.y)--R,blue);label("$P$",P,E);label("north endpoint",Q,NE);label("south endpoint",R,SW);label("polar axis",(0,2),N);
+\end{asy}

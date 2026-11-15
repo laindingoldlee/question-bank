@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h3179529_2014_emcc_individual_speed_test__exeter_math_club_competition
+% Stable identity: aops-topic-3179529-q18
+For a lattice point $(x,y)$, put $u=2x-1,v=2y-1$. Both are odd integers and $4r^2=u^2+v^2$. At $u^2+v^2=130$, the absolute pairs are $(3,11),(11,3),(7,9),(9,7)$, giving sixteen signed points. To exclude a smaller radius it suffices to enumerate odd coordinates of absolute value at most eleven. The exact check below shows no smaller squared numerator has sixteen representations. Thus $\boxed{r=\dfrac{\sqrt{130}}{2}}$.
+\begin{verbatim}
+from collections import Counter
+c=Counter(u*u+v*v for u in range(-11,12,2)
+          for v in range(-11,12,2))
+assert c[130]==16
+assert all(c[s]<16 for s in c if s<130)
+\end{verbatim}
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair O=(.5,.5);draw(circle(O,sqrt(130)/2));for(int x=-6;x<=7;++x)for(int y=-6;y<=7;++y)if((2x-1)^2+(2y-1)^2==130)dot((x,y));dot("centre",O,SE);
+\end{asy}

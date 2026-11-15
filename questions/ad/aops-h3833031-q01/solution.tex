@@ -1,0 +1,8 @@
+Row $j$ has $j$ white and $j-1$ black squares, so each row contributes exactly $1$ to the area difference. Thus $n=2025$. The bottom boundary has length $2n-1$ and the top has length $1$. Each stepped side has $n$ vertical units and $n-1$ horizontal units, hence length $2n-1$. The perimeter is
+\[(2n-1)+1+2(2n-1)=6n-2=\boxed{12148}.\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int j=1;j<=4;++j)for(int k=0;k<2*j-1;++k)filldraw(box((k-j+1,-j),(k-j+2,1-j)),k%2==0?white:gray(.65),black);label("four-row example",(.5,-4.4));
+\end{asy}

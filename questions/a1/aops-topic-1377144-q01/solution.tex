@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1377144_geometry_hypotenuse
+% Stable identity: aops-topic-1377144-q01
+Let the right angle be at $C$, so $c^2=a^2+b^2$ by the Pythagorean theorem.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair C=(0,0), B=(4,0), A=(0,3);
+draw(A--B--C--cycle,linewidth(0.9)); draw(ra(C,B-C,A-C,0.3));
+label("$a$",(B+C)/2,S); label("$b$",(A+C)/2,W); label("$c$",(A+B)/2,NE);
+label("$A$",A,N); label("$B$",B,E); label("$C$",C,SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The hypotenuse is the longest side: $c^2=a^2+b^2>a^2$, so $c>a$, and likewise $c>b$. Hence
+\[
+c^3=c\cdot c^2=c\,a^2+c\,b^2>a\cdot a^2+b\cdot b^2=a^3+b^3,
+\]
+where the inequality uses $c>a$, $c>b$ and $a^2,b^2>0$. This proves $c^3>a^3+b^3$. (More generally $c^n>a^n+b^n$ for every $n\ge3$, by the same argument with $c^{n-2}$.)

@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2515537_proofs_of_pythagoras
+% Stable identity: aops-topic-2515537-q01
+Let $D$ be the foot of the altitude from $C$ to $AB$. The angles at $A$ and $B$ are acute (they add up to $90^\circ$), so $D$ lies strictly between $A$ and $B$, and $AD+DB=c$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), A=(0,3), B=(4,0);
+pair D=A+dot(C-A,unit(B-A))*unit(B-A);
+draw(A--B--C--cycle,linewidth(0.9)); draw(C--D,dashed+blue);
+real s=0.22;
+draw((s,0)--(s,s)--(0,s));
+draw(D+s*unit(B-D)--D+s*unit(B-D)+s*unit(C-D)--D+s*unit(C-D),blue);
+label("$A$",A,N); label("$B$",B,E); label("$C$",C,SW); label("$D$",D,NE);
+label("$b$",(A+C)/2,W); label("$a$",(B+C)/2,S); label("$c$",(A+B)/2+(0.25,0.2),NE);
+\end{asy}
+
+\textbf{Triangles $ACD$ and $ABC$ are similar:} both have a right angle ($\angle ADC=\angle ACB=90^\circ$) and they share the angle at $A$. Matching $A\to A$, $D\to C$, $C\to B$,
+\[\dfrac{AD}{AC}=\dfrac{AC}{AB},\qquad\text{so}\qquad b^2=AC^2=c\cdot AD.\]
+\textbf{Triangles $BCD$ and $BAC$ are similar} in the same way (right angles at $D$ and $C$, common angle at $B$), so
+\[\dfrac{BD}{BC}=\dfrac{BC}{BA},\qquad\text{so}\qquad a^2=BC^2=c\cdot BD.\]
+Adding,
+\[a^2+b^2=c\,(AD+BD)=c\cdot c=c^2.\qquad\blacksquare\]

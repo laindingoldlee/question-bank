@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1460910_mathcounts_nationals_2015_25
+% Stable identity: aops-topic-1460910-q25
+The right angle is at $B$ ($3^2+4^2=5^2$). Let the square be $APQR$ with side $s$, with $B$ on side $PQ$ and $C$ on side $QR$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+real s=16/sqrt(17);
+pair A=(0,0),P=(s,0),Q=(s,s),R=(0,s);
+pair B=(s,s/4),C=(13*s/16,s);
+draw(A--P--Q--R--cycle,linewidth(0.9));
+draw(A--B--C--cycle,blue+linewidth(0.9));
+draw(ra(B,A-B,C-B,0.18),blue);
+dot(A);dot(B);dot(C);
+label("$A$",A,SW);label("$P$",P,SE);label("$Q$",Q,NE);label("$R$",R,NW);
+label("$B$",B+(0,0.12),E);label("$C$",C,N);
+label("$4$",(A+B)/2,SE,blue);label("$3$",(B+C)/2,SW,blue);label("$5$",(A+C)/2,NW,blue);
+label("$\dfrac{s}{4}$",(P+B)/2-(0,0.08),E,fontsize(9pt));label("$\dfrac{3s}{4}$",(B+Q)/2,E,fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangles $APB$ and $BQC$ have right angles at $P$ and $Q$. Since $\angle ABC=90^\circ$, $\angle QBC=90^\circ-\angle ABP=\angle PAB$, so the triangles are similar, with $AP\leftrightarrow BQ$ and ratio $\dfrac{BC}{AB}=\dfrac{3}{4}$. Hence $BQ=\dfrac{3}{4}AP=\dfrac{3s}{4}$ and $PB=s-\dfrac{3s}{4}=\dfrac{s}{4}$. In triangle $APB$,
+\[
+s^2+\dfrac{s^2}{16}=4^2,\qquad \dfrac{17s^2}{16}=16,\qquad s^2=\boxed{\dfrac{256}{17}}.
+\]
+(Check: $QC=\dfrac{3}{4}PB=\dfrac{3s}{16}<s$, so $C$ is indeed on side $QR$.)

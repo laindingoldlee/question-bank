@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2643975_jhu08s_1000th_post_celebration
+% Stable identity: aops-topic-2643975-q03
+Every solution has $\left|\dfrac{x}{100}\right|\le1$, so $|x|\le100$. Both sides are odd functions, so $x=0$ is a solution and the solutions with $x<0$ are the negatives of those with $x>0$.
+
+Let $g(x)=\sin x-\dfrac{x}{100}$ for $0<x\le100$. On each interval $(2k\pi+\pi,\,2k\pi+2\pi)$ we have $\sin x<0<\dfrac{x}{100}$, so all positive solutions lie in the intervals $[2k\pi,2k\pi+\pi]$, $k=0,1,\dots,15$ (note $31\pi\approx97.4<100<32\pi$). On each such interval $g''(x)=-\sin x\le0$, so $g$ is concave there.
+\begin{itemize}
+\item $k=0$: $g(0)=0$, $g'(0)=1-\dfrac1{100}>0$ and $g(\pi)<0$. A concave function that starts at $0$ increasing has exactly one zero in $(0,\pi]$.
+\item $1\le k\le15$: $g(2k\pi)<0$, $g\left(2k\pi+\dfrac\pi2\right)=1-\dfrac{(4k+1)\pi}{200}>0$ (as $61\pi<200$), and $g(2k\pi+\pi)<0$. A concave function with this sign pattern has exactly two zeros.
+\end{itemize}
+So there are $1+2\cdot15=31$ positive solutions, $31$ negative ones and $x=0$: $\boxed{63}$ solutions in total. (The sketch is compressed horizontally.)
+
+\begin{asy}
+usepackage("amsmath");
+size(12cm,3cm,IgnoreAspect);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return sin(x);}
+draw(graph(f,-105,105,n=6000),linewidth(0.4));
+draw((-105,-1.05)--(105,1.05),linewidth(0.8));
+draw((-110,0)--(110,0),gray,Arrow);
+for(real t=-100;t<=100;t+=100) draw((t,-0.1)--(t,0.1));
+label("$-100$",(-100,-0.15),S,fontsize(8pt),Fill(white));label("$100$",(100,-0.15),S,fontsize(8pt),Fill(white));
+label("$y=\sin x$",(55,1),N,fontsize(8pt));label("$y=\dfrac{x}{100}$",(105,1.05),E,fontsize(8pt));
+\end{asy}

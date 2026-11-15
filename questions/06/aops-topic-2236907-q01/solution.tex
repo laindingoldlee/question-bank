@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2236907_simple_geo_problems
+% Stable identity: aops-topic-2236907-q01
+Write the angles as $m-d$, $m$, $m+d$ with $d\ge0$. Their sum is $3m=180^\circ$, so the middle angle is $m=60^\circ$. The angle $100^\circ$ is not $m$, and it cannot be $m-d\le60^\circ$, so $m+d=100^\circ$ and $d=40^\circ$. The angles are $20^\circ$, $60^\circ$, $100^\circ$: the other two angles measure $\boxed{20^\circ\text{ and }60^\circ}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(5,0);
+pair C=extension(A,A+dir(20),B,B+dir(120));
+draw(A--B--C--cycle,linewidth(0.9));
+label("$20^\circ$",A,10*dir(10),fontsize(8pt)); label("$60^\circ$",B,6*dir(150),fontsize(8pt)); label("$100^\circ$",C,7*dir(-90),fontsize(8pt));
+\end{asy}

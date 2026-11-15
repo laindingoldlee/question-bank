@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2628088_counting_problems_im_stuck_on
+% Stable identity: aops-topic-2628088-q02
+Number the vertices $0,1,\dots,7$ around the octagon, vertex $t$ at angle $45^\circ t$ on its circumcircle. The chord joining the points at angles $\alpha$ and $\beta$ is perpendicular to the direction $\dfrac{\alpha+\beta}{2}$, so its direction depends only on $\alpha+\beta$ modulo $360^\circ$. Hence the chords $\{i,j\}$ and $\{k,l\}$ are parallel exactly when $i+j\equiv k+l\pmod8$.
+
+The sides $\{i,i+1\}$ have odd sums. For each odd residue $s$ there are $4$ chords with $i+j\equiv s$, namely $2$ sides and $2$ diagonals; for $s=1$ these are the sides $\{0,1\},\{4,5\}$ and the diagonals $\{2,7\},\{3,6\}$:
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair[] V;for(int i=0;i<8;++i)V[i]=dir(-90-22.5+45*i);
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--V[7]--cycle,linewidth(0.8));
+draw(V[0]--V[1],linewidth(2));draw(V[4]--V[5],linewidth(2));
+draw(V[2]--V[7],dashed);draw(V[3]--V[6],dashed);
+for(int i=0;i<8;++i)label("$"+string(i)+"$",V[i],V[i]);
+\end{asy}
+
+So $4\cdot2=8$ diagonals are parallel to a side. Diagonals with even sums are parallel to no side. The octagon has $\dfrac{8\cdot5}{2}=20$ diagonals, so $20-8=\boxed{12}$ are not parallel to any side.

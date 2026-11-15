@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2325648_parabola_and_circles
+% Stable identity: aops-topic-2325648-q01
+\textbf{Tangency condition.} Let a circle have centre $(0,k)$ and radius $r$. The squared distance from $(0,k)$ to the point $\left(x,x^2\right)$ of the parabola is, with $t=x^2\ge0$,
+\[x^2+\left(x^2-k\right)^2=t^2-(2k-1)t+k^2=\left(t-\left(k-\dfrac12\right)\right)^2+k-\dfrac14 .\]
+For $k\ge\dfrac12$ its minimum over $t\ge0$ is $k-\dfrac14$, attained at the two points with $x^2=k-\dfrac12$. The circle lies inside the parabola and touches it exactly when this minimum distance equals the radius, i.e.
+\[k=r^2+\dfrac14 .\]
+\textbf{The radii.} For the first circle, $k_1-r_1=2$, so $r_1^2-r_1+\dfrac14=2$, i.e. $\left(r_1-\dfrac12\right)^2=2$ and $r_1=\dfrac12+\sqrt2$ (the radius must exceed $\dfrac12$). For consecutive circles, external tangency with both centres on the axis means $k_{n+1}-k_n=r_n+r_{n+1}$, so
+\[r_{n+1}^2-r_n^2=r_{n+1}+r_n\qquad\Longrightarrow\qquad r_{n+1}-r_n=1 .\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return x^2;}
+draw(graph(f,-4.3,4.3),linewidth(0.9));
+real r1=0.5+sqrt(2);
+for(int n=0;n<2;++n){ real r=r1+n, k=r^2+0.25;
+ draw(circle((0,k),r),blue); dot((0,k),blue);
+ label("$r_"+string(n+1)+"$",(0,k)+(r/2,0),N,blue+fontsize(8pt)); draw((0,k)--(r,k),blue+dashed);}
+dot((0,0)); label("$(0,0)$",(0,0),SE,fontsize(8pt));
+draw((-1.6,0)--(-1.6,2),Arrows(3)); label("$2$",(-1.6,1),W);
+draw((-1.8,0)--(0,0),dotted); draw((-1.8,2)--(0,2),dotted);
+draw((-4.6,0)--(4.6,0),gray); draw((0,-0.8)--(0,18.8),gray);
+\end{asy}
+
+Thus $r_n=n-\dfrac12+\sqrt2$, and $r_{243}=\dfrac{485}{2}+\sqrt2$. The centre of the $243$rd circle is at height
+\[k_{243}=r_{243}^2+\dfrac14=\dfrac{485^2}{4}+485\sqrt2+2+\dfrac14=\dfrac{235226}{4}+2+485\sqrt2=\boxed{\dfrac{117617}{2}+485\sqrt2},\]
+which is the required distance, since the centre is on the $y$-axis above the vertex.

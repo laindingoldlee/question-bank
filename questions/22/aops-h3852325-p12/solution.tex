@@ -1,0 +1,17 @@
+Since $y=\sin\theta(3-2\cos\theta)$ and the second factor is positive, $0\le\theta\le\pi$ traces the upper boundary from right to left. The lower boundary is its reflection in the $x$-axis. Rotating the full vertical segment from the lower to the upper boundary through a half-turn fills a whole disc; therefore the usual disc-area factor is $\pi$, not half of $\pi$.
+Using $dx=-5\sin\theta\,d\theta$ gives
+\[
+V=\pi\int_{-5}^5y_{\rm upper}^2\,dx
+=5\pi\int_0^\pi\sin^3\theta(3-2\cos\theta)^2\,d\theta.
+\]
+Thus $\boxed{\alpha=0,\ \beta=\pi}$. Set $u=\cos\theta$:
+\[
+V=5\pi\int_{-1}^1(1-u^2)(3-2u)^2\,du.
+\]
+Odd terms integrate to zero. The even part is $9-5u^2-4u^4$, whose integral is $18-\dfrac{10}{3}-\dfrac{8}{5}=\dfrac{196}{15}$. Hence $\boxed{V=\dfrac{196\pi}{3}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;pair f(real t){return (5cos(t),sin(t)*(3-2cos(t)));}path c=graph(f,0,2pi);fill(c--cycle,lightgray);draw(c);draw((-6,0)--(6,0),Arrow);draw((0,-4.5)--(0,4.5),Arrow);draw((1,-sqrt(24.0/25)*2.6)--(1,sqrt(24.0/25)*2.6),blue);label("$-5$",(-5,0),SW);label("$5$",(5,0),SE);label("Rotate about the $x$-axis",(0,-5));
+\end{asy}

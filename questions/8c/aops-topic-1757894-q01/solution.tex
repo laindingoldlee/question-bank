@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1757894_compare_with_16
+% Stable identity: aops-topic-1757894-q01
+The general term is $\dfrac{1}{k^3+k+1}$ for $k=2,3,\dots,2018$. For $k\ge2$, $k^3+k+1>k^3-k=(k-1)k(k+1)$, and
+\[
+\dfrac{1}{(k-1)k(k+1)}=\dfrac{1}{2}\left(\dfrac{1}{(k-1)k}-\dfrac{1}{k(k+1)}\right).
+\]
+Keep the first two terms exactly and bound the rest by the telescoping sum:
+\[
+\sum_{k=4}^{2018}\dfrac{1}{k^3+k+1}<\dfrac{1}{2}\sum_{k=4}^{2018}\left(\dfrac{1}{(k-1)k}-\dfrac{1}{k(k+1)}\right)=\dfrac{1}{2}\left(\dfrac{1}{12}-\dfrac{1}{2018\cdot2019}\right)<\dfrac{1}{24}.
+\]
+Hence the whole sum is less than
+\[
+\dfrac{1}{11}+\dfrac{1}{31}+\dfrac{1}{24}=\dfrac{744+264+341}{8184}=\dfrac{1349}{8184}<\dfrac{1364}{8184}=\dfrac{1}{6} .
+\]
+So the sum is $\boxed{\text{less than }\dfrac{1}{6}}$ (numerically it is about $0.1614$).
+
+(Bounding from the second term on, $\dfrac{1}{11}+\dfrac{1}{12}=\dfrac{23}{132}>\dfrac{1}{6}$, is too weak; that is why two terms are kept exactly.)

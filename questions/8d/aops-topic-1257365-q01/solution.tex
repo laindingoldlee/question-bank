@@ -1,0 +1,5 @@
+% Source: https://artofproblemsolving.com/community/c3h1257365_the_number_of_subsets_in_a_set
+% Stable identity: aops-topic-1257365-q01
+\textbf{Proof by choices.} Let the set be $\{x_1,x_2,\dots,x_n\}$. A subset $T$ is determined by deciding, for each element $x_i$, whether $x_i\in T$ or $x_i\notin T$; different decisions give different subsets, and every sequence of decisions gives a subset. So the subsets correspond one-to-one to the sequences of $n$ independent yes-or-no choices, and by the multiplication principle there are $\underbrace{2\cdot2\cdots2}_{n}=2^n$ of them. (For $n=0$, the empty set has exactly $1=2^0$ subset, itself.)
+
+\textbf{Proof by induction.} The empty set has $1=2^0$ subset. Suppose every $n$-element set has $2^n$ subsets, and let $S$ have $n+1$ elements; fix $x\in S$. The subsets of $S$ not containing $x$ are exactly the subsets of $S\setminus\{x\}$: $2^n$ of them. The subsets containing $x$ are $T\cup\{x\}$ for the $2^n$ subsets $T$ of $S\setminus\{x\}$: another $2^n$. So $S$ has $2^n+2^n=2^{n+1}$ subsets. $\blacksquare$

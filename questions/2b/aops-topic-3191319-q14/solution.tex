@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3191319_2016_bmmt_individual_round__berkley_mini_math_tournament
+% Stable identity: aops-topic-3191319-q14
+Order the sides $a\le b\le c$. The triangle inequality gives $c<8$, while $3c\ge16$, so $c=6$ or $7$. For $c=6$, the pairs $(a,b)$ are $(4,6),(5,5)$. For $c=7$, they are $(2,7),(3,6),(4,5)$. Thus there are $\boxed5$ triangles.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] pts={(0,0),(7,0),(3,4)}; string[] names={"$A$","$B$","$C$"}; path boundary=pts[0]; for(int j=1;j<pts.length;++j)boundary=boundary--pts[j];draw(boundary--cycle); for(int i=0;i<pts.length;++i) label(names[i],pts[i],dir(90+360*i/pts.length));
+\end{asy}

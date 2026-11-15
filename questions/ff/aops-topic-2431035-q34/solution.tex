@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2431035_500th_celebration_post
+% Stable identity: aops-topic-2431035-q34
+A $6$-digit palindrome is $n=\overline{abccba}=100001a+10010b+1100c$ with $a\in\{1,\dots,9\}$ and $b,c\in\{0,\dots,9\}$, so there are $900$ of them, and each is divisible by $11$:
+\[\dfrac{n}{11}=9091a+910b+100c\ \ge9091.\]
+If $a=1$ and $b=0$, then $\dfrac{n}{11}=9091+100c$ is a $4$-digit number with first digit $9$ and last digit $1$, not a palindrome. Otherwise $\dfrac{n}{11}\ge10000$ is a $5$-digit number.
+
+\textbf{When is $\dfrac{n}{11}$ a palindrome?} Suppose $\dfrac{n}{11}=m=\overline{xyzyx}=10001x+1010y+100z$ with $x\ge1$. Then
+\[n=11m=110011x+11110y+1100z=100001x+10010(x+y)+1100(y+z),\]
+so
+\[100001(a-x)+10010(b-x-y)+1100(c-y-z)=0.\]
+Reducing modulo $10$ gives $a-x\equiv0\pmod{10}$, and $a,x\in\{1,\dots,9\}$, so $a=x$. Dividing the rest by $110$ gives $91(b-x-y)+10(c-y-z)=0$. Then $91\mid10(c-y-z)$, so $91\mid c-y-z$; as $|c-y-z|\le18$, this forces $c=y+z$, and then $b=x+y$. Since $b$ and $c$ are digits, $x+y\le9$ and $y+z\le9$.
+
+Conversely, if $x\ge1$, $x+y\le9$ and $y+z\le9$, then $n=\overline{x\,(x+y)\,(y+z)\,(y+z)\,(x+y)\,x}$ is a $6$-digit palindrome with $\dfrac{n}{11}=\overline{xyzyx}$ (for example $x=1$, $y=2$, $z=3$: $11\cdot12321=135531$). Different triples $(x,y,z)$ give different $n$.
+
+So the favourable $n$ correspond exactly to the triples with $1\le x$, $x+y\le9$, $y+z\le9$. For each $y=0,1,\dots,8$ there are $9-y$ choices of $x$ and $10-y$ choices of $z$, giving
+\[\sum_{y=0}^{8}(9-y)(10-y)=\sum_{k=1}^{9}k(k+1)=285+45=330\]
+favourable palindromes. The probability is $\dfrac{330}{900}=\boxed{\textbf{(E) }\dfrac{11}{30}}$.

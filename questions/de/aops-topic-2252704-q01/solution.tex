@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2252704_expected_value_question
+% Stable identity: aops-topic-2252704-q01
+Let $L$ be the length of the longest run of tails. Since $L=\sum_{k\ge1}[L\ge k]$ (the number of $k=1,2,\dots$ with $L\ge k$),
+\[E[L]=\sum_{k=1}^{6}P(L\ge k)=\sum_{k=1}^{6}\left(1-\dfrac{c_k}{64}\right),\]
+where $c_k$ is the number of sequences of $6$ flips with no run of $k$ tails.
+
+\textbf{Counting $c_k$.} Let $f_k(m)$ count sequences of length $m$ with no run of $k$ tails. For $m<k$ every sequence works, so $f_k(m)=2^m$. For $m\ge k$, a valid sequence starts with $j$ tails ($0\le j\le k-1$), then a head, then any valid sequence of length $m-j-1$:
+\[f_k(m)=f_k(m-1)+f_k(m-2)+\cdots+f_k(m-k).\]
+\begin{itemize}
+\item $k=1$: only HHHHHH, so $c_1=1$.
+\item $k=2$: $1,2,3,5,8,13,21$, so $c_2=21$.
+\item $k=3$: $1,2,4,7,13,24,44$, so $c_3=44$.
+\item $k=4$: $1,2,4,8,15,29,56$, so $c_4=56$.
+\item $k=5$: $64-3=61$ (the runs of $5$ or $6$ tails are TTTTTH, HTTTTT, TTTTTT).
+\item $k=6$: $64-1=63$.
+\end{itemize}
+The numbers $64-c_k$ are $63,43,20,8,3,1$, so
+\[E[L]=\dfrac{63+43+20+8+3+1}{64}=\dfrac{138}{64}=\boxed{\dfrac{69}{32}}\approx2.16.\]

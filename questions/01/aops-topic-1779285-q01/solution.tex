@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1779285_aops_geometry_work_book
+% Stable identity: aops-topic-1779285-q01
+Let $\angle OBC=\angle OCD=x$. Since $OB=OC$ (radii), triangle $OBC$ is isosceles and $\angle OCB=\angle OBC=x$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+pair A=dir(260),B=dir(128),C=dir(52),D=dir(-24);
+draw(unitcircle,linewidth(0.7));
+draw(A--B--C--D,linewidth(0.9));
+draw(B--O--C,linewidth(0.7));
+dot(O);dot(A);dot(B);dot(C);dot(D);
+label("$O$",O,S);label("$A$",A,dir(260));label("$B$",B,dir(128));label("$C$",C,dir(52));label("$D$",D,dir(-24));
+draw(arc(B,0.45,-76,-52),linewidth(0.6));
+label("$24^\circ$",B+0.74*dir(-64));
+draw(arc(B,0.3,-52,0),blue+linewidth(0.6)); label("$x$",B+0.4*dir(-26),blue);
+draw(arc(C,0.3,180,232),blue+linewidth(0.6)); label("$x$",C+0.4*dir(206),blue);
+draw(arc(C,0.22,232,284),blue+linewidth(0.6)); label("$x$",C+0.32*dir(258),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+As in the figure, $O$ lies inside the angles $ABC$ and $BCD$, so
+\[
+\angle ABC=\angle ABO+\angle OBC=24^\circ+x,\qquad \angle BCD=\angle BCO+\angle OCD=2x .
+\]
+Because $AB\parallel CD$ and $A$, $D$ are on the same side of the transversal $BC$, these co-interior angles add up to $180^\circ$:
+\[
+24^\circ+x+2x=180^\circ\ \Longrightarrow\ x=52^\circ .
+\]
+Finally, in triangle $OBC$, $\angle BOC=180^\circ-2x=180^\circ-104^\circ=\boxed{76^\circ}$.

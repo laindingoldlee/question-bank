@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2756523_ponderings_of__and_counterintuitive_patterns
+% Stable identity: aops-topic-2756523-q01
+(a) Join the centre $O$ to the vertices: this gives $s$ isosceles triangles with two sides $r$ and apex angle $\dfrac{360^\circ}s$. Dropping the perpendicular from $O$ to a side halves that angle, so each side is $2r\sin\dfrac{180^\circ}s$, and $P(s)=2sr\sin\dfrac{180^\circ}s$. Each triangle has area $\dfrac12r^2\sin\dfrac{360^\circ}s$, so $A(s)=\dfrac12sr^2\sin\dfrac{360^\circ}s$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+int s=6;pair O=(0,0);pair[] V;for(int k=0;k<s;++k) V.push(dir(90+360*k/s));
+draw(unitcircle,gray);draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle);draw(O--V[0]);draw(O--V[1]);pair Mm=(V[0]+V[1])/2;draw(O--Mm,dashed);
+label("$r$",(O+V[0])/2,E,fontsize(8pt));label("$\theta$",O+0.32*dir(105),fontsize(8pt));label("$\theta=\dfrac{180^\circ}{s}$",(0,-1.12),S,fontsize(8pt));dot(O);
+\end{asy}
+
+(b) Using $\sin2\theta=2\sin\theta\cos\theta$ with $\theta=\dfrac{180^\circ}s$:
+\[\dfrac{A(s)}{P(s)}=\dfrac{sr^2\sin\theta\cos\theta}{2sr\sin\theta}=\dfrac r2\cos\theta.\]
+For $s\ge3$, $0<\theta\le60^\circ$, so $\cos\theta<1$ and the ratio is less than $\dfrac r2$; it never equals $\dfrac r2$ for an actual polygon. As $s\to\infty$, $\theta\to0$ and $\cos\theta\to1$, so the ratio tends to $\dfrac r2$, and also $P(s)\to2\pi r$ since $\dfrac{\sin\theta}\theta\to1$ (with $\theta$ in radians). The ``solutions'' $s=-\dfrac12,-\dfrac14,\dots$ in the post do not correspond to polygons.

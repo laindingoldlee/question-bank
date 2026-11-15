@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1597071_geometr
+% Stable identity: aops-topic-1597071-q01
+\textbf{The triangle is right-angled.} We have
+\[
+5.6^2+10.5^2=31.36+110.25=141.61=11.9^2 ,
+\]
+so by the converse of Pythagoras' theorem the angle opposite the side $11.9$ is a right angle. (Indeed $5.6:10.5:11.9=8:15:17$, scaled by $0.7$.)
+
+\textbf{The hypotenuse is a diameter.} A right angle inscribed in a circle stands on a diameter (Thales), so the side of length $11.9$ is a diameter, the centre $O$ is its midpoint, and the radius is $R=\dfrac{11.9}{2}=5.95$ cm.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real R=5.95; pair O=(0,0),X=(-R,0),Y=(R,0);
+real al=acos(5.6/11.9); pair Z=X+5.6*dir(degrees(al));
+fill(arc(O,R,180,360)--cycle,mediumgray+opacity(0.35));
+draw(circle(O,R),linewidth(0.9));draw(X--Y--Z--cycle,linewidth(0.9));
+draw(Z+0.5*unit(X-Z)--Z+0.5*unit(X-Z)+0.5*unit(Y-Z)--Z+0.5*unit(Y-Z),linewidth(0.6));
+pair m1=(X+Z)/2,m2=(Y+Z)/2;
+pair pa=(m1+R*unit(m1))/2;draw(pa--(R+0.9)*unit(m1),linewidth(0.5));label("$A$",(R+0.9)*unit(m1),unit(m1));label("$B$",(m2+R*unit(m2))/2);label("$C$",(0,-3.4));
+label("$5.6$",m1,SE);label("$10.5$",m2,SW);label("$11.9$",(0,0),S);
+dot(O);label("$O$",O,N);
+label("$X$",X,W);label("$Y$",Y,E);label("$Z$",Z,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The segment cut off by the diameter, on the side away from the triangle, is a whole half-disc; the other two segments $A$ and $B$ together are the other half-disc minus the triangle, so each of them is smaller. Hence segment $C$ is the half-disc (shaded), and its area is
+\[
+\dfrac{1}{2}\pi R^2=\dfrac{1}{2}\pi\left(\dfrac{119}{20}\right)^2=\dfrac{14161\pi}{800}\ \text{cm}^2\approx\boxed{55.6\text{ cm}^2}.
+\]
+(Exactly $\dfrac{14161\pi}{800}=17.700625\pi$ square centimetres.)

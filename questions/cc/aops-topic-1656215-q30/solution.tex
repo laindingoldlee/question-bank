@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1656215_complementary_counting_casework__mad_aops_mods_msa129a130
+% Stable identity: aops-topic-1656215-q30
+\textbf{Which vertex is the apex?} The angle $MOD$ lies inside the right angle of the square at $O$, so it is less than $90^\circ$; the $150^\circ$ angle is at $M$ or at $D$. The roles of $M$ and $D$ are symmetric (triangle $MAD$ is equilateral either way), so let the apex be $M$: $MO=MD$ and $\angle OMD=150^\circ$.
+
+\textbf{Locating $M$.} Then $MO=MD=MA$, so $M$ lies on the perpendicular bisector of $AO$. Around $M$, $\angle AMD=60^\circ$ and $\angle OMD=150^\circ$, so $\angle AMO$ is $150^\circ-60^\circ=90^\circ$ or $360^\circ-150^\circ-60^\circ=150^\circ$.
+\begin{itemize}
+\item If $\angle AMO=90^\circ$, then $M$ is the centre of the square, $MA=\dfrac{\sqrt2}{2}$, and $D$ (obtained by turning $M$ about $A$ through $\pm60^\circ$) lies at $105^\circ$ or $-15^\circ$ from side $AO$, outside the square. Impossible.
+\item If $\angle AMO=150^\circ$, triangle $AMO$ is isosceles with base angles $15^\circ$, so with $A=(0,0)$, $O=(1,0)$ we get $M=\left(\dfrac{1}{2},\dfrac{1}{2}\tan15^\circ\right)$ and $D$ at $75^\circ$ from $AO$ at the same distance from $A$, which is inside the square.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real t=Tan(15);pair A=(0,0),O=(1,0),P=(1,1),Sq=(0,1);
+pair M=(0.5,0.5*t);pair D=rotate(60)*M;
+draw(A--O--P--Sq--cycle,linewidth(0.9));
+draw(A--M--D--cycle,blue+linewidth(0.9));draw(O--M);draw(O--D);
+draw(arc(M,0.05,degrees(O-M)-360,degrees(D-M)),red);
+draw(M+0.05*dir(70)--(0.6,0.4),red);
+label("$150^\circ$",(0.6,0.4),N,red+fontsize(8pt));
+dot(M);dot(D);
+label("$A$",A,SW);label("$O$",O,SE);label("$P$",P,NE);label("$S$",Sq,NW);
+label("$M$",M,S);label("$D$",D,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Area.} $MA=\dfrac{1}{2\cos15^\circ}$, so $MA^2=\dfrac{1}{4\cos^215^\circ}=\dfrac{1}{2(1+\cos30^\circ)}=\dfrac{1}{2+\sqrt3}=2-\sqrt3$. Hence
+\[
+[MAD]=\dfrac{\sqrt3}{4}\left(2-\sqrt3\right)=\boxed{\textbf{(e)}\ \dfrac{2\sqrt3-3}{4}} .
+\]

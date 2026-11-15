@@ -1,0 +1,27 @@
+Let $H$ be the midpoint of chord $MN$ and put $h=\dfrac{MN}{2}$. The right triangle $MPN$ has hypotenuse midpoint $H$, so $PH=h$. Also $OH^2+h^2=r^2$. Thus
+\[
+OH^2+PH^2=r^2.
+\]
+Let $U$ be the midpoint of $OP$. The midpoint identity gives
+\[
+2UH^2+\dfrac{d^2}{2}=r^2,\qquad
+UH=\dfrac{\sqrt{2r^2-d^2}}{2}=:\rho.
+\]
+Since $UP=\dfrac{d}{2}$ and $\rho>\dfrac{d}{2}$, the reverse triangle inequality yields $PH\ge\rho-\dfrac{d}{2}$. Consequently
+\[
+\boxed{\min MN=\sqrt{2r^2-d^2}-d}.
+\]
+
+For $d>0$, choose $H$ on ray $OP$ beyond $P$ with $OH=\dfrac{d+\sqrt{2r^2-d^2}}{2}$. The chord perpendicular to $OP$ at $H$ has half-length $PH$, so its diameter circle passes through $P$ and $\angle MPN=90^\circ$. This attains the bound. For $d=0$, every admissible chord has length $r\sqrt2$, agreeing with the formula.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real r=3,d=1,rho=sqrt(2r*r-d*d)/2;pair O=(0,0),P=(d,0),H=(d/2+rho,0),M=H+(0,rho-d/2),N=H-(0,rho-d/2);draw(circle(O,r),gray);draw(M--P--N--cycle,blue);draw(O--H,dashed);label("$O$",O,SW);label("$P$",P,S);label("$H$",H,E);label("$M$",M,NE);label("$N$",N,SE);
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real r=3,d=0,rho=sqrt(2r*r-d*d)/2;pair O=(0,0),P=(d,0),H=(d/2+rho,0),M=H+(0,rho-d/2),N=H-(0,rho-d/2);draw(circle(O,r),gray);draw(M--P--N--cycle,blue);draw(O--H,dashed);label("$P=O$",O,S);label("$H$",H,E);label("$M$",M,NE);label("$N$",N,SE);
+\end{asy}

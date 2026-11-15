@@ -1,0 +1,7 @@
+Encode the colours by the four binary pairs, with addition modulo $2$. In each small block the four entries sum to zero. Consequently the difference $h_j$ between columns $j,j+1$ is independent of the row, and the difference $v_i$ between rows $i,i+1$ is independent of the column. All these differences are nonzero. Moreover $h_j\ne v_i$, since equality would make opposite cells equal. Thus the nonempty sets of horizontal and vertical differences are disjoint subsets of the three nonzero binary pairs. At least one of these sets has size one. If all horizontal differences are the same, each row alternates between two colours. If all vertical differences are the same, each column does so.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pen[] c={red,blue,green,yellow};for(int i=0;i<4;++i)for(int j=0;j<4;++j){int k=2*(i%2)+j%2;filldraw(box((j,i),(j+1,i+1)),c[k],black);}label("Example",(2,-0.4));
+\end{asy}

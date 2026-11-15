@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h3182239_looking_at_trees
+% Stable identity: aops-topic-3182239-q01
+Track the publicly possible pairs $(c,d)$, initially all nonnegative pairs with $c+d\in\{18,20\}$. On Carol's turn she knows exactly when all surviving pairs with her value of $c$ have the same total; analogously for David and $d$. A public pass deletes all pairs in which that speaker would know. This finite deduction is implemented below.
+\begin{verbatim}
+possible = {(c,total-c) for total in (18,20)
+             for c in range(total+1)}
+actual = (12,8)
+for day in range(1,21):
+    for speaker in (0,1):
+        knows = {s for s in possible
+                 if len({sum(t) for t in possible
+                         if t[speaker] == s[speaker]}) == 1}
+        if actual in knows:
+            assert (day,speaker) == (5,0)
+            print('Carol, day 5, total 20')
+            break
+        possible -= knows
+    else:
+        continue
+    break
+\end{verbatim}
+The state update follows exactly from common knowledge and truthful passing, so this exhaustive finite reasoning proves that $\boxed{\text{Carol announces 20 on day 5}}$.

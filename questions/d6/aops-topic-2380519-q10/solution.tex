@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2380519_hopefully_theres_nothing_wrong_with_this
+% Stable identity: aops-topic-2380519-q10
+Let $a=BC$, $b=CA$, $c=AB$. The arithmetic sequence condition is $2a=b+c$.
+
+\textbf{(a)} By the angle bisector theorem in triangle $ABC$, $\dfrac{BD}{DC}=\dfrac cb$, so $BD=\dfrac{ac}{b+c}$. In triangle $ABD$ the segment $BI$ bisects the angle at $B$, so by the angle bisector theorem again
+\[\dfrac{AI}{ID}=\dfrac{AB}{BD}=\dfrac{c}{\dfrac{ac}{b+c}}=\dfrac{b+c}{a}=\dfrac{2a}{a}=2.\]
+The centroid divides each median in the ratio $2:1$ from the vertex, so $\dfrac{AG}{GE}=2$. Hence $\dfrac{AI}{ID}=\dfrac{AG}{GE}$. $\blacksquare$
+
+Since $\dfrac{AI}{AD}=\dfrac{AG}{AE}=\dfrac23$, triangle $AIG$ is the image of triangle $ADE$ under the dilation from $A$ with factor $\dfrac23$, so $IG\parallel DE$, i.e. $IG\parallel BC$ (if $D=E$, i.e. $b=c$, then $I$ and $G$ both lie on the median and coincide).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(6,0), A=(1,sqrt(24));
+pair I=(6*A+7*B+5*C)/18, G=(A+B+C)/3, D=(2.5,0), Em=(3,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,blue); draw(A--Em,red);
+draw(B--I,gray+dashed); draw(I--G,deepgreen+dashed);
+dot(I); dot(G); dot(D); dot(Em);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE);
+label("$D$",D,S,blue); label("$E$",Em,S,red); label("$I$",I,W); label("$G$",G,E);
+label("$5$",(A+B)/2,W); label("$6$",(B+C)/2+(0.8,0),S); label("$7$",(A+C)/2,NE);
+\end{asy}
+
+(The figure shows the triangle with $AB=5$, $BC=6$, $CA=7$.)
+
+\textbf{(b)} By (a), $\dfrac{ID}{AI}=\dfrac12$ while $\dfrac{AG}{GE}=2$, so they are never equal.

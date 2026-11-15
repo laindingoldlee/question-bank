@@ -1,0 +1,12 @@
+A permitted seating is a permutation of the eight chairs in which each nonfixed person moves one step around the circle. Any cycle of length two swaps adjacent people. A cycle of length at least three must continue in the same direction: changing direction would immediately revisit the previous chair. It therefore uses the entire circle. There are two such full rotations.
+
+All other permutations are disjoint swaps along edges of the cycle graph. The number of sets of $k$ nonadjacent edges in a cycle of length $n$ is $\dfrac{n}{n-k}\binom{n-k}{k}$: count line matchings according to whether the wraparound edge is selected, or simplify $\binom{n-k}{k}+\binom{n-k-1}{k-1}$. For $n=8$ and $k=0,1,2,3,4$, the counts are $1,8,20,16,2$. Thus
+\[
+\boxed{1+8+20+16+2+2=49}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int i=0;i<8;++i){pair p=2dir(90-45i);draw(p--2dir(90-45(i+1)),gray);dot(p);label(string(i+1),2.3dir(90-45i));}draw(2dir(90)--2dir(45),blue+1.5bp);draw(2dir(-45)--2dir(-90),blue+1.5bp);label("Two disjoint swaps",(0,-3));
+\end{asy}

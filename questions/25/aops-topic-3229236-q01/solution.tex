@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h3229236_prime_number
+% Stable identity: aops-topic-3229236-q01
+Any prime here must end in 1: all other available last digits make it divisible by 2 or 5. If it begins with 1 it cannot also end with 1, so the smallest possible leading digit is 2. The smallest arrangement beginning with 2 and ending in 1 is 20051, obtained by placing the remaining digits as 005. Trial division shows 20051 is prime; it suffices to check primes at most $\sqrt{20051}<142$. An exhaustive certificate is\begin{verbatim}
+n=20051
+assert all(n%d for d in range(2,142))
+\end{verbatim}
+Thus the smallest is $\boxed{20051}$.

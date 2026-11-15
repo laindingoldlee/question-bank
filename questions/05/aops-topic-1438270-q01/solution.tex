@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1438270_residual_plot_of_a_linear_line_of_best_fit
+% Stable identity: aops-topic-1438270-q01
+\textbf{(a)} The residual of $P$ is $3-1=2$, so $P$ corresponds to $\boxed{(1,2)}$.
+
+\textbf{(b)} The clockwise rotation by $45^\circ$ about the origin is $(x,y)\mapsto\left(\dfrac{x+y}{\sqrt2},\dfrac{y-x}{\sqrt2}\right)$; it maps $(t,t)$ to $(\sqrt2\,t,0)$, so it does take the line $y=x$ onto the $x$-axis. It maps $P$ to $\left(\dfrac{4}{\sqrt2},\dfrac{2}{\sqrt2}\right)=\boxed{(2\sqrt2,\sqrt2)}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+real s=1.6; pair T(real x,real y){return (s*x,s*y);}
+draw(T(-0.3,0)--T(3.4,0),Arrow(TeXHead)); draw(T(0,-0.3)--T(0,3.4),Arrow(TeXHead));
+label("$x$",T(3.4,0),E); label("$y$",T(0,3.4),N);
+draw(T(-0.2,-0.2)--T(3.2,3.2),blue+linewidth(0.9)); label("$y=x$",T(3.2,3.2),NE,blue);
+pair P=T(1,3), V=T(1,1), F=T(2,2), R=T(1,2), Pp=T(2*sqrt(2),sqrt(2));
+draw(P--V,red+dashed); draw(P--F,deepgreen+dashed);
+draw(ra(F,P-F,T(3,3)-F,0.15),deepgreen);
+dot(P); dot(R,red); dot(Pp,deepgreen); dot(V); dot(F);
+label("$P(1,3)$",P,W); label("$2$",T(1,1.5),W,red); label("$\sqrt{2}$",(P+F)/2,NE,deepgreen);
+label("$(1,2)$",R,E,red); label("$(2\sqrt{2},\sqrt{2})$",Pp,SE,deepgreen);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(c)} \textbf{No.} The residual plot is obtained by the map $(x,y)\mapsto(x,\ y-mx-c)$, which moves every point \emph{vertically}. It keeps each point's $x$-coordinate and its \emph{vertical} distance to the line (red, length $2$ for $P$). A rotation keeps the \emph{perpendicular} distance to the line instead (green, length $\sqrt2$ for $P$), and it also moves points horizontally. In general the rotated height is the residual times $\dfrac{1}{\sqrt{1+m^2}}$, and the horizontal positions are changed too. So the two pictures agree only when $m=0$, where the residual plot is the scatterplot shifted down by $c$. For $m\ne0$ the residual plot is a \emph{shear} of the scatterplot, not a rotation: the pattern of points above and below the line is kept (the sign of each residual is the same), but distances and shapes are distorted.

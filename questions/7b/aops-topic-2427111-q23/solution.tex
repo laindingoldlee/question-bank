@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2427111_several_problems_that_i_made
+% Stable identity: aops-topic-2427111-q23
+Let the hexagon have side $1$, so $AB=2AM=2$. In a regular hexagon each interior angle is $120^\circ$, and the diagonal $AE$ joins $A$ to the vertex two steps away (through $F$). Triangle $AFE$ is isosceles with apex angle $120^\circ$, so $\angle FAE=30^\circ$ and $AE=2\cdot1\cdot\cos30^\circ=\sqrt3$. Hence
+\[\angle MAE=\angle MAF-\angle FAE=120^\circ-30^\circ=90^\circ.\]
+Since $B$ lies on ray $AM$, triangle $ABE$ has a right angle at $A$ and area $\dfrac12\cdot2\cdot\sqrt3=\sqrt3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),M=(1,0),B=(2,0),C=(1.5,sqrt(3)/2),D=(1,sqrt(3)),Ep=(0,sqrt(3)),F=(-0.5,sqrt(3)/2);
+fill(A--B--Ep--cycle,rgb(0.9,0.9,0.9));
+fill(A--M--C--D--Ep--F--cycle,rgb(0.8,0.88,1));
+draw(A--M--C--D--Ep--F--cycle,blue+linewidth(0.9));
+draw(A--B--Ep--cycle,linewidth(0.8));
+draw(A+(0.12,0)--A+(0.12,0.12)--A+(0,0.12));
+dot(M);
+label("$A$",A,SW); label("$M$",M,S); label("$B$",B,SE); label("$C$",C,E); label("$D$",D,NE); label("$E$",Ep,NW); label("$F$",F,W);
+\end{asy}
+
+The hexagon consists of $6$ equilateral triangles of side $1$, with area $6\cdot\dfrac{\sqrt3}{4}=\dfrac{3\sqrt3}{2}$. The ratio is
+\[\dfrac{\dfrac{3\sqrt3}{2}}{\sqrt3}=\boxed{\dfrac32}.\]

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2826137_2022_abmc_team_rounds_58__actonboxborough_math_competition
+% Stable identity: aops-topic-2826137-q21
+If the equal radii are $r$, their centers form an equilateral triangle of side $2r$ and circumradius $1-r$, giving $\dfrac{2r}{\sqrt3}=1-r$ and $r=2\sqrt3-3$. The central radius is $1-2r=7-4\sqrt3$. For three mutually tangent circles, the curvatures of the two circles tangent to all three sum to twice the sum of their curvatures, by subtracting the two Descartes circle equations. Applied to $A,B,D$, the two other circles are $C,E$, so $k_E=3k_A+2k_D=3\left(\dfrac{2\sqrt3+3}{3}\right)+2(7+4\sqrt3)=17+10\sqrt3$. Therefore $r_E=\dfrac{1}{17+10\sqrt3}=\dfrac{10\sqrt3-17}{11}$ and the answer is $\boxed{41}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real r=2*sqrt(3)-3,d=1-2*r,e=(10*sqrt(3)-17)/11;pair A=(1-r)*dir(30),Bp=(1-r)*dir(150),C=(1-r)*dir(270),O=(0,0),Ep=(0,d+e);draw(circle(O,1));draw(circle(A,r));draw(circle(Bp,r));draw(circle(C,r));draw(circle(O,d),blue);draw(circle(Ep,e),red);label("$A$",A);label("$B$",Bp);label("$C$",C);label("$D$",O);label("$E$",Ep,E);
+\end{asy}

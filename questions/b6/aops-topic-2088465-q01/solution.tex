@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2088465_strange_question
+% Stable identity: aops-topic-2088465-q01
+Bolt's speed is $\dfrac{100}{9.58}$ metres per second, so covering $d$ metres takes $\dfrac{9.58}{100}\,d$ seconds.
+
+\textbf{(a)} Stage $k$ has length
+\[\dfrac{100}{2^{k-1}}-\dfrac{100}{2^k}=\dfrac{100}{2^k}\ \text{metres},\]
+and takes $\dfrac{9.58}{100}\cdot\dfrac{100}{2^k}=\boxed{\dfrac{9.58}{2^k}\ \text{seconds}}$. So the stages are $50$ m, $25$ m, $12.5$ m, $\dots$, lasting $4.79$ s, $2.395$ s, $1.1975$ s, $\dots$
+
+\textbf{(b)} Stages $1$ to $n$ fit together end to end and cover the track from the $\dfrac{100}{2^n}$ m mark to the $100$ m mark, a length of
+\[100-\dfrac{100}{2^n}=100\left(1-\dfrac{1}{2^n}\right)\ \text{metres}\]
+(equivalently, $50+25+\dots+\dfrac{100}{2^n}$ is a geometric sum with this value). A point at distance $x$ with $0<x\le100$ from the start lies in stage $k$ for the integer $k\ge1$ with $\dfrac{100}{2^k}<x\le\dfrac{100}{2^{k-1}}$; such a $k$ exists because $\dfrac{100}{2^k}$ becomes smaller than any positive number as $k$ grows.
+
+\textbf{(c)} The first $n$ stages take
+\[\dfrac{9.58}{2}+\dfrac{9.58}{4}+\dots+\dfrac{9.58}{2^n}=9.58\left(1-\dfrac{1}{2^n}\right)\ \text{seconds}.\]
+These partial sums increase, never exceed $9.58$, and come as close to $9.58$ as we like when $n$ is large. The sum of an infinite series is defined as the number that its partial sums approach, so the total time of all the stages is
+\[\sum_{k=1}^{\infty}\dfrac{9.58}{2^k}=\boxed{9.58\ \text{seconds}}.\]
+There are infinitely many stages, but their durations shrink geometrically (each is half the previous one), so together they fill only a finite amount of time. The paradox wrongly assumes that infinitely many tasks must take infinitely long.

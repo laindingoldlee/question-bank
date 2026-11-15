@@ -1,0 +1,7 @@
+For any chord $P_iP_{i+3}$, the short intervening arc contains exactly $P_{i+1},P_{i+2}$. A crossing chord must have exactly one endpoint there. Each of these two vertices has two incident drawn chords, and their other endpoints lie on the opposite arc. Thus each chord meets exactly four others in its interior. There are $2026$ distinct chords, and double counting counts each crossing twice. The total is $\boxed{\dfrac{2026\cdot4}{2}=4052}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+int n=13;pair[] p;for(int k=0;k<n;++k)p.push(dir(90+360.*k/n));draw(unitcircle,gray);for(int k=0;k<n;++k)draw(p[k]--p[(k+3)%n],gray);draw(p[0]--p[3],red+linewidth(1));for(int k:new int[]{1,2,11,12})draw(p[k]--p[(k+3)%n],blue);
+\end{asy}

@@ -1,0 +1,7 @@
+Let $T$ be the perpendicular projection of $F$ onto $AE$. Since $AF$ is an angle bisector, $FT=FD$. Since $F$ is the midpoint of $CD$, $FD=FC$. The right triangles $EFT$ and $EFC$ have the same hypotenuse $EF$ and equal legs $FT=FC$, so their angles at $E$ are equal. Thus $\angle FEC=\angle AEF=68^\circ$ and $\angle AEC=136^\circ$. Since $EB$ and $EC$ are opposite rays, $\angle AEB=44^\circ$. Triangle $ABE$ is right-angled at $B$, giving $\boxed{\angle BAE=46^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real w=2,h=tan(68pi/180);pair A=(0,0),B=(w,0),C=(w,h),D=(0,h),F=(w/2,h),E=(w,h-w*w/(4h)),T=dot(F,E)/dot(E,E)*E;draw(A--B--C--D--cycle);draw(A--F);draw(A--E--F);draw(F--T,dashed);label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$C$",C,(1,1));label("$D$",D,(-1,1));label("$F$",F,(0,1));label("$E$",E,(1,0));label("$T$",T,(-1,0));label("$68^\circ$",E+(-.3,-.05));
+\end{asy}

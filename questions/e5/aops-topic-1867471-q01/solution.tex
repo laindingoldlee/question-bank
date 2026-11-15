@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1867471_simplify
+% Stable identity: aops-topic-1867471-q01
+Write $a=\sqrt{53}$, $b=\sqrt{85}$, $c=\sqrt{40}$. Pair the factors and use the difference of squares:
+\[
+(a+b+c)(a+b-c)=(a+b)^2-c^2=2ab+(a^2+b^2-c^2),
+\]
+\[
+(a-b+c)(-a+b+c)=c^2-(a-b)^2=2ab-(a^2+b^2-c^2).
+\]
+So the product under the root is
+\[
+(2ab)^2-(a^2+b^2-c^2)^2=4\cdot53\cdot85-(53+85-40)^2=18020-9604=8416=16\cdot526 .
+\]
+Hence the expression equals $\dfrac{1}{4}\cdot4\sqrt{526}=\boxed{\sqrt{526}}$, which is in simplest form since $526=2\cdot263$ with $263$ prime.
+
+The expression is Heron's formula $K=\dfrac{1}{4}\sqrt{(a+b+c)(a+b-c)(a-b+c)(-a+b+c)}$, so $\sqrt{526}\approx22.93$ is the area of a triangle with sides $\sqrt{53}$, $\sqrt{85}$, $\sqrt{40}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real a=sqrt(85);real px=49/sqrt(85);real py=sqrt(53-px^2);
+pair B=(0,0),C=(a,0),A=(px,py);
+draw(A--B--C--cycle,linewidth(1));
+label("$B$",B,SW);label("$C$",C,SE);label("$A$",A,N);
+label("$\sqrt{85}$",(B+C)/2,S);label("$\sqrt{53}$",(A+B)/2,NW);label("$\sqrt{40}$",(A+C)/2,NE);
+draw(A--(px,0),dashed);label("$h$",(px,py/2),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check: with $BC=\sqrt{85}$ on the $x$-axis, $A$ has $x$-coordinate $\dfrac{53+85-40}{2\sqrt{85}}=\dfrac{49}{\sqrt{85}}$ and height $h=\sqrt{53-\dfrac{2401}{85}}=\sqrt{\dfrac{2104}{85}}$, so the area is $\dfrac{1}{2}\sqrt{85}\sqrt{\dfrac{2104}{85}}=\dfrac{\sqrt{2104}}{2}=\sqrt{526}$.

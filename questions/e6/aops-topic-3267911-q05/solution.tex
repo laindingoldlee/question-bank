@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3267911_2023_lmt_fall_guts_round_p1p15_lexington_mathematical_tournament
+% Stable identity: aops-topic-3267911-q05
+Unrolling the lateral surface gives a strip of height 48 and periodic width $2\pi\cdot\dfrac{14}{\pi}=28$. The smaller horizontal separation modulo 28 is at most 14, and the vertical separation is at most 48. The shortest surface path is the straight segment using the smaller horizontal separation, so its length is at most $\sqrt{14^2+48^2}=50$. Points on opposite rims separated by half a circumference attain both bounds. Thus the maximum is $\boxed{50}$.
+\begin{asy}
+import geometry;
+usepackage("amsmath");
+size(300);
+draw((0,0)--(28,0)--(28,48)--(0,48)--cycle);draw((0,0)--(14,48),blue);dot("$A$",(0,0),SW);dot("$B$",(14,48),N);label("$28$",(14,0),S);label("$48$",(28,24),E);label("unrolled lateral surface",(14,-7));
+\end{asy}

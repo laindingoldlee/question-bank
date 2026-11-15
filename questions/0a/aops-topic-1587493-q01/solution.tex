@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1587493_help_with_psat_please___
+% Stable identity: aops-topic-1587493-q01
+The parabola crosses the $x$-axis at the zeros of $(x-6)(x+12)$, namely $x=6$ and $x=-12$. A parabola is symmetric about the vertical line through its vertex, so the two $x$-intercepts are mirror images in that line, and the vertex lies halfway between them:
+\[
+x=\dfrac{6+(-12)}{2}=-3 .
+\]
+(Check by expanding: $y=x^2+6x-72=(x+3)^2-81$, so the vertex is $(-3,-81)$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return (x-6)*(x+12)/9;}
+draw((-15,0)--(9,0),gray,Arrow(TeXHead));draw((0,-10.2)--(0,5.5),gray,Arrow(TeXHead));
+label("$x$",(9,0),E,gray);label("$y$",(0,5.5),N,gray);
+draw(graph(f,-14.2,8.2),blue+linewidth(1));
+draw((-3,4.5)--(-3,-9),dashed);
+dot((-12,0));dot((6,0));dot((-3,-9));
+label("$(-12,0)$",(-12,0),SW);label("$(6,0)$",(6,0),SE);label("$(-3,-81)$",(-3,-9),SW);
+label("$x=-3$",(-3,4.5),NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The vertical scale of the figure is compressed.) The answer is $\boxed{\text{(B) }-3}$.

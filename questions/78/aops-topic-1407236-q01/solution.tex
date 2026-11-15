@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1407236_math_geometry_question
+% Stable identity: aops-topic-1407236-q01
+Let $\alpha=\angle POQ$, $\beta=\angle ROS$, $\gamma=\angle TOU$ be the angles of the three triangles at $O$. The angle sums of the triangles give
+\[
+(\angle P+\angle Q+\alpha)+(\angle R+\angle S+\beta)+(\angle T+\angle U+\gamma)=3\cdot180^\circ=540^\circ .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+pair U=1.9*dir(20),P=2.2*dir(80),Q=2.0*dir(135),R=2.3*dir(200),Sx=1.8*dir(260),T=2.4*dir(315);
+draw(P--Sx); draw(Q--T); draw(R--U);
+draw(P--Q,linewidth(0.9)); draw(R--Sx,linewidth(0.9)); draw(T--U,linewidth(0.9));
+draw(arc(O,0.45,80,135),red); label("$\alpha$",0.72*dir(107.5),red);
+draw(arc(O,0.45,260,315),red); label("$\alpha$",0.72*dir(287.5),red);
+draw(arc(O,0.35,200,260),blue); label("$\beta$",0.62*dir(230),blue);
+draw(arc(O,0.35,20,80),blue); label("$\beta$",0.62*dir(50),blue);
+draw(arc(O,0.55,315,380),deepgreen); label("$\gamma$",0.82*dir(347.5),deepgreen);
+draw(arc(O,0.55,135,200),deepgreen); label("$\gamma$",0.82*dir(167.5),deepgreen);
+dot(O);
+label("$P$",P,N); label("$Q$",Q,NW); label("$R$",R,W); label("$S$",Sx,S); label("$T$",T,SE); label("$U$",U,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The six angles around $O$ between consecutive rays are $\angle POQ$, $\angle QOR$, $\angle ROS$, $\angle SOT$, $\angle TOU$, $\angle UOP$, and they add up to $360^\circ$. Vertical angles are equal: $\angle SOT=\angle POQ=\alpha$, $\angle UOP=\angle ROS=\beta$ and $\angle QOR=\angle TOU=\gamma$. Hence $2(\alpha+\beta+\gamma)=360^\circ$, so $\alpha+\beta+\gamma=180^\circ$, and
+\[
+\angle P+\angle Q+\angle R+\angle S+\angle T+\angle U=540^\circ-180^\circ=\boxed{360^\circ}.
+\]

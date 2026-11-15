@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1521666_need_help
+% Stable identity: aops-topic-1521666-q01
+The ten lines give $20$ rays from the point, and consecutive rays (going around the point) form $20$ angles that together make up the full angle (one of them is marked in red):
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real[] ang={0,14,40,57,75,95,118,133,150,168};
+for(int i=0;i<10;++i){ draw(2.2*dir(ang[i])--2.2*dir(ang[i]+180),linewidth(0.8)); }
+dot((0,0));
+draw(arc((0,0),0.9,0,14),red+linewidth(0.9));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+These $20$ angles add up to $360^\circ$. If every one of them were at least $19^\circ$, their sum would be at least $20\cdot19^\circ=380^\circ>360^\circ$, which is impossible. Hence some angle between neighbouring rays, which is an angle between two of the lines, is at most $\dfrac{360^\circ}{20}=18^\circ<19^\circ$. $\blacksquare$
+
+(In fact $18^\circ$ is best possible: ten lines through the point at $18^\circ$ apart make all twenty angles exactly $18^\circ$.)

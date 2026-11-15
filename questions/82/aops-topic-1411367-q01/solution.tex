@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1411367_fun_warmup_problem
+% Stable identity: aops-topic-1411367-q01
+From $2a+2b=10$ we get $a+b=5$, with $a,b>0$. By the AM-GM inequality,
+\[
+\sqrt{ab}\le\dfrac{a+b}{2}=\dfrac{5}{2},\qquad\text{so}\qquad ab\le\dfrac{25}{4}=6.25 .
+\]
+Equality in AM-GM holds exactly when $a=b$, i.e.\ for the $2.5$ cm by $2.5$ cm square (dashed).
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(3.2,0)--(3.2,1.8)--(0,1.8)--cycle,linewidth(0.9));
+label("$a$",(1.6,0),S); label("$b$",(3.2,0.9),E); label("$a$",(1.6,1.8),N); label("$b$",(0,0.9),W);
+draw((4.2,-0.35)--(6.7,-0.35)--(6.7,2.15)--(4.2,2.15)--cycle,blue+dashed);
+label("$2.5$",(5.45,-0.35),S,blue); label("$2.5$",(6.7,0.9),E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Without AM-GM: $ab=\left(\dfrac{a+b}{2}\right)^2-\left(\dfrac{a-b}{2}\right)^2=6.25-\left(\dfrac{a-b}{2}\right)^2\le6.25$. $\blacksquare$

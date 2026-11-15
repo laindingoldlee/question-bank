@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2413371_fake_mathcounts_countdown_problem
+% Stable identity: aops-topic-2413371-q01
+Let $N=222111222111111222111222$ and let $n_j$ be its digit in the $10^j$ place ($n_j=0$ when $j<0$ or $j>23$). Every digit of $N$ is $1$ or $2$, and their sum is $4\cdot6+4\cdot3=36$. Since $2021\,N=2\cdot10^3N+2\cdot10N+N$, long multiplication gives in the $10^j$ column the total
+\[c_j=2n_{j-3}+2n_{j-1}+n_j.\]
+
+\textbf{No carries.} Always $c_j\le2\cdot2+2\cdot2+2=10$, with equality only if $n_{j-3}=n_{j-1}=n_j=2$. Now $N$ is made of blocks of three equal digits,
+\[222\ 111\ 222\ 111\ 111\ 222\ 111\ 222,\]
+and no two $222$ blocks are next to each other. If $n_{j-1}=n_j=2$, these two digits are therefore in the same $222$ block, so $j$ is the middle or the top digit of that block, and the place $j-3$ lies in the next lower block, which is a $111$ block (or lies beyond the units digit). So $n_{j-3}\le1$ and $c_j\le8$. Hence every column total is at most $9$: there are no carries, and the digits of the product are exactly the numbers $c_j$.
+
+\textbf{The digit sum.} Therefore the digit sum of the product is
+\[\sum_j c_j=(2+2+1)\sum_j n_j=5\cdot36=\boxed{180}.\]
+(Indeed $2021\times N=448886779886555779886779662$.)

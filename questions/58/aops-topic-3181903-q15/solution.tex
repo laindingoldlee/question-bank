@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3181903_2021_abmc_online_october__contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3181903-q15
+Use coordinates $O_1=(0,0)$ and $O_2=(11,0)$. Subtracting the circle equations shows that their common chord $CD$ lies on $x=16$; hence choose $D=(16,12)$ and $C=(16,-12)$. Write $E=(x,y)$. Since $E$ lies on the smaller circle, $x^2+y^2=22x+48$. Power of a point in the large circle gives $ED\cdot EB=400-x^2-y^2=22(16-x)$, so $ED=\sqrt2(16-x)$. Squaring this distance yields $2(16-x)^2=448-10x-24y$, or $y=\dfrac{-x^2+27x-32}{12}$. Substitution into the smaller-circle equation simplifies to $(x-16)^2(x-23)(x+1)=0$. The intersection $E$ is strictly inside the large circle, so $x<16$; only $x=-1$ remains. Thus $O_1E^2=22(-1)+48=\boxed{26}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair Oa=(0,0),Ob=(11,0),C=(16,-12),D=(16,12),Ee=(-1,-5),B=(-12,-16);pair v=Ee-C;real t=(-2*dot(Ee,v)+sqrt((2*dot(Ee,v))^2-4*dot(v,v)*(dot(Ee,Ee)-400)))/(2*dot(v,v));pair A=Ee+t*v;draw(circle(Oa,20));draw(circle(Ob,13),blue);draw(A--B--C--D--cycle);draw(A--C^^B--D);dot(Oa);dot(Ob);label("$O_1$",Oa,W);label("$O_2$",Ob,E);label("$A$",A,NW);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NE);label("$E$",Ee,W);
+\end{asy}

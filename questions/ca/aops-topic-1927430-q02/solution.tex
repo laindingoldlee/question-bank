@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h1927430_problem_need_help
+% Stable identity: aops-topic-1927430-q02
+If $A=C$, the right side is $0$ and there is nothing to prove. If $A=B$, the inequality reads $AD\cdot AC\ge AC\cdot AD$, which is true. So assume $A\ne B$ and $A\ne C$.
+
+Let $f$ be the \emph{spiral similarity} with centre $A$ that maps $C$ to $B$: the rotation about $A$ through the angle from ray $AC$ to ray $AB$, followed by the dilation about $A$ with factor $k=\dfrac{AB}{AC}$. Let $E=f(D)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(5,0.6),C=(6,3.4),D=(0.6,3.2);
+pair Ep=A+(B-A)/(C-A)*(D-A);
+fill(A--B--Ep--cycle,paleblue);fill(A--Ep--D--cycle,palegreen);
+draw(A--B--C--D--cycle,linewidth(1));
+draw(A--C,gray);draw(B--D,red+linewidth(0.8));
+draw(B--Ep--D,blue+dashed);draw(A--Ep,dashed);
+dot(Ep);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$E$",Ep,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Two pairs of similar triangles.}
+\begin{itemize}
+\item $f$ maps $A,C,D$ to $A,B,E$, and multiplies all lengths by $k$. So $BE=k\cdot CD=\dfrac{AB\cdot CD}{AC}$ (triangle $ABE\sim$ triangle $ACD$, shaded blue).
+\item $AE=k\cdot AD$, so $\dfrac{AE}{AD}=\dfrac{AB}{AC}$, and the angle between rays $AD$ and $AE$ equals the rotation angle, which is the angle between rays $AC$ and $AB$. By SAS similarity, triangle $ADE\sim$ triangle $ACB$ (shaded green), with ratio $\dfrac{AD}{AC}$. Hence $DE=\dfrac{AD\cdot BC}{AC}$. (If $D=A$ then $E=A$ and this still holds.)
+\end{itemize}
+
+\textbf{The triangle inequality.} In triangle $BED$ (possibly degenerate),
+\[
+BD\le BE+ED=\dfrac{AB\cdot CD}{AC}+\dfrac{AD\cdot BC}{AC}.
+\]
+Multiplying by $AC>0$ gives $AB\cdot CD+AD\cdot BC\ge AC\cdot BD$. $\blacksquare$
+
+Equality holds exactly when $E$ lies on segment $BD$; for a convex quadrilateral $ABCD$ this happens exactly when it is cyclic, which gives Ptolemy's theorem.

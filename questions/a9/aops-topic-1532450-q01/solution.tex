@@ -1,0 +1,49 @@
+% Source: https://artofproblemsolving.com/community/c3h1532450_geo_problem
+% Stable identity: aops-topic-1532450-q01
+\textbf{Positions.} The vertices are in the order $A,B,C,D,E$ around the circle. Seen from $B$, the rays to $C,D,E,A$ are in this angular order, so going along $AC$ from $A$ we cross $BE$ before $BD$: the order on $AC$ is $A,X,Y,C$. Seen from $C$, the rays to $D,E,A,B$ are in order, so along $BD$ from $B$ we cross $CA$ before $CE$: the order on $BD$ is $B,Y,Z,D$. Also $X$ lies on segment $BE$ and $Z$ on segment $CE$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair P(real t){return dir(t);}
+pair A=P(200),B=P(150),C=P(40),D=P(-20),E=P(-90);
+pair X=extension(A,C,B,E),Y=extension(A,C,B,D),Z=extension(C,E,B,D);
+// circle through X, Y, Z
+pair cc(pair p,pair q,pair r){ real d=2*(p.x*(q.y-r.y)+q.x*(r.y-p.y)+r.x*(p.y-q.y));
+ real ux=((p.x^2+p.y^2)*(q.y-r.y)+(q.x^2+q.y^2)*(r.y-p.y)+(r.x^2+r.y^2)*(p.y-q.y))/d;
+ real uy=((p.x^2+p.y^2)*(r.x-q.x)+(q.x^2+q.y^2)*(p.x-r.x)+(r.x^2+r.y^2)*(q.x-p.x))/d; return (ux,uy);}
+pair O2=cc(X,Y,Z);
+draw(unitcircle,gray(0.5));
+draw(A--B--C--D--E--cycle,linewidth(1));
+draw(A--C,gray(0.35));draw(B--E,gray(0.35));draw(B--D,gray(0.35));draw(C--E,gray(0.35));
+draw(circle(O2,abs(X-O2)),red+dashed);
+draw(X--Y--Z--E--cycle,blue+linewidth(1));
+dot(A);dot(B);dot(C);dot(D);dot(E);dot(X,blue);dot(Y,blue);dot(Z,blue);
+label("$A$",A,dir(200));label("$B$",B,dir(150));label("$C$",C,dir(40));label("$D$",D,dir(-20));label("$E$",E,S);
+label("$X$",X+0.07*dir(170),dir(170),blue);label("$Y$",Y+0.07*dir(90),N,blue);label("$Z$",Z+0.07*dir(10),dir(10),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(a)} Let the arcs $AB$, $BC$, $CD$ (those not containing the other vertices) measure $\alpha$, $\beta$, $\gamma$. By the inscribed angle theorem $\angle AEB=\dfrac{\alpha}{2}$, $\angle DEC=\dfrac{\gamma}{2}$ and $\angle BEC=\dfrac{\beta}{2}$, so the hypothesis says $\alpha+\gamma=\beta$.
+\begin{itemize}
+\item Since $X$ is on segment $EB$ and $Z$ on segment $EC$, $\angle XEZ=\angle BEC=\dfrac{\beta}{2}$.
+\item The chords $AC$ and $BD$ cross at $Y$, so $\angle AYB=\dfrac{\alpha+\gamma}{2}=\dfrac{\beta}{2}$. The ray $YX$ points towards $A$ and the ray $YZ$ towards $D$, so $\angle XYZ=\angle AYD=180^\circ-\angle AYB=180^\circ-\dfrac{\beta}{2}$.
+\end{itemize}
+Thus $\angle XYZ+\angle XEZ=180^\circ$. Moreover $Y$ and $E$ are on opposite sides of the line $XZ$: the segments $XC$ and $BZ$ are the diagonals of the quadrilateral $XBCZ$ (cut off from triangle $EBC$ by $XZ$), and $Y$ is their intersection, inside $XBCZ$. So $XYZE$ is a convex quadrilateral with opposite angles adding to $180^\circ$, hence cyclic. $\blacksquare$
+
+\textbf{(b)} By Ptolemy's theorem for the cyclic quadrilateral $XYZE$ (vertices in this order),
+\[
+XZ\cdot YE=XY\cdot ZE+YZ\cdot EX .
+\]
+If $XY=YZ$, the right side is $XY\,(EX+EZ)$, which gives $EY\cdot XZ=XY\cdot(EX+EZ)$. $\blacksquare$
+
+\textbf{(c)} Suppose all three conditions hold. In triangle $XYZ$, by the law of cosines,
+\[
+\cos\angle XYZ=\dfrac{1+1-\dfrac{9}{4}}{2}=-\dfrac{1}{8},\qquad\sin\angle XYZ=\dfrac{\sqrt{63}}{8} ,
+\]
+so its circumcircle, which by (a) passes through $E$, has diameter $\dfrac{XZ}{\sin\angle XYZ}=\dfrac{3}{2}\cdot\dfrac{8}{\sqrt{63}}=\dfrac{4}{\sqrt7}<1.52$. Every chord of this circle is at most its diameter, so
+\[
+XY+YZ+ZE+EX\le2+2\cdot\dfrac{4}{\sqrt7}<5.1<10 ,
+\]
+a contradiction. (By (b), a perimeter of $10$ would also give $EY=\dfrac{8}{\dfrac{3}{2}}=\dfrac{16}{3}$, longer than the diameter.) $\blacksquare$

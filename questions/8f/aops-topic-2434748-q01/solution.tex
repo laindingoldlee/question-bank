@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2434748_200th_post_problems
+% Stable identity: aops-topic-2434748-q01
+\textbf{Answer.} $(a,b)=\left(\left(\dfrac{n}{n+1}\right)^{n+1},\left(\dfrac{n}{n+1}\right)^{n}\right)$ for positive integers $n$; for example $\left(\dfrac14,\dfrac12\right)$ and $\left(\dfrac{8}{27},\dfrac49\right)$.
+
+\textbf{These work.} Let $r=\dfrac{n}{n+1}$, $a=r^{n+1}$ and $b=r^n$. Then $a,b$ are rational and $0<a<b$ since $0<r<1$. Also $a\ln a=(n+1)r^{n+1}\ln r$ and $b\ln b=nr^n\ln r$, which are equal because $(n+1)r=n$. So $a^a=b^b$.
+
+\textbf{There are no others.} Suppose $0<a<b$ are rational with $a\ln a=b\ln b$, and let $r=\dfrac ab$, a rational number with $0<r<1$. Then $\ln b=\dfrac ab\ln a=r\ln a$, so $b=a^r$, and $a=rb=ra^r$ gives $a^{1-r}=r$, i.e.
+\[a=r^{\dfrac{1}{1-r}},\qquad b=a^r.\]
+Write $r=\dfrac pq$ in lowest terms ($0<p<q$) and let $m=q-p\ge1$. Then $\dfrac{1}{1-r}=\dfrac qm$, and $\gcd(q,m)=\gcd(q,p)=1$. So $a=\left(\dfrac pq\right)^{\dfrac qm}$, i.e. $a^m=\dfrac{p^q}{q^q}$.
+
+Write $a=\dfrac st$ in lowest terms. Then $\dfrac{s^m}{t^m}=\dfrac{p^q}{q^q}$, and both fractions are in lowest terms, so $s^m=p^q$ and $t^m=q^q$. For each prime $\ell$, the exponent of $\ell$ in $q^q$ is $q\cdot v_\ell(q)$, and it is a multiple of $m$ (it equals $m\,v_\ell(t)$). As $\gcd(m,q)=1$, $m$ divides $v_\ell(q)$. Hence $q$ is a perfect $m$-th power, $q=v^m$, and in the same way $p=u^m$, with integers $1\le u<v$.
+
+If $m\ge2$, then by the binomial theorem
+\[m=q-p=v^m-u^m\ge(u+1)^m-u^m\ge mu^{m-1}+1\ge m+1,\]
+a contradiction. So $m=1$, i.e. $q=p+1$ and $r=\dfrac{p}{p+1}$. Then $a=r^{\dfrac{1}{1-r}}=r^{p+1}$ and $b=a^r=r^{(p+1)r}=r^p$, which is the family above with $n=p$. $\blacksquare$

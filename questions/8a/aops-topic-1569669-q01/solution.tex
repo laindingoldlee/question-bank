@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1569669_students_fall_asleep
+% Stable identity: aops-topic-1569669-q01
+\textbf{The error.} The argument assumes one particular arrangement: that students fall asleep exactly at the start of a whole minute, two in each minute. The statement is about \emph{every} possible arrangement of the sleeping intervals, which can start at any time and overlap in many ways. (Even in its own setting the argument only says the 21st student's minute overlaps some minute; with intervals that do not start on whole minutes this would need more justification.) A proof must work for all arrangements.
+
+\textbf{A correct proof.} Mark on the time line $[0,10]$ every moment at which some student falls asleep or wakes up. These finitely many moments cut the class into short pieces $I_1,\dots,I_m$ of lengths $\ell_1,\dots,\ell_m$ with $\ell_1+\cdots+\ell_m=10$. Inside each piece nobody falls asleep or wakes up, so the number $k_j$ of sleeping students is constant on the inside of $I_j$.
+
+Now count the total sleeping time in two ways. Each student sleeps for $1$ minute, so the total is $21$ student-minutes. Counted piece by piece, the total is $k_1\ell_1+k_2\ell_2+\cdots+k_m\ell_m$. If at most $2$ students were asleep at every moment, every $k_j\le2$, and
+\[
+21=k_1\ell_1+\cdots+k_m\ell_m\le2(\ell_1+\cdots+\ell_m)=20,
+\]
+a contradiction. Hence some $k_j\ge3$: during the whole piece $I_j$ at least $3$ students are asleep. $\blacksquare$

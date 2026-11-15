@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1427411_geometry_math_problem___of_points
+% Stable identity: aops-topic-1427411-q01
+Put $A=(0,h)$ and $B=(w,0)$ for a $w\times h$ grid. Moving from $A$ to $B$, the diagonal crosses each of the vertical lines $x=1,2,\dots,w$ once ($w$ points) and each of the horizontal lines $y=h-1,\dots,1,0$ once ($h$ points). A point is counted twice exactly when it lies on a vertical and a horizontal line at once, that is, when it is a grid point. The grid points on the diagonal other than $A$ are the points $\left(\dfrac{kw}{g},\,h-\dfrac{kh}{g}\right)$ for $k=1,\dots,g$, where $g=\gcd(w,h)$. So the number of points is
+\[
+w+h-\gcd(w,h).
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=12;++i) draw((i,0)--(i,8),gray(0.6));
+for(int j=0;j<=8;++j) draw((0,j)--(12,j),gray(0.6));
+draw((0,8)--(12,0),blue+linewidth(0.9));
+for(int i=1;i<=12;++i) dot((i,8-2*i/3),red);
+for(int j=0;j<=7;++j) dot((1.5*(8-j),j),red);
+for(int k=1;k<=4;++k) dot((3k,8-2k),black+linewidth(4.5));
+label("$A$",(0,8),NW); label("$B$",(12,0),SE);
+label("$12$",(6,0),S); label("$8$",(0,4),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For the $12\times8$ grid this gives $12+8-4=16$, as stated (the black dots are the $4$ grid points counted once each). For the $230\times80$ grid it gives
+\[
+230+80-\gcd(230,80)=310-10=\boxed{300}.
+\]

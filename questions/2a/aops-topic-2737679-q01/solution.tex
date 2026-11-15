@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2737679_3rd_and_last_3500th_post_celebration_
+% Stable identity: aops-topic-2737679-q01
+Since $D$ lies on line $AB$, $\angle DBC=90^\circ$. An inscribed right angle subtends a diameter, so $DC$ is a diameter and $O$ is its midpoint.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real t=40;
+pair O=(0,0),C=(1,0),D=(-1,0),B=dir(130);
+pair A=D+2*(D-B);
+pair[] X=intersectionpoints(A--C,unitcircle);
+pair E=(abs(X[0]-C)>1e-6)?X[0]:X[1];
+pair M=(D+E)/2;
+draw(unitcircle,gray);draw(A--B--C--cycle,linewidth(0.8));draw(D--C,dashed);draw(D--E);draw(O--M,linewidth(1));
+dot(O);dot(M);dot(D);dot(E);
+label("$A$",A,SW);label("$B$",B,N);label("$C$",C,E);label("$D$",D,W);label("$E$",E,S);label("$O$",O,N);label("$M$",M,NE);
+\end{asy}
+
+In triangle $DCE$, $O$ is the midpoint of $DC$ and $M$ is the midpoint of $DE$, so $OM$ is a midline and $OM\parallel CE$. Since $E$ lies on $AC$, line $CE$ is line $AC$, so $OM\parallel AC$. $\blacksquare$

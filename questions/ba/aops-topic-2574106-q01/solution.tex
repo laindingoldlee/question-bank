@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2574106_trapezoid_problem_i_wrote_amc_10_level
+% Stable identity: aops-topic-2574106-q01
+Triangles $BXC$ and $CXD$ have the same height from $C$ to line $BD$, so
+\[\dfrac{[BXC]}{[CXD]}=\dfrac{BX}{XD}=\dfrac29.\]
+Since $AB\parallel CD$, triangles $AXB$ and $CXD$ are similar, with ratio $\dfrac{AB}{CD}=\dfrac{BX}{XD}=\dfrac{AX}{XC}=\dfrac29$.
+
+Let $[AXB]=4u$. Then $[CXD]=\left(\dfrac92\right)^2\cdot4u=81u$. Triangles $AXB$ and $BXC$ share the height from $B$, so $[BXC]=4u\cdot\dfrac{XC}{AX}=18u$, and similarly $[AXD]=4u\cdot\dfrac{XD}{XB}=18u$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real h=120/11;pair D=(0,0),C=(18,0),A=(7,h),B=(11,h);
+pair X=extension(A,C,B,D);
+draw(A--B--C--D--cycle,linewidth(0.9));draw(A--C);draw(B--D);
+fill(A--X--B--cycle,lightgray);draw(A--B--C--D--cycle,linewidth(0.9));draw(A--C);draw(B--D);
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);label("$X$",X,2*S);
+draw((9,h+2.2)--((A+B+X)/3),Arrow(4));label("$4u$",(9,h+2.2),N,fontsize(8pt));label("$18u$",(11.5,7.9),fontsize(8pt));label("$18u$",(6.5,7.9),fontsize(8pt));label("$81u$",(C+D+X)/3,fontsize(8pt));
+\end{asy}
+
+The trapezoid's area is $4u+18u+18u+81u=121u=120$, so $u=\dfrac{120}{121}$ and
+\[[AXB]=4u=\boxed{\dfrac{480}{121}}.\]

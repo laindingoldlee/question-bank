@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2488107_pi_day__albert_einsteins_birthday_problems
+% Stable identity: aops-topic-2488107-q11
+Let $s=\dfrac{a+b+c}{2}$ and let $I$ be the incentre.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(1.6,4);
+real a=abs(B-C),bb=abs(C-A),c=abs(A-B);
+pair I=(a*A+bb*B+c*C)/(a+bb+c);
+real r=I.y;
+draw(A--B--C--cycle,linewidth(0.8));
+draw(circle(I,r),blue);
+dot(I); label("$I$",I,NE);
+draw(I--(I.x,0),red); label("$r$",(I.x,r/2),E,red);
+draw((I.x,0)+(0.2,0)--(I.x,0)+(0.2,0.2)--(I.x,0)+(0,0.2));
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N);
+label("$a$",(B+C)/2,NE); label("$b$",(A+C)/2,NW); label("$c$",(A+B)/2+(0.8,0),S);
+\end{asy}
+
+\textbf{(a)} Joining $I$ to the vertices splits the triangle into three triangles with bases $a,b,c$ and common height $r$, so $K=\dfrac{r(a+b+c)}{2}=rs$ and $r=\dfrac Ks$. By Heron's formula $K^2=s(s-a)(s-b)(s-c)$. Hence
+\[\dfrac{abc}{4K}\ge2r=\dfrac{2K}{s}\iff abc\,s\ge8K^2=8s(s-a)(s-b)(s-c)\iff abc\ge8(s-a)(s-b)(s-c).\]
+Put $x=s-a$, $y=s-b$, $z=s-c$. By the triangle inequality these are positive, and $a=y+z$, $b=z+x$, $c=x+y$. By AM-GM,
+\[(y+z)(z+x)(x+y)\ge2\sqrt{yz}\cdot2\sqrt{zx}\cdot2\sqrt{xy}=8xyz,\]
+which is the required inequality. Equality holds exactly when $y=z$, $z=x$ and $x=y$, i.e. $x=y=z$, i.e. $a=b=c$. So $\dfrac{abc}{4K}\ge2r$, with equality if and only if the triangle is equilateral. $\blacksquare$
+
+\textbf{(b)} By (a), $\dfrac{abc}{4K}\ge2r>r$ for every triangle, so $r=\dfrac{abc}{4K}$ is impossible. For example, the equilateral triangle with side $2\sqrt3$ has $K=3\sqrt3$, $r=1$ and $\dfrac{abc}{4K}=\dfrac{24\sqrt3}{12\sqrt3}=2=2r$.
+
+(Remark: $\dfrac{abc}{4K}$ is the circumradius $R$, so (a) is Euler's inequality $R\ge2r$.)

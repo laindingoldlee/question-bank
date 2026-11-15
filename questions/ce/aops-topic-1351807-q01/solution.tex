@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1351807_easy_geometry
+% Stable identity: aops-topic-1351807-q01
+Let the centres be $A$, $B$, $C$, for the circles of radii $a$, $b$, $c$. For externally tangent circles the distance between the centres is the sum of the radii, so the sides of the triangle are $a+b$, $b+c$ and $c+a$. Its semiperimeter is
+\[
+s=\dfrac{(a+b)+(b+c)+(c+a)}{2}=a+b+c,
+\]
+and $s-(b+c)=a$, $s-(c+a)=b$, $s-(a+b)=c$. By Heron's formula,
+\[
+84=\sqrt{s\cdot a\cdot b\cdot c}=\sqrt{252\,s}\quad\Longrightarrow\quad s=\dfrac{84^2}{252}=\dfrac{7056}{252}=28 .
+\]
+So the perimeter is $2s=\boxed{56}$.
+
+Such circles exist: for example $a=3$, $b=4$, $c=21$ have $a+b+c=28$ and $abc=252$, and the triangle of centres has sides $7$, $25$, $24$, a right triangle with area $\dfrac{7\cdot24}{2}=84$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(7,0),C=(0,24);
+draw(circle(A,3),blue); draw(circle(B,4),blue); draw(circle(C,21),blue);
+draw(A--B--C--cycle,red+linewidth(0.9));
+dot(A);dot(B);dot(C);
+label("$A$",(-3,0),W); label("$B$",(11,0),E); label("$C$",C,N);
+label("$a+b$",(3.5,-3),S,red); label("$b+c$",(3.5,12),NE,red); label("$c+a$",(0,12),W,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

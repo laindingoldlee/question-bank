@@ -1,0 +1,29 @@
+Reflection of $H$ across $AC$ is $F$: the reflected point lies on $BD$, and its angles show it lies on the circumcircle. Similarly reflection across $AB$ sends $H$ to $G$. Because both reflecting lines pass through $A$, we have $AH=AF=AG$. Thus $A$ is the center of the circle through $F,H,G$.
+
+Scale coordinates to $B=(-1,0),C=(1,0),A=(u,v)$ with $v>0$. The assumption $AB<AC$ implies $u<0$. The orthocenter is
+\[
+H=(u,h),\qquad h=\dfrac{1-u^2}{v},
+\]
+so $u^2+vh=1$. The circle through $B,C,D,E$ has diameter $BC$ and equation $x^2+y^2=1$. The circle with diameter $AH$ passes through $D,E$ and has equation
+\[
+x^2+y^2-2ux-(v+h)y+1=0.
+\]
+Subtracting their equations gives line $DE$: $2ux+(v+h)y=2$. Therefore $X=(\dfrac{1}{u},0)$.
+
+The circumcenter is $\left(0,\dfrac{u^2+v^2-1}{2v}\right)$, so $A'=(-u,-h)=-H$. Thus line $A'H$, which contains chord $HY$, has direction vector $(u,h)$. But
+\[
+(A-X)\cdot(u,h)=u^2-1+vh=0.
+\]
+Hence $AX$ is perpendicular to chord $HY$. Since $A$ is the circle's center, $AX$ is the perpendicular bisector of $HY$, and $\boxed{XH=XY}$ follows.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(-1,4),B=(-3,0),C=(3,0),D=(0,3),E=(-1.8,2.4),H=(-1,2),F=(1,4),G=(-2.6,2.8),Ap=(1,-2),X=(-9,0),Y=(-2.6,5.2);draw(circle((0,1),sqrt(10)),gray);draw(circle(A,2),lightblue);draw(A--B--C--cycle);draw(B--F,blue);draw(C--G,blue);draw(X--D,dashed);draw(X--C,dashed);draw(Ap--Y,red);draw(X--A,dashed);draw(X--H--Y--X,heavygreen);label("$A$",A,N);label("$B$",B,S);label("$C$",C,SE);label("$D$",D,NE);label("$E$",E,SW);label("$H$",H,SE);label("$F$",F,NE);label("$G$",G,W);label("$A'$",Ap,S);label("$X$",X,W);label("$Y$",Y,NW);
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(-1,4),B=(-3,0),C=(3,0),D=(0,3),E=(-1.8,2.4),H=(-1,2),X=(-9,0);draw(circle((0,0),3),gray);draw(circle((A+H)/2,1),blue);draw(A--B--C--cycle);draw(X--C,dashed);draw(X--D,red);draw(A--H,dashed);label("$A$",A,N);label("$B$",B,S);label("$C$",C,SE);label("$D$",D,NE);label("$E$",E,W);label("$H$",H,SE);label("$X$",X,W);
+\end{asy}

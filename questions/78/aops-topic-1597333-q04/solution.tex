@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1597333_some_questions
+% Stable identity: aops-topic-1597333-q04
+Let $R_n$ be the number of regions formed by $n$ such lines. With no lines there is one region, so $R_0=1$.
+
+\textbf{Adding one line.} Suppose $n-1$ lines in this position are drawn and we add an $n$th line $\ell$ so that the $n$ lines are still in this position. Since $\ell$ is parallel to none of the others, it meets each of the $n-1$ old lines, and since no three lines are concurrent these $n-1$ crossing points are all different. They cut $\ell$ into $(n-1)+1=n$ pieces (two rays and $n-2$ segments). Each piece lies inside one old region and cuts that region into two, and different pieces lie in different regions (two pieces are separated by an old line). So adding $\ell$ increases the number of regions by exactly $n$:
+\[
+R_n=R_{n-1}+n .
+\]
+
+\textbf{Conclusion.} By induction (or by adding these equations),
+\[
+R_n=1+(1+2+\cdots+n)=1+\dfrac{n(n+1)}{2}=\dfrac{n^2+n+2}{2}.
+\]
+For example, $3$ lines give $7$ regions and $4$ lines give $11$. $\blacksquare$

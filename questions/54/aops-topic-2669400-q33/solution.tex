@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h2669400_111th_post_solving_problems
+% Stable identity: aops-topic-2669400-q33
+The answer is $k=\left\lfloor\dfrac n2\right\rfloor$. We use Pitot's theorem and its converse: a convex quadrilateral has an inscribed circle if and only if the two pairs of opposite sides have equal sums. Write $Q_i=A_iA_{i+1}A_{i+2}A_{i+3}$.
+
+\emph{Bound: $Q_i$ and $Q_{i+1}$ are never both tangential.} Rename the five vertices $A_1,\dots,A_5$ (they are distinct as $n\ge5$, and form a convex pentagon). If both $A_1A_2A_3A_4$ and $A_2A_3A_4A_5$ are tangential, then
+\[A_1A_2+A_3A_4=A_2A_3+A_4A_1,\qquad A_2A_3+A_4A_5=A_3A_4+A_5A_2,\]
+and adding gives $A_1A_2+A_4A_5=A_1A_4+A_2A_5$. But in the convex quadrilateral $A_1A_2A_4A_5$ the diagonals $A_1A_4$ and $A_2A_5$ cross at an interior point $O$, and by the triangle inequality
+\[A_1A_4+A_2A_5=(A_1O+OA_2)+(A_4O+OA_5)>A_1A_2+A_4A_5,\]
+a contradiction. So among $Q_1,\dots,Q_n$ (arranged in a cycle) no two neighbours are tangential, and at most $\left\lfloor\dfrac n2\right\rfloor$ are.
+
+\emph{Construction.} Let $m=\left\lfloor\dfrac n2\right\rfloor$. Inscribe the polygon in a unit circle so that the sides $A_1A_2,A_2A_3,\dots$ subtend central angles $\varphi,\psi,\varphi,\psi,\dots$, ending with $\varphi$ if $n$ is odd (so $(n-m)\varphi+m\psi=2\pi$). Then each of $Q_1,Q_3,\dots,Q_{2m-1}$ has sides $a,b,a$ and a fourth side $d$, where
+\[a=2\sin\dfrac\varphi2,\qquad b=2\sin\dfrac\psi2,\qquad d=2\sin\left(\varphi+\dfrac\psi2\right),\]
+so it is tangential exactly when $2a=b+d$, i.e. $g(\psi)=2\sin\dfrac\varphi2-\sin\dfrac\psi2-\sin\left(\varphi+\dfrac\psi2\right)=0$. As $\psi\to0$, $g\to2\sin\dfrac\varphi2\left(1-\cos\dfrac\varphi2\right)>0$. At $\psi=\varphi=\dfrac{2\pi}{n}$ (the regular $n$-gon), $g=\sin\dfrac\pi n-\sin\dfrac{3\pi}n=-2\cos\dfrac{2\pi}{n}\sin\dfrac\pi n<0$, because $\dfrac{2\pi}{n}<\dfrac\pi2$ for $n\ge5$. By continuity some $\psi$ in between gives $g=0$, and then $m$ of the quadrilaterals are tangential. By the bound, exactly $m$ are.
+
+So the largest $k$ is $\boxed{\left\lfloor\dfrac n2\right\rfloor}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair[] A;real[] t={90,162,234,306,18};for(int i=0;i<5;++i)A[i]=dir(t[i]);
+draw(A[0]--A[1]--A[2]--A[3]--A[4]--cycle,linewidth(0.8));
+pair O=extension(A[0],A[3],A[1],A[4]);draw(A[0]--A[3],dashed);draw(A[1]--A[4],dashed);dot(O);
+for(int i=0;i<5;++i)label("$A_"+string(i+1)+"$",A[i],A[i]);label("$O$",O,SW,fontsize(8pt));
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+real phi=81.786789,psi=38.213211;real[] an={0,phi,phi+psi,2phi+psi,2phi+2psi,3phi+2psi};pair[] V;for(int i=0;i<6;++i)V[i]=dir(an[i]);
+fill(V[0]--V[1]--V[2]--V[3]--cycle,lightgray);draw(unitcircle,gray);
+for(int i=0;i<6;++i){draw(V[i]--V[(i+1)%6],linewidth(0.8));label("$A_"+string(i+1)+"$",V[i],V[i]);}
+draw(V[0]--V[3],dashed);draw(circle((-0.07143,0.37115),0.56695));
+label("$a$",(V[0]+V[1])/2,(V[0]+V[1])/2,fontsize(7pt));label("$b$",(V[1]+V[2])/2,(V[1]+V[2])/2,fontsize(7pt));label("$a$",(V[2]+V[3])/2,(V[2]+V[3])/2,fontsize(7pt));
+\end{asy}

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2506555_another_problem
+% Stable identity: aops-topic-2506555-q01
+We have $700000=7\cdot10^5=2^5\cdot5^5\cdot7$, so the divisors are $2^a5^b7^c$ with $0\le a,b\le5$ and $c\in\{0,1\}$. Modulo $3$, $2\equiv5\equiv-1$ and $7\equiv1$, so
+\[2^a5^b7^c\equiv(-1)^{a+b}\pmod3.\]
+Thus a divisor is $\equiv1\pmod3$ exactly when $a+b$ is even, and
+\[N=(1+7)\sum_{a+b\text{ even}}2^a5^b.\]
+To pick out the even values of $a+b$, use
+\[\sum_{a+b\text{ even}}2^a5^b=\dfrac12\left[\left(\sum_{a=0}^5 2^a\right)\left(\sum_{b=0}^5 5^b\right)+\left(\sum_{a=0}^5(-2)^a\right)\left(\sum_{b=0}^5(-5)^b\right)\right],\]
+since each term with $a+b$ even appears twice and each term with $a+b$ odd cancels. The four sums are
+\[\sum 2^a=63,\quad\sum5^b=3906,\quad\sum(-2)^a=\dfrac{1-(-2)^6}{3}=-21,\quad\sum(-5)^b=\dfrac{1-(-5)^6}{6}=-2604.\]
+So the sum is $\dfrac12(63\cdot3906+21\cdot2604)=\dfrac12(246078+54684)=150381$, and
+\[N=8\cdot150381=1203048=2^3\cdot3^2\cdot7^2\cdot11\cdot31,\]
+since $150381=9\cdot16709=9\cdot7^2\cdot341=3^2\cdot7^2\cdot11\cdot31$. The sum of the distinct prime factors is $2+3+7+11+31=\boxed{54}$.

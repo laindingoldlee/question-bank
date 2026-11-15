@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2594446_simple_geo_problem
+% Stable identity: aops-topic-2594446-q01
+$I$ is the incentre. The semiperimeter is $s=\dfrac{13+14+15}{2}=21$, and by Heron's formula the area is
+\[\sqrt{21\cdot7\cdot6\cdot8}=\sqrt{7056}=84,\qquad\text{so the inradius is}\qquad r=\dfrac{84}{21}=4.\]
+The tangent lengths from the vertices to the incircle are $s-BC=7$ from $A$, $s-CA=6$ from $B$ and $s-AB=8$ from $C$. Each vertex, the incentre and the nearby point of tangency form a right triangle with legs $r$ and the tangent length, so
+\[AI=\sqrt{4^2+7^2}=\sqrt{65},\qquad BI=\sqrt{4^2+6^2}=2\sqrt{13},\qquad CI=\sqrt{4^2+8^2}=4\sqrt5.\]
+Therefore
+\[\dfrac{AI\cdot BI}{CI}=\dfrac{2\sqrt{845}}{4\sqrt5}=\dfrac{2\cdot13\sqrt5}{4\sqrt5}=\boxed{\dfrac{13}{2}}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(14,0),A=(5,12),I=(6,4);
+draw(A--B--C--cycle,linewidth(0.8));draw(circle(I,4));
+draw(A--I,dashed);draw(B--I,dashed);draw(C--I,dashed);
+pair D=(6,0);
+pair F1=B+(A-B)*6/13, E1=C+(A-C)*8/15;
+draw(I--D,dotted);draw(I--E1,dotted);draw(I--F1,dotted);
+dot(I);dot(D);dot(E1);dot(F1);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$I$",I,SE);
+label("$6$",(3,0),S);label("$8$",(10,0),S);label("$7$",(A+F1)/2,W);label("$4$",(I+D)/2,E);
+\end{asy}
+
+(With $B=(0,0)$, $C=(14,0)$ and $A=(5,12)$, the incentre is $I=(6,4)$.)

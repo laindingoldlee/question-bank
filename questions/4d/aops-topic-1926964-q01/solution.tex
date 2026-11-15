@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1926964_2004_amc_10a_19
+% Stable identity: aops-topic-1926964-q01
+Cut the silo along a vertical line and unroll its side onto a flat plane. It becomes a rectangle $80$ feet tall whose width is the circumference $30\pi$ feet. The stripe winds around twice, so draw two copies of the unrolled side next to each other (the dashed line is where the second turn starts). In this picture the stripe becomes a single parallelogram running from the bottom left to the top right. (The width of the stripe is exaggerated: the picture is not to scale.)
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+real Wd=94.25,Hh=80,s=10;
+fill((0,0)--(s,0)--(2*Wd,Hh)--(2*Wd-s,Hh)--cycle,red);
+draw((0,0)--(2*Wd,0)--(2*Wd,Hh)--(0,Hh)--cycle,linewidth(0.9));
+draw((Wd,0)--(Wd,Hh),dashed);
+draw((0,-6)--(Wd,-6),Arrows(5));label("$30\pi$",(Wd/2,-6),S);
+draw((Wd,-6)--(2*Wd,-6),Arrows(5));label("$30\pi$",(1.5*Wd,-6),S);
+draw((-6,0)--(-6,Hh),Arrows(5));label("$80$",(-6,Hh/2),W);
+draw((0,7)--(s,7),Arrows(4));label("$3$",(s/2,7),NE);
+label("first copy",(Wd/2,Hh+2),N);label("second copy",(1.5*Wd,Hh+2),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Unrolling does not change areas or horizontal widths, because the surface is only bent, not stretched. The parallelogram has a horizontal side of length $3$ (the horizontal width of the stripe) and height $80$, so its area is
+\[
+3\cdot80=240 .
+\]
+Equivalently, every horizontal line at height between $0$ and $80$ meets the stripe in a segment of length $3$, so the area is $3\cdot80$ regardless of how steeply the stripe winds. The answer is $\boxed{\textbf{(C)}\ 240}$.

@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1726281_a_few_geo_questions
+% Stable identity: aops-topic-1726281-q04
+A quadrilateral with an inscribed circle has equal sums of opposite sides (equal tangent segments). So the two legs together equal $4+8=12$, and each leg is $6$.
+
+Drop a perpendicular from an end of the short base to the long base. It cuts off a segment of length $\dfrac{8-4}{2}=2$, so the height is $\sqrt{6^2-2^2}=\sqrt{32}=4\sqrt2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real h=4*sqrt(2),r=2*sqrt(2);
+pair A=(-4,0),B=(4,0),C=(2,h),D=(-2,h),Q=(2,0),O=(0,r);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(circle(O,r),blue+linewidth(0.8));
+draw(C--Q,dashed);draw(Q--Q+(-0.35,0)--Q+(-0.35,0.35)--Q+(0,0.35),linewidth(0.5));
+label("$4$",(D+C)/2,N);draw((-4,-1.2)--(4,-1.2),Arrows(4));label("$8$",(0,-1.2),S);label("$6$",(B+C)/2,E);
+label("$2$",(Q+B)/2,S);label("$4\sqrt2$",(C+Q)/2+(0,-0.6),W);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The circle touches both bases, which are parallel, so its diameter equals the distance between them, the height. The diameter is $\boxed{4\sqrt2}$.

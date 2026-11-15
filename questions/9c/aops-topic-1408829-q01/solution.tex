@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1408829_sum_of_integers
+% Stable identity: aops-topic-1408829-q01
+Write the numbers as $x<y<z$. Since $x+y\ge3$, we have $z\le24$, so the bound $25$ never matters. Put $x'=x-1$, $y'=y-2$, $z'=z-3$; then $0\le x'\le y'\le z'$ and $x'+y'+z'=27-6=21$. This is a bijection between our triples and the partitions of $21$ into at most three parts, which equals the number of partitions of $24$ into exactly three positive parts (add $1$ to each part).
+
+Count the partitions $p\le q\le r$ of $24$ into three positive parts by the smallest part $p$: the pair $(q,r)$ has $q\ge p$, $q\le r=24-p-q$, so $p\le q\le\left\lfloor\dfrac{24-p}{2}\right\rfloor$:
+\[
+\begin{array}{c|cccccccc}
+p&1&2&3&4&5&6&7&8\\ \hline
+\#&11&10&8&7&5&4&2&1
+\end{array}
+\]
+The total is $11+10+8+7+5+4+2+1=\boxed{48}$.
+
+(For a general formula: the number of partitions of $m$ into exactly three positive parts is the integer nearest to $\dfrac{m^2}{12}$; here $\dfrac{24^2}{12}=48$.)

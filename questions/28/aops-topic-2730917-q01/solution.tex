@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2730917_interesting_anglechasing_problem
+% Stable identity: aops-topic-2730917-q01
+By the angle bisector theorem, $\dfrac{CD}{DB}=\dfrac{CA}{AB}$ and $\dfrac{CE}{EA}=\dfrac{CB}{BA}$. Since $DE\parallel AB$, $\dfrac{CD}{DB}=\dfrac{CE}{EA}$, so $CA=CB$ and $\angle A=\angle B$. Let $\angle A=\angle B=2x$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(1,0),C=(0.5,0.5*Tan(48));
+pair D=extension(A,A+dir(24),B,C),E=extension(B,B+dir(180-24),A,C);
+draw(A--B--C--cycle,linewidth(0.8));draw(A--D);draw(B--E);draw(D--E,dashed);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,E);label("$E$",E,W);
+label("$x$",A+0.17*dir(36),fontsize(7pt));label("$x$",A+0.17*dir(12),fontsize(7pt));
+label("$x$",D+0.12*dir(205),fontsize(7pt));
+\end{asy}
+
+Since $DE\parallel AB$, $\angle ADE=\angle DAB=x$ (alternate angles). In triangle $ABD$, $\angle ADB=180^\circ-x-2x=180^\circ-3x$. So
+\[\dfrac{x}{180^\circ-3x}=\dfrac29\ \Longrightarrow\ 9x=360^\circ-6x\ \Longrightarrow\ x=24^\circ.\]
+Hence $\boxed{\angle A=\angle B=48^\circ,\ \angle C=84^\circ}$.

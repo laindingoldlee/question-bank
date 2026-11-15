@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2014816_circle_pizza_problem
+% Stable identity: aops-topic-2014816-q01
+The amount of pizza is proportional to its area, and the area of a circle is proportional to the square of its diameter.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),6),linewidth(0.9)); draw(circle((17,0),10),linewidth(0.9));
+draw((-6,0)--(6,0),blue,Arrows(5)); draw((7,0)--(27,0),blue,Arrows(5));
+label("$12$",(0,0),N,blue); label("$20$",(17,0),N,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the ratio of the amounts is
+\[
+\dfrac{\pi\cdot10^2}{\pi\cdot 6^2}=\dfrac{100}{36}=\dfrac{25}{9}.
+\]
+The larger pizza therefore provides $4\cdot\dfrac{25}{9}=\dfrac{100}{9}=11\dfrac{1}{9}$ meals' worth of pizza, which is $\boxed{11}$ full meals (with $\dfrac{1}{9}$ of a meal left over).

@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h1386166_amc_10_help
+% Stable identity: aops-topic-1386166-q22
+\textbf{The length $CF$.} Triangle $BCF$ has a right angle at $C$ and $\angle CBF=30^\circ$, so $\angle BFC=60^\circ$. The side opposite the $30^\circ$ angle is $CF$, the \emph{short} leg; $BC=10$ is opposite the $60^\circ$ angle, so it is the short leg times $\sqrt3$. Hence
+\[
+CF=\dfrac{BC}{\sqrt3}=\dfrac{10}{\sqrt3}=\dfrac{10\sqrt3}{3},\qquad BF=2\,CF=\dfrac{20\sqrt3}{3},
+\]
+and the solution is right; $10\sqrt3$ would make $CF$ the long leg, which is opposite the $60^\circ$ angle.
+
+\begin{asy}
+usepackage("amsmath");
+size(8.5cm);
+defaultpen(fontsize(10pt));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+real ce=10*(2-sqrt(3)), cf=10/sqrt(3);
+pair A=(0,0),B=(20,0),C=(20,10),D=(0,10),Ee=(20-ce,10),F=(20-cf,10);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(B--Ee,linewidth(0.8));
+draw(B--F,blue+dashed);
+draw(A--Ee,red+linewidth(0.8));
+draw(ra(C,B-C,D-C,0.9)); draw(ra(D,A-D,C-D,0.9));
+draw(arc(B,5.5,90,105)); draw(arc(B,6.0,105,120),blue);
+label("$15^\circ$",B+7.6*dir(97.5),fontsize(8pt));
+label("$15^\circ$",B+7.6*dir(112.5),blue+fontsize(8pt));
+dot(Ee); dot(F,blue);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$E$",Ee,N); label("$F$",F,N,blue);
+label("$20$",(10,0),S); label("$10$",(20,5),E);
+label("$20$",(A+Ee)/2,NW,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Finding $E$.} Since $BE$ bisects $\angle CBF$, the angle bisector theorem in triangle $BCF$ gives $\dfrac{CE}{EF}=\dfrac{BC}{BF}=\dfrac{\sqrt3}{2}$, so
+\[
+CE=\dfrac{\sqrt3}{2+\sqrt3}\,CF=\dfrac{10}{2+\sqrt3}=10(2-\sqrt3)=20-10\sqrt3 .
+\]
+(Equivalently, $CE=10\tan15^\circ=10(2-\sqrt3)$.) Then $DE=20-CE=10\sqrt3$, and in right triangle $ADE$,
+\[
+AE=\sqrt{AD^2+DE^2}=\sqrt{100+300}=\boxed{20}.
+\]

@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h3166099_2019_lmt_spring_guts_round_p25p36__lexington_mathematical_tournament
+% Stable identity: aops-topic-3166099-q34
+Grow polyominoes one square at a time along an exposed edge. Canonicalize every shape by translating each of its eight rotations and reflections to have minimum coordinates zero and choosing the lexicographically least coordinate tuple. This identifies exactly the allowed congruences. Every connected shape has a cell whose deletion leaves it connected (take a leaf of a spanning tree of its adjacency graph), so growth generates all shapes. The exact enumeration below yields $P(1),\ldots,P(6)=1,1,2,5,12,35$, hence $\boxed{P(5)+P(6)=47}$.\begin{verbatim}
+def canonical(shape):
+    forms=[]
+    for swap in [False,True]:
+        for sx in [-1,1]:
+            for sy in [-1,1]:
+                pts=[(sx*(y if swap else x),sy*(x if swap else y))
+                     for x,y in shape]
+                mx=min(x for x,y in pts);my=min(y for x,y in pts)
+                forms.append(tuple(sorted((x-mx,y-my) for x,y in pts)))
+    return min(forms)
+shapes={((0,0),)}
+counts=[1]
+for n in range(2,7):
+    new=set()
+    for shape in shapes:
+        cells=set(shape)
+        for x,y in shape:
+            for dx,dy in [(1,0),(-1,0),(0,1),(0,-1)]:
+                cell=(x+dx,y+dy)
+                if cell not in cells:new.add(canonical(cells|{cell}))
+    shapes=new
+    counts.append(len(shapes))
+assert counts==[1,1,2,5,12,35]
+\end{verbatim}
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[]v={(0,0),(1,0),(2,0),(1,1),(1,2)};for(pair p:v)filldraw(p--(p+(1,0))--(p+(1,1))--(p+(0,1))--cycle,lightgray);label("a five-square polyomino",(1.5,-.5));
+\end{asy}

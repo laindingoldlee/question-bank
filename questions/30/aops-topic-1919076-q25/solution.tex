@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1919076_most_commonly_missed_from_the_ice_cream_cake_mock_amc_8
+% Stable identity: aops-topic-1919076-q25
+Apply the recurrence repeatedly, starting from any index $n$:
+\[
+a_{n+2}=2a_{n+1}-2a_n,\qquad a_{n+3}=2a_{n+2}-2a_{n+1}=2a_{n+1}-4a_n,
+\]
+\[
+a_{n+4}=2a_{n+3}-2a_{n+2}=(4a_{n+1}-8a_n)-(4a_{n+1}-4a_n)=-4a_n .
+\]
+So every four steps multiply the term by $-4$. Since $2019=3+4\cdot504$ and $2020=4+4\cdot504$,
+\[
+a_{2019}=(-4)^{504}a_3=2^{1008}a_3,\qquad a_{2020}=2^{1008}a_4 .
+\]
+Now $a_3=2a_2-2$, so $2^{1008}(2a_2-2)=9\cdot2^{1009}$ gives $a_2-1=9$, i.e.\ $a_2=10$. Then $a_3=18$ and $a_4=2a_3-2a_2=36-20=16$, so
+\[
+a_{2020}=2^{1008}\cdot16=1\cdot2^{1012}.
+\]
+Thus $x=1$, $y=1012$ and $x+y=\boxed{\textbf{(E)}\ 1013}$.

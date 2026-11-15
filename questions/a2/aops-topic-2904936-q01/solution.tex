@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2904936_two_circles_area
+% Stable identity: aops-topic-2904936-q01
+The centres are $2$ apart, so each centre together with an intersection point forms an equilateral triangle, and each circle's arc inside the other subtends $120^\circ$.
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),P=(2,0);filldraw(circle(O,2),opacity(0.15)+gray);filldraw(circle(P,2),opacity(0.15)+gray);pair X=(1,sqrt(3)),Y=(1,-sqrt(3));draw(O--X--P--Y--cycle,dashed);draw(O--P);dot(O);dot(P);label("$O_x$",O,W);label("$O_y$",P,E);label("$2$",(1,0),S);
+\end{asy}
+
+The lens is twice a circular segment: $2\left(\dfrac{120}{360}\cdot4\pi-\dfrac{\sqrt3}4\cdot4\right)=\dfrac{8\pi}3-2\sqrt3$. The union has area $8\pi-\dfrac{8\pi}3+2\sqrt3=\dfrac{16\pi+6\sqrt3}3$, so $a+b=\boxed{22}$.

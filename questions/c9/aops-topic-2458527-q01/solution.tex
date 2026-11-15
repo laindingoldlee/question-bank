@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2458527_a_problem_i_made_would_like_feedback
+% Stable identity: aops-topic-2458527-q01
+Let $M$ be the midpoint of $AB$. Since $F$ is on line $EM$, which joins the midpoints of opposite sides of the square, $FM\perp AB$. Since $\angle AFB=90^\circ$, $F$ lies on the circle with diameter $AB$ (Thales), so $MF=MA=1$.
+
+So triangle $AFB$ has base $AB=2$ and height $MF=1$, and area $\dfrac12\cdot2\cdot1=1$. It lies outside the square (on the other side of $AB$), so the pentagon $AFBCD$ is the square together with this triangle:
+\[\text{area}=4+1=\boxed{5}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(2,0), C=(2,2), D=(0,2), Ep=(1,2), M=(1,0), F=(1,-1);
+fill(A--F--B--C--D--cycle,rgb(0.85,0.9,1));
+draw(A--B--C--D--cycle,linewidth(0.8)); draw(A--F--B,linewidth(0.9)+blue);
+draw(Ep--F,dashed); draw(arc(M,1,180,360),dotted);
+draw(F+0.15*dir(45)--F+0.15*dir(45)+0.15*dir(135)--F+0.15*dir(135));
+dot(Ep); dot(M); dot(F);
+label("$A$",A,W); label("$B$",B,E); label("$C$",C,NE); label("$D$",D,NW); label("$E$",Ep,N); label("$M$",M,NE); label("$F$",F,S);
+label("$1$",(M+F)/2,E); label("$2$",(A+D)/2,W);
+\end{asy}

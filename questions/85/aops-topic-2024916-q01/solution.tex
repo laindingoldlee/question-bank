@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2024916_cosine_and_sine
+% Stable identity: aops-topic-2024916-q01
+\textbf{(a)} Put $x=\dfrac{\alpha+\beta}{2}$ and $y=\dfrac{\alpha-\beta}{2}$, so $\alpha=x+y$ and $\beta=x-y$. By the addition formulas,
+\[
+\cos(x+y)=\cos x\cos y-\sin x\sin y,\qquad \cos(x-y)=\cos x\cos y+\sin x\sin y.
+\]
+Adding, $\cos\alpha+\cos\beta=2\cos x\cos y$, which is the claim.
+
+Geometrically: let $P=(\cos\alpha,\sin\alpha)$ and $Q=(\cos\beta,\sin\beta)$ on the unit circle, and let $M$ be the midpoint of $PQ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real al=75, be=15;
+pair O=(0,0), P=dir(al), Q=dir(be), M=(P+Q)/2;
+draw(unitcircle, gray);
+draw((-1.15,0)--(1.25,0), gray+linewidth(0.4)); draw((0,-0.3)--(0,1.2), gray+linewidth(0.4));
+draw(O--P, linewidth(0.8)); draw(O--Q, linewidth(0.8)); draw(P--Q, linewidth(0.8));
+draw(O--M, blue+linewidth(0.9));
+dot(O); dot(P); dot(Q); dot(M);
+label("$O$", O, SW); label("$P$", P, N); label("$Q$", Q, E); label("$M$", M, NE);
+draw(arc(O,0.25,0,be)); label("$\beta$", 0.33*dir(be/2), E, fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The $x$-coordinate of $M$ is $\dfrac{\cos\alpha+\cos\beta}{2}$. On the other hand, triangle $OPQ$ is isosceles, so $OM$ bisects $\angle POQ$: the ray $OM$ points in direction $\dfrac{\alpha+\beta}{2}$ and $OM=\cos\dfrac{\alpha-\beta}{2}$ (up to sign). So the $x$-coordinate of $M$ is also $\cos\dfrac{\alpha-\beta}{2}\cos\dfrac{\alpha+\beta}{2}$, matching the identity.
+
+\textbf{(b)} \textbf{No.} For $\alpha=\beta=0$ the left side is $\cos0+\cos0=2$ while $\cos(0+0)=1$. So $\cos\alpha+\cos\beta=\cos(\alpha+\beta)$ is not an identity; it holds only for special pairs of angles, such as $\alpha=60^\circ$, $\beta=-60^\circ$, where $\dfrac{1}{2}+\dfrac{1}{2}=1=\cos0^\circ$. The correct identity for a sum of cosines is the product formula in part (a).

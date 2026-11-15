@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1519968_geometry
+% Stable identity: aops-topic-1519968-q01
+Let the large cube be $n\times n\times n$ small cubes. On each face, the small cubes painted on that face only are the ones not on an edge of the large cube: an $(n-2)\times(n-2)$ square. So
+\[
+6(n-2)^2=216\qquad\Longrightarrow\qquad (n-2)^2=36\qquad\Longrightarrow\qquad n=8 .
+\]
+The small cubes with exactly two painted faces lie along the $12$ edges of the large cube, excluding the corner cubes (which have three painted faces), so each edge contributes $n-2=6$ of them. In the sketch of the front face, the one-face cubes are blue, the two-face cubes orange and the three-face corner cubes red:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+int n=8; pair k=(0.42,0.32);
+pair T(real x,real z){return (x,n)+z*k;}
+pair R(real z,real y){return (n,y)+z*k;}
+for(int i=0;i<n;++i) for(int j=0;j<n;++j){
+  bool ei=(i==0||i==n-1), ej=(j==0||j==n-1);
+  pen p=(ei&&ej)?rgb(0.95,0.55,0.55):((ei||ej)?rgb(1,0.85,0.5):rgb(0.75,0.85,1));
+  fill((i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle,p);
+}
+for(int i=1;i<n;++i){
+  draw((i,0)--(i,n),gray(0.45));draw((0,i)--(n,i),gray(0.45));
+  draw(T(i,0)--T(i,n),gray(0.45));draw(T(0,i)--T(n,i),gray(0.45));
+  draw(R(i,0)--R(i,n),gray(0.45));draw(R(0,i)--R(n,i),gray(0.45));
+}
+draw((0,0)--(n,0)--(n,n)--(0,n)--cycle,linewidth(1));
+draw(T(0,0)--T(0,n)--T(n,n)--T(n,0),linewidth(1));
+draw(R(0,0)--R(n,0)--R(n,n),linewidth(1));
+label("$8$",(n/2,0),S);label("$8$",(0,n/2),W);label("$8$",R(n/2,0),SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence the number of small cubes painted on exactly two faces is $12\cdot6=\boxed{72}$.

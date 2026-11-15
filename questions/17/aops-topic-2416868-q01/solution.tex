@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2416868_i_came_up_with_a_conjecture_that_is_probably_wrong
+% Stable identity: aops-topic-2416868-q01
+\textbf{(a)} For $n=3$, $2^3-7=1$ is not prime.
+
+If $n\ge4$ is even, say $n=2k$, then $2^n=4^k\equiv1\pmod3$, so $2^n-7\equiv1-7=-6\equiv0\pmod3$. Since $2^n-7\ge9>3$, it is composite.
+
+If $n\ge5$ and $n\equiv1\pmod4$, write $n=4k+1$; then $2^n=2\cdot16^k\equiv2\pmod5$, so $2^n-7\equiv-5\equiv0\pmod5$. Since $2^n-7\ge25>5$, it is composite.
+
+The remaining $n\ge3$ are those with $n\equiv3\pmod4$, so a prime value needs $n\equiv3\pmod4$ (and $n\ge7$). $\blacksquare$
+
+\textbf{(b)} By (a), only $n=7,11,15,19$ need checking:
+\[2^7-7=121=11^2,\quad2^{11}-7=2041=13\cdot157,\quad2^{15}-7=32761=181^2,\quad2^{19}-7=524281=269\cdot1949.\]
+All are composite, so $\boxed{2^n-7\text{ is composite for every }3\le n\le20}$, and the conjecture holds in this range.
+
+(Remark: the conjecture is nevertheless false. A computer check shows that the smallest counterexample is $n=39$: $2^{39}-7=549755813881$ is prime.)

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1612495_coconut_rolling_competition
+% Stable identity: aops-topic-1612495-q02
+Rolling without slipping, the coconut moves forward one circumference, $2\pi\cdot7=14\pi$ cm, per revolution.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real r=7;
+draw((-12,0)--(60,0),linewidth(0.9));
+draw(circle((0,r),r),linewidth(0.9));dot((0,r));
+draw((0,r)--(0,0),blue);label("$7$",(0,r/2),E,blue);
+draw(circle((50,r),r),dashed);dot((50,r));
+draw((0,r)--(50,r),gray,Arrow(TeXHead));
+label("rolls without slipping",(25,r),N,gray+fontsize(9pt));
+draw((0,-3)--(50,-3),red,Arrows(TeXHead));label("distance travelled",(25,-3),S,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So during the first second its speed is $10\cdot14\pi=140\pi$ cm per second, and during the $k$-th second it is
+\[
+140\pi-10\pi(k-1)\ \text{cm per second},\qquad k=1,2,\dots,10,
+\]
+that is $140\pi,130\pi,\dots,50\pi$ (all positive, so the coconut is still rolling at the end). Each speed lasts one second, so the distance is the sum of this arithmetic sequence:
+\[
+\dfrac{10\left(140\pi+50\pi\right)}{2}=\boxed{950\pi\text{ cm}}\approx29.8\text{ m}.
+\]

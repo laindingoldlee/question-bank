@@ -1,0 +1,12 @@
+Multiplying by $2026b$ shows that $b$ divides
+\[
+2026\cdot2048=2^{12}\cdot1013,
+\]
+where $1013$ is prime. Conversely, for any such divisor $b$, set $d=\dfrac{2^{12}\cdot1013}{b}$. The permitted values of $a$ are precisely $1\le a<b$ with $a\equiv-d\pmod{2026}$.
+
+Every divisor is in exactly one of two families.
+\begin{itemize}
+\item If $b=2^j$, $0\le j\le11$, then $d$ is a multiple of $2026$, so $a$ must be a positive multiple of $2026$ below $b$. This gives none for $j\le10$ and one for $j=11$. At $j=12$, $d=1013$, so $a=1013,3039$, giving two more. This family contributes $3$.
+\item If $b=1013\cdot2^j$, then $d=2^{12-j}$. At $j=0$ there is no valid $a$: its least positive residue is $1982>b$. For $1\le j\le12$, $b=2026\cdot2^{j-1}$ and $d$ is not divisible by $2026$. Therefore each of the $2^{j-1}$ complete residue blocks contributes one valid $a$, giving $\sum_{j=1}^{12}2^{j-1}=4095$.
+\end{itemize}
+The total is $\boxed{4098}$.

@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1446016_counting_question
+% Stable identity: aops-topic-1446016-q01
+Call an ordered pair $(X,Y)$ with $Y$ the clockwise neighbour of $X$ in the original seating a \emph{link}; there are $8$ links $AB,BC,\dots,HA$. A student $X$ keeps both neighbours exactly when the two links on either side of $X$ (from the previous student to $X$, and from $X$ to the next) both appear, in the same direction, in the new seating.
+
+\textbf{Counting seatings that contain given links.} If a set of $j<8$ links must appear, the students are glued into $8-j$ blocks, which can be arranged around the table in $(8-j-1)!$ ways (up to rotation). If $j\ge7$ all links are forced, and only the original seating remains.
+
+\textbf{Sets of students.} For a set $T$ of $t$ students that are required to keep both neighbours, look at the students of $T$ around the original circle: they form $c$ runs of consecutive students. A run of $m$ students needs $m+1$ links, so $T$ needs $t+c$ links when $t<8$. The number of $t$-subsets of the $8$-cycle with $c$ runs is
+\[
+N(t,c)=\dfrac{8}{c}\dbinom{t-1}{c-1}\dbinom{8-t-1}{c-1}
+\]
+(choose the run lengths, a composition of $t$ into $c$ parts, and the gap lengths, a composition of $8-t$ into $c$ parts, and place them on the circle; each subset is obtained $c$ times from the $8$ starting positions).
+
+\textbf{Inclusion--exclusion.} Let $s_t$ be the sum, over all $t$-sets $T$, of the number of seatings in which every student of $T$ keeps both neighbours. Using $(8-t-c-1)!$ seatings for $t+c\le6$ and $1$ seating for $t+c\ge7$:
+\[
+\begin{array}{c|l|r}
+t & \text{terms } N(t,c)\times\text{seatings} & s_t\\ \hline
+1 & 8\cdot5! & 960\\
+2 & 8\cdot4!+20\cdot3! & 312\\
+3 & 8\cdot3!+32\cdot2!+16\cdot1! & 128\\
+4 & 8\cdot2!+36\cdot1+24\cdot1+2\cdot1 & 78\\
+5 & 8+32+16 & 56\\
+6 & 8+20 & 28\\
+7 & 8 & 8\\
+8 & 1 & 1
+\end{array}
+\]
+(For $t=4$ the term $c=4$ is the two alternating sets, for which all $8$ links are forced.) By inclusion--exclusion the number of seatings in which at least one student keeps both neighbours is
+\[
+960-312+128-78+56-28+8-1=\boxed{733}.
+\]

@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3129723_2023_abmc_team_rounds_59__actonboxborough_math_competition
+% Stable identity: aops-topic-3129723-q05
+A nonvertical tangent to the first parabola has equation $y=mx-4m^2$, touching at $(8m,4m^2)$. A nonhorizontal tangent to the second can be written $y=\dfrac{x}{n}+4n$. Neither a vertical nor a horizontal line can be tangent to both. Equality of slopes and intercepts gives $n=\dfrac{1}{m}$ and $-4m^2=\dfrac{4}{m}$, hence $m=-1$. Thus $A=(-8,4),B=(4,-8)$. The nonzero intersection is $C=(16,16)$, found by substituting one parabola into the other. The determinant area is $\dfrac{1}{2}|12\cdot12-(-12)\cdot24|=\boxed{216}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+import graph;
+draw(graph(new real(real x){return x*x/16;},-10,18));draw(rotate(90)*reflect((0,0),(1,0))*graph(new real(real x){return x*x/16;},-10,18));pair A=(-8,4),B=(4,-8),C=(16,16);draw(A--B--C--cycle,blue);label("$A$",A,W);label("$B$",B,S);label("$C$",C,NE);
+\end{asy}

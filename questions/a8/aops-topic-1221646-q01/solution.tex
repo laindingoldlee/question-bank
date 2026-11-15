@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1221646_ant_crawling_up_the_great_pyramid
+% Stable identity: aops-topic-1221646-q01
+The shortest path up a face is the slant height, from the midpoint of a base edge to the apex. It is the hypotenuse of a right triangle with legs $481$ (height) and $378$ (half the base):
+\[\sqrt{481^2+378^2}=\sqrt{374245}\approx611.76.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),T=(0,4.81),M=(3.78,0),Mn=(-3.78,0); draw(Mn--M--T--cycle,linewidth(1)); draw(O--T,dashed); draw(T--M,red+linewidth(1.5));
+label("$481$",(0,2.4),W); label("$378$",(1.9,0),S); label("apex",T,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The difference is $611.76-481\approx\boxed{130.8}$ feet.

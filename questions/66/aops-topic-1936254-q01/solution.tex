@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1936254_how_does_the_triangle_inequality_work
+% Stable identity: aops-topic-1936254-q01
+(a) Let triangle $ABC$ have sides $a=BC$, $b=CA$, $c=AB$, and suppose $b$ is a longest side. Then $\angle B$ is a largest angle. If $\angle A$ or $\angle C$ were at least $90^\circ$, then $\angle B$ would be too, and the angle sum would exceed $180^\circ$. So the angles at $A$ and $C$ are acute, and the foot $H$ of the altitude from $B$ lies strictly between $A$ and $C$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),C=(7,0),B=(2.2,2.6),H=(2.2,0);
+draw(A--B--C--cycle,linewidth(1));
+draw(B--H,dashed);draw(H+(0.25,0)--H+(0.25,0.25)--H+(0,0.25));
+label("$A$",A,SW);label("$C$",C,SE);label("$B$",B,N);label("$H$",H,S);
+label("$c$",(A+B)/2,NW);label("$a$",(B+C)/2,NE);label("$b$",(A+C)/2+(0.8,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the right triangles $ABH$ and $CBH$ the hypotenuses are longer than the legs, because $BH>0$: $c>AH$ and $a>HC$. Adding, $a+c>AH+HC=b$. The other two inequalities $a+b>c$ and $b+c>a$ are immediate, since $b$ is at least as long as $a$ and $c$ and all sides are positive. So each side is less than the sum of the other two, with strict inequality.
+
+(b) For three positive lengths it is enough to check that the longest is less than the sum of the other two. $(3,4,5)$: $3+4>5$, so it is a triangle. $(2,3,6)$: $2+3<6$, not a triangle. $(2,3,5)$: $2+3=5$, which is not a triangle: by (a) a genuine triangle needs strict inequality, and lengths with $AB+BC=AC$ force $B$ to lie on segment $AC$, a ``flattened'' triangle. So only $\boxed{(3,4,5)}$ works.

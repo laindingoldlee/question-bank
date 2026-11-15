@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1495204_points_and_plane
+% Stable identity: aops-topic-1495204-q01
+Take a regular pentagram: the $5$ lines are the lines of its sides, and the $10$ points are its $5$ tips and the $5$ vertices of the inner pentagon.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+int n=5; pair[] T; for(int k=0;k<n;++k) T.push(dir(90+360k/n));
+pair[] I; for(int k=0;k<n;++k) I.push(extension(T[k],T[(k+2)%n],T[(k+1)%n],T[(k+3)%n]));
+for(int k=0;k<n;++k){ pair u=T[k],v=T[(k+2)%n]; draw(u+0.1*(u-v)--v+0.1*(v-u),blue+linewidth(0.8)); }
+
+for(int k=0;k<n;++k){ dot(T[k],linewidth(4.5)); dot(I[k],linewidth(4.5)); }
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Number the tips $T_0,\dots,T_4$ around the circle. The $5$ lines are $T_kT_{k+2}$ (indices mod $5$), and the inner points are the crossings of consecutive lines $T_kT_{k+2}$ and $T_{k+1}T_{k+3}$. Each line contains exactly $2$ tips, its endpoints, and exactly $2$ inner points, where it crosses the two lines whose chords cross it inside the circle (the other two lines meet it at its own tips). So each line has exactly $4$ of the points.
+
+Equivalently: $5$ lines in general position (no two parallel, no three concurrent) meet in $\dbinom52=10$ points, and each line meets the other $4$ lines in $4$ different points.
+
+(Read literally, ``the points determine exactly $5$ lines'' is impossible: any two of the points determine a line, and $5$ lines with $4$ points each cover only $5\cdot\dbinom{4}{2}=30$ of the $\dbinom{10}{2}=45$ pairs of points. So, as in the classical tree-planting puzzles, we only require the stated lines; other lines through two of the points are not counted.)

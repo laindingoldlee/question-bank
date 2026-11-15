@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2661618_equation_with_clever_trick
+% Stable identity: aops-topic-2661618-q01
+Group the factors:
+\[\left[(b+c)^2-a^2\right]\left[a^2-(b-c)^2\right]=2a^2\left(b^2+c^2\right)-\left(b^2-c^2\right)^2-a^4=2a^2b^2+2b^2c^2+2c^2a^2-a^4-b^4-c^4.\]
+So the equation is equivalent to
+\[a^4+b^4+c^4+2a^2b^2-2b^2c^2-2c^2a^2=0,\qquad\text{i.e.}\qquad\left(a^2+b^2-c^2\right)^2=0,\]
+so $c^2=a^2+b^2$. (Geometrically: the conditions say $a,b,c$ are the sides of a triangle, the left side is $16K^2$ by Heron's formula, so $K=\dfrac12ab$ and the angle between $a$ and $b$ is $90^\circ$.) Conversely, for any $a,b>0$ the numbers $a,b,c=\sqrt{a^2+b^2}$ are the sides of a right triangle and satisfy all the conditions.
+
+With $a+b=10$: $c^2=(a+b)^2-2ab=100-2ab$.
+
+\textbf{(a)} By AM-GM, $ab\le\left(\dfrac{a+b}2\right)^2=25$, so $c^2\ge50$ and $c\ge5\sqrt2$, with equality for $a=b=5$. The minimum is $\boxed{5\sqrt2}$.
+
+\textbf{(b)} Since $ab>0$, $c^2<100$ and $c<10$. Taking $a=\varepsilon$, $b=10-\varepsilon$ gives $c^2=100-2\varepsilon(10-\varepsilon)$, which tends to $100$ as $\varepsilon\to0$. So $c$ can be arbitrarily close to $10$ but never equals it: $c$ has no maximum. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),A=(3,0),B=(0,2);
+draw(A--B--C--cycle,linewidth(0.8));draw((0.22,0)--(0.22,0.22)--(0,0.22));
+label("$a$",(A+C)/2,S);label("$b$",(B+C)/2,W);label("$c$",(A+B)/2,NE);
+label("$c^2=a^2+b^2$",(1.9,1.5),fontsize(8pt));
+\end{asy}

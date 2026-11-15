@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1658475_number_theory_problem
+% Stable identity: aops-topic-1658475-q01
+Write $n=p_1^{e_1}p_2^{e_2}\cdots p_k^{e_k}$ with distinct primes $p_i$ and $e_i\ge1$. Then $n$ has $(e_1+1)\cdots(e_k+1)$ divisors. Put $f_i=e_i+1\ge2$; we need $f_1f_2\cdots f_k=2016=2^5\cdot3^2\cdot7$. Let $n$ be the smallest such number.
+
+\textbf{Step 1 (shape).} The primes of $n$ are the first $k$ primes $2,3,5,\dots$, with $e_1\ge e_2\ge\dots\ge e_k$ on $p_1=2<p_2=3<\dots$. Otherwise we could replace a prime by a smaller unused one, or swap two exponents, keeping the number of divisors and making $n$ smaller.
+
+\textbf{Step 2 (eight primes).} Each $f_i\ge2$ and $2016$ is a product of $8$ primes (counted with multiplicity), so $k\le8$. If $k=8$, every $f_i$ is prime, and in decreasing order $(f_i)=(7,3,3,2,2,2,2,2)$, which gives
+\[
+N=2^6\cdot3^2\cdot5^2\cdot7\cdot11\cdot13\cdot17\cdot19 .
+\]
+
+\textbf{Step 3 (splitting a factor).} Suppose $k\le7$, and let $q$ be the smallest prime not dividing $n$; then $q\le19$. If some $f_i=ab$ with $a,b\ge2$, replace $p_i^{ab-1}$ by $p_i^{a-1}q^{b-1}$. The number of divisors is unchanged, and the number is multiplied by $\left(\dfrac{q}{p_i^{a}}\right)^{b-1}$. By minimality this is not less than $1$, so $p_i^a<q\le19$ (equality is impossible, as $p_i^a$ with $a\ge2$ is not prime). Take $a$ to be the largest proper divisor of $f_i$. Then:
+\begin{itemize}
+\item $p_i\ge5$ is impossible ($5^2>19$), so only $2$ and $3$ can carry a composite $f_i$;
+\item for $p_i=3$ we need $a\le2$, so $f_2=4$;
+\item for $p_i=2$ we need $a\le4$, so $f_1\in\{4,6,8,9\}$.
+\end{itemize}
+
+\textbf{Step 4 (where is the $7$?).} Some $f_i$ is divisible by $7$. None of $4,6,8,9$ is, so some $f_i$ equals $7$.
+\begin{itemize}
+\item If $f_1=7$: if also $f_2$ were prime, all the $f_i$ would be prime and $k=8$. So $f_2=4$, and the rest are primes with product $\dfrac{2016}{28}=72$: the pattern is $(7,4,3,3,2,2,2)$, that is $N_1=2^6\cdot3^3\cdot5^2\cdot7^2\cdot11\cdot13\cdot17$.
+\item If $f_1\ne7$, then $f_1\ge7$ forces $f_1\in\{8,9\}$, and $f_2\ge7$ (the $7$ is $f_2$ or comes later), so $f_2=7$. The remaining factors are primes with product $\dfrac{2016}{56}=36$ or $\dfrac{2016}{63}=32$. This gives $(8,7,3,3,2,2)$, $N_2=2^7\cdot3^6\cdot5^2\cdot7^2\cdot11\cdot13$, or $(9,7,2,2,2,2,2)$, $N_3=2^8\cdot3^6\cdot5\cdot7\cdot11\cdot13\cdot17$.
+\end{itemize}
+
+\textbf{Step 5 (compare).}
+\[
+\dfrac{N_1}{N}=\dfrac{3\cdot7}{19}>1,\qquad \dfrac{N_2}{N}=\dfrac{2\cdot3^4\cdot7}{17\cdot19}=\dfrac{1134}{323}>1,\qquad \dfrac{N_3}{N}=\dfrac{2^2\cdot3^4}{5\cdot19}=\dfrac{324}{95}>1 .
+\]
+So no number with $k\le7$ primes beats $N$, and the answer is
+\[
+\boxed{2^6\cdot3^2\cdot5^2\cdot7\cdot11\cdot13\cdot17\cdot19}=4655851200 .
+\]

@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1874101_question_about_textp224
+% Stable identity: aops-topic-1874101-q01
+The answer is $\boxed{\text{(c)}}$. Let $g(x)=f(2x)$. Then
+\[
+f(2x-6)=f\bigl(2(x-3)\bigr)=g(x-3).
+\]
+If $(p,q)$ is on the graph of $y=g(x)$, then $g\bigl((p+3)-3\bigr)=g(p)=q$, so $(p+3,q)$ is on the graph of $y=g(x-3)$. Conversely, if $(s,q)$ is on the graph of $y=g(x-3)$, then $g(s-3)=q$, so $(s-3,q)$ is on the graph of $y=g(x)$. Thus the second graph is exactly the first one moved $3$ units to the right, and the observation about $(2,8)$ and $(5,8)$ is no coincidence.
+
+The figure shows this for one example of a function $f$ with $f(4)=8$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real g(real x){return 8+3*(x-2)-(x-2)^3;}
+real h(real x){return g(x-3);}
+draw((-0.4,0)--(7.3,0),Arrow);draw((0,-0.4)--(0,11.3),Arrow);
+label("$x$",(7.3,0),E);label("$y$",(0,11.3),N);
+draw(graph(g,0.4,3.2),blue+linewidth(1));draw(graph(h,3.4,6.2),red+linewidth(1));
+draw((0,8)--(2,8),dotted);draw((2,0)--(2,8),dotted);draw((5,0)--(5,8),dotted);
+draw((2,8)--(5,8),Arrow(6));label("$3$",(3.5,8),N);
+dot((2,8),blue);dot((5,8),red);
+label("$2$",(2,0),S);label("$5$",(5,0),S);label("$8$",(0,8),W);
+label("$y=f(2x)$",(3,10),N,blue);label("$y=f(2x-6)$",(6.2,g(3.2)),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The shift is $3=\dfrac{6}{2}$, not $6$, because the $6$ is subtracted \emph{after} $x$ has been multiplied by $2$: to get the same input $2x-6$ for $f$ as the input $2x$ gave before, $x$ must increase by $3$. In general, for $b\ne0$ the graph of $y=f(bx-c)=f\left(b\left(x-\dfrac {c}{b}\right)\right)$ is the graph of $y=f(bx)$ shifted $\dfrac {c}{b}$ units to the right.

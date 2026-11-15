@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2670574_some_actually_good_proving_problems
+% Stable identity: aops-topic-2670574-q05
+Suppose the seven pieces formed a rectangle. Its area is $7\cdot4=28$, so its sides are $1\times28$, $2\times14$ or $4\times7$; in each case one side is even. Colour the grid like a chessboard. Every row of even length (or every column of even length) has equally many cells of each colour, so the rectangle has exactly $14$ dark and $14$ light cells.
+
+Now count the colours covered by each piece, in any position:
+\begin{itemize}
+\item $I$, $O$, $S$, $Z$, $L$ and $J$ can each be cut into two dominoes, and a domino always covers one dark and one light cell. So each of these six pieces covers $2$ dark and $2$ light cells.
+\item $T$ consists of a centre cell and three cells adjacent to it, which all have the colour opposite to the centre. So $T$ covers $3$ cells of one colour and $1$ of the other.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+void sq(pair p,bool blk){filldraw(shift(p)*unitsquare,blk?gray(0.35):white,black);}
+sq((0,1),false);sq((1,1),true);sq((2,1),false);sq((1,0),false);
+sq((7,0),true);sq((7,1),false);sq((7,2),true);sq((8,0),false);
+draw((7,1)--(8,1),linewidth(2));
+label("$T$: $1$ dark, $3$ light",(1.5,-0.2),S,fontsize(8pt));label("$L$: two dominoes",(8,-0.2),S,fontsize(8pt));
+\end{asy}
+
+Hence the seven pieces cover $12+3=15$ or $12+1=13$ dark cells, never $14$. This contradiction shows that no such rectangle exists. $\blacksquare$

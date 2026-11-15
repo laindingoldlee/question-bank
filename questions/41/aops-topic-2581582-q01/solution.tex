@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2581582_writing_numbers_in_5x120_board_ukraine_1998_grade_8_p6
+% Stable identity: aops-topic-2581582-q01
+By (i) each row is an arrangement of $1,2,3,4,5$, and there are exactly $5!=120$ such arrangements. So by (ii) the rows must be all $120$ arrangements, each once. We arrange them so that (iii) also holds.
+
+\emph{Cyclic shifts.} For an arrangement $\sigma=\left(s_1,s_2,s_3,s_4,s_5\right)$, its cyclic shifts are
+\[\left(s_1,s_2,s_3,s_4,s_5\right),\ \left(s_2,s_3,s_4,s_5,s_1\right),\ \dots,\ \left(s_5,s_1,s_2,s_3,s_4\right).\]
+These $5$ arrangements are different, because the entries of $\sigma$ are different. Being cyclic shifts of each other splits the $120$ arrangements into $\dfrac{120}{5}=24$ classes of $5$.
+
+\emph{The board.} For each class choose one member $\sigma$ and write a $5\times5$ block whose entry in row $i$ and column $j$ is $s_{i+j-1}$, with indices taken modulo $5$ (in $1,\dots,5$). Row $i$ of the block is the $i$th cyclic shift of $\sigma$. Stack the $24$ blocks to form the $5\times120$ board. Every arrangement appears exactly once as a row, so (i) and (ii) hold.
+
+\emph{Condition (iii).} Cut the board into the $24$ blocks and place them side by side. The entry $s_{i+j-1}$ is symmetric in $i$ and $j$, so the columns of a block are the same $5$ cyclic shifts of $\sigma$ as its rows. Hence the $120$ columns of the new board are again all $120$ arrangements, each once, and they are distinct. $\blacksquare$

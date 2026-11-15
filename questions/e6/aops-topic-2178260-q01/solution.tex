@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2178260_square_inscribed_inside_hexagon
+% Stable identity: aops-topic-2178260-q01
+Place the hexagon with centre $O$ at the origin and vertices $(\pm1,0)$, $\left(\pm\dfrac{1}{2},\pm\dfrac{\sqrt3}{2}\right)$, so that its top and bottom sides are horizontal; then the square has horizontal and vertical sides. Let its side be $s$.
+
+\emph{The square is centred at $O$.} At each height $y$ with $|y|<\dfrac{\sqrt3}{2}$, the boundary of the hexagon consists of exactly two points, $\left(\pm\left(1-\dfrac{|y|}{\sqrt3}\right),\,y\right)$. No vertex of the square lies on the top side $y=\dfrac{\sqrt3}{2}$: otherwise the (horizontal) top side of the square would lie along it, so both upper vertices would have $|x|\le\dfrac{1}{2}$; the lower vertices, directly below them, would also have $|x|\le\dfrac{1}{2}$, and the only such boundary points lie on the bottom side, so $s=\sqrt3$, longer than the top side of the hexagon, which has length $1$. Likewise no vertex lies on the bottom side. So the two upper vertices are the two boundary points at some height $y_1$, and the two lower vertices are the two boundary points at some height $y_2<y_1$. The square's top and bottom sides have equal lengths, $2\left(1-\dfrac{|y_1|}{\sqrt3}\right)=2\left(1-\dfrac{|y_2|}{\sqrt3}\right)$, so $|y_1|=|y_2|$, hence $y_2=-y_1$, and the square has vertices $\left(\pm\dfrac {s}{2},\pm\dfrac {s}{2}\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair[] V; for(int k=0;k<6;++k) V.push(dir(60*k));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,linewidth(0.9));
+real h=(3-sqrt(3))/2;
+pair P=(h,h),Q=(-h,h),R=(-h,-h),T=(h,-h),O=(0,0),F=(h,0);
+draw(P--Q--R--T--cycle,blue+linewidth(1));
+draw(O--V[0],gray+dashed); draw(P--F,red+dashed);
+draw(F--V[0],red+linewidth(1));
+dot(P);dot(Q);dot(R);dot(T);dot(O);dot(F);
+label("$O$",O,SW); label("$V$",V[0],E); label("$P$",P,NE); label("$F$",F,SW,fontsize(9pt));
+label("$\dfrac{s}{2}$",(P+F)/2,W,red+fontsize(9pt));
+label("$1-\dfrac{s}{2}$",(0.785,-0.02),S,red+fontsize(7pt));
+draw(arc(V[0],0.14,120,180)); label("$60^\circ$",V[0]+0.2*dir(150),W,fontsize(7pt));
+label("$s$",(P+Q)/2,S,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the vertex $P=\left(\dfrac {s}{2},\dfrac {s}{2}\right)$ lies on side $VV'$ from $V=(1,0)$ to $V'=\left(\dfrac{1}{2},\dfrac{\sqrt3}{2}\right)$, which makes a $60^\circ$ angle with the $x$-axis. In the right triangle $PFV$ with $F=\left(\dfrac {s}{2},0\right)$,
+\[\dfrac{s}{2}=\sqrt3\left(1-\dfrac {s}{2}\right),\qquad\text{so}\qquad \dfrac {s}{2}\left(1+\sqrt3\right)=\sqrt3,\qquad s=\dfrac{2\sqrt3}{\sqrt3+1}=\sqrt3\left(\sqrt3-1\right).\]
+The side length is
+\[s=\boxed{3-\sqrt3}\text{ cm}\approx1.27\text{ cm}.\]

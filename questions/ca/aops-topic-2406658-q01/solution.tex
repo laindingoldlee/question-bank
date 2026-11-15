@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2406658_polygon_points
+% Stable identity: aops-topic-2406658-q01
+Number the vertices $0,1,\dots,2n-1$ around the polygon; vertex $k$ is opposite vertex $k+n$ (indices mod $2n$). Each move marks one pair of opposite vertices, one circled and one crossed out, so at the end every pair of opposite vertices has \emph{different} marks.
+
+\emph{Necessity.} If no two adjacent vertices have the same mark, the marks alternate around the polygon (this is consistent because $2n$ is even), so vertex $k$ has the same mark as vertex $0$ exactly when $k$ is even. Vertices $0$ and $n$ are opposite, so they have different marks, which forces $n$ to be odd.
+
+\emph{Sufficiency.} Let $n$ be odd. Circle the vertices $0,2,4,\dots,2n-2$ one at a time. Each of them is unmarked when chosen, and its opposite vertex $2j+n$ is odd, hence also unmarked; it gets crossed out. After $n$ moves the even vertices are circled and the odd ones are crossed out, so the marks alternate. The figure shows $n=3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair[] V; for(int k=0;k<6;++k) V.push(dir(90-60k));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,linewidth(0.8));
+for(int k=0;k<3;++k) draw(V[k]--V[k+3],gray+dashed);
+for(int k=0;k<6;++k){
+  if(k%2==0){ filldraw(circle(V[k],0.1),white,blue+linewidth(1)); }
+  else { draw(V[k]+0.09*(-1,-1)--V[k]+0.09*(1,1),red+linewidth(1)); draw(V[k]+0.09*(-1,1)--V[k]+0.09*(1,-1),red+linewidth(1)); }
+  label("$"+string(k)+"$",1.25*V[k]);
+}
+\end{asy}
+
+So it can be done exactly when $\boxed{n\text{ is odd}}$, that is, when the number of sides is $6,10,14,\dots$ (twice an odd number).

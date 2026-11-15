@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2735753_happy_and_sad_participants
+% Stable identity: aops-topic-2735753-q01
+For each non-champion $X$, follow the chain $X\to Y_1\to Y_2\to\cdots\to Y_k=$ champion, where each player was beaten by the next. $X$ cheers against $Y_1$, for $Y_2$, against $Y_3$, and so on, so $X$ is happy exactly when $k$ is even. Give the champion depth $0$; then the happy players are exactly those of even depth.
+
+Let $D_n(d)$ be the number of players at depth $d$ in a tournament of $2^n$ players. The final is played between the champions of two half-tournaments of $2^{n-1}$ players. The winner's half keeps its depths. Every player of the loser's half is one step farther from the champion, because the chain from that half's champion now continues to the final winner. So
+\[D_n(d)=D_{n-1}(d)+D_{n-1}(d-1),\qquad D_0(0)=1.\]
+This is Pascal's rule, so $D_n(d)=\dbinom nd$. Hence the number of happy players is
+\[\sum_{d\text{ even}}\dbinom nd=2^{n-1}\qquad(n\ge1).\ \blacksquare\]

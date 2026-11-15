@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h3154497_ryanbear_math_story__contest
+% Stable identity: aops-topic-3154497-q402
+For each permitted $ x $, the left side is a positive integer $ N $. It is a square exactly when $\lfloor\sqrt N\rfloor^2=N $, testable by integer square root. Exhausting all 21 cases yields:
+\begin{verbatim}
+from math import isqrt
+solutions=[]
+for x in range(21):
+    N=1+2**x+2**(2*x+1)
+    q=isqrt(N)
+    if q*q==N:solutions.extend([(x,-q),(x,q)])
+assert solutions==[(0,-2),(0,2),(4,-23),(4,23)]
+\end{verbatim}
+Thus $\boxed{(x,y)=(0,\pm2),(4,\pm23)}$. Substitution verifies all four pairs.

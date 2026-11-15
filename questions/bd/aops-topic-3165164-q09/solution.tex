@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3165164_2022_moaa_accuracy_round__math_open_at_andover
+% Stable identity: aops-topic-3165164-q09
+Place $P=(0,0)$, $A=(2,0)$, $B=(0,t)$ with $t>0$, and $C=(u,v)$, where $u^2+v^2=81$. Then $D=(u+2,v-t)$. The second right angle gives $C\cdot D=0$, hence $tv=81+2u$. Since $P$ is interior, consecutive cross products have the same positive sign: $u<0$ and $t>v$. The equal-length parallel sides $BC,AD$ make the distance ratio equal to the ratio of their triangle areas with $P$, so $-tu=6\cdot2(t-v)$. Thus $12v=t(u+12)$. Combining with $tv=81+2u$ and $v^2=81-u^2$ yields $12(81-u^2)=(81+2u)(u+12)$, or $7u(2u+15)=0$. As $u<0$, $u=-\dfrac{15}{2}$, then $v=\dfrac{3\sqrt{11}}{2}$ and $t=4\sqrt{11}$. The parallelogram area is the determinant magnitude of $B-A=(-2,t)$ and $D-A=(u,v-t)$: $2(t-v)-tu=5\sqrt{11}+30\sqrt{11}=\boxed{35\sqrt{11}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair P=(0,0),A=(2,0),Bp=(0,4*sqrt(11)),C=(-7.5,1.5*sqrt(11)),D=(-5.5,-2.5*sqrt(11));draw(A--Bp--C--D--cycle);draw(A--P--Bp,blue);draw(C--P--D,red);label("$P$",P,E);label("$A$",A,E);label("$B$",Bp,N);label("$C$",C,W);label("$D$",D,S);
+\end{asy}

@@ -1,0 +1,14 @@
+A common point is $(x,x^2)$ and is the clockwise rotation of $(t,t^2)$. Rotation preserves distance to the origin, so $x^2+x^4=t^2+t^4$. Since $u+u^2$ increases for $u\ge0$, we have $t=\pm x$. If $t=x$, a nontrivial rotation fixes the point only at the origin.
+
+For a nonzero intersection we therefore have $t=-x$. With $\theta=67^\circ$, the first rotated coordinate gives
+\[
+x=-x\cos\theta+x^2\sin\theta,\qquad
+x=\dfrac{1+\cos\theta}{\sin\theta}=\cot(\dfrac{\theta}{2}).
+\]
+This also satisfies the second coordinate equation, since $\dfrac{\sin\theta}{(1-\cos\theta)}=\cot(\dfrac{\theta}{2})$. Thus the two real intersections have $x$-coordinates $0$ and $\cot33.5^\circ$, and their sum is $\boxed{\cot33.5^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;pair f(real t){return (t,t*t);}path P=graph(f,-2,2);draw(P,blue);draw(rotate(-67)*P,red);real x=1/tan(33.5*pi/180);dot((0,0));dot((x,x*x));label("$O$",(0,0),SW);label("other intersection",(x,x*x),NE);
+\end{asy}

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3080655_help_with_trig
+% Stable identity: aops-topic-3080655-q01
+No solution has $\cos\theta=0$, so divide by $\cos^2\theta$ and set $t=\tan\theta$. Then $1+t^2=2004(t-1)$, or $t^2-2004t+2005=0$. Its discriminant is positive and its roots have positive sum and product, so both roots are positive and correspond to unique angles in $(0,\dfrac{\pi}{2})$. Thus Vieta's formula gives the requested sum $\boxed{2004}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real t1=4010.0/(2004+sqrt(2004^2-8020)),t2=(2004+sqrt(2004^2-8020))/2;real[] tt={t1,t2};for(int j=0;j<2;++j){pair O=(3j,0),P=O+(1,tt[j])/sqrt(1+tt[j]^2);draw(circle(O,1));draw(O--O+(1,0));draw(O--P,blue);label("$\theta_{"+string(j+1)+"}$",O+(.4,.2));label("$O$",O,S);dot(P);}label("both angles lie in the first quadrant",(1.5,-1.5));
+\end{asy}

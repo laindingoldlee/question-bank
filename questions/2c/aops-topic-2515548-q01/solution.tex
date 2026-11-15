@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2515548_find_the_equation_of_a_line
+% Stable identity: aops-topic-2515548-q01
+Since cosine is even, $\cos|t|=\cos t$, so
+\[f(x)=2\cos\left(x-\dfrac\pi2\right)=2\sin x.\]
+Check $A$: $f(-\pi)=2\sin(-\pi)=0$. For $B$: $y=f\left(\dfrac\pi2\right)=2\cos0=2$, so $B=\left(\dfrac\pi2,2\right)$. The slope of $\ell$ is
+\[\dfrac{2-0}{\dfrac\pi2-(-\pi)}=\dfrac{2}{\dfrac{3\pi}{2}}=\dfrac{4}{3\pi},\]
+so
+\[\ell:\ y=\dfrac{4}{3\pi}(x+\pi),\qquad\text{i.e.}\qquad\boxed{y=\dfrac{4x}{3\pi}+\dfrac43}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return 2*cos(abs(x-pi/2));}
+real m=4/(3*pi);
+draw((-3.9,0)--(4.0,0),Arrow(5)); draw((0,-2.5)--(0,3.0),Arrow(5));
+label("$x$",(4.0,0),E); label("$y$",(0,3.0),N);
+draw(graph(f,-3.7,3.7),blue+linewidth(0.9));
+draw((-pi-0.3,m*(-0.3))--(3.6,m*(3.6+pi)),red+linewidth(0.9));
+pair A=(-pi,0), B=(pi/2,2);
+dot(A); dot(B);
+label("$A$",A,SW,fontsize(8pt)); label("$B$",B,N,fontsize(8pt));
+draw((pi/2,0)--B,dotted);
+label("$y=2\sin x$",(-1.9,-2.0),W,blue+fontsize(8pt)); label("$\ell$",(3.4,m*(3.4+pi)),SE,red);
+\end{asy}

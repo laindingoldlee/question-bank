@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1404927_yet_again_lithuanian_math_kangaroo_questions__student_2009
+% Stable identity: aops-topic-1404927-q26
+Put $J=(0,0)$, $K=(a,0)$, $L=(a,b)$, $M=(0,b)$. The bisector of the right angle $KJM$ is the line $y=x$, so $N=(t,t)$ for some $t$, and $N$ lies on $KM$: $\dfrac{t}{a}+\dfrac{t}{b}=1$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real t=2*sqrt(2),a=8+t,bb=1+t;
+pair J=(0,0),K=(a,0),L=(a,bb),M=(0,bb),Nn=(t,t);
+draw(J--K--L--M--cycle,linewidth(0.9));
+draw(K--M,blue); draw(J--Nn,red);
+draw(Nn--(t,bb),gray+dashed); draw(Nn--(a,t),gray+dashed);
+dot(J);dot(K);dot(L);dot(M);dot(Nn);
+label("$J$",J,SW); label("$K$",K,SE); label("$L$",L,NE); label("$M$",M,NW); label("$N$",Nn+(0.1,-0.8));
+label("$1$",(t,(t+bb)/2),E); label("$8$",((t+a)/2,t),S);
+draw(arc(J,0.8,0,45),red); draw(arc(J,1.0,45,90),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The distance from $N$ to $LM$ (the line $y=b$) is $b-t=1$, and to $KL$ (the line $x=a$) is $a-t=8$. Substituting $a=t+8$, $b=t+1$:
+\[
+t(a+b)=ab\quad\Longrightarrow\quad t(2t+9)=(t+8)(t+1)=t^2+9t+8\quad\Longrightarrow\quad t^2=8,
+\]
+so $t=2\sqrt2$ and $LM=a=\boxed{8+2\sqrt2}$, choice (A).

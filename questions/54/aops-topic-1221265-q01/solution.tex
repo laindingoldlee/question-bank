@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1221265_absolute_value_graphing
+% Stable identity: aops-topic-1221265-q01
+Shift to $X=x-b$, $Y=y-d$: $a|X|+c|Y|=e$. In each quadrant this is a line segment, e.g. $aX+cY=e$ for $X,Y\ge0$, joining $\left(\dfrac {e}{a},0\right)$ to $\left(0,\dfrac {e}{c}\right)$. Together the four segments form a rhombus (a ``diamond'') centred at $(b,d)$ with vertices $\left(b\pm\dfrac {e}{a},d\right)$ and $\left(b,d\pm\dfrac {e}{c}\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+import graph; draw((-1,0)--(7,0),Arrow); draw((0,-1)--(0,5),Arrow);
+pair c=(3,2); draw((0.8,2)--(3,3.5)--(5.2,2)--(3,0.5)--cycle,blue+linewidth(1)); dot(c); label("$(b,d)$",c,S);
+label("$\left(b-\dfrac {e}{a},d\right)$",(0.8,2),W); label("$\left(b,d+\dfrac {e}{c}\right)$",(3,3.5),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Its diagonals are $\dfrac{2e}{a}$ and $\dfrac{2e}{c}$, so the area is $\dfrac{1}{2}\cdot\dfrac{2e}{a}\cdot\dfrac{2e}{c}=\boxed{\dfrac{2e^2}{ac}}$.

@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2504590_compilation_of_solutions_for_mathcounts_state_2021
+% Stable identity: aops-topic-2504590-q28
+The integers $1$ to $16$ are placed in the $16$ circles of the figure, one in each circle, each number used once. The figure consists of four regular hexagons, arranged as shown, with a circle at each vertex. The sum of the six numbers around each hexagon is the same number $S$. What is the greatest possible value of $S$?
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real h=sqrt(3);
+pair cen(int q,int r){return (h*(q+r/2),1.5*r);}
+pair[] cs={cen(0,0),cen(1,0),cen(0,1),cen(1,1)};
+pair[] V;
+for(int k=0;k<4;++k){
+  pair c=cs[k];
+  draw(c+dir(90)--c+dir(150)--c+dir(210)--c+dir(270)--c+dir(330)--c+dir(30)--cycle,linewidth(0.8));
+  for(int j=0;j<6;++j){pair p=c+dir(90+60*j); bool nw=true; for(pair w:V) if(abs(w-p)<1e-6) nw=false; if(nw) V.push(p);}
+}
+for(pair p:V) filldraw(circle(p,0.2),white,black);
+\end{asy}

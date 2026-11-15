@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1731630_help_with_mathcounts_problems
+% Stable identity: aops-topic-1731630-q02
+Let the large cube be $n\times n\times n$. A unit cube has exactly one painted face when it lies on a face of the large cube but not on an edge, so each face contributes the $(n-2)^2$ cubes of its interior (shaded below for $n=4$):
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+int n=4; pair d=(0.45,0.32);
+pen f=rgb(0.82,0.9,1);
+fill(box((1,1),(n-1,n-1)),f);
+fill(((n,1)+d)--((n,1)+(n-1)*d)--((n,n-1)+(n-1)*d)--((n,n-1)+d)--cycle,f);
+fill(((1,n)+d)--((n-1,n)+d)--((n-1,n)+(n-1)*d)--((1,n)+(n-1)*d)--cycle,f);
+for(int i=0;i<=n;++i){draw((i,0)--(i,n),gray(0.5));draw((0,i)--(n,i),gray(0.5));
+ draw((i,n)--(i,n)+n*d,gray(0.5));draw((0,n)+i*d--(n,n)+i*d,gray(0.5));
+ draw((n,i)--(n,i)+n*d,gray(0.5));draw((n,0)+i*d--(n,n)+i*d,gray(0.5));}
+draw(box((0,0),(n,n)),linewidth(0.9));
+draw((0,n)--(0,n)+n*d--(n,n)+n*d--(n,0)+n*d--(n,0),linewidth(0.9));draw((n,n)--(n,n)+n*d,linewidth(0.9));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence $6(n-2)^2=486$, so $(n-2)^2=81$, $n-2=9$ and $n=11$. The number of unit cubes is $11^3=\boxed{1331}$.

@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1682452_prove_that_aoocabbc
+% Stable identity: aops-topic-1682452-q01
+Extend $AO$ beyond $O$ until it meets side $BC$ at $P$; since $O$ is inside the triangle, $P$ lies on side $BC$, strictly between $B$ and $C$, and $O$ lies between $A$ and $P$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(2.2,3.6),C=(6,0),O=(2.6,1.1);
+pair P=extension(A,O,B,C);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--O--C,blue+linewidth(0.8));draw(O--P,dashed);
+dot(O);dot(P);
+label("$A$",A,SW);label("$B$",B,N);label("$C$",C,SE);label("$O$",O,S);label("$P$",P,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the triangle inequality in triangle $OPC$, $OC<OP+PC$. Hence
+\[
+AO+OC<AO+OP+PC=AP+PC .
+\]
+By the triangle inequality in triangle $ABP$, $AP<AB+BP$, so
+\[
+AP+PC<AB+BP+PC=AB+BC .
+\]
+Combining, $AO+OC<AB+BC$. $\blacksquare$

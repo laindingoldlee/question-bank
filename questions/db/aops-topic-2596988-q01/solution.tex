@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2596988_the_mount_everest_problem
+% Stable identity: aops-topic-2596988-q01
+Each trip changes the number of corpses by $-1$ or $+2$. To get from $c$ corpses to $0$, the count must pass through $c-1,c-2,\dots$: it can only go down one at a time. Each one-step descent behaves like the same process started afresh, so if $D$ is the expected number of deaths during one descent, the expected total from $c$ corpses is $cD$.
+
+\emph{Equation for $D$.} Condition on the first trip of a descent from $c$ to $c-1$. With probability $p$ it succeeds with no deaths. With probability $1-p$ two climbers die and there are $c+2$ corpses, so three more descents are needed:
+\[D=(1-p)(2+3D),\qquad\text{i.e.}\qquad(3p-2)D=2(1-p)\quad\text{when $D$ is finite.}\]
+
+\textbf{(b)} If $p\le\dfrac23$ (and $p<1$), the left side is at most $0$ while the right side is positive, so $D$ cannot be finite: the expected death toll is infinite. If $p>\dfrac23$, the expected change per trip is $2-3p<0$, the count drifts down, $D$ is finite and
+\[D=\dfrac{2(1-p)}{3p-2},\qquad\text{expected deaths}=6D=\boxed{\dfrac{12(1-p)}{3p-2}\ \text{ for }p>\dfrac23}.\]
+\textbf{(a)} For $p=\dfrac56$: $12(1-p)=2$ and $3p-2=\dfrac12$, so the expected number of deaths is $\boxed{4}$. (Equivalently, each trip lowers the count by $\dfrac12$ on average, so about $12$ trips are needed, of which on average $\dfrac16\cdot12=2$ fail, killing $4$ climbers.)

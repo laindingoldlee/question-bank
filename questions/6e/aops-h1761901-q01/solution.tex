@@ -1,0 +1,16 @@
+Write $T=(a\cos\theta,b\sin\theta)$, with both sine and cosine nonzero. A normal direction to the tangent is $(\dfrac{\cos\theta}{a},\dfrac{\sin\theta}{b})$. If the intersection is $\lambda T$, then for some $t$,
+\[
+\lambda(a\cos\theta,b\sin\theta)
+=(c,0)+t(\dfrac{\cos\theta}{a},\dfrac{\sin\theta}{b}).
+\]
+The second coordinate gives $t=\lambda b^2$. The first then gives
+\[
+\lambda a\cos\theta=c+\lambda\dfrac{b^2}{a}\cos\theta,
+\]
+so $\lambda c^2\dfrac{\cos\theta}{a}=c$ and $\lambda a\cos\theta=\dfrac{a^2}{c}$. This is precisely the $x$-coordinate of the corresponding directrix, proving the claim.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;pair e(real t){return (5cos(t),3sin(t));}draw(graph(e,0,2pi),blue);real th=50*pi/180;pair O=(0,0),F=(4,0),T=e(th),X=(25.0/4,15.0/4*tan(th)),V=(-5sin(th),3cos(th));draw(O--X,red);draw(F--X,blue);draw(T-.5V--T+.5V,gray);draw((25.0/4,-3.5)--(25.0/4,5.2),dashed);dot(F);label("$O$",O,(0,-1));label("$F$",F,(0,-1));label("$T$",T,NW);label("$X$",X,NE);label("directrix",(25.0/4,-3.5),(0,-1));
+\end{asy}

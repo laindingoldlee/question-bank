@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2292086_parallelogram_proofs
+% Stable identity: aops-topic-2292086-q01
+Since $P$ lies on both diagonals, $\angle EFP=\angle EFH$ and $\angle GHP=\angle GHF$, so these angles are equal (marked below).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair E=(0,0), F=(5,0), G=(6.6,3), H=(1.6,3), P=(E+G)/2;
+draw(E--F--G--H--cycle,linewidth(0.9)); draw(E--G,blue); draw(F--H,blue);
+label("$E$",E,SW); label("$F$",F,SE); label("$G$",G,NE); label("$H$",H,NW); label("$P$",P,S);
+draw(arc(F,0.8,degrees(H-F),180),red); draw(arc(H,0.8,degrees(F-H),360),red);
+pair m1=(E+P)/2, m2=(G+P)/2; pair n=unit(G-E)*0.12; pair q=rotate(90)*n;
+draw(m1-q--m1+q); draw(m2-q--m2+q);
+\end{asy}
+
+Compare triangles $EPF$ and $GPH$:
+\begin{itemize}
+\item $\angle PFE=\angle PHG$ (given);
+\item $\angle EPF=\angle GPH$ (vertical angles);
+\item $EP=GP$ (given).
+\end{itemize}
+By AAS the triangles are congruent, so $FP=HP$. Thus the diagonals bisect each other.
+
+A quadrilateral whose diagonals bisect each other is a parallelogram: by SAS, triangles $EPH$ and $GPF$ are congruent ($EP=GP$, $HP=FP$ and vertical angles at $P$), so $\angle PEH=\angle PGF$, and these are alternate angles along the transversal $EG$, which gives $EH\parallel FG$. Similarly, from the congruent triangles $EPF$ and $GPH$, $\angle PEF=\angle PGH$, so $EF\parallel GH$. Hence $EFGH$ is a parallelogram. $\blacksquare$

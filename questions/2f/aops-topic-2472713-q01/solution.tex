@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2472713_remainder
+% Stable identity: aops-topic-2472713-q01
+\textbf{(a)} Let $M=6^{50}+1$, so $6^{50}\equiv-1\pmod M$. Put $T=6+6^2+\cdots+6^{49}$. Then
+\[A=T+6^{50}+6^{50}\left(6+6^2+\cdots+6^{49}\right)=T+6^{50}+6^{50}T\equiv T-1-T=-1\pmod M.\]
+So $A\equiv M-1\pmod M$, and the remainder is $M-1=\boxed{6^{50}}$.
+
+\textbf{(b)} For a positive integer $n$, the possible remainders on division by $n+1$ are $0,1,\dots,n$, so the remainder is $n$ exactly when $A\equiv n\equiv-1\pmod{n+1}$, i.e. when $(n+1)\mid A+1$. Here
+\[A+1=1+6+6^2+\cdots+6^{99}.\]
+\begin{itemize}
+\item $n=6$: $6\equiv-1\pmod7$, so $A+1\equiv1-1+1-\cdots-1=0\pmod7$, since the $100$ terms cancel in pairs.
+\item $n=6^{50}$: by (a), $A\equiv-1\pmod{6^{50}+1}$.
+\item $n=A$: $n+1=A+1$ divides $A+1$.
+\end{itemize}
+These three values are different, since $6<6^{50}<A$. So at least three such $n$ exist, for example $\boxed{n=6,\ 6^{50},\ A}$. $\blacksquare$

@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1406749_mathcounts_warmup
+% Stable identity: aops-topic-1406749-q01
+Let $h(n)$ be the number of ways to write $n$ as a sum of powers of $2$ in which each power is used at most twice (the $64$-cent coins are too large to be used for $50$ cents). Look at the number of $1$-cent coins.
+\begin{itemize}
+\item If $n=2m+1$ is odd, exactly one $1$-cent coin is used, and the rest is a representation of $2m$ by the coins $2,4,8,\dots$, that is, of $m$ after halving: $h(2m+1)=h(m)$.
+\item If $n=2m$ is even, either no $1$-cent coin is used (the rest gives $m$ after halving) or both are used (the rest gives $m-1$): $h(2m)=h(m)+h(m-1)$.
+\end{itemize}
+With $h(0)=1$ and $h(1)=1$:
+\[
+h(2)=h(1)+h(0)=2,\quad h(3)=h(1)=1,\quad h(5)=h(2)=2,\quad h(6)=h(3)+h(2)=3,
+\]
+\[
+h(11)=h(5)=2,\quad h(12)=h(6)+h(5)=5,\quad h(24)=h(12)+h(11)=7,\quad h(25)=h(12)=5,
+\]
+\[
+h(50)=h(25)+h(24)=5+7=\boxed{12}.
+\]
+(The halving step is legitimate because once the $1$-cent coins are removed, every remaining coin is twice a coin of the set $1,2,4,\dots$, with the same limit of two of each; the largest coin needed is $32$, and two $32$s already exceed $50$.)

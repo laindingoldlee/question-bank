@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2155546_systems_of_equations_practice
+% Stable identity: aops-topic-2155546-q10
+Let the edges be $a$, $b$, $c$, so the faces have areas $ab$, $bc$, $ac$, each appearing twice.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real a=8, bb=6, c=12; pair dx=(1,0), dy=(0.45,0.32), dz=(0,1);
+pair p(real x,real y,real z){return x*dx+y*dy+z*dz;}
+draw(p(0,0,0)--p(a,0,0)--p(a,0,c)--p(0,0,c)--cycle,linewidth(0.9));
+draw(p(0,0,c)--p(0,bb,c)--p(a,bb,c)--p(a,0,c),linewidth(0.9));
+draw(p(a,0,0)--p(a,bb,0)--p(a,bb,c),linewidth(0.9));
+draw(p(0,0,0)--p(0,bb,0)--p(a,bb,0),dashed); draw(p(0,bb,0)--p(0,bb,c),dashed);
+label("$a$",p(a/2,0,0),S); label("$b$",p(a,bb/2,0),SE); label("$c$",p(0,0,c/2),W);
+label("$ac$",p(a/2,0,c/2)); label("$ab$",p(a/2,bb/2,c)); label("$bc$",p(a,bb/2,c/2));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Label the edges so that $ab=48$, $bc=72$ and $ac=96$. Multiplying,
+\[(abc)^2=48\cdot72\cdot96=331776=576^2,\qquad abc=576 .\]
+Hence $c=\dfrac{576}{48}=12$, $a=\dfrac{576}{72}=8$ and $b=\dfrac{576}{96}=6$. The edges are $\boxed{6,\ 8\text{ and }12}$. (Check: $6\cdot8=48$, $6\cdot12=72$, $8\cdot12=96$.)

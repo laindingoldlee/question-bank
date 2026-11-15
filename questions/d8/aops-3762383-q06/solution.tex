@@ -1,0 +1,9 @@
+Let the angle between side normals have sine $s = \dfrac{140}{168} = \dfrac{5}{6}$ and cosine $c = \dfrac{\sqrt{11}}{6}$ (reverse one normal if necessary). Let distances from a point to chosen sides be $x,y$, and put $u=x-5,v=y-7$. Equal power of the point with respect to the foot-circle gives $x(10-x)=y(14-y)$, hence $v^2-u^2=24$. If $O$ is the circle centre relative to the point, its normal projections are $-u,-v$, so $| O |^2 = \dfrac{u^2+v^2-2cuv}{s^2}$. Radius squared 50 gives $|O|^2+25-u^2=50$, or $(v-cu)^2=25s^2$. Solving yields $(u,v) = \dfrac{\varepsilon (5c,5)}{s} + \dfrac{\delta (1,c)}{s}$, for signs $\varepsilon,\delta=\pm1$. These four points lie in the required distance ranges. Their parallelogram area in the $(u,v)$-plane is $4 \cdot \dfrac{5 (1-c^2)}{s^2} = 20$. The normal-coordinate transformation multiplies physical area by $s$, so the required area is $\boxed{\dfrac{20}{s} = 24}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+real s=5/6,c=sqrt(11)/6;pair[] V;for(int e:new int[]{-1,1})for(int d:new int[]{-1,1}){real u=(e*5c+d)/s,v=(e*5+d*c)/s;pair P=(u,(v-c*u)/s);dot(P);label("$P$",P,(0,1));}draw((-5,(-7+5*c)/s)--(5,(-7-5*c)/s)--(5,(7-5*c)/s)--(-5,(7+5*c)/s)--cycle,dashed);label("four admissible points",(0,-13),(0,-1));
+\end{asy}
+

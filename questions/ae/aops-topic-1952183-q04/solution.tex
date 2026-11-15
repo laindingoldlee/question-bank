@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1952183_geometry_problems__
+% Stable identity: aops-topic-1952183-q04
+Let $X,Y,Z$ be the midpoints of $PT,TW,PW$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0),T=(6,0),W=(1.8,4);
+pair X=(P+T)/2,Y=(T+W)/2,Z=(P+W)/2;
+fill(X--Y--Z--cycle,palegray);
+draw(P--T--W--cycle,linewidth(1));draw(X--Y--Z--cycle);
+dot(P);dot(T);dot(W);dot(X);dot(Y);dot(Z);
+label("$P$",P,SW);label("$T$",T,SE);label("$W$",W,N);
+label("$X$",X,S);label("$Y$",Y,NE);label("$Z$",Z,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the midline theorem, each side of $XYZ$ is parallel to a side of $PTW$ and half as long. So the three midlines cut $PTW$ into four triangles $PXZ$, $XTY$, $ZYW$, $XYZ$, each similar to $PTW$ with ratio $\dfrac{1}{2}$ and congruent to each other (SSS). Each therefore has area $\dfrac{1}{4}$ of $[PTW]$, so
+\[
+[PTW]=4\cdot\dfrac{3}{4}=\boxed{3}.
+\]

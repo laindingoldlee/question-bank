@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3179529_2014_emcc_individual_speed_test__exeter_math_club_competition
+% Stable identity: aops-topic-3179529-q11
+Use the unit square $A=(0,0),B=(1,0),C=(1,1),D=(0,1)$. Equal lengths give $E=(1,t),F=(t,1)$ with $t=2-\sqrt3$. Then $M=(\dfrac{1+t}{2},\dfrac{1+t}{2})$. Substitution of $P=\lambda(1,t)$ in $PM^2=FM^2$ gives roots $\lambda=1,\dfrac{1}{2}$, so $P=(\dfrac{1}{2},\dfrac{t}{2})$. Direction $MP$ has slope $\dfrac{1}{t}=2+\sqrt3=\tan75^\circ$, and $Q=(1-t,1)$. Ray $QC$ points right while ray $QP$ points down-left; their smaller angle is $180^\circ-75^\circ=\boxed{105^\circ}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real t=2-sqrt(3);pair A=(0,0),B=(1,0),C=(1,1),D=(0,1),Ep=(1,t),F=(t,1),M=((1+t)/2,(1+t)/2),P=(.5,t/2),Q=(1-t,1);draw(A--B--C--D--cycle);draw(A--Ep--F--cycle,blue);draw(P--Q,red);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$E$",Ep,E);label("$F$",F,N);label("$P$",P,S);label("$M$",M,W);label("$Q$",Q,N);
+\end{asy}

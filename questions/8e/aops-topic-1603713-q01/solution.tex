@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1603713_i_want_to_win_so_i_toss_a_coin
+% Stable identity: aops-topic-1603713-q01
+Describe the coin's position by its centre, which is uniformly distributed over the region of allowed centres. The coin has radius $4$.
+
+\textbf{Allowed positions.} The grid is a $50\times50$ square. The coin lies entirely on the grid exactly when its centre is at least $4$ from each edge, i.e.\ in a $42\times42$ square (dashed in the figure), of area $1764$.
+
+\textbf{Winning positions.} The coin avoids all grid lines exactly when its centre lies in some small square at distance more than $4$ from all four sides of that square: a $2\times2$ square in the middle of each grid square (red). There are $25$ of them, with total area $25\cdot4=100$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=5;++i){draw((10*i,0)--(10*i,50),linewidth(0.8));draw((0,10*i)--(50,10*i),linewidth(0.8));}
+draw((4,4)--(46,4)--(46,46)--(4,46)--cycle,blue+dashed);
+for(int i=0;i<5;++i) for(int j=0;j<5;++j) fill(shift(10*i+4,10*j+4)*scale(2)*unitsquare,red);
+draw(circle((25,25),4),deepgreen+linewidth(0.9));dot((25,25),deepgreen);
+draw(circle((12,32),4),gray);dot((12,32),gray);
+draw((0,-3)--(10,-3),Arrows(TeXHead));label("$10$",(5,-3),S);
+draw((54,4)--(54,46),blue,Arrows(TeXHead));label("$42$",(54,25),E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The green coin is in a winning position; the grey one crosses a grid line.) The probability is
+\[
+\dfrac{100}{1764}=\boxed{\dfrac{25}{441}}.
+\]

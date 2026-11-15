@@ -1,0 +1,10 @@
+Column sums lie in $\{0,\ldots,5\}$ and row sums in $\{0,\ldots,9\}$, so there are at most ten distinct values. Suppose all ten occur. The values $6,7,8,9$ must be row sums. A row of sum $9$ prevents every column from having sum $0$, so the remaining row must have sum $0$. But then every column sum is at most $4$, and the five row sums are $0,6,7,8,9$, leaving the value $5$ absent. This contradiction gives an upper bound of nine.
+
+Fill successive rows with $5,6,7,8,9$ left-justified ones. The column sums are $5,5,5,5,5,4,3,2,1$, and the row sums are $5,6,7,8,9$. Their union is exactly $\{1,\ldots,9\}$. Therefore the maximum is $\boxed9$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"1", "1", "1", "1", "1", "0", "0", "0", "0"}, {"1", "1", "1", "1", "1", "1", "0", "0", "0"}, {"1", "1", "1", "1", "1", "1", "1", "0", "0"}, {"1", "1", "1", "1", "1", "1", "1", "1", "0"}, {"1", "1", "1", "1", "1", "1", "1", "1", "1"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("A construction attaining nine distinct sums",(4.5,-5.2));
+\end{asy}

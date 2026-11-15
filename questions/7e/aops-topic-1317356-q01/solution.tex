@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1317356_construction_problem
+% Stable identity: aops-topic-1317356-q01
+Yes. Call the lines $\ell_1,\ell_2,\ell_3$.
+\begin{enumerate}
+\item Pick any point $A$ on $\ell_1$.
+\item Rotate the line $\ell_3$ about $A$ through $60^\circ$ (rotate two of its points, constructing $60^\circ$ angles with equilateral triangles). The rotated line makes a $60^\circ$ angle with $\ell_2$, so it meets $\ell_2$ at a point $B$.
+\item Let $C$ be the point of $\ell_3$ that the rotation sends to $B$ (rotate $B$ back about $A$ by $60^\circ$).
+\end{enumerate}
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real d1=1.2,d2=2.0; draw((-2.5,0)--(3.5,0)); draw((-2.5,d1)--(3.5,d1)); draw((-2.5,-d2)--(3.5,-d2));
+pair A=(0,d1); pair L2=(0,0);
+// rotate line y=-d2 about A by 60 degrees
+pair P1=rotate(60,A)*(-3,-d2), P2=rotate(60,A)*(4,-d2); draw(P1--P2,gray+dashed);
+pair B=extension(P1,P2,(0,0),(1,0)); pair C=rotate(-60,A)*B;
+draw(A--B--C--cycle,blue+linewidth(0.9)); dot(A);dot(B);dot(C);
+label("$A$",A,N); label("$B$",B,SE); label("$C$",C,S); label("$\ell_1$",(3.5,d1),E); label("$\ell_2$",(3.5,0),E); label("$\ell_3$",(3.5,-d2),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then $AC=AB$ and $\angle CAB=60^\circ$, so triangle $ABC$ is equilateral, with $A\in\ell_1$, $B\in\ell_2$, $C\in\ell_3$. Since $A$ was arbitrary, there are infinitely many such triangles (all congruent, as their side is determined by the distances between the lines).

@@ -1,0 +1,14 @@
+For four ordered nonnegative numbers $a\ge b\ge c\ge d$, pairing neighboring large numbers is optimal because $ab+cd-ac-bd=(a-d)(b-c)\ge0$, and it is also at least $ad+bc$. Repeated exchanges show that sorted adjacent pairing maximizes the full sum.
+
+For $\ell\ge3$, pair $\ell$ with a $3$, the remaining eight $3$'s into four pairs, and the ten $1$'s into five pairs. This gives $M=3\ell+36+5=3\ell+41$. The same expression holds for $\ell=1,2$ by the same sorted pairing.
+
+Each of the four new lines can meet all $\ell$ original lines, and the new lines can have six mutual intersections, with no coincidences. Thus the maximum intersection count is $4\ell+6$. Equating gives $3\ell+41=4\ell+6$, hence
+\[
+\boxed{\ell=35,\qquad M=146}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int i=0;i<4;++i)draw((0,i)--(7,i),gray);draw((.4,-.5)--(5,3.5),blue);draw((1,-.5)--(6.6,3.5),blue);draw((4,-.5)--(1,3.5),blue);draw((6,-.5)--(4.6,3.5),blue);label("Four parallel lines shown; $\ell$ in general",(3.5,-1.3));
+\end{asy}

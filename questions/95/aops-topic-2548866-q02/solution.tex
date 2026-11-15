@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2548866_100th_post_problem
+% Stable identity: aops-topic-2548866-q02
+\emph{Necessary conditions.} Putting $x=y=0$: $2f(0)=f(0)^2+1$, so $(f(0)-1)^2=0$ and $f(0)=1$. Putting $x=y=1$: $f(0)+f(1)=f(1)^2+1$, so $f(1)=f(1)^2$ and $a=f(1)\in\{0,1\}$. Putting $x=0$: $f(-y)+1=f(y)+1$, so $f$ is even. Putting $y=-1$ and using $f(-1)=a$:
+\[f(x+1)+f(-x)=af(x)+1\qquad\Longrightarrow\qquad f(x+1)=(a-1)f(x)+1.\]
+This recursion and $f(0)=1$ determine $f(n)$ for $n\ge0$, and evenness determines the rest. So there are at most two functions:
+\begin{itemize}
+\item $a=1$: $f(x+1)=1$, so $f\equiv1$;
+\item $a=0$: $f(x+1)=1-f(x)$, so $f(n)=1$ for even $n$ and $f(n)=0$ for odd $n$.
+\end{itemize}
+
+\emph{Both work.} For $f\equiv1$: $1+1=1\cdot1+1$. For the parity function, check the four parity cases of $(x,y)$:
+\begin{itemize}
+\item both even: $x-y$ and $xy$ even, $1+1=1\cdot1+1$;
+\item exactly one odd: $x-y$ odd and $xy$ even, $0+1=0+1$;
+\item both odd: $x-y$ even and $xy$ odd, $1+0=0+1$.
+\end{itemize}
+So there are exactly $\boxed{2}$ such functions.

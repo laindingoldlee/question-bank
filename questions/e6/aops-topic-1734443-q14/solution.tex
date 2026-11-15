@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1734443_geometry_questions_from_a_local_math_competition
+% Stable identity: aops-topic-1734443-q14
+The generating circle has centroid at its centre, which travels around a circle of radius $R$, a distance $2\pi R$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real R=3,r=1;
+draw((0,-1.8)--(0,1.8),dashed);label("axis",(0,1.8),N,fontsize(8pt));
+draw(circle((R,0),r),blue+linewidth(0.9));draw(circle((-R,0),r),blue+linewidth(0.9));
+draw((0,-1.35)--(R,-1.35),Arrows(TeXHead));draw((R,-0.15)--(R,-1.5),gray(0.5));label("$R$",(R/2,-1.35),S);
+draw((R,0)--(R,0)+r*dir(-60));label("$r$",(R,0)+0.5*r*dir(-60),E);
+dot((R,0));
+draw(ellipse((0,0),R,0.45),gray(0.5)+dashed);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Surface area.} The circle has length $2\pi r$, so $S=2\pi r\cdot2\pi R=\boxed{4\pi^2Rr}$.
+
+\textbf{Volume.} The disc has area $\pi r^2$, so $V=\pi r^2\cdot2\pi R=\boxed{2\pi^2Rr^2}$.
+
+(For example $R=3$, $r=1$ gives $S=12\pi^2$ and $V=6\pi^2$.)

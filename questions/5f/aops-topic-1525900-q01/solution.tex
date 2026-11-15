@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1525900_help_pls
+% Stable identity: aops-topic-1525900-q01
+Rewrite the given line as $y=\dfrac{1}{5}x-3$; its slope is $\dfrac{1}{5}$. A perpendicular line has slope equal to the negative reciprocal, $-5$ (the product of the slopes is $-1$). Through $(-2,5)$:
+\[
+y-5=-5(x+2)\iff \boxed{y=-5x-5}\quad(\text{equivalently }5x+y=-5).
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return x/5-3;}
+real g(real x){return -5*x-5;}
+draw((-7,0)--(8,0),Arrow(6));draw((0,-6)--(0,7),Arrow(6));
+label("$x$",(8,0),E);label("$y$",(0,7),N);
+draw(graph(f,-7,8),linewidth(0.9));
+draw(graph(g,-2.4,0.2),blue+linewidth(0.9));
+pair P=(-2,5),Q=(-5/13,-40/13);
+dot(P);label("$(-2,5)$",P,W);
+real s=0.35; pair u=unit((1,1/5)),v=unit((-1,5));
+draw(Q+s*u--Q+s*u+s*v--Q+s*v);
+label("$x-5y=15$",(6.5,f(6.5)-0.5),S);
+label("$y=-5x-5$",(0.3,-5.6),E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check: $-5\cdot(-2)-5=5$, and the slopes satisfy $\dfrac{1}{5}\cdot(-5)=-1$.

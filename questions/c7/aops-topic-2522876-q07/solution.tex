@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2522876_week_of_410_problems_
+% Stable identity: aops-topic-2522876-q07
+Let $ABCD$ have side $s$. Joining the midpoints cuts off four right isosceles triangles with legs $\dfrac s2$, of total area $4\cdot\dfrac12\cdot\dfrac{s^2}{4}=\dfrac{s^2}{2}$. So $EFGH$ is a square of area $\dfrac{s^2}{2}$: joining the midpoints of a square halves its area.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(4,0), C=(4,4), D=(0,4);
+pair Ep=(A+B)/2, F=(B+C)/2, G=(C+D)/2, H=(D+A)/2;
+pair I=(Ep+F)/2, J=(F+G)/2, K=(G+H)/2, L=(H+Ep)/2;
+fill(I--J--K--L--cycle,rgb(0.8,0.88,1));
+draw(A--B--C--D--cycle,linewidth(0.8)); draw(Ep--F--G--H--cycle); draw(I--J--K--L--cycle,blue);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$E$",Ep,S); label("$F$",F,E); label("$G$",G,N); label("$H$",H,W);
+label("$I$",I,NW,fontsize(8pt)); label("$J$",J,SW,fontsize(8pt)); label("$K$",K,SE,fontsize(8pt)); label("$L$",L,NE,fontsize(8pt));
+\end{asy}
+
+Applying the same fact to $EFGH$, the square $IJKL$ has area $\dfrac12\cdot\dfrac{s^2}2=\dfrac{s^2}{4}$. The ratio is
+\[\dfrac{s^2}{\dfrac{s^2}{4}}=\boxed{4}\quad(\text{that is, }4:1).\]

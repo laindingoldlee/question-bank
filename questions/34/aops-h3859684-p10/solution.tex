@@ -1,0 +1,7 @@
+Let the base angle be $\beta$, so the apex angle is $180^\circ-2\beta$. In triangle $APQ$, the sine rule yields $\sin3\beta=-\dfrac{11}{17}\sin\beta$. The triple-angle identity gives $\sin^2\beta=\dfrac{31}{34}$ and hence $\cos A=\dfrac{14}{17}$. If $AB=AC=L$, the cosine rule gives $CP^2=L^2-28L+289=(L-14)^2+93$. Thus $(CP-L+14)(CP+L-14)=93$. With $L\ge17$, the positive factor pairs $(1,93),(3,31)$ give respectively $(CP,L)=(47,60),(17,28)$. Both have $P,Q$ on the indicated sides, so the sum is $\boxed{64}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+for(int k=0;k<2;++k){real L=k==0?28:60;pair v=(70*k,0),A=v,B=v+(L,0),C=v+L*(14/17,sqrt(93)/17),P=v+(17,0),Q=v+11*(14/17,sqrt(93)/17);draw(A--B--C--cycle);draw(P--Q);draw(C--P,dashed);label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$C$",C,(0,1));label("$P$",P,(0,-1));label("$Q$",Q,(-1,1));}
+\end{asy}

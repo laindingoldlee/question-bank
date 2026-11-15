@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1726526_fibonacci_period
+% Stable identity: aops-topic-1726526-q01
+\textbf{Pairs determine the future.} The residue of $F_{n+2}$ modulo any $m$ is determined by the residues of $F_n$ and $F_{n+1}$. So if $(F_{p},F_{p+1})\equiv(F_0,F_1)=(0,1)\pmod m$ (with $F_0=0$), then $F_{n+p}\equiv F_n\pmod m$ for all $n\ge0$. Conversely, if $p$ is a period modulo $m$ (that is, $F_{n+p}\equiv F_n$ for all $n\ge1$), then running the recurrence backwards ($F_n=F_{n+2}-F_{n+1}$) also gives $F_p\equiv F_0$, so $(F_p,F_{p+1})\equiv(0,1)$. The periods are therefore exactly the $p\ge1$ with $(F_p,F_{p+1})\equiv(0,1)$, and they are the multiples of the smallest one (if $p$ is the smallest period and $q$ is a period, then $q\bmod p$ is $0$ or a smaller period).
+
+\textbf{Modulo $2$.} The sequence is $1,1,0,1,1,0,\dots$: the smallest period is $3$.
+
+\textbf{Modulo $5$.} The sequence $F_1,\dots,F_{21}$ is
+\[
+1,1,2,3,0,3,3,1,4,0,4,4,3,2,0,2,2,4,1,0,1 .
+\]
+The pairs $(F_p,F_{p+1})$ with $F_p\equiv0$ are $(0,3),(0,4),(0,2),(0,1)$ for $p=5,10,15,20$, so the first time $(0,1)$ returns is $p=20$: the smallest period is $20$.
+
+\textbf{Modulo $10$.} A number's residue modulo $10$ is determined by its residues modulo $2$ and $5$. So $p$ is a period modulo $10$ exactly when it is a period modulo $2$ and modulo $5$, i.e.\ when $3\mid p$ and $20\mid p$, i.e.\ when $60\mid p$. Hence the units digits repeat with period $60$, and no smaller period works. $\blacksquare$

@@ -1,0 +1,7 @@
+Let $\theta=\angle BAP$, so $\angle PAC=36^\circ-\theta$. The sine rule in $ABP,ACP$, together with $AB=AC$, gives $\sin(72^\circ-\theta)=\sin72^\circ\sin(54^\circ+\theta)$. Expanding these sines and using the half-angle identities for $36^\circ,72^\circ$ simplifies to $\tan\theta=\dfrac{\sin36^\circ}{2+\cos36^\circ}$. Hence $\sin(36^\circ-\theta)=2\sin\theta$. Comparing areas $ABD,ACD$ with equal sides $AB,AC$ now gives $\dfrac{CD}{BD}=\dfrac{\sin(36^\circ-\theta)}{\sin\theta}=\boxed{2}$, choice B. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+real t=atan(sin(36*pi/180)/(2+cos(36*pi/180)))*180/pi;pair A=(0,0),B=(1,0),C=dir(36),P=dot(C,dir(t))*dir(t),D=(2*B+C)/3;draw(A--B--C--cycle);draw(A--D);draw(B--P--C);label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$C$",C,(0,1));label("$P$",P,(-1,1));label("$D$",D,(1,0));
+\end{asy}

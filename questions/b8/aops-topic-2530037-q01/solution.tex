@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2530037_solvemoreclever_equation
+% Stable identity: aops-topic-2530037-q01
+Let $c_1,\dots,c_5$ be the carries from the units, tens, hundreds, thousands and ten-thousands columns. The columns give
+\begin{align*}
+E+E&=R+10c_1, & V+R+c_1&=E+10c_2, & L+O+c_2&=V+10c_3,\\
+O+M+c_3&=E+10c_4, & S+c_4&=L+10c_5, & c_5&=C.
+\end{align*}
+Since $SOLVE+MORE<100000+10000$, $C=1=c_5$. Then $S+c_4=L+10\ge10$ forces $S=9$, $c_4=1$, $L=0$.
+
+The hundreds column becomes $O+c_2=V+10c_3$. As $O\le8$, $O+c_2\le9$, so $c_3=0$ and $V=O+c_2$; since $V\ne O$, $c_2=1$ and $V=O+1$. The thousands column gives $O+M=E+10$, and the tens column gives $O+1+R+c_1=E+10$. Subtracting, $M=R+1+c_1$. Finally $2E=R+10c_1$. The remaining letters $O,V,E,M,R$ take distinct values in $\{2,\dots,8\}$.
+\begin{itemize}
+\item $c_1=0$: $R=2E$ and $M=2E+1$, so $E\in\{2,3\}$ (as $M\le8$), and $O=E+10-M=9-E$.
+\begin{itemize}
+\item $E=2$: $R=4$, $M=5$, $O=7$, $V=8$: all distinct.
+\item $E=3$: $R=6$, $M=7$, $O=6=R$: impossible.
+\end{itemize}
+\item $c_1=1$: $R=2E-10\ge2$, so $E\ge6$, and $M=R+2=2E-8$. Then $O=E+10-M=18-E\ge10$ for $E\le8$: impossible.
+\end{itemize}
+So the only solution is
+\[\boxed{97082+5742=102824}.\]

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2489361_some_fun_problems
+% Stable identity: aops-topic-2489361-q03
+$AD$ and $BE$ are medians, so $F$ is the centroid and $AF:FD=2:1$. Write $[\,\cdot\,]$ for area and $S=[ABC]$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(7,0),C=(2.2,4.6);
+pair Ee=(A+C)/2,D=(B+C)/2; pair Fp=extension(A,D,B,Ee);
+fill(A--Ee--Fp--cycle,rgb(0.8,0.9,1)); fill(Ee--Fp--D--cycle,rgb(1,0.88,0.85));
+draw(A--B--C--cycle,linewidth(0.8)); draw(A--D); draw(B--Ee); draw(Ee--D,dashed);
+dot(Fp); dot(D); dot(Ee);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$D$",D,NE); label("$E$",Ee,NW); label("$F$",Fp,S);
+label("$10$",(A+Ee+Fp)/3,fontsize(8pt)); label("$5$",(Ee+Fp+D)/3,fontsize(8pt));
+\end{asy}
+
+Since $D$ is the midpoint of $BC$, $[ADC]=\dfrac S2$; since $E$ is the midpoint of $AC$, $[ADE]=\dfrac12[ADC]=\dfrac S4$. Triangles $AEF$ and $FED$ have the same height from $E$ to line $AD$, so their areas are in the ratio $AF:FD=2:1$:
+\[[AEF]=\dfrac23[ADE]=\dfrac S6,\qquad[EFD]=\dfrac13[ADE]=\dfrac S{12}.\]
+From $[AEF]=10$ we get $S=60$, and $[EFD]=\boxed{5}$.

@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1772376_numbers_in_form_of_factorial
+% Stable identity: aops-topic-1772376-q01
+The largest value is $N=1\cdot1+2\cdot2+3\cdot6+4\cdot24=1+4+18+96=\boxed{119}$.
+
+\textbf{Distinct choices give distinct values.} Note that $k\cdot k!=(k+1)!-k!$, so
+\[
+1\cdot1!+2\cdot2!+\cdots+k\cdot k!=(k+1)!-1 .
+\]
+Suppose two different choices $(a,b,c,d)$ and $(a',b',c',d')$ give the same value, and let the highest position where they differ be $j$, say with the larger digit in the first choice. Subtracting, the difference in position $j$ contributes at least $j!$, while the lower positions contribute at most $1\cdot1!+\cdots+(j-1)(j-1)!=j!-1$ in the other direction. So the first value is larger, a contradiction.
+
+\textbf{Counting.} There are $2\cdot3\cdot4\cdot5=120$ choices of $(a,b,c,d)$, and each gives an integer from $0$ to $119$. By the previous paragraph the $120$ values are all different, so they are exactly the $120$ integers $0,1,\dots,119$. Hence every integer $n$ with $0\le n\le N=119$ can be written in the given form (and in exactly one way). $\blacksquare$

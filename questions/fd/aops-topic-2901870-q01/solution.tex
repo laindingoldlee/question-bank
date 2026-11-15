@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2901870_given_a_regular_24gon_find_angle_kru
+% Stable identity: aops-topic-2901870-q01
+Consecutive vertices are $15^\circ$ apart on the circumcircle. With $A,\dots,X$ numbered $0,\dots,23$: $K=10$, $R=17$ and $U=20$. The arc $UK$ not containing $R$ runs $20\to23\to0\to10$, which is $14$ steps, or $210^\circ$.
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair[] V;string L="ABCDEFGHIJKLMNOPQRSTUVWX";for(int i=0;i<24;++i)V[i]=dir(90-15*i);draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--V[7]--V[8]--V[9]--V[10]--V[11]--V[12]--V[13]--V[14]--V[15]--V[16]--V[17]--V[18]--V[19]--V[20]--V[21]--V[22]--V[23]--cycle);
+draw(V[10]--V[17]--V[20]);draw(V[10]--(0,0)--V[20],dashed);dot((0,0));for(int i:new int[]{0,10,17,20})label("$"+substr(L,i,1)+"$",V[i],V[i]);
+\end{asy}
+
+The inscribed angle is half the arc: $\angle KRU=\boxed{105^\circ}$.

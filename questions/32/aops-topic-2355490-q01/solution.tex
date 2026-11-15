@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2355490_umong_as_fun_math_relay_race
+% Stable identity: aops-topic-2355490-q01
+By the distance formula the four legs have lengths
+\[\sqrt{4^2+0^2}=4,\quad\sqrt{2^2+9^2}=\sqrt{85},\quad\sqrt{2^2+5^2}=\sqrt{29},\quad\sqrt{8^2+15^2}=17.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair[] Q={(1,7),(5,7),(3,-2),(5,3),(13,18)};
+draw((-1,0)--(14,0),Arrow(5)); draw((0,-3)--(0,19),Arrow(5));
+draw(Q[0]--Q[1]--Q[2]--Q[3]--Q[4],blue+linewidth(0.9));
+for(int i=0;i<5;++i) dot(Q[i]);
+label("$(1,7)$",Q[0],SE,fontsize(8pt)); label("$(5,7)$",Q[1],N,fontsize(8pt)); label("$(3,-2)$",Q[2],S,fontsize(8pt)); label("$(5,3)$",Q[3],SE,fontsize(8pt)); label("$(13,18)$",Q[4],W,fontsize(8pt));
+label("$4$",(2.5,7),N,fontsize(8pt)); label("$\sqrt{85}$",(Q[1]+Q[2])/2,W,fontsize(8pt));
+label("$\sqrt{29}$",(3.6,-1),E,fontsize(8pt)); label("$17$",(Q[3]+Q[4])/2,SE,fontsize(8pt));
+\end{asy}
+
+The total length is $\boxed{21+\sqrt{85}+\sqrt{29}}\approx35.6$.

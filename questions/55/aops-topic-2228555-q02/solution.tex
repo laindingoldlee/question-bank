@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2228555_mock_target_questions
+% Stable identity: aops-topic-2228555-q02
+Build the tower from the bottom and record the state after each block: the top block is blue ($B$), or the top run of red blocks has length $1$, $2$ or $3$ ($R_1,R_2,R_3$). A blue block can be placed only on a red top; a red block extends a run of length $1$ or $2$, or starts a run of length $1$ on a blue top. So
+\[B_{n+1}=R_{1,n}+R_{2,n}+R_{3,n},\quad R_{1,n+1}=B_n,\quad R_{2,n+1}=R_{1,n},\quad R_{3,n+1}=R_{2,n},\]
+starting with $B_1=R_{1,1}=1$, $R_{2,1}=R_{3,1}=0$:
+\begin{center}
+\begin{tabular}{c|cccccccccccc}
+$n$&1&2&3&4&5&6&7&8&9&10&11&12\\ \hline
+$B$&1&1&2&3&4&6&9&13&19&28&41&60\\
+$R_1$&1&1&1&2&3&4&6&9&13&19&28&41\\
+$R_2$&0&1&1&1&2&3&4&6&9&13&19&28\\
+$R_3$&0&0&1&1&1&2&3&4&6&9&13&19\\ \hline
+total&2&3&5&7&10&15&22&32&47&69&101&148
+\end{tabular}
+\end{center}
+So there are $\boxed{148}$ ways.

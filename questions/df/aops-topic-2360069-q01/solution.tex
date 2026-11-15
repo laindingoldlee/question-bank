@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2360069_composite_combinatorial_coefficients
+% Stable identity: aops-topic-2360069-q01
+Let $n=a+b\ge4$ and $k=a$, so $2\le k\le n-2$ and $\dbinom nk=\dbinom n{n-k}$. Replacing $k$ by $n-k$ if necessary, we may assume $2\le k\le\dfrac n2$.
+
+\textbf{The coefficient is large.} For $0\le j<\dfrac n2$,
+\[\dbinom n{j+1}=\dbinom nj\cdot\dfrac{n-j}{j+1}\ge\dbinom nj,\]
+since $n-j\ge j+1$. So $\dbinom nk\ge\dbinom n2=\dfrac{n(n-1)}{2}>n$, because $n-1>2$.
+
+\textbf{It cannot be prime.} Suppose $\dbinom nk=p$ is a prime. Then
+\[k!\,(n-k)!\cdot p=n!=1\cdot2\cdots n.\]
+A prime that divides a product divides one of the factors, so $p$ divides some integer between $1$ and $n$, and hence $p\le n$. This contradicts $p>n$.
+
+So $\dbinom{a+b}{a}$ is an integer greater than $1$ that is not prime, i.e. it is composite. $\blacksquare$
+
+(The condition $a,b\ge2$ is needed: $\dbinom{p}{1}=p$ is prime when $p$ is prime.)

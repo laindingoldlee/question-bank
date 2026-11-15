@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1598239_i_suck_at_these
+% Stable identity: aops-topic-1598239-q01
+Number the bottles $1$ to $1000$ and let the potion be in bottle $k$. Tasting bottle $i$ is tasteless if $i\le k$ and bitter if $i>k$. So each taste of bottle $i$ answers the question ``is $k\ge i$?'', and a bitter taste uses up one of her two allowed poisons. There are $1000$ possible values of $k$.
+
+\textbf{One poison left.} Suppose the potion is known to be one of $c$ consecutive bottles and Edna can afford only one more poison. A bitter taste then ends the search, so the only safe plan is to taste the candidates from the left, one at a time (the first candidate need not be tasted): with $j$ tastes she can handle $c=j+1$ candidates, and no plan handles more. (If she ever skips ahead and the taste is bitter, the skipped bottles cannot be told apart.)
+
+\textbf{Two poisons left.} Let $g(t)$ be the largest number of consecutive candidates that can always be resolved with $t$ more tastes and two poisons left. Her first taste splits the candidates: if it is bitter, the candidates to its left must be resolved with $t-1$ tastes and one poison, so there are at most $t$ of them; if it is tasteless, the candidates from the tasted bottle on must be resolved with $t-1$ tastes and two poisons, so there are at most $g(t-1)$ of them. Choosing the first taste so that exactly $t$ candidates lie to its left achieves both bounds, so
+\[
+g(t)=t+g(t-1),\qquad g(0)=1,\qquad\text{hence}\qquad g(t)=1+\dfrac{t(t+1)}{2}.
+\]
+\textbf{Conclusion.} We need $g(t)\ge1000$. Since $g(44)=1+990=991<1000$ and $g(45)=1+1035=1036\ge1000$, the minimum number of tastes is $45$. Concretely, Edna first tastes bottle $46$; if it is bitter she tastes bottles $2,3,\dots,45$ in order; if not, she next tastes the bottle $44$ places further on (bottle $90$), and so on, each jump one shorter than the previous one.
+
+Hence the minimum is $\boxed{45}$.

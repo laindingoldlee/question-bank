@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2522876_week_of_410_problems_
+% Stable identity: aops-topic-2522876-q05
+Group the pairs by their product $n=ab$, where $2\le n\le99$ (the product $1$ only comes from $1\cdot1$, which is not two different numbers).
+
+\textbf{Pairs with a given product.} If $\gcd(a,b)=1$ and $ab=n$, then for each prime $p$ the whole power of $p$ in $n$ goes to $a$ or to $b$. So if $n$ has $\omega(n)$ distinct prime factors, there are $2^{\omega(n)}$ ordered pairs $(a,b)$. They never have $a=b$ (that would force $a=b=1$), so there are $2^{\omega(n)-1}$ unordered pairs.
+
+\textbf{Counting $n$ by $\omega(n)$}, for $2\le n\le99$:
+\begin{itemize}
+\item $\omega=1$ (prime powers): the $25$ primes below $100$ and $4,8,16,32,64,9,27,81,25,49$, so $35$ numbers;
+\item $\omega=3$: $30,42,60,66,70,78,84,90$, so $8$ numbers (four distinct primes would give at least $210$);
+\item $\omega=2$: the remaining $98-35-8=55$ numbers.
+\end{itemize}
+The number of pairs is
+\[35\cdot1+55\cdot2+8\cdot4=35+110+32=\boxed{177}.\]

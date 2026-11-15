@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2527370_stuffedmaths_problem_thread
+% Stable identity: aops-topic-2527370-q25
+Place the floor with corners $(0,0)$ and $(28,21)$. The path is the segment $y=\dfrac34x$. It passes through the lattice points $(4k,3k)$, $k=0,1,\dots,7$, since $\gcd(28,21)=7$, and through no other lattice points.
+
+Walking along the path, a new tile is entered each time the path crosses a grid line inside the floor. It crosses the $27$ interior vertical lines and the $20$ interior horizontal lines, but at the $6$ interior lattice points $(4k,3k)$, $1\le k\le6$, it crosses one vertical and one horizontal line at the same moment, entering only one new tile (the tiles touched only at that corner are not entered). So the number of tiles is
+\[1+27+20-6=28+21-7=\boxed{42}.\]
+Equivalently, each of the $7$ blocks of $4\times3$ tiles contributes $4+3-1=6$ tiles, as in the sketch.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=4;++i) draw((i,0)--(i,3),gray);
+for(int j=0;j<=3;++j) draw((0,j)--(4,j),gray);
+int[][] cells={{0,0},{1,0},{1,1},{2,1},{2,2},{3,2}};
+for(int[] c:cells) fill(shift(c[0],c[1])*unitsquare,paleblue);
+for(int i=0;i<=4;++i) draw((i,0)--(i,3),gray);
+for(int j=0;j<=3;++j) draw((0,j)--(4,j),gray);
+draw((0,0)--(4,3),red+linewidth(0.9));
+label("$4$",(2,0),S);label("$3$",(0,1.5),W);
+\end{asy}

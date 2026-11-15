@@ -1,0 +1,25 @@
+Use $A=(-\dfrac{1}{2},h),B=(\dfrac{1}{2},h),C=(1,0),D=(-1,0)$ with $h=\dfrac{\sqrt3}{2}$. Write $E=(t,0),F=(-t,0)$, where $t$ is uniform on $[-1,1]$. Symmetry and the equation of $AE$ give
+\[G=\left(0,\dfrac{2ht}{2t+1}\right),\qquad |h-G_y|=\dfrac{h}{|2t+1|}.\]
+For $t\ne-\dfrac{1}{2}$, the isosceles triangle $AGB$ has
+\[\angle AGB=2\arctan\left(\dfrac{|2t+1|}{\sqrt3}\right).\]
+This exceeds $30^\circ$ precisely when $|2t+1|>\sqrt3\tan15^\circ=2\sqrt3-3$. The excluded $t$-interval has length $2\sqrt3-3$ and lies inside $[-1,1]$, whose length is 2. Hence the probability is
+\[1-\dfrac{2\sqrt3-3}{2}=\boxed{\dfrac{5-2\sqrt3}{2}}.\]
+The absolute value covers intersections above the short base, below the long base, and inside the trapezoid.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real h=sqrt(3)/2,t=0.5;pair A=(-.5,h),B=(.5,h),C=(1,0),D=(-1,0),E=(t,0),F=(-t,0),G=(0,2*h*t/(2*t+1));draw(A--B--C--D--cycle);draw(A--E,blue);draw(B--F,blue);draw(A--G--B,blue+dashed);label("$A$",A,(-1,1));label("$B$",B,(1,1));label("$C$",C,(1,-1));label("$D$",D,(-1,-1));label("$E$",E,(0,-1));label("$F$",F,(0,-1));label("$G$",G,(1,0));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real h=sqrt(3)/2,t=-0.25;pair A=(-.5,h),B=(.5,h),C=(1,0),D=(-1,0),E=(t,0),F=(-t,0),G=(0,2*h*t/(2*t+1));draw(A--B--C--D--cycle);draw(A--E,blue);draw(B--F,blue);draw(A--G--B,blue+dashed);label("$A$",A,(-1,1));label("$B$",B,(1,1));label("$C$",C,(1,-1));label("$D$",D,(-1,-1));label("$E$",E,(0,-1));label("$F$",F,(0,-1));label("$G$",G,(1,0));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real h=sqrt(3)/2,t=-0.8;pair A=(-.5,h),B=(.5,h),C=(1,0),D=(-1,0),E=(t,0),F=(-t,0),G=(0,2*h*t/(2*t+1));draw(A--B--C--D--cycle);draw(A--E,blue);draw(B--F,blue);draw(A--G--B,blue+dashed);label("$A$",A,(-1,1));label("$B$",B,(1,1));label("$C$",C,(1,-1));label("$D$",D,(-1,-1));label("$E$",E,(0,-1));label("$F$",F,(0,-1));label("$G$",G,(1,0));
+\end{asy}

@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h1860292_some_questions
+% Stable identity: aops-topic-1860292-q02
+Let the line be $y=x+c$. Its intersections with $y=x^2$ satisfy $x^2-x-c=0$, so the $x$-coordinates $x_1,x_2$ of $A$ and $B$ satisfy $x_1+x_2=1$ and $x_1x_2=-c$ (by Vieta's formulas), and
+\[
+(x_1-x_2)^2=(x_1+x_2)^2-4x_1x_2=1+4c .
+\]
+Since the line has slope $1$, the vertical difference of $A$ and $B$ equals the horizontal difference, so
+\[
+AB^2=(x_1-x_2)^2+(x_1-x_2)^2=2(1+4c).
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return x^2;}
+real s=sqrt(4.5);
+pair A=((1-s)/2,((1-s)/2)^2), B=((1+s)/2,((1+s)/2)^2);
+draw((-1.7,0)--(2.3,0),Arrow(TeXHead));draw((0,-0.6)--(0,3.6),Arrow(TeXHead));
+label("$x$",(2.3,0),S);label("$y$",(0,3.6),W);
+draw(graph(f,-1.55,1.85),blue+linewidth(1));
+draw((-1.3,-1.3+7/8)--(2.2,2.2+7/8),red+linewidth(1));
+draw(A--B,red+linewidth(2));
+dot(A);dot(B);
+label("$A$",A+(-0.12,0.02),W);label("$B$",B,E);
+label(rotate(45)*Label("$AB=3$"),(A+B)/2+0.5*unit((1,1))+0.27*unit((-1,1)));
+label("$y=x^2$",(-1.55,f(-1.55)),W,blue);
+label("$y=x+c$",(2.2,2.2+7/8),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Setting $2(1+4c)=9$ gives $c=\dfrac{7}{8}$ (and then $1+4c>0$, so there really are two intersection points). The line is $\boxed{y=x+\dfrac{7}{8}}$.
+
+(For the guess $c=\dfrac{9}{8}$ we would get $AB^2=2\left(1+\dfrac{9}{2}\right)=11$, so $AB=\sqrt{11}\ne3$.)

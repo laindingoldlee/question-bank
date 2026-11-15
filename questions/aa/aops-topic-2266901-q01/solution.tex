@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2266901_a_nice_geometry_problem
+% Stable identity: aops-topic-2266901-q01
+\textbf{Each diagonal is parallel to a side.} Triangles $BCD$ and $BCA$ have the common base $BC$ and equal areas, so $A$ and $D$ are at the same distance from line $BC$; by convexity they are on the same side of it. Hence $AD\parallel BC$. In the same way $BE\parallel CD$, $CA\parallel DE$, $DB\parallel EA$ and $EC\parallel AB$.
+
+\textbf{A parallelogram.} Let the diagonals $BD$ and $CE$ meet at $P$. Then $EP\parallel AB$ (as $EC\parallel AB$) and $BP\parallel AE$ (as $BD\parallel EA$), so $ABPE$ is a parallelogram, and its diagonal $BE$ splits it into two congruent triangles: $[BPE]=[EAB]=1$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=dir(90), B=dir(162), C=dir(234), D=dir(306), E=dir(18);
+pair P=extension(B,D,C,E);
+fill(A--B--P--E--cycle,paleyellow);
+draw(A--B--C--D--E--cycle,linewidth(0.9));
+draw(B--D,blue); draw(C--E,blue); draw(B--E,dashed);
+draw(A--D,gray+dotted);
+dot(P);
+label("$A$",A,N); label("$B$",B,W); label("$C$",C,SW); label("$D$",D,SE); label("$E$",E,E); label("$P$",P,S);
+label("$x$",(P+C+D)/3,blue); label("$1-x$",(B+C+P)/3+(0.04,0.02),fontsize(8pt)); label("$1-x$",(P+D+E)/3+(-0.04,0.02),fontsize(8pt));
+label("$1$",(B+P+E)/3+(0,0.03));
+\end{asy}
+
+\textbf{An equation.} Let $x=[PCD]$. Since $[BCD]=[BCP]+[PCD]=1$ and $[CDE]=[PCD]+[PDE]=1$, we get $[BCP]=[PDE]=1-x$. Triangles $BCP$ and $PCD$ have the same height from $C$, so $\dfrac{[BCP]}{[PCD]}=\dfrac{BP}{PD}$; triangles $BPE$ and $PDE$ have the same height from $E$, so $\dfrac{[BPE]}{[PDE]}=\dfrac{BP}{PD}$. Therefore
+\[\dfrac{1-x}{x}=\dfrac{1}{1-x},\qquad (1-x)^2=x,\qquad x^2-3x+1=0.\]
+Since $0<x<1$, $x=\dfrac{3-\sqrt5}{2}$.
+
+\textbf{The area.} The pentagon consists of triangle $EAB$ and quadrilateral $BCDE$, which its diagonals split into $BPE$, $BCP$, $PCD$, $PDE$. So
+\[[ABCDE]=1+1+(1-x)+x+(1-x)=4-x=4-\dfrac{3-\sqrt5}{2}=\boxed{\dfrac{5+\sqrt5}{2}}.\]
+This value does not depend on the pentagon, so all such pentagons have the same area. (Such pentagons exist: a regular pentagon scaled so that $[ABC]=1$ is one.)

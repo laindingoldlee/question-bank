@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h1772122_mock_target_6__string_counting
+% Stable identity: aops-topic-1772122-q01
+Factor: $32032=2^5\cdot7\cdot11\cdot13$. Each of the primes $7$, $11$, $13$ divides exactly one letter. A letter divisible by $13$ is $13$ or $26$; by $11$, it is $11$ or $22$; by $7$, it is $7$ or $14$ ($21$ would bring a factor $3$). No letter is divisible by two of these primes ($7\cdot11>26$), so they lie in three different letters, each of which may or may not carry one factor $2$. The other three letters are powers of $2$: $1,2,4,8,16$, with exponents from $0$ to $4$.
+
+Choose the positions of the $13$-letter, the $11$-letter and the $7$-letter: $6\cdot5\cdot4=120$ ways. If $e$ of these three letters carry a factor $2$ ($\dbinom3e$ ways), the other three letters have exponents of $2$ adding to $5-e$, each between $0$ and $4$. The number of ordered triples of nonnegative integers with sum $s$ is $\dbinom{s+2}{2}$; for $s=5$ we must remove the $3$ triples with an entry $5$. So the counts are $21-3=18$ for $s=5$, $15$ for $s=4$, $10$ for $s=3$ and $6$ for $s=2$. Hence the number of strings is
+\[
+120\left(1\cdot18+3\cdot15+3\cdot10+1\cdot6\right)=120\cdot99=\boxed{11880} .
+\]

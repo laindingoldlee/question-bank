@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3588603_show_product_between_sides_2018ommeb_in2
+% Stable identity: aops-topic-3588603-q01
+Let $AD=b$, $BD=d$, and $AE:EB=b:d$ by the angle-bisector theorem in triangle $ADB$. Put $t=\dfrac{AE}{AB}=\dfrac{b}{b+d}$. Use vectors with $A=0,B=\mathbf u,D=\mathbf v$, so $C=\mathbf u+\mathbf v$ and $E=t\mathbf u$. Solving the line intersections gives $F=\mathbf u-\dfrac{1-t}{t}\mathbf v$ and $G=-\dfrac{t}{1-t}\mathbf v$. Thus $BF=\dfrac{1-t}{t}b=d$, while $AG=\dfrac{t}{1-t}b=\dfrac{b^2}{d}$. Their product is $b^2=BC^2$.
+\begin{asy}
+import geometry;
+size(240);
+pair A=(0,0),B=(4,0),D=(1,2),C=B+D;real b=abs(D),d=abs(D-B),t=b/(b+d);pair E=t*B,F=B-(1-t)/t*D,G=-t/(1-t)*D;draw(A--B--C--D--cycle);draw(D--F^^C--G,dashed);label("$A$",A,W);label("$B$",B,E);label("$C$",C,NE);label("$D$",D,N);label("$E$",E,NW);label("$F$",F,SE);label("$G$",G,SW);
+\end{asy}

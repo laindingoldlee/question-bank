@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1715899_junior_regional_olympiad__fbh_2015_grade_6_problem_3
+% Stable identity: aops-topic-1715899-q01
+Through $D$ draw the line parallel to $CE$; it meets $AB$ at $M$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(1,4),B=(0,0),C=(6,0);
+pair D=(B+C)/2,Sm=(A+D)/2;
+pair Ep=extension(C,Sm,A,B);
+pair M=extension(D,D+(Ep-C),A,B);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,linewidth(0.7));draw(C--Ep,linewidth(0.7));
+draw(D--M,dashed+blue);
+dot(Sm);dot(M);dot(Ep);dot(D);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);
+label("$S$",Sm,dir(45));label("$E$",Ep,W);label("$M$",M,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item In triangle $BCE$, $D$ is the midpoint of $BC$ and $DM\parallel CE$, so by the midpoint theorem $M$ is the midpoint of $BE$: $BM=ME$.
+\item In triangle $ADM$, $S$ is the midpoint of $AD$ and $SE\parallel DM$ (as $E$ lies on line $CS$), so $E$ is the midpoint of $AM$: $AE=EM$.
+\end{itemize}
+Hence $BE=BM+ME=2EM=2AE$. $\blacksquare$

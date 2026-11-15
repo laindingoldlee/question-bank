@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2324005_pretty_interesting_cp_problem_i_guess
+% Stable identity: aops-topic-2324005-q01
+We minimise the number of substrings consisting only of zeros. The $n$ ones split the $s-n$ zeros into $n+1$ blocks (some possibly empty) of lengths $g_0,g_1,\dots,g_n$ with $g_0+\cdots+g_n=s-n$. An all-zero substring lies inside one block, and a block of length $g$ contains $\dfrac{g(g+1)}{2}$ substrings. So we must minimise
+\[Z=\sum_{i=0}^{n}\dfrac{g_i(g_i+1)}{2}.\]
+If two blocks have lengths $g\ge h+2$, moving one zero from the longer block to the shorter changes $Z$ by
+\[\dfrac{(g-1)g}{2}+\dfrac{(h+1)(h+2)}{2}-\dfrac{g(g+1)}{2}-\dfrac{h(h+1)}{2}=-g+(h+1)<0.\]
+So at a minimum all block lengths differ by at most $1$; this determines them: writing $s-n=q(n+1)+r$ with $0\le r\le n$, there are $r$ blocks of length $q+1$ and $n+1-r$ blocks of length $q$. (Every arrangement of ones gives such blocks, and any block lengths can be realised.) Hence the maximum count is
+\[\boxed{\dfrac{s(s+1)}{2}-r\cdot\dfrac{(q+1)(q+2)}{2}-(n+1-r)\cdot\dfrac{q(q+1)}{2}},\quad\text{where } q=\left\lfloor\dfrac{s-n}{n+1}\right\rfloor,\ r=s-n-q(n+1).\]
+For example, $s=5$, $n=2$: the string $01010$ gives $15-3=12$ substrings with a $1$.

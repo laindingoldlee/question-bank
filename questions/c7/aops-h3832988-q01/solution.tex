@@ -1,0 +1,25 @@
+Every three distinct vertices are noncollinear, so there are $\binom63=20$ triangles.
+
+A triangle with two hexagon edges uses three consecutive vertices. There are $6$ of these, and each has one diagonal. No triangle has three hexagon edges.
+
+Count incidences between a triangle and one of its hexagon-edge sides. Each of the $6$ edges can be completed to a triangle by any of the other $4$ vertices, giving $24$ incidences. The six triangles already counted contribute $12$, leaving $12$ triangles with exactly one hexagon edge, hence two diagonals. The remaining $20-6-12=2$ triangles have three diagonals; they use alternating vertices.
+
+Thus the total is $\boxed{20}$, with counts $\boxed{6,12,2}$ for one, two, and three diagonals, respectively.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] V;for(int i=0;i<6;++i)V.push(2dir(90-60i));for(int i=0;i<6;++i){draw(V[i]--V[(i+1)%6]);label(string(i+1),V[i],V[i]);}draw(V[0]--V[1]--V[2]--cycle,blue+1);label("One diagonal: 6 triangles",(0,-2.7));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] V;for(int i=0;i<6;++i)V.push(2dir(90-60i));for(int i=0;i<6;++i){draw(V[i]--V[(i+1)%6]);label(string(i+1),V[i],V[i]);}draw(V[0]--V[1]--V[3]--cycle,blue+1);label("Two diagonals: 12 triangles",(0,-2.7));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] V;for(int i=0;i<6;++i)V.push(2dir(90-60i));for(int i=0;i<6;++i){draw(V[i]--V[(i+1)%6]);label(string(i+1),V[i],V[i]);}draw(V[0]--V[2]--V[4]--cycle,blue+1);label("Three diagonals: 2 triangles",(0,-2.7));
+\end{asy}

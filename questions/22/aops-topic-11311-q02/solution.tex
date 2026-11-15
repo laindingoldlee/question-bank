@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h11311_mathcounts_problems_3
+% Stable identity: aops-topic-11311-q02
+Symmetry about $P$ means that $P$ is the midpoint of $AR$:
+\[
+\dfrac{9+a}{2}=5,\qquad\dfrac{14+b}{2}=3\qquad\Longrightarrow\qquad a=1,\ b=-8 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(9,14),P=(5,3),R=(1,-8);
+draw((-1,0)--(11,0),gray,Arrow(TeXHead));draw((0,-10)--(0,16),gray,Arrow(TeXHead));
+label("$x$",(11,0),E,gray);label("$y$",(0,16),N,gray);
+draw(A--R,blue+linewidth(0.9));
+dot(A);dot(P);dot(R,red);
+label("$A(9,14)$",A,E);label("$P(5,3)$",P,E);label("$R(1,-8)$",R,E,red);
+pair u=unit(rotate(90)*(A-R));
+for(pair m: new pair[]{(A+P)/2,(P+R)/2}){draw(m-0.35u--m+0.35u,blue);}
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $R=\boxed{(1,-8)}$. (Equivalently, $R=2P-A$: from $A$ to $P$ is $(-4,-11)$, and the same step again leads from $P$ to $R$.)

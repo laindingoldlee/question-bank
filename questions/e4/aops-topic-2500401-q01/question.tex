@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2500401_math_kangaroo_2013
+% Stable identity: aops-topic-2500401-q01
+Matthew made a complete circle from $8$ identical curved pieces of model railway track, so each piece is an arc of $45^\circ$. Marten starts a different track by joining two of these pieces so that they curve in opposite directions, forming an S-bend:
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+real R=1; pair pos=(0,0); real h=0;
+int[] t={1,-1};
+for(int k=0;k<t.length;++k){
+  pair c=pos+R*dir(h+90*t[k]);
+  real a0=degrees(pos-c); real a1=a0+45*t[k];
+  path p=arc(c,R,a0,a1,t[k]==1 ? CCW : CW);
+  draw(p, k<2 ? red+linewidth(1.6) : linewidth(1));
+  dot(pos,linewidth(3));
+  pos=c+R*dir(a1); h=h+45*t[k];
+}
+dot(pos,linewidth(3));
+\end{asy}
+
+He wants to complete a closed track, using only pieces identical to these and as few pieces as possible in total. (The track closes when the end of the last piece meets the start of the first piece, pointing in the same direction.) How many pieces does his track consist of?

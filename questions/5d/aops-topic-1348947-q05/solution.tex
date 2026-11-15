@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1348947_problem_compilation
+% Stable identity: aops-topic-1348947-q05
+We need $f(x)=x^3+x^2-7\equiv0\pmod{625}$ (then $k=\dfrac{x^3+x^2-7}{625}$ is automatically positive for $x>1000$). Lift solutions from modulus $5$ to $5^4$.
+
+\emph{Mod $5$:} $x^2(x+1)\equiv2$; checking $x=0,1,2,3,4$ gives $0,2,12,36,80\equiv0,2,2,1,0$, so $x\equiv1$ or $2\pmod5$.
+
+\emph{$x\equiv1$ fails mod $25$:} with $x=1+5t$, $f(x)=-5+25t+100t^2+125t^3\equiv-5\pmod{25}$, never $0$.
+
+\emph{$x\equiv2$ lifts uniquely:} $f'(x)=3x^2+2x$ and $f'(2)=16\not\equiv0\pmod5$, so each step has exactly one lift. With $x=2+5t$: $f(2+5t)\equiv f(2)+5t\,f'(2)=5+80t\pmod{25}$, so $1+16t\equiv0\pmod5$, $t\equiv4$, $x\equiv22\pmod{25}$. Next $f(22)=11125\equiv0\pmod{125}$ already, so $x\equiv22\pmod{125}$. Finally $f(22+125u)\equiv f(22)+125u\,f'(22)\pmod{625}$ with $f(22)=11125=625\cdot17+500$ and $f'(22)=1496$: we need $500+125\cdot1496u\equiv0\pmod{625}$, i.e.\ $4+1496u\equiv0\pmod 5$, i.e.\ $4+u\equiv0$, $u\equiv1$. So $x\equiv147\pmod{625}$.
+
+The solutions are $x=147+625j$: $147$, $772$, $1397,\dots$ The smallest above $1000$ is $x=1397$, and the remainder is $\boxed{397}$.

@@ -1,0 +1,57 @@
+A cut producing two triangles must join a vertex $A$ to a point $D$ on the opposite side $BC$. Write the original angles at $A,B,C$ as $V,U,W$, and let the cut split $V$ into $p,q$, with $p+q=V$.
+
+Triangle $ABD$ is isosceles exactly when
+\[
+p\in\left\{U,\dfrac{180^\circ-U}{2},180^\circ-2U\right\}.
+\]
+The corresponding condition on $ACD$ is
+\[
+q\in\left\{W,\dfrac{180^\circ-W}{2},180^\circ-2W\right\}.
+\]
+These list all choices of equal angles; all angles must be positive.
+
+If the $36^\circ$ angle is the cut vertex, substitute $V=36^\circ$, $U+W=144^\circ$ in the nine combinations. Only $(U,W)=(12^\circ,132^\circ)$ or its reversal gives positive $p,q$. If instead it is a base angle, put $U=36^\circ$. The choices $p=36^\circ,72^\circ,108^\circ$, combined with the three displayed possibilities for $q$ and $V=144^\circ-W$, give the following complete list, with one valid cut for each:
+\[
+\begin{array}{c|c|c|c|c}
+V&U&W&p&q\\ \hline
+36&12&132&12&24\\
+126&18&36&18&108\\
+108&36&36&72&36\\
+90&36&54&36&54\\
+72&36&72&36&36
+\end{array}
+\]
+All table entries are degrees. A ray splitting angle $V$ into the listed positive $p,q$ meets the opposite side, and the equal-angle conditions ensure both pieces are isosceles. Thus the possible largest angles are
+\[
+\boxed{72^\circ,\ 90^\circ,\ 108^\circ,\ 126^\circ,\ 132^\circ}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real u=12,v=36,w=132,p=12,q=24;pair B=(0,0),C=(4,0),A=4Sin(w)/Sin(v)*dir(u);real r=Sin(w)*Sin(p)/(Sin(u)*Sin(q));pair D=(4r/(1+r),0);draw(A--B--C--cycle);draw(A--D,blue);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$12^\circ$",B+(.4,.05),N);label("$132^\circ$",C+(-.4,.05),N);label("A: 36 degrees",(2,-.55));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real u=18,v=126,w=36,p=18,q=108;pair B=(0,0),C=(4,0),A=4Sin(w)/Sin(v)*dir(u);real r=Sin(w)*Sin(p)/(Sin(u)*Sin(q));pair D=(4r/(1+r),0);draw(A--B--C--cycle);draw(A--D,blue);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$18^\circ$",B+(.4,.05),N);label("$36^\circ$",C+(-.4,.05),N);label("A: 126 degrees",(2,-.55));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real u=36,v=108,w=36,p=72,q=36;pair B=(0,0),C=(4,0),A=4Sin(w)/Sin(v)*dir(u);real r=Sin(w)*Sin(p)/(Sin(u)*Sin(q));pair D=(4r/(1+r),0);draw(A--B--C--cycle);draw(A--D,blue);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$36^\circ$",B+(.4,.05),N);label("$36^\circ$",C+(-.4,.05),N);label("A: 108 degrees",(2,-.55));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real u=36,v=90,w=54,p=36,q=54;pair B=(0,0),C=(4,0),A=4Sin(w)/Sin(v)*dir(u);real r=Sin(w)*Sin(p)/(Sin(u)*Sin(q));pair D=(4r/(1+r),0);draw(A--B--C--cycle);draw(A--D,blue);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$36^\circ$",B+(.4,.05),N);label("$54^\circ$",C+(-.4,.05),N);label("A: 90 degrees",(2,-.55));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real u=36,v=72,w=72,p=36,q=36;pair B=(0,0),C=(4,0),A=4Sin(w)/Sin(v)*dir(u);real r=Sin(w)*Sin(p)/(Sin(u)*Sin(q));pair D=(4r/(1+r),0);draw(A--B--C--cycle);draw(A--D,blue);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$36^\circ$",B+(.4,.05),N);label("$72^\circ$",C+(-.4,.05),N);label("A: 72 degrees",(2,-.55));
+\end{asy}

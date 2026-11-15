@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2573099_tricky_geometry_problem_not_imo_level
+% Stable identity: aops-topic-2573099-q01
+Since $a<b<c$, we have $ab<ac<bc$, so in the second triangle the hypotenuse would be $bc$. We need
+\[(ab)^2+(ac)^2=(bc)^2\iff a^2\left(b^2+c^2\right)=b^2c^2.\]
+Substitute $c^2=a^2+b^2$:
+\[a^2\left(a^2+2b^2\right)=b^2\left(a^2+b^2\right)\iff a^4+a^2b^2-b^4=0.\]
+Dividing by $a^4$ and putting $r=\dfrac{b^2}{a^2}>0$ gives $r^2-r-1=0$, so $r=\varphi=\dfrac{1+\sqrt5}2$. Then $b=a\sqrt\varphi$ and $c^2=a^2(1+\varphi)=a^2\varphi^2$ (as $\varphi^2=\varphi+1$), so $c=a\varphi$. Each step can be reversed, so these triangles work, and $a<b<c$ holds since $1<\sqrt\varphi<\varphi$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real phi=(1+sqrt(5))/2;real a=2,b=2*sqrt(phi);
+pair C=(0,0),B=(b,0),A=(0,a);
+draw(A--B--C--cycle,linewidth(0.9));draw((0.2,0)--(0.2,0.2)--(0,0.2));
+label("$a$",(A+C)/2,W);label("$b$",(B+C)/2,S);label("$c$",(A+B)/2,NE);
+pair d=(4.2,0);real s=0.5;
+pair C2=d,B2=d+(s*a*b,0),A2=d+(0,s*a*phi*a);
+draw(A2--B2--C2--cycle,linewidth(0.9));draw(C2+(0.2,0)--C2+(0.2,0.2)--C2+(0,0.2));
+label("$ac$",(A2+C2)/2,W);label("$ab$",(B2+C2)/2,S);label("$bc$",(A2+B2)/2,NE);
+\end{asy}
+
+So the triangles are exactly those similar to
+\[\boxed{a:b:c=1:\sqrt\varphi:\varphi,\qquad \varphi=\dfrac{1+\sqrt5}2}.\]
+The sides form a geometric progression with ratio $\sqrt\varphi$ (the Kepler triangle), and $ab:ac:bc=\sqrt\varphi:\varphi:\varphi\sqrt\varphi$ is the same shape again. (The second triangle in the sketch is drawn at half scale.)

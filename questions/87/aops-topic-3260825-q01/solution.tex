@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h3260825_prime_factor_math_circle_problem
+% Stable identity: aops-topic-3260825-q01
+(a) The total is $20000+30(500)+100000=\boxed{135000}$ dollars.
+(b) Search the integers upward and test square decompositions:
+\begin{verbatim}
+from math import isqrt
+for total in range(135000,135014):
+    pairs=[(a,isqrt(total-a*a))
+           for a in range(isqrt(total)+1)
+           if isqrt(total-a*a)**2 == total-a*a]
+    if pairs:
+        print(total,pairs[0])
+        break
+# 135013 (18,367)
+\end{verbatim}
+Every candidate from $135000$ through $135012$ has been checked and rejected; $18^2+367^2=324+134689=135013$ works. Hence the minimum is $\boxed{135013}$.

@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2656477_polynomial_proofs
+% Stable identity: aops-topic-2656477-q01
+\emph{Existence.} For each $i$ let
+\[L_i(x)=\prod_{j\ne i}\dfrac{x-x_j}{x_i-x_j},\]
+a polynomial of degree $n$ with $L_i(x_i)=1$ and $L_i(x_j)=0$ for $j\ne i$ (the denominators are nonzero since the $x_j$ are distinct). Then $p=y_0L_0+y_1L_1+\cdots+y_nL_n$ has degree at most $n$ and $p(x_i)=y_i$.
+
+\emph{Uniqueness.} If $p$ and $q$ both work, then $p-q$ has degree at most $n$ and vanishes at the $n+1$ distinct numbers $x_0,\dots,x_n$. A nonzero polynomial of degree at most $n$ has at most $n$ roots, so $p-q=0$.
+
+\emph{$n$ points are not enough.} Given $n$ points with distinct $x$-coordinates $x_1,\dots,x_n$, let $f(x)=(x-x_1)\cdots(x-x_n)$. If $g$ is any polynomial of degree $n$ through the points, then so is $g+f$ or $g-f$ (at least one of them still has degree $n$, as their leading coefficients differ by $2$), and it is different from $g$. So the points do not determine the polynomial. $\blacksquare$

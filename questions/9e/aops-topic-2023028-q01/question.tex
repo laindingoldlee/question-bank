@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2023028_find_the_area
+% Stable identity: aops-topic-2023028-q01
+Four rectangular paper strips, each of length $10$ and width $1$, are laid flat on a table: two run horizontally and two run vertically, and each horizontal strip crosses each vertical strip at right angles, as shown. How much area of the table is covered?
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real L=10;
+for(real y: new real[]{2,6}) filldraw(box((0,y),(L,y+1)),palegray,black);
+for(real x: new real[]{2,6}) filldraw(box((x,0),(x+1,L)),palegray,black);
+for(real y: new real[]{2,6}) draw(box((0,y),(L,y+1)));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

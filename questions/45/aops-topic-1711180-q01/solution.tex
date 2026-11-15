@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1711180_perfect_square
+% Stable identity: aops-topic-1711180-q01
+We need positive integers $m,k$ with $m^2-48k^2=1$. The smallest solution with $k>0$ is $(m,k)=(7,1)$, since $48+1=49$.
+
+\textbf{Going down.} Let $(m,k)$ be a solution with $k\ge1$ and $m>0$, and put
+\[
+m'=7m-48k,\qquad k'=7k-m .
+\]
+A direct expansion gives $m'^2-48k'^2=(49-48)(m^2-48k^2)=1$ (the cross terms $\mp672mk$ cancel), so $(m',k')$ is again a solution. Since $m^2=48k^2+1>48k^2$, we have $m>\sqrt{48}\,k>6.9k$, so $k'<0.1k<k$. Also $m^2=48k^2+1\le49k^2$ (as $k\ge1$), so $m\le7k$ and $k'\ge0$, with $k'=0$ only when $k=1$. Finally $m'>0$, because $49m^2=49\cdot48k^2+49>48^2k^2$ gives $7m>48k$. So from any solution with $k\ge1$ we reach a solution with smaller nonnegative $k'$, and repeating this we arrive at $k=0$, $m=1$.
+
+\textbf{Going up.} The step is reversed by $m=7m'+48k'$, $k=m'+7k'$. Starting from $(1,0)$ and applying the reverse step repeatedly, we therefore obtain \emph{every} solution:
+\[
+(1,0)\to(7,1)\to(97,14)\to(1351,195)\to(18817,2716)\to\cdots
+\]
+In terms of $k$ alone: the reverse step gives $m_{n+1}=7m_n+48k_n$ and $k_{n+1}=m_n+7k_n$, so $m_n=k_{n+1}-7k_n$ and
+\[
+k_{n+2}=m_{n+1}+7k_{n+1}=7(k_{n+1}-7k_n)+48k_n+7k_{n+1}=14k_{n+1}-k_n ,
+\]
+with $k_0=0$, $k_1=1$ (equivalently $m_n+k_n\sqrt{48}=(7+\sqrt{48})^n$).
+
+So the positive integers $k$ are exactly
+\[
+\boxed{k=1,\ 14,\ 195,\ 2716,\ 37829,\ \dots},\qquad k_{n+1}=14k_n-k_{n-1},
+\]
+for instance $48\cdot14^2+1=9409=97^2$ and $48\cdot195^2+1=1825201=1351^2$.

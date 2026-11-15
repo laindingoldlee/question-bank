@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2235201_hot_air_balloon
+% Stable identity: aops-topic-2235201-q01
+Each five seconds the balloon moves along the same straight line through the anchor, by $\sqrt{7^2+24^2}=25$ ft. The cable becomes taut when the balloon is $2500$ ft from the anchor $O$, after $100$ steps, at the point $P$ that is $2400$ ft up and $700$ ft across.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair G=(0,0), Bl=(7,24), F=(7,0), Mp=(3.5,12);
+draw(G--F,linewidth(0.9)); draw(G--Bl,linewidth(0.9)); draw(Bl--F,dashed);
+draw(Mp--F,blue+linewidth(0.9));
+draw((7,0)--(6.3,0)--(6.3,0.7)--(7,0.7));
+dot(G); dot(Bl); dot(F); dot(Mp,blue);
+label("anchor $O$",G,SW,fontsize(8pt)); label("balloon $P$",Bl,NE,fontsize(8pt)); label("$Q$",F,SE); label("$M$",Mp,W,blue);
+label("$2400$",(7,12),E,fontsize(8pt)); label("$700$",(3.5,0),S,fontsize(8pt));
+label("$2500$",(2.0,7.5),NW,fontsize(8pt)); label("$1250$",Mp+0.7*(F-Mp),W,blue+fontsize(8pt));
+\end{asy}
+
+Let $Q$ be the point on the ground below $P$. Triangle $OQP$ has a right angle at $Q$, and the cable $OP=2500$ is its hypotenuse. The midpoint $M$ of the hypotenuse of a right triangle is equidistant from all three vertices (it is the centre of the circle through them, since $OP$ is a diameter), so
+\[MQ=\dfrac{OP}{2}=\boxed{1250\text{ ft}}.\]
+(With coordinates $M=(350,1200)$ and $Q=(700,0)$: $MQ=\sqrt{350^2+1200^2}=\sqrt{1562500}=1250$.)

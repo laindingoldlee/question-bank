@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2323115_arr0ws_firing_range
+% Stable identity: aops-topic-2323115-q07
+From the second equation $y=\dfrac{12-3x}{4}$. Multiplying the first equation by $144$ gives $9x^2+16y^2=144$, and substituting:
+\[9x^2+(12-3x)^2=144\ \Longrightarrow\ 18x^2-72x=0\ \Longrightarrow\ x=0\text{ or }x=4.\]
+Then $y=3$ or $y=0$. The solutions are $\boxed{(x,y)=(0,3)\text{ and }(4,0)}$: the line passes through the ends of two axes of the ellipse.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-5,0)--(7.4,0),Arrow(6)); draw((0,-3.6)--(0,4.8),Arrow(6));
+label("$x$",(7.4,0),E); label("$y$",(0,4.8),N);
+draw(ellipse((0,0),4,3),blue+linewidth(0.9));
+draw((-1.2,3.9)--(5.6,-1.2),red+linewidth(0.9));
+dot((4,0)); dot((0,3));
+label("$(4,0)$",(4,0),NE,fontsize(9pt)); label("$(0,3)$",(0,3),NE,fontsize(9pt));
+label("$\dfrac{x^2}{16}+\dfrac{y^2}{9}=1$",(-2.9,-2.2),SW,blue+fontsize(9pt));
+label("$3x+4y=12$",(5.6,-1.2),E,red+fontsize(9pt));
+\end{asy}

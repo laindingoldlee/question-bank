@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1295867_lets_play_with_geometry_purple_comet_2015_high_school_5
+% Stable identity: aops-topic-1295867-q05
+Assume the quadrilateral is convex, so the diagonals cross at a point $P$ inside. Each diagonal splits the quadrilateral into two triangles with that diagonal as base and the pieces of the other diagonal as heights. So the area is
+\[
+\dfrac{1}{2}\cdot12\cdot(\text{part}_1+\text{part}_2)=\dfrac{1}{2}\cdot12\cdot9=\boxed{54}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(-4,0),C=(8,0),B=(0,-3),D=(0,6);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(A--C,blue); draw(B--D,red);
+label("$12$",(2,0),N,blue); label("$9$",(0,4.5),E,red); draw(ra((0,0),C,D,0.5));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

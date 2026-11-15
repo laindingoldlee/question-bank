@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2039296_mathcounts_2019_chapter
+% Stable identity: aops-topic-2039296-q01
+Let $[ABC]=1$. Then $[ABQ]=\dfrac{AQ}{AC}=\dfrac15$ and $[PBQ]=\dfrac{PB}{AB}[ABQ]=\dfrac45\cdot\dfrac15=\dfrac4{25}$.
+
+Since $\dfrac{AP}{AB}=\dfrac{AQ}{AC}$, $PQ\parallel BC$ with $PQ=\dfrac15BC$, so triangles $RPQ$ and $RCB$ are similar with ratio $\dfrac15$, and $\dfrac{QR}{RB}=\dfrac15$, i.e. $\dfrac{QR}{QB}=\dfrac16$. Therefore
+\[[PQR]=\dfrac16[PQB]=\dfrac16\cdot\dfrac4{25}=\boxed{\dfrac{2}{75}}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(3.8cm);
+defaultpen(fontsize(10pt));
+pair A=(1.2,4),B=(0,0),C=(5,0);pair P=A+(B-A)/5,Q=A+(C-A)/5;pair R=extension(P,C,Q,B);
+fill(P--Q--R--cycle,lightgray);draw(A--B--C--cycle,linewidth(0.8));draw(P--C);draw(Q--B);draw(P--Q);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$P$",P,W);label("$Q$",Q,E);label("$R$",R+(0,-0.42),fontsize(8pt));
+\end{asy}

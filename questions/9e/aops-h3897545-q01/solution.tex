@@ -1,0 +1,7 @@
+The net displacement needs five right and three up steps. Ten steps therefore contain exactly one backward step. If it is left, the horizontal word has six rights and one left. The left must occur in positions $2$ through $6$ of this seven-step word to stay in columns $0$ through $5$, giving five words. Insert the three up steps in $\binom{10}{3}$ ways, for $600$ walks. If the backward step is down, the vertical word has four ups and one down; the down can be in positions $2,3,4$, giving three words. Insert five right steps in $\binom{10}{5}$ ways, giving $756$. The total is $\boxed{1356}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=0;x<=5;++x)draw((x,0)--(x,3),gray);for(int y=0;y<=3;++y)draw((0,y)--(5,y),gray);draw((0,0)--(1,0)--(2,0)--(2,1)--(1,1)--(1,2)--(2,2)--(3,2)--(4,2)--(5,2)--(5,3),blue+1);label("start",(0,0),SW);label("finish",(5,3),NE);
+\end{asy}

@@ -1,0 +1,13 @@
+Work modulo $47$ with the ordered state $(a_n,a_{n+1})$. The transition is
+\[
+(u,v)\longmapsto(v,7v^2+u)\pmod{47}.
+\]
+It is invertible, with inverse $(v,w)\mapsto(w-7v^2,v)$, so a return to the initial pair makes the whole sequence periodic. Iteration gives the following checkpoints:
+\[
+\begin{array}{c|rrrrrrrrrr}
+n&0&20&40&60&80&100&120&140&160&180\\\hline
+a_n&5&18&33&42&43&14&6&42&45&5\\
+a_{n+1}&7&7&38&32&18&26&1&7&26&7
+\end{array}
+\]
+In particular the state returns after $180$ steps. Since $180\mid2025!$, the requested residue equals $a_0\equiv\boxed5\pmod{47}$. A minimal-period claim is unnecessary; a verified period of $180$ suffices.

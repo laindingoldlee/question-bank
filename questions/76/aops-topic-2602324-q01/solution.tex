@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2602324_rubiks_cube
+% Stable identity: aops-topic-2602324-q01
+\textbf{(a)} The $8$ corner pieces can be placed in the $8$ corner slots in $8!$ ways, and each can sit in $3$ orientations; the $12$ edge pieces can be placed in $12!$ ways, each in $2$ orientations. This gives $8!\cdot3^8\cdot12!\cdot2^{12}$ positions.
+
+\textbf{(b)} Every face turn is made of clockwise quarter turns, so it is enough to find quantities that no clockwise quarter turn changes.
+
+\emph{1. Permutation parity.} A quarter turn moves the four corner pieces of the turning face in a $4$-cycle and its four edge pieces in a $4$-cycle. A $4$-cycle is a product of $3$ transpositions, so it is odd. Hence each quarter turn changes the parity of the corner permutation and the parity of the edge permutation together. Both start even, so in every reachable position \emph{the two permutations have the same parity}.
+
+\emph{2. Corner twist.} Each corner slot has exactly one facet on the U or D face, and each corner piece has exactly one sticker of the U or D colour. The \emph{twist} of a corner piece is $0$, $1$ or $2$: the number of $120^\circ$ clockwise steps (seen from outside the corner) from the slot's U/D facet to the piece's U/D sticker. Let $T$ be the sum of the eight twists modulo $3$.
+
+A turn is a rigid rotation, so it carries the facets of each slot to the facets of the new slot in the same clockwise order. Hence each moved piece's twist changes by an amount that depends only on the two slots. A U or D turn carries U/D facets to U/D facets, so no twist changes. A clockwise R turn carries U to B, B to D, D to F and F to U on the right layer, and moves the corners $\text{UFR}\to\text{UBR}\to\text{DBR}\to\text{DFR}\to\text{UFR}$.
+\begin{itemize}
+\item UFR$\to$UBR: the U facet goes to the B facet of UBR. Seen from outside UBR, the facets in clockwise order are U, B, R, so the twist increases by $1$.
+\item UBR$\to$DBR: the U facet goes to the B facet of DBR, whose clockwise order is D, R, B: an increase of $2$.
+\item DBR$\to$DFR: the D facet goes to the F facet of DFR, whose clockwise order is D, F, R: an increase of $1$.
+\item DFR$\to$UFR: the D facet goes to the F facet of UFR, whose clockwise order is U, R, F: an increase of $2$.
+\end{itemize}
+The total change is $1+2+1+2=6\equiv0\pmod3$. Turning the whole cube a quarter turn about the U--D axis keeps the U/D facets and the clockwise sense, and takes the R face to F, L and B, so these turns also leave $T$ unchanged. Since $T=0$ at the start, \emph{$T\equiv0\pmod3$ in every reachable position}.
+
+\emph{3. Edge flip.} Give each edge slot a reference facet: its facet on U or D if it has one, and otherwise (the four middle-layer slots) its facet on F or B. Each edge piece has a reference sticker, chosen by the same rule in its home slot. Call a piece good if its reference sticker is on the reference facet of its slot, and flipped otherwise. Let $K$ be the number of flipped edges.
+\begin{itemize}
+\item U and D turns carry U/D facets to U/D facets and do not move middle-layer edges: no edge changes status.
+\item An R or L turn permutes the U, F, D, B facets of the four edges of that layer among themselves. These are exactly the reference facets of those four slots, while their R or L facets stay on the R or L face. So no edge changes status.
+\item An F or B turn carries the U and D facets of two of its edges to R/L facets, and the F (or B) facets of the other two to non-reference facets of the U and D slots. So all four edges of that layer change status.
+\end{itemize}
+Thus $K$ changes by an even amount, and \emph{$K$ is even in every reachable position}.
+
+\emph{Counting.} Fix the positions of all pieces and the orientations of all pieces except one corner: exactly one of its $3$ orientations gives $T\equiv0$. Similarly exactly one of the $2$ orientations of the last edge makes $K$ even. For the permutations, swapping two given corner slots is a bijection between corner permutations of the two parities, so for each edge permutation exactly half of the $8!$ corner permutations have the right parity. The three conditions concern separate data, so the reachable positions number at most
+\[\dfrac{8!\cdot3^8\cdot12!\cdot2^{12}}{3\cdot2\cdot2}=8!\cdot3^7\cdot12!\cdot2^{10}=\boxed{43\,252\,003\,274\,489\,856\,000}.\]

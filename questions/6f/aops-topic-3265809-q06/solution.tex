@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h3265809_six_years
+% Stable identity: aops-topic-3265809-q06
+Let the height be $h$ and slant height $\ell=\sqrt{h^2+9}$. The area is $\pi(6+3)\ell+9\pi$, so $K=9\ell+9$. Its volume is
+\[V=\dfrac{\pi h}{3}(36+18+9)=21\pi h.\]
+The rounding condition $95.5\le V<96.5$ gives $1.4<h<1.5$. Hence $38<K<40$, so the only integer possibility is $K=39$. Therefore $\ell=\dfrac{10}{3}$ and
+\[h=\sqrt{\dfrac{100}{9}-9}=\boxed{\dfrac{\sqrt{19}}{3}}.\]
+Its actual volume is $7\pi\sqrt{19}\approx95.86$, which does round to $96$, verifying existence.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real h=sqrt(19)/3;pair A=(-6,h),B=(6,h),C=(3,0),D=(-3,0);draw(A--B--C--D--cycle);draw((0,0)--(0,h),dashed);draw((3,0)--(3,h),dashed);label("$6$",(3,h),N);label("$3$",(1.5,0),S);label("$h$",(0,h/2),W);label("$\ell$",(B+C)/2,E);label("Axial section; top open",(0,-0.8));
+\end{asy}

@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2429314_simple_graph_theory_problem
+% Stable identity: aops-topic-2429314-q01
+Let there be $p$ pentagons and $h$ hexagons, and let $V$, $E$, $F$ be the numbers of vertices, edges and faces.
+\begin{itemize}
+\item $F=p+h$.
+\item Each edge lies on exactly two faces, so counting edges face by face gives $2E=5p+6h$.
+\item Exactly three faces meet at each vertex, and each face of $k$ sides has $k$ vertices, so $3V=5p+6h$.
+\end{itemize}
+By Euler's formula $V-E+F=2$ for a convex polyhedron:
+\[\dfrac{5p+6h}{3}-\dfrac{5p+6h}{2}+p+h=2.\]
+Multiplying by $6$: $2(5p+6h)-3(5p+6h)+6p+6h=12$, i.e. $-(5p+6h)+6p+6h=12$, so $p=\boxed{12}$, whatever the number of hexagons. (The usual ball has $h=20$, $V=60$, $E=90$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+filldraw((-1.000,-4.420)--(1.000,-4.420)--(1.618,-3.175)--(0.000,-2.405)--(-1.618,-3.175)--cycle,rgb(0.15,0.15,0.15),black+0.6);
+filldraw((-4.854,0.299)--(-4.854,-0.299)--(-4.236,0.946)--(-3.618,2.789)--(-3.618,3.387)--(-4.236,2.142)--cycle,white,black+0.6);
+filldraw((0.000,-2.405)--(1.618,-3.175)--(3.236,-2.036)--(3.236,-0.127)--(1.618,0.642)--(0.000,-0.497)--cycle,white,black+0.6);
+filldraw((-3.236,-2.036)--(-1.618,-3.175)--(0.000,-2.405)--(0.000,-0.497)--(-1.618,0.642)--(-3.236,-0.127)--cycle,white,black+0.6);
+filldraw((-4.236,-2.142)--(-3.236,-2.036)--(-3.236,-0.127)--(-4.236,0.946)--(-4.854,-0.299)--cycle,rgb(0.15,0.15,0.15),black+0.6);
+filldraw((-1.000,-4.632)--(1.000,-4.632)--(2.000,-4.526)--(1.000,-4.420)--(-1.000,-4.420)--(-2.000,-4.526)--cycle,white,black+0.6);
+filldraw((-2.000,3.559)--(-1.000,2.485)--(1.000,2.485)--(2.000,3.559)--(1.000,4.632)--(-1.000,4.632)--cycle,white,black+0.6);
+filldraw((2.000,3.559)--(3.618,2.789)--(3.618,3.387)--(2.000,4.526)--(1.000,4.632)--cycle,rgb(0.15,0.15,0.15),black+0.6);
+filldraw((4.236,0.946)--(4.854,-0.299)--(4.854,0.299)--(4.236,2.142)--(3.618,3.387)--(3.618,2.789)--cycle,white,black+0.6);
+filldraw((-1.618,0.642)--(0.000,-0.497)--(1.618,0.642)--(1.000,2.485)--(-1.000,2.485)--cycle,rgb(0.15,0.15,0.15),black+0.6);
+filldraw((3.236,-2.036)--(4.236,-2.142)--(4.854,-0.299)--(4.236,0.946)--(3.236,-0.127)--cycle,rgb(0.15,0.15,0.15),black+0.6);
+filldraw((-3.618,3.387)--(-3.618,2.789)--(-2.000,3.559)--(-1.000,4.632)--(-2.000,4.526)--cycle,rgb(0.15,0.15,0.15),black+0.6);
+filldraw((1.000,-4.420)--(2.000,-4.526)--(3.618,-3.387)--(4.236,-2.142)--(3.236,-2.036)--(1.618,-3.175)--cycle,white,black+0.6);
+filldraw((-3.618,-3.387)--(-2.000,-4.526)--(-1.000,-4.420)--(-1.618,-3.175)--(-3.236,-2.036)--(-4.236,-2.142)--cycle,white,black+0.6);
+filldraw((1.618,0.642)--(3.236,-0.127)--(4.236,0.946)--(3.618,2.789)--(2.000,3.559)--(1.000,2.485)--cycle,white,black+0.6);
+filldraw((-4.236,0.946)--(-3.236,-0.127)--(-1.618,0.642)--(-1.000,2.485)--(-2.000,3.559)--(-3.618,2.789)--cycle,white,black+0.6);
+\end{asy}

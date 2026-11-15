@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2392379_you_dont_need_calculus
+% Stable identity: aops-topic-2392379-q01
+Let $u_1,u_2,u_3$ be the three unit steps and $V=u_1+u_2$ the position after two days.
+
+\emph{The first two steps.} The angle $\theta$ between $u_1$ and $u_2$ is uniformly distributed on $[0,\pi]$, since the direction of $u_2$ measured from $u_1$ is uniform on $[0,2\pi)$. By the parallelogram rule, $|V|^2=2+2\cos\theta=4\cos^2\dfrac\theta2$, so $r=|OV|=2\cos\dfrac\theta2$.
+
+\emph{The third step.} The final position lies on the unit circle centred at $V$, at a uniformly random point. It is within distance $1$ of $O$ exactly when it lies on the arc $XY$ of this circle inside the unit disc about $O$. Here $X$ and $Y$ are the intersections of the two circles, and $OX=VX=1$. In the isosceles triangle $OVX$, $\cos\angle OVX=\dfrac{r}{2}=\cos\dfrac\theta2$, so $\angle OVX=\dfrac\theta2$ and the arc $XY$ subtends the angle $\theta$ at $V$. Hence, given $\theta$, the probability is
+\[\dfrac{\theta}{2\pi}.\]
+(The boundary case $\theta=\pi$, where $V=O$, has probability $0$.)
+
+\emph{Averaging.} $\theta$ and $\pi-\theta$ are equally likely, and $\dfrac{\theta}{2\pi}+\dfrac{\pi-\theta}{2\pi}=\dfrac12$, so the average of $\dfrac\theta{2\pi}$ is $\dfrac14$. The probability is $\boxed{\dfrac14}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0); pair u1=dir(0), u2=dir(140); pair V=u1+u2; real r=abs(V);
+fill(circle(O,1),gray(0.9)); draw(circle(O,1),dashed);
+draw(circle(V,1),gray(0.45));
+real ph=degrees(O-V), al=aCos(r/2);
+draw(arc(V,1,ph-al,ph+al),linewidth(1.8));
+draw(O--u1,Arrow(TeXHead)); draw(u1--V,Arrow(TeXHead));
+pair X=V+dir(ph-al), Y=V+dir(ph+al);
+draw(V--X,dotted); draw(O--V,dotted);
+dot(O); dot(V); dot(X); dot(Y);
+label("$O$",O,W); label("$V$",V,N); label("$u_1$",u1/2,N,fontsize(9pt)); label("$u_2$",(u1+V)/2,NE,fontsize(9pt));
+label("$X$",X,W,fontsize(9pt)); label("$Y$",Y,E,fontsize(9pt));
+\end{asy}
+
+The shaded disc is the target region; after the steps $u_1$ and $u_2$, the third step ends on the grey circle about $V$, and the thick arc $XY$ is the favourable part. (The endpoint $Y$ of $u_1$ is always one of the two intersection points, since it is at distance $1$ from both $O$ and $V$.)

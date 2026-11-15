@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1644149_source_geometry_random_level_4__set_2_mathcounts
+% Stable identity: aops-topic-1644149-q01
+Since $y>0$, the longest side is $x+y$, so it is the hypotenuse and the legs are $x$ and $x-y$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(4,3);
+draw(A--B--C--cycle,linewidth(0.9));
+draw((3.75,0)--(3.75,0.25)--(4,0.25));
+label("$x$",(A+B)/2,S);label("$x-y$",(B+C)/2,E);label("$x+y$",(A+C)/2,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the Pythagorean theorem,
+\[
+x^2+(x-y)^2=(x+y)^2\quad\Longrightarrow\quad x^2+x^2-2xy+y^2=x^2+2xy+y^2\quad\Longrightarrow\quad x^2=4xy .
+\]
+As $x>0$ we may divide by $x$: $x=4y$, so
+\[
+\dfrac{y}{x}=\boxed{\dfrac{1}{4}} .
+\]
+Check: with $y=1$, $x=4$ the sides are $3,4,5$, a right triangle (drawn above).

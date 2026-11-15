@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2778013_2018_winmac_team_round__winchester_math_competition
+% Stable identity: aops-topic-2778013-q10
+Let $\theta=\angle DAB $ and $\phi=\angle PAB $. Since $ P $ is interior and $ H\in AB $, $ 0<\phi<\theta<180^\circ $ and $\phi<90^\circ $. Put $ AD=AP=r $. The chord formula in isosceles triangle $ ADP $ gives $ DP=2r\sin(\dfrac{\theta-\phi}{2})$, while $ HP=r\sin\phi $. Equality $ DP=2HP $ forces $\theta=3\phi $, because both sine arguments lie between 0 and $ 90^\circ $. The direction of $ PD $ makes angle $ 90^\circ+\dfrac{\theta+\phi}{2}=90^\circ+2\phi $ with $ AB $, while $ PH $ points downward. Hence $\angle DPH=180^\circ-2\phi $. Equating this to $\theta=3\phi $ gives $\phi=36^\circ $, $\theta=108^\circ $. Adjacent parallelogram angles sum to 180 degrees, so $\boxed{\angle ABC=72^\circ}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(1.5,0),D=dir(108),C=B+D,P=dir(36),H=(P.x,0);draw(A--B--C--D--cycle);draw(A--P--D^^P--H,blue);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$P$",P,E);label("$H$",H,S);
+\end{asy}

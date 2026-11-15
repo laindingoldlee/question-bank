@@ -1,0 +1,29 @@
+Set $B=(0,0)$, $C=(8,0)$. The side lengths give
+\[
+A=(2,3\sqrt5),\quad M=(4,0),\quad D=(2,0).
+\]
+Orthogonal projection onto the two side lines yields
+\[
+E=\left(\dfrac{16}{49},\dfrac{24\sqrt5}{49}\right),\qquad
+F=\left(\dfrac{56}{9},\dfrac{8\sqrt5}{9}\right).
+\]
+The relevant lengths are $AE=\dfrac{41}{7}$, $DE=2$, $AF=\dfrac{19}{3}$, $DF=\dfrac{14}{3}$. An internal bisector has direction equal to the sum of the unit vectors along its sides. Thus the directions at $E,F$ are respectively
+\[
+\dfrac{A-E}{AE}+\dfrac{D-E}{DE}
+=\left(\dfrac{55}{49},\dfrac{9\sqrt5}{49}\right),\qquad
+\dfrac{A-F}{AF}+\dfrac{D-F}{DF}
+=\left(-\dfrac{11}{7},\dfrac{\sqrt5}{7}\right).
+\]
+The bisector lines are consequently
+\[
+y=\dfrac{9\sqrt5}{55}x+\dfrac{24\sqrt5}{55},
+\qquad
+y=-\dfrac{\sqrt5}{11}x+\dfrac{16\sqrt5}{11}.
+\]
+They meet at $P=(4,12\dfrac{\sqrt 5}{11})$, lying on both internal bisector rays. Hence $MP=12\dfrac{\sqrt 5}{11}$ and $\boxed{a+b+c=28}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair B=(0,0),C=(8,0),A=(2,3sqrt(5)),M=(4,0),D=(2,0),E=(16.0/49,24sqrt(5)/49),F=(56.0/9,8sqrt(5)/9),P=(4,12sqrt(5)/11);draw(A--B--C--cycle);draw(A--D,dashed);draw(E--M--F,gray);draw(E--D--F,gray);draw(E--P--F,blue);draw(M--P,red);label("$A$",A,(0,1));label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,(0,-1));label("$M$",M,(0,-1));label("$E$",E,(-1,0));label("$F$",F,(1,0));label("$P$",P,(0,1));
+\end{asy}

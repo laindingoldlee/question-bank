@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1633223_game_of_4s
+% Stable identity: aops-topic-1633223-q01
+\textbf{Four 4s suffice:} $4+4+\dfrac{4}{4}=9$.
+
+\textbf{Three are not enough.} Any expression is either a single $4$ or an operation applied to two smaller expressions.
+
+\emph{One 4:} the only value is $4$.
+
+\emph{Two 4s:} $4+4=8$, $4-4=0$, $4\times4=16$, $4\div4=1$, $4^4=256$. So the values are $V_2=\{0,1,8,16,256\}$.
+
+\emph{Three 4s:} the last operation combines a single $4$ with an expression with two $4$s, whose value is some $v\in V_2$, in either order. The possible values are
+\[
+4\pm v,\quad v-4,\quad 4v,\quad \dfrac{4}{v},\quad \dfrac {v}{4},\quad 4^v,\quad v^4 .
+\]
+For $v=0,1,8,16,256$ these give
+\begin{itemize}
+\item $4+v$: $4,5,12,20,260$; \quad $4-v$: $4,3,-4,-12,-252$; \quad $v-4$: $-4,-3,4,12,252$;
+\item $4v$: $0,4,32,64,1024$; \quad $\dfrac{4}{v}$: (undefined), $4,\dfrac{1}{2},\dfrac{1}{4},\dfrac{1}{64}$; \quad $\dfrac {v}{4}$: $0,\dfrac{1}{4},2,4,64$;
+\item $4^v$: $1,4,4^8,4^{16},4^{256}$; \quad $v^4$: $0,1,8^4,16^4,256^4$.
+\end{itemize}
+None of these is $9$. Fewer than three $4$s give only values in $\{4\}\cup V_2$, which also miss $9$.
+
+So the least number is $\boxed{4}$.

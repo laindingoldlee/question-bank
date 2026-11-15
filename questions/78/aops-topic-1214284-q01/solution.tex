@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1214284_bob_jogs_around
+% Stable identity: aops-topic-1214284-q01
+The region is the set of points within $1$ km of the boundary of the square.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw((-1,0)--(-1,5)); draw((6,0)--(6,5)); draw((0,-1)--(5,-1)); draw((0,6)--(5,6));
+draw(arc((0,0),1,180,270)); draw(arc((5,0),1,270,360)); draw(arc((5,5),1,0,90)); draw(arc((0,5),1,90,180));
+draw((1,1)--(4,1)--(4,4)--(1,4)--cycle,dashed); draw((0,0)--(5,0)--(5,5)--(0,5)--cycle,blue+linewidth(1));
+label("$5$",(2.5,5),N); label("$1$",(5,2.5)--(6,2.5),N); label("$3$",(2.5,1),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Outside the square it consists of four $5\times1$ rectangles and four quarter discs of radius $1$ at the corners: $25+4\cdot5+\pi=45+\pi$ together with the square itself. Inside the square, the points farther than $1$ km from every side form a $3\times3$ square (dashed), which Bob cannot see. So the area is
+\[(45+\pi)-9=\boxed{36+\pi}\ \text{km}^2\approx 39.1\ \text{km}^2.\]

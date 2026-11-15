@@ -1,0 +1,6 @@
+The equilateral triangle has circumradius $R=2\sqrt3$ and inradius $r=\sqrt3$. As it rotates continuously through 60 degrees, its three vertices sweep three disjoint 60-degree arcs. In those angular sectors the swept region reaches radius $R$, contributing total area $\pi \dfrac{R^2}{2}=6\pi$. The three remaining angular gaps each have width 60 degrees. By symmetry, each gap has area $r^2\int_{\dfrac{\pi}{6}}^{\dfrac{\pi}{3}}\sec^2u\,du=r^2(\sqrt3-\dfrac{1}{\sqrt3})=2\sqrt3$. Thus the swept area is $6\pi+6\sqrt3=6\pi+\sqrt{108}$, giving $\boxed{a+b=114}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+path p;for(int k=0;k<=360;++k){real best=0;for(int j=0;j<=240;++j){real th=j/4;real den=max(cos(radians(k-30-th)),cos(radians(k-150-th)),cos(radians(k-270-th)));best=max(best,.5/den);}pair V=best*dir(k);if(k==0)p=V;else p=p--V;}filldraw(p--cycle,lightblue,blue);draw(dir(90)--dir(210)--dir(330)--cycle);draw(dir(150)--dir(270)--dir(30)--cycle,dashed);dot((0,0));label("$O$",(0,0),(0,-1));label("continuous $60^\circ$ sweep",(0,-1.4));
+\end{asy}
+

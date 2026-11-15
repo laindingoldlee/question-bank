@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1402184_weird_area_problem
+% Stable identity: aops-topic-1402184-q26
+By the shoelace formula (or the cross product of $(12,9)$ and $(4,k-7)$), the area is
+\[
+\dfrac{1}{2}\bigl|12(k-7)-9\cdot4\bigr|=\dfrac{1}{2}\left|12k-120\right|=6\left|k-10\right| .
+\]
+For $k=10$ the three points are collinear (all on $y=\dfrac{3}{4}x+\dfrac{25}{4}$), so there is no triangle: $k=10$ is not allowed. For integers $k\ne10$ the area $6|k-10|$ is smallest, namely $6$, for $k=9$ and $k=11$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(1,7),B=(13,16),K9=(5,9),K11=(5,11),K10=(5,10);
+draw((-1,5.5)--(15,17.5),gray+dashed);
+draw(A--B--K9--cycle,blue); draw(A--B--K11--cycle,red);
+dot(A);dot(B);dot(K9,blue);dot(K11,red);dot(K10,gray);
+label("$(1,7)$",A,NW); label("$(13,16)$",B,NW);
+label("$(5,11)$",K11,NW,red); label("$(5,9)$",K9,SE,blue);
+label("$y=\dfrac{3}{4}x+\dfrac{25}{4}$",(15,17.5),E,gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The sum of these values is $9+11=\boxed{20}$. (Finding the collinear value $k=10$ was the right idea, but a degenerate ``triangle'' is not a triangle; the minimum is attained by the two nearest integers on either side.)

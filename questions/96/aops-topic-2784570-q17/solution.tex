@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2784570_2020_abmc_team_rounds_58__actonboxborough_math_competition
+% Stable identity: aops-topic-2784570-q17
+For a fixed queen, discard its row, column, and both diagonals. From the remaining squares, choose two in different rows and columns. Up to board symmetry there are three types of queen square: four corners, eight noncorner edge squares, and four inner squares. They allow respectively $9,8,4$ unordered rook pairs, giving $4\cdot9+8\cdot8+4\cdot4=\boxed{116}$. The following enumeration checks each pair directly, including the queen's diagonal attacks.\begin{verbatim}
+from itertools import product,combinations
+count=0
+for q in product(range(4),repeat=2):
+    cells=[p for p in product(range(4),repeat=2)
+           if p[0]!=q[0] and p[1]!=q[1]
+           and abs(p[0]-q[0])!=abs(p[1]-q[1])]
+    count+=sum(a[0]!=b[0] and a[1]!=b[1]
+               for a,b in combinations(cells,2))
+assert count==116
+\end{verbatim}

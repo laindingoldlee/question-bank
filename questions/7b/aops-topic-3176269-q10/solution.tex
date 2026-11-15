@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3176269_2023_mbmt_geometry_round__montgomery_blair_math_tournament
+% Stable identity: aops-topic-3176269-q10
+Scale $BC=1$ and set $B=(0,0)$, $C=(1,0)$. The ray from $B$ gives $A=(u,u)$, while the $30^\circ$ angle at $C$ gives $u=\dfrac{1-u}{\sqrt3}$, hence $u=\dfrac{\sqrt3-1}{2}$. The midpoint is $M=(\dfrac{u+1}{2},\dfrac{u}{2})$, so $\tan\angle MBC=\dfrac{u}{u+1}=2-\sqrt3=\tan15^\circ$. Since the angle is acute, $\boxed{\angle MBC=15^\circ}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real u=(sqrt(3)-1)/2;pair A=(u,u),Bp=(0,0),C=(1,0),M=(A+C)/2;draw(A--Bp--C--cycle);draw(Bp--M,blue);label("$A$",A,N);label("$B$",Bp,SW);label("$C$",C,SE);label("$M$",M,NE);
+\end{asy}

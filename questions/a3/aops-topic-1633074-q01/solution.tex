@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1633074_nonincreasing_numbers
+% Stable identity: aops-topic-1633074-q01
+\textbf{Non-increasing.} Such a number is determined by the multiset of its digits: given how many times each digit $0,1,\dots,9$ is used, writing them in decreasing order gives the only possible number. The first digit is the largest digit, so it is nonzero unless all digits are $0$. Hence the numbers correspond to multisets of size $n$ from the $10$ digits, except the all-zero multiset. By stars and bars there are $\dbinom{n+9}{9}$ such multisets, so the count is
+\[
+\boxed{\dbinom{n+9}{9}-1=\dbinom{n+9}{n}-1}.
+\]
+\textbf{Non-decreasing.} Now the first digit is the smallest, so no digit can be $0$; the digits form a multiset of size $n$ from $\{1,\dots,9\}$, giving $\dbinom{n+8}{8}=\dbinom{n+8}{n}$ numbers.
+
+For example, for $n=2$: $\dbinom{11}{2}-1=54$ non-increasing numbers ($10$ to $99$ with tens digit $\ge$ units digit) and $\dbinom{10}{2}=45$ non-decreasing ones.

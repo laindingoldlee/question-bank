@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2429032_2010_amc_10b_problem_16
+% Stable identity: aops-topic-2429032-q01
+Let $O$ be the centre and $r=\dfrac{\sqrt3}{3}\approx0.577$. Each side of the square is at distance $\dfrac12<r$ from $O$, and the half-diagonal is $\dfrac{\sqrt2}{2}>r$, so the circle crosses every side and the corners are outside the circle. The region inside the circle and outside the square consists of four congruent circular segments, one beyond each side.
+
+Consider the right side, met by the circle at $P$ and $Q$. The foot of the perpendicular from $O$ to that side is at distance $\dfrac12$, so $\cos\dfrac{\angle POQ}{2}=\dfrac{1}{2r}=\dfrac{\sqrt3}{2}$, hence $\angle POQ=60^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real r=sqrt(3)/3;
+pair O=(0,0);
+fill(circle(O,r),rgb(1,0.85,0.6)); fill(box((-0.5,-0.5),(0.5,0.5)),white);
+draw(circle(O,r),linewidth(0.9)); draw(box((-0.5,-0.5),(0.5,0.5)),linewidth(0.9));
+real h=sqrt(r^2-0.25);
+pair P=(0.5,h), Q=(0.5,-h);
+draw(O--P,dashed); draw(O--Q,dashed); draw((0.3,0)--(0.5,0),dotted);
+dot(O); label("$O$",O,W); label("$P$",P,NE); label("$Q$",Q,SE);
+draw(arc(O,0.1,-30,30)); label("$60^\circ$",O+0.11*dir(0),E,fontsize(7pt));
+\end{asy}
+
+One segment has area
+\[\dfrac12r^2\left(\dfrac{\pi}{3}-\sin60^\circ\right)=\dfrac16\left(\dfrac{\pi}{3}-\dfrac{\sqrt3}{2}\right)=\dfrac{\pi}{18}-\dfrac{\sqrt3}{12},\]
+so the four segments have area $\dfrac{2\pi}{9}-\dfrac{\sqrt3}{3}$: answer $\boxed{\textbf{(B) }\dfrac{2\pi}{9}-\dfrac{\sqrt{3}}{3}}$.

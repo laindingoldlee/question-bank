@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2451067_geometry
+% Stable identity: aops-topic-2451067-q01
+Use vectors from $A$: let $\mathbf b=\overrightarrow{AB}$ and $\mathbf c=\overrightarrow{AC}$, which are not parallel. Then
+\[\overrightarrow{AP}=\dfrac25\mathbf b,\qquad\overrightarrow{AQ}=\dfrac34\mathbf c,\qquad\overrightarrow{AM}=\dfrac12(\mathbf b+\mathbf c).\]
+Since $N$ is on $AM$, $\overrightarrow{AN}=t\,\overrightarrow{AM}=\dfrac t2\mathbf b+\dfrac t2\mathbf c$ for some $t$. Since $N$ is on $PQ$, $\overrightarrow{AN}=(1-u)\dfrac25\mathbf b+u\cdot\dfrac34\mathbf c$ for some $u$. Comparing coefficients,
+\[\dfrac t2=\dfrac25(1-u),\qquad\dfrac t2=\dfrac34u.\]
+So $\dfrac25(1-u)=\dfrac34u$, i.e. $\dfrac25=\dfrac{23}{20}u$, $u=\dfrac{8}{23}$, and $t=\dfrac32u=\dfrac{12}{23}$. Hence $AN=\dfrac{12}{23}AM$ and
+\[AM:AN=\boxed{23:12}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0.8,3), B=(0,0), C=(5,0), M=(B+C)/2;
+pair P=A+2/5*(B-A), Q=A+3/4*(C-A);
+pair Nn=extension(A,M,P,Q);
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--M,blue); draw(P--Q,red);
+dot(P); dot(Q); dot(M); dot(Nn);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$M$",M,S);
+label("$P$",P,W); label("$Q$",Q,NE); label("$N$",Nn,dir(200));
+\end{asy}

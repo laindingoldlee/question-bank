@@ -1,0 +1,5 @@
+First pair the eight positions without assigning toy types. Pair positions $i<j$ only if the gap $j-i-1$ differs from all already used gaps. Every pairing can be counted exactly once by repeatedly pairing the leftmost unused position with a later unused position. In symbols, if $U$ is the set of unused positions and $D$ the used gaps, let
+\[F(U,D)=\sum_{\substack{j\in U\setminus\{i\}\\j-i-1\notin D}}F(U\setminus\{i,j\},D\cup\{j-i-1\}),\quad i=\min U,\quad F(\varnothing,D)=1.\]
+For positions $1,\ldots,8$, this recurrence gives the following nonzero gap-set counts:
+\[\begin{array}{c|r@{\qquad}c|r}0123&6&0134&4\\0125&4&1234&2\\0235&2&0145&2\\1245&2&0345&2\\0136&2&1236&2\\0246&1&&\end{array}\]
+Here $0123$, for example, denotes gap set $\{0,1,2,3\}$. The counts sum to $29$. Assign the four distinct toy types to the four pairs in $4!$ ways, giving $\boxed{29\cdot24=696}$.

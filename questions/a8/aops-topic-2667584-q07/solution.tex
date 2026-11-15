@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2667584_lopsmosss_4year_aops_anniversary_
+% Stable identity: aops-topic-2667584-q07
+Triangle $ABD$ is isosceles with $BA=BD$, so the foot $M$ of the altitude from $B$ is the midpoint of $AD$: $AM=MD=6$ and $BM=\sqrt{10^2-6^2}=8$. Then $MC=MD+DC=15$, and in right triangle $BMC$,
+\[BC=\sqrt{8^2+15^2}=\sqrt{289}=\boxed{17}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),D=(12,0),C=(21,0),B=(6,8),M=(6,0);
+draw(A--B--C--cycle,linewidth(0.8));draw(B--D,linewidth(0.8));draw(B--M,dashed);
+draw(M+(0.5,0)--M+(0.5,0.5)--M+(0,0.5));
+dot(A);dot(B);dot(C);dot(D);dot(M);
+label("$A$",A,SW);label("$B$",B,N);label("$C$",C,SE);label("$D$",D,S);label("$M$",M,S);
+label("$10$",(A+B)/2,NW);label("$8$",(B+M)/2,W);label("$6$",(A+M)/2,S);label("$6$",(M+D)/2,S);label("$9$",(D+C)/2,S);label("$17$",(B+C)/2,NE);
+\end{asy}

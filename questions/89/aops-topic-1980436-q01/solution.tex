@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1980436_how_to_find_area_of_an_ellipse_wequation
+% Stable identity: aops-topic-1980436-q01
+Complete the squares:
+\[
+9(x^2-4x+4)+4(y^2+6y+9)=-36+36+36\quad\Longleftrightarrow\quad 9(x-2)^2+4(y+3)^2=36,
+\]
+that is,
+\[
+\dfrac{(x-2)^2}{4}+\dfrac{(y+3)^2}{9}=1 .
+\]
+This is an ellipse centred at $(2,-3)$ with semi-axes $a=2$ (horizontal) and $b=3$ (vertical).
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-1.5,0)--(5.5,0),Arrow(TeXHead));draw((0,-7)--(0,1),Arrow(TeXHead));
+label("$x$",(5.5,0),E);label("$y$",(0,1),N);
+pair C=(2,-3);
+draw(shift(C)*scale(2,3)*unitcircle,linewidth(1));
+draw(C--(4,-3),dashed);draw(C--(2,0),dashed);
+dot(C);label("$(2,-3)$",C,S);
+label("$2$",(3,-3),N);label("$3$",(2,-1.5),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+An ellipse with semi-axes $a$ and $b$ is a circle of radius $a$ stretched by the factor $\dfrac {b}{a}$ in one direction, so its area is $\pi a^2\cdot\dfrac {b}{a}=\pi ab$. Here the area is $\pi\cdot2\cdot3=\boxed{6\pi}$.

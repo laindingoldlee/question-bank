@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2010891_valid_proof
+% Stable identity: aops-topic-2010891-q01
+\textbf{The series has no finite sum.} The $k$th partial sum is
+\[S_k=1+2+4+\cdots+2^{k-1}=2^k-1,\]
+which grows without bound as $k\to\infty$. An infinite series has a sum only if its partial sums approach a finite limit, so $1+2+4+\cdots$ diverges and has no real value.
+
+\textbf{The error.} The argument begins by giving the divergent series a name $n$ and then treats $n$ as a real number: it multiplies by $2$, subtracts, and solves. Those algebraic steps are valid only for numbers, and here there is no number to which they apply. (Even assuming the series had a finite sum, $n=-1$ would be impossible, since the sum of positive terms would be at least $1$.)
+
+One can see exactly what the subtraction hides by doing it on the finite partial sums, where all steps are legitimate:
+\[2S_k-S_k=\left(2+4+\cdots+2^{k}\right)-\left(1+2+\cdots+2^{k-1}\right)=2^k-1.\]
+The leftover term $2^k$ at the end does not cancel. In the infinite version it is silently discarded; but $2^k$ does not tend to $0$, so dropping it is exactly where the argument breaks. (Similarly, the formula $\dfrac{a}{1-r}$ for a geometric series is only valid when $|r|<1$, so applying it with $r=2$ is also invalid.)
+
+\textbf{Conclusion:} $1+2+4+8+\cdots$ diverges, and the derivation of $n=-1$ is invalid because it manipulates a divergent series as if it were a number.

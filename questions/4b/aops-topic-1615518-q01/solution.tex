@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1615518_derangements
+% Stable identity: aops-topic-1615518-q01
+\textbf{(a)} Let $A_i$ be the set of permutations fixing object $i$. For any $k$ chosen objects, the permutations fixing all of them number $(n-k)!$. By inclusion-exclusion, the number of permutations fixing at least one object is $\displaystyle\sum_{k=1}^n(-1)^{k+1}\dbinom nk(n-k)!$, so
+\[
+D_n=\sum_{k=0}^n(-1)^k\dbinom nk(n-k)!=\sum_{k=0}^n(-1)^k\dfrac{n!}{k!}.
+\]
+\textbf{(b)} Since $e^{-1}=\displaystyle\sum_{k=0}^\infty\dfrac{(-1)^k}{k!}$,
+\[
+\dfrac{n!}{e}-D_n=n!\sum_{k=n+1}^{\infty}\dfrac{(-1)^k}{k!}=(-1)^{n+1}\left(\dfrac{1}{n+1}-\dfrac{1}{(n+1)(n+2)}+\dfrac{1}{(n+1)(n+2)(n+3)}-\cdots\right).
+\]
+The terms in the bracket decrease in size and alternate in sign, so the bracket lies strictly between $0$ and its first term $\dfrac{1}{n+1}$. Hence
+\[
+\left|\dfrac{n!}{e}-D_n\right|<\dfrac{1}{n+1}\le\dfrac{1}{2}\qquad(n\ge1).
+\]
+An integer within distance less than $\dfrac{1}{2}$ of $\dfrac{n!}{e}$ is the unique integer closest to it, so $D_n$ is the integer closest to $\dfrac{n!}{e}$. (For example $\dfrac{4!}{e}\approx8.83$ and $D_4=9$; $\dfrac{5!}{e}\approx44.15$ and $D_5=44$.)
+
+\textbf{(c)} The probability is $\dfrac{D_n}{n!}$, and by (b), $\left|\dfrac{D_n}{n!}-\dfrac{1}{e}\right|<\dfrac{1}{(n+1)!}\to0$. So the probability tends to $\dfrac{1}{e}\approx0.368$. $\blacksquare$

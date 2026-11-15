@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h2463322_parabolas
+% Stable identity: aops-topic-2463322-q01
+\textbf{(a)} The squared distance from the origin to the point $\left(x,x^2+k\right)$ is
+\[x^2+\left(x^2+k\right)^2=u^2+(2k+1)u+k^2,\qquad u=x^2\ge0.\]
+This is a quadratic $g(u)$ in $u$ whose graph has its vertex at $u_0=-\dfrac{2k+1}{2}$.
+\begin{itemize}
+\item If $k\ge-\dfrac12$, then $u_0\le0$, so $g$ is increasing for $u\ge0$ and its minimum on $u\ge0$ is $g(0)=k^2$: the closest point is the vertex $(0,k)$, at distance $|k|$.
+\item If $k<-\dfrac12$, then $u_0>0$ and the minimum is
+\[g(u_0)=k^2-\dfrac{(2k+1)^2}{4}=-k-\dfrac14,\]
+attained at $x=\pm\sqrt{u_0}$: two closest points, at distance $\sqrt{-k-\dfrac14}$.
+\end{itemize}
+So the distance is
+\[\boxed{|k|\ \text{ if }k\ge-\dfrac12,\qquad\sqrt{-k-\dfrac14}\ \text{ if }k<-\dfrac12}\]
+(the two formulas agree at $k=-\dfrac12$).
+
+\textbf{(b)} For $k=-4$: $u_0=\dfrac72$, and the distance is $\sqrt{4-\dfrac14}=\boxed{\dfrac{\sqrt{15}}{2}}$, attained at $\left(\pm\sqrt{\dfrac72},\,-\dfrac12\right)$. Note that this is less than the distance $4$ to the vertex $(0,-4)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return x^2-4;}
+draw((-3,0)--(3,0),Arrow(6)); draw((0,-4.6)--(0,3.2),Arrow(6));
+label("$x$",(3,0),E); label("$y$",(0,3.2),N);
+draw(graph(f,-2.6,2.6),blue+linewidth(0.9));
+real r=sqrt(15)/2, x0=sqrt(3.5);
+draw(circle((0,0),r),dashed);
+pair P1=(x0,f(x0)),P2=(-x0,f(x0));
+draw((0,0)--P1,red); draw((0,0)--P2,red);
+dot(P1); dot(P2); dot((0,-4));
+label("$\left(\sqrt{\dfrac72},-\dfrac12\right)$",P1,SE,fontsize(7pt));
+label("$(0,-4)$",(0,-4),SE,fontsize(7pt));
+label("$y=x^2-4$",(2.6,f(2.6)),E,blue+fontsize(8pt));
+\end{asy}
+
+(For a general parabola $y=a(x-h)^2+k$ the same method, minimising $x^2+y^2$, leads to a cubic equation for the $x$-coordinate of the closest point; it simplifies as above when the axis of the parabola passes through the origin.)

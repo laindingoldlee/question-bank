@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1943511_what_is_the_strategy_to_always_win
+% Stable identity: aops-topic-1943511-q01
+Call a position \emph{losing} if the player to move loses with best play. A position is losing exactly when every move leads to a non-losing position, and the empty position $(0,0)$ is losing (the player to move has already lost).
+
+\textbf{Step 1: a recursive description.} Define pairs $(a_k,b_k)$ for $k=0,1,2,\dots$ by $a_0=b_0=0$ and, for $k\ge1$,
+\[
+a_k=\text{the least nonnegative integer not among } a_0,\dots,a_{k-1},b_0,\dots,b_{k-1},\qquad b_k=a_k+k .
+\]
+This gives $(0,0),(1,2),(3,5),(4,7),(6,10),(8,13),\dots$. By construction $a_1<a_2<\cdots$, every positive integer appears exactly once among the numbers $a_k,b_k$ ($k\ge1$), and the differences $b_k-a_k=k$ are all different. Let $L$ be the set of positions $(a_k,b_k)$ and $(b_k,a_k)$.
+
+\emph{No move joins two positions of $L$.} A one-pile move keeps the other pile, but each number lies in only one pair, so the result cannot be another position of $L$. A two-pile move keeps the difference of the piles, but different pairs have different differences.
+
+\emph{From every position outside $L$ there is a move into $L$.} Let $(x,y)\notin L$ with $x\le y$. The number $x$ is some $a_k$ or some $b_k$.
+\begin{itemize}
+\item If $x=b_k$ with $k\ge1$, then $y\ge x>a_k$, so take $y-a_k$ stones from the second pile and reach $(b_k,a_k)\in L$.
+\item If $x=a_k$ and $y>b_k$, take $y-b_k$ from the second pile and reach $(a_k,b_k)$.
+\item If $x=a_k$ and $y<b_k$, then $d=y-x$ satisfies $0\le d<k$, so $a_d<a_k$. Take $x-a_d$ from both piles: the result is $(a_d,a_d+d)=(a_d,b_d)\in L$.
+\end{itemize}
+Since $(0,0)\in L$, induction on the total number of stones shows that $L$ is exactly the set of losing positions: from a position of $L$ every move leaves $L$, and from a position outside $L$ some move enters $L$.
+
+\textbf{Step 2: the closed form.} Since $\varphi^2=\varphi+1$, we have $\lfloor k\varphi^2\rfloor=\lfloor k\varphi\rfloor+k$, and $\dfrac{1}{\varphi}+\dfrac{1}{\varphi^2}=1$. By Beatty's theorem the sequences $A_k=\lfloor k\varphi\rfloor$ and $B_k=\lfloor k\varphi^2\rfloor$ ($k\ge1$) are increasing and together contain every positive integer exactly once. Hence $A_k$ is the least number not among $A_1,\dots,A_{k-1},B_1,\dots,B_{k-1}$: every smaller positive integer is some $A_j$ with $j<k$ or some $B_j$ with $B_j<A_k<B_k$, i.e.\ $j<k$. So $A_k$ and $B_k=A_k+k$ satisfy the recursion of Step 1, and $(a_k,b_k)=(\lfloor k\varphi\rfloor,\lfloor k\varphi^2\rfloor)$.
+
+\textbf{Conclusion.} The starting position is losing for the first player, i.e.\ the second player wins, exactly when
+\[
+\boxed{\{p,q\}=\{\lfloor k\varphi\rfloor,\lfloor k\varphi^2\rfloor\}\text{ for some } k\ge1}
+\]
+(for example $(1,2),(3,5),(4,7),(6,10),(8,13),(9,15)$). Otherwise the first player wins: on every turn move to a position of the form $(\lfloor k\varphi\rfloor,\lfloor k\varphi^2\rfloor)$ or its reverse, using the three cases of Step 1. The opponent must then leave such a position, and eventually the first player reaches $(0,0)$.

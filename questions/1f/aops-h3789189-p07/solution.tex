@@ -1,0 +1,7 @@
+The numbers $1$ through $9$ sum to $45$. Summing the three side totals gives $3\cdot17=51$. This counts each nonvertex entry once and each vertex twice, so the vertex sum is $51-45=\boxed6$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,3),B=(-2,0),C=(2,0);draw(A--B--C--cycle);pair[] p={A,B,C,(2*A+B)/3,(A+2*B)/3,(2*B+C)/3,(B+2*C)/3,(2*A+C)/3,(A+2*C)/3};string[] s={"1","2","3","5","9","4","8","6","7"};for(int i=0;i<p.length;++i){filldraw(circle(p[i],.2),white);label(s[i],p[i]);}
+\end{asy}

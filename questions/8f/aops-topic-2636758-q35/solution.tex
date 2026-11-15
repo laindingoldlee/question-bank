@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2636758_intermediate_problems
+% Stable identity: aops-topic-2636758-q35
+Split the $24$-gon into $24$ isosceles triangles from the centre. Each has base $8$ and apex angle $15^\circ$, so its height (the apothem) is $a=4\cot7.5^\circ$. Using $\cot\dfrac\theta2=\dfrac{1+\cos\theta}{\sin\theta}$ with $\cos15^\circ=\dfrac{\sqrt6+\sqrt2}{4}$ and $\sin15^\circ=\dfrac{\sqrt6-\sqrt2}{4}$,
+\[\cot7.5^\circ=\dfrac{4+\sqrt6+\sqrt2}{\sqrt6-\sqrt2}=\dfrac{\left(4+\sqrt6+\sqrt2\right)\left(\sqrt6+\sqrt2\right)}{4}=2+\sqrt2+\sqrt3+\sqrt6.\]
+The area is $24\cdot\dfrac12\cdot8\cdot a=384\cot7.5^\circ=\boxed{384\left(2+\sqrt2+\sqrt3+\sqrt6\right)}\approx2916.8$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair[] V;for(int i=0;i<24;++i)V[i]=dir(15i-7.5);
+for(int i=0;i<24;++i)draw(V[i]--V[(i+1)%24],linewidth(0.7));
+pair O=(0,0),M=(V[0]+V[1])/2;fill(O--V[0]--V[1]--cycle,lightgray);draw(O--V[0]);draw(O--V[1]);draw(O--M,dashed);dot(O);
+label("$O$",O,W);label("$8$",(V[0]+V[1])/2,E,fontsize(8pt));label("$a$",M*0.6,S,fontsize(8pt));
+\end{asy}

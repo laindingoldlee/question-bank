@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3184463_2019_abmc_speed_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3184463-q25
+Put $C=(0,0),B=(1,0),A=(0,\sqrt3)$ and $D=(d,0)$, with $0<d\le1$. The required equilateral vertex is $E=(\dfrac{d-3}{2},\dfrac{\sqrt3(1-d)}{2})$. Then $BE^2=d^2-4d+7=6$, giving $d=2-\sqrt3$. The circumcentre of $ADE$ is its centroid $(\dfrac{d-1}{2},\dfrac{\sqrt3(3-d)}{6})$. Thus its circle intersects the $x$-axis at roots of $x^2+(1-d)x-d=0$, namely $d,-1$. Power of $B$ gives $BF\cdot BE=(1-d)(1+1)=2(\sqrt3-1)$. Therefore $\boxed{BF=\dfrac{2(\sqrt3-1)}{\sqrt6}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real d=2-sqrt(3);pair C=(0,0),B=(1,0),A=(0,sqrt(3)),D=(d,0),Ee=((d-3)/2,sqrt(3)*(1-d)/2),O=(A+D+Ee)/3,F=B+(2*(sqrt(3)-1)/6)*(Ee-B);draw(A--B--C--cycle);draw(A--D--Ee--cycle,blue);draw(circle(O,abs(O-A)));draw(B--Ee);label("$A$",A,N);label("$B$",B,E);label("$C$",C,SW);label("$D$",D,S);label("$E$",Ee,W);label("$F$",F,NE);
+\end{asy}

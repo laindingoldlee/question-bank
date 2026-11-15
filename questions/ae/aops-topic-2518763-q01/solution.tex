@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2518763_math_problem
+% Stable identity: aops-topic-2518763-q01
+Write $R_n=\dfrac{10^n-1}{9}=\underbrace{11\cdots1}_{n}$. Then
+\[\overline{a\underbrace{b\cdots b}_{n}}=a\cdot10^n+bR_n,\qquad\overline{\underbrace{c\cdots c}_{n}\,d}=10cR_n+d.\]
+Multiplying the condition by $9$ and using $9R_n=10^n-1$:
+\[y(9a+b)\,10^n-yb=10c\cdot10^n-10c+9d,\quad\text{i.e.}\quad\bigl(y(9a+b)-10c\bigr)10^n=yb-10c+9d.\]
+The right side does not depend on $n$, so (comparing two values of $n$) both sides are $0$:
+\[y(9a+b)=10c\qquad\text{and}\qquad 9d=10c-yb=9ay,\ \text{i.e.}\ d=ay.\]
+Conversely, if $y(9a+b)=10c$ and $d=ay$ for digits $c\ge1$, $d$, then the identity holds for every $n$ (and $n=1$ gives $xy=y(9a+b)+ay=10c+d$). So the pairs are exactly those with
+\[ay\le9,\qquad 10\mid y(9a+b),\qquad y(9a+b)\le90.\]
+Going through $y$:
+\begin{itemize}
+\item $y=1$: $10\mid9a+b$ forces $b=a$: $x=11,22,\dots,99$.
+\item $y=2$ ($a\le4$): $5\mid9a+b$ means $b\equiv a\pmod5$, and $9a+b\le45$: $x=11,16,22,27,33,38,44,49$.
+\item $y=3$ ($a\le3$): $b=a$ and $30a\le90$: $x=11,22,33$.
+\item $y=4$ ($a\le2$): $b\equiv a\pmod5$ and $9a+b\le22$: $x=11,16,22$.
+\item $y=5$ ($a=1$): $9+b$ even: $x=11,13,15,17,19$.
+\item $y=6$ ($a=1$): $5\mid9+b$ and $b\le6$: $x=11,16$.
+\item $y=7,8,9$ ($a=1$): only $b=1$ works (for $y=8$, $b=6$ satisfies the divisibility but fails $8(9+b)\le90$): $x=11$.
+\end{itemize}
+So there are $33$ pairs. Besides $(16,4)$, they are:
+\begin{itemize}
+\item with distinct digits: $(13,5),(15,5),(16,2),(16,6),(17,5),(19,5),(27,2),(38,2),(49,2)$;
+\item with equal digits ($x=11a$, where everything is a repdigit): $(11,y)$ for $1\le y\le9$; $(22,y)$ for $1\le y\le4$; $(33,y)$ for $1\le y\le3$; $(44,1),(44,2)$; $(55,1),(66,1),(77,1),(88,1),(99,1)$.
+\end{itemize}
+In short, $\boxed{\text{the }33\text{ pairs with }d=ay\le9\text{ and }y(9a+b)=10c\text{ listed above}}$.

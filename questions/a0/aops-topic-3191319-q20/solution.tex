@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h3191319_2016_bmmt_individual_round__berkley_mini_math_tournament
+% Stable identity: aops-topic-3191319-q20
+Any permissible vertex set can be extended to five points with distinct $x$- and $y$-coordinates by matching the unused coordinates. Its convex hull contains the original polygon, so its area cannot be smaller. Thus it suffices to check the $5!=120$ permutations $p$, with points $(i,p_i)$. The following exhaustive code uses exact integer cross products and returns twice the largest area as $20$.
+\begin{verbatim}
+from itertools import permutations
+def cross(o,a,b):
+    return (a[0]-o[0])*(b[1]-o[1])-(a[1]-o[1])*(b[0]-o[0])
+def hull(points):
+    P=sorted(points); low=[]; up=[]
+    for p in P:
+        while len(low)>1 and cross(low[-2],low[-1],p)<=0:
+            low.pop()
+        low.append(p)
+    for p in P[::-1]:
+        while len(up)>1 and cross(up[-2],up[-1],p)<=0:
+            up.pop()
+        up.append(p)
+    return low[:-1]+up[:-1]
+def twice_area(P):
+    return abs(sum(P[i][0]*P[(i+1)%len(P)][1]
+                   -P[i][1]*P[(i+1)%len(P)][0]
+                   for i in range(len(P))))
+print(max(twice_area(hull(list(enumerate(p))))
+          for p in permutations(range(5))))
+\end{verbatim}
+The monotone-chain hull routine removes exactly non-left turns, leaving the convex boundary; the shoelace sum then measures its area. The bound is attained by the quadrilateral $(0,3),(1,0),(4,1),(3,4)$, whose area is $10$. Therefore the answer is $\boxed{10}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] pts={(0,3),(1,0),(4,1),(3,4)}; string[] names={"$A$","$B$","$C$","$D$"}; path boundary=pts[0]; for(int j=1;j<pts.length;++j)boundary=boundary--pts[j];draw(boundary--cycle); for(int i=0;i<pts.length;++i) label(names[i],pts[i],dir(90+360*i/pts.length));
+\end{asy}

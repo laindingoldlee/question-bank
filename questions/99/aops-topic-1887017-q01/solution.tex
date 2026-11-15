@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1887017_arithmetic_problem
+% Stable identity: aops-topic-1887017-q01
+Work in centimetres ($1$ dm $=10$ cm). The ice has volume $20\cdot2^3=160\text{ cm}^3$, and the container has volume $10\cdot60\cdot20=12000\text{ cm}^3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair dp=(9,7);
+real L=60,H=20;
+draw((0,0)--(L,0)--(L,H)--(0,H)--cycle,linewidth(0.9));
+draw((0,H)--dp+(0,H)--dp+(L,H)--(L,H));draw((L,0)--dp+(L,0)--dp+(L,H));
+draw(dp--dp+(L,0),dashed);draw(dp--dp+(0,H),dashed);draw((0,0)--dp,dashed);
+label("$6$ dm",(L/2,0),S);label("$2$ dm",(L,H/2)+dp,E);label("$1$ dm",(L,0)+dp*0.5,SE);
+pair q=(84,0);real e=7;pair dq=(2.6,2);
+draw(shift(q)*((0,0)--(e,0)--(e,e)--(0,e)--cycle));
+draw(q+(0,e)--q+(0,e)+dq--q+(e,e)+dq--q+(e,e));draw(q+(e,0)--q+(e,0)+dq--q+(e,e)+dq);
+label("$2$ cm",q+(e/2,0),S);
+label("ice cube (enlarged)",q+(e/2,-7),S,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the water fills
+\[
+\dfrac{160}{12000}=\boxed{\dfrac{1}{75}}
+\]
+of the container. (In reality water from melted ice takes up about $8$ to $9$ percent less space than the ice, about $147\text{ cm}^3$, which is still roughly $\dfrac{1}{80}$ of the container. The figure is not to scale.)

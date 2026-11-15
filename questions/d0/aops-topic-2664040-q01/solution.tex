@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2664040_geometry_problem
+% Stable identity: aops-topic-2664040-q01
+Use mass points. Put mass $1$ at $B$ and at $C$; then the midpoint $D$ has mass $2$.
+
+\emph{Point $G$.} Since $AE:ED=1:2$, $E$ is the balance point of $A$ and $D$ when $A$ has mass $4$ ($4\cdot1=2\cdot2$). With masses $4,1,1$ at $A,B,C$, the centre of mass is $E$, and it also lies on the line from $B$ to the balance point of $A$ and $C$. That point divides $AC$ in the ratio $AG:GC=1:4$, so $AG=\dfrac{70}{5}=14$.
+
+\emph{Point $H$.} Since $AF:FD=2:1$, now $A$ needs mass $1$ ($1\cdot2=2\cdot1$). With masses $1,1,1$ the line $BF$ meets $AC$ at the balance point of $A$ and $C$, the midpoint, so $AH=35$.
+
+Therefore $GH=35-14=\boxed{21}$. (The side lengths $AB$ and $BC$ are not needed.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real ax=-130/114;pair A=(ax,sqrt(39^2-ax^2)),B=(0,0),C=(57,0),D=(28.5,0);
+pair Ep=A+(D-A)/3,Fp=A+2*(D-A)/3,G=A+(C-A)/5,Hh=(A+C)/2;
+draw(A--B--C--cycle,linewidth(0.8));draw(A--D);draw(B--G,dashed);draw(B--Hh,dashed);
+dot(Ep);dot(Fp);dot(G);dot(Hh);dot(D);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$E$",Ep,E);label("$F$",Fp,E);label("$G$",G,NE);label("$H$",Hh,NE);
+label("$39$",(A+B)/2,W);label("$57$",(B+C)/2+(8,0),S);label("$14$",(A+G)/2,NE,fontsize(8pt));label("$21$",(G+Hh)/2,NE,fontsize(8pt));label("$35$",(Hh+C)/2,NE,fontsize(8pt));
+\end{asy}

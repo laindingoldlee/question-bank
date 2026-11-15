@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1427629_number_theory
+% Stable identity: aops-topic-1427629-q01
+Let $a=x^2-x$, an integer, so $x^2=x+a$.
+
+\textbf{Step 1: $a\ge0$.} The real number $x$ is a root of $t^2-t-a=0$, so the discriminant $1+4a$ is nonnegative, which forces the integer $a$ to satisfy $a\ge0$. If $a=0$, then $x^2=x$, so $x=0$ or $x=1$, both integers. From now on let $a\ge1$.
+
+\textbf{Step 2: powers of $x$.} We show $x^k=p_kx+q_k$ with integers $p_k,q_k$. Indeed $x^1=1\cdot x+0$, and if $x^k=p_kx+q_k$ then
+\[
+x^{k+1}=p_kx^2+q_kx=p_k(x+a)+q_kx=(p_k+q_k)x+ap_k ,
+\]
+so $p_{k+1}=p_k+q_k$ and $q_{k+1}=ap_k$. Starting from $p_1=1,q_1=0$ we get $p_2=1,q_2=a$, $p_3=1+a$, and since $a\ge1$ all $p_k,q_k$ are positive for $k\ge2$, so $p_{k+1}=p_k+q_k>p_k$. Hence $p_n\ge p_3=1+a\ge2$ for $n\ge3$.
+
+\textbf{Step 3: $x$ is rational.} Now $x^n-x=(p_n-1)x+q_n$ is an integer $m$, and $p_n-1\ne0$, so
+\[
+x=\dfrac{m-q_n}{p_n-1}
+\]
+is rational.
+
+\textbf{Step 4: $x$ is an integer.} Write $x=\dfrac{r}{t}$ in lowest terms with $t\ge1$. From $x^2-x-a=0$ we get $r^2=t(r+at)$, so $t\mid r^2$; since $\gcd(r,t)=1$, $t=1$. Thus $x$ is an integer.

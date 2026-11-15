@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1548498_very_hard_geometry_problem
+% Stable identity: aops-topic-1548498-q01
+\textbf{The triangle.} Let $BC=8$, $AB=5$, $AC=\sqrt{41}$. By the law of cosines, $41=25+64-80\cos B$, so $\cos B=\dfrac{3}{5}$ and $\sin B=\dfrac{4}{5}$. The height from $A$ to $BC$ is $5\sin B=4$, and the area of the triangle is $\dfrac{1}{2}\cdot8\cdot4=16$. (With $B=(0,0)$ and $C=(8,0)$, the vertex is $A=(3,4)$.)
+
+\textbf{A rectangle on a side of length $b$ with height $h$ to it.} If the rectangle has height $y$ ($0<y<h$), its top side cuts the triangle in a segment parallel to the base, at distance $h-y$ from the opposite vertex. By similar triangles that segment has length $b\cdot\dfrac{h-y}{h}$, and it is the top side of the rectangle. So the area is
+\[
+b\cdot\dfrac{h-y}{h}\cdot y=\dfrac {b}{h}\,y(h-y)\le\dfrac {b}{h}\cdot\dfrac{h^2}{4}=\dfrac{bh}{4},
+\]
+by AM-GM ($y(h-y)\le\left(\dfrac {h}{2}\right)^2$), with equality at $y=\dfrac {h}{2}$. Since $\dfrac{bh}{4}$ is half the area of the triangle, the best rectangle on \emph{any} side has area $\dfrac{16}{2}=8$. (Here the triangle is acute, $8^2<5^2+41$, so for every side the foot of the altitude lies on that side and the rectangle fits.)
+
+For example, on the side $BC$ ($b=8$, $h=4$) take $y=2$: the rectangle has width $8\cdot\dfrac{1}{2}=4$ and area $4\cdot2=8$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(8,0),A=(3,4);
+pair P=(1.5,0),Q=(5.5,0),R=(5.5,2),T=(1.5,2);
+fill(P--Q--R--T--cycle,paleblue);
+draw(A--B--C--cycle,linewidth(1));
+draw(P--Q--R--T--cycle,blue+linewidth(0.9));
+draw(A--(3,0),dashed);
+real s=0.22; draw((3,0)+(s,0)--(3,s)+(s,0)--(3,s),black);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$8$",(4,0),S);label("$5$",B+0.3*(A-B),NW);label("$\sqrt{41}$",A+0.25*(C-A),NE);
+label("$4$",(3,3),E);
+label("$y$",(5.5,1),E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The largest possible area is $\boxed{8}$.

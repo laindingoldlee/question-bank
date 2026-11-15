@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1377539_mathcounts_nationals_2016_question_6
+% Stable identity: aops-topic-1377539-q06
+Use complementary counting. There are $900\cdot900=810000$ ordered pairs of three-digit numbers. Count the pairs with \emph{no} carry: write $a=\overline{a_2a_1a_0}$ and $b=\overline{b_2b_1b_0}$; no carry happens exactly when $a_0+b_0\le9$, $a_1+b_1\le9$ and $a_2+b_2\le9$.
+\begin{itemize}
+\item Units digits (each $0$ to $9$): the number of pairs with $a_0+b_0\le9$ is $10+9+\cdots+1=55$.
+\item Tens digits: likewise $55$.
+\item Hundreds digits (each $1$ to $9$): for $a_2=1,2,\dots,8$ there are $8,7,\dots,1$ choices of $b_2\ge1$ with $a_2+b_2\le9$, and none for $a_2=9$; that is $8+7+\cdots+1=36$ pairs.
+\end{itemize}
+So $36\cdot55\cdot55=108900$ pairs need no carry, and the number of pairs that need at least one carry is
+\[
+810000-108900=\boxed{701100}.
+\]
+The student's $55\cdot55\cdot45$ is wrong in the hundreds factor: with both leading digits at least $1$ there are $36$ pairs, not $45$ (the $45$ would come from $55-10$, which removes only the pairs with $a_2=0$ and still keeps those with $b_2=0$).

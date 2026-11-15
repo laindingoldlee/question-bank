@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1647500_an_easy_math_problem_i_made
+% Stable identity: aops-topic-1647500-q01
+Divide each number by $10$: the question becomes the probability that four independent uniform numbers $t_1,t_2,t_3,t_4$ from $[0,1]$ satisfy $t_1+t_2+t_3+t_4\le1$. This probability is the $4$-dimensional volume of the region $\{t_i\ge0,\ t_1+t_2+t_3+t_4\le1\}$ inside the unit cube.
+
+Let $V_n(s)$ be the volume of $\{t_i\ge0,\ t_1+\cdots+t_n\le s\}$. Scaling by $s$ multiplies $n$-dimensional volume by $s^n$, so $V_n(s)=s^nV_n(1)$, and $V_1(1)=1$. Slicing by the value of $t_n$,
+\[
+V_n(1)=\int_0^1V_{n-1}(1-t)\,dt=V_{n-1}(1)\int_0^1(1-t)^{n-1}\,dt=\dfrac{V_{n-1}(1)}{n},
+\]
+so $V_n(1)=\dfrac{1}{n!}$. (For $n=2$ and $n=3$ this is the familiar triangle of area $\dfrac{1}{2}$ and tetrahedron of volume $\dfrac{1}{6}$.)
+
+Hence the probability is $\dfrac{1}{4!}=\boxed{\dfrac{1}{24}}$. Whether ``does not exceed'' includes equality does not matter, since equality has probability $0$.

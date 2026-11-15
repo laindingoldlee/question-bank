@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h3129723_2023_abmc_team_rounds_59__actonboxborough_math_competition
+% Stable identity: aops-topic-3129723-q12
+The complete search below gives $(A,B,C,D,E,F,G,H)=(1,5,6,7,2,0,9,3)$. The equations read $156\cdot7=1092$, $156\cdot6=936$, $936+300=1236$, and $10920+1236=12156$. Therefore $ABCD+EFGH=1567+2093=\boxed{3660}$. In the search, $G,H$ are derived from the second product and $F,E$ from the first, so no legal assignment is omitted.
+\begin{verbatim}
+from itertools import permutations
+sol=[]
+for A,B,C in permutations(range(10),3):
+ if not A:continue
+ N=100*A+10*B+C;v=N*C
+ if not 100<=v<=999 or v%10!=C:continue
+ G,H=v//100,v//10%10
+ if not H or len({A,B,C,G,H})!=5:continue
+ for D in set(range(1,10))-{A,B,C,G,H}:
+  w=N*D
+  if not 1000<=w<=9999 or w//1000!=A or w//10%10!=G:continue
+  F,E=w//100%10,w%10
+  if len({A,B,C,D,E,F,G,H})!=8:continue
+  if v+100*H+11*F==1000*A+100*E+10*H+C and 10*w+1000*A+100*E+10*H+C==10000*A+1000*E+N:
+   sol.append((A,B,C,D,E,F,G,H))
+assert sol==[(1,5,6,7,2,0,9,3)]
+\end{verbatim}

@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1707676_some_geometry_questions
+% Stable identity: aops-topic-1707676-q05
+Let the pentagon be $ABCDE$ and let the diagonals $AC$ and $BD$ meet at $P$; let $d=AC=BD$. Each interior angle is $108^\circ$. Triangle $ABC$ is isosceles with $AB=BC=2$, so $\angle BAC=\angle BCA=36^\circ$; similarly $\angle CBD=36^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair[] V;
+for(int i=0;i<5;++i) V[i]=dir(90+72*i);
+pair A=V[0],B=V[1],C=V[2],D=V[3],Ee=V[4];
+draw(A--B--C--D--Ee--cycle,linewidth(0.9));
+draw(A--C,blue);draw(B--D,blue);
+pair P=extension(A,C,B,D);
+dot(P);
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,SW);label("$D$",D,SE);label("$E$",Ee,E);label("$P$",P,E);
+label("$2$",(A+B)/2,NW);label("$2$",(B+C)/2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item In triangle $PBC$, $\angle PBC=\angle PCB=36^\circ$, so $PB=PC$ and $\angle BPC=108^\circ$.
+\item $\angle ABP=108^\circ-36^\circ=72^\circ$ and $\angle APB=180^\circ-108^\circ=72^\circ$, so triangle $ABP$ is isosceles with $AP=AB=2$. Hence $PC=d-2$.
+\item Triangles $PBC$ and $BAC$ both have angles $36^\circ,36^\circ,108^\circ$, so they are similar, with legs $PC=d-2$, $BC=2$ and bases $BC=2$, $AC=d$ respectively:
+\[
+\dfrac{d-2}{2}=\dfrac{2}{d}\ \Longrightarrow\ d^2-2d-4=0\ \Longrightarrow\ d=1+\sqrt5
+\]
+(the positive root).
+\end{itemize}
+The diagonals have length $\boxed{1+\sqrt5}\approx3.24$.

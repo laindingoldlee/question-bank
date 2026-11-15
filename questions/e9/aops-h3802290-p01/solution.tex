@@ -1,0 +1,7 @@
+The turns are $60^\circ,72^\circ,72^\circ,90^\circ,90^\circ$, summing to $384^\circ$. Removing one full revolution leaves $24^\circ$, already the smaller angle. Hence $\boxed{24^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real[] a={0,60,132,204,294,384};pair p=(0,0);for(int i=0;i<a.length;++i){pair q=p+dir(a[i]);draw(p--q,i==0?red:(i==a.length-1?blue:black),Arrow);p=q;}label("Initial direction",(.5,-.3));label("Final direction",p,(1,0));
+\end{asy}

@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1515733_solve_this_please
+% Stable identity: aops-topic-1515733-q01
+The mirror line is the perpendicular bisector of $AA'$.
+\begin{itemize}
+\item Midpoint: $M=\left(\dfrac{-4-1}{2},\dfrac{-2-3}{2}\right)=\left(-\dfrac{5}{2},-\dfrac{5}{2}\right)$.
+\item Slope of $AA'$: $\dfrac{-3-(-2)}{-1-(-4)}=-\dfrac{1}{3}$, so the perpendicular slope is $3$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw((-5.5,0)--(1,0),gray,Arrow(TeXHead));draw((0,-5)--(0,4.5),gray,Arrow(TeXHead));
+label("$x$",(1,0),E,gray);label("$y$",(0,4.5),N,gray);
+pair A=(-4,-2),B=(-1,-3),M=(A+B)/2;
+draw((-3.2,-4.6)--(-0.2,4.4),red+linewidth(0.9));
+draw(A--B,dashed);
+real s=0.3; pair u=unit(B-M)*s,v=unit((-0.2,4.4)-M)*s; draw(M+u--M+u+v--M+v);
+dot(A);dot(B);dot(M);
+label("$A(-4,-2)$",A,W);label("$A'(-1,-3)$",B,SE);label("$M$",M,2*dir(206));
+label("$y=3x+5$",(-3.2,-4.6),W,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The line through $M$ with slope $3$ is $y+\dfrac{5}{2}=3\left(x+\dfrac{5}{2}\right)$, that is,
+\[
+\boxed{y=3x+5}.
+\]
+Check: reflecting $(-4,-2)$ in $y=3x+5$ gives $(-1,-3)$ (the midpoint lies on the line and $AA'$ is perpendicular to it).

@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1237617_geometry
+% Stable identity: aops-topic-1237617-q01
+Walking along the diagonal from one corner, it enters a new square each time it crosses a vertical or a horizontal grid line, and crosses both at once exactly at interior lattice points. For an $m\times n$ rectangle the count is $m+n-\gcd(m,n)$. Here $\gcd(2012,2015)=\gcd(2012,3)=1$, so the diagonal passes through $2012+2015-1=\boxed{4026}$ squares.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=5;++i) draw((i,0)--(i,3),gray); for(int j=0;j<=3;++j) draw((0,j)--(5,j),gray); draw((0,0)--(5,3),red+linewidth(1)); label("$5\times3$: $5+3-1=7$ squares",(2.5,3),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

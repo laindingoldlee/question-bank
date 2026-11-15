@@ -1,0 +1,17 @@
+Unit direction vectors along the two rays are
+\[
+u=\dfrac{(1,\alpha)}{\sqrt{1+\alpha^2}},\qquad
+v=\dfrac{(1,\beta)}{\sqrt{1+\beta^2}}.
+\]
+Their sum bisects the angle because it has equal scalar product with both unit vectors. Thus
+\[
+k=\dfrac{\alpha\sqrt{1+\beta^2}+\beta\sqrt{1+\alpha^2}}{\sqrt{1+\beta^2}+\sqrt{1+\alpha^2}}
+=\dfrac{\alpha\beta-1+\sqrt{(1+\alpha^2)(1+\beta^2)}}{\alpha+\beta}.
+\]
+For $\alpha=2,\beta=5$, this is $\boxed{\dfrac{(9+\sqrt{130})}{7}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real k=(9+sqrt(130))/7;draw((0,0)--(1.5,3),blue);draw((0,0)--(.6,3),blue);draw((0,0)--(3/k,3),red);label("$2$",(1.5,3),(1,0));label("$5$",(.6,3),(-1,0));label("$k$",(3/k,3),(0,1));label("$O$",(0,0),(0,-1));
+\end{asy}

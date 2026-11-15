@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3054751_full_sprint_round_mock
+% Stable identity: aops-topic-3054751-q28
+Scale $RS$ to 1 and set $R=(-\dfrac{1}{2},0),S=(\dfrac{1}{2},0)$. Then $P=(0,\sin60^\circ)$, $T=(\dfrac{1}{2}+\cos72^\circ,\sin72^\circ)$, and $V=(-\dfrac{1}{2}-\cos72^\circ,\sin72^\circ)$. Thus $TV$ is horizontal, and the acute angle $\theta=PTV$ has $\tan\theta=\dfrac{\sin72^\circ-\sin60^\circ}{\cos60^\circ+\cos72^\circ}$. Sum-to-product identities reduce this to $\dfrac{2\cos66^\circ\sin6^\circ}{2\cos66^\circ\cos6^\circ}=\tan6^\circ$. Both angles lie between 0 and 90 degrees, where tangent is injective, so $\boxed{\theta=6^\circ}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair R=(-0.5,0),PtS=(0.5,0),T=(0.5+cos(72*pi/180),sin(72*pi/180)),U=(0,sin(72*pi/180)+sin(36*pi/180)),V=(-0.5-cos(72*pi/180),sin(72*pi/180)),P=(0,sqrt(3)/2);draw(R--PtS--T--U--V--cycle);draw(R--P--PtS);draw(T--P^^T--V,blue);label("$R$",R,SW);label("$S$",PtS,SE);label("$T$",T,E);label("$U$",U,N);label("$V$",V,W);label("$P$",P,S);
+\end{asy}

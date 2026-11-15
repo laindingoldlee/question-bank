@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2752973_combinactorics
+% Stable identity: aops-topic-2752973-q01
+Suppose $5^n$ has $D$ digits.
+\begin{itemize}
+\item If its leading digit is $1$, then $10^{D-1}\le5^n<2\cdot10^{D-1}$, so $5\cdot10^{D-1}\le5^{n+1}<10^D$: $5^{n+1}$ also has $D$ digits.
+\item Otherwise $2\cdot10^{D-1}\le5^n<10^D$, so $10^D\le5^{n+1}<5\cdot10^D$: $5^{n+1}$ has $D+1$ digits.
+\end{itemize}
+So going from $5^n$ to $5^{n+1}$, the number of digits goes up by $1$ exactly when $5^n$ does \emph{not} start with $1$. Let $c$ be the number of $n$ with $0\le n\le2018$ for which $5^n$ starts with $1$. Starting from $5^0=1$ (one digit),
+\[1412=1+(2019-c),\]
+so $c=608$. This count includes $n=0$, so the number of positive integers $n<2019$ is $608-1=\boxed{607}$.

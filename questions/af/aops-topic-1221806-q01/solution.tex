@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1221806_an_equiangular_problem
+% Stable identity: aops-topic-1221806-q01
+By Heron's formula with $s=81$: $K^2=81(81-a)(81-b)(81-c)$. The three factors are positive with sum $3\cdot81-162=81$, so by AM-GM their product is at most $27^3$, with equality when $a=b=c=54$. Hence the maximum area is $\sqrt{81\cdot27^3}=9\cdot27\sqrt{27}=729\sqrt3$, attained by the equilateral triangle of side $54$: $\boxed{729\sqrt3}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(2.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(3,3*sqrt(3)); draw(A--B--C--cycle,linewidth(1)); label("$54$",(3,0),S); label("$54$",(A+C)/2,NW); label("$54$",(B+C)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

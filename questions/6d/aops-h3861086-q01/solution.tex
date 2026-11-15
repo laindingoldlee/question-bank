@@ -1,0 +1,16 @@
+The arc from $B$ to $E$ through $C,D$ has measure $240^\circ$, because $\angle A=120^\circ$. The complementary arc through $A$ is $120^\circ$, and $AB=AE$ divides it into two $60^\circ$ arcs. Thus $AB=AE=25$, and $CD=25$ also subtends a $60^\circ$ arc.
+
+Let the remaining arc measures for $BC$ and $DE$ be $\beta,\delta$. They are positive and sum to $180^\circ$. If their integer chord lengths are $u,v$, then
+\[
+u=50\sin(\dfrac{\beta}{2}),\qquad v=50\cos(\dfrac{\beta}{2}),
+\qquad u^2+v^2=2500.
+\]
+The positive integer legs of a right triangle with hypotenuse $50$ are $(14,48)$ or $(30,40)$, up to order. For completeness, dividing by the leg gcd gives a primitive triple with odd hypotenuse dividing $50$, hence hypotenuse $5$ or $25$; their primitive triples are $(3,4,5)$ and $(7,24,25)$.
+
+The possible perimeters are $75+14+48=137$ and $75+30+40=145$. Both correspond to positive complementary half-arc angles and are attainable. Their sum is $\boxed{282}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real beta=2asin(.6)*180/pi;pair A=25dir(0),B=25dir(60),C=25dir(60+beta),D=25dir(120+beta),E=25dir(300);draw(circle((0,0),25),gray);draw(A--B--C--D--E--cycle);label("$A$",A,(1,0));label("$B$",B,NE);label("$C$",C,NW);label("$D$",D,SW);label("$E$",E,SE);label("$25$",(A+B)/2,NE);label("$25$",(A+E)/2,SE);
+\end{asy}

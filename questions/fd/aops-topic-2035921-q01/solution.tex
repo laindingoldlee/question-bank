@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2035921_geometry_problem
+% Stable identity: aops-topic-2035921-q01
+Extend the legs (non-parallel sides) of all the trapezoids. By symmetry they all pass through a common centre \(O\) on the horizontal base line, and the \(9\) trapezoids divide the straight angle at \(O\) into \(9\) equal angles of \(\dfrac{180^\circ}{9}=20^\circ\).
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real R1=2, R2=3; int n=9; real d=180/n;
+for(int i=0;i<n;++i){ real a0=i*d, a1=(i+1)*d;
+  path tr=R1*dir(a0)--R2*dir(a0)--R2*dir(a1)--R1*dir(a1)--cycle; draw(tr,linewidth(0.9));}
+draw((0,0)--R1*dir(0),dashed+gray); draw((0,0)--R1*dir(d),dashed+gray);
+draw(arc((0,0),0.6,0,d),blue); label("$20^\circ$",1.0*dir(d/2),E,blue+fontsize(8pt));
+draw(arc(R1*dir(d),0.25,-80,d),red); label("$x$",R1*dir(d)+0.42*dir(-30),red+fontsize(9pt));
+dot((0,0)); label("$O$",(0,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Each trapezoid together with the small triangle cut off near \(O\) forms an isosceles triangle with apex angle \(20^\circ\), whose base angles are \(\dfrac{180^\circ-20^\circ}{2}=80^\circ\). These \(80^\circ\) angles are the trapezoid's angles at its longer (outer) base. The angles at the shorter (inner) base are supplementary to them, so
+\[
+x=180^\circ-80^\circ=\boxed{100^\circ}.
+\]

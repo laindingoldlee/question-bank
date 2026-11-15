@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3376265_weird_volumes
+% Stable identity: aops-topic-3376265-q01
+(a) At distance $z$ from the cone's apex, similarity gives cross-sectional radius $\dfrac{rz}{h}$. Thus $V=\int_0^h\pi\dfrac{r^2z^2}{h^2}\,dz=\boxed{\dfrac{1}{3}\pi r^2h}$. (b) Each cross-section parallel to the base is similar to the base with length scale $\dfrac{z}{h}$ and area $B\dfrac{z^2}{h^2}$. Therefore $V=\int_0^hB\dfrac{z^2}{h^2}\,dz=\boxed{\dfrac{1}{3}Bh}$. (c) A sphere slice at signed distance $z$ from the center is a disk of radius $\sqrt{r^2-z^2}$ by the Pythagorean theorem. Hence $V=\int_{-r}^r\pi(r^2-z^2)\,dz=\pi[r^2z-\dfrac{z^3}{3}]_{-r}^r=\boxed{\dfrac{4}{3}\pi r^3}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(xscale(2)*yscale(.4)*unitcircle);draw((-2,0)--(0,4)--(2,0));draw((0,4)--(0,0),dashed);draw((-1,2)--(1,2),blue);label("$h$",(0,1),E);label("$r$",(1,0),S);label("cone",(0,-1));pair A=(5,0),B=(8,0),C=(9,1),D=(6,1),P=(7,4);draw(A--B--C--D--cycle);draw(P--A^^P--B^^P--C);draw(P--D,dashed);draw((P+A)/2--(P+B)/2--(P+C)/2--(P+D)/2--cycle,blue);label("base area $B$",(7,-.5));label("pyramid",(7,-1));pair O=(13,2);draw(circle(O,2));draw(O--(15,2));draw((13-sqrt(3),3)--(13+sqrt(3),3),blue);draw(O--(13,3),dashed);label("$r$",(14,2),S);label("$z$",(13,2.5),E);label("sphere section",(13,-1));
+\end{asy}

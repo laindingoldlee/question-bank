@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h1712010_how_to_graph_circles
+% Stable identity: aops-topic-1712010-q01
+\textbf{(a)} Translating a graph by $h$ to the right and $k$ upward replaces $x$ by $x-h$ and $y$ by $y-k$: a point $(x,y)$ lies on the moved curve exactly when $(x-h,y-k)$ lies on the original one. So the new equation is
+\[
+\boxed{a(x-h)^2+b(y-k)^2=c}.
+\]
+
+\textbf{(b)} Complete the squares:
+\[
+4(x^2-4x)+9(y^2+6y)=-61\ \Longrightarrow\ 4(x-2)^2-16+9(y+3)^2-81=-61\ \Longrightarrow\ 4(x-2)^2+9(y+3)^2=36 ,
+\]
+that is,
+\[
+\dfrac{(x-2)^2}{9}+\dfrac{(y+3)^2}{4}=1 .
+\]
+This is the ellipse $4x^2+9y^2=36$ (dashed in the sketch) moved $2$ units right and $3$ units down. Its centre is $\boxed{(2,-3)}$, with horizontal semi-axis $\boxed{3}$ and vertical semi-axis $\boxed{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-4.2,0)--(6,0),gray,Arrow(5));draw((0,-5.8)--(0,2.8),gray,Arrow(5));
+label("$x$",(6,0),N,gray);label("$y$",(0,2.8),E,gray);
+for(int i=-3;i<=5;++i) if(i!=0) {draw((i,-0.1)--(i,0.1),gray);}
+for(int j=-5;j<=2;++j) if(j!=0) {draw((-0.1,j)--(0.1,j),gray);}
+draw(scale(3,2)*unitcircle,dashed+gray);
+pair c=(2,-3);
+draw(shift(c)*scale(3,2)*unitcircle,blue+linewidth(1));
+draw((0,0)--c,red,Arrow(6));
+dot(c,blue);
+draw(c--c+(3,0),dashed);draw(c--c+(0,2),dashed);
+label("$3$",c+(1.5,0),N);label("$2$",c+(0,1),E);
+label("$(2,-3)$",c,S,blue);
+label("$O$",(0,0),dir(135));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

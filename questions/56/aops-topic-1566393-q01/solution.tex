@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1566393_polynomials_of_degree_n_defined_by_n1_points
+% Stable identity: aops-topic-1566393-q01
+\textbf{The statement is false.} Take $n=2$ and the three collinear points $(0,0),(1,1),(2,2)$. A polynomial $p$ of degree at most $2$ through them satisfies $p(x)-x=0$ at $x=0,1,2$; a nonzero polynomial of degree at most $2$ has at most $2$ roots, so $p(x)=x$, which has degree $1$. No polynomial of degree exactly $2$ passes through the points.
+
+\textbf{Correct version.} There is exactly one polynomial of degree \emph{at most} $n$ through the $n+1$ points.
+
+\emph{Existence} (Lagrange interpolation):
+\[
+p(x)=\sum_{i=1}^{n+1}y_i\prod_{j\ne i}\dfrac{x-x_j}{x_i-x_j}
+\]
+has degree at most $n$; at $x=x_k$ every term with $i\ne k$ vanishes and the $k$-th term equals $y_k$. The denominators are nonzero because the $x_i$ are distinct.
+
+\emph{Uniqueness.} If $p$ and $q$ both have degree at most $n$ and pass through the points, then $p-q$ has degree at most $n$ and the $n+1$ distinct roots $x_1,\dots,x_{n+1}$, so $p-q$ is the zero polynomial.
+
+(The interpolating polynomial has degree exactly $n$ for ``most'' data, but, as the example shows, it can have smaller degree.) $\blacksquare$

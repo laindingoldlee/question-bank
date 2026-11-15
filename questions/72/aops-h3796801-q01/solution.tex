@@ -1,0 +1,8 @@
+Assign one corner unit square of the central square to each adjacent arm in rotational order, as shown. Each piece consists of a $2\times2$ square and one unit square attached at a corner position along a side. Rotations by $90^\circ$ around the centre map each piece to the next. Thus all four pieces are congruent and have area $5$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"", "", "A", "A", "", ""}, {"", "", "A", "A", "", ""}, {"D", "D", "D", "A", "B", "B"}, {"D", "D", "C", "B", "B", "B"}, {"", "", "C", "C", "", ""}, {"", "", "C", "C", "", ""}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("Unit grid; blank cells are outside the cross",(3.0,-6.2));
+\end{asy}

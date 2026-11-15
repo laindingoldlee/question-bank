@@ -1,0 +1,22 @@
+Put $A=\sin^2x$, $B=\sin^2y$, $C=\sin^2z$. Squaring the equations gives
+\[
+A(1-B)=\dfrac{1}{4},\quad B(1-C)=\dfrac{1}{9},\quad C(1-A)=\dfrac{1}{16}.
+\]
+Eliminating $B,C$ yields
+\[
+512A^2-620A+135=0,\qquad
+A_\pm=\dfrac{155\pm\sqrt{6745}}{256}.
+\]
+Both roots lie in $(0,\dfrac{15}{16})$, and $C=\dfrac{1}{(16(1-A))}$, $B=\dfrac{1}{(9(1-C))}$ lie in $(0,1)$ for each. Thus both are admissible. If $P=ABC$, then
+\[
+P=\dfrac{A}{9(15-16A)}.
+\]
+Using $A_++A_-=\dfrac{155}{128}$ and $A_+A_-=\dfrac{135}{512}$ gives $P_+P_-=\dfrac{1}{576}$.
+
+For either magnitude, both signs of $\sin x\sin y\sin z$ are possible: choose signs for the three sines, and choose each cosine's sign to equal the sine in the preceding equation; arbitrary sine/cosine sign combinations with the required magnitudes specify real angles. The four distinct values are therefore $\pm\sqrt{P_+},\pm\sqrt{P_-}$. Their product is $P_+P_-=\dfrac{1}{576}$, so $\boxed{m+n=577}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(circle((0,0),1),gray);draw((-1.25,0)--(1.4,0),Arrow);draw((0,-1.2)--(0,1.4),Arrow);pair P=dir(35);draw((0,0)--P,blue);draw(P--(P.x,0),dashed);dot(P);label("$\theta$",(.25,.07));label("$\cos\theta$",(P.x/2,0),(0,-1));label("$\sin\theta$",(P.x,P.y/2),(1,0));label("$1$",P/2,NW);
+\end{asy}

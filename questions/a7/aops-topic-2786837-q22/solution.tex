@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2786837_2017_mbmt_guts_round_r1630_p610p2630__montgomery_blair_math_tournament
+% Stable identity: aops-topic-2786837-q22
+The exterior angles of a regular $n$-gon add to $360^\circ$, so each is $\dfrac{360^\circ}n$ and each interior angle is $180^\circ-\dfrac{360^\circ}n$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair[] V;for(int k=0;k<6;++k) V.push(dir(60*k));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle);
+draw(V[0]--(V[0]+0.8*(V[0]-V[1])),dashed);
+draw(arc(V[0],0.25,degrees(V[1]-V[0]),degrees(V[5]-V[0])));
+draw(arc(V[0],0.35,degrees(V[5]-V[0]),degrees(V[0]-V[1])));
+label("$\beta$",V[0]+0.4*dir(180),fontsize(9pt));label("$\gamma$",V[0]+0.5*dir(-90),fontsize(9pt));
+label("$\beta=180^\circ-\dfrac{360^\circ}{n}$ (interior),\quad $\gamma=\dfrac{360^\circ}{n}$ (exterior)",(0,-1.25),S,fontsize(8pt));
+\end{asy}
+
+This is an integer exactly when $n$ divides $360=2^3\cdot3^2\cdot5$, which has $4\cdot3\cdot2=24$ divisors. Excluding $n=1$ and $n=2$ (no polygon), there are $\boxed{22}$ values.

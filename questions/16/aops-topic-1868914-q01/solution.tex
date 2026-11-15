@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1868914_geometry_section_13__exercise_7
+% Stable identity: aops-topic-1868914-q01
+``$F$ is between $A$ and $E$'' means that $A$, $F$, $E$ lie on one line with $F$ on segment $AE$ and $F\ne A,E$. So $F$ lies on line $AE$, and in the same way $F$ lies on line $RS$.
+
+If lines $AE$ and $RS$ were the same line, then $A$, $E$, $R$, $S$ would all lie on it, which is not allowed. So they are two different lines, and two different lines meet in at most one point, here $F$. On line $AE$ the points $A$ and $E$ are on opposite sides of $F$, and on line $RS$ the points $R$ and $S$ are on opposite sides of $F$. So the segments $\overline{AE}$ and $\overline{RS}$ \emph{cross} at the point $F$, which is inside both segments:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),Ep=(4.4,2.0),R=(0.8,2.6),Sx=(3.6,-0.6);
+pair F=extension(A,Ep,R,Sx);
+draw(A--Ep,linewidth(1));draw(R--Sx,linewidth(1));
+dot(A);dot(Ep);dot(R);dot(Sx);dot(F);
+label("$A$",A,W);label("$E$",Ep,E);label("$R$",R,N);label("$S$",Sx,S);label("$F$",F,1.6*dir(80));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Any correct diagram looks like this: two segments forming an ``X'' with $F$ at the crossing. Neither segment may end at $F$, and the two segments may not lie along the same line.

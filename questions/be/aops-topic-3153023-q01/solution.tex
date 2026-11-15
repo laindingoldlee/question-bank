@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3153023_coins_combinatorics_question
+% Stable identity: aops-topic-3153023-q01
+Different multisets can yield the same value, so count totals rather than selections. Let $ S_0=\{0\}$ and $ S_{k+1}=\{s+c:s\in S_k,\ c\in D\}$ for the denomination set $ D $. Induction shows $ S_k $ is exactly the set of totals from $ k $ coins. The following exact computation gives $\boxed{419}$:
+\begin{verbatim}
+D=[1,2,5,10,20,50,100,200]
+S={0}
+for k in range(5):S={s+c for s in S for c in D}
+assert len(S)==419
+\end{verbatim}

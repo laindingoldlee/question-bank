@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1479668_infinite_geometric_series_formula
+% Stable identity: aops-topic-1479668-q01
+Let $S_n=a+ar+\cdots+ar^{n-1}$ be the sum of the first $n$ terms. The sum of an infinite series is defined as the limit of $S_n$ as $n\to\infty$, if that limit exists.
+
+For $r\ne1$, multiply by $r$ and subtract:
+\[
+S_n-rS_n=\left(a+ar+\cdots+ar^{n-1}\right)-\left(ar+\cdots+ar^{n-1}+ar^n\right)=a-ar^n,
+\]
+so
+\[
+S_n=\dfrac{a\left(1-r^n\right)}{1-r}=\dfrac{a}{1-r}-\dfrac{a}{1-r}\,r^n .
+\]
+
+\textbf{(a)} If $|r|<1$, then $|r^n|=|r|^n\to0$ as $n\to\infty$, so $S_n\to\dfrac{a}{1-r}$. Hence the series converges and
+\[
+a+ar+ar^2+\cdots=\dfrac{a}{1-r}. \qquad\blacksquare
+\]
+
+\textbf{(b)} If $|r|\ge1$, the terms satisfy $|ar^n|=|a||r|^n\ge|a|>0$, so they do not tend to $0$. But if $S_n$ had a limit $S$, then the terms $ar^n=S_{n+1}-S_n$ would tend to $S-S=0$. So the series diverges. $\blacksquare$
+
+The formula $\dfrac{a}{1-r}$ is therefore the sum of a \emph{convergent} geometric series; for $|r|\ge1$ (for example $r=2$, where $\dfrac{a}{1-r}=-a$) it is not the sum of anything.

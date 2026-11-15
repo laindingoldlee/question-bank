@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2432797_flower_problems
+% Stable identity: aops-topic-2432797-q04
+If Harry has folded $a$ roses and $b$ lilies when the hour ends exactly, then $6a+8b=60$, i.e. $3a+4b=30$. Then $b$ is a multiple of $3$, and the solutions in nonnegative integers are
+\[(a,b)=(10,0),\ (6,3),\ (2,6),\]
+with $10$, $9$ and $8$ flowers.
+
+The event ``he finishes a flower exactly at minute $60$'' happens when his first $a+b$ choices consist of $a$ roses and $b$ lilies for one of these pairs. A particular sequence of $n$ choices has probability $\left(\dfrac12\right)^n$, and different such sequences describe disjoint events (the finishing times of a sequence increase, so it cannot reach $60$ in two ways). So, in units of $\dfrac{1}{1024}$:
+\begin{itemize}
+\item $(10,0)$: $1$ sequence of length $10$: $1$;
+\item $(6,3)$: $\dbinom93=84$ sequences of length $9$: $84\cdot2=168$;
+\item $(2,6)$: $\dbinom82=28$ sequences of length $8$: $28\cdot4=112$.
+\end{itemize}
+The total is $\dfrac{281}{1024}$, and the first two cases ($9$ or $10$ flowers) give $\dfrac{169}{1024}$. Hence
+\[P(\text{at least }9\text{ flowers}\mid\text{a flower ends at }60)=\boxed{\dfrac{169}{281}}\approx0.60.\]

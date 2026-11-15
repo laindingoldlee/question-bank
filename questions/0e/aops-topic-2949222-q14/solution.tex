@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2949222_2018_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2949222-q14
+In the mid-height plane the three corner centres form an equilateral triangle of side $L-2\sqrt3$, where $L$ is the container side: shifting each side inward by 1 reduces the triangle side by $2\sqrt3$. The distance of a corner centre from the middle centre is $\dfrac{L-2\sqrt3}{\sqrt3}$. Nonoverlap with the middle ball requires this at least 2, so $L\ge4\sqrt3$. At equality the three corner-centre separations are $2\sqrt3>2$, so all balls fit. The minimum volume is $2\cdot(\dfrac{\sqrt3}{4})L^2=\boxed{24\sqrt3}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real L=4*sqrt(3);pair A=(0,0),B=(L,0),C=(L/2,6);draw(A--B--C--cycle);pair[] p={(sqrt(3),1),(3*sqrt(3),1),(2*sqrt(3),4),(2*sqrt(3),2)};for(pair v:p)draw(circle(v,1),blue);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("mid-height section",(L/2,-1));
+\end{asy}

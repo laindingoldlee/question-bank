@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2567633_is_this_true
+% Stable identity: aops-topic-2567633-q01
+Label the hexagon $V_1V_2\dots V_6$; the main diagonals are $V_1V_4$, $V_2V_5$, $V_3V_6$.
+
+\textbf{(a)} The statement is \textbf{false}. Take
+\[V_1=(2,0),\ V_2=(9,0),\ V_3=(9,3),\ V_4=(6,6),\ V_5=(0,6),\ V_6=(0,2),\]
+a convex hexagon (a right isosceles triangle with its three corners cut off). Opposite sides are parallel: $V_1V_2$ and $V_4V_5$ are horizontal, $V_2V_3$ and $V_5V_6$ are vertical, and $V_3V_4$ and $V_6V_1$ both have slope $-1$. Lines $V_1V_4$ ($y=\dfrac32(x-2)$) and $V_2V_5$ ($y=-\dfrac23(x-9)$) meet at $\left(\dfrac{54}{13},\dfrac{42}{13}\right)$. But line $V_3V_6$ is $y=2+\dfrac x9$, which at $x=\dfrac{54}{13}$ gives $y=\dfrac{32}{13}\ne\dfrac{42}{13}$. So the diagonals are not concurrent; they form a small triangle (shaded in sketch (a)).
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+pair[] V={(2,0),(9,0),(9,3),(6,6),(0,6),(0,2)};
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,linewidth(0.9));
+draw(V[0]--V[3],blue);draw(V[1]--V[4],blue);draw(V[2]--V[5],blue);
+pair P1=extension(V[0],V[3],V[1],V[4]),P2=extension(V[0],V[3],V[2],V[5]),P3=extension(V[1],V[4],V[2],V[5]);
+fill(P1--P2--P3--cycle,red);
+for(int i=0;i<6;++i)label("$V_"+string(i+1)+"$",V[i],2*unit(V[i]-(4.5,3)),fontsize(8pt));
+pair d=(16,3);
+pair[] W={(-3,-1.5),(1,-2.5),(3.4,0.2),(3,1.5),(-1,2.5),(-3.4,-0.2)};
+draw(shift(d)*(W[0]--W[1]--W[2]--W[3]--W[4]--W[5]--cycle),linewidth(0.9));
+draw(shift(d)*(W[0]--W[3]),blue);draw(shift(d)*(W[1]--W[4]),blue);draw(shift(d)*(W[2]--W[5]),blue);dot(d);label("$M$",d,S,fontsize(8pt));
+label("(a)",(4.5,-1.6));label("(b)",d+(0,-4.6));
+\end{asy}
+
+\textbf{(b)} Going around a convex polygon, the directions of the sides turn steadily the same way, through $360^\circ$ in total, with each turn strictly between $0^\circ$ and $180^\circ$. From side $V_1V_2$ to the opposite side $V_4V_5$ the direction turns through three of these angles, and back through the other three. Both amounts are positive and add up to $360^\circ$, and the sides are parallel, so each amount is $180^\circ$: the sides $V_1V_2$ and $V_4V_5$, traversed in order, point in opposite directions. As they have equal lengths, $V_5-V_4=-\left(V_2-V_1\right)$. Hence
+\[V_2-V_1=V_4-V_5\quad\Longrightarrow\quad V_1+V_4=V_2+V_5,\]
+so $V_1V_4$ and $V_2V_5$ have the same midpoint (they are the diagonals of the parallelogram $V_1V_2V_4V_5$). In the same way $V_3-V_2=V_5-V_6$ gives $V_2+V_5=V_3+V_6$. So all three main diagonals have the same midpoint $M$, and they pass through it, as in sketch (b). $\blacksquare$

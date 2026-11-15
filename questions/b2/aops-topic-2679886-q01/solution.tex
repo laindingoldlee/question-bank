@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2679886_simple_proof
+% Stable identity: aops-topic-2679886-q01
+\emph{Step 1.} A $60^\circ$ angle at $O=(0,0)$ with one arm through $(1,0)$ is constructible (equilateral triangle). If it could be trisected, the point $P=(\cos20^\circ,\sin20^\circ)$ where the first trisector meets the unit circle would be constructible, so $x=2\cos20^\circ$ would lie in some $F_k$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);draw(arc(O,1,0,75),gray);
+draw(O--(1.3,0));draw(O--1.3*dir(60));draw(O--1.3*dir(20),dashed);draw(O--1.3*dir(40),dashed);
+pair P=dir(20);dot(P);draw(P--(P.x,0),dotted);dot((P.x,0));
+label("$60^\circ$",1.3*dir(60),N,fontsize(8pt));label("$40^\circ$",1.3*dir(40),NE,fontsize(8pt));label("$20^\circ$",1.3*dir(20),E,fontsize(8pt));
+label("$O$",O,SW,fontsize(8pt));label("$P$",P,NW,fontsize(8pt));label("$\cos20^\circ$",(P.x,0),S,fontsize(8pt));label("$1$",0.5*dir(60),NW,fontsize(8pt));
+\end{asy}
+
+\emph{Step 2.} From $\cos3\theta=4\cos^3\theta-3\cos\theta$ with $\theta=20^\circ$: $\dfrac12=4\cos^320^\circ-3\cos20^\circ$, i.e. $x^3-3x-1=0$.
+
+\emph{Step 3.} The cubic $x^3-3x-1$ has no rational root: a rational root of a monic integer polynomial is an integer dividing $1$, but $1-3-1=-3$ and $-1+3-1=1$ are nonzero.
+
+\emph{Step 4 (lemma).} If a cubic $x^3+ax^2+bx+c$ with rational coefficients has a root in some $F_k$, then it has a rational root. Take the least $k$ for which some root $r$ lies in $F_k$, and suppose $k\ge1$. Write $r=p+q\sqrt w$ with $p,q,w\in F_{k-1}$; then $q\ne0$ by minimality. Because $\sqrt w\notin F_{k-1}$, each element of $F_k$ has a unique such form, and the map $p+q\sqrt w\mapsto p-q\sqrt w$ respects sums and products (e.g. $(p+q\sqrt w)(p'+q'\sqrt w)=(pp'+qq'w)+(pq'+qp')\sqrt w$) and fixes $F_{k-1}\supseteq\mathbb Q$. Applying it to $r^3+ar^2+br+c=0$ shows that $r'=p-q\sqrt w\ne r$ is also a root. The three roots sum to $-a$ (Vieta), so the third root is $-a-r-r'=-a-2p\in F_{k-1}$, contradicting the minimality of $k$. Hence $k=0$ and the root is rational.
+
+\emph{Conclusion.} By Steps 1, 2 and 4, $x^3-3x-1$ would have a rational root, contradicting Step 3. So $60^\circ$ cannot be trisected. $\blacksquare$

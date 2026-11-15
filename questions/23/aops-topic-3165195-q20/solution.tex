@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3165195_2018_moaa_individual_round__math_open_at_andover
+% Stable identity: aops-topic-3165195-q20
+Place $A=(0,0),B=(7,0),C=(\dfrac{16}{7},\dfrac{24\sqrt5}{7})$, as verified by the three side lengths. The altitude from $C$ is vertical. The slope of $BC$ is $-\dfrac{8\sqrt5}{11}$, so the altitude from $A$ has slope $\dfrac{11}{8\sqrt5}$. Their intersection is $H=(\dfrac{16}{7},\dfrac{22\sqrt5}{35})$. Reflecting gives $A^{\prime}=(\dfrac{32}{7},\dfrac{44\sqrt5}{35})$, $B^{\prime}=(-\dfrac{17}{7},\dfrac{44\sqrt5}{35})$, and $C^{\prime}=(\dfrac{16}{7},-\dfrac{76\sqrt5}{35})$. Intersecting the six side half-planes yields the parallelogram with vertices $(0,0)$, $(\dfrac{56}{15},0)$, $(\dfrac{32}{7},\dfrac{44\sqrt5}{35})$, $(\dfrac{88}{105},\dfrac{44\sqrt5}{35})$. Each vertex lies in both triangles; its four edges lie on $AB,A^{\prime}B^{\prime},AC,A^{\prime}C^{\prime}$, with the remaining two side inequalities redundant. The area is base times height: $\dfrac{56}{15}\cdot\dfrac{44\sqrt5}{35}=\dfrac{352\sqrt5}{75}$. Thus $\boxed{a+b+c=432}$.
+\begin{asy}
+import geometry;
+usepackage("amsmath");
+size(280);
+pair A=(0,0),B=(7,0),C=(16/7.0,24sqrt(5)/7),H=(16/7.0,22sqrt(5)/35),Ap=2H-A,Bp=2H-B,Cp=2H-C;draw(A--B--C--cycle);draw(Ap--Bp--Cp--cycle,blue);filldraw((0,0)--(56/15.0,0)--Ap--(88/105.0,44sqrt(5)/35)--cycle,lightblue,blue);dot(H);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$H$",H,E);label("$A^{\prime}$",Ap,NE);label("$B^{\prime}$",Bp,W);label("$C^{\prime}$",Cp,S);
+\end{asy}

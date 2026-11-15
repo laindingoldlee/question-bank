@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2955037_100th_msm_post_and_power_of_a_point_problem
+% Stable identity: aops-topic-2955037-q01
+The circle $\omega$ with centre $B$ and radius $a$ passes through $C$. Since $AC\perp BC$, line $AC$ is tangent to $\omega$ at $C$. Line $AB$ meets $\omega$ at $D$ (between $A$ and $B$) and $E$ (beyond $B$), with $AD=c-a$ and $AE=c+a$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),B=(3,0),A=(0,4);draw(A--B--C--cycle);draw(circle(B,3));
+pair D=B+3*unit(A-B),E=B-3*unit(A-B);draw(A--E,dashed);
+dot(D);dot(E);label("$A$",A,N);label("$B$",B,SE);label("$C$",C,SW);label("$D$",D,NE);label("$E$",E,SE);
+label("$a$",(B+C)/2,S);label("$b$",(A+C)/2,W);
+\end{asy}
+
+The power of $A$ with respect to $\omega$ gives
+\[AC^2=AD\cdot AE\implies b^2=(c-a)(c+a)=c^2-a^2,\]
+so $a^2+b^2=c^2$. $\blacksquare$

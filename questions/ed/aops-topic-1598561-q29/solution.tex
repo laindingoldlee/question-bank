@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h1598561_2011_mathcounts_national_round
+% Stable identity: aops-topic-1598561-q29
+The angles of a pentagon add to $540^\circ$, so $\angle A=540^\circ-90^\circ-3\cdot135^\circ=45^\circ$.
+
+\textbf{Coordinates.} Put $E=(0,0)$, $D=(2,0)$, and $A$ on the positive $y$-axis (since $\angle E=90^\circ$). Walking around the pentagon counterclockwise, the direction turns by the exterior angle $180^\circ-135^\circ=45^\circ$ at each of $D$, $C$, $B$:
+\[
+C=D+2(\cos45^\circ,\sin45^\circ)=\left(2+\sqrt2,\ \sqrt2\right),\qquad B=C+(0,2)=\left(2+\sqrt2,\ 2+\sqrt2\right).
+\]
+From $B$ the side $BA$ goes in the direction $135^\circ$, i.e.\ up and to the left at slope $-1$, until it reaches the $y$-axis. Moving left by $2+\sqrt2$ also moves up by $2+\sqrt2$, so
+\[
+A=\left(0,\ 4+2\sqrt2\right).
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real s2=sqrt(2);
+pair Ep=(0,0),D=(2,0),C=(2+s2,s2),B=(2+s2,2+s2),A=(0,4+2*s2);
+pair F=(2+s2,0),G=(0,2+s2);
+draw(A--B--C--D--Ep--cycle,linewidth(1));
+draw(D--F--C,gray+dashed);draw(B--G,gray+dashed);
+real m=0.22;draw(Ep+(m,0)--Ep+(m,m)--Ep+(0,m));
+label("$A$",A,N);label("$B$",B,NE);label("$C$",C,E);label("$D$",D,S);label("$E$",Ep,SW);
+label("$2$",(D+Ep)/2,S);label("$2$",(C+D)/2,NW);label("$2$",(B+C)/2,W);
+label("$\sqrt2$",(D+F)/2,S,gray);label("$\sqrt2$",(F+C)/2,E,gray);
+label("$G$",G,W,gray);label("$F$",F,SE,gray);
+draw(arc(A,0.7,-90,-45),red);label("$45^\circ$",A+1.05*dir(-67.5),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The dashed lines show the right isosceles triangles used: $DF=FC=\sqrt2$, and $BG=GA=2+\sqrt2$.) Indeed the angle at $A$ between $AE$ (straight down) and $AB$ (down-right at $45^\circ$) is $45^\circ$, as required.
+
+Hence $AE=4+2\sqrt2$, so $a=4$, $b=2$ and $a+b=\boxed{6}$.

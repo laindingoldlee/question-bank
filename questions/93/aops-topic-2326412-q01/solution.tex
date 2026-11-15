@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2326412_tangential_trapezoid
+% Stable identity: aops-topic-2326412-q01
+Let the circle (radius $r$) touch $AD$, $CD$, $BC$ at $W$, $Z$, $Y$. Tangent segments from a point are equal, so write $AX=AW=5t$, $BX=BY=9t$, $DW=DZ=p$ and $CZ=CY=q$. Then
+\[5t+p=125,\qquad9t+q=169.\]
+
+\textbf{The right angle at $O$.} Since $AB\parallel CD$, $\angle DAB+\angle ADC=180^\circ$. The centre $O$ lies on the bisectors of these angles, so $\angle OAD+\angle ODA=90^\circ$ and $\angle AOD=90^\circ$. In the right triangle $AOD$, $OW$ is the altitude to the hypotenuse, so (by the similar triangles $AWO$ and $OWD$) $OW^2=AW\cdot WD$, that is, $r^2=5t\cdot p$. In the same way, from the right angle $BOC$, $r^2=9t\cdot q$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(224,0), C=(105,120), D=(35,120), O=(80,60);
+pair X=(80,0), Z=(80,120), Wp=A+(80/125)*(D-A), Y=B+(144/169)*(C-B);
+draw(circle(O,60),blue);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--O--D,dashed+gray(0.4)); draw(O--Wp,red); draw(O--X,red);
+pair u=unit(A-O), v=unit(D-O); draw(O+8*u--O+8*u+8*v--O+8*v,gray(0.4));
+dot(A); dot(B); dot(C); dot(D); dot(O); dot(X); dot(Z); dot(Wp); dot(Y);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW); label("$O$",O,E);
+label("$X$",X,S); label("$Z$",Z,N); label("$W$",Wp,W); label("$Y$",Y,NE);
+label("$r=60$",(O+X)/2,E,red+fontsize(8pt));
+label("$80$",(40,0),S,fontsize(8pt)); label("$144$",(152,0),S,fontsize(8pt));
+label("$45$",(57,120),N,fontsize(8pt)); label("$25$",(93,120),N,fontsize(8pt));
+\end{asy}
+
+\textbf{Solving.} From $5tp=9tq$ we get $5p=9q$, that is, $5(125-5t)=9(169-9t)$, so $625-25t=1521-81t$, $56t=896$ and $t=16$. Hence
+\[AX=80,\quad BX=144,\quad p=45,\quad q=25,\quad r^2=80\cdot45=3600=144\cdot25,\quad r=60.\]
+The height of the trapezoid is the diameter $2r=120$, and the bases are $AB=80+144=224$ and $CD=45+25=70$. So
+\[[ABCD]=\dfrac{224+70}{2}\cdot120=\boxed{17640}.\]
+(Check: the legs have horizontal projections $\sqrt{125^2-120^2}=35$ and $\sqrt{169^2-120^2}=119$, and $35+119=154=224-70$.)

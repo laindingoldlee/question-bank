@@ -1,0 +1,6 @@
+The expected number of painted original faces is $\dfrac{7}{2}$. Each contributes 16 painted small faces, so the expected total is 56. There are $64\cdot6=384$ equally likely small-cube top faces. Thus the probability is $\dfrac{56}{384}=\boxed{\dfrac{7}{48}}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair u=(2,0),v=(.8,.7),w=(0,2);draw((0,0)--u--u+v--v--cycle);draw(w--u+w--u+v+w--v+w--cycle);draw((0,0)--w^^u--u+w^^v--v+w^^u+v--u+v+w);pair[] VV={(0,0),u,u+v,v,w,u+w,u+v+w,v+w};string[] nn={"A","B","C","D","E","F","G","H"};for(int i=0;i<8;++i)label("$"+nn[i]+"$",VV[i],i<4?(0,-1):(0,1));for(int i=1;i<4;++i){real t=i/4.0;draw(t*u--t*u+w);draw(t*w--u+t*w);draw(w+t*u--w+t*u+v);draw(w+t*v--w+t*v+u);draw(u+t*v--u+t*v+w);draw(u+t*w--u+t*w+v);}label("$4\times4\times4$ small cubes",(2,-1));
+\end{asy}
+

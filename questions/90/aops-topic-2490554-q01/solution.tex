@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h2490554_parity_of_a_combination_an_original_problem
+% Stable identity: aops-topic-2490554-q01
+\textbf{Algebraic proof.} From the factorial formula,
+\[n\dbinom mn=n\cdot\dfrac{m!}{n!\,(m-n)!}=m\cdot\dfrac{(m-1)!}{(n-1)!\,(m-n)!}=m\dbinom{m-1}{n-1}.\]
+The right side is even because $m$ is even. If $\dbinom mn$ were odd, then $n\dbinom mn$ would be a product of two odd numbers, hence odd. So $\dbinom mn$ is even. $\blacksquare$
+
+\textbf{Combinatorial proof.} Split $\{1,2,\dots,m\}$ into the $\dfrac m2$ pairs $\{1,2\},\{3,4\},\dots,\{m-1,m\}$, and let $\sigma$ swap the two numbers of every pair. Applying $\sigma$ to an $n$-element subset gives another $n$-element subset, and doing it twice gives the original back. A subset with $\sigma(S)=S$ is a union of whole pairs, so it has even size; since $n$ is odd, no $n$-element subset is fixed. So the $n$-element subsets split into pairs $\{S,\sigma(S)\}$, and their number $\dbinom mn$ is even. $\blacksquare$

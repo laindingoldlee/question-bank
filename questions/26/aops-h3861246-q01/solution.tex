@@ -1,0 +1,12 @@
+Let the circumradius be $R$, and place the square vertices at $B=(R,0)$, $C=(0,R)$, $D=(-R,0)$, $E=(0,-R)$. Write $A=(R\cos\theta,R\sin\theta)$. The distance formulas give
+\[
+AB\cdot AD=2R^2|\sin\theta|=56,\qquad
+AC\cdot AE=2R^2|\cos\theta|=90.
+\]
+Squaring and adding yields $(2R^2)^2=56^2+90^2=11236=106^2$. The square's diagonals have length $2R$, so its area is $2R^2=\boxed{106}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real R=sqrt(53),th=atan2(56,90);pair B=(R,0),C=(0,R),D=(-R,0),E=(0,-R),A=R*(cos(th),sin(th));draw(circle((0,0),R),gray);draw(B--C--D--E--cycle);draw(B--A--D,blue);draw(C--A--E,red);label("$A$",A,NE);label("$B$",B,(1,0));label("$C$",C,(0,1));label("$D$",D,(-1,0));label("$E$",E,(0,-1));
+\end{asy}

@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2500985_stemhcounts_states_sprint_2630
+% Stable identity: aops-topic-2500985-q30
+A line through $A$ is either the vertical line $x=3$ or $y-5=k(x-3)$, i.e. $kx-y+5-3k=0$.
+\begin{itemize}
+\item The line $x=3$ is at distance $|3-2|=1$ from $B$, so it is tangent (at $(3,2)$).
+\item For $kx-y+5-3k=0$, tangency means the distance from $B$ is $1$:
+\[\dfrac{|2k-2+5-3k|}{\sqrt{k^2+1}}=1\iff(3-k)^2=k^2+1\iff9-6k=1\iff k=\dfrac43.\]
+\end{itemize}
+Since a point outside a circle has exactly two tangents, these are the two: $x=3$ and $y-5=\dfrac43(x-3)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair Bc=(2,2), A=(3,5);
+draw((-1.6,0)--(4.4,0),Arrow(6)); draw((0,-0.6)--(0,5.8),Arrow(6));
+label("$x$",(4.4,0),E); label("$y$",(0,5.8),N);
+draw(circle(Bc,1),linewidth(0.8));
+draw((3,-0.4)--(3,5.6),blue); draw((-1.05,-0.4)--(3.45,5.6),blue);
+pair T1=(3,2), T2=(1.2,2.6);
+dot(Bc); dot(A); dot(T1); dot(T2); dot((3,0),red); dot((-0.75,0),red);
+draw(Bc--T1,dashed); draw(Bc--T2,dashed);
+label("$B(2,2)$",Bc,S,fontsize(8pt)); label("$A(3,5)$",A,E,fontsize(8pt));
+label("$(3,0)$",(3,0),SE,red+fontsize(8pt)); label("$\left(-\dfrac34,0\right)$",(-0.75,0),SE,red+fontsize(8pt));
+label("$x=3$",(3,4.2),E,blue+fontsize(8pt)); label("$y-5=\dfrac43(x-3)$",(0.6,2.2),W,blue+fontsize(8pt));
+\end{asy}
+
+The first meets the $x$-axis at $(3,0)$. For the second, $y=0$ gives $x-3=-\dfrac{15}{4}$, so $x=-\dfrac34$. Hence $m+n=3-\dfrac34=\boxed{\dfrac94}$.

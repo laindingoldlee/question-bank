@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1893615_polygon_geometry
+% Stable identity: aops-topic-1893615-q01
+At each vertex the interior angle $\alpha$ and the exterior angle $\varepsilon$ add up to $180^\circ$, and $\alpha=\dfrac{15}{2}\varepsilon$. So $\dfrac{17}{2}\varepsilon=180^\circ$, i.e.\ $\varepsilon=\dfrac{360^\circ}{17}$ at every vertex. In particular every interior angle is less than $180^\circ$, so $P$ is convex, and the exterior angles of a convex polygon add up to $360^\circ$. Hence $P$ has $17$ vertices, and
+\[
+S=\sum\alpha=\dfrac{15}{2}\sum\varepsilon=\dfrac{15}{2}\cdot360^\circ=\boxed{2700^\circ}
+\]
+(equivalently $(17-2)\cdot180^\circ=2700^\circ$).
+
+$P$ is \emph{not necessarily regular}: it must be equiangular, but its sides can have different lengths. For example, take a regular $17$-gon (dashed below) and move one side parallel to itself towards the centre. Every side keeps its direction, so every angle is unchanged, but the moved side becomes longer and its two neighbours shorter (blue polygon).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair[] v;
+for(int k=0;k<17;++k) v.push(dir(90-180/17+360*k/17));
+path reg=v[0];
+for(int k=1;k<17;++k) reg=reg--v[k];
+reg=reg--cycle;
+draw(reg,gray(0.6)+dashed);
+real d=0.1; real y0=v[0].y-d;
+pair p0=extension(v[16],v[0],(0,y0),(1,y0)), p1=extension(v[1],v[2],(0,y0),(1,y0));
+path np=p1;
+for(int k=2;k<17;++k) np=np--v[k];
+np=np--p0--cycle;
+draw(np,blue+linewidth(1));
+dot(p0,blue);dot(p1,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $S=2700^\circ$, and $P$ may or may not be regular.

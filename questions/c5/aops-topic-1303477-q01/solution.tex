@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1303477_probability_problem
+% Stable identity: aops-topic-1303477-q01
+A parallelogram inscribed in a circle is a rectangle (opposite angles of a cyclic quadrilateral add to $180^\circ$ and are equal), and the diagonals of an inscribed rectangle are diameters. Conversely, any two diameters form a rectangle.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair[] P; for(int k=0;k<8;++k) P[k]=dir(45*k);
+draw(unitcircle,gray); for(int k=0;k<8;++k) dot(P[k]);
+draw(P[0]--P[1]--P[4]--P[5]--cycle,blue+linewidth(0.9)); draw(P[0]--P[4],red+dashed); draw(P[1]--P[5],red+dashed);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The $8$ points determine $4$ diameters, so there are $\dbinom42=6$ parallelograms, out of $\dbinom84=70$ choices. The probability is $\dfrac{6}{70}=\boxed{\dfrac{3}{35}}$.

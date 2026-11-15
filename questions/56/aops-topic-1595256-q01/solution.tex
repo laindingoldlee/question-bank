@@ -1,0 +1,51 @@
+% Source: https://artofproblemsolving.com/community/c3h1595256_geometry_problem
+% Stable identity: aops-topic-1595256-q01
+Take $BE=1$, so $EC=2$. In triangle $ABE$, $\angle ABE=180^\circ-120^\circ-15^\circ=45^\circ$, and $\angle AEC=180^\circ-120^\circ=60^\circ$.
+
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),Ee=(1,0),C=(3,0);
+pair A=((3+sqrt(3))/2,(3+sqrt(3))/2);
+draw(A--B--C--cycle,linewidth(0.9));draw(A--Ee,linewidth(0.9));
+draw(arc(B,0.35,0,45));label("$45^\circ$",B+0.55*dir(20),fontsize(9pt));
+draw(arc(Ee,0.18,60,180));label("$120^\circ$",Ee+0.4*dir(95),fontsize(9pt));
+draw(arc(A,0.9,225,240));label("$15^\circ$",A+1.35*dir(232.5),fontsize(8pt));
+label("$1$",(0.5,0),S);label("$2$",(2,0),S);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$E$",Ee,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Auxiliary point.} Let $F$ be the foot of the perpendicular from $C$ to line $AE$, and join $F$ to $B$ (dashed in the second sketch; equal ticks mark $EB=EF$ and $FA=FB=FC$).
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),Ee=(1,0),C=(3,0);
+pair A=((3+sqrt(3))/2,(3+sqrt(3))/2);
+pair F=Ee+0.5*(1,sqrt(3));
+draw(A--B--C--cycle,linewidth(0.9));draw(A--Ee,linewidth(0.9));
+draw(C--F,dashed+blue);draw(B--F,dashed+blue);
+pair u=unit(A-F),v=unit(C-F);real q=0.13;
+draw(F+q*u--F+q*(u+v)--F+q*v,blue);
+void tick1(pair P,pair Q){pair m=(P+Q)/2,n=0.06*unit(rotate(90)*(Q-P));draw(m-n--m+n);}
+void tick2(pair P,pair Q){pair m=(P+Q)/2,t=0.035*unit(Q-P),n=0.06*unit(rotate(90)*(Q-P));draw(m-t-n--m-t+n);draw(m+t-n--m+t+n);}
+tick1(B,Ee);tick1(Ee,F);tick2(F,A);tick2(F,B);tick2(F,C);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$E$",Ee,S);label("$F$",F,dir(135));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item In the right triangle $CFE$, $\angle CEF=60^\circ$, so it is a $30$-$60$-$90$ triangle: $EF=\dfrac{1}{2}EC=1=BE$ and $\angle ECF=30^\circ$. Moreover $F$ lies strictly between $E$ and $A$: the angle $\angle AEC=60^\circ$ is acute, so $F$ is on ray $EA$, and in triangle $ABE$ the side $AE$, opposite the $45^\circ$ angle, is longer than the side $BE=1=EF$, opposite the $15^\circ$ angle.
+\item Triangle $BEF$ is isosceles with $EB=EF$ and apex angle $\angle BEF=120^\circ$, so $\angle EBF=\angle EFB=30^\circ$.
+\item Then $\angle FBA=\angle ABE-\angle EBF=45^\circ-30^\circ=15^\circ=\angle FAB$, so triangle $ABF$ is isosceles with $FA=FB$.
+\item In triangle $BFC$, $\angle FBC=30^\circ=\angle FCB$, so $FB=FC$.
+\end{itemize}
+Hence $FA=FC$, and since $\angle AFC=90^\circ$, triangle $AFC$ is an isosceles right triangle. Therefore
+\[
+\angle CAE=\angle CAF=\boxed{45^\circ}.
+\]
+\textbf{Check by trigonometry.} By the law of sines in triangle $ABE$, $AE=\dfrac{\sin45^\circ}{\sin15^\circ}=1+\sqrt3$. In triangle $AEC$, the law of cosines gives $AC^2=(1+\sqrt3)^2+4-2\cdot2(1+\sqrt3)\cdot\dfrac{1}{2}=6$, and then $\sin\angle CAE=\dfrac{2\sin60^\circ}{\sqrt6}=\dfrac{\sqrt2}{2}$, consistent with $45^\circ$ (the angle is acute, as $\angle ACE=75^\circ$).

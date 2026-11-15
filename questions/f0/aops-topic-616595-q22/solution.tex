@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h616595_2013_amc_10b_problemsproblem_22
+% Stable identity: aops-topic-616595-q22
+\textbf{The centre.} Let the common line sum be $s$ and let $j$ be the digit at $J$. The four lines together contain every vertex once and the centre four times, so
+\[
+4s=(1+2+\dots+9)+3j=45+3j .
+\]
+Hence $45+3j$ is divisible by $4$. Since $45\equiv1$ and $3\equiv-1\pmod4$, this says $1-j\equiv0\pmod4$, so $j\equiv1\pmod4$: $j\in\{1,5,9\}$. (This is the ``symmetry'' in the official solution: the digits other than $j$ must split into four pairs with equal sums, and $1,5,9$ are the only centres for which the remaining eight digits can be paired up that way.)
+
+\textbf{The pairs.} Each line is $j$ plus a pair of opposite vertices, so the remaining eight digits must split into four pairs with equal sum $s-j$, which is the average pair sum $\dfrac{45-j}{4}$:
+\begin{itemize}
+\item $j=1$: pair sum $11$: $\{2,9\},\{3,8\},\{4,7\},\{5,6\}$;
+\item $j=5$: pair sum $10$: $\{1,9\},\{2,8\},\{3,7\},\{4,6\}$;
+\item $j=9$: pair sum $9$: $\{1,8\},\{2,7\},\{3,6\},\{4,5\}$.
+\end{itemize}
+In each case the pairing is forced (the largest remaining digit must go with the smallest, and so on).
+
+\textbf{Placing them.} The four pairs can be assigned to the four diameters $AE,BF,CG,DH$ in $4!=24$ ways, and each pair can be placed on its diameter in $2$ orders, a factor $2^4=16$. So there are $3\cdot24\cdot16=\boxed{\textbf{(C) }1152}$ ways.

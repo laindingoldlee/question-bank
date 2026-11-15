@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1196596_math_problems_from_2016_mathcounts_school_handbook
+% Stable identity: aops-topic-1196596-q05
+The point $(0,6)$ lies inside the rectangle $R$ with corners $(\pm2,0)$, $(\pm2,10)$, so every such pentagon is $R$ with a triangular notch whose vertex is $(0,6)$: $(0,6)$ replaces one side of $R$ by two segments. Removing the side from $(-2,10)$ to $(2,10)$ cuts off the triangle with base $4$ and height $4$ (area $8$); removing a vertical side cuts off a triangle with base $10$ and height $2$ (area $10$); removing the bottom side cuts off a triangle with base $4$ and height $6$ (area $12$).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+defaultpen(fontsize(7pt)); draw((-2,0)--(2,0)--(2,10)--(-2,10)--cycle,gray+dashed); filldraw((-2,0)--(2,0)--(2,10)--(0,6)--(-2,10)--cycle,lightblue,blue+linewidth(0.9));
+dot((0,6)); label("$(0,6)$",(0,6),S); label("$(-2,0)$",(-2,0),SW); label("$(2,0)$",(2,0),SE); label("$(2,10)$",(2,10),NE); label("$(-2,10)$",(-2,10),NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The largest area is therefore $40-8=\boxed{32}$, from the pentagon $(-2,0),(2,0),(2,10),(0,6),(-2,10)$ in that order.

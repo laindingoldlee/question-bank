@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1661118_a_basic_geometry_problem
+% Stable identity: aops-topic-1661118-q01
+In the right triangle $ABC$ the hypotenuse is $AC$, so
+\[
+\sin\theta=\dfrac{BC}{AC}=\dfrac{1}{AC},
+\]
+and $\theta$ is determined by the length $AC$, which the data do not fix.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real ac=2.5;real ab=sqrt(ac^2-1);
+pair A=(0,0),B=(ab,0),C=(ab,1);
+pair Mi=(A+C)/2;pair D=Mi+sqrt(4-(ac/2)^2)*unit(rotate(90)*(C-A));
+draw(A--B--C--cycle,linewidth(0.9));draw(A--D--C,linewidth(0.9));
+real s=0.15;draw(B+(-s,0)--B+(-s,s)--B+(0,s));
+draw(arc(A,0.6,0,degrees(C-A)),red);
+label("$\theta$",0.8*dir(degrees(C-A)/2),red);
+label("$A$",A,W);label("$B$",B,SE);label("$C$",C,E);label("$D$",D,N);
+label("$1$",(B+C)/2,E);label("$2$",(A+D)/2,NW);label("$2$",(C+D)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Which lengths $AC$ are possible?} The hypotenuse is longer than the leg $BC$, so $AC>1$. For triangle $ADC$ to exist we need $AC<AD+DC=4$ (the other triangle inequalities, $2<AC+2$, hold automatically). Conversely, for every $AC$ with $1<AC<4$ we can build both triangles: a right triangle with hypotenuse $AC$ and leg $1$, and an isosceles triangle with base $AC$ and legs $2$ on the other side of $AC$. So $AC$ can be any number in $(1,4)$, and $\sin\theta=\dfrac{1}{AC}$ takes every value in $\left(\dfrac{1}{4},1\right)$.
+
+Hence $\theta$ is not determined; its possible values are exactly
+\[
+\boxed{\arcsin\dfrac{1}{4}<\theta<90^\circ},
+\]
+that is, roughly $14.48^\circ<\theta<90^\circ$. (The figure shows $AC=2.5$.)

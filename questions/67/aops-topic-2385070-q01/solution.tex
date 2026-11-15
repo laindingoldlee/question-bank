@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h2385070_counterintuitive_problem
+% Stable identity: aops-topic-2385070-q01
+Measure lengths in cm along the table, with the table edge at $0$ and the table on the side of negative numbers. Number the cubes $1,2,\dots,n$ from the top, let $x_i$ be the position of the centre of cube $i$ (so cube $i$ covers $\left[x_i-\dfrac12,x_i+\dfrac12\right]$), and let $c_k=\dfrac{x_1+\cdots+x_k}{k}$ be the centre of mass of the top $k$ cubes. Balancing means
+\[x_{k+1}-\dfrac12\le c_k\le x_{k+1}+\dfrac12\quad(1\le k\le n-1),\qquad c_n\le0.\]
+
+\textbf{(a) The bound.} For $k\ge2$, using $x_k\ge c_{k-1}-\dfrac12$,
+\[c_k=\dfrac{(k-1)c_{k-1}+x_k}{k}\ge\dfrac{(k-1)c_{k-1}+c_{k-1}-\dfrac12}{k}=c_{k-1}-\dfrac{1}{2k}.\tag{1}\]
+Fix a cube $j$; we show that its right face $x_j+\dfrac12$ is at most $\dfrac{H_n}{2}$. If $j=1$, then $c_1=x_1$. If $j\ge2$, then $c_{j-1}\ge x_j-\dfrac12$ gives $c_j=\dfrac{(j-1)c_{j-1}+x_j}{j}\ge x_j-\dfrac{j-1}{2j}$. In both cases $c_j\ge x_j-\dfrac12+\dfrac1{2j}$. Applying (1) for $k=j+1,\dots,n$,
+\[0\ge c_n\ge c_j-\dfrac12\left(\dfrac1{j+1}+\cdots+\dfrac1n\right)\ge x_j-\dfrac12+\dfrac1{2j}-\dfrac{H_n-H_j}{2}.\]
+Hence
+\[x_j+\dfrac12\le\dfrac{H_n-H_j}{2}+1-\dfrac1{2j}\le\dfrac{H_n}{2},\]
+because $H_j\ge2-\dfrac1j$ for every $j\ge1$: the numbers $f(j)=H_j+\dfrac1j-2$ satisfy $f(1)=0$ and $f(j+1)-f(j)=\dfrac2{j+1}-\dfrac1j=\dfrac{j-1}{j(j+1)}\ge0$. So no point of the stack is more than $\dfrac{H_n}{2}$ beyond the edge.
+
+\textbf{(a) Reaching it (the harmonic stack).} Let $R_k=\dfrac12\left(\dfrac1k+\dfrac1{k+1}+\cdots+\dfrac1n\right)$ for $1\le k\le n$ and $R_{n+1}=0$, and place cube $k$ with its right face at $R_k$, i.e. $x_k=R_k-\dfrac12$. We claim $c_k=R_{k+1}$ for every $k$. For $k=1$: $c_1=R_1-\dfrac12=R_2$. If $c_{k-1}=R_k$, then
+\[c_k=\dfrac{(k-1)R_k+R_k-\dfrac12}{k}=R_k-\dfrac1{2k}=R_{k+1}.\]
+So the centre of mass of the top $k$ cubes lies exactly above the right face of cube $k+1$ (for $k=n$: exactly above the table edge), every balance condition holds, and the top cube reaches $R_1=\dfrac{H_n}{2}$. For $n=4$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real[] r={25/24,13/24,7/24,1/8,0};
+fill((-2.2,-0.6)--(0,-0.6)--(0,0)--(-2.2,0)--cycle,gray(0.8));
+draw((-2.2,0)--(0,0)--(0,-0.6),linewidth(0.9));
+for(int k=0;k<4;++k){ real y=3-k; draw((r[k]-1,y)--(r[k],y)--(r[k],y+1)--(r[k]-1,y+1)--cycle,linewidth(0.8)); label("$"+string(k+1)+"$",(r[k]-0.75,y+0.5)); }
+draw((0,0)--(0,4.6),gray+dashed);
+draw((0,4.35)--(r[0],4.35),Arrows(4)); label("$\dfrac{H_4}{2}$",(r[0]/2,4.35),N);
+label("table",(-1.1,-0.3));
+string[] lb={"$\dfrac12$","$\dfrac14$","$\dfrac16$","$\dfrac18$"};
+for(int k=0;k<4;++k){ real y=3-k-0.15; draw((r[k+1],y)--(r[k],y),red,Arrows(3)); label(lb[k],(r[k],y),E,red+fontsize(7pt)); }
+\end{asy}
+
+
+\textbf{(b)} An overhang of $100$ cm needs $\dfrac{H_n}{2}\ge100$, i.e. $H_n\ge200$. Group the terms of $H_{2^m-1}$ in blocks $\dfrac1{2^i}+\cdots+\dfrac1{2^{i+1}-1}$ for $i=0,1,\dots,m-1$: each block has $2^i$ terms, each at most $\dfrac1{2^i}$, so each block is at most $1$. The block with $i=1$ is $\dfrac12+\dfrac13=\dfrac56$, so for $m\ge3$
+\[H_{2^m}=H_{2^m-1}+\dfrac1{2^m}\le m-\dfrac16+\dfrac1{2^m}<m.\]
+With $m=200$: every $n\le2^{200}$ has $H_n\le H_{2^{200}}<200$, so a balanced stack of at most $2^{200}$ cubes has overhang less than $100$ cm. Hence more than $2^{200}$ cubes are needed, and $2^{200}=1024^{20}>10^{60}$. $\blacksquare$
+
+(In fact, since $H_n\approx\ln n+0.577$, about $4\times10^{86}$ cubes are needed in a single column.)

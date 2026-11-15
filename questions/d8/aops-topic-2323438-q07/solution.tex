@@ -1,0 +1,45 @@
+% Source: https://artofproblemsolving.com/community/c3h2323438_math_scavenger_hunt
+% Stable identity: aops-topic-2323438-q07
+\textbf{(a)} Let $O$ be the centre. Since $PA=PB$ and $OA=OB$, both $P$ and $O$ lie on the perpendicular bisector of $AB$; as $P\ne O$, this bisector is the line $OP$. In the same way the perpendicular bisector of $CD$ is $OP$. So both triangles are symmetric about the line $OP$: the sides $PA$, $PB$ make angles of $30^\circ$ with this line, on its two sides, and so do $PC$, $PD$.
+
+If both triangles pointed the same way along $OP$ from $P$, they would share all points of that line close to $P$. Since they share only $P$, they point in opposite directions. Name the vertices so that $A$ and $D$ are on opposite sides of the line $OP$; then the rays $PA$ and $PD$ are opposite, so $A,P,D$ are collinear with $P$ between $A$ and $D$, and likewise $B,P,C$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real a=3,b=2; real t=(a-b)/sqrt(3); real r=sqrt((a^2+a*b+b^2)/3);
+pair P=(0,0), Oc=(t,0);
+pair A=(sqrt(3)/2*a,a/2), B=(sqrt(3)/2*a,-a/2), C=(-sqrt(3)/2*b,b/2), D=(-sqrt(3)/2*b,-b/2);
+draw(circle(Oc,r));
+fill(P--A--B--cycle,rgb(0.85,0.92,1)); fill(P--C--D--cycle,rgb(1,0.9,0.8));
+draw(P--A--B--cycle,linewidth(0.9)); draw(P--C--D--cycle,linewidth(0.9));
+draw(A--D,dashed); draw(B--C,dashed); draw(B--D,red+linewidth(0.9));
+dot(P); dot(Oc); label("$P$",P,N); label("$O$",Oc,SE);
+label("$A$",A,NE); label("$B$",B,SE); label("$C$",C,NW); label("$D$",D,SW);
+label("$a$",(P+A)/2,N); label("$b$",(P+C)/2,N);
+\end{asy}
+
+Now $\angle BAD=\angle BAP=60^\circ$ is an inscribed angle on the chord $BD$, so (extended law of sines in triangle $ABD$)
+\[BD=2r\sin60^\circ=r\sqrt3.\]
+In triangle $BPD$, $PB=a$, $PD=b$ and $\angle BPD=180^\circ-\angle APB=120^\circ$, so by the law of cosines
+\[BD^2=a^2+b^2-2ab\cos120^\circ=a^2+ab+b^2.\]
+Hence $a^2+ab+b^2=3r^2$. $\blacksquare$
+
+\textbf{(b)} Take the unit circle ($r=1$), $P=(-\sqrt3,0)$, $A=(0,1)$, $B=(0,-1)$, $C=\left(-\dfrac{\sqrt3}{2},\dfrac12\right)$, $D=\left(-\dfrac{\sqrt3}{2},-\dfrac12\right)$. Then $PA=PB=AB=2$ and $PC=PD=CD=1$, all four points are on the circle, but triangle $PCD$ lies inside triangle $PAB$, and
+\[a^2+ab+b^2=4+2+1=7\ne3=3r^2.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real a=2,b=1; pair Oc=(0,0), P=(-sqrt(3),0);
+pair A=(0,1), B=(0,-1), C=(-sqrt(3)/2,0.5), D=(-sqrt(3)/2,-0.5);
+draw(circle(Oc,1));
+fill(P--A--B--cycle,rgb(0.85,0.92,1)); fill(P--C--D--cycle,rgb(1,0.9,0.8));
+draw(P--A--B--cycle,linewidth(0.9)); draw(P--C--D--cycle,linewidth(0.9));
+dot(P); dot(Oc); label("$P$",P,W); label("$O$",Oc,E);
+label("$A$",A,N); label("$B$",B,S); label("$C$",C,NW); label("$D$",D,SW);
+\end{asy}
+
+(In this nested case $A,C,P$ and $B,D,P$ are collinear, $\angle BPC=60^\circ$, and the same argument gives $a^2-ab+b^2=3r^2$ instead: $4-2+1=3$.)

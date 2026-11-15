@@ -1,0 +1,9 @@
+Every numbered point lies on exactly two of the six sides. Summing the six equal side sums $S$ therefore counts each number twice:
+\[6S=2(1+2+\cdots+12)=156,\qquad \boxed{S=26}.\]
+The diagram is a construction. Its six side sums are $1+2+11+12$, $2+9+8+7$, $1+9+10+6$, $3+4+11+8$, $4+5+7+10$, and $3+5+12+6$, all equal to 26.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p;for(int i=0;i<6;++i)p.push(2dir(90+60i));p.push((-2/sqrt(3),0));p.push((-1/sqrt(3),1));p.push((-1/sqrt(3),-1));p.push((1/sqrt(3),-1));p.push((2/sqrt(3),0));p.push((1/sqrt(3),1));draw(p[0]--p[2]--p[4]--cycle);draw(p[1]--p[3]--p[5]--cycle);int[] a={1,3,2,4,9,5,11,12,8,7,10,6};for(int i=0;i<12;++i){filldraw(circle(p[i],.16),white);label(string(a[i]),p[i]);}
+\end{asy}

@@ -1,0 +1,18 @@
+Choose coordinates $A=(0,0)$, $B=(2,0)$ and $C=(1,\sqrt3)$. Reflection across the lines joining each pair of centres gives the other intersection points
+\[
+D=(1,-\sqrt3),\qquad E=(3,\sqrt3),\qquad F=(-1,\sqrt3).
+\]
+Their pairwise distances are all $4$, so $DEF$ is equilateral with side length $4$. Its altitude is $2\sqrt3$, and its circumcentre is two-thirds of the way along an altitude measured from a vertex. Thus the circumradius is $\dfrac{4\sqrt3}{3}$ and the required area is
+\[
+\boxed{\pi\left(\dfrac{4\sqrt3}{3}\right)^2=\dfrac{16\pi}{3}}.
+\]
+
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(260);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(2,0),C=(1,sqrt(3)),D=(1,-sqrt(3)),E=(3,sqrt(3)),F=(-1,sqrt(3)),O=(1,sqrt(3)/3);
+draw(circle(O,4sqrt(3)/3),linewidth(1.2));draw(circle(A,2),gray(.6));draw(circle(B,2),gray(.6));draw(circle(C,2),gray(.6));draw(A--B--C--cycle);draw(D--E--F--cycle,dashed);draw(O--D,dashed);
+dot(O);label("$O$",O,(1,0));label("$A$",A,(-1,0));label("$B$",B,(1,0));label("$C$",C,(0,1));label("$D$",D,(0,-1));label("$E$",E,(1,0));label("$F$",F,(-1,0));
+
+\end{asy}

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1782031_mathcounts_national_cdr_2015
+% Stable identity: aops-topic-1782031-q01
+Each pair of opposite sides of the parallelogram lies along the two edges of one ribbon, so the distance between those sides is that ribbon's width.
+
+Take as base a side lying along an edge of the $4$ mm ribbon; the corresponding height is $4$, so this side has length $\dfrac{60}{4}=15$. Take as base a side along an edge of the $12$ mm ribbon; the height is $12$, so this side has length $\dfrac{60}{12}=5$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair u=(3/5,4/5);
+fill((-6,0)--(26,0)--(26,4)--(-6,4)--cycle,paleyellow);
+fill((-2.25,-3)--(12.75,-3)--(12.75,-3)+10.5/0.8*u--(-2.25,-3)+10.5/0.8*u--cycle,palecyan);
+fill((0,0)--(15,0)--(18,4)--(3,4)--cycle,mediumgray);
+draw((-6,0)--(26,0));draw((-6,4)--(26,4));
+draw((-2.25,-3)--(-2.25,-3)+10.5/0.8*u);draw((12.75,-3)--(12.75,-3)+10.5/0.8*u);
+draw((0,0)--(15,0)--(18,4)--(3,4)--cycle,linewidth(1));
+label("$15$",(7.5,0),S);label("$5$",(16.5,2),E);
+label("width $4$",(-3,2));label("width $12$",(-2.25,-3)+10.5/0.8*u+(6,0.6),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The perimeter is $2(15+5)=\boxed{40}$ mm. (The ribbons cross at an angle $\theta$ with $\sin\theta=\dfrac{60}{15\cdot5}=\dfrac{4}{5}$, which is possible; the figure is drawn with this angle.)

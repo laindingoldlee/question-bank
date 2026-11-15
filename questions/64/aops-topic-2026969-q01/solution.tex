@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2026969_somewhat_prime
+% Stable identity: aops-topic-2026969-q01
+Split the range according to the value of $k$.
+
+\begin{itemize}
+\item $k=1$: $1\le n<2$. No $n\ge2$ lies here.
+\item $k=2$: $2\le n\le 5$. We need $n$ not divisible by $2$: $n=3,5$, giving $2$ numbers.
+\item $k=3$: $6\le n\le 23$. We need $n$ divisible by neither $2$ nor $3$, i.e.\ $n\equiv 1$ or $5\pmod 6$: $7,11,13,17,19,23$, giving $6$ numbers.
+\item $k=4$: $24\le n\le 119$. Not divisible by $2,3,4$ is the same as not divisible by $2$ or $3$. These $96$ consecutive integers form $16$ complete blocks of $6$, each containing $2$ such numbers: $32$ numbers.
+\item $k=5$: $120\le n\le 719$. Not divisible by $2,3,4,5$ is the same as coprime to $30$. Each block of $30$ consecutive integers contains $8$ integers coprime to $30$ (namely those $\equiv 1,7,11,13,17,19,23,29\pmod{30}$), and $600$ integers form $20$ blocks: $160$ numbers.
+\item $k=6$: $720\le n\le 1440$ (all below $7!=5040$). Not divisible by $2,\dots,6$ is again the same as coprime to $30$ (divisibility by $4$ or $6$ implies divisibility by $2$). The $720$ integers $720,\dots,1439$ form $24$ blocks of $30$, giving $192$ numbers, and $1440$ is even. So $192$ numbers.
+\end{itemize}
+The total is
+\[
+2+6+32+160+192=\boxed{392}.
+\]

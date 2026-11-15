@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2745772_problems_on_parity
+% Stable identity: aops-topic-2745772-q01
+Number the columns $1,\dots,17$ from the right, let $a_j$ be the digit of the first number in column $j$, and let $s_j=a_j+a_{18-j}$ be the column sum; note $s_j=s_{18-j}$. Let $c_j\in\{0,1\}$ be the carry into column $j$ ($c_1=0$). The digit of the sum in column $j$ is $s_j+c_j$ reduced mod $10$, so it has the parity of $s_j+c_j$.
+
+Suppose every digit of the sum is odd. We show by induction that $c_j=0$ for every odd $j\le9$. This holds for $j=1$. Suppose $c_j=0$ for some odd $j\le7$.
+\begin{itemize}
+\item Column $j$ has digit parity $s_j$, so $s_j$ is odd. Column $18-j$ has $s_{18-j}=s_j$ odd, and its digit $s_j+c_{18-j}$ is odd, so $c_{18-j}=0$. That is, column $17-j$ gives no carry: $s_{17-j}+c_{17-j}\le9$.
+\item Columns $j+1$ and $17-j$ have equal sums $s_{j+1}=s_{17-j}$, and both digits are odd, so $c_{j+1}\equiv c_{17-j}\pmod 2$, i.e. $c_{j+1}=c_{17-j}$. Then $s_{j+1}+c_{j+1}=s_{17-j}+c_{17-j}\le9$, so column $j+1$ gives no carry: $c_{j+2}=0$.
+\end{itemize}
+Hence $c_9=0$. But column $9$ is the middle column, with $s_9=2a_9$, so its digit $2a_9$ (mod $10$) is even, a contradiction. $\blacksquare$
+
+For $4k+1$ digits the same argument works with columns $j$ and $4k+2-j$ paired: it gives $c_j=0$ for all odd $j$ up to the middle column $2k+1$, which is odd, and the middle digit is even. For $3$ digits the claim fails: $209+902=1111$.

@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2986077_202223_mock_orzmc10_problems
+% Stable identity: aops-topic-2986077-q24
+Use $A=(0,0)$, $B=(2,0)$, $C=(0,6)$. Rotate the plane by $90^\circ$ clockwise about $C$; let $P\mapsto P'$ and $A\mapsto A'=(-6,6)$. Then $CP'=CP$ and $\angle PCP'=90^\circ$, so $PP'=\sqrt2\,CP$; and $P'A'=PA$.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(2,0),C=(0,6),Ap=(-6,6),P=(0.72,0.96),Pp=(-5.04,5.28);
+draw(A--B--C--cycle);draw(C--Ap--Pp--C,dashed);draw(B--Ap,dotted);draw(P--A);draw(P--B);draw(P--C);draw(P--Pp,dashed);
+dot(P);dot(Pp);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$A'$",Ap,NW);label("$P$",P,E);label("$P'$",Pp,S);
+\end{asy}
+
+Hence
+\[AP+BP+\sqrt2\,CP=BP+PP'+P'A'\ge BA'=\sqrt{8^2+6^2}=10.\]
+Equality needs $B,P,P',A'$ collinear in that order. Take $P=\left(\dfrac{18}{25},\dfrac{24}{25}\right)$, which is inside the triangle. Its image is $P'=\left(-\dfrac{126}{25},\dfrac{132}{25}\right)$, and both points lie on segment $BA'$, i.e. $\left(2-8t,\ 6t\right)$ with $t=\dfrac4{25}$ and $t=\dfrac{22}{25}$. So the minimum $10$ is attained. \textbf{(D)}

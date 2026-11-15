@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1936143_area_of_corrdiinate_triangle
+% Stable identity: aops-topic-1936143-q01
+Translate the triangle so that $A$ is at the origin. Then $B$ and $C$ correspond to the vectors
+\[
+\vec{AB}=(2134-1232,\ 4123-41224)=(902,\ -37101),\qquad \vec{AC}=(144092879,\ 482940856).
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+pair A=(0,4.5), B=(2.2,0), C=(10,8);
+draw(A--B--C--cycle,linewidth(1));
+draw(A--B,blue+linewidth(1),Arrow(8));
+draw(A--C,blue+linewidth(1),Arrow(8));
+dot(A);dot(B);dot(C);
+label("$A(1232,\,41224)$",A,W);
+label("$B(2134,\,4123)$",B,S);
+label("$C(144094111,\,482982080)$",C,N);
+label("(not to scale)",(10,0.3));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the shoelace formula, the area of a triangle with vertices $(0,0)$, $(p,q)$, $(r,s)$ is $\dfrac{1}{2}|ps-qr|$. Here
+\[
+ps=902\cdot482940856=435612652112,\qquad qr=-37101\cdot144092879=-5345989903779,
+\]
+so
+\[
+[ABC]=\dfrac{1}{2}\left(435612652112+5345989903779\right)=\dfrac{5781602555891}{2}=\boxed{2890801277945.5}.
+\]

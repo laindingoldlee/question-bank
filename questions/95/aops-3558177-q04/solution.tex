@@ -1,0 +1,11 @@
+Every central unit cube has six face-sharing neighbours. The complement is that all six are white, with probability $2^{-6}$. Hence the answer is $1-\dfrac{1}{64}=\dfrac{63}{64}\approx\boxed{0.984}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair u=(2,0),v=(.8,.7),w=(0,2);draw((0,0)--u--u+v--v--cycle);draw(w--u+w--u+v+w--v+w--cycle);draw((0,0)--w^^u--u+w^^v--v+w^^u+v--u+v+w);pair[] VV={(0,0),u,u+v,v,w,u+w,u+v+w,v+w};string[] nn={"A","B","C","D","E","F","G","H"};for(int i=0;i<8;++i)label("$"+nn[i]+"$",VV[i],i<4?(0,-1):(0,1));label("4 unit lengths",(1,0),(0,-1));
+\end{asy}
+
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair C=(0,0);pair[] V={(2,0),(-2,0),(0,2),(0,-2),(1.4,1.1),(-1.4,-1.1)};for(int i=0;i<6;++i){draw(C--V[i],dashed);dot(V[i],blue);label("$N_{"+string(i+1)+"}$",V[i],unit(V[i]));}dot(C,red);label("fixed central cube",C,(1,-1));label("six face-sharing neighbours",(0,-3));
+\end{asy}
+

@@ -1,0 +1,41 @@
+% Source: https://artofproblemsolving.com/community/c3h2009418_some_questions
+% Stable identity: aops-topic-2009418-q02
+Let the room be $[0,10]^3$ with $A=(0,0,0)$ on the floor and $B=(10,10,10)$ on the ceiling.
+
+\textbf{A path of length $10\sqrt5$.} Unfold the front wall and the right wall, which share a vertical edge, into one flat $20\times10$ rectangle. In this net $A$ and $B$ are opposite corners, so the straight segment between them has length $\sqrt{20^2+10^2}=10\sqrt5$. Folding back, this segment is a path on the two walls that crosses the shared edge at its midpoint $M$.
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+// left: oblique cube with the shortest path; right: unfolded two faces
+pair o=(0.45,0.32);
+real a=10;
+pair p000=(0,0), p100=(a,0), p010=a*o, p110=(a,0)+a*o;
+pair up=(0,a);
+draw(p000--p100--p100+up--p000+up--cycle,linewidth(0.8));
+draw(p100--p110--p110+up--p100+up,linewidth(0.8));
+draw(p000+up--p010+up--p110+up,linewidth(0.8));
+draw(p000--p010--p110,dashed+gray); draw(p010--p010+up,dashed+gray);
+pair Mid=p100+up/2;
+draw(p000--Mid--p110+up,red+linewidth(1));
+dot(p000);dot(p110+up);dot(Mid,red);
+label("$A$",p000,SW); label("$B$",p110+up,NE); label("$M$",Mid,E,red);
+// net
+pair s=(24,0);
+draw(s--s+(20,0)--s+(20,10)--s--cycle,white);
+draw(s--s+(10,0)--s+(10,10)--s+(0,10)--cycle,linewidth(0.8));
+draw(s+(10,0)--s+(20,0)--s+(20,10)--s+(10,10),linewidth(0.8));
+draw(s--s+(20,10),red+linewidth(1));
+dot(s);dot(s+(20,10));dot(s+(10,5),red);
+label("$A$",s,SW); label("$B$",s+(20,10),NE); label("$M$",s+(10,5),SE,red);
+label("$10$",s+(5,0),S); label("$10$",s+(15,0),S); label("$10$",s+(20,5),E);
+label("front",s+(5,7.5),fontsize(8pt)); label("right",s+(15,2.5),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{No path is shorter.} Each face of the cube contains exactly one of $A$ and $B$. The three faces at $A$ meet the three faces at $B$ along the six edges that touch neither $A$ nor $B$; any continuous path on the surface from $A$ to $B$ must pass through a point $P$ of one of these edges. A path through $P$ has length at least $AP+PB$, measured as straight-line distances. By symmetry take the edge from $(10,0,0)$ to $(10,0,10)$, so $P=(10,0,u)$ with $0\le u\le10$. Then
+\[AP+PB=\sqrt{100+u^2}+\sqrt{100+(10-u)^2}.\]
+This is the length of a path from $(0,0)$ to $(20,10)$ through $(10,u)$ in a plane, which is at least the straight distance $\sqrt{20^2+10^2}=10\sqrt5$.
+
+So the shortest path has length $\boxed{10\sqrt5}$ feet (about $22.4$ feet). The guess $10\sqrt2+10$ (a face diagonal followed by an edge) is longer, about $24.1$ feet, because it bends at a corner.

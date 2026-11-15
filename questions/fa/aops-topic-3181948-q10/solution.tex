@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3181948_2022_abmc_online_november_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3181948-q10
+Right triangle $ABC$ gives $AC^2=25+324=349$. Let $AD=x$. The cosine rule in $ADC$ gives $349=x^2+9-6x\cos120^\circ=x^2+3x+9$. Thus $(x+20)(x-17)=0$, and positivity gives $\boxed{17}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(5,0),C=(5,18);real L=sqrt(349),u=(289+349-9)/(2*L),v=sqrt(289-u*u);pair D=u*C/L+v*(-C.y,C.x)/L;draw(A--B--C--D--cycle);draw(A--C,dashed);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,W);
+\end{asy}

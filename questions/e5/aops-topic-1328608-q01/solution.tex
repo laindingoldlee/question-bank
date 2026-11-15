@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1328608_triangle_counterexample
+% Stable identity: aops-topic-1328608-q01
+The statement is false. Use Heron's formula in the form $16K^2=p(p-2a)(p-2b)(p-2c)$, where $p$ is the perimeter.
+
+For the triangles with sides $4,11,11$ and $7,7,12$ (both of perimeter $26$):
+\[
+26\cdot18\cdot4\cdot4=7488\qquad\text{and}\qquad26\cdot12\cdot12\cdot2=7488 .
+\]
+So both have area $\sqrt{468}=6\sqrt{13}$, but they are not congruent.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0),Q=(4,0); pair R=(2,sqrt(121-4)); draw(P--Q--R--cycle,linewidth(0.9));
+label("$4$",(P+Q)/2,S); label("$11$",(Q+R)/2,E); label("$11$",(P+R)/2,W);
+pair U=(9,0),V=(21,0),X=(15,sqrt(49-36)); draw(U--V--X--cycle,linewidth(0.9));
+label("$12$",(U+V)/2,S); label("$7$",(V+X)/2,NE); label("$7$",(U+X)/2,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+A search over all integer triangles of perimeter less than $26$ (for each perimeter, list the triangles and compare the values of $p(p-2a)(p-2b)(p-2c)$) finds no other coincidence, so the smallest counterexample is the pair $\boxed{(4,11,11)\text{ and }(7,7,12)}$, with perimeter $26$ and area $6\sqrt{13}$.

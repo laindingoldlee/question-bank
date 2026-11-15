@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1450331_a_special_number_
+% Stable identity: aops-topic-1450331-q01
+Write $A=p_1^{a_1}\cdots p_k^{a_k}$ with $a_i\ge1$. Then $d(A)=\prod(a_i+1)$ and $d(A^3)=\prod(3a_i+1)$, so the condition is
+\[
+\prod_{i=1}^{k}f(a_i)=17,\qquad f(a)=\dfrac{3a+1}{a+1}=3-\dfrac{2}{a+1}.
+\]
+For $a\ge1$ we have $2\le f(a)<3$, and $f$ increases with $a$ ($f(1)=2$, $f(2)=\dfrac{7}{3}$, $f(3)=\dfrac{5}{2}$, \dots).
+
+\textbf{Number of primes.} With $k\le2$ the product is less than $9$. With $k\ge5$ it is at least $32$. With $k=4$: if all exponents are $1$ the product is $16$, and otherwise it is at least $8\cdot\dfrac{7}{3}>17$. So $k=3$; let $a\le b\le c$.
+
+Since $f(a)^3\le17$, $f(a)\le17^{\dfrac{1}{3}}<2.6=f(4)$, so $a\le3$.
+\begin{itemize}
+\item $a=1$: $2(3b+1)(3c+1)=17(b+1)(c+1)$ simplifies to $bc-11b-11c=15$, that is,
+\[
+(b-11)(c-11)=136=2^3\cdot17 .
+\]
+Both factors negative is impossible ($|b-11|,|c-11|\le10$ would give a product at most $100$). So $(b-11,c-11)=(1,136),(2,68),(4,34),(8,17)$, giving $(b,c)=(12,147),(13,79),(15,45),(19,28)$.
+\item $a=2$: $7(3b+1)(3c+1)=51(b+1)(c+1)$ becomes $(6b-15)(6c-15)=357=3\cdot7\cdot17$. Each factor is an odd multiple of $3$, but $357=3\cdot119=21\cdot17=51\cdot7$ never splits into two such factors. No solution.
+\item $a=3$: $5(3b+1)(3c+1)=34(b+1)(c+1)$ becomes $(11b-19)(11c-19)=680$, with both factors at least $14$ (as $b,c\ge3$). The only splittings are $17\cdot40$ and $20\cdot34$, and none of $17,20,34,40$ is $\equiv-19\equiv3\pmod{11}$. No solution.
+\end{itemize}
+So $A=p^{1}q^{b}r^{c}$ with $(b,c)$ one of the four pairs, and $d(A)=2(b+1)(c+1)$:
+\[
+2\cdot13\cdot148=3848,\quad 2\cdot14\cdot80=2240,\quad 2\cdot16\cdot46=1472,\quad 2\cdot20\cdot29=1160 .
+\]
+The possible numbers of divisors are $\boxed{1160,\ 1472,\ 2240,\ 3848}$. For example, $A=2^{28}\cdot3^{19}\cdot5$ has $d(A)=29\cdot20\cdot2=1160$ and $d(A^3)=85\cdot58\cdot4=19720=17\cdot1160$.

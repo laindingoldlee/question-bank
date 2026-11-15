@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1485490_chinese_remainder_theorem
+% Stable identity: aops-topic-1485490-q01
+\textbf{(a)} Take $a=2$, $b=4$, $x=4$, $y=0$: then $4\equiv0\pmod2$ and $4\equiv0\pmod4$, but $4\not\equiv0\pmod8$. (In general the conclusion is only $x\equiv y\pmod{\operatorname{lcm}(a,b)}$.)
+
+\textbf{(b)} Let $d=x-y$. We know $a\mid d$, say $d=ak$. Then $b\mid ak$, and since $\gcd(a,b)=1$, $b\mid k$ (a prime power dividing $b$ shares no prime with $a$, so it must divide $k$). Writing $k=bm$ gives $d=abm$, so $x\equiv y\pmod{ab}$.
+
+\textbf{(c)} \emph{Uniqueness:} if $x$ and $x'$ both satisfy the two congruences, then $x\equiv x'\pmod a$ and $x\equiv x'\pmod b$, so by (b) $x\equiv x'\pmod{ab}$.
+
+\emph{Existence:} consider the $ab$ numbers $0,1,\dots,ab-1$ and, for each, its pair of remainders (mod $a$, mod $b$). By (b), two different numbers in this range (which are not congruent modulo $ab$) give different pairs. There are exactly $ab$ possible pairs, so every pair occurs; in particular the pair (remainder of $r$ mod $a$, remainder of $s$ mod $b$) does, giving the required $x$. $\blacksquare$
+
+For example, $x\equiv2\pmod3$, $x\equiv3\pmod5$ has the solutions $x\equiv8\pmod{15}$.

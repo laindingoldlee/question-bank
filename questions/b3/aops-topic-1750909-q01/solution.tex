@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1750909_problem_solution_controversy
+% Stable identity: aops-topic-1750909-q01
+\textbf{Upper bound.} Two distinct circles meet in at most $2$ points. A circle and an ellipse meet in at most $4$ points: two distinct conics meet in at most $4$ points (after a rotation the circle is $x^2+y^2+Dx+Ey+F=0$; eliminating one variable between the two equations leaves an equation of degree at most $4$). So there are at most
+\[
+2+4+4=10
+\]
+intersection points.
+
+\textbf{The bound is attained.} The question asks for the maximum over all possible drawings, so it is enough to exhibit one configuration. Take circles of radius $1$ centred at $(\pm0.6,0)$ and the ellipse $\dfrac{x^2}{2.2^2}+\dfrac{y^2}{0.5^2}=1$. The circles meet at $(0,\pm0.8)$; the long flat ellipse passes through each circle, crossing it twice above the $x$-axis and twice below, and none of these crossings is at $(0,\pm0.8)$ or common to both circles.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+path c1=circle((-0.6,0),1),c2=circle((0.6,0),1);
+path el=scale(2.2,0.5)*unitcircle;
+draw(c1,blue+linewidth(0.8));draw(c2,heavygreen+linewidth(0.8));draw(el,red+linewidth(0.8));
+pair[] P=intersectionpoints(c1,c2);
+pair[] Q=intersectionpoints(c1,el);
+pair[] R=intersectionpoints(c2,el);
+for(pair z:P) dot(z);for(pair z:Q) dot(z);for(pair z:R) dot(z);
+label("$C_1$",(-0.6,0)+dir(135),NW,blue);label("$C_2$",(0.6,0)+dir(45),NE,heavygreen);label("$\mathcal{E}$",(2.2,0),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The figure shows the $2+4+4$ distinct points, so the maximum is $\boxed{10}$. The poster's count of $6$ assumes that each pair of curves meets in only $2$ points, which is true for two circles but not for a circle and an ellipse.

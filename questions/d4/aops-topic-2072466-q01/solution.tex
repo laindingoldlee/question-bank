@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2072466_a_problem
+% Stable identity: aops-topic-2072466-q01
+Let $x$ be any number in the list and let the other $k-1$ numbers be $y_1,\dots,y_{k-1}$. Then $\sum y_i=s-x$ and $\sum y_i^2=m-x^2$. By the Cauchy--Schwarz inequality (or QM--AM),
+\[
+(s-x)^2=\Big(\sum y_i\Big)^2\le (k-1)\sum y_i^2=(k-1)(m-x^2),
+\]
+with equality exactly when all $y_i$ are equal. Rearranging,
+\[
+kx^2-2sx+s^2-(k-1)m\le0 .
+\]
+The roots of the quadratic on the left are $\dfrac{s\pm\sqrt{(k-1)(km-s^2)}}{k}$ (note $km\ge s^2$ by the same inequality applied to all $k$ numbers), so
+\[
+x\le x_{\max}=\dfrac{s+\sqrt{(k-1)(km-s^2)}}{k}.
+\]
+
+\emph{This value is attained.} Take $x=x_{\max}$ and $y_1=\dots=y_{k-1}=\dfrac{s-x_{\max}}{k-1}$; then the sum is $s$, and equality in Cauchy--Schwarz makes the sum of squares $m$. The $y_i$ are positive because $x_{\max}<s$: this is equivalent to $\sqrt{(k-1)(km-s^2)}<(k-1)s$, i.e.\ $km-s^2<(k-1)s^2$, i.e.\ $m<s^2$, which holds because for positive numbers $s^2=\big(\sum\big)^2$ exceeds the sum of squares when $k\ge2$.
+
+The greatest possible value is
+\[
+\boxed{\dfrac{s+\sqrt{(k-1)(km-s^2)}}{k}}.
+\]

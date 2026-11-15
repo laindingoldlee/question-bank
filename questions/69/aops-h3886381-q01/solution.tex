@@ -1,0 +1,20 @@
+An exact recursive count is convenient. Number the cells column by column, $j=4x+y$, with $0\le x<n$ and $0\le y<4$. Form the eight distinct rotations/reflections of the four-cell piece. For each translated placement inside the board, store its four occupied indices.
+
+For an occupied-cell set $S$, define $F(S)$ as the number of completions. Set $F(S)=1$ if the board is full. Otherwise let $j$ be the least unoccupied index, and use
+\[
+F(S)=\sum_{\substack{T\text{ a legal placement}\\j\in T,\ T\cap S=\varnothing}}F(S\cup T).
+\]
+This counts every tiling exactly once: its unique piece containing $j$ determines the first branch, and the argument repeats on the remaining cells. Evaluating this finite recurrence, storing repeated states, gives
+\[
+\begin{array}{c|rrrrrrrrrrr}
+n&0&1&2&3&4&5&6&7&8&9&10\\\hline
+F(\varnothing)&1&0&2&0&10&0&42&0&182&0&790
+\end{array}
+\]
+Thus the required exact count is $\boxed{790}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+filldraw((0,0)--(2,0)--(2,1)--(1,1)--(1,3)--(0,3)--cycle,lightblue,blue);draw((0,1)--(1,1));draw((0,2)--(1,2));draw((1,0)--(1,1));label("L-tetromino",(1,-.6));
+\end{asy}

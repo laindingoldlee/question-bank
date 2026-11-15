@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2561067_if_nc_r8008_find_all_possible_values_of_n_and_r
+% Stable identity: aops-topic-2561067-q01
+Since $\dbinom nr=\dbinom n{n-r}$, first find the solutions with $r\le\dfrac n2$. For fixed $r\ge1$, $\dbinom nr$ increases with $n$ (for $n\ge r$), so for each $r$ there is at most one $n$.
+\begin{itemize}
+\item $r=0$ gives $1$; $r=1$ gives $n=8008$.
+\item $r=2$: $\dbinom{127}{2}=8001$, $\dbinom{128}{2}=8128$: none.
+\item $r=3$: $\dbinom{37}{3}=7770$, $\dbinom{38}{3}=8436$: none.
+\item $r=4$: $\dbinom{22}{4}=7315$, $\dbinom{23}{4}=8855$: none.
+\item $r=5$: $\dbinom{17}{5}=6188$, $\dbinom{18}{5}=8568$: none.
+\item $r=6$: $\dbinom{16}{6}=8008$. \checkmark
+\item $r=7$: $\dbinom{15}{7}=6435$, $\dbinom{16}{7}=11440$: none.
+\item $r\ge8$: then $n\ge2r\ge16$ and $\dbinom nr\ge\dbinom{2r}{r}\ge\dbinom{16}{8}=12870>8008$: none.
+\end{itemize}
+Using the symmetry, the solutions are
+\[\boxed{(n,r)=(16,6),\ (16,10),\ (8008,1),\ (8008,8007)}.\]

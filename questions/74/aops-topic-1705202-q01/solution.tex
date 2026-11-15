@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1705202_geometry
+% Stable identity: aops-topic-1705202-q01
+The distance from $(x,y)$ to the $x$-axis is $|y|$ and to the $y$-axis is $|x|$. The condition is
+\[
+x^2y^2=c\quad\Longleftrightarrow\quad |xy|=\sqrt c\quad\Longleftrightarrow\quad xy=k\ \text{ or }\ xy=-k,\qquad k=\sqrt c>0 .
+\]
+So the locus is the union of the two rectangular hyperbolas $xy=\sqrt c$ (branches in the first and third quadrants) and $xy=-\sqrt c$ (branches in the second and fourth quadrants), both having the coordinate axes as asymptotes.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return 1/x;}
+draw((-3.2,0)--(3.4,0),Arrow);draw((0,-3.2)--(0,3.4),Arrow);
+draw(graph(f,0.36,3),blue+linewidth(0.9));draw(graph(f,-3,-0.36),blue+linewidth(0.9));
+real g(real x){return -1/x;}
+draw(graph(g,0.36,3),red+linewidth(0.9));draw(graph(g,-3,-0.36),red+linewidth(0.9));
+label("$x$",(3.4,0),E);label("$y$",(0,3.4),N);
+label("$xy=k$",(1.9,1.9),blue);label("$xy=-k$",(1.9,-1.9),red);
+label("$xy=k$",(-1.9,-1.9),blue);label("$xy=-k$",(-1.9,1.9),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The answer: $\boxed{\text{the pair of hyperbolas }xy=\pm\sqrt c}$ (four branches, one in each quadrant). The points on the axes are excluded automatically, since there $xy=0$.

@@ -1,0 +1,17 @@
+Subtract squared distances:
+\[
+PB^2-PA^2=1-2x,\qquad PD^2-PA^2=1-2y.
+\]
+Thus $x=\dfrac{1+PA^2-PB^2}{2}$ and $y=\dfrac{1+PA^2-PD^2}{2}$ are rational when the three lengths are rational.
+Expanding the four squared distances gives
+\[
+PC^2=(x-1)^2+(y-1)^2=PB^2+PD^2-PA^2.
+\]
+A rational value of this square does not imply its square root is rational. For example, $P=\left(\dfrac{5}{12},0\right)$ has $PA=\dfrac{5}{12}$, $PB=\dfrac{7}{12}$, $PD=\dfrac{13}{12}$, but $PC=\dfrac{\sqrt{193}}{12}$ is irrational, since $13^2<193<14^2$.
+This boundary example and the algebraic identities do not settle the existence of a point with all four rational distances in the square's interior.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1),P=(5./12,0);draw(A--B--C--D--cycle);draw(P--D,blue);draw(P--C,red);dot(P);label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$C$",C,(1,1));label("$D$",D,(-1,1));label("$P$",P,(0,-1));
+\end{asy}

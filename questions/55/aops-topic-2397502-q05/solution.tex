@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2397502_happy_new_year_2021
+% Stable identity: aops-topic-2397502-q05
+The line $3x+2y+4=0$ is $y=-\dfrac32x-2$, with slope $-\dfrac32$. A perpendicular line has slope $\dfrac23$ (the product of the slopes is $-1$). Through $(2,3)$:
+\[y-3=\dfrac23(x-2)\iff3y-9=2x-4\iff\boxed{2x-3y+5=0}.\]
+(Check: $2\cdot2-3\cdot3+5=0$, and the normal vectors $(3,2)$ and $(2,-3)$ are orthogonal.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-3.2,0)--(5.2,0),Arrow(6)); draw((0,-3.6)--(0,5.4),Arrow(6));
+label("$x$",(5.2,0),E); label("$y$",(0,5.4),N);
+real g(real x){return (-3*x-4)/2;}
+real h(real x){return (2*x+5)/3;}
+draw(graph(g,-3,0.8),blue+linewidth(0.8)); draw(graph(h,-3,5),red+linewidth(0.8));
+pair Q=(2,3); dot(Q); label("$(2,3)$",Q,SE);
+label("$3x+2y+4=0$",(0.8,g(0.8)),E,blue); label("$2x-3y+5=0$",(4.9,h(4.9)),SE,red);
+pair X=intersectionpoint(graph(g,-3,0.8),graph(h,-3,5));
+dot(X);
+path sq=X+0.3*unit((1,2/3))--X+0.3*unit((1,2/3))+0.3*unit((-2,3))--X+0.3*unit((-2,3));
+draw(sq);
+\end{asy}

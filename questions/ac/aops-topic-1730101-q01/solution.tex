@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1730101_parabola
+% Stable identity: aops-topic-1730101-q01
+\textbf{(a)} The distance from $(x,y)$ to the line $x+y=0$ is $\dfrac{|x+y|}{\sqrt2}$. Equating squared distances,
+\[
+(x-1)^2+(y-1)^2=\dfrac{(x+y)^2}{2}\iff2x^2-4x+2+2y^2-4y+2=x^2+2xy+y^2,
+\]
+so the parabola is $\boxed{x^2-2xy+y^2-4x-4y+4=0}$. Its axis is the line $y=x$ and its vertex is $\left(\dfrac{1}{2},\dfrac{1}{2}\right)$, halfway between $F$ and the foot $(0,0)$ of the perpendicular from $F$ to the directrix.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f=sqrt(2)/2;
+pair V=(0.5,0.5),u=dir(45),w=dir(135);
+pair g(real t){return V+(t^2/(4*f))*u+t*w;}
+draw((-3.2,0)--(4.2,0),Arrow(6));draw((0,-3.2)--(0,4.2),Arrow(6));
+label("$x$",(4.2,0),SE);label("$y$",(0,4.2),NW);
+draw((-2.8,2.8)--(2.8,-2.8),dashed+blue);
+draw(graph(g,-3.1,3.1),linewidth(0.9)+red);
+pair F=(1,1);dot(F);label("$F(1,1)$",F,SE);
+label("$x+y=0$",(2.3,-2.3),NE,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(b)} Write the directrix as $ux+vy+w=0$ with $u^2+v^2=1$ (divide any equation of the line by $\sqrt{u^2+v^2}$), and let the focus be $(p,q)$. The distance from $(x,y)$ to the line is $|ux+vy+w|$, so the parabola is
+\[
+(x-p)^2+(y-q)^2=(ux+vy+w)^2 .
+\]
+Its quadratic part is
+\[
+x^2+y^2-(ux+vy)^2=\left(1-u^2\right)x^2-2uv\,xy+\left(1-v^2\right)y^2=v^2x^2-2uv\,xy+u^2y^2=(vx-uy)^2 .
+\]
+So $A=v^2$, $B=-2uv$, $C=u^2$ (not all zero since $u^2+v^2=1$), and $B^2-4AC=4u^2v^2-4u^2v^2=0$. $\blacksquare$
+
+In (a), $A=1$, $B=-2$, $C=1$ and indeed $B^2=4AC$. The equation of a given parabola is unique only up to multiplying it by a nonzero constant; a tilted parabola has an $xy$ term, and rotating the axes by the angle of its axis removes that term and gives the familiar form $Y=kX^2$.

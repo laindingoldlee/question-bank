@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1486175_least_positive_integer_
+% Stable identity: aops-topic-1486175-q01
+Let $S(m)$ denote the digit sum. When $N$ is doubled digit by digit, a digit $d$ becomes $2d$, and a carry occurs exactly when $d\ge5$ (since $2\cdot9+1=19<20$, each carry is $1$, and a digit $d\ge5$ produces a carry whether or not it receives one). Each carry replaces $10$ in one place by $1$ in the next place, reducing the digit sum by $9$. Hence
+\[
+S(2N)=2S(N)-9c,
+\]
+where $c$ is the number of digits of $N$ that are at least $5$. Here $110=200-9c$, so $c=10$: $N$ has exactly ten digits $\ge5$ and all its other digits are $\le4$.
+
+\emph{Number of digits.} The ten large digits sum to at most $90$, so the small digits ($\le4$ each) sum to at least $10$, which needs at least $3$ of them. So $N$ has at least $13$ digits.
+
+\emph{Smallest $13$-digit $N$.} With exactly $13$ digits there are $3$ small digits with sum $s=100-B$, where $B\le90$ is the sum of the large digits; so $10\le s\le12$. The leading digit should be as small as possible.
+\begin{itemize}
+\item It cannot be $1$: the other two small digits would sum to at most $8$, giving $s\le9$.
+\item It can be $2$ only if the other two small digits are $4$ and $4$ (sum $\ge8$ with each $\le4$), and then $s=10$, so all ten large digits are $9$.
+\end{itemize}
+With leading digit $2$, the next digits should be as small as possible; the remaining digits are $4,4$ and ten $9$s, so the smallest arrangement is $2,4,4,9,\dots,9$:
+\[
+N=\boxed{2449999999999}.
+\]
+Check: $S(N)=2+4+4+90=100$ and $2N=4899999999998$, with $S(2N)=4+8+9\cdot10+8=110$.

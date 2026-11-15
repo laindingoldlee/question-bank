@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2934055_2016_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2934055-q21
+The triangle altitude is $3+4+5=12$ by Viviani's area decomposition. Label the sides so their distances are 3 to $AB$,4 to $BC$,5 to $CA$, and use $A=(0,0),B=(8\sqrt3,0),C=(4\sqrt3,12)$, with starting point $P=(\dfrac{13}{\sqrt3},3)$. For any order of visiting the sides, reflect the start successively across the first two side-lines. The length is at least the perpendicular distance from that reflected point to the third line. Direct reflection gives bound 15 for either order starting with $AB$,16 for orders starting with $BC$, and 17 for orders starting with $CA$ (equivalently altitude plus the distance to the first side). The lower bound 15 is attained: go to $X=(\dfrac{13}{\sqrt3},0)$, then $Y=(\dfrac{13}{\sqrt3},11)$ on $BC$, then $Z=(\dfrac{23}{2\sqrt3},\dfrac{23}{2})$ on $CA$. Their successive distances are 3,11,1, totaling $\boxed{15}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(8*sqrt(3),0),C=(4*sqrt(3),12),P=(13/sqrt(3),3),X=(13/sqrt(3),0),Y=(13/sqrt(3),11),Z=(23/(2*sqrt(3)),11.5);draw(A--B--C--cycle);draw(P--X--Y--Z,blue+linewidth(1.5));label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$P$",P,E);label("$X$",X,S);label("$Y$",Y,E);label("$Z$",Z,W);
+\end{asy}

@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1872386_five_cups_and_five_lids
+% Stable identity: aops-topic-1872386-q01
+Count the arrangements (permutations of $5$ lids) by the exact number $k$ of matching lids. Choose the $k$ matching cups in $\dbinom5k$ ways; the other $5-k$ lids must then all mismatch, which is a derangement of $5-k$ objects. The derangement numbers are $D_0=1$, $D_1=0$, $D_2=1$, $D_3=2$.
+\begin{itemize}
+\item exactly $2$ matches: $\dbinom52D_3=10\cdot2=20$;
+\item exactly $3$ matches: $\dbinom53D_2=10\cdot1=10$;
+\item exactly $4$ matches: $\dbinom54D_1=0$ (if four lids match, so does the fifth);
+\item exactly $5$ matches: $1$.
+\end{itemize}
+So there are $20+10+0+1=\boxed{31}$ ways, and the probability is $\dfrac{31}{5!}=\dfrac{31}{120}$.
+
+(Complementary check: $0$ matches in $D_5=44$ ways and exactly $1$ match in $5D_4=45$ ways, and $120-44-45=31$.) The poster's reasoning is correct; the question asks for the number of ways, $31$, so an answer key would reject $\dfrac{31}{120}$, which is the probability.

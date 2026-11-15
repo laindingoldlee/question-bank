@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1742456_heights_and_distances
+% Stable identity: aops-topic-1742456-q01
+Use coordinates with the shorter tower $AP$ on the $y$-axis ($A=(0,0)$, $P=(0,90)$) and the foot of the taller tower at $B=(100,0)$. The bridge is the segment $y=70$, $0\le x\le100$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(100,0),P=(0,90),Q=(100,150),X=(200/9,70);
+draw((-22,0)--(115,0),linewidth(0.6));
+draw(A--P,linewidth(2));draw(B--Q,linewidth(2));
+draw((0,70)--(100,70),brown+linewidth(1.2));
+draw(P--B,blue);
+dot(X);dot(P);
+label("$P$",P,W);label("$A$",A,S);label("$B$",B,S);label("$Q$",Q,E);label("$X$",X,dir(60));
+draw((-16,0)--(-16,90),Arrows(4));label("$90$",(-16,45),W);label("$150$",(100,75),E);label("$100$",(50,0),S);label("bridge",(70,70),N,brown);
+label("$20$",(0,80),W);label("$70$",(0,35),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The rope $PB$ is $y=90-\dfrac{9}{10}x$. It reaches height $70$ when $\dfrac{9}{10}x=20$, i.e.\ at $X=\left(\dfrac{200}{9},70\right)$. (By similar triangles: the rope drops $20$ of its total $90$, so $X$ is $\dfrac{20}{90}$ of the way from $P$ to $B$.) Hence
+\[
+PX=\dfrac{2}{9}\,PB=\dfrac{2}{9}\sqrt{100^2+90^2}=\dfrac{2}{9}\cdot10\sqrt{181}=\boxed{\dfrac{20\sqrt{181}}{9}}\approx29.9\text{ m}.
+\]
+The height of the taller tower is not needed.

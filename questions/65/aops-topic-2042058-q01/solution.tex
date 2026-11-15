@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2042058_a_geometric_problem
+% Stable identity: aops-topic-2042058-q01
+In triangle $ABD$, $\angle ADB=180^\circ-100^\circ-50^\circ=30^\circ$, so $\angle BDC=150^\circ$. Take $AB=CD=1$ and let $x=\angle ACB=\angle BCD$; then $\angle DBC=180^\circ-150^\circ-x=30^\circ-x$, so $0<x<30^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0);
+real ab=1;
+pair Dp=(2*sin(radians(50)),0);
+pair C=Dp+(1,0);
+pair B=ab*dir(100);
+draw(A--B--Dp,linewidth(0.9));
+draw(A--C,linewidth(0.9));
+draw(B--C,blue+linewidth(0.9));
+dot(A);dot(B);dot(Dp);dot(C);
+label("$A$",A,SW);label("$B$",B,N);label("$D$",Dp,S);label("$C$",C,SE);
+label("$100^\circ$",A,3*dir(50));
+label("$50^\circ$",B,4*dir(-70));
+label("$30^\circ$",Dp,5*dir(165));
+label("$150^\circ$",Dp,4*dir(60));
+label("$1$",(A+B)/2,W);label("$1$",(Dp+C)/2,S);
+label("$x$",C,7*dir(170),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the law of sines in triangle $ABD$,
+\[BD=\dfrac{AB\sin100^\circ}{\sin30^\circ}=2\sin80^\circ .\]
+By the law of sines in triangle $BDC$,
+\[\dfrac{BD}{\sin x}=\dfrac{DC}{\sin(30^\circ-x)}\quad\Longrightarrow\quad 2\sin80^\circ\sin(30^\circ-x)=\sin x .\]
+For $x=20^\circ$ the left side is $2\sin80^\circ\sin10^\circ=2\cos10^\circ\sin10^\circ=\sin20^\circ$, so the equation holds. It has no other solution in $(0^\circ,30^\circ)$: the ratio $\dfrac{\sin x}{\sin(30^\circ-x)}$ is strictly increasing there (the numerator increases and the positive denominator decreases), so it takes the value $2\sin80^\circ$ only once. Hence
+\[\angle ACB=\boxed{20^\circ}.\]

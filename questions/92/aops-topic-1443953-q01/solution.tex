@@ -1,0 +1,55 @@
+% Source: https://artofproblemsolving.com/community/c3h1443953_alexs_polygons
+% Stable identity: aops-topic-1443953-q01
+\textbf{At most $12$ sides.} Look at a vertex $V$ of the polygon. Its interior angle is less than $180^\circ$, so $V$ cannot lie inside a side of one of the triangles (that would need an angle of at least $180^\circ$ at $V$); hence every triangle that touches $V$ has a corner at $V$, and the angle of the polygon at $V$ is a sum of corner angles of triangles, each $30^\circ$, $60^\circ$ or $90^\circ$. So every angle of the polygon is a multiple of $30^\circ$ and less than $180^\circ$, hence at most $150^\circ$. Each exterior angle is then at least $30^\circ$, and since the exterior angles of a convex polygon add up to $360^\circ$, the polygon has at most $\dfrac{360}{30}=12$ sides.
+
+\textbf{$12$ sides are possible.} Start with a regular hexagon of side $1$. On each side build outwards a rectangle of size $1\times\sqrt3$, and fill each of the six gaps between neighbouring rectangles with an equilateral triangle of side $\sqrt3$ (the gap angle is $360^\circ-120^\circ-90^\circ-90^\circ=60^\circ$, between two edges of length $\sqrt3$). The outline is a convex $12$-gon with every angle $90^\circ+60^\circ=150^\circ$. Now cut:
+\begin{itemize}
+\item the hexagon into $6$ equilateral triangles from its centre, and each of these by an altitude into two $30^\circ$-$60^\circ$-$90^\circ$ triangles;
+\item each $1\times\sqrt3$ rectangle by a diagonal into two right triangles with legs $1$ and $\sqrt3$, which are $30^\circ$-$60^\circ$-$90^\circ$ triangles;
+\item each equilateral gap triangle by an altitude.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+draw((1.0000,0.0000)--(0.5000,0.8660)--(-0.5000,0.8660)--(-1.0000,0.0000)--(-0.5000,-0.8660)--(0.5000,-0.8660)--cycle);
+draw((1.0000,0.0000)--(2.5000,0.8660));draw((0.5000,0.8660)--(2.0000,1.7321));
+draw((1.0000,0.0000)--(2.0000,1.7321),red);
+draw((0.5000,0.8660)--(0.5000,2.5981));draw((-0.5000,0.8660)--(-0.5000,2.5981));
+draw((0.5000,0.8660)--(-0.5000,2.5981),red);
+draw((-0.5000,0.8660)--(-2.0000,1.7321));draw((-1.0000,0.0000)--(-2.5000,0.8660));
+draw((-0.5000,0.8660)--(-2.5000,0.8660),red);
+draw((-1.0000,0.0000)--(-2.5000,-0.8660));draw((-0.5000,-0.8660)--(-2.0000,-1.7321));
+draw((-1.0000,0.0000)--(-2.0000,-1.7321),red);
+draw((-0.5000,-0.8660)--(-0.5000,-2.5981));draw((0.5000,-0.8660)--(0.5000,-2.5981));
+draw((-0.5000,-0.8660)--(0.5000,-2.5981),red);
+draw((0.5000,-0.8660)--(2.0000,-1.7321));draw((1.0000,0.0000)--(2.5000,-0.8660));
+draw((0.5000,-0.8660)--(2.5000,-0.8660),red);
+draw((0,0)--(1.0000,0.0000));
+draw((0,0)--(0.7500,0.4330),red);
+draw((0,0)--(0.5000,0.8660));
+draw((0,0)--(0.0000,0.8660),red);
+draw((0,0)--(-0.5000,0.8660));
+draw((0,0)--(-0.7500,0.4330),red);
+draw((0,0)--(-1.0000,0.0000));
+draw((0,0)--(-0.7500,-0.4330),red);
+draw((0,0)--(-0.5000,-0.8660));
+draw((0,0)--(-0.0000,-0.8660),red);
+draw((0,0)--(0.5000,-0.8660));
+draw((0,0)--(0.7500,-0.4330),red);
+draw((0.5000,0.8660)--(1.2500,2.1651),red);
+draw((-0.5000,0.8660)--(-1.2500,2.1651),red);
+draw((-1.0000,0.0000)--(-2.5000,0.0000),red);
+draw((-0.5000,-0.8660)--(-1.2500,-2.1651),red);
+draw((0.5000,-0.8660)--(1.2500,-2.1651),red);
+draw((1.0000,0.0000)--(2.5000,0.0000),red);
+draw((2.5000,0.8660)--(2.0000,1.7321)--(0.5000,2.5981)--(-0.5000,2.5981)--(-2.0000,1.7321)--(-2.5000,0.8660)--(-2.5000,-0.8660)--(-2.0000,-1.7321)--(-0.5000,-2.5981)--(0.5000,-2.5981)--(2.0000,-1.7321)--(2.5000,-0.8660)--cycle,linewidth(1.2));
+draw(arc((2.0000,1.7321),0.35,degrees((0.5000,2.5981)-(2.0000,1.7321)),degrees((2.5000,0.8660)-(2.0000,1.7321))),blue);
+label("$150^\circ$",(2.0000,1.7321),dir(40.89),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(In the figure the red segments are the cuts inside the hexagon pieces, rectangles and gap triangles; all $36$ pieces are $30^\circ$-$60^\circ$-$90^\circ$ triangles, and one $150^\circ$ angle of the $12$-gon is marked.)
+
+So the largest possible number of sides is $\boxed{12}$.

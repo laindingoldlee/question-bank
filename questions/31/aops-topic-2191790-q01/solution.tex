@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2191790_random_thought_test
+% Stable identity: aops-topic-2191790-q01
+Let Bob have $m$ items and Billy $n$. The conditions are
+\[m\equiv1\pmod3,\qquad n\equiv2\pmod5,\qquad T=m+n\equiv3\pmod4,\qquad T<1000 .\]
+In particular $m\ge1$ and $n\ge2$. So $T$ must be one of $3,7,11,15,\dots,999$. Which of these actually occur?
+
+Fix such a $T$. We need $m$ with $m\equiv1\pmod3$ and $n=T-m\equiv2\pmod5$, that is, $m\equiv T-2\pmod5$, and with $1\le m\le T-2$. By the Chinese remainder theorem, the two congruences on $m$ are equivalent to a single congruence modulo $15$, which has a solution $m_0$ with $1\le m_0\le15$.
+\begin{itemize}
+\item If $T\ge17$, then $m=m_0\le15\le T-2$ works.
+\item $T=3$: $m=1$, $n=2$ works. $T=11$: $m=4$, $n=7$ works. $T=15$: $m=13$, $n=2$ works.
+\item $T=7$: the possible $m\le5$ with $m\equiv1\pmod3$ are $1$ and $4$, giving $n=6$ or $n=3$, and neither is $2$ more than a multiple of $5$. So $T=7$ is impossible.
+\end{itemize}
+Hence the possible totals are all numbers less than $1000$ that leave remainder $3$ on division by $4$, \emph{except} $7$:
+\[\boxed{3,\ 11,\ 15,\ 19,\ 23,\ \dots,\ 995,\ 999}\]
+($249$ totals in all). For each of them there are usually several possible splits $(m,n)$; for example $T=39$ allows $(m,n)=(7,32)$, $(22,17)$ and $(37,2)$.

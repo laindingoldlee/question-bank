@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1468321_maximum_and_minimum
+% Stable identity: aops-topic-1468321-q01
+The points $(x,y)$ form the circle with centre $(2,0)$ and radius $\sqrt3$. It does not meet the $y$-axis (at $x=0$ we would need $y^2=-1$), so $x\ne0$ on it. The ratio $\dfrac{y}{x}=m$ means that $(x,y)$ lies on the line $y=mx$ through the origin, so we want the steepest line through the origin that meets the circle.
+
+The line $mx-y=0$ meets the circle exactly when its distance from the centre is at most the radius:
+\[
+\dfrac{|2m|}{\sqrt{m^2+1}}\le\sqrt3\iff4m^2\le3m^2+3\iff m^2\le3 .
+\]
+So the largest value is $\boxed{\sqrt3}$, attained where the line $y=\sqrt3\,x$ touches the circle, at $T=\left(\dfrac{1}{2},\dfrac{\sqrt3}{2}\right)$. (Check: $\left(\dfrac{1}{2}-2\right)^2+\dfrac{3}{4}=\dfrac{9}{4}+\dfrac{3}{4}=3$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair Cc=(2,0),T=(0.5,sqrt(3)/2);
+xaxis(Label("$x$",position=EndPoint,align=E),-0.6,4.3,gray,Arrow);
+yaxis(Label("$y$",position=EndPoint,align=N),-2,2.3,gray,Arrow);
+draw(circle(Cc,sqrt(3)),linewidth(0.9));
+draw((-0.3,-0.3*sqrt(3))--(1.25,1.25*sqrt(3)),blue);
+draw(Cc--T,red+dashed);
+path sq=T+0.15*unit(Cc-T)--T+0.15*unit(Cc-T)+0.15*dir(60)--T+0.15*dir(60); draw(sq,red);
+dot(Cc);dot(T,blue);dot((0,0));
+label("$(2,0)$",Cc,S); label("$T$",T,NW,blue); label("$y=\sqrt3\,x$",(1.25,1.25*sqrt(3)),E,blue);
+label("$\sqrt3$",(Cc+T)/2,NE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

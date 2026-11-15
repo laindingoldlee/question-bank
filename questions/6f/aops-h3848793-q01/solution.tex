@@ -1,0 +1,15 @@
+The maximum is $M=\min(9,\lfloor\dfrac{N}{5}\rfloor)$: use five blue cells per majority row, then distribute extras. With $r$ majority rows, at most $9r+4(9-r)=36+5r$ cells can be blue, so the minimum is
+\[
+m=\max\left(0,\left\lceil\dfrac{N-36}{5}\right\rceil\right).
+\]
+Both bounds can be attained by filling rows up to their allowed capacities. Solving $M-m=7$ gives
+\[
+N\in\{35,36,40,41,45,46\}.
+\]
+Indeed for $N\le36$ we need $\lfloor\dfrac{N}{5}\rfloor=7$, giving $35,36$; for $37\le N\le44$, only $40,41$ give difference $7$; for $N\ge45$, $M=9$ and $m=2$ exactly at $45,46$. The sum is $\boxed{243}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int i=0;i<9;++i)for(int j=0;j<9;++j){if(i<7&&j<5)fill(box((j,-i),(j+1,1-i)),lightblue);draw(box((j,-i),(j+1,1-i)),gray);}label("$N=35$: seven majority rows",(4.5,-10));
+\end{asy}

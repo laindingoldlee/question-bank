@@ -1,0 +1,7 @@
+Take the squares as $[0,4]\times[0,4]$ and $[2,6]\times[2,6]$. Their overlap has area $2^2=4$, so their union has area $16+16-4=28$. The two boundary intersection points are $(2,4)$ and $(4,2)$, at distance $2\sqrt2$. The circle therefore has radius $\sqrt2$ and area $2\pi$. It lies inside the union, giving shaded area $\boxed{28-2\pi}$, choice D.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+filldraw(box((0,0),(4,4)),lightgray,black);filldraw(box((2,2),(6,6)),lightgray,black);filldraw(circle((3,3),sqrt(2)),white,black);draw((2,4)--(4,2),dashed);dot((2,4));dot((4,2));label("$P$",(2,4),(-1,1));label("$Q$",(4,2),(1,-1));label("$4$",(2,0),(0,-1));label("$4$",(6,4),(1,0));
+\end{asy}

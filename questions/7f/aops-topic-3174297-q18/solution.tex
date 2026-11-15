@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h3174297_2021_mcamc_individual_round___middlesex_county_academy_math_competition
+% Stable identity: aops-topic-3174297-q18
+Label the eight positions by three-bit binary strings. Two positions share a face exactly when their labels differ in one bit. Therefore we count permutations whose every nonempty prefix is connected in this cube graph. The following complete enumeration tests each of the $8!=40320$ permutations. At each stage, the new vertex must have an earlier neighbor; this is necessary and sufficient for maintaining a connected prefix. It yields $\boxed{8640}$ orders.\begin{verbatim}
+from itertools import permutations
+count=0
+for order in permutations(range(8)):
+    good=True
+    for k in range(1,8):
+        if not any((order[k]^order[j]) in (1,2,4)
+                   for j in range(k)):
+            good=False
+            break
+    count+=good
+assert count==8640
+\end{verbatim}
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] v={(0,0),(2,0),(0,2),(2,2),(.6,.6),(2.6,.6),(.6,2.6),(2.6,2.6)};int[][] edges={{0,1},{0,2},{1,3},{2,3},{4,5},{4,6},{5,7},{6,7},{0,4},{1,5},{2,6},{3,7}};for(int[] e:edges)draw(v[e[0]]--v[e[1]]);for(int j=0;j<8;++j)label("$"+string(j)+"$",v[j],S);
+\end{asy}

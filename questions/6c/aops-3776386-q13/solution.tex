@@ -1,0 +1,9 @@
+Here $AD=9+12=21$. Since $FE\parallel DC$, triangles $AFE,ADC$ are similar, giving $\dfrac{AE}{AC}=\dfrac{AF}{AD}=\dfrac{3}{7}$. Since $DE\parallel BC$, triangles $ADE,ABC$ give $\dfrac{AD}{AB}=\dfrac{AE}{AC}=\dfrac{3}{7}$. Thus $AB=49$ and $DB=49-21=\boxed{28}$ cm.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,7),(0,0),(7,0)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));pair D=(0,4),F=(0,40/7),E=(3,4);draw(D--E);draw(F--E);draw(D--p[2],dashed);label("$D$",D,(-1,0));label("$F$",F,(-1,0));label("$E$",E,(1,1));
+\end{asy}
+

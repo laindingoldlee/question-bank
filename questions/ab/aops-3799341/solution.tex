@@ -1,0 +1,9 @@
+Three noncollinear points have a circumcircle, with centre $O$ and radius $R>0$. Write its disk test as $F(X)=|X|^2-2O\cdot X+|O|^2-R^2$. At the three points, $F=0$. Any sufficiently small prescribed changes to these three values can be obtained by changing the two coordinates of $O$ and the constant term: the corresponding three-by-three affine interpolation matrix is invertible because the points are noncollinear. The resulting radius remains positive. Prescribe negative values for the chosen points and positive values for the others, obtaining exactly the desired subset. For four points $P_i$ in the plane, there are real coefficients $\lambda_i$, not all zero, with $\sum\lambda_i=0$ and $\sum\lambda_iP_i=0$. No three collinear ensures every coefficient is nonzero, and both signs occur. For every disk test $F$, $\sum\lambda_iF(P_i)=\sum\lambda_i|P_i|^2=K$, independent of the disk. If $K\ge0$, requiring the positive-coefficient points strictly inside and the negative-coefficient points strictly outside would make this sum negative, impossible. If $K<0$, reverse that assignment to make it positive, again impossible. Thus every three noncollinear points can be shattered by disks, but no such four-point set can; the largest number is $\boxed3$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(4,0),(1,3)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));draw(circle((2,1),sqrt(5)),dashed);label("circumcircle",(2,-1.7),(0,-1));
+\end{asy}
+ If three of four points are collinear, a disk containing the two outer points must contain the middle point by convexity, so this case also cannot be shattered.

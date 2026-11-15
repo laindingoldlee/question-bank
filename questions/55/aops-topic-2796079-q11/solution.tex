@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2796079_2014_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2796079-q11
+Let each square have side $2$ and centre $O$. The intersection is a regular octagon whose sides are at distance $1$ from $O$ (its inradius is $1$).
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real s=1;
+path sq1=(-1,-1)--(1,-1)--(1,1)--(-1,1)--cycle;
+path sq2=rotate(45)*sq1;
+fill(sq1,gray(0.9));fill(sq2,gray(0.9));
+real t=tan(pi/8);
+path oct=(1,t)--(t,1)--(-t,1)--(-1,t)--(-1,-t)--(-t,-1)--(t,-1)--(1,-t)--cycle;
+fill(oct,gray(0.6));draw(sq1);draw(sq2);
+dot((0,0));label("$O$",(0,0),S);draw((0,0)--(1,0),dashed);label("$1$",(0.5,0),S);
+\end{asy}
+
+A regular octagon with inradius $1$ consists of $8$ isosceles triangles of height $1$ and base $2\tan22.5^\circ=2(\sqrt2-1)$, so
+\[B=8\cdot\dfrac12\cdot2(\sqrt2-1)\cdot1=8(\sqrt2-1).\]
+The union has area $A=4+4-B=16-8\sqrt2=8\sqrt2(\sqrt2-1)$. Therefore $\dfrac AB=\boxed{\sqrt2}$.

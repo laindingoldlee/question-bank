@@ -1,0 +1,9 @@
+Take the line as the horizontal axis and denote the signed heights of the vertices by $h_1,h_2,h_3$. For an equilateral triangle of side $s$, projection onto any axis gives $s^2=\dfrac{2}{3}\big((h_1-h_2)^2+(h_2-h_3)^2+(h_3-h_1)^2\big)$. This follows directly by writing the vertex heights as $y_0,y_0+s\sin t,y_0+s\sin(t+60^\circ)$ and expanding. Since the squared heights sum to $39^2+35^2+13^2=2915$, maximising $s$ is equivalent to minimising $(h_1+h_2+h_3)^2$. The possible absolute sums, up to simultaneous sign reversal, are $87,61,17,9$, so the minimum is $9$. Thus $s^2=\dfrac{2}{3}(3\cdot2915-81)=5776$, giving $s\le76$. Equality is realised by $A=(0,39),B=(10\sqrt3,-35),C=(-32\sqrt3,-13)$: all three distances are $76$. The largest side is $\boxed{76}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,39),(10sqrt(3),-35),(-32sqrt(3),-13)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));draw((-65,0)--(25,0),dashed);label("$\ell$",(25,0),(1,0));
+\end{asy}
+

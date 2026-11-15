@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1447728_evaluate_large_factorials
+% Stable identity: aops-topic-1447728-q01
+\textbf{(a)} The box has $14000$ balls. The first person draws red with probability $\dfrac{7000}{14000}$, the second (given that) with probability $\dfrac{6999}{13999}$, and so on, the $7000$th with probability $\dfrac{1}{7001}$. Hence
+\[
+p=\dfrac{7000\cdot6999\cdots1}{14000\cdot13999\cdots7001}=\dfrac{7000!\cdot7000!}{14000!}=\dfrac{1}{\dbinom{14000}{7000}} .
+\]
+(Equivalently, all $\dbinom{14000}{7000}$ sets of positions for the red balls are equally likely, and exactly one of them is "the first $7000$".)
+
+\textbf{(b)} By the binomial theorem, $\dbinom{2n}{0}+\dbinom{2n}{1}+\cdots+\dbinom{2n}{2n}=2^{2n}=4^n$. All terms are positive, so the middle term $\dbinom{2n}{n}$ is at most $4^n$. It is also the largest of the $2n+1$ terms, so $(2n+1)\dbinom{2n}{n}\ge4^n$.
+
+\textbf{(c)} With $n=7000$, $\log_{10}4^{7000}=7000\log_{10}4\approx4214.42$ and $\log_{10}14001<\log_{10}10^{4.15}=4.15$. So by (b),
+\[
+10^{4214.42-4.15}<\dbinom{14000}{7000}\le10^{4214.42},
+\]
+that is $10^{4210.27}<\dbinom{14000}{7000}<10^{4215}$, and therefore $\boxed{10^{-4215}<p<10^{-4210}}$. No one evaluates $7000!$ digit by digit for such a question; bounds like these, or Stirling's formula $\dbinom{2n}{n}\approx\dfrac{4^n}{\sqrt{\pi n}}$, give the size. (Stirling gives $p\approx5.6\cdot10^{-4213}$.)

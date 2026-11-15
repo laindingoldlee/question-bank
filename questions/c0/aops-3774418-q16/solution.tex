@@ -1,0 +1,9 @@
+Rescale the segment to $[0,1]$. The ordered pair $(X,Y)$ is uniform in the unit square. The complement $|X-Y|\ge\dfrac{1}{4}$ consists of two right triangles with legs $\dfrac{3}{4}$, of total area $\dfrac{9}{16}$. Thus the probability is $1-\dfrac{9}{16}=\boxed{\dfrac{7}{16}}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(1,0),(1,1),(0,1)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--p[3]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));dot(p[3]);label("$D$",p[3],unit(p[3]-labelCentre));draw((0,.25)--(.75,1));draw((.25,0)--(1,.75));label("$X$",(.5,0),(0,-1));label("$Y$",(0,.5),(-1,0));
+\end{asy}
+

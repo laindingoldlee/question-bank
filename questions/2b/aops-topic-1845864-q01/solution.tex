@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h1845864_simple_counting_problem
+% Stable identity: aops-topic-1845864-q01
+We show that the answer is $\boxed{22}$.
+
+\textbf{Upper bound.} A segment meets a circle in at most $2$ points, so the rectangle (four sides) meets the circle in at most $8$ points and the triangle (three sides) meets it in at most $6$ points. A line meets the boundary of a convex polygon in at most $2$ points, or else runs along one of its sides; so each side of the triangle meets the rectangle in at most $2$ separate pieces (points or segments), and the triangle meets the rectangle in at most $6$ pieces.
+
+Draw the curves one at a time. Suppose a new closed curve touches the curves already drawn in $k$ separate pieces, $k\ge1$. Then the part of the new curve that is not on the old curves consists of at most $k$ arcs. Each arc lies inside one old region and joins two points of its boundary, so it cuts that region into at most two parts. Hence the number of regions grows by at most $k$ (and by $1$ if $k=0$). Starting from the circle ($2$ regions), the rectangle adds at most $8$ and the triangle at most $6+6=12$, so there are at most
+\[
+2+8+12=22
+\]
+regions.
+
+\textbf{Construction.} Take a circle of radius $1$, a square of side $1.64$ with the same centre (its corners are outside the circle and the midpoints of its sides inside), and an equilateral triangle with the same centre, inradius $0.75$ and one vertex pointing up. Each side of the square cuts the circle twice, each side of the triangle cuts the circle twice and the square twice, and no three curves pass through one point. The $20$ crossing points are marked.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real h=0.82, rin=0.75;
+path circ=circle((0,0),1);
+path sq=(-h,-h)--(h,-h)--(h,h)--(-h,h)--cycle;
+pair V1=2*rin*dir(90),V2=2*rin*dir(210),V3=2*rin*dir(330);
+path tri=V1--V2--V3--cycle;
+draw(circ,blue+linewidth(0.9));
+draw(sq,red+linewidth(0.9));
+draw(tri,heavygreen+linewidth(0.9));
+pair[] X=intersectionpoints(circ,sq);
+pair[] Y=intersectionpoints(circ,tri);
+pair[] Z=intersectionpoints(sq,tri);
+for(pair p:X) dot(p,black+3pt);
+for(pair p:Y) dot(p,black+3pt);
+for(pair p:Z) dot(p,black+3pt);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So there are $V=8+6+6=20$ crossing points, and the curves are cut into $E=14+14+12=40$ arcs (the circle and the square each carry $14$ crossings and the triangle $12$). The drawing is connected, so Euler's formula $V-E+F=2$ gives
+\[
+F=2+E-V=2+40-20=22
+\]
+regions, including the outer one. So the maximum is $22$.

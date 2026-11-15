@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2207985_help_number_theory_problem
+% Stable identity: aops-topic-2207985-q01
+Let $k=\lfloor\sqrt n\rfloor$, so $k^2\le n\le k^2+2k$, and write $n=k^2+m$ with $0\le m\le2k$. Since we want the greatest $n$, we may assume $k\ge3$ (then both divisors $k\pm2$ are positive).
+\begin{itemize}
+\item $n-4=m+(k-2)(k+2)$, so $k-2\mid n-4$ exactly when $k-2\mid m$.
+\item $n+4=m+8+(k-2)(k+2)$, so $k+2\mid n+4$ exactly when $k+2\mid m+8$.
+\end{itemize}
+The choice $m=2k-4=2(k-2)$ always works: $k-2\mid m$, and $m+8=2(k+2)$. So $n=k^2+2k-4$ is valid for every $k\ge3$.
+
+For $k=30$ this gives $n=900+60-4=956<1000$. Any larger $n<1000$ has $k=30$ and $m\in\{57,58,59,60\}$, or $k=31$ and $n\in[961,999]$. For $k=30$ we need $28\mid m$, and none of $57,\dots,60$ is a multiple of $28$. For $k=31$, $m=n-961\le38$ must be a multiple of $29$, so $m\in\{0,29\}$, but then $m+8\in\{8,37\}$ is not a multiple of $33$. Hence the answer is
+\[\boxed{956}.\]

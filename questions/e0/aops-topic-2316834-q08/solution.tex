@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2316834_200th_post_celebration
+% Stable identity: aops-topic-2316834-q08
+Let the border have width $w$ inches. Then the photo is a $(11-2w)$ by $(13-2w)$ rectangle.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real w=1.5;
+filldraw(box((0,0),(11,13)),rgb(0.93,0.93,0.93),linewidth(0.9));
+filldraw(box((w,w),(11-w,13-w)),rgb(0.85,0.92,1),linewidth(0.9));
+label("photo, area $80$",(5.5,8));
+draw((0,13.6)--(11,13.6),Arrows(5)); label("$11$",(5.5,13.6),N);
+draw((11.6,0)--(11.6,13),Arrows(5)); label("$13$",(11.6,6.5),E);
+draw((5.5,0)--(5.5,w),red,Arrows(4)); label("$w$",(5.5,w/2),E,red);
+draw((0,6.5)--(w,6.5),red,Arrows(4)); label("$w$",(w/2,6.5),N,red);
+label("$11-2w$",(5.5,w),N,blue+fontsize(9pt)); label("$13-2w$",(11-w,5),W,blue+fontsize(9pt));
+\end{asy}
+
+So
+\[(11-2w)(13-2w)=80\iff4w^2-48w+143=80\iff4w^2-48w+63=0,\]
+and $w=\dfrac{48\pm\sqrt{2304-1008}}{8}=\dfrac{48\pm36}{8}$, i.e. $w=1.5$ or $w=10.5$. The value $10.5$ is impossible, since then $11-2w<0$. So the border is $\boxed{1.5\text{ inches}}$ wide. (Check: the photo is $8\times10$, area $80$.)

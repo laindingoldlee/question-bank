@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2825575_sequence_of_circles
+% Stable identity: aops-topic-2825575-q01
+A regular hexagon inscribed in a circle of radius $r$ has side $r$, and its inradius is the height of an equilateral triangle of side $r$, namely $\dfrac{\sqrt3}2r$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real r=1;for(int k=0;k<3;++k){draw(circle((0,0),r));pair[] v;for(int j=0;j<6;++j) v.push(r*dir(60j));draw(v[0]--v[1]--v[2]--v[3]--v[4]--v[5]--cycle);r=r*sqrt(3)/2;}
+label("$C_0$",dir(45),NE);label("$H_0$",(1,0),E);
+\end{asy}
+
+So radii shrink by $\dfrac{\sqrt3}2$ and areas by $\dfrac34$. The sum is the geometric series
+\[\pi\left(1+\dfrac34+\left(\dfrac34\right)^2+\cdots\right)=\dfrac{\pi}{1-\dfrac34}=\boxed{4\pi}.\]

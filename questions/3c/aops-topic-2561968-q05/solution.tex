@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2561968_my_birthday__1_year_on_aops
+% Stable identity: aops-topic-2561968-q05
+Let $x=\dfrac{BD}{DC}$, $y=\dfrac{CE}{EA}$, $z=\dfrac{AF}{FB}$. By Ceva's theorem $xyz=1$.
+
+\emph{The ratios at $X$.} Put masses $1$ at $A$, $z$ at $B$ and $xz$ at $C$. Then $F$ is the balance point of $A$ and $B$ (since $\dfrac{AF}{FB}=\dfrac z1$), $D$ that of $B$ and $C$ (since $\dfrac{BD}{DC}=\dfrac{xz}{z}$), and $E$ that of $C$ and $A$ (since $\dfrac{CE}{EA}=\dfrac{1}{xz}=y$). So $X$ is the centre of mass, and
+\[\dfrac{AX}{XD}=\dfrac{z+xz}{1}=z+\dfrac1y,\qquad \dfrac{BX}{XE}=\dfrac{1+xz}{z}=\dfrac1z+x,\qquad \dfrac{CX}{XF}=\dfrac{1+z}{xz}=y+\dfrac1x,\]
+using $xz=\dfrac1y$. Hence, with $s=x+y+z$ and $q=xy+yz+zx$,
+\[\dfrac{AX}{XD}+\dfrac{BX}{XE}+\dfrac{CX}{XF}=s+\dfrac1x+\dfrac1y+\dfrac1z=s+\dfrac{q}{xyz}=s+q.\]
+
+\emph{Finding $q$.} Since $x,y,z\in\left[\dfrac15,5\right]$,
+\[(5-x)(5-y)(5-z)\ge0\quad\text{and}\quad\left(x-\dfrac15\right)\left(y-\dfrac15\right)\left(z-\dfrac15\right)\ge0.\]
+Expanding with $xyz=1$, these say $124-25s+5q\ge0$ and $124-25q+5s\ge0$ (after multiplying the second by $125$). Hence
+\[25s\le124+5q\le124+\dfrac{124+5s}{5},\qquad\text{so}\qquad 120s\le744,\quad s\le\dfrac{31}{5}.\]
+We are given $s=\dfrac{31}{5}$, so equality holds throughout; in particular $25s=124+5q$, which gives $q=\dfrac{155-124}{5}=\dfrac{31}{5}$. (Equality forces one ratio to be $5$, one to be $\dfrac15$ and the third to be $1$, which is realised by the sketch.)
+
+Therefore the requested sum is $s+q=\dfrac{62}{5}$, and $m+n=\boxed{67}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(6,0),A=(1.5,4);
+pair D=(5,0),Ep=(A+C)/2,F=A+(B-A)/6;
+pair X=(A+0.2*B+C)/2.2;
+draw(A--B--C--cycle,linewidth(0.8));
+draw(A--D);draw(B--Ep);draw(C--F);
+dot(D);dot(Ep);dot(F);dot(X);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$D$",D,S);label("$E$",Ep,NE);label("$F$",F,W);label("$X$",X,dir(262));
+\end{asy}
+
+The sketch shows the case $\dfrac{BD}{DC}=5$, $\dfrac{CE}{EA}=1$, $\dfrac{AF}{FB}=\dfrac15$.

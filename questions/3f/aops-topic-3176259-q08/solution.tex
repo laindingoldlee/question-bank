@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3176259_2018_mbmt_geometry_round__montgomery_blair_math_tournament
+% Stable identity: aops-topic-3176259-q08
+If the square side is $s$, $E$ is distance $s$ from each leg, and the condition gives distance $s$ from $BC$ as well. Since $E$ is interior, it is the incenter. Hence $BE$ bisects $\angle B=70^\circ$, so $\angle EBG=35^\circ$. Triangle $BEG$ is right at $G$, giving $\boxed{\angle BEG=55^\circ}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real b=tan(20*pi/180),c=1,s=b*c/(b+c+sqrt(b*b+c*c));pair A=(0,0),Bp=(b,0),C=(0,c),D=(s,0),Ep=(s,s),F=(0,s),G=Bp+dot(Ep-Bp,C-Bp)/dot(C-Bp,C-Bp)*(C-Bp);draw(A--Bp--C--cycle);draw(A--D--Ep--F--cycle);draw(Bp--Ep--G,blue);label("$A$",A,SW);label("$B$",Bp,SE);label("$C$",C,N);label("$D$",D,S);label("$E$",Ep,W);label("$F$",F,W);label("$G$",G,E);
+\end{asy}

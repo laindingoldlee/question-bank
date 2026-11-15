@@ -1,0 +1,7 @@
+Encode $+$ as $1$ and $-$ as $-1$. The rule is multiplication. From bottom signs $a,b,c,d$, the next row is $ab,bc,cd$, then $ac,bd$, then $abcd$. The top is positive exactly when the bottom has an even number of minus signs: $\binom40+\binom42+\binom44=1+6+1=\boxed8$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] s={{"a","b","c","d"},{"ab","bc","cd"},{"ac","bd"},{"abcd"}};for(int r=0;r<4;++r)for(int c=0;c<4-r;++c){pair P=(c+r/2.0,r);draw(box(P,P+(.9,.8)));label("$"+s[r][c]+"$",P+(.45,.4));}
+\end{asy}

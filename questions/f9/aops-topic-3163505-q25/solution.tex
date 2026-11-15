@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3163505_2018_fall_lmt_individual_round__lexington_mathematical_tournament
+% Stable identity: aops-topic-3163505-q25
+Put $a=BC$ and let half of angle $A$ be $\theta$. Choose $A=(0,0)$, $B=(60\cos\theta,60\sin\theta)$, $C=(120\cos\theta,-120\sin\theta)$. The incenter formula gives $I=(\dfrac{14400\cos\theta}{a+180},0)$. Write $D=B+t(C-B)$. The perpendicular line has constant first coordinate equal to that of $I$, so $60(1+t)=\dfrac{14400}{a+180}$, giving $t=\dfrac{60-a}{a+180}<0$ by the triangle inequality. Hence $CD=(1-t)a=\dfrac{2a(a+60)}{a+180}=100$. This reduces to $a^2+10a-9000=(a-90)(a+100)=0$. Therefore $BC=\boxed{90}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real ct=sqrt(27/32);real st=sqrt(5/32);pair A=(0,0),Bp=(60*ct,60*st),C=(120*ct,-120*st),I=(14400*ct/270,0),D=Bp-(C-Bp)/9;draw(A--Bp--C--cycle);draw(A--I,dashed);draw(I--D,blue);draw(D--Bp,dashed);label("$A$",A,W);label("$B$",Bp,N);label("$C$",C,SE);label("$I$",I,S);label("$D$",D,N);
+\end{asy}

@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2662053_geometry_problem
+% Stable identity: aops-topic-2662053-q01
+Let the sides be $a\le b\le c$ with $a+b+c=20$. The triangle inequality reduces to $a+b>c$, i.e. $20-c>c$, so $c\le9$; and $3c\ge a+b+c=20$ gives $c\ge7$.
+\begin{itemize}
+\item $c=9$: $a+b=11$ with $a\le b\le9$: $(2,9),(3,8),(4,7),(5,6)$, i.e. $4$ triangles.
+\item $c=8$: $a+b=12$ with $a\le b\le8$: $(4,8),(5,7),(6,6)$, i.e. $3$ triangles.
+\item $c=7$: $a+b=13$ with $a\le b\le7$: $(6,7)$, i.e. $1$ triangle.
+\end{itemize}
+In total there are $\boxed{8}$ triangles, drawn below.
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+int[][] T={{2,9,9},{3,8,9},{4,7,9},{5,6,9},{4,8,8},{5,7,8},{6,6,8},{6,7,7}};
+for(int k=0;k<8;++k){
+ real a=T[k][0],bb=T[k][1],c=T[k][2];
+ pair o=((k%4)*11,-(k#4)*9);
+ real x=(c^2+bb^2-a^2)/(2c);pair P=o,Q=o+(c,0),R=o+(x,sqrt(bb^2-x^2));
+ draw(P--Q--R--cycle,linewidth(0.7));
+ label("$"+string(T[k][2])+"$",(P+Q)/2,S,fontsize(7pt));
+ label("$"+string(T[k][1])+"$",(P+R)/2,unit((P.y-R.y,R.x-P.x)),fontsize(7pt));
+ label("$"+string(T[k][0])+"$",(Q+R)/2,unit((R.y-Q.y,Q.x-R.x)),fontsize(7pt));}
+\end{asy}

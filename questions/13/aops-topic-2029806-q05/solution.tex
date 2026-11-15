@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2029806_happy_pi_day_maybe_a_competition
+% Stable identity: aops-topic-2029806-q05
+The triple \((x,y,z)\) is uniform in the cube \([0,6]^3\) of volume \(216\). The condition \(x^2+y^2+z^2\le20\) describes the part of the ball of radius \(\sqrt{20}\) centred at the origin lying in the first octant. Since \(\sqrt{20}<6\), this whole eighth of the ball lies inside the cube (the figure shows a cross-section).
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+fill((0,0)--arc((0,0),sqrt(20)/1.5,0,90)--cycle,paleblue);
+draw((0,0)--(4,0)--(4,4)--(0,4)--cycle,linewidth(0.9));
+draw(arc((0,0),sqrt(20)/1.5,0,90),blue+linewidth(0.9));
+label("$6$",(2,0),S); label("$6$",(0,2),W); label("$\sqrt{20}$",(sqrt(20)/1.5)*dir(45),NE,blue);
+label("$0$",(0,0),SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Its volume is
+\[
+\dfrac{1}{8}\cdot\dfrac{4}{3}\pi\left(\sqrt{20}\right)^3=\dfrac{\pi}{6}\cdot20\cdot2\sqrt5=\dfrac{20\sqrt5\,\pi}{3}.
+\]
+So the probability is
+\[
+\dfrac{20\sqrt5\,\pi}{3\cdot216}=\dfrac{5\sqrt5\,\pi}{162},
+\]
+giving \(a=5\), \(b=5\), \(c=162\) and \(a+b+c=\boxed{172}\).

@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1770185_spheres_form_a_square_pyramid
+% Stable identity: aops-topic-1770185-q01
+The centres of the base spheres are at height $r$ and form a square of side $2r$ (neighbouring spheres are tangent). Its centre $O$ is at distance $\dfrac{2r\sqrt2}{2}=r\sqrt2$ from each corner. The centre of the top sphere lies above $O$ at distance $2r$ from each base centre. The figure shows the vertical cross-section through two opposite base spheres (left) and the triangle formed by their centres and the top centre (right).
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+real r=1, d=r*sqrt(2);
+pair L=(-d,r),R=(d,r),T=(0,r+d),O=(0,r);
+draw((-2.7,0)--(3.0,0),linewidth(0.8));
+draw(circle(L,r),linewidth(0.9));draw(circle(R,r),linewidth(0.9));draw(circle(T,r),linewidth(0.9));
+draw(L--T--R,blue+dashed);draw(L--R,dashed);draw(O--T,red);
+dot(L);dot(R);dot(T);dot(O);
+draw((2.8,0)--(2.8,r+d+r),Arrows(TeXHead));label("$h$",(2.8,(r+d+r)/2),E);
+draw((0,r+d+r)--(2.9,r+d+r),dotted);
+pair sh=(6.6,0.2); real g=1.7;
+pair l=sh+g*(-d,0),rr=sh+g*(d,0),t=sh+g*(0,d),o=sh;
+draw(l--t--rr,blue+dashed);draw(l--rr,dashed);draw(o--t,red);
+draw(o+(0.2,0)--o+(0.2,0.2)--o+(0,0.2),red);
+dot(l);dot(rr);dot(t);dot(o);
+label("$2r$",(l+t)/2,NW,blue);label("$2r$",(rr+t)/2,NE,blue);
+label("$r\sqrt2$",(l+o)/2,S);label("$r\sqrt2$",(o+rr)/2,S);
+label("$r\sqrt2$",o+0.35*(t-o),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the Pythagorean theorem, the top centre is $\sqrt{(2r)^2-(r\sqrt2)^2}=r\sqrt2$ above the plane of the base centres. So the highest point of the top sphere is at height
+\[
+h=r+r\sqrt2+r=\boxed{(2+\sqrt2)\,r}.
+\]
+(The pyramid formed by the five centres has height $r\sqrt2$.)

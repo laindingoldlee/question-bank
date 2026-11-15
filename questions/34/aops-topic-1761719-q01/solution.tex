@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1761719_formula_for_how_many_points_on_coordinate_line
+% Stable identity: aops-topic-1761719-q01
+(a) Let $a=x_2-x_1$, $b=y_2-y_1$ (not both $0$) and $g=\gcd(|a|,|b|)\ge1$. The points of the segment are $X(t)=(x_1+ta,\ y_1+tb)$ for $0\le t\le1$, and $X(t)$ is a lattice point exactly when $ta$ and $tb$ are both integers.
+
+If $t=\dfrac {k}{g}$ with $k$ an integer, then $ta=k\cdot\dfrac {a}{g}$ and $tb=k\cdot\dfrac {b}{g}$ are integers. Conversely, by B\'ezout there are integers $\alpha,\beta$ with $\alpha a+\beta b=g$; if $ta$ and $tb$ are integers, then $tg=\alpha(ta)+\beta(tb)$ is an integer, so $t=\dfrac {k}{g}$ for some integer $k$. Hence the lattice points correspond to $t=0,\dfrac{1}{g},\dfrac{2}{g},\dots,1$, and there are exactly $g+1$ of them.
+
+(b) Here $a=12$, $b=9$ and $g=\gcd(12,9)=3$, so there are $\boxed{4}$ lattice points: $(3,-2)$, $(7,1)$, $(11,4)$, $(15,7)$, spaced by $\left(\dfrac{12}{3},\dfrac{9}{3}\right)=(4,3)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+for(int i=3;i<=15;++i) draw((i,-2)--(i,7),gray(0.8)+linewidth(0.3));
+for(int j=-2;j<=7;++j) draw((3,j)--(15,j),gray(0.8)+linewidth(0.3));
+pair A=(3,-2),B=(15,7);
+draw(A--B,linewidth(0.9));
+for(int k=0;k<=3;++k) dot(A+k*(4,3),red);
+label("$A(3,-2)$",A,SE);label("$B(15,7)$",B,NW);
+label("$(7,1)$",A+(4,3),SE,fontsize(8pt));label("$(11,4)$",A+(8,6),SE,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

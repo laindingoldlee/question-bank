@@ -1,0 +1,7 @@
+An $n$-gon has $\dfrac{n(n-3)}{2}$ diagonals. Setting this equal to $44$ gives $n^2-3n-88=(n-11)(n+8)=0$. The valid value is $\boxed{11}$ sides.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p;for(int i=0;i<11;++i)p.push(dir(90+360*i/11.0));for(int i=0;i<11;++i)draw(p[i]--p[(i+1)%11]);for(int j=2;j<=9;++j)draw(p[0]--p[j],blue);label("8 diagonals from one vertex",(0,-1.5));
+\end{asy}

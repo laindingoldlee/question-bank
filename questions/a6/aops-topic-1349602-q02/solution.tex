@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1349602_winter_math_competition
+% Stable identity: aops-topic-1349602-q02
+The diagonal of the bottom face from $A$ has length $\sqrt{3^2+3^2}=3\sqrt2$. It is perpendicular to the vertical edge of length $3$ that leads up to $B$, so
+\[
+AB=\sqrt{\left(3\sqrt2\right)^2+3^2}=\sqrt{27}=\boxed{3\sqrt3}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair pr(triple p){return (p.x+0.7*p.y, p.z+0.42*p.y);}
+triple[] V={(0,0,0),(3,0,0),(3,3,0),(0,3,0),(0,0,3),(3,0,3),(3,3,3),(0,3,3)};
+pair v(int i){return pr(V[i]);}
+draw(v(0)--v(1)--v(2),linewidth(0.9)); draw(v(4)--v(5)--v(6)--v(7)--cycle,linewidth(0.9));
+draw(v(0)--v(4),linewidth(0.9)); draw(v(1)--v(5),linewidth(0.9)); draw(v(2)--v(6),linewidth(0.9));
+draw(v(0)--v(3),gray+dashed); draw(v(3)--v(2),gray+dashed); draw(v(3)--v(7),gray+dashed);
+draw(v(0)--v(2),blue+dashed); draw(v(0)--v(6),red);
+dot(v(0));dot(v(6));
+label("$A$",v(0),SW); label("$B$",v(6),NE);
+label("$3$",(v(0)+v(1))/2,S); label("$3$",v(1)+0.62*(v(5)-v(1)),E); label("$3$",(v(1)+v(2))/2,SE);
+pair dg=v(2)-v(0); label(rotate(degrees(atan2(dg.y,dg.x)))*Label("$3\sqrt{2}$"),v(0)+0.47*dg+0.3*unit(rotate(90)*dg),blue+fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In general the space diagonal of an $a\times b\times c$ box is $\sqrt{a^2+b^2+c^2}$.

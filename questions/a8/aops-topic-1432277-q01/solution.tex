@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1432277_page_290_intro_to_geo
+% Stable identity: aops-topic-1432277-q01
+Let the radius of the equator be $R$ inches. The snug rope has length $2\pi R$. The new rope is a concentric circle of radius $R+1$, with length $2\pi(R+1)$ (figure not to scale).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real R=2.2,h=0.45;
+filldraw(circle((0,0),R),paleblue,blue);
+draw(circle((0,0),R+h),red+linewidth(0.9));
+draw((0,0)--R*dir(30),blue); draw(R*dir(30)--(R+h)*dir(30),red);
+dot((0,0));
+label("Earth",(0,-0.7),blue); label("$R$",0.5*R*dir(30),NW,blue);
+label("$1$ in",(R+h)*dir(30),dir(30),red);
+label("rope",(R+h)*dir(135),NW,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The extra rope needed is
+\[
+2\pi(R+1)-2\pi R=\boxed{2\pi\ \text{inches}}\approx6.28\ \text{inches},
+\]
+whatever the value of $R$. The Martian is right: a little over six inches of rope is enough. (The size of the Earth does not matter at all: increasing the radius by $1$ always increases the circumference by $2\pi$.)

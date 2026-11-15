@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2331620_500th_post_problems
+% Stable identity: aops-topic-2331620-q01
+An equilateral triangle with side $s$ has height $\dfrac{\sqrt3}{2}s$ (Pythagorean theorem in half of it), so its area is $\dfrac{\sqrt3}{4}s^2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(2,0), C=(1,sqrt(3));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--(1,0),dashed); draw((1,0)+(0.08,0)--(1,0)+(0.08,0.08)--(1,0)+(0,0.08));
+label("$s$",(A+B)/2+(0.45,0),S); label("$s$",(A+C)/2,NW); label("$s$",(B+C)/2,NE);
+label("$\dfrac{\sqrt3}{2}s$",(1,0.75),E,fontsize(8pt));
+\end{asy}
+
+From $\dfrac{\sqrt3}{4}s^2=5^7$,
+\[s^2=\dfrac{4\cdot5^7}{\sqrt3},\qquad s=\dfrac{2\cdot5^3\sqrt5}{\sqrt[4]{3}}=\boxed{\dfrac{250\sqrt5}{\sqrt[4]3}=\dfrac{250}{3}\sqrt[4]{675}}\approx424.8 .\]
+(For the last form, $\dfrac{\sqrt5}{\sqrt[4]3}=\sqrt[4]{\dfrac{25}{3}}=\dfrac{\sqrt[4]{25\cdot27}}{3}$.)

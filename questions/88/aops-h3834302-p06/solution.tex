@@ -1,0 +1,11 @@
+The external homothety centered at $P$ has ratio $k=\dfrac{PB}{PA}=\dfrac{108}{75}$. Let the small circle have center vector $u$ and radius $r$ relative to $P$; the large has center $ku$ and radius $kr$. Subtracting the two circle equations at common point $X$ gives $PX^2=k(|u|^2-r^2)=kPA^2=8100$. Thus $PX=90$. Power of a point gives $PW\cdot PX=75^2$, so $PW=\dfrac{125}{2}$. Consequently $WX=90-\dfrac{125}{2}=\dfrac{55}{2}$ and $\boxed{57}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+real k=108/75,r=60,c=sqrt(75^2+r^2);pair P=(0,0),O=(c,0),U=k*O;real xx=(8100+75^2)/(2*c),yy=sqrt(8100-xx^2);pair X=(xx,yy),W=X*(6250/9000);draw(circle(O,r));draw(circle(U,k*r));draw(P--X);label("$P$",P,(-1,0));label("$X$",X,(0,1));label("$W$",W,(-1,1));label("$O_1$",O);label("$O_2$",U);
+
+pair A=(75^2/c,75*r/c),B=k*A,Y=(X.x,-X.y);
+draw(P--B,dashed);draw(P--(B.x,-B.y),dashed);dot(A);dot(B);dot(Y);dot(P);
+label("$A$",A,(-1,1));label("$B$",B,(1,1));label("$Y$",Y,(0,-1));
+\end{asy}

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2950352_nice_problem
+% Stable identity: aops-topic-2950352-q01
+Here $r=\sqrt{x^2+y^2}$, $x=r\cos\theta$ and $y=r\sin\theta$. Since the point is not on the non-positive $x$-axis, $\cos\theta\ne-1$, so $x+r>0$. By the half-angle formula,
+\[\tan\dfrac\theta2=\dfrac{\sin\theta}{1+\cos\theta}=\dfrac{\dfrac yr}{1+\dfrac xr}=\dfrac{y}{x+r}.\]
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real r=2;pair O=(0,0),P=r*dir(60),K=(-r,0);draw(circle(O,r),gray);draw((-2.6,0)--(2.6,0),Arrow);draw(O--P);draw(K--P,dashed);
+draw((P.x,0)--P,dotted);label("$O$",O,S);label("$K(-r,0)$",K,SW);label("$P(x,y)$",P,NE);draw(arc(O,0.4,0,60));draw(arc(K,0.8,0,30));label("$\theta$",O+0.55*dir(30));label("$\theta/2$",K+(1.25,0.3));
+\end{asy}
+
+(Geometrically, with $K=(-r,0)$, the inscribed angle $\angle OKP$ is $\dfrac\theta2$ and $\tan\angle OKP=\dfrac{y}{x+r}$.) Since $\dfrac\theta2\in\left(-\dfrac\pi2,\dfrac\pi2\right)$, the range of $\arctan$, we get $\dfrac\theta2=\arctan\dfrac{y}{x+r}$. $\blacksquare$

@@ -1,0 +1,7 @@
+Take $B=(0,0)$, $D=(d,0)$, $E=(u,0)$, $A=(u,12)$. Since the diagonals bisect one another, $C=(d-u,-12)$. The right angle at $A$ gives $u(d-u)=144$. The distance $CE$ gives $(d-2u)^2+144=193$, hence $(d-2u)^2=49$. Therefore $d^2=(d-2u)^2+4u(d-u)=49+576=625$, so $BD=25$. The diagonal divides the rectangle into two triangles of height $12$, giving area $25\cdot12=\boxed{300}$. The two possible values $u=9,16$ correspond to reflection and give the same area.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair B=(0,0),D=(25,0),A=(9,12),C=(16,-12),E=(9,0);draw(A--B--C--D--cycle);draw(B--D,dashed);draw(A--E,blue);draw(C--E,red);label("A",A,N);label("B",B,W);label("C",C,S);label("D",D,(1,0));label("E",E,NE);label("12",(9,6),W);label("$\sqrt{193}$",(C+E)/2,(1,0));
+\end{asy}

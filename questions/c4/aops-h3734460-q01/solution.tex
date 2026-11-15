@@ -1,0 +1,7 @@
+The polynomial $L=5f-4g$ has degree at most one because its quadratic coefficients cancel. At either intersection, $f=g$ and $L=f$, so its graph is the line through both intersections. Thus $5f(0)-4g(0)=27$. The midpoint condition gives $f(0)+g(0)=18$. Solving yields $f(0)=11,g(0)=7$, and $\boxed{f(0)g(0)=77}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+size(270,180,IgnoreAspect);path f,g;for(int i=0;i<=80;++i){real x=-1.1+2.2i/80;f=f--(x,20x*x+11);g=g--(x,25x*x+7);}draw(f,blue);draw(g,red);draw((-1.2,27)--(1.2,27),dashed);draw((0,0)--(0,40),gray);dot((0,11));dot((0,7));label("$11$",(0,11),NW);label("$7$",(0,7),SE);label("$27$",(1.2,27),E);label("$f$",(-1.1,35.2),NW);label("$g$",(1.1,37.25),NE);
+\end{asy}

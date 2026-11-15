@@ -1,0 +1,9 @@
+For fixed ordered distinct $A,B$, there are $(|\Delta x|+1)(|\Delta y|+1)-2$ favourable cells. For a single coordinate, the sum of $|i-j|+1$ over all nine ordered pairs $i,j\in\{1,2,3\}$ is $3+8+6=17$. Hence the sum of inclusive rectangle sizes over all ordered cell pairs is $17^2=289$. Remove the nine equal pairs, then subtract the two corners for the 72 unequal pairs: $289-9-144=136$. The total number of ordered distinct triples is $9\cdot8\cdot7=504$. The probability is $\boxed{\dfrac{17}{63}}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+for(int i=0;i<=3;++i){draw((i,0)--(i,3));draw((0,i)--(3,i));}fill((0,0)--(3,0)--(3,2)--(0,2)--cycle,lightgray+opacity(.3));label("$A$",(.5,.5));label("$B$",(2.5,1.5));label("$C$",(1.5,.5));
+\end{asy}
+

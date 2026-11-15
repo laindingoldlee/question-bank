@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2241514_nearly_pell_equation
+% Stable identity: aops-topic-2241514-q01
+First, $d$ is not the square of a rational number either: if $d=\left(\dfrac {p}{q}\right)^2$ in lowest terms, then $dq^2=p^2$, and every prime factor of $q$ would divide $p$, so $q=1$ and $d=p^2$ would be a perfect square.
+
+The pair $(-1,0)$ is a solution. Let $(x,y)$ be any other rational solution, so $x\ne-1$, and put $s=\dfrac{y}{x+1}$, a rational number (the slope of the line through $(-1,0)$ and $(x,y)$). Then $y=s(x+1)$ and
+\[x^2-1=dy^2\quad\Longrightarrow\quad(x-1)(x+1)=ds^2(x+1)^2\quad\Longrightarrow\quad x-1=ds^2(x+1),\]
+dividing by $x+1\ne0$. Hence $x(1-ds^2)=1+ds^2$. Here $1-ds^2\ne0$, since otherwise $d=\left(\dfrac{1}{s}\right)^2$ would be a rational square. Therefore
+\[x=\dfrac{1+ds^2}{1-ds^2},\qquad y=s(x+1)=\dfrac{2s}{1-ds^2}.\]
+Conversely, for every rational $s$ these numbers are rational and
+\[(1+ds^2)^2-d(2s)^2=1-2ds^2+d^2s^4=(1-ds^2)^2,\]
+so they satisfy $x^2-dy^2=1$.
+
+\textbf{Answer.} The rational solutions are $(x,y)=(-1,0)$ and
+\[(x,y)=\left(\dfrac{1+ds^2}{1-ds^2},\ \dfrac{2s}{1-ds^2}\right),\qquad s\text{ rational}\]
+(for example $s=0$ gives $(1,0)$). Geometrically, every line with rational slope $s$ through $(-1,0)$ meets the curve in exactly one more point, and that point is rational. For $d=2$ and $s=\dfrac{1}{2}$ we get $(3,2)$: $9-2\cdot4=1$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+import graph;
+real d=2;
+path rb=graph(new pair(real t){return (cosh(t),sinh(t)/sqrt(d));},-1.75,1.75);
+path lb=graph(new pair(real t){return (-cosh(t),sinh(t)/sqrt(d));},-1.75,1.75);
+draw((-3.3,0)--(4.2,0),Arrow(6)); draw((0,-2.3)--(0,2.8),Arrow(6));
+label("$x$",(4.2,0),E); label("$y$",(0,2.8),N);
+draw(rb,linewidth(0.9)); draw(lb,linewidth(0.9));
+draw((-2.6,-0.8)--(4.2,2.6),red);
+dot((-1,0)); dot((3,2),red); dot((1,0));
+label("$(-1,0)$",(-1.08,0.27),W,fontsize(8pt)); label("$(3,2)$",(3,2),SE,red+fontsize(8pt)); label("$(1,0)$",(1.08,-0.27),E,fontsize(8pt));
+label("slope $s=\dfrac{1}{2}$",(-0.2,1.55),W,red+fontsize(8pt));
+label("$x^2-2y^2=1$",(-1.6,-1.9),fontsize(8pt));
+\end{asy}

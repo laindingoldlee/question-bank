@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2540888_triangle_inside_of_a_circle
+% Stable identity: aops-topic-2540888-q01
+\textbf{No.} Let the circle have centre $O$ and radius $R$, and let the triangle be $ABC$. Let $d$ be the distance from $O$ to the line $BC$, so $0\le d<R$ and $BC=2\sqrt{R^2-d^2}$. Every point of the circle is within $R+d$ of the line $BC$ (the farthest point is $T$, on the far side of $O$), so the height from $A$ is at most $R+d$ and
+\[[ABC]\le\dfrac12\cdot2\sqrt{R^2-d^2}\,(R+d)=\sqrt{(R+d)^3(R-d)}.\]
+By AM-GM applied to the four numbers $\dfrac{R+d}3,\dfrac{R+d}3,\dfrac{R+d}3,R-d$, whose sum is $2R$,
+\[\dfrac{(R+d)^3(R-d)}{27}\le\left(\dfrac{2R}{4}\right)^4=\dfrac{R^4}{16},\qquad\text{so}\qquad[ABC]\le\sqrt{\dfrac{27R^4}{16}}=\dfrac{3\sqrt3}{4}R^2.\]
+Now $\dfrac{3\sqrt3}{4}<\dfrac\pi2$, because $(3\sqrt3)^2=27<4\pi^2$ (as $\pi^2>9$). So the triangle covers less than half the disc, $[ABC]<\dfrac{\pi R^2}{2}$, and the part of the disc outside the triangle, of area $\pi R^2-[ABC]$, is always larger than the triangle. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);real d=0.4;real h=sqrt(1-d*d);
+pair B=(-h,-d),C=(h,-d),A=dir(115),T=(0,1),M=(0,-d);
+fill(A--B--C--cycle,lightgray);
+draw(circle(O,1));draw(A--B--C--cycle,linewidth(0.8));
+draw(T--M,dashed);draw(A--(A.x,-d),dotted);
+dot(O);dot(T);dot(A);dot(M);
+label("$O$",O,E);label("$A$",A,NW);label("$B$",B,SW);label("$C$",C,SE);label("$T$",T,N);
+label("$d$",(0,-d/2),E);label("$R$",(0,0.75),E);
+\end{asy}
+
+(The bound $\dfrac{3\sqrt3}{4}R^2$ is attained by the equilateral triangle, which covers only about $41\%$ of the disc.)

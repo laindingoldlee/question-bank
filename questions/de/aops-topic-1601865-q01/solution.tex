@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1601865_random_problem_i_thought_about
+% Stable identity: aops-topic-1601865-q01
+\textbf{When does one bounce bring the ball back?} Suppose the ball travels from $P$ to a point $X$ in the interior of a side and is reflected. The reflected path passes through $P$ again exactly when it runs back along $XP$, and by the law of reflection this happens exactly when $PX$ is perpendicular to the side. (If $PX$ is not perpendicular, the reflected ray makes the same angle with the side on the other side of the normal, so it is a different ray from $X$ and does not contain $P$.) So the question is whether we can always aim perpendicularly at the interior of some side.
+
+\textbf{Answer: no such polygon exists.} Among the lines containing the sides, let $\ell$ be one at the smallest distance $d$ from $P$, let $s$ be the side on $\ell$, and let $F$ be the foot of the perpendicular from $P$ to $\ell$, so $PF=d$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair[] V={(0,0),(7,-0.6),(9,3.2),(5.5,6),(0.8,4.8)};
+pair P=(4.2,2.0);
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--cycle,linewidth(0.9));
+pair F=V[0]+dot(P-V[0],unit(V[1]-V[0]))*unit(V[1]-V[0]);
+for(int i=1;i<5;++i){pair X=V[i],Y=V[(i+1)%5]; pair G=X+dot(P-X,unit(Y-X))*unit(Y-X); draw(P--G,gray+dashed);}
+draw(P--F,red+linewidth(1));
+pair u=unit(V[1]-V[0]),v=unit(P-F);real q=0.3;draw(F+q*u--F+q*(u+v)--F+q*v,red);
+dot(P);dot(F,red);
+label("$P$",P,dir(135));label("$F$",F,S,red);label("$s$",(V[0]+V[1])/2+(-1.6,-0.2),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{$F$ lies on the side $s$.} Suppose not. The whole polygon lies on one side of $\ell$ (it is convex), and its intersection with $\ell$ is exactly the side $s$; so $F$ is outside the polygon. The segment $PF$ starts inside the polygon and ends outside, so it crosses the boundary at a point $Y\ne F$ of some other side $s'$. Then the distance from $P$ to the line of $s'$ is at most $PY<PF=d$, contradicting the choice of $\ell$.
+
+\textbf{$F$ is not a vertex.} Suppose $F$ were an endpoint of $s$, shared with the adjacent side $s'$. The distance from $P$ to the line of $s'$ is at most $PF=d$, with equality only if $PF\perp s'$; but $PF\perp s$ too, and two perpendiculars to $PF$ at $F$ coincide, so $s$ and $s'$ would be collinear, which is impossible for adjacent sides of a polygon. So the line of $s'$ would be closer than $d$, again a contradiction.
+
+Hence $F$ is an interior point of side $s$ and $PF\perp s$: a ball aimed at $F$ bounces straight back through $P$. So for every convex polygon and every interior point $P$ there is a throw that returns to $P$ after one bounce, and the answer is $\boxed{\text{no}}$. $\blacksquare$

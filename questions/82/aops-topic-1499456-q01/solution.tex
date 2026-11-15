@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1499456_border_problem
+% Stable identity: aops-topic-1499456-q01
+Let the width be $w$ feet. The garden together with the border is a square of side $5+2w$:
+
+\begin{asy}
+usepackage("amsmath");
+size(4.8cm);
+defaultpen(fontsize(10pt));
+real w=1.405125; real L=5+2*w;
+fill((0,0)--(L,0)--(L,L)--(0,L)--cycle,gray(0.82));
+fill((w,w)--(w+5,w)--(w+5,w+5)--(w,w+5)--cycle,palegreen);
+draw((0,0)--(L,0)--(L,L)--(0,L)--cycle,linewidth(1)); draw((w,w)--(w+5,w)--(w+5,w+5)--(w,w+5)--cycle,linewidth(1));
+label("garden",(L/2,L/2+0.5)); label("$5\times5$",(L/2,L/2-0.4));
+draw((w+5,L/2)--(L,L/2),Arrows(TeXHead)); label("$w$",((w+5+L)/2,L/2),N);
+draw((0,-0.5)--(L,-0.5),Arrows(TeXHead)); label("$5+2w$",(L/2,-0.5),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The border is the large square minus the garden, so
+\[
+(5+2w)^2-25=36,\qquad (5+2w)^2=61 .
+\]
+Since $5+2w>0$, we get $5+2w=\sqrt{61}$ and
+\[
+w=\boxed{\dfrac{\sqrt{61}-5}{2}\text{ feet}}\approx1.41\text{ feet}.
+\]
+(The negative square root would give a negative width.)

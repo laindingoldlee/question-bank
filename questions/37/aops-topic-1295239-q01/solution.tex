@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1295239_triangle_inequality_rules
+% Stable identity: aops-topic-1295239-q01
+An isosceles triangle has two equal sides (legs) of length $a$ and a third side (base) of length $b$, where $b=a$ is allowed. Different pairs $(a,b)$ give non-congruent triangles, because the side lengths $\{a,a,b\}$ determine $a$ (the repeated length) and $b$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(3,0), A=(1.5,3.2);
+draw(A--B--C--cycle,linewidth(0.8));
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE);
+pair m1=(A+B)/2, m2=(A+C)/2;
+label("$a$",m1+0.34*(rotate(90)*unit(A-B))); label("$a$",m2+0.34*(rotate(-90)*unit(A-C))); label("$b$",(B+C)/2,S);
+draw(m1+0.12*dir(degrees(A-B)+90)*(-1)--m1+0.12*dir(degrees(A-B)+90));
+draw(m2+0.12*dir(degrees(A-C)+90)*(-1)--m2+0.12*dir(degrees(A-C)+90));
+\end{asy}
+
+The conditions are:
+\begin{itemize}
+\item triangle inequality: $a+a>b$, i.e. $b\le2a-1$ (the other inequality $a+b>a$ is automatic);
+\item perimeter: $2a+b\le19$, i.e. $b\le19-2a$.
+\end{itemize}
+So for each $a\ge1$ the number of bases is $\min(2a-1,\ 19-2a)$ (when positive):
+\[
+\begin{array}{c|ccccccccc}
+a&1&2&3&4&5&6&7&8&9\\\hline
+\#b&1&3&5&7&9&7&5&3&1
+\end{array}
+\]
+For $a\ge10$ there is no base. The total is
+\[1+3+5+7+9+7+5+3+1=\boxed{41}.\]

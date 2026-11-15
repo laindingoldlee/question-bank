@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h2381099_how_many_lattice_point_in_the_area_bounded_by_3_equations
+% Stable identity: aops-topic-2381099-q01
+The third equation is $8x=-9$, the vertical line $x=-\dfrac98$. Write the other two lines as
+\[\ell_1:\ y=\dfrac{200-2x}{9},\qquad \ell_2:\ y=\dfrac{3-13x}{2}.\]
+\textbf{The triangle.} The three lines meet pairwise at
+\begin{itemize}
+\item $\ell_1\cap\ell_2$: from $10x+\dfrac{45(3-13x)}2=1000$ we get $-565x=1865$, so $x=-\dfrac{373}{113}\approx-3.30$, $y=\dfrac{2594}{113}\approx22.96$;
+\item $\ell_1$ and $x=-\dfrac98$: $y=\dfrac{809}{36}\approx22.47$;
+\item $\ell_2$ and $x=-\dfrac98$: $y=\dfrac{141}{16}\approx8.81$.
+\end{itemize}
+So the region is the triangle with these vertices: the points with $-\dfrac{373}{113}\le x\le-\dfrac98$ and $\dfrac{3-13x}2\le y\le\dfrac{200-2x}9$ (for these $x$ the line $\ell_2$ lies below $\ell_1$, as at $x=-\dfrac98$).
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real k=0.25;
+pair T(real x,real y){return (x,k*y);}
+pair P1=T(-373/113,2594/113), P2=T(-9/8,809/36), P3=T(-9/8,141/16);
+fill(P1--P2--P3--cycle,rgb(0.85,0.9,1));
+draw(P1--P2,blue+linewidth(0.9)); draw(P1--P3,red+linewidth(0.9)); draw(P2--P3,deepgreen+linewidth(0.9));
+for(int x=-4;x<=-1;++x) draw(T(x,7)--T(x,24.5),gray(0.85));
+for(int y=8;y<=24;++y) draw(T(-4,y)--T(-0.8,y),gray(0.92));
+for(int y=8;y<=24;y+=2) label("$"+string(y)+"$",T(-4,y),W,fontsize(7pt));
+for(int x=-4;x<=-1;++x) label("$"+string(x)+"$",T(x,7),S,fontsize(7pt));
+int[][] pts={{-3,21},{-3,22},{-2,15},{-2,16},{-2,17},{-2,18},{-2,19},{-2,20},{-2,21},{-2,22}};
+for(int i=0;i<pts.length;++i) dot(T(pts[i][0],pts[i][1]));
+label("$10x+45y=1000$",T(-2.2,23.6),N,blue+fontsize(8pt));
+label("$13x+2y=3$",T(-1.5,8.6),W,red+fontsize(8pt));
+label("$x=-\dfrac98$",T(-1.125,12),E,deepgreen+fontsize(8pt));
+\end{asy}
+
+(The vertical scale is compressed by a factor $4$.)
+
+\textbf{Counting.} The integers $x$ with $-3.30\le x\le-1.125$ are $x=-3$ and $x=-2$.
+\begin{itemize}
+\item $x=-3$: $21\le y\le\dfrac{206}{9}\approx22.9$, so $y=21,22$: $2$ points (the point $(-3,21)$ lies on $\ell_2$).
+\item $x=-2$: $14.5\le y\le\dfrac{204}{9}\approx22.7$, so $y=15,16,\dots,22$: $8$ points.
+\end{itemize}
+In total there are $\boxed{10}$ lattice points.

@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1312407_find_the_coordinates_of_the_missing_point
+% Stable identity: aops-topic-1312407-q01
+Distances are nonnegative, so $b\le0$. By the distance formula,
+\[
+(b+9)^2+(5+4)^2=(-b)^2\quad\Longrightarrow\quad b^2+18b+81+81=b^2\quad\Longrightarrow\quad18b=-162,
+\]
+so $b=\boxed{-9}$. Check: the points $(-9,-4)$ and $(-9,5)$ are $9=-b$ apart.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+draw((-10,0)--(1,0),gray,Arrow); draw((0,-5)--(0,6),gray,Arrow);
+pair P=(-9,-4),Q=(-9,5); dot(P);dot(Q); draw(P--Q,red);
+label("$(-9,-4)$",P,W); label("$(b,5)$",Q,W); label("$9$",(P+Q)/2,E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The equation $81+b^2+81=b^2$ in the post comes from expanding $(b+9)^2$ as $b^2+81$, dropping the middle term $18b$.)

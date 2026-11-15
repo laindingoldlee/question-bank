@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3059575_special_pi_post_geometry_problems_
+% Stable identity: aops-topic-3059575-q01
+(a) Inscribed and circumscribed regular $ n $-gons have areas $\dfrac{n}{2}R^2\sin\dfrac{2\pi}{n}$ and $ nR^2\tan\dfrac{\pi}{n}$. They bound the circle area below and above. The elementary bounds $\sin u<u<\tan u $ and the exhaustion limit $\dfrac{\sin u}{u}\to1 $ show that both polygonal areas approach $\pi R^2 $. Thus the enclosed area is $\boxed{\pi R^2}$. This is the classical geometric exhaustion argument. (b) Integrate in polar coordinates: $\int_0^{2\pi}\int_0^Rr\,dr\,d\theta=2\pi\cdot\dfrac{R^2}{2}=\boxed{\pi R^2}$. The radial Jacobian is $ r $.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(circle((0,0),1));path p;for(int k=0;k<12;++k)p=p--dir(30*k);draw(p--cycle,blue);draw((0,0)--(1,0));label("$R$",(.5,0),S);label("inscribed polygon",(0,-1.35));
+\end{asy}

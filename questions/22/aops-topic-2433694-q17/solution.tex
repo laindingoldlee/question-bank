@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2433694_forester2015s_problems
+% Stable identity: aops-topic-2433694-q17
+Each arc is a quarter of a circle of radius $2$. Draw the square whose corners are the centres of the four arcs: its side is $2+2=4$, and the four points of the star are the midpoints of its sides.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+fill((-2,-2)--(2,-2)--(2,2)--(-2,2)--cycle,rgb(0.85,0.92,1));
+fill(arc((2,2),2,180,270)--(2,2)--cycle,white); fill(arc((-2,2),2,270,360)--(-2,2)--cycle,white);
+fill(arc((-2,-2),2,0,90)--(-2,-2)--cycle,white); fill(arc((2,-2),2,90,180)--(2,-2)--cycle,white);
+draw((-2,-2)--(2,-2)--(2,2)--(-2,2)--cycle,dashed);
+draw(arc((2,2),2,180,270),linewidth(0.9)); draw(arc((-2,2),2,270,360),linewidth(0.9));
+draw(arc((-2,-2),2,0,90),linewidth(0.9)); draw(arc((2,-2),2,90,180),linewidth(0.9));
+draw((2,2)--(2,0),gray); label("$2$",(2,1),E); label("$4$",(0,-2),S);
+label("star",(0,0));
+\end{asy}
+
+The square consists of the star and four quarter-discs of radius $2$, which together make up one disc of radius $2$. So
+\[[\text{star}]=4^2-\pi\cdot2^2=16-4\pi,\qquad\dfrac{[\text{star}]}{[\text{circle}]}=\dfrac{16-4\pi}{4\pi}=\dfrac{4-\pi}{\pi}.\]
+The answer is $\boxed{\textbf{(A)}\ \dfrac{4-\pi}{\pi}}$.

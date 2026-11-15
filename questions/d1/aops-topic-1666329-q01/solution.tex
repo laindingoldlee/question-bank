@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1666329_factorial_digits
+% Stable identity: aops-topic-1666329-q01
+A positive integer $N$ has $k$ digits exactly when $10^{k-1}\le N<10^k$.
+
+\textbf{Lower bound.} For $n\ge1$, $e^n=\sum_{j\ge0}\dfrac{n^j}{j!}>\dfrac{n^n}{n!}$, so $n!>\left(\dfrac {n}{e}\right)^n$. With $n=100$ and $\log_{10}e<0.435$,
+\[
+\log_{10}100!>100\left(2-\log_{10}e\right)>100(2-0.435)=156.5 .
+\]
+
+\textbf{Upper bound.} Pair the factors as $k(101-k)$ for $k=1,\dots,50$. By AM-GM each pair is at most $\left(\dfrac{101}{2}\right)^2=2550.25<2560=10^{1.408\ldots}$, so
+\[
+100!<2560^{50},\qquad \log_{10}100!<50\log_{10}2560<50\cdot3.41=170.5 .
+\]
+
+So $10^{156}<100!<10^{171}$, and $100!$ has between $157$ and $171$ digits. That is closer to $150$ than to any of $100$, $200$, $250$: $k$ is closest to $\boxed{150}$. (In fact $100!$ has exactly $158$ digits.)

@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1749331_2014_school_sprint_26
+% Stable identity: aops-topic-1749331-q01
+Let the overlap be $ABCD$, with $AB$ along an edge of the first strip and $AD$ along an edge of the second. The distance between the parallel sides $AB$ and $DC$ is the width $2$ of the first strip, and the angle at $A$ is $30^\circ$. Side $AD$ crosses the first strip, so its length satisfies $AD\sin30^\circ=2$, giving $AD=4$. In the same way, $AB$ crosses the second strip: $AB\sin30^\circ=2$ and $AB=4$. (So the overlap is a rhombus.)
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real r3=sqrt(3);pair u=dir(30);
+pair O=(0,0),B=(4,0),C=(4+2r3,2),D=(2r3,2);
+fill(O--B--C--D--cycle,lightgray);
+draw((-3,0)--(12,0),linewidth(0.9));draw((-3,2)--(12,2),linewidth(0.9));
+draw(O-3.4*u--O+6*u,linewidth(0.9));draw(B-6.4*u--B+6*u,linewidth(0.9));
+draw(O--B--C--D--cycle,red+linewidth(0.9));
+draw(arc(O,1.1,0,30),linewidth(0.6));label("$30^\circ$",2.15*dir(14));
+pair n=(sin(pi/6),-cos(pi/6));pair p=O-2.6*u;
+draw(p--p+2n,Arrows(4));label("$2$",p+n,-1.5*u);
+draw((-2,0)--(-2,2),Arrows(4));label("$2$",(-2,1),W);
+label("$4$",(2,0),S);label("$4$",(O+D)/2,dir(120));
+label("$A$",O,1.6*dir(-70));label("$B$",B,dir(-60));label("$C$",C,1.5*dir(125));label("$D$",D,1.5*dir(125));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The area is base times height: $AB\cdot2=4\cdot2=\boxed{8}$ square inches.

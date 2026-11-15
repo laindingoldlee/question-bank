@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2805739_2010_geometry_bee__preliminary_round
+% Stable identity: aops-topic-2805739-q03
+Scale each cell side to 1, so the disk radius is 4 and grid lines have integer coordinates from $-4$ to 4. In the first quadrant a cell is covered exactly when its farthest corner $(i,j)$ satisfies $i^2+j^2\le16$, where $i,j\in\{1,2,3,4\}$. For $i=1,2,3,4$ there are respectively 3,3,2,0 choices. Thus there are 8 per quadrant and $\boxed{32}$ in all. Convexity of the disk ensures containing the four corners contains the entire cell.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=-4;i<=4;++i){draw((i,-4)--(i,4),gray);draw((-4,i)--(4,i),gray);}draw(circle((0,0),4),blue);label("radius 4 cell widths",(0,-4.7));
+\end{asy}

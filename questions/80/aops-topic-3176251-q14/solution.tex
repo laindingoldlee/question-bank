@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3176251_2017_mbmt_geometry_round__montgomery_blair_math_tournament
+% Stable identity: aops-topic-3176251-q14
+Except on measure-zero boundaries, the disk crosses the nearest horizontal and vertical grid lines and no others. Let $u,v\in[0,1]$ be its center's distances from those lines. They are independent uniform variables. The disk reaches the fourth square precisely when its distance to the nearest grid vertex is less than $1$, or $u^2+v^2<1$. Thus exactly three squares occur outside a quarter unit disk in the unit square. The probability is $\boxed{1-\dfrac{\pi}{4}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int k=-1;k<=2;++k){draw((2*k,-2)--(2*k,4),gray);draw((-2,2*k)--(4,2*k),gray);}pair O=(.8,.8);draw(circle(O,1),blue);dot("center",O,NE);draw(O--(0,0),dashed);label("$u$",(.4,0),S);label("$v$",(0,.4),W);label("nearest vertex",(0,0),SW);
+\end{asy}

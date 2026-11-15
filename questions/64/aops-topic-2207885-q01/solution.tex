@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2207885_median_formula_proof
+% Stable identity: aops-topic-2207885-q01
+\textbf{(a)} Let $M$ be the midpoint of $BC$, so $BM=MC=\dfrac a2$, and let $\theta=\angle AMC$. Then $\angle AMB=180^\circ-\theta$, and $\cos\angle AMB=-\cos\theta$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(6,0), A=(1.6,3.6), M=(3,0);
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--M,blue+linewidth(0.9));
+dot(M);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$M$",M,S);
+label("$c$",(A+B)/2,W); label("$b$",(A+C)/2,NE);
+label("$\dfrac a2$",(B+M)/2,S); label("$\dfrac a2$",(M+C)/2,S);
+label("$m_a$",(A+M)/2,E,blue);
+draw(arc(M,0.45,0,degrees(A-M)),red); label("$\theta$",M+0.7*dir(degrees(A-M)/2),red);
+\end{asy}
+
+The law of cosines in triangles $AMC$ and $AMB$ gives
+\begin{align*}
+b^2&=m_a^2+\dfrac{a^2}{4}-a\,m_a\cos\theta,\\
+c^2&=m_a^2+\dfrac{a^2}{4}+a\,m_a\cos\theta.
+\end{align*}
+Adding, $b^2+c^2=2m_a^2+\dfrac{a^2}{2}$, so
+\[m_a^2=\dfrac{b^2}{2}+\dfrac{c^2}{2}-\dfrac{a^2}{4}\quad\text{and}\quad m_a=\dfrac12\sqrt{2b^2+2c^2-a^2}.\quad\blacksquare\]
+(If $\theta=90^\circ$ the same equations hold with $\cos\theta=0$.)
+
+\textbf{(b)} In an equilateral triangle with side $1$ the median is the height $\dfrac{\sqrt3}{2}\approx0.866$, which agrees with (a): $\sqrt{\dfrac12+\dfrac12-\dfrac14}=\dfrac{\sqrt3}2$. The other formula gives $\sqrt{\dfrac14+\dfrac12+\dfrac12}=\dfrac{\sqrt5}{2}\approx1.118$, which is wrong. (Nor can it hold for all triangles of any one shape: scaling a triangle by $2$ doubles the median, but multiplies $\sqrt{\dfrac a4+\dfrac b2+\dfrac c2}$ only by $\sqrt2$.)

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1514988_problem_shaking_hands_in_a_party
+% Stable identity: aops-topic-1514988-q01
+There are $22$ people. A person can shake hands with at most $20$ others (not himself or herself, not the partner). The $21$ people I asked gave $21$ different answers from $\{0,1,\dots,20\}$, so the answers are exactly $0,1,2,\dots,20$.
+
+\textbf{The people with $20$ and $0$ are partners.} The person $P_{20}$ who answered $20$ shook hands with everyone except his or her partner. So everyone except that partner shook at least one hand, and the person $P_0$ who answered $0$ must be the partner of $P_{20}$. They are not my wife and me, since I was not asked; so $P_0$ and $P_{20}$ are one of the $10$ invited couples.
+
+\textbf{Remove this couple and repeat.} Every remaining person shook hands with $P_{20}$ and not with $P_0$. Removing the couple lowers each remaining person's count by exactly $1$: the asked people still in the room now have the different counts $0,1,\dots,18$ (from the old answers $1,\dots,19$), and nobody can shake more than $18$ hands among the remaining $20$ people. The same argument shows that the people with the old answers $19$ and $1$ are an invited couple. Continuing, the invited couples are
+\[
+(20,0),\ (19,1),\ (18,2),\ \dots,\ (11,9).
+\]
+These are all $10$ invited couples, and the only answer left over is $10$. The person who answered $10$ is therefore not in an invited couple, so it is my wife. She shook hands with $\boxed{10}$ people.
+
+(Such a party is possible: let two asked people with answers $j$ and $k$ shake hands exactly when $j+k\ge21$, and let me shake hands with the people answering $11,\dots,20$. Then the person answering $j$ shakes exactly $j$ hands, partners $j$ and $20-j$ never shake, and I also shake $10$ hands.)

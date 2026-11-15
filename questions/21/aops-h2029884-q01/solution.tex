@@ -1,0 +1,22 @@
+Scale the square to $A=(0,0),B=(1,0),C=(1,1),D=(0,1)$, and write $P=(0,p),N=(n,0),Q=(q,0)$. Thus $0<p<1$ and $0<q<n<1$. The length condition gives
+\[
+n^2+p^2=(1-n)^2+1,\qquad n=1-\dfrac{p^2}{2}.
+\]
+The tangents of the two equal acute angles give
+\[
+\dfrac{p(n-q)}{p^2+nq}=1-n.
+\]
+Substituting for $n$ and solving gives $q=\dfrac{2(1-p)}{2-p}$. Put $\theta=\angle BCQ$, so $\tan\theta=1-q$ and $0<2\theta<90^\circ$. Then
+\[
+\tan(2\theta)=\dfrac{2(1-q)}{1-(1-q)^2}
+=\dfrac{2(1-q)}{q(2-q)}
+=\dfrac{p}{q}
+=\tan\angle AQP.
+\]
+Both angles lie in $(0,90^\circ)$, where tangent is injective. Therefore $\angle AQP=2\theta$, as required.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(4,0),C=(4,4),D=(0,4),P=(0,2),N=(3.5,0),Q=(8/3,0);draw(A--B--C--D--cycle);draw(P--N--C,blue);draw(P--Q--C,red);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$P$",P,W);label("$N$",N,SE);label("$Q$",Q,SW);
+\end{asy}

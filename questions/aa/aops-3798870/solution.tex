@@ -1,0 +1,9 @@
+Use $W=(0,0),A=(w,0),S=(w,h),H=(0,h)$ and $E=(e,h)$. If $\theta=\angle AWS$, the angle equality gives $\dfrac{e}{h} = \dfrac{h}{w}$, so $e = \dfrac{h^2}{w}$. Put $r = \dfrac{h^2}{w^2}$; since $E$ is on $SH$, $0<r<1$. The projections onto diagonal $WS$ give $S D = \dfrac{w (w-e)}{\sqrt{w^2+h^2}}$ and $E D = \dfrac{h (w-e)}{\sqrt{w^2+h^2}}$. Hence $32 = [SED] = \dfrac{50 (1-r)^2}{1+r}$, so $25r^2-66r+9=0$. Its root in $(0,1)$ is $r = \dfrac{33-12\sqrt6}{25}$. Finally $\angle SWE=90^\circ-2\theta$, yielding $\sin \angle S W E = \dfrac{1-r}{1+r} = \boxed{\dfrac{4+6\sqrt6}{25}}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+real r=(33-12sqrt(6))/25,w=sqrt(100/sqrt(r)),h=100/w;pair W=(0,0),A=(w,0),S=(w,h),H=(0,h),E=(h*h/w,h),D=dot(E,S)/dot(S,S)*S;draw(W--A--S--H--cycle);draw(W--S);draw(W--E--D);label("$W$",W,(-1,-1));label("$A$",A,(1,-1));label("$S$",S,(1,1));label("$H$",H,(-1,1));label("$E$",E,(0,1));label("$D$",D,(1,-1));
+\end{asy}
+

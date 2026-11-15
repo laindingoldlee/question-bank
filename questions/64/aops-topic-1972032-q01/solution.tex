@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1972032_geometry_problem
+% Stable identity: aops-topic-1972032-q01
+\textbf{Construction.} Put the sheet at $[0,10]\times[0,4]$ and take the rhombus with vertices $(0,0)$, $(s,0)$, $(10,4)$, $(10-s,4)$. Its sides are equal when $(10-s)^2+4^2=s^2$, i.e. $116=20s$, so $s=5.8$. Its area is base times height, $5.8\cdot4=23.2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0),Q=(5.8,0),R=(10,4),T=(4.2,4);
+draw((0,0)--(10,0)--(10,4)--(0,4)--cycle,linewidth(0.9));
+filldraw(P--Q--R--T--cycle,palegray,linewidth(1));
+label("$5.8$",(P+Q)/2,S);label("$4.2$",(Q+(10,0))/2,S);label("$4$",(10,2),E);label("$5.8$",(Q+R)/2,NW);
+label("$10$",(5,4),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Upper bound.} Let a rhombus on the sheet have side vectors $\mathbf p=(p_1,p_2)$ and $\mathbf q=(q_1,q_2)$ with $|\mathbf p|=|\mathbf q|$. Its projections onto the axes have lengths $X=|p_1|+|q_1|\le10$ and $Y=|p_2|+|q_2|\le4$, and its area is
+\[
+|p_1q_2-p_2q_1|\le|p_1||q_2|+|p_2||q_1| .
+\]
+Write $|p_1|=\dfrac{X+t}{2}$, $|q_1|=\dfrac{X-t}{2}$, $|q_2|=\dfrac{Y+r}{2}$, $|p_2|=\dfrac{Y-r}{2}$ with $|t|\le X$, $|r|\le Y$. Then
+\[
+|p_1||q_2|+|p_2||q_1|=\dfrac{XY+tr}{2},
+\]
+and $|\mathbf p|^2=|\mathbf q|^2$ means $p_1^2-q_1^2=q_2^2-p_2^2$, i.e. $tX=rY$. If $Y\le X$, then $|t|=\dfrac{|r|Y}{X}\le\dfrac{Y^2}{X}$, so
+\[
+\text{area}\le\dfrac{XY+t r}{2}=\dfrac{1}{2}\left(XY+\dfrac{t^2X}{Y}\right)\le\dfrac{1}{2}\left(XY+\dfrac{Y^3}{X}\right)=\dfrac{Y}{2}\left(X+\dfrac{Y^2}{X}\right).
+\]
+This increases with $Y$, and with $X$ for $X\ge Y$, so it is at most $2\left(10+\dfrac{16}{10}\right)=23.2$. If $X<Y\le4$, the area is at most the bounding box area $XY<16$.
+
+So the greatest area is $\boxed{\dfrac{116}{5}=23.2}$.

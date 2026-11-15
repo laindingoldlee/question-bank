@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2313260_number_theory_a_lot_of_it
+% Stable identity: aops-topic-2313260-q08
+Write $d(n)$ for the number of positive divisors; for $n=p_1^{e_1}\cdots p_k^{e_k}$ it is $(e_1+1)\cdots(e_k+1)$, and for given exponents $e_1\ge e_2\ge\cdots$ the smallest such $n$ is $2^{e_1}3^{e_2}5^{e_3}\cdots$.
+
+\textbf{Finding $a$.} The factorisations of $28$ into factors at least $2$ are $28$, $14\cdot2$, $7\cdot4$, $7\cdot2\cdot2$, giving $2^{27}$, $2^{13}\cdot3$, $2^6\cdot3^3=1728$ and $2^6\cdot3\cdot5=960$. So $a=960$.
+
+\textbf{Finding $b$.} $720=2^4\cdot3^2\cdot5$ has $5\cdot3\cdot2=30$ divisors. We show that every $n$ with $d(n)\ge29$ is at least $720$. Let $n$ have $k$ distinct prime factors and exponents $e_1\ge e_2\ge\cdots\ge e_k\ge1$, so $n\ge2^{e_1}3^{e_2}5^{e_3}7^{e_4}\cdots$.
+\begin{itemize}
+\item $k\ge5$: $n\ge2\cdot3\cdot5\cdot7\cdot11=2310$.
+\item $k=4$: $(e_1+1)\cdots(e_4+1)\ge29>24=3\cdot2\cdot2\cdot2$, so $e_1\ge3$ or $e_2\ge2$, giving $n\ge2^3\cdot3\cdot5\cdot7=840$ or $n\ge2^2\cdot3^2\cdot5\cdot7=1260$.
+\item $k=3$: if $e_2=e_3=1$, then $4(e_1+1)\ge29$ gives $e_1\ge7$ and $n\ge2^7\cdot15=1920$. If $e_2=2$ and $e_3=1$, then $6(e_1+1)\ge29$ gives $e_1\ge4$ and $n\ge2^4\cdot9\cdot5=720$. If $e_2\ge3$ and $e_3=1$, then $n\ge2^3\cdot3^3\cdot5=1080$. If $e_3\ge2$, then $n\ge2^2\cdot3^2\cdot5^2=900$.
+\item $k=2$: $(e_1+1)(e_2+1)\ge29$. If $e_2=1,2,3,4$, then $e_1\ge14,9,7,5$ respectively, so $n\ge2^{14}\cdot3$, $2^9\cdot9$, $2^7\cdot27$ or $2^5\cdot81=2592$; if $e_2\ge5$, then $n\ge6^5$. All exceed $720$.
+\item $k=1$: $n\ge2^{28}$.
+\end{itemize}
+So $b=720$.
+
+Finally $a-b=240=2^4\cdot3\cdot5$, which has $5\cdot2\cdot2=\boxed{20}$ positive divisors.

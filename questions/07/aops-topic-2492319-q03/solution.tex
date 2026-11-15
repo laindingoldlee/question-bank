@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2492319_100th_post_problems
+% Stable identity: aops-topic-2492319-q03
+The answer is $\boxed{10}$.
+
+\textbf{The smallest distance is at most $10$.} Divide the disc, with centre $O$, into six closed sectors with central angles $60^\circ$ (dashed radii). By the pigeonhole principle, two of the seven points, say $X$ and $Y$, lie in the same sector (a point on a dividing radius is assigned to either sector). Let $a=OX$ and $b=OY$, with $0\le b\le a\le10$, and $\theta=\angle XOY\le60^\circ$, so $\cos\theta\ge\dfrac12$. By the law of cosines (which also holds when $X$ or $Y$ is $O$),
+\[XY^2=a^2+b^2-2ab\cos\theta\le a^2+b^2-ab=a^2-b(a-b)\le a^2\le100.\]
+So $XY\le10$, and the smallest distance is at most $10$.
+
+\textbf{The value $10$ is attained.} Take the centre $O$ and the six vertices of a regular hexagon inscribed in the boundary circle (red points). Each vertex is at distance $10$ from $O$; adjacent vertices are at distance $10$, being the sides of an equilateral triangle with $O$; and the other distances between vertices are $10\sqrt3$ and $20$. So every distance is at least $10$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),10),linewidth(0.8));
+for(int k=0;k<6;++k) draw((0,0)--10*dir(60k+30),gray+dashed);
+path hx=10*dir(0)--10*dir(60)--10*dir(120)--10*dir(180)--10*dir(240)--10*dir(300)--cycle;
+draw(hx,blue);
+for(int k=0;k<6;++k) dot(10*dir(60k),red+4bp);
+dot((0,0),red+4bp);
+draw((0,0)--10*dir(0),blue);
+label("$10$",(5,0),S,blue); label("$O$",(0,0),dir(100));
+\end{asy}

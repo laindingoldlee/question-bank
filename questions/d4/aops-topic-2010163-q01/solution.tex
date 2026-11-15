@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2010163_trisecting_angles_helpnationals_2016_problem_30
+% Stable identity: aops-topic-2010163-q01
+Let $AB=AC=s$. By symmetry, $AP=AQ=t$, and $PQ=23-9-9=5$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real s=13.5;
+pair B=(0,0), C=(23,0);
+real hgt=sqrt(s^2-11.5^2);
+pair A=(11.5,hgt), P=(9,0), Q=(14,0);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(A--P,blue); draw(A--Q,blue);
+dot(A);dot(B);dot(C);dot(P);dot(Q);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$P$",P,S); label("$Q$",Q,S);
+label("$9$",(B+P)/2,S); label("$5$",(P+Q)/2,S); label("$9$",(Q+C)/2,S);
+label("$s$",(A+B)/2,NW); label("$s$",(A+C)/2,NE); label("$t$",(A+P)/2,W); label("$t$",(A+Q)/2,E);
+draw(arc(A,2.2,degrees(B-A),degrees(P-A))); draw(arc(A,2.5,degrees(P-A),degrees(Q-A))); draw(arc(A,2.2,degrees(Q-A),degrees(C-A)));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Angle bisector theorem.} Since $AP$ and $AQ$ trisect $\angle BAC$, we have $\angle PAQ=\angle QAC$, so in triangle $APC$ the segment $AQ$ bisects $\angle PAC$. Hence
+\[\dfrac{PQ}{QC}=\dfrac{AP}{AC}\quad\Longrightarrow\quad\dfrac{5}{9}=\dfrac {t}{s}\quad\Longrightarrow\quad t=\dfrac{5s}{9}.\]
+
+\textbf{Stewart's theorem.} In triangle $ABC$ with cevian $AP$, where $BP=9$ and $PC=14$,
+\[AB^2\cdot PC+AC^2\cdot BP=BC\left(AP^2+BP\cdot PC\right)\ \Longrightarrow\ 14s^2+9s^2=23\left(t^2+126\right),\]
+so $s^2=t^2+126$. Substituting $t=\dfrac{5s}{9}$,
+\[s^2-\dfrac{25s^2}{81}=126\ \Longrightarrow\ \dfrac{56s^2}{81}=126\ \Longrightarrow\ s^2=\dfrac{729}{4},\quad s=\dfrac{27}{2}.\]
+(Check: then $t=\dfrac{15}{2}$, and the height is $\sqrt{s^2-11.5^2}=\sqrt{50}$, consistent with $t^2=2.5^2+50=56.25$.)
+
+The perimeter is $2s+23=27+23=\boxed{50}$.

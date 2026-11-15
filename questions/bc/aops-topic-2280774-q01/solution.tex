@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2280774_lattice_points_on_a_line
+% Stable identity: aops-topic-2280774-q01
+Let $g=\gcd(a,b)$ and write $a=ga'$, $b=gb'$ with $\gcd(a',b')=1$. A point $(x,y)$ of the segment satisfies $a'y=b'x$ (the slope is $\dfrac{b}{a}=\dfrac{b'}{a'}$) with $0\le x\le a$. If $x,y$ are integers, then $a'\mid b'x$, and since $\gcd(a',b')=1$, $a'\mid x$. Writing $x=ka'$ gives $y=kb'$. So the lattice points on the segment are exactly $(ka',kb')$ for $k=0,1,\ldots,g$, and excluding the two endpoints leaves
+\[\gcd(a,b)-1\]
+points. The figure shows the smaller example from $(0,0)$ to $(10,18)$, where $\gcd(10,18)=2$ and the only interior lattice point is $(5,9)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=10;++i) draw((i,0)--(i,18),gray(0.85));
+for(int j=0;j<=18;++j) draw((0,j)--(10,j),gray(0.85));
+draw((0,0)--(10,18),blue+linewidth(0.9));
+dot((0,0)); dot((5,9),red); dot((10,18));
+label("$(0,0)$",(0,0),SW); label("$(5,9)$",(5,9),E,red); label("$(10,18)$",(10,18),NE);
+\end{asy}
+
+For $(500,900)$: $\gcd(500,900)=100$, so there are $100-1=\boxed{99}$ lattice points strictly between the endpoints, namely $(5k,9k)$ for $k=1,\ldots,99$.

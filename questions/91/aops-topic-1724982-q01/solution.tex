@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h1724982_geometry_proof
+% Stable identity: aops-topic-1724982-q01
+\textbf{(a)} Take an equilateral triangle with side $1$: $s-c=\dfrac{1}{2}$ and $R=\dfrac{1}{\sqrt3}$, so $\dfrac{s-c}{R}=\dfrac{\sqrt3}{2}$, while $\cot60^\circ+\csc60^\circ=\dfrac{1}{\sqrt3}+\dfrac{2}{\sqrt3}=\sqrt3$. So the identity with $R$ fails.
+
+\textbf{(b)} Let the incircle, with centre $I$, touch $CA$ and $CB$ at $P$ and $Q$. Tangent segments from a point are equal; writing $x,y,z$ for the tangent lengths from $A,B,C$, we have $y+z=a$, $z+x=b$, $x+y=c$, so $z=\dfrac{a+b-c}{2}=s-c$. Thus $CP=CQ=s-c$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(7,0),C=(2.4,6.2);
+real a=abs(B-C),bb=abs(C-A),c=abs(A-B);
+pair I=(a*A+bb*B+c*C)/(a+bb+c);
+real r=I.y;
+pair Pa=C+dot(I-C,unit(A-C))*unit(A-C),Pb=C+dot(I-C,unit(B-C))*unit(B-C);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(circle(I,r),blue);dot(I);
+draw(C--I,dashed);draw(I--Pa,red);draw(I--Pb,red);
+void ra(pair P,pair Q,pair R){pair u=unit(Q-P)*0.25,v=unit(R-P)*0.25;draw(P+u--P+u+v--P+v,linewidth(0.5));}
+ra(Pa,I,C);ra(Pb,I,C);
+draw(arc(C,1.0,degrees(Pa-C),degrees(I-C)),linewidth(0.6));
+label("$\dfrac {C}{2}$",C+1.6*dir((degrees(Pa-C)+degrees(I-C))/2),fontsize(8pt));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$I$",I,S);
+label("$r$",(I+Pa)/2,N,red);label("$r$",(I+Pb)/2,S,red);
+label("$s-c$",(C+Pa)/2,W);label("$s-c$",(C+Pb)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The incentre lies on the bisector of angle $C$, so in the right triangle $CPI$ (right angle at $P$, since a radius is perpendicular to the tangent) we have $\angle PCI=\dfrac {C}{2}$ and
+\[
+\dfrac{s-c}{r}=\dfrac{CP}{IP}=\cot\dfrac {C}{2} .
+\]
+Finally, using $\cos C=2\cos^2\dfrac {C}{2}-1$ and $\sin C=2\sin\dfrac {C}{2}\cos\dfrac {C}{2}$,
+\[
+\cot C+\csc C=\dfrac{1+\cos C}{\sin C}=\dfrac{2\cos^2\dfrac {C}{2}}{2\sin\dfrac {C}{2}\cos\dfrac {C}{2}}=\cot\dfrac {C}{2} .
+\]
+Hence $\dfrac{s-c}{r}=\cot C+\csc C$. $\blacksquare$

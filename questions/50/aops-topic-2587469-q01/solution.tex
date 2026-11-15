@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2587469_quadratic_trigonometric_equation
+% Stable identity: aops-topic-2587469-q01
+Factor as a quadratic in $s=\sin x$:
+\[s^2+s-6=(s+3)(s-2)=0,\qquad\text{so}\qquad\sin x=-3\quad\text{or}\quad\sin x=2.\]
+Both are impossible, since $-1\le\sin x\le1$. So the equation has $\boxed{\text{no solutions}}$.
+
+Indeed, for $-1\le s\le1$ we have $s^2+s-6\le1+1-6=-4<0$, so the left side is always negative.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){real s=sin(x*pi/180);return s^2+s-6;}
+real sx=1/60;
+path g=graph(f,0,360,n=200);
+draw(xscale(sx)*g,linewidth(0.8));
+draw((0,0)--(6.4,0),gray,Arrow);draw((0,-7)--(0,1),gray,Arrow);
+draw((0,-4)--(6,-4),dashed);
+for(int k=1;k<=4;++k){draw((k*1.5,-0.1)--(k*1.5,0.1));label("$"+string(90*k)+"^\circ$",(k*1.5,0),N,fontsize(8pt));}
+label("$-4$",(0,-4),W,fontsize(8pt));label("$-6$",(0,-6),W,fontsize(8pt));draw((-0.1,-6)--(0.1,-6));
+label("$y=\sin^2x+\sin x-6$",(3,-6.6),fontsize(9pt));label("$x$",(6.4,0),E);label("$y$",(0,1),N);
+\end{asy}
+
+The graph of the left side never rises above $-4$ (it touches $-4$ only at $x=90^\circ$), so it never meets the $x$-axis (horizontal scale: degrees).

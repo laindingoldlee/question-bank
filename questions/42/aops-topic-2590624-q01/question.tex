@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2590624_a_tiles_problem
+% Stable identity: aops-topic-2590624-q01
+A square tile has a quarter-circle arc drawn on it, centred at one corner of the tile, with radius equal to the side of the tile. Sixteen such tiles are placed in a $4\times4$ grid, and each tile is independently rotated by $0^\circ$, $90^\circ$, $180^\circ$ or $270^\circ$, each with probability $\dfrac14$. A circle is formed when the four tiles around an interior grid point all have their arcs centred at that point (see the figure). What is the probability that at least one circle is formed?
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real s=1;
+draw((0,0)--(1,0)--(1,1)--(0,1)--cycle,linewidth(0.8));draw(arc((0,0),1,0,90),linewidth(1));
+label("one tile",(0.5,-0.25));
+pair o=(2.2,0);
+for(int i=0;i<2;++i)for(int j=0;j<2;++j)draw(shift(o+(i,j))*((0,0)--(1,0)--(1,1)--(0,1)--cycle),linewidth(0.8));
+draw(circle(o+(1,1),1),linewidth(1));dot(o+(1,1));
+label("four tiles forming a circle",o+(1,-0.25));
+\end{asy}

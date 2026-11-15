@@ -1,0 +1,19 @@
+Let $T$ be the stopping roll. After $k$ rolls the product is not divisible by $30$ exactly when at least one of the prime factors $2,3,5$ has not appeared. Inclusion-exclusion over the missing prime factors gives
+\[
+S(k)=\Pr(T>k)
+=\left(\dfrac{2}{3}\right)^k+\left(\dfrac{5}{6}\right)^k
+-2\left(\dfrac{1}{3}\right)^k+\left(\dfrac{1}{6}\right)^k.
+\]
+Indeed, the single-prime avoidance probabilities per roll are $\dfrac{1}{2},\dfrac{2}{3},\dfrac{5}{6}$; the pairwise avoidance probabilities are $\dfrac{1}{3},\dfrac{1}{3},\dfrac{1}{2}$; and avoiding all three requires rolling $1$.
+
+Now
+\[
+\Pr(T\text{ odd})=\sum_{j\ge0}[S(2j)-S(2j+1)]
+=\sum_{k\ge0}(-1)^kS(k).
+\]
+Each resulting series is geometric, so
+\[
+\Pr(T\text{ odd})=\dfrac{3}{5}+\dfrac{6}{11}-\dfrac{3}{2}+\dfrac{6}{7}
+=\dfrac{387}{770}.
+\]
+The fraction is reduced, and $\boxed{m+n=1157}$.

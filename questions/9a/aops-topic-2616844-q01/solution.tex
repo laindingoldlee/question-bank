@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2616844_jmpsc_invitationals_problem_2
+% Stable identity: aops-topic-2616844-q01
+\emph{Upper bound.} Two segments that do not overlap meet in at most one point. Each of the $4$ sides of one quadrilateral therefore meets each of the $4$ sides of the other at most once, giving at most $4\cdot4=16$ points.
+
+\emph{Construction.} Take the arrowhead-shaped quadrilaterals
+\[ABCD:\ A=(-9,0),\ B=(9,4),\ C=(-4,0),\ D=(9,-6);\qquad PQRS:\ P=(0,10),\ Q=(-4,-8),\ R=(0,4),\ S=(5,-8).\]
+Both are non-self-intersecting, since $C$ lies inside triangle $ABD$ and $R$ inside triangle $PQS$. For $-4\le x\le9$, the four sides of $ABCD$ are the graphs of
+\[y=\dfrac{2(x+9)}{9},\qquad y=\dfrac{4(x+4)}{13},\qquad y=-\dfrac{6(x+4)}{13},\qquad y=-\dfrac{x+9}{3}.\]
+Each side of $PQRS$ lies in this strip and joins $Q$ or $S$ to $P$ or $R$.
+\begin{itemize}
+\item $Q$ and $S$ lie below all four graphs: at $x=-4$ the graphs are at least $-\dfrac53$, and at $x=5$ at least $-\dfrac{14}{3}$, while $Q$ and $S$ are at height $-8$.
+\item $P$ and $R$ lie above them: at $x=0$ the graphs are at most $2$, while $P$ and $R$ are at heights $10$ and $4$.
+\end{itemize}
+So each side of $PQRS$ crosses each of the four graphs, giving $16$ crossings. They are distinct points: the sides of $ABCD$ meet each other only at its vertices, and the sides of $PQRS$ only at its vertices, and none of these vertices lies on the other quadrilateral. So the maximum is $\boxed{16}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(-9,0),B=(9,4),C=(-4,0),D=(9,-6);
+pair T=(0,10),L=(-4,-8),V=(0,4),R=(5,-8);
+path p=A--B--C--D--cycle,q=T--L--V--R--cycle;
+draw(p,linewidth(0.8));draw(q,linewidth(0.8)+gray(0.45));
+pair[] X=intersectionpoints(p,q);for(int i=0;i<X.length;++i)dot(X[i],linewidth(2.5));
+label("$A$",A,W);label("$B$",B,NE);label("$C$",C,W);label("$D$",D,SE);
+label("$P$",T,N);label("$Q$",L,SW);label("$R$",V,N);label("$S$",R,SE);
+\end{asy}

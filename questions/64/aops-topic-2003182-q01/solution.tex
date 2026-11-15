@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2003182_2020_amc_10_b_8
+% Stable identity: aops-topic-2003182-q01
+Place $P=(-4,0)$ and $Q=(4,0)$. The area is $\dfrac{1}{2}\cdot8\cdot h=12$, where $h$ is the distance from $R$ to line $PQ$, so $h=3$: $R$ lies on one of the lines $y=3$, $y=-3$.
+\begin{itemize}
+\item Right angle at $P$: $R$ is on the line $x=-4$, giving $(-4,3)$ and $(-4,-3)$.
+\item Right angle at $Q$: similarly $(4,3)$ and $(4,-3)$.
+\item Right angle at $R$: by Thales' theorem $R$ lies on the circle with diameter $PQ$, i.e.\ $x^2+y^2=16$. With $y=\pm3$ we get $x=\pm\sqrt7$, giving $4$ points.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair P=(-4,0),Q=(4,0);
+draw(circle((0,0),4),gray);
+draw((-6,3)--(6,3),dotted);draw((-6,-3)--(6,-3),dotted);
+draw((-4,-3.6)--(-4,3.6),dashed);draw((4,-3.6)--(4,3.6),dashed);
+draw(P--Q,linewidth(1));
+real xr=sqrt(16-9);
+pair[] R={(-4,3),(-4,-3),(4,3),(4,-3),(xr,3),(-xr,3),(xr,-3),(-xr,-3)};
+for(pair r:R) dot(r,red);
+draw(P--(xr,3)--Q,red);
+dot(P);dot(Q);label("$P$",P,W);label("$Q$",Q,E);label("$8$",(0,0),S);
+label("$y=3$",(6,3),E);label("$y=-3$",(6,-3),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+These $8$ points are distinct, so the answer is $\boxed{\textbf{(D)}\ 8}$.

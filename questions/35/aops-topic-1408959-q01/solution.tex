@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1408959_inequality_problem
+% Stable identity: aops-topic-1408959-q01
+The point $(a,b,c,d)$ is uniform in the four-dimensional cube $[-1,1]^4$, whose volume is $2^4=16$. The favourable points form the four-dimensional unit ball, so the probability is its volume divided by $16$.
+
+Compute the volume by slicing, just as the volume of the ordinary ball can be computed from areas of discs. For a fixed $d=t$ with $|t|\le1$, the condition is $a^2+b^2+c^2\le1-t^2$, an ordinary ball of radius $\sqrt{1-t^2}$, with volume $\dfrac{4}{3}\pi\left(1-t^2\right)^{\dfrac{3}{2}}$. So
+\[
+V_4=\int_{-1}^{1}\dfrac{4}{3}\pi\left(1-t^2\right)^{\dfrac{3}{2}}dt .
+\]
+With $t=\sin\theta$,
+\[
+\int_{-1}^{1}\left(1-t^2\right)^{\dfrac{3}{2}}dt=\int_{-\dfrac{\pi}{2}}^{\dfrac{\pi}{2}}\cos^4\theta\,d\theta=\dfrac{3\pi}{8},
+\]
+because $\cos^4\theta=\dfrac{3}{8}+\dfrac{1}{2}\cos2\theta+\dfrac{1}{8}\cos4\theta$ and the cosine terms integrate to $0$ over this interval. Hence $V_4=\dfrac{4}{3}\pi\cdot\dfrac{3\pi}{8}=\dfrac{\pi^2}{2}$ and
+\[
+P=\dfrac{\pi^2}{2\cdot16}=\boxed{\dfrac{\pi^2}{32}}\approx0.308 .
+\]
+(The same method works for any number $n$ of variables: the probability is the volume of the $n$-dimensional unit ball divided by $2^n$; for $n=2,3$ it is $\dfrac{\pi}{4}$ and $\dfrac{\pi}{6}$.)

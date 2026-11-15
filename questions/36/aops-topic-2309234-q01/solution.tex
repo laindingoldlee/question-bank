@@ -1,0 +1,48 @@
+% Source: https://artofproblemsolving.com/community/c3h2309234_500th_post
+% Stable identity: aops-topic-2309234-q01
+\textbf{(a)} Consider the plane at height $y$, with $0\le y\le h$. The part of each solid above this plane is a smaller copy of the whole solid, scaled from the apex by the factor $k=\dfrac{h-y}{h}$ (its height is $h-y$ instead of $h$). So the cross-section of the cone is a disc of radius $kr$, with area $k^2\pi r^2$, and the cross-section of the pyramid is a square similar to the base with ratio $k$, with area $k^2\cdot\pi r^2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+real r=1.2, h=3, y=1.2, k=(h-y)/h;
+pair T=(0,h);
+draw(T--(-r,0)); draw(T--(r,0));
+draw(shift(0,0)*xscale(r)*yscale(0.3)*arc((0,0),1,180,360),linewidth(0.8));
+draw(shift(0,0)*xscale(r)*yscale(0.3)*arc((0,0),1,0,180),dashed);
+filldraw(shift(0,y)*xscale(r*k)*yscale(0.3*k)*unitcircle,paleblue,blue);
+draw((0,0)--(r,0),dashed); label("$r$",(r/2,0),S,fontsize(9pt));
+real s=sqrt(pi)*r;
+pair b0=(3,-0.35), b1=b0+(s,0), b2=b1+(0.7,0.7), b3=b0+(0.7,0.7);
+pair Tp=(b0+b2)/2+(0,h);
+draw(b0--b1--b2); draw(b2--b3--b0,dashed);
+draw(Tp--b0); draw(Tp--b1); draw(Tp--b2); draw(Tp--b3,dashed);
+pair c0=Tp+(b0-Tp)*k, c1=Tp+(b1-Tp)*k, c2=Tp+(b2-Tp)*k, c3=Tp+(b3-Tp)*k;
+filldraw(c0--c1--c2--c3--cycle,paleblue,blue);
+draw((-1.8,y)--(6.4,y),dotted+gray); draw((-1.8,0)--(6.4,0),dotted+gray);
+draw((-1.6,0)--(-1.6,y),Arrows(4)); label("$y$",(-1.6,y/2),W,fontsize(9pt));
+draw((6.2,0)--(6.2,h),Arrows(4)); label("$h$",(6.2,h/2),E,fontsize(9pt));
+label("area $\pi r^2$",(b0+b1)/2,S,fontsize(8pt));
+\end{asy}
+
+The areas are equal at every height, so by Cavalieri's principle the two solids have the same volume. The pyramid has volume $\dfrac13(\text{base area})(\text{height})$, so
+\[V_{\text{cone}}=\boxed{\dfrac13\pi r^2h}.\]
+
+\textbf{(b)} The shell between the spheres of radii $s$ and $s+ds$ has area $4\pi s^2$ and thickness $ds$, so its volume is $4\pi s^2\,ds$ up to terms of higher order in $ds$. Adding all the shells from the centre ($s=0$) to the surface ($s=r$) and letting the thickness tend to $0$ gives
+\[V_{\text{ball}}=\int_0^r4\pi s^2\,ds=\left[\dfrac{4\pi s^3}{3}\right]_0^r=\boxed{\dfrac43\pi r^3}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+real R=1, s=0.62, ds=0.1;
+filldraw(circle((0,0),s+ds),palegreen,heavygreen); filldraw(circle((0,0),s),white,heavygreen);
+draw(circle((0,0),R),linewidth(1));
+draw(xscale(R)*yscale(0.3*R)*arc((0,0),1,180,360)); draw(xscale(R)*yscale(0.3*R)*arc((0,0),1,0,180),dashed);
+dot((0,0)); label("$O$",(0,0),SW,fontsize(8pt));
+draw((0,0)--(s*dir(70)),heavygreen); label("$s$",0.8*s*dir(70),E,heavygreen+fontsize(8pt));
+draw((0,0)--(R*dir(-30)),gray); label("$r$",0.75*R*dir(-30),S,fontsize(8pt));
+\end{asy}
+
+A pyramid with base area $4\pi r^2$ and height $r$ has, at distance $s$ from its apex, a cross-section of area $4\pi r^2\left(\dfrac sr\right)^2=4\pi s^2$: exactly the area of the shell of radius $s$. So ``unwrapping'' the shells into flat layers stacks them into this pyramid, and indeed its volume is $\dfrac13\cdot4\pi r^2\cdot r=\dfrac43\pi r^3$.

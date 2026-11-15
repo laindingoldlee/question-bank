@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2157897_geometry
+% Stable identity: aops-topic-2157897-q01
+Put the river on the $x$-axis, with me at $(0,2)$; the cabin is then at $(3,4)$. Reflect the cabin in the river to the point $(3,-4)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair Me=(0,2), Cab=(3,4), Cr=(3,-4), Rp=(1,0);
+fill((-1,-0.25)--(4.5,-0.25)--(4.5,0)--(-1,0)--cycle,paleblue);
+draw((-1,0)--(4.5,0),blue+linewidth(1));
+draw(Me--Rp--Cab,linewidth(1));
+draw(Rp--Cr,dashed); draw(Cab--Cr,dotted);
+dot(Me); dot(Cab); dot(Cr); dot(Rp,red);
+label("you $(0,2)$",Me,W); label("cabin $(3,4)$",Cab,E); label("$(3,-4)$",Cr,E); label("$R$",Rp,NE,red);
+label("river",(4.4,0),N,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+If I walk to a point $R$ on the river and then to the cabin, the second leg has the same length as the segment from $R$ to the reflected point $(3,-4)$, because the river is the perpendicular bisector of the segment joining the cabin and its reflection. So the length of the route equals the length of the broken path from $(0,2)$ through $R$ to $(3,-4)$, which is at least the straight distance
+\[\sqrt{(3-0)^2+(-4-2)^2}=\sqrt{45}=3\sqrt5 .\]
+Equality holds when $R$ lies on the segment from $(0,2)$ to $(3,-4)$, which crosses the river at $R=(1,0)$. The shortest route has length $\boxed{3\sqrt5}\approx6.71$ miles.

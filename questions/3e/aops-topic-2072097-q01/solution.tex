@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2072097_mod_at_its_finest
+% Stable identity: aops-topic-2072097-q01
+Fix $y$ and put $M=2020-y$, so we count pairs $(x,z)$ of positive integers with $x+z=M$, $x$ odd and $4\nmid z$.
+
+\emph{$M$ even} ($y$ even). Then $z=M-x$ is odd, so $4\nmid z$ automatically; the odd $x$ with $1\le x\le M-1$ number $\dfrac {M}{2}$.
+
+\emph{$M$ odd} ($y$ odd). Then $z$ runs over the even numbers $2,4,\dots,M-1$, and we need $z\equiv2\pmod4$; there are $\left\lfloor\dfrac{M+1}{4}\right\rfloor$ such $z$.
+
+\textbf{Even $y$.} Write $y=2t$ with $1\le t\le1009$; $3\nmid y$ iff $3\nmid t$, and $\dfrac {M}{2}=1010-t$. Summing over all $t$ gives $\sum_{t=1}^{1009}(1010-t)=\dfrac{1009\cdot1010}{2}=509545$; the terms with $t=3u$ ($1\le u\le336$) give $\sum_{u=1}^{336}(1010-3u)=339360-169848=169512$. So the even-$y$ contribution is $509545-169512=340033$.
+
+\textbf{Odd $y$.} Write $y=2s-1$ with $1\le s\le1009$; then $\left\lfloor\dfrac{M+1}{4}\right\rfloor=\left\lfloor\dfrac{1011-s}{2}\right\rfloor$. Put $w=1011-s$, so $2\le w\le1010$, and $3\mid y\iff s\equiv2\pmod 3\iff w\equiv1\pmod3$. Now
+\[
+\sum_{w=2}^{1010}\left\lfloor\dfrac {w}{2}\right\rfloor=2(1+2+\dots+504)+505=255025,
+\]
+and over $w=3j+1$ ($1\le j\le336$), $\left\lfloor\dfrac{3j+1}{2}\right\rfloor$ equals $3i$ for $j=2i$ and $3i+2$ for $j=2i+1$, giving $\sum_{i=1}^{168}3i+\sum_{i=0}^{167}(3i+2)=42588+42420=85008$. So the odd-$y$ contribution is $255025-85008=170017$.
+
+The total is $340033+170017=\boxed{510050}$.

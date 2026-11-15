@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h2433694_forester2015s_problems
+% Stable identity: aops-topic-2433694-q24
+\textbf{Face sums.} The labels add up to $36$ and every vertex lies on $3$ faces, so the six face sums add up to $108$ and each face sum is $18$.
+
+\textbf{Opposite edges.} Take coordinates $\{0,1\}^3$ for the vertices and write $L(v)$ for the label of $v$ and $v'$ for the vertex opposite $v$ (through the centre). Two faces sharing an edge both have sum $18$, so the two remaining vertices of one face have the same sum as the two remaining vertices of the other. For example, the faces $z=0$ and $y=0$ share the edge from $000$ to $100$, so
+\[L(010)+L(110)=L(001)+L(101).\]
+The edges $\{010,110\}$ and $\{001,101\}$ are opposite edges of the cube. In the same way, for every edge $uv$ we get $L(u)+L(v)=L(u')+L(v')$, i.e. $L(u)-L(u')=-\left(L(v)-L(v')\right)$.
+
+\textbf{A constant difference.} Let $d(u)=L(u)-L(u')$. Along every edge $d$ changes sign. Colour the vertices with an even coordinate sum red and the others blue; every edge joins a red and a blue vertex, and the opposite of a red vertex is blue. So all four red vertices have the same value $d(u)=\delta\ne0$: the labels form four opposite pairs (red, blue) whose difference is the same number $\delta$.
+
+Conversely, if the four opposite pairs all have the same difference $\delta$ (red minus blue), then for each pair of opposite faces, say $z=0$ and $z=1$, each face has two red and two blue vertices whose opposites lie on the other face, so the two face sums differ by $2\delta-2\delta=0$. They add up to $36$, so each is $18$. Hence the arrangements are exactly the labelings in which the opposite pairs have a common difference.
+
+\textbf{Counting.} The numbers $1,\dots,8$ split into four pairs with a common difference $|\delta|$ only for
+\[|\delta|=1:\ \{1,2\},\{3,4\},\{5,6\},\{7,8\};\qquad|\delta|=2:\ \{1,3\},\{2,4\},\{5,7\},\{6,8\};\qquad|\delta|=4:\ \{1,5\},\{2,6\},\{3,7\},\{4,8\}\]
+(for $|\delta|=3$, $5$, $6$ or $7$ the number $1$ or $8$ cannot be paired, or two numbers are left over). So a labeling is fixed by choosing the pairing ($3$ ways), which colour gets the larger numbers ($2$ ways), and which red vertex gets each of the four larger numbers ($4!$ ways): $3\cdot2\cdot24=144$ labelings. One of them is shown, with red and blue vertices.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real s=2.2; pair dx=(s,0), dy=(0.95,0.65), dz=(0,s);
+pair P(int i,int j,int k){return i*dx+j*dy+k*dz;}
+int L(int i,int j,int k){ int[][][] t={{{8,1},{3,6}},{{2,7},{5,4}}}; return t[i][j][k];}
+bool even(int i,int j,int k){return (i+j+k)%2==0;}
+// edges (back ones dashed)
+for(int i=0;i<2;++i) for(int j=0;j<2;++j) for(int k=0;k<2;++k){
+  if(i==0){ pen p=(j==1 && k==0)?dashed:solid; draw(P(0,j,k)--P(1,j,k),p);}
+  if(j==0){ pen p=(i==0 && k==0)?dashed:solid; draw(P(i,0,k)--P(i,1,k),p);}
+  if(k==0){ pen p=(i==0 && j==1)?dashed:solid; draw(P(i,j,0)--P(i,j,1),p);}
+}
+for(int i=0;i<2;++i) for(int j=0;j<2;++j) for(int k=0;k<2;++k){
+  pair q=P(i,j,k); pen c=even(i,j,k)?red:blue;
+  dot(q,c);
+  pair d=unit(q-P(0,0,0)/2-(P(1,1,1))/2);
+  label("$"+string(L(i,j,k))+"$",q,d,c);
+}
+\end{asy}
+
+A rotation other than the identity moves some vertex, so it changes every labeling (all labels are different). Hence the $24$ rotations of the cube turn each labeling into $24$ different labelings, and the number of arrangements up to rotation is $\dfrac{144}{24}=6$. The answer is $\boxed{\textbf{(C)}\ 6}$.

@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2622024_remainders_written_in_a_row
+% Stable identity: aops-topic-2622024-q01
+Let $r_k=kn\bmod101$. Since $r_{k+1}\equiv r_k+n\pmod{101}$ and $1\le n\le100$, each step is one of two kinds:
+\begin{itemize}
+\item an increase, $r_{k+1}=r_k+n$ (when $r_k+n\le100$);
+\item a decrease, $r_{k+1}=r_k+n-101<r_k$ (when $r_k+n\ge101$).
+\end{itemize}
+Let $D$ be the number of decreases among the $100$ steps. Adding all the steps, the sum telescopes:
+\[r_{100}-r_0=100n-101D.\]
+Here $r_0=0$, and $100n\equiv-n\pmod{101}$ gives $r_{100}=101-n$. So $101-n=100n-101D$, i.e. $101D=101n-101$, and
+\[D=\boxed{n-1}.\]

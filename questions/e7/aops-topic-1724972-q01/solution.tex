@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1724972_geometry_problem
+% Stable identity: aops-topic-1724972-q01
+Let $a=BC$, $b=CA$, $c=AB=15$. The semiperimeter is $24$, so $a+b=48-15=33$. By the law of cosines,
+\[
+c^2=a^2+b^2-2ab\cos C=(a+b)^2-2ab(1+\cos C),
+\]
+so $225=1089-2ab\cdot\dfrac{40}{27}$, which gives $ab=\dfrac{864\cdot27}{80}=\dfrac{1458}{5}=291.6$.
+
+But for positive $a,b$ with $a+b=33$, AM-GM gives $ab\le\left(\dfrac{a+b}{2}\right)^2=\dfrac{1089}{4}=272.25<291.6$. This is a contradiction, so no such triangle exists. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real c=15;pair A=(-7.5,0),B=(7.5,0);
+real sa=16.5,sb=sqrt(16.5^2-7.5^2);
+draw(xscale(sa)*yscale(sb)*unitcircle,gray+dashed);
+pair Ct=(0,sb);
+real a=18,bb=15;
+real x=A.x+(bb^2-a^2+c^2)/(2*c);pair C=(x,sqrt(bb^2-(x-A.x)^2));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--Ct--B,blue+dashed);
+dot(Ct,blue);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$C_0$",Ct,N,blue);
+label("$c=15$",(A+B)/2,S);label("$b$",(A+C)/2,W);label("$a$",(B+C)/2,SW);
+label("$a+b=33$",(13,-13.5),E,gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Equivalently, $\cos C=\dfrac{(a+b)^2-2ab-c^2}{2ab}=\dfrac{432}{ab}-1\ge\dfrac{432}{272.25}-1=\dfrac{71}{121}\approx0.587$, while $\dfrac{13}{27}\approx0.481$. Geometrically, $C$ lies on the ellipse with foci $A,B$ on which $a+b=33$ (dashed), and the angle $C$ is largest at the top point $C_0$, where $a=b=16.5$ and $\cos C=\dfrac{71}{121}$; the required angle is larger than that. (The formula $R=\dfrac{c}{2\sin C}=\dfrac{405}{8\sqrt{35}}$ would give a value, but it describes no triangle with semiperimeter $24$.)

@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h1490119_probability
+% Stable identity: aops-topic-1490119-q01
+Rotate the cube so that the blue face is on the bottom. The remaining rotations that keep the bottom fixed are the four rotations about the vertical axis. Now place the two red faces among the top and the four side faces:
+\begin{enumerate}
+\item[(i)] one red face is the top: the other red face is a side face, and all four side faces are equivalent under the rotations about the vertical axis: $1$ cube;
+\item[(ii)] both red faces are side faces next to each other: $1$ cube;
+\item[(iii)] both red faces are opposite side faces: $1$ cube.
+\end{enumerate}
+The remaining three faces are green. These three cubes are different: in (i) a red face is opposite the blue one, in (ii) the red faces share an edge and neither is opposite blue, and in (iii) the red faces are opposite each other. The nets below show the three cubes (B blue, R red, G green; the bottom face is the lowest square, the top face the highest).
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+filldraw(shift((0,0)+(-1,0))*unitsquare,palegreen,black+linewidth(0.8)); label("G",(0,0)+(-1,0)+(0.5,0.5));
+filldraw(shift((0,0)+(0,0))*unitsquare,pink,black+linewidth(0.8)); label("R",(0,0)+(0,0)+(0.5,0.5));
+filldraw(shift((0,0)+(1,0))*unitsquare,palegreen,black+linewidth(0.8)); label("G",(0,0)+(1,0)+(0.5,0.5));
+filldraw(shift((0,0)+(2,0))*unitsquare,palegreen,black+linewidth(0.8)); label("G",(0,0)+(2,0)+(0.5,0.5));
+filldraw(shift((0,0)+(0,1))*unitsquare,pink,black+linewidth(0.8)); label("R",(0,0)+(0,1)+(0.5,0.5));
+filldraw(shift((0,0)+(0,-1))*unitsquare,lightblue,black+linewidth(0.8)); label("B",(0,0)+(0,-1)+(0.5,0.5));
+filldraw(shift((5,0)+(-1,0))*unitsquare,palegreen,black+linewidth(0.8)); label("G",(5,0)+(-1,0)+(0.5,0.5));
+filldraw(shift((5,0)+(0,0))*unitsquare,pink,black+linewidth(0.8)); label("R",(5,0)+(0,0)+(0.5,0.5));
+filldraw(shift((5,0)+(1,0))*unitsquare,pink,black+linewidth(0.8)); label("R",(5,0)+(1,0)+(0.5,0.5));
+filldraw(shift((5,0)+(2,0))*unitsquare,palegreen,black+linewidth(0.8)); label("G",(5,0)+(2,0)+(0.5,0.5));
+filldraw(shift((5,0)+(0,1))*unitsquare,palegreen,black+linewidth(0.8)); label("G",(5,0)+(0,1)+(0.5,0.5));
+filldraw(shift((5,0)+(0,-1))*unitsquare,lightblue,black+linewidth(0.8)); label("B",(5,0)+(0,-1)+(0.5,0.5));
+filldraw(shift((10,0)+(-1,0))*unitsquare,pink,black+linewidth(0.8)); label("R",(10,0)+(-1,0)+(0.5,0.5));
+filldraw(shift((10,0)+(0,0))*unitsquare,palegreen,black+linewidth(0.8)); label("G",(10,0)+(0,0)+(0.5,0.5));
+filldraw(shift((10,0)+(1,0))*unitsquare,pink,black+linewidth(0.8)); label("R",(10,0)+(1,0)+(0.5,0.5));
+filldraw(shift((10,0)+(2,0))*unitsquare,palegreen,black+linewidth(0.8)); label("G",(10,0)+(2,0)+(0.5,0.5));
+filldraw(shift((10,0)+(0,1))*unitsquare,palegreen,black+linewidth(0.8)); label("G",(10,0)+(0,1)+(0.5,0.5));
+filldraw(shift((10,0)+(0,-1))*unitsquare,lightblue,black+linewidth(0.8)); label("B",(10,0)+(0,-1)+(0.5,0.5));
+label("(i)",(0.5,-1.6)); label("(ii)",(5.5,-1.6)); label("(iii)",(10.5,-1.6));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So there are $\boxed{3}$ different cubes.
+
+\textbf{Check with Burnside's lemma.} There are $\dfrac{6!}{1!\,2!\,3!}=60$ colourings of a fixed cube, and the rotation group has $24$ elements. A rotation fixes a colouring only if each of its cycles of faces has one colour. Rotations by $90^\circ$ (a $4$-cycle), by $120^\circ$ (two $3$-cycles) and by $180^\circ$ about edge axes (three $2$-cycles) fix nothing, since the colour counts $1,2,3$ do not fit those cycles. A $180^\circ$ rotation about a face axis fixes the two faces on the axis and swaps two pairs of side faces: blue must be on the axis ($2$ ways), the other axis face green, and one swapped pair red ($2$ ways), so it fixes $4$ colourings. With $3$ such rotations, the number of cubes is $\dfrac{60+3\cdot4}{24}=3$.

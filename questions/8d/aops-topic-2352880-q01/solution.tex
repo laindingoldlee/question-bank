@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2352880_a_wellworn_chalkboard
+% Stable identity: aops-topic-2352880-q01
+In such a list the mode appears $m$ times, and since it is the unique mode, every other number appears at most $m-1$ times.
+
+\textbf{Lists with fewer than $t$ distinct numbers.} If the list has at most $t-1$ distinct numbers, then besides the mode there are at most $t-2$ numbers, each written at most $m-1$ times, so
+\[k\le m+(t-2)(m-1).\]
+Conversely, every $k$ with $m\le k\le m+(t-2)(m-1)$ is possible with at most $t-1$ distinct numbers: write the mode $m$ times and distribute the other $k-m$ places among $t-2$ further numbers, each used at most $m-1$ times (a number used $0$ times is simply left out). Since $m-1<m$, the mode stays unique.
+
+\textbf{The least $k$.} So a list of $k$ numbers is forced to have at least $t$ distinct numbers exactly when $k\ge m+(t-2)(m-1)+1$, and
+\[K=m+(t-2)(m-1)+1=mt-m-t+3.\]
+(For example, $m=t=3$: a list $x,x,x,y,y$ has a unique mode written $3$ times and only $2$ distinct numbers, but any $6$ such numbers need a third value; indeed $K=9-3-3+3=6$.)
+
+\textbf{The constants.} $amt+bm+ct+d=mt-m-t+3$ for all integers $m,t\ge2$. Fixing $t$ and comparing the coefficients of $m$ gives $at+b=t-1$ for every $t\ge2$, so $a=1$ and $b=-1$; then $ct+d=3-t$ for every $t$, so $c=-1$ and $d=3$. Hence
+\[a^4+b^4+c^4+d^4=1+1+1+81=\boxed{84}.\]

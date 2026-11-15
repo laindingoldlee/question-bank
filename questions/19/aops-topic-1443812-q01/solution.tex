@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1443812_not_sure_how_this_is_supposed_to_look_like
+% Stable identity: aops-topic-1443812-q01
+Let the bottom radius be $R$ and the height $h$. Because the radius changes linearly with height, the radius at the halfway mark is the average $\dfrac{1}{2}\left(R+\dfrac{R}{2}\right)=\dfrac{3R}{4}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=2,r=1,h=3,e=0.28;
+path el(real y,real rr){return shift(0,y)*scale(rr,e*rr)*unitcircle;}
+draw(el(0,R),linewidth(0.9)); draw(el(h,r),linewidth(0.9));
+draw((-R,0)--(-r,h),linewidth(0.9)); draw((R,0)--(r,h),linewidth(0.9));
+draw(el(h/2,1.5),blue+dashed);
+draw((0,0)--(R,0),red); draw((0,h)--(r,h),red); draw((0,h/2)--(1.5,h/2),red);
+draw((r/2,h)--(2.0,h+0.55),gray); label("$\dfrac{R}{2}$",(2.0,h+0.55),E,red);
+draw((1.0,h/2)--(2.4,h/2+0.75),gray); label("$\dfrac{3R}{4}$",(2.4,h/2+0.75),E,red);
+label("$R$",(R/2,-0.45),S,red);
+draw((-R-0.5,0)--(-R-0.5,h),Arrows); label("$h$",(-R-0.5,h/2),W);
+label("$200$ gal",(1.65,h/2-0.2),E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+A frustum with height $H$ and end radii $a,b$ has volume $\dfrac{\pi H}{3}\left(a^2+ab+b^2\right)$. So
+\[
+V_{\text{full}}=\dfrac{\pi h}{3}\left(R^2+\dfrac{R^2}{2}+\dfrac{R^2}{4}\right)=\dfrac{\pi hR^2}{3}\cdot\dfrac{28}{16},\qquad
+V_{\text{mark}}=\dfrac{\pi h}{6}\left(R^2+\dfrac{3R^2}{4}+\dfrac{9R^2}{16}\right)=\dfrac{\pi hR^2}{3}\cdot\dfrac{37}{32}.
+\]
+Their ratio is $\dfrac{28}{16}\cdot\dfrac{32}{37}=\dfrac{56}{37}$, so the full container holds
+\[
+200\cdot\dfrac{56}{37}=\dfrac{11200}{37}\approx\boxed{302.7}\ \text{gallons}.
+\]

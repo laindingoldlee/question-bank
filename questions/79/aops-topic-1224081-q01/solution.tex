@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1224081_3d_geometry
+% Stable identity: aops-topic-1224081-q01
+The swept solid is a solid of revolution: at height $z$ along the axis it is a disc whose radius $R(z)$ is the largest distance from the axis of a point of the dodecahedron at that height. Since squared distance from the axis is convex, this maximum is attained on an edge, and along an edge $R(z)^2$ is a quadratic in $z$. So
+\[V=\pi\int R(z)^2\,dz\]
+is a sum of integrals of quadratics.
+
+Take the dodecahedron with vertices $(\pm1,\pm1,\pm1)$, $\left(0,\pm\dfrac{1}{\varphi},\pm\varphi\right)$ and cyclic permutations ($\varphi=\dfrac{1+\sqrt5}{2}$, edge $\dfrac{2}{\varphi}$), and the axis through the face centres in direction $(0,\varphi,1)$. Scaled to edge $1$, the vertices lie on four levels: the two faces at heights $\pm h_1$ with $h_1\approx1.1135$ (the inradius), at distance $\approx0.8507$ (the circumradius of a unit pentagon) from the axis, and two rings of five vertices at heights $\pm h_2$, $h_2\approx0.2629$, at distance $\approx1.4013$.
+\begin{itemize}
+\item Between $h_2$ and $h_1$ the farthest points lie on the edges joining the face to the ring, and $R$ grows from $0.8507$ to $1.4013$.
+\item Between $-h_2$ and $h_2$ the farthest points lie on the zigzag edges joining the two rings; $R$ dips to $\approx1.309$ at $z=0$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+real[] zz={-1.1135,-0.9279,-0.7423,-0.5568,-0.3712,-0.2629,-0.1856,0,0.1856,0.2629,0.3712,0.5568,0.7423,0.9279,1.1135};
+real[] rr={0.8507,0.9653,1.08,1.1947,1.3094,1.4013,1.343,1.309,1.343,1.4013,1.3094,1.1947,1.08,0.9653,0.8507};
+path p=(rr[0],zz[0]); path q=(-rr[0],zz[0]);
+for(int i=1;i<zz.length;++i){p=p--(rr[i],zz[i]); q=q--(-rr[i],zz[i]);}
+fill(p--reverse(q)--cycle,palegray); draw(p,blue); draw(q,blue); draw((-0.8507,1.1135)--(0.8507,1.1135),blue); draw((-0.8507,-1.1135)--(0.8507,-1.1135),blue);
+draw((0,-1.35)--(0,1.35),dashed); label("$A_1$",(0,1.1135),N); label("$B_1$",(0,-1.1135),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Carrying out the integrals exactly gives
+\[V=\boxed{\dfrac{\pi\left(24+11\sqrt5\right)\sqrt{10+2\sqrt5}}{60}}\approx9.680.\]

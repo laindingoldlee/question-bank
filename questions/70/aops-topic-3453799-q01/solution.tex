@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3453799_pemnas_2023_semifinal_round_elementary_level_part_b_p2
+% Stable identity: aops-topic-3453799-q01
+(a) Three examples are $\begin{pmatrix}8&1&6\\3&5&7\\4&9&2\end{pmatrix}$, $\begin{pmatrix}4&3&8\\9&5&1\\2&7&6\end{pmatrix}$, $\begin{pmatrix}2&9&4\\7&5&3\\6&1&8\end{pmatrix}$. Every row and column sums to $15$, necessarily $\dfrac{1+\cdots+9}{3}$. (b) Examples are $\begin{pmatrix}16&2&3&13\\5&11&10&8\\9&7&6&12\\4&14&15&1\end{pmatrix}$, $\begin{pmatrix}4&9&5&16\\14&7&11&2\\15&6&10&3\\1&12&8&13\end{pmatrix}$, $\begin{pmatrix}1&15&14&4\\12&6&7&9\\8&10&11&5\\13&3&2&16\end{pmatrix}$. Their common sum is $34=\dfrac{1+\cdots+16}{4}$. Within each group the latter two grids are rotations of the first, which preserve the required sums.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+int[][] A={{8,1,6},{3,5,7},{4,9,2}},B={{16,2,3,13},{5,11,10,8},{9,7,6,12},{4,14,15,1}};for(int i=0;i<=3;++i){draw((i,0)--(i,3));draw((0,i)--(3,i));}for(int i=0;i<3;++i)for(int j=0;j<3;++j)label(string(A[i][j]),(j+.5,2.5-i));for(int i=0;i<=4;++i){draw((5+i,0)--(5+i,4));draw((5,i)--(9,i));}for(int i=0;i<4;++i)for(int j=0;j<4;++j)label(string(B[i][j]),(5+j+.5,3.5-i));label("row sum $15$",(1.5,-.5));label("row sum $34$",(7,-.5));
+\end{asy}

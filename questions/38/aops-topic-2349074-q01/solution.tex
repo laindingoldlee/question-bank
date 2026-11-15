@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2349074_hard_geometry_problem
+% Stable identity: aops-topic-2349074-q01
+\textbf{The bisector.} By the angle bisector theorem, $\dfrac{CK}{KB}=\dfrac{AC}{AB}$, so $\dfrac{AC}{AB}=\dfrac13$.
+
+\textbf{The altitude.} Triangles $CHA$ and $CAB$ are similar (they share the angle at $C$, and both have a right angle, at $H$ and at $A$), so $\dfrac{CH}{CA}=\dfrac{CA}{CB}$, that is, $CH=\dfrac{AC^2}{BC}$. In the same way $HB=\dfrac{AB^2}{BC}$. Hence
+\[\dfrac{CH}{HB}=\left(\dfrac{AC}{AB}\right)^2=\dfrac19.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), B=(10,0), H=(1,0), A=(1,3), K=(2.5,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--H,blue+linewidth(0.9)); draw(A--K,red+linewidth(0.9));
+draw(H+(0,0.35)--H+(0.35,0.35)--H+(0.35,0),blue);
+pair u=unit(B-A), v=unit(C-A);
+draw(A+0.5*u--A+0.5*u+0.5*v--A+0.5*v);
+dot(A); dot(B); dot(C); dot(H,blue); dot(K,red);
+label("$H$",H,S,blue); label("$K$",K,S,red); label("$A$",A,N); label("$B$",B,SE); label("$C$",C,SW);
+\end{asy}
+
+(In the figure $AC=\sqrt{10}$, $AB=3\sqrt{10}$, $BC=10$, $CK=2.5$, $CH=1$ and $HB=9$.) The answer is $\boxed{\textbf{(B) }1:9}$.

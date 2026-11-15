@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3126017_easier_way_to_find_probability
+% Stable identity: aops-topic-3126017-q01
+The number of wins is binomial. For exactly $k$ wins, choose the winning games in $\binom{17}{k}$ ways and multiply by $(\dfrac{3}{4})^k(\dfrac{1}{4})^{17-k}$. Summing the five disjoint cases gives $\boxed{\dfrac{1232411679}{2147483648}}$. Equivalently count at most 4 losses. The exact arithmetic is certified below.
+\begin{verbatim}
+from math import comb
+from fractions import Fraction
+p=sum(Fraction(comb(17,k)*3**k,4**17) for k in range(13,18))
+assert p==Fraction(1232411679,2147483648)
+\end{verbatim}

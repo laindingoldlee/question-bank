@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2292071_prime_numbers
+% Stable identity: aops-topic-2292071-q01
+Let $n=p+1=2q+2=3r+3$ with $p,q,r$ prime. Then $n$ is divisible by $2$ and by $3$, so $n=6m$ with $1\le m\le33$, and
+\[p=6m-1,\qquad q=3m-1,\qquad r=2m-1\]
+must all be prime.
+\begin{itemize}
+\item If $m$ is odd, $3m-1$ is even, so $3m-1=2$, $m=1$, and then $r=1$ is not prime. So $m$ is even.
+\item Modulo $5$: if $m\equiv1$, then $5\mid6m-1$ with $6m-1>5$ (as $m\ge6$); if $m\equiv2$, then $5\mid3m-1$, so $3m-1=5$ and $m=2$; if $m\equiv3$, then $5\mid2m-1$, so $m=3$, which is odd.
+\end{itemize}
+So $m=2$ or $m$ is even with $m\equiv0$ or $4\pmod5$: $m\in\{2,4,10,14,20,24,30\}$. Checking:
+\begin{itemize}
+\item $m=2$: $11,5,3$, all prime; $n=12$.
+\item $m=4$: $23,11,7$, all prime; $n=24$.
+\item $m=10$: $59,29,19$, all prime; $n=60$.
+\item $m=14$: $r=27$ is not prime.
+\item $m=20$: $p=119=7\cdot17$ is not prime.
+\item $m=24$: $p=143=11\cdot13$ is not prime.
+\item $m=30$: $179,89,59$, all prime; $n=180$.
+\end{itemize}
+The sum is $12+24+60+180=\boxed{276}$.

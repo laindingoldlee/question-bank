@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1582862_17_geometry_questions
+% Stable identity: aops-topic-1582862-q17
+The Sun's rays are parallel. At Syene a ray points straight down the pole, i.e.\ towards Earth's centre. At Alexandria the ray makes an angle of $7.2^\circ$ with the pole, which also points towards the centre. The ray at Syene, extended, and the ray at Alexandria are parallel, so (alternate angles) the angle between the two poles, extended to the centre, is also $7.2^\circ$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);real R=3,h=1.6;
+draw(arc(O,R,70,145),linewidth(1));
+pair Sy=R*dir(90),Al=R*dir(125);
+pair Ts=(R+h)*dir(90),Ta=(R+h)*dir(125);
+draw(O--Sy,dashed);draw(O--Al,dashed);
+draw(Sy--Ts,linewidth(1.6));draw(Al--Ta,linewidth(1.6));
+draw(Ts+(0,1.4)--Ts,orange,Arrow(TeXHead));draw(Ta+(0,1.4)--Ta,orange,Arrow(TeXHead));
+pair g=(Ta.x,-sqrt(R^2-Ta.x^2)*(-1));draw(Ta--g,orange+dotted);
+draw(arc(O,0.8,90,125));label("$7.2^\circ$",O+0.85*dir(90),E);
+draw(arc(Ta,0.9,270,305),orange);label("$7.2^\circ$",Ta+1.4*dir(287.5),orange+fontsize(7pt));
+label("Syene",Ts,E,fontsize(8pt));label("Alexandria",Ta,W,fontsize(8pt));
+label("$500$ mi",(R+0.05)*dir(107.5),dir(107.5),fontsize(8pt));
+label("Sun's rays",Ts+(0,1.4),N,orange+fontsize(8pt));
+dot(O);label("centre",O,S,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Not to scale.) So the arc from Syene to Alexandria is $\dfrac{7.2^\circ}{360^\circ}=\dfrac{1}{50}$ of the whole circle, and
+\[
+\text{circumference}\approx50\cdot500=\boxed{25{,}000\text{ miles}}.
+\]

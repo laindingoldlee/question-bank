@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1585893_hard_cp_problem
+% Stable identity: aops-topic-1585893-q01
+On each level the order is forced (always the rightmost), so a way of taking down the decorations is a sequence of four $L$'s (lights) and four $W$'s (wreaths) with no three equal letters in a row.
+
+Such a sequence splits into maximal blocks of equal letters, alternating between $L$-blocks and $W$-blocks, each block of length $1$ or $2$. The $L$-blocks form a composition of $4$ into parts $1$ and $2$; with $k$ parts there are $c_k$ such compositions, where
+\[
+c_2=1\ (2+2),\qquad c_3=3\ (1+1+2\text{ in some order}),\qquad c_4=1\ (1+1+1+1),
+\]
+and the same holds for the $W$-blocks with $m$ parts. Since the blocks alternate, $|k-m|\le1$.
+\begin{itemize}
+\item $k=m$: the sequence may start with either letter, giving $2c_k^2$ sequences: $2(1+9+1)=22$.
+\item $|k-m|=1$: the letter with more blocks must start and end, so there is one way to interleave, giving $c_kc_m$ sequences for each of $(k,m)=(2,3),(3,2),(3,4),(4,3)$: $3+3+3+3=12$.
+\end{itemize}
+The total is $22+12=\boxed{\text{(E) }34}$.

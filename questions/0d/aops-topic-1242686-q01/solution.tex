@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1242686_analytic_geometry_problem
+% Stable identity: aops-topic-1242686-q01
+Reflect $B$ in the $y$-axis to $B'(-2,1)$. For $C$ on the $y$-axis, $BC=B'C$, so $AC+BC=AC+CB'\ge AB'$, with equality when $C$ is on segment $AB'$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(5,5),B=(2,1),B2=(-2,1),C=(0,15/7);
+draw((-3,0)--(6,0),gray,Arrow); draw((0,-0.5)--(0,6),gray,Arrow);
+draw(A--C--B,blue); draw(C--B2,blue+dashed); draw(B--B2,gray+dashed);
+dot(A);dot(B);dot(B2);dot(C); label("$A(5,5)$",A,E); label("$B(2,1)$",B,SE); label("$B'(-2,1)$",B2,SW); label("$C$",C,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Line $AB'$ has slope $\dfrac{5-1}{5+2}=\dfrac{4}{7}$; at $x=0$ it is at $y=1+\dfrac{4}{7}\cdot2=\dfrac{15}{7}$. So $k=\boxed{\dfrac{15}{7}}=2\dfrac{1}{7}$.

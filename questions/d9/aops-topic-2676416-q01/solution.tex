@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2676416_surprisingly_slick_3d_geo
+% Stable identity: aops-topic-2676416-q01
+Let $O$ be the centre of the circle where the hemisphere meets the cylinder, and $r=\dfrac12$.
+
+\emph{Volume.} The hemisphere holds $\dfrac23\pi r^3=\dfrac{\pi}{12}$. Suppose the surface plane meets the axis at the point $X$ with $OX=L$, and cuts only the side wall of the cylinder. The part of the cylinder between $O$ and the plane then has volume $\pi r^2L$: the pieces of the cylinder above and below the plane, on either side of the cross-section through $X$, are congruent (a half-turn about a line through $X$ swaps them). So
+\[\dfrac{\pi}{12}+\dfrac{\pi}{4}L=3\qquad\Longrightarrow\qquad L=\dfrac{12}{\pi}-\dfrac13\approx3.486.\]
+The plane meets the wall where the axial distance from $X$ is at most $r\cot30^\circ=\dfrac{\sqrt3}{2}\approx0.87$, i.e. between about $2.62$ and $4.35$ cm from $O$, so it indeed cuts only the wall of the $8$ cm cylinder, and the hemisphere is full.
+
+\emph{Depth.} $X$ is $L\sin30^\circ=\dfrac L2$ above $O$. The lowest point of the tube is directly below $O$ on the hemisphere, $r=\dfrac12$ below $O$. So the depth is
+\[d=\dfrac L2+\dfrac12=\dfrac6\pi-\dfrac16+\dfrac12=\boxed{\dfrac6\pi+\dfrac13\approx2.24\text{ cm}}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real r=0.5,Lc=8,L=12/pi-1/3,ys=L/2;pair a=dir(30),n=dir(120),O=(0,0);
+pair P1=r*n+(ys-r*n.y)/a.y*a,P2=-r*n+(ys+r*n.y)/a.y*a;
+fill(arc(O,r,120,300)--P2--P1--cycle,lightgray);
+draw(arc(O,r,120,300),linewidth(0.8));draw(r*n--r*n+Lc*a,linewidth(0.8));draw(-r*n--(-r*n+Lc*a),linewidth(0.8));
+draw(O--(Lc+0.6)*a,dashdotted);draw(O--(1.6,0),dotted);draw(arc(O,1.1,0,30));label("$30^\circ$",1.2*dir(15),E,fontsize(7pt));
+draw(P1--P2,linewidth(0.8));draw((-1,ys)--(5.4,ys),dashed);dot(L*a);label("$X$",L*a,NW,fontsize(8pt));dot(O);label("$O$",O,NW,fontsize(8pt));
+draw((5,-r)--(5,ys),Arrows);draw((-0.2,-r)--(5.2,-r),dotted);label("$d$",(5,(ys-r)/2),E,fontsize(8pt));
+\end{asy}

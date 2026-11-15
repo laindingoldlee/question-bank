@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1958532_2004_amc_10a_problem_21
+% Stable identity: aops-topic-1958532-q01
+Two distinct lines pass through the centre of three concentric circles of radii $3$, $2$ and $1$. The lines divide each of the three regions (the inner disc, the middle ring and the outer ring) into four sectors: two in the acute vertical angles and two in the obtuse vertical angles. The shaded region consists of the parts of the outer ring and of the inner disc lying in the acute angles, together with the parts of the middle ring lying in the obtuse angles, as in the figure.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+fill(arc((0,0),3,-12.857142857142858,12.857142857142858)--arc((0,0),2,12.857142857142858,-12.857142857142858)--cycle,gray(0.75));
+fill(arc((0,0),3,167.14285714285714,192.85714285714286)--arc((0,0),2,192.85714285714286,167.14285714285714)--cycle,gray(0.75));
+fill(arc((0,0),2,12.857142857142858,167.14285714285714)--arc((0,0),1,167.14285714285714,12.857142857142858)--cycle,gray(0.75));
+fill(arc((0,0),2,192.85714285714286,347.14285714285717)--arc((0,0),1,347.14285714285717,192.85714285714286)--cycle,gray(0.75));
+fill((0,0)--arc((0,0),1,-12.857142857142858,12.857142857142858)--cycle,gray(0.75));
+fill((0,0)--arc((0,0),1,180-12.857142857142858,180+12.857142857142858)--cycle,gray(0.75));
+draw(circle((0,0),1));draw(circle((0,0),2));draw(circle((0,0),3));
+draw(3.3*dir(12.857142857142858)--3.3*dir(192.85714285714286));draw(3.3*dir(-12.857142857142858)--3.3*dir(167.14285714285714));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The area of the shaded region is $\dfrac{8}{13}$ of the area of the unshaded region. What is the radian measure of the acute angle formed by the two lines?
+
+$\textbf{(A)}\ \dfrac{\pi}{8}\qquad\textbf{(B)}\ \dfrac{\pi}{7}\qquad\textbf{(C)}\ \dfrac{\pi}{6}\qquad\textbf{(D)}\ \dfrac{\pi}{5}\qquad\textbf{(E)}\ \dfrac{\pi}{4}$

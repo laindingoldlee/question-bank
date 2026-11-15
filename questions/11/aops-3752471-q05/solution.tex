@@ -1,0 +1,9 @@
+The hypotenuse $c$ is at most 130, and conversely a right triangle with $c\le130$ fits in its circumdisk of radius $\dfrac{c}{2}$. Since $a b \le \dfrac{c^2}{2}$, if $c\le127$ its area is at most $\dfrac{127^2}{4} < 4056$. No integer right triangle has hypotenuse 128 or 129: the primitive parametrisation $c=k(m^2+n^2)$, with coprime opposite-parity $m>n>0$, excludes both. For $c=130$, this parametrisation gives the unordered leg pairs $(32,126),(50,120),(66,112),(78,104)$. Their largest product is $78\cdot104=8112$. The maximum area is $\boxed{4056}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(104,0),(0,78)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));draw(circle((52,39),65));label("$104$",(52,0),(0,-1));label("$78$",(0,39),(-1,0));
+\end{asy}
+

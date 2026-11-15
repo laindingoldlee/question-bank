@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2936505_2017_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2936505-q23
+The identity $(a+b)(b+c)(c+a)=(a+b+c)(ab+bc+ca)-abc$ reduces the equation to $(a+b+c)(ab+bc+ca)=0$. The first factor vanishes for $331$ triples: for a fixed $a$, there are $21-|a|$ choices of $b$ making $c=-a-b$ lie in range, and their sum is $21+2(20+\cdots+11)=331$. For the second factor, use the exact finite count below, which checks every possible $a,b,c$ and obtains $103$. Both factors vanish only at $(0,0,0)$, since they imply $a^2+b^2+c^2=0$. Therefore the total is $331+103-1=\boxed{433}$.
+\begin{verbatim}
+count = sum(a*b+b*c+c*a == 0
+            for a in range(-10,11)
+            for b in range(-10,11)
+            for c in range(-10,11))
+assert count == 103
+\end{verbatim}

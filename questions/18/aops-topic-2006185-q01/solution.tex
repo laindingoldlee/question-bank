@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2006185_problem_with_mc_solution
+% Stable identity: aops-topic-2006185-q01
+Write the number as $\overline{abcdef}$, so $a$ is the hundred-thousands digit and $f$ the ones digit. The conditions are: all digits distinct, $f$ prime, $f=d+e$, $c=b+d$, $a$ neither prime nor composite, and $a+b+c+d+e+f=21$.
+
+The digits that are neither prime nor composite are $0$ and $1$, and $a\ne0$, so $a=1$. The ones digit is one of $2,3,5,7$.
+\begin{itemize}
+\item $f=2$: then $\{d,e\}$ is $\{1,1\}$ or $\{0,2\}$. The first repeats $1$; the second uses the digit $2$, which is already the ones digit. So $f\ne2$. (This answers the objection: $0$ and $2$ would make the digit $2$ appear twice.)
+\item $f=3$: $\{d,e\}$ is $\{0,3\}$ (repeats $3$) or $\{1,2\}$ (repeats $1$). Impossible.
+\item $f=5$: $\{d,e\}$ is $\{0,5\}$, $\{1,4\}$ or $\{2,3\}$; only $\{2,3\}$ avoids repeating $5$ or $1$. The digit sum gives $1+b+c+5+5=21$, so $b+c=10$, and with $c=b+d$ we get $2b+d=10$. If $d=3$ then $2b=7$, impossible; if $d=2$ then $b=4$, $c=6$, $e=3$. The digits $1,4,6,2,3,5$ are distinct.
+\item $f=7$: $\{d,e\}$ is $\{2,5\}$ or $\{3,4\}$ (the pairs $\{0,7\}$, $\{1,6\}$ repeat a digit). The digit sum gives $b+c=6$, so $2b+d=6$. Then $d=2$ gives $b=2$ (repeat), $d=4$ gives $b=1$ (repeat), and $d=3$ or $d=5$ makes $2b$ odd. Impossible.
+\end{itemize}
+So the number is $\boxed{146235}$, and it is the only one.

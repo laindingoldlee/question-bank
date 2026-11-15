@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2489904_sparklyflowers_1year_aops_anniversary_d
+% Stable identity: aops-topic-2489904-q06
+The altitude $AO$ has length $x$ and is perpendicular to $DC$, so triangle $AOC$ has a right angle at $O$ and
+\[x^2+y^2=AC^2=169.\]
+The only way to write $169$ as a sum of two positive squares is $25+144$, so $x=5$ and $y=12$. The base is $x+y=17$, so $DO=17-12=5>0$ and $O$ is indeed on side $DC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0),O=(5,0),C=(17,0),A=(5,5),B=(22,5);
+draw(A--B--C--D--cycle,linewidth(0.8));
+draw(A--O,dashed); draw(A--C,red);
+draw(O+(0.6,0)--O+(0.6,0.6)--O+(0,0.6));
+label("$A$",A,N); label("$B$",B,N); label("$C$",C,S); label("$D$",D,S); label("$O$",O,S);
+label("$x=5$",(5,2.5),E,fontsize(8pt)); label("$y=12$",(11,0),S,fontsize(8pt)); label("$x=5$",(2.5,0),S,fontsize(8pt));
+label("$13$",(11,2.5),NE,red);
+\end{asy}
+
+The area is base times height: $17\cdot5=\boxed{85}$.

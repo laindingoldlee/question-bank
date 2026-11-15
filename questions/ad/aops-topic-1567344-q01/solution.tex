@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1567344_volume_2_mistake
+% Stable identity: aops-topic-1567344-q01
+\textbf{1.} With $F_0=0$, $F_1=1$: for $n=0$ the claim reads $F_0=F_1$, i.e.\ $0=1$, which is false; for $n=1$ it reads $0+1=2$, also false.
+
+The solution repeatedly splits the last odd-index term with $F_{2k+1}=F_{2k}+F_{2k-1}$. After the even terms $F_{2n},F_{2n-2},\dots,F_2$ have been split off, the term that remains is $F_1$, not $F_0$:
+\[
+F_{2n+1}=F_{2n}+F_{2n-2}+\cdots+F_2+F_1 .
+\]
+The last step silently replaces $F_1$ by $F_0$, and that is only correct if $F_1=F_0$. Since $F_1=1$ and $F_0=0$, the correct identity is
+\[
+\boxed{F_0+F_2+F_4+\cdots+F_{2n}=F_{2n+1}-1}.
+\]
+\emph{Proof by induction.} For $n=0$: $F_0=0=F_1-1$. If it holds for $n$, then
+\[
+F_0+\cdots+F_{2n}+F_{2n+2}=F_{2n+1}-1+F_{2n+2}=F_{2n+3}-1 .
+\]
+
+\textbf{2.} If $F_0=F_1=1$, the telescoping argument above is correct, since now $F_1=F_0$:
+\[
+F_{2n+1}=F_{2n}+F_{2n-2}+\cdots+F_2+F_1=F_{2n}+\cdots+F_2+F_0 .
+\]
+(Equivalently, by induction: $n=0$ gives $F_0=1=F_1$, and the step is the same as in part 1.) For instance $1+2+5=8=F_5$ for the sequence $1,1,2,3,5,8,\dots$. $\blacksquare$

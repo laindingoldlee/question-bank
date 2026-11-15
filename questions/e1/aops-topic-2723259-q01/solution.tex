@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2723259_just_a_rather_easy_problem_but_i_am_not_able_to_solve
+% Stable identity: aops-topic-2723259-q01
+Put $B=(0,0)$ and $A=(26,0)$, and let $\mathbf u=(\cos\theta,\sin\theta)$ be the direction of $\overrightarrow{BC}$. Since $EA\parallel BC$, $E=A+41\mathbf u$, and $C=45\mathbf u$; since $CD\parallel AB$, $D=C+(13,0)$ (going around the pentagon the same way). Then
+\[\overrightarrow{ED}=D-E=(13-26,0)+(45-41)\mathbf u=(-13,0)+4\mathbf u,\]
+so $DE^2=169+16-104\cos\theta=225$, giving $\cos\theta=-\dfrac5{13}$ and $\sin\theta=\dfrac{12}{13}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real u=-5/13,v=12/13;
+pair B=(0,0),A=(26,0),C=45*(u,v),D=C+(13,0),Ep=A+41*(u,v);
+draw(A--B--C--D--Ep--cycle,linewidth(0.8));
+label("$A$",A,SE);label("$B$",B,SW);label("$C$",C,NW);label("$D$",D,N);label("$E$",Ep,NE);
+label("$26$",(A+B)/2,S,fontsize(7pt));label("$45$",(B+C)/2,W,fontsize(7pt));label("$13$",(C+D)/2,N,fontsize(7pt));label("$15$",(D+Ep)/2,N,fontsize(7pt));label("$41$",(Ep+A)/2,E,fontsize(7pt));
+\end{asy}
+
+The vertices are $A(26,0)$, $B(0,0)$, $C\left(-\dfrac{225}{13},\dfrac{540}{13}\right)$, $D\left(-\dfrac{56}{13},\dfrac{540}{13}\right)$, $E\left(\dfrac{133}{13},\dfrac{492}{13}\right)$. The shoelace formula gives the area
+\[\dfrac12\left|0+0-540-588-984\right|=\boxed{1056}.\]

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3180807_2018_emcc_individual_speed_test__exeter_math_club_competition
+% Stable identity: aops-topic-3180807-q16
+The shoelace formula gives triangle area $120$. The side lengths are $\sqrt{288},\sqrt{272},\sqrt{272}$, all exceeding $12$, so the radius-$6$ disks centered at the vertices are disjoint. Also every altitude exceeds $\dfrac{240}{\sqrt{288}}>6$, so each disk cuts out exactly its vertex sector. Their central angles sum to $\pi$, and their total area is $\dfrac{1}{2}\cdot6^2\pi=18\pi$. Therefore the available area is $\boxed{120-18\pi}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(4,8),Bp=(-8,-4),C=(8,-8);draw(A--Bp--C--cycle);draw(arc(A,6,degrees(Bp-A),degrees(C-A)));draw(arc(Bp,6,degrees(C-Bp),degrees(A-Bp)));draw(arc(C,6,degrees(A-C),degrees(Bp-C)));label("$(4,8)$",A,N);label("$(-8,-4)$",Bp,W);label("$(8,-8)$",C,SE);
+\end{asy}

@@ -1,0 +1,19 @@
+In the rectangle, the cutting segment must join a corner to the opposite side. The removed right triangle has one leg equal to a full rectangle side $h$ and the other leg $x$ along the perpendicular side of length $w$, where $(h,w)$ is $(6,7)$ or $(7,6)$. Similarity with the $3$-$4$-$5$ triangle requires $x=\dfrac{3h}{4}$ or $\dfrac{4h}{3}$. The latter exceeds $w$ in either orientation, so $x=\dfrac{3h}{4}$.
+
+The remaining rectangle piece has two right angles. Hence the cut in the original triangle must be parallel to a leg, not its hypotenuse. Matching the nonright angles forces the parallel bases of $V_1$ to be along the original leg of length 3. If $U_1$ has scale factor $k$ relative to the original triangle, those bases are 3 and $3k$. In $V_2$, they are $w$ and $w-x$. Thus
+\[k=\dfrac{w-x}{w}=1-\dfrac{3h}{4w}.\]
+Conversely, these values also match the height-to-base ratio, since $V_1$ has height $4(1-k)$ and $V_2$ has height $h$, so both arrangements exist.
+
+For $(h,w)=(6,7)$, $k=\dfrac{5}{14}$ and $[U_1]=6k^2=\dfrac{75}{98}$. For $(7,6)$, $k=\dfrac{1}{8}$ and $[U_1]=\dfrac{3}{32}$. The minimum is $\dfrac{3}{32}$, giving $\boxed{m+n=35}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real h=6,w=7,k=0.3571428571428571,x=3*h/4;pair A=(0,0),B=(3,0),C=(0,4);fill((0,4*(1-k))--(3*k,4*(1-k))--C--cycle,lightblue);draw(A--B--C--cycle);draw((0,4*(1-k))--(3*k,4*(1-k)));fill((5,0)--(5+x,0)--(5,h)--cycle,lightblue);draw(box((5,0),(5+w,h)));draw((5,h)--(5+x,0));label("$3$",(1.5,0),(0,-1));label("$4$",(0,2),(-1,0));label("$"+string(w)+"$",(5+w/2,h),(0,1));label("$"+string(h)+"$",(5+w,h/2),(1,0));label("$U_1$",(3*k/3,4-4*k/3),(-1,1));label("$U_2$",(5+x/3,h/3));label("$V_1$",(1,1));label("$V_2$",(5+w-.5,h/2));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real h=7,w=6,k=0.125,x=3*h/4;pair A=(0,0),B=(3,0),C=(0,4);fill((0,4*(1-k))--(3*k,4*(1-k))--C--cycle,lightblue);draw(A--B--C--cycle);draw((0,4*(1-k))--(3*k,4*(1-k)));fill((5,0)--(5+x,0)--(5,h)--cycle,lightblue);draw(box((5,0),(5+w,h)));draw((5,h)--(5+x,0));label("$3$",(1.5,0),(0,-1));label("$4$",(0,2),(-1,0));label("$"+string(w)+"$",(5+w/2,h),(0,1));label("$"+string(h)+"$",(5+w,h/2),(1,0));label("$U_1$",(3*k/3,4-4*k/3),(-1,1));label("$U_2$",(5+x/3,h/3));label("$V_1$",(1,1));label("$V_2$",(5+w-.5,h/2));
+\end{asy}

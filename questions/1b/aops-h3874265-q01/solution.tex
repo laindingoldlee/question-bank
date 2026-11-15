@@ -1,0 +1,14 @@
+Since $P$ lies on $AD$, the line $AP$ is simply the internal angle bisector $AD$; the choice of $E$ does not alter $X$. The angle bisector theorem gives $BD=\dfrac{13}{2}$ and $DC=\dfrac{15}{2}$.
+
+The angle-bisector length formula, which follows from Stewart's theorem, gives
+\[
+AD^2=13\cdot15\left(1-\dfrac{14^2}{(13+15)^2}\right)=\dfrac{585}{4},
+\qquad AD=\dfrac{3\sqrt{65}}{2}.
+\]
+Power of $D$ in the circumcircle gives $DA\cdot DX=DB\cdot DC=\dfrac{195}{4}$, so $DX=\dfrac{\sqrt{65}}{2}$. Therefore $AX=AD+DX=2\sqrt{65}$ and $\boxed{m+n=67}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair B=(0,0),C=(14,0),A=(5,12),D=(6.5,0),E=A+13.0/27*(C-A),X=A+4.0/3*(D-A),O=(7,33.0/8);pair P=intersectionpoint(A--D,B--E);draw(circle(O,length(O-A)),gray);draw(A--B--C--cycle);draw(A--X,blue);draw(B--E,dashed);label("$A$",A,(0,1));label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,(0,-1));label("$E$",E,(1,0));label("$P$",P,(-1,0));label("$X$",X,(0,-1));
+\end{asy}

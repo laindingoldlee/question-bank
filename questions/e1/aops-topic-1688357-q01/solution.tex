@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1688357_easy_geometry
+% Stable identity: aops-topic-1688357-q01
+Cut off the four corner triangles $AEH$, $BFE$, $CGF$, $DHG$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(7,0),C=(9,4),D=(2,4);
+pair Ep=(A+B)/2,F=(B+C)/2,G=(C+D)/2,H=(D+A)/2;
+filldraw(Ep--F--G--H--cycle,lightgray,linewidth(0.8));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(B--D,dashed);
+dot(Ep);dot(F);dot(G);dot(H);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$E$",Ep,S);label("$F$",F,E);label("$G$",G,N);label("$H$",H,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The diagonal $BD$ splits the parallelogram into two triangles of equal area, $[ABD]=[CBD]=\dfrac{1}{2}[ABCD]$. Triangle $AEH$ has two sides along $AB$ and $AD$, each half as long as in triangle $ABD$, with the same angle at $A$; so
+\[
+[AEH]=\dfrac{1}{2}\cdot\dfrac{1}{2}\cdot[ABD]=\dfrac{1}{4}[ABD]=\dfrac{1}{8}[ABCD].
+\]
+(Using $[\,\cdot\,]=\dfrac{1}{2}\cdot\text{side}\cdot\text{side}\cdot\sin(\text{included angle})$.) In the same way each of the other three corner triangles has area $\dfrac{1}{8}[ABCD]$, using the diagonal $AC$ for the corners $B$ and $D$. Hence
+\[
+[EFGH]=[ABCD]-4\cdot\dfrac{1}{8}[ABCD]=\dfrac{1}{2}[ABCD],
+\]
+that is, $2[EFGH]=[ABCD]$. $\blacksquare$
+
+(The argument works for any quadrilateral, using that each diagonal splits it into two triangles: the corners at $A$ and $C$ remove $\dfrac{1}{4}([ABD]+[CBD])=\dfrac{1}{4}[ABCD]$, and the corners at $B$ and $D$ remove another $\dfrac{1}{4}[ABCD]$.)

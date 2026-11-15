@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2724495_bmt_2019_geometry_problem_2
+% Stable identity: aops-topic-2724495-q01
+The four vertices of a square form a full set: every triangle on them is a right isosceles triangle.
+
+No full set has $5$ points. No three points can be collinear (a collinear triple has a $180^\circ$ angle, so it is not a non-obtuse triangle). Consider the convex hull of five points.
+\begin{itemize}
+\item If it is a pentagon, its angles add up to $540^\circ$, so some angle is at least $108^\circ$, and that vertex with its two neighbours forms an obtuse triangle.
+\item Otherwise some point $P$ lies inside the hull. Triangulate the hull from one of its vertices; $P$ lies inside one of these triangles, say $XYZ$ (not on a side, as no three points are collinear). The angles $\angle XPY$, $\angle YPZ$, $\angle ZPX$ add up to $360^\circ$, so one of them is at least $120^\circ$, giving an obtuse triangle.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1);draw(A--B--C--D--cycle,linewidth(0.8));draw(A--C,dashed);draw(B--D,dashed);
+dot(A);dot(B);dot(C);dot(D);
+pair X=(2,0.1),Y=(3.2,0.1),Z=(2.6,0.95),P=(2.6,0.4);draw(X--Y--Z--cycle);draw(X--P--Y);draw(P--Z);dot(P);label("$P$",P,S,fontsize(8pt));
+\end{asy}
+
+So the largest full set has $\boxed{4}$ points. (Degenerate ``triangles'' formed by three collinear points are not allowed, which answers the poster's question about collinear configurations.)

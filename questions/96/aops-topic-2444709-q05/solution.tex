@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2444709_5000th_post_mat_problems
+% Stable identity: aops-topic-2444709-q05
+Let $\omega$ be the incircle, with radius $r$. We prove the statement for triangle $ADF$; the other two triangles are handled in exactly the same way, at the vertices $B$ and $C$.
+
+\textbf{The candidate point.} The tangent segments from $A$ are equal, $AD=AF$, and $ID=IF=r$. So $A$ and $I$ both lie on the perpendicular bisector of $DF$, and this bisector is the line $AI$; it is also the bisector of the angle $DAF$. The point $A$ is outside $\omega$, so the segment $AI$ meets $\omega$ in exactly one point; call it $K$. As $K$ lies on the perpendicular bisector of the chord $DF$, we have $KD=KF$, and $K$ is the midpoint of the arc $DF$ of $\omega$ on the side of $A$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(1.2,4), B=(0,0), C=(5.2,0);
+real a=abs(B-C), bb=abs(C-A), c=abs(A-B);
+pair Ic=(a*A+bb*B+c*C)/(a+bb+c);
+real r=Ic.y;
+pair foot(pair P, pair Q, pair X){pair u=unit(Q-P); return P+dot(X-P,u)*u;}
+pair D=foot(A,B,Ic), Ep=foot(B,C,Ic), Fp=foot(C,A,Ic);
+pair KA=Ic+r*unit(A-Ic), KB=Ic+r*unit(B-Ic), KC=Ic+r*unit(C-Ic);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(circle(Ic,r));
+draw(A--Ic,dashed); draw(B--Ic,gray+dashed); draw(C--Ic,gray+dashed);
+draw(D--Fp,gray); draw(D--KA,blue); draw(Fp--KA,blue);
+dot(Ic); dot(D); dot(Ep); dot(Fp);
+dot(KA,red); dot(KB,red); dot(KC,red);
+label("$K$",KA,dir(160),red);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE);
+label("$D$",D,W); label("$E$",Ep,S); label("$F$",Fp,NE); label("$I$",Ic,S);
+\end{asy}
+
+\textbf{$DK$ bisects angle $ADF$.} The line $DA$ is tangent to $\omega$ at $D$. By the tangent-chord angle theorem, the angle between the tangent $DA$ and the chord $DK$ equals half the arc $DK$ that lies inside this angle:
+\[\angle ADK=\dfrac12\,\overset{\frown}{DK}.\]
+The inscribed angle $\angle KDF$ stands on the arc $KF$ (the one not containing $D$), so $\angle KDF=\dfrac12\,\overset{\frown}{KF}$. Since $K$ is the midpoint of the arc $DF$, the arcs $DK$ and $KF$ are equal, and therefore $\angle ADK=\angle KDF$.
+
+\textbf{Conclusion.} The point $K$ lies on the bisector $AI$ of angle $DAF$ and on the bisector $DK$ of angle $ADF$ of triangle $ADF$, so it is the incentre of triangle $ADF$. Since $K$ lies on $\omega$, the incentre of $ADF$ lies on the incircle of $ABC$. In the same way the incentres of $BED$ and $CFE$ are the points where $BI$ and $CI$ meet $\omega$ (the red points in the figure). $\blacksquare$

@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2702928_variables_as_exponents
+% Stable identity: aops-topic-2702928-q01
+\emph{Signs.} If $y<0$ then $2^x=3+5^y$ lies strictly between $3$ and $4$, which no power of $2$ does. If $y\ge0$ then $2^x\ge4$, so $x\ge2$.
+
+\emph{Small $y$.} $y=0,1,2,3$ give $2^x=4,8,28,128$, i.e. the solutions $(2,0)$, $(3,1)$, $(7,3)$.
+
+\emph{$y\ge4$ is impossible.} Then $2^x\ge628$, so $x\ge10$ and $256\mid5^y+3$. The order of $5$ mod $256$ is $64$, and checking the $64$ residues shows $5^y\equiv-3\pmod{256}$ exactly when $y\equiv35\pmod{64}$.
+
+Now work mod the prime $641$. There $5$ also has order $64$, so $5^y\equiv5^{35}\equiv516$ and $2^x\equiv519\pmod{641}$. But $2^{32}\equiv-1\pmod{641}$, so the powers of $2$ mod $641$ are the $64$ residues $\pm2^k$ for $0\le k<32$, and $519$ is not among them. Contradiction.
+
+Hence the solutions are $\boxed{(x,y)=(2,0),\ (3,1),\ (7,3)}$.

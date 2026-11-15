@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1507268_trapezoid
+% Stable identity: aops-topic-1507268-q01
+Equal angles are marked in the sketch:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(7,0),C=(5,3),D=(1.5,3);
+pair O=extension(A,C,B,D);
+fill(A--O--B--cycle,paleblue);fill(C--O--D--cycle,palered);
+draw(A--B--C--D--cycle,linewidth(0.9));draw(A--C);draw(B--D);
+draw(arc(A,0.6,0,degrees(C-A)),blue);draw(arc(C,0.6,180,180+degrees(C-A)),blue);
+draw(arc(B,0.55,degrees(D-B),180),red);draw(arc(B,0.7,degrees(D-B),180),red);
+draw(arc(D,0.55,degrees(B-D),360),red);draw(arc(D,0.7,degrees(B-D),360),red);
+dot(O);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$O$",O,1.5*N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item $AB\parallel CD$ and $AC$ is a transversal, so the alternate angles are equal: $\angle OAB=\angle OCD$.
+\item Likewise, with transversal $BD$: $\angle OBA=\angle ODC$.
+\end{itemize}
+(Also $\angle AOB=\angle COD$ as vertical angles.) So triangles $AOB$ and $COD$ are similar by AA, with $A\leftrightarrow C$, $B\leftrightarrow D$, $O\leftrightarrow O$. Corresponding sides are proportional:
+\[
+\dfrac{AO}{CO}=\dfrac{BO}{DO}=\dfrac{AB}{CD}.\qquad\blacksquare
+\]
+So the diagonals of a trapezoid cut each other in the ratio of the parallel sides. (The other two triangles, $AOD$ and $BOC$, are in general not similar, but they have equal areas.)

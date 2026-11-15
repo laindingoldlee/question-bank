@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2522867_prove_fibonacci_thing
+% Stable identity: aops-topic-2522867-q01
+\textbf{Yes.} Since $F_{m+1}+F_m=F_{m+2}$, the right side equals $F_{n+1}F_{m+2}+F_nF_{m+1}$. So it suffices to prove
+\[F_{n+m+2}=F_{n+1}F_{m+2}+F_nF_{m+1}\qquad(\ast)\]
+for all $n,m\ge0$. Fix $m$ and use strong induction on $n$.
+
+\textbf{$n=0$:} $F_1F_{m+2}+F_0F_{m+1}=F_{m+2}$. \textbf{$n=1$:} $F_2F_{m+2}+F_1F_{m+1}=F_{m+2}+F_{m+1}=F_{m+3}$.
+
+\textbf{Step.} Suppose $(\ast)$ holds for $n-1$ and $n$, where $n\ge1$. Adding the two equations,
+\[F_{n+m+1}+F_{n+m+2}=\left(F_n+F_{n+1}\right)F_{m+2}+\left(F_{n-1}+F_n\right)F_{m+1},\]
+that is, $F_{n+m+3}=F_{n+2}F_{m+2}+F_{n+1}F_{m+1}$, which is $(\ast)$ for $n+1$.
+
+So the identity holds for all $n,m\ge0$. $\blacksquare$ For example, $n=2$, $m=3$: $F_7=13$ and $F_3F_4+F_3F_3+F_2F_4=2\cdot3+2\cdot2+1\cdot3=13$.
+
+(The indexing matters: with $F_0=F_1=1$ the identity would fail already for $n=m=0$, giving $2$ on the left and $3$ on the right.)

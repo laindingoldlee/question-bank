@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2088520_midpoint_triangle
+% Stable identity: aops-topic-2088520-q01
+It is \textbf{true} for every triangle (not only right triangles), with ratio $1:2$.
+
+Let $a=BC$, $b=CA$, $c=AB$. Triangles $Bm_1m_2$ and $BAC$ share the angle at $B$, and $\dfrac{Bm_1}{BA}=\dfrac{Bm_2}{BC}=\dfrac{1}{2}$, so they are similar (SAS) and $m_1m_2=\dfrac{AC}{2}=\dfrac {b}{2}$. In the same way $m_2m_3=\dfrac{AB}{2}=\dfrac {c}{2}$ and $m_1m_3=\dfrac{BC}{2}=\dfrac {a}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.2,3.4), B=(0,0), C=(5.2,0);
+pair m1=(A+B)/2, m2=(B+C)/2, m3=(A+C)/2;
+fill(m1--m2--m3--cycle,paleblue);
+draw(A--B--C--cycle,linewidth(0.9)); draw(m1--m2--m3--cycle,blue+linewidth(1));
+dot(A); dot(B); dot(C); dot(m1); dot(m2); dot(m3);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE);
+label("$m_1$",m1,W); label("$m_2$",m2,S); label("$m_3$",m3,NE);
+pair nb=unit(rotate(-90)*(m2-m1)), nc=unit(rotate(-90)*(m3-m2));
+label("$\dfrac{b}{2}$",(m1+m2)/2+0.32*nb,blue+fontsize(8pt)); label("$\dfrac{c}{2}$",(m2+m3)/2+0.32*nc,blue+fontsize(8pt)); label("$\dfrac{a}{2}$",(m1+m3)/2,S,blue+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the sides of triangle $m_1m_2m_3$ are half the sides of triangle $ABC$, and the triangles are similar (SSS), with ratio $1:2$.
+
+Note the correspondence of vertices: each vertex of $ABC$ corresponds to the midpoint of the opposite side, so $\triangle ABC\sim\triangle m_2m_3m_1$ ($A\leftrightarrow m_2$, $B\leftrightarrow m_3$, $C\leftrightarrow m_1$). With the letters in the order written in the question, $\triangle ABC\sim\triangle m_1m_2m_3$ would match $A$ with $m_1$, which is wrong in general; but as triangles, $m_1m_2m_3$ and $ABC$ are always similar. (In fact the three midlines cut $ABC$ into four congruent triangles, each similar to $ABC$.)

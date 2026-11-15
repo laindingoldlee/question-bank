@@ -1,0 +1,7 @@
+There are $\dfrac{n(n-3)}{2}$ diagonals in total. Each red vertex is incident to $n-3$ diagonals, and the red-to-red diagonal has been counted twice. Therefore $137=\dfrac{n(n-3)}{2}-2(n-3)+1=\dfrac{(n-4)(n-3)}{2}+1$. Thus $(n-4)(n-3)=272=16\cdot17$, giving $\boxed{n=20}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p;for(int i=0;i<20;++i)p.push(2*dir(18*i));for(int i=0;i<20;++i){draw(p[i]--p[(i+1)%20]);dot(p[i],i%10==0?red:black);}draw(p[0]--p[10],red+dashed);label("A",p[0],E);label("B",p[10],W);label("20 vertices",(0,2.5));
+\end{asy}

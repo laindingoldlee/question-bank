@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2623784_what_is_lte
+% Stable identity: aops-topic-2623784-q01
+Note $x\ne-y$ (otherwise $p\mid x-y=2x$, impossible as $p$ is odd and $p\nmid x$), so $x^n\ne y^n$ and all valuations are defined. Write $x^n-y^n=(x-y)\,T_n$ with $T_n=x^{n-1}+x^{n-2}y+\cdots+y^{n-1}$.
+
+\textbf{Step 1: $p\nmid n$.} Since $y\equiv x\pmod p$, $T_n\equiv nx^{n-1}\not\equiv0\pmod p$. So $v_p\left(x^n-y^n\right)=v_p(x-y)$.
+
+\textbf{Step 2: $n=p$.} Write $y=x+k$ with $p\mid k$. By the binomial theorem, since $p^2\mid k^2$,
+\[x^{p-1-i}y^i=x^{p-1-i}(x+k)^i\equiv x^{p-1}+ikx^{p-2}\pmod{p^2}\qquad(0\le i\le p-1).\]
+Summing over $i$,
+\[T_p\equiv px^{p-1}+kx^{p-2}\cdot\dfrac{p(p-1)}{2}\pmod{p^2}.\]
+As $p$ is odd, $\dfrac{p-1}{2}$ is an integer, so the last term is a multiple of $pk$, hence of $p^2$. Thus $T_p\equiv px^{p-1}\pmod{p^2}$: $p\mid T_p$ but $p^2\nmid T_p$. So $v_p\left(x^p-y^p\right)=v_p(x-y)+1$. Moreover $x^p,y^p$ again satisfy the hypotheses.
+
+\textbf{Step 3: general $n$.} Write $n=p^em$ with $p\nmid m$. By induction on $e$, using Step 2 for the pair $x^{p^{j}},y^{p^{j}}$ at each stage,
+\[v_p\left(x^{p^e}-y^{p^e}\right)=v_p(x-y)+e.\]
+Applying Step 1 to $X=x^{p^e}$, $Y=y^{p^e}$ and the exponent $m$ gives $v_p\left(x^n-y^n\right)=v_p(x-y)+e=v_p(x-y)+v_p(n)$. $\blacksquare$
+
+\textbf{(b)} Take $p=3$, $x=10$, $y=1$: $v_3\left(10^{27}-1\right)=v_3(9)+v_3(27)=2+3=5$. So the largest power is $\boxed{3^5=243}$. (A partial check: $10^{27}-1=9R$, where $R=111\cdots1$ has $27$ ones. The digit sum of $R$ is $27$, so $9\mid R$ and $3^4\mid10^{27}-1$, consistent with the answer.)

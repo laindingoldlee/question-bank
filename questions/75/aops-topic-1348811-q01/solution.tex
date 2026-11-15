@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1348811_hinge_theorem
+% Stable identity: aops-topic-1348811-q01
+Triangles $ABM$ and $ACM$ have $BM=CM$ and the common side $AM$; their third sides are $AB$ and $AC$, opposite the angles $\angle AMB$ and $\angle AMC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(4,0), A=(2.8,3), M=(2,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--M,red);
+draw(arc(M,0.45,0,degrees(A-M)),blue); draw(arc(M,0.6,degrees(A-M),180));
+draw((1-0.07,-0.13)--(1+0.07,0.13)); draw((3-0.07,-0.13)--(3+0.07,0.13));
+dot(M);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$M$",M,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Write $m=BM=CM$, $d=AM$, $\beta=\angle AMB$ and $\gamma=\angle AMC$. By the law of cosines,
+\[
+AB^2=d^2+m^2-2dm\cos\beta,\qquad AC^2=d^2+m^2-2dm\cos\gamma .
+\]
+Since $AB>AC$, subtracting gives $2dm(\cos\gamma-\cos\beta)>0$, so $\cos\beta<\cos\gamma$. The cosine is strictly decreasing on $[0^\circ,180^\circ]$, hence $\beta>\gamma$, that is $\angle AMB>\angle AMC$ (this is the converse of the Hinge Theorem in this setting).
+
+The two angles are supplementary, $\beta+\gamma=180^\circ$, so $\beta>\gamma$ forces $\beta>90^\circ$: the angle $\angle AMB$ is obtuse. $\blacksquare$

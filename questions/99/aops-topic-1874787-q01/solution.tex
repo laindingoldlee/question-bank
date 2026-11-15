@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1874787_coordinate_geometry
+% Stable identity: aops-topic-1874787-q01
+All three points lie on the parabola $y=x^2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return x^2;}
+draw((-2.4,0)--(2.6,0),Arrow);draw((0,-0.4)--(0,5.6),Arrow);
+label("$x$",(2.6,0),E);label("$y$",(0,5.6),N);
+draw(graph(f,-2.2,2.3),gray(0.4)+linewidth(1));
+pair P=(-1.5,2.25),Q=(0.8,0.64),R=(2,4);
+draw(P--Q,blue+linewidth(1));draw(Q--R,red+linewidth(1));draw(P--R,dashed);
+dot(P);dot(Q);dot(R);
+label("$(a,a^2)$",P,W);label("$(b,b^2)$",(0.95,0.38),E);label("$(c,c^2)$",R,E);
+label("$a+b$",(-0.65,2.1),blue);label("$b+c$",(1.25,2.2),W,red);
+label("$y=x^2$",(-2.2,4.84),W,gray(0.4));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $a,b,c$ are different, no two of the points share an $x$-coordinate, so the lines through pairs of them are not vertical and have slopes
+\[
+\text{slope of }(a,a^2)(b,b^2)=\dfrac{b^2-a^2}{b-a}=a+b,\qquad
+\text{slope of }(b,b^2)(c,c^2)=\dfrac{c^2-b^2}{c-b}=b+c .
+\]
+If the three points were collinear, these two segments would lie on one line and have equal slopes: $a+b=b+c$, so $a=c$, a contradiction. Hence the points are never collinear.
+
+(Another view: a non-vertical line $y=mx+k$ meets $y=x^2$ where $x^2-mx-k=0$, a quadratic equation with at most two roots, so no line contains three points of the parabola.)

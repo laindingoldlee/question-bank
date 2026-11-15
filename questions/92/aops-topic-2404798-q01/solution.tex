@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2404798_1000th_post_geometry_problems
+% Stable identity: aops-topic-2404798-q01
+\textbf{Upper bound.} A line meets a circle in at most $2$ points, so each side of the square meets each circle in at most $2$ points, and each circle meets the square in at most $4\cdot2=8$ points. Two distinct circles meet in at most $2$ points. Hence there are at most $8+8+2=18$ intersection points.
+
+\textbf{Construction.} Take the square with vertices $(\pm1,\pm1)$ and the circles of radius $\dfrac65$ centred at $\left(\pm\dfrac1{10},0\right)$. The circle centred at $\left(\dfrac1{10},0\right)$ meets
+\begin{itemize}
+\item the side $x=1$ where $y^2=\dfrac{36}{25}-\dfrac{81}{100}=\dfrac{63}{100}$, and the side $x=-1$ where $y^2=\dfrac{36}{25}-\dfrac{121}{100}=\dfrac{23}{100}$;
+\item the sides $y=\pm1$ where $\left(x-\dfrac1{10}\right)^2=\dfrac{11}{25}$, i.e. $x=\dfrac1{10}\pm\sqrt{\dfrac{11}{25}}\approx0.76$ and $-0.56$.
+\end{itemize}
+All these points lie on the sides (their coordinates are between $-1$ and $1$), giving $8$ points; the other circle gives the $8$ mirror images in the $y$-axis, which are different points. The two circles meet at $\left(0,\pm\sqrt{\dfrac{143}{100}}\right)$, outside the square. So all $18$ points are distinct.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw(box((-1,-1),(1,1)),linewidth(0.9));
+draw(circle((0.1,0),1.2),blue); draw(circle((-0.1,0),1.2),red);
+real t=sqrt(0.44);
+pair[] P={(1,sqrt(0.63)),(1,-sqrt(0.63)),(-1,sqrt(0.23)),(-1,-sqrt(0.23)),(0.1+t,1),(0.1-t,1),(0.1+t,-1),(0.1-t,-1),
+ (-1,sqrt(0.63)),(-1,-sqrt(0.63)),(1,sqrt(0.23)),(1,-sqrt(0.23)),(-0.1+t,1),(-0.1-t,1),(-0.1+t,-1),(-0.1-t,-1),
+ (0,sqrt(1.43)),(0,-sqrt(1.43))};
+for(pair p:P) dot(p,linewidth(3));
+\end{asy}
+
+Therefore $N=18$ and $1000N=\boxed{18000}$.

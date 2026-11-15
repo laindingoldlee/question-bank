@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h3477750_a_simply_cherubic_problem_2025_ncjmo_1
+% Stable identity: aops-topic-3477750-q01
+For side length $n\ge2$, the four counts are $(n-2)^3$, $6(n-2)^2$, $12(n-2)$, and $8$. The first three functions are strictly increasing for integer $n\ge2$, so Cerena's, Faith's, and Edna's side lengths can each be recovered uniquely. The last count is always eight corners, so Veronica's report does not determine her side length. Even excluding the three other side lengths leaves infinitely many possibilities. The recoverable cubes are therefore those of $\boxed{\text{Cerena, Faith and Edna}}$.
+\begin{asy}
+size(7cm);
+pair A=(0,0),B=(3,0),C=(3,3),D=(0,3),v=(1.2,.8);
+draw(A--B--C--D--cycle);draw(B--(B+v)--(C+v)--C);draw(D--(D+v)--(C+v));draw(A--(A+v)--(B+v),dashed);draw((A+v)--(D+v),dashed);
+for(int i=1;i<3;++i){draw((i,0)--(i,3),gray);draw((0,i)--(3,i),gray);draw((3,i)--((3,i)+v),gray);draw((i,3)--((i,3)+v),gray);}
+label("$n$",(1.5,0),S);label("corner: 3 faces",C+v,NE);label("edge: 2 faces",B+.5v,SE);label("face interior: 1 face",(1.5,1.5));
+\end{asy}

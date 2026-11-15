@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2473175_counting_problem
+% Stable identity: aops-topic-2473175-q01
+\textbf{All arrangements.} The letters are $L,L,E,E,V$, so there are $\dfrac{5!}{2!\,2!}=30$ arrangements.
+
+\textbf{The two $L$s adjacent.} Glue them into one block $[LL]$. We then arrange $[LL],E,E,V$, four objects of which two are identical: $\dfrac{4!}{2!}=12$ ways. Likewise, the two $E$s are adjacent in $12$ arrangements.
+
+\textbf{Both pairs adjacent.} Arrange $[LL],[EE],V$: $3!=6$ ways.
+
+By inclusion--exclusion, the number of arrangements with no two identical letters adjacent is
+\[30-12-12+6=\boxed{12}.\]
+They are $ELELV$, $ELEVL$, $ELVEL$, $ELVLE$, $EVLEL$, $LELEV$, $LELVE$, $LEVEL$, $LEVLE$, $LVELE$, $VELEL$, $VLELE$.
+
+\textbf{The error.} The student counted the arrangements with the $L$s glued together as $4!$, treating the two remaining $E$s as different letters; the correct count is $\dfrac{4!}{2!}=12$, and the same for the $E$s. (The count $3!$ for both blocks is right, since $[LL]$, $[EE]$ and $V$ are all different.) A negative result is a sure sign that something was overcounted.

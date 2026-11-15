@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h2142021_problem_collection
+% Stable identity: aops-topic-2142021-q07
+The answer is $\boxed{3}$.
+
+\textbf{Every polygon with $n\ge4$ vertices has an interior diagonal.} Let $v$ be a lowest vertex (if there are several, the leftmost of them), and let $u$ and $w$ be its neighbours. The whole polygon lies on or above the horizontal line through $v$, so the interior angle at $v$ is less than $180^\circ$.
+\begin{itemize}
+\item If no other vertex lies in the closed triangle $uvw$, then $uw$ is an interior diagonal: a side of the polygon crossing $uw$ would have to enter the triangle through $uw$ and could leave it neither through $uv$ or $vw$ (sides of the polygon do not cross) nor through $uw$ again, so it would end inside the triangle, at a vertex.
+\item Otherwise, among the vertices other than $u,v,w$ lying in the triangle $uvw$, let $z$ be one farthest from the line $uw$. The line through $z$ parallel to $uw$ cuts off a smaller triangle at $v$ with no vertex inside it, and the same argument shows that no side of the polygon crosses $vz$. Near $v$ the segment $vz$ points into the polygon, so $vz$ is an interior diagonal.
+\end{itemize}
+
+\textbf{Every $n$-gon has at least $n-3$ interior diagonals.} We show by induction on $n$ that an $n$-gon can be cut into triangles by $n-3$ non-crossing interior diagonals. For $n=3$ there is nothing to do. For $n\ge4$, an interior diagonal splits the polygon into a $k$-gon and an $(n-k+2)$-gon with $3\le k\le n-1$; cutting these up by induction uses $(k-3)+(n-k-1)+1=n-3$ diagonals in all. Each of them lies inside the original polygon, and it joins two vertices that are not adjacent there (if two vertices adjacent in the original polygon appeared in a piece as non-adjacent vertices, the side between them would belong to the other piece, which is only possible if that side were the cut itself). So a hexagon has at least $6-3=3$ interior diagonals.
+
+\textbf{A hexagon with exactly three.} Take the hexagon $DAEBFC$ with
+\[D=(0,0),\ A=(10,-2),\ E=(6,0),\ B=(2,9),\ F=(3,5),\ C=(-3,-4).\]
+It is the triangle $DEF$ with three thin triangles $ADE$, $BEF$, $CFD$ attached to its sides.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0), A=(10,-2), Ep=(6,0), B=(2,9), F=(3,5), C=(-3,-4);
+filldraw(D--A--Ep--B--F--C--cycle,paleyellow,linewidth(0.9));
+draw(D--Ep,blue+dashed+linewidth(1)); draw(Ep--F,blue+dashed+linewidth(1)); draw(F--D,blue+dashed+linewidth(1));
+dot(D); dot(A); dot(Ep); dot(B); dot(F); dot(C);
+label("$D$",D,S); label("$A$",A,E); label("$E$",Ep,NE); label("$B$",B,N); label("$F$",F,W); label("$C$",C,SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The sides $DE$, $EF$, $FD$ of the inner triangle are interior diagonals (blue). Every other diagonal has an endpoint at $A$, $B$ or $C$, and near each of these vertices the hexagon is a thin wedge that the other diagonals do not enter:
+\begin{itemize}
+\item from $A$ all segments go to the left; the wedge at $A$ lies between the slopes $-\dfrac{1}{2}$ (to $E$) and $-\dfrac{1}{5}$ (to $D$), while $AF$, $AB$, $AC$ have slopes $-1$, $-\dfrac{11}{8}$, $\dfrac{2}{13}$;
+\item from $B$ all segments go downwards; measured by $\dfrac{\Delta x}{\Delta y}$, the wedge at $B$ lies between $-\dfrac{4}{9}$ (to $E$) and $-\dfrac{1}{4}$ (to $F$), while $BD$, $BA$, $BC$ give $\dfrac{2}{9}$, $-\dfrac{8}{11}$, $\dfrac{5}{13}$;
+\item from $C$ all segments go to the right; the wedge at $C$ lies between the slopes $\dfrac{4}{3}$ (to $D$) and $\dfrac{3}{2}$ (to $F$), while $CE$, $CA$, $CB$ have slopes $\dfrac{4}{9}$, $\dfrac{2}{13}$, $\dfrac{13}{5}$.
+\end{itemize}
+So these six diagonals leave the hexagon immediately, and this hexagon has exactly $3$ interior diagonals. $\blacksquare$

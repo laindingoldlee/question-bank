@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1446654_hard_mathcounts_counting_problem
+% Stable identity: aops-topic-1446654-q01
+Split the word into four blocks of three letters. The allowed letters are
+\[
+\text{block 1: } A,R;\qquad\text{block 2: } S,R;\qquad\text{block 3: } S,T;\qquad\text{block 4: } T,A .
+\]
+Suppose block 1 contains $x$ A's and $3-x$ R's. The A's may only go in blocks 1 and 4, so block 4 contains the other $3-x$ A's, and therefore $x$ T's. The T's may only go in blocks 3 and 4, so block 3 contains $3-x$ T's and hence $x$ S's. The S's may only go in blocks 2 and 3, so block 2 contains $3-x$ S's and hence $x$ R's; then the R's total $(3-x)+x=3$, as needed.
+
+So the contents of all four blocks are determined by $x\in\{0,1,2,3\}$, and in each block the letters can be ordered in $\dbinom{3}{x}$ ways (choose the positions of the first letter type). The number of arrangements is
+\[
+\sum_{x=0}^{3}\dbinom{3}{x}^4=1+81+81+1=\boxed{164}.
+\]

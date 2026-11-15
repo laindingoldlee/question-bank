@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2139528_geometry
+% Stable identity: aops-topic-2139528-q01
+Let $O$ be the centre of the square. The diagonals $AC$ and $BD$ are equal, perpendicular, and bisect each other at $O$, so the line $AC$ is the perpendicular bisector of $BD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(1,0), C=(1,1), D=(0,1), O=(0.5,0.5);
+pair Ept=O+(sqrt(3)/2)*(1,1);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--Ept,linewidth(0.8)); draw(B--D,gray);
+draw(B--Ept,red+linewidth(0.9)); draw(D--Ept,blue+dashed);
+draw(O+0.08*unit(C-A)--O+0.08*unit(C-A)+0.08*unit(B-O)--O+0.08*unit(B-O));
+dot(A); dot(B); dot(C); dot(D); dot(O); dot(Ept);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NW); label("$D$",D,NW); label("$O$",O,W); label("$E$",Ept,NE);
+draw(arc(B,0.3,degrees(Ept-B),90),deepgreen); label("$15^\circ$",B+0.36*dir(76),E,deepgreen+fontsize(7pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $E$ lies on the perpendicular bisector of $BD$, $ED=EB$. Also $EB=AC=BD$. So triangle $BDE$ is equilateral, and $\angle DBE=60^\circ$.
+
+Which point is $E$? The points of line $AC$ at distance $BD$ from $B$ are the apexes of the two equilateral triangles on $BD$, which lie on line $AC$ at distance $\dfrac{\sqrt3}{2}BD$ from $O$, one on each side of $O$. Since $\dfrac{\sqrt3}{2}BD>\dfrac{1}{2}BD=OC=OA$, one of them lies beyond $C$ and the other beyond $A$; only the first is on the ray $AC$. So $E$ lies beyond $C$, and the ray $BC$ lies between the rays $BD$ and $BE$.
+
+The diagonal $BD$ bisects the right angle at $B$, so $\angle DBC=45^\circ$. Therefore
+\[\angle EBC=\angle DBE-\angle DBC=60^\circ-45^\circ=\boxed{15^\circ}.\]

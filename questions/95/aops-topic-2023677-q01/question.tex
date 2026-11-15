@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2023677_2018_mathcounts_state_problem_28
+% Stable identity: aops-topic-2023677-q01
+Let $D$ and $C$ be opposite vertices of a unit square. Two $45^\circ$ sectors of a circle of radius $1$ centred at $D$ are joined to the outside of the square along the two sides of the square through $D$, as shown, giving a figure bounded by the segment $AB$ (which passes through $D$) and the paths $BC$ and $CA$. A quarter-circular arc of radius $1$ is drawn inside the square from $C$ to $D$, centred at one of the other two vertices of the square. What is the probability, as a percent, that a point chosen uniformly at random on arc $CD$ forms an acute triangle with points $A$ and $B$? Express your answer to the nearest tenth.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.2cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0), C=(1,1), Pp=(1,0), Q=(0,1);
+pair A=dir(-45), B=dir(135);
+path shape=A--D--B--arc(D,1,135,90)--C--Pp--arc(D,1,0,-45)--cycle;
+fill(shape, gray(0.9));
+draw(arc(D,1,135,90)--C--Pp--arc(D,1,0,-45), linewidth(0.9));
+draw(A--B, linewidth(0.9));
+draw(D--Pp, gray); draw(D--Q, gray);
+draw(arc(Q,1,0,-90), blue+linewidth(0.9));
+dot(A); dot(B); dot(C); dot(D);
+label("$A$", A, SE); label("$B$", B, NW); label("$C$", C, NE); label("$D$", D, SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

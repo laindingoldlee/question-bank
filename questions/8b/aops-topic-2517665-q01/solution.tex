@@ -1,0 +1,46 @@
+% Source: https://artofproblemsolving.com/community/c3h2517665_converse_of_pitots_theorem
+% Stable identity: aops-topic-2517665-q01
+For a point $P$ and a side line, say $AB$, let $d_{AB}(P)$ be the \emph{signed} distance from $P$ to the line, positive on the side of the line containing the quadrilateral. We use two facts.
+
+\textbf{Fact 1.} The internal angle bisector line at $A$ (extended in both directions) is exactly the set of points $P$ with $d_{AB}(P)=d_{AD}(P)$. Indeed, points at equal (unsigned) distance from lines $AB$ and $AD$ form the two bisector lines at $A$. On the internal bisector line the two signed distances have the same sign (both positive inside the angle, both negative in the vertically opposite angle). On the external bisector line they have opposite signs.
+
+\textbf{Fact 2.} For every point $P$,
+\[[ABCD]=\dfrac12\bigl(AB\cdot d_{AB}(P)+BC\cdot d_{BC}(P)+CD\cdot d_{CD}(P)+DA\cdot d_{DA}(P)\bigr),\]
+since the right side is the sum of the signed areas of triangles $PAB$, $PBC$, $PCD$, $PDA$.
+
+\textbf{A point on three internal bisectors.} The condition is unchanged if $A$ and $C$ are swapped, so we may assume $AB\ge BC$; then $AD-CD=AB-BC\ge0$.
+
+\emph{Case $AB>BC$.} Then $AD>CD$. Let $E$ be the point of side $AB$ with $BE=BC$, and $F$ the point of side $AD$ with $DF=DC$. Then
+\[AE=AB-BC=AD-DC=AF>0,\]
+so $E$ and $F$ are interior points of the sides $AB$ and $AD$. Line $EF$ meets the boundary of the convex quadrilateral only at $E$ and $F$, so $C$ is not on it, and triangle $CEF$ has a circumcentre $O$. Triangle $EBC$ is isosceles with apex $B$, so the perpendicular bisector of $CE$ is the internal bisector line of $\angle ABC$. Likewise the perpendicular bisector of $CF$ is the internal bisector line at $D$ (as $DF=DC$), and that of $EF$ is the internal bisector line at $A$ (as $AE=AF$). So $O$ lies on the internal bisector lines at $A$, $B$ and $D$.
+
+\emph{Case $AB=BC$.} Then $AD=CD$. Both $B$ and $D$ lie on the perpendicular bisector of $AC$, which is the internal bisector line at $B$ (of the isosceles triangle $ABC$) and also at $D$. The internal bisector of $\angle BAD$ meets segment $BD$ at a point $O$, which again lies on the internal bisector lines at $A$, $B$ and $D$.
+
+\textbf{Conclusion.} By Fact 1,
+\[d_{AB}(O)=d_{AD}(O),\qquad d_{AB}(O)=d_{BC}(O),\qquad d_{AD}(O)=d_{CD}(O),\]
+so all four signed distances equal a common value $t$. By Fact 2,
+\[[ABCD]=\dfrac t2\,(AB+BC+CD+DA),\]
+and since $[ABCD]>0$, we get $t>0$. So $O$ lies strictly on the inner side of all four side lines, i.e. inside the convex quadrilateral, at distance $t$ from each side line. The disc of radius $t$ about $O$ lies in each inner half-plane, hence inside $ABCD$, and touches each side line at one point, which therefore lies on the side itself. So the circle with centre $O$ and radius $t$ is inscribed in $ABCD$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real[] t={3,1,0.8,0}; t[3]=1/tan(pi-atan(1/t[0])-atan(1/t[1])-atan(1/t[2]));
+// central angles around the vertices A,B,C,D: 180 - vertex angle
+real[] c; for(int i=0;i<4;++i) c[i]=180-2*degrees(atan(1/t[i]));
+real tAB=-90, tBC=tAB+c[1], tCD=tBC+c[2], tDA=tCD+c[3];
+pair V(real p,real q){return dir((p+q)/2)/Cos((q-p)/2);}
+pair B=V(tAB,tBC), C=V(tBC,tCD), D=V(tCD,tDA), A=V(tDA,tAB+360);
+pair Ep=B+length(C-B)*unit(A-B), Fp=D+length(C-D)*unit(A-D);
+pair O=(0,0);
+draw(unitcircle,blue);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(C--Ep--Fp--cycle,dashed+red);
+draw(A--O,dotted); draw(B--O,dotted); draw(D--O,dotted);
+dot(O); dot(Ep); dot(Fp);
+label("$A$",A,W); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,N);
+label("$E$",Ep,S); label("$F$",Fp,NW); label("$O$",O,dir(150));
+\end{asy}
+
+The sketch shows the case $AB>BC$: the dashed triangle $CEF$ with $BE=BC$, $DF=DC$, $AE=AF$, its circumcentre $O$ on the bisectors from $A$, $B$, $D$ (dotted), and the inscribed circle.

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2425117_100th_post
+% Stable identity: aops-topic-2425117-q07
+Let the triangle be $ABC$ with centre $G$. The distance from the centre of an equilateral triangle with side $s$ to a vertex is $\dfrac{s}{\sqrt3}$, so $GA=\dfrac{4\sqrt3}{\sqrt3}=4$. The sector at $A$ has radius $\dfrac{4\sqrt3}{2}=2\sqrt3$.
+
+The line $AG$ bisects the $60^\circ$ angle at $A$, so it passes through the middle $T$ of the arc at $A$, with $AT=2\sqrt3$. The small circle touches the arc at $T$ from the outside, so its radius is
+\[GT=GA-AT=\boxed{4-2\sqrt3}\approx0.536.\]
+By symmetry the same circle touches the other two arcs at their middles.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real a=4*sqrt(3); pair A=(0,0), B=(a,0), C=(a/2,6), G=(a/2,2); real rr=2*sqrt(3), r=4-2*sqrt(3);
+fill(A--arc(A,rr,0,60)--cycle,rgb(0.85,0.9,1)); fill(B--arc(B,rr,120,180)--cycle,rgb(0.85,0.9,1)); fill(C--arc(C,rr,240,300)--cycle,rgb(0.85,0.9,1));
+draw(arc(A,rr,0,60),blue); draw(arc(B,rr,120,180),blue); draw(arc(C,rr,240,300),blue);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(circle(G,r),red+linewidth(0.9));
+draw(A--G,dashed);
+pair T=A+rr*dir(30);
+dot(G); dot(T); dot((A+B)/2); dot((B+C)/2); dot((A+C)/2);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$G$",G,E); label("$T$",T,W,fontsize(8pt));
+label("$2\sqrt3$",A+rr/2*dir(30),NW,fontsize(8pt));
+\end{asy}

@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1998755_cuboid_prism_problem
+% Stable identity: aops-topic-1998755-q01
+\textbf{Using the $2\times2\times2$ block.} Then every edge of the box is at least $2$, and the volume is at most $8+3\cdot2+6=20$. The boxes with all edges at least $2$ and volume at most $20$ are $2\times2\times2$, $2\times2\times3$, $2\times2\times4$, $2\times2\times5$ and $2\times3\times3$, with surface areas $24,32,40,48,42$. So the surface area is at most $48$.
+
+\textbf{Not using it.} Then the volume is $V\le3\cdot2+6=12$. For a box with integer edges $a,b,c\ge1$,
+\[
+2abc+1-(ab+bc+ca)\ge0 .
+\]
+Indeed, for $a=1$ the left side is $bc-b-c+1=(b-1)(c-1)\ge0$, and it is linear in $a$ with slope $2bc-b-c\ge0$. Hence the surface area is $2(ab+bc+ca)\le4V+2\le4\cdot12+2=50$.
+
+\textbf{Equality.} Lay all three $1\times1\times2$ blocks and all six unit cubes in a row: this is a $1\times1\times12$ box with surface area $2(1+12+12)=\boxed{50}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair dx=(1,0), dy=(0.35,0.28), dz=(0,1);
+for(int i=0;i<12;++i){
+  pair p=i*dx;
+  draw(p--p+dx--p+dx+dz--p+dz--cycle);
+  draw(p+dz--p+dz+dy--p+dx+dz+dy--p+dx+dz);
+}
+draw(12*dx--12*dx+dy--12*dx+dy+dz--12*dx+dz);
+label("$12$",(6,0),S);label("$1$",(0,0.5),W);label("$1$",dz+dy/2,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Using all ten blocks gives at most the $2\times2\times5$ box with area $48$; the maximum $50$ needs a box that leaves the big cube out, which the problem allows ("some of them").

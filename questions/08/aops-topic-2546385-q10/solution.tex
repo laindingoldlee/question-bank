@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2546385_playerryes_100th_post_celebration_problems
+% Stable identity: aops-topic-2546385-q10
+Let $c_n$ be the number of non-plummeting orders of $1,\dots,n$. We show $c_n=2c_{n-1}$.
+
+\emph{Removing $n$.} In a non-plummeting order of $1,\dots,n$, the card after $n$ (if any) is at least $n-1$, so it is $n-1$. Deleting $n$ leaves a non-plummeting order of $1,\dots,n-1$: the only new neighbouring pair is $x$ followed by $n-1$, and $n-1\ge x-1$ always holds.
+
+\emph{Inserting $n$.} Conversely, in a non-plummeting order of $1,\dots,n-1$, the card $n$ can be inserted only at the end or immediately before $n-1$ (anywhere else it would be followed by a card less than $n-1$), and both positions work, since any card may precede $n$.
+
+So $c_n=2c_{n-1}$ with $c_1=1$, giving $c_{10}=2^9=512$. The increasing order and the decreasing order $10,9,\dots,1$ are both non-plummeting, so the probability is $\dfrac{2}{512}=\boxed{\dfrac1{256}}$.

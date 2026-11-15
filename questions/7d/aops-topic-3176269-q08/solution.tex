@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3176269_2023_mbmt_geometry_round__montgomery_blair_math_tournament
+% Stable identity: aops-topic-3176269-q08
+At least two rectangle vertices lie on the same triangle side. They must be adjacent vertices: if opposite vertices lay on that side, the other two would lie on opposite sides of its line, contradicting containment. Use this side as a horizontal base. If rectangle height is $h$, similar triangles give its width $1-\dfrac{2h}{\sqrt3}$, where $0<h<\dfrac{\sqrt3}{2}$. Its perimeter is $2+\left(2-\dfrac{4}{\sqrt3}\right)h$, a decreasing function of $h$. It approaches $\sqrt3$ as $h$ approaches the triangle altitude, and is always larger for nondegenerate rectangles. Therefore the sharp universal lower bound is $\boxed{P=\sqrt3}$, though no nondegenerate rectangle attains it.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw((0,0)--(1,0)--(.5,sqrt(3)/2)--cycle);real h=.4,x=h/sqrt(3);draw((x,0)--(1-x,0)--(1-x,h)--(x,h)--cycle,blue);label("$h$",(x,h/2),W);label("$1$",(.5,0),S);
+\end{asy}

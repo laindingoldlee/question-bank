@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1962594_christmas_problems
+% Stable identity: aops-topic-1962594-q02
+Split the row into maximal blocks (runs) of one colour. The condition says every run has length $1$ or $2$, and the runs alternate in colour.
+
+If the $10$ red stockings form $r$ runs, each of length $1$ or $2$, then exactly $10-r$ of the runs have length $2$, so there are $\binom{r}{10-r}$ ways to choose the run lengths (and $5\le r\le10$). Likewise, $8$ green stockings in $g$ runs give $\binom{g}{8-g}$ ways ($4\le g\le8$). Since the runs alternate, $|r-g|\le1$; when $r=g$ the row may start with either colour (factor $2$), and otherwise the colour with more runs starts.
+
+\textbf{$r=g$:} $2\left[\binom55\binom53+\binom64\binom62+\binom73\binom71+\binom82\binom80\right]=2(10+225+245+28)=1016$.
+
+\textbf{$r=g+1$:} $\binom55\binom44+\binom64\binom53+\binom73\binom62+\binom82\binom71+\binom91\binom80=1+150+525+196+9=881$.
+
+\textbf{$g=r+1$:} $\binom55\binom62+\binom64\binom71+\binom73\binom80=15+105+35=155$.
+
+The total is $1016+881+155=\boxed{2052}$.

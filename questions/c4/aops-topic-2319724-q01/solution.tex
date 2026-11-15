@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2319724_any_shortcuts_to_this_problem
+% Stable identity: aops-topic-2319724-q01
+With radius $r=\dfrac d2$, the volume of a sphere is
+\[V=\dfrac43\pi r^3=\dfrac43\pi\cdot\dfrac{d^3}{8}=\dfrac{\pi d^3}{6}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),1),linewidth(0.9));
+draw(yscale(0.32)*arc((0,0),1,0,180),dashed);
+draw(yscale(0.32)*arc((0,0),1,180,360));
+draw((-1,0)--(1,0),red+linewidth(0.9),Arrows(5));
+label("$d$",(0,0),N,red);
+label("$V=\dfrac{\pi d^3}{6}=137250$",(0,-1),S);
+\end{asy}
+
+So
+\[d^3=\dfrac{6V}{\pi}=\dfrac{6\cdot137250}{\pi}=\dfrac{823500}{\pi}\approx262128.\]
+Since $64^3=262144$, $d\approx64$. More precisely, $63.5^3\approx256048$ and $64.5^3\approx268336$, and $262128$ lies between them, so $d$ rounds to $\boxed{64\text{ cm}}$.

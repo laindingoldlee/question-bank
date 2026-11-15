@@ -1,0 +1,16 @@
+Let $S,T,D$ be the start, turning point, and destination. In triangle $STD$, the angle at $S$ is $\theta$. The interior angle at $T$ is $180^\circ-\alpha$, so the angle at $D$ is $\alpha-\theta$. The sine rule gives
+\[
+\dfrac{ST}{\sin(\alpha-\theta)}
+=\dfrac{SD}{\sin(180^\circ-\alpha)}
+=\dfrac{1200}{\sin\alpha}.
+\]
+Thus the first leg has length
+\[
+\boxed{\dfrac{1200\sin(\alpha-\theta)}{\sin\alpha}\text{ miles}}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair S=(0,5),D=(0,0),T=(5Sin(45)/Sin(75))*dir(-60)+S;draw(S--D,dashed);draw(S--T--D,blue);draw(T--T+.8dir(-60),dashed);draw(arc(S,.7,270,300),red);draw(arc(T,.5,225,300),red);label("$\theta$",S+.95dir(285));label("$\alpha$",T+.8dir(262.5));label("$S$",S,N);label("$T$",T,NE);label("$D$",D,SW);label("$1200$",S--D,W);
+\end{asy}

@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2458251_please_help_confused_on_these_problems
+% Stable identity: aops-topic-2458251-q02
+Write $n=2^a m$ with $m$ odd. The odd divisors of $n$ are the divisors of $m$, so we need $\sigma(m)=1024=2^{10}$, where $\sigma$ is the sum of divisors. Since $\sigma$ is multiplicative, $\sigma\left(p^e\right)$ must be a power of $2$ for every prime power $p^e$ exactly dividing $m$.
+
+\textbf{Lemma.} For an odd prime $p$ and $e\ge1$, $\sigma\left(p^e\right)=1+p+\cdots+p^e$ is a power of $2$ only if $e=1$ and $p+1$ is a power of $2$.
+
+\emph{Proof.} If $e$ is even, $\sigma\left(p^e\right)$ is a sum of $e+1$ odd numbers, an odd number, which is greater than $1$: not a power of $2$. If $e=2f+1$ is odd, then $\sigma\left(p^e\right)=(1+p)\left(1+p^2+p^4+\cdots+p^{2f}\right)$, and the second factor must be a power of $2$. If $f\ge1$, it is greater than $1$, so it is even, so its number of terms $f+1$ is even and $f$ is odd; then $1+p^2+\cdots+p^{2f}=\left(1+p^2\right)\left(1+p^4+\cdots+p^{2f-2}\right)$, so $1+p^2$ is a power of $2$. But $p^2\equiv1\pmod 8$ gives $1+p^2\equiv2\pmod 8$, so $1+p^2=2$, impossible. Hence $f=0$, $e=1$, and $\sigma(p)=p+1$. $\square$
+
+So $m$ is a product of distinct primes $p$ with $p+1$ a power of $2$, and the powers multiply to $2^{10}$. The primes with $p+1\in\{4,8,16,\dots,1024\}$ are $3,7,31,127$ ($15$, $63$, $255$, $511$ and $1023$ are not prime), giving exponents $2,3,5,7$. Distinct exponents from these with sum $10$: $2+3+5$ and $3+7$. So
+\[m=3\cdot7\cdot31=651\qquad\text{or}\qquad m=7\cdot127=889.\]
+Now $n=2^am$ with $2021<n<3021$: for $m=651$ the multiples $1302,2604,5208$ give $n=2604$; for $m=889$ the values $889,1778,3556$ are all outside the range. Hence $n=\boxed{2604}$.

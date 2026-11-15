@@ -1,0 +1,12 @@
+The cut is a side of each rhombus, so both rhombi have the same side length $a$. To leave exactly four outer corners, the two sides at either end of the cut must line up. Thus the outer quadrilateral is a parallelogram with side vectors $u$ and $2v$, where $|u|=|v|=a$.
+Its diagonal vectors are $u+2v$ and $u-2v$. Therefore
+\[49+36=2|u|^2+8|v|^2=10a^2,\qquad49-36=8u\cdot v.\]
+Thus $a^2=\dfrac{17}{2}$ and $u\cdot v=\dfrac{13}{8}$. The area is twice the area spanned by $u,v$, namely
+\[2\sqrt{|u|^2|v|^2-(u\cdot v)^2}=2\sqrt{\dfrac{289}{4}-\dfrac{169}{64}}=\boxed{\dfrac{9\sqrt{55}}{4}}.\]
+Interchanging the two diagonals changes the sign of $u\cdot v$ and reflects an equivalent configuration; the area is unchanged.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair u=(1,0),v=(13/68,sqrt(1-(13/68)^2));pair A=(0,0),B=u,C=u+2v,D=2v,E=v,F=u+v;draw(A--B--C--D--cycle);draw(E--F,linewidth(1.2));draw(A--C,dashed);draw(B--D,dashed);label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$C$",C,(1,1));label("$D$",D,(-1,1));label("$E$",E,(-1,0));label("$F$",F,(1,0));label("$7$",.3C,(1,0));label("$6$",B+.3(D-B),(-1,0));label("$a$",u/2,(0,-1));label("$a$",v/2,(-1,0));
+\end{asy}

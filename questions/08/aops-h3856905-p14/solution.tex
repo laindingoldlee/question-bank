@@ -1,0 +1,7 @@
+Scale the square to $A=(0,0),B=(1,0),C=(1,1),D=(0,1)$. Then $M=(\dfrac{1}{2},0)$, $N=(1,\dfrac{1}{2})$, and the inward equilateral vertex is $X=(\dfrac{3-\sqrt3}{4},\dfrac{1+\sqrt3}{4})$. Taking the dot product of $M-X$ and $C-X$ gives $\cos\angle MXC=\dfrac{1-\sqrt3}{2\sqrt{8-2\sqrt3}}$. Hence the exact answer is $\boxed{\arccos\!\left(\dfrac{1-\sqrt3}{2\sqrt{8-2\sqrt3}}\right)}$. The other equilateral vertex lies outside the square.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1),M=(.5,0),N=(1,.5),X=((3-sqrt(3))/4,(1+sqrt(3))/4);draw(A--B--C--D--cycle);draw(M--N--X--cycle);draw(X--C);pair[] P={A,B,C,D,M,N,X};string[] L={"A","B","C","D","M","N","X"};for(int i=0;i<P.length;++i)label("$"+L[i]+"$",P[i],i==6?(-1,1):unit(P[i]-(.5,.5)));
+\end{asy}

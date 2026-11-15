@@ -1,0 +1,7 @@
+Take $A=(0,0),B=(24,0),C=(55,0)$. Then $D=(12,12\sqrt3)$ and $E=(\dfrac{79}{2},\dfrac{31\sqrt3}{2})$. Rotating the vector $E-D$ by $\pm60^\circ$ gives the two equilateral third vertices $(31,0)$ and $(\dfrac{41}{2},\dfrac{55\sqrt3}{2})$. The first is closer to the line, so $AF+BF+CF=31+7+24=\boxed{62}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(24,0),C=(55,0),D=(12,12*sqrt(3)),E=(79/2,31*sqrt(3)/2),F=(31,0),G=(41/2,55*sqrt(3)/2);draw(A--C);draw(A--D--B);draw(B--E--C);draw(D--F--E);draw(D--G--E,dashed);pair[] P={A,B,C,D,E,F,G};string[] L={"A","B","C","D","E","F","F_2"};for(int i=0;i<P.length;++i)label("$"+L[i]+"$",P[i],i<3||i==5?(0,-1):(0,1));
+\end{asy}

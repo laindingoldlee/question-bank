@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2056460_how_to_quickly_approximate_square_roots
+% Stable identity: aops-topic-2056460-q01
+(a) Upper bound: \(\left(n+\dfrac{k}{2n}\right)^2=n^2+k+\dfrac{k^2}{4n^2}>n^2+k\). Both sides are positive, so \(\sqrt{n^2+k}<n+\dfrac{k}{2n}\).
+
+Lower bound:
+\[
+\left(n+\dfrac{k}{2n+1}\right)^2=n^2+\dfrac{2nk}{2n+1}+\dfrac{k^2}{(2n+1)^2}=n^2+k-\dfrac{k}{2n+1}+\dfrac{k^2}{(2n+1)^2}.
+\]
+Since \(k<2n+1\), we have \(\dfrac{k^2}{(2n+1)^2}<\dfrac{k}{2n+1}\), so the square is less than \(n^2+k\), and \(n+\dfrac{k}{2n+1}<\sqrt{n^2+k}\).
+
+(b) \(44^2=1936\), so \(2020=44^2+84\) with \(84\le 88\). By (a),
+\[
+44.943\ldots=44+\dfrac{84}{89}<\sqrt{2020}<44+\dfrac{84}{88}=44.954\ldots
+\]
+Hence \(\sqrt{2020}=\boxed{44.9\ldots}\) (integer part \(44\), first decimal digit \(9\)). In practice \(n+\dfrac{k}{2n}\) is the quick estimate (one step of Newton's method from \(n\)), and the gap between the two bounds, \(\dfrac{k}{2n(2n+1)}\), shows how accurate it is.

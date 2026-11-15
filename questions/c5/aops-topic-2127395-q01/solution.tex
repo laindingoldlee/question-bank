@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2127395_geometry_peoblem
+% Stable identity: aops-topic-2127395-q01
+By Heron's formula with semiperimeter $s=\dfrac{15+16+17}{2}=24$, the area is
+\[K=\sqrt{24\cdot9\cdot8\cdot7}=\sqrt{12096}=\sqrt{576\cdot21}=24\sqrt{21}.\]
+The altitude to a side of length $\ell$ is $\dfrac{2K}{\ell}$, so the shortest altitude is the one to the longest side, $17$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(17,0), A=(258/34,sqrt(15^2-(258/34)^2)), D=(A.x,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,red+dashed+linewidth(0.8));
+draw(D+(0.6,0)--D+(0.6,0.6)--D+(0,0.6),red);
+dot(A); dot(B); dot(C); dot(D,red);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S,red);
+
+label("$h$",(A+D)/2,E,red);
+label("$15$",(A+B)/2,NW); label("$16$",(A+C)/2,NE); draw((0,-2.3)--(17,-2.3),gray+linewidth(0.6),Arrows(4)); label("$17$",(8.5,-2.3),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[h=\dfrac{2\cdot24\sqrt{21}}{17}=\dfrac{48}{17}\sqrt{21}.\]
+Here $\gcd(48,17)=1$ and $21=3\cdot7$ is squarefree, so $a+b+c=48+17+21=\boxed{86}$.

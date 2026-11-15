@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1204892_mock_mathcounts_state_target_7__tyson_reflects
+% Stable identity: aops-topic-1204892-q01
+Reflecting $(x,y)$ in $x=n$ gives $(2n-x,y)$, and then in $y=n$ gives $(2n-x,2n-y)$. So if $a_k=(x,y)$ then $a_{k+1}=(2k-x,2k-y)$, and the sum of the four coordinates is $x+y+(2k-x)+(2k-y)=4k$. Hence $4k=2016$ and $k=\boxed{504}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair P=(0.3,4.4); real n=2.5; pair Q=(2n-P.x,P.y),R=(2n-P.x,2n-P.y);
+draw((n,-0.5)--(n,5),dashed); draw((-0.5,n)--(5,n),dashed); draw(P--Q,gray,Arrow); draw(Q--R,gray,Arrow);
+dot(P);dot(Q);dot(R); label("$a_k$",P,W); label("$(2k-x,\,y)$",Q,N); label("$a_{k+1}$",R,E); label("$x=k$",(n,5),N); label("$y=k$",(5,n),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

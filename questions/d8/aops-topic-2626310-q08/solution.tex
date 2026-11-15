@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2626310_14_birthday_problems
+% Stable identity: aops-topic-2626310-q08
+Since $10^3=999+1\equiv1\pmod{37}$, the powers $10^k$ are $\equiv1,10,26\pmod{37}$ according as $k\equiv0,1,2\pmod3$. If $N$ has $x$, $y$, $z$ ones in positions of these three types, then $N\equiv x+10y+26z\pmod{37}$, and positions of each type are unlimited. Writing $26\equiv-11$, we need $x+10y-11z\equiv18\pmod{37}$.
+
+Suppose $x+y+z\le4$. Then $x+10y-11z$ lies between $-44$ and $40$, so it equals $18$ or $-19$.
+\begin{itemize}
+\item $x+10y-11z=18$: modulo $10$, $x\equiv z+8$, so $x-z\equiv8\pmod{10}$; as $|x-z|\le4$, $x=z-2$. Then $z\ge2$ and $x+z\le4$ leave $(x,z)=(0,2)$ or $(1,3)$, which need $10y=40$ or $10y=50$, i.e. $y=4$ or $5$: too many ones.
+\item $x+10y-11z=-19$: modulo $10$, $x\equiv z+1$, so $x=z+1$, and $x+z\le4$ gives $z\le1$. Then $10y=11z-19-x<0$, impossible.
+\end{itemize}
+So at least $5$ ones are needed, and $5$ suffice: $x=3$, $z=2$ gives $3+52=55=37+18$, e.g. $N=10^6+10^5+10^3+10^2+1=1101101$, and indeed $1101101=37\cdot29759+18$. The answer is $\boxed{5}$.

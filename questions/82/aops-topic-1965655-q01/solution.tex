@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1965655_mathcounts_school_2011_problem
+% Stable identity: aops-topic-1965655-q01
+A radius to the point of tangency is perpendicular to the tangent line. So the centre of circle $O$ lies on the vertical line $x=4$, and the centre of circle $P$ on $x=13$, both above the axis (the circles contain points above it).
+
+Circle $O$ passes through $(4,0)$ and $(4,8)$, both on the vertical line through its centre, so these are the ends of a vertical diameter and the centre is $(4,4)$. Likewise circle $P$ has the vertical diameter from $(13,0)$ to $(13,10)$ and centre $(13,5)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+draw((-1,0)--(19.5,0),Arrows(TeXHead));draw((0,-1)--(0,11.5),Arrows(TeXHead));
+pair O=(4,4),P=(13,5);
+draw(circle(O,4),blue);draw(circle(P,5),deepgreen);
+draw(O--P,red+linewidth(1));
+draw((4,0)--(4,8),dashed);draw((13,0)--(13,10),dashed);
+dot(O);dot(P);dot((4,0));dot((13,0));dot((4,8));dot((13,10));
+label("$O$",O,W);label("$P$",P,E);label("$(4,0)$",(4,0),S);label("$(13,0)$",(13,0),S);
+label("$A(4,8)$",(4,8),N);label("$(13,10)$",(13,10),N);
+label("$x$",(19.5,0),E);label("$y$",(0,11.5),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The slope of $OP$ is
+\[
+\dfrac{5-4}{13-4}=\boxed{\dfrac{1}{9}} .
+\]

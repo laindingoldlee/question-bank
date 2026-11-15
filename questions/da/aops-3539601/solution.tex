@@ -1,0 +1,9 @@
+Put $A=(0,0),B=(4,0),D=(0,h),C=(4,h)$. The interior equilateral vertex is $E=(2,2\sqrt3)$ and the midpoint of $AD$ is $M = (0 , \dfrac{h}{2})$. At $x=2$, line $MC$ has height $\dfrac{3 h}{4}$. Thus $\dfrac{3 h}{4} = 2 \sqrt{3}$, giving $\boxed{B C = \dfrac{8 \sqrt{3}}{3}}$. This height exceeds $2\sqrt3$, as required for E to be inside.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(4,0),(4,8sqrt(3)/3),(0,8sqrt(3)/3)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--p[3]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));dot(p[3]);label("$D$",p[3],unit(p[3]-labelCentre));pair E=(2,2sqrt(3)),M=(0,4sqrt(3)/3);draw(p[0]--E--p[1]);draw(M--p[2]);label("$E$",E,(1,-1));label("$M$",M,(-1,0));
+\end{asy}
+

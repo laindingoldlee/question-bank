@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3165228_2022_moaa_speed_round__math_open_at_andover
+% Stable identity: aops-topic-3165228-q12
+An affine change of coordinates preserves all midpoint and intersection relations and scales all areas equally, so use the model $A=(-\dfrac{3}{2},3)$, $B=(\dfrac{3}{2},3)$, $C=(2,-4)$, $D=(-2,-4)$, whose diagonals meet at the origin and whose area is $\dfrac{49}{2}$. The actual area is $\dfrac{10}{7}$ times the model area. In the model, the two trapezoids overlap for $-2\le y\le\dfrac{3}{2}$. Their horizontal widths there are $w_1=\dfrac{12}{5}+\dfrac{y}{5}$ and $w_2=\dfrac{24}{11}-\dfrac{5y}{11}$. They are equal at $y=-\dfrac{1}{3}$, with width $\dfrac{7}{3}$. The common region therefore consists of two trapezoids of areas $\dfrac{1}{2}(2+\dfrac{7}{3})\cdot\dfrac{5}{3}=\dfrac{65}{18}$ and $\dfrac{1}{2}(\dfrac{7}{3}+\dfrac{3}{2})\cdot\dfrac{11}{6}=\dfrac{253}{72}$. Their sum is $\dfrac{57}{8}$ in the model, so the requested area is $\dfrac{10}{7}\cdot\dfrac{57}{8}=\boxed{\dfrac{285}{28}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(-1.5,3),Bp=(1.5,3),C=(2,-4),D=(-2,-4),M=A/2,Np=Bp/2,P=C/2,Q=D/2;draw(A--Bp--C--D--cycle,gray);draw(A--Bp--P--Q--cycle,blue);draw(C--D--M--Np--cycle,red);filldraw((-1,-2)--(1,-2)--(7/6,-1/3)--(.75,1.5)--(-.75,1.5)--(-7/6,-1/3)--cycle,lightgray);pair[]v={A,Bp,C,D,M,Np,P,Q};string[]names={"A","B","C","D","M","N","P","Q"};for(int j=0;j<v.length;++j)label("$"+names[j]+"$",v[j],dir(90+45*j));
+\end{asy}

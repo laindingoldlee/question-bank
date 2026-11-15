@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2506973_triangle_area_problem
+% Stable identity: aops-topic-2506973-q01
+\textbf{Right angle.} $AB^2+BC^2=80+20=100=AC^2$, so $\angle ABC=90^\circ$ and the bisector $BD$ makes $45^\circ$ with both legs.
+
+\textbf{Length of $BD$.} The areas of triangles $ABD$ and $DBC$ add up to the area of $ABC$:
+\[\dfrac12\cdot AB\cdot BD\sin45^\circ+\dfrac12\cdot BC\cdot BD\sin45^\circ=\dfrac12\cdot AB\cdot BC,\]
+so
+\[BD=\dfrac{\sqrt2\cdot AB\cdot BC}{AB+BC}=\dfrac{\sqrt2\cdot40}{6\sqrt5}=\dfrac{4\sqrt{10}}{3}.\]
+(By the angle bisector theorem $D$ divides $AC$ with $AD:DC=AB:BC=2:1$, which the sketch shows.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real sx=2*sqrt(5), sy=4*sqrt(5);
+pair B=(0,0),C=(sx,0),A=(0,sy);
+pair D=A+(2/3)*(C-A);
+pair E1=C+(4*sqrt(10)/3)*unit(C-A);
+pair H=(A*sx*sx+C*sy*sy)/(sx*sx+sy*sy);
+fill(B--C--E1--cycle,rgb(0.85,0.92,1));
+draw(A--B--C--cycle,linewidth(0.9)); draw(C--E1,linewidth(0.9)); draw(B--E1); draw(B--D,red);
+draw(B--H,dashed); label("$4$",B+0.55*(H-B),SE,fontsize(8pt));
+draw((0.35,0)--(0.35,0.35)--(0,0.35));
+draw(arc(B,0.9,0,45),red); draw(arc(B,1.1,45,90),red);
+dot(D);dot(E1);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,S);label("$D$",D,NE);label("$E$",E1,SE);
+label("$4\sqrt5$",(0,sy/2),W);label("$2\sqrt5$",(0.62*sx,-0.5));
+\end{asy}
+
+\textbf{Area of $BCE$.} The distance from $B$ to line $AC$ is $\dfrac{AB\cdot BC}{AC}=\dfrac{40}{10}=4$ (twice the area of $ABC$ divided by $AC$). Triangle $BCE$ has base $CE=BD=\dfrac{4\sqrt{10}}3$ on line $AC$ and this height, so
+\[[BCE]=\dfrac12\cdot\dfrac{4\sqrt{10}}{3}\cdot4=\dfrac{8\sqrt{10}}{3}.\]
+Thus $a=8$, $b=10$, $c=3$ and $a+b+c=\boxed{21}$.

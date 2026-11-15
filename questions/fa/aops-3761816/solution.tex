@@ -1,0 +1,9 @@
+A parabola $y=kx^2$ has focus $F = (0 , \dfrac{1}{4k})$. Its reflection property sends an incoming vertical ray through the focus, then sends it vertically again after the second reflection. Thus the two reflection points must have x-coordinates $-6$ and $\dfrac{2}{3}$, giving $P=(-6,36k)$ and $Q = (\dfrac{2}{3} , \dfrac{4 k}{9})$. Their joining line has y-intercept $4k$ (by the two-point line formula). Passing through $F$ requires $4 k = \dfrac{1}{4k}$, so $\boxed{k = \dfrac{1}{4}}$. This geometry is physically consistent: $P$ has height 9 below the starting height 70, and $Q$ has height $\dfrac{1}{9}$ below the target height $\dfrac{3}{2}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+import graph;draw(graph(new real(real x){return x*x/4;},-6.5,3));pair P=(-6,9),F=(0,1),Q=(2/3,1/9);draw((-6,12)--P--Q--(2/3,2),Arrow);dot(F);label("$P$",P,(-1,0));label("$F$",F,(0,1));label("$Q$",Q,(1,-1));label("incoming ray",(-6,12),(0,1));
+\end{asy}
+

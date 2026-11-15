@@ -1,0 +1,9 @@
+Set $A=(0,8),B=(-6,0),C=(6,0)$, using the isosceles altitude. Write $P=(x,y)$ inside the triangle. The right angle $APC$ gives $x^2+y^2-6x-8y=0$. Taking tangents of $\angle ABP=\angle PCB$ gives $\dfrac{8(x+6)-6y}{6(x+6)+8y} = \dfrac{y}{6-x}$; all denominators are positive in the interior. Simplifying gives $x^2+y^2+9y-36=0$, hence $6x+17y=36$. Intersecting with the circle equation gives $P=C$ (excluded) or $P = (- \dfrac{24}{13} , \dfrac{36}{13})$. Line $BP$ meets $AC$ at $D = (2 , \dfrac{16}{3})$, so $\boxed{B D = \dfrac{8 \sqrt{13}}{3}}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,8),(-6,0),(6,0)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));pair P=(-24/13,36/13),D=(2,16/3);draw(p[0]--P--p[2]);draw(p[1]--D);label("$P$",P,(-1,0));label("$D$",D,(1,0));
+\end{asy}
+

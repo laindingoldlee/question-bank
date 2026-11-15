@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2189209_circles_thing
+% Stable identity: aops-topic-2189209-q01
+Let the circle have centre $O$ and radius $R$, and let the chosen point $X$ be at distance $r$ from $O$. The nearest point of the circle to $X$ is on the ray from $O$ through $X$, at distance $R-r$ from $X$. So $X$ is closer to the centre exactly when
+\[r<R-r,\qquad\text{that is,}\qquad r<\dfrac {R}{2} .\]
+These points form the disc of radius $\dfrac {R}{2}$ about $O$ (shaded).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real R=2;
+fill(circle((0,0),R/2),paleblue);
+draw(circle((0,0),R),linewidth(1)); draw(circle((0,0),R/2),blue+dashed);
+pair Pp=0.7*dir(30); pair Q=R*dir(30);
+draw((0,0)--Pp,red); draw(Pp--Q,heavygreen);
+dot((0,0)); dot(Pp);
+label("$O$",(0,0),SW); label("$X$",Pp,NW);
+label("$r$",(0,0)--Pp,SE,red+fontsize(9pt)); label("$R-r$",Pp+0.72*(Q-Pp),NW,heavygreen+fontsize(9pt));
+draw((0,0)--R*dir(-60),dotted); label("$R$",0.78*R*dir(-60),E,fontsize(9pt));
+label("$\dfrac{R}{2}$",(R/2)*dir(200),W,blue+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The probability is the ratio of the areas:
+\[\dfrac{\pi\left(\dfrac {R}{2}\right)^2}{\pi R^2}=\boxed{\dfrac{1}{4}}.\]

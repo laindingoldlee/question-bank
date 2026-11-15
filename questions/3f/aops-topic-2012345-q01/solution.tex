@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h2012345_right_triangles_problem
+% Stable identity: aops-topic-2012345-q01
+Since $PR$ is a diameter, $\angle PAR=\angle PBR=90^\circ$. The hypotenuse $PR=5\sqrt{13}$ is irrational, so in each triangle the two integer sides are the legs, and they satisfy $x^2+y^2=325$. The representations of $325$ as a sum of two positive squares are
+\[
+325=1^2+18^2=6^2+17^2=10^2+15^2 .
+\]
+Because $A$ lies on arc $PQ$ and $Q$ is the midpoint of the semicircle, arc $PA$ is less than $90^\circ$, so the inscribed angle $\angle PRA<45^\circ$ and $PA<AR$; the same holds for $B$. With $PB>PA>1$ we must have $PA=6$, $AR=17$, $PB=10$, $BR=15$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+real r=5*sqrt(13)/2;
+pair P=(-r,0), R=(r,0), Q=(0,r);
+pair A=(-253*sqrt(13)/130, 102*sqrt(13)/65), B=(-25*sqrt(13)/26, 30*sqrt(13)/13);
+pair Sp=extension(P,B,A,R);
+fill(P--A--Sp--B--R--cycle,paleyellow);
+draw(arc((0,0),r,0,180)); draw(P--R);
+draw(P--A--R,blue); draw(P--B--R,red);
+draw(P--A--Sp--B--R--P,linewidth(1));
+dot(P);dot(R);dot(Q);dot(A);dot(B);dot(Sp);
+label("$P$",P,SW); label("$R$",R,SE); label("$Q$",Q,N); label("$A$",A,NW); label("$B$",B,N); label("$S$",Sp,S);
+label("$6$",(P+A)/2,W); label("$10$",P+3*unit(B-P)+0.7*unit((B-P)*(0,-1))); label("$15$",(B+R)/2,NE); label("$17$",(A+R)/2+(1.8,-0.5),S);
+label("$5\sqrt{13}$",(0,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangles $PAS$ and $RBS$ are right-angled at $A$ and $B$ and have equal vertical angles at $S$, so they are similar with ratio $PA:RB=6:15=2:5$. Write $AS=2x$, $PS=2y$, $BS=5x$, $RS=5y$. Then
+\[
+PB=PS+SB=2y+5x=10,\qquad AR=AS+SR=2x+5y=17 .
+\]
+Multiplying the first equation by $2$ and the second by $5$ and subtracting gives $21y=65$, so $y=\dfrac{65}{21}$ and $x=\dfrac{10-2y}{5}=\dfrac{16}{21}$. Thus $AS=\dfrac{32}{21}$ and $SB=\dfrac{80}{21}$, so $AS+SB=\dfrac{112}{21}=\dfrac{16}{3}$.
+
+The perimeter is
+\[
+PA+AS+SB+BR+RP=6+\dfrac{16}{3}+15+5\sqrt{13}=\boxed{\dfrac{79}{3}+5\sqrt{13}}=\dfrac{79+15\sqrt{13}}{3}.
+\]

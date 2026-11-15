@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3164350_2022_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3164350-q06
+Sides are proportional to the reciprocals of their altitudes. The triangle inequalities become $\left|\dfrac{1}{20}-\dfrac{1}{22}\right|<\dfrac{1}{x}<\dfrac{1}{20}+\dfrac{1}{22}$, or $\dfrac{1}{220}<\dfrac{1}{x}<\dfrac{21}{220}$. Thus $\dfrac{220}{21}<x<220$, so the integer possibilities are $11$ through $219$, totaling $\boxed{209}$. Conversely each such reciprocal triple forms a triangle; scaling makes its altitudes exactly the requested values.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(5,0),C=(2,4),H=(2,0),J=B+dot(A-B,C-B)/dot(C-B,C-B)*(C-B);draw(A--B--C--cycle);draw(C--H^^A--J,blue);label("altitudes",(2.5,-.6));
+\end{asy}

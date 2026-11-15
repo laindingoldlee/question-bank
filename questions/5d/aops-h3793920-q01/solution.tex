@@ -1,0 +1,7 @@
+Every subset of at least three vertices forms exactly one convex polygon. Subtract subsets of sizes $0,1,2$ from all $2^7$ subsets: $2^7-1-7-\binom72=\boxed{99}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p;for(int i=0;i<7;++i)p.push(dir(90+360*i/7.0));for(int i=0;i<7;++i){draw(p[i]--p[(i+1)%7]);dot(p[i]);label(string(i+1),p[i],unit(p[i]));}draw(p[0]--p[2]--p[4]--cycle,blue+dashed);
+\end{asy}

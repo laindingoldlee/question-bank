@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2243599_something_i_am_not_understanding
+% Stable identity: aops-topic-2243599-q01
+\textbf{(a)} For $i=1,\ldots,6$ let $X_i=1$ if bin $i$ is empty and $X_i=0$ otherwise. Bin $i$ is empty when all four balls miss it, which has probability $\left(\dfrac{5}{6}\right)^4=\dfrac{625}{1296}$; so $E[X_i]=\dfrac{625}{1296}$. The number of empty bins is $X_1+\cdots+X_6$, and by linearity of expectation
+\[E[X_1+\cdots+X_6]=6\cdot\dfrac{625}{1296}=\boxed{\dfrac{625}{216}}\approx2.89 .\]
+
+\textbf{(b)} The number $\left(\dfrac{5}{6}\right)^4$ is the probability that a \emph{given} bin is empty, not the probability that exactly one bin is empty. Linearity of expectation, $E[X_1+\cdots+X_6]=E[X_1]+\cdots+E[X_6]$, holds for any random variables, dependent or not; outcomes with several empty bins are counted once for each empty bin, which is exactly what the number of empty bins does.
+
+As a check, count by the number $K$ of nonempty bins among the $6^4=1296$ equally likely placements: $K=1$ in $6$ ways, $K=2$ in $\dbinom62(2^4-2)=210$ ways, $K=3$ in $\dbinom63\cdot36=720$ ways (there are $36$ ways to map $4$ balls onto $3$ given bins), $K=4$ in $6\cdot5\cdot4\cdot3=360$ ways. The expected number of empty bins $6-K$ is
+\[\dfrac{5\cdot6+4\cdot210+3\cdot720+2\cdot360}{1296}=\dfrac{3750}{1296}=\dfrac{625}{216}.\]

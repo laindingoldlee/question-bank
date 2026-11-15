@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2360247_math_advent_calendar
+% Stable identity: aops-topic-2360247-q03
+Let the centres be $A,B,C$. Externally tangent circles of radius $2$ have centres $2+2=4$ apart, so $ABC$ is equilateral with side $4$. The point of tangency of two circles lies on the segment joining their centres, at distance $2$ from each, so the tangency points $X$, $Y$, $Z$ are the midpoints of $AB$, $BC$, $CA$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(4,0), C=(2,2*sqrt(3));
+pair Mab=(A+B)/2, Mbc=(B+C)/2, Mca=(C+A)/2;
+fill(arc(A,2,0,60)--arc(C,2,240,300)--arc(B,2,120,180)--cycle,rgb(1,0.8,0.5));
+draw(circle(A,2)); draw(circle(B,2)); draw(circle(C,2));
+draw(A--B--C--cycle,dashed);
+draw(Mab--Mbc--Mca--cycle,blue+linewidth(0.9));
+dot(A); dot(B); dot(C); dot(Mab); dot(Mbc); dot(Mca);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N);
+label("$X$",Mab,1.6*S,Fill(white)); label("$Y$",Mbc,1.6*dir(30),Fill(white)); label("$Z$",Mca,1.6*dir(150),Fill(white));
+label("$2$",(A+Mab)/2,S); label("$2$",(Mab+B)/2,S);
+\end{asy}
+
+\textbf{(a)} $XYZ$ is the triangle of midpoints, so each side is half a side of $ABC$ (midpoint theorem): it is equilateral with side $2$, and its area is
+\[\dfrac{\sqrt3}{4}\cdot2^2=\boxed{\sqrt3}.\]
+
+\textbf{(b)} Inside triangle $ABC$, the three discs cover three $60^\circ$ sectors (one at each vertex), which overlap only at the tangency points. The rest of $ABC$ is the curved region $R$ between the circles (shaded), of area
+\[[ABC]-3\cdot\dfrac{60}{360}\pi\cdot2^2=4\sqrt3-2\pi .\]
+This region $R$ is exactly the part of triangle $XYZ$ outside the circles:
+\begin{itemize}
+\item Triangle $XYZ$ lies inside $ABC$, so its points outside all circles lie in $R$.
+\item Conversely, the part of $ABC$ on $A$'s side of the line $XZ$ is the triangle $AXZ$, whose vertices are at distance at most $2$ from $A$; it lies inside the disc around $A$ (a disc is convex). The same holds at $B$ and at $C$. So every point of $R$ lies on the far side of all three lines $XZ$, $XY$, $YZ$, i.e. inside triangle $XYZ$.
+\end{itemize}
+Hence the required area is $\boxed{4\sqrt3-2\pi}\approx0.645$.

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3210779_problem_7_1987_amc_8
+% Stable identity: aops-topic-3210779-q01
+An edge-interior cube or a corner cube is painted; the six face-center cubes and the one interior cube are not. There are $12$ edge-interior cubes and $8$ corners, giving $\boxed{20}$. Equivalently $27-6-1=20$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair a=(0,0),v=(1.1,.8);for(int i=0;i<3;++i)for(int j=0;j<3;++j){pen p=(i==1&&j==1)?white:lightgray;filldraw((i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle,p,black);}draw((0,3)--v+(0,3)--v+(3,3)--(3,3));draw((3,0)--v+(3,0)--v+(3,3));for(int i=1;i<3;++i){draw((i,3)--v+(i,3));draw((3,i)--v+(3,i));}label("front face",(1.5,-.4));
+\end{asy}

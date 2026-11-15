@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2099144_burnt_donuts
+% Stable identity: aops-topic-2099144-q01
+Exactly $12$ stops and $5$ turn-backs means that the other $3$ cars drive on. Let car $k$ be the fifth car to stop. Cars $1,\dots,k$ act with the first set of probabilities, and cars $k+1,\dots,20$ with the second. We need $4$ stops among cars $1,\dots,k-1$ and $7$ stops among the $20-k$ later cars, so $5\le k\le13$.
+
+The $8$ cars that do not stop are $k-5$ early cars and $13-k$ late cars. If $j$ of the $5$ turn-backs are early cars, then $5-j$ are late cars, $k-5-j$ early cars drive on and $8-k+j$ late cars drive on. Hence the probability is
+\[P=0.2^5\cdot0.1^7\sum_{k=5}^{13}\dbinom{k-1}{4}\dbinom{20-k}{7}\,S_k,\]
+\[S_k=\sum_{j}\dbinom{k-5}{j}\dbinom{13-k}{5-j}\,0.3^{\,j}\,0.5^{\,k-5-j}\,0.25^{\,5-j}\,0.65^{\,8-k+j},\]
+where $j$ runs over $\max(0,k-8)\le j\le\min(5,k-5)$. The terms are:
+\[\begin{array}{c|ccccccccc}
+k&5&6&7&8&9&10&11&12&13\\\hline
+\dbinom{k-1}{4}\dbinom{20-k}{7}&6435&17160&25740&27720&23100&15120&7560&2640&495\\
+\text{term}\times10^{9}&3.093&8.564&13.264&14.658&12.456&8.258&4.154&1.449&0.269
+\end{array}\]
+Adding them (with exact fractions) gives
+\[P=\boxed{\dfrac{1323302326101}{20000000000000000000}}\approx6.62\times10^{-8}.\]
+So the event is extremely unlikely: on average it happens about once every $15$ million days.

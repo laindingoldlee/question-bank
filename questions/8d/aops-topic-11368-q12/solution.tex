@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h11368_mathcounts_problems_5
+% Stable identity: aops-topic-11368-q12
+Folding the net
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+void sqr(pair p,string s){ draw(shift(p)*unitsquare); label(s,p+(0.5,0.5)); }
+sqr((0,1),"$1$"); sqr((1,1),"$4$"); sqr((2,1),"$6$"); sqr((3,1),"$2$"); sqr((1,2),"$3$"); sqr((1,0),"$5$");
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+the opposite faces are $3$ and $5$, $1$ and $6$, $4$ and $2$. The lateral faces are the four faces other than the top and bottom, which form one of the three opposite pairs; the lateral sum is $21$ minus that pair's sum:
+\[21-(3+5)=13,\qquad 21-(1+6)=14,\qquad 21-(4+2)=15.\]
+Only $13$ is prime. The bottom face is equally likely to be any of the $6$ faces, and the pair $\{3,5\}$ is top--bottom in $2$ of these cases, so the probability is $\dfrac{2}{6}=\boxed{\dfrac{1}{3}}$.

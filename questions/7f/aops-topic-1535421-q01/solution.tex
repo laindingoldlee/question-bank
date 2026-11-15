@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1535421_prime_or_composite
+% Stable identity: aops-topic-1535421-q01
+Write $N=19\cdot8^n+17$. Look at $n$ modulo $4$ (for $n\ge1$; $n=0$ gives $N=36$, composite).
+
+\textbf{$n$ even.} Modulo $3$: $19\equiv1$, $8\equiv-1$ and $17\equiv-1$, so $N\equiv(-1)^n-1=0\pmod3$.
+
+\textbf{$n\equiv1\pmod4$.} Modulo $13$: $8^2=64\equiv-1$, so $8^4\equiv1$ and $8^n\equiv8$. Then $N\equiv19\cdot8+17=169=13^2\equiv0\pmod{13}$.
+
+\textbf{$n\equiv3\pmod4$.} Modulo $5$: $8\equiv3$, $3^4=81\equiv1$, so $8^n\equiv3^3=27\equiv2$. Then $N\equiv19\cdot2+17=55\equiv0\pmod5$.
+
+Every $n$ falls in one of these cases (an odd $n$ is $1$ or $3$ modulo $4$). In each case $N$ has a divisor $3$, $13$ or $5$, and $N\ge19+17=36$ is larger than that divisor, so $N$ is composite. $\blacksquare$

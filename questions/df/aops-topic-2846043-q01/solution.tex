@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2846043_geometry_problem_i_cant_solve_mathematically
+% Stable identity: aops-topic-2846043-q01
+Write the sides as $a-d$, $a$, $a+d$ with $d\ge0$; the hypotenuse is the largest, $a+d$. Pythagoras gives
+\[(a-d)^2+a^2=(a+d)^2\iff a^2=4ad\iff a=4d\]
+(as $a>0$). So the sides are $3d,4d,5d$, and $d>0$.
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),A=(4,0),B=(0,3);draw(A--B--C--cycle);draw((0,0.25)--(0.25,0.25)--(0.25,0));
+label("$4d$",(2,0),S);label("$3d$",(0,1.5),W);label("$5d$",(2,1.5),NE);label("$\alpha$",A,5*dir(160));label("$\beta$",B,5*dir(-70));
+\end{asy}
+
+The sines of the acute angles are $\dfrac{3d}{5d}$ and $\dfrac{4d}{5d}$, with sum $\boxed{\dfrac75}$.

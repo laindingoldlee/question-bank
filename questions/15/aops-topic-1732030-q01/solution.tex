@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1732030_paradox_marathon
+% Stable identity: aops-topic-1732030-q01
+The argument treats $S$ as a number, but the series has no finite sum: its partial sums are
+\[
+S_n=1+2+\cdots+2^{n-1}=2^n-1,
+\]
+which grow without bound. So $S$ does not exist as a real number, and the algebra $2S-S=S$ (which uses $S$ as a finite quantity that can be subtracted) is invalid. ``$\infty-\infty$'' is not $-1$.
+
+Doing the computation honestly with partial sums shows what is really true:
+\[
+2S_n-S_n=(2+4+\cdots+2^n)-(1+2+\cdots+2^{n-1})=2^n-1=S_n,
+\]
+and nothing is left over. The trick $rS-S$ is valid for a geometric series $1+r+r^2+\cdots$ only when $|r|<1$, where the partial sums $\dfrac{1-r^n}{1-r}$ converge to $\dfrac{1}{1-r}$. For $r=2$ the formula $\dfrac{1}{1-r}=-1$ is the value that the manipulation produces, but the series diverges, so $\boxed{\text{the error is assigning a finite value }S\text{ to a divergent series}}$.

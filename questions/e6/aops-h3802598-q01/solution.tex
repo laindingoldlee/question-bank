@@ -1,0 +1,7 @@
+No. Uniform closeness of curves does not force convergence of their lengths: the staircase keeps accumulating horizontal and vertical travel separately. Parametrize the true arc by $(r\cos t,r\sin t)$, $0\le t\le\dfrac{\pi}{2}$. Its speed is $\sqrt{r^2\sin^2t+r^2\cos^2t}=r$, so its length is $\int_0^{\dfrac{\pi}{2}}r\,dt=\boxed{\dfrac{\pi r}{2}}$. The whole circumference is consequently $2\pi r$, not $8r$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(arc((0,0),1,0,90),blue);path p=(0,1);for(int k=1;k<=12;++k){real x=k/12.,yp=sqrt(1-((k-1)/12.)^2),y=sqrt(1-x*x);p=p--(x,yp)--(x,y);}draw(p,red);draw((0,1)--(0,0)--(1,0),gray);label("$(0,r)$",(0,1),N);label("$(r,0)$",(1,0),S);
+\end{asy}

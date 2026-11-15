@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2723867_peptagon_reptagon
+% Stable identity: aops-topic-2723867-q02
+With circumradius $R$, the chord from $A$ to the vertex $k$ steps away has length $2R\sin\dfrac{k\pi}7$. Using $\sum_{k=1}^{6}\sin\dfrac{k\pi}{7}=\cot\dfrac{\pi}{14}$,
+\[AB+AC+\cdots+AG=2R\cot\dfrac\pi{14}=\dfrac{n\cot\dfrac\pi{14}}{\sin\dfrac\pi7},\]
+since $n=2R\sin\dfrac\pi7$. So the sum equals $1$ when
+\[n=\sin\dfrac\pi7\tan\dfrac\pi{14}=2\sin^2\dfrac\pi{14}=\boxed{1-\cos\dfrac\pi7}.\]
+(Any positive multiple $m\left(1-\cos\dfrac\pi7\right)$ with $m$ a positive integer also works.)
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair[] V;for(int i=0;i<7;++i)V[i]=dir(90+360*i/7);
+draw(unitcircle,gray);for(int i=0;i<7;++i)draw(V[i]--V[(i+1)%7],linewidth(0.8));
+for(int i=2;i<6;++i)draw(V[0]--V[i]);
+string[] L={"A","B","C","D","E","F","G"};
+for(int i=0;i<7;++i)label("$"+L[i]+"$",V[i],dir(90+360*i/7));
+\end{asy}

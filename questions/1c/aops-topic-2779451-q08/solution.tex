@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2779451_2017_mbmt_team_round__montgomery_blair_math_tournament
+% Stable identity: aops-topic-2779451-q08
+If $A=B$, then $A=42^\circ$. If $B=C$, then $A=180^\circ-84^\circ=96^\circ$. If $A=C$, then $A=\dfrac{180^\circ-42^\circ}{2}=69^\circ$. These three distinct cases give $\boxed{207}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int k=0;k<3;++k){real[] aa={42,96,69};real a=aa[k],bb=42;pair A=(5*k,0),B=A+(3,0),C=A+3*sin(bb*pi/180)/sin((180-a-bb)*pi/180)*dir(a);draw(A--B--C--cycle);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label(string(a)+" degrees",A+(.4,-.6));}
+\end{asy}

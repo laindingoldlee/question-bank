@@ -1,0 +1,7 @@
+If the lengths 2 and 5 occur in the same rectangle, it is $2\times5$, and the other has area 30. Its unordered dimensions are $(1,30),(2,15),(3,10),(5,6)$, giving four pairs. Otherwise write the rectangles as $(2,a),(5,b)$, with $2a+5b=40$. Positive solutions are $(a,b)=(15,2),(10,4),(5,6)$. The first and third were counted already; the middle adds one. Thus there are $\boxed5$ unordered pairs of rectangles.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[] s={"$(2,5);(1,30)$","$(2,5);(2,15)$","$(2,5);(3,10)$","$(2,5);(5,6)$","$(2,10);(5,4)$"};for(int i=0;i<5;++i){real y=-2*i;draw(box((0,y),(2,y+1)));draw(box((3,y),(6,y+1)));label(s[i],(8,y+.5),E);}label("five dimension pairs; not to scale",(5,2));
+\end{asy}

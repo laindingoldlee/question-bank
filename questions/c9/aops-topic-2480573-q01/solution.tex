@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2480573_stumped_for_some_reason
+% Stable identity: aops-topic-2480573-q01
+The circles are
+\[x^2+y^2=25\qquad\text{and}\qquad(x-7)^2+(y-7)^2=25.\]
+The distance between the centres is $7\sqrt2<10$, so the circles meet in two points. Both points satisfy both equations, hence also their difference:
+\[x^2+y^2-\left(x^2-14x+49+y^2-14y+49\right)=0\iff14x+14y=98\iff x+y=7.\]
+This is a line, so it is the line through the two intersection points, i.e. the line of the common chord. (The points are $(3,4)$ and $(4,3)$.) Setting $x=0$ gives the $y$-intercept $\boxed{7}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+draw((-5.5,0)--(13,0),Arrow(6)); draw((0,-5.5)--(0,13),Arrow(6));
+label("$x$",(13,0),E); label("$y$",(0,13),N);
+draw(circle((0,0),5),blue); draw(circle((7,7),5),blue);
+draw((-2,9)--(9,-2),red+linewidth(0.9));
+dot((0,0)); dot((7,7)); dot((3,4)); dot((4,3)); dot((0,7),red);
+label("$(7,7)$",(7,7),NE); label("$O$",(0,0),SW);
+label("$(0,7)$",(0,7),W,red);
+label("$x+y=7$",(9,-2),E,red);
+\end{asy}

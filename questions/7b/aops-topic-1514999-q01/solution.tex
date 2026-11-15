@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h1514999_problem_in_analytic_geometry
+% Stable identity: aops-topic-1514999-q01
+Let $O=(0,0)$, $P=(12,16)$ and let $C=(6,8)$ be the centre of the circle, of radius $5$. Then $C$ is the midpoint of $OP$ and $OC=CP=10$, so the straight segment $OP$ passes through the centre and is not allowed.
+
+The shortest path hugs the circle like a taut string: it runs along a tangent from $O$ to a point $T_1$ of the circle, along the arc $T_1T_2$, and along a tangent from $T_2$ to $P$ (blue).
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),C=(6,8),P=(12,16);
+pair u=unit(O-C);
+pair T1=C+5*(rotate(60)*u), T2=C+5*(rotate(-60)*unit(P-C));
+draw((-1,0)--(14,0),gray,Arrow(TeXHead));draw((0,-1)--(0,17.5),gray,Arrow(TeXHead));
+label("$x$",(14,0),E,gray);label("$y$",(0,17.5),N,gray);
+draw(circle(C,5),linewidth(0.9));
+draw(O--P,dashed+gray(0.5));
+draw(C--T1,dashed);draw(C--T2,dashed);
+void ra(pair Q,pair a,pair b){real s=0.6; pair x=unit(a-Q)*s,y=unit(b-Q)*s; draw(Q+x--Q+x+y--Q+y);}
+ra(T1,C,O);ra(T2,C,P);
+draw(O--T1,blue+linewidth(1.1));draw(arc(C,5,degrees(T1-C),degrees(T2-C)),blue+linewidth(1.1));draw(T2--P,blue+linewidth(1.1));
+dot(O);dot(C);dot(P);dot(T1);dot(T2);
+label("$O$",O,SW);label("$C(6,8)$",C,W);label("$P(12,16)$",P,N);label("$T_1$",T1,S);label("$T_2$",T2,E);
+label("$5$",(C+T1)/2,W);label("$5\sqrt3$",(O+T1)/2,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Tangent segments.} $CT_1\perp OT_1$, so $OT_1=\sqrt{OC^2-CT_1^2}=\sqrt{100-25}=5\sqrt3$; similarly $T_2P=5\sqrt3$.
+
+\textbf{The arc.} In right triangle $OT_1C$, $\cos\angle OCT_1=\dfrac{5}{10}=\dfrac{1}{2}$, so $\angle OCT_1=60^\circ$; similarly $\angle PCT_2=60^\circ$. Since $O$, $C$, $P$ are collinear, $\angle OCP=180^\circ$, and the arc $T_1T_2$ subtends $180^\circ-60^\circ-60^\circ=60^\circ$ at $C$. Its length is $\dfrac{60}{360}\cdot2\pi\cdot5=\dfrac{5\pi}{3}$.
+
+The shortest path therefore has length
+\[
+5\sqrt3+\dfrac{5\pi}{3}+5\sqrt3=\boxed{10\sqrt3+\dfrac{5\pi}{3}}.
+\]

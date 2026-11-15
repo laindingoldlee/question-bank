@@ -1,0 +1,6 @@
+For the standard maximal corner-anchored equilateral triangle in a unit square, the other vertices are $(1,2-\sqrt3)$ and $(2-\sqrt3,1)$, so its side squared is $8-4\sqrt3$. A square resting on one side of an equilateral triangle of side $l$ has side $\dfrac{l\sqrt3}{(2+\sqrt3)}$ by similar triangles. Thus each square area is multiplied by $r=(8-4\sqrt3)\cdot\dfrac{3}{(2+\sqrt3)^2}=312-180\sqrt3$. The sum is $\dfrac{1}{(1-r)}=\boxed{\dfrac{1}{(180\sqrt3-311)}}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+real t=2-sqrt(3);pair A=(0,0),B=(1,t),C=(t,1);draw(box((0,0),(1,1)));draw(A--B--C--cycle,blue);real k=sqrt(3)/(2+sqrt(3));pair U=A+(1-k)/2*(B-A),V=U+k*(B-A),W=V+k*(rotate(90)*(B-A)),Z=U+k*(rotate(90)*(B-A));draw(U--V--W--Z--cycle,red);
+\end{asy}
+

@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1754485_mathleticguyyys_777th_post_problem
+% Stable identity: aops-topic-1754485-q01
+Let $X_L$ be the number of times the letter $L$ occurs in the word. The comboity is
+\[
+\min(X_C,1)+\min(X_M,1)+\min(X_B,1)+\min(X_O,2),
+\]
+and by linearity of expectation we can take the expected value of each term separately. Each position is a given letter with probability $\dfrac{1}{26}$, independently.
+\begin{itemize}
+\item For $L=C,M,B$: $E[\min(X_L,1)]=P(X_L\ge1)=1-\left(\dfrac{25}{26}\right)^4$.
+\item For $O$: $E[\min(X_O,2)]=P(X_O\ge1)+P(X_O\ge2)$, where $P(X_O\ge2)=1-\left(\dfrac{25}{26}\right)^4-4\cdot\dfrac{1}{26}\left(\dfrac{25}{26}\right)^3$.
+\end{itemize}
+Adding,
+\[
+E=5-\dfrac{5\cdot25^4+4\cdot25^3}{26^4}=5-\dfrac{25^3\cdot129}{26^4}=\dfrac{2284880-2015625}{456976}=\boxed{\dfrac{269255}{456976}}\approx0.589 .
+\]

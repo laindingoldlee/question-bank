@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2707449_halloween_celebration_problem_inspired_by_mmaths
+% Stable identity: aops-topic-2707449-q01
+\textbf{(a)} Give a tile labelled $2^k$ the weight $(k-1)2^k$, and let $\Phi$ be the total weight on the board. Placing a $2$ adds $0$ to $\Phi$; placing a $4$ adds $4$ but scores nothing. Merging two $2^k$ tiles into $2^{k+1}$ changes $\Phi$ by $k2^{k+1}-2(k-1)2^k=2^{k+1}$, exactly the points scored. Hence at the end
+\[\Phi=\text{score}+4n.\]
+For the final grid, the weights add up to $\Phi=281736$ (for example, $16384=2^{14}$ contributes $13\cdot16384=212992$). So $n=\dfrac{281736-277476}{4}=\boxed{1065}$.
+
+\textbf{(b)} Since $\log_{m^m}(m+1)^{m+2}=\dfrac{(m+2)\ln(m+1)}{m\ln m}$, the product telescopes:
+\[s_m=\prod_{j=2}^{m}\dfrac{j+2}{j}\cdot\prod_{j=2}^{m}\dfrac{\ln(j+1)}{\ln j}=\dfrac{(m+1)(m+2)}{6}\log_2(m+1).\]
+For $s_m$ to be rational, $\log_2(m+1)$ must be rational, which forces $m+1=2^k$. Then $s_m=\dfrac{k\,2^k(2^k+1)}{6}$, an integer exactly when $3\mid k(2^k+1)$, i.e. $k$ odd or $3\mid k$. With $3\le m\le1065$ we have $2\le k\le10$, giving $k=3,5,6,7,9$ and $m=7,31,63,127,511$. The sum is $\boxed{739}$.

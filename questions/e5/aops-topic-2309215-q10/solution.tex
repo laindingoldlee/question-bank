@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2309215_100_posts_problems
+% Stable identity: aops-topic-2309215-q10
+For an equilateral triangle with side $s$, the centre $O$ divides each median in the ratio $2:1$, and the median has length $\dfrac{\sqrt3}{2}s$. So the inradius is $\dfrac13\cdot\dfrac{\sqrt3}{2}s$ and the circumradius is $\dfrac23\cdot\dfrac{\sqrt3}{2}s=\dfrac{s}{\sqrt3}$.
+
+For the large triangle, $s=2\sqrt3$, so the inscribed circle has radius $\dfrac13\cdot\dfrac{\sqrt3}{2}\cdot2\sqrt3=1$. The small triangle has circumradius $1$, so its side is $\sqrt3\cdot1=\sqrt3$ (in fact it can be taken to be the triangle joining the three points of tangency, the midpoints of the sides).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,2), B=(-sqrt(3),-1), C=(sqrt(3),-1), O=(0,0);
+pair D=(B+C)/2, Ep=(C+A)/2, F=(A+B)/2;
+fill(D--Ep--F--cycle,rgb(1,0.88,0.8));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(circle(O,1),blue);
+draw(D--Ep--F--cycle,red+linewidth(0.9));
+draw(O--D,blue+dashed); draw(O--A,dashed+gray(0.5));
+dot(O); label("$O$",O,E);
+label("$1$",(0,-0.5),E,blue);
+label("$2$",(0,1.45),W,gray(0.3));
+label("$2\sqrt3$",D,S);
+label("$\sqrt3$",(D+F)/2,dir(210),red);
+\end{asy}
+
+The areas are
+\[\dfrac{\sqrt3}{4}\left(2\sqrt3\right)^2=3\sqrt3\qquad\text{and}\qquad\dfrac{\sqrt3}{4}\left(\sqrt3\right)^2=\dfrac{3\sqrt3}{4},\]
+and their sum is $\boxed{\dfrac{15\sqrt3}{4}}$.

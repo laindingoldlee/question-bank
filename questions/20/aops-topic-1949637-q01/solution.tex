@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1949637_counting_problemgeometry_problem
+% Stable identity: aops-topic-1949637-q01
+Let the sides be $a=AB$, $b=BC$, $c=CD$, $d=DE$, $e=EF$, $f=FA$. Every interior angle is $120^\circ$, so extending sides $AB$, $CD$, $EF$ cuts off three equilateral triangles (on sides $b$, $d$, $f$) and gives a big equilateral triangle.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0);real[] s={3,2,4,2,3,3};
+pair[] P={A};
+for(int i=0;i<5;++i) P.push(P[i]+s[i]*dir(60*i));
+draw(P[0]--P[1]--P[2]--P[3]--P[4]--P[5]--cycle,linewidth(1));
+for(int i=1;i<6;i+=2){pair T=P[i]+s[i]*dir(60*(i-1));draw(P[i]--T--P[(i+1)%6],dashed);}
+string[] nm={"A","B","C","D","E","F"};pair[] dd={SW,SE,E,NE,NW,W};
+for(int i=0;i<6;++i){dot(P[i]);label("$"+nm[i]+"$",P[i],dd[i]);}
+label("$a$",(P[0]+P[1])/2,S);label("$b$",(P[1]+P[2])/2,E);label("$c$",(P[2]+P[3])/2,NE);
+label("$d$",(P[3]+P[4])/2,N);label("$e$",(P[4]+P[5])/2,W);label("$f$",(P[5]+P[0])/2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Reading its three sides,
+\[
+f+a+b=b+c+d=d+e+f .
+\]
+Conversely, given positive $a,\dots,f$ satisfying these equations, cutting the corners of side $b$, $d$, $f$ off an equilateral triangle of side $f+a+b$ gives an equiangular hexagon with these sides, and the sides determine it up to congruence. So we count positive triples $(d,e,f)$.
+
+With $a=2018$, $b=2019$, $c=2020$, the equations give $f=d+c-a=d+2$ and $e=b+c-f=4039-f=4037-d$. So everything is determined by $d$, with $1\le d\le4036$. Now impose that one of $d,e,f$ is $2021$:
+\begin{itemize}
+\item $d=2021$: $(d,e,f)=(2021,2016,2023)$;
+\item $e=2021$: $d=2016$, giving $(2016,2021,2018)$;
+\item $f=2021$: $d=2019$, giving $(2019,2018,2021)$.
+\end{itemize}
+These are three different hexagons, so the answer is $\boxed{3}$.

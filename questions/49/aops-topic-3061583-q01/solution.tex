@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3061583_triangle
+% Stable identity: aops-topic-3061583-q01
+Place the original centroid at the origin and let its vertex vectors be $a,b,c$, with $a+b+c=0$. The median from vertex $a$ has vector $-\dfrac{3}{2}a$ and length $\dfrac{3}{2}|a|$, and similarly for the others. The vectors $a,b,c$ close to form a nondegenerate triangle with vertices $0,a,a+b$. Its area is $\dfrac{1}{2}|a\times b|$. The original triangle has area $\dfrac{1}{2}|(b-a)\times(c-a)|=\dfrac{3}{2}|a\times b|$, so the auxiliary triangle has one third of the original area. Scaling it by $\dfrac{3}{2}$ makes its side lengths equal to the three medians, multiplying area by $\dfrac{9}{4}$. The final ratio is therefore $\dfrac{1}{3}\cdot\dfrac{9}{4}=\boxed{\dfrac{3}{4}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(2,0),B=(-.5,1.5),C=(-1.5,-1.5),G=(0,0);draw(A--B--C--cycle);draw(A--((B+C)/2),dashed);draw(B--((A+C)/2),dashed);draw(C--((A+B)/2),dashed);label("$A$",A,E);label("$B$",B,N);label("$C$",C,SW);label("$G$",G,S);pair U=(4,0),V=U+1.5*A,Wpt=V+1.5*B;draw(U--V--Wpt--cycle,blue);label("$m_a$",(U+V)/2,S);label("$m_b$",(V+Wpt)/2,E);label("$m_c$",(Wpt+U)/2,NW);
+\end{asy}

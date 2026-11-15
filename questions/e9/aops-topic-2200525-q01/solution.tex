@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2200525_how_did_i_get_this_wrong
+% Stable identity: aops-topic-2200525-q01
+Join the centre $O$ to the vertices: the hexagon splits into six equilateral triangles of side $s$, and the inscribed circle touches each side at its midpoint, so the radius $1$ is the height of one of these triangles.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair[] V; for(int k=0;k<6;++k) V.push((2/sqrt(3))*dir(60*k+30));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,linewidth(0.9));
+draw(unitcircle,blue);
+pair O=(0,0); pair T=(V[0]+V[1])/2;
+draw(O--V[0],red); draw(O--V[1],red); draw(O--T,blue);
+draw(T+0.12*dir(240)--T+0.12*dir(240)+0.12*dir(150)--T+0.12*dir(150));
+dot(O); label("$O$",O,S);
+label("$1$",(O+T)/2,E,blue); label("$s$",(V[0]+V[1])/2+0.12*dir(150),dir(60),red);
+label("$s$",(O+V[0])/2,SE,red);
+\end{asy}
+
+The height of an equilateral triangle of side $s$ is $\dfrac{\sqrt3}{2}s$, so $\dfrac{\sqrt3}{2}s=1$ and $s=\dfrac{2}{\sqrt3}$. The area of the hexagon is
+\[6\cdot\dfrac{\sqrt3}{4}s^2=6\cdot\dfrac{\sqrt3}{4}\cdot\dfrac{4}{3}=\boxed{2\sqrt3}.\]
+The student is right. The key's $\dfrac{27\sqrt3}{2}$ is the area of a regular hexagon of side $3$ (inradius $\dfrac{3\sqrt3}{2}$), so it does not belong to this problem.

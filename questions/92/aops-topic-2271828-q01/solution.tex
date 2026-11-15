@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2271828_introductory_trig_question
+% Stable identity: aops-topic-2271828-q01
+\textbf{(a)} Turning by $\dfrac{3\pi}{2}$ anticlockwise is the same as turning by $\dfrac{\pi}{2}$ clockwise, which maps a point $(x,y)$ of the unit circle to $(y,-x)$. So the point at angle $z+\dfrac{3\pi}{2}$ is $(\sin z,-\cos z)$:
+\[\cos\left(z+\dfrac{3\pi}{2}\right)=\sin z,\qquad\sin\left(z+\dfrac{3\pi}{2}\right)=-\cos z.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real t=35;
+pair O=(0,0),P=dir(t),Q=dir(t-90);
+draw((-1.35,0)--(1.4,0),Arrow(4)); draw((0,-1.35)--(0,1.35),Arrow(4));
+draw(unitcircle);
+draw(O--P,blue+linewidth(0.8)); draw(O--Q,red+linewidth(0.8));
+draw(arc(O,0.3,0,t),blue,Arrow(3)); draw(arc(O,0.45,t,t+270),red,Arrow(3));
+dot(P,blue); dot(Q,red);
+label("$(\cos z,\sin z)$",P,NE,blue); label("$(\sin z,-\cos z)$",Q,SE,red);
+label("$z$",0.42*dir(t/2),blue+fontsize(8pt)); label("$z+\dfrac{3\pi}{2}$",(-1.25,0.85),red+fontsize(8pt));
+label("$x$",(1.4,0),S); label("$y$",(0,1.35),W);
+\end{asy}
+
+If $z$ is not a multiple of $\pi$, then $\sin z\ne0$ and
+\[\tan\left(z+\dfrac{3\pi}{2}\right)=\dfrac{\sin\left(z+\dfrac{3\pi}{2}\right)}{\cos\left(z+\dfrac{3\pi}{2}\right)}=\dfrac{-\cos z}{\sin z}=-\cot z.\]
+(If $z$ is a multiple of $\pi$, both sides are undefined.)
+
+\textbf{(b)} The angle-sum formula for tangent is valid only when $\tan a$, $\tan b$ and $\tan(a+b)$ are all defined. Since $\cos\dfrac{3\pi}{2}=0$, $\tan\dfrac{3\pi}{2}$ is undefined, so the formula simply does not apply with $b=\dfrac{3\pi}{2}$; getting ``undefined'' says nothing about $\tan\left(z+\dfrac{3\pi}{2}\right)$, which is the domain issue the question suspects. The formula can still be used for $b$ \emph{near} $\dfrac{3\pi}{2}$: dividing numerator and denominator by $\tan b$,
+\[\tan(a+b)=\dfrac{\dfrac{\tan a}{\tan b}+1}{\dfrac{1}{\tan b}-\tan a}=\dfrac{\tan a\cot b+1}{\cot b-\tan a}.\]
+As $b\to\dfrac{3\pi}{2}$, $\cot b\to0$, and by continuity of tangent the left side tends to $\tan\left(a+\dfrac{3\pi}{2}\right)$; the right side tends to $\dfrac{1}{-\tan a}=-\cot a$, in agreement with (a) (for $a$ not a multiple of $\dfrac{\pi}{2}$). Alternatively, use the period: $\tan\left(z+\dfrac{3\pi}{2}\right)=\tan\left(z+\dfrac{\pi}{2}\right)$, and the cosine and sine sum formulas give $\tan\left(z+\dfrac{\pi}{2}\right)=\dfrac{\cos z}{-\sin z}$.

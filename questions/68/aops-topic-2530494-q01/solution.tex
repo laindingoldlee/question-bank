@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2530494_combinatorics_problem
+% Stable identity: aops-topic-2530494-q01
+An ordered sum has smallest term exactly $2$ when all its terms are at least $2$ but not all are at least $3$. So the answer is $a(12)-b(12)$, where $a(n)$ and $b(n)$ count the ordered sums of $n$ with all terms at least $2$, respectively at least $3$ (with $a(0)=b(0)=1$ for the empty sum).
+
+\textbf{Recursions.} Look at the last term. In $a(n)$, either it equals $2$ (remove it: $a(n-2)$ ways) or it is at least $3$ (decrease it by $1$: $a(n-1)$ ways). So $a(n)=a(n-1)+a(n-2)$, with $a(1)=0$, $a(2)=1$. In $b(n)$, either it equals $3$ ($b(n-3)$ ways) or it is at least $4$ ($b(n-1)$ ways), so $b(n)=b(n-1)+b(n-3)$, with $b(1)=b(2)=0$.
+
+\[\begin{array}{c|cccccccccccc}
+n&1&2&3&4&5&6&7&8&9&10&11&12\\\hline
+a(n)&0&1&1&2&3&5&8&13&21&34&55&89\\
+b(n)&0&0&1&1&1&2&3&4&6&9&13&19
+\end{array}\]
+So the answer is $89-19=\boxed{70}$.

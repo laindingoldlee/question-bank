@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3528299_2014_national_mathcounts_problem_30
+% Stable identity: aops-topic-3528299-q01
+Let the triangle side be $s$. Using the rotational and reflection symmetries of the square and triangle, describe its vertices as $(0,0)$, $(s\cos\theta,s\sin\theta)$ and $(s\cos(\theta+60^\circ),s\sin(\theta+60^\circ))$, up to translation, with $0\le\theta\le30^\circ$. Its horizontal width is $s\cos\theta$ and its vertical height is $s\cos(30^\circ-\theta)$. Both must be at most one. At least one of $\theta,30^\circ-\theta$ is at most $15^\circ$, so the larger cosine is at least $\cos15^\circ$. Hence $s\le\sec15^\circ=\sqrt6-\sqrt2$. Equality is achieved at $\theta=15^\circ$, with vertices $(0,0),(1,2-\sqrt3),(2-\sqrt3,1)$. The maximum area is $\dfrac{\sqrt3}{4}(\sqrt6-\sqrt2)^2=2\sqrt3-3$, so $\boxed{a+b+c=8}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real t=2-sqrt(3);pair A=(0,0),B=(1,t),C=(t,1);draw((0,0)--(1,0)--(1,1)--(0,1)--cycle);draw(A--B--C--cycle,blue);label("$A$",A,SW);label("$B$",B,E);label("$C$",C,N);label("$1$",(.5,0),S);label("$15^\circ$",(.25,.015),NE);
+\end{asy}

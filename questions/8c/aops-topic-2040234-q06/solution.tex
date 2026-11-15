@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2040234_wkmo_wolfpacks_1000th_math_olympiad
+% Stable identity: aops-topic-2040234-q06
+Write the three side lengths as $u+v,v+w,w+u$, where the tangent lengths $u,v,w$ are positive. The semiperimeter is $s=u+v+w$. Heron gives $K^2=suvw$, and $K=rs$ gives $r^2=\dfrac{uvw}{u+v+w}<uv$. By AM--GM, $uv\le\dfrac{(u+v)^2}{4}$. Thus $2r<u+v$; cyclically the same is true for each side.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(6,0),C=(2,4);real a=abs(B-C),b=abs(A-C),c=6;pair I=(a*A+b*B+c*C)/(a+b+c);draw(A--B--C--cycle);draw(circle(I,I.y),blue);draw(I--(I.x,0),dashed);label("$r$",(I.x,I.y/2),E);label("$u+v$",(3,0),S);
+\end{asy}

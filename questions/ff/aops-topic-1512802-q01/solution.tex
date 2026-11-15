@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1512802_arcs_and_angles
+% Stable identity: aops-topic-1512802-q01
+The statement in the book is about the \emph{degree measure} of an arc, which is defined to be the measure of its central angle. It is not about the arc's \emph{length}.
+
+\textbf{(a)} An arc with central angle $n^\circ$ is $\dfrac{n}{360}$ of the whole circle, so its length is $\dfrac{n}{360}\cdot2\pi r$. For $n=60$:
+\[
+r=3:\ \dfrac{1}{6}\cdot6\pi=\pi,\qquad r=6:\ \dfrac{1}{6}\cdot12\pi=2\pi .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real r1=1.5,r2=3;pair O1=(0,0),O2=(5.2,0);
+draw(circle(O1,r1),gray(0.55));draw(circle(O2,r2),gray(0.55));
+draw(O1--O1+r1*dir(0));draw(O1--O1+r1*dir(60));
+draw(O2--O2+r2*dir(0));draw(O2--O2+r2*dir(60));
+draw(arc(O1,r1,0,60),blue+linewidth(1.4));draw(arc(O2,r2,0,60),red+linewidth(1.4));
+draw(arc(O1,0.3,0,60));draw(arc(O2,0.4,0,60));
+label("$60^\circ$",O1+0.82*dir(20),fontsize(8pt));label("$60^\circ$",O2+0.95*dir(27));
+dot(O1);dot(O2);label("$O$",O1,W);label("$O'$",O2,W);
+label("$3$",O1+(r1/2,0),S);label("$6$",O2+(r2/2,0),S);
+label("$\pi$",O1+(r1+0.25)*dir(30),blue);label("$2\pi$",O2+(r2+0.35)*dir(30),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Both arcs measure $60^\circ$, but their lengths are $\boxed{\pi\text{ and }2\pi}$. So the length is \emph{not} determined by the angle alone: it is proportional to the radius as well. (The poster's objection is right for lengths.)
+
+\textbf{(b)} We need $\dfrac{n}{360}\cdot2\pi r=n$ for every $n$, i.e.\ $\dfrac{\pi r}{180}=1$:
+\[
+r=\boxed{\dfrac{180}{\pi}}\approx57.3 .
+\]
+Only in a circle of this radius does the length of an arc equal its degree measure. (In radians the corresponding statement is that arc length equals the angle exactly when $r=1$.)

@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2355490_umong_as_fun_math_relay_race
+% Stable identity: aops-topic-2355490-q02
+Compare the squared distances from $(-2,6)$:
+\[(5,7):\ 7^2+1^2=50,\qquad(3,-2):\ 5^2+8^2=89,\qquad(5,3):\ 7^2+3^2=58.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair R0=(-2,6); pair[] Q={(5,7),(3,-2),(5,3)};
+draw((-3,0)--(7,0),Arrow(5)); draw((0,-3)--(0,9),Arrow(5));
+draw(R0--Q[0],red+linewidth(0.9)); draw(R0--Q[1],dashed); draw(R0--Q[2],dashed);
+dot(R0); dot(Q[0],red); dot(Q[1]); dot(Q[2]);
+label("$(-2,6)$",R0,NW); label("$(5,7)$",Q[0],NE); label("$(3,-2)$",Q[1],SE); label("$(5,3)$",Q[2],E);
+label("$\sqrt{50}$",(R0+Q[0])/2,N,red+fontsize(8pt)); label("$\sqrt{89}$",R0+0.55*(Q[1]-R0),NE,fontsize(8pt)); label("$\sqrt{58}$",R0+0.7*(Q[2]-R0),NE,fontsize(8pt));
+\end{asy}
+
+The nearest point is $\boxed{(5,7)}$, at distance $\sqrt{50}=5\sqrt2\approx7.07$.

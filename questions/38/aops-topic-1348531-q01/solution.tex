@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1348531_winter_relay_race
+% Stable identity: aops-topic-1348531-q01
+Each interior angle and exterior angle add up to $180^\circ$, so the exterior angle is $\dfrac{180^\circ}{15}=12^\circ$. The exterior angles add up to $360^\circ$, so $n=\dfrac{360}{12}=30$.
+
+From each vertex, diagonals go to the $n-3=27$ vertices other than itself and its two neighbours (red, from one vertex $V$):
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair[] V={(0.0000,1.0000),(-0.2079,0.9781),(-0.4067,0.9135),(-0.5878,0.8090),(-0.7431,0.6691),(-0.8660,0.5000),(-0.9511,0.3090),(-0.9945,0.1045),(-0.9945,-0.1045),(-0.9511,-0.3090),(-0.8660,-0.5000),(-0.7431,-0.6691),(-0.5878,-0.8090),(-0.4067,-0.9135),(-0.2079,-0.9781),(-0.0000,-1.0000),(0.2079,-0.9781),(0.4067,-0.9135),(0.5878,-0.8090),(0.7431,-0.6691),(0.8660,-0.5000),(0.9511,-0.3090),(0.9945,-0.1045),(0.9945,0.1045),(0.9511,0.3090),(0.8660,0.5000),(0.7431,0.6691),(0.5878,0.8090),(0.4067,0.9135),(0.2079,0.9781)};
+for(int k=2;k<29;++k) draw(V[0]--V[k],red+linewidth(0.3));
+for(int k=0;k<30;++k) draw(V[k]--V[(k+1)%30],linewidth(0.9));
+dot(V[0]); label("$V$",V[0],N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Each diagonal has two ends, so the number of diagonals is
+\[
+\dfrac{n(n-3)}{2}=\dfrac{30\cdot27}{2}=\boxed{405}.
+\]

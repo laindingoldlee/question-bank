@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1636407_quick_problem_on_simple_algebra
+% Stable identity: aops-topic-1636407-q01
+The answer is \textbf{no}. Any way of inserting parentheses has a \emph{last} operation, which combines everything to its left with everything to its right. We check each of the five operations.
+
+A useful observation: the only division is $\div$ between $1$ and $2$, and its divisor is a bracketed piece starting with that $2$, namely $2$, $2\times10=20$ or $2\times10\times9=180$. If the divisor is $2$ or $20$, every other operation is $+$, $-$, $\times$ with integers, so the value of the piece is an integer combination of $\dfrac{N}{2}$ or $\dfrac{N}{20}$ (with $N$ an integer), hence \emph{$20$ times it is an integer}.
+
+\begin{enumerate}
+\item \textbf{Last operation is the final $\times9$:} the value is $9L$, where $L$ is a bracketing of $2\times5-1\div2\times10$. Here the divisor is $2$ or $20$, so $20L$ is an integer. But $9L=21$ needs $L=\dfrac{7}{3}$ and $20\cdot\dfrac{7}{3}$ is not an integer.
+\item \textbf{Last operation is $\times$ before $10$:} the value is $L\cdot(10\times9)=90L$ with $L$ a bracketing of $2\times5-1\div2$, where $2L$ is an integer. But $90L=21$ needs $L=\dfrac{7}{30}$, and $\dfrac{7}{15}$ is not an integer.
+\item \textbf{Last operation is $\div$:} the value is $\dfrac{L}{180}$ with $L$ a bracketing of $2\times5-1$, which is $9$ or $8$; the value is less than $1$.
+\item \textbf{Last operation is $-$:} the value is $10-R$, where $R$ is a bracketing of $1\div2\times10\times9$; $R$ is positive (only $\times$ and $\div$ of positive numbers), so the value is less than $10$.
+\item \textbf{Last operation is the first $\times$:} the value is $2V$, where $V$ is a bracketing of $5-1\div2\times10\times9$; we need $V=\dfrac{21}{2}$. Look at the last operation of $V$:
+\begin{itemize}
+\item $-$: $V=5-R$ with $R>0$, so $V<5$;
+\item $\div$: $V=\dfrac{5-1}{2\times10\times9}=\dfrac{1}{45}$;
+\item $\times$ before $10$: $V=M\cdot90$ with $M=5-1\div2=\dfrac{9}{2}$ or $M=(5-1)\div2=2$, giving $405$ or $180$;
+\item the final $\times9$: $V=9U$ with $U$ a bracketing of $5-1\div2\times10$, where $20U$ is an integer; but $V=\dfrac{21}{2}$ needs $U=\dfrac{7}{6}$, and $20\cdot\dfrac{7}{6}$ is not an integer.
+\end{itemize}
+So $V\ne\dfrac{21}{2}$.
+\end{enumerate}
+In every case the value differs from $21$, so it \boxed{\text{cannot be done}}. (A computer check of all $42$ bracketings confirms this; the values obtained are $-80,-35,0,\dfrac{1}{20},\dfrac{2}{45},\dfrac{18}{5},\dfrac{81}{20},\dfrac{91}{10},\dfrac{191}{20},\dfrac{899}{90},\dfrac{1799}{180},45,\dfrac{891}{10},\dfrac{1791}{20},360,405,810,855$.)

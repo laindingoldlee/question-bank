@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1370347_series_of_problem_no2_problem_one
+% Stable identity: aops-topic-1370347-q01
+The vertices and foci lie on the $x$-axis, so the hyperbola has the form
+\[\dfrac{x^2}{a^2}-\dfrac{y^2}{b^2}=1,\]
+with vertices $(\pm a,0)$, foci $(\pm c,0)$ and $c^2=a^2+b^2$. Here $a^2=33$ and $c^2=59$, so $b^2=59-33=26$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+import graph;
+real a=sqrt(33), bb=sqrt(26), c=sqrt(59);
+pair hp(real t){return (a*cosh(t),bb*sinh(t));}
+pair hm(real t){return (-a*cosh(t),bb*sinh(t));}
+draw((-12.5,0)--(12.5,0),gray,Arrow(4)); draw((0,-9.5)--(0,9.5),gray,Arrow(4));
+draw((-12,-12*bb/a)--(12,12*bb/a),gray+dashed); draw((-12,12*bb/a)--(12,-12*bb/a),gray+dashed);
+draw(graph(hp,-1.32,1.32),blue+linewidth(0.9)); draw(graph(hm,-1.32,1.32),blue+linewidth(0.9));
+dot((a,0)); dot((-a,0)); dot((c,0),red); dot((-c,0),red);
+label("$V_1$",(-a,0),NE); label("$V_2$",(a,0),NW);
+label("$F_1$",(-c,0),S,red); label("$F_2$",(c,0),S,red);
+label("$x$",(12.5,0),SE); label("$y$",(0,9.5),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The figure shows the two branches with vertices $V_1,V_2=\left(\mp\sqrt{33},0\right)$, foci $F_1,F_2=\left(\mp\sqrt{59},0\right)$ and the asymptotes $y=\pm\sqrt{\dfrac{26}{33}}\,x$ (dashed). The equation is
+\[\boxed{\dfrac{x^2}{33}-\dfrac{y^2}{26}=1} .\]

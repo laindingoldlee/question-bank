@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2684923_polynomials_and_symmetric_sums_question
+% Stable identity: aops-topic-2684923-q01
+\textbf{(a)} $e_4$ is a sum over products of $4$ distinct roots, and a cubic has only $3$ roots, so the sum is empty: $\boxed{e_4=0}$.
+
+Check: each root satisfies $r^3=-ar^2-br-c$, so $r^4=-ar^3-br^2-cr$. Summing over the roots, $P_4=-aP_3-bP_2-cP_1$. By Vieta, $e_1=-a$, $e_2=b$, $e_3=-c$, so this is exactly Newton's identity with $e_4=0$.
+
+\textbf{(b)} Newton's identities give
+\begin{align*}
+P_1&=e_1=-a,\\
+P_2&=e_1P_1-2e_2=a^2-2b,\\
+P_3&=e_1P_2-e_2P_1+3e_3=-a^3+3ab-3c,\\
+P_4&=e_1P_3-e_2P_2+e_3P_1=a\left(a^3-3ab+3c\right)-b\left(a^2-2b\right)+ac.
+\end{align*}
+So $r^4+s^4+t^4=\boxed{a^4-4a^2b+4ac+2b^2}$.
+
+(Check with $x^3-6x^2+11x-6$, whose roots are $1,2,3$: $1296-1584+144+242=98=1+16+81$.)

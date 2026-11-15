@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h2508960_geometry_question
+% Stable identity: aops-topic-2508960-q01
+Let $O$, $P$, $Q$ be the centres of the circles with radii $6$, $2$, $3$.
+
+\textbf{Distances.} Internal tangency puts $B$ on ray $OP$ with $OP=6-2=4$ and $OB=6$, and $C$ on ray $OQ$ with $OQ=6-3=3$ and $OC=6$. External tangency puts $A$ on segment $PQ$ with $PA=2$, $AQ=3$, $PQ=5$. Since $OP^2+OQ^2=16+9=25=PQ^2$, the angle $POQ$ is right, so $\angle BOC=90^\circ$ and
+\[BC=6\sqrt2.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),P=(4,0),Q=(0,3),B=(6,0),C=(0,6),O2=(6,6);
+pair A=P+(2/5)*(Q-P);
+draw(circle(O,6),linewidth(0.8)); draw(circle(P,2),blue); draw(circle(Q,3),red);
+draw(arc(O2,6,180,270),dashed+deepgreen); draw(B--O2,deepgreen+dotted); label("$6$",(6,3),E,deepgreen+fontsize(8pt));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(O--B,gray(0.6)); draw(O--C,gray(0.6)); draw(P--Q,gray(0.6));
+draw((0.4,0)--(0.4,0.4)--(0,0.4));
+draw(arc(A,0.45,degrees(B-A)-360,degrees(C-A)));
+dot(O);dot(P);dot(Q);dot(A);dot(B);dot(C);dot(O2);
+label("$O$",O,SW);label("$P$",P,S);label("$Q$",Q,W);label("$A$",A,1.3*S);label("$B$",B,E);label("$C$",C,NW);label("$O'$",O2,NE);
+label("$135^\circ$",A+0.95*unit((0.6,1.8)),fontsize(7pt));
+label("$4$",(2,0),S,fontsize(8pt));label("$3$",(0,1.5),W,fontsize(8pt));
+\end{asy}
+
+\textbf{The angle at $A$.} Triangle $PAB$ is isosceles ($PA=PB=2$), so $\angle PAB=\angle PBA=\angle OBA$; similarly $QA=QC=3$ gives $\angle QAC=\angle OCA$. Since $P,A,Q$ are collinear, with $B$ and $C$ on the same side of line $PQ$,
+\[\angle BAC=180^\circ-\left(\angle OBA+\angle OCA\right).\]
+On the other hand, $A$ lies on segment $PQ$, inside the isosceles right triangle $OBC$, whose base angles are $45^\circ$. So $\angle ABC=45^\circ-\angle OBA$ and $\angle ACB=45^\circ-\angle OCA$, and the angle sum in triangle $ABC$ gives
+\[\angle BAC=180^\circ-90^\circ+\left(\angle OBA+\angle OCA\right).\]
+Adding the two expressions, $2\angle BAC=270^\circ$, so $\angle BAC=135^\circ$.
+
+\textbf{The circumradius.} By the extended law of sines,
+\[2R=\dfrac{BC}{\sin\angle BAC}=\dfrac{6\sqrt2}{\dfrac{\sqrt2}{2}}=12,\qquad R=\boxed{6}.\]
+(Check with coordinates $O=(0,0)$, $B=(6,0)$, $C=(0,6)$, $P=(4,0)$, $Q=(0,3)$, $A=\left(\dfrac{12}5,\dfrac65\right)$: the point $O'=(6,6)$ is at distance $6$ from $A$, $B$ and $C$, so the circumcircle is the reflection of the big circle in $BC$.)

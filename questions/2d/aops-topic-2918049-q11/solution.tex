@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2918049_argentina_nmo_round_2_intercollegiate_geo__level_1_1995__2005
+% Stable identity: aops-topic-2918049-q11
+The inscribed angle $\angle CAD=44^\circ$ gives arc $CD=88^\circ$, so arc $AC$ (the one not containing $D$) is $180^\circ-88^\circ=92^\circ$. The perpendicular from $O$ to chord $AC$ bisects that arc, so arcs $AB=BC=46^\circ$.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=(-1,0),D=(1,0),C=dir(92),B=dir(136);pair F=extension(A,C,B,D);draw(circle(O,1));draw(A--D);draw(A--C);draw(B--D);draw(O--B,dashed);dot(F);
+label("$A$",A,W);label("$D$",D,E);label("$C$",C,N);label("$B$",B,NW);label("$F$",F,S);label("$O$",O,S);
+\end{asy}
+
+For chords $AC$ and $BD$ meeting inside the circle, $\angle CFD=\dfrac{\text{arc }CD+\text{arc }AB}2=\dfrac{88^\circ+46^\circ}2=\boxed{67^\circ}$.

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1496115_14_points_and_7_lines
+% Stable identity: aops-topic-1496115-q01
+Take a regular seven-pointed star, in which each tip is joined to the tips two steps away: mark $7$ points $T_0,\dots,T_6$ equally spaced on a circle and draw the $7$ lines $T_kT_{k+2}$ (indices mod $7$). The $14$ points are the $7$ tips $T_k$ and the $7$ crossings $I_k$ of consecutive lines $T_kT_{k+2}$ and $T_{k+1}T_{k+3}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+int n=7; pair[] T; for(int k=0;k<n;++k) T.push(dir(90+360k/n));
+pair[] I; for(int k=0;k<n;++k) I.push(extension(T[k],T[(k+2)%n],T[(k+1)%n],T[(k+3)%n]));
+for(int k=0;k<n;++k){ pair u=T[k],v=T[(k+2)%n]; draw(u+0.1*(u-v)--v+0.1*(v-u),blue+linewidth(0.8)); }
+
+for(int k=0;k<n;++k){ dot(T[k],linewidth(4.5)); dot(I[k],linewidth(4.5)); }
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Consider the line $T_kT_{k+2}$. Its tips are $T_k$ and $T_{k+2}$. Inside the circle it is crossed only by the chords with one endpoint strictly between $T_k$ and $T_{k+2}$, namely by $T_{k+1}T_{k+3}$ and $T_{k-1}T_{k+1}$; this gives the $2$ inner points $I_k$ and $I_{k-1}$. The chords $T_{k+2}T_{k+4}$ and $T_{k-2}T_k$ meet it at its own tips, and the remaining two chords do not cross it inside the circle, so they meet it (if at all) at points that are not among the $14$. Hence each line contains exactly $4$ of the points: $2$ tips and $2$ inner points.
+
+Counting check: every point lies on exactly $2$ of the lines, and $7\cdot4=28$ incidences give $\dfrac{28}{2}=14$ points.
+
+(Read literally, ``the points determine exactly $7$ lines'' is impossible: any two of the points determine a line, and $7$ lines with $4$ points each cover only $7\cdot\dbinom{4}{2}=42$ of the $\dbinom{14}{2}=91$ pairs of points. So, as in the classical tree-planting puzzles, we only require the stated lines; other lines through two of the points are not counted.)

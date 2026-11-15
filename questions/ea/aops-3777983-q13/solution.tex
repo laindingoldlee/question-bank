@@ -1,0 +1,9 @@
+On the other twelve lamps, the toggle matrix is tridiagonal with ones on the diagonal and neighbouring diagonals. Over $\mathbb F_2$, its determinant satisfies $d_n=d_{n-1}+d_{n-2}$ with $d_0=d_1=1$, giving $d_{12}=1$. Thus every configuration with lamp 0 on is reachable. For any direction, the greatest projection of a subset sum is obtained by selecting exactly roots with positive projection. Such roots form six or seven consecutive vertices; rotating the direction can include lamp 0. Their sum magnitude is $\dfrac{\sin (\dfrac{6 \pi}{13})}{\sin (\dfrac{\pi}{13})} = \dfrac{1}{2 \sin (\dfrac{\pi}{26})}$. Conversely taking the direction of any proposed sum bounds its magnitude by such a maximal projection. Hence the maximum is $\boxed{\dfrac{1}{2 \sin (\dfrac{\pi}{26})}}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+for(int k=0;k<13;++k){pair P=dir(360k/13);dot(P);label(string(k),1.15P);if(k<=3||k>=10)draw((0,0)--P,linewidth(1));}draw(unitcircle);
+\end{asy}
+

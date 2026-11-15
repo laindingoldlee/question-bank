@@ -1,0 +1,8 @@
+Put $A=(0,0),B=(b,0),C=(b,h),D=(0,h),M=(m,0)$. The parallelogram identity gives $N=C+D-M=(b-m,2h)$. Its area is $bh$, equal to the rectangle's area, so $bh=120$. At height $h$, halfway from $B$ to $N$, we have $L=(b-\dfrac{m}{2},h)$. The coordinate area formula gives
+\[[ANL]=\dfrac{1}{2}\left|(b-m)h-2h\left(b-\dfrac{m}{2}\right)\right|=\dfrac{bh}{2}=\boxed{60}.\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(5,0),C=(5,2),D=(0,2),M=(2,0),N=(3,4),L=(4,2);draw(A--B--C--D--cycle);draw(C--M--D--N--cycle,blue);draw(B--N);draw(A--N,dashed);draw(A--L,dashed);pair[] p={A,B,C,D,M,N,L};string[] s={"A","B","C","D","M","N","L"};pair[] al={(-1,-1),(1,-1),(1,0),(-1,0),(0,-1),(0,1),(1,1)};for(int i=0;i<7;++i)label("$"+s[i]+"$",p[i],al[i]);
+\end{asy}

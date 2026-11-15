@@ -1,0 +1,7 @@
+Heron\textquotesingle s formula with semiperimeter $21$ gives original area $\sqrt{21\cdot8\cdot7\cdot6}=84$. The overlap ratio is the same for every triangle, since an invertible affine map preserves area ratios and commutes with a half-turn about the centroid. For the reference triangle $(0,0),(3,0),(0,3)$, the rotated triangle has vertices $(2,2),(-1,2),(2,-1)$. Their overlap removes three corner right triangles of legs $1$ from the original triangle of legs $3$, so its area is $\dfrac{2}{3}$ of the original. Therefore the union has area $2\cdot84-\dfrac{2}{3}\cdot84=\boxed{112}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(5,12),B=(0,0),C=(14,0),G=(19/3.0,4),Ap=2*G-A,Bp=2*G-B,Cp=2*G-C;filldraw(A--B--C--cycle,lightgray);filldraw(Ap--Bp--Cp--cycle,lightblue);filldraw((10/3.0,8)--(8,8)--(11,4)--(28/3.0,0)--(14/3.0,0)--(5/3.0,4)--cycle,lightgreen);draw(A--B--C--cycle);dot(G);label("A",A,N);label("B",B,SW);label("C",C,SE);label("$A\prime$",Ap,S);label("$B\prime$",Bp,NE);label("$C\prime$",Cp,NW);label("G",G,N);
+\end{asy}

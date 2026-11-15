@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1715903_junior_regional_olympiad__fbh_2015_grade_6_problem_5
+% Stable identity: aops-topic-1715903-q01
+Let the payment use $p$ bills of $\$200$ and $q$ bills of $\$100$, and put $m=2p+q$, so these bills make $100m$ dollars with $0\le m\le20$. For a given $m$ there are $\left\lfloor\dfrac {m}{2}\right\rfloor+1$ pairs $(p,q)$ (namely $p=0,1,\dots,\lfloor\dfrac {m}{2}\rfloor$).
+
+The remaining $R=2015-100m$ dollars are paid with tens and ones; the number of tens can be any of $0,1,\dots,\left\lfloor\dfrac {R}{10}\right\rfloor=201-10m$, and the ones make up the rest, so there are $202-10m$ ways. Hence the total is
+\[
+\sum_{m=0}^{20}\left(\left\lfloor\dfrac {m}{2}\right\rfloor+1\right)(202-10m).
+\]
+Grouping $m=2k$ and $m=2k+1$ (both with $\lfloor\dfrac {m}{2}\rfloor+1=k+1$) for $k=0,\dots,9$, plus $m=20$:
+\[
+\sum_{k=0}^{9}(k+1)\bigl[(202-20k)+(192-20k)\bigr]+11\cdot2=\sum_{k=0}^{9}(k+1)(394-40k)+22 .
+\]
+With $j=k+1$ running from $1$ to $10$, $(k+1)(394-40k)=j(434-40j)=434j-40j^2$, so the sum is
+\[
+434\cdot55-40\cdot385+22=23870-15400+22=\boxed{8492}.
+\]

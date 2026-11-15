@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2189017_simple_problem
+% Stable identity: aops-topic-2189017-q01
+Let the circle have centre $O$ and radius $R$, and suppose, for a contradiction, that three distinct points $A$, $B$, $C$ of the circle lie on one line $\ell$.
+
+\textbf{Proof 1 (Pythagorean theorem).} Let $M$ be the foot of the perpendicular from $O$ to $\ell$ (if $O$ is on $\ell$, then $M=O$).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0); real R=1.5;
+draw(circle(O,R),linewidth(0.9));
+real h=0.8; pair Mm=(0,-h); real d=sqrt(R^2-h^2);
+pair A=(-d,-h), B=(d,-h);
+draw((-2.3,-h)--(2.3,-h),blue);
+label("$\ell$",(2.3,-h),E,blue);
+draw(O--Mm,dashed); draw(O--A,dashed); draw(O--B,dashed);
+draw(Mm+(0.12,0)--Mm+(0.12,0.12)--Mm+(0,0.12));
+dot(O); dot(A); dot(B); dot(Mm);
+label("$O$",O,N); label("$A$",A,SW); label("$B$",B,SE); label("$M$",Mm,S);
+label("$R$",(O+B)/2,NE,fontsize(9pt)); label("$R$",(O+A)/2,NW,fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For any point $X$ of $\ell$, the triangle $OMX$ has a right angle at $M$ (or is degenerate with $X=M$), so $OX^2=OM^2+MX^2$. If $X$ is on the circle, $OX=R$, so $MX=\sqrt{R^2-OM^2}$. Thus $A$, $B$, $C$ all lie on $\ell$ at the same distance from $M$. But on a line there are at most two points at a given distance from $M$ (one on each side of $M$, or just $M$ itself if the distance is $0$). So $A$, $B$, $C$ cannot all be distinct, a contradiction.
+
+\textbf{Proof 2 (perpendicular bisectors).} Since $OA=OB$, the centre $O$ lies on the perpendicular bisector of $AB$; similarly $O$ lies on the perpendicular bisector of $BC$. Both bisectors are perpendicular to $\ell$, so they are parallel or equal. They pass through the midpoints of $AB$ and $BC$, which are different points of $\ell$ (if they were equal, then $A=C$), so the two bisectors are different parallel lines. Different parallel lines have no common point, so $O$ cannot lie on both, a contradiction.
+
+Hence a line meets a circle in at most two points. $\blacksquare$

@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2319138_200th_post_celebration_geometry
+% Stable identity: aops-topic-2319138-q06
+The horizontal and vertical changes are both $2$, so by the distance formula (the Pythagorean theorem in the right triangle shown)
+\[FG=\sqrt{(8-6)^2+(9-7)^2}=\sqrt8=\boxed{2\sqrt2}\approx\boxed{2.8}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair F=(6,7), G=(8,9), H=(8,7);
+for(int i=5;i<=9;++i) draw((i,6)--(i,10),gray(0.88));
+for(int j=6;j<=10;++j) draw((5,j)--(9,j),gray(0.88));
+draw(F--G,linewidth(0.9)); draw(F--H--G,dashed+blue);
+draw((7.8,7)--(7.8,7.2)--(8,7.2),blue);
+dot(F); dot(G);
+label("$F(6,7)$",F,W); label("$G(8,9)$",G,N);
+label("$2$",(7,7),S,blue); label("$2$",(8,8),E,blue); label("$2\sqrt2$",(7,8),NW);
+\end{asy}

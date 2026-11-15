@@ -1,0 +1,9 @@
+\textbf{A)} This is impossible. The cell containing $9$ has at least two side-neighbours. To make a neighbouring sum less than $11$, each such neighbour would have to be $1$. There is only one $1$.
+\textbf{B)} This is possible, as shown below. The horizontal neighbour sums are $6,10,10,8,10,11$, and the vertical sums are $9,7,11,11,9,10$. All are less than $12$, and every integer from $1$ to $9$ occurs once.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"5", "1", "9"}, {"4", "6", "2"}, {"7", "3", "8"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}
+\end{asy}

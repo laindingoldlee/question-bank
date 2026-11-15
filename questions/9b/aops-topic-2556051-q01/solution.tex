@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2556051_rocket_fuel_problem
+% Stable identity: aops-topic-2556051-q01
+\textbf{(a)} If $F$ kg of fuel is needed, it must carry $1000+F$ kg, so $F=\dfrac45(1000+F)$, i.e. $\dfrac F5=800$ and $F=\boxed{4000}$ kg. (This is the geometric series $800+640+512+\cdots=\dfrac{800}{1-\dfrac45}$: fuel for the payload, fuel for that fuel, and so on.)
+
+\textbf{(b)} Let $M_i$ be the mass after stage $i$ (payload plus fuel still unburned), so $M_k=1000$. To carry $M_i$ through stage $i$ we must start the stage with $M_i+\dfrac{4M_i}{5k}$, so
+\[M_{i-1}=\left(1+\dfrac{4}{5k}\right)M_i\qquad\Longrightarrow\qquad M_0=1000\left(1+\dfrac{4}{5k}\right)^k.\]
+The fuel needed is $1000\left(1+\dfrac{4}{5k}\right)^k-1000$ kg. Since $\left(1+\dfrac{c}{k}\right)^k\to e^c$, as $k\to\infty$ this tends to
+\[\boxed{1000\left(e^{\dfrac45}-1\right)\approx1226\text{ kg}}.\]
+(For $k=1$ the formula gives $800$ kg, ignoring the mass of the fuel altogether; finer stages account for it while it is being used up, and the amount stays far below the $4000$ kg of part (a).)

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2603348_draw_a_triangle
+% Stable identity: aops-topic-2603348-q01
+\textbf{Construction.} Take the ray from $C=(0,0)$ along the positive $x$-axis and the point $B=(16,12)$, so $BC=20$. The circle with centre $B$ and radius $13$ meets the $x$-axis where $(x-16)^2+144=169$, i.e. $x=11$ or $x=21$. Let $A=(11,0)$ and $X=(21,0)$, and let $Y=B$, $Z=C$.
+
+So triangle $ABC$ has sides $BC=20$, $AB=13$, $CA=11$, and triangle $XYZ$ has $YZ=20$, $XY=13$, $ZX=21$.
+
+\textbf{Check.} $\dfrac{AB}{XY}=\dfrac{13}{13}=1=\dfrac{20}{20}=\dfrac{BC}{YZ}$. By the law of cosines,
+\[\cos\angle BCA=\dfrac{20^2+11^2-13^2}{2\cdot20\cdot11}=\dfrac{352}{440}=\dfrac45,\qquad\cos\angle YZX=\dfrac{20^2+21^2-13^2}{2\cdot20\cdot21}=\dfrac{672}{840}=\dfrac45,\]
+so the two angles are equal. (In the construction this is clear: both are the angle between ray $CB$ and the $x$-axis.)
+
+\textbf{Not similar.} Similar triangles have their sides in the same ratios when both are listed in increasing order. Here the sides are $11,13,20$ and $13,20,21$, and $\dfrac{11}{13}\ne\dfrac{13}{20}$. So the triangles are not similar (in any vertex correspondence). $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),B=(16,12),A1=(11,0),A2=(21,0);
+draw(C--(24,0));draw(C--B--A1,linewidth(0.8));draw(B--A2,dashed);
+draw(arc(B,13,-110,-40),gray+dotted);
+dot(C);dot(B);dot(A1);dot(A2);
+label("$C=Z$",C,SW);label("$B=Y$",B,N);label("$A$",A1,S);label("$X$",A2,S);
+label("$20$",(C+B)/2,NW);label("$13$",(B+A1)/2,W);label("$13$",(B+A2)/2,E);label("$11$",(C+A1)/2,S);
+\end{asy}

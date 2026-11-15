@@ -1,0 +1,9 @@
+The product of all row products equals the product of all column products, since each equals the product of all board entries. Therefore the total number of negative row and column products is even, say $2t$. The sum is $4018-4t$, with $0\le t\le2009$.
+Every such value occurs: put $-1$ in the first $t$ positions of the main diagonal and $1$ everywhere else. Exactly $t$ rows and $t$ columns then have product $-1$. Hence the complete set is $\boxed{\{4018-4t:0\le t\le2009,\ t\in\mathbb Z\}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"-1", "1", "1", "1", "1"}, {"1", "-1", "1", "1", "1"}, {"1", "1", "-1", "1", "1"}, {"1", "1", "1", "1", "1"}, {"1", "1", "1", "1", "1"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("Small illustration: three negative row products and three negative column products",(2.5,-5.2));
+\end{asy}

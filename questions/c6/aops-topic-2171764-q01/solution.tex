@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2171764_stick_on_stick
+% Stable identity: aops-topic-2171764-q01
+\textbf{When do four lengths form a quadrilateral?} Four positive lengths form a quadrilateral with positive area exactly when the longest is less than the sum of the other three. This is necessary, since the longest side is shorter than the path along the other three sides. It is also sufficient: let the lengths be $a\le b\le c\le L$ with $L<a+b+c$. A diagonal of length $x$ cuts the quadrilateral into a triangle with sides $L,a,x$ and a triangle with sides $x,b,c$; these exist when $L-a<x<L+a$ and $c-b<x<b+c$. The two intervals overlap, because $L-a<b+c$ and $c-b<L+a$, so we can pick such an $x$ and put the two triangles on opposite sides of the common diagonal.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(15,0),C=(13.168,6.756),D=(10.2,6.3214);
+draw(A--B--C--D--cycle,linewidth(0.9));
+dot(A);dot(B);dot(C);dot(D);
+label("$15$",(A+B)/2,S);label("$7$",(B+C)/2,E);label("$3$",(C+D)/2,N);label("$d$",(D+A)/2,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Counting.} Let the fourth stick have length $d$ (not $3$, $7$ or $15$).
+\begin{itemize}
+\item If $d>15$, we need $d<3+7+15=25$: $d=16,17,\ldots,24$, which is $9$ sticks.
+\item If $d<15$, we need $15<3+7+d$, so $d>5$: $d=6,8,9,\ldots,14$ ($7$ is taken), which is $8$ sticks.
+\end{itemize}
+In total he can choose $9+8=\boxed{17}$ sticks.

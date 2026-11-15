@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1497700_counting_problem
+% Stable identity: aops-topic-1497700-q01
+There are $\binom{12}{5}=792$ equally likely selections. Count the selections that miss at least one category, by inclusion--exclusion.
+\begin{itemize}
+\item No rap: $\binom85=56$. No country: $\binom75=21$. No heavy metal: $\binom95=126$.
+\item No rap and no country (only metal): $\binom35=0$. No rap and no metal (only country): $\binom55=1$. No country and no metal (only rap): $\binom45=0$.
+\item Missing all three categories: $0$.
+\end{itemize}
+So $56+21+126-1=202$ selections miss a category, and $792-202=590$ contain all three. The probability is
+\[
+\dfrac{590}{792}=\boxed{\dfrac{295}{396}}.
+\]
+
+\textbf{The error.} $(4\cdot5\cdot3)\cdot\binom92=60\cdot36=2160$ counts each good selection several times. For example, the selection with rap CDs $R_1,R_2$, country CD $C_1$ and metal CDs $M_1,M_2$ is counted once with $R_1$ as ``the'' rap CD and $R_2$ among the extra two, and again with the roles of $R_1$ and $R_2$ swapped. The same happens with $M_1$ and $M_2$, so this selection is counted $4$ times. That is why the count exceeds the total $792$.

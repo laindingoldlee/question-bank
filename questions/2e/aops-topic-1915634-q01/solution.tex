@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1915634_mathcounts_handbook
+% Stable identity: aops-topic-1915634-q01
+By the angle bisector theorem, $D$ divides $BC$ in the ratio of the adjacent sides:
+\[
+\dfrac{BD}{DC}=\dfrac{AB}{AC}\quad\Longrightarrow\quad DC=\dfrac{BD\cdot AC}{AB}=\dfrac{10\cdot51}{30}=17 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(27,0),A=(-18,24),D=(10,0);
+draw(A--B--C--cycle,linewidth(1)); draw(A--D,blue+linewidth(0.9));
+real t1=degrees(B-A), t2=degrees(D-A), t3=degrees(C-A);
+draw(arc(A,7,t2,t1),linewidth(0.6)); draw(arc(A,7,t3,t2),linewidth(0.6)); draw(arc(A,8.2,t2,t1),linewidth(0.6)); draw(arc(A,8.2,t3,t2),linewidth(0.6));
+dot(D);
+label("$A$",A,NW); label("$B$",B,S); label("$C$",C,SE); label("$D$",D,S);
+label("$30$",(A+B)/2,SW); label("$51$",(A+C)/2,NE);
+label("$10$",(B+D)/2,S); label("$17$",(D+C)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence $BC=BD+DC=10+17=\boxed{27}$. (Such a triangle exists: with $B=(0,0)$, $C=(27,0)$, $A=(-18,24)$ we get $AB=30$ and $AC=51$; the angle at $B$ is obtuse.)

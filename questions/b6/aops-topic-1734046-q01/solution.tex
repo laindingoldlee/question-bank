@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1734046_amc_8_prep_problem_2
+% Stable identity: aops-topic-1734046-q01
+Write $f(n)=n^{E_n}$, where $E_n$ is the tower of $n-1$ copies of $n$ (so $E_1=1$, $E_2=2$, $E_3=27$). The units digits of the powers of any integer repeat with a period dividing $4$ from the first power on, so the units digit of $n^{E}$ depends only on the units digit of $n$ and on $E\bmod4$ (for $E\ge1$).
+
+\textbf{Even $n$.} For $n=2$, $f(2)=4$. For even $n\ge4$, $E_n$ is a power of $n$ with exponent at least $n\ge2$, so $4\mid E_n$; then $n^{E_n}$ has the same units digit as $n^4$: that is $0$ if $10\mid n$ and $6$ otherwise (as $2^4,4^4,6^4,8^4$ all end in $6$).
+
+\textbf{Odd $n$.} Here $E_n$ is a power of the odd number $n$ (or $E_1=1$). If $n\equiv1\pmod4$ then $E_n\equiv1\pmod4$, and the units digit of $f(n)$ is that of $n$. If $n\equiv3\pmod4$ then $E_n=n^{E'}$ with $E'$ odd, so $E_n\equiv3^{E'}\equiv3\pmod4$, and the units digit of $f(n)$ is that of $n^3$.
+
+So for $n\ne2$ the units digit of $f(n)$ depends only on $n\bmod20$. For $n=1,\dots,20$ (using $6$ in place of the true value $4$ for $n=2$) the digits are
+\[
+1,6,7,6,5,6,3,6,9,0,1,6,3,6,5,6,7,6,9,0,
+\]
+with sum $98$. Hence
+\[
+\sum_{n=1}^{2000}f(n)\equiv100\cdot98-2=9798\pmod{10},
+\]
+where $-2$ corrects $n=2$. For $n=2001,\dots,2018$ the digits are the first $18$ of the list above, with sum $98-9-0=89$. The total is $\equiv9798+89=9887$, so the units digit is $\boxed{7}$.

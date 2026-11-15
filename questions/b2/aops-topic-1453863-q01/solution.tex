@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h1453863_triangle_problem
+% Stable identity: aops-topic-1453863-q01
+Let $\angle Q=\theta$, so $\angle P=2\theta$, and let the bisector of angle $P$ meet $QR$ at $D$.
+
+Then $\angle DPQ=\theta=\angle DQP$, so triangle $DPQ$ is isosceles with $DP=DQ$.
+
+Triangles $RPD$ and $RQP$ share the angle at $R$, and $\angle RPD=\theta=\angle RQP$, so they are similar:
+\[
+\dfrac{RP}{RQ}=\dfrac{RD}{RP}=\dfrac{PD}{QP}.
+\]
+Write $p=QR$. Then $RD=\dfrac{q^2}{p}$ and $DQ=PD=\dfrac{qr}{p}$. Since $D$ lies on segment $QR$,
+\[
+p=RD+DQ=\dfrac{q^2+qr}{p},\qquad p^2=q(q+r).
+\]
+Hence
+\[
+QR=\boxed{\sqrt{q(q+r)}}=\sqrt{q^2+qr}.
+\]
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+real r=5;
+pair Q=(0,0),P=(r,0);
+pair R=extension(Q,Q+dir(35),P,P+dir(180-70));
+pair D=extension(P,P+dir(180-35),Q,R);
+draw(P--D,blue+dashed);
+draw(Q--P--R--cycle,linewidth(0.9));
+draw(arc(Q,0.9,0,35),red);
+draw(arc(P,1.05,180-35,180),blue); draw(arc(P,1.15,180-70,180-35),blue);
+dot(Q);dot(P);dot(R);dot(D);
+label("$Q$",Q,SW); label("$P$",P,SE); label("$R$",R,N); label("$D$",D,NW);
+label("$\theta$",Q+1.25*dir(17.5),red);
+label("$r$",(Q+P)/2,S); label("$q$",(P+R)/2,NE);
+label("$\theta$",P+1.45*dir(180-17.5),blue); label("$\theta$",P+1.55*dir(180-52.5),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For example, with $\theta=35^\circ$ (as drawn) and $r=5$, the law of sines gives $q=5\cdot\dfrac{\sin35^\circ}{\sin75^\circ}\approx2.969$ and $QR=5\cdot\dfrac{\sin70^\circ}{\sin75^\circ}\approx4.864$, and indeed $\sqrt{2.969\cdot7.969}\approx4.864$.

@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1251823_help_please_probability_prob
+% Stable identity: aops-topic-1251823-q01
+Let him fall asleep $x$ hours after $4$ AM and wake $y$ hours after $11$ AM, with $(x,y)$ uniform on the square $[0,2]\times[0,2]$. He sleeps $(7+y)-x$ hours, so he gets less than $6$ hours exactly when $x-y>1$, the shaded triangle of area $\dfrac{1}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(2,0)--(2,2)--(0,2)--cycle); fill((1,0)--(2,0)--(2,1)--cycle,pink);
+draw((0,-1)--(2,1),red); label("$x-y=1$",(2,1),E,red);
+label("$x$",(1,0),S); label("$y$",(0,1),W); label("$0$",(0,0),SW); label("$2$",(2,0),S); label("$2$",(0,2),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The probability of at least $6$ hours is $1-\dfrac{\dfrac{1}{2}}{4}=\boxed{\dfrac{7}{8}}$.

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1449777_the_number_a
+% Stable identity: aops-topic-1449777-q01
+Let $A$ have $k$ digits, $A=10x+d$ with units digit $d$ and $0\le x<10^{k-1}$. Moving $d$ to the front gives $d\cdot10^{k-1}+x$, so
+\[
+7(10x+d)=d\cdot10^{k-1}+x\iff 69x=d\,(10^{k-1}-7).
+\]
+For $k=1$ this says $7A=A$, impossible, so $k\ge2$ and $d\ne0$ (otherwise $x=0$).
+
+\textbf{Divisibility.} $69=3\cdot23$. Modulo $3$: $10^{k-1}-7\equiv1-1=0$, always fine. Modulo $23$: $d\le9$ is not divisible by $23$, so we need
+\[
+10^{k-1}\equiv7\pmod{23}.
+\]
+The powers of $10$ modulo $23$ are $10,8,11,18,19,6,14,2,20,16,22,13,15,12,5,4,17,9,21,3,7,1,\dots$ (each is $10$ times the previous one, reduced), so the smallest exponent is $k-1=21$, and in general $k-1\equiv21\pmod{22}$.
+
+\textbf{Digits.} We need $A$ to have exactly $k$ digits, that is $x\ge10^{k-2}$ (the leading digit of $A$ is not $0$). Since $x=\dfrac{d(10^{k-1}-7)}{69}$, this requires $d\ge7$ (for $d\le6$, $x<\dfrac{6\cdot10^{k-1}}{69}<10^{k-2}$). For $k=22$ the smallest choice is $d=7$:
+\[
+x=\dfrac{7(10^{21}-7)}{69}=101449275362318840579,
+\]
+which has $21$ digits, and
+\[
+A=\boxed{1014492753623188405797}.
+\]
+Check: $7A=7101449275362318840579$, which is $A$ with its last digit $7$ moved to the front.

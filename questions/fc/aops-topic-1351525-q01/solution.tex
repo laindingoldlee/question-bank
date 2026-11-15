@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1351525_fun_similiarity
+% Stable identity: aops-topic-1351525-q01
+In a parallelogram $AD\parallel BC$, and $AD=BC=2BM$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(8,4),D=(2,4),M=(B+C)/2,O=(14/3,4/3);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(B--D,blue); draw(A--M,red);
+dot(M); dot(O);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$M$",M,E); label("$O$",O,dir(60));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In triangles $OBM$ and $ODA$, the angles at $O$ are vertical angles, and $\angle OBM=\angle ODA$ (alternate angles, since $BM\parallel DA$ and $BD$ is a transversal). So the triangles are similar, with ratio
+\[
+\dfrac{BO}{OD}=\dfrac{BM}{DA}=\dfrac{BM}{2BM}=\dfrac{1}{2} .
+\]
+Hence $BO:OD=\boxed{1:2}$.

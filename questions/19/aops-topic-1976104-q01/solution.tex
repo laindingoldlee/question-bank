@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1976104_2020_math_problems
+% Stable identity: aops-topic-1976104-q01
+The great circle has circumference $2\pi r=5280$ ft, so $r=\dfrac{5280}{2\pi}=\dfrac{2640}{\pi}$ ft.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),1),linewidth(1));
+path eq=scale(1,0.28)*unitcircle;
+draw(subpath(eq,0,2),dashed);draw(subpath(eq,2,4),linewidth(1.1));
+label("circumference $5280$ ft",(0,-1),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The surface area is
+\[
+4\pi r^2=4\pi\cdot\dfrac{2640^2}{\pi^2}=\dfrac{(2\cdot2640)^2}{\pi}=\dfrac{5280^2}{\pi}=\boxed{\dfrac{27878400}{\pi}}\text{ ft}^2\approx8.87\times10^6\text{ ft}^2 .
+\]

@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1582862_17_geometry_questions
+% Stable identity: aops-topic-1582862-q07
+The side of the paper that goes around the can has length equal to the circumference $\pi d$ of the can.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+real w=4,h=2.6;
+draw((0,0)--(w,0)--(w,h)--(0,h)--cycle,linewidth(0.9));
+label("$29$ cm",(w/2,0),S);label("$19$ cm",(0,h/2),W);
+real cx=7.3,rx=0.75,ry=0.22;
+draw(shift(cx,h)*xscale(rx)*yscale(ry)*unitcircle,linewidth(0.9));
+draw((cx-rx,0)--(cx-rx,h),linewidth(0.9));draw((cx+rx,0)--(cx+rx,h),linewidth(0.9));
+draw(shift(cx,0)*xscale(rx)*yscale(ry)*arc((0,0),1,180,360),linewidth(0.9));
+draw(shift(cx,0)*xscale(rx)*yscale(ry)*arc((0,0),1,0,180),dashed);
+draw((cx-rx,h+0.55)--(cx+rx,h+0.55),Arrows(TeXHead));label("$d$",(cx,h+0.55),N);
+label("$\pi d=29$",(cx+rx,h/2),E);
+draw((w+0.6,h/2)--(cx-rx-0.5,h/2),Arrow(TeXHead));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The $29$ cm side goes around} (the can is $19$ cm tall): $\pi d=29$, so $d=\dfrac{29}{\pi}\approx9.231$, i.e.\ $d\approx\boxed{9.23\text{ cm}}$.
+
+\textbf{The $19$ cm side goes around} (the can is $29$ cm tall): $\pi d=19$, so $d=\dfrac{19}{\pi}\approx6.048$, i.e.\ $d\approx\boxed{6.05\text{ cm}}$.

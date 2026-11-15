@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2784866_2018_winmac_guts_round__sets_58___winchester_math_competition
+% Stable identity: aops-topic-2784866-q16
+There must be at least five cubes between the red cube and each of the four vertical sides, forcing both horizontal dimensions to be at least $ 5+1+5=11 $. At least five cubes must lie above it, forcing height at least 6. Thus there are at least $ 11\cdot11\cdot6-1=725 $ blue cubes. The fully filled $ 11\times11\times6 $ stack with the red cube horizontally centered on the floor attains the bound: the shortest face-connected route to it from any accessible exterior side passes through five blue cubes. Therefore the answer is $\boxed{725}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int x=0;x<=11;++x)draw((x,0)--(x,6));for(int y=0;y<=6;++y)draw((0,y)--(11,y));filldraw((5,0)--(6,0)--(6,1)--(5,1)--cycle,red);draw((-1,0)--(12,0),linewidth(2));label("cross-section: width $11$, height $6$",(5.5,6.5));label("depth $11$; red cube centered",(5.5,-0.6));
+\end{asy}

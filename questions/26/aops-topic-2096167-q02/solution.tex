@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2096167_number_theory_fun
+% Stable identity: aops-topic-2096167-q02
+We have $\sigma(101)=1+101=102$, so the answer is at most $102$. We show that neither $100$ nor $101$ is a value of $\sigma$.
+
+For $n\ge2$, $\sigma(n)\ge1+n$, so $\sigma(n)\le101$ forces $n\le100$; and $\sigma(100)=217$. Also $\sigma$ is multiplicative: if $n=p_1^{k_1}\cdots p_r^{k_r}$, then $\sigma(n)=\sigma\!\left(p_1^{k_1}\right)\cdots\sigma\!\left(p_r^{k_r}\right)$, where each factor $\sigma\!\left(p^k\right)=1+p+\cdots+p^k$ is at least $3$. The prime powers $p^k\le99$ with $k\ge2$ and their $\sigma$ values are
+\[4\!:\!7,\ 8\!:\!15,\ 16\!:\!31,\ 32\!:\!63,\ 64\!:\!127,\ 9\!:\!13,\ 27\!:\!40,\ 81\!:\!121,\ 25\!:\!31,\ 49\!:\!57 .\]
+
+\textbf{$\sigma(n)=101$.} Since $101$ is prime and every factor is at least $3$, $n$ would be a prime power $p^k$ with $\sigma\!\left(p^k\right)=101$. For $k=1$, $p=100$ is not prime, and the list above contains no $101$. Impossible.
+
+\textbf{$\sigma(n)=100$.} Each factor $\sigma\!\left(p^k\right)$ would be a divisor of $100$ greater than $2$, that is, one of $4,5,10,20,25,50,100$. For $k=1$, $\sigma(p)=p+1$ gives $p\in\{3,4,9,19,24,49,99\}$, of which only $p=3$ (value $4$) and $p=19$ (value $20$) are prime. No prime power with $k\ge2$ in the list has one of these values. So $\sigma(n)$ would be a product of distinct factors from $\{4,20\}$, that is, $4$, $20$ or $80$, never $100$. Impossible.
+
+So the smallest three-digit value of $\sigma$ is $\boxed{102}$.

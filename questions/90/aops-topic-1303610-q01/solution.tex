@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1303610_trapezoids
+% Stable identity: aops-topic-1303610-q01
+Let the trapezoid be $ABCD$ with bases $AB$ (longer) and $CD$, and drop the altitude $CH$ to $AB$. By Pythagoras $AH=\sqrt{25^2-15^2}=20$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(-2,0),B=(14,0),C=(10,15),D=(2,15),H=(10,0);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(A--C,red); draw(C--H,blue+dashed);
+label("$25$",(A+C)/2,NW,red); label("$15$",(C+H)/2,E,blue); draw(ra(H,C-H,A-H,0.8)); label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW); label("$H$",H,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In an isosceles trapezoid, $HB=\dfrac{AB-CD}{2}$, so $AH=AB-HB=\dfrac{AB+CD}{2}$, the average of the bases. Hence the area is $\dfrac{AB+CD}{2}\cdot CH=20\cdot15=\boxed{300\text{ cm}^2}$.

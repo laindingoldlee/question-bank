@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2562613_300th_post_problems
+% Stable identity: aops-topic-2562613-q03
+We count the complement. A $6$-digit number $d_1d_2\cdots d_6$ ($d_1\ge1$) is \emph{not} chaotic when it changes direction at most once, i.e. when it is of one of these two kinds:
+\begin{itemize}
+\item[$U$:] it never goes down and then later up: $d_1\le\cdots\le d_j\ge d_{j+1}\ge\cdots\ge d_6$ for some $j$ (a weak ``mountain'');
+\item[$V$:] it never goes up and then later down (a weak ``valley'').
+\end{itemize}
+Numbers of both kinds are exactly the monotone ones (never going down, or never going up).
+
+We use the following fact: the number of nondecreasing sequences of length $k$ from $t$ given values is $\dbinom{t+k-1}{k}$ (stars and bars), and
+\[\sum_{j=0}^{k}\dbinom{a+j}{j}\dbinom{b+k-j}{k-j}=\dbinom{a+b+k+1}{k},\]
+because both sides count multisets of size $k$ from $a+b+2$ types, split by how many elements come from the first $a+1$ types.
+
+\textbf{Counting $U$.} Let the largest digit be $m$ ($1\le m\le9$), first occurring at position $j+1$. Then $d_1,\dots,d_j$ is a nondecreasing sequence from $\{1,\dots,m-1\}$ ($\dbinom{m+j-2}{j}$ ways), and $d_{j+2},\dots,d_6$ is a nonincreasing sequence from $\{0,\dots,m\}$ ($\dbinom{m+5-j}{5-j}$ ways). (For $m=1$ the first factor is $1$ when $j=0$ and $0$ otherwise.) Summing over $j$ with the identity ($a=m-2$, $b=m$, $k=5$) gives $\dbinom{2m+4}{5}$, so
+\[|U|=\sum_{m=1}^{9}\dbinom{2m+4}{5}=6+56+252+792+2002+4368+8568+15504+26334=57882.\]
+\textbf{Counting $V$.} Let the smallest digit be $v$ ($0\le v\le9$), first occurring at position $j+1$. Then $d_1,\dots,d_j$ is a nonincreasing sequence from $\{v+1,\dots,9\}$ and $d_{j+2},\dots,d_6$ a nondecreasing sequence from $\{v,\dots,9\}$; the identity gives $\dbinom{23-2v}{5}$. We must remove the sequences starting with $0$, which occur only for $v=0$, $j=0$: there are $\dbinom{14}{5}=2002$ of them. So
+\[|V|=\sum_{v=0}^{9}\dbinom{23-2v}{5}-2002=76714-2002=74712.\]
+\textbf{Monotone numbers.} Nondecreasing with $d_1\ge1$: digits from $1$ to $9$, $\dbinom{14}{6}=3003$. Nonincreasing, not all zero: $\dbinom{15}{6}-1=5004$. Constant: $9$. So there are $3003+5004-9=7998$.
+
+The non-chaotic numbers number $57882+74712-7998=124596$, so the chaotic ones number
+\[900000-124596=\boxed{775404}.\]

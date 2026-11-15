@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2355316_snake_problems
+% Stable identity: aops-topic-2355316-q00
+There are $\dbinom{90}{3}=117480$ equally likely choices of three squares.
+
+\textbf{Adjacent pairs of squares.} Each of the $9$ rows has $9$ horizontally adjacent pairs and each of the $10$ columns has $8$ vertically adjacent pairs, so there are $81+80=161$ adjacent pairs.
+
+\textbf{Counting.} Choosing an adjacent pair and then any of the other $88$ squares gives $161\cdot88=14168$ choices. Three squares can never be pairwise adjacent (two squares adjacent to a third one are not adjacent to each other), so each set of three squares with at least one adjacent pair has either exactly one adjacent pair, and is counted once, or exactly two adjacent pairs, and is counted twice. A set with two adjacent pairs is a ``middle'' square together with two of its neighbours. A corner square has $2$ neighbours, each of the $2\cdot8+2\cdot7=30$ other border squares has $3$, and each of the $8\cdot7=56$ inner squares has $4$, so the number of such sets is
+\[4\dbinom22+30\dbinom32+56\dbinom42=4+90+336=430.\]
+Hence the number of sets with exactly one adjacent pair is $14168-2\cdot430=13308$, and the probability is
+\[\dfrac{13308}{117480}=\boxed{\dfrac{1109}{9790}}\approx0.113.\]

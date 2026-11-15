@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1682128_geometry_and_voronoi_diagrams
+% Stable identity: aops-topic-1682128-q01
+The line $L$ passes through $m$ and is perpendicular to $b-a$. So the distance from $x$ to $L$ is the length of the projection of $x-m$ onto the unit vector $\dfrac{b-a}{|b-a|}$:
+\[
+d=\dfrac{|(x-m)\cdot(b-a)|}{|b-a|}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair a=(0,0),bb=(4,1.2),m=(a+bb)/2;
+pair u=unit(bb-a),n=rotate(90)*u;pair x=m-1.8*u+2.0*n;
+draw((m-1.4*n)--(m+2.8*n),blue+linewidth(0.8));label("$L$",m+2.8*n,N,blue);
+draw(a--bb,linewidth(0.8));
+pair f=x-dot(x-m,u)*u;
+draw(x--f,dashed+red);draw(x--a,gray);draw(x--bb,gray);
+real r=0.22;pair v1=unit(x-f),v2=unit(m-f);
+draw(f+r*v1--f+r*(v1+v2)--f+r*v2,linewidth(0.6));
+draw(m+r*u--m+r*(u+n)--m+r*n,linewidth(0.6));
+dot(a);dot(bb);dot(m);dot(x);
+label("$a$",a,SW);label("$b$",bb,SE);label("$m$",m,SE);label("$x$",x,N);
+label("$d$",(x+f)/2,N,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Now expand the difference of squares:
+\[
+|x-a|^2-|x-b|^2=\bigl((x-a)-(x-b)\bigr)\cdot\bigl((x-a)+(x-b)\bigr)=(b-a)\cdot(2x-a-b)=2\,(b-a)\cdot(x-m).
+\]
+Substituting gives $d=\dfrac{\bigl|\,|x-a|^2-|x-b|^2\,\bigr|}{2|b-a|}$. $\blacksquare$
+
+(Unlike $\bigl|\,|x-a|-|x-b|\,\bigr|$, which the post uses as an edge test and which is not proportional to $d$, this quantity measures the true distance, so a threshold on it gives lines of uniform width.)

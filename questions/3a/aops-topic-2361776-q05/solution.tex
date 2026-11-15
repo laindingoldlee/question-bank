@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2361776_30_posts_circles
+% Stable identity: aops-topic-2361776-q05
+Let the triangle be $ABC$ and the centre $O$. The three sides cut the circle into three equal arcs, so the central angle $\angle BOC$ is $\dfrac{360^\circ}{3}=120^\circ$, and $OB=OC=6$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), A=6*dir(90), B=6*dir(210), C=6*dir(330);
+draw(circle(O,6));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(O--B,dashed); draw(O--C,dashed);
+draw(arc(O,1.1,210,330),blue); label("$120^\circ$",O+1.9*dir(270),blue+fontsize(8pt));
+dot(O); label("$O$",O,N);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE);
+label("$6$",(O+B)/2,NW); label("$6$",(O+C)/2,NE);
+\end{asy}
+
+By the law of cosines in triangle $OBC$,
+\[BC^2=6^2+6^2-2\cdot6\cdot6\cos120^\circ=36+36+36=108,\]
+so $BC=\boxed{6\sqrt3}$. (Alternatively, $O$ is the centroid, so the altitude is $\dfrac32\cdot6=9$ and the side is $\dfrac{2}{\sqrt3}\cdot9=6\sqrt3$.)

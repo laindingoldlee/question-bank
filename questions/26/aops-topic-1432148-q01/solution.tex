@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1432148_yeah_no_idea
+% Stable identity: aops-topic-1432148-q01
+Put the rectangle in coordinates with corners $(0,0)$ and $(m,n)$, and follow the diagonal from $(0,0)$ to $(m,n)$. It starts inside one square. Every time it crosses an interior grid line it enters a new square, except that when it passes through a lattice point it crosses a vertical and a horizontal line at the same moment and enters only one new square.
+\begin{itemize}
+\item It crosses each of the $m-1$ interior vertical lines and each of the $n-1$ interior horizontal lines once.
+\item With $d=\gcd(m,n)$, the lattice points strictly inside the diagonal are $\left(\dfrac{km}{d},\dfrac{kn}{d}\right)$ for $k=1,\dots,d-1$: there are $d-1$ of them.
+\end{itemize}
+So the number of squares is
+\[
+1+(m-1)+(n-1)-(d-1)=\boxed{m+n-\gcd(m,n)} .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+int m=6,n=4;
+for(int i=0;i<m;++i) for(int j=0;j<n;++j){
+  real x0=i,y0=j; bool hit=false;
+  for(int t=1;t<200;++t){real x=m*t/200.0,y=n*t/200.0; if(x>x0+1e-9 && x<x0+1-1e-9 && y>y0+1e-9 && y<y0+1-1e-9) hit=true;}
+  if(hit) fill((i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle,palered);
+}
+for(int i=0;i<=m;++i) draw((i,0)--(i,n),gray);
+for(int j=0;j<=n;++j) draw((0,j)--(m,j),gray);
+draw((0,0)--(m,n),blue+linewidth(1));
+dot((0,0)); dot((m,n)); dot((3,2),red);
+label("$m=6$",(3,0),S); label("$n=4$",(0,2),W); label("$(3,2)$",(3,2),SE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For example, a $6\times4$ rectangle: $6+4-2=8$ squares (shaded); the diagonal passes through the lattice point $(3,2)$.

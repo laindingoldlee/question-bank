@@ -1,0 +1,13 @@
+Put $AB=L$, $BC=H$, larger side $s=\dfrac{LH}{L+H}$, and smaller side $t=\dfrac{HL^2}{(L+H)^2}$. These formulas follow by substituting the upper-right corners into $y=H(1-\dfrac{x}{L})$. Let $r=\dfrac{L}{L+H}$, so $t=rs$ and $\dfrac{s^2}{LH}=r(1-r)$. The shaded gap has area $\dfrac{1}{2}t(s-t)$, and triangle $ABC$ has area $\dfrac{1}{2}LH$. Their ratio is $\dfrac{t(s-t)}{LH}=r^2(1-r)^2=\left(\dfrac{s^2}{LH}\right)^2=\dfrac{9}{289}$. Positivity gives $\dfrac{s^2}{LH}=\dfrac{3}{17}$, so the desired ratio is $\boxed{\dfrac{6}{17}}$. Both possible aspect ratios satisfy the same calculation.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(3.369924076215481,0),B=(0,0),C=(0,1);real s=0.7711630722733203,t=0.5946924840380261;draw(A--B--C--cycle);draw(box((0,0),(s,s)),blue);draw(box((s,0),(s+t,t)),red);filldraw((s,t)--(s,s)--(s+t,t)--cycle,lightgray);label("A",A,SE);label("B",B,SW);label("C",C,N);label("s",(s/2,0),S);label("t",(s+t/2,0),S);
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0.2967425904511855,0),B=(0,0),C=(0,1);real s=0.22883692772667982,t=0.05236633949138568;draw(A--B--C--cycle);draw(box((0,0),(s,s)),blue);draw(box((s,0),(s+t,t)),red);filldraw((s,t)--(s,s)--(s+t,t)--cycle,lightgray);label("A",A,SE);label("B",B,SW);label("C",C,N);label("s",(s/2,0),S);label("t",(s+t/2,0),S);
+\end{asy}

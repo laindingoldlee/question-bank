@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1649378_infinite_series_math_problem
+% Stable identity: aops-topic-1649378-q01
+A game with $n$ cards has $n!$ equally likely orders, so Mark wins it with probability $\dfrac{1}{n!}$ and loses with probability $1-\dfrac{1}{n!}$. By independence, the probability that he loses all of the games with $2,3,\dots,N$ cards is $\displaystyle\prod_{n=2}^{N}\left(1-\dfrac{1}{n!}\right)$. These events decrease as $N$ grows, and their limit is the event that he loses every game, so
+\[
+P(\text{at least one win})=1-Q,\qquad Q=\prod_{n=2}^{\infty}\left(1-\dfrac{1}{n!}\right).
+\]
+
+\textbf{Estimating $Q$.} The first five factors give
+\[
+Q_6=\dfrac{1}{2}\cdot\dfrac{5}{6}\cdot\dfrac{23}{24}\cdot\dfrac{119}{120}\cdot\dfrac{719}{720}=0.395428\ldots
+\]
+The other factors are less than $1$, so $Q<Q_6$. For numbers $0<a_n<1$ we have $\prod(1-a_n)\ge1-\sum a_n$ (by induction on the number of factors), and
+\[
+\sum_{n\ge7}\dfrac{1}{n!}=\dfrac{1}{7!}\left(1+\dfrac{1}{8}+\dfrac{1}{8\cdot9}+\cdots\right)<\dfrac{1}{7!}\left(1+\dfrac{1}{8}+\dfrac{1}{8^2}+\cdots\right)=\dfrac{8}{7\cdot7!}<0.00023 ,
+\]
+so $Q>Q_6(1-0.00023)>0.39533$. Hence $0.39533<Q<0.39543$, and the probability that Mark wins at least one game is between $0.60457$ and $0.60467$, which is
+\[
+\boxed{0.605}\ \text{to three decimal places}\quad(\text{more precisely }1-Q\approx0.60466).
+\]

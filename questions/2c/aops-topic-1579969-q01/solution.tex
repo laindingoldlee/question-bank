@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1579969_binary_counting_qn
+% Stable identity: aops-topic-1579969-q01
+Group the numbers by their number of binary digits. The numbers with exactly $L$ binary digits are $2^{L-1},\dots,2^L-1$: there are $2^{L-1}$ of them, each starts with $1$, and the remaining $L-1$ digits run over all $2^{L-1}$ strings of $0$s and $1$s. In these strings, each of the $L-1$ positions is $0$ in exactly half of them, so the numbers with $L$ digits contain
+\[
+(L-1)\cdot2^{L-2}
+\]
+zeros in total (for $L\ge2$; the number $1$ has none).
+
+For $L=2,\dots,8$ (the numbers $2$ to $255$) this gives
+\[
+1+4+12+32+80+192+448=769 .
+\]
+Finally $256=100000000_2$ contributes $8$ more zeros. The total is $769+8=\boxed{777}$.

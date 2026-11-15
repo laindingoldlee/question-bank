@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3176664_2018_moaa_individual_round__sample__math_open_at_andover
+% Stable identity: aops-topic-3176664-q10
+Fix the first vertex colour. Let $a_n,b_n$ count proper path colourings of $n$ vertices whose last colour is respectively the same as or different from the first. Then $a_1=1,b_1=0$, and $a_{n+1}=b_n$, $b_{n+1}=2a_n+b_n$. The values of $b_n$ for $n=1,\ldots,8$ are 0, 2, 2, 6, 10, 22, 42, 86. Closing the cycle requires the last colour differ from the first, so 86 choices work per first colour. Multiplying by 3 gives $\boxed{258}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] p;for(int i=0;i<8;++i){p.push(2*dir(45*i));label(string(i+1),2.2*dir(45*i));}for(int i=0;i<8;++i)draw(p[i]--p[(i+1)%8]);for(int i=0;i<8;++i)dot(p[i],i%2==0?red:blue);
+\end{asy}

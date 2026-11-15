@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h3052932_double_encryption
+% Stable identity: aops-topic-3052932-q01
+The twice-applied permutation has cycles $(A\,E)(B\,C)(D\,F\,G)$. The two 2-cycles can be obtained by squaring either of the two 4-cycles interleaving their letters; the 3-cycle has the unique square root $(D\,G\,F)$ on its letters. A square root commutes with its square, so it preserves the union of the two 2-cycles and the unique 3-cycle; thus these exhaust the possibilities. The resulting strings are $\boxed{\text{BEAGCDF},\ \text{CAEGBDF}}$. The following direct check over all permutations also proves completeness.
+\begin{verbatim}
+from itertools import permutations
+names="ABCDEFG";sol=[]
+for p in permutations(range(7)):
+ if "".join(names[p[p[i]]] for i in range(7))=="ECBFAGD":
+  sol.append("".join(names[x] for x in p))
+assert sol==["BEAGCDF","CAEGBDF"]
+\end{verbatim}

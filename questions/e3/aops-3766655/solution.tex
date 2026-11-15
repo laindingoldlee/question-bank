@@ -1,0 +1,9 @@
+Take $B = (0,0) , C = (7,0) , A = (\dfrac{5}{7} , \dfrac{20 \sqrt{3}}{7})$ from the three side lengths. Equidistance gives $O = (\dfrac{7}{2} , \dfrac{7 \sqrt{3}}{6})$. Intersecting $CO$ with $AB$ gives $M = (\dfrac{7}{13} , \dfrac{28 \sqrt{3}}{13})$. Substitute the line $AC$ into the circle through $A,M,O$ and remove the root $A$ to obtain $N = (\dfrac{105}{26} , \dfrac{35 \sqrt{3}}{26})$. The equation $(H-O)\cdot(N-M)=0$ with $H$ on the x-axis gives $H = (\dfrac{35}{13} , 0)$. The circle through $B,O,C$ has equation $x^2 + y^2 - 7 x + (\dfrac{7 \sqrt{3}}{3}) y = 0$. Substitution of $A+t(H-A)$ gives $t = \dfrac{13}{20}$ or $\dfrac{13}{6}$; only the first lies on segment $AH$. Thus $D=(2,\sqrt3)$, and $O D^2 = (\dfrac{3}{2})^2 + (\dfrac{\sqrt{3}}{6})^2 = \dfrac{7}{3}$. Therefore $\boxed{m+n=10}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(5/7,20sqrt(3)/7),(0,0),(7,0)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));pair O=(3.5,7sqrt(3)/6),M=(7/13,28sqrt(3)/13),N=(105/26,35sqrt(3)/26),H=(35/13,0),D=(2,sqrt(3));draw(p[2]--O--M);draw(M--N);draw(O--H);draw(p[0]--H);draw(O--D,dashed);label("$O$",O,(0,1));label("$M$",M,(-1,0));label("$N$",N,(1,0));label("$H$",H,(0,-1));label("$D$",D,(-1,0));
+\end{asy}
+

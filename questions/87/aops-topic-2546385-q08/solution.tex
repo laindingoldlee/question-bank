@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2546385_playerryes_100th_post_celebration_problems
+% Stable identity: aops-topic-2546385-q08
+\emph{Euler line.} Put the circumcentre $O$ at the origin and write $A,B,C$ for the position vectors of the vertices, so $|A|=|B|=|C|$. Let $H'=A+B+C$. Then
+\[\left(H'-A\right)\cdot(B-C)=(B+C)\cdot(B-C)=|B|^2-|C|^2=0,\]
+so $H'$ lies on the altitude from $A$; similarly it lies on the other altitudes, so $H'$ is the orthocentre $H$. The centroid is $G=\dfrac{A+B+C}{3}=\dfrac H3$. Back in the original coordinates,
+\[G=O+\dfrac{H-O}{3}=(8,1)+\dfrac{(-9,3)}{3}=(5,2).\]
+So $ab=5\cdot2=\boxed{10}$.
+
+The sketch shows a triangle with these two centres (circumradius $15$); $G$ lies on segment $HO$ with $HG=2\,GO$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real R=15; pair O=(8,1), H=(-1,4);
+pair a=R*dir(70); pair v=(H-O)-a;
+pair[] X=intersectionpoints(circle((0,0),R),circle(v,R));
+pair bq=X[0]; pair cq=v-bq;
+pair A=O+a, B=O+bq, C=O+cq;
+pair G=(A+B+C)/3;
+draw(circle(O,R),gray);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(H--O,red+linewidth(0.8));
+dot(H);dot(G);dot(O);
+label("$H$",H,N,fontsize(9pt));label("$G$",G,N,fontsize(9pt));label("$O$",O,S,fontsize(9pt));
+label("$A$",A,dir(A-O));label("$B$",B,dir(B-O));label("$C$",C,dir(C-O));
+\end{asy}

@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1272192_triangle_area_problem
+% Stable identity: aops-topic-1272192-q01
+\textbf{Lengths.} By the law of sines, $AC=\dfrac{\sin60^\circ}{\sin100^\circ}=\dfrac{\sin60^\circ}{\cos10^\circ}$, so $CD=\dfrac{\sin60^\circ}{2\cos10^\circ}$. In triangle $CDE$ the angles at $D$ and $E$ are both $80^\circ$, so $CE=CD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(1,0); real b=sin(pi/3)/sin(5*pi/9); pair A=b*dir(160)+C; pair Dp=(A+C)/2; real cd=abs(C-Dp); pair Ep=C+cd*dir(180);
+draw(A--B--C--cycle); draw(Dp--Ep,blue); dot(Dp); dot(Ep);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",Dp,NE); label("$E$",Ep,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Areas.} Using $\sin20^\circ=2\sin10^\circ\cos10^\circ$,
+\[
+[ABC]=\dfrac{1}{2}\cdot BC\cdot AC\sin20^\circ=\dfrac{\sin60^\circ\cdot2\sin10^\circ\cos10^\circ}{2\cos10^\circ}=\dfrac{\sqrt3}{2}\sin10^\circ,
+\]
+\[
+2[CDE]=CD^2\sin20^\circ=\dfrac{3}{16\cos^210^\circ}\cdot2\sin10^\circ\cos10^\circ=\dfrac{3}{8}\tan10^\circ .
+\]
+\textbf{Sum.} We claim $\dfrac{\sqrt3}{2}\sin10^\circ+\dfrac{3}{8}\tan10^\circ=\dfrac{\sqrt3}{8}$. Multiplying by $\dfrac{8\cos10^\circ}{\sqrt3}$, this is
+\[
+4\sin10^\circ\cos10^\circ+\sqrt3\sin10^\circ=\cos10^\circ\iff2\sin20^\circ=\cos10^\circ-\sqrt3\sin10^\circ=2\cos70^\circ,
+\]
+which is true. So $[ABC]+2[CDE]=\boxed{\dfrac{\sqrt3}{8}}$ cm$^2$.

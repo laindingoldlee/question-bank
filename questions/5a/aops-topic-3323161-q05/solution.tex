@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3323161_2024_midmichigan_math_olympiad_grades_1012
+% Stable identity: aops-topic-3323161-q05
+Let the legs be $a,b$ and the hypotenuse $c$. The inradius formula gives $a+b-c=2$, so $c=a+b-2$. Substituting into $c^2=a^2+b^2$ yields $(a-2)(b-2)=2$. Both factors are positive because $c>\max(a,b)$ implies $2=a+b-c<\min(a,b)$. AM--GM gives $a+b\ge4+2\sqrt2$. The same equation gives $\dfrac{ab}{2}=a+b-1$, so the area is at least $3+2\sqrt2$. Equality occurs at $a=b=2+\sqrt2$, yielding $\boxed{3+2\sqrt2}$. 
+\begin{asy}
+import geometry;
+usepackage("amsmath");
+size(270);
+real s=2+sqrt(2);pair A=(0,0),B=(s,0),C=(0,s),O=(1,1);draw(A--B--C--cycle);draw(circle(O,1),blue);draw(O--(1,0),dashed);label("$1$",(1,.5),E);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+\end{asy}

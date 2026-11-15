@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2791563_2013_math_hour_olympiad__university_of_washington__grades_67
+% Stable identity: aops-topic-2791563-q06
+Write $N=2013$. The answer is $\boxed{2011}$.
+
+Construction: all pairs are friends except one pair $\{a,b\}$. Then $a,b$ have $N-2$ friends and everyone else $N-1$. Nobody changes before minute $N-1$, when $a$ and $b$ (with $N-2$ friends) become mice; the other $N-2$ guests then have $N-3$ human friends, which is not $N-1$, so they survive minute $N$.
+
+Bound: degrees can only fall, and a guest with $d$ friends at the end of the ball would have had at least $d$ human friends at minute $d+1$.
+\begin{itemize}
+\item If nobody turned, take any guest $v$ with $d$ friends: at minute $d+1\le N$ she has exactly $d$ human friends and turns. Contradiction.
+\item If exactly one guest $m$ turned, at minute $t$, then $m$ had $t-1$ friends. A survivor $v$ with $d_v$ friends among the survivors must not have exactly $d_v$ human friends at minute $d_v+1$, so $d_v+1\le t$ and $v$ is a friend of $m$. Hence $m$ is a friend of all $N-1$ survivors, so $t=N$. A survivor with $d_v\le N-3$ would have $d_v+1$ friends at minute $d_v+2\le N-1$ and turn; so every survivor has $d_v=N-2$, the graph is complete, and everyone turns at minute $N$. Contradiction.
+\end{itemize}
+So at least two guests turn, and at most $N-2=2011$ remain.

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1554033_help_on_these_mathcounts_problems
+% Stable identity: aops-topic-1554033-q02
+In one revolution the wheel rolls without slipping through a distance equal to its circumference, $\pi d=19.1\pi$ inches:
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+real d=19.1, L=pi*d;
+draw((-d/2-3,0)--(L+d/2+3,0),linewidth(0.8));
+draw(circle((0,d/2),d/2),linewidth(1.2));draw(circle((L,d/2),d/2),dashed);
+draw((-d/2,d/2)--(d/2,d/2),Arrows(TeXHead));label("$19.1$ in",(0,d/2),N);
+dot((0,0));dot((L,0));
+draw((0,-3)--(L,-3),Arrows(TeXHead));
+label("one revolution: $19.1\pi$ in",(L/2,-3),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Ten miles is $10\cdot5280\cdot12=633600$ inches. The number of revolutions is
+\[
+\dfrac{633600}{19.1\pi}\approx\dfrac{633600}{60.0044}\approx10559.2,
+\]
+which is $\boxed{10559}$ to the nearest whole number.

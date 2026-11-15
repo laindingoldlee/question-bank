@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2158704_circle_angle_triangle_fun
+% Stable identity: aops-topic-2158704-q01
+Since $P$ lies between $L$ and $O$, the radius is $OL=8+2=10$, so $LN=20$ and $PN=PO+ON=2+10=12$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real R=10; pair O=(0,0), L=(-10,0), Nn=(10,0), P=(-2,0);
+pair K=(-6,8);
+pair M=(14/5,-48/5);
+draw(circle(O,R),linewidth(0.9));
+draw(L--Nn); draw(K--M);
+draw(K--Nn,gray(0.45));
+draw(L--M,blue+linewidth(0.9)); draw(M--Nn,red+linewidth(0.9));
+real s=0.9; pair u=unit(L-M), v=unit(Nn-M);
+draw((M+s*u)--(M+s*u+s*v)--(M+s*v));
+dot(O); dot(L); dot(Nn); dot(P); dot(K); dot(M);
+label("$O$",O,SE); label("$L$",L,W); label("$N$",Nn,E); label("$P$",P,NW); label("$K$",K,NW); label("$M$",M,S);
+label("$8$",(L+P)/2,N); label("$2$",(P+O)/2,N); label("$4\sqrt5$",(K+P)/2,W);
+label("$8\sqrt5$",(K+Nn)/2,NE,gray(0.3)); label("$16$",(L+M)/2,SW,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Similar triangles.} The inscribed angles $\angle MKN$ and $\angle MLN$ stand on the same arc $MN$ (the points $K$ and $L$ lie on the same side of the chord $MN$), so $\angle PKN=\angle PLM$. Also $\angle KPN=\angle LPM$ (vertical angles). Hence triangles $KPN$ and $LPM$ are similar, with $K$, $P$, $N$ corresponding to $L$, $P$, $M$, and
+\[\dfrac{LM}{KN}=\dfrac{LP}{KP}\quad\Longrightarrow\quad LM=8\sqrt5\cdot\dfrac{8}{4\sqrt5}=16 .\]
+
+\textbf{The right angle.} Since $LN$ is a diameter, $\angle LMN=90^\circ$. By the Pythagorean theorem in triangle $LMN$,
+\[MN=\sqrt{LN^2-LM^2}=\sqrt{400-256}=\boxed{12}.\]
+
+(Check with coordinates: with $O=(0,0)$, $L=(-10,0)$, $N=(10,0)$ and $P=(-2,0)$, the point $K=(-6,8)$ is on the circle with $PK=\sqrt{80}=4\sqrt5$ and $NK=\sqrt{320}=8\sqrt5$; line $KP$ meets the circle again at $M=\left(\dfrac{14}{5},-\dfrac{48}{5}\right)$, and $MN=\sqrt{\left(\dfrac{36}{5}\right)^2+\left(\dfrac{48}{5}\right)^2}=12$.)
+
+\emph{Remark.} The data are not independent: once $OP$, $PL$ and $PK$ are given, $K$ is determined up to reflection in $LN$, and so is $NK$. For example, $PK=9$ would force $NK=3\sqrt{35}\approx17.75$ (law of cosines in triangles $OPK$ and $NPK$), so lengths such as $PK=9$ and $NK=18$ could not both hold.

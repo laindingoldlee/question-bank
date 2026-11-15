@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1396015_2016_mathcounts_national_sprint_16
+% Stable identity: aops-topic-1396015-q16
+Let the triangle be $ABC$ with height $H=6\sqrt3$, and let the parallelogram $PQRS$ have $P,Q$ on $BC$, $R$ on $CA$ and $S$ on $AB$. Then $SR\parallel PQ\parallel BC$. If the parallelogram has height $h$ (the distance between $SR$ and $BC$), triangle $ASR$ is equilateral with height $H-h$, so
+\[
+SR=12\cdot\dfrac{H-h}{H}.
+\]
+The area is
+\[
+SR\cdot h=\dfrac{12}{H}\,h(H-h)\le\dfrac{12}{H}\cdot\dfrac{H^2}{4}=3H=18\sqrt3,
+\]
+by AM--GM ($h(H-h)\le\left(\dfrac{H}{2}\right)^2$), with equality when $h=\dfrac {H}{2}$, i.e.\ $S$ and $R$ are the midpoints of $AB$ and $AC$ and $SR=6$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real H=6*sqrt(3);
+pair B=(0,0),C=(12,0),A=(6,H);
+pair Sx=(A+B)/2,R=(A+C)/2,P=(2,0),Q=(8,0);
+fill(P--Q--R--Sx--cycle,lightcyan);
+draw(A--B--C--cycle,linewidth(0.9)); draw(P--Q--R--Sx--cycle,blue+linewidth(0.9));
+dot(A);dot(B);dot(C);dot(P);dot(Q);dot(R);dot(Sx);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$P$",P,S); label("$Q$",Q,S); label("$R$",R,NE); label("$S$",Sx,NW);
+label("$6$",(Sx+R)/2,N,blue); draw((13,0)--(13,H/2),Arrows); label("$\dfrac{H}{2}$",(13,H/4),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the greatest possible area is $\boxed{18\sqrt3}$ square inches, half the area $36\sqrt3$ of the triangle.

@@ -1,0 +1,9 @@
+Take the ray as the positive horizontal axis. Within each parity class, the heights are constant and the angles from the ray strictly decrease. Thus the angle between $OP_n$ and $OP_{n+2}$ is the difference of their inclinations.
+
+The odd-indexed sum telescopes to $\arctan(\dfrac{1}{1})=45^\circ$, since the final inclination tends to zero. The even-indexed sum telescopes to $\arctan(2\dfrac{\sqrt 3}{2})=60^\circ$. All terms are positive, so these two convergent sums can be added. The answer is $\boxed{105^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0);draw(O--(7,0),Arrow);for(int n=1;n<=6;++n){pair P=(n,n%2==1?1:2sqrt(3));draw(O--P,n%2==1?blue:red);draw((n,0)--P,dashed+gray);dot(P);label("$P_"+string(n)+"$",P,(0,1));}label("$O$",O,SW);
+\end{asy}

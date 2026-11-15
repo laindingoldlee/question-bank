@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1385033_probability_question
+% Stable identity: aops-topic-1385033-q01
+There are $3^5=243$ equally likely colourings. Count the good ones.
+
+Let $a_n$ be the number of colourings of $n$ tiles in a row with no two neighbours equal and with the first and last tiles different, and $b_n$ the number with no two neighbours equal and first and last equal. Every row colouring with no equal neighbours is of one of these kinds, so $a_n+b_n=3\cdot2^{n-1}$. Also $b_n=a_{n-1}$: deleting the last tile of a $b_n$-colouring leaves a colouring of $n-1$ tiles whose last tile differs from the first, and conversely such a colouring extends in exactly one way (repeat the first colour). Starting from $a_2=6$:
+\[
+a_3=3\cdot4-a_2=6,\qquad a_4=3\cdot8-a_3=18,\qquad a_5=3\cdot16-a_4=30 .
+\]
+The probability is $\dfrac{30}{243}=\boxed{\dfrac{10}{81}}$.

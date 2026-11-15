@@ -1,0 +1,11 @@
+Use $A = (-5,0) , C = (5,0) , B = (0 , \dfrac{20}{3})$, in clockwise order. The circumcenter is $O = (0 , \dfrac{35}{24})$ and $D=(0,0)$, so $\Gamma$ has radius $\dfrac{35}{24}$. The circle equation together with $OP\perp BP$ gives the two tangent points $P = (\pm \dfrac{7}{5} , \dfrac{28}{15})$. The clockwise rotation through $\angle CBA$ has cosine $\dfrac{7}{25}$ and sine $\dfrac{24}{25}$, so apply the matrix $\left(\begin{smallmatrix}\dfrac{7}{25}&\dfrac{24}{25}\\-\dfrac{24}{25}&\dfrac{7}{25}\end{smallmatrix}\right)$ to $P-B$ and then add $B$. The two rotated points are $(- \dfrac{527}{125} , \dfrac{1492}{375})$ and $(- 5 , \dfrac{20}{3})$, respectively. The determinant formula gives $[APP^{\prime}]=12$ in both cases. Since $[ABC] = \dfrac{100}{3}$, the ratio is $\dfrac{25}{9}$, giving $\boxed{m+n=34}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair A=(-5,0),C=(5,0),B=(0,20/3),D=(0,0),O=(0,35/24),P=(7/5,28/15),Q=(-527/125,1492/375);draw(A--B--C--cycle);draw(circle(O,35/24));draw(B--P);draw(A--P--Q--A,dashed);label("$A$",A,(-1,0));label("$B$",B,(0,1));label("$C$",C,(1,0));label("$D$",D,(0,-1));label("$O$",O,(-1,0));label("$P$",P,(1,0));label("$P^{\prime}$",Q,(-1,0));
+\end{asy}
+\begin{asy}
+import graph;
+usepackage("amsmath"); import geometry;size(7cm);pair A=(-5,0),B=(0,20/3),C=(5,0),O=(0,35/24),P=(-7/5,28/15),Q=(-5,20/3);draw(A--B--C--cycle);draw(circle(O,35/24));draw(B--P);draw(A--P--Q--A,dashed);label("$A$",A,(-1,-1));label("$B$",B,(0,1));label("$C$",C,(1,0));label("$P$",P,(-1,0));label("$P^{\prime}$",Q,(-1,1));\end{asy}

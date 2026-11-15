@@ -1,0 +1,7 @@
+Put $A=(0,0),B=(1,0),C=(\dfrac{1}{2},\dfrac{\sqrt3}{2})$, and write $D=(d,0),E=(\dfrac{e}{2},\dfrac{\sqrt3e}{2})$. The equality $PD=PE$ makes $P$ the midpoint of $DE$. The circumcircle is $x^2+y^2-x-\dfrac{y}{\sqrt3}=0$. Substituting the midpoint gives $d^2+de+e^2=2(d+e)$. The radius through that midpoint is perpendicular to $DE$, so its center is equidistant from $D,E$, giving $(d-e)(d+e-1)=0$. If $d=e$, the nonzero solution is $d=e=\dfrac{4}{3}$, placing $P$ off the minor arc $AB$. Thus $d+e=1$ and $de=-1$. The minor-arc condition selects $e=\dfrac{1-\sqrt5}{2}<0$. Therefore $[ADE]=\dfrac{\sqrt3}{4}|de|=\boxed{\dfrac{\sqrt3}{4}}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+real d=(1+sqrt(5))/2,e=(1-sqrt(5))/2;pair A=(0,0),B=(1,0),C=(.5,sqrt(3)/2),D=(d,0),E=(e/2,sqrt(3)*e/2),P=(D+E)/2,O=(.5,sqrt(3)/6);draw(circle(O,1/sqrt(3)));draw(A--B--C--cycle);draw(A--D--E--A);draw(O--P,dashed);pair[] V={A,B,C,D,E,P,O};string[] L={"A","B","C","D","E","P","O"};for(int i=0;i<V.length;++i)label("$"+L[i]+"$",V[i],i==5?(0,-1):(i==6?(0,1):unit(V[i]-O)));
+\end{asy}

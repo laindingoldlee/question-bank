@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1524091_mathcounts_handbook_55_and_66
+% Stable identity: aops-topic-1524091-q02
+The inscribed angle $ABC$ is $90^\circ$, so it subtends an arc $AC$ (not containing $B$) of $180^\circ$; that is, $AC$ is a diameter. The arc $ABC$ is the other half of the circle:
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real r=3;
+pair O=(0,0),A=r*dir(180),C=r*dir(0),B=r*dir(90);
+draw(circle(O,r),gray(0.5));
+draw(arc(O,r,0,180),blue+linewidth(1.6));
+draw(A--B--C,linewidth(1));
+draw(A--C,dashed);
+real s=0.35; draw(B+s*unit(A-B)--B+s*unit(A-B)+s*unit(C-B)--B+s*unit(C-B));
+dot(O);label("$O$",O,S);
+label("$A$",A,W);label("$B$",B,N);label("$C$",C,E);
+label("$3$",(O+C)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Its length is half the circumference,
+\[
+\dfrac{1}{2}\cdot2\pi\cdot3=\boxed{3\pi}\text{ metres}.
+\]
+(The condition $AB=BC$ only fixes $B$ as the midpoint of that semicircle; it does not change the arc length.)

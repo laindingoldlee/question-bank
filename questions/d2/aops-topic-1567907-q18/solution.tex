@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1567907_more_mc_qs
+% Stable identity: aops-topic-1567907-q18
+The hypotenuse is $AC=\sqrt{8^2+6^2}=10$. Let $M$ be its midpoint, so $AM=5$ and $EM\perp AC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),A=(0,8),C=(6,0),M=(3,4),Ep=(0,7/4);
+draw(A--B--C--cycle,linewidth(1));
+draw(M--Ep,blue+linewidth(1));
+real q=0.4;draw((0,q)--(q,q)--(q,0));
+pair u=unit(A-M),v=unit(Ep-M);draw(M+q*u--M+q*(u+v)--M+q*v,blue);
+pair nv=dir(36.87);draw((A+M)/2+0.25*nv--(A+M)/2-0.25*nv);draw((C+M)/2+0.25*nv--(C+M)/2-0.25*nv);
+dot(M);dot(Ep);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$M$",M,NE);label("$E$",Ep,W);
+label("$6$",(B+C)/2,S);label("$5$",(A+M)/2+0.75*nv);label("$5$",(M+C)/2+0.75*nv);
+label("$\dfrac{25}{4}$",(A+Ep)/2,W,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangles $AME$ and $ABC$ both have a right angle (at $M$ and at $B$) and share the angle at $A$, so they are similar, with $AE$ corresponding to $AC$ and $AM$ to $AB$:
+\[
+\dfrac{AE}{AC}=\dfrac{AM}{AB}\qquad\Longrightarrow\qquad AE=\dfrac{10\cdot5}{8}=\boxed{\dfrac{25}{4}}.
+\]
+Check with coordinates $B=(0,0)$, $A=(0,8)$, $C=(6,0)$: $E=\left(0,\dfrac{7}{4}\right)$ is equidistant from $A$ and $C$, since $\left(8-\dfrac{7}{4}\right)^2=\dfrac{625}{16}=6^2+\left(\dfrac{7}{4}\right)^2$.

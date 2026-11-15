@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2490109_how_many_triangles
+% Stable identity: aops-topic-2490109-q01
+An equilateral triangle is divided into small congruent equilateral triangles by lines parallel to its sides, so that there are $16$ rows of small triangles (each side of the big triangle is $16$ times the side of a small triangle), as in the figure.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real h=sqrt(3)/2;
+pair pt(real a,real bb){return (a+bb/2,bb*h);}
+for(int i=1;i<16;++i){
+  draw(pt(0,i)--pt(16-i,i),linewidth(0.3));
+  draw(pt(i,0)--pt(i,16-i),linewidth(0.3));
+  draw(pt(i,0)--pt(0,i),linewidth(0.3));
+}
+draw(pt(0,0)--pt(16,0)--pt(0,16)--cycle,linewidth(0.8));
+\end{asy}
+
+How many triangles of any size, whose sides lie along the lines of the figure, point upward (in the same direction as the big triangle)?

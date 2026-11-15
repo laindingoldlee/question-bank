@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1728894_help_in_geometry
+% Stable identity: aops-topic-1728894-q01
+Two semicircles with centres $P$ and $Q$ and radii $6$ and $4$ stand on the diameter of a large semicircle. They are tangent to each other and to the large semicircle. A line is tangent to semicircle $P$ at $L$ and to semicircle $Q$ at $M$, as shown.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),P=(-4,0),Q=(6,0);
+pair nn=(1,sqrt(24))/5;
+pair L=P+6*nn,M=Q+4*nn;
+draw(arc(O,10,0,180),linewidth(0.9));draw(arc(P,6,0,180),linewidth(0.8));draw(arc(Q,4,0,180),linewidth(0.8));
+draw((-10,0)--(10,0),linewidth(0.9));
+draw(L+0.25*(L-M)--M+0.4*(M-L),linewidth(0.8));
+dot(P);dot(Q);dot(L);dot(M);
+label("$P$",P,S);label("$Q$",Q,S);label("$L$",L,N);label("$M$",M,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Find $LM$.

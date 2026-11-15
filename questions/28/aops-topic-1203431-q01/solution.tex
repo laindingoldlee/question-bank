@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1203431_problem_for_thought
+% Stable identity: aops-topic-1203431-q01
+Yes. Use the fact that a spherical cap of height $h$ on a circle of radius $a$ has area $\pi(a^2+h^2)$: indeed the cap of a sphere of radius $\rho$ has area $2\pi\rho h$, and $a^2=h(2\rho-h)$ gives $2\rho h=a^2+h^2$.
+
+Carving one dimple removes a cap of the ball over some circle of radius $a$ (height $h_1$) and replaces it by a concave spherical cap over the same circle (depth $h_2$). The surface area changes by
+\[\pi\left(a^2+h_2^2\right)-\pi\left(a^2+h_1^2\right)=\pi\left(h_2^2-h_1^2\right),\]
+which is negative whenever the dimple is shallower than the cap it removes, $h_2<h_1$ (a dimple cut by a sphere of larger radius than the ball).
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real R=2; draw(arc((0,0),R,10,170)); real a=R*Sin(30); real h1=R-R*Cos(30);
+pair L=(-a,R*Cos(30)),Rr=(a,R*Cos(30)); draw(L--Rr,dotted);
+real rho=3; real h2=rho-sqrt(rho^2-a^2);
+draw(arc((0,R*Cos(30)-h2+rho),rho,270-degrees(asin(a/rho)),270+degrees(asin(a/rho))),blue+linewidth(0.9));
+label("removed cap",(0,R+0.15),N); label("dimple",(0,R*Cos(30)-h2),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $\boxed{\text{yes}}$: carving shallow dimples decreases the surface area.

@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2469601_tricky_trapezoid_problem
+% Stable identity: aops-topic-2469601-q01
+Write $[\,\cdot\,]$ for area.
+
+\textbf{Ratio of the bases.} Triangles $AXD$ and $DXC$ have the same height from $D$ to line $AC$, so $\dfrac{AX}{XC}=\dfrac{[AXD]}{[DXC]}=\dfrac34$. Since $AB\parallel CD$, triangles $XAB$ and $XCD$ are similar, so $\dfrac{AB}{CD}=\dfrac{XB}{XD}=\dfrac{AX}{XC}=\dfrac34$. In particular $AB<CD$, so the legs meet at $P$ beyond the shorter base $AB$.
+
+\textbf{The trapezoid.} Triangles $AXB$ and $AXD$ have the same height from $A$ to line $BD$, so $[AXB]=[AXD]\cdot\dfrac{XB}{XD}=3\cdot\dfrac34=\dfrac94$. Also $[BXC]=[ABC]-[AXB]=[ABD]-[AXB]=[AXD]=3$, because triangles $ABC$ and $ABD$ have the same base $AB$ and equal heights. So
+\[[ABCD]=3+4+3+\dfrac94=\dfrac{49}{4}.\]
+
+\textbf{Triangle $PAB$.} Since $AB\parallel DC$, triangle $PAB$ is similar to triangle $PDC$ with ratio $\dfrac34$, so $[PDC]=\dfrac{16}{9}[PAB]$ and
+\[[ABCD]=[PDC]-[PAB]=\dfrac79[PAB]=\dfrac{49}{4},\qquad [PAB]=\dfrac{63}{4}.\]
+
+Finally, quadrilateral $AXBP$ consists of triangle $PAB$ and triangle $AXB$ on the other side of $AB$:
+\[[AXBP]=\dfrac{63}{4}+\dfrac94=\dfrac{72}{4}=\boxed{18}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0),C=(8,0),A=(1,2.2),B=(7,2.2);
+pair P=extension(D,A,C,B), X=extension(A,C,B,D);
+fill(A--X--B--P--cycle,rgb(0.8,0.88,1));
+draw(D--C--B--A--cycle,linewidth(0.8));
+draw(A--P--B,linewidth(0.8));
+draw(A--C); draw(B--D);
+draw(A--D,linewidth(0.8));
+dot(P); dot(X);
+label("$A$",A,W); label("$B$",B,E); label("$C$",C,SE); label("$D$",D,SW); label("$P$",P,N); label("$X$",X,N);
+label("$3$",(A+X+D)/3,fontsize(9pt)); label("$4$",(D+X+C)/3,fontsize(9pt));
+\end{asy}
+
+(The sketch is not to scale for the areas; only ratios of areas matter, and they are preserved by stretching the figure vertically.)

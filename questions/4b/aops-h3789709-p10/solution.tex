@@ -1,0 +1,7 @@
+The six numbers sum to $75$. When adding the three side sums, each vertex is counted twice and each midpoint once. Therefore $3S=75+V$, where $V$ is the sum of the three vertex numbers. Since $V\le13+14+15=42$, $S\le39$. Place $13,14,15$ at the vertices, and $12,10,11$ on the respective sides joining $(13,14),(14,15),(15,13)$. Every side then sums to $39$, so the maximum is $\boxed{39}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,3),B=(-2,0),C=(2,0);draw(A--B--C--cycle);pair[] p={A,B,C,(A+B)/2,(B+C)/2,(C+A)/2};string[] s={"13","14","15","12","10","11"};for(int i=0;i<6;++i){filldraw(circle(p[i],.23),white);label(s[i],p[i]);}
+\end{asy}

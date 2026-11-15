@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1654944_geometry_proof_quadrilaterals
+% Stable identity: aops-topic-1654944-q01
+\textbf{The statement is false.} Take $P=(0,0)$, $A=(-1,0)$, $C=(1,0)$, $B=(0,1)$, $D=(0,-2)$. The diagonals lie on the axes, so they are perpendicular and meet at $P$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(-1,0),C=(1,0),B=(0,1),D=(0,-2),P=(0,0);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C);draw(B--D);
+draw((0.13,0)--(0.13,0.13)--(0,0.13));
+label("$A$",A,W);label("$B$",B,N);label("$C$",C,E);label("$D$",D,S);label("$P$",P,SW);
+label("$1$",(-0.5,0),S);label("$1$",(0.5,0),S);label("$1$",(0,0.55),E);label("$2$",(0,-1),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Here $AP\cdot CP+BP\cdot DP=1\cdot1+1\cdot2=3$, while $AB\cdot CD=\sqrt2\cdot\sqrt5=\sqrt{10}\approx3.16\ne3$.
+
+\textbf{What is true.} In general, put $P$ at the origin with $A=(-a,0)$, $C=(c,0)$, $B=(0,b)$, $D=(0,-d)$, where $a,b,c,d>0$. Then
+\[
+AP\cdot CP+BP\cdot DP=ac+bd,\qquad AB\cdot CD=\sqrt{a^2+b^2}\,\sqrt{c^2+d^2}.
+\]
+By the Cauchy-Schwarz inequality, $(ac+bd)^2\le(a^2+b^2)(c^2+d^2)$, so always
+\[
+AP\cdot CP+BP\cdot DP\le AB\cdot CD,
+\]
+with equality exactly when $(a,b)$ and $(c,d)$ are proportional, $ad=bc$. The vectors $\overrightarrow{AB}=(a,b)$ and $\overrightarrow{DC}=(c,d)$ are then parallel, so equality holds exactly when $AB\parallel CD$ (for instance, in a square). In the example above $ad=2\ne1=bc$, and the inequality is strict.

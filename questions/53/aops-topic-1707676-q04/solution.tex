@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1707676_some_geometry_questions
+% Stable identity: aops-topic-1707676-q04
+The surface of the solid consists of the two small circular faces and the two lateral surfaces (the large bases are glued together and are inside).
+
+The slant height $l$ of each frustum is the hypotenuse of a right triangle with legs $48$ (the height) and $16-6=10$ (the difference of the radii):
+\[
+l=\sqrt{48^2+10^2}=\sqrt{2404}=2\sqrt{601}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm,8cm);
+defaultpen(fontsize(10pt));
+real ex=0.3;
+draw(ellipse((0,96),6,6*ex),linewidth(0.8));
+draw(shift(0,48)*scale(16,16*ex)*arc((0,0),1,180,360),linewidth(0.8));draw(shift(0,48)*scale(16,16*ex)*arc((0,0),1,0,180),dashed);
+draw(shift(0,0)*scale(6,6*ex)*arc((0,0),1,180,360),linewidth(0.8));draw(shift(0,0)*scale(6,6*ex)*arc((0,0),1,0,180),dashed);
+draw((-6,96)--(-16,48)--(-6,0),linewidth(0.8));draw((6,96)--(16,48)--(6,0),linewidth(0.8));
+draw((0,0)--(6,0),blue);draw((0,48)--(-16,48),blue+dashed);draw((0,48)--(0,96),red+dashed);
+draw((6,96)--(16,96),gray+dashed);draw((16,96)--(16,48),gray+dashed);
+label("$6$",(3,-2),S,blue);label("$16$",(-8,39),blue);label("$48$",(-0.5,72),W,red);label("$10$",(11,97),N,gray);label("$l$",(13.5,72));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The lateral area of a frustum with radii $r,R$ and slant height $l$ is $\pi(r+R)l$ (the difference of the lateral areas of two similar cones). So each lateral surface has area $\pi\cdot22\cdot2\sqrt{601}=44\sqrt{601}\,\pi$. The two small circles have total area $2\cdot36\pi=72\pi$. The total surface area is
+\[
+\boxed{(72+88\sqrt{601})\,\pi}\approx2.31\times10^3 .
+\]

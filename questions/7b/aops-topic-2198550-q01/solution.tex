@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2198550_sum_of_divisors_is_multiple_of_25
+% Stable identity: aops-topic-2198550-q01
+Let $\sigma(n)$ be the sum of the positive divisors of $n$. If $n=q_1q_2\cdots q_r$ with $q_1,\dots,q_r$ powers of distinct primes, then $\sigma(n)=\sigma(q_1)\sigma(q_2)\cdots\sigma(q_r)$. So $25\mid\sigma(n)$ requires either $25\mid\sigma(q_i)$ for some $i$, or $5\mid\sigma(q_i)$ for at least two different $i$.
+
+\textbf{Prime powers up to $152$ with $5\mid\sigma$.} For a prime, $\sigma(p)=p+1$, so we need $p\equiv4\pmod5$: $p=19,29,59,79,89,109,139,149$. For higher prime powers up to $152$:
+\[\sigma(4)=7,\ \sigma(8)=15,\ \sigma(16)=31,\ \sigma(32)=63,\ \sigma(64)=127,\ \sigma(128)=255,\]
+\[\sigma(9)=13,\ \sigma(27)=40,\ \sigma(81)=121,\ \sigma(25)=31,\ \sigma(125)=156,\ \sigma(49)=57,\ \sigma(121)=133,\]
+so only $8$, $27$ and $128$ qualify. Among all of these, $25\mid\sigma(q)$ only for $q=149$ ($\sigma=150$).
+
+\textbf{Smallest $n$.} If $n\le152$ and $25\mid\sigma(n)$, then either $149\mid n$, so $n=149$, or $n$ is divisible by two coprime prime powers from the list $8,19,27,29,59,\dots$; the smallest such product is $8\cdot19=152$ (all others are at least $8\cdot27=216$). Both work: $\sigma(149)=150$ and $\sigma(152)=\sigma(8)\sigma(19)=15\cdot20=300$.
+
+So the two smallest values are $149$ and $152$, and their sum is $\boxed{301}$, confirming the poster's answer.

@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2525540_the_value_of_00
+% Stable identity: aops-topic-2525540-q01
+\textbf{(a)} For $x>0$ we have $x^0=1$ and $0^x=0$, so the limits are $1$ and $0$.
+
+\textbf{(b)} Write $x^x=e^{x\ln x}$; it suffices to show $x\ln x\to0$. For $0<x<1$ put $t=\dfrac1x>1$. Applying $\ln u\le u-1$ with $u=\sqrt t$,
+\[\ln t=2\ln\sqrt t\le2\left(\sqrt t-1\right)<2\sqrt t,\]
+so
+\[0<-x\ln x=\dfrac{\ln t}{t}<\dfrac{2\sqrt t}{t}=\dfrac{2}{\sqrt t}=2\sqrt x.\]
+As $x\to0^+$, $2\sqrt x\to0$, so $x\ln x\to0$ and $x^x=e^{x\ln x}\to e^0=\boxed{1}$.
+
+\textbf{(c)} Take $f(x)=e^{-\dfrac1x}$ and $g(x)=-x\ln c$. Since $0<c<1$, $-\ln c>0$, so $g(x)\to0^+$, and $f(x)\to0^+$ as $x\to0^+$. But for every $x>0$,
+\[f(x)^{g(x)}=e^{-\dfrac1x\cdot\left(-x\ln c\right)}=e^{\ln c}=c.\]
+
+\textbf{Conclusion.} When a base and an exponent both tend to $0^+$, the power can tend to $1$ (as $x^x$ does), to $0$ (as $0^x$ does), or to any $c$ between (by (c)). So the limit of $f^g$ is not determined by the fact that $f\to0$ and $g\to0$: ``$0^0$'' is an \emph{indeterminate form} for limits. This is a statement about limits only. As a single value, $0^0$ is usually defined to be $1$ in algebra and combinatorics (for example, so that $x^0=1$ in polynomials and $(1+x)^n=\sum\binom nk x^k$ holds at $x=0$).
+
+(For negative $x$, $x^x$ is not even defined for most $x$, since a negative number has no real power with exponent such as $-\dfrac12$; this is why its graph ``goes crazy'' to the left of $0$.)

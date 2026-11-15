@@ -1,0 +1,7 @@
+In each cell, selecting a triangle amounts to selecting a horizontal boundary and a vertical boundary meeting at its right-angle corner; these two choices are independent. For each of the two left--right cell pairs, the left/right edge choices must avoid both triangles using their shared vertical edge, leaving three of four possibilities. These choices give $3^2=9$. Independently, the two bottom--top pairs each have three allowed choices of bottom/top edge, giving another $9$. Thus the number of placements is $9\cdot9=\boxed{81}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=0;x<2;++x)for(int y=0;y<2;++y){draw(box((x,y),(x+1,y+1)));filldraw((x,y)--(x+1,y)--(x,y+1)--cycle,lightblue);}label("one valid placement",(1,-.4));
+\end{asy}

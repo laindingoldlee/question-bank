@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2595681_circumcenters_create_equilateral_triangles
+% Stable identity: aops-topic-2595681-q01
+Let $O_1$, $O_2$, $O_3$ be the circumcentres of $ADF$, $BED$, $CFE$, and let $d=EF$, $e=FD$, $f=DE$ be the sides of triangle $DEF$ (which is a genuine triangle, as $D,E,F$ lie on three different sides). Let $[DEF]$ be its area.
+
+\textbf{Step 1: the shape of $DO_1F$.} In the circle through $A$, $D$, $F$, the chord $DF$ subtends the inscribed angle $\angle DAF=60^\circ$. Since this is less than $90^\circ$, the centre $O_1$ lies on the same side of $DF$ as $A$, and the central angle is $\angle DO_1F=120^\circ$. So $DO_1F$ is isosceles with apex angle $120^\circ$ and base angles $30^\circ$, and $DF=2\cdot O_1D\cos30^\circ$, i.e. $O_1D=O_1F=\dfrac{e}{\sqrt3}$. The segment $DF$ cuts off the corner $A$, so $A$, and hence $O_1$, is on the opposite side of $DF$ from $E$. In the same way $O_2$ is on the opposite side of $DE$ from $F$ with $\angle O_2DE=30^\circ$ and $O_2D=\dfrac f{\sqrt3}$, and similarly for $O_3$. (So $O_1$, $O_2$, $O_3$ are the centres of the equilateral triangles erected outwards on the sides of $DEF$.)
+
+\textbf{Step 2: compute $O_1O_2$.} Let $\delta=\angle FDE$. The rays $DO_1$ and $DO_2$ lie outside angle $FDE$, on either side of it, each at $30^\circ$ from the nearer side. So $\angle O_1DO_2=\delta+60^\circ$, or $360^\circ-(\delta+60^\circ)$ if $\delta+60^\circ>180^\circ$; either way its cosine is $\cos(\delta+60^\circ)$. By the law of cosines in triangle $O_1DO_2$,
+\[3\,O_1O_2^2=e^2+f^2-2ef\cos(\delta+60^\circ)=e^2+f^2-ef\cos\delta+\sqrt3\,ef\sin\delta,\]
+using $\cos(\delta+60^\circ)=\dfrac12\cos\delta-\dfrac{\sqrt3}2\sin\delta$. Now $2ef\cos\delta=e^2+f^2-d^2$ (law of cosines in $DEF$) and $ef\sin\delta=2[DEF]$, so
+\[3\,O_1O_2^2=e^2+f^2-\dfrac{e^2+f^2-d^2}{2}+2\sqrt3[DEF]=\dfrac{d^2+e^2+f^2}{2}+2\sqrt3[DEF].\]
+
+\textbf{Step 3.} This expression is symmetric in $d$, $e$, $f$. The same computation at $E$ and at $F$ gives the same value for $3\,O_2O_3^2$ and $3\,O_3O_1^2$. Hence $O_1O_2=O_2O_3=O_3O_1$, and triangle $O_1O_2O_3$ is equilateral. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair cc(pair A,pair B,pair C){real d=2*(A.x*(B.y-C.y)+B.x*(C.y-A.y)+C.x*(A.y-B.y));
+real ux=((A.x^2+A.y^2)*(B.y-C.y)+(B.x^2+B.y^2)*(C.y-A.y)+(C.x^2+C.y^2)*(A.y-B.y))/d;
+real uy=((A.x^2+A.y^2)*(C.x-B.x)+(B.x^2+B.y^2)*(A.x-C.x)+(C.x^2+C.y^2)*(B.x-A.x))/d;return (ux,uy);}
+pair B=(0,0),C=(6,0),A=(3,3*sqrt(3));
+pair D=B+0.4*(A-B),Ep=(3.8,0),F=C+0.55*(A-C);
+pair O1=cc(A,D,F),O2=cc(B,Ep,D),O3=cc(C,F,Ep);
+draw(A--B--C--cycle,linewidth(0.8));draw(D--Ep--F--cycle,gray);
+draw(circle(O1,abs(A-O1)),dotted);draw(circle(O2,abs(B-O2)),dotted);draw(circle(O3,abs(C-O3)),dotted);
+draw(O1--O2--O3--cycle,linewidth(1));
+dot(D);dot(Ep);dot(F);dot(O1);dot(O2);dot(O3);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,W);label("$E$",Ep,S);label("$F$",F,NE);
+label("$O_1$",O1,N);label("$O_2$",O2,NW);label("$O_3$",O3,SE);
+\end{asy}
+
+The dotted circles are the three circumcircles; triangle $DEF$ is drawn in gray.

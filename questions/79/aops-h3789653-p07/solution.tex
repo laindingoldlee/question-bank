@@ -1,0 +1,7 @@
+Join the centre to all vertices. The octagon consists of eight equal-area central triangles. Hexagon $EDCBXO$ contains the three triangles $OBC,OCD,ODE$ and half of $OAB$, since $X$ is the midpoint of $AB$. Its area is $\dfrac{7}{2}$ central-triangle units, so the requested ratio is $\dfrac{8}{\dfrac{7}{2}}=\boxed{\dfrac{16}{7}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p;for(int i=0;i<8;++i)p.push(2dir(90-45i));pair X=(p[0]+p[1])/2;fill(p[4]--p[3]--p[2]--p[1]--X--(0,0)--cycle,lightblue);path g=p[0];for(int i=1;i<8;++i)g=g--p[i];draw(g--cycle);for(int i=0;i<8;++i){draw((0,0)--p[i],dashed);label("$"+substr("ABCDEFGH",i,1)+"$",p[i],p[i]);}draw(X--(0,0),blue);label("$X$",X,(1,1));label("$O$",(0,0),(-1,0));
+\end{asy}

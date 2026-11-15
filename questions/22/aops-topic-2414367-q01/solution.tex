@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2414367_angle_bisector_formula
+% Stable identity: aops-topic-2414367-q01
+Extend $AD$ beyond $D$ to meet the circumcircle of triangle $ABC$ again at $E$. Since $AE$ bisects angle $A$, $E$ is the midpoint of the arc $BC$ not containing $A$; so going around the circle the points are in the order $A$, $B$, $E$, $C$, and $B$ and $E$ lie on the same side of $AC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=dir(110), B=dir(215), C=dir(325), E2=dir(270);
+pair D=extension(A,E2,B,C);
+draw(circle((0,0),1),gray);
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--D,red+linewidth(0.9)); draw(D--E2,red+dashed);
+draw(E2--C,blue+dashed);
+dot(A);dot(B);dot(C);dot(D);dot(E2);
+label("$A$",A,N); label("$B$",B,W); label("$C$",C,E); label("$D$",D,dir(60)); label("$E$",E2,S);
+label("$c$",(A+B)/2,NW); label("$b$",(A+C)/2,NE); label("$d$",(A+D)/2,dir(10),red);
+label("$m$",(B+D)/2,N); label("$n$",(D+C)/2,N);
+\end{asy}
+
+\textbf{Similar triangles.} In triangles $ABD$ and $AEC$:
+\begin{itemize}
+\item $\angle BAD=\angle EAC$, since $AD$ bisects angle $A$;
+\item $\angle ABD=\angle ABC=\angle AEC$, since both are inscribed angles on the arc $AC$ (and $B$, $E$ are on the same side of $AC$).
+\end{itemize}
+So triangle $ABD$ is similar to triangle $AEC$, and $\dfrac{AB}{AE}=\dfrac{AD}{AC}$, i.e.
+\[bc=AB\cdot AC=AD\cdot AE=d(d+DE)=d^2+d\cdot DE.\]
+
+\textbf{Power of a point.} The chords $AE$ and $BC$ of the circle cross at $D$, so $AD\cdot DE=BD\cdot DC$, i.e. $d\cdot DE=mn$. Substituting, $bc=d^2+mn$, that is,
+\[d^2=bc-mn.\qquad\blacksquare\]
+
+\textbf{Another proof.} By the angle bisector theorem $\dfrac mn=\dfrac cb$, so with $a=m+n$, $m=\dfrac{ac}{b+c}$ and $n=\dfrac{ab}{b+c}$. Stewart's theorem $b^2m+c^2n=a\left(d^2+mn\right)$ gives
+\[a\left(d^2+mn\right)=\dfrac{ab^2c+ac^2b}{b+c}=abc,\qquad\text{so}\qquad d^2+mn=bc.\]

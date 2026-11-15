@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1313226_a_problem_my_teacher_made
+% Stable identity: aops-topic-1313226-q01
+Track the point. A $90^\circ$ clockwise turn about $C$ sends $C+(u,v)$ to $C+(v,-u)$:
+\[
+(1,1)\xrightarrow{(2,0)}(3,1)\xrightarrow{(5,0)}(6,2)\xrightarrow{(7,0)}(9,1)\xrightarrow{(10,0)}(11,1).
+\]
+Each step traces a quarter circle centred at the pivot, of radius $\sqrt2$, $\sqrt5$, $\sqrt5$, $\sqrt2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+import graph; real r2=sqrt(2), r5=sqrt(5);
+draw((0,0)--(12,0),Arrow);
+draw((0,0)--(2,0)--(2,3)--(0,3)--cycle,gray);
+dot((1,1),red);
+draw(arc((2,0),r2,135,45),red); draw(arc((5,0),r5,180-degrees(atan(1/2)),degrees(atan(2))),red);
+draw(arc((7,0),r5,180-degrees(atan(2)),degrees(atan(1/2))),red); draw(arc((10,0),r2,135,45),red);
+for(pair c: new pair[]{(2,0),(5,0),(7,0),(10,0)}) dot(c);
+label("$(2,0)$",(2,0),S); label("$(5,0)$",(5,0),S); label("$(7,0)$",(7,0),S); label("$(10,0)$",(10,0),S);
+dot((3,1));dot((6,2));dot((9,1));dot((11,1));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The region under each arc consists of the quarter-circle sector and the two right triangles between the pivot, the arc's endpoints and the $x$-axis:
+\begin{itemize}
+\item about $(2,0)$: sector $\dfrac{\pi\cdot2}{4}$, triangles $\dfrac{1}{2}+\dfrac{1}{2}$;
+\item about $(5,0)$ from $(3,1)$ to $(6,2)$: sector $\dfrac{5\pi}{4}$, triangles $\dfrac{1}{2}\cdot2\cdot1+\dfrac{1}{2}\cdot1\cdot2=2$;
+\item about $(7,0)$ from $(6,2)$ to $(9,1)$: sector $\dfrac{5\pi}{4}$, triangles $2$;
+\item about $(10,0)$: sector $\dfrac{\pi}{2}$, triangles $1$.
+\end{itemize}
+The total area is $\dfrac{\pi}{2}+\dfrac{5\pi}{4}+\dfrac{5\pi}{4}+\dfrac{\pi}{2}+1+2+2+1=\boxed{6+\dfrac{7\pi}{2}}$.

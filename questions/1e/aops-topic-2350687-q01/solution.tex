@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2350687_triangle_inequality_in_polygons
+% Stable identity: aops-topic-2350687-q01
+Label the vertices $A_1,A_2,\dots,A_{2n}$ in order (indices are taken modulo $2n$), and let $a_i=A_iA_{i+1}$, so $a_1+a_2+\cdots+a_{2n}=1$. Call $A_iA_{i+k}$ a diagonal of \emph{step} $k$ ($2\le k\le n$). There are $2n$ diagonals of step $k$ for $2\le k\le n-1$ (one for each starting vertex $i$; they are all different since $k\ne n$) and $n$ diagonals of step $n$ (the ``long'' diagonals $A_iA_{i+n}$, $1\le i\le n$). In total this is $2n(n-2)+n=n(2n-3)$ diagonals, which is all of them.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair[] P={(0,0),(3,-0.6),(5.2,0.8),(5.6,3),(3.4,4.6),(0.6,3.6)};
+draw(P[0]--P[1]--P[2]--P[3]--P[4]--P[5]--cycle,linewidth(0.9));
+draw(P[0]--P[1]--P[2],blue+linewidth(1.6));
+draw(P[0]--P[2],red+linewidth(1));
+draw(P[0]--P[3],heavygreen+dashed+linewidth(1));
+string[] nm={"$A_1$","$A_2$","$A_3$","$A_4$","$A_5$","$A_6$"};
+pair[] dr={SW,S,E,E,N,W};
+for(int i=0;i<6;++i){dot(P[i]); label(nm[i],P[i],dr[i]);}
+\end{asy}
+
+\textbf{Step $k$ with $2\le k\le n-1$.} By the triangle inequality, the diagonal $A_iA_{i+k}$ is shorter than the broken line $A_iA_{i+1}\dots A_{i+k}$ (strictly, because the vertices of a convex polygon are not collinear):
+\[A_iA_{i+k}<a_i+a_{i+1}+\cdots+a_{i+k-1}.\]
+Adding these $2n$ inequalities for $i=1,\dots,2n$, each side $a_j$ appears exactly $k$ times on the right, so the diagonals of step $k$ have total length less than $k(a_1+\cdots+a_{2n})=k$. (In the figure, $n=3$: the red diagonal $A_1A_3$ is shorter than the blue path $A_1A_2A_3$.)
+
+\textbf{Step $n$.} The long diagonal $A_iA_{i+n}$ splits the boundary into two broken lines, each longer than the diagonal, and their lengths add up to $1$. So $A_iA_{i+n}<\dfrac12$, and the $n$ long diagonals (green in the figure) have total length less than $\dfrac n2$.
+
+\textbf{Total.} The sum of all diagonals is less than
+\[\sum_{k=2}^{n-1}k+\dfrac n2=\left(\dfrac{n(n-1)}{2}-1\right)+\dfrac n2=\dfrac{n^2}{2}-1.\qquad\blacksquare\]
+(For $n=2$ the sum over $k$ is empty and the bound says that the two diagonals of a quadrilateral add up to less than its perimeter.) The bound cannot be improved: for a very thin convex polygon with $n$ vertices crowded near each end of a segment of length $\dfrac12$, the $n^2-2$ diagonals joining the two groups have lengths close to $\dfrac12$ and the others are close to $0$, so the sum is close to $\dfrac{n^2-2}{2}$.

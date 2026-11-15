@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1357773_centroid_coordinates
+% Stable identity: aops-topic-1357773-q01
+Let the vertices be $A(x_1,y_1)$, $B(x_2,y_2)$, $C(x_3,y_3)$, and put
+\[
+G=\left(\dfrac{x_1+x_2+x_3}{3},\dfrac{y_1+y_2+y_3}{3}\right).
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(2,10),B=(0,0),C=(12,2);
+pair Ma=(B+C)/2,Mb=(A+C)/2,Mc=(A+B)/2,G=(A+B+C)/3;
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--Ma,red+dashed); draw(B--Mb,red+dashed); draw(C--Mc,red+dashed);
+dot(Ma);dot(Mb);dot(Mc);dot(G,red);
+label("$A(x_1,y_1)$",A,N); label("$B(x_2,y_2)$",B,SW); label("$C(x_3,y_3)$",C,SE);
+label("$M$",Ma,S); label("$G$",G+1.3*dir(257),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The midpoint of $BC$ is $M=\left(\dfrac{x_2+x_3}{2},\dfrac{y_2+y_3}{2}\right)$. The point of segment $AM$ that is $\dfrac{2}{3}$ of the way from $A$ to $M$ is
+\[
+A+\dfrac{2}{3}(M-A)=\dfrac{1}{3}A+\dfrac{2}{3}M=\left(\dfrac{x_1+x_2+x_3}{3},\dfrac{y_1+y_2+y_3}{3}\right)=G .
+\]
+So $G$ lies on the median from $A$. The formula for $G$ is symmetric in the three vertices, so the same computation shows that $G$ lies on the medians from $B$ and from $C$. Two different medians meet in only one point, so the three medians meet at $G$; that is, the centroid is the average of the vertices (and it divides each median in the ratio $2:1$). $\blacksquare$

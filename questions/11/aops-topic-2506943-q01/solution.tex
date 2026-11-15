@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2506943_geometry
+% Stable identity: aops-topic-2506943-q01
+Reflect $E$ in $D$ to get $E'$, so that $D$ is the midpoint of both $BC$ and $EE'$. Then $BECE'$ is a parallelogram (its diagonals bisect each other), and opposite angles of a parallelogram are equal: $\angle BE'C=\angle BEC$. Hence
+\[\angle BE'C+\angle BAC=180^\circ.\]
+Since $E$ lies on segment $AD$ on the same side of $BC$ as $A$, its reflection $E'$ lies on the other side of $BC$. So $ABE'C$ is a convex quadrilateral with a pair of supplementary opposite angles, hence cyclic.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(sqrt(7),0), A=(0.9,2.3);
+pair D=(B+C)/2;
+real R=abs(A-D); real k=7/4/abs(A-D)/abs(A-D);
+pair Ep=D+k*(A-D), E2=D-k*(A-D);
+pair O=extension((A+B)/2,(A+B)/2+rotate(90)*(B-A),(B+C)/2,(B+C)/2+(0,1));
+draw(circle(O,abs(O-A)),gray);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--E2,blue);
+draw(B--Ep--C,red); draw(B--E2--C,red+dashed);
+dot(A); dot(B); dot(C); dot(D); dot(Ep); dot(E2);
+label("$A$",A,N); label("$B$",B,W); label("$C$",C,E); label("$D$",D,SE); label("$E$",Ep,W); label("$E'$",E2,S);
+\end{asy}
+
+The chords $AE'$ and $BC$ of this circle meet at $D$, so by the intersecting chords theorem (power of the point $D$),
+\[DA\cdot DE'=DB\cdot DC=\left(\dfrac{\sqrt7}{2}\right)^2=\dfrac74.\]
+As $DE'=DE$, we get $DE\cdot DA=\dfrac74$, so $m+n=7+4=\boxed{11}$.

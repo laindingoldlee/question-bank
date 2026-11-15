@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2603777_geometry2
+% Stable identity: aops-topic-2603777-q01
+Let the sides be $x\le4<z$, where $z$ is the unique longest side. The triangle inequality only needs $x+4>z$, so $5\le z\le x+3$. This forces $x\ge2$:
+\begin{itemize}
+\item $x=2$: $z=5$;
+\item $x=3$: $z=5,6$;
+\item $x=4$: $z=5,6,7$.
+\end{itemize}
+The triangles are $(2,4,5)$, $(3,4,5)$, $(3,4,6)$, $(4,4,5)$, $(4,4,6)$, $(4,4,7)$, so there are $\boxed{6}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0);real cx=43/12;pair C=(cx,sqrt(16-cx^2));
+draw(A--B--C--cycle,linewidth(0.8));
+label("$z$",(A+B)/2,S);label("$4$",(A+C)/2,NW);label("$x$",(B+C)/2,NE);
+\end{asy}
+
+The sketch shows the case $(x,z)=(3,6)$.

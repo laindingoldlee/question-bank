@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h2062950_three_problems
+% Stable identity: aops-topic-2062950-q03
+Since $57^\circ=72^\circ-15^\circ$, we construct $72^\circ$ and $15^\circ$ and subtract.
+
+\textbf{Fact: $\cos72^\circ=\dfrac{\sqrt5-1}{4}$.} Take an isosceles triangle $XYZ$ with $XY=XZ=1$ and apex angle $\angle X=36^\circ$, so the base angles are $72^\circ$; let $YZ=a$. The bisector of $\angle Y$ meets $XZ$ at $M$. Then $\angle MYZ=36^\circ$ and $\angle YMZ=72^\circ$, so $YM=YZ=a$; also $\angle MXY=\angle MYX=36^\circ$, so $XM=YM=a$ and $MZ=1-a$. Triangles $ZYM$ and $XYZ$ have equal angles ($36^\circ,72^\circ,72^\circ$), so $\dfrac{MZ}{YZ}=\dfrac{YZ}{XY}$, i.e.\ $\dfrac{1-a}{a}=a$, $a^2+a-1=0$, $a=\dfrac{\sqrt5-1}{2}$. Dropping the altitude from $X$ to the midpoint of $YZ$ gives $\cos72^\circ=\dfrac{\dfrac {a}{2}}{1}=\dfrac{\sqrt5-1}{4}$.
+
+\textbf{Construction.}
+\begin{enumerate}
+\item Fix a unit segment $OU$ and draw the circle with centre $O$ through $U$.
+\item Construct a right triangle with legs $1$ and $2$ (erect a perpendicular and mark lengths); its hypotenuse is $\sqrt5$. Remove a unit length to get $\sqrt5-1$, and bisect twice to get $\dfrac{\sqrt5-1}{4}$. Mark $H$ on $OU$ with $OH=\dfrac{\sqrt5-1}{4}$.
+\item Erect the perpendicular to $OU$ at $H$; let it meet the circle at $B$. Then $\cos\angle BOU=\dfrac{OH}{OB}=\dfrac{\sqrt5-1}{4}$, so $\angle BOU=72^\circ$.
+\item Draw an equilateral triangle on $OU$ to get a $60^\circ$ angle at $O$; bisect it twice to get $15^\circ$.
+\item Copy this $15^\circ$ angle at $O$ with one side along $OB$, inside $\angle BOU$, obtaining a ray $OC$ with $\angle BOC=15^\circ$.
+\end{enumerate}
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), U=(1,0);
+real h=(sqrt(5)-1)/4;
+pair H=(h,0), Bp=dir(72), Cp=dir(57), V=dir(60), T=dir(15);
+draw(arc(O,1,-5,95),gray(0.6));
+draw(O--(1.15,0),linewidth(0.9)); draw(O--1.15*Bp,linewidth(0.9)); draw(O--1.15*Cp,red+linewidth(0.9));
+draw(H--Bp,dashed); draw(O--1.1*V,gray(0.5)+dashed); draw(O--1.1*T,gray(0.5)+dashed);
+draw(H+(0,0.06)--H+(0.06,0.06)--H+(0.06,0));
+dot(O);dot(U);dot(H);dot(Bp);dot(Cp);
+label("$O$",O,SW); label("$U$",U,S); label("$H$",H,S); label("$B$",Bp,NW); label("$C$",Cp,NE);
+label("$60^\circ$",1.12*V,NE,gray(0.4)+fontsize(8pt)); label("$15^\circ$",1.12*T,E,gray(0.4)+fontsize(8pt));
+label("$OH=\dfrac{\sqrt5-1}{4}$",(0.15,-0.22),E,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then $\angle COU=\angle BOU-\angle BOC=72^\circ-15^\circ=\boxed{57^\circ}$, and every step uses only compass and straightedge (perpendiculars, transferring and bisecting segments, bisecting and copying angles).

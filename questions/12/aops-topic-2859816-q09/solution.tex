@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2859816_math_problems_discussions_and_more
+% Stable identity: aops-topic-2859816-q09
+Let the edges be $a,b,c$ with $ab=60$, $bc=30$, $ca=18$. Multiplying, $(abc)^2=60\cdot30\cdot18=32400$, so $abc=180$. Then $c=\dfrac{180}{60}=3$, $a=\dfrac{180}{30}=6$ and $b=\dfrac{180}{18}=10$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair d=(1.5,1.0);real L=6,H=3;
+draw((0,0)--(L,0)--(L,H)--(0,H)--cycle);draw((L,0)--(L,0)+d--(L,H)+d--(L,H));draw((0,H)--(0,H)+d--(L,H)+d);
+draw((0,0)--d--d+(L,0),dashed);draw(d--d+(0,H),dashed);
+label("$a=6$",(L/2,0),S);label("$c=3$",(0,H/2),W);label("$b=10$",(L,0)+d/2,SE);
+\end{asy}
+
+The volume is $180$ and the surface area is $2(60+30+18)=216$, so the answer is $180-216=\boxed{-36}$.

@@ -1,0 +1,45 @@
+% Source: https://artofproblemsolving.com/community/c3h2555735_trapezoid_areas
+% Stable identity: aops-topic-2555735-q01
+Let $h$ be the distance between the lines $AB$ and $DC$, and let $\angle DAB=2\alpha$, $\angle ABC=2\beta$ (so $0<\alpha,\beta<90^\circ$). As $AB\parallel DC$, $\angle CDA=180^\circ-2\alpha$ and $\angle BCD=180^\circ-2\beta$.
+
+\emph{$W$ and $X$ lie on the midline.} A point on the bisector of $\angle DAB$ is equidistant from lines $AB$ and $AD$; on the bisector of $\angle CDA$, from $DA$ and $DC$. So $W$ is equidistant from the parallel lines $AB$ and $DC$, i.e. it lies on the midline, at distance $\dfrac h2$ from both. The same holds for $X$. Hence $WABX$ and $WDCX$ are trapezoids of height $\dfrac h2$, and
+\[(AB+WX)\dfrac h4=24,\qquad(DC+WX)\dfrac h4=36.\]
+
+\emph{Lengths in terms of the angles.} Going from $A$ down the bisector to the midline moves $\dfrac h2\cot\alpha$ along the direction of $AB$, and similarly from $B$; so with $p=\cot\alpha+\cot\beta$,
+\[WX=AB-\dfrac{hp}{2}.\]
+In triangle $ABZ$ the angles at $A$ and $B$ are $\alpha$ and $\beta$; if $Z$ is at distance $t$ from $AB$, then $AB=tp$ and $[ABZ]=\dfrac{AB\cdot t}{2}=\dfrac{AB^2}{2p}=25$, so $p=\dfrac{AB^2}{50}$.
+
+\emph{Solving.} Since $AB+WX=2AB-\dfrac{hp}2$, the first area gives $\left(2AB-\dfrac{hp}2\right)h=96$. With $p=\dfrac{AB^2}{50}$ and $s=AB\cdot h$ this becomes
+\[2s-\dfrac{s^2}{100}=96\iff s^2-200s+9600=0\iff s=80\ \text{or}\ s=120.\]
+Then $WX\cdot h=s-\dfrac{s^2}{100}$ is $16$ or $-24$. As $WABX$ is a genuine quadrilateral, $W$ and $X$ are in the same order as $A$ and $B$, so $WX>0$. Hence $AB\cdot h=80$, $WX\cdot h=16$, and from the second area, $DC\cdot h=144-16=128$.
+
+\emph{Triangle $CYD$.} Its angles at $D$ and $C$ are $90^\circ-\alpha$ and $90^\circ-\beta$. With $q=\tan\alpha+\tan\beta$, the same reasoning gives $[CYD]=\dfrac{DC^2}{2q}$ and $WX=DC-\dfrac{hq}2$ (from $D$ the bisector moves $\dfrac h2\tan\alpha$ along $DC$). So $qh=2(DC-WX)$, and
+\[[CYD]=\dfrac{DC^2h}{4(DC-WX)}=\dfrac{(DC\cdot h)^2}{4(DC\cdot h-WX\cdot h)}=\dfrac{128^2}{4\cdot112}=\dfrac{256}{7}.\]
+Thus $m+n=256+7=\boxed{263}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+real h=sqrt(83);
+real q=224/h^2;real dd=sqrt(q^2-7);
+real ta=(q+dd)/2,tb=(q-dd)/2;
+real al=atan(ta),be=atan(tb);
+real ab=80/h,dc=128/h;
+pair A=(0,h),B=(ab,h);
+pair D=(h/tan(2*al),0),C=(ab-h/tan(2*be),0);
+pair Wp=(h/2/ta,h/2),Xp=(ab-h/2/tb,h/2);
+real z=ab/(1/ta+1/tb);pair Zp=A+z*(1/ta,-1);
+real y=dc/(ta+tb);pair Yp=D+y*(ta,1);
+fill(A--B--Zp--cycle,lightgray+opacity(0.5));
+fill(C--D--Yp--cycle,lightgray+opacity(0.5));
+draw(A--B--C--D--cycle,linewidth(0.8));
+draw((D.x-0.5,h/2)--(C.x+0.5,h/2),dashed);
+draw(A--Zp--B,gray);draw(D--Yp--C,gray);
+draw(A--Wp--D);draw(B--Xp--C);
+dot(Wp);dot(Xp);dot(Yp);dot(Zp);
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);
+label("$W$",Wp,1.4*W,Fill(white));label("$X$",Xp,1.4*E,Fill(white));label("$Y$",Yp,N);label("$Z$",Zp,S);
+\end{asy}
+
+The sketch is drawn to scale with $h^2=83$ (then $AB=\dfrac{80}{h}$, $DC=\dfrac{128}{h}$ and $\tan\alpha\tan\beta=\dfrac74$); the dashed line is the midline, which contains $W$ and $X$. Such trapezoids exist, so the data are consistent.

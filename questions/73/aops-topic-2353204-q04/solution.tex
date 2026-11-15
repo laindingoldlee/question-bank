@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2353204_my_1000th_post_logic_problems_with_a_math_question_in_there_because_why_not
+% Stable identity: aops-topic-2353204-q04
+Count the colour arrangements and the sprinkle distributions separately, and multiply.
+
+\textbf{Colour arrangements.} Put the purple cupcake at an end ($2$ ways). The other $8$ positions form a row of $8$ consecutive positions, numbered $1$ to $8$. The blue and pink cupcakes occupy positions $i$ and $i+2$ for some $i=1,\dots,6$, in either order: $6\cdot2=12$ ways. The two yellow cupcakes then take two of the remaining $6$ positions that are not next to each other, and the four other cupcakes fill the last $4$ positions in $4!=24$ ways.
+
+Of the $7$ pairs of neighbouring positions in the row of $8$, the ones that touch position $i$ or $i+2$ are lost: for $i=1$ these are $\{1,2\},\{2,3\},\{3,4\}$ ($3$ pairs), for $i=6$ similarly $3$ pairs, and for $i=2,3,4,5$ there are $4$ such pairs. So among the remaining $6$ positions there are $4$ neighbouring pairs when $i=1$ or $6$, and $3$ when $2\le i\le5$, and the number of ways to place the identical yellow cupcakes is $\dbinom62-4=11$ or $\dbinom62-3=12$. Hence the number of colour arrangements is
+\[2\cdot2\cdot(11+11+4\cdot12)\cdot24=2\cdot2\cdot70\cdot24=6720.\]
+
+\textbf{Sprinkles.} Put $5$ sprinkles on each cupcake first; the remaining $60-45=15$ identical sprinkles are distributed freely among the $9$ cupcakes, in $\dbinom{15+8}{8}=\dbinom{23}{8}=490314$ ways (stars and bars).
+
+\textbf{Total.} $6720\cdot490314=\boxed{3294910080}$ displays.

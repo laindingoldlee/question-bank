@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2641652_sigmas_msm_thread
+% Stable identity: aops-topic-2641652-q82
+Without the closure there are $\dbinom{13}{5}=1287$ routes. A route uses the closed block exactly when it goes from $(0,0)$ to $(2,4)$, then north to $(2,5)$, then on to $(5,8)$: $\dbinom62\cdot\dbinom63=15\cdot20=300$ routes. So $1287-300=\boxed{987}$ routes remain.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=5;++i) draw((i,0)--(i,8),gray);for(int j=0;j<=8;++j) draw((0,j)--(5,j),gray);
+draw((2,4)--(2,5),red+linewidth(2));dot((0,0));dot((5,8));dot((2,4));dot((2,5));
+label("$(0,0)$",(0,0),SW,fontsize(7pt));label("$(5,8)$",(5,8),NE,fontsize(7pt));label("$(2,4)$",(2,4),SE,fontsize(6pt));label("$(2,5)$",(2,5),NE,fontsize(6pt));
+\end{asy}

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2780401_2019_mbmt_team_round__montgomery_blair_math_tournament
+% Stable identity: aops-topic-2780401-q112
+First work above $ AB $. A point $ I $ is an incenter of some triangle $ ABX $ exactly when $\angle AIB>90^\circ $: the converse constructs $ X $ by doubling the angles of $ AI $ and $ BI $ with the base, and their sum is then less than $ 180^\circ $. Thus the first image is the open upper semicircle with diameter $ AB $. If $ Y $ lies there, $\angle AYB>90^\circ $, so its incenter $ J $ satisfies $\angle AJB=90^\circ+\dfrac{1}{2}\angle AYB>135^\circ $. The same doubled-angle construction proves every such $ J $ occurs. With $ A=(0,0),B=(1,0)$, this upper locus is the circular segment above $ AB $ from the circle centered at $(\dfrac{1}{2},-\dfrac{1}{2})$ with radius $\dfrac{1}{\sqrt2}$. Its central angle is $ 90^\circ $, and its area is $\dfrac{\pi}{8}-\dfrac{1}{4}$. Reflecting below $ AB $ supplies a disjoint equal region. Therefore the total area is $\boxed{\dfrac{\pi-2}{4}}$; excluded boundaries have area zero.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(1,0);path upper=arc((.5,-.5),1/sqrt(2),45,135)--cycle;path lower=arc((.5,.5),1/sqrt(2),225,315)--cycle;filldraw(upper,lightblue);filldraw(lower,lightblue);draw(A--B);label("$A$",A,W);label("$B$",B,E);label("upper image",(0.5,0.3),N);label("lower image",(0.5,-0.3),S);
+\end{asy}

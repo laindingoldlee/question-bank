@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2644625_nice_rhombus_problem_5
+% Stable identity: aops-topic-2644625-q01
+Place the centre $O$ of the rhombus at the origin, with $A=(p,0)$, $B=(0,q)$, $C=(-p,0)$, $D=(0,-q)$.
+
+\emph{Inscribed parallelograms share the centre.} If $PQRS$ is a parallelogram with $P,Q,R,S$ on $AB,BC,CD,DA$, the half-turn about its centre swaps $P,R$. It maps line $AB$ to the parallel line through $R$, which is line $CD$, and likewise line $BC$ to line $DA$; so it maps the rhombus to itself and fixes $O$. Hence both rectangles are centred at $O$.
+
+\emph{First rectangle.} Its diagonal through the vertex $P$ on $AB$ passes through $O$ and is parallel to a side. It cannot be parallel to $AB$, so it is parallel to $BC$ (or $DA$), and then $P$ is the midpoint of $AB$ (midline). So $A_1B_1C_1D_1$ joins the midpoints of the sides: $(\pm\dfrac p2,\pm\dfrac q2)$, with horizontal sides $p$ and vertical sides $q$.
+
+\emph{Second rectangle.} Its diagonal through the vertex $P$ on $AB$ passes through $O$ and is perpendicular to a side. A line through $O$ perpendicular to $BC$ (direction $(q,-p)$) meets line $AB$ outside the segment $AB$. So $OP\perp AB$, and $P$ is the foot of the perpendicular from $O$, i.e. a point of contact of the incircle:
+\[P=\left(\dfrac{pq^2}{p^2+q^2},\ \dfrac{p^2q}{p^2+q^2}\right).\]
+So $A_2B_2C_2D_2$ has horizontal sides $\dfrac{2pq^2}{p^2+q^2}$ and vertical sides $\dfrac{2p^2q}{p^2+q^2}$.
+
+\emph{Using the data.} The parallel sides $A_1B_1=2$ and $A_2B_2=1$ are both horizontal or both vertical. If horizontal: $p=2$ and $\dfrac{4q^2}{4+q^2}=1$, so $q^2=\dfrac43$. (If vertical, the same computation with $p,q$ swapped gives $p^2=\dfrac43$, $q=2$.) Either way the area is
+\[\dfrac{2p\cdot2q}{2}=2pq=2\cdot2\cdot\dfrac{2}{\sqrt3}=\boxed{\dfrac{8\sqrt3}{3}}.\]
+(Sketch: the first rectangle dashed, the second in red, with the incircle dotted.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real p=2,q=2/sqrt(3);pair A=(p,0),B=(0,q),C=(-p,0),D=(0,-q);
+real x2=p*q^2/(p^2+q^2),y2=p^2*q/(p^2+q^2);
+draw(A--B--C--D--cycle,linewidth(0.8));draw(circle((0,0),x2*sqrt(1+(y2/x2)^2)),dotted);
+draw((p/2,q/2)--(-p/2,q/2)--(-p/2,-q/2)--(p/2,-q/2)--cycle,dashed);draw((p/2,q/2)--(-p/2,-q/2),dashed+gray);
+draw((x2,y2)--(-x2,y2)--(-x2,-y2)--(x2,-y2)--cycle,red);draw((0,0)--(x2,y2),red+dotted);
+label("$A$",A,E);label("$B$",B,N);label("$C$",C,W);label("$D$",D,S);
+label("$2$",(-0.75,q/2),S,fontsize(8pt));label("$1$",(0.25,-y2),N,red+fontsize(8pt));
+\end{asy}

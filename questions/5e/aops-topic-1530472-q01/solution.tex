@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h1530472_help_pls
+% Stable identity: aops-topic-1530472-q01
+Do the general case (c) first:
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real a=40;
+pair A=(0,0),B=(10,0);
+pair C=A+10*Cos(a)*dir(a);
+pair D=(C.x,0);
+draw(A--B--C--cycle,linewidth(1));
+draw(C--D,blue+linewidth(0.9));
+real s=0.35;
+pair u=unit(A-C),v=unit(B-C); draw(C+s*u--C+s*u+s*v--C+s*v);
+draw(D+(s,0)--D+(s,s)--D+(0,s),blue);
+real dA=degrees(A-C),dD=degrees(D-C),dB=degrees(B-C);
+draw(arc(A,1.2,0,a));label("$a$",A+1.6*dir(a/2),fontsize(9pt));
+draw(arc(C,2.2,dA,dD),red);label("$90^\circ-a$",C+3.0*dir(258),W,red+fontsize(8pt));
+draw(arc(C,1.0,dD,dB),red);label("$a$",C+1.45*dir((dD+dB)/2),red+fontsize(9pt));
+draw(arc(B,1.2,180-(90-a),180));label("$90^\circ-a$",B+2.4*dir(180-(90-a)/2),fontsize(8pt));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item $CD\perp AB$, so $\angle CDB=\angle CDA=90^\circ$.
+\item $\angle CAD=\angle A=a$ (the same angle), and $\angle CBD=\angle B=90^\circ-a$ (the acute angles of right triangle $ABC$ add to $90^\circ$).
+\item In right triangle $ACD$: $\angle ACD=90^\circ-a$. In right triangle $BCD$: $\angle BCD=90^\circ-\angle CBD=a$. (Check: $\angle ACD+\angle BCD=90^\circ=\angle C$.)
+\end{itemize}
+So in general
+\[
+\boxed{\angle CDB=\angle CDA=90^\circ,\quad \angle CAD=\angle BCD=a,\quad \angle CBD=\angle ACD=90^\circ-a.}
+\]
+\begin{enumerate}
+\item[(a)] $a=20^\circ$: $\angle CDB=90^\circ$, $\angle CBD=70^\circ$, $\angle BCD=20^\circ$, $\angle CDA=90^\circ$, $\angle CAD=20^\circ$, $\angle ACD=70^\circ$.
+\item[(b)] $a=65^\circ$: $\angle CDB=90^\circ$, $\angle CBD=25^\circ$, $\angle BCD=65^\circ$, $\angle CDA=90^\circ$, $\angle CAD=65^\circ$, $\angle ACD=25^\circ$.
+\end{enumerate}

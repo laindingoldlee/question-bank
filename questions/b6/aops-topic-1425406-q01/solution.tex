@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h1425406_dining_table
+% Stable identity: aops-topic-1425406-q01
+Number the seats $0,1,\dots,25$ around the table; seats $i$ and $i+13$ are opposite.
+
+\textbf{No two adjacent.} There are $\dbinom{26}{3}=2600$ triples in all. A triple containing an adjacent pair either is three consecutive seats ($26$ triples) or contains exactly one adjacent pair: choose the pair ($26$ ways) and a third seat not next to it ($26-4=22$ ways), giving $572$ triples. So $2600-26-572=2002$ triples have no two adjacent people.
+
+\textbf{Remove opposite pairs.} Among these, count the triples containing an opposite pair: choose the pair ($13$ ways; opposite seats are never adjacent) and a third seat that is not one of the pair or next to either of them ($26-6=20$ ways). A triple cannot contain two opposite pairs, so there are $13\cdot20=260$ such triples. The answer is
+\[
+2002-260=\boxed{1742}.
+\]

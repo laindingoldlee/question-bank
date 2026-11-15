@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1204922_mock_mathcounts_state_s30__circumcircle_and_angle_bisector
+% Stable identity: aops-topic-1204922-q01
+By the angle bisector theorem $BD:DC=9:11$, so $BD=\dfrac{9}{2}$ and $DC=\dfrac{11}{2}$. The bisector length is
+\[AD^2=AB\cdot AC\left(1-\left(\dfrac{BC}{AB+AC}\right)^2\right)=99\left(1-\dfrac{1}{4}\right)=\dfrac{297}{4},\qquad AD=\dfrac{3\sqrt{33}}{2}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(10,0); real ax=(81-121+100)/20; pair A=(ax,sqrt(81-ax^2));
+pair D=(4.5,0);
+pair O=(5,(A.x^2-10*A.x+A.y^2)/(2*A.y));
+draw(circle(O,abs(O-B)),gray); draw(A--B--C--cycle,linewidth(0.9));
+pair Ee=intersectionpoints(A--(A+3*(D-A)),circle(O,abs(O-B)))[0]; draw(A--Ee,blue); dot(D); dot(Ee);
+label("$A$",A,N); label("$B$",B,W); label("$C$",C,E); label("$D$",D,NE); label("$E$",Ee,S);
+label("$9$",(A+B)/2,NW); label("$11$",(A+C)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the power of the point $D$ (chords $AE$ and $BC$), $AD\cdot DE=BD\cdot DC=\dfrac{99}{4}$, so
+\[DE=\dfrac{99}{4}\cdot\dfrac{2}{3\sqrt{33}}=\dfrac{33}{2\sqrt{33}}=\boxed{\dfrac{\sqrt{33}}{2}}.\]

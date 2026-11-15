@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h1582395_is_this_true
+% Stable identity: aops-topic-1582395-q01
+The statement is \textbf{false} in general; it holds only for equilateral triangles.
+
+Let $a=BC$, $b=CA$, $c=AB$, let $s=\dfrac{a+b+c}{2}$ and let $r$ be the inradius. Tangent segments from a point to a circle are equal, so $AX=AZ$, $BX=BY$, $CY=CZ$; solving $AX+BX=c$, $BY+CY=a$, $CZ+AZ=b$ gives
+\[
+AX=AZ=s-a,\qquad BX=BY=s-b,\qquad CY=CZ=s-c .
+\]
+The radii $IX$, $IZ$ are perpendicular to the sides, so the kite $IXAZ$ consists of two right triangles with legs $r$ and $s-a$:
+\[
+[IXAZ]=2\cdot\dfrac{1}{2}\,r(s-a)=r(s-a),
+\]
+and likewise $[IXBY]=r(s-b)$, $[IYCZ]=r(s-c)$. These three areas are equal exactly when $s-a=s-b=s-c$, that is, when $a=b=c$. (They always add up to $r\bigl(3s-(a+b+c)\bigr)=rs=[ABC]$, so if they are equal each is $\dfrac{[ABC]}{3}$.)
+
+\textbf{Counterexample.} Take the right triangle with $AB=4$, $AC=3$, $BC=5$. Then $s=6$, $[ABC]=6$ and $r=\dfrac{[ABC]}{s}=1$, so
+\[
+[IXAZ]=1\cdot(6-5)=1,\qquad [IXBY]=1\cdot(6-3)=3,\qquad [IYCZ]=1\cdot(6-4)=2,
+\]
+which are not all equal to $\dfrac{6}{3}=2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(0,3),I=(1,1),X=(1,0),Z=(0,1);
+pair Y=B+dot(I-B,unit(C-B))*unit(C-B);
+fill(A--X--I--Z--cycle,rgb(1,0.85,0.85));
+fill(X--B--Y--I--cycle,rgb(0.85,0.9,1));
+fill(Y--C--Z--I--cycle,rgb(0.85,1,0.85));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(circle(I,1),gray);
+draw(I--X^^I--Y^^I--Z,dashed);
+dot(I);dot(X);dot(Y);dot(Z);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$I$",I,NW);label("$X$",X,S);label("$Y$",Y,NE);label("$Z$",Z,W);
+label("$1$",(0.42,0.45));label("$3$",(2.35,0.55));label("$2$",(0.45,1.75));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the claimed equality holds if and only if the triangle is equilateral; trying an equilateral triangle (or any numbers that happen to give equal tangent lengths) makes it look true.

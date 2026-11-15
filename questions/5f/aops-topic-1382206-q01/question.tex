@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1382206_pentagon_angle_problem
+% Stable identity: aops-topic-1382206-q01
+In pentagon $VWXYZ$, $\angle V=100^\circ$ and $\angle W=\angle X=\angle Y=\angle Z$. Side $YZ$ is extended past $Z$ to a point $Q$ such that $QV\parallel YX$. What is $m\angle QVZ$?
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair V=(0,0),Wp=(1,0),X=(1.34202,0.93969),Y=(0.57598,1.58248),Z=(-0.20003,1.13445),Q=(-0.88245,0.74046);
+draw(V--Wp--X--Y--Z--cycle,linewidth(0.9));
+draw(Z--Q,blue); draw(Q--V,blue,MidArrow(5)); draw(Y--X,MidArrow(5));
+dot(Q);
+label("$V$",V,SW); label("$W$",Wp,SE); label("$X$",X,E); label("$Y$",Y,N); label("$Z$",Z,N); label("$Q$",Q,W);
+draw(arc(V,0.22,0,degrees(Z-V)),gray); label("$100^\circ$",V+0.36*dir(50),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2280421_some_algebra_problems
+% Stable identity: aops-topic-2280421-q07
+\textbf{Answer:} $\boxed{f(x)=2008x}$. It works: $f(1)=2008$, the equation is clear for a linear function, and $x^2+1004^2-2008x=(x-1004)^2\ge0$ gives the bound.
+
+\textbf{Uniqueness.} Let $g(x)=f(x)-2008x$. Then $g$ satisfies the same functional equation, $g(1)=0$, and $|g(x)|\le x^2+1004^2+2008x=(x+1004)^2$.
+
+\emph{Step 1: $g(u+v)=g(u)+g(v)$ whenever $u,v>0$ and $uv\ge4$.} Given such $u,v$, choose $t>0$ with $t+\dfrac{1}{t}+2=uv$ (possible since $t+\dfrac{1}{t}+2$ takes every value $\ge4$). Put $x=\dfrac{ut}{t+1}$ and $y=\dfrac{t+1}{u}$. Then $xy=t$, $x+\dfrac{1}{y}=\dfrac{ut}{t+1}+\dfrac{u}{t+1}=u$, and
+\[y+\dfrac{1}{x}=\dfrac{t+1}{u}+\dfrac{t+1}{ut}=\dfrac{(t+1)^2}{ut}=\dfrac{t+2+\dfrac{1}{t}}{u}=v .\]
+Also $x+y+\dfrac{1}{x}+\dfrac{1}{y}=u+v$, so the equation gives $g(u+v)=g(u)+g(v)$.
+
+\emph{Step 2: $g$ is additive on all positive reals.} Let $u,v>0$ and pick $w$ so large that $(u+v)w\ge4$, $u(v+w)\ge4$ and $vw\ge4$. By Step 1,
+\[g(u+v)+g(w)=g(u+v+w)=g(u)+g(v+w)=g(u)+g(v)+g(w),\]
+so $g(u+v)=g(u)+g(v)$.
+
+\emph{Step 3: $g=0$.} By additivity, $g(mx)=mg(x)$ for positive integers $m$; in particular $g(p)=pg(1)=0$ and $q\,g\left(\dfrac {p}{q}\right)=g(p)=0$, so $g$ vanishes at every positive rational. For any $x>0$ and any positive integer $m$ with $mx>1$, choose a positive rational $q$ with $mx-1<q<mx$. Then $mx=q+r$ with $0<r<1$, and
+\[m|g(x)|=|g(mx)|=|g(q)+g(r)|=|g(r)|\le(1+1004)^2 .\]
+Since this holds for every $m$, $g(x)=0$. Hence $f(x)=2008x$ for all $x>0$.

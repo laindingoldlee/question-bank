@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2482455_fun_problems_
+% Stable identity: aops-topic-2482455-q08
+Normalize the circumradius to 1. The quadrilateral's consecutive central-angle gaps are 90,135,90,45 degrees. Its shoelace area is $\dfrac{1}{2}(1+\dfrac{\sqrt2}{2}+1+\dfrac{\sqrt2}{2})=1+\dfrac{\sqrt2}{2}$. The octagon area is $8\cdot\dfrac{1}{2}\sin45^\circ=2\sqrt2$. The ratio is $\boxed{\dfrac{1+\sqrt2}{4}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] p;path oct;for(int k=0;k<8;++k){p.push(dir(45*k));oct=oct--p[k];}draw(oct--cycle);filldraw(p[0]--p[2]--p[5]--p[7]--cycle,lightblue,blue);string[] names={"$P_1$","$I$","$Z_1$","$Z_2$","$A$","$P_2$","$R$","$O$"};for(int k=0;k<8;++k)label(names[k],1.15*p[k]);
+\end{asy}

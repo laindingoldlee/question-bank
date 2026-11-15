@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1995141_fun_amc_practice_problems
+% Stable identity: aops-topic-1995141-q09
+The first circle has radius $R$ equal to half the diagonal, $R=\dfrac{\sqrt{A^2+B^2}}{2}$, and the second has radius $r=\dfrac {A}{2}$ (half the distance between the longer sides).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real A=2, B=4;
+pair O=(0,0);
+draw(circle(O,sqrt(A^2+B^2)/2));
+fill(circle(O,sqrt(A^2+B^2)/2),paleblue); fill(circle(O,A/2),white);
+draw(circle(O,sqrt(A^2+B^2)/2)); draw(circle(O,A/2));
+draw(box((-B/2,-A/2),(B/2,A/2)),linewidth(1));
+dot(O); label("$O$",O,SW);
+draw(O--(B/2,A/2),dashed); label("$R$",(0.68*B/2,0.68*A/2),NW);
+draw(O--(0,A/2),dashed); label("$r$",(0,A/4),W);
+label("$B$",(0,-A/2),S); label("$A$",(B/2,0),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The area between them is
+\[
+\pi\cdot\dfrac{A^2+B^2}{4}-\pi\cdot\dfrac{A^2}{4}=\dfrac{\pi B^2}{4}=4\pi ,
+\]
+so $B^2=16$ and $B=\boxed{4}$. (The answer does not depend on $A$.)

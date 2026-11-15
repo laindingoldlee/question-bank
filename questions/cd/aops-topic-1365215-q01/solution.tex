@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1365215_3d_geometry
+% Stable identity: aops-topic-1365215-q01
+By definition the circle lies in some plane $\Pi$. We show that no other plane contains it.
+
+Choose three distinct points $A$, $B$, $C$ of the circle. They are not collinear: a line in $\Pi$ meets the circle in at most two points (the points of the line at distance $r$ from $O$ solve a quadratic equation along the line). Three non-collinear points lie in exactly one plane, and that plane is $\Pi$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair P1=(0,0), P2=(6,0), P3=(8,3), P4=(2,3);
+fill(P1--P2--P3--P4--cycle,gray(0.93)); draw(P1--P2--P3--P4--cycle,gray);
+pair O=(4,1.5);
+path c=shift(O)*scale(2.2,0.9)*unitcircle;
+draw(c,blue+linewidth(0.9));
+pair A=point(c,0.4), B=point(c,1.7), C=point(c,3.1);
+draw(A--B--C--cycle,red+dashed);
+dot(A);dot(B);dot(C);dot(O);
+label("$A$",A,E); label("$B$",B,N); label("$C$",C,SW); label("$O$",O,S);
+label("$\Pi$",P2,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+If another plane $\Pi'$ contained the whole circle, it would contain $A$, $B$ and $C$, so $\Pi'=\Pi$. Hence the circle lies in exactly one plane.
+
+The statement ``a circle does not determine a plane'' is therefore false. It may come from a different notion: the set of all points \emph{in space} at distance $r$ from $O$ is a sphere, not a circle, and a sphere lies in no plane. Also, if only the centre and the radius are known, the circle is not determined, since many planes pass through $O$.

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2410574_distinguishability_vs_indistinguishability
+% Stable identity: aops-topic-2410574-q01
+Number the rows $1$ to $5$ from the top and the columns $1$ to $5$ from the left; row $r$ has holes in columns $1,\dots,r$, and all $15$ holes are filled.
+
+\textbf{(a)} The $5$ yellow pegs must lie in $5$ different rows, so there is one in each row. Row $1$ has only the hole $(1,1)$, so a yellow peg is there. Row $2$ has holes in columns $1,2$, and column $1$ already has a yellow peg, so the yellow peg is at $(2,2)$. Continuing, the yellow pegs fill the diagonal $(r,r)$.
+
+The $4$ red pegs go into the remaining holes, which lie in rows $2$ to $5$ (row $r$ now has columns $1,\dots,r-1$ free); they need $4$ different rows, so one in each. Row $2$ has only $(2,1)$ free, so red is there; then row $3$ must use $(3,2)$, and so on: red fills $(r,r-1)$. In the same way green is forced into $(r,r-2)$, blue into $(r,r-3)$ and orange into $(5,1)$. This placement satisfies the conditions (each colour occupies distinct rows and distinct columns), so there is exactly $\boxed{1}$ way:
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+string[] nm={"Y","R","G","B","O"};
+pen[] cl={rgb(1,0.9,0.2),rgb(1,0.4,0.4),rgb(0.4,0.8,0.4),rgb(0.45,0.6,1),rgb(1,0.65,0.2)};
+for(int r=1;r<=5;++r) for(int c=1;c<=r;++c){
+  filldraw(circle((c,-r),0.3),cl[r-c]); label(nm[r-c],(c,-r),fontsize(8pt));}
+draw((0.5,0.2)--(0.5,-5.6)--(6.3,-5.6)--cycle,gray);
+\end{asy}
+
+\textbf{(b)} The positions of the colours are forced as in (a); if the pegs were distinguishable, the yellow pegs could be permuted among the yellow holes in $5!$ ways, and so on, giving $5!\cdot4!\cdot3!\cdot2!\cdot1!=34560$ placements. But the problem only describes pegs by their colour and asks for placements of colours; the only thing that matters is which colour is in each hole, so the pegs of one colour are interchangeable and the answer to the problem is $1$.

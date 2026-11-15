@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1440543_combinations_and_casework
+% Stable identity: aops-topic-1440543-q22
+\textbf{(a)} Choose the three people who are correct in $\dbinom63=20$ ways. The other three must all be in wrong seats, which means they are deranged among their own three seats: there are $2$ such arrangements (the two $3$-cycles). So
+\[
+P=\dfrac{20\cdot2}{720}=\boxed{\dfrac{1}{18}}.
+\]
+\textbf{(b)} Suppose persons $1,2,3$ are seated correctly; persons $4,5,6$ fill seats $4,5,6$ in one of $3!=6$ equally likely ways, of which $2$ are derangements. The student's factor $\dfrac{2}{3}\cdot\dfrac{1}{2}$ is the right total ($\dfrac{2}{6}=\dfrac{1}{3}$), but the $\dfrac{1}{2}$ is not ``the chance that person $5$ is wrong'': once person $4$ is wrong, person $5$ is wrong with probability $1$ if $4$ took seat $5$, and with probability $\dfrac{1}{2}$ if $4$ took seat $6$. What matters is whether person $6$ ends up wrong. The two cases are:
+\begin{itemize}
+\item $4$ takes seat $5$ (probability $\dfrac{1}{3}$): the arrangement is a derangement only if $5$ takes seat $6$ and $6$ takes seat $4$, probability $\dfrac{1}{2}$;
+\item $4$ takes seat $6$ (probability $\dfrac{1}{3}$): it is a derangement only if $5$ takes seat $4$, probability $\dfrac{1}{2}$.
+\end{itemize}
+Total $\dfrac{1}{3}\cdot\dfrac{1}{2}+\dfrac{1}{3}\cdot\dfrac{1}{2}=\dfrac{1}{3}$, matching $\dfrac{2}{3}\cdot\dfrac{1}{2}$. The error in the second argument is the claim that when $4$ sits in seat $5$, person $6$ ``must'' be right: person $5$ chooses between seats $4$ and $6$, and if $5$ takes seat $6$ then $6$ is wrong too. Moreover, the case being subtracted was never counted as a success in the first place, so subtracting it is double-correcting. The probability is $\dfrac{1}{18}$, not $0$.

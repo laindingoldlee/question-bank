@@ -1,0 +1,9 @@
+Let $\alpha = \dfrac{A}{2}$, and put $u=AB^{\prime}=s-c$, $v=AC^{\prime}=s-b$, $x=s-a$. Take $A=(0,0),I=(8,0)$ and the two sides at angles $\pm\alpha$. A circle through $A,I$ has equation $X^2+Y^2-8X+kY=0$. Substituting $B^{\prime}=(u\cos\alpha,-u\sin\alpha)$ and $C^{\prime}=(v\cos\alpha,v\sin\alpha)$ gives $u+v=16\cos\alpha$. Also $B^{\prime}I^2=u^2+64-16u\cos\alpha=64-uv=25$, so $uv=39$. The incircle tangent length is $x = A I \cos \alpha = 8 \cos \alpha = \dfrac{u+v}{2} = \dfrac{a}{2}$. Heron\textquotesingle s identity $r^2 = \dfrac{x u v}{s}$ with $s = x + a = \dfrac{3 a}{2}$ gives $r^2=13$. Since $r=8\sin\alpha$, $\cos^2 \alpha = \dfrac{51}{64}$, whence $a=2\sqrt{51}$ and $s=3\sqrt{51}$. The area squared is $r^2s^2=13\cdot459=\boxed{5967}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+real ca=sqrt(51)/8,sa=sqrt(13)/8,u=sqrt(51)+2sqrt(3),v=sqrt(51)-2sqrt(3),x=sqrt(51);pair A=(0,0),I=(8,0),B=(x+v)*(ca,sa),C=(x+u)*(ca,-sa),Bp=u*(ca,-sa),Cp=v*(ca,sa);draw(A--B--C--cycle);draw(Bp--I--Cp);draw(A--I,dashed);label("$A$",A,(-1,0));label("$B$",B,(0,1));label("$C$",C,(0,-1));label("$I$",I,(1,0));label("$B^{\prime}$",Bp,(0,-1));label("$C^{\prime}$",Cp,(0,1));
+\end{asy}
+

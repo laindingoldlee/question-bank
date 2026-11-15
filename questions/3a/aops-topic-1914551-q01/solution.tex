@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1914551_2019_mathcounts_national_sprint_27
+% Stable identity: aops-topic-1914551-q01
+The right angle is at $A$, so $[ABC]=\dfrac{1}{2}\cdot3\cdot4=6$. Let $T=[DEF]$. We use repeatedly that triangles with the same apex and bases on one line have areas in the ratio of the bases.
+\begin{itemize}
+\item $BD=DE$: with apex $F$, $[BDF]=[DEF]=T$; with apex $A$, $[ABD]=[ADE]$.
+\item $AE=EF$: with apex $D$, $[ADE]=[EDF]=T$, so also $[ABD]=T$; with apex $C$, $[CAE]=[CEF]$.
+\item $FC=2DF$: with apex $E$, $[CEF]=2[DEF]=2T$, so also $[CAE]=2T$; with apex $B$, $[BFC]=2[BDF]=2T$.
+\end{itemize}
+The segments $AD$, $BF$, $CE$ (dashed) cut triangle $ABC$ into these seven triangles:
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(3,0),C=(0,4),D=(9/5,2/5),E=(3/5,4/5),F=(6/5,8/5);
+fill(D--E--F--cycle,palegreen);
+draw(A--D,dashed+gray); draw(B--F,dashed+gray); draw(C--E,dashed+gray);
+draw(A--B--C--cycle,linewidth(1));
+draw(B--E,linewidth(0.7)); draw(A--F,linewidth(0.7)); draw(C--D,linewidth(0.7));
+draw((0,0.15)--(0.15,0.15)--(0.15,0),linewidth(0.5));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$D$",(2.08,0.47));label("$E$",E,W);label("$F$",(0.98,1.62));
+label("$T$",(D+E+F)/3,fontsize(8pt)); label("$T$",(1.75,0.14),fontsize(8pt)); label("$T$",(0.85,0.45),fontsize(8pt));
+label("$T$",(1.9,0.78),fontsize(8pt)); label("$2T$",(1.19,2.1),fontsize(8pt)); label("$2T$",(0.65,2.1),fontsize(8pt)); label("$2T$",(0.22,1.5),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+6=T+T+T+T+2T+2T+2T=10T,
+\]
+so $[DEF]=T=\boxed{\dfrac{3}{5}}$.

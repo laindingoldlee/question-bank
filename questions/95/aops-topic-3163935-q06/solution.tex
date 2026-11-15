@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3163935_2011_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3163935-q06
+If there are $n$ sides, the arc from $A$ to $D$ through $B,C$ has angle $\dfrac{1080^\circ}{n}$. The inscribed angle $ACD$ intercepts the complementary arc, so $120=\dfrac{1}{2}(360-\dfrac{1080}{n})$. This gives $\boxed{n=9}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] p;path q;for(int i=0;i<9;++i){p.push(2*dir(40*i));q=q--p[i];}draw(q--cycle);draw(p[0]--p[2]);string[] t={"A","B","C","D"};for(int i=0;i<4;++i)label("$"+t[i]+"$",p[i],dir(40*i));
+\end{asy}

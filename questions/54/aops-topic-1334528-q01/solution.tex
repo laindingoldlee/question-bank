@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1334528_geometry_problem_with_trapezoid
+% Stable identity: aops-topic-1334528-q01
+\textbf{(a)} Since $\angle ACB=90^\circ$ and $\angle ADB=90^\circ$, both $C$ and $D$ lie on the circle with diameter $AB$ (Thales). Let $O$ be the midpoint of $AB$, the centre of this circle.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair O=(0,0),A=(-2,0),B=(2,0),C=2*dir(60),D=2*dir(120);
+draw(arc(O,2,0,180),gray+dashed);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(A--C,blue); draw(B--D,blue);
+draw(ra(C,A-C,B-C,0.18)); draw(ra(D,B-D,A-D,0.18));
+dot(O); label("$O$",O,S);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The chord $CD$ is parallel to the diameter $AB$, so the perpendicular from $O$ to $CD$ is the perpendicular bisector of $CD$ and is also perpendicular to $AB$ at $O$. Reflecting in this line fixes the circle and the line $AB$, swaps $C$ and $D$, and swaps $A$ and $B$ (they are the two points of the circle on line $AB$, and $C$, $D$ lie on the same side of $AB$). Since $C$ and $B$ lie on the same side of the axis, the reflection maps segment $BC$ to segment $AD$, so $AD=BC$ and the trapezoid is isosceles. (Equivalently: an isosceles trapezoid is exactly a trapezoid whose vertices lie on a circle, and $A,B,C,D$ are concyclic here.)
+
+The parallel sides must be $AB$ and $CD$: if instead $AD\parallel BC$, then $AC\perp BC$ would give $AC\perp AD$, and together with $BD\perp AD$ this would make the diagonals $AC$ and $BD$ parallel, which is impossible because the diagonals of a convex quadrilateral cross.
+
+\textbf{(b)} No. Every isosceles trapezoid is cyclic, but $\angle ACB=90^\circ$ holds only when $AB$ is a diameter of that circle, i.e. when the circumcentre lies on the base $AB$. For example, the isosceles trapezoid with $A=(-3,0)$, $B=(3,0)$, $C=(1,1)$, $D=(-1,1)$ has $\overrightarrow{CA}\cdot\overrightarrow{CB}=(-4)(2)+(-1)(-1)=-7\ne0$, so $AC$ is not perpendicular to $BC$. $\blacksquare$

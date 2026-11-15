@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2787008_1998_manhattan_mathematical_olympiad_grades_56_problems_14
+% Stable identity: aops-topic-2787008-q02
+Yes. Make a rhombus of side 3 and height $\dfrac{4}{3}$. Its area is $3\cdot\dfrac{4}{3}=4$. Such a rhombus exists: use vertices $(0,0),(3,0),(3+\dfrac{\sqrt{65}}{3},\dfrac{4}{3}),(\dfrac{\sqrt{65}}{3},\dfrac{4}{3})$, whose slanted side length is $\sqrt{\dfrac{65}{9}+\dfrac{16}{9}}=3$. Each of its four sides is made from three unit matches, using exactly 12.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real u=sqrt(65)/3,h=4/3;pair[] P={(0,0),(3,0),(3+u,h),(u,h)};for(int k=0;k<4;++k){draw(P[k]--P[(k+1)%4]);for(int j=0;j<3;++j)dot(P[k]+j*(P[(k+1)%4]-P[k])/3);}draw((u,0)--(u,h),dashed);label("$3$",(1.5,0),S);label("$\dfrac{4}{3}$",(u,h/2),W);
+\end{asy}

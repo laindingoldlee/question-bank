@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h2388266_a_question_on_proving
+% Stable identity: aops-topic-2388266-q01
+Let $c=AB$, $b=AC$ and $\alpha=\dfrac12\angle BAC$. Since $L\ne D$, we have $b\ne c$ (the bisector meets $BC$ at its midpoint exactly when $b=c$, by the angle bisector theorem).
+
+\textbf{Coordinates along the bisector.} Put $A$ at the origin with the bisector $AL$ along the positive $x$-axis, $B$ above it and $C$ below it:
+\[B=(c\cos\alpha,\ c\sin\alpha),\qquad C=(b\cos\alpha,\ -b\sin\alpha).\]
+Then
+\[D=\dfrac{B+C}{2}=\left(\dfrac{(b+c)\cos\alpha}{2},\ \dfrac{(c-b)\sin\alpha}{2}\right).\]
+By the angle bisector theorem $BL:LC=c:b$, so $L=\dfrac{bB+cC}{b+c}=\left(\dfrac{2bc\cos\alpha}{b+c},\,0\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real al=35, c=3, bb=7;
+pair A=(0,0), B=c*dir(al), C=bb*dir(-al);
+pair D=(B+C)/2, L=(2*bb*c*Cos(al)/(bb+c),0);
+pair M=(2c/(bb+c))*D, Nn=(2bb/(bb+c))*D, P=(B.x,0), Q=(C.x,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--(6.6,0),blue); draw(A--Nn,red);
+draw(B--M,gray); draw(C--Q,gray);
+draw(L--M,linewidth(0.9)+dashed); draw(L--Nn,linewidth(0.9)+dashed);
+draw(P+(0,0.22)--P+(0.22,0.22)--P+(0.22,0),gray); draw(Q+(0,-0.22)--Q+(-0.22,-0.22)--Q+(-0.22,0),gray);
+dot(A); dot(B); dot(C); dot(D); dot(L); dot(M); dot(Nn); dot(P); dot(Q);
+label("$A$",A,W); label("$B$",B,N); label("$C$",C,S); label("$D$",D,SW);
+label("$L$",L,NE); label("$M$",M,SW); label("$N$",Nn,SW); label("$P$",P,NW); label("$Q$",Q,NE);
+label("bisector",(6.6,0),E,blue+fontsize(8pt)); label("median",Nn,E,red+fontsize(8pt));
+\end{asy}
+
+\textbf{The points $M$ and $N$.} The perpendicular from $B$ to $AL$ is the vertical line $x=c\cos\alpha$ (it meets $AL$ at $P=(c\cos\alpha,0)$). A point of line $AD$ is $tD$ for a real $t$, and its $x$-coordinate is $c\cos\alpha$ exactly when $t=\dfrac{2c}{b+c}$. So $M=\dfrac{2c}{b+c}D$, and in the same way $N=\dfrac{2b}{b+c}D$.
+
+\textbf{$LM\parallel AB$.} Compute
+\[M-L=\left(c\cos\alpha-\dfrac{2bc\cos\alpha}{b+c},\ \dfrac{c(c-b)\sin\alpha}{b+c}\right)=\dfrac{c-b}{b+c}\,\bigl(c\cos\alpha,\ c\sin\alpha\bigr)=\dfrac{c-b}{b+c}\,(B-A).\]
+Since $b\ne c$, $M\ne L$, and the vector $\overrightarrow{LM}$ is a nonzero multiple of $\overrightarrow{AB}$. So $LM\parallel AB$.
+
+\textbf{$LN\parallel AC$.} Similarly
+\[N-L=\left(b\cos\alpha-\dfrac{2bc\cos\alpha}{b+c},\ \dfrac{b(c-b)\sin\alpha}{b+c}\right)=\dfrac{b-c}{b+c}\,\bigl(b\cos\alpha,\ -b\sin\alpha\bigr)=\dfrac{b-c}{b+c}\,(C-A),\]
+so $LN\parallel AC$. $\blacksquare$
+
+(The figure shows the case $c<b$: then $M$ lies between $A$ and $D$ and $N$ lies beyond $D$; for $c>b$ the roles of $M$ and $N$ are exchanged, and the computation covers both cases.)

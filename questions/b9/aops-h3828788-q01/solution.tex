@@ -1,0 +1,7 @@
+Place them in order $\boxed{2,3,4,5,6,7,8,9}$ around the circle. For consecutive integers $n,n+1$ with $n\ge2$, neither divides the other. At the join, neither $2$ nor $9$ divides the other. Hence every adjacency works.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] P;for(int i=0;i<8;++i)P.push(2dir(90-45i));for(int i=0;i<8;++i)draw(P[i]--P[(i+1)%8]);for(int i=0;i<8;++i){filldraw(circle(P[i],.22),white,black);label(string(i+2),P[i]);}
+\end{asy}

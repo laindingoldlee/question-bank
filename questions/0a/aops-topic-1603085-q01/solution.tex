@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1603085_solve_inequality
+% Stable identity: aops-topic-1603085-q01
+Write $u=\sqrt[3]{x-1}$, $v=\sqrt[3]{2x-1}$, $w=\sqrt[3]{3x+1}$. Since $t\mapsto t^3$ is strictly increasing,
+\[
+u+v>w\iff(u+v)^3>w^3\iff u^3+v^3+3uv(u+v)>3x+1\iff(3x-2)+3uv(u+v)>3x+1,
+\]
+that is,
+\[
+u+v>w\iff g(x)>1,\qquad\text{where }g(x)=uv(u+v).
+\]
+Similarly $u+v=w\iff g(x)=1$.
+
+\textbf{Where $g(x)=1$.} If $g(x)=1$ then $u+v=w$, so $(u+v)^3=3x+1$; also $(uv)^3=(x-1)(2x-1)$. Cubing $g(x)=1$ gives $(x-1)(2x-1)(3x+1)=1$, i.e.
+\[
+6x^3-7x^2+1=1\iff x^2(6x-7)=0\iff x=0\text{ or }x=\dfrac{7}{6} .
+\]
+At $x=0$: $u=v=-1$, so $g(0)=1\cdot(-2)=-2\ne1$; this candidate is extraneous. At $x=\dfrac{7}{6}$: with $t=\sqrt[3]{\dfrac{1}{6}}$ we get $u=t$, $v=\sqrt[3]{\dfrac{8}{6}}=2t$, $w=\sqrt[3]{\dfrac{27}{6}}=3t$, so $u+v=w$ and $g\left(\dfrac{7}{6}\right)=1$. Thus $g(x)=1$ only at $x=\dfrac{7}{6}$.
+
+\textbf{Sign of $g(x)-1$.} The function $g$ is continuous on $\mathbb R$, and $g(x)-1$ vanishes only at $\dfrac{7}{6}$, so it has constant sign on each of $\left(-\infty,\dfrac{7}{6}\right)$ and $\left(\dfrac{7}{6},\infty\right)$. At $x=1$: $u=0$, so $g(1)-1=-1<0$. At $x=2$: $u=1$, $v=\sqrt[3]3$, so $g(2)=\sqrt[3]3\left(1+\sqrt[3]3\right)>1$. Hence $g(x)>1$ exactly for $x>\dfrac{7}{6}$, and the solution set is
+\[
+\boxed{x>\dfrac{7}{6}}.
+\]
+(If the cube roots were only defined for nonnegative radicands, the domain would be $x\ge1$ and the answer would be the same.)

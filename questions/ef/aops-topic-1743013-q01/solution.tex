@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1743013_is_there_a_better_way_to_solve_this
+% Stable identity: aops-topic-1743013-q01
+Since $TU\parallel BC$, triangle $ATU$ is similar to triangle $ABC$ with ratio $k=\dfrac{8-t}{8}$, the ratio of their heights from $A$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,8),B=(2,0),C=(8,0),T=(1.5,2),U=(6,2);
+draw((-1,0)--(9.5,0),gray,Arrow(5));draw((0,-0.8)--(0,9.3),gray,Arrow(5));
+fill(A--T--U--cycle,lightgray);
+draw(A--B--C--cycle,linewidth(0.9));draw((-0.6,2)--(9,2),blue);
+dot(T);dot(U);
+label("$A(0,8)$",A,E);label("$B(2,0)$",B,S);label("$C(8,0)$",C,S);label("$T$",T,1.5*dir(145));label("$U$",U,NE);label("$y=t$",(9,2),N,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangle $ABC$ has base $BC=6$ and height $8$, so area $24$. Areas scale by $k^2$: $24k^2=13.5$ gives $k^2=\dfrac{9}{16}$, $k=\dfrac{3}{4}$, so $8-t=6$ and $t=\boxed{2}$. (Then $T=(1.5,2)$, $U=(6,2)$, $TU=4.5$, and $\dfrac{1}{2}\cdot4.5\cdot6=13.5$.)

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2249852_vietas_rectangular_prism
+% Stable identity: aops-topic-2249852-q01
+Let the dimensions be $a,b,c$. The prism has four edges of each length, so
+\[4(a+b+c)=144,\qquad 2(ab+bc+ca)=826,\qquad abc=1470,\]
+that is, $a+b+c=36$, $ab+bc+ca=413$ and $abc=1470$. By Vieta's formulas, the monic cubic with roots $a,b,c$ is
+\[(x-a)(x-b)(x-c)=x^3-(a+b+c)x^2+(ab+bc+ca)x-abc=\boxed{x^3-36x^2+413x-1470}.\]
+Checking divisors of $1470=2\cdot3\cdot5\cdot7^2$ gives the root $x=7$ ($343-1764+2891-1470=0$), and
+\[x^3-36x^2+413x-1470=(x-7)(x^2-29x+210)=(x-7)(x-14)(x-15).\]
+So the prism is $7\times14\times15$: indeed $4(7+14+15)=144$, $2(98+210+105)=826$ and $7\cdot14\cdot15=1470$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real l=15, h=14, w=7; pair d=(0.55,0.4)*w/7*4.2;
+pair A=(0,0), B=(l,0), C=(l,h), D=(0,h);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(B--B+d--C+d--C,linewidth(0.9)); draw(D--D+d--C+d,linewidth(0.9));
+draw(A--A+d,dashed); draw(A+d--B+d,dashed); draw(A+d--D+d,dashed);
+label("$15$",(l/2,0),S); label("$14$",(0,h/2),W); label("$7$",B+d/2,SE);
+\end{asy}

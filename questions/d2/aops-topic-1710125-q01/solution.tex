@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1710125_junior_regional_olympiad__fbh_2017_grade_6_problem_3
+% Stable identity: aops-topic-1710125-q01
+Let $D$ and $E$ be the feet of the altitudes from $A$ and $B$, on $BC$ and $CA$. In quadrilateral $CEHD$ the angles at $D$ and $E$ are right angles, so $\angle DHE=360^\circ-90^\circ-90^\circ-\angle C=180^\circ-\angle C$. The angles $\angle AHB$ and $\angle DHE$ are vertical angles (the figure marks $\angle DHE$), so
+\[
+126^\circ=\angle AHB=180^\circ-\angle C\quad\Longrightarrow\quad \angle C=54^\circ,
+\]
+and $\angle B=180^\circ-80^\circ-54^\circ=46^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0);
+pair C=extension(A,A+dir(80),B,B+dir(134));
+pair D=A+dot(C-B,A-B)/dot(C-B,C-B)*(C-B);
+pair Dd=B+dot(A-B,C-B)/dot(C-B,C-B)*(C-B);
+pair Ee=A+dot(B-A,C-A)/dot(C-A,C-A)*(C-A);
+pair H=extension(A,Dd,B,Ee);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--Dd,blue);draw(B--Ee,blue);
+real q=0.3;
+pair u=unit(A-Dd),v=unit(C-Dd);draw(Dd+q*u--Dd+q*(u+v)--Dd+q*v);
+u=unit(B-Ee);v=unit(C-Ee);draw(Ee+q*u--Ee+q*(u+v)--Ee+q*v);
+draw(arc(H,0.55,degrees(Dd-H),degrees(Ee-H)),red);
+label("$126^\circ$",H+0.95*dir(75),red);
+draw(arc(A,0.65,0,80));label("$80^\circ$",A+1.15*dir(18));
+dot(H);dot(Dd);dot(Ee);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$H$",H,N);label("$D$",Dd,NE);label("$E$",Ee,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In a triangle the longer side is opposite the larger angle. The angles are $\angle A=80^\circ>\angle C=54^\circ>\angle B=46^\circ$, so the \textbf{longest side is $BC$} (opposite $A$) and the \textbf{shortest side is $CA$} (opposite $B$): $\boxed{CA<AB<BC}$.

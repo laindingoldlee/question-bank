@@ -1,0 +1,7 @@
+Set $B=(0,0),C=(6,0),A=(1,2\sqrt6)$. Write a point as $(x,\sqrt6 v)$. The three pairs of perpendicular lines bound the strips $\dfrac{1}{2}\le x\le\dfrac{7}{2}$, $3\le x+12v\le\dfrac{31}{2}$, and $-\dfrac{19}{2}\le5x-12v\le15$. Their intersection has vertices $(\dfrac{7}{2},\dfrac{5}{24}),(\dfrac{7}{2},1),(1,\dfrac{29}{24}),(\dfrac{1}{2},1),(\dfrac{1}{2},\dfrac{5}{24}),(3,0)$ in $(x,v)$ coordinates. The shoelace formula gives area three in these coordinates. Restoring the vertical scale yields $\boxed{3\sqrt6}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(1,2*sqrt(6)),B=(0,0),C=(6,0);pair[] P={(3.5,5*sqrt(6)/24),(3.5,sqrt(6)),(1,29*sqrt(6)/24),(.5,sqrt(6)),(.5,5*sqrt(6)/24),(3,0)};draw(A--B--C--cycle);path q=P[0];for(int i=1;i<P.length;++i)q=q--P[i];filldraw(q--cycle,lightgray);label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));for(int i=0;i<6;++i)label(string(i+1),P[i],unit(P[i]-(2,2)));
+\end{asy}

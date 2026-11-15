@@ -1,0 +1,11 @@
+The circle has center $(3,3)$ and radius $\sqrt6$. Every point on it has $x>0$, so $\dfrac{y}{x}$ is the slope of a line from the origin. The extreme slopes occur for tangent lines $y=mx$. The center-to-line distance condition is
+\[
+\dfrac{|3m-3|}{\sqrt{m^2+1}}=\sqrt6.
+\]
+Squaring gives $m^2-6m+1=0$, hence $m=3\pm2\sqrt2$. The larger slope is $\boxed{3+2\sqrt2}$, choice A.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0),C=(3,3);real m=3+2sqrt(2);pair T=((3+3m)/(1+m*m),m*(3+3m)/(1+m*m));draw(circle(C,sqrt(6)),blue);draw(O--1.2T,red);draw(C--T,dashed);dot(C);label("$O$",O,SW);label("$(3,3)$",C,(1,0));label("$T$",T,(-1,0));
+\end{asy}

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1456224_telescoping
+% Stable identity: aops-topic-1456224-q01
+A sum \emph{telescopes} when each term is a difference $f(n-1)-f(n)$ of consecutive values of some sequence. Then the partial sum is
+\[
+\sum_{n=1}^{N}\big(f(n-1)-f(n)\big)=f(0)-f(N),
+\]
+because all the middle values cancel.
+
+Try $f(n)=\dfrac{An+B}{4^n}$. Then
+\[
+f(n-1)-f(n)=\dfrac{4\big(A(n-1)+B\big)-(An+B)}{4^n}=\dfrac{3An+3B-4A}{4^n}.
+\]
+This equals $\dfrac{2n-1}{4^n}$ when $3A=2$ and $3B-4A=-1$, that is, $A=\dfrac{2}{3}$ and $B=\dfrac{5}{9}$. So $f(n)=\dfrac{6n+5}{9\cdot4^n}$ and
+\[
+\sum_{n=1}^{N}\dfrac{2n-1}{4^n}=f(0)-f(N)=\dfrac{5}{9}-\dfrac{6N+5}{9\cdot4^N}.
+\]
+As $N\to\infty$, $\dfrac{6N+5}{4^N}\to0$, so the sum of the series is $\boxed{\dfrac{5}{9}}$.
+
+Check by another method: if $S$ is the sum, then
+\[
+S-\dfrac {S}{4}=\dfrac{1}{4}+\dfrac{2}{16}+\dfrac{2}{64}+\cdots=\dfrac{1}{4}+\dfrac{\dfrac{2}{16}}{1-\dfrac{1}{4}}=\dfrac{1}{4}+\dfrac{1}{6}=\dfrac{5}{12},
+\]
+so $S=\dfrac{4}{3}\cdot\dfrac{5}{12}=\dfrac{5}{9}$.

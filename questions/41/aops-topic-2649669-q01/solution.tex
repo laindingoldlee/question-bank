@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2649669_ask_a_possibly_easy_question
+% Stable identity: aops-topic-2649669-q01
+By AA, triangles $ABC$ and $ADE$ are similar, so $\dfrac{AB}{AD}=\dfrac{AC}{AE}$, i.e. $\dfrac{AB}{AC}=\dfrac{AD}{AE}$.
+
+Since the triangles have the same orientation, the rotation about $A$ taking ray $AB$ to ray $AC$ also takes ray $AD$ to ray $AE$ (both are rotations by the directed angle $\angle BAC=\angle DAE$). Hence the rotation taking ray $AB$ to ray $AD$ also takes ray $AC$ to ray $AE$, so $\angle BAD=\angle CAE$.
+
+So triangles $ABD$ and $ACE$ have $\dfrac{AB}{AC}=\dfrac{AD}{AE}$ and equal included angles at $A$; by SAS they are similar, with $B\leftrightarrow C$ and $D\leftrightarrow E$. Therefore $\angle ADB=\angle AEC$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(1.0,2.4);real k=0.7,th=110;
+pair D=k*(rotate(th)*B),Ep=k*(rotate(th)*C);
+draw(A--B--C--cycle,linewidth(0.8));draw(A--D--Ep--cycle,linewidth(0.8));draw(B--D,dashed);draw(C--Ep,dashed);
+label("$A$",A,SW);label("$B$",B,E);label("$C$",C,NE);label("$D$",D,N);label("$E$",Ep,W);
+void mk(pair Q,pair P1,pair P2,real r){real a1=degrees(P1-Q),a2=degrees(P2-Q);real d=a2-a1;while(d<0)d+=360;while(d>=360)d-=360;if(d>180){a1=a2;d=360-d;}draw(arc(Q,r,a1,a1+d),red);}
+mk(D,A,B,0.45);mk(Ep,A,C,0.45);
+\end{asy}

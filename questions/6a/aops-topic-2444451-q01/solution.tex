@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2444451_a_problem_that_i_came_up_withand_dont_know_how_to_solve_
+% Stable identity: aops-topic-2444451-q01
+Fix $n$ and build $x_n$ from the inside: let $y_n=\sqrt n$ and $y_k=\sqrt{k+y_{k+1}}$ for $k=n-1,n-2,\dots,1$. Then $x_n=y_1$.
+
+\textbf{(a)} In $x_{n+1}$ the innermost part at level $n$ is $\sqrt{n+\sqrt{n+1}}$ instead of $\sqrt n$, and it is larger. Each step outwards applies a function $t\mapsto\sqrt{k+t}$, which is increasing, so the larger value stays larger at every level, and $x_{n+1}>x_n$. $\blacksquare$
+
+\textbf{(b)} We first show that $y_k<k+1$ for $k=n,n-1,\dots,1$, going downwards. For $k=n$: $\sqrt n<n+1$. If $y_{k+1}<k+2$, then
+\[y_k=\sqrt{k+y_{k+1}}<\sqrt{2k+2}\le k+1,\]
+because $(k+1)^2-(2k+2)=(k+1)(k-1)\ge0$. Now let $n\ge3$. Then $y_3<4$, so $y_2=\sqrt{2+y_3}<\sqrt6$ and $x_n=y_1=\sqrt{1+y_2}<\sqrt{1+\sqrt6}$. For $n=1,2$ directly: $x_1=1$ and $x_2=\sqrt{1+\sqrt2}$ are smaller than $\sqrt{1+\sqrt6}$. $\blacksquare$
+
+\textbf{(c)} By (a) and (b) the sequence $x_n$ is increasing and bounded above, so it has a limit $L$ (a bounded increasing sequence converges), and $L\le\sqrt{1+\sqrt6}$. Since $\sqrt6<2.45$, we get $L\le\sqrt{3.45}<1.86$, because $1.86^2=3.4596$. On the other hand $L>x_3$, as the sequence is increasing, and
+\[x_3^2=1+\sqrt{2+\sqrt3}>1+1.89=2.89=1.7^2,\]
+because $\left(2+\sqrt3\right)-1.89^2=\sqrt3-1.5721>0$. So $1.7<L<1.86$. $\blacksquare$
+
+(Numerically $L\approx1.7579$. This number is known as the nested radical constant; no simpler closed form for it is known.)

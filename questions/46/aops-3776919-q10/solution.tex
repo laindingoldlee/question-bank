@@ -1,0 +1,9 @@
+Place $A=(-1,0),B=(1,0),C=(0,h)$. Then $h^2=7^2-1=48$. Write $D=(d,0)$ with $d>1$. From $CD=8$, $d^2+48=64$, so $d=4$. Therefore $BD=4-1=\boxed3$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(-1,0),(1,0),(0,4sqrt(3))}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));pair D=(4,0);draw(p[1]--D--p[2]);label("$D$",D,(1,-1));
+\end{asy}
+

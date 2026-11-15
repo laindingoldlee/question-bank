@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2615587_problem_for_fun
+% Stable identity: aops-topic-2615587-q01
+Put the tied corner at the origin with the house occupying $0\le x\le40$, $0\le y\le30$.
+\begin{itemize}
+\item Outside the quarter-plane $x,y>0$ the leash runs straight, so the goat reaches three quarters of a disc of radius $55$: area $\dfrac34\pi\cdot55^2=\dfrac{9075\pi}{4}$.
+\item Points with $x>0$, $y>0$ outside the house are reached only by wrapping the leash around a corner. Around the corner $(40,0)$, $55-40=15$ feet remain, sweeping a quarter disc of radius $15$: area $\dfrac{225\pi}{4}$.
+\item Around the corner $(0,30)$, $55-30=25$ feet remain, sweeping a quarter disc of radius $25$: area $\dfrac{625\pi}{4}$.
+\end{itemize}
+The two small quarter discs do not overlap: one lies in $x\ge40$, $y\le15$ and the other in $x\le25$, $y\ge30$. The total area is
+\[\dfrac{9075\pi+225\pi+625\pi}{4}=\boxed{\dfrac{9925\pi}{4}\ \text{square feet}}\approx7795\text{ square feet}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+fill((0,0)--arc((0,0),55,90,360)--cycle,lightgray);
+fill((40,0)--arc((40,0),15,0,90)--cycle,lightgray);
+fill((0,30)--arc((0,30),25,0,90)--cycle,lightgray);
+draw(arc((0,0),55,90,360)); draw(arc((40,0),15,0,90)); draw(arc((0,30),25,0,90));
+draw((0,55)--(0,30),dashed); draw((55,0)--(40,0),dashed);
+filldraw((0,0)--(40,0)--(40,30)--(0,30)--cycle,gray(0.7),linewidth(0.8));
+dot((0,0)); label("house",(20,17));
+label("$40$",(20,0),N,fontsize(8pt)); label("$30$",(40,15),W,fontsize(8pt));
+draw((0,0)--55*dir(225),Arrows(TeXHead)); label("$55$",27.5*dir(225),NW,fontsize(9pt));
+draw((40,0)--(40,0)+15*dir(30)); label("$15$",(40,0)+7.5*dir(30),NW,fontsize(8pt));
+draw((0,30)--(0,30)+25*dir(60)); label("$25$",(0,30)+12.5*dir(60),E,fontsize(8pt));
+\end{asy}

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1183510_impossible_countdown_problems_in_given_timeframe
+% Stable identity: aops-topic-1183510-q04
+The graph of $y=\sqrt{16-x^2}$ is the upper half of the circle $x^2+y^2=16$ of radius $4$. The graph of $y=|x|$ consists of the rays $y=x$ and $y=-x$ for $y\ge0$, which leave the origin at $45^\circ$ and $135^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real r=4;
+fill((0,0)--arc((0,0),r,45,135)--cycle,lightblue);
+draw((-5,0)--(5,0),gray,Arrow(4)); draw((0,-0.6)--(0,5),gray,Arrow(4));
+draw(arc((0,0),r,0,180),blue+linewidth(0.9));
+draw((0,0)--(4.6,4.6),red); draw((0,0)--(-4.6,4.6),red);
+label("$y=|x|$",(4.6,4.6),NE,red); label("$y=\sqrt{16-x^2}$",4.1*dir(160),W,blue);
+label("$4$",(4,0),S); label("$-4$",(-4,0),S); label("$x$",(5,0),SE); label("$y$",(0,5),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The bounded region between them is the circular sector from $45^\circ$ to $135^\circ$, with angle $90^\circ$, i.e.\ a quarter of the disc. Its area is
+\[\dfrac{1}{4}\cdot\pi\cdot4^2=\boxed{4\pi}.\]

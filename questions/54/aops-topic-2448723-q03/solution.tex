@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2448723_1729_posts_also_problems
+% Stable identity: aops-topic-2448723-q03
+Each row consists of $5$ circles of diameter $6$, tangent to each other and to two opposite sides, so the side of the square is $5\cdot6=30$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<5;++i) for(int j=0;j<5;++j) filldraw(circle((6i+3,6j+3),3),rgb(0.85,0.92,1),black);
+draw(box((0,0),(30,30)),linewidth(1));
+draw((3,3)--(6,3),red); label("$3$",(4.5,3),S,red+fontsize(8pt));
+draw((0,-2)--(30,-2),Arrows(4)); label("$30$",(15,-2),S);
+\end{asy}
+
+The circles cover $25\cdot\pi\cdot3^2=225\pi$ square inches, and the square has area $30^2=900$. The ratio is
+\[\dfrac{225\pi}{900-225\pi}=\boxed{\textbf{(C) }\dfrac{\pi}{4-\pi}}.\]
+(The answer does not depend on the radius or on the number of circles: each circle of radius $r$ sits in its own $2r\times2r$ cell, and covers $\dfrac{\pi r^2}{4r^2}=\dfrac\pi4$ of it. A single circle inscribed in the square gives the same ratio.)

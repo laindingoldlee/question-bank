@@ -1,0 +1,22 @@
+By Burnside's lemma, average the numbers of colourings fixed by the three rotations. The identity fixes $3^{n^2}$ colourings.
+
+For $n=3$, the center is a grid vertex, so a nonidentity rotation fixes no individual cell. The nine cells form three 3-cycles, and each such rotation fixes $3^3$ colourings. The count is
+\[
+\boxed{\dfrac{3^9+2\cdot3^3}{3}=6579}.
+\]
+For $n=4$, exactly one central cell is fixed; the other fifteen form five 3-cycles. Each nonidentity rotation fixes $3^{1+5}$ colourings. The count is
+\[
+\boxed{\dfrac{3^{16}+2\cdot3^6}{3}=14349393}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair f(int i,int j){return (i+j/2.0,sqrt(3)*j/2);}int n=3;for(int i=0;i<n;++i)for(int j=0;j<n-i;++j){draw(f(i,j)--f(i+1,j)--f(i,j+1)--cycle);if(i+j<n-1)draw(f(i+1,j)--f(i,j+1)--f(i+1,j+1)--cycle);}dot((n/2.0,n*sqrt(3)/6),red+4bp);label("$n=3$",(n/2.0,-.4));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair f(int i,int j){return (i+j/2.0,sqrt(3)*j/2);}int n=4;for(int i=0;i<n;++i)for(int j=0;j<n-i;++j){draw(f(i,j)--f(i+1,j)--f(i,j+1)--cycle);if(i+j<n-1)draw(f(i+1,j)--f(i,j+1)--f(i+1,j+1)--cycle);}dot((n/2.0,n*sqrt(3)/6),red+4bp);label("$n=4$",(n/2.0,-.4));
+\end{asy}

@@ -1,0 +1,50 @@
+% Source: https://artofproblemsolving.com/community/c3h1453820_tangent_and_secant
+% Stable identity: aops-topic-1453820-q01
+Let $O$ be the centre and $\rho$ the radius.
+
+\textbf{Step 1: $OT\perp PT$.} Otherwise let $F\ne T$ be the foot of the perpendicular from $O$ to line $PT$. Then $OF<OT=\rho$, and the reflection $T'$ of $T$ in $F$ lies on line $PT$ with $OT'=OT=\rho$. So the line meets the circle at two points $T\ne T'$, contradicting the definition of a tangent.
+
+\textbf{Step 2 (tangent-chord angle): $\angle PTA=\dfrac{\overset{\frown}{TA}}{2}$.} Let $TD$ be the diameter through $T$. By Step 1, $\angle PTD=90^\circ$.
+\begin{itemize}
+\item If $\overset{\frown}{TA}<180^\circ$, then $A$ lies on the semicircle from $T$ to $D$ on the side of $P$, and $\angle ATD$ is an inscribed angle on the arc $AD$ of that semicircle, so $\angle ATD=\dfrac{180^\circ-\overset{\frown}{TA}}{2}$ and
+\[
+\angle PTA=90^\circ-\angle ATD=\dfrac{\overset{\frown}{TA}}{2}.
+\]
+\item If $\overset{\frown}{TA}\ge180^\circ$, the same argument gives $\angle PTA=90^\circ+\dfrac{\overset{\frown}{TA}-180^\circ}{2}=\dfrac{\overset{\frown}{TA}}{2}$ (with $\angle PTA=90^\circ$ when $A=D$).
+\end{itemize}
+(In fact the first case always holds here, but we do not need this.)
+
+\textbf{Step 3.} Because $A$ lies between $P$ and $B$, the angle $\angle TAB$ is an exterior angle of triangle $PTA$ at $A$, so
+\[
+\angle TAB=\angle TPA+\angle PTA .
+\]
+The angle $\angle TAB$ is inscribed in the circle and subtends the arc $TB$ not containing $A$, so $\angle TAB=\dfrac{\overset{\frown}{TB}}{2}$ by the inscribed angle theorem. With Step 2,
+\[
+\angle TPB=\angle TPA=\dfrac{\overset{\frown}{TB}}{2}-\dfrac{\overset{\frown}{TA}}{2}=\dfrac{\overset{\frown}{TB}-\overset{\frown}{TA}}{2}.\qquad\blacksquare
+\]
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0); real rr=2;
+path c=circle(O,rr);
+pair T=rr*dir(105);
+pair P=T+3.6*dir(195);
+pair B=rr*dir(-25);
+pair[] I=intersectionpoints(P--(B+0.05*(B-P)),c);
+pair A=(abs(I[0]-P)<abs(I[1]-P))?I[0]:I[1];
+draw(c,linewidth(0.8));
+real aA=degrees(A); if(aA<0) aA+=360;
+draw(arc(O,rr,105,aA),red+linewidth(2));
+draw(arc(O,rr,-25,105),blue+linewidth(2));
+draw(P--(T+0.5*(T-P)),linewidth(0.9));
+draw(P--B,linewidth(0.9));
+draw(T--A,dashed); draw(T--B,dashed);
+draw(arc(P,P+0.6*unit(B-P),P+0.6*unit(T-P)));
+dot(P);dot(T);dot(A);dot(B);dot(O);
+label("$P$",P,W); label("$T$",T+0.12*dir(105),dir(105)); label("$A$",A+0.3*dir(235),dir(235)); label("$B$",B,SE); label("$O$",O,E);
+label("$x$",P+0.85*unit(unit(B-P)+unit(T-P)));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the figure the angle $x=\angle TPB$ at $P$ is half the difference of the blue arc $TB$ and the red arc $TA$. None of the steps uses the result being proved, so the argument is not circular.

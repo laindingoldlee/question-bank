@@ -1,0 +1,9 @@
+Use $M=(0,0),A=(0,4),H=(0,2),B=(-b,0),C=(b,0)$. Perpendicularity of $CH$ and $AB$ gives $(b,-2)\cdot(b,4)=0$, hence $b^2=8$. Projection of $C$ onto $AB$ gives $D = (- \dfrac{b}{3} , \dfrac{8}{3})$. Therefore $M D^2 = \dfrac{b^2}{9} + \dfrac{64}{9} = 8$, so $\boxed{MD=2\sqrt2}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,4),(-2sqrt(2),0),(2sqrt(2),0)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));pair M=(0,0),H=(0,2),D=(-2sqrt(2)/3,8/3);draw(p[0]--M);draw(p[2]--D);draw(M--D,dashed);label("$M$",M,(0,-1));label("$H$",H,(1,0));label("$D$",D,(-1,0));
+\end{asy}
+

@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2796248_2015_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2796248-q11
+The apex angle is $180^\circ-150^\circ=30^\circ$. Put the apex at $A$ with legs $AB=AC=12$.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(12,0),C=12*dir(30);
+draw(A--B--C--cycle);label("$A$",A,W);label("$B$",B,E);label("$C$",C,N);
+label("$30^\circ$",A,6*dir(15));label("$12$",(6,0),S);label("$12$",C/2,NW);
+draw(C--(C.x,0),dashed);label("$6$",(C.x,3),W);
+\end{asy}
+
+The altitude from $C$ to line $AB$ is $12\sin30^\circ=6$, so the area is $\dfrac12\cdot12\cdot6=\boxed{36}$.

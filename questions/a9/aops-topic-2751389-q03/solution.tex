@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2751389_800th_post_1_year_aops_anniversary_and_maff_problems
+% Stable identity: aops-topic-2751389-q03
+Write $N=\overline{1abcdef}$. Add $N$ to $1919191$ column by column.
+\begin{itemize}
+\item The digits $1$ of $1919191$ (units, hundreds, ten-thousands, millions) receive at most $1+1$ and a carry of at most $1$, so they never produce a carry.
+\item The digits $9$ (tens, thousands, hundred-thousands) receive no carry from the column to their right, so they produce a carry exactly when the added digit ($e$, $c$ or $a$) is $1$.
+\end{itemize}
+Each carry lowers the digit sum by $9$, so
+\[S(1919191+N)=31+(1+a+b+c+d+e+f)-9(a+c+e).\]
+This is less than $S(1919191)=31$ exactly when $1+b+d+f<8(a+c+e)$. If $a+c+e\ge1$, the right side is at least $8>1+b+d+f$; if $a=c=e=0$, it fails. So the probability is $1-\dfrac18=\boxed{\dfrac78}$.

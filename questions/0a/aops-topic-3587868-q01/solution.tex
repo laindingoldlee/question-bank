@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h3587868_segment_of_midpoints_in_a_trapezoid
+% Stable identity: aops-topic-3587868-q01
+Place the longer base from $(0,0)$ to $(18,0)$, and let the shorter base run from $(x,h)$ to $(x+8,h)$, with the length-$8$ leg on the left. Then $x^2+h^2=64$ and $(10-x)^2+h^2=36$. Subtracting gives $20x-100=28$, hence $x=\dfrac{32}{5}$ and $h^2=\dfrac{576}{25}$. The base midpoints are $(9,0)$ and $(x+4,h)$, whose squared distance is $(x-5)^2+h^2=\dfrac{49+576}{25}=25$. Thus the length is $\boxed{5\text{ cm}}$. Reflection swaps the legs without changing this length.
+\begin{asy}
+size(7cm);
+pair A=(0,0),B=(18,0),C=(14.4,4.8),D=(6.4,4.8),M=(9,0),N=(10.4,4.8),H=(6.4,0);draw(A--B--C--D--cycle);draw(M--N,blue);draw(D--H,dashed);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$M$",M,S);label("$N$",N,N);label("$H$",H,S);label("$18$",(A+B)/2,(0,-2));label("$8$",(C+D)/2,(0,2));label("$8$",(A+D)/2,W);label("$6$",(B+C)/2,E);
+\end{asy}

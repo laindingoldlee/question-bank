@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1406711_math_counts_handbook_warmup_11_problem_155
+% Stable identity: aops-topic-1406711-q01
+The original cube has surface area $6\cdot3^2=54$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair v=(0.45,0.35);
+pair F(real x,real y){return (x,y);}
+pair T(real x,real z){return (x,3)+z*v;}
+pair Rr(real y,real z){return (3,y)+z*v;}
+filldraw((1,1)--(2,1)--(2,2)--(1,2)--cycle,gray(0.55));
+filldraw(T(1,1)--T(2,1)--T(2,2)--T(1,2)--cycle,gray(0.55));
+filldraw(Rr(1,1)--Rr(2,1)--Rr(2,2)--Rr(1,2)--cycle,gray(0.55));
+for(int i=0;i<=3;++i){draw((i,0)--(i,3)); draw((0,i)--(3,i));
+ draw(T(i,0)--T(i,3)); draw(T(0,i)--T(3,i));
+ draw(Rr(0,i)--Rr(3,i)); draw(Rr(i,0)--Rr(i,3));}
+draw((0,0)--(3,0)--(3,3)--(0,3)--cycle,linewidth(0.9));
+draw((0,3)--T(0,3)--T(3,3)--Rr(0,3)--(3,0),linewidth(0.9));
+draw(T(3,3)--(3,3),linewidth(0.9));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Removing the centre cube of one face takes away the $1$ unit square of that cube lying on the surface, and leaves a $1\times1\times1$ hole. The hole is bounded by $5$ unit squares that were hidden before: $4$ side walls (faces of the four edge-centre cubes around it) and $1$ bottom (a face of the central cube, which is not removed). So each removal changes the surface area by $-1+5=+4$. The six holes do not touch one another (two face-centre cubes share no face), so the total is
+\[
+54+6\cdot4=\boxed{78}
+\]
+square units.

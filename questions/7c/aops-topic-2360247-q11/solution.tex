@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2360247_math_advent_calendar
+% Stable identity: aops-topic-2360247-q11
+\textbf{Lemma.} If $X$ lies on side $PQ$ and $Y$ on side $PR$ of triangle $PQR$, then $\dfrac{[PXY]}{[PQR]}=\dfrac{PX}{PQ}\cdot\dfrac{PY}{PR}$, because both areas are $\dfrac12\cdot(\text{two sides})\cdot\sin\angle P$.
+
+Let $t=\dfrac{FA}{AC}$, so $\dfrac{CF}{CA}=1-t$. Triangle $DEF$ is triangle $ABC$ with three corner triangles removed:
+\[\dfrac{[ADF]}{[ABC]}=\dfrac12\cdot t,\qquad\dfrac{[BDE]}{[ABC]}=\dfrac12\cdot\dfrac34=\dfrac38,\qquad\dfrac{[CEF]}{[ABC]}=\dfrac14(1-t).\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(10,0), C=(3,7);
+pair D=(A+B)/2, Ep=C+(B-C)/4, Fp=A+(11/50)*(C-A);
+fill(D--Ep--Fp--cycle,rgb(0.85,0.9,1));
+draw(A--B--C--cycle,linewidth(0.9)); draw(D--Ep--Fp--cycle,blue+linewidth(0.9));
+dot(D); dot(Ep); dot(Fp);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N);
+label("$D$",D,S); label("$E$",Ep,NE); label("$F$",Fp,W);
+\end{asy}
+
+Hence
+\[\dfrac{[DEF]}{[ABC]}=1-\dfrac t2-\dfrac38-\dfrac{1-t}{4}=\dfrac38-\dfrac t4 .\]
+Setting this equal to $\dfrac{8}{25}$ gives $\dfrac t4=\dfrac38-\dfrac{8}{25}=\dfrac{11}{200}$, so
+\[\dfrac{FA}{AC}=t=\boxed{\dfrac{11}{50}}.\]

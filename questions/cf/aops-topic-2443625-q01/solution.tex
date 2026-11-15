@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h2443625_combinations_sum
+% Stable identity: aops-topic-2443625-q01
+Let $T=\sum_{a=1}^{m}\dbinom ma=2^m-1$ and $Q=\sum_{a=1}^{m}\dbinom ma^2=\dbinom{2m}{m}-1$, where we used $\sum_{a=0}^{m}\dbinom ma\dbinom m{m-a}=\dbinom{2m}{m}$ (Vandermonde: choose $m$ objects from two groups of $m$).
+
+The product $T^2=\sum_{a=1}^m\sum_{b=1}^m\dbinom ma\dbinom mb$ contains every pair with $a<b$ twice (as $(a,b)$ and $(b,a)$) and every pair with $a=b$ once. So the pairs with $a<b$ contribute $\dfrac{T^2-Q}{2}$, and the required sum is
+\[\dfrac{T^2-Q}{2}+Q=\dfrac{T^2+Q}{2}=\dfrac{\left(2^m-1\right)^2+\dbinom{2m}m-1}{2}=\boxed{2^{2m-1}-2^m+\dbinom{2m-1}{m}},\]
+using $\dfrac12\dbinom{2m}{m}=\dbinom{2m-1}{m}$. (Check: $m=1$ gives $1$; $m=2$ gives $4+2+1=7=8-4+3$.)

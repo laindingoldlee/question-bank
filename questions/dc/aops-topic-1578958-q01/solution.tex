@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1578958_colored_square
+% Stable identity: aops-topic-1578958-q01
+\textbf{(a)} Take any equilateral triangle with side $1$ km. Its three vertices have only two colours, so by the pigeonhole principle two of them have the same colour, and they are $1$ km apart. $\blacksquare$
+
+\textbf{(b)} The statement is \textbf{false}: there is a colouring of the squares in which any two squares $1$ km apart have different colours.
+
+Measure in metres and give the square with centre $(i,j)$ (integers $i,j$) the label $(i,j)$. Two squares are $1000$ m apart exactly when their centres differ by an integer vector $(u,v)$ with
+\[
+u^2+v^2=1000^2=2^6\cdot5^6 .
+\]
+\emph{Claim:} every such vector is $8(x,y)$ with $x+y$ odd. Indeed, a square is $\equiv0$ or $1\pmod4$, so if $u^2+v^2\equiv0\pmod4$ then $u$ and $v$ are both even. Applying this three times (to $u^2+v^2=2^6\cdot5^6$, then to $\left(\dfrac {u}{2}\right)^2+\left(\dfrac {v}{2}\right)^2=2^4\cdot5^6$, then to $2^2\cdot5^6$) shows $u=8x$, $v=8y$ with $x^2+y^2=5^6$, which is odd, so exactly one of $x$, $y$ is odd and $x+y$ is odd.
+
+\emph{Colouring:} colour the square $(i,j)$ red if $\left\lfloor\dfrac {i}{8}\right\rfloor+\left\lfloor\dfrac {j}{8}\right\rfloor$ is even and blue if it is odd (big $8\times8$ blocks in a chessboard pattern). If two squares are $1$ km apart, their labels differ by $(8x,8y)$ with $x+y$ odd, so $\left\lfloor\dfrac {i}{8}\right\rfloor+\left\lfloor\dfrac {j}{8}\right\rfloor$ changes by $x+y$, an odd number, and the colours differ.
+
+So no two squares of the same colour are exactly $1$ km apart. The argument of part (a) fails here because no three grid points form an equilateral triangle. $\blacksquare$

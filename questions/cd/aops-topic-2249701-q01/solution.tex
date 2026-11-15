@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2249701_3d_geometry_problem
+% Stable identity: aops-topic-2249701-q01
+A sphere of radius $2$ lies inside the prism exactly when its centre $(x,y,z)$ is at distance at least $2$ from every face:
+\[2\le x\le22,\qquad 2\le y\le10,\qquad 2\le z\le10 .\]
+These centres fill a box of volume $20\cdot8\cdot8=1280$.
+
+The point $P=(21,6,6)$ lies inside the sphere exactly when the centre lies within distance $2$ of $P$, i.e. in the ball of radius $2$ about $P$. In the $y$- and $z$-directions this ball stays inside the box of centres ($4\le y,z\le8$), but in the $x$-direction it reaches $x=23>22$, so the part beyond the plane $x=22$ is cut off. The sketch shows the cross-section $z=6$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(24,0)--(24,12)--(0,12)--cycle,linewidth(0.8));
+fill((2,2)--(22,2)--(22,10)--(2,10)--cycle,rgb(0.9,0.95,1));
+draw((2,2)--(22,2)--(22,10)--(2,10)--cycle,blue+dashed);
+pair Q=(21,6);
+path ins=arc(Q,2,60,300)--cycle;
+fill(ins,rgb(1,0.82,0.82)); draw(arc(Q,2,60,300),red); draw(arc(Q,2,-60,60),red+dashed);
+draw((22,3.5)--(22,8.5),blue);
+dot(Q,red); label("$P$",Q,W,red+fontsize(8pt)); label("cap cut off",(23.2,6),E,red+fontsize(7pt));
+label("$x=22$",(22,10),N,blue+fontsize(8pt)); label("$x=2$",(2,10),N,blue+fontsize(8pt));
+label("$24$",(12,0),S); label("$12$",(0,6),W);
+label("region of centres",(10,6),blue+fontsize(9pt));
+\end{asy}
+
+The cut-off part is a spherical cap of height $h=1$ of a ball of radius $R=2$, with volume
+\[\dfrac{\pi h^2(3R-h)}{3}=\dfrac{\pi\cdot1\cdot5}{3}=\dfrac{5\pi}{3}.\]
+So the favourable centres fill a volume
+\[\dfrac{4}{3}\pi\cdot2^3-\dfrac{5\pi}{3}=\dfrac{32\pi}{3}-\dfrac{5\pi}{3}=9\pi,\]
+and the probability is $\boxed{\dfrac{9\pi}{1280}}\approx0.0221$.

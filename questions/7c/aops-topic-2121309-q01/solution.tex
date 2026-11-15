@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2121309_stars_and_bars
+% Stable identity: aops-topic-2121309-q01
+For each choice of $y$ and $z$, the value $x=36-4y-3z$ is determined, and it is a positive integer exactly when $4y+3z\le35$. So we count pairs of positive integers $(y,z)$ with $4y+3z\le35$. For each $y$, the number of $z$ is $\left\lfloor\dfrac{35-4y}{3}\right\rfloor$:
+\[
+\begin{array}{c|cccccccc}
+y&1&2&3&4&5&6&7&8\\\hline
+35-4y&31&27&23&19&15&11&7&3\\
+\text{number of }z&10&9&7&6&5&3&2&1
+\end{array}
+\]
+($y\ge9$ is impossible, since then $4y\ge36$.) The total is
+\[10+9+7+6+5+3+2+1=\boxed{43}.\]
+(Stars and bars counts solutions of $x_1+x_2+\cdots+x_k=n$, where all coefficients are $1$; with unequal coefficients there is no equally simple formula. A generating function gives the answer as the coefficient of $t^{36}$ in $\dfrac{t^{8}}{(1-t)\left(1-t^3\right)\left(1-t^4\right)}$, but fixing one variable, as above, is the quickest method.)

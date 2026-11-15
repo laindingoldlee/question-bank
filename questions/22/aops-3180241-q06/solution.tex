@@ -1,0 +1,6 @@
+The circle area is $100\pi$. The square diagonal is $20$, so its area is $\dfrac{20^2}{2}=200$. The hexagon splits into six equilateral triangles of side $10$, giving area $6\cdot\dfrac{\sqrt3}{4}\cdot100=150\sqrt3$. Thus $\boxed{a+b+c+d=200+100+150+3=453}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+for(int j=0;j<3;++j){pair O=(3*j,0);draw(circle(O,1),gray);dot(O);label("$10$",O+(.5,0),(0,1));draw(O--O+(1,0),dashed);if(j>0){int n=j==1?4:6;path p;for(int k=0;k<n;++k)p=p--(O+dir(360*k/n));draw(p--cycle);}label(j==0?"circle":j==1?"square":"hexagon",O+(0,-1.4));}
+\end{asy}
+

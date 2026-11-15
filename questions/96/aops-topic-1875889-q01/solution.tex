@@ -1,0 +1,77 @@
+% Source: https://artofproblemsolving.com/community/c3h1875889_sss_prove
+% Stable identity: aops-topic-1875889-q01
+\textbf{Copy the second triangle onto $BC$.} On the side of line $BC$ opposite to $A$, choose the point $A''$ with $\angle CBA''=\angle C'B'A'$ and $BA''=B'A'$. By SAS, $\triangle A''BC\cong\triangle A'B'C'$, so
+\[
+BA''=B'A'=BA\qquad\text{and}\qquad CA''=C'A'=CA .
+\]
+It is enough to prove $\triangle ABC\cong\triangle A''BC$. Since $A$ and $A''$ are on opposite sides of line $BC$, the segment $AA''$ meets line $BC$ at a point $X$. Triangles $ABA''$ and $ACA''$ are isosceles (when they are not degenerate), so
+\[
+\angle BAA''=\angle BA''A\qquad\text{and}\qquad\angle CAA''=\angle CA''A .\qquad(*)
+\]
+\textbf{Case 1: $X$ lies strictly between $B$ and $C$.} Then the segment $AA''$ runs inside both angles $BAC$ and $BA''C$, and adding the two equalities in $(*)$,
+\[
+\angle BAC=\angle BAA''+\angle A''AC=\angle BA''A+\angle AA''C=\angle BA''C .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(6,0),A=(2,3.5),A2=(2,-3.5);
+pair X=extension(A,A2,B,C);
+if(X.x<-0.01) draw((X.x-0.5,0)--B,gray+linewidth(0.5));
+draw(A--B--C--cycle,linewidth(1));draw(A2--B--C--cycle,linewidth(1));
+draw(A--A2,dashed+linewidth(0.8));
+void tick(pair P,pair Q,int n){pair m=(P+Q)/2,u=unit(Q-P),v=(-u.y,u.x);
+ for(int i=0;i<n;++i){pair c=m+(i-(n-1)/2)*0.22*u;draw((c-0.2*v)--(c+0.2*v),linewidth(0.7));}}
+tick(A,B,1);tick(A2,B,1);tick(A,C,2);tick(A2,C,2);
+dot(A);dot(A2);dot(B);dot(C);
+label("$A$",A,N);label("$A''$",A2,S);label("$B$",B,W);label("$C$",C,E);
+dot(X,red);label("$X$",X,NE,red);
+label("Case 1",(3,-4.6));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Case 2: $X$ is $B$ (or, in the same way, $C$).} Then $A$, $B$, $A''$ are collinear with $B$ between $A$ and $A''$, and only triangle $ACA''$ is a genuine triangle. Its base angles give $\angle CAB=\angle CAA''=\angle CA''A=\angle CA''B$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(6,0),A=(0,3.5),A2=(0,-3.5);
+pair X=extension(A,A2,B,C);
+if(X.x<-0.01) draw((X.x-0.5,0)--B,gray+linewidth(0.5));
+draw(A--B--C--cycle,linewidth(1));draw(A2--B--C--cycle,linewidth(1));
+draw(A--A2,dashed+linewidth(0.8));
+void tick(pair P,pair Q,int n){pair m=(P+Q)/2,u=unit(Q-P),v=(-u.y,u.x);
+ for(int i=0;i<n;++i){pair c=m+(i-(n-1)/2)*0.22*u;draw((c-0.2*v)--(c+0.2*v),linewidth(0.7));}}
+tick(A,B,1);tick(A2,B,1);tick(A,C,2);tick(A2,C,2);
+dot(A);dot(A2);dot(B);dot(C);
+label("$A$",A,N);label("$A''$",A2,S);label("$B$",B,W);label("$C$",C,E);
+
+label("Case 2",(3,-4.6));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Case 3: $X$ lies on line $BC$ outside the segment $BC$,} say beyond $B$ (the case beyond $C$ is the same with $B$ and $C$ exchanged). Then ray $AB$ lies inside angle $XAC$, so $\angle BAC=\angle CAA''-\angle BAA''$, and likewise $\angle BA''C=\angle CA''A-\angle BA''A$. Subtracting the equalities in $(*)$ gives $\angle BAC=\angle BA''C$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(6,0),A=(-1.6,3.2),A2=(-1.6,-3.2);
+pair X=extension(A,A2,B,C);
+if(X.x<-0.01) draw((X.x-0.5,0)--B,gray+linewidth(0.5));
+draw(A--B--C--cycle,linewidth(1));draw(A2--B--C--cycle,linewidth(1));
+draw(A--A2,dashed+linewidth(0.8));
+void tick(pair P,pair Q,int n){pair m=(P+Q)/2,u=unit(Q-P),v=(-u.y,u.x);
+ for(int i=0;i<n;++i){pair c=m+(i-(n-1)/2)*0.22*u;draw((c-0.2*v)--(c+0.2*v),linewidth(0.7));}}
+tick(A,B,1);tick(A2,B,1);tick(A,C,2);tick(A2,C,2);
+dot(A);dot(A2);dot(B);dot(C);
+label("$A$",A,N);label("$A''$",A2,S);label("$B$",B,NE);label("$C$",C,E);
+dot(X,red);label("$X$",X,NW,red);
+label("Case 3",(3,-4.6));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In every case $\angle BAC=\angle BA''C$, and since $AB=A''B$ and $AC=A''C$, SAS gives $\triangle ABC\cong\triangle A''BC$. Combined with $\triangle A''BC\cong\triangle A'B'C'$, this proves $\triangle ABC\cong\triangle A'B'C'$. $\blacksquare$

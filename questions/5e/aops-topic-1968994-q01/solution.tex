@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1968994_number_of_collisions
+% Stable identity: aops-topic-1968994-q01
+\textbf{Unfolding.} Reflect the rectangle across the side the ball hits instead of reflecting the ball. In the tiling of the plane by reflected copies of the rectangle, the ball moves in a straight line, at time $t$ at the point $(2t,t)$. A bounce off a vertical side reverses the $x$-velocity, a bounce off a horizontal side reverses the $y$-velocity, and a corner hit reverses both, which is exactly the ``comes back in the direction it went in'' rule; so the unfolded path is the straight line in all cases. The actual position is obtained by folding back: $x$ is $2t$ folded into $[0,20]$ with period $40$ and $y$ is $t$ folded into $[0,19]$ with period $38$.
+
+\textbf{Corner hits.} The ball is at a corner exactly when $2t$ is a multiple of $20$ and $t$ is a multiple of $19$, that is, when $t$ is a multiple of both $10$ and $19$, so of $190$. For $0<t\le2019$ these are $t=190,380,\dots,1900$: that is $\boxed{10}$ times.
+
+At $t=190k$ the unfolded point is $(380k,190k)$; since $\dfrac{380k}{20}=19k$ and $\dfrac{190k}{19}=10k$, folding gives $x=0$ or $20$ (as $k$ is even or odd) and $y=0$. So the corners hit are $(20,0)$ and $(0,0)$ alternately, which matches the poster's parity observation. The path up to the first corner hit, at $(20,0)$ after $190$ seconds, is shown below.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+draw(box((0,0),(20,19)),linewidth(1));
+draw((0,0)--(20,10)--(2,19)--(0,18)--(20,8)--(4,0)--(0,2)--(20,12)--(6,19)--(0,16)--(20,6)--(8,0)--(0,4)--(20,14)--(10,19)--(0,14)--(20,4)--(12,0)--(0,6)--(20,16)--(14,19)--(0,12)--(20,2)--(16,0)--(0,8)--(20,18)--(18,19)--(0,10)--(20,0),blue+linewidth(0.6));
+dot((0,0));dot((20,0),red);
+label("$(0,0)$",(0,0),SW);label("$(20,0)$",(20,0),SE);label("$(20,19)$",(20,19),NE);label("$(0,19)$",(0,19),NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

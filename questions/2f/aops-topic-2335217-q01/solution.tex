@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2335217_4269th_post
+% Stable identity: aops-topic-2335217-q01
+The diagonals of a rhombus bisect each other at right angles. So they cut the rhombus into four congruent right triangles with legs $\dfrac62=3$ and $\dfrac82=4$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(-4,0), B=(0,-3), C=(4,0), D=(0,3), O=(0,0);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,dashed); draw(B--D,dashed);
+draw((0,0.4)--(0.4,0.4)--(0.4,0));
+dot(O); label("$O$",O,SW);
+label("$4$",(-2,0),S); label("$3$",(0,1.5),W); label("$5$",(A+D)/2,NW);
+\end{asy}
+
+By the Pythagorean theorem each side is $\sqrt{3^2+4^2}=5$, and the perimeter is $4\cdot5=\boxed{20}$.

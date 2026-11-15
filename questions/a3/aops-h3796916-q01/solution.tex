@@ -1,0 +1,8 @@
+Divide the outer square into sixteen $2\times2$ blocks. The central four blocks are missing. Group the twelve remaining blocks as shown. Each group consists of three blocks forming an L, and rotations through multiples of $90^\circ$ carry one group to the others. Thus the four pieces are congruent, each of area $3\cdot4=12$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"A", "A", "B", "B"}, {"A", "", "", "B"}, {"D", "", "", "C"}, {"D", "D", "C", "C"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("Each small block has side 2",(2.0,-4.2));
+\end{asy}

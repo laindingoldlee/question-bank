@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h1883614_geo_bashing
+% Stable identity: aops-topic-1883614-q01
+Call the other two sides $a$ and $2a$.
+
+\textbf{Case 1: $15$ is the hypotenuse.} Then $a$ and $2a$ are the legs and $a^2+4a^2=225$, so $a=\sqrt{45}=3\sqrt5\approx6.71$, which is the shortest side.
+
+\textbf{Case 2: $15$ is a leg.} Then $a$ and $2a$ are the other leg and the hypotenuse, and the hypotenuse is the longer one, $2a$. So $a^2+225=4a^2$, $a=\sqrt{75}=5\sqrt3\approx8.66<15$, and the shortest side is $5\sqrt3$. (A leg cannot be twice the hypotenuse, so there is no other case.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real a=3*sqrt(5);
+pair C=(0,0),B=(2*a,0),A=(0,a);
+draw(A--B--C--cycle,linewidth(1));
+draw((0.6,0)--(0.6,0.6)--(0,0.6));
+label("$15$",(A+B)/2,NE);label("$a$",(A+C)/2,W);label("$2a$",(B+C)/2,S);
+label("Case 1",(a,-2.6));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real a=5*sqrt(3);
+pair C=(0,0),B=(15,0),A=(0,a);
+draw(A--B--C--cycle,linewidth(1));
+draw((0.6,0)--(0.6,0.6)--(0,0.6));
+label("$2a$",(A+B)/2,NE);label("$a$",(A+C)/2,W);label("$15$",(B+C)/2,S);
+label("Case 2",(7.5,-2.6));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The product of the possible shortest sides is
+\[
+3\sqrt5\cdot5\sqrt3=\boxed{15\sqrt{15}}.
+\]

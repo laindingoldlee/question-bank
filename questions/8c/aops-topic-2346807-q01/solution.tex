@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2346807_can_you_solve_my_problem
+% Stable identity: aops-topic-2346807-q01
+Write $R(p)$ for the reversal of $p$.
+
+\textbf{(a)} Without reversals every move changes the number by $1$, so at least $500-83=417$ moves are needed.
+
+Suppose exactly one move reverses a number $p$. The moves before it change the number by $1$ each and lead from $500$ to $p$, so there are at least $|p-500|$ of them; the moves after it lead from $R(p)$ to $83$, so there are at least $|R(p)-83|$ of them. Hence the number of moves is at least
+\[|p-500|+1+|R(p)-83|.\]
+\begin{itemize}
+\item If $|p-500|\ge21$, this is at least $22$.
+\item If $480\le p\le520$ and the last digit of $p$ is not $0$, write $p=\overline{hme}$ with digits $h\in\{4,5\}$ and $e\ne0$. Then $R(p)=\overline{emh}\ge100+4=104$, so $|R(p)-83|\ge21$ and the total is at least $22$.
+\item The remaining values are $p=480,490,500,510,520$, with $R(p)=84,94,5,15,25$. The totals are $20+1+1=22$, $10+1+11=22$, $0+1+78=79$, $10+1+68=79$ and $20+1+58=79$.
+\end{itemize}
+So at least $22$ moves are needed, and $22$ moves suffice: subtract $1$ twenty times to reach $480$, reverse to get $84$, and subtract $1$ to get $83$. The answer is $\boxed{22}$.
+
+\textbf{(b)} The idea is to use the reversals to drop a digit and land near $83$: make the last digit $7$, so that reversing gives a number beginning with $7$; then make the last digit $0$, so that reversing gives a two-digit number $97$; reverse once more to get $79$, which is close to $83$:
+\[500\to499\to498\to497\xrightarrow{\text{rev}}794\to793\to792\to791\to790\xrightarrow{\text{rev}}97\xrightarrow{\text{rev}}79\to80\to81\to82\to83.\]
+This uses $3+1+4+1+1+4=\boxed{14}$ moves.
+
+(Remark: a computer search through all the numbers that can be reached from $500$ shows that only $325$ numbers can be reached in at most $13$ moves and that $83$ is not one of them, so $14$ is the least possible number of moves when any number of reversals is allowed. With at most two reversals the least number is $15$.)

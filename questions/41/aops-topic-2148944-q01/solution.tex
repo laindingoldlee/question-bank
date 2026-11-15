@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2148944_factorization
+% Stable identity: aops-topic-2148944-q01
+Use the factorisations $u^3+1=(u+1)\left(u^2-u+1\right)$ and $u^5+1=(u+1)\left(u^4-u^3+u^2-u+1\right)$.
+
+With $u=3^5=243$:
+\[3^{15}+1=\left(3^5+1\right)\left(3^{10}-3^5+1\right)=244\cdot\left(59049-243+1\right)=244\cdot58807 .\]
+With $u=3^3=27$: $3^{15}+1=\left(27^5+1\right)$ is divisible by $27+1=28$, so $7\mid3^{15}+1$. Since $244=4\cdot61$ is not divisible by $7$, we get $7\mid58807$, and $58807=7\cdot8401$.
+
+It remains to factor $8401$. Since $\sqrt{8401}<92$, try the primes up to $91$: $8401$ is not divisible by $2$, $3$, $5$, $7$, $11$, $13$, $17$, $19$, $23$ or $29$, but
+\[8401=31\cdot271 .\]
+Finally, $271$ is prime: $\sqrt{271}<17$ and $271$ is not divisible by $2,3,5,7,11,13$. Therefore
+\[3^{15}+1=14348908=\boxed{2^2\cdot7\cdot31\cdot61\cdot271}.\]
+
+\emph{Remark.} The search for a factor of $8401$ can be shortened. If a prime $p$ divides $8401$, then $3^{15}\equiv-1\pmod p$, so the order of $3$ modulo $p$ divides $30$ but not $15$; checking the cases $2,6,10$ shows that it must be exactly $30$, and then $30\mid p-1$. So only primes of the form $30k+1$ (here $31$ and $61$) need to be tried.

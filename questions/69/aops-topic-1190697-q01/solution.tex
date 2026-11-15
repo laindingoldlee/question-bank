@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h1190697_those_typicalfind_the_sum_of_all_the_ndigit_palindromes
+% Stable identity: aops-topic-1190697-q01
+A six-digit palindrome is $\overline{abccba}=100001a+10010b+1100c$ with $a\in\{1,\dots,9\}$ and $b,c\in\{0,\dots,9\}$; there are $900$ of them.
+
+\emph{Method 1 (digit sums).} Each value of $a$ occurs $100$ times and each value of $b$ and of $c$ occurs $90$ times, so the sum is
+\[100001\cdot45\cdot100+10010\cdot45\cdot90+1100\cdot45\cdot90=450004500+40540500+4455000=\boxed{495000000}.\]
+
+\emph{Method 2 (pairing).} Pair $\overline{abccba}$ with $\overline{a'b'c'c'b'a'}$ where $a'=10-a$, $b'=9-b$, $c'=9-c$. Each pair sums to $\overline{abccba}+\overline{a'b'c'c'b'a'}=100001\cdot10+10010\cdot9+1100\cdot9=1100000$, and the $900$ palindromes form $450$ pairs (a palindrome paired with itself is counted once and contributes half a pair), so the total is $900\cdot\dfrac{1100000}{2}=495000000$.

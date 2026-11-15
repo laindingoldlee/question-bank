@@ -1,0 +1,11 @@
+For each $k\ge1$, the shell $|i|+|j|=k$ contains $4k$ squares: there are four axis points and $4(k-1)$ nonaxis points. Including the center,
+\[
+1+\sum_{k=1}^{100}4k
+=1+4\cdot\dfrac{100\cdot101}{2}=\boxed{20201}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int n=0;n<=3;++n){real offset=8n;for(int i=-n;i<=n;++i)for(int j=-n;j<=n;++j)if(abs(i)+abs(j)<=n)filldraw(box((offset+i-.5,j-.5),(offset+i+.5,j+.5)),lightblue,black);label("$n="+string(n)+"$",(offset,-4));}
+\end{asy}

@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2444138_vector_problem
+% Stable identity: aops-topic-2444138-q01
+Use position vectors $\vec A,\vec B,\vec C,\vec D$ of the vertices. Since $M$ and $N$ are midpoints, $\vec M=\dfrac{\vec A+\vec D}{2}$ and $\vec N=\dfrac{\vec B+\vec C}{2}$, so
+\[\overrightarrow{MN}=\vec N-\vec M=\dfrac{\left(\vec B-\vec A\right)+\left(\vec C-\vec D\right)}{2}=\dfrac{\overrightarrow{AB}+\overrightarrow{DC}}{2}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(6,0), C=(4.4,3), D=(1.4,3);
+pair M=(A+D)/2, Nn=(B+C)/2;
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--B,blue+linewidth(1.1),Arrow(9));
+draw(D--C,blue+linewidth(1.1),Arrow(9));
+draw(M--Nn,red+linewidth(1.1),Arrow(9));
+dot(A); dot(B); dot(C); dot(D); dot(M); dot(Nn);
+label("$a$",(A+B)/2,S,blue); label("$b$",(D+C)/2,N,blue);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$M$",M,W); label("$N$",Nn,E);
+\end{asy}
+
+The bases $AB$ and $DC$ are parallel, and in the trapezoid $ABCD$ (vertices in this order) the vectors $\overrightarrow{AB}$ and $\overrightarrow{DC}$ point in the same direction; if they pointed in opposite directions, the legs $AD$ and $BC$ would cross. Their lengths are $a$ and $b$, so $\overrightarrow{DC}=\dfrac ba\,\overrightarrow{AB}$. Hence
+\[\overrightarrow{MN}=\dfrac12\left(1+\dfrac ba\right)\overrightarrow{AB}=\dfrac{a+b}{2a}\,\overrightarrow{AB},\]
+and, using $\overrightarrow{AB}=\dfrac ab\,\overrightarrow{DC}$ instead,
+\[\overrightarrow{MN}=\dfrac12\left(\dfrac ab+1\right)\overrightarrow{DC}=\dfrac{a+b}{2b}\,\overrightarrow{DC}.\qquad\blacksquare\]
+(In particular $MN\parallel AB$ and $MN=\dfrac{a+b}{2}$: the midline of a trapezoid is parallel to the bases and equal to half their sum.)

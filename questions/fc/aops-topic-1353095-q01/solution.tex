@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1353095_solve_triangle_and_circles_problem
+% Stable identity: aops-topic-1353095-q01
+Let $a=BC$, $b=CA$, $c=AB$ and $s=\dfrac{a+b+c}{2}$. Tangent segments from a point to a circle are equal.
+
+\emph{Incircle.} Let it touch $CA$ at $E$ and $AB$ at $F$. Then $AE=AF=x$, $BF=BD=y$, $CD=CE=z$, and $2(x+y+z)=a+b+c$, so $x+y+z=s$. Since $x+z=b$, we get $BD=y=s-b$.
+
+\emph{Excircle opposite $A$.} It touches line $AB$ beyond $B$ at $F'$ and line $AC$ beyond $C$ at $E'$. Then $BF'=BD'$ and $CE'=CD'$, so
+\[
+AF'+AE'=(c+BD')+(b+CD')=b+c+a=2s .
+\]
+As $AF'=AE'$, each equals $s$, so $BD'=AF'-c=s-c$ and $CD'=AE'-b=s-b$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair A=(1,6),B=(0,0),C=(6,0);
+real a=abs(B-C),b=abs(C-A),c=abs(A-B),s=(a+b+c)/2;
+real K=abs(cross(B-A,C-A))/2;
+pair I=(a*A+b*B+c*C)/(a+b+c), J=(-a*A+b*B+c*C)/(-a+b+c);
+real r=K/s, ra=K/(s-a);
+pair D=B+(s-b)*unit(C-B), Dp=B+(s-c)*unit(C-B), M=(B+C)/2;
+draw(circle(I,r),blue); draw(circle(J,ra),red);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--(A+1.85*(B-A)),gray); draw(C--(A+1.45*(C-A)),gray);
+dot(D,blue); dot(Dp,red); dot(M);
+label("$A$",A,N); label("$B$",B,NW); label("$C$",C,NE);
+label("$D$",D-(0,0.9),blue); label("$D'$",Dp-(0,0.9),red); label("$M$",M-(0,1.7)); draw(M--M-(0,1.35),gray+dotted);
+label("$I$",I,N,blue); dot(I,blue); label("$J$",J,E,red); dot(J,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence $BD=s-b=CD'$. Since $D$ and $D'$ lie on segment $BC$, the points at distance $s-b$ from $B$ and from $C$ are mirror images in the midpoint $M$: $MD=\left|\dfrac {a}{2}-(s-b)\right|=MD'$. $\blacksquare$

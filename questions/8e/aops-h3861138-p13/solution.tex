@@ -1,0 +1,7 @@
+Begin with all 25 unit cells. At every interior grid vertex, exactly one of its four incident unit edges must be removed to create a T-junction. At a noncorner boundary vertex, no incident edge can be removed. Thus the removed edges form a perfect matching on the 4 by 4 grid of interior vertices. Conversely, such a matching merges cells only along straight strips: perpendicular removed edges around a cell would share a vertex and violate the matching. It therefore gives a valid rectangular partition, with all required vertex incidences. The number of perfect matchings of a 4 by 4 grid is 36, obtained by recursively matching the first unmatched vertex to each available neighbor; the smaller 4 by $n$ counts for $n=0,1,2,3,4$ are $1,1,5,11,36$. Hence $\boxed{36}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+for(int x=0;x<=5;++x)draw((x,0)--(x,5));for(int y=0;y<=5;++y)draw((0,y)--(5,y));for(int y=1;y<=4;++y){draw((1,y)--(2,y),white+linewidth(2));draw((3,y)--(4,y),white+linewidth(2));}label("a valid partition",(2.5,-.5),(0,-1));
+\end{asy}

@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h3174937_2023_dmc_individual_theme_round__deerfield_math_competition__planets
+% Stable identity: aops-topic-3174937-q07
+The condition means the product of the six numbers is $6^k$ for an integer $k$. Each number can therefore have no prime factor other than $2,3$, leaving $1,2,3,4,6,8,9,12,16,18,24$. Among the $\binom{11}{6}=462$ six-element subsets, exactly $18$ have equal total exponents of $2$ and $3$, as the complete enumeration below verifies. Each is equally likely, so the answer is $\boxed{\dfrac{1}{18}}$.\begin{verbatim}
+from itertools import combinations
+from math import prod
+allowed=[1,2,3,4,6,8,9,12,16,18,24]
+count=0
+for ticket in combinations(allowed,6):
+    product=prod(ticket)
+    while product%6==0:
+        product//=6
+    count+=(product==1)
+assert count==18
+\end{verbatim}

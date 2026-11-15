@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h1432909_geometry_help
+% Stable identity: aops-topic-1432909-q01
+Let $O$ be the centre. Since $CD$ is a diameter, $\angle CHD=90^\circ$ (angle in a semicircle). Also $\angle COK=90^\circ$ because the diameters are perpendicular.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair O=(0,0),A=(-5,0),B=(5,0),C=(0,5),D=(0,-5),H=(4.8,-1.4),K=(3.75,0);
+draw(circle(O,5));
+draw(A--B); draw(C--D);
+draw(C--H,blue+linewidth(0.9));
+draw(D--H,gray+dashed);
+draw(ra(O,B-O,C-O,0.45)); draw(ra(H,C-H,D-H,0.45));
+dot(A);dot(B);dot(C);dot(D);dot(O);dot(H);dot(K);
+label("$A$",A,W); label("$B$",B,E); label("$C$",C,N); label("$D$",D,S);
+label("$O$",O,SW); label("$H$",H,SE); label("$K$",K,NE);
+label("$8$",(C+H)/2,NE,blue);
+label("$5$",(O+C)/2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangles $COK$ and $CHD$ share the angle at $C$ and both have a right angle, so they are similar, and
+\[
+\dfrac{CK}{CO}=\dfrac{CD}{CH}\quad\Longrightarrow\quad CK=\dfrac{5\cdot10}{8}=\dfrac{25}{4}.
+\]
+By Pythagoras in triangle $COK$,
+\[
+OK=\sqrt{CK^2-CO^2}=\sqrt{\dfrac{625}{16}-\dfrac{400}{16}}=\dfrac{15}{4}.
+\]
+So $K$ is $\dfrac{15}{4}=3.75$ from the centre, and the two segments of $AB$ are
+\[
+KB=5-\dfrac{15}{4}=\dfrac{5}{4}=1.25,\qquad AK=5+\dfrac{15}{4}=\dfrac{35}{4}=8.75 .
+\]
+The answer is $\boxed{\textbf{(A)}\ 1.25,\ 8.75}$.

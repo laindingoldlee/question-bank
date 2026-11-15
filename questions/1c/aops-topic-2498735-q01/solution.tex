@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2498735_some_mathcounts_national_problems_i_need_help_on
+% Stable identity: aops-topic-2498735-q01
+Take the lines as the coordinate axes and both semicircles in the first quadrant. A semicircle with diameter on the $x$-axis tangent to the $y$-axis touches it at an end of its diameter, so the large one is the upper half of $(x-1)^2+y^2=1$, ending at $O$ and at $(2,0)$. Likewise the small one, of radius $r$, is the right half of $x^2+(y-r)^2=r^2$, which also passes through $O$.
+
+Expanding, the circles are $x^2+y^2=2x$ and $x^2+y^2=2ry$, so their second common point $P$ satisfies $x=ry$, i.e. $r=\dfrac xy$.
+
+The large arc measures $180^\circ$, so its two pieces measure $30^\circ$ and $150^\circ$. Write $P=(1+\cos\varphi,\sin\varphi)$, where $\varphi$ is the angle at the centre $(1,0)$ from the direction of $(2,0)$.
+\begin{itemize}
+\item If $\varphi=30^\circ$, then $r=\dfrac{1+\cos30^\circ}{\sin30^\circ}=2+\sqrt3>1$, not the smaller semicircle.
+\item If $\varphi=150^\circ$, then $P=\left(1-\dfrac{\sqrt3}{2},\dfrac12\right)$ and $r=\dfrac{1-\dfrac{\sqrt3}2}{\dfrac12}=2-\sqrt3$.
+\end{itemize}
+In the second case $P$ has $x>0$ and $y>0$, so it lies on both semicircles. The radius is $\boxed{2-\sqrt3}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real r=2-sqrt(3);
+draw((-0.3,0)--(2.3,0)); draw((0,-0.3)--(0,1.3));
+draw(arc((1,0),1,0,180),linewidth(0.9));
+draw(arc((0,r),r,-90,90),blue+linewidth(0.9));
+pair P=(1-sqrt(3)/2,0.5);
+draw((1,0)--P,dashed); dot(P); dot((1,0)); dot((0,0));
+draw(arc((1,0),0.18,0,150),gray);
+label("$150^\circ$",(1,0)+0.3*dir(60),fontsize(7pt));
+label("$O$",(0,0),SW); label("$P$",P,N); label("$1$",(1,0)+0.5*dir(150),SW,fontsize(8pt));
+label("$r$",(0,r/2),W,blue+fontsize(8pt));
+\end{asy}

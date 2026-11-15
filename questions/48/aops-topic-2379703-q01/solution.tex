@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2379703_weird_wheels_and_why_would_anyone_change_their_tires_in_the_snow
+% Stable identity: aops-topic-2379703-q01
+The instrument does not measure distance directly: it counts wheel turns and multiplies by the circumference of the original wheel, $2\pi\cdot15$ inches.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),1.5),linewidth(0.9)); draw((0,0)--(1.5,0),blue); dot((0,0));
+label("$15$",(0.75,0),N,blue); label("original",(0,-1.5),S);
+draw(circle((4.1,0),1.53),linewidth(0.9)); draw((4.1,0)--(5.63,0),red); dot((4.1,0));
+label("$R$",(4.85,0),N,red); label("snow tire",(4.1,-1.53),S);
+\end{asy}
+
+The route is $450$ miles long (the reading with the original tires is accurate). With wheels of radius $R$ inches, each turn covers $2\pi R$ inches, so over the same route the wheels turn $\dfrac{450\text{ mi}}{2\pi R}$ times, and the instrument shows
+\[\dfrac{450}{2\pi R}\cdot2\pi\cdot15=\dfrac{450\cdot15}{R}\text{ miles}.\]
+(The unit conversion between miles and inches cancels.) Setting this equal to $440$:
+\[R=\dfrac{450\cdot15}{440}=\dfrac{675}{44}\approx15.3409\text{ inches}.\]
+So the radius increased by about $15.3409-15=0.3409$, i.e. $\boxed{0.34\text{ inch}}$ to the nearest hundredth.
+
+\textbf{Why inverse proportion.} For a fixed true distance, the reading is proportional to $\dfrac1R$: bigger wheels turn fewer times. The proportion $\dfrac{15}{440}=\dfrac{R}{450}$ (reading $\times$ radius is constant) gives the new radius $R\approx15.34$, but the question asks for the \emph{increase}, $R-15\approx0.34$.

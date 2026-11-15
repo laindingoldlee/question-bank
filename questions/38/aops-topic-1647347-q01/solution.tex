@@ -1,0 +1,67 @@
+% Source: https://artofproblemsolving.com/community/c3h1647347_water_bottle_problem
+% Stable identity: aops-topic-1647347-q01
+\textbf{The surface passes through the centre.} Let $O$ be the centre of the cylinder. The reflection in $O$ maps the cylinder to itself and swaps the two sides of any plane through $O$, so every plane through $O$ cuts the cylinder into halves of equal volume. Moving a horizontal plane up or down strictly changes the volume below it, so the water surface is the horizontal plane through $O$. It makes the angle $C$ with the bases.
+
+\textbf{Projection.} Let $\Sigma$ be the region in which this plane meets the solid cylinder. Project $\Sigma$ onto a base along the axis. Areas shrink by the factor $\cos C$ (the angle between the planes), so for $C<\dfrac{\pi}{2}$
+\[
+\operatorname{area}(\Sigma)=\dfrac{\operatorname{area}(\text{projection})}{\cos C}.
+\]
+Take coordinates in the base with origin on the axis and the $w$-axis along the direction of steepest tilt. A point of $\Sigma$ projecting to $(w,v)$ is at height $w\tan C$ above $O$ along the axis, so the projection is the set of points of the disc $w^2+v^2\le A^2$ with $|w|\tan C\le\dfrac {B}{2}$, that is $|w|\le h$ where
+\[
+h=\dfrac {B}{2}\cot C .
+\]
+
+\textbf{Case 1: $\tan C\le\dfrac{B}{2A}$} (then $h\ge A$). The surface does not reach the bases; the projection is the whole disc and $\Sigma$ is an ellipse with semi-axes $A$ and $\dfrac{A}{\cos C}$:
+\[
+\operatorname{area}=\dfrac{\pi A^2}{\cos C}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real C=30;
+pair O=(0,0);pair P1=(-1.6160,-0.7990),P2=(0.1160,-1.7990),P3=(1.6160,0.7990),P4=(-0.1160,1.7990);
+fill((-1.6160,-0.7990)--(0.1160,-1.7990)--(1.1547,0.0000)--(-1.1547,0.0000)--cycle,paleblue);
+draw(P1--P2--P3--P4--cycle,linewidth(0.9));
+draw((P1+P2)/2--(P3+P4)/2,gray+dashed);
+draw((0,-2.1)--(0,2.1),gray+dotted);
+draw((-1.1547,0)--(1.1547,0),blue+linewidth(1.1));
+dot(O);label("$O$",O,NW);
+draw(arc(O,0.9,90-C,90),red);label("$C$",O+1.15*dir(90-C/2),red);
+label("$2A$",(P1+P2)/2-0.3*dir(90-C));label("$B$",(P2+P3)/2+0.28*dir(-C));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Case 2: $\dfrac{B}{2A}<\tan C$, $C<\dfrac{\pi}{2}$} (then $h<A$). The surface meets both bases, and $\Sigma$ is an ellipse with two caps cut off by straight chords. The projection is the band $|w|\le h$ of the disc, with area
+\[
+\int_{-h}^{h}2\sqrt{A^2-w^2}\,dw=2\left(h\sqrt{A^2-h^2}+A^2\arcsin\dfrac {h}{A}\right),
+\]
+so
+\[
+\operatorname{area}=\dfrac{2}{\cos C}\left(h\sqrt{A^2-h^2}+A^2\arcsin\dfrac {h}{A}\right),\qquad h=\dfrac {B}{2}\cot C .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real C=70;
+pair O=(0,0);pair P1=(-1.7516,0.4267),P2=(-1.0675,-1.4527),P3=(1.7516,-0.4267),P4=(1.0675,1.4527);
+fill((-1.5963,0.0000)--(-1.0675,-1.4527)--(1.7516,-0.4267)--(1.5963,0.0000)--cycle,paleblue);
+draw(P1--P2--P3--P4--cycle,linewidth(0.9));
+draw((P1+P2)/2--(P3+P4)/2,gray+dashed);
+draw((0,-2.1)--(0,2.1),gray+dotted);
+draw((-1.5963,0)--(1.5963,0),blue+linewidth(1.1));
+dot(O);label("$O$",O,NW);
+draw(arc(O,0.9,90-C,90),red);label("$C$",O+1.15*dir(90-C/2),red);
+label("$2A$",(P1+P2)/2-0.3*dir(90-C));label("$B$",(P2+P3)/2+0.28*dir(-C));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Case 3: $C=\dfrac{\pi}{2}$} (the bottle lies on its side). The surface is the rectangle through the axis, of area $2AB$, which is also the limit of Case 2 as $C\to\dfrac{\pi}{2}$.
+
+\[
+\boxed{\operatorname{area}=\begin{cases}\dfrac{\pi A^2}{\cos C}, & \tan C\le\dfrac{B}{2A},\\[2ex] \dfrac{2}{\cos C}\left(h\sqrt{A^2-h^2}+A^2\arcsin\dfrac {h}{A}\right)\ \text{with}\ h=\dfrac {B}{2}\cot C, & \tan C>\dfrac{B}{2A},\ C<\dfrac{\pi}{2},\\[2ex] 2AB, & C=\dfrac{\pi}{2}.\end{cases}}
+\]
+(In the sketches $A=1$, $B=3$; the side view shows the shaded water, the blue surface through $O$ and the axis tilted by $C$.)

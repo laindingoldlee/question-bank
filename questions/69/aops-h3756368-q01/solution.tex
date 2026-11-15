@@ -1,0 +1,20 @@
+Write the points as $(x,0),(1,y),(z,1),(0,w)$ with $x,y,z,w\in[0,1]$. In the sum of squared side lengths, each variable contributes $t^2+(1-t)^2$, which lies between $\dfrac{1}{2}$ and $1$. Summing the four contributions proves $2\le a^2+b^2+c^2+d^2\le4$.
+
+For the perimeter, express the lengths as the norms of positive-coordinate vectors
+\[
+(1-x,y),\quad(1-z,1-y),\quad(z,1-w),\quad(x,w).
+\]
+Their sum is $(2,2)$, so the triangle inequality gives the lower bound $2\sqrt2$. Each individual norm is at most the sum of its coordinates, giving the upper bound $4$.
+Choosing all side midpoints attains both lower bounds; choosing the four square vertices in order attains both upper bounds.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(unitsquare,gray);draw((.5,0)--(1,.5)--(.5,1)--(0,.5)--cycle,blue);label("Both lower bounds",(.5,-.3));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(unitsquare,blue);label("Both upper bounds",(.5,-.3));label("$1$",(.5,1),(0,1));
+\end{asy}

@@ -1,0 +1,5 @@
+% Source: https://artofproblemsolving.com/community/c3h2636968_please_point_out_why_this_is_a_fakesolve
+% Stable identity: aops-topic-2636968-q01
+The inductive step uses the hypothesis for $k=n$ and $k=n-1$. For the first step, $n=0$, it needs $a^{-1}=1$, but $k=-1$ is not covered by the hypothesis (and $a^{-1}$ is not even defined when $a=0$). So the argument never establishes $a^1=1$, which is false for every $a\ne1$.
+
+The step is valid only for $n\ge1$ (and $a\ne0$): it shows that $a^0=a^1=1$ would imply $a^n=1$ for all $n$. A correct induction would need the second base case $a^1=1$, which is exactly what fails. The error is that $\boxed{\text{the step from }n=0\text{ to }n=1\text{ uses }a^{-1}}$, outside the induction hypothesis.

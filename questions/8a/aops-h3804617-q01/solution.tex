@@ -1,0 +1,16 @@
+Put $\angle A=3\alpha$ and $\angle C=3\beta$, so $\alpha+\beta=30^\circ$. In triangle $ARC$, $\angle ARC=150^\circ$, and the sine rule gives $AR=2AC\sin\beta$. In triangle $AQC$, $\angle ACQ=2\beta$, hence
+\[
+AQ=AC\,\dfrac{\sin2\beta}{\sin(60^\circ+\alpha)}
+=2AC\sin\beta=AR,
+\]
+using $\sin(60^\circ+\alpha)=\cos\beta$. Thus $AQR$ is isosceles with vertex angle $2\alpha$, and $\angle ARQ=90^\circ-\alpha$. The three angles around $R$ give
+\[
+\angle QRC=360^\circ-150^\circ-(90^\circ-\alpha)=120^\circ+\alpha.
+\]
+Since $0<\alpha<30^\circ$, its least integer value is $\boxed{121^\circ}$, attained when $\angle A=3^\circ$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,1),B=(0,0),C=(1,0),R=intersectionpoint(A--(A+2dir(-60)),C--(C+2dir(150))),Q=(0,tan(15*pi/180));draw(A--B--C--cycle);draw(A--R--C,blue);draw(C--Q--R,red);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$R$",R,NE);label("$Q$",Q,W);
+\end{asy}

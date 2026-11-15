@@ -1,0 +1,7 @@
+The $k$th cut crosses at most $k-1$ previous cuts and creates at most $k$ new pieces. Thus the maximum is $1+\sum_{k=1}^{10}k=1+55=\boxed{56}$. Choose lines with all pairwise intersections inside the pizza and no triple intersections; then every cut reaches its bound.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real R=4;draw(circle((0,0),R));for(int i=0;i<10;++i){real m=(i-4.5)/2,b=.05*m*m;pair f=(-m*b/(1+m*m),b/(1+m*m)),u=unit((1,m));real t=sqrt(R*R-dot(f,f));draw(f-t*u--f+t*u,linewidth(.4));label(string(i+1),f+t*u,unit(f+t*u));}
+\end{asy}

@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2556031_modulos_problem
+% Stable identity: aops-topic-2556031-q01
+In general, $a^2\equiv1\pmod m$ means $m\mid a^2-1$ (and then $\gcd(a,m)=1$ automatically). So we must count the divisors of $a^2-1$ that are greater than $a$.
+
+Pair each divisor $d$ of $a^2-1$ with $\dfrac{a^2-1}{d}$. No divisor equals $a$, because $a\nmid a^2-1$ for $a\ge2$. If $d\le a-1$, then $\dfrac{a^2-1}{d}\ge\dfrac{a^2-1}{a-1}=a+1$; and if $d\ge a+1$, then its partner is at most $a-1$. So exactly half of the divisors of $a^2-1$ exceed $a$: the answer is $\dfrac12\,\tau\!\left(a^2-1\right)$, where $\tau$ counts divisors.
+\begin{enumerate}
+\item[(a)] $101^2-1=100\cdot102=2^3\cdot3\cdot5^2\cdot17$ has $4\cdot2\cdot3\cdot2=48$ divisors, so the answer is $\boxed{24}$.
+\item[(b)] $102^2-1=101\cdot103$ (both prime) has $4$ divisors, so the answer is $\boxed{2}$ ($m=103$ and $m=10403$).
+\item[(c)] $201^2-1=200\cdot202=2^4\cdot5^2\cdot101$ has $5\cdot3\cdot2=30$ divisors, so the answer is $\boxed{15}$.
+\end{enumerate}

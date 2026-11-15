@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2232891_help_with_problem
+% Stable identity: aops-topic-2232891-q01
+\textbf{Groups by number of digits.} Group the powers of $2$ by their number of digits. The first power with a given number of digits starts with $1$, and each group has either $3$ or $4$ members:
+\begin{itemize}
+\item If the first member is $1.\ldots$ with mantissa in $[1,1.25)$, the next ones have mantissas in $[2,2.5)$, $[4,5)$ and $[8,10)$: four members, with first digits $1,2,4,8$ or $1,2,4,9$.
+\item If the first mantissa is in $[1.25,2)$, the next ones are in $[2.5,4)$ and $[5,8)$, and the following power has one more digit: three members, none starting with $4$.
+\end{itemize}
+So exactly one power starting with $4$ occurs in each four-member group, and none in the three-member groups.
+
+\textbf{Counting.} The powers $2^0,\ldots,2^{2003}$ have $1,2,\ldots,603$ digits, and the groups are complete because $2^{2004}$ starts a new group. If $a$ groups have four members and $b$ have three, then
+\[a+b=603,\qquad4a+3b=2004,\]
+so $a=2004-3\cdot603=195$. The answer is $\boxed{\textbf{(B)}\ 195}$.
+
+\textbf{The error.} The pattern relies on $2^{10}=1024\approx10^3$, but the extra factor $1.024$ accumulates: $2^{10k+2}=4\cdot(1.024)^k\cdot10^{3k}$, and $4\cdot1.024^{k}$ reaches $5$ already for $k=10$ ($4\cdot1.024^{10}\approx5.07$). Indeed $2^{102}\approx5.07\cdot10^{30}$ begins with $5$, so the pattern breaks and the list of $201$ numbers is wrong.

@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h3066277_renewing_old_ties
+% Stable identity: aops-topic-3066277-q01
+Let $v=\dfrac{20}{21}$ be the one-year discount factor. Untreated ties incur an initial 11 and thereafter a net 10 every 10 years, so $C_u=11+\dfrac{10v^{10}}{1-v^{10}}=\dfrac{11-v^{10}}{1-v^{10}}$. Treated ties incur 14 every 15 years starting immediately, giving $C_t=\dfrac{14}{1-v^{15}}$. Exact rational comparison gives $C_u<C_t$; numerically they are approximately $26.90$ and $26.98$, respectively. Thus $\boxed{\text{the untreated option}}$ has the lower cost in this model. The result includes both the different replacement schedules and the scrap receipt.
+\begin{verbatim}
+from fractions import Fraction
+v=Fraction(20,21)
+u=(11-v**10)/(1-v**10)
+t=14/(1-v**15)
+assert u<t
+print(float(u),float(t))
+\end{verbatim}

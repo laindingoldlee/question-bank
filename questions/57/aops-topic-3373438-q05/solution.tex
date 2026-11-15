@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h3373438_1434iltg
+% Stable identity: aops-topic-3373438-q05
+Use $\phi(n)=n\prod_{p\mid n}(1-\dfrac{1}{p})$, with the product over distinct prime factors. Checking integers $1000$ through $1434$ gives the qualifying list $1240,1252,1269,1434$, with totients $480,624,828,476$ respectively. The right sides are $12\cdot40,12\cdot52,12\cdot69,14\cdot34$, matching these. Thus the fourth value is $\boxed{1434}$. The following exact algorithm verifies the list and its completeness:\begin{verbatim}
+answers=[]
+for n in range(1000,1435):
+    m=n; value=n; p=2
+    while p*p<=m:
+        if m%p==0:
+            value=value//p*(p-1)
+            while m%p==0: m//=p
+        p+=1
+    if m>1: value=value//m*(m-1)
+    if value==(n//100)*(n%100): answers.append(n)
+assert answers==[1240,1252,1269,1434]
+\end{verbatim}

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3131305_2022_moaa_gunga_bowl__math_open_at_andover__second_3_sets__9_problems
+% Stable identity: aops-topic-3131305-q17
+Every walk has $10$ steps. If $k$ are diagonal, the remaining numbers of horizontal and vertical steps both equal $\dfrac{10-k}{2}$, so $k$ is even. Placing $k$ nonadjacent diagonal steps among $10$ positions is possible in $\binom{11-k}{k}$ ways; choose half of the other positions to be horizontal in $\binom{10-k}{\dfrac{10-k}{2}}$ ways. Only $k=0,2,4$ fit. The total is $\binom{11}{0}\binom{10}{5}+\binom92\binom84+\binom74\binom63=252+2520+700=\boxed{3472}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=0;i<=10;++i){draw((i,0)--(i,10),lightgray);draw((0,i)--(10,i),lightgray);}draw((0,0)--(2,0)--(2,2)--(3,3)--(5,3)--(5,5)--(6,6)--(8,6)--(8,8)--(10,8)--(10,10),blue+1);label("$(0,0)$",(0,0),SW);label("$(10,10)$",(10,10),NE);
+\end{asy}

@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h2429023_geometry_question
+% Stable identity: aops-topic-2429023-q01
+\textbf{(a)} Let the median $AM$ and the bisector $AD$ both start at $A$. The bisector makes the angle $\dfrac12\angle BAC$ with each of the rays $AB$ and $AC$, and the ray $AM$ lies between the rays $AB$ and $AC$. So the angle between $AM$ and $AD$ is at most $\dfrac12\angle BAC<90^\circ$, and the two segments cannot be perpendicular. (So in a problem like (b), the median and the bisector come from different vertices.)
+
+\textbf{(b)} Let the bisector of angle $B$ be $BD$, with $D$ on $AC$. The line $BD$ separates the ray $BA$ from the ray $BC$, so $A$ and $M$ (which lies on $BC$) are on opposite sides of it, and the segment $AM$ crosses $BD$ at a point $P$. By assumption $BP\perp AM$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(4,0), M=(2,0);
+pair A=2*dir(70);
+pair u=dir(35);
+pair P=extension(B,B+u,A,M);
+pair D=extension(B,B+u,A,C);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(A--M,blue+linewidth(0.8));
+draw(B--D,red+dashed);
+pair e1=unit(A-P), e2=unit(B-P); real s=0.14;
+draw(P+s*e1--P+s*e1+s*e2--P+s*e2);
+draw(arc(B,0.55,0,35)); draw(arc(B,0.62,35,70));
+void tick(pair X, pair Y){pair m=(X+Y)/2; pair n=0.09*dir(degrees(Y-X)+90); draw(m-n--m+n);}
+tick(B,A); tick(B,M); tick(M,C);
+dot(M); dot(P); dot(D);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$M$",M,S); label("$P$",P,E); label("$D$",D,NE);
+\end{asy}
+
+Compare triangles $ABP$ and $MBP$:
+\begin{itemize}
+\item $\angle ABP=\angle MBP$, because $BP$ bisects angle $ABC$ and $M$ lies on $BC$;
+\item they share the side $BP$;
+\item $\angle BPA=\angle BPM=90^\circ$.
+\end{itemize}
+By ASA they are congruent, so $AB=MB$. Since $M$ is the midpoint of $BC$, $MB=\dfrac12BC$, and therefore
+\[\boxed{BC=2AB}.\ \blacksquare\]
+In other words, in triangle $ABM$ the bisector from $B$ is also an altitude, which forces $ABM$ to be isosceles with $BA=BM$.

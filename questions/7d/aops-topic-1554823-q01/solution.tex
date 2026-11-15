@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1554823_sum_of_digits_inequality
+% Stable identity: aops-topic-1554823-q01
+\textbf{Lemma 1: $S(x+y)\le S(x)+S(y)$.} Add $x$ and $y$ column by column. In a column without an incoming or outgoing carry the digit of the sum is the sum of the digits. Each carry replaces $10$ in one column by $1$ in the next column, lowering the total digit sum by $9$. Hence $S(x+y)=S(x)+S(y)-9c\le S(x)+S(y)$, where $c\ge0$ is the number of carries. By induction, $S(x_1+\cdots+x_k)\le S(x_1)+\cdots+S(x_k)$.
+
+\textbf{Lemma 2: $S(10^i n)=S(n)$}, since appending zeros does not change the digits.
+
+\textbf{Proof.} Write $m=\sum_i d_i10^i$ with digits $d_i$. Then $mn=\sum_i d_i\,(10^in)$ is a sum of $\sum_i d_i=S(m)$ numbers of the form $10^in$, each with digit sum $S(n)$. By Lemma 1 and Lemma 2,
+\[
+S(mn)\le\sum_i d_i\,S(10^in)=\sum_i d_i\,S(n)=S(m)\,S(n).\qquad\blacksquare
+\]
+For example, $S(19\cdot19)=S(361)=10\le10\cdot10$.

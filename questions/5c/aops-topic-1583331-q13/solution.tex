@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1583331_geometry_countdown_help
+% Stable identity: aops-topic-1583331-q13
+Adjacent vertices are $2$ apart, so neighbouring circles are tangent and the pieces inside the decagon do not overlap. (Non-adjacent vertices are farther apart, since the decagon's diagonals are longer than its sides.) Near each vertex, the part of the circle inside the decagon is a sector whose angle is the interior angle of the decagon,
+\[
+\dfrac{(10-2)\cdot180^\circ}{10}=144^\circ .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+int n=10;real R=1/sin(pi/10);
+pair[] V;for(int i=0;i<n;++i) V.push(R*dir(90+36*i));
+for(int i=0;i<n;++i){
+  pair p=V[i],q=V[(i+1)%n],r=V[(i+n-1)%n];
+  real a1=degrees(q-p),a2=degrees(r-p);
+  if(a2<a1) a2+=360;
+  fill(p--arc(p,1,a1,a2)--cycle,paleblue);
+}
+for(int i=0;i<n;++i) draw(circle(V[i],1),gray);
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--V[7]--V[8]--V[9]--cycle,linewidth(1));
+for(int i=0;i<n;++i) dot(V[i]);
+label("$2$",(V[5]+V[6])/2+0.6*dir(288));
+draw(arc(V[5],0.45,degrees(V[6]-V[5]),degrees(V[4]-V[5])+360),red);
+label("$144^\circ$",V[5]+(0,0.72),red+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The ten sectors together have total angle $10\cdot144^\circ=1440^\circ=4\cdot360^\circ$, i.e.\ they make up four whole circles of radius $1$. The total area is
+\[
+4\cdot\pi\cdot1^2=\boxed{4\pi}\text{ square units}.
+\]

@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1722491_square_and_add
+% Stable identity: aops-topic-1722491-q01
+\textbf{$k>\dfrac{1}{4}$: unbounded.} Then $x_{n+1}-x_n=x_n^2-x_n+k=\left(x_n-\dfrac{1}{2}\right)^2+k-\dfrac{1}{4}\ge k-\dfrac{1}{4}>0$, so the sequence increases by at least the fixed amount $k-\dfrac{1}{4}$ each step and tends to infinity.
+
+\textbf{$0\le k\le\dfrac{1}{4}$: bounded.} If $0\le x_n\le\dfrac{1}{2}$, then $0\le x_{n+1}=x_n^2+k\le\dfrac{1}{4}+\dfrac{1}{4}=\dfrac{1}{2}$. Since $x_0=0$, induction gives $0\le x_n\le\dfrac{1}{2}$ for all $n$.
+
+\textbf{$-2\le k<0$: bounded.} Let $c=-k\in(0,2]$. If $|x_n|\le c$, then $x_{n+1}=x_n^2-c$ satisfies $-c\le x_{n+1}\le c^2-c\le c$, the last step because $c\le2$. Since $x_0=0$, induction gives $|x_n|\le c$ for all $n$.
+
+\textbf{$k<-2$: unbounded.} Let $c=-k>2$. Then $x_1=-c$ and $x_2=c^2-c=c(c-1)>c$. If $x_n>c$, then
+\[
+x_{n+1}-x_n=x_n^2-x_n-c>x_n^2-2x_n=x_n(x_n-2)>c(c-2)>0 ,
+\]
+so from $n=2$ on the sequence increases by more than the fixed amount $c(c-2)$ each step and tends to infinity.
+
+Hence the sequence is bounded exactly for $\boxed{k\in\left[-2,\dfrac{1}{4}\right]}$.
+
+(For some $k$ in this interval the sequence is bounded but does not converge; for example $k=-1$ gives $0,-1,0,-1,\dots$. ``Does not diverge'' is read here as ``stays bounded''.)

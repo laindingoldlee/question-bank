@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2615498_peace09s_3000th_post
+% Stable identity: aops-topic-2615498-q18
+$X$ lies on the perpendicular bisector of $AB$, so $XA=XB$.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(14,0),A=(12,5);pair M=(A+B)/2;
+pair X=extension(M,M+rotate(90)*(A-B),B,C);
+draw(A--B--C--cycle);draw(A--X,dashed);draw(M--X,dotted);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$X$",X,S);label("$M$",M,NW);label("$AB=13$",0.75*A,NW);label("$BC=14$",(10.5,0),S);
+\end{asy}
+
+Then $N=AX+XC+CA=BX+XC+CA=BC+CA$, while $M=AB+BC+CA$. So $M-N=AB=\boxed{13}$.

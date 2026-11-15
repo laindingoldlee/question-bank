@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2444228_dividing_infinitely
+% Stable identity: aops-topic-2444228-q01
+\textbf{Step 1: a recurrence.} For $n\ge1$,
+\[a_{n-1}-a_{n+1}=n\,a_n.\]
+Indeed, shifting the index in $a_{n+1}$ ($k=j-1$),
+\[a_{n+1}=\sum_{j\ge1}\dfrac{1}{(j-1)!\,(j+n)!}=\sum_{j\ge0}\dfrac{j}{j!\,(j+n)!},\qquad a_{n-1}=\sum_{j\ge0}\dfrac{1}{j!\,(j+n-1)!}=\sum_{j\ge0}\dfrac{j+n}{j!\,(j+n)!},\]
+so $a_{n-1}-a_{n+1}=\sum_{j\ge0}\dfrac{n}{j!\,(j+n)!}=n\,a_n$. (All these series converge, since their terms are at most $\dfrac{1}{k!}$.)
+
+\textbf{Step 2: the ratios.} Let $r_n=\dfrac{a_{n-1}}{a_n}$ for $n\ge1$. Each term of $a_n$ is larger than the corresponding term of $a_{n+1}$, so $a_n>a_{n+1}>0$ and $r_{n+1}>1$. Dividing the recurrence by $a_n$ gives $r_n-\dfrac{1}{r_{n+1}}=n$, i.e.
+\[r_n=n+\dfrac{1}{r_{n+1}}.\]
+Applying this repeatedly, for every $n\ge1$,
+\[r_1=1+\dfrac{1}{2+\dfrac{1}{\ddots+\dfrac{1}{n+\dfrac{1}{r_{n+1}}}}}.\]
+
+\textbf{Step 3: comparing with $c_n$.} Write $[b_1;b_2,\dots,b_m]$ for $b_1+\dfrac{1}{b_2+\dfrac{1}{\ddots+\dfrac{1}{b_m}}}$, where here $b_k=k$. Define $p_0=1$, $q_0=0$, $p_1=1$, $q_1=1$ and
+\[p_k=k\,p_{k-1}+p_{k-2},\qquad q_k=k\,q_{k-1}+q_{k-2}\qquad(k\ge2).\]
+For every real $t>0$,
+\[[1;2,\dots,n,t]=\dfrac{t\,p_n+p_{n-1}}{t\,q_n+q_{n-1}}.\]
+For $n=1$ this is $1+\dfrac1t=\dfrac{t+1}{t}$. If it holds for $n$, then $[1;2,\dots,n+1,t]=[1;2,\dots,n,\,n+1+\dfrac1t]$, and substituting $n+1+\dfrac1t$ for $t$ and multiplying numerator and denominator by $t$ gives $\dfrac{t\,p_{n+1}+p_n}{t\,q_{n+1}+q_n}$. Taking $t=n+1$ in the formula for $n$ shows $c_{n+1}=\dfrac{p_{n+1}}{q_{n+1}}$; also $c_1=1=\dfrac{p_1}{q_1}$. Moreover
+\[p_kq_{k-1}-p_{k-1}q_k=-\left(p_{k-1}q_{k-2}-p_{k-2}q_{k-1}\right),\qquad p_1q_0-p_0q_1=-1,\]
+so $p_nq_{n-1}-p_{n-1}q_n=\pm1$. With $t=r_{n+1}$ we get
+\[r_1-c_n=\dfrac{r_{n+1}p_n+p_{n-1}}{r_{n+1}q_n+q_{n-1}}-\dfrac{p_n}{q_n}=\dfrac{p_{n-1}q_n-p_nq_{n-1}}{q_n\left(r_{n+1}q_n+q_{n-1}\right)},\qquad\text{so}\qquad|r_1-c_n|<\dfrac{1}{q_n^2}.\]
+Finally $q_1=1$ and $q_k\ge k\,q_{k-1}$, so $q_n\ge n!$ and $|r_1-c_n|<\dfrac{1}{(n!)^2}\to0$.
+
+Hence the continued fraction converges, and its value is
+\[\boxed{r_1=\dfrac{a_0}{a_1}=\dfrac{\displaystyle\sum_{k\ge0}\dfrac{1}{(k!)^2}}{\displaystyle\sum_{k\ge0}\dfrac{1}{k!\,(k+1)!}}}\approx1.4331274.\]
+(In terms of the modified Bessel functions, this is $\dfrac{I_0(2)}{I_1(2)}$.)

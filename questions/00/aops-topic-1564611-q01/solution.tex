@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1564611_hard_area_problem
+% Stable identity: aops-topic-1564611-q01
+Let $\gamma$ be the angle between the sides $a$ and $b$ (opposite $c$). By the law of cosines, $a^2+b^2-c^2=2ab\cos\gamma$, so the condition becomes
+\[
+4a^2b^2\cos^2\gamma=4a^2b^2-64\qquad\Longrightarrow\qquad 4a^2b^2\left(1-\cos^2\gamma\right)=64\qquad\Longrightarrow\qquad a^2b^2\sin^2\gamma=16 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),A=(5,0),B=(1.6,2.6);
+draw(A--B--C--cycle,linewidth(0.9));
+label("$A$",A,SE);label("$B$",B,N);label("$C$",C,SW);
+label("$b$",(A+C)/2,S);label("$a$",(B+C)/2,NW);label("$c$",(A+B)/2,NE);
+draw(arc(C,0.6,0,degrees(B)),red);label("$\gamma$",C+0.85*dir(degrees(B)/2),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $\sin\gamma>0$, $ab\sin\gamma=4$, and the area is
+\[
+\dfrac{1}{2}ab\sin\gamma=\boxed{2}.
+\]
+(Equivalently, $16K^2=4a^2b^2-\left(a^2+b^2-c^2\right)^2$ is Heron's formula in another form.)

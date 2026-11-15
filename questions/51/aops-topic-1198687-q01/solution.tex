@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1198687_mathcounts_2013_target_round_geometry_question
+% Stable identity: aops-topic-1198687-q01
+The large square has side $5\sqrt2$ and area $50$; its sides are at distance $\dfrac{5}{\sqrt2}$ from the centre. A small square of side $t$ sitting on a side has outer vertices at distance $\dfrac {t}{2}$ from the axis of symmetry and $\dfrac{5}{\sqrt2}+t$ from the centre's side line, so
+\[\left(\dfrac {t}{2}\right)^2+\left(\dfrac{5}{\sqrt2}+t\right)^2=25\ \Longrightarrow\ \dfrac{5}{4}t^2+5\sqrt2\,t-\dfrac{25}{2}=0\ \Longrightarrow\ t^2+4\sqrt2\,t-10=0,\]
+so $t=\dfrac{-4\sqrt2+\sqrt{72}}{2}=\sqrt2$ and each small square has area $2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),5),gray); real h=5/sqrt(2); draw((-h,-h)--(h,-h)--(h,h)--(-h,h)--cycle,linewidth(0.9));
+real t=sqrt(2); for(int k=0;k<4;++k){ draw(rotate(90k)*((-t/2,h)--(-t/2,h+t)--(t/2,h+t)--(t/2,h)),blue); }
+draw((0,0)--(t/2,h+t),dashed); label("$5$",(t/4,(h+t)/2),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The total area is $50+4\cdot2=\boxed{58}$ (exactly).

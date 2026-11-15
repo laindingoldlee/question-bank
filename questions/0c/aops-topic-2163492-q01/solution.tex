@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2163492_fun_math_problems
+% Stable identity: aops-topic-2163492-q01
+Solving for $y$: the first line is $y=-2x+2$, with slope $-2$, and the second is $y=\dfrac{1}{2}x$, with slope $\dfrac{1}{2}$. The slopes are different, so the lines are not parallel, and their product is $-2\cdot\dfrac{1}{2}=-1$, so the lines are $\boxed{\text{perpendicular}}$. They meet at $\left(\dfrac{4}{5},\dfrac{2}{5}\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+xaxis(-1.5,2.5,Arrow(TeXHead)); yaxis(-1.2,3.2,Arrow(TeXHead));
+draw((-0.5,3)--(1.6,-1.2),blue+linewidth(0.9));
+draw((-1.5,-0.75)--(2.4,1.2),red+linewidth(0.9));
+pair X=(0.8,0.4);
+draw(X+0.25*unit((1,-2))--X+0.25*unit((1,-2))+0.25*unit((2,1))--X+0.25*unit((2,1)));
+dot(X);
+label("$2x+y=2$",(1.6,-1.2),E,blue); label("$x-2y=0$",(2.4,1.2),N,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

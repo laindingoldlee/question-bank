@@ -1,0 +1,7 @@
+Fix $1$ on top and $2$ on bottom. The four other labels have $4!$ cyclic arrangements around the side faces, identified by the four rotations about this axis, giving $\dfrac{4!}{4}=6$ numbered cubes. Each of the three opposite-face pairs independently receives either colour, giving $2^3=8$ colourings. Distinct face labels leave no extra symmetry to identify these choices. Thus there are $6\cdot8=\boxed{48}$ designs.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p={(0,0),(0,1),(0,-1),(-1,0),(1,0),(2,0)};string[] s={"3","1","2","4","5","6"};for(int i=0;i<6;++i){filldraw(box(p[i],p[i]+(1,1)),i==1||i==2?lightred:lightyellow);label(s[i],p[i]+(.5,.5));}
+\end{asy}

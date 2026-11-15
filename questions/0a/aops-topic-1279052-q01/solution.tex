@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1279052_geometry_problem
+% Stable identity: aops-topic-1279052-q01
+$ARST$ is a right trapezoid. Draw the segment from $A$ parallel to $RS$; it meets $TS$ at a point at height $12$, forming a right triangle with horizontal leg $24$ and hypotenuse $AT=26$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair R=(0,0),Sp=(24,0),A=(0,12),T=(24,22); draw(R--Sp,black); draw(R--A,blue); draw(Sp--T,red); draw(A--T); draw(A--(24,12),gray+dashed);
+draw(ra(R,(1,0),(0,1),1.2)); draw(ra(Sp,(-1,0),(0,1),1.2));
+label("$R$",R,SW); label("$S$",Sp,SE); label("$A$",A,W); label("$T$",T,NE); label("$24$",(12,0),S); label("$12$",(0,6),W); label("$26$",(A+T)/2,NW); label("$10$",(24,17),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Its vertical leg is $\sqrt{26^2-24^2}=10$, so $TS=12+10=\boxed{22}$.

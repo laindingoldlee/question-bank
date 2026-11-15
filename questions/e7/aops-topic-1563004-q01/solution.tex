@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1563004_slopes_of_lines
+% Stable identity: aops-topic-1563004-q01
+The slope of a line measures how much $y$ changes per unit change in $x$: for two points $(x_1,y_1)$ and $(x_2,y_2)$ on the line it is
+\[
+m=\dfrac{\text{rise}}{\text{run}}=\dfrac{y_2-y_1}{x_2-x_1}.
+\]
+A positive slope means the line rises from left to right; a negative slope means it falls; slope $0$ means it is horizontal.
+
+Going from $(2,3)$ to $(4,7)$, $x$ increases by $2$ and $y$ increases by $4$:
+\[
+m=\dfrac{7-3}{4-2}=\dfrac{4}{2}=\boxed{2}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-0.5,0)--(5.5,0),gray,Arrow(TeXHead));draw((0,-0.5)--(0,8.5),gray,Arrow(TeXHead));
+label("$x$",(5.5,0),E,gray);label("$y$",(0,8.5),N,gray);
+pair P=(2,3),Q=(4,7);
+draw((1,1)--(4.6,8.2),blue+linewidth(1));
+draw(P--(4,3),red+dashed);draw((4,3)--Q,red+dashed);
+dot(P);dot(Q);
+label("$(2,3)$",P,W);label("$(4,7)$",Q,W);
+label("run $2$",(3,3),S,red);label("rise $4$",(4,5),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the line rises $2$ units for every $1$ unit to the right; its equation is $y-3=2(x-2)$, i.e.\ $y=2x-1$.

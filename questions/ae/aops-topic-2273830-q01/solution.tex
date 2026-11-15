@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2273830_pythagorean_triples
+% Stable identity: aops-topic-2273830-q01
+No. If $a+b=c$, then squaring gives
+\[c^2=(a+b)^2=a^2+2ab+b^2,\]
+and together with $a^2+b^2=c^2$ this gives $2ab=0$, so $a=0$ or $b=0$, which is impossible for the sides of a triangle.
+
+(Even without the Pythagorean condition, $a+b=c$ is impossible in a triangle: the triangle inequality requires $a+b>c$. In a right triangle with legs $a$, $b$ the hypotenuse is strictly shorter than the path along the legs.)
+
+\begin{asy}
+usepackage("amsmath");
+size(3.2cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(0,3);
+draw(A--B--C--cycle,linewidth(0.9)); draw((0,0.3)--(0.3,0.3)--(0.3,0));
+label("$a$",(0,1.5),W); label("$b$",(2,0),S); label("$c$",(2,1.5),NE);
+label("$c<a+b$",(2,-0.9));
+\end{asy}
+
+So the answer is $\boxed{\text{no}}$.

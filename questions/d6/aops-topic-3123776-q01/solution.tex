@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3123776_how_to_do_aside_from_brute_force
+% Stable identity: aops-topic-3123776-q01
+Traverse the grid in a snake path, going across the first row, back across the second, and so on. Consecutive desks on this path share a side. Pair the first $120$ desks consecutively, leaving the last desk alone. Each pair holds at most one person, giving an upper bound $60+1=61$. Occupy all desks of the larger colour class in a checkerboard colouring; this occupies $61$ desks without side adjacency. Thus the maximum is $\boxed{61}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=0;i<11;++i)for(int j=0;j<11;++j){path sq=(i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle;if((i+j)%2==0)fill(sq,lightblue);draw(sq,gray);}label("61 occupied desks",(5.5,-0.8));
+\end{asy}

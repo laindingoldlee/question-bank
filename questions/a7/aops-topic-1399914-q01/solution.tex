@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1399914_tangent_circles
+% Stable identity: aops-topic-1399914-q01
+Let $K$ be the centre of the smaller circle. For internally tangent circles the point of tangency lies on the line of centres, so $T$, $K$, $O$ are collinear. Both $T$ and $O$ are on the smaller circle and the line $TO$ passes through its centre $K$, so $TO$ is a diameter of the smaller circle (and the larger radius is twice the smaller one).
+
+Let $TX$ be a chord of the larger circle and let $P\ne T$ be its second intersection with the smaller circle.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+real R=2, r=1;
+pair O=(0,0), T=(0,-2), K=(0,-1);
+draw(circle(O,R),linewidth(1)); draw(circle(K,r),blue+linewidth(1));
+pair X=R*dir(35);
+pair P=T+dot(O-T,unit(X-T))*unit(X-T);
+draw(T--X,linewidth(1));
+draw(O--P,red+dashed); draw(O--T,gray+dashed);
+draw(ra(P,T-P,O-P,0.15),red);
+dot(O);dot(T);dot(X);dot(P);dot(K,blue);
+label("$O$",O,N); label("$T$",T,S); label("$X$",X,NE); label("$P$",P,1.8*E); label("$K$",K,W,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+If $TX$ is the diameter through $O$, then $P=O$ is its midpoint. Otherwise $P\ne O$, and since $TO$ is a diameter of the smaller circle, the inscribed angle $\angle TPO$ is a right angle (Thales). So $OP\perp TX$. The perpendicular from the centre $O$ of the larger circle to its chord $TX$ bisects the chord (the right triangles $OPT$ and $OPX$ are congruent, having the common leg $OP$ and hypotenuses $OT=OX$). Hence $P$ is the midpoint of $TX$.
+
+(The statement needs the chord to pass through $T$: a chord of the larger circle that crosses the smaller circle elsewhere is in general not bisected by it.)

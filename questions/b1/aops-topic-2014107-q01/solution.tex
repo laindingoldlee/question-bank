@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2014107_mathcon_2019_finals_gr_8_question
+% Stable identity: aops-topic-2014107-q01
+By the Pythagorean theorem $a^2+b^2=c^2$, so $2c^2=288$, $c^2=144$ and $c=12$. Then $a+b=28-12=16$ and $a^2+b^2=144$, so
+\[
+2ab=(a+b)^2-\left(a^2+b^2\right)=256-144=112,\qquad ab=56 .
+\]
+The legs are the roots of $t^2-16t+56=0$, namely $8\pm2\sqrt2$, which are positive, so such a triangle exists.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real a=8+2*sqrt(2), bb=8-2*sqrt(2);
+pair C=(0,0), B=(a,0), A=(0,bb);
+draw(A--B--C--cycle,linewidth(0.9));
+draw((0.5,0)--(0.5,0.5)--(0,0.5));
+label("$C$",C,SW); label("$B$",B,SE); label("$A$",A,N);
+label("$a$",(a/2,0),S); label("$b$",(0,bb/2),W); label("$c=12$",(A+B)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Its area is
+\[
+\dfrac{ab}{2}=\boxed{28}.
+\]

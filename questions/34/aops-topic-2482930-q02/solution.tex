@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2482930_judgefan99s_problem_set
+% Stable identity: aops-topic-2482930-q02
+Since $8^2+15^2=64+225=289=17^2$, the triangle is right-angled, with hypotenuse $17$ (by the converse of Pythagoras' theorem).
+
+\textbf{Circumradius.} The hypotenuse of a right triangle is a diameter of its circumcircle (the right angle is an angle in a semicircle), so $R=\dfrac{17}{2}$.
+
+\textbf{Inradius.} The area is $K=\dfrac12\cdot8\cdot15=60$ and the semiperimeter is $s=\dfrac{8+15+17}{2}=20$. From $K=rs$ we get $r=3$.
+
+Hence
+\[R+r=\dfrac{17}{2}+3=\boxed{\dfrac{23}{2}}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), B=(15,0), A=(0,8);
+pair Oc=(A+B)/2, I=(3,3);
+draw(circle(Oc,8.5),gray);
+draw(circle(I,3),blue);
+draw(A--B--C--cycle,linewidth(0.8));
+draw((0,0.8)--(0.8,0.8)--(0.8,0));
+draw(Oc--B,red); draw(I--(3,0),blue+dashed);
+dot(Oc,red); dot(I,blue);
+label("$A$",A,NW); label("$B$",B,E); label("$C$",C,SW);
+label("$8$",(A+C)/2,W); label("$15$",(10,0),S); label("$17$",A+0.28*(B-A),NE);
+label("$O$",Oc,N,red); label("$R=\dfrac{17}{2}$",(Oc+B)/2,N,red);
+label("$I$",I,N,blue); label("$r=3$",(3,1.5),E,blue);
+\end{asy}

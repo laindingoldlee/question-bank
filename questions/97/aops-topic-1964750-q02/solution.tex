@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1964750_help_on_some_problems
+% Stable identity: aops-topic-1964750-q02
+Two distinct circles meet in at most \(2\) points, so \(n\) circles have at most \(2\binom n2=n(n-1)\) intersection points.
+
+This is attained: take \(n\) circles of radius \(1\) with centres on the \(x\)-axis at \(x=0.01\cdot2^k\) for \(k=0,1,\dots,n-1\) (all within distance \(2\) of each other for \(n\le7\)). Any two of these circles, with centres at \(a\) and \(b\), meet in exactly two points, both with \(x\)-coordinate \(\dfrac{a+b}{2}\). Sums of two distinct powers of \(2\) are all different, so intersection points coming from different pairs of circles have different \(x\)-coordinates. Hence all \(n(n-1)\) intersection points are distinct.
+
+For example, three such circles already give \(3\cdot2=6\) distinct points:
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real[] c={0,0.5,1.2};
+for(int i=0;i<3;++i) draw(circle((c[i],0),1),linewidth(0.8));
+for(int i=0;i<3;++i) for(int j=i+1;j<3;++j){ real x=(c[i]+c[j])/2, y=sqrt(1-((c[j]-c[i])/2)^2); dot((x,y),red); dot((x,-y),red);}
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence the maximum is \(n(n-1)\); for \(n=6\) it is \(\boxed{30}\).

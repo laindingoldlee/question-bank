@@ -1,0 +1,54 @@
+% Source: https://artofproblemsolving.com/community/c3h1646535_help_please
+% Stable identity: aops-topic-1646535-q01
+Both constructions rest on one fact: \emph{the points equidistant from two points $X\ne Y$ form the perpendicular bisector of $XY$.} (If $ZX=ZY$ and $M$ is the midpoint of $XY$, then triangles $ZMX$ and $ZMY$ are congruent by SSS, so $\angle ZMX=\angle ZMY=90^\circ$.) Hence if two different points $P$ and $Q$ are each equidistant from $X$ and $Y$, the line $PQ$ is the perpendicular bisector of $XY$.
+
+\textbf{Case 1: $P$ not on $\ell$.}
+\begin{enumerate}
+\item Draw a circle with centre $P$ that crosses $\ell$ at two points $X$ and $Y$ (any radius larger than the distance from $P$ to $\ell$).
+\item Draw circles with centres $X$ and $Y$ and the same radius $r=PX$; besides $P$ they meet at a second point $Q$, the reflection of $P$ in $\ell$.
+\item Draw the line $PQ$.
+\end{enumerate}
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair P=(0,2.2),X=(-1.8,0),Y=(1.8,0);real r=length(P-X);pair Q=(0,-2.2);
+draw((-3.2,0)--(3.2,0),linewidth(0.9));label("$\ell$",(3.2,0),E);
+draw(arc(P,r,221,241),gray);draw(arc(P,r,299,319),gray);
+draw(arc(X,r,-58,-43),gray);draw(arc(X,r,43,58),gray);
+draw(arc(Y,r,222,237),gray);draw(arc(Y,r,122,137),gray);
+draw(P--X,blue+dashed);draw(P--Y,blue+dashed);draw(Q--X,blue+dashed);draw(Q--Y,blue+dashed);
+draw((0,3)--(0,-3),red+linewidth(0.9));
+draw((0.2,0)--(0.2,0.2)--(0,0.2));
+dot(P);dot(Q);dot(X);dot(Y);dot((0,0));
+label("$P$",P,E);label("$Q$",Q,E);label("$X$",X,SW);label("$Y$",Y,SE);label("$M$",(0,0),SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $PX=PY$ and $QX=QY$ ($=r$), and $P\ne Q$, the line $PQ$ is the perpendicular bisector of $XY$; it passes through $P$ and is perpendicular to $\ell$.
+
+\textbf{Case 2: $P$ on $\ell$.}
+\begin{enumerate}
+\item Draw any circle with centre $P$, meeting $\ell$ at $X$ and $Y$; then $PX=PY$, so $P$ is the midpoint of $XY$.
+\item Draw circles with centres $X$ and $Y$ and the same radius $r$, with $r>PX$ (for example $r=XY$); they meet at a point $Q$ off $\ell$.
+\item Draw the line $PQ$.
+\end{enumerate}
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0),X=(-1.5,0),Y=(1.5,0);real r=3;pair Q=(0,r*sqrt(3)/2);
+draw((-3.2,0)--(3.2,0),linewidth(0.9));label("$\ell$",(3.2,0),E);
+draw(arc(P,1.5,160,200),gray);draw(arc(P,1.5,-20,20),gray);
+draw(arc(X,r,52,68),gray);draw(arc(Y,r,112,128),gray);
+draw(Q--X,blue+dashed);draw(Q--Y,blue+dashed);
+draw((0,-0.8)--(0,3.2),red+linewidth(0.9));
+draw((0.2,0)--(0.2,0.2)--(0,0.2));
+dot(P);dot(Q);dot(X);dot(Y);
+label("$P$",P,SE);label("$Q$",Q,E);label("$X$",X,SW);label("$Y$",Y,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Again $PX=PY$ and $QX=QY$, so $PQ$ is the perpendicular bisector of $XY$: it passes through $P$ and is perpendicular to $\ell$. $\blacksquare$

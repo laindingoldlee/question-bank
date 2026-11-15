@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2533047_when_the_imposter_is_sus
+% Stable identity: aops-topic-2533047-q01
+Imagine the meetings continuing until everyone is voted out. Since each meeting removes a uniformly random remaining player, the order of removal is a uniformly random ordering of the $10$ players. So the positions $p_1<p_2$ of the two impostors in this order form a uniformly random pair among the $\dbinom{10}{2}=45$ pairs; the winner is decided by these positions.
+\begin{itemize}
+\item If $p_1\ge7$, the first six removals are crewmates, and after the sixth removal there are $2$ impostors and $2$ crewmates: the impostors win.
+\item If $p_1\le6$, at most $5$ crewmates are gone when the first impostor leaves, so at least $3$ remain and the game goes on with $1$ impostor. The impostor wins if the crewmates drop to $1$ first, i.e. if $7$ crewmates are removed before position $p_2$. Before $p_2$ there are $p_2-2$ crewmates, so this means $p_2\ge9$. Otherwise the crewmates win.
+\end{itemize}
+The favourable pairs are those inside $\{7,8,9,10\}$, $\dbinom42=6$ of them, and those with $p_1\le6$ and $p_2\in\{9,10\}$, $6\cdot2=12$ of them. The probability is
+\[\dfrac{6+12}{45}=\boxed{\dfrac25}.\]

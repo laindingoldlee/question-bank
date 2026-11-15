@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2581551_pythagorean_triples_115
+% Stable identity: aops-topic-2581551-q01
+We need positive integers $a<b<c\le16$ with $a^2+b^2=c^2$.
+
+Every such triple is a multiple $k(x,y,z)$ of a \emph{primitive} triple (one with $\gcd(x,y,z)=1$). The primitive triples are $\left(m^2-n^2,\ 2mn,\ m^2+n^2\right)$, in some order, for coprime $m>n\ge1$ of opposite parity. Here $z=m^2+n^2\le16$ allows only $(m,n)=(2,1)$ and $(3,2)$, which give $(3,4,5)$ and $(5,12,13)$; the next one, $(m,n)=(4,1)$, gives $z=17$.
+
+Multiples with $kz\le16$:
+\begin{itemize}
+\item from $(3,4,5)$: $(3,4,5)$, $(6,8,10)$, $(9,12,15)$;
+\item from $(5,12,13)$: only $(5,12,13)$ itself.
+\end{itemize}
+(A direct check of each $c\le16$, testing whether $c^2-a^2$ is a perfect square, gives the same list.)
+
+So there are $\boxed{4}$ sets. The one that is easy to miss is $\{5,12,13\}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+void rt(pair o,real a,real bb,string sa,string sb,string sc){
+ draw(o--(o+(a,0))--(o+(0,bb))--cycle,linewidth(0.8));
+ draw((o+(0.5,0))--(o+(0.5,0.5))--(o+(0,0.5)));
+ label(sa,o+(a/2,0),S);label(sb,o+(0,bb/2),W);label(sc,o+(a/2,bb/2),NE);}
+rt((0,0),3,4,"$3$","$4$","$5$");
+rt((5.5,0),6,8,"$6$","$8$","$10$");
+rt((14,0),5,12,"$5$","$12$","$13$");
+rt((21.5,0),9,12,"$9$","$12$","$15$");
+\end{asy}

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3191307_2014_bmmt_individual_round__berkley_mini_math_tournament
+% Stable identity: aops-topic-3191307-q07
+Place $C=(0,0)$, $B=(4,0)$, and $D=(0,4)$. Convexity fixes $E=(2\sqrt2,4+2\sqrt2)$ on the appropriate side of the turn at $D$. Then $BE^2=(2\sqrt2-4)^2+(4+2\sqrt2)^2=48$, so $BE=\boxed{4\sqrt3}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] pts={(6,5),(4,0),(0,0),(0,4),(2*sqrt(2),4+2*sqrt(2))}; string[] names={"$A$","$B$","$C$","$D$","$E$"}; path boundary=pts[0]; for(int j=1;j<pts.length;++j)boundary=boundary--pts[j];draw(boundary--cycle); for(int i=0;i<pts.length;++i) label(names[i],pts[i],dir(90+360*i/pts.length));
+\end{asy}

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2425117_100th_post
+% Stable identity: aops-topic-2425117-q04
+The expression is defined when $\sin a\ne0$, $\cos a\ne0$ (so that $\sec a$ and $\csc a$ exist) and $\sec a+\csc a\ne0$. Multiplying the numerator and the denominator by $\sin a\cos a$,
+\[\dfrac{\sec a-\csc a}{\sec a+\csc a}=\dfrac{\sin a-\cos a}{\sin a+\cos a}.\]
+(The condition $\sec a+\csc a\ne0$ is the same as $\sin a+\cos a\ne0$.) Dividing the numerator and the denominator by $\cos a$ and using $\tan\dfrac\pi4=1$,
+\[\dfrac{\sin a-\cos a}{\sin a+\cos a}=\dfrac{\tan a-1}{1+\tan a}=\boxed{\tan\left(a-\dfrac{\pi}{4}\right)}.\]
+So the expression equals $\tan\left(a-\dfrac\pi4\right)$ for every $a$ that is not a multiple of $\dfrac\pi2$ and not of the form $\dfrac{3\pi}{4}+k\pi$. The graph below shows it on $[-\pi,\pi]$, with holes at the multiples of $\dfrac\pi2$ and asymptotes at $a=-\dfrac\pi4$ and $a=\dfrac{3\pi}4$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return tan(x-pi/4);}
+draw((-3.5,0)--(3.6,0),Arrow(6)); draw((0,-3.3)--(0,3.4),Arrow(6));
+label("$x$",(3.6,0),E); label("$y$",(0,3.4),N);
+draw(graph(f,-pi,-3pi/4+atan(3)),blue+linewidth(0.9));
+draw(graph(f,pi/4-atan(3),pi/4+atan(3)),blue+linewidth(0.9));
+draw(graph(f,5pi/4-atan(3),pi),blue+linewidth(0.9));
+draw((-pi/4,-3.2)--(-pi/4,3.2),dashed); draw((3pi/4,-3.2)--(3pi/4,3.2),dashed);
+filldraw(circle((0,-1),0.07),white,blue); filldraw(circle((pi/2,1),0.07),white,blue); filldraw(circle((-pi/2,1),0.07),white,blue);
+filldraw(circle((pi,-1),0.07),white,blue); filldraw(circle((-pi,-1),0.07),white,blue);
+label("$\pi$",(pi,0),S,fontsize(8pt)); label("$-\pi$",(-pi,0),S,fontsize(8pt));
+label("$\dfrac{\pi}{2}$",(pi/2,0),S,fontsize(8pt)); label("$-\dfrac{\pi}{2}$",(-pi/2,0),S,fontsize(8pt));
+label("$1$",(0,1),W,fontsize(8pt)); label("$-1$",(0,-1),E,fontsize(8pt));
+draw((-0.05,1)--(0.05,1));
+\end{asy}

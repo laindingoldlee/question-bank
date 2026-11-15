@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2697955_1_year_anniversary_post_d
+% Stable identity: aops-topic-2697955-q06
+\emph{Step 1: the cosine formula.} The chord between the unit-circle points at angles $0$ and $\alpha+\beta$ has the same length as the chord between the points at angles $-\beta$ and $\alpha$, since both subtend the angle $\alpha+\beta$ at the centre. Squaring the distances:
+\[(\cos(\alpha+\beta)-1)^2+\sin^2(\alpha+\beta)=(\cos\alpha-\cos\beta)^2+(\sin\alpha+\sin\beta)^2,\]
+which simplifies to $2-2\cos(\alpha+\beta)=2-2\left(\cos\alpha\cos\beta-\sin\alpha\sin\beta\right)$. So $\cos(\alpha+\beta)=\cos\alpha\cos\beta-\sin\alpha\sin\beta$. Replacing $\beta$ by $-\beta$ gives $\cos(\alpha-\beta)=\cos\alpha\cos\beta+\sin\alpha\sin\beta$.
+
+\emph{Step 2.} Using $\sin\theta=\cos\left(90^\circ-\theta\right)$ twice,
+\[\sin(\alpha+\beta)=\cos\left(\left(90^\circ-\alpha\right)-\beta\right)=\cos\left(90^\circ-\alpha\right)\cos\beta+\sin\left(90^\circ-\alpha\right)\sin\beta=\sin\alpha\cos\beta+\cos\alpha\sin\beta.\ \blacksquare\]
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+draw(unitcircle,gray);pair O=(0,0),P0=(1,0),P1=dir(110),Q1=dir(70),Q2=dir(-40);
+draw(P0--P1,linewidth(0.8));draw(Q1--Q2,linewidth(0.8));draw(O--P1,gray);draw(O--Q1,gray);draw(O--Q2,gray);draw(O--P0,gray);
+dot(P0);dot(P1);dot(Q1);dot(Q2);
+label("$1$",P0,E,fontsize(7pt));label("$\alpha+\beta$",P1,NW,fontsize(7pt));label("$\alpha$",Q1,NE,fontsize(7pt));label("$-\beta$",Q2,SE,fontsize(7pt));
+\end{asy}

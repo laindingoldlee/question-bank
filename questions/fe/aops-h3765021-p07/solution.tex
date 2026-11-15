@@ -1,0 +1,7 @@
+The first hexagon uses 6 matchsticks. Each additional hexagon shares exactly one side with the existing chain, so it adds 5. Thus $n$ hexagons require $5n+1$ sticks. The largest $n$ with $5n+1\le2023$ is $\boxed{404}$, using 2021 sticks.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int j=0;j<4;++j){pair O=(sqrt(3)*j,0);path h;for(int k=0;k<6;++k)h=h--(O+dir(30+60*k));draw(h--cycle);}label("each new hexagon adds 5 sticks",(2.5,-1.6));
+\end{asy}

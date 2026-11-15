@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1382343_another_recursion_problem
+% Stable identity: aops-topic-1382343-q01
+\textbf{Claim.} For $n\ge2$ and $2\le m\le n-1$,
+\[
+S(n,m)=S(n-1,m-1)+m\,S(n-1,m),
+\]
+with $S(n,1)=S(n,n)=1$ for all $n\ge1$ (and $S(n,m)=0$ if $m>n$).
+
+\textbf{Proof.} One way to divide $n$ objects into $m$ nonempty boxes is the same as a partition of the set $\{1,\dots,n\}$ into $m$ nonempty blocks (the boxes are indistinguishable, so only the blocks matter). Look at object $n$.
+\begin{itemize}
+\item If $n$ is alone in its block, removing that block leaves a partition of $\{1,\dots,n-1\}$ into $m-1$ blocks; conversely every such partition plus the block $\{n\}$ gives one of ours. This gives $S(n-1,m-1)$ partitions.
+\item Otherwise, removing $n$ leaves a partition of $\{1,\dots,n-1\}$ into $m$ nonempty blocks. Conversely, from each such partition we get exactly $m$ of ours by putting $n$ into one of its $m$ blocks, which are distinct because they contain different objects. This gives $m\,S(n-1,m)$ partitions.
+\end{itemize}
+Adding the two cases proves the recursion. The initial values hold because there is one way to put everything in one box and one way to put each object in its own box.
+
+\textbf{Example.} $S(3,2)=S(2,1)+2S(2,2)=3$, $S(4,2)=S(3,1)+2S(3,2)=7$, $S(4,3)=S(3,2)+3S(3,3)=6$, so
+\[
+S(5,3)=S(4,2)+3S(4,3)=7+18=\boxed{25}.
+\]

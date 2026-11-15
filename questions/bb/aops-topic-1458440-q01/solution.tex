@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1458440_geometry_18
+% Stable identity: aops-topic-1458440-q01
+\textbf{Lemma.} Let $P$ be a point and $UV$ a segment. For every point $Q$ of the segment strictly between $U$ and $V$, $PQ<\max(PU,PV)$.
+
+\emph{Proof.} Write $Q=(1-t)U+tV$ with $0<t<1$. By the triangle inequality for vectors,
+\[
+PQ=\left|(1-t)(U-P)+t(V-P)\right|\le(1-t)PU+t\,PV\le\max(PU,PV).
+\]
+If both inequalities were equalities, then $U-P$ and $V-P$ would point in the same direction and $PU=PV$ (the second equality with $0<t<1$ forces this), so $U=V$, which is impossible. Hence $PQ<\max(PU,PV)$.
+
+\textbf{Proof of the claim.} Apply the lemma three times.
+\begin{itemize}
+\item $E$ is strictly inside segment $CA$, so $DE<\max(DC,DA)$.
+\item $D$ is strictly inside segment $BC$, so $DC<BC$.
+\item $D$ is strictly inside segment $BC$, so (with $P=A$) $DA<\max(AB,AC)\le BC$.
+\end{itemize}
+Therefore $DE<\max(DC,DA)<BC$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.6,2.7),B=(0,0),C=(5,0);
+pair D=(3.1,0), Ee=C+0.55*(A-C);
+draw(D--A,gray+dashed);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(D--Ee,red+linewidth(0.9));
+dot(A);dot(B);dot(C);dot(D);dot(Ee);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S); label("$E$",Ee,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The condition that $D$ and $E$ are not vertices is needed: for $D=B$ and $E=C$ we get $DE=BC$.

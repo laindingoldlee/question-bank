@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h1348586_squares_in_a_n_by_n_grid
+% Stable identity: aops-topic-1348586-q01
+Place the points at $(i,j)$ with $0\le i,j\le n-1$.
+
+\textbf{Every square sits in an axis-parallel bounding square.} Take a square with lattice vertices and let its side vector be $(a,b)$ with $a\ge0$, $b>0$ (rotate the labels if necessary); the next side is $(-b,a)$. Its smallest axis-parallel bounding box then has width and height both equal to $k=a+b$, so it is a square of side $k$, and the four vertices lie one on each side of the box, at distance $a$ from the corners going around:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<5;++i) for(int j=0;j<5;++j) dot((i,j),gray);
+draw((1,0)--(4,0)--(4,3)--(1,3)--cycle,blue+dashed);
+draw((2,0)--(4,1)--(3,3)--(1,2)--cycle,red+linewidth(1));
+dot((2,0),red);dot((4,1),red);dot((3,3),red);dot((1,2),red);
+label("$k=3$",(4,1.5),E,blue); label("$a$",(1.5,0),S); label("$k-a$",(3,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Conversely, for a bounding square of side $k$ and each $a=0,1,\dots,k-1$, marking the points at distance $a$ from each corner (going around) gives a square with lattice vertices; $a=0$ is the bounding square itself. Different values of $a$ give different squares, and $a=k$ would repeat $a=0$. So each axis-parallel lattice square of side $k$ is the bounding square of exactly $k$ squares.
+
+\textbf{Counting.} An axis-parallel square of side $k$ ($1\le k\le n-1$) can be placed in $(n-k)^2$ positions. Hence the number of squares is
+\[
+\sum_{k=1}^{n-1}k(n-k)^2 .
+\]
+Expanding, with $\sum k=\dfrac{(n-1)n}{2}$, $\sum k^2=\dfrac{(n-1)n(2n-1)}{6}$ and $\sum k^3=\dfrac{(n-1)^2n^2}{4}$:
+\[
+\sum_{k=1}^{n-1}\left(n^2k-2nk^2+k^3\right)=n^2(n-1)\left(\dfrac {n}{2}-\dfrac{2n-1}{3}+\dfrac{n-1}{4}\right)=n^2(n-1)\cdot\dfrac{n+1}{12}.
+\]
+So the number of squares is
+\[
+\boxed{\dfrac{n^2(n^2-1)}{12}} .
+\]
+For example $n=3$ gives $6$ (four unit squares, one $2\times2$ square and one tilted square of side $\sqrt2$).
+
+(If ``$n$ by $n$ grid'' means a grid of $n\times n$ unit cells, it has $n+1$ points on a side, and the count is $\dfrac{(n+1)^2\left((n+1)^2-1\right)}{12}=\dfrac{n(n+1)^2(n+2)}{12}$.)

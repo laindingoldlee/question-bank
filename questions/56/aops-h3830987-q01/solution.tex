@@ -1,0 +1,11 @@
+The progressions force $M=\dfrac{A+B}{2}$, $N=\dfrac{B+C}{2}$, and $P=\dfrac{C+A}{2}$. Thus $A,B,C$ must have the same parity. There are $5\cdot4\cdot3+4\cdot3\cdot2=84$ ordered triples of distinct same-parity corner values.
+
+Their three averages are always integers in the allowed range and are distinct from one another. A collision with a corner occurs exactly when the three corner values themselves form an arithmetic progression. Among the five odd values there are four three-term progressions, and among the four even values there are two. Each gives six ordered corner triples, so the successful count is $84-6\cdot6=48$.
+
+The sample space has $9\cdot8\cdot7\cdot6\cdot5\cdot4=60480$ assignments. Hence $p=\dfrac{48}{60480}=\dfrac{1}{1260}$ and $\boxed{\dfrac{4}{p}=5040}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,4),B=(-3,0),C=(3,0),M=(A+B)/2,N=(B+C)/2,P=(C+A)/2;draw(A--B--C--cycle);label("$A=41$",A,(0,1));label("$B=43$",B,SW);label("$C=49$",C,SE);label("$M=42$",M,NW);label("$N=46$",N,S);label("$P=45$",P,NE);
+\end{asy}

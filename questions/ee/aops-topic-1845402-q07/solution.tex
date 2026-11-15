@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1845402_mit_primes_step_questions
+% Stable identity: aops-topic-1845402-q07
+Let $x$ be the side of the square. Since $RS$ lies on $BC$ and $PQ\parallel RS$, we have $PQ\parallel BC$, and $PQ$ is at distance $x$ from $BC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(6,0),A=(2.2,4);
+real s=6*4/10;
+pair P=B+(A-B)*(s/4),Q=C+(A-C)*(s/4),R=(Q.x,0),S0=(P.x,0),Hf=(A.x,0);
+draw(A--B--C--cycle,linewidth(0.8));
+filldraw(P--Q--R--S0--cycle,lightgray);
+draw(A--Hf,dashed);
+draw((Hf+(0.18,0))--(Hf+(0.18,0.18))--(Hf+(0,0.18)));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$P$",P,W);label("$Q$",Q,E);label("$R$",R,S);label("$S$",S0,S);
+label("$h_a$",(A.x,3.3),E);label("$x$",(Q+R)/2,E);
+\end{asy}
+
+So triangle $APQ$ is similar to triangle $ABC$ (corresponding angles are equal), and its altitude from $A$ is $h_a-x$. Corresponding lengths are in the same ratio:
+\[\dfrac{PQ}{BC}=\dfrac{h_a-x}{h_a}\qquad\Longrightarrow\qquad\dfrac xa=\dfrac{h_a-x}{h_a}.\]
+Hence $xh_a=ah_a-ax$, and
+\[\boxed{x=\dfrac{ah_a}{a+h_a}}.\]
+(Conversely, the segment $PQ$ parallel to $BC$ at this height has length $x$, and since the angles at $B$ and $C$ are acute, the feet $S$ and $R$ of the perpendiculars from $P$ and $Q$ lie on side $BC$, so the square exists.)

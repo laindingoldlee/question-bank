@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2501936_pigeonhole_principle
+% Stable identity: aops-topic-2501936-q01
+The answer is $\boxed{55}$, so the student's $66$ is wrong.
+
+\textbf{$55$ attempts suffice.} Try the first key in the suitcases one at a time. If it fails in $10$ of them, it must open the eleventh, which need not be tried: at most $10$ attempts. Remove that key and suitcase and repeat with the second key: at most $9$ attempts. Continuing, the last key needs $0$ attempts. In total at most $10+9+\cdots+1+0=55$ attempts. (The student's count includes the unnecessary last try each time.)
+
+\textbf{$55$ attempts may be necessary.} Picture the possible pairs (key, suitcase) as the edges of a graph $G$ joining the $11$ keys to the $11$ suitcases; initially all $121$ pairs are possible. An assignment is a perfect matching (a set of $11$ edges using every key and every suitcase once). Imagine an unlucky opponent who answers ``it does not open'' whenever some assignment consistent with the answers so far avoids that pair, and ``it opens'' only when every consistent assignment uses that pair. Each ``no'' deletes one edge and leaves at least one assignment; each ``yes'' rules nothing out. So at every moment the possible assignments are exactly the perfect matchings of the current graph, and we know the answer only when this graph has exactly one perfect matching.
+
+\emph{Lemma.} A graph joining $n$ keys to $n$ suitcases with exactly one perfect matching $M$ has at most $\dfrac{n(n+1)}{2}$ edges.
+
+\emph{Proof.} First, some vertex has degree $1$. Otherwise every vertex has an edge outside $M$ (it has an edge in $M$ and at least one more). Start at a key $k_0$, follow an edge outside $M$ to a suitcase $s_0$, then the $M$-edge from $s_0$ to a key $k_1$, then an edge outside $M$ from $k_1$ to $s_1$, and so on. Some key repeats; the first repetition closes a cycle whose edges alternate between $M$ and non-$M$ edges. (The cycle has at least $4$ edges: $k_{i+1}=k_i$ would make the non-$M$ edge $k_is_i$ an $M$-edge.) Swapping the $M$-edges of this cycle for its other edges gives a second perfect matching, a contradiction.
+
+Now induct on $n$; the case $n=1$ is clear. Let $v$ have degree $1$. Its only edge is in $M$, say $vw$. Deleting $v$ and $w$ removes at most $1+(n-1)=n$ edges (the edge $vw$ and at most $n-1$ other edges at $w$), and leaves a graph with $n-1$ keys and $n-1$ suitcases whose only perfect matching is $M$ without $vw$ (another one, together with $vw$, would be a second perfect matching of the original graph). By induction it has at most $\dfrac{(n-1)n}{2}$ edges, so the original has at most $n+\dfrac{(n-1)n}{2}=\dfrac{n(n+1)}{2}$. $\square$
+
+With $n=11$, the final graph has at most $66$ edges, so at least $121-66=55$ edges were deleted, that is, against this opponent at least $55$ attempts fail. Hence no method can guarantee success with fewer than $55$ attempts. $\blacksquare$

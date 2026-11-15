@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1257512_geometry
+% Stable identity: aops-topic-1257512-q01
+Let the diagonals be $6k$ and $8k$. They bisect each other at right angles, so the side is $\sqrt{(3k)^2+(4k)^2}=5k$. The area is both $\dfrac{1}{2}\cdot6k\cdot8k=24k^2$ and side times height $=5k\cdot15=75k$. So $24k^2=75k$, $k=\dfrac{25}{8}$, and the longer diagonal is $8k=\boxed{25}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(-4,0),B=(0,3),C=(4,0),D=(0,-3);
+draw(A--B--C--D--cycle,linewidth(1)); draw(A--C,dashed); draw(B--D,dashed);
+pair F=A+dot(D-A,unit(B-A))*unit(B-A); draw(D--F,red); draw(F+0.4*unit(D-F)--F+0.4*unit(D-F)+0.4*unit(A-B)--F+0.4*unit(A-B),red);
+label("$15$",(D+F)/2,W,red); label("$4k$",(2,0),N); label("$3k$",(0,1.5),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2674572_inscribed_right_angled_triangles
+% Stable identity: aops-topic-2674572-q02
+Since $\angle BAC=90^\circ$, the hypotenuse $BC$ is a diameter, so $BC=8$. In the $30$-$60$-$90$ triangle, $AC=\dfrac{BC}{2}=4$ and $AB=4\sqrt3$. The area is $\dfrac12\cdot4\sqrt3\cdot4=\boxed{8\sqrt3}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),B=4*dir(180),C=4*dir(0),A=4*dir(60);
+draw(circle(O,4),gray);draw(A--B--C--cycle,linewidth(0.8));dot(O);
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,E);label("$O$",O,S);
+label("$4$",(O+C)/2,S,fontsize(8pt));label("$4$",(A+C)/2,SW,fontsize(8pt));label("$30^\circ$",B+(2.0,0.42),fontsize(7pt));
+path ra=A+0.45*unit(B-A)--A+0.45*unit(B-A)+0.45*unit(C-A)--A+0.45*unit(C-A);draw(ra);
+\end{asy}

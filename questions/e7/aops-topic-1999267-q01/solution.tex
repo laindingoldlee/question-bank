@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1999267_geometry
+% Stable identity: aops-topic-1999267-q01
+The circles touch each other at one point, and each touches the line $\ell$ at its own point; that is why there are two tangency points $P$ and $Q$ on $\ell$.
+
+Let $O_1,O_2$ be the centres. Then $O_1P\perp\ell$ with $O_1P=16$, $O_2Q\perp\ell$ with $O_2Q=9$, and since the circles are externally tangent, $O_1O_2=16+9=25$. Let $H$ be the point on $O_1P$ (extended as needed) with $O_2H\parallel\ell$; then $O_1PQO_2$ is a right trapezoid, $O_2H=PQ$ and $O_1H=16-9=7$. By the Pythagorean theorem in right triangle $O_1HO_2$,
+\[
+PQ=\sqrt{25^2-7^2}=\sqrt{576}=\boxed{24}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real k=0.25;
+pair O1=(0,16*k), O2=(24*k,9*k), P=(0,0), Q=(24*k,0);
+draw((-1.5,0)--(8,0)); label("$\ell$",(8,0),E);
+draw(circle(O1,16*k)); draw(circle(O2,9*k));
+draw(O1--P,dashed); draw(O2--Q,dashed); draw(O1--O2);
+pair H=(24*k,16*k); draw(O2--H,dotted); draw(O1--H,dotted);
+dot(O1);dot(O2);dot(P);dot(Q);
+label("$O_1$",O1,W);label("$O_2$",O2,E);label("$P$",P,S);label("$Q$",Q,S);
+label("$25$",(O1+O2)/2,SW);label("$7$",(O2+H)/2,E);label("$H$",H,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(In general $PQ=\sqrt{(r_1+r_2)^2-(r_1-r_2)^2}=2\sqrt{r_1r_2}$.)

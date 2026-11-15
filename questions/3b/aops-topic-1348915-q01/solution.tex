@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1348915_geometry_problem
+% Stable identity: aops-topic-1348915-q01
+The angle $\angle ABC$ is an inscribed angle, so the arc $AC$ that it intercepts (the arc not containing $B$) has measure $2\cdot30^\circ=60^\circ$; equivalently the central angle $\angle AOC$ is $60^\circ$, where $O$ is the centre. This is the minor arc $AC$. (The condition $AB=BC$ only says that $B$ is the midpoint of the major arc; it does not change the answer.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), B=6*dir(-90), A=6*dir(120), C=6*dir(60);
+draw(circle(O,6),linewidth(0.9));
+draw(A--B--C,linewidth(0.9));
+draw(O--A,red+dashed); draw(O--C,red+dashed);
+draw(arc(O,1.1,60,120),red); label("$60^\circ$",O+1.6*dir(90),red+fontsize(9pt));
+draw(arc(B,2.2,60,120)); label("$30^\circ$",B+3.0*dir(90),fontsize(9pt));
+draw(arc(O,6,60,120),blue+linewidth(2));
+dot(O);dot(A);dot(B);dot(C);
+label("$O$",O,S); label("$A$",A,NW); label("$C$",C,NE); label("$B$",B,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The radius is $6$, so the circumference is $12\pi$ and
+\[
+\text{arc }AC=\dfrac{60}{360}\cdot12\pi=\boxed{2\pi}\text{ inches}.
+\]

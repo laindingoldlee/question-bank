@@ -1,0 +1,12 @@
+Let $p$ be the chosen vertex vector from the center and $v_1,\ldots,v_{22}$ all the vertex vectors. They have length $3$ and sum to zero by symmetry. Including the zero distance from $p$ to itself,
+\[
+\sum_{j=1}^{22}|p-v_j|^2
+=22|p|^2+\sum_{j=1}^{22}|v_j|^2-2p\cdot\sum_{j=1}^{22}v_j
+=22\cdot9+22\cdot9=\boxed{396}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair P=(1,0);draw(unitcircle);for(int j=0;j<22;++j){pair V=dir(360j/22);dot(V);draw(P--V,lightblue);}dot(P,red+4bp);label("$P$",P,E);
+\end{asy}

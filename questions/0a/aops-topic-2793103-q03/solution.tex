@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2793103_2002_midmichigan_mathematical_olympiad___grades_56
+% Stable identity: aops-topic-2793103-q03
+Antipodal pairing forces exactly 20 blue chips. With 20 red chips, preventing adjacent blues requires exactly one blue in every gap between reds, so the 40 colours alternate. The antipodal map preserves circular order and moves each chip forward by 20 positions: every open semicircle contains exactly one member of each of the other 19 antipodal pairs. But moving an even number 20 of positions in an alternating sequence preserves colour. This contradicts opposite colours at antipodes. Therefore $\boxed{\text{no}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(circle((0,0),2));for(int k=0;k<40;++k)dot(2*dir(9*k),k%2==0 ? red : blue);draw((-2,0)--(2,0),dashed);label("20 steps",(0,.3));
+\end{asy}

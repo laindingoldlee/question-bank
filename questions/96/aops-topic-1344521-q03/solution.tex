@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1344521_jmo_problems
+% Stable identity: aops-topic-1344521-q03
+The three squares use $3\cdot90^\circ=270^\circ$ of the full angle at $A$, so each of the three equal gaps is
+\[
+\angle JAB=\angle DAE=\angle GAH=\dfrac{360^\circ-270^\circ}{3}=30^\circ .
+\]
+The points $B$, $G$, $H$ are vertices of the squares adjacent to $A$, so $AB=AG=AH$ (the common side length): they lie on the circle with centre $A$ through $B$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0);
+pair B=dir(0), D=dir(90), C=B+D;
+pair Ep=dir(120), G=dir(210), F=Ep+G;
+pair H=dir(240), J=dir(330), I=H+J;
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(A--Ep--F--G--cycle,linewidth(0.9)); draw(A--H--I--J--cycle,linewidth(0.9));
+draw(circle(A,1),gray+dashed);
+draw(B--G,red); draw(B--H,red);
+draw(arc(A,0.7,210,240),blue); label("$30^\circ$",0.86*dir(225),blue+fontsize(8pt));
+draw(arc(B,0.7,180+15,180+30),red); label("$15^\circ$",B+0.86*dir(202.5),red+fontsize(8pt));
+label("$A$",A,dir(50)); label("$B$",B,E); label("$C$",C,NE); label("$D$",D,N);
+label("$E$",Ep,NW); label("$F$",F,W); label("$G$",G,dir(190));
+label("$H$",H,S); label("$I$",I,S); label("$J$",J,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Going anticlockwise from $AB$: $AD$ is at $90^\circ$, $AE$ at $120^\circ$, $AG$ at $210^\circ$, $AH$ at $240^\circ$ and $AJ$ at $330^\circ$. So the arc $GH$ not containing $B$ has central angle $\angle GAH=30^\circ$, and by the inscribed angle theorem
+\[
+\angle GBH=\dfrac{1}{2}\angle GAH=\boxed{15^\circ}.
+\]

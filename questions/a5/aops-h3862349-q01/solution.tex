@@ -1,0 +1,23 @@
+Write $b=AC=\sqrt6$ and $c=AB=\sqrt{202}$. Set $A=(0,0)$, $B=(c,0)$, $C=(\dfrac{b}{2},\sqrt3\dfrac{b}{2})$. The circumcenter is
+\[
+O=\left(\dfrac{c}{2},\dfrac{2b-c}{2\sqrt3}\right).
+\]
+Rotating $A-O$ through $\pm120^\circ$ about $O$ gives
+\[
+Y=\left(c-\dfrac{b}{2},\dfrac{\sqrt3b}{2}\right),\qquad
+X=\left(\dfrac{b+c}{2},\dfrac{\sqrt3(b-c)}{2}\right).
+\]
+These are the equilateral-triangle vertices in the required order.
+
+The opposite sides $BY$ and $CX$ are parallel, with lengths $b$ and $c$. Their perpendicular separation is $\dfrac{\sqrt 3(c-b)}{2}$. Hence the quadrilateral is a trapezoid of area
+\[
+\dfrac{b+c}{2}\cdot\dfrac{\sqrt3(c-b)}{2}
+=\dfrac{\sqrt3}{4}(c^2-b^2)=49\sqrt3.
+\]
+Therefore $\boxed{m+n=52}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real b=sqrt(6),c=sqrt(202);pair A=(0,0),B=(c,0),C=(b/2,sqrt(3)*b/2),O=(c/2,(2b-c)/(2sqrt(3))),Y=(c-b/2,sqrt(3)*b/2),X=((b+c)/2,sqrt(3)*(b-c)/2);fill(B--Y--C--X--cycle,lightblue);draw(circle(O,length(O)),gray);draw(A--B--C--cycle);draw(A--X--Y--cycle,blue);draw(B--Y--C--X--cycle,red);label("$A$",A,(-1,0));label("$B$",B,(1,0));label("$C$",C,(0,1));label("$Y$",Y,(0,1));label("$X$",X,(0,-1));
+\end{asy}

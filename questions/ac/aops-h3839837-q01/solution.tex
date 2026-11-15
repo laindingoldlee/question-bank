@@ -1,0 +1,20 @@
+Let the bases be $4k,5k$ and the height be $h$. The triangles formed by the diagonals and the two parallel bases are similar, so the diagonal intersection is at height $\dfrac{4}{9}h$ from the shorter base. A parallel cross-section has length varying linearly with height, hence the cut has length
+\[
+4k+\dfrac{4}{9}(5k-4k)=\dfrac{40k}{9}.
+\]
+The two areas are therefore
+\[
+\dfrac{1}{2}\left(4k+\dfrac{40k}{9}\right)\dfrac{4h}{9}
+=\dfrac{152kh}{81},
+\]
+\[
+\dfrac{1}{2}\left(5k+\dfrac{40k}{9}\right)\dfrac{5h}{9}
+=\dfrac{425kh}{162}.
+\]
+Their requested ratio is $\boxed{304:425}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(4,0),C=(5,4),D=(0,4),O=(20/9,16/9);fill(A--B--(40/9,16/9)--(0,16/9)--cycle,lightblue);draw(A--B--C--D--cycle);draw(A--C,dashed);draw(B--D,dashed);draw((0,16/9)--(40/9,16/9),blue);label("$4k$",A--B,S);label("$5k$",D--C,N);label("$O$",O,NE);
+\end{asy}

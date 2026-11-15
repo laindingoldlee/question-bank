@@ -1,0 +1,9 @@
+The right angles at $B,C$ place both points on the circle with diameter $AH$, so $AH$ is the diameter of the circumcircle of $ABC$. Heron\textquotesingle s formula gives area $\sqrt{32\cdot27\cdot3\cdot2}=72$. Therefore $AH=2R=\dfrac{5\cdot29\cdot30}{2\cdot72}=\boxed{\dfrac{725}{24}}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(5,0),(42/5,144/5)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));pair H=(5, (900-42)/ (144/5));draw(p[1]--H--p[2]);draw(p[0]--H,dashed);label("$H$",H,(0,1));
+\end{asy}
+

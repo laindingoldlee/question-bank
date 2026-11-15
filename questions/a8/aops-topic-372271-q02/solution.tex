@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h372271_mathcounts_algebra_problem_and_others
+% Stable identity: aops-topic-372271-q02
+Consecutive angles of a parallelogram add up to $180^\circ$, so the parallelogram $ABCD$ has angles $60^\circ$ and $120^\circ$. Take $AB=15$, $AD=8$ and $\angle A=60^\circ$. The height from $D$ to $AB$ is the long leg of a $30$-$60$-$90$ triangle with hypotenuse $8$:
+\[
+h=8\sin60^\circ=4\sqrt3 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(15,0),D=8*dir(60),C=B+D;
+pair H=(D.x,0);
+draw(D--H,gray+dashed);
+draw(H+(0.5,0)--H+(0.5,0.5)--H+(0,0.5),gray);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(arc(B,1,60,180),red); draw(arc(A,1,0,60),blue);
+dot(A);dot(B);dot(C);dot(D);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$15$",(A+B)/2+(0.8,0),S); label("$8$",(A+D)/2,NW);
+label("$120^\circ$",B+2.0*dir(122),red+fontsize(8pt)); label("$60^\circ$",A+2.1*dir(27),blue+fontsize(8pt));
+label("$4\sqrt{3}$",(D+H)/2,E,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the area is $15\cdot4\sqrt3=\boxed{60\sqrt3}$ square inches. The poster's $76\sqrt3$ is not correct.

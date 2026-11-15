@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2811463_geometry_and_quadrilaterals
+% Stable identity: aops-topic-2811463-q01
+Write $\beta=\angle DBA$, $t=\angle DBC$, and $u=\angle BDC$. Triangle $BDC$ gives $t+u=\beta$, so $u=\beta-t>0$. Triangle $ABD$ gives $\dfrac{AB}{BD}=\cos\beta$, and the sine rule in $BCD$ gives $\dfrac{BC}{BD}=\dfrac{\sin u}{\sin\beta}$. In triangle $ABC$, the angles at $A,B$ are $2u,\beta+t$, and the sine rule gives $\dfrac{BC}{AB}=\dfrac{\sin2u}{\sin(3\beta-t)}$. Combining these and canceling $\sin u>0$ yields $\sin(3\beta-t)=\sin2\beta\cos(\beta-t)=\dfrac{1}{2}[\sin(3\beta-t)+\sin(\beta+t)]$. Thus $\sin(3\beta-t)=\sin(\beta+t)$. Both arguments lie strictly between $0^\circ$ and $180^\circ$. Equality of the arguments would give $u=0$, impossible. Therefore they sum to $180^\circ$, giving $4\beta=180^\circ$ and $\boxed{\beta=45^\circ}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair B=(0,0),D=(1,0),A=(.5,.5),C=sin(25*pi/180)/sin(pi/4)*dir(-20);draw(A--B--C--D--cycle);draw(A--C^^B--D,dashed);label("$A$",A,N);label("$B$",B,W);label("$C$",C,S);label("$D$",D,E);
+\end{asy}

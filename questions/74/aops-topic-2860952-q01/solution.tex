@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2860952_100th_post
+% Stable identity: aops-topic-2860952-q01
+The number of trailing zeros is $\left\lfloor\dfrac{99}5\right\rfloor+\left\lfloor\dfrac{99}{25}\right\rfloor=22$, and $99!$ contains $5^{22}$ exactly. Let $N=\dfrac{99!}{10^{22}}$; we want $N\bmod10$. Since $N$ is even (there are far more than $22$ factors of $2$), it suffices to find $N\bmod5$.
+
+Let $R=\dfrac{99!}{5^{22}}$, the product of $1,\dots,99$ with all factors of $5$ removed. Modulo $5$:
+\begin{itemize}
+\item The $80$ numbers in $1,\dots,99$ not divisible by $5$ form $20$ blocks congruent to $1,2,3,4$, each with product $24\equiv-1$. They contribute $(-1)^{20}=1$.
+\item The multiples $5k$ ($k=1,\dots,19$) contribute $k$ with its factors of $5$ removed: the $16$ values of $k$ not divisible by $5$ form $4$ such blocks, contributing $(-1)^4=1$, and $k=5,10,15$ contribute $1\cdot2\cdot3=6\equiv1$.
+\end{itemize}
+So $R\equiv1\pmod5$. Then $N=\dfrac{R}{2^{22}}$, and $2^{22}=4\cdot16^5\equiv4\pmod5$, whose inverse modulo $5$ is $4$. So $N\equiv4\pmod5$. Being even, $N\equiv\boxed{4}\pmod{10}$.

@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1658686_a_wellknown_variation_on_nim
+% Stable identity: aops-topic-1658686-q01
+Saying $N-1$ wins, because the opponent must then say $N$. More generally, call a number $k<N$ \emph{safe} if $k\equiv N-1\pmod4$.
+
+\textbf{Key fact.} If you end your turn on a safe number $k<N-1$, you can end your next turn on the next safe number $k+4$: the opponent says $1$, $2$ or $3$ numbers, and you then say $3$, $2$ or $1$ numbers respectively. Repeating this you eventually end on $N-1$, and the opponent must say $N$. So a player who can end a turn on a safe number wins.
+
+\textbf{(a)} $N=21$: the safe numbers are $4,8,12,16,20$. The first player's first turn ends on $1$, $2$ or $3$, and the second player completes the count to $4$, a safe number. So the \textbf{second player} wins by always making the two turns of a round add up to four numbers, ending on $4,8,12,16,20$.
+
+\textbf{(b)} $N=31$: the safe numbers are $2,6,10,\dots,30$. The \textbf{first player} wins by saying $1,2$ on the first turn and then always ending on $6,10,14,\dots,30$.
+
+\textbf{(c)} If $N\not\equiv1\pmod4$, the smallest safe number is $1$, $2$ or $3$, and the first player reaches it on the first turn and wins. If $N\equiv1\pmod4$, the safe numbers are the multiples of $4$, the first player cannot reach $4$ on the first turn, and the second player reaches a safe number after the first turn and wins. So the first player can force a win exactly when
+\[
+\boxed{N\not\equiv1\pmod 4}.
+\]

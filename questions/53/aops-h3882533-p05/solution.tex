@@ -1,0 +1,16 @@
+Scale to $k=1$ and take the line as the $x$-axis. Let the intersections have coordinates $-3t,-t,t,3t$. Both circle centers then have $x=0$. Write them as $O=(0,h)$ and $S=(0,j)$, choosing orientation so $h-j=\dfrac{1}{2}$. Their radii give $9t^2+h^2=1$ and $t^2+j^2=\dfrac{1}{4}$. Eliminating $t$ yields $8j^2-j-\dfrac{3}{2}=0$. The root $j=\dfrac{1}{2}$ would give $t=0$, so
+\[
+j=-\dfrac{3}{8},\quad h=\dfrac{1}{8},\quad t=\dfrac{\sqrt 7}{8}.
+\]
+A candidate circle of radius $\rho$ has center $(x,\varepsilon\rho)$, where $\varepsilon=\pm1$. Its two tangencies imply
+\[
+x^2=\dfrac{63}{64}+(\dfrac{\varepsilon}{4}-2)\rho,\qquad
+x^2=\dfrac{7}{64}+(1-3\dfrac{\varepsilon}{4})\rho.
+\]
+Thus $\rho=\dfrac{7}{[8(3-\varepsilon)]}$. The radii are $\dfrac{7}{16}$ above the line and $\dfrac{7}{32}$ below it; each yields two real centers with opposite nonzero $x$ coordinates. The larger diameter is $\dfrac{7}{8}$, so $\boxed{m+n=15}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,1.0/8),S=(0,-3.0/8);draw(circle(O,1));draw(circle(S,.5),blue);draw((-1.2,0)--(1.2,0),gray);for(int z=-1;z<=1;z+=2){draw(circle((z*sqrt(14)/8,7.0/16),7.0/16),red);draw(circle((z*3sqrt(14)/16,-7.0/32),7.0/32),heavygreen);}dot(O);dot(S);label("$O$",O,N);label("$S$",S,S);
+\end{asy}

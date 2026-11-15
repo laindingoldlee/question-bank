@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2944266_san_jose_math_circle_monthly_contest_201718_7th8th_grade_contest_25
+% Stable identity: aops-topic-2944266-q01
+Let $D_j(s)$ count ways to form $s$ using the first $j$ denominations. The recurrence adds either no bill of the newest denomination $d$ or one such bill to a smaller total: $D_j(s)=D_{j-1}(s)+D_j(s-d)$, with empty total counted once and negative totals zero. The exact computation gives $\boxed{4562}$.
+\begin{verbatim}
+ways=[1]+[0]*100
+for d in [1,2,5,10,20,50]:
+ for s in range(d,101):ways[s]+=ways[s-d]
+assert ways[100]==4562
+\end{verbatim}

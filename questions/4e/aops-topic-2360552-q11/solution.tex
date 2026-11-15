@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2360552_objectzs_1000th_post_problems_and_other_special_posts
+% Stable identity: aops-topic-2360552-q11
+When adding $864$ to $n$, each carry reduces the digit sum by $9$, so $s(n+864)=s(n)+18-9k$, where $k$ is the number of carries. We need $k=2$.
+
+A three-digit $n=\overline{abc}$ with $s(n)=20$ has $a\ge2$, so the hundreds place always carries ($a+8\ge10$). Exactly one of the units and tens places must also carry:
+\begin{itemize}
+\item a units carry ($c+4\ge10$) and no tens carry ($b+6+1\le9$, i.e. $b\le2$): then $a+b+c\le9+2+9$, with equality only for $929$;
+\item a tens carry ($b+6\ge10$, so $b\ge4$) and no units carry ($c\le5$).
+\end{itemize}
+In the second case $a+b+c=20$ with $c\le5$ and $b\le9$ forces $a\ge6$; the smallest choice is $a=6$, $b=9$, $c=5$, giving $695$. This is less than $929$, and no number below $695$ with digit sum $20$ works. Check: $695+864=1559$, and $s(695)=s(1559)=20$. The answer is $\boxed{695}$.

@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h2141953_the_two_lines
+% Stable identity: aops-topic-2141953-q01
+\textbf{(a)} Let the lines make angles $\alpha_1$ and $\alpha_2$ with the positive $x$-axis, measured counterclockwise and chosen in the interval $(-90^\circ,90^\circ)$, so that $m_1=\tan\alpha_1$ and $m_2=\tan\alpha_2$. The lines intersect, so they are not parallel and $\alpha_1\ne\alpha_2$; say $\alpha_1<\alpha_2$. The lines form the angles $\varphi=\alpha_2-\alpha_1$ and $180^\circ-\varphi$, where $0^\circ<\varphi<180^\circ$, and $\theta$ is the smaller of them.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0);
+draw((-3.2,0)--(3.6,0),gray+dashed);
+draw(-3.2*dir(20)--3.6*dir(20),blue+linewidth(0.9));
+draw(-1.2*dir(70)--3.6*dir(70),red+linewidth(0.9));
+draw(arc(P,2.6,0,20),blue); label("$\alpha_1$",2.85*dir(10),blue+fontsize(8pt));
+draw(arc(P,0.75,0,70),red); label("$\alpha_2$",1.0*dir(84),red+fontsize(8pt));
+draw(arc(P,1.9,20,70),deepgreen+linewidth(0.8)); label("$\theta$",2.15*dir(45),deepgreen);
+label("slope $m_1=\tan\alpha_1$",3.6*dir(20),E,blue+fontsize(8pt));
+label("slope $m_2=\tan\alpha_2$",3.6*dir(70),N,red+fontsize(8pt));
+dot(P);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $\cos\alpha_1>0$ and $\cos\alpha_2>0$,
+\[\cos\varphi=\cos\alpha_2\cos\alpha_1+\sin\alpha_2\sin\alpha_1=\cos\alpha_1\cos\alpha_2\left(1+m_1m_2\right),\]
+which is $0$ exactly when $m_1m_2=-1$. So the lines are perpendicular exactly when $m_1m_2=-1$.
+
+Otherwise, by the subtraction formula for tangents,
+\[\tan\varphi=\dfrac{\tan\alpha_2-\tan\alpha_1}{1+\tan\alpha_1\tan\alpha_2}=\dfrac{m_2-m_1}{1+m_1m_2}.\]
+The angle $\theta$ is $\varphi$ or $180^\circ-\varphi$, and $\tan\left(180^\circ-\varphi\right)=-\tan\varphi$. As $\theta<90^\circ$, $\tan\theta>0$, so $\tan\theta=\left|\tan\varphi\right|=\left|\dfrac{m_1-m_2}{1+m_1m_2}\right|$. $\blacksquare$
+
+\textbf{(b)} \textbf{No.} Fix any $\theta$ with $0^\circ<\theta<90^\circ$.
+\begin{itemize}
+\item The lines through the origin at angles $0^\circ$ and $\theta$ to the $x$-axis meet at angle $\theta$, and their slopes $0$ and $\tan\theta$ have product $0$.
+\item The lines at angles $\beta=45^\circ-\dfrac{\theta}{2}$ and $45^\circ+\dfrac{\theta}{2}=90^\circ-\beta$ also meet at angle $\theta$ (both angles lie between $0^\circ$ and $90^\circ$), and their slopes $\tan\beta$ and $\tan\left(90^\circ-\beta\right)=\dfrac{1}{\tan\beta}$ have product $1$.
+\end{itemize}
+So the same angle $\theta$ allows the products $0$ and $1$, and $m_1m_2$ is \textbf{not} determined by $\theta$. For example, with $\theta=45^\circ$, the slopes $0,1$ and the slopes $\sqrt2-1,\sqrt2+1$ both give lines meeting at $45^\circ$. What $\theta$ does determine is the combination $\left|\dfrac{m_1-m_2}{1+m_1m_2}\right|$ from (a); only for $\theta=90^\circ$ does it pin down the product.

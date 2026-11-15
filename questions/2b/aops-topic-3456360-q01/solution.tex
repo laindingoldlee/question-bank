@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3456360_bouncing_laser_ends_where
+% Stable identity: aops-topic-3456360-q01
+Unfold the reflections into unit squares. The ray is $y=\dfrac{5}{8}x$, whose first subsequent lattice point is $(8,5)$ because $5,8$ are coprime. Folding back, an even horizontal coordinate reaches the left side, and an odd vertical coordinate reaches the top. Thus the next corner is the $\boxed{\text{upper-left}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=0;i<=8;++i)draw((i,0)--(i,5),lightgray);for(int j=0;j<=5;++j)draw((0,j)--(8,j),lightgray);draw((0,0)--(8,5),blue,Arrow);dot("$(0,0)$",(0,0),SW);dot("$(8,5)$",(8,5),NE);label("unfolded squares",(4,-.5));
+\end{asy}

@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2188094_some_fun_problemweek_1
+% Stable identity: aops-topic-2188094-q01
+\textbf{Where $n$ can appear.} In row $m>n$, every entry other than the two $1$'s is at least $\dbinom m1=m>n$. So $n$ appears only in rows up to $n$. It appears as $\dbinom n1$ and $\dbinom n{n-1}$, which are two different entries when $n\ge3$ (for $n=2$ they are the same entry, and $2$ appears only once). Every other appearance is $\dbinom mk=n$ with $2\le k\le m-2$.
+
+\textbf{Pairs.} By symmetry $\dbinom mk=\dbinom m{m-k}$, so the appearances with $2\le k\le m-2$ come in pairs, except the central ones with $m=2k$. Each value is central at most once, since $\dbinom{2k}{k}$ increases with $k$. Hence $n\ge3$ appears an odd number of times exactly when $n$ is a central binomial coefficient $\dbinom{2k}{k}$ with $k\ge2$, and then it appears exactly $3$ times unless it also equals some $\dbinom mk$ with $2\le k<\dfrac {m}{2}$.
+
+\textbf{The candidates.} The central binomial coefficients up to $10000$ with $k\ge2$ are
+\[\dbinom42=6,\quad\dbinom63=20,\quad\dbinom84=70,\quad\dbinom{10}5=252,\quad\dbinom{12}6=924,\quad\dbinom{14}7=3432\]
+(the next is $\dbinom{16}{8}=12870$). None of them is a non-central entry. Indeed, the non-central entries $\dbinom mk$ with $2\le k<\dfrac {m}{2}$ near these values are
+\begin{itemize}
+\item $k=2$: $\dbinom m2=\dfrac{m(m-1)}{2}$, and $2n=12,40,140,504,1848,6864$ is never a product of two consecutive integers ($m=4$ gives the central $\dbinom42$ itself);
+\item $k=3$ ($m\ge7$): $35,56,84,\dots,220,286,\dots,816,969,\dots,3276,3654$;
+\item $k=4$ ($m\ge9$): $126,210,330,\dots,715,1001,\dots,3060,3876$;
+\item $k=5$ ($m\ge11$): $462,792,1287,\dots,3003,4368$;
+\item $k=6$ ($m\ge13$): $1716,3003,5005$;
+\item $k\ge7$: then $m\ge15$ and $\dbinom mk\ge\dbinom{15}{7}=6435>3432$.
+\end{itemize}
+Each list increases with $m$, and the values shown bracket the candidates, so none of $6,20,70,252,924,3432$ is a non-central entry. So each of the six numbers appears exactly $3$ times, and the answer is $\boxed{6}$.

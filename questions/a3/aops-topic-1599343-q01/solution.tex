@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1599343_sequences
+% Stable identity: aops-topic-1599343-q01
+\textbf{(a)} Doubling, $2s_n=1+\dfrac{1}{2}+\dots+\dfrac{1}{2^{n-1}}$. Subtracting $s_n$, all terms cancel except the first of $2s_n$ and the last of $s_n$:
+\[
+s_n=2s_n-s_n=1-\dfrac{1}{2^n}<1 .
+\]
+(Geometrically: after $n$ steps of covering half of the remaining part of a unit square, the uncovered part has area exactly $\dfrac{1}{2^n}$.)
+
+\textbf{(b)} The infinite sum is not one of the partial sums; by definition it is the \emph{limit} of $s_1,s_2,s_3,\dots$, the number these partial sums approach. A limit of numbers below $1$ can equal $1$ (for example $0.9,0.99,0.999,\dots$ has limit $1$). So ``each $s_n<1$'' only shows that the sum is at most $1$.
+
+\emph{The limit is $1$.} The gap is $1-s_n=\dfrac{1}{2^n}$. For any positive number $\varepsilon$, no matter how small, $\dfrac{1}{2^n}<\varepsilon$ once $n$ is large enough (since $2^n>n$, any $n>\dfrac{1}{\varepsilon}$ works). So no number smaller than $1$ can be the limit: if $L<1$, take $\varepsilon=1-L$; from some point on $s_n>1-\varepsilon=L$. And no number larger than $1$ can be the limit, since all $s_n<1$. Hence
+\[
+\dfrac{1}{2}+\dfrac{1}{2^2}+\dfrac{1}{2^3}+\cdots=\boxed{1}.
+\]
+The same argument with $s_n'=\dfrac{1}{3}+\dots+\dfrac{1}{3^n}=\dfrac{1}{2}\left(1-\dfrac{1}{3^n}\right)$ gives $\dfrac{1}{3}+\dfrac{1}{3^2}+\cdots=\dfrac{1}{2}$.

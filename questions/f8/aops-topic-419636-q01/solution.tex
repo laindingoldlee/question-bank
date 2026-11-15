@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h419636_amc_8_2007_problem_25
+% Stable identity: aops-topic-419636-q01
+The whole board has area $36\pi$. The inner circle has area $9\pi$, so each inner region has area $3\pi$; the ring has area $36\pi-9\pi=27\pi$, so each outer region has area $9\pi$. The regions worth $1$ point (shaded) are one inner region and two outer regions:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+path sec(real r1,real r2,real a1,real a2){return arc((0,0),r2,a1,a2)--arc((0,0),r1,a2,a1)--cycle;}
+fill((0,0)--arc((0,0),3,90,210)--cycle,palegreen);
+fill(sec(3,6,330,450),palegreen); fill(sec(3,6,210,330),palegreen);
+draw(circle((0,0),6),linewidth(1)); draw(circle((0,0),3),linewidth(1));
+draw((0,0)--6*dir(90)); draw((0,0)--6*dir(210)); draw((0,0)--6*dir(330));
+label("$1$",1.5*dir(150)); label("$2$",1.5*dir(30)); label("$2$",1.5*dir(270));
+label("$2$",4.5*dir(150)); label("$1$",4.5*dir(30)); label("$1$",4.5*dir(270));
+label("$3\pi$",1.6*dir(150)+(0,-0.8),fontsize(7pt)); label("$9\pi$",4.5*dir(30)+(0,-0.7),fontsize(8pt));
+label("$9\pi$",4.5*dir(270)+(0,-0.7),fontsize(8pt));
+\end{asy}
+
+So a dart scores an odd number with probability
+\[\dfrac{3\pi+9\pi+9\pi}{36\pi}=\dfrac{21}{36}=\dfrac{7}{12},\]
+and an even number with probability $\dfrac{5}{12}$. The total score is odd exactly when one dart scores odd and the other even, which happens with probability
+\[2\cdot\dfrac{7}{12}\cdot\dfrac{5}{12}=\dfrac{70}{144}=\boxed{\textbf{(B) }\dfrac{35}{72}}.\]

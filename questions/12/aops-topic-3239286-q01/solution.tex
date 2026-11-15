@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h3239286_probability_of_forming_a_trapezium
+% Stable identity: aops-topic-3239286-q01
+Label vertices $0,\ldots,15$ counterclockwise. Chords with endpoints $i,j$ and $k,l$ are parallel exactly when $i+j\equiv k+l\pmod{16}$, since their directions are the averages of the endpoint angles plus a right angle. For $a<b<c<d$, test the two opposite-side pairs. The following exhaustive count gives 336 quadrilaterals with one parallel pair and 28 with two:\begin{verbatim}
+from itertools import combinations
+counts=[0,0,0]
+for a,b,c,d in combinations(range(16),4):
+    k=int((a+b-c-d)%16==0)+int((b+c-d-a)%16==0)
+    counts[k]+=1
+print(counts) # [1456,336,28]
+\end{verbatim}
+Thus the probability is $\dfrac{336+28}{\binom{16}{4}}=\boxed{\dfrac{1}{5}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int k=0;k<16;++k)dot(dir(22.5*k));draw(unitcircle);pair A=dir(22.5),B=dir(67.5),C=dir(247.5),D=dir(292.5);draw(A--B--C--D--cycle,blue);label("$1$",A,E);label("$3$",B,N);label("$11$",C,S);label("$13$",D,E);
+\end{asy}

@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2580840_question_about_triangles_and_circles
+% Stable identity: aops-topic-2580840-q01
+Let the triangle have angles $A$, $B$, $C$ and circumradius $R=10$. By the law of sines its sides are $2R\sin A$, $2R\sin B$, $2R\sin C$, so the perimeter is
+\[2R\left(\sin A+\sin B+\sin C\right).\]
+
+\emph{Lemma.} For $x,y\in[0,\pi]$,
+\[\sin x+\sin y=2\sin\dfrac{x+y}2\cos\dfrac{x-y}2\le2\sin\dfrac{x+y}2,\]
+because $\sin\dfrac{x+y}2\ge0$ and $\cos\dfrac{x-y}2\le1$. Equality holds when $x=y$.
+
+Apply the lemma three times, adding the angle $\dfrac\pi3$:
+\[\sin A+\sin B+\sin C+\sin\dfrac\pi3\le2\sin\dfrac{A+B}2+2\sin\dfrac{C+\dfrac\pi3}{2}\le4\sin\dfrac{A+B+C+\dfrac\pi3}{4}=4\sin\dfrac\pi3.\]
+All the angles used lie in $[0,\pi]$. Hence $\sin A+\sin B+\sin C\le3\sin\dfrac\pi3=\dfrac{3\sqrt3}2$, and the perimeter is at most
+\[2\cdot10\cdot\dfrac{3\sqrt3}{2}=30\sqrt3.\]
+Equality holds when $A=B=C=\dfrac\pi3$, i.e. for the equilateral triangle with side $10\sqrt3$ (triangle $ABC$ in the sketch; $PQT$ is a non-equilateral inscribed triangle with a smaller perimeter).
+
+The maximum perimeter is $\boxed{30\sqrt3}\approx51.96$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real R=1;pair O=(0,0);
+draw(circle(O,R));
+pair A=dir(90),B=dir(210),C=dir(330);
+pair P=dir(130),Q=dir(250),T=dir(-20);
+draw(P--Q--T--cycle,dashed);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(O--A,dotted);label("$10$",(O+A)/2,E,fontsize(9pt));
+dot(O);label("$O$",O,S);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$P$",P,NW);label("$Q$",Q,S);label("$T$",T,E);
+\end{asy}

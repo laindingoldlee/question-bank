@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2055123_2020_mock_combo_amc_10_final_five
+% Stable identity: aops-topic-2055123-q22
+Let $G_k$ be the number of Generation $k$ bosses. Each Generation $k$ boss produces on average $\dfrac{1}{2}\cdot1+\dfrac{1}{2}\cdot2=\dfrac{3}{2}$ bosses of the next generation, so by linearity $E[G_{k+1}]=\dfrac{3}{2}E[G_k]$, and since $G_0=1$, $E[G_k]=\left(\dfrac{3}{2}\right)^k$. The level always ends (there are finitely many bosses), so the expected total is
+\[\sum_{k=0}^{2020}\left(\dfrac{3}{2}\right)^k=\dfrac{\left(\dfrac{3}{2}\right)^{2021}-1}{\dfrac{3}{2}-1}=2\cdot\dfrac{3^{2021}-2^{2021}}{2^{2021}}=\dfrac{3^{2021}-2^{2021}}{2^{2020}}.\]
+The numerator is odd, so $m=3^{2021}-2^{2021}$ and $n=2020$.
+
+Modulo $1000$: since $3^{100}\equiv1\pmod{1000}$, $3^{2021}\equiv3^{21}=10460353203\equiv203$. For $2^{2021}$: it is $\equiv0\pmod 8$, and modulo $125$, $2^{100}\equiv1$, so $2^{2021}\equiv2^{21}=2097152\equiv27\pmod{125}$; the number that is $\equiv27\pmod{125}$ and divisible by $8$ is $152$. Hence $m\equiv203-152=51$ and
+\[m+n\equiv51+2020=2071\equiv71\pmod{1000}.\]
+The answer is $\boxed{\textbf{(A)}\ 071}$.

@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1676789_3_7_let_n_be_a_positive_integer_determine_the_number_of_odd_numbers_in_bin
+% Stable identity: aops-topic-1676789-q01
+Work with polynomials whose coefficients are integers taken modulo $2$; write $P\equiv Q$ if every coefficient of $P-Q$ is even.
+
+\textbf{Step 1: $(1+x)^{2^j}\equiv1+x^{2^j}$.} For $j=0$ this is an equality. If it holds for $j$, then
+\[
+(1+x)^{2^{j+1}}=\left((1+x)^{2^j}\right)^2\equiv\left(1+x^{2^j}\right)^2=1+2x^{2^j}+x^{2^{j+1}}\equiv1+x^{2^{j+1}} .
+\]
+(Squaring respects $\equiv$: if $P=Q+2R$ then $P^2=Q^2+2(2QR+2R^2)$.)
+
+\textbf{Step 2: expand.} Write $n=2^{j_1}+2^{j_2}+\cdots+2^{j_s}$ with $j_1>j_2>\cdots>j_s\ge0$ and $s=s(n)$. Then
+\[
+\sum_{i=0}^n\dbinom ni x^i=(1+x)^n=\prod_{t=1}^{s}(1+x)^{2^{j_t}}\equiv\prod_{t=1}^{s}\left(1+x^{2^{j_t}}\right).
+\]
+Multiplying out the right side gives $2^s$ terms $x^{e}$, one for each subset $T$ of $\{j_1,\dots,j_s\}$, with $e=\sum_{j\in T}2^j$. These exponents are all different, because each nonnegative integer has only one binary representation. So the right side is a sum of $2^s$ distinct powers of $x$, each with coefficient $1$.
+
+\textbf{Step 3: compare.} Two polynomials that are $\equiv$ have coefficients of the same parity. Hence $\dbinom ni$ is odd for exactly $2^{s}$ values of $i$ (namely those whose binary digits are $1$ only where $n$ has a $1$), and even for the others. $\blacksquare$
+
+For example, $n=10=1010_2$ has $s=2$, and the odd entries of row $10$ of Pascal's triangle are $\dbinom{10}{0},\dbinom{10}{2},\dbinom{10}{8},\dbinom{10}{10}$, which are $1,45,45,1$.

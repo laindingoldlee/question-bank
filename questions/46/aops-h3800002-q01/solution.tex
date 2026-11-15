@@ -1,0 +1,7 @@
+Each stage retains three quarters of the previous area, so the area after $n$ stages is $\boxed{(\dfrac{3}{4})^n}$ and tends to zero. The given dimension equation gives $2^d=3$, hence $\boxed{d=\dfrac{\log3}{\log2}}$. This is approximately $1.585$, rather than $\dfrac{4}{3}$; it describes the specified scaling law, not an ordinary area.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+void tri(pair A,pair B,pair C,int n){if(n==0){filldraw(A--B--C--cycle,lightblue,blue);return;}pair D=midpoint(A--B),E=midpoint(B--C),F=midpoint(C--A);tri(A,D,F,n-1);tri(D,B,E,n-1);tri(F,E,C,n-1);}tri((0,0),(1,0),(.5,sqrt(3)/2),3);
+\end{asy}

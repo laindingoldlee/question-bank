@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1919886_probability
+% Stable identity: aops-topic-1919886-q01
+Let $p_k$ be the probability that Player 2 wins when he holds $k$ pennies. Then $p_0=0$, $p_{16}=1$, and conditioning on the next round,
+\[
+p_k=\dfrac{1}{2}p_{k-1}+\dfrac{1}{2}p_{k+1}\qquad(1\le k\le15).
+\]
+This says $p_{k+1}-p_k=p_k-p_{k-1}$, so the differences are all equal to some $d$, and $p_k=kd$. From $p_{16}=16d=1$ we get $d=\dfrac{1}{16}$ and $p_k=\dfrac{k}{16}$. (The game ends with probability $1$: in any block of $16$ rounds there is a chance $2^{-16}$ that one player wins every round, which ends the game, so the probability of lasting forever is $0$.)
+
+Player 2 starts with $9$ pennies, so he wins with probability $\boxed{\dfrac{9}{16}}$.

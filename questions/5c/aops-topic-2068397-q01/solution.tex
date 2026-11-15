@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2068397_reverse_herons_formula
+% Stable identity: aops-topic-2068397-q01
+\textbf{Error 1.} Heron's formula gives the \emph{area}, not a side length. The left side should be the area of the triangle, which is $\dfrac{3\cdot4}{2}=6$ because the legs are perpendicular.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(4,0), C=(0,3);
+draw(A--B--C--cycle,linewidth(0.9)); draw((0,0.25)--(0.25,0.25)--(0.25,0));
+label("$4$",(A+B)/2,S); label("$3$",(A+C)/2,W); label("$c$",(B+C)/2,NE);
+label("area $=\dfrac{3\cdot4}{2}=6$",(2.4,1.9),NE,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Error 2.} Each of the four factors $s$, $s-3$, $s-4$, $s-c$ has a denominator $2$, so their product has a factor $\dfrac{1}{16}$, not $\dfrac{1}{2}$:
+\[
+s(s-3)(s-4)(s-c)=\dfrac{(7+c)(c+1)(c-1)(7-c)}{16}=\dfrac{(49-c^2)(c^2-1)}{16}.
+\]
+
+\textbf{Correct method.} Setting the area equal to $6$ and squaring,
+\[
+36=\dfrac{(49-c^2)(c^2-1)}{16}\quad\Longrightarrow\quad (49-c^2)(c^2-1)=576 .
+\]
+With $u=c^2$: $-u^2+50u-49=576$, i.e.\ $u^2-50u+625=0$, i.e.\ $(u-25)^2=0$. So $c^2=25$ and, since $c>0$, $\boxed{c=5}$, agreeing with the Pythagorean theorem.
+
+(The double root is no accident: for fixed legs $3$ and $4$, the area $6$ is the largest possible area, attained only for the right angle, so the equation ``area $=6$'' has a repeated solution.)

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3059575_special_pi_post_geometry_problems_
+% Stable identity: aops-topic-3059575-q14
+(a) The outer radius is 2, since the distance between its centre and the radius 1 centre is 1. Put their centres at $(0,0),(0,1)$. If the equal radii are $ r $, their centres are $(\pm r,y)$. Tangency to the outer circle gives $ r^2+y^2=(2-r)^2 $, while tangency to the unit circle gives $ r^2+(y-1)^2=(1+r)^2 $. Subtraction yields $ y=2-3r $. Substitution gives $ 9r^2-8r=0 $, so the positive solution is $\boxed{r=\dfrac{8}{9}}$. It gives $ y=-\dfrac{2}{3}$ and satisfies all distances. (b) Descartes' circle theorem uses signed curvatures $ k_i=\dfrac{1}{r_i}$ for the three inner circles and $ k_4=-\dfrac{1}{R}$ for the enclosing circle. Its relation is \[\boxed{(k_1+k_2+k_3+k_4)^2=2(k_1^2+k_2^2+k_3^2+k_4^2)}.\]Solving the quadratic for the negative enclosing curvature gives $ k_4=k_1+k_2+k_3-2\sqrt{k_1k_2+k_2k_3+k_3k_1}$. When this is negative, $ R=\dfrac{1}{2\sqrt{k_1k_2+k_2k_3+k_3k_1}-(k_1+k_2+k_3)}$. The positivity condition is necessary for this solution to be an enclosing circle.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(circle((0,0),2));draw(circle((0,1),1));draw(circle((-8.0/9,-2.0/3),8.0/9)^^circle((8.0/9,-2.0/3),8.0/9));dot((0,0));label("$O$",(0,0),S);label("$1$",(0,1));label("$r$",(-8.0/9,-2.0/3));label("$r$",(8.0/9,-2.0/3));label("$R=2$",(1.5,1.5),NE);
+\end{asy}

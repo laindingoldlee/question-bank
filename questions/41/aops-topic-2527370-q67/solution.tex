@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2527370_stuffedmaths_problem_thread
+% Stable identity: aops-topic-2527370-q67
+The border is one tile wide. The inner region is $(16-2)\times(20-2)=14\times18$, which is covered by $\dfrac{14\cdot18}{4}=63$ tiles of size $2\times2$ (it splits into $7\times9$ such squares). The border has area $16\cdot20-14\cdot18=320-252=68$, so it uses $68$ small tiles. In all Joe uses $68+63=\boxed{131}$ tiles.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<20;++i) for(int j=0;j<16;++j) if(i==0||i==19||j==0||j==15) filldraw(shift(i,j)*unitsquare,paleblue,gray+linewidth(0.3));
+for(int i=1;i<=19;i+=2) draw((i,1)--(i,15),gray);
+for(int j=1;j<=15;j+=2) draw((1,j)--(19,j),gray);
+draw((0,0)--(20,0)--(20,16)--(0,16)--cycle,linewidth(0.8));
+label("$20$",(10,0),S);label("$16$",(0,8),W);
+\end{asy}

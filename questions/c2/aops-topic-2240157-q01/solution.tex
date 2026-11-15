@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2240157_geo_question_about_parallel_segments_and_congruent_triangles
+% Stable identity: aops-topic-2240157-q01
+Let $a=AP=CP$ and $b=BP=DP$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0), u=dir(10), v=dir(120);
+real a=2, bb=1;
+pair A=a*u, B=-bb*u, C=a*v, D=-bb*v;
+draw(A--B,linewidth(0.9)); draw(C--D,linewidth(0.9));
+draw(A--D,red); draw(B--C,red);
+draw(A--C,blue+dashed); draw(B--D,blue+dashed);
+dot(P);
+label("$A$",A,E); label("$B$",B,W); label("$C$",C,N); label("$D$",D,S); label("$P$",P,NE);
+label("$2$",(P+A)/2,S,fontsize(8pt)); label("$2$",(P+C)/2,E,fontsize(8pt));
+label("$1$",(P+B)/2,N,fontsize(8pt)); label("$1$",(P+D)/2,E,fontsize(8pt));
+\end{asy}
+
+\textbf{(a)} \textbf{No}; it holds exactly when $a=b$. Triangles $APD$ and $CPB$ are congruent (SAS: $AP=CP$, $PD=PB$, and the vertical angles at $P$ are equal), so $AD=CB$, but this does not make the segments parallel.
+
+Suppose $AD\parallel BC$. Since $A,P,B$ are collinear and $D,P,C$ are collinear, the alternate angles give $\angle PAD=\angle PBC$ and $\angle PDA=\angle PCB$, so triangles $PAD$ and $PBC$ are similar and
+\[\dfrac{PA}{PB}=\dfrac{PD}{PC},\qquad\text{that is}\qquad\dfrac {a}{b}=\dfrac {b}{a},\]
+so $a=b$. Conversely, if $a=b$, then $P$ is the midpoint of both $AB$ and $CD$, so the diagonals of quadrilateral $ADBC$ bisect each other; it is a parallelogram and $AD\parallel BC$.
+
+For a concrete counterexample take (as in the figure) $a=2$, $b=1$, or in coordinates $A=(2,0)$, $B=(-1,0)$, $C=(0,2)$, $D=(0,-1)$: the slope of $AD$ is $\dfrac{1}{2}$ and the slope of $BC$ is $2$ (red segments).
+
+\textbf{(b)} Triangles $APC$ and $BPD$ are isosceles, with apex angles $\angle APC$ and $\angle BPD$, which are equal vertical angles. So their base angles are equal:
+\[\angle PAC=\dfrac{180^\circ-\angle APC}{2}=\dfrac{180^\circ-\angle BPD}{2}=\angle PBD .\]
+These are alternate angles formed by the transversal $AB$ with the lines $AC$ and $BD$ ($C$ and $D$ lie on opposite sides of line $AB$). Hence $AC\parallel BD$ (blue dashed segments). $\blacksquare$

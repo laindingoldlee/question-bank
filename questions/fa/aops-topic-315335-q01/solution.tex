@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h315335_geometry_with_concurency
+% Stable identity: aops-topic-315335-q01
+Use position vectors (or coordinates) and let $G=\dfrac{A+B+C+D}{4}$. Since $G_1=\dfrac{B+C+D}{3}$,
+\[
+\dfrac{1}{4}A+\dfrac{3}{4}G_1=\dfrac{1}{4}A+\dfrac{1}{4}(B+C+D)=G,
+\]
+so $G$ lies on segment $AG_1$, three quarters of the way from $A$ to $G_1$. The expression for $G$ is symmetric in $A,B,C,D$, so in the same way $G=\dfrac{1}{4}B+\dfrac{3}{4}G_2=\dfrac{1}{4}C+\dfrac{3}{4}G_3=\dfrac{1}{4}D+\dfrac{3}{4}G_4$. Hence all four lines pass through $G$, the centroid of the four vertices. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(10,0),C=(9,7),D=(2,3);
+pair G1=(B+C+D)/3,G2=(A+C+D)/3,G3=(A+B+D)/3,G4=(A+B+C)/3,G=(A+B+C+D)/4;
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--G1,blue+dashed); draw(B--G2,deepgreen+dashed); draw(C--G3,orange+dashed); draw(D--G4,magenta+dashed);
+dot(G1);dot(G2);dot(G3);dot(G4);dot(G,red);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$G_1$",G1,NE); label("$G_2$",G2,W); label("$G_3$",G3,S); label("$G_4$",G4,E);
+label("$G$",G+0.55*dir(-76),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Convexity is not needed; the same holds for any four points, as long as each point differs from the centroid of the other three so that the lines are defined.)

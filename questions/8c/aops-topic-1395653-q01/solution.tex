@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1395653_help_geometry_please
+% Stable identity: aops-topic-1395653-q01
+Since $P$ lies on both perpendicular bisectors, $PB=PC$ and $PA=PD$. Together with $AB=DC$, the triangles $PBA$ and $PCD$ are congruent (SSS).
+
+\textbf{These triangles have the same orientation.} Otherwise the congruence $P\mapsto P$, $B\mapsto C$, $A\mapsto D$ would be a reflection. A reflection that fixes $P$ and sends $B$ to $C$ is the reflection in the perpendicular bisector of $BC$; it would send $A$ to $D$, and then $\angle ABC=\angle DCB$, which is false ($77^\circ\ne150^\circ$).
+
+So the congruence is a rotation about $P$ sending $B\to C$ and $A\to D$. A rotation turns every segment through its angle, so the angle of rotation, $\angle BPC$, equals the angle between the directions $\overrightarrow{BA}$ and $\overrightarrow{CD}$.
+
+Put $B$ at the origin and $C$ on the positive $x$-axis, with $A$ and $D$ above $BC$. Then $\overrightarrow{BA}$ points in the direction $77^\circ$, and since $\angle BCD=150^\circ$ is measured from $\overrightarrow{CB}$ (direction $180^\circ$), $\overrightarrow{CD}$ points in the direction $180^\circ-150^\circ=30^\circ$. The angle between these directions is $77^\circ-30^\circ=47^\circ$, so
+\[
+\angle BPC=\boxed{47^\circ}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(4,0);
+real t=3.4;
+pair A=t*dir(77), D=C+t*dir(30);
+pair mBC=(B+C)/2, mAD=(A+D)/2;
+pair P=extension(mBC,mBC+(0,1),mAD,mAD+rotate(90)*(D-A));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(P--B,blue); draw(P--C,blue);
+draw(P--A,gray+dashed); draw(P--D,gray+dashed);
+void tk(pair U,pair V,int n){pair m=(U+V)/2,u=unit(V-U),v=rotate(90)*u; for(int i=0;i<n;++i){pair c=m+(i-(n-1)/2)*0.15*u; draw(c-0.13*v--c+0.13*v);}}
+tk(P,B,1); tk(P,C,1); tk(P,A,2); tk(P,D,2); tk(A,B,3); tk(C,D,3);
+draw(arc(B,0.45,0,77)); label("$77^\circ$",B+0.85*dir(35),fontsize(9pt));
+draw(arc(C,0.5,30,180)); label("$150^\circ$",C+0.85*dir(105),fontsize(9pt));
+draw(arc(P,1.6,degrees(B-P),degrees(C-P)),blue); label("$47^\circ$",P+(0.28,2.0),blue+fontsize(9pt));
+dot(A);dot(B);dot(C);dot(D);dot(P);
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,SE);label("$D$",D,E);label("$P$",P,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Angle check: in the figure $P$ lies below $BC$, $\angle PBC=\angle PCB=\dfrac{180^\circ-47^\circ}{2}=66.5^\circ$, and indeed $\angle PBA=66.5^\circ+77^\circ=143.5^\circ=360^\circ-150^\circ-66.5^\circ=\angle PCD$.)

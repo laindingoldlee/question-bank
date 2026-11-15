@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h199746_state_sprint_problems
+% Stable identity: aops-topic-199746-q21
+The circles do not meet ($2+7<15$). A common tangent crossing the $x$-axis to the right of the origin must pass between the circles (the outer common tangents cross the axis at $x=-6$, to the left). Let it touch the circles at $T_1$ and $T_2$ and cross the axis at $P=(x,0)$:
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),Q=(15,0),P=(10/3,0),T1=(1.2,1.6),T2=(10.8,-5.6);
+draw((-3,0)--(23,0),gray);
+draw(circle(O,2),linewidth(0.9));draw(circle(Q,7),linewidth(0.9));
+draw((T1+(-0.9,1.2))--(T2+(0.9,-1.2)),blue+linewidth(0.9));
+draw(O--T1,dashed);draw(Q--T2,dashed);
+dot(O);dot(Q);dot(P,blue);dot(T1);dot(T2);
+label("$O$",O,SW);label("$Q(15,0)$",Q,NE);label("$P$",P,NE,blue);
+label("$2$",(O+T1)/2,NW);label("$7$",(Q+T2)/2,dir(-37));
+label("$T_1$",T1,NE);label("$T_2$",T2,SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The radii $OT_1$ and $QT_2$ are perpendicular to the tangent, and the vertical angles at $P$ are equal, so triangles $OT_1P$ and $QT_2P$ are similar with ratio $2:7$. Hence
+\[
+\dfrac{OP}{PQ}=\dfrac{2}{7},\qquad OP=\dfrac{2}{9}\cdot15=\dfrac{10}{3},
+\]
+so $x=\boxed{\dfrac{10}{3}}$.

@@ -1,0 +1,6 @@
+The four original centres form a regular tetrahedron of side 2. Put its vertices at $\dfrac{(\pm1,\pm1,\pm1)}{\sqrt2}$, choosing the four sign patterns with positive sign product. Their mutual distances are 2 and their distance from the origin is $\sqrt{\dfrac{3}{2}}$. A point equidistant from all four vertices is uniquely their circumcentre, so the small sphere has radius $\sqrt{\dfrac{3}{2}}-1$. Its diameter is $\sqrt6-2$, giving $\boxed{a+b=8}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair A=(0,3),B=(-2,0),C=(2,0),D=(.7,1),O=(.175,1);draw(A--B--C--cycle);draw(A--D^^B--D^^C--D,dashed);for(pair V:new pair[]{A,B,C,D}){draw(circle(V,.45));draw(O--V,blue+dashed);}dot(O);label("$O$",O,(-1,0));label("$A$",A,(0,1));label("$B$",B,(-1,0));label("$C$",C,(1,0));label("$D$",D,(1,1));label("centre tetrahedron (projection)",(0,-.9));
+\end{asy}
+

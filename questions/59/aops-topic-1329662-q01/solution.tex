@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1329662_competition_practice_problem
+% Stable identity: aops-topic-1329662-q01
+Number the posts $0,1,\dots,6$ (at $0,10,\dots,60$ feet). Billy's route visits each post once, in $6$ legs. Consider the gap between posts $j-1$ and $j$ ($j=1,\dots,6$), with $j$ posts on its left and $7-j$ on its right. Each crossing of the gap moves Billy to the other side, and each post on the smaller side is visited once, so the gap is crossed at most $2\min(j,7-j)$ times: at most $2,4,6,6,4,2$ times for $j=1,\dots,6$, a total of $24$ crossings.
+
+The middle two gaps cannot both be crossed $6$ times. Crossing the gap between posts $2$ and $3$ six times (an even number) means Billy starts and ends on the same side of it; he must start and end on the right side, since starting on the left would need $4$ separate visits to the $3$ left posts. So he starts and ends among posts $3,\dots,6$. Likewise, $6$ crossings of the gap between posts $3$ and $4$ force him to start and end among posts $0,\dots,3$. Then he would start and end at post $3$, which is impossible. So there are at most $23$ crossings, and he walks at most $23\cdot10=230$ feet.
+
+The route $30\to0\to60\to10\to50\to20\to40$ achieves it:
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real[] x={30,0,60,10,50,20,40};
+for(int k=0;k<7;++k){draw((10k,0)--(10k,4)); label("$"+string(10k)+"$",(10k,0),S);}
+draw((0,0)--(60,0),gray);
+for(int k=0;k<6;++k){real y=6+3k; draw((x[k],y)--(x[k+1],y),blue,Arrow); draw((x[k+1],y)--(x[k+1],y+3),gray+dotted);}
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+$30+60+50+40+30+20=230$. The maximum is $\boxed{230}$ feet, so the given answer is right and $210$ is not the maximum.

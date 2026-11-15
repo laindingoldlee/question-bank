@@ -1,0 +1,7 @@
+The polygon's vertices lie on its circumcircle. Each straight side of the square can meet that circle at at most two points, so there are at most eight vertices on the boundary. A regular octagon attains eight: its vertices can be placed at $(\pm1,\pm t),(\pm t,\pm1)$, where $t=\sqrt2-1$. All lie on the square boundary and their central angle gaps are forty-five degrees. Thus the maximum is $\boxed8$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(box((-1,-1),(1,1)),gray);real t=sqrt(2)-1;pair[] v={(1,t),(t,1),(-t,1),(-1,t),(-1,-t),(-t,-1),(t,-1),(1,-t)};path p=v[0];for(int i=1;i<8;++i)p=p--v[i];draw(p--cycle,blue);for(int i=0;i<8;++i){dot(v[i]);label("$P_{"+string(i+1)+"}$",v[i],v[i]);}
+\end{asy}

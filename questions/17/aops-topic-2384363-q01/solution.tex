@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2384363_proof__shortest_distance_between_point_and_line
+% Stable identity: aops-topic-2384363-q01
+Write $k=\sqrt{A^2+B^2}>0$ and $d=Ax_0+By_0+C$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair L=(-0.6,2.0), u=unit((2,-1)), P=(1,3.3);
+pair Q=L+dot(P-L,u)*u, R=Q+2.4*u;
+draw((Q-2.4*u)--(Q+3.6*u),blue+linewidth(0.9));
+draw(P--Q,red); draw(P--R,dashed);
+pair n=unit(P-Q);
+draw((Q+0.22*u)--(Q+0.22*u+0.22*n)--(Q+0.22*n));
+dot(P); dot(Q); dot(R);
+label("$P(x_0,y_0)$",P,N); label("$Q$",Q,SW); label("$R$",R,SW);
+label("$Ax+By+C=0$",Q+3.6*u,E,blue);
+\end{asy}
+
+\textbf{(a)} The line $\ell$ has direction vector $(B,-A)$, and $(A,B)\cdot(B,-A)=0$, so $(A,B)$ is perpendicular to $\ell$. The points on the perpendicular through $P$ are $Q_t=(x_0-tA,\ y_0-tB)$. Such a point lies on $\ell$ when
+\[A(x_0-tA)+B(y_0-tB)+C=0\iff d=t\left(A^2+B^2\right)\iff t=\dfrac{d}{k^2}.\]
+For this $t$, $Q=Q_t$ is the foot of the perpendicular, and
+\[PQ=|t|\sqrt{A^2+B^2}=\dfrac{|d|}{k^2}\cdot k=\dfrac{|d|}{k}.\]
+For any other point $R$ of $\ell$, triangle $PQR$ has a right angle at $Q$, so $PR^2=PQ^2+QR^2\ge PQ^2$. Hence $PQ=\dfrac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}$ is the shortest distance.
+
+\textbf{(b)} Let $R=(x,y)$ be any point of $\ell$, so $Ax+By+C=0$. Then
+\[d=Ax_0+By_0+C-(Ax+By+C)=A(x_0-x)+B(y_0-y),\]
+and by Cauchy-Schwarz
+\[d^2\le\left(A^2+B^2\right)\left((x_0-x)^2+(y_0-y)^2\right)=k^2\cdot PR^2,\]
+so $PR\ge\dfrac{|d|}{k}$ for every point $R$ of $\ell$. Equality holds when $(x_0-x,\,y_0-y)$ is a multiple of $(A,B)$, which is exactly the foot $Q$ found in (a), and that point lies on $\ell$. So the minimum distance is $\dfrac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}$. $\blacksquare$

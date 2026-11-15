@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1696873_2016_mathcounts_chapter_sprint_25
+% Stable identity: aops-topic-1696873-q01
+The base angles of triangle $ABC$ are $\angle B=\angle C=\dfrac{180^\circ-32^\circ}{2}=74^\circ$. Since the triangles are congruent with $P$ corresponding to $A$, $\angle XPY=\angle RPQ=\angle A=32^\circ$.
+
+Look at the quadrilateral $PXCY$ (red and blue marks below). Its angles are $\angle P=32^\circ$, $\angle X=\angle PXC=114^\circ$, $\angle C=74^\circ$ and $\angle Y=\angle PYC$. The angles of a quadrilateral add up to $360^\circ$, so
+\[
+\angle PYC=360^\circ-32^\circ-114^\circ-74^\circ=\boxed{140^\circ}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+real h=Tan(74);
+pair A=(0,h),B=(-1,0),C=(1,0);
+real Lt=abs(C-A);
+pair X=A+0.65*(C-A);
+pair u=unit(C-X);
+pair P=X+2.4*(rotate(-114)*u);
+pair r=unit(X-P);
+pair R=P+Lt*r;
+pair Q=P+Lt*(rotate(-32)*r);
+pair Y=extension(P,Q,B,C);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(P--Q--R--cycle,linewidth(0.9)+deepgreen);
+dot(X);dot(Y);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,dir(-30));
+label("$P$",P,W);label("$Q$",Q,SE);label("$R$",R,E);
+label("$X$",X,dir(40));label("$Y$",Y,dir(-130));
+draw(arc(A,0.75,degrees(B-A),degrees(C-A)));label("$32^\circ$",A+1.05*dir(-90));
+draw(arc(X,0.32,degrees(C-X),degrees(P-X)));label("$114^\circ$",X+0.55*dir((degrees(C-X)+degrees(P-X))/2));
+draw(arc(P,0.42,degrees(Y-P),degrees(X-P)),red);label("$32^\circ$",P+0.7*dir((degrees(Y-P)+degrees(X-P))/2),red);
+draw(arc(C,0.22,degrees(X-C),180),red);label("$74^\circ$",C+0.42*dir(150),red+fontsize(9pt));
+draw(arc(Y,0.15,0,degrees(P-Y)),blue);label("$140^\circ$",Y+0.36*dir(72),blue+fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

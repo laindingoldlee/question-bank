@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1268386_rotation_proof
+% Stable identity: aops-topic-1268386-q01
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0); real d=50;
+pair u=dir(10); pair P=(0.2,-1.6);
+pair F=P+dot(O-P,u)*u; pair G=rotate(d)*F; pair v=rotate(d)*u;
+draw((F-1.2u)--(F+2.6u),blue); draw((G-2.0v)--(G+1.6v),red);
+draw(O--F,dashed); draw(O--G,dashed);
+draw(F+0.15*unit(O-F)--F+0.15*unit(O-F)+0.15u--F+0.15u);
+draw(G+0.15*unit(O-G)--G+0.15*unit(O-G)+0.15v--G+0.15v);
+dot(O); dot(F); dot(G); label("$O$",O,W);
+label("$m$",F+2.6u,E,blue); label("$n$",G-2.0v,W,red);
+label("$F$",F,S); label("$F'$",G,E);
+draw(arc(O,0.45,degrees(F-O),degrees(G-O)),Arrow); label("$d$",0.6*dir((degrees(F)+degrees(G))/2));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\emph{Case $O\notin m$.} Let $F$ be the foot of the perpendicular from $O$ to $m$, and let $F'$ be its image. Rotation preserves distances and angles, so $OF'\perp n$ and $\angle FOF'=d^\circ$. Lines $m$ and $n$ are perpendicular to $OF$ and $OF'$ respectively, so the angle between $m$ and $n$ equals the angle between $OF$ and $OF'$ (rotating a pair of lines by $90^\circ$ does not change the angle between them). That angle is $d^\circ$.
+
+\emph{Case $O\in m$.} Then $n$ passes through $O$ too, and a point $X\ne O$ of $m$ goes to a point $X'$ of $n$ with $\angle XOX'=d^\circ$; this is the angle between the lines.
+
+Without the restriction $d\le 90$, the angle between the lines is $d^\circ$ reduced modulo $180^\circ$ and then replaced by its supplement if it exceeds $90^\circ$ (lines, unlike rays, make an angle of at most $90^\circ$). $\blacksquare$

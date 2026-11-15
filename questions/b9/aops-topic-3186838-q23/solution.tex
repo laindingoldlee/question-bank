@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3186838_2022_abmc_speed_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3186838-q23
+Write $AB=b$, $AC=c$, $AD=d$, and $\cos\angle BAC=t$. Let $L=AM$. Since $D,E$ are on the perpendicular bisector, $MD=AD=d$ and $ME=AE=7$. The median vector is half the sum of the side vectors; expanding these two distance equalities gives $d(b+ct)=L^2$ and $7(bt+c)=L^2$. Power of $A$ in the circle $BDEC$ gives $db=7c$. Substituting $d=\dfrac{7c}{b}$ into the two equalities yields $(c^2-b^2)t=0$. If $t=0$, triangle $ABC$ is right at $A$, so its median to the hypotenuse satisfies $AM=MC=ME=7$. Then $7c=L^2=49$, so $c=7=AE$, forcing $E=C$, contrary to distinctness. Thus $b=c$. Now $d=7$, and $MC=ME=7$ gives $BC=14$. By the right triangle $AMC$, $L^2=b^2-49$. Since $MB=MC=ME=7$, $M$ is the centre of the circle through the three noncollinear points $B,C,E$. Power of $A$ therefore gives $7b=L^2-49=b^2-98$. Hence $(b-14)(b+7)=0$, so $b=14$ and $\boxed{AM^2=147}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair B=(-7,0),C=(7,0),A=(0,7*sqrt(3)),M=(0,0),D=(A+B)/2,Ee=(A+C)/2;draw(A--B--C--cycle);draw(A--M^^D--Ee);draw(M--Ee,dashed);draw(circle(M,7),blue);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$M$",M,S);label("$D$",D,NW);label("$E$",Ee,NE);
+\end{asy}

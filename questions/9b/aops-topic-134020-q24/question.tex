@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h134020_2004_national_sprint
+% Stable identity: aops-topic-134020-q24
+A $3$ by $4$ rectangle ($3$ rows, $4$ columns) is divided into $1$ by $1$ squares, as shown. Each square of the top row and of the rightmost column contains a star ($6$ stars in all), and the $3$ squares of the rightmost column are shaded.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<4;++i) for(int j=0;j<3;++j){
+  if(i==3) fill((i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle,gray(0.75));
+  draw((i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle,linewidth(0.9));
+  if(i==3 || j==2) label("$\star$",(i+0.5,j+0.5),fontsize(14pt));
+}
+label("start",(0.5,0.5),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Henri stands in the bottom-left square, marked ``start''. Teresa flips a fair coin. If it lands heads, Henri moves one square up; if it lands tails, Henri moves one square to the right. This continues until Henri moves into a square with a star, and then the game ends. If this final square is shaded, Teresa wins; otherwise Henri wins. What is the probability that Teresa wins? Express your answer as a common fraction.

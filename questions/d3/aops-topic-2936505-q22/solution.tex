@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2936505_2017_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2936505-q22
+Place the centres at $O_1=(-d,0)$ and $O_2=(d,0)$, with $A$ above $B$ on the $y$-axis. Let the radius be $r$ and half of $\angle AO_1B$ be $3\phi$. The arc inside the other circle is a minor arc, so $0<\phi<30^\circ$, and $d=r\cos3\phi$. Trisection gives $P=(-d+r\cos\phi,r\sin\phi)$ and $Q=(-d+r\cos\phi,-r\sin\phi)$; $R$ is the reflection of $P$ in the $y$-axis. Hence $PQ=2r\sin\phi$ and $PR=2r(\cos\phi-\cos3\phi)$. Their ratio is $\dfrac{PR}{PQ}=4\sin\phi\cos\phi=2\sin2\phi=\sqrt2$. On $0<2\phi<60^\circ$ this forces $2\phi=45^\circ$. Therefore $\angle AO_1B=6\phi=\boxed{135^\circ}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real r=1/(2*sin(pi/8)),d=r*cos(3*pi/8);pair Oa=(-d,0),Ob=(d,0),A=(0,r*sin(3*pi/8)),B=(0,-r*sin(3*pi/8)),P=Oa+r*dir(22.5),Q=Oa+r*dir(-22.5),R=Ob+r*dir(157.5),Ss=Ob+r*dir(202.5);draw(circle(Oa,r));draw(circle(Ob,r));draw(Oa--A^^Oa--B,dashed);draw(P--Q^^P--R,blue);label("$O_1$",Oa,W);label("$O_2$",Ob,E);label("$A$",A,N);label("$B$",B,S);label("$P$",P,E);label("$Q$",Q,E);label("$R$",R,W);label("$S$",Ss,W);
+\end{asy}

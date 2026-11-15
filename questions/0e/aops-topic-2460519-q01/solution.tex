@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2460519_a_fascinating_thought
+% Stable identity: aops-topic-2460519-q01
+\textbf{(a)} Count the ways in which each of $n$ (distinguishable) people chooses one of $k$ sweaters or no sweater; several people may choose the same sweater.
+
+\emph{First count.} Each person has $k+1$ options, independently, so there are $(k+1)^n$ ways.
+
+\emph{Second count.} Sort the ways by the number $i$ of people who take a sweater, $0\le i\le n$. Choose these $i$ people in $\dbinom ni$ ways; each of them chooses one of the $k$ sweaters, in $k^i$ ways; everyone else takes no sweater. So there are $\dbinom nik^i$ ways with exactly $i$ sweaters taken, and $\sum_{i=0}^{n}\dbinom nik^i$ ways in total.
+
+Both counts describe the same set, so they are equal. $\blacksquare$
+
+\textbf{(b)} By the binomial theorem, $(1+x)^n=\sum_{i=0}^{n}\dbinom nix^i$ for every real (even complex) $x$; putting $x=k$ gives the identity for every real $k$. For $k=1$ it is the familiar $\dbinom n0+\dbinom n1+\cdots+\dbinom nn=2^n$: the number of subsets of an $n$-element set.

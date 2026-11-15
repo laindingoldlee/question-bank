@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2409642_how_do_you_find_angles_of_a_regular_polygon_fast
+% Stable identity: aops-topic-2409642-q01
+Walk around the polygon: at each vertex you turn through the \emph{exterior} angle, and after going once around you have turned through $360^\circ$ in total. In a regular $n$-gon all $n$ exterior angles are equal, so each is $\dfrac{360^\circ}{n}$, and each interior angle is
+\[180^\circ-\dfrac{360^\circ}{n}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+int n=10; real R=2;
+pair V(int k){return R*dir(90+360*k/n);}
+path p=V(0); for(int k=1;k<n;++k) p=p--V(k); p=p--cycle;
+draw(p,linewidth(0.9));
+pair A=V(1),B=V(0),C=V(n-1);
+pair X=B+0.9*(B-A);
+draw(B--X,dashed);
+real nm(real t){return t>180 ? t-360 : t;}
+real e1=nm(degrees(C-B)), e2=nm(degrees(X-B)), i1=nm(degrees(A-B));
+draw(arc(B,0.5,e1,e2),red);
+label("$e$",B+0.5*dir((e1+e2)/2),E,red);
+draw(arc(B,0.35,e1,i1),blue);
+label("$\alpha$",B+0.35*dir((e1+i1)/2),dir((e1+i1)/2),blue);
+dot(A); dot(B); dot(C);
+\end{asy}
+
+(The figure shows a regular decagon, $n=10$, with an interior angle $\alpha$ and the exterior angle $e=\dfrac{360^\circ}{n}$ at the same vertex, so that $\alpha+e=180^\circ$; the picture for $n=120$ is the same.) For $n=120$ the exterior angle is $\dfrac{360^\circ}{120}=3^\circ$, so each interior angle is
+\[180^\circ-3^\circ=\boxed{177^\circ}.\]
+This agrees with the usual formula $\dfrac{180^\circ(n-2)}{n}=\dfrac{180^\circ\cdot118}{120}=177^\circ$, but needs only the division $360\div120$.

@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1526776_how_to_turn_quadratics_into_parabolas_easily
+% Stable identity: aops-topic-1526776-q01
+\textbf{(a)} Expanding the right side,
+\[
+a\left(x^2+\dfrac{b}{a}x+\dfrac{b^2}{4a^2}\right)-\dfrac{b^2-4ac}{4a}=ax^2+bx+\dfrac{b^2}{4a}-\dfrac{b^2}{4a}+c=ax^2+bx+c. \qquad\blacksquare
+\]
+
+\textbf{(b)} The square $\left(x+\dfrac {b}{2a}\right)^2$ is at least $0$, with equality only at $x=-\dfrac {b}{2a}$. So if $a>0$ the expression is smallest there, and if $a<0$ it is largest there. Also the value at $-\dfrac {b}{2a}+t$ equals the value at $-\dfrac {b}{2a}-t$. Hence the vertex is
+\[
+\left(-\dfrac{b}{2a},\ -\dfrac{b^2-4ac}{4a}\right),
+\]
+and the axis of symmetry is the line $x=-\dfrac{b}{2a}$. The parabola opens upward if $a>0$ and downward if $a<0$.
+
+\textbf{(c)} With $a=2$, $b=-8$, $c=5$: $-\dfrac{b}{2a}=2$ and $-\dfrac{b^2-4ac}{4a}=-\dfrac{64-40}{8}=-3$. So $y=2(x-2)^2-3$ and the vertex is $\boxed{(2,-3)}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return 2*(x-2)^2-3;}
+draw((-0.8,0)--(4.8,0),Arrow(6));draw((0,-3.8)--(0,6),Arrow(6));
+label("$x$",(4.8,0),E);label("$y$",(0,6),N);
+draw(graph(f,0,4),blue+linewidth(1));
+draw((2,-3)--(2,5.5),dashed+gray(0.4));
+dot((2,-3));label("$(2,-3)$",(2,-3),SE);
+dot((0,5));label("$(0,5)$",(0,5),W);
+label("$x=2$",(2,5.5),N,gray(0.3));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

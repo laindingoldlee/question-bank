@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2149765_prmo_problem
+% Stable identity: aops-topic-2149765-q01
+Put $O$ at the origin with $PS$ on the $x$-axis, so the big arc has radius $2$. By symmetry $Q=(-r,h)$ and $R=(r,h)$, where $r$ is the radius of the small semicircle; its centre is $(0,h)$ and its lowest point is $(0,h-r)$. Tangency to $PS$ means $h=r$, and $Q$ lies on the big circle, so $r^2+h^2=4$. Hence $r=h=\sqrt2$, and the small semicircle touches $PS$ at $O$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real r=sqrt(2);
+pair P=(-2,0), S=(2,0), O=(0,0), X=(0,2), Q=(-r,r), R=(r,r);
+path big=arc(O,2,0,180);
+path top=arc(O,2,45,135);
+path small=arc((0,r),r,180,360);
+fill(top--small--cycle,paleblue);
+draw(big,linewidth(0.9)); draw(P--S,linewidth(0.9));
+draw(small,blue+linewidth(1));
+draw(Q--R,dashed); draw(O--Q,gray); draw(O--R,gray);
+draw((0,r)--R,red); label("$\sqrt2$",(r/2,r),N,red);
+dot(P); dot(S); dot(O); dot(X); dot(Q); dot(R); dot((0,r));
+label("$P$",P,S); label("$S$",S,S); label("$O$",O,S); label("$X$",X,N); label("$Q$",Q,NW); label("$R$",R,NE);
+label("$2$",(1,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The region consists of two parts.
+\begin{itemize}
+\item Above $QR$: the segment of the big circle cut off by the chord $QR$. Since $Q=(-\sqrt2,\sqrt2)$ and $R=(\sqrt2,\sqrt2)$, the angle $QOR$ is $90^\circ$, so this segment has area
+\[\dfrac{1}{4}\pi\cdot2^2-\dfrac{1}{2}\cdot2\cdot2=\pi-2 .\]
+\item Below $QR$: the small semicircle, of area $\dfrac{1}{2}\pi\left(\sqrt2\right)^2=\pi$.
+\end{itemize}
+The area of the region $QXROQ$ is therefore
+\[(\pi-2)+\pi=\boxed{2\pi-2}\approx4.28 .\]

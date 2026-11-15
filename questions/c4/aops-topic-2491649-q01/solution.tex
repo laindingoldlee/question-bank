@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2491649_the_cubic_equation
+% Stable identity: aops-topic-2491649-q01
+\textbf{Step 1: remove the $x^2$ term.} Divide by $a$ and write $B=\dfrac ba$, $C=\dfrac ca$, $D=\dfrac da$. Substitute $x=t-\dfrac B3$:
+\[\left(t-\dfrac B3\right)^3+B\left(t-\dfrac B3\right)^2+C\left(t-\dfrac B3\right)+D=t^3+\left(C-\dfrac{B^2}{3}\right)t+\left(\dfrac{2B^3}{27}-\dfrac{BC}{3}+D\right),\]
+because the $t^2$ terms $-Bt^2+Bt^2$ cancel, the $t$ terms are $\dfrac{B^2}{3}t-\dfrac{2B^2}{3}t+Ct$, and the constants are $-\dfrac{B^3}{27}+\dfrac{B^3}{9}-\dfrac{BC}{3}+D$. In terms of $P$ and $Q$,
+\[C-\dfrac{B^2}{3}=\dfrac ca-\dfrac{b^2}{3a^2}=3P,\qquad\dfrac{2B^3}{27}-\dfrac{BC}{3}+D=\dfrac{2b^3}{27a^3}-\dfrac{bc}{3a^2}+\dfrac da=-2Q.\]
+So $x=t-\dfrac{b}{3a}$ is a root of the original equation exactly when
+\[t^3+3Pt-2Q=0.\]
+
+\textbf{Step 2: solve the reduced cubic.} Look for a root of the form $t=u+v$. Since $(u+v)^3=u^3+v^3+3uv(u+v)$, the equation becomes
+\[u^3+v^3-2Q+3(uv+P)(u+v)=0,\]
+which holds if $uv=-P$ and $u^3+v^3=2Q$. Then $u^3$ and $v^3$ have sum $2Q$ and product $-P^3$, so they are the roots of $z^2-2Qz-P^3=0$, namely $z=Q\pm\sqrt{Q^2+P^3}$ (real, because $Q^2+P^3\ge0$).
+
+\textbf{Step 3: check.} Let $u=\sqrt[3]{Q+\sqrt{Q^2+P^3}}$ and $v=\sqrt[3]{Q-\sqrt{Q^2+P^3}}$ be the real cube roots. Then $u^3+v^3=2Q$, and $(uv)^3=Q^2-\left(Q^2+P^3\right)=-P^3$; since the real cube root of $-P^3$ is $-P$, we get $uv=-P$. Hence $t=u+v$ satisfies
+\[t^3=u^3+v^3+3uv\,t=2Q-3Pt,\qquad\text{i.e.}\qquad t^3+3Pt-2Q=0,\]
+and by Step 1, $x=u+v-\dfrac{b}{3a}$ is a root of $ax^3+bx^2+cx+d=0$. $\blacksquare$
+
+(When $Q^2+P^3<0$ the cubic has three real roots, but the formula then needs cube roots of non-real numbers.)

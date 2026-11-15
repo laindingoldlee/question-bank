@@ -1,0 +1,22 @@
+Power of $A$ with respect to $\omega_2$ gives $AX\cdot AB=AY\cdot AC=800$, so $AB=32$. Put $A=(0,0),B=(32,0),M=(16,0),N=(8,0)$, and let the tangent circle center be $O=(16,r)$. The midpoint of $BN$ is $K=(20,0)$. Since $OK$ is the perpendicular bisector of chord $DE$, line $AD$ has slope $\dfrac{4}{r}$. The other tangent from $B$ has contact point $D=(\dfrac{48r^2+4096}{r^2+256},\dfrac{512r}{r^2+256})$, obtained by reflecting $M$ across line $BO$. Thus its slope from $A$ is $\dfrac{32r}{3r^2+256}=\dfrac{4}{r}$, giving $r^2=\dfrac{256}{5}$. Consequently $D=(\dfrac{64}{3},\dfrac{16\sqrt5}{3})$ and $AD^2=\dfrac{1792}{3}$. Finally $AE\cdot AD=AM^2=256$, so $AE^2=\dfrac{768}{7}$ and $\boxed{775}$. Reflection across $AB$ yields the same value. 
+
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+
+pair A=(0,0),B=(32,0),X=(25,0),D=(64/3,16*sqrt(5)/3);
+pair C=B+(8+sqrt(145))/6*(D-B),Y=C/2;
+pair circum(pair U,pair V,pair W){pair v=V-U,w=W-U;real t=2*(v.x*w.y-v.y*w.x);return U+((dot(v,v)*w.y-dot(w,w)*v.y)/t,(v.x*dot(w,w)-w.x*dot(v,v))/t);}
+pair O1=circum(A,X,Y),O2=circum(B,X,Y);
+draw(circle(O1,abs(A-O1)),gray);draw(circle(O2,abs(B-O2)),gray);
+draw(A--B--C--A);dot(X);dot(Y);
+label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$C$",C,(0,1));label("$X$",X,(0,-1));label("$Y$",Y,(-1,0));label("$\omega_1$",O1,(-1,0));label("$\omega_2$",O2,(1,0));
+
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+real r=16/sqrt(5);pair A=(0,0),B=(32,0),M=(16,0),N=(8,0),K=(20,0),O=(16,r),D=(64/3,16*sqrt(5)/3),E=D*(3/7);draw(A--B);draw(circle(O,r));draw(B--D);draw(A--D);draw(O--K,dashed);pair[] P={A,B,M,N,K,O,D,E};string[] L={"A","B","M","N","K","O","D","E"};for(int i=0;i<P.length;++i)label("$"+L[i]+"$",P[i],i<5?(0,-1):(0,1));
+\end{asy}

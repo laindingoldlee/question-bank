@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1482141_made_up_ellipse_problem
+% Stable identity: aops-topic-1482141-q01
+The centre is the midpoint of the major axis, $(12.5,0)$. The semi-major axis is $a=\dfrac{25}{2}$ and the semi-minor axis is $b=12$. The distance $c$ from the centre to each focus satisfies
+\[
+c^2=a^2-b^2=\dfrac{625}{4}-144=\dfrac{49}{4},\qquad c=\dfrac{7}{2}.
+\]
+(Equivalently: the distance from an endpoint of the minor axis to a focus equals $a$, giving the right triangle with legs $12$, $c$ and hypotenuse $12.5$ shown dashed.) The foci lie on the major axis at distance $\dfrac{7}{2}$ from the centre:
+\[
+\boxed{(9,0)\text{ and }(16,0)} .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real a=12.5,bb=12,c=3.5; pair O=(12.5,0);
+draw((-2,0)--(29,0),gray,Arrow(4)); draw((0,-14)--(0,15),gray,Arrow(4));
+label("$x$",(29,0),N,gray); label("$y$",(0,15),W,gray);
+draw(shift(O)*scale(a,bb)*unitcircle,linewidth(0.9));
+draw((12.5,-12)--(12.5,12),blue+dashed);
+pair F1=(9,0),F2=(16,0);
+dot((0,0));dot((25,0));dot(F1,red);dot(F2,red);dot(O);
+label("$(0,0)$",(0,0),SW); label("$(25,0)$",(25,0),SE);
+label("$F_1$",F1,S,red); label("$F_2$",F2,S,red);
+label("$12$",(12.5,6),W,blue);
+dot((12.5,12),blue); dot((12.5,-12),blue);
+draw((12.5,12)--F2,red+dashed); label("$12.5$",(12.5,12)*0.5+F2*0.5,NE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

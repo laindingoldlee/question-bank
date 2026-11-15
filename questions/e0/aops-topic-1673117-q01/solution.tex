@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h1673117_imc_2014_12
+% Stable identity: aops-topic-1673117-q01
+\textbf{Equal angles from the circle.} The inscribed angles $\angle CBD$ and $\angle CAD$ stand on the same arc $CD$, so $\angle CBD=30^\circ$. Also $\angle DCA$ and $\angle DBA$ stand on arc $DA$, so $\angle DCA=\angle DBA=\angle DAB$ (the last because $DA=DB$).
+
+\textbf{An auxiliary point.} Let $M$ be the foot of the perpendicular from $D$ to $AC$, and let $E$ be the reflection of $C$ in $M$, so that $DE=DC$ and $\angle DEC=\angle DCE$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),C=(106.8,0),D=(75,25*sqrt(3));
+pair cc(pair P,pair Q,pair R){pair a=Q-P,c=R-P; real d=2*(a.x*c.y-a.y*c.x);
+  return P+((c.y*dot(a,a)-a.y*dot(c,c))/d,(a.x*dot(c,c)-c.x*dot(a,a))/d);}
+pair O=cc(A,C,D); real R=abs(A-O);
+pair u=unit(D-O); pair B=2*(O+dot(A-O,u)*u)-A;
+pair M=(75,0),Ep=(43.2,0);
+draw(circle(O,R),gray);
+draw(A--B--C--D--cycle,linewidth(0.9));draw(A--C,linewidth(0.9));draw(B--D,linewidth(0.9));
+draw(D--M,dashed);draw(D--Ep,blue);
+draw(M+(-3,0)--M+(-3,3)--M+(0,3));
+draw(arc(A,16,0,30));label("$30^\circ$",A+22*dir(15));
+dot(Ep,blue);dot(M);
+label("$A$",A,W);label("$B$",B,S);label("$C$",C,E);label("$D$",D,N);
+label("$M$",M,SW);label("$E$",Ep,NW,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangle $AMD$ is a $30^\circ$-$60^\circ$-$90^\circ$ triangle with hypotenuse $AD=50\sqrt3$, so
+\[
+DM=\dfrac{AD}{2}=25\sqrt3,\qquad AM=\dfrac{\sqrt3}{2}AD=75 .
+\]
+Hence $MC=AC-AM=31.8$, $ME=31.8$, and $E$ lies on segment $AM$ with $AE=75-31.8=43.2$.
+
+\textbf{$AE=BC$.} Compare triangles $DAE$ and $DBC$:
+\begin{itemize}
+\item $DA=DB$;
+\item $\angle DAE=\angle DAC=30^\circ=\angle DBC$;
+\item $\angle DEA=180^\circ-\angle DEC=180^\circ-\angle DCA=180^\circ-\angle DAB=\angle DCB$, using the cyclic quadrilateral $ABCD$ for the last step ($\angle DAB+\angle DCB=180^\circ$).
+\end{itemize}
+So the triangles are congruent (AAS), and $BC=AE=\boxed{43.2}$ cm.

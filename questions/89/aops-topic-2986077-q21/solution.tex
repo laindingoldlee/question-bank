@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h2986077_202223_mock_orzmc10_problems
+% Stable identity: aops-topic-2986077-q21
+The unordered pairs $\{a_{2k-1},a_{2k}\}$ form a partition of $\{1,\dots,2022\}$ into $1011$ pairs with differences $1$ or $2$. Conversely, given such a partition, we can assign the pairs to the $1011$ position-pairs in $1011!$ ways and order each pair in $2$ ways. So $N=M\cdot1011!\cdot2^{1011}$, where $M$ is the number of such partitions of $\{1,\dots,2m\}$ with $m=1011$.
+
+In such a partition, the element $1$ pairs with $2$ or with $3$. If $1$ pairs with $3$, then $2$ must pair with $4$ (its only remaining option). So the partition begins with the block $\{1,2\}$ or with the block $\{1,3\},\{2,4\}$, giving $M_m=M_{m-1}+M_{m-2}$ with $M_1=1$, $M_2=2$: $M_m=F_{m+1}$ (Fibonacci). Since $F_j$ is even exactly when $3\mid j$ and $1012\equiv1\pmod3$, $M$ is odd.
+
+By Legendre's formula, $v_2(1011!)=1011-s_2(1011)$, where $s_2$ is the binary digit sum; $1011=1111110011_2$ has $8$ ones, so $v_2(1011!)=1003$. Therefore $n=0+1003+1011=2014$. \textbf{(D)}

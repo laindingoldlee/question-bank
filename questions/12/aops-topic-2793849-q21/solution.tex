@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2793849_2017_geometry_bee__guts_rounds__sets_57
+% Stable identity: aops-topic-2793849-q21
+(a) Yes. The incircle disk is contained in the triangular region, itself contained in the circumdisk, so its radius is at most the circumradius; equality would force identical disks, impossible since a triangle cannot contain its circumdisk. (b) No. Four nearby points on a short arc of the unit circle fit in a disk of radius less than 1; for example points at angles $\pm10^\circ,\pm20^\circ$ fit in the disk centred at $(\cos20^\circ,0)$ with radius $\sin20^\circ$. (c) No: in an obtuse triangle two altitudes meet outside. (d) No; the exhaustive integer certificate below checks all allowed pairs against all 100 cubes. (e) No: trisecting 60 degrees would construct 20 degrees. But $t=2\cos20^\circ$ satisfies $t^3-3t-1=0$, irreducible over the rationals by the rational-root test. Its degree 3 is not a power of 2, whereas straightedge-and-compass constructible numbers have degree a power of 2. (f) Yes: these are six points on the nine-point circle. To verify the circle claim, take the circumcenter as vector origin and orthocenter $h=a+b+c$. Its centre is $\dfrac{h}{2}$ and radius $\dfrac{R}{2}$. A midpoint $\dfrac{b+c}{2}$ is distance $\dfrac{|a|}{2}=\dfrac{R}{2}$ from this centre. An altitude foot $d$ has reflection $2d-h$ on the circumcircle, so $|d-\dfrac{h}{2}|=\dfrac{R}{2}$ as well. Thus the answers are $\boxed{Y,N,N,N,N,Y}$.
+\begin{verbatim}
+cubes = {c**3 for c in range(1,101)}
+assert not any(a**3+b**3 in cubes
+               for a in range(1,101) for b in range(1,101))
+\end{verbatim}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(circle((0,0),1));pair K=(cos(20*pi/180),0);draw(circle(K,sin(20*pi/180)),blue);for(real t:new real[]{-20,-10,10,20})dot(dir(t));label("four concyclic points",(0,-1.4));
+\end{asy}

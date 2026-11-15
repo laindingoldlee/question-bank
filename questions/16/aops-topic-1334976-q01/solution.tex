@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1334976_area_problem
+% Stable identity: aops-topic-1334976-q01
+The square has side $\sqrt{25}=5$. An equilateral triangle with side $s$ has area $\dfrac{\sqrt3}{4}s^2$, so $\dfrac{\sqrt3}{4}s^2=9\sqrt3$ gives $s^2=36$ and $s=6$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(5,0)--(5,5)--(0,5)--cycle,linewidth(0.9));
+label("$5$",(2.5,0),S); label("area $25$",(2.5,2.5),fontsize(9pt));
+pair P=(7,0),Q=(13,0),T=(10,3*sqrt(3));
+draw(P--Q--T--cycle,linewidth(0.9));
+label("$6$",(P+Q)/2,S); label("area $9\sqrt{3}$",(10,1.6),fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The difference of the side lengths is $6-5=\boxed{1}$.

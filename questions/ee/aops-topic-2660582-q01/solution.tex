@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2660582_function_equation
+% Stable identity: aops-topic-2660582-q01
+The answer is: $f\equiv0$, or $f\equiv C$ for a constant $C$ with $1\le C<2$.
+
+\emph{These work.} For $f\equiv0$ both sides are $0$. For $f\equiv C$ with $\lfloor C\rfloor=1$, both sides equal $C$.
+
+Put $x=0$: $f(0)=f(0)\lfloor f(y)\rfloor$ for all $y$.
+
+\emph{Case $f(0)\ne0$.} Then $\lfloor f(y)\rfloor=1$ for all $y$, and the equation becomes $f\left(\lfloor x\rfloor y\right)=f(x)$. Taking $x=1$ gives $f(y)=f(1)$ for all $y$, so $f\equiv C$ with $\lfloor C\rfloor=1$, i.e. $1\le C<2$.
+
+\emph{Case $f(0)=0$.} Suppose $f(\alpha)\ne0$ for some $\alpha\in[0,1)$. Taking $x=\alpha$ gives $0=f(0)=f(\alpha)\lfloor f(y)\rfloor$, so $\lfloor f(y)\rfloor=0$ for all $y$. Then $x=1$ gives $f(y)=f(1)\lfloor f(y)\rfloor=0$ for all $y$, contradicting $f(\alpha)\ne0$. Hence $f=0$ on $[0,1)$.
+
+Now let $z$ be any real number. Choose a nonzero integer $N$ with $\dfrac zN\in[0,1)$: for $z\ge0$ take $N=\lfloor z\rfloor+1$, and for $z<0$ take $N=-\left(\lfloor -z\rfloor+1\right)$. With $x=N$ and $y=\dfrac zN$,
+\[f(z)=f(N)\left\lfloor f\left(\dfrac zN\right)\right\rfloor=f(N)\lfloor0\rfloor=0.\]
+So $f\equiv0$.
+
+Therefore $\boxed{f\equiv0\ \text{ or }\ f\equiv C\text{ with }1\le C<2}$.

@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h3076233_number_theory
+% Stable identity: aops-topic-3076233-q01
+The bounds give a finite domain of $98\cdot99$ pairs. For each pair, first require divisibility of the numerator by the positive denominator, then test whether the quotient is a prime square. The following exact computation checks every pair and finds none. Thus $\boxed{\text{there is no such prime under the stated bounds}}$.
+\begin{verbatim}
+from math import isqrt
+sol=[]
+for x in range(3,101):
+    for y in range(2,101):
+        a,b=x**3-8,y**3-1
+        if a%b:continue
+        q=a//b
+        p=isqrt(q)
+        if p*p==q and p>1 and all(p%d for d in range(2,isqrt(p)+1)):
+            sol.append((p,x,y))
+assert sol==[]
+\end{verbatim}

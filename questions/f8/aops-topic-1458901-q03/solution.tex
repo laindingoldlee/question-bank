@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1458901_comc_1997_3
+% Stable identity: aops-topic-1458901-q03
+The segment goes from $(-4,11)$ in the direction $(20,-12)=4\,(5,-3)$, so its points are $(-4+5s,\;11-3s)$ for $0\le s\le4$. Such a point has integer coordinates exactly when $5s$ and $3s$ are integers, that is, when $s$ is an integer (as $\gcd(5,3)=1$). Positivity needs $-4+5s>0$ and $11-3s>0$, i.e.\ $s\ge1$ and $s\le3$. So $s=1,2,3$ and the points are
+\[
+\boxed{(1,8),\ (6,5),\ (11,2)} .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+import graph;
+xaxis(Label("$x$",position=EndPoint,align=E),-6,18.5,Arrow(5));
+yaxis(Label("$y$",position=EndPoint,align=N),-2.5,13,Arrow(5));
+for(int i=-4;i<=14;i+=2) if(i!=0) {draw((i,-0.2)--(i,0.2)); label(scale(0.7)*("$"+string(i)+"$"),(i,-0.3),S);}
+for(int j=2;j<=10;j+=2) {draw((-0.2,j)--(0.2,j)); label(scale(0.7)*("$"+string(j)+"$"),(-0.3,j),W);}
+pair P=(-4,11),Q=(16,-1);
+draw(P--Q,blue+linewidth(0.9));
+dot(P,blue); dot(Q,blue);
+label("$(-4,11)$",P,W); label("$(16,-1)$",Q,S);
+pair[] L={(1,8),(6,5),(11,2)};
+for(pair z:L) dot(z,red+4bp);
+label("$(1,8)$",(1,8),NE,red); label("$(6,5)$",(6,5),NE,red); label("$(11,2)$",(11,2),NE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(As printed in the post, without the minus signs, the segment from $(4,11)$ to $(16,1)$ would contain the points $(4,11)$, $(10,6)$, $(16,1)$.)

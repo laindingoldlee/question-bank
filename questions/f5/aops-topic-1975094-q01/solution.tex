@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1975094_quadratic_inequalities
+% Stable identity: aops-topic-1975094-q01
+\textbf{(a)} The area is $w(w+15)$, so we need
+\[
+w^2+15w-220>0 .
+\]
+The roots of $w^2+15w-220=0$ are $w=\dfrac{-15\pm\sqrt{225+880}}{2}=\dfrac{-15\pm\sqrt{1105}}{2}$, and the quadratic is positive outside them. Since a width must be positive, the possible widths are
+\[
+\boxed{w>\dfrac{\sqrt{1105}-15}{2}\approx9.12\text{ m}}.
+\]
+\textbf{(b)} For example $w=10$ m gives length $25$ m and area $250\text{ m}^2>220\text{ m}^2$. (Any area greater than $220\text{ m}^2$ is possible.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw((-1,4)--(11.5,4),linewidth(2));
+for(int i=0;i<12;++i) draw((i-0.5,4)--(i,4.6),gray(0.4));
+label("wall",(5.25,4.6),N);
+draw((0,4)--(0,0)--(10.5,0)--(10.5,4),linewidth(1));
+label("$w$",(0,2),W);label("$w+15$",(5.25,0),S);label("area $w(w+15)$",(5.25,2));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+
+\textbf{(c)} No. The inequality is also satisfied by $w<\dfrac{-15-\sqrt{1105}}{2}\approx-24.12$, but there both $w$ and $w+15$ are negative; their product is positive only algebraically. A width is a length and must be positive, so these solutions are rejected.

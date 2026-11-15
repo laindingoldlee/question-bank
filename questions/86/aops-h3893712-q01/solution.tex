@@ -1,0 +1,8 @@
+Among the other labels, 6 is coprime only to 1 and 5. It must occupy a corner, since middle cells have three neighbors. Choose the corner in four ways and place 1 and 5 in its neighbors in two ways. The remaining cells form a three-cell path. The numbers 2 and 4 cannot be adjacent, so must occupy the endpoints in either order, leaving 3 in the middle. All resulting adjacencies are coprime. The count is $4\cdot2\cdot2=\boxed{16}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"6", "1", "2"}, {"5", "4", "3"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("one valid filling",(1.5,-2.2));
+\end{asy}

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2645973_geo_problem
+% Stable identity: aops-topic-2645973-q01
+\emph{Trapezoid $ABME$} has sides $AB$, $BM$, $ME=13$, $EA=3$. If its three equal sides were $3$, the fourth side $13$ would exceed the sum $9$ of the others, which is impossible. So $AB=BM=ME=13$. The equal legs of an isosceles trapezoid are opposite sides; since $BM\ne EA$, the legs are $AB=ME=13$ and the bases are $BM\parallel EA$, of lengths $13$ and $3$. The height is $\sqrt{13^2-5^2}=12$, the area is $\dfrac{13+3}{2}\cdot12=96$, and the base angles at $B$ and $M$ satisfy $\cos\angle ABM=\cos\angle BME=\dfrac5{13}$. Call this angle $\theta$; then $\angle BMD=180^\circ-\theta$ is obtuse.
+
+\emph{Trapezoid $CDMB$} has $DM=MB=13$, so exactly one of $CD$, $BC$ equals $13$.
+\begin{itemize}
+\item If $BC=13\ne CD$, the legs are $DM=BC$ and the bases $CD\parallel MB$, and then $\angle MBC=\angle BMD=180^\circ-\theta$. So $\angle ABC=\theta+\left(180^\circ-\theta\right)=180^\circ$, which is not allowed.
+\item So $CD=13\ne BC$: the legs are $CD=MB$ and the bases are $DM\parallel BC$. The angle at $M$ is obtuse, so $DM=13$ is the shorter base, and $BC=13+2\cdot13\cos\theta=23$. The height is $12$ and the area is $\dfrac{13+23}{2}\cdot12=216$. Now $\angle ABC=2\theta<180^\circ$, and all other angles are $\theta$ or $180^\circ-\theta$.
+\end{itemize}
+The area of $ABCDE$ is $96+216=\boxed{312}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair M=(0,0),Ep=(-13,0),D=(13,0),B=(-5,12),A=Ep+3*(B-M)/13,C=B+(23,0);
+fill(A--B--M--Ep--cycle,lightgray);draw(A--B--C--D--Ep--cycle,linewidth(0.8));draw(B--M);
+draw(B--(-5,0),dashed);draw(C--(18,0),dashed);dot(M);
+label("$A$",A,NW);label("$B$",B,N);label("$C$",C,NE);label("$D$",D,SE);label("$E$",Ep,S);label("$M$",M,S);
+label("$3$",(A+Ep)/2,W);label("$13$",(B+M)/2,E);label("$13$",(Ep+M)/2,S);label("$13$",(M+D)/2,S);label("$13$",(C+D)/2,E);label("$13$",(A+B)/2,NW);label("$23$",(B+C)/2,N);label("$12$",(-5,6),W,fontsize(8pt));
+\end{asy}

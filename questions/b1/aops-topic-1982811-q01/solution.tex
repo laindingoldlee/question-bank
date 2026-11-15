@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1982811_is_there_an_easier_way_to_solve
+% Stable identity: aops-topic-1982811-q01
+Since $111=1+10+10^2$, we have $111^6=P(10)$ where $P(x)=(1+x+x^2)^6$. Expanding (for instance by squaring $(1+x+x^2)^3=1+3x+6x^2+7x^3+6x^4+3x^5+x^6$), the coefficients of $P$ are
+\[
+1,\ 6,\ 21,\ 50,\ 90,\ 126,\ 141,\ 126,\ 90,\ 50,\ 21,\ 6,\ 1.
+\]
+So $111^6=\sum c_k10^k$ with these coefficients $c_0,\dots,c_{12}$. Now carry from the units upward, writing each column total as a digit plus a carry:
+\[
+\begin{array}{c|ccccccccccccc}
+k & 0&1&2&3&4&5&6&7&8&9&10&11&12\\\hline
+c_k+\text{carry in} & 1&6&21&52&95&135&154&141&104&60&27&8&1\\
+\text{digit} & 1&6&1&2&5&5&4&1&4&0&7&8&1
+\end{array}
+\]
+Reading the digits from $k=12$ down to $k=0$:
+\[
+111^6=\boxed{1870414552161}.
+\]
+(Check: $111^3=1367631$ and $1367631^2=1870414552161$.)

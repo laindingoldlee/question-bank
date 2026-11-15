@@ -1,0 +1,8 @@
+A horizontal line can meet cell interiors only in one row. Within that row, it cuts all $2020$ cells at the same height, so either all are shaved or none are. Each row can be shaved by choosing a line at distance $\varepsilon$ above its lower boundary, where $0<\varepsilon<\dfrac{1}{2021}$; then $\varepsilon<\dfrac{(1-\varepsilon)}{2020}$.
+This gives exactly $2020$ distinct row sets. Vertical lines similarly give $2020$ column sets. A row set cannot equal a column set because the grid has more than one row and column. The total is $4040$, giving remainder $\boxed{40}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int i=0;i<=5;++i){draw((i,0)--(i,5),gray);draw((0,i)--(5,i),gray);}fill(box((0,2),(5,2.12)),lightblue);draw((-.3,2.12)--(5.3,2.12),blue);label("one entire row is shaved",(2.5,5.4));
+\end{asy}

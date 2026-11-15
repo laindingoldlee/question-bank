@@ -1,0 +1,6 @@
+Let the square side be $s$, the common offset be $t$, and put $A=(0,0)$, $B=(s,0)$, $C=(s,s)$, $D=(0,s)$, $X=(u,v)$. Splitting each region into two triangles gives $[XEAH]=\dfrac{tv+(s-t)u}{2}$ and $[XGCF]=\dfrac{t(s-v)+(s-t)(s-u)}{2}$. Their sum is $\dfrac{s^2}{2}$. Similarly the other two opposite regions sum to $\dfrac{s^2}{2}$. Consequently $81+125=49+[XHDG]$, giving $\boxed{157}$. This works for every permitted interior $X$ and offset.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1),E=(.3,0),F=(1,.3),G=(.7,1),H=(0,.7),X=(.5097087,.1213592);draw(A--B--C--D--cycle);draw(X--E^^X--F^^X--G^^X--H);label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$C$",C,(1,1));label("$D$",D,(-1,1));label("$E$",E,(0,-1));label("$F$",F,(1,0));label("$G$",G,(0,1));label("$H$",H,(-1,0));dot(X);label("$X$",X+(.04,.08),(0,1));
+\end{asy}
+

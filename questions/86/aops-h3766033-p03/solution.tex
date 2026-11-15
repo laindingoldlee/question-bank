@@ -1,0 +1,8 @@
+Partition the board into sixteen $2\times2$ blocks. Any two kings in one block attack each other, so seventeen kings force an attacking pair. Sixteen can be placed without attacks in rows $1,3,5,7$ and columns $1,3,5,7$. Thus the least guaranteeing number is $\boxed{17}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"K", "", "K", "", "K", "", "K", ""}, {"", "", "", "", "", "", "", ""}, {"K", "", "K", "", "K", "", "K", ""}, {"", "", "", "", "", "", "", ""}, {"K", "", "K", "", "K", "", "K", ""}, {"", "", "", "", "", "", "", ""}, {"K", "", "K", "", "K", "", "K", ""}, {"", "", "", "", "", "", "", ""}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("Sixteen nonattacking kings",(4.0,-8.2));
+\end{asy}

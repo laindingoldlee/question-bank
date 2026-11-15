@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2057175_124_circumscribed_quadrilateral
+% Stable identity: aops-topic-2057175-q01
+Let the circle touch $AB$, $BC$, $CD$, $DA$ at $W$, $X$, $Y$, $Z$ respectively. The two tangent segments from an external point to a circle are equal, so
+\[
+AW=AZ,\qquad BW=BX,\qquad CX=CY,\qquad DY=DZ .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real[] th={250,10,105,175};
+pair tp(real t){return dir(t);}
+pair vx(real t1,real t2){return dir((t1+t2)/2)/Cos((t2-t1)/2);}
+pair Av=vx(th[3],th[0]+360), Bv=vx(th[0],th[1]+360), Cv=vx(th[1],th[2]), Dv=vx(th[2],th[3]);
+draw(circle((0,0),1),blue);
+draw(Av--Bv--Cv--Dv--cycle,linewidth(0.9));
+pair T1=tp(th[0]),T2=tp(th[1]),T3=tp(th[2]),T4=tp(th[3]);
+dot(T1);dot(T2);dot(T3);dot(T4);dot((0,0));
+label("$A$",Av,SW); label("$B$",Bv,SE); label("$C$",Cv,NE); label("$D$",Dv,NW);
+label("$W$",T1,S); label("$X$",T2,E); label("$Y$",T3,N); label("$Z$",T4,W); label("$O$",(0,0),SE);
+draw(Av--(0,0),gray(0.6)+dashed);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Each tangency point lies on its side, so
+\[
+AB+CD=(AW+WB)+(CY+YD),\qquad BC+AD=(BX+XC)+(AZ+ZD).
+\]
+Replacing $AW$ by $AZ$, $WB$ by $BX$, $CY$ by $XC$ and $YD$ by $ZD$ turns the first sum into the second. Hence $\boxed{AB+CD=BC+AD}$. $\blacksquare$

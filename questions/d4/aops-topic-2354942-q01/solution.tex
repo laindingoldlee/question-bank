@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2354942_geometric_series_identity
+% Stable identity: aops-topic-2354942-q01
+Let $S_n$ be the sum. All terms are nonnegative, so sums of them may be regrouped and reordered freely (the value may a priori be $+\infty$).
+
+\textbf{$n=1$.} $\dbinom{k-1}{0}=1$, so $S_1=\dfrac12+\dfrac14+\cdots=1=2^0$.
+
+\textbf{From $n-1$ to $n$ ($n\ge2$).} By the hockey-stick identity,
+\[\dbinom{n-2+k}{n-1}=\sum_{j=1}^{k}\dbinom{n-3+j}{n-2}.\]
+Hence, swapping the order of summation,
+\[S_n=\sum_{k\ge1}\dfrac{1}{2^k}\sum_{j=1}^{k}\dbinom{n-3+j}{n-2}=\sum_{j\ge1}\dbinom{n-3+j}{n-2}\sum_{k\ge j}\dfrac{1}{2^k}=\sum_{j\ge1}\dbinom{n-3+j}{n-2}\cdot\dfrac{2}{2^j}=2S_{n-1}.\]
+So by induction $S_n=2^{n-1}$ for all $n\ge1$ (in particular every $S_n$ is finite). $\blacksquare$
+
+This is exactly the poster's idea of ``pulling out'' a copy of the previous series starting at each position. Two remarks on the post: the numerators for $n=4$ and $n=5$ are the tetrahedral numbers $\dbinom{k+2}{3}=1,4,10,20,\dots$ and the numbers $\dbinom{k+3}{4}=1,5,15,35,\dots$ (pentatope numbers), not the pentagonal numbers $1,5,12,22,\dots$; and the identity itself is known (it is the case $x=\dfrac12$ of $\displaystyle\sum_{j\ge0}\dbinom{m+j}{m}x^j=\dfrac{1}{(1-x)^{m+1}}$).

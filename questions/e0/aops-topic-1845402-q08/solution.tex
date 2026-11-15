@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1845402_mit_primes_step_questions
+% Stable identity: aops-topic-1845402-q08
+Let $\sigma$ be the substitution that replaces each $0$ by $01$ and each $1$ by $10$ (applied letter by letter). Note that $\sigma\left(\overline{W}\right)=\overline{\sigma(W)}$, since $\sigma(1)=10=\overline{01}=\overline{\sigma(0)}$ and vice versa.
+
+\textbf{(a)} We show by induction that $\sigma(W_k)=W_{k+1}$. For $k=1$: $\sigma(0)=01=W_2$. If $\sigma(W_k)=W_{k+1}$, then
+\[\sigma(W_{k+1})=\sigma(W_k)\,\sigma\left(\overline{W_k}\right)=W_{k+1}\,\overline{W_{k+1}}=W_{k+2}.\]
+So $W_{k+1}$ is obtained from $W_k$ by replacing the letter $t_n$ in position $n$ with the pair $t_n,\,1-t_n$, which occupies positions $2n$ and $2n+1$. Every position $n$ lies in some $W_k$, hence $t_{2n}=t_n$ and $t_{2n+1}=1-t_n$ for all $n$. In particular the even-indexed terms are $t_0,t_1,t_2,\dots$ again. $\blacksquare$
+
+\textbf{(b)} By (a), the sequence is a succession of blocks $(t_{2n},t_{2n+1})$, each equal to $01$ or $10$. Any three consecutive terms $t_m,t_{m+1},t_{m+2}$ contain a whole block: $(t_m,t_{m+1})$ if $m$ is even, and $(t_{m+1},t_{m+2})$ if $m$ is odd. That block contains both a $0$ and a $1$, so the three terms are neither $000$ nor $111$. $\blacksquare$
+
+(In the baby's version, $A$ stands for $0$ and $U$ for $1$.)

@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1482783_a_system_of_linear_inequalities
+% Stable identity: aops-topic-1482783-q01
+\textbf{(a)} The constraints are
+\[
+4x+6y\le108,\qquad x+y\le24,\qquad x\ge0,\qquad y\ge0 .
+\]
+The lines $4x+6y=108$ and $x+y=24$ meet where $4x+6(24-x)=108$, that is, $x=18$, $y=6$. The feasible region is the quadrilateral with vertices $\boxed{(0,0),\ (24,0),\ (18,6),\ (0,18)}$: on the $x$-axis the finishing constraint binds first ($x\le24<27$), and on the $y$-axis the assembly constraint does ($y\le18<24$).
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real s=0.25;
+pair V0=(0,0),V1=(24,0),V2=(18,6),V3=(0,18);
+fill(scale(s)*(V0--V1--V2--V3--cycle),palegreen);
+for(int y=0;y<=18;++y) for(int x=0;x<=24;++x) if(4x+6y<=108 && x+y<=24) dot(s*(x,y),linewidth(1.6));
+draw(scale(s)*((0,0)--(28,0)),gray,Arrow(5)); draw(scale(s)*((0,0)--(0,26)),gray,Arrow(5));
+draw(scale(s)*((0,24)--(24,0)),blue); draw(scale(s)*((0,18)--(27,0)),red);
+label("$x+y=24$",s*(6,23.5),E,blue); draw(s*(6.2,23)--s*(3.2,21),blue,EndArrow(4));
+draw(s*(17,16)--s*(10.6,10.6),red,EndArrow(4)); label("$4x+6y=108$",s*(17,16),NE,red);
+label("$(18,6)$",s*V2,NE); label("$(0,18)$",s*V3,W); label("$(24,0)$",s*V1,S);
+label("$x$",s*(28,0),E); label("$y$",s*(0,26),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(b)} Note $4x+6y\le108$ means $x\le27-1.5y$, and $27-1.5y\ge24-y$ exactly when $y\le6$.
+\begin{itemize}
+\item For $y=0,\dots,6$ the bound is $x\le24-y$, giving $25+24+\dots+19=154$ plans.
+\item For $y=7,\dots,18$ the bound is $x\le\lfloor27-1.5y\rfloor=16,15,13,12,10,9,7,6,4,3,1,0$, giving $17+16+14+13+11+10+8+7+5+4+2+1=108$ plans.
+\end{itemize}
+In total $154+108=\boxed{262}$ feasible production plans.

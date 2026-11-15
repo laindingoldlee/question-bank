@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2658536_prove_yes
+% Stable identity: aops-topic-2658536-q01
+Write $n=2^km$ with $k\ge1$ and $m$ odd. Since $\sigma$ is multiplicative on coprime factors,
+\[\sigma(n)=\sigma(2^k)\sigma(m)=(2^{k+1}-1)\sigma(m),\]
+and the condition says $(2^{k+1}-1)\sigma(m)=2^{k+1}m$. As $2^{k+1}-1$ is odd, it is coprime to $2^{k+1}$, so $2^{k+1}-1\mid m$. Write $m=(2^{k+1}-1)M$; then
+\[\sigma(m)=2^{k+1}M=m+M.\]
+Because $k\ge1$, $2^{k+1}-1\ge3$, so $M<m$, and $M$ and $m$ are two different divisors of $m$. Their sum is already $\sigma(m)$, so $m$ has no other divisors. Hence $M=1$ and $m$ is prime: $m=2^{k+1}-1$ is prime.
+
+Put $p=k+1$. Then $n=2^{p-1}(2^p-1)$ with $2^p-1$ prime. Finally, $p$ is prime: if $p=ab$ with $1<a<p$, then $2^a-1$ divides $2^{ab}-1$ and $1<2^a-1<2^p-1$, so $2^p-1$ would not be prime. $\blacksquare$
+
+(Conversely every such $n$ satisfies $\sigma(n)=(2^p-1)\cdot2^p=2n$. Whether an odd $n$ with $\sigma(n)=2n$ exists is a famous open problem, which is why the hypothesis that $n$ is even is needed.)

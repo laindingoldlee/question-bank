@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1515932_sum_of_consecutive_logarithms
+% Stable identity: aops-topic-1515932-q01
+For $2^k\le m<2^{k+1}$ we have $\lfloor\log_2 m\rfloor=k$, and there are $2^k$ such integers $m$. So the sum up to $m=2^K-1$ is
+\[
+\sum_{k=0}^{K-1}k\cdot2^k=(K-2)2^K+2 .
+\]
+(This holds for $K=1$, and going from $K$ to $K+1$ adds $K\cdot2^K$, while $(K-1)2^{K+1}+2-\left((K-2)2^K+2\right)=K\cdot2^K$.)
+
+For $K=8$ the sum up to $255$ is $6\cdot256+2=1538$; for $K=9$ the sum up to $511$ is $7\cdot512+2=3586>1994$. So $256\le n\le511$, and each term from $256$ on equals $8$:
+\[
+1538+8(n-255)=1994\qquad\Longrightarrow\qquad n-255=57\qquad\Longrightarrow\qquad n=\boxed{312}.
+\]

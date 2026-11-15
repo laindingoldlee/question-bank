@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3267911_2023_lmt_fall_guts_round_p1p15_lexington_mathematical_tournament
+% Stable identity: aops-topic-3267911-q07
+Use position vectors. The midpoint equations give $2D=A+E$, $2E=B+F$, $2F=C+D$, hence $D=\dfrac{4A+2B+C}{7}$, $E=\dfrac{A+4B+2C}{7}$, $F=\dfrac{2A+B+4C}{7}$. Area ratios are affine-invariant, so compute with $A=(0,0),B=(1,0),C=(0,1)$. The smaller vertices are $(\dfrac{2}{7},\dfrac{1}{7}),(\dfrac{4}{7},\dfrac{2}{7}),(\dfrac{1}{7},\dfrac{4}{7})$. The determinant of its edge vectors is $\dfrac{2}{7}\cdot\dfrac{3}{7}-\dfrac{1}{7}(-\dfrac{1}{7})=\dfrac{1}{7}$, compared with determinant 1 for the original triangle. Thus the area ratio is $\dfrac{1}{7}$ and the requested area is $\boxed{\dfrac{1}{7}}$.
+\begin{asy}
+import geometry;
+usepackage("amsmath");
+size(300);
+pair A=(0,0),B=(7,0),C=(0,7),D=(2,1),PtE=(4,2),F=(1,4);draw(A--B--C--cycle);draw(A--PtE^^B--F^^C--D,dashed);filldraw(D--PtE--F--cycle,lightblue,blue);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,S);label("$E$",PtE,E);label("$F$",F,W);
+\end{asy}

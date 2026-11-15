@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1514313_please_help
+% Stable identity: aops-topic-1514313-q01
+The circle is $(x-8)^2+(y-9)^2=100$.
+\begin{itemize}
+\item $x$-axis ($y=0$): $(x-8)^2=100-81=19$, so $x=8\pm\sqrt{19}$: two points. (The distance $9$ from the centre to the $x$-axis is less than the radius.)
+\item $y$-axis ($x=0$): $(y-9)^2=100-64=36$, so $y=3$ or $y=15$: two points.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair C=(8,9);
+draw((-3.5,0)--(20,0),gray,Arrow(TeXHead));draw((0,-2.5)--(0,21),gray,Arrow(TeXHead));
+label("$x$",(20,0),E,gray);label("$y$",(0,21),N,gray);
+draw(circle(C,10),linewidth(0.9));
+draw(C--(8,0),dashed);draw(C--(0,9),dashed);
+dot(C);label("$(8,9)$",C,NE);
+pair[] P={(8-sqrt(19),0),(8+sqrt(19),0),(0,3),(0,15)};
+for(int i=0;i<4;++i) dot(P[i],red);
+label("$9$",(8,4.5),E);label("$8$",(4,9),N);
+label("$(0,3)$",(0,3),W);label("$(0,15)$",(0,15),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The origin is not on the circle ($8^2+9^2=145\ne100$), so the four points are different. The circle meets the axes at $\boxed{4}$ points.

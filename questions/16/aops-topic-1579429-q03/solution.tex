@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1579429_circumference_questions
+% Stable identity: aops-topic-1579429-q03
+Each saucer has diameter $\dfrac{15.7}{\pi}\approx\dfrac{15.7}{3.14}=5$ inches. Two saucers side by side need $5+5=10$ inches. The box has side $\dfrac{48}{4}=12$ inches. So the four saucers fit, two by two, and there are
+\[
+12-10=\boxed{2\text{ inches}}
+\]
+to spare along each side of the box (for example $1$ inch of padding next to each wall).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(12,0)--(12,12)--(0,12)--cycle,linewidth(0.9));
+for(int i=0;i<2;++i)for(int j=0;j<2;++j) draw(circle((3.5+5i,3.5+5j),2.5),blue+linewidth(0.9));
+draw((1,6)--(11,6),dashed);
+label("$12$",(6,0),S);label("$12$",(0,6),W);
+real yy=12.8;
+draw((0,yy)--(1,yy),Arrows(TeXHead));label("$1$",(0.5,yy),N);
+draw((1,yy)--(6,yy),red,Arrows(TeXHead));label("$5$",(3.5,yy),N,red);
+draw((6,yy)--(11,yy),red,Arrows(TeXHead));label("$5$",(8.5,yy),N,red);
+draw((11,yy)--(12,yy),Arrows(TeXHead));label("$1$",(11.5,yy),N);
+draw((1,12)--(1,yy+0.3)^^(11,12)--(11,yy+0.3),gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

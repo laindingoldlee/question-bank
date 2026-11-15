@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2289821_2_person_game_with_digits
+% Stable identity: aops-topic-2289821-q01
+Let $N_0=\overline{100x}=1000+x$, and let $N_k$ be the number with $k$ copies of $y$ inserted. Removing the last digit $x$ from $N_k$ leaves $M_k=\overline{100y\cdots y}$, so $N_k=10M_k+x$ and $M_{k+1}=10M_k+y$. Hence
+\[N_{k+1}=10M_{k+1}+x=100M_k+10y+x=10N_k+c,\qquad c=10y-9x.\]
+\textbf{Key observation.} If a prime $p$ divides both $N_0$ and $c$, then $p$ divides $N_1=10N_0+c$, then $N_2$, and so on: $p$ divides every $N_k$, and A loses.
+\begin{itemize}
+\item $x$ even (including $0$): every $N_k$ ends in $x$, so $2$ divides all of them and $N_0$. A loses. $x=5$: likewise with $5$.
+\item $x=1$: $N_0=1001=7\cdot11\cdot13$. If B picks $y=2$, then $c=11$, so $11$ divides every $N_k$ (for example $10021=11\cdot911$). A loses.
+\item $x=3$: $N_0=1003=17\cdot59$. If B picks $y=1$, then $c=-17$. A loses.
+\item $x=7$: $N_0=1007=19\cdot53$. If B picks $y=1$, then $c=-53$. A loses.
+\item $x=9$: $N_0=1009$ is prime (it has no prime factor up to $31$, and $32^2>1009$). For any $y$, $c=10y-81$ satisfies $1\le|c|\le81$ (it is never $0$), so $1009\nmid c$. Then $N_1=10\cdot1009+c$ is not divisible by $1009$, and since $1009$ is prime, $\gcd(N_1,N_0)=1$. A wins with $\overline{100y9}$.
+\end{itemize}
+So A can be sure of winning only for $\boxed{x=9}$.

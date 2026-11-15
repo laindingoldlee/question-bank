@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2005042_2017_state_sprint_question
+% Stable identity: aops-topic-2005042-q01
+Both sides simplify by the exponent laws (valid for integer exponents of a nonzero base, and for any exponents of a positive base):
+\[x^{x-4}=x^{1-\dfrac{4}{x}}.\]
+
+\textbf{Positive $x$.} If $x=1$, both sides equal $1$, so $x=1$ works. If $x>0$ and $x\ne1$, the function $t\mapsto x^t$ is one-to-one, so the exponents must agree:
+\[x-4=1-\dfrac{4}{x}\ \Longrightarrow\ x^2-5x+4=0\ \Longrightarrow\ (x-1)(x-4)=0,\]
+giving $x=4$ (check: $4^0=1=4^{1-1}$).
+
+\textbf{Negative $x$.} The exponent $\dfrac{4}{x}$ must be an integer, so $x\in\{-1,-2,-4\}$.
+\begin{itemize}
+\item $x=-1$: the left side is $\dfrac{(-1)^{-4}}{-1}=-1$ and the right side is $\dfrac{-1}{(-1)^{-4}}=-1$. It works.
+\item $x=-2$: the left side is $\dfrac{(-2)^{-5}}{-2}=\dfrac{1}{64}$ and the right side is $\dfrac{-2}{(-2)^{-2}}=-8$. No.
+\item $x=-4$: the left side is $\dfrac{(-4)^{-7}}{-4}=\dfrac{1}{4^8}$ and the right side is $\dfrac{-4}{(-4)^{-1}}=16$. No.
+\end{itemize}
+
+So the solutions are $x=-1,1,4$, and their sum is $\boxed{4}$.
+
+(The algebra ``equate the exponents'' finds only $1$ and $4$; it misses $x=-1$ because for the bases $\pm1$ different exponents can give the same power.)

@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2784240_2021_winmac_guts_rounds_14__winchester_math_competition
+% Stable identity: aops-topic-2784240-q11
+(a) Moving parallel to the hoop, the whole triangle must fit inside the circle. The largest equilateral triangle in a circle of radius $1$ is inscribed in it, with circumradius $1$ and height $\dfrac32$. Answer: $\boxed{\dfrac32}$ m.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+draw(unitcircle);pair A=dir(90),B=dir(210),C=dir(330);draw(A--B--C--cycle);draw(A--(0,-0.5),dashed);dot((0,0));
+label("$1$",(0,0)--C,N,fontsize(8pt));draw((0,0)--C,dotted);label("$\dfrac32$",(0,0.25),E,fontsize(8pt));
+\end{asy}
+
+(b) \textbf{Height $2$ is possible.} Hold the triangle perpendicular to the plane of the hoop, with its altitude $AD$ along a diameter of the hoop and the base $BC$ at one end of that diameter, and slide it through in the direction of $BC$. At each moment the part of the frame in the plane of the hoop lies on that diameter, between the base and the side, so its length is at most $AD=h$. If $h\le2$ it always fits.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(4/sqrt(3),0),A=(2/sqrt(3),2);draw(A--B--C--cycle,linewidth(0.9));
+for(real x=0.2;x<1.1;x+=0.25){draw((x,0)--(x,x*sqrt(3)),gray+dashed);}
+draw((A.x,0)--A,linewidth(1.2));label("$h$",(A.x,0.7),E);
+draw((-0.4,0)--(-0.4,2),Arrows(4));label("$2$",(-0.4,1),W);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+\end{asy}
+
+\textbf{Height more than $2$ is impossible.} Let $\Pi$ be the plane of the hoop. While the triangle passes through, every point of the frame that lies in $\Pi$ must lie inside the hoop, so any two such points are at most $2$ apart. Look at the signed distances of the three vertices from $\Pi$: at the start all three are negative and at the end all are positive. The middle one of the three values changes continuously, so at some moment it is $0$. At that moment a vertex $V$ lies in $\Pi$, one other vertex $U$ is on or behind $\Pi$ and the third $W$ is on or beyond it.
+
+If $U$ or $W$ also lies in $\Pi$, then a whole side, of length greater than $h$, lies in $\Pi$. Otherwise the side $UW$ crosses $\Pi$ at a point $Z$. Then $VZ$ is at least the distance from $V$ to the line $UW$, which is $h$. Either way two points of the frame in $\Pi$ are at distance at least $h$, so $h\le2$. (If the triangle lies in $\Pi$ at some moment, it must be inside the hoop, so $h\le\dfrac32$.)
+
+Answer: $\boxed{2}$ m.

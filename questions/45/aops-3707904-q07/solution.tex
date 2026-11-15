@@ -1,0 +1,6 @@
+Let the absolute coordinate changes from green to white be $a,b$, and from white to orange be $c,d$. The white piece is coordinatewise between the endpoints, and $T=\binom{a+b}{a}\binom{c+d}{c}$, with $a+c\le7$, $b+d\le7$. A binomial of this form with both component steps at most seven is divisible by seven exactly when both are at most six and their sum is at least seven; its seven-adic valuation is then one. This follows from counting multiples of seven in the three factorials (the special sum fourteen has both components seven and valuation zero). Therefore $49\mid T$ requires $a+b\ge7$ and $c+d\ge7$. Their total is at most fourteen, forcing equality and endpoint separations seven in both coordinates. The endpoints are opposite corners; there are four ordered choices. White then has offsets $(a,7-a)$ for $a=1,\ldots,6$, six choices. Total $\boxed{24}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+for(int k=0;k<=8;++k){draw((k,0)--(k,8),gray);draw((0,k)--(8,k),gray);}dot((.5,.5),green);dot((7.5,7.5),orange);for(int k=1;k<=6;++k)draw(circle((k+.5,7-k+.5),.18));label("$G$",(.5,.5),(-1,-1));label("$O$",(7.5,7.5),(1,1));label("six possible white cells",(4,-.5));
+\end{asy}
+

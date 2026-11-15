@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3163935_2011_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3163935-q10
+Condition on the selected six points, listed cyclically 1 through 6. A chord crossing both others must leave two endpoints on each side, so it must join opposite points among the six. The only matching is $(1,4),(2,5),(3,6)$, and these chords do cross pairwise. There are $\dfrac{6!}{2^3\cdot3!}=15$ matchings total. Thus the conditional and unconditional probability is $\boxed{\dfrac{1}{15}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] p;for(int i=0;i<6;++i){p.push(2*dir(55*i+2*i*i));label(string(i+1),p[i],dir(55*i+2*i*i));}draw(circle((0,0),2));for(int i=0;i<3;++i)draw(p[i]--p[i+3]);
+\end{asy}

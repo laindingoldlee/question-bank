@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2742353_cool_geometry_question__can_you_figure_it_out
+% Stable identity: aops-topic-2742353-q01
+For $P=(x,y)$, the condition $PA=2PB$ with $A=(a,0)$, $B=(-a,0)$ is
+\[(x-a)^2+y^2=4\left[(x+a)^2+y^2\right]\iff3x^2+10ax+3a^2+3y^2=0\iff\left(x+\dfrac{5a}{3}\right)^2+y^2=\left(\dfrac{4a}{3}\right)^2.\]
+So the path is the circle with centre $\left(-\dfrac{5a}3,0\right)$ and radius $\dfrac{4a}3$ (an Apollonius circle). For $a=3$:
+\[\boxed{(x+5)^2+y^2=16},\]
+the circle with centre $(-5,0)$ and radius $4$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw((-9.5,0)--(4.5,0),gray,Arrow(4));draw((0,-4.8)--(0,4.8),gray,Arrow(4));
+draw(circle((-5,0),4),linewidth(1));
+pair A=(3,0),B=(-3,0),P=(-5,0)+4*dir(70);
+dot(A);dot(B);dot(P);dot((-5,0));
+draw(P--A,dashed);draw(P--B,dashed);
+label("$(3,0)$",A,S,fontsize(8pt));label("$(-3,0)$",B,SE,fontsize(8pt));label("$P$",P,N);label("$(-5,0)$",(-5,0),S,fontsize(8pt));
+\end{asy}

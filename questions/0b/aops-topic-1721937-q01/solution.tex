@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1721937_geometry_problem
+% Stable identity: aops-topic-1721937-q01
+If the four angle bisectors meet at a point $I$, then $I$ is equidistant from all four sides (each bisector is the locus of points equidistant from the two sides of its angle), so the circle with centre $I$ and that radius is tangent to all four sides: $ABCD$ has an incircle. For a quadrilateral with an incircle, the two pairs of opposite sides have equal sums (the tangent lengths from each vertex are equal), so
+\[
+AB+CD=AD+BC .
+\]
+Since $\angle A=\angle B=90^\circ$, the sides $AD$ and $BC$ are both perpendicular to $AB$, so $ABCD$ is a right trapezoid with parallel sides $AD$ and $BC$. Let $BC=x$; then $CD=5+x-9=x-4$. Dropping the perpendicular from $D$ to $BC$ gives a right triangle with legs $AB=9$ and $x-5$ and hypotenuse $CD$:
+\[
+(x-4)^2=81+(x-5)^2\ \Longrightarrow\ -8x+16=81-10x+25\ \Longrightarrow\ x=45 .
+\]
+So $BC=\boxed{45}$ and $CD=41$ (check: $9^2+40^2=41^2$, and $9+41=5+45$).
+
+\begin{asy}
+usepackage("amsmath");
+size(10cm);
+defaultpen(fontsize(10pt));
+void ra(pair P,pair Q,pair R,real s){pair u=unit(Q-P),v=unit(R-P);draw(P+s*u--P+s*u+s*v--P+s*v,linewidth(0.5));}
+pair A=(0,9),B=(0,0),C=(45,0),D=(5,9),I=(4.5,4.5);
+pair T=I+4.5*unit(rotate(90)*(C-D));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(circle(I,4.5),blue+linewidth(0.6));
+ra(A,B,D,1.2);ra(B,C,A,1.2);
+dot(I);label("$I$",I,S);
+label("$A$",A,NW);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NE);
+label("$9$",(A+B)/2,W);label("$5$",(A+D)/2,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The figure is to scale: the incircle has radius $\dfrac{9}{2}$ (half the distance $AB$ between the parallel sides) and touches all four sides.

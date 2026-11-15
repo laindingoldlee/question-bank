@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1900963_combinations_with_no_consecutive_integers
+% Stable identity: aops-topic-1900963-q01
+Write a subset as $a_1<a_2<\dots<a_k$ and map it to
+\[
+b_1=a_1,\quad b_2=a_2-1,\quad b_3=a_3-2,\quad\dots,\quad b_k=a_k-(k-1).
+\]
+``No two consecutive'' means $a_{i+1}\ge a_i+2$, which is exactly $b_{i+1}\ge b_i+1$, i.e.\ $b_1<b_2<\dots<b_k$. Also $1\le b_1$ and $b_k\le n-k+1$. Conversely, any $k$-subset $b_1<\dots<b_k$ of $\{1,\dots,n-k+1\}$ gives back a valid subset via $a_i=b_i+(i-1)$. This is a bijection, so the number of subsets is
+\[
+\boxed{\dbinom{n-k+1}{k}} .
+\]
+For $n=100$, $k=3$: $\dbinom{98}{3}=\dfrac{98\cdot97\cdot96}{6}=\boxed{152096}$.

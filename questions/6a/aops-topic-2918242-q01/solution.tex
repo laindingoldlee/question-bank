@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2918242_argentina_nmo_round_2_intercollegiate_geo__level_1_200616
+% Stable identity: aops-topic-2918242-q01
+$\angle ADC=180^\circ-70^\circ=110^\circ$, so in triangle $ADC$, $\angle ACD=180^\circ-110^\circ-28^\circ=42^\circ$. Then $\angle DCE=180^\circ-42^\circ=138^\circ$, and the isosceles triangle $DCE$ has $\angle CDE=\dfrac{180^\circ-138^\circ}2=21^\circ$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(5,0),D=(2,0);pair A=extension(D,D+dir(110),C,C+dir(180-42));pair E=C+length(C-D)*unit(C-A);
+draw(A--B--C--cycle);draw(A--D);draw(C--E,dashed);draw(D--E);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,S);label("$D$",D,S);label("$E$",E,NE);
+\end{asy}
+
+Since $B,D,C$ are collinear, $\angle BDE=180^\circ-21^\circ=\boxed{159^\circ}$.

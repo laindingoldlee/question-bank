@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2209064_number_theory_proof_yay
+% Stable identity: aops-topic-2209064-q01
+\textbf{(a)} Let $r_1,r_2,\dots,r_t$, with $t=\varphi(m)$, be the integers in $\{1,\dots,m\}$ coprime to $m$. Consider $ar_1,ar_2,\dots,ar_t$.
+\begin{itemize}
+\item Each $ar_i$ is coprime to $m$ (a prime dividing $m$ and $ar_i$ would divide $a$ or $r_i$), so its remainder modulo $m$ is one of the $r_j$.
+\item They are pairwise incongruent: if $ar_i\equiv ar_j\pmod m$, then $m\mid a(r_i-r_j)$, and since $\gcd(a,m)=1$, $m\mid r_i-r_j$; as $|r_i-r_j|<m$, $r_i=r_j$.
+\end{itemize}
+So the remainders of $ar_1,\dots,ar_t$ are $r_1,\dots,r_t$ in some order, and multiplying,
+\[a^t\,r_1r_2\cdots r_t\equiv r_1r_2\cdots r_t\pmod m.\]
+The product $P=r_1\cdots r_t$ is coprime to $m$, so it can be cancelled (if $m\mid P\left(a^t-1\right)$ and $\gcd(P,m)=1$, then $m\mid a^t-1$). Hence $a^{\varphi(m)}\equiv1\pmod m$. $\blacksquare$
+
+\textbf{(b)} Take $m=4$ and $a=2$. Then $\varphi(4)=2$ (the numbers $1$ and $3$), but $2^2=4\equiv0\not\equiv1\pmod4$. In general, if $\gcd(a,m)=d>1$, then $d$ divides $a^{\varphi(m)}$ and $m$, so $a^{\varphi(m)}\equiv1\pmod m$ would force $d\mid1$, which is impossible.

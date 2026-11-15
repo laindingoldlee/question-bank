@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2485929_try_these
+% Stable identity: aops-topic-2485929-q04
+The shortest path between two points is the straight segment joining them, so we need its length. If the points differ in all three coordinates, they are opposite corners of a box with edges parallel to the axes, of lengths $|x_2-x_1|$, $|y_2-y_1|$ and $|z_2-z_1|$. (If some coordinates agree, the box is flat and the same computation works.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair pr(real x,real y,real z){return (x+0.45*y,z+0.3*y);}
+real a=4,bq=3,c=2.4;
+pair P1=pr(0,0,0),P2=pr(a,bq,c),K=pr(a,bq,0);
+draw(pr(0,0,0)--pr(a,0,0)--pr(a,0,c)--pr(0,0,c)--cycle);
+draw(pr(a,0,0)--pr(a,bq,0)--pr(a,bq,c)--pr(a,0,c));
+draw(pr(0,0,c)--pr(0,bq,c)--pr(a,bq,c));
+draw(pr(0,0,0)--pr(0,bq,0)--pr(a,bq,0),dashed); draw(pr(0,bq,0)--pr(0,bq,c),dashed);
+draw(P1--K,blue+linewidth(0.9)); draw(P1--P2,red+linewidth(1));
+dot(P1); dot(P2); dot(K);
+label("$(x_1,y_1,z_1)$",P1,SW,fontsize(8pt)); label("$(x_2,y_2,z_2)$",P2,NE,fontsize(8pt));
+label("$|x_2-x_1|$",pr(a/2,0,0),S,fontsize(8pt)); label("$|y_2-y_1|$",pr(a,bq/2,0),SE,fontsize(8pt)); label("$|z_2-z_1|$",pr(a,bq,c/2),E,fontsize(8pt));
+label("$K$",K,SE,fontsize(8pt));
+\end{asy}
+
+Let $K=(x_2,y_2,z_1)$. The points $(x_1,y_1,z_1)$ and $K$ lie in the horizontal plane $z=z_1$, so by the Pythagorean theorem in that plane,
+\[\left(\text{distance to }K\right)^2=(x_2-x_1)^2+(y_2-y_1)^2.\]
+The segment from $K$ to $(x_2,y_2,z_2)$ is vertical, so it is perpendicular to the horizontal segment from $(x_1,y_1,z_1)$ to $K$. Applying the Pythagorean theorem to this right triangle,
+\[d^2=(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2,\qquad d=\boxed{\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}}.\ \blacksquare\]

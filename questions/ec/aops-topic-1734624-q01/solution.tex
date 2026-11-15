@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1734624_2019_mathcounts_handbook_warmup_3_8_and_10
+% Stable identity: aops-topic-1734624-q01
+Altogether the school is $8+7=15$ miles west and $8$ miles north of Kevin's home. The straight path is the hypotenuse of a right triangle with legs $15$ and $8$:
+\[
+\sqrt{15^2+8^2}=\sqrt{289}=17 \text{ miles}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair H=(0,0),P1=(-8,0),P2=(-8,8),Sc=(-15,8);
+draw(H--P1--P2--Sc,linewidth(0.9));
+draw(H--Sc,dashed+blue);
+draw(P1--P1+(0.8,0)--P1+(0.8,0.8)--P1+(0,0.8));
+dot(H);dot(Sc);
+label("home",H,SE);label("school",Sc,NW);
+label("$8$",(H+P1)/2,S);label("$8$",(-8,6.6),W);label("$7$",(P2+Sc)/2,N);
+draw((-15,0)--P1,dotted);draw((-15,0)--Sc,dotted);
+label("$15$",((-15,0)+P1)/2,S);
+label("$17$",H+0.25*(Sc-H),NE,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The bus route is $8+8+7=23$ miles, so the direct trip would be $23-17=\boxed{6}$ miles shorter.

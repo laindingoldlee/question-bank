@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1226165_miss_wording_in_problem
+% Stable identity: aops-topic-1226165-q01
+Let the plane fly south for $t$ hours and then fly straight to where the carrier will be at time $5$. With the start at the origin, $x$ east and $y$ north, the turning point is $(0,-400t)$ and the carrier at time $5$ is at $160(\sin60^\circ,\cos60^\circ)=(80\sqrt3,80)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),P=(0,-955.4),C=(80*sqrt(3),80);
+draw(O--P,blue,Arrow(6)); draw(P--C,blue+dashed,Arrow(6)); draw(O--C,red,Arrow(6));
+dot(O);label("start",O,W);label("turn",P,S);label("carrier at $t=5$",C,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The return leg must take the remaining $5-t$ hours:
+\[(80\sqrt3)^2+(80+400t)^2=400^2(5-t)^2.\]
+Expanding, $19200+6400+64000t=4000000-1600000t$, so $t=\dfrac{3974400}{1664000}=\dfrac{621}{260}$ hours. The distance south is $400t=\boxed{\dfrac{12420}{13}\text{ km}}\approx955.4$ km.

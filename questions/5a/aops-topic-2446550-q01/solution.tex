@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2446550_help_with_combinations
+% Stable identity: aops-topic-2446550-q01
+Sort the $20$ choices by how many of the two $3$'s are chosen.
+\begin{itemize}
+\item No $3$: choose $3$ of the four $1$'s, in $\dbinom43=4$ ways; each product is $1$. Contribution $4$.
+\item One $3$: choose $2$ of the four $1$'s and $1$ of the two $3$'s, in $\dbinom42\dbinom21=12$ ways; each product is $3$. Contribution $36$.
+\item Two $3$'s: choose $1$ of the four $1$'s and both $3$'s, in $\dbinom41\dbinom22=4$ ways; each product is $9$. Contribution $36$.
+\end{itemize}
+(As a check, $4+12+4=20$ choices.) The sum is $4+36+36=\boxed{76}$.
+
+\textbf{Why binomial coefficients.} The sum runs over the $20$ ways of choosing three \emph{positions} in the list, not over the different-looking products. The four $1$'s sit in four different positions, so, for example, choosing the first, second and third $1$ and choosing the first, second and fourth $1$ are two different terms of the sum, even though both products equal $1$. So the number of terms of each kind is the number of ways of choosing positions, which is a binomial coefficient. (Adding each different-looking product only once would give $1+3+9=13$, which is a different sum.)
+
+(Another check: the sum of all products of three entries of a list $a_1,\dots,a_6$ is the coefficient of $t^3$ in $(1+a_1t)(1+a_2t)\cdots(1+a_6t)=(1+t)^4(1+3t)^2$, which is $4\cdot1+6\cdot6+4\cdot9=76$.)

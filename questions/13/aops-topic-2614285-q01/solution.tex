@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2614285_faulty_odometer_problem
+% Stable identity: aops-topic-2614285-q01
+\textbf{(a)} The odometer uses the nine digits $0,1,2,3,5,6,7,8,9$ in order, so it counts in base $9$, with displayed digits $0,1,2,3,5,6,7,8,9$ standing for $0,1,\dots,8$. The reading $2005$ stands for the base-$9$ digits $2,0,0,4$, so the distance is
+\[2\cdot9^3+0\cdot9^2+0\cdot9+4=1458+4=1462,\]
+answer $\boxed{\textbf{(B) } 1462}$.
+
+\textbf{(b)} Each mile moves the odometer to the next reading that has no digit $4$. So after $m$ miles it shows the $m$-th positive integer without a $4$. The reading $2005$ therefore means that the car has driven one mile for each integer from $1$ to $2005$ that the odometer displayed. The integers containing a $4$ were skipped: they are counted in $2005$ but no mile was driven for them. So
+\[\text{miles}=2005-\#\{1\le k\le2005:\ k\text{ contains a }4\}.\]
+Adding them would count miles for readings that never appeared.
+
+To count them: writing $0,\dots,1999$ with four digits, the first digit is $0$ or $1$ and the other three avoid $4$ in $9^3$ ways, so $2\cdot729=1458$ of these $2000$ numbers have no $4$ and $542$ have one. From $2000$ to $2005$ only $2004$ has a $4$. So $543$ integers are skipped and $2005-543=1462$, as in (a).

@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2292484_some_somes_yofros_smol_sum_collection
+% Stable identity: aops-topic-2292484-q09
+All terms are positive, so sums of these terms may be regrouped and reordered freely without changing their (possibly infinite) values. Write $H_k=1+\dfrac12+\cdots+\dfrac1k$ (with $H_0=0$) and let
+\[T=\sum_{N=1}^{\infty}\dfrac{H_{N-1}}{N^2}=\dfrac{1}{4}+\dfrac{1+\dfrac12}{9}+\dfrac{1+\dfrac12+\dfrac13}{16}+\cdots.\]
+
+\textbf{$T$ and $Z$ are finite.} For $n\ge2$, $\dfrac1{n^3}<\dfrac{1}{(n-1)n}=\dfrac1{n-1}-\dfrac1n$, so $Z<1+1=2$. For $j\ge1$, $\dfrac1j\le\dfrac1{\sqrt j}\le\dfrac{2}{\sqrt j+\sqrt{j-1}}=2\left(\sqrt j-\sqrt{j-1}\right)$, so $H_k\le2\sqrt k$. For $N\ge2$,
+\[\dfrac1{\sqrt{N-1}}-\dfrac1{\sqrt N}=\dfrac{\sqrt N-\sqrt{N-1}}{\sqrt N\sqrt{N-1}}=\dfrac{1}{\sqrt N\sqrt{N-1}\left(\sqrt N+\sqrt{N-1}\right)}\ge\dfrac{1}{2N\sqrt N},\]
+so $\dfrac{H_{N-1}}{N^2}\le\dfrac{2\sqrt N}{N^2}=\dfrac{2}{N\sqrt N}\le4\left(\dfrac1{\sqrt{N-1}}-\dfrac1{\sqrt N}\right)$, and the sum telescopes: $T\le4$.
+
+\textbf{First grouping: fix $n$.} By partial fractions, $\dfrac{1}{m(m+n)}=\dfrac1n\left(\dfrac1m-\dfrac1{m+n}\right)$. For fixed $n$, the sum over $m=1,\dots,M$ telescopes:
+\[\sum_{m=1}^{M}\left(\dfrac1m-\dfrac1{m+n}\right)=H_n-\left(\dfrac1{M+1}+\cdots+\dfrac1{M+n}\right),\]
+and the bracket is at most $\dfrac{n}{M+1}$, which tends to $0$ as $M\to\infty$. Hence $\displaystyle\sum_{m=1}^{\infty}\dfrac{1}{mn(m+n)}=\dfrac{H_n}{n^2}$, and since $H_n=H_{n-1}+\dfrac1n$,
+\[S=\sum_{n=1}^{\infty}\dfrac{H_n}{n^2}=\sum_{n=1}^{\infty}\dfrac{H_{n-1}}{n^2}+\sum_{n=1}^{\infty}\dfrac1{n^3}=T+Z.\]
+
+\textbf{Second grouping: fix $m+n$.} Since $\dfrac1m+\dfrac1n=\dfrac{m+n}{mn}$,
+\[\dfrac{1}{mn(m+n)}=\dfrac{1}{(m+n)^2}\left(\dfrac1m+\dfrac1n\right)=\dfrac{1}{m(m+n)^2}+\dfrac{1}{n(m+n)^2}.\]
+Swapping the names $m$ and $n$ shows that the two parts have the same sum over all pairs, so $S=2\displaystyle\sum_{m,n\ge1}\dfrac{1}{m(m+n)^2}$. Group the pairs by $N=m+n\ge2$: for fixed $N$, $m$ runs over $1,2,\dots,N-1$, giving $\dfrac{H_{N-1}}{N^2}$. Hence
+\[S=2\sum_{N=2}^{\infty}\dfrac{H_{N-1}}{N^2}=2T.\]
+
+\textbf{Conclusion.} From $S=T+Z$ and $S=2T$ with $T$ and $Z$ finite, $T=Z$ and
+\[S=\boxed{2Z=2\sum_{n=1}^{\infty}\dfrac1{n^3}}\approx2.4041.\]
+(The number $Z\approx1.2021$ is $\zeta(3)$, Apery's constant; no simpler closed form for it is known.)

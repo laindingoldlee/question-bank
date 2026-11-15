@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1577884_knights_of_the_round_table
+% Stable identity: aops-topic-1577884-q01
+\textbf{In a row.} Choosing $k$ people from $n$ in a row with no two adjacent can be done in $\dbinom{n-k+1}{k}$ ways: if the chosen positions are $a_1<a_2<\dots<a_k$, the numbers $a_1,a_2-1,a_3-2,\dots,a_k-(k-1)$ are any $k$ different numbers from $1$ to $n-k+1$, and this correspondence is a bijection.
+
+\textbf{Around the table.} Fix one person, $P$.
+\begin{itemize}
+\item If $P$ is not chosen, the other $99$ people form a row (the table is cut at $P$), and we choose $4$ non-adjacent ones: $\dbinom{96}{4}=3{,}321{,}960$ ways.
+\item If $P$ is chosen, $P$'s two neighbours are not, and the remaining $97$ people form a row from which we choose $3$ non-adjacent ones: $\dbinom{95}{3}=138{,}415$ ways.
+\end{itemize}
+The total is
+\[
+3{,}321{,}960+138{,}415=\boxed{3{,}460{,}375}.
+\]
+(This agrees with the general formula $\dfrac{n}{n-k}\dbinom{n-k}{k}=\dfrac{100}{96}\dbinom{96}{4}$ for $k$ non-adjacent people at a round table of $n$.)

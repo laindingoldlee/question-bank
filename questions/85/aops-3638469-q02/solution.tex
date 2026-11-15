@@ -1,0 +1,6 @@
+For a specified minimum $m$, any of the three variables can be the minimum, and the others must lie in $[m,\min(1,m+0.1)]$. Ties have probability zero. Integrate to get $3\int_0^{0.9}(0.1)^2\,dm+3\int_{0.9}^1(1-m)^2\,dm=0.027+0.001=\boxed{0.028=\dfrac{7}{250}}$. More generally the range-at-most-$t$ probability is $3t^2-2t^3$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+draw(box((0,0),(1,1)));filldraw((0,0)--(1,1)--(.9,1)--(0,.1)--cycle,lightblue,blue);draw((0,0)--(1,1),dashed);label("minimum",(.5,0),(0,-1));label("maximum",(0,.5),(-1,0));label("range at most $0.1$",(.4,.8));
+\end{asy}
+

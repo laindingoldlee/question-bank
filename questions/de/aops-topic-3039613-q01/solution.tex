@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3039613_random_problem_i_found_on_the_umo_flyer
+% Stable identity: aops-topic-3039613-q01
+Take a cube of side 6 and divide it into eight cubes of side 3. Leave five of these intact. Subdivide each of the other three into 27 unit cubes. In two of those three blocks, keep one corner $2\times2\times2$ block as a single side 2 cube rather than eight unit cubes. Each of these two side 3 blocks now contains $27-8+1=20$ cubes; the third contains 27. The total is $5+20+20+27=\boxed{72}$. Equivalently, the final pieces are five side 3 cubes, two side 2 cubes, and 65 unit cubes; their volumes total $5(27)+2(8)+65=216=6^3$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair pr(real x,real y,real z){return (x+0.45*y,0.35*y+z);}for(int j=0;j<=2;++j){real a=3*j;draw(pr(a,0,0)--pr(a,6,0)--pr(a,6,6)--pr(a,0,6)--cycle,gray);draw(pr(0,a,0)--pr(6,a,0)--pr(6,a,6)--pr(0,a,6)--cycle,gray);draw(pr(0,0,a)--pr(6,0,a)--pr(6,6,a)--pr(0,6,a)--cycle,gray);}label("eight initial side-3 blocks",(4,-1));
+\end{asy}

@@ -1,0 +1,15 @@
+Write $BC=a$, $CA=b$, $AB=c$, so $\angle C=60^\circ$ and $b>a$. Equal tangents from $A$ give $AK=AL=\dfrac{(b+c-a)}{2}$. As $M$ is the midpoint of $AB$,
+\[
+MK=AK-\dfrac{c}{2}=\dfrac{(b-a)}{2}>0.
+\]
+The midpoint theorem gives $MN\parallel AC$. Similarity of triangles $KMT$ and $KAL$ then gives $MT=MK=\dfrac{(b-a)}{2}$, with the ray $MT$ pointing in the same direction as $AC$.
+
+Choose $W$ on $AC$ with $AW=b-a$, and $Z$ on the ray $AC$ beyond $C$ with $CZ=a$. In triangle $ABW$, the midpoint of $BW$ lies at $M+(\dfrac{AW}{2})\,\dfrac{\overrightarrow{AC}}{AC}$, which is precisely $T$. Also $C$ is the midpoint of $WZ$, because $CW=CZ=a$. Therefore $CT\parallel BZ$.
+
+Triangle $BCZ$ is isosceles with $BC=CZ$ and vertex angle $\angle BCZ=120^\circ$. Its base angles are $30^\circ$. Since $CA$ is parallel to $ZA$ and $CT\parallel ZB$, it follows that $\boxed{\angle ACT=30^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real a=sin(40*pi/180)/sin(60*pi/180),b=sin(80*pi/180)/sin(60*pi/180),k=(1+b-a)/2;pair U=dir(40),A=(0,0),B=(1,0),C=b*U,K=(k,0),L=k*U,M=(.5,0),N=(B+C)/2,T=M+(b-a)*U/2,W=(b-a)*U,Z=(b+a)*U;draw(A--B--C--cycle);draw(C--Z,dashed);draw(K--L,blue);draw(M--N,gray);draw(B--Z--W,gray);draw(C--T,red);dot(T);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,(-1,0));label("$K$",K,(0,-1));label("$L$",L,(-1,0));label("$M$",M,(0,-1));label("$N$",N,(1,0));label("$T$",T,SE);label("$W$",W,(-1,0));label("$Z$",Z,(0,1));
+\end{asy}

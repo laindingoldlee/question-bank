@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2498794_mathcounts_ci_target_6_solution
+% Stable identity: aops-topic-2498794-q01
+\textbf{(a)} Let the first triangle $T$ have a side $b$ and corresponding altitude $h$, and let $T'$ be the similar triangle. The corresponding side of $T'$ is $kb$. The altitude to it is $kh$. Indeed, let $a$ be another side of $T$ and $\theta$ the angle of $T$ between the sides $a$ and $b$. The altitude $h$ to $b$ is a leg of a right triangle with hypotenuse $a$ and an angle $\theta$ (or $180^\circ-\theta$, if $\theta$ is obtuse and the foot of the altitude lies outside $b$); since $\sin\left(180^\circ-\theta\right)=\sin\theta$, in either case $h=a\sin\theta$. In $T'$ the corresponding side is $ka$ and the corresponding angle is again $\theta$, because similar triangles have equal corresponding angles, so the altitude is $ka\sin\theta=kh$. Hence
+\[[T']=\dfrac12(kb)(kh)=k^2\cdot\dfrac12bh=k^2[T].\ \blacksquare\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(3,0), C=(1,2);
+pair A2=(4.5,0), B2=A2+sqrt(2)*(B-A), C2=A2+sqrt(2)*(C-A);
+draw(A--B--C--cycle,linewidth(0.8)); draw(A2--B2--C2--cycle,linewidth(0.8));
+draw(C--(C.x,0),dashed); draw(C2--(C2.x,0),dashed);
+label("$b$",(A+B)/2,S); label("$h$",(C.x,0.8),E);
+label("$kb$",(A2+B2)/2,S); label("$kh$",(C2.x,C2.y*0.4),E);
+label("$T$",(2.05,0.55)); label("$T'$",(A2.x+2.9,0.75));
+\end{asy}
+
+\textbf{(b)} Triangle $ABX$ is similar to triangle $BCX$ with ratio $k=\dfrac{AB}{BC}$, so by (a), $\dfrac{[ABX]}{[BCX]}=k^2=\dfrac12$. Hence
+\[\dfrac{AB}{BC}=\dfrac{1}{\sqrt2}=\boxed{\dfrac{\sqrt2}{2}}.\]

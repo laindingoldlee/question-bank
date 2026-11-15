@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3156859_2014_lmt_spring_guts_round_p1p15__lexington_mathematical_tournament
+% Stable identity: aops-topic-3156859-q13
+All $ 2^6=64 $ subsets can occur. The empty subset is realized by a distant triangle. For one or two selected points, take a sufficiently thin triangle around their point or connecting segment; strict convexity of the hexagon keeps all other vertices outside. For three selected points their triangle works. For four selected points, separate each of the two excluded vertices from the convex hull of the selected four by a line, and slightly tilt the lines if necessary so their retained half-planes form a wedge containing the selected points. A sufficiently distant third line closes the wedge into a triangle while retaining all four. For five selected points, one separating line excludes the sixth; two distant closing lines finish a triangle. A large triangle contains all six. Hence $\boxed{64}$. 
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] v;for(int k=0;k<6;++k)v.push(2dir(30+60*k));for(int k=0;k<6;++k){draw(v[k]--v[(k+1)%6],gray);dot(v[k]);label("$P_{"+string(k+1)+"}$",1.15v[k]);}draw(v[0]--v[2]--v[4]--cycle,blue);label("Example subset: alternating vertices",(0,-2.8));
+\end{asy}

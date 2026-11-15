@@ -1,0 +1,9 @@
+Place the folded corner at $(0,0)$ and the square centre at $(\dfrac{s}{2} , \dfrac{s}{2})$. The crease is their perpendicular bisector, $x + y = \dfrac{s}{2}$, which cuts off a right triangle with legs $\dfrac{s}{2}$. Folding this triangle into the square reduces the outline area by $\dfrac{s^2}{8}$. Thus $\dfrac{s^2}{8}=2$, giving $\boxed{s=4\text{ cm}}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(4,0),(4,4),(0,4)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--p[3]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));dot(p[3]);label("$D$",p[3],unit(p[3]-labelCentre));draw((2,0)--(0,2),dashed);draw((2,0)--(2,2)--(0,2));label("centre",(2,2),(1,1));label("crease",(1,1),(-1,-1));
+\end{asy}
+

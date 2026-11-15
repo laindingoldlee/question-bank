@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1594783_uw_math_olympiad_2012_1
+% Stable identity: aops-topic-1594783-q01
+We show that for every chain of an \emph{odd} number $2k+1$ of sausages, Jerry can make sure he eats exactly one more sausage than Tom; in particular he succeeds for $7$ and for $101$ sausages.
+
+\textbf{Mirror strategy.} Number the sausages $1,2,\dots,2k+1$ and the connections $c_1,\dots,c_{2k}$, where $c_i$ joins sausages $i$ and $i+1$. The mirror image of $c_i$ is $c_{2k+1-i}$, and of sausage $j$ is sausage $2k+2-j$. Since $2k+1$ is odd, no connection is its own mirror image; the only sausage that is its own mirror image is the middle one, $k+1$. Jerry's strategy: whenever Tom bites $c_i$, Jerry bites $c_{2k+1-i}$.
+
+\textbf{The strategy can always be followed.} Before each of Tom's turns the set of bitten connections is symmetric (it is empty at the start, and each round adds a mirror pair). When Tom bites $c_i$, the mirror connection $c_{2k+1-i}$ is different from $c_i$ and was not bitten before (by symmetry), so Jerry can bite it.
+
+\textbf{Counting.} Let a round be Tom's bite followed by Jerry's.
+\begin{itemize}
+\item Tom can never free the middle sausage $k+1$: its connections $c_k$ and $c_{k+1}$ are mirror images, so they are bitten in the same round, Tom's first. Thus the middle sausage is eaten by Jerry.
+\item If Tom's bite of $c_i$ frees a sausage $j$ (so $j\ne k+1$), then after Jerry's bite all connections of the mirror sausage $2k+2-j$ are bitten (they are the mirror images of $j$'s connections), and one of them is $c_{2k+1-i}$, which Jerry has just bitten; so Jerry eats sausage $2k+2-j$ in the same round.
+\item Conversely, every sausage Jerry frees other than the middle one is the mirror image of one Tom has just freed (by the same argument, since before Tom's bite the bitten set was symmetric).
+\end{itemize}
+So Jerry eats exactly the mirror images of Tom's sausages plus the middle one: if Tom eats $t$ sausages, Jerry eats $t+1$, and $2t+1=2k+1$.
+
+\textbf{Answers.} (a) For $7$ sausages Jerry eats $4$ and Tom $3$: $\boxed{\text{Jerry}}$. (b) For $101$ sausages Jerry eats $51$ and Tom $50$: again $\boxed{\text{Jerry}}$. $\blacksquare$

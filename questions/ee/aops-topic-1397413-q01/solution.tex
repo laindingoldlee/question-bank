@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1397413_altitude_of_a_right_triangle_compared_to_legs
+% Stable identity: aops-topic-1397413-q01
+\begin{center}
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(0,0),B=(5,0),C=(16/5,12/5),D=(16/5,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--D,red+linewidth(0.9));
+draw(ra(C,A-C,B-C,0.3)); draw(ra(D,B-D,C-D,0.25));
+dot(A);dot(B);dot(C);dot(D);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,S);
+label("$b$",(A+C)/2,NW);label("$a$",(B+C)/2,NE);label("$h$",(C+D)/2+(0,0.25),E,red);
+draw((0,-0.75)--(5,-0.75),gray,Arrows(TeXHead)); label("$c$",(2.5,-0.75),S,gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\end{center}
+\textbf{(a)} Compute the area of the triangle in two ways. Using the legs as base and height, the area is $\dfrac{ab}{2}$; using the hypotenuse as base, it is $\dfrac{ch}{2}$. Hence $ch=ab$, and since $c=\sqrt{a^2+b^2}$,
+\[
+h=\dfrac{ab}{c}=\boxed{\dfrac{ab}{\sqrt{a^2+b^2}}}.
+\]
+
+\textbf{(b)} Squaring and inverting,
+\[
+\dfrac{1}{h^2}=\dfrac{a^2+b^2}{a^2b^2}=\dfrac{a^2}{a^2b^2}+\dfrac{b^2}{a^2b^2}=\dfrac{1}{b^2}+\dfrac{1}{a^2}.
+\]
+(For example, with $a=3$, $b=4$, $c=5$ as drawn, $h=\dfrac{12}{5}$ and $\dfrac{25}{144}=\dfrac{1}{9}+\dfrac{1}{16}$.)

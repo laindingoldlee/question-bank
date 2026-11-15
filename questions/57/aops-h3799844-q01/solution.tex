@@ -1,0 +1,9 @@
+Put $A=(0,0),B=(b,0),C=(0,a)$ with $0<a<b$. Then $D=(a,0)$ and $AM$ has equation $y=\dfrac{a}{b}x$. The line $CD$ has equation $x+y=a$, giving
+\[E=\left(\dfrac{ab}{a+b},\dfrac{a^2}{a+b}\right).\]
+The line $EF$ is vertical. Intersect it with $BC$, whose equation is $y=a-\dfrac{a}{b}x$, to obtain $F=(\dfrac{ab}{a+b},\dfrac{ab}{a+b})$. Thus $\overrightarrow{DF}=\dfrac{1}{a+b}(-a^2,ab)$, while $(b,a)$ is a direction vector of $AM$. Their dot product is $-a^2b+aba=0$, proving the perpendicularity.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real a=3,b=5;pair A=(0,0),B=(b,0),C=(0,a),D=(a,0),M=(B+C)/2,E=(a*b/(a+b),a*a/(a+b)),F=(a*b/(a+b),a*b/(a+b));draw(A--B--C--cycle);draw(A--M);draw(C--D);draw(E--F,dashed);draw(D--F,blue);pair[] p={A,B,C,D,M,E,F};string[] n={"A","B","C","D","M","E","F"};pair[] al={(-1,-1),(1,0),(-1,1),(0,-1),(1,1),(-1,-1),(-1,1)};for(int i=0;i<7;++i)label("$"+n[i]+"$",p[i],al[i]);
+\end{asy}

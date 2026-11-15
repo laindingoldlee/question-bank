@@ -1,0 +1,7 @@
+The two perpendicular bisectors are $x=-\dfrac{1}{2}$ and $x=\dfrac{1}{2}$, so $I=(-\dfrac{1}{2},\dfrac{h}{2})$ and $J=(\dfrac{1}{2},\dfrac{h}{2})$. By symmetry $O=(0,k)$, and $OA=OB$ gives $(h-k)^2=1+k^2$, hence $k=\dfrac{h^2-1}{2h}$. Now $\overrightarrow{IA}=(\dfrac{1}{2},\dfrac{h}{2})$ and $\overrightarrow{IO}=(\dfrac{1}{2},-\dfrac{1}{2h})$ have dot product zero. Thus $\angle AIO=90^\circ$; similarly $\angle AJO=90^\circ$. Therefore $I,J$ both lie on the circle with diameter $AO$, proving the claim.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real h=1.8;pair A=(0,h),B=(-1,0),C=(1,0),D=(0,0),I=(-.5,h/2),J=(.5,h/2),O=(0,(h*h-1)/(2*h));draw(A--B--C--cycle);draw((-.5,-.1)--(-.5,1.1),gray+dashed);draw((.5,-.1)--(.5,1.1),gray+dashed);draw(circle(midpoint(A--O),abs(A-O)/2),blue);draw(A--O,blue);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$I$",I,W);label("$J$",J,E);label("$O$",O,S);
+\end{asy}

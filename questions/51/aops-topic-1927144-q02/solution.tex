@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1927144_math_problems
+% Stable identity: aops-topic-1927144-q02
+If the edges are $a\le b\le c$, the space diagonal has length $\sqrt{a^2+b^2+c^2}$, so $a^2+b^2+c^2=169$ with positive integers.
+
+Squares are $0,1$ or $4$ modulo $8$, and $169\equiv1\pmod8$, so exactly one of $a,b,c$ is odd and the other two are even. Write the even ones as $2p,2q$. The odd square is one of $1,9,25,49,81,121$, so $p^2+q^2=\dfrac{169-\text{odd square}}{4}$ is one of
+\[
+42,\ 40,\ 36,\ 30,\ 22,\ 12 .
+\]
+Among these, only $40=2^2+6^2$ is a sum of two positive squares. So the odd edge is $3$ and the even edges are $4$ and $12$: the prism is $3\times4\times12$ (indeed $9+16+144=169$).
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair dz=(0.55,0.45);
+real a=12,bb=3,c=4;
+pair P0=(0,0),P1=(a,0),P2=(a,c),P3=(0,c);
+draw(P0--P1--P2--P3--cycle,linewidth(1));
+draw(P3--P3+bb*dz--P2+bb*dz--P2);draw(P1--P1+bb*dz--P2+bb*dz);
+draw(P0--P0+bb*dz,dashed);draw(P0+bb*dz--P1+bb*dz,dashed);draw(P0+bb*dz--P3+bb*dz,dashed);
+draw(P0--P2+bb*dz,red+linewidth(1));
+label("$12$",(a/2,0),S);label("$4$",(0,c/2),W);label("$3$",P1+bb*dz/2,SE);label("$13$",(P0+P2+bb*dz)/2+(-0.4,0.25),N,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The volume is $3\cdot4\cdot12=\boxed{144}$.

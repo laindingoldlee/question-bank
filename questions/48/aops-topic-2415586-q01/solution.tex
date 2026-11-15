@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2415586_geometry_problem_i_made
+% Stable identity: aops-topic-2415586-q01
+\textbf{Coordinates.} Put $A=(0,0)$ and $C=(14,0)$, and let $B=(x,y)$ with $y>0$. From $x^2+y^2=169$ and $(x-14)^2+y^2=225$ we get $-28x+196=56$, so $x=5$ and $y=12$. Thus $B=(5,12)$, the foot of the altitude is $M=(5,0)$, $BM=12$, $AM=5$ and $MC=9$.
+
+\textbf{The circle.} The line $BM$ is $x=5$, and the foot of the perpendicular from $C$ to it is $M$. So the circle centred at $C$ tangent to $BM$ has radius $CM=9$ and touches $BM$ at $M$; in particular $M$ lies on the circle. The point $N$ on $BC$ with $CN=9$ is
+\[N=C+\dfrac{9}{15}(B-C)=(14,0)+\dfrac35(-9,12)=\left(\dfrac{43}{5},\dfrac{36}{5}\right).\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real r=9; pair A=(0,0), C=(14,0), B=(5,12), M=(5,0), Nn=(43/5,36/5);
+real aN=degrees(Nn-C); pair Z=C+r*dir((180+aN)/2);
+fill(C--M--Z--Nn--cycle,rgb(0.85,0.92,1));
+draw(arc(C,r,105,185),gray+dashed);
+draw(A--B--C--cycle,linewidth(0.9)); draw(B--M);
+draw(C--M--Z--Nn--C,blue); draw(C--Z,blue+dashed); draw(M--Nn,red+dashed);
+draw((M+(0,0.7))--(M+(0.7,0.7))--(M+(0.7,0)));
+dot(A); dot(B); dot(C); dot(M); dot(Nn); dot(Z);
+label("$A$",A,SW); label("$B$",B,N); label("$C$",C,SE); label("$M$",M,S); label("$N$",Nn,NE); label("$Z$",Z,W);
+label("$5$",(A+M)/2,S); label("$9$",(M+C)/2,S); label("$12$",(B+M)/2,W);
+label("$9$",(C+Nn)/2,NE);
+\end{asy}
+
+\textbf{The kite.} $CM=CN=CZ=9$ (radii), and $ZM=ZN$ because the arcs $MZ$ and $ZN$ are equal. So $CMZN$ is a kite with axis of symmetry $CZ$; it is convex because $Z$ lies on the minor arc. The diagonals of a kite are perpendicular, so its area is $\dfrac12\cdot CZ\cdot MN$. Here
+\[MN=\sqrt{\left(\dfrac{43}{5}-5\right)^2+\left(\dfrac{36}{5}\right)^2}=\sqrt{\left(\dfrac{18}{5}\right)^2+\left(\dfrac{36}{5}\right)^2}=\dfrac{18}{5}\sqrt{1+4}=\dfrac{18\sqrt5}{5},\]
+so
+\[[MZNC]=\dfrac12\cdot9\cdot\dfrac{18\sqrt5}{5}=\boxed{\dfrac{81\sqrt5}{5}}\approx36.2.\]

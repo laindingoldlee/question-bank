@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1710185_junior_regional_olympiad__fbh_2017_grade_8_problem_5
+% Stable identity: aops-topic-1710185-q01
+Let $N$ be the midpoint of $AB$.
+
+\textbf{$N$ is also the midpoint of $KL$.} Since $AK=LB$, the points $K$ and $L$ are symmetric about the midpoint of $AB$ (going from $A$ by $AK$ and from $B$ by the same length $LB$), so $NK=NL=\dfrac{KL}{2}=\dfrac{BC}{2}$.
+
+\textbf{$NM=\dfrac{BC}{2}$.} $M$ and $N$ are the midpoints of $AC$ and $AB$, so $MN$ is a midline of triangle $ABC$ and $MN=\dfrac{BC}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(10,0),C=(7,5);
+real a=length(C-B);
+pair K=((10-a)/2,0),L=((10+a)/2,0),M=(A+C)/2,Nn=(A+B)/2;
+draw(circle(Nn,a/2),gray+dashed);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(K--M--L,blue+linewidth(0.8));draw(Nn--M,red+dashed);
+pair u=unit(K-M),v=unit(L-M);real q=0.45;
+draw(M+q*u--M+q*(u+v)--M+q*v);
+dot(A);dot(B);dot(C);dot(K);dot(L);dot(M);dot(Nn);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$K$",K,SW);label("$L$",L,SE);label("$M$",M,NW);label("$N$",Nn,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence $NK=NL=NM$: the point $M$ lies on the circle with diameter $KL$ (centre $N$, dashed). Since $M$ is not on line $AB$, it is different from $K$ and $L$, and by Thales' theorem (an angle inscribed in a semicircle) $\angle KML=90^\circ$. $\blacksquare$
+
+(Directly: in triangle $KML$ the median $MN$ equals half of $KL$, so the triangles $KNM$ and $LNM$ are isosceles and $\angle KML=\angle NKM+\angle NLM$; as these three angles sum to $180^\circ$, $\angle KML=90^\circ$.)

@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1539819_help_on_this_question
+% Stable identity: aops-topic-1539819-q01
+Complete the square:
+\[
+3x^2+12x-8=3\left(x^2+4x+4\right)-12-8=3(x+2)^2-20 ,
+\]
+so the vertex is $(a,b)=(-2,-20)$. Moving it $9$ units right adds $9$ to the $x$-coordinate and moving it $15$ units up adds $15$ to the $y$-coordinate:
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+import graph;
+real ys=0.25;
+real f(real x){return (3x^2+12x-8)*ys;}
+real g(real x){return (3(x-7)^2-5)*ys;}
+draw((-5.5,0)--(10.5,0),Arrow(6));draw((0,-5.6)--(0,4.2),Arrow(6));
+label("$x$",(10.5,0),E);label("$y$",(0,4.2),N);
+draw(graph(f,-4.6,0.55),blue+linewidth(0.9));
+draw(graph(g,4.4,9.6),red+linewidth(0.9));
+pair V=(-2,-20*ys),Vp=(7,-5*ys);
+dot(V);dot(Vp);
+draw(V--(7,-20*ys),dashed,Arrow(5));draw((7,-20*ys)--Vp,dashed,Arrow(5));
+label("$9$ right",(2.5,-20*ys),S);label("$15$ up",(7,-12.5*ys),W);
+label("$(-2,-20)$",V,SW);label("$(7,-5)$",Vp,2*dir(-20));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The new vertex is $(-2+9,\,-20+15)=\boxed{(7,-5)}$; it is the vertex of the translated parabola $y=3(x-7)^2-5$ (red; vertical scale compressed).

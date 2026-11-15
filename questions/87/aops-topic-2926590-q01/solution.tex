@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2926590_labeling_a_cube
+% Stable identity: aops-topic-2926590-q01
+There are $2^6=64$ markings. Use Burnside over the $24$ rotations, noting that a rotation moves a face's mark to a definite direction on the image face.
+\begin{itemize}
+\item Identity: $64$.
+\item Face rotations by $\pm90^\circ$ ($6$): the mark on the fixed top face turns by $90^\circ$, so nothing is fixed: $0$.
+\item Face rotations by $180^\circ$ ($3$): top and bottom marks are free ($2\cdot2$), and the side faces are swapped in pairs with directions preserved ($2\cdot2$): $16$ each.
+\item Vertex rotations ($8$): two $3$-cycles of faces, each determined by one face: $4$ each.
+\item Edge rotations ($6$): three $2$-cycles of faces, each determined by one face: $8$ each.
+\end{itemize}
+\[\dfrac{64+0+3\cdot16+8\cdot4+6\cdot8}{24}=\dfrac{192}{24}=\boxed{8}.\]
+(Treating the marks as labels A or B on faces ignores how rotations turn the marks, which is why $\dfrac{2^4}4\cdot3$ fails.)
+\begin{asy}
+usepackage("amsmath");
+size(2.5cm);
+defaultpen(fontsize(10pt));
+import three;currentprojection=orthographic(4,3,2);draw(unitcube,white,black);draw((0.25,0.5,1)--(0.75,0.5,1),linewidth(1.5));draw((1,0.5,0.25)--(1,0.5,0.75),linewidth(1.5));draw((0.5,0,0.25)--(0.5,0,0.75),linewidth(1.5));
+\end{asy}

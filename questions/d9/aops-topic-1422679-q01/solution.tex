@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1422679_amsp_admission_pythagorean
+% Stable identity: aops-topic-1422679-q01
+Let the legs be $x\le y$, so $x^2+y^2=2017^2$.
+
+\textbf{The triangle is primitive.} The number $2017$ is prime (it is not divisible by any prime up to $43$, and $44^2=1936<2017<2025=45^2$). If a prime $p$ divided both $x$ and $y$, it would divide $2017$, so $p=2017$ and then $x,y\ge2017$, which is impossible. So $\gcd(x,y)=1$ and $(x,y,2017)$ is a primitive Pythagorean triple.
+
+\textbf{Parametrisation.} Every primitive triple has hypotenuse $m^2+n^2$ and legs $m^2-n^2$ and $2mn$ for coprime integers $m>n>0$ of opposite parity. So we need $m^2+n^2=2017$. Trying $m$ from $32$ to $44$ (since $2m^2>2017$), the only representation is
+\[
+2017=44^2+9^2=1936+81 .
+\]
+(A prime is a sum of two squares in essentially only one way, so there is no other.) This gives legs $44^2-9^2=1855$ and $2\cdot44\cdot9=792$; indeed $792^2+1855^2=627264+3441025=4068289=2017^2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+real s=1/400; pair C=(0,0),A=(1855*s,0),B=(0,792*s);
+draw(A--B--C--cycle,linewidth(0.9)); draw(ra(C,A-C,B-C,0.22));
+label("$1855$",(A+C)/2,S); label("$792$",(B+C)/2,W); label("$2017$",(A+B)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So there is exactly one such triangle, with perimeter
+\[
+792+1855+2017=\boxed{4664}.
+\]

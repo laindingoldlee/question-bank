@@ -1,0 +1,7 @@
+Take $l:y=0$, $A=(0,7)$, $B=(3,3)$; the horizontal separation is three by Pythagoras. A circle tangent to $l$ at $(s,0)$ has center $(s,r)$. Its passages through $A,B$ give $s^2+49=14r$ and $(3-s)^2+9=6r$. Eliminating $r$ yields $4s^2-42s-21=0$. The distance between the roots is $\dfrac{\sqrt{2100}}{4}=\boxed{\dfrac{5\sqrt{21}}{2}}$. Both radii are positive, so both circles exist. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(0,7),B=(3,3);draw((-4,0)--(15,0));for(int k=0;k<2;++k){real s=(42+(k==0?-1:1)*sqrt(2100))/8,r=(s*s+49)/14;draw(circle((s,r),r));dot((s,0));label(k==0?"$S$":"$T$",(s,0),(0,-1));}draw(A--B);label("$A$",A,(-1,0));label("$B$",B,(1,0));label("$l$",(14,0),(0,-1));
+\end{asy}

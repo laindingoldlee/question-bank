@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1682423_geometry_problem
+% Stable identity: aops-topic-1682423-q02
+Each side is $\dfrac{8}{3}$. The altitude bisects the base, so it splits the triangle into two $30$-$60$-$90$ triangles with hypotenuse $\dfrac{8}{3}$ and short leg $\dfrac{4}{3}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(8/3,0),C=(4/3,4/3*sqrt(3)),M=(A+B)/2;
+draw(A--B--C--cycle,linewidth(0.9));draw(C--M,dashed);
+real r=0.13;draw(M+(r,0)--M+(r,r)--M+(0,r),linewidth(0.6));
+label("$\dfrac{8}{3}$",(A+C)/2,NW);label("$\dfrac{8}{3}$",(B+C)/2,NE);
+label("$\dfrac{4}{3}$",(A+M)/2,S);label("$\dfrac{4}{3}$",(M+B)/2,S);
+label("$h$",(C+M)/2,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The altitude is $h=\dfrac{4}{3}\sqrt3$, so the area is
+\[
+\dfrac{1}{2}\cdot\dfrac{8}{3}\cdot\dfrac{4\sqrt3}{3}=\boxed{\dfrac{16\sqrt3}{9}}.
+\]
+(Equivalently, an equilateral triangle of side $s$ has area $\dfrac{\sqrt3}{4}s^2=\dfrac{\sqrt3}{4}\cdot\dfrac{64}{9}$.)

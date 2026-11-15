@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2567768_pentagon_similarity
+% Stable identity: aops-topic-2567768-q01
+Let the pentagon be $ABCDE$ with side $s=20$ and diagonal $d$. Each interior angle is $108^\circ$, and each diagonal makes $36^\circ$ with the two sides at its endpoint (for example, triangle $ABC$ is isosceles with apex angle $108^\circ$, so $\angle BAC=\angle BCA=36^\circ$).
+
+Let diagonal $AC$ meet $BE$ at $P$ and $BD$ at $Q$; then $PQ$ is a side of the small pentagon.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair[] V;for(int i=0;i<5;++i)V.push(dir(90+72*i));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--cycle,linewidth(0.9));
+for(int i=0;i<5;++i)draw(V[i]--V[(i+2)%5]);
+pair Q=extension(V[0],V[2],V[1],V[3]),P=extension(V[0],V[2],V[1],V[4]);
+pair[] I;for(int i=0;i<5;++i)I.push(extension(V[i],V[(i+2)%5],V[(i+1)%5],V[(i+3)%5]));
+draw(I[0]--I[1]--I[2]--I[3]--I[4]--cycle,blue+linewidth(1.1));
+label("$A$",V[0],N);label("$B$",V[1],W);label("$C$",V[2],SW);label("$D$",V[3],SE);label("$E$",V[4],E);
+dot(P);dot(Q);label("$P$",P,NE,fontsize(8pt));label("$Q$",Q,W,fontsize(8pt));
+\end{asy}
+
+\begin{itemize}
+\item Triangle $BQC$ has $\angle QBC=\angle QCB=36^\circ$, so it is similar to triangle $ABC$ (angles $36^\circ,108^\circ,36^\circ$). Hence $\dfrac{QC}{BC}=\dfrac{AB}{AC}$, i.e. $QC=\dfrac{s^2}d$. By symmetry $AP=\dfrac{s^2}d$ as well.
+\item Triangle $ABQ$ has $\angle BAQ=36^\circ$ and $\angle ABQ=108^\circ-36^\circ=72^\circ$, so $\angle AQB=72^\circ$ and $AQ=AB=s$.
+\end{itemize}
+From $AC=AQ+QC$: $d=s+\dfrac{s^2}d$, so $\left(\dfrac ds\right)^2=\dfrac ds+1$ and $\dfrac ds=\varphi=\dfrac{1+\sqrt5}2$. Then
+\[PQ=AC-AP-QC=d-\dfrac{2s^2}d=s\left(\varphi-\dfrac2\varphi\right)=s(2-\varphi)=s\cdot\dfrac{3-\sqrt5}2,\]
+using $\dfrac1\varphi=\varphi-1$. With $s=20$, $PQ=30-10\sqrt5$, and the perimeter is
+\[5\left(30-10\sqrt5\right)=\boxed{150-50\sqrt5}\approx38.2.\]

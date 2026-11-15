@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1875918_counting
+% Stable identity: aops-topic-1875918-q01
+We find the sum of the nice numbers and subtract it from the sum of all three-digit numbers,
+\[
+100+101+\cdots+999=\dfrac{900\,(100+999)}{2}=494550 .
+\]
+
+\textbf{All three digits equal.} The digit sum $3a$ is even exactly when $a$ is even: $222+444+666+888=2220$.
+
+\textbf{Exactly two equal digits.} Let the repeated digit be $x$ and the other digit $y\ne x$. The digit sum $2x+y$ is even exactly when $y$ is even. There are three patterns.
+\begin{itemize}
+\item $xxy$ (value $110x+y$), $x=1,\dots,9$, $y\in\{0,2,4,6,8\}$, $y\ne x$. For odd $x$ there are $5$ choices of $y$ with sum $20$; for even $x$ there are $4$ choices with sum $20-x$. The total is
+\[
+110\cdot5\cdot25+5\cdot20+110\cdot4\cdot20+(80-20)=13850+8860=22710 .
+\]
+\item $xyx$ (value $101x+10y$), same choices:
+\[
+101\cdot5\cdot25+10\cdot5\cdot20+101\cdot4\cdot20+10\cdot60=13625+8680=22305 .
+\]
+\item $yxx$ (value $100y+11x$), $y\in\{2,4,6,8\}$ (the leading digit is not $0$), $x\in\{0,\dots,9\}$, $x\ne y$, so $9$ choices of $x$ with sum $45-y$:
+\[
+100\cdot9\cdot20+11\cdot(180-20)=18000+1760=19760 .
+\]
+\end{itemize}
+The nice numbers therefore add up to $2220+22710+22305+19760=66995$ (there are $4+41+41+36=122$ of them). The numbers that are not nice add up to
+\[
+494550-66995=\boxed{427555}.
+\]

@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h2380519_hopefully_theres_nothing_wrong_with_this
+% Stable identity: aops-topic-2380519-q05
+\textbf{Lengths of parallel cross-sections.} Let the height be $h$ and put $A=(0,0)$, $B=(a,0)$, $D=(p,h)$, $C=(p+b,h)$. The segment parallel to the bases at height $th$ ($0<t<1$) joins $(tp,th)$ on $AD$ to $\left(a+t(p+b-a),th\right)$ on $BC$, so its length is
+\[\ell(t)=a+t(b-a),\qquad\text{i.e.}\qquad t=\dfrac{\ell-a}{b-a}.\]
+It cuts off from $ABCD$ the trapezoid with parallel sides $a$, $\ell$ and height $th$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(7,0), D=(2,4), C=(4,4);
+real a=7, bb=2;
+real[] ell={sqrt((a^2+bb^2)/2),(a+bb)/2,sqrt(a*bb),2*a*bb/(a+bb)};
+string[] nm={"L","M","N","O"};
+pen[] pc={red,blue,deepgreen,magenta};
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,gray+dashed); draw(B--D,gray+dashed);
+for(int i=0;i<4;++i){ real t=(a-ell[i])/(a-bb); pair P=A+t*(D-A), Q=B+t*(C-B); draw(P--Q,pc[i]+linewidth(0.8)); label("$"+nm[i]+"$",P,W,pc[i]); label("$"+nm[i]+"'$",Q,E,pc[i]); }
+pair E=A+7/9*(C-A); dot(E); label("$E$",E,N,fontsize(8pt));
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$a$",(A+B)/2,S); label("$b$",(C+D)/2,N);
+\end{asy}
+
+\textbf{$LL'$.} Equal areas means $\dfrac{(a+\ell)th}{2}=\dfrac12\cdot\dfrac{(a+b)h}{2}$, i.e. $(a+\ell)\cdot\dfrac{\ell-a}{b-a}=\dfrac{a+b}{2}$, so $\ell^2-a^2=\dfrac{b^2-a^2}{2}$ and
+\[LL'=\sqrt{\dfrac{a^2+b^2}{2}}.\]
+\textbf{$MM'$.} The midpoints correspond to $t=\dfrac12$, so $MM'=\dfrac{a+b}{2}$.
+
+\textbf{$NN'$.} In $ABN'N\sim NN'CD$, the side $AB$ corresponds to $NN'$ and $N'N$ corresponds to $DC$, so $\dfrac{a}{\ell}=\dfrac{\ell}{b}$ and $\ell^2=ab$. Conversely, the cross-section with $\ell=\sqrt{ab}$ works: it has $t=\dfrac{\sqrt{ab}-a}{b-a}=\dfrac{\sqrt a}{\sqrt a+\sqrt b}$, so the legs are divided in the ratio $t:(1-t)=\sqrt a:\sqrt b=a:\ell$, which is also the ratio of the parallel sides and of the heights; and corresponding angles are equal because $NN'$ is parallel to the bases. So
+\[NN'=\sqrt{ab}.\]
+\textbf{$OO'$.} Triangles $ABE$ and $CDE$ are similar (as $AB\parallel DC$) with ratio $a:b$, so $E$ divides the height in the ratio $a:b$, i.e. $t=\dfrac{a}{a+b}$. Then
+\[OO'=a+\dfrac{a(b-a)}{a+b}=\dfrac{2ab}{a+b}.\]
+\textbf{The inequalities.} With $a\ne b$ and $a,b>0$:
+\begin{align*}
+\dfrac{a^2+b^2}{2}-\left(\dfrac{a+b}{2}\right)^2&=\dfrac{(a-b)^2}{4}>0,\\
+\dfrac{a+b}{2}-\sqrt{ab}&=\dfrac{\left(\sqrt a-\sqrt b\right)^2}{2}>0,\\
+\sqrt{ab}-\dfrac{2ab}{a+b}&=\dfrac{\sqrt{ab}\left(\sqrt a-\sqrt b\right)^2}{a+b}>0.
+\end{align*}
+So $LL'>MM'>NN'>OO'$: these are the quadratic, arithmetic, geometric and harmonic means of $a$ and $b$. $\blacksquare$ (If $a=b$ all four lengths would be equal, which is why the weak inequalities $\ge$ are often stated.)

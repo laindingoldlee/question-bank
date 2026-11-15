@@ -1,0 +1,9 @@
+The patches have $12\cdot5+20\cdot6=180$ side incidences. Each seam belongs to exactly two patches, so the number of seams is $180\div2=\boxed{90}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(2,0),(2.6,1.5),(1,2.5),(-0.6,1.5)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--p[3]--p[4]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));dot(p[3]);label("$D$",p[3],unit(p[3]-labelCentre));dot(p[4]);label("$E$",p[4],unit(p[4]-labelCentre));draw((0,0)--(.3,-1.5)--(1.7,-1.5)--(2,0));label("shared seam",(1,0),(0,1));
+\end{asy}
+

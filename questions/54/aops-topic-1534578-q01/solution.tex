@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1534578_geometry
+% Stable identity: aops-topic-1534578-q01
+Let the diagonals meet at $O$, and put $OA=p$, $OB=q$, $OC=r$, $OD=s$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+real p=4.8,q=7.2,s=2.52,t=sqrt(81-s^2)/1;
+// AO=s, BO=t with s^2+t^2=81; BO^2+CO^2=25 -> CO^2=25-t^2
+real tb=4.2; real sa=sqrt(81-tb^2); real sc=sqrt(25-tb^2); real td=sqrt(144-sc^2);
+pair A=(-sa,0),C=(sc,0),B=(0,tb),D=(0,-td);
+draw(A--B--C--D--cycle,linewidth(1));
+draw(A--C,gray(0.45));draw(B--D,gray(0.45));
+real z=0.35; draw((z,0)--(z,z)--(0,z));
+dot(A);dot(B);dot(C);dot(D);
+label("$A$",A,W);label("$B$",B,N);label("$C$",C,E);label("$D$",D,S);label("$O$",O,dir(225));
+label("$9$",(A+B)/2,NW);label("$5$",(B+C)/2,NE);label("$12$",(C+D)/2,SE);label("$?$",(A+D)/2,SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The four triangles at $O$ are right triangles, so by the Pythagorean theorem
+\[
+AB^2+CD^2=(p^2+q^2)+(r^2+s^2)=(q^2+r^2)+(s^2+p^2)=BC^2+AD^2 .
+\]
+Hence $AD^2=81+144-25=200$ and $AD=\boxed{10\sqrt2}$.
+
+(Such a quadrilateral exists; the figure uses $q=4.2$, which gives $p=\sqrt{81-q^2}$, $r=\sqrt{25-q^2}$ and $s=\sqrt{144-r^2}$.)

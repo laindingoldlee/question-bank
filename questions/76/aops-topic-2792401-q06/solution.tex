@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2792401_2019_math_hour_olympiad__university_of_washington__grades_67
+% Stable identity: aops-topic-2792401-q06
+Fix a vertex $V$. If a triangulation is not the fan whose every diagonal meets $V$, some triangle $VAB$ has an opposite edge $AB$ that is an internal diagonal. The triangle across it has third vertex $C$; convexity makes $V,A,C,B$ a convex quadrilateral. Flipping $AB$ to $VC$ increases the number of diagonals incident to $V$ by 1. Repeat until the fan is reached; at most $n-3$ increases are possible. Transform both given triangulations to this same fan, then reverse the second sequence. This joins the two triangulations.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair V=(0,0),A=(3,0),C=(3,2),B=(0,2);draw(V--A--C--B--cycle);draw(A--B,blue);draw(V--C,red+dashed);label("$V$",V,SW);label("$A$",A,SE);label("$C$",C,NE);label("$B$",B,NW);label("flip $AB$ to $VC$",(1.5,-.5));
+\end{asy}

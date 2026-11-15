@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2953527_nice_problem_again
+% Stable identity: aops-topic-2953527-q01
+In the numerator, $3\cos^2A+3\sin^2A=3$ and $\cos^4A+\sin^2A\cos^2A=\cos^2A$, so it equals $\sin A\,(3+\cos^2A)$.
+
+In the denominator, $\sec A-\sin A\tan A=\dfrac{1-\sin^2A}{\cos A}=\cos A$, so it equals $\tan A\cos A=\sin A$.
+
+Hence $f(A)=3+\cos^2A$, defined exactly when $\sin A\ne0$ and $\cos A\ne0$, i.e. $0<\cos^2A<1$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;real f(real x){return 3+cos(x)^2;}
+draw(graph(f,0.05,pi/2-0.05));draw(graph(f,pi/2+0.05,pi-0.05));draw(graph(f,pi+0.05,1.5pi-0.05));
+draw((0,2.8)--(0,4.3),Arrow);draw((-0.2,3)--(5,3),Arrow);
+real[] hx={0,pi/2,pi,1.5*pi};for(real x:hx) filldraw(circle((x,f(x)),0.06),white);
+label("$A$",(5,3),E);label("$4$",(0,4),W);label("$3$",(0,3),W);
+\end{asy}
+
+The range is $\boxed{(3,4)}$.

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1301651_bdmo_national_camp
+% Stable identity: aops-topic-1301651-q01
+Use complex numbers with $A,B,C=a,b,c$ in counterclockwise order. The centre of the regular $n$-gon drawn outward on the directed side $a\to b$ is at distance $\dfrac{|b-a|}{2}\cot\dfrac{\pi} {n}$ from the midpoint, on the right of the side, so it is
+\[
+o_{ab}=\dfrac{a+b}{2}-\dfrac{ik}{2}(b-a)=\dfrac{(1+ik)a+(1-ik)b}{2},\qquad k=\cot\dfrac{\pi} {n}>0 .
+\]
+Three points $u,v,w$ form a counterclockwise equilateral triangle iff $u+\omega v+\omega^2w=0$ with $\omega=e^{\dfrac{2\pi i}{3}}$ (clockwise: $\omega$ replaced by $\omega^2$). For $u=o_{ab}$, $v=o_{bc}$, $w=o_{ca}$, the expression $2(u+\omega v+\omega^2w)$ equals
+\[
+a\bigl[(1+ik)+\omega^2(1-ik)\bigr]+b\bigl[(1-ik)+\omega(1+ik)\bigr]+c\bigl[\omega(1-ik)+\omega^2(1+ik)\bigr].
+\]
+The three coefficients add to $0$, so the expression vanishes for every triangle exactly when the coefficient of $a$ is $0$ (the others are then $\omega$- and $\omega^2$-multiples of it), i.e. when $\dfrac{1+ik}{1-ik}=-\omega^2=e^{\dfrac{i\pi}{3}}$. Writing $k=\tan\theta$ with $0<\theta<\dfrac{\pi}{2}$, the left side is $e^{2i\theta}$, so $2\theta=\dfrac{\pi}{3}$, $k=\tan\dfrac{\pi}{6}=\dfrac{1}{\sqrt3}=\cot\dfrac{\pi}{3}$, and $n=3$. The clockwise case would need $e^{2i\theta}=-\omega=e^{-\dfrac{i\pi}{3}}$, impossible for $0<\theta<\dfrac{\pi}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(1.2,2.5);
+pair m1=(A+B)/2,m2=(B+C)/2,m3=(C+A)/2;
+pair o1=m1+rotate(-90)*(B-A)/(2*sqrt(3)), o2=m2+rotate(-90)*(C-B)/(2*sqrt(3)), o3=m3+rotate(-90)*(A-C)/(2*sqrt(3));
+pair p1=A+rotate(-60)*(B-A), p2=B+rotate(-60)*(C-B), p3=C+rotate(-60)*(A-C);
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--p1--B,gray); draw(B--p2--C,gray); draw(C--p3--A,gray);
+draw(o1--o2--o3--cycle,red); dot(o1,red); dot(o2,red); dot(o3,red);
+label("$A$",A,W); label("$B$",B,E); label("$C$",C,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the answer is $\boxed{n=3}$ (Napoleon's theorem); for every other $n$ there are triangles for which the centres do not form an equilateral triangle.

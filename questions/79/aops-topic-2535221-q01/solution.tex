@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h2535221_geometry
+% Stable identity: aops-topic-2535221-q01
+\textbf{Angles.} At a vertex $V$ of the quadrilateral, every triangle containing $V$ has $V$ either as a vertex (contributing $60^\circ$ to the interior angle) or on one of its edges (contributing $180^\circ$); it cannot have $V$ in its interior, as $V$ is on the boundary. So every interior angle is a multiple of $60^\circ$, and it is not $180^\circ$ (as $V$ is a vertex). If one angle were at least $240^\circ$, the other three would add up to at most $120^\circ$, which is impossible as each is at least $60^\circ$. So all four angles are $60^\circ$ or $120^\circ$, and since they add up to $360^\circ$, exactly two are $60^\circ$ and two are $120^\circ$.
+
+\textbf{Sides.} A triangle that meets a side of the quadrilateral in a segment of positive length lies on one side of that line, so it has a whole edge on it. Hence every side is made of edges of length $1$ with disjoint interiors, and has integer length.
+
+\textbf{Shape.} The total area is $2015\cdot\dfrac{\sqrt3}{4}$.
+\begin{itemize}
+\item If the two $60^\circ$ angles are opposite, consecutive angles add to $180^\circ$ and the quadrilateral is a parallelogram with integer sides $u,v$ and area $uv\sin60^\circ=2uv\cdot\dfrac{\sqrt3}4$. Then $2uv=2015$, impossible as $2015$ is odd.
+\item So the two $60^\circ$ angles are at the ends of one side, and the quadrilateral is an isosceles trapezoid with parallel sides $T$ (top) and $T+l$ (bottom) and legs $l$, where $T,l$ are positive integers. Its height is $\dfrac{\sqrt3}2l$, so its area is $\dfrac{(2T+l)}{2}\cdot\dfrac{\sqrt3}{2}l=(2T+l)\,l\cdot\dfrac{\sqrt3}{4}$. Hence $(2T+l)\,l=2015$.
+\end{itemize}
+\textbf{Maximising.} The perimeter is $T+(T+l)+2l=2T+3l=\dfrac{2015}{l}+2l$. Here $l$ is a divisor of $2015=5\cdot13\cdot31$ with $2T=\dfrac{2015}l-l\ge2$, so $l\in\{1,5,13,31\}$, giving perimeters $2017$, $413$, $181$, $127$. The largest is $2017$, for $l=1$ and $T=1007$.
+
+\textbf{Construction.} A strip of $2015$ triangles placed alternately pointing up and down forms a trapezoid with parallel sides $1007$ and $1008$ and legs $1$: perimeter $2017$. The maximum perimeter is $\boxed{2017}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+real s3=sqrt(3)/2;
+// left: a trapezoid made of unit triangles, top T=2, legs l=3
+for(int i=0;i<=3;++i){draw((i*0.5,i*s3)--(5-i*0.5,i*s3),gray(0.6));}
+// lattice lines inside the trapezoid
+for(int k=0;k<=5;++k){
+ pair u=(k,0);
+ real lenR=min(3,5-k); real lenL=min(3,k);
+ draw(u--u+lenR*dir(60),gray(0.6)); draw(u--u+lenL*dir(120),gray(0.6));
+}
+draw((0,0)--(5,0)--(3.5,3*s3)--(1.5,3*s3)--cycle,linewidth(0.9));
+label("$T+l$",(2.5,0),S);label("$T$",(2.5,3*s3),N);label("$l$",(0.75,1.5*s3),W);label("$l$",(4.25,1.5*s3),E);
+// right: the strip T=4, l=1
+pair o=(6.5,0.6);
+for(int k=0;k<=4;++k){draw(o+(k,0)--o+(k+0.5,s3),gray(0.6));draw(o+(k+1,0)--o+(k+0.5,s3),gray(0.6));}
+draw(o--o+(5,0)--o+(4.5,s3)--o+(0.5,s3)--cycle,linewidth(0.9));
+label("$1008$",o+(2.5,0),S);label("$1007$",o+(2.5,s3),N);label("$1$",o+(0.25,s3/2),W);label("$1$",o+(4.75,s3/2),E);
+\end{asy}
+
+Left: a trapezoid with $T=2$ and $l=3$ is made of $(2T+l)\,l=21$ triangles. Right: the shape of the optimal strip (drawn shorter).

@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2414413_the_undefined_infinite_sequence
+% Stable identity: aops-topic-2414413-q01
+\textbf{(a)} Let $L=\left(\dfrac25\right)^{\dfrac13}$, so that $L^3=\dfrac25$ and $\sqrt{\dfrac25}=L^{\dfrac32}$. All $x_n$ are positive, and
+\[x_{n+1}=\sqrt{\dfrac25}\cdot x_n^{-\dfrac12}=L^{\dfrac32}x_n^{-\dfrac12},\qquad\text{so}\qquad\dfrac{x_{n+1}}{L}=\left(\dfrac{x_n}{L}\right)^{-\dfrac12}.\]
+Since $\dfrac{x_1}{L}=\left(\dfrac25\right)^{\dfrac12-\dfrac13}=\left(\dfrac25\right)^{\dfrac16}$, induction gives
+\[x_n=L\cdot\left(\dfrac25\right)^{\dfrac16\left(-\dfrac12\right)^{n-1}}.\]
+The exponent tends to $0$, so $x_n\to L$:
+\[\sqrt{\dfrac{2}{5\sqrt{\dfrac{2}{5\sqrt{\cdots}}}}}=\boxed{\sqrt[3]{\dfrac25}=\dfrac{\sqrt[3]{50}}{5}}\approx0.7368.\]
+(As a check, the limit $x$ must satisfy $x=\sqrt{\dfrac{2}{5x}}$, i.e. $5x^3=2$.)
+
+\textbf{(b)}
+\begin{itemize}
+\item The value $x$ satisfies $x^2=\dfrac{2}{5x}$, i.e. $5x^3=2$. The equation $5\left(\sqrt x\right)^2=-x$ does not follow from the definition (it says $5x=-x$, whose only solution is $x=0$).
+\item Taking square roots of $5x=-x$ does not give $5\sqrt x=i\sqrt x$; it would give $\sqrt5\sqrt x=\pm i\sqrt x$.
+\item Dividing by $\sqrt x$ assumes $x\ne0$, which is the one solution of the (wrong) equation. A contradiction from a wrong equation proves nothing about the expression.
+\item The calculator values are $x_1,x_2,x_3,\dots$. By the formula in (a) they lie alternately below and above $L$ (the exponent changes sign) and get closer and closer to it. This is exactly what convergence to $L$ looks like, not evidence that the value is undefined.
+\end{itemize}

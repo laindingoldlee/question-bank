@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2443157_irregular_polynomial
+% Stable identity: aops-topic-2443157-q01
+The polynomial $P(x)-x$ has roots $1,2,\dots,6$, so by the factor theorem
+\[P(x)=x+(x-1)(x-2)(x-3)(x-4)(x-5)(x-6)\,Q(x)\]
+for some polynomial $Q$ with real coefficients. From $P(7)=8$ we get $6!\,Q(7)=1$, i.e. $Q(7)=\dfrac{1}{720}$.
+
+\textbf{I is false.} Take $Q(x)=\dfrac{1}{720}+\sqrt2\,(x-7)(x-9)$. Then $Q(7)=Q(9)=\dfrac{1}{720}$, so $P(9)=9+\dfrac{8\cdot7\cdot6\cdot5\cdot4\cdot3}{720}=9+28=37$ is an integer, but $Q(8)=\dfrac{1}{720}-\sqrt2$ and $P(8)=8+5040\,Q(8)=15-5040\sqrt2$ is irrational.
+
+\textbf{II is true.} If $\deg P=6$, then $Q$ is the constant $\dfrac{1}{720}$ and
+\[P(n)=n+\dfrac{(n-1)(n-2)\cdots(n-6)}{6!}.\]
+The product of $6$ consecutive integers is divisible by $6!$: if one factor is $0$ the product is $0$; if all are positive the quotient is $\dbinom{n-1}{6}$; if all are negative it is $\dbinom{6-n}{6}$ (there are six negative factors, so the sign is $+$). So $P(n)$ is an integer for every integer $n$.
+
+\textbf{III is false.} If $\deg P=7$, then $Q(x)=ax+b$ with $a\ne0$. The conditions $7a+b=\dfrac{1}{720}$ and $P(9)=9$, i.e. $9a+b=0$, give $a=-\dfrac{1}{1440}$ and $b=\dfrac{9}{1440}$, so $Q(x)=\dfrac{9-x}{1440}$. This $P$ satisfies all the conditions, but
+\[P(8)=8+\dfrac{7\cdot6\cdot5\cdot4\cdot3\cdot2\cdot1}{1440}=8+\dfrac{5040}{1440}=\dfrac{23}{2}\]
+is not an integer.
+
+So exactly $\boxed{1}$ statement (II) must be true.

@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h3259625_help_with_the_following_problems_please
+% Stable identity: aops-topic-3259625-q01
+Choose the digits recursively, accepting a new digit precisely when it differs from the last by at least two:
+\begin{verbatim}
+from itertools import permutations
+good=[p for p in permutations(range(1,6),4)
+      if all(abs(a-b)>=2 for a,b in zip(p,p[1:]))]
+print(len(good)) # 20
+\end{verbatim}
+Every possible code is one of these $5\cdot4\cdot3\cdot2$ permutations, so the exhaustive test proves the count $\boxed{20}$.

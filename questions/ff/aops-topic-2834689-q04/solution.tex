@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2834689_hard_geometry_problems
+% Stable identity: aops-topic-2834689-q04
+Use complex numbers with the centre at $0$: the vertices are the roots of $z^6=64$ (circumradius $2$), so $\prod(z-v_k)=z^6-64$ and the product of distances is $|z^6-64|$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),2),gray);pair[] V;for(int k=0;k<6;++k){V.push(2*dir(60*k));}
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle);draw(circle((0,0),1),dashed);
+pair P=dir(30);dot(P);label("$P$",P,NE);dot((0,0));label("$O$",(0,0),SW);for(int k=0;k<6;++k) draw(P--V[k],dotted);
+\end{asy}
+
+With $|z|=1$, $z^6$ ranges over the whole unit circle, so $|z^6-64|$ ranges from $64-1=63$ to $64+1=65$. The answer is $63\cdot65=\boxed{4095}$.

@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1295234_sections_of_a_rectangle
+% Stable identity: aops-topic-1295234-q01
+The diagram shows a rectangle with its bottom side divided into seven equal segments and its top side divided in half. Segments join the midpoint of the top side to the eight division points on the bottom side, forming seven triangles, and the first, third, fifth, and seventh of these triangles are shaded. The rectangle has area \(350\). Find the area of the shaded region.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real w=7, h=3;
+pair T=(w/2,h);
+for(int i=0;i<7;i+=2) fill(T--(i,0)--(i+1,0)--cycle,gray(0.55));
+draw((0,0)--(w,0)--(w,h)--(0,h)--cycle);
+for(int i=0;i<=7;++i){draw(T--(i,0),linewidth(0.4)); dot((i,0),linewidth(2.5));}
+dot(T,linewidth(3));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

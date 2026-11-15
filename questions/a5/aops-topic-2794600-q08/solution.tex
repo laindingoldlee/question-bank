@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2794600_2020_ramc_ms_team_round__rochester_area_math_competition
+% Stable identity: aops-topic-2794600-q08
+Without teleportation there are $\binom{12}{6}=924 $ journeys. Each machine lies on $ x+y=6 $, so an ordinary monotone path cannot visit two machines. The numbers of paths from the origin to the machines are $\binom61,\binom62,\binom64 $, or 6,15,15. The numbers from those machines to the destination are the same respective values. A journey using one teleport has a unique departure machine and a distinct arrival machine. Its count is $(6+15+15)^2-(6^2+15^2+15^2)=810 $. Thus the total is $ 924+810=\boxed{1734}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int k=0;k<=6;++k){draw((k,0)--(k,6),gray);draw((0,k)--(6,k),gray);}pair[] T={(1,5),(2,4),(4,2)};for(pair p:T){dot(p,red);label("T",p,NE);}label("$(0,0)$",(0,0),SW);label("$(6,6)$",(6,6),NE);
+\end{asy}

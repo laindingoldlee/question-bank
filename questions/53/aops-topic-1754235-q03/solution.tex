@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1754235_list_of_math_problems_i_need_help_with
+% Stable identity: aops-topic-1754235-q03
+One admissible colouring is shown.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<7;++i) draw(box((i,0),(i+1,1)),linewidth(0.8));
+fill(box((0,0),(1,1)),gray(0.6));fill(box((3,0),(4,1)),gray(0.6));fill(box((5,0),(6,1)),gray(0.6));
+for(int i=0;i<7;++i) draw(box((i,0),(i+1,1)),linewidth(0.8));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Remove one uncoloured square from each of the $2$ gaps that must separate the $3$ coloured squares. This gives a bijection between admissible colourings of the $7$-strip and arbitrary choices of $3$ squares in a $5$-strip (put the separating squares back to recover the colouring). Hence the number of ways is $\dbinom53=\boxed{10}$.
+
+Directly: if the coloured squares are in positions $a<b<c$ with $b\ge a+2$ and $c\ge b+2$, then $a<b-1<c-2$ are any three distinct positions among $1,\dots,5$.

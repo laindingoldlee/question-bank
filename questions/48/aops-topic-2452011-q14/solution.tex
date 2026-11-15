@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2452011_ash_ketchum_problems
+% Stable identity: aops-topic-2452011-q14
+Let $(x,y)$ be on the graph. Since both squares are at most $1$, we have $|x|\le1$, and
+\[\left(y-\sqrt{|x|}\right)^2=1-x^2\le1\quad\Longrightarrow\quad y-\sqrt{|x|}\ge-1.\]
+So $y\ge\sqrt{|x|}-1$ and
+\[x+y\ge x+\sqrt{|x|}-1\ge-|x|+\sqrt{|x|}-1\ge-1,\]
+because $\sqrt{|x|}\ge|x|$ when $0\le|x|\le1$.
+
+Equality holds at $(x,y)=(0,-1)$, which lies on the graph: $0^2+(-1-0)^2=1$. So the least value of $x+y$ is $\boxed{-1}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real fu(real x){return sqrt(abs(x))+sqrt(max(0,1-x^2));}
+real fl(real x){return sqrt(abs(x))-sqrt(max(0,1-x^2));}
+draw((-1.7,0)--(1.7,0),Arrow(6)); draw((0,-1.8)--(0,2.4),Arrow(6));
+label("$x$",(1.7,0),E); label("$y$",(0,2.4),N);
+path pu=graph(fu,-1,1,400);
+path pl=graph(fl,-1,0,400)--graph(fl,0,1,400);
+draw(pu,blue+linewidth(0.9)); draw(pl,blue+linewidth(0.9));
+draw((-1.6,0.6)--(0.75,-1.75),red+dashed);
+dot((0,-1)); label("$(0,-1)$",(0,-1),SW,fontsize(8pt));
+label("$x+y=-1$",(0.75,-1.75),E,red+fontsize(8pt));
+label("$1$",(1,0),SE,fontsize(8pt)); label("$-1$",(-1,0),SW,fontsize(8pt));
+\end{asy}
+
+The heart-shaped graph lies above the line $x+y=-1$ and touches it only at its bottom point $(0,-1)$.

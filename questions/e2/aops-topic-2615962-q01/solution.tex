@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2615962_problem_2_of_finals__vi_ifym_sozopol_2015_67_theme
+% Stable identity: aops-topic-2615962-q01
+Let $x=[AXB_1]$ and $y=[BXA_1]$, so $[ABC]=p+q+r+x+y$.
+
+\emph{Step 1: $xy=pq$.} Triangles $AXB_1$ and $A_1XB_1$ have the same height from $B_1$ to line $AA_1$, so $\dfrac xq=\dfrac{AX}{XA_1}$. Likewise triangles $ABX$ and $A_1BX$ have the same height from $B$, so $\dfrac py=\dfrac{AX}{XA_1}$. Hence $\dfrac xq=\dfrac py$, i.e. $xy=pq$.
+
+\emph{Step 2.} Triangles $AB_1A_1$ and $CB_1A_1$ have the same height from $A_1$ to line $AC$, and so do triangles $ABB_1$ and $CBB_1$ from $B$. Both ratios equal $\dfrac{AB_1}{B_1C}$:
+\[\dfrac{x+q}{r}=\dfrac{p+x}{r+q+y}.\]
+Cross-multiplying, $xr+xq+xy+qr+q^2+qy=rp+rx$. Using $xy=pq$,
+\[q(x+y)=rp-pq-q^2-qr.\]
+Therefore
+\[[ABC]=p+q+r+x+y=\dfrac{q(p+q+r)+rp-pq-q^2-qr}{q}=\boxed{\dfrac{pr}{q}}.\]
+(Check: for the medians, $p=\dfrac{[ABC]}{3}$, $q=\dfrac{[ABC]}{12}$ and $r=\dfrac{[ABC]}{4}$, and indeed $\dfrac{pr}{q}=[ABC]$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(10,0),C=(4,8);
+pair A1=B+0.55*(C-B),B1=A+0.6*(C-A);
+pair X=extension(A,A1,B,B1);
+draw(A--B--C--cycle,linewidth(0.8)); draw(A--A1); draw(B--B1); draw(A1--B1);
+dot(A);dot(B);dot(C);dot(A1);dot(B1);dot(X);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$A_1$",A1,NE);label("$B_1$",B1,NW);label("$X$",X,S);
+label("$p$",(A+B+X)/3);label("$q$",(A1+B1+X)/3,fontsize(9pt));label("$r$",(A1+B1+C)/3);
+label("$x$",(A+B1+X)/3);label("$y$",(B+A1+X)/3);
+\end{asy}

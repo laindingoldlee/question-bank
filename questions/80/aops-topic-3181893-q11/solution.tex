@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3181893_2020_abmc_online_december_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3181893-q11
+For each of 64 king cells, 49 rook cells lie in neither its row nor its column. Among these, exclude diagonal-neighbour cells. There are 49 adjacent 2-by 2 subsquares, each contributing 4 ordered diagonal king-rook placements, so the allowed labelled count is $64\cdot49-4\cdot49=2940$. No nonidentity rotation fixes a distinguished king cell on an even-sized board, so every rotation orbit has size 4. The answer is $\boxed{735}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int r=0;r<8;++r)for(int c=0;c<8;++c)filldraw((c,r)--(c+1,r)--(c+1,r+1)--(c,r+1)--cycle,(r+c)%2==0?white:lightgray);label("$K$",(2.5,2.5));label("$R$",(6.5,5.5));
+\end{asy}

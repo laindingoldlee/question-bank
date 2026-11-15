@@ -1,0 +1,7 @@
+Rotate coordinates about $E$ so $E=(0,0)$, $A=(a,0)$, $C=(0,c)$ with $a,c>0$. The intervening rays give $B=(t,t)$ and $D=(-u,u)$ with $t,u>0$. Collinearity on $\dfrac{x}{a}+\dfrac{y}{c}=1$ yields $t=\dfrac{ac}{a+c}$ and $u=\dfrac{ac}{a-c}$; in particular $a>c$. The midpoint vectors are $F=\dfrac{1}{2}(a,c)$ and $G=\dfrac{1}{2}(t-u,t+u)$. Their dot product is $\dfrac{1}{4}((a+c)t-(a-c)u)=0$. Both vectors are nonzero, so $\boxed{\angle FEG=90^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair E=(0,0),A=(3,0),B=(.75,.75),C=(0,1),D=(-1.5,1.5),F=(1.5,.5),G=(-.375,1.125);draw(A--D);draw(E--A);draw(E--B);draw(E--C);draw(E--D);draw(E--F,blue);draw(E--G,red);pair[] p={A,B,C,D,E,F,G};string[] s={"A","B","C","D","E","F","G"};for(int i=0;i<7;++i)label(s[i],p[i],i==4?S:N);
+\end{asy}

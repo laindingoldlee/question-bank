@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1980055_a_question_about_relating_probability_with_geometry
+% Stable identity: aops-topic-1980055-q01
+Put the rectangle at $0\le x\le2$, $0\le y\le1$. The semicircles have centres $O_1=(1,0)$ and $O_2=(1,1)$ and radius $1$. They meet where $y=\dfrac{1}{2}$ and $(x-1)^2=\dfrac{3}{4}$, at $P=\left(1-\dfrac{\sqrt3}{2},\dfrac{1}{2}\right)$ and $Q=\left(1+\dfrac{\sqrt3}{2},\dfrac{1}{2}\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+fill(arc((1,0),1,30,150)--arc((1,1),1,210,330)--cycle,lightgray);
+draw((0,0)--(2,0)--(2,1)--(0,1)--cycle,linewidth(1));
+draw(arc((1,0),1,0,180));draw(arc((1,1),1,180,360));
+pair O1=(1,0),O2=(1,1),P=(1-sqrt(3)/2,0.5),Q=(1+sqrt(3)/2,0.5);
+dot(O1);dot(O2);dot(P);dot(Q);
+draw(O1--P--O2--Q--cycle,dashed);draw(O1--O2,dashed);
+label("$O_1$",O1,S);label("$O_2$",O2,N);label("$P$",P,W);label("$Q$",Q,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The overlap is the shaded lens, the intersection of the two full discs (it lies inside the rectangle). Triangles $O_1O_2P$ and $O_1O_2Q$ are equilateral with side $1$, so $\angle PO_1Q=\angle PO_2Q=120^\circ$. Each half of the lens cut off by chord $PQ$ is a $120^\circ$ sector minus a triangle with two sides $1$ and included angle $120^\circ$:
+\[
+\dfrac{\pi}{3}-\dfrac{1}{2}\sin120^\circ=\dfrac{\pi}{3}-\dfrac{\sqrt3}{4}.
+\]
+So the lens has area $\dfrac{2\pi}{3}-\dfrac{\sqrt3}{2}$, and the probability is
+\[
+\dfrac{1}{2}\left(\dfrac{2\pi}{3}-\dfrac{\sqrt3}{2}\right)=\boxed{\dfrac{\pi}{3}-\dfrac{\sqrt3}{4}}\approx0.614 ,
+\]
+so Student B is right.
+
+Student A's error: $P(X\cap Y)=P(X)\,P(Y)$ holds only for \emph{independent} events. The events "in the lower semicircle" and "in the upper semicircle" are not independent: the lower semicircle covers the bottom of the rectangle more than the top, and the upper one the reverse, so knowing the point is in one changes the chance it is in the other. Here $P(X\cap Y)\approx0.614\ne0.617\approx P(X)P(Y)$; the closeness of the two numbers is a coincidence.

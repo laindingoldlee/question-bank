@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2335774_triangle_centers
+% Stable identity: aops-topic-2335774-q03
+For a point $P$ and a line through a point $Q$, the distance from $P$ to the line is $QP\sin\theta$, where $\theta$ is the angle between $QP$ and the line.
+
+Let the bisectors of the angles at $A$ and $B$ meet at $I$. Each bisector runs from a vertex to a point of the opposite side, so they cross at a point $I$ inside the triangle. In the figure the dashed segments are the perpendiculars from $I$ to the sides.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.5,2.6), B=(0,0), C=(5.2,0);
+real a=abs(B-C), bb=abs(C-A), c=abs(A-B);
+pair I=(a*A+bb*B+c*C)/(a+bb+c);
+pair Dm=(bb*B+c*C)/(bb+c), Em=(a*A+c*C)/(a+c), Fm=(a*A+bb*B)/(a+bb);
+pair pr(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+pair X=pr(I,B,C), Y=pr(I,C,A), Z=pr(I,A,B);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--Dm,blue); draw(B--Em,blue); draw(C--Fm,blue);
+draw(I--X,red+dashed); draw(I--Y,red+dashed); draw(I--Z,red+dashed);
+dot(I);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$I$",I,dir(-120));
+\end{asy}
+
+Since $\angle IAB=\angle IAC$,
+\[\operatorname{dist}(I,AB)=AI\sin\angle IAB=AI\sin\angle IAC=\operatorname{dist}(I,AC),\]
+and in the same way $\operatorname{dist}(I,BA)=\operatorname{dist}(I,BC)$. Hence $\operatorname{dist}(I,CA)=\operatorname{dist}(I,CB)$, that is,
+\[CI\sin\angle ICA=CI\sin\angle ICB,\qquad\text{so}\qquad \sin\angle ICA=\sin\angle ICB.\]
+Two angles between $0^\circ$ and $180^\circ$ with equal sines are equal or add up to $180^\circ$. Since $I$ is inside the triangle, $\angle ICA+\angle ICB=\angle ACB<180^\circ$, so $\angle ICA=\angle ICB$: the line $CI$ is the bisector of the angle at $C$. Thus all three bisectors pass through $I$. $\blacksquare$
+
+(Since $I$ is equally far from all three sides, it is the centre of the circle tangent to all three sides, the incircle.)

@@ -1,0 +1,7 @@
+Write $T=[PAR]$ and $S=[PALIR]$. A regular pentagon decomposes into five equal central triangles; using the standard pentagon diagonal ratio, or the usual area formula $S=5\cot36^\circ$, gives $S=(\phi+2)T$. For verification, $S^2=25+10\sqrt5=15+20\phi$ and $(\phi+2)^2T^2=(\phi+2)^3=15+20\phi$. The larger pentagon has area $\phi^2S$. The union is exactly it together with triangle $PAR$, so its area is $(\phi^2(\phi+2)+1)T=4\phi^2T$, using $\phi^2=\phi+1$. Squaring gives $16\phi^4(\phi+2)=16(7+11\phi)=112+176\phi$. Thus $m=112,n=176$ and $\boxed{m+2n=464}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real f=(1+sqrt(5))/2;pair A=(0,0),R=(2*f,0),P=(f,sqrt(4-f*f)),L=2*dir(-72),I=L+(2,0),E=R+2*f*dir(-72),B=E+2*f*dir(-144),M=B+2*f*dir(-216);filldraw(A--R--E--B--M--cycle,lightgray);filldraw(P--A--R--cycle,lightblue);draw(P--A--L--I--R--cycle,blue);draw(A--R,dashed);pair[] z={P,A,L,I,R,M,E,B};string[] names={"P","A","L","I","R","M","E","B"};for(int i=0;i<8;++i)label(names[i],z[i],unit(z[i]-(f,-2)));label("2",(P+A)/2,NW);label("$2\phi$",(A+R)/2,N);
+\end{asy}

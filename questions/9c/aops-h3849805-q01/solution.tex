@@ -1,0 +1,10 @@
+\begin{enumerate}
+\item No digit can be zero: in a nondecreasing string, a zero would force a leading zero. A length-$k$ beautiful number is a multiset of $k$ digits from $1,\ldots,9$, so there are $\binom{k+8}{8}$. Summing gives $\boxed{\binom{29}{9}-1}$, subtracting the empty string.
+\item Let the digits be $d_1\le\cdots\le d_k$. Modulo $11$, an odd-length number has residue represented by
+$d_1+(d_3-d_2)+\cdots+(d_k-d_{k-1})$, which lies between $1$ and $d_k\le9$. For even length it is represented by $(d_2-d_1)+\cdots+(d_k-d_{k-1})$, between $0$ and $d_k-d_1\le8$. The bounds follow by adding disjoint nonnegative digit increments. Neither representative is $10$.
+\item Yes. Set
+\[
+\boxed{P(x)=\dfrac{1}{11}\prod_{j=0}^{9}(x-j)}.
+\]
+By part (b), every beautiful integer has one of the residues $0,\ldots,9$, so its product numerator is divisible by $11$. However $10$ is not beautiful, and $P(10)=\dfrac{10!}{11}$ is not an integer because $11$ is prime.
+\end{enumerate}

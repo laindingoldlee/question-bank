@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1919179_geometry_question
+% Stable identity: aops-topic-1919179-q01
+From the ratios,
+\[
+AX=\dfrac{3}{4}AB,\ XB=\dfrac{1}{4}AB,\qquad BY=\dfrac{4}{5}BC,\ YC=\dfrac{1}{5}BC,\qquad CZ=\dfrac{5}{6}CA,\ ZA=\dfrac{1}{6}CA .
+\]
+Two triangles with a common angle have areas in the ratio of the products of the sides enclosing that angle (area $=\dfrac{1}{2}\cdot$ side $\cdot$ side $\cdot\sin$ angle). Hence
+\[
+\dfrac{[AXZ]}{[ABC]}=\dfrac{AX\cdot AZ}{AB\cdot AC}=\dfrac{3}{4}\cdot\dfrac{1}{6}=\dfrac{1}{8},\quad
+\dfrac{[BYX]}{[ABC]}=\dfrac{BX\cdot BY}{BA\cdot BC}=\dfrac{1}{4}\cdot\dfrac{4}{5}=\dfrac{1}{5},\quad
+\dfrac{[CZY]}{[ABC]}=\dfrac{CY\cdot CZ}{CB\cdot CA}=\dfrac{1}{5}\cdot\dfrac{5}{6}=\dfrac{1}{6} .
+\]
+So the three corner triangles have areas $30$, $48$ and $40$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(10,0),C=(3.5,7);
+pair X=A+0.75*(B-A), Y=B+0.8*(C-B), Z=C+(5/6)*(A-C);
+fill(X--Y--Z--cycle,mediumgray+white);
+draw(A--B--C--cycle,linewidth(1)); draw(X--Y--Z--cycle,linewidth(0.8));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$X$",X,S);label("$Y$",Y,NE);label("$Z$",Z,W);
+label("$30$",(2.6,0.38));label("$48$",(7.75,1.2));label("$40$",(C+Y+Z)/3);label("$122$",(X+Y+Z)/3);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+and
+\[
+[XYZ]=240-30-48-40=\boxed{122}.
+\]

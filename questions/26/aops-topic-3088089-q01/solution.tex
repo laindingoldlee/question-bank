@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h3088089_function_problem
+% Stable identity: aops-topic-3088089-q01
+A function is uniquely specified by its four values, so there are exactly $4^4=256$ candidates. The certificate below follows the orbit of 1 for four steps for each candidate and tests the sum, obtaining $\boxed{10}$ functions. Every map is examined once, so this is a complete finite count.
+\begin{verbatim}
+from itertools import product
+answer=0
+for values in product(range(1,5),repeat=4):
+    x=1
+    total=0
+    for step in range(4):
+        x=values[x-1]
+        total+=x
+    answer+=total==13
+assert answer==10
+\end{verbatim}

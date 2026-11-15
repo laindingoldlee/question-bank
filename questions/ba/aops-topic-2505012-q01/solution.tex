@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2505012_help_required
+% Stable identity: aops-topic-2505012-q01
+Each interior angle of a regular pentagon is $\dfrac{3\cdot180^\circ}{5}=108^\circ$, and all sides are equal.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair[] V; for(int i=0;i<5;++i) V.push(dir(90+72*i));
+pair A=V[0],B=V[1],C=V[2],D=V[3],Ep=V[4],O=(0,0);
+draw(A--B--C--D--Ep--cycle,linewidth(0.9));
+draw(O--A,blue); draw(O--B,blue); draw(O--C,red); draw(O--D,red); draw(O--Ep,red);
+dot(O);
+for(int i=0;i<5;++i){
+  pair P=V[i], Pp=V[(i+1)%5], Pm=V[(i+4)%5];
+  real a1=degrees(Pp-P), a2=degrees(O-P), a3=degrees(Pm-P);
+  if(a2<a1) a2+=360; if(a3<a2) a3+=360;
+  draw(arc(P,0.16,a1,a2),gray); draw(arc(P,0.2,a2,a3),gray);
+}
+label("$54^\circ$",B+0.42*dir(degrees(O-B)+25),fontsize(7pt)); label("$54^\circ$",B+0.42*dir(degrees(O-B)-25),fontsize(7pt));
+label("$A$",A,N); label("$B$",B,W); label("$C$",C,SW); label("$D$",D,SE); label("$E$",Ep,E); label("$O$",O,S);
+\end{asy}
+
+\textbf{Triangle $OAB$.} Since $AO$ and $BO$ are bisectors, $\angle OAB=\angle OBA=54^\circ$, so triangle $OAB$ is isosceles with $OA=OB$; also $O$ lies inside the pentagon, since both bisectors run into its interior.
+
+\textbf{$OC$ bisects $\angle C$.} Triangles $OBA$ and $OBC$ are congruent by SAS: $BA=BC$, $\angle OBA=\angle OBC=54^\circ$ (as $BO$ bisects $\angle B$), and $OB$ is common. Hence $\angle OCB=\angle OAB=54^\circ=\dfrac12\cdot108^\circ$, so $\angle OCD=108^\circ-54^\circ=54^\circ$ and $OC$ bisects $\angle C$. Also $OC=OA$.
+
+\textbf{Repeat.} Now triangles $OCB$ and $OCD$ are congruent by SAS ($CB=CD$, $\angle OCB=\angle OCD$, $OC$ common), so $\angle ODC=\angle OBC=54^\circ$ and $OD$ bisects $\angle D$. In the same way triangles $ODC$ and $ODE$ are congruent, so $\angle OED=\angle OCD=54^\circ$ and $OE$ bisects $\angle E$. $\blacksquare$
+
+(So $O$ is equidistant from all five vertices: it is the centre of the pentagon.)

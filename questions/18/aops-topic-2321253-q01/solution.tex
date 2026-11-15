@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2321253_amc_2018_24
+% Stable identity: aops-topic-2321253-q01
+Let the cube have edge $1$, with $E=(0,0,0)$, $F=(1,0,0)$, $G=(1,1,0)$, $H=(0,1,0)$ and $A,B,C,D$ directly above them at height $1$. Then $C=(1,1,1)$, $J=\left(1,0,\dfrac12\right)$ and $I=\left(0,1,\dfrac12\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair Ep=(0,0), F=(3,0), G=(4.2,1), H=(1.2,1), A=(0,3), B=(3,3), C=(4.2,4), D=(1.2,4);
+pair J=(F+B)/2, I=(H+D)/2;
+draw(Ep--F--G); draw(Ep--A); draw(F--B); draw(G--C); draw(A--B--C--D--cycle);
+draw(Ep--H--G,dashed); draw(H--D,dashed);
+filldraw(Ep--J--C--I--cycle,lightblue+opacity(0.4),blue+linewidth(0.9));
+draw(Ep--C,red+dashed); draw(J--I,red+dashed);
+dot(J); dot(I);
+label("$E$",Ep,SW); label("$F$",F,SE); label("$G$",G,E); label("$H$",H,NW); label("$A$",A,W); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,N);
+label("$J$",J,E); label("$I$",I,W);
+\end{asy}
+
+Each side has length $\sqrt{1+0+\dfrac14}=\dfrac{\sqrt5}{2}$ (e.g. $EJ$ goes $1$ along an edge and $\dfrac12$ up), so $EJCI$ is a rhombus. (It is planar: $E+C=J+I$, so its diagonals bisect each other.) Its diagonals are
+\[EC=\sqrt{1+1+1}=\sqrt3\quad\text{(a space diagonal)},\qquad JI=\sqrt{1+1+0}=\sqrt2\quad\text{(a face diagonal)}.\]
+
+\textbf{(a)} The area of a rhombus is half the product of its diagonals: $\dfrac{\sqrt3\cdot\sqrt2}{2}=\dfrac{\sqrt6}{2}$. A face has area $1$, so $R=\dfrac{\sqrt6}2$ and $R^2=\dfrac64=\boxed{\textbf{(C) }\dfrac32}$.
+
+\textbf{(b)} A square has equal diagonals, but here $EC=\sqrt3\ne\sqrt2=JI$. Equivalently, its angles are not right angles: $\vec{EJ}\cdot\vec{EI}=\left(1,0,\dfrac12\right)\cdot\left(0,1,\dfrac12\right)=\dfrac14\ne0$. So $EJCI$ is a rhombus but $\boxed{\text{not a square}}$. (In the usual picture it looks like a square because the drawing is a projection.)

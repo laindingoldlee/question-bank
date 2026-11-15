@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2709686_overlapping_area_of_two_circles
+% Stable identity: aops-topic-2709686-q01
+Let the circles meet at $X$ and $Y$, and let $\alpha=\angle XO_1O_2$ and $\beta=\angle XO_2O_1$. By the law of cosines in triangle $O_1XO_2$,
+\[\cos\alpha=\dfrac{a^2+r_1^2-r_2^2}{2ar_1},\qquad\cos\beta=\dfrac{a^2+r_2^2-r_1^2}{2ar_2}.\]
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real a=3,r1=2,r2=2.5;pair O1=(0,0),O2=(a,0);
+real c1=(a^2+r1^2-r2^2)/(2*a);pair X=(c1,sqrt(r1^2-c1^2)),Y=(c1,-sqrt(r1^2-c1^2));
+real al=degrees(X-O1),be=degrees(X-O2);
+fill(arc(O1,r1,-al,al)--arc(O2,r2,be,360-be)--cycle,rgb(0.85,0.9,1));
+draw(circle(O1,r1));draw(circle(O2,r2));draw(O1--O2);draw(O1--X--O2--Y--cycle,dashed);draw(X--Y,dotted);
+dot(O1);dot(O2);label("$O_1$",O1,W);label("$O_2$",O2,E);label("$X$",X,N);label("$Y$",Y,S);label("$a$",(1.9,0),S,fontsize(8pt));label("$\alpha$",O1+(0.45,0.15),fontsize(8pt));label("$\beta$",O2+(-0.5,0.15),fontsize(8pt));
+\end{asy}
+
+The common region is the union of two circular segments cut off by the chord $XY$. The segment of circle $1$ is the sector $O_1XY$ (angle $2\alpha$) minus the triangle $O_1XY$:
+\[r_1^2\alpha-\dfrac12r_1^2\sin2\alpha.\]
+This holds even if $\alpha>90^\circ$, when the triangle term becomes negative. Similarly for circle $2$. The two triangles together form the kite $O_1XO_2Y$, whose area is twice that of triangle $O_1XO_2$, which Heron's formula gives. Hence
+\[\boxed{A=r_1^2\alpha+r_2^2\beta-\dfrac12\sqrt{(-a+r_1+r_2)(a+r_1-r_2)(a-r_1+r_2)(a+r_1+r_2)}},\]
+with $\alpha,\beta$ in radians as above. (If $a\ge r_1+r_2$ the area is $0$; if $a\le|r_1-r_2|$ it is $\pi\min(r_1,r_2)^2$.)

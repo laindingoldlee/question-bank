@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1277701_ahsme_1952_37
+% Stable identity: aops-topic-1277701-q01
+The chords are equal, so they are symmetric about the centre $O$, each at distance $4$ from $O$. Each chord has half-length $\sqrt{8^2-4^2}=4\sqrt3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real R=8; draw(circle((0,0),R)); real h=4,w=sqrt(R^2-h^2);
+fill((-w,h)--(w,h)--arc((0,0),R,30,-30)--(w,-h)--(-w,-h)--arc((0,0),R,210,150)--cycle,lightblue);
+draw((-w,h)--(w,h),blue); draw((-w,-h)--(w,-h),blue); draw((0,0)--(w,h),red); draw((0,0)--(w,-h),red); draw((0,0)--(-w,h),red); draw((0,0)--(-w,-h),red);
+label("$8$",(w/2,h/2),NW); dot((0,0)); draw((0,-h)--(0,h),gray+dashed); label("$8$",(0,-h/2),W,gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Join $O$ to the four endpoints. The radii to the ends of one chord make an angle of $120^\circ$ (since $\cos\dfrac{\theta}{2}=\dfrac{4}{8}$), so the region consists of
+\begin{itemize}
+\item two isosceles triangles with base $8\sqrt3$ and height $4$, total area $2\cdot16\sqrt3=32\sqrt3$;
+\item two circular sectors of angle $60^\circ$ on the left and right, total area $\dfrac{120}{360}\cdot64\pi=\dfrac{64\pi}{3}$.
+\end{itemize}
+The area is $\boxed{32\sqrt3+\dfrac{64\pi}{3}}$ square inches. The poster's answer is correct.

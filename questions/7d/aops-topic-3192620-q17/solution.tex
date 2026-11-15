@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h3192620_2021_bmmt_individual_round__berkley_mini_math_tournament
+% Stable identity: aops-topic-3192620-q17
+If at least two letters occur and total length is $N$, the multinomial count is at least $N$, so $N\le12$. Exhaustively checking the three letter counts within this bound gives only permutations of counts $(11,1,0)$ or $(2,1,1)$. There are 6 assignments of the first count pattern and 3 of the second, each giving 12 words. Total $(6+3)12=\boxed{108}$.\begin{verbatim}
+from math import factorial
+patterns=[]
+for a in range(13):
+ for b in range(13-a):
+  for c in range(13-a-b):
+   n=a+b+c
+   if n and factorial(n)//(factorial(a)*factorial(b)*factorial(c))==12:
+    patterns.append((a,b,c))
+assert len(patterns)==9
+\end{verbatim}

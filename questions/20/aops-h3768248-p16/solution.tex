@@ -1,0 +1,9 @@
+The maximum is $\boxed{16}$; the drawing supplies a construction. Here is an exhaustive row recurrence proving the upper bound. For each row of five cells choose, independently, no diagonal, a rising diagonal, or a falling diagonal, and discard a choice if two selected diagonals share a vertex. Encode its occupied lower and upper vertices as six-bit masks $L,U$, and let $k$ be its diagonal count. There are 99 valid row patterns. Let $D_r(U)$ be the greatest count in the first $r$ rows with top mask $U$, taking $D_0(0)=0$ and all other initial states impossible. Then
+\[D_{r+1}(U)=\max_{(L,U,k),\ V\mathbin{\&}L=0}\{D_r(V)+k\}.\]
+The condition means that the occupied shared-boundary vertices do not overlap. The maxima over masks after rows $1,2,3,4,5$ are $5,6,10,12,16$. This finite recurrence examines every possible arrangement and rules out 17; a reproducible implementation is included in the audit verification script.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int i=0;i<=5;++i){draw((i,0)--(i,5),lightgray);draw((0,i)--(5,i),lightgray);}draw((0, 2)--(1, 3),blue+1.2bp);draw((0, 3)--(1, 4),blue+1.2bp);draw((0, 4)--(1, 5),blue+1.2bp);draw((1, 2)--(2, 3),blue+1.2bp);draw((3, 2)--(4, 3),blue+1.2bp);draw((4, 0)--(5, 1),blue+1.2bp);draw((4, 1)--(5, 2),blue+1.2bp);draw((4, 2)--(5, 3),blue+1.2bp);draw((1, 0)--(0, 1),blue+1.2bp);draw((2, 0)--(1, 1),blue+1.2bp);draw((3, 0)--(2, 1),blue+1.2bp);draw((3, 1)--(2, 2),blue+1.2bp);draw((3, 3)--(2, 4),blue+1.2bp);draw((3, 4)--(2, 5),blue+1.2bp);draw((4, 4)--(3, 5),blue+1.2bp);draw((5, 4)--(4, 5),blue+1.2bp);
+\end{asy}

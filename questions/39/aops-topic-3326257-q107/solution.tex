@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3326257_mock_state_problems
+% Stable identity: aops-topic-3326257-q107
+In the first quadrant, write an intersection with $y=x^2+4$ as $(a,b)$. Then $t=a^2$ solves $t+(t+4)^2=81$, so $t=\dfrac{-9+\sqrt{341}}{2}$ and $b=t+4$. The eight vertices are $(\pm a,\pm b)$ and $(\pm b,\pm a)$. Their convex octagon is the square $[-b,b]^2$ with four right isosceles corner triangles removed, giving area $4b^2-2(b-a)^2=2(b^2-a^2)+4ab$. Direct squaring gives $2.1755<a<2.1756$ and $8.7330<b<8.7331$. Substituting the endpoint bounds into the positive and negative terms yields $219<2(b^2-a^2)+4ab<220$. Hence the requested floor is $\boxed{219}$.
+\begin{asy}
+import geometry;
+usepackage("amsmath");
+size(270);
+real t=(-9+sqrt(341))/2,a=sqrt(t),b=t+4;draw(circle((0,0),9));draw((a,b)--(-a,b)--(-b,a)--(-b,-a)--(-a,-b)--(a,-b)--(b,-a)--(b,a)--cycle,blue);label("$(a,b)$",(a,b),N);label("$(b,a)$",(b,a),E);draw((-10,0)--(10,0),gray);draw((0,-10)--(0,10),gray);
+\end{asy}

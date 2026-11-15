@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1362088_2015_mathcounts_state_sprint_10
+% Stable identity: aops-topic-1362088-q10
+Any two of the three sides can be the equal pair, so try all three cases.
+\begin{itemize}
+\item $5x+20=3x+76$: $x=28$, sides $160,160,224$; valid since $160+160>224$; perimeter $544$.
+\item $5x+20=x+196$: $x=44$, sides $240,208,240$; valid; perimeter $688$.
+\item $3x+76=x+196$: $x=60$, sides $320,256,256$; valid since $256+256>320$; perimeter $832$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real k=1/64;
+pair B=(0,0), C=(320*k,0), A=(160*k,sqrt(256^2-160^2)*k);
+draw(A--B--C--cycle,linewidth(0.9));
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE);
+label("$x+196=256$",(A+B)/2,NW,fontsize(9pt)); label("$3x+76=256$",(A+C)/2,NE,fontsize(9pt));
+label("$5x+20=320$",(B+C)/2,S,fontsize(9pt));
+path tk(pair P,pair Q){pair m=(P+Q)/2,n=0.12*unit(rotate(90)*(Q-P)); return m-n--m+n;}
+draw(tk(A,B)); draw(tk(A,C));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The greatest possible perimeter is $\boxed{832}$.

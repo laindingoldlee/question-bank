@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1885840_difficult_number_theory_prob_help
+% Stable identity: aops-topic-1885840-q01
+Since $979$ is odd and not divisible by $5$, $n$ must be odd and not a multiple of $5$.
+
+\textbf{Modulo $8$.} For odd $n$, $n^2\equiv1\pmod8$, so $n^n=n\cdot\left(n^2\right)^{\dfrac{n-1}{2}}\equiv n\pmod8$. As $979\equiv3\pmod8$, we need $n\equiv3\pmod8$. The candidates in increasing order are $3,11,19,\dots$
+\begin{itemize}
+\item $3^3=27$: last three digits $027$. No.
+\item $11^{11}=(1+10)^{11}\equiv1+11\cdot10+\dbinom{11}{2}\cdot100=1+110+5500\equiv611\pmod{1000}$. No.
+\item $19^{19}$: modulo $8$ it is $\equiv19\equiv3$, as required. Modulo $125$: $19^2=361\equiv-14$, $19^4\equiv196\equiv71$, $19^8\equiv71^2=5041\equiv41$, $19^{16}\equiv41^2=1681\equiv56$, so
+\[
+19^{19}=19^{16}\cdot19^2\cdot19\equiv56\cdot(-14)\cdot19=56\cdot(-266)\equiv56\cdot(-16)=-896\equiv104\pmod{125}.
+\]
+Also $979=7\cdot125+104\equiv104\pmod{125}$ and $979\equiv3\pmod 8$. By the Chinese remainder theorem ($8$ and $125$ are coprime), $19^{19}\equiv979\pmod{1000}$.
+\end{itemize}
+So the smallest such $n$ is $\boxed{19}$.

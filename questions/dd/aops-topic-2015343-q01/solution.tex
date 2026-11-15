@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2015343_why_is_this_solution_not_valid
+% Stable identity: aops-topic-2015343-q01
+The five diagonals $AC$, $CE$, $EB$, $BD$, $DA$ form a single closed $5$-cycle $A\to C\to E\to B\to D\to A$, shown in red. So we must count colourings of a $5$-cycle with $6$ colours in which neighbours on the cycle differ.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair[] V; string[] nm={"A","B","C","D","E"};
+for(int i=0;i<5;++i){V.push(dir(90+72*i));}
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--cycle,gray(0.6)+linewidth(0.7));
+draw(V[0]--V[2]--V[4]--V[1]--V[3]--cycle,red+linewidth(1));
+for(int i=0;i<5;++i){dot(V[i]); label("$"+nm[i]+"$",V[i],1.4*dir(90+72*i));}
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(a)} Let $P_n$ be the number of such colourings of an $n$-cycle with $k=6$ colours. Colour a path of $n$ vertices around the cycle: $k(k-1)^{n-1}$ ways with neighbours different. Among these, the colourings whose two ends have the same colour correspond exactly to valid colourings of an $(n-1)$-cycle (merge the two ends). So
+\[
+P_n=k(k-1)^{n-1}-P_{n-1}.
+\]
+With $P_3=6\cdot5\cdot4=120$:
+\[
+P_4=6\cdot5^3-120=630,\qquad P_5=6\cdot5^4-630=3750-630=3120 .
+\]
+The answer is $\boxed{3120}$, choice $\textbf{(C)}$.
+
+\textbf{(b)} The count for $D$ assumes $A$ and $B$ have different colours. But $AB$ is a side, not a diagonal, so $A$ and $B$ may share a colour, and then $D$ has $5$ choices, not $4$. Similarly the number of choices for $E$ (which must differ from $B$ and $C$) depends on whether $B$ and $C$ are equal and is not always $4$. A fixed product of choice counts is only valid when each count does not depend on the earlier choices; here casework is needed (or the cycle recursion above).

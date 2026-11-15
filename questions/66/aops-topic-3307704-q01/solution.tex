@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3307704_how_many_acute_triangles
+% Stable identity: aops-topic-3307704-q01
+For three boundary vertices, let $a,b,c$ be their positive cyclic gaps. Each triangle angle is $22.5^\circ$ times the opposite gap, so all gaps must be less than $4$. Since they sum to $8$, they must be $2,3,3$. The unique gap of length $2$ starts at any of $8$ vertices, giving $8$ triangles.
+For a triangle using the centre, its central angle must be acute, hence $45^\circ$. Its other vertices must be adjacent, giving another $8$ triangles, each with base angles $67.5^\circ$. Total $\boxed{16}$.
+\begin{asy}
+usepackage("amsmath"); size(220);
+pair[] v;for(int k=0;k<8;++k)v.push(dir(45*k));draw(circle((0,0),1),gray);for(int k=0;k<8;++k){draw(v[k]--v[(k+1)%8]);dot(v[k]);}draw(v[0]--v[2]--v[5]--cycle,blue);draw((0,0)--v[3]--v[4]--cycle,red);dot((0,0));label("$O$",(0,0),SE);label("$A$",v[0],E);label("$B$",v[2],N);label("$C$",v[5],SW);label("Blue: gaps 2,3,3; red: central triangle",(0,-1.5));
+\end{asy}

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2816128_area_not_of_the_circle
+% Stable identity: aops-topic-2816128-q01
+Substituting $y=25-7x$: $x^2+(25-7x)^2=25$ gives $50x^2-350x+600=0$, so $x=3$ or $4$, and the chord meets the circle at $(3,4)$ and $(4,-3)$. These radii are perpendicular ($3\cdot4+4\cdot(-3)=0$).
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),5));pair P=(3,4),Q=(4,-3);fill(arc((0,0),5,-36.87,53.13)--cycle,lightgray);draw(P--Q);draw((0,0)--P,dashed);draw((0,0)--Q,dashed);
+dot((0,0));label("$O$",(0,0),W);label("$(3,4)$",P,NE);label("$(4,-3)$",Q,SE);draw((-6,0)--(6.5,0),Arrow);draw((0,-6)--(0,6.5),Arrow);label("$7x+y=25$",(4.6,-1.5),E);
+\end{asy}
+
+The required region is a circular segment with central angle $90^\circ$:
+\[\dfrac14\cdot25\pi-\dfrac12\cdot5\cdot5=\boxed{\dfrac{25\pi}4-\dfrac{25}2}.\]

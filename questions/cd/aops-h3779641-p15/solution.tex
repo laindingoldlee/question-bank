@@ -1,0 +1,8 @@
+Choose the X cells and then the O cells in $\binom93\binom62=1260$ ways. Os cannot win with only two marks. A winning X configuration consists of one of eight lines, with the two Os chosen among the other six cells, giving $8\binom62=120$ bad boards. Three Xs cannot complete two different lines, so none is counted twice. Thus $1260-120=\boxed{1140}$ boards remain.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"X", "O", "X"}, {"", "X", ""}, {"O", "", ""}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("Example nonwinning five-move board",(1.5,-3.2));
+\end{asy}

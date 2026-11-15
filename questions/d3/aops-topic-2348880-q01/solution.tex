@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2348880_not_just_pigeonhole
+% Stable identity: aops-topic-2348880-q01
+Let $O$ be the centre. If one of the points is $O$, its distance to any other point is at most $1<\sqrt2$, and if two points coincide we are done; so assume all four points differ from $O$.
+
+Draw the rays from $O$ through the four points. Going once around $O$, these rays cut the full angle into four angles between consecutive rays (an angle may be $0^\circ$ if two rays coincide), and these four angles add up to $360^\circ$. So one of them is at most $90^\circ$: there are two of the points, $P$ and $Q$, with $\theta=\angle POQ\le90^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+draw(circle(O,1),gray(0.4));
+real[] ang={20,100,205,290}; real[] rad={0.9,0.7,1,0.85};
+pair[] P;
+for(int i=0;i<4;++i){P.push(rad[i]*dir(ang[i])); draw(O--1.0*dir(ang[i]),dashed+gray(0.5)); dot(P[i]);}
+draw(arc(O,0.25,20,100),red); label("$\theta\le90^\circ$",0.42*dir(58),red+fontsize(8pt));
+draw(P[0]--P[1],blue+linewidth(1));
+dot(O); label("$O$",O,dir(152));
+label("$P$",P[0],S); label("$Q$",P[1],W);
+\end{asy}
+
+Let $OP=p\le1$ and $OQ=q\le1$. By the law of cosines (also valid for $\theta=0^\circ$), and since $\cos\theta\ge0$,
+\[PQ^2=p^2+q^2-2pq\cos\theta\le p^2+q^2\le2.\]
+Hence $PQ\le\sqrt2$. $\blacksquare$
+
+(The bound is sharp: the four vertices of a square inscribed in the circle are pairwise at distance at least $\sqrt2$.)

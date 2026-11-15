@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1372904_help_please_interesting_logic_problem
+% Stable identity: aops-topic-1372904-q01
+\textbf{Why at least $9$ jumps.} Each shaded disc must get past each unshaded disc. A slide moves a disc into an adjacent empty square, so it never takes one disc past another; two discs can only pass each other by a jump of one over the other. There are $3\cdot3=9$ shaded--unshaded pairs, so at least $9$ jumps are needed.
+
+\textbf{Distance.} Each disc must end $4$ squares from where it started (the shaded discs move from squares $1,2,3$ to $5,6,7$, the unshaded ones the other way), so the discs must travel at least $6\cdot4=24$ squares in total. A jump moves a disc $2$ squares and a slide $1$ square. With exactly $9$ jumps (each a shaded--unshaded crossing in the right direction) the remaining $24-18=6$ squares need $6$ slides, for $15$ moves. A solution with fewer moves would need extra jumps, over discs of the same kind; a breadth-first computer search over all $\dfrac{7!}{3!\,3!\,1!}=140$ arrangements of the discs confirms that no solution with fewer than $15$ moves exists, even allowing moves in both directions.
+
+\textbf{A $15$-move solution.} Write $X$ for shaded, $O$ for unshaded and $\_$ for the empty square. The following moves (slides S, jumps J) work:
+\[
+\begin{array}{l}
+XXX\_OOO\to XX\_XOOO\ (S)\to XXOX\_OO\ (J)\to XXOXO\_O\ (S)\to XXO\_OXO\ (J)\to X\_OXOXO\ (J)\\
+\to \_XOXOXO\ (S)\to OX\_XOXO\ (J)\to OXOX\_XO\ (J)\to OXOXOX\_\ (J)\to OXOXO\_X\ (S)\\
+\to OXO\_OXX\ (J)\to O\_OXOXX\ (J)\to OO\_XOXX\ (S)\to OOOX\_XX\ (J)\to OOO\_XXX\ (S).
+\end{array}
+\]
+That is $9$ jumps and $6$ slides, so the minimum is $\boxed{15}$ moves.

@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1692191_committee_counting_problem
+% Stable identity: aops-topic-1692191-q01
+Every one of the $15$ people is used, since $6+9=15$. Forming the committees amounts to sorting the $15$ people into labelled groups:
+\begin{itemize}
+\item committee 1: chair ($1$), co-secretaries ($2$), ordinary members ($3$);
+\item committee 2: co-chairs ($3$), secretary ($1$), co-treasurers ($2$), ordinary members ($3$).
+\end{itemize}
+Within a group the order does not matter (``co-'' roles are interchangeable). So the number of ways is the multinomial coefficient
+\[
+\dfrac{15!}{1!\,2!\,3!\cdot3!\,1!\,2!\,3!}=\dfrac{1307674368000}{864}=\boxed{1513512000}.
+\]
+(Equivalently: $\dbinom{15}{6}=5005$ ways to choose the first committee, $6\cdot\dbinom52=60$ ways to give the roles in it, and $\dbinom93\cdot6\cdot\dbinom52=84\cdot6\cdot10=5040$ ways to give the roles in the second: $5005\cdot60\cdot5040=1513512000$.)

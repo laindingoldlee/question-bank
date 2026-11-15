@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2521174_purple_comet_help_needed
+% Stable identity: aops-topic-2521174-q02
+Let $D=PQ$ be the diameter of the large circle. Then $PX=16$ and $XQ=D-16$. A half-disc of diameter $d$ has area $\dfrac12\pi\left(\dfrac d2\right)^2=\dfrac{\pi d^2}{8}$. The shaded region is the large half-disc minus the half-disc on $XQ$, plus the half-disc on $PX$ (which lies on the other side of the line and does not overlap the others), so its area is
+\[\dfrac\pi8\left(D^2-(D-16)^2+16^2\right)=\dfrac\pi8\left(32D-256+256\right)=4\pi D.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real R=22.5, r1=8, r2=R-r1;
+pair O=(0,0), P=(-R,0), Q=(R,0), X=(-R+2*r1,0);
+pair c1=(-R+r1,0), c2=(R-r2,0);
+path big=arc(O,R,0,180);
+path s1=arc(c1,r1,180,360);
+path s2=arc(c2,r2,180,0);
+fill(big--s1--s2--cycle,rgb(0.8,0.88,1));
+draw(big,linewidth(0.8)); draw(s1,linewidth(0.8)); draw(s2,linewidth(0.8));
+draw(P--Q,dashed);
+dot(P); dot(X); dot(Q);
+label("$P$",P,W); label("$X$",X,NE); label("$Q$",Q,E);
+draw(c1--(c1+(0,-r1)),red); label("$8$",c1+(0,-r1/2),E,red);
+label("$16$",c1,N,fontsize(8pt)); label("$D-16$",c2,S,fontsize(8pt));
+\end{asy}
+
+Setting $4\pi D=180\pi$ gives $D=\boxed{45}$. This is consistent: $XQ=45-16=29>16$, so the semicircle on $PX$ is indeed the smallest.

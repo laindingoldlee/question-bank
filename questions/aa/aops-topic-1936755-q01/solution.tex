@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1936755_right_triangle_problem
+% Stable identity: aops-topic-1936755-q01
+In the $30$-$60$-$90$ triangle $ABC$ (right angle at $B$), $AC=2BC=2\sqrt2$ and $AB=\sqrt3\,BC=\sqrt6$. In triangle $ACD$ the right angle is at $C$ and $\angle DAC=45^\circ$, so it is isosceles: $CD=AC=2\sqrt2$ and $AD=AC\sqrt2=4$.
+
+Since the interiors do not overlap, $D$ is on the other side of $AC$ from $B$, so $\angle DAB=30^\circ+45^\circ=75^\circ$. Put $A=(0,0)$ and $B=(\sqrt6,0)$; then $D=(4\cos75^\circ,4\sin75^\circ)$, and the foot $F$ of the perpendicular has $AF=4\cos75^\circ=\sqrt6-\sqrt2>0$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(sqrt(6),0),C=(sqrt(6),sqrt(2)),D=4*dir(75),F=(4*Cos(75),0);
+draw(A--B--C--cycle,linewidth(1));draw(A--C--D--cycle,linewidth(1));
+draw(D--F,dashed);draw(arc(A,0.4,0,30));draw(arc(A,0.75,30,75));
+draw(B+(-0.18,0)--B+(-0.18,0.18)--B+(0,0.18));
+draw(F+(0.18,0)--F+(0.18,0.18)--F+(0,0.18));
+pair u=unit(A-C),v=unit(D-C);draw(C+0.22*u--C+0.22*(u+v)--C+0.22*v);
+label("$A$",A,SW);label("$B$",B,S);label("$C$",C,E);label("$D$",D,N);label("$F$",F,S);
+label("$\sqrt2$",(B+C)/2,E);label("$30^\circ$",A+0.66*dir(13),fontsize(8pt));label("$45^\circ$",A+1.1*dir(55),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The perpendicular has length
+\[
+DF=4\sin75^\circ=4\cdot\dfrac{\sqrt6+\sqrt2}{4}=\boxed{\sqrt6+\sqrt2}.
+\]

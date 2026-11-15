@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1332561_impossible_proof
+% Stable identity: aops-topic-1332561-q01
+\textbf{(a)} The right triangles $ACD$ and $BED$ have right angles at $C$ and $E$, legs $AC=BE$ and $DC=DE$, so they are congruent by SAS. Hence $AD=BD$. Also $DE=DC$ is given, so triangle $DEC$ is isosceles with apex $D$.
+
+\textbf{(b)} The hypotheses hold in \emph{every} acute isosceles triangle with $AD=BD$: by symmetry in the axis of the triangle through $D$, the altitude from $B$ is the mirror image of the altitude from $A$, so $BE=AC$ and $DE=DC$. Take $AD=BD$ with $\angle ADB=50^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair D=(0,0), A=4*dir(70), B=4*dir(20);
+pair Ep=dot(B,unit(A))*unit(A), C=dot(A,unit(B))*unit(B);
+draw(A--B--D--cycle,linewidth(0.9)); draw(B--Ep,blue); draw(A--C,blue); draw(Ep--C,red);
+draw(ra(Ep,D-Ep,B-Ep,0.2)); draw(ra(C,D-C,A-C,0.2));
+label("$D$",D,SW); label("$A$",A,N); label("$B$",B,E); label("$E$",Ep,NW); label("$C$",C,SE);
+draw(arc(D,0.6,20,70)); label("$50^\circ$",0.85*dir(45),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then triangle $DEC$ has apex angle $\angle EDC=50^\circ$ and base angles $65^\circ$, so it is not equilateral. In fact $DEC$ is equilateral exactly when $\angle ADB=60^\circ$, i.e. when $ABD$ itself is equilateral, which the hypotheses do not force. So the statement as given is false, and the correct conclusion is only that $DEC$ is isosceles. $\blacksquare$

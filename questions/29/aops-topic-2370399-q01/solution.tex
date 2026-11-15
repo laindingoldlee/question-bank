@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2370399_is_this_correct
+% Stable identity: aops-topic-2370399-q01
+\textbf{Method 1 (Pythagoras twice).} Let $J$ be the midpoint of edge $BF$. In the face $ABFE$, triangle $ABJ$ has a right angle at $B$, so $AJ=\sqrt{AB^2+BJ^2}=\sqrt{2^2+1^2}=\sqrt5$. In the face $BCGF$, the segment $JI$ joins the midpoint of $BF$ to the centre of the face, so $JI\parallel BC$ and $JI=1$. Since $BC$ is perpendicular to the whole face $ABFE$, $JI$ is perpendicular to $AJ$, and triangle $AJI$ has a right angle at $J$:
+\[AI=\sqrt{AJ^2+JI^2}=\sqrt{\left(\sqrt5\right)^2+1^2}=\sqrt6.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair pr(real x, real y, real z){return (x+0.45*y, z+0.6*y);}
+pair A=pr(0,0,0), B=pr(2,0,0), C=pr(2,2,0), D=pr(0,2,0), Ee=pr(0,0,2), F=pr(2,0,2), G=pr(2,2,2), H=pr(0,2,2);
+pair J=pr(2,0,1), I=pr(2,1,1);
+fill(B--C--G--F--cycle,rgb(0.88,0.93,1));
+draw(A--B--F--Ee--cycle,linewidth(0.8)); draw(B--C--G--F,linewidth(0.8)); draw(Ee--H--G,linewidth(0.8));
+draw(A--D,dashed); draw(D--C,dashed); draw(D--H,dashed);
+draw(A--J,blue+linewidth(0.9)); draw(J--I,blue+linewidth(0.9)); draw(A--I,red+linewidth(0.9));
+dot(A); dot(J); dot(I);
+label("$A$",A,SW); label("$B$",B,S); label("$C$",C,SE); label("$D$",D,NW); label("$E$",Ee,NW); label("$F$",F,NW); label("$G$",G,NE); label("$H$",H,N);
+label("$J$",J,SE); label("$I$",I,NE);
+label("$\sqrt5$",(A+J)/2,SE,blue); label("$1$",J+0.6*(I-J)+(0.12,0),E,blue);
+\end{asy}
+
+\textbf{Method 2 (coordinates).} Put $A=(0,0,0)$, $B=(2,0,0)$, $D=(0,2,0)$, $E=(0,0,2)$. The face $BCGF$ is the face $x=2$, with centre $I=(2,1,1)$, so
+\[AI=\sqrt{2^2+1^2+1^2}=\sqrt6.\]
+Both methods give $AI=\boxed{\sqrt6}$.

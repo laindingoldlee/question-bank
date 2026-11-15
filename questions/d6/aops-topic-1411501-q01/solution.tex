@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1411501_intro_to_number_theory_question_1018
+% Stable identity: aops-topic-1411501-q01
+Every divisor is $2^a3^b$ with $0\le a,b\le2006$.
+
+If $a=0$ the divisor $3^b$ is odd, so it cannot end in $6$. Let $a\ge1$. Then $2^a3^b$ is even, and it ends in $6$ exactly when $2^a3^b\equiv1\pmod5$. Since $2\cdot3=6\equiv1\pmod5$, we have $3\equiv2^{-1}\pmod5$, so
+\[
+2^a3^b\equiv2^{a-b}\pmod5,
+\]
+and $2$ has order $4$ modulo $5$ ($2,4,3,1$). So the condition is $a\equiv b\pmod4$. This is exactly the sentence in the book: $a$ and $b$ must leave the same remainder on division by $4$, with $a>0$.
+
+Now count. Among $b=0,1,\dots,2006$ there are $502$ numbers in each of the residue classes $0,1,2$ and $501$ in class $3$. Among $a=1,\dots,2006$ there are $501$ in class $0$, $502$ in classes $1$ and $2$, and $501$ in class $3$. Pairing equal classes:
+\[
+502\cdot501+502\cdot502+502\cdot502+501\cdot501=251502+252004+252004+251001=\boxed{1006511}.
+\]

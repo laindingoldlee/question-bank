@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2960443_proofs_intro_geo
+% Stable identity: aops-topic-2960443-q01
+Choose $E$ on the same side of $AB$ as $C$ (inside the angle $DAB$) so that $\angle BAE=\angle CAD$ and $\angle ABE=\angle ACD$. Then $\triangle ABE\sim\triangle ACD$, giving $\dfrac{AB}{AC}=\dfrac{BE}{CD}=\dfrac{AE}{AD}$, so $AB\cdot CD=AC\cdot BE$.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,-0.5),C=(4.6,2.4),D=(0.8,3.2);pair Ee=(2.5,0.9);
+draw(A--B--C--D--cycle);draw(A--C);draw(B--D);draw(A--Ee,dashed);draw(B--Ee,dashed);draw(Ee--D,dashed);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$E$",Ee,S);
+\end{asy}
+
+Also $\dfrac{AB}{AC}=\dfrac{AE}{AD}$ and $\angle BAC=\angle EAD$ (add $\angle EAC$ to the equal angles), so $\triangle ABC\sim\triangle AED$, giving $\dfrac{BC}{ED}=\dfrac{AC}{AD}$, i.e. $AD\cdot BC=AC\cdot ED$. Adding,
+\[AB\cdot CD+AD\cdot BC=AC(BE+ED)\ge AC\cdot BD\]
+by the triangle inequality, with equality iff $E$ lies on segment $BD$. The hypothesis gives equality, so $E\in BD$ and $\angle ABD=\angle ABE=\angle ACD$. Equal angles subtended by $AD$ at $B$ and $C$ (on the same side) mean $A,B,C,D$ are concyclic. $\blacksquare$

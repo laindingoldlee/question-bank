@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2114608_broken_pretzels
+% Stable identity: aops-topic-2114608-q01
+Let $d(n)$ be the number of positive divisors of $n$. The divisors pair up as $d\leftrightarrow\dfrac {n}{d}$, so
+\[\left(\prod_{d\mid n}d\right)^2=\prod_{d\mid n}d\cdot\prod_{d\mid n}\dfrac {n}{d}=n^{d(n)},\qquad\text{that is,}\qquad \prod_{d\mid n}d=n^{\dfrac{d(n)}{2}}\]
+(this also holds when $n$ is a perfect square). Removing the divisor $n$ itself, the product of the divisors less than $n$ is $n^{\dfrac{d(n)}{2}-1}$. For $n>1$, this equals $n^2$ exactly when
+\[\dfrac{d(n)}{2}-1=2,\qquad\text{that is,}\qquad d(n)=6 .\]
+If $n=p_1^{e_1}\cdots p_r^{e_r}$, then $d(n)=(e_1+1)\cdots(e_r+1)=6$, so $n=p^5$ or $n=p^2q$ for distinct primes $p,q$. Those up to $100$ are:
+\begin{itemize}
+\item $p^5$: $32$;
+\item $p=2$: $4q=12,20,28,44,52,68,76,92$;
+\item $p=3$: $9q=18,45,63,99$;
+\item $p=5$: $25q=50,75$;
+\item $p=7$: $49q=98$.
+\end{itemize}
+Their sum is $32+392+225+125+98=\boxed{872}$.
+
+(The number $1$ has no positive divisors less than itself; the empty product is $1=1^2$, so $1$ would qualify by convention, which is why the definition requires $n>1$.)

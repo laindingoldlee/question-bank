@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1737548_nostalgia
+% Stable identity: aops-topic-1737548-q01
+Put the $5$-inch square at $0\le x,y\le5$; the remaining region $R$ consists of the points of the square that are not in a corner, i.e.\ not with ($x<1$ or $x>4$) and ($y<1$ or $y>4$).
+
+\textbf{An upper bound.} Let $T$ be an equilateral triangle in $R$ with altitude $h$. The width of an equilateral triangle in any direction is at least its altitude, so the horizontal extent and the vertical extent of $T$ are both at least $h$. Suppose $h>4$. Since $T$ lies in $0\le x\le5$ and its horizontal extent exceeds $4$, its leftmost point has $x<1$ and its rightmost point has $x>4$; similarly its lowest point has $y<1$ and its highest point has $y>4$. These four extreme points can be taken to be vertices of $T$. A triangle has only three vertices, so one vertex plays two of the four roles; it cannot be both leftmost and rightmost, or both lowest and highest, so it is, say, leftmost and lowest, with $x<1$ and $y<1$. That vertex lies in a cut-out corner, a contradiction. Hence $h\le4$.
+
+\textbf{The bound is attained.} Take the triangle with one vertex at $(2.5,0)$ and the opposite side on the line $y=4$, so its altitude is $4$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real a=(5-sqrt(5))/2;
+fill(box((0,0),(1,1)),gray(0.65));fill(box((4,0),(5,1)),gray(0.65));fill(box((4,4),(5,5)),gray(0.65));fill(box((0,4),(1,5)),gray(0.65));
+draw((1,0)--(4,0)--(4,1)--(5,1)--(5,4)--(4,4)--(4,5)--(1,5)--(1,4)--(0,4)--(0,1)--(1,1)--cycle,linewidth(0.9));
+draw(box((0,0),(5,5)),dashed+gray(0.5));
+pair U=(2.5,0),V=(2.5+4/sqrt(3),4),Wv=(2.5-4/sqrt(3),4);
+filldraw(U--V--Wv--cycle,rgb(0.82,0.9,1),blue+linewidth(0.8));
+draw((2.5,0)--(2.5,4),dashed+blue);
+label("$4$",(2.5,2.6),E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Its side is $\dfrac{2h}{\sqrt3}=\dfrac{8}{\sqrt3}$, so the top vertices are $\left(2.5\pm\dfrac{4}{\sqrt3},4\right)\approx(0.19,4)$ and $(4.81,4)$, which lie in $R$. The slanted sides stay clear of the lower cut-outs: on the right side, at height $y=1$ the point is at $x=2.5+\dfrac{1}{\sqrt3}\approx3.08<4$. So the triangle fits, and the largest area is
+\[
+\dfrac{\sqrt3}{4}\left(\dfrac{8}{\sqrt3}\right)^2=\boxed{\dfrac{16\sqrt3}{3}}\approx9.24\text{ square inches}.
+\]

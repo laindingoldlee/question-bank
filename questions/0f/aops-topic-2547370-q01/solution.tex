@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2547370_parabolas_problem
+% Stable identity: aops-topic-2547370-q01
+The parabola is $y=(x-3)^2-1$. Write its points as $(3+u,\ u^2-1)$. The squared distance from $(3,1)$ is
+\[D(u)=u^2+\left(u^2-2\right)^2=u^4-3u^2+4=\left(u^2-\dfrac32\right)^2+\dfrac74.\]
+The circle of radius $r$ meets the parabola where $D(u)=r^2$, i.e. $\left(u^2-\dfrac32\right)^2=r^2-\dfrac74$, and it is tangent at a point exactly when the corresponding root $u$ is a repeated root of this quartic equation.
+\begin{itemize}
+\item If $r^2<\dfrac74$, there are no common points.
+\item If $r^2=\dfrac74$, then $u^2=\dfrac32$ is a double root, so $u=\pm\sqrt{\dfrac32}$ are both double roots: the circle touches the parabola at the two points $\left(3\pm\sqrt{\dfrac32},\ \dfrac12\right)$, and every other point of the parabola is farther away.
+\item If $r^2>\dfrac74$, then $u^2=\dfrac32\pm\sqrt{r^2-\dfrac74}$; a value $u^2>0$ gives two simple roots $\pm u$ (crossing points), and only $u^2=0$, which happens for $r^2=4$, gives a double root, at the single point $u=0$ (the vertex).
+\end{itemize}
+So the circle is tangent at two points exactly when $r^2=\boxed{\dfrac74}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return x^2-6*x+8;}
+draw((-0.3,0)--(6.5,0),Arrow(TeXHead));draw((0,-1.6)--(0,4.2),Arrow(TeXHead));
+draw(graph(f,0.85,5.15),linewidth(0.8));
+pair C=(3,1); real r=sqrt(7/4);
+draw(circle(C,r),blue);dot(C);
+pair T1=(3+sqrt(1.5),0.5),T2=(3-sqrt(1.5),0.5);
+dot(T1,red);dot(T2,red);draw(C--T1,dashed);
+label("$(3,1)$",C,N,fontsize(9pt));label("$r$",(C+T1)/2,NE,fontsize(9pt));
+label("$x$",(6.5,0),E);label("$y$",(0,4.2),N);
+\end{asy}

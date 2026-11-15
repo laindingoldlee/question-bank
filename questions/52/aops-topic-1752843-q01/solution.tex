@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1752843_piecewise_defined_function
+% Stable identity: aops-topic-1752843-q01
+In a group of four bars, three are paid for and the fourth is free. So among $b$ bars the number of free bars is the number of complete groups of four, and the customer pays for the rest.
+\begin{itemize}
+\item $0\le b\le3$: no free bar, so $C=2b$.
+\item $b=4$: three bars are paid for, so $C=6$.
+\item $5\le b\le7$: one bar is free, so $C=2(b-1)$.
+\item $b=8$: two bars are free, so $C=2\cdot6=12$.
+\end{itemize}
+Hence
+\[
+C(b)=\begin{cases}2b, & b=0,1,2,3,\\ 2(b-1), & b=4,5,6,7,\\ 12, & b=8.\end{cases}
+\]
+(The middle line gives $C(4)=6$, as required.) Equivalently $C(b)=2\left(b-\left\lfloor\dfrac {b}{4}\right\rfloor\right)$.
+
+The domain is the set of whole numbers of bars allowed: $\boxed{\{0,1,2,3,4,5,6,7,8\}}$ (or $\{1,\dots,8\}$ if a customer must buy something). It is not an interval, since a fraction of a bar cannot be bought.

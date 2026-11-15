@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2094122_ketchup_wars
+% Stable identity: aops-topic-2094122-q01
+A round with cooldowns $c_1,c_2,\dots$ ends after $\operatorname{lcm}(c_1,c_2,\dots)$ seconds. The game has two rounds: one with three players and one with two.
+
+\emph{Two players.} Let $10\le a<b\le19$ and $L=\operatorname{lcm}(a,b)$. Since $2a\ge20>b$, $a$ does not divide $b$, so $L=kb$ with $k\ge2$. If $k=2$, then $L=2b$ is a multiple of $a$, and $2<\dfrac{2b}{a}<4$ because $a<b<2a$; so $2b=3a$, and then $b=\dfrac{3a}{2}\ge15$ and $L=2b\ge30$. If $k\ge3$, $L\ge3b\ge33$. So $L\ge30$, with $L=30$ for $(a,b)=(10,15)$.
+
+\emph{Three players.} Let the cooldowns be $d_1>d_2>d_3$ and $L$ their lcm; the cofactors $k_i=\dfrac{L}{d_i}$ are integers with $k_1<k_2<k_3$, $L\ge10k_3$ and $L\le19k_1$. The previous paragraph gives $L\ge30>19$, so $k_1\ge2$. If $k_1=2$, then $L\le38$, so $k_3\le3$, leaving no room for three distinct cofactors. Hence $k_1\ge3$, $k_3\ge5$ and $L\ge50$. If $L<60$, then $k_3\le5$, so the cofactors are $3,4,5$ and $L$ is a multiple of $\operatorname{lcm}(3,4,5)=60$, a contradiction. So $L\ge60$, with $L=60$ for the cooldowns $10,12,15$.
+
+The least possible length of the game is therefore $60+30=\boxed{90}$ seconds.

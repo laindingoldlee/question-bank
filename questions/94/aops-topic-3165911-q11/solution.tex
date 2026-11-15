@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3165911_2019_spring_lmt_individual_round__lexington_mathematical_tournament
+% Stable identity: aops-topic-3165911-q11
+The shortest route consists of two tangent segments and the shorter connecting circle arc, on either side by symmetry. Any exterior portion can be shortened to a straight segment, and optimal transition points must be tangent; the shortest boundary connection is the shorter arc. Each tangent length is $\sqrt{6^2-3^2}=3\sqrt3$. The radius-to-tangent-point angle from the ray toward the corresponding endpoint is $60^\circ$, leaving a connecting central angle $180-60-60=60^\circ$. Its arc length is $3\cdot\dfrac{\pi}{3}=\pi$. The total is $\boxed{6\sqrt3+\pi}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(-6,0),B=(6,0),O=(0,0),T=3dir(120),U=3dir(60);draw(circle(O,3),gray);draw(A--T,blue);draw(arc(O,3,60,120),blue+linewidth(1.2));draw(U--B,blue);draw(A--(T.x,-T.y),dashed);draw(arc(O,3,240,300),dashed);draw((U.x,-U.y)--B,dashed);draw(O--T^^O--U,dashed);label("$A$",A,W);label("$B$",B,E);label("$O$",O,S);label("$T$",T,NW);label("$U$",U,NE);label("$3$",O--U,E);
+\end{asy}

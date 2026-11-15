@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3242498_the_polymath_competition
+% Stable identity: aops-topic-3242498-q29
+Let $\theta$ be the degree measure of $\angle HAD$. Since $H$ lies on side $CD$ of the unit square, $0\le\theta\le45$ and the right triangle $ADH$ gives $AH=\sec\theta$. Thus $\theta\cos\theta=15\sqrt3$, with cosine evaluated in degrees. The function $u\cos(\dfrac{\pi u}{180})$ is strictly increasing on $[0,45]$: its derivative is $\cos t-t\sin t>0$ for $0\le t\le\dfrac{\pi}{4}$, since $t\tan t\le\dfrac{\pi}{4}<1$. At $u=30$, the value is $30\cos30^\circ=15\sqrt3$. Therefore $\theta=30^\circ$ uniquely, and $\boxed{\angle DHA=60^\circ}$, choice C.
+The configuration is feasible: take $A=(0,0),D=(0,1),C=(1,1)$, $E=(\dfrac{\sqrt3}{2},\dfrac{1}{2})$, and $F=E+(-\dfrac{1}{2},\dfrac{\sqrt3}{2})$. Then $H=(\dfrac{1}{\sqrt3},1)$ lies on both required segments.
+\begin{asy}
+usepackage("amsmath"); size(230);
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1),Ep=(sqrt(3)/2,0.5),G=(-0.5,sqrt(3)/2),F=Ep+G,H=(1/sqrt(3),1);draw(A--B--C--D--cycle);draw(A--Ep--F--G--cycle,blue);draw(A--H,dashed);dot(H);label("$A$",A,S);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$E$",Ep,SE);label("$F$",F,N);label("$G$",G,W);label("$H$",H,NE);label("$1$",(A+D)/2,W);
+\end{asy}

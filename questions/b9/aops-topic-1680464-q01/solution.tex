@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1680464_cmms_problem_3790_intersections
+% Stable identity: aops-topic-1680464-q01
+\textbf{Total.} Choose the first pair in $\dbinom82=28$ ways and the second, from the other $6$ vertices, in $\dbinom62=15$ ways; each unordered choice of two pairs is counted twice, so there are $\dfrac{28\cdot15}{2}=210$ equally likely choices.
+
+\textbf{Favourable.} Two segments with four distinct endpoints can meet only if the four endpoints lie in one plane, and then (no three vertices of a cube being collinear) only if the segments are the two diagonals of the convex quadrilateral they form. The sets of four coplanar vertices of a cube are the $6$ faces and the $6$ ``diagonal'' rectangles through two opposite edges (such as the dotted one in the right-hand figure); each is a rectangle, and of its three ways to split into two pairs only the two diagonals cross.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair pr(real x,real y,real z){return (x+0.45*y,z+0.35*y);}
+void cube(pair o){
+  pair q(real x,real y,real z){return o+pr(x,y,z);}
+  draw(q(0,1,0)--q(1,1,0),gray+dashed);draw(q(0,1,0)--q(0,1,1),gray+dashed);draw(q(0,0,0)--q(0,1,0),gray+dashed);
+  draw(q(0,0,0)--q(1,0,0)--q(1,0,1)--q(0,0,1)--cycle,linewidth(0.8));
+  draw(q(1,0,0)--q(1,1,0)--q(1,1,1)--q(0,1,1)--q(0,0,1),linewidth(0.8));
+  draw(q(1,0,1)--q(1,1,1),linewidth(0.8));
+}
+cube((0,0));cube((2.1,0));
+draw(pr(0,0,0)--pr(1,0,1),red+linewidth(0.9));draw(pr(1,0,0)--pr(0,0,1),red+linewidth(0.9));
+dot(pr(0.5,0,0.5),red);
+pair o=(2.1,0);
+draw(o+pr(0,0,0)--o+pr(1,0,0)--o+pr(1,1,1)--o+pr(0,1,1)--cycle,blue+dotted);
+draw(o+pr(0,0,0)--o+pr(1,1,1),blue+linewidth(0.9));draw(o+pr(1,0,0)--o+pr(0,1,1),blue+linewidth(0.9));
+dot(o+pr(0.5,0.5,0.5),blue);
+label("face",(0.72,-0.25),fontsize(8pt));label("diagonal rectangle",o+(0.72,-0.25),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(In the figure, the red diagonals of a face cross at the centre of the face, and the blue diagonals of a diagonal rectangle, which are space diagonals of the cube, cross at the centre of the cube.) So $12$ choices are favourable, and the probability is
+\[
+\dfrac{12}{210}=\boxed{\dfrac{2}{35}}.
+\]

@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1226352_2016_lmt_theme_5
+% Stable identity: aops-topic-1226352-q05
+The region has area $600\cdot1000-300\cdot500=450000$, so each section has area $150000=300\cdot500$. The L-shaped region splits into three $300\times500$ rectangles: the bottom strip $1000\times300$ in two halves, and the remaining $500\times300$ block.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(1000,0)--(1000,300)--(500,300)--(500,600)--(0,600)--cycle,linewidth(1));
+draw((500,0)--(500,300)); draw((0,300)--(500,300));
+label("$1000$",(500,0),S); label("$600$",(0,300),W); label("$500$",(750,300),N); label("$300$",(1000,150),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Each section has perimeter $2(300+500)=\boxed{1600}$ feet.

@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1532755_trigonometry
+% Stable identity: aops-topic-1532755-q01
+Let $I$ be the incentre and $r$ the inradius. The segments $IA$, $IB$, $IC$ cut the triangle into three triangles with bases $a=BC$, $b=CA$, $c=AB$ and common height $r$ (the radii to the points of tangency are perpendicular to the sides). The figure shows one such triangle, the right triangle with sides $10$, $24$, $26$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(24,0),A=(0,10);
+real a=abs(B-C),bb=abs(C-A),c=abs(A-B);
+pair I=(a*A+bb*B+c*C)/(a+bb+c); real r=4;
+draw(A--B--C--cycle,linewidth(1));
+draw(circle(I,r),red+linewidth(0.9));
+real z=0.9; draw((z,0)--(z,z)--(0,z));
+pair T1=(I.x,0),T2=(0,I.y);
+pair u=unit(C-A); pair T3=A+dot(I-A,u)*u;
+draw(I--T1,dashed);draw(I--T2,dashed);draw(I--T3,dashed);
+draw(I--A,blue+dotted);draw(I--B,blue+dotted);draw(I--C,blue+dotted);
+dot(I);label("$I$",I+1.6*dir(-60));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$r$",(I+T2)/2,N);
+label("$10$",(A+B)/2,W);label("$24$",(B+C)/2,S);label("$26$",(A+C)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Adding the three areas,
+\[
+\text{area}=\dfrac{1}{2}ar+\dfrac{1}{2}br+\dfrac{1}{2}cr=\dfrac{a+b+c}{2}\,r=s\,r ,
+\]
+where $s$ is the semiperimeter. Here $s=30$, so $120=30r$ and $r=\boxed{4}$. The answer does not depend on which triangle with these perimeter and area is taken.

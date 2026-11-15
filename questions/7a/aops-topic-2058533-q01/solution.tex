@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h2058533_geometry_inscribed_circle_between_incircle_and_two_sides_of_triangle
+% Stable identity: aops-topic-2058533-q01
+\textbf{General formula.} Let the vertex be $V$ with angle $\theta$, the incircle have centre $I$ and radius $r$, and the corner circle have centre $J$ and radius $\rho$. Both centres lie on the bisector from $V$, with $VI=\dfrac{r}{\sin\dfrac{\theta}{2}}$ and $VJ=\dfrac{\rho}{\sin\dfrac{\theta}{2}}$. External tangency with the corner circle between $V$ and the incircle means $VI-VJ=r+\rho$, so
+\[
+\dfrac{r-\rho}{\sin\dfrac{\theta}{2}}=r+\rho\quad\Longrightarrow\quad \rho=r\cdot\dfrac{1-\sin\dfrac{\theta}{2}}{1+\sin\dfrac{\theta}{2}}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(14,0), A=(5,12), I=(6,4); real r=4;
+real rB=(68-16*sqrt(13))/9, rC=6-2*sqrt(5), rA=(324-32*sqrt(65))/49;
+draw(A--B--C--cycle,linewidth(0.9));
+draw(circle(I,r),blue);
+pair cB=B+(I-B)*rB/r, cC=C+(I-C)*rC/r, cA=A+(I-A)*rA/r;
+draw(circle(cB,rB),red); draw(circle(cC,rC),red); draw(circle(cA,rA),red);
+draw(B--I,dashed+gray(0.6)); draw(C--I,dashed+gray(0.6)); draw(A--I,dashed+gray(0.6));
+dot(I); dot(cA); dot(cB); dot(cC);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$I$",I,S);
+label("$r_B$",cB,dir(100),red+fontsize(8pt)); label("$r_C$",cC,dir(80),red+fontsize(8pt)); label("$r_A$",cA,W,red+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Data.} $s=21$, area $=\sqrt{21\cdot7\cdot6\cdot8}=84$, so $r=\dfrac{84}{21}=4$. By the law of cosines,
+\[
+\cos B=\dfrac{13^2+14^2-15^2}{2\cdot13\cdot14}=\dfrac{5}{13},\quad \cos C=\dfrac{14^2+15^2-13^2}{2\cdot14\cdot15}=\dfrac{3}{5},\quad \cos A=\dfrac{13^2+15^2-14^2}{2\cdot13\cdot15}=\dfrac{33}{65}.
+\]
+Using $\sin^2\dfrac{\theta}{2}=\dfrac{1-\cos\theta}{2}$: $\sin\dfrac {B}{2}=\dfrac{2}{\sqrt{13}}$, $\sin\dfrac {C}{2}=\dfrac{1}{\sqrt5}$, $\sin\dfrac {A}{2}=\dfrac{4}{\sqrt{65}}$.
+
+(a) Corner $B$: $\rho_B=4\cdot\dfrac{\sqrt{13}-2}{\sqrt{13}+2}=\dfrac{4(\sqrt{13}-2)^2}{9}=\boxed{\dfrac{68-16\sqrt{13}}{9}}\approx1.15$.
+
+(b) Corner $C$: $\rho_C=4\cdot\dfrac{\sqrt5-1}{\sqrt5+1}=(\sqrt5-1)^2=\boxed{6-2\sqrt5}\approx1.53$.
+
+(c) Corner $A$: $\rho_A=4\cdot\dfrac{\sqrt{65}-4}{\sqrt{65}+4}=\dfrac{4(\sqrt{65}-4)^2}{49}=\boxed{\dfrac{324-32\sqrt{65}}{49}}\approx1.35$.

@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3518608_2019_mathcounts_state_target_number_7
+% Stable identity: aops-topic-3518608-q01
+There are $8^3=512$ unit cubes and $6\cdot512$ equally likely cube-face outcomes. The large cube has $6\cdot8^2=384$ painted unit faces, so there are $3072-384=2688$ unpainted-bottom outcomes. The completely unpainted cubes form a $6^3=216$ interior block, each contributing six such outcomes. Thus the conditional probability is $\dfrac{216\cdot6}{2688}=\boxed{\dfrac{27}{56}}$. 
+\begin{asy}
+usepackage("amsmath");
+import geometry;
+size(260);
+pair A=(0,0),B=(4,0),C=(4,4),D=(0,4),v=(1.5,1);draw(A--B--C--D--cycle);draw(D--D+v--C+v--C);draw(B--B+v--C+v);draw(A--A+v--B+v,dashed);draw(A+v--D+v,dashed);label("$8$",(A+B)/2,S);label("$8$",(B+C)/2,E);label("$8$",D+v/2,NW);label("$6\times6\times6$ interior",(2,-1));
+\end{asy}

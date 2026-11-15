@@ -1,0 +1,16 @@
+Comparing coefficients gives $R\cos\alpha=5$ and $R\sin\alpha=4$. Thus
+\[
+\boxed{R=\sqrt{41}},\qquad \boxed{\alpha=\arctan\dfrac{4}{5}=0.675\text{ radians (3 d.p.)}}.
+\]
+Stretch vertically by factor $\sqrt{41}$ about the horizontal axis, then translate left by $\alpha$.
+Since $f$ takes every value between $-\sqrt{41}$ and $\sqrt{41}$, $f^2$ takes every value in $[0,41]$. Consequently
+\[
+\boxed{2\le g(\theta)\le\dfrac{45}{2}},
+\]
+with both endpoints attained.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;real f(real x){return 5cos(x)-4sin(x);}real g(real x){return cos(x);}draw(graph(f,-pi,pi),blue);draw(graph(g,-pi,pi),gray);draw((-3.5,0)--(3.5,0),Arrow);draw((0,-7)--(0,7),Arrow);label("$f$",(-.675,sqrt(41)),N);label("$\cos\theta$",(-2.4,1),N);dot((-.675,sqrt(41)));
+\end{asy}

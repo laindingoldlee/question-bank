@@ -1,0 +1,11 @@
+Set $O=(0,0),X=(14,0),N=(0,34),K=(14,34)$, $R=(r,34)$ and $B=(14,b)$. Equality of lengths gives $b=\sqrt{r^2+960}$, for $0\le r\le14$. Thus
+\[
+RB^2=2r^2-28r+2312-68\sqrt{r^2+960}.
+\]
+Its derivative is $4r-28-\dfrac{68r}{\sqrt{r^2+960}}\le2r-28\le0$, because $\sqrt{r^2+960}\le34$. Therefore the maximum occurs at $r=0$, and equals $\sqrt{2312-544\sqrt{15}}\approx\boxed{14.32}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0),X=(14,0),N=(0,34),K=(14,34),B=(14,sqrt(960));draw(O--X--K--N--cycle);draw(O--B--N--O,blue);label("$O$",O,SW);label("$X$",X,SE);label("$K$",K,NE);label("$R=N$",N,NW);label("$B$",B,E);
+\end{asy}

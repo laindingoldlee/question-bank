@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2949413_2019_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2949413-q24
+Let $F(x,y)$ count paths to $(x,y)$, with $F(0,0)=1$ and $F$ zero at negative coordinates. Classify by the final move:
+\[F(x,y)=F(x-1,y)+F(x,y-1)+F(x-1,y-2)+F(x-2,y-1).\]
+Each move increases the coordinate sum, so this recurrence can be evaluated without circular dependencies. The exact finite calculation is:
+\begin{verbatim}
+f=[[0]*7 for _ in range(7)]
+f[0][0]=1
+for x in range(7):
+    for y in range(7):
+        if x+y:
+            f[x][y]=sum(f[x-u][y-v]
+                for u,v in [(1,0),(0,1),(1,2),(2,1)]
+                if x>=u and y>=v)
+assert f[6][6]==5810
+\end{verbatim}
+Thus $\boxed{5810}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw((0,0)--(7,0),Arrow);draw((0,0)--(0,7),Arrow);draw((0,0)--(1,2)--(3,3)--(5,4)--(6,6),blue);dot((6,6));label("$(6,6)$",(6,6),N);label("$O$",(0,0),SW);
+\end{asy}

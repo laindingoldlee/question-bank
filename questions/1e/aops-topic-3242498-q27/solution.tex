@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h3242498_the_polymath_competition
+% Stable identity: aops-topic-3242498-q27
+At $x=0$, the inequality gives $f(0)^2<f(0)+1$, so $f(0)\in\{0,1\}$. At $x=1$, it gives $f(1)^2<f(1)+2$, so $f(1)\in\{0,1\}$. At $x=-1$, it gives $f(-1)^2<f(1)+2$, so $f(-1)\in\{-1,0,1\}$. Distinctness forces $f(-1)=-1$. Because an integer polynomial has $f(-1)\equiv f(1)\pmod2$, we get $f(1)=1,f(0)=0$.
+Thus $f(x)-x$ vanishes at $-1,0,1$, and the degree bound gives
+\[f(x)=x+x(x^2-1)(ax+b),\qquad a,b\in\mathbb Z.\]
+Comparison of the $x^8$ coefficients in the inequality as $x\to\infty$ yields $a^2\le1+a$, hence $a=0$ or $1$.
+Since $f(-1),f(0),f(1)$ are not positive primes, a prime value must occur at an integer $q\ge2$. The factorization $f(q)=q[1+(q^2-1)(aq+b)]$ forces $q$ itself to be prime and $aq+b=0$. If $a=0$, then $b=0$ and $f(x)=x$. If $a=1$, then $b=-q$. Applying the inequality at $x=2$ gives
+\[(14-6q)^2<501-60q,\quad\text{or}\quad36q^2-108q-305<0.\]
+For integers $q\ge5$ the left side is positive and increasing, so the prime $q$ is $2$ or $3$. Now $f(5)=605-120q$, maximized at $q=2$, with value $365$.
+It remains to verify attainability for $f(x)=x^4-2x^3-x^2+3x$. It has $f(2)=2$, and the required three small values. Let $D(x)=x^8+f(x^2)+1-f(x)^2$. Direct calculation gives $D(-1)=D(1)=2,D(0)=1$. For $x=t+2$, $t\ge0$,
+\[D(t+2)=t^8+20t^7+164t^6+726t^5+1910t^4+3078t^3+2990t^2+1616t+377>0.\]
+Thus the inequality holds throughout the domain. The maximum is $\boxed{365}$, choice D.

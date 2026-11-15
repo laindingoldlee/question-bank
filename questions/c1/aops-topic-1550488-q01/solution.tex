@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1550488_mathcounts_20012002_warmup_14_problem_6
+% Stable identity: aops-topic-1550488-q01
+Let the triangle $ABC$ have side $a$ and inradius $r=\dfrac{a}{2\sqrt3}$.
+
+\textbf{A hexagon of side $\dfrac {a}{3}$ fits.} Cut off the three corner equilateral triangles of side $\dfrac {a}{3}$. What remains is a hexagon whose six sides all have length $\dfrac {a}{3}$ and whose angles are all $180^\circ-60^\circ=120^\circ$, so it is regular:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(3,0),C=3*dir(60);
+pair[] H={(1,0),(2,0),B+dir(120),C+dir(-60),C+dir(-120),A+dir(60)};
+fill(H[0]--H[1]--H[2]--H[3]--H[4]--H[5]--cycle,paleyellow);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(H[0]--H[1]--H[2]--H[3]--H[4]--H[5]--cycle,blue+linewidth(0.9));
+pair I=(A+B+C)/3; draw(circle(I,sqrt(3)/2),dashed+gray(0.4));
+draw(H[2]--H[5],gray(0.6));draw(H[0]--H[3],gray(0.6));draw(H[1]--H[4],gray(0.6));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$\dfrac{a}{3}$",(0.5,0),S);label("$\dfrac{a}{3}$",(1.5,0),S);label("$\dfrac{a}{3}$",(2.5,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Its diagonals through the centre divide the triangle into $9$ small equilateral triangles of side $\dfrac {a}{3}$, of which the hexagon contains $6$. So its area is $\dfrac{6}{9}\cdot24=16$.
+
+\textbf{No larger hexagon fits.} A regular hexagon of side $s$ contains its inscribed circle, of radius $\dfrac{\sqrt3}{2}s$. If the hexagon lies inside the triangle, so does that circle, and a circle inside a triangle has radius at most the triangle's inradius. Hence $\dfrac{\sqrt3}{2}s\le\dfrac{a}{2\sqrt3}$, that is $s\le\dfrac {a}{3}$. (The dashed circle in the figure is the incircle of both the triangle and the hexagon.)
+
+So the largest hexagon has side $\dfrac {a}{3}$ and area $\boxed{16}$ square units.

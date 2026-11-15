@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2611948_function_transformations
+% Stable identity: aops-topic-2611948-q01
+\textbf{(a)} If $q=f(p)$, then $g\left(\dfrac{p+4}{2}\right)=f(p+4-4)=f(p)=q$. Conversely, if $q=g(u)=f(2u-4)$, put $p=2u-4$; then $q=f(p)$ and $u=\dfrac{p+4}{2}$.
+
+\textbf{(b)} Shifting right by $4$ sends $(p,q)$ to $(p+4,q)$, and compressing by a factor of $2$ then gives $\left(\dfrac{p+4}{2},q\right)$, exactly the rule in (a). Compressing first gives $\left(\dfrac p2,q\right)$, and shifting right by $2$ gives $\left(\dfrac p2+2,q\right)=\left(\dfrac{p+4}{2},q\right)$, the same point.
+
+\textbf{(c)} Shifting right by $2$ and then compressing sends $(p,q)$ to $\left(\dfrac{p+2}{2},q\right)$. A point $(u,q)$ arises this way when $p=2u-2$, so this is the graph of $\boxed{y=f(2x-2)}$, not of $f(2x-4)$. This is why, after writing $f(2x-4)=f(2(x-2))$, the shift by $2$ must come \emph{after} the compression.
+
+\textbf{(d)} For $h(x)=3f(2x-4)+1$, the same argument shows that $(p,q)$ on the graph of $f$ corresponds to $\left(\dfrac{p+4}{2},\,3q+1\right)$ on the graph of $h$. The horizontal steps act only on the first coordinate and the vertical steps only on the second, so they can be interleaved, but within each pair the order matters. One correct order is
+\[\boxed{\text{shift right }4,\ \text{compress horizontally by }2,\ \text{stretch vertically by }3,\ \text{shift up }1.}\]
+(Shifting up by $1$ before stretching would give $3(q+1)=3q+3$ instead of $3q+1$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw((-0.5,0)--(5.2,0),Arrow(TeXHead)); draw((0,-0.4)--(0,2.8),Arrow(TeXHead));
+label("$x$",(5.2,0),E); label("$y$",(0,2.8),N);
+draw((0,0)--(2,2)--(4,0),gray(0.5)+linewidth(0.9)+dashed);
+draw((2,0)--(3,2)--(4,0),linewidth(1.1));
+for(int i=1;i<=4;++i){draw((i,-0.07)--(i,0.07)); label("$"+string(i)+"$",(i,0),S,fontsize(8pt));}
+dot((2,2),gray(0.5)); dot((3,2));
+draw((2.1,2.15)--(2.9,2.15),gray(0.3),Arrow(TeXHead));
+draw((-0.07,2)--(0.07,2)); label("$2$",(0,2),W,fontsize(8pt));
+label("$y=f(x)$",(0.2,2.45),E,gray(0.4)+fontsize(8pt)); label("$y=f(2x-4)$",(3.6,1.2),E,fontsize(8pt));
+\end{asy}
+
+In the sketch $f$ is a tent with peak $(2,2)$; the peak of $y=f(2x-4)$ is at $\left(\dfrac{2+4}{2},2\right)=(3,2)$.

@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2351170_geometry_equal_lengths_in_triangles
+% Stable identity: aops-topic-2351170-q01
+Extend $AC$ beyond $C$ to the point $F$ with $CF=CE$. (In the figure, the lines through $D$ and $C$ perpendicular to $AE$ are red.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), A=(0,4), B=(4,0);
+real d=1.5;
+pair D=(0,d), Ept=(d,0), F=(0,-d);
+pair u=unit(Ept-A), n=(u.y,-u.x);
+pair K=extension(C,C+n,A,B), L=extension(D,D+n,A,B);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--Ept,blue); draw(C--F,dashed); draw(B--F,red+dashed);
+draw(C--K,red); draw(D--L,red);
+pair M1=extension(C,K,A,Ept), M2=extension(D,L,A,Ept);
+real m=0.18;
+draw(M1+m*n--M1+m*n-m*u--M1-m*u); draw(M2+m*n--M2+m*n-m*u--M2-m*u);
+draw((m,0)--(m,m)--(0,m));
+dot(A); dot(B); dot(C); dot(D); dot(Ept); dot(F); dot(K); dot(L);
+label("$A$",A,N); label("$B$",B,E); label("$C$",C,W); label("$D$",D,W); label("$E$",Ept,S); label("$F$",F,W);
+label("$K$",K,NE); label("$L$",L,NE);
+\end{asy}
+
+\textbf{Step 1: $\angle CAE=\angle CBF$.} Triangles $ACE$ and $BCF$ have $AC=BC$, $CE=CF$ and right angles $\angle ACE=\angle BCF=90^\circ$, so they are congruent (SAS), and $\angle CAE=\angle CBF$.
+
+\textbf{Step 2: $CK\parallel BF$.} Since $CK\perp AE$, in the right triangle formed by $A$, $C$ and the foot of the perpendicular from $C$ to $AE$ we get $\angle ACK=90^\circ-\angle CAE$. Hence
+\[\angle KCB=90^\circ-\angle ACK=\angle CAE=\angle CBF.\]
+The points $K$ (on the same side of $BC$ as $A$) and $F$ (on the extension of $AC$ beyond $C$) lie on opposite sides of the line $BC$, so $\angle KCB$ and $\angle CBF$ are alternate angles for the lines $CK$ and $BF$ cut by $BC$. They are equal, so $CK\parallel BF$.
+
+\textbf{Step 3.} The lines $DL$ and $CK$ are both perpendicular to $AE$, so $DL\parallel CK\parallel BF$. These three parallel lines cut the line $AF$ at $D$, $C$, $F$ and the line $AB$ at $L$, $K$, $B$. Since $DC=CE=CF$, the intercept theorem gives $LK=KB$. $\blacksquare$

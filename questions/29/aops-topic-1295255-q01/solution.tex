@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1295255_geometry
+% Stable identity: aops-topic-1295255-q01
+The diagonals of a parallelogram bisect each other at a point $O$. The midpoint of $A'C'$ lies directly above the midpoint of $AC$, which is $O$, at height $\dfrac{68+112}{2}=90$; the midpoint of $B'D'$ lies directly above the midpoint of $BD$, also $O$, at height $\dfrac{75+133}{2}=104$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(8,3),D=(2,3),O=(A+C)/2;
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(A--C,gray+dashed); draw(B--D,gray+dashed);
+real s=0.035; pair A1=A+(0,68*s),B1=B+(0,75*s),C1=C+(0,112*s),D1=D+(0,133*s);
+draw(A--A1); draw(B--B1); draw(C--C1); draw(D--D1); draw(A1--C1,blue); draw(B1--D1,red);
+dot((A1+C1)/2,blue); dot((B1+D1)/2,red); dot(O);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,E); label("$D$",D,W); label("$A'$",A1,W); label("$C'$",C1,E); label("$B'$",B1,E); label("$D'$",D1,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the two midpoints are on the same vertical line, $\boxed{14}$ cm apart.

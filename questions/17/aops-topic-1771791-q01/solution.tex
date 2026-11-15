@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1771791_mock_sprint_26__ant_and_a_frustum
+% Stable identity: aops-topic-1771791-q01
+\textbf{Unroll the surface.} Complete the frustum to a cone with apex $O$. The slant heights to the two base circles are in the ratio of the radii, $2:4$, and differ by $3$, so they are $3$ and $6$. Cutting along a generator and unrolling, the lateral surface becomes the part of a sector of radius $6$ outside radius $3$. The arc of radius $6$ has length $2\pi\cdot4=8\pi$, so the sector angle is $\dfrac{8\pi}{6}=\dfrac{4\pi}{3}=240^\circ$.
+
+$A$ lies on the arc of radius $3$ and $B$ on the arc of radius $6$, half-way round the cone, so in the unrolled picture $\angle AOB=\dfrac{1}{2}\cdot240^\circ=120^\circ$ (either way round).
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+draw(arc(O,3,0,240),linewidth(0.9));draw(arc(O,6,0,240),linewidth(0.9));
+draw(3*dir(0)--6*dir(0),linewidth(0.9));draw(3*dir(240)--6*dir(240),linewidth(0.9));
+draw(O--3*dir(0),dotted);draw(O--3*dir(240),dotted);
+pair A=3*dir(60),B=6*dir(180),T=3*dir(120);
+draw(B--A,gray+dashed);
+draw(B--T,red+linewidth(1.1));draw(arc(O,3,60,120),red+linewidth(1.1));
+draw(O--T,dashed);draw(O--B,dashed);
+pair u=unit(B-T),v=unit(O-T);
+draw(T+0.35*u--T+0.35*u+0.35*v--T+0.35*v);
+dot(O);dot(A);dot(B);dot(T,red);
+label("$O$",O,dir(-60));label("$A$",A,NE);label("$B$",B,W);label("$T$",T,NW,red);
+label("$3$",O+1.5*dir(120)+0.25*dir(210),dir(210));
+label("$6$",(-4.3,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The straight segment is not allowed.} The segment $AB$ (gray, dashed) has its closest point to $O$ strictly between $A$ and $B$: with $OA=3$, $OB=6$ and $\angle AOB=120^\circ$, $AB^2=9+36+18=63$, and the distance from $O$ to line $AB$ is $\dfrac{2[OAB]}{AB}=\dfrac{3\cdot6\sin120^\circ}{\sqrt{63}}=\dfrac{9\sqrt3}{3\sqrt7}<3$. So that segment passes through radii less than $3$, i.e.\ over the small base, which the ant may not use.
+
+\textbf{The shortest allowed path.} Since the path must stay outside the circle of radius $3$, the shortest path from $B$ goes along the tangent from $B$ to that circle and then along the circle to $A$ (the shortest path around a convex obstacle hugs it). The tangent $BT$ has length $\sqrt{6^2-3^2}=3\sqrt3$, and $\angle BOT=\arccos\dfrac{3}{6}=60^\circ$, so the remaining arc $TA$ subtends $120^\circ-60^\circ=60^\circ$ and has length $3\cdot\dfrac{\pi}{3}=\pi$. On the frustum this arc runs along the rim of the small base.
+
+The minimum distance is $\boxed{3\sqrt3+\pi}$ cm. (Without the restriction, the answer would have been $\sqrt{63}=3\sqrt7$, which is shorter but crosses the top base.)

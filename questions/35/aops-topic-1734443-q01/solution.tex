@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1734443_geometry_questions_from_a_local_math_competition
+% Stable identity: aops-topic-1734443-q01
+Let the right angle be at $C$, with legs $CB=a$ and $CA=b$, and let $M$ and $K$ be the midpoints of $CB$ and $CA$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),B=(12,0),A=(0,8),M=(6,0),K=(0,4);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--M,blue+dashed);draw(B--K,blue+dashed);
+draw((0,0.7)--(0.7,0.7)--(0.7,0));
+draw((3,-0.25)--(3,0.25));draw((9,-0.25)--(9,0.25));
+draw((-0.25,2)--(0.25,2));draw((-0.25,6)--(0.25,6));
+label("$A$",A,N);label("$B$",B,E);label("$C$",C,SW);label("$M$",M,S);label("$K$",K,W);
+label("$10$",(3.9,4.6),blue);label("$4\sqrt{10}$",(6.6,2.5),blue+fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By Pythagoras in the right triangles $ACM$ and $BCK$,
+\[
+AM^2=b^2+\dfrac{a^2}{4}=100,\qquad BK^2=a^2+\dfrac{b^2}{4}=160 .
+\]
+Adding, $\dfrac{5}{4}(a^2+b^2)=260$, so $AB^2=a^2+b^2=208$ and $AB=\sqrt{208}=\boxed{4\sqrt{13}}$. (The legs are $a=12$ and $b=8$.)

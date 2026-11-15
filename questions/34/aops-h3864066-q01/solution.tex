@@ -1,0 +1,20 @@
+The base angles are $40^\circ$. Scale $AB=AC=1$, and put $B=(0,0)$ with $BC$ horizontal. Then $D=(1,0)$ and $A=(\cos40^\circ,\sin40^\circ)$. Since $\angle EBC=10^\circ$, the sine rule in $ABE$ gives
+\[
+BE=\dfrac{\sin100^\circ}{\sin50^\circ}=2\sin40^\circ.
+\]
+Thus $E=(2\sin40^\circ\cos10^\circ,2\sin40^\circ\sin10^\circ)$. The sine-difference identity gives
+\[
+2\sin40^\circ\cos10^\circ-1
+=2\sin10^\circ\cos40^\circ.
+\]
+Consequently
+\[
+E-D=2\sin10^\circ(\cos40^\circ,\sin40^\circ).
+\]
+The ray $DE$ makes an angle of $40^\circ$ with the positive horizontal ray $DC$, so $\boxed{\angle CDE=40^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair B=(0,0),A=dir(40),C=(2cos(40*pi/180),0),D=(1,0),E=2sin(40*pi/180)*dir(10);draw(A--B--C--cycle);draw(B--E,blue);draw(D--E,red);label("$A$",A,(0,1));label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,(0,-1));label("$E$",E,NE);
+\end{asy}

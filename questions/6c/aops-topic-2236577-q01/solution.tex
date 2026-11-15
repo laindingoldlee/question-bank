@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2236577_amamc_8_25_lgnreedes
+% Stable identity: aops-topic-2236577-q01
+By Legendre's formula, $a_n=\left\lfloor\dfrac {n}{2}\right\rfloor+\left\lfloor\dfrac {n}{4}\right\rfloor+\left\lfloor\dfrac {n}{8}\right\rfloor+\cdots$. So we add up $\displaystyle\sum_{n=1}^{100}\left\lfloor\dfrac{n}{2^i}\right\rfloor$ for each $i$:
+\begin{itemize}
+\item $i=1$: the values $0,1,1,2,2,\ldots,49,49,50$ add up to $2(1+2+\cdots+49)+50=2500$;
+\item $i=2$: each of $1,\ldots,24$ occurs $4$ times and $25$ once: $4\cdot300+25=1225$;
+\item $i=3$: each of $1,\ldots,11$ occurs $8$ times and $12$ five times: $8\cdot66+60=588$;
+\item $i=4$: each of $1,\ldots,5$ occurs $16$ times and $6$ five times: $16\cdot15+30=270$;
+\item $i=5$: $1$ occurs $32$ times, $2$ occurs $32$ times, $3$ five times: $32+64+15=111$;
+\item $i=6$: $1$ occurs for $n=64,\ldots,100$: $37$.
+\end{itemize}
+The total is $2500+1225+588+270+111+37=4731$, answer $\boxed{\textbf{(B) } 4731}$.
+
+(Check: $a_n=n-s_2(n)$, where $s_2(n)$ is the sum of the binary digits of $n$, and $\displaystyle\sum_{n=1}^{100}s_2(n)=319$, so the sum is $5050-319=4731$.)

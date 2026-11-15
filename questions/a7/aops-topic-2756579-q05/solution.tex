@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2756579_665th_and_669th_post_clown
+% Stable identity: aops-topic-2756579-q05
+Mass points: put mass $3$ at $A$ and $5$ at $B$ (balancing at $S$), and $5$ at $C$ (balancing $B$ at $R$). Then $R$ has mass $10$, so $\dfrac{AD}{DR}=\dfrac{10}3$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(8,0),A=(2,6);pair R=(B+C)/2,Sp=A+(B-A)*5/8;pair D=extension(A,R,C,Sp);fill(A--D--Sp--cycle,lightgray);draw(A--B--C--cycle);draw(A--R);draw(C--Sp);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$R$",R,S);label("$S$",Sp,W);label("$D$",D,NE);
+\end{asy}
+
+Now $[ABR]=\dfrac12[ABC]$ and $[ADS]=\dfrac{AD}{AR}\cdot\dfrac{AS}{AB}\cdot[ABR]=\dfrac{10}{13}\cdot\dfrac58\cdot\dfrac12[ABC]$. So
+\[\dfrac{[ADS]}{[ABC]}=\boxed{\dfrac{25}{104}}.\]

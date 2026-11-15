@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2241500_inequality
+% Stable identity: aops-topic-2241500-q01
+The inequality is symmetric, so assume $x\ge y\ge z$. Then
+\[x^{2009}\ge y^{2009}\ge z^{2009}\qquad\text{and}\qquad\dfrac{x}{y+z}\ge\dfrac{y}{z+x}\ge\dfrac{z}{x+y},\]
+the second because $\dfrac{x}{y+z}\ge\dfrac{y}{z+x}\iff x(z+x)\ge y(y+z)\iff (x-y)(x+y+z)\ge0$, and similarly for the other pair.
+
+\textbf{Step 1 (Chebyshev's sum inequality).} If $a_1\ge a_2\ge a_3$ and $b_1\ge b_2\ge b_3$, then
+\[3(a_1b_1+a_2b_2+a_3b_3)-(a_1+a_2+a_3)(b_1+b_2+b_3)=\sum_{i<j}(a_i-a_j)(b_i-b_j)\ge0,\]
+since every product has two factors of the same sign. With $a$'s the powers $x^{2009},y^{2009},z^{2009}$ and $b$'s the fractions above, the left side $L$ of the problem (note $\dfrac{x^{2010}}{y+z}=x^{2009}\cdot\dfrac{x}{y+z}$) satisfies
+\[L\ge\dfrac{1}{3}\left(x^{2009}+y^{2009}+z^{2009}\right)\left(\dfrac{x}{y+z}+\dfrac{y}{z+x}+\dfrac{z}{x+y}\right).\]
+
+\textbf{Step 2 (Nesbitt's inequality).} With $s=x+y+z$,
+\[\dfrac{x}{y+z}+\dfrac{y}{z+x}+\dfrac{z}{x+y}=s\left(\dfrac{1}{y+z}+\dfrac{1}{z+x}+\dfrac{1}{x+y}\right)-3\ge s\cdot\dfrac{9}{2s}-3=\dfrac{3}{2},\]
+using the Cauchy-Schwarz inequality $\left(u+v+w\right)\left(\dfrac{1}{u}+\dfrac{1}{v}+\dfrac{1}{w}\right)\ge9$ for $u=y+z$, $v=z+x$, $w=x+y$, whose sum is $2s$.
+
+Combining the two steps,
+\[L\ge\dfrac{1}{3}\left(x^{2009}+y^{2009}+z^{2009}\right)\cdot\dfrac{3}{2}=\dfrac{x^{2009}+y^{2009}+z^{2009}}{2},\]
+with equality when $x=y=z$. $\blacksquare$

@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1198188_a_circle_geometry_problem
+% Stable identity: aops-topic-1198188-q01
+$OB$ and $WL$ are both perpendicular to $m$, so $BOWL$ is a right trapezoid with parallel sides $8$ and $3$ and height $BL$. Since the circles are externally tangent, $OW=8+3=11$. Dropping a perpendicular from $W$ to $OB$ gives a right triangle with hypotenuse $11$ and leg $8-3=5$, so $BL=\sqrt{121-25}=\sqrt{96}=4\sqrt6$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real r1=8,r2=3; pair B=(0,0), L=(4*sqrt(6),0), O=(0,8), Wc=(4*sqrt(6),3);
+draw((-9,0)--(20,0)); draw(circle(O,r1)); draw(circle(Wc,r2)); filldraw(B--O--Wc--L--cycle,lightblue+opacity(0.5),blue);
+dot(B);dot(L);dot(O);dot(Wc); label("$B$",B,S); label("$L$",L,S); label("$O$",O,W); label("$W$",Wc,N); label("$8$",(0,4),W); label("$3$",(L+Wc)/2,E); label("$11$",(O+Wc)/2,NE); label("$m$",(20,0),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The area is $\dfrac{8+3}{2}\cdot4\sqrt6=\boxed{22\sqrt6}$.

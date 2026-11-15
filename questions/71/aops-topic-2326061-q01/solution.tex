@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2326061_halloween_teleportation
+% Stable identity: aops-topic-2326061-q01
+\textbf{(a)} By the triangle inequality, $AD\le AB+BC+CD=6$. Conversely, every distance $r$ with $0\le r\le6$ occurs: after the first two jumps, $AC$ can be any number from $2-1=1$ to $1+2=3$ (vary the angle at $B$). For $AC=c$, the distance $AD$ can be any number from $|3-c|$ to $3+c$; for $c=3$ this covers $[0,6]$. Since the directions are arbitrary, rotating the whole path about $A$ shows that every point at a distance $r\le6$ from $A$ is possible.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),3),linewidth(0.9)); draw(ellipse((0,0),3,0.8),dashed);
+pair A=(0,0), B=A+0.5*dir(30), C=B+1*dir(150), D=C+1.5*dir(20);
+draw(A--B--C--D,blue+linewidth(0.9),Arrow(5)); dot(A); dot(B); dot(C); dot(D);
+label("$A$",A,S); label("$B$",B,E); label("$C$",C,NW); label("$D$",D,E);
+draw(A--3*dir(-30),red,Arrow(5)); label("$6$",1.5*dir(-30),SW,red);
+\end{asy}
+
+So the possible positions fill the ball of radius $6$ about $A$, of volume
+\[\dfrac43\pi\cdot6^3=\boxed{288\pi}\approx904.8\text{ cubic meters}.\]
+
+\textbf{(b)} The radius is the total length $r=AB+BC+CD=6$, a sum of three independent measurements, so its uncertainty is
+\[\sigma=\sqrt{0.02^2+0.11^2+0.10^2}=\sqrt{0.0004+0.0121+0.0100}=\sqrt{0.0225}=0.15\text{ m}.\]
+The uncertainty of the volume is then about $4\pi r^2\sigma=4\pi\cdot36\cdot0.15=21.6\pi\approx67.9$ cubic meters. So the volume is
+\[\boxed{288\pi\pm21.6\pi\approx905\pm68\text{ cubic meters}}.\]
+(Under Gaussian propagation the uncertainties are not hard bounds: if the three intervals were taken as hard bounds, the set would be the ball of radius $6.23$.)

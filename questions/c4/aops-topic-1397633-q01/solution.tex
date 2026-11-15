@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1397633_made_up_math_problem
+% Stable identity: aops-topic-1397633-q01
+Count the page numbers for which each clue is the false one; these sets do not overlap. Write $D=\{2,3,\dots,9\}$ for the allowed digits.
+
+\textbf{Clue 1 false.} A one- or two-digit number with digits in $D$ in increasing order (clue 2 then holds automatically): $8$ one-digit numbers and $\binom{8}{2}=28$ two-digit ones, so $36$.
+
+\textbf{Clue 2 false.} A three-digit number above $296$ with three increasing digits from $D$. There are $\binom83=56$ such numbers in all; those starting with $2$ are at most $289$, and there are $\binom72=21$ of them. So $56-21=35$.
+
+\textbf{Clue 3 false.} A three-digit number at most $296$ with increasing digits, at least one of them $0$ or $1$. A $0$ cannot appear (it would have to be the first digit), so the first digit is $1$, followed by two increasing digits from $D$: $\binom82=28$.
+
+\textbf{Clue 4 false.} A three-digit number at most $296$ with digits in $D$ that are not strictly increasing. Numbers $\overline{2xy}\le296$ with $x,y\in D$: $7\cdot8=56$ with $x\le8$, plus $292,\dots,296$, so $61$; of these $21$ are increasing. So $61-21=40$.
+
+The total is $36+35+28+40=\boxed{139}$.

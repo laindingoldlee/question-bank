@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3579385_1434th_post
+% Stable identity: aops-topic-3579385-q10
+There are six independently selectable full lines, so there are $2^6$ choices. Only the choice of no lines leaves one piece; hence there are $\boxed{63}$ partitions. Distinct selections give distinct boundary sets. An interior meeting of several pieces can occur only at a crossing of a selected horizontal and selected vertical line; the crossing has four rectangular pieces around it, so no three-piece junction occurs.
+\begin{asy}
+import geometry;
+size(260);
+for(int i=0;i<=4;++i){draw((i,0)--(i,4),lightgray);draw((0,i)--(4,i),lightgray);}draw((0,0)--(4,0)--(4,4)--(0,4)--cycle);draw((1,0)--(1,4)^^(0,2)--(4,2),linewidth(1.2));label("$P$",(1,2),NE);label("$4$",(2,0),S);
+\end{asy}

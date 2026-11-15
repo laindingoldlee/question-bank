@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1560865_calculus_mathcounts_problem
+% Stable identity: aops-topic-1560865-q01
+Take a collection of positive integers with sum $20$ and the largest product; we show what it must look like.
+\begin{itemize}
+\item \textbf{No $1$s.} Merging a $1$ with any other part $m$ into $m+1$ keeps the sum and increases the product ($m+1>m\cdot1$). (A single part $20$ alone is not optimal either, by the next point.)
+\item \textbf{No part $m\ge5$.} Replacing $m$ by the two parts $2$ and $m-2$ keeps the sum and increases the product, since $2(m-2)=2m-4>m$ for $m\ge5$.
+\item \textbf{$4$ can be replaced by $2+2$} without changing the product, so we may assume there are no $4$s.
+\item \textbf{At most two $2$s.} Replacing $2+2+2$ by $3+3$ increases the product from $8$ to $9$.
+\end{itemize}
+So an optimal collection consists of $3$s and at most two $2$s. Since $20=3\cdot6+2$ and $20-2\cdot2=16$ is not a multiple of $3$, the only possibility is six $3$s and one $2$:
+\[
+\text{maximum product}=3^6\cdot2=\boxed{1458}.
+\]
+(The AM-GM inequality gives $p\le\left(\dfrac{20}{n}\right)^n$ for $n$ parts, but that bound is not attained by integers, so it still needs the argument above, or calculus, to finish; the exchange argument avoids both.)

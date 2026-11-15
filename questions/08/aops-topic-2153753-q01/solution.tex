@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2153753_invariant_area
+% Stable identity: aops-topic-2153753-q01
+Let $M_1,M_2,M_3,M_4$ be the midpoints of $AB$, $BC$, $CD$, $DA$. In triangle $APB$, the segment $PM_1$ is a median, and the centroid lies on it two thirds of the way from the vertex $P$:
+\[G_1=P+\dfrac{2}{3}\left(M_1-P\right).\]
+The same holds for the other three triangles, with $M_2$, $M_3$, $M_4$. So the homothety (dilation) with centre $P$ and ratio $\dfrac{2}{3}$ maps $M_1,M_2,M_3,M_4$ to $G_1,G_2,G_3,G_4$, and it maps the quadrilateral $M_1M_2M_3M_4$ onto $G_1G_2G_3G_4$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(6,0), C=(6,6), D=(0,6), P=(2.2,3.8);
+pair G1=(A+B+P)/3, G2=(B+C+P)/3, G3=(C+D+P)/3, G4=(D+A+P)/3;
+pair M1=(A+B)/2, M2=(B+C)/2, M3=(C+D)/2, M4=(D+A)/2;
+fill(G1--G2--G3--G4--cycle,paleblue);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(P--A,gray); draw(P--B,gray); draw(P--C,gray); draw(P--D,gray);
+draw(M1--M2--M3--M4--cycle,deepgreen+dashed);
+draw(P--M1,gray+dotted); draw(P--M2,gray+dotted); draw(P--M3,gray+dotted); draw(P--M4,gray+dotted);
+draw(G1--G2--G3--G4--cycle,blue+linewidth(1));
+dot(A); dot(B); dot(C); dot(D); dot(P,red);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW); label("$P$",P,dir(105),red);
+dot(G1,blue); dot(G2,blue); dot(G3,blue); dot(G4,blue);
+label("$G_1$",G1,S,blue); label("$G_2$",G2,E,blue); label("$G_3$",G3,NW,blue); label("$G_4$",G4,(1,0.7),blue);
+dot(M1,deepgreen); dot(M2,deepgreen); dot(M3,deepgreen); dot(M4,deepgreen);
+label("$M_1$",M1,S,deepgreen); label("$M_2$",M2,E,deepgreen); label("$M_3$",M3,N,deepgreen); label("$M_4$",M4,W,deepgreen);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The midpoint quadrilateral $M_1M_2M_3M_4$ of the square is a square whose diagonals $M_1M_3$ and $M_2M_4$ both have length $s$, so its area is $\dfrac{s\cdot s}{2}=\dfrac{s^2}{2}$. A homothety with ratio $\dfrac{2}{3}$ multiplies areas by $\dfrac{4}{9}$, so
+\[\left[G_1G_2G_3G_4\right]=\dfrac{4}{9}\cdot\dfrac{s^2}{2}=\boxed{\dfrac{2s^2}{9}},\]
+which does not depend on $P$. (In fact $G_1G_2G_3G_4$ is always a square of side $\dfrac{\sqrt2}{3}s$; for example $G_2-G_1=\dfrac{(B+C+P)-(A+B+P)}{3}=\dfrac{C-A}{3}$, so each side is parallel to a diagonal of $ABCD$ and one third as long.)

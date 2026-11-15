@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3181951_2022_abmc_online_december_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3181951-q14
+Label cube vertices by three binary coordinates; each step flips one coordinate. A walk returns exactly when all three flip counts are even. Parity filtering gives the count $\dfrac{(1+1+1)^{10}+3(1+1-1)^{10}+3(1-1-1)^{10}+(-1-1-1)^{10}}{8}=\dfrac{2\cdot3^{10}+6}{8}=\boxed{14763}$. Each of the $3^{10}$ walks is equally likely, so this is the requested numerator.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(3,0),C=(4,1),D=(1,1);draw(A--B--C--D--cycle);draw((A+(0,3))--(B+(0,3))--(C+(0,3))--(D+(0,3))--cycle);draw(A--(A+(0,3))^^B--(B+(0,3))^^C--(C+(0,3))^^D--(D+(0,3)));label("$000$",A,SW);label("$100$",B,SE);label("$010$",D,W);label("$001$",A+(0,3),NW);
+\end{asy}

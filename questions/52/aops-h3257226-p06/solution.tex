@@ -1,0 +1,9 @@
+There are $15$ diagonals in one direction, and at most one bishop may occupy each. The two extreme diagonals each consist of one corner square; those two corners lie on the same diagonal in the other direction, so both cannot be occupied. Therefore at most $14$ bishops are possible.
+
+Place bishops on all eight squares of the first row and on the six noncorner squares of the last row. Within a row no bishops attack. Between rows the vertical separation is $7$ while the horizontal separation is at most $6$, so there is no diagonal attack. Thus the maximum is $\boxed{14}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=0;x<8;++x)for(int y=0;y<8;++y){filldraw(box((x,y),(x+1,y+1)),(x+y)%2==0?white:lightgray);}for(int x=0;x<8;++x)label("B",(x+.5,.5));for(int x=1;x<7;++x)label("B",(x+.5,7.5));
+\end{asy}

@@ -1,0 +1,6 @@
+Enumerate tilings by always choosing the first uncovered unit cell and trying each L-triomino containing it. Reject overlaps and recurse until all 24 cells are covered. This produces exactly 18 tilings, without double-counting because the first uncovered cell determines the next tile. For each tiling form its adjacency graph and colour its eight vertices with three labelled colours, rejecting equal colours across an edge. The included exact enumeration gives four tilings with 18 colourings each, eight with 54, four with 162, and two with six. Thus the total is $4\cdot18+8\cdot54+4\cdot162+2\cdot6=\boxed{1164}$. The following is one admissible colouring; the computation audit includes the full reproducible enumeration.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+int[][] tiles={{0,6,7},{1,2,8},{3,9,10},{4,5,11},{12,18,19},{13,14,20},{15,21,22},{16,17,23}};int[] cols={1,2,0,1,2,0,1,2};pen[] pp={lightred,lightgreen,lightblue};for(int i=0;i<8;++i)for(int v:tiles[i])filldraw(box((v%6,floor(v/6)),(v%6+1,floor(v/6)+1)),pp[cols[i]],gray);draw(box((0,0),(6,4)),black+linewidth(1));
+\end{asy}
+

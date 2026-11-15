@@ -1,0 +1,6 @@
+Classify the equilateral triangles according to whether their horizontal side is at the bottom or top. Two triangles of the same orientation have at most two boundary intersections: their intersection is a triangle with those same three side directions. Oppositely oriented triangles have at most six. If $k$ point up and $6-k$ point down, the total is at most $2[\binom k2+\binom{6-k}2]+6k(6-k)=30+4k(6-k)\le66$. The bound is attained by three slightly translated upward triangles and three slightly translated downward triangles near a six-pointed-star configuration. Make the translations generic to avoid triple intersections. Hence the maximum is $\boxed{66}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+for(int i=0;i<3;++i){pair v=(.12*i,.04*i*i);draw(v+(-2,-1)--v+(2,-1)--v+(0,2*sqrt(3)-1)--cycle,blue);pair w=(.09*i,-.03*i*i);draw(w+(-2,1)--w+(2,1)--w+(0,1-2*sqrt(3))--cycle,red);}label("three of each orientation",(0,-3));
+\end{asy}
+

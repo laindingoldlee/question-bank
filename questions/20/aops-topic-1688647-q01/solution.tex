@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1688647_geometry
+% Stable identity: aops-topic-1688647-q01
+Let the rectangle be $ABCD$ with diagonal $AC=10$. Since $\angle ABC=90^\circ$, $B$ lies on the circle with diameter $AC$, whose centre is the midpoint $O$ of $AC$ and whose radius is $5$. Let $h$ be the distance from $B$ to $AC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);real R=5;
+pair A=R*dir(200),C=R*dir(20),B=R*dir(-45),D=R*dir(135);
+draw(circle(O,R),gray);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,linewidth(0.8));
+pair Ft=A+dot(B-A,unit(C-A))*unit(C-A);
+draw(B--Ft,dashed);
+real s=0.35;pair u=unit(C-A),v=unit(B-Ft);
+draw(Ft+s*u--Ft+s*u+s*v--Ft+s*v,linewidth(0.6));
+draw(O--B,blue+dotted);
+dot(O);
+label("$A$",A,W);label("$B$",B,S);label("$C$",C,E);label("$D$",D,N);label("$O$",O,N);
+label("$h$",(B+Ft)/2,E);label("$5$",(O+B)/2,SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The diagonal splits the rectangle into two congruent triangles, so
+\[
+[ABCD]=2[ABC]=2\cdot\dfrac{1}{2}\cdot AC\cdot h=10h .
+\]
+Since $h\le OB=5$, the area is at most $50$, with equality when $BO\perp AC$, i.e.\ when the rectangle is a square of side $5\sqrt2$. The largest area is $\boxed{50}$ square centimetres.
+
+(Algebraically: with sides $x,y$, $x^2+y^2=100$ and $xy\le\dfrac{x^2+y^2}{2}=50$.)

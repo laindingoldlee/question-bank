@@ -1,0 +1,7 @@
+Measure line directions modulo $180^\circ$. The internal bisector at $A$ has direction $\dfrac{A}{2}$ if $AB$ has direction zero. The internal bisector at $C$ has direction $-B-\dfrac{C}{2}$. Their difference is $\dfrac{A+C}{2}+B=180^\circ+\dfrac{B-D}{2}$, so their acute line angle is $\dfrac{|24-42|}{2}=9^\circ$. Replacing the bisector at A by its perpendicular exterior bisector makes the acute angle $90^\circ-9^\circ=\boxed{81^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(-1,0),B=(0,1/tan(12*pi/180)),C=(1,0),D=(0,-1/tan(21*pi/180));pair N=extension(A,A+dir(94.5),C,C+dir(175.5));draw(A--B--C--D--cycle);draw(A--N--C,blue);draw(A--(A+dir(4.5)),dashed);label("$A$",A,(-1,-1));label("$B:24^\circ$",B,(0,1));label("$C$",C,(1,0));label("$D:42^\circ$",D,(0,-1));label("$N$",N,(-1,1));
+\end{asy}

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2265832_5_geometry_problems
+% Stable identity: aops-topic-2265832-q03
+The prism has two bases that are equilateral triangles of side $\sqrt3$, and three lateral faces. The lateral edges have length $\sqrt3$ as well; we take the prism to be a right prism (lateral edges perpendicular to the bases), so the lateral faces are squares of side $\sqrt3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(1.732,0), C=(0.866,1.5), v=(1.1,0.75);
+pair Ap=A+v, Bp=B+v, Cp=C+v;
+fill(A--B--C--cycle,paleblue);
+draw(A--B--C--cycle,linewidth(0.9)); draw(Bp--Cp,linewidth(0.9));
+draw(A--Ap,dashed); draw(B--Bp,linewidth(0.9)); draw(C--Cp,linewidth(0.9));
+draw(Ap--Bp,dashed); draw(Ap--Cp,dashed);
+label("$\sqrt3$",(A+B)/2,S); label("$\sqrt3$",(B+Bp)/2,SE); label("$\sqrt3$",(A+C)/2,W);
+\end{asy}
+
+An equilateral triangle of side $s=\sqrt3$ has area $\dfrac{\sqrt3}{4}s^2=\dfrac{3\sqrt3}{4}$, and each square has area $3$. So the surface area is
+\[2\cdot\dfrac{3\sqrt3}{4}+3\cdot3=\boxed{9+\dfrac{3\sqrt3}{2}},\]
+and the volume is (base area)$\times$(height)
+\[\dfrac{3\sqrt3}{4}\cdot\sqrt3=\boxed{\dfrac{9}{4}}.\]

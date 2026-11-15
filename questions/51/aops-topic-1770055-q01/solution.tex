@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1770055_math_problem_5
+% Stable identity: aops-topic-1770055-q01
+Let $E_0$, $E_1$, $E_2$ be the expected number of further rolls when the current run of consecutive $5$'s has length $0$, $1$, $2$. Each roll is a $5$ with probability $\dfrac16$, and any other result resets the run:
+\begin{align*}
+E_0&=1+\dfrac16E_1+\dfrac56E_0,\\
+E_1&=1+\dfrac16E_2+\dfrac56E_0,\\
+E_2&=1+\dfrac16\cdot0+\dfrac56E_0.
+\end{align*}
+The first equation gives $E_0=6+E_1$. Substituting $E_2$ into the second, $E_1=1+\dfrac16+\dfrac{5}{36}E_0+\dfrac56E_0=\dfrac76+\dfrac{35}{36}E_0$. Then
+\[E_0=6+\dfrac76+\dfrac{35}{36}E_0\implies\dfrac{1}{36}E_0=\dfrac{43}{6}\implies E_0=\boxed{258}.\]
+(In general the answer is $6+6^2+6^3$.)

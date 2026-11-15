@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2726081_thanksgiving_problems
+% Stable identity: aops-topic-2726081-q07
+Let the side be $s$, the diagonals $d_1,d_2$ and the radius $r$. The area of the rhombus is $\dfrac{d_1d_2}{2}$. Since the circle touches all four sides, splitting the rhombus into four triangles from the centre gives area $\dfrac12r\cdot4s=2rs$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(-1.6,0),B=(0,-1.25),C=(1.6,0),D=(0,1.25);
+draw(A--B--C--D--cycle,linewidth(0.8));draw(A--C,dashed);draw(B--D,dashed);
+real r=1.6*1.25/abs(A-D);draw(circle((0,0),r),gray);
+pair T=r*dir(degrees(D-A)+90);draw((0,0)--T,linewidth(0.6));label("$r$",T/2,NE,fontsize(7pt));
+\end{asy}
+
+Given $4s=d_1d_2$, the area is $\dfrac{4s}{2}=2s$, so $2rs=2s$ and $r=\boxed{1}$.

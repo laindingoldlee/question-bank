@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2694339_modular_arithmetic
+% Stable identity: aops-topic-2694339-q01
+Expand: $\overline{AB}\cdot\overline{BA}=(10A+B)(10B+A)=10A^2+101AB+10B^2=10(A+B)^2+81AB$. Write $s=A+B$ and $p=AB$. Since $81\equiv-6\pmod{29}$, the condition is
+\[10s^2-6p\equiv1\pmod{29}.\]
+As $6\cdot5=30\equiv1$, multiplying by $5$ gives $p\equiv50s^2-5\equiv21s^2-5\pmod{29}$.
+
+Now $2\le s\le18$, and for each $s$ the possible products are $a(s-a)$ for digits $1\le a\le9$, $1\le s-a\le9$. The required residues $21s^2-5\bmod29$ for $s=2,3,\ldots,18$ are
+\[21,10,12,27,26,9,5,14,7,13,3,6,22,22,6,3,13.\]
+Comparing with the possible products reduced mod $29$:
+\begin{itemize}
+\item $s=9$: products $8,14,18,20$; the residue $14$ occurs for $\{A,B\}=\{2,7\}$.
+\item $s=12$: products $27,32\equiv3,35\equiv6,36\equiv7$; the residue $3$ occurs for $\{A,B\}=\{4,8\}$.
+\item $s=16$: products $63\equiv5,64\equiv6$; the residue $6$ occurs for $A=B=8$.
+\item For every other $s$ none of the (at most five) products matches; for instance $s=13$ needs $6$ but the products are $36\equiv7,40\equiv11,42\equiv13$.
+\end{itemize}
+So the solutions are
+\[\boxed{(A,B)=(2,7),\ (7,2),\ (4,8),\ (8,4),\ (8,8)},\]
+i.e. $27\cdot72$, $48\cdot84$ and $88\cdot88$. (Check: $27\cdot72=1944=67\cdot29+1$.)

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3180086_2018_abmc_online_october_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3180086-q15
+Place the octahedron vertices on coordinate axes at distance $h=\dfrac{3}{\sqrt2}$ from the centre. The face plane $x+y+z=h$ shows the inradius is $r=\dfrac{h}{\sqrt3}=\dfrac{\sqrt6}{2}$. The smaller sphere's centre lies on the axis to the selected vertex; write its distance from the origin as $z$. Its radius is $\rho=\dfrac{h-z}{\sqrt3}$, and external tangency gives $z=r+\rho$. Therefore $(\sqrt3+1)\rho=h-r=(\sqrt3-1)r$, so $\rho=(2-\sqrt3)r=\dfrac{\sqrt{24}-\sqrt{18}}{2}$. This positive radius places the sphere inside all eight face half-spaces. Thus $\boxed{a+b+c=44}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real h=3/sqrt(2),r=sqrt(6)/2,rho=(2-sqrt(3))*r,z=r+rho;draw((0,h)--(h/sqrt(2),0)--(0,-h)--(-h/sqrt(2),0)--cycle);draw(circle((0,0),r)^^circle((0,z),rho));draw((0,0)--(0,h),dashed);label("$O$",(0,0),SW);label("$V$",(0,h),N);label("$r$",(-r/2,0),N);label("$\rho$",(rho,z),E);label("axis and face-normal cross-section",(0,-h-.5));
+\end{asy}

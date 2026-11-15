@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2593999_appetizer
+% Stable identity: aops-topic-2593999-q01
+\textbf{At most $4$ solutions, unless infinitely many.} The second equation says $y=Ex^2+Fx-G$, so every solution is determined by its $x$-value. Substituting into the first equation gives
+\[Q(x)=Ax^2+Bx+A\left(Ex^2+Fx-G\right)^2+C\left(Ex^2+Fx-G\right)-D=0,\]
+a polynomial equation of degree at most $4$. If $Q$ is the zero polynomial, every real $x$ gives a solution, so there are infinitely many. Otherwise $Q$ has at most $4$ real roots, and the number of solutions is the number of distinct real roots of $Q$. Hence a finite number of solutions is at most $4$.
+
+\textbf{Every $k$ from $0$ to $4$ occurs.} Take $E=1$, $F=G=0$ (the parabola $y=x^2$):
+\begin{itemize}
+\item $k=0$: $A=B=C=0$, $D=1$ (the first equation reads $0=1$).
+\item $k=1$: $A=B=0$, $C=1$, $D=0$, i.e. $y=0$; then $x^2=0$ gives only $(0,0)$.
+\item $k=2$: $A=B=0$, $C=1$, $D=1$, i.e. $y=1$, giving $(\pm1,1)$.
+\item $k=3$: $A=1$, $B=0$, $C=-2$, $D=0$, the circle $x^2+(y-1)^2=1$. With $x^2=y$ it becomes $y^2-y=0$, so $y=0$ or $y=1$, giving $(0,0)$ and $(\pm1,1)$.
+\item $k=4$: $A=1$, $B=0$, $C=-4$, $D=-2$, the circle $x^2+(y-2)^2=2$. With $x^2=y$ it becomes $y^2-3y+2=0$, so $y=1$ or $y=2$, giving $(\pm1,1)$ and $\left(\pm\sqrt2,2\right)$.
+\end{itemize}
+So $\mathcal S=\{0,1,2,3,4\}$ and the sum is $\boxed{10}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return x^2;}
+draw(graph(f,-1.75,1.75),linewidth(0.8));
+draw(circle((0,1),1),blue+linewidth(0.7));
+draw(circle((0,2),sqrt(2)),red+dashed);
+draw((-2.2,0)--(2.2,0),gray,Arrow);draw((0,-0.3)--(0,3.6),gray,Arrow);
+dot((0,0),blue);dot((1,1),blue);dot((-1,1),blue);
+dot((1,1),red);dot((-1,1),red);dot((sqrt(2),2),red);dot((-sqrt(2),2),red);
+label("$y=x^2$",(1.75,3.06),E);label("$x$",(2.2,0),E);label("$y$",(0,3.6),N);
+\end{asy}
+
+The parabola $y=x^2$ with the circle $x^2+(y-1)^2=1$ (three common points) and the dashed circle $x^2+(y-2)^2=2$ (four common points).

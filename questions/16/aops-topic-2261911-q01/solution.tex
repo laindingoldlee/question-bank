@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2261911_finding_the_perimeter_of_optimus_prime
+% Stable identity: aops-topic-2261911-q01
+\textbf{Side lengths.} Triangle $OBP$ is a right isosceles triangle with legs $7$, so $OP=7\sqrt2$, and the square $OPXS'$ has side $7\sqrt2$. Then $PT=TX=XU=US'=\dfrac{7\sqrt2}{2}$. Triangle $TXU$ is right isosceles (the angle at $X$ is a corner of the square) with legs $\dfrac{7\sqrt2}{2}$, so $TU=\dfrac{7\sqrt2}{2}\cdot\sqrt2=7$, and the square $UTIM$ has side $7$.
+
+\textbf{The heptagon.} Its sides are
+\[OP=7\sqrt2,\quad PT=\dfrac{7\sqrt2}{2},\quad TI=IM=MU=7,\quad US'=\dfrac{7\sqrt2}{2},\quad S'O=7\sqrt2.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair A=(0,14), B=(14,14), C=(14,0), D=(0,0);
+pair O=(7,14), P=(14,7), X=(21,14), S1=(14,21), T=(17.5,10.5), U=(17.5,17.5), I=(24.5,10.5), M=(24.5,17.5);
+fill(O--P--T--I--M--U--S1--cycle,paleyellow);
+draw(A--B--C--D--cycle,gray);
+draw(O--P--X--S1--cycle,dashed);
+draw(U--T--I--M--cycle,dashed);
+draw(O--P--T--I--M--U--S1--cycle,red+linewidth(1.2));
+dot(O);dot(P);dot(T);dot(I);dot(M);dot(U);dot(S1);dot(X);
+label("$A$",A,W); label("$B$",B,NW); label("$C$",C,SE); label("$D$",D,SW);
+label("$O$",O,NW); label("$P$",P,SE); label("$X$",X,E); label("$S'$",S1,N);
+label("$T$",T,SE); label("$U$",U,N); label("$I$",I,SE); label("$M$",M,NE);
+label("$14$",(D+C)/2,S); label("$7\sqrt2$",(O+P)/2,SW,red); label("$7$",(T+I)/2,S,red); label("$7$",(I+M)/2,E,red); label("$7$",(M+U)/2,N,red);
+\end{asy}
+
+The perimeter is
+\[7\sqrt2+\dfrac{7\sqrt2}{2}+7+7+7+\dfrac{7\sqrt2}{2}+7\sqrt2=\boxed{21+21\sqrt2}.\]
+(In coordinates: $A=(0,14)$, $B=(14,14)$, $C=(14,0)$, $D=(0,0)$ give $O=(7,14)$, $P=(14,7)$, $X=(21,14)$, $S'=(14,21)$, $T=\left(\dfrac{35}{2},\dfrac{21}{2}\right)$, $U=\left(\dfrac{35}{2},\dfrac{35}{2}\right)$, $I=\left(\dfrac{49}{2},\dfrac{21}{2}\right)$, $M=\left(\dfrac{49}{2},\dfrac{35}{2}\right)$, and the heptagon is simple.)

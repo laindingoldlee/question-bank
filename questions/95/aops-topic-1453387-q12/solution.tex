@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1453387_algebra_question
+% Stable identity: aops-topic-1453387-q12
+Moving a graph $k$ units up adds $k$ to the function; moving it $h$ units right replaces $x$ by $x-h$ (a point $(x_0,y_0)$ moves to $(x_0+h,y_0)$, and $(x_0+h)-h=x_0$).
+\begin{enumerate}
+\item[1.] $\boxed{y=x^2+3}$.
+\item[2.] $\boxed{y=(x+5)^2}$.
+\item[3.] $\boxed{y=(x-5)^2-4}$.
+\end{enumerate}
+In each panel of the figure the dashed grey curve is $y=x^2$ and the coloured curve is the moved graph, with its vertex marked.
+\begin{asy}
+usepackage("amsmath");
+size(11cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f0(real x){return x^2;} real f1(real x){return x^2+3;}
+real f2(real x){return (x+5)^2;} real f3(real x){return (x-5)^2-4;}
+void panel(pair o, real a, real b, real g(real), real lo, real hi, pen p, pair v, string vl, pair vdir, string cap){
+  draw(shift(o)*((a,0)--(b,0)),Arrow(4)); draw(shift(o)*((0,-5)--(0,10)),Arrow(4));
+  draw(shift(o)*graph(f0,-sqrt(9),sqrt(9)),gray+dashed);
+  draw(shift(o)*graph(g,lo,hi),p+linewidth(1));
+  dot(o+v,p); label(vl,o+v+(vdir==E ? (1.7,0) : (0,0)),vdir,p);
+  label(cap,o+((a+b)/2,-7.8));
+}
+panel((0,0),-4,4,f1,-sqrt(6),sqrt(6),blue,(0,3),"$(0,3)$",E,"1. $y=x^2+3$");
+panel((16,0),-9,3,f2,-5-sqrt(9),-5+sqrt(9),red,(-5,0),"$(-5,0)$",S,"2. $y=(x+5)^2$");
+panel((25,0),-3,10,f3,5-sqrt(13),5+sqrt(13),deepgreen,(5,-4),"$(5,-4)$",S,"3. $y=(x-5)^2-4$");
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

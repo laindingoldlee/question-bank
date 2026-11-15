@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1969297_mathcounts_problem
+% Stable identity: aops-topic-1969297-q02
+\textbf{(a)} Assume $\gcd(a,b)=1$ (and $a,b\ge2$; if $a=1$ or $b=1$ every total can be scored and $ab-a-b=-1$ is consistent with this).
+
+\emph{Every $T>ab-a-b$ can be scored.} The numbers $0,b,2b,\dots,(a-1)b$ have different remainders mod $a$ (if $ib\equiv jb$ then $a\mid (i-j)b$, so $a\mid i-j$). So there is a unique $y\in\{0,1,\dots,a-1\}$ with $by\equiv T\pmod a$. Then $T-by$ is a multiple of $a$, and
+\[
+T-by\ \ge\ T-b(a-1)\ >\ ab-a-b-ab+b=-a .
+\]
+A multiple of $a$ greater than $-a$ is nonnegative, so $T-by=ax$ with $x\ge0$, and $T=ax+by$.
+
+\emph{$ab-a-b$ cannot be scored.} Suppose $ab-a-b=ax+by$ with $x,y\ge0$. Then $ab=a(x+1)+b(y+1)$. Reducing mod $a$, $a\mid b(y+1)$, so $a\mid y+1$; similarly $b\mid x+1$. Hence $x+1\ge b$ and $y+1\ge a$, which gives $a(x+1)+b(y+1)\ge2ab>ab$, a contradiction.
+
+So the greatest total that cannot be scored is $\boxed{ab-a-b}$.
+
+\textbf{(b)} If $d=\gcd(a,b)>1$, every score $ax+by$ is a multiple of $d$, so no total that is not a multiple of $d$ can be scored. There are arbitrarily large such totals, so there is no greatest unscorable total. (Among the multiples of $d$, the answer is $d$ times the answer for $\dfrac {a}{d},\dfrac {b}{d}$.)

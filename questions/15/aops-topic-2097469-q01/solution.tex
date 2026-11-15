@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2097469_more_geometry
+% Stable identity: aops-topic-2097469-q01
+Let $O_1$, $O_2$, $O_3$ be the centres. The centres $O_1$ and $O_2$ are both at distance $r$ from $L$, so $O_1O_2$ is parallel to $L$; let $K$ be its midpoint.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real r=1.5, x=4, s=1.2;
+pair O1=(-x/2,r), O2=(x/2,r), K=(0,r);
+real k=sqrt((r+s)^2-(x/2)^2);
+pair O3=(0,r+k);
+draw((-4.4,0)--(4.4,0),linewidth(0.9)); label("$L$",(4.4,0),E);
+draw(circle(O1,r)); draw(circle(O2,r)); draw(circle(O3,s),blue);
+draw(O1--O2,gray); draw(O1--O3--O2,red); draw(O3--K,dashed);
+draw((3.9,0)--(3.9,O3.y),deepgreen,Arrows(TeXHead)); draw(O3--(3.9,O3.y),deepgreen+dotted);
+label("$h$",(3.9,O3.y/2),E,deepgreen);
+draw(O1--(O1.x,0),gray+dashed); label("$r$",(O1.x,r/2),W,fontsize(8pt));
+dot(O1); dot(O2); dot(O3); dot(K);
+label("$O_1$",O1,NW); label("$O_2$",O2,NE); label("$O_3$",O3,N); label("$K$",K,S);
+label("$r+s$",(O1+O3)/2,NW,red+fontsize(8pt)); label("$\dfrac{x}{2}$",(O1+K)/2,S,fontsize(8pt));
+label("$C_1$",O1+r*dir(140),NW,fontsize(8pt)); label("$C_2$",O2+r*dir(40),NE,fontsize(8pt)); label("$C_3$",O3+s*dir(40),NE,blue+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+External tangency gives $O_3O_1=O_3O_2=r+s$, so $O_3$ lies on the perpendicular bisector of $O_1O_2$, which passes through $K$ and is perpendicular to $L$. In the right triangle $O_1KO_3$, $O_1K=\dfrac {x}{2}$, so
+\[O_3K=\sqrt{(r+s)^2-\dfrac{x^2}{4}} .\]
+Since $O_3$ is on the far side of $O_1O_2$ from $L$, and $K$ is at distance $r$ from $L$,
+\[h=\boxed{r+\sqrt{(r+s)^2-\dfrac{x^2}{4}}}=r+\dfrac{1}{2}\sqrt{4(r+s)^2-x^2}.\]
+(If instead $C_3$ lay between the line $O_1O_2$ and $L$, the same computation would give $h=r-\sqrt{(r+s)^2-\dfrac{x^2}{4}}$.)

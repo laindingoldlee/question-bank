@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2236966_peace09s_1111th_post
+% Stable identity: aops-topic-2236966-q01
+\textbf{The gaps.}
+\begin{enumerate}
+\item[(1)] \emph{Existence of the roots.} Vieta's formulas rest on the factorisation $ax^2+bx+c=a(x-r)(x-s)$, i.e. on the existence of the roots, which is part of what the quadratic formula asserts. As written, the argument only shows: \emph{if} the roots exist, they must be the two given numbers. It must be completed by checking that these numbers really are roots.
+\item[(2)] $\sqrt{(r-s)^2}=|r-s|$, which equals $r-s$ only when $r\ge s$.
+\item[(3)] $\sqrt{\dfrac{1}{a^2}}=\dfrac1{|a|}$, so the last step is wrong when $a<0$.
+\item[(4)] If $b^2-4ac<0$, the roots are not real, and ``$\sqrt{(r-s)^2}$'' of a negative number needs a meaning; it must be read as a complex square root.
+\end{enumerate}
+
+\textbf{A corrected proof.} Let $\Delta=b^2-4ac$ and let $\delta$ be a number with $\delta^2=\Delta$ (namely $\delta=\sqrt\Delta$ if $\Delta\ge0$ and $\delta=i\sqrt{-\Delta}$ if $\Delta<0$). Put
+\[r=\dfrac{-b+\delta}{2a},\qquad s=\dfrac{-b-\delta}{2a}.\]
+Then
+\[r+s=-\dfrac ba,\qquad rs=\dfrac{b^2-\delta^2}{4a^2}=\dfrac{4ac}{4a^2}=\dfrac ca,\]
+so
+\[a(x-r)(x-s)=a\left(x^2-(r+s)x+rs\right)=ax^2+bx+c.\]
+A product is zero exactly when one of its factors is zero, so the solutions of $ax^2+bx+c=0$ are exactly $x=r$ and $x=s$, i.e.
+\[\boxed{x=\dfrac{-b\pm\sqrt{b^2-4ac}}{2a}}.\]
+(The student's computation is still a good way to \emph{discover} the formula: it shows $(r-s)^2=\dfrac{\Delta}{a^2}$, so $r-s=\pm\dfrac{\delta}{a}$, and swapping the names $r$, $s$ if necessary gives the $+$ sign; this deals with gaps (2)--(4), and the check above deals with gap (1).) $\blacksquare$

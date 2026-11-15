@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1883617_p_1p_2_and_p_3_are_hexagons_and_there_are_triangles_and_right_triangles
+% Stable identity: aops-topic-1883617-q01
+A regular hexagon of side $s$ consists of six equilateral triangles of side $s$, so its area is $\dfrac{3\sqrt3}{2}s^2$: a fixed constant times $s^2$. Hence
+\[
+[P_3]=\dfrac{3\sqrt3}{2}CA^2=\dfrac{3\sqrt3}{2}\left(AB^2+BC^2\right)=[P_1]+[P_2]
+\]
+by the Pythagorean theorem. So $[P_3]=16+36=\boxed{52}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+path hexon(pair P,pair Q){pair d=Q-P;pair[] v={P,Q};for(int i=2;i<6;++i){d=rotate(-60)*d;v.push(v[i-1]+d);}return v[0]--v[1]--v[2]--v[3]--v[4]--v[5]--cycle;}
+pair B=(0,0),C=(3,0),A=(0,2);
+path h1=hexon(A,B),h2=hexon(B,C),h3=hexon(C,A);
+fill(h1,rgb(0.85,0.92,1));fill(h2,rgb(1,0.9,0.8));fill(h3,rgb(0.88,0.95,0.88));
+draw(h1);draw(h2);draw(h3);
+draw(A--B--C--cycle,linewidth(1));
+draw((0.3,0)--(0.3,0.3)--(0,0.3));
+label("$A$",(0.25,1.35),fontsize(8pt));label("$B$",(0.55,0.5),fontsize(8pt));label("$C$",(2.2,0.25),fontsize(8pt));
+pair c1=(A+B)/2+(-sqrt(3),0),c2=(B+C)/2+(0,-1.5*sqrt(3)),c3=(A+C)/2+unit((2,3))*sqrt(3)/2*sqrt(13);
+label("$P_1$",c1);label("$P_2$",c2);label("$P_3$",c3);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The figure is drawn with $AB:BC=4:6$, matching the areas $16$ and $36$.)

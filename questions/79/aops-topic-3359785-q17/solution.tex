@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3359785_400th_post_problems
+% Stable identity: aops-topic-3359785-q17
+Use $B=(0,0)$, $C=(14,0)$, $A=(5,12)$. At an interior minimizer, the weighted unit vectors toward $A,B,C$ sum to zero. Since the weights toward $B,C$ are equal, $XA$ is opposite their internal angle bisector and $\cos\angle BXC=\dfrac{7^2-5^2-5^2}{2\cdot5\cdot5}=-\dfrac{1}{50}$. Put $s=\sqrt{51}$. The circle through $B,C$ on whose upper arc this angle occurs has centre $O=(7,-\dfrac{1}{s})$ and radius $\dfrac{50}{s}$. Its lower arc midpoint is $Y=(7,-s)$. The internal bisector from $X$ passes through $Y$, so $A,X,Y$ are collinear. Write $X=Y+t(A-Y)$. Intersecting this line with the circle, excluding $Y$, gives\[t=\dfrac{100(12+s)}{s(199+24s)},\qquad X=(7-2t,-s+t(12+s))\approx(5.552712,6.710152).\]This point is inside $ABC$ and its unit vectors satisfy the stated equilibrium. The weighted sum of distances is a convex function, so equilibrium certifies a global minimum; strict convexity for three noncollinear fixed vertices gives uniqueness. Let $b=|X-C|$ and $c=|X-B|$. The incenter formula for $XBC$ gives\[I=\dfrac{14X+bB+cC}{14+b+c}\approx(5.960803,2.804428).\]Thus $AI\approx9.245630$. For a check sufficient for rounding, substituting $7.1414284285<s<7.1414284286$ in the exact formulas gives $9.2455<AI<9.2458$, entirely between $8.5$ and $9.5$. Therefore the requested integer is $\boxed9$. 
+\begin{asy}
+usepackage("amsmath");
+import geometry;
+size(260);
+real s=sqrt(51),t=100*(12+s)/(s*(199+24*s));pair B=(0,0),C=(14,0),A=(5,12),Y=(7,-s),O=(7,-1/s),X=Y+t*(A-Y);real b=abs(X-C),c=abs(X-B);pair I=(14*X+b*B+c*C)/(14+b+c);draw(A--B--C--cycle);draw(circle(O,50/s),gray);draw(X--B^^X--C);draw(A--Y^^A--I,dashed);dot(I);label("$A$",A,N);label("$B$",B,W);label("$C$",C,E);label("$X$",X,NW);label("$I$",I,W);label("$Y$",Y,S);label("$O$",O,E);
+\end{asy}

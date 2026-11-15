@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2142056_i_cant_solve_this
+% Stable identity: aops-topic-2142056-q01
+\textbf{(a)} Write $P_k=1\cdot3\cdot5\cdots(2k+1)$, so $P_0=1$ and $P_k=(2k+1)P_{k-1}$. For $n\ge0$ let
+\[y_n=\dfrac{1}{P_n}-\dfrac{1}{P_{n+1}}+\dfrac{1}{P_{n+2}}-\cdots .\]
+The terms decrease to $0$, so this alternating series converges, and its value lies between any two consecutive partial sums; in particular
+\[\dfrac{1}{P_n}-\dfrac{1}{P_{n+1}}\le y_n\le\dfrac{1}{P_n},\]
+so $y_n>0$. Also $y_0=S$.
+
+\textbf{Step 1: a recurrence.} Adding the series for $y_n$ and $y_{n+1}$, everything after the first term cancels:
+\[y_n+y_{n+1}=\dfrac{1}{P_n}.\]
+Hence, for $n\ge1$,
+\[y_{n-1}=\dfrac{1}{P_{n-1}}-y_n=\dfrac{2n+1}{P_n}-y_n=(2n+1)\left(y_n+y_{n+1}\right)-y_n=2n\,y_n+(2n+1)\,y_{n+1}.\]
+Dividing by $y_n$ and writing $r_n=\dfrac{y_{n-1}}{y_n}>0$,
+\[r_n=2n+\dfrac{2n+1}{r_{n+1}}\qquad(n\ge1).\]
+
+\textbf{Step 2: the exact value, with a tail.} For $u\ge0$ let $T_N(u)$ be the continued fraction $x_N$ with its last denominator $2N$ replaced by $2N+u$, so that $T_N(0)=x_N$. Using the recurrence for $n=1,2,\dots,N$ in turn,
+\[\dfrac{y_1}{y_0}=\dfrac{1}{r_1}=\dfrac{1}{2+\dfrac{3}{r_2}}=\dfrac{1}{2+\dfrac{3}{4+\dfrac{5}{r_3}}}=\cdots=T_N(u_N),\qquad\text{where } u_N=\dfrac{2N+1}{r_{N+1}}=\dfrac{(2N+1)\,y_{N+1}}{y_N}.\]
+By the bounds above, $y_{N+1}\le\dfrac{1}{P_{N+1}}$ and $y_N\ge\dfrac{1}{P_N}-\dfrac{1}{P_{N+1}}=\dfrac{2N+2}{P_{N+1}}$, so $0<u_N\le\dfrac{2N+1}{2N+2}<1$.
+
+\textbf{Step 3: the tail hardly matters.} For $a,b>0$ and $w,w'\ge0$,
+\[\left|\dfrac{a}{b+w}-\dfrac{a}{b+w'}\right|=\dfrac{a\,|w-w'|}{(b+w)(b+w')}\le\dfrac{a}{b^2}\,|w-w'| .\]
+The number $T_N(u)$ is obtained from $u$ by applying in turn the maps $w\mapsto\dfrac{2k-1}{2k+w}$ for $k=N,N-1,\dots,1$, and all the intermediate values are nonnegative. Hence
+\[\left|T_N(u_N)-T_N(0)\right|\le u_N\prod_{k=1}^{N}\dfrac{2k-1}{(2k)^2}<\prod_{k=1}^{N}\dfrac{1}{2k}=\dfrac{1}{2^N N!}.\]
+So $\left|x_N-\dfrac{y_1}{y_0}\right|<\dfrac{1}{2^NN!}$, which tends to $0$. Therefore the limit $X$ exists and $X=\dfrac{y_1}{y_0}$. Finally $y_0+y_1=\dfrac{1}{P_0}=1$ and $y_0=S$, so
+\[X=\dfrac{1-S}{S}=\boxed{\dfrac{1}{S}-1}.\qquad\blacksquare\]
+
+\textbf{(b)} The partial sums of $S$ are
+\[1,\ 0.666667,\ 0.733333,\ 0.723810,\ 0.724868,\ 0.724772,\ 0.724779,\ 0.72477843,\ 0.72477846,\ \dots\]
+(the terms are $\dfrac{1}{P_k}$ with $P_k=1,3,15,105,945,10395,135135,2027025,34459425,\dots$). Consecutive partial sums enclose $S$, so the eighth and ninth partial sums give $0.72477843<S<0.72477847$. Hence $0.3797319<\dfrac{1}{S}-1<0.3797321$, and
+\[X=\dfrac{1}{S}-1\approx\boxed{0.3797}.\]
+(For comparison, $x_6\approx0.3797311$ is already within $10^{-6}$ of $X\approx0.3797320$, well inside the bound $\dfrac{1}{2^6\,6!}\approx2.2\cdot10^{-5}$ from (a).)
+
+\emph{Remark.} One can show that $S=e^{-\dfrac{1}{2}}\displaystyle\int_0^1e^{\dfrac{t^2}{2}}\,dt$, so $X$ is not expected to have an elementary closed form.

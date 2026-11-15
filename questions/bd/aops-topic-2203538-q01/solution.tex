@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2203538_pigeon_amc_8_problem_10
+% Stable identity: aops-topic-2203538-q01
+Call two pigeons \emph{in conflict} if at least one dislikes the other.
+
+\textbf{$n\ge7$.} Number some pigeons $0,1,\dots,6$ and let pigeon $i$ dislike pigeons $i+1$, $i+2$, $i+3$ (indices mod $7$). For two of these pigeons $i\ne j$, either $j-i$ or $i-j$ is $1$, $2$ or $3$ mod $7$, so every two of the seven are in conflict. Let each of the other $44$ pigeons dislike pigeons $0$, $1$ and $2$. Every pigeon dislikes exactly $3$ others, and pigeons $0,\dots,6$ need $7$ different groups.
+
+\textbf{$7$ groups always suffice.} Each dislike creates one conflict, so any set of $k$ pigeons contains at most $3k$ conflicting pairs (each such pair is created by a dislike of one of its own members). The conflict counts of the $k$ pigeons within the set add up to twice the number of pairs, at most $6k$, so \emph{some pigeon of the set has at most $6$ conflicts inside the set}.
+
+Remove such a pigeon from the flock, then a pigeon with at most $6$ conflicts among the remaining ones, and so on, until all pigeons are removed. Now put the pigeons into $7$ groups in the reverse order of removal. When a pigeon is placed, the pigeons already placed are exactly those that remained when it was removed, so at most $6$ of them conflict with it, and at least one of the $7$ groups contains none of them; put it there.
+
+Hence the smallest $n$ is $\boxed{7}$.

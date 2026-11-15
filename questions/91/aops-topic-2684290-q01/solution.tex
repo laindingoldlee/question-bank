@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2684290_probability_problem
+% Stable identity: aops-topic-2684290-q01
+Each flip changes the number of face-up cards by $1$, so after an odd number of flips this number is odd: $1$ or $3$. We want the probability $p_n$ that exactly $1$ card is face up after $n$ flips, for odd $n$; $p_1=1$.
+
+Follow two flips at a time.
+\begin{itemize}
+\item From $1$ up: the next flip gives $0$ up (probability $\dfrac14$), and then the following flip surely gives $1$ up; or it gives $2$ up (probability $\dfrac34$), and then $1$ or $3$ up with probability $\dfrac12$ each. So $1$ up again with probability $\dfrac14+\dfrac34\cdot\dfrac12=\dfrac58$.
+\item From $3$ up: the next flip gives $2$ up (probability $\dfrac34$), then $1$ up with probability $\dfrac12$; or $4$ up, then surely $3$ up. So $1$ up with probability $\dfrac38$.
+\end{itemize}
+Hence $p_{n+2}=\dfrac58p_n+\dfrac38(1-p_n)=\dfrac38+\dfrac14p_n$, i.e.
+\[p_{n+2}-\dfrac12=\dfrac14\left(p_n-\dfrac12\right).\]
+From $p_1-\dfrac12=\dfrac12$ we get $p_{11}-\dfrac12=\dfrac12\cdot\left(\dfrac14\right)^5=\dfrac1{2048}$. So the probability that exactly $3$ cards are face down is
+\[p_{11}=\boxed{\textbf{(B) }\dfrac{1025}{2048}}.\]

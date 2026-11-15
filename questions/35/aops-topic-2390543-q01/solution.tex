@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2390543_my_theorem
+% Stable identity: aops-topic-2390543-q01
+\textbf{(a)} Here $ab-a-b=1$. But $6$ cannot be written as $2n+3m$ with $n,m\ge1$: we would need $3m=6-2n\le4$, so $m=1$ and $2n=3$, impossible. Since $6>1$, the claim fails. (The claim is true when $n$ and $m$ may also be $0$; that is the Chicken McNugget theorem, proved below.)
+
+\textbf{(b)} \textbf{Step 1 (nonnegative coefficients).} We show that the largest integer that is \emph{not} of the form $ax+by$ with integers $x,y\ge0$ is $ab-a-b$.
+
+Since $\gcd(a,b)=1$, the numbers $0,b,2b,\dots,(a-1)b$ leave different remainders when divided by $a$ (if $a$ divided $(i-j)b$ it would divide $i-j$, and $|i-j|<a$). So for every integer $N$ there is exactly one $y\in\{0,1,\dots,a-1\}$ with $by\equiv N\pmod a$, and then $N=ax+by$ with the integer $x=\dfrac{N-by}{a}$. Call this the standard form of $N$.
+
+$N$ is a nonnegative combination exactly when $x\ge0$ in its standard form. Indeed, if $x\ge0$ we are done. Conversely, if $N=ax'+by'$ with $x',y'\ge0$, write $y'=y+at$ with $0\le y\le a-1$ and $t\ge0$; then $N=a(x'+bt)+by$ is the standard form, and $x=x'+bt\ge0$.
+\begin{itemize}
+\item $ab-a-b=a(-1)+b(a-1)$ is in standard form with $x=-1<0$, so it is not a nonnegative combination.
+\item If $N>ab-a-b$ and $N=ax+by$ is the standard form, then $ax=N-by\ge N-b(a-1)>ab-a-b-ab+b=-a$, so $x>-1$, i.e. $x\ge0$.
+\end{itemize}
+
+\textbf{Step 2 (positive coefficients).} Substituting $n=x+1$, $m=y+1$: $N=an+bm$ with $n,m\ge1$ if and only if $N-a-b=ax+by$ with $x,y\ge0$. By Step 1, $N-a-b$ is a nonnegative combination for all $N-a-b>ab-a-b$, i.e. for all $N>ab$, but not for $N-a-b=ab-a-b$, i.e. $N=ab$. Hence the largest integer that is not of the form $an+bm$ with positive $n,m$ is $\boxed{ab}$. $\blacksquare$

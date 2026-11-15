@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2449343_a_change_of_pace_on_dice_combo
+% Stable identity: aops-topic-2449343-q01
+There are $6^5=7776$ equally likely ordered outcomes.
+
+\textbf{Symmetry.} Replacing every number $r$ rolled by $7-r$ is a one-to-one correspondence between outcomes. It changes the median $m$ to $7-m$ and the mean $\mu$ to $7-\mu$, so it turns ``median greater than mean'' into ``median less than mean'' and back. Hence these two events contain the same number of outcomes, namely $\dfrac{7776-T}{2}$, where $T$ is the number of outcomes in which the median equals the mean.
+
+\textbf{Counting the ties.} Write the rolled numbers in increasing order as $s_1\le s_2\le m\le s_4\le s_5$, with median $m$. The mean equals $m$ exactly when the sum is $5m$, that is when
+\[(m-s_1)+(m-s_2)=(s_4-m)+(s_5-m):\]
+the two smaller numbers fall short of $m$ by the same total amount as the two larger numbers exceed it. A sorted list in which the values occur $k_1,k_2,\dots$ times comes from $\dfrac{5!}{k_1!\,k_2!\cdots}$ ordered outcomes. We go through the possible medians.
+\begin{itemize}
+\item $m=1$: then $s_1=s_2=1$, the shortfall is $0$, so all five numbers are $1$: $1$ outcome. Likewise $m=6$ gives $1$ outcome.
+\item $m=2$: the shortfall is at most $2$. The sorted lists are $22222$ ($1$ outcome), $12223$ ($20$), $11224$ ($30$) and $11233$ ($30$), in total $81$. By the symmetry $r\mapsto7-r$, $m=5$ also gives $81$.
+\item $m=3$: the shortfall is at most $4$ and each excess is at most $3$. By the size of the shortfall:
+\begin{itemize}
+\item $0$: $33333$ ($1$);
+\item $1$: $23334$ ($20$);
+\item $2$: $22335$ ($30$), $22344$ ($30$), $13335$ ($20$), $13344$ ($30$);
+\item $3$: $12336$ ($60$), $12345$ ($120$);
+\item $4$: $11346$ ($60$), $11355$ ($30$).
+\end{itemize}
+In total $1+20+110+180+90=401$. By symmetry, $m=4$ also gives $401$.
+\end{itemize}
+So $T=1+81+401+401+81+1=966$, and the number of outcomes with median greater than mean is
+\[\dfrac{7776-966}{2}=3405.\]
+The probability is
+\[\dfrac{3405}{7776}=\boxed{\dfrac{1135}{2592}}\approx0.438.\]

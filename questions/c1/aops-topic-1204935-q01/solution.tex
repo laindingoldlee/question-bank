@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1204935_mock_mathcounts_state_target_6__similar_triangles
+% Stable identity: aops-topic-1204935-q01
+$AC=4$. Put $A=(0,0)$, $B=(0,3)$, $C=(4,0)$. With $F=(g,e)$ we have $E=(0,e)$ and $G=(g,0)$, so $EF=g$ and $FG=e$; thus $g=2e$. Since $F$ is on $BC$, $\dfrac {g}{4}+\dfrac {e}{3}=1$, giving $e=\dfrac{6}{5}$, $g=\dfrac{12}{5}$.
+
+Line $AF$ is $y=\dfrac {x}{2}$ and line $BG$ is $\dfrac{5x}{12}+\dfrac {y}{3}=1$; they meet at $H=\left(\dfrac{12}{7},\dfrac{6}{7}\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(0,3),C=(4,0),E1=(0,1.2),F=(2.4,1.2),G=(2.4,0),H=(12/7,6/7);
+draw(A--B--C--cycle,linewidth(0.9)); draw(E1--F--G); draw(A--F,gray); draw(B--G,gray);
+fill(H--F--C--G--cycle,lightblue); draw(H--F--C--G--cycle,blue);
+label("$A$",A,SW);label("$B$",B,N);label("$C$",C,SE);label("$E$",E1,W);label("$F$",F,NE);label("$G$",G,S);label("$H$",H,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the shoelace formula for $H\left(\dfrac{12}{7},\dfrac{6}{7}\right)$, $F\left(\dfrac{12}{5},\dfrac{6}{5}\right)$, $C(4,0)$, $G\left(\dfrac{12}{5},0\right)$:
+\[\text{Area}=\dfrac{1}{2}\left|\dfrac{12}{7}\cdot\dfrac{6}{5}-\dfrac{12}{5}\cdot\dfrac{6}{7}+\dfrac{12}{5}\cdot0-4\cdot\dfrac{6}{5}+0-0+\dfrac{12}{5}\cdot\dfrac{6}{7}-\dfrac{12}{7}\cdot0\right|=\dfrac{1}{2}\left|-\dfrac{24}{5}+\dfrac{72}{35}\right|=\boxed{\dfrac{48}{35}}.\]

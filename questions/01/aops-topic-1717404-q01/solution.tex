@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1717404_junior_regional_olympiad__fbh_2014_grade_6_problem_3
+% Stable identity: aops-topic-1717404-q01
+Let $CH$ be the altitude, $CM$ the median and $CL$ the bisector, with $H,M,L$ on $AB$. If $CA=CB$ the three lines coincide and there is nothing to prove, so assume $CA<CB$; then $\angle B<45^\circ<\angle A$.
+
+\textbf{$\angle ACH=\angle B$.} In the right triangle $ACH$, $\angle ACH=90^\circ-\angle A=\angle B$.
+
+\textbf{$\angle MCB=\angle B$.} The midpoint $M$ of the hypotenuse is the centre of the circumcircle, so $MC=MB$ and triangle $MBC$ is isosceles: $\angle MCB=\angle MBC=\angle B$.
+
+Since $\angle ACH=\angle B<45^\circ=\angle ACL$ and $\angle MCB=\angle B<45^\circ=\angle LCB$, the rays from $C$ come in the order $CA,CH,CL,CM,CB$, and
+\[
+\angle HCL=\angle ACL-\angle ACH=45^\circ-\angle B=\angle LCB-\angle MCB=\angle LCM .
+\]
+So $CL$ bisects angle $HCM$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+void ra(pair P,pair Q,pair R,real s){pair u=unit(Q-P),v=unit(R-P);draw(P+s*u--P+s*u+s*v--P+s*v,linewidth(0.5));}
+pair A=(0,0),B=(10,0),C=(3.6,4.8),H=(3.6,0),M=(5,0),L=(30/7,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--H,linewidth(0.7));draw(C--M,linewidth(0.7)+blue);draw(C--L,linewidth(0.7)+red);
+ra(H,B,C,0.3);ra(C,A,B,0.35);
+draw(arc(C,2.8,degrees(H-C),degrees(L-C)),linewidth(0.5));
+draw(arc(C,2.8,degrees(L-C),degrees(M-C)),linewidth(0.5));
+draw(C+2.65*dir((degrees(H-C)+degrees(L-C))/2)--C+2.95*dir((degrees(H-C)+degrees(L-C))/2),linewidth(0.5));
+draw(C+2.65*dir((degrees(L-C)+degrees(M-C))/2)--C+2.95*dir((degrees(L-C)+degrees(M-C))/2),linewidth(0.5));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$H$",H,S);label("$L$",L,S);label("$M$",M,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the figure $CA=6$, $CB=8$, $AB=10$: the altitude $CH$ (black), the bisector $CL$ (red) and the median $CM$ (blue), with the equal angles $HCL$ and $LCM$ marked.

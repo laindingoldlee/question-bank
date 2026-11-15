@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1342621_problems
+% Stable identity: aops-topic-1342621-q08
+Place the tetrahedron inside a cube: four vertices of a cube, no two of them joined by a cube edge, form a regular tetrahedron whose edges are face diagonals of the cube. The sphere through the four vertices of the tetrahedron is the sphere through all eight vertices of the cube, whose diameter is a space diagonal of the cube.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair p(real x,real y,real z){return (x+0.42*y, z+0.3*y);}
+real s=1;
+pair O0=p(0,0,0),O1=p(1,0,0),O2=p(1,1,0),O3=p(0,1,0),U0=p(0,0,1),U1=p(1,0,1),U2=p(1,1,1),U3=p(0,1,1);
+draw(O0--O1--U1--U0--cycle,gray); draw(O1--O2--U2--U1,gray); draw(U0--U3--U2,gray);
+draw(O0--O3,gray+dashed); draw(O3--O2,gray+dashed); draw(O3--U3,gray+dashed);
+draw(O0--O2,red+dashed); draw(O0--U1,red+linewidth(0.9)); draw(O0--U3,red+linewidth(0.9));
+draw(O2--U1,red+linewidth(0.9)); draw(O2--U3,red+linewidth(0.9)); draw(U1--U3,red+linewidth(0.9));
+draw(O0--U2,blue+dashed);
+dot(O0);dot(O2);dot(U1);dot(U3);
+label("$12$",O0+0.42*(U2-O0),SE,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+If the cube has edge $s$, its space diagonal is $s\sqrt3=2\cdot6=12$, so $s=4\sqrt3$. The edge of the tetrahedron is a face diagonal:
+\[
+s\sqrt2=4\sqrt3\cdot\sqrt2=\boxed{4\sqrt6}.
+\]
+(Equivalently, a regular tetrahedron with edge $a$ has circumradius $\dfrac{a\sqrt6}{4}$, and $\dfrac{a\sqrt6}{4}=6$ gives $a=4\sqrt6$.)

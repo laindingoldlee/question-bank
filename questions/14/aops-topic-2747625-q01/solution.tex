@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2747625_100th_post
+% Stable identity: aops-topic-2747625-q01
+Put the side of length $14$ on the $x$-axis from $B=(0,0)$ to $C=(14,0)$ and let $A=(x,h)$. From $x^2+h^2=13^2$ and $(14-x)^2+h^2=15^2$ we get $x=5$ and $h=12$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(14,0),A=(5,12),H=(5,0);
+draw(A--B--C--cycle,linewidth(0.8));draw(A--H,dashed);draw(H+(0.6,0)--H+(0.6,0.6)--H+(0,0.6));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$13$",(A+B)/2,NW,fontsize(8pt));label("$15$",(A+C)/2,NE,fontsize(8pt));label("$14$",(B+C)/2,S,fontsize(8pt));label("$12$",(5,6),E,fontsize(8pt));
+\end{asy}
+
+The area is $\dfrac12\cdot14\cdot12=\boxed{84}$. (Heron's formula gives the same: $s=21$ and $\sqrt{21\cdot8\cdot7\cdot6}=84$.)

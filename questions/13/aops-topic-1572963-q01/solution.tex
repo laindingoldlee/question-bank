@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1572963_quick_way_to_reflect_point_over_line
+% Stable identity: aops-topic-1572963-q01
+\textbf{(a)} The vector $\mathbf n=(a,b)$ is perpendicular to $\ell$: if $X$ and $Y$ lie on $\ell$, then subtracting their equations gives $\mathbf n\cdot(X-Y)=0$. The reflection $P'$ is characterised by two facts: $PP'$ is perpendicular to $\ell$, and the midpoint of $PP'$ lies on $\ell$.
+
+By the first fact, $P'=P+t\mathbf n=(p+ta,\ q+tb)$ for some number $t$. The midpoint is $M=\left(p+\dfrac{ta}{2},\ q+\dfrac{tb}{2}\right)$, and it lies on $\ell$ exactly when
+\[
+a\left(p+\dfrac{ta}{2}\right)+b\left(q+\dfrac{tb}{2}\right)+c=0\iff ap+bq+c+\dfrac {t}{2}\left(a^2+b^2\right)=0\iff t=-\dfrac{2(ap+bq+c)}{a^2+b^2}.
+\]
+Substituting this $t$ into $P'=(p+ta,\ q+tb)$ gives the stated formula. $\blacksquare$
+
+(If $P$ is on $\ell$, then $ap+bq+c=0$ and $P'=P$, as it should be.)
+
+\textbf{(b)} Here $a=2$, $b=-1$, $c=3$, $(p,q)=(3,4)$: $ap+bq+c=6-4+3=5$ and $a^2+b^2=5$, so $t=-2$ and
+\[
+P'=(3-2\cdot2,\ 4-2\cdot(-1))=\boxed{(-1,6)} .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair P=(3,4),Pp=(-1,6),M=(1,5);
+real f(real x){return 2x+3;}
+draw((-3.5,0)--(4.5,0),gray,Arrow(TeXHead));draw((0,-0.5)--(0,8.3),gray,Arrow(TeXHead));
+label("$x$",(4.5,0),E,gray);label("$y$",(0,8.3),N,gray);
+draw((-1.5,f(-1.5))--(2.5,f(2.5)),blue+linewidth(0.9));
+label("$2x-y+3=0$",(2.5,f(2.5)),E,blue);
+draw(P--Pp,red+dashed);
+pair u=unit((1,2)),v=unit((2,-1));real s=0.3;
+draw(M+s*u--M+s*(u+v)--M+s*v,red);
+dot(P);dot(Pp);dot(M,red);
+label("$P(3,4)$",P,E);label("$P'(-1,6)$",Pp,W);label("$M$",M+(0.25,-0.5),S,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check: the midpoint $M=(1,5)$ satisfies $2-5+3=0$, and $\overrightarrow{PP'}=(-4,2)$ is a multiple of $(2,-1)$, the normal of the line.

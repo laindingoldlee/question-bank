@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h3244205_number_theory
+% Stable identity: aops-topic-3244205-q01
+There are only $\binom94=126$ increasing quadruples, so checking the exact equation over them is exhaustive. The following gives precisely $\boxed{(2,3,4,9),(3,4,5,8),(5,6,7,9)}$.
+\begin{verbatim}
+from itertools import combinations
+answer=[(a,b,c,d) for a,b,c,d in combinations(range(1,10),4)
+        if b*c*(a+1)*(d+1)==a*d*(b+1)*(c+1)]
+print(answer)
+\end{verbatim}
+Each returned quadruple can be substituted directly; every permitted quadruple is tested, proving completeness.

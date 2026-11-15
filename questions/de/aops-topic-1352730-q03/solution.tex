@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h1352730_christmas_grand_prix_day_1
+% Stable identity: aops-topic-1352730-q03
+\textbf{Strategy.} The person at the back counts the black hats he sees. He says ``black'' if that number is odd and ``white'' if it is even. Every later person keeps track of the parity of the number of black hats among the people in front of the back person: he knows its value from the first word, he sees the hats in front of himself, and he has heard the colours named by everyone between the back person and himself.
+
+\textbf{Why it works.} Suppose everyone who spoke before person $P$ (other than the back person) named his own colour correctly. Then $P$ knows the colours of all hats in front of the back person except his own: those behind him were announced, those in front of him he sees. Since he also knows the parity of the number of black hats among all of them, his own hat is black exactly when the count of black hats he knows of has the wrong parity. So $P$ names his colour correctly, and by induction along the line all $99$ people in front of the back person survive. The back person survives only if his hat happens to match his announcement.
+
+\textbf{Why $100$ cannot be guaranteed.} The back person speaks first and sees nothing of his own hat, so his word depends only on the other $99$ hats. Whatever the strategy, changing only the colour of his hat leaves his word unchanged, so for one of the two colours he is wrong. Hence no strategy saves everyone in every case, and $\boxed{99}$ is the best guarantee.

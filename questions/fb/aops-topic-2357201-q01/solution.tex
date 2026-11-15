@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2357201_social_distancing_problem
+% Stable identity: aops-topic-2357201-q01
+The spacing condition puts no lower bound on the area, because the points may lie on a line. Put the students at the points $P_k=(6(k-1),0)$ for $k=1,2,\dots,100$; any two are at least $6$ feet apart, and they fill a segment of length $6\cdot99=594$ feet. The thin rectangle
+\[0\le x\le594,\qquad -\dfrac w2\le y\le\dfrac w2\]
+contains all of them and has area $594w$ (the picture is not to scale).
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+draw((0,-0.4)--(10,-0.4)--(10,0.4)--(0,0.4)--cycle,linewidth(0.9));
+for(int k=0;k<4;++k) dot((k,0));
+for(int k=7;k<11;++k) dot((k,0));
+label("$\cdots$",(5,0));
+draw((0,0.7)--(1,0.7),Arrows(3)); label("$6$",(0.5,0.7),N);
+draw((1,0.7)--(2,0.7),Arrows(3)); label("$6$",(1.5,0.7),N);
+draw((9,0.7)--(10,0.7),Arrows(3)); label("$6$",(9.5,0.7),N);
+label("$P_1$",(0,-0.4),S); label("$P_2$",(1,-0.4),S); label("$P_{100}$",(10,-0.4),S);
+draw((0,-1.5)--(10,-1.5),Arrows(5)); label("$594$",(5,-1.5),S);
+draw((10.6,-0.4)--(10.6,0.4),Arrows(3)); label("$w$",(10.6,0),E);
+\end{asy}
+
+Choosing $w=\dfrac{1}{594}$ gives a classroom of area exactly $1$ square foot. A polygon always has positive area, so no smaller positive integer is possible, and the answer is $\boxed{1}$. (Indeed every positive area, however small, is possible. A real lower bound only appears with extra conditions, for example if each student needed a disc of radius $3$ feet inside the room.)

@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h1947855_fun_puzzle
+% Stable identity: aops-topic-1947855-q01
+\textbf{At least $7$ weighings are needed.} Each weighing has $3$ outcomes (left heavier, right heavier, balance). With $w$ weighings a strategy can produce at most $3^w$ different sequences of outcomes, and different heavy balls must lead to different sequences. So $3^w\ge1000$. Since $3^6=729<1000$, we need $w\ge7$.
+
+\textbf{$7$ weighings suffice.} If at most $3^w$ balls remain and the heavy one is among them, split them into three groups, two of equal size, each of size at most $3^{w-1}$, and weigh the two equal groups against each other. If one pan is heavier, the heavy ball is in it; if they balance, it is in the third group. Either way at most $3^{w-1}$ candidates remain. Starting with $1000\le3^7=2187$ balls, after $7$ weighings at most $3^0=1$ candidate remains: that is the heavy ball. (For example, split $1000$ as $333,333,334$, then the next groups have at most $112,112,112$ balls, and so on.)
+
+The minimum is $\boxed{7}$.

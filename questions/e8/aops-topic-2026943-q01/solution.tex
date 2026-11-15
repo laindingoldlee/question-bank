@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2026943_right_triangle_geo
+% Stable identity: aops-topic-2026943-q01
+Place $C=(0,0)$, $A=(0,1)$, $B=(2,0)$, so $M=\left(1,\dfrac{1}{2}\right)$. Since $CD\perp BD$ with $D$ on line $CM$, $D$ is the foot of the perpendicular from $B$ to line $CM$.
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), A=(0,1), B=(2,0);
+pair M=(A+B)/2;
+pair D=dot(B,unit(M))*unit(M);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--D,blue); draw(B--D,red);
+draw(C+(0.08,0)--C+(0.08,0.08)--C+(0,0.08));
+pair u=unit(C-D), v=unit(B-D);
+draw(D+0.08u--D+0.08u+0.08v--D+0.08v);
+dot(A);dot(B);dot(C);dot(M);dot(D);
+label("$A$",A,N); label("$B$",B,SE); label("$C$",C,SW); label("$M$",M,NW); label("$D$",D,NE);
+label("$1$",(A+C)/2,W); label("$2$",(B+C)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The unit vector along $CM$ is $\dfrac{(2,1)}{\sqrt5}$, so
+\[
+CD=B\cdot\dfrac{(2,1)}{\sqrt5}=\dfrac{4}{\sqrt5},\qquad D=\dfrac{4}{5}(2,1)=\left(\dfrac{8}{5},\dfrac{4}{5}\right).
+\]
+Since $CM=\dfrac{AB}{2}=\dfrac{\sqrt5}{2}<\dfrac{4}{\sqrt5}$, $D$ lies beyond $M$, and
+\[
+MD=\dfrac{4}{\sqrt5}-\dfrac{\sqrt5}{2}=\dfrac{8-5}{2\sqrt5}=\dfrac{3\sqrt5}{10}.
+\]
+So $a=3$, $b=5$, $c=10$, and
+\[a+b+c=\boxed{18}.\]

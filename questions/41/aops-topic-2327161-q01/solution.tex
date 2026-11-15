@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2327161_2017_amc_811
+% Stable identity: aops-topic-2327161-q01
+\textbf{(a)} Let the floor be $n$ tiles by $n$ tiles. Each diagonal contains $n$ tiles. If $n$ were even, the diagonals would share no tile and there would be $2n$ diagonal tiles, an even number; since $37$ is odd, $n$ is odd and the two diagonals share the centre tile, giving $2n-1=37$, so $n=19$. The floor has $19^2=\boxed{361}$ tiles.
+
+\textbf{(b)} The formula $\dfrac{d^2}{2}$ needs the \emph{length} of the diagonal, but $19$ is the \emph{number of tiles} along it. A tile has side $1$ (taking the tile side as the unit), so its own diagonal has length $\sqrt2$, and the $19$ tiles along the diagonal of the floor span a length $d=19\sqrt2$. Then $\dfrac{d^2}{2}=\dfrac{(19\sqrt2)^2}{2}=361$, which agrees with (a). (Also, $180.5$ cannot be a number of tiles.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+int n=19;
+for(int i=0;i<n;++i){ fill(shift(i,i)*unitsquare,rgb(0.6,0.75,1)); fill(shift(i,n-1-i)*unitsquare,rgb(0.6,0.75,1)); }
+for(int i=0;i<=n;++i){ draw((i,0)--(i,n),gray+0.3); draw((0,i)--(n,i),gray+0.3); }
+draw(box((0,0),(n,n)),linewidth(0.9));
+draw((0,0)--(n,n),red+linewidth(0.8));
+label("$19$ tiles",(n/2,0),S); label("diagonal $19\sqrt2$",(n/2,n),N,red);
+\end{asy}

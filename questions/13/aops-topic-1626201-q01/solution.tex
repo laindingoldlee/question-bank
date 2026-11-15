@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1626201_square_roots
+% Stable identity: aops-topic-1626201-q01
+Let the other leg be $b$ and the hypotenuse $c$. The perimeter gives $11+b+c=132$, so $b+c=121$. By Pythagoras,
+\[
+c^2-b^2=11^2=121,\qquad\text{so}\qquad (c-b)(c+b)=121 .
+\]
+Dividing by $c+b=121$ gives $c-b=1$. Together with $c+b=121$ this gives $c=61$ and $b=60$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(60,0),C=(0,11);
+draw(A--B--C--cycle,linewidth(0.9));
+draw((0,2.2)--(2.2,2.2)--(2.2,0));
+label("$11$",(A+C)/2,W);label("$b=60$",(A+B)/2,S);label("$c=61$",(B+C)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check: $11^2+60^2=121+3600=3721=61^2$ and $11+60+61=132$. The hypotenuse is $\boxed{61}$.

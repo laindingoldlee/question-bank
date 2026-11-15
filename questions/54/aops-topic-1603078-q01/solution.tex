@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1603078_area_problem
+% Stable identity: aops-topic-1603078-q01
+Let $A=(-3,2)$, $B=(6,-2)$, $C=(3,5)$.
+
+\textbf{Shoelace formula.}
+\[
+[ABC]=\dfrac{1}{2}\left|x_A(y_B-y_C)+x_B(y_C-y_A)+x_C(y_A-y_B)\right|=\dfrac{1}{2}\left|(-3)(-7)+6\cdot3+3\cdot4\right|=\dfrac{51}{2}.
+\]
+
+\textbf{Check with a bounding box.} The rectangle with corners $(-3,-2)$ and $(6,5)$ has area $9\cdot7=63$. Outside the triangle it contains three right triangles, of areas $\dfrac{1}{2}\cdot9\cdot4=18$, $\dfrac{1}{2}\cdot3\cdot7=10.5$ and $\dfrac{1}{2}\cdot6\cdot3=9$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair A=(-3,2),B=(6,-2),C=(3,5);
+for(int x=-4;x<=7;++x) draw((x,-3)--(x,6),gray(0.88));
+for(int y=-3;y<=6;++y) draw((-4,y)--(7,y),gray(0.88));
+draw((-4,0)--(7,0),gray,Arrow(TeXHead));draw((0,-3)--(0,6),gray,Arrow(TeXHead));
+label("$x$",(7,0),E,gray);label("$y$",(0,6),N,gray);
+draw((-3,-2)--(6,-2)--(6,5)--(-3,5)--cycle,red+dashed);
+fill(A--B--C--cycle,paleblue);draw(A--B--C--cycle,blue+linewidth(1));
+dot(A);dot(B);dot(C);
+label("$A(-3,2)$",A,W);label("$B(6,-2)$",B,SE);label("$C(3,5)$",C,N);
+label("$18$",(-0.6,-0.9),red);label("$9$",(5.1,2.3),red);label("$10.5$",(-1.2,4.1),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the area is $63-18-10.5-9=25.5$, i.e.\ $\boxed{25.5}$ square units.
+
+(Heron's formula, suggested in the post, also works but is much harder here: the sides are $\sqrt{97}$, $\sqrt{58}$ and $3\sqrt5$.)

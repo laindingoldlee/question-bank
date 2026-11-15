@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h3267915_2023_lmt_fall_guts_round_p16p27___lexington_mathematical_tournament
+% Stable identity: aops-topic-3267915-q26
+Write their counts as $2a,3b,5c,7d$, so we count nonnegative solutions of $2a+3b+5c+7d=2023$. A one-dimensional dynamic program counts these exactly. Initially only total zero is possible. When processing denomination $c$, updating totals in increasing order permits any nonnegative number of copies of $c$; all previously processed denominations remain allowed. Thus after four passes the count at $2023$ is precisely the required number.
+\begin{verbatim}
+ways = [0]*2024
+ways[0] = 1
+for c in [2,3,5,7]:
+    for total in range(c,2024):
+        ways[total] += ways[total-c]
+print(ways[2023])
+# 6653921
+\end{verbatim}
+The answer is $\boxed{6{,}653{,}921}$.

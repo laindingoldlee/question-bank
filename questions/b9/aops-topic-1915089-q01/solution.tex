@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1915089_using_floor_functions
+% Stable identity: aops-topic-1915089-q01
+Let $N=10^6$, so the number is $\left\lfloor\dfrac{N^{10}}{N+3}\right\rfloor$. Since $N-(-3)$ divides $N^{10}-(-3)^{10}$,
+\[
+N^{10}-3^{10}=(N+3)Q,\qquad Q=N^9-3N^8+3^2N^7-\cdots+3^8N-3^9=\sum_{k=0}^{9}(-3)^kN^{9-k},
+\]
+and $Q$ is a positive integer. Thus $N^{10}=(N+3)Q+3^{10}$ with $0<3^{10}=59049<N+3$, so $3^{10}$ is the remainder and
+\[
+\left\lfloor\dfrac{N^{10}}{N+3}\right\rfloor=Q .
+\]
+Every term of $Q$ except the last is a multiple of $N=10^6$, so $Q\equiv-3^9=-19683\pmod{10}$, i.e.\ $Q\equiv7\pmod{10}$. The units digit is $\boxed{7}$.

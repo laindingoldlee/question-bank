@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3164342_2019_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3164342-q10
+Take $P$ as origin and write $Q=q$. Collinearity and the distance equation give either $R=2020q$ or $R=-2018q$. Thus the points correspond to intersections of the hexagon boundary with either of two homothetic pentagon boundaries. Each side of either pentagon intersects the convex hexagon boundary at most twice, and no coincident sides occur, giving at most $2\cdot5+2\cdot5=20$. To attain 20, centre both regular polygons at $P$, give the hexagon circumradius 1, and give the original pentagon circumradius $\dfrac{101}{201900}$. Both expanded pentagons then have circumradii strictly between 1 and 1.011. Their vertices are outside the hexagon, while all their edge midpoints have radius less than $1.011\cos36^\circ<\dfrac{\sqrt3}{2}$, the hexagon inradius. Hence every side crosses twice. Rotate generically to avoid parallel sides and vertex coincidences. The two families cannot give the same $Q$: the centred hexagon is centrally symmetric, so its boundary has the same radial distance in opposite directions, whereas the two required radii would be $2020PQ$ and $2018PQ$. Therefore the total is $\boxed{20}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+path h,p,q;for(int k=0;k<6;++k)h=h--dir(60*k);for(int k=0;k<5;++k){p=p--(1.01*dir(7+72*k));q=q--(1.009*dir(187+72*k));}draw(h--cycle,black+1bp);draw(p--cycle,blue);draw(q--cycle,red);dot((0,0));label("$P$",(0,0),S);label("hexagon and two expanded pentagons",(0,-1.5));
+\end{asy}

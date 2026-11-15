@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1969165_regional_trimathalon_problems
+% Stable identity: aops-topic-1969165-q03
+Replace each die value $x$ by $7-x$. This is a bijection on outcomes, and it changes the sum $s$ into $42-s$. So outcomes with sum $33$ correspond exactly to outcomes with sum $42-33=9$.
+
+For sum $9$, write each value as $x_i=1+y_i$ with $y_i\ge0$. Then $y_1+\cdots+y_6=3$, and every $y_i\le3\le5$ automatically, so there is no upper-bound restriction. By stars and bars the number of solutions is
+\[
+\binom{3+5}{5}=\binom85=56 .
+\]
+So $\boxed{56}$ outcomes have sum $33$.
+
+(In general, the number of ordered outcomes of $n$ dice with sum $x$ is, by inclusion--exclusion on the dice that exceed $6$,
+\[
+\sum_{k\ge0}(-1)^k\binom nk\binom{x-6k-1}{n-1},
+\]
+the sum running over the $k$ with $x-6k\ge n$.)

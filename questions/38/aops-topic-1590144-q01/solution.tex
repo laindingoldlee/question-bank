@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1590144_simpler_methods
+% Stable identity: aops-topic-1590144-q01
+\textbf{The third angle.} The angles add up to $180^\circ$, so $\angle C=180^\circ-82^\circ-64^\circ=\boxed{34^\circ}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real c=60, a=60*Sin(82)/Sin(34), bb=60*Sin(64)/Sin(34);
+pair A=(0,0),B=(c,0),C=bb*dir(82);
+draw(A--B--C--cycle,linewidth(0.9));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$c=60$",(A+B)/2,S);
+label("$b$",(A+C)/2,W);label("$a$",(B+C)/2,E);
+draw(arc(A,9,0,82),red);label("$82^\circ$",A+11*dir(41),dir(41),red);
+draw(arc(B,9,116,180),red);label("$64^\circ$",B+11*dir(148),dir(148),red);
+draw(arc(C,28,262,296),blue);label("$34^\circ$",C+37*dir(279),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The sides.} Two angles and a side are known, so the Law of Sines (not the Law of Cosines) is the efficient tool:
+\[
+\dfrac{a}{\sin A}=\dfrac{b}{\sin B}=\dfrac{c}{\sin C}=\dfrac{60}{\sin34^\circ}\approx\dfrac{60}{0.55919}\approx107.30 .
+\]
+Hence
+\[
+a=107.30\cdot\sin82^\circ\approx107.30\cdot0.99027\approx\boxed{106.3},\qquad
+b=107.30\cdot\sin64^\circ\approx107.30\cdot0.89879\approx\boxed{96.4}.
+\]
+(As a check, the longest side $a$ is opposite the largest angle $A$, and $c$ is opposite the smallest angle $C$.) The Law of Cosines is the right tool only when the data are two sides and the included angle, or three sides.

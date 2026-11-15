@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2608291_2000_amc_10_problemsproblem_14
+% Stable identity: aops-topic-2608291-q01
+Let the scores be entered in the order $s_1,\dots,s_5$. The average of the first $k$ scores is an integer exactly when $k$ divides $s_1+\cdots+s_k$. The total is $71+76+80+82+91=400$.
+
+\emph{The last score is a multiple of $4$.} $s_1+s_2+s_3+s_4=4n$ for an integer $n$, so $s_5=400-4n=4(100-n)$. Only $76$ and $80$ are multiples of $4$.
+
+\emph{Using $3$.} $s_1+s_2+s_3=400-s_4-s_5$ must be a multiple of $3$. Since $400\equiv1\pmod3$, we need $s_4+s_5\equiv1\pmod3$. The residues mod $3$ are $71\equiv2$, $76\equiv1$, $80\equiv2$, $82\equiv1$, $91\equiv1$.
+\begin{itemize}
+\item If $s_5=76\equiv1$, then $s_4\equiv0$, but no score is a multiple of $3$.
+\item If $s_5=80\equiv2$, then $s_4\equiv2$, so $s_4=71$.
+\end{itemize}
+The order $76,82,91,71,80$ works: the running sums $76,158,249,320,400$ are divisible by $1,2,3,4,5$. So the last score is $\boxed{\textbf{(C)}\ 80}$.

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1318392_altitude_of_a_tetrahedron
+% Stable identity: aops-topic-1318392-q01
+Let $D$ be the apex and $ABC$ the base, and let $H$ be the foot of the perpendicular from $D$ to the plane $ABC$. The segments $DH\perp HA$, $DH\perp HB$, $DH\perp HC$, so triangles $DHA$, $DHB$, $DHC$ are right triangles with the common leg $DH$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(0,0),B=(4,0),C=(1.6,-1.4),D=(2.0,2.8); pair H=(A+B+C)/3;
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--D--B); draw(C--D); draw(D--H,red+dashed); dot(H,red);
+draw(H--A,gray+dotted); draw(H--B,gray+dotted); draw(H--C,gray+dotted);
+label("$A$",A,W); label("$B$",B,E); label("$C$",C,S); label("$D$",D,N); label("$H$",H,SE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In a regular tetrahedron $DA=DB=DC$, so by Pythagoras
+\[
+HA^2=DA^2-DH^2=DB^2-DH^2=HB^2,
+\]
+and likewise $HB=HC$. So $H$ is equidistant from $A$, $B$, $C$: it is the circumcentre of the equilateral triangle $ABC$, which is its centre (also its centroid and incentre). The argument only uses $DA=DB=DC$, so it works for any tetrahedron whose apex is equidistant from the base vertices.

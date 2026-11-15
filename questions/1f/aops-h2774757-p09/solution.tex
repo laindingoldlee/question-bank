@@ -1,0 +1,11 @@
+Let $A=(0,0),B=(s,0),C=(s,s)$ and $E=(u,v)$ with $0<u,v<s$. The angle and length conditions, with $F$ exterior, give $F=(s-v,u-s)$. The distances imply
+\[
+u^2+v^2=36,\qquad s^2-2su=-16,\qquad u=\dfrac{s^2+16}{2s}.
+\]
+A circle through $A,B$ has equation $x^2+y^2-sx+ky=0$. Substituting $E,F$ and eliminating $k$ gives $20v=\dfrac{10(s^2+16)}{s}=20u$, so $v=u$. Consequently $u=v=3\sqrt2$, and $s^2-6\sqrt2s+16=0$. Its roots are $s=4\sqrt2,2\sqrt2$; the latter fails $u<s$. Hence the area is $\boxed{32}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real s=4*sqrt(2);pair A=(0,0),B=(s,0),C=(s,s),D=(0,s),E=(3*sqrt(2),3*sqrt(2)),F=(sqrt(2),-sqrt(2));draw(A--B--C--D--cycle);draw(A--E--B--F--cycle,blue);draw(circle((2*sqrt(2),sqrt(2)),sqrt(10)),gray);label("$A$",A,W);label("$B$",B,E);label("$C$",C,NE);label("$D$",D,NW);label("$E$",E,N);label("$F$",F,S);
+\end{asy}

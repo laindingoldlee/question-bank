@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2519849_nice_problem_with_digits_and_squares
+% Stable identity: aops-topic-2519849-q01
+Let $S=na+mb$ be the digit sum of $N$.
+
+\textbf{The last digit must be $9$.} If $b\ne9$, then $N+1$ ends in $b+1$ and has digit sum $S+1$. Two squares $k^2<(k+1)^2$ differ by $2k+1$, which equals $1$ only for $k=0$; but $S\ge a\ge1$, so $S$ and $S+1$ cannot both be squares. Hence $b=9$, and then $a\le8$.
+
+\textbf{The condition.} Now $N+1=\overline{a\cdots a\,(a+1)\,0\cdots0}$ (the last $a$ becomes $a+1\le9$ and the $m$ nines become zeros), with digit sum $(n-1)a+(a+1)=na+1$. Since $S=na+9m>na+1$, we need
+\[na+1=k^2,\qquad na+9m=(k+1)^2\]
+for some positive integer $k$. Subtracting, $9m-1=2k+1$, so $9m=2k+2$, i.e. $m$ is even and $k=\dfrac{9m-2}{2}$.
+
+\textbf{Minimising.} A number with fewer digits is smaller, so we first minimise $n+m$.
+\begin{itemize}
+\item $m=2$: $k=8$, so $na=63$ with $1\le a\le8$, giving $(a,n)\in\{(1,63),(3,21),(7,9)\}$. The fewest digits come from $a=7$, $n=9$: $11$ digits.
+\item $m\ge4$: $k\ge17$, so $na=k^2-1\ge288$ and $n\ge\dfrac{288}{8}=36$: at least $40$ digits.
+\end{itemize}
+So the smallest number is
+\[N=\boxed{77777777799}.\]
+Check: its digit sum is $9\cdot7+2\cdot9=81=9^2$, and $N+1=77777777800$ has digit sum $8\cdot7+8=64=8^2$.

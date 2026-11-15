@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1215941_triangle_problem
+% Stable identity: aops-topic-1215941-q01
+No. In any triangle, the sum of any two sides is greater than the third. Here
+\[1256+3792=5048<5124,\]
+so the two shorter sides cannot reach from one end of the longest side to the other. In the picture (in thousands), the circles of radii $1256$ and $3792$ centred at the ends of the side $5124$ do not meet, so there is no third vertex.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(5.124,0);
+draw(A--B,linewidth(0.9)); draw(arc(A,1.256,0,90),blue); draw(arc(B,3.792,90,180),red);
+dot(A);dot(B); label("$5124$",(A+B)/2,S); label("$1256$",(0.6,1.2),N); label("$3792$",(2.5,3.0),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Heron's formula reflects this: $s-c=\dfrac{1256+3792-5124}{2}=-38<0$, so $s(s-a)(s-b)(s-c)<0$ and has no real square root.) $\boxed{\text{No such triangle exists.}}$

@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2530369_50th_post_problems
+% Stable identity: aops-topic-2530369-q03
+The height of the cone is $h=\sqrt{9^2-5^2}=\sqrt{56}=2\sqrt{14}$, so its volume is
+\[\dfrac13\pi\cdot5^2\cdot2\sqrt{14}=\dfrac{50\sqrt{14}}{3}\pi.\]
+(The cone does fit inside the sphere, e.g. with its base centred at the centre of the sphere: every point of the cone is then within $\max\left(5,2\sqrt{14}\right)<15$ of the centre.) The sphere has volume $\dfrac43\pi\cdot15^3=4500\pi$. The required volume is
+\[4500\pi-\dfrac{50\sqrt{14}}{3}\pi=\boxed{\dfrac{\left(13500-50\sqrt{14}\right)\pi}{3}}\approx13941.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real R=15, rr=5, h=2*sqrt(14);
+draw(circle((0,0),R),linewidth(0.8));
+fill((-rr,0)--(rr,0)--(0,h)--cycle,rgb(0.8,0.88,1));
+draw((-rr,0)--(rr,0)--(0,h)--cycle,linewidth(0.8));
+draw((0,0)--(0,h),dashed);
+draw((0,0)--R*dir(-125),dashed);
+dot((0,0));
+label("$15$",R/2*dir(-125),E,fontsize(8pt));
+label("$5$",(rr/2,0),S,fontsize(8pt)); label("$9$",(rr/2,h/2),NE,fontsize(8pt));
+label("$h$",(0,h/2),W,fontsize(8pt));
+\end{asy}
+
+The sketch shows a cross-section through the axis of the cone.

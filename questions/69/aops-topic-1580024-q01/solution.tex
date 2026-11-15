@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1580024_help_on_this_problem_plzzz
+% Stable identity: aops-topic-1580024-q01
+Let the lines have slopes $m_1$, $m_2$ and $y$-intercepts $c_1$, $c_2$, with $\dfrac{c_1}{c_2}=4$. Each line passes through $(2,4)$, so $4=2m_i+c_i$, i.e.\ $c_i=4-2m_i$. Then
+\[
+4-2m_1=4(4-2m_2)\qquad\Longrightarrow\qquad m_1=4m_2-6 .
+\]
+With $m_1m_2=-2$:
+\[
+(4m_2-6)m_2=-2\ \Longrightarrow\ 2m_2^2-3m_2+1=0\ \Longrightarrow\ (2m_2-1)(m_2-1)=0 .
+\]
+The root $m_2=1$ is excluded (it would give the lines $y=x+2$ and $y=-2x+8$), so $m_2=\dfrac{1}{2}$ and $m_1=-4$. The lines are
+\[
+y=-4x+12\qquad\text{and}\qquad y=\dfrac{1}{2}x+3,
+\]
+with $y$-intercepts $12$ and $3$ (quotient $4$) and slopes with product $-2$. Their $x$-intercepts are $3$ and $-6$, whose product is $\boxed{-18}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-8,0)--(5,0),gray,Arrow(TeXHead));draw((0,-1.5)--(0,13.5),gray,Arrow(TeXHead));
+label("$x$",(5,0),E,gray);label("$y$",(0,13.5),N,gray);
+draw((0.0,12)--(3.375,-1.5),blue+linewidth(1));
+draw((-8,-1)--(5,5.5),red+linewidth(1));
+dot((2,4));label("$(2,4)$",(2,4),E);
+dot((3,0),blue);label("$3$",(3,0),NE,blue);
+dot((-6,0),red);label("$-6$",(-6,0),NW,red);
+dot((0,12),blue);label("$12$",(0,12),W,blue);
+dot((0,3),red);label("$3$",(0,3),NW,red);
+label("$y=-4x+12$",(0.6,9.6),E,blue);label("$y=\dfrac{1}{2}x+3$",(5,5.5),N,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

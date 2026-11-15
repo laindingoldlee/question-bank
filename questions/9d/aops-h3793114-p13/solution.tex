@@ -1,0 +1,7 @@
+The base angles are $50^\circ$, so their halves are $25^\circ$. In triangle $LQP$, the angle at $Q$ is $180^\circ-25^\circ-25^\circ=130^\circ$. Its vertically opposite angle $KQN$ is also $130^\circ$. In triangle $LMN$, the angles at $M,L$ are $80^\circ,25^\circ$, so $\angle QNM=\angle LNM=75^\circ$. The requested difference is $\boxed{55^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair L=(-1,0),P=(1,0),M=(0,tan(50*pi/180));real v=abs(M-L);pair N=M+v/(v+2)*(P-M),K=M+v/(v+2)*(L-M),Q=(0,tan(25*pi/180));draw(M--L--P--cycle);draw(L--N);draw(P--K);label("M",M,(0,1));label("L",L,SW);label("P",P,SE);label("N",N,NE);label("K",K,NW);label("Q",Q,S);
+\end{asy}

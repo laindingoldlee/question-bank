@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1582574_selfsimilarity_in_the_fibonacci_sequence
+% Stable identity: aops-topic-1582574-q01
+First note that the extension is consistent: the rule $F_{n+1}=F_n+F_{n-1}$ can be run backwards as $F_{n-1}=F_{n+1}-F_n$, which gives $F_{-1}=F_1-F_0=1$, $F_{-2}=F_0-F_{-1}=-1$, $F_{-3}=F_{-1}-F_{-2}=2$, and so on. The rule $F_{m+1}=F_m+F_{m-1}$ then holds for \emph{every} integer $m$.
+
+\textbf{Key step.} If a sequence is $a_n=F_{n+j}$ ($n\ge0$) for some fixed integer $j$, then its first differences are
+\[
+a_{n+1}-a_n=F_{n+j+1}-F_{n+j}=F_{n+j-1}=F_{n+(j-1)},
+\]
+by the recurrence with $m=n+j$. So taking differences shifts the index back by one.
+
+\textbf{Induction.} For $k=1$ apply the key step with $j=0$: the first differences of $(F_n)$ are $(F_{n-1})$. If the $k$-th differences are $(F_{n-k})_{n\ge0}$, then by the key step with $j=-k$ the $(k+1)$-th differences are $(F_{n-k-1})_{n\ge0}$. Hence for every $k\ge1$ the $k$-th differences are $F_{-k},F_{1-k},F_{2-k},\dots$. $\blacksquare$
+
+For instance, the third differences are $F_{-3},F_{-2},F_{-1},F_0,\dots=2,-1,1,0,1,1,2,\dots$.

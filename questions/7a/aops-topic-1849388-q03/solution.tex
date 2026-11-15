@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1849388_help_with_problem_set
+% Stable identity: aops-topic-1849388-q03
+The number contains $250$ each of the digits $2,0,1,9$, so its digit sum is $250\cdot12=3000$. We must delete digits with total $3000-2019=981$, and we want to delete as many digits as possible. Deleting zeros is free, so delete all $250$ zeros. Suppose we also delete $o$ ones, $t$ twos and $n$ nines, with $o,t,n\le250$ and
+\[
+o+2t+9n=981 .
+\]
+We maximise $o+t+n$. Since $o+2t\le250+500=750$, we need $9n\ge231$, so $n\ge26$. The condition $o=981-2t-9n\le250$ means $t\ge\dfrac{731-9n}{2}$, so
+\[
+o+t+n=981-t-8n\le981-8n-\dfrac{731-9n}{2}=\dfrac{1231-7n}{2}.
+\]
+For $n=26$ this bound is $524.5$, so $o+t+n\le524$, and $524$ is attained by $n=26$, $t=249$, $o=249$. For $n\ge27$ the bound is at most $\dfrac{1231-189}{2}=521$. So the maximum of $o+t+n$ is $524$, and the largest number of deleted digits is $250+524=\boxed{774}$.
+
+Check: deleting $250$ zeros, $249$ ones, $249$ twos and $26$ nines removes $249+498+234=981$, leaving digit sum $2019$.

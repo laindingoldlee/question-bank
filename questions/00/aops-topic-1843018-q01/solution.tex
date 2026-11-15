@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1843018_different_sides_of_the_trapezoid
+% Stable identity: aops-topic-1843018-q01
+Let $AD=a$, $BC=b$, let $h$ be the height, and let the diagonals $AC$ and $BD$ meet at $O$. Let $P$ and $Q$ be the midpoints of the legs $AB$ and $CD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(2,4),C=(6,4),D=(10,0);
+pair O=extension(A,C,B,D);
+pair Mab=(A+B)/2,Mcd=(C+D)/2;
+draw(A--B--C--D--cycle,linewidth(1));
+draw(A--C,linewidth(0.7));draw(B--D,linewidth(0.7));
+draw(Mab--Mcd,dashed+blue);
+dot(O);dot(Mab,blue);dot(Mcd,blue);
+label("$A$",A,SW);label("$B$",B,NW);label("$C$",C,NE);label("$D$",D,SE);
+label("$O$",O,N);label("$P$",Mab,W,blue);label("$Q$",Mcd,E,blue);
+label("$a$",(A+D)/2,S);label("$b$",(B+C)/2,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(1)} Since $AD\parallel BC$, we have $\angle OAD=\angle OCB$ and $\angle ODA=\angle OBC$ (alternate angles), so triangles $AOD$ and $COB$ are similar with ratio $AD:CB=a:b$. Their heights from $O$ are in the same ratio, and they add up to $h$, so the distance from $O$ to $AD$ is $\dfrac{a}{a+b}h$ and the distance from $O$ to $BC$ is $\dfrac{b}{a+b}h$.
+
+The midline $PQ$ is parallel to the bases and lies halfway between them, at distance $\dfrac {h}{2}$ from each. So $O$ lies on the midline only if $\dfrac{a}{a+b}=\dfrac{1}{2}$, i.e.\ $a=b$. But $AD$ and $BC$ are two different sides, so $a\ne b$, and $O$ is not on the midline. (In the figure $a>b$, so $O$ lies closer to the shorter base $BC$, above $PQ$.)
+
+\textbf{(2)} $O$ lies strictly inside both diagonals and is not on the lines $AD$ or $BC$, so $AOD$ and $BOC$ are genuine triangles. By the triangle inequality,
+\[
+AO+OD>AD,\qquad BO+OC>BC .
+\]
+Adding, $(AO+OC)+(BO+OD)>AD+BC$, that is, $AC+BD>AD+BC$. $\blacksquare$

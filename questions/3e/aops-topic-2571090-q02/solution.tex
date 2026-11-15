@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2571090_problems_that_i_made_algebra
+% Stable identity: aops-topic-2571090-q02
+\textbf{(a)} Let $f$ be a nonzero polynomial with rational coefficients and $f(\alpha)=0$, of the smallest possible degree $m$; we may take $f$ monic. Divide $x^n-n$ by $f$:
+\[x^n-n=f(x)Q(x)+R(x),\qquad \deg R<m,\]
+where $Q$ and $R$ have rational coefficients. Putting $x=\alpha$ gives $R(\alpha)=0$, so $R=0$ by the minimality of $m$. Hence every complex root $\beta$ of $f$ satisfies $\beta^n=n$, so $|\beta|^n=n$ and $|\beta|=\alpha$.
+
+Write $f(x)=\left(x-\beta_1\right)\cdots\left(x-\beta_m\right)$ over the complex numbers. Its constant term $(-1)^m\beta_1\cdots\beta_m$ is rational and has absolute value $\alpha^m$. So $\alpha^m$ is rational, and therefore $m\ge d$.
+
+On the other hand, $x^d-\alpha^d$ has rational coefficients, has degree $d$ and has $\alpha$ as a root, so $m\le d$. Thus $m=d$, and $x^d-\alpha^d$ has the smallest possible degree.
+
+\textbf{(b)} First, a rational number $t>0$ with $t^n$ an integer is an integer: if $t=\dfrac uv$ in lowest terms with $v>1$, a prime factor of $v$ divides $v^n$, which divides $u^n$, so it divides $u$, which is impossible.
+
+Now $\left(\alpha^d\right)^n=n^d$. So $\alpha^d$ is rational exactly when $n^d$ is the $n$th power of an integer. Since $n^d=p_1^{de_1}\cdots p_k^{de_k}$, this happens exactly when $n\mid de_i$ for every $i$. That is the same as
+\[n\mid\gcd\left(de_1,\dots,de_k\right)=dE,\qquad\text{where } E=\gcd\left(e_1,\dots,e_k\right).\]
+Now $n\mid dE$ holds exactly when $\dfrac{n}{\gcd(n,E)}\mid d$, and $\gcd(n,E)=\gcd\left(n,e_1,\dots,e_k\right)=g$. So the smallest $d$ is $\dfrac ng$. Then
+\[\alpha^{d}=n^{\dfrac{d}{n}}=n^{\dfrac1g}=p_1^{\dfrac{e_1}{g}}\cdots p_k^{\dfrac{e_k}{g}},\]
+which is an integer because $g$ divides every $e_i$. So a polynomial of smallest degree is
+\[\boxed{x^{\dfrac ng}-\sqrt[g]{n}}.\]
+
+\textbf{(c)}
+\begin{itemize}
+\item $n=4=2^2$: $g=2$, giving $x^2-2$ (indeed $\sqrt[4]4=\sqrt2$).
+\item $n=8=2^3$: $g=1$, giving $x^8-8$.
+\item $n=16=2^4$: $g=4$, giving $x^4-2$.
+\item $n=27=3^3$: $g=3$, giving $x^9-3$.
+\item $n=36=2^23^2$: $g=2$, giving $x^{18}-6$.
+\end{itemize}
+So $x^n-n$ is of smallest degree exactly when $g=1$ (for example when $n$ is prime or squarefree), but not always: for $n=4$ it is not.

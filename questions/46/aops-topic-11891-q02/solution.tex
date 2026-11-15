@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h11891_toppers_random_nats_problems
+% Stable identity: aops-topic-11891-q02
+A unit cube has exactly two painted faces when it lies on an edge of the block but is not a corner cube. An edge of length $\ell$ contains $\ell-2$ such cubes, and the block has four edges of each length (red in the sketch):
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair d=(0.45,0.3);
+real L=3,H=1.6,D=1.2;
+pair o=(0,0);
+path front=o--(L,0)--(L,H)--(0,H)--cycle;
+path top=(0,H)--(L,H)--(L,H)+D*d--(0,H)+D*d--cycle;
+path side=(L,0)--(L,0)+D*d--(L,H)+D*d--(L,H)--cycle;
+filldraw(front,white); filldraw(top,white); filldraw(side,white);
+pen e=red+linewidth(2.2);
+draw((0,0)--(L,0)--(L,H)--(0,H)--cycle,e);
+draw((0,H)+D*d--(L,H)+D*d,e); draw((L,0)+D*d--(L,H)+D*d,e);
+draw((0,H)--(0,H)+D*d,e); draw((L,H)--(L,H)+D*d,e); draw((L,0)--(L,0)+D*d,e);
+label("$30$",(L/2,0),S); label("$12$",(L,0)+D*d/2,SE); label("$16$",(0,H/2),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+4\big((30-2)+(16-2)+(12-2)\big)=4(28+14+10)=208 .
+\]
+The block has $30\cdot16\cdot12=5760$ cubes, so the percentage is
+\[
+\dfrac{208}{5760}\cdot100\%\approx3.611\%\approx\boxed{3.6\%}.
+\]

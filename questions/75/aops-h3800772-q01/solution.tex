@@ -1,0 +1,9 @@
+Let $\beta=\angle ABC$ and $\alpha=\angle DAB$. Parallelism gives $\alpha+\angle ADC=180^\circ$, so $\alpha=180^\circ-2\beta$ and $0<\beta<90^\circ$. The two legs have equal vertical heights, so $BC\sin\beta=5\sin\alpha$. Their horizontal projections give
+\[AB-CD=5\cos\alpha+BC\cos\beta=5(\cos\alpha+\sin\alpha\cot\beta).\]
+Using $\cos\alpha=-\cos2\beta$ and $\sin\alpha=\sin2\beta$, the parentheses become $-\cos2\beta+2\cos^2\beta=1$. Hence $AB-CD=5$ and $\boxed{AB=8}$. The projection formula remains valid if the top left vertex projects beyond $A$, because its horizontal projection is then negative.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(8,0),D=(2.5,5sqrt(3)/2),C=D+(3,0);draw(A--B--C--D--cycle);label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$C$",C,(1,1));label("$D$",D,(-1,1));label("$5$",(A+D)/2,(-1,0));label("$3$",(C+D)/2,(0,1));label("$\beta$",B+(-.8,.3));label("$2\beta$",D+(.2,-.5));
+\end{asy}

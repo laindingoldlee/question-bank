@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2579519_construction_dividing_a_rectangle
+% Stable identity: aops-topic-2579519-q01
+\textbf{(a)} Let $O$ be the centre of the rectangle, the intersection of its diagonals (constructed with a ruler). The required line is $PO$.
+
+The half-turn about $O$ (rotation by $180^\circ$) maps the rectangle onto itself. It also maps line $PO$ onto itself and swaps the two sides of this line. So it maps the part of the rectangle on one side of $PO$ onto the part on the other side. The two parts are congruent and have equal areas. $\blacksquare$
+
+\textbf{(b)} Let $\ell$ be a line that does not pass through $O$, and let $\ell'$ be the line through $O$ parallel to $\ell$. By (a), $\ell'$ halves the area. The part of the rectangle beyond $\ell$ (on the side away from $O$) lies inside one half cut off by $\ell'$, and it misses the strip between $\ell'$ and $\ell$. That strip contains a small half-disc around $O$ inside the rectangle, since $O$ is an interior point. So this part has less than half the area, and $\ell$ does not halve the area.
+
+Hence a halving line must pass through $O$. Since $P\ne O$, there is exactly one line through $P$ and $O$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair P=(8.5,5.2),O=(3,2);
+pair L1=(6,2+3.2*3/5.5),L2=(0,2-3.2*3/5.5);
+fill((0,0)--(6,0)--L1--L2--cycle,gray(0.85));
+draw((0,0)--(6,0)--(6,4)--(0,4)--cycle,linewidth(0.9));
+draw((0,0)--(6,4),dotted);draw((0,4)--(6,0),dotted);
+draw(P--(O+1.25*(L2-O)));
+dot(P);dot(O);
+label("$P$",P,NE);label("$O$",O,NW);
+\end{asy}

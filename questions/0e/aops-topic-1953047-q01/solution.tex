@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1953047_planets_in_planet_system
+% Stable identity: aops-topic-1953047-q01
+Let the Sun have centre $O$ and radius $R$. For a unit vector $u$, the point $P=O+Ru$ has tangent plane $\{X:(X-O)\cdot u=R\}$, so a planet $Q$ is visible from $P$ exactly when $(Q-O)\cdot u>R$, and visible from the opposite point $P'=O-Ru$ exactly when $(Q-O)\cdot u<-R$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real R=1.5;pair O=(0,0);
+filldraw(circle(O,R),palegray);
+draw((-4.2,R)--(4.2,R),blue);draw((-4.2,-R)--(4.2,-R),blue);
+pair P=(0,R),Pp=(0,-R);dot(P);dot(Pp);dot(O);
+label("$P$",P,N);label("$P'$",Pp,S);label("$O$",O,SW);
+draw((-4.2,0)--(4.2,0),dashed+gray);
+pair Q1=(3.6,0);dot(Q1,red);label("$Q_1$",Q1,N,red);
+pair[] Q={(-3.4,2.6),(2.2,2.3),(-1.4,-2.7),(3.3,-2.4),(-3.6,-0.6),(1.0,3.0)};
+for(int i=0;i<Q.length;++i) dot(Q[i]);
+label("visible from $P$",(3.9,2.95),E,fontsize(8pt));label("visible from $P'$",(3.9,-2.95),E,fontsize(8pt));
+label("seen from neither",(-4.2,0.75),W,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Pick any planet $Q_1$, and choose a unit vector $u$ perpendicular to $Q_1-O$ (possible in space). Then $(Q_1-O)\cdot u=0$, so $Q_1$ is visible from neither $P$ nor $P'$. No planet can be visible from both points, since $(Q-O)\cdot u$ cannot be both $>R$ and $<-R$. Hence the planets visible from $P$ and those visible from $P'$ are disjoint sets drawn from the other nine planets, and their sizes add up to at most $9$.
+
+So one of $P$, $P'$ sees at most $\left\lfloor\dfrac{9}{2}\right\rfloor=4$ planets, which is fewer than five. $\blacksquare$

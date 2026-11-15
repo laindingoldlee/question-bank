@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3162362_2017_lmt_spring_guts_round_p2536__lexington_mathematical_tournament
+% Stable identity: aops-topic-3162362-q32
+Put $ B=(0,0),C=(14,0),A=(5,12)$. The altitude from $ A $ is $ x=5 $, and the altitude from $ B $ has slope $\dfrac{3}{4}$, so $ H=(5,\dfrac{15}{4})$. The circle centres lie vertically above their tangent points. Substitution of $ H $ yields centres $(0,\dfrac{125}{24})$ and $(14,\dfrac{507}{40})$. Subtracting their circle equations gives the common chord line $ x=7-\dfrac{8}{15}y $. Substituting into $ x^2+y^2-\dfrac{125}{12}y=0 $ gives roots $ y=\dfrac{15}{4}$ and $ y=\dfrac{2940}{289}$. Thus $ R=(\dfrac{455}{289},\dfrac{2940}{289})$, and
+\[AR=\dfrac{\sqrt{990^2+528^2}}{289}=\dfrac{66\cdot17}{289}=\boxed{\dfrac{66}{17}}.\]
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair B=(0,0),C=(14,0),A=(5,12),H=(5,15/4),R=(455/289,2940/289);draw(circle((0,125/24),125/24),gray);draw(circle((14,507/40),507/40),gray);draw(A--B--C--cycle);draw(A--(5,0),dashed);draw(B--H,dashed);draw(H--R,blue);draw(A--R,red);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$H$",H,E);label("$R$",R,W);
+\end{asy}

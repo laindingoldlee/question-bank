@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2954259_geometry_and_circle
+% Stable identity: aops-topic-2954259-q01
+\textbf{Claim:} the number of regions is $1+\dbinom n2+\dbinom n4$.
+
+Start with the disc (one region) and draw the chords one at a time. When a chord is drawn that crosses $m$ earlier chords at interior points, it is cut into $m+1$ pieces, and each piece splits one region into two. So it adds $m+1$ regions. Summing over all chords, the total is $1+(\text{number of chords})+(\text{number of interior crossings})$.
+
+Every crossing is determined by $4$ of the points (the two chords are the diagonals of the convex quadrilateral they form), and every $4$ points give exactly one crossing. So the number of crossings is $\dbinom n4$.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair[] V;real[] ang={90,160,215,300,20};for(int k=0;k<5;++k){V.push(dir(ang[k]));}
+draw(circle((0,0),1));for(int i=0;i<5;++i){dot(V[i]);for(int j=i+1;j<5;++j){draw(V[i]--V[j]);}}
+\end{asy}
+
+Hence the region counts for $n=1,\dots,6$ are $\boxed{1,2,4,8,16,31}$. The doubling pattern for $n\le5$ breaks at $n=6$.

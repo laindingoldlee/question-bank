@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h3162282_2016_lmt_spring_guts_round_p2536__lexington_mathematical_tournament
+% Stable identity: aops-topic-3162282-q28
+Set $ O=(0,0),T=(1,0)$. By reflection symmetry take $ R=(-\dfrac{3}{5},\dfrac{4}{5})$. Homothety centered at $ T $ with ratio 2 takes the small circle to the large, so $ S=2R-T=(-\dfrac{11}{5},\dfrac{8}{5})$. For the unit circle, the chord of contact from $ S $ has equation $ S\cdot(x,y)=1 $, namely $-11x+8y=5 $. The tangent at $ R $ is $-3x+4y=5 $. Their intersection is $ Z=(1,2)$. The determinant area is $\dfrac{1}{2}|\det(R-Z,S-Z)|=\boxed{\dfrac{8}{5}}$. Reflecting all points across $ OT $ covers the other choice of $ R $ and preserves area.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair O=(0,0),T=(1,0),R=(-3/5,4/5),PtS=(-11/5,8/5),Z=(1,2),Nn=(-3/5,0);draw(circle(O,1));draw(circle((-1,0),2));draw(T--PtS^^R--Z^^PtS--Z,blue);draw((-1,(-11+5)/8)--(1,2),dashed);draw(R--Nn--T,dashed);label("$O$",O,SE);label("$T$",T,E);label("$R$",R,NE);label("$S$",PtS,W);label("$Z$",Z,N);label("$N$",Nn,S);
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair O=(0,0),T=(1,0),R=(-3/5,-4/5),PtS=(-11/5,-8/5),Z=(1,-2);draw(circle(O,1));draw(circle((-1,0),2));draw(T--PtS^^R--Z^^PtS--Z,blue);label("$O$",O,NE);label("$T$",T,E);label("$R$",R,SE);label("$S$",PtS,W);label("$Z$",Z,S);
+\end{asy}

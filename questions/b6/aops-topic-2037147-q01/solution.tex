@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2037147_ahsme_trig_expression
+% Stable identity: aops-topic-2037147-q01
+Let \(\theta=\arcsin\dfrac{3\sqrt{111}}{74}\), an acute angle. Then
+\[
+\sin^2\theta=\dfrac{9\cdot111}{74^2}=\dfrac{999}{5476},\qquad \cos^2\theta=\dfrac{5476-999}{5476}=\dfrac{4477}{5476}=\dfrac{121\cdot37}{74^2},
+\]
+so \(\cos\theta=\dfrac{11\sqrt{37}}{74}\) (a right triangle with hypotenuse \(74\), legs \(3\sqrt{111}\) and \(11\sqrt{37}\)).
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(11*sqrt(37)/74*4,0), C=(11*sqrt(37)/74*4,3*sqrt(111)/74*4);
+draw(A--B--C--cycle,linewidth(0.9)); draw(B+(-0.2,0)--B+(-0.2,0.2)--B+(0,0.2));
+draw(arc(A,0.6,0,degrees(atan2(C.y,C.x)))); label("$\theta$",A+0.85*dir(20));
+label("$74$",(A+C)/2,NW); label("$3\sqrt{111}$",(B+C)/2,E); label("$11\sqrt{37}$",(A+B)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the angle addition formula, using \(\sqrt{111}=\sqrt3\sqrt{37}\),
+\[
+\sin(30^\circ+\theta)=\dfrac{1}{2}\cdot\dfrac{11\sqrt{37}}{74}+\dfrac{\sqrt3}{2}\cdot\dfrac{3\sqrt3\sqrt{37}}{74}=\dfrac{11\sqrt{37}+9\sqrt{37}}{148}=\dfrac{20\sqrt{37}}{148}=\dfrac{5\sqrt{37}}{37}.
+\]
+Therefore
+\[
+CD=\dfrac{\sqrt{37}}{\dfrac{\sqrt3}{2}}\cdot\dfrac{5\sqrt{37}}{37}=\dfrac{2}{\sqrt3}\cdot5=\boxed{\dfrac{10\sqrt3}{3}}.
+\]

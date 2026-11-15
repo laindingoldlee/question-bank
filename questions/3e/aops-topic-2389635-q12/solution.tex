@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2389635_fish_problems
+% Stable identity: aops-topic-2389635-q12
+Work in centimetres; an egg has radius $0.5$ cm. The container has volume
+\[\pi\cdot25^2\cdot25=15625\pi\text{ cm}^3,\]
+and one egg has volume $\dfrac43\pi(0.5)^3=\dfrac{\pi}{6}\text{ cm}^3$. Since the squished eggs fill the container exactly, it holds
+\[\dfrac{15625\pi}{\dfrac{\pi}{6}}=15625\cdot6=\boxed{93750}\]
+eggs. (In the sketch lengths are in centimetres; the egg is not to scale.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real r=2.5, h=2.5, e=0.3;
+draw(xscale(r)*yscale(e*r)*unitcircle,linewidth(0.8));
+draw(shift(0,-h)*xscale(r)*yscale(e*r)*arc((0,0),1,180,360),linewidth(0.8));
+draw(shift(0,-h)*xscale(r)*yscale(e*r)*arc((0,0),1,0,180),dashed);
+draw((-r,0)--(-r,-h),linewidth(0.8)); draw((r,0)--(r,-h),linewidth(0.8));
+draw((0,0)--(r,0),blue); label("$25$",(r/2,0),S,blue);
+draw((r+0.3,0)--(r+0.3,-h),Arrows(4)); label("$25$",(r+0.3,-h/2),E);
+filldraw(circle((-1.4,-1.25),0.1),rgb(1,0.8,0.5),black); label("egg",(-1.4,-1.25),E,fontsize(8pt));
+\end{asy}

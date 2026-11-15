@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h2331014_hamiltonian_cycles
+% Stable identity: aops-topic-2331014-q01
+\textbf{If $mn$ is odd, it is impossible.} Colour the grid like a chessboard. Each move goes to a square of the other colour, so along a closed route the colours alternate and the route has an even number of moves. A route that visits each of the $mn$ squares exactly once and returns to the start consists of exactly $mn$ moves. So $mn$ must be even.
+
+\textbf{If $mn$ is even, it is possible.} Say the number of rows $m$ is even (otherwise $n$ is even, and we turn the grid on its side). Number the rows $1$ to $m$ from the top and the columns $1$ to $n$ from the left, and let the ant start in row $1$, column $1$.
+\begin{itemize}
+\item Go along row $1$ to column $n$.
+\item Snake through rows $2,3,\dots,m$, using only columns $2$ to $n$: row $2$ from column $n$ back to column $2$, row $3$ from column $2$ to column $n$, and so on. Since $m$ is even, row $m$ is traversed from column $n$ to column $2$.
+\item Step left to row $m$, column $1$, and go up column $1$ to row $2$; the next step returns to the start.
+\end{itemize}
+Row $1$ is covered by the first step, columns $2$ to $n$ of the other rows by the snake, and column $1$ of the other rows on the way back, each square exactly once, and every step goes to a neighbouring square. The figure shows the route for $m=4$, $n=5$ (the small grey squares mark one colour of the chessboard colouring).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+int m=4, n=5;
+for(int i=0;i<=n;++i) draw((i,0)--(i,m),gray);
+for(int j=0;j<=m;++j) draw((0,j)--(n,j),gray);
+pair c(int row,int col){return (col-0.5,m-row+0.5);}
+path p=c(1,1);
+for(int col=2;col<=n;++col) p=p--c(1,col);
+for(int row=2;row<=m;++row){
+  if(row%2==0) for(int col=n;col>=2;--col) p=p--c(row,col);
+  else for(int col=2;col<=n;++col) p=p--c(row,col);
+}
+for(int row=m;row>=2;--row) p=p--c(row,1);
+p=p--cycle;
+draw(p,blue+linewidth(1.1));
+dot(c(1,1),red+5); label("start",c(1,1),N,red+fontsize(8pt));
+for(int row=1;row<=m;++row) for(int col=1;col<=n;++col) if((row+col)%2==1) fill(shift(col-0.95,m-row+0.05)*scale(0.18)*unitsquare,gray);
+\end{asy}
+
+Hence such a route exists if and only if $mn$ is even. $\blacksquare$

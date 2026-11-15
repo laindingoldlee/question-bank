@@ -1,0 +1,7 @@
+For a regular $k$-gon, the angle is $180-\dfrac{360}{k}$. It is an even integer exactly when $\dfrac{360}{k}$ is an even integer, equivalently $k\mid180$. The number $180=2^2 3^2 5$ has $3\cdot3\cdot2=18$ positive divisors. Exclude $k=1,2$, which are not polygons. Each remaining $k$ gives a distinct positive even angle, so the answer is $\boxed{16}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p;for(int i=0;i<6;++i)p.push(dir(60*i));for(int i=0;i<6;++i)draw(p[i]--p[(i+1)%6]);draw(p[0]--(1.5,-sqrt(3)/2),dashed);label("$120^\circ$",(.62,0));label("regular hexagon",(0,-1.4));
+\end{asy}

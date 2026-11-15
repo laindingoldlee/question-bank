@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2125595_more_problems
+% Stable identity: aops-topic-2125595-q02
+Let the side lengths be $a$ and $b$. Then $2(a+b)=50$, so $b=25-a$ with $0<a<25$, and the area is
+\[A(a)=a(25-a).\]
+
+\textbf{(a)} For any rectangle with perimeter $50$ and sides $a\le b$, a rectangle with sides $\dfrac {a}{2}$ and $25-\dfrac {a}{2}$ also has perimeter $50$, and its area is
+\[\dfrac {a}{2}\left(25-\dfrac {a}{2}\right)<\dfrac {a}{2}\cdot25\le a\cdot\dfrac{25}{2}\le a\,b,\]
+since $b\ge\dfrac{25}{2}$. So every area can be beaten, and there is no smallest area. The areas get arbitrarily close to $0$ (for example $a=0.001$ gives area less than $0.025$), but $0$ itself is not attained because both sides must be positive.
+
+\textbf{(b)} Now $a\in\{1,2,\dots,24\}$. The function $a(25-a)$ is a downward parabola symmetric about $a=12.5$, so on the integers it is smallest at the ends, $a=1$ or $a=24$:
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+void rect(pair o,real w,real h,string s){ draw(shift(o)*scale(w,h)*unitsquare,linewidth(0.9)); label(s,o+(w/2,h/2),fontsize(8pt)); }
+draw(scale(24,1)*unitsquare,linewidth(0.9)); label("$24\times1$, area $24$",(12,1),N,fontsize(8pt));
+rect((0,3.2),19,6,"$19\times6$, area $114$");
+rect((21,3.2),13,12,"$13\times12$, area $156$");
+label("$24$",(12,0),S,fontsize(8pt)); label("$1$",(24,0.5),E,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+the smallest area is $1\cdot24=\boxed{24}$.

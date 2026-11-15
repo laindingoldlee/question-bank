@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h1574785_1011_nice
+% Stable identity: aops-topic-1574785-q02
+Let $K$ and $L$ be the midpoints of $OA$ and $OB$, so $OK=6$ and $OL=4.5$ (in cm).
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+real y1=0,y2=-4.5;
+// case (a): O between A and B
+pair O1=(12,y1),A1=(0,y1),B1=(21,y1);
+draw(A1--B1,linewidth(0.9));
+dot(O1);dot(A1);dot(B1);
+pair P1=(A1+O1)/2,Q1=(O1+B1)/2;dot(P1,red);dot(Q1,red);
+label("$A$",A1,S);label("$O$",O1,S);label("$B$",B1,S);label("$K$",P1,S,red);label("$L$",Q1,S,red);
+label("$12$",(A1+O1)/2+(0,0.9),N);label("$9$",(O1+B1)/2+(0,0.9),N);
+draw(A1+(0,0.9)--O1+(0,0.9),gray,Arrows(TeXHead));draw(O1+(0,0.9)--B1+(0,0.9),gray,Arrows(TeXHead));
+label("(a)",(-2.5,y1),W);
+// case (b): A and B on the same side of O
+pair O2=(0,y2),B2=(9,y2),A2=(12,y2);
+draw(O2--A2,linewidth(0.9));
+dot(O2);dot(A2);dot(B2);
+pair P2=(O2+A2)/2,Q2=(O2+B2)/2;dot(P2,red);dot(Q2,red);
+label("$O$",O2,S);label("$B$",B2,S);label("$A$",A2,S);label("$K$",P2,S,red);label("$L$",Q2,S,red);
+draw(O2+(0,0.9)--A2+(0,0.9),gray,Arrows(TeXHead));label("$12$",(O2+A2)/2+(0,0.9),N);
+draw(O2+(0,-1.6)--B2+(0,-1.6),gray,Arrows(TeXHead));label("$9$",(O2+B2)/2+(0,-1.6),S);
+label("(b)",(-2.5,y2),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(a)} If $O$ lies on segment $AB$, then $A$ and $B$ are on opposite sides of $O$, and so are $K$ and $L$. Hence
+\[
+KL=OK+OL=6+4.5=\boxed{10.5\text{ cm}}.
+\]
+
+\textbf{(b)} If $O$ is not on segment $AB$, then $A$ and $B$ are on the same side of $O$, and so are $K$ and $L$. Hence
+\[
+KL=OK-OL=6-4.5=\boxed{1.5\text{ cm}}.
+\]
+In both cases $KL=\dfrac{1}{2}AB$, since $AB=21$ in (a) and $AB=3$ in (b).

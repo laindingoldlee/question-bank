@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1518323_help_with_sines_and_cosines
+% Stable identity: aops-topic-1518323-q01
+Use $\cos2x=1-2\sin^2x$:
+\[
+1-2\sin^2x-\sin x=1\iff 2\sin^2x+\sin x=0\iff \sin x\,(2\sin x+1)=0 .
+\]
+\begin{itemize}
+\item $\sin x=0$: $x=0$ or $x=\pi$.
+\item $\sin x=-\dfrac{1}{2}$: $x=\dfrac{7\pi}{6}$ or $x=\dfrac{11\pi}{6}$.
+\end{itemize}
+On the unit circle these are the two points on the $x$-axis and the two points at height $-\dfrac{1}{2}$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw((-1.5,0)--(1.5,0),gray,Arrow(TeXHead));draw((0,-1.4)--(0,1.4),gray,Arrow(TeXHead));
+draw(unitcircle,linewidth(0.9));
+draw((-1.6,-0.5)--(1.6,-0.5),dashed+blue);
+pair[] P={dir(0),dir(180),dir(210),dir(330)};
+for(int i=0;i<4;++i) dot(P[i],red);
+label("$0$",dir(0),NE);label("$\pi$",dir(180),NW);
+label("$\dfrac{7\pi}{6}$",1.42*dir(238));label("$\dfrac{11\pi}{6}$",1.42*dir(302));
+label("$y=-\dfrac{1}{2}$",(1.6,-0.5),E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+These four values are different and lie in $[0,2\pi)$, so there are $\boxed{4}$ solutions.

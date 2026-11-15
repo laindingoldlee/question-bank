@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2727563_some_problems_that_i_made
+% Stable identity: aops-topic-2727563-q08
+Let $\varphi=\dfrac{1+\sqrt5}2$. For side $1$, each diagonal has length $\varphi$. From any vertex, the segment of a diagonal up to the \emph{far} intersection point has length $1$ (it is a side of a rhombus formed with two sides of the pentagon). So each diagonal splits as $\dfrac1\varphi,\ \dfrac1{\varphi^2},\ \dfrac1\varphi$, since $\varphi-1=\dfrac1\varphi$ and $1-\dfrac1\varphi=\dfrac1{\varphi^2}$. The middle piece is a side of the small pentagon.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair[] P;for(int i=0;i<5;++i)P[i]=dir(90+72*i);draw(P[0]--P[1]--P[2]--P[3]--P[4]--cycle);draw(P[0]--P[2]--P[4]--P[1]--P[3]--cycle,gray);
+pair[] Q;for(int i=0;i<5;++i)Q[i]=extension(P[i],P[(i+2)%5],P[(i+1)%5],P[(i+4)%5]);fill(Q[0]--Q[1]--Q[2]--Q[3]--Q[4]--cycle,lightgray);draw(Q[0]--Q[1]--Q[2]--Q[3]--Q[4]--cycle);
+\end{asy}
+
+So the linear ratio is $\varphi^2$ and the area ratio is $\varphi^4=(\varphi+1)^2=3\varphi+2=\dfrac{7+3\sqrt5}2$. Then $a+b+c+d=7+3+5+2=\boxed{17}$.

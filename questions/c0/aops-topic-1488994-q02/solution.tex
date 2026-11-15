@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1488994_hard_geometry_problems
+% Stable identity: aops-topic-1488994-q02
+As the centres form a square $ABDC$ of side $1$, its diagonal is $AD=\sqrt2$. Since $X$ is on circle $A$, $AX=1$, and since $X$ is on segment $AD$, $XD=\sqrt2-1$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(1,0),D=(1,1),C=(0,1);
+draw(arc(A,1,0,90),blue);
+draw(A--B--D--C--cycle,linewidth(0.9));
+draw(A--D,red+linewidth(0.8));
+pair X=dir(45); dot(X,red); label("$X$",(0.73,0.6),red);
+dot(A);dot(B);dot(C);dot(D);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NW);label("$D$",D,NE);
+label("$1$",X/2,dir(-45));
+label("$\sqrt2-1$",(0.72,0.93),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence
+\[
+AX\cdot XD=1\cdot\left(\sqrt2-1\right)=\boxed{\sqrt2-1}.
+\]
+(The other point of circle $A$ on line $AD$, beyond $A$, would give $1\cdot\left(\sqrt2+1\right)$.)

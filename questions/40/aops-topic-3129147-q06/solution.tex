@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3129147_2022_midmichigan_mathematical_olympiad__grades_56
+% Stable identity: aops-topic-3129147-q06
+Use coordinates $[0,16]\times[0,9]$. Cut along the staircase $(12,0)\to(12,3)\to(8,3)\to(8,6)\to(4,6)\to(4,9)$. A half-turn about $(8,\dfrac{9}{2})$ exchanges the pieces, so they are congruent. Keep the left piece fixed and translate the right piece by $(-4,3)$. At heights 0 to 3 the left piece fills width 0 to 12. At heights 3 to 6 the two pieces fill widths 0 to 8 and 8 to 12; at heights 6 to 9 they fill 0 to 4 and 4 to 12; and at heights 9 to 12 the translated piece fills 0 to 12. Thus they exactly form a $12\times12$ square, with no gaps or overlaps.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+path L=(0,0)--(12,0)--(12,3)--(8,3)--(8,6)--(4,6)--(4,9)--(0,9)--cycle;path R=(12,0)--(16,0)--(16,9)--(4,9)--(4,6)--(8,6)--(8,3)--(12,3)--cycle;filldraw(L,lightblue,black);filldraw(R,lightgreen,black);filldraw(shift(20,0)*L,lightblue,black);filldraw(shift(16,3)*R,lightgreen,black);label("$16\times9$",(8,-2));label("$12\times12$",(26,-2));
+\end{asy}

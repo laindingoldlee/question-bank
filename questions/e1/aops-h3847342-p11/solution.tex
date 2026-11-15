@@ -1,0 +1,14 @@
+Write the side lengths as $a,b,c$, the circumradius as $R$, and the area as $\Delta$. Projection and the cosine rule give $EF=a\cos A$, $FD=b\cos B$, and $DE=c\cos C$ (the acute condition makes these positive). By the sine rule,
+\[
+p(DEF)=2R(\sin A\cos A+\sin B\cos B+\sin C\cos C).
+\]
+Using $A+B+C=\pi$, the identity $\sin2A+\sin2B+\sin2C=4\sin A\sin B\sin C$ gives $p(DEF)=4R\sin A\sin B\sin C$. Meanwhile $\Delta=\dfrac{abc}{4R}=2R^2\sin A\sin B\sin C$. Thus $\Delta=\dfrac{R\,p(DEF)}{2}$. With $R=\dfrac{25}{2}$,
+\[
+\boxed{\Delta=\dfrac{1}{2}\cdot\dfrac{25}{2}\cdot32=200}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,20),B=(-10,0),C=(10,0),D=(0,0),E=(6,8),F=(-6,8),O=(0,7.5);draw(circle(O,12.5),gray);draw(A--B--C--cycle);draw(A--D,dashed);draw(B--E,dashed);draw(C--F,dashed);draw(D--E--F--cycle,blue);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$E$",E,(1,0));label("$F$",F,W);dot(O);label("$O$",O,S);
+\end{asy}

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1459898_aime_probability
+% Stable identity: aops-topic-1459898-q01
+The probability that a player needs exactly $j$ rolls is $p_j=\left(\dfrac{5}{6}\right)^{j-1}\dfrac{1}{6}$ for $j\ge1$ (and $p_0=0$).
+
+\textbf{(a)} By independence the probability is $p_k\,(p_{k-1}+p_k+p_{k+1})$.
+For $k=1$ this is $\dfrac{1}{6}\left(\dfrac{1}{6}+\dfrac{5}{36}\right)=\dfrac{11}{216}$.
+For $k\ge2$,
+\[
+p_k\,(p_{k-1}+p_k+p_{k+1})=\dfrac{1}{6}\left(\dfrac{5}{6}\right)^{k-1}\cdot\dfrac{1}{6}\left(\dfrac{5}{6}\right)^{k-2}\left(1+\dfrac{5}{6}+\dfrac{25}{36}\right)
+=\dfrac{91}{1296}\left(\dfrac{5}{6}\right)^{2k-3}.
+\]
+
+\textbf{(b)} The events in (a) for different $k$ are disjoint, so we add them:
+\[
+\dfrac{11}{216}+\dfrac{91}{1296}\sum_{k\ge2}\left(\dfrac{5}{6}\right)^{2k-3}
+=\dfrac{11}{216}+\dfrac{91}{1296}\cdot\dfrac{\dfrac{5}{6}}{1-\dfrac{25}{36}}
+=\dfrac{11}{216}+\dfrac{91}{1296}\cdot\dfrac{30}{11}
+=\dfrac{726+2730}{14256}=\dfrac{8}{33}.
+\]
+So $m+n=8+33=\boxed{41}$.

@@ -1,0 +1,7 @@
+If the equal radius is r, the centre distance condition gives $(16-2r)^2+(18-2r)^2=4r^2$, or $(r-5)(r-29)=0$. Only r=5 fits the rectangle. Let the third radius be s; its centre is $(16-s,s)$, and the lower-left centre is (5,5). Tangency gives $(11-s)^2+(s-5)^2=(s+5)^2$, simplifying to $s^2-42s+121=0$. Thus $s=21\pm8\sqrt5$. Only the smaller root fits, so $\boxed{s=21-8\sqrt5}$. At this radius its distance to the upper-right centre exceeds 5+s, so the other disjointness condition is met.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real s=21-8sqrt(5);draw(box((0,0),(16,18)));draw(circle((5,5),5));draw(circle((11,13),5));draw(circle((16-s,s),s),blue);draw((5,5)--(16-s,s),dashed);label("$\omega_1$",(5,5));label("$\omega_2$",(11,13));label("$\omega_3$",(16-s,s));label("16",(8,0),(0,-1));label("18",(0,9),(-1,0));
+\end{asy}

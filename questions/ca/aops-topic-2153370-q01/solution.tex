@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2153370_question
+% Stable identity: aops-topic-2153370-q01
+The first painting changes every door, which is the case $k=1$ of the rule. So door $n$ is repainted exactly once for each $k$ with $k\mid n$: it is painted $d(n)$ times, where $d(n)$ is the number of positive divisors of $n$, and every painting changes its colour.
+
+\textbf{(a)} Door $n$ starts blue and ends red exactly when $d(n)$ is odd. Divisors of $n$ pair up as $k\leftrightarrow\dfrac {n}{k}$, and the only divisor that can be paired with itself is $k=\sqrt n$. So $d(n)$ is odd exactly when $n$ is a perfect square. The red doors are
+\[\boxed{1,\ 4,\ 9,\ 16,\ 25,\ 36,\ 49,\ 64,\ 81,\ 100}.\]
+
+\textbf{(b)} $d(n)=2$ means that the only divisors of $n$ are $1$ and $n$, so $n$ is prime. The doors changed exactly twice are the $25$ primes up to $100$:
+\[\boxed{2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}.\]
+
+\textbf{(c)} We need the $n\le100$ with the most divisors. If $n=p_1^{e_1}\cdots p_r^{e_r}$, then $d(n)=(e_1+1)\cdots(e_r+1)$.
+\begin{itemize}
+\item $r\ge4$ is impossible, since $2\cdot3\cdot5\cdot7=210>100$.
+\item $r=3$: exponents $1,1,1$ give $d=8$, exponents $2,1,1$ give $d=12$, and anything larger needs $n\ge2^3\cdot3\cdot5=120$ or $n\ge2^2\cdot3^2\cdot5=180$. The numbers of the form $p^2qr$ up to $100$ are $2^2\cdot3\cdot5=60$, $2^2\cdot3\cdot7=84$ and $2\cdot3^2\cdot5=90$ (the next ones, $126$, $132$ and $150$, are too big).
+\item $r=2$: $d=(e_1+1)(e_2+1)\ge12$ with $n=p^{e_1}q^{e_2}\le100$. Exponents $\{5,1\}$ give $2^5\cdot3=96$, exponents $\{3,2\}$ give $2^3\cdot3^2=72$ (both with $d=12$), while $2^2\cdot3^3=108$, $2^5\cdot5=160$ and every case with $d\ge13$ (such as $2^6\cdot3$, $2^4\cdot3^2$, $2^3\cdot3^3$) exceed $100$.
+\item $r=1$: $n=p^e\le100$ forces $e\le6$, so $d\le7$.
+\end{itemize}
+So the maximum is $12$, and the doors painted the greatest number of times ($12$ times each) are
+\[\boxed{60,\ 72,\ 84,\ 90,\ 96}.\]

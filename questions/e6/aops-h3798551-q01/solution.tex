@@ -1,0 +1,7 @@
+Moving between the extreme cells requires $5$ upward moves and $6$ rightward moves, eleven moves in total. Choose which five of the eleven positions are upward moves. This gives $\boxed{\binom{11}{5}=462}$ paths. Counting cells instead of moves would incorrectly add one in each direction.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int r=0;r<6;++r)for(int c=0;c<7;++c)draw(box((c,r),(c+1,r+1)),gray);pair A=(.5,.5),B=(6.5,5.5);draw(A--(3.5,.5)--(3.5,3.5)--(6.5,3.5)--B,blue+linewidth(1.2),EndArrow);dot(A);dot(B);label("start",A,(0,-2));label("finish",B,(0,2));
+\end{asy}

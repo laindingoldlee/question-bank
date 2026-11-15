@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1445963_binomial_theorem_question
+% Stable identity: aops-topic-1445963-q01
+\textbf{(a)} Since $\dbinom{n}{k+1}=\dbinom{n}{k}\cdot\dfrac{n-k}{k+1}$,
+\[
+\dfrac{t_{k+1}}{t_k}=\dfrac{\dbinom{n}{k+1}a^{n-k-1}b^{k+1}}{\dbinom{n}{k}a^{n-k}b^{k}}=\dfrac{n-k}{k+1}\cdot\dfrac{b}{a}.
+\]
+As $k$ increases, $n-k$ decreases and $k+1$ increases, so this ratio is strictly decreasing in $k$. Hence the ratios that are greater than $1$ come first, then possibly one ratio equal to $1$, and then the ratios less than $1$. So the terms increase, then (possibly) two consecutive terms are equal, then the terms decrease: the sequence is unimodal. The coefficients $\dbinom{n}{k}$ alone (the case $a=b$) are the familiar example: they increase up to the middle of the row of Pascal's triangle and then decrease. But for $a\ne b$ the largest term need not be in the middle.
+
+\textbf{(b)} Here $\dfrac{t_{k+1}}{t_k}=\dfrac{12-k}{k+1}\cdot\dfrac{3}{2}$, which is greater than $1$ exactly when $3(12-k)>2(k+1)$, that is, $k<\dfrac{34}{5}=6.8$. So $t_0<t_1<\cdots<t_7$ and $t_7>t_8>\cdots>t_{12}$ (equality never occurs, since $6.8$ is not an integer). The largest term is
+\[
+t_7=\dbinom{12}{7}2^5\cdot3^7=792\cdot32\cdot2187=\boxed{55427328}\qquad(k=7).
+\]

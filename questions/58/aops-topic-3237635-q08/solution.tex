@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3237635_50k_message_milestone
+% Stable identity: aops-topic-3237635-q08
+Expansion cancels the two rational terms and leaves $xy+4=0$, so the curve is $xy=-4$. For lattice points in the specified region, the product is $-1,-2,-3$, or $-4$. For product $-k$, each positive divisor $d\mid k$ gives two points $(d,-\dfrac{k}{d})$ and $(-d,\dfrac{k}{d})$. Thus the count is
+\[2\bigl(\tau(1)+\tau(2)+\tau(3)+\tau(4)\bigr)=2(1+2+2+3)=\boxed{16}.\]
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw((-5,0)--(5,0),Arrow);draw((0,-5)--(0,5),Arrow);path p,q;for(int k=0;k<=100;++k){real x=0.8+4.2*k/100;p=p--(x,-4/x);q=q--(-x,4/x);}draw(p,blue);draw(q,blue);for(int a=-4;a<=4;++a)for(int b=-4;b<=4;++b)if(a*b>=-4&&a*b<=-1)dot((a,b));label("$xy=-4$",(3.5,-1.6),SE);label("$x$",(5,0),E);label("$y$",(0,5),N);
+\end{asy}

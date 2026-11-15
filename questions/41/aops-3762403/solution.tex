@@ -1,0 +1,9 @@
+Place $D$ at the origin and $A,B,C$ at $(3,0,0),(0,3,0),(0,0,3)$. Each specified quarter-circle lies on $x^2+y^2+z^2=9$, so the sphere centred at $D$ with radius $3$ works. For uniqueness, if a sphere with centre $(u,v,w)$ contains the entire quarter-circle in the $xy$-plane, substituting $(3\cos t,3\sin t,0)$ in its equation shows that $u\cos t+v\sin t$ is constant for $0 \le t \le \dfrac{\pi}{2}$. Differentiating (or comparing three angles) forces $u=v=0$. The $xz$-arc similarly forces $w=0$. Its radius must then be $\boxed{3\text{ cm}}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair D=(0,0),A=(3,0),B=(-1.5,1),C=(0,3);draw(D--A);draw(D--B);draw(D--C);draw(A..(2,2)..C);draw(B..(-1,2.6)..C);draw(A..(.7,1.2)..B);label("$D$",D,(0,-1));label("$A$",A,(1,0));label("$B$",B,(-1,0));label("$C$",C,(0,1));
+\end{asy}
+

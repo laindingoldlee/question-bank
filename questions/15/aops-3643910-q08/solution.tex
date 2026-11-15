@@ -1,0 +1,6 @@
+Assume blocks are aligned with the box. Colour unit cells by the parity of x+y, independent of height. Every $2\times2\times1$ block has two cells of each colour in any axis-aligned orientation. The $7\times7\times4$ box has a colour excess of four, so at least four cells must remain empty. Thus at most $\dfrac{(196-4)}{4}=48$ blocks fit. To attain this, remove a corner column of height four. Tile the remaining $7\times7$ floor by 24 dominoes: a $6\times7$ rectangle plus a $1\times6$ strip. Above each domino place two blocks of dimensions $1\times2\times2$. This gives $\boxed{48}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+for(int x=0;x<7;++x)for(int y=0;y<7;++y){if(x==6&&y==6)continue;filldraw(box((x,y),(x+1,y+1)),(x+y)%2==0?lightblue:white,gray);}for(int x=0;x<6;x+=2)for(int y=0;y<7;++y)draw(box((x,y),(x+2,y+1)),black+linewidth(1));for(int y=0;y<6;y+=2)draw(box((6,y),(7,y+2)),black+linewidth(1));label("floor dominoes; stack two blocks above each",(3.5,-.6));
+\end{asy}
+

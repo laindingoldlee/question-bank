@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3520278_2024_state_sprint
+% Stable identity: aops-topic-3520278-q29
+At every intersection, $(x^2+y^2)^2=48+2(2^2)=56$, so $x^2+y^2=2\sqrt{14}$. Set $u=x+y$ and $v=x-y$. Then $u^2=2\sqrt{14}+4$ and $v^2=2\sqrt{14}-4$. All four choices of signs occur. In the $uv$-plane these are the corners of a rectangle with area $4\sqrt{(2\sqrt{14}+4)(2\sqrt{14}-4)}=8\sqrt{10}$. The transformation $(x,y)\mapsto(u,v)$ doubles areas, since its determinant has absolute value $2$. Thus the required area is $\boxed{4\sqrt{10}}$. 
+\begin{asy}
+usepackage("amsmath");
+import geometry;
+size(260);
+real U=sqrt(2*sqrt(14)+4),V=sqrt(2*sqrt(14)-4);pair P=((U+V)/2,(U-V)/2),Q=((U-V)/2,(U+V)/2);draw(P--Q--(-P)--(-Q)--cycle);draw((-3,0)--(3,0),Arrow);draw((0,-3)--(0,3),Arrow);label("$P$",P,E);label("$Q$",Q,N);label("$-P$",-P,W);label("$-Q$",-Q,S);label("$x$",(3,0),S);label("$y$",(0,3),W);
+\end{asy}

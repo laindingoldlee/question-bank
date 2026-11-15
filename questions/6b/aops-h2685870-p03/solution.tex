@@ -1,0 +1,16 @@
+Choose $B=(0,0)$, $C=(c,0)$, $A=(u,v)$ with $c>0$ and $v\ne0$. The orthocenter is
+\[
+H=(u,h),\qquad h=\dfrac{u(c-u)}{v}.
+\]
+The circumcircle has equation $x^2+y^2-cx+(h-v)y=0$. If $X=(t,0)$, the reflected point is $(2t-u,-h)$. Substituting into the circle equation gives
+\[
+(2t-u)^2-c(2t-u)+vh
+=\bigl((2t-u)-u\bigr)\bigl((2t-u)-(c-u)\bigr)=0.
+\]
+Thus $t=u$ or $t=\dfrac{c}{2}$. The midpoint of $BC$ always qualifies. The other candidate is the foot of the altitude from $A$, and qualifies exactly when it lies on the closed segment $BC$. If the two candidates coincide, there is only one distinct solution.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair B=(0,0),C=(6,0),A=(2,5),D=(2,0),M=(3,0),H=(2,1.6),J=2D-H,K=2M-H,O=(3,1.7);draw(circle(O,length(O-B)),gray);draw(A--B--C--cycle);draw(H--J,blue);draw(H--K,red);dot(H);label("$A$",A,(0,1));label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,(-1,0));label("$M$",M,(0,1));label("$H$",H,(-1,0));label("$J$",J,(0,-1));label("$K$",K,(0,-1));
+\end{asy}

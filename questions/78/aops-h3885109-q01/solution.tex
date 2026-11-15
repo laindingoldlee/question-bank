@@ -1,0 +1,9 @@
+The pair of choices is uniform on a rectangle of area $9\cdot7=63$. When Arnav's choice is smaller, a guess $t\in[5,9]$ wins on a rectangle of area $t(12-t)$, maximised at $t=6$ with area $36$. Guesses below $5$ have area at most $35$, and guesses above $9$ at most $27$, so this is globally optimal.
+
+When Arnav's choice is larger, a guess $t\in[5,9]$ wins on area $(9-t)(t-5)$, maximised at $t=7$ with area $4$. Other guesses cannot win in this case. The two winning regions are disjoint, so the overall probability is $\dfrac{(36+4)}{63}=\dfrac{40}{63}$. Thus $\boxed{m+n=103}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(box((0,5),(9,12)));filldraw(box((0,6),(6,12)),lightblue,blue);filldraw(box((7,5),(9,7)),lightred,red);draw((5,5)--(9,9),dashed);label("Arnav",(4.5,4),S);label("Milind",(-1,8.5),W);label("$36$",(3,9));label("$4$",(8,6));
+\end{asy}

@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1479041_a_special_number
+% Stable identity: aops-topic-1479041-q01
+Together the products have $9$ digits and contain no $0$.
+
+\textbf{Size of $n$.} If $n$ has $k$ digits, each of $4n$ and $5n$ has $k$ or $k+1$ digits. For a total of $9$ we need $k=4$, with one product of $4$ digits and the other of $5$; so $4n<10000\le5n$, that is, $2000\le n<2500$.
+
+\textbf{Pinning down $5n$.} $5n$ ends in $0$ or $5$; there is no $0$, so it ends in $5$. Also $10000\le5n<12500$, so $5n$ starts with $1$, and its second digit is $0$, $1$ or $2$; it must be $2$ (no $0$, no repeated $1$). So $12000\le5n<12500$ and $2400\le n<2500$, and then $9600\le4n<10000$, so $4n$ starts with $9$.
+
+The third digit of $5n$ is $0$ to $4$, so it is $3$ or $4$. If it were $4$, then $n\ge2480$ and $4n\ge9920$ would begin with $99$, a repeated digit. So $5n=123d5$ for a digit $d$, $2460\le n<2480$, and $9840\le4n<9920$; since $4n$ cannot begin with $99$, we have $4n<9900$, so $4n=98yz$ and $n<2475$.
+
+\textbf{Finish.} The digits $1,2,3,5,8,9$ are used, so $d,y,z$ are $4,6,7$ in some order. $n$ is odd (because $5n$ ends in $5$), so $n\in\{2461,2463,\dots,2473\}$ and $4n\in\{9844,9852,9860,9868,9876,9884,9892\}$. Only $9876$ has its last two digits in $\{4,6,7\}$ and distinct. So $n=2469$, and indeed
+\[
+4\cdot2469=9876,\qquad 5\cdot2469=12345 .
+\]
+The answer is $n=\boxed{2469}$.

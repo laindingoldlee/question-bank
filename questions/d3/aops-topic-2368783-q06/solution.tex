@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h2368783_geometry_problem_4
+% Stable identity: aops-topic-2368783-q06
+Take radius $1$ and centre $O$. Let the first point be $P$, at distance $t$ from $O$; since $P$ is uniform in the disc, $P(OP\le t)=t^2$, so $t$ has density $2t$ on $[0,1]$. Given $P$, the second point is within distance $1$ of $P$ exactly when it lies in the lens where the unit disc around $O$ overlaps the unit disc around $P$ (shaded).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair P=(0.45,0.15);
+path c2=circle(P,1);
+real ph=degrees(P), al=degrees(acos(length(P)/2));
+fill(arc((0,0),1,ph-al,ph+al)--arc(P,1,ph+180-al,ph+180+al)--cycle,rgb(0.85,0.92,1));
+draw(circle((0,0),1),linewidth(0.9));
+draw(c2,red+dashed);
+dot((0,0)); dot(P);
+label("$O$",(0,0),S); label("$P$",P,E);
+draw((0,0)--P,blue); label("$t$",(0,0)--P,N,blue);
+draw(P--P+dir(-60),red); label("$1$",P+0.5*dir(-60),E,red);
+draw((0,0)--dir(200)); label("$1$",0.5*dir(200),N);
+\end{asy}
+
+Two unit circles with centres $t$ apart cut each other in a common chord, and the lens consists of two circular segments with central angle $2\arccos\dfrac t2$. Its area is
+\[L(t)=2\arccos\dfrac t2-\dfrac t2\sqrt{4-t^2}.\]
+So
+\[P(\text{distance}\le1)=\int_0^1\dfrac{L(t)}{\pi}\,2t\,dt=\dfrac1\pi\left(\int_0^14t\arccos\dfrac t2\,dt-\int_0^1t^2\sqrt{4-t^2}\,dt\right).\]
+\textbf{First integral.} By parts, with $\dfrac{d}{dt}\arccos\dfrac t2=-\dfrac{1}{\sqrt{4-t^2}}$:
+\[\int_0^14t\arccos\dfrac t2\,dt=\Bigl[2t^2\arccos\dfrac t2\Bigr]_0^1+\int_0^1\dfrac{2t^2}{\sqrt{4-t^2}}\,dt=\dfrac{2\pi}{3}+2\int_0^{\dfrac\pi6}4\sin^2u\,du,\]
+using $t=2\sin u$. Since $\int_0^{\dfrac\pi6}4\sin^2u\,du=\Bigl[2u-\sin2u\Bigr]_0^{\dfrac\pi6}=\dfrac\pi3-\dfrac{\sqrt3}{2}$, the first integral is $\dfrac{4\pi}{3}-\sqrt3$.
+
+\textbf{Second integral.} With $t=2\sin u$,
+\[\int_0^1t^2\sqrt{4-t^2}\,dt=\int_0^{\dfrac\pi6}16\sin^2u\cos^2u\,du=\int_0^{\dfrac\pi6}2\left(1-\cos4u\right)du=\dfrac\pi3-\dfrac{\sqrt3}{4}.\]
+\textbf{Result.}
+\[P(\text{distance}\le1)=\dfrac1\pi\left(\dfrac{4\pi}{3}-\sqrt3-\dfrac\pi3+\dfrac{\sqrt3}{4}\right)=1-\dfrac{3\sqrt3}{4\pi},\]
+so the probability that the segment is longer than the radius is
+\[\boxed{\dfrac{3\sqrt3}{4\pi}}\approx0.413.\]

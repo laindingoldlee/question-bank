@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2647268_cool_combinatorics
+% Stable identity: aops-topic-2647268-q01
+The answer is $n+2\left\lfloor\dfrac n4\right\rfloor$. For $n=1$ this is clear (one mark, $f\le1$), so let $n\ge2$.
+
+\emph{Setup.} Operations commute and doing one twice does nothing, so a configuration is determined by the set $S$ of lines used an odd number of times, and $f(C)$ is the least $|S|$ producing $C$. In each of the three directions there is one line of each length $1,\dots,n$. A mark in row $i$, position $j$ ($1\le j\le i\le n$) lies on lines of lengths $p=i$, $q=n+1-j$, $r=n-i+j$, and $p+q+r=2n+1$; conversely every triple $1\le p,q,r\le n$ with $p+q+r=2n+1$ is exactly one mark. Write $x_d(\ell)\in\{0,1\}$ for whether the line of length $\ell$ in direction $d$ is in $S$.
+
+\emph{Step 1: sets that change nothing.} $S$ fixes every mark iff $x_1(p)+x_2(q)+x_3(r)\equiv0\pmod2$ whenever $p+q+r=2n+1$. Comparing the triples $(p,q,r)$ and $(p,q+1,r-1)$ with $r=n$ shows that $x_2(q)+x_2(q+1)$ is the same number $\delta$ for all $q\le n-1$; similarly (using $q=n-1$, and then the triples $(p,n,r)$, $(p+1,n,r-1)$) all consecutive differences in each direction equal $\delta$. So $x_d(\ell)=x_d(1)+\delta[\ell\text{ even}]$, and the mark $(n,n,1)$ gives $x_1(1)+x_2(1)+x_3(1)\equiv0$. Conversely these $8$ sets work, since $p+q+r$ odd means an even number of $p,q,r$ are even. So the null sets are: nothing, or all lines of two directions, each possibly combined with the set $E$ of all even-length lines. Two sets give the same configuration iff they differ by a null set.
+
+\emph{Step 2: a formula for $f$.} For $S$ let $a_d$ be the number of its lines in direction $d$, and $c_d$ the number in $S\triangle E$. With $e=\left\lfloor\dfrac n2\right\rfloor$ even lengths per direction, $c_d\equiv a_d+e\pmod2$. Complementing two directions changes $y_d$ to $n-y_d$ for those directions, so
+\[f(C)=\min\left(m(a),m(c)\right),\qquad m(y)=\dfrac{3n}{2}+\min_j\sigma_j,\]
+where, with $u_d=y_d-\dfrac n2$, the four numbers $\sigma_j$ are $u_1+u_2+u_3$, $u_1-u_2-u_3$, $-u_1+u_2-u_3$, $-u_1-u_2+u_3$. They add up to $0$.
+
+\emph{Step 3: upper bound.}
+\begin{itemize}
+\item $n=4k$: $\min\sigma_j\le0$, so $f\le6k$.
+\item $n=4k+1$: the $\sigma_j$ are odd multiples of $\dfrac12$ with sum $0$, so $\min\sigma_j\le-\dfrac12$ and $f\le6k+1$.
+\item $n=4k+2$: $m(y)=6k+3$ forces all $\sigma_j=0$, i.e. all $y_d=2k+1$. Since $e=2k+1$ is odd, $a_d$ and $c_d$ have opposite parities, so $m(a)$ and $m(c)$ cannot both equal $6k+3$: $f\le6k+2$.
+\item $n=4k+3$: $m(y)\le6k+4$, with equality iff all $\sigma_j\ge-\dfrac12$. Then $2u_1=\sigma_1+\sigma_2\ge-1$ and $-2u_1=\sigma_3+\sigma_4\ge-1$, so each $u_d=\pm\dfrac12$, and checking signs, equality holds iff an even number of the $u_d$ equal $-\dfrac12$, i.e. an even number of $y_d$ equal $2k+1$. As $a_d$ and $c_d$ have opposite parities ($e=2k+1$), if both $m(a)$ and $m(c)$ were $6k+4$ then for each $d$ exactly one of $a_d,c_d$ would be $2k+1$, making the two counts add up to $3$, which is odd. So $f\le6k+3$.
+\end{itemize}
+
+\emph{Step 4: constructions.} In each direction choose $o$ lines of odd length and $t$ of even length; then $a_d=o+t$ and $c_d=o+e-t$.
+\begin{itemize}
+\item $n=4k$: $o=t=k$ gives $a_d=c_d=2k$, all $\sigma_j=0$, $f=6k$.
+\item $n=4k+1$: $o=k+1$, $t=k$ gives $a_d=c_d=2k+1$, $u_d=\dfrac12$, $f=6k+1$.
+\item $n=4k+2$: $o=k+1$, $t=k$ gives $a_d=2k+1$ ($m=6k+3$) and $c_d=2k+2$ ($u_d=1$, $m=6k+2$), so $f=6k+2$.
+\item $n=4k+3$: $o=t=k+1$ gives $a_d=2k+2$ ($m=6k+4$) and $c_d=2k+1$ ($u_d=-\dfrac12$, $m=6k+3$), so $f=6k+3$.
+\end{itemize}
+In every case the maximum of $f$ is $\boxed{n+2\left\lfloor\dfrac n4\right\rfloor}$.

@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2655562_help_with_mathcounts_2020_problem
+% Stable identity: aops-topic-2655562-q01
+Let $T$ be the set of positive integers $m$ such that $m-1$ has only the digits $0$ and $1$ in base $3$. We show that Hank's sequence lists exactly the elements of $T$ (so it starts $1,2,4,5,10,11,13,14,28,29,31,32,\dots$).
+
+\emph{(i) $T$ contains no three-term arithmetic sequence.} Suppose $x<y<z$ in $T$ with $x+z=2y$, and let $x'=x-1$, $y'=y-1$, $z'=z-1$, so $x'+z'=2y'$. Adding two numbers with base-$3$ digits $0,1$ produces no carries, so the base-$3$ digits of $x'+z'$ are $x'_i+z'_i$; the digits of $2y'$ are $2y'_i$. By uniqueness of base-$3$ representations, $x'_i+z'_i=2y'_i$ for every $i$, which with digits in $\{0,1\}$ forces $x'_i=y'_i=z'_i$. Then $x=z$, a contradiction.
+
+\emph{(ii) Every $m\ge3$ not in $T$ is the last term of a three-term arithmetic sequence $a<b<m$ with $a,b\in T$.} Here $m'=m-1$ has some digit $2$. Define $b'$ by $b'_i=1$ if $m'_i\ge1$ and $b'_i=0$ otherwise, and $a'$ by $a'_i=2b'_i-m'_i$ (so $a'_i=0,1,0$ when $m'_i=0,1,2$). Then $a'$ and $b'$ have digits $0,1$, and $a'+m'=\sum_i\left(a'_i+m'_i\right)3^i=\sum_i2b'_i3^i=2b'$. Also $m'-b'=b'-a'=\sum_{m'_i=2}3^i>0$. So $a=a'+1$ and $b=b'+1$ are in $T$, $a<b<m$, and $a,b,m$ is an arithmetic sequence.
+
+\emph{Induction.} $1,2\in T$ are the first two terms. Suppose the terms below some $m>2$ are exactly the elements of $T$ below $m$. If $m\notin T$, (ii) gives two earlier terms forming an arithmetic sequence with $m$, so $m$ is skipped. If $m\in T$, then by (i) $m$ forms no arithmetic sequence with earlier terms, so $m$ is the next term. Hence the sequence is exactly $T$.
+
+Finally, $m\le729$ means $m-1\le728=222222_3$, so $m-1$ ranges over the base-$3$ strings of length $6$ with digits $0,1$. There are $2^6=\boxed{64}$ such terms.

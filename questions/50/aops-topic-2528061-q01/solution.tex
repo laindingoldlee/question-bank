@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2528061_fundamental_theorem_of_algebra
+% Stable identity: aops-topic-2528061-q01
+\textbf{Step 1: $|p|$ is large far from the origin.} Let $A=|a_0|+|a_1|+\cdots+|a_{n-1}|$. For $|z|=\rho\ge1$,
+\[\left|a_{n-1}z^{n-1}+\cdots+a_0\right|\le A\rho^{n-1},\qquad\text{so}\qquad|p(z)|\ge|a_n|\rho^n-A\rho^{n-1}.\]
+If moreover $\rho\ge\dfrac{2A}{|a_n|}$, then $A\rho^{n-1}\le\dfrac{|a_n|\rho^n}{2}$ and $|p(z)|\ge\dfrac{|a_n|\rho^n}{2}$. Choose $R\ge\max\left(1,\dfrac{2A}{|a_n|}\right)$ so large that $\dfrac{|a_n|R^n}{2}>|a_0|$. Then $|p(z)|>|a_0|=|p(0)|$ whenever $|z|\ge R$.
+
+\textbf{Step 2: $|p|$ has a global minimum.} The function $z\mapsto|p(z)|$ is continuous, so on the disc $|z|\le R$ it attains a minimum at some point $z_0$. Since $0$ is in the disc, $|p(z_0)|\le|p(0)|<|p(z)|$ for $|z|\ge R$. Hence $|p(z_0)|\le|p(z)|$ for \emph{all} complex $z$.
+
+\textbf{Step 3: the minimum value is $0$.} Suppose $p(z_0)\ne0$. Expanding $p(z_0+w)$ in powers of $w$ and dividing by $p(z_0)$ gives
+\[q(w)=\dfrac{p(z_0+w)}{p(z_0)}=1+b_1w+b_2w^2+\cdots+b_nw^n,\qquad b_n=\dfrac{a_n}{p(z_0)}\ne0.\]
+Let $k\ge1$ be the smallest index with $b_k\ne0$. Write $-\dfrac{1}{b_k}=r(\cos\varphi+i\sin\varphi)$ with $r>0$, and let $u=r^{\dfrac1k}\left(\cos\dfrac{\varphi}{k}+i\sin\dfrac{\varphi}{k}\right)$. By De Moivre's theorem $u^k=-\dfrac{1}{b_k}$, so $b_ku^k=-1$. For real $t$ with $0<t\le1$,
+\[q(tu)=1-t^k+t^{k+1}\left(b_{k+1}u^{k+1}+b_{k+2}u^{k+2}t+\cdots+b_nu^nt^{n-k-1}\right).\]
+Let $C=|b_{k+1}||u|^{k+1}+\cdots+|b_n||u|^n$ (so $C=0$ if $k=n$). The bracket has modulus at most $C$, and $1-t^k\ge0$, so
+\[|q(tu)|\le1-t^k+Ct^{k+1}=1-t^k(1-Ct).\]
+Choosing $t=\dfrac{1}{2(C+1)}$ gives $0<t\le1$ and $Ct<1$, hence $|q(tu)|<1$, i.e. $|p(z_0+tu)|<|p(z_0)|$. This contradicts Step 2.
+
+Therefore $p(z_0)=0$, and $p$ has a complex root. $\blacksquare$
+
+(Applying the theorem repeatedly to $\dfrac{p(z)}{z-z_0}$ shows that $p$ factors into $n$ linear factors over $\mathbb C$.)

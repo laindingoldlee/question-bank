@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2573968_apothem_intersects_a_chord
+% Stable identity: aops-topic-2573968-q01
+$OA=OB$ because both are radii, and $\angle OMA=\angle OMB=90^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=3*dir(205),B=3*dir(335),M=(A+B)/2;
+draw(circle(O,3));draw(A--B,linewidth(0.9));draw(O--A,dashed);draw(O--B,dashed);draw(O--M);
+draw(M+0.25*dir(0)--M+0.25*dir(0)+0.25*dir(90)--M+0.25*dir(90));
+dot(O);dot(A);dot(B);dot(M);label("$O$",O,N);label("$A$",A,W);label("$B$",B,E);label("$M$",M,S);
+\end{asy}
+
+By the Pythagorean theorem in the right triangles $OMA$ and $OMB$,
+\[MA^2=OA^2-OM^2=OB^2-OM^2=MB^2,\]
+so $MA=MB$. Since $M$, $A$, $B$ lie on one line and $A\ne B$, the only point of the line equidistant from $A$ and $B$ is the midpoint of $AB$. Hence $M$ is the midpoint and $OM\perp AB$, i.e. line $OM$ is the perpendicular bisector of $AB$. $\blacksquare$
+
+(Equivalently, the right triangles $OMA$ and $OMB$ are congruent by hypotenuse--leg.)

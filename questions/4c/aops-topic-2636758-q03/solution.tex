@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2636758_intermediate_problems
+% Stable identity: aops-topic-2636758-q03
+By Heron's formula with $s=\dfrac{8+12+16}{2}=18$,
+\[[PQR]=\sqrt{18\cdot(18-8)(18-12)(18-16)}=\sqrt{18\cdot10\cdot6\cdot2}=\sqrt{2160}=\boxed{12\sqrt{15}}.\]
+(Check: with $Q=(0,0)$ and $R=(12,0)$, the conditions give $P=\left(-2,2\sqrt{15}\right)$; the angle at $Q$ is obtuse and the height to $QR$ is $PH=2\sqrt{15}$, so the area is $\dfrac12\cdot12\cdot2\sqrt{15}$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair Q=(0,0),R=(12,0),P=(-2,sqrt(60)),H=(-2,0);
+draw(P--Q--R--cycle,linewidth(0.8));draw(P--H--Q,dashed);
+label("$P$",P,N);label("$Q$",Q,S);label("$R$",R,SE);label("$H$",H,S);
+label("$8$",(P+Q)/2,E,fontsize(8pt));label("$12$",(Q+R)/2,S,fontsize(8pt));label("$16$",(P+R)/2,NE,fontsize(8pt));
+\end{asy}

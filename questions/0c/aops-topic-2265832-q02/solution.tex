@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2265832_5_geometry_problems
+% Stable identity: aops-topic-2265832-q02
+Let the given side be $AB=c$ and the given area $K$. The third vertex $X$ must be at distance $h=\dfrac{2K}{c}$ from line $AB$; by symmetry we may take $X$ on the line $\ell$ parallel to $AB$ at distance $h$ on one fixed side. The perimeter is $c+AX+XB$, so we must show that $AX+XB$ is smallest when $AX=XB$.
+
+Reflect $A$ in $\ell$ to get $A'$; then $AX=A'X$ for every $X$ on $\ell$, so by the triangle inequality
+\[AX+XB=A'X+XB\ge A'B,\]
+with equality exactly when $X$ lies on segment $A'B$. The line $\ell$ is at height $h$ while $A'$ is at height $2h$ and $B$ at height $0$, so segment $A'B$ crosses $\ell$ at its midpoint $M$, which lies directly above the midpoint of $AB$. Hence the minimum of $AX+XB$ is attained exactly at $X=M$, where $MA=MB$ ($M$ is on the perpendicular bisector of $AB$).
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(7,0), M=(3.5,2.2), X=(1.4,2.2), Ap=(0,4.4);
+draw((-0.8,2.2)--(8,2.2),gray+dashed); label("$\ell$",(8,2.2),E,gray);
+draw(A--B,linewidth(0.9)); draw(A--M--B,linewidth(0.9));
+draw(A--X--B,blue);
+draw(A--Ap,dotted); draw(Ap--B,red+dashed); draw(Ap--X,blue+dotted);
+dot(Ap); dot(X,blue); dot(M);
+label("$A$",A,SW); label("$B$",B,SE); label("$M$",M,N); label("$X$",X,N,blue); label("$A'$",Ap,W);
+label("$c$",(A+B)/2,S); label("$h$",(0,1.1),W); label("$h$",(0,3.3),W);
+\end{asy}
+
+So the triangle with the smallest perimeter is the isosceles triangle $ABM$ with $MA=MB$, and its perimeter is $c+A'B=c+\sqrt{c^2+4h^2}$. Every other triangle with the same base and area has a strictly larger perimeter.

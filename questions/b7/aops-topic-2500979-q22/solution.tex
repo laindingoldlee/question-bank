@@ -1,0 +1,46 @@
+% Source: https://artofproblemsolving.com/community/c3h2500979_stemhcounts_states_sprint_2125
+% Stable identity: aops-topic-2500979-q22
+Let $\alpha,\beta,\gamma$ be the angles of the triangle at $A,B,C$; all are acute.
+
+\textbf{The point $D$.} Since the triangle is acute, $D$ lies on the opposite side of line $AB$ from $C$. By the tangent--chord angle, $\angle DAB=\angle DBA=\gamma$, so $\angle ADB=180^\circ-2\gamma$.
+
+\textbf{The point $E$.} Triangle $AEC$ is isosceles with base $AC$, so its base angles at $A$ and $C$ are equal and acute. Hence $E$ lies on ray $CB$ (on the other ray the angle at $C$ would be $180^\circ-\gamma>90^\circ$), and $\angle EAC=\angle ECA=\gamma$. Comparing $\angle EAC=\gamma$ with $\angle BAC=\alpha$: $E$ lies strictly between $B$ and $C$ if $\gamma<\alpha$, $E=B$ if $\gamma=\alpha$, and $E$ lies beyond $B$ if $\gamma>\alpha$. If $E=B$, the angle $DEB$ is not defined, so there are two cases.
+
+\textbf{Case 1: $E$ beyond $B$.} Then ray $BE$ is opposite to ray $BC$, so $\angle ABE=180^\circ-\beta=\alpha+\gamma$. The points $D$ and $E$ are both on the opposite side of $AB$ from $C$, and $\angle ABD=\gamma<\alpha+\gamma$, so ray $BD$ lies inside angle $ABE$ and $\angle DBE=\alpha$. The angle sum in triangle $DBE$ gives $\alpha=180^\circ-45^\circ-15^\circ=120^\circ$, contradicting that the triangle is acute.
+
+\textbf{Case 2: $E$ between $B$ and $C$.} Now $D$ and $E$ are on opposite sides of $AB$, so
+\[\angle DBE=\angle DBA+\angle ABC=\gamma+\beta=180^\circ-\alpha,\]
+and the angle sum in triangle $DBE$ gives $(180^\circ-\alpha)+45^\circ+15^\circ=180^\circ$, so $\alpha=60^\circ$.
+
+Moreover, in triangle $AEC$ we have $\angle AEC=180^\circ-2\gamma$, so $\angle AEB=2\gamma$. Hence
+\[\angle ADB+\angle AEB=(180^\circ-2\gamma)+2\gamma=180^\circ,\]
+and since $D$ and $E$ are on opposite sides of $AB$, the quadrilateral $ADBE$ is cyclic (dashed circle). In it, the angles $DEB$ and $DAB$ stand on the same side $DB$, so
+\[\gamma=\angle DAB=\angle DEB=45^\circ.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=dir(45), B=dir(135), C=dir(255);
+pair D=(0,sqrt(2));
+pair M=(A+C)/2;
+pair Ep=extension(B,C,M,M+rotate(90)*(C-A));
+pair cc(pair a,pair b,pair c){real d=2*(a.x*(b.y-c.y)+b.x*(c.y-a.y)+c.x*(a.y-b.y));
+ real ux=((a.x^2+a.y^2)*(b.y-c.y)+(b.x^2+b.y^2)*(c.y-a.y)+(c.x^2+c.y^2)*(a.y-b.y))/d;
+ real uy=((a.x^2+a.y^2)*(c.x-b.x)+(b.x^2+b.y^2)*(a.x-c.x)+(c.x^2+c.y^2)*(b.x-a.x))/d; return (ux,uy);}
+pair O2=cc(A,D,B);
+draw(unitcircle,gray(0.6));
+draw(circle(O2,abs(A-O2)),dashed+blue);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(A--D--B,red); draw(D--Ep,linewidth(0.7)); draw(A--Ep,dashed);
+draw(arc(Ep,0.13,degrees(D-Ep),degrees(B-Ep)),orange);
+label("$45^\circ$",Ep+0.25*dir(80),orange+fontsize(7pt));
+draw(arc(D,0.3,degrees(B-D)+360,degrees(Ep-D)+360),orange);
+label("$15^\circ$",D+0.4*dir(258),orange+fontsize(7pt));
+dot(A);dot(B);dot(C);dot(D);dot(Ep);
+label("$A$",A,E);label("$B$",B,W);label("$C$",C,S);label("$D$",D,N);label("$E$",Ep,W);
+\end{asy}
+
+\textbf{Check.} The triangle with $\alpha=60^\circ$, $\beta=75^\circ$, $\gamma=45^\circ$ is acute and has $\gamma<\alpha$, so $E$ lies between $B$ and $C$; then $\angle DEB=\angle DAB=45^\circ$ and $\angle BDE=180^\circ-120^\circ-45^\circ=15^\circ$, as required.
+
+So $\angle ACB=\boxed{45^\circ}$.

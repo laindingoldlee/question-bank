@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1197214_help_on_geometry_problem
+% Stable identity: aops-topic-1197214-q01
+Rotate the triangle by $90^\circ$ about $C$ so that $B$ goes to $A$, and let $P'$ be the image of $P$. Then $CP'=CP=6$ and $\angle PCP'=90^\circ$, so $PP'=6\sqrt2$ and $\angle CP'P=45^\circ$; also $AP'=BP=7$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real s=sqrt(85+42*sqrt(2)); pair C=(0,0),A=(s,0),B=(0,s);
+real ang=aCos((s*s+36-121)/(2*s*6)); pair P=6*dir(ang);
+pair Q=rotate(-90)*P; draw(A--B--C--cycle,linewidth(0.9)); draw(P--A); draw(P--B); draw(P--C); draw(C--Q,dashed); draw(Q--A,dashed); draw(P--Q,red);
+dot(P);dot(Q); label("$A$",A,SE); label("$B$",B,N); label("$C$",C,SW); label("$P$",P,N); label("$P'$",Q,S);
+label("$11$",(P+A)/2,NE); label("$7$",(P+B)/2,E); label("$6$",(P+C)/2,NW); label("$7$",(Q+A)/2,S); label("$6\sqrt2$",(P+Q)/2,E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In triangle $APP'$, $AP'^2+PP'^2=49+72=121=AP^2$, so $\angle AP'P=90^\circ$. Hence $\angle AP'C=90^\circ+45^\circ=135^\circ$, and the law of cosines in triangle $AP'C$ gives
+\[s^2=AC^2=7^2+6^2-2\cdot7\cdot6\cos135^\circ=85+42\sqrt2.\]
+So $a+b=85+42=\boxed{127}$.

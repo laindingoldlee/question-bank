@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1662008_triangle_altitudes
+% Stable identity: aops-topic-1662008-q01
+\textbf{(a)} Let $K$ be the area and $s=\dfrac{a+b+c}{2}$. Since $K=\dfrac{1}{2}ah_a$, the altitude to side $a$ is $h_a=\dfrac{2K}{a}$, and similarly $h_b=\dfrac{2K}{b}$, $h_c=\dfrac{2K}{c}$. With Heron's formula,
+\[
+h_a=\dfrac{2}{a}\sqrt{s(s-a)(s-b)(s-c)},
+\]
+and likewise for $h_b$, $h_c$. In particular $h_a:h_b:h_c=\dfrac{1}{a}:\dfrac{1}{b}:\dfrac{1}{c}$.
+
+\textbf{(b)} The altitudes are inversely proportional to the sides:
+\[
+h_{40}:h_{60}:h_{80}=\dfrac{1}{40}:\dfrac{1}{60}:\dfrac{1}{80}=\boxed{6:4:3}
+\]
+(multiply by $240$). In this triangle the angle at $C$ is obtuse ($40^2+60^2<80^2$), so the altitudes from $A$ and $B$ meet the extensions of the opposite sides:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(80,0);
+real x=(40^2-60^2+80^2)/(2*80);pair C=(x,sqrt(40^2-x^2));
+pair Fc=(C.x,0);pair Fa=B+dot(A-B,unit(C-B))*unit(C-B);pair Fb=A+dot(B-A,unit(C-A))*unit(C-A);
+void ra(pair F,pair U,pair V,real q){draw(F+q*unit(U-F)--F+q*unit(U-F)+q*unit(V-F)--F+q*unit(V-F));}
+draw(C--Fa,gray+dotted);draw(C--Fb,gray+dotted);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--Fc,blue+dashed);draw(A--Fa,blue+dashed);draw(B--Fb,blue+dashed);
+ra(Fc,B,C,2.5);ra(Fa,B,A,2.5);ra(Fb,A,B,2.5);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,1.5*N);
+label("$80$",(A+B)/2,S);label("$40$",(A+C)/2,SE);label("$60$",(B+C)/2,SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For the actual lengths: $s=90$ and $K=\sqrt{90\cdot50\cdot30\cdot10}=\sqrt{1350000}=300\sqrt{15}$, so $h_{40}=15\sqrt{15}$, $h_{60}=10\sqrt{15}$, $h_{80}=\dfrac{15}{2}\sqrt{15}$, in the ratio $6:4:3$.

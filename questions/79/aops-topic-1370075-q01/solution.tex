@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1370075_chicken_mcnugget_thrm
+% Stable identity: aops-topic-1370075-q01
+\textbf{(a)} $6a+9b=3(2a+3b)$ is always a multiple of $3$, so the Chicken McNugget theorem cannot apply directly (it needs coprime numbers): infinitely many integers, all non-multiples of $3$, are not representable. Divide by the common factor: $3k$ is representable exactly when $k=2a+3b$. Since $\gcd(2,3)=1$, the McNugget theorem says the largest non-representable $k$ is $2\cdot3-2-3=1$. So the largest multiple of $3$ that is not of the form $6a+9b$ is $\boxed{3}$ (and $6,9,12=6+6,15=6+9,\dots$ all are).
+
+In general, if $\gcd(m,n)=g$, the representable numbers are the multiples of $g$, and the largest multiple of $g$ that is not representable is $g\left(\dfrac {m}{g}\cdot\dfrac {n}{g}-\dfrac {m}{g}-\dfrac {n}{g}\right)$.
+
+\textbf{(b)} For three numbers there is no simple general formula, but casework works. Since $6a+9b$ gives every multiple of $3$ except $3$, sort the target $N$ by its remainder modulo $3$; $20\equiv2$, so:
+\begin{itemize}
+\item $N\equiv0\pmod3$: use $c=0$; works unless $N=3$.
+\item $N\equiv2\pmod3$: need $c\equiv1\pmod 3$; with $c=1$, $N-20$ must be a representable multiple of $3$, so all $N\ge26$ work and also $N=20$; $23$ fails.
+\item $N\equiv1\pmod3$: need $c\equiv2\pmod3$; with $c=2$, $N-40$ must be representable, so $N=40$ and all $N\ge46$ work; $43$ fails (with $c=0$ or $c=1$ the remainder is wrong, and $c\ge2$ leaves $43-40=3$ or less).
+\end{itemize}
+So every integer from $44$ on is representable ($44=20+24$, $45=45$, and above), while $43$ is not. The answer is $\boxed{43}$.

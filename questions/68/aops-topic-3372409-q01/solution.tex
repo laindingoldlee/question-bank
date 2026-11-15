@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3372409_mc_state_sprint_202129
+% Stable identity: aops-topic-3372409-q01
+Put the long base on $y=0$ from $x=-12$ to $12$. The short base has endpoints $(\pm6,6\sqrt3)$, by Pythagoras. To be nearer the bottom than the top requires $0\le y\le3\sqrt3$. The internal angle bisectors between the bottom and the legs are $x=\pm(12-\sqrt3y)$, so the favorable region lies between them. It is a trapezoid of height $3\sqrt3$, bottom width $24$, and top width $6$. Its area is $\dfrac{24+6}{2}\cdot3\sqrt3=45\sqrt3$. The original area is $\dfrac{24+12}{2}\cdot6\sqrt3=108\sqrt3$. Boundaries have probability zero, so the probability is $\boxed{\dfrac{5}{12}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real h=6sqrt(3);pair A=(-12,0),B=(12,0),C=(6,h),D=(-6,h),P=(-3,h/2),Q=(3,h/2);fill(A--B--Q--P--cycle,lightblue);draw(A--B--C--D--cycle);draw(A--P--Q--B,dashed);label("$24$",(0,0),S);label("$12$",(0,h),N);label("$12$",(A+D)/2,W);label("$12$",(B+C)/2,E);label("$6$",(0,h/2),N);label("$3\sqrt3$",(13,h/4),E);
+\end{asy}

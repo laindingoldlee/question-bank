@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1329048_diagram_problem
+% Stable identity: aops-topic-1329048-q01
+The rays $BC$ and $BD$ make angles of $24^\circ$ and $20^\circ$ with ray $BA$. If they are on the same side of $BA$, then $\angle CBD=24^\circ-20^\circ=4^\circ$; if they are on opposite sides, $\angle CBD=24^\circ+20^\circ=44^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0); draw(B--3*dir(0),Arrow); draw(B--3*dir(24),Arrow); draw(B--3*dir(20),blue,Arrow);
+label("$A$",3*dir(0),E); label("$C$",3*dir(24),NE); label("$D$",3*dir(20),E,blue); label("$B$",B,W);
+draw(arc(B,1.2,0,20),blue); draw(arc(B,1.6,20,24),red); label("$4^\circ$",1.7*dir(22),E,red+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The smallest possible measure is $\boxed{4^\circ}$.

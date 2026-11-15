@@ -1,0 +1,7 @@
+The corresponding side lengths of the octagons are in ratio $2:1$, so their areas are in ratio $4:1$. If the smaller area is $S$, the annular area is $4S-S=3S=8\cdot24=192$. Thus $S=64$ and the larger area is $\boxed{256}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] u,v;for(int i=0;i<8;++i){u.push(dir(22.5+45i));v.push(2u[i]);}for(int i=0;i<8;++i){filldraw(u[i]--u[(i+1)%8]--v[(i+1)%8]--v[i]--cycle,i%2==0?lightblue:white);draw(u[i]--v[i]);}label("$S$",(0,0));label("$24$",1.5dir(45));
+\end{asy}

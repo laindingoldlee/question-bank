@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1350684_just_wondering
+% Stable identity: aops-topic-1350684-q01
+Use complementary counting. There are $\dbinom93=84$ ways to choose three of the nine points. Three points fail to form a triangle exactly when they are collinear. In a $3\times3$ grid every line through three of the points is one of the $3$ rows, $3$ columns or $2$ diagonals:
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pen q=red+dashed+linewidth(0.6);
+for(int i=0;i<3;++i){ draw((i,-0.3)--(i,2.3),q); draw((-0.3,i)--(2.3,i),q); }
+draw((-0.25,-0.25)--(2.25,2.25),q); draw((-0.25,2.25)--(2.25,-0.25),q);
+for(int i=0;i<3;++i) for(int j=0;j<3;++j) dot((i,j),linewidth(5));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Any other line through two grid points, such as one of slope $2$ or $\dfrac{1}{2}$, contains only two of them.) Each of these $8$ lines contains exactly $3$ points, giving $8$ collinear triples. So the number of triangles is
+\[
+84-8=\boxed{76}.
+\]

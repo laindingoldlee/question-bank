@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3164349_2021_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3164349-q04
+The tile apothem is $7\sqrt3$. The center must remain at least $\sqrt3$ from every side, leaving a concentric regular hexagon of apothem $6\sqrt3$ and side $12$. By similarity, the probability is $\left(\dfrac{12}{14}\right)^2=\dfrac{36}{49}$. Thus $p+q=\boxed{85}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+path outer,inner;for(int j=0;j<6;++j){pair P=14*dir(60*j),Q=12*dir(60*j);if(j==0){outer=P;inner=Q;}else{outer=outer--P;inner=inner--Q;}}draw(outer--cycle);filldraw(inner--cycle,lightgray);draw((0,0)--(0,7*sqrt(3)),dashed);label("$7\sqrt3$",(0,7*sqrt(3)/2),E);label("center region",(0,-3));
+\end{asy}

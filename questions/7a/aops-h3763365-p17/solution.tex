@@ -1,0 +1,7 @@
+Halving all three dimensions leaves $\dfrac{1}{8}$ of the original volume. Thus seven washes used $\dfrac{7}{8}$, or $\dfrac{1}{8}$ per wash. The remaining soap lasts $\boxed1$ more wash.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int k=0;k<2;++k){real s=k==0?2:1;pair O=(4*k,0),X=(s,0),Y=(.4*s,.3*s),Z=(0,s);draw(O--O+X--O+X+Y--O+Y--cycle);draw(O--O+Z--O+Z+X--O+X);draw(O+Z--O+Z+Y--O+Z+Y+X--O+Z+X);draw(O+X+Y--O+X+Y+Z);label(k==0?"original":"half each dimension",O+(s/2,-.6));}
+\end{asy}

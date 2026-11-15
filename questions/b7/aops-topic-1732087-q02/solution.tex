@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1732087_a_few_geo_questions
+% Stable identity: aops-topic-1732087-q02
+Every interior angle of an equiangular hexagon is $120^\circ$. Extend sides $AB$, $CD$ and $EF$ until they meet at $X$ (lines $AB$, $CD$), $Y$ (lines $CD$, $EF$) and $Z$ (lines $EF$, $AB$). The triangles $BXC$, $DYE$ and $FZA$ have two angles of $180^\circ-120^\circ=60^\circ$, so they are equilateral, with sides $BC=2$, $DE=1$ and $FA$. Then triangle $XYZ$ has all angles $60^\circ$, so it is equilateral.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=A+4*dir(0),C=B+2*dir(60),D=C+7*dir(120),Ep=D+1*dir(180),F=Ep+5*dir(240);
+pair X=extension(A,B,C,D),Y=extension(C,D,Ep,F),Z=extension(Ep,F,A,B);
+draw(B--X--C,dashed+gray);draw(D--Y--Ep,dashed+gray);draw(F--Z--A,dashed+gray);
+draw(A--B--C--D--Ep--F--cycle,linewidth(0.9));
+label("$A$",A,dir(240));label("$B$",B,dir(300));label("$C$",C,E);label("$D$",D,dir(60));label("$E$",Ep,dir(120));label("$F$",F,W);
+label("$4$",(A+B)/2,N);label("$2$",(B+C)/2,W);label("$7$",(C+D)/2,SW);label("$1$",(D+Ep)/2,S);
+label("$5$",(Ep+F)/2,E);label("$4$",(F+A)/2,NE);
+label("$X$",X,SE);label("$Y$",Y,N);label("$Z$",Z,SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Its sides are
+\[
+ZX=FA+AB+BC=FA+6,\qquad XY=BC+CD+DE=10,\qquad YZ=DE+EF+FA=1+EF+FA .
+\]
+From $ZX=XY$, $FA=4$; from $YZ=XY$, $1+EF+4=10$, so $EF=5$. Hence $\boxed{EF=5,\ FA=4}$.

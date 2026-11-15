@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2124716_set_combo_problem
+% Stable identity: aops-topic-2124716-q01
+Count the complement: sequences with no step $S_{k+1}=S_k+2$. Let $f_n(d)$ be the number of such sequences of length $n$ ending in $d$, and $T_n=\sum_df_n(d)$. A sequence of length $n$ can be extended by any digit $d$ except when the last digit is $d-2$, so
+\[f_{n+1}(d)=T_n-f_n(d-2)\quad(d\ge2),\qquad f_{n+1}(0)=f_{n+1}(1)=T_n .\]
+Starting from $f_1(d)=1$ ($T_1=10$):
+\begin{itemize}
+\item $n=2$: $f_2=10$ for $d=0,1$ and $9$ for $d=2,\ldots,9$; $T_2=92$.
+\item $n=3$: $92$ for $d=0,1$; $82$ for $d=2,3$; $83$ for $d=4,\ldots,9$; $T_3=846$.
+\item $n=4$: $846$ for $d=0,1$; $754$ for $d=2,3$; $764$ for $d=4,5$; $763$ for $d=6,\ldots,9$; $T_4=7780$.
+\item $n=5$: $7780$ for $d=0,1$; $6934$ for $d=2,3$; $7026$ for $d=4,5$; $7016$ for $d=6,7$; $7017$ for $d=8,9$; $T_5=71546$.
+\end{itemize}
+So $71546$ of the $10^5$ sequences have no such step, and
+\[10^5-71546=\boxed{28454}\]
+sequences have at least one.

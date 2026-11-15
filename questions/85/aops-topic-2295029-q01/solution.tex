@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2295029_prove_acbc_if_yexd
+% Stable identity: aops-topic-2295029-q01
+Write $a=BC$, $b=CA$, $c=AB$, and let the angles at $A$ and $B$ be $2\alpha$ and $2\beta$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(7,0), C=(2.4,4);
+real a=abs(B-C), b0=abs(C-A), c=abs(A-B);
+pair X=C+(b0,0), Y=C-(a,0);
+pair D=extension(A,X,B,C), E=extension(B,Y,A,C);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(Y-(0.6,0)--X+(0.6,0));
+draw(A--X,blue); draw(B--Y,red);
+draw(D--X,blue+linewidth(1.6)); draw(E--Y,red+linewidth(1.6));
+dot(D); dot(E); dot(X); dot(Y);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$D$",D,E); label("$E$",E,dir(200)); label("$X$",X,N); label("$Y$",Y,N);
+draw(arc(A,0.7,0,degrees(X-A)),blue); draw(arc(A,0.8,degrees(X-A),degrees(C-A)),blue);
+draw(arc(B,0.7,degrees(Y-B),180),red); draw(arc(B,0.8,degrees(C-B),degrees(Y-B)),red);
+\end{asy}
+
+\textbf{Isosceles triangles.} Since $XY\parallel AB$, $\angle CXA=\angle XAB=\alpha=\angle XAC$ (alternate angles, then the bisector). So triangle $ACX$ is isosceles with $CX=CA=b$, and its base is $AX=2b\cos\alpha$ (drop the perpendicular from $C$ to $AX$). In the same way $CY=CB=a$ and $BY=2a\cos\beta$.
+
+\textbf{The segments $XD$ and $YE$.} The triangles $DCX$ and $DBA$ are similar ($CX\parallel BA$), so $\dfrac{DX}{DA}=\dfrac{CX}{BA}=\dfrac bc$, and $D$ lies between $A$ and $X$. Hence $XD=\dfrac{b}{b+c}AX$, and similarly $YE=\dfrac{a}{a+c}BY$:
+\[XD=\cos\alpha\cdot\dfrac{2b^2}{b+c},\qquad YE=\cos\beta\cdot\dfrac{2a^2}{a+c}.\]
+
+\textbf{Comparison.} Suppose $a>b$. The larger side is opposite the larger angle, so $2\alpha>2\beta$, and since cosine decreases on $(0^\circ,90^\circ)$, $\cos\alpha<\cos\beta$. Also $\dfrac{t^2}{t+c}=t\cdot\dfrac{t}{t+c}$ increases for $t>0$, being the product of the positive increasing factors $t$ and $\dfrac{t}{t+c}=1-\dfrac{c}{t+c}$; so $\dfrac{b^2}{b+c}<\dfrac{a^2}{a+c}$. Multiplying the two inequalities between positive numbers, $XD<YE$, which contradicts $YE=XD$. In the same way $a<b$ gives $XD>YE$. Therefore $a=b$, that is, $AC=BC$. $\blacksquare$

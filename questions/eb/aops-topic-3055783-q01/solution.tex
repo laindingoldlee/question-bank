@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3055783_purple_comet_problem_2020_17
+% Stable identity: aops-topic-3055783-q01
+The original area is 16. The first generation adds 4, and each later generation has three times as many squares with one sixteenth of the area each. Thus successive added areas have ratio $\dfrac{3}{16}$. Their total is $\dfrac{4}{1-\dfrac{3}{16}}=\dfrac{64}{13}$, and including the original gives $\dfrac{272}{13}$. These numbers are coprime, so $\boxed{p+q=285}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+filldraw((-2,-2)--(2,-2)--(2,2)--(-2,2)--cycle,lightgray);for(int k=0;k<4;++k){pair u=dir(90*k),v=dir(90*k+90),c=2.5*u;draw((c-.5*u-.5*v)--(c+.5*u-.5*v)--(c+.5*u+.5*v)--(c-.5*u+.5*v)--cycle);for(int j=-1;j<=1;++j){pair w=j==0?u:j*v,z=rotate(90)*w,d=c+.625*w;draw((d-.125*w-.125*z)--(d+.125*w-.125*z)--(d+.125*w+.125*z)--(d-.125*w+.125*z)--cycle);}}label("initial side $4$",(0,0));
+\end{asy}

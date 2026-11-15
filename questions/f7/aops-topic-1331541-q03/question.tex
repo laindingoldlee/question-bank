@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1331541_mathcounts_warmup_5
+% Stable identity: aops-topic-1331541-q03
+A figure consists of a regular hexagon together with all nine of its diagonals, as shown.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair[] V; for(int k=0;k<6;++k) V[k]=dir(60*k);
+for(int i=0;i<6;++i) for(int j=i+1;j<6;++j) draw(V[i]--V[j],linewidth(0.7));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,linewidth(1));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+How many triangles in the figure have at least two congruent sides? (A triangle of the figure has its three sides lying along drawn segments, and its vertices at vertices of the hexagon or at crossing points of the segments.)

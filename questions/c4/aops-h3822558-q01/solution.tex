@@ -1,0 +1,27 @@
+Put $\varphi=\dfrac{1+\sqrt5}{2}$, $\alpha=\varphi-1=\dfrac{1}{\varphi}$, and $q_n=\lceil n\alpha\rceil$, with $q_0=0$. We will prove
+\[
+a_n=nq_n-(n-1)q_{n-1}.
+\]
+The difference $q_n-q_{n-1}$ is either $0$ or $1$. Define the right side as $b_n$. It is $q_n$ when the difference is zero and $n+q_n-1$ when the difference is one.
+
+First show that the $b_n$ use every positive integer exactly once. For a fixed $m\ge1$, the indices with $q_n=m$ satisfy
+\[
+(m-1)\varphi<n\le m\varphi.
+\]
+There are one or two such indices. At the first, $b_n=\lfloor(m-1)\varphi^2\rfloor+1$. A second index occurs exactly when
+$\lfloor m\alpha\rfloor-\lfloor(m-1)\alpha\rfloor=1$; the corresponding value $b_n=m$ ranges over $\lfloor j\varphi\rfloor+1$ for $j\ge1$.
+
+The two sequences $\lfloor j\varphi\rfloor$ and $\lfloor j\varphi^2\rfloor$, $j\ge1$, partition the positive integers. To prove this, for an integer $M\ge1$ their combined number of terms below $M$ is
+\[
+\left\lfloor\dfrac{M}{\varphi}\right\rfloor+
+\left\lfloor\dfrac{M}{\varphi^2}\right\rfloor=M-1,
+\]
+because the two irrational arguments sum to $M$. Taking differences for consecutive $M$ shows exactly one occurrence of each positive integer. Shifting by one, and including the first value $b_1=1$, proves the claim about $b_n$.
+
+Now verify the greedy rule by induction. The preceding sum telescopes to $(n-1)q_{n-1}$. If $q_n=q_{n-1}$, the required least positive residue is $q_n$, which is unused because the $b_n$ are distinct. If $q_n=q_{n-1}+1$, put $m=q_{n-1}$. The first two positive candidates in the required residue class are $m$ and $m+n=b_n$. The number $m$ has already appeared: if it is a second-occurrence value, its run has just ended; otherwise it is a first-occurrence value $b_j=m\ge j$, so $j\le m<n$. Thus $b_n$ is again the least unused candidate. The case $n=1$ is immediate. This proves the formula.
+
+Finally $q_{999}=618$ and $q_{1000}=619$, as follows, for example, from $0.618033<\alpha<0.618034$. Therefore
+\[
+a_{1000}=1000\cdot619-999\cdot618=1618,
+\]
+and the requested remainder is $\boxed{618}$.

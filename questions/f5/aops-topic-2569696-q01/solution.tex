@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2569696_how_to_do_this
+% Stable identity: aops-topic-2569696-q01
+Let the sides be positive integers $x$ and $y$ with $xy=36$. Since $x\ge1$ and $y\ge1$,
+\[(x-1)(y-1)\ge0\quad\Longrightarrow\quad xy-x-y+1\ge0\quad\Longrightarrow\quad x+y\le xy+1=37.\]
+So the perimeter $2(x+y)$ is at most $74$, with equality exactly when $x=1$ or $y=1$, i.e. for the $1\times36$ rectangle.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(36,0)--(36,1)--(0,1)--cycle,linewidth(0.8));label("$36$",(18,1),N);label("$1$",(36,0.5),E);
+draw((0,-9)--(6,-9)--(6,-3)--(0,-3)--cycle,linewidth(0.8));label("$6$",(3,-9),S);label("$6$",(6,-6),E);
+label("perimeter $74$",(18,-1.2),S,fontsize(9pt));label("perimeter $24$",(8,-6),E,fontsize(9pt));
+\end{asy}
+
+The greatest perimeter is $\boxed{74\text{ cm}}$. (The same argument shows that, for a fixed area, the long thin rectangle has the largest perimeter; the $6\times6$ square has the smallest, $24$ cm.)

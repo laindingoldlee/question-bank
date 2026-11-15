@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3188819_shooting_sports_competition
+% Stable identity: aops-topic-3188819-q01
+The arrival times are $\dfrac{PS}{320}$ and $0.625+\dfrac{PT}{320}$. Equality means $PS-PT=200$. If $d>200$, this is the branch of a hyperbola with foci $S,T$ on the side closer to $T$, with transverse semiaxis $100$ and focal half-distance $\dfrac{d}{2}$. If $d=200$, equality in the triangle inequality forces $P$ to lie on the ray from $T$ directly away from $S$, including $T$. If $d<200$, there are no such points because $|PS-PT|\le ST<200$. The drawing illustrates the hyperbola case $d=600$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+import graph;pair Sx=(-3,0),Tx=(3,0);real f(real y){return sqrt(1+y*y/8);}draw((-4,0)--(5,0),gray);draw(graph(new pair(real t){return(f(t),t);},-4,4),blue);dot("$S$",Sx,S);dot("$T$",Tx,S);label("$PS-PT=200$",(3,4),N);
+\end{asy}

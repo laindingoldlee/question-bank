@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2062865_largest_power_of_2
+% Stable identity: aops-topic-2062865-q01
+Work modulo $2^9=512$.
+
+By the binomial theorem, $17^{17}=(1+16)^{17}=1+17\cdot16+\dbinom{17}{2}16^2+(\text{multiples of }16^3)$. Here $16^3=2^{12}$ and $\dbinom{17}{2}16^2=136\cdot2^8=17\cdot2^{11}$ are multiples of $512$, so
+\[17^{17}\equiv1+272=273\pmod{512}.\]
+Similarly $15^{15}=-(1-16)^{15}$ and
+\[(1-16)^{15}\equiv1-15\cdot16+\dbinom{15}{2}16^2=1-240+105\cdot256\equiv1-240+256=17\pmod{512},\]
+since $105\cdot256=104\cdot256+256$ and $104\cdot256$ is a multiple of $512$. So $15^{15}\equiv-17\pmod{512}$, and
+\[17^{17}+15^{15}\equiv273-17=256\pmod{512}.\]
+Thus $17^{17}+15^{15}$ is divisible by $2^8=256$ but not by $2^9=512$. The largest power of $2$ dividing it is $\boxed{2^8=256}$.

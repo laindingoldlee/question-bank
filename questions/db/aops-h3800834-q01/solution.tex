@@ -1,0 +1,8 @@
+Number the vertices $A=0,B=1,\ldots,F=5,G=6$. Regard the position just before token one as $F$, since adding two reaches $A$. Seven equal jumps of any of $2,3,4,5$ return to the same vertex modulo seven, so every block begins from preceding position $F$ and ends at $F$.
+Since $2015=7\cdot287+6$, the token is sixth in block $288$. The jumps in that block are five, because $288$ is divisible by four. Its position is $5+6\cdot5=35\equiv0\pmod7$, namely $\boxed A$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] v;for(int i=0;i<7;++i){v.push(dir(90-360i/7));dot(v[i]);label("$"+substr("ABCDEFG",i,1)+"$",v[i],v[i]);}for(int i=0;i<7;++i)draw(v[i]--v[(i+1)%7],gray);draw(v[5]--v[0],blue,EndArrow);label("start of a block: F",(0,-1.6));
+\end{asy}

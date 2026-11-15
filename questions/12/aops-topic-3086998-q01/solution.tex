@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3086998_my_200th_post
+% Stable identity: aops-topic-3086998-q01
+The second equation gives $x=4(y-\dfrac{7}{8})^2+\dfrac{95}{16}>2$. The first then implies $y-x=x^2+x-6=(x+3)(x-2)>0$, so $y>x$. But the second also gives $x-y=4(y-1)^2+5>0$, a contradiction. Thus there are $\boxed0$ intersections.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+path p,q;for(int i=0;i<=100;++i){real t=-4+0.08*i;p=p--(t,t*t+2*t-6);}for(int i=0;i<=100;++i){real t=-1+0.05*i;q=q--(4*t*t-7*t+9,t);}draw(p,blue);draw(q,red);label("$y=x^2+2x-6$",(-2,8),W);label("$x=4y^2-7y+9$",(20,3),N);
+\end{asy}

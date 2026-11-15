@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1370995_integer_solutions
+% Stable identity: aops-topic-1370995-q01
+\textbf{$x\ge0$.} If $x<0$ then $3^x$ is not an integer, so $y^2=40+3^x$ is not an integer: impossible.
+
+\textbf{$x$ odd is impossible.} For odd $x\ge1$, $3^x\equiv3\pmod4$, so $y^2\equiv43\equiv3\pmod4$; but squares are $\equiv0$ or $1\pmod4$. Also $x=0$ gives $y^2=41$, not a square.
+
+\textbf{$x$ even.} Let $x=2k$ with $k\ge1$ and, by symmetry, $y\ge0$. Then
+\[
+(y-3^k)(y+3^k)=40 .
+\]
+The second factor is positive, so the first is too. The two factors differ by $2\cdot3^k$, which is even, so they have the same parity, and as their product is even they are both even. The factorisations of $40$ into two even factors are $2\cdot20$ and $4\cdot10$:
+\begin{itemize}
+\item $y-3^k=2$, $y+3^k=20$: $3^k=9$, $k=2$, $y=11$;
+\item $y-3^k=4$, $y+3^k=10$: $3^k=3$, $k=1$, $y=7$.
+\end{itemize}
+So the solutions are $\boxed{(x,y)=(2,7),\ (2,-7),\ (4,11),\ (4,-11)}$. Check: $49-9=40$ and $121-81=40$.

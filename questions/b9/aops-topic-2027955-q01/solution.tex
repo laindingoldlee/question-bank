@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2027955_how_many_bricks_needed
+% Stable identity: aops-topic-2027955-q01
+With all bricks in the same orientation, each edge of the cube is made of whole brick-lengths in one direction, so the cube's edge length must be a multiple of $18$, of $15$, and of $8$, hence a multiple of
+\[\operatorname{lcm}(18,15,8)=\operatorname{lcm}(2\cdot3^2,\ 3\cdot5,\ 2^3)=2^3\cdot3^2\cdot5=360\ \text{cm}.\]
+A $360$ cm cube is achieved with $\dfrac{360}{18}=20$ bricks along one edge, $\dfrac{360}{15}=24$ along another, and $\dfrac{360}{8}=45$ along the third.
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair o=(0.45,0.3);
+real a=3.6, h=3.6;
+pair p(real x,real y,real z){return (x,y)+z*o;}
+path front=p(0,0,0)--p(a,0,0)--p(a,h,0)--p(0,h,0)--cycle;
+draw(front,linewidth(0.9));
+draw(p(0,h,0)--p(0,h,a)--p(a,h,a)--p(a,h,0));
+draw(p(a,0,0)--p(a,0,a)--p(a,h,a));
+for(int i=1;i<20;++i) draw(p(a*i/20,0,0)--p(a*i/20,h,0),gray+0.3);
+for(int j=1;j<24;++j) draw(p(0,h*j/24,0)--p(a,h*j/24,0),gray+0.3);
+fill(p(0,0,0)--p(a/20,0,0)--p(a/20,h/24,0)--p(0,h/24,0)--cycle,red);
+label("$360$",p(a/2,0,0),S); label("$360$",p(0,h/2,0),W); label("$360$",p(a,0,a/2),SE);
+label("one brick: $18\times15$ face",(a/2,-0.75),S,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The least number of bricks is therefore
+\[20\cdot24\cdot45=\dfrac{360^3}{18\cdot15\cdot8}=\boxed{21600}.\]

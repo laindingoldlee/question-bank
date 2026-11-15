@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2323724_partitions_of_a_set
+% Stable identity: aops-topic-2323724-q01
+\textbf{(a)} Put the $n$ balls in a row. There are $n-1$ gaps between neighbouring balls. Choosing $k-1$ of these gaps and placing a divider in each splits the row into $k$ nonempty groups; give the groups, from left to right, to boxes $1,\dots,k$. Conversely, a distribution with all boxes nonempty, written as box $1$'s balls, then box $2$'s, and so on, determines the $k-1$ gaps where one box ends and the next begins. This is a bijection, so the number is $\dbinom{n-1}{k-1}$.
+
+\textbf{(b)} Given a distribution with counts $x_1,\dots,x_k\ge0$, add one extra ball to every box: the counts $x_i+1\ge1$ give a distribution of $n+k$ balls with all boxes nonempty. Removing one ball from each box reverses this, so the correspondence is a bijection. By (a) with $n+k$ balls the number is $\dbinom{n+k-1}{k-1}$.
+
+\textbf{(c)} Similarly, remove $m-1$ balls from every box: counts $x_i\ge m$ correspond to counts $x_i-(m-1)\ge1$ with total $n-(m-1)k\ge k$, and adding $m-1$ balls back reverses it. By (a) the number is
+\[\dbinom{n-(m-1)k-1}{k-1}=\dbinom{n-1-(m-1)k}{k-1}.\qquad\blacksquare\]

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2527370_stuffedmaths_problem_thread
+% Stable identity: aops-topic-2527370-q64
+By AM-GM applied to $2x^2$ and $3y^2$,
+\[36=2x^2+3y^2\ge2\sqrt{6x^2y^2}=2\sqrt6\,|xy|,\]
+so $xy\le\dfrac{36}{2\sqrt6}=3\sqrt6$. Equality needs $2x^2=3y^2=18$, i.e. $x=3$, $y=\sqrt6$ (with $xy>0$), which is on the curve. The maximum is $\boxed{3\sqrt6}$.
+
+In the sketch, the hyperbola $xy=3\sqrt6$ touches the ellipse at $(3,\sqrt6)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-5,0)--(6.3,0),Arrow(TeXHead));draw((0,-4)--(0,4.8),Arrow(TeXHead));
+draw(scale(sqrt(18),sqrt(12))*unitcircle,linewidth(0.8));
+real h(real x){return 3*sqrt(6)/x;}
+draw(graph(h,1.65,6),red+dashed);
+pair Q=(3,sqrt(6));dot(Q);
+label("$(3,\sqrt6)$",Q,NE,fontsize(9pt));
+label("$xy=3\sqrt6$",(4.5,h(4.5)),NE,red+fontsize(8pt));
+label("$2x^2+3y^2=36$",(-3.2,-3.0),SW,fontsize(8pt));
+label("$x$",(6.3,0),E);label("$y$",(0,4.8),N);
+\end{asy}

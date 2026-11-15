@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1408407_mathcounts
+% Stable identity: aops-topic-1408407-q01
+The ice has volume $\pi\cdot4^2\cdot10=160\pi$ cm$^3$, so the water has volume $0.92\cdot160\pi=147.2\pi$ cm$^3$. The water fills the same cylinder (radius $4$) to height $h$ with $16\pi h=147.2\pi$, so
+\[
+h=\dfrac{147.2}{16}=\boxed{9.2}\text{ cm}.
+\]
+More simply: the base is unchanged, so the height shrinks by the same $8\%$ as the volume, $0.92\cdot10=9.2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real r=4,h=10,w=9.2,q=0.4; pen wat=rgb(0.8,0.88,1);
+fill((-r,0)--(-r,w)--(r,w)--(r,0)--cycle,wat);
+fill(scale(r,q*r)*arc((0,0),1,180,360)--cycle,wat);
+fill(shift(0,w)*scale(r,q*r)*unitcircle,wat);
+draw(shift(0,w)*scale(r,q*r)*unitcircle,blue);
+draw(scale(r,q*r)*arc((0,0),1,180,360),linewidth(0.9));
+draw(scale(r,q*r)*arc((0,0),1,0,180),dashed);
+draw(shift(0,h)*scale(r,q*r)*unitcircle,linewidth(0.9));
+draw((-r,0)--(-r,h),linewidth(0.9)); draw((r,0)--(r,h),linewidth(0.9));
+draw((0,0)--(r,0),dashed); label("$4$",(r/2,0),S);
+draw((r+1.2,0)--(r+1.2,w),Arrows(4)); label("$9.2$",(r+1.2,w/2),E);
+draw((-r-1.2,0)--(-r-1.2,h),Arrows(4)); label("$10$",(-r-1.2,h/2),W);
+draw((r+0.9,w)--(r+1.5,w)); draw((r+0.9,0)--(r+1.5,0)); draw((-r-0.9,h)--(-r-1.5,h)); draw((-r-0.9,0)--(-r-1.5,0));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2243412_hockey_stick
+% Stable identity: aops-topic-2243412-q01
+\textbf{(a)} There are $\dbinom{n+1}{r+1}$ ways to choose a committee of $r+1$ people from $n+1$ people numbered $1,2,\ldots,n+1$. Sort the committees by the largest number $m$ in them; $m$ is at least $r+1$. Write $m=k+1$ with $r\le k\le n$. Once $m=k+1$ is fixed, the other $r$ members are any $r$ of the $k$ people numbered $1,\ldots,k$, which can be chosen in $\dbinom kr$ ways. Every committee is counted exactly once, so
+\[\binom{n+1}{r+1}=\sum_{k=r}^{n}\binom kr .\]
+
+\textbf{(b)} A path from $(0,0)$ to $(n-r,\,r+1)$ has $n+1$ steps, of which $r+1$ go up, so there are $\dbinom{n+1}{r+1}$ paths. Look at the last step up in a path: it goes from some point $(j,r)$ to $(j,r+1)$ with $0\le j\le n-r$, and after it all steps go right. So the path consists of an arbitrary path from $(0,0)$ to $(j,r)$, followed by one step up and then $n-r-j$ steps right. There are $\dbinom{j+r}{r}$ paths from $(0,0)$ to $(j,r)$, and different $j$ give different paths. With $k=j+r$ (so $r\le k\le n$),
+\[\binom{n+1}{r+1}=\sum_{j=0}^{n-r}\binom{j+r}{r}=\sum_{k=r}^{n}\binom kr. \qquad\blacksquare\]
+(In Pascal's triangle the terms $\dbinom rr,\ldots,\dbinom nr$ lie along a diagonal and $\dbinom{n+1}{r+1}$ just below and to the side of its end, which gives the ``hockey stick'' shape.)

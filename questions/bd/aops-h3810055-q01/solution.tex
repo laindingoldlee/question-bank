@@ -1,0 +1,10 @@
+Write $A=a_1,B=a_2,C=a_3$. We have $C\ge2$: if $C=1$, every step subtracts one until positivity fails. From the third term onward, all values are at least $C-1$, since values at least $C$ decrease by one and $C-1$ increases by a positive amount.
+
+Suppose first $A\ge C$. Then $B=A-1$. If $B<C$, necessarily $A=C,B=C-1$, and the second recurrence requires $a_{C-1}=1$. All terms in this case are at least $C-1$, forcing $C=2$, but then $a_{C-1}=a_1=2$, a contradiction. Thus $B\ge C$, and $C=B-1$, giving $A=C+2,B=C+1$.
+The initial four terms are $C+2,C+1,C,C-1$. If $C\ge6$, put $J=a_5=C-1+a_{C-1}\ge2C-2$. From index five the sequence decreases by one until it reaches $C-1$; since $C-1\ge5$ and $J\ge2C-2$, index $C-1$ lies in this descending stretch. Therefore $a_{C-1}=J-C+6$, and the defining equation for $J$ becomes $J=J+5$, impossible. Thus this case permits only $C=2,3,4,5$.
+
+Now suppose $A<C$, so $B=A+a_A>A$. If $B\ge C$, then $B=C+1$ and $a_A=C+1-A$. Values $A=1,2,3,4$ fail directly: respectively they give $C=1$, the impossible equation $B=2+B$, $B=C+3$, or $B=C+3$. For $A\ge5$, the tail bound $a_A\ge C-1$ contradicts $a_A=C+1-A\le C-4$. Hence $B<C$.
+If $A=1$, then $B=2$ and $C=B+a_B=4$. If $A=2$, $B=2+B$ is impossible. If $A\ge3$, the tail bound gives $B=A+a_A\ge A+C-1>C$, again impossible.
+
+It remains to verify existence. For $(A,B,C)=(1,2,4)$, the sequence begins $1,2,4,3,7,6,5,4,3,\ldots$, thereafter cycling through $7,6,5,4,3$. For $C=2,3,4,5$, start with $C+2,C+1,C,C-1$ and thereafter cycle down from $C+3$ to $C-1$. The required lookup is always $a_{C-1}=4$, as is checked in the initial four terms. These sequences satisfy every recurrence and stay positive.
+The possible sums are $3,7,9,11,13$, giving $\boxed{43}$.

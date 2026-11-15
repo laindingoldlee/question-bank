@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2778022_2021_winmac_team_round__winchester_math_competition
+% Stable identity: aops-topic-2778022-q08
+Expanding place values gives $ 210a+10b+112c+d=1111 $. Exhaustively checking the nine nonzero digits under the distinctness condition produces exactly $(a,b,c,d)=(2,1,6,9)$:
+\begin{verbatim}
+from itertools import permutations
+sol=[(a,b,c,d) for a,b,c,d in permutations(range(1,10),4)
+ if 210*a+10*b+112*c+d==1111]
+assert sol==[(2,1,6,9)]
+\end{verbatim}
+The unique possible final digit is 9, so the requested sum is $\boxed9 $.

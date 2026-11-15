@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1958432_congruence
+% Stable identity: aops-topic-1958432-q01
+\textbf{(a)} Take $B=(0,0)$ and $A=(\sqrt3,1)$, so $AB=2$ and $AB$ makes a $30^\circ$ angle with the $x$-axis. The points of the $x$-axis at distance $\sqrt2$ from $A$ satisfy $(x-\sqrt3)^2+1=2$, i.e. $x=\sqrt3\pm1$; call them $C_1$ and $C_2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),A=(sqrt(3),1),C1=(sqrt(3)-1,0),C2=(sqrt(3)+1,0);
+draw(B--C2,linewidth(0.9));draw(B--A,linewidth(0.9));
+draw(A--C1,blue+linewidth(0.9));draw(A--C2,red+linewidth(0.9));
+draw(arc(B,0.45,0,30));label("$30^\circ$",B,(5,1.4),fontsize(8pt));
+dot(A);dot(B);dot(C1);dot(C2);
+label("$B$",B,SW);label("$A$",A,N);label("$C_1$",C1,S,blue);label("$C_2$",C2,SE,red);
+label("$2$",(A+B)/2,NW);label("$\sqrt2$",(A+C1)/2,W,blue);label("$\sqrt2$",(A+C2)/2,E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangles $ABC_1$ and $ABC_2$ both have $AB=2$, $AC=\sqrt2$ and $\angle B=30^\circ$, but $BC_1=\sqrt3-1\ne\sqrt3+1=BC_2$, so they are not congruent. Hence two sides and a non-included angle do not determine a triangle (the ``ambiguous case'').
+
+\textbf{(b)} Put $c=AB$, $b=AC$, $x=BC$ and $\beta=\angle B$. By the law of cosines,
+\[
+b^2=c^2+x^2-2cx\cos\beta\quad\Longleftrightarrow\quad x^2-(2c\cos\beta)\,x+(c^2-b^2)=0 .
+\]
+So $BC$ is a positive root of this quadratic, whose coefficients depend only on $b$, $c$, $\beta$. The product of its roots is $c^2-b^2\le0$ when $b\ge c$. If $b>c$ the roots have opposite signs; if $b=c$ the roots are $0$ and $2c\cos\beta$. In either case there is at most one positive root, so $BC$ is determined by $b,c,\beta$. Applying this to both triangles gives $BC=EF$, and then the triangles are congruent by SSS. $\blacksquare$

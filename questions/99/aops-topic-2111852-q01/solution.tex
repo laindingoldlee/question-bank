@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2111852_bash_problem_in_my_opinion
+% Stable identity: aops-topic-2111852-q01
+Work in centimetres: the length is $h=200$ cm, the internal radius is $r=2$ cm, and the hose is the region between two cylinders with a common axis.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real R=2.5, r=2, a=0.8, L=8;
+path oe=shift(0,0)*xscale(a)*yscale(R)*unitcircle;
+path ie=shift(0,0)*xscale(a*r/R)*yscale(r)*unitcircle;
+fill(oe,lightgray); unfill(ie); filldraw(ie,white,linewidth(0.8));
+draw(oe,linewidth(0.9));
+draw((0,R)--(L,R),linewidth(0.9)); draw((0,-R)--(L,-R),linewidth(0.9));
+draw(shift(L,0)*xscale(a)*yscale(R)*arc((0,0),1,-90,90),linewidth(0.9));
+draw(shift(L,0)*xscale(a)*yscale(R)*arc((0,0),1,90,270),dashed+gray);
+draw((0,0)--(0,r),blue,Arrow(5)); label("$r=2$",(0.85,r*0.5),E,blue+fontsize(8pt)); draw((0.9,r*0.5)--(0.05,r*0.5),blue+dotted);
+draw((0,0)--(-a*0.6,-R*0.8),red,Arrow(5)); label("$R=2.5$",(-a*0.6,-R*0.8),W,red+fontsize(8pt));
+dot((0,0));
+draw((0,-R-0.7)--(L,-R-0.7),Arrows(5)); label("$200$ cm",(L/2,-R-0.7),S,fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(a)} The external radius is $R=2+0.5=\boxed{2.5\text{ cm}}$.
+
+\textbf{(b)} The material is the outer cylinder minus the inner one:
+\[V=\pi\left(R^2-r^2\right)h=\pi(6.25-4)\cdot200=\boxed{450\pi\text{ cm}^3}\approx1414\text{ cm}^3 .\]
+
+\textbf{(c)} The outer curved surface has area $2\pi Rh=2\pi\cdot2.5\cdot200=1000\pi$, the inner one $2\pi rh=2\pi\cdot2\cdot200=800\pi$, and the two ring-shaped ends $2\pi\left(R^2-r^2\right)=4.5\pi$. The total surface area is
+\[1000\pi+800\pi+4.5\pi=\boxed{1804.5\pi\text{ cm}^2}\approx5669\text{ cm}^2 .\]

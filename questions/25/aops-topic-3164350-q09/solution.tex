@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3164350_2022_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3164350-q09
+Write $A=(0,0),L=(s,0),E=(s,s),U=(u,v)$ and $z=s^2$. Perpendicularity gives $u^2-su+v^2=0$. From $UL^2=3136$ obtain $su=z-3136$; subtracting $UL^2$ from $UE^2=4225$ gives $sv=\dfrac{z-1089}{2}$. Substitution in $UL^2$ yields $3136^2+\dfrac{(z-1089)^2}{4}=3136z$, or $(z-3665)(z-11057)=0$. For both positive roots, $u=\dfrac{z-3136}{\sqrt z}$ and $v=\dfrac{z-1089}{2\sqrt z}$ lie strictly between zero and $s$, so both are valid. Their sum is $\boxed{14722}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real z=3665,s=sqrt(z);pair A=(0,0),L=(s,0),Ee=(s,s),X=(0,s),U=((z-3136)/s,(z-1089)/(2s));draw(A--L--Ee--X--cycle);draw(A--U--L^^U--Ee,blue);label("$A$",A,SW);label("$L$",L,SE);label("$E$",Ee,NE);label("$X$",X,NW);label("$U$",U,W);label("one valid configuration",(s/2,-s/7));
+\end{asy}

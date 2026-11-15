@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2361776_30_posts_circles
+% Stable identity: aops-topic-2361776-q14
+The $90^\circ$ arc $AB$ belongs to a circle with centre $C$ and $\angle ACB=90^\circ$, with $C$ on the perpendicular bisector of $AB$ on the side away from the bulge of the arc. Triangle $ACB$ is right isosceles with hypotenuse $AB=120$, so its legs are $CA=CB=60\sqrt2$ (the radius of the arc) and its area is $\dfrac12(60\sqrt2)^2=3600$. Its height from $C$ is $60$, so $C$ is the point of the original circle opposite the arc, and the arc rises $60\sqrt2-60\approx24.9<60$ above $AB$: it stays inside the semicircle on its side.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real R=60; pair O=(0,0), A=(-R,0), B=(R,0), Cc=(0,-R); real rr=R*sqrt(2);
+path arcAB=arc(Cc,rr,135,45,CW);
+fill(A--B--reverse(arcAB)--cycle,rgb(0.85,0.92,1));
+fill(arcAB--arc(O,R,0,180)--cycle,rgb(1,0.9,0.8));
+draw(circle(O,R)); draw(A--B,linewidth(0.9)); draw(arcAB,red+linewidth(0.9));
+draw(Cc--A,dotted); draw(Cc--B,dotted); dot(Cc); label("$C$",Cc,S);
+draw(arc(Cc,10,45,135),dotted); label("$90^\circ$",Cc+15*dir(90),fontsize(8pt));
+dot(A); dot(B); dot(O); label("$A$",A,W); label("$B$",B,E); label("$O$",O,S);
+label("$1800\pi-3600$",(0,10),fontsize(7pt)); label("$3600$",(0,42),fontsize(8pt)); label("$1800\pi$",(0,-25),fontsize(8pt));
+\end{asy}
+
+\textbf{Region between the diameter and the arc} (blue): the quarter of the disc of radius $60\sqrt2$ cut off by the chord $AB$, that is, the sector $CAB$ minus triangle $CAB$:
+\[\dfrac14\pi(60\sqrt2)^2-3600=1800\pi-3600\approx2054.9.\]
+\textbf{Region between the arc and the semicircle} (orange): the semicircle has area $\dfrac12\pi\cdot60^2=1800\pi$, so this region has area $1800\pi-(1800\pi-3600)=3600$.
+
+\textbf{The other semicircle} has area $1800\pi\approx5654.9$.
+
+The smallest region is the one between the diameter and the arc, with area $\boxed{1800\pi-3600}\approx2054.9$.

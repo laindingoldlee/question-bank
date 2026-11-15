@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1280217_distance_of_points
+% Stable identity: aops-topic-1280217-q01
+It suffices to find three of the points $X,Y,Z$ with $\angle XYZ\ge90^\circ$: then by the law of cosines
+\[
+XZ^2=XY^2+YZ^2-2\,XY\cdot YZ\cos\angle XYZ\ge XY^2+YZ^2\ge2+2=4,
+\]
+so $XZ\ge2$.
+\begin{itemize}
+\item If three of the points are collinear, the middle one sees the other two at an angle of $180^\circ$.
+\item If the four points are the vertices of a convex quadrilateral, its angles sum to $360^\circ$, so one angle is at least $90^\circ$.
+\item Otherwise one point $Y$ lies inside the triangle formed by the other three. The three angles at $Y$ subtended by the sides sum to $360^\circ$, so one is at least $120^\circ$.
+\end{itemize}
+In every case the required angle exists. $\blacksquare$ The bound is sharp: a square of side $\sqrt2$ has diagonals exactly $2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair P1=(0,0),P2=(1.414,0),P3=(1.414,1.414),P4=(0,1.414); draw(P1--P2--P3--P4--cycle,gray); draw(P1--P3,red); dot(P1); dot(P2); dot(P3); dot(P4);
+label("$\sqrt2$",(P1+P2)/2,S); label("$2$",(P1+P3)/2,NW,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1561480_random_questions_i_cant_solve
+% Stable identity: aops-topic-1561480-q28
+An exterior angle of a regular $n$-gon measures $\dfrac{360^\circ}{n}$ (the exterior angles add up to $360^\circ$), and an interior angle measures $180^\circ-\dfrac{360^\circ}{n}$. The condition is
+\[
+180^\circ-\dfrac{360^\circ}{n}<\dfrac{360^\circ}{n}\qquad\Longleftrightarrow\qquad180<\dfrac{720}{n}\qquad\Longleftrightarrow\qquad n<4 .
+\]
+So only $n=3$ works: in an equilateral triangle the interior angle is $60^\circ$ and the exterior angle $120^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(2,0),C=(1,sqrt(3));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--(3.2,0),dashed);
+draw(arc(B,0.35,0,120),red);label("$120^\circ$",B+0.38*dir(60),dir(60),red);
+draw(arc(B,0.3,120,180),blue);label("$60^\circ$",B+0.32*dir(150),dir(150),blue);
+label("$A$",A,SW);label("$B$",B,S);label("$C$",C,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(For the square both angles are $90^\circ$, and for $n\ge5$ the interior angle is the larger one.) The answer is $\boxed{1}$.

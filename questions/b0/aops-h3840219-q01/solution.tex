@@ -1,0 +1,10 @@
+Here $1\le a\le9$ and $0\le b,c\le9$. Because $\max(a,b)\ge b\ge\min(b,c)$, the difference is $0,4$, or $8$.
+
+For fixed $b$, put $M=\max(a,b)$ and $m=\min(b,c)$. The number of choices of $a$ yielding $M$ is $b$ when $M=b$, and $1$ when $M>b$; when $b=0$, the first count is zero. The number of choices of $c$ yielding $m$ is $10-b$ when $m=b$, and $1$ when $m<b$. Sum their products over $0\le m\le b\le M\le9$ with $M-m\in\{0,4,8\}$:
+\[
+\begin{array}{c|rrrrrrrrrr}
+b&0&1&2&3&4&5&6&7&8&9\\ \hline
+\text{count}&20&29&28&33&39&40&35&32&34&27
+\end{array}
+\]
+For example at $b=0$, only $M=4,8$ work and either allows all ten values of $c$, giving $20$. Adding the row gives $\boxed{317}$.

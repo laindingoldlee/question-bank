@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1610052_middle_school_math__rhombus
+% Stable identity: aops-topic-1610052-q01
+The diagonals of a rhombus bisect each other at right angles, at the centre $O$. So the rhombus consists of four right triangles with legs $15$ and $20$, and each side has length $\sqrt{15^2+20^2}=25$.
+
+By symmetry the inscribed circle has centre $O$, and its radius $r$ is the distance from $O$ to a side, i.e. the altitude to the hypotenuse of one of the right triangles.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(20,0),B=(0,15),C=(-20,0),D=(0,-15),O=(0,0);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,dashed);draw(B--D,dashed);
+draw(circle(O,12),blue);
+pair H=(dot(B-O,A-B)*A-dot(A-O,A-B)*B)/dot(A-B,A-B);
+pair F=12*unit(H);
+draw(O--F,red);
+pair u=unit(A-B),v=unit(O-F);
+draw(F+1.2*u--F+1.2*u+1.2*v--F+1.2*v,red);
+label("$12$",(O+F)/2,1.5*(rotate(-90)*unit(F-O)),red);
+dot(O);label("$O$",O,NE);
+label("$20$",(7,0),S);label("$15$",(O+B)/2,W);label("$25$",(A+B)/2,NE);
+label("$A$",A,E);label("$B$",B,N);label("$C$",C,W);label("$D$",D,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Computing the area of triangle $OAB$ in two ways, $\dfrac{1}{2}\cdot15\cdot20=\dfrac{1}{2}\cdot25\cdot r$, so $r=12$. The area of the circle is
+\[
+\pi\cdot12^2=\boxed{144\pi}.
+\]

@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2007450_graphing_problem
+% Stable identity: aops-topic-2007450-q01
+Write $r=\sqrt{x^2+y^2}$, so $r^2=x^2+y^2$. Pair the first and fourth factors and the second and third factors under the root:
+\[
+\dfrac{(x+y+r)(x+y-r)}{4}=\dfrac{(x+y)^2-r^2}{4}=\dfrac{2xy}{4}=\dfrac{xy}{2},
+\]
+\[
+\dfrac{(r+(x-y))(r-(x-y))}{4}=\dfrac{r^2-(x-y)^2}{4}=\dfrac{2xy}{4}=\dfrac{xy}{2}.
+\]
+So the product under the square root is $\left(\dfrac{xy}{2}\right)^2\ge0$; the right side is defined for every point and equals $\dfrac{|xy|}{2}$. (For $x,y>0$ this is Heron's formula for the right triangle with legs $x,y$.) The equation becomes
+\[
+\dfrac{xy}{2}=\dfrac{|xy|}{2}\quad\Longleftrightarrow\quad xy\ge0 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+fill((0,0)--(3,0)--(3,3)--(0,3)--cycle,palegray);
+fill((0,0)--(-3,0)--(-3,-3)--(0,-3)--cycle,palegray);
+draw((-3.3,0)--(3.3,0),linewidth(1.1),Arrows(TeXHead));
+draw((0,-3.3)--(0,3.3),linewidth(1.1),Arrows(TeXHead));
+label("$x$",(3.3,0),E);label("$y$",(0,3.3),N);
+label("$xy\ge 0$",(1.5,1.5));label("$xy\ge 0$",(-1.5,-1.5));
+label("$xy<0$",(-1.5,1.5),gray(0.4));label("$xy<0$",(1.5,-1.5),gray(0.4));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Therefore the graph is $\boxed{\{(x,y): xy\ge0\}}$: the closed first and third quadrants, including both coordinate axes (shaded above).

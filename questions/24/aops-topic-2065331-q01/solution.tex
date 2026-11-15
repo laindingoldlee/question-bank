@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2065331_inequality
+% Stable identity: aops-topic-2065331-q01
+\emph{Algebraically.} Adding $1$ to both sides preserves the inequality: $x<4$.
+
+\emph{Graphically.} Draw the line $y=x-1$ and the horizontal line $y=3$. They meet at $x=4$. The line $y=x-1$ lies strictly below $y=3$ exactly to the left of this point.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-3,0)--(7,0),gray(0.6),Arrow); draw((0,-4)--(0,6),gray(0.6),Arrow);
+label("$x$",(7,0),E); label("$y$",(0,6),N);
+draw((-3,-4)--(7,6),blue+linewidth(0.9)); draw((-3,3)--(7,3),red);
+draw((-3,0)--(4,0),deepgreen+linewidth(2.5)); 
+filldraw(circle((4,0),0.15),white,deepgreen); dot((4,3));
+draw((4,3)--(4,0),dashed);
+label("$y=x-1$",(6.2,5.2),SE,blue); label("$y=3$",(-3,3),N,red); label("$4$",(4,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Both methods give $\boxed{x<4}$ (the open circle shows that $4$ itself is excluded).

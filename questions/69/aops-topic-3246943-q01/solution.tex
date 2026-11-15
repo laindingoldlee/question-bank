@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3246943_really_hard_geometry_problem
+% Stable identity: aops-topic-3246943-q01
+The circle centres are $R=\dfrac{16}{\sqrt3}$ from $O$. In the orientation having a side facing each circle centre, let the triangle inradius be $r$. The distance from that centre to its facing side is $R-r$, so non-overlap requires $r\le R-8$. This bound is attained by taking all three sides tangent to the three circles. Each resulting vertex also lies outside all three disks, and each disk lies wholly beyond its corresponding supporting side, so the triangle is in the gap. Its area is $3\sqrt3r^2$, giving $\boxed{3\sqrt3(\dfrac{16}{\sqrt3}-8)^2=448\sqrt3-768}$. The reverse orientation has vertices facing the circle centres; its circumradius is at most $R-8$, so its inradius is at most half that value and cannot improve the result.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real R=16/sqrt(3),r=R-8;pair O=(0,0);for(int k=0;k<3;++k)draw(circle(R*dir(90+120*k),8),gray);pair A=2r*dir(30),B=2r*dir(150),C=2r*dir(270);filldraw(A--B--C--cycle,lightblue,blue);dot(O);label("$O$",O,E);label("$r$",(0,r/2),W);draw(O--(0,r),dashed);
+\end{asy}

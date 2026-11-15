@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2491168_probability_problem
+% Stable identity: aops-topic-2491168-q01
+The numbers of correct answers in the three rounds are binomial, and the rounds are independent, so the probability is the product of the three probabilities of advancing:
+\[P_1=\dfrac{1}{2^{31}}\sum_{k=24}^{31}\dbinom{31}{k}=\dfrac{\dbinom{31}{7}+\dbinom{31}{6}+\cdots+\dbinom{31}{0}}{2^{31}}=\dfrac{3572224}{2^{31}}=\dfrac{6977}{2^{22}},\]
+using $\dbinom{31}{k}=\dbinom{31}{31-k}$ and $2629575+736281+169911+31465+4495+465+31+1=3572224$;
+\[P_2=\dfrac{1}{2^{21}}\sum_{k=16}^{21}\dbinom{21}{k}=\dfrac{20349+5985+1330+210+21+1}{2^{21}}=\dfrac{27896}{2^{21}}=\dfrac{3487}{2^{18}};\]
+\[P_3=\dfrac{\dbinom{10}{8}+\dbinom{10}{9}+\dbinom{10}{10}}{2^{10}}=\dfrac{45+10+1}{1024}=\dfrac{7}{128}.\]
+Hence the probability is
+\[P_1P_2P_3=\dfrac{6977\cdot3487\cdot7}{2^{22}\cdot2^{18}\cdot2^7}=\boxed{\dfrac{170301593}{2^{47}}}\approx1.21\times10^{-6},\]
+about $1$ in $826000$.

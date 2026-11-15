@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2718491_volume_of_this_prism
+% Stable identity: aops-topic-2718491-q01
+A regular hexagon of side $4$ consists of six equilateral triangles of side $4$, so its area is $6\cdot\dfrac{\sqrt3}{4}\cdot4^2=24\sqrt3\text{ cm}^2$ (its apothem is $2\sqrt3$). The volume is $24\sqrt3\cdot15=\boxed{360\sqrt3\text{ cm}^3}\approx623.5\text{ cm}^3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+real hh=6;pair v(int k,real z){return (4*Cos(60*k),1.6*Sin(60*k)+z);}
+for(int k=0;k<6;++k){draw(v(k,hh)--v(k+1,hh),linewidth(0.8));}
+for(int k=3;k<6;++k){draw(v(k,0)--v(k+1,0),linewidth(0.8));}
+for(int k=0;k<3;++k){draw(v(k,0)--v(k+1,0),dashed);}
+for(int k=0;k<6;++k){if(k==1||k==2)draw(v(k,0)--v(k,hh),dashed);else draw(v(k,0)--v(k,hh),linewidth(0.8));}
+label("$4$",(v(4,0)+v(5,0))/2,S,fontsize(8pt));label("$15$",(v(0,0)+v(0,hh))/2,E,fontsize(8pt));
+\end{asy}
+
+(The post also gives the apothem as $4.5$ cm, which is inconsistent with a side of $4$ cm; using it would give $\dfrac12\cdot24\cdot4.5\cdot15=810\text{ cm}^3$.)

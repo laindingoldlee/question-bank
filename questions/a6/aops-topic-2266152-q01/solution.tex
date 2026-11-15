@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2266152_difference_of_circumcircle_area_and_incircle_area
+% Stable identity: aops-topic-2266152-q01
+Since $8^2+15^2=64+225=289=17^2$, the triangle has a right angle opposite the side $17$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), B=(15,0), A=(0,8);
+pair O=(A+B)/2, I=(3,3);
+draw(circle(O,8.5),gray); draw(circle(I,3),blue);
+draw(A--B--C--cycle,linewidth(0.9));
+draw((0,0.8)--(0.8,0.8)--(0.8,0));
+draw(O--B,red); draw(I--(3,0),blue+dashed);
+dot(O,red); dot(I,blue);
+label("$A$",A,NW); label("$B$",B,E); label("$C$",C,SW);
+label("$8$",(A+C)/2,W); label("$15$",(10,0),S); label("$17$",A+0.28*(B-A),NE);
+label("$O$",O,N,red); label("$R$",(O+B)/2,N,red); label("$I$",I,N,blue); label("$r$",(3,1.5),E,blue);
+\end{asy}
+
+\textbf{(a)} The hypotenuse of a right triangle is a diameter of its circumcircle, so $R=\dfrac{17}{2}$ and the area is $\pi R^2=\boxed{\dfrac{289\pi}{4}}$.
+
+\textbf{(b)} The area of the triangle is $K=\dfrac{1}{2}\cdot8\cdot15=60$ and its semiperimeter is $s=\dfrac{8+15+17}{2}=20$. From $K=rs$, $r=3$. The incircle has area $\boxed{9\pi}$.
+
+\textbf{(c)} The difference is $\dfrac{289\pi}{4}-9\pi=\dfrac{289\pi-36\pi}{4}=\boxed{\dfrac{253\pi}{4}}$.

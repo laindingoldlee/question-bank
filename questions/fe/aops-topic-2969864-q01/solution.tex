@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2969864_cool_geo
+% Stable identity: aops-topic-2969864-q01
+Translate diagonal $BD$ by the vector $\overrightarrow{DC}$: $D$ goes to $C$ and $B$ goes to a point $E$ with $\overrightarrow{BE}=\overrightarrow{DC}$ and $CE\parallel BD$, $CE=BD$.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(5,0),C=(3.2,2.4),D=(0.5,2.4);pair E=B+(C-D);
+draw(A--B--C--D--cycle);draw(A--C);draw(B--D);draw(B--E,dotted);draw(C--E,dashed);
+label("$A$",A,SW);label("$B$",B,S);label("$C$",C,N);label("$D$",D,NW);label("$E$",E,SE);
+\end{asy}
+
+Since $\overrightarrow{DC}$ points the same way as $\overrightarrow{AB}$, $E$ lies on line $AB$ beyond $B$ and $AE=AB+CD$. In triangle $ACE$,
+\[AC^2+CE^2=AC^2+BD^2=(AB+CD)^2=AE^2,\]
+so by the converse of Pythagoras $\angle ACE=90^\circ$. As $CE\parallel BD$, $AC\perp BD$. $\blacksquare$

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3164343_2020_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3164343-q06
+Take $A=(0,0),B=(10,0),C=(5,0)$. One tangent point is $P=(\dfrac{9}{5},\dfrac{12}{5})$, and a unit direction along the line toward $C$ is $u=(\dfrac{4}{5},-\dfrac{3}{5})$. Projection of $B-P$ onto $u$ is 8, and its perpendicular distance to the line is 3. Thus the chord of the radius 13 circle has half-length $\sqrt{169-9}=4\sqrt{10}$, and its intersection parameters from $P$ are $8\pm4\sqrt{10}$. Since $P$ lies between the intersections, the smaller distance is $\boxed{4\sqrt{10}-8}$. Reflection handles the other tangent with the same distances.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(10,0),C=(5,0),P=(9/5,12/5),u=(4/5,-3/5),X=P+(8-4*sqrt(10))*u,Y=P+(8+4*sqrt(10))*u;draw(circle(A,3)^^circle(B,13));draw(X--Y);draw((X.x,-X.y)--(Y.x,-Y.y),gray+dashed);draw(A--P^^A--B,dashed);label("$A$",A,W);label("$B$",B,E);label("$C$",C,S);label("$P$",P,N);label("$X$",X,NW);label("$Y$",Y,SE);
+\end{asy}

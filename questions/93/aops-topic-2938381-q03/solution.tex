@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2938381_some_problems
+% Stable identity: aops-topic-2938381-q03
+Expanding, $x^2+y^2+4x-4y=0$ and $x^2+y^2-6x+2y=0$. Both pass through $O=(0,0)$. Subtracting gives $10x-6y=0$, i.e. $y=\dfrac53x$, and substituting gives the second point $\left(\dfrac{12}{17},\dfrac{20}{17}\right)$. So $P=(0,0)$ and $Q=\left(\dfrac{12}{17},\dfrac{20}{17}\right)$.
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(-2,2),B=(3,-1);draw(circle(A,sqrt(8)));draw(circle(B,sqrt(10)));pair P=(0,0),Q=(12/17,20/17);draw(A--B,dashed);draw(P--Q,linewidth(1));
+dot(A);dot(B);dot(P);dot(Q);label("$A$",A,W);label("$B$",B,E);label("$P$",P,SW);label("$Q$",Q,N);
+\end{asy}
+
+$PQ$ has slope $\dfrac53$ and $AB$ has slope $-\dfrac35$, so they are perpendicular: $\boxed{90^\circ}$. (In general, the common chord is perpendicular to the line of centres, since $A$ and $B$ are both equidistant from $P$ and $Q$.)

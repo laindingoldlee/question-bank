@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2577870_lamboreghinis_problem_thread_math_and_programming
+% Stable identity: aops-topic-2577870-q08
+Its centre is $a=4+2i$ and circumradius 4. The vertices form $a+4\omega^k$ for $k=0,\ldots,7$, where $\omega^8=1$ is primitive. Since $\prod_{k=0}^7(z-4\omega^k)=z^8-4^8$, and negating the root set leaves it unchanged, the product is $a^8-4^8$. Repeated squaring gives $a^2=12+16i$, $a^4=-112+384i$, and $a^8=-134912-86016i$. Hence the answer is $\boxed{-200448-86016i}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+path p;for(int k=0;k<8;++k)p=p--((4,2)+4*dir(45*k));draw(p--cycle);dot((4,2));label("$4+2i$",(4,2),S);label("$2i$",(0,2),W);label("$8+2i$",(8,2),E);
+\end{asy}

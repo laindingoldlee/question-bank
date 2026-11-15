@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h1463790_hard_geometry_problem
+% Stable identity: aops-topic-1463790-q01
+Use coordinates with the centre of the hexagon at the origin and circumradius $1$:
+\[
+A=(1,0),\quad B=\left(\dfrac{1}{2},\dfrac{\sqrt3}{2}\right),\quad C=\left(-\dfrac{1}{2},\dfrac{\sqrt3}{2}\right),\quad E=\left(-\dfrac{1}{2},-\dfrac{\sqrt3}{2}\right).
+\]
+Then
+\[
+M=A+r(C-A)=\left(1-\dfrac{3r}{2},\ \dfrac{\sqrt3\,r}{2}\right),\qquad N=C+r(E-C)=\left(-\dfrac{1}{2},\ \dfrac{\sqrt3}{2}-\sqrt3\,r\right).
+\]
+The points $B$, $M$, $N$ are collinear exactly when the vectors
+\[
+M-B=\left(\dfrac{1-3r}{2},\ \dfrac{\sqrt3(r-1)}{2}\right),\qquad N-B=\left(-1,\ -\sqrt3\,r\right)
+\]
+are parallel, that is, when
+\[
+\dfrac{1-3r}{2}\cdot\left(-\sqrt3\,r\right)-\dfrac{\sqrt3(r-1)}{2}\cdot(-1)=\dfrac{\sqrt3}{2}\left(3r^2-r+r-1\right)=\dfrac{\sqrt3}{2}\left(3r^2-1\right)=0 .
+\]
+Since $0<r<1$, this gives
+\[
+r=\boxed{\dfrac{1}{\sqrt3}=\dfrac{\sqrt3}{3}} .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=dir(0),B=dir(60),C=dir(120),D=dir(180),Ee=dir(240),F=dir(300);
+real r=1/sqrt(3); pair M=A+r*(C-A), Nn=C+r*(Ee-C);
+draw(A--B--C--D--Ee--F--cycle,linewidth(0.9));
+draw(A--C,linewidth(0.6)); draw(C--Ee,linewidth(0.6));
+draw(B--Nn,red+linewidth(0.9));
+dot(A);dot(B);dot(C);dot(D);dot(Ee);dot(F);dot(M,red);dot(Nn,red);
+label("$A$",A,E); label("$B$",B,NE); label("$C$",C,NW); label("$D$",D,W); label("$E$",Ee,SW); label("$F$",F,SE);
+label("$M$",M,S,red); label("$N$",Nn,W,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

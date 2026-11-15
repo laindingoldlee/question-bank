@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3311200_right_triangles_with_the_same_hypotenuse
+% Stable identity: aops-topic-3311200-q01
+Both right-angle vertices lie on the circle with the common hypotenuse as diameter, so their distance is at most the hypotenuse $c$. We will attain $\dfrac{1443}{17}>84$, so only $85\le c<100$ need be checked. Testing $a^2+b^2=c^2$ with $1\le a\le b<c$ gives: for 85 the leg pairs are $(13,84),(36,77),(40,75),(51,68)$; for 87,89,90,91,95,97 there is respectively one pair $(60,63),(39,80),(54,72),(35,84),(57,76),(65,72)$; all other values in this range have none. This finite check can be reproduced by looping over $c=85,\ldots,99$ and $a=1,\ldots,\lfloor\dfrac{c}{\sqrt2}\rfloor$ and testing whether $c^2-a^2$ is a square. Thus only 85 allows noncongruent triangles. For sorted leg pairs $(a,b),(u,v)$ with common hypotenuse $c$, the maximum over reflected placements is $\dfrac{au+bv}{c}$: place the vertices at $(\dfrac{a^2}{c},\dfrac{ab}{c})$ and $(\dfrac{v^2}{c},-\dfrac{uv}{c})$ and expand their distance. This placement maximizes the chord because their smaller acute angles differ as little as possible. The six dot products for the four listed 85-pairs are $6936,6820,6375,7215,7072,7140$. The maximum is 7215, from $(36,77),(40,75)$, giving $\boxed{\dfrac{7215}{85}=\dfrac{1443}{17}}$.
+\begin{asy}
+import geometry;
+usepackage("amsmath");
+size(270);
+pair A=(0,0),B=(85,0),C=(1296/85.0,2772/85.0),D=(5625/85.0,-3000/85.0);draw(circle((42.5,0),42.5),gray);draw(A--C--B--D--A);draw(A--B^^C--D,dashed);label("$A$",A,W);label("$B$",B,E);label("$C$",C,N);label("$D$",D,S);label("$85$",(42.5,0),N);
+\end{asy}

@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3326257_mock_state_problems
+% Stable identity: aops-topic-3326257-q24
+The fixed intermediate point separates the minimization into two independent pieces. Reflect $(0,0)$ across $y=3$ to $(0,6)$. The first piece has minimum length $\sqrt{8^2+11^2}=\sqrt{185}$, achieved by the straight segment to $(8,-5)$ folded across the line. Reflect $(8,-5)$ across $x=6$ to $(4,-5)$. The second piece has minimum length $\sqrt{12^2+5^2}=13$. Both straight segments cross their reflecting lines, so both bounds are attained. The answer is $13+\sqrt{185}$ and $\boxed{a+b=198}$.
+\begin{asy}
+import geometry;
+usepackage("amsmath");
+size(270);
+pair A=(0,0),Ap=(0,6),B=(8,-5),Bp=(4,-5),C=(16,-10),P=(24/11.0,3),Q=(6,-35/6.0);draw((-2,3)--(17,3),gray);draw((6,-12)--(6,7),gray);draw(A--P--B--Q--C,blue);draw(Ap--B^^Bp--C,dashed);label("$A$",A,W);label("$A^{\prime}$",Ap,N);label("$B$",B,E);label("$B^{\prime}$",Bp,W);label("$C$",C,E);label("$P$",P,N);label("$Q$",Q,S);
+\end{asy}

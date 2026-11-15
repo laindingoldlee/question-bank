@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2319369_100th_post_problems
+% Stable identity: aops-topic-2319369-q38
+The man's feet are at the top of the building, at height $200\tan44^\circ$, and his head is at height $200\tan45^\circ=200$ feet. So his height is
+\[200\left(\tan45^\circ-\tan44^\circ\right)\approx200(1-0.96569)\approx\boxed{6.86\text{ feet}}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair T=(0,0), Bd=(10,0), Top=(10,7), Man=(10,10);
+draw(T--Bd,linewidth(0.9)); draw(Bd--Top,linewidth(1.6));
+draw(Top--Man,red+linewidth(2));
+draw(T--Top,dashed); draw(T--Man,dashed);
+draw(Bd+(-0.4,0)--Bd+(-0.4,0.4)--Bd+(0,0.4));
+draw(arc(T,3.4,0,degrees(atan(0.7)))); draw(arc(T,1.9,0,45));
+label("$44^\circ$",T+3.4*dir(15),E,fontsize(8pt)); label("$45^\circ$",T+1.9*dir(45),NW,fontsize(8pt));
+label("transit",T,SW); label("$200$ ft",(5,0),S);
+label("building",(10,3.5),E); label("man",(10,8.5),E,red);
+label("(not to scale)",(5,-2.2),fontsize(7pt));
+\end{asy}

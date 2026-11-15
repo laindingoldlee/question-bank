@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1560922_probability_and_predictions
+% Stable identity: aops-topic-1560922-q01
+\textbf{(a)} The five outcomes have total probability $1$, so
+\[
+P(\text{consolation})=1-(0.000000123+0.000005667+0.020349976+0.026)=1-0.046355766=\boxed{0.953644234}.
+\]
+
+\textbf{(b)} The number of players in a category with probability $p$ is a binomial random variable with $n=100$ trials, with expected value $100p$:
+\[
+\begin{array}{l|c|c}
+\text{category} & p & \text{expected number}\\\hline
+\text{first} & 0.000000123 & 0.0000123\\
+\text{second} & 0.000005667 & 0.0005667\\
+\text{third} & 0.020349976 & 2.0349976\\
+\text{consolation} & 0.953644234 & 95.3644234\\
+\text{none} & 0.026 & 2.6
+\end{array}
+\]
+
+\textbf{(c)} For a binomial variable $X$ with $n$ trials, $\dfrac{P(X=k)}{P(X=k-1)}=\dfrac{(n-k+1)p}{k(1-p)}$, which is greater than $1$ exactly when $k<(n+1)p$. So the probabilities increase up to $k=\lfloor(n+1)p\rfloor$ and then decrease; the most likely value is $\lfloor 101p\rfloor$ (when $101p$ is not an integer, as here). This gives
+\[
+\text{first: }0,\quad\text{second: }0,\quad\text{third: }\lfloor2.055\ldots\rfloor=2,\quad\text{consolation: }\lfloor96.318\ldots\rfloor=96,\quad\text{none: }\lfloor2.626\rfloor=2 .
+\]
+So the most likely numbers are $\boxed{0,\ 0,\ 2,\ 96,\ 2}$. Note that for the consolation prize the most likely number, $96$, is not the integer nearest to the expected value $95.36$.

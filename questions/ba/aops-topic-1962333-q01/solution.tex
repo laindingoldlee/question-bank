@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1962333_inscribed_circumscribed_octagons
+% Stable identity: aops-topic-1962333-q01
+Let the circle have radius $r$. The inscribed octagon has circumradius $r$. The circumscribed octagon has inradius $r$; its circumradius is $\dfrac{r}{\cos22.5^\circ}$ (the half-angle at the centre between a vertex and the midpoint of a side is $22.5^\circ$).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair[] I,O; real R=1/cos(pi/8);
+for(int k=0;k<8;++k){I.push(dir(22.5+45k)); O.push(R*dir(45k));}
+draw(unitcircle,gray(0.5));
+draw(O[0]--O[1]--O[2]--O[3]--O[4]--O[5]--O[6]--O[7]--cycle,linewidth(0.9));
+draw(I[0]--I[1]--I[2]--I[3]--I[4]--I[5]--I[6]--I[7]--cycle,blue+linewidth(0.9));
+pair Mo=(1,0);
+draw((0,0)--O[0],dashed);draw((0,0)--I[0],blue+dashed);
+dot((0,0));label("$O$",(0,0),W);
+label("$r$",I[0]/2,N,blue);
+label("$\dfrac{r}{\cos 22.5^\circ}$",O[0],E,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The two octagons are similar (both regular), so the ratio of their areas is the square of the ratio of their circumradii:
+\[
+\left(r\div\dfrac{r}{\cos22.5^\circ}\right)^2=\cos^2 22.5^\circ=\dfrac{1+\cos45^\circ}{2}=\dfrac{1+\dfrac{\sqrt2}{2}}{2}=\boxed{\dfrac{2+\sqrt2}{4}}\approx0.854 .
+\]

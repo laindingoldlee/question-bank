@@ -1,0 +1,11 @@
+Let $\zeta=e^{2\pi \dfrac{i}{13}}$, with $A_j$ represented by $\zeta^j$. Factoring $\dfrac{(z^{13}-1)}{(z-1)}$ and setting $z=1$ gives
+\[
+\prod_{j=1}^{12}(1-\zeta^j)=13.
+\]
+Taking absolute values gives the product of all twelve chord lengths from $A_0$. The lengths for $j$ and $13-j$ agree, so this product is exactly $P^2$. Therefore $\boxed{P^2=13}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int j=0;j<13;++j){draw(dir(360.0*j/13)--dir(360.0*(j+1)/13));dot(dir(360.0*j/13));}draw(circle((0,0),1),gray);for(int j=1;j<=6;++j){draw((1,0)--dir(360.0*j/13),blue);label("$A_"+string(j)+"$",dir(360.0*j/13),dir(360.0*j/13));}label("$A_0$",(1,0),(1,0));
+\end{asy}

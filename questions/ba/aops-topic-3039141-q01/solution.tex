@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3039141_sholeace_help
+% Stable identity: aops-topic-3039141-q01
+Expanding gives $\sum_i(x_{i+1}+x_i)(y_{i+1}-y_i)=\sum_i(x_{i+1}y_{i+1}-x_iy_i)+\sum_i(x_iy_{i+1}-x_{i+1}y_i)$. The first sum is zero by cyclic reindexing. Thus the two signed sums are equal. The unsigned area is half the absolute value of either sum. Without absolute value, the shoelace sum gives positive area for counterclockwise order and negative area for clockwise order. Therefore an absolute value may be omitted only with the appropriate orientation assumption.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] V={(0,0),(3,0),(2,2),(0,1)};draw(V[0]--V[1]--V[2]--V[3]--cycle);for(int i=0;i<4;++i)label(string(i+1),V[i],dir(90*i+225));draw((0.7,0)--(1.5,0),Arrow);label("counterclockwise order",(1.5,-0.6));
+\end{asy}

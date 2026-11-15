@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2646508_inscribed_circle_problem
+% Stable identity: aops-topic-2646508-q01
+Triangle $ABD$ is equilateral, so $BD=4$ and $AC=4\sqrt3$. Place the centre at the origin with $A=\left(-2\sqrt3,0\right)$, $B=(0,2)$, $C=\left(2\sqrt3,0\right)$, $D=(0,-2)$. The area of the rhombus is $\dfrac{4\cdot4\sqrt3}{2}=8\sqrt3$, and it also equals $\dfrac12\cdot\text{perimeter}\cdot r=8r$, so the inradius is $r=\sqrt3$.
+
+The tangent lines parallel to $BD$ (the $y$-axis) are $x=\pm\sqrt3$. Line $AB$ is $y=2+\dfrac{x}{\sqrt3}$, so $x=-\sqrt3$ meets it at $P=\left(-\sqrt3,1\right)$; by symmetry $S=\left(-\sqrt3,-1\right)$, $Q=\left(\sqrt3,1\right)$, $R=\left(\sqrt3,-1\right)$. So $PQRS$ is a $2\sqrt3\times2$ rectangle with area $\boxed{4\sqrt3}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real r3=sqrt(3);pair A=(-2*r3,0),B=(0,2),C=(2*r3,0),D=(0,-2);
+pair P=(-r3,1),S=(-r3,-1),Q=(r3,1),R=(r3,-1);
+fill(P--Q--R--S--cycle,lightgray);draw(A--B--C--D--cycle,linewidth(0.8));draw(circle((0,0),r3));draw(B--D,dotted);
+draw((-r3,-2.3)--(-r3,2.3),dashed);draw((r3,-2.3)--(r3,2.3),dashed);draw(P--Q--R--S--cycle);
+dot(P);dot(Q);dot(R);dot(S);
+label("$A$",A,W);label("$B$",B,N);label("$C$",C,E);label("$D$",D,S);label("$P$",P,NW);label("$Q$",Q,NE);label("$R$",R,SE);label("$S$",S,SW);label("$60^\circ$",A,6*E,fontsize(8pt));
+\end{asy}

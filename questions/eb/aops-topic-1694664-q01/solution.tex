@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1694664_explain_for_me__thank_you
+% Stable identity: aops-topic-1694664-q01
+If $P=Q$ there is nothing to prove, so let $P\ne Q$. The segments $PP'$ and $QQ'$ are both perpendicular to $m$, so they are parallel to each other. A line perpendicular to one of two parallel lines is perpendicular to the other (corresponding angles are equal), so $PP'\perp\ell$ and $QQ'\perp\ell$ as well.
+
+Hence the quadrilateral $PQQ'P'$ has $PQ\parallel P'Q'$ (they lie on $\ell$ and $m$) and $PP'\parallel QQ'$, so it is a parallelogram; in fact all four of its angles are right angles, so it is a rectangle. Opposite sides of a parallelogram are equal, so $\boxed{PP'=QQ'}$. $\blacksquare$
+
+So the distance from a point of $\ell$ to $m$ does not depend on the point; this common value is the distance between the two parallel lines.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair P=(0.8,2),Q=(4.6,2),P1=(0.8,0),Q1=(4.6,0);
+draw((-0.5,2)--(6,2),linewidth(0.9));draw((-0.5,0)--(6,0),linewidth(0.9));
+draw(P--P1,blue+dashed);draw(Q--Q1,blue+dashed);
+real q=0.22;
+draw(P1+(q,0)--P1+(q,q)--P1+(0,q),blue);draw(Q1+(-q,0)--Q1+(-q,q)--Q1+(0,q),blue);
+draw(P+(q,0)--P+(q,-q)--P+(0,-q),blue);draw(Q+(-q,0)--Q+(-q,-q)--Q+(0,-q),blue);
+dot(P);dot(Q);dot(P1);dot(Q1);
+label("$P$",P,N);label("$Q$",Q,N);label("$P'$",P1,S);label("$Q'$",Q1,S);
+label("$\ell$",(6,2),E);label("$m$",(6,0),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

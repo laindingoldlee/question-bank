@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2504499_2021_mathcounts_states_problems_solutions_and_answer_key
+% Stable identity: aops-topic-2504499-q36
+$DE=CF=8$, so $DF=CE=6$ and $EF=2$. Trapezoid $ABEF$ has bases $8$ and $2$ and area $60$, so the height is $12$ and $[ABCD]=\dfrac{8+14}2\cdot12=132$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0),C=(14,0),A=(3,12),B=(11,12);pair F=(6,0),E=(8,0),M=extension(A,C,B,D);draw(A--B--C--D--cycle);draw(A--C^^B--D);draw(B--F^^A--E,dashed);dot(M);
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);label("$F$",F,S);label("$E$",E,S);label("$M$",M,N);
+\end{asy}
+
+Triangles $ABM$ and $CDM$ are similar with ratio $8:14$. If $[ABM]=x$, then $[CDM]=\left(\dfrac74\right)^2x$ and $[ADM]=[BCM]=\dfrac74x$ (same heights, bases in ratio $\dfrac74$). So $x\left(1+\dfrac72+\dfrac{49}{16}\right)=132$, giving $x=\dfrac{192}{11}$ and $[ADM]=\dfrac74x=\boxed{\dfrac{336}{11}}$ ft$^2$.

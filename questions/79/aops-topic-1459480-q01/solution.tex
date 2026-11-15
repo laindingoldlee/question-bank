@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1459480_help_confusing_problem
+% Stable identity: aops-topic-1459480-q01
+In a $30^\circ$-$60^\circ$-$90^\circ$ triangle the sides are in the ratio $1:\sqrt3:2$ (shorter leg : longer leg : hypotenuse). If the shorter leg is $x$, the longer leg is $x\sqrt3$, so
+\[
+x\sqrt3=15,\qquad x=\dfrac{15}{\sqrt3}=\dfrac{15\sqrt3}{3}=\boxed{5\sqrt3}\approx8.66 .
+\]
+The number $x$ does not have to be a whole number: here we solve $x\sqrt3=15$ for $x$ rather than substitute $15$ for $x$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(0,0),B=(5,0),C=(0,5/sqrt(3));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(ra(A,B-A,C-A,0.3));
+draw(arc(B,0.9,150,180),red); label("$30^\circ$",B+1.75*dir(171),red);
+draw(arc(C,0.7,270,330),red); label("$60^\circ$",C+1.05*dir(296),red);
+label("$15$",(A+B)/2,S); label("$x$",(A+C)/2,W); label("$2x$",(B+C)/2,NE);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

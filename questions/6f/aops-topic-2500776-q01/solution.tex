@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2500776_math_kangaroo_levels_78_2015_problem
+% Stable identity: aops-topic-2500776-q01
+Let $s=s_1s_2\cdots s_6$ be the noted digits. The candidates are the distinct $7$-digit strings obtained by inserting one digit $d$ into $s$, in one of the $7$ gaps (before $s_1$, between two digits, or after $s_6$).
+
+\textbf{(a)} Inserting $d$ just before a digit equal to $d$ gives the same string as inserting it just after that digit. So every candidate can be obtained by an insertion in which $d$ is \emph{different from the digit immediately after it}, or $d$ is placed at the very end; call such insertions \emph{standard}.
+
+Two different standard insertions give different strings. Indeed, suppose $d$ is inserted in gap $i$ (just before $s_{i+1}$) and $d'$ in gap $i'$ with $i<i'$. Then the first string has $d$ in position $i+1$, while the second still has $s_{i+1}$ there; equality would force $d=s_{i+1}$, which a standard insertion does not allow. And in the same gap, different digits give different strings.
+
+Counting standard insertions: in each of the $6$ gaps before $s_1,\dots,s_6$ there are $9$ digits different from the next digit, and at the end there are $10$ digits. So there are exactly
+\[6\cdot9+10=64\]
+different candidates, whatever the six noted digits are. In the worst case the right number is the last one tried, so I may need $\boxed{64}$ tries.
+
+\textbf{(b)} The $70$ (place, digit) choices do not give $70$ different numbers: inserting a digit right before or right after an equal digit gives the same number. For example, if the noted digits are $123456$, inserting $5$ before or after the $5$ gives $1234556$ both times. Each of the $6$ noted digits causes exactly one such repetition, which is why $70-6=64$.

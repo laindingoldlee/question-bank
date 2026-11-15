@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2516096_geometry__the_orthic_triangle
+% Stable identity: aops-topic-2516096-q01
+Since the triangle is acute, the feet of the altitudes lie inside the sides.
+
+In the right triangle $ABE$ (right angle at $E$), the angle at $A$ is $\angle BAE=\angle BAC=A$, because $E$ lies on segment $AC$. Hence $AE=AB\cos A$. Similarly, in the right triangle $ACF$, $AF=AC\cos A$. Therefore
+\[\dfrac{AE}{AB}=\dfrac{AF}{AC}=\cos A,\]
+and the triangles $AEF$ and $ABC$ have the same angle at $A$ (since $E$ is on ray $AC$ and $F$ on ray $AB$). By SAS similarity, $\triangle AEF\sim\triangle ABC$ with $A\to A$, $E\to B$, $F\to C$. In particular $\angle AEF=\angle ABC$ and $\angle AFE=\angle ACB$.
+
+The same argument at $B$ gives $BD=BA\cos B$ and $BF=BC\cos B$, so $\dfrac{BD}{BA}=\dfrac{BF}{BC}=\cos B$ and $\triangle BDF\sim\triangle BAC$ ($D\to A$, $F\to C$). At $C$, $CD=CA\cos C$ and $CE=CB\cos C$, so $\triangle CDE\sim\triangle CAB$ ($D\to A$, $E\to B$). $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.3,3.2), B=(0,0), C=(4.2,0);
+pair ft(pair P,pair U,pair V){return U+dot(P-U,unit(V-U))*unit(V-U);}
+pair D=ft(A,B,C), Ep=ft(B,C,A), Fp=ft(C,A,B);
+fill(A--Ep--Fp--cycle,rgb(0.85,0.9,1));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,dashed); draw(B--Ep,dashed); draw(C--Fp,dashed);
+draw(D--Ep--Fp--cycle,red);
+real s=0.15;
+draw(D+s*unit(C-D)--D+s*unit(C-D)+s*unit(A-D)--D+s*unit(A-D));
+draw(Ep+s*unit(C-Ep)--Ep+s*unit(C-Ep)+s*unit(B-Ep)--Ep+s*unit(B-Ep));
+draw(Fp+s*unit(B-Fp)--Fp+s*unit(B-Fp)+s*unit(C-Fp)--Fp+s*unit(C-Fp));
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S); label("$E$",Ep,NE); label("$F$",Fp,NW);
+\end{asy}
+
+The sketch shows the altitudes (dashed), the orthic triangle $DEF$ (red) and the triangle $AEF$ (shaded), which is similar to $ABC$ with the roles of $B$ and $C$ exchanged.

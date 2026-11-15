@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3164343_2020_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3164343-q02
+Label vertices modulo 12, with starting positions 0 and 6. The difference of their four-step displacements is the sum of eight independent equally likely signs, because negating one ant's steps preserves their distribution. To cancel the initial separation modulo 12, that sum must be 6 or $-6$; its magnitude cannot exceed 8. Each case requires seven signs of one kind and one of the other, giving $2\binom81=16$ outcomes among $2^8=256$. Thus $\boxed{\dfrac{1}{16}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] p;path q;for(int i=0;i<12;++i){p.push(2*dir(30*i));q=q--p[i];dot(p[i]);}draw(q--cycle);label("start 1",p[0],E);label("start 2",p[6],W);
+\end{asy}

@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2784259_2016_mbmt_guts_round__p16__p30__montgomery_blair_math_tournament
+% Stable identity: aops-topic-2784259-q28
+Since $ 13^3>2016 $, both coordinates lie between $-12 $ and 12. Exhaustively checking that finite square gives $\boxed{561}$:
+\begin{verbatim}
+ans=sum(abs(x)**3+abs(y)**3<2016
+ for x in range(-12,13) for y in range(-12,13))
+assert ans==561
+\end{verbatim}
+Every admissible point lies in the enumerated bounds, and the strict inequality is tested directly.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw((-13,0)--(13,0),Arrow);draw((0,-13)--(0,13),Arrow);for(int x=-12;x<=12;++x)for(int y=-12;y<=12;++y)if(abs(x)^3+abs(y)^3<2016)dot((x,y),0.7bp);label("$x$",(13,0),E);label("$y$",(0,13),N);
+\end{asy}

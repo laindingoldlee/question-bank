@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1521860_problem_based_off_1990_aime_1
+% Stable identity: aops-topic-1521860-q01
+Let $E(N)$ be the number of integers from $1$ to $N$ that are squares, cubes or fifth powers (note $1=1^2$ is excluded, which is why the sequence starts at $2$). A number is both a square and a cube exactly when it is a sixth power, a square and a fifth power exactly when it is a tenth power, and so on. By inclusion--exclusion,
+\[
+E(N)=\left\lfloor\sqrt N\right\rfloor+\left\lfloor\sqrt[3]N\right\rfloor+\left\lfloor\sqrt[5]N\right\rfloor-\left\lfloor\sqrt[6]N\right\rfloor-\left\lfloor\sqrt[10]N\right\rfloor-\left\lfloor\sqrt[15]N\right\rfloor+\left\lfloor\sqrt[30]N\right\rfloor ,
+\]
+and the number of terms of the sequence that are at most $N$ is $N-E(N)$.
+
+For $N=1000$: $E(1000)=31+10+3-3-1-1+1=40$, so only $960$ terms are at most $1000$, and the $1000$th term is larger than $1000$.
+
+For $1024\le N\le1088$ we have $\left\lfloor\sqrt N\right\rfloor=32$ (as $32^2=1024$, $33^2=1089$), $\left\lfloor\sqrt[3]N\right\rfloor=10$ (as $11^3=1331$), $\left\lfloor\sqrt[5]N\right\rfloor=4$ (as $4^5=1024$), $\left\lfloor\sqrt[6]N\right\rfloor=3$ (as $3^6=729$, $4^6=4096$), $\left\lfloor\sqrt[10]N\right\rfloor=2$ (as $2^{10}=1024$), and the last two floors are $1$. So
+\[
+E(N)=32+10+4-3-2-1+1=41,\qquad N-E(N)=N-41 .
+\]
+This equals $1000$ for $N=1041$, and $1041$ itself is not a square, cube or fifth power. Hence the $1000$th term is $\boxed{1041}$.
+
+(The value $978$ cannot be right: the number of terms up to $978$ is less than $978$, so the $1000$th term must be \emph{more} than $1000$. One must add the excluded numbers, not subtract them.)

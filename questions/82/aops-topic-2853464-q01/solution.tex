@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2853464_i_need_help
+% Stable identity: aops-topic-2853464-q01
+Let $\angle P=x$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real x=180/7;pair P=(0,0);pair B=dir(-x/2),J=dir(x/2);B=4*B;J=4*J;
+real s=abs(B-J);pair L=P+s*unit(B-P);pair I=P+(2*s*Cos(x))*unit(J-P);
+draw(P--B--J--cycle);draw(L--I--B);
+label("$P$",P,W);label("$B$",B,SE);label("$J$",J,NE);label("$L$",L,S);label("$I$",I,N);
+\end{asy}
+
+\begin{itemize}
+\item $PL=LI$: $\angle LIP=x$, so the exterior angle $\angle ILB=2x$.
+\item $LI=IB$: $\angle IBL=2x$, so $\angle LIB=180^\circ-4x$.
+\item On line $PJ$: $\angle BIJ=180^\circ-x-(180^\circ-4x)=3x$.
+\item $IB=BJ$: $\angle BJI=3x$.
+\end{itemize}
+Since $PB=PJ$, $\angle PBJ=\angle PJB=3x$, and the angle sum gives $7x=180^\circ$. So $\angle ILP=180^\circ-2x=180^\circ-\dfrac{360^\circ}7=\boxed{\dfrac{900}{7}^\circ}\approx128.6^\circ$.

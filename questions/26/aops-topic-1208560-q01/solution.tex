@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1208560_hi_need_help
+% Stable identity: aops-topic-1208560-q01
+His velocity relative to the water is the sum of the boat's velocity ($8$ mph forward) and his velocity relative to the deck ($4$ mph along a side).
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(8,0),blue,Arrow); label("boat $8$",(4,0),S);
+draw((10,0)--(22,0),red,Arrow); label("forward $12$",(16,0),S);
+draw((24,0)--(28,0),red,Arrow); label("backward $4$",(26,0),N);
+draw((30,0)--(38,0),blue,Arrow); draw((38,0)--(38,4),gray,Arrow); draw((30,0)--(38,4),red+linewidth(0.9),Arrow); label("$4\sqrt5$",(34,2),NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item Walking toward the bow: $8+4=12$ mph.
+\item Walking toward the stern: $8-4=4$ mph (still moving forward relative to the water).
+\item Walking across the deck (either way): the velocities are perpendicular, so the speed is $\sqrt{8^2+4^2}=4\sqrt5\approx8.94$ mph.
+\end{itemize}
+So his speed is $\boxed{12,\ 4\ \text{or}\ 4\sqrt5\ \text{mph}}$, depending on the side (the corners are instantaneous changes).

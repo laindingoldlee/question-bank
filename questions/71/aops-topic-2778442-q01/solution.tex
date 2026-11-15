@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2778442_maximum_possible_distance_between_two_points
+% Stable identity: aops-topic-2778442-q01
+$(a,b)$ lies on $ax+by=169$ exactly when $a\cdot a+b\cdot b=169$. So the lucky points are exactly the points of the circle $x^2+y^2=169$ of radius $13$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),13),linewidth(0.9));draw((-15,0)--(15,0),gray);draw((0,-15)--(0,15),gray);
+pair P=(12,5),Q=(-12,-5);dot(P);dot(Q);draw(P--Q,dashed);
+draw((12,5)+8*unit((-5,12))--(12,5)+5*unit((5,-12)),dotted);
+label("$(12,5)$",P,E,fontsize(8pt));label("$(-12,-5)$",Q,W,fontsize(8pt));label("$x^2+y^2=169$",13*dir(225),SW,fontsize(8pt));label("$12x+5y=169$",(12,5)+5*unit((5,-12)),SE,fontsize(7pt));
+\end{asy}
+
+The greatest distance between two points of a circle is its diameter, $26$, attained for example by $(12,5)$ and $(-12,-5)$. The answer is $26^2=\boxed{676}$. (The line $ax+by=169$ is the tangent to the circle at $(a,b)$.)

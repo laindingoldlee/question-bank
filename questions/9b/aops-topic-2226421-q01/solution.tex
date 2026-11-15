@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2226421_method_for_solving_modulo_congruences_likely_flawed
+% Stable identity: aops-topic-2226421-q01
+\textbf{(a)} The system says that $y\mid x-n$ and $z\mid x-n$, i.e. $x-n$ is a common multiple of $y$ and $z$. Every common multiple of $y$ and $z$ is a multiple of $\operatorname{lcm}(y,z)$, and every multiple of $\operatorname{lcm}(y,z)$ is a common multiple. Hence
+\[x\equiv n\pmod y\ \text{and}\ x\equiv n\pmod z\iff\operatorname{lcm}(y,z)\mid x-n\iff x\equiv n\pmod{\operatorname{lcm}(y,z)} .\]
+The same argument works for $x\equiv n\pmod{m_1},\ldots,x\equiv n\pmod{m_k}$, with $\operatorname{lcm}(m_1,\ldots,m_k)$. $\blacksquare$
+
+(The moduli need not be coprime; for example $x\equiv1\pmod4$ and $x\equiv1\pmod6$ is the same as $x\equiv1\pmod{12}$.)
+
+\textbf{(b)} The method is correct, but $t$ must run over \emph{all} integers. With $t\ge1$ only, it misses $x=10$ itself (for $t=0$), which satisfies both congruences, as well as the negative solutions such as $10-143=-133$. The complete answer is $\boxed{x=10+143t,\ t\in\mathbb Z}$.

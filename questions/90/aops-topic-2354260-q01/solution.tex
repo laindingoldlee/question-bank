@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2354260_proving_problems
+% Stable identity: aops-topic-2354260-q01
+\textbf{The two maps.} Rotating $(x,y)$ by $180^\circ$ about the origin gives $(-x,-y)$. Reflecting $(x,y)$ across the line $y=-x$ gives $(-y,-x)$: the midpoint $\left(\dfrac{x-y}{2},\dfrac{y-x}{2}\right)$ of $(x,y)$ and $(-y,-x)$ lies on $y=-x$, and the segment joining them has direction $(-y-x,-x-y)$, a multiple of $(1,1)$, which is perpendicular to the line $y=-x$ (direction $(1,-1)$).
+
+\textbf{Comparison.} The two images agree exactly when $(-y,-x)=(-x,-y)$, that is, when $x=y$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-4.5,0)--(4.5,0),Arrow(5)); draw((0,-4.5)--(0,4.5),Arrow(5));
+draw((-4.3,4.3)--(4.3,-4.3),gray); label("$y=-x$",(-4.3,4.3),W,gray);
+pair P=(-1,-3), Rf=(3,1), Ro=(1,3), Q=(-2,-2), Q2=(2,2);
+draw(P--Rf,blue+dashed); draw(P--Ro,red+dashed);
+dot(P); dot(Rf,blue); dot(Ro,red); dot(Q); dot(Q2,purple);
+label("$P(-1,-3)$",P,SW); label("$(3,1)$",Rf,E,blue); label("$(1,3)$",Ro,N,red);
+label("$Q(-2,-2)$",Q,W); label("$(2,2)$",Q2,E,purple);
+label("$x$",(4.5,0),E); label("$y$",(0,4.5),N);
+\end{asy}
+
+In quadrant III ($x<0$, $y<0$) some points have $x=y$ and some do not. For $Q=(-2,-2)$ both maps give $(2,2)$, but for $P=(-1,-3)$ the reflection gives $(3,1)$ while the rotation gives $(1,3)$. So the claim holds exactly for the points of quadrant III on the line $y=x$, and the answer is $\boxed{\textbf{(B) }\text{sometimes true}}$.

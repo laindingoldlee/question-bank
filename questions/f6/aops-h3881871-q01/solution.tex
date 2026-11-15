@@ -1,0 +1,17 @@
+Take $Q=(0,0)$ and $QR$ horizontal. The hexagon coordinates are
+\[
+B=(\dfrac{1}{2},\dfrac{\sqrt 3}{2}),\ A=(1,\sqrt3),\ C=(1,0),\ D=(2,0),
+\ E=(\dfrac{5}{2},\dfrac{\sqrt 3}{2}),\ F=(2,\sqrt3).
+\]
+Since $R=45^\circ$, line $PR$ is $x+y=L$. To contain the hexagon, $L$ must be its largest vertex value of $x+y$, namely $2+\sqrt3$ at $F$. The line through $E$ instead has smaller $L$ and excludes $F$.
+
+Thus $R=(2+\sqrt3,0)$. Intersecting $x+y=2+\sqrt3$ with $PQ:y=\sqrt3x$ gives height $y_P=\dfrac{\sqrt 3(2+\sqrt3)}{(1+\sqrt3)}$. Therefore
+\[
+\boxed{[PQR]=\dfrac{(2+\sqrt3)y_P}{2}=\dfrac{9+5\sqrt3}{4}}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real L=2+sqrt(3);pair Q=(0,0),R=(L,0),P=(L/(1+sqrt(3)),sqrt(3)*L/(1+sqrt(3)));pair A=(1,sqrt(3)),B=(.5,sqrt(3)/2),C=(1,0),D=(2,0),E=(2.5,sqrt(3)/2),F=(2,sqrt(3));draw(P--Q--R--cycle);filldraw(A--B--C--D--E--F--cycle,lightblue,blue);real L2=2.5+sqrt(3)/2;draw((L2/(1+sqrt(3)),sqrt(3)*L2/(1+sqrt(3)))--(L2,0),dashed+red);label("$P$",P,NW);label("$Q$",Q,SW);label("$R$",R,SE);label("$A$",A,NW);label("$B$",B,W);label("$C$",C,S);label("$D$",D,S);label("$E$",E,SE);label("$F$",F,NE);
+\end{asy}

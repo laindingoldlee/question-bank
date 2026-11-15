@@ -1,0 +1,9 @@
+Let the opposite vertices be $A=(0,0)$ and $C=(4,3)$, with $B=(4,0),D=(0,3)$. A centre $(u,v)$ is equidistant from $A,C$ exactly when $4 u + 3 v = \dfrac{25}{2}$. Thus it moves along their perpendicular bisector. Its distance to $A$ or $C$ is at least half the diagonal, $\dfrac{5}{2}$. Its least distance to $B$ is the perpendicular distance from $B$ to that line: $\dfrac{| 16 - \dfrac{25}{2 |}}{\sqrt{4^2+3^2}} = \dfrac{7}{10}$. The same holds for $D$. Both perpendicular projections are valid centres of circles through $A,C$, so the minimum is $\boxed{\dfrac{7}{10}}$. The two sketches show the symmetric minimising centres.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+for(int k=0;k<2;++k){pair v=(7k,0),A=v,B=v+(4,0),C=v+(4,3),D=v+(0,3),O=v+(k==0?(3.44,-.42):(.56,3.42));draw(A--B--C--D--cycle);draw(v+(-1,5.5)--v+(5,-2.5),dashed);draw(O--(k==0?B:D));dot(O);label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$C$",C,(1,1));label("$D$",D,(-1,1));label("$O$",O,k==0?(0,-1):(0,1));}
+\end{asy}
+

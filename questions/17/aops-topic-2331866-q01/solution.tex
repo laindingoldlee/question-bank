@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2331866_low_quality_questions_oops
+% Stable identity: aops-topic-2331866-q01
+The solid is a cone of radius $6$ and height $10$ with a hemisphere of radius $6$ on its base.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair T=(0,-10);
+draw((-6,0)--T--(6,0),linewidth(0.9));
+draw(arc((0,0),6,0,180),linewidth(0.9));
+draw(xscale(6)*yscale(1.2)*arc((0,0),1,180,360),gray(0.3));
+draw(xscale(6)*yscale(1.2)*arc((0,0),1,0,180),gray(0.3)+dashed);
+draw((0,0)--(0,6),red); label("$6$",(0,3.6),E,red);
+draw((0,0)--T,blue+dashed); label("$10$",(0,-5),E,blue);
+dot((0,0));
+\end{asy}
+
+\[V_{\text{hemisphere}}=\dfrac12\cdot\dfrac43\pi\cdot6^3=144\pi,\qquad V_{\text{cone}}=\dfrac13\pi\cdot6^2\cdot10=120\pi,\]
+so the total volume is $144\pi+120\pi=\boxed{264\pi}\approx829.4$ cubic inches.

@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2108903_jerrys_balloons
+% Stable identity: aops-topic-2108903-q01
+The wind speed is $240$ yards per minute $=720$ feet per minute $=12$ feet per second. Each second a balloon moves $12$ ft north and $5$ ft up, so it moves along a straight line at
+\[\sqrt{12^2+5^2}=13\text{ feet per second}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), H=(12,0), U=(12,5);
+draw(O--H--U--cycle,linewidth(0.9));
+draw(O--U,blue+linewidth(1.2),Arrow(7));
+draw((11.4,0)--(11.4,0.6)--(12,0.6));
+label("$12$ ft (north)",(6,0),S); label("$5$ ft (up)",(12,2.5),E); label("$13$ ft",(6,2.5),NW,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item First balloon: $13\cdot80=1040$ feet.
+\item Second balloon: $13\cdot153=1989$ feet.
+\item Third balloon: $15180$ inches $=1265$ feet of height, which takes $\dfrac{1265}{5}=253$ seconds, so it travels $13\cdot253=3289$ feet.
+\end{itemize}
+The mean distance is
+\[\dfrac{1040+1989+3289}{3}=\dfrac{6318}{3}=\boxed{2106}\text{ feet}.\]

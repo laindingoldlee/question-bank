@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1279091_volume_problem
+% Stable identity: aops-topic-1279091-q01
+The brick stands $5$ cm high, so half of it is immersed when the water is $2.5$ cm deep.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(0,6)--(25,6)--(25,0)--cycle,gray); fill((0,0)--(25,0)--(25,2.5)--(0,2.5)--cycle,lightblue); draw(box((8,0),(18,5)),red+1);
+label("$25$",(12.5,0),S); label("brick $22\times10\times5$",(13,5),N,red); label("water $2.5$",(25,1.25),E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+At that depth the container holds $25\cdot25\cdot2.5=1562.5$ cm$^3$, of which the immersed half-brick occupies $\dfrac{22\cdot10\cdot5}{2}=550$ cm$^3$. So the water volume is $1012.5$ cm$^3$, which is $6\%$ of the capacity:
+\[
+\text{capacity}=\dfrac{1012.5}{0.06}=16875\text{ cm}^3=\boxed{16.875\text{ litres}}.
+\]

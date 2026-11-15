@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h2005090_geometry_problem
+% Stable identity: aops-topic-2005090-q01
+Let $AB=c$ and $AC=b$, and by symmetry suppose $c\le b$. From the area, $bc=70$. From the perimeter, $\sqrt{b^2+c^2}=30-(b+c)$; squaring, $(b+c)^2-140=900-60(b+c)+(b+c)^2$, so $b+c=\dfrac{52}{3}$. Thus $b,c$ are the roots of $t^2-\dfrac{52}{3}t+70=0$:
+\[
+c=\dfrac{52-\sqrt{184}}{6}=\dfrac{26-\sqrt{46}}{3},\qquad b=\dfrac{26+\sqrt{46}}{3}
+\]
+(both positive, and $30-(b+c)=\dfrac{38}{3}>0$, so the triangle exists).
+
+Place $A$ at the origin, $B=(c,0)$ and $C=(0,b)$. The bisector of angle $A$ is the line $y=x$, so $B'=(0,c)$ and $C'=(b,0)$. Triangle $ABC$ is $\{x,y\ge0,\ \dfrac {x}{c}+\dfrac {y}{b}\le1\}$ and triangle $AB'C'$ is $\{x,y\ge0,\ \dfrac {x}{b}+\dfrac {y}{c}\le1\}$. Since $c\le b$, their intersection is the quadrilateral $ABPB'$, where $P$ is the common point of $BC$ and $B'C'$ on the line $y=x$:
+\[
+P=(p,p),\qquad p\left(\dfrac{1}{b}+\dfrac{1}{c}\right)=1,\qquad p=\dfrac{bc}{b+c}=\dfrac{70}{\dfrac{52}{3}}=\dfrac{105}{26}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real c=(52-sqrt(184))/6, bb=(52+sqrt(184))/6;
+pair A=(0,0),B=(c,0),C=(0,bb),B1=(0,c),C1=(bb,0);
+real xp=bb*c/(bb+c);pair P=(xp,xp);
+fill(A--B--P--B1--cycle,palegray);
+draw(A--B--C--cycle,linewidth(1));
+draw(A--B1--C1--cycle,blue+linewidth(0.8));
+draw(A--(8,8),dashed);
+dot(A);dot(B);dot(C);dot(B1);dot(C1);dot(P);
+label("$A$",A,SW);label("$B$",B,S);label("$C$",C,W);label("$B'$",B1,W);label("$C'$",C1,S);label("$P$",P,2*W);
+label("$y=x$",(8,8),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Split $ABPB'$ along $AP$ into triangles $ABP$ and $AB'P$, each with base $c$ on an axis and height $p$:
+\[
+[ABPB']=2\cdot\dfrac{1}{2}\,c\,p=cp=\dfrac{26-\sqrt{46}}{3}\cdot\dfrac{105}{26}=\dfrac{35\left(26-\sqrt{46}\right)}{26}.
+\]
+Since $\sqrt{46}<7$, this is greater than $\dfrac{35\cdot19}{26}=\dfrac{665}{26}>25>16$. Hence the intersection has area greater than $16$ (in fact about $25.9$). $\blacksquare$

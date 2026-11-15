@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1580898_counting_problem_need_help
+% Stable identity: aops-topic-1580898-q01
+We use Burnside's lemma with the $12$ symmetries of the regular hexagon (6 rotations, 6 reflections), counting the arrangements of the six beads in fixed positions that each symmetry leaves unchanged. In total there are $\dfrac{6!}{2!\,2!\,2!}=90$ arrangements in fixed positions.
+\begin{itemize}
+\item \textbf{Identity:} fixes all $90$.
+\item \textbf{Rotation by $60^\circ$ or $300^\circ$:} one $6$-cycle, so all beads would be one colour: $0$.
+\item \textbf{Rotation by $120^\circ$ or $240^\circ$:} two $3$-cycles, so each colour would occur a multiple of $3$ times: $0$.
+\item \textbf{Rotation by $180^\circ$:} three pairs of opposite positions, each pair one colour; since each colour occurs twice, the three colours go to the three pairs: $3!=6$.
+\item \textbf{Reflection through two opposite beads} ($3$ such): two fixed positions and two swapped pairs. A colour on a swapped pair uses both its beads; the two fixed positions must therefore have the same colour (a single bead of a colour on a fixed position would leave one bead of that colour, which cannot be placed). So choose the colour of the fixed positions ($3$ ways) and assign the other two colours to the two pairs ($2$ ways): $6$ each.
+\item \textbf{Reflection through midpoints of two opposite sides} ($3$ such): three swapped pairs: $3!=6$ each.
+\end{itemize}
+By Burnside's lemma the number of bracelets is
+\[
+\dfrac{90+0+0+6+3\cdot6+3\cdot6}{12}=\dfrac{132}{12}=\boxed{11}.
+\]

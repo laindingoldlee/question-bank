@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2433694_forester2015s_problems
+% Stable identity: aops-topic-2433694-q34
+The four right triangles $ABH$, $BCE$, $CDF$, $DAG$ have equal hypotenuses (the sides of $ABCD$) and equal angles (their acute angles at $A$ and $B$ add up to $90^\circ$, and so on around the square), so they are congruent. In particular the short legs are equal: $AH=BE=1$. The long leg of triangle $ABH$ is $HB=HE+EB=HE+1$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,1),B=(7,0),C=(6,-7),D=(-1,-6),H=(0,0),Ep=(6,0),Fp=(6,-6),G=(0,-6);
+fill(A--B--H--cycle,rgb(1,0.88,0.7));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--G); draw(B--H); draw(C--Ep); draw(D--Fp);
+draw(H--Ep--Fp--G--cycle,linewidth(0.9));
+draw(H--(0.6,0)--(0.6,0.6)--(0,0.6));
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);
+label("$H$",H,dir(200));label("$E$",Ep,dir(-135));label("$F$",Fp,SW);label("$G$",G,dir(135));
+label("$1$",(A+H)/2,W); label("$1$",(Ep+B)/2,S); label("$HE$",(H+Ep)/2,S); label("$\sqrt{50}$",(A+B)/2,N);
+\end{asy}
+
+By the Pythagorean theorem in triangle $ABH$,
+\[1^2+(HE+1)^2=50,\qquad(HE+1)^2=49,\qquad HE=6.\]
+So the inner square has area $6^2=36$: the answer is $\boxed{\textbf{(C)}\ 36}$.

@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1243454_mc_nats_2016
+% Stable identity: aops-topic-1243454-q29
+Let the square $ACEG$ have side $a$. The octagon is this square plus four congruent isosceles triangles such as $ABC$ (since $AB=BC$), each with base $a$ and height $h$, so its area is $a^2+2ah$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real a=7,h=1; pair[] Sq={(a/2,a/2),(-a/2,a/2),(-a/2,-a/2),(a/2,-a/2)};
+pair[] Mid={(0,a/2+h),(-a/2-h,0),(0,-a/2-h),(a/2+h,0)};
+draw(Sq[0]--Mid[0]--Sq[1]--Mid[1]--Sq[2]--Mid[2]--Sq[3]--Mid[3]--cycle,linewidth(1));
+draw(Sq[0]--Sq[1]--Sq[2]--Sq[3]--cycle,blue); draw(Mid[0]--Mid[1]--Mid[2]--Mid[3]--cycle,red+dashed);
+label("$A$",Sq[0],NE);label("$B$",Mid[0],N);label("$C$",Sq[1],NW);label("$D$",Mid[1],W);label("$E$",Sq[2],SW);label("$F$",Mid[2],S);label("$G$",Sq[3],SE);label("$H$",Mid[3],E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+From $a^2=\dfrac{7}{9}\left(a^2+2ah\right)$: $9a^2=7a^2+14ah$, so $h=\dfrac {a}{7}$. By symmetry $BDFH$ is a square centred at the centre $O$, with $OB=\dfrac {a}{2}+h=\dfrac{9a}{14}$, so its area is $2\cdot OB^2=\dfrac{81a^2}{98}$. The octagon's area is $a^2+\dfrac{2a^2}{7}=\dfrac{9a^2}{7}$. The ratio is
+\[\dfrac{81}{98}\cdot\dfrac{7}{9}=\boxed{\dfrac{9}{14}}.\]

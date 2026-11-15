@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h15248_mathcounts_contest_1_sprint_questions
+% Stable identity: aops-topic-15248-q16
+In an isosceles triangle the median to the base is also an altitude, so triangle $ABD$ has a right angle at $D$, with $AD=5$. Let $AB=c$ and $BD=m$ (positive integers). Then
+\[c^2-m^2=25,\qquad (c-m)(c+m)=25.\]
+Since $0<c-m<c+m$, the only factorisation is $c-m=1$, $c+m=25$, so $c=13$ and $m=12$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(-5,0),C=(5,0),B=(0,12),D=(0,0);
+draw(A--B--C--cycle,linewidth(0.8)); draw(B--D,blue);
+draw(D+(0,0.6)--D+(0.6,0.6)--D+(0.6,0));
+label("$A$",A,SW); label("$C$",C,SE); label("$B$",B,N); label("$D$",D,S);
+label("$5$",(-2.5,0),S); label("$5$",(2.5,0),S); label("$12$",(0,6),E,blue); label("$13$",(-2.5,6),W); label("$13$",(2.5,6),E);
+\end{asy}
+
+So $BD=\boxed{12}$ (and $AB=BC=13$).

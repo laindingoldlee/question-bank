@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2812530_trouble_with_problem
+% Stable identity: aops-topic-2812530-q01
+Put $O$ at the origin with $P$ at height $1$. A point a fraction $f$ of the way up an edge from a base vertex has height $f$ and lies at horizontal distance $(1-f)\sqrt2$ from the axis. So $B'$ has height $\dfrac14$ at distance $\dfrac34\sqrt2$, and $D'$ has height $\dfrac15$ at distance $\dfrac45\sqrt2$, on opposite sides of the axis (in the vertical plane $BPD$).
+
+The plane meets the axis $PO$ at the point $O'$ of segment $B'D'$ above $O$. It divides $B'D'$ in the ratio of the horizontal distances, $\dfrac34:\dfrac45=15:16$ (not $3:4$, which is the error). Hence
+\[OO'=\dfrac{16\cdot\dfrac14+15\cdot\dfrac15}{31}=\dfrac7{31}.\]
+Now work in the vertical plane $APC$: $A=(-\sqrt2,0)$, $O'=(0,\dfrac7{31})$, and $C'=(\sqrt2s,1-s)$ on $PC$.
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(-1.414,0),C=(1.414,0),P=(0,1),O=(0,0),Op=(0,7/31),Cp=C+(12/19)*(P-C);
+draw(A--P--C--cycle);draw(P--O,dashed);draw(A--Cp);dot(Op);dot(Cp);dot(O);
+label("$A$",A,SW);label("$C$",C,SE);label("$P$",P,N);label("$O$",O,S);label("$O'$",Op,E);label("$C'$",Cp,NE);
+\end{asy}
+
+Collinearity of $A,O',C'$: $\dfrac{1-s}{\sqrt2s+\sqrt2}=\dfrac{7}{31\sqrt2}$, i.e. $31(1-s)=7(s+1)$, so $s=\dfrac{12}{19}$. The height of $C'$ is $1-s=\dfrac7{19}$, and $\dfrac{C'C}{PC}=\boxed{\dfrac7{19}}$.

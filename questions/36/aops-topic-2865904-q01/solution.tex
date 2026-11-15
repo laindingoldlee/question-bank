@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2865904_classic_probability_problems
+% Stable identity: aops-topic-2865904-q01
+After sorting, $a+b<90$ means $c=360-(a+b)>270$, i.e. the largest of the three numbers exceeds $270$.
+
+In the triangle $\{x+y+z=360,\ x,y,z>0\}$, the region where $x>270$ is a corner triangle similar to the whole with ratio $\dfrac{360-270}{360}=\dfrac14$, so its area is $\dfrac1{16}$ of the whole. The same holds for $y>270$ and $z>270$, and these regions are disjoint (two numbers cannot both exceed $270$).
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair X=(0,0),Y=(4,0),Z=(2,2*sqrt(3));draw(X--Y--Z--cycle);
+real f=0.25;
+filldraw(X--X+f*(Y-X)--X+f*(Z-X)--cycle,opacity(0.3)+gray);
+filldraw(Y--Y+f*(X-Y)--Y+f*(Z-Y)--cycle,opacity(0.3)+gray);
+filldraw(Z--Z+f*(X-Z)--Z+f*(Y-Z)--cycle,opacity(0.3)+gray);
+label("$x=360$",X,SW);label("$y=360$",Y,SE);label("$z=360$",Z,N);
+label("$x>270$",X+(0.25,0.45),W);label("$y>270$",Y+(-0.25,0.45),E);label("$z>270$",Z-(0.25,0.45),W);
+\end{asy}
+
+So the probability is $3\cdot\dfrac1{16}=\boxed{\dfrac3{16}}$.

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2275279_500th_post
+% Stable identity: aops-topic-2275279-q05
+Let $F$ be the midpoint of $AC$, so $BF$ is another median and $E$ is the intersection of $AD$ and $BF$.
+
+Since $D$ and $F$ are the midpoints of $CB$ and $CA$, the segment $DF$ is a midline of triangle $ABC$: $DF\parallel AB$ and $DF=\dfrac12AB$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.6,3.4), B=(0,0), C=(5,0);
+pair D=(B+C)/2, F=(A+C)/2, E=(A+B+C)/3;
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,blue); draw(B--F,blue); draw(D--F,red+dashed);
+dot(D); dot(F); dot(E);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S); label("$F$",F,NE); label("$E$",E,NW);
+\end{asy}
+
+Because $DF\parallel AB$, the alternate angles are equal: $\angle EDF=\angle EAB$ and $\angle EFD=\angle EBA$. So triangles $EDF$ and $EAB$ are similar, with ratio $\dfrac{DF}{AB}=\dfrac12$. Hence $\dfrac{ED}{EA}=\dfrac12$, that is,
+\[\dfrac{AE}{ED}=2.\ \blacksquare\]

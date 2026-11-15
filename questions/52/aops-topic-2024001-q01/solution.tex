@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2024001_geo_problem_help
+% Stable identity: aops-topic-2024001-q01
+The cuts are at distances $48$ and $24$ from the apex. Each cut off top part is a cone similar to the whole cone, with radius proportional to height: radius $24$ at height $48$ from the apex and radius $12$ at height $24$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real H=72, r=36;
+pair Ap=(0,H);
+draw((-r,0)--Ap--(r,0), linewidth(0.9));
+draw(xscale(r)*yscale(6)*unitcircle, linewidth(0.7));
+draw(shift(0,24)*xscale(24)*yscale(4)*unitcircle, blue);
+draw(shift(0,48)*xscale(12)*yscale(2)*unitcircle, blue);
+draw((0,0)--Ap, dashed);
+label("$24$", (0,12), W); label("$24$", (0,36), W); label("$24$", (0,60), W);
+draw((0,0)--(36,0)); draw((0,24)--(24,24), blue); draw((0,48)--(12,48), blue);
+label("$36$", (18,0), N); label("$24$", (12,27), N, blue); label("$12$", (6,49.5), N, blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The middle piece is the cone of height $48$ minus the cone of height $24$:
+\[
+\dfrac{1}{3}\pi\cdot24^2\cdot48-\dfrac{1}{3}\pi\cdot12^2\cdot24=9216\pi-1152\pi=\boxed{8064\pi}.
+\]
+(Equivalently, the whole cone has volume $\dfrac{1}{3}\pi\cdot36^2\cdot72=31104\pi$, and the middle piece is $\left(\dfrac{2}{3}\right)^3-\left(\dfrac{1}{3}\right)^3=\dfrac{7}{27}$ of it.)

@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1584811_euclidean_algorithm
+% Stable identity: aops-topic-1584811-q01
+\textbf{The identity.} A number $d$ divides both $n$ and $1000-n$ exactly when it divides both $n$ and $1000$: if $d\mid n$ and $d\mid1000-n$, then $d\mid n+(1000-n)=1000$; conversely, if $d\mid n$ and $d\mid1000$, then $d\mid1000-n$. The two pairs have the same common divisors, hence the same greatest common divisor. (This is one step of the Euclidean algorithm: $\gcd(a,b)=\gcd(a,b+ka)$ for any integer $k$, here with $k=1$ applied to $\gcd(n,1000-n)$.)
+
+\textbf{The count.} So we need the number of $n$ with $1\le n\le999$ and $\gcd(n,1000)=1$. Since $1000=2^3\cdot5^3$, these are the $n$ divisible by neither $2$ nor $5$. Among $1,\dots,1000$ there are $500$ multiples of $2$, $200$ of $5$ and $100$ of $10$, so by inclusion--exclusion
+\[
+1000-500-200+100=400
+\]
+numbers are coprime to $1000$ (none of them is $1000$ itself). The answer is $\boxed{400}$, which is Euler's $\varphi(1000)=1000\left(1-\dfrac{1}{2}\right)\left(1-\dfrac{1}{5}\right)$.

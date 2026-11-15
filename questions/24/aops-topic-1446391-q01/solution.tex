@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1446391_areas__circle
+% Stable identity: aops-topic-1446391-q01
+Because $a>\dfrac{r}{2}$, the circle crosses every side of the square, and because $a<\dfrac{r\sqrt2}{2}$ (half the diagonal), the corners of the square lie outside the circle. So the circle sticks out of the square in four congruent circular segments, one beyond each side, and
+\[
+\text{required area}=r^2-\left(\pi a^2-4\cdot[\text{segment}]\right).
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real r=4.000, a=2.450;
+pair O=(0,0);
+path sq=(-r/2,-r/2)--(r/2,-r/2)--(r/2,r/2)--(-r/2,r/2)--cycle;
+pair P=(r/2,1.4151), Q=(r/2,-1.4151), M=(r/2,0);
+fill(arc(O,a,-35.2813,35.2813)--cycle,palegreen);
+draw(sq,linewidth(0.9)); draw(circle(O,a),blue);
+draw(O--P,dashed); draw(O--Q,dashed); draw(O--M,red);
+draw(M+(-0.2,0)--M+(-0.2,0.2)--M+(0,0.2));
+draw(arc(O,0.55,0,35.2813));
+label("$\theta$",0.75*dir(17.6406));
+label("$a$",0.5*P,NW); label("$\dfrac{r}{2}$",(r/4+0.35,0),N);
+dot(O); dot(P); dot(Q); label("$O$",O,W); label("$P$",P,NE); label("$Q$",Q,SE); label("$M$",M,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Take the right side, with midpoint $M$, and let the circle cross it at $P$ and $Q$. Then $OM=\dfrac{r}{2}$, $OP=a$, and with $\theta=\angle MOP$ we have $\cos\theta=\dfrac{r}{2a}$, so $\theta=\arccos\dfrac{r}{2a}$ and $\angle POQ=2\theta$. Also $PM=\sqrt{a^2-\dfrac{r^2}{4}}=\dfrac{1}{2}\sqrt{4a^2-r^2}$. The shaded segment is the sector $POQ$ minus triangle $POQ$:
+\[
+[\text{segment}]=\dfrac{2\theta}{2}a^2-\dfrac{1}{2}\cdot PQ\cdot OM=a^2\theta-\dfrac{1}{2}\sqrt{4a^2-r^2}\cdot\dfrac{r}{2}
+=a^2\arccos\dfrac{r}{2a}-\dfrac{r}{4}\sqrt{4a^2-r^2}.
+\]
+Therefore the area inside the square and outside the circle is
+\[
+\boxed{\,r^2-\pi a^2+4a^2\arccos\dfrac{r}{2a}-r\sqrt{4a^2-r^2}\,}
+\]
+(with the angle in radians). As checks: at $a=\dfrac{r}{2}$ this gives $r^2-\dfrac{\pi r^2}{4}$, the circle being inscribed; at $a=\dfrac{r\sqrt2}{2}$ it gives $r^2-2\pi\cdot\dfrac{r^2}{4}+2r^2\cdot\dfrac{\pi}{4}-r^2=0$, the circle passing through the corners.

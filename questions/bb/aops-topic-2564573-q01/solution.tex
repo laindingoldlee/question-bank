@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2564573_can_someone_prove_this
+% Stable identity: aops-topic-2564573-q01
+Let $O$ be the centre of the square.
+
+\emph{If.} The half-turn (rotation by $180^\circ$) about $O$ maps the square onto itself. It also maps a line $\ell$ through $O$ onto itself, and it swaps the two sides of $\ell$ (a point $P$ goes to the point $P'$ with $O$ the midpoint of $PP'$). So it maps the part of the square on one side of $\ell$ onto the part on the other side. These parts are congruent, so they have equal areas.
+
+\emph{Only if.} Suppose $\ell$ does not pass through $O$, and let $\ell'$ be the line through $O$ parallel to $\ell$. By the first part, $\ell'$ bisects the area. The part of the square on the side of $\ell$ that contains $O$ consists of the half of the square beyond $\ell'$ together with the part of the square inside the strip between $\ell'$ and $\ell$ (shaded). This strip part has positive area: $O$ is an interior point of the square, so a small disc around $O$ lies inside the square, and the strip cuts off a region of positive area from this disc. Hence that side of $\ell$ contains more than half of the area, and $\ell$ does not bisect it. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(4,4),D=(0,4),O=(2,2);
+fill((0,1.2)--(4,2.8)--(4,3.6)--(0,2.0)--cycle,gray(0.85));
+draw(A--B--C--D--cycle,linewidth(0.8));
+draw((-0.5,1.0)--(4.5,3.0),dashed);draw((-0.5,1.8)--(4.5,3.8));
+dot(O);label("$O$",O,SE);
+label("$\ell'$",(4.5,3.0),E);label("$\ell$",(4.5,3.8),E);
+\end{asy}
+
+In the sketch, $\ell'$ passes through the centre and bisects the area; the parallel line $\ell$ gains the shaded strip.

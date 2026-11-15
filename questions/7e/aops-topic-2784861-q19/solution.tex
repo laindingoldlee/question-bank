@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2784861_2017_winmac_guts_round__sets_58__winchester_math_competition
+% Stable identity: aops-topic-2784861-q19
+The two equations are inconsistent exactly when their left sides are proportional, $ ad=bc $, but the proportionality factor is not 3, since their right sides have ratio 3. Thus exclude the case $ c=3a,d=3b $. Directly counting this exact criterion gives $\boxed{48}$:
+\begin{verbatim}
+from itertools import product
+ans=sum(a*d==b*c and not(c==3*a and d==3*b)
+ for a,b,c,d in product(range(1,6),repeat=4))
+assert ans==48
+\end{verbatim}

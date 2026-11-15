@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3163975_2014_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3163975-q03
+The smaller number of edges between the two vertices is $1,2$, or $3$. For separations $1$ and $2$, the required central angles are $60^\circ$ and $120^\circ$, respectively. In each case there are two possible circumcenters on opposite sides of $AB$, and the center together with vertex $A$ determines the hexagon uniquely. For separation $3$, the points are opposite vertices, so their midpoint is the unique center and again determines the hexagon. The resulting five hexagons are distinct because their side lengths or centers differ. Thus the answer is $\boxed5$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(-1,0),Bp=(1,0);pair[] centers={(0,sqrt(3)),(0,-sqrt(3)),(0,1/sqrt(3)),(0,-1/sqrt(3)),(0,0)};string[] captions={"one-edge separation: above","one-edge separation: below","two-edge separation: above","two-edge separation: below","opposite vertices"};for(int j=0;j<5;++j){pair shift=(6*(j%3),-6*floor(j/3));pair O=centers[j];pair[] H;for(int k=0;k<6;++k)H.push(shift+O+rotate(60*k)*(A-O));path h=H[0];for(int k=1;k<6;++k)h=h--H[k];draw(h--cycle);dot(shift+A,blue);dot(shift+Bp,blue);label("$A$",shift+A,S);label("$B$",shift+Bp,S);label(captions[j],shift+(0,-2.8));}
+\end{asy}

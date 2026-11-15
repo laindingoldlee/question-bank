@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2974453_geometry
+% Stable identity: aops-topic-2974453-q01
+Scale so that $AB=AD=2$ and put $A=(0,0)$, $D=(2,0)$, $B=(0,2)$, $C=(c,2)$ with $c=BC>0$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(0,2),D=(2,0),C=(0.5,2),Ep=(1,0);
+draw(A--D--C--B--cycle);draw(B--Ep,dashed);draw(A+(0.12,0)--A+(0.12,0.12)--A+(0,0.12));draw(B+(0.12,0)--B+(0.12,-0.12)--B+(0,-0.12));
+label("$A$",A,SW);label("$B$",B,NW);label("$C$",C,N);label("$D$",D,SE);label("$E$",Ep,S);
+\end{asy}
+
+The condition $CD=BC+AD$ reads $\sqrt{(2-c)^2+4}=c+2$; squaring, $c^2-4c+8=c^2+4c+4$, so $c=\dfrac12$.
+
+\emph{Angle $ABE$.} In right triangle $ABE$, $\tan\angle ABE=\dfrac{AE}{AB}=\dfrac12$.
+
+\emph{Angle $ADC$.} $\overrightarrow{DA}=(-2,0)$ and $\overrightarrow{DC}=\left(-\dfrac32,2\right)$, so with $\theta=\angle ADC$: $\cos\theta=\dfrac35$, $\sin\theta=\dfrac45$. Then $\tan\dfrac\theta2=\dfrac{1-\cos\theta}{\sin\theta}=\dfrac{\dfrac25}{\dfrac45}=\dfrac12$.
+
+Both angles are acute with tangent $\dfrac12$, so $\angle ABE=\dfrac12\angle ADC$. $\blacksquare$

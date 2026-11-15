@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2665593_area_of_triangle_given_three_sides_mock_brmo_round_1_2015_p1
+% Stable identity: aops-topic-2665593-q01
+Since $13=2^2+3^2$, $74=7^2+5^2$ and $85=9^2+2^2$, the triangle can be placed on a lattice: $A=(7,0)$, $B=(9,3)$, $C=(0,5)$ give
+\[AB=\sqrt{2^2+3^2}=\sqrt{13},\qquad AC=\sqrt{7^2+5^2}=\sqrt{74},\qquad BC=\sqrt{9^2+2^2}=\sqrt{85}.\]
+The triangle sits in the $9\times5$ rectangle with corners $(0,0)$ and $(9,5)$, and the rest of the rectangle consists of three right triangles with legs $2,3$; $9,2$; and $7,5$. Hence
+\[[ABC]=45-\dfrac{2\cdot3}{2}-\dfrac{9\cdot2}{2}-\dfrac{7\cdot5}{2}=45-3-9-\dfrac{35}{2}=\boxed{\dfrac{31}{2}}.\]
+(Check with Heron's formula in the form $16K^2=2\left(a^2b^2+b^2c^2+c^2a^2\right)-a^4-b^4-c^4$ with $a^2,b^2,c^2=13,74,85$: $16K^2=2\cdot8357-12870=3844=62^2$, so $K=\dfrac{62}{4}=\dfrac{31}{2}$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=9;++i)draw((i,0)--(i,5),gray(0.85));for(int j=0;j<=5;++j)draw((0,j)--(9,j),gray(0.85));
+pair A=(7,0),B=(9,3),C=(0,5);
+draw((0,0)--(9,0)--(9,5)--(0,5)--cycle,dashed);
+fill(A--B--C--cycle,rgb(0.85,0.9,1));draw(A--B--C--cycle,linewidth(0.9));
+label("$A$",A,S);label("$B$",B,E);label("$C$",C,NW);
+label("$\sqrt{13}$",(A+B)/2,NW,fontsize(8pt));label("$\sqrt{74}$",(A+C)/2,SW,fontsize(8pt));label("$\sqrt{85}$",(B+C)/2,N,fontsize(8pt));
+\end{asy}

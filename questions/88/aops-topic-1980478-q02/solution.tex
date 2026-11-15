@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1980478_cubic_volumes
+% Stable identity: aops-topic-1980478-q02
+The cube to be built is $[0,4]^3$.
+
+\emph{At most one $3$-cm cube, and then no $2$-cm cube.} Two non-overlapping cubes must be separated along some axis: their intervals on that axis do not overlap. Inside $[0,4]$, intervals of lengths $3$ and $3$, or $3$ and $2$, have total length more than $4$ and cannot be disjoint. So a $3$-cm cube excludes every other cube of edge $2$ or $3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.3cm);
+defaultpen(fontsize(10pt));
+pair dd=(0.42,0.3);
+void gridcube(int n, int k){
+  for(int i=0;i<=n;++i){
+    draw((i,0)--(i,n),gray(0.6));draw((0,i)--(n,i),gray(0.6));
+    draw((i,n)--(i,n)+n*dd,gray(0.6));draw((0,n)+i*dd--(n,n)+i*dd,gray(0.6));
+    draw((n,i)--(n,i)+n*dd,gray(0.6));draw((n,0)+i*dd--(n,n)+i*dd,gray(0.6));
+  }
+  filldraw((0,0)--(k,0)--(k,k)--(0,k)--cycle,lightgray,linewidth(1.2));
+  draw((0,0)--(n,0)--(n,n)--(0,n)--cycle,linewidth(1));
+  draw((0,n)--(0,n)+n*dd--(n,n)+n*dd--(n,0)+n*dd--(n,0),linewidth(1));
+  draw((n,n)--(n,n)+n*dd,linewidth(1));
+}
+gridcube(4,3);
+label("$3$-cm cube",(1.5,1.5));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\emph{With a $3$-cm cube:} the rest is $64-27=37$ unit cubes, for $38$ cubes in all.
+
+\emph{Without a $3$-cm cube:} cut $[0,4]^3$ into its eight $2\times2\times2$ octants. Using $k$ of them as $2$-cm cubes ($0\le k\le8$) and filling the rest with unit cubes uses $k+(64-8k)=64-7k$ cubes, i.e.\
+\[
+64,\ 57,\ 50,\ 43,\ 36,\ 29,\ 22,\ 15,\ 8 .
+\]
+No more than $8$ two-centimetre cubes fit, because $9\cdot8>64$, and any construction with $k$ of them uses $64-7k$ cubes, so this list is complete.
+
+The number $38$ is not of the form $64-7k$, so the total number of different ways is $9+1=\boxed{10}$.

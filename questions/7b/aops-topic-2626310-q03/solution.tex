@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2626310_14_birthday_problems
+% Stable identity: aops-topic-2626310-q03
+Let $f(n)$ be the number of tilings of a $2\times n$ grid and $h(n)$ the number of tilings of the shape with $n$ cells in the top row and $n-1$ in the bottom row (left-aligned); $f(0)=1$, $h(0)=0$.
+
+\emph{Recursion for $f$.} Look at the two cells of the last column. Either they are covered by one vertical domino or by two $1\times1$ tiles ($f(n-1)$ each); or both by horizontal dominoes ($f(n-2)$); or one by a $1\times1$ tile and the other by a horizontal domino, leaving an $h(n-1)$ shape (two mirror-image cases). So
+\[f(n)=2f(n-1)+f(n-2)+2h(n-1).\]
+\emph{Recursion for $h$.} The protruding cell is covered by a $1\times1$ tile (leaving $f(n-1)$) or by a horizontal domino (leaving a mirror image of $h(n-1)$): $h(n)=f(n-1)+h(n-1)$.
+
+Computing: $f(1)=2$, $h(1)=1$, $f(2)=7$, $h(2)=3$, $f(3)=22$, $h(3)=10$, $f(4)=71$, $h(4)=32$, $f(5)=228$, $h(5)=103$, and
+\[f(6)=2\cdot228+71+2\cdot103=\boxed{733}.\]

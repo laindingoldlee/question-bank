@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1784532_word_problem_help
+% Stable identity: aops-topic-1784532-q01
+Let the side of the square be $s$ cm. The broken lines cut it into five strips of size $s\times\dfrac {s}{5}$, and after folding only one strip is visible:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real s=5;
+draw((0,0)--(s,0)--(s,s)--(0,s)--cycle,linewidth(0.9));
+for(int k=1;k<5;++k) draw((k,0)--(k,s),dashed);
+label("$s$",(s/2,0),S);label("$s$",(0,s/2),W);
+pair o=(7,0);
+filldraw(shift(o)*((0,0)--(1,0)--(1,s)--(0,s)--cycle),paleblue,linewidth(0.9));
+label("$\dfrac{s}{5}$",o+(0.5,0),S);label("$s$",o+(1,s/2),E);
+label("square",(s/2,s),N);label("folded",o+(0.5,s),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The rectangle has perimeter
+\[
+2\left(s+\dfrac {s}{5}\right)=\dfrac{12s}{5}=180\ \Longrightarrow\ s=75 .
+\]
+So the square has area $75^2=\boxed{5625\text{ cm}^2}$. (No trial and error is needed: write the perimeter in terms of $s$ and solve the linear equation.)

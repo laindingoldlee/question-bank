@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2796248_2015_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2796248-q03
+The hypotenuse is $\sqrt{7^2+24^2}=25$. Let the right angle be at $C$, with $CA=7$, $CB=24$, and let $H$ be the foot of the altitude.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),A=(0,7),B=(24,0);pair H=A+dot(C-A,B-A)/dot(B-A,B-A)*(B-A);
+draw(A--B--C--cycle);draw(C--H,dashed);
+draw(C+(0.8,0)--C+(0.8,0.8)--C+(0,0.8));
+label("$A$",A,N);label("$B$",B,SE);label("$C$",C,SW);label("$H$",H,NE);label("$7$",(0,3.5),W);label("$24$",(12,0),S);
+\end{asy}
+
+Triangles $AHC$ and $ACB$ are similar (they share $\angle A$ and each has a right angle), so $\dfrac{AH}{AC}=\dfrac{AC}{AB}$, giving
+\[AH=\dfrac{AC^2}{AB}=\boxed{\dfrac{49}{25}}.\]

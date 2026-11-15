@@ -1,0 +1,7 @@
+Put $A=(0,0),B=(3,0),C=(0,4)$. Equal angles subtending the same circle chord give $\angle PAS=\angle PQS=60^\circ$ and $\angle QAR=\angle QPR=60^\circ$. Since $R,S$ lie in the first quadrant, ray $AR$ makes $30^\circ$ with $AB$ and $AS$ makes $60^\circ$. For a point $T$ on $BC$ lying at ray angle $\theta$, the section ratio is $\dfrac{BT}{CT}=\dfrac{3\tan\theta}{4}$. Hence the requested sum is $\dfrac{3}{4}(\tan30^\circ+\tan60^\circ)=\boxed{\sqrt3}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+real z=sqrt(3);pair A=(0,0),B=(3,0),C=(0,4),R=(12/(4+3/z),12/z/(4+3/z)),S=(12/(4+3*z),12*z/(4+3*z));real det=R.x*S.y-R.y*S.x,u=(dot(R,R)*S.y-dot(S,S)*R.y)/det,v=(R.x*dot(S,S)-S.x*dot(R,R))/det;pair P=(u,0),Q=(0,v),O=(u/2,v/2);draw(A--B--C--cycle);draw(circle(O,abs(O)));draw(A--R);draw(A--S);draw(P--Q--S);draw(P--R);pair[] V={A,B,C,R,S,P,Q};string[] L={"A","B","C","R","S","P","Q"};for(int i=0;i<V.length;++i)label("$"+L[i]+"$",V[i],i==0?(-1,-1):(i==2||i==6?(-1,0):(1,0)));
+\end{asy}

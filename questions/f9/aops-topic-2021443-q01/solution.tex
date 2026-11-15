@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2021443_number_theory_question
+% Stable identity: aops-topic-2021443-q01
+Write the array as
+\[
+\begin{array}{ccc} a&b&c\\ d&e&f\end{array}
+\]
+so the condition is $\overline{abc}\cdot\overline{def}=\overline{ad}\cdot\overline{be}\cdot\overline{cf}$.
+
+\textbf{The arrangement.} Try to make every column a multiple of $9$ by pairing digits with sum $9$: $\{2,7\},\{3,6\},\{4,5\}$. With columns $54,63,72$ the rows are $567$ and $432$, and indeed
+\[
+567\cdot432=(3^4\cdot7)(2^4\cdot3^3)=2^4\cdot3^7\cdot7=244944,\qquad 54\cdot63\cdot72=(2\cdot3^3)(3^2\cdot7)(2^3\cdot3^2)=2^4\cdot3^7\cdot7 .
+\]
+\textbf{Uniqueness.} A useful first restriction comes from the factor $5$: the left side is divisible by $5$ exactly when $5\in\{c,f\}$ (a row number is a multiple of $5$ only if it ends in $5$), and the right side exactly when $5\in\{d,e,f\}$. So $5$ must be in position $a$, $b$ or $f$, which leaves $360$ of the $720$ arrangements; comparing the powers of $2$ in the same way cuts this to $42$ arrangements, and checking these (or simply all $720$ arrangements, e.g. by a short computer search) shows that the arrangement above is the only one that works.
+
+The sum of the row numbers is $567+432=\boxed{999}$.

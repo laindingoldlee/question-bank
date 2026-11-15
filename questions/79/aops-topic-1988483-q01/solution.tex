@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1988483_number_theory
+% Stable identity: aops-topic-1988483-q01
+Write a six-digit number as $d_1d_2\ldots d_6$ with $1\le d_1\le9$ and $0\le d_i\le9$ for $i\ge2$. Its digit sum $s$ lies between $1$ and $54$.
+
+\emph{Symmetry.} The map $d_1\mapsto10-d_1$, $d_i\mapsto9-d_i$ ($i\ge2$) is a bijection of the six-digit numbers onto themselves, and it sends digit sum $s$ to $10+45-s=55-s$. So the number $N(s)$ of six-digit numbers with digit sum $s$ satisfies $N(s)=N(55-s)$: the distribution is symmetric about $27.5$.
+
+\emph{Unimodality.} $N(s)$ is the number of ways to write $s=d_1+\dots+d_6$ with the given ranges, that is, the convolution of six sequences of the form $1,1,\dots,1$. Such sequences are log-concave with no internal zeros, and a convolution of log-concave sequences with no internal zeros is again log-concave, hence unimodal: $N(s)$ rises to a maximum and then falls. Combined with the symmetry about $27.5$, the maximum is attained at the two middle values.
+
+So the most frequent digit sums are $\boxed{27\text{ and }28}$, tied (each occurs for $50412$ six-digit numbers).

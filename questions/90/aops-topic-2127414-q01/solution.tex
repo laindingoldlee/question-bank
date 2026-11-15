@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2127414_another_geo_question
+% Stable identity: aops-topic-2127414-q01
+A square with diagonal $4\sqrt2$ has side $4$, so the inscribed circle has radius $2$ and area $4\pi$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+pair T1=2*dir(90), T2=2*dir(210), T3=2*dir(330);
+fill(circle(O,2),paleblue);
+fill(T1--T2--T3--cycle,white);
+draw((-2,-2)--(2,-2)--(2,2)--(-2,2)--cycle,linewidth(0.9));
+draw((-2,-2)--(2,2),gray+dashed);
+draw(circle(O,2),linewidth(0.9));
+draw(T1--T2--T3--cycle,linewidth(0.9));
+draw(O--T3,red+linewidth(0.8));
+draw(T1--(0,-1),dotted);
+dot(O); dot(T1); dot(T2); dot(T3);
+label("$O$",O,W); label("$2$",(O+T3)/2,N,red);
+label("$4$",(0,-2),S);
+label("$4\sqrt{2}$",(2,2),NE,gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The centre $O$ of the circle is also the centroid of the equilateral triangle, and the centroid lies $\dfrac{2}{3}$ of the way down each median. So the radius $2$ is $\dfrac{2}{3}$ of the height of the triangle, and the height is $3$. The side of an equilateral triangle with height $3$ is $\dfrac{2\cdot3}{\sqrt3}=2\sqrt3$, so the triangle has area
+\[\dfrac{1}{2}\cdot2\sqrt3\cdot3=3\sqrt3 .\]
+The required area (shaded) is
+\[\boxed{4\pi-3\sqrt3}.\]

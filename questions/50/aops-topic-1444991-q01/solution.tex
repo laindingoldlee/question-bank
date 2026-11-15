@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1444991_queens_geometry_problem_to_alice
+% Stable identity: aops-topic-1444991-q01
+Dividing all sides by $1.6$ gives the similar triangle with sides $5$, $16$, $19$, which has the same angles. The largest angle $C$ is opposite the longest side $19$. By the law of cosines,
+\[
+\cos C=\dfrac{5^2+16^2-19^2}{2\cdot5\cdot16}=\dfrac{25+256-361}{160}=\dfrac{-80}{160}=-\dfrac{1}{2},
+\]
+so $C=\boxed{120^\circ}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), B=(25.6,0), A=8*dir(120);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(arc(C,2.2,0,120),red); label("$120^\circ$",C+2.4*dir(60),NE,red);
+label("$A$",A,NW); label("$B$",B,E); label("$C$",C,S);
+label("$8$",(A+C)/2,W); label("$25.6$",(B+C)/2,S); label("$30.4$",(A+B)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

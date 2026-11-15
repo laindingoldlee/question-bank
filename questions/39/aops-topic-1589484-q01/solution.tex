@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1589484_need_help_with_this_question
+% Stable identity: aops-topic-1589484-q01
+The gradient is the drop in elevation per unit of horizontal distance, i.e.\ the absolute value of the slope of the stream's profile:
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(5.6,0),gray,Arrow(TeXHead));draw((0,0)--(0,1900/400+0.3),gray,Arrow(TeXHead));
+label("distance (mi)",(5.6,0),E,gray);label("elevation (ft)",(0,1900/400+0.3),N,gray);
+pair P=(0,4),Q=(5,1);
+draw(P--Q,blue+linewidth(1));dot(P);dot(Q);
+for(int i=1;i<=5;++i){draw((i,0)--(i,-0.1));label(string(i),(i,-0.1),S);}
+label("$1600$",(0,4),W);label("$400$",(0,1),W);draw((0,1)--(-0.1,1));
+draw(Q--(5,4)--P,red+dashed);
+label("$1200$ ft",(5,2.5),E,red);label("$5$ mi",(2.5,4),N,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+\dfrac{1600-400}{5}=\dfrac{1200\text{ ft}}{5\text{ mi}}=\boxed{240\text{ feet per mile}}.
+\]

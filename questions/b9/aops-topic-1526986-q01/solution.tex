@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1526986_mathcounts_2018_handbook_136
+% Stable identity: aops-topic-1526986-q01
+Put $B=(0,0)$, $A=(0,44)$, $C=(33,0)$. Since $BD:DC=2:1$ and $BC=33$, $D=(22,0)$.
+
+When $A$ is folded onto $D$, the fold line is the perpendicular bisector of $AD$: every point of the crease is equally far from $A$ and $D$. The midpoint of $AD$ is $(11,22)$ and $AD$ has direction $(22,-44)$, so the crease is
+\[
+22(x-11)-44(y-22)=0\qquad\Longleftrightarrow\qquad x-2y+33=0 .
+\]
+\textbf{The point $E$.} Line $AC$ is $\dfrac{x}{33}+\dfrac{y}{44}=1$, i.e.\ $4x+3y=132$. Substituting $x=2y-33$ gives $11y=264$, so $y=24$, $x=15$ and $E=(15,24)$, which lies on segment $AC$. (Likewise $F=(0,16.5)$ lies on $AB$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),A=(0,44),C=(33,0),D=(22,0),Ep=(15,24),F=(0,16.5);
+fill(C--D--Ep--cycle,paleyellow);
+draw(F--A--Ep,gray+dashed);
+draw(B--C--Ep--F--cycle,linewidth(1));
+draw(F--D--Ep,blue+linewidth(1));
+draw(A--D,gray+dotted);
+real q=1.6;draw((0,q)--(q,q)--(q,0));
+dot(A,gray);dot(D);dot(Ep);dot(F);
+label("$A$",A,N,gray);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$E$",Ep,NE);label("$F$",F,W);
+label("$22$",(B+D)/2,S);label("$11$",(C+D)/2,S);
+label("$24$",(Ep.x,12),W,red);draw(Ep--(Ep.x,0),red+dashed);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The area.} Triangle $CDE$ has base $CD=11$ on the $x$-axis and height $24$ (the $y$-coordinate of $E$), so
+\[
+[CDE]=\dfrac{1}{2}\cdot11\cdot24=\boxed{132}\text{ square centimetres}.
+\]
+(Check: $ED=\sqrt{7^2+24^2}=25=EA$, as it must be after folding, since $AC=55$ and $EC=\sqrt{18^2+24^2}=30$.)

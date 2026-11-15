@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2790239_2018_manhattan_mathematical_olympiad_grades_78_problems_14
+% Stable identity: aops-topic-2790239-q03
+The scaling (homothety) centred at the cone's apex that maps the bottom ball onto the middle ball (both are balls inscribed in the cone) has ratio $\dfrac23$. It maps the cone to itself and the middle ball to a ball inscribed in the cone and tangent to the image of the bottom ball, i.e. tangent to the middle ball on the apex side: that is the top ball.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair V=(0,9);real sa=0.2,ca=sqrt(1-sa*sa);draw(V--V+(9/ca)*(-sa,-ca));draw(V--V+(9/ca)*(sa,-ca));draw((-3,0)--(3,0),gray(0.6));
+real[] r={1.5,1,2/3};for(int i=0;i<3;++i){real d=r[i]/sa;draw(circle(V-(0,d),r[i]));}
+label("$3$",V-(0,7.5),E);label("$2$",V-(0,5),E);label("$?$",V-(0,10/3),E);dot(V);
+\end{asy}
+
+So the diameters form a geometric sequence $3,2,\dfrac43$, and the top ball has diameter $\boxed{\dfrac43\text{ ft}}$.

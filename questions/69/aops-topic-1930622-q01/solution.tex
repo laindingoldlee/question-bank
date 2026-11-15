@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1930622_how_to_find_infite_geometric_sequences_in_decimals
+% Stable identity: aops-topic-1930622-q01
+(a) Factor out $\dfrac{1}{1000}$:
+\[
+\dfrac{1}{998}=\dfrac{1}{1000}\cdot\dfrac{1}{1-\dfrac{2}{1000}}=\dfrac{1}{1000}\sum_{k=0}^{\infty}\left(\dfrac{2}{1000}\right)^k=\sum_{k=1}^{\infty}\dfrac{2^{k-1}}{1000^k},
+\]
+using the geometric series $\dfrac{1}{1-q}=1+q+q^2+\cdots$ for $|q|<1$, here $q=\dfrac{2}{1000}$.
+
+(b) The term $\dfrac{2^{k-1}}{1000^k}$ places the number $2^{k-1}$ in the $k$-th block of three decimal places. As long as $2^{k-1}<1000$ the blocks $001,002,004,\dots,256,512$ do not interact, but the later terms $1024,2048,\dots$ have four or more digits and spill into the previous blocks. The tail after the block $512$ is
+\[
+\sum_{k\ge11}\dfrac{2^{k-1}}{1000^k}=\dfrac{1024}{1000^{11}}\cdot\dfrac{1}{1-\dfrac{2}{1000}}=\dfrac{1024}{998}\cdot\dfrac{1}{1000^{10}},
+\]
+and $\dfrac{1024}{998}=1.026\ldots$, which adds $1$ to the tenth block (turning $512$ into $513$) and starts the next block with $026$. So $\dfrac{1}{998}=0.001002004008016032064128256513026\ldots$.
+
+(c) In the same way,
+\[
+\dfrac{1}{10^m-c}=\dfrac{1}{10^m}\cdot\dfrac{1}{1-\dfrac{c}{10^m}}=\sum_{k=1}^{\infty}\dfrac{c^{\,k-1}}{10^{mk}},
+\]
+valid because $0<\dfrac{c}{10^m}<1$.

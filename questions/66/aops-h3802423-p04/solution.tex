@@ -1,0 +1,9 @@
+Each move toggles six cells, so the parity of the total number of black cells is unchanged. The target has $9N$ black cells. Hence odd $N$, in particular $2019$, is impossible.
+For even $N$, pair the boards. For each pair, perform three moves choosing numbers $1,5,9$, always using the same board for columns and the other for rows. Each of the first board's three columns and each of the second board's three rows is toggled exactly once, making both boards black. Thus $\boxed{\text{(a) yes; (b) no}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("Choose 1, 5, 9 to toggle all columns and all rows",(1.5,-3.2));
+\end{asy}

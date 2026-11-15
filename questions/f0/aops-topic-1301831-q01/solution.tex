@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1301831_find_the_values_of_x_and_y
+% Stable identity: aops-topic-1301831-q01
+Each rectangle has $x+y=70$. Joining two rectangles along a common side of length $L$ hides that side twice, so the perimeter is $2\cdot140-2L=180$, giving $L=50$. The shared side is $50$ cm long, which must be the length (the width is at most $35$), so $x=50$ and $y=20$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(50,0)--(50,20)--(0,20)--cycle); draw((0,20)--(0,40)--(50,40)--(50,20));
+label("$x=50$",(25,0),S); label("$y=20$",(50,10),E); label("$y$",(50,30),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The answer is $\boxed{x=50,\ y=20}$. (The poster's second equation, $2(2x+2y)=180$, ignores the hidden sides.)

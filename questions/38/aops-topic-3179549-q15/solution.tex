@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h3179549_2015_emcc_individual_speed_test__exeter_math_club_competition
+% Stable identity: aops-topic-3179549-q15
+Each edge belongs to two faces, so the total number of face-edge incidences is $2\cdot150=300$. If there are $p$ pentagons, there are $92-p$ triangles. Thus $5p+3(92-p)=300$, giving $2p=24$ and $p=\boxed{12}$.\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw((0,0)--(1,0)--(.5,.8)--cycle);pair[] P;for(int k=0;k<5;++k)P.push((3,.4)+.6*dir(90+72*k));path boundary=P[0]; for(int j=1;j<P.length;++j)boundary=boundary--P[j];draw(boundary--cycle);label("triangle",(.5,-.3),S);label("pentagon",(3,-.3),S);
+\end{asy}

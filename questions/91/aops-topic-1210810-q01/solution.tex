@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1210810_c60_deg
+% Stable identity: aops-topic-1210810-q01
+By the law of cosines, $c^2=a^2+b^2-2ab\cos60^\circ=a^2+b^2-ab$, so
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),B=(5,0),A=3*dir(60); draw(A--B--C--cycle,linewidth(0.9)); draw(arc(C,0.7,0,60));
+label("$60^\circ$",(1.25,0.45)); label("$C$",C,SW); label("$B$",B,SE); label("$A$",A,N);
+label("$a$",(B+C)/2,S); label("$b$",(A+C)/2,NW); label("$c$",(A+B)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[c=\boxed{\sqrt{a^2-ab+b^2}}.\]
+(Without the law of cosines: drop the altitude from $A$; it has length $\dfrac{\sqrt3}{2}b$ and its foot is $\dfrac {b}{2}$ from $C$, so $c^2=\left(a-\dfrac {b}{2}\right)^2+\dfrac{3}{4}b^2=a^2-ab+b^2$.)

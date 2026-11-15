@@ -1,0 +1,17 @@
+After the first move the tourist is on the outer cycle. Every outer city has exactly three neighbors, one of which is $P$. Thus each subsequent move returns to $P$ with probability $\dfrac{1}{3}$, and stays on the cycle with probability $\dfrac{2}{3}$, regardless of the previous outer cities.
+
+The answers are (a) $\boxed{\dfrac{1}{3}}$, (b) $\boxed{\dfrac{2}{9}}$, and in general
+\[
+\boxed{\Pr(T=n)=
+\begin{cases}
+0,&n=1,\\
+\dfrac{1}{3}\left(\dfrac{2}{3}\right)^{n-2},&n\ge2.
+\end{cases}}
+\]
+The probabilities sum to $1$ by the geometric-series formula.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0);pair[] V;string[] names={"A","B","C","D","E","F"};for(int i=0;i<6;++i)V.push(2dir(90-60i));for(int i=0;i<6;++i){draw(V[i]--V[(i+1)%6]);draw(O--V[i],blue);dot(V[i]);label("$"+names[i]+"$",V[i],V[i]);}dot(O);label("$P$",O,SE);
+\end{asy}

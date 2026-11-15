@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3165228_2022_moaa_speed_round__math_open_at_andover
+% Stable identity: aops-topic-3165228-q15
+Put $\angle BAC=4t$, so ray $AI$ makes angle $2t$ with $AB$, and ray $AO$ makes angle $3t$ with $AB$ and $t$ with $AC$. If the circumradius is $R$, the isosceles triangles formed with the center give $AB=2R\cos3t$ and $AC=2R\cos t$. Also $BC=2R\sin4t$. Therefore $\dfrac{7}{21}=\dfrac{\sin4t}{\cos3t+\cos t}=2\sin t$, yielding $\sin t=\dfrac{1}{6}$ and $\cos2t=\dfrac{17}{18}$. Write $b=AC,c=AB$. The cosine rule gives $7^2=21^2-4bc\cos^2(2t)$, so $bc\cos^2(2t)=98$. With semiperimeter $14$, the inradius is $r=\dfrac{bc\sin4t}{28}$ and $AI=\dfrac{r}{\sin2t}=\dfrac{bc\cos2t}{14}=\dfrac{7}{\cos2t}$. Consequently $\boxed{AI=\dfrac{126}{17}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real t=asin(1/6),R=21/(2*(cos(3*t)+cos(t))),c=2*R*cos(3*t),b=2*R*cos(t);pair A=(0,0),Bp=(c,0),C=b*dir(4*t*180/pi),O=R*dir(3*t*180/pi),I=(126/17)*dir(2*t*180/pi);draw(circle(O,R),gray);draw(A--Bp--C--cycle);draw(A--O,red);draw(A--I,blue);label("$A$",A,SW);label("$B$",Bp,SE);label("$C$",C,N);label("$O$",O,NW);label("$I$",I,S);
+\end{asy}

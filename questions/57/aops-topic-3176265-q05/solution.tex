@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3176265_2019_mbmt_geometry_round__montgomery_blair_math_tournament
+% Stable identity: aops-topic-3176265-q05
+The radius-$10$ and radius-$100$ disks have centers $110$ apart; their two farthest points are $220$ apart. Any containing disk therefore has radius at least $110$. Put their centers at $(110,0)$ and $(0,0)$. The radius-$110$ disk centered at $(10,0)$ contains both. If the small-circle center is $(x,y)$, tangency gives $x^2+y^2=101^2$ and $(x-110)^2+y^2=11^2$, hence $x=\dfrac{1109}{11}$. Its squared distance from $(10,0)$ is $101^2-20x+100=\dfrac{91131}{11}<109^2$. Thus its radius-$1$ disk is also contained. The lower bound is attained, so the answer is $\boxed{110}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real x=1109/11;pair A=(x,sqrt(101^2-x^2)),Bp=(110,0),C=(0,0),O=(10,0);draw(circle(C,100));draw(circle(Bp,10));draw(circle(A,1));draw(circle(O,110),blue);label("$100$",C,W);label("$10$",Bp,E);label("$1$",A,N);dot("enclosing center",O,S);
+\end{asy}

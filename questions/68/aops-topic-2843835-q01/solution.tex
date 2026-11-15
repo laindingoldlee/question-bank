@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2843835_prove_this_trapezoid_formula
+% Stable identity: aops-topic-2843835-q01
+Let the trapezoid be $ABCD$ with $AB=a$, $DC=b$, $AB\parallel DC$, and let $M,N$ be the midpoints of $AC$ and $BD$. Let $P,Q$ be the midpoints of the legs $AD$ and $BC$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(7,0),C=(5,2.5),D=(1.5,2.5);draw(A--B--C--D--cycle);draw(A--C,dashed);draw(B--D,dashed);
+pair M=(A+C)/2,N=(B+D)/2,P=(A+D)/2,Q=(B+C)/2;draw(P--Q,dotted);dot(M);dot(N);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$M$",M,S);label("$N$",N,S);label("$P$",P,W);label("$Q$",Q,E);
+\end{asy}
+
+By the midline theorem in triangle $ADC$, $PM\parallel DC$ with $PM=\dfrac b2$; in triangle $ABD$, $PN\parallel AB$ with $PN=\dfrac a2$. Both segments lie on the line through $P$ parallel to the bases (the midline $PQ$), on the same side of $P$. Hence $d=MN=PN-PM=\dfrac{a-b}2$, i.e. $b=a-2d$. $\blacksquare$

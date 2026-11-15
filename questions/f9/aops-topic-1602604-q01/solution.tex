@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1602604_triangle_problem
+% Stable identity: aops-topic-1602604-q01
+Let $a=BC$, $b=AC$, $c=AB$.
+
+\textbf{The hypotenuse.} In triangle $AMC$, $O$ and $N$ are the midpoints of $AM$ and $AC$, so $ON$ is a midline: $ON=\dfrac{1}{2}MC$. In a right triangle the median to the hypotenuse is half the hypotenuse, so $MC=\dfrac {c}{2}$. Hence $c=4\cdot ON=50$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),A=(48,0),B=(0,14);
+pair M=(A+B)/2,Np=(A+C)/2,O=(A+M)/2;
+fill(M--Np--C--B--cycle,paleyellow);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(M--Np,linewidth(0.9));
+draw(C--M,gray+dashed);
+draw(O--Np,red+linewidth(1));
+real q=1.4;draw((q,0)--(q,q)--(0,q));
+dot(M);dot(Np);dot(O);
+label("$C$",C,SW);label("$A$",A,SE);label("$B$",B,NW);label("$M$",M,N);label("$N$",Np,S);label("$O$",O,NE);
+draw((O+Np)/2--(32,-2.2),red+linewidth(0.4));label("$12.5$",(32,-2.2),S,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The legs.} Then $a+b=112-50=62$ and $a^2+b^2=50^2=2500$, so $2ab=62^2-2500=1344$ and $ab=672$. (The legs are $14$ and $48$.) The area of triangle $ABC$ is $\dfrac{ab}{2}=336$.
+
+\textbf{The quadrilateral.} $MN$ is a midline of triangle $ABC$, so triangle $AMN$ is similar to triangle $ABC$ with ratio $\dfrac{1}{2}$ and has area $\dfrac{1}{4}\cdot336=84$. Therefore
+\[
+[MNCB]=336-84=\boxed{252}.
+\]

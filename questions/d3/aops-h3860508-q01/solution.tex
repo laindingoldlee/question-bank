@@ -1,0 +1,25 @@
+The discontinuities of the root-count function occur at the two critical values of the cubic, so its local minimum is $0$ and local maximum is $4$. Hence
+\[
+h(t)=
+\begin{cases}
+1,&t<0\text{ or }t>4,\\
+2,&t=0\text{ or }t=4,\\
+3,&0<t<4.
+\end{cases}
+\]
+Write $f(x)=a(x-r)^2(x-s)$ with $a>0$ and $s<r$. If $\Delta=r-s$, the other critical point is $s+\dfrac{\Delta}{3}$, where the value is $4a\dfrac{\Delta^3}{27}=4$. Thus $a=\dfrac{27}{\Delta^3}$. Since $f(0)=0$, either $(r,s)=(0,-\Delta)$ or $(r,s)=(\Delta,0)$.
+
+The equation in condition (iii) says $x-h(x)$ equals one of the two roots. A root $z$ contributes $x=z+1$ when that lies outside $[0,4]$, $x=z+3$ when that lies in $(0,4)$, and possibly the boundary points $x=0,4$ when $z=-2,2$, respectively.
+
+In the first case, root $0$ always contributes $x=3$. Root $-\Delta$ contributes $1-\Delta$ if $\Delta>1$, $3-\Delta$ if $\Delta<3$, and the extra boundary point $0$ only if $\Delta=2$. Four distinct solutions are therefore possible exactly at $\Delta=2$, when they are $-1,0,1,3$.
+
+In the second case, root $0$ again contributes only $3$. The positive root $\Delta$ contributes at most one more point: $\Delta+1$ if $\Delta>3$, $\Delta+3$ if $\Delta<1$, or $4$ if $\Delta=2$. It cannot give four solutions. Therefore
+\[
+\boxed{f(x)=\dfrac{27}{8}x^2(x+2)}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;real f(real x){return 27.0/8*x*x*(x+2);}draw(graph(f,-2.3,1),blue);draw((-2.5,0)--(1.2,0),gray,Arrow);draw((0,-5.5)--(0,11),gray,Arrow);draw((-2.3,4)--(1,4),dashed);dot((-4.0/3,4));dot((0,0));label("$4$",(-4.0/3,4),(0,1));label("$-2$",(-2,0),(0,-1));label("$0$",(0,0),SE);
+\end{asy}

@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1373998_2014_amc_10a_25_solution_question
+% Stable identity: aops-topic-1373998-q25
+\textbf{Two or three powers of $2$ between $5^k$ and $5^{k+1}$.} Fix $k\ge0$ and let $2^j$ be the smallest power of $2$ greater than $5^k$, so $2^{j-1}<5^k<2^j$ (no power of $2$ equals a power of $5$ except $1=2^0=5^0$, and for $k=0$ take $j=1$). Then
+\[
+2^{j+1}=4\cdot2^{j-1}<4\cdot5^k<5^{k+1},
+\]
+so $2^j$ and $2^{j+1}$ both lie strictly between $5^k$ and $5^{k+1}$. And
+\[
+2^{j+3}=8\cdot2^j>8\cdot5^k>5^{k+1},
+\]
+so $2^{j+3}$ is too big. Hence the powers of $2$ in the interval are $2^j,2^{j+1}$ and possibly $2^{j+2}$: there are exactly $2$ or $3$. (The key facts are $2^2<5<2^3$.)
+
+\textbf{Counting.} The condition $5^n<2^m<2^{m+2}<5^{n+1}$ says that $2^m,2^{m+1},2^{m+2}$ all lie in $(5^n,5^{n+1})$, i.e.\ the interval $(5^n,5^{n+1})$ contains $3$ powers of $2$ and $2^m$ is the first of them. So the pairs $(m,n)$ correspond to the intervals with three powers of $2$.
+
+The powers $2^1,2^2,\dots,2^{2013}$ are exactly the powers of $2$ in $(1,5^{867})$, and they are spread over the $867$ intervals $(5^0,5^1),\dots,(5^{866},5^{867})$. If $x$ intervals contain $2$ powers and $y$ contain $3$, then
+\[
+x+y=867,\qquad 2x+3y=2013,
+\]
+so $y=2013-2\cdot867=279$. For each of these intervals $m+2\le2013$, so $m\le2011$ and the condition $m\le2012$ is automatic. The answer is $\boxed{\textbf{(B) }279}$.

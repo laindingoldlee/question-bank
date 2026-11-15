@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2987610_a_confusing_mathcounts_question
+% Stable identity: aops-topic-2987610-q01
+Tiling a rectangle exactly with congruent squares of side $s$ (with no cutting) requires $s$ to divide both side lengths, so $s$ divides $\gcd(12,16,8)=4$. To use as few squares as possible take $s=4$, each of area $16$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair o=(0,0),x=(16,0),y=(5,3.5),z=(0,8);
+draw(o--x--x+z--z--cycle);draw(z--z+y--x+z+y--x+z);draw(x--x+y--x+y+z);
+draw(o--y,dashed);draw(y--y+x,dashed);draw(y--y+z,dashed);
+label("$16$",x/2,S);label("$8$",z/2,W);label("$12$",x+y/2,SE);
+\end{asy}
+
+The faces have areas $192$ (two), $128$ (two) and $96$ (two). Leave uncovered one of the largest faces, $16\times12$. The covered area is $192+2\cdot128+2\cdot96=640$, so the number of squares is $\dfrac{640}{16}=\boxed{40}$.

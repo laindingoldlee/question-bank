@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1625314_macau_math_contest
+% Stable identity: aops-topic-1625314-q01
+\textbf{Thirteen numbers can remain.} Keep $1,5,9,\dots,49$, the $13$ numbers congruent to $1$ modulo $4$. Every difference is a multiple of $4$, so it is not prime. So erasing $50-13=37$ numbers suffices.
+
+\textbf{Fourteen cannot.} Suppose $k_1<k_2<\cdots<k_m$ remain, and let $g_i=k_{i+1}-k_i$ be the gaps. Each gap is not prime, and neither is the sum $g_i+g_{i+1}=k_{i+2}-k_i$ of two neighbouring gaps. We claim that
+\[
+g_i+g_{i+1}\ge8\quad\text{for every }i,\qquad\text{and}\qquad g_i+g_{i+1}\ge9\ \text{ if one of the two gaps is }1 .
+\]
+The non-prime positive integers are $1,4,6,8,9,\dots$. If neither gap is $1$, both are at least $4$ and the sum is at least $8$. If one gap is $1$, the other cannot be $1$, $4$ or $6$ (the sums $2$, $5$, $7$ are prime), so it is at least $8$ and the sum is at least $9$.
+
+If $m\ge14$, consider the first $13$ gaps and group them as $(g_1,g_2),(g_3,g_4),\dots,(g_{11},g_{12})$ and $g_{13}$. Then
+\[
+49\ge k_{14}-k_1=(g_1+g_2)+\cdots+(g_{11}+g_{12})+g_{13}\ge6\cdot8+1=49 .
+\]
+So equality holds throughout: $g_{13}=1$ and each pair sums to exactly $8$. But then $g_{12}$ and $g_{13}=1$ are neighbours, so $g_{12}\ge8$, and the pair $(g_{11},g_{12})$ sums to more than $8$, a contradiction. So at most $13$ numbers remain.
+
+The least number of numbers to erase is $\boxed{37}$.

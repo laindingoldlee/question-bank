@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1475196_i_made_a_problem
+% Stable identity: aops-topic-1475196-q01
+Let Alice use the table that gives her the point for \emph{every} pair $(x,y)$ with $x\ne y$.
+
+Whatever probabilities $p_1,\dots,p_n$ Bob announces, some number $m$ has $p_m\le\dfrac{1}{n}<1$ (they cannot all exceed $\dfrac{1}{n}$, since they add to $1$). Alice chooses $m$ in every round. In each round:
+\begin{itemize}
+\item Bob never gets a point (the table gives no point to Bob);
+\item Alice gets a point whenever Bob's number differs from $m$, which has probability $1-p_m\ge1-\dfrac{1}{n}>0$.
+\end{itemize}
+So Alice's expected points per round are at least $1-\dfrac{1}{n}>0$, while Bob's are $0$, and Bob loses whatever strategy he announces. Hence the claim is false. $\blacksquare$
+
+\emph{Remark.} The claim becomes true for \emph{fair} tables, where the point for $(x,y)$ goes to Alice exactly when the point for $(y,x)$ goes to Bob. That case is a symmetric zero-sum game, and by von Neumann's minimax theorem it has value $0$, so Bob has a strategy guaranteeing that Alice's expected advantage is at most $0$.

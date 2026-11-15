@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3136014_2013_lmt_spring_guts_round_p13p24_lexington_mathematical_tournament
+% Stable identity: aops-topic-3136014-q14
+A digit at least 7 contributes at least 5040 and is impossible. Exhaustively checking the remaining digits yields only $145=1!+4!+5!$. Thus the sum is $\boxed{145}$. The finite check below also checks every three-digit integer directly.
+\begin{verbatim}
+from math import factorial
+solutions=[n for n in range(100,1000)
+ if n==sum(factorial(int(d)) for d in str(n))]
+assert solutions==[145]
+\end{verbatim}

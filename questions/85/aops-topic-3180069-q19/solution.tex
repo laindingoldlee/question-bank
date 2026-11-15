@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3180069_2023_lmt_spring_speed_round__lexington_mathematical_tournament
+% Stable identity: aops-topic-3180069-q19
+The law of cosines gives $BD^2=49+25-70\cos135^\circ=74+35\sqrt2$. Triangle $ABD$ has area $\dfrac{35\sqrt2}{4}$. In isosceles triangle $BCD$, the altitude to $BD$ has length $\dfrac{BD}{2}\cot22.5^\circ$, so its area is $\dfrac{BD^2}{4}(1+\sqrt2)$. Adding the two triangle areas gives $\dfrac{35\sqrt2+(74+35\sqrt2)(1+\sqrt2)}{4}=\boxed{36+36\sqrt2}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real d=sqrt(74+35*sqrt(2)),x=(49+d*d-25)/(2*d),h=sqrt(49-x*x);pair B=(0,0),D=(d,0),A=(x,-h),C=(d/2,d*(1+sqrt(2))/2);draw(A--B--C--D--cycle);draw(B--D,dashed);label("$A$",A,S);label("$B$",B,W);label("$C$",C,N);label("$D$",D,E);
+\end{asy}

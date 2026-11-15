@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3312652_geometry
+% Stable identity: aops-topic-3312652-q01
+Use coordinates $B=(0,0)$, $C=(3,0)$ and $A=(0,h)$; an affine change to this shape preserves area ratios. Then $D=(1,0)$ and $E=(\dfrac{3}{2},\dfrac{h}{2})$. Solving the two line equations gives $F=(\dfrac{3}{4},\dfrac{h}{4})$. The three triangles outside $DCEF$ have areas $[ABF]=\dfrac{3h}{8}$, $[AEF]=\dfrac{3h}{8}$ and $[BDF]=\dfrac{h}{8}$. Subtracting from $[ABC]=\dfrac{3h}{2}$ gives $[DCEF]=\dfrac{5h}{8}$. Since $[ABD]=\dfrac{h}{2}$, their ratio is $\dfrac{4}{5}$. Hence $[ABD]=60\cdot\dfrac{4}{5}=\boxed{48}$.
+\begin{asy}
+import geometry;
+usepackage("amsmath");
+size(270);
+pair A=(0,3),B=(0,0),C=(3,0),D=(1,0),PtE=(1.5,1.5),F=(.75,.75);draw(A--B--C--cycle);draw(B--PtE^^A--D);filldraw(D--C--PtE--F--cycle,lightblue,blue);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$E$",PtE,NE);label("$F$",F,W);
+\end{asy}

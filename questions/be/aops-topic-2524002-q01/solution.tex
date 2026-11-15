@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2524002_circles_tangent_to_2_different_lines
+% Stable identity: aops-topic-2524002-q01
+\textbf{(a)} A circle with centre $O$ and radius $\rho>0$ is tangent to a line exactly when the distance from $O$ to the line equals $\rho$. So a circle is tangent to both lines $AC$ and $BD$ exactly when its centre $O$ is at the same positive distance from both lines and $\rho$ is that distance. The points equidistant from two lines that cross at $P$ form the two bisectors of the angles at $P$: two perpendicular lines through $P$. Every point $O\ne P$ on them is the centre of exactly one such circle, so there are \textbf{infinitely many} circles.
+
+\textbf{(b)} Let $m$ be the axis of symmetry of the trapezoid, the common perpendicular bisector of $AB$ and $CD$. Reflection in $m$ swaps $A$ with $B$ and $D$ with $C$, so it swaps the lines $AC$ and $BD$; hence it fixes their intersection $P$, so $P$ lies on $m$, and the reflection carries each angle between the two lines to the angle on the other side of $m$. So $m$ makes equal angles with $AC$ and $BD$: it is one bisector. The other bisector is the line through $P$ perpendicular to $m$, which is parallel to $AB$ and $CD$.
+
+So the centres are exactly the points other than $P$ on the axis of symmetry $m$ and on the line through $P$ parallel to the bases.
+
+\emph{Construction.} Choose a point $O\ne P$ on one of these two lines, drop the perpendicular from $O$ to $AC$ with foot $T$, and draw the circle with centre $O$ through $T$. It touches $AC$ at $T$, and since $O$ lies on a bisector of the angles between the two lines, it is equally far from $BD$, so the circle also touches $BD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(-3,0), B=(3,0), C=(1.6,2.2), D=(-1.6,2.2);
+pair P=extension(A,C,B,D);
+draw(A--B--C--D--cycle,linewidth(0.8));
+draw(A-0.25*(C-A)--A+1.55*(C-A),gray); draw(B-0.25*(D-B)--B+1.55*(D-B),gray);
+draw(A--C,linewidth(0.8)); draw(B--D,linewidth(0.8));
+draw((0,-1.2)--(0,3.4),dashed+blue); draw((-4.2,P.y)--(4.2,P.y),dashed+blue);
+pair dAC=unit(C-A);
+pair O1=(0,P.y+1.3); real r1=abs(cross(dAC,O1-A));
+pair O2=(-3.0,P.y); real r2=abs(cross(dAC,O2-A));
+draw(circle(O1,r1),red); draw(circle(O2,r2),red);
+dot(O1); dot(O2); dot(P);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$D$",D,N); label("$P$",P,1.8*dir(300),fontsize(9pt));
+label("$m$",(0,-1.2),S,blue);
+\end{asy}
+
+The sketch shows the two bisector lines (dashed) and one circle centred on each.
+\[\boxed{\text{infinitely many; centres on the axis of symmetry or on the line through }P\text{ parallel to the bases}}\]

@@ -1,0 +1,7 @@
+Because AE=2s=30, s=15. The unit-side pairs in this equilateral chain are AB,AC,BC,BD,CD,CE,DE, seven pairs. The other three pairs AD,BE,AE have lengths $s\sqrt3,s\sqrt3,2s$, respectively. Thus seven of the $\binom52=10$ pairs qualify, and the probability is $\boxed{\dfrac{7}{10}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(.5,sqrt(3)/2),C=(1,0),D=(1.5,sqrt(3)/2),E=(2,0);draw(A--B--C--A);draw(B--D--C);draw(D--E--C);pair[] p={A,B,C,D,E};string[] a={"A","B","C","D","E"};for(int i=0;i<5;++i){dot(p[i]);label("$"+a[i]+"$",p[i],i%2==0?(0,-1):(0,1));}
+\end{asy}

@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3131308_2022_moaa_gunga_bowl__math_open_at_andover__last_3_sets__9_problems
+% Stable identity: aops-topic-3131308-q21
+Count strings that avoid HHT by states $0,1,2$, according as their longest suffix that is a prefix of HHT is empty, H, or HH. Appending T sends states $0,1$ to $0$ and terminates state $2$; appending H sends $0$ to $1$ and $1,2$ to $2$. Starting with counts $(1,0,0)$, iterate this transition for $11$ flips. The number in state $2$ is $143$, and exactly these prefixes terminate on the next T. Thus the probability is $\dfrac{143}{2^{12}}=\dfrac{143}{4096}$, already reduced, so $m+n=\boxed{4239}$. The following exact computation verifies the count.
+\begin{verbatim}
+a,b,c=1,0,0
+for _ in range(11):
+    a,b,c=a+b,a,b+c
+assert c==143
+\end{verbatim}

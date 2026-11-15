@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2784571_2021_abmc_team_rounds_58__actonboxborough_math_competition
+% Stable identity: aops-topic-2784571-q15
+Place $A=(0,0)$, $B=(3,0)$, $C=(3,3)$, $D=(0,3)$, so $E=(0,2)$ and $F=(f,0)$. The right angle is at $E$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(3,0),C=(3,3),D=(0,3),E=(0,2),F=(2/3,0);
+draw(A--B--C--D--cycle);draw(C--E--F--cycle,linewidth(0.9));
+pair u=unit(C-E),v=unit(F-E);draw(E+0.25u--E+0.25u+0.25v--E+0.25v);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$E$",E,W);label("$F$",F,S);
+label("$2$",(0,1),W);label("$1$",(0,2.5),W);label("$3$",(1.83,0),S);
+\end{asy}
+
+So $\overrightarrow{EC}\cdot\overrightarrow{EF}=(3,1)\cdot(f,-2)=3f-2=0$ and $f=\dfrac23$. Then
+\[CF^2=\left(3-\dfrac23\right)^2+3^2=\dfrac{49}9+9=\dfrac{130}9,\]
+and $m+n=\boxed{139}$.

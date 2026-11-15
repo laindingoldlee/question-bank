@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2565287_alex131s_problem_solving_algebra_thread
+% Stable identity: aops-topic-2565287-q13
+The width is
+\[w=\dfrac{5}{\varphi}=\dfrac{10}{1+\sqrt5}=\dfrac{10\left(\sqrt5-1\right)}{(\sqrt5+1)(\sqrt5-1)}=\dfrac{10\left(\sqrt5-1\right)}{4}=\boxed{\dfrac{5\left(\sqrt5-1\right)}{2}}\approx3.09.\]
+Check: $\dfrac{5}{w}=\dfrac{2}{\sqrt5-1}=\dfrac{2(\sqrt5+1)}{4}=\varphi$. (Cutting off a $w\times w$ square leaves a rectangle $w\times(5-w)$, again golden, since $\dfrac{w}{5-w}=\varphi$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real L=5,w=5*(sqrt(5)-1)/2;
+draw((0,0)--(L,0)--(L,w)--(0,w)--cycle,linewidth(0.8));
+draw((w,0)--(w,w),dashed);
+label("$5$",(L/2,0),S);label("$w$",(0,w/2),W);
+label("square",(w/2,w/2),fontsize(9pt));label("$w$",(w,w/2),E,fontsize(9pt));label("$5-w$",((w+L)/2,0),N,fontsize(9pt));
+\end{asy}

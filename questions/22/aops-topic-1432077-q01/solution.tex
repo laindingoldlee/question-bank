@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1432077_number_theory_problem
+% Stable identity: aops-topic-1432077-q01
+\textbf{Case $p=2$.} $2^2+3^2=13$ is prime, so it is not a perfect power with exponent $n\ge2$; hence $n=1$.
+
+\textbf{Case $p$ odd.} Then $2^p+3^p=(2+3)Q$ with
+\[
+Q=2^{p-1}-2^{p-2}\cdot3+2^{p-3}\cdot3^2-\cdots+3^{p-1}=\sum_{k=0}^{p-1}2^{p-1-k}(-3)^k,
+\]
+so $5\mid2^p+3^p$. Modulo $5$ we have $-3\equiv2$, so every term of $Q$ is congruent to $2^{p-1-k}\cdot2^k=2^{p-1}$, and
+\[
+Q\equiv p\cdot2^{p-1}\pmod5 .
+\]
+\begin{itemize}
+\item If $p\neq5$, then $5\nmid Q$, so $5$ divides $2^p+3^p$ exactly once. In a perfect $n$-th power every prime appears to an exponent divisible by $n$, so $n\mid1$, that is, $n=1$.
+\item If $p=5$, then $2^5+3^5=32+243=275=5^2\cdot11$. The prime $11$ appears to the first power, so again $n=1$.
+\end{itemize}
+In all cases $n=1$. $\blacksquare$

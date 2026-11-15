@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2779302_problems_that_involve_math
+% Stable identity: aops-topic-2779302-q01
+Write the ellipse as $u(x-h)^2+v(y-k)^2=1$ with $u,v>0$.
+
+\textbf{Centre.} The points $(-2,-12)$ and $\left(-2,-\dfrac{15}2\right)$ lie on the vertical line $x=-2$, so they are symmetric about the horizontal axis $y=k$: $k=\dfrac{-12-7.5}2=-\dfrac{39}4$. Then both $(-2,-12)$ and $\left(0,-\dfrac{15}2\right)$ have $|y-k|=\dfrac94$, so $(-2-h)^2=(0-h)^2$, giving $h=-1$.
+
+\textbf{Axes.} Now $(-2,-12)$ gives $u+\dfrac{81}{16}v=1$, and $\left(-\dfrac23,-6\right)$ gives $\dfrac19u+\dfrac{225}{16}v=1$. Subtracting $\dfrac19$ of the first equation from the second: $\dfrac{216}{16}v=\dfrac89$, so $v=\dfrac{16}{243}$ and $u=1-\dfrac13=\dfrac23$.
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+real h=-1,k=-39/4,a=sqrt(3/2),bb=sqrt(243/16);
+draw(shift(h,k)*scale(a,bb)*unitcircle,linewidth(0.9));
+draw((-3.2,0)--(1.5,0),Arrow(4));draw((0,-14.5)--(0,1),Arrow(4));label("$x$",(1.5,0),E);label("$y$",(0,1),N);
+pair[] P={(-2,-12),(0,-7.5),(-2/3,-6),(-2,-7.5)};
+for(pair p:P) dot(p);
+label("$(-2,-12)$",P[0],W,fontsize(7pt));label("$\left(0,-\dfrac{15}{2}\right)$",P[1],E,fontsize(7pt));label("$\left(-\dfrac23,-6\right)$",P[2],NE,fontsize(7pt));label("$\left(-2,-\dfrac{15}{2}\right)$",P[3],W,fontsize(7pt));
+dot((h,k));label("centre $\left(-1,-\dfrac{39}{4}\right)$",(h,k)+(0.7,-1.1),E,fontsize(7pt));
+draw((-2,-12)--(-2,-7.5),dashed);draw((h,k-0.3)--(h,k+0.3));
+\end{asy}
+
+The ellipse is
+\[\boxed{\dfrac{(x+1)^2}{\dfrac32}+\dfrac{\left(y+\dfrac{39}4\right)^2}{\dfrac{243}{16}}=1},\]
+centred at $\left(-1,-\dfrac{39}4\right)$ with semi-axes $\sqrt{\dfrac32}$ (horizontal) and $\dfrac{9\sqrt3}4$ (vertical). (Without the condition that the axes are parallel to the coordinate axes, four points do not determine an ellipse.)

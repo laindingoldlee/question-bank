@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3166012_2019_lmt_spring_guts_round_p13p24__lexington_mathematical_tournament
+% Stable identity: aops-topic-3166012-q16
+A $1\times3$ tile cannot stand vertically in a board of height two, so the two rows tile independently. Let $t_n$ count tilings of a row of length $n$. Its first tile has length one or three, giving $t_n=t_{n-1}+t_{n-3}$, with $t_0=t_1=t_2=1$. The values through $n=12$ are $1,1,1,2,3,4,6,9,13,19,28,41,60$. Therefore the board has $60^2=\boxed{3600}$ tilings.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int x=0;x<=12;++x)draw((x,0)--(x,2),gray);for(int y=0;y<=2;++y)draw((0,y)--(12,y),gray);filldraw((0,0)--(3,0)--(3,1)--(0,1)--cycle,lightgray);label("$1\times3$",(1.5,.5));label("two independent rows",(6,-.6));
+\end{asy}

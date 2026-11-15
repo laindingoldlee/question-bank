@@ -1,0 +1,12 @@
+Let the vertex vectors from the center be $v_0,\ldots,v_{11}$. Symmetry gives $\sum v_j=0$, and each squared length is $25$. Including the zero distance to the fixed vertex,
+\[
+\sum_{j=0}^{11}|v_j-v_0|^2
+=\sum_{j=0}^{11}(|v_j|^2+|v_0|^2-2v_j\cdot v_0)
+=12(25+25)=\boxed{600}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(circle((0,0),1),gray);pair[] v;for(int j=0;j<12;++j)v.push(dir(30*j));for(int j=0;j<12;++j)draw(v[j]--v[(j+1)%12]);for(int j=1;j<12;++j)draw(v[0]--v[j],lightblue);dot((0,0));label("$O$",(0,0),(0,-1));label("$A$",v[0],(1,0));label("$5$",(0.5,0),(0,1));
+\end{asy}

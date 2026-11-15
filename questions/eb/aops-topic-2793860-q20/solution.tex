@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2793860_2018_geometry_bee__guts_rounds__sets_57
+% Stable identity: aops-topic-2793860-q20
+The distance to the line is $d_n=10^{100}\sin(\dfrac{\pi}{2^{n+2}})$. It decreases with $n$. On $[0,\dfrac{\pi}{2}]$, $\dfrac{2t}{\pi}\le\sin t\le t$. Thus $d_{331}\ge\dfrac{10^{100}}{2^{332}}>1$, whereas $d_{332}\le\dfrac{\pi10^{100}}{2^{334}}<\dfrac{22\cdot10^{100}}{7\cdot2^{334}}<1$. The integer comparisons are checked below. Hence the minimum is $\boxed{332}$.
+\begin{verbatim}
+assert 10**100 > 2**332
+assert 22*10**100 < 7*2**334
+\end{verbatim}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw((0,0)--(5,0));draw((0,0)--4*dir(20),blue);pair P=(4,0),X=4*cos(20*pi/180)*dir(20);draw(P--X,dashed);label("O",(0,0),W);label("P",P,S);label("X",X,N);label("line angle",(1,0),N);
+\end{asy}

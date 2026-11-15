@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1371033_can_3d_shapes_always_intersect_every_one_of_each_other
+% Stable identity: aops-topic-1371033-q01
+Use coordinates $(x,y,z)$, with $z$ as the height. For $i=1,\dots,n$, let body $B_i$ be the union of
+\begin{itemize}
+\item the \emph{lower bar} $L_i=[0,2n-1]\times[2i-2,2i-1]\times[0,1]$, running in the $x$-direction at height $0$ to $1$, and
+\item the \emph{upper bar} $U_i=[2i-2,2i-1]\times[0,2n-1]\times[1,2]$, running in the $y$-direction at height $1$ to $2$.
+\end{itemize}
+The top view below shows the case $n=3$: the pale strips are the lower bars and the dark strips, drawn on top, are the upper bars.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+int n=3; pen[] c={red,blue,heavygreen};
+for(int i=0;i<n;++i) filldraw(box((0,2i),(2n-1,2i+1)),0.35*c[i]+0.65*white,c[i]);
+for(int i=0;i<n;++i) filldraw(box((2i,-0.0),(2i+1,2n-1)),c[i]+0.25*white,black);
+for(int i=0;i<n;++i) label("body $"+string(i+1)+"$",(2n-1,2i+0.5),E,c[i]);
+for(int i=0;i<n;++i) label(string(i+1),(2i+0.5,2n-1),N,c[i]);
+label("pale strips: lower bars (height $0$ to $1$)",(n-0.5,-0.6),S,fontsize(8pt));
+label("dark strips: upper bars (height $1$ to $2$)",(n-0.5,-1.4),S,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Each body is connected.} $L_i$ and $U_i$ both lie over the unit square $[2i-2,2i-1]\times[2i-2,2i-1]$, and there $L_i$ (heights $0$ to $1$) and $U_i$ (heights $1$ to $2$) share the square face at height $1$.
+
+\textbf{Disjoint interiors.} Different lower bars occupy different strips $2i-2\le y\le2i-1$, which do not overlap, and different upper bars occupy different strips in $x$. A lower bar and an upper bar lie in the layers $0\le z\le1$ and $1\le z\le2$, which meet only in the plane $z=1$.
+
+\textbf{Every two bodies touch.} For $i\ne j$, the lower bar $L_i$ and the upper bar $U_j$ both lie over the unit square $[2j-2,2j-1]\times[2i-2,2i-1]$, where the top of $L_i$ and the bottom of $U_j$ coincide. So $B_i$ and $B_j$ share a face of area $1$. $\blacksquare$
+
+(In the plane the analogous statement is false: at most four regions can pairwise share boundary segments, by the four-colour theorem or because the complete graph on five vertices is not planar. This is the difference the poster noticed between two and three dimensions.)

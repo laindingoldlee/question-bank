@@ -1,0 +1,7 @@
+Scale to $AB=AC=1$ and use $A=(0,0)$, $B=(1,0)$, $C=(\cos20^\circ,\sin20^\circ)$. Then $M=(\cos20^\circ,0)$ and $BC=2\sin10^\circ$, so $N=(1-\sin10^\circ)C$. The tangent of the acute angle between $MA$ and $MN$ is $\dfrac{(1-\sin10^\circ)\sin20^\circ}{\sin10^\circ\cos20^\circ}$. This equals $\sqrt3$, since $\sin20^\circ=\sin10^\circ(\sin20^\circ+\sqrt3\cos20^\circ)=2\sin10^\circ\sin80^\circ$. Therefore $\boxed{\angle AMN=60^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(1,0),C=dir(20),M=(C.x,0),N=(1-sin(10*pi/180))*C;draw(A--B--C--cycle);draw(C--M,dashed);draw(M--N,blue);label("A",A,SW);label("B",B,SE);label("C",C,(0,1));label("M",M,S);label("N",N,NW);label("$20^\circ$",(.35,.04));
+\end{asy}

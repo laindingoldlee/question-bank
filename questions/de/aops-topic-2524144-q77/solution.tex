@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2524144_sigmas_problem_thread
+% Stable identity: aops-topic-2524144-q77
+If the sides are $u$ and $v$ yards, then $n=2(u+v)$. For a fixed sum $s=u+v$, the product $uv$ is largest when $u$ and $v$ are as close as possible, giving $\left\lfloor\dfrac s2\right\rfloor\left\lceil\dfrac s2\right\rceil$. This equals $16$ only for $s=8$ (for $s=7$ it is $12$ and for $s=9$ it is $20$, and it increases with $s$). So $n=16$, and with $n+6=22$ beams, $u+v=11$ and the largest area is $5\cdot6=\boxed{30}$ square yards.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=6;++i){draw((i,0)--(i,0.08));draw((i,5)--(i,4.92));}
+for(int j=0;j<=5;++j){draw((0,j)--(0.08,j));draw((6,j)--(5.92,j));}
+draw((0,0)--(6,0)--(6,5)--(0,5)--cycle,linewidth(0.9));
+label("$6$",(3,0),S);label("$5$",(0,2.5),W);label("area $30$",(3,2.5));
+\end{asy}

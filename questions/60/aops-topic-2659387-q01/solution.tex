@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2659387_combont_problem_about_encryptions
+% Stable identity: aops-topic-2659387-q01
+Since $2^\theta$ is even, its remainder mod $26$ is determined by its remainder mod $13$ (and is never $0$). Modulo $13$ the powers of $2$ are
+\[2,4,8,3,6,12,11,9,5,10,7,1,\]
+with period $12$. So $\theta$ and $\theta+12$ always give the same letter, and $\theta=1,\dots,12$ give $12$ different letters. Among $\theta=1,\dots,26$: the letters for $\theta\equiv1,2\pmod{12}$, namely $b$ and $d$, each come from $3$ values of $\theta$ ($1,13,25$ and $2,14,26$); every other letter in the image comes from exactly $2$ values.
+
+The ciphertext uses $v$ ($22$, from $\theta=8,20$, since $2^8=256=9\cdot26+22$), $h$ ($8$, from $\theta=3,15$), $f$ ($6$, from $\theta=5,17$), and $b$, $d$. Multiplying the numbers of preimages letter by letter:
+\[\underbrace{2\cdot3\cdot3\cdot3\cdot3}_{\text{vbddb}}\cdot\underbrace{2\cdot3\cdot3\cdot2\cdot3\cdot2}_{\text{vbdvbh}}\cdot\underbrace{2\cdot2\cdot2\cdot3}_{\text{hvfd}}=162\cdot216\cdot24=\boxed{839808}.\]

@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2358557_kwik_question
+% Stable identity: aops-topic-2358557-q01
+\textbf{(a)} The altitude to the hypotenuse is the height of the triangle when the hypotenuse is taken as the base. The two legs are also a base and a height, so computing the area in two ways gives
+\[\dfrac12ab=\dfrac12c\cdot CD,\qquad CD=\dfrac{ab}{c}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), B=(6,0), A=(0,8);
+pair u=unit(B-A); pair D=A+dot(C-A,u)*u;
+draw(A--B--C--cycle,linewidth(0.9)); draw(C--D,blue+linewidth(0.9));
+real m=0.45; pair v=unit(C-D);
+draw((m,0)--(m,m)--(0,m)); draw(D+m*u--D+m*u+m*v--D+m*v);
+dot(A); dot(B); dot(C); dot(D);
+label("$A$",A,N); label("$B$",B,E); label("$C$",C,SW); label("$D$",D,NE);
+label("$a=6$",(3,0),S); label("$b=8$",(0,4),W); label("$c=10$",(A+B)/2+(0.3,0.5),NE);
+label("$h$",(C+D)/2,NW,blue);
+\end{asy}
+
+Triangles $ADC$ and $ACB$ both have a right angle (at $D$ and at $C$) and share the angle at $A$, so they are similar, and
+\[\dfrac{AD}{AC}=\dfrac{AC}{AB},\qquad AD=\dfrac{b^2}{c}.\]
+In the same way triangles $BDC$ and $BCA$ are similar, so $DB=\dfrac{a^2}{c}$. (Check: $AD+DB=\dfrac{a^2+b^2}{c}=\dfrac{c^2}{c}=c$.)
+
+\textbf{(b)} By the Pythagorean theorem $c=\sqrt{36+64}=10$, so
+\[CD=\dfrac{6\cdot8}{10}=\boxed{\dfrac{24}{5}},\qquad AD=\dfrac{64}{10}=\boxed{\dfrac{32}{5}},\qquad DB=\dfrac{36}{10}=\boxed{\dfrac{18}{5}}.\]

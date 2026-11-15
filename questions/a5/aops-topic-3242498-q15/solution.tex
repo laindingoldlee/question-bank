@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h3242498_the_polymath_competition
+% Stable identity: aops-topic-3242498-q15
+Put $u=|x|\ge0$. We need $3u^2-10u+3=3$ or $-3$. The first gives $u=0,\dfrac{10}{3}$; the second gives $u=\dfrac{5\pm\sqrt7}{3}$, both positive. The zero value gives one $x$, while each of the three positive values gives two. Total $\boxed7$, choice D.
+\begin{asy}
+usepackage("amsmath"); size(230);
+real f(real x){return abs(3*x*x-10*abs(x)+3);} path g;for(int k=0;k<=400;++k){real x=-3.7+7.4*k/400;g=g--(x,f(x));}draw(g,blue);draw((-3.8,3)--(3.8,3),red);draw((-3.8,0)--(3.8,0),Arrow);draw((0,-0.3)--(0,8),Arrow);label("$y=3$",(3.8,3),E);label("$x$",(3.8,0),E);label("$y$",(0,8),N);
+\end{asy}

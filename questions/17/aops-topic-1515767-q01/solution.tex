@@ -1,0 +1,52 @@
+% Source: https://artofproblemsolving.com/community/c3h1515767_mathcounts_2018_handbook_249_help
+% Stable identity: aops-topic-1515767-q01
+Let $O$ be the origin, $B=(0,b)$ and let $P=(p,0.6p)$ be the point where $y=0.6x$ meets $AB$. The area condition $\dfrac{1}{2}ab=54$ gives $ab=108$. The two pieces are $OAP$, with base $OA=a$ and height $0.6p$, and $OPB$, with base $OB=b$ and height $p$:
+\[
+[OAP]=\dfrac{1}{2}\cdot a\cdot0.6p=0.3ap,\qquad [OPB]=\dfrac{1}{2}\cdot b\cdot p=0.5bp,\qquad \dfrac{[OAP]}{[OPB]}=\dfrac{3a}{5b}.
+\]
+Either piece may be the larger one, and both cases occur (for any $a,b>0$ the line $y=0.6x$ crosses $AB$).
+
+\textbf{Case 1: $[OAP]=40$, $[OPB]=14$.} Then $\dfrac{3a}{5b}=\dfrac{20}{7}$, so $\dfrac {a}{b}=\dfrac{100}{21}$. With $ab=108$: $a^2=108\cdot\dfrac{100}{21}=\dfrac{3600}{7}$, so $a=\dfrac{60}{\sqrt7}=\dfrac{60\sqrt7}{7}\approx22.7$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real a=60/sqrt(7), bb=108/a;
+pair O=(0,0),A=(a,0),B=(0,bb);
+pair P=extension(A,B,O,(5,3));
+fill(O--A--P--cycle,rgb(0.8,0.9,1));fill(O--P--B--cycle,rgb(1,0.88,0.75));
+draw((0,0)--(a+1.5,0),gray,Arrow(TeXHead));draw((0,0)--(0,bb+1.5),gray,Arrow(TeXHead));
+draw(A--B,linewidth(1));draw(O--P,linewidth(0.9));
+dot(A);dot(B);dot(P);
+label("$A$",A,S);label("$B$",B,W);label("$P$",P,N);label("$O$",O,SW);
+label("$40$",(O+A+P)/3);label("$14$",(O+P+B)/3);
+draw(P--P+0.25*(P-O),dashed);label("$y=0.6x$",P+0.25*(P-O),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Case 2: $[OAP]=14$, $[OPB]=40$.} Then $\dfrac{3a}{5b}=\dfrac{7}{20}$, so $\dfrac {a}{b}=\dfrac{7}{12}$ and $a^2=108\cdot\dfrac{7}{12}=63$, so $a=3\sqrt7\approx7.9$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real a=3*sqrt(7), bb=108/a;
+pair O=(0,0),A=(a,0),B=(0,bb);
+pair P=extension(A,B,O,(5,3));
+fill(O--A--P--cycle,rgb(0.8,0.9,1));fill(O--P--B--cycle,rgb(1,0.88,0.75));
+draw((0,0)--(a+1.5,0),gray,Arrow(TeXHead));draw((0,0)--(0,bb+1.5),gray,Arrow(TeXHead));
+draw(A--B,linewidth(1));draw(O--P,linewidth(0.9));
+dot(A);dot(B);dot(P);
+label("$A$",A,S);label("$B$",B,W);label("$P$",P,1.6*dir(-10));label("$O$",O,SW);
+label("$14$",(O+A+P)/3);label("$40$",(O+P+B)/3);
+draw(P--P+0.25*(P-O),dashed);label("$y=0.6x$",P+0.25*(P-O),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check (case 2): $b=\dfrac{108}{3\sqrt7}=\dfrac{36\sqrt7}{7}$. From $[OPB]=0.5bp=40$ we get $p=\dfrac{80}{b}=\dfrac{20\sqrt7}{9}$, and then $[OAP]=0.3ap=0.3\cdot3\sqrt7\cdot\dfrac{20\sqrt7}{9}=14$; also $P=\left(p,0.6p\right)$ satisfies $\dfrac{p}{a}+\dfrac{0.6p}{b}=\dfrac{20}{27}+\dfrac{7}{27}=1$, so it lies on $AB$.
+
+So
+\[
+a=\boxed{3\sqrt7\ \text{ or }\ \dfrac{60\sqrt7}{7}}.
+\]

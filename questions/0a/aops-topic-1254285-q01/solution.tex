@@ -1,0 +1,6 @@
+% Source: https://artofproblemsolving.com/community/c3h1254285_problem_off_the_top_of_my_head
+% Stable identity: aops-topic-1254285-q01
+Let $M_{ij}$ be the number of cards that player $i$ held in the first deal and receives as player $j$ in the second. The condition is $M_{ii}=0$, with every row and column of $M$ summing to $13$. For a fixed matrix $M$, the number of second deals realising it is $\prod_i\dfrac{13!}{\prod_{j}M_{ij}!}$ (player $i$'s old hand is split among the other players). The number of all deals is $\dfrac{52!}{(13!)^4}$. So
+\[P=\dfrac{(13!)^4}{52!}\sum_{M}\prod_{i=1}^4\dfrac{13!}{\prod_{j\ne i}M_{ij}!},\]
+the sum over all $4\times4$ nonnegative integer matrices with zero diagonal and all row and column sums $13$. Carrying out the sum (each row is determined by two entries, so this is a short computer enumeration) gives
+\[P=\dfrac{753427183949741705283}{1986842139462547882934720000}\approx\boxed{3.79\times10^{-7}}.\]

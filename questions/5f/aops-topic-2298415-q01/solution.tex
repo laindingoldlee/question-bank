@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2298415_angle_bisector_and_arc_midpoint
+% Stable identity: aops-topic-2298415-q01
+The bisector meets side $BC$ at a point $D$ between $B$ and $C$, and continues to $K$ on the other side of line $BC$ from $A$. So $K$ lies on the arc $BC$ not containing $A$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=dir(115), B=dir(205), C=dir(335);
+real aA=degrees(B-A), aC=degrees(C-A);
+pair K=dir(270);
+draw(circle((0,0),1),blue);
+draw(A--B--C--cycle,linewidth(0.9));
+pair D=extension(A,K,B,C);
+draw(A--K,red); draw(B--K,deepgreen); draw(K--C,deepgreen);
+dot(D); dot(K);
+label("$A$",A,N); label("$B$",B,W); label("$C$",C,E); label("$K$",K,S); label("$D$",D,NE);
+draw(arc(A,0.3,degrees(B-A),degrees(K-A)),red); draw(arc(A,0.36,degrees(K-A),degrees(C-A)),red);
+pair m1=(B+K)/2, m2=(K+C)/2; draw(m1+0.05*unit(rotate(90)*(K-B))*(-1)--m1+0.05*unit(rotate(90)*(K-B)),deepgreen); draw(m2+0.05*unit(rotate(90)*(C-K))*(-1)--m2+0.05*unit(rotate(90)*(C-K)),deepgreen);
+\end{asy}
+
+The inscribed angle $\angle BAK$ subtends the arc $BK$ (not containing $A$), and the inscribed angle $\angle KAC$ subtends the arc $KC$ (not containing $A$). An inscribed angle is half of its arc, and $\angle BAK=\angle KAC$ because $AK$ bisects angle $A$. Hence the arcs $BK$ and $KC$ are equal, and together they make up the arc $BC$ not containing $A$. So $K$ is the midpoint of that arc. $\blacksquare$ (Equivalently, the chords $KB$ and $KC$ are equal.)

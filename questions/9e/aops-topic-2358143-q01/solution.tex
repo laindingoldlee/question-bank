@@ -1,0 +1,46 @@
+% Source: https://artofproblemsolving.com/community/c3h2358143_geometry_problem_2
+% Stable identity: aops-topic-2358143-q01
+\textbf{Angles.} $\angle C=35^\circ$, and $BE$ bisects $\angle B$, so $\angle ABE=\angle EBC=40^\circ$ and $\angle AEB=180^\circ-65^\circ-40^\circ=75^\circ$. At each reflection the ray leaves the side at the same angle as it arrived:
+\begin{itemize}
+\item at $E$: $\angle FEC=\angle AEB=75^\circ$, so in triangle $EFC$, $\angle EFC=180^\circ-75^\circ-35^\circ=70^\circ$;
+\item at $F$: $\angle GFB=70^\circ$, so in triangle $FBG$, $\angle FGB=180^\circ-70^\circ-80^\circ=30^\circ$;
+\item at $G$: $\angle HGA=30^\circ$, so in triangle $AGH$, $\angle AHG=180^\circ-30^\circ-65^\circ=85^\circ$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(6,0);
+real AC=6*Sin(80)/Sin(35); pair C=AC*dir(65);
+real a=abs(B-C), b2=abs(A-C), c=abs(A-B);
+pair D=(a*A+b2*B+c*C)/(a+b2+c);
+pair E=extension(B,D,A,C);
+pair w1=reflect((0,0),C-A)*(E-B); pair F=extension(E,E+w1,B,C);
+pair w2=reflect((0,0),C-B)*(F-E); pair G=extension(F,F+w2,A,B);
+pair w3=reflect((0,0),B-A)*(G-F); pair H=extension(G,G+w3,A,C);
+fill(E--F--G--H--cycle,rgb(0.85,0.92,1));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--E,dashed); draw(E--F--G--H,red+linewidth(0.9));
+dot(D); dot(E); dot(F); dot(G); dot(H);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$D$",D,N);
+label("$E$",E,W); label("$F$",F,dir(10)); label("$G$",G,SE); label("$H$",H,NW);
+label("$75^\circ$",E+0.9*dir(30),fontsize(7pt)); label("$70^\circ$",F+0.75*dir(150),fontsize(7pt));
+label("$30^\circ$",G+1.15*dir(14),fontsize(7pt)); label("$40^\circ$",B+1.1*dir(160),fontsize(7pt));
+\end{asy}
+
+\textbf{Lengths} (law of sines), taking $BC=1$:
+\begin{align*}
+CE&=\dfrac{\sin40^\circ}{\sin105^\circ}\approx0.66546, & CF&=CE\cdot\dfrac{\sin75^\circ}{\sin70^\circ}\approx0.68404, & BF&=1-CF\approx0.31596,\\
+BG&=BF\cdot\dfrac{\sin70^\circ}{\sin30^\circ}\approx0.59381, & AB&=\dfrac{\sin35^\circ}{\sin65^\circ}\approx0.63287, & AG&=AB-BG\approx0.03906,\\
+AH&=AG\cdot\dfrac{\sin30^\circ}{\sin85^\circ}\approx0.01961.
+\end{align*}
+Since $AH<AE=AC-CE\approx0.42115$, the point $H$ lies between $A$ and $E$, and $EFGH$ is the triangle with its three corner triangles $EFC$, $FBG$, $AGH$ removed.
+
+\textbf{Areas.}
+\begin{align*}
+x&=\dfrac12\cdot BC\cdot AB\sin80^\circ\approx0.311628,\qquad [EFC]=\dfrac12\,CE\cdot CF\sin35^\circ\approx0.130547,\\
+[FBG]&=\dfrac12\,BF\cdot BG\sin80^\circ\approx0.092385,\qquad [AGH]=\dfrac12\,AG\cdot AH\sin65^\circ\approx0.000347,
+\end{align*}
+so $y\approx0.311628-0.130547-0.092385-0.000347=0.088350$ and
+\[\dfrac xy\approx\boxed{3.527}.\]

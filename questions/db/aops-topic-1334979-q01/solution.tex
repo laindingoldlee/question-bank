@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1334979_geometry
+% Stable identity: aops-topic-1334979-q01
+Draw the common tangent of the two circles at $C$ (perpendicular to $AB$). It is not parallel to $XY$, so it meets segment $XY$ at a point $M$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real r1=2,r2=1; real d=r1+r2;
+pair A=(0,0),B=(d,0);
+real th=acos((r1-r2)/d);
+pair X=A+r1*dir(degrees(th)), Y=B+r2*dir(degrees(th));
+pair C=(r1,0);
+pair M=(X+Y)/2;
+draw(circle(A,r1),linewidth(0.9)); draw(circle(B,r2),linewidth(0.9));
+draw(X-0.6*(Y-X)--Y+0.8*(Y-X),linewidth(0.9));
+draw(X--C--Y,red); draw(C--M,blue+dashed);
+draw(A--X,gray+dashed); draw(B--Y,gray+dashed);
+dot(A);dot(B);dot(C);dot(X);dot(Y);dot(M);
+label("$A$",A,S); label("$B$",B,S); draw(C--(2.02,-1.0),gray+linewidth(0.3)); label("$C$",(2.04,-1.2)); label("$X$",X,NE); label("$Y$",Y,NE); label("$M$",M,NE);
+pair u=unit(X-C),v=unit(Y-C);
+draw(C+0.25*u--C+0.25*u+0.25*v--C+0.25*v,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+From $M$, the two tangent segments to circle $A$ are equal: $MX=MC$. Likewise, for circle $B$: $MY=MC$. So $M$ is the midpoint of $XY$ and $MC=MX=MY$, which means $C$ lies on the circle with diameter $XY$. By Thales' theorem,
+\[
+\angle XCY=\boxed{90^\circ}.
+\]
+(Equivalently: triangles $MXC$ and $MYC$ are isosceles, so $\angle XCY=\angle MXC+\angle MYC$, and since the three angles of triangle $XCY$ add up to $180^\circ$, $\angle XCY=90^\circ$.) The answer does not depend on the radii.

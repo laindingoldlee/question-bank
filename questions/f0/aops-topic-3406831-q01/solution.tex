@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h3406831_pls_help_im_crying_
+% Stable identity: aops-topic-3406831-q01
+A complete test examines every three-digit-or-shorter integer $m$ from $77$ through $769$, forms $n=13m$, keeps $1000\le n\le9999$, and checks whether deleting one of the four digits of $n$ yields $m$. These bounds cover every possible quotient. The successful values of $n$ are $1300,1625,1950,2600,2925,3250,3900,6500,9750$. Their sum is $\boxed{33800}$. For a reproducible exhaustive check:\begin{verbatim}
+ans = []
+for m in range(77, 770):
+    n = 13*m
+    if not 1000 <= n <= 9999:
+        continue
+    s = str(n)
+    if any(int(s[:i]+s[i+1:]) == m for i in range(4)):
+        ans.append(n)
+print(ans, sum(ans))
+\end{verbatim}

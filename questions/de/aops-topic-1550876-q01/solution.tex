@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1550876_mathcounts_handbook_warmup_3_problem_60
+% Stable identity: aops-topic-1550876-q01
+Work in feet. One cubic yard is $3\cdot3\cdot3=27$ cubic feet, and the garden has area $10\cdot8=80$ square feet. Spreading the soil evenly makes a box of base $80$ square feet and volume $27$ cubic feet, so its depth is
+\[
+\dfrac{27}{80}\text{ ft}=\dfrac{27}{80}\cdot12\text{ in}=\dfrac{81}{20}\text{ in}=\boxed{4\dfrac{1}{20}\text{ inches}}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real L=10,Wd=8,h=1.2;pair k=(0.45,0.3);
+pair p0=(0,0),p1=(L,0),p2=(L,0)+Wd*k,p3=Wd*k;
+pair u=(0,h);
+fill(p0--p1--p1+u--p0+u--cycle,palegray);fill(p1--p2--p2+u--p1+u--cycle,lightgray);fill(p0+u--p1+u--p2+u--p3+u--cycle,gray(0.88));
+draw(p0--p1--p2);draw(p2--p3--p0,dashed);
+draw(p0+u--p1+u--p2+u--p3+u--cycle,linewidth(0.9));draw(p0--p0+u,linewidth(0.9));draw(p1--p1+u,linewidth(0.9));draw(p2--p2+u,linewidth(0.9));draw(p3--p3+u,dashed);
+label("$10$ ft",(p0+p1)/2,S);label("$8$ ft",(p1+p2)/2,SE);
+draw(p0+(-0.6,0)--p0+u+(-0.6,0),Arrows(TeXHead));label("$d$",p0+(-0.6,h/2),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The figure shows the layer of soil as a box with base $10$ ft by $8$ ft and depth $d$; the depth is exaggerated, not to scale.)
+
+Working in feet first keeps the numbers small: the conversion to inches is a single multiplication by $12$ at the end, instead of computing $36^3$ and $120\cdot96$.

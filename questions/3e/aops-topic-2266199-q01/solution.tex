@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2266199_sum_of_altitudes_in_a_triangle
+% Stable identity: aops-topic-2266199-q01
+By Heron's formula with $s=\dfrac{13+14+15}{2}=21$, the area is
+\[K=\sqrt{21\cdot8\cdot7\cdot6}=\sqrt{7056}=84.\]
+The altitude to a side of length $a$ is $\dfrac{2K}{a}=\dfrac{168}{a}$:
+\[h_{13}=\dfrac{168}{13},\qquad h_{14}=\dfrac{168}{14}=12,\qquad h_{15}=\dfrac{168}{15}=\dfrac{56}{5}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(14,0), A=(5,12);
+pair Ha=(5,0);
+pair Hb=A+dot(B-A,C-A)/dot(C-A,C-A)*(C-A);
+pair Hc=A+dot(C-A,B-A)/dot(B-A,B-A)*(B-A);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--Ha,blue); draw(B--Hb,red); draw(C--Hc,heavygreen);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE);
+label("$13$",(A+B)/2+(-0.4,0.2),W); label("$15$",(A+C)/2+(0.3,0.2),NE); label("$14$",(B+C)/2+(2,0),S);
+label("$12$",(5,2.5),E,blue); label("$\dfrac{56}{5}$",B+0.33*(Hb-B),SE,red); label("$\dfrac{168}{13}$",C+0.3*(Hc-C),N,heavygreen);
+\end{asy}
+
+The sum is
+\[\dfrac{168}{13}+12+\dfrac{56}{5}=\dfrac{840+780+728}{65}=\dfrac{2348}{65}\approx36.12,\]
+which rounds to $\boxed{36.1}$.

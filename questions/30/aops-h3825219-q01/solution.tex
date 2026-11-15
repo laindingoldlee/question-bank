@@ -1,0 +1,20 @@
+\begin{enumerate}
+\item The sampled velocities are $1,2,5,10$. Their consecutive slopes are $\boxed{1,3,5}$ metres per second squared. The three trapezoid areas total
+\[
+\dfrac{1+2}{2}+\dfrac{2+5}{2}+\dfrac{5+10}{2}
+=\boxed{\dfrac{25}{2}\text{ metres}}.
+\]
+\item Let $h=\dfrac{3}{n}$. The constant part of the velocity contributes exactly $3$. The quadratic part contributes
+\[
+h^3\left(\sum_{j=1}^{n-1}j^2+\dfrac{n^2}{2}\right)
+=\dfrac{27}{n^3}\left(\dfrac{(n-1)n(2n-1)}{6}+\dfrac{n^2}{2}\right)
+=9+\dfrac{9}{2n^2}.
+\]
+Adding the constant part gives the stated estimate. Its limit is $\boxed{12\text{ metres}}$, the area under the positive velocity graph. The approximation exceeds this limit by exactly $\dfrac{9}{2n^2}$.
+\end{enumerate}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+size(260,180,IgnoreAspect);path p;for(int i=0;i<=100;++i){real t=3i/100;p=p--(t,1+t*t);}fill((0,0)--(0,1)--(1,2)--(2,5)--(3,10)--(3,0)--cycle,lightblue);draw(p,red);draw((0,1)--(1,2)--(2,5)--(3,10),blue);for(int i=0;i<=3;++i){draw((i,0)--(i,1+i*i),dashed);label(string(i),(i,0),S);}draw((0,0)--(3.4,0),Arrow);draw((0,0)--(0,11),Arrow);label("$t$",(3.4,0),E);label("$v$",(0,11),N);
+\end{asy}

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1552979_digit_arrangement_combinatorial_problem
+% Stable identity: aops-topic-1552979-q01
+\textbf{Strings first.} Count strings of $12$ digits (leading zero allowed) in which each digit appears at most twice. If $j$ digits appear twice and $i$ digits once, then $2j+i=12$ and $i+j\le10$, so $j\ge2$; also $j\le6$. Choose the digits and then arrange the multiset:
+\[
+N=\sum_{j=2}^{6}\binom{10}{j}\binom{10-j}{12-2j}\dfrac{12!}{2^j}.
+\]
+\[
+\begin{array}{c|c|c}
+j & \binom{10}j\binom{10-j}{12-2j} & \dfrac{12!}{2^j}\\\hline
+2 & 45\cdot1=45 & 119750400\\
+3 & 120\cdot7=840 & 59875200\\
+4 & 210\cdot15=3150 & 29937600\\
+5 & 252\cdot10=2520 & 14968800\\
+6 & 210\cdot1=210 & 7484400
+\end{array}
+\]
+This gives $N=5388768000+50295168000+94303440000+37721376000+1571724000=189280476000$.
+
+\textbf{No leading zero.} Every digit occurs equally often as the first digit (relabelling digits is a bijection on these strings), so exactly $\dfrac{1}{10}$ of the strings start with $0$. The answer is
+\[
+\dfrac{9}{10}N=\boxed{170352428400}.
+\]
+The claim is false: $\dfrac{(10!)^2}{(3!)^2}+10!=365786668800$, more than twice the true value. (It is also more than the number of all $12$-digit strings with no digit three times, so it cannot be right.)

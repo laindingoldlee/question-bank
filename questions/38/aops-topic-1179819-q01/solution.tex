@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1179819_inequality_in_triangle
+% Stable identity: aops-topic-1179819-q01
+Since $A+B+C=180^\circ$, the inequality $A+B>C$ is equivalent to $180^\circ-C>C$, that is $C<90^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(1.5,1); draw(A--B--C--cycle,linewidth(0.9)); label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N);
+draw(arc(C,0.5,degrees(A-C),degrees(B-C)+360),red); label("$C>90^\circ$",(3.6,1.2));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So it fails for every triangle with $C\ge90^\circ$; for example $A=B=30^\circ$, $C=120^\circ$ gives $A+B=60^\circ<120^\circ$. The inequality holds $\boxed{\text{exactly when the angle } C \text{ is acute}}$. (The similar-looking statement for the side lengths, $a+b>c$, is the triangle inequality and is always true.)

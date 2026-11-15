@@ -1,0 +1,52 @@
+% Source: https://artofproblemsolving.com/community/c3h1574959_geometry_qn
+% Stable identity: aops-topic-1574959-q01
+Since $AB=AC$ and $D$ is the midpoint of $BC$, the median $AD$ is also an altitude. Set up coordinates with $D=(0,0)$, $B=(-b,0)$, $C=(b,0)$, $A=(0,h)$, where $b,h>0$, and put $s=b^2+h^2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real b=3,h=5,s=b^2+h^2;
+pair A=(0,h),B=(-b,0),C=(b,0),D=(0,0),Ee=(b*h^2/s,b^2*h/s),F=Ee/2;
+pair G=extension(A,F,B,Ee);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D);draw(D--Ee);
+draw(A--F,blue+linewidth(0.9));draw(B--Ee,red+linewidth(0.9));
+real r=0.3;
+pair u=unit(C-A),v=unit(D-Ee);
+draw(Ee-r*u--Ee-r*u+r*v--Ee+r*v);
+draw((0,r)--(r,r)--(r,0));
+pair p=unit(A-G),q=unit(Ee-G);
+draw(G+r*p--G+r*(p+q)--G+r*q,deepgreen);
+pair m1=(A+B)/2,m2=(A+C)/2;
+draw(m1+0.18*unit(rotate(90)*(A-B))--m1-0.18*unit(rotate(90)*(A-B)));
+draw(m2+0.18*unit(rotate(90)*(A-C))--m2-0.18*unit(rotate(90)*(A-C)));
+dot(A);dot(B);dot(C);dot(D);dot(Ee);dot(F);dot(G);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$E$",Ee,NE);label("$F$",F,dir(-30));label("$G$",G,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The point $E$.} $E$ is the foot of the perpendicular from $D$ to $AC$. Writing $E=A+t(b,-h)$ and requiring $E\cdot(b,-h)=0$ gives $-h^2+ts=0$, so $t=\dfrac{h^2}{s}$ and
+\[
+E=\left(\dfrac{bh^2}{s},\ \dfrac{b^2h}{s}\right),\qquad F=\dfrac{E}{2}=\left(\dfrac{bh^2}{2s},\ \dfrac{b^2h}{2s}\right).
+\]
+
+\textbf{Direction vectors.}
+\[
+\overrightarrow{AF}=\left(\dfrac{bh^2}{2s},\ \dfrac{b^2h-2hs}{2s}\right)=\dfrac{h}{2s}\bigl(bh,\ -(b^2+2h^2)\bigr),
+\]
+using $b^2-2s=-(b^2+2h^2)$, and
+\[
+\overrightarrow{BE}=\left(\dfrac{bh^2}{s}+b,\ \dfrac{b^2h}{s}\right)=\dfrac{b}{s}\bigl(b^2+2h^2,\ bh\bigr),
+\]
+using $h^2+s=b^2+2h^2$.
+
+\textbf{Perpendicular.} The dot product of $\bigl(bh,-(b^2+2h^2)\bigr)$ and $\bigl(b^2+2h^2,bh\bigr)$ is
+\[
+bh(b^2+2h^2)-(b^2+2h^2)bh=0 .
+\]
+So $AF\perp BE$ for every isosceles triangle, and
+\[
+\angle AGE=\boxed{90^\circ}.
+\]
+(Synthetic view: the right triangles $ADE$ and $DCE$ are similar, and $AF$, $DM$ are corresponding medians, where $M$ is the midpoint of $EC$; the midline $DM$ of triangle $BCE$ is parallel to $BE$, and the similarity turns $AD$ into $DC$, a quarter turn, so it turns $AF$ into a line parallel to $DM$, giving $AF\perp BE$.)

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2363616_tesseractexe
+% Stable identity: aops-topic-2363616-q01
+A piece in which exactly $k$ coordinates vary is determined by choosing which $k$ of the $4$ coordinates vary, in $\dbinom4k$ ways, and fixing each of the other $4-k$ coordinates at $0$ or $1$, in $2^{4-k}$ ways. So there are $\dbinom4k2^{4-k}$ such pieces:
+\begin{itemize}
+\item (a) cells, $k=3$: $\dbinom43\cdot2=\boxed{8}$;
+\item (b) square faces, $k=2$: $\dbinom42\cdot4=\boxed{24}$;
+\item (c) edges, $k=1$: $\dbinom41\cdot8=\boxed{32}$;
+\item (d) vertices, $k=0$: $2^4=\boxed{16}$.
+\end{itemize}
+The picture shows a projection of the tesseract into the plane: its $16$ vertices and $32$ edges (two cubes, shifted, with corresponding vertices joined).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair e1=(1,0), e2=(0,1), e3=(0.35,0.42), e4=(1.25,0.55);
+pair P(int a,int b,int c,int d){return a*e1+b*e2+c*e3+d*e4;}
+for(int a=0;a<2;++a) for(int b=0;b<2;++b) for(int c=0;c<2;++c) for(int d=0;d<2;++d){
+  if(a==0) draw(P(0,b,c,d)--P(1,b,c,d),gray);
+  if(b==0) draw(P(a,0,c,d)--P(a,1,c,d),gray);
+  if(c==0) draw(P(a,b,0,d)--P(a,b,1,d),gray);
+  if(d==0) draw(P(a,b,c,0)--P(a,b,c,1),gray);
+  dot(P(a,b,c,d));
+}
+\end{asy}
+
+(As a check, $16-32+24-8=0$, the four-dimensional analogue of Euler's formula $V-E+F=2$.)

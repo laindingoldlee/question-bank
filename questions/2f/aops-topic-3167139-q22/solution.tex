@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3167139_2022_lmt_fall_guts_round_p16p27_lexington_mathematical_tournament
+% Stable identity: aops-topic-3167139-q22
+All $6^3=216$ concatenations are equally likely. Check all seven possible starting positions for the substring LMT in each concatenation; there are $126$ successful strings. A string with several occurrences is counted just once by the membership test in the following exhaustive computation. Hence the probability is $\dfrac{126}{216}=\boxed{\dfrac{7}{12}}$.\begin{verbatim}
+from itertools import permutations,product
+blocks=[''.join(p) for p in permutations('LMT')]
+favorable=sum('LMT' in ''.join(parts)
+              for parts in product(blocks,repeat=3))
+assert favorable==126
+\end{verbatim}

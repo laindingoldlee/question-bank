@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2526772_finding_an_angle
+% Stable identity: aops-topic-2526772-q01
+Check each choice using the principal values of the inverse functions.
+\begin{itemize}
+\item \textbf{(A)}: $2\theta=\sin^{-1}0.75$, so $\sin(2\theta)=0.75$. This works.
+\item \textbf{(B)}: $2\theta=\cos^{-1}0.8\in[0,\pi]$, so $\sin(2\theta)=\sqrt{1-0.64}=0.6$.
+\item \textbf{(C)}: $\sin(2\theta)=0.8$.
+\item \textbf{(D)}: $\sec(2\theta)=1.25$ means $\cos(2\theta)=0.8$ with $2\theta=\cos^{-1}0.8$, so again $\sin(2\theta)=0.6$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real t2=aSin(0.75);
+pair P=dir(t2);
+draw(circle((0,0),1),gray(0.5));
+draw((-1.25,0)--(1.3,0),Arrow(5)); draw((0,-1.2)--(0,1.3),Arrow(5));
+draw((0,0)--P,linewidth(0.8)); draw(P--(P.x,0),dashed);
+draw(arc((0,0),0.3,0,t2),red); label("$2\theta$",0.45*dir(t2/2),red+fontsize(8pt));
+dot(P); label("$\left(\dfrac{\sqrt7}{4},\dfrac34\right)$",P,NE,fontsize(8pt));
+label("$\dfrac34$",(P.x,P.y/2),E,fontsize(8pt));
+label("$1$",P/2,NW,fontsize(8pt));
+\end{asy}
+
+The answer is $\boxed{\textbf{(A) } 0.5\sin^{-1}0.75}$.

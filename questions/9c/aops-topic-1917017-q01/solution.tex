@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1917017_minimum_perimeter
+% Stable identity: aops-topic-1917017-q01
+Let the central square have side $a$ and let each arm stick out a distance $b$, so each arm is an $a\times b$ rectangle, with $a,b$ positive integers. The area is
+\[
+a^2+4ab=a(a+4b)=2016,
+\]
+and the boundary consists of $4$ ends of length $a$ and $8$ sides of length $b$, so the perimeter is $P=4a+8b$.
+
+From the area, $a$ divides $2016$ and $4b=\dfrac{2016}{a}-a$, which must be a positive multiple of $4$. In particular $a<\sqrt{2016}\approx44.9$. Then
+\[
+P=4a+2\left(\dfrac{2016}{a}-a\right)=2a+\dfrac{4032}{a}.
+\]
+This decreases as $a$ increases up to $\sqrt{2016}$: for $0<a<c\le\sqrt{2016}$, $P(a)-P(c)=(c-a)\left(\dfrac{4032}{ac}-2\right)>0$ because $ac<2016$. So we want the largest admissible $a$.
+
+The divisors of $2016=2^5\cdot3^2\cdot7$ just below $44.9$ are $42,36,\dots$. For $a=42$: $\dfrac{2016}{42}-42=48-42=6$, not a multiple of $4$. For $a=36$: $56-36=20$, so $b=5$. Hence the minimum perimeter is
+\[
+P=4\cdot36+8\cdot5=\boxed{184}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+path c=(0,-5)--(36,-5)--(36,0)--(41,0)--(41,36)--(36,36)--(36,41)--(0,41)--(0,36)--(-5,36)--(-5,0)--(0,0)--cycle;
+fill(c,paleblue); draw(c,linewidth(1));
+draw((0,0)--(36,0)--(36,36)--(0,36)--cycle,dashed);
+label("$36$",(18,-5),S); label("$36$",(41,18),E);
+draw((-5,-2.5)--(0,-2.5),Arrows(4)); label("$5$",(-2.5,-2.5),S);
+draw((38.5,36)--(38.5,41),Arrows(4)); label("$5$",(38.5,38.5),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check: the area is $36^2+4\cdot36\cdot5=1296+720=2016$.

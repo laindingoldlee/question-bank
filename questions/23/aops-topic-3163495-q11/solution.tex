@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3163495_2018_spring_lmt__individual_round__lexington_mathematical_tournament
+% Stable identity: aops-topic-3163495-q11
+The central unit cube has six faces, none lying on an original outer face. Each must be created by a cut, and one plane cut can create at most one face of this particular final cube, regardless of rearrangement. Thus at least six cuts are needed. Two cuts perpendicular to each of the three original coordinate axes suffice. Hence the minimum is $\boxed6$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair u=(3,0),v=(1.1,1),w=(0,3);draw((0,0)--u--u+v--v--cycle);draw(w--u+w--u+v+w--v+w--cycle);draw((0,0)--w);draw(u--u+w);draw(v--v+w);draw(u+v--u+v+w);for(int j=1;j<3;++j){draw(j*u/3--j*u/3+w,gray);draw(j*w/3--u+j*w/3,gray);draw(u+j*v/3--u+j*v/3+w,gray);}label("$3$",u/2,S);label("unit subdivisions",w+(0,1));
+\end{asy}

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2784240_2021_winmac_guts_rounds_14__winchester_math_competition
+% Stable identity: aops-topic-2784240-q01
+\textbf{Upper bound.} A line meets the annulus in at most two segments, and two lines cross at most once. Draw the lines one at a time; cutting a region along a segment that runs from boundary to boundary splits it into at most two pieces.
+
+The first line adds at most $1$ piece. If it misses the hole it is a single segment. If it passes through the hole it gives two segments, each running from the outer circle to the inner one; the first of them does not disconnect the annulus (it only opens up the ring), and the second adds at most $1$.
+
+The second line consists of at most two segments, cut by the first line into at most $3$ pieces, each adding at most $1$. So there are at most $1+1+3=5$ pieces.
+
+\textbf{Construction.} Take outer radius $3$ and inner radius $1$, and two lines that both pass through the hole and cross at a point of the ring, such as $(0,2)$. The figure shows the $5$ pieces.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+fill(circle((0,0),3),rgb(0.93,0.88,0.75));fill(circle((0,0),1),white);
+draw(circle((0,0),3));draw(circle((0,0),1));
+pair X=(0,2);draw((0.6*1.55,-2*0.55)--(-0.6*0.55,2*1.55));draw((-0.6*1.55,-2*0.55)--(0.6*0.55,2*1.55));
+label("$1$",(0,2.55),fontsize(9pt));label("$2$",(0,1.45),fontsize(9pt));label("$3$",(-2,0),fontsize(9pt));label("$4$",(2,0),fontsize(9pt));label("$5$",(0,-2),fontsize(9pt));
+\end{asy}
+
+The greatest number is $\boxed{5}$.

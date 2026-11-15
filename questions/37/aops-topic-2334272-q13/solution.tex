@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2334272_halloween_mock_amc_8_problems_1115
+% Stable identity: aops-topic-2334272-q13
+Let $O$ be the centre of the large disc. A disc of radius $3$ with centre $X$ lies strictly inside it exactly when $OX<5$. So Ben's centre $P$ is uniform in the open disc of radius $5$ about $O$, and you need a centre $Q$ with $OQ<5$ and $PQ\ge6$ (two discs of radius $3$ do not overlap exactly when their centres are at least $6$ apart).
+
+If $OP>1$, choose $Q$ on the ray from $P$ through $O$, beyond $O$, with $\max(0,6-OP)<OQ<5$; then $PQ=OP+OQ\ge6$, and you win. If $OP\le1$, then for every allowed $Q$, $PQ\le PO+OQ<1+5=6$, and you lose.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), P=3*dir(30), Q=-4.5*dir(30);
+draw(circle(O,8),linewidth(0.9));
+draw(circle(O,5),gray(0.4)+dashed);
+filldraw(circle(O,1),pink,red);
+draw(circle(P,3),blue); draw(circle(Q,3),heavygreen);
+dot(O); dot(P,blue); dot(Q,heavygreen);
+label("$O$",O,W,fontsize(8pt)); label("$P$",P,E,blue); label("$Q$",Q,N,heavygreen);
+draw(O--8*dir(100)); label("$8$",4*dir(100),W,fontsize(8pt));
+draw(O--5*dir(250),gray(0.4)); label("$5$",3.6*dir(250),E,fontsize(8pt));
+\end{asy}
+
+So you win exactly when Ben's centre lies outside the small disc of radius $1$ (shaded), and the probability is
+\[\dfrac{\pi\cdot5^2-\pi\cdot1^2}{\pi\cdot5^2}=\boxed{\textbf{(C) }\dfrac{24}{25}}.\]

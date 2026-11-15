@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1364448_2016_amc_8_problem_variant
+% Stable identity: aops-topic-1364448-q01
+Imagine drawing all $18$ balls; the order is a uniformly random arrangement. Red is used up first exactly when the last red ball comes before the last blue ball and before the last green ball.
+
+Read the arrangement from the end. Red is used up first exactly when red is the \emph{last} of the three colours to appear in this backwards reading, i.e. when the first two colours seen from the end are blue and green.
+\begin{itemize}
+\item The last ball is blue with probability $\dfrac{6}{18}$. Given that, the red and green balls are still in uniformly random order, so the last of these $12$ balls is green with probability $\dfrac{7}{12}$.
+\item The last ball is green with probability $\dfrac{7}{18}$, and then the last of the $11$ red and blue balls is blue with probability $\dfrac{6}{11}$.
+\end{itemize}
+Hence
+\[
+P=\dfrac{6}{18}\cdot\dfrac{7}{12}+\dfrac{7}{18}\cdot\dfrac{6}{11}=\dfrac{7}{36}+\dfrac{7}{33}=\dfrac{77+84}{396}=\boxed{\dfrac{161}{396}}\approx0.407 .
+\]
+The student's answer is wrong. The probability $\dfrac{5}{18}$ that the last ball is red is the probability that red is used up \emph{last}, not first; and the equations $b+g=\dfrac{13}{18}$ and so on mix up ``finishing first'' with ``not being the last ball''.

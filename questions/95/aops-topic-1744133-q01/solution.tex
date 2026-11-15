@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1744133_problem_8__perpendicular_diameters_and_a_point
+% Stable identity: aops-topic-1744133-q01
+The quadrilateral $OYPZ$ has right angles at $O$, $Y$ and $Z$, so it is a rectangle (if $P$ is an endpoint of a diameter it degenerates, and the statement below still holds).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real R=8; pair O=(0,0),P=R*dir(55),Y=(P.x,0),Z=(0,P.y);
+draw(circle(O,R),linewidth(0.9));
+draw((-R,0)--(R,0));draw((0,-R)--(0,R));
+draw(P--Y);draw(P--Z);draw(Y--Z,blue+linewidth(1));draw(O--P,dashed);
+draw(Y+(0,0.8)--Y+(-0.8,0.8)--Y+(-0.8,0));draw(Z+(0.8,0)--Z+(0.8,-0.8)--Z+(0,-0.8));
+dot(O);dot(P);dot(Y);dot(Z);
+label("$A$",(-R,0),W);label("$B$",(R,0),E);label("$C$",(0,R),N);label("$D$",(0,-R),S);
+label("$O$",O,SW);label("$P$",P,NE);label("$Y$",Y,S);label("$Z$",Z,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The diagonals of a rectangle are equal, so $YZ=OP=8$, the radius, wherever $P$ is on the circle. The answer is $\boxed{\mathrm{(B)}\ 8}$.

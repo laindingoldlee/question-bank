@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1641475_volume_of_sphere
+% Stable identity: aops-topic-1641475-q01
+The radius is $r=10$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real r=2;pair O=(0,0);
+draw((-r,-r)--(r,-r)^^(-r,r)--(r,r),linewidth(0.9));draw((-r,-r)--(-r,r)^^(r,-r)--(r,r),linewidth(0.9));
+draw(shift(0,r)*xscale(r)*yscale(0.3)*unitcircle,linewidth(0.9));
+draw(shift(0,-r)*xscale(r)*yscale(0.3)*arc((0,0),1,180,360),linewidth(0.9));
+draw(shift(0,-r)*xscale(r)*yscale(0.3)*arc((0,0),1,0,180),dashed);
+draw(circle(O,r),blue+linewidth(0.9));
+draw(xscale(r)*yscale(0.3)*arc((0,0),1,180,360),blue);draw(xscale(r)*yscale(0.3)*arc((0,0),1,0,180),blue+dashed);
+draw(O--r*dir(40));dot(O);label("$10$",0.62*r*dir(40),NW);
+draw((r+0.5,-r)--(r+0.5,r),Arrows(TeXHead));label("$20$",(r+0.5,0),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(a)} $V_{\text{sphere}}=\dfrac{4}{3}\pi r^3=\dfrac{4}{3}\pi\cdot1000=\boxed{\dfrac{4000\pi}{3}}\approx4188.8$.
+
+\textbf{(b)} The cylinder has radius $10$ and height $20$, so $V_{\text{cyl}}=\pi r^2\cdot 2r=2\pi r^3=2000\pi$. The cylinder is larger (it contains the sphere), and
+\[
+\dfrac{V_{\text{sphere}}}{V_{\text{cyl}}}=\dfrac{\dfrac{4}{3}\pi r^3}{2\pi r^3}=\boxed{\dfrac{2}{3}} .
+\]
+(This is Archimedes' result. A sphere and an arbitrary cylinder cannot be compared without knowing their sizes; the comparison makes sense for the cylinder that just fits around the sphere.)

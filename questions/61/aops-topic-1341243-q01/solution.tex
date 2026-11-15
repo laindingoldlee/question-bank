@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1341243_angle_bisector
+% Stable identity: aops-topic-1341243-q01
+\textbf{Proof.} Let $\angle AOB=2x$ and $\angle BOC=2y$, so $\angle COA=2x+2y$. Measure the direction of every ray by its angle from $OA$, turning towards $OC$: then $OA$ is at $0$, $OX$ at $x$, $OB$ at $2x$, $OZ$ at $x+y$ (half of $2x+2y$), $OY$ at $2x+y$ and $OC$ at $2x+2y$. All these lie within $\angle AOC<180^\circ$, so the angle between two of the rays is the difference of their directions.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+real x=25, y=40;
+pair A=4*dir(0), B=4*dir(2*x), C=4*dir(2*x+2*y);
+pair X=3.4*dir(x), Y=3.4*dir(2*x+y), Z=3.4*dir(x+y);
+draw(O--A,linewidth(0.9)); draw(O--B,linewidth(0.9)); draw(O--C,linewidth(0.9));
+draw(O--X,blue+dashed); draw(O--Y,red+dashed); draw(O--Z,deepgreen+dashed);
+dot(O); label("$O$",O,S);
+label("$A$",A,E); label("$B$",B,NE); label("$C$",C,NW);
+label("$X$",X,E,blue); label("$Y$",Y,N,red); label("$Z$",Z,NE,deepgreen);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence
+\[
+\angle XOY=(2x+y)-x=x+y,\qquad \angle XOZ=(x+y)-x=y,\qquad \angle YOZ=(2x+y)-(x+y)=x,
+\]
+and
+\[
+\dfrac{x+y}{2x+2y}+\dfrac{y}{2y}+\dfrac{x}{2x}=\dfrac{1}{2}+\dfrac{1}{2}+\dfrac{1}{2}=\dfrac{3}{2} .
+\]

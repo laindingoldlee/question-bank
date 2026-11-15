@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1762366_mathcounts_handbook
+% Stable identity: aops-topic-1762366-q149
+The ten ages have sum $108$. After adding $n$:
+\begin{itemize}
+\item \textbf{Mode.} $8$ appears $3$ times; if $n=5$ or $n=11$ there would be a tie, so the mode is not unique. Otherwise the unique mode is $8$.
+\item \textbf{Median} (the $6$th of $11$): $8$ if $n\le8$ and $9$ if $n\ge9$.
+\item \textbf{Range:} $33-n$ if $n<5$, $28$ if $5\le n\le33$, and $n-5$ if $n>33$.
+\end{itemize}
+Now solve $\dfrac{108+n}{11}+\text{median}+8=\text{range}$ in each case:
+\begin{itemize}
+\item $n<5$: $\dfrac{108+n}{11}+16=33-n$ gives $12n=79$, not an integer.
+\item $5\le n\le8$ ($n\ne5$): $\dfrac{108+n}{11}+16=28$ gives $n=24$, outside the range.
+\item $9\le n\le33$ ($n\ne11$): $\dfrac{108+n}{11}+17=28$ gives $n=13$. Valid.
+\item $n>33$: $\dfrac{108+n}{11}+17=n-5$ gives $10n=350$, $n=35$. Valid.
+\end{itemize}
+Check: for $n=13$, mean $11$, median $9$, mode $8$, sum $28$ = range $28$; for $n=35$, mean $13$, median $9$, mode $8$, sum $30$ = range $30$. The sum of the possible values is $13+35=\boxed{48}$.

@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h3242498_the_polymath_competition
+% Stable identity: aops-topic-3242498-q24
+Let the radii be $a,b,c$. The centre-triangle sides are $a+b,b+c,c+a$, so its semiperimeter is $a+b+c=20$. Heron's formula gives $K^2=20abc$, hence $abc=100$.
+The tangency triangle is obtained by removing three corner triangles from the centre triangle. Its area ratio is
+\[1-\left(\dfrac{a^2}{(a+b)(a+c)}+\dfrac{b^2}{(b+a)(b+c)}+\dfrac{c^2}{(c+a)(c+b)}\right)=\dfrac{2abc}{(a+b)(a+c)(b+c)}.\]
+The given ratio is $\dfrac{2}{21}$, so the product of the three sides is $2100$. Since this product is $(a+b+c)(ab+bc+ca)-abc$, we get $ab+bc+ca=110$. Thus the radii are the roots of
+\[t^3-20t^2+110t-100=(t-10)(t^2-10t+10),\]
+namely $10,5+\sqrt{15},5-\sqrt{15}$. The longest side is $15+\sqrt{15}=\sqrt{225}+\sqrt{15}$, so $\boxed{m+n=240}$, choice C.
+\begin{asy}
+usepackage("amsmath"); size(230);
+real a=10,b=5+sqrt(15),c=5-sqrt(15),d=a+b,e=a+c;pair O1=(0,0),O2=(d,0);real x=(d*d+e*e-(b+c)^2)/(2*d);pair O3=(x,sqrt(e*e-x*x));pair P=(b*O1+a*O2)/(a+b),Q=(c*O2+b*O3)/(b+c),T=(a*O3+c*O1)/(a+c);draw(circle(O1,a),gray);draw(circle(O2,b),gray);draw(circle(O3,c),gray);draw(O1--O2--O3--cycle,blue);draw(P--Q--T--cycle,red+linewidth(1));dot(O1);dot(O2);dot(O3);label("$O_1$",O1,SW);label("$O_2$",O2,SE);label("$O_3$",O3,N);label("$P$",P,S);label("$Q$",Q,NE);label("$T$",T,NW);
+\end{asy}

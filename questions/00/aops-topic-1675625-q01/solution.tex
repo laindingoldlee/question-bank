@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h1675625_let_n_be_a_positive_integer_points_a1__a2____an_lie_on_a_circle_for_1_
+% Stable identity: aops-topic-1675625-q01
+\textbf{Upper bound.} Two segments of $S$ that meet at a point other than an $A_i$ have four distinct endpoints (segments with a common endpoint meet only there). Conversely, four of the points are the vertices of a convex quadrilateral inscribed in the circle, and among the three ways to pair them into two segments, only the two diagonals cross, and they cross at exactly one point. So every intersection point is the crossing of the diagonals of at least one $4$-element subset of $\{A_1,\dots,A_n\}$, and each $4$-element subset produces exactly one crossing. Hence there are at most $\dbinom n4$ intersection points.
+
+\textbf{The bound is attained.} The count is exactly $\dbinom n4$ when no three segments pass through one interior point, since then different $4$-subsets give different crossings. Such a position exists: place the points one at a time. When $A_m$ is placed, a new segment $A_mA_j$ creates a triple point only if it passes through one of the finitely many crossing points $P$ already present (two new segments meet only at $A_m$); and the line $A_jP$ meets the circle at only one further point. So only finitely many positions of $A_m$ are forbidden, and $A_m$ can be placed elsewhere on the circle.
+
+The maximum is $\boxed{\dbinom n4}$ (which is $0$ for $n\le3$).

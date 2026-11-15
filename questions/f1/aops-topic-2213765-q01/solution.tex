@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2213765_parallel_geometry_circles
+% Stable identity: aops-topic-2213765-q01
+Let $O$ be the centre of $\omega$ and let $m$ be the perpendicular bisector of $BC$; it passes through $O$ and is perpendicular to $BC$.
+
+The reflection in $m$ maps $\omega$ to itself (it fixes the centre) and swaps $B$ and $C$. It maps the line through $A$ parallel to $BC$ to itself, because that line is perpendicular to $m$. Hence it maps $A$ to the other intersection of this line with $\omega$, which is $D$ (if $A$ lies on $m$, the line is tangent at $A$ and $D=A$ is the reflection of itself).
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0); real R=3;
+pair B=R*dir(200), C=R*dir(-20), A=R*dir(120);
+pair D=(-A.x,A.y);
+draw(circle(O,R));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,blue+linewidth(0.9)); draw(D--C,red+linewidth(0.9)); draw(A--B,red+linewidth(0.9));
+draw((0,-3.4)--(0,3.4),dashed+gray);
+dot(A);dot(B);dot(C);dot(D);dot(O);
+label("$A$",A,NW); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,NE); label("$O$",O,E);
+label("$\omega$",R*dir(250),SW); label("$m$",(0,3.4),N,gray);
+\end{asy}
+
+A reflection preserves lengths and maps segment $AB$ to segment $DC$. Therefore $AB=DC$ in every case, and
+\[\dfrac{AB}{DC}=\boxed{1}.\]
+(In other words, $ABCD$ or $ADBC$ is an isosceles trapezoid inscribed in $\omega$; in the tangent case $AB=AC=DC$.)

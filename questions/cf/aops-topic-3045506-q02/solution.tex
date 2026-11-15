@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h3045506_among_us_mysteries
+% Stable identity: aops-topic-3045506-q02
+There are only $5\cdot6=30$ candidate pairs. For each, require every statement by a person outside the candidate pair to be true; statements by the two candidates impose no restriction. Evaluating these implications leaves only $\boxed{\text{Blue and Black}}$. The exact exhaustive certificate below implements every statement. Its abbreviations are $O,Y,G,B,P$ for Orange, Yellow, Green, Blue, Purple, and $K,L,C,N,W,R$ for Pink, Lime, Cyan, Black, White, Coral. Lowercase red denotes the known innocent Red. For the surviving pair, all innocent speakers’ implications are true; Blue’s Black implication and Black’s Blue implication may be false, as allowed.
+\begin{verbatim}
+from itertools import product
+group1=['O','Y','G','B','P']
+group2=['K','L','C','N','W','R']
+solutions=[]
+for a,b in product(group1,group2):
+ I={a,b}
+ f=lambda x:x in I
+ implies=lambda a,b:not a or b
+ claims={
+ 'red':not f('W') or (not f('O') and not f('Y')),
+ 'O':implies(f('K'),f('Y') or f('G')) and implies(f('W'),not f('Y') and not f('G')),
+ 'Y':implies(f('B') or f('P'),not(f('K') or f('L') or f('R'))) and implies(f('G'),not(f('C') or f('N') or f('W'))),
+ 'G':implies(f('O'),f('C') or f('N') or f('W')),
+ 'B':implies(f('N'),f('P') or f('O')) and implies(f('R'),f('Y') or f('G')) and implies(f('C'),not(f('Y') or f('G'))),
+ 'P':implies(f('L'),f('Y') or f('G')) and implies(f('Y'),not(f('C') or f('N') or f('W'))),
+ 'K':implies(f('O'),not(f('C') or f('N'))) and implies(f('B'),not(f('C') or f('W'))),
+ 'L':implies(f('P'),not(f('C') or f('W'))),
+ 'C':implies(f('K'),not(f('Y') or f('G'))) and implies(f('C'),not(f('O') or f('P'))),
+ 'N':implies(f('Y') or f('G'),not(f('K') or f('R'))) and implies(f('B'),f('K') or f('L') or f('R')),
+ 'W':implies(f('Y') or f('G'),not(f('L') or f('R'))),
+ 'R':implies(f('L'),f('O') or f('B') or f('P')) and implies(f('N'),not(f('O') or f('P')))
+ }
+ if all(speaker in I or truth for speaker,truth in claims.items()):
+  solutions.append((a,b))
+assert solutions==[('B','N')]
+\end{verbatim}

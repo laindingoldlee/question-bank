@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1984785_problem_i_thought_of
+% Stable identity: aops-topic-1984785-q01
+The answer is $\boxed{16}$.
+
+\textbf{At least $16$ are needed.} There are $8!=40320$ possible rankings. Each poll has two outcomes, so a fixed strategy with at most $k$ polls can produce at most $2^k$ different sequences of results. Different rankings must lead to different sequences (otherwise the strategy cannot tell them apart), so $2^k\ge40320$. Since $2^{15}=32768<40320$, we need $k\ge16$. (A lucky run, like the one in the post with $10$ polls, does not contradict this: other outcomes of the same polls would leave the ranking undetermined.)
+
+\textbf{$16$ always suffice.} Write $x<y$ when $y$ is better.
+
+\emph{Step 1 ($4$ polls).} Pair the people and poll each pair. Call the winners $a$'s and the losers $b$'s.
+
+\emph{Step 2 ($5$ polls): rank the four winners.} Poll two pairs of winners, then the two better ones against each other. This gives, say, $w<x<z$ and $y<z$, with $y$ still to be placed among $w,x$: one poll against $w$ or $x$ and possibly a second places it. That is at most $2+1+2=5$ polls. Relabel the winners so that $a_1<a_2<a_3<a_4$, and let $b_i$ be the loser paired with $a_i$, so $b_i<a_i$.
+
+\emph{Step 3 ($7$ polls): insert the losers.} The chain $b_1<a_1<a_2<a_3<a_4$ is known.
+\begin{itemize}
+\item $b_3$ lies below $a_3$, so it is inserted among $b_1,a_1,a_2$: $4$ possible places, $2$ polls by binary search.
+\item $b_2$ lies below $a_2$, so it is inserted among $b_1,a_1$ and possibly $b_3$: at most $3$ elements and $4$ places, $2$ polls.
+\item $b_4$ lies below $a_4$, so it is inserted among the other $7$ people except $a_4$, i.e. $7$ known elements and $8$ places: $3$ polls.
+\end{itemize}
+The total is $4+5+2+2+3=16$ polls, and at the end every person's place is known. Hence $16$ is the least number that guarantees a complete ranking.

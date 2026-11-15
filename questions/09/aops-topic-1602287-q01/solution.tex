@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h1602287_peacewise_function_finding_inverse_of_function
+% Stable identity: aops-topic-1602287-q01
+\textbf{The given piece.} For $x\le2$, $f(x)=2+(x-2)^2$ is strictly decreasing and takes every value in $[2,\infty)$ exactly once ($f(2)=2$, and $f(x)\to\infty$ as $x\to-\infty$). So the left piece is a bijection from $(-\infty,2]$ onto $[2,\infty)$.
+
+\textbf{What $k$ must be.} If $f$ is its own inverse, then $f$ is a bijection of $\mathbb R$ that equals its inverse. The left piece already uses up the outputs in $[2,\infty)$, so the right piece must send $(2,\infty)$ onto $(-\infty,2)$, and for $y>2$ the value $k(y)$ must be the unique $x<2$ with $f(x)=y$. Solving $y=2+(x-2)^2$ with $x<2$ gives $x-2=-\sqrt{y-2}$. Hence
+\[
+\boxed{k(x)=2-\sqrt{x-2}\quad(x>2)}.
+\]
+
+\textbf{Check.} For $x\le2$: $f(x)=2+(x-2)^2\ge2$. If $f(x)=2$ (that is, $x=2$) then $f(f(x))=f(2)=2=x$; otherwise $f(x)>2$ and $f(f(x))=2-\sqrt{(x-2)^2}=2-|x-2|=x$. For $x>2$: $k(x)=2-\sqrt{x-2}<2$, so $f(f(x))=2+\left(-\sqrt{x-2}\right)^2=x$. So $f(f(x))=x$ for all $x$. (Graphically, the graph of $f$ is symmetric about the line $y=x$: the right piece is the mirror image of the left piece.)

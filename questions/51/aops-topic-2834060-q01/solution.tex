@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2834060_mathcounts__bipyramid
+% Stable identity: aops-topic-2834060-q01
+The solid is symmetric about its centre $O$, so opposite faces are parallel, and the required height is twice the distance from $O$ to a face.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+import three;
+pair p(triple v){return (v.x+0.35*v.y,v.z+0.25*v.y);}
+triple[] H;for(int k=0;k<6;++k)H.push((cos(pi*k/3),sin(pi*k/3),0));
+triple T=(0,0,1),Bt=(0,0,-1);
+for(int k=0;k<6;++k){draw(p(H[k])--p(H[(k+1)%6]));draw(p(T)--p(H[k]));draw(p(Bt)--p(H[k]),gray);}
+label("$1$",p(T)/2+(0.1,0),E);dot(p(T));dot(p(Bt));
+\end{asy}
+
+Take a face through the apex at height $1$ and a hexagon edge whose midpoint is at horizontal distance $\dfrac{\sqrt3}2$ (the apothem) from $O$. In the vertical cross-section through $O$, the apex and that midpoint, the face appears as the hypotenuse of a right triangle with legs $1$ and $\dfrac{\sqrt3}2$. The distance from $O$ to it is
+\[\dfrac{1\cdot\dfrac{\sqrt3}2}{\sqrt{1+\dfrac34}}=\dfrac{\sqrt3}{\sqrt7}.\]
+So the height is $\dfrac{2\sqrt3}{\sqrt7}=\boxed{\dfrac{2\sqrt{21}}7}$ cm.

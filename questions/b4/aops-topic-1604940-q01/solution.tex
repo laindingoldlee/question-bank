@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1604940_happened_to_rip_this_problem_exactly
+% Stable identity: aops-topic-1604940-q01
+All six vertices lie on the circumcircle of the hexagon. By Thales' theorem, a triangle inscribed in a circle has a right angle exactly when one of its sides is a diameter. In the hexagon $ABCDEF$ the diameters joining two vertices are the three long diagonals $AD$, $BE$, $CF$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair[] V; for(int k=0;k<6;++k) V[k]=dir(60*k);
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,linewidth(0.9));
+draw(unitcircle,gray+dashed);
+draw(V[0]--V[3],red);
+fill(V[0]--V[1]--V[3]--cycle,palered+opacity(0.5));draw(V[0]--V[1]--V[3]--cycle,red);
+pair u=unit(V[0]-V[1]),v=unit(V[3]-V[1]);real s=0.12;
+draw(V[1]+s*u--V[1]+s*(u+v)--V[1]+s*v,red);
+string[] nm={"$A$","$B$","$C$","$D$","$E$","$F$"};
+for(int k=0;k<6;++k){dot(V[k]);label(nm[k],V[k],dir(60*k));}
+dot((0,0));label("$O$",(0,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For each long diagonal, any of the other $4$ vertices completes a right triangle (for example $ABD$ has its right angle at $B$), and no triangle contains two long diagonals as sides, since they meet only at the centre. So there are $3\cdot4=12$ right triangles among the $\dbinom63=20$ triangles, and the probability is
+\[
+\dfrac{12}{20}=\boxed{\dfrac{3}{5}}.
+\]

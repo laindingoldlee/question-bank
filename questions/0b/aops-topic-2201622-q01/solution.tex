@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2201622_confusing_problem_with_weird_wording
+% Stable identity: aops-topic-2201622-q01
+Let $M$ be the midpoint of $AB$ (the Sun). Since $XA=XB$, triangle $ABX$ is isosceles, so $XM$ is perpendicular to $AB$ and bisects the angle $\theta$ at $X$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(0,4), M=(0,2), X=(9,2);
+draw(A--X--B,linewidth(0.9)); draw(A--B,linewidth(1.1)); draw(M--(X-(2.3,0)),dashed);
+draw(M+(0.25,0)--M+(0.25,0.25)--M+(0,0.25));
+dot(A); dot(B); dot(M); dot(X);
+label("$A$",A,SW); label("$B$",B,NW); label("$M$ (Sun)",M,W); label("$X$ (star)",X,E);
+label("$93$ million",(A+M)/2,W,fontsize(8pt));
+real ang=degrees(atan2(2,9));
+draw(arc(X,1.6,180-ang,180+ang),red);
+label("$\theta$",X+1.15*dir(180),red);
+label("not to scale",(4.5,-0.5),fontsize(8pt));
+\end{asy}
+
+In the right triangle $AMX$, $AM=93$ million miles and $\angle AXM=\dfrac{\theta}{2}=2.1345\times10^{-4}$ degrees, so
+\[XM=\dfrac{AM}{\tan\left(\dfrac{\theta}{2}\right)} .\]
+In radians, $\dfrac{\theta}{2}=2.1345\times10^{-4}\cdot\dfrac{\pi}{180}\approx3.7254\times10^{-6}$. For an angle this small, $\tan x$ agrees with $x$ (in radians) to about $11$ significant figures, so
+\[XM\approx\dfrac{9.3\times10^{7}}{3.7254\times10^{-6}}\approx2.4964\times10^{13}\text{ miles}\approx\dfrac{2.4964\times10^{13}}{5.879\times10^{12}}\text{ light-years}\approx\boxed{4.25}\text{ light-years}.\]
+
+\emph{About the wording.} The distances from the star to $A$, to $M$ and to $B$ differ by less than $10^{-11}$ of their size ($XA=\dfrac{XM}{\cos(\theta\div2)}$), so it does not matter which point of the orbit we measure from. The assumption $XA=XB$ supplies the missing information: one side and one angle do not determine a general triangle, but they do determine an isosceles one.

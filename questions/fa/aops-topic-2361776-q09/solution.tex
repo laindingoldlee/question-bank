@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2361776_30_posts_circles
+% Stable identity: aops-topic-2361776-q09
+For any point $Q$ on the circle, the triangle inequality (in triangle $OPQ$, or on a line when $O,P,Q$ are collinear) gives
+\[PQ\ge OQ-OP=6-2=4\qquad\text{and}\qquad PQ\le OQ+OP=6+2=8.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), P=(2,0), Q=6*dir(115);
+draw(circle(O,6));
+draw((-6,0)--(6,0),dashed);
+draw(P--Q,blue+linewidth(0.9)); draw(O--Q,dotted);
+dot(O); dot(P); dot(Q); dot((6,0)); dot((-6,0));
+label("$O$",O,S); label("$P$",P,S); label("$Q$",Q,NW);
+label("$4$",(4,0),N); label("$8$",(-2,0),S);
+\end{asy}
+
+The value $4$ is attained at the point of the circle on ray $OP$, and $8$ at the point on the opposite ray. As $Q$ moves along the circle from one of these points to the other, $PQ$ changes continuously, so it takes every value in between. The possible lengths form the interval $\boxed{[4,8]}$.

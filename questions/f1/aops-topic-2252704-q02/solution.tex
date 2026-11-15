@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2252704_expected_value_question
+% Stable identity: aops-topic-2252704-q02
+\textbf{(a)} If $m<k$, no sequence of length $m$ contains $k$ tails in a row, so all $2^m$ sequences count. Let $m\ge k$. A sequence with no run of $k$ tails cannot start with $k$ tails, so it starts with exactly $j$ tails followed by a head, for some $0\le j\le k-1$ (here $j+1\le k\le m$, so the head fits). The rest is a sequence of length $m-j-1$ with no run of $k$ tails, and conversely every such choice gives a valid sequence, different choices giving different sequences. So $f_k(m)=\sum_{j=0}^{k-1}f_k(m-1-j)$.
+
+\textbf{(b)} For every outcome, $L_n=\sum_{k=1}^{n}[L_n\ge k]$, where $[L_n\ge k]$ is $1$ if $L_n\ge k$ and $0$ otherwise (the longest run is at most $n$). Taking expectations, $E[L_n]=\sum_{k=1}^nP(L_n\ge k)$. The event $L_n\ge k$ means that some run of $k$ tails occurs, whose complement has $f_k(n)$ of the $2^n$ equally likely sequences. So $P(L_n\ge k)=1-\dfrac{f_k(n)}{2^n}$, which gives the formula.
+
+\textbf{(c)} For $n=3$: $f_1(3)=1$, $f_2(3)=5$ (from $1,2,3,5$), $f_3(3)=7$, so
+\[E[L_3]=\dfrac{(8-1)+(8-5)+(8-7)}{8}=\boxed{\dfrac{11}{8}}.\]
+For $n=4$: $f_1(4)=1$, $f_2(4)=8$, $f_3(4)=13$ (from $1,2,4,7,13$), $f_4(4)=15$, so
+\[E[L_4]=\dfrac{15+8+3+1}{16}=\boxed{\dfrac{27}{16}}.\]
+(There is no simple closed form in $n$; the formula in (b) with the recursion in (a) is the standard way to compute $E[L_n]$. For $n=6$ it gives $\dfrac{69}{32}$.)

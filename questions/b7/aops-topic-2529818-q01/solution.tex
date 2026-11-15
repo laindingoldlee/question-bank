@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h2529818_trickiest_problem
+% Stable identity: aops-topic-2529818-q01
+Let $O_1,O_2,O$ be the centres, $r_1=961$, $r_2=625$, $r$ the radius of $\omega$, and $d=O_1O_2$. Put $O_1=(0,0)$ and $O_2=(d,0)$.
+
+\textbf{Line $AB$.} A point $X=(x,y)$ lies on both circles only if $XO_1^2-r_1^2=XO_2^2-r_2^2$ (both sides are $0$). Since $XO_1^2-XO_2^2=x^2-(x-d)^2=2dx-d^2$, the points $A$ and $B$ satisfy $2dx-d^2=r_1^2-r_2^2$. So line $AB$ is the vertical line $x=x_0$ with $2dx_0-d^2=r_1^2-r_2^2$. (It is the radical axis of the two circles.)
+
+\textbf{Distance from $O$ to $AB$.} External tangency gives $OO_1=r+r_1$ and $OO_2=r+r_2$. If $O=(x_O,y_O)$, then
+\[2dx_O-d^2=OO_1^2-OO_2^2=(r+r_1)^2-(r+r_2)^2=(r_1-r_2)(2r+r_1+r_2).\]
+Subtracting $2dx_0-d^2=r_1^2-r_2^2=(r_1-r_2)(r_1+r_2)$ gives
+\[2d\left(x_O-x_0\right)=2r\left(r_1-r_2\right),\qquad\text{so the distance from }O\text{ to }AB\text{ is }\dfrac{r\left(r_1-r_2\right)}{d}.\]
+
+\textbf{The chord $PQ$.} The minor arc $PQ$ is $120^\circ$, so $\angle POQ=120^\circ$ and the distance from $O$ to the chord $PQ$ is $r\cos60^\circ=\dfrac r2$. Therefore
+\[\dfrac{r\left(r_1-r_2\right)}{d}=\dfrac r2,\qquad d=2\left(r_1-r_2\right)=2\cdot336=\boxed{672}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+real r1=9.61, r2=6.25, d=6.72, r=9;
+pair O1=(0,0), O2=(d,0);
+real x0=(d^2+r1^2-r2^2)/(2d);
+real ox=x0+r/2; pair O=(ox,sqrt((r+r1)^2-ox^2));
+pair A=(x0,sqrt(r1^2-x0^2)), B=(x0,-sqrt(r1^2-x0^2));
+pair P=(x0,O.y+sqrt(r^2-(r/2)^2)), Q=(x0,O.y-sqrt(r^2-(r/2)^2));
+pair M=(x0,O.y);
+draw(circle(O1,r1),linewidth(0.8)); draw(circle(O2,r2),linewidth(0.8)); draw(circle(O,r),linewidth(0.8));
+draw((x0,-10.5)--(x0,P.y+1.5),blue);
+draw(O1--O2,gray(0.6));
+draw(O--P,dashed); draw(O--Q,dashed); draw(O--M,red+linewidth(0.9));
+real a1=degrees(P-O), a2=degrees(Q-O);
+draw(arc(O,1.5,a1,a2));
+label("$120^\circ$",O+3.0*dir(203),fontsize(7pt));
+dot(O1);dot(O2);dot(O);dot(A);dot(B);dot(P);dot(Q);
+label("$O_1$",O1,SW);label("$O_2$",O2,SW);label("$O$",O,E);
+label("$A$",A,3*dir(225));label("$B$",B,E);label("$P$",P,W);label("$Q$",Q,3*dir(15));
+label("$\dfrac{r}{2}$",(x0+1.4,O.y),N,red+fontsize(8pt));
+label("$\omega_1$",r1*dir(225),SW); label("$\omega_2$",O2+r2*dir(-60),SE); label("$\omega$",O+r*dir(30),NE);
+\end{asy}
+
+(The sketch is scaled down by a factor of $100$ and uses $r=900$; any radius of $\omega$ gives the same configuration of angles.)

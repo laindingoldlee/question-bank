@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2025281_lattice_points_problem
+% Stable identity: aops-topic-2025281-q01
+The triangle is right-angled at $(9,1)$ with horizontal leg $8$ and vertical leg $m=n-1$ (not $n$).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real m=6;
+pair A=(1,1), B=(9,1), C=(9,1+m);
+for(int i=0;i<=10;++i) draw((i,0)--(i,8), gray(0.85)+linewidth(0.3));
+for(int j=0;j<=8;++j) draw((0,j)--(10,j), gray(0.85)+linewidth(0.3));
+draw(A--B--C--cycle, linewidth(0.9));
+dot(A); dot(B); dot(C);
+label("$(1,1)$", A, SW); label("$(9,1)$", B, SE); label("$(9,n)$", C, NE);
+label("$8$", (A+B)/2, S); label("$n-1$", (B+C)/2, E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The figure is schematic; the actual triangle is much taller.) Its area is $A=\dfrac{1}{2}\cdot8\cdot m=4m$. Count the boundary lattice points segment by segment, including the starting point of each segment but not its end: the horizontal leg from $(1,1)$ to $(9,1)$ contributes $8$, the vertical leg from $(9,1)$ to $(9,n)$ contributes $m$, and the hypotenuse from $(9,n)$ to $(1,1)$ contributes $g=\gcd(8,m)$. So $B=8+m+g$. By Pick's theorem, $A=I+\dfrac {B}{2}-1$, so
+\[
+I=4m-\dfrac{8+m+g}{2}+1=560\iff 7m-g=1126.
+\]
+Since $g$ divides $8$, $g\in\{1,2,4,8\}$ and $m=\dfrac{1126+g}{7}$ must be an integer: $1127=7\cdot161$ works, $1128$ and $1130$ are not multiples of $7$, and $1134=7\cdot162$ would need $\gcd(8,162)=8$, which is false. For $m=161$ indeed $\gcd(8,161)=1=g$. Hence $m=161$ and
+\[
+n=m+1=\boxed{162}.
+\]
+The value $161$ obtained in the post is the length of the vertical leg, $n-1$, not $n$ itself.

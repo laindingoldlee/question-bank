@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2196302_can_someone_help_me_with_some_easy_math_problems
+% Stable identity: aops-topic-2196302-q01
+If the triangle has area $K$, the altitude to a side of length $a$ is $h=\dfrac{2K}{a}$. So the altitudes are inversely proportional to the sides: the longest altitude $h_2$ is the one to the shortest side (length $2$), and the shortest altitude $h_4$ is the one to the longest side (length $4$).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(4,0), C=(11/8,sqrt(135)/8);
+pair Fc=(C.x,0);
+pair u=unit(C-A); pair Fb=A+dot(B-A,u)*u;
+draw(C--Fb,gray+dashed);
+draw(A--B--C--cycle,linewidth(1));
+draw(C--Fc,blue+linewidth(0.9)); draw(B--Fb,red+linewidth(0.9));
+draw(Fc+(0.12,0)--Fc+(0.12,0.12)--Fc+(0,0.12),blue);
+pair v=unit(B-Fb); draw(Fb+0.12*u*(-1)--Fb+0.12*(-u)+0.12*v--Fb+0.12*v,red);
+dot(A); dot(B); dot(C);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NW);
+label("$4$",(A+B)/2,S); label("$2$",(A+C)/2,NW); label("$3$",(B+C)/2,SW);
+label("$h_4$",(Fc+C)/2,W,blue+fontsize(8pt)); label("$h_2$",(B+Fb)/2,NE,red+fontsize(8pt));
+\end{asy}
+
+Their ratio is
+\[\dfrac{h_2}{h_4}=\dfrac{2K\div2}{2K\div4}=\dfrac{4}{2}=\boxed{2}.\]
+(The angle opposite the side $4$ is obtuse, since $4^2>2^2+3^2$, so the altitude to the side $2$ falls outside the triangle; this does not affect the argument.)

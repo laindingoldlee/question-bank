@@ -1,0 +1,11 @@
+The triangle inequality gives $d_P\ge\sqrt{8^2+12^2}=4\sqrt{13}$, with equality exactly when $P$ lies on the joining segment. Its equation is $3x+2y=24$. Positive integer solutions require even $x$ with $0<x<8$, giving
+\[
+(x,y)=(2,9),(4,6),(6,3).
+\]
+These attain the lower bound, so there are $\boxed3$ minimizing points.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(8,0),B=(0,12);draw((0,0)--(9,0),Arrow);draw((0,0)--(0,13),Arrow);draw(A--B,blue);for(int j=1;j<=3;++j){pair P=(2j,12-3j);dot(P,red+5bp);label("$( "+string(2j)+","+string(12-3j)+" )$",P,NE);}label("$(8,0)$",A,(0,-1));label("$(0,12)$",B,(-1,0));
+\end{asy}

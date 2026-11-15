@@ -1,0 +1,7 @@
+Center the cube at the origin, with $|x|,|y|,|z|\le\dfrac{1}{2}$. The eight cuts retain $\pm x\pm y\pm z\le\dfrac{1}{2}$, equivalent to $|x|+|y|+|z|\le\dfrac{1}{2}$. This is an octahedron with vertices at the face centers. Each of its eight coordinate-octant pieces is a right tetrahedron with perpendicular edges $\dfrac{1}{2}$ and volume $\dfrac{1}{6}(\dfrac{1}{2})^3=\dfrac{1}{48}$. Therefore the total is $\boxed{\dfrac{1}{6}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair pr(real x,real y,real z){return (x+.5*y,z+.3*y);}pair[] v={pr(.5,0,0),pr(0,.5,0),pr(-.5,0,0),pr(0,-.5,0)};pair U=pr(0,0,.5),D=pr(0,0,-.5);for(int j=0;j<4;++j){draw(v[j]--v[(j+1)%4],blue);draw(U--v[j],blue);draw(D--v[j],blue);}draw(U--D,dashed);label("$z=\dfrac{1}{2}$",U,(0,1));label("$z=-\dfrac{1}{2}$",D,(0,-1));label("$x=\dfrac{1}{2}$",v[0],(1,0));
+\end{asy}

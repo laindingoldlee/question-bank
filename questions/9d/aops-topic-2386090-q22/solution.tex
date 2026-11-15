@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2386090_100_posts
+% Stable identity: aops-topic-2386090-q22
+\begin{itemize}
+\item The denominator is at least $1$, so the function is defined for all $x$ and $0<y\le1$, with the maximum value $1$ at $x=0$.
+\item It is even ($y(-x)=y(x)$), so the graph is symmetric about the $y$-axis.
+\item For $x\ge0$, as $x$ increases $x^2+1$ increases, so $y$ decreases; $y=\dfrac12$ at $x=\pm1$.
+\item As $x\to\pm\infty$, $y\to0^+$: the $x$-axis is a horizontal asymptote, and the graph never meets it.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+real k=2.5;
+real f(real x){return k/(x^2+1);}
+draw((-4.3,0)--(4.4,0),Arrow(6)); draw((0,-0.3)--(0,3.4),Arrow(6));
+label("$x$",(4.4,0),E); label("$y$",(0,3.4),N);
+draw(graph(f,-4.2,4.2,300),blue+linewidth(0.9));
+dot((0,k)); dot((1,k/2)); dot((-1,k/2));
+label("$(0,1)$",(0,k),NE); label("$\left(1,\dfrac12\right)$",(1,k/2),NE); label("$\left(-1,\dfrac12\right)$",(-1,k/2),NW);
+\end{asy}
+
+The graph is a symmetric ``bell'' with peak $(0,1)$, lying above the $x$-axis.

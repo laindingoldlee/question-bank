@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2794206_geo_book_problem_question
+% Stable identity: aops-topic-2794206-q01
+The path must go over the rim. Unroll the outer surface and, reflected across the rim, the inner surface. Arnav must cover half the circumference horizontally, $\dfrac12\cdot2\pi\cdot2=2\pi$, and a vertical distance of $4$ up to the rim plus $4$ down inside, $8$ in total.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(12.57,0)--(12.57,8)--(0,8)--cycle);draw((0,8)--(12.57,8));draw((0,4)--(6.28,8)--(12.57,4),dashed);
+draw((0,8)--(12.57,8),linewidth(1));label("rim",(6.28,8),N);dot((0,4));dot((12.57,4));label("outside",(3,2));label("inside (reflected)",(9.5,2));draw((6.28,0)--(6.28,8),dotted);
+\end{asy}
+
+In the unrolled picture the shortest path is a straight segment, of length $\sqrt{8^2+(2\pi)^2}=\boxed{2\sqrt{16+\pi^2}}\approx9.3$ inches. (In the textbook problem "diametrically opposite" does mean the point at the same height on the opposite side.)

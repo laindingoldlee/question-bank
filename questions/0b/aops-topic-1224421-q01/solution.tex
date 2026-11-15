@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1224421_the_rope_problem
+% Stable identity: aops-topic-1224421-q01
+Put Bob at $(0,0)$, Alice at $(5,0)$, Carl at $(0,12)$; the rope is $\dfrac {x}{5}+\dfrac {y}{12}=1$. A point at distance $r$ in direction $\theta$ is $(r\cos\theta,r\sin\theta)$, which is on the rope when $r=\dfrac{60}{12\cos\theta+5\sin\theta}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(2.8cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),A=(5,0),C=(0,12); draw(A--B--C--cycle,linewidth(1));
+pair Dp=extension(B,B+dir(30),A,C), Ep=extension(B,B+dir(60),A,C);
+draw(B--Dp,blue); draw(B--Ep,red); draw((0.4,0)--(0.4,0.4)--(0,0.4));
+label("Bob",B,SW);label("Alice",A,SE);label("Carl",C,N);label("$D$",Dp,NE);label("$E$",Ep,NE);label("$5$",(2.5,0),S);label("$12$",(0,6),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item Derek, $\theta=30^\circ$: $r=\dfrac{60}{6\sqrt3+\dfrac{5}{2}}=\dfrac{120}{12\sqrt3+5}=\boxed{\dfrac{120\left(12\sqrt3-5\right)}{407}}\approx4.65$ m.
+\item Edith, $\theta=60^\circ$: $r=\dfrac{60}{6+\dfrac{5\sqrt3}{2}}=\dfrac{120}{12+5\sqrt3}=\boxed{\dfrac{40\left(12-5\sqrt3\right)}{23}}\approx5.81$ m.
+\end{itemize}

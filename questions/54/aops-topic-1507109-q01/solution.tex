@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h1507109_hard_geometry_probleb
+% Stable identity: aops-topic-1507109-q01
+Use position vectors (the letters denote the vectors of the points):
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6.5,-0.6),C=(7.4,4.2),D=(0.8,5);real a=1.5,bb=0.6;
+pair M=(A+a*B)/(1+a),P=(D+a*C)/(1+a),Q=(A+bb*D)/(1+bb),Nn=(B+bb*C)/(1+bb);
+pair L=extension(M,P,Q,Nn);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(M--P,blue);draw(Q--Nn,red);
+dot(M);dot(Nn);dot(P);dot(Q);dot(L);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$M$",M,S);label("$N$",Nn,E);label("$P$",P,N);label("$Q$",Q,W);label("$L$",L,dir(60));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+A point dividing $XY$ with $XZ:ZY=t:1$ is $Z=\dfrac{X+tY}{1+t}$. So
+\[
+M=\dfrac{A+aB}{1+a},\quad P=\dfrac{D+aC}{1+a},\quad Q=\dfrac{A+bD}{1+b},\quad N=\dfrac{B+bC}{1+b}.
+\]
+Consider the point
+\[
+X=\dfrac{A+aB+bD+abC}{(1+a)(1+b)} .
+\]
+Grouping the terms in two ways:
+\[
+X=\dfrac{(A+aB)+b(D+aC)}{(1+a)(1+b)}=\dfrac{M+bP}{1+b},\qquad
+X=\dfrac{(A+bD)+a(B+bC)}{(1+a)(1+b)}=\dfrac{Q+aN}{1+a}.
+\]
+The first form shows that $X$ lies on segment $MP$ with $MX:XP=b:1$; the second that $X$ lies on segment $QN$ with $QX:XN=a:1$. Two segments that are not on one line meet in at most one point, so $X=L$, and
+\[
+\dfrac{LM}{LP}=b,\qquad\dfrac{LQ}{LN}=a .\qquad\blacksquare
+\]
+(The argument does not even need $ABCD$ to be convex or planar.)

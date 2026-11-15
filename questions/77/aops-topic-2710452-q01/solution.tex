@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2710452_geometry_medians_problem_i_made
+% Stable identity: aops-topic-2710452-q01
+Let the medians be $AD=12$ and $BE=15$, meeting at the centroid $G$. Then $AG=\dfrac23\cdot12=8$ and $BG=\dfrac23\cdot15=10$. The centroid splits the triangle into three triangles $AGB$, $BGC$, $CGA$ of equal area, so
+\[[ABC]=3[AGB]=3\cdot\dfrac12\cdot8\cdot10\sin\angle AGB\le120.\]
+Equality holds when the medians are perpendicular, e.g. $G=(0,0)$, $A=(-8,0)$, $B=(0,-10)$, $C=(8,10)$: then $D=(4,0)$ and $E=(0,5)$, so $AD=12$, $BE=15$, and the area is $120$. The maximum is $\boxed{120}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair G=(0,0),A=(-8,0),B=(0,-10),C=(8,10),D=(B+C)/2,Ep=(A+C)/2;
+draw(A--B--C--cycle,linewidth(0.8));draw(A--D);draw(B--Ep);
+draw((0.6,0)--(0.6,0.6)--(0,0.6));dot(G);
+label("$A$",A,W);label("$B$",B,S);label("$C$",C,NE);label("$D$",D,E);label("$E$",Ep,NW);label("$G$",G,SW);
+label("$8$",(A+G)/2,S,fontsize(8pt));label("$10$",(B+G)/2,E,fontsize(8pt));
+\end{asy}

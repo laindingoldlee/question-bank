@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1510349_distance
+% Stable identity: aops-topic-1510349-q01
+Two lattice points are $\sqrt{218}$ apart exactly when their coordinate differences $p,q$ satisfy $p^2+q^2=218$ (distance formula). Try $|p|=0,1,\dots,14$ (since $15^2>218$):
+\[
+218-|p|^2\in\{218,217,214,209,202,193,182,169,154,137,118,97,74,49,22\}.
+\]
+The only perfect squares in this list are $169=13^2$ (at $|p|=7$) and $49=7^2$ (at $|p|=13$). So $\{|p|,|q|\}=\{7,13\}$, and every such pair of lattice points differs by $(\pm13,\pm7)$ or $(\pm7,\pm13)$.
+
+For example, $\boxed{(0,0)\text{ and }(13,7)}$:
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=13;++i) draw((i,0)--(i,7),gray(0.88));
+for(int j=0;j<=7;++j) draw((0,j)--(13,j),gray(0.88));
+pair O=(0,0),P=(13,7),F=(13,0);
+draw(O--F,dashed);draw(F--P,dashed);
+draw(F+(-0.4,0)--F+(-0.4,0.4)--F+(0,0.4));
+draw(O--P,blue+linewidth(1.2));dot(O);dot(P);
+label("$(0,0)$",O,SW);label("$(13,7)$",P,NE);
+label("$13$",(6.5,0),S);label("$7$",(13,3.5),E);
+label(rotate(degrees(P-O))*"$\sqrt{218}$",(6.5,3.5)+1.25*dir(degrees(P-O)+90),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Indeed $\sqrt{13^2+7^2}=\sqrt{169+49}=\sqrt{218}$.

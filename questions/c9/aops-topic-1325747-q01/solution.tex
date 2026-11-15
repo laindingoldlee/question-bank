@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1325747_simple_and_classic_construction_problem
+% Stable identity: aops-topic-1325747-q01
+\textbf{Construction} (general case; the special case is in the remark).
+\begin{enumerate}
+\item Draw any circle through $A$ and $B$ that cuts $\omega$ at two points $C$ and $D$.
+\item Let lines $AB$ and $CD$ meet at $P$.
+\item Construct a tangent from $P$ to $\omega$, touching it at $T$ (draw the circle on diameter $PO$, where $O$ is the centre of $\omega$, and intersect it with $\omega$).
+\item The circle through $A$, $B$, $T$ is the required circle. (The second tangent from $P$ gives a second solution.)
+\end{enumerate}
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0); real R=2; draw(circle(O,R),linewidth(0.9));
+pair A=(-0.6,3.2),B=(1.6,4.4); dot(A);dot(B); label("$A$",A,W); label("$B$",B,N);
+// auxiliary circle through A,B meeting the given circle
+pair K=(1.8,2.6); real rk=abs(K-A); draw(circle(K,rk),gray+dashed);
+pair[] I=intersectionpoints(circle(O,R),circle(K,rk)); pair C=I[0],D=I[1];
+dot(C);dot(D); label("$C$",C,SE); label("$D$",D,SW);
+pair P=extension(A,B,C,D); dot(P,red); label("$P$",P,NW,red);
+draw(P--B,gray); draw(P--C,gray); draw(P--D,gray);
+real t=sqrt(abs(P)^2-R^2); pair T=intersectionpoints(circle(O,R),circle(P,t))[0];
+draw(P--T,red); dot(T); label("$T$",T,S);
+// solution circle through A,B,T
+pair m1=(A+B)/2, m2=(A+T)/2; pair Z=extension(m1,m1+rotate(90)*(B-A),m2,m2+rotate(90)*(T-A)); draw(circle(Z,abs(Z-A)),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Proof.} By the power of the point $P$ with respect to the auxiliary circle, $PA\cdot PB=PC\cdot PD$, and with respect to $\omega$, $PC\cdot PD=PT^2$. So $PT^2=PA\cdot PB$, which means (by the converse of the tangent-secant theorem) that line $PT$ is tangent to the circle $ABT$ at $T$. Since $PT$ is also tangent to $\omega$ at $T$, the two circles share the tangent line at the common point $T$, so they are tangent there. ($P$ is the radical centre of $\omega$, the auxiliary circle and the required circle: all circles through $A$ and $B$ have radical axis $AB$ with each other.)
+
+\textbf{Remark.} If $CD\parallel AB$ (which happens when $AB$ is symmetric about a diameter of $\omega$), there is no point $P$; then the tangent points are where the perpendicular bisector of $AB$ meets $\omega$.

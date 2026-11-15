@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2437133_mathbee2020s_300_post
+% Stable identity: aops-topic-2437133-q02
+The side of the square is $\sqrt{961}=31$. The diagonal $AC$ is a diameter of the circle, since the inscribed angle $ABC$ is a right angle (or by symmetry about the centre). By the Pythagorean theorem $AC=31\sqrt2$, so the radius is $\dfrac{31\sqrt2}{2}$ and the circle has area
+\[\pi\left(\dfrac{31\sqrt2}{2}\right)^2=\dfrac{961\pi}{2}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real s=31; real R=s/sqrt(2);
+pair O=(0,0),A=(-s/2,s/2),B=(s/2,s/2),C=(s/2,-s/2),D=(-s/2,-s/2);
+draw(circle(O,R),blue+linewidth(0.9));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,red+dashed);
+dot(O); label("$O$",O,NE);
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);
+label("$31$",(A+B)/2,S); label("$31\sqrt2$",(O+C)/2+(2,3),red+fontsize(9pt));
+\end{asy}
+
+The ratio of the areas is
+\[\dfrac{961}{\dfrac{961\pi}{2}}=\boxed{\dfrac{2}{\pi}}.\]

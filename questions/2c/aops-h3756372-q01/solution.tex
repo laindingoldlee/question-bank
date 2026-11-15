@@ -1,0 +1,17 @@
+Take $E=(0,0)$, $A=(-12,0)$, $B=(12,0)$, and $C=(u,v)$ with $v>0$. Then $u^2+v^2=729$ and $D=\left(\dfrac{u+12}{2},\dfrac{v}{2}\right)$. The median condition gives
+\[
+\left(\dfrac{u}{2}+18\right)^2+\dfrac{v^2}{4}=324,
+\]
+so $u=-\dfrac{81}{8}$ and $v=\dfrac{27\sqrt{55}}{8}$.
+
+Intersecting chords through $E$ give $EC\cdot EF=EA\cdot EB=144$. Since $EC=27$, $EF=\dfrac{16}{3}$; $F$ lies on the opposite ray from $C$. Hence the height of $F$ below $AB$ is
+\[
+\dfrac{EF}{EC}v=\dfrac{16}{81}\cdot\dfrac{27\sqrt{55}}{8}=\dfrac{2\sqrt{55}}{3}.
+\]
+Thus $[AFB]=\dfrac{1}{2}\cdot24\cdot\dfrac{2\sqrt{55}}{3}=\boxed{8\sqrt{55}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(-12,0),B=(12,0),E=(0,0),C=(-81./8,27*sqrt(55)/8),D=(B+C)/2,F=-16*C/81;real oy=(abs(C)^2-144)/(2*C.y);pair O=(0,oy);draw(circle(O,abs(A-O)),gray);draw(A--B--C--cycle);draw(A--D,dashed);draw(C--F,blue);draw(A--F--B,red);label("$A$",A,(-1,0));label("$B$",B,(1,0));label("$C$",C,(-1,1));label("$D$",D,(1,1));label("$E$",E,(0,-1));label("$F$",F,(1,-1));
+\end{asy}

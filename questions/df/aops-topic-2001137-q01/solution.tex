@@ -1,0 +1,44 @@
+% Source: https://artofproblemsolving.com/community/c3h2001137_area_of_a_cone
+% Stable identity: aops-topic-2001137-q01
+When the sector is rolled up, its radius becomes the slant height of the cone and its arc becomes the circumference of the base.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real r=2.2, a=200;
+pair O=(0,0);
+filldraw(O--arc(O,r,90-a/2,90+a/2)--cycle,paleblue,black);
+draw(arc(O,0.55,90-a/2,90+a/2));
+label("$\theta$",(0,0.75));
+label("$r$",(r*dir(90+a/2))/2,SW);
+label("sector",(0,-1.1));
+real rb=r*a/360, h=sqrt(r^2-rb^2);
+pair A=(5,h-0.4), c=(5,-0.4);
+draw(shift(c)*xscale(rb)*yscale(0.4)*arc((0,0),1,180,360));
+draw(shift(c)*xscale(rb)*yscale(0.4)*arc((0,0),1,0,180),dashed);
+draw(A--(c+(-rb,0))); draw(A--(c+(rb,0)));
+draw(c--(c+(rb,0)),dashed); dot(c);
+pair d1=c+(0,-0.4*rb-0.3), d2=d1+(rb,0);
+draw(d1--d2,Arrows(TeXHead)); draw(c--d1,dotted); draw((c+(rb,0))--d2,dotted); label("$\rho$",(d1+d2)/2,S);
+label("$r$",(A+c+(rb,0))/2,E);
+label("cone",(5,-2.25));
+draw((2.6,0.9)--(3.6,0.9),Arrow);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(a)} The arc of the sector has length $\dfrac{\theta}{360}\cdot2\pi r$. It equals the base circumference $2\pi\rho$, so
+\[
+\rho=\boxed{\dfrac{\theta r}{360}}.
+\]
+\textbf{(b)} Rolling does not stretch the paper, so the lateral surface has the area of the sector:
+\[
+\boxed{\dfrac{\theta}{360}\,\pi r^2}.
+\]
+This agrees with the usual formula $\pi\rho\ell$ with slant height $\ell=r$: $\pi\cdot\dfrac{\theta r}{360}\cdot r=\dfrac{\theta}{360}\pi r^2$.
+
+\textbf{(c)} Adding the base of area $\pi\rho^2$ gives
+\[
+\boxed{\dfrac{\theta}{360}\,\pi r^2+\pi\left(\dfrac{\theta r}{360}\right)^2}.
+\]
+For example, a semicircle ($\theta=180$) of radius $r$ gives a cone with base radius $\dfrac {r}{2}$, lateral area $\dfrac{\pi r^2}{2}$ and total area $\dfrac{3\pi r^2}{4}$.

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h15248_mathcounts_contest_1_sprint_questions
+% Stable identity: aops-topic-15248-q08
+Let the square have side $2$. By the converse of Thales' theorem, $\angle MSN$ is a right angle exactly when $S$ is on the circle with diameter $MN$, obtuse when $S$ is inside that circle, and acute when $S$ is outside it. Inside the square, the points with an obtuse (or right) angle form the half-disc on $MN$ (shaded; $S'$ is such a point), of area $\dfrac{1}{2}\pi\cdot1^2=\dfrac{\pi}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair M=(0,0),N0=(4,0),P=(4,4),Q=(0,4);
+fill(arc((2,0),2,0,180)--cycle,rgb(1,0.85,0.85));
+draw(M--N0--P--Q--cycle,linewidth(0.8)); draw(arc((2,0),2,0,180),red);
+pair S1=(2.9,2.9), S2=(1.4,1.0);
+draw(M--S1--N0,blue); draw(M--S2--N0,deepgreen);
+dot(S1,blue); dot(S2,deepgreen); label("$S$",S1,N,blue); label("$S'$",S2,N,deepgreen);
+label("$M$",M,SW); label("$N$",N0,SE); label("$P$",P,NE); label("$Q$",Q,NW);
+\end{asy}
+
+So the probability that the angle is acute is
+\[1-\dfrac{\pi}{2}\cdot\dfrac{1}{4}=1-\dfrac{\pi}{8}\approx1-0.3927=0.6073,\]
+which is $\boxed{0.61}$ to the nearest hundredth.

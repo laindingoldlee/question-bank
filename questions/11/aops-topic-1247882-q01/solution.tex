@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1247882_interesting_geometry_problem
+% Stable identity: aops-topic-1247882-q01
+The radius of the sphere is $25$. The circle's radius $r$ satisfies $r^2+14^2=25^2$, so $r^2=625-196=429$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),25)); draw((-25,0)--(25,0),gray);
+draw((-sqrt(429),14)--(sqrt(429),14),blue+linewidth(1)); draw((0,0)--(0,14),dashed); draw((0,0)--(sqrt(429),14),red);
+label("$14$",(0,7),W); label("$25$",(sqrt(429)/2,7),SE); label("$r$",(sqrt(429)/2,14),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The area is $\pi r^2=\boxed{429\pi}\approx1347.7$ square centimetres.

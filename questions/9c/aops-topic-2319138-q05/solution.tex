@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2319138_200th_post_celebration_geometry
+% Stable identity: aops-topic-2319138-q05
+The side $JK$ is horizontal, so $JK=1-(-4)=5$, and likewise $ML=2-(-3)=5$. For $KL$, the horizontal change is $1$ and the vertical change is $4$, so by the distance formula
+\[KL=\sqrt{1^2+4^2}=\sqrt{17},\]
+and likewise $JM=\sqrt{(-3+4)^2+(-2-2)^2}=\sqrt{17}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair J=(-4,2), K=(1,2), L=(2,-2), M=(-3,-2);
+for(int i=-4;i<=2;++i) draw((i,-2.5)--(i,2.5),gray(0.88));
+for(int j=-2;j<=2;++j) draw((-4.5,j)--(2.5,j),gray(0.88));
+draw((-4.5,0)--(2.7,0),Arrow(5)); draw((0,-2.5)--(0,2.8),Arrow(5));
+draw(J--K--L--M--cycle,linewidth(0.9));
+draw(K--(2,2)--L,dashed+blue);
+dot(J); dot(K); dot(L); dot(M);
+label("$J(-4,2)$",J,NW); label("$K(1,2)$",K+(0.15,0.1),N,Fill(white)); label("$L(2,-2)$",L,SE); label("$M(-3,-2)$",M,SW);
+label("$5$",(-2,2),N); label("$\sqrt{17}$",(1.62,-1.0),W);
+label("$1$",(1.5,2),S,blue); label("$4$",(2,0.9),E,blue);
+\end{asy}
+
+The perimeter is
+\[2\cdot5+2\sqrt{17}=\boxed{10+2\sqrt{17}}\approx\boxed{18.2}.\]

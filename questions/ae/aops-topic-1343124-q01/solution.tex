@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1343124_easy_problem
+% Stable identity: aops-topic-1343124-q01
+The longest side $a+2$ is the hypotenuse.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.6cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(0,0),B=(4,0),C=(0,3);
+draw(A--B--C--cycle,linewidth(0.9)); draw(ra(A,B-A,C-A,0.35));
+label("$a+1$",(A+B)/2,S); label("$a$",(A+C)/2,W); label("$a+2$",(B+C)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the Pythagorean theorem,
+\[
+a^2+(a+1)^2=(a+2)^2\iff 2a^2+2a+1=a^2+4a+4\iff a^2-2a-3=0\iff (a-3)(a+1)=0 .
+\]
+Since $a>0$, $a=\boxed{3}$ (the $3$-$4$-$5$ triangle). This is in fact the only value.

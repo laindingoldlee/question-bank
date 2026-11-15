@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1761521_an_aime_problems
+% Stable identity: aops-topic-1761521-q01
+Factor: $n^3+n^2+n+1=(n+1)(n^2+1)$. Both factors divide $10^n$, so each is of the form $2^i5^j$. Note $n^2+1$ is never divisible by $4$.
+
+\textbf{If $5\mid n+1$,} then $n\equiv-1\pmod5$ and $n^2+1\equiv2\pmod5$, so $n^2+1$ is a power of $2$ not divisible by $4$: $n^2+1\le2$, $n=1$, but $5\nmid2$. So $n+1$ is a power of $2$.
+
+\textbf{$n$ even} would make $n+1$ an odd power of $2$, i.e.\ $n+1=1$; impossible. So $n$ is odd, $n+1=2^a$ with $a\ge1$, and $n^2+1\equiv2\pmod4$ gives $n^2+1=2\cdot5^d$. With $n=2^a-1$:
+\[
+2^{2a}-2^{a+1}+2=2\cdot5^d\iff 2^{2a-1}-2^a+1=5^d .
+\]
+\begin{itemize}
+\item $a=1$: $n=1$, and $4\nmid10$. No.
+\item $a=2$: $n=3$, $5^d=5$; indeed $4\cdot10=40\mid1000$. Yes.
+\item $a\ge3$: the left side is $\equiv1\pmod8$, so $5^d\equiv1\pmod8$ and $d=2e$ is even, $e\ge1$. Then $25^e-1=2^a\left(2^{a-1}-1\right)$, so $2^a$ is the exact power of $2$ in $25^e-1$. Writing $e=2^sk$ with $k$ odd, $25^e-1=(25^{k}-1)(25^k+1)(25^{2k}+1)\cdots(25^{2^{s-1}k}+1)$, where $25^k-1=24(25^{k-1}+\cdots+1)$ contains exactly $2^3$ (the sum has $k$ odd terms) and each other factor is $\equiv2\pmod4$. Hence $a=3+s$ and $2^a=8\cdot2^s\le8e$. Then $25^e-1<2^{2a}\le64e^2$, which holds for $e=1$ ($24<64$) but fails for $e\ge2$ ($25^e$ grows much faster: $624>256$, and so on). So $e=1$, $d=2$, $a=3$, $n=7$: $2^5-2^3+1=25$ and $8\cdot50=400\mid10^7$. Yes.
+\end{itemize}
+The answers are $\boxed{n=3\text{ and }n=7}$.

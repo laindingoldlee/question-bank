@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2237450_help_with_geometry_problem
+% Stable identity: aops-topic-2237450-q01
+\textbf{Mass points.} Put masses at the vertices so that $D$ and $F$ are balance points: $BD:DC=1:3$ needs $m_B:m_C=3:1$, and $AF:FB=1:4$ needs $m_A:m_B=4:1$. So take $m_A=12$, $m_B=3$, $m_C=1$. Then $D$ carries mass $m_B+m_C=4$, and $G$ divides $AD$ in the ratio
+\[AG:GD=m_D:m_A=4:12=1:3 .\]
+(The same ratio follows from Menelaus' theorem for triangle $ABD$ and the line $F$--$G$--$C$: $\dfrac{AF}{FB}\cdot\dfrac{BC}{CD}\cdot\dfrac{DG}{GA}=1$, i.e. $\dfrac{1}{4}\cdot\dfrac{4}{3}\cdot\dfrac{DG}{GA}=1$, so $\dfrac{DG}{GA}=3$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(2,6.5), B=(0,0), C=(8,0);
+pair D=B+(C-B)/4, F=A+(B-A)/5;
+pair G=A+(D-A)/4;
+pair Ee=extension(B,G,A,C);
+fill(G--D--C--cycle,lightgray);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D); draw(B--Ee); draw(C--F);
+dot(G);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S); label("$E$",Ee,NE); label("$F$",F,W); label("$G$",G,2*dir(14));
+label("$1$",(B+D)/2,S,fontsize(8pt)); label("$3$",(D+C)/2,S,fontsize(8pt));
+\end{asy}
+
+\textbf{Areas.} Triangles $ADC$ and $ABC$ have the same height from $A$, so $[ADC]=\dfrac{DC}{BC}\cdot144=\dfrac{3}{4}\cdot144=108$. Triangles $GDC$ and $ADC$ have the same base $DC$, and the height of $G$ is $\dfrac{GD}{AD}=\dfrac{3}{4}$ of the height of $A$. Hence
+\[[GDC]=\dfrac{3}{4}\cdot108=\boxed{81}.\]

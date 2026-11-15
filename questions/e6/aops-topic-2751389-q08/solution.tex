@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2751389_800th_post_1_year_aops_anniversary_and_maff_problems
+% Stable identity: aops-topic-2751389-q08
+Since $T$ lies on both circles, $AT=AB=4$ and $CT=CA=4\sqrt2$. So triangle $CAT$ is isosceles with $CA=CT=4\sqrt2$ and base $AT=4$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(4,4),D=(0,4);
+draw(A--B--C--D--cycle,linewidth(0.8));
+draw(circle(A,4),gray);draw(circle(C,4*sqrt(2)),gray);
+pair[] X=intersectionpoints(circle(A,4),circle(C,4*sqrt(2)));
+pair T=(X[0].y<0)?X[0]:X[1];
+draw(C--A--T--cycle,linewidth(1));dot(T);
+label("$A$",A,W);label("$B$",B,NE);label("$C$",C,NE);label("$D$",D,NW);label("$T$",T,SE);
+\end{asy}
+
+The height from $C$ to $AT$ is $\sqrt{32-4}=2\sqrt7$, so $[CAT]=\dfrac12\cdot4\cdot2\sqrt7=4\sqrt7$. The ratio is $\dfrac{4\sqrt7}{16}=\dfrac{\sqrt7}{4}$, so $a+b=7+4=\boxed{11}$.

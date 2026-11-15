@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2496946_mathcounts_problem_8_target_round_2013_state_competition
+% Stable identity: aops-topic-2496946-q01
+\textbf{(a)} By the Pythagorean theorem, $AB=\sqrt{24^2+7^2}=25$. The right triangles $ADC$ and $ACB$ share the angle at $A$, so they are similar, and
+\[\dfrac{CD}{BC}=\dfrac{AC}{AB}\implies CD=\dfrac{7\cdot24}{25}=\dfrac{168}{25},\qquad \dfrac{AD}{AC}=\dfrac{AC}{AB}\implies AD=\dfrac{24^2}{25}=\dfrac{576}{25}.\]
+Since $D$ lies on $AB$, the bisector of angle $BAC$ is the bisector of angle $DAC$ in triangle $ADC$, and it meets the opposite side $CD$ at $E$. By the angle bisector theorem,
+\[\dfrac{DE}{EC}=\dfrac{AD}{AC}=\dfrac{576}{25\cdot24}=\dfrac{24}{25},\qquad DE=\dfrac{24}{49}\,CD=\dfrac{24}{49}\cdot\dfrac{168}{25}=\boxed{\dfrac{576}{175}}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), A=(24,0), B=(0,7);
+pair ft(pair P,pair U,pair V){return U+dot(P-U,unit(V-U))*unit(V-U);}
+pair D=ft(C,A,B);
+pair Ep=D+(24/49)*(C-D);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(C--D,blue); draw(A--Ep,red);
+real s=0.8;
+draw((s,0)--(s,s)--(0,s));
+draw(D+s*unit(A-D)--D+s*unit(A-D)+s*unit(C-D)--D+s*unit(C-D));
+draw(arc(A,5,degrees(Ep-A),180),red); draw(arc(A,5.8,degrees(D-A),degrees(Ep-A)),red);
+dot(D);dot(Ep);
+label("$C$",C,SW);label("$A$",A,SE);label("$B$",B,NW);label("$D$",D,NE);label("$E$",Ep,dir(-50));
+label("$24$",(A+C)/2,S); label("$7$",(B+C)/2,W);
+\end{asy}
+
+\textbf{(b)} The Pythagorean theorem gives $BD^2=7^2-\left(\dfrac{168}{25}\right)^2=3.8416$, so $BD=\sqrt{3.8416}=1.96$: the student forgot the square root. Then $AD=25-1.96=23.04=\dfrac{576}{25}$, and the rest of his method gives the correct $\dfrac{576}{175}$. (Indeed, with his value $AD=21.1584$ the bisector theorem gives $DE=\dfrac{21.1584}{21.1584+24}\cdot\dfrac{168}{25}=\dfrac{551}{175}$, exactly his answer.)

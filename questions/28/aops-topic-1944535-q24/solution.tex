@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1944535_mock_amc_8b_final_five
+% Stable identity: aops-topic-1944535-q24
+Let $E=2018^{F}$ with $F=2017^{2016}$, so we want $2019^E \bmod 1000$. Work modulo $8$ and $125$.
+
+\emph{Modulo $8$.} $2019\equiv3$ and $E$ is even, so $2019^E\equiv\left(3^2\right)^{\dfrac {E}{2}}\equiv1\pmod 8$.
+
+\emph{Modulo $125$.} Since $\gcd(2019,125)=1$ and $\varphi(125)=100$, we need $E\bmod100$. As $F\ge2$, $E\equiv0\pmod4$. Modulo $25$: $2018\equiv18$ and $\varphi(25)=20$, so we need $F\bmod20$. Now $2017\equiv17\pmod{20}$ and $17^2=289\equiv9$, $17^4\equiv81\equiv1\pmod{20}$; since $4\mid2016$, $F\equiv1\pmod{20}$. So $E\equiv18\pmod{25}$, and with $E\equiv0\pmod4$ this gives $E\equiv68\pmod{100}$.
+
+Now $2019\equiv19\pmod{125}$ and
+\[
+19^2\equiv111,\quad 19^4\equiv71,\quad 19^8\equiv41,\quad 19^{16}\equiv56,\quad 19^{32}\equiv11,\quad 19^{64}\equiv121\equiv-4\pmod{125},
+\]
+so $19^{68}=19^{64}\cdot19^4\equiv-4\cdot71=-284\equiv91\pmod{125}$.
+
+\emph{Combine.} We need $N\equiv91\pmod{125}$ and $N\equiv1\pmod 8$. Writing $N=91+125k$: $3+5k\equiv1\pmod8$ gives $k\equiv6\pmod 8$, so $N=91+750=841$. The remainder is $\boxed{841}$, choice $\textbf{(E)}$.

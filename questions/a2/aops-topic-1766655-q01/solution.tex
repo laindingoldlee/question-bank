@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1766655_math_problems
+% Stable identity: aops-topic-1766655-q01
+\textbf{Vertices and edges.} Each vertex lies on exactly one octagon, so there are $6\cdot8=48$ vertices. Three faces, hence three edges, meet at each vertex, so there are $\dfrac{48\cdot3}{2}=72$ edges. (Check with Euler's formula: $48-72+26=2$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair V=(0,0);
+path poly(pair P,real a,int n){ path p=P; pair Q=P; real t=a; for(int k=0;k<n-1;++k){ Q=Q+dir(t); p=p--Q; t+=360/n; } return p--cycle; }
+filldraw(poly(V,0,4),rgb(0.85,0.92,1),linewidth(0.9));
+filldraw(poly(V,90,6),rgb(1,0.93,0.8),linewidth(0.9));
+filldraw(poly(V,210,8),rgb(0.88,0.97,0.85),linewidth(0.9));
+dot(V);
+pair ctr(real a,int n){ real al=180-360/n; return V+1/(2*Sin(180/n))*dir(a+al/2); }
+label("square",ctr(0,4),fontsize(8pt));label("hexagon",ctr(90,6),fontsize(8pt));label("octagon",ctr(210,8),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Segments.} The $48$ vertices determine $\dbinom{48}{2}=1128$ segments. Since the polyhedron is convex, a segment lies on the surface if its endpoints lie on a common face, and otherwise it passes through the interior. Two vertices on a common face are joined by an edge or by a diagonal of that face, and two vertices not joined by an edge share at most one face, so nothing is counted twice. The face diagonals number
+\[
+12\cdot2+8\cdot\dfrac{6\cdot3}{2}+6\cdot\dfrac{8\cdot5}{2}=24+72+120=216 .
+\]
+So the number of interior segments is $1128-72-216=\boxed{840}$.

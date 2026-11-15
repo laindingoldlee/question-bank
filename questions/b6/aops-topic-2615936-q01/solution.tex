@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2615936_coordinate_plane_problem_20
+% Stable identity: aops-topic-2615936-q01
+The first two conditions say $y\le2x-14$ and $y\ge\dfrac x2+7$. Together they give $\dfrac x2+7\le2x-14$, i.e. $x\ge14$, and similarly $y\ge14$. So the region lies in the square $14\le x,y\le n$ of side $d=n-14$.
+
+From this square remove the points above $y=2x-14$: a right triangle with vertices $(14,14)$, $(14,n)$, $\left(\dfrac{n+14}{2},n\right)$ and legs $d$ and $\dfrac d2$. Also remove the points below $y=\dfrac x2+7$: by symmetry another such triangle. The shaded area is
+\[d^2-2\cdot\dfrac12\cdot d\cdot\dfrac d2=\dfrac{d^2}{2}.\]
+For $n=15,\dots,24$, $d=1,\dots,10$, so the total is
+\[\dfrac{1^2+2^2+\cdots+10^2}{2}=\dfrac{385}{2}=\boxed{192.5}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real n=24;
+draw((0,0)--(27,0),Arrow(TeXHead)); draw((0,0)--(0,27),Arrow(TeXHead));
+label("$x$",(27,0),E); label("$y$",(0,27),N);
+draw((0,7)--(26,20),gray); draw((7,0)--(20.5,27),gray);
+fill((14,14)--(n,n/2+7)--(n,n)--(n/2+7,n)--cycle,lightgray);
+draw((14,14)--(n,n/2+7)--(n,n)--(n/2+7,n)--cycle,linewidth(0.8));
+draw((14,14)--(n,14)--(n,n/2+7),dashed); draw((14,14)--(14,n)--(n/2+7,n),dashed);
+draw((n,0)--(n,14),dotted); draw((0,n)--(14,n),dotted);
+dot((14,14)); label("$(14,14)$",(14,14),SE,fontsize(8pt));
+label("$n$",(n,0),S,fontsize(8pt)); label("$n$",(0,n),W,fontsize(8pt));
+label("$y=\dfrac x2+7$",(25,19.5),SE,fontsize(8pt)); label("$y=2x-14$",(20.5,27),E,fontsize(8pt));
+\end{asy}
+
+The sketch shows the case $n=24$: the shaded kite is the square minus the two dashed triangles.

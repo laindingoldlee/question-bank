@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1423528_teach_me_please_how_to_solve_these_kinds_of_problems
+% Stable identity: aops-topic-1423528-q01
+We need positive integers $a\le b$ with $a^2+b^2=625$. Since $2a^2\le625$, $a\le17$. Checking $a=1,\dots,17$, the value $625-a^2$ is a perfect square only for
+\[
+a=7:\ 625-49=576=24^2,\qquad a=15:\ 625-225=400=20^2 .
+\]
+(These are the triple $7,24,25$ and the triple $15,20,25=5\cdot(3,4,5)$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+void tri(pair o,real a,real b,string sa,string sb){
+  pair A=o,B=o+(a,0),C=o+(0,b);
+  draw(A--B--C--cycle,linewidth(0.9));
+  draw(o+(0,1.2)--o+(1.2,1.2)--o+(1.2,0));
+  label(sa,(A+B)/2,S);label(sb,(A+C)/2,W);label("$25$",(B+C)/2,NE);
+}
+tri((0,0),24,7,"$24$","$7$");
+tri((31,0),20,15,"$20$","$15$");
+label("area $84$",(12,-4.5));label("area $150$",(41,-4.5));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The areas are $\dfrac{7\cdot24}{2}=84$ and $\dfrac{15\cdot20}{2}=150$. The smallest possible area is $\boxed{84}$ square metres.

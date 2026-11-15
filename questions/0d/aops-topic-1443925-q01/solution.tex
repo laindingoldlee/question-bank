@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1443925_linearity
+% Stable identity: aops-topic-1443925-q01
+The primes from $1$ to $20$ are $2,3,5,7,11,13,17,19$: there are $8$ of them, so each roll ends the game with probability $p=\dfrac{8}{20}=\dfrac{2}{5}$ (not $\dfrac{3}{10}$).
+
+The game lasts exactly $n$ rolls with probability $(1-p)^{n-1}p$, so the expected number of rolls is $E=\displaystyle\sum_{n\ge1}n(1-p)^{n-1}p$. To sum it, use the first roll instead: with probability $p$ the game ends after one roll, and otherwise we have used one roll and are back at the start. So
+\[
+E=1+(1-p)E,\qquad pE=1,\qquad E=\dfrac{1}{p}=\boxed{\dfrac{5}{2}}.
+\]
+(Directly: with $q=1-p$, $\displaystyle\sum_{n\ge1}nq^{n-1}=\dfrac{1}{(1-q)^2}$, obtained by adding the geometric series $\displaystyle\sum_{n\ge k}q^{n-1}=\dfrac{q^{k-1}}{1-q}$ over $k\ge1$; so $E=\dfrac{p}{p^2}=\dfrac{1}{p}$.)

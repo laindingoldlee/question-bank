@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2023793_calculating_the_lengthradius_of_an_inscribed_object_within_another
+% Stable identity: aops-topic-2023793-q01
+Cut the cone and sphere by a plane through the axis. The cone becomes an isosceles triangle with base $24$ and height $24$, whose equal sides have length $\sqrt{12^2+24^2}=12\sqrt5$. The sphere becomes the incircle of this triangle, with the same radius $r$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair Ap=(0,24), L=(-12,0), Rr=(12,0);
+real r=6*sqrt(5)-6;
+pair I=(0,r);
+draw(L--Ap--Rr--cycle, linewidth(0.9));
+draw(circle(I,r), blue+linewidth(0.8));
+draw((0,0)--Ap, dashed);
+pair T=I+r*unit(rotate(90)*(Ap-Rr));
+draw(I--T, blue); draw(I--(0,0), blue);
+dot(I); dot(T);
+label("$12$", (6,0), S); label("$24$", (0,19), W); label("$12\sqrt5$", (Ap+Rr)/2, NE);
+label("$r$", (I+T)/2, N, blue); label("$r$", (0,r/2), E, blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For a triangle, the inradius is the area divided by the semiperimeter:
+\[
+r=\dfrac{\dfrac{1}{2}\cdot24\cdot24}{\dfrac{24+2\cdot12\sqrt5}{2}}=\dfrac{288}{12+12\sqrt5}=\dfrac{24}{1+\sqrt5}=\dfrac{24(\sqrt5-1)}{4}=6\sqrt5-6.
+\]
+So $a=6$, $c=5$ and $a+c=\boxed{11}$.

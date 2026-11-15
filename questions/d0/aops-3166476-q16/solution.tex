@@ -1,0 +1,6 @@
+Encode each row by a three-bit mask with no adjacent 1s: $000,001,010,100,101$. Consecutive row masks are compatible exactly when their bitwise intersection is zero. Start with count one for each first-row mask, and repeatedly replace $f(v)$ by $\sum_{u\cap v=\varnothing}f(u)$. The second-row counts in the displayed order are $(5,3,4,3,2)$ and the third-row counts are $(17,12,13,12,9)$. Their sum is $\boxed{63}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+for(int r=0;r<3;++r)for(int c=0;c<3;++c){path p=(c,r)--(c+1,r)--(c+1,r+1)--(c,r+1)--cycle;if((r+c)%2==0)fill(p,gray);draw(p);}label("one valid colouring",(1.5,-.6));
+\end{asy}
+

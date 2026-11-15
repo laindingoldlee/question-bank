@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h3305168_hexagons_and_circles
+% Stable identity: aops-topic-3305168-q01
+If the outer circumradius is $R$, its apothem is $\dfrac{\sqrt3}{2}R$, the inner hexagon's circumradius. The area ratio is therefore $\dfrac{3}{4}$. The difference $120$ is one quarter of the outer area, making the inner area $\boxed{360}$.
+\begin{asy}
+usepackage("amsmath"); size(220);
+real r=sqrt(3)/2;path out=dir(0)--dir(60)--dir(120)--dir(180)--dir(240)--dir(300)--cycle;path inn=r*dir(30)--r*dir(90)--r*dir(150)--r*dir(210)--r*dir(270)--r*dir(330)--cycle;draw(out);draw(circle((0,0),r),gray);draw(inn,blue);draw((0,0)--dir(0),dashed);draw((0,0)--r*dir(30),dashed);label("$R$",(0.55,-0.05),S);label("$r$",0.5*r*dir(30),NW);label("$O$",(0,0),SW);
+\end{asy}

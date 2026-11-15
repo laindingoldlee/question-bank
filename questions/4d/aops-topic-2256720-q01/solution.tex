@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2256720_im_unsure_what_coplanar_really_means_in_the_first_place_please_help
+% Stable identity: aops-topic-2256720-q01
+Two kinds of coplanar sets are easy to find:
+\begin{itemize}
+\item the $6$ faces;
+\item the $6$ ``diagonal rectangles'' through two opposite (parallel, non-adjacent) edges, such as $ABGH$ below. The $12$ edges form $6$ such pairs.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair d=(0.5,0.35);
+pair A=(0,0), B=(2,0), C=(2,2), D=(0,2);
+pair A2=A+2d, B2=B+2d, C2=C+2d, D2=D+2d;
+fill(A--B--C2--D2--cycle,palecyan);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(B--B2--C2--C,linewidth(0.9)); draw(D--D2--C2,linewidth(0.9));
+draw(A--A2,dashed); draw(A2--B2,dashed); draw(A2--D2,dashed);
+draw(A--B--C2--D2--cycle,blue+linewidth(1));
+label("$A$",A,SW); label("$B$",B,S); label("$C$",C,dir(-30)); label("$D$",D,W);
+label("$E$",A2,dir(150)); label("$F$",B2,E); label("$G$",C2,NE); label("$H$",D2,N);
+\end{asy}
+
+\textbf{There are no others.} Let $S$ be a set of four coplanar vertices whose plane $\Pi$ is not a face plane. A plane different from a face's plane meets that face in at most a segment, so it contains at most $2$ vertices of each face. Apply this to the top face and the bottom face, which together contain all $8$ vertices: $S$ has exactly $2$ vertices on the top face and $2$ on the bottom face. The plane $\Pi$ cuts the two parallel planes of these faces in parallel lines, so the top pair and the bottom pair form parallel segments.
+\begin{itemize}
+\item If the top pair is an edge, the bottom pair is a parallel edge of the bottom face: either the edge directly below (then $S$ is a side face, excluded) or the opposite one (a diagonal rectangle).
+\item If the top pair is a diagonal of the top face, the bottom pair is the parallel diagonal of the bottom face, the one directly below it (a diagonal rectangle).
+\end{itemize}
+So every coplanar set is a face or a diagonal rectangle, and the answer is $6+6=\boxed{12}$.

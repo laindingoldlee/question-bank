@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2918242_argentina_nmo_round_2_intercollegiate_geo__level_1_200616
+% Stable identity: aops-topic-2918242-q03
+$\angle EID=\angle BIC$ (vertical angles), and $\angle BIC=180^\circ-\dfrac B2-\dfrac C2=90^\circ+\dfrac A2$.
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(5,0),A=(1.5,3.5);pair I=(length(C-B)*A+length(C-A)*B+length(B-A)*C)/(length(C-B)+length(C-A)+length(B-A));
+pair D=extension(B,I,A,C),E=extension(C,I,A,B);draw(A--B--C--cycle);draw(B--D);draw(C--E);dot(I);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NE);label("$E$",E,W);label("$I$",I,S);
+\end{asy}
+
+So $90^\circ+\dfrac A2=110^\circ$ and $\angle A=\boxed{40^\circ}$.

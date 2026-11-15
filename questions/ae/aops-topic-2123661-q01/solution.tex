@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2123661_some_tricky_riddles
+% Stable identity: aops-topic-2123661-q01
+The key numbers are those that leave remainder $4$ on division by $5$:
+\[4,\ 9,\ 14,\ \dots,\ 94,\ 99 .\]
+If Betty can finish a turn on $99$, her friend must start his turn with $100$ and loses.
+
+\textbf{Strategy.} On her first turn Betty says $1,2,3,4$. After that, whenever her friend says $k$ numbers ($1\le k\le4$), Betty says $5-k$ numbers, which is also between $1$ and $4$, so the move is allowed. Each pair of turns (friend, then Betty) advances the count by exactly $5$, so Betty always ends her turns on $4,9,14,\dots$, that is, on $5j+4$ for $j=0,1,2,\dots$.
+
+\textbf{Why it works.} When Betty has just said $5j+4$ with $j\le18$, her friend starts at $5j+5$ and says at most four numbers, so he ends at most at $5j+8\le98$; he cannot reach $99$ or $100$, and Betty can answer as above, ending at $5(j+1)+4\le99$. Betty herself never says $100$, because she always stops at a number of the form $5j+4\le99$. After she says $99$ (for $j=19$), her friend must say $100$ and loses. $\blacksquare$
+
+(The game is decided by who moves first: if the friend went first and used the same strategy, he would win. So Betty must take the first turn.)

@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1692381_very_simple_algebra_1_question
+% Stable identity: aops-topic-1692381-q01
+The rise is $125-62=63$ feet and the run is $7.5$ yards $=22.5$ feet (the units must match). So
+\[
+\text{slope}=\dfrac{\text{rise}}{\text{run}}=\dfrac{63}{22.5}=\boxed{2.8}.
+\]
+
+(Figure not to scale: the horizontal direction is stretched.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real k=2.5;
+pair P=(0,62),R=(k*22.5,125),Cn=(k*22.5,62);
+draw((-12,0)--(k*22.5+44,0),linewidth(0.8));
+draw(P--R,linewidth(1.2));draw(P--Cn,dashed);draw(Cn--R,dashed);
+draw((0,0)--P,gray);draw((k*22.5,0)--Cn,gray);
+real q=3;draw(Cn+(-q,0)--Cn+(-q,q)--Cn+(0,q));
+draw((-7,0)--(-7,62),Arrows(TeXHead));label("$62$ ft",(-7,31),W);
+draw((k*22.5+36,0)--(k*22.5+36,125),Arrows(TeXHead));label("$125$ ft",(k*22.5+36,62.5),E);
+label("run $22.5$ ft",(P+Cn)/2,S);label("\shortstack[l]{rise\\ $63$ ft}",(Cn+R)/2,E);label("roof",(P+R)/2,NW);
+label("ground",(k*11,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

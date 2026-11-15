@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2796294_2017_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2796294-q09
+Add triangle $ABX$ to each: $[APX]+[ABX]=[ABP]$ and $[BQX]+[ABX]=[ABQ]$. Hence the difference is $[ABP]-[ABQ]$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),A=(0,15),B=(20,0),P=(0,8),Q=(13,0);pair X=extension(A,Q,B,P);
+fill(A--P--X--cycle,gray(0.85));fill(B--Q--X--cycle,gray(0.6));
+draw(A--B--C--cycle);draw(A--Q);draw(B--P);
+draw(C+(0.8,0)--C+(0.8,0.8)--C+(0,0.8));
+label("$A$",A,N);label("$B$",B,SE);label("$C$",C,SW);label("$P$",P,W);label("$Q$",Q,S);label("$X$",X,N);
+label("$7$",(0,11.5),W);label("$7$",(16.5,0),S);
+\end{asy}
+
+Triangle $ABP$ has base $AP=7$ on line $AC$ and height $BC=20$: area $70$. Triangle $ABQ$ has base $BQ=7$ on line $BC$ and height $AC=15$: area $\dfrac{105}{2}$. The difference is $70-\dfrac{105}2=\boxed{\dfrac{35}{2}}$.

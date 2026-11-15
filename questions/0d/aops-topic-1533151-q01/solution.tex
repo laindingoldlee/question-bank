@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1533151_cool_problem_fibonacci_sequence
+% Stable identity: aops-topic-1533151-q01
+Consider the pairs of remainders
+\[
+P_k=\left(F_k\bmod n,\ F_{k+1}\bmod n\right),\qquad k=0,1,2,\dots
+\]
+There are only $n^2$ possible pairs, so among $P_0,P_1,\dots,P_{n^2}$ two are equal, say $P_i=P_j$ with $i<j$.
+
+\textbf{The pairs repeat from the start.} The recurrence can be run backwards: $F_{k-1}=F_{k+1}-F_k$, so $P_k$ determines $P_{k-1}$. Hence $P_i=P_j$ implies $P_{i-1}=P_{j-1}$, and repeating, $P_0=P_{j-i}$. Also $P_k$ determines $P_{k+1}$ (forwards), so with $t=j-i\ge1$ we get $P_{k+t}=P_k$ for every $k\ge0$.
+
+\textbf{Conclusion.} In particular $F_{mt}\equiv F_0=0\pmod n$ for every positive integer $m$. Choose $m$ with $mt\ge3$; then $F_{mt}\ge F_3=2>1$ (the Fibonacci numbers increase from $F_2$ on), and $n\mid F_{mt}$. $\blacksquare$
+
+(For example, $n=4$: $F_6=8$; $n=7$: $F_8=21$.)

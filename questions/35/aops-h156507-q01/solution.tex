@@ -1,0 +1,11 @@
+Put $c=\sqrt{a^2-b^2}$ and $M=(u,v)$. The midpoint relation gives $P=(2u-c,2v)$. Thus
+\[
+\boxed{\dfrac{(2u-c)^2}{a^2}+\dfrac{4v^2}{b^2}=1}.
+\]
+Conversely every point on this ellipse produces a point $P$ on the original ellipse by the displayed formula, so the whole locus is obtained. It is the image under a dilation of factor $\dfrac{1}{2}$ centered at $S$: its center is $(\dfrac{c}{2},0)$ and its semiaxes are $\dfrac{a}{2},\dfrac{b}{2}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair S=(sqrt(5),0),P=(0,2),M=(S+P)/2;draw(xscale(3)*yscale(2)*unitcircle);draw(shift(S/2)*xscale(1.5)*yscale(1)*unitcircle,blue);draw(P--S,dashed);dot(P);dot(S);dot(M);label("$P$",P,N);label("$S$",S,SE);label("$M$",M,NE);label("$O$",(0,0),SW);
+\end{asy}

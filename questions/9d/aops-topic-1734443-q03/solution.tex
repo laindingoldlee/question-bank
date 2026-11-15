@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1734443_geometry_questions_from_a_local_math_competition
+% Stable identity: aops-topic-1734443-q03
+By the law of cosines, $\cos B=\dfrac{25+256-153}{2\cdot5\cdot16}=\dfrac{128}{160}=\dfrac{4}{5}$, so the foot $H$ of the altitude from $A$ satisfies $BH=4$, and $AH=3$; then $HC=12$ and indeed $AC^2=3^2+12^2=153$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(16,0),A=(4,3),H=(4,0),D=(11,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--H,dashed);draw(A--D,blue);
+draw((4,0)--(4.5,0)--(4.5,0.5)--(4,0.5));
+dot(D,blue);
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,E);label("$H$",H,S);label("$D$",D,S,blue);
+label("$5$",(A+B)/2,NW);label("$\sqrt{153}$",(A+C)/2,NE);label("$3$",(4,1.5),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+As $D$ moves along $BC$, $AD=\sqrt{9+HD^2}$ takes every value from its minimum $AH=3$ (at $D=H$) up to its maximum $AC=\sqrt{153}\approx12.37$ (at $D=C$), continuously. So the possible integer values are $3,4,\dots,12$, with sum $\dfrac{(3+12)\cdot10}{2}=\boxed{75}$.

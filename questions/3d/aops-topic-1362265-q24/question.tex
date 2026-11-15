@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1362265_2015_state_mathcounts_sprint_24
+% Stable identity: aops-topic-1362265-q24
+Triangle $ABE$ has a right angle at $B$. Point $C$ lies on the hypotenuse $AE$ and point $D$ lies on the leg $BE$, so that the four segments $AB$, $BC$, $CD$ and $DE$ each have length one inch, as shown. What is the measure of angle $BAE$, in degrees? Express your answer as a decimal to the nearest tenth.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), A=(0,1), Ep=(1+sqrt(2),0), D=(sqrt(2),0), C=(sqrt(2)/2,sqrt(2)/2);
+draw(A--B--Ep--cycle,linewidth(0.9));
+draw(B--C--D,linewidth(0.9));
+draw(B+(0.09,0)--B+(0.09,0.09)--B+(0,0.09));
+dot(C);dot(D);
+label("$A$",A,N); label("$B$",B,SW); label("$E$",Ep,SE); label("$C$",C,NE); label("$D$",D,S);
+label("$1$",(A+B)/2,W); label("$1$",(B+C)/2,NW); label("$1$",(C+D)/2,NE); label("$1$",(D+Ep)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

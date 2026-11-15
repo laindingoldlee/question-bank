@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2691619_a_problem
+% Stable identity: aops-topic-2691619-q01
+Let $c_1,c_2,c_3$ be the carries out of the units, tens and hundreds columns.
+\begin{enumerate}
+\item The sum of two four-digit numbers is less than $20000$, so $M=1$.
+\item Thousands: $S+1+c_3=10+O$. So $S+1+c_3\ge10$, $O\le1$, and $O\ne M$ gives $O=0$ and $S=9-c_3$.
+\item Hundreds: $E+0+c_2=N+10c_3$. If $c_3=1$, then $E=9$, $c_2=1$, $N=0=O$, impossible. So $c_3=0$, $S=9$, and $N=E+c_2$; as $N\ne E$, $c_2=1$ and $N=E+1$.
+\item Tens: $N+R+c_1=E+10$, i.e. $R=9-c_1$. As $R\ne9=S$, $c_1=1$ and $R=8$.
+\item Units: $D+E=Y+10$. The digits $0,1,8,9$ are taken, so $Y\ge2$ and $D+E\ge12$ with $D,E\le7$; also $N=E+1\le7$ forces $E\le6$. If $E=6$ then $D=7=N$, impossible; if $E\le4$ then $D\ge8$, impossible. So $E=5$, $N=6$, $D=7$ and $Y=2$.
+\end{enumerate}
+The unique solution is $9567+1085=10652$, and $Y=\boxed{2}$.

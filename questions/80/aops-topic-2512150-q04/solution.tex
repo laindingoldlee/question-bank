@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2512150_1000_upvotes_received_celebration
+% Stable identity: aops-topic-2512150-q04
+All the points $v_n$ lie on segment $AB$. Let $t_n=\dfrac{Av_n}{AB}$. Then
+\[t_1=\dfrac12,\qquad t_2=\dfrac34,\qquad t_n=\dfrac{t_{n-1}+t_{n-2}}{2}\quad(n\ge3).\]
+We claim $t_n=\dfrac23+\dfrac13\left(-\dfrac12\right)^n$. It holds for $n=1,2$ ($\dfrac23-\dfrac16=\dfrac12$ and $\dfrac23+\dfrac1{12}=\dfrac34$), and if it holds for $n-1$ and $n-2$, then
+\[\dfrac{t_{n-1}+t_{n-2}}{2}=\dfrac23+\dfrac16\left(-\dfrac12\right)^{n-2}\left(-\dfrac12+1\right)=\dfrac23+\dfrac1{12}\cdot4\left(-\dfrac12\right)^{n}=\dfrac23+\dfrac13\left(-\dfrac12\right)^n.\]
+So $t_n\to\dfrac23$: the points approach the point $L$ on $AB$ with $AL=\dfrac23AB$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),A=(0,3),B=(4,0);
+pair[] v; v[1]=(A+B)/2; v[2]=(v[1]+B)/2;
+for(int k=3;k<=6;++k) v[k]=(v[k-1]+v[k-2])/2;
+pair L=(A+2*B)/3;
+fill(A--C--L--cycle,rgb(0.85,0.92,1));
+draw(A--B--C--cycle,linewidth(0.8));
+draw(C--L,dashed);
+draw((0.25,0)--(0.25,0.25)--(0,0.25));
+dot(v[1]);dot(v[2]);dot(v[3]); filldraw(circle(L,0.06),white,black);
+label("$A$",A,N);label("$B$",B,E);label("$C$",C,SW);
+label("$v_1$",v[1],NE,fontsize(8pt));label("$v_2$",v[2],NE,fontsize(8pt));label("$v_3$",v[3],NE,fontsize(8pt));label("$L$",L,SW,fontsize(8pt));
+label("$3$",(0,1.5),W);label("$4$",(2,0),S);
+\end{asy}
+
+Triangles $v_nAC$ and $BAC$ have the same height from $C$ to line $AB$, so their areas are in the ratio $Av_n:AB=t_n$. The area of $ABC$ is $\dfrac12\cdot3\cdot4=6$, hence
+\[[v_nAC]=6t_n=4+2\left(-\dfrac12\right)^n,\qquad[v_{4912}AC]=4+\dfrac{1}{2^{4911}}.\]
+The closest integer is $\boxed{4}$.

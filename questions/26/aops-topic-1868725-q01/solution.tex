@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1868725_sum_of_numbers_digits
+% Stable identity: aops-topic-1868725-q01
+(a) Write $A=d_1+10d_2+100d_3+\cdots$ with digits $d_j\in\{0,1,\dots,9\}$. Then
+\[
+\dfrac{A}{10^{i-1}}=\left(d_i+10d_{i+1}+100d_{i+2}+\cdots\right)+\dfrac{d_{i-1}10^{i-2}+\cdots+d_1}{10^{i-1}},
+\]
+and the last fraction lies in $[0,1)$ because $d_{i-1}10^{i-2}+\cdots+d_1\le10^{i-1}-1$. So $\left\lfloor\dfrac {A}{10^{i-1}}\right\rfloor=d_i+10d_{i+1}+100d_{i+2}+\cdots$. Writing $q_i=\left\lfloor\dfrac{A}{10^{i}}\right\rfloor=d_{i+1}+10d_{i+2}+\cdots$, this says $q_{i-1}=d_i+10q_i$, i.e.\ $d_i=q_{i-1}-10q_i$.
+
+(b) Sum over all $i\ge1$ (only finitely many terms are nonzero), using $q_0=A$:
+\[
+s(A)=\sum_{i\ge1}\left(q_{i-1}-10q_i\right)=\sum_{i\ge0}q_i-10\sum_{i\ge1}q_i=A+\sum_{i\ge1}q_i-10\sum_{i\ge1}q_i=A-9\sum_{i\ge1}\left\lfloor\dfrac{A}{10^{i}}\right\rfloor .
+\]
+
+(c) For $A=2019$: $\left\lfloor\dfrac{2019}{10}\right\rfloor=201$, $\left\lfloor\dfrac{2019}{100}\right\rfloor=20$, $\left\lfloor\dfrac{2019}{1000}\right\rfloor=2$, and the later terms are $0$. So the formula gives $2019-9\cdot223=2019-2007=\boxed{12}$, which is indeed $2+0+1+9$.

@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2500987_stemhcounts_states_targetall_problems
+% Stable identity: aops-topic-2500987-q07
+The midline $MN$ is parallel to $BC$, and the homothety with centre $A$ and ratio $\dfrac12$ maps line $BC$ onto line $MN$. It maps $D$ to the midpoint of $AD$, which therefore lies on $MN$: $P$ is the midpoint of $AD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.2,3.2), B=(0,0), C=(5,0);
+pair D=B+2/3*(C-B); pair M=(A+B)/2, N=(A+C)/2; pair P=extension(A,D,M,N);
+fill(A--P--N--cycle,rgb(0.8,0.9,1));
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--D); draw(M--N,blue);
+dot(D); dot(M); dot(N); dot(P);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S); label("$M$",M,W); label("$N$",N,NE); label("$P$",P,NW);
+\end{asy}
+
+Since $CD=\dfrac13BC$, triangle $ADC$ has area $\dfrac13\cdot72=24$. Triangle $APN$ has $AP=\dfrac12AD$ and $AN=\dfrac12AC$ with the same angle at $A$, so its area is $\dfrac12\cdot\dfrac12\cdot24=\boxed{6}$.

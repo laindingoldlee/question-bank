@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3523326_help_pls
+% Stable identity: aops-topic-3523326-q01
+An affine change of coordinates preserves all area ratios, so use $A=(0,0)$, $B=(1,0)$, $C=(1,1)$, $D=(0,1)$, and $M=(0,\dfrac{1}{2})$. The line $BM$ has equation $y=\dfrac{1-x}{2}$ and $AC$ has equation $y=x$, so $P=(\dfrac{1}{3},\dfrac{1}{3})$. Triangle $ADC$ has area $\dfrac{1}{2}$, while $AMP$ has area $\dfrac{1}{2}\cdot\dfrac{1}{2}\cdot\dfrac{1}{3}=\dfrac{1}{12}$. Their difference is $\boxed{\dfrac{5}{12}}$. 
+\begin{asy}
+usepackage("amsmath");
+import geometry;
+size(260);
+pair A=(0,0),B=(3,0),C=(4,3),D=(1,3),M=(A+D)/2,P=(A+C)/3;draw(A--B--C--D--cycle);draw(A--C^^B--M);filldraw(M--P--C--D--cycle,lightgray,black);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$M$",M,W);label("$P$",P,SE);
+\end{asy}

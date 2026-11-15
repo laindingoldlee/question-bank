@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1466897_mathcounts_mini_2013
+% Stable identity: aops-topic-1466897-q01
+The two tangent segments from a point outside a circle have equal lengths. Let $D$ be the point where the circle touches $\overline{BC}$.
+\begin{itemize}
+\item From $A$: $AF=AE=6$.
+\item From $B$: $BD=BF=AB-AF=14-6=8$.
+\item From $C$: $CD=CE=AC-AE=15-6=9$.
+\end{itemize}
+So $BC=BD+DC=8+9=\boxed{17}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(0,0),B=(14,0),C=(132/28,sqrt(225-(132/28)^2));
+real a=17,b=15,c=14; pair I=(a*A+b*B+c*C)/(a+b+c);
+pair F=ft(I,A,B),Ee=ft(I,A,C),D=ft(I,B,C);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(circle(I,abs(I-F)),blue);
+dot(F);dot(Ee);dot(D);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$F$",F,S);label("$E$",Ee,W);label("$D$",D,NE);
+label("$6$",(A+F)/2,S);label("$8$",(F+B)/2,S);
+label("$6$",(A+Ee)/2,W);label("$9$",(Ee+C)/2,W);
+label("$8$",(B+D)/2,NE);label("$9$",(D+C)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

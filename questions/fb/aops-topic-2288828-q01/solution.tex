@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2288828_farley_solves_the_usajmo
+% Stable identity: aops-topic-2288828-q01
+\textbf{Probability of success on one day.} Farley's letters can be arranged in $\dfrac{6!}{3!}=120$ different ways. A match needs the same letter in both arrangements. The fixed arrangement has one A, one G, one N and three C's; Farley's has one A, one C, one N and three G's. So there is at most one matching A, at most one matching N, at most one matching C (Farley has only one C) and at most one matching G (the fixed arrangement has only one G): at most $4$ matches in all. Thus ``at least $4$'' means exactly these four matches:
+\begin{itemize}
+\item Farley's A and N are at the positions of the fixed A and N;
+\item Farley's C is at one of the $3$ positions of the fixed C's;
+\item the three remaining positions, which include the position of the fixed G, receive Farley's three G's.
+\end{itemize}
+So exactly $3$ of the $120$ arrangements succeed, whatever the fixed arrangement is, and the probability of success on a given day is $p=\dfrac{3}{120}=\dfrac1{40}$.
+
+\textbf{Expected number of days.} Let $E$ be the expected number of days. On the first day she succeeds with probability $p$; otherwise the situation starts afresh after one day. Hence
+\[E=p\cdot1+(1-p)(1+E),\qquad\text{so}\qquad E=\dfrac1p=\boxed{40}.\]

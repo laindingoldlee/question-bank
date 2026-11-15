@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2585227_counting_problem_and_more
+% Stable identity: aops-topic-2585227-q01
+\textbf{Every such convex kite has an incircle.} The diagonal $AC$ is an axis of symmetry and bisects the angles at $A$ and $C$. The bisector of angle $B$ meets $AC$ at a point $I$, and by symmetry $I$ also lies on the bisector of angle $D$. So $I$ is equidistant from all four sides, and the circle about $I$ touching them is the incircle.
+
+\textbf{Radius.} Joining $I$ to the vertices splits the kite into four triangles with heights $r$, so
+\[[ABCD]=\dfrac r2(3+7+7+3)=10r.\]
+On the other hand, $[ABCD]=2[ABC]=2\cdot\dfrac12\cdot3\cdot7\sin\angle ABC=21\sin\angle ABC\le21$. Hence $r\le\dfrac{21}{10}$, with equality when $\angle ABC=90^\circ$ (then $\angle ADC=90^\circ$ too, and the kite is convex). The largest possible radius is $\boxed{\dfrac{21}{10}}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real s=sqrt(58);
+pair A=(0,0),C=(s,0),B=(9/s,21/s),D=(9/s,-21/s),I=(0.3*s,0);
+draw(A--B--C--D--cycle,linewidth(0.8));draw(A--C,dashed);
+draw(circle(I,2.1));dot(I);
+pair u=unit(A-B),v=unit(C-B);draw(B+0.35*u--B+0.35*u+0.35*v--B+0.35*v);
+pair u2=unit(A-D),v2=unit(C-D);draw(D+0.35*u2--D+0.35*u2+0.35*v2--D+0.35*v2);
+draw(I--I+2.1*dir(90+degrees(B-A)),dotted);
+label("$A$",A,W);label("$B$",B,N);label("$C$",C,E);label("$D$",D,S);label("$I$",I,S);
+label("$3$",(A+B)/2,NW);label("$7$",(B+C)/2,NE);label("$3$",(A+D)/2,SW);label("$7$",(C+D)/2,SE);
+\end{asy}
+
+The extremal kite, with right angles at $B$ and $D$ and $AC=\sqrt{58}$.

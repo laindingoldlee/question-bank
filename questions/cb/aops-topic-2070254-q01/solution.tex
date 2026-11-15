@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2070254_a_problem
+% Stable identity: aops-topic-2070254-q01
+The outer centres are at distance $6$ from the centre $O$ and form a regular hexagon of side $6$. A side of the big hexagon is parallel to the segment joining two adjacent outer centres and lies $3$ beyond it (the radius). That segment is at distance $6\cos30^\circ=3\sqrt3$ from $O$, so the apothem of the big hexagon is $a=3\sqrt3+3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real r=3; real R=(3*sqrt(3)+3)/Cos(30);
+path hx=R*dir(0)--R*dir(60)--R*dir(120)--R*dir(180)--R*dir(240)--R*dir(300)--cycle;
+fill(hx,paleblue); for(int k=0;k<7;++k) fill(circle(k==0?(0,0):6*dir(60*k),r),white);
+draw(hx,linewidth(1));
+draw(circle((0,0),r)); for(int k=0;k<6;++k) draw(circle(6*dir(60*k),r));
+pair O=(0,0), P1=6*dir(0), P2=6*dir(60), Mpt=(P1+P2)/2, T=(3*sqrt(3)+3)*dir(30);
+draw(P1--P2,dashed); draw(O--T,red+linewidth(0.9));
+dot(O);dot(P1);dot(P2);dot(Mpt);dot(T);
+label("$O$",O,SW); label("$3\sqrt3$",(O+Mpt)/2,NW,red+fontsize(8pt)); label("$3$",(Mpt+T)/2,NW,red+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+A regular hexagon with apothem $a$ has area $6\cdot\dfrac{a^2}{\sqrt3}=2\sqrt3\,a^2$ (six triangles of height $a$ and base $\dfrac{2a}{\sqrt3}$). Here
+\[
+a^2=(3\sqrt3+3)^2=27+18\sqrt3+9=36+18\sqrt3,\qquad 2\sqrt3\,a^2=72\sqrt3+108 .
+\]
+The circles have total area $7\cdot9\pi=63\pi$, so the required area is
+\[
+\boxed{108+72\sqrt3-63\pi}\approx34.8 .
+\]

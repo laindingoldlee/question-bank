@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1994941_mathcounts_2016_chapter_sprint_round_30_palindromes
+% Stable identity: aops-topic-1994941-q01
+Write $n=\overline{abcba}$ and $7n=\overline{deffed}$. Since $7n\le7\cdot99999<700000$, we have $d\le6$; and $d$ is the units digit of $7n$, i.e.\ of $7a$.
+\begin{itemize}
+\item $a=9$: $7a=63$ gives $d=3$, but $7n\ge630000$ has first digit $6$. Impossible.
+\item $a=8$: $d=6$ (from $56$). Then $7n\ge600000$, so $n\ge85715$; also $7n\le7\cdot89998<630000$, so $e\in\{0,1,2\}$.
+\end{itemize}
+For $a=8$, compare the last two digits: $7\cdot\overline{b8}=70b+56$ must end in $\overline{e6}$, so $7b+5\equiv e\pmod{10}$. This gives $b=5$ for $e=0$, $b=8$ for $e=1$ and $b=1$ for $e=2$. Since $n\ge85715$, $b\ge5$.
+
+\begin{itemize}
+\item $b=8$, $e=1$: $n=\overline{88c88}$ and $7n=616616+700c$, which must have the form $\overline{61ff16}$. For $c=0$ we get $616616$, a palindrome; for $c=1,\dots,4$ we get $617316,618016,618716,619416$ (middle digits unequal), and for $c\ge5$ the number is at least $620116$, so its second digit is no longer $1$.
+\item $b=5$ gives $n<86000<88088$.
+\end{itemize}
+So the greatest such $n$ is $\boxed{88088}$, with $7\cdot88088=616616$.

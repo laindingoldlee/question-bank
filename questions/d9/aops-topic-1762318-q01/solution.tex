@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1762318_geometry
+% Stable identity: aops-topic-1762318-q01
+The condition is $x^2-a^2=y$, that is, $(b+c)^2-a^2=bc$, or
+\[
+b^2+c^2-a^2=-bc .
+\]
+By the law of cosines, $b^2+c^2-a^2=2bc\cos A$, so $\cos A=-\dfrac{1}{2}$ and $A=120^\circ$. The triangle is necessarily obtuse-angled: $\boxed{\textbf{(D)}}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(sqrt(19),0);
+real c=2,bb=3; real ang=acos((19+4-9)/(2*sqrt(19)*2));
+pair A=c*dir(degrees(ang));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(arc(A,0.35,degrees(B-A),degrees(C-A)),linewidth(0.6));
+label("$120^\circ$",A+0.65*dir((degrees(B-A)+degrees(C-A))/2));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$c$",(A+B)/2,NW);label("$b$",(A+C)/2,NE);label("$a$",(B+C)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For example, $b=3$, $c=2$, $a=\sqrt{19}$ satisfies the condition: $x=5$ and $25-19=6=bc$.

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3181317_2022_ramc_ms_individual_round__rochester_area_math_competition
+% Stable identity: aops-topic-3181317-q03
+Put $A=(0,0),B=(w,0),C=(w,2w),D=(0,2w)$. Then $E=(\dfrac{w}{2},2w),F=(\dfrac{w}{4},w),G=(w,w),H=(w,\dfrac{w}{2})$. The shoelace formula gives $[EFHG]=\dfrac{9}{16}w^2=9$, so $w=4$. Hence $CH=\dfrac{3}{2}w=\boxed6$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(4,0),C=(4,8),D=(0,8),Ee=(2,8),F=(1,4),G=(4,4),H=(4,2);draw(A--B--C--D--cycle);filldraw(Ee--F--H--G--cycle,lightgray);draw(A--Ee,dashed);pair[] p={A,B,C,D,Ee,F,G,H};string[] t={"A","B","C","D","E","F","G","H"};for(int i=0;i<8;++i)label("$"+t[i]+"$",p[i],i%2==0?E:W);
+\end{asy}

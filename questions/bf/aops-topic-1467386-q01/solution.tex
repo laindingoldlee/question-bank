@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1467386_the_bucket_challenge
+% Stable identity: aops-topic-1467386-q01
+\textbf{No.} For a non-empty container, let its \emph{concentration} be the fraction of its liquid that is milk. Let $a$, $b$, $k$ be the concentrations of bucket $A$, bucket $B$ and the beaker. We show that at all times
+\[
+b<a,\qquad\text{and}\qquad b\le k\le a\ \text{ whenever the beaker is not empty}.
+\]
+At the start $a=1$, $b=0$ and the beaker is empty. Consider one pour.
+\begin{itemize}
+\item \emph{From a bucket into the beaker.} The poured liquid has the concentration of that bucket, $a$ or $b$, which lies in $[b,a]$. The new beaker concentration is a weighted average of its old one (if any) and that number, so it stays in $[b,a]$. The buckets' concentrations do not change.
+\item \emph{From the beaker into bucket $A$.} The beaker keeps concentration $k$. Bucket $A$ is not empty, so its new concentration is a weighted average of $a$, with positive weight, and $k\in[b,a]$. It is therefore at most $a$ and at least $k$, and it is greater than $b$ because $a>b$ has positive weight and $k\ge b$.
+\item \emph{From the beaker into bucket $B$.} Symmetric: the new $b$ is at least the old $b$, at most $k$, and still less than $a$.
+\end{itemize}
+So the inequalities hold after every step. Each bucket containing as much milk as water would mean $a=b=\dfrac{1}{2}$, contradicting $b<a$. Hence it is impossible (in fact the two buckets can never even have the same concentration).
+
+The condition that no bucket is ever empty is essential: if bucket $B$ could be emptied, one could pour $2.5$ litres of milk into $B$ and then pour half of $B$'s contents back.

@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h1914463_fun_problem_i_made
+% Stable identity: aops-topic-1914463-q01
+Let $O=(0,0)$ and $A=(2,0)$. In an isosceles triangle with $OA$ as one of the equal sides, the vertex where the equal sides meet is $O$ or $A$.
+
+\textbf{Apex $O$.} The third vertex is a point $P$ with $OP=2$ not on the $x$-axis. The triangle $OAP$ lies in the disc of radius $2$ about $O$, since its vertices do and the disc is convex. Conversely, every point $X\ne O$ of that disc lies on the segment $OP$ with $P=\dfrac{2X}{|X|}$, and if $X$ is not on the $x$-axis this segment is a side of the triangle $OAP$. So these triangles cover exactly the disc of radius $2$ about $O$, apart from part of the $x$-axis, which has no area.
+
+\textbf{Apex $A$.} In the same way these triangles cover the disc of radius $2$ about $A$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=(2,0); pair X1=(1,sqrt(3)),X2=(1,-sqrt(3));
+path u=arc(O,2,60,300)--arc(A,2,-120,120)--cycle;
+fill(u,palegray);
+pair P=2*dir(115), Q=A+2*dir(-50);
+fill(O--A--P--cycle,paleblue); fill(O--A--Q--cycle,palered);
+draw(circle(O,2),linewidth(0.9)); draw(circle(A,2),linewidth(0.9));
+draw(X1--X2,dashed);
+draw(O--A--P--cycle,blue+linewidth(0.8)); draw(O--A--Q--cycle,red+linewidth(0.8));
+dot(O);dot(A);dot(P);dot(Q);dot(X1);dot(X2);
+label("$O$",O,W); label("$A$",A,E); label("$P$",P,NW); label("$Q$",Q,SE);
+label("$X_1$",X1,N); label("$X_2$",X2,S);
+label("$2$",(O+P)/2,W,blue); label("$2$",(A+Q)/2,E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the region is the union of two discs of radius $2$ whose centres are $2$ apart. The circles meet at $X_{1,2}=\left(1,\pm\sqrt3\right)$, and $\angle X_1OX_2=120^\circ$. The overlap consists of two segments, each a $120^\circ$ sector minus a triangle:
+\[
+2\left(\dfrac{4\pi}{3}-\dfrac{1}{2}\cdot2\cdot2\sin120^\circ\right)=\dfrac{8\pi}{3}-2\sqrt3 .
+\]
+Therefore the area is
+\[
+2\cdot4\pi-\left(\dfrac{8\pi}{3}-2\sqrt3\right)=\boxed{\dfrac{16\pi}{3}+2\sqrt3}\approx20.22 .
+\]

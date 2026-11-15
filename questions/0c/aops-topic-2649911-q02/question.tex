@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2649911_pi_post
+% Stable identity: aops-topic-2649911-q02
+Thirteen circles of radius $1$ lie inside a larger circle, as in the figure. One small circle is at the centre; six surround it, each tangent to it and to its two neighbours; and six more each lie in the gap between two neighbouring circles of that ring, tangent to both of them and internally tangent to the large circle. All the intersections occur at points of tangency. What is the area of the shaded region, inside the larger circle but outside all the circles of radius $1$?
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real R=1+2*sqrt(3);
+fill(circle((0,0),R),lightgray);
+pair[] c;c.push((0,0));
+for(int i=0;i<6;++i){c.push(2*dir(60*i));c.push(2*sqrt(3)*dir(30+60*i));}
+for(int i=0;i<c.length;++i) filldraw(circle(c[i],1),white,linewidth(0.7));
+draw(circle((0,0),R),linewidth(0.9));
+\end{asy}
+
+$\textbf{(A) }4\pi\sqrt3\qquad\textbf{(B) }7\pi\qquad\textbf{(C) }\pi\left(3\sqrt3+2\right)\qquad\textbf{(D) }10\pi\left(\sqrt3-1\right)\qquad\textbf{(E) }\pi\left(\sqrt3+6\right)$

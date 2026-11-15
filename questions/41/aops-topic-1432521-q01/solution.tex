@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h1432521_cyclic_quadrilaterals
+% Stable identity: aops-topic-1432521-q01
+Let $O$ be the centre. A chord of length $c$ in a circle of radius $R$ subtends a central angle $\theta$ with $c=2R\sin\dfrac{\theta}{2}$.
+
+For each side of length $6$, let $\alpha$ be the acute angle with $\sin\alpha=\dfrac{6}{10}=\dfrac{3}{5}$, so $\cos\alpha=\dfrac{4}{5}$. The arc cut off by such a side (not containing the other vertices) is either $2\alpha\approx73.7^\circ$ or $360^\circ-2\alpha\approx286.3^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real al=aSin(0.6); real R=5;
+real tA=-90+(180-3*al), tB=tA+2*al, tC=tB+2*al, tD=tC+2*al;
+pair O=(0,0),A=R*dir(tA),B=R*dir(tB),C=R*dir(tC),D=R*dir(tD);
+draw(circle(O,R));
+draw(O--A^^O--B^^O--C^^O--D,gray+dashed);
+draw(A--B--C--D,linewidth(0.9)); draw(D--A,red+linewidth(0.9));
+dot(O);dot(A);dot(B);dot(C);dot(D);
+label("$O$",O,S); label("$A$",A,dir(tA)); label("$B$",B,dir(tB)); label("$C$",C,dir(tC)); label("$D$",D,dir(tD));
+label("$6$",(A+B)/2,dir((tA+tB)/2)); label("$6$",(B+C)/2,dir((tB+tC)/2)); label("$6$",(C+D)/2,dir((tC+tD)/2));
+label("$5$",(O+A)/2,NW);
+draw(arc(O,0.9,tA,tB),blue); label("$2\alpha$",1.45*dir((tA+tB)/2),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Because $ABCD$ is convex and inscribed, the four arcs $AB$, $BC$, $CD$, $DA$ (each not containing the other vertices) add up to $360^\circ$. If one of the three arcs on the sides of length $6$ were $360^\circ-2\alpha$, the three arcs would already total $360^\circ+2\alpha>360^\circ$. So all three are $2\alpha$, and the arc $DA$ is $360^\circ-6\alpha$ (positive, since $6\alpha\approx221^\circ$). Hence
+\[
+DA=2R\sin\dfrac{360^\circ-6\alpha}{2}=10\sin\left(180^\circ-3\alpha\right)=10\sin3\alpha .
+\]
+By the triple-angle formula,
+\[
+\sin3\alpha=3\sin\alpha-4\sin^3\alpha=\dfrac{9}{5}-\dfrac{108}{125}=\dfrac{117}{125},
+\]
+so
+\[
+DA=\dfrac{1170}{125}=\boxed{\dfrac{234}{25}}=9.36 .
+\]
+In general one finds the central angle of each known side from $c=2R\sin\dfrac{\theta}{2}$, uses that the four arcs sum to $360^\circ$ to get the fourth arc, and converts it back to a chord length. (When the centre lies outside the quadrilateral, one known side cuts off the larger arc, and the cases must be checked as above.)

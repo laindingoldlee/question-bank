@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1404162_lithuanian_math_kangaroo_2008__student_21
+% Stable identity: aops-topic-1404162-q25
+Let the incircle touch $AB$ at $F$, $AC$ at $G$ and $DE$ at $T$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(52/12,sqrt(25-(52/12)^2));
+real a=abs(B-C),b=abs(C-A),c=abs(A-B);
+pair I=(a*A+b*B+c*C)/(a+b+c); real r=abs(I-(I.x,0));
+pair u=rotate(12)*unit(A-I); pair Tt=I+r*u; pair w=rotate(90)*u;
+pair D=extension(Tt,Tt+w,A,B), E2=extension(Tt,Tt+w,A,C);
+pair F=(I.x,0), G=A+(abs(F-A))*unit(C-A);
+draw(circle(I,r),blue);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(D--E2,red+linewidth(0.9));
+dot(A);dot(B);dot(C);dot(D,red);dot(E2,red);dot(Tt);dot(F);dot(G);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$D$",D,S,red); label("$E$",E2,NW,red);
+label("$T$",Tt,u,fontsize(8pt)); label("$F$",F,S); label("$G$",G,NW);
+label("$6$",(B+F)/2+(0.4,0),S); label("$5$",(C+G)/2,NW); label("$3$",(B+C)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Tangent segments from a point to a circle are equal, so $DT=DF$, $ET=EG$ and $AF=AG$. With $s=\dfrac{6+5+3}{2}=7$, the tangent length from $A$ is $AF=AG=s-BC=7-3=4$. Hence
+\[
+AD+DE+EA=AD+(DT+TE)+EA=(AD+DF)+(EG+EA)=AF+AG=8 .
+\]
+The perimeter of triangle $ADE$ is $\boxed{8}$, choice (E), wherever the tangent $DE$ is drawn. (A reply quoted in the post computes $6-BD+5-CE+DE$ with $BD+CE=DE+3$, which also gives $11-3=8$.)

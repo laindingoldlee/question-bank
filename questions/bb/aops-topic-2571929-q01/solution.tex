@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h2571929_problem_thing
+% Stable identity: aops-topic-2571929-q01
+\textbf{Step 1: $X$, $Y$, $Z$ are feet of perpendiculars.} Since $\angle AA_1O=\angle AA_2O=90^\circ$, the points $A_1$ and $A_2$ lie on the circle with diameter $AO$. They differ from $A$: if $A$ were on $b$, then $b$ would be the line $CA$ and $O$ would lie on side $CA$, which happens only for a right angle at $B$ (similarly for $c$). And $A_1\ne A_2$: a common point would lie on both $b$ and $c$, so it would be $O$, and $AO$ would be perpendicular to both of the non-parallel lines $b$ and $c$. So the circle through $A$, $A_1$, $A_2$ is the circle with diameter $AO$, which passes through $O$. The foot $F$ of the perpendicular from $A$ to $a$ also lies on this circle (as $\angle AFO=90^\circ$, or $F=A$). Moreover $F\ne O$: otherwise $AO\perp BC$, and since $O$ lies on the perpendicular bisector of $BC$, line $AO$ would be that bisector and $AB=AC$. A line meets a circle in at most two points, so the intersection of $a$ with the circle other than $O$ is $X=F$. Similarly $Y$ is the foot of the perpendicular from $B$ to $b$, and $Z$ is the foot from $C$ to $c$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=3*dir(90),B=3*dir(250),C=3*dir(330);
+pair pr(pair P,pair d){d=unit(d);return dot(P,d)*d;}
+pair X=pr(A,C-B),Y=pr(B,A-C),Z=pr(C,B-A),A1=pr(A,A-C),A2=pr(A,B-A);
+draw(circle(O,3),gray(0.6));
+draw(A--B--C--cycle,linewidth(0.9));
+draw((-3.6*unit(C-B))--(3.6*unit(C-B)),gray);draw((-3.6*unit(A-C))--(3.6*unit(A-C)),gray);draw((-3.6*unit(B-A))--(3.6*unit(B-A)),gray);
+label("$a$",3.6*unit(C-B),E,gray);label("$b$",-3.6*unit(A-C),SW,gray);label("$c$",-3.6*unit(B-A),N,gray);
+draw(circle(A/2,1.5),dashed);
+draw(A--A1,dotted);draw(A--A2,dotted);draw(A--X,dotted);
+draw(X--Y--Z--cycle,blue+linewidth(0.9));
+dot(O);dot(A1);dot(A2);dot(X,blue);dot(Y,blue);dot(Z,blue);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$O$",O,SW);
+label("$A_1$",A1,W);label("$A_2$",A2,E);label("$X$",X,SE,blue);label("$Y$",Y,SE,blue);label("$Z$",Z,W,blue);
+\end{asy}
+
+\textbf{Step 2: one vector for all three.} Use vectors with origin $O$, so $|A|=|B|=|C|=R$, the circumradius. Let $u$ be a unit vector along $BC$. The foot of the perpendicular from $A$ to the line $a$ (through $O$ in direction $u$) is $X=(A\cdot u)\,u$. Put $H=A+B+C$. Since
+\[(B+C)\cdot(C-B)=|C|^2-|B|^2=0,\]
+we have $H\cdot u=A\cdot u$, so $X=(H\cdot u)\,u$. Likewise $Y=(H\cdot v)\,v$ and $Z=(H\cdot w)\,w$, with unit vectors $v$ along $CA$ and $w$ along $AB$. So $X,Y,Z$ are the projections of the single point $H$ onto the lines $a,b,c$. (In fact $H$ is the orthocentre, and $H\ne O$ because a triangle whose orthocentre is its circumcentre is equilateral.)
+
+\textbf{Step 3: a lemma.} If two lines through $O$ make an angle $\phi$, the projections of $H$ onto them are $|H|\,|\sin\phi|$ apart. Choose axes with $H=(h,0)$, $u=(\cos\alpha,\sin\alpha)$, $v=(\cos\beta,\sin\beta)$. Then $X=h\cos\alpha\,u$ and $Y=h\cos\beta\,v$, and
+\[\dfrac{|X-Y|^2}{h^2}=\cos^2\alpha+\cos^2\beta-2\cos\alpha\cos\beta\cos(\alpha-\beta).\]
+Expanding $\cos(\alpha-\beta)=\cos\alpha\cos\beta+\sin\alpha\sin\beta$ and $\sin^2(\alpha-\beta)=(\sin\alpha\cos\beta-\cos\alpha\sin\beta)^2$, the difference between this expression and $\sin^2(\alpha-\beta)$ is
+\[\cos^2\alpha\left(1-\cos^2\beta-\sin^2\beta\right)+\cos^2\beta\left(1-\cos^2\alpha-\sin^2\alpha\right)=0.\]
+So $|X-Y|=h\,|\sin(\alpha-\beta)|$, as claimed.
+
+\textbf{Step 4: compare the sides.} Lines $a$ and $b$ are parallel to $BC$ and $CA$, so the angle between them is $\angle C$ or $180^\circ-\angle C$, and $|\sin\phi|=\sin C$. Hence $XY=OH\sin C$, and similarly $YZ=OH\sin A$ and $ZX=OH\sin B$. By the extended law of sines, $AB=2R\sin C$, $BC=2R\sin A$, $CA=2R\sin B$. Therefore
+\[\dfrac{XY}{AB}=\dfrac{YZ}{BC}=\dfrac{ZX}{CA}=\dfrac{OH}{2R}>0,\]
+and by SSS similarity triangle $XYZ$ is similar to triangle $ABC$, with $X,Y,Z$ corresponding to $A,B,C$. $\blacksquare$

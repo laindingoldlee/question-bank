@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1418780_interesting_math_question
+% Stable identity: aops-topic-1418780-q01
+Let $P_m$ be the number of full parenthesisations of a sum of $m$ terms; we want $P_{n+1}$. The terms themselves do not matter, only how many there are. Put $P_1=1$.
+
+\textbf{Recurrence.} In a full parenthesisation of $m\ge2$ terms the outermost pair of parentheses splits the sum into a left part with the first $k$ terms and a right part with the other $m-k$ terms, $1\le k\le m-1$, each fully parenthesised independently. So
+\[
+P_m=\sum_{k=1}^{m-1}P_kP_{m-k}.
+\]
+This gives $P_2=1$, $P_3=2$, $P_4=5$, $P_5=14$, $P_6=42$, matching the examples. Writing $C_n=P_{n+1}$, the recurrence reads $C_0=1$, $C_n=\sum_{j=0}^{n-1}C_jC_{n-1-j}$: these are the \emph{Catalan numbers}.
+
+\textbf{Closed form.} Let $F(x)=\sum_{n\ge0}C_nx^n$. The recurrence says $F(x)=1+xF(x)^2$, so
+\[
+F(x)=\dfrac{1-\sqrt{1-4x}}{2x}
+\]
+(the sign is chosen so that $F(0)=1$). Expanding $\sqrt{1-4x}$ by the binomial series gives
+\[
+C_n=\dfrac{1}{n+1}\dbinom{2n}{n}=\dfrac{(2n)!}{n!\,(n+1)!}.
+\]
+So the sum $0+1+\dots+n$ can be parenthesised in
+\[
+\boxed{C_n=\dfrac{1}{n+1}\dbinom{2n}{n}}
+\]
+ways: $1,2,5,14,42,\dots$ for $n=1,2,3,4,5,\dots$.

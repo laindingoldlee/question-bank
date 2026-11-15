@@ -1,0 +1,8 @@
+Use $0,1$ for the two answers and seat the patterns as shown. Here is a systematic verification. Label the rows and columns by the two-bit Gray code $00,01,11,10$, and concatenate the row and column labels to make a four-bit word. Keep even-parity words unchanged and complement every bit of odd-parity words. Complementing four bits preserves parity, so this transformation is a bijection. Adjacent initial words differ in one bit and have opposite parity; complementing exactly one changes their distance to three. Therefore adjacent final words agree on exactly one answer.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"0000", "1110", "0011", "1101"}, {"1011", "0101", "1000", "0110"}, {"1100", "0010", "1111", "0001"}, {"0111", "1001", "0100", "1010"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}
+\end{asy}

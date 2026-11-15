@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2648709_geometry_problem_i_wrote
+% Stable identity: aops-topic-2648709-q01
+Let $\angle BAC=2\alpha$, so $\angle DAE=\alpha$. Since $AE=ED$, triangle $AED$ is isosceles and $\angle EDA=\angle EAD=\alpha$. As $DE$ bisects $\angle ADC$, we get $\angle ADC=2\alpha=\angle BAC$.
+
+Triangles $CDA$ and $CAB$ share $\angle C$ and have $\angle CDA=\angle CAB$, so they are similar:
+\[\dfrac{CD}{CA}=\dfrac{CA}{CB},\qquad CD\cdot CB=14^2=196.\]
+By the angle bisector theorem, $CD=\dfrac{14}{15+14}\,BC=\dfrac{14}{29}\,BC$. Hence $\dfrac{14}{29}BC^2=196$, so $BC^2=406$ and $BC=\boxed{\sqrt{406}}$. (This is less than $29$, so the triangle exists, and the configuration was checked numerically.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real a=sqrt(406),bb=14,c=15;pair B=(0,0),C=(a,0);real x=(c*c-bb*bb+a*a)/(2a);pair A=(x,sqrt(c*c-x*x));
+pair D=B+(C-B)*c/(bb+c);real DA=abs(A-D),DC=abs(C-D);pair Ep=A+(C-A)*DA/(DA+DC);
+draw(A--B--C--cycle,linewidth(0.8));draw(A--D);draw(D--Ep);
+dot(D);dot(Ep);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$E$",Ep,NE);
+label("$15$",(A+B)/2,NW);label("$14$",A+0.8*(C-A),NE);
+draw(arc(A,2,degrees(D-A),degrees(C-A)),red);draw(arc(D,2,degrees(Ep-D),degrees(A-D)),red);
+draw(arc(A,2.4,degrees(B-A),degrees(D-A)));draw(arc(D,2.4,degrees(C-D),degrees(Ep-D)));
+\end{asy}

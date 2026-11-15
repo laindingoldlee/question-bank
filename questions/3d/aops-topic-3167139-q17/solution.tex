@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h3167139_2022_lmt_fall_guts_round_p16p27_lexington_mathematical_tournament
+% Stable identity: aops-topic-3167139-q17
+If prime $p$ divides $n$, then $p-1$ divides $24$, so $p$ is among $2,3,5,7,13$. The factor $p^{e-1}$ in the totient also divides $24$, bounding their respective exponents by $4,2,1,1,1$. Testing these finite exponent choices in $\varphi(n)=\prod_{p^e\parallel n}p^{e-1}(p-1)$ yields exactly $35,39,45,52,56,70,72,78,84,90$. Their sum is $\boxed{621}$. The enumeration below certifies completeness within the proved bounds.\begin{verbatim}
+from itertools import product
+primes=[2,3,5,7,13]
+answers=[]
+for exps in product(range(5),range(3),range(2),range(2),range(2)):
+    n=phi=1
+    for p,e in zip(primes,exps):
+        n*=p**e
+        if e: phi*=p**(e-1)*(p-1)
+    if phi==24: answers.append(n)
+assert sorted(answers)==[35,39,45,52,56,70,72,78,84,90]
+\end{verbatim}

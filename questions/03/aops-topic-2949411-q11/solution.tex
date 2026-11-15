@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2949411_2019_emcc_guts_round_p1_p12_exeter_math_club_competition
+% Stable identity: aops-topic-2949411-q11
+Axis-parallel squares contribute $4^2+3^2+2^2+1^2=30$. For a tilted square, choose its bottom vertex and the up-right side vector $(a,b)$ with positive integers $a,b$. Its other upward side is $(-b,a)$; its bounding box has width and height $a+b$. For each ordered pair $a,b\ge1$ with $a+b\le4$, there are $(5-a-b)^2$ translations. These contribute $9+4+4+1+1+1=20$. Each tilted square has a unique bottom vertex and up-right side, so it is counted once. Total $\boxed{50}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int x=0;x<5;++x)for(int y=0;y<5;++y)dot((x,y));draw((1,0)--(3,1)--(2,3)--(0,2)--cycle,blue);label("$(a,b)$",(2,.5),SE);label("Bottom vertex",(1,0),S);
+\end{asy}

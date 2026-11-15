@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2784240_2021_winmac_guts_rounds_14__winchester_math_competition
+% Stable identity: aops-topic-2784240-q07
+Put the start at $S=(0,0)$ with east and north positive. The path visits $(0,-20)$, $(40,-20)$, $(40,-40)$, $(20,-40)$ and returns to $S$. The last leg, from $(20,-40)$ to $(0,0)$, lies on the line $y=-2x$, which meets the second leg ($y=-20$, $0\le x\le40$) at $X=(10,-20)$. So the path crosses itself at $X$ and encloses two pieces (in the figure $1$ unit is $10$ m).
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair S0=(0,0),P1=(0,-2),P2=(4,-2),P3=(4,-4),P4=(2,-4),X=(1,-2);
+fill(S0--P1--X--cycle,rgb(0.85,0.93,0.85));fill(X--P2--P3--P4--cycle,rgb(0.85,0.93,0.85));
+draw(S0--P1,MidArrow(4));draw(P1--P2,MidArrow(4));draw(P2--P3,MidArrow(4));draw(P3--P4,MidArrow(4));draw(P4--X,MidArrow(4));draw(X--S0);
+dot(X);label("$S$",S0,N);label("$X$",X,NE);
+label("$20$",(0,-1),W);label("$40$",(2.5,-2),N);label("$20$",(4,-3),E);label("$20$",(3,-4),S);
+label("$100$",(0.27,-1.72),fontsize(7pt));label("$500$",(2.8,-3),fontsize(8pt));
+\end{asy}
+
+\begin{itemize}
+\item The triangle $S,(0,-20),X$ has legs $20$ and $10$, area $100$.
+\item The trapezoid $X,(40,-20),(40,-40),(20,-40)$ has parallel sides $30$ and $20$ and height $20$, area $\dfrac{30+20}2\cdot20=500$.
+\end{itemize}
+The park has area $\boxed{600}$ square meters.

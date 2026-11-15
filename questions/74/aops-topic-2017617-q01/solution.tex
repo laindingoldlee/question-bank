@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2017617_2019_aime_5
+% Stable identity: aops-topic-2017617-q01
+To end at $(0,0)$ the particle must never touch an axis before, so its last move is the diagonal move from $(1,1)$ to $(0,0)$, and before that it travels from $(4,4)$ to $(1,1)$ (any such route stays at positive coordinates).
+
+A route from $(4,4)$ to $(1,1)$ with $k$ diagonal moves ($0\le k\le3$) has $3-k$ left moves and $3-k$ down moves, so $6-k$ moves in all, arranged in $\dfrac{(6-k)!}{k!\,(3-k)!\,(3-k)!}$ ways. Including the final diagonal move, each such route has probability $\left(\dfrac{1}{3}\right)^{7-k}$. Summing:
+\[
+\dfrac{20}{3^7}+\dfrac{30}{3^6}+\dfrac{12}{3^5}+\dfrac{1}{3^4}=\dfrac{20+90+108+27}{3^7}=\dfrac{245}{3^7}.
+\]
+Since $245=5\cdot7^2$ is not divisible by $3$, $m=245$ and $n=7$, so $m+n=\boxed{252}$.

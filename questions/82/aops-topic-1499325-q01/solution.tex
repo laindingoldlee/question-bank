@@ -1,0 +1,53 @@
+% Source: https://artofproblemsolving.com/community/c3h1499325_hnh_hc_thcs
+% Stable identity: aops-topic-1499325-q01
+Use complex numbers with $O$ at the origin, and write $a$, $b$, $c$ for the points $A$, $B$, $C$. Then $|a|=|b|=|c|=R$, so $\bar a=\dfrac{R^2}{a}$, and similarly for $b$ and $c$.
+
+\textbf{Reflection in a chord.} For two points $a\ne b$ on the circle, the map
+\[
+\sigma(z)=a+b-\dfrac{ab}{R^2}\,\bar z
+\]
+is the reflection in line $AB$. Indeed, it fixes $a$ and $b$: $\sigma(a)=a+b-\dfrac{ab\bar a}{R^2}=a+b-b=a$, and similarly $\sigma(b)=b$. It preserves distances, since $\left|\dfrac{ab}{R^2}\right|=1$. And it reverses orientation, because of the conjugation. An orientation-reversing isometry that fixes two points is the reflection in the line through them.
+
+\textbf{Computing $G'$.} With $g=\dfrac{a+b+c}{3}$,
+\[
+\dfrac{ab}{R^2}\,\bar g=\dfrac{ab}{3R^2}\left(\dfrac{R^2}{a}+\dfrac{R^2}{b}+\dfrac{R^2}{c}\right)=\dfrac{1}{3}\left(b+a+\dfrac{ab}{c}\right),
+\]
+so
+\[
+g'=\sigma(g)=\dfrac{2a+2b}{3}-\dfrac{ab}{3c}=\dfrac{2b}{3}+\dfrac{a\,(2c-b)}{3c}.
+\]
+Let $k=\dfrac{2b}{3}$. Then
+\[
+|g'-k|=\dfrac{|a|\,|2c-b|}{3|c|}=\dfrac{|2c-b|}{3},
+\]
+which does not depend on $A$. So $G'$ always lies on the circle with centre $K$ and radius $\dfrac{|2c-b|}{3}$. The figure shows it dashed:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0); pair B=dir(235),C=dir(305),A=dir(355);
+pair G=(A+B+C)/3;
+pair d=unit(B-A); pair Fo=A+dot(G-A,d)*d; pair Gp=2*Fo-G;
+pair K=2/3*B; real rk=abs(2*C-B)/3;
+draw(circle(O,1),linewidth(0.9));
+draw(circle(K,rk),deepgreen+dashed);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--A+1.25*(B-A),gray(0.4)); draw(A--A-0.35*(B-A),gray(0.4));
+draw(G--Gp,red+dashed);
+draw(A--(B+C)/2,gray(0.6));
+draw(O--B,blue);
+dot(O);dot(A);dot(B);dot(C);dot(G);dot(Gp,red);dot(K,deepgreen);
+label("$O$",O,NE);label("$A$",A,dir(150));label("$B$",B,dir(240));label("$C$",C,dir(300));
+label("$G$",G,dir(-30));label("$G'$",Gp,unit(Gp-K),red);label("$K$",K,dir(-25),deepgreen);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+
+\textbf{Centre and radius.} The centre $K$ is the point of segment $OB$ with $OK=\dfrac{2}{3}R$. For the radius, $|2c-b|^2=4R^2+R^2-4\operatorname{Re}(c\bar b)$. Also $BC^2=|b-c|^2=2R^2-2\operatorname{Re}(c\bar b)$, so $4\operatorname{Re}(c\bar b)=4R^2-2BC^2$. Hence $|2c-b|^2=R^2+2BC^2$, and the radius is
+\[
+\boxed{\rho=\dfrac{\sqrt{R^2+2\,BC^2}}{3}}
+\]
+(equivalently, $\rho=\dfrac{2}{3}CL$, where $L$ is the midpoint of $OB$).
+
+As $A$ runs around the circle, $\dfrac{a}{R}$ takes every value of modulus $1$. So $G'$ runs through the whole circle, except the two points that correspond to the excluded positions $A=B$ and $A=C$. $\blacksquare$

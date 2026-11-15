@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2302477_ab2024s_math_hard_questions
+% Stable identity: aops-topic-2302477-q14
+Let the triangle be $ABC$ and let $M$ be the midpoint of $BC$. In an equilateral triangle the median $AM$ is also an altitude and an angle bisector, so the incentre $I$ is the centroid, which lies on $AM$ with $IM=\dfrac13AM$. The incircle touches $BC$ at $M$, so its radius is $r=IM$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(3.5,7*sqrt(3)/2), B=(0,0), C=(7,0);
+pair I=(A+B+C)/3, M=(3.5,0);
+real r=7*sqrt(3)/6;
+draw(A--B--C--cycle,linewidth(0.9));
+draw(circle(I,r),blue+linewidth(0.8));
+draw(A--M,dashed); draw(I--B,dashed);
+draw(M+(0.25,0)--M+(0.25,0.25)--M+(0,0.25));
+dot(I); dot(M);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$M$",M,S); label("$I$",I,E);
+label("$r$",(I+M)/2,W,blue); label("$7$",(B+C)/2+(1.4,0),S);
+\end{asy}
+
+By the Pythagorean theorem, $AM=\sqrt{7^2-\left(\dfrac72\right)^2}=\dfrac{7\sqrt3}{2}$, so $r=\dfrac{7\sqrt3}{6}$ and the area is
+\[\pi r^2=\pi\cdot\dfrac{49\cdot3}{36}=\boxed{\dfrac{49\pi}{12}}.\]

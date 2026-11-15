@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2692581_i_need_help
+% Stable identity: aops-topic-2692581-q01
+A dilation with centre $O$ and scale factor $3$ moves every point $P$ along the ray $OP$ to the point $P'$ that is $3$ times as far from $O$; the shape stays the same, but every length is multiplied by $3$. With centre at the origin this simply multiplies both coordinates by $3$: $(x,y)\mapsto(3x,3y)$. Hence
+\[\boxed{G'(-3,-6),\quad H'(-3,9),\quad J'(12,9),\quad K'(12,-6)}.\]
+All side lengths triple: $GHJK$ is in fact a square of side $5$, and its image is a square of side $15$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-5,0)--(14,0),gray,Arrow(4));draw((0,-7.5)--(0,11),gray,Arrow(4));
+pair G=(-1,-2),H=(-1,3),J=(4,3),K=(4,-2);
+draw(G--H--J--K--cycle,linewidth(0.9));draw(3*G--3*H--3*J--3*K--cycle,linewidth(0.9));
+draw(G--3*G,dashed);draw(H--3*H,dashed);draw(J--3*J,dashed);draw(K--3*K,dashed);
+dot(G);dot(H);dot(J);dot(K);dot(3*G);dot(3*H);dot(3*J);dot(3*K);
+label("$G$",G,NE,fontsize(8pt));label("$H$",H,SE,fontsize(8pt));label("$J$",J,SW,fontsize(8pt));label("$K$",K,NW,fontsize(8pt));
+label("$G'(-3,-6)$",3*G,SW,fontsize(8pt));label("$H'(-3,9)$",3*H,NW,fontsize(8pt));label("$J'(12,9)$",3*J,NE,fontsize(8pt));label("$K'(12,-6)$",3*K,SE,fontsize(8pt));label("$O$",(0,0),NE,fontsize(8pt));
+\end{asy}

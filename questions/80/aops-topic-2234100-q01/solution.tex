@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2234100_sudokurelated_math_puzzle
+% Stable identity: aops-topic-2234100-q01
+The original entries give one valid completion. Suppose $G$ and $H$ are two different valid completions, and let $D$ be the set of cells where they differ. Then $D$ is a nonempty set of at most $3$ cells, all among the erased ones.
+
+\textbf{Claim.} Every row that contains a cell of $D$ contains at least two cells of $D$, and likewise for every column.
+
+Indeed, in a row the entries of $G$ are $1,\ldots,9$ in some order, and so are those of $H$. If the row contained only one cell $c$ of $D$, then $G$ and $H$ would agree on the other $8$ cells of the row, so the entry in $c$ would be the one number missing from those $8$ cells, both in $G$ and in $H$; so $G$ and $H$ would agree at $c$, a contradiction. The same argument works for columns.
+
+Now take a cell $c_1\in D$. By the claim its row contains another cell $c_2\in D$, in a different column, and the column of $c_1$ contains another cell $c_3\in D$, in a different row. The column of $c_2$ must also contain a second cell $c_4\in D$, different from $c_2$. The cell $c_4$ is neither $c_1$ nor $c_3$, because those lie in the column of $c_1$, not in that of $c_2$. So $c_1,c_2,c_3,c_4$ are four different cells of $D$, contradicting $|D|\le3$.
+
+Hence two different completions cannot exist, and the completion is unique. $\blacksquare$

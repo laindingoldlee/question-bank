@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2695509_hello_i_am_not_a_spammer_hopefully
+% Stable identity: aops-topic-2695509-q06
+Write $P_m=a_1+\cdots+a_m$ (with $P_0=0$). Since $\displaystyle\sum_{i=1}^{20}ia_i=\sum_{j=1}^{20}\left(210-P_{j-1}\right)=4200-\sum_{m=0}^{19}P_m$, we must make the prefix sums small.
+
+For $i\le m$ the condition gives $a_i\ge\left\lceil\dfrac{21-i}{2}\right\rceil\ge\left\lceil\dfrac{21-m}{2}\right\rceil$. So $P_m$ is a sum of $m$ distinct integers that are all at least $\left\lceil\dfrac{21-m}{2}\right\rceil$:
+\begin{itemize}
+\item $m=2t$: $P_{2t}\ge(11-t)+\cdots+(10+t)=21t$;
+\item $m=2t-1$: $P_{2t-1}\ge(11-t)+\cdots+(9+t)=20t-10$.
+\end{itemize}
+Hence $\displaystyle\sum_{m=0}^{19}P_m\ge\sum_{t=0}^{9}21t+\sum_{t=1}^{10}(20t-10)=945+1000=1945$, and the sum is at most $4200-1945=2255$.
+
+The permutation $10,11,9,12,8,13,\dots,1,20$ (that is, $a_{2t-1}=11-t$ and $a_{2t}=10+t$) satisfies the conditions and attains every bound. So the maximum is $\boxed{2255}$.

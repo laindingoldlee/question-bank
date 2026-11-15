@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2185101_one_mathcounts_question
+% Stable identity: aops-topic-2185101-q01
+Let $X=\overline{ABC}$ and $Z=10\cdot\overline{DE}=\overline{DE0}$. Then $\overline{ABC}\times\overline{DE}=\dfrac{XZ}{10}$, so we maximise $XZ$. Both $X$ and $Z$ lie between $550$ and $999$.
+
+\textbf{Step 1: larger digits go in higher places.} Suppose a digit $p$ sits in a place of value $10^i$ and a larger digit $q=p+\delta$ in a place of value $10^j$ with $j<i$. If both are in the same number, swapping them makes that number larger and the product larger. Otherwise, let $V$ be the number containing $p$ and $W$ the other one. After the swap they become $V+\delta10^i$ and $W-\delta10^j$, and the product changes by
+\[\delta10^iW-\delta10^jV-\delta^210^{i+j}=\delta10^j\left(10^{i-j}W-V-\delta10^i\right)>0,\]
+because $10^{i-j}W\ge10\cdot550=5500$, while $V+\delta10^i\le999+4\cdot100<5500$. So in a best arrangement the two hundreds digits ($A$ and $D$) are $8$ and $9$, the two tens digits ($B$ and $E$) are $6$ and $7$, and $C=5$.
+
+\textbf{Step 2: make the factors close.} Then $X+Z=100(8+9)+10(6+7)+5=1835$ is fixed, and
+\[XZ=\dfrac{(X+Z)^2-(X-Z)^2}{4}\]
+is largest when $|X-Z|$ is smallest. The four candidates are
+\[(X,Z)=(965,870),\ (975,860),\ (865,970),\ (875,960),\]
+with differences $95$, $115$, $105$, $85$. The smallest is $85$, for $X=875$ and $Z=960$. Hence the maximum is
+\[875\times96=\boxed{84000}.\]

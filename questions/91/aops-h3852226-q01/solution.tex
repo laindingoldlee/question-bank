@@ -1,0 +1,18 @@
+Represent green and red by $1$ and $-1$. For two neighboring rows $u,v$, the happy-square condition is
+\[
+(u_j+v_j)+(u_{j+1}+v_{j+1})=0.
+\]
+Thus $u_j+v_j$ alternates between a number $t$ and $-t$, where $t\in\{-2,0,2\}$. If $t=0$, the two rows are opposite entry by entry. If $t=\pm2$, both rows are alternating.
+
+If some row is not alternating, its neighbors must be its entrywise opposite; propagation shows that every column alternates. If no such row exists, every row alternates. Conversely either of these properties guarantees every square is happy.
+
+There are $2^{11}$ colorings with all rows alternating, and $2^{11}$ with all columns alternating. Their intersection consists of the two checkerboards. Inclusion-exclusion gives
+\[
+\boxed{2^{11}+2^{11}-2=4094}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int k=0;k<2;++k){for(int i=0;i<5;++i)for(int j=0;j<5;++j){if(i<4)draw((6k+i,j)--(6k+i+1,j),lightgray);if(j<4)draw((6k+i,j)--(6k+i,j+1),lightgray);int t=(k==0?i+(j%3==0?1:0):j+(i%3==0?1:0));dot((6k+i,j),t%2==0?green:red);}label(k==0?"Alternating rows":"Alternating columns",(6k+2,-1));}
+\end{asy}

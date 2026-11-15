@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2360132_geometry_no_trigonometry_allowed
+% Stable identity: aops-topic-2360132-q01
+Let $M$ be the midpoint of the hypotenuse $AC$. Then $MA=MB=MC$ (the midpoint of the hypotenuse is the circumcentre), and since $\angle A=60^\circ$, triangle $ABM$ is equilateral. Let $s=AB=AM=BM=MC$. Also $\angle MBC=\angle MCB=30^\circ$; since $\angle DBC=10^\circ<30^\circ$, the point $D$ lies strictly between $M$ and $C$.
+
+\textbf{Step 1.} Put $x=MD$, so $0<x<s$ and $CD=s-x$. Then $BE=CD=s-x<s=AB$, so $E$ lies on segment $AB$ with $AE=AB-BE=x$.
+
+\textbf{Step 2.} Let $F$ be the point of segment $AM$ with $AF=x$. Triangle $AEF$ has $AE=AF=x$ and $\angle A=60^\circ$, so it is equilateral: $EF=x$ and $\angle AFE=60^\circ$, hence $\angle EFD=180^\circ-60^\circ=120^\circ$. Moreover $FD=FM+MD=(s-x)+x=s$.
+
+\textbf{Step 3.} Compare triangles $EFD$ and $DMB$:
+\[EF=x=DM,\qquad FD=s=MB,\qquad\angle EFD=120^\circ=\angle DMB,\]
+where $\angle DMB=180^\circ-\angle AMB=120^\circ$. By SAS they are congruent, so $ED=DB$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), A=(0,2), C=(2*sqrt(3),0), M=(A+C)/2;
+pair D=extension(B,B+dir(10),A,C);
+real cd=length(C-D); pair Ep=(0,cd);
+real x=length(A-Ep); pair F=A+x*unit(C-A);
+fill(Ep--F--D--cycle,rgb(0.8,0.9,1)); fill(D--M--B--cycle,rgb(1,0.85,0.85));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--M,dashed); draw(B--D); draw(D--Ep,blue+linewidth(0.9)); draw(Ep--F,dashed);
+draw(B+(0.15,0)--B+(0.15,0.15)--B+(0,0.15));
+dot(M); dot(D); dot(Ep); dot(F);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE);
+label("$M$",M,NE); label("$D$",D,NE); label("$E$",Ep,W); label("$F$",F,NE);
+label("$10^\circ$",B+0.9*dir(5),fontsize(7pt));
+draw(arc(D,0.35,degrees(B-D),degrees(Ep-D)),red); label("$20^\circ$",D+0.62*unit(unit(B-D)+unit(Ep-D)),red+fontsize(7pt));
+\end{asy}
+
+\textbf{Step 4.} Triangle $DBE$ is isosceles with $DB=DE$, and $\angle DBE=\angle ABC-\angle DBC=90^\circ-10^\circ=80^\circ$. So $\angle DEB=80^\circ$ and
+\[\angle BDE=180^\circ-80^\circ-80^\circ=\boxed{20^\circ}.\]

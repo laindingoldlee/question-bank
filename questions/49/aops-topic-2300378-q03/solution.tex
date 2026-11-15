@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2300378_50th_post
+% Stable identity: aops-topic-2300378-q03
+\textbf{(a)} Look at the remainders of the pairs $(F_n,F_{n+1})$ on division by $50$. There are only $50^2=2500$ possible pairs of remainders, so two of the pairs $(F_0,F_1),(F_1,F_2),\dots,(F_{2500},F_{2501})$ have the same remainders, say for $n=i$ and $n=j$ with $i<j$. Each pair determines the next one ($F_{n+2}=F_{n+1}+F_n$) and also the previous one ($F_{n-1}=F_{n+1}-F_n$), so going back step by step from $n=i$ and $n=j$ together, the pairs at $n=0$ and $n=j-i$ have the same remainders. Thus the remainders repeat with period $p=j-i$, and $F_{kp}\equiv F_0=0\pmod{50}$ for every $k$. So $F_p,F_{2p},F_{3p},\dots$ are infinitely many multiples of $50$.
+
+\textbf{(b)} Modulo $2$ the sequence is $0,1,1,0,1,1,\dots$, so $F_n$ is even exactly when $3\mid n$. Modulo $5$ it is
+\[0,1,1,2,3,0,3,3,1,4,0,4,4,3,2,0,2,2,4,1,\ 0,1,\dots\]
+with period $20$, so $F_n$ is a multiple of $5$ exactly when $5\mid n$. Hence $50\mid F_n$ requires $15\mid n$. The candidates are
+\[F_{15}=610,\quad F_{30}=832040,\quad F_{45}=1134903170,\quad F_{60}=1548008755920,\quad F_{75}=2111485077978050.\]
+A number is a multiple of $50$ exactly when it ends in $00$ or $50$. The first four end in $10$, $40$, $70$ and $20$, and $F_{75}$ ends in $50$. So the smallest positive Fibonacci multiple of $50$ is
+\[F_{75}=\boxed{2111485077978050}.\]

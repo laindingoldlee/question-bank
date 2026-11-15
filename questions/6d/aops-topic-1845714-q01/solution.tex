@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1845714_number_theory_problem
+% Stable identity: aops-topic-1845714-q01
+Write $\Omega(n)$ for the number of prime factors of $n$ counted with multiplicity. The common prime factors of two numbers are the prime factors of their greatest common divisor, so the conditions are
+\[
+\Omega(\gcd(a,b))=4,\qquad\Omega(\gcd(a,c))=5,\qquad\Omega(\gcd(b,c))=6 .
+\]
+
+\textbf{A better example.} Take $a=48=2^4\cdot3$, $b=64=2^6$, $c=192=2^6\cdot3$. Then $\gcd(a,b)=2^4$, $\gcd(a,c)=2^4\cdot3$ and $\gcd(b,c)=2^6$, with $4$, $5$ and $6$ prime factors. Here
+\[
+abc=2^{16}\cdot3^2=589824<1327104,
+\]
+so the book's answer is not the minimum.
+
+\textbf{Lower bound.} Since $\gcd(a,c)\mid a$ and $\gcd(b,c)$ divides both $b$ and $c$, we have $\Omega(a)\ge5$, $\Omega(b)\ge6$, $\Omega(c)\ge6$.
+
+\emph{Not all of $a,b,c$ are powers of $2$.} If $a=2^\alpha$, $b=2^\beta$, $c=2^\gamma$, then $\min(\alpha,\gamma)=5$ gives $\alpha\ge5$, so $\min(\alpha,\beta)=4$ forces $\beta=4$, and then $\min(\beta,\gamma)\le4\ne6$.
+
+\emph{$\Omega(abc)\ge18$.} If $\Omega(abc)=17$, then $\Omega(a)=5$, $\Omega(b)=\Omega(c)=6$. A divisor of $b$ with as many prime factors as $b$ is $b$ itself, so $\gcd(b,c)=b=c$; but then $\gcd(a,b)=\gcd(a,c)$, contradicting $4\ne5$.
+
+\emph{If $\Omega(abc)=18$, then $abc$ has at least two odd prime factors.} The possibilities for $\left(\Omega(a),\Omega(b),\Omega(c)\right)$ are $(6,6,6)$, $(5,7,6)$ and $(5,6,7)$.
+\begin{itemize}
+\item $(6,6,6)$: as above $\gcd(b,c)=b=c$, a contradiction.
+\item $(5,7,6)$: $\gcd(b,c)=c$ and $\gcd(a,c)=a$, so $a\mid c\mid b$ and $\gcd(a,b)=a$ has $5$ prime factors, not $4$.
+\item $(5,6,7)$: $\gcd(a,c)=a$ and $\gcd(b,c)=b$, so $a\mid c$ and $b\mid c$. Since $\Omega(\gcd(a,b))=4$ is less than both $\Omega(a)$ and $\Omega(b)$, neither of $a,b$ divides the other: there are primes $p\ne q$ with $p$ appearing more often in $a$ than in $b$ and $q$ more often in $b$ than in $a$. At least one of $p,q$ is odd, say $r$; it divides $a$ or $b$, and also $c$ (as $a\mid c$ and $b\mid c$). So $r$ appears at least twice in $abc$.
+\end{itemize}
+
+\textbf{Conclusion.} If $\Omega(abc)=18$, then $abc\ge2^{16}\cdot3^2=589824$. If $\Omega(abc)\ge19$, then $abc$ has at least one odd prime factor, so $abc\ge2^{18}\cdot3=786432$. Hence the least possible product is $\boxed{589824}$, attained by $a=48$, $b=64$, $c=192$. The book's answer $1{,}327{,}104$ is not the least.

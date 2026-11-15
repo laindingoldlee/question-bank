@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1391630_math_counts
+% Stable identity: aops-topic-1391630-q01
+The circumscribed circle passes through all four vertices, and the inscribed angle at a vertex is a right angle, so the diagonal of the rectangle is a diameter. The diagonal is $\sqrt{6^2+8^2}=10$ cm, so the radius is $5$ cm.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(-4,-3),B=(4,-3),C=(4,3),D=(-4,3),O=(0,0);
+draw(circle(O,5),linewidth(0.9));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,red+dashed);
+dot(O);
+label("$8$",(0,-3),S); label("$6$",(4,0),E);
+label("$10$",(-1.6,-1.2),NW,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The area is $\pi\cdot5^2=25\pi\approx78.54$, so to the nearest whole number it is $\boxed{79}$ square centimetres.

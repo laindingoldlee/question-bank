@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2216804_know_that_2__333_has_101_digits_and_the_first_one_is_1
+% Stable identity: aops-topic-2216804-q01
+\textbf{Groups by number of digits.} Each power of $2$ has at most one more digit than the previous one, so the numbers $2^0,2^1,\dots,2^{332}$ have every number of digits from $1$ to $100$ (since $2^{333}$, with $101$ digits and first digit $1$, is less than $2\cdot10^{100}$, the number $2^{332}$ is less than $10^{100}$). Group them by their number of digits: $100$ groups.
+
+\textbf{Each group has $3$ or $4$ members, and contains a $4$ exactly when it has $4$.} Let $2^k$ be the smallest member of the group with $d$ digits. Then $2^{k-1}<10^{d-1}\le2^k$ (for $k\ge1$; for the group of $2^0=1$ this is clear), so $2^k=x\cdot10^{d-1}$ with $1\le x<2$. The group consists of the numbers $x,2x,4x,8x,\ldots$ (times $10^{d-1}$) that are below $10$:
+\begin{itemize}
+\item if $x<1.25$, then $8x<10\le16x$, so the group is $\{x,2x,4x,8x\}$ with $4x\in[4,5)$: four members, one of them starting with $4$;
+\item if $1.25\le x<2$, then $4x<8<10\le8x$, so the group is $\{x,2x,4x\}$ with first digits $1$, then $2$ or $3$, then $5$, $6$ or $7$: three members, none starting with $4$.
+\end{itemize}
+
+\textbf{Count.} If $g$ groups have four members, then $333=3\cdot100+g$, so $g=33$. Each of these groups contains exactly one power with first digit $4$, and it is never $2^0$. So $\boxed{33}$ of the numbers $2^1,\dots,2^{332}$ start with $4$.

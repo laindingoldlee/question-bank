@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2793849_2017_geometry_bee__guts_rounds__sets_57
+% Stable identity: aops-topic-2793849-q16
+Power of a point in the plane through the centre and the secant gives $AY\cdot AZ=AX^2=2017$. The number 2017 is prime (trial division by primes at most 44 verifies this), so the only positive ordered pair with $AY<AZ$ is $(1,2017)$. It is attainable: take a sphere of radius 1008 and put $A$ at centre distance 1009; its radial secant has these distances and its tangent length is $\sqrt{1009^2-1008^2}=\sqrt{2017}$. Thus the sum is $\boxed{2016}$.
+\begin{verbatim}
+assert all(2017 % d for d in range(2,45))
+assert 1009**2-1008**2 == 2017
+\end{verbatim}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(circle((0,0),2));pair A=(-3,0),X=(-4/3,2*sqrt(5)/3),Y=(-2,0),Z=(2,0);draw(A--Z);draw(A--X);label("A",A,W);label("X",X,NW);label("Y",Y,S);label("Z",Z,E);label("axial schematic",(0,-2.5));
+\end{asy}

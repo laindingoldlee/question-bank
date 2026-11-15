@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2595781_expected_valuegeometric_probability_problem
+% Stable identity: aops-topic-2595781-q01
+\textbf{Meeting.} Let $m$ and $s$ be MrBeast's and your arrival times, in minutes after 11:00. The visits $[m,m+15]$ and $[s,s+20]$ overlap exactly when $s\le m+15$ and $m\le s+20$. In the $60\times60$ square of equally likely pairs $(m,s)$, the failing pairs form two triangles: $s>m+15$ (legs $45$) and $s<m-20$ (legs $40$). So
+\[P(\text{meet})=1-\dfrac{\dfrac{45^2}2+\dfrac{40^2}2}{3600}=1-\dfrac{1812.5}{3600}=\dfrac{143}{288}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+fill((0,0)--(0,15)--(45,60)--(60,60)--(60,40)--(20,0)--cycle,lightgray);
+draw((0,0)--(60,0)--(60,60)--(0,60)--cycle,linewidth(0.8));
+draw((0,15)--(45,60),dashed);draw((20,0)--(60,40),dashed);
+label("$m$",(30,0),S);label("$s$",(0,30),W);label("$0$",(0,0),SW);label("$60$",(60,0),S);label("$60$",(0,60),W);
+label("$s=m+15$",(13,50),fontsize(8pt));label("$s=m-20$",(46,10),fontsize(8pt));
+label("meet",(30,30),fontsize(9pt));
+\end{asy}
+
+(The shaded band is where you meet; the dashed lines are $s=m+15$ and $s=m-20$.)
+
+\textbf{The game.} Let $N(k)$ be the number of the $36$ dice outcomes with sum at least $k$:
+\[N(2)=36,\ N(3)=35,\ N(4)=33,\ N(5)=30,\ N(6)=26,\ N(7)=21,\ N(8)=15,\ N(9)=10,\ N(10)=6,\ N(11)=3,\ N(12)=1.\]
+The expected prize for choosing $k$ is $1000k\cdot\dfrac{N(k)}{36}$, and $k\,N(k)$ takes the values $36,72,105,132,150,156,147,120,90,60,33,12$ for $k=1,\dots,12$. The maximum is at $k=6$, worth $1000\cdot\dfrac{156}{36}=\dfrac{13000}3$ dollars.
+
+\textbf{Total.} The meeting and the dice are independent, so the expected winnings are
+\[\dfrac{143}{288}\cdot\dfrac{13000}{3}=\boxed{\dfrac{232375}{108}\approx2151.62\text{ dollars}}.\]

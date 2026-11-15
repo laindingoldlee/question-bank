@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1914414_burnsides_lemma
+% Stable identity: aops-topic-1914414-q01
+(a) For an object $x$ let $\operatorname{Orb}(x)=\{g(x):g\in G\}$ and $\operatorname{Stab}(x)=\{g\in G:g(x)=x\}$.
+
+\emph{Orbit-stabiliser.} Fix $h\in G$ and let $y=h(x)$. The elements $g$ with $g(x)=y$ are exactly those with $h^{-1}g\in\operatorname{Stab}(x)$, i.e.\ the $|\operatorname{Stab}(x)|$ elements $hs$ with $s\in\operatorname{Stab}(x)$. So each of the $|\operatorname{Orb}(x)|$ points of the orbit is hit by the same number of elements of $G$, and $|\operatorname{Orb}(x)|\cdot|\operatorname{Stab}(x)|=|G|$.
+
+\emph{Double counting.} Count the pairs $(g,x)$ with $g(x)=x$. By $g$ the count is $\sum_g|\operatorname{Fix}(g)|$; by $x$ it is $\sum_x|\operatorname{Stab}(x)|=\sum_x\dfrac{|G|}{|\operatorname{Orb}(x)|}$. Splitting the last sum by orbits, each orbit $O$ contributes $|O|\cdot\dfrac{|G|}{|O|}=|G|$. Hence $\sum_g|\operatorname{Fix}(g)|=|G|\cdot(\text{number of orbits})$, which is the lemma.
+
+(b) The rotations by $k=0,1,\dots,5$ positions split the beads into $\gcd(k,6)$ cycles, and a colouring is fixed exactly when each cycle is one colour, so it fixes $2^{\gcd(k,6)}$ colourings: $64,2,4,8,4,2$. The number of necklaces is $\dfrac{64+2+4+8+4+2}{6}=\dfrac{84}{6}=\boxed{14}$.
+
+(c) The rotations by $0^\circ,90^\circ,180^\circ,270^\circ$ fix $3^4=81$, $3$, $3^2=9$ and $3$ colourings, so the number of colourings is $\dfrac{81+3+9+3}{4}=\boxed{24}$.

@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2947424_mathematical_circles_russian_experience_ch1_sec1_p5
+% Stable identity: aops-topic-2947424-q01
+\textbf{No.} Look at the orientation of triangle $ABC$: whether $A\to B\to C$ runs clockwise or counterclockwise. When one puck crosses the line through the other two, the triangle's orientation reverses; a puck moving without crossing that line keeps it.
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(1.5,2.5),A2=(3,3.4);draw(A--B--C--cycle);draw(A2--B--C--cycle,dashed);draw(A--A2,Arrow);
+dot(A);dot(B);dot(C);dot(A2);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NW);label("$A'$",A2,N);
+\end{asy}
+
+So every hit reverses the orientation. After $25$ hits it has been reversed an odd number of times, so it is opposite to the starting orientation. The pucks therefore cannot occupy their original positions. $\boxed{\text{No}}$.

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2386090_100_posts
+% Stable identity: aops-topic-2386090-q21
+Complete the square:
+\[y=x^2+x+1=\left(x+\dfrac12\right)^2+\dfrac34.\]
+So the graph is an upward parabola with vertex $\left(-\dfrac12,\dfrac34\right)$ and axis of symmetry $x=-\dfrac12$. Its least value is $\dfrac34>0$, so it has no $x$-intercepts. The $y$-intercept is $(0,1)$, and by symmetry $(-1,1)$ is also on the graph.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+real sx=2, sy=0.6;
+real f(real x){return sy*(x^2+x+1);}
+real g(real t){return f(t/sx);}
+draw((-5.6,0)--(3.8,0),Arrow(6)); draw((0,0)--(0,3.6),Arrow(6));
+label("$x$",(3.8,0),E); label("$y$",(0,3.6),N);
+draw((-1,0)--(-1,3.3),dashed+gray(0.4));
+draw(graph(g,-5.2,3.2),blue+linewidth(0.9));
+dot((-1,f(-0.5))); dot((0,f(0))); dot((-2,f(-1)));
+label("$\left(-\dfrac12,\dfrac34\right)$",(-1,0),S); draw((-1,-0.05)--(-1,f(-0.5)),dotted);
+label("$(0,1)$",(0,f(0)),E); label("$(-1,1)$",(-2,f(-1)),W);
+label("$x=-\dfrac12$",(-1,3.3),NW,gray(0.3));
+\end{asy}

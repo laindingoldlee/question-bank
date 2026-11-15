@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2227563_niiiiice
+% Stable identity: aops-topic-2227563-q01
+There are $90\,000$ five-digit integers. Count the ones that are \emph{not} nice: no $9$ appears after the first $6$. Sort them by the position of the first $6$.
+\begin{itemize}
+\item No $6$ at all: $8$ choices for the first digit (not $0$ or $6$) and $9$ for each other digit: $8\cdot9^4=52\,488$.
+\item First $6$ in position $1$: the other four digits avoid $9$: $9^4=6\,561$.
+\item First $6$ in position $k\in\{2,3,4,5\}$: the first digit has $8$ choices, the digits before position $k$ avoid $6$ ($9$ choices each), and the digits after position $k$ avoid $9$ ($9$ choices each): $8\cdot9^{3}=5\,832$ for each $k$, $23\,328$ in total.
+\end{itemize}
+So $52\,488+6\,561+23\,328=82\,377$ numbers are not nice and $90\,000-82\,377=7\,623$ are nice. The fraction is
+\[\dfrac{7\,623}{90\,000}=\boxed{\dfrac{847}{10\,000}}.\]

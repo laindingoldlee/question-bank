@@ -1,0 +1,20 @@
+Take $A=(0,0)$, $B=(14,0)$, $D=(5,0)$. Since $AC=CD=10$, point $C$ lies on the perpendicular bisector of $AD$:
+\[
+C=\left(\dfrac{5}{2},\dfrac{5\sqrt{15}}{2}\right).
+\]
+The angle at $A$ has cosine $\dfrac{1}{4}$. The two intersections of the ray $AC$ with the circle centered at $B$ of radius $14$ are $A$ and $E$; the distance equation gives $AE=2AB\cos A=7$. Thus
+\[
+E=\left(\dfrac{7}{4},\dfrac{7\sqrt{15}}{4}\right).
+\]
+Intersecting $BE$ and $CD$ gives $F=(\dfrac{7}{2},\dfrac{3\sqrt{15}}{2})$; substitution in both line equations verifies it. The shoelace formula in the required boundary order $A,C,F,B$ gives
+\[
+[ACFB]=\dfrac{1}{2}\left|
+\dfrac{15\sqrt{15}}{4}-\dfrac{35\sqrt{15}}{4}-21\sqrt{15}
+\right|=\boxed{13\sqrt{15}}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(14,0),C=(2.5,5sqrt(15)/2),D=(5,0),E=(1.75,7sqrt(15)/4),F=(3.5,3sqrt(15)/2);fill(A--C--F--B--cycle,lightgray);draw(A--B--C--cycle);draw(B--E,blue);draw(C--D,blue);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,S);label("$E$",E,W);label("$F$",F,(1,0));
+\end{asy}

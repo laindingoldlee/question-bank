@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2416978_1200th_post_dedicated_to_bloggy
+% Stable identity: aops-topic-2416978-q04
+Let the park have radius $r$. Joining the centre $O$ to the $12$ vertices cuts the dodecagon into $12$ congruent isosceles triangles with two sides $r$ and apex angle $\dfrac{360^\circ}{12}=30^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real r=1;
+pair[] V; for(int k=0;k<12;++k) V.push(r*dir(30*k));
+draw(circle((0,0),r),blue);
+fill(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--V[7]--V[8]--V[9]--V[10]--V[11]--cycle,rgb(1,0.93,0.6));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--V[7]--V[8]--V[9]--V[10]--V[11]--cycle,linewidth(0.8));
+pair O=(0,0);
+fill(O--V[0]--V[1]--cycle,rgb(1,0.75,0.5)); draw(O--V[0]--V[1]--cycle,red);
+dot(O); label("$O$",O,W);
+label("$r$",(O+V[0])/2,S,red); label("$30^\circ$",O,dir(15)*3.2,fontsize(8pt));
+for(int k=0;k<12;++k) dot(V[k]);
+\end{asy}
+
+Each has area $\dfrac12r^2\sin30^\circ=\dfrac{r^2}{4}$, so the dodecagon has area $3r^2$. The orb is uniform in the disc of area $\pi r^2$, so the probability is
+\[\dfrac{3r^2}{\pi r^2}=\boxed{\dfrac3\pi}\approx0.955.\]

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2577870_lamboreghinis_problem_thread_math_and_programming
+% Stable identity: aops-topic-2577870-q05
+The smaller sphere has radius $r$ and centre $(r,r,r)$. Tangency gives $\sqrt3(2-r)=2+r$, hence $r=4-2\sqrt3$. This sphere lies entirely within $[0,2]^3$, since $2r<2$. The larger sphere occupies exactly one octant of its full volume within that cube, namely $\dfrac{1}{8}\cdot\dfrac{4}{3}\pi2^3=\dfrac{4\pi}{3}$. The smaller ball is disjoint from its interior. The requested volume is $8-\dfrac{4\pi}{3}-\dfrac{4\pi r^3}{3}$. Since $r^3=208-120\sqrt3$, this is $\boxed{\dfrac{24-836\pi+480\pi\sqrt3}{3}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real r=4-2*sqrt(3);draw((0,0)--(2*sqrt(2),0)--(2*sqrt(2),2)--(0,2)--cycle);draw(circle((2*sqrt(2),2),2),blue);draw(circle((sqrt(2)*r,r),r),red);dot((0,0));label("$O$",(0,0),SW);label("$(2\sqrt2,2)$",(2*sqrt(2),2),NE);label("$r$",(sqrt(2)*r,r),S);label("section $x=y$",(1,-.5));
+\end{asy}

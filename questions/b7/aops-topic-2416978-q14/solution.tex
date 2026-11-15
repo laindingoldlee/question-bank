@@ -1,0 +1,57 @@
+% Source: https://artofproblemsolving.com/community/c3h2416978_1200th_post_dedicated_to_bloggy
+% Stable identity: aops-topic-2416978-q14
+Put $A=(0,0)$, $B=(x,0)$, $C=\left(\dfrac x2,\dfrac{\sqrt3}{2}x\right)$, with centre $G=\left(\dfrac x2,\dfrac x2\tan30^\circ\right)$. The trisectors from $A$ make angles $20^\circ$ and $40^\circ$ with $AB$; those from $B$ make $20^\circ$ and $40^\circ$ with $BA$; those from $C$ make $20^\circ$ and $40^\circ$ with $CB$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real x=12; pair A=(0,0), B=(x,0), C=(x/2,x*sqrt(3)/2), G=(A+B+C)/3;
+draw(A--B--C--cycle,linewidth(0.8));
+pair a1=extension(A,A+dir(20),B,C), a2=extension(A,A+dir(40),B,C);
+pair b1=extension(B,B+dir(160),A,C), b2=extension(B,B+dir(140),A,C);
+pair c1=extension(C,C+dir(260),A,B), c2=extension(C,C+dir(280),A,B);
+pair V1=extension(A,a1,B,b1), V4=extension(A,a2,B,b2);
+pair V2=extension(A,a1,C,c2), V3=extension(B,b2,C,c2), V5=extension(A,a2,C,c1), V6=extension(B,b1,C,c1);
+fill(V1--V2--V3--V4--V5--V6--cycle,rgb(1,0.8,0.5));
+draw(A--a1,blue); draw(A--a2,blue); draw(B--b1,deepgreen); draw(B--b2,deepgreen); draw(C--c1,red); draw(C--c2,red);
+dot(G); label("$G$",G,N,fontsize(8pt));
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N);
+label("$20^\circ$",A,dir(10)*7,fontsize(8pt));
+\end{asy}
+
+\textbf{The hexagon.} The line $AG$ makes $30^\circ$ with $AB$, so $G$ lies strictly between the two trisectors from $A$, and likewise for $B$ and $C$. Hence the hexagon is the set of points lying between the two trisectors from each vertex. The figure is symmetric under the rotations by $120^\circ$ about $G$ (which permute $A$, $B$, $C$) and under the reflection in the altitude from $C$, the vertical line through $G$.
+
+On this altitude, the $20^\circ$ trisectors from $A$ and from $B$ meet at $V_1=\left(\dfrac x2,\dfrac x2\tan20^\circ\right)$, and the $40^\circ$ trisectors meet at $V_4=\left(\dfrac x2,\dfrac x2\tan40^\circ\right)$. Both points lie on the bisector from $C$, hence between the trisectors from $C$; $V_1$ is below the two $40^\circ$ lines and $V_4$ above the two $20^\circ$ lines. So $V_1$ and $V_4$ lie in the hexagon, each on two of its six boundary lines, hence they are vertices of it, on opposite sides of $G$, at distances
+\[d_1=GV_1=\dfrac x2\left(\tan30^\circ-\tan20^\circ\right),\qquad d_2=GV_4=\dfrac x2\left(\tan40^\circ-\tan30^\circ\right).\]
+Rotating by $\pm120^\circ$ gives four more vertices. The hexagon is bounded by six lines, so it has at most six vertices, and these are all of them: they lie on the six half-lines from $G$ along the axes of symmetry, $60^\circ$ apart, alternately at distances $d_1$ and $d_2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real x=12; pair A=(0,0), B=(x,0), C=(x/2,x*sqrt(3)/2), G=(A+B+C)/3;
+pair a1=extension(A,A+dir(20),B,C), a2=extension(A,A+dir(40),B,C);
+pair b1=extension(B,B+dir(160),A,C), b2=extension(B,B+dir(140),A,C);
+pair c1=extension(C,C+dir(260),A,B), c2=extension(C,C+dir(280),A,B);
+pair V1=extension(A,a1,B,b1), V4=extension(A,a2,B,b2);
+pair V2=extension(A,a1,C,c2), V3=extension(B,b2,C,c2), V5=extension(A,a2,C,c1), V6=extension(B,b1,C,c1);
+fill(V1--V2--V3--V4--V5--V6--cycle,rgb(1,0.8,0.5));
+draw(A--a1,blue); draw(A--a2,blue); draw(B--b1,deepgreen); draw(B--b2,deepgreen); draw(C--c1,red); draw(C--c2,red);
+draw((x/2,G.y-2.2)--(x/2,G.y+2.2),gray+dashed);
+draw(G--V3,gray+dashed);
+draw(G--V1,black+linewidth(0.9)); draw(G--V4,black+linewidth(0.9));
+dot(G); dot(V1); dot(V4);
+label("$G$",G,W); label("$V_1$",V1,SW); label("$V_4$",V4,NW);
+label("$d_1$",(G+V1)/2,E); label("$d_2$",(G+V4)/2,E);
+label("$60^\circ$",G,dir(60)*2.4,fontsize(8pt)); draw(arc(G,0.35,30,90));
+clip(box(G-(2.1,2.1),G+(2.1,2.1)));
+\end{asy}
+
+\textbf{The area.} The hexagon splits into six triangles with sides $d_1,d_2$ and included angle $60^\circ$:
+\[\text{Area}=6\cdot\dfrac12d_1d_2\sin60^\circ=\dfrac{3\sqrt3}{2}d_1d_2.\]
+Using $\tan\alpha-\tan\beta=\dfrac{\sin(\alpha-\beta)}{\cos\alpha\cos\beta}$,
+\[d_1d_2=\dfrac{x^2}{4}\cdot\dfrac{\sin10^\circ}{\cos30^\circ\cos20^\circ}\cdot\dfrac{\sin10^\circ}{\cos40^\circ\cos30^\circ}=\dfrac{x^2}{3}\cdot\dfrac{\sin^210^\circ}{\cos20^\circ\cos40^\circ}.\]
+Finally $\cos20^\circ\cos40^\circ\cos80^\circ=\dfrac18$ (multiply by $8\sin20^\circ$ and use $2\sin\theta\cos\theta=\sin2\theta$ three times: $8\sin20^\circ\cos20^\circ\cos40^\circ\cos80^\circ=\sin160^\circ=\sin20^\circ$), so $\cos20^\circ\cos40^\circ=\dfrac{1}{8\sin10^\circ}$ and
+\[\text{Area}=\dfrac{3\sqrt3}{2}\cdot\dfrac{8x^2}{3}\sin^310^\circ=\boxed{4\sqrt3\,x^2\sin^310^\circ}\approx0.03628\,x^2.\]
+For $x=12$ the area is $576\sqrt3\sin^310^\circ\approx\boxed{5.22}$.

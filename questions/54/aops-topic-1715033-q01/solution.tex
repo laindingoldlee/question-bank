@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1715033_junior_regional_olympiad__fbh_2016_grade_6_problem_4
+% Stable identity: aops-topic-1715033-q01
+Let $\angle COD=x$. Then $\angle AOC=\dfrac{5}{4}x$ and $\angle DOB=\dfrac{3}{2}x$. With the rays in the order $OA,OC,OD,OB$,
+\[
+\angle AOB=\angle AOC+\angle COD+\angle DOB=\dfrac{5}{4}x+x+\dfrac{3}{2}x=\dfrac{15}{4}x=105^\circ ,
+\]
+so $x=\boxed{28^\circ}$ (and $\angle AOC=35^\circ$, $\angle DOB=42^\circ$).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+real a=105,c=70,d=42;
+pair A=4*dir(a),C=4*dir(c),D=4*dir(d),B=4*dir(0);
+draw(O--A,linewidth(0.9));draw(O--B,linewidth(0.9));draw(O--C,linewidth(0.8));draw(O--D,linewidth(0.8));
+draw(arc(O,1.2,c,a),red);draw(arc(O,1.5,d,c),blue);draw(arc(O,1.2,0,d),heavygreen);
+label("$\dfrac{5}{4}x$",O+1.85*dir((a+c)/2),red);
+label("$x$",O+2.0*dir((c+d)/2),blue);
+label("$\dfrac{3}{2}x$",O+1.9*dir(d/2),heavygreen);
+label("$O$",O,SW);label("$A$",A,N);label("$C$",C,NE);label("$D$",D,NE);label("$B$",B,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(If instead the order were $OA,OD,OC,OB$, then $\angle AOB=\angle AOC+\angle DOB-\angle COD=\dfrac{7}{4}x$, giving $x=60^\circ$; the order is specified to make the answer unique.)

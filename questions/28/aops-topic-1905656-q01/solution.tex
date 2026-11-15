@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1905656_a_clothesfolding_problem
+% Stable identity: aops-topic-1905656-q01
+Call a pair \emph{open} at some moment if exactly one of its two items is already in the stack.
+
+\textbf{Key fact.} Items are only added at the two ends, so an item's neighbours, once it has two of them, never change. An item whose partner has not yet arrived must therefore stay at an end of the stack until its partner arrives. Otherwise it gets two other neighbours and the partner can never be placed next to it.
+
+\textbf{Claim.} Josh succeeds exactly when there are never $3$ open pairs at the same time.
+\begin{itemize}
+\item If $3$ pairs are open at once, three unmatched items are in the stack but there are only two ends, so one of them is not at an end and that pair can never be joined.
+\item Conversely, suppose there are never $3$ open pairs. Josh uses this rule: if the new item's partner is in the stack (necessarily at an end), place it next to the partner; otherwise place it at an end not occupied by an unmatched item. Such an end exists because at most one other pair is open at that moment, and if the stack is a single unmatched item, that item stays at the other end. With this rule, all unmatched items always sit at the ends, and every pair is completed side by side.
+\end{itemize}
+Whether Josh knows the future order does not matter: the rule above never needs it.
+
+\textbf{Counting.} Only the order of the pair labels matters. Record for each step whether it opens a new pair (up-step) or closes an open one (down-step). The number of open pairs is a path from $0$ to $0$ with $4$ up-steps and $4$ down-steps that never goes below $0$. Name the pairs in order of first appearance. Each label pattern is then determined by the path together with, at every down-step from height $2$, the choice of which of the two open pairs is closed (at height $1$ there is no choice). The successful patterns are the paths that stay at height at most $2$.
+
+Such a path is a sequence of excursions from $0$. An excursion that opens $s$ pairs has the form ``up, then $s-1$ times (up, down), then down''; it has $s-1$ down-steps from height $2$, so it carries weight $2^{s-1}$. Splitting the $4$ pairs into excursions of sizes $s_1+\cdots+s_j=4$ gives total weight $2^{4-j}$, and there are $\dbinom{3}{j-1}$ such compositions. So the number of successful patterns is
+\[
+\dbinom30 2^3+\dbinom31 2^2+\dbinom32 2^1+\dbinom33 2^0=8+12+6+1=27 .
+\]
+Without restriction, the number of patterns is the number of ways to split $8$ positions into $4$ pairs, $7\cdot5\cdot3\cdot1=105$. All patterns are equally likely: each corresponds to $4!\cdot2^4$ orders of the $8$ items. So Josh succeeds with probability $\dfrac{27}{105}=\dfrac{9}{35}$, and he fails with probability
+\[
+\boxed{\dfrac{26}{35}} .
+\]
+(A computer check over all $8!$ orders and all $2^7$ placement choices confirms $29952$ failing orders out of $40320$, i.e.\ $\dfrac{26}{35}$.)

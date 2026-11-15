@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1785946_math_problem
+% Stable identity: aops-topic-1785946-q01
+Right triangles $ABX$ and $ADY$ have $AB=AD$ and $AX=AY$, so they are congruent (hypotenuse-leg) and $BX=DY=t$, say. Then $CX=CY=1-t$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real t=sqrt(2)/2;
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1),X=(1,t),Y=(t,1);
+fill(A--X--Y--cycle,lightgray);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--X--Y--cycle,linewidth(0.8));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$X$",X,E);label("$Y$",Y,NW);
+label("$t$",(1,t/2),E);label("$t$",(t/2,1),N);
+label("$1-t$",(1,(1+t)/2),E,fontsize(8pt));label("$1-t$",((1+t)/2,1),N,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The triangle $AXY$ is the square minus three right triangles:
+\[
+[AXY]=1-\dfrac {t}{2}-\dfrac {t}{2}-\dfrac{(1-t)^2}{2}.
+\]
+With $u=1-t$ this is $u-\dfrac{u^2}{2}$, and setting it equal to $\dfrac{1}{4}$ gives $2u^2-4u+1=0$, so $u=1\pm\dfrac{\sqrt2}{2}$. Since $0\le u\le1$, $u=1-\dfrac{\sqrt2}{2}$. Finally $XY$ is the hypotenuse of the isosceles right triangle $XCY$:
+\[
+XY=u\sqrt2=\sqrt2-1 .
+\]
+So $XY=\boxed{\sqrt2-1}$. (Check: $t=\dfrac{\sqrt2}{2}$ and $[AXY]=1-\dfrac{\sqrt2}{2}-\dfrac{\left(1-\dfrac{\sqrt2}{2}\right)^2}{2}=\dfrac{1}{4}$.)

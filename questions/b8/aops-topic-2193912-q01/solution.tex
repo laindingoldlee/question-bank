@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2193912_how_many_pairs_of_diagonals_of_a_regular_decagon_which_are_parallel
+% Stable identity: aops-topic-2193912-q01
+Label the vertices $P_0,P_1,\dots,P_9$ counterclockwise, with $P_k$ at angle $36k^\circ$ on a circle centred at $O$. The chord $P_iP_j$ is perpendicular to the bisector of angle $P_iOP_j$, which points in the direction $\dfrac{36i+36j}{2}=18(i+j)$ degrees. So two chords $P_iP_j$ and $P_kP_l$ are parallel exactly when $18(i+j)\equiv18(k+l)\pmod{180}$, that is, when
+\[i+j\equiv k+l\pmod{10}.\]
+So the $\dbinom{10}{2}=45$ chords (sides and diagonals) fall into $10$ classes of parallel chords, one for each residue $s$ of $i+j$ modulo $10$.
+
+\textbf{$s$ odd.} The equation $i+j\equiv s$ has $10$ ordered solutions with $i\ne j$ (since $2i\equiv s$ is impossible), giving $5$ chords. Exactly two of them are sides: a side $P_iP_{i+1}$ has $2i+1\equiv s$, which has the two solutions $i$ and $i+5$. So each odd class contains $3$ diagonals.
+
+\textbf{$s$ even.} Now $2i\equiv s\pmod{10}$ has two solutions, which must be excluded, leaving $8$ ordered solutions, that is, $4$ chords. All are diagonals, because sides have odd $i+j$.
+
+In the figure, the red chords form the class $s=0$ (four diagonals) and the blue ones the class $s=1$ (two sides, thick, and three diagonals, dashed).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair[] V; for(int k=0;k<10;++k) V[k]=dir(36*k);
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--V[7]--V[8]--V[9]--cycle,gray(0.4));
+draw(V[1]--V[9],red+linewidth(1)); draw(V[2]--V[8],red+linewidth(1)); draw(V[3]--V[7],red+linewidth(1)); draw(V[4]--V[6],red+linewidth(1));
+draw(V[2]--V[9],blue+dashed); draw(V[3]--V[8],blue+dashed); draw(V[4]--V[7],blue+dashed);
+draw(V[0]--V[1],blue+linewidth(1.6)); draw(V[5]--V[6],blue+linewidth(1.6));
+for(int k=0;k<10;++k){ dot(V[k]); label("$P_{"+string(k)+"}$",V[k],V[k],fontsize(9pt)); }
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Check: $5\cdot3+5\cdot4=35=\dfrac{10\cdot7}{2}$, the number of diagonals.) Two diagonals are parallel exactly when they are in the same class, so the number of parallel pairs is
+\[5\dbinom32+5\dbinom42=5\cdot3+5\cdot6=\boxed{45}.\]

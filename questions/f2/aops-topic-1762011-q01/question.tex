@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1762011_area_in_square
+% Stable identity: aops-topic-1762011-q01
+Square $ABCD$ has side length $1$. Four quarter circles of radius $1$ are drawn inside the square, centred at $A$, $B$, $C$ and $D$. What is the area of the region that lies inside all four quarter circles (shaded)?
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1);
+real h=sqrt(3)/2;
+pair P1=(0.5,1-h),P2=(h,0.5),P3=(0.5,h),P4=(1-h,0.5);
+path reg=arc(D,1,-60,-30)--arc(A,1,30,60)--arc(B,1,120,150)--arc(C,1,210,240)--cycle;
+fill(reg,rgb(0.8,0.88,1));
+draw(arc(A,1,0,90),linewidth(0.6));draw(arc(B,1,90,180),linewidth(0.6));
+draw(arc(C,1,180,270),linewidth(0.6));draw(arc(D,1,270,360),linewidth(0.6));
+draw(A--B--C--D--cycle,linewidth(0.9));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

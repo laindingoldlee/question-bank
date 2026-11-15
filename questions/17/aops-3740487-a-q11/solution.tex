@@ -1,0 +1,6 @@
+The altitude to the side of length 24 bisects it into two lengths 12. Pythagoras gives height $\sqrt{20^2-12^2}=16$, hence area $\dfrac{1}{2}\cdot24\cdot16=192$. Each altitude to a side of length 20 is $\dfrac{2\cdot192}{20}=19.2$. Their sum is $16+19.2+19.2=\boxed{54.4}$, choice A.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair A=(0, 16),B=(-12, 0),C=(12, 0);draw(A--B--C--cycle);label("$A$",A,(-1,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));pair D=(0,0),E=A+dot(B-A,C-A)/dot(C-A,C-A)*(C-A),F=A+dot(C-A,B-A)/dot(B-A,B-A)*(B-A);draw(A--D^^B--E^^C--F,dashed);label("$D$",D,(0,-1));label("$E$",E,(1,1));label("$F$",F,(-1,1));
+\end{asy}
+

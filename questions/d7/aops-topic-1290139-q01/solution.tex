@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h1290139_selfdescribed_number
+% Stable identity: aops-topic-1290139-q01
+Let the digits be $d_1d_2d_3d_4d_5$, where $d_1$ counts $0$s, $d_2$ counts $1$s, and so on. The counts cover all five positions, so $d_1+\dots+d_5=5$; the digit sum is also $0d_1+1d_2+2d_3+3d_4+4d_5$, and equating gives $d_1=d_3+2d_4+3d_5$. Also $d_1\ge1$ (if there were no $0$s, then $d_1=0$ would itself be a $0$).
+\begin{itemize}
+\item If $d_5\ge1$, a digit $4$ occurs, so the digit sum is at least $4+d_1\ge4+3=7>5$. So $d_5=0$.
+\item If $d_4\ge1$, then $d_1=d_3+2d_4\ge2$ and some digit equals $3$. If $d_1=3$, the other zeros force $d_2=d_3=d_5=0$ and $d_4=2$, giving $30020$, which has one $2$ but $d_3=0$; impossible. If $d_1=2$, then $d_4=1$, $d_3=0$, and the digit $3$ must be $d_2$, making the digit sum $6$; impossible. So $d_4=0$.
+\end{itemize}
+Now $d_1=d_3$ and $d_2=5-2d_1$. If $d_1=1$, then $d_2=3$, so a $3$ occurs and $d_4\ge1$, a contradiction. If $d_1=2$, then $d_2=1$, $d_3=2$: the number $21200$, which indeed has two $0$s, one $1$, two $2$s and no $3$s or $4$s. ($d_1\ge3$ would make $d_2<0$.) The unique answer is $\boxed{21200}$.

@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1536819_counting_series
+% Stable identity: aops-topic-1536819-q01
+\textbf{The sum.} By Vandermonde's identity, $\displaystyle\sum_i\dbinom{m}{i}\dbinom{n}{k-i}=\dbinom{m+n}{k}$ (choose $k$ people from $m$ men and $n$ women by the number $i$ of men). Since $\dbinom{12}{i}=\dbinom{12}{12-i}$,
+\[
+\sum_{i=0}^{12}\dbinom{12}{i}\dbinom{12}{12-i}=\dbinom{24}{12},\qquad \sum_{i=0}^{12}\dbinom{11}{i}\dbinom{13}{12-i}=\dbinom{24}{12}
+\]
+(the term $i=12$ of the second sum is $0$). So the equation says $\dbinom xy=\dbinom{24}{12}=2704156$. Write $N=2704156$.
+
+\textbf{Minimising $\dfrac {x}{y}$.} We need $1\le y\le x-1$ (for $y>x$ the binomial coefficient is $0$, and for $y=x$ it is $1$). Let $k=x-y\ge1$, so $\dbinom xk=N$ and $\dfrac {x}{y}=1+\dfrac{k}{x-k}$.
+\begin{itemize}
+\item $k=1$: $\dbinom x1=x=N$, so $(x,y)=(N,N-1)$ and $\dfrac {x}{y}=1+\dfrac{1}{N-1}$.
+\item $k=x-1$ (that is, $y=1$): $x=N$ and $\dfrac {x}{y}=N$, much larger.
+\item $2\le k\le x-2$: then $N=\dbinom xk\ge\dbinom x2\ge x$ (as $x\ge4$), so $x-k<N-1$ and $\dfrac{k}{x-k}>\dfrac{1}{N-1}$.
+\end{itemize}
+Hence the smallest value is attained at $(x,y)=(2704156,2704155)$:
+\[
+\dfrac {x}{y}=\boxed{\dfrac{2704156}{2704155}}.
+\]
+(If one also requires $y\le\dfrac {x}{2}$, then $\dfrac {x}{y}\ge2$, with equality only for $x=2y$; since $\dbinom{2y}{y}$ increases with $y$, this happens only for $(24,12)$, giving $2$.)

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2578508_sums_and_products
+% Stable identity: aops-topic-2578508-q02
+Let $v(j)$ be the exponent of $2$ in $j$. The factor $j$ occurs in $m!$ for $m=j,j+1,\dots,2021$, that is in $2022-j$ of the factorials. So
+\[k=\sum_{j=1}^{2021}(2022-j)\,v(j).\]
+Since $v(j)$ is the number of $i\ge1$ with $2^i\mid j$, we can sum over $i$ instead. Fix $d=2^i$ and let $q=\left\lfloor\dfrac{2021}d\right\rfloor$. The multiples of $d$ are $j=d,2d,\dots,qd$, and they contribute
+\[\sum_{t=1}^q(2022-td)=q\left(2022-\dfrac{d(q+1)}2\right).\]
+\[\begin{array}{c|cccccccccc}
+d&2&4&8&16&32&64&128&256&512&1024\\\hline
+q&1010&505&252&126&63&31&15&7&3&1\\\hline
+\text{contribution}&1021110&510050&254520&126756&62874&30938&14970&6986&2994&998
+\end{array}\]
+For example, $d=2$ gives $1010(2022-1011)=1010\cdot1011=1021110$. Adding the contributions,
+\[k=\boxed{2032196}.\]

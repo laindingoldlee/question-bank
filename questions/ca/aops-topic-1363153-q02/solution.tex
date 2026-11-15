@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1363153_can_someone_help_me_plz
+% Stable identity: aops-topic-1363153-q02
+Since ray $PS$ lies inside $\angle QPR$, the angle splits as $\angle QPR=\angle QPS+\angle SPR$:
+\[
+7x-95=47+(3x-38)\iff 7x-95=3x+9\iff 4x=104\iff x=26 .
+\]
+Then $\angle RPS=3\cdot26-38=40^\circ$ and $\angle QPR=7\cdot26-95=\boxed{87^\circ}=47^\circ+40^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0), Q=4*dir(0), Sx=4*dir(47), R=4*dir(87);
+draw(P--Q,linewidth(0.9)); draw(P--Sx,linewidth(0.9)); draw(P--R,linewidth(0.9));
+draw(arc(P,1.2,0,47),blue); label("$47^\circ$",P+1.55*dir(23.5),blue+fontsize(8pt));
+draw(arc(P,1.9,47,87),red); label("$40^\circ$",P+2.3*dir(67),red+fontsize(8pt));
+dot(P); label("$P$",P,SW); label("$Q$",Q,E); label("$S$",Sx,NE); label("$R$",R,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

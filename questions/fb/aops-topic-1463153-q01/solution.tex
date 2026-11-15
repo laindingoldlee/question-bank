@@ -1,0 +1,98 @@
+% Source: https://artofproblemsolving.com/community/c3h1463153_number_of_polyominoes
+% Stable identity: aops-topic-1463153-q01
+\textbf{(a)} Classify a pentomino by the length $L$ of its longest straight run of squares (in a row or a column).
+\begin{itemize}
+\item $L=5$: the straight pentomino I.
+\item $L=4$: a run of $4$ plus one square beside it (not at an end, or $L$ would be $5$). Beside an end square of the run it gives L; beside a middle square it gives Y. Two shapes.
+\item $L=3$: put the run in a row, squares $1,2,3$. The other two squares cannot extend the row. At least one of them is next to the run, in the row above or below.
+\begin{itemize}
+\item \emph{Both are next to the run, on the same side}: above squares $1,2$ (or $2,3$) gives P, above squares $1,3$ gives U.
+\item \emph{Both are next to the run, on opposite sides}: above and below the same end square gives T; above and below the middle square gives X; above one square and below an adjacent one gives F; above square $1$ and below square $3$ gives Z.
+\item \emph{Only one is next to the run}, and the fifth square is attached to it. If the fifth square is directly above it, we get a column of three: V (above an end square) or T (above the middle square). Otherwise the fifth square is beside it in the upper row, but not above the run; this happens only for the end squares and gives N.
+\end{itemize}
+These are eight shapes: P, U, T, X, F, Z, V, N.
+\item $L=2$: no square can have neighbours on two opposite sides, so each square has at most $2$ neighbours. A $2\times2$ block is impossible (a fifth square attached to it would create a run of $3$). The squares therefore form a chain, and consecutive steps of the chain must turn (otherwise three are in line), always alternately left and right (two turns the same way close a $2\times2$ block). This is the staircase W.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+filldraw(box((0,0),(1,1)),lightred,black);
+filldraw(box((0,1),(1,2)),lightred,black);
+filldraw(box((0,2),(1,3)),lightred,black);
+filldraw(box((0,3),(1,4)),lightred,black);
+filldraw(box((0,4),(1,5)),lightred,black);
+label("I",(1.5,-0.8));
+filldraw(box((4.2,0),(5.2,1)),lightblue,black);
+filldraw(box((4.2,1),(5.2,2)),lightblue,black);
+filldraw(box((4.2,2),(5.2,3)),lightblue,black);
+filldraw(box((4.2,3),(5.2,4)),lightblue,black);
+filldraw(box((5.2,0),(6.2,1)),lightblue,black);
+label("L",(5.7,-0.8));
+filldraw(box((8.4,0),(9.4,1)),lightblue,black);
+filldraw(box((8.4,1),(9.4,2)),lightblue,black);
+filldraw(box((8.4,2),(9.4,3)),lightblue,black);
+filldraw(box((8.4,3),(9.4,4)),lightblue,black);
+filldraw(box((9.4,2),(10.4,3)),lightblue,black);
+label("Y",(9.9,-0.8));
+filldraw(box((12.6,0),(13.6,1)),lightgreen,black);
+filldraw(box((12.6,1),(13.6,2)),lightgreen,black);
+filldraw(box((12.6,2),(13.6,3)),lightgreen,black);
+filldraw(box((13.6,1),(14.6,2)),lightgreen,black);
+filldraw(box((13.6,2),(14.6,3)),lightgreen,black);
+label("P",(14.1,-0.8));
+filldraw(box((16.8,0),(17.8,1)),lightgreen,black);
+filldraw(box((17.8,0),(18.8,1)),lightgreen,black);
+filldraw(box((18.8,0),(19.8,1)),lightgreen,black);
+filldraw(box((16.8,1),(17.8,2)),lightgreen,black);
+filldraw(box((18.8,1),(19.8,2)),lightgreen,black);
+label("U",(18.3,-0.8));
+filldraw(box((21,2),(22,3)),lightgreen,black);
+filldraw(box((22,2),(23,3)),lightgreen,black);
+filldraw(box((23,2),(24,3)),lightgreen,black);
+filldraw(box((22,1),(23,2)),lightgreen,black);
+filldraw(box((22,0),(23,1)),lightgreen,black);
+label("T",(22.5,-0.8));
+filldraw(box((1,-7),(2,-6)),lightgreen,black);
+filldraw(box((1,-6),(2,-5)),lightgreen,black);
+filldraw(box((1,-5),(2,-4)),lightgreen,black);
+filldraw(box((0,-6),(1,-5)),lightgreen,black);
+filldraw(box((2,-6),(3,-5)),lightgreen,black);
+label("X",(1.5,-7.8));
+filldraw(box((5.2,-7),(6.2,-6)),lightgreen,black);
+filldraw(box((5.2,-6),(6.2,-5)),lightgreen,black);
+filldraw(box((5.2,-5),(6.2,-4)),lightgreen,black);
+filldraw(box((4.2,-6),(5.2,-5)),lightgreen,black);
+filldraw(box((6.2,-5),(7.2,-4)),lightgreen,black);
+label("F",(5.7,-7.8));
+filldraw(box((8.4,-5),(9.4,-4)),lightgreen,black);
+filldraw(box((9.4,-5),(10.4,-4)),lightgreen,black);
+filldraw(box((9.4,-6),(10.4,-5)),lightgreen,black);
+filldraw(box((9.4,-7),(10.4,-6)),lightgreen,black);
+filldraw(box((10.4,-7),(11.4,-6)),lightgreen,black);
+label("Z",(9.9,-7.8));
+filldraw(box((12.6,-7),(13.6,-6)),lightgreen,black);
+filldraw(box((13.6,-7),(14.6,-6)),lightgreen,black);
+filldraw(box((14.6,-7),(15.6,-6)),lightgreen,black);
+filldraw(box((12.6,-6),(13.6,-5)),lightgreen,black);
+filldraw(box((12.6,-5),(13.6,-4)),lightgreen,black);
+label("V",(14.1,-7.8));
+filldraw(box((16.8,-7),(17.8,-6)),lightgreen,black);
+filldraw(box((16.8,-6),(17.8,-5)),lightgreen,black);
+filldraw(box((17.8,-6),(18.8,-5)),lightgreen,black);
+filldraw(box((17.8,-5),(18.8,-4)),lightgreen,black);
+filldraw(box((17.8,-4),(18.8,-3)),lightgreen,black);
+label("N",(18.3,-7.8));
+filldraw(box((21,-7),(22,-6)),lightyellow,black);
+filldraw(box((22,-7),(23,-6)),lightyellow,black);
+filldraw(box((22,-6),(23,-5)),lightyellow,black);
+filldraw(box((23,-6),(24,-5)),lightyellow,black);
+filldraw(box((23,-5),(24,-4)),lightyellow,black);
+label("W",(22.5,-7.8));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In total there are $1+2+8+1=\boxed{12}$ pentominoes (shown above, grouped by $L$).
+
+\textbf{(b)} No. The numbers agree for $1$ to $4$ squares, but there are $12$ pentominoes while $C_4=14$. (The counts continue $35,108,369,\dots$, while the Catalan numbers continue $42,132,429,\dots$) The agreement for small $n$ is a coincidence: a few matching terms never prove that two sequences are equal.

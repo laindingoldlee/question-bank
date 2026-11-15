@@ -1,0 +1,30 @@
+Choose coordinates
+\[
+E=(0,0),\ A=(a,0),\ C=(-c,0),\ B=(0,b),\ D=(0,-d),
+\qquad a,b,c,d>0.
+\]
+The power of $E$ with respect to the circle tangent at $P$ is $EP^2=c^2$. Its intersections with $AC$ are $A,R$, so the signed-coordinate product gives $aR_x=c^2$, hence $R=(\dfrac{c^2}{a},0)$.
+
+Put $K=a^2b+c^2d>0$. Intersecting lines $AD$ and $BR$ gives
+\[
+Q=\left(\dfrac{ac^2(b+d)}{K},\ \dfrac{bd(c^2-a^2)}{K}\right).
+\]
+The circle through $B,C,D$ has equation
+\[
+x^2+y^2+\dfrac{c^2-bd}{c}x+(d-b)y-bd=0.
+\]
+Substituting the two coordinates of $Q$ and collecting terms yields
+\[
+-\dfrac{ac(a+c)(b+d)(ab+cd)(bd-c^2)}{K^2}=0.
+\]
+Every displayed factor apart from $bd-c^2$ is nonzero, so $bd=c^2$. Thus
+\[
+(B-C)\cdot(D-C)=(c,b)\cdot(c,-d)=c^2-bd=0.
+\]
+The two sides through $C$ are perpendicular, proving $\boxed{\angle BCD=90^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair E=(0,0),A=(4,0),C=(-3,0),B=(0,6),D=(0,-1.5),R=(2.25,0),Q=(180/73,-42/73);real t=(16-sqrt(128.25))/18.25;pair P=A+t*(D-A);real ux=3.125,uy=-((6.25*P.x-18)/P.y)/2;pair U=(ux,uy);draw(circle((0,2.25),3.75),gray);draw(circle(U,length(U-A)),lightblue);draw(A--B--C--D--cycle);draw(A--C,dashed);draw(B--D,dashed);draw(A--D);draw(B--Q,blue);draw(E--1.3P,red);dot(P);dot(Q);label("$A$",A,SE);label("$B$",B,N);label("$C$",C,W);label("$D$",D,S);label("$E$",E,NW);label("$R$",R,N);draw(P--(4.3,-1));label("$P$",(4.3,-1),(1,0));draw(Q--(2.6,-1.6));label("$Q$",(2.6,-1.6),S);
+\end{asy}

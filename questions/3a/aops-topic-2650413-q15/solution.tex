@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2650413_sigma_mathematics_competition_smc_problems
+% Stable identity: aops-topic-2650413-q15
+Each label has two cards, which go to two different piles, so each label $k$ is missing from exactly one pile; call it $m_k\in\{1,2,3\}$. Since the piles are sorted, the arrangement is determined by the sequence $m_1,\dots,m_8$, and pile $p$ consists of the labels $k$ with $m_k\ne p$.
+\begin{itemize}
+\item Pile $p$ has two adjacent cards differing by more than $2$ exactly when two consecutive labels $k,k+1$ are both missing from it ($m_k=m_{k+1}=p$), with a smaller label and a larger label present.
+\item Pile $p$ lacks a card $1$ or $2$ exactly when $m_1=m_2=p$.
+\end{itemize}
+So the conditions say: if $m_k=m_{k+1}$ for some $k$, then $m_k=m_{k+1}=\dots=m_8$ (no larger label of that pile is present), and $k\ge2$. In other words, the sequence has no two equal neighbours, except possibly in a final constant run that does not start at position $1$.
+
+If the final run has length $1$, the whole sequence has distinct neighbours: $3\cdot2^7=384$ sequences. If it has length $L\ge2$, it starts at position $j=9-L\in\{2,\dots,7\}$, and $m_1,\dots,m_j$ have distinct neighbours, with the rest equal to $m_j$: $3\cdot2^{j-1}$ sequences. The total is
+\[384+3\left(2+4+8+16+32+64\right)=384+378=\boxed{762}.\]

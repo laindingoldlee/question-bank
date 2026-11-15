@@ -1,0 +1,21 @@
+Choose three-dimensional coordinates
+\[
+B=(0,0,0),\quad A=(2,0,0),\quad C=(1,\sqrt3,0),\quad D=(3,\sqrt3,0).
+\]
+Then $H=\left(1,\dfrac{\sqrt3}{3},0\right)$ and $S=\left(1,\dfrac{\sqrt3}{3},\sqrt3\right)$. Direction vectors for the lines are
+\[
+\mathbf u=C-A=(-1,\sqrt3,0),\quad
+\mathbf v=D-S=\left(2,\dfrac{2\sqrt3}{3},-\sqrt3\right).
+\]
+Their cross product is $\mathbf u\times\mathbf v=\left(-3,-\sqrt3,-\dfrac{8\sqrt3}{3}\right)$, of length $\dfrac{10}{\sqrt3}$. The distance between the skew lines is the absolute component of $S-A$ in this common perpendicular direction:
+\[
+d=\dfrac{|(S-A)\cdot(\mathbf u\times\mathbf v)|}{|\mathbf u\times\mathbf v|}
+=\dfrac{6}{\dfrac{10}{\sqrt3}}
+=\boxed{\dfrac{3\sqrt3}{5}\approx1.04}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair proj(real x,real y,real z){return (x+.5y,.4y+z);}pair B=proj(0,0,0),A=proj(2,0,0),C=proj(1,sqrt(3),0),D=proj(3,sqrt(3),0),H=proj(1,sqrt(3)/3,0),S=proj(1,sqrt(3)/3,sqrt(3)),X=proj(1.5,sqrt(3)/2,0),Y=proj(51/25,17sqrt(3)/25,12sqrt(3)/25);draw(A--B--C--D--cycle);draw(S--A);draw(S--B);draw(S--C);draw(S--D,red+1);draw(A--C,blue+1);draw(S--H,dashed);draw(X--Y,heavygreen);label("$A$",A,S);label("$B$",B,SW);label("$C$",C,NW);label("$D$",D,E);label("$S$",S,N);label("$H$",H,SW);label("$X$",X,SE);label("$Y$",Y,NE);
+\end{asy}

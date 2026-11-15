@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1214287_circles_and_tangencies
+% Stable identity: aops-topic-1214287-q01
+Let the large radius be $R$ and the small radius $r$. The small circle is tangent to both arms of the $60^\circ$ angle, so its centre $I$ lies on the bisector, and the perpendicular from $I$ to $OA$ has length $r$ with $\angle IOA=30^\circ$. Hence $OI=\dfrac{r}{\sin30^\circ}=2r$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+real R=3; pair O=(0,0); draw(O--R*dir(60)); draw(O--R*dir(0)); draw(arc(O,R,-30,90));
+pair I=2*dir(30); draw(circle(I,1),blue); dot(O); dot(I); draw(I--I+dir(-60),dashed); draw(O--R*dir(30),dotted);
+label("$O$",O,W); label("$A$",R*dir(0),SE); label("$B$",R*dir(60),N); label("$r$",I+0.5*dir(-60),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Internal tangency means $OI+r=R$, so $3r=R$. The ratio of areas is $\left(\dfrac {r}{R}\right)^2=\boxed{\dfrac{1}{9}}$.

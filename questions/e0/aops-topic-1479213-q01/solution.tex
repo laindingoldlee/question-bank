@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1479213_coordinate_geometry_problem
+% Stable identity: aops-topic-1479213-q01
+The centre is equidistant from all three points, so it lies on the perpendicular bisector of each chord.
+
+The chord from $(-2,0)$ to $(8,0)$ is horizontal with midpoint $(3,0)$, so its perpendicular bisector is $x=3$. The chord from $(-2,0)$ to $(0,2)$ has midpoint $(-1,1)$ and slope $1$, so its perpendicular bisector has slope $-1$ and passes through $(-1,1)$: it is $y=-x$. These lines meet at
+\[
+(u,v)=\boxed{(3,-3)} .
+\]
+Check: the distances to the three points are $\sqrt{25+9}$, $\sqrt{9+25}$ and $\sqrt{25+9}$, all equal to $\sqrt{34}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(-2,0),B=(0,2),C=(8,0),O=(3,-3); real r=sqrt(34);
+draw((-6,0)--(12,0),gray,Arrow(4)); draw((0,-9.5)--(0,4),gray,Arrow(4));
+label("$x$",(12,0),N,gray); label("$y$",(0,4),W,gray);
+draw(circle(O,r),linewidth(0.9));
+draw((3,3.2)--(3,-10),blue+dashed); draw((3,-3)--(-2.2,2.2),blue+dashed);
+draw(O--C,red); draw(O--A,red); draw(O--B,red);
+dot(A);dot(B);dot(C);dot(O,red);
+label("$(-2,0)$",A,NW); label("$(0,2)$",B,E); label("$(8,0)$",C,NE); label("$(3,-3)$",O,E,red);
+label("$x=3$",(3,-10),S,blue); label("$y=-x$",(-2.2,2.2),N,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

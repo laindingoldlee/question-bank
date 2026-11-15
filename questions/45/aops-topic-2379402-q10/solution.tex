@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2379402_100th_post_problems_and_riddles_abhavsars_100th_post
+% Stable identity: aops-topic-2379402-q10
+By the Pythagorean theorem $AB=\sqrt{20^2-16^2}=12$. Similar triangles have equal corresponding angles, so $\angle F=\angle C$, and the scale factor $\dfrac13$ does not change the angle:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(16,0), A=(0,12);
+draw(A--B--C--cycle,linewidth(0.9)); draw((0,0.9)--(0.9,0.9)--(0.9,0));
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE);
+label("$12$",(A+B)/2,W); label("$16$",(B+C)/2,S); label("$20$",(A+C)/2,NE);
+pair E=(22,0), D=(22,4), Fp=(22+16/3,0);
+draw(D--E--Fp--cycle,linewidth(0.9)); draw((22,0.6)--(22.6,0.6)--(22.6,0));
+label("$D$",D,N); label("$E$",E,SW); label("$F$",Fp,SE);
+label("$4$",(D+E)/2,W); label("$\dfrac{16}{3}$",(E+Fp)/2,S); label("$\dfrac{20}{3}$",(D+Fp)/2,NE);
+\end{asy}
+
+\[\sin F=\sin C=\dfrac{AB}{AC}=\dfrac{12}{20}=\boxed{\dfrac35}.\]
+(In triangle $DEF$ directly: $\dfrac{DE}{DF}=\dfrac{4}{\dfrac{20}{3}}=\dfrac35$.)

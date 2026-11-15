@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2423114_late_100th_post
+% Stable identity: aops-topic-2423114-q11
+Let $O$ be the centre of the small circle and $P,Q,R,S$ the centres of the four circles, in order.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real r=1+sqrt(2);
+draw(circle((0,0),1),linewidth(0.9));
+pair[] Cc; for(int k=0;k<4;++k){ Cc.push((1+r)*dir(45+90k)); draw(circle(Cc[k],r),gray); dot(Cc[k]); }
+draw(Cc[0]--Cc[1]--Cc[2]--Cc[3]--cycle,blue+linewidth(0.9));
+draw(Cc[0]--Cc[2],red+linewidth(0.9));
+dot((0,0)); label("$O$",(0,0),SE);
+label("$2r$",(Cc[0]+Cc[1])/2,N,blue); label("$1+r$",(Cc[0])/2,SE,red); label("$1+r$",(Cc[2])/2,NW,red);
+label("$P$",Cc[0],NE); label("$Q$",Cc[1],NW); label("$R$",Cc[2],SW); label("$S$",Cc[3],SE);
+\end{asy}
+
+Tangent circles have centres at distance equal to the sum of the radii. So $PQ=2r$ (adjacent circles are tangent), and $OP=OR=1+r$, with $P$, $O$, $R$ on a line (the diagonal of the square $PQRS$ passes through its centre $O$). The diagonal of a square of side $2r$ is $2r\sqrt2$, so
+\[2(1+r)=2r\sqrt2\quad\Longrightarrow\quad r\left(\sqrt2-1\right)=1\quad\Longrightarrow\quad r=\dfrac{1}{\sqrt2-1}=\boxed{1+\sqrt2}.\]

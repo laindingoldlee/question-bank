@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1261827_easy_3d_geo
+% Stable identity: aops-topic-1261827-q01
+Take the cross-section through the axis: an isosceles triangle of height $6$ and base $2R$ with an inscribed circle of radius $1$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair A=(0,6),B=(-sqrt(6)/2,0),C=(sqrt(6)/2,0);
+draw(A--B--C--cycle,linewidth(1)); draw(circle((0,1),1),blue);
+draw((0,0)--A,dashed); dot((0,1)); draw((0,1)--(0,0),blue);
+label("$1$",(0,0.5),E); label("$6$",(0,3.5),W); label("$R$",(C/2),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Let $L=\sqrt{R^2+36}$ be the slant height. The area of the triangle equals the inradius times the semiperimeter:
+\[\dfrac{1}{2}\cdot2R\cdot6=1\cdot(R+L)\quad\Longrightarrow\quad 6R=R+L\quad\Longrightarrow\quad L=5R.\]
+Then $R^2+36=25R^2$, so $R^2=\dfrac{3}{2}$ and $R=\boxed{\dfrac{\sqrt6}{2}}$.

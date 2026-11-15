@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1694219_2011_mathcounts_school_sprint_round
+% Stable identity: aops-topic-1694219-q29
+The surface of the solid has four parts (figure not to scale):
+\begin{itemize}
+\item the outer curved surface: $2\pi\cdot6\cdot10=120\pi$;
+\item the inner curved surface (the wall of the hole): $2\pi\cdot2\cdot10=40\pi$;
+\item the top and bottom, each a ring between radii $2$ and $6$: $2\left(\pi\cdot6^2-\pi\cdot2^2\right)=64\pi$.
+\end{itemize}
+(The curved surface of a cylinder of radius $r$ and height $h$ unrolls to a rectangle of sides $2\pi r$ and $h$.) The total is $120\pi+40\pi+64\pi=\boxed{224\pi}$ square inches.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=3,r=1,h=5,k=0.35;
+path el(real rr,real y){return shift(0,y)*scale(rr,k*rr)*unitcircle;}
+fill(el(R,h),palegray);fill(el(r,h),white);
+draw(el(R,h),linewidth(0.8));draw(el(r,h),linewidth(0.8));
+draw((-R,0)--(-R,h),linewidth(0.8));draw((R,0)--(R,h),linewidth(0.8));
+draw(arc((0,0),R,180,360,CCW) ,invisible);
+draw(shift(0,0)*scale(R,k*R)*arc((0,0),1,180,360),linewidth(0.8));
+draw(shift(0,0)*scale(R,k*R)*arc((0,0),1,0,180),dashed);
+draw((-r,h)--(-r,0),dashed);draw((r,h)--(r,0),dashed);
+draw(shift(0,0)*scale(r,k*r)*unitcircle,dashed);
+draw((0,h)--(R,h),red);label("$6$",(R/2+0.5,h),N,red);
+draw((0,h)--(-r,h),blue);label("$2$",(-r/2,h+0.3),N,blue);
+draw((R+0.4,0)--(R+0.4,h),Arrows(TeXHead));label("$10$",(R+0.4,h/2),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

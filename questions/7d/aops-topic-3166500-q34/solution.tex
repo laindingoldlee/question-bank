@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h3166500_2021_lmt_fall_guts_round_p25p36_lexington_mathematical_tournament
+% Stable identity: aops-topic-3166500-q34
+For a prime $p$, put $r=\lfloor\sqrt p\rfloor$. Its distance to the nearest square is $\min(p-r^2,(r+1)^2-p)$; no integer ties because consecutive squares differ by an odd number. A sieve through $20000$ supplies more than $2021$ primes, with the 2021st equal to $17579$. Exact summation by the following code gives $\boxed{84849}$.\begin{verbatim}
+from math import isqrt
+limit=20000
+prime=[True]*(limit+1)
+prime[0]=prime[1]=False
+for p in range(2,isqrt(limit)+1):
+    if prime[p]:
+        for n in range(p*p,limit+1,p):prime[n]=False
+ps=[n for n in range(2,limit+1) if prime[n]][:2021]
+assert len(ps)==2021 and ps[-1]==17579
+answer=sum(min(p-isqrt(p)**2,(isqrt(p)+1)**2-p) for p in ps)
+assert answer==84849
+\end{verbatim}

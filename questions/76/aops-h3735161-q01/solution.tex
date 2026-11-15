@@ -1,0 +1,12 @@
+The side lengths imply $\angle ABC=90^\circ$, so $BD$ makes $45^\circ$ with both legs. The diameter-circle conditions give $\angle AXD=\angle CYD=90^\circ$. Therefore $X,Y$ are the orthogonal projections of $A,C$ onto $BD$.
+
+Their distances along the same ray from $B$ are $BX=5\cos45^\circ=\dfrac{5}{\sqrt2}$ and $BY=12\cos45^\circ=\dfrac{12}{\sqrt2}$. Thus
+\[
+p=BY-BX=\dfrac{7}{\sqrt2},\qquad\boxed{2p^2=49}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair B=(0,0),A=(5,0),C=(0,12),D=(60/17,60/17),X=(2.5,2.5),Y=(6,6);draw(circle((D+A)/2,length(D-A)/2),lightblue);draw(circle((D+C)/2,length(D-C)/2),gray);draw(A--B--C--cycle);draw(B--Y,blue);draw(A--X,dashed);draw(C--Y,dashed);label("$A$",A,SE);label("$B$",B,SW);label("$C$",C,N);label("$D$",D,E);label("$X$",X,W);label("$Y$",Y,NE);
+\end{asy}

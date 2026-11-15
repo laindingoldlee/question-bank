@@ -1,0 +1,7 @@
+First remove all 36 rooks strictly inside the outer border. Every such rook still has a visible rook in both directions along its row and column, since the border remains occupied, so removal is allowed. Next remove the six non-corner rooks of the top row. Each has two horizontal neighbours and a vertical neighbour. Finally remove the six non-corner rooks of the left column; each has two vertical neighbours and a horizontal neighbour. This removes $36+6+6=\boxed{48}$ rooks legally, leaving the bottom row, right column, and upper-left corner.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=0;x<8;++x)for(int y=0;y<8;++y){draw(box((x,y),(x+1,y+1)),gray);if(y==0||x==7||(x==0&&y==7))label("R",(x+.5,y+.5));}
+\end{asy}

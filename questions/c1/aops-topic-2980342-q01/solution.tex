@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2980342_when_combinatorics_ne_slick
+% Stable identity: aops-topic-2980342-q01
+Number the positions $1$ to $12$ and let $I$ be (number of reds in odd positions) minus (number of reds in even positions), counted in the current row.
+
+\emph{$I$ is invariant.} Removing an adjacent pair removes one odd and one even position, both of the same colour, so the contribution cancels; everyone to the right shifts by two places and keeps the parity of their position. At the end $I=0$, so we need $I=0$ initially.
+
+\emph{$I=0$ suffices.} If a nonempty row has $I=0$, it has two adjacent people of the same colour: otherwise the colours alternate, all odd positions share one colour and all even positions the other, giving $I=\pm\dfrac{\ell}2\ne0$ for a row of length $\ell$. Removing that pair keeps $I=0$, so we can continue until the row is empty.
+
+Assignments with $I=0$: if $k$ of the $6$ odd positions are red, then $k$ of the $6$ even positions are red, giving $\sum_{k=0}^6\binom6k^2=\binom{12}6=\boxed{924}$ (Vandermonde).

@@ -1,0 +1,7 @@
+The integer points on the circle are $(\pm5,0),(0,\pm5),(\pm4,\pm3),(\pm3,\pm4)$. Joining in circular order gives the natural convex dodecagon. In the first quadrant the cross-product sums are $15+7+15=37$. By the shoelace formula and fourfold symmetry, area is $\dfrac{1}{2}\cdot4\cdot37=\boxed{74}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair[] P={(5,0),(4,3),(3,4),(0,5),(-3,4),(-4,3),(-5,0),(-4,-3),(-3,-4),(0,-5),(3,-4),(4,-3)};path q=P[0];for(int i=1;i<P.length;++i)q=q--P[i];draw(q--cycle);for(int i=0;i<3;++i)label("$("+string(P[i].x)+","+string(P[i].y)+")$",P[i],unit(P[i]));
+\end{asy}

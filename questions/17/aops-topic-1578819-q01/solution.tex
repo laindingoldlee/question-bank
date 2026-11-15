@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1578819_what_is_11000199919981
+% Stable identity: aops-topic-1578819-q01
+We compare the sum with $\displaystyle\int_1^{1000}\dfrac{dx}{x}=\ln1000=3\ln10\approx6.908$.
+
+\textbf{Upper bound.} For $k\ge2$, $\dfrac{1}{k}<\displaystyle\int_{k-1}^{k}\dfrac{dx}{x}$, because $\dfrac{1}{x}>\dfrac{1}{k}$ on $(k-1,k)$. Adding for $k=2,\dots,1000$:
+\[
+H<1+\int_1^{1000}\dfrac{dx}{x}=1+\ln1000\approx7.908<8 .
+\]
+
+\textbf{Lower bound.} The function $\dfrac{1}{x}$ is convex, so on $[k,k+1]$ its graph lies below the chord, and
+\[
+\int_k^{k+1}\dfrac{dx}{x}\le\dfrac{1}{2}\left(\dfrac{1}{k}+\dfrac{1}{k+1}\right)\qquad(\text{trapezoid rule}).
+\]
+Adding for $k=1,\dots,999$:
+\[
+\ln1000\le H-\dfrac{1}{2}-\dfrac{1}{2000},\qquad\text{so}\qquad H\ge\ln1000+0.5005\approx7.408>7 .
+\]
+Hence $7<H<8$ and $\lfloor H\rfloor=\boxed{7}$. (In fact $H\approx7.4855$.)

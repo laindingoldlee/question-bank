@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2744076_help_with_recursion
+% Stable identity: aops-topic-2744076-q01
+Every window of $5$ consecutive answers contains all $4$ letters, so exactly one letter (the \emph{double}) occurs twice in it. Describe a window by the positions $p<q$ (numbered $0$ to $4$) of the two copies of its double.
+
+\emph{First window.} Choose $(p,q)$ ($10$ ways), the doubled letter ($4$) and the order of the other three letters ($6$): $240$ strings, $24$ for each $(p,q)$.
+
+\emph{Sliding the window.} When the next answer is appended, the first answer of the window leaves.
+\begin{itemize}
+\item If $p\ge1$, the leaving answer is a single letter, so the new answer must equal it (forced), and the state becomes $(p-1,q-1)$.
+\item If $p=0$, the leaving answer is one copy of the double; the remaining four answers are all different, so the new answer may be any of the $4$ letters, and it becomes the new double, giving the states $(0,4),(1,4),(2,4),(3,4)$.
+\end{itemize}
+So if $T_m$ is the number of valid strings of length $m$ and $R_m$ the number whose last window has $p=0$, then $T_{m+1}=T_m+3R_m$. Tracking the ten states step by step:
+\[\begin{array}{c|cccccc}m&5&6&7&8&9&10\\\hline T_m&240&528&1032&1968&3768&7296\\R_m&96&168&312&600&1176&\end{array}\]
+The answer is $\boxed{7296}$ (confirmed by checking all $4^{10}$ strings).

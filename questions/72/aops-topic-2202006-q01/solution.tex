@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h2202006_cube_problem
+% Stable identity: aops-topic-2202006-q01
+The painted small cubes are the ones lying along the edges of the big cube (shaded below on the three visible faces).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real a=5; pair ox=(1,0), oy=(0.45,0.32), oz=(0,1);
+pair p(real x,real y,real z){return x*ox+y*oy+z*oz;}
+// front face cells (y=0), top face (z=5), right face (x=5)
+for(int i=0;i<5;++i) for(int k=0;k<5;++k){
+  bool e=(i==0||i==4||k==0||k==4);
+  path c=p(i,0,k)--p(i+1,0,k)--p(i+1,0,k+1)--p(i,0,k+1)--cycle;
+  if(e) fill(c,paleblue); draw(c,gray(0.4));
+}
+for(int i=0;i<5;++i) for(int j=0;j<5;++j){
+  bool e=(i==0||i==4||j==0||j==4);
+  path c=p(i,j,5)--p(i+1,j,5)--p(i+1,j+1,5)--p(i,j+1,5)--cycle;
+  if(e) fill(c,paleblue); draw(c,gray(0.4));
+}
+for(int j=0;j<5;++j) for(int k=0;k<5;++k){
+  bool e=(j==0||j==4||k==0||k==4);
+  path c=p(5,j,k)--p(5,j+1,k)--p(5,j+1,k+1)--p(5,j,k+1)--cycle;
+  if(e) fill(c,paleblue); draw(c,gray(0.4));
+}
+draw(p(0,0,0)--p(5,0,0)--p(5,0,5)--p(0,0,5)--cycle,linewidth(1));
+draw(p(0,0,5)--p(0,5,5)--p(5,5,5)--p(5,0,5),linewidth(1));
+draw(p(5,0,0)--p(5,5,0)--p(5,5,5),linewidth(1));
+label("$5$",p(2.5,0,0),S); label("$5$",p(5,2.5,0),SE); label("$5$",p(0,0,2.5),W);
+\end{asy}
+
+\textbf{Corners and edges.} Each of the $8$ corner cubes is painted. Each of the $12$ edges also contains $5-2=3$ non-corner cubes, which lie on that edge only. So the number of painted cubes is
+\[8+12\cdot3=\boxed{44}.\]
+(Equivalently, $12$ edges with $5$ cubes each give $60$, but each corner cube lies on $3$ edges and has been counted $3$ times, so we subtract $2\cdot8=16$: $60-16=44$.)

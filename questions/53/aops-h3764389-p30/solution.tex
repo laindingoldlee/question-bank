@@ -1,0 +1,15 @@
+Scale so $A=(0,0),B=(1,0),C=(1,h),D=(0,h)$ and put $\alpha=36^\circ$, $\theta=\arctan h$. Then $P=t(\cos\alpha,-\sin\alpha)$, where substituting in the circle equation gives $t=\cos\alpha-h\sin\alpha>0$. Thus $0<\theta<54^\circ$. Projection onto $AC$ gives
+\[Q=\dfrac{t^2}{1+h^2}(1,h),\quad \overrightarrow{QI}=\dfrac{ht}{1+h^2}(h\cos\alpha+\sin\alpha,-t).\]
+Consequently ray $QI$ has direction $\theta+\alpha-90^\circ$. To find $QR$, use the circle center $O$ as complex origin. Projection of a point $p$ onto a line of direction $\phi$ is $\dfrac{p+e^{2i\phi}\overline p}{2}$. The diagonals have directions $\theta,-\theta$, so $R-Q=-i\sin(2\theta)\overline p$. The inscribed-angle theorem gives the direction of $OP$ as $-\theta-2\alpha$, because $OB$ has direction $-\theta$ and the arc $PB$ subtends $\alpha$ at $A$. Hence ray $QR$ has direction $\theta+2\alpha-90^\circ$. Subtracting the two ray directions gives $\boxed{\angle IQR=36^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real h=0.05;real a=36*pi/180,t=cos(a)-h*sin(a);pair A=(0,0),B=(1,0),C=(1,h),D=(0,h),O=(.5,h/2),P=(t*cos(a),-t*sin(a)),I=(P.x,0),Q=((P.x+h*P.y)/(1+h*h))*(1,h),R=B+((1-P.x+h*P.y)/(1+h*h))*(-1,h);draw(circle(O,abs(A-O)));draw(A--B--C--D--cycle);draw(A--C,dashed);draw(B--D,dashed);draw(P--I);draw(P--Q);draw(P--R);draw(I--Q--R,blue+1.2bp);label("A",A,SW);label("B",B,SE);label("C",C,NE);label("D",D,NW);label("P",P,S);draw(I--(.9,-.18),gray+dashed);label("I",(.9,-.18),S);draw(Q--(.86,.25),gray+dashed);label("Q",(.86,.25),N);label("R",R,E);draw(O--(.3,.25),gray+dashed);label("O",(.3,.25),N);
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real h=0.8;real a=36*pi/180,t=cos(a)-h*sin(a);pair A=(0,0),B=(1,0),C=(1,h),D=(0,h),O=(.5,h/2),P=(t*cos(a),-t*sin(a)),I=(P.x,0),Q=((P.x+h*P.y)/(1+h*h))*(1,h),R=B+((1-P.x+h*P.y)/(1+h*h))*(-1,h);draw(circle(O,abs(A-O)));draw(A--B--C--D--cycle);draw(A--C,dashed);draw(B--D,dashed);draw(P--I);draw(P--Q);draw(P--R);draw(I--Q--R,blue+1.2bp);label("A",A,SW);label("B",B,SE);label("C",C,NE);label("D",D,NW);label("P",P,S);label("I",I,N);label("Q",Q,W);label("R",R,E);label("O",O,N);
+\end{asy}

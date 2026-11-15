@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3517285_cutting_cheese
+% Stable identity: aops-topic-3517285-q01
+A point off the three cutting planes has its coordinates in exactly one of the six strict orders, such as $x<y<z$. Each ordering defines a nonempty convex region, so it is connected and forms one piece. Different orderings cannot be connected without crossing an equality plane. Thus there are $\boxed{3!=6}$ pieces. Their closures are congruent tetrahedra related by coordinate permutations; the sketch highlights $0\le x\le y\le z\le1$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair O=(0,0),X=(3,0),Y=(1.2,.8),Z=(0,3);draw(O--X--(X+Y)--Y--cycle,dashed);draw(Z--(Z+X)--(Z+X+Y)--(Z+Y)--cycle);draw(O--Z);draw(X--(X+Z));draw(Y--(Y+Z),dashed);draw((X+Y)--(X+Y+Z));draw(O--Z--(Z+Y)--(Z+X+Y)--O,blue);draw(O--(Z+Y),blue+dashed);draw(Z--(Z+X+Y),blue+dashed);label("$(0,0,0)$",O,SW);label("$(0,0,1)$",Z,NW);label("$(0,1,1)$",Z+Y,N);label("$(1,1,1)$",Z+X+Y,NE);label("$x$",X,S);label("$y$",Y,W);
+\end{asy}

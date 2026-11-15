@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2514978_set_with_prime_numbers
+% Stable identity: aops-topic-2514978-q01
+\textbf{Odd elements.} If $p<q$ are odd primes in $M$, then $q-p$ is even and at least $2$, so it is not $1$ and must be the even prime $2$. Three odd primes $p<q<r$ in $M$ would give $r-p=4$, which is not prime. So $M$ contains at most two odd primes, and if it contains two, they are twin primes $p,p+2$.
+
+\textbf{The cases.} So $M$ is one of the following.
+\begin{itemize}
+\item $M=\{p,p+2\}$ with $p$ and $p+2$ prime: valid.
+\item $M=\{2,q\}$ with $q$ an odd prime: valid exactly when $q-2$ is $1$ or prime, i.e. $q=3$ or $q-2$ is prime.
+\item $M=\{2,p,p+2\}$ with $p,p+2$ prime: also need $p-2$ to be $1$ or prime (the difference $(p+2)-2=p$ is prime). If $p-2=1$, $M=\{2,3,5\}$. If $p-2$ is prime, then $p-2,p,p+2$ are three primes, and one of these three numbers is divisible by $3$ (they have different remainders mod $3$), so it equals $3$; as $p-2\ge2$, this forces $p-2=3$ and $M=\{2,5,7\}$.
+\end{itemize}
+No other sets are possible, since $M$ has at most one even and two odd elements. The answer is
+\[\boxed{\{2,3,5\},\ \{2,5,7\},\ \{2,q\}\ (q=3\text{ or }q,q-2\text{ both prime}),\ \{p,p+2\}\ (p,p+2\text{ both prime})}.\]
+For example $\{2,3\}$, $\{2,5\}$, $\{2,7\}$, $\{2,13\}$, $\{3,5\}$, $\{5,7\}$, $\{11,13\}$.

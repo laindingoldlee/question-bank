@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2263607_peace09s_1500th_post
+% Stable identity: aops-topic-2263607-q01
+\textbf{The statement is true.} The hypotenuse is the longest side, so the sides are $n$, $m$ and $m+1$ with legs $n$ and $m$. By the Pythagorean theorem,
+\[n^2+m^2=(m+1)^2\iff n^2=2m+1\iff m=\dfrac{n^2-1}{2}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(12,0), C=(0,5);
+draw(A--B--C--cycle,linewidth(0.9));
+draw((0,0.6)--(0.6,0.6)--(0.6,0));
+label("$n$",(A+C)/2,W); label("$m=\dfrac{n^2-1}{2}$",(A+B)/2,S); label("$m+1=\dfrac{n^2+1}{2}$",(B+C)/2,NE);
+\end{asy}
+
+(Since $n$ is odd, $m$ is an integer. For $n$ to be the shortest side we need $m>n$, i.e. $n^2-2n-1>0$, which holds for odd $n\ge3$; $n=1$ would give $m=0$.)
+
+The perimeter is
+\[n+m+(m+1)=n+n^2=n(n+1),\]
+and the area is
+\[\dfrac{nm}{2}=\dfrac{n(n^2-1)}{4}=\dfrac{n(n-1)(n+1)}{4}=\dfrac{n-1}{4}\cdot n(n+1).\]
+So the area is $\dfrac{n-1}{4}$ times the perimeter. This also explains the pattern in the examples: the product of the legs is $2\cdot$area $=\dfrac{n-1}{2}\cdot$perimeter, and $\dfrac{n-1}{2}=1,2,3,\dots$ for $n=3,5,7,\dots$.

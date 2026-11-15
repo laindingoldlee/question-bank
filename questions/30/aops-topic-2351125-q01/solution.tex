@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h2351125_geometry_question_1
+% Stable identity: aops-topic-2351125-q01
+\textbf{Coordinates.} Let $M$ be the midpoint of $AC$. Since $BA=BC$, $BM\perp AC$ and $BM=\sqrt{7^2-5^2}=2\sqrt6$. Put $M=(0,0)$, $A=(-5,0)$, $C=(5,0)$ and $B=\left(0,2\sqrt6\right)$.
+
+\textbf{Where $D$ can be.} Since $\angle ADC=90^\circ$, $D$ lies on the circle with diameter $AC$ (angle in a semicircle): $x^2+y^2=25$. Since $BD=1$: $x^2+\left(y-2\sqrt6\right)^2=1$. Subtracting the second equation from the first,
+\[4\sqrt6\,y-24=24,\qquad y=\dfrac{48}{4\sqrt6}=2\sqrt6,\]
+and then $x^2=25-24=1$. So $D=\left(-1,2\sqrt6\right)$ or $D'=\left(1,2\sqrt6\right)$; both are at the height of $B$ and different from $B$, so both lie outside the triangle.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+real h=2*sqrt(6);
+pair A=(-5,0), C=(5,0), B=(0,h), M=(0,0), D=(-1,h), D2=(1,h);
+fill(A--D--C--cycle,rgb(0.85,0.92,1));
+draw(circle(M,5),dashed+gray(0.5));
+draw(circle(B,1),dotted);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D--C,blue+linewidth(0.9));
+draw(A--D2,dashed+red);
+draw(B--M,dotted);
+pair u=unit(A-D), v=unit(C-D);
+draw(D+0.45*u--D+0.45*u+0.45*v--D+0.45*v,blue);
+dot(A); dot(B); dot(C); dot(D,blue); dot(D2,red); dot(M);
+label("$A$",A,W); label("$C$",C,E); label("$B$",B,N); label("$D$",D,NW,blue); label("$D'$",D2,NE,red);
+label("$M$",M,S); label("$1$",(B+D)/2,N,fontsize(8pt)); label("$2\sqrt{6}$",(0,1.6),E,fontsize(8pt));
+label("$5$",(-2.5,0),S,fontsize(8pt)); label("$5$",(2.5,0),S,fontsize(8pt));
+\end{asy}
+
+\textbf{Which point is allowed.} The line $BC$ is $y=2\sqrt6\left(1-\dfrac x5\right)$, and the segment $BC$ consists of its points with $0\le x\le5$.
+\begin{itemize}
+\item The segment $AD'$ lies on $y=2\sqrt6\cdot\dfrac{x+5}{6}$ with $-5\le x\le1$. It meets the line $BC$ where $\dfrac{x+5}{6}=1-\dfrac x5$, that is, $x=\dfrac5{11}$, which lies in both ranges. So $AD'$ crosses $BC$, and $D'$ is not allowed.
+\item The segment $AD$ lies on $y=2\sqrt6\cdot\dfrac{x+5}{4}$ with $-5\le x\le-1$. It meets the line $BC$ only where $\dfrac{x+5}{4}=1-\dfrac x5$, that is, $x=-\dfrac59$, which is not in the range $0\le x\le5$. So $AD$ does not meet $BC$, and it does not pass through $B$ (all its points have $x\le-1$).
+\end{itemize}
+So such a triangle exists, and $D=\left(-1,2\sqrt6\right)$ is the only possible position. Its distance from $AC$ is $2\sqrt6$, so
+\[[ADC]=\dfrac12\cdot10\cdot2\sqrt6=\boxed{10\sqrt6}\approx24.49.\]
+Since there is only one possible triangle $ADC$, this is also the smallest possible area. (The other point $D'$ would give the same area.)

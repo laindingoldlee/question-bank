@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1346595_paradoxes
+% Stable identity: aops-topic-1346595-q01
+Before the coach speaks, the probability is $\dfrac{50}{100}=\dfrac{1}{2}$.
+
+Fix the set $L$ of $49$ students that the coach names. There are two kinds of scenarios consistent with it:
+\begin{itemize}
+\item $S$ is a perfect scorer, and the perfect scorers are $L\cup\{S\}$. This is $1$ set of perfect scorers. Then the other perfect scorers are exactly the $49$ students of $L$, so the coach names $L$ with probability $1$.
+\item $S$ is not a perfect scorer, and the perfect scorers are $L\cup\{T\}$ for one of the $50$ unnamed students $T\ne S$. That is $50$ sets. In each, the coach chooses $49$ of the $50$ other perfect scorers, so he names exactly $L$ with probability $\dfrac{1}{50}$.
+\end{itemize}
+Every set of perfect scorers has the same prior probability $p$, so by Bayes' theorem
+\[
+P(S\text{ perfect}\mid L)=\dfrac{p\cdot1}{p\cdot1+50\cdot p\cdot\dfrac{1}{50}}=\boxed{\dfrac{1}{2}}.
+\]
+
+\textbf{The error.} $S$ treats the $51$ unnamed students as equally likely to be the remaining perfect scorer. They are not: $S$ was excluded from the coach's list in advance (the coach names only \emph{other} students), whereas each other unnamed student $T$ was left off by chance. Given the list, $S$ has probability $\dfrac{1}{2}$ and each of the other $50$ unnamed students has probability $\dfrac{1}{100}$, which adds up to $1$. The coach could always name $49$ other perfect scorers whatever $S$'s score, so his statement carries no information about $S$; nothing changed, exactly as intuition says.

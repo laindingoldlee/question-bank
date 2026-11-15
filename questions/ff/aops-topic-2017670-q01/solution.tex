@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2017670_help_please
+% Stable identity: aops-topic-2017670-q01
+Since all $7$-element subsets are equally likely, we compare counts.
+
+\textbf{No two consecutive.} If $x_1<x_2<\cdots<x_7$ has no two consecutive, then $y_i=x_i-(i-1)$ gives $y_1<\cdots<y_7$ in $\{1,\ldots,n-6\}$, and this is a bijection. So there are $\binom{n-6}{7}$ such subsets.
+
+\textbf{Exactly one consecutive pair.} Let the pair be $\{k,k+1\}$; every other drawn number differs by at least $2$ from its neighbours. Replace the pair by the single number $k$ and decrease every larger drawn number by $1$. This gives a $6$-element subset of $\{1,\ldots,n-1\}$ with no two consecutive, together with a marked element (the one that came from the pair). Conversely, any such marked subset expands back uniquely. By the first count with $n-1$ in place of $n$ and $6$ in place of $7$, there are $\binom{(n-1)-5}{6}=\binom{n-6}{6}$ such subsets and $6$ ways to mark one, giving $6\binom{n-6}{6}$.
+
+\textbf{Equation.}
+\[
+\binom{n-6}{7}=6\binom{n-6}{6}\iff\dfrac{n-12}{7}=6\iff n=\boxed{54}.
+\]

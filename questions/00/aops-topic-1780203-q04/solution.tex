@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1780203_some_discarded_problems_from_my_mock_chapter_mathcounts
+% Stable identity: aops-topic-1780203-q04
+The cone has height $\sqrt{5^2-3^2}=4$. Its lateral area is $\pi\cdot3\cdot5=15\pi$ and its base area is $9\pi$. Let the small cone (with the same apex $V$) be similar to the whole cone with ratio $k$, $0<k<1$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real k=2/sqrt(21),h=4;
+pair V=(0,h);
+real yc=h*(1-k);
+real t0=degrees(asin(0.15));
+draw(scale(3,0.6)*arc((0,0),1,t0,180-t0),dashed);draw(scale(3,0.6)*arc((0,0),1,180-t0,360+t0),linewidth(0.9));
+draw(shift(0,yc)*scale(3k,0.6k)*arc((0,0),1,t0,180-t0),dashed);
+draw(shift(0,yc)*scale(3k,0.6k)*arc((0,0),1,180-t0,360+t0),blue+linewidth(0.9));
+draw((-3*Cos(t0),0.6*Sin(t0))--V--(3*Cos(t0),0.6*Sin(t0)),linewidth(0.9));
+draw((0,0)--(3,0),dashed);draw((0,0)--V,dashed);
+dot((0,0));dot((0,yc));
+label("$3$",(1.5,-0.2),fontsize(8pt));label("$5$",(2.3,1.0),E);
+draw((3.8,0)--(3.8,yc),Arrows(4));draw((3.1,0)--(4,0),dotted);draw((3k+0.2,yc)--(4,yc),dotted);
+label("$d$",(3.8,yc/2),E);label("$V$",V,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The small cone has radius $3k$ and slant height $5k$, so its total surface area is $15\pi k^2+9\pi k^2=24\pi k^2$. The frustum has lateral area $15\pi-15\pi k^2$, bottom $9\pi$ and top $9\pi k^2$, in total $24\pi-6\pi k^2$. The condition is
+\[
+\dfrac{24k^2}{24-6k^2}=\dfrac{1}{5}\ \Longrightarrow\ 120k^2=24-6k^2\ \Longrightarrow\ k^2=\dfrac{4}{21},\quad k=\dfrac{2}{\sqrt{21}} .
+\]
+(The reverse ratio $5:1$ would need $k^2=\dfrac{20}{9}>1$, which is impossible, so the configuration is unique.) The plane is at height $4k$ below the apex, so its distance to the base is
+\[
+d=4-4k=4-\dfrac{8}{\sqrt{21}}=\boxed{4-\dfrac{8\sqrt{21}}{21}}\approx2.25 .
+\]

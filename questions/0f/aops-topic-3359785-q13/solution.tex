@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3359785_400th_post_problems
+% Stable identity: aops-topic-3359785-q13
+Put $u=AX,v=BX,w=CX$. The cosine rule at $X$ gives $AB^2=u^2+v^2+uv$ and the analogous two identities. Their sum is $AB^2+BC^2+CA^2=2(u^2+v^2+w^2)+uv+vw+wu$. Adding the three triangle areas gives $[ABC]=\dfrac{\sqrt3}{4}(uv+vw+wu)$. Therefore\[(u+v+w)^2=\dfrac{AB^2+BC^2+CA^2+4\sqrt3[ABC]}{2}.\]Now $BC^2=4^2+6^2-2\cdot4\cdot6\cos30^\circ=52-24\sqrt3$ and $[ABC]=\dfrac{1}{2}\cdot4\cdot6\sin30^\circ=6$. Substitution cancels the radicals and gives $\boxed{52}$. 
+\begin{asy}
+usepackage("amsmath");
+import geometry;
+size(260);
+pair A=(0,0),B=(4,0),C=6*dir(30);pair X=(3.8351081892731074,.24733771609033986);draw(A--B--C--cycle);draw(X--A^^X--B^^X--C,dashed);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$X$",X,NW);label("$4$",(A+B)/2,S);label("$6$",(A+C)/2,NW);
+\end{asy}

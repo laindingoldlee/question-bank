@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h1845402_mit_primes_step_questions
+% Stable identity: aops-topic-1845402-q05
+\emph{Strategy.} Find the digits one at a time. In each call, dial the digits already known to be correct, and then try, in the next position, a digit not yet ruled out there. If it is accepted, keep going in the same call with the next position. A position needs at most $9$ failed calls: after $9$ wrong digits are ruled out there, the tenth is known to be correct. So there are at most $7\cdot9=63$ failed calls, and then one more call succeeds: at most $64$ calls.
+
+\emph{No strategy does better in the worst case.} Imagine the bank chooses the password as the calls are made, in the worst way for us: whenever a call dials a digit in a position where more than one digit is still possible, the bank declares it wrong. This is always consistent, because a digit is only declared wrong while another candidate remains. Each failed call rules out exactly one digit in one position, and a call can only succeed when every position has a single remaining candidate, which needs $7\cdot9=63$ failed calls first.
+
+So the answer is $\boxed{64}$ calls.

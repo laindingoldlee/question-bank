@@ -1,0 +1,14 @@
+A small triangle has height $1$. Choose its two sloping sides as $y=\sqrt3x+2j$ and $y=-\sqrt3x+2\ell$, where $-10\le j,\ell\le10$. Their intersection has height $j+\ell$.
+
+An upward-pointing triangle uses horizontal base $y=j+\ell-1$, so it exists precisely when $-9\le j+\ell\le11$. A downward-pointing one uses base $y=j+\ell+1$, requiring $-11\le j+\ell\le9$. The two counts are equal by sign symmetry. For a fixed sum $s$ there are $21-|s|$ pairs $(j,\ell)$. Hence the number is
+\[
+2\sum_{s=-9}^{11}(21-|s|)
+=2(309+11+10)=\boxed{660}.
+\]
+Consecutive parallel lines are one altitude apart, so none of these unit-height triangles is subdivided by another drawn line.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int k=-2;k<=2;++k){draw((-2.5,k)--(2.5,k),gray);draw((-2,(sqrt(3)*(-2)+2k))--(2,(sqrt(3)*2+2k)),lightgray);draw((-2,(-sqrt(3)*(-2)+2k))--(2,(-sqrt(3)*2+2k)),lightgray);}filldraw((-1/sqrt(3),-1)--(1/sqrt(3),-1)--(0,0)--cycle,lightblue,blue);clip(box((-2.5,-2.5),(2.5,2.5)));
+\end{asy}

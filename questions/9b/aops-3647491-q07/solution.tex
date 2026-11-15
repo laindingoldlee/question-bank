@@ -1,0 +1,6 @@
+The counts are $6(n-2)^2$ for face interiors and $12(n-2)$ for edge interiors. Equating gives $6(n-2)^2=84(n-2)$. Since $n>2$, cancellation yields $n-2=14$, so $\boxed{n=16}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair u=(2,0),v=(.8,.7),w=(0,2);draw((0,0)--u--u+v--v--cycle);draw(w--u+w--u+v+w--v+w--cycle);draw((0,0)--w^^u--u+w^^v--v+w^^u+v--u+v+w);pair[] VV={(0,0),u,u+v,v,w,u+w,u+v+w,v+w};string[] nn={"A","B","C","D","E","F","G","H"};for(int i=0;i<8;++i)label("$"+nn[i]+"$",VV[i],i<4?(0,-1):(0,1));label("$n-2$ interior positions per edge",(1,-1));
+\end{asy}
+

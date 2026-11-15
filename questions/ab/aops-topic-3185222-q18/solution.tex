@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3185222_2018_abmc_speed_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3185222-q18
+The point $I$ is the incenter, so the requested distance is the inradius $r$. Let the area be $K$ and opposite side lengths be $a,b,c$. The altitude formulas give $a=\dfrac{2K}{3}$, $b=\dfrac{2K}{4}$, $c=\dfrac{2K}{5}$. Decomposing the triangle into the three triangles with vertex $I$ gives $K=\dfrac{r(a+b+c)}{2}$. Consequently $r=\dfrac{2K}{a+b+c}=\dfrac{1}{\dfrac{1}{3}+\dfrac{1}{4}+\dfrac{1}{5}}=\boxed{\dfrac{60}{47}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real h=sqrt(144-(319.0/40)^2), k=3/h; pair Q=(0,0),R=(20*k,0),P=(319.0/40*k,3),I=(20*P+15*Q+12*R)/47; pair T=P+dot(I-P,R-P)/dot(R-P,R-P)*(R-P); draw(P--Q--R--cycle); draw(Q--I--R,dashed); draw(I--T,blue); draw(P--(P.x,0),dotted); dot("$P$",P,N); dot("$Q$",Q,SW); dot("$R$",R,SE); dot("$I$",I,SW); label("$r$",(I+T)/2,E); label("$3$",(P+(P.x,0))/2,W);
+\end{asy}

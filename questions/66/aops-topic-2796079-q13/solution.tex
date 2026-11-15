@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2796079_2014_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2796079-q13
+Take $A=(0,0)$, $B=(7,0)$, $C=(7,4)$, $D=(0,4)$, $E=(2,0)$, $F=(5,0)$. The figure is symmetric about $x=3.5$, so $G$ has $x=3.5$; on $DF$, $y=4-\dfrac45x=1.2$. So $G=(3.5,1.2)$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(7,0),C=(7,4),D=(0,4),Ep=(2,0),F=(5,0),G=(3.5,1.2);
+fill(A--Ep--G--D--cycle,gray(0.85));
+draw(A--B--C--D--cycle);draw(D--F);draw(C--Ep);dot(G);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$E$",Ep,S);label("$F$",F,S);label("$G$",G,S);
+\end{asy}
+
+By the shoelace formula for $A(0,0),E(2,0),G(3.5,1.2),D(0,4)$:
+\[\dfrac12\left|0+2\cdot1.2+3.5\cdot4+0\right|=\dfrac{16.4}{2}=\boxed{\dfrac{41}{5}}.\]

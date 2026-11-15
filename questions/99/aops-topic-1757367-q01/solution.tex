@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1757367_more_problems_i_need_help_with
+% Stable identity: aops-topic-1757367-q01
+The conditions are $\dfrac{ab}{2}=3(a+b)$ and $\dfrac{cd}{2}=2(c+d)$. The ratio of areas is $\dfrac{3(a+b)}{2(c+d)}=\dfrac{3}{2}$, so $a+b=c+d$.
+
+From $ab=6a+6b$ we get $(a-6)(b-6)=36$, and from $cd=4c+4d$ we get $(c-4)(d-4)=16$ (both factors positive, since $a,b>6$ and $c,d>4$ follow from the equations with positive legs). With $a-6=u$, $b-6=\dfrac{36}{u}$, the possible sums $a+b=12+u+\dfrac{36}{u}$ are $49,32,27,25,24$ (for $u=1,2,3,4,6$). With $c-4=v$, the sums $c+d=8+v+\dfrac{16}{v}$ are $25,18,16$ (for $v=1,2,4$). The only common value is $25$: legs $10,15$ (area $75=3\cdot25$) and $5,20$ (area $50=2\cdot25$), ratio $75:50=3:2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(15,0)--(0,10)--cycle,linewidth(0.9));
+draw((0,0)--(0.8,0)--(0.8,0.8)--(0,0.8));
+label("$15$",(7.5,0),S);label("$10$",(0,5),W);label("area $75$",(7.5,-3.2));
+draw(shift(19,0)*((0,0)--(5,0)--(0,20)--cycle),linewidth(0.9));
+draw(shift(19,0)*((0,0)--(0.8,0)--(0.8,0.8)--(0,0.8)));
+label("$5$",(21.5,0),S);label("$20$",(19,10),W);label("area $50$",(21.5,-3.2));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence $a+b+c+d=\boxed{50}$.

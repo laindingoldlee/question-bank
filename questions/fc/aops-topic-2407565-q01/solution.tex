@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2407565_hard_probability_problem
+% Stable identity: aops-topic-2407565-q01
+Sam's score is $6$ times the number of correct answers, so it is $150$, $144$ or $138$ with $0$, $1$ or $2$ wrong answers. A score of $144$ or more always reaches the cutoff, and a score of $138$ reaches it with probability $\dfrac12$. All wrong answers come from the $10$ medium questions (each wrong with probability $0.2$) and the $5$ hard ones (each wrong with probability $0.5$).
+\begin{itemize}
+\item No wrong answer: $0.8^{10}\cdot0.5^5=0.0033554432$.
+\item Exactly one wrong: $10\cdot0.2\cdot0.8^{9}\cdot0.5^5+0.8^{10}\cdot5\cdot0.5^5=0.008388608+0.016777216=0.025165824$.
+\item Exactly two wrong: two medium, one of each, or two hard:
+\begin{align*}
+&\dbinom{10}{2}0.2^2\,0.8^8\,0.5^5+10\cdot0.2\cdot0.8^9\cdot5\cdot0.5^5+0.8^{10}\dbinom52 0.5^5\\
+&\qquad=0.009437184+0.04194304+0.033554432=0.084934656.
+\end{align*}
+\end{itemize}
+The probability is
+\[0.0033554432+0.025165824+\dfrac12\cdot0.084934656=0.0709885952\approx\boxed{0.071}.\]

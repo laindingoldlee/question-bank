@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1874815_problems_from__algebra_book
+% Stable identity: aops-topic-1874815-q05
+\textbf{(a)}
+\[
+\begin{array}{lll}
+142857\times1=142857, & 142857\times2=285714, & 142857\times3=428571,\\
+142857\times4=571428, & 142857\times5=714285, & 142857\times6=857142,
+\end{array}
+\]
+and $142857\times7=\boxed{999999}$. The first six products are cyclic shifts of $142857$.
+
+\textbf{(b)} Long division gives $\dfrac{1}{7}=0.\overline{142857}$, so $10^6\cdot\dfrac{1}{7}-\dfrac{1}{7}=142857$, i.e. $142857=\dfrac{10^6-1}{7}$. This explains $7\times142857=999999$.
+
+For $k=1,\dots,6$ the number $k\times142857=\dfrac{k(10^6-1)}{7}$ is the six-digit repeating block of $\dfrac {k}{7}$ (since $\dfrac {k}{7}=\dfrac{k\times142857}{999999}$). Now the powers of $10$ leave the remainders
+\[
+10^0\equiv1,\quad10^1\equiv3,\quad10^2\equiv2,\quad10^3\equiv6,\quad10^4\equiv4,\quad10^5\equiv5\pmod7,
+\]
+which are all of $1,\dots,6$. If $10^j\equiv k\pmod7$, then $\dfrac{10^j}{7}$ and $\dfrac {k}{7}$ differ by an integer, so $\dfrac {k}{7}$ equals the fractional part of $10^j\cdot\dfrac{1}{7}$. Multiplying $0.\overline{142857}$ by $10^j$ moves the decimal point $j$ places, so the fractional part has the repeating block $142857$ started at its $(j+1)$-th digit. Hence the block of $\dfrac {k}{7}$, which is $k\times142857$, is a cyclic shift of $142857$. For example $3\equiv10\pmod7$ gives $\dfrac{3}{7}=0.\overline{428571}$, matching $3\times142857=428571$.

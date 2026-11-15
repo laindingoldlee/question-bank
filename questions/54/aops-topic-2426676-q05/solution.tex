@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2426676_100th_post_problems
+% Stable identity: aops-topic-2426676-q05
+Yes. Number the beads $1,\dots,20$ around the circle (indices modulo $20$). A pair of pieces with $5$ silver and $5$ gold beads each consists of two arcs of $10$ consecutive beads, and any two gaps can be joined by a straight line, which cuts the necklace into exactly those arcs. So it suffices to find $10$ consecutive beads with exactly $5$ silver ones (the other $10$ beads then also have $5$ silver and $5$ gold).
+
+Let $f(i)$ be the number of silver beads among beads $i,i+1,\dots,i+9$.
+\begin{itemize}
+\item Moving from $f(i)$ to $f(i+1)$ removes bead $i$ and adds bead $i+10$, so $f$ changes by $-1$, $0$ or $+1$.
+\item The arcs starting at $i$ and at $i+10$ together contain all $20$ beads, so $f(i)+f(i+10)=10$.
+\end{itemize}
+If $f(1)=5$ we are done. Otherwise $f(1)$ and $f(11)=10-f(1)$ lie on opposite sides of $5$. Going from $i=1$ to $i=11$ in steps of size at most $1$, $f$ must take the value $5$ at some $i$. The cut around beads $i,\dots,i+9$ works, so the answer is $\boxed{\text{yes}}$.

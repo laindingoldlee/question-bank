@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2321368_walking_on_the_edges_of_a_cube_help_nongraph_theory_solution
+% Stable identity: aops-topic-2321368-q01
+The edges have length $1$, so we count edge traversals. Let the bottom face be $ABCD$ and the top face $EFGH$, with $E,F,G,H$ above $A,B,C,D$.
+
+\textbf{Lower bound.} For each vertex $v$, count how many times the walk arrives at $v$ along an edge and how many times it leaves along an edge (the start counts as a departure and the end as an arrival). Since the walk is closed, arrivals and departures at $v$ are equal, so the total number of traversals at $v$ (counting both ends) is even. Each vertex has $3$ edges, each walked at least once, so the total at $v$ is at least $3$, hence at least $4$. Each traversal has two ends, so if the walk has length $L$,
+\[2L=\sum_{v}(\text{traversals at }v)\ge8\cdot4=32,\qquad L\ge16.\]
+
+\textbf{A walk of length $16$.} Walk the four vertical edges twice (red in the figure):
+\[A\to E\to F\to B\to C\to G\to H\to D\to A\to B\to F\to G\to C\to D\to H\to E\to A.\]
+This uses all four bottom edges, all four top edges and each vertical edge twice: $16$ edges.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(3,0), C=(4.2,1.2), D=(1.2,1.2);
+pair Ee=A+(0,3), F=B+(0,3), G=C+(0,3), H=D+(0,3);
+draw(A--B--C); draw(C--D--A,dashed); draw(D--H,dashed);
+draw(Ee--F--G--H--cycle);
+draw(B--F); draw(C--G);
+draw(A--Ee,red+linewidth(1.6)); draw(B--F,red+linewidth(1.6)); draw(C--G,red+linewidth(1.6)); draw(D--H,red+dashed+linewidth(1.6));
+dot(A); dot(B); dot(C); dot(D); dot(Ee); dot(F); dot(G); dot(H);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,E); label("$D$",D,NW);
+label("$E$",Ee,W); label("$F$",F,SE); label("$G$",G,NE); label("$H$",H,N);
+\end{asy}
+
+So the shortest distance is $\boxed{16}$.

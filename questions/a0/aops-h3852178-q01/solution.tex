@@ -1,0 +1,17 @@
+Let $G$ be the centroid, and use vectors $\mathbf u=\overrightarrow{GA}$, $\mathbf v=\overrightarrow{GB}$, $\mathbf w=\overrightarrow{GC}$. Then $\mathbf u+\mathbf v+\mathbf w=0$. The median lengths are $\dfrac{3}{2}|\mathbf u|,\dfrac{3}{2}|\mathbf v|,\dfrac{3}{2}|\mathbf w|$.
+The vectors $\mathbf u,\mathbf v,\mathbf w$ form the consecutive sides of a triangle of area $\dfrac{1}{2}|\det(\mathbf u,\mathbf v)|$. Meanwhile
+\[
+[ABC]=\dfrac{1}{2}|\det(\mathbf v-\mathbf u,\mathbf w-\mathbf u)|
+=\dfrac{3}{2}|\det(\mathbf u,\mathbf v)|.
+\]
+Scaling the vector triangle by $\dfrac{3}{2}$ multiplies its area by $\dfrac{9}{4}$. Therefore
+\[
+[T]=\dfrac{9}{4}\cdot\dfrac{[ABC]}{3}=\dfrac{3}{4}(150)=\boxed{\dfrac{225}{2}}.
+\]
+The given side ratio is unnecessary: the result holds for every nondegenerate triangle.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,3),B=(-2,0),C=(3,0),G=(A+B+C)/3;draw(A--B--C--cycle);draw(A--(B+C)/2,dashed);draw(B--(A+C)/2,dashed);draw(C--(A+B)/2,dashed);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);dot(G);label("$G$",G,E);pair U=(6,0),V=U+1.5(A-G),Q=V+1.5(B-G);draw(U--V--Q--cycle,blue);label("$T$",(U+V+Q)/3);label("Median lengths",(6,-1.2));
+\end{asy}

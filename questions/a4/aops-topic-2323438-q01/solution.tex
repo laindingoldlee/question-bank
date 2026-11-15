@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2323438_math_scavenger_hunt
+% Stable identity: aops-topic-2323438-q01
+Since $I$, $C$, $M$ are collinear, $IM$ is a diameter. An angle inscribed in a semicircle is a right angle, so $\angle ILM=90^\circ$ and $\angle IOM=90^\circ$. By the Pythagorean theorem in both right triangles,
+\[IM^2=LI^2+LM^2=529+1369=1898,\qquad OM^2=IM^2-IO^2=1898-1089=809.\]
+So $OM=\sqrt{809}$, answer $\boxed{\textbf{(D)}}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=sqrt(1898)/2;
+pair I=(-R,0), M=(R,0);
+real fl=2*aSin(23/(2*R)), fo=2*aSin(33/(2*R));
+pair L=R*dir(180-fl), O=R*dir(180+fo), K=(-O.x,O.y);
+draw(circle((0,0),R));
+draw(K--I--L--M--O--cycle,linewidth(0.9));
+draw(I--M,blue); draw(I--O,dashed);
+dot((0,0)); label("$C$",(0,0),N);
+dot(K); dot(I); dot(L); dot(M); dot(O);
+label("$K$",K,SW); label("$I$",I,W); label("$L$",L,N); label("$M$",M,E); label("$O$",O,SE);
+label("$23$",(I+L)/2,2.2*dir(150)); label("$37$",(L+M)/2,NE); label("$33$",(I+O)/2,NE);
+\end{asy}
+
+(The configuration exists: with $K$ the mirror image of $O$ in the perpendicular bisector of $IM$, $OK\parallel IM$ and $MOKI$ is an isosceles trapezoid; since $OM=\sqrt{809}<33=OI$, the order $K,I,L,M,O$ around the circle is right.)

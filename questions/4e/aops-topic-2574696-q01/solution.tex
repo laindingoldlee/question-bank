@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2574696_mathcounts_problem
+% Stable identity: aops-topic-2574696-q01
+Since the circles are externally tangent, $AB=30+24=54$. The radii $AX$ and $BY$ are perpendicular to the tangent line, so $AX\parallel BY$, and triangles $ZAX$ and $ZBY$ are similar (they share the angle at $Z$). The smaller circle is nearer to $Z$, so $ZA=ZB+54$ and
+\[\dfrac{ZB}{ZA}=\dfrac{BY}{AX}=\dfrac{24}{30}=\dfrac45\quad\Longrightarrow\quad 5\,ZB=4\left(ZB+54\right)\quad\Longrightarrow\quad ZB=\boxed{216}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(10cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(54,0),Z=(270,0);real al=asin(30/270);pair nv=(sin(al),cos(al));
+pair X=A+30*nv,Y=B+24*nv;
+draw(circle(A,30));draw(circle(B,24));draw((X-0.15*(Z-X))--Z,linewidth(0.9));draw((-30,0)--Z);
+draw(A--X,dashed);draw(B--Y,dashed);dot(A);dot(B);dot(Z);dot(X);dot(Y);
+label("$A$",A,S);label("$B$",B,S);label("$Z$",Z,S);label("$X$",X,N);label("$Y$",Y,N);
+label("$30$",(A+X)/2,W);label("$24$",(B+Y)/2,W);label("$BZ=216$",(162,0),S);
+\end{asy}

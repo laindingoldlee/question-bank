@@ -1,0 +1,11 @@
+Use cube coordinates $[0,2]^3$ and normalize the plane $ax+by+cz=d$ so that $a^2+b^2+c^2=3$. Its signed expressions at vertices must be in $\{-3,-1,1,3\}$. Across an edge, the difference is $2a,2b$, or $2c$, so $a,b,c$ are integers. Their squared sum forces $|a|=|b|=|c|=1$. Reflect coordinates as necessary to reduce to $x+y+z=t$.
+
+The vertex sums are $0,2,4,6$. The conditions $|t|,|6-t|\in\{1,3\}$ force $t=3$, and the other vertices then have the required distances too. The section vertices are
+\[(0,1,2),(0,2,1),(1,2,0),(2,1,0),(2,0,1),(1,0,2).\]
+Consecutive sides have length $\sqrt2$ and interior angle $120^\circ$, so this is a regular hexagon. Its area is $6\cdot\dfrac{\sqrt3}{4}(\sqrt2)^2=\boxed{3\sqrt3}$, the sole possible value.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair f(real x,real y,real z){return (sqrt(3)*(x-y)/2,z-(x+y)/2);}pair[] H={f(0,1,2),f(0,2,1),f(1,2,0),f(2,1,0),f(2,0,1),f(1,0,2)};fill(H[0]--H[1]--H[2]--H[3]--H[4]--H[5]--cycle,lightblue);for(int x=0;x<=2;x+=2)for(int y=0;y<=2;y+=2)draw(f(x,y,0)--f(x,y,2),gray);for(int z=0;z<=2;z+=2)draw(f(0,0,z)--f(2,0,z)--f(2,2,z)--f(0,2,z)--cycle,gray);draw(H[0]--H[1]--H[2]--H[3]--H[4]--H[5]--cycle,blue);for(int i=0;i<6;++i)dot(H[i],blue);label("$x+y+z=3$",(0,-2.6));label("$2$",f(2,0,1),(1,0));
+\end{asy}

@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2788409_2007_manhattan_mathematical_olympiad_grades_56_problems_14
+% Stable identity: aops-topic-2788409-q04
+Connect two numbers when their sum is 4,9,16, or 25, the only possible square sums. The desired rows are paths visiting every vertex exactly once. The exhaustive recursion below explores every such path by appending every unused allowed neighbour, and obtains exactly a row and its reversal.
+\begin{verbatim}
+V=range(1,16)
+nexts={i:[j for j in V if j!=i and i+j in (4,9,16,25)] for i in V}
+answers=[]
+def extend(path):
+    if len(path)==15:
+        answers.append(path); return
+    for j in nexts[path[-1]]:
+        if j not in path: extend(path+[j])
+for i in V: extend([i])
+row=[8,1,15,10,6,3,13,12,4,5,11,14,2,7,9]
+assert answers==[row,row[::-1]]
+\end{verbatim}
+Thus the answer is $\boxed2$, and the displayed row gives a construction.

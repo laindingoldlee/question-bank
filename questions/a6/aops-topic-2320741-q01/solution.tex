@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2320741_arc_midpoint
+% Stable identity: aops-topic-2320741-q01
+\textbf{(a)} Let $O$ be the centre, $r$ the radius, and $u$ the unit vector from $O$ towards $M$, so $M=O+ru$. Since $M$ is the midpoint of the arc, $\angle AOM=\angle MOB=\dfrac\theta2$, so the reflection in the line $OM$ swaps $A$ and $B$: the line $OM$ is the perpendicular bisector of $AB$, and $N$ lies on it. Then $N$ is the foot of the perpendicular from $A$ to the line $OM$, and since the angle between $OA$ and $u$ is $\dfrac\theta2$,
+\[N=O+\left(r\cos\dfrac\theta2\right)u,\qquad AN=r\sin\dfrac\theta2.\]
+(For $\theta>180^\circ$ the cosine is negative and $N$ is on the other side of $O$.) Hence $M-N=r\left(1-\cos\dfrac\theta2\right)u$, a positive multiple of $u$: $M$ is on the arc's side of $AB$, at distance
+\[NM=r\left(1-\cos\dfrac\theta2\right).\]
+With $AB=2r\sin\dfrac\theta2$, $1-\cos\dfrac\theta2=2\sin^2\dfrac\theta4$ and $\sin\dfrac\theta2=2\sin\dfrac\theta4\cos\dfrac\theta4$,
+\[NM=\dfrac{AB}{2\sin\dfrac\theta2}\cdot2\sin^2\dfrac\theta4=\dfrac{AB}{2}\cdot\dfrac{\sin\dfrac\theta4}{\cos\dfrac\theta4}=\dfrac{AB}{2}\tan\dfrac\theta4.\qquad\blacksquare\]
+
+\textbf{(b)} Here $N=(3,0)$, $AB=6$ and $\tan\dfrac{120^\circ}{4}=\tan30^\circ=\dfrac{1}{\sqrt3}$, so $NM=3\cdot\dfrac1{\sqrt3}=\sqrt3$. The perpendicular bisector is the line $x=3$, and the arc is above $AB$, so $\boxed{M=\left(3,\sqrt3\right)}$.
+
+Check: the centre is $O=\left(3,-\sqrt3\right)$ (distance $r\cos60^\circ=\sqrt3$ below $N$, with $r=\dfrac{3}{\sin60^\circ}=2\sqrt3$), and $OM=2\sqrt3=r$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(6,0), O=(3,-sqrt(3)), M0=(3,0), M=(3,sqrt(3));
+real r=2*sqrt(3);
+draw(arc(O,r,30,150),blue+linewidth(1));
+draw(arc(O,r,150,390),gray+dashed);
+draw(A--B); draw(O--A,dashed); draw(O--B,dashed); draw(O--M,red+dashed);
+draw(M0+(0,0.25)--M0+(0.25,0.25)--M0+(0.25,0));
+draw(arc(O,0.7,30,150));
+dot(A); dot(B); dot(O); dot(M0); dot(M,red);
+label("$A$",A,SW); label("$B$",B,SE); label("$O$",O,S); label("$N$",M0,SW); label("$M$",M,N,red);
+label("$\theta$",O+(0.45,0.75),fontsize(9pt));
+label("$s$",(3,sqrt(3)/2),E,red);
+\end{asy}

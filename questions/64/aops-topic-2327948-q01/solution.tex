@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2327948_hexagon_and_octagon
+% Stable identity: aops-topic-2327948-q01
+\textbf{Hexagon.} It splits into $6$ equilateral triangles of side $s$, so its area is $6\cdot\dfrac{\sqrt3}{4}s^2=\dfrac{3\sqrt3}{2}s^2$.
+
+\textbf{Octagon.} Cutting off the four corner triangles of the surrounding square shows that its area is $(1+\sqrt2)^2s^2-4\cdot\dfrac12\left(\dfrac{s}{\sqrt2}\right)^2=(3+2\sqrt2)s^2-s^2=2(1+\sqrt2)s^2$. (Alternatively: a central square of side $s$, four $s\times\dfrac{s}{\sqrt2}$ rectangles and four corner triangles; the square drawn dashed below is the central one.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair[] H; for(int i=0;i<6;++i) H.push(dir(60*i));
+pair[] G; real R=1/(2*Sin(22.5)); for(int i=0;i<8;++i) G.push((3.4,0)+R*dir(22.5+45*i));
+draw(H[0]--H[1]--H[2]--H[3]--H[4]--H[5]--cycle,blue+linewidth(0.9));
+draw(G[0]--G[1]--G[2]--G[3]--G[4]--G[5]--G[6]--G[7]--cycle,red+linewidth(0.9));
+for(int i=0;i<6;++i) draw((0,0)--H[i],blue+dashed);
+draw(shift(3.4,0)*box((-0.5,-0.5),(0.5,0.5)),red+dashed);
+label("$s$",(H[4]+H[5])/2,S,blue); label("$s$",(G[5]+G[6])/2,S,red);
+label("$\dfrac{3\sqrt3}{2}s^2$",(0,-1.75),S,blue); label("$2(1+\sqrt2)s^2$",(3.4,-1.75),S,red);
+\end{asy}
+
+\textbf{Equation.} We need
+\[2(1+\sqrt2)s^2-\dfrac{3\sqrt3}{2}s^2=1\iff s^2\cdot\dfrac{4+4\sqrt2-3\sqrt3}{2}=1,\]
+so
+\[s=\boxed{\sqrt{\dfrac{2}{4+4\sqrt2-3\sqrt3}}}\approx0.670.\]
+(The denominator $4+4\sqrt2-3\sqrt3\approx4.461$ is positive, so this is a real number.)

@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1930436_math_problems_i_need_help_with
+% Stable identity: aops-topic-1930436-q01
+By the triangle inequality, $7-4<x<7+4$, so $4\le x\le10$. By the law of cosines, a triangle with longest side $\ell$ and other sides $p,q$ is obtuse exactly when $\ell^2>p^2+q^2$.
+\begin{itemize}
+\item If $x\le7$, the longest side is $7$: we need $49>16+x^2$, i.e.\ $x^2<33$, so $x=4$ or $5$.
+\item If $x>7$, the longest side is $x$: we need $x^2>16+49=65$, so $x=9$ or $10$.
+\end{itemize}
+($x=6,7,8$ give acute triangles.) So there are $\boxed{4}$ values: $x=4,5,9,10$. The figure shows the cases $x=5$ and $x=9$, with the obtuse angle marked.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(7,0), A=(40/14,sqrt(16-(40/14)^2));
+draw(A--B--C--cycle,linewidth(1));
+draw(arc(A,0.6,degrees(C-A),degrees(B-A)),red);
+label("$4$",(A+B)/2,NW); label("$5$",(A+C)/2,NE); label("$7$",(B+C)/2,S);
+label("$x=5$",(3.5,-1.2));
+pair B2=(9,0), C2=(18,0), A2=B2+(48/18,sqrt(16-(48/18)^2));
+draw(A2--B2--C2--cycle,linewidth(1));
+draw(arc(A2,0.6,degrees(C2-A2),degrees(B2-A2)),red);
+label("$4$",(A2+B2)/2,NW); label("$7$",(A2+C2)/2,NE); label("$9$",(B2+C2)/2,S);
+label("$x=9$",(13.5,-1.2));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

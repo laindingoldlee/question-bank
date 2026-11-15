@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2326381_cevians_in_a_triangle
+% Stable identity: aops-topic-2326381-q01
+Ratios of areas, and ratios of lengths along a line, do not change under an affine map, and any triangle can be mapped to any other by an affine map. So we may take $A=(0,0)$, $B=(5,0)$, $C=(0,5)$, with area $\dfrac{25}{2}$. Then
+\[D=(2,0),\qquad E=B+\dfrac25(C-B)=(3,2),\qquad F=C+\dfrac25(A-C)=(0,3).\]
+The cevians are
+\[AE:\ y=\dfrac23x,\qquad BF:\ \dfrac x5+\dfrac y3=1,\qquad CD:\ \dfrac x2+\dfrac y5=1.\]
+Solving in pairs,
+\[AE\cap BF=\left(\dfrac{45}{19},\dfrac{30}{19}\right),\quad BF\cap CD=\left(\dfrac{20}{19},\dfrac{45}{19}\right),\quad CD\cap AE=\left(\dfrac{30}{19},\dfrac{20}{19}\right).\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(7,0), C=(2,5.5);
+pair D=A+2/5*(B-A), Ep=B+2/5*(C-B), F=C+2/5*(A-C);
+pair P1=extension(A,Ep,B,F), P2=extension(B,F,C,D), P3=extension(C,D,A,Ep);
+fill(P1--P2--P3--cycle,rgb(0.85,0.92,1));
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--Ep); draw(B--F); draw(C--D);
+dot(D); dot(Ep); dot(F);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$D$",D,S); label("$E$",Ep,NE); label("$F$",F,W);
+label("$2$",(A+D)/2,S,fontsize(8pt)); label("$3$",(D+B)/2,S,fontsize(8pt));
+label("$2$",(B+Ep)/2,NE,fontsize(8pt)); label("$3$",(Ep+C)/2,NE,fontsize(8pt));
+label("$2$",(C+F)/2,W,fontsize(8pt)); label("$3$",(F+A)/2,W,fontsize(8pt));
+\end{asy}
+
+By the shoelace formula, the small triangle has area
+\[\dfrac{1}{2\cdot19^2}\left|45(45-20)+20(20-30)+30(30-45)\right|=\dfrac{475}{722}=\dfrac{25}{38}.\]
+The ratio is
+\[\dfrac{\dfrac{25}{2}}{\dfrac{25}{38}}=\boxed{19}\]
+(that is, $\dfrac mn=\dfrac{19}{1}$). This agrees with Routh's theorem: for the ratio $r=\dfrac23$ on all three sides, the small triangle is $\dfrac{(1-r)^2}{1+r+r^2}=\dfrac{\dfrac19}{\dfrac{19}9}=\dfrac1{19}$ of the whole.

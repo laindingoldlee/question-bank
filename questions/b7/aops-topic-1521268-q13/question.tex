@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1521268_2014_mathcounts_national_sprint_problems
+% Stable identity: aops-topic-1521268-q13
+The integers $1$ through $6$ are to be used, each exactly once, to fill the six circles in the figure (one circle at each vertex of the triangle and one at the middle of each side) so that the sums of the three integers along each side of the triangle are the same. How many different solutions are possible? Two solutions are considered the same if one can be rotated or reflected to obtain the other.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+void c(pair p,string s=""){filldraw(circle(p,0.42),white,linewidth(0.9));}
+pair A=(0,0),B=(6,0),C=(3,3*sqrt(3));
+draw(A--B--C--cycle,linewidth(0.9));
+c(A);c(B);c(C);c((A+B)/2);c((B+C)/2);c((C+A)/2);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

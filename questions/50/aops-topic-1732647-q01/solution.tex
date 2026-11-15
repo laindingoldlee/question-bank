@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1732647_divisibility
+% Stable identity: aops-topic-1732647-q01
+\textbf{(a)} We have
+\[
+10(x-5e)=10x-50e=(10x+e)-51e=N-3\cdot17e .
+\]
+So $10(x-5e)\equiv N\pmod{17}$. Since $\gcd(10,17)=1$, $17\mid N$ if and only if $17\mid10(x-5e)$ if and only if $17\mid x-5e$. $\blacksquare$
+
+\textbf{(b)} Since $\gcd(10,m)=1$, there is an integer $t\ge0$ with $10t\equiv-1\pmod m$ (because $10$ has an inverse modulo $m$). Then
+\[
+10(x-te)=10x-10te=N-(10t+1)e\equiv N\pmod m,
+\]
+since $m\mid10t+1$. As $\gcd(10,m)=1$, $m\mid N\iff m\mid x-te$. $\blacksquare$
+
+Examples: $m=17$, $t=5$ ($50+1=51=3\cdot17$); $m=7$, $t=2$ ($21$); $m=13$, $t=9$ ($91=7\cdot13$); $m=19$, $t=17$ ($171=9\cdot19$), or equivalently $m\mid x+2e$ for $19$ since $-17\equiv2$. For $m$ sharing a factor with $10$, split $m=2^i5^jm'$ and test the last $\max(i,j)$ digits for $2^i5^j$ and use the rule above for $m'$.

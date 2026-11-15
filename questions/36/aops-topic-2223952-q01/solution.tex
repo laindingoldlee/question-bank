@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2223952_is_it_possible_to_convert_roots_to_different_bases
+% Stable identity: aops-topic-2223952-q01
+\textbf{(a)} A base is a way of writing numbers, not a different set of numbers. $10_2=1\cdot2+0=2$, so $\sqrt{10_2}$ is the positive number whose square is two, which is $\sqrt2$. In any base, $\sqrt2$ is the same irrational number $1.41421356\ldots$ (in base ten); only its digits change. So ``converting $\sqrt2$ to base $2$'' means finding its binary digits.
+
+\textbf{(b)} Write $\sqrt2=1.b_1b_2b_3\ldots{}_2$. Each digit $b_k$ is $1$ exactly when adding $2^{-k}$ to the number built so far keeps its square at most $2$. Using base ten for the arithmetic:
+\begin{itemize}
+\item $1.1_2=1.5$ and $1.5^2=2.25>2$, so $b_1=0$.
+\item $1.01_2=1.25$ and $1.25^2=1.5625<2$, so $b_2=1$.
+\item $1.011_2=1.375$ and $1.375^2=1.890625<2$, so $b_3=1$.
+\item $1.0111_2=1.4375$ and $1.4375^2=2.06640625>2$, so $b_4=0$.
+\item $1.01101_2=1.40625$ and $1.40625^2=1.9775390625<2$, so $b_5=1$.
+\item $1.011011_2=1.421875$ and $1.421875^2=2.021728515625>2$, so $b_6=0$.
+\end{itemize}
+Hence
+\[\sqrt2=\boxed{1.011010\ldots{}_2}\]
+(the next digit is $1$, since $1.0110101_2=1.4140625$ has square $1.99957275390625<2$). The digits never repeat with a fixed period, because $\sqrt2$ is irrational.

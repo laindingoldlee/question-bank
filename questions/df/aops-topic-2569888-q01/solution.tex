@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2569888_geometry_problem
+% Stable identity: aops-topic-2569888-q01
+Call a direction (a unit vector $u$) \emph{good} if it is neither parallel nor perpendicular to any line through two of the given points. Only finitely many directions are bad, so there are infinitely many good directions, and good directions that are not parallel or perpendicular to each other give different pairs of lines.
+
+Fix a good $u$ and let $v$ be perpendicular to $u$. Give each point $P$ the coordinates $s=P\cdot u$ and $t=P\cdot v$. Because $u$ is good, the $2n$ points have distinct $s$-values and distinct $t$-values.
+
+\textbf{First line.} Let $\ell_1$ be the line $t=t_0$, where $t_0$ lies strictly between the $n$th and $(n+1)$th smallest $t$-values. It is parallel to $u$, misses all the points, and has exactly $n$ points below it and $n$ above it.
+
+\textbf{Second line.} For a number $\sigma$ different from all $s$-values, let $\ell_2$ be the line $s=\sigma$, perpendicular to $\ell_1$. Let $a(\sigma)$ be the number of points below $\ell_1$ with $s<\sigma$ (the lower-left quadrant) and $b(\sigma)$ the number above $\ell_1$ with $s>\sigma$ (the opposite, upper-right quadrant), and put $D(\sigma)=a(\sigma)-b(\sigma)$.
+
+For $\sigma$ smaller than every $s$-value, $D=0-n=-n$; for $\sigma$ larger than every $s$-value, $D=n-0=n$. As $\sigma$ increases past the $s$-value of one point (one at a time, since the $s$-values are distinct), either that point is below $\ell_1$ and $a$ increases by $1$, or it is above $\ell_1$ and $b$ decreases by $1$. Either way $D$ increases by exactly $1$. So $D$ goes from $-n$ to $n$ in steps of $1$ and equals $0$ for some $\sigma$ between two consecutive $s$-values. For that $\sigma$, $\ell_2$ misses all the points and the two opposite quadrants contain the same number of points.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair[] P={(0.5,3.2),(1.6,0.6),(2.4,2.1),(3.6,3.6),(4.1,1.0),(5.0,2.6)};
+pair u=dir(20),v=dir(110);pair Oc=3.584*u+0.9428*v;
+fill(Oc--(Oc-3.4*u)--(Oc-3.4*u-2.6*v)--(Oc-2.6*v)--cycle,lightgray);
+fill(Oc--(Oc+3.4*u)--(Oc+3.4*u+2.6*v)--(Oc+2.6*v)--cycle,lightgray);
+draw((Oc-3.4*u)--(Oc+3.4*u),linewidth(0.9));draw((Oc-2.6*v)--(Oc+2.6*v),linewidth(0.9));
+for(pair p:P)dot(p);
+label("$\ell_1$",Oc+3.4*u,E);label("$\ell_2$",Oc+2.6*v,N);
+\end{asy}
+
+(In the sketch, $n=3$; the shaded opposite quadrants contain one point each.)
+
+Doing this for each of the infinitely many good directions gives infinitely many such pairs of lines. $\blacksquare$

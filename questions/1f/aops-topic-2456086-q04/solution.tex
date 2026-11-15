@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2456086_100_posts
+% Stable identity: aops-topic-2456086-q04
+Place $B=(0,0)$, $C=(a,0)$ and $D=(m,0)$, and let $A=(p,h)$, so $H=(p,0)$ is the foot of the altitude from $A$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(7,0), D=(3,0), A=(2,3.5), H=(2,0);
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--D,blue); draw(A--H,dashed);
+draw(H+(0.2,0)--H+(0.2,0.2)--H+(0,0.2));
+dot(D); dot(H);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S); label("$H$",H,S);
+label("$c$",(A+B)/2,NW); label("$b$",(A+C)/2,NE); label("$d$",(A+D)/2+(0.1,0),E,blue); label("$h$",(A+H)/2,W);
+draw((0,-0.75)--(3,-0.75),Arrows(4)); draw((3,-0.75)--(7,-0.75),Arrows(4));
+label("$m$",(1.5,-0.75),S); label("$n$",(5,-0.75),S);
+\end{asy}
+
+By the distance formula,
+\[c^2=p^2+h^2,\qquad b^2=(a-p)^2+h^2,\qquad d^2=(p-m)^2+h^2.\]
+Then, using $m+n=a$,
+\begin{align*}
+b^2m+c^2n&=m\left(a^2-2ap+p^2+h^2\right)+n\left(p^2+h^2\right)\\
+&=(m+n)\left(p^2+h^2\right)+ma^2-2amp=a\left(p^2+h^2\right)+ma^2-2amp,
+\end{align*}
+and
+\begin{align*}
+a\left(d^2+mn\right)&=a\left(p^2-2pm+m^2+h^2+mn\right)=a\left(p^2+h^2\right)-2amp+am(m+n)\\
+&=a\left(p^2+h^2\right)-2amp+a^2m.
+\end{align*}
+The two expressions are equal. $\blacksquare$

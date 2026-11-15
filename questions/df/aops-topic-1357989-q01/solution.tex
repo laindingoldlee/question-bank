@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h1357989_geometry_problem
+% Stable identity: aops-topic-1357989-q01
+From $\angle APD=\angle ADP$, triangle $ADP$ is isosceles with $AD=AP$, so the foot of the perpendicular from $A$ to $CD$ is the midpoint of $DP$. Similarly $\angle BPC=\angle BCP$ gives $BP=BC$, so the foot from $B$ is the midpoint of $PC$.
+
+Choose coordinates with $D=(0,0)$ and $CD$ on the $x$-axis, and let $A=(a,h)$, $B=(b,h)$ with $h>0$. Then $P=(2a,0)$ and $C=(2b-2a,0)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+real h=sqrt(10);
+pair D=(0,0),P=(4,0),C=(14,0),A=(2,h),B=(9,h),M=(5.5,h),Nn=(7,0);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--P--B,blue);
+draw(ra(P,A-P,B-P,0.35),blue);
+draw(M--Nn,red+dashed);
+dot(P);dot(M);dot(Nn);
+label("$A$",A,NW); label("$B$",B,NE); label("$C$",C,SE); label("$D$",D,SW);
+label("$P$",P,S); label("$M$",M,N); label("$N$",Nn,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The right angle at $P$ gives $(A-P)\cdot(B-P)=0$:
+\[
+(-a)(b-2a)+h^2=0\quad\Longrightarrow\quad h^2=ab-2a^2 .
+\]
+The midpoints are $M=\left(\dfrac{a+b}{2},h\right)$ of $AB$ and $N=(b-a,0)$ of $CD$. Hence
+\[
+MN^2=\left(\dfrac{a+b}{2}-(b-a)\right)^2+h^2=\dfrac{(3a-b)^2}{4}+ab-2a^2=\dfrac{a^2-2ab+b^2}{4}=\left(\dfrac{b-a}{2}\right)^2 ,
+\]
+so $MN=\dfrac{|b-a|}{2}=\dfrac{AB}{2}$. $\blacksquare$
+
+(The figure shows the case $a=2$, $b=9$, $h=\sqrt{10}$, where $MN=\dfrac{7}{2}=\dfrac{AB}{2}$.)

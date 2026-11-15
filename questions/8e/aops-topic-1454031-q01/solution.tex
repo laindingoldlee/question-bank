@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1454031_geometry
+% Stable identity: aops-topic-1454031-q01
+The given line has slope $-\dfrac{1}{2}$. Perpendicular lines (neither vertical) have slopes whose product is $-1$, so the new line has slope $2$. Through $(6,-4)$:
+\[
+y-(-4)=2(x-6)\quad\Longrightarrow\quad\boxed{y=2x-16}.
+\]
+Check: $2\cdot6-16=-4$. The two lines meet at $(4.4,\,-7.2)$, where $-\dfrac{1}{2}\cdot4.4-5=-7.2=2\cdot4.4-16$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+xaxis(Label("$x$",position=EndPoint,align=E),-3,11,Arrow(5));
+yaxis(Label("$y$",position=EndPoint,align=N),-12,3,Arrow(5));
+for(int i=2;i<=10;i+=2) {draw((i,-0.15)--(i,0.15)); if(i!=8) label(scale(0.7)*("$"+string(i)+"$"),(i,0.2),N);}
+for(int j=-10;j<=-2;j+=2) {draw((-0.15,j)--(0.15,j)); label(scale(0.7)*("$"+string(j)+"$"),(-0.2,j),W);}
+draw((-3,-3.5)--(11,-10.5),blue+linewidth(0.9));
+draw((2,-12)--(9,2),red+linewidth(0.9));
+pair X=(4.4,-7.2);
+draw(X+0.5*unit((2,-1))--X+0.5*unit((2,-1))+0.5*unit((1,2))--X+0.5*unit((1,2)));
+dot((6,-4),red); dot((0,-5),blue);
+label("$(6,-4)$",(6,-4),E,red);
+label("$y=-\dfrac{1}{2}x-5$",(7,-11.8),blue);
+label("$y=2x-16$",(8.2,-1.8),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

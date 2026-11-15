@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1503324_trapezoid_geometry_questions
+% Stable identity: aops-topic-1503324-q02
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0),C=(6,0),Ee=(3,0);pair B=Ee+3*dir(70);pair F=(D+B)/2;
+pair A=extension(Ee,F,(0,B.y),(1,B.y));pair G=extension(A,C,D,B);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(D--B);draw(A--C);draw(A--Ee,blue);draw(B--Ee,gray+dashed);
+real q=0.22;pair u=unit(B-D),v=unit(A-F);draw(F+q*u--F+q*u+q*v--F+q*v,blue);
+pair w=unit(D-B),z=unit(C-B);draw(B+q*w--B+q*w+q*z--B+q*z);
+dot(F);dot(G);dot(Ee);
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);label("$E$",Ee,S);
+label("$F$",F,W);label("$G$",G,1.8*dir(-95));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{$\angle DBC=90^\circ$.} $E$ lies on the perpendicular bisector of $DB$, so $EB=ED$; and $ED=EC$ as $E$ is the midpoint of $CD$. So $EB=ED=EC$, and triangles $EDB$ and $ECB$ are isosceles: $\angle EBD=\angle EDB$ and $\angle EBC=\angle ECB$. The angles of triangle $DBC$ add up to $180^\circ$, so
+\[
+2\angle EBD+2\angle EBC=180^\circ,\qquad\angle DBC=\angle EBD+\angle EBC=90^\circ .
+\]
+(Equivalently, $B$ lies on the circle with diameter $CD$.)
+
+\textbf{$AF\parallel BC$.} Both $AF$ (part of line $AE$) and $BC$ are perpendicular to $DB$, so they are parallel.
+
+\textbf{Similar triangles.} The lines $AC$ and $FB$ (the line $DB$) meet at $G$, and $AF\parallel CB$. So triangles $GFA$ and $GBC$ are similar (alternate angles at $A$ and $C$, and at $F$ and $B$), giving
+\[
+\dfrac{GF}{GB}=\dfrac{GA}{GC}\quad\Longrightarrow\quad FG\cdot GC=AG\cdot GB .\qquad\blacksquare
+\]

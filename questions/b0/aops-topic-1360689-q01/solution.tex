@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1360689_hard_cp_problem
+% Stable identity: aops-topic-1360689-q01
+The right angle is at $B$. Put $B=(0,0)$, $A=(0,12)$ and $C=(6,0)$. Triangle $ABD$ has base $AB=12$ and height equal to the distance from $D$ to the line $AB$, which is the $x$-coordinate of $D$. So
+\[
+[ABD]=\dfrac{1}{2}\cdot12\cdot x=6x\le12\iff x\le2 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),A=(0,12),C=(6,0);
+fill(B--(2,0)--(2,8)--A--cycle,paleblue);
+draw(A--B--C--cycle,linewidth(1));
+draw((2,0)--(2,8),blue+dashed);
+real s=0.5; draw((s,0)--(s,s)--(0,s));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$12$",(0,6),W);label("$6$",(3,0),S);
+draw((0,-1.4)--(2,-1.4),Arrows(4));label("$2$",(1,-1.4),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The part of the triangle with $x>2$ is a triangle similar to $ABC$ (cut off by the line $x=2$, parallel to $AB$), with its side along $BC$ of length $6-2=4$ instead of $6$. Its area is $\left(\dfrac{4}{6}\right)^2=\dfrac{4}{9}$ of the whole. Hence
+\[
+P=1-\dfrac{4}{9}=\boxed{\dfrac{5}{9}}.
+\]
+(Directly: the whole triangle has area $36$, the small one $\dfrac{1}{2}\cdot4\cdot8=16$, and $\dfrac{36-16}{36}=\dfrac{5}{9}$.)

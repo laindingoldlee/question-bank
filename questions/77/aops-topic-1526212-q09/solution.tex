@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1526212_last_post_continued
+% Stable identity: aops-topic-1526212-q09
+\textbf{Upper bound.} Two distinct ellipses meet in at most $4$ points (two different conics have at most $4$ common points). A line meets an ellipse in at most $2$ points, so each side of the square meets an ellipse at most twice, and the square meets each ellipse in at most $8$ points. Hence there are at most $4+8+8=20$ such points.
+
+\textbf{Construction.} Take the square with vertices $(\pm1,\pm1)$ and the ellipses
+\[
+\dfrac{x^2}{1.38^2}+\dfrac{y^2}{1.05^2}=1,\qquad \dfrac{x^2}{1.05^2}+\dfrac{y^2}{1.38^2}=1 .
+\]
+Both semi-axes lie between $1$ and $\sqrt2$, and each ellipse crosses each side of the square twice (for the first ellipse, at $y=\pm0.72$ on $x=\pm1$ and at $x=\pm0.42$ on $y=\pm1$; the second is its reflection in $y=x$). The two ellipses meet in the $4$ points with $|x|=|y|\approx0.84$, which are inside the square. All these points are different:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real a1=1.38,b1=1.05;
+draw((-1,-1)--(1,-1)--(1,1)--(-1,1)--cycle,linewidth(1));
+path e1=scale(a1,b1)*unitcircle, e2=scale(b1,a1)*unitcircle;
+draw(e1,blue+linewidth(0.9));draw(e2,red+linewidth(0.9));
+real u=b1*sqrt(1-1/a1^2), v=a1*sqrt(1-1/b1^2);
+pair[] pts={(1,u),(1,-u),(-1,u),(-1,-u),(v,1),(-v,1),(v,-1),(-v,-1),
+            (u,1),(-u,1),(u,-1),(-u,-1),(1,v),(1,-v),(-1,v),(-1,-v)};
+for(pair p:pts) dot(p,black);
+real w=1/sqrt(1/a1^2+1/b1^2);
+pair[] q={(w,w),(-w,w),(w,-w),(-w,-w)};
+for(pair p:q) dot(p,heavygreen);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The $16$ black points lie on the square and the $4$ green points are where the ellipses cross. So the maximum is $\boxed{20}$.

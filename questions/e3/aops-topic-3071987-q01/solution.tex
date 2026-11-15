@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3071987_angle_bisector
+% Stable identity: aops-topic-3071987-q01
+Let $O$ be the square's center. The circle with diameter $AB$ contains $P$ by Thales' theorem. It also contains $O$: if $AB=s$, then $AO=BO=\dfrac{s}{\sqrt2}$, so $AO^2+BO^2=AB^2$ and $\angle AOB=90^\circ$. On this circle, $O$ is the midpoint of the arc $AB$ lying toward the square, since $AO=BO$. Thus $\angle APO=\angle OPB$ as inscribed angles subtending equal arcs. So the angle-bisector line passes through $O$. A half-turn about the center of a square preserves the square and exchanges the two half-planes of any line through its center, so that line cuts its area into equal halves.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(4,0),C=(4,4),D=(0,4),O=(2,2),P=(2+2cos(240*pi/180),2sin(240*pi/180));draw(A--B--C--D--cycle);draw(circle((2,0),2),dashed);draw(A--P--B);draw(P--(O+2*(O-P)),blue);label("$A$",A,W);label("$B$",B,E);label("$C$",C,NE);label("$D$",D,NW);label("$O$",O,E);label("$P$",P,S);
+\end{asy}

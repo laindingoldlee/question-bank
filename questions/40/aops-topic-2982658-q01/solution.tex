@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2982658_5_probability_problems
+% Stable identity: aops-topic-2982658-q01
+The triangle has area $\sqrt{21\cdot8\cdot7\cdot6}=84$, so the height to the side $14$ is $h=12$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(14,0),A=(5,12);
+fill((2.5,0)--(9.5,0)--(9.5,6)--(2.5,6)--cycle,gray(0.8));draw(A--B--C--cycle);draw((2.5,0)--(2.5,6)--(9.5,6)--(9.5,0));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$14$",(7,0),S);label("$13$",(A+B)/2,NW);label("$15$",(A+C)/2,NE);
+draw(A--(5,0),dotted);label("$12$",(5,9),E);
+\end{asy}
+
+A rectangle of height $y$ standing on that side has its top corners on the other two sides, where the triangle's width is $14\left(1-\dfrac y{12}\right)$ (similar triangles). Its area is $14y\left(1-\dfrac y{12}\right)$, maximised at $y=6$: $14\cdot6\cdot\dfrac12=42$, half the triangle. The probability of missing it is $\dfrac{84-42}{84}=\boxed{\dfrac12}$.

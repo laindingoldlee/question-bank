@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3179529_2014_emcc_individual_speed_test__exeter_math_club_competition
+% Stable identity: aops-topic-3179529-q06
+Each occupies five of the rectangle's six cells, so delete one cell. Deleting a corner produces two chiral types: the four corners split into two orbits under a half-turn. Deleting either of the two noncorner cells gives one further type, and all three remain connected. No quarter-turn identifies the two corner types, because the bounding rectangle would change orientation. Hence the answer is $\boxed3$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int k=0;k<3;++k){int omit=k==0?0:k==1?2:1;for(int y=0;y<2;++y)for(int x=0;x<3;++x)if(3y+x!=omit)filldraw(shift(4k+x,y)*unitsquare,lightgray,black);}
+\end{asy}

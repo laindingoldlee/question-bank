@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1861837_cured_plane
+% Stable identity: aops-topic-1861837-q01
+(a) The arcs $NA$ and $NB$ run along meridians from the pole to the equator, and $AB$ runs along the equator. Each is a quarter of a great circle, since $\angle NOA=\angle NOB=90^\circ$ and $\angle AOB=90^\circ$. So each has length $\dfrac{1}{4}\cdot2\pi R=\dfrac{\pi R}{2}$.
+
+The angle between two arcs at a vertex is the angle between their tangent lines there. At $A$ the meridian through $A$ runs due north and the equator runs east--west, so they meet at $90^\circ$; the same holds at $B$. At $N$ the tangent lines of the two meridians are parallel to $OA$ and $OB$ (each meridian lies in a plane through the axis $ON$), so the angle at $N$ equals $\angle AOB=90^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real al=20;
+pair pr(real x,real y,real z){return (x, z*Cos(al)+y*Sin(al));}
+pair mer(real phi,real th){return pr(Cos(th)*Sin(phi),-Cos(th)*Cos(phi),Sin(th));}
+pair eqp(real phi){return pr(Sin(phi),-Cos(phi),0);}
+draw(circle((0,0),1),linewidth(0.9));
+path front=graph(eqp,-90,90);path back=graph(eqp,90,270);
+draw(front,gray);draw(back,gray+dashed);
+pair N=pr(0,0,1),O=(0,0),A=eqp(-45),B=eqp(45);
+path nb=graph(new pair(real t){return mer(45,t);},0,90);
+path na=graph(new pair(real t){return mer(-45,t);},0,90);
+path ab=graph(eqp,-45,45);
+draw(nb,blue+linewidth(1.4));draw(na,blue+linewidth(1.4));draw(ab,blue+linewidth(1.4));
+draw(O--A,dashed);draw(O--B,dashed);draw(O--N,dashed);
+dot(N);dot(A);dot(B);dot(O);
+label("$N$",(0,1),N);label("$A$",A,SW);label("$B$",B,SE);label("$O$",O,1.4*S);
+label("$90^\circ$",N+(0.15,-0.24),fontsize(8pt));label("$90^\circ$",A+(0.24,0.24),fontsize(8pt));label("$90^\circ$",B+(-0.24,0.24),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(b) Triangle $NAB$ has a right angle at $A$, with legs $a=b=\dfrac{\pi R}{2}$ and hypotenuse $c=\dfrac{\pi R}{2}$. Then $a^2+b^2=2c^2\ne c^2$, so the Pythagorean theorem fails. Its angle sum is $\boxed{270^\circ}$, not $180^\circ$; on a sphere the angle sum of every triangle exceeds $180^\circ$.
+
+For right triangles on a sphere the correct relation is $\cos\dfrac {c}{R}=\cos\dfrac {a}{R}\cos\dfrac {b}{R}$; here it reads $0=0\cdot0$. For triangles that are small compared with the sphere, $\cos t\approx1-\dfrac{t^2}{2}$, and the relation becomes approximately $a^2+b^2=c^2$. This is why flat geometry works well on small parts of the Earth.

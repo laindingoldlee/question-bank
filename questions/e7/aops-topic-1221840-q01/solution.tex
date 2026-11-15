@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1221840_a_noninfinite_problem
+% Stable identity: aops-topic-1221840-q01
+Each triangle has half the side of the previous one, so the perimeters are $3a$, $\dfrac{3a}{2}$, $\dfrac{3a}{4}$, \dots, a geometric series with sum $\dfrac{3a}{1-\dfrac{1}{2}}=6a$: $\boxed{\text{(D)}}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(2.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(2,2*sqrt(3)); path t=A--B--C--cycle; draw(t,linewidth(1));
+pair a=A,b_=B,c=C; for(int k=0;k<4;++k){pair na=(b_+c)/2,nb=(c+a)/2,nc=(a+b_)/2; draw(na--nb--nc--cycle,blue); a=na;b_=nb;c=nc;}
+label("$a$",(2,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

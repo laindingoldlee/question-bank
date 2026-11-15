@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1621106_eh_some_more_geometry
+% Stable identity: aops-topic-1621106-q01
+A square of area $108\text{ cm}^2$ and a circle have the same centre. Each corner of the square sticks out of the circle: along each side, the part of the side from a corner to the circle has length $\left(3\sqrt3-3\right)$ cm, as shown. The four shaded regions are the parts of the square outside the circle. What is the combined area of the shaded regions, in square centimetres?
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real h=3*sqrt(3);pair O=(0,0);
+for(int k=0;k<4;++k){ fill(rotate(90*k)*((h,3)--(h,h)--(3,h)--arc(O,6,60,30)--cycle),lightgray); }
+draw((-h,-h)--(h,-h)--(h,h)--(-h,h)--cycle,linewidth(0.9));draw(circle(O,6),linewidth(0.9));
+label("$3\sqrt3-3$",((3+h)/2+0.5,h),N,fontsize(9pt));label("$3\sqrt3-3$",(h,(3+h)/2),E,fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

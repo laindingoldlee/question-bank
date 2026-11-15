@@ -1,0 +1,14 @@
+Let $F(r,h)$ be the probability of success with $r$ untouched pairs and $h\le2$ unmatched held tiles; the bag has $2r+h$ tiles. A draw matches a held tile with probability $\dfrac{h}{(2r+h)}$, or opens a new pair with probability $2\dfrac{r}{(2r+h)}$; the latter loses immediately when $h=2$. Thus
+\[
+F(r,0)=F(r-1,1),\qquad F(r,2)=\dfrac{1}{r+1}F(r,1).
+\]
+For $r\ge1$,
+\[
+F(r,1)=\dfrac{F(r,0)+2rF(r-1,2)}{2r+1}
+=\dfrac{3}{2r+1}F(r,0).
+\]
+Starting with $F(1,0)=1$ gives
+\[
+F(6,0)=\prod_{r=1}^{5}\dfrac{3}{2r+1}=\dfrac{9}{385}.
+\]
+Therefore $\boxed{p+q=394}$.

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1305610_triangle_altitudes
+% Stable identity: aops-topic-1305610-q01
+Let $AM=x$, so $MB=7-x$. Pythagoras in the two right triangles gives
+\[
+CM^2=32-x^2=25-(7-x)^2 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(0,0),B=(7,0),C=(4,4),M=(4,0);
+draw(A--B--C--cycle,linewidth(0.9)); draw(C--M,red+dashed); draw(ra(M,C-M,B-M,0.35));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$M$",M,S);
+label("$4\sqrt2$",(A+C)/2,NW); label("$5$",(B+C)/2,NE); label("$x$",(A+M)/2,S); label("$7-x$",(M+B)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $32-x^2=25-49+14x-x^2$, $14x=56$, $x=4$, and $CM=\sqrt{32-16}=\boxed{4}$.

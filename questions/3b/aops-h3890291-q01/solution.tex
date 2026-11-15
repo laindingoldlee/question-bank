@@ -1,0 +1,15 @@
+Write $AB=BC=CA=s$. By Ptolemy in cyclic quadrilateral $ABPC$, $s\cdot AP=s\cdot21+s\cdot28$, so $AP=49$. Also $\angle BPC=120^\circ$, since it subtends the major arc $BC$. The cosine rule gives $s^2=21^2+28^2+21\cdot28=1813=49\cdot37$.
+
+Using areas with common altitude to $BC$, followed by the sine rule on the common circumcircle,
+\[\dfrac{BD}{DC}=\dfrac{[ABD]}{[ACD]}
+=\dfrac{AB\sin\angle BAP}{AC\sin\angle PAC}
+=\dfrac{BP}{CP}=\boxed{\dfrac{3}{4}}.\]
+Thus $BD=\dfrac{3s}{7}$ and $DC=\dfrac{4s}{7}$. Stewart's theorem for the cevian from the equal-side vertex simplifies to $AD^2=s^2-BD\cdot DC$. Therefore
+\[AD^2=1813-\dfrac{12}{49}(1813)=1369,\qquad AD=37.\]
+Since $A,D,P$ occur in that order, $PD=AP-AD=49-37=\boxed{12}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real s=7*sqrt(37),h=s*sqrt(3)/2;pair A=(0,h),B=(-s/2,0),C=(s/2,0),D=(-s/14,0),P=D+(12/37)*(D-A),O=(0,h/3);draw(circle(O,2*h/3));draw(A--B--C--cycle);draw(B--P--C,blue);draw(A--P);label("$A$",A,(0,1));label("$B$",B,(-1,0));label("$C$",C,(1,0));label("$P$",P,(0,-1));label("$D$",D,(1,1));label("$21$",midpoint(B--P),(-1,-1));label("$28$",midpoint(C--P),(1,-1));
+\end{asy}

@@ -1,0 +1,12 @@
+For $0<\varepsilon<3$, put $\alpha=\arcsin(\dfrac{\varepsilon}{3})$. On a full period of length $2\pi$, the inequality $|\sin t|<\dfrac{\varepsilon}{3}$ holds for total length $4\alpha$. Its fraction is $\dfrac{2\alpha}{\pi}$. This is strictly increasing in $\varepsilon$, so the minimum threshold satisfies
+\[
+\dfrac{2\alpha}{\pi}=\dfrac{19}{20},\qquad
+\boxed{\varepsilon=3\sin\left(\dfrac{19\pi}{40}\right)\text{ metres}}.
+\]
+The finitely many equality times have zero length; the strict inequality therefore causes no change to the fraction or the existence of a smallest threshold.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;real f(real t){return 3sin(t);}real e=3sin(19pi/40);draw(graph(f,0,2pi),blue);draw((0,0)--(6.6,0),Arrow);draw((0,-3.4)--(0,3.4),Arrow);draw((0,e)--(2pi,e),red+dashed);draw((0,-e)--(2pi,-e),red+dashed);label("$+\varepsilon$",(0,e),W);label("$-\varepsilon$",(0,-e),W);label("$2\pi$",(2pi,0),SE);label("$h(t)-50$",(3,3.8));
+\end{asy}

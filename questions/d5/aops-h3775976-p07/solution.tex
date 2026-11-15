@@ -1,0 +1,7 @@
+The three single-cell regions must contain distinct one-digit primes. Their product is at least $2\cdot3\cdot5=30$. This is attainable with the six regions $41\mid3\mid67\mid2\mid89\mid5$. All nine digits are distinct, every region is prime, and adjacent digits across the five region boundaries differ by $2,3,5,6,4$, respectively, so none are consecutive. The minimum product is $\boxed{30}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[] d={"4","1","3","6","7","2","8","9","5"};for(int i=0;i<9;++i){filldraw(box((i,0),(i+1,1)),i==2||i==5||i==8?lightblue:white);label(d[i],(i+.5,.5));}for(int i:new int[]{2,3,5,6,8})draw((i,0)--(i,1),linewidth(2));
+\end{asy}

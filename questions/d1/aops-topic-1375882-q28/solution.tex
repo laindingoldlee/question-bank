@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1375882_2008_mathcounts_national_sprint_28
+% Stable identity: aops-topic-1375882-q28
+Every interior angle of an equiangular hexagon is $120^\circ$. Let the remaining sides, in order, be $x$ (after the side $4$) and $y$ (between $x$ and the side $1$). Extend the sides of lengths $7$, $4$ and $y$. Each of the three triangles cut off at the sides $1$, $2$ and $x$ has two angles of $180^\circ-120^\circ=60^\circ$, so it is equilateral. The three extended lines form a large triangle with all angles $60^\circ$, i.e. an equilateral triangle.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real[] s={1,7,2,4,4,5};
+pair[] P; P.push((0,0));
+for(int i=0;i<5;++i) P.push(P[i]+s[i]*dir(60*i));
+pair T1=P[1]-dir(60), T3=P[2]+2*dir(60), T5=P[4]+4*dir(180);
+draw(T1--T3--T5--cycle,gray+dashed);
+draw(P[0]--P[1]--P[2]--P[3]--P[4]--P[5]--cycle,linewidth(1));
+label("$1$",(P[0]+P[1])/2,N);
+label("$7$",(P[1]+P[2])/2,E);
+label("$2$",(P[2]+P[3])/2,dir(210));
+label("$4$",(P[3]+P[4])/2,S);
+label("$x$",(P[4]+P[5])/2,E,red);
+label("$y$",(P[5]+P[0])/2,NE,red);
+draw((T5+(0,0.7))--(T3+(0,0.7)),gray,Arrows(4)); label("$10$",(T5+T3)/2+(0,0.7),N,gray);
+label("$1$",(T1+P[1])/2,SE,fontsize(8pt)); label("$2$",(P[2]+T3)/2,SE,fontsize(8pt));
+label("$4$",(P[4]+T5)/2,NW,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Each side of the large triangle consists of a hexagon side plus the sides of the two small equilateral triangles at its ends:
+\[
+1+7+2=2+4+x=x+y+1 .
+\]
+So the large triangle has side $10$, $x=10-6=4$ and $y=10-1-4=5$. The two remaining sides have lengths $4$ and $5$, with sum $\boxed{9}$.

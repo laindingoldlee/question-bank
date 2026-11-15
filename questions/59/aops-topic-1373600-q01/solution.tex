@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1373600_confused_about_a_solution
+% Stable identity: aops-topic-1373600-q01
+From $(-3,0)$ to $(0,k+3)$ the run is $3$ and the rise is $k+3$, so the slope is $\dfrac{k+3}{3}$. Setting it equal to $k$:
+\[
+\dfrac{k+3}{3}=k\iff k+3=3k\iff k=\boxed{\dfrac{3}{2}}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real k=1.5;
+draw((-4.5,0)--(2,0),Arrow(6)); draw((0,-1)--(0,6.5),Arrow(6));
+label("$x$",(2,0),E); label("$y$",(0,6.5),N);
+draw((-4,-1.5)--(1,6),blue+linewidth(0.9));
+pair P=(-3,0), Q=(0,4.5);
+dot(P); dot(Q);
+label("$(-3,0)$",P,SE); label("$(0,k+3)$",Q,E);
+draw(P--(0,0),red+dashed); draw((0,0)--Q,red+dashed);
+label("run $3$",(-1.5,0),N,red); label("rise $k+3$",(0,2.25),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check: with $k=\dfrac{3}{2}$ the line passes through $(-3,0)$ and $\left(0,\dfrac{9}{2}\right)$, and its slope is $\dfrac{9}{2}\div3=\dfrac{3}{2}=k$.
+
+So the student's answer $\dfrac{3}{2}$ is right. An expression such as $\dfrac{k+3}{3}$ (not $\dfrac{k+3}{2}$) is only the slope written in terms of $k$, an intermediate step, not the value of $k$.

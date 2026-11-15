@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2779747_2018_mbmt_team_round__montgomery_blair_math_tournament
+% Stable identity: aops-topic-2779747-q115
+There are exactly $ 9\cdot10^3 $ digit assignments. Testing divisibility on their explicit place-value expression gives the unique assignment $(A,B,C,D)=(4,9,5,2)$:
+\begin{verbatim}
+sol=[]
+for a in range(1,10):
+ for b in range(10):
+  for c in range(10):
+   for d in range(10):
+    n=int(f'{a}58{b}3602{c}91{d}')
+    if n%10101==0:sol.append((a,b,c,d))
+assert sol==[(4,9,5,2)]
+\end{verbatim}
+This enumeration covers every permissible leading and interior digit and checks the exact remainder. The answer is $\boxed{4952}$.

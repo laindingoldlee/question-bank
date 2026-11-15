@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3317934_cubes_create_a_pyramid_2022_brazil_nmo_l1_p1_obm
+% Stable identity: aops-topic-3317934-q01
+(a) The bottom layer has $k=0$ and $i+j\le3$, giving $4+3+2+1=\boxed{10}$ cubes. For a cube with $i+j+k<3$, only its negative-coordinate faces can be exposed, one for each zero coordinate. For a cube with $i+j+k=3$, all three positive-coordinate faces are also exposed. (b) Exactly three painted faces occur at $(0,0,0)$ and $(1,1,1)$, so there are $\boxed2$. (c) Exactly one painted face requires sum less than 3 and exactly one zero coordinate, giving the three permutations of $(0,1,1)$. Thus there are $\boxed3$.
+\begin{asy}
+import geometry;
+usepackage("amsmath");
+size(270);
+pair ux=(1,0),uy=(.45,.3),uz=(0,.9);for(int k=0;k<4;++k)for(int j=3-k;j>=0;--j)for(int i=0;i<=3-k-j;++i){pair p=i*ux+j*uy+k*uz;filldraw(p--p+ux--p+ux+uz--p+uz--cycle,lightgray,black);filldraw(p+uz--p+ux+uz--p+ux+uy+uz--p+uy+uz--cycle,white,black);filldraw(p+ux--p+ux+uy--p+ux+uy+uz--p+ux+uz--cycle,gray,black);}label("four layers: $10,6,3,1$ cubes",(2,-.6));
+\end{asy}

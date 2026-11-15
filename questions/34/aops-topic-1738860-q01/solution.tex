@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1738860_help_with_problem
+% Stable identity: aops-topic-1738860-q01
+Extend $FE$ beyond $E$ to meet line $AB$ (extended beyond $B$) at $G$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(6,4),D=(0,4),Ep=(6,4/3),F=(3,4),P=(30/7,20/7),G=(7.5,0);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,linewidth(0.8));draw(F--Ep,linewidth(0.8));
+draw(B--G,dashed);draw(Ep--G,dashed);
+draw((1.5,3.85)--(1.5,4.15));draw((4.5,3.85)--(4.5,4.15));
+dot(P);
+label("$A$",A,SW);label("$B$",B,S);label("$C$",C,NE);label("$D$",D,NW);
+label("$E$",Ep,dir(20));label("$F$",F,N);label("$P$",P+(0,0.12),dir(88));label("$G$",G,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Let $AB=w$ and $BC=h$. Then $BE=\dfrac {h}{3}$ and $EC=\dfrac{2h}{3}$, and $FC=\dfrac {w}{2}$. Triangles $EBG$ and $ECF$ are similar (vertical angles at $E$ and right angles at $B$ and $C$), so
+\[
+\dfrac{BG}{CF}=\dfrac{BE}{EC}=\dfrac{1}{2},\qquad BG=\dfrac {w}{4},\qquad AG=w+\dfrac {w}{4}=\dfrac{5w}{4}.
+\]
+Now $AG\parallel CF$, so triangles $APG$ and $CPF$ are similar (alternate angles), and
+\[
+\dfrac{AP}{PC}=\dfrac{AG}{CF}=\dfrac{5w}{4}\cdot\dfrac{2}{w}=\boxed{\dfrac{5}{2}}.
+\]
+(Check with coordinates $A=(0,0)$, $C=(w,h)$, $E=\left(w,\dfrac {h}{3}\right)$, $F=\left(\dfrac {w}{2},h\right)$: the lines meet at $P=\dfrac{5}{7}\,C$.)

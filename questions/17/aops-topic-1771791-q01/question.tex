@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1771791_mock_sprint_26__ant_and_a_frustum
+% Stable identity: aops-topic-1771791-q01
+The frustum shown below has two parallel circular bases of radii $2$ cm and $4$ cm, and a slant height of $3$ cm. An ant starts at point $A$ on the larger base and crawls along the lateral surface to reach point $B$ on the other base, diametrically opposite point $A$. The ant does not crawl on either base of the frustum. What is the minimum distance that the ant must crawl to reach point $B$? Express your answer in simplest radical form and in terms of $\pi$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real h=sqrt(5)*1.0, k=0.35;
+real ph=degrees(asin(2/(h/k)));
+path earc(pair c,real a,real t0,real t1){ path p=c+(a*Cos(t0),k*a*Sin(t0)); for(int j=1;j<=60;++j){ real t=t0+(t1-t0)*j/60; p=p--(c+(a*Cos(t),k*a*Sin(t))); } return p; }
+pair P(pair c,real a,real t){ return c+(a*Cos(t),k*a*Sin(t)); }
+pair c0=(0,0),c1=(0,h);
+draw(earc(c0,4,180-ph,360+ph),linewidth(0.9));
+draw(earc(c0,4,ph,180-ph),dashed);
+draw(earc(c1,2,0,360),linewidth(0.9));
+draw(P(c0,4,ph)--P(c1,2,ph),linewidth(0.9));draw(P(c0,4,180-ph)--P(c1,2,180-ph),linewidth(0.9));
+pair A=P(c0,4,270),B=P(c1,2,90);
+dot(A);dot(B);label("$A$",A,S);label("$B$",B,N);
+label("$4$",(2,0),N);draw((0,0)--(4,0),dotted);
+label("$2$",(1,h),N);draw((0,h)--(2,h),dotted);
+label("$3$",(P(c0,4,ph)+P(c1,2,ph))/2,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

@@ -1,0 +1,18 @@
+The cosine series converges absolutely and uniformly, so its cube may be expanded and integrated term by term. Product-to-sum shows that for positive integers $a,b,c$,
+\[\int_0^{2\pi}\cos(ax)\cos(bx)\cos(cx)\,dx\]
+is $\dfrac{\pi}{2}$ when one of $a,b,c$ is the sum of the other two, and is zero otherwise. There are three choices for which frequency is the largest. Consequently
+\[\int_0^{2\pi}F(x)^3\,dx=\dfrac{3\pi}{2}
+\sum_{a,b\ge1}\dfrac{1}{a^2b^2(a+b)^2}=\dfrac{3\pi}{2}\Omega.\]
+Using the supplied quadratic formula and substituting $x=2\pi t$,
+\[\int_0^{2\pi}F(x)^3\,dx
+=2\pi^7\int_0^1\left(t^2-t+\dfrac{1}{6}\right)^3dt
+=2\pi^7\cdot\dfrac{1}{3780}.\]
+The last integral follows by expanding the cubic polynomial (or centering with $u=t-\dfrac{1}{2}$). Thus
+\[\Omega=\dfrac{2}{3\pi}\cdot\dfrac{\pi^7}{1890}
+=\boxed{\dfrac{\pi^6}{2835}}.\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;real f(real x){return pi*pi/6-pi*x/2+x*x/4;}draw((0,0)--(2*pi+.4,0),Arrow);draw((0,-1.2)--(0,2),Arrow);draw(graph(f,0,2*pi),blue);label("$\pi$",(pi,0),(0,1));label("$2\pi$",(2*pi,0),(0,1));label("$F(x)$",(1,1.5));label("$-\dfrac{\pi^2}{12}$",(pi,-pi*pi/12),(0,-1));label("$x$",(2*pi+.4,0),(1,0));
+\end{asy}

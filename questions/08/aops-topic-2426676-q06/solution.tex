@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2426676_100th_post_problems
+% Stable identity: aops-topic-2426676-q06
+Every snowman uses a power of $2$ cubic feet; write $s_k=2^{e_k}$. Then $e_1=e_2=0$ and, for $k\ge3$, $e_k=e_{k-1}+1$ or $e_k=e_{k-2}+1$.
+
+\textbf{Bounds.} For $k\ge2$, $e_k\le k-2$: true for $k=2,3$, and for $k\ge4$, $e_k\le\max(e_{k-1},e_{k-2})+1\le(k-3)+1$. Also $e_k\ge\left\lfloor\dfrac{k-1}{2}\right\rfloor$: true for $k=1,2$, and for $k\ge3$,
+\[e_k\ge\min(e_{k-1},e_{k-2})+1\ge\left\lfloor\dfrac{k-3}{2}\right\rfloor+1=\left\lfloor\dfrac{k-1}{2}\right\rfloor.\]
+\textbf{All values in between occur.} Fix $j\ge3$. Double the previous snowman for snowmen $3,\dots,j$, so $e_k=k-2$ for $2\le k\le j$, and from then on always double the snowman two places back. Then $e_{j+1}=e_{j-1}+1=j-2$, $e_{j+2}=e_j+1=j-1$, $e_{j+3}=j-1$, $e_{j+4}=j$, and in general $e_{j+m}=j-2+\left\lfloor\dfrac{m}{2}\right\rfloor$. So for the $n$th snowman ($n\ge j$)
+\[e_n=j-2+\left\lfloor\dfrac{n-j}{2}\right\rfloor=\left\lfloor\dfrac{n+j}{2}\right\rfloor-2.\]
+For $j=3$ this is $\left\lfloor\dfrac{n-1}{2}\right\rfloor$, for $j=n$ it is $n-2$, and as $j$ increases by $1$ it increases by $0$ or $1$; so every integer between the bounds occurs.
+
+Hence the $n$th snowman can use $2^e$ cubic feet exactly for $\left\lfloor\dfrac{n-1}{2}\right\rfloor\le e\le n-2$, which is $n-1-\left\lfloor\dfrac{n-1}{2}\right\rfloor$ possibilities:
+\begin{itemize}
+\item $n=10$: $4\le e\le8$, so $\boxed{5}$ possibilities ($16,32,64,128,256$ cubic feet);
+\item $n=100$: $49\le e\le98$, so $\boxed{50}$ possibilities.
+\end{itemize}

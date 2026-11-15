@@ -1,0 +1,7 @@
+There are 21 possible lines and seven parallel classes of three lines, classified by the sum modulo seven of their endpoint indices. Choosing three distinct directions gives $\binom73 3^3=945$ unordered triples. Exactly 140 are concurrent: at each of the seven vertices, choose three of its six lines. To verify that there are no other triple concurrences, use $\zeta^7=1$, $1+\zeta+\cdots+\zeta^6=0$ and the exact line equation $z+\zeta^{a+b}\overline z=\zeta^a+\zeta^b$. Intersect each pair of different directions and substitute in the third equation; the only solutions are the stated vertex triples. Thus 805 unordered triples bound triangles. With independent selection and replacement, the probability is $\dfrac{6\cdot805}{21^3}=\dfrac{230}{441}$, giving $\boxed{671}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair[] P;for(int i=0;i<7;++i)P.push(dir(360*i/7));for(int i=0;i<7;++i)for(int j=i+1;j<7;++j)draw(P[i]--P[j],gray);for(int i=0;i<7;++i)label(string(i),P[i],P[i]);
+\end{asy}

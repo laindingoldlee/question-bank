@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2784264_2021_mcamc_live_round_sets_58__middlesex_county_academy_math_competition
+% Stable identity: aops-topic-2784264-q17
+Enumerate the $7!$ permutations of the seven distinct objects. Each permutation is counted exactly once and retained precisely when all three stated conditions hold. The following complete calculation gives $\boxed{128}$ valid orders.\begin{verbatim}
+from itertools import permutations
+count=0
+for p in permutations("HFSMQXY"):
+    if (p.index("F")==p.index("H")+1
+        and p.index("S") in (3,4)
+        and abs(p.index("M")-p.index("Q"))!=1):
+        count+=1
+assert count==128
+\end{verbatim}

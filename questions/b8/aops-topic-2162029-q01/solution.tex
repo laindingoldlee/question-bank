@@ -1,0 +1,81 @@
+% Source: https://artofproblemsolving.com/community/c3h2162029_imo_2010_shortlist
+% Stable identity: aops-topic-2162029-q01
+Write $\gamma=\angle ACB$ and let $\Gamma$ be the circumcircle of $ABC$.
+
+\textbf{Two angles at $F$.} Since $\angle BEC=\angle BFC=90^\circ$, the points $B$, $C$, $E$, $F$ lie on the circle with diameter $BC$, so (exterior angle of a cyclic quadrilateral) $\angle AFE=\angle ACB=\gamma$. Similarly $A$, $F$, $D$, $C$ lie on the circle with diameter $AC$, so $\angle BFD=\gamma$, and hence $\angle AFD=180^\circ-\gamma$. Consequently, any ray from $F$ along the line $FE$ or along the line $FD$ makes an angle $\gamma$ or $180^\circ-\gamma$ with the ray $FA$, and the sine of that angle is $\sin\gamma$.
+
+\textbf{The two possible positions of $P$.} The point $F$ lies on side $AB$, inside $\Gamma$, so the line $EF$ meets $\Gamma$ at two points, one on each side of $F$. Since $E$ is on the same side of line $AB$ as $C$, one of them (beyond $E$) is on the same side of $AB$ as $C$; for it $\angle APB=\angle ACB=\gamma$ (Case 1). The other (beyond $F$) is on the opposite side, and for it $\angle APB=180^\circ-\gamma$ (Case 2).
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,4), B=(-2,0), C=(3,0);
+pair ft(pair P, pair X, pair Y){return X+dot(P-X,Y-X)/dot(Y-X,Y-X)*(Y-X);}
+pair cc(pair a, pair b, pair c){real d=2*(a.x*(b.y-c.y)+b.x*(c.y-a.y)+c.x*(a.y-b.y));
+ real ux=((a.x^2+a.y^2)*(b.y-c.y)+(b.x^2+b.y^2)*(c.y-a.y)+(c.x^2+c.y^2)*(a.y-b.y))/d;
+ real uy=((a.x^2+a.y^2)*(c.x-b.x)+(b.x^2+b.y^2)*(a.x-c.x)+(c.x^2+c.y^2)*(b.x-a.x))/d; return (ux,uy);}
+pair D=ft(A,B,C), Ee=ft(B,C,A), F=ft(C,A,B);
+pair O=cc(A,B,C); real R=abs(A-O);
+pair[] X=intersectionpoints(F+6*(F-Ee)--Ee+6*(Ee-F),circle(O,R));
+pair P=(X[0].x>X[1].x)?X[0]:X[1];
+pair Q=extension(B,P,D,F);
+pair Wc=cc(A,F,P);
+draw(circle(O,R),gray);
+draw(circle(Wc,abs(A-Wc)),deepgreen+dashed);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,dotted); draw(B--Ee,dotted); draw(C--F,dotted);
+draw(X[0]--X[1],blue);
+draw(D--F,blue); draw(F--Q,blue);
+draw(B--P); draw(B--Q);
+draw(A--P,red+linewidth(1)); draw(A--Q,red+linewidth(1));
+dot(A); dot(B); dot(C); dot(D); dot(Ee); dot(F); dot(P,red); dot(Q,red);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S);
+label("$E$",Ee,NE); label("$F$",F,NW); label("$P$",P,E); label("$Q$",Q,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,4), B=(-2,0), C=(3,0);
+pair ft(pair P, pair X, pair Y){return X+dot(P-X,Y-X)/dot(Y-X,Y-X)*(Y-X);}
+pair cc(pair a, pair b, pair c){real d=2*(a.x*(b.y-c.y)+b.x*(c.y-a.y)+c.x*(a.y-b.y));
+ real ux=((a.x^2+a.y^2)*(b.y-c.y)+(b.x^2+b.y^2)*(c.y-a.y)+(c.x^2+c.y^2)*(a.y-b.y))/d;
+ real uy=((a.x^2+a.y^2)*(c.x-b.x)+(b.x^2+b.y^2)*(a.x-c.x)+(c.x^2+c.y^2)*(b.x-a.x))/d; return (ux,uy);}
+pair D=ft(A,B,C), Ee=ft(B,C,A), F=ft(C,A,B);
+pair O=cc(A,B,C); real R=abs(A-O);
+pair[] X=intersectionpoints(F+6*(F-Ee)--Ee+6*(Ee-F),circle(O,R));
+pair P=(X[0].x<X[1].x)?X[0]:X[1];
+pair Q=extension(B,P,D,F);
+pair Wc=cc(A,F,P);
+draw(circle(O,R),gray);
+draw(circle(Wc,abs(A-Wc)),deepgreen+dashed);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,dotted); draw(B--Ee,dotted); draw(C--F,dotted);
+draw(X[0]--X[1],blue);
+draw(D--F,blue); draw(F--Q,blue);
+draw(B--P); draw(B--Q);
+draw(A--P,red+linewidth(1)); draw(A--Q,red+linewidth(1));
+dot(A); dot(B); dot(C); dot(D); dot(Ee); dot(F); dot(P,red); dot(Q,red);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S);
+label("$E$",Ee,NE); label("$F$",F,NW); label("$P$",P,W); label("$Q$",Q,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The circle $\omega$ through $A$, $F$, $P$.} Since $F$ lies between $A$ and $B$, the power of $B$ with respect to $\omega$ is $BF\cdot BA>0$, so $B$ is outside $\omega$, and the line $BP$ meets $\omega$ again at a point $Q'$ on the ray $BP$ with
+\[BP\cdot BQ'=BF\cdot BA .\]
+Then $\dfrac{BF}{BP}=\dfrac{BQ'}{BA}$, and the triangles $BFQ'$ and $BPA$ share the angle at $B$, so they are similar (SAS) and
+\[\angle BFQ'=\angle BPA .\]
+\textbf{$Q'$ lies on line $DF$, so $Q'=Q$.} The point $Q'$, on the ray from $B$ through $P$, is on the same side of $AB$ as $P$.
+\begin{itemize}
+\item Case 1: $\angle BFQ'=\angle BPA=\gamma$, and $Q'$ is on the side of $C$. The ray $FD$ also makes the angle $\angle BFD=\gamma$ with $FB$ on that side, so $Q'$ is on ray $FD$.
+\item Case 2: $\angle BFQ'=180^\circ-\gamma$, and $Q'$ is on the side opposite to $C$. The ray opposite to $FD$ makes the angle $180^\circ-\gamma$ with $FB$ on that side, so $Q'$ is on that ray.
+\end{itemize}
+In both cases $Q'$ lies on line $DF$ and on line $BP$, so $Q'=Q$. Thus $A$, $F$, $P$, $Q$ all lie on $\omega$ (shown dashed in both sketches).
+
+\textbf{Conclusion.} Let $\rho$ be the radius of $\omega$. Applying the extended law of sines in the triangles $AFP$ and $AFQ$, both inscribed in $\omega$,
+\[AP=2\rho\sin\angle AFP,\qquad AQ=2\rho\sin\angle AFQ .\]
+Since $P$ is on line $FE$ and $Q$ is on line $FD$, both sines equal $\sin\gamma$. Hence $AP=AQ$. $\blacksquare$

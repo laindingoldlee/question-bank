@@ -1,0 +1,22 @@
+Let $a=BC,b=CA,c=AB$, and let $l$ be the bisector length. By the sine rule, for some $K>0$,
+\[
+a=K\sin40^\circ,\quad b=K\sin20^\circ,\quad c=K\sin120^\circ.
+\]
+The angle-bisector length formula gives
+\[
+l=\dfrac{2ab\cos60^\circ}{a+b}
+=K\dfrac{\sin40^\circ\sin20^\circ}{\sin40^\circ+\sin20^\circ}.
+\]
+Since $\sin40^\circ+\sin20^\circ=\cos10^\circ$ and $\sin20^\circ=2\sin10^\circ\cos10^\circ$, this becomes $l=2K\sin40^\circ\sin10^\circ$. But
+\[
+c-a=K(\sin60^\circ-\sin40^\circ)
+=2K\cos50^\circ\sin10^\circ
+=2K\sin40^\circ\sin10^\circ=l.
+\]
+Thus the bisector length equals the given difference, namely $\boxed{18}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(6,0);real ac=6Sin(20)/Sin(120);pair C=ac*dir(40);real bc=length(B-C);pair D=6ac/(ac+bc)*(1,0);draw(A--B--C--cycle);draw(C--D,blue);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,S);label("$40^\circ$",A+(.6,.1),N);label("$20^\circ$",B+(-.7,.05),N);
+\end{asy}

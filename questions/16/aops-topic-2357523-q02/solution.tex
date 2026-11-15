@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2357523_unpostbanned_
+% Stable identity: aops-topic-2357523-q02
+Let $t=BE$ and use coordinates $A=(0,0)$, $B=(1,0)$, $C=(1,1)$, $D=(0,1)$. Then
+\[E=(1-t,0),\quad F=(1,1-t),\quad G=(t,1),\quad H=(0,t).\]
+The rotation by $90^\circ$ about the centre of the square, $(x,y)\mapsto(1-y,x)$, maps $A\to B\to C\to D\to A$ and $F\to G\to H\to E\to F$, so it maps the segments $AF\to BG\to CH\to DE\to AF$. Hence the region they enclose is a square (drawn below with a larger $t$).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real t=0.3;
+pair A=(0,0), B=(1,0), C=(1,1), D=(0,1);
+pair Ept=(1-t,0), F=(1,1-t), G=(t,1), H=(0,t);
+pair P1=extension(A,F,B,G), P2=extension(B,G,C,H), P3=extension(C,H,D,Ept), P4=extension(D,Ept,A,F);
+fill(P1--P2--P3--P4--cycle,lightgray);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--F,blue); draw(B--G,blue); draw(C--H,blue); draw(D--Ept,blue);
+dot(Ept); dot(F); dot(G); dot(H);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$E$",Ept,S); label("$F$",F,E); label("$G$",G,N); label("$H$",H,W);
+label("$t$",(1-t/2,0),S,red); label("$t$",(1,1-t/2),E,red); label("$t$",(t/2,1),N,red); label("$t$",(0,t/2),W,red);
+\end{asy}
+
+The segments $AF$ and $CH$ are parallel (both have direction $(1,1-t)$), and two opposite sides of the small square lie on them, so the side of the small square is the distance between these lines. The line $AF$ is $(1-t)x-y=0$, and $H=(0,t)$ lies on $CH$, so the side is
+\[\dfrac{|0-t|}{\sqrt{(1-t)^2+1}}=\dfrac{t}{\sqrt{1+(1-t)^2}}.\]
+The area condition $\dfrac{t^2}{1+(1-t)^2}=\dfrac1n$ becomes $nt^2=t^2-2t+2$, that is,
+\[(n-1)t^2+2t-2=0,\qquad t=\dfrac{-1+\sqrt{2n-1}}{n-1}=\dfrac{2}{1+\sqrt{2n-1}}\]
+(taking the positive root; the two forms agree because $(\sqrt{2n-1}-1)(\sqrt{2n-1}+1)=2(n-1)$). This $t$ lies between $0$ and $1$. For $n=6519$, $2n-1=13037$ and
+\[BE=\boxed{\dfrac{2}{1+\sqrt{13037}}=\dfrac{\sqrt{13037}-1}{6518}}\approx0.0174.\]

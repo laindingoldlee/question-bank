@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2915831_2022_bmmt_team_round__berkley_mini_math_tournament_spring
+% Stable identity: aops-topic-2915831-q09
+In triangle $ABE$, the angles at $A,E$ are equal, so $BE=AB=54$ and $BD=54-18=36$. Let their common angle be $\theta$. Then $\angle ABD=180^\circ-2\theta$, and the angle-bisector condition gives $\angle DBC=180^\circ-2\theta$. Since $\angle BCD=\theta$, triangle $BCD$ also has $\angle BDC=\theta$, so $BC=BD=36$. The triangles $BCD$ and $BAE$ are similar with scale $\dfrac{36}{54}=\dfrac{2}{3}$. Therefore $CD=\dfrac{2}{3}\cdot AE=30$. The perimeter is $54+36+30+18+45=\boxed{183}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair B=(0,0),Ept=(54,0),D=(36,0),A=(35.25,sqrt(54^2-35.25^2)),C=(2*A.x/3,-2*A.y/3);draw(A--B--C--D--Ept--cycle);draw(B--Ept,dashed);label("$A$",A,N);label("$B$",B,W);label("$C$",C,S);label("$D$",D,NW);label("$E$",Ept,E);
+\end{asy}

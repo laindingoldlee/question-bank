@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1059629_2014_national_team_round_questions_9_and_10
+% Stable identity: aops-topic-1059629-q09
+Number the walls $W_1,W_2,W_3,W_4,W_5$ around the room. Each wall is adjacent to the two walls beside it and non-adjacent to the other two, so the non-adjacent pairs are
+\[
+W_1W_3,\quad W_3W_5,\quad W_5W_2,\quad W_2W_4,\quad W_4W_1 .
+\]
+These five pairs form a single cycle $W_1\to W_3\to W_5\to W_2\to W_4\to W_1$. So we must count the colourings of a cycle of $5$ walls with $5$ colours in which neighbours \emph{in this cycle} get different colours.
+
+\textbf{Paths and cycles.} Let $p_n$ be the number of such colourings of a path of $n$ walls and $c_n$ the number for a cycle of $n$ walls ($n\ge3$), with $5$ colours. Colouring a path one wall at a time gives $p_n=5\cdot4^{\,n-1}$. A good colouring of the path whose two end walls also differ is a good colouring of the cycle; one whose end walls agree is (after merging the two ends) a good colouring of a cycle of $n-1$ walls. Hence
+\[
+c_n=p_n-c_{n-1}.
+\]
+Starting from $c_3=5\cdot4\cdot3=60$:
+\[
+c_4=5\cdot4^3-60=320-60=260,\qquad c_5=5\cdot4^4-260=1280-260=1020 .
+\]
+So the number of ways is $\boxed{1020}$.
+
+(This agrees with the formula $(k-1)^n+(-1)^n(k-1)=4^5-4$ for colouring a cycle of length $n=5$ with $k=5$ colours. If all five colours had to be used, every wall would get a different colour and the answer would simply be $5!=120$.)

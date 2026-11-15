@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1065417_am_i_seriously_having_trouble_with_angle_chasing
+% Stable identity: aops-topic-1065417-q01
+Since $E$ is on $AB$ and $D$ on $AC$: $\angle DBC=80^\circ-20^\circ=60^\circ$ and $\angle BCE=80^\circ-30^\circ=50^\circ$. Take $BC=1$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(1,0); pair A=(0.5,0.5*Tan(80));
+pair D=extension(B,B+dir(60),C,A); pair E=extension(C,C+dir(130),B,A);
+draw(A--B--C--cycle,linewidth(1)); draw(B--D,blue); draw(C--E,blue); draw(E--D,red);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,E);label("$E$",E,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In triangle $BCE$: $\angle EBC=80^\circ$, $\angle BCE=50^\circ$, so $\angle BEC=50^\circ$ and $BE=BC=1$. In triangle $BCD$: $\angle BDC=180^\circ-60^\circ-80^\circ=40^\circ$, so by the law of sines $BD=\dfrac{\sin80^\circ}{\sin40^\circ}=2\cos40^\circ$.
+
+In triangle $BDE$ let $\theta=\angle EDB$; then $\angle BED=160^\circ-\theta$, and the law of sines gives
+\[\dfrac{BD}{BE}=\dfrac{\sin(160^\circ-\theta)}{\sin\theta}=\dfrac{\sin(20^\circ+\theta)}{\sin\theta}=\cos20^\circ+\sin20^\circ\cot\theta.\]
+This is strictly decreasing in $\theta$, so there is one solution, and $\theta=30^\circ$ works: $\dfrac{\sin50^\circ}{\sin30^\circ}=2\sin50^\circ=2\cos40^\circ$. Hence $\angle EDB=\boxed{30^\circ}$.

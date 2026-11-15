@@ -1,0 +1,13 @@
+Number rows and columns $1,2,3,4$. Corner cell $A=(1,1)$ has only two possible neighbours, $B=(2,3)$ and $C=(3,2)$. In a closed tour, every visited cell must use exactly two incident moves, so both $AB$ and $AC$ are forced.
+
+The opposite corner $D=(4,4)$ has the same two possible neighbours, $B$ and $C$. Thus $DB$ and $DC$ are also forced. These four forced moves form the cycle $A\to B\to D\to C\to A$.
+
+Both allowed tour moves at each of $A,B,C,D$ are now used within that four-cell cycle. It cannot be connected to the other twelve cells as part of a single tour. This contradiction proves that $\boxed{\text{no closed knight's tour exists}}$.
+
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(260);
+defaultpen(fontsize(9pt));
+for(int i=0;i<4;++i)for(int j=0;j<4;++j)filldraw(box((i,j),(i+1,j+1)),(i+j)%2==0?gray(.9):white,black);pair A=(.5,3.5),B=(2.5,2.5),C=(1.5,1.5),D=(3.5,.5);draw(A--B--D--C--cycle,linewidth(1.2));dot(A);dot(B);dot(C);dot(D);label("$A$",A,(0,1));label("$B$",B,(1,1));label("$C$",C,(-1,-1));label("$D$",D,(0,-1));
+
+\end{asy}

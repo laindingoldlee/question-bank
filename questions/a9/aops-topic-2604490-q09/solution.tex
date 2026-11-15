@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2604490_geometry_3
+% Stable identity: aops-topic-2604490-q09
+\textbf{Same side.} By the triangle inequality in triangle $APB$ (or on a line), $|AP-PB|\le AB$, with equality exactly when $A$, $B$, $P$ are collinear and $P$ is not strictly between $A$ and $B$. Since $A$ and $B$ are at different distances from $\ell$, line $AB$ is not parallel to $\ell$ and meets it at a point $P$. Because $A$ and $B$ are on the same side of $\ell$, this $P$ is not between them, so $|AP-PB|=AB$ there. So $P=AB\cap\ell$ and the maximum is $AB$.
+
+\textbf{Opposite sides.} Let $B'$ be the reflection of $B$ in $\ell$; it is on the same side as $A$, at the same distance from $\ell$ as $B$. For $P$ on $\ell$, $PB=PB'$, so by the first case $|AP-PB|=|AP-PB'|\le AB'$, with equality at the point where line $AB'$ meets $\ell$ (it does, since $A$ and $B'$ are at different distances from $\ell$).
+
+$\boxed{P=AB\cap\ell\text{ (same side, maximum }AB),\qquad P=AB'\cap\ell\text{ (opposite sides, maximum }AB')}$
+
+\begin{asy}
+usepackage("amsmath");
+size(4.2cm);
+defaultpen(fontsize(10pt));
+draw((-1.5,0)--(5,0)); label("$\ell$",(5,0),E);
+pair A=(0,3),B=(2,1.5),P=extension(A,B,(0,0),(1,0));
+draw(A--B,linewidth(0.8)); draw(B--P,dashed); dot(A);dot(B);dot(P);
+label("$A$",A,N);label("$B$",B,NE);label("$P$",P,S);
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(4.2cm);
+defaultpen(fontsize(10pt));
+draw((-1.5,0)--(6,0)); label("$\ell$",(6,0),E);
+pair A=(0,3),B=(2.5,-1.5),Bp=(2.5,1.5),P=extension(A,Bp,(0,0),(1,0));
+draw(A--Bp,linewidth(0.8)); draw(Bp--P,dashed); draw(B--Bp,dotted); draw(P--B,dashed);
+dot(A);dot(B);dot(Bp);dot(P);
+label("$A$",A,N);label("$B$",B,S);label("$B'$",Bp,NE);label("$P$",P,SE);
+\end{asy}
+
+Left: same side, $P$ on line $AB$ beyond $B$. Right: opposite sides, using the reflection $B'$.

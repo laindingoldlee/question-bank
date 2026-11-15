@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2946442_natural_logarithm
+% Stable identity: aops-topic-2946442-q01
+All sides must be positive, so $\ln x>0$, and then $\ln(3x)$ is the largest side, the hypotenuse.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(3,0),C=(0,2);draw(A--B--C--cycle);draw((0.2,0)--(0.2,0.2)--(0,0.2));
+label("$\ln(3x)$",(B+C)/2,NE);label("$\ln(2x)$",(A+B)/2,S);label("$\ln x$",(A+C)/2,W);
+\end{asy}
+
+Put $t=\ln x$, $p=\ln2$, $q=\ln3$. Then $t^2+(t+p)^2=(t+q)^2$ gives
+\[t^2-2(q-p)t+(p^2-q^2)=0,\qquad t=(q-p)\pm\sqrt{(q-p)^2+(q^2-p^2)}=(q-p)\pm\sqrt{2q(q-p)}.\]
+The minus sign gives $t<0$, since $2q(q-p)>(q-p)^2$. So $t=\ln\dfrac32+\sqrt{2\ln3\,\ln\dfrac32}$ and
+\[x=\boxed{\dfrac32\,\exp\left(\sqrt{2\ln3\,\ln\dfrac32}\right)}\approx3.85.\]

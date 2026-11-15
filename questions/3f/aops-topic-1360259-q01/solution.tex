@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1360259_math_hw_help
+% Stable identity: aops-topic-1360259-q01
+The closest point is the foot of the perpendicular from $(0,5)$ to the line. The line has slope $2$, so the perpendicular through $(0,5)$ has slope $-\dfrac{1}{2}$: $y=5-\dfrac{x}{2}$. Intersecting with $y=2x$ gives $2x=5-\dfrac{x}{2}$, so $x=2$ and $y=4$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+import graph;
+pair P=(0,5), F=(2,4);
+draw((-0.5,0)--(3.8,0),gray,Arrow(4)); draw((0,-0.5)--(0,6),gray,Arrow(4));
+label("$x$",(3.8,0),S,gray); label("$y$",(0,6),W,gray);
+draw((-0.25,-0.5)--(2.9,5.8),linewidth(0.9));
+draw(P--F,red+dashed); draw(ra(F,P-F,(1,2),0.3),red);
+dot(P); dot(F); dot((0,0));
+label("$(0,5)$",P,W); label("$(2,4)$",F,SE); label("$y=2x$",(2.9,5.8),E);
+label("$\sqrt5$",(P+F)/2,N,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The closest point is $\boxed{(2,4)}$, at distance $\sqrt{4+1}=\sqrt5$. (Check: the squared distance from $(t,2t)$ to $(0,5)$ is $t^2+(2t-5)^2=5t^2-20t+25=5(t-2)^2+5$, least at $t=2$.)

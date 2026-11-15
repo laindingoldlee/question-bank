@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2200170_invariantmonovariant_question
+% Stable identity: aops-topic-2200170-q01
+We work modulo $3$. Every square is $\equiv0$ or $1\pmod3$, according as the number is or is not a multiple of $3$. Let $g=\gcd\left(a^2+b^2+2,\ a^2b^2+3\right)$.
+\begin{itemize}
+\item If $3\mid a$ and $3\mid b$: $a^2+b^2+2\equiv2\pmod3$, so $3\nmid g$.
+\item If $3\nmid a$ and $3\nmid b$: $a^2b^2+3\equiv1\pmod3$, so $3\nmid g$.
+\item If exactly one of them, say $a$, is a multiple of $3$: $a^2+b^2+2\equiv0+1+2\equiv0$ and $a^2b^2+3\equiv0\pmod3$, so $3\mid g$.
+\end{itemize}
+
+\textbf{An invariant.} Let $k$ be the number of multiples of $3$ on the board. In the three cases an operation changes $k$ by $-2$, by $0$, and by $-1+1=0$. So the parity of $k$ never changes. At the start $k=33$, which is odd; at the end only one number is left, so $k=1$ and the last number is a multiple of $3$.
+
+\textbf{The last number is not divisible by $9$.} The last number $g$ was produced by an operation, and since $3\mid g$ that operation was of the third kind: $3\mid a$ and $3\nmid b$. Then $9\mid a^2$, so $a^2b^2+3\equiv3\pmod9$ and $9\nmid a^2b^2+3$; hence $9\nmid g$.
+
+\textbf{Conclusion.} If a perfect square $m^2$ is divisible by $3$, then $3\mid m$ (as $3$ is prime), so $9\mid m^2$. The last number is divisible by $3$ but not by $9$, so it is not a perfect square.

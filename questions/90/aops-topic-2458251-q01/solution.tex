@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2458251_please_help_confused_on_these_problems
+% Stable identity: aops-topic-2458251-q01
+We have $k=2^4\cdot3^3\cdot5^2\cdot7\cdot11\cdot13\cdot17\cdot19\cdot23\cdot29$. Let $d$ be a divisor of $k$. A number $m\in S$ fails to divide $d$ exactly when $v_p(m)>v_p(d)$ for some prime $p$. For each prime $p$ with $v_p(d)<v_p(k)$, the numbers in $S$ that fail \emph{because of $p$} are the multiples of $p^{v_p(d)+1}$ in $S$, and there is at least one of them. Their number is:
+\begin{itemize}
+\item $p=2$: $1$ (only $16$) if $v_2(d)=3$, and at least $3$ ($8,16,24$) if $v_2(d)\le2$;
+\item $p=3$: $1$ (only $27$) if $v_3(d)=2$, and at least $3$ ($9,18,27$) if $v_3(d)\le1$;
+\item $p=5$: $1$ (only $25$) if $v_5(d)=1$, and $6$ if $v_5(d)=0$;
+\item $p=7$: $4$ ($7,14,21,28$); $p=11$: $2$ ($11,22$); $p=13$: $2$ ($13,26$);
+\item $p=17,19,23,29$: $1$ each.
+\end{itemize}
+We need exactly $2$ numbers of $S$ to fail. A prime contributing $3$ or more failures is impossible. If a prime contributes $2$ failures ($p=11$ or $13$, with $p\nmid d$), no other prime may be deficient: any other prime would add a failure outside $\{11,22\}$ or $\{13,26\}$. That gives $2$ divisors, $\dfrac{k}{11}$ and $\dfrac{k}{13}$. Otherwise exactly two primes are deficient, each contributing $1$ failure; they are chosen from the $7$ primes $2,3,5,17,19,23,29$ (each lowered by exactly one factor), and their failing numbers ($16,27,25,17,19,23,29$) are distinct. That gives $\dbinom72=21$ divisors.
+
+In total there are $21+2=\boxed{23}$ such divisors.

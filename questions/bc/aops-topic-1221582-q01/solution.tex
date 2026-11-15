@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1221582_find_area__perimeter_of_triangle
+% Stable identity: aops-topic-1221582-q01
+Each side times its altitude is twice the area $K$, so the sides are $\dfrac{2K}{3}$, $K$, $K$: the triangle is isosceles with legs $K$ and base $\dfrac{2K}{3}$, and the altitude $3$ falls on the base.
+
+\begin{asy}
+usepackage("amsmath");
+size(2.5cm);
+defaultpen(fontsize(10pt));
+real bb=9*sqrt(2)/4, a=3*sqrt(2)/2; pair B=(-a/2,0),C=(a/2,0),A=(0,3);
+draw(A--B--C--cycle,linewidth(1)); draw(A--(0,0),dashed); label("$3$",(0,1.5),E);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+That altitude bisects the base, so $3^2+\left(\dfrac {K}{3}\right)^2=K^2$, i.e. $\dfrac{8K^2}{9}=9$ and $K=\dfrac{9}{2\sqrt2}=\dfrac{9\sqrt2}{4}$. So the area is $\boxed{\dfrac{9\sqrt2}{4}}$ and the perimeter is $K+K+\dfrac{2K}{3}=\dfrac{8K}{3}=\boxed{6\sqrt2}$.

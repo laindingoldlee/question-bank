@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1590635_help_in_probalility
+% Stable identity: aops-topic-1590635-q03
+\textbf{All allowed digit strings.} Without the second condition there are $9^3\cdot10^5=72\,900\,000$ strings: $9$ choices for each of the first three positions and $10$ for each of the last five.
+
+\textbf{Strings using some digit $6$ or more times.} Two different digits cannot both be used $6$ or more times in $8$ positions, so we count, for each digit $d$, the strings in which $d$ appears exactly $k$ times with $k\in\{6,7,8\}$, and add.
+
+The digit $0$ can only appear in the last five positions, so it never appears $6$ times. Now fix a nonzero digit $d$. If $d$ occupies $i$ of the first three positions and $k-i$ of the last five, the other first positions have $8$ choices each (nonzero, not $d$) and the other last positions $9$ choices each, giving $\dbinom3i\dbinom5{k-i}8^{3-i}9^{5-k+i}$ strings:
+\[
+\begin{aligned}
+k=6:&\quad \dbinom31\dbinom55\cdot8^2+\dbinom32\dbinom54\cdot8\cdot9+\dbinom33\dbinom53\cdot9^2=192+1080+810=2082,\\
+k=7:&\quad \dbinom32\dbinom55\cdot8+\dbinom33\dbinom54\cdot9=24+45=69,\\
+k=8:&\quad 1 .
+\end{aligned}
+\]
+So each nonzero digit is used too often in $2082+69+1=2152$ strings, and there are $9\cdot2152=19\,368$ forbidden strings in all.
+
+\textbf{Answer.}
+\[
+72\,900\,000-19\,368=\boxed{72\,880\,632}.
+\]

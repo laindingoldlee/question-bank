@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1383188_trigonometry
+% Stable identity: aops-topic-1383188-q01
+Let the circle touch arm $OP$ at $T$. A radius to a point of tangency is perpendicular to the tangent, so $\angle OTC=90^\circ$ and $CT=20$. The centre is equidistant from the two arms, so it lies on the bisector of the angle and $\angle TOC=25^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+real d=1/Sin(25);
+pair O=(0,0), C=(d,0), T=d*Cos(25)*dir(25), U=d*Cos(25)*dir(-25);
+draw(O--3.4*dir(25),linewidth(0.9)); draw(O--3.4*dir(-25),linewidth(0.9));
+draw(circle(C,1),blue);
+draw(O--C,dashed); draw(C--T,red); draw(C--U,gray+dashed);
+draw(ra(T,O-T,C-T,0.13)); draw(ra(U,O-U,C-U,0.13));
+draw(arc(O,0.7,0,25)); label("$25^\circ$",O+0.95*dir(12.5),fontsize(8pt));
+dot(O);dot(C);dot(T);dot(U);
+label("$O$",O,W); label("$C$",C,SE); label("$T$",T,NW);
+label("$P$",3.4*dir(25),NE); label("$Q$",3.4*dir(-25),SE);
+label("$20$",(C+T)/2,NE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the right triangle $OTC$ the side $CT$ is opposite the $25^\circ$ angle and $OC$ is the hypotenuse, so
+\[
+\sin25^\circ=\dfrac{CT}{OC}\quad\Longrightarrow\quad OC=\dfrac{20}{\sin25^\circ}\approx\dfrac{20}{0.4226}\approx47.3 .
+\]
+To the nearest millimetre, $OC\approx\boxed{47\text{ mm}}$.

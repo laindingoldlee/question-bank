@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h2287873_circumcircle_incircle_and_others
+% Stable identity: aops-topic-2287873-q01
+\textbf{(a)} A point lies on the perpendicular bisector of $AB$ exactly when it is equally far from $A$ and $B$. The perpendicular bisectors of $AB$ and $BC$ are not parallel (since $AB$ and $BC$ are not parallel), so they meet at a point $O$ with $OA=OB$ and $OB=OC$. Then $OA=OC$, so $O$ also lies on the perpendicular bisector of $CA$. The circle with centre $O$ and radius $OA=OB=OC$ passes through all three vertices: it is the circumcircle, and $O$ is the circumcentre.
+
+\begin{asy}
+usepackage("amsmath");
+size(11cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(2,4.6);
+real dd=2*(A.x*(B.y-C.y)+B.x*(C.y-A.y)+C.x*(A.y-B.y));
+pair O=((dot(A,A)*(B.y-C.y)+dot(B,B)*(C.y-A.y)+dot(C,C)*(A.y-B.y))/dd,(dot(A,A)*(C.x-B.x)+dot(B,B)*(A.x-C.x)+dot(C,C)*(B.x-A.x))/dd);
+draw(circle(O,abs(O-A)),blue);
+draw(A--B--C--cycle,linewidth(0.9));
+pair[] mids={(A+B)/2,(B+C)/2,(C+A)/2};
+for(pair m:mids){ draw(m--O,dashed+blue); }
+dot(O,blue); label("$O$",O,dir(-45),blue);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N);
+pair sh=(9.5,0);
+pair A2=A+sh,B2=B+sh,C2=C+sh;
+real a=abs(B2-C2), b=abs(C2-A2), c=abs(A2-B2);
+pair I=(a*A2+b*B2+c*C2)/(a+b+c);
+pair F=B2+dot(I-B2,unit(C2-B2))*unit(C2-B2);
+real r=abs(I-F);
+draw(circle(I,r),red);
+draw(A2--B2--C2--cycle,linewidth(0.9));
+draw(A2--I,dashed+red); draw(B2--I,dashed+red); draw(C2--I,dashed+red);
+draw(I--F,red); dot(I,red); dot(F); label("$F$",F,NE);
+label("$I$",I,dir(150),red); label("$r$",(I+F)/2,S,red);
+label("$A$",A2,SW); label("$B$",B2,SE); label("$C$",C2,N);
+\end{asy}
+
+\textbf{(b)} A point inside angle $A$ lies on its bisector exactly when it is equally far from the lines $AB$ and $AC$. The bisector of angle $A$ meets side $BC$ at a point $A'$, and the bisector of angle $B$, a ray inside angle $ABA'$, crosses segment $AA'$ at a point $I$ inside the triangle. Then $I$ is equally far from $AB$ and $AC$, and from $BA$ and $BC$, so it is equally far, say at distance $r$, from $CA$ and $CB$; hence it lies on the bisector of angle $C$ too. The circle with centre $I$ and radius $r$ is tangent to each of the three lines (each is at distance $r$ from the centre). It touches line $BC$ at the foot $F$ of the perpendicular from $I$, and $F$ lies between $B$ and $C$ because the angles $IBC=\dfrac{B}{2}$ and $ICB=\dfrac C2$ are acute; similarly for the other sides. So it is the incircle, and $I$ is the incentre.
+
+\textbf{(c)} The hypotenuse is $\sqrt{6^2+8^2}=10$. In a right triangle the midpoint $M$ of the hypotenuse is equally far from all three vertices (the right angle is inscribed in the circle with the hypotenuse as diameter), so $R=\dfrac{10}{2}=\boxed{5}$. For the inradius, split the triangle into the three triangles $IBC$, $ICA$, $IAB$, each of height $r$:
+\[\dfrac12\cdot6\cdot8=\dfrac r2(6+8+10),\qquad24=12r,\qquad r=\boxed{2}.\]

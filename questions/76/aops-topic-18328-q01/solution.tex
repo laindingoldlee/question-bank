@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h18328_mathcounts_challenge_problem
+% Stable identity: aops-topic-18328-q01
+For a positive integer $k$, the interior points are the $(x,y)$ with $0<y<x<k$: for $x=2,\dots,k-1$ there are $x-1$ values of $y$, giving $\dfrac{(k-1)(k-2)}2$ points. Setting this equal to $21$ gives $(k-1)(k-2)=42$ and $k=\boxed{8}$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=8;++i){draw((i,0)--(i,8),gray(0.85));draw((0,i)--(8,i),gray(0.85));}draw((0,0)--(8,8)--(8,0)--cycle);for(int x=2;x<8;++x) for(int y=1;y<x;++y) dot((x,y));label("$(k,k)$",(8,8),NE);label("$(k,0)$",(8,0),SE);
+\end{asy}

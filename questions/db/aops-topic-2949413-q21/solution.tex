@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2949413_2019_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2949413-q21
+The side length is 15. If the inradius is $r$, tangent lengths at the supplementary angles $A,B$ give $AE\cdot BE=r^2$, hence $r=6$. Put $B=(0,0),A=(15,0)$, so $E=(12,0)$ and the incenter is $I=(12,6)$. Since $\cot(\dfrac{B}{2})=\dfrac{12}{6}=2$, we have $\cos B=\dfrac{3}{5},\sin B=\dfrac{4}{5}$, and line $BC$ is $y=\dfrac{4}{3}x$. A nonvertical line through $M=(\dfrac{15}{2},0)$ has equation $y=m(x-\dfrac{15}{2})$. Tangency to the circle requires $\dfrac{|(\dfrac{9}{2})m-6|}{\sqrt{m^2+1}}=6$, whose slopes are 0 and $-\dfrac{24}{7}$. The vertical line is not tangent, since its distance to $I$ is $\dfrac{9}{2}$. Intersecting the nonzero-slope tangent with $BC$ gives $F=(\dfrac{27}{5},\dfrac{36}{5})$. Therefore $[MFB]=\dfrac{1}{2}\cdot\dfrac{15}{2}\cdot\dfrac{36}{5}=\boxed{27}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair B=(0,0),A=(15,0),C=(9,12),D=A+C,Ii=(12,6),Ep=(12,0),M=(7.5,0),F=(27/5,36/5);draw(B--A--D--C--cycle);draw(circle(Ii,6));draw(M--F,blue);label("$A$",A,SE);label("$B$",B,SW);label("$C$",C,NW);label("$D$",D,NE);label("$I$",Ii,E);label("$E$",Ep,S);label("$M$",M,S);label("$F$",F,W);
+\end{asy}

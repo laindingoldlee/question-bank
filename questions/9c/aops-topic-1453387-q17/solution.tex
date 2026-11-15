@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1453387_algebra_question
+% Stable identity: aops-topic-1453387-q17
+Put $u=x-4$ and $v=y-3$, so $|u|+|v|\le4$ and
+\[
+4x+5y=31+4u+5v\le31+5(|u|+|v|)\le31+5\cdot4=51 .
+\]
+(Here $4u\le4|u|\le5|u|$ and $5v\le5|v|$.) Equality holds for $u=0$, $v=4$, that is, at $(x,y)=(4,7)$. The maximum is $\boxed{51}$.
+
+Geometrically, the region is the square with vertices $(8,3)$, $(4,7)$, $(0,3)$, $(4,-1)$, and a linear function is largest at a vertex: the values there are $47$, $51$, $15$, $11$.
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair[] V={(8,3),(4,7),(0,3),(4,-1)};
+fill(V[0]--V[1]--V[2]--V[3]--cycle,palegreen);
+draw(V[0]--V[1]--V[2]--V[3]--cycle,blue+linewidth(0.9));
+xaxis(-1.5,10.5,Arrow); yaxis(-2.5,10,Arrow);
+draw((1,9.4)--(8.5,3.4),red+dashed);
+dot(V[0]);dot(V[1]);dot(V[2]);dot(V[3]); dot((4,3));
+label("$(8,3)$",V[0],SE); label("$(4,7)$",V[1]+(-0.3,-0.1),W); label("$(0,3)$",V[2],W); label("$(4,-1)$",V[3],E);
+label("$(4,3)$",(4,3),S);
+label("$4x+5y=51$",(7,4.6),NE,red);
+label("$x$",(10.5,0),S); label("$y$",(0,10),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

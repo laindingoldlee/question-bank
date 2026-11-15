@@ -1,0 +1,48 @@
+Each new line crosses the convex sheet in a segment. If it meets the earlier lines in $k$ distinct interior points, it adds $k+1$ regions. Thus three lines create at least $1+1+1+1=4$ and at most $1+1+2+3=7$ regions. All four integer values are attainable:
+\begin{itemize}
+\item Four: use three parallel lines.
+\item Five: let the first two cross inside the sheet, and place the third near a corner so that both its intersections with the earlier infinite lines lie outside.
+\item Six: use three concurrent lines with different directions.
+\item Seven: use three lines whose three pairwise intersections are distinct and inside the sheet.
+\end{itemize}
+The complete set is $\boxed{\{4,5,6,7\}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(box((-2,-2),(2,2)),gray);
+draw((-2,-1)--(2,-1),blue);
+draw((-2,0)--(2,0),blue);
+draw((-2,1)--(2,1),blue);
+label("4 regions",(0,-2.4));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(box((-2,-2),(2,2)),gray);
+draw((0,-2)--(0,2),blue);
+draw((-2,0)--(2,0),blue);
+draw((1,2)--(2,1),blue);
+label("5 regions",(0,-2.4));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(box((-2,-2),(2,2)),gray);
+draw((0,-2)--(0,2),blue);
+draw((-2,0)--(2,0),blue);
+draw((-2,-2)--(2,2),blue);
+label("6 regions",(0,-2.4));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(box((-2,-2),(2,2)),gray);
+draw((0,-2)--(0,2),blue);
+draw((-2,0)--(2,0),blue);
+draw((-1,2)--(2,-1),blue);
+label("7 regions",(0,-2.4));
+\end{asy}

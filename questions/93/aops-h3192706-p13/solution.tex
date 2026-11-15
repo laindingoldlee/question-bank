@@ -1,0 +1,7 @@
+Each new group of three hexagons shares two edges with the previous end hexagon and three further edges within the group: one between the upper and lower pair and two connecting them to the new end. Its eighteen side lengths therefore increase the outer perimeter by $18-2\cdot5=8$. Starting from perimeter six and adding 674 groups yields $6+674\cdot8=\boxed{5398}$. No additional shared edges occur between nonconsecutive groups, as their centres are farther than the neighbour spacing. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] c={(0,0),(1.5,sqrt(3)/2),(1.5,-sqrt(3)/2),(3,0),(4.5,sqrt(3)/2),(4.5,-sqrt(3)/2),(6,0)};for(int j=0;j<c.length;++j){path p=c[j]+dir(0);for(int i=1;i<6;++i)p=p--(c[j]+dir(60i));draw(p--cycle);label("$H_"+string(j+1)+"$",c[j]);}
+\end{asy}

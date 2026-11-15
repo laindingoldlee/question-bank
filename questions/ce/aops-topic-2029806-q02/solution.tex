@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h2029806_happy_pi_day_maybe_a_competition
+% Stable identity: aops-topic-2029806-q02
+Let the height be \(h\) and let \(V\) be the volume of the whole cone. Similar cones have volumes proportional to the cubes of their heights.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real H=12.005, R=4;
+// left: vertex up, air cone of height 10 at the top
+pair V1=(0,H); pair L1=(-R,0), R1=(R,0);
+real yw=H-10; real rw=R*10/H;
+fill((-rw,yw)--(rw,yw)--R1--L1--cycle,paleblue);
+draw(L1--V1--R1--cycle,linewidth(0.9)); draw((-rw,yw)--(rw,yw),blue);
+draw((R+0.6,yw)--(R+0.6,H),Arrows(3)); label("$10$",(R+0.6,(yw+H)/2),E);
+// right: vertex down
+pair V2=(13,0); pair L2=(13-R,H), R2=(13+R,H);
+real yh=H-3; real rh=R*yh/H;
+fill(V2--(13-rh,yh)--(13+rh,yh)--cycle,paleblue);
+draw(L2--V2--R2--cycle,linewidth(0.9)); draw((13-rh,yh)--(13+rh,yh),blue);
+draw((13+R+0.6,yh)--(13+R+0.6,H),Arrows(3)); label("$3$",(13+R+0.6,(yh+H)/2),E);
+label("$h$",(-R-0.3,H/2),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Vertex up, the air forms a cone of height \(10\) at the top, so the water has volume \(V\left(1-\dfrac{10^3}{h^3}\right)\). Vertex down, the water forms a cone of height \(h-3\), of volume \(V\dfrac{(h-3)^3}{h^3}\). Equating,
+\[
+h^3-1000=(h-3)^3=h^3-9h^2+27h-27\iff 9h^2-27h-973=0 .
+\]
+The positive root is
+\[
+h=\dfrac{27+\sqrt{27^2+36\cdot973}}{18}=\dfrac{27+\sqrt{35757}}{18}=\dfrac{27+3\sqrt{3973}}{18}=\boxed{\dfrac{9+\sqrt{3973}}{6}}\approx12.0,
+\]
+which indeed exceeds \(10\). (\(3973=29\cdot137\) is squarefree.)

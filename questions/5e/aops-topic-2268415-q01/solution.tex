@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2268415_simple_counting_problem
+% Stable identity: aops-topic-2268415-q01
+\textbf{(a)} Count the complement. There are $7!=5040$ seatings in all. If no two boys are adjacent, the $4$ boys need at least $3$ chairs between them, one in each gap; with only $3$ girls, the pattern must be
+\[B\,G\,B\,G\,B\,G\,B.\]
+The boys can fill their chairs in $4!$ ways and the girls in $3!$ ways, giving $4!\cdot3!=144$ seatings. Hence the number of seatings with at least two boys next to each other is
+\[5040-144=\boxed{4896}.\]
+
+\textbf{(b)} The student's number $8640$ is even larger than the total $5040$, so it must count some seatings more than once. Indeed, a seating is produced by the student's method once for each pair of neighbouring boys in it: the block can be any two adjacent boys, and the order inside the block is the order in which they sit. For example, with sons $B_1,\dots,B_4$ and daughters $G_1,G_2,G_3$, the seating
+\[B_1\,B_2\,B_3\,G_1\,B_4\,G_2\,G_3\]
+is produced twice: with the block $B_1B_2$ (and $B_3$ placed next to it), and with the block $B_2B_3$ (and $B_1$ placed next to it). Seatings with two or more adjacent pairs of boys are overcounted.
+
+So $8640$ counts pairs (seating, two neighbouring chairs both occupied by boys). Check: there are $6$ pairs of neighbouring chairs, and for each of them the number of seatings with boys in both chairs is $4\cdot3\cdot5!=1440$; in total $6\cdot1440=8640$. The correct count of seatings is the one in (a).

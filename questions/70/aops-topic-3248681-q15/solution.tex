@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h3248681_202324_abmc_online_december_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3248681-q15
+The common mean must equal the whole-set mean, $\dfrac{11}{2}$. A valid block $S$ therefore satisfies $2\sum_{x\in S}x=11|S|$. To count without ordering the blocks, always take the block containing the least remaining element, and recurse on its complement. This uniquely specifies the first block of every partition, so there is neither omission nor overcounting. The exact computation yields $\boxed{64}$.
+\begin{verbatim}
+from functools import lru_cache
+@lru_cache(None)
+def count(mask):
+ if not mask: return 1
+ first=mask&-mask
+ total=0
+ sub=mask
+ while sub:
+  if sub&first:
+   values=[i+1 for i in range(10) if (sub>>i)&1]
+   if 2*sum(values)==11*len(values):
+    total+=count(mask^sub)
+  sub=(sub-1)&mask
+ return total
+print(count((1<<10)-1))
+# 64
+\end{verbatim}

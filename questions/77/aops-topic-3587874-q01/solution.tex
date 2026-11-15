@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h3587874_segment_in_regular_hexagon
+% Stable identity: aops-topic-3587874-q01
+Choose $A=(0,0)$ and $B=(2,0)$ with the hexagon above $AB$. Equal distances to $A,B$ imply $P=(1,y)$. The right-angle condition gives $(A-P)\cdot(B-P)=-1+y^2=0$, so $y=\pm1$. Interiority selects $P=(1,1)$. In the regular hexagon, $D=(2,2\sqrt3)$. Thus $DP^2=(2-1)^2+(2\sqrt3-1)^2=\boxed{14-4\sqrt3\text{ cm}^2}$.
+\begin{asy}
+size(7cm);
+pair A=(0,0),B=(2,0),C=(3,sqrt(3)),D=(2,2*sqrt(3)),E=(0,2*sqrt(3)),F=(-1,sqrt(3)),P=(1,1);draw(A--B--C--D--E--F--cycle);draw(A--P--B);draw(P--D,dashed);pair[] V={A,B,C,D,E,F,P};string[] N={"A","B","C","D","E","F","P"};for(int i=0;i<7;++i)label("$"+N[i]+"$",V[i],i==0?SW:i==1?SE:i==2?E:i==3?NE:i==4?NW:i==5?W:N);label("$2$",(A+B)/2,S);
+\end{asy}

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3059575_special_pi_post_geometry_problems_
+% Stable identity: aops-topic-3059575-q08
+The intersections are $ D=(1,\sqrt3)$ and $ E=(\sqrt3,1)$, at polar angles 60 and 30 degrees. Sector $ EOD $ therefore has area $\dfrac{30}{360}\pi(2)^2=\dfrac{\pi}{3}$. The quadrilateral $ OEBD $ has area $\sqrt3-1 $: its shoelace sum is $ 2\sqrt3-2 $. Subtracting this quadrilateral from the sector leaves the desired area, $\boxed{1+\dfrac{\pi}{3}-\sqrt3}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair O=(0,0),A=(1,0),B=(1,1),C=(0,1),D=(1,sqrt(3)),Ept=(sqrt(3),1);filldraw(B--arc(O,2,30,60)--cycle,lightblue);draw(O--A--B--C--cycle);draw(O--D^^O--Ept,dashed);label("$O$",O,SW);label("$A$",A,S);label("$B$",B,SW);label("$C$",C,W);label("$D$",D,N);label("$E$",Ept,E);
+\end{asy}

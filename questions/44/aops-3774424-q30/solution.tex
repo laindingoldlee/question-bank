@@ -1,0 +1,9 @@
+Take successive edge directions $0^\circ,60^\circ,120^\circ,180^\circ,240^\circ,300^\circ$. If the final two lengths are $e,f$, closure gives $e+f=18$ and $f-e=14$, hence $e=2,f=16$. Coordinates of the vertices are $(0,0),(6,0),(10,4\sqrt3),(5,9\sqrt3),(-7,9\sqrt3),(-8,8\sqrt3)$. Shoelace gives area $\dfrac{1}{2}(254-34)\sqrt3=\boxed{110\sqrt3}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(6,0),(10,4sqrt(3)),(5,9sqrt(3)),(-7,9sqrt(3)),(-8,8sqrt(3))}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--p[3]--p[4]--p[5]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));dot(p[3]);label("$D$",p[3],unit(p[3]-labelCentre));dot(p[4]);label("$E$",p[4],unit(p[4]-labelCentre));dot(p[5]);label("$F$",p[5],unit(p[5]-labelCentre));
+\end{asy}
+

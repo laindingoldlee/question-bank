@@ -1,0 +1,7 @@
+The base angles are 30 degrees, so $AB=AC=s$ and $\angle A=120^\circ$. Set $A=(0,0)$, $B=(\dfrac{s}{2},-\dfrac{\sqrt3s}{2})$, $C=(\dfrac{s}{2},\dfrac{\sqrt3s}{2})$, and $O=(x,y)$. From $OA^2=1,OB^2=4,OC^2=1$, subtract to get $s^2-sx+\sqrt3sy=3$ and $s^2-sx-\sqrt3sy=0$. Hence $x=s-\dfrac{3}{2s}$, $y=\dfrac{\sqrt3}{2s}$. Substituting in $x^2+y^2=1$ gives $s^4-4s^2+3=0$, so $s=1$ or $\sqrt3$. The first gives $O=(-\dfrac{1}{2},\dfrac{\sqrt3}{2})$, outside the angle sector between rays $AB,AC$, contrary to the angle-addition condition. Thus $s=\sqrt3$, and $BC=\sqrt3s=\boxed3$ cm.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(sqrt(3)/2,-1.5),C=(sqrt(3)/2,1.5),O=(sqrt(3)/2,.5);draw(A--B--C--cycle);draw(A--O,blue);label("A",A,W);label("B",B,S);label("C",C,N);label("O",O,E);label("1",(A+O)/2,NW);label("1",(O+C)/2,E);label("2",(B+O)/2,E);
+\end{asy}

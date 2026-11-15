@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h3241058_number_theory
+% Stable identity: aops-topic-3241058-q01
+There are only $6!=720$ permutations. The following exhaustive procedure tests each once:\begin{verbatim}
+from itertools import permutations
+ans=[]
+for p in permutations("456789"):
+    n=int("".join(p))
+    if n%667==0: ans.append((n,n//667))
+print(ans) # [(956478,1434)]
+\end{verbatim}
+Thus the unique quotient is $\boxed{1434}$; indeed $667\cdot1434=956478$.

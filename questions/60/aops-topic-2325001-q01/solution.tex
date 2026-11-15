@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2325001_prime_number_sum_problem
+% Stable identity: aops-topic-2325001-q01
+If $Q$ has distinct prime divisors $p_1,\dots,p_k$, then $p_1p_2\cdots p_k$ divides $Q$ and has the same value of $f$; so the least $Q$ is a product of distinct primes with sum $2020$. We minimise the product of distinct primes with sum $2020$.
+
+\textbf{$k=1$:} $2020$ is not prime.
+
+\textbf{$k=2$:} $p+q=2020$. If one of them is $2$, the other is $2018$, not prime; so both are odd. With $p<q$, the product $p(2020-p)$ increases with $p$ for $p<1010$, so it is smallest for the smallest odd prime $p$ with $2020-p$ prime. For $p=3$, $q=2017$ is prime (it has no prime factor up to $\sqrt{2017}<45$). This gives $3\cdot2017=6051$.
+
+\textbf{$k\ge3$:} For numbers $u,v\ge2$ we have $uv\ge2(u+v-2)$, since $uv-2u-2v+4=(u-2)(v-2)\ge0$. So replacing two of the numbers $u,v$ by $2$ and $u+v-2$ keeps the sum, keeps every number at least $2$ and does not increase the product. Doing this repeatedly, a product of $k$ numbers, each at least $2$, with sum $2020$ is at least the product of $k-1$ twos and $2020-2(k-1)$, that is $g(k)=2^{k-1}(2022-2k)$; here $k\le1010$. Since $\dfrac{g(k+1)}{g(k)}=\dfrac{2(2020-2k)}{2022-2k}\ge1$ exactly when $k\le1009$, the bound $g$ increases up to $k=1009$ and $g(1010)=g(1009)$. So for $3\le k\le1010$ the product is at least $g(3)=4\cdot2016=8064$, which exceeds $6051$.
+
+So the least value is $Q=3\cdot2017=\boxed{6051}$.

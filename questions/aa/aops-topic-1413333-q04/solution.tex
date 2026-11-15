@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1413333_mathcounts_problems
+% Stable identity: aops-topic-1413333-q04
+The face $ADC$ contains the $z$-axis (through $D$ and $A$) and the point $C$, so it is the vertical plane through $D$ and $C$. Let $H$ be the foot of the perpendicular from $B$ to the line $DC$ in the floor $z=0$. Then $BH\perp DC$, and $BH\perp DA$ because $DA$ is vertical, so $BH$ is perpendicular to the plane $ADC$ and the required distance is $BH$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+pair P(real x,real y,real z){return (y,z)+x*0.5*dir(215);}
+pair A=P(0,0,15),B=P(0,12,0),C=P(16,12,0),D=P(0,0,0),Hh=P(5.76,4.32,0);
+draw(D--A--B--cycle,linewidth(0.9)); draw(A--C--B,linewidth(0.9)); draw(D--C,linewidth(0.9));
+draw(B--Hh,red+dashed);
+dot(A);dot(B);dot(C);dot(D);dot(Hh,red);
+label("$A(0,0,15)$",A,N); label("$B(0,12,0)$",B,E); label("$C(16,12,0)$",C,S); label("$D(0,0,0)$",D,W); label("$H$",Hh,SW,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the floor, triangle $DBC$ has a right angle at $B$ ($DB$ along the $y$-axis, $BC$ parallel to the $x$-axis) with $DB=12$, $BC=16$ and $DC=20$. Its altitude to the hypotenuse is
+\[
+BH=\dfrac{DB\cdot BC}{DC}=\dfrac{12\cdot16}{20}=\boxed{\dfrac{48}{5}}.
+\]
+(Equivalently, the plane $ADC$ is $3x-4y=0$, and the distance from $(0,12,0)$ is $\dfrac{|0-48|}{5}=\dfrac{48}{5}$.)

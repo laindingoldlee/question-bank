@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2163492_fun_math_problems
+% Stable identity: aops-topic-2163492-q03
+Work in decimetres: the radius is $50$ cm $=5$ dm and the height is $1$ m $=10$ dm.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real r=5, h=10;
+path el(real y){return shift(0,y)*scale(r,1.4)*unitcircle;}
+draw(el(h),linewidth(0.9));
+draw(shift(0,0)*scale(r,1.4)*arc((0,0),1,180,360),linewidth(0.9));
+draw(shift(0,0)*scale(r,1.4)*arc((0,0),1,0,180),dashed);
+draw((-r,0)--(-r,h),linewidth(0.9)); draw((r,0)--(r,h),linewidth(0.9));
+draw((0,h)--(r,h),blue); dot((0,h));
+draw((r+1.2,0)--(r+1.2,h),red,Arrows(TeXHead));
+label("$5$ dm",(r/2,h+1.4),N,blue);
+label("$10$ dm",(r+1.2,h/2),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The volume of the cylinder is
+\[\pi r^2h=\pi\cdot5^2\cdot10=250\pi\ \text{dm}^3=250\pi\ \text{litres},\]
+so the water weighs $\boxed{250\pi\text{ kg}}\approx785.4$ kg.

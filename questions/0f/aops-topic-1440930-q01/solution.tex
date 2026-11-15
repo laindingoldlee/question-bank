@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1440930_geometry
+% Stable identity: aops-topic-1440930-q01
+\textbf{Upper bound.} The interior angles of a decagon add to $(10-2)\cdot180^\circ=1440^\circ$, and every interior angle of a simple polygon is less than $360^\circ$. If $k$ angles are acute (less than $90^\circ$), then
+\[
+1440^\circ<90^\circ k+360^\circ(10-k)=3600^\circ-270^\circ k,
+\]
+so $270k<2160$ and $k<8$. Hence $k\le7$.
+
+\textbf{Construction.} The decagon with vertices, in order,
+\[
+(3,1),\ (13,5),\ (-2,10),\ (-2,4),\ (-12,18),\ (-21,6),\ (-2,-5),\ (0,-1),\ (4,-18),\ (14,-3)
+\]
+is simple (no two sides cross), and its interior angles, to the nearest tenth of a degree, are
+\[
+318.2^\circ,\ 40.2^\circ,\ 71.6^\circ,\ 324.5^\circ,\ 72.4^\circ,\ 83.2^\circ,\ 86.5^\circ,\ 320.2^\circ,\ 46.9^\circ,\ 76.3^\circ,
+\]
+seven of which are acute (red dots in the figure; the three reflex vertices are blue).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair[] P={(3,1),(13,5),(-2,10),(-2,4),(-12,18),(-21,6),(-2,-5),(0,-1),(4,-18),(14,-3)};
+bool[] ac={false,true,true,false,true,true,true,false,true,true};
+fill(P[0]--P[1]--P[2]--P[3]--P[4]--P[5]--P[6]--P[7]--P[8]--P[9]--cycle,lightcyan);
+draw(P[0]--P[1]--P[2]--P[3]--P[4]--P[5]--P[6]--P[7]--P[8]--P[9]--cycle,linewidth(0.9));
+for(int i=0;i<10;++i){ if(ac[i]) dot(P[i],red+5); else dot(P[i],blue+5);}
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the greatest possible number is $\boxed{7}$.

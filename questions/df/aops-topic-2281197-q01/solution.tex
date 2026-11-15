@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2281197_geometry_question
+% Stable identity: aops-topic-2281197-q01
+Let $M$ be the midpoint of $AC$. We show that $MB=MA=MC$.
+
+Let $B'$ be the point such that $ABCB'$ is a parallelogram (so $B'=A+C-B$). A parallelogram with a right angle is a rectangle, so $ABCB'$ is a rectangle. The diagonals of a rectangle are equal and bisect each other, so the diagonals $AC$ and $BB'$ have the common midpoint $M$ and $BB'=AC$. Hence $MB=\dfrac12BB'=\dfrac12AC=MA=MC$. (In words: the median to the hypotenuse of a right triangle is half the hypotenuse.)
+
+In the same way, triangle $ADC$ has a right angle at $D$, so $MD=\dfrac12AC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=dir(200), C=dir(20), B=dir(115), D=dir(300), M=(0,0);
+draw(circle(M,1),blue);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(A--C);
+draw(M--B,dashed); draw(M--D,dashed);
+pair r1=unit(A-B)*0.13, r2=unit(C-B)*0.13; draw(B+r1--B+r1+r2--B+r2);
+pair s1=unit(A-D)*0.13, s2=unit(C-D)*0.13; draw(D+s1--D+s1+s2--D+s2);
+dot(M); label("$M$",M,dir(70));
+label("$A$",A,W); label("$B$",B,N); label("$C$",C,E); label("$D$",D,S);
+\end{asy}
+
+Therefore $A$, $B$, $C$, $D$ all lie on the circle with centre $M$ and radius $\dfrac12AC$. So $ABCD$ is cyclic, and since the centre $M$ is the midpoint of $AC$, the segment $AC$ is a diameter of this circle. $\blacksquare$

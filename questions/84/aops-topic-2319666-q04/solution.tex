@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2319666_a_lot_of_not_very_hard_cp_problems_keeping_yall_busy
+% Stable identity: aops-topic-2319666-q04
+\textbf{Egg $T$.} It survives floors $1,\dots,n-1$ with probability
+\[\prod_{k=1}^{n-1}\left(1-\dfrac{1}{100-k}\right)=\prod_{k=1}^{n-1}\dfrac{99-k}{100-k}=\dfrac{98}{99}\cdot\dfrac{97}{98}\cdots\dfrac{100-n}{101-n}=\dfrac{100-n}{99},\]
+and then breaks at floor $n$ with probability $\dfrac{1}{100-n}$. So it breaks at floor $n$ with probability $\dfrac{1}{99}$, for each $n=1,2,\dots,99$ (at floor $99$ it surely breaks). The floor where $T$ breaks is uniformly distributed on $\{1,\dots,99\}$.
+
+\textbf{Egg $P$.} In the same way it survives floors $1,\dots,m-1$ with probability $\dfrac{99-m}{98}$, so it breaks at floor $m$ with probability $\dfrac1{98}$ for each $m=1,\dots,98$.
+
+\textbf{Comparison.} The two floors are independent. If $P$ breaks at floor $m$, then $T$ breaks higher with probability $\dfrac{99-m}{99}$. Hence
+\[\Pr(P\text{ lower})=\sum_{m=1}^{98}\dfrac1{98}\cdot\dfrac{99-m}{99}=\dfrac{1}{98\cdot99}\left(98+97+\cdots+1\right)=\dfrac{1}{98\cdot99}\cdot\dfrac{98\cdot99}{2}=\boxed{\dfrac12}.\]
+(They break at the same floor with probability $\dfrac1{99}$, and $T$ breaks first with probability $\dfrac12-\dfrac1{99}$.)

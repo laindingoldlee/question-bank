@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2349472_happy_birthday_mrmandelbrot
+% Stable identity: aops-topic-2349472-q03
+Notice that $AB^2+BC^2=17+99=116=19+97=CD^2+DA^2$.
+
+In a cyclic quadrilateral the opposite angles $B$ and $D$ add up to $180^\circ$, so $\cos D=-\cos B$. By the law of cosines in triangles $ABC$ and $ADC$,
+\[AC^2=17+99-2\sqrt{17\cdot99}\cos B=19+97+2\sqrt{19\cdot97}\cos B.\]
+Since $17+99=19+97$, this gives $\left(\sqrt{17\cdot99}+\sqrt{19\cdot97}\right)\cos B=0$, so $\cos B=0$ and $\angle B=\angle D=90^\circ$. Then $AC$ subtends a right angle at $B$, so $AC$ is a diameter, with
+\[AC^2=AB^2+BC^2=116.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real R=sqrt(29);
+pair O=(0,0), A=(-R,0), C=(R,0);
+real tb=aCos(sqrt(17/116)), td=aCos(sqrt(97/116));
+pair B=A+sqrt(17)*dir(tb), D=A+sqrt(97)*dir(-td);
+draw(circle(O,R),gray(0.4));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,dashed+blue);
+pair u=unit(A-B), v=unit(C-B); draw(B+0.5*u--B+0.5*u+0.5*v--B+0.5*v);
+pair u2=unit(A-D), v2=unit(C-D); draw(D+0.5*u2--D+0.5*u2+0.5*v2--D+0.5*v2);
+dot(A); dot(B); dot(C); dot(D); dot(O);
+label("$A$",A,W); label("$B$",B,N); label("$C$",C,E); label("$D$",D,S); label("$O$",O,S);
+label("$\sqrt{17}$",(A+B)/2,NW,fontsize(8pt)); label("$\sqrt{99}$",(B+C)/2,NE,fontsize(8pt));
+label("$\sqrt{19}$",(C+D)/2,SE,fontsize(8pt)); label("$\sqrt{97}$",(D+A)/2,SW,fontsize(8pt));
+\end{asy}
+
+The radius is $r=\dfrac{\sqrt{116}}2$, so $r^2=\dfrac{116}4=29$ and the area of the circle is $\boxed{29\pi}$.

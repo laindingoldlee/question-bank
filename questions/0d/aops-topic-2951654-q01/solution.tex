@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2951654_problem_ssa_special_case
+% Stable identity: aops-topic-2951654-q01
+Let $c=AB=DE$, $b=AC=DF$, $\gamma=\angle C=\angle F$, and let $x=BC$, $y=EF$. By the Law of Cosines, both $x$ and $y$ are positive roots of
+\[t^2-2b\cos\gamma\,t+(b^2-c^2)=0.\]
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),A=(2.2,1.6);draw(C--(5,0));draw(C--A);draw(circle(A,2.6),dotted);
+pair B=(A.x+sqrt(2.6^2-A.y^2),0);draw(A--B);label("$C$",C,SW);label("$A$",A,N);label("$B$",B,S);label("$b$",(A+C)/2,NW);label("$c$",(A+B)/2,NE);label("$\gamma$",C,(3,0.8));
+\end{asy}
+
+The product of the roots is $b^2-c^2\le0$. If $c>b$, the roots have opposite signs, so there is exactly one positive root. If $c=b$, the roots are $0$ and $2b\cos\gamma$, so again exactly one positive root. Hence $x=y$, and the triangles are congruent by SSS. $\blacksquare$ (The circle centred at $A$ with radius $c\ge b$ meets the ray from $C$ only once.)

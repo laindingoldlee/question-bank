@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3192636_2021_bmmt_pacer_round__berkley_mini_math_tournament
+% Stable identity: aops-topic-3192636-q15
+An axis of the whole picture must be an axis of each polygon, because their vertex counts differ. If there are common axes, align one as angle 0; the other axes of an $n$-gon occur at multiples of $\dfrac{\pi}{n}$, modulo $\pi$. The common grid has $\gcd(63,91,105)=7$ axes. Concentric polygons with one aligned axis attain this, so $\boxed7$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+int[] counts={63,91,105}; for(int n:counts){path p;real r=n/60;for(int k=0;k<n;++k)p=p--r*dir(360*k/n);draw(p--cycle);}draw((-2,0)--(2,0),dashed);label("common axis",(1,0),S);
+\end{asy}

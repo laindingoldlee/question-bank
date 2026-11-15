@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2934055_2016_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2934055-q19
+All reachable values are rational, so exact breadth-first search using fractions certifies the minimum.\begin{verbatim}
+from fractions import Fraction
+level={Fraction(2)}
+for moves in range(12):
+ if Fraction(2016) in level:
+  print(moves);break
+ level={y for x in level for y in (x+2,x-2,2*x,x/2)}
+# 11
+\end{verbatim}
+Induction shows level contains precisely the values attainable in that many moves. An explicit 11-move route is $2,4,8,16,32,64,128,126,252,504,1008,2016$. Hence $\boxed{11}$.

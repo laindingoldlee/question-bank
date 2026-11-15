@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h3242498_the_polymath_competition
+% Stable identity: aops-topic-3242498-q23
+There are $\sum_{k=1}^7k^2=140$ squares, so at least $70$ must contain a blue vertex. A point $(x,y)$, $0\le x,y\le7$, belongs to
+\[\min(x,y)+\min(x,7-y)+\min(7-x,y)+\min(7-x,7-y)\]
+squares, by considering the four possible directions from that vertex. Only the four central points $(3,3),(3,4),(4,3),(4,4)$ have incidence $13$; all others have incidence at most $11$.
+Suppose six points are blue, of which $c$ are central. Their incidence sum is at most $66+2c$. For $c\le1$ this is below $70$. For $c=2$, the central unit square is counted twice, reducing coverage to at most $69$. For $c=3$, it is counted three times (overcount two), and the two adjacent central pairs each lie on an additional outward unit square (two more overcounts), giving at most $72-4=68$. For $c=4$, the central unit square has overcount three, and the four adjacent central pairs give four more, leaving at most $74-7=67$. Thus six points cannot suffice.
+Seven points do suffice: colour $(4,4),(3,3),(5,2),(2,5),(6,5),(3,4),(2,2)$ blue. The numbers of squares hit of side lengths $1,\ldots,7$ are $22,24,14,6,4,0,0$, totalling $70$. These counts may be verified by testing the lower-left corner and side length of each square:
+\begin{verbatim}
+blue={(4,4),(3,3),(5,2),(2,5),(6,5),(3,4),(2,2)}
+hits=[]
+for d in range(1,8):
+    hits.append(sum(bool(blue & {(x,y),(x+d,y),
+        (x,y+d),(x+d,y+d)})
+        for x in range(8-d) for y in range(8-d)))
+print(hits) # [22,24,14,6,4,0,0]
+\end{verbatim}
+The answer is $\boxed7$, choice A.
+\begin{asy}
+usepackage("amsmath"); size(230);
+pair[] b={(4,4),(3,3),(5,2),(2,5),(6,5),(3,4),(2,2)};for(int x=0;x<8;++x)for(int y=0;y<8;++y)dot((x,y),red);for(pair p:b)dot(p,blue+linewidth(5));draw((3,3)--(4,3)--(4,4)--(3,4)--cycle,dashed);for(int k=0;k<8;++k){label(string(k),(k,-0.5));label(string(k),(-0.5,k));}label("$x$",(7.5,0));label("$y$",(0,7.7));
+\end{asy}

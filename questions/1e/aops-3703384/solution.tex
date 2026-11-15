@@ -1,0 +1,6 @@
+Construct a trapezoid whose parallel vertical sides have lengths $a,b$ and whose horizontal width is $a+b$. Divide its bottom side at distance $b$ from the left. Join that point to the two upper vertices. The outside triangles are copies of the given right triangle; the middle triangle has two sides $c$ and the included angle $90^\circ$, since the two acute angles of the original right triangle sum to $90^\circ$. Comparing areas gives $\dfrac{(a+b)^2}{2}=ab+\dfrac{c^2}{2}$. Expanding and cancelling $ab$ yields $\boxed{a^2+b^2=c^2}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+real a=3,b=2;pair O=(0,0),P=(0,a),Q=(a+b,b),R=(a+b,0),S=(b,0);draw(O--P--Q--R--cycle);draw(P--S--Q);label("$a$",(O+P)/2,(-1,0));label("$b$",(Q+R)/2,(1,0));label("$b$",(O+S)/2,(0,-1));label("$a$",(S+R)/2,(0,-1));label("$c$",(P+S)/2,(1,1));label("$c$",(S+Q)/2,(-1,1));
+\end{asy}
+

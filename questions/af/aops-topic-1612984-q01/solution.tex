@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h1612984_similarity_question
+% Stable identity: aops-topic-1612984-q01
+Write $a=BC$, $b=CA$, $c=AB$ for the sides of $ABC$ and $d,e,f$ for the sides $EF,FD,DE$ of $DEF$, opposite $D,E,F$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(3,0),C=(0.9,1.8);
+pair D=(4.2,0),E=D+1.5*(B-A),F=D+1.5*(C-A);
+draw(A--B--C--cycle,linewidth(0.9));draw(D--E--F--cycle,linewidth(0.9));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$D$",D,SW);label("$E$",E,SE);label("$F$",F,N);
+label("$c$",(A+B)/2,S);label("$b$",(A+C)/2,W);label("$a$",(B+C)/2,NE);
+label("$kc$",(D+E)/2,S);label("$kb$",(D+F)/2,W);label("$ka$",(E+F)/2,NE);
+draw(arc(A,0.35,0,degrees(C-A)),red);draw(arc(D,0.35,0,degrees(F-D)),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{SAS $\Rightarrow$ SSS.} Suppose $f=kc$, $e=kb$ and $\angle D=\angle A$. By the law of cosines,
+\[
+d^2=e^2+f^2-2ef\cos D=k^2\left(b^2+c^2-2bc\cos A\right)=k^2a^2,
+\]
+so $d=ka$ and all three ratios equal $k$.
+
+\textbf{SSS $\Rightarrow$ AA.} Suppose $d=ka$, $e=kb$, $f=kc$. By the law of cosines,
+\[
+\cos D=\dfrac{e^2+f^2-d^2}{2ef}=\dfrac{k^2\left(b^2+c^2-a^2\right)}{2k^2bc}=\cos A,
+\]
+and similarly $\cos E=\cos B$, $\cos F=\cos C$. Angles of a triangle lie in $(0^\circ,180^\circ)$, where cosine is one-to-one, so $\angle D=\angle A$, $\angle E=\angle B$ (and $\angle F=\angle C$).
+
+\textbf{AA $\Rightarrow$ SAS.} Suppose $\angle D=\angle A$ and $\angle E=\angle B$. Then $\angle F=180^\circ-\angle D-\angle E=\angle C$. By the law of sines in both triangles,
+\[
+\dfrac{a}{\sin A}=\dfrac {b}{\sin B}=\dfrac {c}{\sin C}=2R,\qquad \dfrac{d}{\sin D}=\dfrac {e}{\sin E}=\dfrac {f}{\sin F}=2R',
+\]
+so $\dfrac {d}{a}=\dfrac {e}{b}=\dfrac {f}{c}=\dfrac{R'}{R}$. In particular $\dfrac {f}{c}=\dfrac {e}{b}$ and $\angle D=\angle A$, which is SAS (indeed it is even SSS).
+
+Since SAS $\Rightarrow$ SSS $\Rightarrow$ AA $\Rightarrow$ SAS, each condition implies the other two, and each of them gives all the angle equalities and all the side ratios in the definition. $\blacksquare$

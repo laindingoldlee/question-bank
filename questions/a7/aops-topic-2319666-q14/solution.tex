@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2319666_a_lot_of_not_very_hard_cp_problems_keeping_yall_busy
+% Stable identity: aops-topic-2319666-q14
+\textbf{Number of teleports.} From 17 September 2008 to 7 August 2009 inclusive there are
+\[14+31+30+31+31+28+31+30+31+30+31+7=325\]
+days (2009 is not a leap year), so there are $325$ teleports.
+
+\textbf{One pair.} Let $p_t$ be the probability that a given pair is together after $t$ teleports; $p_0=0$. If they are together in city $X$, each moves to one of the other $7$ cities, and they meet again with probability $7\cdot\dfrac17\cdot\dfrac17=\dfrac17$. If they are in different cities $X$ and $Y$, they can meet only in one of the $6$ cities other than $X$ and $Y$, each with probability $\dfrac17\cdot\dfrac17$, so with probability $\dfrac{6}{49}$. Hence
+\[p_{t+1}=\dfrac17p_t+\dfrac{6}{49}(1-p_t)=\dfrac{6}{49}+\dfrac{1}{49}p_t,\qquad\text{so}\qquad p_t-\dfrac18=\dfrac1{49}\left(p_{t-1}-\dfrac18\right),\]
+and $p_t=\dfrac18\left(1-49^{-t}\right)$.
+
+\textbf{Total.} By linearity of expectation over the $3$ pairs and the $325$ teleports,
+\[E=3\sum_{t=1}^{325}\dfrac18\left(1-49^{-t}\right)=\dfrac38\left(325-\dfrac{1-49^{-325}}{48}\right)=\boxed{\dfrac{15599}{128}+\dfrac{1}{128\cdot49^{325}}}\approx121.867.\]

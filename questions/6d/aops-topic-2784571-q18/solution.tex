@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2784571_2021_abmc_team_rounds_58__actonboxborough_math_competition
+% Stable identity: aops-topic-2784571-q18
+Two segments joining boundary points of a convex region cross exactly when their endpoints alternate around the boundary.
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(4,4),D=(0,4);draw(A--B--C--D--cycle);
+pair p1=(1.2,0),q1=(4,3.2),p2=(2.8,0),q2=(0,2.4);
+draw(p1--q1,blue+linewidth(0.9));draw(p2--q2,red+linewidth(0.9));
+dot(p1,blue);dot(q1,blue);dot(p2,red);dot(q2,red);
+label("$P_1$",p1,S);label("$Q_1$",q1,E);label("$P_2$",p2,S);label("$Q_2$",q2,W);
+\end{asy}
+
+Each person's pair of sides is uniform among the $6$ pairs, independently, and the order of points on a common side is equally likely either way. Compare Charles's pair with James's.
+\begin{itemize}
+\item \textbf{Same pair} (probability $\dfrac16$): on each of the two sides the order is random, and the endpoints alternate for exactly one of the two relative orders on the second side. Probability $\dfrac12$.
+\item \textbf{Exactly one common side} (probability $\dfrac46$): on the common side the two points are in random order, and exactly one order makes them alternate. Probability $\dfrac12$.
+\item \textbf{Disjoint pairs} (probability $\dfrac16$): if James's sides are opposite, Charles's are the other two opposite sides and the endpoints always alternate; if James's sides are adjacent, Charles's are the other two adjacent sides and they never alternate. James's sides are opposite with probability $\dfrac26=\dfrac13$.
+\end{itemize}
+In total
+\[\dfrac16\cdot\dfrac12+\dfrac46\cdot\dfrac12+\dfrac16\cdot\dfrac13=\dfrac{3+12+2}{36}=\dfrac{17}{36},\]
+so $m+n=\boxed{53}$.

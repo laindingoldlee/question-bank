@@ -1,0 +1,26 @@
+The angle conditions make $AD$ a diameter, the arc $ABC$ equal to $120^\circ$, and the arc $CDE$ equal to $120^\circ$. With original radius $R$, choose
+\[
+A=(R,0),\ D=(-R,0),\
+C=(-\dfrac{R}{2},\dfrac{\sqrt3R}{2}),\
+E=(-\dfrac{R}{2},-\dfrac{\sqrt3R}{2}).
+\]
+Write $B=(u,v)$ with $v>0$. Since $BF:FD=5:4$, $F=\dfrac{4B+5D}{9}$. Its first coordinate is $-\dfrac{R}{2}$, so $u=\dfrac{R}{8}$ and $v=\dfrac{3\sqrt7R}{8}$. Thus $BD=\dfrac{3R}{2}=90$, giving $R=60$. It follows that $F=(-30,10\sqrt7)$.
+
+For the circle $ABF$, the power of $D$ is $DB\cdot DF=3600$. Since $DA=120$, its other intersection with the horizontal axis is $H=(-30,0)$, at distance $30$ from $D$. The equation of this circle, using $A,H,F$, is
+\[
+x^2+y^2-30x-10\sqrt7\,y-1800=0.
+\]
+Parametrize $AE$ as $(x,y)=(60-90t,-30\sqrt3\,t)$, $0\le t\le1$. Substitution yields
+\[
+t(10800t-8100+300\sqrt{21})=0.
+\]
+The second intersection has $t=\dfrac{27-\sqrt{21}}{36}$, which lies in $(0,1)$. Since $AE=60\sqrt3$,
+\[
+\boxed{AG=60\sqrt3\,\dfrac{27-\sqrt{21}}{36}=45\sqrt3-5\sqrt7}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(60,0),D=(-60,0),C=(-30,30sqrt(3)),E=(-30,-30sqrt(3)),B=(7.5,22.5sqrt(7)),F=(-30,10sqrt(7)),H=(-30,0);real t=(27-sqrt(21))/36;pair G=A+t*(E-A);draw(circle((0,0),60),gray);draw(circle((15,5sqrt(7)),10sqrt(22)),blue);draw(A--D,dashed);draw(B--D);draw(C--E);draw(A--E);dot(F);dot(G);label("$A$",A,(1,0));label("$B$",B,N);label("$C$",C,NW);label("$D$",D,W);label("$E$",E,S);label("$F$",F,NW);label("$G$",G,SE);label("$H$",H,SW);
+\end{asy}

@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h3471727_2022_chapter_competition_mathcounts_problem_30
+% Stable identity: aops-topic-3471727-q01
+There are 8 corner cubes with three painted faces, $12(8)=96$ edge cubes with two, $6(8^2)=384$ face-interior cubes with one, and $8^3=512$ unpainted cubes. Therefore the probability is $\left(\dfrac{1}{2}\right)^8\left(\dfrac{2}{3}\right)^{96}\left(\dfrac{5}{6}\right)^{384}=2^{-296}3^{-480}5^{384}$. Thus $a+b+c=\boxed{-392}$.
+\begin{asy}
+import geometry; usepackage("amsmath"); size(240);
+pair A=(0,0),B=(3,0),C=(3,3),D=(0,3),v=(1,1);draw(A--B--C--D--cycle);draw(D--D+v--C+v--C^^C+v--B+v--B);for(int i=1;i<10;++i){real t=3*i/10.0;draw((t,0)--(t,3),gray);draw((0,t)--(3,t),gray);}label("$10$",(.9,-.2),S);label("corner",C,SE);label("edge",(3,1.5),E);label("face",(1.5,1.5));
+\end{asy}

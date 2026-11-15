@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3176259_2018_mbmt_geometry_round__montgomery_blair_math_tournament
+% Stable identity: aops-topic-3176259-q12
+The law of cosines gives $BC^2=37^2+41^2-37\cdot41=1533$. The circumradius satisfies $R^2=\dfrac{BC^2}{4\sin^260^\circ}=511$. Euler's identity gives $OH^2=9R^2-(AB^2+BC^2+CA^2)=4599-4583=16$, so $OH=\boxed4$. For completeness, with circumcenter as origin and vertex vectors $u,v,w$ of norm $R$, the orthocenter is $u+v+w$: its displacement from $u$ is $v+w$, perpendicular to $v-w$. Expanding its squared norm and the three squared side lengths proves the identity used.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),Bp=(37,0),C=(20.5,20.5*sqrt(3)),O=(18.5,22.5/sqrt(3)),H=A+Bp+C-2*O;draw(A--Bp--C--cycle);draw(O--H,blue);dot("$O$",O,W);dot("$H$",H,E);label("$A$",A,SW);label("$B$",Bp,SE);label("$C$",C,N);
+\end{asy}

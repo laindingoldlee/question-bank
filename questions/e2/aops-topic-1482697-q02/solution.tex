@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1482697_mathcounts_20162017
+% Stable identity: aops-topic-1482697-q02
+Complete the squares:
+\[
+(x+2)^2+(y+3)^2=4+9-9=4,\qquad (x-7)^2+(y-9)^2=49+81-129=1 .
+\]
+So the first circle has centre $(-2,-3)$ and radius $2$, and the second has centre $(7,9)$ and radius $1$. The distance between the centres is
+\[
+\sqrt{(7+2)^2+(9+3)^2}=\sqrt{81+144}=15 .
+\]
+Since $15>2+1$, the circles are outside each other, and the shortest distance between them is measured along the line of centres:
+\[
+15-2-1=\boxed{12}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(-2,-3),B=(7,9);
+draw((-4.8,0)--(10.5,0),gray,Arrow(4)); draw((0,-5.5)--(0,11),gray,Arrow(4));
+label("$x$",(10.5,0),S,gray); label("$y$",(0,11),W,gray);
+draw(circle(A,2),linewidth(0.9)); draw(circle(B,1),linewidth(0.9));
+pair P=A+2*unit(B-A), Q=B-unit(B-A);
+draw(A--P,blue+dashed); draw(Q--B,blue+dashed); draw(P--Q,red+linewidth(1.1));
+dot(A);dot(B);dot(P,red);dot(Q,red);
+label("$(-2,-3)$",A-(0.7,2),S); label("$(7,9)$",B+(1,0),E);
+label("$12$",(P+Q)/2,SE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

@@ -1,0 +1,34 @@
+Put $A=(0,0)$ and the internal bisector on the horizontal axis. With $b=AC,c=AB$, write
+\[
+B=(c\cos\theta,c\sin\theta),\quad C=(b\cos\theta,-b\sin\theta),
+\quad2\theta=\angle A.
+\]
+Let $a=BC$. Standard angle-bisector coordinates, obtained by weighting the vertices by their opposite side lengths, give
+\[
+I=(u,0),\quad I_a=(v,0),\qquad
+u=\dfrac{2bc\cos\theta}{a+b+c},\quad
+v=\dfrac{2bc\cos\theta}{b+c-a}.
+\]
+The cosine law implies $(b+c)^2-a^2=4bc\cos^2\theta$, so $uv=bc$.
+
+The external bisector is the vertical axis, which contains $K,E$. Intersecting it with $BC$ gives
+\[
+K=\left(0,\dfrac{2bc\sin\theta}{b-c}\right).
+\]
+The circumcircle through the origin has equation $x^2+y^2-2O_xx-2O_yy=0$. Its other vertical-axis intersection is
+\[
+E=\left(0,\dfrac{c-b}{2\sin\theta}\right);
+\]
+this is the specified arc midpoint, since the external bisector intercepts the equal arcs there. Consequently $K_yE_y=-bc=-uv$.
+
+Thus $EK\perp II_a$. Also
+\[
+(K-I)\cdot(E-I_a)=(-u,K_y)\cdot(-v,E_y)=uv+K_yE_y=0,
+\]
+so $IK\perp EI_a$. Two altitudes of triangle $II_aE$ pass through $K$, proving the claim.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=4dir(30),C=6dir(-30),I=(24sqrt(3)/(10+2sqrt(7)),0),J=(24sqrt(3)/(10-2sqrt(7)),0),K=(0,12),E=(0,-2),O=(5/sqrt(3),-1);draw(circle(O,length(O)),gray);draw(A--B--C--cycle);draw(B--K,dashed);draw(E--K,blue);draw(I--J--E--cycle,red);draw(I--K,dashed);label("$A$",A,W);label("$B$",B,NE);label("$C$",C,SE);label("$I$",I,SW);label("$I_a$",J,(1,0));label("$K$",K,N);label("$E$",E,W);
+\end{asy}

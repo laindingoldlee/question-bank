@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3292907_silly_digit_questions
+% Stable identity: aops-topic-3292907-q02
+For each $c=1,\ldots,9$, compare the entries of its binomial row with $10d+c$. Direct enumeration of the finite triangular table yields only $(c,d)=(8,2)$, because $\binom82=28$. The complete check below proves uniqueness, so $\boxed{d^c=256}$.\begin{verbatim}
+from math import comb
+assert [(c,d) for c in range(1,10)
+        for d in range(1,c+1)
+        if comb(c,d)==10*d+c]==[(8,2)]
+\end{verbatim}

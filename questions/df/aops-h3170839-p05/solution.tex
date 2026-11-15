@@ -1,0 +1,12 @@
+Partition the interval into $91$ blocks of $11$ consecutive integers. In each block, the edges joining numbers with differences $4$ or $7$ form an 11-cycle: modulo $11$ its cyclic order is
+\[
+0,4,8,1,5,9,2,6,10,3,7,0.
+\]
+An independent set in an odd cycle of length $11$ has at most $5$ vertices: each selected vertex needs a distinct unselected successor. Hence $|S|\le91\cdot5=455$.
+For equality, take all numbers congruent to $0,2,5,8,$ or $10$ modulo $11$. No two of these residues differ by $\pm4$ modulo $11$, so actual differences $4$ or $7$ are excluded even between blocks. Each residue occurs $91$ times. Thus the maximum is $\boxed{455}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+int[] a={0,4,8,1,5,9,2,6,10,3,7};for(int j=0;j<11;++j){pair P=dir(90-360*j/11.0),Q=dir(90-360*(j+1)/11.0);draw(P--Q);dot(P,(j==0||j==2||j==4||j==6||j==8)?blue:black);label("$"+string(a[j])+"$",1.15*P);}label("One block modulo $11$",(0,-1.5));
+\end{asy}

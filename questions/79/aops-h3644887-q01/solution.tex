@@ -1,0 +1,9 @@
+The diagonal divides the quadrilateral into two nondegenerate triangles. The triangle containing the length $75$ must also contain $28$ and $50$, since those are the only two other lengths whose sum exceeds $75$. Therefore the common diagonal must be one of $28,50,75$. Its other triangle has the remaining side lengths $10,20$, forcing the diagonal to be less than $30$. Only $\boxed{28}$ is possible.
+
+It is attainable: the triangles with sides $(75,50,28)$ and $(10,20,28)$ both satisfy strict triangle inequalities and can be joined on their side of length $28$ to form a quadrilateral.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),C=(28,0);real xb=(75^2+28^2-50^2)/56.0,xd=(10^2+28^2-20^2)/56.0;pair B=(xb,sqrt(75^2-xb^2)),D=(xd,-sqrt(10^2-xd^2));draw(A--B--C--D--cycle);draw(A--C,red);label("$28$",(A+C)/2,(0,1));label("$75$",(A+B)/2,NW);label("$50$",(B+C)/2,NE);label("$10$",(A+D)/2,SW);label("$20$",(C+D)/2,SE);
+\end{asy}

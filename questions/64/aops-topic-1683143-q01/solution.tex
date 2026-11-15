@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h1683143_equiangular_hexagon
+% Stable identity: aops-topic-1683143-q01
+All interior angles are $120^\circ$. Extend sides $AB$, $CD$ and $EF$; let lines $AB$ and $CD$ meet at $X$, lines $CD$ and $EF$ at $Y$, and lines $EF$ and $AB$ at $Z$. Each corner triangle, such as $XBC$, has two angles of $180^\circ-120^\circ=60^\circ$, so it is equilateral; so is $XYZ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real[] s={1,10,4,10,1,13};
+pair[] P;P[0]=(0,0);
+for(int i=0;i<6;++i) P[i+1]=P[i]+s[i]*dir(60*i);
+pair A=P[0],B=P[1],C=P[2],D=P[3],Ep=P[4],F=P[5];
+pair X=extension(A,B,C,D),Y=extension(C,D,Ep,F),Z=extension(Ep,F,A,B);
+draw(B--X--C,dashed);draw(D--Y--Ep,dashed);draw(F--Z--A,dashed);
+fill(A--B--C--D--Ep--F--cycle,gray(0.9));
+draw(A--B--C--D--Ep--F--cycle,linewidth(0.9));
+dot(A);dot(B);dot(C);dot(D);dot(Ep);dot(F);
+label("$A$",A,dir(225));label("$B$",B,dir(315));label("$C$",C,E);label("$D$",D,E);label("$E$",Ep,dir(150));label("$F$",F,W);
+label("$X$",X,SE);label("$Y$",Y,N);label("$Z$",Z,SW);
+label("$1$",(A+B)/2,N);label("$10$",(B+C)/2,NW);label("$4$",(C+D)/2,W);label("$10$",(D+Ep)/2,SW);label("$1$",(Ep+F)/2+1.0*dir(-20));label("$13$",(F+A)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The corner triangles $XBC$, $YDE$, $ZFA$ have sides $BC=10$, $DE=10$ and $FA$. Let $EF=e$ and $FA=f$. The side $XY$ of the big triangle is
+\[
+XC+CD+DY=BC+CD+DE=10+4+10=24 .
+\]
+The other two sides must also be $24$:
+\[
+ZA+AB+BX=f+1+10=24,\qquad YE+EF+FZ=10+e+f=24,
+\]
+so $FA=f=13$ and $EF=e=1$. The hexagon is triangle $XYZ$ (side $24$) minus three equilateral triangles of sides $10$, $10$, $13$:
+\[
+[ABCDEF]=\dfrac{\sqrt3}{4}\left(24^2-10^2-10^2-13^2\right)=\boxed{\dfrac{207\sqrt3}{4}}.
+\]

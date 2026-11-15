@@ -1,0 +1,7 @@
+The angle bisector gives $\angle BAD=36^\circ$, so $\angle BDA=180^\circ-68^\circ-36^\circ=76^\circ$. Since $DI$ bisects the angle between the two tangents from $D$, $\angle ADE=76^\circ$ as well. Hence $\angle AED=68^\circ$. The incircle is tangent to $EA$ and $ED$ and lies in their angle, so $EI$ bisects it, giving $\angle AEI=34^\circ$. Since $EA,EC$ are opposite rays, $\boxed{\angle IEC=146^\circ}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+real ab=sin(40*pi/180)/sin(72*pi/180),ac=sin(68*pi/180)/sin(72*pi/180);pair B=(0,0),C=(1,0),A=ab*dir(68),I=(A+ab*C)/(1+ab+ac),D=(ab/(ab+ac),0);real r=I.y,dx=D.x-I.x,m=2*dx*r/(r*r-dx*dx),s=A.y/(1-A.x),xx=(s+m*D.x)/(m+s);pair E=(xx,m*(xx-D.x));draw(A--B--C--cycle);draw(A--D--E);draw(E--I);draw(circle(I,r));pair[] P={A,B,C,D,E,I};string[] L={"A","B","C","D","E","I"};for(int j=0;j<P.length;++j)label("$"+L[j]+"$",P[j],j==5?(-1,0):(j==0?(0,1):(0,-1)));
+\end{asy}

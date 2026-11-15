@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2327532_geometric_probability
+% Stable identity: aops-topic-2327532-q01
+The pair $(x,y)$ is uniform in the square $[0,6]^2$ of area $36$, and we need the area of the part with $x^2+y^2<48$, inside the circle of radius $\sqrt{48}=4\sqrt3\approx6.93$ about the origin. The circle meets the right side $x=6$ at $y=\sqrt{48-36}=2\sqrt3$, and the top side at $x=2\sqrt3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real r=4*sqrt(3), q=2*sqrt(3);
+pair P1=(q,6), P2=(6,q);
+fill((0,0)--(6,0)--P2--arc((0,0),r,30,60)--P1--(0,6)--cycle,rgb(0.85,0.92,1));
+draw(box((0,0),(6,6)),linewidth(0.9));
+draw(arc((0,0),r,0,90),red);
+draw((0,0)--P1,dashed); draw((0,0)--P2,dashed);
+dot(P1); dot(P2);
+label("$O$",(0,0),SW); label("$(2\sqrt3,6)$",P1,N,fontsize(8pt)); label("$(6,2\sqrt3)$",P2,E,fontsize(8pt));
+label("$6$",(3,0),S); label("$6$",(0,3),W); label("$x^2+y^2=48$",r*dir(80),NE,red+fontsize(8pt));
+label("$30^\circ$",2.4*dir(45),fontsize(8pt));
+\end{asy}
+
+The region splits into two right triangles and a circular sector:
+\begin{itemize}
+\item the triangle with vertices $(0,0)$, $(6,0)$, $(6,2\sqrt3)$: area $\dfrac12\cdot6\cdot2\sqrt3=6\sqrt3$;
+\item the triangle with vertices $(0,0)$, $(0,6)$, $(2\sqrt3,6)$: area $6\sqrt3$;
+\item the sector between the rays to $(6,2\sqrt3)$ and to $(2\sqrt3,6)$, which make angles $30^\circ$ and $60^\circ$ with the $x$-axis: angle $30^\circ$, area $\dfrac{30}{360}\pi\cdot48=4\pi$.
+\end{itemize}
+The probability is
+\[\dfrac{12\sqrt3+4\pi}{36}=\boxed{\dfrac{3\sqrt3+\pi}{9}}\approx0.926.\]

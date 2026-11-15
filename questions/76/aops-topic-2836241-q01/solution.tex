@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2836241_meet_me_in_the_middle
+% Stable identity: aops-topic-2836241-q01
+$(x-399)^2+(y-21)^2=(x+70)^2+(y-303)^2$ simplifies to $-938x+564y+62933=0$, i.e. $938x-564y-62933=0$. (It is the perpendicular bisector of $FG$, through the midpoint $(164.5,162)$.)
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;real k=1/100;pair F=k*(399,21),G=k*(-70,303),M=(F+G)/2;
+draw((-1.2,0)--(4.3,0),Arrow);draw((0,-0.3)--(0,3.5),Arrow);
+draw(F--G,dashed);dot(F);dot(G);dot(M);label("$F(399,21)$",F,SE);label("$G(-70,303)$",G,N);label("$M$",M,NE);
+pair d=unit(rotate(90)*(G-F));draw(M-1.6*d--M+1.6*d,blue);label("$\ell$",M+1.6*d,E,blue);
+\end{asy}
+
+Since $938=2\cdot7\cdot67$ and $62933$ is odd, the coefficients have no common factor. So $A=938$, $B=-564$, and $A+B=\boxed{374}$.

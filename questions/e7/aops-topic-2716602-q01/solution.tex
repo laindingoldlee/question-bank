@@ -1,0 +1,5 @@
+% Source: https://artofproblemsolving.com/community/c3h2716602_the_aops_cube
+% Stable identity: aops-topic-2716602-q01
+Record the height $h_{ij}\in\{0,1,2,3\}$ of the stack in column $(i,j)$. The condition holds exactly when the heights are nonincreasing along each row and each column: $h_{ij}\ge h_{i+1,j}$ and $h_{ij}\ge h_{i,j+1}$. (Such an array is a \emph{plane partition} in a $3\times3\times3$ box.)
+
+Count row by row. A row is a nonincreasing triple from $\{0,1,2,3\}$; there are $\dbinom{6}{3}=20$ of them. A matrix is allowed exactly when its rows satisfy $r_1\ge r_2\ge r_3$ entrywise. For each possible middle row $s$, let $U(s)$ and $D(s)$ be the numbers of rows that are entrywise $\ge s$ and $\le s$; the count is $\displaystyle\sum_s U(s)D(s)$ over the $20$ rows. Carrying this out gives $\boxed{980}$ allowed sets ($978$ if the empty box and the full cube are not counted). This agrees with MacMahon's formula for plane partitions in an $a\times b\times c$ box, $\prod_{i=1}^{a}\prod_{j=1}^{b}\prod_{k=1}^{c}\dfrac{i+j+k-1}{i+j+k-2}$, with $a=b=c=3$.

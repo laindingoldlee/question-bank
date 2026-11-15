@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h525253_2006_national_sprint_24
+% Stable identity: aops-topic-525253-q01
+Let $\ell_1$ and $\ell_2$ be the lines $2x+5y=10$ and $3x+4y=12$. The allowed region is bounded below by the broken line through $(0,3)$, the intersection point of the two lines, and $(5,0)$. Solving $2x+5y=10$, $3x+4y=12$ gives the corner $P=\left(\dfrac{20}{7},\dfrac{6}{7}\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+fill((0,3)--(20/7,6/7)--(5,0)--(6,0)--(6,4)--(0,4)--cycle,lightblue);
+draw((0,2)--(5,0),gray); draw((0,3)--(4,0),gray); draw((0,3)--(20/7,6/7)--(5,0),blue+linewidth(0.9));
+draw((-0.3,0)--(6.2,0),Arrow); draw((0,-0.3)--(0,4.2),Arrow); dot((20/7,6/7)); label("$P$",(20/7,6/7),SW);
+label("$\ell_1$",(0,2),W); label("$\ell_2$",(4,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+A linear function on such a region takes its least value at a corner (its level lines are slanted between the slopes of the two boundary lines: $-\dfrac{8}{13}$ lies between $-\dfrac{2}{5}$ and $-\dfrac{3}{4}$). At $\left(\dfrac{20}{7},\dfrac{6}{7}\right)$ the value is $\dfrac{160+78}{7}=34$; near the axes it is larger (at $(0,3)$ it is $39$, at $(5,0)$ it is $40$). So the least value is $\boxed{34}$.

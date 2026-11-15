@@ -1,0 +1,9 @@
+By a cube symmetry, take the triangle vertices to be $(36,0,0),(0,36,0),(0,0,36)$. Such a coordinate choice covers all equilateral vertex triangles: their sides must be face diagonals, since cube edges form no triangle and each vertex has only one body-diagonal partner. The plane is $x+y+z=36$.
+
+The isolated vertex is $(0,0,0)$, and the other four are $(36,36,0),(36,0,36),(0,36,36),(36,36,36)$. Therefore $M=(12,12,12)$ and $G=(27,27,27)$, giving $\boxed{MG^2=3(15)^2=675}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair f(real x,real y,real z){return (x+.45y,z+.3y);}for(int x=0;x<=1;++x)for(int y=0;y<=1;++y)draw(f(x,y,0)--f(x,y,1));for(int z=0;z<=1;++z)draw(f(0,0,z)--f(1,0,z)--f(1,1,z)--f(0,1,z)--cycle);filldraw(f(1,0,0)--f(0,1,0)--f(0,0,1)--cycle,lightblue+opacity(.4),blue);pair M=f(1.0/3,1.0/3,1.0/3),G=f(.75,.75,.75);draw(M--G,red);dot(M);dot(G);label("$M$",M,W);label("$G$",G,E);
+\end{asy}

@@ -1,0 +1,37 @@
+Use $E$ as the origin and unit vectors $\mathbf u,\mathbf v$ along its two secants. Write
+\[
+A=a\mathbf u,\quad D=d\mathbf u,\quad B=b\mathbf v,\quad C=c\mathbf v.
+\]
+Signed coordinates are allowed. Power of $E$ gives $ad=bc=k\ne0$. There is $0<t<1$ such that
+\[
+M=((1-t)a+td)\mathbf u,\qquad N=((1-t)b+tc)\mathbf v.
+\]
+Let $J,K$ be linear functions whose level lines $J=1,K=1$ are $AB,CD$. Thus
+\[
+J(\mathbf u)=\dfrac{1}{a},\quad J(\mathbf v)=\dfrac{1}{b},\qquad
+K(\mathbf u)=\dfrac{1}{d},\quad K(\mathbf v)=\dfrac{1}{c}.
+\]
+The two circle equations are
+\[
+|\mathbf z|^2-k(J(\mathbf z)+K(\mathbf z))+k=0,
+\]
+\[
+|\mathbf z|^2-k(tJ(\mathbf z)+(1-t)K(\mathbf z))=0.
+\]
+Indeed the first vanishes at $A,B,C,D$; the second vanishes at the origin, $M,N$, as follows from $ad=bc=k$. Subtracting gives their radical axis:
+\[
+(1-t)J+tK=1.
+\]
+If $AB,CD$ meet, their intersection has $J=K=1$ and hence lies on $XY$. If they are parallel, their linear functions have proportional normal vectors; the displayed equation shows that $XY$ has that same direction. This proves both cases.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,1),B=(1,0),C=(0,-1),D=(-.6,-.8),E=(-1,-2),M=(-.3,.1),N=(.5,-.5),X=(-1,0),Y=(.6,-.8),T=(3,-2);draw(circle((0,0),1));draw(circle((-.5,-1),sqrt(5)/2),lightblue);draw(A--B--C--D--cycle);draw(E--A,dashed);draw(E--B,dashed);draw(A--T,gray);draw(D--T,gray);draw(X--T,blue);label("$A$",A,N);label("$B$",B,NE);label("$C$",C,S);label("$D$",D,W);label("$E$",E,SW);label("$M$",M,NW);label("$N$",N,SE);label("$X$",X,W);label("$Y$",Y,S);label("$T$",T,(1,0));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(-1,1),B=(1,1),C=(2,-2),D=(-2,-2),E=(0,4),M=(A+D)/2,N=(B+C)/2;draw(circle((0,-1),sqrt(5)));draw(circle((0,1.5),2.5),blue);draw(A--B--C--D--cycle);draw(E--D,dashed);draw(E--C,dashed);draw((-2.3,0)--(2.3,0),red);label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);label("$E$",E,N);label("$M$",M,W);label("$N$",N,(1,0));label("$XY$",(-2.3,0),W);
+\end{asy}

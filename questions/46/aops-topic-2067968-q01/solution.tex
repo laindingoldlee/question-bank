@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2067968_saw_this_on_facebook
+% Stable identity: aops-topic-2067968-q01
+Completing the square,
+\[
+(x-5)^2+(y+12)^2=731+25+144=900,
+\]
+so $(x,y)$ lies on the circle with centre $C(5,-12)$ and radius $30$. The quantity $x^2+y^2$ is the squared distance from the origin $O$ to $(x,y)$, and $OC=\sqrt{25+144}=13<30$, so $O$ is inside the circle.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair Cc=(5,-12), O=(0,0); real R=30;
+draw(circle(Cc,R),blue);
+pair Pn=Cc+R*unit(O-Cc);
+draw(Cc--Pn,red+linewidth(0.9));
+draw((-30,0)--(37,0),gray(0.6),Arrow); draw((0,-44)--(0,22),gray(0.6),Arrow);
+dot(Cc); dot(O); dot(Pn);
+label("$C(5,-12)$",Cc,SE); label("$O$",O,NE); label("$P$",Pn,NW);
+label("$13$",(Cc+O)/2,E,red+fontsize(8pt)); label("$17$",(O+Pn)/2,NE,red+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For any point $P$ on the circle, $OP\ge CP-OC=30-13=17$ by the triangle inequality, with equality when $P$ lies on ray $CO$ beyond $O$. Hence the minimum of $x^2+y^2$ is $17^2=\boxed{289}$.

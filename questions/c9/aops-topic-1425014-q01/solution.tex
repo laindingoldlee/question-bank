@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1425014_probability_of_choosing_two_numbers
+% Stable identity: aops-topic-1425014-q01
+The square has area $1$. The line $y=2x$ runs from $(0,0)$ to $\left(\dfrac{1}{2},1\right)$ inside the square. The points with $y>2x$ form the triangle with vertices $(0,0)$, $\left(\dfrac{1}{2},1\right)$ and $(0,1)$, of area $\dfrac{1}{2}\cdot\dfrac{1}{2}\cdot1=\dfrac{1}{4}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.2cm);
+defaultpen(fontsize(10pt));
+fill((0,0)--(1,0)--(1,1)--(0.5,1)--cycle,lightblue);
+draw(unitsquare,linewidth(0.9));
+draw((0,0)--(0.5,1),blue+linewidth(0.9));
+label("$y=2x$",(0.19,0.87),blue);
+label("$O$",(0,0),SW); label("$1$",(1,0),S); label("$1$",(0,1),W); label("$\left(\dfrac{1}{2},1\right)$",(0.5,1),N);
+label("$y\le2x$",(0.72,0.25));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the shaded region $y\le2x$ has area $1-\dfrac{1}{4}$, and the probability is $\boxed{\dfrac{3}{4}}$.

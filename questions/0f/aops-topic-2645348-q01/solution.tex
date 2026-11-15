@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2645348_cool_alternative_way
+% Stable identity: aops-topic-2645348-q01
+$AD=4\sqrt2$ and $DF=2\sqrt2$. Put $A=(0,0)$ and the line on the $x$-axis: $D=\left(4\sqrt2,0\right)$, $F=\left(6\sqrt2,0\right)$, $B=\left(2\sqrt2,2\sqrt2\right)$, $E=\left(5\sqrt2,\sqrt2\right)$.
+
+\emph{Homothety.} $AB\parallel DE$ and $BD\parallel EF$ (all at $45^\circ$ to $AC$), so triangle $DEF$ is the image of triangle $ABD$ under a homothety with ratio $\dfrac12$. Its centre is where $BE$ meets $AD$, namely $C$. So $CD=\dfrac12CA$, i.e. $D$ is the midpoint of $AC$, and $AC=2AD=\boxed{8\sqrt2}$. (Check with coordinates: line $BE$ has slope $-\dfrac13$ and meets the $x$-axis at $5\sqrt2+3\sqrt2=8\sqrt2$.)
+
+\emph{The infinite method.} The same homothety maps $DEF$ to a third triangle $FGH$ with apex $G$ on $BC$ and $FH=\sqrt2$, and so on. The images of $A$ under its powers approach the centre $C$, so the bases fill $AC$ and $AC=4\sqrt2\left(1+\dfrac12+\dfrac14+\cdots\right)=8\sqrt2$. This is correct, but the homothety argument gives the answer directly.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real r2=sqrt(2);pair A=(0,0),D=(4r2,0),B=(2r2,2r2),F=(6r2,0),Ep=(5r2,r2),C=(8r2,0);
+draw(A--C,linewidth(0.8));draw(A--B--D,linewidth(0.8));draw(D--Ep--F,linewidth(0.8));draw(B--C,linewidth(0.8));
+draw(F--(6.5r2,0.5r2)--(7r2,0),dashed);draw((7r2,0)--(7.25r2,0.25r2)--(7.5r2,0),dashed);
+draw(B+0.4*dir(-45)--B+0.4*dir(-45)+0.4*dir(-135)--B+0.4*dir(-135));draw(Ep+0.3*dir(-45)--Ep+0.3*dir(-45)+0.3*dir(-135)--Ep+0.3*dir(-135));
+label("$A$",A,SW);label("$D$",D,S);label("$F$",F,S);label("$C$",C,SE);label("$B$",B,N);label("$E$",Ep,N);
+label("$4$",(A+B)/2,NW);label("$4$",(B+D)/2,NE);label("$2$",(D+Ep)/2,NW,fontsize(8pt));label("$2$",(Ep+F)/2,NE,fontsize(8pt));
+\end{asy}

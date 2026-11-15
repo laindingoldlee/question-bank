@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1316954_reconstruction_problem
+% Stable identity: aops-topic-1316954-q01
+Yes, uniquely. Label the vertices $A_1,\dots,A_5$ and let $M_i$ be the midpoint of $A_iA_{i+1}$ (indices mod $5$). In vectors, $M_i=\dfrac{A_i+A_{i+1}}{2}$, so $A_{i+1}=2M_i-A_i$: $A_{i+1}$ is the reflection of $A_i$ in $M_i$. Going around,
+\[
+A_1=2M_5-A_5=2M_5-2M_4+2M_3-2M_2+2M_1-A_1,
+\]
+so $A_1=M_1-M_2+M_3-M_4+M_5$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair[] V={(0,0),(4,-0.5),(5,2.5),(2.5,4.2),(-0.8,2.4)};
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--cycle,gray+dashed);
+pair[] M; for(int i=0;i<5;++i){M[i]=(V[i]+V[(i+1)%5])/2; dot(M[i],red);}
+label("$M_1$",M[0],S,red); label("$M_2$",M[1],E,red); label("$M_3$",M[2],NE,red); label("$M_4$",M[3],NW,red); label("$M_5$",M[4],W,red);
+dot(V[0]); label("$A_1$",V[0],SW); label("$A_2$",V[1],SE); label("$A_3$",V[2],E); label("$A_4$",V[3],N); label("$A_5$",V[4],W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Construction.} $M_1-M_2+M_3$ is the fourth vertex $P$ of the parallelogram $M_1M_2M_3P$; then $A_1=P-M_4+M_5$ is the fourth vertex of the parallelogram $PM_4M_5A_1$. Having $A_1$, reflect it in $M_1$ to get $A_2$, reflect $A_2$ in $M_2$ to get $A_3$, and so on. This works for any polygon with an odd number of sides; for an even number of sides the midpoints do not determine the polygon.

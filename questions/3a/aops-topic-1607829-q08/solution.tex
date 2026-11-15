@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1607829_difficult_questions_from_nc_state_math_contest
+% Stable identity: aops-topic-1607829-q08
+Divide: $-2x-9=-2(x+5)+1$, so
+\[
+f(x)=-2+\dfrac{1}{x+5},\qquad\text{i.e.}\qquad (x+5)(y+2)=1 .
+\]
+This is the hyperbola $XY=1$ (with $X=x+5$, $Y=y+2$) moved so that its centre is $(-5,-2)$; its asymptotes are $x=-5$ and $y=-2$. The hyperbola $XY=1$ is symmetric about the line $Y=X$, and its vertices are the points of the curve on that line, $(X,Y)=(1,1)$ and $(-1,-1)$. Hence the vertices of the graph of $f$ are $(-4,-1)$ and $(-6,-3)$, and the line through them is $Y=X$, that is $y+2=x+5$:
+\[
+\boxed{\textbf{(d)}\ y=x+3}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return -2+1/(x+5);}
+draw((-10,0)--(1,0),gray,Arrow(TeXHead));draw((0,-7.5)--(0,3.5),gray,Arrow(TeXHead));
+label("$x$",(1,0),E,gray);label("$y$",(0,3.5),N,gray);
+draw((-5,-7.5)--(-5,3.5),dashed);draw((-10,-2)--(1,-2),dashed);
+draw(graph(f,-10,-5.18),linewidth(0.9));draw(graph(f,-4.82,1),linewidth(0.9));
+draw((-10,-7)--(0.5,3.5),red);
+dot((-4,-1));dot((-6,-3));
+label("$(-4,-1)$",(-2.2,-0.95),fontsize(9pt));label("$(-6,-3)$",(-7.9,-3.2),fontsize(9pt));
+label("$y=x+3$",(-8.6,-5.6),W,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

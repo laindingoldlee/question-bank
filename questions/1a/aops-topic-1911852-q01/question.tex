@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1911852_special_triangles_math_question
+% Stable identity: aops-topic-1911852-q01
+Three congruent squares are attached to the three sides of a small equilateral triangle, each square lying outside the small triangle. The resulting figure sits inside an equilateral triangle $ABC$ of side length $8$ so that each side of $ABC$ is parallel to a side of the small triangle and passes through exactly two outer vertices of the squares, one from each of two different squares, as shown.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real r3=sqrt(3), x=16-8*sqrt(3);
+pair sh=(x+x*r3/2,x/2);
+pair D=sh, Ep=sh+(-x/2,x*r3/2), F=sh+(x/2,x*r3/2);
+pair n1=x*(r3/2,-1/2), n2=x*(-r3/2,-1/2);
+pair A=(4,4*r3), B=(0,0), C=(8,0);
+filldraw(Ep--F--(F+(0,x))--(Ep+(0,x))--cycle,gray(0.85));
+filldraw(D--F--(F+n1)--(D+n1)--cycle,gray(0.85));
+filldraw(D--Ep--(Ep+n2)--(D+n2)--cycle,gray(0.85));
+draw(D--Ep--F--cycle);
+draw(A--B--C--cycle,linewidth(1));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$8$",(4,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Find the side length of one of the squares.

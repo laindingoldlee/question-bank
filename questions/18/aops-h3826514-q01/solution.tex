@@ -1,0 +1,22 @@
+Let the intersections with the first two lines be $A=(a,0,0)$ and $B=(0,1,b)$. The direction $B-A=(-a,1,b)$ is orthogonal to $(1,0,1)$ exactly when $b=a$. Every candidate is therefore
+\[
+(x,y,z)=(a(1-\lambda),\lambda,a\lambda).
+\]
+At its intersection with $L_3$, $\lambda=u$, so $a(1-u)=1$ and $au=1+u$. Adding gives $a=2+u$, and substitution gives $u^2+u-1=0$. Thus there are exactly two lines:
+\[
+\boxed{(x,y,z)=(a(1-\lambda),\lambda,a\lambda),\quad
+a=\dfrac{3+\sqrt5}{2}\ \text{or}\ \dfrac{3-\sqrt5}{2}.}
+\]
+Both values satisfy the equations and so yield actual intersections.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real a=(3+sqrt(5))/2;pair pr(real x,real y,real z){return (x+.35*z,y+.2*z);}pair A=pr(a,0,0),B=pr(0,1,a),C=pr(1,a-2,a-1);draw(pr(-1,0,0)--pr(4,0,0));draw(pr(0,1,-2)--pr(0,1,4));draw(pr(1,-1,0)--pr(1,2,3));draw(A--B,blue);dot(A);dot(B);dot(C);label("$A$",A,(0,-1));label("$B$",B,(-1,0));label("$C$",C,(1,0));label("$a=\dfrac{3+\sqrt5}{2}$",(1,-1));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real a=(3-sqrt(5))/2;pair pr(real x,real y,real z){return (x+.35*z,y+.2*z);}pair A=pr(a,0,0),B=pr(0,1,a),C=pr(1,a-2,a-1);draw(pr(-1,0,0)--pr(2,0,0));draw(pr(0,1,-2)--pr(0,1,2));draw(pr(1,-2,-1)--pr(1,1,2));draw(C--B,blue);dot(A);dot(B);dot(C);label("$A$",A,(0,-1));label("$B$",B,(-1,0));label("$C$",C,(1,0));label("$a=\dfrac{3-\sqrt5}{2}$",(0,-2));
+\end{asy}

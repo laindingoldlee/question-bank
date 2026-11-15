@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1537042_halp
+% Stable identity: aops-topic-1537042-q02
+Measure times in hours after noon: the mail time $m$ is uniform on $[3,5]$ and my arrival time $a$ is uniform on $[4,5]$. The pair $(m,a)$ is uniform on a $2\times1$ rectangle, and the mail is there when $m\le a$ (shaded):
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real u=2;
+pair O=(0,0);
+fill((0,0)--(1*u,0)--(2*u,1*u)--(0,1*u)--cycle,paleblue);
+draw((0,0)--(2*u,0)--(2*u,1*u)--(0,1*u)--cycle,linewidth(0.9));
+draw((1*u,0)--(2*u,1*u),blue+linewidth(0.9));
+draw((1*u,0)--(1*u,1*u),dashed);
+draw((0,0)--(2.4*u,0),Arrow(6));draw((0,0)--(0,1.4*u),Arrow(6));
+label("mail time $m$",(2.4*u,0),E);label("arrival $a$",(0,1.4*u),N);
+label("$3$",(0,0),SE);label("$4$",(1*u,0),S);label("$5$",(2*u,0),S);
+label("$4$",(0,0),NW);label("$5$",(0,1*u),W);
+label("$m=a$",(1.72*u,0.3*u),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The shaded region is the $1\times1$ square with $3\le m\le4$ (there $m\le4\le a$ always) plus the half of the square $4\le m\le5$ above the line $m=a$. Its area is $1+\dfrac{1}{2}=\dfrac{3}{2}$ out of a total area of $2$, so the probability is
+\[
+\dfrac{\dfrac{3}{2}}{2}=\boxed{\dfrac{3}{4}}.
+\]
+The poster's reasoning, $\dfrac{1}{2}+\dfrac{1}{2}\cdot\dfrac{1}{2}=\dfrac{3}{4}$, is correct.

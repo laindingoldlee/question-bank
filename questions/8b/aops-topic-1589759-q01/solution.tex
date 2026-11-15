@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1589759_how_long_holidays_last
+% Stable identity: aops-topic-1589759-q01
+Let the holiday last $d$ days.
+
+\textbf{A lower bound.} Every day at least $7$ friends used the pool, so the total number of (friend, day) visits is at least $7d$. On the other hand the ten friends used the pool on ten different numbers of days, each at most $d$, so the total is at most
+\[
+d+(d-1)+\cdots+(d-9)=10d-45 .
+\]
+Hence $10d-45\ge7d$, i.e.\ $d\ge15$. So a holiday of $14$ or fewer days is impossible.
+
+\textbf{Fifteen days is possible.} For $d=15$ both bounds are equalities: exactly $3$ friends stay away each day, and the friends use the pool on $15,14,\dots,6$ days, i.e.\ friend $j$ ($j=0,1,\dots,9$) misses exactly $j$ days. Such a schedule exists: list the absences in the order
+\[
+F_1,\ F_2,F_2,\ F_3,F_3,F_3,\ \dots,\ \underbrace{F_9,\dots,F_9}_{9}
+\]
+($1+2+\cdots+9=45$ entries) and give day $k$ ($k=1,\dots,15$) the entries in positions $k$, $k+15$ and $k+30$. Each day gets $3$ absences, and they belong to $3$ different friends, because each friend's block has length at most $9<15$, so no block contains two positions that differ by $15$.
+
+\textbf{Answer.} The holiday is possible for $d=15$ but not for $d=14$, and for every $d\ge16$ it would also have been possible with one day less (as $d-1\ge15$). So the holiday lasted $\boxed{15}$ days.

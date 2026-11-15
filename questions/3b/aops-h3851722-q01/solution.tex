@@ -1,0 +1,11 @@
+The two right-triangle identities, valid also when a horizontal leg has length zero, are
+\[
+AB^2=AD^2+BD^2,\qquad AC^2=AD^2+CD^2.
+\]
+Subtracting gives $AB^2-AC^2=BD^2-CD^2$. Since all side lengths are nonnegative, squaring preserves their comparisons. Thus the two differences have the same sign, proving all three assertions. The reasoning does not require $D$ to lie between $B$ and $C$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int j=0;j<3;++j){pair B=(7j,0),C=(7j+4,0),D=(7j+(j==0?2:(j==1?-1:5)),0),A=D+(0,3);draw(A--B--C--cycle);draw(B+(-1.5,0)--C+(1.5,0),gray);draw(A--D,dashed);draw(D+(.2,0)--D+(.2,.2)--D+(0,.2));label("$A$",A,N);label("$B$",B,S);label("$C$",C,S);label("$D$",D,(j==2?SE:SW));}
+\end{asy}

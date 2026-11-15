@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h2627413_nt_and_pie_problem_i_made
+% Stable identity: aops-topic-2627413-q01
+Fix $k$. After the $i$th kid, $c_i=c\left(\dfrac{k-1}{k}\right)^i$ coins remain, and all of $c_1,\dots,c_k$ must be integers. Since $\gcd\left((k-1)^k,k^k\right)=1$, $c_k$ being an integer forces $k^k\mid c$. Conversely, if $c=k^kt$, then $c_i=k^{k-i}(k-1)^it$ and each $c_{i-1}$ is divisible by $k$ for $i\le k$, so the process works.
+
+So $c$ works exactly when it is a multiple of $k^k$ for some $k\ge2$: of $4$, $27$, $256$, $3125$, \dots{} ($6^6>10000$). Multiples of $256$ are multiples of $4$, so by inclusion-exclusion the count is
+\[\left\lfloor\dfrac{10000}{4}\right\rfloor+\left\lfloor\dfrac{10000}{27}\right\rfloor+\left\lfloor\dfrac{10000}{3125}\right\rfloor-\left\lfloor\dfrac{10000}{108}\right\rfloor=2500+370+3-92=\boxed{2781},\]
+since $\operatorname{lcm}(4,3125)$ and $\operatorname{lcm}(27,3125)$ exceed $10000$.

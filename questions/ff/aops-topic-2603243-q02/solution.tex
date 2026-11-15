@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2603243_cool_trigono
+% Stable identity: aops-topic-2603243-q02
+Draw a right triangle with angle $B$, opposite leg $4$ and adjacent leg $3$. By the Pythagorean theorem its hypotenuse is $\sqrt{9+16}=5$. So $\sin B=\dfrac45$ and $\csc B=\boxed{\dfrac54}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(3,0),A=(3,4);draw(A--B--C--cycle,linewidth(0.8));
+real s=0.35;draw(C+(-s,0)--C+(-s,s)--C+(0,s));
+label("$B$",B,SW);label("$3$",(B+C)/2,S);label("$4$",(A+C)/2,E);label("$5$",(A+B)/2,NW);
+\end{asy}
+
+(Without the condition that $B$ is acute, $B$ could also lie in the third quadrant, where $\csc B=-\dfrac54$.)

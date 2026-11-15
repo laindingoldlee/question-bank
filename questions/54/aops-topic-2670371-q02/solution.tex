@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2670371_problem_set
+% Stable identity: aops-topic-2670371-q02
+Count red as $+1$ and blue as $-1$, and let $S_i$ be the sum for the first $i$ prisoners ($S_0=0$). The block of prisoners $i+1,\dots,j$ has (red minus blue) equal to $S_j-S_i$, so the condition says that the walk $S_0,S_1,\dots,S_{10}$ satisfies $\max S-\min S\le2$, i.e. it stays inside one of the bands $\{-2,-1,0\}$, $\{-1,0,1\}$, $\{0,1,2\}$. (The supply of $10$ hats of each colour never restricts anything.)
+\begin{itemize}
+\item Band $\{-1,0,1\}$: from $0$ the walk may go to $\pm1$, and from $\pm1$ it must return to $0$. So it is at $0$ at even times and has $2$ choices at each of the $5$ odd times: $2^5=32$ walks.
+\item Band $\{0,1,2\}$: the walk is at $1$ at every odd time and at $0$ or $2$ at each of the even times $2,4,\dots,10$: $2^5=32$ walks. By symmetry the band $\{-2,-1,0\}$ also gives $32$.
+\end{itemize}
+A walk in two of the bands stays in $\{-1,0\}$ or in $\{0,1\}$, and each of these allows exactly one (alternating) walk; no walk lies in all three. By inclusion--exclusion the number of hat placements is
+\[3\cdot32-1-1=\boxed{94}.\]

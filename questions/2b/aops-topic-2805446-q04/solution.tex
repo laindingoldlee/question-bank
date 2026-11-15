@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2805446_2018_midmichigan_mathematical_olympiad__grades_79
+% Stable identity: aops-topic-2805446-q04
+Yes. In the colouring below, the black squares form $8$ dominoes, so each black square has exactly one black neighbour, namely its partner. Checking each white square shows it touches exactly one black square.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+int[][] B={{1,1,0,0,1,1,0,0},{0,0,0,0,0,0,0,1},{0,0,1,1,0,0,0,1},{1,0,0,0,0,1,0,0},{1,0,0,0,0,1,0,0},{0,0,1,1,0,0,0,1},{0,0,0,0,0,0,0,1},{1,1,0,0,1,1,0,0}};
+for(int i=0;i<8;++i)for(int j=0;j<8;++j){path q=shift(j,7-i)*unitsquare;if(B[i][j]==1)filldraw(q,black,gray);else draw(q,gray);}
+draw((0,0)--(8,0)--(8,8)--(0,8)--cycle,linewidth(1));
+\end{asy}
+
+Row by row from the top (B = black): \texttt{BB..BB..}, \texttt{.......B}, \texttt{..BB...B}, \texttt{B....B..}, \texttt{B....B..}, \texttt{..BB...B}, \texttt{.......B}, \texttt{BB..BB..}. So the answer is $\boxed{\text{yes}}$.

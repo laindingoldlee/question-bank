@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2444662_distinguishable_and_indistinguishable
+% Stable identity: aops-topic-2444662-q01
+\textbf{(a)} Each of the $4$ balls independently chooses one of the $3$ boxes: $3^4=81$ outcomes.
+
+\textbf{(b)} Now an outcome is only the list of how many balls each box gets: nonnegative integers $x_A+x_B+x_C=4$. By stars and bars there are $\dbinom{4+2}{2}=15$ outcomes.
+
+\textbf{(c)} Now an outcome is a way of splitting the set $\{1,2,3,4\}$ into at most $3$ nonempty groups (the boxes have no names, so only the grouping matters):
+\begin{itemize}
+\item one group: $1$ way;
+\item two groups: sizes $3+1$ in $4$ ways, sizes $2+2$ in $\dfrac12\dbinom42=3$ ways, so $7$ ways;
+\item three groups: sizes $2+1+1$, determined by the pair that is together: $\dbinom42=6$ ways.
+\end{itemize}
+In total $1+7+6=14$ outcomes.
+
+\textbf{(d)} Now an outcome is only the multiset of box sizes, a partition of $4$ into at most $3$ parts: $4$, $3+1$, $2+2$, $2+1+1$. So there are $4$ outcomes.
+
+So the answers are $\boxed{81,\ 15,\ 14,\ 4}$.
+
+\textbf{Why not just divide.} Making objects identical merges outcomes that differ only by permuting those objects, but different outcomes merge in groups of different sizes. For example, in (a) the outcome ``all four balls in box $A$'' corresponds to only $1$ arrangement of the numbered balls, while ``balls $1,2$ in $A$, balls $3,4$ in $B$'' is one of $\dbinom42=6$ labelled outcomes with the same counts $(2,2,0)$. So $81$ is not $4!\cdot15$, and similarly $81$ is not $3!\cdot14$, because an outcome with empty boxes is unchanged by some relabellings of the boxes. Each model has to be counted on its own terms.

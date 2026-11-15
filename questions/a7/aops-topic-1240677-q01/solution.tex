@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1240677_inscribed_hexagon
+% Stable identity: aops-topic-1240677-q01
+A chord's length depends only on its arc, so rearranging the sides around the circle does not change the circle. Arrange them as $2,7,11,2,7,11$. Then the six arcs repeat, so the vertices $1$ and $4$ are endpoints of a diameter $d$: the sides $2,7,11$ subtend half the circle.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real R=7; real a1=2*asin(1/7),a2=2*asin(3.5/7),a3=2*asin(5.5/7);
+real[] A={0,a1,a1+a2,a1+a2+a3,a1+a2+a3+a1,a1+a2+a3+a1+a2};
+pair[] P; for(int i=0;i<6;++i) P[i]=R*dir(degrees(A[i]));
+draw(circle((0,0),R),gray); draw(P[0]--P[1]--P[2]--P[3]--P[4]--P[5]--cycle,linewidth(1)); draw(P[0]--P[3],red+dashed);
+label("$2$",(P[0]+P[1])/2,E); label("$7$",(P[1]+P[2])/2,NE); label("$11$",(P[2]+P[3])/2,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+If the half-angles of these arcs are $\alpha,\beta,\gamma$, then $\alpha+\beta+\gamma=90^\circ$ and $\sin\alpha=\dfrac{2}{d}$, $\sin\beta=\dfrac{7}{d}$, $\sin\gamma=\dfrac{11}{d}$. From $\cos(\alpha+\beta)=\sin\gamma$:
+\[\sqrt{1-\dfrac{4}{d^2}}\sqrt{1-\dfrac{49}{d^2}}-\dfrac{14}{d^2}=\dfrac{11}{d}.\]
+Try $d=14$: $\sqrt{\dfrac{192}{196}}\sqrt{\dfrac{147}{196}}-\dfrac{14}{196}=\dfrac{168}{196}-\dfrac{1}{14}=\dfrac{11}{14}$. It holds. (The equation has only this solution with $d\ge11$: the left side increases in $d$ and the right side decreases.) So the diameter is $\boxed{14}$.
+
+(Equivalently, by Ptolemy's theorem on the quadrilateral formed by the sides $2,7,11$ and the diameter, one also gets $d=14$.)

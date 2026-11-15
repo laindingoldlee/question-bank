@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2787544_1999_manhattan_mathematical_olympiad_grades_78_problems_14
+% Stable identity: aops-topic-2787544-q03
+If one point is the centre $O$, its distance to any other point is less than $1$. Otherwise draw the rays from $O$ through the six points. Six rays around $O$ make six consecutive angles summing to $360^\circ$, so some two points $P,Q$ satisfy $\angle POQ\le60^\circ$.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw(unitcircle);dot((0,0));for(int k=0;k<6;++k) draw((0,0)--dir(60k),dashed);
+pair P=0.8*dir(20),Q=0.6*dir(50);dot(P);dot(Q);label("$P$",P,E);label("$Q$",Q,N);draw(P--Q);label("$\le60^\circ$",(0,0),dir(35)*2.2);
+\end{asy}
+
+With $\theta=\angle POQ\le60^\circ$ we have $\cos\theta\ge\dfrac12$, so by the law of cosines, writing $m=\min(OP,OQ)$ and $M=\max(OP,OQ)$,
+\[PQ^2=OP^2+OQ^2-2\,OP\cdot OQ\cos\theta\le m^2+M^2-mM\le M^2,\]
+because $m^2\le mM$. Hence $PQ\le M<1$. $\blacksquare$

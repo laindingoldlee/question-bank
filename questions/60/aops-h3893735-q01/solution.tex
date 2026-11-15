@@ -1,0 +1,11 @@
+Label the vertices $0,\ldots,11$. The four equilateral triangles are $\{i,i+4,i+8\}$ for $i=0,1,2,3$, partitioning the vertices. Each has six nonmonochromatic colorings, so begin with $6^4=1296$.
+
+The three squares are $\{j,j+3,j+6,j+9\}$ for $j=0,1,2$; each meets every triangle once. If a specified square is monochromatic, choose its color in two ways and the remaining two vertices of each triangle in three ways, giving $2\cdot3^4=162$. If two specified squares are monochromatic, equal square colors force the third vertex of each triangle, giving 2 choices; opposite square colors leave those four vertices free, giving $2\cdot2^4=32$. Each pair therefore contributes 34. If all three squares are monochromatic, their colors cannot all agree, giving six choices.
+
+Inclusion--exclusion yields $N=1296-3(162)+3(34)-6=906$. Thus $p+q=9+6=\boxed{15}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] P;for(int i=0;i<12;++i){P.push(dir(90-30*i));dot(P[i]);label(string(i),1.15P[i]);}draw(P[0]--P[4]--P[8]--cycle,blue);draw(P[0]--P[3]--P[6]--P[9]--cycle,red+dashed);for(int i=0;i<12;++i)draw(P[i]--P[(i+1)%12],gray);
+\end{asy}

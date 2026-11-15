@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h1382278_introduction_to_geometry_problem
+% Stable identity: aops-topic-1382278-q01
+Since $JK=JL$, the foot of the altitude from $J$ is the midpoint $M$ of $KL$, so $KM=20$ and $JM=\sqrt{25^2-20^2}=15$. The circumcentre $O$ lies on the perpendicular bisector of $KL$, which is line $JM$.
+
+Put $M$ at the origin, $J=(0,15)$, $K=(-20,0)$ and $O=(0,t)$. Then $OJ=OK$ gives
+\[
+(15-t)^2=20^2+t^2\iff 225-30t=400\iff t=-\dfrac{35}{6}.
+\]
+So $O$ lies $\dfrac{35}{6}$ \emph{below} $KL$, on the opposite side of $KL$ from $J$, and
+\[
+R=OJ=15-t=15+\dfrac{35}{6}=\boxed{\dfrac{125}{6}} .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real R=125/6;
+pair J=(0,15),K=(-20,0),L=(20,0),M=(0,0),O=(0,15-R);
+draw(circle(O,R),blue);
+draw(J--K--L--cycle,linewidth(0.9));
+draw(J--O,red+dashed); draw(O--K,red+dashed);
+dot(J);dot(K);dot(L);dot(M);dot(O);
+label("$J$",J,N); label("$K$",K,W); label("$L$",L,E); label("$M$",M,NW);
+label("$O$",O,S);
+label("$25$",(J+L)/2,NE); label("$20$",(K+M)/2,N);
+label("$15$",(J+M)/2,E); label("$\dfrac{35}{6}$",(M+O)/2,E,fontsize(9pt)+red);
+label("$R$",(O+K)/2,S,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The student's equation is the same equation with $R=15-t$; its solution $R=\dfrac{125}{6}$ is correct. The quantity $15-R=t=-\dfrac{35}{6}$ is not a length but a signed coordinate: it is negative because the circumcentre lies outside the triangle. That happens because the triangle is obtuse at $J$: $JK^2+JL^2=1250<1600=KL^2$. The distance from $O$ to $KL$ is $\dfrac{35}{6}$.
+
+Check with $R=\dfrac{abc}{4K}$: the area is $K=\dfrac{1}{2}\cdot40\cdot15=300$, so $R=\dfrac{25\cdot25\cdot40}{1200}=\dfrac{125}{6}$.

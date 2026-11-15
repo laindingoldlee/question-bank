@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1492218_modulus_problem
+% Stable identity: aops-topic-1492218-q01
+The set of solutions is symmetric under the $8$ maps $(x,y)\mapsto(\pm x,\pm y)$ and $(x,y)\mapsto(\pm y,\pm x)$ (reflections in the axes and in the lines $y=\pm x$). A point $(a,b)$ with $a\ne0$, $b\ne0$ and $|a|\ne|b|$ has $8$ different images, so these points come in groups of $8$ and contribute a multiple of $8$. The remaining points are counted directly.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real R=sqrt(2014);
+draw(circle((0,0),R),linewidth(0.9));
+draw((-52,0)--(52,0),Arrow(TeXHead)); draw((0,-52)--(0,52),Arrow(TeXHead));
+draw((-40,-40)--(40,40),gray+dashed); draw((-40,40)--(40,-40),gray+dashed);
+label("$x$",(52,0),E); label("$y$",(0,52),N);
+pair[] Q={(30,17),(17,30),(-17,30),(-30,17),(-30,-17),(-17,-30),(17,-30),(30,-17)};
+for(pair q:Q) dot(q,blue+linewidth(4));
+label("$(a,b)$",(30,17),S,blue);
+dot((44,0),red+linewidth(4)); dot((0,44),red+linewidth(4)); dot((-44,0),red+linewidth(4)); dot((0,-44),red+linewidth(4));
+dot((31,31),deepgreen+linewidth(4)); dot((-31,31),deepgreen+linewidth(4)); dot((-31,-31),deepgreen+linewidth(4)); dot((31,-31),deepgreen+linewidth(4));
+label("$x^2+y^2=2014$",(-36,50));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item The origin: $1$ point.
+\item Points on the axes other than the origin: $x^2\le2014$ means $1\le|x|\le44$ (since $44^2=1936$ and $45^2=2025$), so there are $4\cdot44=176$ such points (red, outermost ones shown).
+\item Points on the lines $y=\pm x$ other than the origin: $2x^2\le2014$ means $1\le|x|\le31$ (since $2\cdot31^2=1922$ and $2\cdot32^2=2048$), so there are $4\cdot31=124$ such points (green, outermost ones shown).
+\end{itemize}
+Hence
+\[
+n\equiv1+176+124=301\equiv\boxed{5}\pmod8 .
+\]
+(In fact $n=6317$.)

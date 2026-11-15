@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2777721_2017_winmac_team_round___winchester_math_competition
+% Stable identity: aops-topic-2777721-q10
+Because adjacent angles $ A,B $ are supplementary, $ AD\parallel BC $. A cyclic trapezoid is isosceles; let the equal legs be $ l $, and the bases be $ x=AD<y=BC $. The base angles give height $ h=\dfrac{l}{2}$. If $ s=x+y $, then perimeter gives $ s+2l=32 $, and area gives $\dfrac{sl}{4}=32 $. Thus $ l(32-2l)=128 $, or $(l-8)^2=0 $, giving $ l=8,s=16,h=4 $. The horizontal projection of diagonal $ AC $ is $\dfrac{s}{2}=8 $, so $ AC^2=8^2+4^2=80 $. Since $\angle ABC=30^\circ $, the extended sine rule gives circumradius $ R=AC $. Triangle $ ACO $ therefore has all three sides $ R $ and is equilateral, giving area $\dfrac{\sqrt3}{4}R^2=\boxed{20\sqrt3}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real x=8-4sqrt(3),y=8+4sqrt(3);pair A=(-x/2,4),D=(x/2,4),B=(-y/2,0),C=(y/2,0);real oy=(16+(x*x-y*y)/4)/8;pair O=(0,oy);draw(A--B--C--D--cycle);draw(circle(O,4sqrt(5)));draw(A--O--C--A,blue);label("$A$",A,NW);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NE);label("$O$",O,S);
+\end{asy}

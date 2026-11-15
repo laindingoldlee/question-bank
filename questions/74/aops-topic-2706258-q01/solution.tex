@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2706258_orthic_triangle_from_egmo
+% Stable identity: aops-topic-2706258-q01
+$\angle BEC=90^\circ$ because $BE\perp AC$, and $\angle BFC=90^\circ$ because $CF\perp AB$. A point $X$ with $\angle BXC=90^\circ$ lies on the circle with diameter $BC$ (converse of Thales' theorem). So $E$ and $F$, as well as $B$ and $C$, lie on that circle. $\blacksquare$ (The segment $FC$ is not a diameter in general; it is an altitude.)
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.2,3),B=(0,0),C=(4,0);
+pair Ef=A+dot(B-A,C-A)/dot(C-A,C-A)*(C-A),F=A+dot(C-A,B-A)/dot(B-A,B-A)*(B-A);
+draw(A--B--C--cycle,linewidth(0.8));draw(B--Ef);draw(C--F);draw(circle((B+C)/2,2),dashed);
+dot(Ef);dot(F);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$E$",Ef,NE);label("$F$",F,NW);
+\end{asy}

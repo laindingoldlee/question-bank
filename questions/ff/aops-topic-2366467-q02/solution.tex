@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2366467_expected_value_problems
+% Stable identity: aops-topic-2366467-q02
+If I continue, then $S\le3$, so I never have more than $3$ dice. Let $E_n$ be the expected number of moves still to come when I hold $n$ dice ($n=1,2,3$).
+
+\textbf{Three dice.} The sum is at least $3$, and it equals $3$ only for $(1,1,1)$, with probability $\dfrac{1}{64}$; then I again hold $3$ dice. So $E_3=1+\dfrac{1}{64}E_3$, and $E_3=\dfrac{64}{63}$.
+
+\textbf{Two dice.} The sum is $2$ with probability $\dfrac1{16}$ (back to $2$ dice) and $3$ with probability $\dfrac{2}{16}$ (go to $3$ dice); otherwise I stop. So
+\[E_2=1+\dfrac1{16}E_2+\dfrac18E_3\quad\Longrightarrow\quad\dfrac{15}{16}E_2=1+\dfrac{8}{63}=\dfrac{71}{63},\qquad E_2=\dfrac{1136}{945}.\]
+
+\textbf{One die.} I roll $1$, $2$ or $3$, each with probability $\dfrac14$, and then hold that many dice; a $4$ stops the game. So
+\[E_1=1+\dfrac14\left(E_1+E_2+E_3\right)\quad\Longrightarrow\quad\dfrac34E_1=1+\dfrac14\left(\dfrac{1136}{945}+\dfrac{960}{945}\right)=1+\dfrac{524}{945}=\dfrac{1469}{945},\]
+and $E_1=\dfrac{4}{3}\cdot\dfrac{1469}{945}=\boxed{\dfrac{5876}{2835}}\approx2.07$.

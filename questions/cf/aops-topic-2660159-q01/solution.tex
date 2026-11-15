@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2660159_sqrubes_and_cuares
+% Stable identity: aops-topic-2660159-q01
+\emph{Size.} Together $x^2$ and $x^3$ must have $10$ digits. For $x\le46$, $x^2\le2116$ has at most $4$ digits and $x^3\le97336$ at most $5$; for $x\ge100$ they have at least $5+7=12$ digits. For $47\le x\le99$, $x^2$ (from $2209$ to $9801$) has $4$ digits and $x^3$ (from $103823$ to $970299$) has $6$. So $47\le x\le99$.
+
+\emph{Mod $9$.} The ten digits add up to $45$, so $x^2+x^3=x^2(x+1)\equiv0\pmod9$. If $3\nmid x$ this needs $9\mid x+1$. So $3\mid x$ or $x\equiv8\pmod9$.
+
+\emph{Last digit.} If $x$ ends in $0,1,5$ or $6$, then $x^2$ and $x^3$ end in the same digit, a repetition.
+
+\emph{Check.} The remaining candidates are $48,54,57,63,69,72,78,84,87,93,99$ and $53,62,89,98$. All but one show a repeated digit:
+\begin{center}
+\begin{tabular}{lll|lll|lll}
+$x$&$x^2$&$x^3$&$x$&$x^2$&$x^3$&$x$&$x^2$&$x^3$\\\hline
+$48$&$2304$&$110592$&$72$&$5184$&$373248$&$53$&$2809$&$148877$\\
+$54$&$2916$&$157464$&$78$&$6084$&$474552$&$62$&$3844$&$238328$\\
+$57$&$3249$&$185193$&$84$&$7056$&$592704$&$89$&$7921$&$704969$\\
+$63$&$3969$&$250047$&$87$&$7569$&$658503$&$98$&$9604$&$941192$\\
+$69$&$4761$&$328509$&$93$&$8649$&$804357$&&&\\
+&&&$99$&$9801$&$970299$&&&
+\end{tabular}
+\end{center}
+For instance $93$ fails because $8649$ and $804357$ share $4$ and $8$. Only $x=69$ works: $69^2=4761$ and $69^3=328509$ use each digit once. So $x=\boxed{69}$, and it is the only such number.

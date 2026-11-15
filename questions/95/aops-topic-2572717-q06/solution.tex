@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2572717_combinatorics_for_kids
+% Stable identity: aops-topic-2572717-q06
+By the hockey-stick identity $\dbinom rr+\dbinom{r+1}r+\cdots+\dbinom mr=\dbinom{m+1}{r+1}$,
+\[\dbinom44+\dbinom54+\dbinom64+\dbinom74=\dbinom85,\qquad \dbinom55+\dbinom65+\dbinom75=\dbinom86.\]
+Then by Pascal's rule twice,
+\[\dbinom85+\dbinom86+\dbinom95=\dbinom96+\dbinom95=\dbinom{10}6=210.\]
+Now find all $(n,k)$ with $\dbinom nk=210$. Since $\dbinom nk=\dbinom n{n-k}$, first take $k\le\dfrac n2$.
+\begin{itemize}
+\item $k=1$: $n=210$.
+\item $k=2$: $n(n-1)=420$, so $n=21$.
+\item $k=3$: $n(n-1)(n-2)=1260$, but $11\cdot10\cdot9=990$ and $12\cdot11\cdot10=1320$, so there is no solution.
+\item $k=4$: $n(n-1)(n-2)(n-3)=5040=10\cdot9\cdot8\cdot7$, so $n=10$.
+\item $k\ge5$: then $n\ge2k$ and $\dbinom nk\ge\dbinom{2k}k\ge\dbinom{10}5=252>210$.
+\end{itemize}
+So the representations are $\dbinom{210}1,\dbinom{210}{209},\dbinom{21}2,\dbinom{21}{19},\dbinom{10}4,\dbinom{10}6$, with $n+k=211,419,23,40,14,16$. The smallest is $\boxed{14}$.

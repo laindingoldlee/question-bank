@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2352603_variations_on_a_theme
+% Stable identity: aops-topic-2352603-q01
+Through $E$ draw the line parallel to $AB$; it meets the line $BC$ at $G$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(1,0), A=(0.5,sqrt(3)/2);
+pair D=2*A-B, Ept=2*C-A, F=(4/3,0), G=(2,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,dashed); draw(C--Ept,dashed); draw(C--G,dashed);
+draw(D--Ept,blue); draw(Ept--G,red);
+dot(A); dot(B); dot(C); dot(D); dot(Ept); dot(F); dot(G);
+label("$A$",A,W); label("$B$",B,SW); label("$C$",C,SW); label("$D$",D,N); label("$E$",Ept,S); label("$F$",F,NE); label("$G$",G,SE);
+label("$1$",(A+D)/2,W); label("$1$",(C+Ept)/2,W);
+\end{asy}
+
+\textbf{Step 1.} Triangles $CEG$ and $CAB$ have vertical angles at $C$ and $EG\parallel AB$, so they are similar, with ratio $\dfrac{CE}{CA}=1$: they are congruent. Hence $CG=CB=1$ and $EG=AB=1$, and $G$ lies on the extension of $BC$ beyond $C$, with $BG=2$.
+
+\textbf{Step 2.} $EG\parallel BD$, so triangles $FEG$ and $FDB$ are similar, and
+\[\dfrac{FG}{FB}=\dfrac{EG}{DB}=\dfrac{1}{2}.\]
+The point $F$ lies on the segment $BG$ (the line $DE$ crosses from $D$, above line $BG$, to $E$, below it), so $FB=2FG$ and $FB+FG=BG=2$. Thus $FG=\dfrac23$ and $FB=\dfrac43$, so $F$ lies beyond $C$ and
+\[CF=FB-BC=\dfrac43-1=\boxed{\dfrac13}.\]
+(Check with Menelaus' theorem for triangle $ABC$ and the line $DFE$: $\dfrac{AD}{DB}\cdot\dfrac{BF}{FC}\cdot\dfrac{CE}{EA}=\dfrac12\cdot\dfrac{4}{1}\cdot\dfrac12=1$.)

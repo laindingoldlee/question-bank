@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1921144_2019_mathcounts_national_sprint_25
+% Stable identity: aops-topic-1921144-q01
+Colin will choose the smallest allowed $n$. Rounding to the nearest tenth gives an integer $k$ exactly when
+\[
+k-0.05\le na<k+0.05 .
+\]
+
+\textbf{Jack can get $19$ points.} Let $a=\dfrac{1}{19}$. For $1\le n\le18$, $na=\dfrac {n}{19}$ is not an integer, and its distance to the nearest integer is at least $\dfrac{1}{19}>0.05$, so it does not round to an integer. For $n=19$, $na=1$. So Colin must choose $n=19$ (or more).
+
+\textbf{Jack cannot guarantee more.} Let $a>0$ be arbitrary. Let $f_j$ be the fractional part of $ja$ for $j=0,1,\dots,19$; these are $20$ numbers in $[0,1)$, with $f_0=0$. Split $[0,1)$ into the $20$ intervals $\left[\dfrac{t}{20},\dfrac{t+1}{20}\right)$, $t=0,\dots,19$.
+\begin{itemize}
+\item If two of the numbers, $f_i$ and $f_j$ with $i<j$, lie in the same interval, then $\delta=f_j-f_i$ satisfies $-0.05<\delta<0.05$, and $(j-i)a=ja-ia$ equals an integer plus $\delta$. So $(j-i)a$ lies in $[k,k+0.05)$ or in $(k-0.05,k)$ for some integer $k$, and $n=j-i\le19$ is allowed.
+\item Otherwise each interval contains exactly one of the numbers. The interval $[0.95,1)$ contains some $f_n$, and $n\ne0$ because $f_0=0$. Then $na=m+f_n$ with $m$ an integer, so $na\in[(m+1)-0.05,\ m+1)$ rounds to $m+1$, and $n\le19$ is allowed.
+\end{itemize}
+So Colin can always choose $n\le19$, and the greatest number of points Jack can guarantee is $\boxed{19}$.

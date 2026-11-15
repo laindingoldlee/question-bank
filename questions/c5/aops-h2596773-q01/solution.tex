@@ -1,0 +1,27 @@
+Yes. Cut every face into two congruent right isosceles triangles along the diagonal joining its $(0,0)$ and $(1,1)$ corners in the two varying coordinates. Denote a triangle below that diagonal by L and one above it by U. Pair the twelve triangles as follows:
+\[
+\begin{array}{c|cc}
+\text{piece}&\text{first triangle}&\text{second triangle}\\\hline
+A&(x=0,\mathrm L)&(y=1,\mathrm U)\\
+B&(x=0,\mathrm U)&(z=1,\mathrm U)\\
+C&(x=1,\mathrm L)&(z=0,\mathrm L)\\
+D&(x=1,\mathrm U)&(y=0,\mathrm L)\\
+E&(y=0,\mathrm U)&(z=1,\mathrm L)\\
+F&(y=1,\mathrm L)&(z=0,\mathrm U)
+\end{array}
+\]
+For each face, the first remaining coordinate increases to the right and the second upward. In each pair the triangles share a cube edge, and their right angles occur at opposite ends of that edge. Unfolding the pair across the edge produces a parallelogram with sides $1,\sqrt2$ and angles $45^\circ,135^\circ$. Its area is $1\cdot\sqrt2\sin45^\circ=1$.
+
+All six unfolded pieces are congruent and nonrectangular. Folding each along its shared diagonal restores its two assigned surface triangles, which partition the cube surface exactly.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[] names={"$x=0$","$x=1$","$y=0$","$y=1$","$z=0$","$z=1$"};string[] lo={"A","C","D","F","C","E"},up={"B","D","E","A","F","B"};for(int j=0;j<6;++j){pair o=(1.6*(j%3),-1.7*(j/3));draw(o--o+(1,0)--o+(1,1)--o+(0,1)--cycle);draw(o--o+(1,1));label(lo[j],o+(.7,.3));label(up[j],o+(.3,.7));label(names[j],o+(.5,-.3));}
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+filldraw((0,0)--(1,0)--(0,1)--(-1,1)--cycle,lightblue,blue);draw((0,0)--(0,1),dashed+red);label("$1$",(.5,0),S);label("$\sqrt2$",(.5,.5),NE);label("fold line",(0,.5),W);
+\end{asy}

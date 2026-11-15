@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1555667_hard_counting_question_please_help
+% Stable identity: aops-topic-1555667-q01
+Number the points $0,1,\dots,431$ around the circle and read numbers modulo $432$. Adding $a$ to every number is a rotation of the circle about its centre $O$, so it carries a triangle to a congruent one. It is enough to find red points $p_1,p_2,p_3$ and shifts $a,b,c$ such that $p_i+a$ is blue, $p_i+b$ is green and $p_i+c$ is yellow for $i=1,2,3$: the blue, green and yellow triangles are then rotations of the red one.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+draw(unitcircle,linewidth(0.8));
+real[] t={15,128,245};
+pair[] R,Bl;
+for(int i=0;i<3;++i){ R.push(dir(t[i])); Bl.push(dir(t[i]+62)); }
+draw(R[0]--R[1]--R[2]--cycle,red+linewidth(0.9));
+draw(Bl[0]--Bl[1]--Bl[2]--cycle,blue+linewidth(0.9)+dashed);
+for(int i=0;i<3;++i){ dot(R[i],red); dot(Bl[i],blue); }
+dot((0,0)); label("$O$",(0,0),SW);
+label("blue: red rotated about $O$ by $a$ steps",(0,-1.25),S);
+label("$p_1$",R[0],dir(t[0]),red);label("$p_2$",R[1],dir(t[1]),red);label("$p_3$",R[2],dir(t[2]),red);
+label("$p_1+a$",Bl[0],dir(t[0]+62),blue);label("$p_2+a$",Bl[1],dir(t[1]+62),blue);label("$p_3+a$",Bl[2],dir(t[2]+62),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Step 1 (blue).} For each shift $a\ne0$ let $N(a)$ be the number of red $p$ with $p+a$ blue. Every pair (red point, blue point) is counted for exactly one shift, and that shift is nonzero, so
+\[
+\sum_{a\ne0}N(a)=108\cdot108=11664 .
+\]
+There are $431$ nonzero shifts and $\dfrac{11664}{431}>27$, so some $a$ has $N(a)\ge28$. Let $P_1$ be a set of $28$ red points with $p+a$ blue.
+
+\textbf{Step 2 (green).} For each shift $b$ count the $p\in P_1$ with $p+b$ green. Each pair ($p\in P_1$, green point) gives one shift $b$, and $b\ne0$ (as $p$ is red) and $b\ne a$ (as $p+a$ is blue). So the counts over the $430$ shifts $b\notin\{0,a\}$ add up to $28\cdot108=3024$, and $\dfrac{3024}{430}>7$: some $b$ works for at least $8$ points. Let $P_2\subseteq P_1$ be $8$ of them.
+
+\textbf{Step 3 (yellow).} In the same way, the counts over the $429$ shifts $c\notin\{0,a,b\}$ of points $p\in P_2$ with $p+c$ yellow add up to $8\cdot108=864$, and $\dfrac{864}{429}>2$. So some $c$ works for at least $3$ points $p_1,p_2,p_3\in P_2$.
+
+These three red points are distinct points of the circle, so they form a triangle, and its images under the rotations by $a$, $b$, $c$ are a blue, a green and a yellow triangle congruent to it. $\blacksquare$

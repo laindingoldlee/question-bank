@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h1394514_how_to_calculate_angle_bmd
+% Stable identity: aops-topic-1394514-q01
+Let the side be $s$ and $AP=p$, so $PB=s-p$. Since $\angle A=60^\circ$, triangles $ABD$ and $CBD$ are equilateral and $BD=s$. The line $CP$ meets line $AD$ beyond $A$, at $N$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),D=4*dir(60),C=B+D;
+pair P=(1.6,0);
+pair Nn=extension(C,P,A,D);
+pair M=extension(D,P,B,Nn);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--Nn,gray+dashed);
+draw(C--Nn,blue); draw(D--M,red); draw(B--Nn,blue);
+draw(B--D,gray+dashed);
+draw(arc(A,0.5,0,60)); label("$60^\circ$",A+0.95*dir(30),fontsize(9pt));
+draw(arc(M,0.4,degrees(B-M),degrees(D-M)),red); label("$60^\circ$",M+0.75*dir((degrees(B-M)+degrees(D-M))/2),red+fontsize(9pt));
+dot(A);dot(B);dot(C);dot(D);dot(P);dot(Nn);dot(M);
+label("$A$",A,NW);label("$B$",B,E);label("$C$",C,NE);label("$D$",D,NW);
+label("$P$",P,1.3*dir(150));label("$N$",Nn,SW);label("$M$",M,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Step 1: $AN$.} Since $AN\parallel BC$, triangles $PAN$ and $PBC$ are similar, so $\dfrac{AN}{BC}=\dfrac{AP}{PB}$, that is $AN=\dfrac{sp}{s-p}$. Hence
+\[
+ND=NA+AD=\dfrac{sp}{s-p}+s=\dfrac{s^2}{s-p}.
+\]
+
+\textbf{Step 2: similar triangles.} Compare triangles $NDB$ and $DBP$. We have $\angle NDB=\angle ADB=60^\circ$ and $\angle DBP=\angle DBA=60^\circ$, and
+\[
+\dfrac{ND}{DB}=\dfrac{s}{s-p}=\dfrac{DB}{BP}.
+\]
+So $\triangle NDB\sim\triangle DBP$ (SAS), with $N\leftrightarrow D$, $D\leftrightarrow B$, $B\leftrightarrow P$. In particular $\angle DNB=\angle BDP$.
+
+\textbf{Step 3: the angle.} The point $M$ lies on segment $BN$ and on line $DP$ beyond $P$, so $\angle BMD$ is the exterior angle at $M$ of triangle $NMD$:
+\[
+\angle BMD=\angle MND+\angle MDN=\angle DNB+\angle PDA=\angle BDP+\angle PDA=\angle BDA=60^\circ .
+\]
+So $\angle BMD=\boxed{60^\circ}$, whatever the position of $P$ on $AB$. (Equivalently, $M$ lies on the circumcircle of the equilateral triangle $ABD$.)

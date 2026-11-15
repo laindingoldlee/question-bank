@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2416978_1200th_post_dedicated_to_bloggy
+% Stable identity: aops-topic-2416978-q19
+The region is the sector $OCD$ with the triangle $OC'D'$ removed (the segment $C'D'$ lies inside the sector).
+
+\textbf{The sector.} The trisectors make $20^\circ$ angles, so $\angle COD=20^\circ=\dfrac{\pi}{9}$ and the sector has area $\dfrac12r^2\cdot\dfrac\pi9=\dfrac{\pi}{18}r^2$.
+
+\textbf{The triangle.} Triangle $OAB$ is equilateral ($OA=OB$, $\angle AOB=60^\circ$), so the distance from $O$ to $AB$ is $ON=\dfrac{\sqrt3}{2}r$, where $N$ is the midpoint of $AB$. By symmetry the rays $OC'$ and $OD'$ make angles of $10^\circ$ with $ON$, so $NC'=ND'=ON\tan10^\circ$ and
+\[[OC'D']=\dfrac12\cdot2\,ON\tan10^\circ\cdot ON=ON^2\tan10^\circ=\dfrac34r^2\tan10^\circ.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0); real r=1;
+pair A=dir(-30), Bp=dir(30), C=dir(-10), D=dir(10);
+real h=sqrt(3)/2; pair Cq=(h,-h*Tan(10)), Dq=(h,h*Tan(10)), N=(h,0);
+fill(arc(O,1,-10,10)--Dq--Cq--cycle,rgb(1,0.82,0.5));
+draw(arc(O,1,-45,45),gray);
+draw(O--A); draw(O--Bp); draw(O--C,dashed); draw(O--D,dashed); draw(A--Bp);
+draw(O--N,dotted);
+dot(O); dot(Cq); dot(Dq); dot(C); dot(D);
+label("$O$",O,W); label("$A$",A,SE); label("$B$",Bp,NE); label("$C$",C,E); label("$D$",D,E);
+label("$C'$",Cq,SW,fontsize(8pt)); label("$D'$",Dq,NW,fontsize(8pt));
+\end{asy}
+
+\textbf{The answer.} The region has area $\left(\dfrac{\pi}{18}-\dfrac34\tan10^\circ\right)r^2$, so
+\[n=2,\qquad x=\dfrac{\pi}{18}-\dfrac34\tan10^\circ\approx0.174533-0.132245=0.042288.\]
+Then $\lfloor100x\rfloor=4$ and $\dfrac{\lfloor100x\rfloor}{n}=\dfrac42=\boxed{2}$.

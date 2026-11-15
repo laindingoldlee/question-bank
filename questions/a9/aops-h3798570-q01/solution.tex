@@ -1,0 +1,9 @@
+Label each edge by the coordinate it changes. Each of the three coordinates must change an odd number of times. At each of the six other vertices a used-edge degree is zero or two; the start has degree at most three and the destination degree one. Thus there are at most eight used edges, and the length is odd, hence at most seven.
+Length three uses each coordinate once, giving $3!=6$ paths. At length five the multiplicities are $(3,1,1)$. The repeated coordinate $X$ cannot occur consecutively, so the sequence must be $XYXZX$. There are $3\cdot2=6$ such paths.
+There are only four cube edges of each coordinate type, so an odd multiplicity cannot exceed three. At length seven the multiplicities are therefore $(3,3,1)$. Choose the coordinate used once in three ways. Its edge switches between two opposite square faces. An edge-simple walk within a square follows one direction and has length at most four. The six remaining steps split as $(2,4),(3,3)$ or $(4,2)$. The first split reaches the destination at the switch and is forbidden. For $(3,3)$ there are two first-face directions and the second-face direction is forced. For $(4,2)$ there are two directions for the first circuit and two for the last two-step route. Thus there are $3(2+4)=18$ seven-step paths. The total is $\boxed{6+6+18=30}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(3,0),C=(4,1),D=(1,1),E=(0,3),F=(3,3),G=(4,4),H=(1,4);draw(A--B--C--D--cycle);draw(E--F--G--H--cycle);draw(A--E);draw(B--F);draw(C--G);draw(D--H,dashed);dot(A);dot(G);label("$A$",A,(-1,-1));label("$C_1$",G,(1,1));
+\end{asy}

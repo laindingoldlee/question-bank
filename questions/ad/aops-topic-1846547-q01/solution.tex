@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1846547_cubic_equation
+% Stable identity: aops-topic-1846547-q01
+Let $f(t)=3t^3-2t^2+t-4$ and $g(t)=4t^3+2t^2+8t+24$.
+
+\textbf{Each cubic has exactly one real root.} For $u<v$ put $s=u+v$ and use $u^2+uv+v^2=\dfrac{3}{4}s^2+\dfrac{1}{4}(u-v)^2\ge\dfrac{3}{4}s^2$:
+\[
+f(v)-f(u)=(v-u)\left[3\left(u^2+uv+v^2\right)-2s+1\right]\ge(v-u)\left[\dfrac{9}{4}s^2-2s+1\right]>0,
+\]
+since $\dfrac{9}{4}s^2-2s+1$ has discriminant $4-9<0$. Similarly
+\[
+g(v)-g(u)=(v-u)\left[4\left(u^2+uv+v^2\right)+2s+8\right]\ge(v-u)\left[3s^2+2s+8\right]>0 .
+\]
+So $f$ and $g$ are strictly increasing, and each has exactly one real root. In particular $a$ and $b$ are uniquely determined, and $a\ne0$ since $f(0)=-4$.
+
+\textbf{Deriving the relation.} Dividing $f(a)=0$ by $a^3$ shows that $u=\dfrac{1}{a}$ satisfies $3-2u+u^2-4u^3=0$, i.e.\ $4u^3-u^2+2u-3=0$. Now try $b=ku$: then $u=\dfrac {b}{k}$ and
+\[
+4\dfrac{b^3}{k^3}-\dfrac{b^2}{k^2}+2\dfrac {b} {k}-3=0\iff 4b^3-kb^2+2k^2b-3k^3=0 .
+\]
+This is the equation of $b$ exactly when $-k=2$, $2k^2=8$ and $-3k^3=24$, and $k=-2$ satisfies all three. So we expect $b=-\dfrac{2}{a}$.
+
+\textbf{Verification.} Directly,
+\[
+g\left(-\dfrac{2}{a}\right)=-\dfrac{32}{a^3}+\dfrac{8}{a^2}-\dfrac{16}{a}+24=\dfrac{8\left(3a^3-2a^2+a-4\right)}{a^3}=0 .
+\]
+So $-\dfrac{2}{a}$ is a real root of $g$, and since $g$ has only one real root, $b=-\dfrac{2}{a}$. Therefore $ab=\boxed{-2}$.

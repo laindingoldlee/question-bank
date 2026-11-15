@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1623961_slope_of_a_line_question
+% Stable identity: aops-topic-1623961-q01
+The slope is the change in $y$ divided by the change in $x$ (rise over run):
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw((-0.5,0)--(5.5,0),Arrow(TeXHead));draw((0,-0.5)--(0,4.5),Arrow(TeXHead));
+label("$x$",(5.5,0),E);label("$y$",(0,4.5),N);
+pair A=(1,1),B=(4.5,3.5);draw(A-0.25*(B-A)--B+0.25*(B-A),blue+linewidth(0.9));
+draw(A--(B.x,A.y)--B,dashed);dot(A);dot(B);
+label("$A(a,b)$",A,NW);label("$B(c,d)$",B,NW);
+label("$c-a$",((A.x+B.x)/2,A.y),S);label("$d-b$",(B.x,(A.y+B.y)/2),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+\text{slope}=\dfrac{d-b}{c-a}.
+\]
+The condition $c\ne a$ makes the denominator non-zero (if $c=a$ the line is vertical and has no slope). The answer is $\boxed{\dfrac{d-b}{c-a}}$; the same value is obtained in the other order, $\dfrac{b-d}{a-c}$.

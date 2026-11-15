@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1455557_a_cryptarithm
+% Stable identity: aops-topic-1455557-q01
+The ten letters $D,U,C,A,F,E,N,O,I,R$ are all different, so they use each digit $0$ to $9$ exactly once.
+
+Since $DU<100$ and $N\ne C$, there must be a carry into the thousands place: $N=C+1$ and $\overline{AFE}+DU\ge1000$. This forces $A=9$ (if $A\le8$ then $\overline{AFE}+DU\le899+99<1000$). Also $\overline{9FE}+DU<1099$, so $O=0$. To make $CAFE$ small take $C=1$, so $N=2$, and we need $\overline{FE}+DU=100+\overline{IR}$, using the digits $3,4,5,6,7,8$ for $F,E,D,U,I,R$. Let $c$ be the carry from the units column. Then
+\[
+F+D+c=10+I,\qquad E+U=R+10c .
+\]
+Make $F$ as small as possible.
+\begin{itemize}
+\item $F=3$: $I=D+c-7\le2$, but $0,1,2$ are used. Impossible.
+\item $F=4$: $I=D+c-6$, which needs $D=8$, $c=1$, $I=3$. Then $E,U,R$ are $5,6,7$ with $E+U=R+10$; the sums $11,12,13$ give $R=1,2,3$, all used. Impossible.
+\item $F=5$: $I=D+c-5$. The cases are:
+ \begin{itemize}
+ \item $D=8,c=0,I=3$: then $E+U=R$ with $E,U,R\in\{4,6,7\}$, impossible;
+ \item $D=8,c=1,I=4$: $E+U=R+10$ with $\{E,U,R\}=\{3,6,7\}$ gives $\{E,U\}=\{6,7\}$, $R=3$;
+ \item $D=7,c=1,I=3$: $\{E,U,R\}=\{4,6,8\}$ gives $\{E,U\}=\{6,8\}$, $R=4$.
+ \end{itemize}
+The smallest $E$ is $6$, so $CAFE=1956$, and this happens in two ways: $87+1956=2043$ and $78+1956=2034$.
+\end{itemize}
+So the smallest $CAFE$ is $\boxed{1956}$, and with it $NOIR$ is $\boxed{2034\text{ or }2043}$.

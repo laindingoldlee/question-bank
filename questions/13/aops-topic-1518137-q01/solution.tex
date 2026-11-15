@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1518137_proof_for_geo
+% Stable identity: aops-topic-1518137-q01
+Since $ZY<ZX$, there is a point $P$ on segment $ZX$, strictly between $Z$ and $X$, with $ZP=ZY$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair Z=(0.8,2.6),X=(-2.5,0),Y=(2.8,0.2);
+pair P=Z+(X-Z)*abs(Y-Z)/abs(X-Z);
+draw(X--Y--Z--cycle,linewidth(1));
+draw(Y--P,dashed+blue);
+void tick(pair a,pair b){pair m=(a+b)/2,u=unit(b-a)*0.12; draw(m+rotate(90)*u--m-rotate(90)*u,linewidth(0.9));}
+tick(Z,P);tick(Z,Y);
+void ang(pair V,pair a,pair b,real r,pen p){real t1=degrees(a-V); real d=degrees(b-V)-t1; while(d>180) d-=360; while(d<-180) d+=360; draw(arc(V,r,t1,t1+d),p);}
+ang(X,Y,Z,0.45,red);ang(P,Z,Y,0.35,blue);ang(Y,Z,P,0.5,blue);
+dot(P);
+label("$X$",X,SW);label("$Y$",Y,SE);label("$Z$",Z,N);label("$P$",P,dir(128));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item Triangle $ZPY$ is isosceles with $ZP=ZY$, so $\angle ZPY=\angle ZYP$ (blue arcs).
+\item Since $P$ lies between $Z$ and $X$, the ray $YP$ lies inside angle $ZYX$, so $\angle XYZ>\angle ZYP$.
+\item $\angle ZPY$ is an exterior angle of triangle $PXY$ at $P$, so $\angle ZPY=\angle PXY+\angle PYX>\angle PXY=\angle YXZ$ (red arc).
+\end{itemize}
+Putting these together,
+\[
+\angle XYZ>\angle ZYP=\angle ZPY>\angle YXZ .\qquad\blacksquare
+\]

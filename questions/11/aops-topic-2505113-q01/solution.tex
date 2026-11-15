@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2505113_remainderbinomial_th
+% Stable identity: aops-topic-2505113-q01
+By the binomial theorem,
+\[65^{20}=(64+1)^{20}=1+\dbinom{20}{1}64+\dbinom{20}{2}64^2+\dbinom{20}{3}64^3+\cdots.\]
+Since $64^2=4096=8\cdot512$, every term from $\dbinom{20}{2}64^2$ on is divisible by $512$. So
+\[65^{20}\equiv1+20\cdot64=1281=2\cdot512+257\pmod{512},\]
+and the remainder is $\boxed{257}$.
+
+A term can be dropped only if it is divisible by the modulus $512=2^9$. The term $20\cdot64=1280=2^8\cdot5$ is not divisible by $2^9$, so it changes the remainder. Being a multiple of $8$ (or of $64$) is not enough; only from $64^2$ onwards do the terms contain the factor $2^9$.

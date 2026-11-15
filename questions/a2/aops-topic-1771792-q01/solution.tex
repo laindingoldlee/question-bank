@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1771792_mock_sprint_30__a_cool_digit_problem
+% Stable identity: aops-topic-1771792-q01
+Let $s(m)$ denote the digit sum. Since $11n=10n+n$, and in a column addition each carry lowers the digit sum by $9$ (a column total $t\ge10$ writes $t-10$ and carries $1$),
+\[
+s(11n)=s(10n)+s(n)-9C=2s(n)-9C,
+\]
+where $C$ is the number of carries when adding $n$ and $10n$. So $n$ is cool iff $s(n)=9C$.
+
+For $n=\overline{abc}$ the column sums are $c$ (units, no carry), $b+c$ (tens), $a+b+c_1$ (hundreds) and $a+c_2$ (thousands), where $c_1,c_2$ are the carries out of the tens and hundreds columns; at most $3$ carries occur, so $s(n)\in\{9,18,27\}$.
+\begin{itemize}
+\item $s(n)=9$ needs $C=1$. But then $b+c\le9$ and $a+b\le9$, so there is no carry at all. No cool numbers.
+\item $s(n)=27$: $n=999$, and $9990+999=10989$ has digit sum $27$. Cool.
+\item $s(n)=18$ needs $C=2$. If $b+c\ge10$, then $c_1=1$ and $a+b+1=19-c\ge10$, so $c_2=1$, and $a+c_2\ge10$ would need $a=9$, i.e.\ $b+c=9$, which is impossible; so exactly $2$ carries. If $b+c\le9$, then $a=18-b-c\ge9$, so $a=9$ and $b+c=9$; the hundreds column $9+b$ carries iff $b\ge1$, and then the thousands column $9+1$ carries too. So all numbers with digit sum $18$ are cool except $909$ (no carries).
+\end{itemize}
+\textbf{Sum.} For leading digit $a$, the pairs $(b,c)$ with $b+c=18-a$ number $a+1$, and on average $b=c=\dfrac{18-a}{2}$. So the numbers with digit sum $18$ add up to
+\[
+\sum_{a=1}^{9}(a+1)\left(100a+11\cdot\dfrac{18-a}{2}\right)=\sum_{a=1}^{9}(a+1)\left(94.5a+99\right)=36531 .
+\]
+The cool numbers sum to $36531-909+999=\boxed{36621}$ (there are $54$ of them).

@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2319449_continuing_the_flow_of_the_cp_problems_with_some_combinations
+% Stable identity: aops-topic-2319449-q03
+First list the products of one pair of dice with the number of ordered outcomes (out of $36$) that give each product:
+\[\begin{array}{c|cccccccccccccccccc}
+\text{product}&1&2&3&4&5&6&8&9&10&12&15&16&18&20&24&25&30&36\\\hline
+\text{ways}&1&2&2&3&2&4&2&1&2&4&2&1&2&2&2&1&2&1
+\end{array}\]
+Let $C(m)$ be the number of outcomes of one pair with product at most $m$. The larger of the two products equals $m$ exactly when both products are at most $m$ but not both are less than $m$, which happens in $C(m)^2-C(m^-)^2$ of the $36^2=1296$ outcomes, where $C(m^-)$ counts the products less than $m$.
+
+The products that are multiples of $6$ are $6,12,18,24,30,36$. From the table:
+\[\begin{array}{c|cccccc}
+m&6&12&18&24&30&36\\\hline
+C(m^-)&10&19&26&30&33&35\\
+C(m)&14&23&28&32&35&36\\
+C(m)^2-C(m^-)^2&96&168&108&124&136&71
+\end{array}\]
+The total is $96+168+108+124+136+71=703$, so the probability is $\boxed{\dfrac{703}{1296}}$.

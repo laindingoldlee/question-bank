@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1511057_nice_problem
+% Stable identity: aops-topic-1511057-q01
+The number $83$ is prime, so by Wilson's theorem $82!\equiv-1\pmod{83}$.
+
+Split $82!$ into the factors $1,\dots,41$ and $42,\dots,82$. Each factor of the second half is $83-k$ for some $k=1,\dots,41$, and $83-k\equiv-k\pmod{83}$. Therefore
+\[
+82!=41!\cdot\prod_{k=1}^{41}(83-k)\equiv41!\cdot(-1)^{41}\,41!=-(41!)^2\pmod{83}.
+\]
+Combining, $-(41!)^2\equiv-1$, so $(41!)^2\equiv1\pmod{83}$ and $a=\boxed{1}$.
+
+(Squaring Wilson's congruence, as tried in the post, only gives $(82!)^2\equiv1$; the key step is the pairing $83-k\equiv-k$. In general, for a prime $p\equiv3\pmod4$, $\left(\left(\dfrac{p-1}{2}\right)!\right)^2\equiv1\pmod p$.)

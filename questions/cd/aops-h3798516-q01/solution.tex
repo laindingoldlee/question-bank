@@ -1,0 +1,7 @@
+If $r$ rows and $c$ columns are chosen, the blank count is $(10-r)(10-c)=35$. Both factors are positive integers at most ten, so they are five and seven in either order. Thus $(r,c)$ is $(5,3)$ or $(3,5)$. In either case the overlap contains $rc=\boxed{15}$ cells.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int r=0;r<10;++r)for(int c=0;c<10;++c){pair p=(c,-r);draw(box(p,p+(1,1)),gray);if(c<3)draw(circle(p+(.5,.5),.2),blue);if(r<5)draw(p+(.2,.5)--p+(.8,.5),red);}
+\end{asy}

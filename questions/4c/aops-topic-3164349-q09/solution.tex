@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h3164349_2021_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3164349-q09
+The swaps implement a permutation, and every permutation can be implemented by adjacent swaps. A permutation with cycle lengths $c_1,\ldots,c_k$ returns after $\operatorname{lcm}(c_1,\ldots,c_k)$ days. Thus we maximize this lcm over partitions of $17$. The following complete recursion lists each nondecreasing partition once and checks its lcm. It gives $\boxed{210}$, attained by cycles of lengths $2,3,5,7$.
+\begin{verbatim}
+from math import lcm
+def partitions(n,lo=1):
+    if n==0:
+        yield ()
+    for a in range(lo,n+1):
+        for tail in partitions(n-a,a):
+            yield (a,)+tail
+best=max(lcm(*p) for p in partitions(17))
+assert best==210
+assert lcm(2,3,5,7)==210
+\end{verbatim}

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2727472_maximization_problem_with_restrictions
+% Stable identity: aops-topic-2727472-q01
+Let $O$ be the origin, $P=(x+6,3x)$ and $Q=(x+6,3x-9)$. Then $OP^2=(x+6)^2+9x^2$, $OQ^2=(x+6)^2+9(3-x)^2$, and twice the area of triangle $OPQ$ is $PQ\cdot(x+6)=9(x+6)$. Hence
+\[k=\dfrac{9(x+6)}{OP\cdot OQ}=\sin\theta,\qquad\theta=\angle POQ.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real x=1;pair O=(0,0),P=(x+6,3x),Q=(x+6,3x-9);
+draw((-0.5,0)--(8,0),gray);draw((x+6,-7)--(x+6,4.5),gray+dashed);
+draw(O--P,linewidth(0.8));draw(O--Q,linewidth(0.8));draw(P--Q,linewidth(1));
+dot(O);dot(P);dot(Q);
+label("$O$",O,W);label("$P(x+6,3x)$",P,NE,fontsize(8pt));label("$Q(x+6,3x-9)$",Q,SE,fontsize(8pt));label("$9$",(P+Q)/2,E,fontsize(8pt));
+draw(arc(O,1.2,degrees(Q)-360,degrees(P)));label("$\theta$",1.5*dir(0),fontsize(8pt));
+\end{asy}
+
+Since $P$ is above the $x$-axis and $Q$ below, $\theta=\arctan\dfrac{3x}{x+6}+\arctan\dfrac{9-3x}{x+6}$, and
+\[\tan\theta=\dfrac{\dfrac{9}{x+6}}{1-\dfrac{3x(9-3x)}{(x+6)^2}}=\dfrac{9(x+6)}{10x^2-15x+36}>0,\]
+so $\theta<90^\circ$ and maximising $k=\sin\theta$ means maximising $\tan\theta$. Setting the derivative of $\dfrac{x+6}{10x^2-15x+36}$ to zero gives $5x^2+60x-63=0$, so
+\[x=\dfrac{9\sqrt{15}-30}{5}\approx0.971,\qquad\tan\theta=1+\dfrac{4}{\sqrt{15}}.\]
+Then $k^2=\dfrac{\tan^2\theta}{1+\tan^2\theta}=\dfrac{233+60\sqrt{15}}{578}=\dfrac{\left(5\sqrt5+6\sqrt3\right)^2}{578}$, so
+\[k_{\max}=\boxed{\dfrac{5\sqrt{10}+6\sqrt6}{34}}\approx0.8973,\quad\text{at}\quad x=\boxed{\dfrac{9\sqrt{15}-30}{5}}.\]

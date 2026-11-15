@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2399143_prismtetrahedron_problem_help
+% Stable identity: aops-topic-2399143-q01
+Let the base have sides $AB=EF=p$ and $BC=FG=q$; the volume gives $2pq=32$, so $pq=16$. At $F$ the three edges $FB=2$, $FE=p$, $FG=q$ are mutually perpendicular, so put $F$ at the origin with these edges along the axes: $B=(0,0,2)$, $E=(p,0,0)$, $G=(0,q,0)$. The plane $BEG$ is
+\[\dfrac xp+\dfrac yq+\dfrac z2=1,\]
+and the distance $d$ from $F=(0,0,0)$ to it satisfies
+\[\dfrac{1}{d^2}=\dfrac{1}{p^2}+\dfrac{1}{q^2}+\dfrac14.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real p=5, q=3, h=2;
+pair P(real x,real y,real z){return (x-0.55*y, z+0.4*y);}
+pair A=P(0,0,0), B=P(p,0,0), C=P(p,q,0), D=P(0,q,0), E=P(0,0,h), F=P(p,0,h), G=P(p,q,h), H=P(0,q,h);
+fill(B--E--G--cycle,rgb(1,0.82,0.62));
+draw(A--B--F--E--cycle,linewidth(0.8)); draw(E--H--G--F,linewidth(0.8)); draw(A--D--H,linewidth(0.8));
+draw(D--C,dashed); draw(C--B,dashed); draw(C--G,dashed);
+draw(B--E--G--cycle,red+linewidth(0.9));
+real a1=1/p, a2=1/q, a3=1/h; real tt=1/(a1^2+a2^2+a3^2);
+pair K=P(p-tt*a1,tt*a2,h-tt*a3);
+draw(F--K,blue+linewidth(0.9)); dot(K,blue); dot(F);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NW); label("$D$",D,W);
+label("$E$",E,W); label("$F$",F,E); label("$G$",G,NE); label("$H$",H,NW);
+label("$2$",(B+F)/2,E); label("$p$",(E+F)/2,S); label("$q$",(F+G)/2,NE);
+label("$d$",(F+K)/2,N,blue);
+\end{asy}
+
+By AM-GM, $\dfrac1{p^2}+\dfrac1{q^2}\ge\dfrac{2}{pq}=\dfrac18$, with equality when $p=q=4$. Hence
+\[\dfrac1{d^2}\ge\dfrac18+\dfrac14=\dfrac38,\qquad d\le\sqrt{\dfrac83}=\dfrac{2\sqrt6}{3},\]
+and this maximum is attained for the $4\times4\times2$ prism. So $a=2$, $b=6$, $c=3$ and $abc=\boxed{36}$.
+
+\emph{Distance to the plane or to the triangle?} They are the same here. The triangle $BEG$ is acute (for instance $BE^2+BG^2-EG^2=(p^2+4)+(q^2+4)-(p^2+q^2)=8>0$, and similarly at $E$ and $G$), and the foot of the perpendicular from $F$ is the orthocentre of $BEG$: the perpendicular from $F$ is orthogonal to the plane, and $FB$ is orthogonal to the plane $FEG$, so the plane through $FB$ and the perpendicular is orthogonal to $EG$. The orthocentre of an acute triangle lies inside it, so the closest point of the triangle to $F$ is this foot.

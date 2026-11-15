@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1232383_casework_problem
+% Stable identity: aops-topic-1232383-q01
+Stars and bars counts $\dbinom{9}{3}=84$ labelled distributions $(a,b,c,d)$ of the dots, but rotations identify many of them, and not all classes have the same size, so one cannot simply divide by $12$.
+
+By casework on the multiset of face counts (the number of dice for each multiset is the number of essentially different placements):
+\begin{itemize}
+\item a multiset with all four values distinct can be placed in $2$ ways (mirror images are different, since rotations of the tetrahedron give only the even permutations of the faces): $\{0,1,2,3\}$ gives $2$;
+\item a multiset with some repeated value gives $1$ die, since an odd permutation can be undone by swapping two equal faces: $\{6,0,0,0\}$, $\{5,1,0,0\}$, $\{4,2,0,0\}$, $\{4,1,1,0\}$, $\{3,3,0,0\}$, $\{3,1,1,1\}$, $\{2,2,2,0\}$, $\{2,2,1,1\}$.
+\end{itemize}
+These are all partitions of $6$ into at most $4$ parts ($9$ of them), so the total is $8+2=\boxed{10}$.
+
+\emph{Check by Burnside's lemma:} the $12$ rotations fix $84$ (identity), $3$ each for the eight $120^\circ$ rotations ($a+3b=6$), and $4$ each for the three $180^\circ$ rotations ($2a+2b=6$), giving $\dfrac{84+24+12}{12}=10$.

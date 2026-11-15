@@ -1,0 +1,8 @@
+The three row sums total $45$, and the three column sums also total $45$. Thus the six sums total $90$. The missing sum is $90-(12+13+14+17+20)=\boxed{14}$. The displayed grid has row sums $12,13,20$ and column sums $14,14,17$, so the data are consistent.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"1", "2", "9"}, {"6", "4", "3"}, {"7", "8", "5"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("Rows 12, 13, 20; columns 14, 14, 17",(1.5,-3.2));
+\end{asy}

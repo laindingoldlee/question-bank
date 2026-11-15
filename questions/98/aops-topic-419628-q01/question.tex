@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h419628_amc_8_2007_problem_12
+% Stable identity: aops-topic-419628-q01
+A unit hexagram is composed of a regular hexagon of side length $1$ and its $6$ equilateral triangular extensions, one on each side, as shown in the diagram. What is the ratio of the area of the extensions to the area of the original hexagon?
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair[] V;for(int k=0;k<6;++k)V[k]=dir(60k);
+for(int k=0;k<6;++k) filldraw(V[k]--(V[k]+V[(k+1)%6])--V[(k+1)%6]--cycle,lightgray,linewidth(0.8));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,linewidth(0.9));
+label("$1$",(V[0]+V[1])/2,SW);
+\end{asy}
+
+$\textbf{(A) }1:1\qquad\textbf{(B) }6:5\qquad\textbf{(C) }3:2\qquad\textbf{(D) }2:1\qquad\textbf{(E) }3:1$

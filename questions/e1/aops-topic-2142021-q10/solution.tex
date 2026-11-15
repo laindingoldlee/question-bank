@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2142021_problem_collection
+% Stable identity: aops-topic-2142021-q10
+Two sentries may not share a row or a column. Say the rectangle has $137$ rows and $1806$ columns. Then each of the $137$ rows contains exactly one sentry, and the sentries are in different columns, so
+\[k=1806\cdot1805\cdot1804\cdots1670=\prod_{j=1}^{137}(1807-j).\]
+Modulo $1807$ each factor $1807-j$ is $-j$, so
+\[k\equiv(-1)^{137}\cdot137!=-137!\pmod{1807}.\]
+Now $1807=13\cdot139$ with $13$ and $139$ prime.
+\begin{itemize}
+\item Modulo $13$: $13$ divides $137!$, so $k\equiv0\pmod{13}$.
+\item Modulo $139$: by Wilson's theorem $138!\equiv-1\pmod{139}$, and $138\equiv-1$, so $137!\equiv1$ and $k\equiv-1\pmod{139}$.
+\end{itemize}
+So $k\equiv13t\pmod{1807}$ with $13t\equiv-1\pmod{139}$. Since $13\cdot107=1391=10\cdot139+1$, the inverse of $13$ modulo $139$ is $107$, so $t\equiv-107\equiv32\pmod{139}$, and
+\[k\equiv13\cdot32=\boxed{416}\pmod{1807}.\]
+(Check: $416=13\cdot32$ and $416+1=417=3\cdot139$.)

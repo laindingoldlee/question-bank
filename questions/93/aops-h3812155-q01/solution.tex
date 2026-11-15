@@ -1,0 +1,9 @@
+Place four copies of the triangle inside a square of side $a+b$, with right angles at the four outer corners. Their hypotenuses form an inner quadrilateral with all sides $c$. Each inner angle is $180^\circ$ minus the two acute angles of a right triangle, hence is $90^\circ$; the inner quadrilateral is a square. Comparing areas gives
+\[(a+b)^2=4\left(\dfrac{ab}{2}\right)+c^2.\]
+Expanding and subtracting $2ab$ gives $\boxed{a^2+b^2=c^2}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real a=2,b=3,s=a+b;pair P=(a,0),Q=(s,a),R=(b,s),T=(0,b);fill(P--Q--R--T--cycle,lightblue);draw(box((0,0),(s,s)));draw(P--Q--R--T--cycle);label("$a$",(a/2,0),(0,-1));label("$b$",((a+s)/2,0),(0,-1));label("$a$",(s,a/2),(1,0));label("$b$",(s,(a+s)/2),(1,0));label("$c$",(P+Q)/2,(-1,0));label("$c^2$",(s/2,s/2));
+\end{asy}

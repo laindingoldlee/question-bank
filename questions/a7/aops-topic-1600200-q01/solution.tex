@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1600200_largest_rectangle_in_a_triangle
+% Stable identity: aops-topic-1600200-q01
+\textbf{General fact.} Take a triangle with base $b$ and height $H$ on that base, where both base angles are acute (so the foot of the altitude lies on the base). A rectangle of height $y$ ($0<y<H$) standing on the base has its top side on the horizontal line at height $y$, and that line cuts the triangle in a segment which is a scaled copy of the base with ratio $\dfrac{H-y}{H}$ (similar triangles at the apex). So the largest possible width is $x=b\cdot\dfrac{H-y}{H}$ and the area is
+\[
+A(y)=\dfrac{b}{H}\,y\,(H-y)=\dfrac{b}{H}\left(\dfrac{H^2}{4}-\left(y-\dfrac {H}{2}\right)^2\right)\le\dfrac{bH}{4},
+\]
+with equality exactly for $y=\dfrac {H}{2}$. Since the triangle has area $\dfrac{bH}{2}$, the best rectangle has half the triangle's area: its top side is the midline.
+
+\textbf{The $13$-$14$-$15$ triangle.} With $B=(0,0)$, $C=(14,0)$, the vertex $A$ satisfies $x^2+y^2=169$ and $(x-14)^2+y^2=225$, so $A=(5,12)$ and $H=12$. All angles are acute, since $15^2<13^2+14^2$. The triangle has area $\dfrac{1}{2}\cdot14\cdot12=84$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(14,0),A=(5,12);
+draw(A--B--C--cycle,linewidth(0.9));
+pair P=(2.5,0),Q=(9.5,0),R=(9.5,6),T=(2.5,6);
+fill(P--Q--R--T--cycle,paleblue);draw(P--Q--R--T--cycle,blue+linewidth(0.9));
+draw(A--(5,0),dashed);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$13$",B+0.78*(A-B),W);label("$15$",C+0.78*(A-C),E);label("$14$",(B+C)/2+(0,-0.8),S);
+label("$x$",(T+R)/2,N,blue);label("$y$",(Q+R)/2,E,blue);
+label("$12$",(5,8.6),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The best rectangle has $y=6$ and $x=14\cdot\dfrac{6}{12}=7$, so its area is $\boxed{42}$, half of $84$. (The same maximum, half the area, is obtained on each of the three sides, because each base angle of this triangle is acute.)

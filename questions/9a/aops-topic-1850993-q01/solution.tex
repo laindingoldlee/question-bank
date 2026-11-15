@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1850993_population_and_sample_standard_deviation
+% Stable identity: aops-topic-1850993-q01
+\textbf{(a)} The mean is $\bar x=\dfrac{40}{8}=5$. The squared deviations are $9,1,1,1,0,0,4,16$, with sum $32$. So
+\[
+\sigma=\sqrt{\dfrac{32}{8}}=\boxed{2},\qquad s=\sqrt{\dfrac{32}{7}}=\boxed{\dfrac{4\sqrt{14}}{7}}\approx2.14 .
+\]
+
+\textbf{(b)} Write $x_i-c=(x_i-\bar x)+(\bar x-c)$ and expand:
+\[
+\sum(x_i-c)^2=\sum(x_i-\bar x)^2+2(\bar x-c)\sum(x_i-\bar x)+n(\bar x-c)^2 .
+\]
+The middle sum is $0$, because $\sum(x_i-\bar x)=\sum x_i-n\bar x=0$. This proves the identity.
+
+\textbf{(c)} Take $c=\mu$ in (b):
+\[
+\sum(x_i-\bar x)^2=\sum(x_i-\mu)^2-n(\bar x-\mu)^2\le\sum(x_i-\mu)^2 .
+\]
+The spread of the population is measured by deviations from the true mean $\mu$, but we can only measure deviations from the sample mean $\bar x$, and these are always the smaller of the two sums (strictly smaller unless $\bar x$ happens to equal $\mu$). So $\dfrac{1}{n}\sum(x_i-\bar x)^2$ is systematically too small. For independent observations with population variance $\sigma_{\text{pop}}^2$, the average of $\sum(x_i-\mu)^2$ is $n\sigma_{\text{pop}}^2$ and the average of $n(\bar x-\mu)^2$ is $\sigma_{\text{pop}}^2$, so the average of $\sum(x_i-\bar x)^2$ is $(n-1)\sigma_{\text{pop}}^2$. Dividing by $n-1$ instead of $n$ removes this bias.

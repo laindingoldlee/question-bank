@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2644010_acute_angles_in_convex_ngon
+% Stable identity: aops-topic-2644010-q01
+\emph{At most $3$.} The exterior angles of a convex polygon are positive and add up to $360^\circ$. An acute interior angle has an exterior angle greater than $90^\circ$, so four acute angles would make the exterior angles add up to more than $360^\circ$. Hence there are at most $3$ acute angles.
+
+\emph{Exactly $3$ is possible for every $n>3$.} Start with an equilateral triangle $ABC$ and replace side $BC$ by a slightly bulging convex chain $B,P_1,\dots,P_{n-3},C$, with the points $P_i$ on a very flat circular arc through $B$ and $C$ on the far side of $BC$ from $A$. The polygon $ABP_1\cdots P_{n-3}C$ has $n$ vertices and is convex. Its angle at $A$ is $60^\circ$, and its angles at $B$ and $C$ exceed $60^\circ$ only by the small angle between $BC$ and the arc, so they stay acute if the arc is flat enough. The angles at the $P_i$ are close to $180^\circ$, hence obtuse. So exactly $3$ angles are acute. (The figure shows $n=6$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(4,0),A=(2,2*sqrt(3));
+pair O=(2,4);real R=abs(B-O);
+pair P1=(1,4-sqrt(R^2-1)),P2=(2,4-R),P3=(3,4-sqrt(R^2-1));
+draw(B--C,dashed+gray);
+draw(A--B--P1--P2--P3--C--cycle,linewidth(0.8));
+dot(P1);dot(P2);dot(P3);
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,E);
+label("$P_1$",P1,S);label("$P_2$",P2,S);label("$P_3$",P3,S);
+draw(arc(A,0.5,240,300));draw(arc(B,0.4,-20,60));draw(arc(C,0.4,120,200));
+\end{asy}
+
+\emph{The least number is $0$.} A regular $n$-gon has interior angles $\dfrac{(n-2)\cdot180^\circ}{n}\ge90^\circ$ for $n\ge4$, so none of them is acute.
+
+So the largest number is $\boxed{3}$ and the least is $\boxed{0}$.

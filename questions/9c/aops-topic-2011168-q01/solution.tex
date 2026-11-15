@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2011168_math_problem
+% Stable identity: aops-topic-2011168-q01
+We need $42^{63}\bmod 100$. Since $100=4\cdot25$ with $\gcd(4,25)=1$, find the remainders modulo $4$ and $25$.
+
+\textbf{Modulo 4.} $42^{63}=2^{63}\cdot21^{63}$ is divisible by $4$, so $42^{63}\equiv0\pmod4$.
+
+\textbf{Modulo 25.} $42\equiv17$. Compute $17^2=289\equiv14$ and $17^4\equiv14^2=196\equiv-4$, so $17^{20}=\left(17^4\right)^5\equiv(-4)^5=-1024\equiv1\pmod{25}$ (as $1025=41\cdot25$). Then
+\[17^{63}=\left(17^{20}\right)^3\cdot17^3\equiv17^3=17^2\cdot17\equiv14\cdot17=238\equiv13\pmod{25}.\]
+
+\textbf{Combine.} We need $x\equiv13\pmod{25}$ and $x\equiv0\pmod4$ with $0\le x<100$. The candidates $13,38,63,88$ have remainders $1,2,3,0$ modulo $4$, so $x=88$.
+
+Thus $42^{63}$ ends in $88$, and its tens digit is $\boxed{8}$.

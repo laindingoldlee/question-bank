@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1576521_amgm_inequality
+% Stable identity: aops-topic-1576521-q01
+Let the sides be $a\le b\le c$ with $a+b+c=20$. The semiperimeter is $s=10$, and the triangle inequality $a+b>c$ means $c<10$, i.e.\ $c\le9$. By Heron's formula
+\[
+K^2=10\,(10-a)(10-b)(10-c).
+\]
+Put $x=10-a$, $y=10-b$, $z=10-c$. These are positive integers with
+\[
+x+y+z=30-20=10,
+\]
+and $K^2=10xyz$. So we must make the product $xyz$ of three positive integers with sum $10$ as large as possible. By AM-GM the product is largest when the three numbers are as nearly equal as possible: if two of them differ by $2$ or more, replacing $u,v$ (with $u\ge v+2$) by $u-1,v+1$ changes $uv$ to $uv+u-v-1>uv$. So the best choice is $\{x,y,z\}=\{3,3,4\}$, with $xyz=36$.
+
+This gives sides $10-3,10-3,10-4$, that is $7,7,6$, and
+\[
+K=\sqrt{10\cdot36}=\boxed{6\sqrt{10}}\approx18.97 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(6,0),A=(3,sqrt(40));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--(3,0),dashed);draw((3,0)+(-0.35,0)--(3,0)+(-0.35,0.35)--(3,0)+(0,0.35));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$6$",(3,0),S);label("$7$",(A+B)/2,W);label("$7$",(A+C)/2,E);
+label("$\sqrt{40}$",(3,2.4),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check with the altitude: the altitude to the side $6$ has length $\sqrt{7^2-3^2}=\sqrt{40}=2\sqrt{10}$, so the area is $\dfrac{1}{2}\cdot6\cdot2\sqrt{10}=6\sqrt{10}$. (The nearby triangles $6,6,8$ and $5,7,8$ have areas $\sqrt{320}$ and $\sqrt{300}$, both smaller.)

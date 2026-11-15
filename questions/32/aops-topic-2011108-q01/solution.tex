@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2011108_a_geometry_problem
+% Stable identity: aops-topic-2011108-q01
+\textbf{Congruent triangles.} Compare triangles $ABE$ and $CAD$:
+\[AB=CA,\qquad \angle ABE=\angle CAD=60^\circ,\qquad BE=AD.\]
+By SAS they are congruent, with $A\leftrightarrow C$, $B\leftrightarrow A$, $E\leftrightarrow D$. In particular $\angle BAE=\angle ACD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(6,0), C=rotate(60)*(6,0);
+real t=2.2;
+pair D=(t,0);
+pair Ept=B+t*unit(C-B);
+pair F=extension(A,Ept,C,D);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(A--Ept,blue); draw(C--D,red);
+void tick(pair P, pair Q){pair m=(P+Q)/2, u=unit(Q-P)*0.18; draw(m-rotate(90)*u--m+rotate(90)*u,linewidth(0.8));}
+tick(A,D); tick(B,Ept);
+draw(arc(F,0.55,degrees(Ept-F),degrees(C-F)),linewidth(0.7));
+dot(A);dot(B);dot(C);dot(D);dot(Ept);dot(F);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N);
+label("$D$",D,S); label("$E$",Ept,NE); label("$F$",F,W);
+label("$60^\circ$",F+0.95*dir((degrees(Ept-F)+degrees(C-F))/2),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Exterior angle.} The cevians $AE$ and $CD$ meet at an interior point $F$, which lies between $A$ and $E$. So $\angle CFE$ is the exterior angle at $F$ of triangle $AFC$, and
+\[\angle CFE=\angle FAC+\angle FCA=\angle EAC+\angle ACD.\]
+Replacing $\angle ACD$ by the equal angle $\angle BAE$,
+\[\angle CFE=\angle EAC+\angle BAE=\angle BAC=60^\circ.\]
+Hence $\angle CFE=\boxed{60^\circ}$, whatever the common length $AD=BE$.

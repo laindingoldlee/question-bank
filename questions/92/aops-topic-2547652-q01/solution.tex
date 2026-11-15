@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2547652_analytic_geo_problem
+% Stable identity: aops-topic-2547652-q01
+The triangle is isosceles: $(2,1)$ is at distance $\sqrt2$ from both $(1,0)$ and $(3,0)$, while the base has length $2$. Since it is not equilateral, its only line of symmetry is the perpendicular bisector of the base, $x=2$. Rotations and reflections preserve distances, so they map this line to the line of symmetry of the image triangle.
+
+The line $x=2$ is the set of points $p$ with $p\cdot(1,0)=2$. After a rotation by $30^\circ$ about the origin, the normal vector $(1,0)$ becomes $(\cos30^\circ,\sin30^\circ)$, so the image line is
+\[\dfrac{\sqrt3}{2}x+\dfrac12y=2.\]
+Reflecting in $y=x$ swaps $x$ and $y$:
+\[\dfrac{\sqrt3}{2}y+\dfrac12x=2\qquad\Longleftrightarrow\qquad y=-\dfrac{1}{\sqrt3}x+\dfrac{4}{\sqrt3}.\]
+So $m=-\dfrac1{\sqrt3}$, $b=\dfrac4{\sqrt3}$ and $\dfrac bm=\boxed{-4}$.
+
+The sketch shows the original triangle (black), the rotated triangle (dashed), the final triangle (blue) and its line of symmetry (red).
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair r(pair z){return rotate(30)*z;}
+pair f(pair z){return (z.y,z.x);}
+pair A=(1,0),B=(3,0),C=(2,1);
+draw((-1,0)--(4,0),Arrow(TeXHead));draw((0,-0.5)--(0,4),Arrow(TeXHead));
+draw((-0.5,-0.5)--(3.8,3.8),gray+dotted);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(r(A)--r(B)--r(C)--cycle,dashed);
+draw(f(r(A))--f(r(B))--f(r(C))--cycle,blue+linewidth(0.8));
+draw((2,-0.4)--(2,1.6),gray);
+real m=-1/sqrt(3), bb=4/sqrt(3);
+draw((0.4,m*0.4+bb)--(2.6,m*2.6+bb),red+linewidth(0.9));
+label("$y=x$",(3.8,3.8),NE,gray+fontsize(8pt));
+label("$x=2$",(2,-0.4),S,gray+fontsize(8pt));
+label("$y=-\dfrac{x}{\sqrt3}+\dfrac{4}{\sqrt3}$",(2.6,m*2.6+bb),E,red+fontsize(8pt));
+label("$x$",(4,0),E);label("$y$",(0,4),N);
+\end{asy}

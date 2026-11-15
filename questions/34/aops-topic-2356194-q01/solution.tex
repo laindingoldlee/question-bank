@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2356194_thankful_numbers
+% Stable identity: aops-topic-2356194-q01
+Let $N=1126$. Choosing $T$ uniformly among all subsets means that each of the $N$ numbers is in $T$ with probability $\dfrac12$, independently of the others.
+
+By linearity of expectation, the expected number of thankful integers is the sum, over all pairs $(n,k)$ with $1\le k$ and $n+k\le N$, of the probability that $|T|=k$ and both $n$ and $n+k$ lie in $T$. For such a pair, this happens exactly when $n,n+k\in T$ (probability $\dfrac14$) and exactly $k-2$ of the other $N-2$ numbers are in $T$ (probability $\dbinom{N-2}{k-2}\dfrac{1}{2^{N-2}}$). There are $N-k$ choices of $n$ for each $k$, so with $M=N-2$ and $j=k-2$,
+\[E=\sum_{k}(N-k)\cdot\dfrac14\cdot\dfrac{\dbinom{N-2}{k-2}}{2^{N-2}}=\dfrac{1}{2^{M+2}}\sum_{j=0}^{M}(M-j)\dbinom Mj.\]
+Pairing $j$ with $M-j$ (or counting pairs of a subset and an element outside it) gives $\displaystyle\sum_{j=0}^M(M-j)\dbinom Mj=M\cdot2^{M-1}$. Hence
+\[E=\dfrac{M\cdot2^{M-1}}{2^{M+2}}=\dfrac M8=\dfrac{1124}{8}=\dfrac{281}{2},\]
+and $m+n=281+2=\boxed{283}$.

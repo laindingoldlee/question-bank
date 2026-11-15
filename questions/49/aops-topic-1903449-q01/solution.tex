@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1903449_what_is_bezuits_theorem
+% Stable identity: aops-topic-1903449-q01
+(a) Let $d$ be the smallest positive integer of the form $ax+by$ with $x,y$ integers; such numbers exist (e.g.\ $a=a\cdot1+b\cdot0$). Write $d=ax_0+by_0$. Divide $a$ by $d$: $a=qd+r$ with $0\le r<d$. Then
+\[
+r=a-qd=a(1-qx_0)+b(-qy_0)
+\]
+is again of the form $ax+by$ and is smaller than $d$, so it cannot be positive: $r=0$ and $d\mid a$. Likewise $d\mid b$. On the other hand, every common divisor of $a$ and $b$ divides $ax_0+by_0=d$. So $d$ is the greatest common divisor, and $\gcd(a,b)=ax_0+by_0$. $\blacksquare$
+
+(b) The Euclidean algorithm gives
+\[
+132=81+51,\quad 81=51+30,\quad 51=30+21,\quad 30=21+9,\quad 21=2\cdot9+3,\quad 9=3\cdot3,
+\]
+so $\gcd(132,81)=3$. Working backwards,
+\[
+3=21-2\cdot9=3\cdot21-2\cdot30=3\cdot51-5\cdot30=8\cdot51-5\cdot81=8\cdot132-13\cdot81 .
+\]
+So $(x,y)=(8,-13)$ is one solution. If $(x,y)$ is any solution, then $132(x-8)=-81(y+13)$; dividing by $3$, $44(x-8)=-27(y+13)$, and since $\gcd(44,27)=1$, $27\mid x-8$. Writing $x-8=27t$ gives $y+13=-44t$. Every such pair works, so the solutions are
+\[
+\boxed{(x,y)=(8+27t,\ -13-44t),\quad t\in\mathbb Z}.
+\]
+(B\'ezout's identity is useful in contest problems about linear Diophantine equations, such as making exact amounts from two coin values.)

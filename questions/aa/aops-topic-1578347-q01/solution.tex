@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1578347_geometry_problem
+% Stable identity: aops-topic-1578347-q01
+The radius satisfies $\pi R^2=162\pi$, so $R^2=162$ and $R=9\sqrt2$.
+
+\textbf{The largest inscribed triangle is equilateral.} Among the triangles inscribed in the circle there is one of largest area (the area depends continuously on the positions of the three vertices on the circle). In such a triangle $ABC$, keep $B$ and $C$ fixed: the area $\dfrac{1}{2}\cdot BC\cdot(\text{distance from }A\text{ to }BC)$ is largest when $A$ is the point of the circle farthest from line $BC$, which is where the perpendicular bisector of $BC$ meets the circle on $A$'s side. So $AB=AC$. By the same argument at the other vertices, $BA=BC$, so the largest triangle is equilateral.
+
+\textbf{Its area.} An equilateral triangle inscribed in a circle of radius $R$ is made of three triangles with two sides $R$ and angle $120^\circ$ at the centre, so its area is
+\[
+3\cdot\dfrac{1}{2}R^2\sin120^\circ=\dfrac{3\sqrt3}{4}R^2=\dfrac{3\sqrt3}{4}\cdot162=\dfrac{243\sqrt3}{2}\approx210.44 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=sqrt(162);
+pair A=R*dir(90),B=R*dir(210),C=R*dir(330),O=(0,0);
+draw(circle(O,R),linewidth(0.9));
+draw(A--B--C--cycle,blue+linewidth(0.9));
+draw(O--A,dashed);dot(O);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$O$",O,S);
+label("$9\sqrt{2}$",O+0.3*(A-O),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Rounded to the nearest whole number, the area is $\boxed{210}$ square units.

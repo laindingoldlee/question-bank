@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2022021_subsets_with_property
+% Stable identity: aops-topic-2022021-q01
+A $2018$-element subset is determined by the two elements $x<y$ it leaves out, and its sum is
+\[
+(1+2+\dots+2020)-(x+y)=\dfrac{2020\cdot2021}{2}-(x+y)=1010\cdot2021-(x+y).
+\]
+Since $1010=2\cdot505$, the subset sum is divisible by $505$ exactly when $x+y\equiv0\pmod{505}$.
+
+Because $2020=4\cdot505$, each residue class modulo $505$ contains exactly $4$ elements of $A$.
+\begin{itemize}
+\item Both $x,y\equiv0$: $\binom42=6$ pairs.
+\item $x\equiv r$, $y\equiv 505-r$ with $1\le r\le252$: the classes $r$ and $505-r$ are different (as $505$ is odd), giving $4\cdot4=16$ pairs for each of the $252$ values of $r$.
+\end{itemize}
+No other residue pair sums to $0$ modulo $505$. The total is
+\[6+252\cdot16=6+4032=\boxed{4038}.\]

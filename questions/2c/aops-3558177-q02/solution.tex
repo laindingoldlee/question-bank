@@ -1,0 +1,6 @@
+Only opposite faces may share a colour. Suppose exactly $e$ of the three opposite pairs are monochromatic. Then $6-e$ distinct colours are needed, and there are $\binom3e(5)_{6-e}$ colourings, where $(5)_k=5\cdot4\cdots(5-k+1)$ and is zero for $k>5$. The sum over $e=0,1,2,3$ is $0+360+360+60=780$. Thus the probability is $\dfrac{780}{5^6}=\dfrac{156}{3125}\approx\boxed{0.050}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair u=(2,0),v=(.8,.7),w=(0,2);draw((0,0)--u--u+v--v--cycle);draw(w--u+w--u+v+w--v+w--cycle);draw((0,0)--w^^u--u+w^^v--v+w^^u+v--u+v+w);pair[] VV={(0,0),u,u+v,v,w,u+w,u+v+w,v+w};string[] nn={"A","B","C","D","E","F","G","H"};for(int i=0;i<8;++i)label("$"+nn[i]+"$",VV[i],i<4?(0,-1):(0,1));
+\end{asy}
+

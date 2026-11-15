@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2060884_diophantine_equations
+% Stable identity: aops-topic-2060884-q01
+With $c$ correct and $u$ unanswered ($c,u\ge0$, $c+u\le25$), the score is $6c+1.5u=1.5(4c+u)$, so we count the possible values of $k=4c+u$, which lie in $\{0,1,\dots,100\}$.
+
+For a given $k$, the number of answered-correct-or-blank questions $c+u=k-3c$ is smallest when $c$ is as large as possible, i.e.\ $c=\left\lfloor\dfrac {k}{4}\right\rfloor$ and $u$ the remainder $k-4c\in\{0,1,2,3\}$. So $k$ is achievable iff $\left\lfloor\dfrac {k}{4}\right\rfloor+(k\bmod4)\le25$.
+\begin{itemize}
+\item For $k\le88$: $\left\lfloor\dfrac {k}{4}\right\rfloor\le22$ and the remainder is at most $3$, so the sum is at most $25$. All achievable.
+\item For $89\le k\le100$ the sums are: $89{:}\,23$, $90{:}\,24$, $91{:}\,25$, $92{:}\,23$, $93{:}\,24$, $94{:}\,25$, $95{:}\,26$, $96{:}\,24$, $97{:}\,25$, $98{:}\,26$, $99{:}\,27$, $100{:}\,25$.
+\end{itemize}
+Exactly $k=95,98,99$ fail (scores $142.5$, $147$, $148.5$). Hence there are $101-3=\boxed{98}$ possible scores.

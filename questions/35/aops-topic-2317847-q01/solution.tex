@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h2317847_can_you_prove_this
+% Stable identity: aops-topic-2317847-q01
+A common point of the three lines lies on the line $DA$. The line $MT$ lies in the plane of the face $ADHE$, and the line $CP$ lies in the plane of the face $ABCD$; neither is the line $DA$ itself, so each meets the line $DA$ in at most one point. Hence the three lines are concurrent exactly when $MT$ and $CP$ meet the line $DA$, and at the same point.
+
+\textbf{Where $MT$ meets $DA$.} In the face $ADHE$, the segments $AT$ and $DM$ are both perpendicular to $AD$, so they are parallel, and $DM=5$.
+\begin{itemize}
+\item If $AT=5$, then $ATMD$ is a rectangle and $MT\parallel DA$: no common point.
+\item If $AT<5$, the line $MT$ meets the line $DA$ at a point $X$ on the extension beyond $A$ (with $X=A$ when $AT=0$). Since $AT\parallel DM$, the triangles $XAT$ and $XDM$ are similar, so $\dfrac{XA}{XD}=\dfrac{AT}{DM}=\dfrac{AT}{5}$.
+\item If $AT>5$, then $DM<AT$ and the line $MT$ meets the line $DA$ on the extension beyond $D$.
+\end{itemize}
+
+\textbf{Where $CP$ meets $DA$.} In the face $ABCD$, the segments $AP$ and $DC$ are parallel and $DC=10$. If $P=B$, then $CP=CB\parallel DA$: no common point. Otherwise $AP<10=DC$, and the line $CP$ meets the line $DA$ at a point $Y$ on the extension beyond $A$ (with $Y=A$ when $P=A$), and by the similar triangles $YAP$ and $YDC$, $\dfrac{YA}{YD}=\dfrac{AP}{DC}=\dfrac{AP}{10}$. In particular $Y$ is never beyond $D$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair o=(0.5,0.35);
+pair Pr(real x,real y,real z){ return (x,z)+y*o; }
+real t=2, p=4, xa=10*t/(5-t);
+pair A=Pr(0,0,0), B=Pr(10,0,0), C=Pr(10,10,0), D=Pr(0,10,0), E_=Pr(0,0,10), F=Pr(10,0,10), G=Pr(10,10,10), H=Pr(0,10,10);
+pair M=Pr(0,10,5), T=Pr(0,0,t), P=Pr(p,0,0), X=Pr(0,-xa,0);
+draw(D--C,dashed+gray(0.55)); draw(D--H,dashed+gray(0.55));
+draw(A--B--F--E_--cycle,gray(0.35)); draw(B--C--G--F,gray(0.35)); draw(E_--H--G,gray(0.35));
+draw(X--D,heavygreen+linewidth(0.9));
+draw(X--M,red+linewidth(0.9)); draw(X--C,blue+linewidth(0.9));
+dot(M); dot(T); dot(P); dot(X); dot(A); dot(D);
+label("$A$",A,NW); label("$B$",B,SE); label("$C$",C,E); label("$D$",D,NW);
+label("$E$",E_,NW); label("$F$",F,N); label("$G$",G,NE); label("$H$",H,N);
+label("$M$",M,E); label("$T$",T,E); label("$P$",P,S); label("$X$",X,SW);
+label("$t$",Pr(0,0,1),E,fontsize(8pt)); label("$2t$",Pr(2,0,0),N,fontsize(8pt));
+\end{asy}
+
+\textbf{(a)} Let $AT<5$. Points $Z$ on the extension of $DA$ beyond $A$ (including $A$) are determined by the ratio $\dfrac{ZA}{ZD}=\dfrac{ZA}{ZA+10}$, which increases with $ZA$. So $Y=X$ exactly when
+\[\dfrac{AP}{10}=\dfrac{AT}{5},\qquad\text{that is,}\qquad AP=2\,AT.\]
+Since $AT<5$, this gives $AP<10$, a point of $\overline{AB}$ other than $B$, and it is the only one. The answer is $\boxed{AP=2\,AT}$.
+
+\textbf{(b)} If $AT=5$, then $MT\parallel DA$ and the lines have no common point. If $5<AT\le10$, the line $MT$ meets the line $DA$ beyond $D$, while $CP$ never does (or is parallel to $DA$). So for $5\le AT\le10$ there is no such point $P$. $\blacksquare$
+
+(The segments $\overline{MT}$, $\overline{CP}$ and $\overline{DA}$ themselves have a common point only in the extreme case $T=P=A$, since $X$ lies on the segment $\overline{DA}$ only when $X=A$.)

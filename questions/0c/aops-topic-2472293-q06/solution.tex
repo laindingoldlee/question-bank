@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2472293_march_2021_problem_set
+% Stable identity: aops-topic-2472293-q06
+The larger circle has circumference $2\pi\cdot205=410\pi$. (The square fits inside it, since half its diagonal is $100\sqrt2<205$.) The smaller circle has radius $100$, so the part of the square outside it has area
+\[200^2-\pi\cdot100^2=40000-10000\pi.\]
+The product is
+\[410\pi\left(40000-10000\pi\right)=\boxed{4100000\pi(4-\pi)}\approx1.106\times10^7.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),2.05),linewidth(0.9));
+filldraw((-1,-1)--(1,-1)--(1,1)--(-1,1)--cycle,rgb(0.8,0.88,1),linewidth(0.8));
+filldraw(circle((0,0),1),white,linewidth(0.8));
+draw((0,0)--(1,0),dashed); label("$100$",(0.5,0),N,fontsize(8pt));
+draw((0,0)--2.05*dir(130),red); label("$205$",1.5*dir(130),dir(40),red+fontsize(8pt));
+label("$200$",(0,-1),S,fontsize(8pt));
+dot((0,0));
+\end{asy}

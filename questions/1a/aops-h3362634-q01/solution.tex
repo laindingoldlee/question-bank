@@ -1,0 +1,15 @@
+Let $A',B',C'$ be the midpoints of $BC,CA,AB$. Since $A'B'$ is parallel to $AB$ and its oriented vector is $-\dfrac{1}{2}$ that of $AB$, the homothety taking $A'$ to $A$ and $B'$ to $B$ has scale factor $-2$. Its center $G$ lies on both $AA'$ and $BB'$. Consequently
+\[
+A-G=-2(A'-G),\qquad B-G=-2(B'-G).
+\]
+Using $A'=\dfrac{B+C}{2}$ in the first relation gives
+\[
+G=\dfrac{A+B+C}{3}.
+\]
+Since $C'=\dfrac{A+B}{2}$, this also gives $C-G=-2(C'-G)$, so $G$ lies on the third median. The negative factor places $G$ between each vertex and opposite midpoint, with vertex distance twice midpoint distance. Hence all three ratios are $\boxed{2:1}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(1,5),B=(0,0),C=(6,0),a=(B+C)/2,b=(C+A)/2,c=(A+B)/2,G=(A+B+C)/3;draw(A--B--C--cycle);draw(a--b,red);draw(A--a,blue);draw(B--b,blue);draw(C--c,blue);dot(G);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$A'$",a,S);label("$B'$",b,NE);label("$C'$",c,W);label("$G$",G,E);
+\end{asy}

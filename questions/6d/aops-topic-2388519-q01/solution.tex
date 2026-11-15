@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2388519_how_to_win_dots_and_boxes
+% Stable identity: aops-topic-2388519-q01
+\textbf{Upper bound.} Suppose some segments are drawn and every box has at most $2$ drawn sides. Let $e_b$ be the number of drawn segments on the boundary of the board and $e_i$ the number of drawn interior segments. A boundary segment is a side of one box and an interior segment is a side of two boxes, so counting pairs (box, drawn side) gives
+\[e_b+2e_i\le2\cdot100=200.\]
+The boundary has only $40$ unit segments, so $e_b\le40$. Hence the number of drawn segments is
+\[e_b+e_i=\dfrac{(e_b+2e_i)+e_b}{2}\le\dfrac{200+40}{2}=120.\]
+
+\textbf{Construction.} Draw the boundaries of the five concentric squares with corners $(k,k)$ and $(10-k,10-k)$ for $k=0,1,2,3,4$, of side lengths $10,8,6,4,2$. This uses $40+32+24+16+8=120$ segments.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+for(int k=0;k<5;++k) draw(box((k,k),(10-k,10-k)),blue+linewidth(1.2));
+for(int i=0;i<=10;++i) for(int j=0;j<=10;++j) dot((i,j),linewidth(2.2));
+\end{asy}
+
+Each box lies in one of the five square rings between consecutive drawn squares (the innermost ``ring'' is the central $2\times2$ square). A box at a corner of its ring has its two outer sides drawn and nothing else; any other box of a ring has exactly its outer side and its inner side drawn. So every box has exactly $2$ drawn sides, and no box can be completed.
+
+Hence the largest number of segments is $\boxed{120}$.

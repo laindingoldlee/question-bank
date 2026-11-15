@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1351066_i_need_help_with_this_geometry_problem
+% Stable identity: aops-topic-1351066-q01
+Let the sides be $l$ and $w$. The diagonal is the hypotenuse of a right triangle with legs $l$ and $w$, so $l^2+w^2=64$, and $lw=26$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real l=sqrt(29)+sqrt(3), w=sqrt(29)-sqrt(3);
+pair A=(0,0),B=(l,0),C=(l,w),D=(0,w);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(A--C,red);
+label("$l$",(A+B)/2,S); label("$w$",(B+C)/2,E); label("$8$",(A+C)/2,NW,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then
+\[
+(l+w)^2=l^2+w^2+2lw=64+52=116,\qquad l+w=\sqrt{116}=2\sqrt{29},
+\]
+and the perimeter is $2(l+w)=\boxed{4\sqrt{29}}$ inches.
+
+Such a rectangle exists: $(l-w)^2=64-52=12>0$, so $l=\sqrt{29}+\sqrt3$ and $w=\sqrt{29}-\sqrt3$.

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2296137_2012_amc8_12
+% Stable identity: aops-topic-2296137-q01
+The units digit of a product depends only on the units digits of the factors, so $13^{2012}$ has the same units digit as $3^{2012}$.
+
+The units digits of $3^1,3^2,3^3,3^4,3^5,\dots$ are
+\[3,\ 9,\ 7,\ 1,\ 3,\ 9,\ 7,\ 1,\ \dots,\]
+because each one is obtained from the previous one by multiplying by $3$ and keeping the units digit, and $1\cdot3=3$ starts the cycle again. The cycle starts at the exponent $1$, not $0$: the exponents $1,5,9,\dots$ give the 1st term $3$, the exponents $2,6,10,\dots$ the 2nd term $9$, and so on. In general the exponent $k$ gives the term in position $r+1$ of the cycle, where $r$ is the remainder of $k-1$ on division by $4$. That is why $1$ is subtracted: it counts the positions from $0$. For $k=2012$, $2011=4\cdot502+3$, so $r=3$ and we need the 4th term of the cycle, which is $1$ (the units digit of $3^4$).
+
+\textbf{Shorter.} Since $3^4=81$ ends in $1$, every power of $81$ ends in $1$. As $2012=4\cdot503$,
+\[3^{2012}=\left(3^4\right)^{503}=81^{503}\]
+ends in $1$. Equivalently: when the exponent is a multiple of $4$, the units digit is the last term of the cycle.
+
+The answer is $\boxed{\textbf{(A) }1}$.

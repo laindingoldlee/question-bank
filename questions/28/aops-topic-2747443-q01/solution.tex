@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2747443_happy_new_year_d
+% Stable identity: aops-topic-2747443-q01
+Note that $365=13^2+14^2$, so a square of area $365$ has side $\sqrt{365}$, the hypotenuse of a right triangle with legs $13$ and $14$.
+
+Mark a $27\text{ cm}\times27\text{ cm}$ square on the cake ($27=13+14$). Going around it in one direction, mark the point $14$ cm from the starting corner of each side, and join consecutive marks.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair P1=(14,0),P2=(27,14),P3=(13,27),P4=(0,13);
+draw((0,0)--(27,0)--(27,27)--(0,27)--cycle,linewidth(0.6)+gray);
+filldraw(P1--P2--P3--P4--cycle,lightgray,linewidth(1));
+label("$14$",(7,0),S,fontsize(8pt));label("$13$",(20.5,0),S,fontsize(8pt));
+label("$14$",(27,7),E,fontsize(8pt));label("$13$",(27,20.5),E,fontsize(8pt));
+label("$14$",(20,27),N,fontsize(8pt));label("$13$",(6.5,27),N,fontsize(8pt));
+label("$14$",(0,20),W,fontsize(8pt));label("$13$",(0,6.5),W,fontsize(8pt));
+label("$\sqrt{365}$",(P1+P2)/2,NW,fontsize(8pt));
+\end{asy}
+
+The four corner triangles are congruent right triangles with legs $13$ and $14$, so the four segments have length $\sqrt{365}$. At each mark, the two acute angles of the adjacent corner triangles add up to $90^\circ$, so the angle of the inner quadrilateral there is $180^\circ-90^\circ=90^\circ$. Hence the inner figure is a square, and its area is
+\[27^2-4\cdot\dfrac12\cdot13\cdot14=729-364=365\text{ cm}^2.\]

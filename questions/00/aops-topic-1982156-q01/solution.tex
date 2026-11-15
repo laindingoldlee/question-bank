@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1982156_datastatistics_challenging_problems_help1
+% Stable identity: aops-topic-1982156-q01
+A mode must occur at least twice, and the list has five numbers, so some value occurs at least twice.
+
+\textbf{Case $A=B=x$ with $x\notin\{5,7,8\}$.} The mode is $x$, so the median and mean equal $x$. The mean condition gives $\dfrac{20+2x}{5}=x$, so $x=\dfrac{20}{3}$. The sorted list $5,\dfrac{20}{3},\dfrac{20}{3},7,8$ has median $\dfrac{20}{3}$. Valid: $A+B=\dfrac{40}{3}$.
+
+\textbf{Case the mode is one of $5,7,8$.} Then (say) $A$ equals that value $m$, and $B$ is not one of the other two given numbers (or there would be two modes). The mean $\dfrac{20+m+B}{5}=m$ gives $B=4m-20$.
+\begin{itemize}
+\item $m=5$: $B=0$; the list $0,5,5,7,8$ has median $5$. Valid, $A+B=5$.
+\item $m=7$: $B=8$, which makes $7$ and $8$ both modes. Invalid.
+\item $m=8$: $B=12$; the list $5,7,8,8,12$ has median $8$. Valid, $A+B=20$.
+\end{itemize}
+(If $A=B=m\in\{5,7,8\}$, then $m$ occurs three times and the mean $\dfrac{20+2m}{5}$ equals $m$ only for $m=\dfrac{20}{3}$, impossible.)
+
+The possible values are $\boxed{5,\ \dfrac{40}{3},\ 20}$.

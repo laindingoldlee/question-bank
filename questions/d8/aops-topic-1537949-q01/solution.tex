@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1537949_combinatorics
+% Stable identity: aops-topic-1537949-q01
+\textbf{(a) Direct count.} Count by the number of red faces (the other colour is blue). With $0$ or $6$ red faces there is $1$ cube each; with $1$ or $5$ red faces, $1$ each (every face can be rotated to the top). With $2$ red faces, the two faces are either opposite or adjacent: $2$ cubes; the same for $4$ red faces (look at the $2$ blue faces). With $3$ red faces, either the three red faces meet at a corner, or two of them are opposite: $2$ cubes. In all,
+\[
+1+1+2+2+2+1+1=\boxed{10}.
+\]
+
+\textbf{(b) Burnside's lemma.} The number of different cubes equals the average, over the $24$ rotations of the cube, of the number of colourings that the rotation leaves unchanged. A colouring is unchanged by a rotation exactly when all faces in each cycle of the rotation have the same colour, so a rotation with $c$ face-cycles fixes $n^c$ colourings.
+\begin{itemize}
+\item The identity ($1$ rotation): $6$ cycles, $n^6$.
+\item Quarter turns about an axis through the centres of two opposite faces ($6$ rotations): the two axis faces are fixed and the other four form one cycle, so $3$ cycles, $n^3$ each.
+\item Half turns about such an axis ($3$ rotations): two fixed faces and two swapped pairs, $4$ cycles, $n^4$ each.
+\item Turns by $120^\circ$ or $240^\circ$ about a long diagonal ($8$ rotations): two cycles of three faces, $n^2$ each.
+\item Half turns about an axis through the midpoints of two opposite edges ($6$ rotations): three swapped pairs, $n^3$ each.
+\end{itemize}
+Therefore the number of different cubes is
+\[
+\boxed{\dfrac{n^6+3n^4+12n^3+8n^2}{24}}.
+\]
+For $n=2$ this gives $\dfrac{64+48+96+32}{24}=10$, agreeing with (a); for $n=3$ it gives $57$.

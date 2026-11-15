@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h2368783_geometry_problem_4
+% Stable identity: aops-topic-2368783-q05
+\textbf{Setting.} Let $O$ be the centre. Since the hexagon is convex, the random points are the vertices, in order around it, of a convex polygon, namely their convex hull. (If several points lie on the same side of the hexagon, some angles of this polygon are straight angles; this does not matter, since only the region it encloses is used.) Ignore events of probability $0$ (two points equal, or two points on a line through $O$).
+
+\textbf{Step 1.} $O$ lies outside the polygon exactly when all the points lie in an open half-plane bounded by a line through $O$. Indeed, if all points lie in such a half-plane, so does their convex hull; and if $O$ is outside the convex polygon, a line separating $O$ from the polygon, moved parallel to itself until it passes through $O$, leaves the polygon strictly on one side.
+
+\textbf{Step 2.} For each point $X_i$, let $H_i$ be the open half-plane obtained by turning the ray $OX_i$ counterclockwise through angles strictly between $0^\circ$ and $180^\circ$, and let $E_i$ be the event that all the other points lie in $H_i$. If all points lie in an open half-plane through $O$, that half-plane is swept out by a ray from $O$ turning counterclockwise through $180^\circ$ from one of its bounding rays; let $X_i$ be the first point the ray meets. All the other points are met after turning less than $180^\circ$ further, so $E_i$ holds. Conversely, if $E_i$ holds, turning the line $OX_i$ slightly clockwise gives an open half-plane containing all the points. And two of the events cannot both hold: $X_j\in H_i$ and $X_i\in H_j$ would mean that going counterclockwise from $X_i$ to $X_j$ and from $X_j$ back to $X_i$ both take less than $180^\circ$, although together they make $360^\circ$.
+
+\textbf{Step 3.} The reflection in $O$ maps the boundary of the hexagon onto itself and preserves the uniform distribution on it, and it swaps $H_i$ with the opposite open half-plane. So, whatever $X_i$ is, each other point lies in $H_i$ with probability $\dfrac12$, independently of the others, and $P(E_i)=\left(\dfrac12\right)^{m-1}$, where $m$ is the number of points.
+
+\textbf{Conclusion.} Hence
+\[P(O\text{ outside the polygon})=P(E_1)+\cdots+P(E_m)=\dfrac{m}{2^{m-1}}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair[] Hx; for(int k=0;k<6;++k) Hx.push(dir(60k));
+pair P(pair c, real s){ int k=floor(s); real f=s-k; return c+Hx[k%6]+f*(Hx[(k+1)%6]-Hx[k%6]); }
+void pic(pair c, real[] t, bool inside){
+  draw(shift(c)*(Hx[0]--Hx[1]--Hx[2]--Hx[3]--Hx[4]--Hx[5]--cycle),linewidth(0.8));
+  pair[] p; for(int i=0;i<t.length;++i) p.push(P(c,t[i]));
+  path g=p[0]--p[1]--p[2]--cycle;
+  fill(g,inside?rgb(0.8,0.9,1):rgb(1,0.88,0.85)); draw(g,inside?blue:red);
+  for(int i=0;i<t.length;++i) dot(p[i]);
+  dot(c); label("$O$",c,S,fontsize(8pt));
+}
+pic((0,0),new real[]{0.4,2.5,4.3},true);
+pic((2.8,0),new real[]{0.3,1.2,2.4},false);
+draw((2.8,0)+1.15*dir(-20)--(2.8,0)+1.15*dir(160),dashed);
+label("contains $O$",(0,-1.1),S,fontsize(8pt));
+label("in a half-plane",(2.8,-1.1),S,fontsize(8pt));
+\end{asy}
+
+With $m=3$ points, $P(O\text{ outside})=\dfrac{3}{4}$, so the probability that the centre lies inside the triangle is $1-\dfrac34=\boxed{\dfrac14}$, the same as for three random points on a circle.

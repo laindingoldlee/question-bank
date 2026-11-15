@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1974648_rectangle_parallelepiped
+% Stable identity: aops-topic-1974648-q01
+\textbf{(a)} If the block is cut into cubes of edge $e$ with nothing left over, then $\dfrac{168}{e}$, $\dfrac{112}{e}$ and $\dfrac{84}{e}$ are positive integers. They are in the ratio $168:112:84=6:4:3$, and $\gcd(6,4,3)=1$, so they equal $6t,4t,3t$ for a positive integer $t$; that is, $e=\dfrac{28}{t}$ where $28$ is the GCD of the dimensions. Indeed, since $168=2^3\cdot3\cdot7$, $112=2^4\cdot7$ and $84=2^2\cdot3\cdot7$,
+\[
+\gcd(168,112,84)=2^2\cdot7=28 .
+\]
+So $e\le28$, and the largest cubes have edge $\boxed{28\text{ cm}}$.
+
+\textbf{(b)} The fewest cubes come from the largest cubes. Along the edges there are $\dfrac{168}{28}=6$, $\dfrac{112}{28}=4$ and $\dfrac{84}{28}=3$ cubes, so the number of cubes is $6\cdot4\cdot3=\boxed{72}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real a=6,b=4,c=3; pair ox=(1,0),oy=(0.45,0.3),oz=(0,1);
+pair P(real x,real y,real z){return x*ox+y*oy+z*oz;}
+draw(P(0,0,0)--P(a,0,0)--P(a,0,c)--P(0,0,c)--cycle,linewidth(0.9));
+draw(P(a,0,0)--P(a,b,0)--P(a,b,c)--P(a,0,c),linewidth(0.9));
+draw(P(0,0,c)--P(0,b,c)--P(a,b,c),linewidth(0.9));
+for(int i=1;i<6;++i){draw(P(i,0,0)--P(i,0,c),gray(0.5));draw(P(i,0,c)--P(i,b,c),gray(0.5));}
+for(int k=1;k<3;++k){draw(P(0,0,k)--P(a,0,k),gray(0.5));draw(P(a,0,k)--P(a,b,k),gray(0.5));}
+for(int j=1;j<4;++j){draw(P(a,j,0)--P(a,j,c),gray(0.5));draw(P(0,j,c)--P(a,j,c),gray(0.5));}
+label("$168$",P(a/2,0,0),S);label("$112$",P(a,b/2,0),SE);label("$84$",P(0,0,c/2),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

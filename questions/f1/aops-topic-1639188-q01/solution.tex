@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h1639188_inscribed_quadrilateral_angle_problem
+% Stable identity: aops-topic-1639188-q01
+An inscribed angle is half of the arc it intercepts. Write $\overset{\frown}{AB}$, $\overset{\frown}{BC}$, $\overset{\frown}{CD}$, $\overset{\frown}{DA}$ for the four arcs cut off by the sides; they add up to $360^\circ$.
+
+$\angle ABC$ intercepts the arc $ADC$, so $\overset{\frown}{CD}+\overset{\frown}{DA}=2\cdot70^\circ=140^\circ$ and $\overset{\frown}{CD}=140^\circ-88^\circ=52^\circ$.
+
+$\angle BCD$ intercepts the arc $BAD$, so $\overset{\frown}{AB}+\overset{\frown}{DA}=2\cdot80^\circ=160^\circ$ and $\overset{\frown}{AB}=160^\circ-88^\circ=72^\circ$.
+
+Therefore
+\[
+\overset{\frown}{BC}=360^\circ-88^\circ-52^\circ-72^\circ=\boxed{148^\circ}.
+\]
+(Check: $\angle CDA=\dfrac{72^\circ+148^\circ}{2}=110^\circ=180^\circ-70^\circ$ and $\angle DAB=\dfrac{148^\circ+52^\circ}{2}=100^\circ=180^\circ-80^\circ$, as they must be in a cyclic quadrilateral.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);real r=2.2;
+pair A=r*dir(110),B=r*dir(182),C=r*dir(330),D=r*dir(22);
+draw(circle(O,r),gray);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(arc(O,r,22,110),red+linewidth(1.6));
+real a1=degrees(C-B),d1=degrees(A-B)-a1;d1=d1-360*floor((d1+180)/360);
+real a2=degrees(D-C),d2=degrees(B-C)-a2;d2=d2-360*floor((d2+180)/360);
+draw(arc(B,0.45,a1,a1+d1),blue);draw(arc(C,0.45,a2,a2+d2),blue);
+label("$70^\circ$",B+0.85*dir(a1+d1/2),blue);
+label("$80^\circ$",C+0.85*dir(a2+d2/2),blue);
+label("$A$",A,dir(110));label("$B$",B,dir(182));label("$C$",C,dir(330));label("$D$",D,dir(22));
+label("$88^\circ$",(r+0.4)*dir(66),red);label("$72^\circ$",(r+0.4)*dir(146));label("$148^\circ$",(r+0.45)*dir(256));label("$52^\circ$",(r+0.4)*dir(356));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The figure is drawn to scale.)

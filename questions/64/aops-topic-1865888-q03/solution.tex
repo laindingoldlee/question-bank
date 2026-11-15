@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1865888_geometry_section_12__problem_set_a__exercices_06
+% Stable identity: aops-topic-1865888-q03
+Since $O$ lies on the diagonal $\overline{RT}$, the points $T$, $O$, $R$ are collinear and $O$ is between $T$ and $R$. So $\angle TOP$ and $\angle POR$ form a linear pair: they are adjacent and their outer sides $\overrightarrow{OT}$ and $\overrightarrow{OR}$ are opposite rays. Hence
+\[
+m\angle POR=180^\circ-m\angle TOP=180^\circ-50^\circ=\boxed{130^\circ}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real h=4*Tan(25);
+pair P=(0,0),R=(4,0),Sx=(4,h),T=(0,h),O=(2,h/2);
+void sq(pair Q,pair u,pair v){draw(Q+0.18*u--Q+0.18*u+0.18*v--Q+0.18*v,linewidth(0.6));}
+draw(P--R--Sx--T--cycle,linewidth(1));draw(P--Sx,linewidth(0.9));draw(R--T,linewidth(0.9));
+sq(P,(1,0),(0,1));sq(R,(-1,0),(0,1));sq(Sx,(-1,0),(0,-1));sq(T,(1,0),(0,-1));
+draw(arc(O,0.55,155,205),red);label("$50^\circ$",O+1.25*dir(180),red);
+draw(arc(O,0.35,205,335),blue);label("$130^\circ$",O+0.62*dir(270),blue);
+dot(O);label("$O$",O,2.2*N);
+label("$P$",P,SW);label("$R$",R,SE);label("$S$",Sx,NE);label("$T$",T,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Equivalently, $\angle SOR$ and $\angle TOP$ are vertical angles, so $m\angle SOR=50^\circ$; and $\angle POR$ and $\angle SOR$ form a linear pair along the diagonal $\overline{PS}$, so $m\angle POR=180^\circ-50^\circ$. This is the poster's argument, and the poster's answer $130^\circ$ is correct.)

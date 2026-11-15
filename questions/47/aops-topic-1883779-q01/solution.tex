@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1883779_interesting_problem_nt_mods
+% Stable identity: aops-topic-1883779-q01
+Let $L_{n-1}$ be the last number of Increment $n-1$ (with $L_0=0$), so $0\le L_{n-1}<6^{n-1}$. In Increment $n$ Billy says the residues modulo $6^n$ of $L_{n-1}+1,\dots,L_{n-1}+10^n$, and he says $0$ once for each multiple of $6^n$ among these integers. As $L_{n-1}<6^n$, the number of zeros in Increment $n$ is
+\[
+z_n=\left\lfloor\dfrac{L_{n-1}+10^n}{6^n}\right\rfloor .
+\]
+Since $0\le L_{n-1}<\dfrac{6^n}{6}$,
+\[
+\left\lfloor\left(\dfrac{5}{3}\right)^n\right\rfloor\le z_n\le\left\lfloor\left(\dfrac{5}{3}\right)^n+\dfrac{1}{6}\right\rfloor\le\left\lfloor\left(\dfrac{5}{3}\right)^n\right\rfloor+1 .
+\]
+The values of $\left\lfloor\left(\dfrac{5}{3}\right)^n\right\rfloor=\left\lfloor\dfrac{5^n}{3^n}\right\rfloor$ for $n=1,\dots,14$ are
+\[
+1,\ 2,\ 4,\ 7,\ 12,\ 21,\ 35,\ 59,\ 99,\ 165,\ 275,\ 459,\ 765,\ 1276,
+\]
+and the sum of the first thirteen is $1904$.
+
+So by the end of Increment $13$ Billy has said $0$ at most $1904+13=1917<2019$ times, while by the end of Increment $14$ he has said it at least $1904+1276=3180\ge2019$ times. The answer is $n=\boxed{14}$. (A direct simulation gives $1905$ zeros after Increment $13$ and $3181$ after Increment $14$.)

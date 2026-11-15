@@ -1,0 +1,9 @@
+Let the center be $e$. Summing the four lines through it counts every other cell once and the center four times, so $60=45+3e$, giving $e=5$. Opposite cells sum to ten. The corners must all be even: if a corner were odd, its opposite would be odd; the other two corners could not both be even, since the row connecting an odd and an even corner would force an even edge entry and then violate the available opposite pairs. More explicitly, the opposite pairs are $(1,9),(2,8),(3,7),(4,6)$; checking which two pairs can occupy corners shows only $(2,8),(4,6)$ give edge values from the remaining pairs.
+Choose the position of $2$ in four ways; $8$ is then opposite. Choose one of the two adjacent positions for $4$, and $6$ is forced opposite it. Every edge value is forced by its row or column. All eight choices work, as rotations and reflections of the displayed square. Hence $\boxed8$ arrangements.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"8", "1", "6"}, {"3", "5", "7"}, {"4", "9", "2"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}
+\end{asy}

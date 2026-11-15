@@ -1,0 +1,6 @@
+Let $p_R$ be the red perimeter and $p_U$ the perimeter of the union of both colours. All boundary edges of the red set touch blue. If $e_B$ is the number of blue-blue edges, counting blue edges gives $p_R+p_U=4n-2e_B\le2n+2$, since connected blue cells have $e_B\ge n-1$. A set of $m$ unit cells has perimeter at least $4\sqrt m$: if its bounding box has width $w$ and height $h$, its perimeter is at least $2(w+h)\ge4\sqrt{wh}\ge4\sqrt m$. Thus $4\sqrt n+4\sqrt{2n}\le2n+2$, which excludes $1\le n\le21$. For $n=22$, even integer perimeters give $p_R\ge20$ and $p_U\ge28$, contradicting $p_R+p_U\le46$. For 23, use a $7\times7$ square with three outer corner cells removed. Colour the inner $5\times5$ red except for its two left corner cells; colour all other cells blue. There are 23 of each colour, both sets are connected, and every red boundary touches blue. Hence $\boxed{23}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+for(int x=0;x<7;++x)for(int y=0;y<7;++y){if((x==0&&(y==0||y==6))||(x==6&&y==6))continue;bool redcell=x>=1&&x<=5&&y>=1&&y<=5&&!(x==1&&(y==1||y==5));filldraw(box((x,y),(x+1,y+1)),redcell?lightred:lightblue,black);}label("23 red, 23 blue",(3.5,-.5));
+\end{asy}
+

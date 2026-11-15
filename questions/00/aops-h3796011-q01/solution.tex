@@ -1,0 +1,8 @@
+Number the rows and columns $0,1,\ldots,n-1$ and put $1+((r+c)\bmod n)$ in cell $(r,c)$. In any fixed row, increasing $c$ runs through all residues modulo $n$ exactly once. In a fixed column, increasing $r$ does the same. Thus each row and column contains exactly $1,\ldots,n$. The formula also works for $n=1$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"1", "2", "3", "4", "5"}, {"2", "3", "4", "5", "1"}, {"3", "4", "5", "1", "2"}, {"4", "5", "1", "2", "3"}, {"5", "1", "2", "3", "4"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("Example for n=5",(2.5,-5.2));
+\end{asy}

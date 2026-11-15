@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1697312_i_cant_do_this
+% Stable identity: aops-topic-1697312-q01
+In a parallelogram, $\angle ABC=180^\circ-70^\circ=110^\circ$ and $BC=AD=4.8$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6.5,0),D=4.8*dir(70),C=B+D;
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,dashed+blue);draw(B--D,dashed+blue);
+draw(arc(A,0.8,0,70),linewidth(0.5));label("$70^\circ$",A+1.35*dir(50));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$6.5$",(A+B)/2,S);label("$4.8$",(A+D)/2+0.45*dir(160));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Diagonal $BD$.} By the law of cosines in triangle $ABD$,
+\[
+BD^2=6.5^2+4.8^2-2\cdot6.5\cdot4.8\cos70^\circ=65.29-62.4\cos70^\circ\approx65.29-21.342=43.948,
+\]
+so $BD\approx6.63$ cm.
+
+\textbf{Diagonal $AC$.} In triangle $ABC$, with $\cos110^\circ=-\cos70^\circ$,
+\[
+AC^2=6.5^2+4.8^2+2\cdot6.5\cdot4.8\cos70^\circ\approx65.29+21.342=86.632,
+\]
+so $AC\approx9.31$ cm.
+
+So $\boxed{BD\approx6.63\text{ cm and }AC\approx9.31\text{ cm}}$. (A careful construction with ruler and protractor should give about $6.6$ cm and $9.3$ cm. As a check, the parallelogram law $AC^2+BD^2=2\left(6.5^2+4.8^2\right)=130.58$ holds.)

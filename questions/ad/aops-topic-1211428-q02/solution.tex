@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1211428_practice_problems
+% Stable identity: aops-topic-1211428-q02
+Since $3^2+4^2=5^2$, the angle at $B$ is right. With sides $3k,4k,5k$ the area is $6k^2=96$, so $k=4$: $BC=12$, $AB=16$, $AC=20$.
+
+Put $B=(0,0)$, $A=(0,16)$, $C=(12,0)$. The direction of $AC$ is $(3,-4)$, so the perpendicular at $C$ has direction $(4,3)$: points $(12+4s,3s)$. It meets line $AB$ ($x=0$) at $s=-3$, i.e. $D=(0,-9)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),A=(0,16),C=(12,0),D=(0,-9);
+draw(A--B--C--cycle,linewidth(0.9)); draw(B--D,dashed); draw(C--D,blue+linewidth(0.9));
+draw((0,1)--(1,1)--(1,0)); pair u=unit(A-C),v=unit(D-C); draw(C+u--C+u+v--C+v);
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,E);label("$D$",D,S);
+label("$16$",(0,8),W);label("$12$",(6,0),N);label("$20$",(6,8),NE);label("$15$",(6,-4.5),SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then $DC=15$, $AD=25$, and triangle $ADC$ is right-angled at $C$ with area $m=\dfrac{1}{2}\cdot20\cdot15=150$.
+
+Triangle $DCE$ has side $DC=15$ and consecutive integer sides, so its sides are $13,14,15$, $14,15,16$ or $15,16,17$. By Heron's formula the areas are $\sqrt{21\cdot8\cdot7\cdot6}=84$, $\sqrt{22.5\cdot8.5\cdot7.5\cdot6.5}\approx96.6$ and $\sqrt{24\cdot9\cdot8\cdot7}=\sqrt{12096}\approx110.0$; only the first is an integer. So $n=84$ and $m+n=\boxed{234}$.

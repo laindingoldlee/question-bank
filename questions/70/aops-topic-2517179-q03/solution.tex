@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2517179_gcd_problems
+% Stable identity: aops-topic-2517179-q03
+\textbf{Lemma.} If $m=qn+r$ with $q\ge0$, $0\le r<n$, then $2^m-1\equiv2^r-1\pmod{2^n-1}$.
+
+Indeed $2^n\equiv1\pmod{2^n-1}$, so $2^m=\left(2^n\right)^q2^r\equiv2^r$. Hence $\gcd\left(2^m-1,2^n-1\right)=\gcd\left(2^n-1,2^r-1\right)$, which is the step of the Euclidean algorithm on the exponents. Applying it:
+\[(400,340)\to(340,60)\to(60,40)\to(40,20)\to(20,0),\]
+because $400=1\cdot340+60$, $340=5\cdot60+40$, $60=1\cdot40+20$, $40=2\cdot20$. At the end $\gcd\left(2^{20}-1,2^0-1\right)=\gcd\left(2^{20}-1,0\right)=2^{20}-1$. So
+\[\gcd\left(2^{400}-1,\ 2^{340}-1\right)=2^{\gcd(400,340)}-1=2^{20}-1=\boxed{1048575}.\]

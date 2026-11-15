@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2264075_what_am_i_doing_wrong
+% Stable identity: aops-topic-2264075-q01
+\textbf{(a)} The elements of $S$ are the numbers $2^i+2^j$ with $0\le i<j\le39$ (they are less than $2^{40}$; and $2^{40}$ itself has only one $1$). So $|S|=\dbinom{40}{2}=780$.
+
+Now $2^i+2^j=2^i\left(1+2^{j-i}\right)$, and $2^i$ is coprime to $9$, so $9\mid2^i+2^j$ exactly when $2^{d}\equiv-1\pmod9$, where $d=j-i$. The powers of $2$ modulo $9$ are
+\[2,4,8,7,5,1,2,4,\dots\]
+with period $6$. So $2^d\equiv8\equiv-1$ exactly when $d\equiv3\pmod6$. With $1\le d\le39$ this means $d\in\{3,9,15,21,27,33,39\}$, and for each $d$ there are $40-d$ pairs $(i,j)$. The number of multiples of $9$ in $S$ is
+\[37+31+25+19+13+7+1=133.\]
+So the probability is $\dfrac{133}{780}$; since $133=7\cdot19$ and $780=2^2\cdot3\cdot5\cdot13$, it is in lowest terms, and $p+q=\boxed{913}$.
+
+\textbf{(b)} The student counted all of $S$. It is true that every sum of two distinct powers of $2$ has exactly two $1$s, but that is the definition of $S$, not a property of multiples of $9$: most such sums are not multiples of $9$ (for example $3=2^0+2^1$ and $5=2^0+2^2$). The correct count must keep only the pairs with $9\mid2^i+2^j$, as in (a).

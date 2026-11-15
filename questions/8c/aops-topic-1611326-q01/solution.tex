@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h1611326_excentric_circunference
+% Stable identity: aops-topic-1611326-q01
+Let $a=BC$, $b=CA$, $c=AB$ and $s=\dfrac{a+b+c}{2}$.
+
+\textbf{The exradius equals $s$.} The excircle with centre $I_C$ touches the lines $CA$ and $CB$ at points $T_A$, $T_B$ beyond $A$ and $B$. The tangent lengths from $C$ are $CT_A=CT_B=s$ (standard: the tangents from $A$ give $AT_A=AT$ and from $B$, $BT_B=BT$, where $T$ is the point of contact on $AB$, so $CT_A+CT_B=a+b+c$). Since $\angle C=90^\circ$, the quadrilateral $CT_AI_CT_B$ has three right angles and two adjacent equal sides $I_CT_A=I_CT_B=r'$, so it is a square and $r'=CT_A=s$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real l=2*sqrt(2);real R=2+2*sqrt(2);
+pair C=(0,0),A=(l,0),B=(0,l),I=(R,R);
+pair H=(A+B)/2;
+draw(circle(I,R),blue);dot(I);label("$I_C$",I,NE,blue);
+draw((0,0)--(2*R+0.5,0),gray);draw((0,0)--(0,2*R+0.5),gray);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--H,dashed);label("$2$",(C+H)/2,NW);
+draw((0,0.3)--(0.3,0.3)--(0.3,0));
+pair TA=(R,0),TB=(0,R),T=I+R*dir(225);
+dot(TA);dot(TB);dot(T);
+draw(I--TA,blue+dashed);label("$r'$",(I+TA)/2,E,blue);
+label("$C$",C,SW);label("$A$",A,S);label("$B$",B,W);label("$T$",T,NE);
+label("$T_A$",TA,S,blue);label("$T_B$",TB,W,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Equations.} So $a+b+c=2r'=4+4\sqrt2$. Twice the area is $ab=ch=2c$, and $a^2+b^2=c^2$. Let $p=a+b$. Then $p^2=a^2+b^2+2ab=c^2+4c$ and $p=4+4\sqrt2-c$, so
+\[
+\left(4+4\sqrt2-c\right)^2=c^2+4c\quad\Longrightarrow\quad\left(4+4\sqrt2\right)^2=c\left(12+8\sqrt2\right).
+\]
+Since $\left(4+4\sqrt2\right)^2=16\left(3+2\sqrt2\right)$ and $12+8\sqrt2=4\left(3+2\sqrt2\right)$, we get $c=4$.
+
+Then $a+b=4\sqrt2$ and $ab=8$, so $a$ and $b$ are the roots of $t^2-4\sqrt2\,t+8=\left(t-2\sqrt2\right)^2=0$: $a=b=2\sqrt2$.
+
+\textbf{Answer.} The triangle is the isosceles right triangle with
+\[
+\boxed{a=b=2\sqrt2,\quad c=4,\quad \angle A=\angle B=45^\circ,\quad\angle C=90^\circ}.
+\]
+\emph{Check:} the altitude to the hypotenuse is $\dfrac{ab}{c}=\dfrac{8}{4}=2$ and $s=\dfrac{4\sqrt2+4}{2}=2+2\sqrt2$.

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2539398_can_someone_explain
+% Stable identity: aops-topic-2539398-q01
+A team with both colours has either $2$ blue and $1$ red player or $1$ blue and $2$ red players, so the number of such teams is
+\[\binom b2r+b\binom r2=\dfrac{br(b-1)+br(r-1)}{2}=\dfrac{br(b+r-2)}{2}.\]
+\textbf{The error.} The product $b\cdot r\cdot(b+r-2)$ counts ways to choose a blue player, a red player and then a third player. Each team is produced exactly twice this way (for a team with two blue players, either of them can be the ``chosen'' blue one; similarly for two red players), not $3!=6$ times. So the correct equation is $br(b+r-2)=50$.
+
+\textbf{Solving.} Let $n=b+r$, so $n-2$ divides $50$, with $b,r\ge1$:
+\begin{itemize}
+\item $n=3$: $br=50$ with $b+r=3$, impossible; $n=4$: $br=25$ with $b+r=4$, impossible.
+\item $n=7$: $br=10$ with $b+r=7$, so $\{b,r\}=\{2,5\}$. This works.
+\item $n=12,27,52$: $br=5,2,1$, but then $b+r\le6$, impossible.
+\end{itemize}
+So there are $\boxed{7}$ students (two in one colour and five in the other). Check: $\binom22\cdot5+2\binom52=5+20=25$.

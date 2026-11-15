@@ -1,0 +1,45 @@
+% Source: https://artofproblemsolving.com/community/c3h1782694_14dhaka03
+% Stable identity: aops-topic-1782694-q01
+Let the square have side $s$. Since $F$ and $G$ lie on $BC$, the side $DE$ is parallel to $BC$ at distance $s$ from it. Triangle $ADE$ is then similar to triangle $ABC$ (with $D\in AB$, $E\in AC$), and the ratio of similarity is the ratio of the distances from $A$ to the lines $DE$ and $BC$. So
+\[
+\dfrac{DE}{BC}=\dfrac{|2-s|}{2}\quad\text{if $DE$ is on the same side of $BC$ as $A$,}\qquad
+\dfrac{DE}{BC}=\dfrac{2+s}{2}\quad\text{otherwise.}
+\]
+With $DE=s$ and $BC=6$:
+\begin{itemize}
+\item $DE$ between $BC$ and $A$ ($s<2$): $s=3(2-s)$, so $s=\dfrac{3}{2}$; this is the square inscribed in the triangle, figure (i).
+\item $DE$ beyond $A$ ($s>2$): $s=3(s-2)$, so $s=3$; here $D$ and $E$ lie on the extensions of $AB$ and $AC$ beyond $A$, figure (ii).
+\item $DE$ on the other side of $BC$: $s=3(2+s)$ has no positive solution.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(6,0),A=(2.5,2);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--(-0.8,2),dotted);draw((-0.6,0)--(-0.6,2),Arrows(4));
+pair D=(1.875,1.5),Ep=(3.375,1.5),F=(3.375,0),G=(1.875,0);
+draw(D--Ep--F--G--cycle,blue+linewidth(0.9));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$D$",D,NW);label("$E$",Ep,NE);label("$F$",F,S);label("$G$",G,S);
+label("$2$",(-0.6,1),W);draw((0,-0.7)--(6,-0.7),Arrows(4));label("$6$",(3,-0.7),S);label("(i)",(3,-1.9));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(6,0),A=(2.5,2);
+pair D=(3.75,3),Ep=(0.75,3),F=(0.75,0),G=(3.75,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,dashed);draw(A--Ep,dashed);
+draw(D--Ep--F--G--cycle,blue+linewidth(0.9));
+label("$A$",A,S);label("$B$",B,SW);label("$C$",C,SE);
+label("$D$",D,NE);label("$E$",Ep,NW);label("$F$",F,S);label("$G$",G,S);
+label("$3$",(D+Ep)/2,N);draw((0,-0.7)--(6,-0.7),Arrows(4));label("$6$",(3,-0.7),S);label("(ii)",(3,-1.9));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the perimeter of $DEFG$ is $4\cdot\dfrac{3}{2}=\boxed{6}$ for the square inside the triangle, and $4\cdot3=\boxed{12}$ for the square on the extensions beyond $A$. (The computation does not depend on the shape of the triangle; in figure (ii) the square overlaps the triangle, and $A$ lies inside it.)

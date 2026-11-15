@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3146343_2022_lmt_fall_theme_round__part_2__world_cup_lexington_math_tournament
+% Stable identity: aops-topic-3146343-q03
+Use $B=(0,0),C=(0,8)$ and the field to their left. The band between $E=(0,3)$ and $F=(0,5)$ contributes a $6\times2$ rectangle of area 12. Above and below are two identical pieces of a left semicircle of radius 6, each extending 3 vertically from its center. Its area is $\dfrac{1}{2}(3\sqrt{36-9}+36\arcsin\dfrac{1}{2})=\dfrac{9\sqrt3}{2}+3\pi$. Thus total area is $6\pi+9\sqrt3+12=6\pi+\sqrt{243}+12$, giving $\boxed{84312}$. Boundary exclusion does not affect area.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+path R=(-11,0)--(0,0)--(0,8)--(-11,8)--cycle;fill(box((-6,3),(0,5)),lightblue);fill(arc((0,3),6,180,270)--(0,3)--cycle,lightblue);fill(arc((0,5),6,90,180)--(0,5)--cycle,lightblue);clip(R);draw(R);draw((0,3)--(0,5),blue+1.5);label("$A$",(-11,0),SW);label("$B$",(0,0),SE);label("$C$",(0,8),NE);label("$D$",(-11,8),NW);label("$E$",(0,3),E);label("$F$",(0,5),E);
+\end{asy}

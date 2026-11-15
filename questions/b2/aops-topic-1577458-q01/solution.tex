@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1577458_find_all_values_of_tan_x
+% Stable identity: aops-topic-1577458-q01
+\textbf{Every value is positive.} For $0^\circ<x<90^\circ$ we have $\sin x>0$ and $\cos x>0$, so $\tan x=\dfrac{\sin x}{\cos x}>0$.
+
+\textbf{Every positive value occurs.} Let $t>0$. Draw a right triangle with legs $1$ and $t$, and let $x$ be the acute angle opposite the leg $t$. Then $0^\circ<x<90^\circ$ and $\tan x=\dfrac{t}{1}=t$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real t=1.6;
+pair O=(0,0),P=(1,0),Q=(1,t);
+draw(O--P--Q--cycle,linewidth(0.9));
+real s=0.12; draw((1-s,0)--(1-s,s)--(1,s));
+draw(arc(O,0.32,0,degrees(atan(t))),blue);
+label("$x$",0.32*dir(degrees(atan(t))/2),E,blue);
+label("$1$",(0.5,0),S);label("$t$",(1,t/2),E);
+label("$\sqrt{1+t^2}$",(0.5,t/2),NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the possible values are exactly the positive real numbers: $\tan x$ can be $\boxed{\text{any real number }t>0}$, i.e.\ $\tan x\in(0,\infty)$. (As $x$ approaches $0^\circ$, $\tan x$ approaches $0$, and as $x$ approaches $90^\circ$ it grows without bound.)

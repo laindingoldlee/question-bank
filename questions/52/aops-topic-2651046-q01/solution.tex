@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2651046_very_nice_problem
+% Stable identity: aops-topic-2651046-q01
+A loss can only happen on the fair machine, and after the first loss Allan knows which machine always wins and wins every remaining game. So with optimal play he loses at most once, and
+\[E[\text{wins}]=5-P(\text{a loss occurs}).\]
+Before the first loss he has seen only wins, so his plan up to the first loss is a fixed sequence of machines for the $5$ games. If it uses machine $X$ for $j$ games and machine $Y$ for $5-j$ games, the probability of no loss at all is
+\[\dfrac12\cdot\dfrac1{2^{5-j}}+\dfrac12\cdot\dfrac1{2^{j}}.\]
+(The first term is the case that $X$ is the sure machine.) For $j=0$ or $5$ this is $\dfrac12+\dfrac1{64}=\dfrac{33}{64}$. For $1\le j\le4$ it is at most $\dfrac12\left(\dfrac12+\dfrac1{16}\right)=\dfrac{9}{32}$, which is smaller.
+
+So the best strategy is to keep playing one machine until the first loss and then switch. It gives
+\[E[\text{wins}]=5-\left(1-\dfrac{33}{64}\right)=\dfrac{289}{64},\]
+and $m+n=\boxed{353}$.

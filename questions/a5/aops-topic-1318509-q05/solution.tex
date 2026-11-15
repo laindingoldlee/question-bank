@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1318509_please_help
+% Stable identity: aops-topic-1318509-q05
+Each circle touches the top and bottom sides, so the height is $24$ cm. The left circle touches the left side and the right circle touches the right side, so the width is $12+4+12=28$ cm.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(28,0)--(28,24)--(0,24)--cycle,linewidth(0.9)); draw(circle((12,12),12)); draw(circle((16,12),12));
+dot((12,12));dot((16,12)); draw((12,12)--(16,12),red); label("$4$",(14,12),N,red);
+draw((0,12)--(12,12),gray+dashed); label("$12$",(6,12),N,gray); label("$28$",(14,0),S); label("$24$",(28,12),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The area is $24\cdot28=672$ cm$^2$, answer $\boxed{\textbf{(D)}}$.

@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2013012_help_is_neededonce_again
+% Stable identity: aops-topic-2013012-q02
+Let a chord through $P$ be at distance $h$ from $O$; then its length is $2\sqrt{100-h^2}$. Since the chord passes through $P$, $0\le h\le OP=6$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), Q=(10,0), P=(6,0);
+draw(circle(O,10),linewidth(0.9));
+draw((-10,0)--Q,blue);
+draw((6,-8)--(6,8),red+linewidth(0.9));
+pair d=dir(60); real t=-dot(P,d)+sqrt(dot(P,d)^2-36+100);
+real t2=-dot(P,d)-sqrt(dot(P,d)^2-36+100);
+draw((P+t2*d)--(P+t*d),heavygreen+dashed);
+draw(O--(6,8),gray(0.5));
+draw((6-0.6,0)--(6-0.6,0.6)--(6,0.6));
+dot(O); dot(P); dot(Q);
+label("$O$",O,SW); label("$P$",P,SE); label("$Q$",Q,E);
+label("$6$",(3,0),S,blue); label("$8$",(6,4),E,red); label("$10$",(3,4),NW,gray(0.4));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item The longest chord through $P$ is the diameter ($h=0$), of length $20$.
+\item The shortest is the chord perpendicular to $OP$ ($h=6$), of length $2\sqrt{100-36}=16$.
+\end{itemize}
+As the chord turns about $P$, its length varies continuously between $16$ and $20$. Each length strictly between $16$ and $20$ is achieved by exactly two chords, symmetric about line $OP$, while lengths $16$ and $20$ are each achieved by exactly one chord. The integer lengths are $16,17,18,19,20$, giving
+\[
+1+2+2+2+1=\boxed{8}
+\]
+chords.

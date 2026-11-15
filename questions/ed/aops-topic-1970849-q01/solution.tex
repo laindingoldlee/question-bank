@@ -1,0 +1,59 @@
+% Source: https://artofproblemsolving.com/community/c3h1970849_geometry
+% Stable identity: aops-topic-1970849-q01
+Since $M$ is inside the triangle, there are positive numbers $u,v,w$ (areas of $MBC$, $MCA$, $MAB$, or masses in the sense of mass points) with
+\[
+M=\dfrac{uA+vB+wC}{u+v+w},\quad A_1=\dfrac{vB+wC}{v+w},\quad B_1=\dfrac{uA+wC}{u+w},\quad C_1=\dfrac{uA+vB}{u+v}.
+\]
+Here a combination $\alpha A+\beta B+\gamma C$ with $\alpha+\beta+\gamma=1$ means the corresponding point (vector combination of position vectors).
+
+\textbf{Finding $A_3$.} Let $s=u+v+w$. Then
+\[
+2(u+v)(u+w)A_2=(u+v)(uA+wC)+(u+w)(uA+vB)=u(2u+v+w)A+v(u+w)B+w(u+v)C .
+\]
+Subtract this from $(2u+v+w)\cdot sM=(2u+v+w)(uA+vB+wC)$; the $A$ terms cancel:
+\[
+(2u+v+w)\,sM-2(u+v)(u+w)A_2=v(u+v)B+w(u+w)C .
+\]
+The coefficients on each side have the same total, $k=v(u+v)+w(u+w)>0$. Dividing by $k$, the point
+\[
+A_3=\dfrac{v(u+v)B+w(u+w)C}{v(u+v)+w(u+w)}
+\]
+is an affine combination of $M$ and $A_2$, so it lies on line $MA_2$, and it lies on segment $BC$. Hence it is the intersection point, and
+\[
+\dfrac{BA_3}{A_3C}=\dfrac{w(u+w)}{v(u+v)}.
+\]
+By the same computation with the roles of the vertices cycled ($A\to B\to C\to A$, $u\to v\to w\to u$),
+\[
+\dfrac{CB_3}{B_3A}=\dfrac{u(v+u)}{w(v+w)},\qquad \dfrac{AC_3}{C_3B}=\dfrac{v(w+v)}{u(w+u)}.
+\]
+\textbf{Ceva.} The points $A_3,B_3,C_3$ lie inside the sides, and
+\[
+\dfrac{BA_3}{A_3C}\cdot\dfrac{CB_3}{B_3A}\cdot\dfrac{AC_3}{C_3B}=\dfrac{w(u+w)}{v(u+v)}\cdot\dfrac{u(u+v)}{w(v+w)}\cdot\dfrac{v(v+w)}{u(u+w)}=1 .
+\]
+By the converse of Ceva's theorem, $AA_3$, $BB_3$, $CC_3$ are concurrent. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair A=(2.5,6),B=(0,0),C=(8,0);
+real u=1.5,v=5.5,w=4;
+pair M=(u*A+v*B+w*C)/(u+v+w);
+pair A1=extension(A,M,B,C),B1=extension(B,M,C,A),C1=extension(C,M,A,B);
+pair A2=(B1+C1)/2,B2=(C1+A1)/2,C2=(A1+B1)/2;
+pair A3=extension(M,A2,B,C),B3=extension(M,B2,C,A),C3=extension(M,C2,A,B);
+pair X=extension(A,A3,B,B3);
+draw(A--B--C--cycle,linewidth(1));
+draw(A--A1,gray(0.6));draw(B--B1,gray(0.6));draw(C--C1,gray(0.6));
+draw(A1--B1--C1--cycle,gray(0.6)+dashed);
+draw(M--A3,blue);draw(M--B3,blue);draw(M--C3,blue);
+draw(A--A3,red);draw(B--B3,red);draw(C--C3,red);
+dot(M);dot(X,red);dot(A2,blue);dot(B2,blue);dot(C2,blue);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$M$",M,NE,fontsize(8pt));
+label("$A_1$",A1,S,fontsize(8pt));label("$B_1$",B1,NE,fontsize(8pt));label("$C_1$",C1,W,fontsize(8pt));
+label("$A_3$",A3,S,fontsize(8pt));label("$B_3$",B3,NE,fontsize(8pt));label("$C_3$",C3,W,fontsize(8pt));
+label("$X$",X,SW,red+fontsize(8pt));label("$A_2$",A2,N,blue+fontsize(7pt));label("$B_2$",B2,NW,blue+fontsize(7pt));label("$C_2$",C2,SE,blue+fontsize(7pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(In fact they meet at the point $X=\dfrac{\dfrac{u}{v+w}A+\dfrac{v}{w+u}B+\dfrac{w}{u+v}C}{\dfrac{u}{v+w}+\dfrac{v}{w+u}+\dfrac{w}{u+v}}$, shown in red.)

@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1723548_tessellating_a_plane
+% Stable identity: aops-topic-1723548-q01
+\textbf{(a)} A regular $n$-gon has interior angles $\dfrac{(n-2)180^\circ}{n}$: $108^\circ$ for $n=5$, $144^\circ$ for $n=10$ and $150^\circ$ for $n=12$. Since $108^\circ+108^\circ+150^\circ=366^\circ\ne360^\circ$, two pentagons and a dodecagon do not fit around a point, while $108^\circ+108^\circ+144^\circ=360^\circ$, so two pentagons and a decagon do.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair V=(0,0);
+path poly(pair P,real d,int n){pair[] q;q.push(P);real t=d;pair X=P;for(int i=1;i<n;++i){X=X+dir(t);q.push(X);t+=360/n;}path g=q[0];for(int i=1;i<n;++i) g=g--q[i];return g--cycle;}
+path p1=poly(V,0,5),p2=poly(V,108,5),d1=poly(V,216,10);
+fill(p1,palegreen);fill(p2,palegreen);fill(d1,paleblue);
+draw(p1,linewidth(0.9));draw(p2,linewidth(0.9));draw(d1,linewidth(0.9));
+draw(arc(V,0.18,0,108));draw(arc(V,0.18,108,216));draw(arc(V,0.18,216,360));
+label("$108^\circ$",0.5*dir(54),fontsize(7pt));label("$108^\circ$",0.5*dir(162),fontsize(7pt));label("$144^\circ$",0.42*dir(288),fontsize(7pt));
+label("pentagon",0.95*dir(54),fontsize(7pt));label("pentagon",0.95*dir(162),fontsize(7pt));label("decagon",1.618*dir(288),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(b)} Suppose such a tiling exists, and look at one pentagon $P$. At each vertex $V$ of $P$ there are exactly three tiles: $P$, one other pentagon and one decagon. The two edges of $P$ at $V$ separate $P$ from its two neighbours at $V$; each of these edges is shared with one of the other two tiles at $V$ (the tiling is edge-to-edge). So at every vertex of $P$, the two edges of $P$ meeting there are shared with tiles of \emph{different} kinds: one with a pentagon and one with the decagon.
+
+Going around $P$, the kinds of the neighbours across its edges $e_1,e_2,e_3,e_4,e_5$ must therefore alternate: pentagon, decagon, pentagon, decagon, \dots\ But there are $5$ edges, an odd number, so $e_5$ and $e_1$, which meet at a vertex of $P$, would have neighbours of the same kind. This contradiction shows that no such tiling exists. $\blacksquare$
+
+(The same argument shows that a vertex type $a.b.c$ with $a$ odd can occur everywhere in a tiling only if $b=c$; vertex types that fit around one point need not extend to a tiling.)

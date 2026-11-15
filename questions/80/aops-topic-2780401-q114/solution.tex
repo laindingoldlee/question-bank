@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2780401_2019_mbmt_team_round__montgomery_blair_math_tournament
+% Stable identity: aops-topic-2780401-q114
+This is a finite reachability game. For a state $ s $ and budget $ k $, let $ W(s,k)$ mean Zandar can guarantee reaching sum 2 within $ k $ moves. A state of sum 2 is winning; otherwise $ W(s,0)$ is false. For each of Leptina's four swaps, Zandar must have at least one legal response leading to a winning state with budget $ k-1 $. Responses subtracting zero are included as legal moves. Responses dropping below 2 cannot later succeed because sums never increase. The exact minimax recurrence below gives false at budget 5 and true at budget 6, certifying both a lower bound against every strategy and a successful strategy.
+\begin{verbatim}
+from functools import lru_cache
+@lru_cache(None)
+def win(s,k):
+ if sum(s)==2:return True
+ if k==0:return False
+ for i in range(4):
+  t=list(s);j=(i+1)%4;t[i],t[j]=t[j],t[i];ok=False
+  for u in range(4):
+   v=(u+1)%4;a,b=t[u],t[v]
+   if a<b:u,v=v,u;a,b=b,a
+   r=t.copy();r[u]=a-b
+   if sum(r)>=2 and win(tuple(r),k-1):ok=True;break
+  if not ok:return False
+ return True
+assert not win((1,2,3,4),5)
+assert win((1,2,3,4),6)
+\end{verbatim}
+Thus the answer is $\boxed6 $.

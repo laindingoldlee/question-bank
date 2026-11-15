@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1930276_help_needed_in_problems_of_varied_topics
+% Stable identity: aops-topic-1930276-q08
+The right side is $\displaystyle\sum_{i=0}^{k}\dbinom{n-k-1+i}{i}$. We prove the identity by induction on $k$, for all $n>k$.
+
+\textbf{$k=0$:} both sides equal $1$, since $\dbinom n0=\dbinom{n-1}{0}=1$.
+
+\textbf{Step.} Let $1\le k\le n-1$ and assume the identity for $k-1$ (and every larger row). By Pascal's rule,
+\[
+\dbinom nk=\dbinom{n-1}{k}+\dbinom{n-1}{k-1}.
+\]
+Apply the induction hypothesis to $\dbinom{n-1}{k-1}$ (row $n-1$, position $k-1\le(n-1)-1$). Since $(n-1)-(k-1)-1=n-k-1$, it gives
+\[
+\dbinom{n-1}{k-1}=\sum_{i=0}^{k-1}\dbinom{n-k-1+i}{i}.
+\]
+Adding $\dbinom{n-1}{k}$, which is the $i=k$ term, gives $\dbinom nk=\displaystyle\sum_{i=0}^{k}\dbinom{n-k-1+i}{i}$. $\blacksquare$
+
+In words: split $\dbinom nk$ into its two upper neighbours, keep the upper right one, and keep splitting the upper left one until the left edge is reached. (For example $\dbinom63=20=1+3+6+10=\dbinom20+\dbinom31+\dbinom42+\dbinom53$.)

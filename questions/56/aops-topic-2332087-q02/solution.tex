@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2332087_3_geo_problems
+% Stable identity: aops-topic-2332087-q02
+\textbf{$F$ is the midpoint of $AM$.} Since $DE=EC$, $E$ is the midpoint of $DC$, and $M$ is the midpoint of $BC$. By the midline theorem in triangle $CDB$, $ME\parallel BD$ and $ME=\dfrac12BD$. Now in triangle $AME$, the segment $DF$ lies on $BD$, so $DF\parallel EM$, and $D$ is the midpoint of $AE$ (as $AD=DE$). Hence $F$ is the midpoint of $AM$, and $DF=\dfrac12EM=\dfrac14BD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.2,3.6), B=(0,0), C=(5.2,0);
+pair M=(B+C)/2, Dd=A+(C-A)/3, Ee=A+2*(C-A)/3;
+pair F=extension(B,Dd,A,M), G=extension(B,Ee,A,M);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--M,blue); draw(B--Dd); draw(B--Ee);
+draw(M--Ee,red+dashed);
+dot(M); dot(Dd); dot(Ee); dot(F); dot(G);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$M$",M,S);
+label("$D$",Dd,NE); label("$E$",Ee,NE); label("$F$",F,W); label("$G$",G,dir(200));
+\end{asy}
+
+\textbf{Where $G$ cuts $FM$.} We have $FB=BD-DF=\dfrac34BD$. Since $FB\parallel ME$, the triangles $GFB$ and $GME$ are similar (vertical angles at $G$ and alternate angles), so
+\[\dfrac{FG}{GM}=\dfrac{FB}{ME}=\dfrac{\dfrac34BD}{\dfrac12BD}=\dfrac32 .\]
+\textbf{Conclusion.} Taking $AM=10$: $AF=FM=5$, and $FM$ is split as $FG=3$, $GM=2$. Hence
+\[AF:FG:GM=\boxed{5:3:2}.\]

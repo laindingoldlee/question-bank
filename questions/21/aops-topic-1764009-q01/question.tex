@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1764009_geometry
+% Stable identity: aops-topic-1764009-q01
+In the diagram, $ABCD$ is a square of side $4$ cm, $DEFG$ is a rectangle, $G$ lies on side $BC$, and $E$, $A$, $F$ lie on a straight line with $A$ between $E$ and $F$. Given that $CG=3$ cm and $DG=5$ cm, find the length of $DE$ in cm.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0),C=(4,0),B=(4,4),A=(0,4),G=(4,3);
+pair n=(-3,4)/5; pair Ep=D+3.2*n, F=G+3.2*n;
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(D--Ep--F--G--cycle,linewidth(0.9));
+dot(A);
+label("$A$",A,dir(160));label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);
+label("$E$",Ep,W);label("$F$",F,N);label("$G$",G,E);
+label("$4$",(D+C)/2,S);label("$3$",(C+G)/2,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

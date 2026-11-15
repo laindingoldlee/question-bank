@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2592145_pekkas_700th_post
+% Stable identity: aops-topic-2592145-q02
+A French shot is a goal with probability $p=0.95\cdot0.98=0.931$, a Spanish shot with probability $q=0.95\cdot0.75=0.7125$.
+
+Imagine that all $10$ shots are always taken (shots after a stop do not count). Let $F$ be France's total in its $5$ shots and $S_4$ Spain's total in its first $4$ shots.
+
+\textbf{Claim:} the shootout reaches the $10$th shot and Spain wins exactly when $S_4=F$ and Spain scores the $10$th shot.
+\begin{itemize}
+\item If the shootout reaches the $10$th shot, Spain was not ahead after shot $9$ (France had no shots left, so the shootout would have stopped), so $S_4\le F$. To win, Spain must then score the last shot and have $S_4+1>F$, so $S_4=F$.
+\item Conversely, suppose $S_4=F$ and Spain scores the $10$th shot. The shootout cannot have stopped earlier. A stop in France's favour would mean France's lead exceeded Spain's remaining shots, giving Spain's final total $S_4+1<F$. A stop in Spain's favour would mean Spain's lead exceeded France's remaining shots, giving $S_4>F$.
+\end{itemize}
+
+Since $F$ and $S_4$ are independent binomial variables,
+\[P=q\sum_{k=0}^{4}\dbinom5kp^k(1-p)^{5-k}\cdot\dbinom4kq^k(1-q)^{4-k}.\]
+The terms are about $0.06680$ ($k=4$), $0.01598$ ($k=3$), $0.00072$ ($k=2$), and less than $10^{-5}$ for $k\le1$. Their sum is about $0.08350$, so
+\[P\approx0.7125\cdot0.08350\approx\boxed{0.0595}.\]

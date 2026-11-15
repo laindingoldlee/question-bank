@@ -1,0 +1,22 @@
+Take $O=(0,0)$, $A=(1,0)$ and $D=(-1,0)$. Then $R=(-\dfrac{1}{2},0)$ and $S=(-\dfrac{3}{4},0)$.
+
+For a perpendicular chord at $x=a$, the endpoints are $B=(a,\sqrt{1-a^2})$ and $C=(a,-\sqrt{1-a^2})$. Thus
+\[
+AB^2=AC^2=(1-a)^2+1-a^2=2-2a,\qquad BC^2=4(1-a^2).
+\]
+With the line through $S$, $a=-\dfrac{3}{4}$, giving $AB^2=AC^2=\dfrac{7}{2}$ and $BC^2=\dfrac{7}{4}$. These are unequal, so the triangle is \textbf{not equilateral}.
+
+With the line through $R$, $a=-\dfrac{1}{2}$, all three squared side lengths equal $3$. That triangle \textbf{is equilateral}, with side length $\sqrt3$.
+
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(260);
+defaultpen(fontsize(9pt));
+real a=-1/2;pair O=(0,0),A=(1,0),D=(-1,0),B=(a,sqrt(1-a*a)),C=(a,-sqrt(1-a*a));draw(circle(O,1));draw(D--A,dashed);draw(A--B--C--cycle);dot(O);label("$O$",O,(0,-1));label("$A$",A,(1,0));label("$D$",D,(-1,0));label("$B$",B,(0,1));label("$C$",C,(0,-1));label("$R$",(a,0),(1,0));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(260);
+defaultpen(fontsize(9pt));
+real a=-3/4;pair O=(0,0),A=(1,0),D=(-1,0),B=(a,sqrt(1-a*a)),C=(a,-sqrt(1-a*a));draw(circle(O,1));draw(D--A,dashed);draw(A--B--C--cycle);dot(O);label("$O$",O,(0,-1));label("$A$",A,(1,0));label("$D$",D,(-1,0));label("$B$",B,(0,1));label("$C$",C,(0,-1));label("$S$",(a,0),(1,0));
+\end{asy}

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1507169_help_on_math_set
+% Stable identity: aops-topic-1507169-q01
+Let level $k$ contain $n_k$ cubes, $k=1,\dots,h$, so $n_1+\cdots+n_h=8$ and all $n_k\ge1$. Each cube on level $k+1$ rests on a different cube of level $k$, so
+\[
+n_1\ge n_2\ge\cdots\ge n_h\ge1 .
+\]
+Conversely, every such sequence is possible: put the $n_k$ cubes of level $k$ in a row above the first $n_k$ cubes of the row below. The score is $n_1h$, where $n_1$ is the bottom area.
+
+For a given $h$, the bottom level can have any size from $\left\lceil\dfrac{8}{h}\right\rceil$ (the levels cannot exceed $n_1$, so $hn_1\ge8$) to $8-(h-1)=9-h$ (all upper levels single cubes), and every value between is possible. The possible scores are:
+\[
+\begin{array}{c|c|c}
+h & n_1 & n_1h\\\hline
+1 & 8 & 8\\
+2 & 4,\dots,7 & 8,10,12,14\\
+3 & 3,\dots,6 & 9,12,15,18\\
+4 & 2,\dots,5 & 8,12,16,20\\
+5 & 2,3,4 & 10,15,20\\
+6 & 2,3 & 12,18\\
+7 & 2 & 14\\
+8 & 1 & 8
+\end{array}
+\]
+The distinct scores are $8,9,10,12,14,15,16,18,20$: nine of them. So there were at most $\boxed{9}$ competitors, and the winning score was at most $\boxed{20}$ (for example $5$ cubes on the floor with a column of $3$ on top, or $4$ on the floor with a column of $4$ on top). If there were exactly $9$ competitors, the winner scored exactly $20$.

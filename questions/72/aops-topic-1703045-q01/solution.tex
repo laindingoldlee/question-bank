@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1703045_postage_problem
+% Stable identity: aops-topic-1703045-q01
+An amount is $4a+7b$ with $0\le a\le35$, $0\le b\le20$, not both zero. The largest amount is $4\cdot35+7\cdot20=280$.
+
+\textbf{When do two choices give the same amount?} If $4a+7b=4a'+7b'$, then $4(a-a')=7(b'-b)$, so $7\mid a-a'$ and $4\mid b'-b$: the choices differ by trading $7$ four-cent stamps for $4$ seven-cent stamps. So every amount has a unique representation with $0\le a\le6$, if we allow $b$ to be as large as needed; then $b=\dfrac{N-4a}{7}$.
+
+\textbf{Count by the remainder $a\in\{0,\dots,6\}$.} Write a general choice as $a=a_0+7k$ with $0\le a_0\le6$. Trading back, the amount $N=4a_0+7B$ (with $B=b+4k$) can be made exactly when $B$ can be split as $B=b+4k$ with $0\le b\le20$ and $0\le a_0+7k\le35$, that is $0\le k\le K(a_0)$ where $K(a_0)=\left\lfloor\dfrac{35-a_0}{7}\right\rfloor$. So the attainable $B$ are $0\le B\le20+4K(a_0)$, all of them (the ranges for consecutive $k$ overlap since $4<20$).
+\begin{itemize}
+\item $a_0=0$: $K=5$, so $B=0,\dots,40$: $41$ values, but $B=0$ gives the amount $0$, which does not count: $40$ amounts.
+\item $a_0=1,\dots,6$: $K=4$, so $B=0,\dots,36$: $37$ values each, $6\cdot37=222$ amounts.
+\end{itemize}
+Amounts with different $a_0$ are different (they differ modulo $7$, since $4a_0$ runs through distinct residues), so the total is $40+222=\boxed{262}$.

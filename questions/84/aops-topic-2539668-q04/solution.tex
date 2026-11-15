@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2539668_tringel_problems
+% Stable identity: aops-topic-2539668-q04
+Let $\angle A=\alpha$ and let $s=AD=DE=EB=BC$.
+
+Triangle $ADE$ is isosceles with $DA=DE$, so $\angle DEA=\angle DAE=\alpha$, and $\angle ADE=180^\circ-2\alpha$. Its base is $AE=2s\cos\alpha$, so
+\[AB=AE+EB=s\left(2\cos\alpha+1\right).\]
+In the isosceles triangle $ABC$ the base is $BC=2\,AB\sin\dfrac\alpha2$, so $s=2s\left(2\cos\alpha+1\right)\sin\dfrac\alpha2$, i.e.
+\[2\sin\dfrac\alpha2\left(1+2\cos\alpha\right)=1.\]
+Using $\sin3x=\sin x\left(3-4\sin^2x\right)=\sin x\left(1+2\cos2x\right)$ with $x=\dfrac\alpha2$, this says $2\sin\dfrac{3\alpha}2=1$, so $\dfrac{3\alpha}{2}=30^\circ$ or $150^\circ$, i.e. $\alpha=20^\circ$ or $\alpha=100^\circ$. The angle $\alpha=100^\circ$ is impossible, because triangle $ADE$ has two angles equal to $\alpha$. So $\alpha=20^\circ$ and
+\[\angle ADE=180^\circ-40^\circ=\boxed{140^\circ}.\]
+(Conversely, for $\alpha=20^\circ$ the points $D$ and $E$ with $AD=EB=BC$ do lie on the sides, since $AB=s(2\cos20^\circ+1)>s$, and then $DE=s$ by the same computation, so the configuration exists.)
+
+\begin{asy}
+usepackage("amsmath");
+size(3.2cm);
+defaultpen(fontsize(10pt));
+pair B=(-0.5,0),C=(0.5,0),A=(0,0.5/Tan(10));
+pair D=A+unit(C-A),Ep=B+unit(A-B);
+draw(A--B--C--cycle,linewidth(0.8));draw(D--Ep);
+dot(D);dot(Ep);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,E);label("$E$",Ep,W);
+void tick(pair P,pair Q){pair M=(P+Q)/2,u=unit(Q-P)*0.07;draw(M+rotate(90)*u--M-rotate(90)*u);}
+tick(A,D);tick(D,Ep);tick(Ep,B);tick(B,C);
+draw(arc(A,0.35,degrees(B-A),degrees(C-A)));label("$20^\circ$",A+(0.12,-0.2),E,fontsize(8pt));
+\end{asy}

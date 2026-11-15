@@ -1,0 +1,37 @@
+Let $u=(1,a,1)$, $v=(a,1,1)$, and $b=(1,1,a)$. Their cross product and scalar triple product are
+\[
+u\times v=(a-1)(1,1,-a-1),\qquad b\cdot(u\times v)=-(a-1)^2(a+2).
+\]
+At $a=1$ the lines coincide, since $b=u=v$. For $a\ne1$ they are not parallel; they intersect exactly when $a=-2$. In that case $t=-1,s=1$ gives the intersection $(-1,2,-1)$. Thus they are skew exactly for $\boxed{a\notin\{1,-2\}}$.
+
+Write the perpendicular's endpoints as $P=tu$, $Q=b+sv$. Orthogonality requires
+\[
+(b+sv-tu)\cdot u=(b+sv-tu)\cdot v=0.
+\]
+Here $u^2=v^2=a^2+2$, $u\cdot v=2a+1$, and $b\cdot u=b\cdot v=2a+1$. Subtracting the two equations gives $(a-1)^2(t+s)=0$. Solving gives
+\[
+t=\dfrac{2a+1}{a^2+2a+3},\qquad s=-t.
+\]
+Consequently the required line is
+\[
+\boxed{(x,y,z)=\dfrac{2a+1}{a^2+2a+3}(1,a,1)+\lambda(1,1,-a-1),\quad\lambda\in\mathbb R.}
+\]
+The constructed endpoints lie on the given lines and their difference is orthogonal to both directions, proving the assertion.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair pr(real x,real y,real z){return (x+.4*z,y+.25*z);}real a=0,t=1./3;pair U=pr(1,a,1),V=pr(a,1,1),B=pr(1,1,a),P=t*U,Q=B-t*V;draw(-U--2U);draw(B-V--B+V);draw(P--Q,blue);dot(P);dot(Q);label("$P$",P,(0,-1));label("$Q$",Q,(1,0));label("$L_1$",2U);label("$L_2$",B+V);label("$a=0$: skew",(0,-1.7));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw((-2,-1)--(2,1));label("$L_1=L_2$",(1,1));label("$a=1$: coincident",(0,-1.6));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair P=(0,0);draw((-2,1)--(2,-1));draw((-1,-1)--(1,1));dot(P);label("$(-1,2,-1)$",P,(0,-1));label("$L_1$",(2,-1));label("$L_2$",(1,1));label("$a=-2$: intersecting",(0,-1.8));
+\end{asy}

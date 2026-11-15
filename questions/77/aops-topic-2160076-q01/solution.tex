@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2160076_decryption_problem
+% Stable identity: aops-topic-2160076-q01
+\textbf{(a)} $437=19\cdot23$, so $\varphi(437)=18\cdot22=396$. The Euclidean algorithm gives $396=23\cdot17+5$, $17=3\cdot5+2$, $5=2\cdot2+1$, and working backwards
+\[1=5-2\cdot2=7\cdot5-2\cdot17=7\cdot396-163\cdot17 .\]
+So $17\cdot(-163)\equiv1\pmod{396}$, and $d=396-163=\boxed{233}$. Indeed $17\cdot233=3961=1+10\cdot396$.
+
+Now $ed=1+3960$ with $3960=18\cdot220=22\cdot180$. Modulo the prime $19$: if $19\mid m$ both $m^{ed}$ and $m$ are $0$; otherwise Fermat's little theorem gives $m^{18}\equiv1$, so $m^{ed}=m\left(m^{18}\right)^{220}\equiv m$. In the same way $m^{ed}=m\left(m^{22}\right)^{180}\equiv m\pmod{23}$. Since $19$ and $23$ are different primes, $m^{ed}\equiv m\pmod{437}$, and so $c^d\equiv m^{ed}\equiv m$. (This also covers codes such as $114=6\cdot19$ and $115=5\cdot23$ that share a factor with $437$.)
+
+\textbf{(b)} Compute $c^{233}$ modulo $437$ for each $c$. By hand it is easiest to work modulo $19$ and $23$ separately, using $233\equiv17\pmod{18}$ and $233\equiv13\pmod{22}$. For the first number: $97\equiv2\pmod{19}$ and $2^{17}\equiv2^{-1}\equiv10\pmod{19}$; $97\equiv5\pmod{23}$ and $5^{13}=5^8\cdot5^4\cdot5\equiv16\cdot4\cdot5\equiv21\pmod{23}$. The number below $437$ that is $10$ modulo $19$ and $21$ modulo $23$ is $67$, which is C. All sixteen numbers decrypt as follows:
+\[\begin{array}{c|cccccccccccccccc}
+c&97&44&261&221&114&314&162&317&326&314&162&420&44&261&115&224\\\hline
+m&67&111&110&103&114&97&116&117&108&97&116&105&111&110&115&33\\
+&\text{C}&\text{o}&\text{n}&\text{g}&\text{r}&\text{a}&\text{t}&\text{u}&\text{l}&\text{a}&\text{t}&\text{i}&\text{o}&\text{n}&\text{s}&\text{!}
+\end{array}\]
+The message is \boxed{\text{Congratulations!}}

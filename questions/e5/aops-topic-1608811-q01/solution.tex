@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1608811_isosceles_trapezoid
+% Stable identity: aops-topic-1608811-q01
+Let $M$ be the midpoint of the other leg $CD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real h=sqrt(4-0.25);
+pair A=(0,0),D=(1.5,0),B=(0.5,h),C=(1,h);
+pair X=(A+B)/2,M=(C+D)/2;
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(C--X--D,blue);
+draw(X--M,red+dashed);
+pair u=unit(C-X),v=unit(D-X);real s=0.12;
+draw(X+s*u--X+s*(u+v)--X+s*v,blue);
+dot(X);dot(M,red);
+label("$A$",A,SW);label("$B$",B,NW);label("$C$",C,NE);label("$D$",D,SE);
+label("$X$",X,W);label("$M$",M,E,red);
+pair t=unit(rotate(90)*(B-A));
+label("$1$",(A+X)/2+0.17t);label("$1$",(X+B)/2+0.17t);
+draw((A+X)/2-0.05t--(A+X)/2+0.05t);draw((X+B)/2-0.05t--(X+B)/2+0.05t);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The midline.} $XM$ joins the midpoints of the legs, so it is the midline of the trapezoid: $XM=\dfrac{AD+BC}{2}$.
+
+\textbf{The right angle.} In the right triangle $CXD$ (right angle at $X$), $M$ is the midpoint of the hypotenuse $CD$, so it is the centre of the circle through $C$, $X$, $D$ and $XM=MC=MD=\dfrac{CD}{2}$.
+
+\textbf{Combine.} The trapezoid is isosceles, so $CD=AB=2BX=2$. Hence
+\[
+\dfrac{AD+BC}{2}=XM=\dfrac{CD}{2}=1,\qquad AD+BC=2,
+\]
+and the perimeter is $AB+CD+(AD+BC)=2+2+2=\boxed{6}$.
+
+(The data do not fix the shape: any isosceles trapezoid with legs $2$ and bases adding up to $2$ works, for example bases $\dfrac{1}{2}$ and $\dfrac{3}{2}$ as in the figure. The perimeter is the same for all of them.)

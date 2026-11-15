@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3248919_2024_emcc_individual_speed_test__exeter_math_club_competition
+% Stable identity: aops-topic-3248919-q08
+The cut must run along a full interior row or column boundary. A rectangle of width $k$ and height $8$ contains $4k$ black squares. Both pieces need at least nine, so $k\ge3$ and $8-k\ge3$, giving $k=3,4,5$. There are three vertical and three horizontal cuts, for $\boxed6$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=0;i<8;++i)for(int j=0;j<8;++j){path p=(i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle;filldraw(p,((i+j)%2==0)?gray:white);}draw((3,0)--(3,8),red+linewidth(2));label("$3$",(1.5,-0.5));label("$5$",(5.5,-0.5));
+\end{asy}

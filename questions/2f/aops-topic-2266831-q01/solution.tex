@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2266831_probability___casework
+% Stable identity: aops-topic-2266831-q01
+For each of the $10$ equally likely outcomes of rounds 1 and 2 (probability $\dfrac1{10}$ each), let $N$ be the number of tickets still in the draw and $M$ the number of those that have three digits. Given the outcome, your ticket is still in with probability $\dfrac{M}{900}$, and then wins with probability $\dfrac1N$. So
+\[P(\text{win})=\sum\dfrac1{10}\cdot\dfrac{M}{900}\cdot\dfrac1N=\dfrac{1}{9000}\sum\dfrac MN,\]
+the sum running over the outcomes with $N>0$. Counting multiples of $k$ with the given parity among $1,\dots,999$ and among $100,\dots,999$:
+\begin{center}
+\begin{tabular}{c|cccccccccc}
+$k$, letter & 1E & 1O & 2E & 2O & 3E & 3O & 4E & 4O & 5E & 5O\\
+\hline
+$N$ & 499 & 500 & 499 & 0 & 166 & 167 & 249 & 0 & 99 & 100\\
+$M$ & 450 & 450 & 450 & 0 & 150 & 150 & 225 & 0 & 90 & 90
+\end{tabular}
+\end{center}
+(For example, the multiples of $3$ that are even are the multiples of $6$: there are $166$ up to $999$ and $\dfrac{996-102}{6}+1=150$ with three digits. The outcomes 2O and 4O leave no ticket.) Hence
+\[P(\text{win})=\dfrac1{9000}\left(\dfrac{900}{499}+\dfrac{450}{500}+\dfrac{150}{166}+\dfrac{150}{167}+\dfrac{225}{249}+\dfrac{90}{99}+\dfrac{90}{100}\right)=\boxed{\dfrac{2745886211}{3423736305000}}\approx0.000802.\]

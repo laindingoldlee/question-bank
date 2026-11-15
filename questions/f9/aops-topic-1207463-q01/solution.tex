@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1207463_mathcounts_question_better_solution
+% Stable identity: aops-topic-1207463-q01
+The pairwise intersections are: $2x+y=8$ and $2x-5y=20$ give $(5,-2)$; $2x+y=8$ and $x+y=10$ give $(-2,12)$; $2x-5y=20$ and $x+y=10$ give $(10,0)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair P=(5,-2),Q=(-2,12),R=(10,0); filldraw(P--Q--R--cycle,lightblue,blue);
+draw((-3,14)--(6,-4),gray); draw((-3,-5.2)--(12,0.8),gray); draw((-3,13)--(12,-2),gray);
+dot(P);dot(Q);dot(R); label("$(5,-2)$",P,S); label("$(-2,12)$",Q,W); label("$(10,0)$",R,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the shoelace formula the triangle has area
+\[\dfrac{1}{2}\left|5(12-0)+(-2)(0-(-2))+10(-2-12)\right|=\dfrac{1}{2}|60-4-140|=\boxed{42}.\]

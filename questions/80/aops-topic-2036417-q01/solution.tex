@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h2036417_volume_of_a_rectangle_rotated_about_diagonal
+% Stable identity: aops-topic-2036417-q01
+Put the axis \(AC\) on the \(t\)-axis with \(A\) at \(t=0\) and \(C\) at \(t=\sqrt5\). The rectangle is made of triangles \(ABC\) and \(ACD\) on opposite sides of \(AC\). Rotating, only the distance of each point from the axis matters, so we may reflect triangle \(ACD\) across \(AC\) to \(ACD'\) on the same side as \(B\). The solid is obtained by rotating the union of triangles \(ABC\) and \(AD'C\), i.e. the region under the upper envelope (red) of the two triangles.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real L=sqrt(5);
+// axis AC horizontal from (0,0) to (L,0); B above, D below, then reflect D's triangle above for the profile
+real h=2/sqrt(5);
+pair A=(0,0), C=(L,0), B=(4/sqrt(5),h), D=(1/sqrt(5),-h), Dr=(1/sqrt(5),h);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--Dr--C,dashed+gray);
+fill(A--Dr--(L/2,L/4)--B--C--(L/2,-L/4)--D--cycle,paleblue+opacity(0.3));
+draw((-0.3,0)--(L+0.3,0),dashdotted);
+draw(A--Dr--(L/2,L/4)--B--C,red+linewidth(1));
+dot(A);dot(B);dot(C);dot(D);dot(Dr);dot((L/2,L/4));
+label("$A$",A,NW); label("$C$",C,NE); label("$B$",B,N); label("$D$",D,S); label("$D'$",Dr,N); label("$K$",(L/2,L/4),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Both triangles have height \(h=\dfrac{AB\cdot BC}{AC}=\dfrac{2}{\sqrt5}\) over \(AC\). The foot of the perpendicular from \(B\) is at \(t=\dfrac{AB^2}{AC}=\dfrac{4}{\sqrt5}\), and that from \(D'\) at \(t=\dfrac{AD^2}{AC}=\dfrac{1}{\sqrt5}\). Thus side \(AB\) is the line \(r=\dfrac {t}{2}\) and side \(D'C\) is the line \(r=\dfrac{\sqrt5-t}{2}\); side \(AD'\) is \(r=2t\) for \(0\le t\le\dfrac{1}{\sqrt5}\). The lines \(AB\) and \(D'C\) cross at \(K\), where \(t=\dfrac{\sqrt5}{2}\) (the centre of the rectangle) and \(r=\dfrac{\sqrt5}{4}\). By the symmetry \(t\mapsto\sqrt5-t\), the envelope is
+\[
+r(t)=\begin{cases}2t,&0\le t\le\dfrac{1}{\sqrt5},\\[2mm] \dfrac{\sqrt5-t}{2},&\dfrac{1}{\sqrt5}\le t\le\dfrac{\sqrt5}{2},\end{cases}
+\]
+mirrored on the other half. Hence
+\[
+V=2\pi\left(\int_0^{\dfrac{1}{\sqrt5}}4t^2\,dt+\int_{\dfrac{1}{\sqrt5}}^{\dfrac{\sqrt5}{2}}\dfrac{(\sqrt5-t)^2}{4}\,dt\right).
+\]
+The first integral is \(\dfrac{4}{3}\cdot\dfrac{1}{5\sqrt5}=\dfrac{4}{15\sqrt5}\). For the second, with \(u=\sqrt5-t\) running from \(\dfrac{4}{\sqrt5}\) down to \(\dfrac{\sqrt5}{2}\),
+\[
+\dfrac{1}{12}\left(\left(\dfrac{4}{\sqrt5}\right)^3-\left(\dfrac{\sqrt5}{2}\right)^3\right)=\dfrac{1}{12}\left(\dfrac{64}{5\sqrt5}-\dfrac{5\sqrt5}{8}\right)=\dfrac{1}{12}\cdot\dfrac{387}{40\sqrt5}=\dfrac{129}{160\sqrt5}.
+\]
+So
+\[
+V=2\pi\left(\dfrac{128}{480\sqrt5}+\dfrac{387}{480\sqrt5}\right)=2\pi\cdot\dfrac{515}{480\sqrt5}=\dfrac{103\pi}{48\sqrt5}=\boxed{\dfrac{103\sqrt5\,\pi}{240}}\approx3.015 .
+\]
+(Equivalently, the solid is a union of cones: two cones of radius \(\dfrac{2}{\sqrt5}\) with heights \(\dfrac{1}{\sqrt5}\), plus two frustum-like pieces up to the circle of radius \(\dfrac{\sqrt5}{4}\) at the centre.)

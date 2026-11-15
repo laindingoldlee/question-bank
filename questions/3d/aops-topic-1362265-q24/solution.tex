@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1362265_2015_state_mathcounts_sprint_24
+% Stable identity: aops-topic-1362265-q24
+Let $\angle BAE=x$; then $\angle AEB=90^\circ-x$.
+
+Since $BA=BC$, triangle $ABC$ is isosceles, so $\angle BCA=x$. Since $DC=DE$, triangle $CDE$ is isosceles, so $\angle DCE=\angle DEC=90^\circ-x$. The angles at $C$ along the straight line $AE$ give
+\[
+\angle BCD=180^\circ-x-(90^\circ-x)=90^\circ .
+\]
+So triangle $BCD$ is a right triangle with $CB=CD=1$; it is isosceles, so $\angle CBD=45^\circ$. In triangle $ABC$, $\angle ABC=180^\circ-2x$, and $\angle ABC+\angle CBD=\angle ABE=90^\circ$, so
+\[
+180^\circ-2x+45^\circ=90^\circ\quad\Longrightarrow\quad x=\boxed{67.5}\text{ degrees}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), A=(0,1), Ep=(1+sqrt(2),0), D=(sqrt(2),0), C=(sqrt(2)/2,sqrt(2)/2);
+draw(A--B--Ep--cycle,linewidth(0.9));
+draw(B--C--D,linewidth(0.9));
+draw(B+(0.09,0)--B+(0.09,0.09)--B+(0,0.09));
+pair u=unit(B-C), v=unit(D-C); draw(C+0.09*u--C+0.09*(u+v)--C+0.09*v,red);
+draw(arc(A,0.22,-90,-22.5),blue); label("$x$",A+0.32*dir(-56),blue);
+draw(arc(C,0.2,157.5,225),blue); label("$x$",C+0.31*dir(191),blue);
+draw(arc(Ep,0.42,157.5,180),deepgreen); label("$22.5^\circ$",Ep+0.55*dir(170),W,deepgreen+fontsize(8pt));
+dot(C);dot(D);
+label("$A$",A,N); label("$B$",B,SW); label("$E$",Ep,SE); label("$C$",C,NE); label("$D$",D,S);
+label("$1$",(A+B)/2,W); label("$1$",(B+C)/2,SE); label("$1$",(C+D)/2,NE); label("$1$",(D+Ep)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check: $BD=\sqrt2$, so $BE=1+\sqrt2$ and $\tan\angle BAE=\dfrac{BE}{AB}=1+\sqrt2=\tan67.5^\circ$. (In the figure, $\angle AEB=22.5^\circ$ and $\angle BCD=90^\circ$.)

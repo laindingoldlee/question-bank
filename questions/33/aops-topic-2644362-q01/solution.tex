@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2644362_the_argentine_ant_problem
+% Stable identity: aops-topic-2644362-q01
+Every day adds a multiple of $60$ ants, so after $n$ days there are $T_n=1+60m_n$ ants for an integer $m_n$, with $m_0=0$. Since
+\[\dfrac{1+60m}{120}=\dfrac m2+\dfrac{1}{120}\]
+and $\dfrac m2$ has fractional part $0$ or $\dfrac12$, the number of queens at the end of day $n$ is $1+\left\lfloor\dfrac{m_n}{2}\right\rfloor$. Each of them adds $60$ ants the next day, so
+\[m_{n+1}=m_n+1+\left\lfloor\dfrac{m_n}{2}\right\rfloor .\]
+Starting from $m_0=0$:
+\[m_1,\dots,m_{10}=1,\ 2,\ 4,\ 7,\ 11,\ 17,\ 26,\ 40,\ 61,\ 92 .\]
+(This reproduces $61$, $121$, $241$ ants after days $1$, $2$, $3$.) After day $10$ there are $1+60\cdot92=\boxed{5521}$ ants.
+
+(Because of the floor function there is no simple closed formula for general $n$; $m_n$ grows roughly like a constant times $\left(\dfrac32\right)^n$.)

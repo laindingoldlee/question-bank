@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1328569_polygon_angles
+% Stable identity: aops-topic-1328569-q01
+The interior angles of an $n$-gon add to $(n-2)\cdot180^\circ$ (it splits into $n-2$ triangles from one vertex), so each angle of a regular $n$-gon is $\dfrac{(n-2)180^\circ}{n}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+path oct=rotate(22.5)*polygon(8); path hx=shift(2.6,0)*polygon(6);
+draw(oct,linewidth(0.9)); draw(hx,linewidth(0.9));
+label("$135^\circ$",dir(22.5+45*2)*0.72,fontsize(8pt)); label("$120^\circ$",(2.6,0)+dir(120)*0.7,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The octagon's angle is $\dfrac{6\cdot180^\circ}{8}=135^\circ$ and the hexagon's is $\dfrac{4\cdot180^\circ}{6}=120^\circ$. The ratio is $\dfrac{135}{120}=\dfrac{9}{8}$, answer $\boxed{\textbf{(B)}}$.

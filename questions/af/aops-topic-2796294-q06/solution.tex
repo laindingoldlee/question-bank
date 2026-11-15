@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2796294_2017_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2796294-q06
+Place $B=(0,0)$, $A=(0,3)$, with $D$ and $C=(5,0)$ on the positive $x$-axis.
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),A=(0,3),D=(9,0),C=(5,0),Ep=(1.8,2.4);
+draw(A--B--D--cycle);draw(B--Ep);draw(Ep--C);
+draw(B+(0.4,0)--B+(0.4,0.4)--B+(0,0.4));
+label("$A$",A,N);label("$B$",B,SW);label("$D$",D,SE);label("$C$",C,S);label("$E$",Ep,NE);
+label("$3$",(0,1.5),W);label("$5$",(2.5,0),S);
+\end{asy}
+
+Since $\angle BEC=90^\circ$, $E$ lies on the circle with diameter $BC$: $x^2-5x+y^2=0$. Also $BE=3$: $x^2+y^2=9$. Subtracting, $5x=9$, so $E=\left(\dfrac95,\dfrac{12}5\right)$ (taking $y>0$, as $E$ is on $AD$).
+
+Line $AE$ has slope $\dfrac{\dfrac{12}5-3}{\dfrac95}=-\dfrac13$, so it meets the $x$-axis at $D=(9,0)$ (and $C$ lies between $B$ and $D$). Therefore $AD=\sqrt{9^2+3^2}=\boxed{3\sqrt{10}}$.

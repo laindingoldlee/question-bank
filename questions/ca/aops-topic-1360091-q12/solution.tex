@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1360091_12_alg_yay
+% Stable identity: aops-topic-1360091-q12
+Write $E=2+y$, where $y$ is the first radical. The signs inside $y$ are $+,+,-,-,+$ and then repeat, so
+\[
+y=\sqrt{2+\sqrt{2+\sqrt{2-\sqrt{2-\sqrt{2+y}}}}}\,,\qquad 0\le y\le2 .
+\]
+(The map on the right sends $[0,2]$ into $[0,2]$ and is a contraction there, so the truncations converge to its unique fixed point.) Put $y=2\cos t$ with $0\le t\le\dfrac{\pi}{2}$ and use $\sqrt{2+2\cos\theta}=2\cos\dfrac{\theta}{2}$ and $\sqrt{2-2\cos\theta}=2\sin\dfrac{\theta}{2}$ for $0\le\theta\le\pi$, working from the inside out:
+\[
+\sqrt{2+y}=2\cos\dfrac{t}{2},\qquad \sqrt{2-2\cos\dfrac{t}{2}}=2\sin\dfrac{t}{4}=2\cos\left(\dfrac{\pi}{2}-\dfrac{t}{4}\right),
+\]
+\[
+\sqrt{2-2\cos\left(\dfrac{\pi}{2}-\dfrac{t}{4}\right)}=2\sin\left(\dfrac{\pi}{4}-\dfrac{t}{8}\right)=2\cos\left(\dfrac{\pi}{4}+\dfrac{t}{8}\right),
+\]
+\[
+\sqrt{2+2\cos\left(\dfrac{\pi}{4}+\dfrac{t}{8}\right)}=2\cos\left(\dfrac{\pi}{8}+\dfrac{t}{16}\right),\qquad \sqrt{2+2\cos\left(\dfrac{\pi}{8}+\dfrac{t}{16}\right)}=2\cos\left(\dfrac{\pi}{16}+\dfrac{t}{32}\right).
+\]
+So $2\cos t=2\cos\left(\dfrac{\pi}{16}+\dfrac{t}{32}\right)$ with both angles in $\left[0,\dfrac{\pi}{2}\right]$, hence $t=\dfrac{\pi}{16}+\dfrac{t}{32}$ and $t=\dfrac{2\pi}{31}$. Therefore
+\[
+E=2+2\cos\dfrac{2\pi}{31}=4\cos^2\dfrac{\pi}{31}\approx3.9591,
+\]
+so $a=4$, $c=31$, and $a\cdot2\cdot c^2=8\cdot961=\boxed{7688}$.

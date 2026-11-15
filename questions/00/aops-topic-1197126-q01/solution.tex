@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1197126_geo_prob
+% Stable identity: aops-topic-1197126-q01
+A parallelogram is a quadrilateral with \emph{both} pairs of opposite sides parallel. A trapezoid has exactly one pair of parallel sides (the bases $AB$ and $CD$ below), so its legs $AD$ and $BC$ are not parallel; hence it is never a parallelogram, whatever the lengths of its sides.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(8,0),C=(6,3),D=(2,3); draw(A--B--C--D--cycle,linewidth(0.9)); label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+draw(D--A,blue+linewidth(1.2)); draw(B--C,blue+linewidth(1.2));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Magda's reasoning fails because having one pair of congruent opposite sides does not make a quadrilateral a parallelogram: in an isosceles trapezoid the congruent sides are the legs, and they are not parallel. (A correct test is that \emph{both} pairs of opposite sides are congruent, or that one pair is both congruent \emph{and} parallel.)

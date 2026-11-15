@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1582862_17_geometry_questions
+% Stable identity: aops-topic-1582862-q08
+In one orbit the satellite travels the circumference of its orbit:
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+fill(circle(O,0.6),paleblue);draw(circle(O,0.6));label("Earth",O,fontsize(8pt));
+draw(circle(O,2.4),dashed);
+pair s=2.4*dir(40);dot(s);label("satellite",s,NE);
+draw(0.6*dir(40)--s);label("$4.23\times10^{7}$ m",0.62*s+0.12*dir(130),dir(130),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Not to scale.)
+\[
+2\pi\cdot4.23\times10^7\approx2.65779\times10^8\text{ m}.
+\]
+One orbit takes $23.93\cdot3600=86{,}148$ seconds, so the speed is
+\[
+\dfrac{2.65779\times10^8}{86{,}148}\approx\boxed{3085\text{ m per second}}
+\]
+(about $3.09$ km per second).

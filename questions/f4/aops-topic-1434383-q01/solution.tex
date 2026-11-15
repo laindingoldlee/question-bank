@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1434383_good_geometry
+% Stable identity: aops-topic-1434383-q01
+Let the octagon $A_1A_2\dots A_8$ have centre $O$ and circumradius $R$. Consecutive vertices subtend $\dfrac{360^\circ}{8}=45^\circ$ at $O$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=2; pair[] V; for(int i=0;i<8;++i) V.push(R*dir(90+45*i));
+pair O=(0,0);
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--V[7]--cycle,linewidth(0.9));
+draw(V[0]--V[4],red+linewidth(0.8)); draw(V[0]--V[2],blue+linewidth(0.8));
+draw(O--V[2],gray+dashed); draw(O--V[3],gray+dashed);
+draw(arc(O,0.35,180,225));
+dot(O);
+string[] nm={"A_1","A_2","A_3","A_4","A_5","A_6","A_7","A_8"};
+for(int i=0;i<8;++i){dot(V[i]); label("$"+nm[i]+"$",V[i],dir(90+45*i));}
+label("$O$",O,E); label("$45^\circ$",O+0.85*dir(202.5),fontsize(8pt));
+label("$2R$",(V[0]+V[4])/2+(0,-0.75),E,red); label("$R\sqrt{2}$",(V[0]+V[2])/2+0.45*dir(-45),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Area.} The octagon is made of $8$ triangles $OA_kA_{k+1}$, each with two sides $R$ and included angle $45^\circ$, so
+\[
+\text{Area}=8\cdot\dfrac{1}{2}R^2\sin45^\circ=4R^2\cdot\dfrac{\sqrt2}{2}=2\sqrt2\,R^2 .
+\]
+\textbf{Diagonals.} A chord subtending a central angle $\theta$ has length $2R\sin\dfrac{\theta}{2}$, which increases with $\theta$ for $0^\circ<\theta\le180^\circ$. The diagonals subtend $90^\circ$, $135^\circ$ or $180^\circ$. The longest diagonal, such as $A_1A_5$, is a diameter: length $2R$. The shortest one, such as $A_1A_3$, subtends a right angle at $O$, so it is the hypotenuse of the isosceles right triangle $OA_1A_3$: length $R\sqrt2$.
+
+\textbf{Product.} $2R\cdot R\sqrt2=2\sqrt2\,R^2$, which is the area. $\blacksquare$

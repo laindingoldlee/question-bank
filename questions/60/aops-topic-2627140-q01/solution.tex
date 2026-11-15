@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2627140_dihedral_tetrahedral_angles
+% Stable identity: aops-topic-2627140-q01
+Take a regular tetrahedron $ABCD$ with edge $2$ and let $M$ be the midpoint of $\overline{AB}$. In the equilateral faces $ABC$ and $ABD$, the medians $CM$ and $DM$ are perpendicular to $AB$ and have length $\sqrt3$, so the dihedral angle along $AB$ is $\theta=\angle CMD$:
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(2.4,-0.5),C=(3.3,0.7);pair G=(A+B+C)/3;pair D=(G.x-0.1,2.6);pair M=(A+B)/2;
+draw(A--B--D--cycle,linewidth(0.8));draw(B--C--D,linewidth(0.8));draw(A--C,dashed);
+draw(D--M);draw(C--M,dashed);
+draw(arc(M,0.35,degrees(C-M),degrees(D-M)));label("$\theta$",M+0.55*dir((degrees(C-M)+degrees(D-M))/2));
+label("$A$",A,W);label("$B$",B,S);label("$C$",C,E);label("$D$",D,N);label("$M$",M,S);
+label("$\sqrt3$",(D+M)/2,W);label("$\sqrt3$",M+0.63*(C-M),rotate(-90)*unit(C-M),fontsize(8pt));label("$2$",(D+C)/2,NE);
+\end{asy}
+
+By the law of cosines in triangle $CMD$ with $CD=2$:
+\[4=3+3-2\cdot3\cos\theta,\qquad\cos\theta=\boxed{\textbf{(C) }\dfrac13}.\]

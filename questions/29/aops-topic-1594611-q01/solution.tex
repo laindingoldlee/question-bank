@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1594611_combo_problem
+% Stable identity: aops-topic-1594611-q01
+Let $a_n$ be the number of good strings of length $n$ (strings not containing $42$), and split them by the last digit: $f_n$ end in $4$ and $g_n$ do not.
+
+A good string of length $n+1$ is a good string of length $n$ followed by one more digit, which must not be $2$ if the string ends in $4$. Hence
+\[
+f_{n+1}=f_n+g_n,\qquad g_{n+1}=8f_n+9g_n ,
+\]
+starting from $f_1=1$, $g_1=9$. Computing:
+\[
+\begin{array}{c|cccccccccc}
+n&1&2&3&4&5&6&7&8&9&10\\\hline
+f_n&1&10&99&980&9701&96030&950599&9409960&93149001&922080050\\
+g_n&9&89&881&8721&86329&854569&8459361&83739041&828931049&8205571449
+\end{array}
+\]
+So $a_{10}=f_{10}+g_{10}=922080050+8205571449=\boxed{9127651499}$.
+
+(Equivalently $a_{n+1}=10a_n-a_{n-1}$ with $a_0=1$, $a_1=10$: subtract from $10a_n$ the strings ending in $42$, whose first $n-1$ digits form a good string. So $10^{10}-a_{10}=872348501$ phone numbers do contain $42$.)

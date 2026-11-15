@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2738392_a_few_easy_trig_questions_i_made
+% Stable identity: aops-topic-2738392-q03
+Dividing $\sin^2\theta+\cos^2\theta=1$ by $\cos^2\theta$ gives $\tan^2\theta+1=\sec^2\theta$, and dividing by $\sin^2\theta$ gives $1+\cot^2\theta=\csc^2\theta$. (Geometrically, the tangent at $T$ to the unit circle meets the axis at $S$ with $OS=\sec\theta$ and $TS=\tan\theta$, and $OTS$ is right-angled at $T$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+real t=40;pair O=(0,0),T=dir(t),S=(1/Cos(t),0);
+draw(arc(O,1,-10,100),gray);draw(O--S,linewidth(0.8));draw(O--T);draw(T--S,linewidth(1));
+draw(T+0.1*dir(t+180)--T+0.1*dir(t+180)+0.1*dir(t-90)--T+0.1*dir(t-90));
+label("$O$",O,SW);label("$T$",T,N);label("$S$",S,SE);label("$1$",(O+T)/2,NW,fontsize(8pt));label("$\tan\theta$",(T+S)/2,NE,fontsize(8pt));label("$\sec\theta$",(0.45,0),S,fontsize(8pt));label("$\theta$",0.25*dir(t/2),fontsize(7pt));
+\end{asy}
+
+So (a) equals $\boxed{1}$ and (b) equals $\boxed{-1}$.

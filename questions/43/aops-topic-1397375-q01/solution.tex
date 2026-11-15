@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1397375_moab33s_math_tips_3_alternate_polygons
+% Stable identity: aops-topic-1397375-q01
+\textbf{(a)} At each corner the robot turns through the exterior angle: the angle between the extension of the side it arrives on and the next side. After going once around, it faces its original direction again, having turned through one full turn, $360^\circ$, in total. (For a convex polygon all turns are in the same direction, so the turns add up to exactly one full turn.) The $k$ turns are equal, so each is $\dfrac{360^\circ}{k}$.
+
+At each corner the interior angle and the exterior angle together form a straight angle, so the interior angle is
+\[
+180^\circ-\dfrac{360^\circ}{k}.
+\]
+For a regular pentagon, for example, the robot turns $72^\circ$ at each corner and the interior angle is $108^\circ$:
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair[] V; for(int i=0;i<5;++i) V.push(dir(-90-36+72*i));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--cycle,linewidth(0.9));
+pair d=unit(V[1]-V[0]);
+draw(V[1]--V[1]+0.7*d,dashed);
+draw(arc(V[1],0.3,degrees(d),degrees(V[2]-V[1])),red);
+label("$72^\circ$",V[1]+0.45*dir((degrees(d)+degrees(V[2]-V[1]))/2),red+fontsize(9pt));
+draw(arc(V[1],0.18,degrees(V[2]-V[1]),degrees(V[0]-V[1])),blue);
+label("$108^\circ$",V[1]+0.36*dir((degrees(V[2]-V[1])+degrees(V[0]-V[1]))/2),blue+fontsize(8pt));
+for(int i=0;i<5;++i) dot(V[i]);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+
+\textbf{(b)} Multiplying by $k$: $k\left(180^\circ-\dfrac{360^\circ}{k}\right)=180^\circ k-360^\circ=180^\circ(k-2)$, the usual angle sum.
+
+\textbf{(c)} For $k=360$: $180^\circ-\dfrac{360^\circ}{360}=\boxed{179^\circ}$.

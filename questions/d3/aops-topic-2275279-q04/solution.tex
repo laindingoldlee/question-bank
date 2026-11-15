@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2275279_500th_post
+% Stable identity: aops-topic-2275279-q04
+We need $81^{1002}$ modulo $10000$. Write $81=1+80$ and expand with the binomial theorem:
+\[81^{1002}=\sum_{k=0}^{1002}\dbinom{1002}{k}80^k.\]
+For $k\ge4$, $80^k$ is divisible by $80^4=40960000$, hence by $10000$. So, modulo $10000$,
+\[81^{1002}\equiv1+1002\cdot80+\dbinom{1002}{2}\cdot6400+\dbinom{1002}{3}\cdot512000.\]
+\begin{itemize}
+\item $1002\cdot80=80160\equiv160$.
+\item $\dbinom{1002}{2}=501501$, and $501501\cdot6400=500000\cdot6400+1501\cdot6400\equiv0+9606400\equiv6400$.
+\item $\dbinom{1002}{3}=167167000$ is divisible by $1000$ and $512000$ is divisible by $1000$, so the product is divisible by $10^6$, hence $\equiv0$.
+\end{itemize}
+So $81^{1002}\equiv1+160+6400=6561\pmod{10000}$: the last four digits are $6561$, and the thousands digit is $\boxed{6}$.

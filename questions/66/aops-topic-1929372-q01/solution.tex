@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1929372_area_of_triangle_and_rectangle
+% Stable identity: aops-topic-1929372-q01
+Only the area $80$ matters. If the rectangle has sides $x$ and $\dfrac{80}{x}$ (in metres), its perimeter is
+\[
+2\left(x+\dfrac{80}{x}\right)\ge2\cdot2\sqrt{x\cdot\dfrac{80}{x}}=4\sqrt{80}=16\sqrt5
+\]
+by AM-GM, with equality when $x=\dfrac{80}{x}$, i.e.\ for the square of side $\sqrt{80}=4\sqrt5$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(16,0)--(16,5)--(0,5)--cycle,linewidth(1));
+label("$16$",(8,0),S); label("$5$",(16,2.5),E);
+real s=4*sqrt(5);
+draw((20,0)--(20+s,0)--(20+s,s)--(20,s)--cycle,blue+linewidth(1));
+label("$4\sqrt{5}$",(20+s/2,0),S,blue); label("$4\sqrt{5}$",(20+s,s/2),E,blue);
+label("area $80$",(8,2.5)); label("area $80$",(20+s/2,s/2),blue);
+label("perimeter $42$",(8,-3.6));
+label("perimeter $16\sqrt{5}$",(20+s/2,-3.6),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the minimum perimeter is $\boxed{16\sqrt5\text{ m}}\approx35.8$ m.
+
+There is $\boxed{\text{no maximum}}$: for large $x$ the perimeter $2\left(x+\dfrac{80}{x}\right)>2x$ is as large as we like (for example the $16\times5$ rectangle has perimeter $42$, and the $80\times1$ rectangle has perimeter $162$).

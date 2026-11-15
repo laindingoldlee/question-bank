@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1733566_fun_quick_problem
+% Stable identity: aops-topic-1733566-q01
+\textbf{(a)} The person in position $n$ plays only if the first $n-1$ players all missed. Then $1001-n$ cups remain, one with the money. The probability that the first $n-1$ players miss is
+\[
+\dfrac{999}{1000}\cdot\dfrac{998}{999}\cdots\dfrac{1001-n}{1002-n}=\dfrac{1001-n}{1000},
+\]
+and then person $n$ wins with probability $\dfrac{1}{1001-n}$. So
+\[
+P(\text{person }n\text{ wins})=\dfrac{1001-n}{1000}\cdot\dfrac{1}{1001-n}=\dfrac{1}{1000}
+\]
+for every $n$. (Equivalently: the order in which the cups are picked is a random ordering of the cups, and the money cup is equally likely to be in each position.) Every person's expected payoff is $1000\cdot\dfrac{1}{1000}=\boxed{1\text{ dollar}}$, so no position is better than another.
+
+\textbf{(b)} Person $n$ pays the fee only if he plays, which happens with probability $\dfrac{1001-n}{1000}$. His expected payoff is
+\[
+1-c\cdot\dfrac{1001-n}{1000}\text{ dollars},
+\]
+which increases with $n$. So the last person, $\boxed{n=1000}$, is best off, with expected payoff $1-\dfrac{c}{1000}$ dollars (for example $0.99999$ dollars when $c=0.01$ and $0.98$ dollars when $c=20$).

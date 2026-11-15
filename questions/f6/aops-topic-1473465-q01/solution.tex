@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1473465_not_sure_if_my_problem_is_middlehigh_school_math_help
+% Stable identity: aops-topic-1473465-q01
+\textbf{The triangle.} Integer right triangles with perimeter $40$: the multiples of $3$-$4$-$5$ and $5$-$12$-$13$ have perimeters $12k$ and $30k$, which never equal $40$, and the only primitive triple with perimeter dividing $40$ is $8$-$15$-$17$ (perimeter exactly $40$). So the legs are $8$ and $15$ and the hypotenuse is $17$.
+
+\textbf{The crescents.} The two semicircles on the legs together with the triangle cover the semicircle on $DF$ and the two crescents, each exactly once:
+\[
+\text{crescents}=\left(\text{semicircle on }DE\right)+\left(\text{semicircle on }EF\right)+[DEF]-\left(\text{semicircle on }DF\right).
+\]
+The semicircle on a segment of length $s$ has area $\dfrac{\pi s^2}{8}$, and $DE^2+EF^2=DF^2$, so the three semicircle terms cancel:
+\[
+\text{crescents}=\dfrac{\pi}{8}\left(DE^2+EF^2-DF^2\right)+[DEF]=[DEF]=\dfrac{8\cdot15}{2}=\boxed{60}\ \text{m}^2 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0),F=(17,0),Ee=(64/17,120/17),O=(8.5,0);
+pair M1=(D+Ee)/2,M2=(Ee+F)/2;
+path l1=arc(M1,4,61.9275,241.9275)--arc(O,8.5,180,123.855)--cycle;
+path l2=arc(M2,7.5,-28.0725,151.9275)--arc(O,8.5,123.855,0)--cycle;
+fill(l1,lightblue); fill(l2,lightblue);
+draw(arc(O,8.5,0,180),linewidth(0.8));
+draw(arc(M1,4,61.9275,241.9275)); draw(arc(M2,7.5,-28.0725,151.9275));
+draw(D--F); draw(D--Ee--F,linewidth(0.9));
+path sq=Ee+0.9*unit(D-Ee)--Ee+0.9*unit(D-Ee)+0.9*unit(F-Ee)--Ee+0.9*unit(F-Ee); draw(sq);
+dot(D);dot(Ee);dot(F);
+label("$D$",D,SW); label("$F$",F,SE); label("$E$",Ee+0.95*dir(110));
+label("$8$",(D+Ee)/2,SE); label("$15$",(Ee+F)/2,SW); label("$17$",(D+F)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(These are the lunes of Hippocrates.)

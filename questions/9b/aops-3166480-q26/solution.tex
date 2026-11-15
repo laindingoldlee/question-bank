@@ -1,0 +1,6 @@
+The Miquel point of the three lines $AB,BC,CA$ with side points $F,D,E$ lies on the circle $AFE$: this follows by adding the directed equal-angle identities from circles $BFD$ and $CED$, giving $\angle FPE\equiv\angle FAE\pmod{180^\circ}$. Thus $A,F,E,P$ are concyclic. The cosine law in $ABC$ gives $\cos A=\dfrac{2}{5}$ and $\sin A=\dfrac{\sqrt{21}}{5}$. Since $AF=12$ and $AE=15$, the cosine law gives $EF^2=12^2+15^2-2\cdot12\cdot15\cdot\dfrac{2}{5}=225$, so $EF=15$. The circle radius is $R=\dfrac{EF}{2\sin A}=\dfrac{75}{2\sqrt{21}}$. Since $PF$ subtends $30^\circ$ at $E$, $PF=2R\sin30^\circ=\boxed{\dfrac{25\sqrt{21}}{14}}$. This is irrational. Consequently the supplied request to write $PF=\dfrac{m}{n}$ with integers is inconsistent with its other data.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair A=(0,0),B=(15,0),C=(6.4,3.2sqrt(21)),F=(12,0),E=(6,3sqrt(21)),O=(6,25.5/sqrt(21)),P=O+rotate(60)*(F-O);real cy=(dot(P,P)-27P.x+180)/(2P.y);pair J=(13.5,cy);pair v=C-B;real t=-2dot(B-J,v)/dot(v,v);pair D=B+t*v;draw(A--B--C--cycle);draw(circle(O,abs(O-F)),gray);draw(F--P--E^^F--E);draw(B--P^^C--P,dashed);label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$C$",C,(0,1));label("$F$",F,(0,-1));label("$E$",E,(-1,1));label("$P$",P,(1,0));label("$D$",D,(1,0));
+\end{asy}
+

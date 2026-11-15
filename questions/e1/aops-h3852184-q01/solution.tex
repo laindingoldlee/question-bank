@@ -1,0 +1,15 @@
+Let $A=(0,-2)$, $B=(0,2)$, $C=(2\sqrt3,-2)$, and $P=(a,b)$. Then $f=PA+PB+PC$. Rotate the plane clockwise $60^\circ$ about $A$, sending $P$ to $P'$ and $C$ to $C'=(\sqrt3,-5)$. The equilateral construction gives $PP'=PA$, while $P'C'=PC$. Hence
+\[
+f=BP+PP'+P'C'\ge BC'=\sqrt{3+49}=2\sqrt{13}.
+\]
+Equality occurs when $B,P,P',C'$ lie on one line in that order. Write $P=B+t(C'-B)=(t\sqrt3,2-7t)$, and require its clockwise rotation about $A$ to lie on the same line. Substitution in the rotation matrix gives $t=\dfrac{6}{13}$ and $P'=B+\dfrac{8}{13}(C'-B)$. Both parameters lie strictly between $0$ and $1$ in the required order, so equality is attained. This linear calculation also gives the only equality configuration. Thus
+\[
+P=\left(\dfrac{6\sqrt3}{13},-\dfrac{16}{13}\right),\qquad
+\boxed{a+b=\dfrac{6\sqrt3-16}{13}}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,-2),B=(0,2),C=(2sqrt(3),-2),Q=(sqrt(3),-5),P=(6sqrt(3)/13,-16.0/13),R=(8sqrt(3)/13,-30.0/13);draw(A--B--C--cycle,gray);draw(B--Q,blue);draw(A--P--C);draw(A--R,dashed);draw(A--Q,dashed);dot(P);dot(R);label("$A$",A,W);label("$B$",B,N);label("$C$",C,E);label("$C'$",Q,S);label("$P$",P,E);label("$P'$",R,E);
+\end{asy}

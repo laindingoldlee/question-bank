@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2031307_combo_problem
+% Stable identity: aops-topic-2031307-q01
+Two people $X$ and $Y$ can shake hands only if neither is taller than the other, that is, only if they have the same height; and since everyone shakes as many hands as possible, every pair of equally tall people shakes exactly once. So if the people split into height classes of sizes $n_1,n_2,\dots$ with $n_1+n_2+\dots=10$, the number of handshakes is
+\[\binom{n_1}{2}+\binom{n_2}{2}+\cdots,\]
+where the relevant values are $\binom22=1,\binom32=3,\binom42=6,\binom52=10,\binom62=15,\binom72=21$.
+
+\textbf{Totals $1$ to $18$ occur.} Listing only the classes of size at least $2$ (everyone else has a unique height):
+\[
+\begin{array}{c|c||c|c||c|c}
+1 & 2 & 7 & 4,2 & 13 & 5,3\\
+2 & 2,2 & 8 & 4,2,2 & 14 & 5,3,2\\
+3 & 3 & 9 & 4,3 & 15 & 6\\
+4 & 3,2 & 10 & 5 & 16 & 6,2\\
+5 & 3,2,2 & 11 & 5,2 & 17 & 6,2,2\\
+6 & 4 & 12 & 4,4 & 18 & 6,3
+\end{array}
+\]
+Each uses at most $10$ people.
+
+\textbf{The total $19$ is impossible.} Let the largest class have size $k$.
+\begin{itemize}
+\item $k\ge7$: that class alone gives at least $21>19$.
+\item $k=6$: the other $4$ people must contribute $4$, but $4$ people contribute one of $0,1,2,3,6$.
+\item $k=5$: the other $5$ people (in classes of size at most $5$) must contribute $9$, but $5$ people contribute one of $0,1,2,3,4,6,10$.
+\item $k=4$: the other $6$ people in classes of size at most $4$ contribute at most $6+1=7$, so the total is at most $13$.
+\item $k\le3$: the total is at most $3+3+3=9$.
+\end{itemize}
+Hence the answer is
+\[\boxed{19}.\]

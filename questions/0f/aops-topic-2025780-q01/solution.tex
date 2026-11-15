@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h2025780_geo_problem
+% Stable identity: aops-topic-2025780-q01
+Since $AB=AC$, the median $AM$ is perpendicular to $BC$ and bisects $\angle BAC$; by symmetry $XM$ also bisects $\angle BXC$. Let $\theta=\angle BAM$ and $a=BM$. Then $\angle BAC=2\theta$, so $\angle BXC=6\theta$ and $\angle BXM=3\theta$. Also $XM=AM-AX=1$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real a=5.5;
+pair A=(0,11), B=(-a,0), C=(a,0), M=(0,0), X=(0,1);
+draw(A--B--C--cycle, linewidth(0.9));
+draw(A--M, linewidth(0.7));
+draw(B--X--C, blue+linewidth(0.8));
+draw((0,0.45)--(0.45,0.45)--(0.45,0), linewidth(0.5));
+dot(A); dot(B); dot(C); dot(M); dot(X);
+label("$A$", A, N); label("$B$", B, SW); label("$C$", C, SE);
+label("$M$", M, S); label("$X$", X, 1.3*N+0.6*E);
+label("$10$", (0,6), E); label("$1$", (0,0.45), W, fontsize(8pt));
+label("$\theta$", A+(-0.5,-2.3), fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the right triangles $ABM$ and $XBM$,
+\[
+\tan\theta=\dfrac{a}{11},\qquad \tan 3\theta=\dfrac{a}{1}=a,
+\]
+so $\tan3\theta=11\tan\theta$, with $0<3\theta<90^\circ$. Put $t=\tan\theta>0$. Using $\tan3\theta=\dfrac{3t-t^3}{1-3t^2}$,
+\[
+\dfrac{3t-t^3}{1-3t^2}=11t\ \Longrightarrow\ 3-t^2=11-33t^2\ \Longrightarrow\ t^2=\dfrac{1}{4},
+\]
+so $t=\dfrac{1}{2}$. (Then $1-3t^2=\dfrac{1}{4}>0$, consistent with $3\theta<90^\circ$.) Hence $a=11t=\dfrac{11}{2}$, $BC=11$, and
+\[
+AB=AC=\sqrt{11^2+\left(\dfrac{11}{2}\right)^2}=\dfrac{11\sqrt5}{2}.
+\]
+The perimeter is
+\[
+11+2\cdot\dfrac{11\sqrt5}{2}=\boxed{11+11\sqrt5}.
+\]

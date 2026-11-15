@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h3587865_angles_with_regulars_polygons
+% Stable identity: aops-topic-3587865-q01
+Pentagon angle $EAB$ is $108^\circ$ and square angle $BAG$ is $90^\circ$, on opposite sides of $AB$. Thus the smaller angle $EAG$ is $360^\circ-108^\circ-90^\circ=162^\circ$. Because $AE=AG$, triangle $AEG$ has base angles $9^\circ$. Ray $EA$ lies inside angle $GED$ in this configuration, so $\angle GED=\angle GEA+\angle AED=9^\circ+108^\circ=\boxed{117^\circ}$.
+\begin{asy}
+size(7cm);
+pair A=(0,0),B=(1,0),C=B+dir(72),D=C+dir(144),E=D+dir(216),F=(1,-1),G=(0,-1);draw(A--B--C--D--E--cycle);draw(A--B--F--G--cycle,blue);draw(E--G,dashed);pair[] P={A,B,C,D,E,F,G};string[] N={"A","B","C","D","E","F","G"};for(int i=0;i<7;++i)label("$"+N[i]+"$",P[i],i==0?W:i==1?E:i==2?E:i==3?N:i==4?W:i==5?SE:SW);
+\end{asy}

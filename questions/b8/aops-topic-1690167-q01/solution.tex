@@ -1,0 +1,47 @@
+% Source: https://artofproblemsolving.com/community/c3h1690167_hard_problem
+% Stable identity: aops-topic-1690167-q01
+Write $\alpha=\angle A$, $\beta=\angle B$, $\gamma=\angle C$, so $\alpha+\beta+\gamma=180^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(8,0),A=(2.5,4);
+real a=length(B-C),bb=length(C-A),c=length(A-B);
+pair I=(a*A+bb*B+c*C)/(a+bb+c);
+real r=I.y;
+pair M=(I.x,0);
+pair N=C+(length(C-M))*unit(A-C);
+pair P=B+(length(B-M))*unit(A-B);
+pair Ep=extension(B,I,M,N);
+pair F=extension(C,I,M,P);
+pair Sp=extension(A,Ep,B,C);
+pair R=extension(A,F,B,C);
+draw(circle(I,r),gray);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--Ep,linewidth(0.7));draw(C--F,linewidth(0.7));
+draw(P--M--N,linewidth(0.7));
+draw(A--Sp,blue+dashed);draw(A--R,blue+dashed);
+draw(Ep--F,red+linewidth(0.8));
+dot(I);dot(M);dot(N);dot(P);dot(Ep);dot(F);dot(Sp);dot(R);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$I$",I,dir(-60));label("$M$",M,S);label("$N$",N,NE);label("$P$",P,NW);
+label("$E$",Ep,dir(20));label("$F$",F,W);label("$S$",Sp,S);label("$R$",R,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(a)} Tangent segments from $C$ are equal, $CM=CN$, so triangle $CMN$ is isosceles and $\angle CMN=90^\circ-\dfrac{\gamma}{2}$; hence $\angle BMN=180^\circ-\angle CMN=90^\circ+\dfrac{\gamma}{2}$. The ray from $B$ along $BI$ and the ray from $M$ through $N$ make angles $\dfrac{\beta}{2}$ and $90^\circ+\dfrac{\gamma}{2}$ with segment $BM$, whose sum is less than $180^\circ$, so they meet at the point $E$ on the same side of $BC$ as $A$, and $BME$ is a triangle with $\angle MBE=\dfrac{\beta}{2}$ and $\angle BME=90^\circ+\dfrac{\gamma}{2}$. Hence
+\[
+\angle BEM=180^\circ-\dfrac{\beta}{2}-\left(90^\circ+\dfrac{\gamma}{2}\right)=90^\circ-\dfrac{\beta+\gamma}{2}=\dfrac{\alpha}{2} .
+\]
+
+\textbf{$E$ is the foot of the perpendicular from $A$ to $BI$.} Let $E'$ be that foot. Since $\angle AE'I=\angle ANI=90^\circ$ (a radius is perpendicular to the tangent at $N$), the points $E'$ and $N$ lie on the circle with diameter $AI$. In this circle the chord $IN$ subtends equal angles at $E'$ and at $A$, so line $E'N$ makes the angle $\angle NAI=\dfrac{\alpha}{2}$ with line $BI$. By (a), line $MN$ also passes through $N$ and makes the angle $\dfrac{\alpha}{2}$ with line $BI$, turned the same way. Two lines through $N$ making the same angle with $BI$ coincide, so $E'$ lies on $MN$ and $E'=E$. Thus $AE\perp BI$. In the same way (exchanging the roles of $B$ and $C$) $\angle CFM=\dfrac{\alpha}{2}$ and $AF\perp CI$.
+
+\textbf{(b)} Since $BE$ bisects angle $ABS$ and is perpendicular to $AS$, triangle $ABS$ is isosceles with $BS=BA=c$, and $E$ is the midpoint of $AS$ (the reflection of $A$ in line $BI$ is $S$). Likewise $CR=CA=b$ and $F$ is the midpoint of $AR$. Because $a$ is the longest side, $S$ and $R$ lie on segment $BC$, with $BS=c$ and $BR=a-b$. As $c>a-b$ by the triangle inequality,
+\[
+RS=BS-BR=c-(a-b)=\boxed{b+c-a}.
+\]
+Finally $E$ and $F$ are the midpoints of $AS$ and $AR$, so $EF$ is a midline of triangle $ASR$:
+\[
+EF=\dfrac{RS}{2}=\boxed{\dfrac{b+c-a}{2}}.
+\]

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1458459_geometry_3
+% Stable identity: aops-topic-1458459-q01
+Consecutive angles of a parallelogram are supplementary: $\angle A+\angle B=180^\circ$. In triangle $ABP$ the angles at $A$ and $B$ are $\dfrac{\angle A}{2}$ and $\dfrac{\angle B}{2}$, so
+\[
+\angle APB=180^\circ-\dfrac{\angle A+\angle B}{2}=90^\circ .
+\]
+In the same way the bisectors at $B$ and $C$, at $C$ and $D$, and at $D$ and $A$ meet at right angles. The points $P$ and $T$ lie on the bisector from $A$, $P$ and $Q$ on the one from $B$, and so on, so each angle of $PQRT$ is one of these right angles (or its vertical angle). A quadrilateral with four right angles is a rectangle. $\blacksquare$
+
+The four points are distinct because $ABCD$ is not a rhombus. (In a rhombus the bisectors are the diagonals, and all four meet at the centre.) For example, $P=T$ would mean that the bisector from $A$ meets the bisectors from $B$ and $D$ at the same point, which happens only when $AB=AD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),D=4*dir(60),C=B+D;
+pair bA=unit(B-A)+unit(D-A), bB=unit(A-B)+unit(C-B), bC=unit(B-C)+unit(D-C), bD=unit(C-D)+unit(A-D);
+pair P=extension(A,A+bA,B,B+bB), Q=extension(B,B+bB,C,C+bC), R=extension(C,C+bC,D,D+bD), T=extension(D,D+bD,A,A+bA);
+fill(P--Q--R--T--cycle,rgb(0.85,0.92,1));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--extension(A,A+bA,D,C),blue); draw(B--extension(B,B+bB,D,C),blue); draw(C--extension(C,C+bC,A,B),blue); draw(D--extension(D,D+bD,A,B),blue);
+path sq(pair X,pair u,pair v){return X+0.25*unit(u)--X+0.25*unit(u)+0.25*unit(v)--X+0.25*unit(v);}
+draw(sq(P,Q-P,T-P)); draw(sq(Q,R-Q,P-Q)); draw(sq(R,T-R,Q-R)); draw(sq(T,P-T,R-T));
+dot(P);dot(Q);dot(R);dot(T);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$P$",P,N); label("$Q$",Q,E); label("$R$",R,S); label("$T$",T,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

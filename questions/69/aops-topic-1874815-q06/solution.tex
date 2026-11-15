@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1874815_problems_from__algebra_book
+% Stable identity: aops-topic-1874815-q06
+\textbf{(a)} Long division of $1$ by $17$ gives the remainders $1,10,15,14,4,6,9,5,16,7,2,3,13,11,8,12$ and then $1$ again, so the period is $16$ and
+\[
+\dfrac{1}{17}=0.\overline{0588235294117647}.
+\]
+So the block is $\boxed{0588235294117647}$.
+
+\textbf{(b)} As for $7$: from (a), $10^{16}\cdot\dfrac{1}{17}-\dfrac{1}{17}=588235294117647$, so $N=588235294117647$, whose $16$-digit form $0588235294117647$ is the block of $\dfrac{1}{17}$. For $1\le k\le16$, $kN=\dfrac{k(10^{16}-1)}{17}<10^{16}$, and $kN$ written with $16$ digits is the repeating block of $\dfrac {k}{17}$.
+
+The remainders of $10^j$ modulo $17$ are the remainders listed in (a) (each step of long division multiplies the remainder by $10$): for $j=0,1,\dots,15$ they are $1,10,15,14,4,6,9,5,16,7,2,3,13,11,8,12$, which are all of $1,\dots,16$. (In other words, $10$ has order $16$ modulo $17$: $10^2\equiv-2$, $10^4\equiv4$, $10^8\equiv16\equiv-1$.) So for each $k$ there is a $j$ with $10^j\equiv k\pmod{17}$. Then $\dfrac {k}{17}$ is the fractional part of $10^j\cdot\dfrac{1}{17}$, whose decimal is the block of $\dfrac{1}{17}$ started at its $(j+1)$-th digit. Hence the block of $\dfrac {k}{17}$, i.e. $kN$ with $16$ digits, is a cyclic shift of $0588235294117647$. For example, $10^1\equiv10$ gives $10N=5882352941176470$.
+
+\textbf{(c)} $17N=10^{16}-1=\boxed{9999999999999999}$ (sixteen nines), just as $7\times142857=999999$.
+
+The same trick works for every prime $p$ for which $10$ has order $p-1$ modulo $p$ (for example $p=7,17,19,23,29$).

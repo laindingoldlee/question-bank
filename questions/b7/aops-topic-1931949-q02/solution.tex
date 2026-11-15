@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1931949_how_to_write_proof_for_number_theory
+% Stable identity: aops-topic-1931949-q02
+We use the fact that if $uv$ is a perfect square and $\gcd(u,v)=1$, then $u$ and $v$ are both perfect squares (every prime appears in $uv$ to an even power, and entirely in $u$ or entirely in $v$).
+
+(a) The number $997$ is prime. Let $g=\gcd(x,z)$; then $g\mid x+z=997$, and $g<997$ since $x,z<997$, so $g=1$. As $x+z$ is odd, one of $x,z$ is even; call it $w$ and the other (odd) one $o$. Then $y^2=2w\cdot o$ with $\gcd(2w,o)=1$, so $2w=s^2$ and $o=t^2$. Then $s$ is even, $s=2m$, and $w=2m^2$. So
+\[
+2m^2+t^2=997\quad\text{with } t \text{ odd}.
+\]
+Modulo $8$, $t^2\equiv1$, so $2m^2\equiv996\equiv4\pmod8$, i.e.\ $m^2\equiv2\pmod4$, which is impossible. There are \textbf{no} solutions.
+
+(b) Now $g=\gcd(x,z)$ divides $1994=2\cdot997$, and $g<1994$.
+\begin{itemize}
+\item $g=1$: then $x$ and $z$ are both odd (they are coprime with an even sum), and $2xz\equiv2\pmod4$ is not a square.
+\item $g=997$: then $x=z=997$ and $2\cdot997^2$ is not a square (it contains $2$ to the first power).
+\item $g=2$: write $x=2x'$, $z=2z'$ with $x'+z'=997$. Then $y^2=8x'z'$, so $y$ is even, $y=2y'$, and $2x'z'=y'^2$. By part (a) this is impossible.
+\end{itemize}
+So there are \textbf{no} solutions in (b) either. In both cases the answer is $\boxed{\text{no triples}}$.

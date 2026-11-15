@@ -1,0 +1,7 @@
+After a rigid motion or reflection, use $D=(0,0)$, $B=(-u,0)$, $C=(u,0)$, and $O=(0,6)$. Equilateral $ODH$ gives $H=(3\sqrt3,3)$, up to horizontal reflection. The altitude from $A$ is vertical, so $A=(3\sqrt3,v)$. In coordinates centred at $O$, the orthocentre vector is the sum of the three vertex vectors; thus, in these coordinates, $H=A+B+C-2O$, giving $v=15$. Equal circumradii yield $u^2+36=OA^2=27+81=108$, so $u=6\sqrt2$. The area is $\dfrac{1}{2}(2u)(15)=90\sqrt2$, and $\boxed{a+b=92}$. Reflections give the same area.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair D=(0,0),B=(-6*sqrt(2),0),C=(6*sqrt(2),0),O=(0,6),H=(3*sqrt(3),3),A=(3*sqrt(3),15);draw(A--B--C--cycle);draw(O--D--H--cycle,blue);draw(A--(A.x,0),dashed);draw(circle(O,sqrt(108)),gray);label("A",A,N);label("B",B,SW);label("C",C,SE);label("D",D,S);label("O",O,NW);label("H",H,E);label("6",(O+D)/2,W);
+\end{asy}

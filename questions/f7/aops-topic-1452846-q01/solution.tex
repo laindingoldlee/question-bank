@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1452846_algebra_problem
+% Stable identity: aops-topic-1452846-q01
+Since $1+2+\cdots+n=\dfrac{n(n+1)}{2}$, the equation is $\dfrac{n(n+1)}{2x}=\dfrac{n+x}{2}$, that is,
+\[
+n(n+1)=x(n+x). \qquad (*)
+\]
+We show that there are \textbf{infinitely many} solutions.
+
+Look for solutions of the form $n=b^2$, $x=ab$ with positive integers $a,b$. Then $(*)$ becomes $b^2(b^2+1)=ab(b^2+ab)$, i.e.\ $b^2+1=a^2+ab$, i.e.
+\[
+b^2-ab-a^2=-1 . \qquad (**)
+\]
+The pair $(a,b)=(1,1)$ satisfies $(**)$. If $(a,b)$ satisfies $(**)$, so does $(a',b')=(a+b,\,a+2b)$, because
+\[
+b'^2-a'b'-a'^2=(a+2b)^2-(a+b)(a+2b)-(a+b)^2=b^2-ab-a^2 .
+\]
+Starting from $(1,1)$ we get $(2,3)$, $(5,8)$, $(13,21)$, $(34,55)$, $\dots$, and since $b'>b$, all these pairs are different. Each one gives a solution $(n,x)=(b^2,ab)$ of the original equation:
+\[
+(1,1),\ (9,6),\ (64,40),\ (441,273),\ (3025,1870),\ \dots
+\]
+For instance $(9,6)$: $\dfrac{45}{6}=\dfrac{15}{2}=\dfrac{9}{2}+\dfrac{6}{2}$. So the number of ordered pairs is $\boxed{\text{infinite}}$.
+
+(The pairs $(a,b)$ are consecutive Fibonacci numbers $(F_{2k-1},F_{2k})$, and $(**)$ is Cassini's identity. A computer search shows that these are all the solutions up to $x=200000$.)

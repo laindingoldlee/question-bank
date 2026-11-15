@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1849388_help_with_problem_set
+% Stable identity: aops-topic-1849388-q05
+Let the other sides be $x$ and $3x$ with $x$ a positive integer. The triangle inequality requires
+\[
+3x<15+x\iff x<7.5,\qquad 15<x+3x\iff x>3.75,
+\]
+(and $x+15>3x$ is the first condition). So $4\le x\le7$, and the perimeter $15+4x$ is largest for $x=7$: sides $7$, $15$, $21$, perimeter $\boxed{43}$. This triangle exists since $7+15=22>21$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(21,0);
+real x=(49-225+441)/42;pair A=(x,sqrt(49-x^2));
+draw(A--B--C--cycle,linewidth(1));
+label("$B$",B,SW);label("$C$",C,SE);label("$A$",A,N);
+label("$21$",(B+C)/2,S);label("$7$",(A+B)/2,NW);label("$15$",(A+C)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

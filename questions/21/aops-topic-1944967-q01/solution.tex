@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h1944967_mathmatics
+% Stable identity: aops-topic-1944967-q01
+Let $O$ be the centre and $r=3\sqrt2$ the radius. The tangent segments from $A$ make equal angles with $AO$, so $\angle OAK=\dfrac{1}{2}\angle KAM$ and, in the right triangle $OKA$,
+\[
+\sin\angle OAK=\dfrac{r}{AO}=\sqrt{\dfrac{2}{5}}\quad\Longrightarrow\quad AO^2=\dfrac{5}{2}r^2=\dfrac{5}{2}\cdot18=45 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real s=9,r=3*sqrt(2);
+pair A=(0,0),Bv=(s,0),C=(s,s),D=(0,s);
+pair O=(-3,6);
+real d=abs(A-O),al=aCos(r/d);
+real ang=degrees(A-O);
+pair K=O+r*dir(ang+al),M=O+r*dir(ang-al);
+draw(A--Bv--C--D--cycle,linewidth(1));
+draw(circle(O,r));
+draw(Bv--(D+0.25*(D-Bv)),gray(0.4));
+draw(O--D,dashed);draw(O--A,dashed);draw(O--K,dashed);draw(O--M,dashed);
+draw(A--K,blue);draw(A--M,blue);
+dot(O);dot(K);dot(M);dot(D);
+label("$A$",A,S);label("$B$",Bv,SE);label("$C$",C,NE);label("$D$",D,1.6*dir(60));label("$O$",O,W);
+label("$K$",K,unit(K-O));label("$M$",M,unit(M-O));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $BD$ is tangent at $D$, the radius $OD$ is perpendicular to $BD$, i.e. it points along the direction of the other diagonal $AC$, towards $A$'s side. Let the side of the square be $x$ and use axes along $DB$ and perpendicular to it, with $D$ at the origin. The diagonals bisect each other at right angles, so $A$ is at distance $\dfrac {x}{\sqrt2}$ from $D$ along $DB$ and at distance $\dfrac{x}{\sqrt2}$ from $BD$; and $O$ is at distance $r$ from $BD$, directly over $D$. Hence
+\[
+AO^2=\left(\dfrac {x}{\sqrt2}\right)^2+\left(\dfrac {x}{\sqrt2}-r\right)^2 .
+\]
+With $u=\dfrac {x}{\sqrt2}$ this reads $u^2+(u-3\sqrt2)^2=45$, i.e. $2u^2-6\sqrt2\,u-27=0$, so
+\[
+u=\dfrac{6\sqrt2\pm\sqrt{72+216}}{4}=\dfrac{6\sqrt2\pm12\sqrt2}{4}.
+\]
+The positive root is $u=\dfrac{9\sqrt2}{2}$, so $x=\sqrt2\,u=\boxed{9}$. (Then $AO=\sqrt{45}>r$, so $A$ is outside the circle and the tangents exist.)

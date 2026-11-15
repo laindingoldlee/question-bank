@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1390994_distinguishable_items_into_indistinguishable_boxes
+% Stable identity: aops-topic-1390994-q01
+\textbf{(a)} Each cookie independently goes to one of $3$ friends, so there are $3^8=\boxed{6561}$ ways. (Stars and bars counts distributions of \emph{identical} cookies, $\dbinom{10}{2}=45$; multiplying by $8!$ gives $1814400$, a large overcount, because reordering the cookies usually does not change who gets which cookie.)
+
+\textbf{(b)} Now only the partition of the cookies into at most $3$ nonempty groups matters. Count the surjections of $8$ cookies onto $3$ labelled boxes by inclusion--exclusion:
+\[
+3^8-3\cdot2^8+3\cdot1^8=6561-768+3=5796 .
+\]
+Each partition into exactly $3$ groups corresponds to $3!=6$ labelled surjections, giving $\dfrac{5796}{6}=966$ partitions. Partitions into exactly $2$ groups: $\dfrac{2^8-2}{2}=127$. Into $1$ group: $1$. So the number of ways is
+\[
+966+127+1=\boxed{1094}.
+\]
+(These are the Stirling numbers of the second kind $S(8,3)$, $S(8,2)$, $S(8,1)$.)

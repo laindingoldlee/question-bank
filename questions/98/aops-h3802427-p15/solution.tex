@@ -1,0 +1,15 @@
+The answer is $\boxed{\text{every integer }n\ge3}$. On any three consecutive diagonal cells, toggle the length-three diagonal and then its last two cells using a $2\times2$ move. The net effect is to toggle only the first cell.
+For $n\ge4$, every cell has at least two available rows in one vertical direction and at least two available columns in one horizontal direction. Combining those directions puts that cell at an endpoint of a length-three diagonal. Hence every individual cell can be toggled without changing any others; do this for all cells.
+For $n=3$, each corner can be toggled individually by the same construction. The centre can be toggled by toggling a length-three diagonal and both of its overlapping length-two diagonals: the endpoints are toggled twice and the centre three times. Finally toggle the edge-centre pair $(1,2),(2,1)$ and the pair $(2,3),(3,2)$ with two length-two diagonals. These operations make all nine cells black.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int r=0;r<3;++r)for(int c=0;c<3;++c)draw(box((c,-r),(c+1,1-r)),gray);draw((.5,.5)--(2.5,-1.5),blue+linewidth(2));draw((1.5,-.5)--(2.5,-1.5),red+dashed+linewidth(2));dot((.5,.5));label("single-cell net change",(.5,1),(0,1));label("blue: toggle 3; red: toggle last 2",(1.5,-3));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int r=0;r<3;++r)for(int c=0;c<3;++c)draw(box((c,-r),(c+1,1-r)),gray);draw((1.5,.5)--(.5,-.5),blue+linewidth(2));draw((2.5,-.5)--(1.5,-1.5),red+linewidth(2));dot((1.5,-.5));label("centre",(1.5,-.5),(1,0));
+\end{asy}

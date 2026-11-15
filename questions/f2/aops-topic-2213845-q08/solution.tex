@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2213845_beginner_problems
+% Stable identity: aops-topic-2213845-q08
+Let the common difference be $d$, a positive integer (each number is less than the average of its neighbours). Then
+\[a_{i+1}-2a_i+a_{i-1}=2d\qquad(1\le i\le199),\]
+so the consecutive differences $a_{i+1}-a_i$ increase by $2d$ at each step. A sequence with constant second differences and given end values is unique, and
+\[a_i=19999-d\,i(200-i)\]
+works: it has $a_0=a_{200}=19999$ and
+\[a_{i+1}-2a_i+a_{i-1}=-d\bigl[(i+1)(199-i)-2i(200-i)+(i-1)(201-i)\bigr]=-d\cdot(-2)=2d .\]
+\textbf{Positivity.} The smallest term is $a_{100}=19999-10000d$, which is positive only for $d=1$. So $a_i=19999-i(200-i)$, with smallest term $9999$.
+
+\textbf{The sum.} Using $\sum_{i=0}^{200}i=20100$ and $\sum_{i=0}^{200}i^2=\dfrac{200\cdot201\cdot401}{6}=2\,686\,700$,
+\[\sum_{i=0}^{200}i(200-i)=200\cdot20100-2\,686\,700=1\,333\,300,\]
+and
+\[\sum_{i=0}^{200}a_i=201\cdot19999-1\,333\,300=4\,019\,799-1\,333\,300=\boxed{2\,686\,499}.\]

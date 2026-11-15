@@ -1,0 +1,11 @@
+Both side lengths are odd, so the board has a central cell. The first player colours just this cell. Thereafter, whenever the second player chooses a square, the first player colours its image under a half-turn about the board center.
+
+After each pair of moves the red region is invariant under this rotation. Thus the rotated reply is uncoloured before the opponent's move. Moreover, a grid-aligned square and its rotated image can overlap only if that square contains the central cell: overlap in each coordinate forces its integer interval of cell centers to contain the corresponding central coordinate. Since the central cell is already red, every legal opponent square is disjoint from its rotated image. The reply is therefore always legal.
+
+The finite board eventually fills to the point where no move remains. Since the first player can answer every opponent move, the second player is the one unable to move. This proves the winning strategy.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+int m=5,n=7;for(int i=0;i<=n;++i)draw((i,0)--(i,m),gray);for(int j=0;j<=m;++j)draw((0,j)--(n,j),gray);filldraw(box((3,2),(4,3)),red);filldraw(box((0,0),(2,2)),lightblue,blue);filldraw(box((5,3),(7,5)),lightblue,blue);label("central cell and rotated replies",(3.5,-.6));
+\end{asy}

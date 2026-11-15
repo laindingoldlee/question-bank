@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h1195570_last_two_digits_of_a_number
+% Stable identity: aops-topic-1195570-q01
+We need \(2^{2020}\bmod 100\). Since \(100=4\cdot 25\) with \(\gcd(4,25)=1\), work modulo \(4\) and \(25\) separately.
+\begin{itemize}
+\item Modulo \(4\): \(2^{2020}\equiv 0\).
+\item Modulo \(25\): \(\varphi(25)=20\) and \(\gcd(2,25)=1\), so by Euler's theorem \(2^{20}\equiv 1\), and \(2^{2020}=(2^{20})^{101}\equiv 1\).
+\end{itemize}
+We need \(N\equiv 0\pmod 4\) and \(N\equiv 1\pmod{25}\). Among \(1,26,51,76\), only \(76\) is divisible by \(4\). By the Chinese remainder theorem \(2^{2020}\equiv 76\pmod{100}\), so the last two digits are \(\boxed{76}\).

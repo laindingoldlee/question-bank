@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h1750969_a_few_problems_from_discarded_mock
+% Stable identity: aops-topic-1750969-q03
+\textbf{Sphere.} The largest cube has all eight vertices on the sphere, so its space diagonal is a diameter: $s\sqrt3=2x$, $s=\dfrac{2x}{\sqrt3}$, and the volume is $V_1=\dfrac{8x^3}{3\sqrt3}$.
+
+\textbf{Hemisphere.} The largest cube stands on the flat face with its base centred at the centre $O$ of the hemisphere, and its four top vertices on the curved surface. A top vertex is at horizontal distance $\dfrac{s\sqrt2}{2}$ (half the base diagonal) and height $s$ from $O$, so
+\[
+\left(\dfrac{s\sqrt2}{2}\right)^2+s^2=x^2\ \Longrightarrow\ \dfrac{3}{2}s^2=x^2\ \Longrightarrow\ s=x\sqrt{\dfrac{2}{3}},
+\]
+and $V_2=s^3=\dfrac{2\sqrt2\,x^3}{3\sqrt3}$.
+
+The sketches show the cross-sections through a diagonal plane of each cube (side $s$, face diagonal $s\sqrt2$):
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+real x=1.6,s1=2x/sqrt(3),s2=x*sqrt(2/3);
+picture p1,p2;
+draw(p1,circle((0,0),x),linewidth(0.8));
+draw(p1,box((-s1*sqrt(2)/2,-s1/2),(s1*sqrt(2)/2,s1/2)),blue+linewidth(0.9));
+draw(p1,(0,0)--(s1*sqrt(2)/2,s1/2),dashed);dot(p1,(0,0));
+label(p1,"$x$",(s1*sqrt(2)/4,s1/4),NW);
+label(p1,"$s$",(-s1*sqrt(2)/2,0),E,blue);label(p1,"$s\sqrt{2}$",(0,-s1/2),N,blue);
+label(p1,"sphere",(0,-x),S);
+draw(p2,arc((0,0),x,0,180)--cycle,linewidth(0.8));
+draw(p2,box((-s2*sqrt(2)/2,0),(s2*sqrt(2)/2,s2)),blue+linewidth(0.9));
+draw(p2,(0,0)--(s2*sqrt(2)/2,s2),dashed);dot(p2,(0,0));
+label(p2,"$x$",(s2*sqrt(2)/4,s2/2),2*NW);
+label(p2,"$s$",(-s2*sqrt(2)/2,s2/2),E,blue);label(p2,"$s\sqrt{2}$",(0,0),S,blue);
+label(p2,"hemisphere",(0,-0.55),S);
+add(p1);add(shift(4.2,0)*p2);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The ratio is
+\[
+\dfrac{V_1}{V_2}=\dfrac{8}{2\sqrt2}=\boxed{2\sqrt2}.
+\]

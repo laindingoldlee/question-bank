@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2292490_2017_national_mathcounts
+% Stable identity: aops-topic-2292490-q02
+Think of the tiles as the cells of a $5\times5$ grid, with the letter giving the row and the number giving the column. Two tiles are \emph{related} if they are in the same row or the same column. There are $\dbinom{25}{3}=2300$ equally likely choices of three tiles. We count the choices in which no tile is unrelated to both others. Among three tiles, this happens exactly when at least two of the three pairs are related.
+
+\textbf{All three pairs related.} If $X,Y$ share a row and $X,Z$ share a column, then $Y$ and $Z$ differ in both row and column. So three pairwise related tiles lie in one row or in one column: $5\dbinom53+5\dbinom53=100$ choices.
+
+\textbf{Exactly two pairs related.} Then one tile $X$ is related to both others and $Y,Z$ are unrelated. By the observation above, one of $Y,Z$ is in the row of $X$ and the other in its column. Choose $X$ ($25$ ways), another tile in its row ($4$ ways) and another in its column ($4$ ways): $25\cdot16=400$ choices, each counted once (the corner $X$ is determined by the set).
+
+So $100+400=500$ choices work, and the probability is
+\[\dfrac{500}{2300}=\boxed{\dfrac{5}{23}}.\]

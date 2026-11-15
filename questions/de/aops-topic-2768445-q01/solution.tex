@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2768445_question
+% Stable identity: aops-topic-2768445-q01
+Sort the numbers by their remainder mod $42$. Since $547=13\cdot42+1$, each remainder class has $13$ members except remainder $1$, which has $14$ (the extra number is $547$).
+
+Two numbers have a sum divisible by $42$ exactly when their remainders $r,s$ satisfy $r+s\equiv0\pmod{42}$. Hence:
+\begin{itemize}
+\item at most one number with remainder $0$, and at most one with remainder $21$;
+\item for each pair $\{r,42-r\}$ with $1\le r\le20$, numbers may be taken from only one of the two classes, so at most $\max(|r|,|42-r|)$ from the pair.
+\end{itemize}
+This gives at most $1+1+14+19\cdot13=263$. The bound is attained by taking all numbers with remainders $1,2,\dots,20$ together with $21$ and $42$: no two remainders among $1,\dots,20$ add to $42$, and $21$ and $42$ add to $0$ or $21$ with nothing chosen. The answer is $\boxed{263}$.

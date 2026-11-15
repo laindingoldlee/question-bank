@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1989221_chords_integers
+% Stable identity: aops-topic-1989221-q01
+Let $O$ be the center. A chord at distance $d$ from $O$ has length $2\sqrt{17^2-d^2}$. For chords through $P$ the distance $d$ runs from $0$ (the diameter through $P$, length $34$) to $OP=12$ (the chord perpendicular to $OP$, length $2\sqrt{289-144}=2\sqrt{145}\approx24.08$). As a chord turns about $P$ through $180^\circ$, its length changes continuously from $34$ down to $2\sqrt{145}$ and back up to $34$. The chords through $P$ come in pairs that are mirror images in the line $OP$, so every length strictly between the minimum and the maximum is taken by exactly $2$ chords, while the maximum $34$ (the diameter) and the minimum (the perpendicular chord) are each taken by exactly $1$ chord.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), P=(12,0);
+draw(circle(O,17),linewidth(0.9));
+real d=sqrt(145);
+draw((12,-d)--(12,d),red+linewidth(1)); draw((-17,0)--(17,0),blue+linewidth(1));
+real th=55; pair u=dir(th);
+real t1=-dot(P,u)+sqrt(dot(P,u)^2-(dot(P,P)-289)), t2=-dot(P,u)-sqrt(dot(P,u)^2-(dot(P,P)-289));
+draw(P+t1*u--P+t2*u,gray(0.4));
+dot(O);dot(P);
+label("$O$",O,S);label("$P$",P,SE);
+label("$12$",(6,0),N);
+label("$2\sqrt{145}$",(12,-10.5),W,red); label("$34$",(-8,0),N,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $24.08<\ell\le34$, the integer lengths are $25,26,\dots,34$. Each of $25,\dots,33$ gives $2$ chords and $34$ gives $1$, so the number of chords is $9\cdot2+1=\boxed{19}$.
+
+General method: compute the shortest chord $2\sqrt{r^2-OP^2}$ and the diameter $2r$; count the integers strictly between them twice, and add one for the diameter (and one for the shortest chord if its length is an integer).

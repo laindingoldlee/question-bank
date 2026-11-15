@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2553726_187__11_problems
+% Stable identity: aops-topic-2553726-q02
+Since $AB=AC$, the base angles are equal, so
+\[\angle B=\dfrac{180^\circ-\left(\dfrac{900}{7}\right)^\circ}{2}=\dfrac12\cdot\left(\dfrac{360}{7}\right)^\circ=\left(\dfrac{180}{7}\right)^\circ.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+real t=180/7;
+pair B=(-1,0),C=(1,0),A=(0,Tan(t));
+draw(A--B--C--cycle,linewidth(0.8));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+draw(arc(A,0.1,180+t,360-t));label("$\left(\dfrac{900}{7}\right)^\circ$",A-(0,0.1),S,fontsize(7pt));
+draw(arc(B,0.3,0,t));label("$\left(\dfrac{180}{7}\right)^\circ$",B+0.56*dir(t/2),fontsize(7pt));
+pair m1=B+0.78*(A-B),m2=C+0.78*(A-C);
+draw((m1+0.05*dir(90+t))--(m1-0.05*dir(90+t)));draw((m2+0.05*dir(90-t))--(m2-0.05*dir(90-t)));
+\end{asy}
+
+As $\gcd(180,7)=1$, $m+n=180+7=\boxed{187}$.

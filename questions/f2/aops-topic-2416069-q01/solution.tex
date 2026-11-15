@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2416069_function_transformations
+% Stable identity: aops-topic-2416069-q01
+Throughout, $(u,v)$ is a point of the graph of $y=f(x)$, i.e. $v=f(u)$.
+
+\textbf{(a)} The point $(1-u,v)$ is on the graph of $y=f(1-x)$, because $f\bigl(1-(1-u)\bigr)=f(u)=v$; and every point of that graph arises this way. The map $u\mapsto1-u$ is ``$u\mapsto-u$ (reflect in the $y$-axis), then add $1$ (move $1$ unit right)''. It is also the reflection in the line $x=\dfrac12$, since the midpoint of $u$ and $1-u$ is $\dfrac12$.
+
+\textbf{(b)} Moving right by $1$ sends $(u,v)$ to $(u+1,v)$, which gives the graph of $y=f(x-1)$. Reflecting that in the $y$-axis sends $(u+1,v)$ to $(-u-1,v)$, which gives the graph of $y=f(-x-1)$, not $y=f(1-x)$. For example, with $f(x)=\sqrt x$:
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f1(real x){return sqrt(x);} real f2(real x){return sqrt(1-x);} real f3(real x){return sqrt(-x-1);}
+draw((-5.6,0)--(4.6,0),gray,Arrow(5)); draw((0,-0.3)--(0,3),gray,Arrow(5));
+label("$x$",(4.6,0),E,gray); label("$y$",(0,3),N,gray);
+draw(graph(f1,0,4,200),blue+linewidth(0.9)); draw(graph(f2,-3,1,200),red+linewidth(0.9)); draw(graph(f3,-5,-1,200),deepgreen+dashed+linewidth(0.9));
+draw((0.5,-0.3)--(0.5,2.4),gray+dashed); label("$x=\dfrac12$",(0.5,-0.3),S,gray+fontsize(8pt));
+label("$y=f(x)$",(4,2),E,blue+fontsize(8pt)); label("$y=f(1-x)$",(-1.6,2.3),N,red+fontsize(8pt)); label("$y=f(-x-1)$",(-3.7,0.75),deepgreen+fontsize(8pt));
+\end{asy}
+
+The mistake is the order. Each step replaces $x$ in the \emph{current} formula: reflecting $y=f(x)$ in the $y$-axis gives $y=f(-x)$, and then moving right by $1$ replaces $x$ by $x-1$, giving $y=f\bigl(-(x-1)\bigr)=f(1-x)$. So in $f\bigl(-(x-1)\bigr)$ the shift written innermost is the step done \emph{last}. Done in the student's order, the shift comes first, $y=f(x-1)$, and the reflection then gives $y=f(-x-1)$.
+
+\textbf{(c)} Write $f(ax+b)=f\left(a\left(x+\dfrac ba\right)\right)$. First stretch the graph horizontally by the factor $\dfrac{1}{|a|}$, reflecting it in the $y$-axis as well if $a<0$; this gives $y=f(ax)$. Then translate it horizontally by $-\dfrac ba$ (to the left if $\dfrac ba>0$), which replaces $x$ by $x+\dfrac ba$ and gives $y=f(ax+b)$. In one formula: the point $(u,v)$ goes to $\left(\dfrac{u-b}{a},\,v\right)$.

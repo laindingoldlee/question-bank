@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3133709_2011_lmt__spring_guts_round_p13p24___lexington_mathematical_tournament
+% Stable identity: aops-topic-3133709-q24
+The first removed cell cannot be an edge-middle cell, since an adjacent corner would then have only one neighbor. If the center is removed, the eight remaining cells form a cycle, and removing any one next gives degree 1 neighbors. If a corner is removed, the only possible next removal is its opposite corner: removing an adjacent corner or edge-middle cell creates a degree 1 cell, while removing the center also creates degree 1 cells. After opposite corners are removed, the remaining seven cells form two 4-cycles sharing the center; removing any cell now creates a degree 1 cell. Thus at most 2 removals are possible, and opposite corners attain $\boxed2$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int x=0;x<3;++x)for(int y=0;y<3;++y){path p=(x,y)--(x+1,y)--(x+1,y+1)--(x,y+1)--cycle;if((x==0&&y==2)||(x==2&&y==0))fill(p,lightgray);draw(p);}label("gray cells removed",(1.5,-.6));
+\end{asy}

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2668968_proving_problems_thread
+% Stable identity: aops-topic-2668968-q14
+The sphere is obtained by rotating the semicircle $y=\sqrt{r^2-x^2}$, $-r\le x\le r$, about the $x$-axis. Here $y'=\dfrac{-x}{\sqrt{r^2-x^2}}$, so for $|x|<r$
+\[y\sqrt{1+\left(y'\right)^2}=\sqrt{r^2-x^2}\cdot\sqrt{\dfrac{r^2-x^2+x^2}{r^2-x^2}}=r.\]
+Hence
+\[S=\int_{-r}^{r}2\pi r\,dx=2\pi r\cdot2r=\boxed{4\pi r^2}.\ \blacksquare\]
+(Geometrically: every band of the sphere between two parallel planes at distance $\Delta x$ apart has area $2\pi r\,\Delta x$, the same as the band of the circumscribed cylinder. This is Archimedes' hat-box theorem.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real r=1.4;
+draw(circle((0,0),r),linewidth(0.8));draw((-1.8,0)--(1.8,0),gray(0.6));
+real x0=0.55,x1=0.75;
+draw((x0,-sqrt(r^2-x0^2))--(x0,sqrt(r^2-x0^2)),dashed);draw((x1,-sqrt(r^2-x1^2))--(x1,sqrt(r^2-x1^2)),dashed);
+draw(ellipse((x0,0),0.12,sqrt(r^2-x0^2)),blue);draw(ellipse((x1,0),0.12,sqrt(r^2-x1^2)),blue);
+draw((0,0)--(x0,sqrt(r^2-x0^2)),gray);label("$r$",(x0/2,sqrt(r^2-x0^2)/2),W,fontsize(8pt));
+label("$x$",(1.8,0),E,fontsize(8pt));label("$y=\sqrt{r^2-x^2}$",(-0.6,1.35),N,fontsize(8pt));
+\end{asy}

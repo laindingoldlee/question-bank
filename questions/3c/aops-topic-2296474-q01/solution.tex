@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2296474_differences_of_arguments
+% Stable identity: aops-topic-2296474-q01
+\textbf{(a)} Write $z=r(\cos\alpha+i\sin\alpha)$ and $w=s(\cos\beta+i\sin\beta)$ with $r,s>0$, where $\alpha=\arg z$ and $\beta=\arg w$. Then
+\[zw=rs\big[(\cos\alpha\cos\beta-\sin\alpha\sin\beta)+i(\sin\alpha\cos\beta+\cos\alpha\sin\beta)\big]=rs\big[\cos(\alpha+\beta)+i\sin(\alpha+\beta)\big]\]
+by the angle addition formulas, so $zw$ has argument $\alpha+\beta$ (up to a multiple of $360^\circ$). Applying this to $\dfrac zw\cdot w=z$ gives $\arg\dfrac zw+\arg w=\arg z$, so $\arg\dfrac zw=\arg z-\arg w$. So, to add or subtract arguments, multiply or divide the numbers and take one argument of the result.
+
+\textbf{(b)} $2+i$ and $3+i$ lie in the first quadrant, with arguments $\alpha=\arctan\dfrac12$ and $\beta=\arctan\dfrac13$. Their product is
+\[(2+i)(3+i)=6+2i+3i+i^2=5+5i,\]
+whose argument is $45^\circ$. By (a), $\alpha+\beta=45^\circ+k\cdot360^\circ$; since $0^\circ<\alpha+\beta<180^\circ$, $k=0$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+draw((-0.4,0)--(5.8,0),Arrow(5)); draw((0,-0.4)--(0,5.6),Arrow(5));
+label("$\mathrm{Re}$",(5.8,0),E); label("$\mathrm{Im}$",(0,5.6),N);
+pair z=(2,1), w=(3,1), p=(5,5);
+draw((0,0)--z,blue); draw((0,0)--w,red); draw((0,0)--p,deepgreen);
+dot(z,blue); dot(w,red); dot(p,deepgreen);
+label("$z=2+i$",z,NW,blue+fontsize(8pt)); label("$w=3+i$",w,SE,red+fontsize(8pt)); label("$zw=5+5i$",p,E,deepgreen+fontsize(8pt));
+draw(arc((0,0),1.0,0,degrees(z)),blue); label("$\alpha$",1.2*dir(degrees(z)/2),blue+fontsize(8pt));
+draw(arc((0,0),1.6,0,degrees(w)),red); label("$\beta$",1.85*dir(degrees(w)/2)+(0.15,0),red+fontsize(8pt));
+draw(arc((0,0),2.6,0,45),deepgreen); label("$\alpha+\beta=45^\circ$",2.75*dir(30),E,deepgreen+fontsize(8pt));
+\end{asy}
+
+\textbf{(c)} $\arg(1+3i)=\arctan3$ and $\arg(2+i)=\arctan\dfrac12$, and
+\[\dfrac{1+3i}{2+i}=\dfrac{(1+3i)(2-i)}{(2+i)(2-i)}=\dfrac{2-i+6i+3}{5}=1+i,\]
+whose argument is $45^\circ$. Since $\arctan3-\arctan\dfrac12$ lies between $-90^\circ$ and $90^\circ$, it equals $45^\circ$. $\blacksquare$

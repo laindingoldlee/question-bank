@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1951980_easy_inverse_in_modular_arithmetic
+% Stable identity: aops-topic-1951980-q01
+Run the Euclidean algorithm on $43$ and $17$:
+\[
+43=2\cdot17+9,\qquad 17=1\cdot9+8,\qquad 9=1\cdot8+1 .
+\]
+Working backwards,
+\[
+1=9-8=9-(17-9)=2\cdot9-17=2(43-2\cdot17)-17=2\cdot43-5\cdot17 .
+\]
+So $17\cdot(-5)\equiv1\pmod{43}$, and the inverse is $-5\equiv\boxed{38}$. (Check: $17\cdot38=646=15\cdot43+1$.)
+
+This is the efficient general method: an inverse of $a$ modulo $m$ exists exactly when $\gcd(a,m)=1$, and the back-substitution of the Euclidean algorithm writes $1=ua+vm$, so $u$ is the inverse.

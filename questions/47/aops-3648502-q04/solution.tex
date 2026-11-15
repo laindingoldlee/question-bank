@@ -1,0 +1,6 @@
+An order-$n$ Aztec diamond has row lengths $2,4,\ldots,2n,2n,\ldots,4,2$, totalling $2n(n+1)$. Thus the expanded diamond has $n(n+1)=72$, so $n=8$. The previous order seven had $2\cdot7\cdot8=\boxed{112}$ tiles.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+int n=4;for(int y=-n;y<n;++y){int w=2*(n-(abs(y)<abs(y+1)?abs(y):abs(y+1)));for(int x=-floor(w/2);x<floor(w/2);++x){path p=(x,y)--(x+1,y)--(x+1,y+1)--(x,y+1)--cycle;draw(p);}}label("Aztec diamond (schematic)",(0,-5));
+\end{asy}
+

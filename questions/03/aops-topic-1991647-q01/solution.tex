@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1991647_easy_inequality
+% Stable identity: aops-topic-1991647-q01
+Dividing both sides by $2019^{2019}$, the inequality is equivalent to
+\[
+2019>\left(\dfrac{2020}{2019}\right)^{2019}=\left(1+\dfrac{1}{n}\right)^n\qquad\text{with } n=2019 .
+\]
+By the binomial theorem,
+\[
+\left(1+\dfrac{1}{n}\right)^n=\sum_{k=0}^{n}\dbinom nk\dfrac{1}{n^k},\qquad
+\dbinom nk\dfrac{1}{n^k}=\dfrac{1}{k!}\cdot\dfrac{n}{n}\cdot\dfrac{n-1}{n}\cdots\dfrac{n-k+1}{n}\le\dfrac{1}{k!}.
+\]
+Since $k!\ge2^{k-1}$ for $k\ge1$,
+\[
+\left(1+\dfrac{1}{n}\right)^n\le1+\sum_{k=1}^{n}\dfrac{1}{k!}\le1+\sum_{k=1}^{n}\dfrac{1}{2^{k-1}}<1+2=3<2019 .
+\]
+This proves $2019^{2020}>2020^{2019}$. $\blacksquare$ (The same argument shows $n^{n+1}>(n+1)^n$ for every integer $n\ge3$; the given fact $2018^{2019}>2019^{2018}$ is the case $n=2018$ and is not needed.)

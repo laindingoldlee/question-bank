@@ -1,0 +1,17 @@
+Let $v=\overrightarrow{MN}$ and let $w$ be a vector parallel to the bases with length $\dfrac{(AB+CD)}{2}$. The two diagonal vectors are $v+w$ and $v-w$, in a suitable orientation. Thus
+\[
+|v|^2=361,\qquad |w|^2=\dfrac{24^2+23^2}{2}-361=\dfrac{383}{2},
+\qquad v\cdot w=\dfrac{24^2-23^2}{4}=\dfrac{47}{4}.
+\]
+The trapezoid area is $|v\times w|$, so its square is
+\[
+361\cdot\dfrac{383}{2}-\left(\dfrac{47}{4}\right)^2
+=\dfrac{1103895}{16}.
+\]
+This gives $a=1103895,b=4$, which satisfy the required normalization. Hence the answer is $\boxed{899}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real w=sqrt(383.0/2),vx=47/(4w),h=sqrt(361-vx*vx);pair A=(-5,0),B=(5,0),C=(vx+w-5,h),D=(vx-w+5,h),M=(0,0),N=(vx,h);draw(A--B--C--D--cycle);draw(A--C,blue);draw(B--D,blue);draw(M--N,red);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$M$",M,S);label("$N$",N,(0,1));label("$19$",(M+N)/2,(1,0));
+\end{asy}

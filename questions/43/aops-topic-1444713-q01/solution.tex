@@ -1,0 +1,57 @@
+% Source: https://artofproblemsolving.com/community/c3h1444713_two_polygons
+% Stable identity: aops-topic-1444713-q01
+A polygon with $n$ sides has $d(n)=\dfrac{n(n-3)}{2}$ diagonals ($n-3$ from each vertex, each counted from both ends). The values are
+\[
+d(3)=0,\ d(4)=2,\ d(5)=5,\ d(6)=9,\ d(7)=14,\ d(8)=20,\ d(9)=27 .
+\]
+We need $d(m)+d(n)=25$ with $m\le n$; since $d(9)>25$, $n\le8$, and $2d(n)\ge25$ gives $n\ge7$. For $n=8$ we need $d(m)=5$, so $m=5$; for $n=7$ we need $d(m)=11$, which is not a value. So the polygons are a pentagon and an octagon:
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+draw((0.0000,1.6000)--(-0.9405,-1.2944),blue);
+draw((0.0000,1.6000)--(0.9405,-1.2944),blue);
+draw((-1.5217,0.4944)--(0.9405,-1.2944),blue);
+draw((-1.5217,0.4944)--(1.5217,0.4944),blue);
+draw((-0.9405,-1.2944)--(1.5217,0.4944),blue);
+draw((0.0000,1.6000)--(-1.5217,0.4944)--(-0.9405,-1.2944)--(0.9405,-1.2944)--(1.5217,0.4944)--cycle,linewidth(1));
+dot((0.0000,1.6000));
+dot((-1.5217,0.4944));
+dot((-0.9405,-1.2944));
+dot((0.9405,-1.2944));
+dot((1.5217,0.4944));
+draw((3.8729,1.7554)--(2.8446,-0.7271),blue);
+draw((3.8729,1.7554)--(3.8729,-1.7554),blue);
+draw((3.8729,1.7554)--(5.3271,-1.7554),blue);
+draw((3.8729,1.7554)--(6.3554,-0.7271),blue);
+draw((3.8729,1.7554)--(6.3554,0.7271),blue);
+draw((2.8446,0.7271)--(3.8729,-1.7554),blue);
+draw((2.8446,0.7271)--(5.3271,-1.7554),blue);
+draw((2.8446,0.7271)--(6.3554,-0.7271),blue);
+draw((2.8446,0.7271)--(6.3554,0.7271),blue);
+draw((2.8446,0.7271)--(5.3271,1.7554),blue);
+draw((2.8446,-0.7271)--(5.3271,-1.7554),blue);
+draw((2.8446,-0.7271)--(6.3554,-0.7271),blue);
+draw((2.8446,-0.7271)--(6.3554,0.7271),blue);
+draw((2.8446,-0.7271)--(5.3271,1.7554),blue);
+draw((3.8729,-1.7554)--(6.3554,-0.7271),blue);
+draw((3.8729,-1.7554)--(6.3554,0.7271),blue);
+draw((3.8729,-1.7554)--(5.3271,1.7554),blue);
+draw((5.3271,-1.7554)--(6.3554,0.7271),blue);
+draw((5.3271,-1.7554)--(5.3271,1.7554),blue);
+draw((6.3554,-0.7271)--(5.3271,1.7554),blue);
+draw((3.8729,1.7554)--(2.8446,0.7271)--(2.8446,-0.7271)--(3.8729,-1.7554)--(5.3271,-1.7554)--(6.3554,-0.7271)--(6.3554,0.7271)--(5.3271,1.7554)--cycle,linewidth(1));
+dot((3.8729,1.7554));
+dot((2.8446,0.7271));
+dot((2.8446,-0.7271));
+dot((3.8729,-1.7554));
+dot((5.3271,-1.7554));
+dot((6.3554,-0.7271));
+dot((6.3554,0.7271));
+dot((5.3271,1.7554));
+label("$5$ diagonals",(0,-2.3)); label("$20$ diagonals",(4.6,-2.3));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+and together they have $5+8=\boxed{13}$ sides.

@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2202972_hexagons
+% Stable identity: aops-topic-2202972-q01
+Let Peppa start at $A$, walk along $AB$ and $BC$ (each $2$ miles) and then $1$ mile along $CD$, stopping at the midpoint $P$ of $CD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair[] V; V[0]=(0,0);
+for(int k=1;k<6;++k) V[k]=V[k-1]+2*dir(60*(k-1));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,gray);
+pair Pp=(V[2]+V[3])/2;
+draw(V[0]--V[1]--V[2]--Pp,blue+linewidth(1.2));
+draw(V[0]--Pp,red+dashed+linewidth(0.9));
+dot(V[0]); dot(V[1]); dot(V[2]); dot(V[3]); dot(Pp,red);
+label("$A$",V[0],SW); label("$B$",V[1],SE); label("$C$",V[2],E); label("$D$",V[3],N); label("$P$",Pp,NE,red);
+label("$2$",(V[0]+V[1])/2,S); label("$2$",(V[1]+V[2])/2,E); label("$1$",(V[2]+Pp)/2,NE);
+\end{asy}
+
+The exterior angles of a regular hexagon are $60^\circ$. Put $A=(0,0)$ and $B=(2,0)$. Then
+\[C=B+\left(2\cos60^\circ,\ 2\sin60^\circ\right)=\left(3,\ \sqrt3\right),\]
+and $CD$ points in the direction $120^\circ$, so
+\[P=C+\left(\cos120^\circ,\ \sin120^\circ\right)=\left(3-\dfrac{1}{2},\ \sqrt3+\dfrac{\sqrt3}{2}\right)=\left(\dfrac{5}{2},\ \dfrac{3\sqrt3}{2}\right).\]
+Therefore
+\[AP=\sqrt{\dfrac{25}{4}+\dfrac{27}{4}}=\boxed{\sqrt{13}}\approx3.61\text{ miles}.\]

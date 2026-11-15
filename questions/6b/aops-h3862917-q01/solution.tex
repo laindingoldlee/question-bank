@@ -1,0 +1,26 @@
+The tangent-chord theorem gives similar triangles $DAB$ and $DCA$. Hence $\dfrac{DB}{DC}=(\dfrac{AB}{AC})^2=\dfrac{25}{16}$. Since $AD^2=DB\cdot DC$, scale the figure so that
+\[
+D=(0,0),\quad C=(16,0),\quad B=(25,0),\quad AD=20.
+\]
+Write $A=(u,v)$, so $u^2+v^2=400$. The circle $\Omega_1$ has equation $x^2+y^2-41x+\lambda y+400=0$.
+
+Invert about $D$ with squared radius $400$: a point $Q$ maps to $Q'=\dfrac{400Q}{|Q|^2}$. This swaps $B,C$, fixes $A$, and maps $\Omega_1$ to itself. The circle $\Omega_2$, tangent to the horizontal axis at $D$, maps to the horizontal line through $A$. Consequently $E'=(41-u,v)$, the other horizontal intersection with $\Omega_1$. Thus
+\[
+AE'=41-2u,\qquad BE'=AC,\qquad AC^2=656-32u=16AE'.
+\]
+The first expression is positive since $u\le20$.
+
+The inversion distance identity is $U'V'=400\,\dfrac{UV}{(DU\cdot DV)}$, obtained directly from the coordinate formula. Applying it to $AE$ and $CE$, with $A'=A$ and $C'=B$, gives
+\[
+\dfrac{AE}{CE}
+=\dfrac{DA}{DC}\dfrac{AE'}{BE'}
+=\dfrac{20}{16}\dfrac{AC}{16}
+=\dfrac{5AC}{64}.
+\]
+Therefore $AC=\dfrac{448}{15}$, while $BC=25-16=9$. Hence $\dfrac{BC}{AC}=\dfrac{135}{448}$ and $\boxed{m+n=583}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real c=-3319.0/9000,s=sqrt(1-c*c);pair D=(0,0),B=(25,0),C=(16,0),A=20(c,s),O1=(20.5,(40-41c)/(2s)),O2=(0,10/s),Q=(41-A.x,A.y),E=400Q/dot(Q,Q);draw(circle(O1,sqrt(dot(O1,O1)-400)),gray);draw(circle(O2,O2.y),gray);draw(D--B);draw(D--A,blue);draw(A--B);draw(A--C);draw(A--E--C,red);draw(A--Q,dashed);label("$A$",A,(-1,0));label("$B$",B,(0,-1));label("$C$",C,(0,-1));label("$D$",D,SW);label("$E$",E,SE);label("$E^{\prime}$",Q,(1,0));
+\end{asy}

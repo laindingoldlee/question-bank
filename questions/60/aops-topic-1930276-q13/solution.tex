@@ -1,0 +1,42 @@
+% Source: https://artofproblemsolving.com/community/c3h1930276_help_needed_in_problems_of_varied_topics
+% Stable identity: aops-topic-1930276-q13
+Let $O$ be the centre of the circle $\omega$. For $i=1,\dots,5$ let $m_i$ be the line through $O$ perpendicular to $\ell_i$, and let $\sigma_i$ be the reflection in $m_i$.
+
+\textbf{Key fact.} For distinct points $X,Y$ on $\omega$: $XY\parallel\ell_i$ if and only if $Y=\sigma_i(X)$. Indeed, the perpendicular bisector of the chord $XY$ passes through $O$; it is perpendicular to $\ell_i$ exactly when it is $m_i$, i.e.\ when $Y$ is the mirror image of $X$ in $m_i$. In particular $\sigma_i(X)$ is the second intersection of $\omega$ with the line through $X$ parallel to $\ell_i$, which can be drawn with straightedge and compass.
+
+\textbf{Reformulation.} We need $A_2=\sigma_1(A_1)$, $A_3=\sigma_2(A_2)$, $A_4=\sigma_3(A_3)$, $A_5=\sigma_4(A_4)$ and $A_1=\sigma_5(A_5)$, that is,
+\[
+A_1=f(A_1),\qquad f=\sigma_5\circ\sigma_4\circ\sigma_3\circ\sigma_2\circ\sigma_1 .
+\]
+The product of two reflections in lines through $O$ is a rotation about $O$, so $f=(\sigma_5\sigma_4)(\sigma_3\sigma_2)\sigma_1$ is a rotation about $O$ composed with a reflection in a line through $O$. Such a map is an orientation-reversing isometry fixing $O$, so it is a reflection in some line $m$ through $O$. The points of $\omega$ fixed by $f$ are exactly the two points where $m$ meets $\omega$.
+
+\textbf{Construction.}
+\begin{enumerate}
+\item Take any point $X$ on $\omega$ and draw successively the chords through $X$ parallel to $\ell_1,\ell_2,\ell_3,\ell_4,\ell_5$, obtaining $X_1=\sigma_1(X)$, \dots, $X_5=f(X)$.
+\item If $X_5\ne X$, the line $m$ is the perpendicular bisector of $XX_5$ (it passes through $O$); if $X_5=X$, then $m$ is the line $OX$.
+\item Let $A_1$ be either point where $m$ meets $\omega$, and draw from $A_1$ the chord parallel to $\ell_1$ to get $A_2$, from $A_2$ the chord parallel to $\ell_2$ to get $A_3$, and so on up to $A_5$.
+\end{enumerate}
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real[] th={100,170,235,300,25};
+pair[] V; for(int i=0;i<5;++i) V.push(dir(th[i]));
+pair O=(0,0);
+draw(unitcircle,linewidth(0.8));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--cycle,linewidth(1));
+draw(1.25*V[0]--(-1.25*V[0]),red+dashed);
+pair m1=dir((th[0]+th[1])/2);
+draw(1.25*m1--(-1.25*m1),blue+dotted);
+dot(O);
+for(int i=0;i<5;++i){dot(V[i]); label("$A_"+string(i+1)+"$",V[i],1.4*V[i]);}
+label("$O$",O,NE);
+label("$m$",-1.25*V[0],S,red);
+label("$m_1$",1.25*m1,NW,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Proof.} By the key fact $A_1A_2,\dots,A_4A_5$ are parallel to $\ell_1,\dots,\ell_4$, and $\sigma_5(A_5)=f(A_1)=A_1$ because $A_1$ lies on the axis $m$ of $f$; so $A_5A_1\parallel\ell_5$ as well. $\blacksquare$
+
+The two points of $m\cap\omega$ give the two solutions in general. (The pentagon may be self-intersecting, and a side degenerates to a point when the chord through some $A_i$ parallel to $\ell_i$ is a tangent; the problem asks only for the parallel sides.) In the figure, $m$ is the dashed axis through $A_1$, and the dotted line $m_1$ is the axis of $\sigma_1$, the perpendicular bisector of $A_1A_2$.

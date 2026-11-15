@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2680869_geometry_problem
+% Stable identity: aops-topic-2680869-q01
+Let $H$ be the foot of the perpendicular from $A$ to line $BC$.
+
+\emph{Triangle $ADH$ is equilateral.} In right triangle $AHB$, $\angle B=30^\circ$, so $AH=\dfrac12AB=AD$ and $\angle BAH=60^\circ$. Also $D$ is the midpoint of the hypotenuse $\overline{AB}$, so $DH=DA=DB$. Thus $AD=DH=AH$, and $\angle ADH=60^\circ$; triangle $DHB$ is isosceles with $\angle DHB=\angle DBH=30^\circ$.
+
+\emph{Locating $C$.} Since $\angle ADC=45^\circ<60^\circ=\angle ADH$, ray $DC$ lies between rays $DA$ and $DH$, so $H$ lies between $B$ and $C$ and $\angle HDC=60^\circ-45^\circ=15^\circ$. In triangle $DHC$, $\angle DHC=180^\circ-30^\circ=150^\circ$, so $\angle HCD=180^\circ-150^\circ-15^\circ=15^\circ=\angle HDC$. Hence $HC=HD=AH$.
+
+\emph{Conclusion.} Right triangle $AHC$ is isosceles, so $\angle HAC=45^\circ$, and
+\[\angle BAC=\angle BAH+\angle HAC=60^\circ+45^\circ=\boxed{105^\circ}.\]
+(Check: $\angle C=180^\circ-105^\circ-30^\circ=45^\circ$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),A=2*dir(30),D=(B+A)/2,H=(A.x,0),C=(A.x+1,0);
+draw(A--B--C--cycle,linewidth(0.8));draw(D--C);draw(A--H,dashed);draw(D--H,dashed);
+draw(H+(-0.07,0)--H+(-0.07,0.07)--H+(0,0.07));
+dot(D);dot(H);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NW);label("$H$",H,S);
+label("$30^\circ$",B,8*dir(12),fontsize(7pt));label("$45^\circ$",D,4.5*dir(5),fontsize(7pt));
+\end{asy}

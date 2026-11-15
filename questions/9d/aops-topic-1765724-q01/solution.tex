@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1765724_forming_triangles_with_fibonacci_numbers
+% Stable identity: aops-topic-1765724-q01
+Let the Fibonacci numbers be $F_1=F_2=1$, $F_{m+1}=F_m+F_{m-1}$. The sequence is non-decreasing, and strictly increasing from $F_2$ on. Let the three distinct values be $a<b<c$. Write $b=F_k$ and $c=F_l$, choosing the indices so that $k\ge2$; since $c>b$ we have $l\ge k+1$. As $a<b=F_k$ and $a$ is a Fibonacci number, $a\le F_{k-1}$ (with $k\ge 3$, because $a<b$ forces $b\ge2$). Hence
+\[
+a+b\le F_{k-1}+F_k=F_{k+1}\le F_l=c .
+\]
+A triangle needs the sum of the two shorter sides to be \emph{greater} than the longest side, so $a,b,c$ are never the sides of a triangle: at best $a+b=c$ and the ``triangle'' is flat.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(8,0);
+draw(A--B,linewidth(1));
+draw(arc(A,3,0,75),blue+dashed);draw(arc(B,5,105,180),red+dashed);
+draw(A--3*dir(55),blue);draw(B--B+5*dir(150),red);
+dot(A);dot(B);dot((3,0));
+label("$F_j$",1.5*dir(55),NW,blue);label("$F_k$",B+2.5*dir(150),NE,red);
+label("$F_{k+1}=F_j+F_k$",(4,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The sketch shows the extreme case $a=F_j$, $b=F_k$ with $j=k-1$ and $c=F_{k+1}$ (here $3,5,8$): the two shorter segments, swung from the ends of the longest one, can meet only on it, so they do not form a triangle. $\blacksquare$

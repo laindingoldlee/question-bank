@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2353474_problems
+% Stable identity: aops-topic-2353474-q01
+Each cupcake is a cylinder of volume $\pi r^2h=\pi\cdot3^2\cdot1=9\pi$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real r=3, h=1, k=0.3;
+draw(ellipse((0,h),r,k*r));
+draw((-r,0)--(-r,h)); draw((r,0)--(r,h));
+draw(xscale(r)*yscale(k*r)*arc((0,0),1,180,360));
+draw(xscale(r)*yscale(k*r)*arc((0,0),1,0,180),dashed);
+draw((0,h)--(r,h),red); label("$3$",(r,h),E,red);
+draw((-r-0.5,0)--(-r-0.5,h),Arrows(3)); label("$1$",(-r-0.5,h/2),W);
+\end{asy}
+
+In $52$ weeks she bakes $7\cdot52=364$ cupcakes, with total volume $364\cdot9\pi=\boxed{3276\pi}$ cubic units.

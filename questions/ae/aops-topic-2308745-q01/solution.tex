@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2308745_experienced_shipper_pogs_daily_questions_5
+% Stable identity: aops-topic-2308745-q01
+The probability is the ratio of the areas, so
+\[\dfrac{\pi r^2}{25}=\dfrac12,\qquad r^2=\dfrac{25}{2\pi},\qquad r=\dfrac{5}{\sqrt{2\pi}}\approx1.995.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+draw(box((0,0),(5,5)),linewidth(1));
+real r=5/sqrt(2*pi);
+filldraw(circle((2.5,2.5),r),paleblue,blue);
+draw((2.5,2.5)--(2.5,2.5)+r*dir(20),blue); dot((2.5,2.5),blue);
+label("$r$",(2.5,2.5)+0.5*r*dir(20),N,blue);
+label("$5$",(2.5,0),S); label("$5$",(5,2.5),E);
+\end{asy}
+
+(The circle fits: $r<2.5$.) Since $1.5^2=2.25<\dfrac{25}{2\pi}\approx3.98<6.25=2.5^2$, the radius lies between $1.5$ and $2.5$, so rounded to the nearest integer it is $\boxed{2}$.

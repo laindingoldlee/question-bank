@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1444992_strange_numbers
+% Stable identity: aops-topic-1444992-q01
+Let the removed $0$ have $k$ digits after it. Write the number as $N=A\cdot10^{k+1}+B$, where $A$ is the part before the $0$ and $0\le B<10^k$ is the part after it; removing the $0$ gives $M=A\cdot10^k+B$. The condition $N=9M$ becomes
+\[
+A\cdot10^{k+1}+B=9A\cdot10^k+9B\quad\Longleftrightarrow\quad A\cdot10^k=8B .
+\]
+\begin{itemize}
+\item $k=0$ ($0$ is the last digit): $B=0$ and $A=0$, impossible.
+\item $k=1$: $A$ has two digits, so $8B=10A\ge100$ and $B\ge13$, but $B$ is a single digit. Impossible.
+\item $k=2$: $A$ is a digit $1,\dots,9$ and $B=\dfrac{100A}{8}=\dfrac{25A}{2}<100$, so $A\in\{2,4,6\}$, giving $B=25,50,75$.
+\item $k=3$ would make $0$ the leading digit.
+\end{itemize}
+The numbers are $\boxed{2025,\ 4050,\ 6075}$: indeed $2025=9\cdot225$, $4050=9\cdot450$, $6075=9\cdot675$. (For $4050$ the $0$ removed is the one in the hundreds place.)

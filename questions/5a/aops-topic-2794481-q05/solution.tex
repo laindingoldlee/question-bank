@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2794481_2005__midmichigan_mathematical_olympiad___grades_56
+% Stable identity: aops-topic-2794481-q05
+The second equation forces $c=1$. Write $N=\overline{ab}$. Then $Nd=100+10e+f$ and $N(10+d)=1000+100f+10d+f$. There are only 90 two-digit values $N$ and 10 choices for $d$. The following exact enumeration tests every candidate, enforces both product patterns, and enforces six distinct digits.
+\begin{verbatim}
+solutions=[]
+for N in range(10,100):
+    a,b=divmod(N,10)
+    for d in range(10):
+        partial=N*d
+        if not 100<=partial<=199: continue
+        e,f=divmod(partial-100,10)
+        if len({a,b,1,d,e,f})<6: continue
+        if N*(10+d)==1000+101*f+10*d:
+            solutions.append((a,b,1,d,e,f))
+assert solutions==[(8,5,1,2,7,0)]
+\end{verbatim}
+Thus $\boxed{(a,b,c,d,e,f)=(8,5,1,2,7,0)}$, verified by $85\cdot2=170$, $85\cdot1=85$, and $85\cdot12=1020$.

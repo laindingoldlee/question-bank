@@ -1,0 +1,7 @@
+Extend $AD$ through $D$ to $A'$ with $DA'=DA$. The circle centred at $D$ through $A$ also contains $H$ and has diameter $AA'$. Thus $AH\perp HA'$. Since $AH\perp BM$ and $H$ lies on $BM$, points $B,M,H,A'$ are collinear. Triangles $MDA'$ and $MCB$ are similar because $DA'\parallel CB$ and their other sides lie on the same two lines. Therefore $\dfrac{AD}{18}=\dfrac{DA'}{CB}=\dfrac{MD}{MC}=\dfrac{11}{9}$, giving $\boxed{AD=22}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),D=(22,0),B=(0,10),C=(18,10),M=(19.8,5.5),Ap=(44,0);pair H=B+dot(A-B,Ap-B)/dot(Ap-B,Ap-B)*(Ap-B);draw(A--B--C--D--cycle);draw(D--Ap);draw(B--Ap,blue);draw(A--H,red);draw(circle(D,22),gray+dashed);pair[] p={A,B,C,D,M,Ap,H};string[] s={"A","B","C","D","M","A'","H"};pair[] a={(-1,-1),(-1,1),(0,1),(0,-1),(1,1),(1,0),(1,1)};for(int i=0;i<7;++i)label("$"+s[i]+"$",p[i],a[i]);
+\end{asy}

@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2617252_quadrilateral
+% Stable identity: aops-topic-2617252-q01
+\textbf{(a)} The angles of a quadrilateral add up to $360^\circ$, so $\angle C+\angle D=360^\circ-180^\circ=180^\circ$.
+
+In particular all four angles are less than $180^\circ$, so $ABCD$ is convex, and $C$ and $D$ lie on the same side of line $AB$.
+
+\textbf{(b)} Lines $AD$ and $BC$ are cut by the transversal $AB$, and $\angle DAB$ and $\angle ABC$ are co-interior angles (on the same side of $AB$) with sum $180^\circ$. Hence the lines are parallel.
+
+In detail: suppose the lines met at a point $X$. If $X$ is on the same side of $AB$ as $C$ and $D$, triangle $ABX$ would have angles $\angle A$, $\angle B$ and $\angle X>0$ summing to more than $180^\circ$. If $X$ is on the other side, its angles at $A$ and $B$ would be $180^\circ-\angle A$ and $180^\circ-\angle B$, which again sum to $180^\circ$. Both are impossible.
+
+\textbf{(c)} By the same argument with transversal $AD$, $\angle A+\angle D=180^\circ$ gives $AB\parallel DC$. With both pairs of opposite sides parallel, $ABCD$ is a $\boxed{\text{parallelogram}}$. Conversely, every parallelogram has both properties. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(1,2),C=(3.5,2),D=(5,0);
+draw(A--B--C--D--cycle,linewidth(0.8));
+draw(A--D,MidArrow(5));draw(B--C,MidArrow(5));
+draw(arc(A,0.45,0,degrees(B-A)));draw(arc(B,0.35,degrees(A-B)-360,0));
+label("$A$",A,SW);label("$B$",B,NW);label("$C$",C,NE);label("$D$",D,SE);
+label("$\alpha$",A+0.7*dir(32),fontsize(9pt));label("$180^\circ-\alpha$",B+0.95*dir(-38),fontsize(8pt));
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(1,2),C=(5,2),D=(4,0);
+draw(A--B--C--D--cycle,linewidth(0.8));
+draw(A--D,MidArrow(5));draw(B--C,MidArrow(5));draw(A--B,Arrow(size=5,position=Relative(0.45)));draw(A--B,Arrow(size=5,position=Relative(0.6)));draw(D--C,Arrow(size=5,position=Relative(0.45)));draw(D--C,Arrow(size=5,position=Relative(0.6)));
+label("$A$",A,SW);label("$B$",B,NW);label("$C$",C,NE);label("$D$",D,SE);
+\end{asy}

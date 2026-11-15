@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1472683_rectangles_and_squares
+% Stable identity: aops-topic-1472683-q01
+Put $A=(0,0)$, $B=(w,0)$, $C=(w,h)$, $D=(0,h)$ and $P=(x,y)$. Then
+\[
+PA^2+PC^2=x^2+y^2+(w-x)^2+(h-y)^2=PB^2+PD^2,
+\]
+since $PB^2=(w-x)^2+y^2$ and $PD^2=x^2+(h-y)^2$ (the "British flag theorem"). Hence
+\[
+PD^2=PA^2+PC^2-PB^2=25+121-64=82,\qquad PD=\boxed{\sqrt{82}} .
+\]
+Such a rectangle exists: for example $P=(3,4)$, $w=3+\sqrt{48}$, $h=4+\sqrt{73}$ give $PA=5$, $PB=8$, $PC=11$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real w=3+sqrt(48),h=4+sqrt(73);
+pair A=(0,0),B=(w,0),C=(w,h),D=(0,h),P=(3,4);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(P--A,blue); draw(P--B,blue); draw(P--C,blue); draw(P--D,red);
+dot(A);dot(B);dot(C);dot(D);dot(P);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW); label("$P$",P+1.0*dir(165));
+label("$5$",(A+P)/2,NW,blue); label("$8$",(B+P)/2,NE,blue); label("$11$",(C+P)/2,SE,blue); label("$\sqrt{82}$",(D+P)/2,E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The order of the corners matters: $A$ and $C$ are opposite. If instead the corners at distances $8$ and $11$ were opposite, the fourth distance would be $\sqrt{64+121-25}=4\sqrt{10}$; the distances $5$ and $8$ cannot belong to opposite corners, since $25+64-121<0$.

@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2144014_counting_problem
+% Stable identity: aops-topic-2144014-q01
+Number the positions around the loop $0,1,\dots,8$. There are $\dfrac{9!}{3!\,3!\,3!}=1680$ colourings of the positions. The $18$ symmetries of the loop are $9$ rotations and $9$ reflections, and by Burnside's lemma the number of bracelets is the average number of colourings fixed by a symmetry.
+\begin{itemize}
+\item The identity fixes all $1680$ colourings.
+\item A rotation by $1,2,4,5,7$ or $8$ positions moves every position around one cycle of length $9$, so a fixed colouring would use one colour only: none.
+\item A rotation by $3$ or $6$ positions splits the positions into three cycles of length $3$ ($\{0,3,6\},\{1,4,7\},\{2,5,8\}$); a fixed colouring gives each cycle one colour, and the counts $3,3,3$ force the three cycles to have different colours: $3!=6$ colourings each.
+\item A reflection of a $9$-cycle fixes one position and swaps the other eight in four pairs. In a fixed colouring each pair has a single colour, so at most one colour (the colour of the fixed position) can occur an odd number of times. But all three colours occur $3$ times, an odd number, so no colouring is fixed.
+\end{itemize}
+Therefore the number of different bracelets is
+\[\dfrac{1680+6+6}{18}=\dfrac{1692}{18}=\boxed{94}.\]
+(Counting rotations only, the answer would be $\dfrac{1692}{9}=188$; since no colouring is symmetric under a reflection, turning over pairs these up into $94$ bracelets.)

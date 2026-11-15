@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h1584601_quadrilater
+% Stable identity: aops-topic-1584601-q01
+Let $N$ be the midpoint of $AD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),D=(6,0),B=2*dir(150),C=D+4*dir(150);
+pair M=(B+C)/2,Nn=(A+D)/2;
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--M--D,blue);draw(M--Nn,red+dashed);
+real s=0.3;pair u=unit(A-M),v=unit(D-M);draw(M+s*u--M+s*(u+v)--M+s*v,blue);
+draw(arc(D,1.3,165,180),deepgreen);label("$15^\circ$",D+1.65*dir(172),deepgreen+fontsize(9pt));
+draw(arc(A,0.5,0,150));label("$?$",A+0.8*dir(35));
+dot(A);dot(B);dot(C);dot(D);dot(M);dot(Nn);
+label("$A$",A,S);label("$B$",B,W);label("$C$",C,N);label("$D$",D,E);label("$M$",M,N);label("$N$",Nn,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{$NM=\dfrac{AD}{2}$.} Since $\angle AMD=90^\circ$, $M$ lies on the circle with diameter $AD$, whose centre is $N$. So $NM=NA=ND=\dfrac{AD}{2}=\dfrac{AB+CD}{2}$.
+
+\textbf{$AB\parallel DC$.} In vectors,
+\[
+\overrightarrow{NM}=\dfrac{B+C}{2}-\dfrac{A+D}{2}=\dfrac{1}{2}\left(\overrightarrow{AB}+\overrightarrow{DC}\right).
+\]
+By the triangle inequality, $\left|\overrightarrow{AB}+\overrightarrow{DC}\right|\le AB+DC$, with equality only if $\overrightarrow{AB}$ and $\overrightarrow{DC}$ point in the same direction. We have just seen that equality holds. Hence $AB\parallel DC$ (so $ABCD$ is a trapezoid), and $\overrightarrow{NM}$ points in the same direction as $\overrightarrow{AB}$.
+
+\textbf{The angle.} Triangle $NMD$ is isosceles with $NM=ND$, so $\angle NMD=\angle NDM=15^\circ$ and
+\[
+\angle MND=180^\circ-15^\circ-15^\circ=150^\circ .
+\]
+This is the angle between the directions $\overrightarrow{NM}$ and $\overrightarrow{ND}$, which are the directions of $\overrightarrow{AB}$ and $\overrightarrow{AD}$. Therefore
+\[
+\angle BAD=\boxed{150^\circ}.
+\]
+(Such quadrilaterals exist: the figure, with $AD=6$, $AB=2$, $DC=4$, $\angle BAD=150^\circ$ and $\angle ADC=30^\circ$, satisfies all the conditions.)

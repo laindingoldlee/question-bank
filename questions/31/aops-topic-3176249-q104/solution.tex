@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3176249_2016_mbmt_geometry_round__montgomery_blair_math_tournament
+% Stable identity: aops-topic-3176249-q104
+The power of $C$ is $CB\cdot CA=16\cdot36=576$. If the ray is a secant meeting the circle again at $E$, then $CD\cdot CE=576$ and $CE\ge CD$, so $CD\le24$. A tangent ray has tangent length $\sqrt{576}=24$, attaining the bound. Thus $\boxed{24}$. The supplied radius is compatible but does not affect the power calculation.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real r=201/6;pair O=(0,0),A=(-10,sqrt(r*r-100)),B=(10,sqrt(r*r-100)),C=(26,sqrt(r*r-100));real d2=C.x*C.x+C.y*C.y;pair D=(r*r/d2)*C+(r*24/d2)*(-C.y,C.x);draw(circle(O,r));draw(A--C^^C--D^^O--D);label("$O$",O,S);label("$A$",A,NW);label("$B$",B,N);label("$C$",C,NE);label("$D$",D,W);
+\end{asy}

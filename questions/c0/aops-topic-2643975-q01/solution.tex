@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2643975_jhu08s_1000th_post_celebration
+% Stable identity: aops-topic-2643975-q01
+We need $\cos kx\ne0$ for $k=1,2,\dots,101$.
+
+\emph{Telescoping.} Since $\sin\left((k+1)x-kx\right)=\sin x$,
+\[\tan(k+1)x-\tan kx=\dfrac{\sin(k+1)x\cos kx-\cos(k+1)x\sin kx}{\cos kx\cos(k+1)x}=\dfrac{\sin x}{\cos kx\cos(k+1)x}.\]
+
+\emph{Case $\sin x=0$}, $x=m\pi$. Each term equals $\dfrac{1}{(-1)^{km}(-1)^{(k+1)m}}=(-1)^m$, so the sum is $\pm100\ne0$.
+
+\emph{Case $\sin x\ne0$.} Summing the identity for $k=1,\dots,100$ gives
+\[\sum_{k=1}^{100}\dfrac{1}{\cos kx\cos(k+1)x}=\dfrac{\tan101x-\tan x}{\sin x},\]
+which vanishes exactly when $\tan101x=\tan x$, i.e. $100x=m\pi$ for an integer $m$ ($100\nmid m$, as $\sin x\ne0$).
+
+\emph{Which $x=\dfrac{m\pi}{100}$ keep all terms defined?} We have $\cos\dfrac{km\pi}{100}=0$ exactly when $km$ is an odd multiple of $50$.
+\begin{itemize}
+\item $m$ odd: take $k=2$ if $25\mid m$, $k=10$ if $5\mid m$ but $25\nmid m$, and $k=50$ if $5\nmid m$; in each case $km$ is an odd multiple of $50$. Excluded.
+\item $m\equiv2\pmod4$: $k=25$ gives $25m=50\cdot\dfrac m2$ with $\dfrac m2$ odd. Excluded.
+\item $4\mid m$: then $4\mid km$, while an odd multiple of $50$ is $2\pmod4$. All terms are defined.
+\end{itemize}
+So $m=4j$ with $25\nmid j$, i.e.
+\[\boxed{x=\dfrac{j\pi}{25},\quad j\in\mathbb Z,\ 25\nmid j.}\]
+In terms of angles, these are the $48$ marked points of the circle below, repeated with period $2\pi$; the points $0$ and $\pi$ are excluded.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+draw(unitcircle,gray);draw((-1.25,0)--(1.25,0),gray);draw((0,-1.25)--(0,1.25),gray);
+for(int k=1;k<50;++k){ if(k==25) continue; dot(dir(k*180/25),linewidth(2.5));}
+filldraw(circle((1,0),0.04),white);filldraw(circle((-1,0),0.04),white);
+label("$\dfrac{\pi}{25}$",dir(7.2),dir(7.2)*1.6,fontsize(8pt));
+label("$0$",(1,0),SE);label("$\pi$",(-1,0),SW);
+\end{asy}

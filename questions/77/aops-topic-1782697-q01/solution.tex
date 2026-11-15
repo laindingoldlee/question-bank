@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h1782697_14dhaka06
+% Stable identity: aops-topic-1782697-q01
+Let $a=BC$, $b=CA$, $c=AB$, let $K$ be twice the area of $ABC$, and let $O_1$ be the centre of the first circle, on $BC$. Since the circle touches $AB$ and $AC$, its radius $66$ is the distance from $O_1$ to both lines. Splitting the triangle along $AO_1$,
+\[
+K=2[ABO_1]+2[AO_1C]=66\,c+66\,b,\qquad\text{so}\qquad b+c=\dfrac{K}{66}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real a=13,b=9,c=11;
+pair B=(0,0),C=(a,0);
+real xa=(a^2+c^2-b^2)/(2a);pair A=(xa,sqrt(c^2-xa^2));
+real s=(a+b+c)/2;real K=2*sqrt(s*(s-a)*(s-b)*(s-c));
+pair Oa=(b*B+c*C)/(b+c),Ob=(c*C+a*A)/(a+c),Oc=(b*B+a*A)/(a+b);
+draw(circle(Oa,K/(b+c)),blue);draw(circle(Ob,K/(a+c)),heavygreen);draw(circle(Oc,K/(a+b)),red);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--Oa,dashed);
+pair T1=B+dot(Oa-B,unit(A-B))*unit(A-B),T2=C+dot(Oa-C,unit(A-C))*unit(A-C);
+draw(Oa--T1,blue+dashed);draw(Oa--T2,blue+dashed);
+dot(Oa);dot(Ob);dot(Oc);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$O_1$",Oa,S);label("$O_2$",Ob,NE);label("$O_3$",Oc,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the same way $c+a=\dfrac{K}{55}$ and $a+b=\dfrac{K}{60}$. Adding,
+\[
+2(a+b+c)=K\left(\dfrac{1}{66}+\dfrac{1}{55}+\dfrac{1}{60}\right)=K\cdot\dfrac{10+12+11}{660}=\dfrac{K}{20}.
+\]
+The inradius $r$ satisfies $K=r(a+b+c)$, so
+\[
+r=\dfrac{K}{a+b+c}=\boxed{40}.
+\]
+(Such a triangle exists: the three equations give $a:b:c=13:9:11$, an acute triangle, and each circle's diameter lies inside its side.)
+
+\emph{Remark on the original data.} With radii $18$ on $BC$, $6$ on $CA$ and $9$ on $AB$, the same equations give $b+c=\dfrac {K}{18}$, $c+a=\dfrac {K}{6}$, $a+b=\dfrac {K}{9}$ and $a+b+c=\dfrac {K}{6}$, hence $b=0$: no such triangle exists (the formula would give $r=6$).

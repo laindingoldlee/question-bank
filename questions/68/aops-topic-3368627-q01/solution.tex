@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3368627_circle_probabilities
+% Stable identity: aops-topic-3368627-q01
+Any five vertices determine one convex pentagon, and its boundary uniquely identifies that vertex set. Thus there are $\binom75=21$ favorable sets among $\binom{21}{5}=20349$ equally likely sets. The probability is $\boxed{\dfrac{1}{969}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] P;for(int i=0;i<7;++i)P.push(2dir(90+360.0*i/7));draw(circle((0,0),2));for(int i=0;i<7;++i)for(int j=i+1;j<7;++j)draw(P[i]--P[j],lightgray);draw(P[0]--P[1]--P[3]--P[4]--P[6]--cycle,blue+linewidth(1.2));for(int i=0;i<7;++i)dot(string(i+1),P[i],P[i]);
+\end{asy}

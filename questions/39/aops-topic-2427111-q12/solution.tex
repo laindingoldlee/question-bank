@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2427111_several_problems_that_i_made
+% Stable identity: aops-topic-2427111-q12
+A dot $(a,b)$ equals $(x-y,x+y)$ exactly when $x=\dfrac{a+b}{2}$ and $y=\dfrac{b-a}{2}$. These are positive integers exactly when $a$ and $b$ have the same parity, $b>a$ and $a+b>0$; for a dot of the grid ($a\ge0$) the last condition follows from $b>a\ge0$. So we count the pairs with
+\[0\le a<b\le99,\qquad a\equiv b\pmod2.\]
+For a fixed $b$, the allowed $a$ are $b-2,b-4,\dots$ down to $0$ or $1$: there are $\left\lfloor\dfrac b2\right\rfloor$ of them. The total is
+\[\sum_{b=1}^{99}\left\lfloor\dfrac b2\right\rfloor=(0+1)+(1+2)+(2+3)+\cdots+(48+49)+49=2(1+2+\cdots+49)=2\cdot1225=\boxed{2450}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+int n=12; real g=0.5;
+for(int a=0;a<n;++a) for(int c=0;c<n;++c){
+  if(c>a && (c-a)%2==0) dot((a*g,c*g),blue+linewidth(3.5));
+  else dot((a*g,c*g),gray+linewidth(1.5));
+}
+draw((0,0)--((n-1)*g,(n-1)*g),dashed);
+dot((0,0),red+linewidth(4));
+label("$(0,0)$",(0,0),SW,fontsize(8pt));
+label("$b=a$",((n-1)*g,(n-1)*g),NE,fontsize(8pt));
+label("$a$",((n-1)*g/2,-0.35),S,fontsize(8pt)); label("$b$",(-0.35,(n-1)*g/2),W,fontsize(8pt));
+\end{asy}
+
+(The sketch shows the same rule on a $12\times12$ grid: the reachable dots, in blue, are those strictly above the diagonal $b=a$ whose coordinates have the same parity.)

@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1550254_any_quick_formulas_or_solutionstips
+% Stable identity: aops-topic-1550254-q01
+The four numbers form a multiset $\{a,a,b,c\}$ with $b\ne c$ and $a\notin\{b,c\}$, and $2a+b+c=24$. Each such multiset can be ordered in $\dfrac{4!}{2!}=12$ ways, so we count the multisets, i.e. the triples $(a,\{b,c\})$ with $b<c$.
+
+For a fixed $a$ ($1\le a\le11$), let $s=24-2a$. The pairs $b<c$ of positive integers with $b+c=s$ number $\left\lfloor\dfrac{s-1}{2}\right\rfloor$; from these remove the pair containing $a$ itself, which exists when $s-a=24-3a$ is positive and different from $a$, i.e. for $a\le7$, $a\ne6$:
+\begin{center}
+\begin{tabular}{c|ccccccccccc}
+$a$ & 1&2&3&4&5&6&7&8&9&10&11\\ \hline
+pairs $b<c$ & 10&9&8&7&6&5&4&3&2&1&0\\
+minus pair with $a$ & 1&1&1&1&1&0&1&0&0&0&0\\ \hline
+count & 9&8&7&6&5&5&3&3&2&1&0
+\end{tabular}
+\end{center}
+(For $a=6$ the pair containing $6$ would be $\{6,6\}$, which is not a pair with $b<c$; for $a=8$ the other number would be $0$.)
+
+The total is $9+8+7+6+5+5+3+3+2+1=49$ multisets, giving $49\cdot12=\boxed{588}$ ordered sums.

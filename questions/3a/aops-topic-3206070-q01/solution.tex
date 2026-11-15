@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3206070_fall__winter_problem_thread
+% Stable identity: aops-topic-3206070-q01
+Place $A=(0,0),B=(4,0),C=(4,4),D=(0,4)$. Then $Q=(2,0),R=(4,1),S=(1,4),P=(0,2)$. Intersecting their six side lines gives the common hexagon, in cyclic order, with vertices $(\dfrac{8}{5},\dfrac{2}{5}),(\dfrac{16}{7},\dfrac{4}{7}),(3,2),(2,3),(\dfrac{4}{7},\dfrac{16}{7}),(\dfrac{2}{5},\dfrac{8}{5})$. Each vertex satisfies both triangles'side inequalities. The shoelace formula gives area $\boxed{\dfrac{291}{70}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(4,0),C=(4,4),D=(0,4),P=(0,2),Q=(2,0),R=(4,1),T=(1,4);fill((8/5,2/5)--(16/7,4/7)--(3,2)--(2,3)--(4/7,16/7)--(2/5,8/5)--cycle,lightblue);draw(A--B--C--D--cycle);draw(A--R--T--cycle);draw(P--Q--C--cycle);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$P$",P,W);label("$Q$",Q,S);label("$R$",R,E);label("$S$",T,N);
+\end{asy}

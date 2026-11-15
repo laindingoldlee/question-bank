@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2319881_counting
+% Stable identity: aops-topic-2319881-q01
+\textbf{(a)} An arrangement is determined by the set of $n$ spaces that get blue toys, so there are $\boxed{\dbinom{2n}{n}}$ arrangements.
+
+\textbf{(b)} Dividing by $2n$ assumes that each arrangement up to rotation corresponds to exactly $2n$ different numbered arrangements. This fails for symmetric arrangements: for example, the alternating arrangement $BRBR\ldots$ is unchanged by a rotation through two spaces, so it gives only $2$ numbered arrangements, not $2n$. The division does not even give integers: $\dfrac{1}{4}\dbinom42=\dfrac64$ and $\dfrac16\dbinom63=\dfrac{20}{6}$.
+
+\textbf{$n=2$.} Up to rotation, the two blue toys are either next to each other ($BBRR$) or opposite each other ($BRBR$): $\boxed{2}$ arrangements. (The $6$ numbered arrangements split as $4+2$.)
+
+\textbf{$n=3$.} Classify by the number of blocks of consecutive blue toys (around a circle, there are as many red blocks as blue blocks).
+\begin{itemize}
+\item One blue block: $BBBRRR$.
+\item Three blue blocks: each block and each red block has size $1$: $BRBRBR$.
+\item Two blue blocks, of sizes $2$ and $1$, and two red blocks, of sizes $2$ and $1$. Going around from the blue block of size $2$, the next red block has size $1$ or $2$, which gives $BBRBRR$ or $BBRRBR$. These are different: in $BBRBRR$ the red block following the blue pair has size $1$, in $BBRRBR$ it has size $2$.
+\end{itemize}
+So there are $\boxed{4}$ arrangements up to rotation. (The $20$ numbered arrangements split as $6+2+6+6$.)

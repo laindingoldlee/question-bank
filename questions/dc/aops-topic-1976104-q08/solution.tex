@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1976104_2020_math_problems
+% Stable identity: aops-topic-1976104-q08
+The radius is $r=\dfrac{25}{2}$ ft.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),1),linewidth(1));
+path eq=scale(1,0.28)*unitcircle;
+draw(subpath(eq,0,2),dashed);draw(subpath(eq,2,4));
+draw((-1,0)--(1,0),blue+linewidth(1.2));dot((0,0));
+draw((-1,1.18)--(1,1.18),blue,Arrows(TeXHead));draw((-1,1.08)--(-1,1.28),blue);draw((1,1.08)--(1,1.28),blue);
+label("$25$ ft",(0,1.18),N,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The volume is
+\[
+\dfrac{4}{3}\pi r^3=\dfrac{4}{3}\pi\cdot\dfrac{15625}{8}=\boxed{\dfrac{15625\pi}{6}}\text{ ft}^3\approx8181\text{ ft}^3 .
+\]

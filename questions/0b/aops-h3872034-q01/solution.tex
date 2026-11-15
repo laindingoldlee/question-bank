@@ -1,0 +1,12 @@
+The top face $PQR$ defines an affine height function over the base triangle. The average of an affine function over a triangle is the average of its values at the three vertices; this follows by barycentric coordinates, whose three averages are equal by symmetry and sum to one. Thus the mean height is $\dfrac{(1+2+3)}{3}=2$.
+
+The equilateral base has area $\sqrt3\cdot\dfrac{4^2}{4}=4\sqrt3$. Volume is base area times mean height, so
+\[
+V=4\sqrt3\cdot2=8\sqrt3,\qquad \boxed{m+n=11}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair f(real x,real y,real z){return (x+.3y,z+.45y);}pair A=f(0,0,0),B=f(4,0,0),C=f(2,2sqrt(3),0),P=f(0,0,1),Q=f(4,0,2),R=f(2,2sqrt(3),3);draw(A--B--C--cycle,gray);draw(P--Q--R--cycle,blue);draw(A--P);draw(B--Q);draw(C--R);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,SE);label("$P$",P,NW);label("$Q$",Q,(1,0));label("$R$",R,(0,1));label("$1$",(A+P)/2,(-1,0));label("$2$",(B+Q)/2,(1,0));label("$3$",(C+R)/2,(1,0));
+\end{asy}

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2778016_2019_winmac_team_round__winchester_math_competition
+% Stable identity: aops-topic-2778016-q10
+Put $\alpha=\angle BAE $, so $ 0<\alpha<60^\circ $, and write $ r=BE $. By the sine rule, $ r=\dfrac{39\sin\alpha}{\sin3\alpha}=\dfrac{39}{4\cos^2\alpha-1}>13 $. Also $ AE=2r\cos\alpha $. Using $ A=(0,0),B=(39,0)$, the horizontal coordinate of $ E $ is $ 2r\cos^2\alpha=\dfrac{r+39}{2}$. Hence $ DE^2=AE^2-40E_x+400=r^2+19r-380 $. The perimeter is $ 19+r+\sqrt{r^2+19r-380}$, strictly increasing for $ r>13 $, since both terms increase there. As $\alpha\to0^+$, $ r\to13 $ and $ DE\to6 $, so the infimum is $\boxed{38}$ with limiting $\boxed{BE=13}$. It is not attained because $ r=13 $ would make $ ABE $ degenerate.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real a=15;real r=39/(4*cos(a*pi/180)^2-1);pair A=(0,0),B=(39,0),D=(20,0),PtE=2*r*cos(a*pi/180)*dir(a);draw(A--B--PtE--cycle);draw(D--PtE,blue);label("$A$",A,SW);label("$B$",B,SE);label("$D$",D,S);label("$E$",PtE,N);
+\end{asy}

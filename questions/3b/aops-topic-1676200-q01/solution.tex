@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1676200_411_suppose_that_p1p2____p325_is_a_regular_325sided_polygon_determine_the
+% Stable identity: aops-topic-1676200-q01
+\textbf{Shapes.} The vertices lie on a circle, divided into $325$ equal arcs of $\dfrac{360^\circ}{325}$. The three vertices of a triangle $P_iP_jP_k$ split the circle into three arcs containing $a$, $b$, $c$ of these small arcs, with $a,b,c\ge1$ and $a+b+c=325$. By the inscribed angle theorem, the angles of the triangle are half the opposite arcs:
+\[
+\dfrac{a}{325}\cdot180^\circ,\qquad\dfrac{b}{325}\cdot180^\circ,\qquad\dfrac{c}{325}\cdot180^\circ .
+\]
+Two congruent triangles have the same angles, so they have the same multiset $\{a,b,c\}$. Conversely, two triangles with the same multiset can be carried onto each other by a symmetry (rotation or reflection) of the regular polygon, so they are congruent. Hence the answer is the number of ways to write $325=a+b+c$ with positive integers $a\le b\le c$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real s=360/325;real t1=-90,t2=t1+110*s,t3=t2+80*s;
+pair X=dir(t1),Y=dir(t2),Z=dir(t3);
+draw(unitcircle,gray);
+draw(X--Y--Z--cycle,linewidth(0.9));
+draw(arc((0,0),1.0,t1,t2),blue+linewidth(1.6));draw(arc((0,0),1.0,t2,t3),red+linewidth(1.6));draw(arc((0,0),1.0,t3,t1+360),deepgreen+linewidth(1.6));
+dot(X);dot(Y);dot(Z);
+label("$P_i$",X,S);label("$P_j$",Y,dir(t2));label("$P_k$",Z,dir(t3));
+label("$a$",1.15*dir((t1+t2)/2),blue);label("$b$",1.15*dir((t2+t3)/2),red);label("$c$",1.15*dir((t3+t1+360)/2),deepgreen);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the figure (the $325$ vertices are too close together to draw), the three coloured arcs contain $a=110$, $b=80$ and $c=135$ steps; the angle at $P_k$ stands on the arc $a$, and so on.
+
+\textbf{Count.} There are $\dbinom{324}{2}=52326$ ordered triples $(a,b,c)$ of positive integers with sum $325$. Since $3\nmid325$, no triple has $a=b=c$. Triples with exactly two equal parts have the form $\{t,t,325-2t\}$ with $1\le t\le162$: there are $162$ such multisets, each giving $3$ ordered triples, $486$ in all. The remaining $52326-486=51840$ ordered triples have three different parts and come in groups of $3!=6$, giving $8640$ multisets. The total is
+\[
+8640+162=\boxed{8802}.
+\]
+(This agrees with the formula ``nearest integer to $\dfrac{n^2}{12}$'' for the number of partitions of $n$ into three positive parts: $\dfrac{325^2}{12}=8802.08\ldots$)

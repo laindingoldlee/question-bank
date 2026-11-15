@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2443479_complete_the_square
+% Stable identity: aops-topic-2443479-q01
+Factor out $\dfrac12$ from the terms with $x$ and complete the square:
+\[H(x)=\dfrac12\left(x^2+4x\right)-3=\dfrac12\left(x^2+4x+4\right)-2-3=\boxed{\dfrac12(x+2)^2-5}.\]
+Since $\dfrac12(x+2)^2\ge0$, with equality only at $x=-2$, the least value of $H$ is $-5$:
+\begin{itemize}
+\item the graph is a parabola opening upwards with vertex $(-2,-5)$ and axis of symmetry $x=-2$;
+\item the $y$-intercept is $H(0)=-3$, i.e. the point $(0,-3)$;
+\item the $x$-intercepts satisfy $\dfrac12(x+2)^2=5$, i.e. $(x+2)^2=10$, so $x=-2\pm\sqrt{10}$ (about $1.16$ and $-5.16$).
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+real H(real x){return 0.5*x^2+2*x-3;}
+draw((-7,0)--(3,0),Arrow(6)); draw((0,-6.2)--(0,4.5),Arrow(6));
+label("$x$",(3,0),E); label("$y$",(0,4.5),N);
+draw(graph(H,-6.6,2.6),blue+linewidth(0.9));
+draw((-2,-5)--(-2,4.2),dashed);
+pair Vx=(-2,-5); dot(Vx); label("$(-2,-5)$",Vx,S);
+dot((0,-3)); label("$(0,-3)$",(0,-3),E);
+real r1=-2+sqrt(10), r2=-2-sqrt(10);
+dot((r1,0)); dot((r2,0));
+label("$-2+\sqrt{10}$",(r1,0),SE); label("$-2-\sqrt{10}$",(r2,0),SW);
+label("$x=-2$",(-2,4.2),W);
+\end{asy}

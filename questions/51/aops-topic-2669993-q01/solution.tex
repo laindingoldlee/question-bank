@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2669993_confusion_sharygin_problem
+% Stable identity: aops-topic-2669993-q01
+Let $\beta_1=\angle ABD$ and $\beta_2=\angle DBC$, and write $\angle A$, $\angle C$ for the angles of triangle $ABC$.
+
+By the tangent--chord angle theorem in circle $BDC$, the angle between the tangent $DC_1$ and the chord $DB$ equals the inscribed angle in the alternate segment: $\angle BDC_1=\angle BCD=\angle C$. Since $\angle BDA=180^\circ-\angle BDC=\angle C+\beta_2>\angle C$, the ray $DC_1$ lies inside angle $BDA$, so $C_1$ is on segment $AB$. Similarly, in circle $ADB$, $\angle BDA_1=\angle BAD=\angle A$, and $A_1$ is on segment $BC$.
+
+By the law of sines in triangles $BDC_1$ and $BDA_1$,
+\[BC_1=\dfrac{BD\sin\angle C}{\sin(\beta_1+\angle C)},\qquad BA_1=\dfrac{BD\sin\angle A}{\sin(\beta_2+\angle A)}.\]
+Since $(\beta_1+\angle C)+(\beta_2+\angle A)=180^\circ$, the two denominators are equal. Hence, using the law of sines in triangle $ABC$,
+\[\dfrac{BC_1}{BA_1}=\dfrac{\sin\angle C}{\sin\angle A}=\dfrac{BA}{BC},\qquad\text{so}\qquad\dfrac{BC_1}{BA}=\dfrac{BA_1}{BC}.\]
+Thus triangle $BC_1A_1$ is a scaled copy of triangle $BAC$ with centre $B$, and $A_1C_1\parallel AC$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),C=(6,0),B=(1.8,3.6);pair D=(3.4,0);
+pair cc(pair U,pair V,pair X){real a=2*(V.x-U.x),b=2*(V.y-U.y),c=2*(X.x-U.x),d=2*(X.y-U.y);real e=dot(V,V)-dot(U,U),f=dot(X,X)-dot(U,U);real det=a*d-b*c;return ((e*d-b*f)/det,(a*f-c*e)/det);}
+pair O1=cc(B,D,C),O2=cc(A,D,B);
+pair t1=rotate(90)*(D-O1),t2=rotate(90)*(D-O2);
+pair C1=extension(D,D+t1,A,B),A1=extension(D,D+t2,B,C);
+draw(circle(O1,abs(D-O1)),gray(0.7)+dashed);draw(circle(O2,abs(D-O2)),gray(0.7)+dashed);
+draw(A--B--C--cycle,linewidth(0.8));draw(B--D);
+draw(D--C1,red);draw(D--A1,red);draw(C1--A1,blue+linewidth(0.8));
+dot(A);dot(B);dot(C);dot(D);dot(C1);dot(A1);
+label("$A$",A,SW);label("$B$",B,N);label("$C$",C,SE);label("$D$",D,S);label("$C_1$",C1,W);label("$A_1$",A1,NE);
+\end{asy}

@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2292699_mathcounts_chapter_2012_problems
+% Stable identity: aops-topic-2292699-q09
+Let $P=(x,y)$. The line $CD$ is $y=4$; reflecting over it keeps $x$ and replaces $y$ by $8-y$, so $Q=(x,8-y)$. The line $BC$ is $x=4$; reflecting over it replaces $x$ by $8-x$, so $R=(8-x,8-y)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(4,0), C=(4,4), D=(0,4), P=(1.5,1), Q=(1.5,7), R=(6.5,7);
+draw((0,4)--(7.5,4),dashed+gray); draw((4,0)--(4,8),dashed+gray);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(P--Q,dotted+blue); draw(Q--R,dotted+blue);
+draw(P--R,red+linewidth(0.9));
+dot(A); dot(B); dot(C,red); dot(D); dot(P); dot(Q); dot(R);
+label("$A(0,0)$",A,SW); label("$B(4,0)$",B,S); label("$C(4,4)$",C,SE,red); label("$D(0,4)$",D,W);
+label("$P(x,y)$",P,SE); label("$Q(x,8-y)$",Q,NW); label("$R(8-x,8-y)$",R,NE);
+label("line $CD$",(7.5,4),N,gray); label("line $BC$",(4,8),E,gray);
+\end{asy}
+
+The midpoint of $PR$ is
+\[\left(\dfrac{x+(8-x)}{2},\ \dfrac{y+(8-y)}{2}\right)=\boxed{(4,4)},\]
+the vertex $C$, whatever $P$ is. (Two reflections in perpendicular lines through $C$ amount to a half-turn about $C$, so $C$ is always the midpoint of $PR$.)

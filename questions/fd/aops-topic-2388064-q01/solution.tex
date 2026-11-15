@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2388064_zero_sum_game_2
+% Stable identity: aops-topic-2388064-q01
+Player $i$ ($1\le i\le11$) plays turns $i,\ i+11,\ i+22,\dots$; after $r$ turns he has $ri+11\cdot\dfrac{r(r-1)}{2}$ points.
+
+\textbf{Who won?} We need $ri+\dfrac{11r(r-1)}{2}=525$ with $1\le i\le11$.
+\begin{itemize}
+\item $r\le9$: the total is at most $9\cdot11+396=495<525$.
+\item $r=10$: $10i+495=525$ gives $i=3$.
+\item $r\ge11$: the total is at least $11+605>525$.
+\end{itemize}
+So the winner is player $3$, who played $10$ turns, the last being turn $3+9\cdot11=102$.
+
+\textbf{When did the game end?} Let $m$ be the last turn played; then $m\ge102$. If turn $103$ (player $4$'s tenth turn) had been played, player $4$ would have $10\cdot4+495=535>525$ points. So $m=102$. Then players $1$ and $2$ have $505$ and $515$ points and players $4$ to $11$ have at most $9\cdot11+396=495$, so player $3$ is indeed the winner, and the game stops at turn $103$ since $25<103$.
+
+The points taken are $1+2+\cdots+102=\dfrac{102\cdot103}{2}=5253$, so the pile started with $5253+25=\boxed{5278}$ points.

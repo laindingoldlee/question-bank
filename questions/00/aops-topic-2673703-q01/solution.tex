@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2673703_2010_amc_10_a_question_24_solutions
+% Stable identity: aops-topic-2673703-q01
+\emph{The argument.} It misreads the problem (the last two digits of $90!$ are $00$; the question asks for the last two \emph{nonzero} digits), and it confuses the two-digit number $n$ with the sum of two digits. That it lands on the right letter is a coincidence.
+
+\emph{Solution.} $90!$ has $18+3=21$ factors of $5$ and many more factors of $2$, so it ends in exactly $21$ zeros. Let $N=\dfrac{90!}{10^{21}}$; we want $N\bmod100$. Since $90!$ has $45+22+11+5+2+1=86$ factors of $2$, $N$ is divisible by $4$.
+
+Mod $25$: write $90!=5^{21}M$. The multiples of $5$ contribute $5^{18}\cdot18!$ and $18!=5^3\cdot(1\cdot2\cdot3)\cdot\prod_{k\le18,\,5\nmid k}k$, so
+\[M=\prod_{\substack{k\le90\\5\nmid k}}k\cdot\prod_{\substack{k\le18\\5\nmid k}}k\cdot6.\]
+The product of the numbers prime to $5$ among any $25$ consecutive integers is $\equiv-1\pmod{25}$ (pair each residue with its inverse; only $\pm1$ are their own inverses, since $25\mid(x-1)(x+1)$ forces $x\equiv\pm1$). Also $1\cdot2\cdot3\cdot4\equiv6\cdot7\cdot8\cdot9\equiv11\cdot12\cdot13\cdot14\equiv-1$ while $16\cdot17\cdot18\equiv21$. Hence
+\[M\equiv(-1)^3(-1)\cdot(-1)^3\cdot21\cdot6\equiv1\cdot(-126)\equiv-1\pmod{25}.\]
+Since $2^{10}\equiv-1$, $2^{21}\equiv2\pmod{25}$, and $N=\dfrac{M}{2^{21}}\equiv-1\cdot2^{-1}\equiv-13\equiv12\pmod{25}$.
+
+So $N\equiv12\pmod{25}$ and $N\equiv0\pmod4$, which give $N\equiv12\pmod{100}$. The answer is $\boxed{\textbf{(A)}\ 12}$.

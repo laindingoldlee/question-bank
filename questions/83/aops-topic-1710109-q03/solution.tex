@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1710109_kootrapalis_easy_problems_kep
+% Stable identity: aops-topic-1710109-q03
+Let $BC=x$. By the angle bisector theorem $\dfrac{AF}{FB}=\dfrac{CA}{CB}=\dfrac{6}{x}$, and $\dfrac{BD}{DC}=1$. By Ceva's theorem for the concurrent cevians $AD$, $BE$, $CF$,
+\[
+\dfrac{AF}{FB}\cdot\dfrac{BD}{DC}\cdot\dfrac{CE}{EA}=1\ \Longrightarrow\ \dfrac{CE}{EA}=\dfrac {x}{6}\ \Longrightarrow\ AE=\dfrac{6\cdot6}{6+x}=\dfrac{36}{x+6}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(9,0),C=(17/18,sqrt(36-(17/18)^2));
+pair D=(B+C)/2,F=(3.375,0);
+pair P=extension(A,D,C,F),Ep=extension(B,P,A,C);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,linewidth(0.7));draw(C--F,linewidth(0.7));draw(B--Ep,linewidth(0.7)+blue);
+dot(P);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,NE);label("$F$",F,S);label("$E$",Ep,W);label("$P$",P,dir(245)*1.5);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The triangle exists exactly for $3<x<15$, and $\dfrac{36}{x+6}$ decreases from $\dfrac{36}{9}=4$ to $\dfrac{36}{21}=\dfrac{12}{7}$. So $AE$ takes all values in the open interval $\left(\dfrac{12}{7},4\right)$; these endpoints are not attained (they correspond to degenerate triangles) but are the greatest lower bound and least upper bound. Their sum is $\dfrac{12}{7}+4=\dfrac{40}{7}$, and $m+n=\boxed{47}$.

@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h1339014_triangle_inside_a_polygon
+% Stable identity: aops-topic-1339014-q01
+Let the triangle be $XYZ$ and the convex polygon $\mathcal P$.
+
+\textbf{Key step.} Take the side $XY$ and the line through it. The whole triangle lies in one closed half-plane of this line (the one containing $Z$). If the line does not cut the interior of $\mathcal P$, nothing happens. Otherwise, because $\mathcal P$ is convex, the line meets its boundary in exactly two points $U$ and $V$, and it divides $\mathcal P$ into two convex polygons. Keep the part $\mathcal P'$ on the side of $Z$; it still contains the triangle.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair[] P={(0,0),(6,-1),(9,2),(8,6),(3,7),(-1,4)};
+path poly=P[0]--P[1]--P[2]--P[3]--P[4]--P[5]--cycle;
+pair X=(2,1.6),Y=(6.6,2.6),Z=(4.2,5.4);
+pair d=unit(Y-X);
+pair[] I=intersectionpoints(poly,(X-20*d)--(X+20*d));
+pair U=I[0],V=I[1];
+if(U.x>V.x){pair T=U;U=V;V=T;}
+fill(U--P[0]--P[1]--P[2]--V--cycle,gray(0.88));
+draw(poly,linewidth(0.9));
+draw(X--Y--Z--cycle,blue+linewidth(0.9));
+draw(U--X,red+dashed); draw(Y--V,red+dashed);
+dot(X);dot(Y);dot(Z);dot(U);dot(V);
+label("$X$",X,NW); label("$Y$",Y,SE); label("$Z$",Z,N);
+label("$U$",U,W); label("$V$",V,E);
+label("cut off",(5,0.6),fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The boundary of $\mathcal P'$ is the boundary of $\mathcal P$ with the path from $U$ to $V$ on the far side (the shaded part's outer boundary) replaced by the segment $UV$. A segment is shorter than any other path between its endpoints (repeated use of the triangle inequality on the broken line from $U$ to $V$), so
+\[
+\text{perimeter}(\mathcal P')\le\text{perimeter}(\mathcal P),
+\]
+with equality only if that path already was the segment $UV$, that is, if nothing was cut off.
+
+\textbf{Finish.} Apply the key step to the sides $XY$, $YZ$, $ZX$ in turn. Each step keeps a convex polygon containing the triangle and does not increase the perimeter. After the three cuts we are left with the part of $\mathcal P$ lying on the triangle's side of all three side lines, which is exactly the triangle $XYZ$ (because the triangle lies inside $\mathcal P$). Hence
+\[
+\text{perimeter}(XYZ)\le\text{perimeter}(\mathcal P),
+\]
+and equality would require every cut to remove nothing, so $\mathcal P$ would already be the triangle. If the triangle is not the whole polygon, its perimeter is strictly smaller.

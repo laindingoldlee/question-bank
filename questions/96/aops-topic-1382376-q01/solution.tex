@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1382376_weird_problem
+% Stable identity: aops-topic-1382376-q01
+Place the triangle with $B=(-6,0)$, $C=(6,0)$ and $A=(0,8)$; then $AB=AC=\sqrt{36+64}=10$ and $BC=12$. The midpoints of $BC$, $CA$, $AB$ are $D=(0,0)$, $E=(3,4)$, $F=(-3,4)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,8),B=(-6,0),C=(6,0);
+pair D=(B+C)/2, E=(A+C)/2, F=(A+B)/2;
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,red+dashed); draw(B--E,red+dashed); draw(C--F,red+dashed);
+dot(D);dot(E);dot(F);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE);
+label("$10$",F,NW); label("$10$",E,NE); label("$12$",D,S);
+label("$8$",(0,6),W,red);
+label("$\sqrt{97}$",B+0.25*(E-B),N,red); label("$\sqrt{97}$",C+0.25*(F-C),N,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+AD^2=8^2=64,\qquad BE^2=9^2+4^2=97,\qquad CF^2=9^2+4^2=97 .
+\]
+So the sum of the squares of the medians is $64+97+97=\boxed{258}$. The student's value $\dfrac{1552}{9}\approx172.4$ is wrong.
+
+This agrees with the general identity $m_a^2+m_b^2+m_c^2=\dfrac{3}{4}\left(a^2+b^2+c^2\right)=\dfrac{3}{4}(100+100+144)=258$, which follows from Apollonius' formula $m_a^2=\dfrac{2b^2+2c^2-a^2}{4}$.

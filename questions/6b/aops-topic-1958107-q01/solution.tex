@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1958107_nice_problem
+% Stable identity: aops-topic-1958107-q01
+Write $a+b=m$ and $\dfrac{1}{a}+\dfrac{1}{b}=\dfrac{a+b}{ab}=n$ with $m,n$ nonzero integers. Then $ab=\dfrac {m}{n}$, so $a,b$ are the roots of
+\[
+t^2-mt+\dfrac {m}{n}=0,\qquad\text{i.e.}\qquad a,b=\dfrac{m\pm\sqrt D}{2},\quad D=m^2-\dfrac{4m}{n}. \tag{1}
+\]
+Conversely, for any nonzero integers $m,n$ with $D\ge0$ the roots of (1) are nonzero reals (their product $\dfrac {m}{n}\ne0$) forming an interesting pair.
+
+\textbf{(a)} Take $n=1$ and any integer $m\ge4$: then $D=m^2-4m\ge0$, giving an interesting pair $\left(\dfrac{m+\sqrt{m^2-4m}}{2},\dfrac{m-\sqrt{m^2-4m}}{2}\right)$ for each $m$. Distinct $m$ give distinct pairs (different sums), so there are infinitely many.
+
+\textbf{(b)} \emph{Step 1: $a$ and $b$ are rational.} Say $a^2$ is rational. From (1), $a^2=\dfrac{m^2+D\pm2m\sqrt D}{4}$, and $m^2+D$ is rational, so $m\sqrt D$ is rational; as $m\ne0$, $\sqrt D$ is rational. Then $a$ and $b=m-a$ are rational. (The case $b^2$ rational is the same.)
+
+\emph{Step 2: rational interesting pairs.} Let $a=\dfrac {u}{q}$ in lowest terms ($q\ge1$). Then $b=m-a=\dfrac {v}{q}$ with $v=mq-u$, and $\gcd(v,q)=\gcd(u,q)=1$. Now
+\[
+n=\dfrac{a+b}{ab}=\dfrac{mq^2}{uv}
+\]
+is an integer, and $\gcd(uv,q)=1$, so $uv\mid m$. Write $m=kuv$ with $k$ a nonzero integer. Then $u+v=mq=kquv$, i.e.
+\[
+\dfrac{1}{u}+\dfrac{1}{v}=kq. \tag{2}
+\]
+The left side has absolute value at most $2$, and $kq$ is a nonzero integer, so $\dfrac{1}{u}+\dfrac{1}{v}\in\{\pm1,\pm2\}$. If $u,v$ have opposite signs, then $\left|\dfrac{1}{u}+\dfrac{1}{v}\right|=\left|\dfrac{1}{|u|}-\dfrac{1}{|v|}\right|<1$, which is impossible. If they have the same sign, $\left|\dfrac{1}{u}+\dfrac{1}{v}\right|=2$ forces $|u|=|v|=1$, and $\left|\dfrac{1}{u}+\dfrac{1}{v}\right|=1$ forces $|u|=|v|=2$ (if $|u|=1$ the sum exceeds $1$; if both are at least $2$, equality needs both equal to $2$). So:
+\begin{itemize}
+\item $u=v=\pm1$, $kq=\pm2$: $q=1$ or $q=2$, giving $a=b=\pm1$ or $a=b=\pm\dfrac{1}{2}$;
+\item $u=v=\pm2$, $kq=\pm1$: $q=1$, giving $a=b=\pm2$.
+\end{itemize}
+All six work: $(1,1)$ gives $2$ and $2$; $\left(\dfrac{1}{2},\dfrac{1}{2}\right)$ gives $1$ and $4$; $(2,2)$ gives $4$ and $1$; and the negatives give the negatives. Hence the pairs are
+\[
+\boxed{(a,b)=(t,t)\ \text{with}\ t\in\left\{\pm\dfrac{1}{2},\ \pm1,\ \pm2\right\}}.
+\]
+Checked by computer over all rationals with small numerators and denominators.

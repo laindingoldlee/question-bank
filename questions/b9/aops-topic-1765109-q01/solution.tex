@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1765109_geometrycounting
+% Stable identity: aops-topic-1765109-q01
+Put $C$ at the origin with $B=(10,0)$ and $A=(0,10)$. The figure consists of the horizontal lines $y=j$ and the vertical lines $x=i$ ($0\le i,j\le9$, including the legs) together with the hypotenuse $x+y=10$. A triangle needs three sides on three pairwise non-parallel lines, so it uses one horizontal line, one vertical line and the hypotenuse.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),A=(0,10),B=(10,0);
+for(int i=1;i<10;++i){draw((i,0)--(i,10-i),gray);draw((0,i)--(10-i,i),gray);}
+fill((3,2)--(8,2)--(3,7)--cycle,paleblue);
+draw((3,2)--(8,2)--(3,7)--cycle,blue+linewidth(1));
+draw(A--B--C--cycle,linewidth(0.9));
+dot((3,2),blue);
+label("$A$",A,N);label("$B$",B,E);label("$C$",C,SW);
+label("$(i,j)$",(3,2),SW,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The lines $x=i$ and $y=j$ meet at $(i,j)$, which lies inside the figure (or on a leg) exactly when $i+j\le9$; the triangle is then the one with vertices $(i,j)$, $(10-j,j)$ and $(i,10-i)$, whose legs both have length $10-i-j$. So every triangle in the figure is an isosceles right triangle, and they correspond to the pairs of integers $i,j\ge0$ with $i+j\le9$. Their number is
+\[
+10+9+8+\cdots+1=\boxed{55}.
+\]

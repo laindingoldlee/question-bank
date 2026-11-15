@@ -1,0 +1,7 @@
+The line separates the ten vertices into groups of sizes $k$ and $10-k$. A drawn side or diagonal crosses the line exactly when its endpoints are in opposite groups. Thus the intersection count is $k(10-k)\le25$. A line separating five consecutive vertices from the other five attains $\boxed{25}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p;for(int i=0;i<10;++i)p.push(dir(36*i));for(int i=0;i<10;++i)for(int j=i+1;j<10;++j)draw(p[i]--p[j],p[i].x*p[j].x<0?lightblue:lightgray);draw((0,-1.3)--(0,1.3),red+1);label("5 vertices on each side",(0,-1.6));
+\end{asy}

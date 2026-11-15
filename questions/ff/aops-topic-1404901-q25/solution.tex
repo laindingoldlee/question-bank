@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1404901_even_more_lithuanian_math_kangaroo_problems__junior_2010
+% Stable identity: aops-topic-1404901-q25
+Let $\theta=7^\circ$ and $A_0=O$. The figure shows the start of the zigzag (not to scale: it is drawn with a larger angle).
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real th=15;
+pair O=(0,0);
+pair ua=(1,0),ub=dir(th);
+pair[] Pt; Pt.push(O);
+Pt.push(1*ua);
+for(int k=1;k<=4;++k){
+  pair u=(k%2==1)?ub:ua;
+  pair X=Pt[k];
+  real p=dot(X,u); real q=abs(X)^2-1;
+  real s=p+sqrt(p^2-q);
+  Pt.push(s*u);
+}
+draw(O--4.2*ua); draw(O--4.2*ub);
+for(int k=0;k<5;++k) draw(Pt[k]--Pt[k+1],blue+linewidth(0.9));
+for(int k=1;k<=5;++k){dot(Pt[k]); label("$A_{"+string(k)+"}$",Pt[k],(k%2==1)?S:N);}
+dot(O); label("$O$",O,W);
+draw(arc(O,0.55,0,th),red); label("$\theta$",0.75*dir(th/2),red+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For $k\ge1$ the triangle $A_{k-1}A_kA_{k+1}$ is isosceles with $A_{k-1}A_k=A_kA_{k+1}$, and its base angles at $A_{k-1}$ and $A_{k+1}$ are $k\theta$. This holds for $k=1$: triangle $OA_1A_2$ has base angles $\theta$ at $O$ and $A_2$. Suppose it holds for $k-1\ge1$. The points $A_{k-1}$ and $A_{k+1}$ lie on one ray and $A_{k-2}$ (or $O$) and $A_k$ on the other, with $A_{k-2}$ between $O$ and $A_k$. In triangle $OA_{k-1}A_k$ the angle at $O$ is $\theta$ and the angle at $A_k$ is $\angle A_{k-2}A_kA_{k-1}=(k-1)\theta$, a base angle of the previous triangle. The exterior angle of this triangle at $A_{k-1}$ is $\angle A_kA_{k-1}A_{k+1}=\theta+(k-1)\theta=k\theta$, which is the base angle of triangle $A_{k-1}A_kA_{k+1}$ at $A_{k-1}$, as claimed.
+
+A triangle with two base angles $k\theta$ exists only if $2k\theta<180^\circ$, that is $7k<90$, so $k\le12$. The segment $A_kA_{k+1}$ can be drawn exactly when triangle number $k$ exists, so the segments are $OA_1$ and $A_kA_{k+1}$ for $k=1,\dots,12$: at most $1+12=\boxed{13}$ segments, choice (C). (For $k=13$ the base angles would be $91^\circ$.)

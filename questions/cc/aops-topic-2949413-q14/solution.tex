@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2949413_2019_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2949413-q14
+The total number watched is $1+\cdots+8=36$, equal to the total episodes, so every episode must be watched exactly once. Assign each day-length to one of three seasons, requiring each assigned sum to equal 12. If a season receives $k$ days, its disjoint consecutive blocks can occur in episode order in $k!$ ways; their lengths then uniquely determine their starting episodes. The following exact enumeration sums the product of these factorials over all $3^8$ day assignments.
+\begin{verbatim}
+from itertools import product
+from math import factorial
+answer=0
+for assignment in product(range(3),repeat=8):
+    if all(sum(i+1 for i in range(8)
+               if assignment[i]==season)==12
+           for season in range(3)):
+        answer+=factorial(assignment.count(0))*factorial(assignment.count(1))*factorial(assignment.count(2))
+assert answer==1440
+\end{verbatim}
+Every valid schedule is counted exactly once by its season assignment and within-season block order. Thus $\boxed{1440}$.

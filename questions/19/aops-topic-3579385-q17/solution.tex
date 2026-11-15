@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3579385_1434th_post
+% Stable identity: aops-topic-3579385-q17
+The third angle of $DEF$ is $30^\circ$, so $DE=EF$. Set $A=(0,0)$, $B=(108,0)$, $C=(54,54\sqrt3)$. Since $AF=70$, $F=(35,35\sqrt3)$. Write $E=(108-54t,54\sqrt3t)$ with $0\le t\le1$. Because $ED=EF$ and their included angle is $120^\circ$, the vector $D-E$ is obtained by rotating $F-E$ through either $120^\circ$ or $-120^\circ$. For the positive rotation, direct multiplication by the rotation matrix gives $D-E=(-16+54t,\sqrt3(-54+54t))$. Thus $D=(92,\sqrt3(108t-54))$. The condition $D\in AB$ forces $t=\dfrac{1}{2}$, yielding $D=(92,0)$. For the negative rotation, the vertical component of $D-E$ is $19\sqrt3$, so $D$ would have height $\sqrt3(54t+19)>0$, impossible. The sole valid configuration gives $\boxed{AD=92}$.
+\begin{asy}
+import geometry;
+size(260);
+pair A=(0,0),B=(108,0),C=(54,54*sqrt(3)),F=(35,35*sqrt(3)),E=(81,27*sqrt(3)),D=(92,0);draw(A--B--C--cycle);draw(D--E--F--D);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,S);label("$E$",E,E);label("$F$",F,W);label("$38$",(C+F)/2,W);
+\end{asy}

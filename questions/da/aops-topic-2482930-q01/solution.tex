@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2482930_judgefan99s_problem_set
+% Stable identity: aops-topic-2482930-q01
+The square has area $x^2$. The circle has radius $x$, so its area is $\pi x^2$. The ratio is
+\[\dfrac{x^2}{\pi x^2}=\boxed{\dfrac{1}{\pi}},\]
+which does not depend on $x$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(2,0)--(2,2)--(0,2)--cycle,linewidth(0.8));
+label("$x$",(1,0),S); label("$x$",(2,1),E);
+pair O=(5.2,1);
+draw(circle(O,2),linewidth(0.8));
+draw((O.x-2,O.y)--(O.x+2,O.y),red);
+dot(O);
+label("$2x$",(O.x+0.9,O.y),N,red);
+label("area $x^2$",(1,1));
+label("area $\pi x^2$",(O.x,O.y-0.9));
+\end{asy}

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3131564_2023_emcc_team_round__exeter_math_club_competition
+% Stable identity: aops-topic-3131564-q07
+Let the side be $s$, and use $A=(0,0),B=(s,0),C=(s,s),D=(0,s)$. By power of a point, $EB^2=EG\cdot EH=2\cdot18=36$, so $E=(s,6)$. Similarly $FD^2=FH\cdot FG=9\cdot25=225$, so $F=(15,s)$. Since $EF=27$, $(s-15)^2+(s-6)^2=729$. Thus $s^2-21s-234=0$, giving the sole positive root $\boxed{\dfrac{21+9\sqrt{17}}{2}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real s=(21+9*sqrt(17))/2;pair A=(0,0),B=(s,0),C=(s,s),D=(0,s),Ep=(s,6),F=(15,s),G=Ep+2/27*(F-Ep),H=Ep+18/27*(F-Ep);draw(A--B--C--D--cycle);draw(arc(A,s,0,90),blue);draw(Ep--F);dot(G);dot(H);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$E$",Ep,E);label("$F$",F,N);label("$G$",G,E);label("$H$",H,N);
+\end{asy}

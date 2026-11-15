@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1694451_can_you_guys_explain_this_english
+% Stable identity: aops-topic-1694451-q01
+\textbf{(i) False.} A ray is determined by its end point together with a direction. From a given point $O$ a ray can be drawn in every direction, so there are infinitely many rays with end point $O$ (left figure shows five of them). What is true is: through a given end point $O$ and a second point $A\ne O$ there is exactly one ray, namely ray $OA$.
+
+\textbf{(ii) True.} Two distinct points $A$ and $B$ determine exactly one line: there is a line through them (the line $AB$), and there cannot be two, because two different lines meet in at most one point (right figure). This is one of the basic axioms of geometry.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+picture p1,p2;
+pair O=(0,0);
+for(int k=0;k<5;++k){ draw(p1,O--1.6*dir(20+72*k),linewidth(0.7),Arrow(TeXHead));}
+dot(p1,O);label(p1,"$O$",O,2.2*dir(56));
+pair A=(0,0),B=(2,0.8);
+draw(p2,(A-0.6*(B-A))--(B+0.6*(B-A)),linewidth(0.8),Arrows(TeXHead));
+dot(p2,A);dot(p2,B);label(p2,"$A$",A,SE);label(p2,"$B$",B,SE);
+add(p1);add(shift(3,-0.4)*p2);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

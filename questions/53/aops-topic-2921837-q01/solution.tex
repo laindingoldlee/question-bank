@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2921837_two_circles
+% Stable identity: aops-topic-2921837-q01
+Each side is at distance $\dfrac82=4$ from $O$, so it cuts $\omega_1$ in a chord of half-length $\sqrt{36-16}=2\sqrt5$. Let $\theta=\arccos\dfrac23$, so the chord subtends $2\theta$ at $O$ and the gaps between chords subtend $120^\circ-2\theta$.
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+real R=8,r=6;draw(circle((0,0),r));draw(circle((0,0),R),gray);pair A=R*dir(90),B=R*dir(210),C=R*dir(330);draw(A--B--C--cycle);
+real t=aCos(2/3);pair[] H;for(int k=0;k<3;++k){real m=270+120*k;H.push(r*dir(m-t));H.push(r*dir(m+t));}
+filldraw(H[0]--H[1]--H[2]--H[3]--H[4]--H[5]--cycle,lightgray);dot((0,0));
+\end{asy}
+
+The hexagon consists of $3$ triangles over the chords, each of area $\dfrac12\cdot4\sqrt5\cdot4=8\sqrt5$, and $3$ triangles over the gaps, each of area $\dfrac12\cdot36\sin(120^\circ-2\theta)$. Since $\sin2\theta=\dfrac{4\sqrt5}9$ and $\cos2\theta=-\dfrac19$, $\sin(120^\circ-2\theta)=\dfrac{4\sqrt5-\sqrt3}{18}$, and each gap triangle has area $4\sqrt5-\sqrt3$. Total:
+\[\boxed{36\sqrt5-3\sqrt3}\approx75.30.\]

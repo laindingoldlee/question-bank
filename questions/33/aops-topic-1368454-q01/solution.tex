@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1368454_catalan_number_graph
+% Stable identity: aops-topic-1368454-q01
+(a) There are $\dbinom{m+n}{n}$ paths in all. Call a path \emph{bad} if it goes above $y=x$; a bad path touches the line $y=x+1$. Take the first point $P$ where a bad path touches $y=x+1$ and reflect the part of the path from $(0,0)$ to $P$ in the line $y=x+1$ (right steps become up steps and vice versa). This gives a path from $(-1,1)$ to $(m,n)$.
+
+Conversely, every path from $(-1,1)$ to $(m,n)$ must touch $y=x+1$, because it starts above that line (at $(-1,1)$ we have $1>-1+1$) and ends below it (at $(m,n)$ we have $n\le m<m+1$), and it moves one unit at a time. Reflecting its part up to the first touching point gives back a bad path. The two reflections undo each other, so this is a bijection.
+
+A path from $(-1,1)$ to $(m,n)$ has $m+1$ right steps and $n-1$ up steps, so there are $\dbinom{m+n}{n-1}$ of them (and none if $n=0$). Therefore the number of good paths is
+\[\dbinom{m+n}{n}-\dbinom{m+n}{n-1}=\dbinom{m+n}{n}\left(1-\dfrac{n}{m+1}\right)=\dfrac{m-n+1}{m+1}\dbinom{m+n}{n},\]
+using $\dbinom{m+n}{n-1}=\dbinom{m+n}{n}\cdot\dfrac{n}{m+1}$.
+
+(b) With $m=n$ the formula becomes $\dfrac{1}{n+1}\dbinom{2n}{n}=C_n$.
+
+(c) For $(5,3)$: $\dfrac{3}{6}\dbinom{8}{3}=\dfrac{1}{2}\cdot56=\boxed{28}$. For $(5,5)$: $C_5=\dfrac{1}{6}\dbinom{10}{5}=\boxed{42}$.

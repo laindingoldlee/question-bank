@@ -1,0 +1,6 @@
+A white rectangle exists exactly when two rows choose the same pair of columns. There are $\binom n2$ possible pairs. Sixteen rows force repetition if $\binom n2<16$, true at $n=6$ since there are 15 pairs. At $n=7$ there are 21 pairs, so sixteen distinct pairs avoid a rectangle; the same construction works for larger $n$. Hence $\boxed{n=6}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+for(int i=0;i<=5;++i){draw((i,0)--(i,4),gray);}for(int j=0;j<=4;++j)draw((0,j)--(5,j),gray);for(pair P:new pair[]{(1.5,.5),(3.5,.5),(1.5,2.5),(3.5,2.5)})dot(P,blue);draw((1.5,.5)--(3.5,.5)--(3.5,2.5)--(1.5,2.5)--cycle,blue);label("repeated column pair",(2.5,-.6));
+\end{asy}
+

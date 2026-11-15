@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1662008_triangle_altitudes
+% Stable identity: aops-topic-1662008-q02
+Let the sides be $a<b<c$ (scalene means all different). By the triangle inequality they form a triangle exactly when $a+b>c$, and we need $a+b+c\le22$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(7,0),C=(2.2,3.1);
+draw(A--B--C--cycle,linewidth(0.9));
+label("$c$",(A+B)/2,S);label("$a$",(A+C)/2,NW);label("$b$",(B+C)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $2c<a+b+c\le22$, $c\le10$; and $a<b<c$ with $a+b>c$ forces $c\ge4$. For each $c$, count the pairs $a<b<c$ with $c+1\le a+b\le22-c$:
+\begin{center}
+\begin{tabular}{c|ccccccc}
+$c$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $10$\\ \hline
+number of $(a,b)$ & $1$ & $2$ & $4$ & $6$ & $9$ & $10$ & $7$
+\end{tabular}
+\end{center}
+For example, for $c=4$ only $(2,3)$ works; for $c=9$ we need $10\le a+b\le13$ with $a<b\le8$, giving $(2,8),(3,7),(4,6)$; $(3,8),(4,7),(5,6)$; $(4,8),(5,7)$; $(5,8),(6,7)$; for $c=10$ we need $a+b\in\{11,12\}$ with $b\le9$: $(2,9),(3,8),(4,7),(5,6),(3,9),(4,8),(5,7)$.
+
+The total is $1+2+4+6+9+10+7=\boxed{39}$.

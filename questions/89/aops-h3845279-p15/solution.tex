@@ -1,0 +1,19 @@
+Relabel the digits to make the first row $1,2,3,4$. Each normalized solution corresponds to exactly $4!$ solutions before relabeling.
+
+The second row must be one of $3412,3421,4312,4321$, from the upper two blocks and the column restrictions. Completing the lower rows under the same row, column, block, and diagonal restrictions gives respectively $1,0,0,1$ possibilities. The two completions are displayed below. To check exhaustiveness, in each column the two missing digits must occupy rows three and four; choose the third-row digits from these two-element sets, reject repeated digits or diagonal repeats, and the fourth row is then forced. This gives precisely the stated two completions.
+
+Therefore the answer is $\boxed{2\cdot4!=48}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"1", "2", "3", "4"}, {"3", "4", "1", "2"}, {"4", "3", "2", "1"}, {"2", "1", "4", "3"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("First normalized solution",(2.0,-4.2));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"1", "2", "3", "4"}, {"4", "3", "2", "1"}, {"2", "1", "4", "3"}, {"3", "4", "1", "2"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("Second normalized solution",(2.0,-4.2));
+\end{asy}

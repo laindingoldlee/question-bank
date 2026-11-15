@@ -1,0 +1,14 @@
+\textbf{A sorting procedure.} Keep the upper row empty between insertions. When ball $j$ arrives, move it along the upper row to column $9-j$, then move it down. Its assigned lower cell is empty because every ball has a different assigned column. After all eight insertions, the lower row, read from left to right, is $8,7,\ldots,1$. Remove ball $1$, then slide ball $2$ right and remove it, and continue. All moves are legal, so this procedure sorts every input order.
+
+\textbf{Counting the moves.} Every ball starts in column $1$ and must reach column $8$. Because leftward moves are forbidden, each ball makes exactly $7$ rightward moves. It starts in the upper row and exits from the lower row, so it makes exactly one downward move. There is also one insertion and one removal. Hence every ball accounts for $7+1+1+1=10$ moves, and every successful procedure uses exactly $\boxed{8\cdot10=80}$ moves.
+
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(260);
+defaultpen(fontsize(9pt));
+for(int x=0;x<=8;++x)draw((x,0)--(x,2));for(int y=0;y<=2;++y)draw((0,y)--(8,y));
+for(int j=1;j<=8;++j){filldraw(circle((8.5-j,.5),.25),gray(.9),black);label(string(j),(8.5-j,.5));}
+draw((-.8,1.5)--(.35,1.5),Arrow);label("input",(-.5,1.8));draw((8,.5)--(8.8,.5),Arrow);label("output",(8.4,.15));
+draw((.5,1.5)--(5.5,1.5)--(5.5,.85),dashed,Arrow);label("empty upper row",(4,2.15));
+
+\end{asy}

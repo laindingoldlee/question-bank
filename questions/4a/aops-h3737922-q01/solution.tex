@@ -1,0 +1,27 @@
+Write $a=BC=20$, $b=CA$, $c=AB$, $m=AD$, and $s=\dfrac{a+b+c}{2}$. Relabel $B,C$ if necessary so $b\ge c$. The two intersections are at distances $\dfrac{m}{3},\dfrac{2m}{3}$ from $A$ and in reverse order from $D$, so the powers of $A$ and $D$ in the incircle are both $\dfrac{2m^2}{9}$.
+
+The tangent length from $A$ is $s-a$. If $T$ is the contact point on $BC$, then $|DT|=\dfrac{b-c}{2}$. Thus
+\[
+s-a=\dfrac{b-c}{2},\qquad b+c-a=b-c,
+\]
+giving $c=\dfrac{a}{2}=10$. The median formula gives
+\[
+m^2=\dfrac{2b^2+2c^2-a^2}{4}=\dfrac{b^2}{2}-50.
+\]
+Using $(s-a)^2=\dfrac{2m^2}{9}$, with $s-a=\dfrac{b-10}{2}$, yields
+\[
+\dfrac{(b-10)^2}{4}=\dfrac{b^2-100}{9},
+\qquad(b-10)(b-26)=0.
+\]
+The value $b=10$ makes the triangle degenerate, so $b=26$. Heron's formula now gives
+\[
+[ABC]=\sqrt{28(28-20)(28-26)(28-10)}
+=\boxed{24\sqrt{14}}.
+\]
+These sides do realize the condition: $m=12\sqrt2$ and the powers from both endpoints are $64$. Therefore the two intersection distances $u,v$ from $A$ satisfy $uv=64$ and $u+v=m$, giving $u=4\sqrt2,v=8\sqrt2$, exactly the required thirds.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(-22/5,12sqrt(14)/5),B=(0,0),C=(20,0),D=(10,0),I=(2,6sqrt(14)/7),T=(2,0),P=A+(D-A)/3,Q=A+2*(D-A)/3;draw(circle(I,I.y),gray);draw(A--B--C--cycle);draw(A--D,blue);dot(P);dot(Q);draw(I--T,dashed);label("$A$",A,NW);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$T$",T,S);label("$I$",I,W);label("$P$",P,NW);label("$Q$",Q,NE);
+\end{asy}

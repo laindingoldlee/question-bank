@@ -1,0 +1,41 @@
+% Source: https://artofproblemsolving.com/community/c3h1501720_mathematic
+% Stable identity: aops-topic-1501720-q01
+\textbf{Coordinates along the sides.} Take $B$ as origin, and put $\vec a=\overrightarrow{BP}=\dfrac{1}{2}\overrightarrow{BA}$ and $\vec c=\overrightarrow{BV}=\dfrac{1}{2}\overrightarrow{BC}$. Every point $X$ can be written uniquely as $\overrightarrow{BX}=x\vec a+y\vec c$, and we call $(x,y)$ its coordinates. These are oblique coordinates, but straight lines are still given by linear equations, and collinearity can be checked with vectors as usual. In these coordinates
+\[
+A=(2,0),\quad C=(0,2),\quad P=(1,0),\quad V=(0,1),\quad Q=(1,1),\quad M=(m,n).
+\]
+The line through $M$ parallel to $BC$ has direction $\vec c$, so it meets line $AB$ (the line $y=0$) at $E=(m,0)$. Similarly, $F=(0,n)$. The figure shows one position of $M$:
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),A=(5,0),C=(1.5,3.5);
+pair a=A/2,c=C/2; real m=3,n=1.5;
+pair M=m*a+n*c, pE=m*a, pF=n*c, P=a, V=c, Q=(A+C)/2;
+pair pN=(m*(n-1)/(m*n-1))*a+(n*(m-1)/(m*n-1))*c;
+draw(A--pE,gray(0.5)+dashed);
+draw(M--pE,blue+dashed); draw(M--pF,blue+dashed);
+draw(P--pF,red); draw(pE--V,red);
+draw(pN--M,deepgreen+linewidth(0.9));
+draw(A--B--C--cycle,linewidth(1));
+dot(A);dot(B);dot(C);dot(M);dot(pE);dot(pF);dot(P);dot(V);dot(Q);dot(pN);
+label("$A$",A,S);label("$B$",B,SW);label("$C$",C,N);label("$M$",M,NE);
+label("$E$",pE,S);label("$F$",pF,NW);label("$P$",P,S);label("$V$",V,W);
+label("$Q$",Q,dir(75));label("$N$",pN,dir(235));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+
+\textbf{The point $N$.} Line $PF$ passes through $(1,0)$ and $(0,n)$, so its equation is $nx+y=n$. Line $EV$ passes through $(m,0)$ and $(0,1)$, so its equation is $x+my=m$. These lines are parallel exactly when $mn=1$, so here $mn\ne1$. Solving the two equations gives
+\[
+N=\left(\dfrac{m(n-1)}{mn-1},\ \dfrac{n(m-1)}{mn-1}\right).
+\]
+
+\textbf{Collinearity.} We compute
+\[
+\overrightarrow{QN}=\left(\dfrac{m(n-1)-(mn-1)}{mn-1},\ \dfrac{n(m-1)-(mn-1)}{mn-1}\right)=\left(\dfrac{1-m}{mn-1},\ \dfrac{1-n}{mn-1}\right)=-\dfrac{1}{mn-1}\,\overrightarrow{QM},
+\]
+since $\overrightarrow{QM}=(m-1,\,n-1)$. So $\overrightarrow{QN}$ is a multiple of $\overrightarrow{QM}$, and $N$, $Q$, $M$ lie on one line. $\blacksquare$
+
+(The proof works for every position of $M$ for which $N$ exists, not only for $M$ outside the triangle.)

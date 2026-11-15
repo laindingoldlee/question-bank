@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2416798_a_few_geometry_questions
+% Stable identity: aops-topic-2416798-q03
+A point $(-kx,-ky)$ is in quadrant III exactly when both coordinates are negative, i.e. $-kx<0$ and $-ky<0$. Since $k>0$, this happens exactly when $x>0$ and $y>0$, that is, when the original point is in quadrant I. Hence the image of a figure lies in quadrant III exactly when the figure lies in quadrant I.
+
+For example, with $k=2$ the triangle with vertices $(1,1)$, $(2,1)$, $(1,2.2)$ in quadrant I goes to the triangle $(-2,-2)$, $(-4,-2)$, $(-2,-4.4)$ in quadrant III; but the point $Q(-1.5,2)$ in quadrant II goes to $Q'(3,-4)$ in quadrant IV.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+draw((-5,0)--(5,0),gray,Arrow(5)); draw((0,-5.2)--(0,5),gray,Arrow(5));
+label("$x$",(5,0),E,gray); label("$y$",(0,5),N,gray);
+pair[] T={(1,1),(2,1),(1,2.2)};
+draw(T[0]--T[1]--T[2]--cycle,blue+linewidth(0.9));
+draw((-2)*T[0]--(-2)*T[1]--(-2)*T[2]--cycle,blue+dashed+linewidth(0.9));
+for(pair t : T) draw(t--(-2)*t,gray+dotted);
+pair Q=(-1.5,2); dot(Q,red); dot((-2)*Q,red); draw(Q--(-2)*Q,red+dotted);
+label("$Q$",Q,NW,red); label("$Q'$",(-2)*Q,E,red);
+label("I",(3.5,3.5)); label("II",(-3.5,3.5)); label("III",(-3.5,-3.5)); label("IV",(4.3,-2.3));
+label("$k=2$",(2.2,-1.0));
+\end{asy}
+
+So the statement is $\boxed{\text{sometimes true}}$: true for figures in quadrant I and false for all others.

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2493201_shoelace_not_working
+% Stable identity: aops-topic-2493201-q01
+For points $(x_1,y_1),\dots,(x_n,y_n)$ the shoelace formula computes $\dfrac12\left|\sum_{i=1}^n(x_iy_{i+1}-x_{i+1}y_i)\right|$ (with $(x_{n+1},y_{n+1})=(x_1,y_1)$). This is the area of the polygon whose sides join \emph{consecutive points in the given order}, provided that this polygon does not cross itself, i.e. the points are listed in order around the boundary.
+
+\textbf{(a)} In the student's order the sides are $(0,8)(2,0)$, $(2,0)(5,3)$, $(5,3)(-3,5)$ and $(-3,5)(0,8)$ (red dashed path). The sides $(0,8)(2,0)$ and $(5,3)(-3,5)$ cross at $(1,4)$, so the path is a self-crossing ``bow tie''. Indeed
+\[(0\cdot0-2\cdot8)+(2\cdot3-5\cdot0)+(5\cdot5-(-3)\cdot3)+((-3)\cdot8-0\cdot5)=-16+6+34-24=0.\]
+The two loops of the bow tie, the triangles with vertices $(0,8),(1,4),(-3,5)$ and $(1,4),(2,0),(5,3)$, are traversed in opposite directions, so the formula adds their areas with opposite signs; each has area $\dfrac{15}{2}$, and they cancel.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+xaxis(-4.2,6.2,Arrow(4)); yaxis(-1,9.2,Arrow(4));
+pair P1=(0,8),P2=(2,0),P3=(5,3),P4=(-3,5),X=(1,4);
+fill(P1--P4--P2--P3--cycle,rgb(0.85,0.92,1));
+draw(P1--P4--P2--P3--cycle,blue+linewidth(1));
+draw(P1--P2--P3--P4--cycle,red+dashed+linewidth(0.9));
+dot(P1);dot(P2);dot(P3);dot(P4);dot(X,red);
+label("$(0,8)$",P1,NE,fontsize(8pt)); label("$(2,0)$",P2,SE,fontsize(8pt));
+label("$(5,3)$",P3,E,fontsize(8pt)); label("$(-3,5)$",P4,W,fontsize(8pt));
+label("$(1,4)$",X,NE,red+fontsize(8pt));
+\end{asy}
+
+\textbf{(b)} Going counterclockwise around the quadrilateral (blue), the order is $(0,8)$, $(-3,5)$, $(2,0)$, $(5,3)$:
+\[\left(0\cdot5-(-3)\cdot8\right)+\left((-3)\cdot0-2\cdot5\right)+\left(2\cdot3-5\cdot0\right)+\left(5\cdot8-0\cdot3\right)=24-10+6+40=60,\]
+so the area is $\dfrac{60}{2}=\boxed{30}$.

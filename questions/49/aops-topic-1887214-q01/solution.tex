@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1887214_factorization
+% Stable identity: aops-topic-1887214-q01
+\textbf{No linear factor.} Since $x^6+5x^3+8=\left(x^3+\dfrac{5}{2}\right)^2+\dfrac{7}{4}>0$ for every real $x$, the polynomial has no real root, hence no factor of degree $1$.
+
+\textbf{A quadratic factor.} Try
+\[
+x^6+5x^3+8=\left(x^2+ax+b\right)\left(x^4+cx^3+dx^2+ex+f\right)
+\]
+with integers $a,\dots,f$. Comparing coefficients of $x^5,x^4,x^3,x^2,x,1$:
+\[
+a+c=0,\quad b+ac+d=0,\quad ad+bc+e=5,\quad ae+bd+f=0,\quad af+be=0,\quad bf=8 .
+\]
+Try $b=2$, $f=4$. Then $c=-a$, $d=a^2-2$, and $af+be=0$ gives $e=-2a$. The $x^3$ equation becomes $a(a^2-2)-2a-2a=5$, i.e.\ $a^3-6a-5=(a+1)(a^2-a-5)=0$, whose only integer root is $a=-1$. Then $c=1$, $d=-1$, $e=2$, and the $x^2$ equation $ae+bd+f=-2-2+4=0$ also holds. Hence
+\[
+x^6+5x^3+8=\left(x^2-x+2\right)\left(x^4+x^3-x^2+2x+4\right),
+\]
+which can be confirmed by expanding.
+
+\textbf{The factors are irreducible.} The quadratic has discriminant $1-8=-7<0$. The quartic $g(x)=x^4+x^3-x^2+2x+4$ has no real root (it divides a polynomial with no real root), so it could only split into two monic integer quadratics $(x^2+px+q)(x^2+rx+s)$ with
+\[
+qs=4,\qquad p+r=1,\qquad pr+q+s=-1,\qquad ps+qr=2 .
+\]
+If $(q,s)=(2,2)$, then $pr=-5$ and $p+r=1$, which has no integer solution. If $(q,s)=(-2,-2)$, $(-1,-4)$ or $(-4,-1)$, then $pr=3$ or $4$ with $p+r=1$, which has no real solution. If $\{q,s\}=\{1,4\}$, then $pr=-6$ and $p+r=1$ give $\{p,r\}=\{3,-2\}$, and $ps+qr$ is $10$ or $-5$, never $2$. So $g$ is irreducible, and the complete factorisation is
+\[
+\boxed{x^6+5x^3+8=\left(x^2-x+2\right)\left(x^4+x^3-x^2+2x+4\right)}.
+\]

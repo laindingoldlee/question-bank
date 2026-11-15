@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3172096_a_collection_of_interesting_math_problems_msm_version
+% Stable identity: aops-topic-3172096-q10
+By Burnside's lemma, average the number of valid colorings fixed by each of the $24$ cube rotations. The identity fixes every onto coloring, numbering $4^6-4\cdot3^6+6\cdot2^6-4=1560$ by inclusion--exclusion. Each of the three half-turns about opposite face centers has four face orbits (two singletons and two pairs); using all four colors forces one color per orbit, giving $4!=24$ fixed colorings. Each remaining rotation has at most three face orbits: the six quarter-turns have three, the eight vertex-axis third-turns have two, and the six edge-axis half-turns have three. None can use all four colors. The answer is $\dfrac{1560+3\cdot24}{24}=\boxed{68}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),Bp=(2,0),C=(2,2),D=(0,2),v=(.8,.7);filldraw(A--Bp--C--D--cycle,lightblue);filldraw(D--C--C+v--D+v--cycle,lightgray);filldraw(Bp--Bp+v--C+v--C--cycle,lightgreen);draw(A--A+v--Bp+v^^A+v--D+v,dashed);label("six faces, four labeled colors",(1.4,-.4));
+\end{asy}

@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h1535231_help_with_nt
+% Stable identity: aops-topic-1535231-q01
+Let $x_k$ be the last four digits of $2^{2^k}$, that is, its remainder modulo $10000$. Since $2^{2^{k+1}}=\left(2^{2^k}\right)^2$, each $x_{k+1}$ is the remainder of $x_k^2$ modulo $10000$, starting from $x_0=2$. (For example $x_4=65536\bmod 10000=5536$ and $x_5=5536^2\bmod10000=30647296\bmod10000=7296$.) Squaring $24$ times:
+\[
+\begin{array}{c|c}
+k & x_k\\\hline
+0 & 0002\\
+1 & 0004\\
+2 & 0016\\
+3 & 0256\\
+4 & 5536\\
+5 & 7296\\
+6 & 1616\\
+7 & 1456\\
+8 & 9936\\
+9 & 4096\\
+10 & 7216\\
+11 & 0656\\
+12 & 0336
+\end{array}\qquad
+\begin{array}{c|c}
+k & x_k\\\hline
+13 & 2896\\
+14 & 6816\\
+15 & 7856\\
+16 & 6736\\
+17 & 3696\\
+18 & 0416\\
+19 & 3056\\
+20 & 9136\\
+21 & 6496\\
+22 & 8016\\
+23 & 6256\\
+24 & 7536
+\end{array}
+\]
+So $2^{2^{24}}$ ends in $7536$, and $2^{2^{24}}+1$ ends in $\boxed{7537}$.
+
+(Check by the Chinese remainder theorem: $2^{2^{24}}\equiv0\pmod{16}$; modulo $625$, Euler's theorem with $\varphi(625)=500$ and $2^{24}\equiv216\pmod{500}$ gives $2^{2^{24}}\equiv2^{216}\equiv36\pmod{625}$; and $7536=16\cdot471=12\cdot625+36$ satisfies both.)

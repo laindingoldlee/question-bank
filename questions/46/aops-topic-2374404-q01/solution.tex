@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2374404_trapezoid
+% Stable identity: aops-topic-2374404-q01
+Since $AB<DC$, the lines $DA$ and $CB$ meet at a point $P$ beyond $AB$. Because $AB\parallel EF\parallel DC$, the triangles $PAB$, $PEF$ and $PDC$ are similar, so their areas are proportional to the squares of $AB$, $EF$ and $DC$: say $[PAB]=k\cdot AB^2$, $[PEF]=k\cdot EF^2$, $[PDC]=k\cdot DC^2$ for some $k>0$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real s=sqrt(17), yE=10-2*s;
+pair C=(0,0), D=(5,0), B=(0,4), A=(3,4), P=(0,10);
+pair Ep=(s,yE), F=(0,yE);
+fill(A--B--F--Ep--cycle,rgb(0.85,0.92,1)); fill(Ep--F--C--D--cycle,rgb(1,0.9,0.8));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--P,dashed); draw(B--P,dashed);
+draw(Ep--F,red+linewidth(0.9));
+draw((0,0.3)--(0.3,0.3)--(0.3,0)); draw((0,3.7)--(0.3,3.7)--(0.3,4));
+dot(A); dot(B); dot(C); dot(D); dot(Ep); dot(F); dot(P);
+label("$A$",A,NE); label("$B$",B,W); label("$C$",C,SW); label("$D$",D,SE); label("$E$",Ep,E); label("$F$",F,W); label("$P$",P,W);
+label("$3$",(1.5,4),N); label("$5$",(2.5,0),S); label("$EF$",(s/2,yE),N,red);
+\end{asy}
+
+The part $ABFE$ has area $[PEF]-[PAB]$ and the part $EFCD$ has area $[PDC]-[PEF]$. They are equal, so
+\[k\left(EF^2-AB^2\right)=k\left(DC^2-EF^2\right)\quad\Longrightarrow\quad EF^2=\dfrac{AB^2+DC^2}{2}=\dfrac{9+25}{2}=\boxed{17}.\]
+The height $BC$ is not given, and indeed the answer does not depend on it. (The right angles are not needed either: the same holds in every trapezoid.)

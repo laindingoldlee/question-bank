@@ -1,0 +1,7 @@
+The six triangles have equal sides and equal $60^\circ$ central angles, so they are congruent and have equal areas. Two of the six are yellow, giving $\boxed{\dfrac{2}{6}=\dfrac{1}{3}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0);pair[] v;for(int i=0;i<6;++i)v.push(dir(60i));for(int i=0;i<6;++i){if(i==0||i==3)fill(O--v[i]--v[(i+1)%6]--cycle,yellow);draw(O--v[i]);draw(v[i]--v[(i+1)%6]);label("$"+string(i+1)+"$",.65dir(60i+30));}dot(O);label("$O$",O,(0,-1));
+\end{asy}

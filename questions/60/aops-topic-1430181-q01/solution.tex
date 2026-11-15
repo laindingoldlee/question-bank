@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1430181_chinese_remainder_theorem
+% Stable identity: aops-topic-1430181-q01
+Since $11$, $13$, $17$ are pairwise coprime, the theorem says there is exactly one solution modulo $11\cdot13\cdot17=2431$. Solve the congruences one at a time.
+
+\textbf{First two.} Write $x=3+11a$. Then $3+11a\equiv4\pmod{13}$, so $11a\equiv1$, that is $-2a\equiv1\pmod{13}$. Since $-2\cdot6=-12\equiv1$, $a\equiv6\pmod{13}$, and $x\equiv3+66=69\pmod{143}$.
+
+\textbf{Third.} Write $x=69+143b$. Modulo $17$, $69\equiv1$ and $143\equiv7$, so $1+7b\equiv9$, that is $7b\equiv8\pmod{17}$. The inverse of $7$ modulo $17$ is $5$ (as $35=34+1$), so $b\equiv40\equiv6\pmod{17}$, and $x=69+143\cdot6=927$.
+
+So the solutions are
+\[
+\boxed{x\equiv927\pmod{2431}},
+\]
+and the smallest positive one is $927$. (Check: $927=11\cdot84+3=13\cdot71+4=17\cdot54+9$.)

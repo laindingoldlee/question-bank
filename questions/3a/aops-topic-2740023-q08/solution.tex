@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2740023_dead_problemsrevive
+% Stable identity: aops-topic-2740023-q08
+Place the centre at the origin with $A=(1,0)$, $B=(0,1)$, $C=(-1,0)$, $D=(0,-1)$, and let $P=(x,y)$, $r^2=x^2+y^2$.
+
+For foci $(0,\pm1)$ and a point $(u,v)$,
+\[\left(\sqrt{u^2+(v-1)^2}+\sqrt{u^2+(v+1)^2}\right)^2=2(u^2+v^2+1)+2\sqrt{(u^2+v^2+1)^2-4v^2}.\]
+So, for points at a fixed distance $r$ from the centre, the sum of distances to $B$ and $D$ equals $h(|v|)$, where
+\[h(t)=\sqrt{2(r^2+1)+2\sqrt{(r^2+1)^2-4t^2}}\]
+is strictly decreasing in $t\in[0,r]$ (note $2t\le2r\le r^2+1$). Thus $PB+PD=h(|y|)$. By the same computation with foci $(\pm1,0)$, $PA+PC=h(|x|)$.
+
+Hence $PA+PC=PB+PD\iff h(|x|)=h(|y|)\iff|x|=|y|$. The locus is the pair of lines $y=\pm x$, i.e. the two lines through the centre of the square parallel to its sides (the perpendicular bisectors of the sides).
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(2,0),C=(2,2),D=(0,2);
+draw(A--B--C--D--cycle,linewidth(0.8));
+draw((1,-0.8)--(1,2.8),linewidth(1));draw((-0.8,1)--(2.8,1),linewidth(1));
+draw(A--C,dashed+gray);draw(B--D,dashed+gray);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+\end{asy}
+
+(Off these lines, $PA+PC<PB+PD$ when $P$ is nearer the line $AC$, and $>$ when nearer the line $BD$.)

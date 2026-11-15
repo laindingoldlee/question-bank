@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h1772259_math_problems
+% Stable identity: aops-topic-1772259-q03
+Let the area be $K$ and let $a$, $b$, $c$ be the sides on which the altitudes $3$, $4$, $6$ stand. Then $a=\dfrac{2K}{3}$, $b=\dfrac{2K}{4}$, $c=\dfrac{2K}{6}$, so $a:b:c=4:3:2$; write $a=4t$, $b=3t$, $c=2t$. (Such a triangle exists, since $2+3>4$.)
+
+By Heron's formula with $s=\dfrac{9t}{2}$,
+\[
+K=\sqrt{\dfrac{9t}{2}\cdot\dfrac{t}{2}\cdot\dfrac{3t}{2}\cdot\dfrac{5t}{2}}=\dfrac{t^2\sqrt{135}}{4}=\dfrac{3\sqrt{15}}{4}t^2 .
+\]
+Also $K=\dfrac{1}{2}\cdot a\cdot3=6t$. Hence $\dfrac{3\sqrt{15}}{4}t^2=6t$, so $t=\dfrac{8}{\sqrt{15}}$, and the perimeter is
+\[
+9t=\dfrac{72}{\sqrt{15}}=\boxed{\dfrac{24\sqrt{15}}{5}}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real t=8/sqrt(15);
+pair B=(0,0),C=(4*t,0),A=(11*t/8,3);
+pair ft(pair P,pair Q,pair R){return Q+dot(P-Q,unit(R-Q))*unit(R-Q);}
+pair Ha=ft(A,B,C),Hb=ft(B,A,C),Hc=ft(C,A,B);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--Hb,dotted); draw(A--Hc,dotted);
+draw(A--Ha,blue+dashed); draw(B--Hb,blue+dashed); draw(C--Hc,blue+dashed);
+real s=0.25;
+void ra(pair F,pair P,pair Q){pair u=unit(P-F),v=unit(Q-F); draw(F+s*u--F+s*u+s*v--F+s*v,blue);}
+ra(Ha,C,A); ra(Hb,B,C); ra(Hc,C,B);
+label("$A$",A+(0.32,-0.72));label("$B$",B,SW);label("$C$",C,SE);
+label("$3$",(A+Ha)/2,W,blue);label("$4$",(B+Hb)/2,dir(150),blue);label("$6$",(C+Hc)/2,dir(45),blue);
+label("$4t$",(B+C)/2,S);label("$3t$",(A+C)/2,dir(-119));label("$2t$",(A+B)/2,dir(-43));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The triangle is obtuse at $A$ (since $16>9+4$), so the altitudes from $B$ and $C$ meet the extensions of $CA$ and $BA$ beyond $A$, as drawn.

@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1585564_number_theory
+% Stable identity: aops-topic-1585564-q01
+Consider the numbers
+\[
+R_k=\underbrace{1010\cdots101}_{2k-1\text{ digits}}=1+10^2+10^4+\cdots+10^{2(k-1)}\qquad(k=1,2,3,\dots),
+\]
+so $R_1=1$, $R_2=101$, $R_3=10101$. The digits of each $R_k$ are $1,0,1,0,\dots,1$: odd, even, odd, \dots, as required.
+
+\textbf{Pigeonhole.} Among $R_1,R_2,\dots,R_{n+1}$ there are $n+1$ numbers but only $n$ possible remainders modulo $n$, so two of them, $R_j$ and $R_i$ with $j>i$, leave the same remainder. Then $n$ divides
+\[
+R_j-R_i=10^{2i}+10^{2i+2}+\cdots+10^{2(j-1)}=10^{2i}R_{j-i}.
+\]
+\textbf{Cancel the power of ten.} Since $\gcd(n,10)=1$, also $\gcd\left(n,10^{2i}\right)=1$, so $n\mid R_{j-i}$.
+
+Thus $R_{j-i}=1010\cdots101$ is a positive multiple of $n$ with digits alternately odd and even, starting (and ending) with an odd digit. $\blacksquare$
+
+(For example, $n=7$: $R_3=10101=7\cdot1443$.)

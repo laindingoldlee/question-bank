@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2433694_forester2015s_problems
+% Stable identity: aops-topic-2433694-q04
+The side of the square is $\sqrt{36}=6$ cm. If the circle has radius $r$, then $2\pi r=6$, so $r=\dfrac3\pi$ cm.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(6,0)--(6,6)--(0,6)--cycle,linewidth(0.9));
+label("$6$",(3,0),S); label("area $36$",(3,3));
+real r=3/pi; pair O=(9,r);
+draw(circle(O,r),blue+linewidth(0.9)); dot(O); draw(O--O+(r,0),blue); label("$r$",O+(r/2,0),N,blue);
+label("circumference $6$",O+(0,-r),S,blue);
+\end{asy}
+
+The area of the circle is
+\[\pi r^2=\pi\cdot\dfrac{9}{\pi^2}=\boxed{\dfrac9\pi\text{ cm}^2}\approx2.86\text{ cm}^2.\]

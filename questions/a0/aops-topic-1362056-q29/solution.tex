@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1362056_2010_mathcounts_chapter_sprint_29
+% Stable identity: aops-topic-1362056-q29
+Let $\angle DBC=\angle ABD=y$, so $\angle ABC=2y$, and since $AB=AC$, also $\angle ACB=2y$.
+
+Since $BD=BC$, triangle $BDC$ is isosceles with $\angle BDC=\angle BCD=2y$. The angles of triangle $BDC$ give
+\[
+y+2y+2y=180^\circ\quad\Longrightarrow\quad y=36^\circ .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(1,0), A=(0.5,0.5*Tan(72));
+pair D=intersectionpoint(B--B+3*dir(36),A--C);
+draw(A--B--C--cycle,linewidth(0.9)); draw(B--D,linewidth(0.9));
+draw(arc(B,0.17,0,36),red); draw(arc(B,0.21,36,72),red);
+label("$y$",B+0.3*dir(18),red+fontsize(8pt)); label("$y$",B+0.32*dir(54),red+fontsize(8pt));
+draw(arc(A,0.2,252,288),blue); label("$x$",A+0.29*dir(270),blue+fontsize(8pt));
+draw(arc(C,0.15,108,180),deepgreen); label("$2y$",C+0.24*dir(144),deepgreen+fontsize(8pt));
+draw(arc(D,0.12,216,288),deepgreen); label("$2y$",D+0.22*dir(252),deepgreen+fontsize(8pt));
+dot(D);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence $\angle A=180^\circ-2y-2y=180^\circ-144^\circ=\boxed{36}$ degrees. (The triangle is the $36^\circ$-$72^\circ$-$72^\circ$ golden triangle.)

@@ -1,0 +1,46 @@
+% Source: https://artofproblemsolving.com/community/c3h1342162_geometry_mathcounts_problem
+% Stable identity: aops-topic-1342162-q01
+Let the common side be $s$ and use vectors $\mathbf u=\overrightarrow{FE}$, $\mathbf w=\overrightarrow{FG}$, $\mathbf v=\overrightarrow{GH}$, all of length $s$.
+
+\textbf{The right angle at $N$.} We have $N=F+\dfrac{\mathbf u+\mathbf w+\mathbf v}{2}$, so
+\[
+\overrightarrow{NF}=-\dfrac{\mathbf u+\mathbf v+\mathbf w}{2},\qquad \overrightarrow{NG}=\dfrac{\mathbf w-(\mathbf u+\mathbf v)}{2},
+\]
+and $\overrightarrow{NF}\cdot\overrightarrow{NG}=\dfrac{|\mathbf u+\mathbf v|^2-|\mathbf w|^2}{4}$. So $\angle FNG=90^\circ$ means $|\mathbf u+\mathbf v|=s$, i.e. $2s^2+2\,\mathbf u\cdot\mathbf v=s^2$, so $\mathbf u\cdot\mathbf v=-\dfrac{s^2}{2}$: the directions of $FE$ and $GH$ make an angle of $120^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair F=(-0.5,0), G=(0.5,0);
+real aE=160; pair Ep=F+dir(aE), H=G+dir(aE-120);
+pair Nn=(Ep+H)/2;
+pair X=extension(Ep,G,F,H);
+draw(Ep--F--G--H--cycle,linewidth(0.9));
+draw(Ep--G,blue); draw(F--H,blue);
+draw(F--Nn,red+dashed); draw(G--Nn,red+dashed);
+draw(ra(Nn,F-Nn,G-Nn,0.08),red);
+draw((F+G)/2+(0,-0.05)--(F+G)/2+(0,0.05)); draw((F+Ep)/2+0.05*dir(aE+90)--(F+Ep)/2-0.05*dir(aE+90)); draw((G+H)/2+0.05*dir(aE-30)--(G+H)/2-0.05*dir(aE-30));
+draw(arc(X,0.12,degrees(F-X),degrees(Ep-X)),blue);
+dot(Nn);dot(X);
+label("$E$",Ep,W); label("$F$",F,SW); label("$G$",G,SE); label("$H$",H,NE); label("$N$",Nn,N); label("$X$",X,2.4*dir(90));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The angles at $F$ and $G$.} Let $\alpha=\angle EFG$ and $\beta=\angle FGH$. With $FG$ pointing along the positive $x$-axis and $E$, $H$ above it, $\mathbf u$ has direction angle $\alpha$ and $\mathbf v$ has direction angle $180^\circ-\beta$, so $|\alpha+\beta-180^\circ|=120^\circ$, i.e. $\alpha+\beta=300^\circ$ or $\alpha+\beta=60^\circ$.
+
+The case $\alpha+\beta=60^\circ$ is impossible: the rays $FE$ and $GH$ would meet at a point $Z$ forming a triangle $FGZ$ with angles $\alpha$, $\beta$, $120^\circ$, and by the law of sines $FZ=\dfrac{s\sin\beta}{\sin120^\circ}<s$ (as $\beta<60^\circ$), and likewise $GZ<s$. Then the sides $FE$ and $GH$ would cross at $Z$, and $EFGH$ would not be convex. Hence $\alpha+\beta=300^\circ$.
+
+\textbf{The angle at $X$.} Triangles $EFG$ and $FGH$ are isosceles ($FE=FG$, $GF=GH$), so
+\[
+\angle FGE=\dfrac{180^\circ-\alpha}{2},\qquad \angle GFH=\dfrac{180^\circ-\beta}{2}.
+\]
+In triangle $FXG$,
+\[
+\angle FXG=180^\circ-\dfrac{180^\circ-\alpha}{2}-\dfrac{180^\circ-\beta}{2}=\dfrac{\alpha+\beta}{2}=150^\circ .
+\]
+In a convex quadrilateral the diagonals cross, so $XE$ and $XG$ are opposite rays and
+\[
+\angle EXF=180^\circ-150^\circ=\boxed{30^\circ}.
+\]

@@ -1,0 +1,6 @@
+% Source: https://artofproblemsolving.com/community/c3h3283670_1500th_post
+% Stable identity: aops-topic-3283670-q07
+Such an $n$ divides $97^{1500}-2$. Its smallest divisor greater than one is prime, so only primes need testing. The following exact modular search checks all candidates below $89$ and confirms none works. For $89$, Fermat gives $97^{1500}\equiv8^{1500}\equiv8^4=4096\equiv2\pmod{89}$. Thus $\boxed{n=89}$.\begin{verbatim}
+assert all(pow(97,1500,n)!=2 for n in range(2,89))
+assert pow(97,1500,89)==2
+\end{verbatim}

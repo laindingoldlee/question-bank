@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1679008_mathcounts_geometry_problem
+% Stable identity: aops-topic-1679008-q01
+Work through the conditions in order: $AB=\dfrac{12}{2}=6$, then $CD=\dfrac{6}{2}=3$, then $BC=\dfrac{3}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real AB=6,BC=1.5,CD=3,AE=12;
+pair A=(0,0),B=(AB,0),C=(AB+BC,0),D=(AB+BC+CD,0),Ep=(AE,0);
+draw(A--Ep,linewidth(0.9));
+dot(A);dot(B);dot(C);dot(D);dot(Ep);
+label("$A$",A,N);label("$B$",B,N);label("$C$",C,N);label("$D$",D,N);label("$E$",Ep,N);
+label("$6$",(A+B)/2,S);label("$\dfrac{3}{2}$",(B+C)/2,S);label("$3$",(C+D)/2,S);label("$\dfrac{3}{2}$",(D+Ep)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So
+\[
+AD=AB+BC+CD=6+\dfrac{3}{2}+3=\boxed{\dfrac{21}{2}},
+\]
+and the remaining piece $DE=12-\dfrac{21}{2}=\dfrac{3}{2}$ is positive, so the configuration exists.

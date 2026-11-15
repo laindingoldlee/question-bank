@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h3068394_some_chess_problems
+% Stable identity: aops-topic-3068394-q07
+Use coordinates 0 through 7, so the rook starts $(0,0)$, the pawn is $(7,6)$, and its forward square is $(7,5)$. Maintain exact rational probabilities at every uncaptured rook square. For each square, enumerate ray destinations, stopping at the pawn when encountered, then divide its probability equally among them. Captures accumulate as immediate success. After three rounds, a noncapture is successful precisely if its rank is 5 or its file is 7 with rank below 6. This condition includes occupying $h6$ and excludes the blocked attack from $h8$. The following complete finite computation gives $\boxed{\dfrac{390343}{1854944}}$.
+\begin{verbatim}
+from fractions import Fraction
+from collections import defaultdict
+pawn=(7,6)
+D={(0,0):Fraction(1)}
+win=Fraction(0)
+for step in range(3):
+    E=defaultdict(Fraction)
+    for (x,y),p in D.items():
+        moves=[]
+        for dx,dy in ((1,0),(-1,0),(0,1),(0,-1)):
+            a,b=x+dx,y+dy
+            while 0<=a<8 and 0<=b<8:
+                moves.append((a,b))
+                if (a,b)==pawn:break
+                a+=dx
+                b+=dy
+        for t in moves:
+            if t==pawn:win+=p/len(moves)
+            else:E[t]+=p/len(moves)
+    D=E
+win+=sum(p for (x,y),p in D.items() if y==5 or (x==7 and y<6))
+assert win==Fraction(390343,1854944)
+\end{verbatim}

@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1560753_solving_using_homothety
+% Stable identity: aops-topic-1560753-q01
+Let the parallelogram have area $1$. The diagonals bisect each other, so the four triangles $ABE$, $BCE$, $CDE$, $DAE$ have equal areas, $\dfrac{1}{4}$ each.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(8,4),D=(2,4),Ep=(4,2),F=(5,1),H=(6,3);
+fill(A--F--H--D--cycle,paleyellow);
+draw(A--B--C--D--cycle,linewidth(1));
+draw(A--C,gray);draw(B--D,gray);
+draw(A--F--H--D,blue+linewidth(0.9));
+dot(Ep);dot(F);dot(H);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$E$",Ep,N);label("$F$",F,E);label("$H$",H,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The quadrilateral $AFHD$ is made of the four triangles $AEF$, $FEH$, $HED$ and $DEA$ around $E$:
+\begin{itemize}
+\item $[DEA]=\dfrac{1}{4}$;
+\item $[AEF]=\dfrac{1}{2}[AEB]=\dfrac{1}{8}$, since $F$ is the midpoint of $EB$ (same height from $A$, half the base);
+\item $[HED]=\dfrac{1}{2}[CED]=\dfrac{1}{8}$, since $H$ is the midpoint of $EC$;
+\item $[FEH]=\dfrac{1}{4}[BEC]=\dfrac{1}{16}$, since $EF=\dfrac{1}{2}EB$ and $EH=\dfrac{1}{2}EC$ with the same angle at $E$.
+\end{itemize}
+(The poster's homothety idea is valid: the dilation with centre $E$ and factor $2$ sends $F$ to $B$ and $H$ to $C$, so $FH\parallel BC$ and $FH=\dfrac{1}{2}BC$; that is another way to see the last area.)
+
+The total is $\dfrac{1}{4}+\dfrac{1}{8}+\dfrac{1}{8}+\dfrac{1}{16}=\boxed{\dfrac{9}{16}}$.

@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2547838_geometry
+% Stable identity: aops-topic-2547838-q01
+Since $D$ lies on side $AB$, the ray $BD$ is the ray $BA$, so $\angle DBC=\angle ABC=90^\circ$. The condition $2\angle DBC=3\angle BAC$ gives $\angle BAC=60^\circ$.
+
+Let $AB=c$. Then $BC=c\tan60^\circ=c\sqrt3$, and since $AD=1$, $BD=c-1$. In the right triangle $DBC$,
+\[CD^2=BD^2+BC^2\quad\Longrightarrow\quad4=(c-1)^2+3c^2\quad\Longrightarrow\quad4c^2-2c-3=0.\]
+The positive root is
+\[c=\dfrac{2+\sqrt{4+48}}{8}=\boxed{\dfrac{1+\sqrt{13}}{4}}\approx1.151.\]
+It exceeds $1$, so $D$ indeed lies on side $AB$ (close to $B$, as in the sketch, which is to scale).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real c=(1+sqrt(13))/4;
+pair B=(0,0),A=(c,0),C=(0,c*sqrt(3)),D=(c-1,0);
+draw(A--B--C--cycle,linewidth(0.8));draw(C--D);
+draw((0,0.07)--(0.07,0.07)--(0.07,0));
+label("$A$",A,SE);label("$B$",B,SW);label("$C$",C,N);label("$D$",D,S);
+label("$1$",(D+A)/2,S);label("$2$",(C+D)/2,E);
+draw(arc(A,0.22,120,180));label("$60^\circ$",A+0.25*dir(150),NW,fontsize(8pt));
+\end{asy}

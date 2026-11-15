@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2759277_2021_wmc_8_problems_6__10_discussion
+% Stable identity: aops-topic-2759277-q08
+If the smallest central angle is $x$, the angles are $x,2x,4x,8x$, so $15x=360^\circ$ and $x=24^\circ$.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+real[] a={24,48,96,192};real t=0;pair O=(0,0);
+draw(unitcircle);
+for(int i=0;i<4;++i){draw(O--dir(t));label("$"+string(a[i])+"^\circ$",0.6*dir(t+a[i]/2),fontsize(8pt));t+=a[i];}
+dot(O);
+\end{asy}
+
+Answer $\boxed{\textbf{(D)}\ 24}$.

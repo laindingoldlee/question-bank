@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1289174_geometry_problem
+% Stable identity: aops-topic-1289174-q01
+Let $\varphi=\angle BCD<90^\circ$. Since $CD=CB=CE$, triangle $CDE$ is isosceles, and its apex angle is
+\[
+\angle DCE=\angle DCB+\angle BCE=\varphi+90^\circ .
+\]
+So $\angle CDE=\dfrac{180^\circ-(\varphi+90^\circ)}{2}=45^\circ-\dfrac{\varphi}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair B=(0,0),C=(2,0); pair A=2*dir(110); pair D=A+C; pair Ep=(2,-2),F=(0,-2);
+pair G=extension(A,C,Ep,D);
+draw(A--B--C--D--cycle); draw(B--C--Ep--F--cycle,blue); draw(A--C,gray); draw(Ep--D,red);
+label("$A$",A,NW); label("$B$",B,W); label("$C$",C,E); label("$D$",D,NE); label("$E$",Ep,SE); label("$F$",F,SW); label("$G$",G,W); dot(G);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The diagonal $CA$ of the rhombus bisects $\angle BCD$, so $\angle GCD=\dfrac{\varphi}{2}$. In triangle $GCD$,
+\[
+\angle CGD=180^\circ-\dfrac{\varphi}{2}-\left(45^\circ-\dfrac{\varphi}{2}\right)=135^\circ,
+\]
+and since $A$, $G$, $C$ are collinear with $G$ between them, $\angle AGD=180^\circ-135^\circ=\boxed{45^\circ}$, whatever the shape of the rhombus.

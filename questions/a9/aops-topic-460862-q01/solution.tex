@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h460862_rhombus__its_diagonals__mc_2009_state_sprint_18
+% Stable identity: aops-topic-460862-q01
+The diagonals cut the rhombus into four congruent right triangles whose legs are the half-diagonals and whose hypotenuse is a side. The diagonals differ by $6$, so the half-diagonals differ by $3$; call them $x$ and $x+3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=(-8,0),C=(8,0),B=(0,5),D=(0,-5);
+draw(A--B--C--D--cycle,linewidth(0.9));draw(A--C,dashed);draw(B--D,dashed);
+real q=0.6;draw((q,0)--(q,q)--(0,q),linewidth(0.6));
+label("$x+3$",(4,0),S);label("$x$",(0,2.5),W);label("$\sqrt{89}$",(4,2.5),NE);
+label("$A$",A,W);label("$B$",B,N);label("$C$",C,E);label("$D$",D,S);label("$O$",O,SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By Pythagoras' theorem in triangle $OBC$,
+\[
+x^2+(x+3)^2=89\quad\Longleftrightarrow\quad 2x^2+6x-80=0\quad\Longleftrightarrow\quad (x-5)(x+8)=0 ,
+\]
+so $x=5$. The diagonals are $2x=10$ and $2(x+3)=16$, and the area of a rhombus is half the product of its diagonals:
+\[
+\dfrac{10\cdot16}{2}=\boxed{80}\text{ square units}.
+\]

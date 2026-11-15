@@ -1,0 +1,7 @@
+Since $PAE$ is equilateral, the rhombus has side $AE$, so $EQ=ED$. The inward equilateral triangle $AEQ$ has angle $AEQ=60^\circ$. Thus $\angle DEQ=108^\circ-60^\circ=48^\circ$, and isosceles triangle $DEQ$ has base angles $66^\circ$. In the regular pentagon, $\angle EDA=36^\circ$, so $\angle ADQ=66^\circ-36^\circ=30^\circ$. Also $\angle DAB=72^\circ$. The ray $DQ$ meets $AB$ at the interior point $R$, as these ray directions show. Triangle $ADR$ therefore gives $\boxed{\angle ARQ=180^\circ-72^\circ-30^\circ=78^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(1,0),C=B+dir(72),D=C+dir(144),E=D+dir(216),P=rotate(60)*E,Q=rotate(-60)*E;real t=-D.y/(Q.y-D.y);pair R=D+t*(Q-D);draw(A--B--C--D--E--cycle);draw(A--P--E--Q--cycle,blue);draw(D--R);draw(A--D,dashed);label("$A$",A,(0,-1));label("$B$",B,(1,-1));label("$C$",C,(1,0));label("$D$",D,(0,1));label("$E$",E,(-1,0));label("$P$",P,(-1,-1));label("$Q$",Q,(1,0));label("$R$",R,(0,-1));
+\end{asy}

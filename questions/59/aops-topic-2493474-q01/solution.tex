@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h2493474_looking_for_a_solution
+% Stable identity: aops-topic-2493474-q01
+Since $AB\parallel DC$, triangles $XAB$ and $XCD$ have equal vertical angles at $X$ and equal alternate angles, so they are similar and
+\[\dfrac{AB}{CD}=\dfrac{AX}{CX}=\dfrac57.\]
+Let $AB=5k$, $CD=7k$, $AP=p$ and $PB=q$, so $p+q=5k$.
+
+\textbf{At $M$.} Segments $PQ$ and $BD$ cross at $M$, and $PB\parallel QD$, so triangles $MPB$ and $MQD$ are similar. Since $PM:MQ=1:2$,
+\[\dfrac{PB}{QD}=\dfrac{PM}{MQ}=\dfrac12,\qquad QD=2q.\]
+\textbf{At $N$.} Similarly triangles $NPA$ and $NQC$ are similar, and $PN:NQ=2:1$, so
+\[\dfrac{PA}{QC}=\dfrac{PN}{NQ}=2,\qquad QC=\dfrac p2.\]
+Since $Q$ lies on segment $DC$, $DQ+QC=DC$:
+\[2q+\dfrac p2=7k.\]
+Substituting $p=5k-q$ gives $4q+5k-q=14k$, so $q=3k$ and $p=2k$. Hence
+\[\dfrac{AP}{BP}=\boxed{\dfrac23}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(5,0),D=(-2,4.5),C=(5,4.5);
+pair X=extension(A,C,B,D);
+pair P=(2,0),Q=(4,4.5);
+pair M=extension(P,Q,B,D),Nn=extension(P,Q,A,C);
+draw((-3,0)--(6.2,0)); draw((-3,4.5)--(6.2,4.5));
+draw(A--C,linewidth(0.8)); draw(B--D,linewidth(0.8));
+draw(P--Q,red+linewidth(1));
+dot(A);dot(B);dot(C);dot(D);dot(P);dot(Q);dot(M);dot(Nn);dot(X);
+label("$A$",A,S); label("$B$",B,S); label("$P$",P,S);
+label("$D$",D,N); label("$C$",C,NE); label("$Q$",Q,NW);
+label("$X$",X,dir(160)); label("$M$",M,dir(200)); label("$N$",Nn,dir(-20));
+label("$2k$",(A+P)/2,N,blue); label("$3k$",(P+B)/2,N,blue);
+label("$6k$",(D+Q)/2,N,blue); label("$k$",(Q+C)/2,N,blue);
+\end{asy}
+
+(No coordinates are needed; the sketch shows the configuration with $k=1$.)

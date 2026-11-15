@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2665927_factorization_question
+% Stable identity: aops-topic-2665927-q01
+Using $u^2-v^2$ and then $u^3\mp v^3$ with $u=3^3=27$, $v=2^3=8$:
+\[3^{18}-2^{18}=\left(3^9-2^9\right)\left(3^9+2^9\right),\]
+\[3^9-2^9=(27-8)\left(27^2+27\cdot8+8^2\right)=19\cdot(729+216+64)=19\cdot1009,\]
+\[3^9+2^9=(27+8)\left(27^2-27\cdot8+8^2\right)=35\cdot(729-216+64)=5\cdot7\cdot577.\]
+So $3^{18}-2^{18}=5\cdot7\cdot19\cdot577\cdot1009$.
+
+\emph{Primality.} If $m>1$ is composite, $m=uv$ with $1<u\le v$, then $u\le\sqrt m$; so $m$ is prime if no prime $p\le\sqrt m$ divides it. Since $24^2<577<25^2$, it suffices to test $2,3,5,7,11,13,17,19,23$; the remainders of $577$ are $1,1,2,3,5,5,16,7,2$, so $577$ is prime. Since $31^2<1009<32^2$, test the primes up to $31$; the remainders of $1009$ on division by $2,3,5,7,11,13,17,19,23,29,31$ are $1,1,4,1,8,8,6,2,20,23,17$, so $1009$ is prime.
+
+The prime factors are $\boxed{5,\ 7,\ 19,\ 577,\ 1009}$.
+
+(Remark: there is no rule that a number without an obvious special factorisation must be prime; trial division up to the square root is the standard test. Here it can be shortened: if a prime $p\nmid35$ divides $577$, then $w=3\cdot2^{-1}$ modulo $p$ satisfies $w^9\equiv-1$ but $w^3\not\equiv-1$ and $w^2\not\equiv1$, so $w$ has order $18$ and $18\mid p-1$; the only such prime below $25$ is $19$, which does not divide $577$.)

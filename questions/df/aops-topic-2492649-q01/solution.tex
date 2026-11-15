@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2492649_formula_for_lateral_surface_area_of_cone
+% Stable identity: aops-topic-2492649-q01
+\textbf{(a)} Cut the lateral surface along a slant height and unroll it flat. Every point of the base circle is at distance $\ell$ from the apex, so the surface becomes a sector of a circle of radius $\ell$, and the arc of the sector is the base circle, of length $2\pi r$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair T=(0,2);
+draw((-1.5,0)..(0,-0.5)..(1.5,0),linewidth(0.8)); draw((-1.5,0)..(0,0.5)..(1.5,0),dashed);
+draw((-1.5,0)--T--(1.5,0),linewidth(0.8));
+draw((0,0)--(1.5,0),red); label("$r$",(0.7,0),N,red+fontsize(9pt));
+label("$\ell$",(T+(1.5,0))/2,NE);
+dot((0,0));
+pair O2=(5.2,1.5); real R=2.5, th=216;
+fill(O2--arc(O2,R,90-th/2,90+th/2)--cycle,rgb(0.85,0.92,1));
+draw(O2--arc(O2,R,90-th/2,90+th/2)--cycle,linewidth(0.8));
+label("$\ell$",O2+0.55*R*dir(90+th/2),dir(90+th/2+90));
+label("arc $2\pi r$",O2+R*dir(90),N,fontsize(8pt));
+draw(arc(O2,0.35,90-th/2,90+th/2),blue); label("$\theta$",O2+0.6*dir(90),blue);
+\end{asy}
+
+A full circle of radius $\ell$ has circumference $2\pi\ell$ and area $\pi\ell^2$. The sector is the fraction $\dfrac{2\pi r}{2\pi\ell}=\dfrac r\ell$ of the full circle (area is proportional to arc length), so its area is
+\[\dfrac r\ell\cdot\pi\ell^2=\pi r\ell.\]
+This is the same idea as the area of a triangle: the sector has ``base'' $2\pi r$ and ``height'' $\ell$, and area $\dfrac12\cdot2\pi r\cdot\ell$.
+
+\textbf{(b)} The lateral area is $\pi\cdot3\cdot5=\boxed{15\pi}$. The sector is the fraction $\dfrac r\ell=\dfrac35$ of a full turn, so its central angle is $\theta=\dfrac35\cdot360^\circ=\boxed{216^\circ}$.

@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2477491_problem_i_made
+% Stable identity: aops-topic-2477491-q01
+By the distance formula,
+\[OQ^2=(-5)^2+\left(5+3\sqrt3\right)^2=25+25+30\sqrt3+27=77+30\sqrt3,\]
+\[OR^2=5^2+\left(5-3\sqrt3\right)^2=25+25-30\sqrt3+27=77-30\sqrt3.\]
+The sum is $\boxed{154}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real t=3*sqrt(3);
+pair O=(0,0), Q=(-5,5+t), R=(5,5-t);
+draw((-6.5,0)--(7.5,0),Arrow(6)); draw((0,-1.5)--(0,12),Arrow(6));
+label("$x$",(7.5,0),E); label("$y$",(0,12),N);
+draw(O--Q,blue+linewidth(0.9)); draw(O--R,blue+linewidth(0.9));
+draw(Q--(-5,0),dashed);
+draw((5,-0.1)--(5,0.1));
+dot(O); dot(Q); dot(R);
+label("$O$",O,SW); label("$Q\left(-5,\,5+3\sqrt3\right)$",Q,N); label("$R\left(5,\,5-3\sqrt3\right)$",R,dir(-70));
+label("$-5$",(-5,0),S,fontsize(8pt)); label("$5$",(5,0.1),N,fontsize(8pt));
+\end{asy}

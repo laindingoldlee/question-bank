@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1582862_17_geometry_questions
+% Stable identity: aops-topic-1582862-q01
+Each tip moves on a circle of radius $26$ feet:
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);real r=2.6;
+draw(circle(O,r),dashed+gray);
+for(int i=0;i<3;++i) draw(O--r*dir(90+120*i),linewidth(1.6));
+dot(O);label("$26$ ft",0.55*r*dir(210),dir(300));
+draw(arc(O,r+0.25,-20,20),Arrow(TeXHead));label("$400$ rpm",(r+0.3)*dir(0),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In one revolution a tip travels the circumference $2\pi\cdot26=52\pi\approx163.363$ feet. At $400$ revolutions per minute it travels $400\cdot52\pi$ feet per minute, i.e.
+\[
+\dfrac{400\cdot52\pi}{60}\approx\dfrac{65{,}345.1}{60}\approx1089.08\text{ feet per second},
+\]
+so the tip speed is about $\boxed{1089\text{ feet per second}}$.

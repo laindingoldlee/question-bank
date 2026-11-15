@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1557027_help_on_problems_that_i_dont_know_how_to_solve
+% Stable identity: aops-topic-1557027-q02
+In a convex polyhedron every edge lies on exactly two faces, and two different faces meet in at most one edge (the intersection of two faces is a convex set on the boundary: an edge, a vertex, or nothing).
+
+Take any face, and say it is a polygon with $k\ge3$ sides. Each of its $k$ edges is shared with another face, and these $k$ other faces are all different, because two faces share at most one edge. So the polyhedron has at least $k+1$ faces. With exactly four faces, $k+1\le4$, so $k=3$: every face is a triangle. $\blacksquare$
+
+The four triangular faces have $4\cdot3=12$ sides in total, and each edge is counted twice, so there are $6$ edges. Each face meets the other three, and the vertices are the four points $A,B,C,D$ in the sketch (each face omits exactly one of them):
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(2.4,1.0),D=(1.8,3.4);
+draw(A--B--D--cycle,linewidth(0.9));draw(B--C,dashed);draw(A--C,dashed);draw(C--D,dashed);
+dot(A);dot(B);dot(C);dot(D);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,S);label("$D$",D,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So a tetrahedron has $\boxed{4\text{ triangular faces, }6\text{ edges and }4\text{ vertices}}$ (check with Euler's formula: $4-6+4=2$). A solid with a square base and four triangular sides is a square pyramid, which has five faces.

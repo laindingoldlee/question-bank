@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2213845_beginner_problems
+% Stable identity: aops-topic-2213845-q01
+In an equilateral triangle $ABC$ the circumcentre is also the centroid and the incentre, and $OM$ is perpendicular to the side $AB$. In the right triangle $AMO$, $AM=\dfrac{15}{2}$ and $\angle OAM=30^\circ$ ($AO$ bisects the $60^\circ$ angle at $A$).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(15,0),C=(7.5,15*sqrt(3)/2); pair O=(A+B+C)/3, M=(A+B)/2;
+draw(A--B--C--cycle,linewidth(0.9)); draw(circle(O,abs(O-A)),blue+dashed);
+draw(O--A,red); draw(O--M,blue+linewidth(0.9));
+draw(M+(0.6,0)--M+(0.6,0.6)--M+(0,0.6));
+dot(O);dot(M); label("$O$",O,NE); label("$M$",M,S);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$30^\circ$",A+2.6*dir(15),fontsize(8pt));
+label("$\dfrac{15}{2}$",(A+M)/2,S);
+\end{asy}
+
+Hence
+\[OM=AM\tan30^\circ=\dfrac{15}{2}\cdot\dfrac{1}{\sqrt3}=\boxed{\dfrac{5\sqrt3}{2}\ \text{cm}}.\]
+(Equivalently, $OM$ is one third of the altitude $\dfrac{15\sqrt3}{2}$.)

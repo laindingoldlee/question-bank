@@ -1,0 +1,47 @@
+% Source: https://artofproblemsolving.com/community/c3h2465188_circles_inscribed_in_triangles
+% Stable identity: aops-topic-2465188-q01
+\textbf{(a)} Let $I$ be the incentre of triangle $ABC$, with $a=BC$, $b=CA$, $c=AB$. The incircle touches each side, and the radius to a point of tangency is perpendicular to that side, so the distance from $I$ to each side is $r$. Joining $I$ to the vertices splits the triangle into triangles $IBC$, $ICA$, $IAB$ with bases $a,b,c$ and common height $r$:
+\[K=\dfrac12ar+\dfrac12br+\dfrac12cr=r\cdot\dfrac{a+b+c}{2}=rs,\qquad\text{so}\qquad r=\dfrac Ks.\ \blacksquare\]
+
+\textbf{(b)} Here $s=21$, and by Heron's formula $K=\sqrt{21\cdot8\cdot7\cdot6}=\sqrt{7056}=84$. So $r=\dfrac{84}{21}=\boxed{4}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(14,0),A=(5,12);
+pair I=(14*A+15*B+13*C)/42;
+pair ft(pair P,pair U,pair V){return U+dot(P-U,unit(V-U))*unit(V-U);}
+pair Da=ft(I,B,C),Db=ft(I,C,A),Dc=ft(I,A,B);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(circle(I,4),blue);
+draw(I--A,dashed); draw(I--B,dashed); draw(I--C,dashed);
+draw(I--Da,red); draw(I--Db,red); draw(I--Dc,red);
+dot(I);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$I$",I,1.5*dir(70));
+label("$r$",(I+Da)/2,E,red);
+label("$13$",B+0.75*(A-B),W); label("$15$",A+0.28*(C-A),NE); label("$14$",(B+C)/2+(3,0),S);
+\end{asy}
+
+\textbf{(c)} Let the right angle be at $C$, and let the incircle touch $BC$, $CA$, $AB$ at $D$, $E$, $F$. The two tangent segments from a point to a circle are equal, so $AE=AF$, $BD=BF$ and $CD=CE$. In quadrilateral $CDIE$ the angles at $C$, $D$, $E$ are right angles and $ID=IE=r$, so it is a square and $CD=CE=r$. Hence
+\[a+b-c=(CD+DB)+(CE+EA)-(BF+FA)=CD+CE=2r,\qquad r=\dfrac{a+b-c}{2}.\ \blacksquare\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),B=(4,0),A=(0,3),I=(1,1);
+pair Dp=(1,0),Ep=(0,1);
+pair Fp=A+dot(I-A,unit(B-A))*unit(B-A);
+fill(C--Dp--I--Ep--cycle,rgb(0.8,0.88,1));
+draw(A--B--C--cycle,linewidth(0.8));
+draw(circle(I,1),blue);
+draw(I--Dp,red); draw(I--Ep,red); draw(I--Fp,red);
+dot(I); dot(Dp); dot(Ep); dot(Fp);
+label("$C$",C,SW); label("$B$",B,SE); label("$A$",A,N); label("$I$",I,dir(30));
+label("$D$",Dp,S); label("$E$",Ep,W); label("$F$",Fp,NE);
+label("$r$",(0.5,0),S,red+fontsize(8pt)); label("$r$",(0,0.5),W,red+fontsize(8pt));
+label("$a$",(2.6,0),S); label("$b$",(0,2.1),W); label("$c$",(2.1,1.45),NE);
+\end{asy}
+
+For the $3$-$4$-$5$ triangle: $\dfrac{3+4-5}{2}=1$, and also $\dfrac Ks=\dfrac{6}{6}=1$.

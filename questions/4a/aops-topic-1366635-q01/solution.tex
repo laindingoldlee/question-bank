@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1366635_degenerate_triangle_similarity
+% Stable identity: aops-topic-1366635-q01
+Since $AB+AC=BC$, the point $A$ lies on segment $BC$, and since $DE+DF=EF$, the point $D$ lies on segment $EF$. So the angles are indeed $\angle A=\angle D=180^\circ$ and all the others are $0^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),A=(5,0),C=(12,0);
+draw(B--C,linewidth(0.9)); dot(B); dot(A); dot(C);
+label("$B$",B,S); label("$A$",A,S); label("$C$",C,S);
+label("$5$",(B+A)/2,N); label("$7$",(A+C)/2,N);
+pair EE=(0,-2.2),D=(11,-2.2),F=(15,-2.2);
+draw(EE--F,linewidth(0.9)); dot(EE); dot(D); dot(F);
+label("$E$",EE,S); label("$D$",D,S); label("$F$",F,S);
+label("$11$",(EE+D)/2,N); label("$4$",(D+F)/2,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The sides do not match: $\dfrac{AB}{DE}=\dfrac{5}{11}$ but $\dfrac{AC}{DF}=\dfrac{7}{4}$, and $\dfrac{AB}{DF}=\dfrac{5}{4}$ but $\dfrac{AC}{DE}=\dfrac{7}{11}$. So neither correspondence is a similarity.
+
+\textbf{The flaw:} the AA criterion is a theorem about nondegenerate triangles, and its proof breaks down here. AA works because two angles at the ends of a side determine the triangle up to scale: scale $\triangle DEF$ so that $EF$ matches $BC$, and then the rays from the ends of the side at the given angles meet in exactly one point, which must be the third vertex. When the angles at $B$ and $C$ are $0^\circ$, both rays run along line $BC$ and overlap in the whole segment; they do not determine a point, so the position of the third vertex (here, where $A$ sits on $BC$) is not fixed. Equivalently, the law of sines $\dfrac{a}{\sin A}=\dfrac{b}{\sin B}$ gives $\dfrac{0}{0}$, so it says nothing. Thus all degenerate triangles of this kind have the same angles, but they are similar only when $A$ and $D$ divide their segments in the same ratio, which is not the case here ($5:7\ne11:4$ and $5:7\ne4:11$). $\blacksquare$

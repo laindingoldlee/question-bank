@@ -1,0 +1,7 @@
+For points $A,B,C$, put $D=|\det(B-A,C-A)|$, twice the triangle area, and let $u,v,w$ be its three squared side lengths. The extended sine rule gives $R^2=\dfrac{uvw}{4D^2}$. This allows an exact finite maximization over the $\binom{121}{3}=287980$ unordered triples: discard $D=0$, and compare two candidate fractions by cross multiplication. The maximum is $\dfrac{143338}{4}$, attained by $(0,0),(2,3),(7,10)$, whose squared side lengths are $13,149,74$ and whose determinant is $-1$. Thus $R=\dfrac{\sqrt{143338}}{2}\approx189.300$, closest to $\boxed{190}$. The exhaustive check uses only these bounded integer loops: choose three distinct indices $0\le i<j<k<121$, map index $i$ to $(\lfloor\dfrac{i}{11}\rfloor,i\bmod11)$, compute the determinant and three squared lengths, and retain the largest fraction by cross multiplication. These loops cover every allowed triangle once.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(2,3),C=(7,10);for(int x=0;x<=10;++x)for(int y=0;y<=10;++y)dot((x,y),gray+1);draw(A--B--C--cycle,blue+1);label("A",A,SW);label("B",B,W);label("C",C,NE);label("determinant magnitude 1",(5,-1));
+\end{asy}

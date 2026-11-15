@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1639259_3d_probability_problem
+% Stable identity: aops-topic-1639259-q01
+Treat the $8$ vertices as distinct objects (labelled), so every set of three vertices is equally likely. We count \emph{sets} of vertices, not pictures up to rotation: rotating the cube would merge outcomes that have different probabilities of being chosen, so counting ``shapes'' instead of sets would not give equally likely outcomes.
+
+There are $\dbinom83=56$ sets of three vertices. A face has $4$ vertices, hence $\dbinom43=4$ sets of three vertices, and there are $6$ faces, giving $24$ sets. No set is counted twice: three vertices of a square face are not collinear, and two different faces share at most an edge, i.e.\ two vertices, so the face containing three chosen vertices is unique.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(2,0),C=(2,2),D=(0,2),v=(0.9,0.65);
+pair A1=A+v,B1=B+v,C1=C+v,D1=D+v;
+fill(A--B--C--cycle,paleblue);
+draw(A--B--C--D--cycle,linewidth(0.8));draw(D--D1--C1--C);draw(B--B1--C1);
+draw(A--A1,dashed);draw(A1--B1,dashed);draw(A1--D1,dashed);
+draw(A--B--C--cycle,blue+linewidth(1));
+dot(A,blue);dot(B,blue);dot(C,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The figure shows one such set: three vertices of the front face.) Hence the probability is
+\[
+\dfrac{24}{56}=\boxed{\dfrac{3}{7}}.
+\]

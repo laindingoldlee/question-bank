@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1608558_shoelace
+% Stable identity: aops-topic-1608558-q01
+Let $O=(0,0)$, $P=(a,b)$, $Q=(c,d)$. By the shoelace formula,
+\[
+[OPQ]=\dfrac{1}{2}\left|\,0\cdot b-a\cdot0+a d-c b+c\cdot0-0\cdot d\,\right|=\boxed{\dfrac{1}{2}\left|ad-bc\right|}.
+\]
+
+\textbf{A check by boxing.} In the figure ($a>c>0$, $d>b>0$) the triangle sits in the rectangle $[0,a]\times[0,d]$, which has area $ad$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),P=(4,1),Q=(1.5,3);
+draw((-0.5,0)--(5,0),gray,Arrow(TeXHead));draw((0,-0.5)--(0,3.7),gray,Arrow(TeXHead));
+draw((4,0)--(4,3)--(0,3),dashed);
+fill(O--P--Q--cycle,rgb(0.88,0.92,1));draw(O--P--Q--cycle,linewidth(0.9));
+dot(O);dot(P);dot(Q);
+label("$O$",O,SW);label("$P(a,b)$",P,E);label("$Q(c,d)$",Q,N);
+label("$a$",(4,0),S);label("$d$",(0,3),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The three corner triangles have areas $\dfrac{1}{2}ab$, $\dfrac{1}{2}cd$ and $\dfrac{1}{2}(a-c)(d-b)$, so
+\[
+[OPQ]=ad-\dfrac{1}{2}ab-\dfrac{1}{2}cd-\dfrac{1}{2}(ad-ab-cd+bc)=\dfrac{1}{2}(ad-bc),
+\]
+in agreement with the formula. The absolute value covers every other position of the points; the area is $0$ exactly when $O$, $P$, $Q$ are collinear.

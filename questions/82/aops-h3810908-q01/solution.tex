@@ -1,0 +1,22 @@
+For a cut coordinate $X$ uniform on $[0,12]$, the smaller length $\min(X,12-X)$ is uniform on $[0,6]$. The smallest of the eight volumes is the product of these three independent smaller lengths. Thus it equals $216UVW$, where $U,V,W$ are independent uniform variables on $[0,1]$.
+
+For $0<t<1$, conditioning on one variable gives
+\[
+F_2(t)=\Pr(UV<t)=t+\int_t^1\dfrac{t}{u}\,du=t(1-\ln t).
+\]
+Conditioning once more,
+\[
+F_3(t)=t+\int_t^1F_2(\dfrac{t}{u})\,du
+=t\left(1-\ln t+\dfrac{(\ln t)^2}{2}\right).
+\]
+Here $t=\dfrac{27}{216}=\dfrac{1}{8}$, so the probability is
+\[
+\boxed{\dfrac{1}{8}\left(1+\ln8+\dfrac{(\ln8)^2}{2}\right)}.
+\]
+The strict versus nonstrict inequality does not change the probability because equality has probability zero.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair pr(real x,real y,real z){return (x+.45*y,z+.3*y);}real[] v={0,.35,1};for(real x:v)for(real y:v)draw(pr(x,y,0)--pr(x,y,1),gray);for(real x:v)for(real z:v)draw(pr(x,0,z)--pr(x,1,z),gray);for(real y:v)for(real z:v)draw(pr(0,y,z)--pr(1,y,z),gray);label("$12\text{ cm}$",(.5,-.3));
+\end{asy}

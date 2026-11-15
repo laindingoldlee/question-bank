@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2808585_2017_geometry_bee__preliminary_round
+% Stable identity: aops-topic-2808585-q09
+The base angles are $70^\circ$, so $\angle ABU=35^\circ$ and $U$ is the midpoint of arc $AC$ not containing $B$; the arcs are $\overset{\frown}{AU}=\overset{\frown}{UC}=70^\circ$ (half of the $140^\circ$ arc $AC$ subtended by $\angle B$).
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=dir(90),B=dir(90+140),C=dir(90-140);
+pair U=dir(20);pair V=extension(B,U,A,O);
+draw(circle(O,1));draw(A--B--C--cycle);draw(B--U,dashed);draw(A--(A.x,-1),dotted);draw(O--U);draw(U--V);dot(O);dot(V);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$O$",O,E);label("$U$",U,NW);label("$V$",V,E);
+\end{asy}
+
+The arcs not containing the third vertex are: arc $BC=2\angle A=80^\circ$, arc $CA=2\angle B=140^\circ$, arc $AB=140^\circ$. $U$ is the midpoint of arc $CA$, so arc $UC=70^\circ$, and the arc from $U$ through $C$ to $B$ is $70^\circ+80^\circ=150^\circ$ (it does not contain $A$). Hence the central angle $\angle UOB=150^\circ$, and in isosceles triangle $OUB$ ($OU=OB$), $\angle OUB=\dfrac{180^\circ-150^\circ}2=15^\circ$. Since $V$ lies on segment $UB$, $\angle OUV=\boxed{15^\circ}$.

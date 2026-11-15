@@ -1,0 +1,7 @@
+The tangent-secant theorem gives $BD\cdot BE=BF\cdot BG=AB^2=484$. Hence $BE=\dfrac{484}{9}$ and BG=121. Triangles BDG and BFE have the same included angle at B and satisfy $\dfrac{BD}{BF}=\dfrac{9}{4}=\dfrac{BG}{BE}$. They are similar by side-angle-side, so the ratio of their third sides is $\boxed{\dfrac{DG}{EF}=\dfrac{9}{4}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(22,0),u=dir(135),v=dir(225),D=B+9u,E=B+(484.0/9)*u,F=B+4v,G=B+121v;real r1=dot(D,D)/(2D.y),r2=-dot(F,F)/(2F.y);draw(circle((0,r1),r1),gray);draw(circle((0,-r2),r2),gray);draw((-70,0)--(30,0));draw(B--E);draw(B--G);draw(D--G,blue);draw(E--F,red);pair[] p={A,B,D,E,F,G};string[] a={"A","B","D","E","F","G"};pair[] al={(-1,0),(1,0),(1,1),(-1,1),(1,-1),(-1,-1)};for(int i=0;i<6;++i)label("$"+a[i]+"$",p[i],al[i]);
+\end{asy}

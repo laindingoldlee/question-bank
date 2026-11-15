@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1684143_mathcounts_20152016_area_stretch
+% Stable identity: aops-topic-1684143-q02
+Triangles $AEQ$ and $PCB$ are isosceles with legs $10$ and base $12$, so each has height $\sqrt{10^2-6^2}=8$ and area $48$. The figure is symmetric about the perpendicular bisector of $AB$; put $A=(0,0)$, $B=(L,0)$, so $Q=(12,0)$, $P=(L-12,0)$, $E=(6,8)$, $C=(L-6,8)$, and $D$ is on the axis of symmetry $x=\dfrac {L}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(19.5,0),Q=(12,0),P=(7.5,0),Ep=(6,8),C=(13.5,8),D=(9.75,3);
+fill(A--B--C--D--Ep--cycle,gray(0.9));
+draw(A--B--C--D--Ep--cycle,linewidth(0.9));
+draw(D--Q,dashed);draw(D--P,dashed);
+dot(P);dot(Q);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D+(0,-1.5));label("$E$",Ep,N);
+label("$P$",P,S);label("$Q$",Q,S);
+label("$10$",(A+Ep)/2,W);label("$10$",(B+C)/2,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Going from $Q$ towards $E$, the $x$-coordinate drops by $6$ over the length $10$. To reach $x=\dfrac {L}{2}$ it drops by $12-\dfrac {L}{2}$, so $QD=\dfrac{10}{6}\left(12-\dfrac {L}{2}\right)$ and $DE=10-QD$; by symmetry $CD=DE$. The perimeter is
+\[
+L+10+2\left(10-\dfrac{5}{3}\left(12-\dfrac {L}{2}\right)\right)+10=L+\dfrac{5}{3}L=\dfrac{8}{3}L=52,
+\]
+so $L=\dfrac{39}{2}$. Then $PQ=12+12-L=\dfrac{9}{2}$ and $D$ has height $8\cdot\dfrac{QD}{10}=\dfrac{4}{3}\left(12-\dfrac{39}{4}\right)=3$.
+
+The pentagon is the union of the two triangles, which overlap in triangle $PQD$ of area $\dfrac{1}{2}\cdot\dfrac{9}{2}\cdot3=\dfrac{27}{4}$. So the area of $ABCDE$ is
+\[
+48+48-\dfrac{27}{4}=\boxed{\dfrac{357}{4}}.
+\]

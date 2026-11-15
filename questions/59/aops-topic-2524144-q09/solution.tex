@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2524144_sigmas_problem_thread
+% Stable identity: aops-topic-2524144-q09
+Let $BC=2$. In the $30$-$60$-$90$ triangle $ABC$, $AC=1$ (opposite $30^\circ$) and $AB=\sqrt3$. In the isosceles right triangle $BCD$, $BD=CD=\dfrac2{\sqrt2}=\sqrt2$. So the lengths are $\sqrt3,1,2,\sqrt2,\sqrt2$; the shortest is $AC=1$ and the longest is the common hypotenuse $BC=2$. The ratio is $\boxed{\dfrac12}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(2,0);
+pair A=B+sqrt(3)*dir(30);pair D=B+sqrt(2)*dir(-45);
+draw(B--C--A--cycle,linewidth(0.8));draw(B--D--C,linewidth(0.8));
+real k=0.12;
+draw(A+k*unit(B-A)--A+k*unit(B-A)+k*unit(C-A)--A+k*unit(C-A));
+draw(D+k*unit(B-D)--D+k*unit(B-D)+k*unit(C-D)--D+k*unit(C-D));
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,E);label("$D$",D,S);
+label("$30^\circ$",B,(3.2,0.9),fontsize(8pt));label("$45^\circ$",C,(-3.4,-1.2),fontsize(8pt));
+label("$2$",(B+C)/2,N);label("$1$",(A+C)/2,NE);label("$\sqrt3$",(A+B)/2,NW);label("$\sqrt2$",(B+D)/2,SW);label("$\sqrt2$",(C+D)/2,SE);
+\end{asy}

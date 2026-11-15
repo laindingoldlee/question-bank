@@ -1,0 +1,7 @@
+An affine change of coordinates makes the rectangle a unit square without changing ratios along a line. The given length ratios give $K=(\dfrac{1}{2},0)$, $L=(\dfrac{7}{8},0)$, and $M=(\dfrac{1}{2},1)$. On diagonal $y=x$, intersections with $MK,ML$ occur at parameters $\dfrac{1}{2},\dfrac{7}{11}$. Thus $ST=\dfrac{3}{22}AC$, so the ratio is $\boxed{\dfrac{22}{3}}$, choice A. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1),K=(.5,0),L=(.875,0),M=(.5,1),S=(.5,.5),T=(7/11,7/11);draw(A--B--C--D--cycle);draw(A--C);draw(M--K);draw(M--L);pair[] P={A,B,C,D,K,L,M,S,T};string[] N={"A","B","C","D","K","L","M","S","T"};for(int i=0;i<P.length;++i)label("$"+N[i]+"$",P[i],i>6?(1,0):unit(P[i]-(.5,.5)));
+\end{asy}

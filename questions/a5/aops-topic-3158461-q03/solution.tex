@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3158461_2016_lmt_spring_guts_round_p1p12__lexington_mathematical_tournament
+% Stable identity: aops-topic-3158461-q03
+Every move preserves checkerboard colour, so at most half the 320 squares, or 160, are reachable. Conversely the same-colour squares are connected by diagonal unit steps: from any square move diagonally toward the bottom edge, then move along that edge in two-column zigzags through the adjacent row until reaching the starting corner. The bottom-edge column has the correct parity; every such zigzag stays on the board. Hence all same-colour squares are reachable, giving $\boxed{160}$. 
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int x=0;x<20;++x)for(int y=0;y<16;++y)filldraw((x,y)--(x+1,y)--(x+1,y+1)--(x,y+1)--cycle,(x+y)%2==0?lightgray:white,gray);dot("start",(.5,.5),SW);draw((.5,.5)--(1.5,1.5)--(2.5,.5)--(3.5,1.5)--(4.5,.5),blue);label("20 columns",(10,-1));label("16 rows",(21,8));
+\end{asy}

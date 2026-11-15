@@ -1,0 +1,7 @@
+Scale to $A=(-1,0),C=(1,0),M=(0,0)$. The prescribed angles give $B=(-\dfrac{1}{2},\dfrac{\sqrt3}{2})$ and $D=(0,-1)$, up to reflection. The circle through $B,M,D$ is $x^2+y^2+(2+\sqrt3)x+y=0$. Substitution of lines $AB,BC,CD,DA$ yields $W=(-\dfrac{3+\sqrt3}{2},-\dfrac{3+\sqrt3}{2})$, $X=(-\dfrac{1+\sqrt3}{2},\dfrac{1+\sqrt3}{2})$, $Y=(-\dfrac{1+\sqrt3}{2},-\dfrac{3+\sqrt3}{2})$, and $Z=(-\dfrac{3+\sqrt3}{2},\dfrac{1+\sqrt3}{2})$. Hence $WY=XZ=1$, while $AB=1,AD=\sqrt2$. The ratio is $\boxed{\dfrac{1+\sqrt2}{2}}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+real s=sqrt(3);pair A=(-1,0),C=(1,0),M=(0,0),B=(-.5,s/2),D=(0,-1),O=(-(2+s)/2,-.5),W=(-(3+s)/2,-(3+s)/2),X=(-(1+s)/2,(1+s)/2),Y=(-(1+s)/2,-(3+s)/2),Z=(-(3+s)/2,(1+s)/2);draw(A--B--C--D--cycle);draw(circle(O,abs(O)));draw(W--B);draw(C--X);draw(C--Y);draw(Z--D);draw(W--Y,dashed);draw(X--Z,dashed);pair[] P={A,B,C,D,M,W,X,Y,Z};string[] L={"A","B","C","D","M","W","X","Y","Z"};for(int i=0;i<P.length;++i)label("$"+L[i]+"$",P[i],i<5?(1,0):unit(P[i]-O));
+\end{asy}

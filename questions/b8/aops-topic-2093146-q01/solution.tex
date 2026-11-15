@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2093146_interesting_counting_question
+% Stable identity: aops-topic-2093146-q01
+There are $\dfrac{6!}{2!\,2!\,2!}=90$ arrangements in all; we count the ones that are \emph{not} RSM words.
+
+Build each arrangement in two steps: first arrange R, R, M, M ($\dbinom42=6$ patterns), then insert the two S's into the $5$ gaps of that pattern (before the first letter, between letters, or after the last), several S's being allowed in one gap. There are $\dbinom{5+1}{2}=15$ ways to insert two S's, and $6\cdot15=90$, so each arrangement arises exactly once.
+
+An S creates the reading R, S, M exactly when it is placed in a gap with an R somewhere before it and an M somewhere after it; call the other gaps \emph{bad}. An arrangement is not an RSM word exactly when both S's go into bad gaps, which can be done in $\dbinom{b+1}{2}$ ways if the pattern has $b$ bad gaps (the two S's form a multiset of size $2$ from the $b$ bad gaps). With $|$ marking the good gaps:
+\[\begin{array}{lcc}
+\text{pattern}&b&\dbinom{b+1}{2}\\\hline
+\text{R}\,|\,\text{R}\,|\,\text{M}\,|\,\text{M}&2&3\\
+\text{R}\,|\,\text{M}\,|\,\text{R}\,|\,\text{M}&2&3\\
+\text{R}\,|\,\text{M}\,|\,\text{M}\ \text{R}&3&6\\
+\text{M}\ \text{R}\,|\,\text{R}\,|\,\text{M}&3&6\\
+\text{M}\ \text{R}\,|\,\text{M}\ \text{R}&4&10\\
+\text{M}\ \text{M}\ \text{R}\ \text{R}&5&15
+\end{array}\]
+(The gaps before the first letter and after the last are always bad.) So $3+3+6+6+10+15=43$ arrangements are not RSM words, and there are $90-43=\boxed{47}$ RSM words.

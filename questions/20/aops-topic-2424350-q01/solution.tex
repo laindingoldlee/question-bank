@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2424350_geometry_reflections
+% Stable identity: aops-topic-2424350-q01
+Let $P=(-14,2)$. The line $4x+3y=12$ has slope $-\dfrac43$, so a perpendicular line has slope $\dfrac34$. The perpendicular through $P$ is
+\[y-2=\dfrac34(x+14),\qquad\text{i.e.}\qquad y=\dfrac34x+\dfrac{25}{2}.\]
+\textbf{The foot of the perpendicular.} Substituting into $4x+3y=12$:
+\[4x+\dfrac94x+\dfrac{75}{2}=12\quad\Longrightarrow\quad\dfrac{25}{4}x=-\dfrac{51}{2}\quad\Longrightarrow\quad x=-\dfrac{102}{25},\]
+and then $y=\dfrac34\cdot\left(-\dfrac{102}{25}\right)+\dfrac{25}{2}=\dfrac{236}{25}$. So the foot is $F=\left(-\dfrac{102}{25},\dfrac{236}{25}\right)$.
+
+\textbf{The reflection.} $F$ is the midpoint of $P$ and its image $P'$, so
+\[P'=2F-P=\left(-\dfrac{204}{25}+14,\ \dfrac{472}{25}-2\right)=\boxed{\left(\dfrac{146}{25},\dfrac{422}{25}\right)}=(5.84,\,16.88).\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real k=0.3;
+pair P=(-14,2), F=(-102/25,236/25), Q=(146/25,422/25);
+draw((-16,0)--(9,0),Arrow(6)); draw((0,-4)--(0,19),Arrow(6));
+label("$x$",(9,0),E); label("$y$",(0,19),N);
+draw((-9,16)--(6,-4),blue+linewidth(0.9));
+draw(P--Q,red+dashed);
+pair e1=unit(Q-F), e2=unit((6,-4)-F); real s=0.8;
+draw(F+s*e1--F+s*e1+s*e2--F+s*e2);
+dot(P); dot(F); dot(Q);
+label("$P(-14,2)$",P,NW); label("$F$",F,W); label("$P'$",Q,E);
+label("$4x+3y=12$",(6,-4),E,blue);
+\end{asy}
+
+Check: the midpoint of $P$ and $P'$ is $(-4.08,9.44)$, and $4(-4.08)+3(9.44)=12$; the segment $PP'$ has slope $\dfrac{16.88-2}{5.84+14}=\dfrac{14.88}{19.84}=\dfrac34$, perpendicular to the line.

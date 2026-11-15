@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2319666_a_lot_of_not_very_hard_cp_problems_keeping_yall_busy
+% Stable identity: aops-topic-2319666-q09
+First count the patterns of letters $AAAABBCCC$ with no $B$ next to a $C$. Place the four $A$'s; they create $5$ gaps (including the two ends). Inside a gap the letters are consecutive, so a gap may not contain both a $B$ and a $C$: each gap holds only $B$'s, only $C$'s, or nothing. Choose $k$ gaps for the $B$'s and $l$ other gaps for the $C$'s, and split the $2$ $B$'s into $k$ nonempty groups ($\dbinom{1}{k-1}$ ways) and the $3$ $C$'s into $l$ nonempty groups ($\dbinom{2}{l-1}$ ways):
+\begin{itemize}
+\item $k=1$: $5$ choices of the $B$-gap, then $\dbinom41\cdot1+\dbinom42\cdot2+\dbinom43\cdot1=4+12+4=20$, giving $100$;
+\item $k=2$: $\dbinom52=10$ choices of the $B$-gaps, then $\dbinom31\cdot1+\dbinom32\cdot2+\dbinom33\cdot1=3+6+1=10$, giving $100$.
+\end{itemize}
+So there are $200$ patterns. The two $B$ books can be ordered in $2!$ ways and the three $C$ books in $3!$ ways, so the number of arrangements is
+\[200\cdot2\cdot6=\boxed{2400}.\]

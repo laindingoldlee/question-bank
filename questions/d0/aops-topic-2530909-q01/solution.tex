@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2530909_math_4_fun_3
+% Stable identity: aops-topic-2530909-q01
+The slope is $\dfrac{10-6}{1-(-1)}=\dfrac42=2$. Using the point $(1,10)$: $10=2\cdot1+b$, so $b=8$. The line is
+\[\boxed{y=2x+8}.\]
+(Check: $2\cdot(-1)+8=6$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair T(real x,real y){return (1.5*x,0.6*y);}
+real f(real x){return 2x+8;}
+draw(T(-5.4,0)--T(2.4,0),Arrow(6)); draw(T(0,-1.2)--T(0,11.8),Arrow(6));
+label("$x$",T(2.4,0),E); label("$y$",T(0,11.8),N);
+for(int i=-5;i<=2;++i) if(i!=0) {draw(T(i,0)+(0,-0.07)--T(i,0)+(0,0.07)); label("$"+string(i)+"$",T(i,0)+(0,-0.07),S,fontsize(7pt));}
+for(int j=2;j<=6;j+=2) {draw(T(0,j)+(-0.07,0)--T(0,j)+(0.07,0)); label("$"+string(j)+"$",T(0,j)+(0.07,0),E,fontsize(7pt));}
+draw(T(-4.6,f(-4.6))--T(1.8,f(1.8)),blue+linewidth(0.9));
+dot(T(-1,6)); dot(T(1,10)); dot(T(0,8)); dot(T(-4,0));
+label("$(-1,6)$",T(-1,6),W,fontsize(8pt)); label("$(1,10)$",T(1,10),E,fontsize(8pt));
+label("$(0,8)$",T(0,8),E,fontsize(8pt)); label("$(-4,0)$",T(-4,0),NW,fontsize(8pt));
+label("$y=2x+8$",T(-2.6,f(-2.6)),NW,blue);
+\end{asy}

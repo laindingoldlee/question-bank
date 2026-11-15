@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2268494_500th_post_questions
+% Stable identity: aops-topic-2268494-q01
+Let the circle have centre $O$ and radius $r$.
+
+\textbf{Hexagon.} The radii to the six vertices cut the regular hexagon into six equilateral triangles of side $r$. So its side is $r$, its perimeter is $6r$, and its area is $6\cdot\dfrac{\sqrt3}{4}r^2=\dfrac{3\sqrt3}{2}r^2$.
+
+\textbf{Square.} Its diagonals are diameters of length $2r$, so its side is $\dfrac{2r}{\sqrt2}=r\sqrt2$, its perimeter is $4\sqrt2\,r$ and its area is $2r^2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw(unitcircle);
+pair[] h; for(int i=0;i<6;++i) h.push(dir(60*i));
+pair[] q; for(int i=0;i<4;++i) q.push(dir(45+90*i));
+draw(h[0]--h[1]--h[2]--h[3]--h[4]--h[5]--cycle,blue+linewidth(0.8));
+draw(q[0]--q[1]--q[2]--q[3]--cycle,red+linewidth(0.8));
+dot((0,0)); label("$O$",(0,0),SW);
+draw((0,0)--h[0],dashed); label("$r$",(0.5,0),S);
+label("$r$",(h[0]+h[1])/2,NE,blue); label("$r\sqrt2$",(q[1]+q[2])/2,E,red);
+\end{asy}
+
+\textbf{(a)} $\dfrac{2r^2}{\dfrac{3\sqrt3}{2}r^2}=\dfrac{4}{3\sqrt3}=\boxed{\dfrac{4\sqrt3}{9}}\approx0.770$.
+
+\textbf{(b)} $\dfrac{4\sqrt2\,r}{6r}=\boxed{\dfrac{2\sqrt2}{3}}\approx0.943$.

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1583331_geometry_countdown_help
+% Stable identity: aops-topic-1583331-q21
+Let $O$ be the centre. The segments from $O$ to the vertices cut the hexagon into six congruent equilateral triangles, each of area $6$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair[] H;string[] L={"A","B","C","D","E","F"};
+for(int i=0;i<6;++i) H.push(dir(180-60*i));
+fill(H[0]--H[2]--H[4]--cycle,paleblue);
+draw(H[0]--H[1]--H[2]--H[3]--H[4]--H[5]--cycle,linewidth(1));
+draw(H[0]--H[2]--H[4]--cycle,blue+linewidth(0.9));
+pair O=(0,0);
+for(int i=0;i<6;++i) draw(O--H[i],dashed+gray);
+for(int i=0;i<6;++i) label("$"+L[i]+"$",H[i],H[i]);
+dot(O);label("$O$",O+(0,-0.3),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Area of $ABC$ outside $ACE$.} Quadrilateral $OABC$ consists of two of the small triangles ($OAB$ and $OBC$), so it has area $12$; it is a rhombus (all sides equal the side of the hexagon), and its diagonal $AC$ cuts it into two congruent triangles, so triangle $ABC$ has area $6$. Similarly triangles $CDE$ and $EFA$ have area $6$ each.
+
+\textbf{Area of $ACE$.} The hexagon is triangle $ACE$ together with the three triangles $ABC$, $CDE$, $EFA$, so
+\[
+[ACE]=36-3\cdot6=\boxed{18}
+\]
+square units: exactly half of the hexagon.

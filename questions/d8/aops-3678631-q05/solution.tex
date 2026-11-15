@@ -1,0 +1,6 @@
+Exactly 26 small cubes have painted faces. Thus $R+B=26+$ the number having both colours. At most 8 corner cubes contribute twice. Each of the 12 edge-interior cubes contributes twice precisely when its two large faces have different colours. The large-face adjacency graph is the octahedral graph: if $r\le3$ faces are red, its cut has at most $r(6-r)$ edges, minus the number of oppositely situated red--blue pairs. For $r=0,1,2,3$ this is at most $0,4,8,8$ (in the last case at least one opposite pair has different colours). Thus at most 16 cubes are mixed. Colouring two opposite faces red and four blue makes all 8 corners and 8 edge-interior cubes mixed, attaining $\boxed{42}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair u=(2,0),v=(.8,.7),w=(0,2);draw((0,0)--u--u+v--v--cycle);draw(w--u+w--u+v+w--v+w--cycle);draw((0,0)--w^^u--u+w^^v--v+w^^u+v--u+v+w);pair[] VV={(0,0),u,u+v,v,w,u+w,u+v+w,v+w};string[] nn={"A","B","C","D","E","F","G","H"};for(int i=0;i<8;++i)label("$"+nn[i]+"$",VV[i],i<4?(0,-1):(0,1));
+\end{asy}
+

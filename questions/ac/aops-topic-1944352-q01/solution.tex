@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1944352_help_wproblem
+% Stable identity: aops-topic-1944352-q01
+Let each semicircle have radius $1$. The centre of semicircle $POQ$ is the midpoint $M$ of $PQ$, and since the semicircle passes through $O$, $OM=1$. Also $MQ=1$ and $OM\perp PQ$ ($O$ lies on the perpendicular bisector of the chord $PQ$). So by the Pythagorean theorem the radius of circle $O$ is
+\[
+OQ=\sqrt{1^2+1^2}=\sqrt2 .
+\]
+This is the step in the posted solution: the right triangle has legs $OM$ and $MQ$, both equal to the small radius.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),P=(-1,1),Q=(1,1),R=(-1,-1),Sv=(1,-1);
+fill(arc((0,1),1,180,360)--cycle,gray(0.8));
+fill(arc((0,-1),1,0,180)--cycle,gray(0.8));
+draw(circle(O,sqrt(2)),linewidth(1));
+draw(arc((0,1),1,180,360));draw(arc((0,-1),1,0,180));
+draw(P--Q);draw(R--Sv);
+draw(O--Q,dashed);draw((0,1)--O,dotted);
+dot(O);dot(P);dot(Q);dot(R);dot(Sv);
+label("$O$",O+(-0.3,0),W);label("$P$",P,NW);label("$Q$",Q,NE);label("$R$",R,SW);label("$S$",Sv,SE);
+label("$1$",(0.5,1),N);label("$\sqrt2$",(0.52,0.52),NW,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The two semicircles together have area $2\cdot\dfrac{1}{2}\pi\cdot1^2=\pi$, and circle $O$ has area $\pi(\sqrt2)^2=2\pi$. The ratio is $\boxed{\textbf{(B) }\dfrac{1}{2}}$.

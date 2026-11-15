@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h1855619_how_many_cone_icecream
+% Stable identity: aops-topic-1855619-q01
+The volume of one cone (radius $2$, height $7$) is
+\[
+\dfrac{1}{3}\pi\cdot2^2\cdot7=\dfrac{28\pi}{3}\text{ cm}^3,
+\]
+and the volume of one cylinder (radius $7$, height $20$) is $\pi\cdot7^2\cdot20=980\pi\text{ cm}^3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+// cylinder: diameter 14, height 20
+pair c0=(0,0),c1=(0,20);
+draw(shift(c1)*xscale(7)*yscale(1.6)*unitcircle,linewidth(0.9));
+path lower=shift(c0)*xscale(7)*yscale(1.6)*arc((0,0),1,180,360);
+path upper=shift(c0)*xscale(7)*yscale(1.6)*arc((0,0),1,0,180);
+draw(lower,linewidth(0.9));draw(upper,dashed+linewidth(0.6));
+draw((-7,0)--(-7,20),linewidth(0.9));draw((7,0)--(7,20),linewidth(0.9));
+draw((-7,-3.2)--(7,-3.2),Arrows(TeXHead));label("$14$",(0,-3.2),S);
+draw((-9.5,0)--(-9.5,20),Arrows(TeXHead));label("$20$",(-9.5,10),W);
+// cone: diameter 4, height 7, apex down
+pair v=(17,6),t=(17,13);
+draw(shift(t)*xscale(2)*yscale(0.6)*unitcircle,linewidth(0.9));
+draw((15,13)--v--(19,13),linewidth(0.9));
+draw((15,15.2)--(19,15.2),Arrows(TeXHead));label("$4$",(17,15.2),N);
+draw((21,6)--(21,13),Arrows(TeXHead));label("$7$",(21,9.5),E);
+label("cylinder",(0,23.5));label("cone",(17,4),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So one cylinder makes $\dfrac{980\pi}{\dfrac{28\pi}{3}}=105$ cones. For $1750$ cones he needs $\dfrac{1750}{105}=16\dfrac{2}{3}$ cylinders, so he must use $\boxed{17}$ cylinders ($16$ are not enough, since they make only $1680$ cones).
+
+(The answer $50$ comes from forgetting the factor $\dfrac{1}{3}$ in the volume of a cone: $\dfrac{980\pi}{28\pi}=35$ and $\dfrac{1750}{35}=50$.)

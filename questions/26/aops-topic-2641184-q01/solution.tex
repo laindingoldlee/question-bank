@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2641184_your_favorite_proof_of_pythagoras
+% Stable identity: aops-topic-2641184-q01
+The hypotenuse $BC$ is the longest side, so $C$ lies outside $\omega$, $X$ is on segment $BC$, and $B$ lies between $Y$ and $C$. Hence
+\[CX=BC-AB,\qquad CY=BC+AB.\]
+\emph{Similarity.} $XY$ is a diameter, so $\angle XAY=90^\circ$. Ray $AX$ lies inside $\angle BAC=90^\circ$ and ray $AB$ inside $\angle XAY=90^\circ$, so
+\[\angle CAX=90^\circ-\angle BAX=\angle BAY.\]
+Triangle $BAY$ is isosceles ($BA=BY$), so $\angle BAY=\angle BYA=\angle CYA$. Thus $\angle CAX=\angle CYA$, and the triangles $CAX$ and $CYA$ also share the angle at $C$, so they are similar (AA):
+\[\dfrac{CA}{CY}=\dfrac{CX}{CA},\qquad\text{i.e.}\qquad CA^2=CX\cdot CY.\]
+(This is the power of the point $C$: $CA$ is tangent to $\omega$, being perpendicular to the radius $BA$.)
+
+\emph{Conclusion.} $AC^2=(BC-AB)(BC+AB)=BC^2-AB^2$, so $BC^2=AB^2+AC^2$. $\blacksquare$ (The argument uses only similar triangles, so it does not assume the Pythagorean theorem.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(0,3),C=(4,0);pair u=unit(C-B);pair X=B+3u,Y=B-3u;
+draw(circle(B,3),gray);
+draw(A--B--C--cycle,linewidth(0.8));draw(Y--B,dashed);draw(A--X,dotted);draw(A--Y,dotted);
+draw((0.25,0)--(0.25,0.25)--(0,0.25));
+dot(A);dot(B);dot(C);dot(X);dot(Y);
+label("$A$",A,SW);label("$B$",B,W);label("$C$",C,SE);label("$X$",X,NE);label("$Y$",Y,N);label("$\omega$",B+3*dir(200),W);
+\end{asy}

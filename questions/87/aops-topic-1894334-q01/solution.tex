@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1894334_absolute_value_inequality
+% Stable identity: aops-topic-1894334-q01
+For integers, $|x|+|y|<12$ means $|x|+|y|\le11$. Fix $y$; then $|y|\le11$ and $|x|\le11-|y|$, which allows $2\left(11-|y|\right)+1=23-2|y|$ values of $x$. Summing over $y=-11,\dots,11$:
+\[23+2\sum_{t=1}^{11}\left(23-2t\right)=23+2\left(253-132\right)=23+242=\boxed{265}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+for(int x=-11;x<=11;++x) for(int y=-11;y<=11;++y){ if(abs(x)+abs(y)<=11) dot((x,y),(y==0?red:black)+linewidth(2.2)); }
+draw((-13.5,0)--(13.5,0),gray,Arrow(5)); draw((0,-13.5)--(0,13.5),gray,Arrow(5));
+draw((12,0)--(0,12)--(-12,0)--(0,-12)--cycle,dashed);
+label("$x$",(13.5,0),E); label("$y$",(0,13.5),N);
+label("$12$",(12,0),SE,fontsize(8pt)); label("$-12$",(-12,0),SW,fontsize(8pt));
+label("$12$",(0,12),NE,fontsize(8pt)); label("$-12$",(0,-12),SE,fontsize(8pt));
+\end{asy}
+
+(The points are those strictly inside the dashed square with vertices $(\pm12,0)$ and $(0,\pm12)$. In general there are $2n^2+2n+1$ lattice points with $|x|+|y|\le n$; here $n=11$. The total $242$ leaves out the $23$ points on the row $y=0$, shown in red.)

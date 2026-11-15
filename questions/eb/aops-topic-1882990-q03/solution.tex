@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1882990_geometry_practice
+% Stable identity: aops-topic-1882990-q03
+Let each triangle have side $s$. The hexagon (dashed below) has perimeter $6s$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair[] V;pair[] T;
+for(int k=0;k<6;++k){V.push(dir(60*k));}
+for(int k=0;k<6;++k){T.push(V[k]+V[(k+1)%6]);}
+for(int k=0;k<6;++k){draw((0,0)--V[k],gray+linewidth(0.5));}
+for(int k=0;k<6;++k){draw(V[k]--T[k]--V[(k+1)%6],linewidth(1));}
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,dashed+linewidth(0.7));
+label("$s$",(V[0]+T[0])/2+0.16*(0.866,-0.5));label("$s$",(V[0]+V[1])/2,SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Each attached triangle removes one side of the hexagon from the outline and adds its two other sides, so the outline of the star consists of $12$ segments of length $s$, and the perimeter becomes $12s$. The increase is $6s$, which is $\dfrac{6s}{6s}\cdot100\%=\boxed{100\%}$ of the original perimeter.
+
+(The $12$-sided polygon has all sides equal, but its angles are $60^\circ$ and $240^\circ$, so it is not a regular polygon.)

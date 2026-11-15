@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2865493_an_interesting_problem
+% Stable identity: aops-topic-2865493-q01
+Let $x=AF$, $y=BD$, $z=CE$ and $u=BF$, $v=CD$, $w=AE$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(2,4),P=(2.6,1.5);
+pair ft(pair X,pair U,pair V){return U+dot(X-U,V-U)/dot(V-U,V-U)*(V-U);}
+pair D=ft(P,B,C),E=ft(P,A,C),F=ft(P,A,B);
+draw(A--B--C--cycle);draw(P--D,dashed);draw(P--E,dashed);draw(P--F,dashed);
+draw(P--A,dotted);draw(P--B,dotted);draw(P--C,dotted);
+dot(P);label("$P$",P,N);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$D$",D,NE);label("$E$",E,NW);label("$F$",F,S);
+\end{asy}
+
+\textbf{Carnot's relation.} By Pythagoras in the right triangles at $F$: $AF^2+PF^2=PA^2$ and $BF^2+PF^2=PB^2$, so $AF^2-BF^2=PA^2-PB^2$. Similarly $BD^2-CD^2=PB^2-PC^2$ and $CE^2-AE^2=PC^2-PA^2$. Adding,
+\[x^2+y^2+z^2=u^2+v^2+w^2.\]
+
+\textbf{Symmetric functions.} The hypotheses say $xyz=uvw$ and $\dfrac{xy+yz+zx}{xyz}=\dfrac{uv+vw+wu}{uvw}$, so $xy+yz+zx=uv+vw+wu$. Then
+\[(x+y+z)^2=x^2+y^2+z^2+2(xy+yz+zx)=(u+v+w)^2,\]
+and since all lengths are positive, $x+y+z=u+v+w$.
+
+So $x,y,z$ and $u,v,w$ have the same elementary symmetric functions. They are therefore the roots of the same cubic $t^3-(x+y+z)t^2+(xy+yz+zx)t-xyz$, and the multisets $\{x,y,z\}$ and $\{u,v,w\}$ are equal. $\blacksquare$

@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2131543_simple_probability
+% Stable identity: aops-topic-2131543-q01
+The square $|a|\le6$, $|b|\le6$ has area $12^2=144$. The points with $a$ and $b$ both negative form the open square $-6\le a<0$, $-6\le b<0$ of area $36$, so the region has area $144-36=108$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+fill((-6,0)--(6,0)--(6,6)--(-6,6)--cycle,paleyellow);
+fill((0,-6)--(6,-6)--(6,0)--(0,0)--cycle,paleyellow);
+fill((-6,-6)--(0,-6)--(0,0)--(-6,0)--cycle,lightgray);
+fill(arc((0,0),4,-90,180)--(0,0)--cycle,paleblue);
+draw((-6,0)--(-6,6)--(6,6)--(6,-6)--(0,-6),linewidth(0.9));
+draw((-6,0)--(0,0)--(0,-6),linewidth(0.9));
+draw((-6,-6)--(0,-6),gray+dashed); draw((-6,-6)--(-6,0),gray+dashed);
+draw(arc((0,0),4,-90,180),blue+linewidth(1)); draw(arc((0,0),4,180,270),blue+dashed);
+draw((-7,0)--(7.2,0),Arrow(6)); draw((0,-7)--(0,7.2),Arrow(6));
+label("$a$",(7.2,0),E); label("$b$",(0,7.2),N);
+label("$6$",(6,0),SE,fontsize(8pt)); label("$-6$",(-6,0),NW,fontsize(8pt)); label("$6$",(0,6),NE,fontsize(8pt)); label("$-6$",(0,-6),SE,fontsize(8pt));
+label("$4$",(0,0)--4*dir(45),NW,blue);
+draw((0,0)--4*dir(45),blue);
+label("excluded",(-3.3,-4.9),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The points within $4$ units of the origin form a disc of radius $4$ and area $16\pi$, which lies inside the big square. Removing its quarter in the excluded square (where $a<0$ and $b<0$) leaves three quarters of the disc, of area $12\pi$, all of which lies in the region (shaded blue). Since the point is uniform on the region, the probability is
+\[\dfrac{12\pi}{108}=\boxed{\dfrac{\pi}{9}}\approx0.349 .\]
+(Boundary points, such as those on the axes or on the circle, have area $0$ and do not affect the answer.)

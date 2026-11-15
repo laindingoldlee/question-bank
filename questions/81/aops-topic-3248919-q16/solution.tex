@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3248919_2024_emcc_individual_speed_test__exeter_math_club_competition
+% Stable identity: aops-topic-3248919-q16
+The top and bottom faces of each die contribute $7$, giving $9(7)=63$. Across any three-die row, matching internal faces and the opposite-face rule force the two outside end faces to sum to $7$. Three rows contribute $21$ and three columns contribute another $21$. Every exposed face has been counted once, so the total is $\boxed{105}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair v=(0.7,0.6);draw((0,0)--(3,0)--(3,3)--(0,3)--cycle);draw((3,0)--(3,0)+v--(3,3)+v--(3,3));draw((0,3)--(0,3)+v--(3,3)+v);for(int k=1;k<3;++k){draw((k,0)--(k,3));draw((0,k)--(3,k));draw((3,k)--(3,k)+v);draw((k,3)--(k,3)+v);}label("3 by 3, one layer",(1.5,-0.5));
+\end{asy}

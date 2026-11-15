@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2493774_binomial_theorem__pascals_triangle
+% Stable identity: aops-topic-2493774-q01
+\textbf{(a)} Write $(x+y)^{n-1}=\sum_j c(n-1,j)\,x^jy^{n-1-j}$. Then
+\[(x+y)^n=x(x+y)^{n-1}+y(x+y)^{n-1}=\sum_j c(n-1,j)\,x^{j+1}y^{n-1-j}+\sum_j c(n-1,j)\,x^jy^{n-j}.\]
+The term $x^ky^{n-k}$ arises in the first sum from $j=k-1$ and in the second sum from $j=k$, so
+\[c(n,k)=c(n-1,k-1)+c(n-1,k).\]
+Since $c(0,0)=1$, the coefficients start with the single entry $1$, every row begins and ends with $c(n,0)=c(n,n)=1$, and every other entry is the sum of the two entries above it. These are exactly the rules that build Pascal's triangle, so row $n$ of Pascal's triangle lists the coefficients of $(x+y)^n$.
+
+\textbf{(b)} Expand the product $(x+y)(x+y)\cdots(x+y)$ of $n$ factors by choosing either $x$ or $y$ from each factor and multiplying the choices, in all $2^n$ ways. A choice gives $x^ky^{n-k}$ exactly when $x$ is chosen from $k$ of the factors, and there are $\dbinom nk$ ways to pick those $k$ factors. Hence
+\[c(n,k)=\boxed{\dbinom nk}.\]
+(This agrees with (a), because the binomial coefficients satisfy Pascal's rule $\dbinom nk=\dbinom{n-1}{k-1}+\dbinom{n-1}{k}$.)

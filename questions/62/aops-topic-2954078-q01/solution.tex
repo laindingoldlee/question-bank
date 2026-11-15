@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2954078_geometry_problem
+% Stable identity: aops-topic-2954078-q01
+Let the centres be $O_1,O_2$, the radii $r_1,r_2$ and $d=O_1O_2>r_1+r_2$. For any $P$ on the first circle and $Q$ on the second, the triangle inequality along $O_1PQO_2$ gives
+\[d\le O_1P+PQ+QO_2=r_1+PQ+r_2\implies PQ\ge d-r_1-r_2.\]
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O1=(0,0),O2=(6,0);real r1=1.5,r2=2;draw(circle(O1,r1));draw(circle(O2,r2));
+pair P=O1+r1*dir(0),Q=O2-r2*dir(0);draw(O1--O2,dashed);draw(P--Q,linewidth(1));
+pair P2=O1+r1*dir(60),Q2=O2+r2*dir(150);draw(O1--P2--Q2--O2,dotted);
+dot(O1);dot(O2);dot(P);dot(Q);label("$O_1$",O1,S);label("$O_2$",O2,S);label("$P_0$",P,SE);label("$Q_0$",Q,SW);label("$P$",P2,N);label("$Q$",Q2,N);
+\end{asy}
+
+Equality requires $O_1,P,Q,O_2$ to be collinear in this order. The points $P_0,Q_0$ where segment $O_1O_2$ meets the circles achieve $P_0Q_0=d-r_1-r_2$. Therefore the minimum is attained exactly by $P_0Q_0$, which lies on the line of centres. $\blacksquare$

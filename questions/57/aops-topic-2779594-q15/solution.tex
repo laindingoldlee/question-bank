@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2779594_2016_mbmt_guts_round__p1_p15__montgomery_blair_math_tournament
+% Stable identity: aops-topic-2779594-q15
+There are $\binom{12}6=924$ total paths. Those through $(3,3)$ number $\binom63^2=400$. Those through $(2,1)$ number $\binom32\binom94=378$. Those through both, necessarily visiting $(2,1)$ first, number $\binom32\binom31\binom63=180$. Inclusion-exclusion gives $924-400-378+180=\boxed{326}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int k=0;k<=6;++k){draw((k,0)--(k,6),gray);draw((0,k)--(6,k),gray);}dot((3,3),red);dot((2,1),red);label("$(3,3)$",(3,3),NE);label("$(2,1)$",(2,1),SE);label("start",(0,0),SW);label("exit",(6,6),NE);
+\end{asy}

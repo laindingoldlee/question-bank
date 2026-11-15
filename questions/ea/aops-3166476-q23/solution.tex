@@ -1,0 +1,6 @@
+Put $P=(0,0),O=(1,0),Q=(2,0),A=(0,t)$ with $t\ne0$. The nontrivial intersections are $A\prime=(\dfrac{2t^2}{t^2+4},\dfrac{4t}{t^2+4})$ and $A\prime\prime=(\dfrac{t^2}{t^2+1},\dfrac{t}{t^2+1})$, obtained by substituting the two lines into their diameter-circle equations. Their joining line meets the horizontal axis at $R=(\dfrac{2}{3},0)$. Consequently $RA\prime^2=\dfrac{16(t^2+1)}{9(t^2+4)}<\dfrac{16}{9}$, tending to $\dfrac{16}{9}$ as $|t|\to\infty$. Thus the least strict upper bound is $k=\dfrac{4}{3}$, giving $\boxed{\lfloor1000k\rfloor=1333}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+real t=3;pair P=(0,0),O=(1,0),Q=(2,0),A=(0,t),U=(2t*t/(t*t+4),4t/(t*t+4)),V=(t*t/(t*t+1),t/(t*t+1)),R=(2/3,0);draw(circle(O,1));draw(circle(A/2,t/2),gray);draw(circle(O/2,.5),gray);draw(A--P^^A--Q^^A--O);draw(R--U,blue);label("$P$",P,(-1,-1));label("$O$",O,(0,-1));label("$Q$",Q,(1,-1));label("$A$",A,(0,1));label("$A\prime$",U,(1,1));label("$A\prime\prime$",V,(1,0));label("$R$",R,(-1,-1));
+\end{asy}
+

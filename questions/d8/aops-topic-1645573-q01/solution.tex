@@ -1,0 +1,97 @@
+% Source: https://artofproblemsolving.com/community/c3h1645573_my_own_geometry_problem
+% Stable identity: aops-topic-1645573-q01
+Let the two distances be $s<\ell$ and put $\lambda=\dfrac{\ell}{s}>1$. Both distances must occur, since four points cannot be pairwise equidistant in a plane. We first find all possible ratios $\lambda$.
+
+\textbf{Case 1: three of the points form an equilateral triangle} $ABC$ with side $a$ (where $a=s$ or $a=\ell$). Among $DA$, $DB$, $DC$ two are equal, say $DB=DC$, so $D$ lies on the symmetry axis of the triangle through $A$.
+\begin{itemize}
+\item If $DA=DB=DC$, then $D$ is the centre and these distances are $\dfrac{a}{\sqrt3}$: ratio $\sqrt3$.
+\item If $DB=DC\ne DA$, then since only two distances exist, $DB=a$ or $DA=a$. If $DB=DC=a$, then $D$ is the reflection of $A$ in $BC$ (a rhombus with angles $60^\circ$ and $120^\circ$), and $DA=\sqrt3\,a$: ratio $\sqrt3$. If $DA=a$, then $D$ is on the axis at distance $a$ from $A$, on the far side of $BC$ or beyond $A$; with $a=1$ and the axis as the $y$-axis, $A=\left(0,\dfrac{\sqrt3}{2}\right)$, $B=\left(-\dfrac{1}{2},0\right)$ and $D=\left(0,\dfrac{\sqrt3}{2}\mp1\right)$, so $DB^2=\dfrac{1}{4}+\left(\dfrac{\sqrt3}{2}\mp1\right)^2=2\mp\sqrt3$: ratio $\dfrac{1}{\sqrt{2-\sqrt3}}=\sqrt{2+\sqrt3}$ in both positions.
+\end{itemize}
+
+\textbf{Case 2: no equilateral triangle.} Join two points by a \emph{short edge} if their distance is $s$. Neither the short edges nor the long ones contain a triangle. The graphs on four vertices with this property are the path $P_4$, the $4$-cycle and the pair of disjoint edges (any vertex of degree $3$, in either colour, forces a triangle in one colour).
+\begin{itemize}
+\item \emph{Short edges form a $4$-cycle $ABCD$:} $A$ and $C$ are both at distance $s$ from $B$ and from $D$, so they are the two intersections of two circles and $ABCD$ is a rhombus; its diagonals are both $\ell$, so it is a square: ratio $\sqrt2$.
+\item \emph{Long edges form a $4$-cycle:} as above it is a square whose diagonals are the short distance; but a square's diagonal is longer than its side. Impossible.
+\item \emph{Short edges form a path $A$-$B$-$C$-$D$:} take $s=1$, $B=(0,0)$, $C=(1,0)$, $A=(\cos\beta,\sin\beta)$ where $\beta=\angle ABC$, so $\ell^2=AC^2=2-2\cos\beta$. Point $D$ has $DC=1$, $DB=\ell$, so it is the mirror image of $A$ in the line $x=\dfrac{1}{2}$ or the image of $A$ under the half-turn about $\left(\dfrac{1}{2},0\right)$. In the first case $AD=|1-2\cos\beta|$, and $AD=\ell$ gives $4\cos^2\beta-2\cos\beta-1=0$; the condition $\ell>1$ requires $\cos\beta<\dfrac{1}{2}$, so $\cos\beta=\dfrac{1-\sqrt5}{4}$ ($\beta=108^\circ$) and $\ell^2=\dfrac{3+\sqrt5}{2}$, $\ell=\dfrac{1+\sqrt5}{2}$: four vertices of a regular pentagon. In the second case $AD^2=5-4\cos\beta=2-2\cos\beta$ forces $\cos\beta=\dfrac{3}{2}$, impossible.
+\end{itemize}
+
+So the possible ratios are $\sqrt2$, $\dfrac{1+\sqrt5}{2}$, $\sqrt3$ and $\sqrt{2+\sqrt3}$, realised by the six configurations below (short distance solid, long distance dashed).
+
+\begin{asy}
+usepackage("amsmath");
+size(11cm);
+defaultpen(fontsize(10pt));
+draw((0.5000,-0.5000)--(-0.5000,-0.5000),black+linewidth(0.9));
+draw((0.5000,0.5000)--(-0.5000,-0.5000),red+dashed);
+draw((0.5000,0.5000)--(0.5000,-0.5000),black+linewidth(0.9));
+draw((-0.5000,0.5000)--(-0.5000,-0.5000),black+linewidth(0.9));
+draw((-0.5000,0.5000)--(0.5000,-0.5000),red+dashed);
+draw((-0.5000,0.5000)--(0.5000,0.5000),black+linewidth(0.9));
+dot((-0.5000,-0.5000));
+dot((0.5000,-0.5000));
+dot((0.5000,0.5000));
+dot((-0.5000,0.5000));
+label("$\sqrt2$",(0.0000,-1.3500));
+draw((2.1000,-0.4755)--(1.7910,0.4755),black+linewidth(0.9));
+draw((3.1000,-0.4755)--(1.7910,0.4755),red+dashed);
+draw((3.1000,-0.4755)--(2.1000,-0.4755),black+linewidth(0.9));
+draw((3.4090,0.4755)--(1.7910,0.4755),red+dashed);
+draw((3.4090,0.4755)--(2.1000,-0.4755),red+dashed);
+draw((3.4090,0.4755)--(3.1000,-0.4755),black+linewidth(0.9));
+dot((1.7910,0.4755));
+dot((2.1000,-0.4755));
+dot((3.1000,-0.4755));
+dot((3.4090,0.4755));
+label("$\dfrac{1+\sqrt5}{2}$",(2.6000,-1.3500));
+draw((5.4500,-0.4330)--(4.4500,-0.4330),black+linewidth(0.9));
+draw((5.9500,0.4330)--(4.4500,-0.4330),red+dashed);
+draw((5.9500,0.4330)--(5.4500,-0.4330),black+linewidth(0.9));
+draw((4.9500,0.4330)--(4.4500,-0.4330),black+linewidth(0.9));
+draw((4.9500,0.4330)--(5.4500,-0.4330),black+linewidth(0.9));
+draw((4.9500,0.4330)--(5.9500,0.4330),black+linewidth(0.9));
+dot((4.4500,-0.4330));
+dot((5.4500,-0.4330));
+dot((5.9500,0.4330));
+dot((4.9500,0.4330));
+label("$\sqrt3$",(5.2000,-1.3500));
+draw((0.5000,-3.6330)--(-0.5000,-3.6330),red+dashed);
+draw((0.0000,-2.7670)--(-0.5000,-3.6330),red+dashed);
+draw((0.0000,-2.7670)--(0.5000,-3.6330),red+dashed);
+draw((0.0000,-3.3443)--(-0.5000,-3.6330),black+linewidth(0.9));
+draw((0.0000,-3.3443)--(0.5000,-3.6330),black+linewidth(0.9));
+draw((0.0000,-3.3443)--(0.0000,-2.7670),black+linewidth(0.9));
+dot((-0.5000,-3.6330));
+dot((0.5000,-3.6330));
+dot((0.0000,-2.7670));
+dot((0.0000,-3.3443));
+label("$\sqrt3$",(0.0000,-4.5500));
+draw((3.1000,-4.1330)--(2.1000,-4.1330),black+linewidth(0.9));
+draw((2.6000,-3.2670)--(2.1000,-4.1330),black+linewidth(0.9));
+draw((2.6000,-3.2670)--(3.1000,-4.1330),black+linewidth(0.9));
+draw((2.6000,-2.2670)--(2.1000,-4.1330),red+dashed);
+draw((2.6000,-2.2670)--(3.1000,-4.1330),red+dashed);
+draw((2.6000,-2.2670)--(2.6000,-3.2670),black+linewidth(0.9));
+dot((2.1000,-4.1330));
+dot((3.1000,-4.1330));
+dot((2.6000,-3.2670));
+dot((2.6000,-2.2670));
+label("$\sqrt{2+\sqrt3}$",(2.6000,-4.5500));
+draw((5.7000,-3.5660)--(4.7000,-3.5660),red+dashed);
+draw((5.2000,-2.7000)--(4.7000,-3.5660),red+dashed);
+draw((5.2000,-2.7000)--(5.7000,-3.5660),red+dashed);
+draw((5.2000,-3.7000)--(4.7000,-3.5660),black+linewidth(0.9));
+draw((5.2000,-3.7000)--(5.7000,-3.5660),black+linewidth(0.9));
+draw((5.2000,-3.7000)--(5.2000,-2.7000),red+dashed);
+dot((4.7000,-3.5660));
+dot((5.7000,-3.5660));
+dot((5.2000,-2.7000));
+dot((5.2000,-3.7000));
+label("$\sqrt{2+\sqrt3}$",(5.2000,-4.5500));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The values of $x$.} The given unit can be either the short or the long distance, so $x=\lambda$ or $x=\dfrac{1}{\lambda}$, and all eight values occur. Their sum is
+\[
+\left(\sqrt2+\dfrac{1}{\sqrt2}\right)+\left(\dfrac{1+\sqrt5}{2}+\dfrac{\sqrt5-1}{2}\right)+\left(\sqrt3+\dfrac{1}{\sqrt3}\right)+\left(\sqrt{2+\sqrt3}+\sqrt{2-\sqrt3}\right)=\dfrac{3\sqrt2}{2}+\sqrt5+\dfrac{4\sqrt3}{3}+\sqrt6,
+\]
+using $\left(\sqrt{2+\sqrt3}+\sqrt{2-\sqrt3}\right)^2=4+2=6$. Numerically this is $2.1213+2.2361+2.3094+2.4495\approx\boxed{9.12}$.

@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2242124_problems_involving_scores_on_amc_1012
+% Stable identity: aops-topic-2242124-q03
+With $c$ correct and $u$ blank answers the score is $6c+1.5u$, which is an integer exactly when $u$ is even, and positive unless $c=u=0$.
+
+\textbf{(a)} For each even $u=0,2,\ldots,24$, the number of correct answers $c$ can be $0,1,\ldots,25-u$ ($26-u$ choices), and the number of incorrect answers is then determined. That gives $26+24+\cdots+2=2(13+12+\cdots+1)=182$ triples, minus the triple with $c=u=0$ (all incorrect, score $0$):
+\[\boxed{181}.\]
+
+\textbf{(b)} We need the number of blank questions to be even, and not all answers incorrect. The number of sheets with exactly $u$ blanks is $\dbinom{25}{u}2^{25-u}$ (choose the blanks, then correct or incorrect for each other question), so by the binomial theorem
+\[\sum_{u\text{ even}}\binom{25}{u}2^{25-u}=\dfrac{(2+1)^{25}+(2-1)^{25}}{2}=\dfrac{3^{25}+1}{2}.\]
+Subtracting the single all-incorrect sheet gives
+\[\dfrac{3^{25}+1}{2}-1=\boxed{\dfrac{3^{25}-1}{2}=423\,644\,304\,721}.\]

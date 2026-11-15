@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2302634_expected_value_questions
+% Stable identity: aops-topic-2302634-q01
+\textbf{(a)} Under plan II the player makes a profit exactly when the one game is won: probability $0.7$.
+
+Under plan I, if the player wins $W$ of the ten games, the profit is $10W-10(10-W)=20W-100$ dollars, which is positive exactly when $W\ge6$. Since $W$ is binomial with $n=10$ and $p=0.7$,
+\[P(W\ge6)=\sum_{k=6}^{10}\dbinom{10}{k}0.7^k\,0.3^{10-k}\approx0.2001+0.2668+0.2335+0.1211+0.0282\approx0.8497.\]
+So plan I (ten small bets) is more likely to end with a profit: about $85\%$ against $70\%$.
+
+\textbf{(b)} A bet of $\$s$ has expected profit $0.7s-0.3s=0.4s$. Plan I has expected profit $10\cdot0.4\cdot10=40$ dollars by linearity of expectation, and plan II has $0.4\cdot100=40$ dollars. The expected final amounts are equal: $\boxed{\$140\text{ for both plans}}$.
+
+\textbf{(c)} With $n$ bets of $\$\dfrac{100}{n}$, linearity of expectation gives expected profit $n\cdot0.4\cdot\dfrac{100}{n}=40$ dollars, whatever $n$ is. So all these plans have the same expected value, as in (b). The probability of a profit does depend on $n$:
+\begin{itemize}
+\item $n=2$ (two bets of $\$50$): one win and one loss gives profit $0$, so a profit needs two wins: $0.7^2=\boxed{0.49}$;
+\item $n=4$ (four bets of $\$25$): a profit needs at least $3$ wins: $4\cdot0.7^3\cdot0.3+0.7^4=0.4116+0.2401=\boxed{0.6517}$.
+\end{itemize}
+(For $n=1,2,4,10$ the probabilities are $0.7$, $0.49$, $0.6517$, $0.8497$: equal expected values do not mean equal chances of making money.)

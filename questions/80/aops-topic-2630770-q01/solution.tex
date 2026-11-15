@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2630770_dilation
+% Stable identity: aops-topic-2630770-q01
+A dilation with centre $P$ and factor $k$ multiplies every distance by $k$. It maps the centre $O$ of the smaller circle to the centre $O'$ of the image, and a point at distance $r$ from $O$ to a point at distance $kr$ from $O'$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0);pair O1=(2,0),O2=2.2*O1;real r=0.55;
+draw(circle(O1,r));draw(circle(O2,2.2*r),linewidth(0.8));
+pair Q1=O1+r*dir(-90),Q2=P+2.2*(Q1-P);
+draw(P--O2,dashed);draw(P--Q2,dashed);
+draw(O1--Q1);draw(O2--Q2,linewidth(0.8));
+dot(P);dot(O1);dot(O2);
+label("$P$",P,W);label("$r$",(O1+Q1)/2,E,fontsize(8pt));label("$R$",(O2+Q2)/2,E);
+label("$O$",O1,2N,fontsize(8pt));label("$O'$",O2,2N);
+\end{asy}
+
+So $R=kr$. Then $D=2R=k(2r)=kd$ and $C=2\pi R=k(2\pi r)=kc$. Hence
+\[\dfrac Cc=\dfrac Rr=\dfrac Dd=\boxed{k}.\]

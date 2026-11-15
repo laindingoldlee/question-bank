@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1539957_please_help_me_solve_this_problem
+% Stable identity: aops-topic-1539957-q01
+Let $P$ and $Q$ be the tops of the tall and short poles and $X$ the point where the wire meets the ground, at distance $d$ from the foot of the short pole, drawn to scale:
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+real k=0.1;
+pair T1=(0,45*k),B1=(0,0),T2=(12*k,41*k),B2=(12*k,0),G=(135*k,0);
+draw((-0.6,0)--(14.2,0),gray(0.5));
+draw(B1--T1,linewidth(1.6));draw(B2--T2,linewidth(1.6));
+draw(T1--G,blue+linewidth(0.8));
+real s=0.3;draw((B2.x,s)--(B2.x+s,s)--(B2.x+s,0));draw((B1.x,s)--(B1.x+s,s)--(B1.x+s,0));
+dot(T1);dot(T2);dot(G);
+label("$45$",(0,22.5*k),W);label("$41$",(12*k,20.5*k),E);
+draw((0,-0.55)--(12*k,-0.55),Arrows(4));label("$12$",(6*k,-0.55),S);
+draw((12*k,-0.55)--G+(0,-0.55),Arrows(4));label("$d$",((12*k+13.5)/2,-0.55),S);
+label("$P$",T1,NW);label("$Q$",T2,NE);label("$X$",G,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Along the wire, the height drops by $45-41=4$ feet over the horizontal $12$ feet from $P$ to $Q$. The right triangles formed by the wire with the poles and the ground are similar, so the height drops by $41$ feet over the next $d$ feet:
+\[
+\dfrac{4}{12}=\dfrac{41}{d}\qquad\Longrightarrow\qquad d=3\cdot41=\boxed{123}\text{ feet}.
+\]

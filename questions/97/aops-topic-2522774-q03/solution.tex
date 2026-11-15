@@ -1,0 +1,41 @@
+% Source: https://artofproblemsolving.com/community/c3h2522774_basic_trigonometry
+% Stable identity: aops-topic-2522774-q03
+We use $3<\pi<\dfrac{10}3$, so $\dfrac\pi2\approx1.57$, $\pi\approx3.14$, $\dfrac{3\pi}2\approx4.71$, $2\pi\approx6.28$.
+
+\textbf{(a)} $0<2<3<\pi$, so $\sin2>0$ and $\sin3>0$. Also $\pi<5<2\pi$, so $\sin5<0$. The product is \textbf{negative}.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.8cm);
+defaultpen(fontsize(10pt));
+draw((-1.35,0)--(1.35,0),gray,Arrow(5)); draw((0,-1.35)--(0,1.35),gray,Arrow(5));
+draw(unitcircle,linewidth(0.8));
+label("$x$",(1.35,0),E,fontsize(8pt)); label("$y$",(0,1.35),N,fontsize(8pt));
+pair U(real t){return dir(t*180/pi);}
+real[] ts={2,3,5};
+string[] nm={"$2$","$3$","$5$"};
+pair[] dd={NW,W,SE};
+for(int i=0;i<3;++i){ pair p=U(ts[i]); dot(p); draw((0,0)--p,gray); draw(p--(p.x,0),dashed+blue); label(nm[i],p,dd[i],fontsize(8pt)); }
+\end{asy}
+
+\textbf{(b)} Let $\theta_k=1+\dfrac{2k\pi}{5}$. Then:
+\begin{itemize}
+\item $\dfrac\pi2<\theta_1<\pi$ (as $\dfrac{\pi}{10}<1<\dfrac{3\pi}5$), so $\cos\theta_1<0$;
+\item $\pi<\theta_2<\dfrac{3\pi}2$ (as $\dfrac\pi5<1<\dfrac{7\pi}{10}$), so $\cos\theta_2<0$;
+\item $\dfrac{3\pi}2<\theta_3<2\pi$ (as $\dfrac{3\pi}{10}<1<\dfrac{4\pi}5$), so $\cos\theta_3>0$;
+\item $\dfrac{3\pi}2<\theta_4<2\pi$ (as $1<\dfrac{2\pi}5$), so $\cos\theta_4>0$.
+\end{itemize}
+Two factors are negative and two positive, so the product is \textbf{positive}.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.8cm);
+defaultpen(fontsize(10pt));
+draw((-1.35,0)--(1.35,0),gray,Arrow(5)); draw((0,-1.35)--(0,1.35),gray,Arrow(5));
+draw(unitcircle,linewidth(0.8));
+label("$x$",(1.35,0),E,fontsize(8pt)); label("$y$",(0,1.35),N,fontsize(8pt));
+pair U(real t){return dir(t*180/pi);}
+for(int k=0;k<5;++k){ pair p=U(1+2pi*k/5); dot(p); draw((0,0)--p,gray); if(k>0) draw(p--(0,p.y),dashed+red); label("$\theta_"+string(k)+"$",p,dir(degrees(p)),fontsize(8pt)); }
+\end{asy}
+
+\[\boxed{\text{(a) negative;\quad (b) positive}}\]

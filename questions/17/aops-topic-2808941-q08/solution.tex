@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2808941_2015_geometry_bee__preliminary_round
+% Stable identity: aops-topic-2808941-q08
+Use $A=(0,0),B=(2,0),C=(2,2),D=(0,2)$, so the circle is $(x-1)^2+(y-1)^2=1$ and $M=(1,0),N=(1,2)$. Parameterize $DM$ from $M$ by $(x,y)=(1-t,2t)$. Substitution gives $5t^2-4t=0$, so $P=(\dfrac{1}{5},\dfrac{8}{5})$. By central symmetry $Q=(\dfrac{9}{5},\dfrac{2}{5})$. The diagonal $MN$ has length 2, and the distances of $P,Q$ from its line are both $\dfrac{4}{5}$. Thus the area is $\dfrac{1}{2}\cdot2\left(\dfrac{4}{5}+\dfrac{4}{5}\right)=\boxed{\dfrac{8}{5}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(2,0),C=(2,2),D=(0,2),M=(1,0),Nn=(1,2),P=(.2,1.6),Q=(1.8,.4);draw(A--B--C--D--cycle);draw(circle((1,1),1));filldraw(M--P--Nn--Q--cycle,lightgray,blue);draw(D--M);draw(B--Nn);label("A",A,SW);label("B",B,SE);label("C",C,NE);label("D",D,NW);label("M",M,S);label("N",Nn,N);label("P",P,W);label("Q",Q,E);
+\end{asy}

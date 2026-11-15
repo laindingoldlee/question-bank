@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h2577870_lamboreghinis_problem_thread_math_and_programming
+% Stable identity: aops-topic-2577870-q108
+The first attempt visits $x$ exactly when $k\mid x$. The second visits it exactly when $k\mid N+1-x$. The bounds ensure the corresponding multiple is nonnegative and reached before leaving the interval. Thus the complete test is\begin{verbatim}
+def reaches(N,x,k):
+    return x%k==0 or (N+1-x)%k==0
+\end{verbatim}
+This uses a constant number of integer operations per test case.

@@ -1,0 +1,7 @@
+Each piece has area 3, so the side length of a square tiled along unit grid lines must be divisible by 3. A side-3 square would require three pieces, but each L-triomino can cover at most one of its four corner cells, so this is impossible. A side-6 square can be partitioned into six $2\times3$ rectangles, each tiled by two L-triominoes. Thus the minimum number of pieces is $\boxed{12}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int ox=0;ox<6;ox+=3)for(int oy=0;oy<6;oy+=2){filldraw((ox,oy)--(ox+2,oy)--(ox+2,oy+1)--(ox+1,oy+1)--(ox+1,oy+2)--(ox,oy+2)--cycle,lightblue);filldraw((ox+2,oy)--(ox+3,oy)--(ox+3,oy+2)--(ox+1,oy+2)--(ox+1,oy+1)--(ox+2,oy+1)--cycle,lightgray);}
+\end{asy}

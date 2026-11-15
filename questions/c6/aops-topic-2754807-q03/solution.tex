@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2754807_19911992_hs_cml_contest_6
+% Stable identity: aops-topic-2754807-q03
+Both $A$ and $C$ are equidistant from $B$ and $D$, so line $AC$ is the perpendicular bisector of $BD$; let it meet $BD$ at its midpoint $M$, with $BM=8$. Then $AM=\sqrt{10^2-8^2}=6$ and $CM=\sqrt{17^2-8^2}=15$. Since the quadrilateral is convex, $A$ and $C$ are on opposite sides of $BD$, so $AC=21$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,6),B=(-8,0),C=(0,-15),D=(8,0),M=(0,0);
+draw(A--B--C--D--cycle,linewidth(0.8));draw(B--D,dashed);draw(A--C,dashed);
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,S);label("$D$",D,E);label("$M$",M,NE,fontsize(8pt));
+label("$10$",(A+B)/2,NW,fontsize(8pt));label("$17$",(B+C)/2,SW,fontsize(8pt));
+label("$6$",(0,3),E,fontsize(8pt));label("$15$",(0,-7.5),E,fontsize(8pt));label("$8$",(-4,0),N,fontsize(8pt));
+\end{asy}
+
+The area is $\dfrac12\cdot BD\cdot AC=\dfrac12\cdot16\cdot21=\boxed{168}$.

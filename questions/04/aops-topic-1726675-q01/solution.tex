@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1726675_tetrahedron
+% Stable identity: aops-topic-1726675-q01
+A tetrahedron has $4$ vertices, $A,B,C,D$, and every two vertices are joined by an edge (each face is a triangle, and any two vertices lie on a common face).
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(3.2,-0.6),C=(4.2,0.9),D=(2.0,3.3);
+draw(A--B--C,linewidth(0.9));draw(A--C,dashed);
+draw(D--A,linewidth(0.9));draw(D--B,linewidth(0.9));draw(D--C,linewidth(0.9));
+dot(A);dot(B);dot(C);dot(D);
+label("$A$",A,W);label("$B$",B,S);label("$C$",C,E);label("$D$",D,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the edges correspond to the pairs of vertices: $AB,AC,AD,BC,BD,CD$, which is $\dbinom42=6$ edges. Alternatively, it has $4$ triangular faces with $3$ edges each, and each edge is shared by exactly $2$ faces, giving $\dfrac{4\cdot3}{2}=6$. As a check, Euler's formula $V-E+F=4-6+4=2$ holds. The answer is $\boxed{6}$.

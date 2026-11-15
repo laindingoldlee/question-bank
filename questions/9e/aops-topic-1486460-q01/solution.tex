@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1486460_x__1xn
+% Stable identity: aops-topic-1486460-q01
+Let $s_n=x^n+\dfrac{1}{x^n}$. Then $s_1=t$, $s_2=\left(x+\dfrac{1}{x}\right)^2-2=t^2-2$, and for $n\ge2$,
+\[
+t\,s_n=\left(x+\dfrac{1}{x}\right)\left(x^n+\dfrac{1}{x^n}\right)=x^{n+1}+\dfrac{1}{x^{n+1}}+x^{n-1}+\dfrac{1}{x^{n-1}}=s_{n+1}+s_{n-1},
+\]
+so
+\[
+s_{n+1}=t\,s_n-s_{n-1}.
+\]
+(The same identity with $s_0=2$ also covers $n=1$.) We prove by strong induction that each $s_n$ is $P_n(t)$ for a polynomial $P_n$ with integer coefficients. This holds for $n=1,2$ with $P_1(t)=t$, $P_2(t)=t^2-2$. If it holds for $n-1$ and $n$, then $P_{n+1}(t)=t\,P_n(t)-P_{n-1}(t)$ has integer coefficients and gives $s_{n+1}$. $\blacksquare$
+
+For example, $s_3=t^3-3t$ and $s_4=t^4-4t^2+2$.

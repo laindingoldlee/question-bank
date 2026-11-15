@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1424636_coin_problem
+% Stable identity: aops-topic-1424636-q01
+Let him have $p$ pennies, $n$ nickels, $d$ dimes, $q$ quarters and $h$ half-dollars.
+\begin{itemize}
+\item $p\le4$ (five pennies make change for a nickel), $n\le1$ (two nickels make change for a dime), $q\le1$ (two quarters make change for a half-dollar), $h\le1$ (two half-dollars make change for a dollar), and $d\le4$ (five dimes make change for a half-dollar).
+\item If $n=1$, then $d\le1$, because two dimes and a nickel make change for a quarter. Then the total is at most $50+25+10+5+4=94$ cents.
+\item If $n=0$, the total is at most $50+25+4\cdot10+4=119$ cents.
+\end{itemize}
+The amount $119$ cents is possible: one half-dollar, one quarter, four dimes and four pennies. Check: the coins worth less than a dime are the four pennies, so neither $5$ nor $10$ cents can be formed from them. The coins worth less than a half-dollar form the sums $10a+c$ and $25+10a+c$ with $0\le a\le4$ and $0\le c\le4$; the number $10a+c$ has units digit $c\le4$ and is at most $44$, so it is never $25$ or $50$, and therefore no collection of these coins is worth $25$ or $50$ cents. Finally $100$ cents would need the half-dollar together with $50$ cents from the other coins (without it the total is only $69$), which was just ruled out. So the largest amount is $\boxed{\$1.19}$.
+
+The poster's $\$2.19$ with four half-dollars fails: two half-dollars make change for a dollar.

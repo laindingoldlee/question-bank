@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2792401_2019_math_hour_olympiad__university_of_washington__grades_67
+% Stable identity: aops-topic-2792401-q04
+Compare two paths differing only in the order of one horizontal and one vertical step through a $2\times2$ block. The first condition makes the two off-diagonal cell values equal. The other direction condition makes the other diagonal pair equal. Thus throughout the board all cells of one checkerboard colour have a common value $a$, and all cells of the other have a common value $b$: diagonal moves connect each colour class. There are 8 cells of each colour, so the total is $8(a+b)$, divisible by 8. But 500 is not divisible by 8.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int x=0;x<4;++x)for(int y=0;y<4;++y){draw((x,y)--(x+1,y)--(x+1,y+1)--(x,y+1)--cycle);label((x+y)%2==0 ? "$a$" : "$b$",(x+.5,y+.5));}
+\end{asy}

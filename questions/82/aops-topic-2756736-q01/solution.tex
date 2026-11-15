@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2756736_geometry_problem
+% Stable identity: aops-topic-2756736-q01
+By the law of cosines, $BC^2=25+64-2\cdot5\cdot8\cdot\dfrac12=49$, so $BC=7$. The median formula (Apollonius) gives
+\[AM^2=\dfrac{2AB^2+2AC^2-BC^2}4=\dfrac{50+128-49}4=\dfrac{129}4,\]
+so $AM=\boxed{\dfrac{\sqrt{129}}2}$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=5*dir(60),C=(8,0);pair M=(B+C)/2;draw(A--B--C--cycle);draw(A--M,dashed);dot(M);
+label("$A$",A,SW);label("$B$",B,N);label("$C$",C,SE);label("$M$",M,NE);label("$5$",(A+B)/2,NW);label("$8$",(4,0),S);label("$60^\circ$",A+1.15*dir(42),fontsize(7pt));
+\end{asy}
+
+(Equivalently, with vectors, $\overrightarrow{AM}=\dfrac12(\overrightarrow{AB}+\overrightarrow{AC})$ and $AM^2=\dfrac14(25+64+40)=\dfrac{129}4$.)

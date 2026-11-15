@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h3181893_2020_abmc_online_december_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3181893-q13
+Both summands are nonincreasing. For a current $x$, put $a=\lfloor\dfrac{2020}{x}\rfloor$ and $b=\lfloor\dfrac{2020}{x+1}\rfloor$. The first remains constant through $\lfloor\dfrac{2020}{a}\rfloor$; if $b>0$, the second remains constant through $\lfloor\dfrac{2020}{b}\rfloor-1$. Thus jump to one past the smaller endpoint and count one new value. At each jump at least one summand strictly decreases and neither increases, so no value repeats across blocks. The following exact integer computation covers the entire interval and gives $\boxed{125}$.
+\begin{verbatim}
+N=2020
+x=1
+count=0
+while x<=N:
+    a=N//x
+    b=N//(x+1)
+    last=min(N//a, N//b-1 if b else N)
+    assert last>=x
+    count+=1
+    x=last+1
+assert count==125
+assert count==len({N//j+N//(j+1) for j in range(1,N+1)})
+\end{verbatim}

@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2259380_mathcounts_question__solve_in_1_minute
+% Stable identity: aops-topic-2259380-q01
+Let $AB=2$, so $AM=MB=1$ and $[ABC]=\dfrac{\sqrt3}{4}\cdot2^2=\sqrt3$. The median $CM$ is also an altitude, so $CM\perp AB$ and $CM=\sqrt{2^2-1^2}=\sqrt3$.
+
+\textbf{(a)} Equilateral triangles are similar, with area ratio equal to the square of the ratio of sides:
+\[\dfrac{[CMN]}{[ABC]}=\left(\dfrac{CM}{AB}\right)^2=\left(\dfrac{\sqrt3}{2}\right)^2=\boxed{\dfrac{3}{4}}.\]
+
+\textbf{(b)} By symmetry in the line $CM$ we may assume that $N$ is on the same side of $CM$ as $B$; then triangle $CMN$ does not meet triangle $CMA$ except along $CM$. Compare the angles at the common vertices:
+\begin{itemize}
+\item at $M$: $\angle CMN=60^\circ<\angle CMB=90^\circ$, so the ray $MN$ runs inside angle $CMB$, making $\angle NMB=30^\circ$;
+\item at $C$: $\angle MCB=30^\circ<\angle MCN=60^\circ$, so the ray $CB$ runs inside angle $MCN$.
+\end{itemize}
+Let $MN$ meet $BC$ at $P$. Then the part of triangle $CMN$ inside triangle $ABC$ is exactly triangle $CMP$ (shaded).
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(2,0), C=(1,sqrt(3)), M=(1,0), N=(2.5,sqrt(3)/2), P=(1.75,sqrt(3)/4);
+fill(C--M--P--cycle,palecyan);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--M--N--cycle,blue+linewidth(0.9));
+draw(rotate(30,P)*shift(P)*scale(0.09)*((-1,0)--(-1,1)--(0,1)), black+linewidth(0.4));
+dot(A); dot(B); dot(C); dot(M); dot(N); dot(P,red);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$M$",M,S); label("$N$",N,E,blue); label("$P$",P,dir(-30),red);
+label("$1$",(1.5,0),S); label("$1$",(0.5,0),S);
+label("$30^\circ$",M+0.42*dir(14),fontsize(8pt));
+\end{asy}
+
+In triangle $MPB$, $\angle PMB=30^\circ$ and $\angle MBP=60^\circ$, so $\angle MPB=90^\circ$ and $MP=MB\cos30^\circ=\dfrac{\sqrt3}{2}$. Since $\angle CMP=60^\circ$,
+\[[CMP]=\dfrac{1}{2}\cdot CM\cdot MP\cdot\sin60^\circ=\dfrac{1}{2}\cdot\sqrt3\cdot\dfrac{\sqrt3}{2}\cdot\dfrac{\sqrt3}{2}=\dfrac{3\sqrt3}{8}.\]
+Hence the fraction of triangle $ABC$ inside triangle $CMN$ is
+\[\dfrac{3\sqrt3}{8}\div\sqrt3=\boxed{\dfrac{3}{8}}.\]

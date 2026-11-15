@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2349790_challenging_factorial_problem_bash
+% Stable identity: aops-topic-2349790-q01
+\textbf{Different choices give different values.} For each $k$, the largest possible contribution of the terms below $k!$ is
+\[1\cdot1!+2\cdot2!+\cdots+(k-1)(k-1)!=\bigl(2!-1!\bigr)+\bigl(3!-2!\bigr)+\cdots+\bigl(k!-(k-1)!\bigr)=k!-1<k!,\]
+using $j\cdot j!=(j+1)!-j!$. If two choices of $(a,b,c,d,e)$ differed, look at the largest factorial $k!$ where their coefficients differ: there the values differ by at least $k!$, while all lower terms together can make up at most $k!-1$. So the two values of $n$ would be different.
+
+\textbf{The sum.} With $c=0$ there are $2\cdot3\cdot5\cdot6=180$ choices, giving $180$ different values. Add up each term over all choices:
+\begin{itemize}
+\item $a$: each value of $a$ occurs in $3\cdot5\cdot6=90$ choices, contributing $(0+1)\cdot1!\cdot90=90$;
+\item $b$: $(0+1+2)\cdot2!\cdot(2\cdot5\cdot6)=3\cdot2\cdot60=360$;
+\item $d$: $(0+1+2+3+4)\cdot4!\cdot(2\cdot3\cdot6)=10\cdot24\cdot36=8640$;
+\item $e$: $(0+1+\cdots+5)\cdot5!\cdot(2\cdot3\cdot5)=15\cdot120\cdot30=54000$.
+\end{itemize}
+The sum of all possible values of $n$ is $90+360+8640+54000=\boxed{63090}$.

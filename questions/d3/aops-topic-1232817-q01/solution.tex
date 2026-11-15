@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1232817_geo_problem
+% Stable identity: aops-topic-1232817-q01
+Let $O$ be the centre and $r$ the radius. $OD$ and $OC$ bisect the angles at $D$ and $C$, which add to $180^\circ$ (as $AD\parallel BC$), so $\angle DOC=90^\circ$. In right triangle $DOC$ the altitude $OE=r$ gives $r^2=DE\cdot EC=64$, so $r=8$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real r=8; pair A=(0,0),B=(0,16),C=(24,16),D=(12,0); pair O=(8,8);
+draw(A--B--C--D--cycle,linewidth(1)); draw(circle(O,r),blue);
+pair E=D+4*unit(C-D); dot(E); label("$E$",E,dir(0));
+label("$A$",A,SW);label("$B$",B,NW);label("$C$",C,NE);label("$D$",D,SE);
+label("$4$",(D+E)/2,SE); label("$16$",(E+C)/2,SE); draw(O--E,dashed); label("$r$",(O+E)/2,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The height $AB$ is $2r=16$. Tangent lengths: from $D$ the tangents are $4$, from $A$ and $B$ they are $r=8$ (the corners at $A$ and $B$ are right angles), from $C$ they are $16$. So $AD=8+4=12$, $BC=8+16=24$, and the area is $\dfrac{12+24}{2}\cdot16=\boxed{288}$.

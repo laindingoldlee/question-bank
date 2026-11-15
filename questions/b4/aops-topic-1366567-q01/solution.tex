@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1366567_geometry_problem
+% Stable identity: aops-topic-1366567-q01
+Since $D$ lies on $AB$, $\angle CBD=\angle CBA=\angle B$. As $AB>AC$ we have $\angle C>\angle B$, so the ray $CD$ with $\angle ACD=\angle B<\angle ACB$ meets side $AB$ at an interior point $D$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair B=(0,0),C=(5,0),A=(3.3,3.8);
+real ab=abs(A-B), ac=abs(A-C);
+pair D=A+(ac^2/ab)/ab*(B-A);
+pair cc(pair P,pair Q,pair R){real d=2*(P.x*(Q.y-R.y)+Q.x*(R.y-P.y)+R.x*(P.y-Q.y));
+ real ux=((P.x^2+P.y^2)*(Q.y-R.y)+(Q.x^2+Q.y^2)*(R.y-P.y)+(R.x^2+R.y^2)*(P.y-Q.y))/d;
+ real uy=((P.x^2+P.y^2)*(R.x-Q.x)+(Q.x^2+Q.y^2)*(P.x-R.x)+(R.x^2+R.y^2)*(Q.x-P.x))/d; return (ux,uy);}
+pair Sc=cc(B,C,D), Ep=(B+D)/2, M=(A+Sc)/2;
+draw(circle(Sc,abs(Sc-B)),blue);
+draw(circle(M,abs(A-M)),red+dashed);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--D);
+draw(Sc--C,gray+dashed); draw(Sc--Ep,gray+dashed); draw(A--Sc,red+dotted);
+draw(ra(C,A-C,Sc-C,0.3)); draw(ra(Ep,A-Ep,Sc-Ep,0.3));
+dot(A);dot(B);dot(C);dot(D);dot(Ep);dot(Sc);
+label("$A$",A,N); label("$B$",B,W); label("$C$",C,1.8*E); label("$D$",D,NW); label("$E$",Ep+(-0.32,0.08),W); label("$S$",Sc,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{$AC$ is tangent to the circle $BCD$.} The angle between the chord $CD$ and the line $CA$ equals $\angle ACD=\angle CBD$, which is the inscribed angle on chord $CD$ from the point $B$ of the circle on the other side of $CD$ from $A$. By the converse of the tangent--chord angle theorem, line $AC$ is tangent at $C$ to the circle through $B$, $C$, $D$. (Equivalently: triangles $ACD$ and $ABC$ share the angle at $A$ and have $\angle ACD=\angle ABC$, so they are similar and $AC^2=AD\cdot AB$, the power of $A$.)
+
+\textbf{Two right angles.} A radius to a point of tangency is perpendicular to the tangent, so $SC\perp AC$ and $\angle ACS=90^\circ$. Also $E$ is the midpoint of the chord $BD$ of this circle, so $SE\perp BD$, that is, $\angle AES=90^\circ$ (here $E\ne S$ because $\angle BCD=\angle C-\angle B<90^\circ$, so $BD$ is not a diameter).
+
+Hence $E$ and $C$ both see the segment $AS$ at a right angle, so both lie on the circle with diameter $AS$ (Thales). Therefore $A$, $E$, $S$, $C$ are concyclic. $\blacksquare$

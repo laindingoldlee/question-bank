@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2766070_eagles2018s_2000th_post_problem_thread
+% Stable identity: aops-topic-2766070-q11
+Number the original seats $0,\dots,7$ around the table, and call each person by their original seat. Person $i$'s friends are $i\pm2$ and $i\pm3$ (mod $8$). A new seating, read clockwise, is a cyclic order of the eight people in which neighbours are friends. Up to rotation, each closed tour through the ``friendship graph'' visiting everyone once gives exactly two seatings, one for each direction.
+
+\textbf{Simplify.} Relabel person $i$ as $3i\bmod8$ (a bijection). The friend differences $\pm2,\pm3$ become $\pm6\equiv\mp2$ and $\pm9\equiv\pm1$. So we must count closed tours of $0,1,\dots,7$ (arranged on a circle) in which consecutive entries differ by $1$ or $2$ mod $8$.
+
+\textbf{Count the tours.} Follow a tour and add up its steps ($\pm1$ or $\pm2$). The total is a multiple of $8$; it cannot be $\pm16$, since then every step would be $+2$ (or every step $-2$), which visits only one parity class.
+\begin{itemize}
+\item \textbf{Total $\pm8$ (once around).} Orient the tour forwards. It is made of blocks: a single step $+1$, or a detour $i\to i+2\to i+1\to i+3$. With $k$ detours there are $8-2k$ blocks around the circle, giving $\dfrac{8}{8-2k}\dbinom{8-2k}k$ placements: $1$ (for $k=0$), $8$ (for $k=1$) and $12$ (for $k=2$). That is $21$ tours.
+\item \textbf{Total $0$.} The tour runs along one parity class by steps of $2$ and comes back along the other, joined by two steps of $\pm1$. An example is $0,2,4,6,7,5,3,1$. There are $8$ such tours, one for each starting position.
+\end{itemize}
+This gives $29$ tours, so $2\cdot29=\boxed{58}$ seatings.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair[] V;for(int k=0;k<8;++k) V.push(dir(90-45*k));
+draw(unitcircle,gray);
+int[] cyc={0,2,4,6,7,5,3,1};
+for(int k=0;k<8;++k){draw(V[cyc[k]]--V[cyc[(k+1)%8]]);}
+for(int k=0;k<8;++k){dot(V[k]);label("$"+string(k)+"$",1.15*V[k]);}
+\end{asy}

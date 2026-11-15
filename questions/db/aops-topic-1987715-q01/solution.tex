@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1987715_aops_x_google_translate
+% Stable identity: aops-topic-1987715-q01
+With the frame, the outer rectangle measures $(36+2\cdot2)\times(24+2\cdot2)=40\times28$ inches. The frame is the outer rectangle minus the painting:
+\[
+40\cdot28-36\cdot24=1120-864=256\text{ square inches}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+filldraw((0,0)--(40,0)--(40,28)--(0,28)--cycle,gray(0.8),linewidth(1));
+filldraw((2,2)--(38,2)--(38,26)--(2,26)--cycle,white,linewidth(1));
+label("painting",(20,15)); label("$36\times24$",(20,10));
+label("$40$",(20,0),S); label("$28$",(40,14),E); label("$2$",(39,7),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The cost is $256\cdot\$1.50=\boxed{\$384}$.

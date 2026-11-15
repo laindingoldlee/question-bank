@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2272493_counting
+% Stable identity: aops-topic-2272493-q01
+\textbf{(a)} Look at object $n$.
+\begin{itemize}
+\item If it is alone in its box, removing it leaves the other $n-1$ objects in $k-1$ nonempty boxes: $S(n-1,k-1)$ ways.
+\item Otherwise, removing it leaves $n-1$ objects in $k$ nonempty boxes ($S(n-1,k)$ ways), and object $n$ was in one of these $k$ boxes. The boxes are now distinguishable by their contents, so there are $k$ different places for object $n$: $k\,S(n-1,k)$ ways.
+\end{itemize}
+Adding the two cases proves the recurrence.
+
+\textbf{(b)} Count the ways to put the objects into $k$ \emph{labelled} boxes with no box empty. By inclusion--exclusion over the set of boxes that are left empty,
+\[\sum_{j=0}^{k}(-1)^j\dbinom kj(k-j)^n,\]
+since $\dbinom kj(k-j)^n$ counts the placements avoiding $j$ chosen boxes. On the other hand, each placement into $k$ unlabelled nonempty boxes gives $k!$ labelled placements (the $k$ groups are different, so the $k!$ ways to attach labels give different results). Dividing by $k!$ gives the formula.
+
+\textbf{(c)} With empty boxes allowed, the objects fill exactly $j$ boxes for some $j=1,2,3,4$, so the answer is $S(7,1)+S(7,2)+S(7,3)+S(7,4)$. The recurrence gives the table
+\[\begin{array}{c|ccccc}
+n & S(n,1) & S(n,2) & S(n,3) & S(n,4)\\\hline
+4 & 1 & 7 & 6 & 1\\
+5 & 1 & 15 & 25 & 10\\
+6 & 1 & 31 & 90 & 65\\
+7 & 1 & 63 & 301 & 350
+\end{array}\]
+(for example $S(7,3)=S(6,2)+3S(6,3)=31+270=301$). The formula of (b) agrees; for example
+\[S(7,4)=\dfrac{4^7-4\cdot3^7+6\cdot2^7-4}{24}=\dfrac{8400}{24}=350.\]
+The answer is
+\[1+63+301+350=\boxed{715}.\]
+So there is no single product formula like stars and bars; the count is given by the recurrence or the alternating sum.

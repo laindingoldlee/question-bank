@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1589207_sum_of_cubes_of_polynomial_roots
+% Stable identity: aops-topic-1589207-q01
+\textbf{(a)} Take $P(x)=(x-1)(x-2)(x-3)=x^3-6x^2+11x-6$, so $n=3$, $a_2=-6$, $a_1=11$, $a_0=-6$. The sum of the cubes of the roots is $1+8+27=36$, but the claimed formula gives
+\[
+a_2^3-a_1a_2=(-6)^3-11\cdot(-6)=-216+66=-150\ne36 .
+\]
+So the claim is false.
+
+\textbf{(b)} Let the roots be $r_1,\dots,r_n$ and write $e_1=\sum r_i$, $e_2=\sum_{i<j}r_ir_j$, $e_3=\sum_{i<j<k}r_ir_jr_k$ and $p_3=\sum r_i^3$. By Vieta's formulas,
+\[
+e_1=-a_{n-1},\qquad e_2=a_{n-2},\qquad e_3=-a_{n-3}.
+\]
+Expanding the cube of a sum, every term of $e_1^3$ is a product $r_ir_jr_k$, and
+\[
+e_1^3=p_3+3\sum_{i\ne j}r_i^2r_j+6e_3,
+\]
+since a product $r_i^2r_j$ with $i\ne j$ arises in $3$ ways and a product of three different roots in $3!=6$ ways. Similarly, multiplying out $e_1e_2$,
+\[
+e_1e_2=\sum_{i\ne j}r_i^2r_j+3e_3,
+\]
+since $r_i\cdot r_ir_j$ gives each $r_i^2r_j$ once, and each product $r_ir_jr_k$ of three different roots arises from $3$ choices of the factor taken from $e_1$. Eliminating $\sum_{i\ne j}r_i^2r_j$:
+\[
+p_3=e_1^3-3e_1e_2+3e_3=-a_{n-1}^3+3a_{n-1}a_{n-2}-3a_{n-3}.\qquad\blacksquare
+\]
+Check with the example: $-(-6)^3+3\cdot(-6)\cdot11-3\cdot(-6)=216-198+18=36$. (This is the case $k=3$ of Newton's sums.)

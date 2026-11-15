@@ -1,0 +1,7 @@
+Use $A=(0,0),F=(15,0)$. Since $AD=25$ and $DF\perp AE$, take $D=(15,20)$ after reflection. Writing $B=(u,v)$, the midpoint $E=B+\dfrac{1}{2}D$ lies on the horizontal axis, so $v=-10$. Since $AB=20$, $u=\pm10\sqrt3$. Now $C=B+D$, and triangle $CDF$ has area $\dfrac{1}{2}|\det(B,F-D)|=10|u|=\boxed{100\sqrt3}$. Both signs of $u$ give this same area; no assumption that the altitude foot lies on the segment is needed. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+for(int k=0;k<2;++k){pair v=(60*k,0),A=v,F=v+(15,0),D=v+(15,20),B=v+((k==0?1:-1)*10*sqrt(3),-10),C=B+D-v,E=(B+C)/2;draw(A--B--C--D--cycle);draw(A--E);draw(D--F,dashed);draw(C--F);pair[] P={A,B,C,D,E,F};string[] L={"A","B","C","D","E","F"};for(int i=0;i<6;++i)label("$"+L[i]+"$",P[i],i==3?(0,1):(0,-1));}
+\end{asy}

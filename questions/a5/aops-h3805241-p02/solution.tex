@@ -1,0 +1,12 @@
+Let the third side be $c>0$ and area be $\Delta$. Heron's identity and $R=\dfrac{abc}{4\Delta}$ give
+\[
+16\Delta^2=4\cdot3^2\cdot8^2-(3^2+8^2-c^2)^2,\qquad
+\dfrac{49}{3}=\dfrac{3^2\cdot8^2c^2}{16\Delta^2}.
+\]
+Combining and factoring yields $(c^2-49)(49c^2-3025)=0$. Both $c=7$ and $c=\dfrac{55}{7}$ lie strictly between $5$ and $11$, so both define valid triangles. Their sum is $\boxed{\dfrac{104}{7}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(8,0);for(int j=0;j<2;++j){real c=(j==0?7:55./7),x=(9+64-c*c)/16,y=sqrt(9-x*x);pair off=(10*j,0),C=(x,y)+off;draw((A+off)--(B+off)--C--cycle);label("$3$",midpoint(A+off--C),W);label("$8$",(4,0)+off,S);label(j==0?"$7$":"$\dfrac{55}{7}$",midpoint(B+off--C),NE);}
+\end{asy}

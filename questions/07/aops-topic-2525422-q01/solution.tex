@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2525422_khanacademy
+% Stable identity: aops-topic-2525422-q01
+\textbf{(a)} Count the ways for all birthdays to be different: the first person has $365$ choices, the second $364$, and so on, down to $336$ for the thirtieth. So
+\[P(\text{all different})=\dfrac{365\cdot364\cdots336}{365^{30}}=\prod_{i=0}^{29}\left(1-\dfrac{i}{365}\right)\approx0.29368,\]
+and
+\[P(\text{at least two share})=1-0.29368\ldots\approx\boxed{0.706}.\]
+
+\textbf{(b)} Raising $\dfrac{364}{365}$ to the power $435$ treats the $435$ events ``this pair has different birthdays'' as independent, but they are not. For example, for three people $A,B,C$: if $A$ and $B$ share a birthday and $B$ and $C$ share a birthday, then $A$ and $C$ certainly share one, so
+\[P(A,C\text{ share}\mid A,B\text{ share and }B,C\text{ share})=1\ne\dfrac1{365}.\]
+Even for three people the shortcut is wrong: the exact probability of no shared birthday is $\dfrac{364}{365}\cdot\dfrac{363}{365}$, while the shortcut gives $\left(\dfrac{364}{365}\right)^3$. The exact count in (a) avoids any independence assumption.

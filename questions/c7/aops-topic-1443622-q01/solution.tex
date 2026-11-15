@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h1443622_3d_version_of_shoelace
+% Stable identity: aops-topic-1443622-q01
+\textbf{(a)} Take as base the triangle with vertices $A$, $A+\mathbf u$, $A+\mathbf v$. It is half of the parallelogram spanned by $\mathbf u$ and $\mathbf v$, so its area is $\dfrac{1}{2}|\mathbf u\times\mathbf v|$. The vector $\mathbf n=\mathbf u\times\mathbf v$ is perpendicular to the base plane, so the height from $A+\mathbf w$ is the length of the projection of $\mathbf w$ onto $\mathbf n$:
+\[
+h=\dfrac{|\mathbf w\cdot\mathbf n|}{|\mathbf n|}.
+\]
+Therefore
+\[
+V=\dfrac{1}{3}\cdot\dfrac{1}{2}|\mathbf n|\cdot\dfrac{|\mathbf w\cdot\mathbf n|}{|\mathbf n|}=\dfrac{1}{6}|\mathbf w\cdot(\mathbf u\times\mathbf v)|,
+\]
+and expanding $\mathbf w\cdot(\mathbf u\times\mathbf v)=w_1(u_2v_3-u_3v_2)+w_2(u_3v_1-u_1v_3)+w_3(u_1v_2-u_2v_1)$ gives exactly the $3\times3$ determinant with rows $\mathbf u,\mathbf v,\mathbf w$. (If $\mathbf u,\mathbf v$ are parallel, both sides are $0$.) $\blacksquare$
+
+\textbf{(b)}
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair Ap=(1.3800,-0.3800);
+pair Bp=(-1.8600,-0.1400);
+pair Cp=(1.0000,4.0000);
+pair Dp=(1.7600,4.2400);
+draw(Ap--Bp,linewidth(0.9));
+draw(Ap--Cp,dashed);
+draw(Ap--Dp,linewidth(0.9));
+draw(Bp--Cp,linewidth(0.9));
+draw(Bp--Dp,linewidth(0.9));
+draw(Cp--Dp,linewidth(0.9));
+dot(Ap); dot(Bp); dot(Cp); dot(Dp);
+label("$A(1,2,0)$",Ap,S); label("$B(3,0,1)$",Bp,SE); label("$C(0,1,4)$",Cp,W); label("$D(2,3,5)$",Dp,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+With $\mathbf u=B-A=(2,-2,1)$, $\mathbf v=C-A=(-1,-1,4)$, $\mathbf w=D-A=(1,1,5)$:
+\[
+\det\begin{pmatrix}2&-2&1\\-1&-1&4\\1&1&5\end{pmatrix}=2(-5-4)+2(-5-4)+1(-1+1)=-18-18+0=-36 .
+\]
+So the volume is $\dfrac{36}{6}=\boxed{6}$.
+
+Just as the shoelace formula adds signed areas of triangles $OP_iP_{i+1}$, the volume of any polyhedron with triangular faces can be found by adding the signed volumes $\dfrac{1}{6}\det(P_i,P_j,P_k)$ of the tetrahedra joining the origin to its faces, with the faces oriented consistently.

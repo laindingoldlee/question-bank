@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1902331_isocels_trapizoid
+% Stable identity: aops-topic-1902331-q01
+Let the parallel sides be $a$ and $b$ and the equal sides (legs) $c$. Both parallel sides are tangent to the circle, so the height of the trapezoid is the diameter, $4$ cm. The area gives
+\[
+\dfrac{a+b}{2}\cdot4=20\qquad\Longrightarrow\qquad a+b=10 .
+\]
+A quadrilateral circumscribed about a circle has equal sums of opposite sides: the two tangent segments from each vertex are equal, and each side is the sum of two tangent segments, so $a+b=c+c$. Hence $2c=10$ and the legs have length $\boxed{5\text{ cm}}$.
+
+Check: with legs $5$ and height $4$, the horizontal offset of each leg is $3$, so $b-a=6$; together with $a+b=10$ this gives bases $2$ and $8$, and the circle centred at height $2$ above the midpoint of the long base is tangent to all four sides.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(8,0), C=(5,4), D=(3,4), I=(4,2);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(circle(I,2),blue);
+dot(I);draw(I--(4,0),blue+dashed);label("$2$",(4,1),E,blue);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$8$",(2,0),S);label("$2$",(4,4),N);label("$5$",(1.5,2),W);label("$5$",(6.5,2),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2086136_problem_time_not_marathon
+% Stable identity: aops-topic-2086136-q04
+Let the triangle be \(ABC\) with angles \(\alpha=\angle A\), \(\beta=\angle B\), \(\gamma=\angle C\). Through \(C\) draw the line \(XY\) parallel to \(AB\), with \(X\) on the same side of \(C\) as \(A\) and \(Y\) on the same side as \(B\) (a unique parallel exists by the parallel postulate).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(5,0), C=(1.6,2.6);
+draw(A--B--C--cycle,linewidth(0.9));
+draw((C-(2.6,0))--(C+(4.4,0)),blue);
+dot(A);dot(B);dot(C);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N);
+label("$X$",C-(2.6,0),W,blue); label("$Y$",C+(4.4,0),E,blue);
+label("$\alpha$",A,5*dir(29)); label("$\beta$",B,5*dir(162)); label("$\gamma$",C,3.2*S);
+label("$\alpha$",C,5*dir(195)); label("$\beta$",C,5*dir(-12));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since \(XY\parallel AB\), with transversal \(AC\) the alternate angles are equal, \(\angle XCA=\angle CAB=\alpha\). With transversal \(BC\), \(\angle YCB=\angle CBA=\beta\). The angles \(\angle XCA\), \(\angle ACB\), \(\angle BCY\) together make up the straight angle \(XCY\), so
+\[
+\alpha+\gamma+\beta=180^\circ. \qquad\blacksquare
+\]

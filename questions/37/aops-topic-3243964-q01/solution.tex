@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3243964_deleting_first_and_last_2024_emcc_speed_round_problem_19
+% Stable identity: aops-topic-3243964-q01
+Since $g(n)\le2024$, we have $n\le20249$. Thus exact enumeration over $10\le n\le20249$ is complete. For $L$ digits, $f(n)=n\bmod10^{L-1}$ and $g(n)=\lfloor\dfrac{n}{10}\rfloor$. The code finds only $10931$ and $20022$: their pairs of values are $(931,1093)$ and $(22,2002)$, both summing to $2024$. The requested sum is $\boxed{30953}$.
+\begin{verbatim}
+answer=[n for n in range(10,20250)
+        if n%10**(len(str(n))-1)+n//10==2024]
+print(answer)
+\end{verbatim}

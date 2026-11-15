@@ -1,0 +1,13 @@
+A circle of radius $r$ tangent to the two rays of a $60^\circ$ angle has its center $2r$ from the vertex. For adjacent radii $r>r'$, external tangency gives $2r-2r'=r+r'$, so $r'=\dfrac{r}{3}$. Their areas therefore have ratio $\dfrac{1}{9}$, and the first area is $32\pi$.
+
+The combined area of the first $N$ circles is
+\[
+32\pi\dfrac{1-9^{-N}}{1-\dfrac{1}{9}}=36\pi(1-9^{-N}).
+\]
+Exceeding $35999\dfrac{\pi}{1000}$ is equivalent to $9^N>36000$. Since $9^4=6561$ and $9^5=59049$, the least value is $\boxed5$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw((13*cos(pi/6),-13*sin(pi/6))--(0,0)--(13*cos(pi/6),13*sin(pi/6)));real r=4sqrt(2);for(int j=0;j<5;++j){draw(circle((2r,0),r),blue);r/=3;}label("$60^\circ$",(1.3,0));
+\end{asy}

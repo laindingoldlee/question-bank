@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1920221_an_interesting_problem_that_i_found
+% Stable identity: aops-topic-1920221-q01
+Measure in sausages: each person must get $\dfrac{10}{18}=\dfrac{5}{9}$ of a sausage. The answer is $\boxed{16}$.
+
+\textbf{$16$ cuts suffice.} Imagine the sausages laid end to end, forming a segment of length $10$ with joints at $1,2,\dots,9$. Mark the points $\dfrac{5k}{9}$ for $k=1,2,\dots,17$; they cut the segment into $18$ parts of length $\dfrac{5}{9}$. A marked point lies on a joint only when $\dfrac{5k}{9}$ is an integer, i.e.\ $9\mid k$, which happens only for $k=9$ (the point $5$). So only $16$ actual cuts are needed, and person $k$ receives the pieces forming the $k$th part.
+
+\textbf{At least $16$ cuts are needed.} Take any valid sharing and form a graph whose $28$ vertices are the $10$ sausages and the $18$ people; join a sausage to a person if the person gets at least one piece of that sausage. Each piece gives one sausage-person pair, so the number of pieces is at least the number $m$ of edges. Each cut raises the number of pieces by $1$, starting from $10$, so the number of cuts is at least $m-10$.
+
+Consider a connected component of the graph with $s$ sausages and $p$ people. All pieces of those sausages go to those people and those people get only pieces of those sausages, so $s=\dfrac{5}{9}p$. Since $s$ is an integer and $\gcd(5,9)=1$, $9\mid p$; and $p>0$, because a component without people would have no sausages either. So every component has at least $9$ people, and there are at most $\dfrac{18}{9}=2$ components. A graph with $28$ vertices and at most $2$ components has at least $28-2=26$ edges (each component with $n$ vertices needs at least $n-1$ edges to be connected). Therefore the number of cuts is at least $26-10=16$.

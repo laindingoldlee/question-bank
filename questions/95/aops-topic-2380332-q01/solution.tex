@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2380332_concurrency
+% Stable identity: aops-topic-2380332-q01
+Let the triangle be $ABC$; we show that the external bisectors at $B$ and $C$ and the internal bisector at $A$ pass through one point. We use the fact that a point on the bisector of an angle is equidistant from the two lines forming it (the two right triangles formed with the feet of the perpendiculars are congruent by AAS), and conversely that a point inside an angle that is equidistant from its two sides lies on its bisector (congruent right triangles by hypotenuse and leg).
+
+\textbf{The external bisectors meet.} The external angle at $B$ has as its sides the ray $BC$ and the extension of $AB$ beyond $B$. That extension lies on the opposite side of line $BC$ from $A$, and the ray $BC$ lies on $C$'s side of line $AB$; so the inside of this angle, and with it the external bisector at $B$ (a ray from $B$), lies on the opposite side of $BC$ from $A$ and on $C$'s side of $AB$. Similarly the external bisector at $C$ is a ray from $C$ on the opposite side of $BC$ from $A$ and on $B$'s side of $AC$. These two rays make angles $\dfrac{180^\circ-B}{2}$ and $\dfrac{180^\circ-C}{2}$ with segment $BC$, which add up to $180^\circ-\dfrac{B+C}{2}<180^\circ$, so they meet at a point $J$ (forming a triangle $BCJ$).
+
+\textbf{$J$ is on the internal bisector at $A$.} Let $P$, $R$, $Q$ be the feet of the perpendiculars from $J$ to the lines $AB$, $BC$, $CA$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,3.2), B=(-1.4,0), C=(2.2,0);
+real a=abs(B-C), bb=abs(C-A), c=abs(A-B);
+pair J=(-a*A+bb*B+c*C)/(-a+bb+c);
+real r=-J.y;
+draw(circle(J,r),gray+dashed);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--(A+1.75*(B-A)),gray); draw(A--(A+1.75*(C-A)),gray);
+draw(B--J,blue); draw(C--J,blue); draw(A--J,red);
+pair Pp=B+dot(J-B,unit(B-A))*unit(B-A), Qp=C+dot(J-C,unit(C-A))*unit(C-A), Rp=(J.x,0);
+draw(J--Pp,dashed); draw(J--Qp,dashed); draw(J--Rp,dashed);
+dot(J); dot(Pp); dot(Qp); dot(Rp);
+label("$A$",A,N); label("$B$",B,W); label("$C$",C,E); label("$J$",J,S);
+label("$P$",Pp,W); label("$Q$",Qp,E); label("$R$",Rp,NE,fontsize(8pt));
+\end{asy}
+
+Since $J$ is on the external bisector at $B$, $JP=JR$; since it is on the external bisector at $C$, $JR=JQ$. Hence $JP=JQ$: $J$ is equidistant from the lines $AB$ and $AC$. Moreover $J$ is on $C$'s side of line $AB$ and on $B$'s side of line $AC$, so $J$ lies inside the angle $BAC$. A point inside an angle that is equidistant from its sides lies on its bisector, so $J$ lies on the internal bisector of angle $A$.
+
+Hence the three bisectors pass through $J$. $\blacksquare$ (The point $J$ is the excentre opposite $A$: the circle with centre $J$ and radius $JP=JQ=JR$ touches line $BC$ and the extensions of $AB$ and $AC$.)

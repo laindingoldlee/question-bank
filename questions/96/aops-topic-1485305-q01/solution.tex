@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1485305_factorial_division
+% Stable identity: aops-topic-1485305-q01
+Since $(s+6)!=s!\,(s+1)(s+2)\cdots(s+6)$, the fraction equals
+\[
+\dfrac{s!}{(s+1)(s+2)(s+3)(s+4)(s+5)(s+6)} .
+\]
+\emph{A necessary condition.} If one of $s+1,\dots,s+6$ is a prime $p$, then $p>s$ does not divide $s!$, so the fraction is not an integer. Hence $s+1,\dots,s+6$ must be six consecutive composite numbers. The primes up to $97$ are
+\[
+2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,
+\]
+and below $89$ consecutive primes differ by at most $6$, so there are never more than $5$ consecutive composites below $89$. The first run of six consecutive composites is $90,91,\dots,95$ (between the primes $89$ and $97$). So $s+1\ge90$, that is, $s\ge89$.
+
+\emph{$s=89$ works.} We have
+\[
+90\cdot91\cdot92\cdot93\cdot94\cdot95=(2\cdot3^2\cdot5)(7\cdot13)(2^2\cdot23)(3\cdot31)(2\cdot47)(5\cdot19)=2^4\,3^3\,5^2\cdot7\cdot13\cdot19\cdot23\cdot31\cdot47 .
+\]
+Each of these prime powers divides $89!$: for instance $89!$ contains the factors $2,4,6,8$ (giving far more than $2^4$), $3,6,9$, $5,10$, and each of the primes $7,13,19,23,31,47$ at least once. Since they are powers of distinct primes, their product divides $89!$. Hence the smallest value is $s=\boxed{89}$.

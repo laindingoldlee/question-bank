@@ -1,0 +1,12 @@
+There are $21^3=9261$ target lattice points. Count trajectories rather than assuming their illumination events are independent. For a displacement vector $r$ from a target to the firefly, define $H_t(r)$ as the number of length-$t$ step sequences that illuminate that target, including the starting instant. Let $\mathcal A=\{-1,0,1\}^3$ and set $H_0(r)=1$ if $\|r\|<2$ and $0$ otherwise. For $a\in\mathcal A$, let $I(r,a)$ indicate that segment $[r,r+a]$ comes within distance strictly less than two of zero. Then
+\[H_t(r)=\sum_{a\in\mathcal A}\begin{cases}27^{t-1},&I(r,a)=1,\\H_{t-1}(r+a),&I(r,a)=0.\end{cases}\]
+This conditions on the first step: if that segment illuminates the target, every remaining continuation succeeds; otherwise precisely the successful continuations from its endpoint count. For exact testing, put $d=r\cdot a$, $s=a\cdot a$. If $s=0$, test $r\cdot r<4$; if $d\ge0$, use the same test; if $d\le-s$, test $(r+a)\cdot(r+a)<4$; otherwise test $(r\cdot r-4)s<d^2$. These are integer comparisons, including the strict boundary correctly. Evaluating this finite recurrence for $t=1,\ldots,10$ and summing gives
+\[\sum_{r\in\{-10,\ldots,10\}^3}H_{10}(r)=26257330346111913.\]
+By linearity of expectation the required answer is
+\[\boxed{\dfrac{26257330346111913}{9261\cdot27^{10}}=\dfrac{8752443448703971}{635585924776181463}\approx0.01377066909}.\]
+The audit includes the integer-arithmetic recurrence implementation. States in $[-20,20]^3$ suffice, since ten steps change each coordinate by at most ten.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair ux=(1,0),uy=(.45,.35),uz=(0,1);pair R=2ux+uy,Q=ux+uy+uz;draw((-1,0)--(4,0),gray);draw((0,0)--3uy,gray);draw((0,0)--3uz,gray);draw(circle((0,0),2),dashed);draw(R--Q,blue,Arrow);dot(R);dot(Q);label("target",(0,0),(-1,-1));label("$r$",R,(1,0));label("$r+a$",Q,(0,1));label("schematic projection",(1,-2.5));
+\end{asy}
+

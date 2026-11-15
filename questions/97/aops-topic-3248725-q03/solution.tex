@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3248725_2024_emcc_team_round__exeter_math_club_competition
+% Stable identity: aops-topic-3248725-q03
+A chord at distance $d$ from the center of a radius-$R$ circle has squared length $4(R^2-d^2)$, by the perpendicular bisector and Pythagorean theorem. Hence $AB^2=4(R^2-r^2)$, $AC^2=4(R^2-s^2)$, and $DE^2=4(r^2-s^2)=AC^2-AB^2=29^2-21^2=400$. Therefore $\boxed{DE=20}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real R=16,r=sqrt(256-110.25),s=sqrt(256-210.25);pair O=(0,0),A=(16,0),B=16dir(2acos(r/R)*180/pi),C=16dir(-2acos(s/R)*180/pi),D=(s,10),Ep=(s,-10);draw(circle(O,R));draw(circle(O,r),gray);draw(circle(O,s),blue);draw(A--B^^A--C^^D--Ep);draw(O--(A+B)/2^^O--(A+C)/2,dashed);dot("$O$",O,W);label("$A$",A,E);label("$B$",B,N);label("$C$",C,S);label("$D$",D,N);label("$E$",Ep,S);
+\end{asy}

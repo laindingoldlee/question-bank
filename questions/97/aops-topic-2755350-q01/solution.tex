@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2755350_a_geometry_question
+% Stable identity: aops-topic-2755350-q01
+\textbf{(a)} In triangle $ABP$ the angles at $A$ and $B$ are both $30^\circ$, so $PA=PB$ and $P$ lies on the perpendicular bisector $m$ of $AB$. In the same way $R$ lies on the perpendicular bisector of $CD$, which is the same line $m$. Likewise $Q$ and $S$ lie on the perpendicular bisector $n$ of $BC$ and $DA$. The lines $m$ and $n$ are perpendicular and meet at the centre $O$ of the rectangle.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real a=6,h=5;
+pair A=(0,0),B=(a,0),C=(a,h),D=(0,h);
+pair P=(a/2,a/(2*sqrt(3))),R=(a/2,h-a/(2*sqrt(3))),Q=(a-h/(2*sqrt(3)),h/2),Ss=(h/(2*sqrt(3)),h/2),O=(a/2,h/2);
+draw(A--B--C--D--cycle,linewidth(0.8));
+draw(A--P--B,gray);draw(B--Q--C,gray);draw(C--R--D,gray);draw(D--Ss--A,gray);
+draw(P--Q--R--Ss--cycle,linewidth(1));
+draw((a/2,0)--(a/2,h),dashed+gray);draw((0,h/2)--(a,h/2),dashed+gray);
+dot(O);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$P$",P,S);label("$Q$",Q,E);label("$R$",R,N);label("$S$",Ss,W);label("$O$",O,SE,fontsize(8pt));
+label("$m$",(a/2,h),N,fontsize(8pt));label("$n$",(a,h/2),E,fontsize(8pt));
+\end{asy}
+
+The reflection in $m$ swaps $A$ with $B$ and $D$ with $C$, so it maps the pair of trisectors meeting at $Q$ (from $B$ and $C$) onto the pair meeting at $S$ (from $A$ and $D$). Hence it maps $Q$ to $S$, so $O$ is the midpoint of $QS$. Similarly, the reflection in $n$ maps $P$ to $R$, so $O$ is the midpoint of $PR$.
+
+The diagonals $PR$ and $QS$ of $PQRS$ therefore bisect each other and are perpendicular, so $PQRS$ is a parallelogram with perpendicular diagonals, i.e. a $\boxed{\text{rhombus}}$.
+
+(The assumption excludes the degenerate case $AB=\sqrt3\,BC$, where $P=R=O$, and the case $BC=\sqrt3\,AB$, where $Q=S=O$.)
+
+\textbf{(b)}
+\begin{itemize}
+\item \emph{Square.} The rotation by $90^\circ$ about $O$ maps $A\to B\to C\to D\to A$, so it maps $P\to Q\to R\to S\to P$. Then $OP=OQ$, the diagonals of the rhombus are equal, and $PQRS$ is a \textbf{square}.
+\item \emph{Parallelogram.} The half-turn about the centre $O$ swaps $A$ with $C$ and $B$ with $D$. Since $\angle A=\angle C$ and $\angle B=\angle D$, it maps the trisectors at $A$ and $B$ onto those at $C$ and $D$, so $P\leftrightarrow R$ and $Q\leftrightarrow S$. The diagonals of $PQRS$ bisect each other, so $PQRS$ is a \textbf{parallelogram}. In general it is nothing more: for the parallelogram with vertices $(0,0)$, $(5,0)$, $(6,2)$, $(1,2)$, the sides of $PQRS$ are about $1.48$ and $2.19$ and the diagonals are neither equal nor perpendicular.
+\item \emph{Rhombus.} It is a parallelogram, so $PQRS$ is a parallelogram. The diagonal $AC$ bisects the angles at $A$ and $C$, and the reflection in $AC$ swaps $B$ and $D$; it maps the trisectors meeting at $P$ onto those meeting at $S$, so $P\leftrightarrow S$ and $PS\perp AC$. Similarly the reflection in $BD$ gives $P\leftrightarrow Q$ and $PQ\perp BD$. As $AC\perp BD$, we get $PS\perp PQ$, so $PQRS$ is a \textbf{rectangle}. It is not a square in general: for a rhombus of side $4$ with an angle of $1$ radian, its sides are about $1.056$ and $1.003$.
+\end{itemize}

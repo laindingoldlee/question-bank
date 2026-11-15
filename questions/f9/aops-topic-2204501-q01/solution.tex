@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2204501_4x4_boards_and_dominoes
+% Stable identity: aops-topic-2204501-q01
+Colour the grid like a chessboard: $8$ dark and $8$ light squares.
+
+\textbf{Necessary.} Each domino covers one dark and one light square, so the $14$ remaining squares must be $7$ dark and $7$ light. Hence the two removed squares have different colours: at most $8\cdot8=64$ pairs.
+
+\textbf{Sufficient.} The $16$ squares can be visited by a closed path that moves between squares sharing a side and visits each square exactly once (red below). Along this path the colours alternate.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<4;++i) for(int j=0;j<4;++j) if((i+j)%2==0) fill(shift(i,j)*unitsquare,gray(0.8));
+for(int i=0;i<=4;++i){ draw((i,0)--(i,4)); draw((0,i)--(4,i)); }
+pair[] P={(0,0),(1,0),(2,0),(3,0),(3,1),(2,1),(1,1),(1,2),(2,2),(3,2),(3,3),(2,3),(1,3),(0,3),(0,2),(0,1)};
+path c; for(int k=0;k<16;++k) c=c--(P[k]+(0.5,0.5));
+draw(c--cycle,red+linewidth(1));
+\end{asy}
+
+Remove a dark and a light square. They are at positions of different parity along the cycle of $16$ squares, so each of the (at most two) arcs of the cycle between them contains an even number of squares. Each arc is a path of adjacent squares, which can be covered by dominoes on consecutive squares. So every one of the $64$ pairs works.
+
+The answer is $\boxed{64}$.

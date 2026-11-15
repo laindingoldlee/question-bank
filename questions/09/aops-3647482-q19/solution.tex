@@ -1,0 +1,6 @@
+The equal distances from $O$ to $BC$ and $DA$ make these chords equal. Therefore their subtended inscribed angles $\angle BAC$ and $\angle ACD$ are equal, implying $AB\parallel CD$. Since $O$ is inside the quadrilateral, the distance between these parallel sides is $5+3=8$. Put the circle centre at the origin and let its radius be $R$. Set $u=\sqrt{R^2-25}$, $v=\sqrt{R^2-9}$, so the parallel sides have lengths $2u,2v$. A leg has horizontal displacement $v-u$ and vertical displacement 8; its chord length is $2\sqrt{R^2-16}$. Thus $(v-u)^2+64=4(R^2-16)$, which simplifies to $uv=47-R^2$. Squaring gives $(R^2-25)(R^2-9)=(47-R^2)^2$, hence $60R^2=1984$. Therefore $u=\dfrac{11}{\sqrt{15}}$, $v=\dfrac{19}{\sqrt{15}}$. The area is $\dfrac{2u+2v}{2}\cdot8=\boxed{16\sqrt{15}}$. The values satisfy the unsquared equation, so no extraneous radius is being used.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+real u=11/sqrt(15),v=19/sqrt(15),R=sqrt(496/15);pair A=(-u,5),B=(u,5),C=(v,-3),D=(-v,-3),O=(0,0);draw(circle(O,R),gray);draw(A--B--C--D--cycle);draw(O--(0,5)^^O--(0,-3),dashed);pair H=B+dot(O-B,C-B)/dot(C-B,C-B)*(C-B);draw(O--H,dashed);label("$A$",A,(-1,1));label("$B$",B,(1,1));label("$C$",C,(1,-1));label("$D$",D,(-1,-1));label("$O$",O,(-1,0));label("5",(0,2.5),(-1,0));label("3",(0,-1.5),(-1,0));label("4",H/2,(0,1));
+\end{asy}
+

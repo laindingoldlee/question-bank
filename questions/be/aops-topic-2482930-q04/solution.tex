@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2482930_judgefan99s_problem_set
+% Stable identity: aops-topic-2482930-q04
+\textbf{The quadrilateral is a square.} The congruent isosceles triangles $ADC$ and $AFC$ share the base $AC$, so all four base angles $\angle DAC,\angle DCA,\angle FAC,\angle FCA$ are equal, say to $\alpha$. Since $D$ and $F$ are on opposite sides of $AC$, $\angle DAF=2\alpha$, and $\angle DAF=90^\circ$ because $AF\perp AD$. So $\alpha=45^\circ$, the apex angles are $90^\circ$, and $AD=DC=CF=FA$. Hence $AFCD$ is a square; let its side be $s$.
+
+\textbf{Coordinates.} Put $A=(0,0)$, $F=(s,0)$, $C=(s,s)$, $D=(0,s)$. Then $E=\left(\dfrac{4s}{9},0\right)$. Because segment $CB$ crosses side $AF$, the point $B$ lies below the line $AF$. Ray $AC$ makes $45^\circ$ with ray $AF$, so the ray $AB$, which makes $75^\circ$ with $AC$ and points below $AF$, makes $30^\circ$ with $AF$ on the other side:
+\[B=\left(8\cos30^\circ,\,-8\sin30^\circ\right)=\left(4\sqrt3,\,-4\right).\]
+\textbf{Finding $s$.} The points $C$, $E$, $B$ are collinear, so the vectors $E-C=\left(-\dfrac{5s}{9},-s\right)$ and $B-C=\left(4\sqrt3-s,\,-4-s\right)$ are parallel:
+\[\left(-\dfrac{5s}{9}\right)(-4-s)-(-s)\left(4\sqrt3-s\right)=0.\]
+Dividing by $s$: $\dfrac{5(4+s)}{9}+4\sqrt3-s=0$, i.e. $\dfrac{4s}{9}=\dfrac{20}{9}+4\sqrt3$, so
+\[s=5+9\sqrt3.\]
+\textbf{The length.} Now $s-4\sqrt3=5+5\sqrt3$ and $s+4=9+9\sqrt3$, so
+\[CB=\sqrt{\left(5+5\sqrt3\right)^2+\left(9+9\sqrt3\right)^2}=\left(1+\sqrt3\right)\sqrt{25+81}=\boxed{\sqrt{106}+\sqrt{318}}\approx28.13,\]
+which rounds to $\boxed{28}$. (Indeed $B$ is beyond $E$ on ray $CE$, since $B$ is below the line $AF$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real s=5+9*sqrt(3);
+pair A=(0,0), F=(s,0), C=(s,s), D=(0,s), pE=(4*s/9,0), B=(4*sqrt(3),-4);
+draw(A--F--C--D--cycle,linewidth(0.8));
+draw(A--C,dashed);
+draw(C--B,blue+linewidth(0.8));
+draw(A--B,red+linewidth(0.8));
+draw((s-1.2,0)--(s-1.2,1.2)--(s,1.2)); draw((0,s-1.2)--(1.2,s-1.2)--(1.2,s));
+draw(arc(A,3.2,-30,45));
+dot(A);dot(F);dot(C);dot(D);dot(pE);dot(B);
+label("$A$",A,W); label("$F$",F,SE); label("$C$",C,NE); label("$D$",D,NW); label("$E$",pE,NE); label("$B$",B,S);
+label("$75^\circ$",5.3*dir(12));
+label("$8$",(A+B)/2,SW,red);
+\end{asy}

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1376556_a_counting_problem
+% Stable identity: aops-topic-1376556-q01
+Let $c_n$ be the number of such colourings of the $n$ sides of a polygon with $3$ colours, adjacent sides different (the sides form a cycle).
+
+Colour the sides $1,2,\dots,n$ in order, each different from the previous one: $3\cdot2^{n-1}$ ways. These are exactly the valid colourings, except that sides $n$ and $1$ may still have the same colour. In a ``bad'' colouring (side $n$ equal to side $1$), merging sides $n$ and $1$ gives a valid colouring of a cycle of $n-1$ sides, and this correspondence is one-to-one. Hence
+\[
+c_n=3\cdot2^{n-1}-c_{n-1}.
+\]
+For a triangle all three sides must differ: $c_3=3!=6$. Then
+\[
+c_4=3\cdot8-6=18,\qquad c_5=3\cdot16-18=\boxed{30}.
+\]
+(In general $c_n=2^n+2(-1)^n$, which gives $32-2=30$ for $n=5$.)

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2524144_sigmas_problem_thread
+% Stable identity: aops-topic-2524144-q27
+The graph is a $\wedge$ shape with peak $(2,5)$; it meets the $y$-axis at $(0,3)$ and the $x$-axis (for $x>0$) at $(7,0)$. The region is the quadrilateral with vertices $(0,0)$, $(0,3)$, $(2,5)$, $(7,0)$. Split it by the line $x=2$:
+\begin{itemize}
+\item a trapezoid with parallel sides $3$ and $5$ and width $2$: area $\dfrac{3+5}2\cdot2=8$;
+\item a right triangle with legs $5$ and $5$: area $\dfrac{25}2$.
+\end{itemize}
+The total area is $8+\dfrac{25}2=\boxed{\dfrac{41}2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+fill((0,0)--(0,3)--(2,5)--(7,0)--cycle,lightgray);
+draw((-4,0)--(9,0),Arrow(4));draw((0,-1)--(0,6),Arrow(4));
+real f(real x){return -abs(x-2)+5;}
+draw(graph(f,-3.25,7.4),linewidth(0.8));
+draw((2,0)--(2,5),dashed);
+dot((0,3));dot((2,5));dot((7,0));
+label("$(0,3)$",(0,3),W);label("$(2,5)$",(2,5),N);label("$(7,0)$",(7,0),SW);dot((-3,0));label("$(-3,0)$",(-3,0),S);label("$2$",(2,0),S);
+label("$x$",(9,0),S);label("$y$",(0,6),W);
+\end{asy}

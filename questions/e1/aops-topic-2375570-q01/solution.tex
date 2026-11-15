@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2375570_pigeonhole_principle_problem_nice
+% Stable identity: aops-topic-2375570-q01
+Place the rectangle as $0<x<12$, $0<y<7$ (its interior). Cut it into seven pieces: four $3\times4$ rectangles along the bottom and three $4\times3$ rectangles along the top, as shown.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+draw(box((0,0),(12,7)),linewidth(1));
+for(int k=1;k<4;++k) draw((3k,0)--(3k,4));
+draw((0,4)--(12,4)); draw((4,4)--(4,7)); draw((8,4)--(8,7));
+for(int k=0;k<4;++k) label("$3$",(3k+1.5,0),S,fontsize(8pt));
+for(int k=0;k<3;++k) label("$4$",(4k+2,7),N,fontsize(8pt));
+label("$4$",(0,2),W,fontsize(8pt)); label("$3$",(0,5.5),W,fontsize(8pt));
+draw((6,0)--(9,4),dashed+red); label("$5$",(7.5,2),NW,red+fontsize(8pt));
+draw((4,4)--(8,7),dashed+red); label("$5$",(6,5.5),NW,red+fontsize(8pt));
+label("$12$",(6,-0.9),S); label("$7$",(-0.9,3.5),W);
+\end{asy}
+
+To avoid trouble on the cutting lines, give each piece only its left and bottom edges: the pieces are the half-open rectangles
+\[[3i,3i+3)\times[0,4)\ (i=0,1,2,3),\qquad[4j,4j+4)\times[4,7)\ (j=0,1,2).\]
+Every point of the interior of the big rectangle lies in exactly one piece.
+
+There are $8$ points and $7$ pieces, so by the pigeonhole principle two of the points, $(x,y)$ and $(x',y')$, lie in the same piece. In a bottom piece $|x-x'|<3$ and $|y-y'|<4$; in a top piece $|x-x'|<4$ and $|y-y'|<3$. Either way
+\[\sqrt{(x-x')^2+(y-y')^2}<\sqrt{3^2+4^2}=5.\]
+So these two points are less than $5$ apart. $\blacksquare$
+
+(Using closed pieces would only give a distance of at most $5$, since two points could sit at opposite corners of a piece; the half-open pieces give the strict inequality.)

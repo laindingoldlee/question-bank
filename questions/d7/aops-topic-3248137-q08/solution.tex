@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3248137_some_problems
+% Stable identity: aops-topic-3248137-q08
+Reflect $P$ through $N$ to construct $Q=2N-P$. Since $M,N$ are midpoints, $AB=2BM$ and $BC=2BN$. Also $C=2N-B$, so $CD=2CP=2BQ$. Therefore $B$ is equidistant from $M,N,Q$: it is their circumcentre, constructed as the intersection of two perpendicular bisectors. These three points are noncollinear because $M,N,P$ are. Reflect $B$ through $M$ to get $A$, reflect $B$ through $N$ to get $C$, and reflect $C$ through $P$ to get $D$. These operations recover the original midpoint relations and equal side lengths, proving correctness and uniqueness.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(2,0),C=(3,sqrt(3)),D=(1,sqrt(3)),M=(A+B)/2,Np=(B+C)/2,P=(C+D)/2,Q=2Np-P;draw(A--B--C--D--cycle);draw(M--Np--Q--cycle,dashed);draw(B--M^^B--Np^^B--Q,blue);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$M$",M,S);label("$N$",Np,E);label("$P$",P,N);label("$Q$",Q,S);
+\end{asy}

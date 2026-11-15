@@ -1,0 +1,21 @@
+Put $C=(0,0)$, $I_c=(v,0)$, and $L=(l,0)$, with $v,l>0$. Let the exradius be $r$ and write $D=(d,e)$. Because $CD=I_cD=r$,
+\[
+d^2+e^2=r^2,\qquad(d-v)^2+e^2=r^2,
+\]
+so $d=\dfrac{v}{2}$. Line $AB$ is tangent at $D$, hence $(L-D)\cdot(I_c-D)=0$. Thus
+\[
+\left(l-\dfrac{v}{2}\right)\dfrac{v}{2}+e^2=0.
+\]
+Using $e^2=r^2-\dfrac{v^2}{4}$ gives $l=v-\dfrac{2r^2}{v}$.
+
+Since $CP$ is tangent, $CP\perp I_cP$. Writing $P=(p_x,p_y)$ yields $|P|^2=vp_x$; the circle equation yields $|P|^2-2vp_x+v^2=r^2$. Together they give $p_x=v-\dfrac{r^2}{v}$. The same holds for $Q$. Therefore line $PQ$ is vertical with
+\[
+x=v-\dfrac{r^2}{v}=\dfrac{v+l}{2},
+\]
+the coordinate of the midpoint of $I_cL$. This proves the assertion.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real h=sqrt(11);pair C=(0,0),I=(10,0),L=(2.8,0),D=(5,h),A=(14/(5-.75h),.75*14/(5-.75h)),B=(14/(5+.75h),-.75*14/(5+.75h)),P=(6.4,4.8),Q=(6.4,-4.8);draw(circle(I,6),gray);draw(C--P,blue);draw(C--Q,blue);draw(A--B);draw(C--I,dashed);draw(C--D--I,red);draw(P--Q,heavygreen);label("$C$",C,W);label("$A$",A,NW);label("$B$",B,SW);label("$D$",D,W);label("$L$",L,S);label("$I_c$",I,(1,0));label("$P$",P,N);label("$Q$",Q,S);
+\end{asy}

@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2674568_standard_random_walk
+% Stable identity: aops-topic-2674568-q01
+The answer is $\boxed{1}$. (Summing over paths of each length, as one might try, gives a complicated series; instead we show the walk is recurrent.)
+
+\emph{Step 1: returns to the origin.} Let $u=x+y$ and $v=x-y$. Each step changes $(u,v)$ by $(\pm1,\pm1)$ with all four sign choices equally likely, so $u$ and $v$ perform independent simple $\pm1$ walks. The ant is at the origin after $2n$ steps exactly when $u=v=0$, so
+\[P\left(\text{at }(0,0)\text{ after }2n\text{ steps}\right)=a_n^2,\qquad a_n=\dfrac{1}{4^n}\dbinom{2n}{n}.\]
+
+\emph{Step 2: a lower bound.} $a_1^2=\dfrac14$ and $\dfrac{a_n}{a_{n-1}}=\dfrac{2n-1}{2n}$. If $a_{n-1}^2\ge\dfrac{1}{4(n-1)}$, then
+\[a_n^2\ge\dfrac{(2n-1)^2}{4(n-1)\cdot4n^2}\ge\dfrac1{4n},\]
+because $(2n-1)^2\ge4n(n-1)$. So $a_n^2\ge\dfrac1{4n}$ for all $n$, and the expected number of returns to the origin, $\displaystyle\sum_{n\ge1}a_n^2\ge\sum_{n\ge1}\dfrac{1}{4n}$, is infinite.
+
+\emph{Step 3: certain return.} Let $p$ be the probability of ever returning to the origin. Each time the ant is at the origin, the future is a fresh copy of the walk, so the number $R$ of returns satisfies $P(R\ge k)=p^k$. If $p<1$, then $E[R]=\displaystyle\sum_{k\ge1}p^k=\dfrac{p}{1-p}<\infty$, contradicting Step 2. So $p=1$, and the ant returns to the origin infinitely often with probability $1$.
+
+\emph{Step 4: reaching $(2,3)$.} Each excursion from the origin starts with the moves right, right, up, up, up with probability $4^{-5}$, and then visits $(2,3)$ before returning. The excursions are independent, so the probability that none of the first $k$ excursions visits $(2,3)$ is at most $\left(1-4^{-5}\right)^k\to0$. Hence the ant reaches $(2,3)$ with probability $1$.

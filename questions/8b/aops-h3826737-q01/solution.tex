@@ -1,0 +1,35 @@
+Dividing by $1+k$ and completing the square gives
+\[
+x^2+\left(y-\dfrac{2k}{1+k}\right)^2
+=\dfrac{2(k^2+1)}{(k+1)^2}>0.
+\]
+Thus each is a genuine circle. The two expressions multiplied by $1,k$ vanish simultaneously when $y=1$ and $x^2=1$, so the fixed points are $\boxed{(-1,1),(1,1)}$.
+
+Substitute $y=x^2$ into the family equation:
+\[
+(1+k)x^4+(1-3k)x^2+2k-2
+=(x^2-1)((1+k)x^2+2-2k).
+\]
+Tangency occurs exactly when this intersection polynomial has a repeated real root: its derivative is the derivative of the circle equation along the smooth parabola, so a zero derivative means the two tangent directions agree.
+
+At $x=\pm1$, a repeated root requires $k=3$. Any other repeated root must be a repeated root of the second factor, which requires $x=0,k=1$. Both work. Therefore the circles are
+\[
+\boxed{x^2+(y-1)^2=1}
+\]
+(tangent at the origin) and
+\[
+\boxed{x^2+\left(y-\dfrac{3}{2}\right)^2=\dfrac{5}{4}}
+\]
+(tangent at both fixed points).
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real k=1,h=2k/(1+k),r=sqrt(2*(k*k+1))/(k+1);draw(circle((0,h),r),blue);path p;for(int j=0;j<=100;++j){real x=-1.65+3.3j/100;p=p--(x,x*x);}draw(p,red);draw((-1.9,0)--(1.9,0),gray);draw((0,-.2)--(0,3),gray);dot((-1,1));dot((1,1));label("$(-1,1)$",(-1,1),W);label("$(1,1)$",(1,1),E);label("$y=x^2$",(1.5,2.25),NE);label("$k=1$",(0,-.5));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real k=3,h=2k/(1+k),r=sqrt(2*(k*k+1))/(k+1);draw(circle((0,h),r),blue);path p;for(int j=0;j<=100;++j){real x=-1.65+3.3j/100;p=p--(x,x*x);}draw(p,red);draw((-1.9,0)--(1.9,0),gray);draw((0,-.2)--(0,3),gray);dot((-1,1));dot((1,1));label("$(-1,1)$",(-1,1),W);label("$(1,1)$",(1,1),E);label("$y=x^2$",(1.5,2.25),NE);label("$k=3$",(0,-.5));
+\end{asy}

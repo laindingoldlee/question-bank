@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1410660_inequalities
+% Stable identity: aops-topic-1410660-q01
+The three boundary lines meet in pairs at
+\[
+y=-1,\ y=x+2:\ (-3,-1);\qquad y=-1,\ 3x+5y=10:\ (5,-1);\qquad y=x+2,\ 3x+5y=10:\ 8x+10=10,\ (0,2).
+\]
+The feasible region is the triangle with these vertices (it lies below the line $3x+5y=10$, below $y=x+2$ and above $y=-1$):
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair P1=(-3,-1),P2=(5,-1),P3=(0,2);
+fill(P1--P2--P3--cycle,palegray);
+draw((-5,0)--(7,0),Arrow(6)); draw((0,-3)--(0,4.5),Arrow(6));
+label("$x$",(7,0),E); label("$y$",(0,4.5),N);
+draw(P1--P2--P3--cycle,blue+linewidth(0.9));
+dot(P1);dot(P2);dot(P3);
+label("$(-3,-1)$",P1,SW); label("$(5,-1)$",P2,SE); label("$(0,2)$",P3,NE); label("$y=-1$",(1.5,-1),S); label("$y=x+2$",(-1.5,0.5),NW); label("$3x+5y=10$",(2.5,0.5),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+A linear function on a triangle takes its maximum and minimum at vertices (on each segment it changes linearly, so its extreme values on a segment are at the ends). At the vertices,
+\[
+4x+3y:\qquad -12-3=-15,\qquad 20-3=17,\qquad 0+6=6 .
+\]
+So the maximum is $17$, the minimum is $-15$, and their mean is $\dfrac{17+(-15)}{2}=\boxed{1}$.

@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2038154_problems
+% Stable identity: aops-topic-2038154-q02
+The two given lines are parallel; their distance apart is
+\[
+\dfrac{|6-1|}{\sqrt{4^2+3^2}}=1 .
+\]
+A line crossing them at angle \(\varphi\) cuts off a segment of length \(\dfrac{1}{\sin\varphi}\). This equals \(\sqrt2\) iff \(\varphi=45^\circ\).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real l1(real x){return (-1-4x)/3;} real l2(real x){return (-6-4x)/3;}
+draw(graph(l1,-2.5,2.6),gray); draw(graph(l2,-3.2,1.7),gray);
+real m1(real x){return 7x-5;} real m2(real x){return (15-x)/7;}
+draw(graph(m1,-0.2,1.1),blue+linewidth(0.9)); draw(graph(m2,-3.5,2.8),red+linewidth(0.9));
+dot((1,2)); label("$(1,2)$",(1,2),NE);
+draw((-3.6,0)--(3,0),Arrow(4)); draw((0,-5.5)--(0,3),Arrow(4));
+label("$4x+3y+1=0$",(2.6,l1(2.6)),E,gray+fontsize(8pt)); label("$4x+3y+6=0$",(1.7,l2(1.7)),E,gray+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The given lines have slope \(-\dfrac{4}{3}\). A line of slope \(m\) makes a \(45^\circ\) angle with them iff
+\[
+\left|\dfrac{m+\dfrac{4}{3}}{1-\dfrac{4}{3}m}\right|=1\iff |3m+4|=|3-4m| .
+\]
+So \(3m+4=3-4m\), giving \(m=-\dfrac{1}{7}\), or \(3m+4=4m-3\), giving \(m=7\). (A vertical line makes angle \(\arctan\dfrac{3}{4}\ne45^\circ\) with them, so it does not work.) Through \((1,2)\) the lines are
+\[
+\boxed{7x-y-5=0\quad\text{and}\quad x+7y-15=0}.
+\]

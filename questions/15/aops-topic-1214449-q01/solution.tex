@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1214449_please_help_me_with_this_canadian_mathematica_question
+% Stable identity: aops-topic-1214449-q01
+The diameters are in ratio $4:1$, so the radii are too, and the areas are in ratio $16:1$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0); filldraw(circle((2,0),2),lightgray,black+linewidth(0.9)); filldraw(circle((0.5,0),0.5),white,blue);
+draw((0,0)--(4,0)); dot(A); dot((1,0)); dot((4,0)); label("$A$",A,W); label("$B$",(1,0),SE); label("$C$",(4,0),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The small circle covers $\dfrac{1}{16}$ of the large circle, so the shaded part is $1-\dfrac{1}{16}=\dfrac{15}{16}$ of it: $\boxed{\textbf{(E)}}$.

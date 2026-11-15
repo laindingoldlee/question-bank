@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2949413_2019_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2949413-q15
+Let the circumradius be $R$ and put $A=(R,0)$, $B=(\dfrac{R}{\sqrt2},\dfrac{R}{\sqrt2})$, $H=(\dfrac{R}{\sqrt2},-\dfrac{R}{\sqrt2})$. Line $OM$ makes angle $22.5^\circ$ with the positive axis, so $BK=\dfrac{R}{\sqrt2}(1-\tan22.5^\circ)$. Since $BH=R\sqrt2$ and $\tan22.5^\circ=\sqrt2-1$, their product is $R^2(2-\sqrt2)$. But this is exactly $AB^2$, by the chord formula or cosine rule. Thus $\boxed{36}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] p;path q;for(int j=0;j<8;++j){p.push(3*dir(45*j));q=q--p[j];}pair O=(0,0),M=(p[0]+p[1])/2,K=extension(p[1],p[7],O,M);draw(q--cycle);draw(p[1]--p[7]^^O--M);label("$A$",p[0],E);label("$B$",p[1],NE);label("$H$",p[7],SE);label("$O$",O,W);label("$M$",M,E);label("$K$",K,W);
+\end{asy}

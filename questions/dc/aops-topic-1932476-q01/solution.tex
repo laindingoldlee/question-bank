@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1932476_geometric_probability
+% Stable identity: aops-topic-1932476-q01
+Measure times in minutes after 10:00, so Dave's time $D$ and Kathy's time $K$ form a uniform point in the square $[0,120]^2$. They meet exactly when $|D-K|\le15$, the shaded band around the diagonal.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real L=4;
+path band=(0,0)--(0.5,0)--(L,L-0.5)--(L,L)--(L-0.5,L)--(0,0.5)--cycle;
+fill(band,palegray);
+draw((0,0)--(L,0)--(L,L)--(0,L)--cycle,linewidth(1));
+draw((0.5,0)--(L,L-0.5));draw((0,0.5)--(L-0.5,L));
+label("$0$",(0,0),SW);label("$120$",(L,0),S);label("$120$",(0,L),W);
+label("$D$",(L/2,0),2*S);label("$K$",(0,L/2),2*W);
+label(rotate(45)*Label("$|D-K|\le15$"),(L/2,L/2));
+label("$15$",(0.25,0),S,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The complement consists of two right isosceles triangles with legs $120-15=105$, of total area $105^2$. So the probability is
+\[
+1-\dfrac{105^2}{120^2}=1-\left(\dfrac{7}{8}\right)^2=\boxed{\dfrac{15}{64}} .
+\]

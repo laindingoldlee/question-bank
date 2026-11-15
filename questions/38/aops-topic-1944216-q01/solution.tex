@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1944216_2019_mc_problem
+% Stable identity: aops-topic-1944216-q01
+All regular octagons are similar. Multiplying lengths by $3$ multiplies areas by $3^2=9$, so the area is
+\[
+9(2+2\sqrt2)=18+18\sqrt2=18(1+\sqrt2).
+\]
+(Directly: the octagon of side $3$ is a square of side $3+2\cdot\dfrac{3}{\sqrt2}=3+3\sqrt2$ with four corner right isosceles triangles of legs $\dfrac{3}{\sqrt2}$ removed, giving $(3+3\sqrt2)^2-4\cdot\dfrac{9}{4}=27+18\sqrt2-9=18+18\sqrt2$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real s=3,t=3/sqrt(2);
+pair[] V={(t,0),(t+s,0),(2t+s,t),(2t+s,t+s),(t+s,2t+s),(t,2t+s),(0,t+s),(0,t)};
+draw((0,0)--(2t+s,0)--(2t+s,2t+s)--(0,2t+s)--cycle,dashed+gray(0.5));
+fill(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--V[7]--cycle,gray(0.85));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--V[7]--cycle,linewidth(1));
+label("$3$",(V[0]+V[1])/2,N);label("$\dfrac{3}{\sqrt2}$",(t/2,0),S);label("$\dfrac{3}{\sqrt2}$",(0,t/2),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+If $a(b+\sqrt c)=18+18\sqrt2$ with $c$ squarefree, then comparing irrational parts gives $a\sqrt c=18\sqrt2$, so $c=2$ and $a=18$, and then $ab=18$ gives $b=1$. Hence $a+b+c=18+1+2=\boxed{21}$.

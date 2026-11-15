@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1290331_intro_to_geometry_aops_square_problems
+% Stable identity: aops-topic-1290331-q01
+The diagonal $TU$ of a square bisects the right angle at $T$, so $\angle MTK=\angle UTY=\boxed{45^\circ}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair T=(0,0),Y=(2,0),U=(2,2),I=(0,2),M=(1,1); real s=sqrt(2); pair K=(s,0);
+draw(T--Y--U--I--cycle); draw(T--U,gray); draw(Y--I,gray); draw(M--K,blue);
+draw(arc(T,0.45,0,45),red); label("$45^\circ$",T+0.6*dir(22),red);
+label("$T$",T,SW); label("$Y$",Y,SE); label("$U$",U,NE); label("$I$",I,NW); label("$M$",M,N); label("$K$",K,S);
+dot(M); dot(K);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangle $TKM$ is isosceles with $TK=TM$, so its base angles at $K$ and $M$ are equal:
+\[
+\angle TMK=\dfrac{180^\circ-45^\circ}{2}=\boxed{67.5^\circ}.
+\]
+(Since $TM=\dfrac{\sqrt2}{2}\,TY<TY$, the point $K$ really lies on side $TY$.)

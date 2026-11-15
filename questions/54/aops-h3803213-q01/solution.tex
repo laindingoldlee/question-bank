@@ -1,0 +1,7 @@
+Every outer vertex has two inner neighbours, so the first step reaches an inner vertex. Each inner vertex has two inner and two outer neighbours. Thus the second step is inner with probability $\dfrac{1}{2}$ and outer with probability $\dfrac{1}{2}$. Only the former case can end outer after the third step, again with probability $\dfrac{1}{2}$. The answer is $\boxed{\dfrac{1}{4}}$. Counting all distinct three-step paths uniformly would be wrong: a path whose second vertex after the start is outer has a final branching factor of $2$, while one staying inner has a final branching factor of $4$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] v={(-1,-1),(1,-1),(1,1),(-1,1)};pair[] w={(0,-2),(2,0),(0,2),(-2,0)};for(int i=0;i<4;++i){draw(v[i]--v[(i+1)%4]);draw(v[i]--w[i]--v[(i+1)%4]);dot(v[i]);dot(w[i]);label("$I_"+string(i+1)+"$",v[i],-.3v[i]);label("$O_"+string(i+1)+"$",w[i],w[i]);}
+\end{asy}

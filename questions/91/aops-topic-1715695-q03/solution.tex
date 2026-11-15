@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1715695_i_need_help_with_some_pretty_moderate_math_counts_questions
+% Stable identity: aops-topic-1715695-q03
+\textbf{At most $8$ cubes fit.} A cube placed in the box occupies $[a,a+4]\times[b,b+4]\times[c,c+4]$ with $0\le a,b,c\le6$. The open interval $(a,a+4)$ contains $3.5$ when $a<3.5$ and contains $6.5$ when $a>2.5$, so it always contains $3.5$ or $6.5$. Hence the interior of every cube contains one of the $8$ points whose coordinates are all $3.5$ or $6.5$. Non-overlapping cubes have disjoint interiors, so each of these points lies inside at most one cube, and there are at most $8$ cubes.
+
+\textbf{Eight cubes fit}, in a $2\times2\times2$ block filling an $8\times8\times8$ corner of the box:
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair P(real x,real y,real z){return (x+0.42*z,y+0.32*z);}
+pen blk=linewidth(0.9);
+draw(P(0,0,10)--P(10,0,10),dashed+gray);draw(P(0,0,10)--P(0,10,10),dashed+gray);draw(P(0,0,10)--P(0,0,0),dashed+gray);
+// block of eight 4-cubes, front, top and right faces
+fill(P(0,0,0)--P(8,0,0)--P(8,8,0)--P(0,8,0)--cycle,rgb(0.80,0.88,1));
+fill(P(0,8,0)--P(8,8,0)--P(8,8,8)--P(0,8,8)--cycle,rgb(0.70,0.80,0.98));
+fill(P(8,0,0)--P(8,0,8)--P(8,8,8)--P(8,8,0)--cycle,rgb(0.62,0.74,0.95));
+pen bl=blue+linewidth(0.7);
+draw(P(0,0,0)--P(8,0,0)--P(8,8,0)--P(0,8,0)--cycle,bl);
+draw(P(0,8,0)--P(0,8,8)--P(8,8,8)--P(8,0,8)--P(8,0,0),bl);draw(P(8,8,0)--P(8,8,8),bl);
+draw(P(4,0,0)--P(4,8,0)--P(4,8,8),bl);draw(P(0,4,0)--P(8,4,0)--P(8,4,8),bl);
+draw(P(0,8,4)--P(8,8,4)--P(8,0,4),bl);
+// box 10 x 10 x 10
+draw(P(0,0,0)--P(10,0,0)--P(10,10,0)--P(0,10,0)--cycle,blk);
+draw(P(0,10,0)--P(0,10,10)--P(10,10,10)--P(10,0,10)--P(10,0,0),blk);draw(P(10,10,0)--P(10,10,10),blk);
+label("$10$",P(5,10,10),N);label("$10$",P(0,5,0),W);label("$10$",P(10,0,5),SE);
+label("$4$",P(2,0,0),S);label("$4$",P(6,0,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+They occupy $8\cdot64=512$ of the $1000$ cubic units, so the fraction filled is $\dfrac{512}{1000}=\boxed{51.2\%}$.

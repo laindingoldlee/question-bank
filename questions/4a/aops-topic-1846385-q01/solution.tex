@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1846385_find_the_vertical_distance_covered
+% Stable identity: aops-topic-1846385-q01
+Let $O$ be the pivot and let $J_1$, $J_2$ be the positions of the end of the jib at $30^\circ$ and $60^\circ$. In the right triangles formed with the horizontal through $O$, the heights of the end above $O$ are
+\[
+10\sin30^\circ=10\cdot\dfrac{1}{2}=5\text{ m}\qquad\text{and}\qquad 10\sin60^\circ=10\cdot\dfrac{\sqrt3}{2}=5\sqrt3\text{ m}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+pair J1=10*dir(30),J2=10*dir(60);
+draw((-0.8,0)--(11,0),gray(0.5));
+draw(O--J1,linewidth(1));draw(O--J2,linewidth(1));
+draw(J1--(J1.x,0),dashed);draw(J2--(J2.x,0),dashed);
+draw(J2--(J1.x,J2.y),dotted);
+draw((J1.x+0.9,J1.y)--(J1.x+0.9,J2.y),red+linewidth(0.9),Arrows(5));
+draw(J1--(J1.x+1.1,J1.y),dotted);draw((J1.x,J2.y)--(J1.x+1.1,J2.y),dotted);
+draw(arc(O,1.6,0,30));draw(arc(O,2.4,0,60));
+label("$30^\circ$",2.25*dir(14),fontsize(9pt));label("$60^\circ$",3.15*dir(47),fontsize(9pt));
+dot(O);dot(J1);dot(J2);
+label("$O$",O,SW);label("$J_1$",J1,SE);label("$J_2$",J2,N);
+label("$10$",0.36*J1,SE);label("$10$",(O+J2)/2,W);
+label("$5$",(J1.x,J1.y/2),E);label("$5\sqrt{3}$",(J2.x,J2.y/2),W);
+label("$5\sqrt{3}-5$",(J1.x+0.9,(J1.y+J2.y)/2),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the end rises by $\boxed{\left(5\sqrt3-5\right)\text{ m}}\approx3.66$ m. (The value $5$ m is only the starting height $10\sin30^\circ$, not the change in height.)

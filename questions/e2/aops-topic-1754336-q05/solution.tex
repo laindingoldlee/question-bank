@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h1754336_2010_national_mathcounts_target_5
+% Stable identity: aops-topic-1754336-q05
+The diagonals of a rhombus bisect each other at right angles, so with centre $O$ the half-diagonals are $1$ and $2$, and each side is $\sqrt{1^2+2^2}=\sqrt5$. The area is $\dfrac{2\cdot4}{2}=4$. The inscribed circle has centre $O$ and touches each side, so its radius $r$ is the height from $O$ in each of the four right triangles $OAB,OBC,OCD,ODA$ with hypotenuse $\sqrt5$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(-2,0),B=(0,-1),C=(2,0),D=(0,1),O=(0,0);
+real r=2/sqrt(5);
+pair T=O+r*dir(degrees(D-C)+90+180);
+pair u=unit(D-C); pair T2=C+dot(O-C,u)*u;
+fill(A--B--C--D--cycle,paleblue);
+filldraw(circle(O,r),white,blue+linewidth(0.8));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,dashed);draw(B--D,dashed);
+draw(O--T2,red+linewidth(0.8));
+pair v=unit(O-T2);
+draw(T2+0.12*u--T2+0.12*u+0.12*v--T2+0.12*v);
+dot(O);
+label("$A$",A,W);label("$B$",B,S);label("$C$",C,E);label("$D$",D,N);label("$O$",O,SW);
+label("$r$",(O+T2)/2,dir(-27),red);
+label("$2$",(-1,0),S);label("$1$",(0,-0.5),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence
+\[
+4=4\cdot\dfrac{1}{2}\cdot\sqrt5\cdot r\quad\Longrightarrow\quad r=\dfrac{2}{\sqrt5},\qquad r^2=\dfrac{4}{5} .
+\]
+The area outside the circle is
+\[
+4-\dfrac{4\pi}{5}\approx4-2.513=1.487\approx\boxed{1.5}\text{ square feet}.
+\]
+The student's error is the base of the triangles: each right triangle $OAB$ has hypotenuse $AB=\sqrt5$, not $2\sqrt5$ (the half-diagonals are $1$ and $2$, not $2$ and $4$).

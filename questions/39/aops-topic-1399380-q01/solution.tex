@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1399380_a_radical_problem
+% Stable identity: aops-topic-1399380-q01
+Let $a_n=\sqrt{7+\sqrt{7^2+\sqrt{\cdots+\sqrt{7^{2^n}}}}}$ and let $g_k=\sqrt{1+\sqrt{1+\cdots+\sqrt{1}}}$ with $k$ square roots.
+
+\textbf{Pulling out the powers of $7$.} Work from the inside. The innermost radical is $\sqrt{7^{2^n}}=7^{2^{n-1}}g_1$. If the radical starting at level $j+1$ equals $7^{2^{j}}g_m$, then the radical starting at level $j$ is
+\[
+\sqrt{7^{2^j}+7^{2^j}g_m}=7^{2^{j-1}}\sqrt{1+g_m}=7^{2^{j-1}}g_{m+1}.
+\]
+Repeating this up to the outermost level ($j=0$, with $7^{2^{-1}}=\sqrt7$) gives $a_n=\sqrt7\,g_{n+1}$.
+
+\textbf{The limit of $g_k$.} Let $\varphi=\dfrac{1+\sqrt5}{2}$, so $\varphi^2=\varphi+1$. We have $g_1=1<\varphi$, and if $g_k<\varphi$ then $g_{k+1}=\sqrt{1+g_k}<\sqrt{1+\varphi}=\varphi$. Also $g_{k+1}>g_k$, because $g_k^2-g_k-1<0$ for $0<g_k<\varphi$, so $g_k^2<1+g_k=g_{k+1}^2$. An increasing sequence bounded above converges; its limit $L>0$ satisfies $L=\sqrt{1+L}$, so $L^2=L+1$ and $L=\varphi$.
+
+Therefore the value is
+\[
+\sqrt7\,\varphi=\boxed{\dfrac{\sqrt7+\sqrt{35}}{2}}\approx4.2809 .
+\]

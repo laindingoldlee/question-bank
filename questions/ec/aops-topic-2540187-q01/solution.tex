@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2540187_range_of_perimeter_of_triangle_inscribed_in_circle
+% Stable identity: aops-topic-2540187-q01
+Let the triangle have angles $A$, $B$, $C$. By the extended law of sines with circumradius $1$, its sides are $2\sin A$, $2\sin B$, $2\sin C$, so the perimeter is
+\[P=2\left(\sin A+\sin B+\sin C\right).\]
+\textbf{Upper bound.} For $0<u,v<\pi$,
+\[\sin u+\sin v=2\sin\dfrac{u+v}2\cos\dfrac{u-v}2\le2\sin\dfrac{u+v}2,\]
+with equality when $u=v$. Apply this three times, using the extra angle $60^\circ$:
+\[\sin A+\sin B+\sin C+\sin60^\circ\le2\sin\dfrac{A+B}2+2\sin\dfrac{C+60^\circ}2\le4\sin\dfrac{A+B+C+60^\circ}{4}=4\sin60^\circ.\]
+Hence $\sin A+\sin B+\sin C\le3\sin60^\circ=\dfrac{3\sqrt3}2$ and $P\le3\sqrt3$, with equality for the equilateral triangle ($A=B=C=60^\circ$).
+
+\textbf{All values in between occur.} Put the vertices at angles $0$, $t$, $2t$ on the circle, with $0<t\le\dfrac{2\pi}{3}$. The sides are chords of central angles $t,t,2t$, so the perimeter is
+\[g(t)=4\sin\dfrac t2+2\sin t.\]
+This is continuous, tends to $0$ as $t\to0$, and $g\left(\dfrac{2\pi}3\right)=3\sqrt3$. By the intermediate value theorem every value in $\left(0,3\sqrt3\right]$ is a perimeter. A triangle has positive perimeter, so $0$ is not attained.
+
+The set of possible perimeters is $\boxed{\left(0,\,3\sqrt3\,\right]}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+draw(circle(O,1));
+pair A=dir(100),B=dir(200),C=dir(320);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(dir(90)--dir(210)--dir(330)--cycle,dashed);
+dot(O);label("$O$",O,S);label("$1$",0.76*dir(30),NW);draw(O--dir(30));
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,SE);
+\end{asy}
+
+The dashed triangle is the equilateral one, with the largest perimeter $3\sqrt3$.

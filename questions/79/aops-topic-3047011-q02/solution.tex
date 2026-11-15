@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3047011_simple_egyptian_fractions
+% Stable identity: aops-topic-3047011-q02
+Assume $a\le b$. The positive Pythagorean pairs with hypotenuse 25 are $(7,24)$ and $(15,20)$. Completeness follows by checking $1\le a\le17$ for a square value of $625-a^2$. For $(7,24)$, $\dfrac{1}{7}>\dfrac{1}{24}+\dfrac{1}{25}$, so the triangle inequality fails. For $(15,20)$, the largest side satisfies $\dfrac{1}{15}<\dfrac{1}{20}+\dfrac{1}{25}$, so a triangle exists. Hence $\boxed{a+b=35}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(1.0/15,0);real x=((1.0/25)^2+(1.0/15)^2-(1.0/20)^2)/(2.0/15);pair C=(x,sqrt((1.0/25)^2-x*x));draw(A--B--C--cycle);label("$\dfrac{1}{15}$",(A+B)/2,S);label("$\dfrac{1}{25}$",(A+C)/2,NW);label("$\dfrac{1}{20}$",(B+C)/2,NE);
+\end{asy}

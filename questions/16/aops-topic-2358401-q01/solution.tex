@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2358401_maximum
+% Stable identity: aops-topic-2358401-q01
+Let $F=x^2y+y^2z+z^2x$. Both $F$ and the condition are unchanged by the cyclic shift $(x,y,z)\to(y,z,x)$, and a cyclic shift can bring any of the three variables to the middle position. So we may assume that $y$ lies between $x$ and $z$, that is, $(y-x)(y-z)\le0$.
+
+\textbf{A key identity.} Expanding,
+\[F+xyz-y(x+z)^2=y^2z+z^2x-xyz-yz^2=z\bigl(y^2-xy-yz+zx\bigr)=z(y-x)(y-z).\]
+Since $z\ge0$ and $(y-x)(y-z)\le0$, this gives
+\[F\le F+xyz\le y(x+z)^2.\]
+
+\textbf{AM-GM.} Writing $y(x+z)^2=4\cdot y\cdot\dfrac{x+z}{2}\cdot\dfrac{x+z}{2}$ and applying AM-GM to the three nonnegative numbers $y$, $\dfrac{x+z}{2}$, $\dfrac{x+z}{2}$, whose sum is $x+y+z=9$,
+\[y(x+z)^2\le4\left(\dfrac{9}{3}\right)^3=108.\]
+So $F\le108$.
+
+\textbf{Equality.} For $(x,y,z)=(6,3,0)$ we get $F=36\cdot3+0+0=108$ (here $y=3$ lies between $6$ and $0$, $xyz=0$, $z=0$, and $y=\dfrac{x+z}{2}$, so every inequality above is an equality). The maximum value is $\boxed{108}$, attained at $(6,3,0)$ and its cyclic shifts $(3,0,6)$, $(0,6,3)$.

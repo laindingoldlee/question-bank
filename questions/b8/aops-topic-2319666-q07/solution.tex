@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2319666_a_lot_of_not_very_hard_cp_problems_keeping_yall_busy
+% Stable identity: aops-topic-2319666-q07
+In each round, ``three heads'' ($H$) has probability $p=\dfrac18$ and ``a six'' ($X$) has probability $q=\dfrac16$, independently. What matters after a round is which of $H$, $X$ happened in it. Let $u$, $a$, $b$, $c$ be the probabilities that the coins win, starting after a round with neither event, with $H$ only, with $X$ only, and with both, respectively. (The start is like ``neither''.) The four outcomes of a round have probabilities
+\[\Pr(H\text{ only})=\dfrac{5}{48},\quad\Pr(X\text{ only})=\dfrac{7}{48},\quad\Pr(\text{both})=\dfrac1{48},\quad\Pr(\text{neither})=\dfrac{35}{48}.\]
+Conditioning on the next round:
+\begin{itemize}
+\item after neither: $u=\dfrac5{48}a+\dfrac7{48}b+\dfrac1{48}c+\dfrac{35}{48}u$;
+\item after $H$ only: an $H$ wins at once (a six cannot complete a pair yet), so $a=\dfrac18+\dfrac7{48}b+\dfrac{35}{48}u$;
+\item after $X$ only: an $X$ loses at once, so $b=\dfrac5{48}a+\dfrac{35}{48}u$;
+\item after both: $H$ without $X$ wins, $X$ loses (with $H$ it is a tie, which is not a win), so $c=\dfrac{5}{48}+\dfrac{35}{48}u$.
+\end{itemize}
+Substituting $b$ into the equation for $a$ gives $\dfrac{2269}{2304}a=\dfrac{288+1925u}{2304}$, so $a=\dfrac{288+1925u}{2269}$ and then $b=\dfrac{30+1855u}{2269}$. The first equation reads $13u=5a+7b+c$; multiplying by $2269\cdot48$,
+\[1415856u=48(1650+22610u)+2269(5+35u)=90545+1164695u,\]
+so $251161u=90545$ and
+\[u=\boxed{\dfrac{90545}{251161}}\approx0.3605.\]
+(A tie, with both pairs completed in the same round, has probability $\dfrac{2269}{251161}$, and the die wins first with probability $\dfrac{158347}{251161}$.)

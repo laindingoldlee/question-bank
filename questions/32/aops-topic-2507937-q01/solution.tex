@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2507937_mathmaze_problem_11201
+% Stable identity: aops-topic-2507937-q01
+Let $r$ be the common radius. The centres lie on the line midway between $AB$ and $CD$, at distance $r$ from each, so $BC=2r$. Along that line, from side $DA$ we pass $r$ to the first centre, $2r$ to the second, $2r$ to the third and $r$ to side $BC$, so $AB=6r$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real r=1;
+filldraw(box((0,-r),(6r,r)),rgb(0.75,0.85,1),black+linewidth(0.8));
+for(int i=0;i<3;++i) {filldraw(circle((r+2r*i,0),r),white,black); dot((r+2r*i,0));}
+draw((r,0)--(r,r),red); label("$r$",(r,r/2),E,red+fontsize(8pt));
+draw((3r,0)--(3r,-r),red); label("$r$",(3r,-r/2),E,red+fontsize(8pt));
+draw((0,-1.35r)--(6r,-1.35r),Arrows(4)); label("$6r$",(3r,-1.35r),S,fontsize(8pt));
+draw((6.35r,-r)--(6.35r,r),Arrows(4)); label("$2r$",(6.35r,0),E,fontsize(8pt));
+label("$A$",(0,r),NW); label("$B$",(6r,r),NE); label("$C$",(6r,-r),SE); label("$D$",(0,-r),SW);
+\end{asy}
+
+The area of the rectangle is $6r\cdot2r=12r^2=128$, so $r^2=\dfrac{32}{3}$. The three circles have total area
+\[3\pi r^2=3\pi\cdot\dfrac{32}{3}=32\pi,\]
+and the shaded region has area $128-32\pi$. The answer is $\boxed{\textbf{(E)}\ 128-32\pi}$.

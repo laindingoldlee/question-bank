@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2299162_question_probability_close_to_100
+% Stable identity: aops-topic-2299162-q01
+For $n\ge16$, $p_n=\dfrac{\dbinom{n}{16}}{2^n}$, and
+\[\dfrac{p_{n+1}}{p_n}=\dfrac{\dbinom{n+1}{16}}{2\dbinom{n}{16}}=\dfrac{n+1}{2(n-15)}.\]
+
+\textbf{(a)} The ratio is greater than $1$ when $n+1>2n-30$, i.e. $n<31$; it equals $1$ when $n=31$; and it is less than $1$ when $n>31$. So $p_{16}<p_{17}<\cdots<p_{31}=p_{32}>p_{33}>\cdots$. The largest value is attained for $n=31$ and $n=32$:
+\[p_{32}=\dfrac{\dbinom{32}{16}}{2^{32}}=\dfrac{300540195}{2147483648}\approx\boxed{0.140}.\]
+
+\textbf{(b)} The ratio $\dfrac{n+1}{2(n-15)}$ decreases as $n$ grows, and for $n=63$ it is $\dfrac{64}{96}=\dfrac23$. So for $n\ge63$ each step multiplies $p_n$ by at most $\dfrac23$, and
+\[p_n\le p_{63}\left(\dfrac23\right)^{n-63}\to0.\]
+So more flips make ``exactly $16$ heads'' less and less likely, not more: with many flips, the number of heads is typically near $\dfrac n2$, far from $16$. The expression $\dfrac{\binom{\infty}{16}}{2^\infty}$ has no meaning by itself, but as a limit it is $0$, not $1$.

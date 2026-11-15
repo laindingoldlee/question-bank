@@ -1,0 +1,14 @@
+Draw the vertical midline $x=\dfrac{w}{2}$ and let its intersection with the arc be $R_0$. The required line is the horizontal through $R_0$.
+
+To prove this, write the arc as $x=g(y)$, where $g$ increases continuously from $0$ to $w$. When the horizontal line moves upward across a thin strip, the first region gains the part left of the arc while the second loses the part right of it. Below $R_0$, the left width is smaller than the right width, so the total area decreases. Above $R_0$ the reverse holds, so the total increases. Equivalently, the total at height $t$ is
+\[
+S(t)=\int_0^t g(y)\,dy+\int_t^h(w-g(y))\,dy,
+\qquad S'(t)=2g(t)-w,
+\]
+which changes sign from negative to positive exactly at $R_0$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;pair f(real y){return (4-sqrt((25.0/6)^2-(y+7.0/6)^2),y);}real t=(sqrt(481)-7)/6;pair A=(0,0),B=(4,0),C=(4,3),D=(0,3),Q=(0,t),P=(4,t),R=(2,t);filldraw(A--Q--R--reverse(graph(f,0,t))--cycle,lightblue,blue);filldraw(R--P--C--reverse(graph(f,t,3))--cycle,lightred,red);draw(A--B--C--D--cycle);draw(graph(f,0,3));draw((2,0)--(2,3),dashed);draw(Q--P);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$Q$",Q,(-1,0));label("$P$",P,(1,0));label("$R_0$",R,(0,1));
+\end{asy}

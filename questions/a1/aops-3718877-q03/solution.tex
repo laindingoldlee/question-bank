@@ -1,0 +1,10 @@
+Write $A=(0,0)$, $B=(r,0)$, $D=(0,h)$, $C=(t,h)$ with $r,h,t>0$. The right angles justify these coordinates, and $AC=AB=r$ gives $t^2+h^2=r^2$. Also $(r-t)^2+h^2=144$, hence $t=r-\dfrac{72}{r}$, so $r^2>72$. It follows that $h^2=144-\dfrac{5184}{r^2}$. Put $u=r^2$ and $K=108+72\sqrt3$. Squaring $th=2K$ and simplifying yields
+\[u^3-(936+432\sqrt3)u^2+10368u-186624=0.\]
+Thus an exact specification of the answer is $\boxed{AB=\sqrt{u_0}}$, where $u_0$ is the unique real root greater than $72$ of this displayed cubic. Numerically $u_0\approx1678.133927301$, so $AB\approx40.965033$. Uniqueness needs justification because we squared: as $r$ increases from $\sqrt{72}$ to infinity, both $t=r-\dfrac{72}{r}$ and $h=12\sqrt{1-\dfrac{36}{r^2}}$ are positive and strictly increasing, and $th$ grows continuously from zero to infinity. Hence precisely one admissible $r$ gives $2K$; it realizes a convex quadrilateral and satisfies the original unsquared condition.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+real r=sqrt(1678.13392730083),t=r-72/r,h=sqrt(144-5184/(r*r));pair A=(0,0),B=(r,0),C=(t,h),D=(0,h);draw(A--B--C--D--cycle);draw(A--C,dashed);label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$C$",C,(1,1));label("$D$",D,(-1,1));label("$r$",(A+B)/2,(0,-1));label("$h$",(A+D)/2,(-1,0));label("$12$",(B+C)/2,(1,0));
+void ra(pair U,pair V,pair W,real s){pair u=s*unit(U-V),w=s*unit(W-V);draw(V+u--V+u+w--V+w);}
+ra(B,A,D,1.2);ra(A,D,C,1.2);
+\end{asy}
+

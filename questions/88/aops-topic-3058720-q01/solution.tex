@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3058720_geo_proof
+% Stable identity: aops-topic-3058720-q01
+The triples $(V,E,F)$ are tetrahedron $(4,6,4)$, cube $(8,12,6)$, octahedron $(6,12,8)$, dodecahedron $(20,30,12)$, and icosahedron $(12,30,20)$. Each gives $ 2 $. For the general proof, project the boundary graph of a convex polyhedron onto the plane after choosing one face as the outside face. While a cycle remains, remove one cycle edge: it merges two faces and decreases both $ E $ and $ F $ by one, preserving $ V-E+F $ and connectivity. The final graph is a tree, with $ E=V-1 $ and one face, so its value is $ V-(V-1)+1=2 $. Therefore the original value is also 2.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(3,0),C=(3,3),D=(0,3),v=(1,1);draw(A--B--C--D--cycle^^(A+v)--(B+v)--(C+v)--(D+v)--cycle^^A--(A+v)^^B--(B+v)^^C--(C+v)^^D--(D+v));label("cube: $V=8,E=12,F=6$",(2,-0.7));
+\end{asy}

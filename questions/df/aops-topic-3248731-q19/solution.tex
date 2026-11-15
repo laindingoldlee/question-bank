@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3248731_2024_emcc_guts_round_p1324__exeter_math_club_competition
+% Stable identity: aops-topic-3248731-q19
+After $m$ moves, the reachable bottom points form a consecutive interval of length $2024-m$. At most $m$ points have been blocked, even after noon, so stopping requires $2024-m\le m$, or $m\ge1012$. This can occur: the walker always moves toward the left edge, and at the first $1012$ noons block the leftmost $1012$ bottom points, one each. After move $1012$, exactly those points are reachable, so the walker stops at that noon. Thus the sharp lower bound is $\boxed{1012}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int r=0;r<=6;++r)for(int j=0;j<=r;++j)dot((j-r/2.0,-r));draw((0,0)--(-1.5,-3),blue+linewidth(1.2));for(int j=0;j<=3;++j)dot((j-3,-6),red+linewidth(3));label("small analogue: reachable bottom interval",(0,-7));
+\end{asy}

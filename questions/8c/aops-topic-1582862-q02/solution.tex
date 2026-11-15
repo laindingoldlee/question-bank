@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1582862_17_geometry_questions
+% Stable identity: aops-topic-1582862-q02
+The merry-go-round makes $\dfrac{30}{10}=3$ revolutions per minute. Audrey moves on a circle of radius $8$ m and Anna on a circle of radius $8-3=5$ m:
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+draw(circle(O,8),linewidth(0.9));draw(circle(O,5),linewidth(0.9));
+dot(O);dot((8,0));dot((5,0));
+draw(O--(8,0));label("$5$",(2.5,0),S);label("$3$",(6.5,0),S);
+label("Anna",(2.7,0.95),fontsize(8pt));label("Audrey",(8,0),E,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Audrey:} $3\cdot2\pi\cdot8=48\pi\approx150.80$ m per minute, about $\boxed{151\text{ m per minute}}$.
+
+\textbf{Anna:} $3\cdot2\pi\cdot5=30\pi\approx94.25$ m per minute, about $\boxed{94\text{ m per minute}}$.
+
+(Both make the same number of turns, but Audrey's circle is longer, so she is faster.)

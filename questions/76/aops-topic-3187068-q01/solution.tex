@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h3187068_256_post_problem_swifties_arguing_over_fav_vault_track
+% Stable identity: aops-topic-3187068-q01
+Encode each ranking by one of its $24$ permutations. A state is four ranking indices, hence there are $24^4$ equally likely initial states. Process the three listeners to each speech in sequence. The speaker's ranking is unchanged during that speech, so its favorite remains fixed; each listener update gives integer weights $2$ for no change and $1$ for an upward swap. If both lead to the same state their weights add. After twelve listener updates the common denominator is $24^4 3^{12}$. Sum the weights of states with repeated ranking indices. This accounts for every initial ranking and every independent update, including favorites that changed during earlier speeches. Exact enumeration gives $\boxed{\dfrac{17206885}{45349632}}$. The following implements the state recurrence:
+\begin{verbatim}
+from itertools import permutations
+from fractions import Fraction
+p=list(permutations(range(4)))
+index={v:i for i,v in enumerate(p)}
+move=[]
+for v in p:
+    row=[]
+    for song in range(4):
+        w=list(v); k=w.index(song)
+        if k: w[k],w[k-1]=w[k-1],w[k]
+        row.append(index[tuple(w)])
+    move.append(row)
+powers=[24**i for i in range(4)]
+weights=[1]*(24**4)
+for speaker in range(4):
+    for listener in range(4):
+        if listener==speaker: continue
+        nxt=[0]*len(weights)
+        for state,w in enumerate(weights):
+            if not w: continue
+            sr=state//powers[speaker]%24
+            lr=state//powers[listener]%24
+            nr=move[lr][p[sr][0]]
+            changed=state+(nr-lr)*powers[listener]
+            nxt[state]+=2*w
+            nxt[changed]+=w
+        weights=nxt
+num=sum(w for state,w in enumerate(weights)
+    if len({state//q%24 for q in powers})<4)
+answer=Fraction(num,24**4*3**12)
+assert answer==Fraction(17206885,45349632)
+\end{verbatim}

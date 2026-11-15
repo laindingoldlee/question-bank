@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2299189_diophantine_equation
+% Stable identity: aops-topic-2299189-q01
+\textbf{(a)} Expanding,
+\[(3x+4y)^2-2(2x+3y)^2=9x^2+24xy+16y^2-8x^2-24xy-18y^2=x^2-2y^2=1.\]
+Starting from $(1,0)$ the map gives $(3,2)$, $(17,12)$, $(99,70)$, $(577,408)$, $\dots$; the numbers increase strictly once they are positive, so there are infinitely many positive solutions.
+
+\textbf{(b)} The inverse map is $(x,y)\mapsto(3x-4y,\ 3y-2x)$; the same expansion shows that it also turns solutions into solutions. Let $(x,y)$ be a solution with $x,y>0$. Then $y\ge2$ (for $y=1$, $x^2=3$ is impossible), and with $(x',y')=(3x-4y,3y-2x)$:
+\begin{itemize}
+\item $x'>0$, because $9x^2=9+18y^2>16y^2$;
+\item $y'\ge0$, because $9y^2\ge4+8y^2=4x^2$ when $y^2\ge4$;
+\item $y'<y$, because $3y-2x<y$ means $y<x$, which holds since $x^2=1+2y^2>y^2$.
+\end{itemize}
+So the inverse map gives a solution $(x',y')$ with $x'>0$ and $0\le y'<y$. Repeating, $y$ decreases strictly, so after finitely many steps we reach a solution with $y=0$, which must be $(1,0)$. Applying the map of (a) the same number of times brings $(1,0)$ back to $(x,y)$. Hence the positive solutions are exactly $(x_n,y_n)$ for $n\ge1$, where
+\[(x_0,y_0)=(1,0),\qquad x_{n+1}=3x_n+4y_n,\quad y_{n+1}=2x_n+3y_n.\]
+Equivalently, $x_n+y_n\sqrt2=\left(3+2\sqrt2\right)^n$, since $(x+y\sqrt2)(3+2\sqrt2)=(3x+4y)+(2x+3y)\sqrt2$.
+
+Changing signs does not change $x^2-2y^2$, so all integer solutions are
+\[\boxed{(x,y)=(\pm x_n,\pm y_n),\ n\ge0}:\ (\pm1,0),\ (\pm3,\pm2),\ (\pm17,\pm12),\ (\pm99,\pm70),\ \dots\]

@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1975821_special_6digit_number_problem
+% Stable identity: aops-topic-1975821-q01
+Let $x=\overline{abc}$ and $y=\overline{def}$, so $100\le x\le999$, $0\le y\le999$, and $1000x+y=x^2+y^2$. Multiply by $4$ and complete the squares:
+\[
+4x^2-4000x+4y^2-4y=0\quad\Longleftrightarrow\quad (2x-1000)^2+(2y-1)^2=1000001 .
+\]
+Now $1000001=101\cdot9901$ with $101=10^2+1^2$ and $9901=99^2+10^2$, both primes. Writing $1000001$ as a sum of two squares corresponds to factoring it in the Gaussian integers; the products $(10+i)(99+10i)=980+199i$ and $(10+i)(99-10i)=1000-i$ show that the only ways to write $1000001$ as a sum of two squares of nonnegative integers are
+\[
+1000^2+1^2\qquad\text{and}\qquad 980^2+199^2
+\]
+(and the same with the order swapped). Since $2x-1000$ is even and $2y-1$ is odd, we need $|2x-1000|\in\{1000,980\}$ and $|2y-1|\in\{1,199\}$ correspondingly.
+\begin{itemize}
+\item $|2x-1000|=1000$ gives $x=0$ or $x=1000$, impossible.
+\item $|2x-1000|=980$ gives $x=990$ or $x=10$; only $x=990$ is a three-digit number. Then $|2y-1|=199$ gives $y=100$ (or $y=-99$, impossible).
+\end{itemize}
+So the number is $\boxed{990100}$. Check: $990^2+100^2=980100+10000=990100$.

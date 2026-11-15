@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1273236_triangle_area_problem_2
+% Stable identity: aops-topic-1273236-q01
+Let $a=BC$, $b=CA$ and $\gamma=\angle C$.
+
+\textbf{The order of the points.} By mass points ($E$ is the midpoint of $CA$, and $\dfrac{AF}{FB}=\dfrac {b}{a}$), put masses $1$ at $A$ and $C$ and $\dfrac {b}{a}$ at $B$; then $\dfrac{CN}{NF}=1+\dfrac {b}{a}>1$. If the order on $CF$ were $F,M,N,C$, then $NF=3=NC$, forcing $\dfrac {b}{a}=0$, which is impossible. So the order is $F,N,M,C$: $FN=1$, $NM=1$, $MC=2$, and $CF=4$, $CN=3$, $NF=1$.
+
+\textbf{Equations.} From $\dfrac{CN}{NF}=3$ we get $b=2a$. The bisector length is $CF=\dfrac{2ab\cos\dfrac{\gamma}{2}}{a+b}=\dfrac{4a}{3}\cos\dfrac{\gamma}{2}=4$, so $a\cos\dfrac{\gamma}{2}=3$. In right triangle $CDA$, $CD=b\cos\gamma$, and $M$ is where the bisector meets $AD$, so $CM=\dfrac{CD}{\cos\dfrac{\gamma}{2}}=\dfrac{2a\cos\gamma}{\cos\dfrac{\gamma}{2}}=2$, i.e. $a\cos\gamma=\cos\dfrac{\gamma}{2}$.
+
+Dividing the two equations, $\dfrac{\cos\gamma}{\cos\dfrac{\gamma}{2}}=\dfrac{\cos\dfrac{\gamma}{2}}{3}$, so with $c=\cos^2\dfrac{\gamma}{2}$: $2c-1=\dfrac {c}{3}$, $c=\dfrac{3}{5}$. Then $\cos\gamma=\dfrac{1}{5}$, $\sin\gamma=\dfrac{2\sqrt6}{5}$, $a=3\sqrt{\dfrac{5}{3}}=\sqrt{15}$ and $b=2\sqrt{15}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real a=sqrt(15), b=2*sqrt(15), cc=1/5, ss=2*sqrt(6)/5; pair C=(0,0),B=(a,0),A=b*(cc,ss); pair Dp=(A.x,0); pair Ep=A/2; pair F=(a*A+b*B)/(a+b);
+pair M=extension(C,F,A,Dp), N=extension(C,F,B,Ep);
+draw(A--B--C--cycle); draw(A--Dp,blue); draw(B--Ep,red); draw(C--F,purple);
+dot(M); dot(N); label("$A$",A,N); label("$B$",B,SE); label("$C$",C,SW); label("$D$",Dp,S); label("$E$",Ep,W); label("$F$",F,NE); label("$M$",M,E); label("$N$",N,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Area.}
+\[
+[ABC]=\dfrac{1}{2}ab\sin\gamma=\dfrac{1}{2}\cdot\sqrt{15}\cdot2\sqrt{15}\cdot\dfrac{2\sqrt6}{5}=\boxed{6\sqrt6}.
+\]
+The triangle is acute (its angles are about $78.5^\circ$, $73.0^\circ$ and $28.6^\circ$), and the given lengths are confirmed by coordinates.

@@ -1,0 +1,42 @@
+% Source: https://artofproblemsolving.com/community/c3h2072386_need_some_helpsproblem_2342020
+% Stable identity: aops-topic-2072386-q01
+We use two standard facts.
+\begin{itemize}
+\item In a triangle, the longer side is opposite the larger angle (and equal sides are opposite equal angles).
+\item (Hinge theorem and its converse.) If two triangles have two pairs of equal sides, then the third side is longer in the triangle where the included angle is larger, and conversely.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,4.2), B=(-2.6,0), C=(2.6,0), D=(-0.55,1.5);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,blue); draw(B--D,red+linewidth(0.8)); draw(C--D,red+linewidth(0.8));
+dot(A);dot(B);dot(C);dot(D);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D+(0.05,-0.5));
+draw(arc(D,0.3,degrees(A-D),degrees(B-D)),deepgreen); draw(arc(D,0.42,degrees(C-D),degrees(A-D)),deepgreen+dashed);
+pair mb=(A+B)/2, mc=(A+C)/2; pair ub=unit(rotate(90)*(A-B)), uc=unit(rotate(90)*(C-A));
+draw((mb-0.15*ub)--(mb+0.15*ub)); draw((mc-0.15*uc)--(mc+0.15*uc));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Suppose, for contradiction, that $DB\ge DC$.
+
+\emph{Step 1.} In triangle $DBC$, the side $DB$ is opposite $\angle DCB$ and $DC$ is opposite $\angle DBC$, so $DB\ge DC$ gives $\angle DCB\ge\angle DBC$. Since $D$ is inside the triangle, $\angle ABD=\angle ABC-\angle DBC$ and $\angle ACD=\angle ACB-\angle DCB$. As $\angle ABC=\angle ACB$,
+\[
+\angle ACD\le\angle ABD .
+\]
+
+\emph{Step 2.} Triangles $ABD$ and $ACD$ have $AB=AC$ and the common side $AD$. Their third sides satisfy $DB\ge DC$, so by the converse of the hinge theorem (or congruence when $DB=DC$),
+\[
+\angle BAD\ge\angle CAD .
+\]
+
+\emph{Step 3.} Using the angle sums in triangles $ABD$ and $ACD$,
+\[
+\angle ADB=180^\circ-\angle BAD-\angle ABD\le 180^\circ-\angle CAD-\angle ACD=\angle ADC,
+\]
+contradicting $\angle ADB>\angle ADC$.
+
+Therefore $DB<DC$, that is, $\boxed{DC>DB}$.

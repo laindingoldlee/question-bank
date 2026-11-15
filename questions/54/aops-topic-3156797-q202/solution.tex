@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3156797_1000th_post_math_story
+% Stable identity: aops-topic-3156797-q202
+If a number is composite, at least one factor lies between two and its square root. Here $ 5881^2<34593451<5882^2 $. The exact check below tests every possible smaller factor and finds none, proving $\boxed{34593451\text{ is prime}}$:
+\begin{verbatim}
+from math import isqrt
+N=34593451
+assert isqrt(N)==5881
+assert all(N%d for d in range(2,isqrt(N)+1))
+\end{verbatim}

@@ -1,0 +1,9 @@
+Use $B=(-3,0),C=(3,0),A=(0,4)$, since the altitude is $\sqrt{5^2-3^2}=4$. The area is 12 and semiperimeter 8, so the inradius is $r = \dfrac{12}{8} = \dfrac{3}{2}$. By symmetry $I = (0 , \dfrac{3}{2})$. Hence $I B = \sqrt{9 + \dfrac{9}{4}} = \boxed{\dfrac{3 \sqrt{5}}{2}}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,4),(-3,0),(3,0)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));pair I=(0,1.5);draw(circle(I,1.5));draw(p[1]--I,dashed);label("$I$",I,(0,1));
+\end{asy}
+

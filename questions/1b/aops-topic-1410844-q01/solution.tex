@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1410844_grade_8_math_problem
+% Stable identity: aops-topic-1410844-q01
+Reflection in the $x$-axis keeps the $x$-coordinate and changes the sign of the $y$-coordinate: $(x,y)\mapsto(x,-y)$, because the $x$-axis is the perpendicular bisector of the segment joining a point and its image.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(-2,6),B=(6,8),C=(9,2),D=(4,-1);
+pair[] P={A,B,C,D}; pair[] Q;
+for(int i=0;i<4;++i) Q.push((P[i].x,-P[i].y));
+draw((-4,0)--(11,0),Arrow(6)); draw((0,-9.5)--(0,9.5),Arrow(6));
+label("$x$",(11,0),E); label("$y$",(0,9.5),N);
+draw(A--B--C--D--cycle,blue+linewidth(0.9));
+draw(Q[0]--Q[1]--Q[2]--Q[3]--cycle,red+linewidth(0.9));
+for(int i=0;i<4;++i){draw(P[i]--Q[i],gray+dotted); dot(P[i],blue); dot(Q[i],red);}
+label("$A(-2,6)$",A,W,blue); label("$B(6,8)$",B,N,blue); label("$C(9,2)$",C,E,blue); label("$D$",D,dir(-100),blue);
+label("$A'(-2,-6)$",Q[0],W,red); label("$B'(6,-8)$",Q[1],S,red); label("$C'(9,-2)$",Q[2],E,red); label("$D'(4,1)$",Q[3],N,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The image has vertices
+\[
+\boxed{(-2,-6),\ (6,-8),\ (9,-2),\ (4,1)} .
+\]

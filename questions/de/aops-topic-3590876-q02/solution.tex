@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h3590876_problem_requests
+% Stable identity: aops-topic-3590876-q02
+Choose coordinates $A=0$ and $F=73$ along the line. Then $C=26$, $D=73-33=40$, $B=40-22=18$, and $E=26+31=57$, giving $BE=39$ and $CD=14$. Write $G=(x,h)$ with the line as the horizontal axis. Subtracting $(x-40)^2+h^2=900$ from $(x-26)^2+h^2=1600$ gives $28x-924=700$, so $x=58$. Therefore $h^2=1600-32^2=576$ and $|h|=24$. Reflection across the line does not affect area. Thus $[BGE]=\dfrac{1}{2}(39)(24)=\boxed{468}$. The sketch shows $h>0$; the reflected configuration is congruent.
+\begin{asy}
+size(7cm);
+pair A=(0,0),B=(18,0),C=(26,0),D=(40,0),E=(57,0),F=(73,0),G=(58,24),H=(58,0);draw(A--F);draw(B--G--E);draw(C--G--D,dashed);draw(G--H,dashed);pair[] P={A,B,C,D,E,F};string[] N={"A","B","C","D","E","F"};for(int i=0;i<6;++i){dot(P[i]);label("$"+N[i]+"$",P[i],S);}label("$G$",G,N);label("$H$",H,SE);label("$40$",(C+G)/2,NW);label("$30$",(D+G)/2,E);
+\end{asy}

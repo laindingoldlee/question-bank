@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1773745_math_problem_7
+% Stable identity: aops-topic-1773745-q01
+Since $5^2+12^2=13^2$, the angle at $C$ is right. Put $C=(0,0)$, $A=(0,5)$, $B=(12,0)$. For a point $X=(x,y)$ in the triangle, the distances to $AC$ and $BC$ are $x$ and $y$, and the distance to $AB$ (the line $5x+12y=60$) is $\dfrac{60-5x-12y}{13}$. The condition is
+\[
+x+y+\dfrac{60-5x-12y}{13}=6\iff 8x+y=18 .
+\]
+This line meets $BC$ ($y=0$) at $Q=\left(\dfrac{9}{4},0\right)$ and $AB$ at $P=\left(\dfrac{12}{7},\dfrac{30}{7}\right)$ (from $5x+12(18-8x)=60$, $x=\dfrac{156}{91}=\dfrac{12}{7}$), and the points of the triangle on it form the segment $PQ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),A=(0,5),B=(12,0);
+pair P=(12/7,30/7),Q=(9/4,0),X=(15/7,18-8*15/7);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(P--Q,red+linewidth(1.1));
+dot(P,red);dot(Q,red);dot(X);
+draw(X--(0,X.y),dashed+blue);
+real s=0.35; draw(C+(s,0)--C+(s,s)--C+(0,s));
+label("$A$",A,NW);label("$B$",B,SE);label("$C$",C,SW);
+label("$P$",P,NE,red);label("$Q$",Q,S,red);label("$X$",X,E);
+label("$5$",(A+C)/2,W);label("$12$",(B+C)/2+(1.5,0),S);label("$13$",(A+B)/2,NE);
+label("$x$",(X.x/2,X.y),N,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The distance to $AC$ is $x$, which varies linearly along $PQ$, so its average is the value at the midpoint:
+\[
+\dfrac{1}{2}\left(\dfrac{12}{7}+\dfrac{9}{4}\right)=\dfrac{48+63}{56}=\dfrac{111}{56}.
+\]
+Since $\gcd(111,56)=1$, $m+n=\boxed{167}$.

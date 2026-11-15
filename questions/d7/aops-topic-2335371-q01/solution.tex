@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2335371_prove_triangle_similarity
+% Stable identity: aops-topic-2335371-q01
+Since $\angle B$ is right, the angles at $A$ and $C$ are acute, so $D$ lies between $A$ and $C$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), A=(0,3), C=(4,0);
+pair D=A+dot(B-A,C-A)/dot(C-A,C-A)*(C-A);
+draw(A--B--C--cycle,linewidth(0.9)); draw(B--D,blue);
+draw((0.2,0)--(0.2,0.2)--(0,0.2));
+pair u=unit(A-D), v=unit(B-D); draw(D+0.2*u--D+0.2*u+0.2*v--D+0.2*v);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,NE);
+\end{asy}
+
+\textbf{$\triangle ABC\sim\triangle ADB$.} The triangles have $\angle ABC=\angle ADB=90^\circ$ and share the angle at $A$. By AA they are similar, with $A\leftrightarrow A$, $B\leftrightarrow D$, $C\leftrightarrow B$.
+
+\textbf{$\triangle ABC\sim\triangle BDC$.} The triangles have $\angle ABC=\angle BDC=90^\circ$ and share the angle at $C$. By AA they are similar, with $A\leftrightarrow B$, $B\leftrightarrow D$, $C\leftrightarrow C$.
+
+Since similarity is transitive, all three triangles are similar. $\blacksquare$
+
+(Consequences: $AB^2=AD\cdot AC$, $BC^2=CD\cdot CA$ and $BD^2=AD\cdot DC$.)

@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1494967_maximum_intersections
+% Stable identity: aops-topic-1494967-q01
+\textbf{Upper bound.} Two distinct circles meet in at most $2$ points. A line meets a circle in at most $2$ points, so each side of the square meets a circle in at most $2$ points, and the square (the boundary, made of $4$ sides) meets each circle in at most $4\cdot2=8$ points. So there are at most
+\[
+2+8+8=18
+\]
+such points.
+
+\textbf{The bound is reached.} Take the square with vertices $(\pm1,\pm1)$ and the two circles of radius $1.15$ with centres $(0,-0.13)$ and $(0,0.14)$. Each circle has radius greater than its distance to every side line, and each of its chords on the four side lines lies within the side, so each circle crosses each side twice: $8$ points per circle. The circles meet in $2$ points, $\left(\pm\sqrt{1.15^2-0.135^2},\,0.005\right)\approx(\pm1.142,\,0.005)$, outside the square. All $18$ points are different:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+path sq=(-1,-1)--(1,-1)--(1,1)--(-1,1)--cycle;
+path c1=circle((0,-0.13),1.15), c2=circle((0,0.14),1.15);
+draw(sq,linewidth(0.9)); draw(c1,blue+linewidth(0.8)); draw(c2,red+linewidth(0.8));
+pair[] P=intersectionpoints(c1,sq); for(pair p:P) dot(p,blue);
+pair[] R=intersectionpoints(c2,sq); for(pair p:R) dot(p,red);
+pair[] U=intersectionpoints(c1,c2); for(pair p:U) dot(p,deepgreen+linewidth(5));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(blue dots: first circle and square; red dots: second circle and square; green dots: the two circles). The maximum is $\boxed{18}$.

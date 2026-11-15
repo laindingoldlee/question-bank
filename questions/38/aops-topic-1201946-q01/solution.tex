@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1201946_scrapped_geometry_problem
+% Stable identity: aops-topic-1201946-q01
+The triangle is right-angled, so the hypotenuse is a diameter: $R=\dfrac{5}{2}$. Its area is $6$ and semiperimeter $6$, so $r=1$. Then
+\[OI=\sqrt{\dfrac{5}{2}\left(\dfrac{5}{2}-2\right)}=\sqrt{\dfrac{5}{4}}=\boxed{\dfrac{\sqrt5}{2}}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,3),B=(0,0),C=(4,0); pair O=(2,1.5),I=(1,1); draw(A--B--C--cycle,linewidth(0.9)); draw(circle(O,2.5),gray); draw(circle(I,1),blue);
+dot(O); dot(I); draw(O--I,red); label("$O$",O,NE); label("$I$",I,SW); label("$3$",(0,1.5),W); label("$4$",(2,0),S); label("$5$",(1,2.25),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check with coordinates: with the right angle at the origin and legs on the axes, $O=\left(2,\dfrac{3}{2}\right)$ and $I=(1,1)$, so $OI=\sqrt{1+\dfrac{1}{4}}=\dfrac{\sqrt5}{2}$.

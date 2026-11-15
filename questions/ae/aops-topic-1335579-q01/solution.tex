@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1335579_triangle_proportions
+% Stable identity: aops-topic-1335579-q01
+The claim is false. Sharing a side is not a similarity condition (similarity needs, for example, all three angles equal, or all three side ratios equal). Here is a counterexample.
+
+Take $B=(0,0)$, $C=(6,0)$, $A=(2,3)$ and $D=(3,0)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(6,0),A=(2,3),D=(3,0);
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--D,blue);
+dot(D);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S);
+label("$3$",(B+D)/2,S); label("$3$",(D+C)/2,S);
+label("$\sqrt{13}$",(A+B)/2,NW); label("$5$",(A+C)/2,NE);
+label("$\sqrt{10}$",(A+D)/2+(-0.2,0),W,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then
+\[
+AB=\sqrt{13},\quad BD=3,\quad AD=\sqrt{10};\qquad AD=\sqrt{10},\quad DC=3,\quad AC=\sqrt{16+9}=5 .
+\]
+Sorted by length, triangle $ABD$ has sides $3<\sqrt{10}<\sqrt{13}$ and triangle $ADC$ has sides $3<\sqrt{10}<5$. If they were similar, the ratio of the shortest sides would be $\dfrac{3}{3}=1$, so they would be congruent; but $\sqrt{13}\ne5$. So triangles $ABD$ and $ADC$ are $\boxed{\text{not similar}}$, and the claim is false. (Here $AD$ is not an angle bisector, since $AB\ne AC$.)
+
+Such triangles can be similar in special cases, for instance when $ABC$ has a right angle at $A$ and $AD$ is the altitude, but that needs a reason beyond sharing a side.

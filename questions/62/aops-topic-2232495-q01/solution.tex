@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h2232495_2015_aime_i_problem_6
+% Stable identity: aops-topic-2232495-q01
+Let each of the arcs $AB$, $BC$, $CD$, $DE$ of the first circle measure $2\alpha$, and let each of the five equal arcs $EF$, $FG$, $GH$, $HI$, $IA$ of the second circle measure $\beta$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair P(real deg){return dir(deg);}
+pair A=P(110),B=P(90),C=P(70),D=P(50),pE=P(30);
+draw(arc((0,0),1,15,125),gray);
+real r=abs(A-C); real tE=degrees(pE-C), tA=degrees(A-C);
+real dt=tA-tE; if(dt>180) dt-=360; if(dt<-180) dt+=360;
+pair[] Q; for(int k=0;k<=5;++k) Q.push(C+r*dir(tE+dt*k/5));
+draw(arc(C,r,tE,tE+dt),blue);
+pair F=Q[1],G=Q[2],H=Q[3],I=Q[4];
+draw(A--B--D,red); draw(A--H--G,deepgreen); draw(B--A--G,heavymagenta+linewidth(0.9));
+draw(C--A,dashed); draw(C--G,dashed); draw(C--pE,dashed);
+dot(A);dot(B);dot(C);dot(D);dot(pE);dot(F);dot(G);dot(H);dot(I);
+label("$A$",A,NW);label("$B$",B,N);label("$C$",C,NE);label("$D$",D,NE);label("$E$",pE,E);
+label("$F$",F,S);label("$G$",G,S);label("$H$",H,S);label("$I$",I,SW);
+\end{asy}
+
+\textbf{$\angle ABD$.} It is an inscribed angle subtending the arc $AD$ that does not contain $B$, which measures $360^\circ-6\alpha$. So $\angle ABD=180^\circ-3\alpha$.
+
+\textbf{Relating $\alpha$ and $\beta$.} In the first circle, $\angle ACE$ subtends the arc $AE$ not containing $C$, of measure $360^\circ-8\alpha$, so $\angle ACE=180^\circ-4\alpha$. In the second circle this is a central angle, so $5\beta=180^\circ-4\alpha$.
+
+\textbf{$\angle AHG$.} The arc $AG$ of the second circle containing $H$ consists of three of the small arcs ($AI,IH,HG$), so the arc not containing $H$ measures $360^\circ-3\beta$ and $\angle AHG=180^\circ-\dfrac{3\beta}{2}$.
+
+\textbf{The condition.} $\left(180^\circ-3\alpha\right)-\left(180^\circ-\dfrac{3\beta}{2}\right)=12^\circ$ gives $\dfrac{3\beta}{2}-3\alpha=12^\circ$. Substituting $\beta=\dfrac{180^\circ-4\alpha}{5}$:
+\[54^\circ-\dfrac{6\alpha}{5}-3\alpha=12^\circ\implies\alpha=10^\circ,\quad\beta=28^\circ .\]
+
+\textbf{$\angle BAG$.} Triangle $CAG$ is isosceles ($CA=CG$) with apex angle $\angle ACG=3\beta=84^\circ$, so $\angle CAG=48^\circ$. Also $\angle BAC$ is inscribed in the first circle on the arc $BC$ of measure $2\alpha=20^\circ$, so $\angle BAC=10^\circ$. Since $B$ and $G$ lie on opposite sides of line $AC$ (the small arc of the second circle lies inside the first circle),
+\[\angle BAG=\angle BAC+\angle CAG=10^\circ+48^\circ=\boxed{58^\circ}.\]

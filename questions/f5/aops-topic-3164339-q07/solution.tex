@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3164339_2018_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3164339-q07
+The sphere centres project into a disk of radius 1 and their heights range over an interval of length at most $h-2$. Among any four points of that disk, some pair has distance at most $\sqrt2$: if no point is the centre, order their polar angles and choose a gap at most 90 degrees; their squared separation is $r^2+s^2-2rs\cos\theta\le2$. A centre point makes the claim immediate. The corresponding sphere centres, at distance at least 2, must therefore differ in height by at least $\sqrt{4-2}=\sqrt2$. Hence $h\ge2+\sqrt2$. Equality is attained by centres $(1,0,1),(0,1,1+\sqrt2),(-1,0,1),(0,-1,1+\sqrt2)$. Adjacent projected points are $\sqrt2$ apart and opposite points 2 apart, so all spheres are disjoint or tangent. Thus $\boxed{h=2+\sqrt2}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(circle((0,0),2)^^circle((0,0),1),gray);pair[] p={(1,0),(0,1),(-1,0),(0,-1)};draw(p[0]--p[1]--p[2]--p[3]--cycle);for(int i=0;i<4;++i){dot(p[i]);label(i%2==0?"height 1":"height $1+\sqrt2$",p[i],dir(90*i));}label("top view: centre projections",(0,-2.6));
+\end{asy}

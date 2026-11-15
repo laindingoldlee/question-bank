@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1633521_nice_problems
+% Stable identity: aops-topic-1633521-q08
+Let $p^3+19q^3+2018=r^3$ with $r$ prime.
+
+\textbf{One of $p,q$ is $2$.} If $p$ and $q$ are both odd, then $p^3+19q^3$ is even and so is $r^3$; then $r=2$ and $r^3=8<2018$, impossible.
+
+\textbf{Case $p=2$.} Then $r^3=19q^3+2026$. Work modulo $9$: cubes are $\equiv0,1,8\pmod9$, $19\equiv1$ and $2026\equiv1$, so $r^3\equiv q^3+1\in\{1,2,0\}$. The value $2$ is not a cube residue. If $r^3\equiv0$, then $3\mid r$, so $r=3$, but $r^3=27$ is too small. If $r^3\equiv1$, then $q^3\equiv0$, so $q=3$ and $r^3=19\cdot27+2026=2539$, which is not a cube ($13^3=2197<2539<2744=14^3$). No solutions.
+
+\textbf{Case $q=2$.} Then $r^3-p^3=2170=2\cdot5\cdot7\cdot31$, so $r>p$. Write $d=r-p$; then $r^2+rp+p^2=3p^2+3pd+d^2$ and
+\[
+d\left(3p^2+3pd+d^2\right)=2170 .
+\]
+If $p=2$ we are back in the previous case, so $p$ and $r$ are odd and $d$ is even. Also $d^3<2170$, so $d\le12$, and $d\mid2170$ leaves $d=2$ or $d=10$.
+\begin{itemize}
+\item $d=2$: $3p^2+6p+4=1085$, so $3\left(p^2+2p\right)=1081$, impossible since $3\nmid1081$.
+\item $d=10$: $3p^2+30p+100=217$, so $p^2+10p-39=0=(p-3)(p+13)$ and $p=3$, $r=13$.
+\end{itemize}
+Indeed $3^3+19\cdot2^3+2018=27+152+2018=2197=13^3$. The only solution is $\boxed{p=3,\ q=2}$ (with $r=13$).

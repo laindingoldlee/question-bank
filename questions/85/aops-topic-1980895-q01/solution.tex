@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1980895_help_with_this_geometry_problemm
+% Stable identity: aops-topic-1980895-q01
+In triangle $ABC$ (half the rectangle, area $630$), $AE$ and $CF$ are medians, so $G$ is its centroid. The three medians of a triangle cut it into six triangles of equal area: for example, $[AFG]=[BFG]$ since $F$ is the midpoint of $AB$ and the triangles share the height from $G$, and similar equalities together with $[ABE]=[ACE]$ force all six to be equal.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(6,4),D=(0,4);
+pair Ep=(B+C)/2,F=(A+B)/2,G=(A+B+C)/3;
+fill(B--Ep--G--F--cycle,gray(0.8));
+draw(A--B--C--D--cycle);draw(A--Ep);draw(C--F);draw(A--C,dashed);draw(B--G,dashed);
+dot(Ep);dot(F);dot(G);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$E$",Ep,E);label("$F$",F,S);label("$G$",G,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Quadrilateral $BFGE$ consists of two of these six triangles, $BFG$ and $BGE$. Hence
+\[
+[BFGE]=\dfrac{2}{6}\cdot630=\boxed{210}.
+\]

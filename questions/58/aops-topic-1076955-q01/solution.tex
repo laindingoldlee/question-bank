@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1076955_points_on_a_segment
+% Stable identity: aops-topic-1076955-q01
+Let $AB=p$, $BC=q$, $CD=r$, $DE=s$. The largest distance is $AE=p+q+r+s=129$.
+
+\textbf{Sum of all distances.} The gap $AB$ is part of the $4$ segments $AB,AC,AD,AE$; the gap $BC$ is part of the $2\cdot3=6$ segments joining $\{A,B\}$ to $\{C,D,E\}$; similarly $CD$ lies in $6$ segments and $DE$ in $4$. The ten given distances add up to $594$, so
+\[
+4p+6q+6r+4s=594\implies4\cdot129+2(q+r)=594\implies q+r=39 .
+\]
+\textbf{The second largest distance.} Every segment other than $AE$ lies inside $AD$ or inside $BE$, so the second largest distance $92$ is $AD=129-s$ or $BE=129-p$. Since $p+s=129-39=90$, this gives $\{p,s\}=\{37,53\}$, and $AB<DE$ means $p=37$, $s=53$.
+
+\textbf{The middle gaps.} $q$ and $r$ are among the listed distances and $q+r=39$; the only two listed numbers with sum $39$ are $16$ and $23$.
+\begin{itemize}
+\item $q=16$, $r=23$: then $AC=53$ and $CE=76$, so $53$ and $76$ would each occur twice ($DE=53$, $AD=76$), but each occurs once in the list. Impossible.
+\item $q=23$, $r=16$: the distances are $AB=37$, $BC=23$, $CD=16$, $DE=53$, $AC=60$, $BD=39$, $CE=69$, $AD=76$, $BE=92$, $AE=129$, which is exactly the given list.
+\end{itemize}
+So $(AB,BC,CD,DE)=\boxed{(37,23,16,53)}$.

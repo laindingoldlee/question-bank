@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2795209_2021_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2795209-q11
+For an odd product, both factors are odd. A sum of two products is odd exactly when one product is odd and the other even, and an odd product has only odd factors.
+
+So one of $pqr,stu$ uses three odd numbers and one of $ab,cd$ uses two odd numbers. That uses all five odd numbers $1,3,5,7,9$, so the other pair and the other triple consist of the evens $2,4,6,8,10$. The value is $(O_2+E_2)(O_3+E_3)$, where the odd numbers are split into a pair with product $O_2$ and a triple with product $O_3$, and the evens into a pair ($E_2$) and a triple ($E_3$).
+
+Now $O_2O_3=1\cdot3\cdot5\cdot7\cdot9=945$ and $E_2E_3=2\cdot4\cdot6\cdot8\cdot10=3840$ are fixed, so
+\[(O_2+E_2)(O_3+E_3)=945+3840+O_2E_3+\dfrac{945E_2}{O_2}.\]
+For fixed evens, $f(O_2)=O_2E_3+\dfrac{945E_2}{O_2}$ is convex in $O_2>0$, so its maximum over the possible values $3\le O_2\le63$ occurs at $O_2=3$ or $O_2=63$, giving $\max(63E_3+15E_2,\ 3E_3+315E_2)$.
+
+The ten even splits (pair; $E_2,E_3$) give:
+\[\begin{array}{c|cccccccccc}\text{pair}&2{,}4&2{,}6&2{,}8&2{,}10&4{,}6&4{,}8&4{,}10&6{,}8&6{,}10&8{,}10\\\hline E_2&8&12&16&20&24&32&40&48&60&80\\E_3&480&320&240&192&160&120&96&80&64&48\\\max f&30360&20340&15360&12396&10440&10440&12888&15360&19092&25344\end{array}\]
+(the pair row lists the two even numbers). The largest is $30360$, from even pair $\{2,4\}$ with $O_2=63$, i.e. odd pair $\{7,9\}$ and odd triple $\{1,3,5\}$. The maximum is
+\[945+3840+30360=\boxed{35145}=(2\cdot4+7\cdot9)(1\cdot3\cdot5+6\cdot8\cdot10).\]

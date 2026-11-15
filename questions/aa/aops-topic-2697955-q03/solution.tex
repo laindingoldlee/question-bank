@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2697955_1_year_anniversary_post_d
+% Stable identity: aops-topic-2697955-q03
+The point of the unit circle at angle $x$ is $P=(\cos x,\sin x)$. Reflecting the plane in the line $y=x$ swaps coordinates and sends the ray at angle $x$ to the ray at angle $90^\circ-x$. So the point at angle $90^\circ-x$ is $(\sin x,\cos x)$, and its first coordinate gives $\cos\left(90^\circ-x\right)=\sin x$. $\blacksquare$ (For acute $x$ this is the familiar fact that the two acute angles of a right triangle are complementary, and the side opposite one is adjacent to the other.)
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+draw(unitcircle,gray);draw((-1.2,0)--(1.2,0),gray);draw((0,-1.2)--(0,1.2),gray);draw((-0.9,-0.9)--(1.1,1.1),dashed);
+pair P=dir(25),Q=dir(65);draw((0,0)--P);draw((0,0)--Q);dot(P);dot(Q);
+label("$(\cos x,\sin x)$",P,E,fontsize(7pt));label("$(\sin x,\cos x)$",Q,N,fontsize(7pt));label("$y=x$",(-0.9,-0.9),SE,fontsize(7pt));
+\end{asy}

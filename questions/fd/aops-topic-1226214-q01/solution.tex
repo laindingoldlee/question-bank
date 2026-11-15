@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1226214_help
+% Stable identity: aops-topic-1226214-q01
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,4),B=(0,0),C=(4,0),D=(4,4);
+pair E=A+(C-A)*(0.22);
+pair F=extension(B,B+dir(degrees(E-B)-45),A,C);
+draw(A--B--C--D--cycle,linewidth(1)); draw(A--C,gray); draw(B--E,blue); draw(B--F,blue); draw(D--E,red); draw(D--F,red);
+dot(E);dot(F);label("$A$",A,NW);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NE);label("$E$",E,NE);label("$F$",F,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Rotate triangle $BAE$ about $B$ by $90^\circ$ so that $A$ goes to $C$; let $E$ go to $E'$. Then $CE'=AE$, $BE'=BE$, and $\angle BCE'=\angle BAE=45^\circ$, so $\angle E'CF=\angle E'CB+\angle BCA=45^\circ+45^\circ=90^\circ$.
+
+Also $\angle E'BF=\angle E'BC+\angle CBF=\angle ABE+\angle CBF=90^\circ-\angle EBF=45^\circ=\angle EBF$. So triangles $EBF$ and $E'BF$ are congruent (SAS: $BE=BE'$, common $BF$, equal angles at $B$), and $E'F=EF$.
+
+Triangle $E'CF$ is right-angled at $C$ with legs $CE'=AE$ and $CF$, and hypotenuse $E'F=EF$. Hence $AE^2+FC^2=EF^2$. $\blacksquare$
+
+(By symmetry in $AC$, the condition $\angle EDF=45^\circ$ in the post is then automatic.)

@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2297889_proving_theorems
+% Stable identity: aops-topic-2297889-q03
+In the figure, each pair of complementary angles is drawn as two adjacent angles that together form a right angle.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0); draw((1.7,0)--O--(0,1.5),linewidth(0.9)); draw(O--1.6*dir(35),linewidth(0.9));
+draw(arc(O,0.4,0,35)); draw(arc(O,0.5,35,90));
+label("$1$",0.62*dir(17),fontsize(9pt)); label("$2$",0.72*dir(62),fontsize(9pt));
+draw((0,0.2)--(0.2,0.2)--(0.2,0),gray);
+pair O2=(3,0); draw(O2+(1.7,0)--O2--O2+(0,1.5),linewidth(0.9)); draw(O2--O2+1.6*dir(55),linewidth(0.9));
+draw(arc(O2,0.4,0,55)); draw(arc(O2,0.5,55,90));
+label("$4$",O2+0.62*dir(27),fontsize(9pt)); label("$3$",O2+0.72*dir(73),fontsize(9pt));
+draw(O2+(0,0.2)--O2+(0.2,0.2)--O2+(0.2,0),gray);
+\end{asy}
+
+\begin{tabular}{ll}
+\textbf{Statements}&\textbf{Reasons}\\\hline
+$\angle1,\angle2$ complementary; $\angle3,\angle4$ complementary; $\angle2\cong\angle4$&Given\\
+$m\angle1+m\angle2=90^\circ$, $m\angle3+m\angle4=90^\circ$&Definition of complementary angles\\
+$m\angle1+m\angle2=m\angle3+m\angle4$&Transitive property of equality\\
+$m\angle2=m\angle4$&Definition of congruent angles\\
+$m\angle1=m\angle3$&Subtraction property of equality\\
+$\angle1\cong\angle3$&Definition of congruent angles
+\end{tabular}
+
+For two angles complementary to the same angle, take $\angle4=\angle2$. $\blacksquare$

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3107486_malaysia_imonst2_2021_primary_3
+% Stable identity: aops-topic-3107486-q01
+Let $ k $ edges be positive and let $ f $ faces be negative. The total is $(2k-12)+(6-2f)=2k-2f-6 $. A negative face must contain an odd number, hence at least one, of positive edges, because it has four edges. Each positive edge borders two faces, so $ f\le2k $, and also $ f\le6 $. If $ k\le3 $, then $ f-k\le k\le3 $; if $ k\ge3 $, then $ f-k\le6-k\le3 $. Thus the total is at least $-12 $. Equality is attained by making just three edges positive, one parallel to each coordinate axis, with their incident face pairs all distinct: use the $ x $ edge at $ y=z=0 $, the $ y $ edge at $ x=0,z=1 $, and the $ z $ edge at $ x=y=1 $. Every face then has exactly one positive edge, so all face products are negative. The minimum is $\boxed{-12}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] P={(0,0),(3,0),(4,1),(1,1),(0,3),(3,3),(4,4),(1,4)};int[] I={0,1,2,3,4,5,6,7,0,1,2,3},J={1,2,3,0,5,6,7,4,4,5,6,7};for(int k=0;k<12;++k){bool pos=(k==0||k==7||k==10);draw(P[I[k]]--P[J[k]],pos?red+linewidth(1.5):black);label(pos?"$+1$":"$-1$",(P[I[k]]+P[J[k]])/2,dir(90));}
+\end{asy}

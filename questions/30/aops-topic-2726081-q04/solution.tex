@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2726081_thanksgiving_problems
+% Stable identity: aops-topic-2726081-q04
+Since $PI=PE'$ and $EI=EE'$, the quadrilateral is a kite symmetric about $PE$, which is therefore a diameter. Take the circle to be the unit circle with $P=(-1,0)$, $E=(1,0)$, $I=(\cos\theta,\sin\theta)$ and $E'=(\cos\theta,-\sin\theta)$; the condition $PI<IE$ means $90^\circ<\theta<180^\circ$. Then
+\[[IEE']=\dfrac12\cdot2\sin\theta\cdot(1-\cos\theta)=\sin\theta\,(1-\cos\theta).\]
+Its derivative is $\cos\theta-\cos^2\theta+\sin^2\theta=-(2\cos\theta+1)(\cos\theta-1)$, which vanishes on $(90^\circ,180^\circ)$ only at $\cos\theta=-\dfrac12$: the area increases before and decreases after. So $\theta=120^\circ$, and $IEE'$ is equilateral.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair P=(-1,0),E=(1,0),I=dir(120),E2=dir(240),X=(-2,sqrt(3));
+draw(unitcircle,gray);draw(P--I--E--E2--cycle,linewidth(0.8));draw(I--E2,dashed);
+draw(E2--X,dashed);draw(I--X,dashed);
+dot(X);label("$P$",P,W);label("$I$",I,NE);label("$E$",E,E);label("$E'$",E2,S);label("$X$",X,NW);
+\end{asy}
+
+Now $I=\left(-\dfrac12,\dfrac{\sqrt3}2\right)$ and $IP=1$. Lines $PE'$ and $IE$ meet at $X=(-2,\sqrt3)$ (check: $X=2I-E$ lies on $IE$, and $X=P-2(E'-P)$ lies on $PE'$). Hence $IX=|I-E|=\sqrt3$ and $\left(\dfrac{IP}{IX}\right)^2=\dfrac13$, so $p+q=\boxed{4}$.

@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1403578_diagram_help_needed
+% Stable identity: aops-topic-1403578-q01
+Let $P$ be the vertex where the rope is tied and $A$, $B$ the two neighbouring vertices. The interior angle of a regular hexagon is $120^\circ$, so outside the doghouse the rope can sweep an angle of $360^\circ-120^\circ=240^\circ$ around $P$ with its full length $2$. When the rope wraps around $A$ (or $B$), $1$ yard of rope is left, and it can sweep around $A$ through the exterior angle $60^\circ$ of the hexagon until it lies along the next side. It cannot reach further: going on would need more than $2$ yards of rope.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0); pair[] V; V[0]=P; for(int i=1;i<6;++i) V[i]=V[i-1]+dir(30+60*(i-1));
+pair A=V[1], B=V[5];
+path reg=arc(P,2,150,390)--arc(A,1,30,90)--arc(B,1,90,150)--cycle;
+fill(reg,lightgray);
+fill(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,white);
+draw(arc(P,2,150,390)); draw(arc(A,1,30,90)); draw(arc(B,1,90,150));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,linewidth(1));
+draw(P--P+2*dir(250),red+dashed); label("$2$",P+1.25*dir(250),E,red);
+draw(A--A+dir(60),blue+dashed); label("$1$",A+0.5*dir(60),SE,blue);
+draw(B--B+dir(120),blue+dashed); label("$1$",B+0.5*dir(120),SW,blue);
+dot(P);dot(A);dot(B);
+label("$P$",P,N); label("$A$",A,dir(-20)); label("$B$",B,dir(200));
+label("$240^\circ$",P+0.9*dir(300),fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the region (shaded) consists of a $240^\circ$ sector of radius $2$ and two $60^\circ$ sectors of radius $1$:
+\[
+\dfrac{240}{360}\cdot\pi\cdot2^2+2\cdot\dfrac{60}{360}\cdot\pi\cdot1^2=\dfrac{8\pi}{3}+\dfrac{\pi}{3}=\boxed{3\pi}.
+\]

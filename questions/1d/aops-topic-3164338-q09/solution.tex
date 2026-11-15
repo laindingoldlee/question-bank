@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3164338_2017_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3164338-q09
+Write $x=k+t$, with integer $k\ge0$ and $0\le t<1$. The lower boundary is $k+2t$. For $k=0,\ldots,98$, the vertical-strip area is $\int_0^1(100-k-2t)\,dt=99-k$, summing to $\dfrac{99\cdot100}{2}=4950$. In the last strip $k=99$, only $0\le t\le\dfrac{1}{2}$ contributes, forming a triangle of base $\dfrac{1}{2}$ and height 1, area $\dfrac{1}{4}$. There is no further positive-area region. Thus the area is $\boxed{\dfrac{19801}{4}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw((0,0)--(5,0),Arrow);draw((0,0)--(0,6),Arrow);for(int k=0;k<4;++k)draw((k,k)--(k+1,k+2),blue);draw((0,5)--(5,5),dashed);label("$x$",(5,0),E);label("$y$",(0,6),N);label("lower-bound staircase segments",(2.5,-.8));label("schematic: horizontal cap",(2.5,5),N);
+\end{asy}

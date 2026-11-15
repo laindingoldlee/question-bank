@@ -1,0 +1,7 @@
+In a cyclic equiangular hexagon, successive central arcs alternate between $x,y$ with $x+y=120^\circ$. Thus $IS$ subtends $120^\circ$ and the circumradius is $R=\dfrac{14}{\sqrt3}$. From $ST=10$, $\cos x=\dfrac{23}{98}$ and $\sin x=\dfrac{55\sqrt3}{98}$. Set $S$ at angle zero, so $A$ is at angle $y=120^\circ-x$. For concise coordinates, write every point as $(\dfrac{u}{7\sqrt3},\dfrac{v}{7})$. The pairs $(u,v)$ for $S,A,M,I,T$ are $(98,0),(71,39),(-94,16),(-49,-49),(23,-55)$. Solving the two line equations gives $U=(26,6)$ in these scaled coordinates. Shoelace gives areas 3528 for $SAM$ and 4410 for $TSUI$. Restoring the area scale $\dfrac{1}{49\sqrt3}$ gives $\boxed{54\sqrt3}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair f(real u,real v){return (u/(7*sqrt(3)),v/7);}pair S=f(98,0),A=f(71,39),M=f(-94,16),I=f(-49,-49),T=f(23,-55),D=f(-49,49),U=f(26,6);draw(circle((0,0),14/sqrt(3)));draw(A--D--M--I--T--S--cycle);draw(S--M);draw(A--I);pair[] P={A,D,M,I,T,S,U};string[] L={"A","D","M","I","T","S","U"};for(int j=0;j<P.length;++j)label("$"+L[j]+"$",P[j],j==6?(1,1):unit(P[j]));
+\end{asy}

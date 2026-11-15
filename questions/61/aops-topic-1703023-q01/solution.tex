@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1703023_number_theory
+% Stable identity: aops-topic-1703023-q01
+Since $2014\equiv14\pmod{100}$, we need $14^{2014}\bmod100$. Use the Chinese remainder theorem with $100=4\cdot25$.
+
+\textbf{Modulo $4$:} $14^{2014}$ is divisible by $4$, so it is $\equiv0\pmod4$.
+
+\textbf{Modulo $25$:} $\gcd(14,25)=1$ and $\varphi(25)=20$, so $14^{20}\equiv1\pmod{25}$. Since $2014=20\cdot100+14$, $14^{2014}\equiv14^{14}\pmod{25}$. Now $14^2=196\equiv-4$, so
+\[
+14^{14}=(14^2)^7\equiv(-4)^7=-4^7=-16384\equiv-16384+16400=16\pmod{25}.
+\]
+
+\textbf{Combine:} we need $x\equiv0\pmod4$ and $x\equiv16\pmod{25}$ with $0\le x<100$; $x=16$ works. So the remainder is $\boxed{16}$.

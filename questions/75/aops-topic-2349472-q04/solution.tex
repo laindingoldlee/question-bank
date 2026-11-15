@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h2349472_happy_birthday_mrmandelbrot
+% Stable identity: aops-topic-2349472-q04
+\textbf{A works.} The points $(0,0)$, $(\pi,0)$ and $(2\pi,0)$ lie on $y=2\sin x$ and on the line $y=0$.
+
+\textbf{C does not.} For $x_1<x_2<x_3$, the slope of the segment joining the points of $y=x^2+4$ above $x_1$ and $x_2$ is
+\[\dfrac{(x_2^2+4)-(x_1^2+4)}{x_2-x_1}=x_1+x_2,\]
+and the slope for $x_2,x_3$ is $x_2+x_3>x_1+x_2$. Two segments from the same point with different slopes are not on one line.
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return 2*sin(x);}
+draw((-0.6,0)--(7,0),Arrow(5)); draw((0,-2.4)--(0,2.6),Arrow(5));
+draw(graph(f,-0.5,6.9),blue+linewidth(0.9));
+draw((-0.6,0)--(7,0),red+linewidth(0.8));
+dot((0,0),red); dot((pi,0),red); dot((2*pi,0),red);
+label("$y=2\sin x$",(1.6,2),N,blue+fontsize(8pt));
+label("$\pi$",(pi,0),S,fontsize(8pt)); label("$2\pi$",(2*pi,0),S,fontsize(8pt));
+real g(real x){return 0.3*(x^2+4);}
+pair o=(11.6,-2.4);
+draw(o+(-2.2,0)--o+(2.4,0),Arrow(5)); draw(o+(0,0)--o+(0,3.6),Arrow(5));
+draw(shift(o)*graph(g,-2.1,2.4),heavygreen+linewidth(0.9));
+pair P1=o+(-1.5,g(-1.5)), P2=o+(0.5,g(0.5)), P3=o+(2,g(2));
+draw(P1--P2--P3,dashed);
+dot(P1); dot(P2); dot(P3);
+label("$y=x^2+4$",o+(-0.2,3.3),W,heavygreen+fontsize(8pt)); label("(vertical scale reduced)",o+(0.1,-0.35),S,fontsize(7pt));
+\end{asy}
+
+\textbf{B does not.} Take $1<x_1<x_2<x_3$ and put $u_k=x_k-1>0$. We use $\ln t<t-1$ for $t>0$, $t\ne1$, and its consequence $\ln t=-\ln\dfrac1t>1-\dfrac1t$. The slope of the segment for $x_1,x_2$ is
+\[\dfrac{\ln u_2-\ln u_1}{u_2-u_1}=\dfrac{\ln\dfrac{u_2}{u_1}}{u_2-u_1}>\dfrac{1-\dfrac{u_1}{u_2}}{u_2-u_1}=\dfrac1{u_2},\]
+and the slope for $x_2,x_3$ is
+\[\dfrac{\ln\dfrac{u_3}{u_2}}{u_3-u_2}<\dfrac{\dfrac{u_3}{u_2}-1}{u_3-u_2}=\dfrac1{u_2}.\]
+So the two slopes differ, and no three points of this graph are on a line.
+
+The answer is $\boxed{\text{A}}$.

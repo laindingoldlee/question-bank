@@ -1,0 +1,8 @@
+Slope is vertical change divided by horizontal change: $m=\dfrac{y_2-y_1}{x_2-x_1}$ when $x_2\ne x_1$. The differences measure signed displacements from the fixed point. For any other point $(x,y)$ on the line, multiplying $m=\dfrac{y-y_1}{x-x_1}$ gives $\boxed{y-y_1=m(x-x_1)}$. This equation also includes the fixed point. A vertical line instead has equation $x=x_1$ and no finite slope.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair A=(1,1),B=(4,3),C=(4,1);draw((0,.3333)--(5,3.6667));draw(A--C--B,dashed);dot(A);dot(B);label("$(x_1,y_1)$",A,(-1,1));label("$(x,y)$",B,(0,1));label("$x-x_1$",(A+C)/2,(0,-1));label("$y-y_1$",(C+B)/2,(1,0));
+void ra(pair U,pair V,pair W,real s){pair u=s*unit(U-V),w=s*unit(W-V);draw(V+u--V+u+w--V+w);}
+ra(A,C,B,.15);
+\end{asy}
+

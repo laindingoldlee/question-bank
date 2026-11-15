@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1607347_envelope_game
+% Stable identity: aops-topic-1607347-q01
+Let $X$ and $Y$ be the amounts in the first and second envelopes.
+
+\textbf{1. The second envelope.} When you are allowed to accept the second envelope, accepting only adds money, so you should always accept it when allowed.
+
+\textbf{The first envelope.} Suppose the first envelope contains $x$.
+\begin{itemize}
+\item If you accept, you get $x$, and then also $Y$ when $Y>x$: expected total $x+E\big[Y\cdot\mathbf 1_{Y>x}\big]$.
+\item If you reject, you get $Y$: expected total $E[Y]=E\big[Y\cdot\mathbf 1_{Y>x}\big]+E\big[Y\cdot\mathbf 1_{Y\le x}\big]$.
+\end{itemize}
+The difference is
+\[
+x-E\big[Y\cdot\mathbf 1_{Y\le x}\big]\ \ge\ x-x\,P(Y\le x)\ \ge\ 0,
+\]
+since $Y\le x$ on the event in question. So accepting is never worse, whatever $x$ is (and strictly better, since $P(Y\le x)<1$ for $x<100$ and $E\big[Y\mathbf 1_{Y\le x}\big]<x$ when $x=100$). Hence the strategy is optimal.
+
+\textbf{2. Expected winnings.} The expected value is
+\[
+E[X]+E\big[Y\cdot\mathbf 1_{Y>X}\big]=\dfrac{101}{2}+\sum_{y=1}^{100}y\cdot\dfrac{1}{100}\cdot\dfrac{y-1}{100},
+\]
+because $P(X<y)=\dfrac{y-1}{100}$. Now $\sum_{y=1}^{100}y(y-1)=\sum y^2-\sum y=338350-5050=333300$, so the second term is $\dfrac{333300}{10000}=33.33$. The expected winnings are
+\[
+50.5+33.33=\boxed{\$83.83}.
+\]

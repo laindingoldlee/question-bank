@@ -1,0 +1,43 @@
+% Source: https://artofproblemsolving.com/community/c3h1458115_inscribed_circle
+% Stable identity: aops-topic-1458115-q01
+Let the incircle (radius $r$) touch $BC$, $CA$, $AB$ at $D$, $E$, $F$; as usual $BD=BF=s-b$, $CD=CE=s-c$, $AE=AF=s-a$. The foot of the perpendicular from $I$ to $BC$ is $D$, so the chord $A_1A_2$ of $\omega$ has midpoint $D$, and $DA_1=DA_2=t$ where $t^2=\rho^2-r^2$ ($\rho$ the radius of $\omega$). The same holds on the other two sides, with the same $t$.
+
+Going around the convex hexagon $A_1A_2B_1B_2C_1C_2$, the points on each side are met in the order $B\to C$, $C\to A$, $A\to B$. So $A_1$ is the point nearer $B$ on $BC$, $B_1$ the point nearer $C$ on $CA$, and $C_2$ the point nearer $B$ on $AB$. Hence
+\[
+BA_1=BD-t=s-b-t=BF-t=BC_2,\qquad CA_2=s-c-t=CB_1 .
+\]
+So triangles $BA_1C_2$ and $CA_2B_1$ are isosceles. The bisector of an isosceles triangle's apex angle is perpendicular to its base, so
+\[
+A_1C_2\perp(\text{bisector of }\angle B),\qquad A_2B_1\perp(\text{bisector of }\angle C).
+\]
+Therefore
+\[
+A_1B_1\parallel\text{bisector of }\angle B\iff A_1B_1\perp A_1C_2\iff \angle B_1A_1C_2=90^\circ,
+\]
+\[
+A_2C_2\parallel\text{bisector of }\angle C\iff A_2C_2\perp A_2B_1\iff \angle B_1A_2C_2=90^\circ.
+\]
+All six points lie on $\omega$. By Thales' theorem (and its converse), an angle inscribed in $\omega$ with sides through $B_1$ and $C_2$ is a right angle exactly when $B_1C_2$ is a diameter of $\omega$. So both conditions are equivalent to "$B_1C_2$ is a diameter of $\omega$". In particular, if $A_1B_1$ is parallel to the bisector of angle $B$, then $A_2C_2$ is parallel to the bisector of angle $C$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(1.8,4.2),B=(0,0),C=(6,0); real t=1.03344;
+real a=length(B-C),bb=length(C-A),c=length(A-B),s=(a+bb+c)/2;
+pair I=(a*A+bb*B+c*C)/(a+bb+c);
+pair pt(pair P,pair Q,real d){return P+d*unit(Q-P);}
+pair A1=pt(B,C,s-bb-t),A2=pt(B,C,s-bb+t),B1=pt(C,A,s-c-t),B2=pt(C,A,s-c+t),C1=pt(A,B,s-a-t),C2=pt(A,B,s-a+t);
+real rho=length(A1-I);
+pair uB=unit(unit(A-B)+unit(C-B)), uC=unit(unit(A-C)+unit(B-C));
+draw(circle(I,rho),blue);
+draw(B--B+1.25*length(I-B)*uB,heavygreen+dashed); draw(C--C+1.25*length(I-C)*uC,heavygreen+dashed);
+draw(A1--A2--B1--B2--C1--C2--cycle,gray);
+draw(B1--C2,blue+dashed);
+draw(A1--B1,red+linewidth(0.9)); draw(A2--C2,red+linewidth(0.9));
+draw(A--B--C--cycle,linewidth(0.9));
+dot(I,blue); dot(A1);dot(A2);dot(B1);dot(B2);dot(C1);dot(C2);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$I$",I,1.2*dir(95),blue);
+label("$A_1$",A1,S); label("$A_2$",A2,S); label("$B_1$",B1,NE); label("$B_2$",B2,NE); label("$C_1$",C1,W); label("$C_2$",C2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

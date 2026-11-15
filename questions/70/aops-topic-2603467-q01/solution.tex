@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2603467_geo_problem_i_made
+% Stable identity: aops-topic-2603467-q01
+It is enough to show: \emph{every odd integer $c\ge3$ is a leg of a right triangle with integer sides whose hypotenuse is again odd and at least $3$.}
+
+For odd $c$, the numbers $\dfrac{c^2-1}{2}$ and $\dfrac{c^2+1}{2}$ are integers, and
+\[c^2+\left(\dfrac{c^2-1}{2}\right)^2=\dfrac{4c^2+c^4-2c^2+1}{4}=\left(\dfrac{c^2+1}{2}\right)^2.\]
+So $\left(c,\dfrac{c^2-1}{2},\dfrac{c^2+1}{2}\right)$ is a right triangle with leg $c$. Its hypotenuse is odd: an odd square is $1\pmod8$, so $c^2+1\equiv2\pmod8$ and $\dfrac{c^2+1}{2}\equiv1\pmod4$. It is also larger than $c$.
+
+The first hypotenuse is $5$, which is odd, so by induction every hypotenuse in the chain is odd and the next triangle always exists:
+\[(3,4,5),\ (5,12,13),\ (13,84,85),\ (85,3612,3613),\ \dots\ \blacksquare\]
+(Even hypotenuses would also be fine: an even $c\ge4$ is a leg of $\left(c,\dfrac{c^2}{4}-1,\dfrac{c^2}{4}+1\right)$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(4,3);pair D=C+12*(-3/5,4/5);
+draw(A--B--C--cycle,linewidth(0.8));draw(A--C--D--cycle,linewidth(0.8));
+real s=0.6;draw(B+(-s,0)--B+(-s,s)--B+(0,s));
+pair u=unit(A-C),v=unit(D-C);draw(C+s*u--C+s*u+s*v--C+s*v);
+label("$4$",(A+B)/2,S);label("$3$",(B+C)/2,E);label("$5$",(A+C)/2,SE);label("$12$",(C+D)/2,NE);label("$13$",(A+D)/2,W);
+\end{asy}
+
+The sketch shows the first two triangles to scale.

@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2365237_geometry
+% Stable identity: aops-topic-2365237-q01
+\textbf{Legs.} From each vertex, the two tangent segments to the circle are equal. Splitting every side at its point of tangency and adding,
+\[AB+DC=AD+BC,\]
+so $AD+BC=40$ and, since the trapezium is isosceles, $AD=BC=20$.
+
+\textbf{Height.} Drop the perpendicular from $A$ to $DC$. Because the trapezium is symmetric, it cuts off $\dfrac{30-10}{2}=10$ from $DC$, so the height is
+\[h=\sqrt{20^2-10^2}=\sqrt{300}=10\sqrt3.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real h=10*sqrt(3);
+pair D=(-15,0), C=(15,0), B=(5,h), A=(-5,h), O=(0,h/2);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(circle(O,h/2),blue);
+pair Fa=(-5,0);
+draw(A--Fa,dashed); draw((Fa+(0.9,0))--(Fa+(0.9,0.9))--(Fa+(0,0.9)));
+draw(O--(0,h),red); dot(O); label("$O$",O,E);
+label("$r$",(0,0.75*h),E,red);
+label("$A$",A,NW); label("$B$",B,NE); label("$C$",C,SE); label("$D$",D,SW);
+label("$10$",(A+B)/2,N); label("$30$",(4,0),S); label("$20$",(B+C)/2,NE); label("$20$",(A+D)/2,NW);
+label("$10$",(D+Fa)/2,S); label("$h$",(A+Fa)/2,E);
+\end{asy}
+
+\textbf{Circle.} The circle touches the two parallel sides, so its diameter is the distance between them: $2r=10\sqrt3$. Hence
+\[r=\boxed{5\sqrt3\text{ cm}},\qquad \text{area}=\pi r^2=\boxed{75\pi\text{ cm}^2}\approx235.6\text{ cm}^2.\]

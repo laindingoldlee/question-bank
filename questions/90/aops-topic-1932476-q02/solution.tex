@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1932476_geometric_probability
+% Stable identity: aops-topic-1932476-q02
+Let $B$ and $Y$ be the arrival times of the bus and of you, in minutes after 12:00; $(B,Y)$ is uniform in $[0,60]^2$. You catch the bus if you arrive while it is waiting ($B\le Y\le B+5$) or it arrives while you are waiting ($Y\le B\le Y+20$). Together these say
+\[
+B-20\le Y\le B+5 ,
+\]
+the shaded region (with $B$ horizontal and $Y$ vertical).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real s=4/60;
+path reg=(0,0)--(20*s,0)--(60*s,40*s)--(60*s,60*s)--(55*s,60*s)--(0,5*s)--cycle;
+fill(reg,palegray);
+draw((0,0)--(4,0)--(4,4)--(0,4)--cycle,linewidth(1));
+draw((20*s,0)--(60*s,40*s));draw((0,5*s)--(55*s,60*s));
+label("$0$",(0,0),SW);label("$60$",(4,0),S);label("$60$",(0,4),W);
+label("$B$",(2,0),2*S);label("$Y$",(0,2),2*W);
+label("$Y=B-20$",(4,40*s),E);label("$Y=B+5$",(55*s,4),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The two unshaded corner triangles are right isosceles: $Y>B+5$ has legs $55$ and $Y<B-20$ has legs $40$. Their total area is $\dfrac{55^2+40^2}{2}=\dfrac{3025+1600}{2}=2312.5$, so the probability is
+\[
+1-\dfrac{2312.5}{3600}=\dfrac{1287.5}{3600}=\boxed{\dfrac{103}{288}} .
+\]

@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h2085967_may_match_school_math_with_advanced_graphing_10_questions
+% Stable identity: aops-topic-2085967-q08
+Rotate the plane by \(60^\circ\) about \(C\), in the direction that carries \(A\) away from \(B\). Let \(A'\) and \(P'\) be the images of \(A\) and \(P\). Then \(CA'=CA=3\) and \(\angle BCA'=60^\circ+60^\circ=120^\circ\).
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), B=(5,0), A=3*dir(60), Ap=3*dir(120);
+pair P=(1.9,0.85), Pp=rotate(60)*P;
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--Ap,dashed); draw(A--Ap,dotted);
+draw(A--P,blue); draw(B--P,blue); draw(C--P,blue);
+draw(Ap--Pp,red); draw(Pp--P,red); draw(C--Pp,gray+dashed);
+draw(Ap--B,deepgreen+linewidth(0.6)+dashed);
+dot(A);dot(B);dot(C);dot(Ap);dot(P);dot(Pp);
+label("$C$",C,S); label("$B$",B,SE); label("$A$",A,N); label("$A'$",Ap,NW);
+label("$P$",P,SE); label("$P'$",Pp,W);
+label("$3$",Ap/2,SW); label("$5$",B/2,S); label("$3$",0.3*A,E);
+label("$120^\circ$",C,4*dir(95),fontsize(8pt));
+label("$7$",(Ap+B)/2,NE,deepgreen);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The rotation preserves lengths, so \(A'P'=AP\). Triangle \(CPP'\) has \(CP=CP'\) and \(\angle PCP'=60^\circ\), so it is equilateral and \(PP'=CP\). Hence
+\[
+AP+BP+CP=A'P'+P'P+PB\ge A'B,
+\]
+because the broken path \(A'\to P'\to P\to B\) is at least as long as the segment \(A'B\). By the law of cosines in triangle \(A'CB\),
+\[
+A'B^2=3^2+5^2-2\cdot 3\cdot 5\cos 120^\circ=9+25+15=49,\qquad A'B=7.
+\]
+Equality needs \(P'\) and \(P\) to lie on segment \(A'B\) in that order. This happens at the Fermat point, the point from which each side subtends \(120^\circ\). Such an interior point exists because every angle of the triangle is less than \(120^\circ\): \(AB^2=9+25-15=19\), and \(\cos A=\dfrac{9+19-25}{6\sqrt{19}}>0\), \(\cos B=\dfrac{25+19-9}{10\sqrt{19}}>0\), while \(C=60^\circ\). Then \(\angle CPP'=60^\circ\) and \(\angle CPB=120^\circ\) make \(P',P,B\) collinear, and \(\angle CP'P=60^\circ\) with \(\angle CP'A'=\angle CPA=120^\circ\) makes \(A',P',P\) collinear.
+
+The minimum value is \(\boxed{7}\).

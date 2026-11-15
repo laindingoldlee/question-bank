@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h1580471_octahedra
+% Stable identity: aops-topic-1580471-q01
+\textbf{Structure.} The six vertices form three pairs of opposite vertices, say $\{u,u'\}$, $\{v,v'\}$, $\{w,w'\}$. Each face has exactly one vertex from each pair, and each of the $2\cdot2\cdot2=8$ choices is a face. So the face sums are exactly the eight numbers
+\[
+\{u,u'\}+\{v,v'\}+\{w,w'\},
+\]
+one element from each pair.
+
+\textbf{(a)} Both (i) and (ii): \textbf{yes}. Take integer values
+\[
+u=0,\ u'=1,\qquad v=0,\ v'=2,\qquad w=1,\ w'=5 .
+\]
+Then $\{0,1\}+\{0,2\}=\{0,1,2,3\}$, and adding $1$ or $5$ gives $\{1,2,3,4\}\cup\{5,6,7,8\}$: all eight values $1,\dots,8$ occur, each once. An integer labelling is in particular rational, so (i) is also possible.
+
+(A necessary condition, which this labelling meets: opposite faces use complementary vertices, so the two sums on opposite faces add up to the total of all six vertex numbers. Since each vertex lies on $4$ faces, $4\cdot(\text{vertex total})=1+2+\dots+8=36$, so the vertex total is $9$ and opposite faces must sum to $9$: $1$ opposite $8$, $2$ opposite $7$, and so on.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair P3(real x,real y,real z){return (x+0.35*y,z+0.25*y);}
+pair Xp=P3(1,0,0),Xm=P3(-1,0,0),Yp=P3(0,1,0),Ym=P3(0,-1,0),Zp=P3(0,0,1),Zm=P3(0,0,-1);
+draw(Xp--Ym--Xm^^Zp--Xp--Zm^^Zp--Xm--Zm^^Zp--Ym--Zm,linewidth(0.9));
+draw(Xp--Yp--Xm^^Zp--Yp--Zm,dashed);
+dot(Xp);dot(Xm);dot(Yp);dot(Ym);dot(Zp);dot(Zm);
+label("$0$",Xp,E);label("$1$",Xm,W);label("$0$",Yp,NE);label("$2$",Ym,SW);label("$1$",Zp,N);label("$5$",Zm,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The sketch shows the labelling, with opposite vertices $0,1$ (left--right), $0,2$ (back--front) and $1,5$ (top--bottom); hidden edges are dashed.)
+
+\textbf{(b)} Place the centre at the origin with vertices $(\pm a,0,0)$, $(0,\pm a,0)$, $(0,0,\pm a)$. The edge between $(a,0,0)$ and $(0,a,0)$ has length $a\sqrt2=1$, so $a=\dfrac{1}{\sqrt2}$. The face through $(a,0,0)$, $(0,a,0)$, $(0,0,a)$ lies in the plane $x+y+z=a$, at distance
+\[
+\dfrac{a}{\sqrt3}=\dfrac{1}{\sqrt6}
+\]
+from the centre. The opposite face lies in the parallel plane $x+y+z=-a$, at the same distance on the other side. When the die rests on one face, the opposite face is horizontal at height
+\[
+\dfrac{2}{\sqrt6}=\boxed{\dfrac{\sqrt6}{3}}\approx0.816 .
+\]

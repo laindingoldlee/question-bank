@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1623151_series_problem_need_help
+% Stable identity: aops-topic-1623151-q01
+Let the angles be $a,ar,ar^2,ar^3$ with first term $a>0$. Since $ar$ is an integer multiple of $a$, the ratio $r$ is a positive integer. The angles of a quadrilateral add up to $360^\circ$:
+\[
+a(1+r+r^2+r^3)=360 .
+\]
+For $r=1$ all angles are $90^\circ$. For $r=2$, $15a=360$, $a=24$: angles $24,48,96,192$. For $r=3$, $40a=360$, $a=9$: angles $9,27,81,243$. For $r=4,5,6$ the factor $1+r+r^2+r^3=85,156,259$ does not divide $360$, and for $r\ge7$ it exceeds $360$.
+
+An angle of $243^\circ$ is possible because a quadrilateral may be concave, with one reflex angle (less than $360^\circ$). For instance, take triangle $ABC$ with $\angle B=81^\circ$, $\angle BAC=50^\circ$, $\angle BCA=49^\circ$, and let $D$ be the point inside it with $\angle BAD=27^\circ$ and $\angle BCD=9^\circ$; then $\angle ADC=180^\circ-23^\circ-40^\circ=117^\circ$, and the concave quadrilateral $ABCD$ has angles $27^\circ,81^\circ,9^\circ$ and $360^\circ-117^\circ=243^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(5.0473,6.0151),D=(5.0473,2.5717);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(arc(A,1.4,0,27));label("$27^\circ$",A+2.1*dir(13.5));
+draw(arc(B,0.7,99,180));label("$81^\circ$",B+1.25*dir(139.5));
+draw(arc(C,2.05,-90,-81));label("$9^\circ$",C+2.62*dir(-85.6),fontsize(8pt));
+draw(arc(D,0.4,207,450),red);label("$243^\circ$",(5.05,1.75),red);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,1.4*dir(150));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The largest possible angle is $\boxed{243^\circ}$.

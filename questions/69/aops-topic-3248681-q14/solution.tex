@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3248681_202324_abmc_online_december_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3248681-q14
+Choose coordinates $O=(0,0)$, $A=(-24,7)$, $B=(24,7)$, since the half-length of $AB$ is $\sqrt{25^2-7^2}=24$. Write $X=(u,7)$. The inequality $AX>BX$ gives $u>0$. Line $CD$ has angle $60^\circ$ or $-60^\circ$ to the positive horizontal axis; its distance from $O$ is respectively $\dfrac{|\sqrt3u-7|}{2}$ or $\dfrac{|\sqrt3u+7|}{2}$. Setting these equal to $15$ and retaining $u>0$ yields $u=\dfrac{37}{\sqrt3}$ or $\dfrac{23}{\sqrt3}$. Both are less than $24$, so both intersections lie inside the chord. Thus $\boxed{BX=24-\dfrac{37}{\sqrt3}\quad\text{or}\quad24-\dfrac{23}{\sqrt3}}$. In the requested original $x+y+z$ form these give $64$ and $50$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int k=0;k<2;++k){pair off=(65*k,0),O=off,A=off+(-24,7),B=off+(24,7);real u=(k==0?37:23)/sqrt(3);pair X=off+(u,7),v=dir(k==0?60:-60);real w=dot(X-O,v),disc=sqrt(w*w+625-dot(X-O,X-O));pair C=X+(-w+disc)*v,D=X+(-w-disc)*v;draw(circle(O,25));draw(A--B^^C--D,blue);dot(X);label("$O$",O,S);label("$A$",A,W);label("$B$",B,E);label("$X$",X,S);label("$C$",C,N);label("$D$",D,S);label(k==0?"$u=\dfrac{37}{\sqrt3}$":"$u=\dfrac{23}{\sqrt3}$",off+(0,-32));}
+\end{asy}

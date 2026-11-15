@@ -1,0 +1,9 @@
+Join the centre to the six vertices. The hexagon splits into six equilateral triangles of side $1$, each of area $\dfrac{\sqrt3}{4}$. Its total area is $\dfrac{3\sqrt3}{2}$. Subtracting this from the circle's area gives $\boxed{\pi-\dfrac{3\sqrt3}{2}}$.
+
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(260);
+defaultpen(fontsize(9pt));
+pair[] V;path h;for(int i=0;i<6;++i)V.push(dir(60i));h=V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle;filldraw(circle((0,0),1),gray(.85),black);filldraw(h,white,black);for(int i=0;i<6;++i){draw((0,0)--V[i],dashed);label("$A_{"+string(i+1)+"}$",1.13V[i]);}label("$O$",(0,0),(0,-1));
+
+\end{asy}

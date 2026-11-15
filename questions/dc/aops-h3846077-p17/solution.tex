@@ -1,0 +1,7 @@
+The route graph is connected and has no cycle: a cycle would give two different paths between its vertices. Thus it is a tree. Choose a root and color each city by the parity of its distance in edges from the root. Every edge joins opposite parities; otherwise the root paths and that edge would create a cycle. Therefore each color class contains no adjacent pair. The larger class has at least $\lceil\dfrac{n}{2}\rceil$ cities and is the required selection.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] v={(0,2),(-2,1),(0,1),(2,1),(-3,0),(-1,0),(1,0),(3,0)};int[][] e={{0,1},{0,2},{0,3},{1,4},{1,5},{3,6},{3,7}};for(int[] q:e)draw(v[q[0]]--v[q[1]]);for(int i=0;i<8;++i){fill(circle(v[i],.13),(i>=1&&i<=3)?lightred:paleblue);draw(circle(v[i],.13));}label("Choose the five blue vertices",(0,-.7));
+\end{asy}

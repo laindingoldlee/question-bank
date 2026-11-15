@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h2581801_new_ways_of_finding_a_square_inscribed_in_a_triangle
+% Stable identity: aops-topic-2581801-q01
+Use coordinates with $B=(0,0)$, $C=(a,0)$ and $A=(p,h)$. Since the angles at $B$ and $C$ are acute, $H=(p,0)$ lies strictly between $B$ and $C$, so $0<p<a$. The square is $A=(p,h)$, $H=(p,0)$, $G=(p-h,0)$, $F=(p-h,h)$.
+
+\emph{The point $E$.} Points of line $CF$ are $(a+t(p-h-a),\ th)$, and points of line $AB$ are $(up,\ uh)$. Equal heights give $t=u$, and then $a+t(p-h-a)=tp$ gives $t=\dfrac{a}{a+h}$. So
+\[E=\left(\dfrac{ap}{a+h},\ \dfrac{ah}{a+h}\right),\]
+and since $0<\dfrac a{a+h}<1$, the point $E$ lies on side $AB$. Let $s=\dfrac{ah}{a+h}$ be its height.
+
+\emph{The other vertices.} Side $AC$ goes from $(p,h)$ to $(a,0)$; its point at height $s$ is
+\[X=\left(a-(a-p)\dfrac sh,\ s\right)=\left(\dfrac{a(h+p)}{a+h},\ s\right),\]
+which lies on side $AC$ because $0<s<h$. Also $D=\left(\dfrac{ap}{a+h},0\right)$ and $Y=\left(\dfrac{a(h+p)}{a+h},0\right)$. Both lie on side $BC$, since $0<p$ and $p+h<a+h$.
+
+\emph{It is a square.} $ED$ and $XY$ are vertical of length $s$, $DY$ is horizontal, and
+\[EX=DY=\dfrac{a(h+p)-ap}{a+h}=\dfrac{ah}{a+h}=s.\]
+So $EXYD$ is a rectangle with all sides equal to $s$, i.e. a square, with $E$ on $AB$, $X$ on $AC$ and $D,Y$ on $BC$. Its side length is $\boxed{\dfrac{ah}{a+h}}$. $\blacksquare$
+
+\emph{Why the construction works.} The enlargement with centre $C$ and ratio $\dfrac{a}{a+h}$ maps $F$ to $E$. It maps the square $AHGF$ to a square whose vertex $A$ moves along line $CA$ and whose side $GH$ stays on line $CB$. That image is exactly $EXYD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(8,0),A=(3,4.5);
+real a=8,h=4.5,p=3,s=a*h/(a+h);
+pair H=(p,0),G=(p-h,0),F=(p-h,h);
+pair Ep=(a*p/(a+h),s),Xp=(a*(h+p)/(a+h),s),D=(a*p/(a+h),0),Y=(a*(h+p)/(a+h),0);
+fill(Ep--Xp--Y--D--cycle,gray(0.85));
+draw(A--H--G--F--cycle,dashed);
+draw(G--B,dashed);
+draw(C--F,dotted);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(Ep--Xp--Y--D--cycle,linewidth(0.8));
+dot(A);dot(B);dot(C);dot(H);dot(G);dot(F);dot(Ep);dot(Xp);dot(D);dot(Y);
+label("$A$",A,N);label("$B$",B,S);label("$C$",C,S);label("$H$",H,S);label("$G$",G,S);label("$F$",F,NW);
+label("$E$",Ep,W);label("$X$",Xp,NE);label("$D$",D,S);label("$Y$",Y,S);
+\end{asy}

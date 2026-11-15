@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1658301_2018_ms_insight_all
+% Stable identity: aops-topic-1658301-q05
+Modulo $5$, a Fibonacci-like sequence is determined by two consecutive residues, so the residues repeat. For the ordinary Fibonacci sequence $F_{1,1}=1,1,2,3,5,8,\dots$ the residues modulo $5$ are
+\[
+1,1,2,3,0,\ 3,3,1,4,0,\ 4,4,3,2,0,\ 2,2,4,1,0,\ \ldots
+\]
+with period $20$ (after these $20$ terms the pair $1,1$ returns), and one period sums to $7+11+13+9=40$.
+
+\textbf{$(1,1)$.} $2018=100\cdot20+18$. The first $18$ residues of a period sum to $40-1-0=39$, so this sequence contributes $100\cdot40+39=4039$.
+
+\textbf{$(1,2)$.} $F_{1,2}=1,2,3,5,\dots$ is the Fibonacci sequence shifted by one place, so its terms are $F_{1,1}(2),\dots,F_{1,1}(2019)$: $100$ full periods plus the residues of positions $2$ to $19$ of a period, which sum to $40-1-0=39$. Contribution $4039$.
+
+\textbf{$(2,2)$.} $F_{2,2}=2F_{1,1}$, with residues $2,2,4,1,0,1,1,2,3,0,3,3,1,4,0,4,4,3,2,0$; a period again sums to $40$, and the first $18$ sum to $40-2-0=38$. Contribution $4038$.
+
+The total is $4039+4039+4038=12116$, and the remainder on division by $1000$ is $\boxed{116}$.

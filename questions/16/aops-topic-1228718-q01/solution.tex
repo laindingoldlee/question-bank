@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1228718_geometry_question
+% Stable identity: aops-topic-1228718-q01
+Let $O$ be the circumcentre of triangle $AMN$. Since $\angle MAN=30^\circ$ is acute, $O$ lies on the same side of $MN$ as $A$, and the central angle is $\angle MON=2\angle MAN=60^\circ$. The angle of the rhombus at $C$ is $\angle MCN=\angle A=120^\circ$, and $C$ is on the other side of line $MN$ from $A$ (the segment $MN$ cuts off the corner $C$).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=2*dir(-60),D=2*dir(60),C=B+D;
+pair M=extension(A,A+dir(-22),B,C); pair N=extension(A,A+dir(8),D,C);
+pair p1=(A+M)/2, p2=(A+N)/2; pair O=extension(p1,p1+rotate(90)*(M-A),p2,p2+rotate(90)*(N-A));
+draw(A--B--C--D--cycle,linewidth(1)); draw(A--C,gray+dashed); draw(A--M--N--cycle,blue);
+draw(circle(O,length(O-A)),red); dot(O);
+label("$A$",A,W);label("$B$",B,S);label("$C$",C,E);label("$D$",D,N);label("$M$",M,SE);label("$N$",N,NE);label("$O$",O,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So in quadrilateral $OMCN$ the opposite angles at $O$ and $C$ sum to $60^\circ+120^\circ=180^\circ$, and $OMCN$ is cyclic. In its circumcircle the chords $OM$ and $ON$ are equal (radii of the first circle), so they subtend equal inscribed angles at $C$: $\angle MCO=\angle OCN$. Thus $CO$ bisects $\angle BCD$. But the diagonal $CA$ of a rhombus bisects the angle at $C$, so $O$ lies on line $CA$, the diagonal $AC$. $\blacksquare$

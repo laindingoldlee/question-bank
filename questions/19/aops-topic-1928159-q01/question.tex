@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1928159_please_help_with_amc_8_problem
+% Stable identity: aops-topic-1928159-q01
+In right triangle $ABC$, $AC=12$, $BC=5$, and $\angle C$ is a right angle. A semicircle is inscribed in the triangle as shown: its diameter lies on $AC$ with one endpoint at $C$, and its arc is tangent to the hypotenuse $AB$. What is the radius of the semicircle?
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),A=(12,0),B=(0,5);real r=10/3;pair O=(r,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(arc(O,r,0,180),blue+linewidth(0.9));
+draw((0,0.55)--(0.55,0.55)--(0.55,0));
+label("$A$",A,SE);label("$B$",B,N);label("$C$",C,SW);
+label("$12$",(9.3,0),S);label("$5$",(0,2.5),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+$\textbf{(A)}\ \dfrac{7}{6}\qquad\textbf{(B)}\ \dfrac{13}{5}\qquad\textbf{(C)}\ \dfrac{59}{18}\qquad\textbf{(D)}\ \dfrac{10}{3}\qquad\textbf{(E)}\ \dfrac{60}{13}$

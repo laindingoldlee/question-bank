@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2181477_triangles
+% Stable identity: aops-topic-2181477-q01
+Let the sides be $a<b<c$ (scalene), with $a+b>c$ (triangle inequality) and $a+b+c\le12$.
+
+Since $c<a+b$, we get $2c<a+b+c\le12$, so $c\le5$. Also $a\ge2$: if $a=1$, then $c<b+1$, so $c\le b$, contradicting $b<c$. Hence $b\ge3$ and $c\ge4$.
+\begin{itemize}
+\item $c=4$: $a<b<4$ with $a+b>4$ gives $(a,b)=(2,3)$: the triangle $(2,3,4)$, perimeter $9$.
+\item $c=5$: $a<b<5$ with $a+b>5$ and $a+b\le7$ gives $(2,4)$ and $(3,4)$: the triangles $(2,4,5)$ and $(3,4,5)$, perimeters $11$ and $12$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+void tri(pair o, real a, real b, real c, pen p){
+  // sides a (base), b, c with base along x-axis
+  real x=(a^2+b^2-c^2)/(2a); real y=sqrt(b^2-x^2);
+  pair P=o, Q=o+(a,0), R=o+(x,y);
+  draw(P--Q--R--cycle,p+linewidth(1));
+  label(string(a),(P+Q)/2,S,fontsize(9pt)); label(string(b),(P+R)/2,NW,fontsize(9pt)); label(string(c),(Q+R)/2,NE,fontsize(9pt));
+}
+tri((0,0),4,2,3,blue); tri((5.2,0),5,2,4,red); tri((11.4,0),5,3,4,heavygreen);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So there are $\boxed{3}$ such triangles.

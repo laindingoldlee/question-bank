@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1722465_500th_post_problem
+% Stable identity: aops-topic-1722465-q01
+Call the $6$ snacks, drinks and ice cream ``other'' dishes. For a meal of $k$ dishes, first count the meals with at most two proteins, then remove those with no vegetable, then remove those containing both Coke and Mentos.
+
+\textbf{At most two proteins, at least one vegetable.} With $p\le2$ proteins and the remaining $k-p$ dishes chosen from the $11$ non-protein dishes, there are $\sum_{p=0}^{2}\binom4p\binom{11}{k-p}$ meals; those with no vegetable choose the $k-p$ dishes from the $6$ other dishes only, $\sum_{p=0}^{2}\binom4p\binom{6}{k-p}$. This gives
+\[
+k=4:\ 1320-185=1135,\qquad k=5:\ 2772-186=2586,\qquad k=6:\ 4290-115=4175 .
+\]
+For example, for $k=4$: $\binom{11}{4}+4\binom{11}{3}+6\binom{11}{2}=330+660+330=1320$ and $\binom64+4\binom63+6\binom62=15+80+90=185$.
+
+\textbf{Meals with both Coke and Mentos.} Such a meal consists of Coke, Mentos and $k-2$ further dishes chosen from the $13$ remaining dishes ($5$ vegetables, $4$ proteins, $4$ others), still with at least one vegetable and at most two proteins. The same count with $11$ replaced by $9$ and $6$ replaced by $4$ gives
+\[
+k=4:\ 78-28=50,\qquad k=5:\ 282-52=230,\qquad k=6:\ 678-53=625 .
+\]
+
+\textbf{Total.}
+\[
+(1135-50)+(2586-230)+(4175-625)=1085+2356+3550=\boxed{6991}.
+\]

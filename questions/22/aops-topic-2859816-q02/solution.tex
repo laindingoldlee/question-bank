@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2859816_math_problems_discussions_and_more
+% Stable identity: aops-topic-2859816-q02
+Let $AB=AC=1$ with $\angle A=36^\circ$, and let $BC=x$. Draw the bisector $CD$ of $\angle C$, with $D$ on $AB$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,cos(radians(18))),B=(-sin(radians(18)),0),C=(sin(radians(18)),0);
+pair D=A+(2*sin(radians(18)))*unit(B-A);
+draw(A--B--C--cycle);draw(C--D,dashed);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,W);
+label("$36^\circ$",A-(0,0.33));label("$1$",(A+C)/2,E);label("$x$",(B+C)/2,S);
+\end{asy}
+
+Then $\angle DCA=36^\circ=\angle A$, so $AD=DC$; and $\angle CDB=72^\circ=\angle B$, so $DC=BC=x$. Hence $AD=x$ and $DB=1-x$. Triangles $CBD$ and $ABC$ are similar (both have angles $36^\circ,72^\circ,72^\circ$), so
+\[\dfrac{BD}{BC}=\dfrac{BC}{AB}\implies\dfrac{1-x}{x}=\dfrac x1\implies x^2+x-1=0.\]
+So $x=\boxed{\dfrac{\sqrt5-1}{2}}$.

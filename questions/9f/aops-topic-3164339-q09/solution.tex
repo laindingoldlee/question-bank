@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3164339_2018_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3164339-q09
+Write $BC=AD=L$. Since $BE\parallel AD$, angle bisection makes triangle $ABE$ isosceles, with $BE=AB=9$, so $EC=L-9$. Using unit vectors $u$ along $AD$ and $v$ along $AB$, we have $D=Lu$, $B=9v$, $E=9u+9v$. At the intersection $P=tE=B+s(D-B)$, coefficient comparison gives $9t=Ls$ and $t=1-s$, hence $t=\dfrac{L}{L+9}$. Therefore $EP=16(1-t)=\dfrac{144}{L+9}$. The condition gives $(L-9)(L+9)=144$, so $L^2=225$ and $\boxed{BC=15}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(9,0),u=(47/81,16*sqrt(17)/81),D=15*u,C=B+D,Ee=B+9*u,P=5*Ee/8;draw(A--B--C--D--cycle);draw(A--Ee^^B--D);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$E$",Ee,E);label("$P$",P,N);
+\end{asy}

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1769062_2_fun_basic_geometry_algebra_problems
+% Stable identity: aops-topic-1769062-q01
+Let the base be $x$ by $y$ with $x\le y$. Then $x+y=20$, the height is $2x$, and
+\[
+x\cdot y\cdot2x=1536\ \Longrightarrow\ x^2(20-x)=768\ \Longrightarrow\ x^3-20x^2+768=0 .
+\]
+Trying divisors of $768$, $x=8$ works: $512-1280+768=0$. Then $x^3-20x^2+768=(x-8)(x^2-12x-96)$, and the quadratic has roots $6\pm2\sqrt{33}$. The negative root is impossible, and $x=6+2\sqrt{33}\approx17.5$ would give $y=20-x\approx2.5<x$, contradicting $x\le y$. So $x=8$, $y=12$, the height is $16$, and the longer side of the base is $\boxed{12}$ inches.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair d=(0.45,0.3);
+real a=8,bb=12,h=16, s=0.25;
+pair p0=(0,0),p1=(bb*s,0),p2=p1+a*s*d,p3=a*s*d,up=(0,h*s);
+draw(p0--p1--p2,linewidth(0.9));draw(p2--p3--p0,dashed);
+draw(p0+up--p1+up--p2+up--p3+up--cycle,linewidth(0.9));
+draw(p0--p0+up,linewidth(0.9));draw(p1--p1+up,linewidth(0.9));draw(p2--p2+up,linewidth(0.9));draw(p3--p3+up,dashed);
+label("$y=12$",(p0+p1)/2,S);label("$x=8$",(p1+p2)/2,SE);label("$2x=16$",p0+up/2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check: $2(8+12)=40$ and $8\cdot12\cdot16=1536$.

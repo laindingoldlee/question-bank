@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1685685_shoelace_formula_question
+% Stable identity: aops-topic-1685685-q01
+The shoelace formula needs the vertices in order around the boundary. In the order $P,Q,R,S$ the sides $PQ$ and $RS$ cross (segment $PQ$ meets the $x$-axis at $x=3+\dfrac{14}{13}\approx4.08$, between $-4$ and $7$). Going around the boundary counterclockwise the order is $S,Q,R,P$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair P=(3,7),Q=(5,-6),R=(7,0),Sv=(-4,0);
+filldraw(Sv--Q--R--P--cycle,lightgray,linewidth(0.9));
+draw((-5.5,0)--(8.5,0),gray,Arrow(5));draw((0,-7)--(0,8.5),gray,Arrow(5));
+draw(Sv--R,dashed);
+dot(P);dot(Q);dot(R);dot(Sv);
+label("$P(3,7)$",P,N);label("$Q(5,-6)$",Q,S);label("$R(7,0)$",R,dir(55));label("$S(-4,0)$",Sv,dir(120));
+label("$x$",(8.5,0),S);label("$y$",(0,8.5),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+List the vertices $S(-4,0)$, $Q(5,-6)$, $R(7,0)$, $P(3,7)$ and back to $S$:
+\[
+\begin{aligned}
+\text{Area}&=\dfrac{1}{2}\Bigl|\,(-4)(-6)-5\cdot0+5\cdot0-7(-6)+7\cdot7-3\cdot0+3\cdot0-(-4)\cdot7\,\Bigr|\\
+&=\dfrac{1}{2}\,|24+42+49+28|=\dfrac{143}{2}=\boxed{71.5}.
+\end{aligned}
+\]
+Check: the $x$-axis splits the quadrilateral into triangle $SRP$ with base $11$ and height $7$ (area $38.5$) and triangle $SRQ$ with base $11$ and height $6$ (area $33$), and $38.5+33=71.5$.

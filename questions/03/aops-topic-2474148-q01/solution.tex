@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2474148_sal_ama_ftw
+% Stable identity: aops-topic-2474148-q01
+\textbf{Triangle inequality.} We need $5-3<x<5+3$, so $x\in\{3,4,5,6,7\}$.
+
+\textbf{Acuteness.} By the law of cosines, the angle opposite the longest side $c$ of a triangle with other sides $a,b$ is acute exactly when $c^2<a^2+b^2$; the other two angles are then automatically acute, since they are smaller. So the triangle is acute exactly when the square of its longest side is less than the sum of the squares of the other two.
+\begin{itemize}
+\item If $x\le5$, the longest side is $5$, and we need $25<9+x^2$, i.e. $x^2>16$, so $x=5$. ($x=4$ gives the right triangle $3$--$4$--$5$.)
+\item If $x\ge6$, the longest side is $x$, and we need $x^2<9+25=34$, which fails for $x\ge6$.
+\end{itemize}
+Only $x=5$ works, so the answer is $\boxed{1}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+void tri(pair o, real x, string lab, pen p){
+  real ax=(25+9-x^2)/10, ay=sqrt(9-ax^2);
+  pair B1=o, C1=o+(5,0), A1=o+(ax,ay);
+  draw(B1--C1--A1--cycle,p+linewidth(0.8));
+  label("$3$",(B1+A1)/2,W,fontsize(8pt));
+  label("$5$",(B1+C1)/2,S,fontsize(8pt));
+  label("$"+string(x)+"$",(C1+A1)/2,NE,fontsize(8pt));
+  label(lab,o+(2.5,-1.1),fontsize(8pt));
+}
+tri((0,0),4,"$x=4$: right",black);
+tri((7,0),5,"$x=5$: acute",blue);
+tri((14,0),6,"$x=6$: obtuse",red);
+pair r0=(1.8,2.4); pair u=unit((0,0)-r0), v=unit((5,0)-r0);
+draw(r0+0.35*u--r0+0.35*u+0.35*v--r0+0.35*v);
+\end{asy}

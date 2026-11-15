@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2158967_geometry_triangle_problem
+% Stable identity: aops-topic-2158967-q01
+The statement is \textbf{true}.
+
+Let the bisector of $\angle A$ meet the circumcircle again at $K'$; since the bisector passes through the interior of the triangle, $K'$ is on the arc $BC$ not containing $A$. The inscribed angles $\angle BAK'$ and $\angle K'AC$ are equal, and in a circle equal inscribed angles cut off equal chords, so $K'B=K'C$. Hence $K'$ lies on the perpendicular bisector of $BC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=dir(115), B=dir(205), C=dir(-25);
+pair K=dir(-90-0*1);
+pair Mbc=(B+C)/2;
+draw(unitcircle,gray(0.55));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--K,blue);
+draw((Mbc+0.55*(Mbc-K))--K,red+dashed);
+draw(B--K,dotted); draw(C--K,dotted);
+dot(A); dot(B); dot(C); dot(K); dot(Mbc,red);
+label("$A$",A,N); label("$B$",B,W); label("$C$",C,E); label("$K$",K,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $K'$ lies on both the bisector of $\angle A$ and the perpendicular bisector of $BC$. These two lines are different: the bisector passes through $A$, while the perpendicular bisector of $BC$ does not, because $AB\ne AC$ in a scalene triangle. Two different lines meet in at most one point, so their intersection $K$ is $K'$, which lies on the circumcircle. $\blacksquare$
+
+\emph{Remark.} This is where ``scalene'' (in fact only $AB\ne AC$) is needed: if $AB=AC$, the two lines coincide and $K$ is not determined.

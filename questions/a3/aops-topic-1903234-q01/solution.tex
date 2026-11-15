@@ -1,0 +1,49 @@
+% Source: https://artofproblemsolving.com/community/c3h1903234_2019_mathcounts_state_sprint_problem_30
+% Stable identity: aops-topic-1903234-q01
+Let the radius be $R$ and let $k=R^2-OP^2$, the power of $P$; since $P\ne O$ is inside the circle, $0<k<R^2$.
+
+\textbf{Which chords are possible.} By the power of a point, every chord through $P$ is split into segments $u,v$ with $uv=k$. So all ten segments are integers whose products in pairs equal $k$, and $k$ is an integer. Conversely, the chords through $P$ have every length from $2\sqrt k$ (the chord perpendicular to $OP$) up to $2R$ (the diameter through $P$). Each length strictly between occurs for exactly two chords, mirror images in line $OP$, and the two extreme lengths occur once each. A chord of length $L$ has segments $u,v$ with $u+v=L$ and $uv=k$. Hence the chords with integer segments correspond to factorisations $k=uv$ with $u\le v$ and $u+v\le2R$ (note $u+v\ge2\sqrt{uv}=2\sqrt k$ automatically). Such a factorisation gives two chords if $u<v$ and $u+v<2R$, and one chord if $u=v$ or $u+v=2R$.
+
+\textbf{$R\le6$ is impossible.} Five chords need at least three such factorisations of $k$ (two factorisations give at most $2+2=4$ chords). If $R\le6$, then $k<36$ and every factorisation used has $v\le u+v-1\le11$. Going through the numbers below $36$ with at least five divisors:
+\[
+\begin{array}{c|c}
+k & \text{factorisations } uv \text{ with } u+v\le12\\\hline
+12 & 3\cdot4,\ 2\cdot6\\
+16 & 4\cdot4,\ 2\cdot8\\
+18 & 3\cdot6,\ 2\cdot9\\
+20 & 4\cdot5,\ 2\cdot10\\
+24 & 4\cdot6,\ 3\cdot8\\
+28,\ 30,\ 32 & \text{one each } (4\cdot7,\ 5\cdot6,\ 4\cdot8)
+\end{array}
+\]
+Numbers with fewer divisors have at most two factorisations at all. So at most two factorisations are usable and at most $4$ chords exist; $R\ge7$.
+
+\textbf{$R=7$ works.} Take $k=24$, i.e.\ $OP=\sqrt{49-24}=5$. The factorisations $24=2\cdot12$ (with $2+12=14=2R$: the diameter), $24=3\cdot8$ ($3+8=11$: two chords) and $24=4\cdot6$ ($4+6=10$: two chords) give exactly five chords with integer segments.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), P=(5,0);
+draw(circle(O,7),linewidth(0.9));
+real[] th={0,60,-60,78.463,-78.463};
+pen[] cl={black,blue,blue,deepgreen,deepgreen};
+for(int i=0;i<5;++i){
+  pair u=dir(th[i]);
+  real cs=cos(th[i]*pi/180);
+  real t1=-5*cs+sqrt(25*cs*cs+24), t2=-5*cs-sqrt(25*cs*cs+24);
+  draw((P+t2*u)--(P+t1*u),cl[i]+linewidth(0.8));
+}
+dot(O);dot(P);
+label("$O$",O,S);label("$P$",P+0.8*dir(208));
+label("$12$",(-1,0),N);label("$2$",(6.1,0.45));
+label("$3$",(6.29,1.33),blue);label("$3$",(6.29,-1.33),blue);
+label("$8$",(2.32,3.65),blue);label("$8$",(2.32,-3.65),blue);
+label("$4$",P+2.5*dir(87),deepgreen);label("$4$",P+2.5*dir(-87),deepgreen);
+label("$6$",P+4*dir(110),deepgreen);label("$6$",P+4*dir(-110),deepgreen);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Another example: $k=12$, $OP=\sqrt{37}$, with chords $1+12$, $2+6$, $3+4$, two of each.) So the least possible radius is $\boxed{7}$.
+
+\textbf{About the proposed solution in the post} (taking the five segments on one side of $P$ to be $1,2,3,4,5$ and concluding the radius is $1+6=7$). It cannot be right: by the power of a point the other segments would have to be $\dfrac {k}{1},\dfrac {k}{2},\dots,\dfrac {k}{5}$, so $60\mid k$, and the chord with segments $1$ and $k\ge60$ would need $2R\ge61$. The answer $7$ is correct, but that argument does not prove it.

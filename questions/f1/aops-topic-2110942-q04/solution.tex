@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2110942_100th_post
+% Stable identity: aops-topic-2110942-q04
+The rotation fixes the origin, so $C'=C=(0,0)$. It turns $A=(0,5)$, which points straight up, to $A'=(3,4)$. If the clockwise angle of rotation is $\theta$, then $A'=(5\sin\theta,5\cos\theta)$, so $\sin\theta=\dfrac{3}{5}$ and $\cos\theta=\dfrac{4}{5}$. A clockwise rotation by $\theta$ sends $(x,0)$ to $(x\cos\theta,-x\sin\theta)$, so
+\[B'=\left(12\cdot\dfrac{4}{5},\,-12\cdot\dfrac{3}{5}\right)=\left(\dfrac{48}{5},-\dfrac{36}{5}\right).\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair A=(0,5), B=(12,0), C=(0,0), A1=(3,4), B1=(9.6,-7.2), D=(75/14,0);
+fill(C--D--B1--cycle,paleblue);
+draw(A--B--C--cycle,gray+dashed);
+draw(A1--B1--C--cycle,blue+linewidth(1));
+draw((-1.5,0)--(13.5,0),Arrow(6)); draw((0,-8.5)--(0,6.5),Arrow(6));
+label("$x$",(13.5,0),E); label("$y$",(0,6.5),N);
+dot(A); dot(B); dot(A1); dot(B1); dot(D,red);
+label("$A$",A,W); label("$B$",B,N); label("$C=C'$",C,SW);
+label("$A'(3,4)$",A1,NE,blue); label("$B'$",B1,S,blue); label("$D$",D,NE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The $x$-axis passes through the vertex $C'$ and crosses side $A'B'$ at a point $D$. On segment $A'B'$, the $y$-coordinate goes from $4$ down to $-\dfrac{36}{5}$, so $D$ is $\dfrac{4}{4+\dfrac{36}{5}}=\dfrac{4}{\dfrac{56}{5}}=\dfrac{5}{14}$ of the way from $A'$ to $B'$. The part below the $x$-axis is triangle $C'DB'$, which has the same height from $C'$ as triangle $C'A'B'$ and base $DB'=\dfrac{9}{14}A'B'$. Hence the fraction is $\boxed{\dfrac{9}{14}}$.
+
+(Check: $D=\left(\dfrac{75}{14},0\right)$, the part below the axis has area $\dfrac{1}{2}\cdot\dfrac{75}{14}\cdot\dfrac{36}{5}=\dfrac{135}{7}$, and the whole triangle has area $\dfrac{1}{2}\cdot12\cdot5=30$; $\dfrac{135}{7}\div30=\dfrac{9}{14}$.)

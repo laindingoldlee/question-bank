@@ -1,0 +1,6 @@
+Label the six positions temporarily. There are $\binom63=20$ colour strings. For rotations, the identity fixes all 20. Rotations through two or four positions each have two cycles of length 3; exactly one cycle must be black, giving 2 fixed strings each. Rotations through one or five positions require a single colour, and rotation through three positions would require an even number of black positions, so none of these fixes a string with three black positions. Burnside\textquotesingle s lemma gives $\dfrac{20+2+2}{6}=\boxed4$. Representatives are BBBWWW, BBWBWW, BBWWBW, and BWBWBW in cyclic order.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+size(12cm);string[] patterns={"BBBWWW","BBWBWW","BBWWBW","BWBWBW"};for(int k=0;k<4;++k){pair O=(3*k,0);draw(circle(O,1),gray);for(int j=0;j<6;++j){pair P=O+dir(90+60*j);filldraw(circle(P,.12),substr(patterns[k],j,1)=="B"?black:white,black);}label(string(k+1),O);}
+\end{asy}
+

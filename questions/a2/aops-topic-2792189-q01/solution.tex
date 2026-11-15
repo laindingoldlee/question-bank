@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2792189_circlesgeometry
+% Stable identity: aops-topic-2792189-q01
+Any point of the chord is $P=(1-t)A+tB$ for some $t\in[0,1]$ (using vectors from $O$).
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+draw(unitcircle);pair A=dir(150),B=dir(20),O=(0,0);draw(A--B);draw(O--A,dashed);draw(O--B,dashed);pair P=0.4*A+0.6*B;draw(O--P,dotted);dot(P);label("$A$",A,W);label("$B$",B,E);label("$O$",O,S);label("$P$",P,N);
+\end{asy}
+
+By the triangle inequality, $|OP|=|(1-t)\vec{OA}+t\vec{OB}|\le(1-t)|OA|+t|OB|=(1-t)r+tr=r$. So $P$ is in the closed disc. (Equality holds only at $A$ and $B$, since $\vec{OA}$ and $\vec{OB}$ are not in the same direction.) $\blacksquare$

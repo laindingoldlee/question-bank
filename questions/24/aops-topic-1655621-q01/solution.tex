@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1655621_3d_probability
+% Stable identity: aops-topic-1655621-q01
+Let $R=100$ and $r=\dfrac{1}{100}$. The small ball, with centre $X$, lies inside the big ball exactly when $OX\le R-r$, so $X$ is uniform in the ball $\mathcal B$ of radius $R-r=\dfrac{9999}{100}$ about $O$ (dashed in the sketch, which is not to scale). The small ball contains a point $Y$ exactly when $XY\le r$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);real R=3,r=0.3;
+pair P=(1.4,0),Q=(R,0);
+draw(circle(O,R),linewidth(0.9));
+draw(circle(O,R-r),blue+dashed);
+filldraw(circle(P,r),palered,red);
+draw(circle((R-r,0),r),red);
+dot(O);dot(P);dot(Q);dot((R-r,0),red);
+label("$O$",O,SW);
+label("$P$",P+(0,r),N);
+label("$Q$",Q,E);
+label("$R$",(-R/2,0),S);draw(O--(-R,0));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(a)} If $XQ\le r$, then $OX\ge OQ-XQ\ge R-r$, so $OX=R-r$ and equality holds throughout, which forces $X=\left(R-r,0,0\right)$: the small ball must touch the big sphere exactly at $Q$. A single point has volume $0$, so the probability is $\boxed{0}$. (It is possible but has probability zero.)
+
+\textbf{(b)} The point $P$ is at distance $50$ from $O$, and $50+r<R-r$, so the whole ball of radius $r$ about $P$ (shaded) lies inside $\mathcal B$. The small ball contains $P$ exactly when $X$ lies in this shaded ball, so
+\[
+P(\text{contains }P)=\dfrac{\dfrac{4}{3}\pi r^3}{\dfrac{4}{3}\pi(R-r)^3}=\left(\dfrac{r}{R-r}\right)^3=\left(\dfrac{\dfrac{1}{100}}{\dfrac{9999}{100}}\right)^3=\boxed{\dfrac{1}{9999^3}=\dfrac{1}{999700029999}} .
+\]

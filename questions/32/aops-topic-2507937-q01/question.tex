@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2507937_mathmaze_problem_11201
+% Stable identity: aops-topic-2507937-q01
+Three congruent circles lie in a row, each externally tangent to the circle next to it. Rectangle $ABCD$ is drawn so that its sides $\overline{AB}$ and $\overline{CD}$ are tangent to all three circles and its sides $\overline{BC}$ and $\overline{DA}$ are tangent to the two end circles, as shown. The rectangle has area $128$. What is the area of the shaded region, the part of the rectangle outside the three circles?
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real r=1;
+filldraw(box((0,-r),(6r,r)),rgb(0.75,0.85,1),black+linewidth(0.8));
+for(int i=0;i<3;++i) filldraw(circle((r+2r*i,0),r),white,black);
+label("$A$",(0,r),NW); label("$B$",(6r,r),NE); label("$C$",(6r,-r),SE); label("$D$",(0,-r),SW);
+\end{asy}
+
+$\textbf{(A) }32-8\pi \qquad \textbf{(B) }32\pi \qquad \textbf{(C) }32+16\pi \qquad \textbf{(D) }64-8\pi \qquad \textbf{(E) }128-32\pi$

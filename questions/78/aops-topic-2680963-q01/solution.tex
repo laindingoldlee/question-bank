@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2680963_solution_please
+% Stable identity: aops-topic-2680963-q01
+The largest circle inside a triangle is its incircle. In an equilateral triangle $ABC$ the incentre $I$ coincides with the centroid, which lies on the altitude $\overline{AD}$ two thirds of the way from $A$. The inradius is $ID$, the remaining third of the altitude. So
+\[AD=3\cdot ID=3\cdot16=\boxed{48}\text{ cm}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(2,0),A=(1,sqrt(3));pair I=(1,sqrt(3)/3),D=(1,0);
+draw(A--B--C--cycle,linewidth(0.8));draw(circle(I,sqrt(3)/3));
+draw(A--D,dashed);dot(I);dot(D);
+draw(D+(0.07,0)--D+(0.07,0.07)--D+(0,0.07));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$I$",I,E);label("$D$",D,S);
+label("$16$",(I+D)/2,W,fontsize(8pt));label("$32$",(A+I)/2+(0,0.1),W,fontsize(8pt));
+\end{asy}

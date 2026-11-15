@@ -1,0 +1,6 @@
+Scale temporarily to a unit cube with $A=(0,0,0)$ and $B=(1,1,1)$. Unfolding two adjacent faces gives a $2$ by $1$ rectangle with shortest path length $\sqrt5$ and crossing at an edge midpoint. Thus $C=(1,\dfrac{1}{2},0)$, $D_1=(\dfrac{1}{2},1,0)$ and $D_2=(0,\dfrac{1}{2},1)$ are all possible crossing points. For every one, the squared distances to $A$ and $B$ are $\dfrac{5}{4}$. The target expression is therefore $2-CD^2$. With $D=D_1$ it is $\dfrac{3}{2}$, whereas with $D=D_2$ it is $0$. Rescaling by $13^2$ gives $\dfrac{507}{2}$ or $0$. Hence the statement does not determine a unique answer unless it specifies which points $C,D$ mean.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair ux=(2,0),uy=(.9,.8),uz=(0,2);pair A=(0,0),B=ux+uy+uz,C=ux+uy/2,D=ux/2+uy,E=uy/2+uz;draw(A--ux--ux+uy--uy--cycle);draw(uz--ux+uz--B--uy+uz--cycle);draw(A--uz^^ux--ux+uz^^uy--uy+uz^^ux+uy--B);draw(A--C--B,blue);draw(A--D--B,dashed);draw(A--E--B,red+dashed);label("$A$",A,(-1,-1));label("$B$",B,(1,1));label("$C$",C,(1,0));label("$D_1$",D,(0,-1));label("$D_2$",E,(-1,0));
+\end{asy}
+

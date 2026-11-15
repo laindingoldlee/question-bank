@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2584892_weird_logic_problem
+% Stable identity: aops-topic-2584892-q01
+In one tank choose a bottom corner $O$ and the three corners $X,Y,Z$ joined to it by edges. Tilt the tank so $X,Y,Z$ lie at the same height, above $O$, and drain until the water surface passes through these three corners. The retained water is a tetrahedron with mutually perpendicular edges of lengths $L,W,H$, so its volume is $\dfrac{1}{6}LWH$, exactly $10$ gallons. This orientation is possible by making the three edge rises equal; the other tank corners are higher. Pour this measured amount into the other, initially empty tank, and repeat five times. The receiving tank then contains $5\cdot10=\boxed{50}$ gallons. No length measurement is needed: only alignment with existing corners.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair O=(0,0),X=(4,0),Y=(1.5,1),Z=(0,3);draw(O--X--X+Y--Y--cycle);draw(Z--Z+X--Z+X+Y--Z+Y--cycle);draw(O--Z^^X--X+Z^^Y--Y+Z^^X+Y--X+Y+Z);fill(X--Y--Z--cycle,lightblue+opacity(.5));draw(X--Y--Z--cycle,blue);label("$O$",O,SW);label("$X$",X,SE);label("$Y$",Y,N);label("$Z$",Z,NW);label("water surface",(2,1.8),E);
+\end{asy}

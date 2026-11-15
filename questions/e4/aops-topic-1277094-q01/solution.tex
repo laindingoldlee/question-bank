@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1277094_question_about_area_for_a_shape
+% Stable identity: aops-topic-1277094-q01
+Let $R$ be the radius of the circle. The centre is at distance $R-h$ from the chord, so $r^2+(R-h)^2=R^2$, giving
+\[
+R=\dfrac{r^2+h^2}{2h}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real Rr=2.5; real h=1.2; real r=sqrt(2*Rr*h-h^2); pair O=(0,0);
+fill(arc(O,Rr,degrees(atan2(Rr-h,r)),180-degrees(atan2(Rr-h,r)))--cycle,lightblue);
+draw(arc(O,Rr,-20,200),gray); draw((-r,Rr-h)--(r,Rr-h),blue); draw((0,Rr-h)--(0,Rr),red); draw(O--(r,Rr-h),gray+dashed); dot(O);
+label("$r$",(r/2,Rr-h),S,blue); label("$h$",(0,Rr-h/2),W,red); label("$R$",(r/2,(Rr-h)/2),SE); label("$O$",O,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+If the chord subtends an angle $2\theta$ at the centre, then $\sin\theta=\dfrac {r}{R}$, with $0<\theta\le\dfrac{\pi}{2}$ since the segment is at most a semicircle. The segment is a sector minus a triangle:
+\[
+\text{Area}=R^2\theta-r(R-h)=\boxed{R^2\arcsin\dfrac {r}{R}-r(R-h)},\qquad R=\dfrac{r^2+h^2}{2h}.
+\]
+(For a semicircle, $h=r=R$ and this gives $\dfrac{\pi R^2}{2}$.)

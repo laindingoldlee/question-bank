@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h2397502_happy_new_year_2021
+% Stable identity: aops-topic-2397502-q01
+Take the rectangular hyperbola $xy=c^2$ ($c>0$), whose asymptotes are the coordinate axes, and the point $P=\left(ct,\dfrac ct\right)$ with $t\ne0$.
+
+\textbf{Tangent.} The line $\dfrac{x}{2ct}+\dfrac{y}{\dfrac{2c}{t}}=1$, i.e. $y=\dfrac{2c}{t}-\dfrac{x}{t^2}$, passes through $P$. Substituting into $xy=c^2$ gives $\dfrac{2cx}{t}-\dfrac{x^2}{t^2}=c^2$, i.e. $(x-ct)^2=0$: the line meets the hyperbola only at $P$, with a double root, so it is the tangent at $P$. Its slope is $-\dfrac1{t^2}$, and its intercepts are $a_1=2ct$ on the $x$-axis and $b_1=\dfrac{2c}{t}$ on the $y$-axis.
+
+\textbf{Normal.} It is perpendicular to the tangent, so it has slope $t^2$: $y-\dfrac ct=t^2(x-ct)$. Setting $y=0$ and $x=0$:
+\[a_2=ct-\dfrac{c}{t^3}=\dfrac{c\left(t^4-1\right)}{t^3},\qquad b_2=\dfrac ct-ct^3=\dfrac{c\left(1-t^4\right)}{t}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+import graph;
+real c=1, t=1.4;
+real f(real x){return c^2/x;}
+pair Pp=(c*t,c/t);
+draw((-0.6,0)--(4.4,0),Arrow(6)); draw((0,-2.7)--(0,3.6),Arrow(6));
+label("$x$",(4.4,0),E); label("$y$",(0,3.6),N);
+draw(graph(f,0.3,4.2),black+linewidth(0.9));
+real tl(real x){return 2*c/t-x/t^2;}
+draw((-0.3,tl(-0.3))--(3.7,tl(3.7)),blue+linewidth(0.8));
+real m=t^2;
+real nl(real x){return c/t+m*(x-c*t);}
+draw((-0.25,nl(-0.25))--(2.25,nl(2.25)),red+linewidth(0.8));
+pair a1=(2*c*t,0), b1=(0,2*c/t), a2=(c*t-c/t^3,0), b2=(0,c/t-c*t^3);
+dot(Pp); dot(a1,blue); dot(b1,blue); dot(a2,red); dot(b2,red);
+label("$P$",Pp+(0.32,0.2));
+label("$a_1$",a1,N,blue); label("$b_1$",b1,W,blue); label("$a_2$",a2,NW,red); label("$b_2$",b2,W,red);
+label("$xy=c^2$",(4.2,f(4.2)),N);
+label("tangent",(3.7,tl(3.7)),S,blue); label("normal",(2.25,nl(2.25)),E,red);
+\end{asy}
+
+\textbf{Products.}
+\[a_1a_2=2ct\cdot\dfrac{c\left(t^4-1\right)}{t^3}=\dfrac{2c^2\left(t^4-1\right)}{t^2},\qquad b_1b_2=\dfrac{2c}{t}\cdot\dfrac{c\left(1-t^4\right)}{t}=\dfrac{2c^2\left(1-t^4\right)}{t^2}.\]
+So $a_1a_2+b_1b_2=0$ for every point $P$, and the answer is $\boxed{(4)}$. The relation is symmetric in the two axes, so it does not matter which axis carries the $a$'s. Statement (1) holds only when $t^4=1$ (then the normal passes through the origin, $a_2=b_2=0$, and both products are $0$), and (2) and (3) fail in general (for example at $t=2$, $c=1$: $a_1a_2=\dfrac{15}{2}$, $b_1b_2=-\dfrac{15}{2}$, $a_1b_1+a_2b_2=4-\dfrac{225}{16}\ne0$).
+
+\emph{Remark.} For the other standard form $x^2-y^2=k^2$, at a point $(x_0,y_0)$ with $x_0y_0\ne0$ the tangent $x_0x-y_0y=k^2$ has intercepts $\dfrac{k^2}{x_0}$ and $-\dfrac{k^2}{y_0}$, and the normal has intercepts $2x_0$ and $2y_0$; again $a_1a_2+b_1b_2=2k^2-2k^2=0$.

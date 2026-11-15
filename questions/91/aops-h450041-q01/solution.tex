@@ -1,0 +1,7 @@
+Use centred coordinates $u=x-10$, $v=y-31$. The ellipse is symmetric under independently changing the signs of $u,v$. Group corresponding infinitesimal areas at $(\pm u,\pm v)$ with $u,v\ge0$. If $u>10$, their contributions with signs determined by the original quadrants cancel horizontally; if $v>31$, they cancel vertically. When $0<u<10$ and $0<v<31$, all four original points have $x,y>0$, so all contributions are positive. The signed area is therefore exactly the area of the centred rectangle $|u|\le10$, $|v|\le31$ inside the ellipse. This entire rectangle is contained because $\dfrac{u^2}{10}+\dfrac{v^2}{31}\le10+31=41<2009$. Its area is $20\cdot62=\boxed{1240}$. Boundary lines have zero area.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;pair O=(10,31);draw(graph(new pair(real t){return O+(sqrt(20090)*cos(t),sqrt(62279)*sin(t));},0,2*pi));draw((-155,0)--(170,0),Arrow);draw((0,-235)--(0,300),Arrow);filldraw(box((0,0),(20,62)),lightblue);dot(O);label("$(10,31)$",O,E);label("$x$",(170,0),S);label("$y$",(0,300),N);label("I",(75,110));label("II",(-75,110));label("III",(-75,-90));label("IV",(75,-90));
+\end{asy}

@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2787070_1997_manhattan_mathematical_olympiad_grade_6_problems_14
+% Stable identity: aops-topic-2787070-q04
+From the units column, $2N$ is 0 or 10. If $N=5$, its carry 1 would make $2E+1$ a multiple of 10 in the tens column, impossible. Hence $N=0$. The tens column then forces $E=5$ and carry 1, since $E\ne N$. Enumerate the remaining possible distinct digits in FORTY, compute the sum with TEN twice, and check the displayed digits. This exhaustive finite check returns exactly one assignment.
+\begin{verbatim}
+from itertools import permutations
+answers=[]
+for F,O,R,T,Y in permutations([1,2,3,4,6,7,8,9],5):
+    forty=10000*F+1000*O+100*R+10*T+Y
+    total=forty+2*(100*T+50)
+    if not 10000<=total<=99999: continue
+    S,I,X,t,y=map(int,str(total))
+    if t!=T or y!=Y: continue
+    if len({F,O,R,T,Y,5,0,S,I,X})==10:
+        answers.append((forty,100*T+50,total))
+assert answers==[(29786,850,31486)]
+\end{verbatim}
+Thus $\boxed{29786+850+850=31486}$.

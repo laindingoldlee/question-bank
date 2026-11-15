@@ -1,0 +1,66 @@
+% Source: https://artofproblemsolving.com/community/c3h1581481_prove_triangle
+% Stable identity: aops-topic-1581481-q01
+\textbf{Set-up.} Since $I$ is inside the triangle, we can write $I=\alpha A+\beta B+\gamma C$ (as position vectors) with $\alpha,\beta,\gamma>0$ and $\alpha+\beta+\gamma=1$. Put
+\[
+m=\dfrac{AM}{AC},\qquad n=\dfrac{BN}{BA},\qquad p=\dfrac{CP}{CB},
+\]
+so that $M=(1-m)A+mC$, $N=nA+(1-n)B$ and $P=pB+(1-p)C$.
+
+A vector of the form $xA+yB+zC$ with $x+y+z=0$ equals $y(B-A)+z(C-A)$; since $B-A$ and $C-A$ are not parallel, two such vectors are equal exactly when their $B$- and $C$-coefficients agree (and then the $A$-coefficients agree too).
+
+\textbf{The three parallel conditions.}
+\begin{itemize}
+\item $MN\parallel BI$: $N-M=(n+m-1)A+(1-n)B-mC$ is a multiple $\lambda(B-I)=\lambda\bigl(-\alpha A+(1-\beta)B-\gamma C\bigr)$, so
+\[
+1-n=\lambda(1-\beta),\qquad m=\lambda\gamma .
+\]
+\item $MP\parallel AI$: $P-M=-(1-m)A+pB+(1-m-p)C=\kappa(I-A)=\kappa\bigl(-(1-\alpha)A+\beta B+\gamma C\bigr)$, so
+\[
+1-m=\kappa(1-\alpha),\qquad p=\kappa\beta .
+\]
+\item $PN\parallel CI$: $N-P=nA+(1-n-p)B-(1-p)C=\rho(I-C)=\rho\bigl(\alpha A+\beta B-(1-\gamma)C\bigr)$, so
+\[
+n=\rho\alpha,\qquad 1-p=\rho(1-\gamma).
+\]
+\end{itemize}
+Eliminating $m$, $n$, $p$ and using $1-\alpha=\beta+\gamma$ and so on, we get a linear system for $\lambda,\kappa,\rho$:
+\[
+\gamma\lambda+(\beta+\gamma)\kappa=1,\qquad (\alpha+\gamma)\lambda+\alpha\rho=1,\qquad \beta\kappa+(\alpha+\beta)\rho=1 .
+\]
+
+\textbf{Solving.} Let $\sigma=\alpha\beta+\beta\gamma+\gamma\alpha>0$. Then $\lambda=\dfrac{\beta}{\sigma}$, $\kappa=\dfrac{\alpha}{\sigma}$, $\rho=\dfrac{\gamma}{\sigma}$ is a solution:
+\[
+\dfrac{\gamma\beta+(\beta+\gamma)\alpha}{\sigma}=1,\qquad \dfrac{(\alpha+\gamma)\beta+\alpha\gamma}{\sigma}=1,\qquad \dfrac{\beta\alpha+(\alpha+\beta)\gamma}{\sigma}=1 .
+\]
+It is the only one, because the determinant of the system is
+\[
+\det\begin{pmatrix}\gamma&\beta+\gamma&0\\ \alpha+\gamma&0&\alpha\\ 0&\beta&\alpha+\beta\end{pmatrix}=-\alpha\beta\gamma-(\alpha+\beta)(\beta+\gamma)(\gamma+\alpha)<0 .
+\]
+Hence
+\[
+m=\lambda\gamma=\dfrac{\beta\gamma}{\sigma},\qquad n=\rho\alpha=\dfrac{\gamma\alpha}{\sigma},\qquad p=\kappa\beta=\dfrac{\alpha\beta}{\sigma},
+\]
+all between $0$ and $1$ (so the points really lie on the sides), and
+\[
+\dfrac{AM}{AC}+\dfrac{BN}{BA}+\dfrac{CP}{CB}=\dfrac{\beta\gamma+\gamma\alpha+\alpha\beta}{\sigma}=1 .\qquad\blacksquare
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.2,4.2),B=(0,0),C=(6.5,0);
+real al=0.45,be=0.25,ga=0.30; real sg=al*be+be*ga+ga*al;
+pair I=al*A+be*B+ga*C;
+real m=be*ga/sg,n=ga*al/sg,p=al*be/sg;
+pair M=A+m*(C-A),N=B+n*(A-B),P=C+p*(B-C);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--I^^B--I^^C--I,gray+dashed);
+draw(M--N--P--cycle,blue+linewidth(0.9));
+dot(I);dot(M);dot(N);dot(P);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$I$",I,dir(250));label("$M$",M,NE);label("$N$",N,W);label("$P$",P,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The sketch uses $\alpha=0.45$, $\beta=0.25$, $\gamma=0.3$; the dashed segments are $AI$, $BI$, $CI$, and the sides of the blue triangle $MNP$ are parallel to them.)

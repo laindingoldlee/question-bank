@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h3200999_prime_numbers_and_algebraic_equations
+% Stable identity: aops-topic-3200999-q03
+The denominator is $(a+3)(a-2)$, so positivity requires $a\ge3$. Also it is at most $1260$, forcing $a\le35$ because it strictly increases and its value at $36$ is $1326$. Testing this finite interval gives $a=3,4,6,9,11$, with denominators $6,14,36,84,126$. These divide $1260$; every other candidate fails. The following exact check certifies completeness.\begin{verbatim}
+assert [a for a in range(3,36)
+        if 1260%(a*a+a-6)==0]==[3,4,6,9,11]
+\end{verbatim}
+The count is $\boxed5$.

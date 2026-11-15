@@ -1,0 +1,9 @@
+Let the decagon circumradius be $r$ and its side length be $R=2r\sin18^\circ$. Centers one step apart are distance $R$ apart and centers two steps apart are distance $2R\cos18^\circ<2R$ apart. Centers three or more steps apart have distance at least $2r\sin54^\circ>2R$, because $\dfrac{\sin54^\circ}{\sin18^\circ}=\dfrac{(3+\sqrt5)}{2}>2$.
+
+There are ten unordered center pairs at each of the first two separations, and each pair gives two intersections. No point lies on three circles: otherwise its equal distances $R$ from three noncollinear decagon vertices would make it their circumcenter, whose circumradius is $r\ne R$. Thus all pairwise intersection points are distinct, giving $\boxed{40}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real R=2sin(18*pi/180);for(int j=0;j<10;++j){pair C=dir(36j);draw(circle(C,R),blue);dot(C);}draw(unitcircle,dashed+gray);
+\end{asy}

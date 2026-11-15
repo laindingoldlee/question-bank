@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2300990_polynomial
+% Stable identity: aops-topic-2300990-q01
+Let
+\[B(x)=1+x+x^2+\cdots+x^{p-1},\qquad A(x)=1+x^q+x^{2q}+\cdots+x^{(p-1)q}.\]
+By the geometric series identity, $x^p-1=(x-1)B(x)$ and $x^{pq}-1=\left(x^q-1\right)A(x)$. So
+\[\left(x^{pq}-1\right)(x-1)=(x-1)\left(x^q-1\right)A(x),\qquad\left(x^p-1\right)\left(x^q-1\right)=(x-1)\left(x^q-1\right)B(x),\]
+and it suffices to show that $B(x)$ divides $A(x)$.
+
+For each $k=0,1,\dots,p-1$, write $kq=mp+r_k$ with $0\le r_k\le p-1$. Then
+\[x^{kq}-x^{r_k}=x^{r_k}\left(x^{mp}-1\right),\]
+and $x^{mp}-1$ is divisible by $x^p-1=(x-1)B(x)$, hence by $B(x)$. So $A(x)-\left(x^{r_0}+x^{r_1}+\cdots+x^{r_{p-1}}\right)$ is divisible by $B(x)$.
+
+The remainders $r_0,\dots,r_{p-1}$ are all different: if $r_k=r_l$, then $p$ divides $(k-l)q$, and since $\gcd(p,q)=1$, $p$ divides $k-l$, so $k=l$. Hence they are $0,1,\dots,p-1$ in some order, and $x^{r_0}+\cdots+x^{r_{p-1}}=B(x)$. Therefore $B(x)$ divides $A(x)$: $A=B\cdot C$ for a polynomial $C$, and $C$ has integer coefficients because $B$ is monic with integer coefficients (long division never needs fractions). Finally
+\[\left(x^{pq}-1\right)(x-1)=(x-1)\left(x^q-1\right)B(x)C(x)=\left(x^p-1\right)\left(x^q-1\right)C(x).\ \blacksquare\]

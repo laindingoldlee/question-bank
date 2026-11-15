@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1224333_area_of_a_cool_shape
+% Stable identity: aops-topic-1224333-q01
+Put $A=(0,0)$, $B=(4,0)$, $C=(4,4)$, $D=(0,4)$. The region is bounded by four arcs; its corners are the points where adjacent arcs meet, e.g. the arcs about $A$ and $B$ meet at $(2,2\sqrt3)$, which is at angle $60^\circ$ from $A$. By symmetry the corners are at angles $30^\circ$ and $60^\circ$ as seen from each centre, so each bounding arc subtends $30^\circ$ at its centre.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(4,0)--(4,4)--(0,4)--cycle,linewidth(1));
+pair P=(2,4-2*sqrt(3)),Q=(2*sqrt(3),2),R=(2,2*sqrt(3)),T=(4-2*sqrt(3),2);
+path X=arc((0,4),4,-60,-30)--arc((0,0),4,30,60)--arc((4,0),4,120,150)--arc((4,4),4,210,240)--cycle;
+fill(X,lightgray);
+draw(arc((0,0),4,0,90)); draw(arc((4,0),4,90,180)); draw(arc((4,4),4,180,270)); draw(arc((0,4),4,270,360));
+label("$A$",(0,0),SW);label("$B$",(4,0),SE);label("$C$",(4,4),NE);label("$D$",(0,4),NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The region is a ``square'' with corners $(2,4-2\sqrt3)$, $(2\sqrt3,2)$, $(2,2\sqrt3)$, $(4-2\sqrt3,2)$, whose diagonals have length $4\sqrt3-4$, plus four circular segments. The inner square has area $\dfrac{1}{2}(4\sqrt3-4)^2=32-16\sqrt3$. Each segment is a $30^\circ$ sector minus a triangle: $\dfrac{\pi\cdot16}{12}-\dfrac{1}{2}\cdot16\sin30^\circ=\dfrac{4\pi}{3}-4$. Total:
+\[32-16\sqrt3+4\left(\dfrac{4\pi}{3}-4\right)=\boxed{16+\dfrac{16\pi}{3}-16\sqrt3}\approx5.04.\]

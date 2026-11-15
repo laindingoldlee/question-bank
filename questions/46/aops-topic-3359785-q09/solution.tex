@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3359785_400th_post_problems
+% Stable identity: aops-topic-3359785-q09
+Subtracting their equations gives $(x-y)(x+y-16)=0$. If $x+y=16$, substituting yields $x^2-16x+73=0$, whose discriminant is $-36$, so there is no real solution in that case. Hence $x=y$, and then $x^2-22x+121=(x-11)^2=0$. The sole real intersection is $(11,11)$. Implicit differentiation gives slopes $\dfrac{2x-19}{3}$ and $\dfrac{3}{2y-19}$, both $1$ there, verifying tangency. Thus $\boxed{ab=121}$. 
+\begin{asy}
+usepackage("amsmath");
+import geometry;
+size(260);
+import graph;real f(real x){return (x*x-19*x+121)/3;}pair g(real t){return ((t*t-19*t+121)/3,t);}draw(graph(f,8,14),blue);draw(graph(g,8,14),red);draw((8,8)--(14,14),dashed);dot((11,11));label("$(11,11)$",(11,11),NW);label("$y=x$",(14,14),NE);
+\end{asy}

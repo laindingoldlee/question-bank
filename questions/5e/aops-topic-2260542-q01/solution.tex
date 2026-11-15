@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2260542_a_question
+% Stable identity: aops-topic-2260542-q01
+\textbf{(a)} Take an equilateral triangle $PQR$ with centre $O$, drawn so that the vertex $P$ points to the right and the side $QR$ is vertical.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), P=dir(0), Q=dir(120), R=dir(240);
+draw(P--Q--R--cycle,linewidth(1));
+draw((-1.35,0)--(1.45,0),blue+dashed);
+label("$\ell$",(1.45,0),E,blue);
+draw((0,-1.15)--(0,1.15),red+dotted);
+label("no symmetry",(0,1.15),N,red+fontsize(8pt));
+draw(arc(O,0.32,0,120),Arrow(5));
+label("$120^\circ$",0.47*dir(118),fontsize(8pt));
+dot(O); label("$O$",O,dir(-115));
+label("$P$",P,dir(60)); label("$Q$",Q,NW); label("$R$",R,SW);
+\end{asy}
+
+\begin{itemize}
+\item The horizontal line $\ell$ through $P$ and $O$ is the perpendicular bisector of $QR$, so reflecting in $\ell$ fixes $P$ and swaps $Q$ and $R$: it is a line of symmetry.
+\item The rotation through $120^\circ$ about $O$ takes $P\to Q\to R\to P$, so it maps the triangle onto itself, and $0^\circ<120^\circ<180^\circ$.
+\item There is no vertical line of symmetry: a reflection in a vertical line exchanges ``rightmost'' and ``leftmost''. The rightmost part of the triangle is the single point $P$, while its leftmost part is the whole side $QR$. A reflection would map the one onto the other, which is impossible.
+\end{itemize}
+So the triangle has all three properties. (Any regular polygon with an odd number of sides, drawn with a vertex pointing to the right, works in the same way.)
+
+\textbf{(b)} Put $O$ at the origin with $\ell$ as the $x$-axis. Reflection in $\ell$ is $H(x,y)=(x,-y)$, and the rotation through $90^\circ$ is $T(x,y)=(-y,x)$. Doing $T$ twice gives $(x,y)\mapsto(-x,-y)$, the rotation through $180^\circ$, so the figure is unchanged by it. Following $H$ by this half-turn gives
+\[(x,y)\ \mapsto\ (x,-y)\ \mapsto\ (-x,y),\]
+which is the reflection in the $y$-axis, the vertical line through $O$. Each step maps the figure onto itself, so the composition does too, and the vertical line through $O$ is a line of symmetry. $\blacksquare$
+
+Hence a figure as in (a) cannot be unchanged by a $90^\circ$ rotation (about a point of $\ell$); in fact any rotational symmetry whose repetition gives the half-turn is ruled out, which is why the example uses $120^\circ$.

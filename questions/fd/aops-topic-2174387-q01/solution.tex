@@ -1,0 +1,6 @@
+% Source: https://artofproblemsolving.com/community/c3h2174387_two_boys_one_point
+% Stable identity: aops-topic-2174387-q01
+Put Robin at $(0,0)$ and Jack at $(5,5)$. After $t$ moves, Robin is on the line $x+y=t$ and Jack on the line $x+y=10-t$, so they can only be at the same point when $t=5$. (They cannot pass each other in the middle of a segment either: before and after the $5$th move they are on different diagonals.) In $5$ moves neither boy can leave the grid.
+
+After $5$ moves, Robin is at $(k,5-k)$, where $k$ is his number of moves to the right, with probability $\dfrac{1}{2^5}\dbinom5k$. Jack is at $(5-l,\,l)$, where $l$ is his number of moves to the left, with probability $\dfrac{1}{2^5}\dbinom5l$. They meet when $l=5-k$, so
+\[P=\sum_{k=0}^{5}\dfrac{1}{2^5}\dbinom5k\cdot\dfrac{1}{2^5}\dbinom{5}{5-k}=\dfrac{1}{1024}\sum_{k=0}^5\dbinom5k^2=\dfrac{1}{1024}\dbinom{10}{5}=\dfrac{252}{1024}=\boxed{\dfrac{63}{256}}.\]

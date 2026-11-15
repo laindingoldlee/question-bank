@@ -1,0 +1,7 @@
+Diagonal AC is horizontal, so perpendicular diagonal BD is vertical, giving $d=6$. Diagonals bisect one another, so their common midpoint has coordinates $(6,-4)$. Any line through this centre bisects the rhombus by its half-turn symmetry. The line through the origin and centre has slope $m=\dfrac{-4}{6}=\boxed{-\dfrac{2}{3}}$. The other coordinates are $b=20,c=24$, verifying a nondegenerate rhombus.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(-12,-4),B=(6,20),C=(24,-4),D=(6,-28),O=(6,-4);draw(A--B--C--D--cycle);draw(A--C,dashed);draw(B--D,dashed);draw((-15,10)--(27,-18),blue);dot(O);label("$(6,-4)$",O,(1,1));pair[] p={A,B,C,D};string[] a={"A","B","C","D"};for(int i=0;i<4;++i)label("$"+a[i]+"$",p[i],i%2==0?(1,0):(0,1));
+\end{asy}

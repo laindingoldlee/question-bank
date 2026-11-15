@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2742093_combo_again
+% Stable identity: aops-topic-2742093-q01
+Condition on Bill's first entry, each with probability $\dfrac15$.
+
+If Bill starts with $x\ne3$, his positions $2$ to $5$ contain $3$, which Andrew's never do. So the position where Bill has $3$ is always a discrepancy. In each of the other three positions both rankings show one of the three letters common to both remaining sets.
+
+Fix Andrew's positions $2$--$5$ (a random arrangement of $\{1,2,4,5\}$) and let Bill's positions $2$--$5$ be a random arrangement of $\{1,2,4,5,3\}\setminus\{x\}$. For each position $i$, the probability that Bill matches Andrew is $\dfrac14$ when Andrew's entry there is not $x$ (Bill places that letter in one of $4$ positions uniformly), and $0$ when it is $x$. Andrew has $x$ in exactly one of the four positions, so the expected number of matches is $3\cdot\dfrac14=\dfrac34$ and the expected number of discrepancies is $4-\dfrac34=\dfrac{13}4$.
+
+Hence:
+\begin{itemize}
+\item start $4$ or $5$: $E[p]=0.6+0.1\cdot\dfrac{13}4=0.925$;
+\item start $2$: $E[p]=0.2+0.2\cdot\dfrac{13}4=0.85$;
+\item start $1$: $1$; start $3$: $0$.
+\end{itemize}
+Averaging, $E[p]=\dfrac15(1+0.925+0.925+0.85+0)=\dfrac{3.7}{5}=\dfrac{37}{50}$, so $m+n=\boxed{87}$.

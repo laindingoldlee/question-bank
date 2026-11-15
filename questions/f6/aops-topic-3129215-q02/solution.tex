@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3129215_2023_midmichigan_mathematical_olympiad__grades_79
+% Stable identity: aops-topic-3129215-q02
+Project each set onto the horizontal axis. A continuous image of a connected set is connected, so each projection is a nonempty interval, possibly unbounded or missing endpoints. The intervals intersect pairwise because the original sets do. Let $L$ be the largest lower endpoint and $U$ the smallest upper endpoint, allowing infinite endpoints. Pairwise intersection implies $L\le U$. If $L<U$, choose a finite real number strictly between them; it lies in every interval. If $L=U=c$, this common endpoint is finite. Choose an interval $I$ with lower endpoint $c$ and an interval $J$ with upper endpoint $c$. Their intersection forces both to contain $c$. Every other interval $K$ meets both $I$ and $J$, so it contains points on both sides of $c$ or $c$ itself; its interval property then forces $c\in K$. Hence all projections have a common real number $c$. The vertical line $x=c$ meets every original set. The argument works for any fixed direction of projection.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(circle((-.5,0),1),blue);draw(circle((.5,0),1),red);draw(circle((0,.6),1),green);draw((0,-1.5)--(0,1.9),black+linewidth(1.2));label("$x=c$",(0,1.9),N);label("$S_1$",(-1.2,0),W);label("$S_2$",(1.2,0),E);label("$S_3$",(.3,1.4),E);label("illustrative connected sets",(0,-1.8));
+\end{asy}

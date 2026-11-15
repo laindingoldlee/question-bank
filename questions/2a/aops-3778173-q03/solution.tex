@@ -1,0 +1,9 @@
+Let the parallel bases have lengths $a,b$ and the height be $h$. Similarity gives distances from $E$ to the bases in ratio $a:b$, hence $p=\dfrac{a^2h}{2(a+b)}$ and $q=\dfrac{b^2h}{2(a+b)}$. Since $r=\dfrac{(a+b)h}{2}$, we obtain $r=(\sqrt p+\sqrt q)^2$. Thus $(r-p-q)^2=4pq$; expanding and rearranging gives $p^2+q^2+r^2=2(pq+qr+rp)$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(6,0),(4,3),(2,3)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--p[3]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));dot(p[3]);label("$D$",p[3],unit(p[3]-labelCentre));pair E=(3,2.25);draw(p[0]--p[2]);draw(p[1]--p[3]);label("$E$",E,(1,0));
+\end{asy}
+

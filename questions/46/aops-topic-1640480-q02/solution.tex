@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1640480_fun_problems_in_anticipation_of_mathcounts_nationals
+% Stable identity: aops-topic-1640480-q02
+The legs are $AB=18\cos75^\circ$ and $AC=18\sin75^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real h=18;pair A=(0,0),B=(h*Cos(75),0),C=(0,h*Sin(75));
+draw(A--B--C--cycle,linewidth(0.9));
+draw((0,0.8)--(0.8,0.8)--(0.8,0));
+draw(arc(B,2.4,180-75,180),red);label("$75^\circ$",B+3.5*dir(142.5),red);
+label("$A$",A,W);label("$B$",B,E);label("$C$",C,N);label("$18$",(B+C)/2,NE);
+label("$18\cos75^\circ$",(A+B)/2+(0,-1.9));label("$18\sin75^\circ$",(A+C)/2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So, using $2\sin\theta\cos\theta=\sin2\theta$, the area is
+\[
+\dfrac{1}{2}\cdot18\cos75^\circ\cdot18\sin75^\circ=81\cdot2\sin75^\circ\cos75^\circ=81\sin150^\circ=81\cdot\dfrac{1}{2}=\boxed{40.5}.
+\]
+\textbf{Without trigonometry.} Let $M$ be the midpoint of $BC$; then $MA=MB=MC=9$ (the midpoint of the hypotenuse is the circumcentre), and $\angle AMC=2\angle ABC=150^\circ$, so $\angle AMB=30^\circ$. The height from $A$ to $BC$ is $MA\sin30^\circ=\dfrac{9}{2}$, and the area is $\dfrac{1}{2}\cdot18\cdot\dfrac{9}{2}=40.5$.

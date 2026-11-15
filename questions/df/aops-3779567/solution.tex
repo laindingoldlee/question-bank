@@ -1,0 +1,9 @@
+An invertible affine change of coordinates preserves all area ratios, so take $A=(0,0),B=(1,0),C=(1,1),D=(0,1)$. The ratio on $BD$ gives $P=(\dfrac{3}{4},\dfrac{1}{4})$. Line $AP$ is $y=\dfrac{x}{3}$, so $Q=(1,\dfrac{1}{3})$. With base $BQ=\dfrac{1}{3}$ and horizontal altitude $\dfrac{1}{4}$, $[BPQ]=\dfrac{1}{2}\cdot\dfrac{1}{3}\cdot\dfrac{1}{4}=\dfrac{1}{24}$. The parallelogram has area one, so the ratio is $\boxed{1:24}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(1,0),(1,1),(0,1)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--p[3]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));dot(p[3]);label("$D$",p[3],unit(p[3]-labelCentre));pair P=(.75,.25),Q=(1,1/3);draw(p[1]--p[3],dashed);draw(p[0]--Q);filldraw(p[1]--P--Q--cycle,lightgray);label("$P$",P,(-1,1));label("$Q$",Q,(1,0));
+\end{asy}
+

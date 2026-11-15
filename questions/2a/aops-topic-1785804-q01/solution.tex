@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1785804_geometry
+% Stable identity: aops-topic-1785804-q01
+The volume of the marbles equals the volume of the cylinder of water displaced, which has radius $3.5$ cm and height $5.6$ cm.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=3.5, h0=4, h1=h0+5.6, top=11.5;
+draw((-R,top)--(-R,0)--(R,0)--(R,top),linewidth(0.9));
+draw(ellipse((0,top),R,0.5),linewidth(0.6));
+draw(ellipse((0,h0),R,0.5),dashed+gray);
+draw(ellipse((0,h1),R,0.5),blue+linewidth(0.8));
+for(int i=0;i<5;++i) for(int j=0;j<2;++j) draw(circle((-2.8+1.4*i,0.7+1.4*j),0.7),gray);
+draw((R+0.6,h0)--(R+0.6,h1),Arrows(5));
+label("$5.6$ cm",(R+0.6,(h0+h1)/2),E);
+draw((-R,-0.8)--(R,-0.8),Arrows(5));
+label("$7$ cm",(0,-0.8),S);
+label("old level",(-R,h0),W,gray);label("new level",(-R,h1),W,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+V_{\text{rise}}=\pi(3.5)^2(5.6)=68.6\pi\ \text{cm}^3,\qquad V_{\text{marble}}=\dfrac{4}{3}\pi(0.7)^3=\dfrac{1.372}{3}\pi\ \text{cm}^3 .
+\]
+So the number of marbles is
+\[
+\dfrac{68.6\pi}{\dfrac{1.372}{3}\pi}=\dfrac{205.8}{1.372}=\boxed{150}.
+\]

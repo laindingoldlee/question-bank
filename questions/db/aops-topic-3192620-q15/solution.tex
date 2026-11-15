@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3192620_2021_bmmt_individual_round__berkley_mini_math_tournament
+% Stable identity: aops-topic-3192620-q15
+The region has area $60\cdot20+20\cdot20=1600$. Relative to $D$, its two left 20-by 20 squares are entirely within radius $20\sqrt2$, contributing 800. In the lower-right rectangle the disk contributes $\int_0^{20}20\,dx+\int_{20}^{20\sqrt2}\sqrt{800-x^2}\,dx=200+100\pi$. Thus the total disk intersection is $1000+100\pi$, and the desired probability is $\dfrac{600-100\pi}{1600}=\dfrac{6-\pi}{16}$. Hence $\boxed{a+b+c=23}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(60,0),C=(60,20),D=(20,20),Ep=(20,40),F=(0,40);draw(A--B--C--D--Ep--F--cycle);draw(circle(D,20*sqrt(2)),blue);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NE);label("$E$",Ep,N);label("$F$",F,NW);
+\end{asy}

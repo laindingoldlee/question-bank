@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1181576_3d_geometry_marathon
+% Stable identity: aops-topic-1181576-q01
+The cube has edge $3$ cm. Its six face centres are the vertices of the octahedron.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair p(real x,real y,real z){return (x+0.42*y,z+0.32*y);}
+real a=3;
+// cube: hidden edges dashed
+draw(p(0,a,0)--p(0,0,0)--p(a,0,0),gray); draw(p(0,0,0)--p(0,0,a),gray);
+draw(p(0,a,0)--p(a,a,0),gray+dashed); draw(p(0,a,0)--p(0,a,a),gray+dashed); draw(p(a,a,0)--p(a,0,0),gray);
+draw(p(a,0,0)--p(a,0,a)--p(0,0,a)--p(0,a,a)--p(a,a,a)--p(a,0,a),gray); draw(p(a,a,a)--p(a,a,0),gray);
+pair T=p(1.5,1.5,3), Bt=p(1.5,1.5,0), Lf=p(0,1.5,1.5), Rt=p(3,1.5,1.5), Fr=p(1.5,0,1.5), Bk=p(1.5,3,1.5);
+draw(Lf--Fr--Rt,blue+linewidth(1)); draw(Rt--Bk--Lf,blue+dashed);
+draw(T--Lf,blue+linewidth(1)); draw(T--Fr,blue+linewidth(1)); draw(T--Rt,blue+linewidth(1)); draw(T--Bk,blue+linewidth(1));
+draw(Bt--Lf,blue+linewidth(1)); draw(Bt--Fr,blue+linewidth(1)); draw(Bt--Rt,blue+linewidth(1)); draw(Bt--Bk,blue+dashed);
+dot(T,blue); dot(Bt,blue); dot(Lf,blue); dot(Rt,blue); dot(Fr,blue); dot(Bk,blue);
+label("$3$",(p(0,0,0)+p(a,0,0))/2,S,fontsize(9pt));
+label("$3$",(p(0,0,0)+p(0,0,a))/2,W,fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The four centres of the side faces lie in the horizontal plane halfway up the cube and form a square whose diagonals join the centres of opposite faces, so each diagonal has length $3$. Its area is $\dfrac{3\cdot3}{2}=\dfrac{9}{2}$.
+
+The octahedron consists of two square pyramids on this square, with apexes at the centres of the top and bottom faces, each of height $\dfrac{3}{2}$. Hence
+\[V=2\cdot\dfrac{1}{3}\cdot\dfrac{9}{2}\cdot\dfrac{3}{2}=\boxed{\dfrac{9}{2}\text{ cm}^3}.\]
+(In general the octahedron has $\dfrac{1}{6}$ of the volume of the cube.)

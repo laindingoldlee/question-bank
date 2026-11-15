@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1642262_mathcounts_question__idk_solution
+% Stable identity: aops-topic-1642262-q01
+\textbf{Lower bound.} A string of length $\ell$ has $\ell-1$ adjacent pairs, and the $90$ numbers $10,\dots,99$ need $90$ different pairs. Call any other pair (one starting with $0$, or a repeat) an \emph{extra} pair.
+
+Fix a digit $d$ from $1$ to $9$. The ten numbers $d0,d1,\dots,d9$ require $d$ to be followed by ten different digits, so $d$ occurs at least $10$ times in the string. Every occurrence of $d$ except one in the first position is the second digit of a pair, so at least $9$ pairs end in $d$, and at least $10$ pairs end in $d$ unless the string starts with $d$. But only $9$ of the required numbers end in $d$, namely $1d,2d,\dots,9d$. Hence for each digit $d\in\{1,\dots,9\}$ other than the first digit of the string, some extra pair ends in $d$. These are at least $8$ extra pairs with different last digits, so
+\[
+\ell-1\ge90+8=98,\qquad \ell\ge99 .
+\]
+
+\textbf{A string of length $99$.} Starting at $9$, the following $99$-digit string (one possible choice) contains all $90$ numbers; the extra pairs are $01,02,\dots,08$:
+\[
+\begin{array}{l}
+901020304050607081121314151617182\\
+232425262728334353637384454647485\\
+565758667687788919293949596979980
+\end{array}
+\]
+(read the three lines as one string).
+In general such a string exists because adding the eight pairs $01,\dots,08$ makes every digit's number of ``arrivals'' equal its number of ``departures'' except at the start $9$ and the end $0$, so all $98$ pairs can be used in one continuous walk (an Euler path in the digraph whose vertices are digits and whose arrows are the pairs).
+
+Hence the minimum is $\boxed{99}$ digits.

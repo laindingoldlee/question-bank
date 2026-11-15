@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1510404_arcssecants
+% Stable identity: aops-topic-1510404-q01
+Draw the radii $OB$ and $OD$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);pair B=dir(-90),D=dir(20),X=B+(1.7,0),Y=B-(1.3,0);
+draw(unitcircle,linewidth(0.9));
+draw(arc(O,1,-90,20),red+linewidth(1.6));
+draw(Y--X,linewidth(0.9));draw(B--D,linewidth(0.9));
+draw(O--B,dashed);draw(O--D,dashed);
+real q=0.11;draw(B+q*dir(0)--B+q*dir(0)+q*dir(90)--B+q*dir(90));
+draw(arc(B,0.32,0,degrees(D-B)),blue);label("$\alpha$",B+0.48*dir(degrees(D-B)/2),blue);
+draw(arc(O,0.2,-90,20));label("$\theta$",O+0.36*dir(-35));
+dot(O);dot(B);dot(D);dot(X);
+label("$O$",O,NW);label("$B$",B,S);label("$D$",D,NE);label("$X$",X,S);
+label("arc $BD$",dir(-25)*1.1,E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item A tangent is perpendicular to the radius at the point of tangency, so $\angle OBX=90^\circ$.
+\item Triangle $OBD$ is isosceles with $OB=OD$, so its base angles are equal: $\angle OBD=\angle ODB=\dfrac{180^\circ-\theta}{2}=90^\circ-\dfrac{\theta}{2}$.
+\item Since $D$ and $X$ are on the same side of $OB$ and $\angle OBD<90^\circ$, ray $BD$ lies inside $\angle OBX$, so
+\[
+\angle XBD=\angle OBX-\angle OBD=90^\circ-\left(90^\circ-\dfrac{\theta}{2}\right)=\dfrac{\theta}{2} .\qquad\blacksquare
+\]
+\end{itemize}
+In the textbook's example the intercepted arc is $110^\circ$, so $\angle XBD=55^\circ$. The angle $\angle XBD$ is not an inscribed angle, but it is a limiting case of one: for $P$ on the major arc, the inscribed angle $\angle BPD$ also equals $\dfrac{\theta}{2}$, and as $P$ approaches $B$ the line $PB$ turns into the tangent. (The same rule holds on the other side of $B$: with $Y$ on $\ell$ on the other side of $OB$, $\angle YBD=180^\circ-\dfrac{\theta}{2}=\dfrac{360^\circ-\theta}{2}$, half of the major arc $BD$, which is the arc inside $\angle YBD$.)

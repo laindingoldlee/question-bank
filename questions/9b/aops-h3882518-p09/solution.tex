@@ -1,0 +1,9 @@
+For $k=2$, the first player marks either vertex and the second player immediately loses.
+
+For every even $k\ge4$, the second player responds to each first-player move by marking the opposite vertex, $\dfrac{k}{2}$ steps around the cycle. The opposite vertex is unmarked because previous moves came in opposite pairs. It is not adjacent to the new first-player mark. Nor can it be adjacent to an earlier first-player mark: rotating such an adjacency by half a turn would say that the first player's latest move was adjacent to an earlier second-player mark and was already losing. Thus every nonlosing first-player move has a nonlosing response. Finiteness forces the first player to lose eventually. Exactly one allowed value works, so the answer is $\boxed1$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int j=0;j<8;++j){pair P=dir(45j);dot(P,(j%4==0?red:black)+3bp);draw(P--dir(45(j+1)));}draw((1,0)--(-1,0),dashed+blue);label("opposite reply",(0,-1.4));
+\end{asy}

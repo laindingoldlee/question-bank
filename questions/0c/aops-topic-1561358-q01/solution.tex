@@ -1,0 +1,56 @@
+% Source: https://artofproblemsolving.com/community/c3h1561358_coordinate_geometry
+% Stable identity: aops-topic-1561358-q01
+The second graph is the reflection of the first in the line $y=x$ (swap $x$ and $y$). Let the point of tangency be $(t,t)$.
+
+\textbf{The point.} It lies on $y=(x+a)^2$, so $t=(t+a)^2$; in particular $t\ge0$.
+
+\textbf{Equal slopes.} The tangent to $y=(x+a)^2$ at $(t,t)$ has slope $m=2(t+a)$. Reflecting in $y=x$ turns a line of slope $m$ into a line of slope $\dfrac{1}{m}$, so the tangent to $x=(y+a)^2$ at $(t,t)$ has slope $\dfrac{1}{m}$ (if $m=0$ it is vertical, and the curves cannot be tangent there). The curves are tangent exactly when $m=\dfrac{1}{m}$, i.e.\ $m=\pm1$:
+\[
+2(t+a)=\pm1\qquad\Longrightarrow\qquad (t+a)^2=\dfrac{1}{4}\qquad\Longrightarrow\qquad t=\dfrac{1}{4} .
+\]
+\begin{itemize}
+\item $t+a=\dfrac{1}{2}$ gives $a=\dfrac{1}{4}$. The common tangent at $\left(\dfrac{1}{4},\dfrac{1}{4}\right)$ has slope $1$: it is the line $y=x$ itself.
+\item $t+a=-\dfrac{1}{2}$ gives $a=-\dfrac{3}{4}$. The common tangent has slope $-1$, perpendicular to $y=x$ (dashed green below).
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real a=0.25;
+real f(real x){return (x+a)^2;}
+draw((-1.6,0)--(1.6,0),gray,Arrow(TeXHead));draw((0,-1.6)--(0,1.6),gray,Arrow(TeXHead));
+label("$x$",(1.6,0),E,gray);label("$y$",(0,1.6),N,gray);
+draw(graph(f,-1.5,1.0),blue+linewidth(0.9));
+draw(graph(new pair(real t){return ((t+a)^2,t);},-1.5,1.0),red+linewidth(0.9));
+draw((-1.3,-1.3)--(1.4,1.4),dashed);
+dot((0.25,0.25));
+label("$T$",(0.25,0.25),NW);
+label("$y=x$",(1.4,1.4),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real a=-0.75;
+real f(real x){return (x+a)^2;}
+draw((-1.0,0)--(2.2,0),gray,Arrow(TeXHead));draw((0,-1.0)--(0,2.2),gray,Arrow(TeXHead));
+label("$x$",(2.2,0),E,gray);label("$y$",(0,2.2),N,gray);
+draw(graph(f,-0.6,2.1),blue+linewidth(0.9));
+draw(graph(new pair(real t){return ((t+a)^2,t);},-0.6,2.1),red+linewidth(0.9));
+draw((-0.8,-0.8)--(2.0,2.0),dashed);
+draw((-0.6,1.1)--(1.1,-0.6),green+dashed);
+dot((0.25,0.25));
+label("$T$",(0.25,0.25),2*E);
+label("$y=x$",(2.0,2.0),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Blue: $y=(x+a)^2$; red: $x=(y+a)^2$; $T=\left(\dfrac{1}{4},\dfrac{1}{4}\right)$; left $a=\dfrac{1}{4}$, right $a=-\dfrac{3}{4}$.) Both values work, so
+\[
+a=\boxed{\dfrac{1}{4}\text{ or }-\dfrac{3}{4}}.
+\]

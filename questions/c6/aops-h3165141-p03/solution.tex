@@ -1,0 +1,7 @@
+The total number of grid rectangles is $\binom62\binom72=15\cdot21=315$. A rectangle contains both red cells exactly when its top boundary has three choices, bottom boundary three, left boundary three, and right boundary three. Thus $3^4=81$ rectangles contain both. With only two red cells, all others contain at most one. The answer is $315-81=\boxed{234}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int r=0;r<5;++r)for(int c=0;c<6;++c)filldraw(box((c,-r),(c+1,1-r)),r==2&&(c==2||c==3)?lightred:lightblue);
+\end{asy}

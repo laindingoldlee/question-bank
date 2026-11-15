@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2436791_interesting_coin_probability_question
+% Stable identity: aops-topic-2436791-q01
+\textbf{A symmetric model.} Let $U$, $U_1$, $U_2$ be independent numbers chosen uniformly from $[0,1]$. Take $p=U$, and say that toss $i$ lands heads exactly when $U_i<U$. Given $U=p$, toss $i$ lands heads with probability $p$, independently of the other toss, so this is exactly the model in the question.
+
+\textbf{The probabilities.} Ties have probability $0$, and the three numbers $U,U_1,U_2$ are equally likely to be in any of the $3!$ orders.
+\begin{itemize}
+\item The first toss is heads when $U_1<U$; by symmetry $P(H_1)=\dfrac12$.
+\item Both tosses are heads when $U$ is the largest of $U,U_1,U_2$; by symmetry $P(H_1\cap H_2)=\dfrac13$.
+\end{itemize}
+Hence
+\[P(H_2\mid H_1)=\dfrac{P(H_1\cap H_2)}{P(H_1)}=\dfrac{\dfrac13}{\dfrac12}=\boxed{\dfrac23}.\]
+(With calculus: $P(H_1\cap H_2)=\displaystyle\int_0^1p^2\,dp=\dfrac13$ and $P(H_1)=\displaystyle\int_0^1p\,dp=\dfrac12$.) Seeing a head makes heads more likely next time: this is Laplace's rule of succession.

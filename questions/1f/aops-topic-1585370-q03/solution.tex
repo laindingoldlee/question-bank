@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1585370_2011_national_mathcounts_problems
+% Stable identity: aops-topic-1585370-q03
+\textbf{Split into chains.} Every integer from $1$ to $500$ can be written uniquely as $x\cdot5^j$ with $5\nmid x$. Group the numbers into chains $x,5x,25x,125x,\dots$ (as far as they stay at most $500$), one chain for each $x\le500$ with $5\nmid x$. A member and $5$ times it are always neighbours in the same chain, so the condition says exactly: \emph{no two neighbours of a chain are both chosen.}
+
+\textbf{Per chain.} In a chain of length $L$ we can choose at most $\left\lceil\dfrac {L}{2}\right\rceil$ members (pair the members off as first and second, third and fourth, \dots; at most one of each pair is chosen), and this many is achieved by taking the first, third, fifth, \dots\ members.
+
+\textbf{Chain lengths.}
+\begin{itemize}
+\item $L=4$ ($125x\le500$): $x=1,2,3,4$; $4$ chains, $2$ members each: $8$.
+\item $L=3$ ($25x\le500<125x$): $5\le x\le20$ with $5\nmid x$, i.e.\ $x=6,\dots,19$ without $10,15$: $12$ chains, $2$ each: $24$.
+\item $L=2$ ($5x\le500<25x$): $21\le x\le100$ with $5\nmid x$: $80-16=64$ chains, $1$ each: $64$.
+\item $L=1$: $101\le x\le500$ with $5\nmid x$: $400-80=320$ chains, $1$ each: $320$.
+\end{itemize}
+The chains are disjoint and the choices in different chains do not interact, so the maximum is
+\[
+8+24+64+320=\boxed{416}.
+\]

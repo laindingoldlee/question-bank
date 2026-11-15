@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h527128_2005_manhattan_mathematical_olympiad_grades_78_problem_4
+% Stable identity: aops-topic-527128-q01
+No such triangle exists. Let the hypotenuse be $AB=12$ with midpoint $M$, and let $C$ be the right-angle vertex, with $H$ the foot of the height from $C$.
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(-6,0),B=(6,0),M=(0,0);pair C=6*dir(115);pair H=(C.x,0);
+draw(arc(M,6,0,180),gray);draw(A--B);draw(A--C--B);draw(C--H);draw(C--M,dashed);
+draw(H--(H.x+0.5,0)--(H.x+0.5,0.5)--(H.x,0.5));
+draw((-7.5,7)--(7.5,7),dotted);label("height $7$",(7.5,7),E);
+dot(M);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NW);label("$M$",M,S);label("$H$",H,S);
+label("$6$",(C+M)/2,NE);label("$12$",(3,0),S);
+\end{asy}
+
+Since $\angle ACB=90^\circ$, $C$ lies on the circle with diameter $AB$ (Thales' theorem), so $MC=6$. The height satisfies $CH\le CM=6$, with equality only when $C$ is the top of the semicircle. So the height to a hypotenuse of $12$ is at most $6$, and a height of $7$ is impossible.
+
+(Algebraically: legs $a,b$ would satisfy $a^2+b^2=144$ and $ab=12\cdot7=84$, so $(a-b)^2=144-168<0$.) The answer $\dfrac12\cdot12\cdot7=42$ is the area of a triangle that cannot exist; the two best students noticed that the data are impossible.

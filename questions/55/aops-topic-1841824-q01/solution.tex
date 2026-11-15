@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1841824_help_me
+% Stable identity: aops-topic-1841824-q01
+Let the rectangle have width $2r$ and height $h$, so the semicircle has radius $r$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real r=12/(4+pi), h=r;
+pair A=(-r,0),B=(r,0),C=(r,h),D=(-r,h);
+draw(A--B--C--arc((0,h),r,0,180)--D--A,linewidth(1));
+draw(D--C,dashed);
+draw((0,h)--(0,h)+r*dir(55),gray(0.4));
+dot((0,h),gray(0.4));
+label("$r$",(0,h)+0.5*r*dir(55),NW);
+label("$2r$",(0,0),S);label("$h$",(r,h/2),E);label("$h$",(-r,h/2),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The frame length is $2r+2h+\pi r=12$, so $h=\dfrac{12-(2+\pi)r}{2}$. The area is
+\[
+A=2rh+\dfrac{\pi r^2}{2}=r\bigl(12-(2+\pi)r\bigr)+\dfrac{\pi r^2}{2}=12r-\dfrac{4+\pi}{2}\,r^2 .
+\]
+This is a quadratic in $r$ with negative leading coefficient. Completing the square,
+\[
+A=\dfrac{72}{4+\pi}-\dfrac{4+\pi}{2}\left(r-\dfrac{12}{4+\pi}\right)^2 ,
+\]
+so the area is largest when $r=\dfrac{12}{4+\pi}$, and then $A=\dfrac{72}{4+\pi}\approx10.08$ square feet. For this $r$,
+\[
+h=\dfrac{12-(2+\pi)\cdot\dfrac{12}{4+\pi}}{2}=\dfrac{12(4+\pi)-12(2+\pi)}{2(4+\pi)}=\dfrac{12}{4+\pi}=r .
+\]
+So the rectangle should be $\boxed{\dfrac{24}{4+\pi}\approx3.36\text{ ft wide and }\dfrac{12}{4+\pi}\approx1.68\text{ ft high}}$: its height equals the radius of the semicircle, half its width.

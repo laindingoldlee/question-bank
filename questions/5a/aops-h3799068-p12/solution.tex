@@ -1,0 +1,9 @@
+Let $AB=x$, $AD=y$, and $AC=x+y=s$. In triangle $ACD$, the angles are $60^\circ,25^\circ,95^\circ$, so $\dfrac{y}{s}=\dfrac{\sin25^\circ}{\sin95^\circ}$. Consequently
+\[\dfrac{x}{s}=\dfrac{\sin95^\circ-\sin25^\circ}{\sin95^\circ}=\dfrac{\sin35^\circ}{\sin85^\circ},\]
+using the sine-difference identity and $\cos60^\circ=\dfrac{1}{2}$. A triangle with angles $60^\circ,85^\circ,35^\circ$ has precisely this ratio $AB:AC$. Because the sides $AB,AC$ and included angle $60^\circ$ determine a triangle, it is $ABC$. Thus $\boxed{\angle ABC=85^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real y=sin(25*pi/180)/sin(95*pi/180),x=1-y;pair A=(0,0),C=(1,0),B=x*dir(60),D=y*dir(-60);draw(A--B--C--D--cycle);draw(A--C,dashed);pair[] p={A,B,C,D};string[] s={"A","B","C","D"};for(int i=0;i<4;++i)label("$"+s[i]+"$",p[i],i==0?(-1,0):(i==2?(1,0):(i==1?(0,1):(0,-1))));
+\end{asy}

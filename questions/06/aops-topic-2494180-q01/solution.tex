@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2494180_algebra_or
+% Stable identity: aops-topic-2494180-q01
+The numbers $x,y,z$ are the distances between the points $P=(a,b)$, $Q=(c,d)$ and $R=(e,f)$, so the expression is Heron's formula for the triangle $PQR$. We show directly that it equals $\dfrac{|D|}{2}$, where $D=(c-a)(f-b)-(e-a)(d-b)$ is rational.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0),Q=(6,1),R=(2,4.5);
+draw(P--Q--R--cycle,linewidth(0.8));
+dot(P);dot(Q);dot(R);
+label("$P(a,b)$",P,SW); label("$Q(c,d)$",Q,SE); label("$R(e,f)$",R,N);
+label("$x$",(P+Q)/2,S); label("$y$",(P+R)/2,NW); label("$z$",(Q+R)/2,NE);
+\end{asy}
+
+\textbf{Step 1.} Since $2s=x+y+z$, pairing the factors suitably gives
+\[16s(s-x)(s-y)(s-z)=(x+y+z)(x+y-z)\cdot(z+x-y)(z-x+y)=\left((x+y)^2-z^2\right)\left(z^2-(x-y)^2\right).\]
+With $A=x^2+y^2-z^2$ this is $(2xy+A)(2xy-A)$, so
+\[16s(s-x)(s-y)(s-z)=4x^2y^2-\left(x^2+y^2-z^2\right)^2.\]
+
+\textbf{Step 2.} Let $\mathbf u=(u_1,u_2)=(c-a,d-b)$ and $\mathbf v=(v_1,v_2)=(e-a,f-b)$. Then $x^2=u_1^2+u_2^2$, $y^2=v_1^2+v_2^2$, and
+\[z^2=(u_1-v_1)^2+(u_2-v_2)^2=x^2+y^2-2(u_1v_1+u_2v_2),\]
+so $x^2+y^2-z^2=2(u_1v_1+u_2v_2)$. Hence
+\[16s(s-x)(s-y)(s-z)=4\left(u_1^2+u_2^2\right)\left(v_1^2+v_2^2\right)-4\left(u_1v_1+u_2v_2\right)^2=4\left(u_1v_2-u_2v_1\right)^2,\]
+by the identity $\left(u_1^2+u_2^2\right)\left(v_1^2+v_2^2\right)-\left(u_1v_1+u_2v_2\right)^2=\left(u_1v_2-u_2v_1\right)^2$ (expand both sides). Since $u_1v_2-u_2v_1=D$,
+\[s(s-x)(s-y)(s-z)=\dfrac{D^2}{4}\qquad\text{and}\qquad\sqrt{s(s-x)(s-y)(s-z)}=\dfrac{|D|}{2},\]
+which is rational because $D$ is a polynomial with integer coefficients in the rational numbers $a,\dots,f$. $\blacksquare$
+
+(Geometrically, $\dfrac{|D|}{2}$ is the shoelace formula for the area of triangle $PQR$, and Heron's formula gives the same area; if $P,Q,R$ are collinear both are $0$.)

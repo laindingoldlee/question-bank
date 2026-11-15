@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2500093_how_do_you_solve_problems_like_this
+% Stable identity: aops-topic-2500093-q01
+\textbf{(a)} Place the rectangle as $A=(0,0)$, $B=(w,0)$, $C=(w,h)$, $D=(0,h)$, and let $P=(x,y)$. By the distance formula,
+\[PA^2+PC^2=x^2+y^2+(x-w)^2+(y-h)^2=\left[(x-w)^2+y^2\right]+\left[x^2+(y-h)^2\right]=PB^2+PD^2.\ \blacksquare\]
+(Geometrically: the lines through $P$ parallel to the sides cut each of the four distances into the hypotenuse of a right triangle with legs $x$ or $w-x$ and $y$ or $h-y$, and each leg appears once on each side.)
+
+\textbf{(b)} By (a), $PD^2=PA^2+PC^2-PB^2=9+49-25=33$, so $PD=\boxed{\sqrt{33}}$.
+
+\emph{Existence.} With side $s$ and $P=(x,y)$ as above (now $w=h=s$):
+\[PB^2-PA^2=s^2-2sx=16,\qquad PC^2-PB^2=s^2-2sy=24,\]
+so $x=\dfrac{s^2-16}{2s}$ and $y=\dfrac{s^2-24}{2s}$. Substituting into $x^2+y^2=9$ gives $\left(s^2-16\right)^2+\left(s^2-24\right)^2=36s^2$, i.e.
+\[s^4-58s^2+416=0,\qquad s^2=29\pm5\sqrt{17}.\]
+Take $s^2=29+5\sqrt{17}\approx49.6$, so $s\approx7.04$. Then $x\approx2.39$ and $y\approx1.82$ lie strictly between $0$ and $s$, so $P$ is inside the square, and by construction $PA=3$, $PB=5$, $PC=7$. (The other root, $s^2\approx8.4$, gives $y<0$, a point outside the square.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real s=sqrt(29+5*sqrt(17));
+pair A=(0,0), B=(s,0), C=(s,s), D=(0,s);
+real x=(s^2-16)/(2*s), y=(s^2-24)/(2*s); pair P=(x,y);
+draw(A--B--C--D--cycle,linewidth(0.8));
+draw(P--A,blue); draw(P--B,blue); draw(P--C,blue); draw(P--D,red);
+draw((x,0)--(x,s),dashed+gray); draw((0,y)--(s,y),dashed+gray);
+dot(P);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$P$",P,dir(150));
+label("$3$",(A+P)/2,NW,fontsize(8pt)); label("$5$",(B+P)/2,NE,fontsize(8pt)); label("$7$",(C+P)/2,SE,fontsize(8pt)); label("$\sqrt{33}$",(D+P)/2,W,red+fontsize(8pt));
+label("$x$",(x/2,0),S,fontsize(8pt)); label("$y$",(0,y/2),W,fontsize(8pt));
+\end{asy}

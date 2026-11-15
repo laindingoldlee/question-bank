@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2222627_proof_problem
+% Stable identity: aops-topic-2222627-q01
+\textbf{(a)} False. For $p(x)=x^2+1$ (degree $2$) we have $p(x)\ge1>0$ for every real $x$, so $p$ has no real roots at all. (Over the complex numbers the statement becomes true: this is the fundamental theorem of algebra, and $x^2+1=(x-i)(x+i)$. Its proof needs tools beyond algebra, such as complex analysis or topology.)
+
+\textbf{(b)} We use induction on $n$, together with the factor theorem: if $p(r)=0$ then $p(x)=(x-r)q(x)$ for a polynomial $q$ of degree $n-1$ with leading coefficient $a_n$. (Divide $p(x)$ by $x-r$: $p(x)=(x-r)q(x)+c$ with a constant $c$, and putting $x=r$ gives $c=p(r)=0$.)
+
+\emph{Base case} $n=1$: $a_1x+a_0=0$ has exactly one root $-\dfrac{a_0}{a_1}$.
+
+\emph{Inductive step.} Let $n\ge2$ and assume the claim for degree $n-1$. If $p$ has no real root we are done. Otherwise let $r$ be a real root, so $p(x)=(x-r)q(x)$ with $\deg q=n-1$. For a real $s$, $p(s)=0$ exactly when $s=r$ or $q(s)=0$, and the multiplicity of each root of $p$ is its multiplicity in $q$ plus $1$ if it equals $r$. So the number of roots of $p$ counted with multiplicity is $1$ plus that of $q$, which is at most $1+(n-1)=n$.
+
+Hence $p$ has at most $n$ real roots counted with multiplicity, and (a) shows that it may have fewer.

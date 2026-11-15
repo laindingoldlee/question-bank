@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h1500363_problem_760_geometry_textbook
+% Stable identity: aops-topic-1500363-q01
+Put the corner at the origin $O$, the floor on the $x$-axis and the wall on the $y$-axis. Let the foot be $X=(x,0)$ and the top $Y=(0,y)$ with $x,y\ge0$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(1.15,0),linewidth(1)); draw((0,0)--(0,1.15),linewidth(1));
+draw(arc((0,0),0.5,0,90),deepgreen+dashed);
+real[] ang={15,30,70,80};
+for(int k=0;k<4;++k){ real t=ang[k]*pi/180; dot(0.5*(cos(t),sin(t)),gray(0.45)); }
+real t=50*pi/180; pair X=(cos(t),0),Y=(0,sin(t)),Mi=(X+Y)/2;
+draw(X--Y,blue+linewidth(1)); dot(Mi,red);
+draw((0,0)--Mi,red+dashed);
+dot(X);dot(Y);
+label("$O$",(0,0),SW);label("$X(x,0)$",X,S);label("$Y(0,y)$",Y,W);label("$M$",Mi,NE);
+label("$\dfrac{1}{2}$",0.5*Mi,SE,red+fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+
+\textbf{(a)} The ladder $XY$ has length $1$, and triangle $XOY$ has a right angle at $O$. By the Pythagorean theorem,
+\[
+x^2+y^2=1 .
+\]
+The midpoint is $M=\left(\dfrac {x}{2},\dfrac {y}{2}\right)$, so
+\[
+OM^2=\dfrac{x^2+y^2}{4}=\dfrac{1}{4},\qquad OM=\dfrac{1}{2} .
+\]
+(Equivalently, $M$ is the midpoint of the hypotenuse of a right triangle, so it is equidistant from $X$, $Y$ and $O$.) So $M$ always lies on the circle of radius $\dfrac{1}{2}$ about $O$, in the first quadrant. As the ladder slides, $x$ increases continuously from $0$ to $1$. Then $M=\left(\dfrac {x}{2},\dfrac{\sqrt{1-x^2}}{2}\right)$ runs through every point of this quarter circle, from $\left(0,\dfrac{1}{2}\right)$ to $\left(\dfrac{1}{2},0\right)$. $\blacksquare$
+
+\textbf{(b)} The error is the claim that the top is at height $1-x$. That would mean $x+y=1$, i.e.\ the foot distance and the height add up to the length of the ladder. But they are the legs of a right triangle whose hypotenuse is the ladder, so $x^2+y^2=1$ and $y=\sqrt{1-x^2}$. At the $45^\circ$ position, $x=y=\dfrac{\sqrt2}{2}$, and indeed
+\[
+\left(\dfrac{\sqrt2}{2}\right)^2+\left(\dfrac{\sqrt2}{2}\right)^2=1 .
+\]
+There is no reason for $x+y$ to equal $1$, so no contradiction arises.

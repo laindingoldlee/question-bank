@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h11891_toppers_random_nats_problems
+% Stable identity: aops-topic-11891-q03
+\textbf{Sides.} Each cube shows all four of its side faces: $4(1^2+3^2+5^2)=4\cdot35=140$ square inches.
+
+\textbf{Top and bottom.} Looking straight down, the exposed parts of the top faces of the three cubes together cover exactly a $5\times5$ square, $25$ square inches (the part of each top face covered by the cube above is replaced by that cube's own top). The bottom face of the $5$-inch cube adds another $25$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.8cm);
+defaultpen(fontsize(10pt));
+pair d=(0.42,0.3);
+void cube(pair o, real s){
+  path front=o--o+(s,0)--o+(s,s)--o+(0,s)--cycle;
+  path top=o+(0,s)--o+(s,s)--o+(s,s)+s*d--o+(0,s)+s*d--cycle;
+  path side=o+(s,0)--o+(s,0)+s*d--o+(s,s)+s*d--o+(s,s)--cycle;
+  filldraw(front,white); filldraw(top,gray(0.92)); filldraw(side,gray(0.8));
+}
+cube((0,0),5); cube((1,5)+1*d,3); cube((2,8)+2*d,1);
+label("$5$",(2.5,0),S); label("$3$",(1,5)+1*d+(0,1.5),W); label("$1$",(2,8)+2*d+(0.5,1)+d,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The painted area is $140+25+25=\boxed{190}$ square inches. (If the bottom of the sculpture were not painted, the answer would be $165$.)

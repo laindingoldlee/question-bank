@@ -1,0 +1,6 @@
+Every polyomino containing a white square can contain only that one white square. Any black square in it must be adjacent to that white square: a path of grid edges from the white square to a more distant black square would pass through a second white square. A component containing no white square must be a single black square, since two black squares are never edge-adjacent. Thus each black square independently chooses either to stand alone or to join the component of one of its adjacent white squares. Every such assignment gives exactly one valid partition, and conversely every partition determines the choices. Of the eight black squares, two are corners with 2 neighbours, four are other boundary squares with 3 neighbours, and two are interior squares with 4 neighbours. The count is $\boxed{3^2\cdot4^4\cdot5^2=57600}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+for(int i=0;i<4;++i)for(int j=0;j<4;++j){path P=(i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle;if((i+j)%2==1)fill(P,gray(.8));draw(P,gray);}pair P=(1.5,2.5);for(pair Q:new pair[]{(.5,2.5),(2.5,2.5),(1.5,1.5),(1.5,3.5)})draw(P--Q,Arrow);dot(P);label("join a neighbour or remain alone",(2,-.4),(0,-1));
+\end{asy}
+

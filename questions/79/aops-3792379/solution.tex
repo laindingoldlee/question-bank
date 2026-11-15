@@ -1,0 +1,9 @@
+Scale to $B=(0,0),C=(2,0),M=(1,0)$. Since $AB=AM$, $A$ lies on the perpendicular bisector of $BM$, so $A = (\dfrac{1}{2} , \dfrac{t}{2})$ with $t=\tan28^\circ$. The circumcenter is $O = (1 , \dfrac{t^2-3}{4t})$, obtained by equating its distances to $A,B,C$. Equal chords $AP=AC$ imply that $P$ is the reflection of $C$ in line $AO$. The elementary vector reflection formula gives $P = (\dfrac{t^2-1}{t^2+1} , - \dfrac{2 t}{t^2+1})$. Hence $P - M = (- \dfrac{2}{t^2+1} , - \dfrac{2 t}{t^2+1})$, which points $28^\circ$ below the negative horizontal direction. Since $O$ is below $M$, the angle between $MP$ and $MO$ is $90^\circ-28^\circ=\boxed{62^\circ}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+real t=tan(28*pi/180);pair B=(0,0),C=(2,0),M=(1,0),A=(.5,t/2),O=(1,(t*t-3)/(4t)),P=((t*t-1)/(t*t+1),-2t/(t*t+1));draw(circle(O,abs(O-B)));draw(A--B--C--A);draw(A--P);draw(P--M--O,dashed);label("$A$",A,(0,1));label("$B$",B,(-1,1));label("$C$",C,(1,1));label("$M$",M,(0,1));label("$P$",P,(-1,0));label("$O$",O,(0,-1));
+\end{asy}
+

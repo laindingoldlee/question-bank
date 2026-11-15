@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2766233_2019_abmc_team_round__actonboxborough_math_competition__22_problems
+% Stable identity: aops-topic-2766233-q17
+An interior point equidistant from the two side lines lies on the internal angle bisector, so $BD:DC=13:14$. The area is the sum of triangles $ABD,ACD$, namely $\dfrac{1}{2}(13+14)\dfrac{56}{9}=84$. Thus $\sin A=\dfrac{2(84)}{13\cdot14}=\dfrac{12}{13}$, giving $\cos A=\pm\dfrac{5}{13}$. By the cosine rule, $BC^2=13^2+14^2-2(13)(14)\cos A$ is 225 or 505. Both angles are nondegenerate and yield the required distance. Therefore the largest $BD$ is $\boxed{\dfrac{13\sqrt{505}}{27}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int k=0;k<2;++k){pair A=(35*k,0),B=A+(13,0),C=A+14*dir(k==0?acos(5.0/13)*180/pi:acos(-5.0/13)*180/pi),D=(14*B+13*C)/27;draw(A--B--C--cycle);draw(A--D,dashed);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,E);}
+\end{asy}

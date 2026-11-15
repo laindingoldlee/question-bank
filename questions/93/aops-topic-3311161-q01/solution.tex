@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h3311161_an_awkward_tile
+% Stable identity: aops-topic-3311161-q01
+A cell's black triangle points toward one of its four edges. If it points toward an interior edge, the neighbouring cell must point back, creating a matched pair of cells. Otherwise it points out of the grid. Thus a pattern is a matching of adjacent cells, with unmatched cells allowed only on the boundary; each unmatched corner has two outward choices and every other unmatched boundary cell one. Use the following exact recursion on the set $U$ of still-unassigned cells. Choose its first cell $v$. Either leave it unmatched in $b(v)$ outward directions, or pair it with any adjacent cell $w\in U$. Therefore $F(U)=b(v)F(U\setminus\{v\})+\sum_{w\sim v,\ w\in U}F(U\setminus\{v,w\})$, with $F(\varnothing)=1$. Evaluating gives $\boxed{10724}$. Here is a reproducible implementation:\begin{verbatim}
+from functools import lru_cache
+@lru_cache(None)
+def f(U):
+    if not U: return 1
+    v=min(U); r,c=divmod(v,4)
+    left=frozenset(U-{v})
+    b=(r==0)+(r==3)+(c==0)+(c==3)
+    total=b*f(left)
+    for w in U-{v}:
+        s,t=divmod(w,4)
+        if abs(r-s)+abs(c-t)==1:
+            total+=f(frozenset(left-{w}))
+    return total
+assert f(frozenset(range(16)))==10724
+\end{verbatim}
+\begin{asy}
+import geometry;
+usepackage("amsmath");
+size(270);
+for(int i=0;i<4;++i)for(int j=0;j<4;++j){pair C=(i+.5,j+.5);draw((i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle);draw((i,j)--(i+1,j+1)^^(i+1,j)--(i,j+1),gray);if(i%2==0)fill(C--(i+1,j)--(i+1,j+1)--cycle,black);else fill(C--(i,j)--(i,j+1)--cycle,black);}label("one valid pattern",(2,-.5));
+\end{asy}

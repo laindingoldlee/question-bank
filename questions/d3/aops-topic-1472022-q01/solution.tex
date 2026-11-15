@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1472022_mathcounts_problem
+% Stable identity: aops-topic-1472022-q01
+The $300$ m southeast cancels $300$ m of the $600$ m northwest, and the $600$ m south cancels $600$ m of the $1000$ m north. So the treasure is reached by going $300$ m northwest and $400$ m north.
+
+Take east as the positive $x$-axis and north as the positive $y$-axis. The displacement is
+\[
+300\left(-\dfrac{\sqrt2}{2},\dfrac{\sqrt2}{2}\right)+(0,400)=\left(-150\sqrt2,\;400+150\sqrt2\right),
+\]
+so the distance is
+\[
+\sqrt{\left(150\sqrt2\right)^2+\left(400+150\sqrt2\right)^2}=\sqrt{45000+160000+120000\sqrt2+45000}=\sqrt{250000+120000\sqrt2}.
+\]
+That is $100\sqrt{25+12\sqrt2}\approx\boxed{648}$ meters. (The same value comes from the law of cosines with sides $300$ and $400$ and an angle of $135^\circ$ between them.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),P1=6*dir(135),P2=P1+(0,10),P3=P2+3*dir(-45),T=P3+(0,-6);
+draw(O--P1,blue,Arrow(Relative(0.6))); draw(P1--P2,blue,Arrow(Relative(0.6))); draw(P2--P3,blue,Arrow(Relative(0.6))); draw(P3--T,blue,Arrow(Relative(0.6)));
+draw(O--T,red+dashed);
+dot(O);dot(T,red);dot(P1);dot(P2);dot(P3);
+label("start",O,SE); label("treasure",T,E,red);
+label("$600$",(O+P1)/2,SW,blue); label("$1000$",(P1+P2)/2,W,blue); label("$300$",(P2+P3)/2,NE,blue); label("$600$",(P3+T)/2,E,blue);
+draw((2.2,0.5)--(2.2,1.7),Arrow); label("N",(2.2,1.7),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

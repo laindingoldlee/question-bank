@@ -1,0 +1,17 @@
+There are two families: every row alternates horizontally (each row has two independent choices, giving $2^5$ fillings), or every column alternates vertically (giving $2^9$ fillings).
+These exhaust all possibilities. If some row has two equal adjacent entries, the two entries below them are forced to be their opposites. Given one entry of the next row, each $2\times2$ condition determines the next entry, so that whole next row must be the complement of the current row. The same propagation works upward and then across every adjacent row. Thus every column alternates. If no row has equal adjacent entries, every row alternates, which is the first family.
+The two checkerboard fillings belong to both families. Inclusion-exclusion gives $\boxed{2^5+2^9-2=542}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"Z", "P", "Z", "P", "Z", "P", "Z", "P", "Z"}, {"P", "Z", "P", "Z", "P", "Z", "P", "Z", "P"}, {"P", "Z", "P", "Z", "P", "Z", "P", "Z", "P"}, {"Z", "P", "Z", "P", "Z", "P", "Z", "P", "Z"}, {"P", "Z", "P", "Z", "P", "Z", "P", "Z", "P"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("Rows alternate independently",(4.5,-5.2));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"Z", "P", "P", "Z", "P", "P", "Z", "P", "P"}, {"P", "Z", "Z", "P", "Z", "Z", "P", "Z", "Z"}, {"Z", "P", "P", "Z", "P", "P", "Z", "P", "P"}, {"P", "Z", "Z", "P", "Z", "Z", "P", "Z", "Z"}, {"Z", "P", "P", "Z", "P", "P", "Z", "P", "P"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("Columns alternate independently",(4.5,-5.2));
+\end{asy}

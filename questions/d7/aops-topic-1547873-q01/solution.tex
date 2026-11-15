@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1547873_question_fo_da_greatest
+% Stable identity: aops-topic-1547873-q01
+Constant density means the volume is unchanged. Let the depth be $h$ (the sketch is not to scale):
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,2),2),linewidth(0.9));draw(ellipse((0,2),2,0.5),dashed+gray(0.5));
+draw((0,2)--(2,2));label("$2$",(1,2.85));dot((0,2));
+real h=1.0; pair c=(11,0.8);
+draw(shift(c)*xscale(5)*yscale(1.4)*arc((0,0),1,180,360),linewidth(0.9));
+draw(shift(0,h)*ellipse(c,5,1.4),linewidth(0.9));
+draw(c+(-5,0)--c+(-5,h),linewidth(0.9));draw(c+(5,0)--c+(5,h),linewidth(0.9));
+draw(c+(0,h)--c+(5,h),dashed);dot(c+(0,h));label("$8$",c+(2.5,h),N);
+draw(c+(5.7,0)--c+(5.7,h),Arrows(4));label("$h$",c+(5.7,h/2),E);
+label("sphere (before)",(0,-1.7));label("cylinder (after)",(11,-1.7));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+\dfrac{4}{3}\pi\cdot2^3=\pi\cdot8^2\cdot h\iff\dfrac{32}{3}=64h\iff h=\boxed{\dfrac{1}{6}}.
+\]

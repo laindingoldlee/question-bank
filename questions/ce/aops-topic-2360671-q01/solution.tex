@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2360671_reflecting_lines_across_lines
+% Stable identity: aops-topic-2360671-q01
+\textbf{A fixed point.} The lines meet where $7x+4(2x-3)=-12$, that is, $15x=0$: at $X=(0,-3)$. This point is its own reflection, so it lies on the image.
+
+\textbf{A second point.} The point $P=(4,-10)$ lies on $7x+4y=-12$ ($28-40=-12$). The perpendicular to $y=2x-3$ through $P$ has slope $-\dfrac12$: $y+10=-\dfrac12(x-4)$. It meets $y=2x-3$ where $2x-3=-\dfrac12x-8$, that is, at $M=(-2,-7)$. The reflection of $P$ is $P'=2M-P=(-8,-4)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+draw((-10,0)--(7,0),Arrow(5)); draw((0,-12.5)--(0,6),Arrow(5));
+draw((-4.3,4.525)--(5,-11.75),blue+linewidth(0.9)); label("$7x+4y=-12$",(-4.3,4.525),W,blue+fontsize(8pt));
+draw((-4.5,-12)--(4.2,5.4),linewidth(0.9)); label("$y=2x-3$",(4.2,5.4),E,fontsize(8pt));
+draw((-10,-4.25)--(6.5,-2.1875),red+linewidth(0.9)); label("$x-8y=24$",(6.5,-2.1875),SE,red+fontsize(8pt));
+pair P=(4,-10), Pp=(-8,-4), M=(-2,-7), X=(0,-3);
+draw(P--Pp,dashed);
+dot(P,blue); dot(Pp,red); dot(M); dot(X);
+label("$P(4,-10)$",P,dir(30),blue); label("$P'(-8,-4)$",Pp,NW,red); label("$M$",M,1.5*dir(290)); label("$X$",X,1.5*dir(35));
+\end{asy}
+
+\textbf{The image line} passes through $(0,-3)$ and $(-8,-4)$, so its slope is $\dfrac{-4+3}{-8-0}=\dfrac18$ and its equation is $y=\dfrac18x-3$, that is,
+\[\boxed{x-8y=24}.\]

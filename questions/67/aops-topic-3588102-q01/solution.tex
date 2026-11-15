@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3588102_heights_from_the_inside_of_the_triangle
+% Stable identity: aops-topic-3588102-q01
+Choose coordinates with circle $x^2+y^2=R^2$, $A=(u,v)$, $B=(u,-v)$, $u>0$, and $u^2+v^2=R^2$. Write $D=(x,y)$. The tangent lines are $uX+vY=R^2$ and $uX-vY=R^2$. The product of the distances from $D$ to these lines is\[DG\cdot DF=\dfrac{(R^2-ux-vy)(R^2-ux+vy)}{R^2}=\dfrac{(R^2-ux)^2-v^2y^2}{R^2}.\]Using $y^2=R^2-x^2$ and $v^2=R^2-u^2$, the numerator simplifies to $R^2(x-u)^2$. Since $AB$ is $X=u$, this says $DG\cdot DF=DE^2$. Hence $DE=\sqrt{9\cdot4}=\boxed6$.
+\begin{asy}
+import geometry;
+size(240);
+pair O=(0,0),A=(1,1.732),B=(1,-1.732),C=(4,0),D=2*dir(25),E=(1,D.y);pair F=foot(D,B,C),G=foot(D,A,C);draw(circle(O,2));draw(A--C--B--A);draw(D--E^^D--F^^D--G,dashed);dot(D);label("$A$",A,N);label("$B$",B,S);label("$C$",C,E);label("$D$",D,NE);label("$E$",E,W);label("$F$",F,SE);label("$G$",G,NE);
+\end{asy}

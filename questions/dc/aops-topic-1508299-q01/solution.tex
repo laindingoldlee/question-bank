@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1508299_pi_formula
+% Stable identity: aops-topic-1508299-q01
+For every real $t$, the finite geometric series with ratio $-t^2$ gives
+\[
+\sum_{k=0}^{n-1}(-1)^kt^{2k}=\dfrac{1-(-t^2)^n}{1+t^2},\qquad\text{so}\qquad\dfrac{1}{1+t^2}=\sum_{k=0}^{n-1}(-1)^kt^{2k}+(-1)^n\dfrac{t^{2n}}{1+t^2}.
+\]
+Integrate from $0$ to $1$. Since $\displaystyle\int_0^1\dfrac{dt}{1+t^2}=\arctan1=\dfrac{\pi}{4}$ and $\displaystyle\int_0^1t^{2k}\,dt=\dfrac{1}{2k+1}$,
+\[
+\dfrac{\pi}{4}=\sum_{k=0}^{n-1}\dfrac{(-1)^k}{2k+1}+(-1)^nR_n,\qquad R_n=\int_0^1\dfrac{t^{2n}}{1+t^2}\,dt .
+\]
+Because $0\le\dfrac{t^{2n}}{1+t^2}\le t^{2n}$ on $[0,1]$,
+\[
+0\le R_n\le\int_0^1t^{2n}\,dt=\dfrac{1}{2n+1}\to0 .
+\]
+Multiplying by $4$: $|\pi-S_n|=4R_n\le\dfrac{4}{2n+1}\to0$, so $S_n\to\pi$. $\blacksquare$
+
+(The bound also shows why the series is a poor way to compute $\pi$: the error after $n$ terms is of size about $\dfrac{1}{n}$, so a thousand terms give only about three correct decimal places.)

@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h3156870_2014_lmt_spring_guts_round_p16p30__lexington_mathematical_tournament
+% Stable identity: aops-topic-3156870-q29
+A number with distinct digits has at most ten digits. Every ten-digit such number has digit sum 45 and is composite. Enumerate all shorter digit permutations with nonzero first digit. Apart from 2, 3, 5, 7, a prime must end in 1, 3, 7, 9 and have digit sum not divisible by 3. For each candidate, trial division by every prime up to its square root is a complete primality test. The counts by digit length 1 through 9 are $ 4,20,97,510,2529,10239,33950,90510,145227 $. Their sum is $\boxed{283086}$. Reproducible exact code:
+\begin{verbatim}
+from itertools import permutations
+from math import isqrt
+sieve=[True]*31624
+sieve[0]=sieve[1]=False
+for p in range(2,isqrt(31623)+1):
+    if sieve[p]:
+        for n in range(p*p,31624,p):sieve[n]=False
+primes=[p for p in range(2,31624) if sieve[p]]
+counts=[4]
+for k in range(2,10):
+    count=0
+    for ds in permutations(range(10),k):
+        if not ds[0] or ds[-1] not in (1,3,7,9) or sum(ds)%3==0:continue
+        n=0
+        for d in ds:n=10*n+d
+        good=True
+        for p in primes:
+            if p*p>n:break
+            if n%p==0:good=False;break
+        count+=good
+    counts.append(count)
+assert counts==[4,20,97,510,2529,10239,33950,90510,145227]
+assert sum(counts)==283086
+\end{verbatim}

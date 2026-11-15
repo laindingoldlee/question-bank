@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3585889_nice_geo_problem
+% Stable identity: aops-topic-3585889-q01
+Place $A=(-5,0)$ and $C=(5,0)$. The equal-distance conditions force $B=(0,b)$ and $D=(0,d)$, with $|b-d|=18$. Since $CO$ is vertical, put $O=(5,o)$. Equality of $OA^2,OB^2,OD^2$ yields $b^2-2bo=75$ and $d^2-2do=75$. Subtracting gives $2o=b+d$, and substitution gives $bd=-75$. Hence $324=(b-d)^2=(b+d)^2-4bd=4o^2+300$. Thus $o^2=6$, so $\boxed{CO=\sqrt6}$. The two signs of $o$ are mirror images and give the same distance.
+\begin{asy}
+import geometry;
+size(240);
+real o=sqrt(6);pair A=(-5,0),C=(5,0),B=(0,9+o),D=(0,-9+o),O=(5,o);draw(A--B--C--D--cycle);draw(A--C^^B--D^^O--A^^O--B^^O--D^^O--C,dashed);dot(O);label("$A$",A,W);label("$B$",B,N);label("$C$",C,E);label("$D$",D,S);label("$O$",O,E);
+\end{asy}

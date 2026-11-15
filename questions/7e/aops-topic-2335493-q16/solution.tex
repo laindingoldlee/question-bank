@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2335493_popcorn1s_amc_8_selected_problems
+% Stable identity: aops-topic-2335493-q16
+Each great meridian is a full circle through both poles, made of two half-circles from pole to pole. So $12$ great meridians give $24$ half-meridians, which cut the sphere into $24$ slices from pole to pole. The $12$ parallels cut each slice into $13$ parts. (The figure shows a globe with $3$ great meridians and $4$ parallels: $6$ slices, each cut into $5$ parts.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+draw(unitcircle,linewidth(0.9));
+real[] lam={15,75,135};
+for(int k=0;k<3;++k) draw(xscale(abs(Cos(lam[k])))*unitcircle,blue);
+real[] hs={-0.6,-0.2,0.2,0.6};
+for(int k=0;k<4;++k){ real h=hs[k], w=sqrt(1-h*h);
+ draw(shift(0,h)*scale(w,0.18*w)*arc((0,0),1,180,360),red);
+ draw(shift(0,h)*scale(w,0.18*w)*arc((0,0),1,0,180),red+dashed); }
+dot((0,1)); dot((0,-1));
+label("pole",(0,1),N); label("pole",(0,-1),S);
+\end{asy}
+
+So there are $24\cdot13=312$ parts. Whatever part Bela picks, Jenn picks the same part with probability $\dfrac1{312}$, so the answer is $\boxed{\textbf{(A) }\dfrac{1}{312}}$.

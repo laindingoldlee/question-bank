@@ -1,0 +1,7 @@
+The two pairs of opposite rectangle vertices subtend diameters from $P$, so $PA^2+PC^2=PB^2+PD^2$. Write $PA=3t,PD=5t,PB=7s,PC=8s$. Then $9t^2+64s^2=49s^2+25t^2$, giving $\dfrac{t}{s}=\dfrac{\sqrt{15}}{4}$. Hence $\boxed{\dfrac{PA}{PC}=\dfrac{3\sqrt{15}}{32}}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+real aa=2*asin(3*sqrt(15)/sqrt(1159))*180/pi,bb=2*asin(28/sqrt(1159))*180/pi;pair A=dir(aa),B=dir(bb),C=-A,D=-B,P=(1,0);draw(circle((0,0),1));draw(A--B--C--D--cycle);draw(A--P--B);draw(C--P--D);pair[] V={A,B,C,D,P};string[] L={"A","B","C","D","P"};for(int i=0;i<5;++i)label("$"+L[i]+"$",V[i],V[i]);
+\end{asy}

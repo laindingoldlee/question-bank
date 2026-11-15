@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2325662_geo_question
+% Stable identity: aops-topic-2325662-q01
+\textbf{(a)} The two legs are equal (the base angles are equal), so by the Pythagorean theorem the hypotenuse $h$ satisfies $h^2=a^2+a^2=2a^2$, and $h=\boxed{a\sqrt2}$.
+
+\textbf{(b)} Let $PQR$ have the right angle at $P$, $\angle Q=30^\circ$, $\angle R=60^\circ$ and $PR=a$. Reflect $R$ in the line $PQ$ to $R'$ (dashed), so $PR'=a$ and $R,P,R'$ are collinear.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(2.2,0), C=(0,2.2);
+draw(A--B--C--cycle,linewidth(0.9)); draw((0.2,0)--(0.2,0.2)--(0,0.2));
+label("$a$",(1.1,0),S); label("$a$",(0,1.1),W); label("$a\sqrt2$",(1.1,1.1),NE);
+label("$45^\circ$",B+(-0.55,0.15),fontsize(8pt)); label("$45^\circ$",C+(0.17,-0.6),fontsize(8pt));
+pair P=(4.2,0), Q=(4.2+2*sqrt(3),0), R=(4.2,2), R2=(4.2,-2);
+draw(P--Q--R--cycle,linewidth(0.9)); draw(P--R2--Q,dashed);
+draw(P+(0.2,0)--P+(0.2,0.2)--P+(0,0.2));
+label("$a$",(P+R)/2,W); label("$a$",(P+R2)/2,W); label("$a\sqrt3$",(P+Q)/2+(-0.3,0),S); label("$2a$",(Q+R)/2,NE);
+label("$30^\circ$",Q+(-0.85,0.2),fontsize(8pt)); label("$60^\circ$",R+(0.2,-0.45),fontsize(8pt));
+label("$R$",R,N); label("$P$",P,W); label("$Q$",Q,E); label("$R'$",R2,S);
+\end{asy}
+
+Triangle $RQR'$ has $\angle R=60^\circ$ and, by symmetry, $\angle R'=60^\circ$, so it is equilateral. Its side is $RR'=2a$, so the hypotenuse is $QR=\boxed{2a}$. By the Pythagorean theorem, the longer leg is $PQ=\sqrt{(2a)^2-a^2}=\sqrt{3a^2}=\boxed{a\sqrt3}$.
+
+So the sides of a $45$-$45$-$90$ triangle are in the ratio $1:1:\sqrt2$, and those of a $30$-$60$-$90$ triangle in the ratio $1:\sqrt3:2$. $\blacksquare$

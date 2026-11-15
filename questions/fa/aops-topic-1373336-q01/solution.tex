@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1373336_yet_another_mathcounts_question
+% Stable identity: aops-topic-1373336-q01
+Measure time in minutes from the start of the period, and let Alice and Bob arrive at times $x$ and $y$, a point chosen uniformly in the square $0\le x,y\le120$. They meet exactly when their arrivals differ by at most $10$ minutes: $|x-y|\le10$. (Whoever arrives first waits $10$ minutes, and an arrival near the end of the period still meets the other person if the other is already there or arrives before the period ends, which also means $|x-y|\le10$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real T=120, w=10;
+fill((0,0)--(w,0)--(T,T-w)--(T,T)--(T-w,T)--(0,w)--cycle,lightblue);
+draw((0,0)--(T,0)--(T,T)--(0,T)--cycle,linewidth(0.9));
+draw((w,0)--(T,T-w),blue); draw((0,w)--(T-w,T),blue);
+label("$0$",(0,0),SW); label("$120$",(T,0),S); label("$120$",(0,T),W);
+label("$x$ (Alice)",(T/2,0),S); label("$y$ (Bob)",(0,T/2),W);
+draw((128,80)--(97,90),Arrow(5)); label("$|x-y|\le10$",(128,80),E,fontsize(8pt));
+label("$y\ge x+10$",(35,102),fontsize(8pt)); label("$y\le x-10$",(86,18),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The complement consists of the two corner triangles $y\ge x+10$ and $y\le x-10$, each a right isosceles triangle with legs $110$. So
+\[
+P(\text{meet})=1-\dfrac{2\cdot\dfrac{1}{2}\cdot110^2}{120^2}=1-\dfrac{12100}{14400}=1-\dfrac{121}{144}=\boxed{\dfrac{23}{144}}.
+\]

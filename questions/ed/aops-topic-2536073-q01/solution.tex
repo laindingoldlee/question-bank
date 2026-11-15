@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2536073_congruence_geometry
+% Stable identity: aops-topic-2536073-q01
+Two triangles are \emph{defined} to be congruent, $\triangle ABC\cong\triangle DEF$, when there is a correspondence $A\leftrightarrow D$, $B\leftrightarrow E$, $C\leftrightarrow F$ under which all three pairs of corresponding sides and all three pairs of corresponding angles are congruent. So once two triangles are known to be congruent (for example by SSS or SAS, which are postulates or theorems), the congruence of every pair of corresponding parts is simply what ``congruent'' means. The answer is $\boxed{\textbf{(A) } \text{Definition}}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(3,0),C=(1,2);
+pair sh=(4.8,0);pair A2=A+sh,B2=B+sh,C2=C+sh;
+draw(A--B--C--cycle,linewidth(0.8));draw(A2--B2--C2--cycle,linewidth(0.8));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$D$",A2,SW);label("$E$",B2,SE);label("$F$",C2,N);
+void tk(pair P,pair Q,int k){pair M=(P+Q)/2,u=unit(Q-P),v=rotate(90)*u*0.12;for(int i=0;i<k;++i){pair c=M+(i-(k-1)/2)*0.1*u;draw(c-v--c+v);}}
+tk(A,B,1);tk(A2,B2,1);tk(B,C,2);tk(B2,C2,2);tk(C,A,3);tk(C2,A2,3);
+draw(arc(A,0.35,0,degrees(C-A)));draw(arc(A2,0.35,0,degrees(C2-A2)));
+\end{asy}
+
+(The marks show the six pairs of corresponding parts: matching ticks for sides, and one pair of corresponding angles marked; the other two angle pairs correspond in the same way.)

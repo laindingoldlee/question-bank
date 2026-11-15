@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3175486_2020_abmc_accuracy_round__actonboxborough_math_competition
+% Stable identity: aops-topic-3175486-q10
+Use $B=(1,\sqrt3)$, $C=(-1,\sqrt3)$, $D=(-2,0)$, $E=(-1,-\sqrt3)$, $F=(1,-\sqrt3)$. Then $G=(-\dfrac{3}{2},-\dfrac{\sqrt3}{2})$, and solving the line equations gives $O=(-\dfrac{1}{4},\dfrac{\sqrt3}{4})$. Consequently $BC=2$, $CO=\dfrac{3}{2}$, $BO=\dfrac{\sqrt{13}}{2}$, and $[BOC]=\dfrac{3\sqrt3}{4}$. Dividing area by semiperimeter yields $r=\dfrac{3\sqrt3}{7+\sqrt{13}}=\dfrac{7\sqrt3-\sqrt{39}}{12}$. The answer is $7+3+39+12=\boxed{61}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+string[] names={"A","B","C","D","E","F"};pair[] H;for(int j=0;j<6;++j)H.push(2*dir(60*j));for(int j=0;j<6;++j){draw(H[j]--H[(j+1)%6]);label("$"+names[j]+"$",H[j],dir(60*j));}pair G=(H[3]+H[4])/2,O=(-.25,sqrt(3)/4);draw(H[1]--G^^H[2]--H[5],blue);dot("$G$",G,S);dot("$O$",O,SW);
+\end{asy}

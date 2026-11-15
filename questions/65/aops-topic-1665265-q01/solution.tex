@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1665265_problem_help
+% Stable identity: aops-topic-1665265-q01
+Given an $m$-separated subset $a_1<a_2<\dots<a_r$ of $X$, put
+\[
+b_i=a_i-(i-1)(m-1),\qquad i=1,2,\dots,r .
+\]
+Then $b_i-b_{i-1}=(a_i-a_{i-1})-(m-1)\ge1$, so $b_1<b_2<\dots<b_r$; also $b_1=a_1\ge1$ and $b_r=a_r-(r-1)(m-1)\le n-(r-1)(m-1)$. So $\{b_1,\dots,b_r\}$ is an $r$-element subset of $Y=\{1,2,\dots,N\}$, where $N=n-(m-1)(r-1)$.
+
+Conversely, from any $r$-element subset $b_1<\dots<b_r$ of $Y$ the numbers $a_i=b_i+(i-1)(m-1)$ satisfy $a_i-a_{i-1}=b_i-b_{i-1}+m-1\ge m$, $a_1\ge1$ and $a_r\le N+(r-1)(m-1)=n$, so they form an $m$-separated subset of $X$. The two maps undo each other, so this is a bijection, and the number of $m$-separated $r$-element subsets is
+\[
+\boxed{\dbinom{n-(m-1)(r-1)}{r}}.
+\]
+(For $m=1$ this is $\dbinom nr$, and for $m=2$ it is the familiar count $\dbinom{n-r+1}{r}$ of subsets with no two consecutive elements.)

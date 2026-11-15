@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2550574_mathcounts_2019_national_sprint_problems_24_and_28
+% Stable identity: aops-topic-2550574-q23
+Number the points $0,1,\dots,16$ around the circle. Going around the circle, the five chosen points cut it into five gaps; let the \emph{length} of a gap be the number of steps between consecutive chosen points, so the lengths add up to $17$. One step is $\dfrac{360^\circ}{17}$, so a gap of length $8$ is less than $180^\circ$ and a gap of length $9$ is more.
+
+The inscribed pentagon contains the centre exactly when every gap is less than a semicircle; if some gap exceeds $180^\circ$, all five points lie on the opposite, smaller arc and the pentagon lies on one side of a chord that misses the centre. (No gap equals $180^\circ$, since $17$ is odd.)
+
+Count the \emph{bad} choices, with a gap of length at least $9$. Two such gaps would need $18>17$ steps, so a bad choice has exactly one long gap. Number the points clockwise and let $V$ be the chosen point at which the long gap starts, going clockwise. The other four chosen points then lie on the remaining arc of at most $8$ steps that ends at $V$, i.e. among the $8$ points $V-1,V-2,\dots,V-8$ (mod $17$). Conversely, any choice of $V$ and of four of these $8$ points gives a bad set whose long gap starts at $V$. So there are $17\dbinom84=17\cdot70=1190$ bad sets out of $\dbinom{17}5=6188$.
+
+The probability is
+\[1-\dfrac{1190}{6188}=1-\dfrac5{26}=\boxed{\dfrac{21}{26}}.\]
+In the sketch, the blue pentagon contains the centre; the red one has a gap of $9$ steps and does not.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+int n=17;
+draw(unitcircle);
+pair O=(0,0);
+int[] good={0,4,7,10,14};
+int[] bad={0,2,4,6,8};
+for(int k=0;k<n;++k) dot(dir(90+360*k/n),gray);
+pair g(int k){return dir(90+360*k/17);}
+pair sh=(2.6,0);
+draw(shift(sh)*unitcircle);
+for(int k=0;k<n;++k) dot(shift(sh)*dir(90+360*k/n),gray);
+draw(g(good[0])--g(good[1])--g(good[2])--g(good[3])--g(good[4])--cycle,blue+linewidth(0.8));
+draw(shift(sh)*(g(bad[0])--g(bad[1])--g(bad[2])--g(bad[3])--g(bad[4])--cycle),red+linewidth(0.8));
+dot(O);dot(sh);
+label("contains the centre",(0,-1.25),S,fontsize(8pt));label("gap of $9$ steps",(2.6,-1.25),S,fontsize(8pt));
+\end{asy}

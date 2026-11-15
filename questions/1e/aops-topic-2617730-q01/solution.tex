@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2617730_problem_help_before_400
+% Stable identity: aops-topic-2617730-q01
+There are no edges between different connected components, so it suffices to colour each component. Fix a vertex $v$ of a component. Colour each vertex $u$ of the component red if its distance $d(u)$ from $v$ is even, and blue if it is odd.
+
+Suppose some edge $xy$ joins two vertices of the same colour, so $d(x)\equiv d(y)\pmod2$. Follow a shortest path from $v$ to $x$, the edge $xy$, and a shortest path from $y$ back to $v$. This is a closed walk of length $d(x)+1+d(y)$, which is odd.
+
+\emph{Lemma.} Every closed walk of odd length contains a cycle of odd length.
+
+Proof by induction on the length. A closed walk with no repeated vertex (apart from its start and end) is a cycle; its length is odd and at least $3$, since a graph has no loops. Otherwise a vertex repeats, and the walk splits at that vertex into two shorter closed walks whose lengths add up to the odd total. One of them has odd length and, by induction, contains an odd cycle.
+
+The lemma contradicts the hypothesis. So every edge joins a red vertex to a blue vertex. $\blacksquare$

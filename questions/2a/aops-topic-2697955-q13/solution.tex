@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2697955_1_year_anniversary_post_d
+% Stable identity: aops-topic-2697955-q13
+The arc length $8\cdot\dfrac{225}{360}\cdot2\pi=10\pi$ becomes the circumference of the base, so the base radius is $5$. The slant height is $8$, so the height is $\sqrt{64-25}=\sqrt{39}$. The volume is $\dfrac13\pi\cdot25\cdot\sqrt{39}=\boxed{\dfrac{25\sqrt{39}}{3}\pi}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+real r=5,h=sqrt(39);
+draw(xscale(r)*yscale(1.2)*arc((0,0),1,180,360),linewidth(0.8));draw(xscale(r)*yscale(1.2)*arc((0,0),1,0,180),dashed);
+draw((-r,0)--(0,h)--(r,0),linewidth(0.8));draw((0,0)--(0,h),dashed);draw((0,0)--(r,0),dashed);
+label("$5$",(r/2,0),N,fontsize(8pt));label("$8$",(r/2,h/2),NE,fontsize(8pt));label("$\sqrt{39}$",(0,0.4*h),W,fontsize(8pt));
+\end{asy}

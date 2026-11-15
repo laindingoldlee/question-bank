@@ -1,0 +1,7 @@
+Write $y=ax^2+bx+c$. Passing through $(0,10)$ gives $c=10$. The other point gives $484a+22b=-2$, and the initial slope gives $44a+b=-1$. Solving yields $a=-\dfrac{5}{121},b=\dfrac{9}{11}$. Therefore $\boxed{y=-\dfrac{5}{121}x^2+\dfrac{9}{11}x+10}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+path q;for(int i=0;i<=50;++i){real x=22*i/50;pair P=(x,-5*x*x/121+9*x/11+10);if(i==0)q=P;else q=q--P;}draw(q);dot((22,8));dot((0,10));label("release $(22,8)$",(22,8),(1,0));label("basket $(0,10)$",(0,10),(-1,0));draw((22,8)--(18,12),dashed);
+\end{asy}

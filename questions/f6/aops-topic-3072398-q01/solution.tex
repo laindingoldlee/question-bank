@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3072398_math_question_help_past_world_think_cup_grade_8_question_21
+% Stable identity: aops-topic-3072398-q01
+A finite exhaustive check of $a=2,3,\ldots,3335$ gives the first success $a=3335$, with $9997a=33339995$, whose digits are all odd. The digit sum of $a$ is $3+3+3+5=\boxed{14}$. The following exact certificate proves minimality by testing every smaller admissible positive integer.
+\begin{verbatim}
+def odd_digits(n):return all(int(c)%2==1 for c in str(n))
+assert all(not odd_digits(9997*a) for a in range(2,3335))
+assert 9997*3335==33339995 and odd_digits(9997*3335)
+assert sum(map(int,str(3335)))==14
+\end{verbatim}

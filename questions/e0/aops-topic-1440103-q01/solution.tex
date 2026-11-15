@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1440103_triangle_fae
+% Stable identity: aops-topic-1440103-q01
+Scale so that $AD=\sqrt3$. Since $\angle B=45^\circ$ and $\angle C=60^\circ$, $BD=\sqrt3$ and $DC=1$, so $AB=\sqrt6$, $AC=2$, $BC=\sqrt3+1$ and
+\[
+[ABC]=\dfrac{1}{2}(\sqrt3+1)\sqrt3=\dfrac{3+\sqrt3}{2}.
+\]
+\emph{Triangle $EAB$.} The similarity $E\leftrightarrow A$, $A\leftrightarrow B$, $B\leftrightarrow D$ gives $\angle EAB=\angle ABD=45^\circ$ and $\angle EBA=\angle ADB=90^\circ$, so $EAB$ is an isosceles right triangle with $EB=AB=\sqrt6$ and $AE=\sqrt{12}=2\sqrt3$.
+
+\emph{Triangle $FCA$.} The similarity $F\leftrightarrow C$, $C\leftrightarrow A$, $A\leftrightarrow D$ gives $\angle FCA=\angle CAD=30^\circ$ and $\angle FAC=90^\circ$, so $AF=AC\tan30^\circ=\dfrac{2}{\sqrt3}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+real t=sqrt(3);
+pair A=(0,t),B=(-t,0),C=(1,0),D=(0,0),Ee=(-2t,t),F=(1,t+1/t);
+fill(F--A--Ee--cycle,palegreen);
+draw(Ee--A--F,linewidth(0.9)+deepgreen); draw(Ee--F,deepgreen+dashed);
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--D,gray+dashed);
+draw(Ee--B,blue); draw(F--C,red);
+draw(ra(D,C-D,A-D)); draw(ra(B,A-B,Ee-B)); draw(ra(A,C-A,F-A));
+dot(A);dot(B);dot(C);dot(D);dot(Ee);dot(F);
+label("$A$",A+(-0.28,0.22)); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S); label("$E$",Ee,W); label("$F$",F,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The angle $\angle EAF$, measured through the triangle, is $\angle EAB+\angle BAC+\angle CAF=45^\circ+75^\circ+90^\circ=210^\circ$, so the angle of triangle $FAE$ at $A$ is $150^\circ$, with sine $\dfrac{1}{2}$. Thus
+\[
+[FAE]=\dfrac{1}{2}\cdot2\sqrt3\cdot\dfrac{2}{\sqrt3}\cdot\dfrac{1}{2}=1,\qquad \dfrac{[FAE]}{[ABC]}=\dfrac{2}{3+\sqrt3}=\dfrac{3-\sqrt3}{3}.
+\]
+The answer is $\boxed{\textbf{(B)}\ \dfrac{3-\sqrt3}{3}}$.

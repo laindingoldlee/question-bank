@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3163975_2014_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3163975-q08
+Decompose the outside parallel layer by its nearest point on the convex prism. Nearest points in face interiors give outward prisms of total volume equal to the surface area, $9+\dfrac{9\sqrt3}{2}$. For an edge of length $L$ and exterior dihedral angle $\theta$, the edge region is a cylindrical sector of radius $1$ and volume $\dfrac{L\theta}{2}$. The six horizontal edges have total length $18$ and exterior angle $\dfrac{\pi}{2}$, contributing $\dfrac{9\pi}{2}$. The three vertical edges have total length $3$ and exterior angle $\dfrac{2\pi}{3}$, contributing $\pi$. Finally, the vertex regions are spherical sectors whose outward normal directions partition the unit sphere, so their total volume is $\dfrac{4\pi}{3}$. The desired volume is therefore $\boxed{9+\dfrac{9\sqrt3}{2}+\dfrac{41\pi}{6}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),Bp=(3,0),C=(1.5,1.5),v=(.5,1);draw(A--Bp--C--cycle);draw((A+v)--(Bp+v)--(C+v)--cycle);draw(A--(A+v));draw(Bp--(Bp+v));draw(C--(C+v));label("$3$",(A+Bp)/2,S);label("height $1$",Bp+v/2,E);label("prism (schematic)",(1.5,-.7));
+\end{asy}

@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2727563_some_problems_that_i_made
+% Stable identity: aops-topic-2727563-q07
+With edges $a,b,c$: $4(a+b+c)=40$ and $2(ab+bc+ca)=64$. The space diagonal is the sphere's diameter:
+\[a^2+b^2+c^2=(a+b+c)^2-2(ab+bc+ca)=100-64=36,\]
+so the diameter is $6$ and the radius $3$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real a=2,b=1.6,c=1.1;pair d=(0.7,0.5);
+pair[] F={(0,0),(a,0),(a,c),(0,c)};draw(F[0]--F[1]--F[2]--F[3]--cycle);draw(F[1]--F[1]+d--F[2]+d--F[3]+d--F[3]);draw(F[2]--F[2]+d);draw(F[0]--F[0]+d--F[1]+d,dashed);draw(F[0]+d--F[3]+d,dashed);
+draw(F[0]--F[2]+d,red);pair M=(F[0]+F[2]+d)/2;draw(circle(M,abs(F[2]+d-F[0])/2));dot(M);label("$6$",M,SE,red);
+\end{asy}
+
+The volume is $\dfrac43\pi\cdot27=\boxed{36\pi}$.

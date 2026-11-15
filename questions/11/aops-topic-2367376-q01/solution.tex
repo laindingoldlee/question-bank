@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2367376_why_does_this_happen
+% Stable identity: aops-topic-2367376-q01
+\textbf{(a)} We use induction on $n$. For $n=1$ every numerator is $\dbinom{k-1}{0}=1$, and $S_1=\dfrac12+\dfrac14+\cdots=1=2^0$.
+
+For the step, the hockey-stick identity gives, for every $k\ge1$,
+\[\dbinom{n-1+k}{n}=\sum_{j=1}^{k}\dbinom{n-2+j}{n-1}\]
+(the sum of $\dbinom{m}{n-1}$ for $m=n-1,\dots,n-2+k$). Hence, since all terms are nonnegative, we may change the order of summation:
+\[S_{n+1}=\sum_{k=1}^{\infty}\dfrac{1}{2^k}\sum_{j=1}^{k}\dbinom{n-2+j}{n-1}=\sum_{j=1}^{\infty}\dbinom{n-2+j}{n-1}\sum_{k=j}^{\infty}\dfrac{1}{2^k}=\sum_{j=1}^{\infty}\dbinom{n-2+j}{n-1}\cdot\dfrac{2}{2^j}=2S_n.\]
+So if $S_n=2^{n-1}$, then $S_{n+1}=2^n$, which completes the induction: $\boxed{S_n=2^{n-1}}$. $\blacksquare$
+
+\textbf{(b)} For a fixed $n$, the numerator $\dbinom{n-2+k}{n-1}=\dfrac{(k)(k+1)\cdots(k+n-2)}{(n-1)!}$ is a polynomial in $k$ of degree $n-1$, while the denominator $2^k$ grows exponentially. The ratio of consecutive terms is
+\[\dfrac{\dbinom{n-1+k}{n-1}}{\dbinom{n-2+k}{n-1}}\cdot\dfrac12=\dfrac{n-1+k}{k}\cdot\dfrac12\ \longrightarrow\ \dfrac12\quad(k\to\infty),\]
+so from some point on each term is less than, say, $\dfrac34$ of the previous one, and the tail is dominated by a convergent geometric series. A larger $n$ makes the numerators grow faster, but always only polynomially, and every polynomial is eventually overtaken by $2^k$; the sums grow with $n$ (they are $2^{n-1}$), but each one is finite. A series of this kind would diverge only if its numerators grew at least as fast as $2^k$, which no fixed polynomial does.

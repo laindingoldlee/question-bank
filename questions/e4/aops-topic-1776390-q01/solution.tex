@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1776390_find_coefficient
+% Stable identity: aops-topic-1776390-q01
+\textbf{1.} Replacing $x$ by $ax$ multiplies each $a^kx$ by $a$: $f(ax)=\left(1+a^2x\right)\left(1+a^3x\right)\cdots\left(1+a^{n+1}x\right)$. Hence
+\[
+(1+ax)f(ax)=(1+ax)\left(1+a^2x\right)\cdots\left(1+a^nx\right)\left(1+a^{n+1}x\right)=\left(1+a^{n+1}x\right)f(x).
+\]
+\textbf{2.} Put $A_0=1$. The coefficient of $x^i$ ($1\le i\le n$) on the left is $a^iA_i+a\cdot a^{i-1}A_{i-1}=a^iA_i+a^iA_{i-1}$, and on the right it is $A_i+a^{n+1}A_{i-1}$. So
+\[
+(a^i-1)A_i=\left(a^{n+1}-a^i\right)A_{i-1},\qquad A_i=a^i\cdot\dfrac{a^{n-i+1}-1}{a^i-1}\,A_{i-1},
+\]
+which is allowed since $a^i\ne1$. Multiplying these relations for $1,2,\dots,i$ and using $1+2+\cdots+i=\dfrac{i(i+1)}{2}$,
+\[
+\boxed{A_i=a^{\dfrac{i(i+1)}{2}}\prod_{j=1}^{i}\dfrac{a^{n-j+1}-1}{a^{j}-1}=a^{\dfrac{i(i+1)}{2}}\cdot\dfrac{(a^n-1)(a^{n-1}-1)\cdots(a^{n-i+1}-1)}{(a-1)(a^2-1)\cdots(a^i-1)}}.
+\]
+For example, $A_1=a\cdot\dfrac{a^n-1}{a-1}=a+a^2+\cdots+a^n$, as it should be, and $A_n=a^{\dfrac{n(n+1)}{2}}=a\cdot a^2\cdots a^n$.

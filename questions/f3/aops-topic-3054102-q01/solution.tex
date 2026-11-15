@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3054102_goofy_ahh
+% Stable identity: aops-topic-3054102-q01
+Call the crease endpoints $ U=(\dfrac{\sqrt3}{3},0)$ and $ V=(\dfrac{2\sqrt3}{3},1)$, and the upper-left corner $ W=(0,1)$. The crease passes through the centre, so each half has area $\dfrac{A}{2}$. Its angle is $ 60^\circ $. Reflection of the lower-right corner across it is $ W $, and reflection of the upper-right corner is $(\dfrac{\sqrt3}{2},\dfrac{3}{2})$, by the reflection matrix $\begin{pmatrix}-\dfrac{1}{2}&\dfrac{\sqrt3}{2}\\\dfrac{\sqrt3}{2}&\dfrac{1}{2}\end{pmatrix}$ about $ U $. Thus the overlap is triangle $ UVW $, whose area is $\dfrac{\sqrt3}{3}$. Therefore $ B=A-\dfrac{\sqrt3}{3}=\dfrac{2\sqrt3}{3}$ and $\boxed{\dfrac{B}{A}=\dfrac{2}{3}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real s=sqrt(3);pair U=(s/3,0),V=(2*s/3,1),PtW=(0,1),Z=(s/2,1.5);draw((0,0)--(s,0)--(s,1)--PtW--cycle,dashed);filldraw((0,0)--U--V--PtW--cycle,lightgray);filldraw(U--PtW--Z--V--cycle,lightblue+opacity(.5));draw(U--V,blue);label("$U$",U,S);label("$V$",V,E);label("$W$",PtW,W);label("reflected corner",Z,N);
+\end{asy}

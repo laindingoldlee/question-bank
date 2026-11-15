@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1554930_geometry
+% Stable identity: aops-topic-1554930-q01
+Let the side of the triangle be $s$ and let $AE=BD=t$ (so $t>s$). Then $BE=s+t$. Mark $F$ on ray $BD$ with $BF=s+t$ (dashed lines below).
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real t=1.6; pair B=(0,0),C=(1,0),A=(0.5,sqrt(3)/2),D=(t,0),E=A+t*unit(A-B),F=(1+t,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--D,linewidth(0.9));draw(A--E,linewidth(0.9));
+draw(C--E,blue+linewidth(0.9));draw(D--E,blue+linewidth(0.9));
+draw(D--F,dashed);draw(E--F,dashed);
+dot(A);dot(B);dot(C);dot(D);dot(E);dot(F);
+label("$A$",A,W);label("$B$",B,SW);label("$C$",C,S);label("$D$",D,S);label("$E$",E,N);label("$F$",F,SE);
+label("$a$",C+0.55*(E-C),W,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Triangle $BEF$ is equilateral}, since $BE=BF$ and $\angle EBF=60^\circ$. So $EF=s+t$ and $\angle EFB=60^\circ$.
+
+\textbf{Compare triangles $EBC$ and $EFD$.} We have $EB=EF=s+t$, $\angle EBC=\angle EFD=60^\circ$, and
+\[
+BC=s,\qquad FD=BF-BD=(s+t)-t=s .
+\]
+So the triangles are congruent (SAS), and $ED=EC$. Hence
+\[
+DE=\boxed{a}.
+\]

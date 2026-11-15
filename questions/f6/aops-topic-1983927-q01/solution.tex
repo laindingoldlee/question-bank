@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1983927_100th_post
+% Stable identity: aops-topic-1983927-q01
+Classify by the first number, which is $1$, $12$, $123$ or longer.
+
+\textbf{First number $1234$ or longer: impossible.} If it is $1234$, the rest (made from $5,6,7,8,9$) must equal $-1134$. If every number in the rest has at most $3$ digits, the rest has absolute value at most $56+789=845<1134$. If one has $4$ digits, the rest is $\pm5678\pm9$ or $\pm5\pm6789$, none of which is $-1134$; and $\pm56789\ne-1134$. If the first number is $12345$, the rest (from $6,7,8,9$) has absolute value at most $6789<12245$; longer first numbers are even larger. The other cases give:
+\begin{itemize}
+\item First number $123$ (the rest, from $4,\dots,9$, equals $-23$): $123+4-5+67-89$, $123+45-67+8-9$, $123-4-5-6-7+8-9$, $123-45-67+89$.
+\item First number $12$ (the rest, from $3,\dots,9$, equals $88$): $12+3+4+5-6-7+89$, $12+3-4+5+67+8+9$, $12-3-4+5-6+7+89$.
+\item First number $1$ (the rest, from $2,\dots,9$, equals $99$): $1+2+3-4+5+6+78+9$, $1+2+34-5+67-8+9$, $1+23-4+5+6+78-9$, $1+23-4+56+7+8+9$.
+\end{itemize}
+A useful restriction when searching: modulo $9$, a joined number is congruent to its digit sum, so the value is $45-2s\pmod 9$ where $s$ is the sum of the digits in the subtracted numbers; $100\equiv1\pmod9$ forces $s\equiv4\pmod9$. An exhaustive check of all $3^8=6561$ placements confirms that the list is complete. There are $\boxed{11}$ ways.

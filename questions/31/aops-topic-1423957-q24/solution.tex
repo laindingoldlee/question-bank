@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1423957_question
+% Stable identity: aops-topic-1423957-q24
+\textbf{Where the $n$th iteration ends.} The $k$th iteration covers $(k+3)+k=2k+3$ consecutive natural numbers ($k+3$ listed, then $k$ skipped). So the first $n$ iterations cover
+\[
+\sum_{k=1}^{n}(2k+3)=n(n+1)+3n=n^2+4n=(n+2)^2-4
+\]
+numbers, and since they start at $1$, the $n$th iteration ends exactly at $(n+2)^2-4$. (Check: the first iteration ends at $5$, after listing $1$ to $4$ and skipping $5$; the second ends at $12$.)
+
+\textbf{How many numbers are listed.} After $n$ iterations the sequence has
+\[
+\sum_{k=1}^{n}(k+3)=\dfrac{n(n+1)}{2}+3n=\dfrac{n(n+7)}{2}
+\]
+terms. For $n=996$ this is $\dfrac{996\cdot1003}{2}=499{,}494$, and for $n=997$ it is $500{,}491\ge500{,}000$. So the $500{,}000$th term is listed in iteration $997$; it is the $500{,}000-499{,}494=506$th number listed there.
+
+\textbf{The term.} Iteration $996$ ends at $998^2-4=996{,}000$, so iteration $997$ lists $996{,}001,996{,}002,\dots$, and its $506$th number is
+\[
+996{,}000+506=\boxed{\textbf{(A)}\ 996{,}506}.
+\]

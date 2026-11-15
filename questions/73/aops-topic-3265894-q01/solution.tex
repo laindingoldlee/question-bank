@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3265894_why_is_the_semiperimeter_so_common
+% Stable identity: aops-topic-3265894-q01
+Let tangent lengths from the three vertices be $u,v,w$, with $u$ opposite $a$. Then $a=v+w,b=u+w,c=u+v$, so $s=u+v+w$ and $u=s-a$. Joining the incenter to the vertices partitions the triangle into triangles with bases $a,b,c$ and altitude $r$. Thus $K=\dfrac{r(a+b+c)}{2}=rs$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(1,4),B=(0,0),C=(5,0);real a=abs(B-C),b=abs(A-C),c=abs(A-B);pair I=(a*A+b*B+c*C)/(a+b+c);draw(A--B--C--cycle);draw(A--I--B^^C--I,dashed);draw(circle(I,I.y),blue);draw(I--(I.x,0));label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$a$",(B+C)/2,S);label("$b$",(A+C)/2,E);label("$c$",(A+B)/2,W);label("$I$",I,W);label("$r$",(I+(I.x,0))/2,E);
+\end{asy}

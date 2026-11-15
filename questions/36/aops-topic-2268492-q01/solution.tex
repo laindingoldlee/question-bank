@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2268492_need_some_help_on_geometry
+% Stable identity: aops-topic-2268492-q01
+Each decagon has $10$ sides. The common side $PQ$ lies inside the combined figure, so it is not part of the outline; every other side of the two decagons is. That leaves $10+10-2=18$ segments on the outline.
+
+These $18$ segments are $18$ different sides only if no two neighbouring segments lie on one straight line. Inside each decagon the angles are $\dfrac{(10-2)\cdot180^\circ}{10}=144^\circ$. At $P$ (and likewise at $Q$) the outline turns through the two decagon angles together, $144^\circ+144^\circ=288^\circ$, which is not $180^\circ$; so the two outline segments at $P$ do not form a straight line, and $P$ and $Q$ remain corners. (Also $288^\circ<360^\circ$, so the decagons do not overlap.) All other corners are corners of one decagon.
+
+Hence the outline is a (non-convex) polygon with $\boxed{18}$ sides.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+real R=1/(2*Sin(18)), a=1/(2*Tan(18));
+pair L=(-a,0), Rr=(a,0);
+guide gl, gr;
+for(int k=0;k<10;++k){ gl=gl--(L+R*dir(18+36k)); gr=gr--(Rr+R*dir(198+36k)); }
+gl=gl--cycle; gr=gr--cycle;
+fill(gl,paleblue); fill(gr,paleyellow);
+draw(gl,linewidth(0.9)); draw(gr,linewidth(0.9));
+pair P=(0,-0.5), Q=(0,0.5);
+draw(P--Q,white+linewidth(1.6)); draw(P--Q,red+dashed+linewidth(1));
+dot(P); dot(Q); label("$P$",P,S); label("$Q$",Q+(0,0.3));
+draw(arc(Q,0.22,126,270),blue); draw(arc(Q,0.27,-90,54),blue);
+label("$144^\circ$",Q+0.5*dir(200),blue+fontsize(8pt)); label("$144^\circ$",Q+0.5*dir(-20),blue+fontsize(8pt));
+\end{asy}
+
+Remark: the angle check matters. Two squares sharing a side form a rectangle with $4$ sides, not $4+4-2=6$, because $90^\circ+90^\circ=180^\circ$.

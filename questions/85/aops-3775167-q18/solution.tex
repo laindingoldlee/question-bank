@@ -1,0 +1,9 @@
+Put $K=(0,0),A=(-u,0),C=(u,0),B=(v,h)$, where $u,h>0$. Then $uh=20\sqrt3$, $v^2+h^2=25$, and $(v+u)^2+h^2=64$. Thus $v=\dfrac{39-u^2}{2u}$ and $h^2=\dfrac{1200}{u^2}$. Substitution yields $u^4-178u^2+6321=0$, or $(u^2-49)(u^2-129)=0$. The condition $8 > \dfrac{A C}{2} = u$ selects $u=7$. Therefore $\boxed{AC=14}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(-7,0),(-5/7,20sqrt(3)/7),(7,0)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));draw(p[1]--(0,0));label("$K$",(0,0),(0,-1));
+\end{asy}
+

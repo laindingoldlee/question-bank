@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2516818_purple_comet_2014_question_20
+% Stable identity: aops-topic-2516818-q01
+\textbf{Effect of one gluing.} Gluing a cube of side $t$ face-to-face onto the centre of a larger face covers a $t\times t$ square of that face and the glued face of the small cube, and exposes the other $5$ faces of the small cube. So the surface area changes by
+\[5t^2-t^2=4t^2,\]
+as long as the new cube touches nothing else.
+
+\textbf{No other contacts.} Put the big cube at $[0,8]^3$. The side-$4$ cube on its top face is $[2,6]\times[2,6]\times[8,12]$. The side-$2$ cubes on its four vertical faces, such as $[3,5]\times[0,2]\times[9,11]$, lie at heights $9\le z\le11$, and the one on its top is $[3,5]\times[3,5]\times[12,14]$. So everything glued over the top face lies in the block $0\le x,y\le8$, $z\ge8$, and touches the big cube only along the glued $4\times4$ square. By symmetry the same holds for each of the six faces. The blocks over different faces meet only along edges of the big cube, and no small cube reaches an edge, so cubes glued over different faces never touch.
+
+\textbf{Total.} The big cube has area $6\cdot8^2=384$. There are $6$ side-$4$ cubes, each adding $4\cdot4^2=64$, and each has $5$ exposed faces, so there are $30$ side-$2$ cubes, each adding $4\cdot2^2=16$:
+\[384+6\cdot64+30\cdot16=384+384+480=\boxed{1248}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+void sq(real x0,real y0,real t,pen p){fill(box((x0,y0),(x0+t,y0+t)),p); draw(box((x0,y0),(x0+t,y0+t)),linewidth(0.7));}
+pen p8=rgb(0.85,0.9,1), p4=rgb(1,0.88,0.8), p2=rgb(0.85,1,0.85);
+// front view: big cube [0,8]^2; 4-cubes on the left, right, top, bottom and front faces; 2-cubes on their outer and side faces
+sq(0,0,8,p8);
+sq(2,8,4,p4); sq(2,-4,4,p4); sq(-4,2,4,p4); sq(8,2,4,p4);
+sq(3,12,2,p2); sq(0,9,2,p2); sq(6,9,2,p2);
+sq(3,-6,2,p2); sq(0,-3,2,p2); sq(6,-3,2,p2);
+sq(-6,3,2,p2); sq(-3,0,2,p2); sq(-3,6,2,p2);
+sq(12,3,2,p2); sq(9,0,2,p2); sq(9,6,2,p2);
+sq(2,2,4,p4); sq(3,3,2,p2);
+sq(0,3,2,p2); sq(6,3,2,p2); sq(3,0,2,p2); sq(3,6,2,p2);
+sq(3,9,2,p2); sq(3,-3,2,p2); sq(-3,3,2,p2); sq(9,3,2,p2);
+label("$8$",(1,1),fontsize(8pt)); label("$4$",(4,2),N,fontsize(8pt)); label("$2$",(4,3),N,fontsize(7pt));
+\end{asy}
+
+The sketch is the front view of the object: the big square is the cube of side $8$, the side-$4$ cubes on its left, right, top and bottom faces stick out, and the side-$4$ cube on the front face appears in the middle, with its five side-$2$ cubes (one in front, four around it). The cubes on the back face are hidden.

@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1227472_isosceles_circumradius
+% Stable identity: aops-topic-1227472-q01
+The altitude from $A$ bisects $BC$, so it has length $\sqrt{25-16}=3$ and the area is $\dfrac{1}{2}\cdot8\cdot3=12$. Then
+\[R=\dfrac{abc}{4K}=\dfrac{5\cdot5\cdot8}{48}=\boxed{\dfrac{25}{6}}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair B=(-4,0),C=(4,0),A=(0,3),O=(0,3-25/6);
+draw(A--B--C--cycle,linewidth(1)); draw(circle(O,25/6),blue); draw(A--(0,0),dashed); dot(O);
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,E);label("$O$",O,S);label("$3$",(0,1.5),E);label("$5$",(A+B)/2,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Check: the centre $O$ is on the altitude at distance $R$ from $A$; it lies $\dfrac{25}{6}-3=\dfrac{7}{6}$ below $BC$, and $4^2+\left(\dfrac{7}{6}\right)^2=\dfrac{625}{36}=R^2$.)

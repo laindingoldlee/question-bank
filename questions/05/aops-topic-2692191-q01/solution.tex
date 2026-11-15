@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2692191_exponent_and_logarithm
+% Stable identity: aops-topic-2692191-q01
+Let $f(x)=a^x$, so $\log_ax=f^{-1}(x)$, and let $k=\ln a\ne0$. Then $f'(x)=ka^x$ and $\dfrac{d}{dx}\log_ax=\dfrac{1}{kx}$.
+
+Suppose the graphs are tangent at $(p,q)$. Then $q=a^p$ and $q=\log_ap$, i.e. $p=a^q$; and equal slopes give $kq=\dfrac{1}{kp}$, i.e.
+\[k^2pq=1.\qquad(\ast)\]
+
+\emph{Case $p=q$.} Then $a^p=p$ and $(kp)^2=1$.
+\begin{itemize}
+\item $kp=1$: $p=a^p=e^{kp}=e$, so $k=\dfrac1e$ and $a=e^{\dfrac1e}=\sqrt[e]{e}$ (tangent at $(e,e)$, common slope $1$).
+\item $kp=-1$: $p=e^{-1}$, so $k=-e$ and $a=e^{-e}$ (tangent at $\left(\dfrac1e,\dfrac1e\right)$, common slope $-1$).
+\end{itemize}
+In both cases the slopes $kq=kp$ and $\dfrac{1}{kp}$ are indeed equal, so these values work.
+
+\emph{Case $p\ne q$.} Then $f$ swaps $p$ and $q$. If $a>1$, $f$ is increasing, and $p<q$ would give $q=f(p)<f(q)=p$; similarly $p>q$ is impossible. So $0<a<1$, $k<0$, and $p,q\in(0,1)$ (values of $a^x$ at positive $x$). Taking logarithms of $q=a^p$ and $p=a^q$ gives $kp=\ln q$ and $kq=\ln p$. Then $(\ast)$ becomes $(\ln p)(\ln q)=1$, and $k=\dfrac{\ln q}{p}=\dfrac{\ln p}{q}$ gives $p\ln p=q\ln q$. Put $s=-\ln p>0$, $t=-\ln q>0$: then $st=1$ and $se^{-s}=te^{-t}$. Substituting $t=\dfrac1s$,
+\[se^{-s}=\dfrac1se^{-\dfrac1s}\iff2\ln s=s-\dfrac1s.\]
+Let $\varphi(s)=s-\dfrac1s-2\ln s$. Then $\varphi'(s)=1+\dfrac1{s^2}-\dfrac2s=\left(1-\dfrac1s\right)^2\ge0$, with equality only at $s=1$, so $\varphi$ is strictly increasing and its only zero is $s=1$. Then $t=1=s$ and $p=q$, a contradiction.
+
+Hence the graphs are tangent for exactly two values, $\boxed{a=\sqrt[e]{e}\ \text{and}\ a=e^{-e}}$. The claim is \textbf{false} as stated: it misses $a=e^{-e}\approx0.066$ (it is correct if one only considers $a>1$).

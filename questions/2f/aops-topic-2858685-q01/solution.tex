@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2858685_common_chord_bisects_common_external_tangent
+% Stable identity: aops-topic-2858685-q01
+\textbf{Power of a point.} Let line $PQ$ meet line $T_1T_2$ at $M'$ (it does, since the common chord is not parallel to a common tangent unless the circles are congruent, a case handled by symmetry below). The power of $M'$ with respect to the first circle is $M'T_1^2=M'P\cdot M'Q$, and with respect to the second circle it is $M'T_2^2=M'P\cdot M'Q$.
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O1=(0,0),O2=(3,-0.3);real r1=1.5,r2=2.2;
+path c1=circle(O1,r1),c2=circle(O2,r2);draw(c1);draw(c2);
+pair[] X=intersectionpoints(c1,c2);pair P=X[0],Q=X[1];if(P.y<Q.y){pair t=P;P=Q;Q=t;}
+pair d=O2-O1;real D=abs(d);real phi=degrees(acos((r2-r1)/D));
+pair n1=rotate(phi)*unit(d),n2=rotate(-phi)*unit(d);pair n=((O1-r1*n1).y>(O1-r1*n2).y)?n1:n2;
+pair T1=O1-r1*n,T2=O2-r2*n;pair M=(T1+T2)/2;
+draw(interp(T1,T2,-0.2)--interp(T1,T2,1.2),linewidth(1));draw(interp(Q,M,-0.3)--interp(Q,M,1.25),dashed);
+dot(T1);dot(T2);dot(M);dot(P);dot(Q);
+label("$T_1$",T1,NW);label("$T_2$",T2,NE);label("$M$",M,N);label("$P$",P,E);label("$Q$",Q,W);
+\end{asy}
+
+So $M'T_1=M'T_2$, and $M'$ is the midpoint $M$ of $T_1T_2$. Hence $M$ lies on $PQ$. (If the circles are congruent, the configuration is symmetric in the perpendicular bisector of the centres, which is line $PQ$, and it passes through the midpoint of $T_1T_2$.) $\blacksquare$

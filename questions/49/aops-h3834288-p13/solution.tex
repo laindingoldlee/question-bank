@@ -1,0 +1,7 @@
+Center the cube at the origin, with faces at coordinate values $\pm2$. A closed path touching opposite faces in one coordinate has total variation at least eight in that coordinate; touching one face of another coordinate requires variation at least four. Four distinct faces either include one opposite pair and one face in each other direction, or two opposite pairs. The Euclidean length is at least the norm of the vector of coordinate variations, by the triangle inequality applied to absolute component increments. The bounds are respectively $\sqrt{8^2+4^2+4^2}=4\sqrt6$ and $\sqrt{8^2+8^2}=8\sqrt2$. The smaller bound is attained by the path $(0,0,0),(2,1,1),(0,2,2),(-2,1,1),(0,0,0)$, with four legs of length $\sqrt6$. Thus $\boxed{M^2=96}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair f(real x,real y,real z){return (x+.45*y,z+.3*y);}pair[] V;for(int x=-1;x<=1;x+=2)for(int y=-1;y<=1;y+=2)for(int z=-1;z<=1;z+=2)V.push(f(2*x,2*y,2*z));for(int i=0;i<8;++i)for(int j=i+1;j<8;++j)if((i^j)==1||(i^j)==2||(i^j)==4)draw(V[i]--V[j],gray);pair O=f(0,0,0),A=f(2,1,1),B=f(0,2,2),C=f(-2,1,1);draw(O--A--B--C--O,linewidth(1.2));label("$O$",O,(0,-1));label("$(2,1,1)$",A,(1,0));label("$(0,2,2)$",B,(0,1));label("$(-2,1,1)$",C,(-1,0));
+\end{asy}

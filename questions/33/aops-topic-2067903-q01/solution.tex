@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2067903_convex_quadrilateral
+% Stable identity: aops-topic-2067903-q01
+Let $x=[BOC]$ and $y=[AOD]$, where $[\cdot]$ denotes area.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), A=(-2,1.2), B=(1.4,1.5), C=(3,-1.8), D=(-3.1,-1.2);
+O=extension(A,C,B,D);
+fill(A--O--B--cycle,paleblue); fill(C--O--D--cycle,palegreen);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(A--C); draw(B--D);
+dot(A);dot(B);dot(C);dot(D);dot(O);
+label("$A$",A,NW); label("$B$",B,NE); label("$C$",C,SE); label("$D$",D,SW); label("$O$",O,dir(270)*1.2);
+label("$4$",(A+B+O)/3); label("$9$",(C+D+O)/3); label("$x$",(B+C+O)/3); label("$y$",(A+D+O)/3);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangles with the same height have areas in the ratio of their bases. Using the heights from $B$ and from $D$ to line $AC$,
+\[
+\dfrac{[AOB]}{[BOC]}=\dfrac{AO}{OC}=\dfrac{[AOD]}{[COD]},\qquad\text{so}\qquad \dfrac{4}{x}=\dfrac {y}{9},\quad xy=36 .
+\]
+Hence $[ABCD]=13+x+\dfrac{36}{x}$.
+
+(a) Every $x>0$ occurs: take $O$ as origin, put $A$ and $C$ on one line with $OA=4t$, $OC=9$, and $B$, $D$ on another line through $O$ at an angle $\theta$, with $OB=\dfrac{2}{t\sin\theta}$, $OD=\dfrac{2}{\sin\theta}$; then $[AOB]=\dfrac{1}{2}\cdot4t\cdot\dfrac{2}{t\sin\theta}\sin\theta=4$, $[COD]=\dfrac{1}{2}\cdot9\cdot\dfrac{2}{\sin\theta}\sin\theta=9$, and $x=[BOC]=\dfrac{9}{t}$ takes every positive value as $t$ varies. As $x\to\infty$ the area $13+x+\dfrac{36}{x}\to\infty$, so there is no maximum.
+
+(b) By AM--GM, $x+\dfrac{36}{x}\ge2\sqrt{36}=12$, with equality at $x=6$ (which occurs, e.g.\ for $t=\dfrac{3}{2}$, when $AB\parallel CD$). So the minimum area is $13+12=\boxed{25}$.

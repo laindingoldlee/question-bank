@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1260228_math_problem
+% Stable identity: aops-topic-1260228-q01
+The post is $\sqrt{4^2+3^2}=5$ feet from the origin, and the dog is at most $10$ feet from the post. By the triangle inequality its distance from the origin is at most $5+10=\boxed{15}$ feet, attained at the point of the circle on the ray from the origin through the post, $(12,9)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw((-7,0)--(15,0),Arrow); draw((0,-8)--(0,14),Arrow);
+draw(circle((4,3),10),blue); dot((0,0)); dot((4,3)); dot((12,9));
+draw((0,0)--(12,9),red); label("$O$",(0,0),SW); label("$(4,3)$",(4,3),SE); label("$(12,9)$",(12,9),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

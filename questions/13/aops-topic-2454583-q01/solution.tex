@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2454583_ostriches88s_400th_post_problems
+% Stable identity: aops-topic-2454583-q01
+\textbf{(a)} Yes. Take the $3$-$4$-$5$ right triangle, for which $3+4-5=2$, and scale it by $\dfrac12$: the triangle with legs $\dfrac32$, $2$ and hypotenuse $\dfrac52$ is a right triangle (since $\dfrac94+4=\dfrac{25}{4}$), and
+\[\dfrac32+2=\dfrac72=\dfrac52+1.\]
+More generally, scaling any right triangle by the factor $\dfrac{1}{A+B-C}$ (which is positive, by the triangle inequality) gives an example. Geometrically, $A+B-C$ is the diameter of the inscribed circle, so the examples are exactly the right triangles with inradius $\dfrac12$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair Cc=(0,0),Bv=(2,0),Av=(0,1.5);
+pair I=(0.5,0.5);
+draw(Av--Cc--Bv--cycle,linewidth(0.8));
+draw(circle(I,0.5),blue);
+draw(Cc+(0.15,0)--Cc+(0.15,0.15)--Cc+(0,0.15));
+draw(I--(0.5,0),dashed); draw(I--(0,0.5),dashed);
+dot(I);
+label("$A=\dfrac32$",(0,0.75),W,fontsize(8pt)); label("$B=2$",(1,0),S,fontsize(8pt)); label("$C=\dfrac52$",(1,0.75),NE,fontsize(8pt));
+label("$\dfrac12$",(0.5,0.25),E,blue+fontsize(7pt));
+\end{asy}
+
+\textbf{(b)} If $A^2+B^2=C^2$ with integers $A,B,C$, then
+\[(A+B)^2-C^2=2AB\]
+is even. So $(A+B)^2$ and $C^2$ have the same parity, hence $A+B$ and $C$ have the same parity, and $A+B-C$ is even. It cannot equal $1$. $\blacksquare$

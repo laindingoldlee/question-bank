@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2164907_algebra_problems
+% Stable identity: aops-topic-2164907-q01
+Points of the line are $P=R+t(S-R)=(3+5t,\ 5-8t)$ for real $t$, and then $PR=|t|\cdot RS$ and $PS=|1-t|\cdot RS$. We need $|t|=3|1-t|$.
+\begin{itemize}
+\item $t=3(1-t)$ gives $t=\dfrac{3}{4}$, the point $P_1=\left(3+\dfrac{15}{4},\ 5-6\right)=\left(\dfrac{27}{4},-1\right)$ between $R$ and $S$.
+\item $t=-3(1-t)$ gives $t=\dfrac{3}{2}$, the point $P_2=\left(3+\dfrac{15}{2},\ 5-12\right)=\left(\dfrac{21}{2},-7\right)$ beyond $S$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair R=(3,5),Sp=(8,-3),P1=(27/4,-1),P2=(21/2,-7);
+draw(R+0.25*(R-Sp)--P2+0.15*(P2-R),gray);
+dot(R);dot(Sp);dot(P1,red);dot(P2,red);
+label("$R(3,5)$",R,E);label("$S(8,-3)$",Sp,E);label("$P_1\left(\dfrac{27}{4},-1\right)$",P1,W,red+fontsize(9pt));label("$P_2\left(\dfrac{21}{2},-7\right)$",P2,W,red+fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the points are $\boxed{\left(\dfrac{27}{4},-1\right)\text{ and }\left(\dfrac{21}{2},-7\right)}$.

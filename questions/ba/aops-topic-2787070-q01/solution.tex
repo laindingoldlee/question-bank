@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2787070_1997_manhattan_mathematical_olympiad_grade_6_problems_14
+% Stable identity: aops-topic-2787070-q01
+(a)Yes. Make two separated clusters, each consisting of four segments through one common point with distinct directions. Each segment meets exactly the other three in its cluster. (b)No. The intersection graph would have 7 vertices each of degree 3, giving odd degree sum 21, whereas every intersecting pair contributes 2.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int h=0;h<2;++h){pair C=(5*h,0);for(int k=0;k<4;++k)draw(C-dir(45*k)--C+dir(45*k));dot(C);label("cluster "+string(h+1),C+(0,-1.5));}
+\end{asy}

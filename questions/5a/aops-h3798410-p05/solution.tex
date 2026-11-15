@@ -1,0 +1,7 @@
+Each 100-metre row needs at least 50 bricks. A row with exactly 50 must use only length-two bricks, giving joints at every even position. Two such rows cannot be adjacent, so among seven rows at most four have 50 bricks and the other three have at least 51. This gives a lower bound $4\cdot50+3\cdot51=353$. Attain it by alternating all-length-two rows with rows having a length-one brick at each end and 49 length-two bricks in between; their joints are odd and do not align with those in neighbouring rows. Thus $\boxed{353}$ bricks suffice and are necessary.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int r=0;r<4;++r){draw(box((0,r),(10,r+1)));if(r%2==0){for(int x=2;x<10;x+=2)draw((x,r)--(x,r+1));}else{for(int x=1;x<10;x+=2)draw((x,r)--(x,r+1));}}label("Shortened illustration of alternating row patterns",(5,-.7));
+\end{asy}

@@ -1,0 +1,15 @@
+The cone's slant height is $\sqrt{600^2+(200\sqrt7)^2}=800$. Unrolling its lateral surface gives a sector whose full angle is $\dfrac{2\pi(600)}{800}=\dfrac{3\pi}{2}$. Opposite generators are separated by half this angle, $\dfrac{3\pi}{4}$.
+
+In the developed surface, the shortest path between the endpoints is their straight chord. Its length $d$ satisfies
+\[
+d^2=125^2+(375\sqrt2)^2
+-2(125)(375\sqrt2)\cos\dfrac{3\pi}{4}
+=390625.
+\]
+Thus $\boxed{d=625}$. The chord stays within the $135^\circ$ wedge and within radius $800$, so it is a valid surface path. The two directions around the cone give reflected paths of the same length. Any extra winding must pass through an angular separation of at least $\pi$; that portion is at least the sum of its endpoint radii, so such a path is no shorter than the route through the vertex. That route has the larger length $125+375\sqrt2$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0),P=125dir(0),Q=375sqrt(2)*dir(135);draw(O--800dir(0));draw(arc(O,800,0,135));draw(800dir(135)--O);draw(P--Q,blue+1bp);dot(P);dot(Q);label("$V$",O,SW);label("$P$",P,SE);label("$Q$",Q,NW);label("$135^\circ$",80dir(65));label("$125$",(65,-60),S);label("$375\sqrt2$",250dir(135),SW);label("Developed half-surface",(150,880));
+\end{asy}

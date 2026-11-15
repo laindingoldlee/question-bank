@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1529552_mathcounts_problem_confusion
+% Stable identity: aops-topic-1529552-q01
+Place $B=(0,0)$, $A=(0,8)$, $C=(6,0)$, $D=(6,3)$, $E=(2,3)$ and $F=(2,8)$. The hexagon is the union of the rectangle $0\le x\le2$, $0\le y\le8$ and the rectangle $0\le x\le6$, $0\le y\le3$.
+
+The segment $AC$ is $y=8-\dfrac{4}{3}x$ for $0\le x\le6$. It leaves the hexagon where it crosses $EF$ ($x=2$) at $P=\left(2,\dfrac{16}{3}\right)$, and re-enters where it crosses $DE$ ($y=3$) at $Q=\left(\dfrac{15}{4},3\right)$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,8),B=(0,0),C=(6,0),D=(6,3),E=(2,3),F=(2,8);
+pair P=(2,16/3),Q=(15/4,3);
+fill(A--B--C--D--E--F--cycle,gray(0.92));
+draw(A--B--C--D--E--F--cycle,linewidth(1));
+draw(A--P,blue+linewidth(1.2));draw(P--Q,red+dashed);draw(Q--C,blue+linewidth(1.2));
+dot(P);dot(Q);
+label("$A$",A,NW);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NE);label("$E$",E,SW);label("$F$",F,NE);
+label("$P$",P,E);label("$Q$",Q,1.5*dir(50));
+label("$8$",(A+B)/2,W);label("$6$",(B+C)/2,S);label("$3$",(C+D)/2,E);label("$4$",(5,3),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For $x\le2$ the segment is in the left rectangle, and for $y\le3$, i.e.\ $x\ge\dfrac{15}{4}$, it is in the bottom rectangle; between $P$ and $Q$ (dashed) it is outside, since there $x>2$ and $y>3$. Lengths along a segment are proportional to the change in $x$, so the fraction inside is
+\[
+\dfrac{2+\left(6-\dfrac{15}{4}\right)}{6}=\dfrac{2+\dfrac{9}{4}}{6}=\dfrac{\dfrac{17}{4}}{6}=\boxed{\dfrac{17}{24}}.
+\]

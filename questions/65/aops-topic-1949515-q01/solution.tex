@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1949515_probability_question
+% Stable identity: aops-topic-1949515-q01
+Choosing a unit cube uniformly at random and then a uniformly random one of its $6$ faces is the same as choosing one of the $216\cdot6=1296$ unit faces uniformly at random, because every unit face is equally likely: its probability is $\dfrac{1}{216}\cdot\dfrac{1}{6}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair dz=(0.42,0.32);
+int n=6;
+fill((0,0)--(n,0)--(n,n)--(0,n)--cycle,gray(0.85));
+fill((0,n)--(n,n)--(n,n)+n*dz--(0,n)+n*dz--cycle,gray(0.75));
+fill((n,0)--(n,0)+n*dz--(n,n)+n*dz--(n,n)--cycle,gray(0.65));
+for(int k=0;k<=n;++k){
+  draw((k,0)--(k,n),linewidth(0.4));draw((0,k)--(n,k),linewidth(0.4));
+  draw((k,n)--(k,n)+n*dz,linewidth(0.4));draw((0,n)+k*dz--(n,n)+k*dz,linewidth(0.4));
+  draw((n,k)--(n,k)+n*dz,linewidth(0.4));draw((n,0)+k*dz--(n,n)+k*dz,linewidth(0.4));
+}
+draw((0,0)--(n,0)--(n,0)+n*dz--(n,n)+n*dz--(0,n)+n*dz--(0,n)--cycle,linewidth(1));
+draw((0,n)--(n,n)--(n,0),linewidth(1));draw((n,n)--(n,n)+n*dz,linewidth(1));
+label("$6$",(n/2,0),S);label("$6$",(0,n/2),W);label("$6$",(n,0)+n*dz/2,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The painted unit faces are exactly the unit squares on the surface of the big cube: $6$ faces with $6\cdot6=36$ unit squares each, so $216$ painted unit faces. Hence the probability is
+\[
+\dfrac{216}{1296}=\boxed{\dfrac{1}{6}} .
+\]

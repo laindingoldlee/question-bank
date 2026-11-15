@@ -1,0 +1,43 @@
+% Source: https://artofproblemsolving.com/community/c3h1551136_diagonal
+% Stable identity: aops-topic-1551136-q01
+Write $(a,b)$ for $\gcd(a,b)$ and $(a,b,c)$ for $\gcd(a,b,c)$.
+
+\textbf{(a)} Put the rectangle in $[0,l]\times[0,w]$ and run along the diagonal $P(t)=(tl,tw)$ for $0<t<1$. The diagonal starts inside one square and enters a new square exactly at the values of $t$ at which it crosses a grid line, that is, at which $tl$ or $tw$ is an integer. (At a lattice point it crosses both kinds of grid line at once but still enters just one new square.) So the number of squares is $1$ plus the number of such values of $t$.
+\begin{itemize}
+\item $tl\in\mathbb Z$ for $t=\dfrac {i}{l}$, $i=1,\dots,l-1$: $l-1$ values;
+\item $tw\in\mathbb Z$ for $w-1$ values;
+\item both happen when $t$ is a multiple of $\dfrac{1}{(l,w)}$: $(l,w)-1$ values.
+\end{itemize}
+By inclusion--exclusion there are $(l-1)+(w-1)-((l,w)-1)$ crossing values, so the diagonal passes through
+\[
+\boxed{l+w-(l,w)}
+\]
+squares. For example, in a $6\times4$ rectangle it passes through $6+4-2=8$ squares; it goes through the lattice point $(3,2)$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+int L=6,Wd=4;
+for(int i=0;i<L;++i) for(int j=0;j<Wd;++j){
+  real x0=i,y0=j; real t0=max(x0/L,y0/Wd), t1=min((x0+1)/L,(y0+1)/Wd);
+  if(t1>t0+1e-9) fill(box((x0,y0),(x0+1,y0+1)),paleyellow);}
+for(int i=0;i<=L;++i) draw((i,0)--(i,Wd),gray(0.55));
+for(int j=0;j<=Wd;++j) draw((0,j)--(L,j),gray(0.55));
+draw(box((0,0),(L,Wd)),linewidth(0.9));
+draw((0,0)--(L,Wd),red+linewidth(1));
+dot((3,2),red);
+label("$6$",(L/2,0),S);label("$4$",(0,Wd/2),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+
+\textbf{(b)} In the same way the space diagonal $(tl,tw,td)$ enters a new cube exactly when at least one of $tl,tw,td$ is an integer, $0<t<1$. The number of $t$ with $tl$ and $tw$ both integers is $(l,w)-1$, and with all three integers it is $(l,w,d)-1$. Inclusion--exclusion gives
+\[
+(l-1)+(w-1)+(d-1)-((l,w)-1)-((w,d)-1)-((d,l)-1)+((l,w,d)-1)
+\]
+crossing values, so the number of cubes is $1$ more:
+\[
+\boxed{l+w+d-(l,w)-(w,d)-(d,l)+(l,w,d)}.
+\]
+For example, a $2\times3\times4$ box: $2+3+4-1-1-2+1=6$ cubes.

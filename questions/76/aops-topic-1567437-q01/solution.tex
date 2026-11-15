@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1567437_cdr_chapter_2017
+% Stable identity: aops-topic-1567437-q01
+The circle has centre $O=(0,0)$ and radius $5$. Let the tangent from $P=(10,0)$ touch the circle at $T$. A tangent is perpendicular to the radius at the point of tangency, so triangle $OTP$ has a right angle at $T$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),P=(10,0),T=(2.5,5*sqrt(3)/2),T2=(2.5,-5*sqrt(3)/2);
+draw(circle(O,5),linewidth(0.9));
+draw(P--T,blue+linewidth(1));draw(P--T2,blue+dashed);
+draw(O--T,linewidth(0.8));draw(O--P,linewidth(0.8));
+pair u=unit(O-T),v=unit(P-T);real q=0.6;draw(T+q*u--T+q*(u+v)--T+q*v);
+dot(O);dot(P);dot(T);
+label("$O$",O,SW);label("$P(10,0)$",P,E);label("$T$",T,N);
+label("$5$",(O+T)/2,NW);label("$10$",(O+P)/2+(1.5,0),S);label("$5\sqrt{3}$",(P+T)/2,NE,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the Pythagorean theorem,
+\[
+PT=\sqrt{OP^2-OT^2}=\sqrt{10^2-5^2}=\sqrt{75}=\boxed{5\sqrt3}.
+\]
+(The point of tangency is $T=\left(\dfrac{5}{2},\dfrac{5\sqrt3}{2}\right)$, and indeed $\left(10-\dfrac{5}{2}\right)^2+\left(\dfrac{5\sqrt3}{2}\right)^2=\dfrac{225}{4}+\dfrac{75}{4}=75$.) The answer $5$ is the distance from $P$ to the nearest point $(5,0)$ of the circle, which lies on line $OP$; but the segment from $P$ to $(5,0)$ crosses the circle rather than touching it, so it is not a tangent segment.

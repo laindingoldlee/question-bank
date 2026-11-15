@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1356398_isoceles_triangles_problem
+% Stable identity: aops-topic-1356398-q01
+Let $AB=AC=k$, $\angle A=36^\circ$ and $BC=1$. The base angles are $\angle B=\angle C=72^\circ$. Let the bisector from $B$ meet $AC$ at $D$, so $\angle ABD=\angle DBC=36^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real phi=(1+sqrt(5))/2;
+pair B=(0,0),C=(1,0),A=(0.5,0.5*Tan(72));
+pair D=A+(C-A)/phi;
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--D,blue);
+dot(D);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,E);
+label("$1$",(B+C)/2,S); label("$k$",(A+B)/2,W);
+draw(arc(A,0.3,-108,-72)); label("$36^\circ$",A+0.45*dir(-90),fontsize(8pt));
+draw(arc(B,0.16,0,36),blue); draw(arc(B,0.2,36,72),blue);
+label("$1$",(B+D)/2,NW,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Solution 1 (angle chasing).} In triangle $BDC$, $\angle DBC=36^\circ$ and $\angle C=72^\circ$, so $\angle BDC=72^\circ=\angle C$. Hence triangle $BDC$ is isosceles with $BD=BC=\boxed{1}$ inch.
+
+\textbf{Solution 2 (law of sines).} In triangle $BDC$,
+\[
+\dfrac{BD}{\sin\angle C}=\dfrac{BC}{\sin\angle BDC}\quad\Longrightarrow\quad BD=\dfrac{\sin72^\circ}{\sin72^\circ}\cdot1=1 .
+\]
+(As a by-product: triangle $ABD$ has two $36^\circ$ angles, so $AD=BD=1$; triangle $BDC$ is similar to triangle $ABC$, so $\dfrac{DC}{1}=\dfrac{1}{k}$, and $k=AD+DC=1+\dfrac{1}{k}$ gives $k=\dfrac{1+\sqrt5}{2}$, the golden ratio.)

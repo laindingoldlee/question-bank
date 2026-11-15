@@ -1,0 +1,15 @@
+Each corner number is counted twice, each noncorner edge number three times, and the centre four times. To maximize the weighted sum, put $9$ at the centre, $5,6,7,8$ at the edge positions, and $1,2,3,4$ at the corners. Exchanging any inverted pair increases the total, so this assignment is maximal. Its total is $4\cdot9+3(5+6+7+8)+2(1+2+3+4)=134$. The minimum reverses the allocation: $4\cdot1+3(2+3+4+5)+2(6+7+8+9)=106$. Thus the difference is $\boxed{28}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"1", "5", "2"}, {"6", "9", "7"}, {"3", "8", "4"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("Maximum total 134",(1.5,-3.2));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"6", "2", "7"}, {"3", "1", "4"}, {"8", "5", "9"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("Minimum total 106",(1.5,-3.2));
+\end{asy}

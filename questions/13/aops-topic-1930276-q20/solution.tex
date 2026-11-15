@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1930276_help_needed_in_problems_of_varied_topics
+% Stable identity: aops-topic-1930276-q20
+Let $R=\underbrace{11\cdots1}_{p}=\dfrac{10^p-1}{9}$. The block of $p$ digits $d$ is $dR$, and it is followed by $p(9-d)$ further digits, so
+\[
+X_p=\sum_{d=1}^{9}d\,R\,10^{p(9-d)},\qquad 9X_p=\sum_{d=1}^{9}d\left(10^p-1\right)\left(10^p\right)^{9-d}.
+\]
+By Fermat's little theorem $10^p\equiv10\pmod p$ for every prime $p$ (also for $p=2,5$, where both sides are $\equiv0$). Hence
+\[
+9X_p\equiv\sum_{d=1}^{9}d\cdot9\cdot10^{9-d}=9\cdot123456789\pmod p .
+\]
+If $p\ne3$, then $9$ is invertible modulo $p$, and $X_p\equiv123456789\pmod p$.
+
+If $p=3$, the digit sum of $X_3$ is $3(1+2+\cdots+9)=135$ and that of $123456789$ is $45$; both numbers are divisible by $3$, so their difference is too.
+
+So $p\mid X_p-123456789$ for every prime $p$. $\blacksquare$

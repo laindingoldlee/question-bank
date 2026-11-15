@@ -1,0 +1,7 @@
+The board has 30 cells, and every domino uses two, so at most 15 fit. Pair consecutive cells horizontally within each of the five rows to place three dominoes per row. This attains $\boxed{15}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int y=0;y<5;++y)for(int x=0;x<6;x+=2){filldraw(box((x,y),(x+2,y+1)),(x/2+y)%2==0?lightblue:white);draw((x+1,y)--(x+1,y+1),dashed+gray);}
+\end{asy}

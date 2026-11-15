@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2365344_easy_trapezoid_problem
+% Stable identity: aops-topic-2365344-q01
+\textbf{(a)} Triangles $ACD$ and $BDC$ have the same base $CD$. Their heights are the distances from $A$ and from $B$ to the line $CD$. Since $AB\parallel CD$, every point of line $AB$ is at the same distance $h$ from line $CD$, so both heights equal $h$:
+\[[ACD]=\dfrac12\cdot CD\cdot h=[BDC].\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(1.2,2.2), B=(4.2,2.2), C=(6,0), D=(0,0);
+pair O=extension(A,C,B,D);
+fill(A--O--D--cycle,rgb(0.85,0.92,1)); fill(B--O--C--cycle,rgb(1,0.88,0.85));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,blue); draw(B--D,red);
+pair Ha=(A.x,0), Hb=(B.x,0);
+draw(A--Ha,dashed); draw(B--Hb,dashed);
+draw((Ha+(0.18,0))--(Ha+(0.18,0.18))--(Ha+(0,0.18))); draw((Hb-(0.18,0))--(Hb+(-0.18,0.18))--(Hb+(0,0.18)));
+label("$h$",(A+Ha)/2,W); label("$h$",(B+Hb)/2,E);
+dot(O); label("$O$",O,N);
+label("$A$",A,NW); label("$B$",B,NE); label("$C$",C,SE); label("$D$",D,SW);
+\end{asy}
+
+\textbf{(b)} Triangle $ACD$ is made up of triangles $AOD$ and $OCD$, and triangle $BDC$ is made up of triangles $BOC$ and $OCD$. Subtracting the common part from the equal areas in (a),
+\[[AOD]=[ACD]-[OCD]=[BDC]-[OCD]=[BOC].\ \blacksquare\]

@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1224497_mathcounts_2016_state_team_4
+% Stable identity: aops-topic-1224497-q04
+Let the sequence be $(a_0,a_1,a_2,a_3,a_4)$, where $a_k$ is the number of entries equal to $k$. Counting entries, $a_0+a_1+a_2+a_3+a_4=5$; adding the entries' values, $a_1+2a_2+3a_3+4a_4=5$. Subtracting, $a_0=a_2+2a_3+3a_4$. Also $a_0\le3$: $a_0=5$ is impossible, and $a_0=4$ would leave a single nonzero entry $a_0=4$, but then $a_4\ge1$ too.
+\begin{itemize}
+\item If $a_4\ge1$: $a_0\ge3$, so $a_0=3$, $a_4=1$, $a_2=a_3=0$, $a_1=1$: $(3,1,0,0,1)$ has only two $0$s. Fails.
+\item If $a_3\ge1$ (and $a_4=0$): $a_3=1$, $a_0=a_2+2$. Then $(2,2,0,1,0)$ has one $1$, and $(3,0,1,1,0)$ has two $0$s. Both fail.
+\item So $a_3=a_4=0$, $a_0=a_2$ and $a_1=5-2a_0$: $(1,3,1,0,0)$ has two $0$s and fails; $(2,1,2,0,0)$ has two $0$s, one $1$, two $2$s. It works.
+\end{itemize}
+The sequence is $\boxed{(2,1,2,0,0)}$, and it is the only one.

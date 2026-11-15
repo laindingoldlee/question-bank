@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2389578_function_olympiad_problem
+% Stable identity: aops-topic-2389578-q01
+\textbf{One level.} Since $f(x)=(x-2)^2-1$, the equation $f(x)=t$ has the two solutions $x=2\pm\sqrt{t+1}$ if $t>-1$, the single solution $x=2$ if $t=-1$, and none if $t<-1$.
+
+\textbf{Three levels.} $f(f(f(x)))=m$ means: there are $u,v$ with $f(u)=m$, $f(v)=u$, $f(x)=v$. Different values of $v$ give disjoint sets of solutions $x$ (since $v=f(x)$), and different values of $u$ give disjoint sets of values $v$. So the number of solutions is the sum, over the solutions $u$ of $f(u)=m$ and then over the solutions $v$ of $f(v)=u$, of the number of solutions of $f(x)=v$. Each level contributes at most $2$, so there are at most $8$ solutions, and exactly $8$ precisely when there are two values of $u$, each giving two values of $v$, and all four values of $v$ are greater than $-1$.
+\begin{itemize}
+\item Two values $u=2\pm\sqrt{m+1}$ need $m>-1$.
+\item The smaller one gives two values of $v$ only if $2-\sqrt{m+1}>-1$, i.e. $m<8$.
+\item A value $u>-1$ gives $v=2\pm\sqrt{u+1}$, and the smaller of these is greater than $-1$ exactly when $u<8$. For $-1<m<8$ both values of $u$ are less than $2+\sqrt{9}=5<8$.
+\end{itemize}
+Hence there are exactly $8$ solutions precisely when $-1<m<8$. For $m=8$ the value $u=2-3=-1$ gives only $v=2$, and the count drops to $4+2=6$; for $m>8$ that value of $u$ is below $-1$ and gives nothing. The greatest integer is $\boxed{m=7}$.
+
+(Check for $m=7$: $u=2\pm2\sqrt2$, i.e. $u\approx4.83$ or $u\approx-0.83$, both in $(-1,8)$, so all four values of $v$ exceed $-1$.)

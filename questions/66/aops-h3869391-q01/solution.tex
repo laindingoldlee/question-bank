@@ -1,0 +1,12 @@
+The fractional transformation $y=\dfrac{(x-2)}{(x+1)}$ simplifies the recurrence, since
+\[
+\dfrac{x_{k+1}-2}{x_{k+1}+1}
+=\left(\dfrac{x_k-2}{x_k+1}\right)^2.
+\]
+The initial transformed value is $\dfrac{3}{7}$, so with $N=2^{2025}$,
+\[
+x_{2026}=\dfrac{2\cdot7^N+3^N}{7^N-3^N}.
+\]
+The numerator and denominator are coprime: a common divisor divides $3\cdot7^N$, but the denominator is coprime to both $3$ and $7$. Thus $m+n=3\cdot7^N$.
+
+Modulo $1000$, $7^{20}\equiv1$. Also $N\equiv0\pmod4$ and $N\equiv2\pmod5$, so $N\equiv12\pmod{20}$. Since $7^{12}\equiv201\pmod{1000}$, the required remainder is $\boxed{603}$.

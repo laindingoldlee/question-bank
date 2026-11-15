@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1985848_geometry_problem
+% Stable identity: aops-topic-1985848-q01
+\textbf{No.} We show that $n$ circles divide the plane into at most $n^2-n+2$ regions.
+
+Add the circles one at a time. One circle makes $2$ regions. When the $k$-th circle is added, it meets each of the previous $k-1$ circles in at most $2$ points, so at most $2(k-1)$ points lie on it. If there are $m\ge1$ such points they cut the new circle into $m$ arcs, and each arc lies in one existing region and splits it into at most two pieces; so the number of regions grows by at most $m\le2(k-1)$. (If $m=0$, the circle adds just one region.) Hence the number of regions is at most
+\[
+2+\sum_{k=2}^{n}2(k-1)=2+n(n-1)=n^2-n+2 .
+\]
+For $n=4$ this is $14$. Every region lies inside exactly one combination of circles, so at most $14$ of the $16$ combinations can occur. Therefore four circles can never form a Venn diagram. $\blacksquare$
+
+In the arrangement below, for example, there is no part of the plane inside $A$ and $C$ but outside $B$ and $D$ (and similarly for $B$ and $D$ only).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair[] c={(-0.55,0.55),(0.55,0.55),(0.55,-0.55),(-0.55,-0.55)};
+pen[] pp={red,blue,deepgreen,orange};
+string[] nm={"$A$","$B$","$C$","$D$"};
+pair[] lp={(-1.55,1.45),(1.55,1.45),(1.55,-1.45),(-1.55,-1.45)};
+for(int i=0;i<4;++i){ draw(circle(c[i],1),pp[i]+linewidth(1)); label(nm[i],lp[i],pp[i]); }
+label("$A\cap C$ only: no region",(0,-2.05),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Four-set Venn diagrams do exist with other shapes, for example with four suitable ellipses.)

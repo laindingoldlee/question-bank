@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2399234_pythagorean_confusion
+% Stable identity: aops-topic-2399234-q01
+\textbf{Which sides form the obtuse angle?} Say the obtuse angle is formed by sides of lengths $u$ and $w$; the right triangle has legs $u,w$ and area $\dfrac{uw}2=75$, so $uw=150$. Suppose the angle were not the one between the sides $10$ and $15$. Then one of $u,w$ is the third side $x$ and the other is $10$ or $15$, and $uw=150$ gives $x=15$ or $x=10$ respectively. So the triangle would have sides $10,15,15$ with the angle opposite a side $15$, or sides $10,10,15$ with the angle opposite a side $10$. But an obtuse angle lies opposite the strictly longest side of a triangle (its square exceeds the sum of the squares of the other two), and in neither case is the opposite side strictly longest. So the obtuse angle is the angle between the sides $10$ and $15$.
+
+\textbf{The area is not determined.} Put the side of length $15$ along $PQ$ and the side of length $10$ along $PA$, with obtuse angle $\angle APQ$. The area is $\dfrac12\cdot15\cdot h$, where $h$ is the height of $A$ above the line $PQ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(10cm);
+defaultpen(fontsize(10pt));
+void panel(pair o, real ang, pen pn, string lab){
+  pair Pv=o, Q=o+(5,0), A=o+(10/3)*dir(ang), A0=o+(10/3)*dir(90);
+  pair Fo=(A.x,o.y);
+  draw(Fo--Pv,gray+dashed);
+  draw(Pv--A0--Q,gray+dashed);
+  draw(A--Fo,dotted);
+  draw(Pv--Q,linewidth(0.9)); draw(Pv--A--Q,pn+linewidth(0.9));
+  draw(arc(Pv,0.45,0,ang),pn);
+  dot(Pv); dot(Q); dot(A); dot(A0,gray);
+  label("$P$",Pv,S); label("$Q$",Q,S); label("$15$",(Pv+Q)/2,S); label("$A$",A,W,pn); label("$A_0$",A0,N,gray);
+  label("$10$",(ang<135 ? Pv+0.35*(A-Pv) : (Pv+A)/2),dir(ang+90),pn); label("$h$",(A+Fo)/2,W);
+  label(lab,Pv+0.95*dir(38),pn+fontsize(8pt));
+}
+panel((0,0),120,blue,"$120^\circ$");
+panel((9.6,0),150,red,"$150^\circ$");
+\end{asy}
+
+\begin{itemize}
+\item If $\angle APQ=120^\circ$, then $A$ is $10\sin60^\circ=5\sqrt3$ above $PQ$ (a $30$-$60$-$90$ triangle), and the area is $\dfrac{75\sqrt3}{2}\approx64.95$.
+\item If $\angle APQ=150^\circ$, then $h=10\sin30^\circ=5$ and the area is $\dfrac{75}{2}=37.5$.
+\end{itemize}
+Two different triangles fit the description, so the area \textbf{cannot be determined}. In general the area is $\dfrac12\cdot10\cdot15\sin\angle APQ=75\sin\angle APQ$, and as the angle runs over all obtuse values ($90^\circ<\angle APQ<180^\circ$) the sine takes every value strictly between $0$ and $1$. So the possible areas are exactly the numbers in the open interval $\boxed{(0,75)}$.

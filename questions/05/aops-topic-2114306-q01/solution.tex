@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2114306_sending_cake_to_mars
+% Stable identity: aops-topic-2114306-q01
+Let the cake arrive after $t$ hours, at the point $M_1$. During the flight the rocket travels $18000t$ miles from the launch point $L$ to $M_1$, and Mars travels $53858t$ miles from its position $M_0$ at the launch to $M_1$. Mars's path $M_0M_1$ is perpendicular to the rocket's path $LM_1$, so triangle $LM_1M_0$ has a right angle at $M_1$, and its hypotenuse $LM_0$ is the distance at the launch (the figure is not to scale).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair L=(0,0), M1=(3.4,0), M0=(3.4,5.6);
+draw(L--M0,gray+dashed);
+draw(L--M1,blue+linewidth(1.1),Arrow(7,Relative(0.6)));
+draw(M0--M1,red+linewidth(1.1),Arrow(7,Relative(0.6)));
+draw((3.1,0)--(3.1,0.3)--(3.4,0.3));
+dot(L); dot(M0); dot(M1);
+label("launch $L$",L,W); label("$M_0$",M0,NE); label("$M_1$",M1,SE);
+label("$140{,}000{,}000$",(L+M0)/2,NW,fontsize(9pt));
+label("$53858t$",(M0+M1)/2,E,red);
+label("$18000t$",(L+M1)/2,S,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the Pythagorean theorem,
+\[(18000t)^2+(53858t)^2=140{,}000{,}000^2,\qquad\text{that is,}\qquad t^2\left(324{,}000{,}000+2{,}900{,}684{,}164\right)=\left(1.4\times10^8\right)^2 .\]
+Hence
+\[t=\dfrac{1.4\times10^8}{\sqrt{3{,}224{,}684{,}164}}\approx\dfrac{1.4\times10^8}{56{,}786.3}\approx2465.4,\]
+so the friend receives the cake about $\boxed{2465}$ hours after the launch (roughly $103$ days).
+
+(The right angle has to be at $M_1$, as the problem says. If instead Mars moved perpendicular to the line $LM_0$, the rocket's path $LM_1$ would be the hypotenuse and so longer than Mars's path $M_0M_1$: the rocket would have to be faster than Mars, which is impossible at $18{,}000<53{,}858$ miles per hour.)

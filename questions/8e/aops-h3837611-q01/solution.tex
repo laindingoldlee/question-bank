@@ -1,0 +1,20 @@
+Let the centers be $O_1,O_2,O_3$, with $X$ on $O_2O_3$, $Y$ on $O_3O_1$, and $Z$ on $O_1O_2$. Write the center-triangle angles as $\alpha_1,\alpha_2,\alpha_3$. The isosceles triangles $O_2XZ$ and $O_3XY$ give
+\[
+\angle O_2XZ=\dfrac{180^\circ-\alpha_2}{2},\qquad
+\angle O_3XY=\dfrac{180^\circ-\alpha_3}{2}.
+\]
+Since $XO_2$ and $XO_3$ are opposite rays,
+\[
+\angle YXZ=180^\circ-\dfrac{180^\circ-\alpha_2}{2}
+-\dfrac{180^\circ-\alpha_3}{2}
+=90^\circ-\dfrac{\alpha_1}{2}<90^\circ.
+\]
+It is positive, and the other two angles obey the same formula. Thus right and obtuse triangles cannot be realized under external tangency.
+
+For an equilateral triangle $XYZ$, construct an equilateral triangle $O_1O_2O_3$ having it as its medial triangle. Its sides are $2a$. Circles of radius $\boxed a$ centered at its vertices are pairwise externally tangent exactly at the side midpoints $X,Y,Z$, giving the requested construction.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,2sqrt(3)),B=(-2,0),C=(2,0),X=(B+C)/2,Y=(A+C)/2,Z=(A+B)/2;draw(circle(A,2),gray);draw(circle(B,2),gray);draw(circle(C,2),gray);draw(A--B--C--cycle,dashed);draw(X--Y--Z--cycle,blue+1);label("$O_1$",A,N);label("$O_2$",B,W);label("$O_3$",C,E);label("$X$",X,S);label("$Y$",Y,NE);label("$Z$",Z,NW);
+\end{asy}

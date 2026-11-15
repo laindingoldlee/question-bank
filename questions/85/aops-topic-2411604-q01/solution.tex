@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2411604_number_theory_problem
+% Stable identity: aops-topic-2411604-q01
+Let $k=5^{5^{5^5}}$, so the number is $5^k$. We need $5^k$ modulo $10^5=2^5\cdot5^5$.
+
+\textbf{Modulo $5^5$.} Since $k\ge5$, $5^k\equiv0\pmod{3125}$.
+
+\textbf{Modulo $2^5=32$.} We have $5^2=25$, $5^4=625\equiv17$ and $5^8\equiv17^2=289\equiv1\pmod{32}$, so $5^k\bmod32$ depends only on $k\bmod8$. Now $k=5^{N}$ with $N=5^{5^5}$ odd, and $5^2=25\equiv1\pmod8$, so $5^{N}\equiv5\pmod8$, i.e. $k\equiv5\pmod 8$. Hence
+\[5^k\equiv5^5=3125=32\cdot97+21\equiv21\pmod{32}.\]
+
+\textbf{Combine.} We need $x\equiv0\pmod{3125}$ and $x\equiv21\pmod{32}$ with $0\le x<10^5$. Write $x=3125t$; since $3125\equiv21\pmod{32}$, the condition is $21t\equiv21$, i.e. $t\equiv1\pmod{32}$ (as $\gcd(21,32)=1$). So $t=1$ and $x=3125$.
+
+Thus $5^k$ ends in the five digits $03125$, and its ten-thousands digit is $\boxed{0}$.

@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2164708_trapezoid_perpendicular_fun
+% Stable identity: aops-topic-2164708-q01
+Let the trapezoid be $ABCD$ with $AB\parallel DC$, and let $AC=15$ be the given diagonal; the distance between the parallel sides is $12$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(15,0), C=(9,12), D=(-1,12);
+pair X=extension(A,C,B,D);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,blue+linewidth(0.9)); draw(B--D,red+linewidth(0.9));
+draw(X+0.8*unit(C-X)--X+0.8*unit(C-X)+0.8*unit(D-X)--X+0.8*unit(D-X));
+draw((9,12)--(9,0),dashed); draw((9,0)--(9.6,0)--(9.6,0.6)--(9,0.6));
+dot(A); dot(B); dot(C); dot(D);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$15$",(A+X)/2,NW,blue); label("$20$",(B+X)/2+(0.5,0),NE,red); label("$12$",(9,1.8),E);
+label("$\alpha$",A+(1.6,0.6),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Let $\alpha$ be the angle between $AC$ and the base $AB$. Since $C$ is at height $12$ above $AB$, $\sin\alpha=\dfrac{12}{15}=\dfrac{4}{5}$, so $\cos\alpha=\dfrac{3}{5}$. The other diagonal $BD$ is perpendicular to $AC$, so it makes the angle $90^\circ-\alpha$ with the bases, and since $D$ is also at height $12$,
+\[BD=\dfrac{12}{\sin\left(90^\circ-\alpha\right)}=\dfrac{12}{\cos\alpha}=12\div\dfrac{3}{5}=20 .\]
+For a convex quadrilateral with perpendicular diagonals $d_1$ and $d_2$ the area is $\dfrac{d_1d_2}{2}$ (the diagonals split it into four right triangles), so the area is
+\[\dfrac{15\cdot20}{2}=\boxed{150}.\]
+(Check with coordinates: $A=(0,0)$, $C=(9,12)$, $B=(15,0)$, $D=(-1,12)$ gives perpendicular diagonals of lengths $15$ and $20$, bases $15$ and $10$, and area $\dfrac{15+10}{2}\cdot12=150$. Any other choice of the bases gives the same area, since their sum is always $25$.)

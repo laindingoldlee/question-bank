@@ -1,0 +1,7 @@
+Let $D_k(u,v)$ count walks of $k$ knight moves from $(0,0)$ to $(u,v)$. Set $D_0(0,0)=1$ and all other initial values to zero, and use $D_{k+1}(u,v)=\sum D_k(u-a,v-b)$ over $(a,b)=(\pm1,\pm2),(\pm2,\pm1)$. The possible penultimate squares for $(2,3)$ are $(4,4),(4,2),(3,5),(3,1),(1,5),(1,1),(0,4),(0,2)$. Their two-move counts are respectively $0,1,0,2,0,2,2,2$. Their sum is $\boxed9$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=-1;x<=4;++x)draw((x,-1)--(x,4),lightgray);for(int y=-1;y<=4;++y)draw((-1,y)--(4,y),lightgray);draw((0,0)--(1,2)--(3,1)--(2,3),blue+1.2bp);label("start",(0,0),SW);label("finish",(2,3),N);dot((0,0));dot((2,3));
+\end{asy}

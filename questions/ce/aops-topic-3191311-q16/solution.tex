@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3191311_2015_bmmt_individual_round__berkley_mini_math_tournament
+% Stable identity: aops-topic-3191311-q16
+If the area is $K>0$ and the third side is $c$, the three altitudes are $\dfrac{2K}{20}$, $\dfrac{2K}{30}$, and $\dfrac{2K}{c}$. Thus $\dfrac{1}{c}=\dfrac{1}{2}(\dfrac{1}{20}+\dfrac{1}{30})=\dfrac{1}{24}$, giving $c=\boxed{24}$. The lengths $20,24,30$ satisfy the triangle inequality.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] pts={(0,0),(24,0),(19/12,sqrt(400-(19/12)^2))}; string[] names={"$A$","$B$","$C$"}; path boundary=pts[0]; for(int j=1;j<pts.length;++j)boundary=boundary--pts[j];draw(boundary--cycle); for(int i=0;i<pts.length;++i) label(names[i],pts[i],dir(90+360*i/pts.length));
+\end{asy}

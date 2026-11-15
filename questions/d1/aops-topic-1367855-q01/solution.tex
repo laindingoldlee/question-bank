@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1367855_surface_area
+% Stable identity: aops-topic-1367855-q01
+\textbf{Lateral faces.} Each of the $6$ lateral faces is an isosceles trapezoid with parallel sides $4$ and $6$ and height $2$ (the slant height).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair P=(-3,0),Q=(3,0),R=(2,2),T=(-2,2);
+draw(P--Q--R--T--cycle,linewidth(0.9));
+draw((0,0)--(0,2),red+dashed);
+draw((0,0.3)--(0.3,0.3)--(0.3,0),red);
+label("$6$",(-1,0),S); label("$4$",(-1,2),N); label("$2$",(0,1),W,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Each has area $\dfrac{4+6}{2}\cdot2=10$, so the lateral area is $6\cdot10=60$.
+
+\textbf{Bases.} A regular hexagon with side $s$ consists of $6$ equilateral triangles, so its area is $\dfrac{3\sqrt3}{2}s^2$. The bases have areas $\dfrac{3\sqrt3}{2}\cdot16=24\sqrt3$ and $\dfrac{3\sqrt3}{2}\cdot36=54\sqrt3$.
+
+The total surface area is
+\[\boxed{60+78\sqrt3}\approx195.1 .\]
+(Such a frustum exists: the apothems of the bases are $2\sqrt3$ and $3\sqrt3$, which differ by $\sqrt3<2$, so the height is $\sqrt{4-3}=1$.)

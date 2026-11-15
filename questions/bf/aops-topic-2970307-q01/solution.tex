@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2970307_triangle_midpoints
+% Stable identity: aops-topic-2970307-q01
+Since $3^2+4^2=5^2$, the right angle is at $C$. Put $C=(0,0)$, $B=(3,0)$, $A=(0,4)$.
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),B=(3,0),A=(0,4);pair P1=(A+C)/2,P2=(B+C)/2,M=(P1+P2)/2,N=(M+C)/2,P=((A+M)/2+(A+N)/2)/2;
+draw(A--B--C--cycle);draw(P1--P2,dotted);draw(A--M,dashed);draw(A--N,dashed);draw(P--C,dotted);
+dot(M);dot(N);dot(P);label("$A$",A,N);label("$B$",B,E);label("$C$",C,SW);label("$M$",M,E);label("$N$",N,S);label("$P$",P,E);
+\end{asy}
+
+The midpoints of $AC$ and $BC$ are $(0,2)$ and $\left(\dfrac32,0\right)$, so $M=\left(\dfrac34,1\right)$ and $N=\left(\dfrac38,\dfrac12\right)$. The midpoints of $AM$ and $AN$ are $\left(\dfrac38,\dfrac52\right)$ and $\left(\dfrac3{16},\dfrac94\right)$, so $P=\left(\dfrac9{32},\dfrac{19}8\right)$. Then
+\[PC=\sqrt{\dfrac{81}{1024}+\dfrac{5776}{1024}}=\boxed{\dfrac{\sqrt{5857}}{32}}.\]

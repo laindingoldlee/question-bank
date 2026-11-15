@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2489428_2017_amc_10b_problem_15
+% Stable identity: aops-topic-2489428-q01
+The diagonal is $AC=\sqrt{3^2+4^2}=5$. In right triangle $ABC$ (right angle at $B$), the altitude $BE$ creates triangle $AEB$ similar to triangle $ABC$ (common angle at $A$, right angles at $E$ and $B$), so
+\[\dfrac{AE}{AB}=\dfrac{AB}{AC},\qquad AE=\dfrac{AB^2}{AC}=\dfrac95.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(3,0),C=(3,4),D=(0,4);
+pair Ee=A+dot(B-A,unit(C-A))*unit(C-A);
+fill(A--Ee--D--cycle,rgb(0.8,0.9,1));
+draw(A--B--C--D--cycle,linewidth(0.8)); draw(A--C); draw(B--Ee,red); draw(A--Ee--D,blue);
+real s=0.18; draw(Ee+s*unit(C-Ee)--Ee+s*unit(C-Ee)+s*unit(B-Ee)--Ee+s*unit(B-Ee));
+pair Fp=A+dot(D-A,unit(C-A))*unit(C-A); draw(D--Fp,dashed);
+draw(Fp+s*unit(A-Fp)--Fp+s*unit(A-Fp)+s*unit(D-Fp)--Fp+s*unit(D-Fp));
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW); label("$E$",Ee,W); label("$H$",Fp,SE);
+label("$3$",(1.5,0),S); label("$4$",(3,2),E);
+\end{asy}
+
+Triangle $AED$ has base $AE$ on line $AC$, and its height is the distance $DH$ from $D$ to $AC$. The half-turn about the centre of the rectangle swaps $B$ and $D$ and maps line $AC$ to itself, so $DH$ equals the distance from $B$ to $AC$, which is $BE=\dfrac{AB\cdot BC}{AC}=\dfrac{12}{5}$ (twice the area of $ABC$ divided by $AC$). Hence
+\[[AED]=\dfrac12\cdot\dfrac95\cdot\dfrac{12}{5}=\boxed{\textbf{(E)}\ \dfrac{54}{25}}.\]

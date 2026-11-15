@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2570806_kinda_confused_on_this_trig
+% Stable identity: aops-topic-2570806-q01
+The point at angle $-\theta$ is obtained by turning through $\theta$ clockwise instead of anticlockwise. Reflection in the $x$-axis maps the unit circle to itself, fixes the positive $x$-axis and reverses the direction of turning, so it maps the point $P$ at angle $\theta$ to the point $P'$ at angle $-\theta$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;real t=35;pair P=dir(t),Q=dir(-t);
+draw((-1.3,0)--(1.4,0),Arrow(4));draw((0,-1.3)--(0,1.3),Arrow(4));draw(unitcircle);
+draw((0,0)--P);draw((0,0)--Q);draw(P--Q,dashed);
+draw(arc((0,0),0.3,0,t),Arrow(3));draw(arc((0,0),0.4,0,-t),Arrow(3));
+dot(P);dot(Q);label("$P(\cos\theta,\sin\theta)$",P,NE);label("$P'(\cos\theta,-\sin\theta)$",Q,SE);
+label("$\theta$",0.45*dir(t/2),fontsize(8pt));label("$-\theta$",0.58*dir(-t/2),fontsize(8pt));label("$x$",(1.4,0),E);label("$y$",(0,1.3),N);
+\end{asy}
+
+Reflection in the $x$-axis sends $(x,y)$ to $(x,-y)$. So
+\[\left(\cos(-\theta),\sin(-\theta)\right)=P'=(\cos\theta,-\sin\theta),\]
+that is, $\cos(-\theta)=\cos\theta$ and $\sin(-\theta)=-\sin\theta$. $\blacksquare$
+
+In words: cosine depends only on the horizontal coordinate, which reflection does not change, while sine is the vertical coordinate, which changes sign. (For example $\sin(-30^\circ)=-\dfrac12$ but $\cos(-60^\circ)=\cos60^\circ=\dfrac12$.)

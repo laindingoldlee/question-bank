@@ -1,0 +1,7 @@
+If the rhombus side is $a$, its height is $a\sin45^\circ=5$, so $a=5\sqrt2$ and its area is $25\sqrt2$. A regular octagon of side $s$ has area $2(1+\sqrt2)s^2$: it is a square of side $(1+\sqrt2)s$ with four corner right triangles of legs $\dfrac{s}{\sqrt2}$ removed. Hence $2(1+\sqrt2)s^2=\dfrac{25\sqrt2}{2}$, giving $s^2=\dfrac{25}{4}(2-\sqrt2)$ and $\boxed{s=\dfrac{5}{2}\sqrt{2-\sqrt2}}$. Such placement exists: use an octagon of circumradius $\dfrac{5}{2}$ and the rhombus bounded by $x=\pm\dfrac{5}{2}$ and $x+y=\pm\dfrac{5\sqrt2}{2}$. Four octagon vertices touch its sides; all eight vertices lie inside or on its boundary.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+real r=2.5;pair[] O;for(int i=0;i<8;++i)O.push(r*dir(45*i));path p=O[0];for(int i=1;i<8;++i)p=p--O[i];filldraw(p--cycle,lightgray,black);draw((r,r*(sqrt(2)-1))--(-r,r*(sqrt(2)+1))--(-r,-r*(sqrt(2)-1))--(r,-r*(sqrt(2)+1))--cycle);draw((-r,0)--(r,0),dashed);label("height $5$",(0,0),(0,-1));label("$s$",(O[0]+O[1])/2,(1,1));
+\end{asy}

@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1349785_geometry
+% Stable identity: aops-topic-1349785-q01
+Put the start at the origin with east along the positive $x$-axis. The northeast mile moves him $\dfrac{\sqrt2}{2}$ east and $\dfrac{\sqrt2}{2}$ north. So he ends at
+\[
+\left(2+\dfrac{\sqrt2}{2},\ \dfrac{\sqrt2}{2}\right).
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+real h=sqrt(2)/2;
+pair A=(0,0),B=(1,0),C=(1+h,h),D=(2+h,h),H=(2+h,0);
+draw(A--B--C--D,linewidth(0.9)); draw(A--D,red+dashed); draw(B--H--D,gray+dotted);
+draw(ra(H,A-H,D-H,0.12));
+dot(A);dot(D);
+label("start",A,SW); label("end",D,NE);
+label("$1$",(A+B)/2,S); label("$1$",B+0.72*(C-B),NW); label("$1$",(C+D)/2,N);
+label("$\dfrac{\sqrt{2}}{2}$",(H+D)/2,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The distance is
+\[
+\sqrt{\left(2+\dfrac{\sqrt2}{2}\right)^2+\left(\dfrac{\sqrt2}{2}\right)^2}=\sqrt{4+2\sqrt2+\dfrac{1}{2}+\dfrac{1}{2}}=\boxed{\sqrt{5+2\sqrt2}}\approx2.80
+\]
+miles.

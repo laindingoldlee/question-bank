@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1569352_geometry_rhombus_problem
+% Stable identity: aops-topic-1569352-q01
+Let the diagonals be $6k$ and $8k$. They bisect each other at right angles at the centre $O$, so the half-diagonals are $3k$ and $4k$, and each side is $\sqrt{(3k)^2+(4k)^2}=5k$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real k=6.25;real p=3*k/2,qv=2*k;
+pair A=(-qv,0),B=(0,p),C=(qv,0),D=(0,-p);
+draw(A--B--C--D--cycle,linewidth(1));
+draw(A--C,dashed);draw(B--D,dashed);
+pair u=unit(C-D);pair Ft=D+dot(A-D,u)*u;
+draw(A--Ft,red);draw(Ft--C,gray+dotted);
+pair w=unit(A-Ft),v=unit(C-Ft);real q=0.9;draw(Ft+q*w--Ft+q*(w+v)--Ft+q*v,red);
+real r=0.7;draw((r,0)--(r,r)--(0,r));
+label("$A$",A,W);label("$B$",B,N);label("$C$",C,E);label("$D$",D,S);label("$O$",(0,0),SW);
+label("$15$",(A+Ft)/2,SW,red);
+label("$4k$",(-qv/2,0),N);label("$3k$",(0,p/2),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Compute the area of the rhombus in two ways: from the diagonals and as base times height (the red segment is the height $15$ onto side $CD$):
+\[
+\dfrac{1}{2}\cdot6k\cdot8k=5k\cdot15\qquad\Longrightarrow\qquad 24k^2=75k\qquad\Longrightarrow\qquad k=\dfrac{25}{8}.
+\]
+The longer diagonal is $8k=\boxed{\text{(E) }25}$. (The shorter one is $\dfrac{75}{4}$ and the side is $\dfrac{125}{8}$.)

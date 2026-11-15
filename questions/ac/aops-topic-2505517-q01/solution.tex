@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2505517_i_need_help_with_geo_problems
+% Stable identity: aops-topic-2505517-q01
+Let $b=CA$ and $c=AB$. Since the triangle is acute, $H$ lies between $A$ and $B$, and $AH=b\cos A$.
+
+\emph{Using the concurrency.} By the angle bisector theorem $\dfrac{BD}{DC}=\dfrac cb$, and $\dfrac{CM}{MA}=1$. By Ceva's theorem for the concurrent cevians $AD$, $BM$, $CH$,
+\[\dfrac{AH}{HB}\cdot\dfrac{BD}{DC}\cdot\dfrac{CM}{MA}=1,\qquad\text{so}\qquad\dfrac{AH}{HB}=\dfrac bc.\]
+With $AH+HB=c$ this gives $AH=\dfrac{bc}{b+c}$, hence
+\[\cos A=\dfrac{AH}{AC}=\dfrac{c}{b+c}.\]
+
+\emph{Using that $\angle C$ is acute.} By the law of cosines, $a^2=b^2+c^2-2bc\cos A=b^2+c^2-\dfrac{2bc^2}{b+c}$. The condition $c^2<a^2+b^2$ becomes
+\[c^2<2b^2+c^2-\dfrac{2bc^2}{b+c}\iff bc^2<b^2(b+c)\iff c^2<b^2+bc.\]
+With $t=\dfrac bc$ this says $t^2+t-1>0$, i.e. $t>\dfrac{\sqrt5-1}{2}$. Therefore
+\[\cos A=\dfrac{1}{1+t}<\dfrac{1}{1+\dfrac{\sqrt5-1}{2}}=\dfrac{2}{\sqrt5+1}=\dfrac{\sqrt5-1}{2}\approx0.618<\dfrac{\sqrt2}{2}=\cos45^\circ.\]
+Since cosine is decreasing on $\left(0^\circ,180^\circ\right)$, $\angle BAC>45^\circ$. $\blacksquare$ (In fact the argument shows $\angle BAC>\arccos\dfrac{\sqrt5-1}{2}\approx51.8^\circ$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real bb=1, c=1.2; real cA=c/(bb+c), sA=sqrt(1-cA^2);
+pair A=(0,0), B=(c,0), C=bb*(cA,sA);
+pair M=(A+C)/2, H=(C.x,0);
+pair D=(bb*B+c*C)/(bb+c);
+pair X=extension(A,D,B,M);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(A--D);draw(B--M);draw(C--H);
+real s=0.04; draw(H+(0,s)--H+(s,s)--H+(s,0));
+dot(X);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$D$",D,NE);label("$M$",M,NW);label("$H$",H,S);
+\end{asy}

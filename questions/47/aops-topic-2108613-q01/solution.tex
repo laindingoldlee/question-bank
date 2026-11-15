@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2108613_open_state_mathcounts_team_9
+% Stable identity: aops-topic-2108613-q01
+Think of the photo as seven columns, each holding a back-row and a front-row cheerleader.
+
+\emph{Step 1: the pairs.} First split the $14$ cheerleaders into $7$ unordered pairs, which will be the columns. Choosing the pairs one at a time gives $\dbinom{14}{2}\dbinom{12}{2}\cdots\dbinom{2}{2}=\dfrac{14!}{2^7}$ ordered choices, and each split is obtained $7!$ times, so there are
+\[\dfrac{14!}{2^7\cdot7!}=135135\]
+ways. In each pair the taller cheerleader must stand at the back, so the pairs determine the back row's set of seven people.
+
+\emph{Step 2: the order of the columns.} Ordering the columns is the same as ordering the back row. The tallest back-row cheerleader must be in the middle. Of the other six, choose the three who stand to her left: $\dbinom63=20$ ways. Then the left three must decrease towards the left end and the right three towards the right end, so their order is forced.
+
+Every valid photo arises exactly once in this way, so the number of photos is
+\[135135\cdot20=\boxed{2702700}.\]
+
+\emph{Check by probability.} Of the $14!$ arrangements, a fraction $\dfrac{1}{2^7}$ have the taller person at the back in every column (each column's orientation is equally likely, independently). The ordering of the columns is independent of this, and the back row is in a valid order for $20$ of its $7!$ orders. So the count is $14!\cdot\dfrac{1}{128}\cdot\dfrac{20}{5040}=2702700$.

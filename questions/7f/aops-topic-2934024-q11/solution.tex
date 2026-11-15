@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2934024_2015_emcc_guts_round_p1_p12__exeter_math_club_competition
+% Stable identity: aops-topic-2934024-q11
+Their centers are the leg midpoints, separated by the midsegment length $\dfrac{AB+CD}{2}$. Their radii are 5 and 9. Internal tangency would give center distance 4, hence $AB+CD=8$, contradicting the strict quadrilateral inequality $AD<AB+BC+CD$ because $18<18$ would be required. Thus tangency is external, the center distance is 14, and $AB+CD=28$. Perimeter is $28+10+18=\boxed{56}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(20,0),D=(46.0/3,sqrt(324-(46.0/3)^2)),C=D+(8,0);draw(A--B--C--D--cycle);draw(circle((A+D)/2,9),gray);draw(circle((B+C)/2,5),blue);draw((A+D)/2--(B+C)/2,dashed);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+\end{asy}

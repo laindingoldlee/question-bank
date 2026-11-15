@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2411293_geometric_combo
+% Stable identity: aops-topic-2411293-q05
+A rectangle in the figure is determined by choosing $2$ of the $42$ vertical grid lines and $2$ of the $3$ horizontal grid lines, so there are
+\[\dbinom{42}{2}\dbinom32=861\cdot3=2583\]
+rectangles. Number the vertical lines $0,1,\dots,41$; the shaded squares form column $21$, between lines $20$ and $21$, in both rows. Every rectangle covers at least one row, so it avoids the shaded squares exactly when its two vertical sides are both among lines $0,\dots,20$ or both among lines $21,\dots,41$: $\dbinom{21}{2}+\dbinom{21}{2}=420$ choices, each with $3$ choices of rows. Two examples are outlined:
+
+\begin{asy}
+usepackage("amsmath");
+size(11cm);
+defaultpen(fontsize(10pt));
+real w=41;
+fill(box((20,0),(21,2)),gray(0.55));
+for(int i=0;i<=41;++i) draw((i,0)--(i,2),gray+0.4);
+for(int j=0;j<=2;++j) draw((0,j)--(w,j),gray+0.4);
+draw(box((0,0),(w,2)),linewidth(0.8));
+draw(box((5,0),(12,1)),red+linewidth(1.2)); draw(box((24,0),(33,2)),blue+linewidth(1.2));
+label("column $21$",(20.5,2),N,fontsize(8pt));
+\end{asy}
+
+So the probability is
+\[\dfrac{3\cdot420}{3\cdot861}=\dfrac{420}{861}=\boxed{\dfrac{20}{41}}.\]

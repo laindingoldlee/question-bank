@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1994022_a_problem_from_mock_mc
+% Stable identity: aops-topic-1994022-q01
+Let the angle of the parallelogram between the sides $13$ and $6$ be $\theta$. By the law of cosines, the two diagonals satisfy
+\[
+d_1^2=13^2+6^2-2\cdot13\cdot6\cos\theta,\qquad d_2^2=13^2+6^2+2\cdot13\cdot6\cos\theta,
+\]
+so $d_1^2+d_2^2=2(13^2+6^2)=410$ (the parallelogram law). Each diagonal is a side of a (non-degenerate) triangle with sides $13$ and $6$, so $7<d_1,d_2<19$. Checking $d=8,9,\dots,18$, the number $410-d^2$ is a perfect square only for $d=11$ ($410-121=289=17^2$) and $d=17$. So the diagonals are $11$ and $17$.
+
+These values do occur: $\cos\theta=\dfrac{289-205}{156}=\dfrac{7}{13}$ is a valid cosine.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real c=7/13, s=sqrt(1-c^2);
+pair A=(0,0), B=(13,0), D=6*(c,s), C=B+D;
+draw(A--B--C--D--cycle,linewidth(1));
+draw(A--C,blue+linewidth(0.9)); draw(B--D,red+linewidth(0.9));
+dot(A);dot(B);dot(C);dot(D);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$13$",(A+B)/2,S);label("$6$",(A+D)/2,W);
+label("$AC=17$",A+0.72*(C-A),NW,blue);label("$BD=11$",B+0.3*(D-B),SW,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The longer diagonal is $\boxed{17}$ inches.

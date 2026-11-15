@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1204274_equations_of_circles
+% Stable identity: aops-topic-1204274-q01
+A circle in the first quadrant tangent to both axes has centre $(r,r)$ and radius $r$. Passing through $(1,9)$ means
+\[(r-1)^2+(r-9)^2=r^2\iff r^2-20r+82=0\iff r=10\pm3\sqrt2.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real r=10-3*sqrt(2); draw(circle((r,r),r),blue); dot((1,9)); label("$(1,9)$",(1,9),NE); dot((r,r)); label("$(r,r)$",(r,r),SE);
+draw((-1,0)--(12,0),gray,Arrow); draw((0,-1)--(0,12),gray,Arrow);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Both are positive, so the radius is $\boxed{10-3\sqrt2\ \text{or}\ 10+3\sqrt2}$. (This is exactly the equation in the post, which applies when the centre is $(r,r)$.)

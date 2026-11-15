@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2700769_obtuse_triangles_formed_by_7_points_in_seven_equal_arcs
+% Stable identity: aops-topic-2700769-q01
+There are $\dbinom73=35$ triangles, and none is right-angled (no two points are diametrically opposite). An inscribed triangle is obtuse exactly when its vertices lie in an open semicircle (the obtuse angle subtends an arc larger than a semicircle). Each such triangle has a unique first vertex going counterclockwise, and its other two vertices are among the next $3$ points (four steps span $4\cdot\dfrac{360^\circ}{7}>180^\circ$). So there are $7\dbinom32=\boxed{21}$ obtuse triangles (and $14$ acute ones).
+
+\begin{asy}
+usepackage("amsmath");
+size(2.5cm);
+defaultpen(fontsize(10pt));
+pair[] V;for(int k=0;k<7;++k)V[k]=dir(90+360*k/7);
+draw(unitcircle,gray);for(int k=0;k<7;++k)dot(V[k]);
+draw(V[0]--V[1]--V[3]--cycle,linewidth(0.8));dot((0,0));
+\end{asy}

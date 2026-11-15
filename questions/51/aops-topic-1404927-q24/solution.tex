@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1404927_yet_again_lithuanian_math_kangaroo_questions__student_2009
+% Stable identity: aops-topic-1404927-q24
+If the angles are $x,2x,\dots,nx$, their sum is $\dfrac{n(n+1)}{2}x=(n-2)\cdot180^\circ$, so
+\[
+x=\dfrac{360^\circ(n-2)}{n(n+1)}\qquad\text{and the largest angle is}\qquad nx=\dfrac{360^\circ(n-2)}{n+1}.
+\]
+Convexity requires $nx<180^\circ$, that is $2(n-2)<n+1$, so $n<5$. Both remaining values work:
+\begin{itemize}
+\item $n=3$: $x=30^\circ$, a $30$-$60$-$90$ triangle;
+\item $n=4$: $x=36^\circ$, angles $36^\circ,72^\circ,108^\circ,144^\circ$; for instance a trapezoid with base angles $72^\circ$ and $36^\circ$ (the angles at the other base are then $108^\circ$ and $144^\circ$).
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),Bq=(3,0),D=(1/Tan(72),1),C=(3-1/Tan(36),1);
+draw(A--Bq--C--D--cycle,linewidth(0.9));
+label("$72^\circ$",A+0.5*dir(36),fontsize(8pt)); label("$36^\circ$",Bq+0.8*dir(162),fontsize(8pt));
+label("$144^\circ$",C+0.42*dir(252),fontsize(8pt)); label("$108^\circ$",D+0.45*dir(306),fontsize(8pt));
+pair X=(-2.6,0),Y=(-0.6,0),Z=(-2.6,2/sqrt(3));
+draw(X--Y--Z--cycle,linewidth(0.9));
+draw(X+(0.15,0)--X+(0.15,0.15)--X+(0,0.15));
+label("$30^\circ$",Y+0.62*dir(165),fontsize(8pt)); label("$60^\circ$",Z+0.42*dir(300),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So there are exactly $2$ such $n$: $\boxed{\text{(B) } 2}$.

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2759975_geometry_problem
+% Stable identity: aops-topic-2759975-q01
+Let $H$ be the orthocentre and $R$ the circumradius. It is well known that the reflection of $H$ in a side lies on the circumcircle; here $P$ is the reflection of $H$ in $BC$ and $Q$ its reflection in $AB$. Indeed $\angle BCP=\angle BAP=90^\circ-B=\angle BCH$, so $CB$ bisects $\angle HCP$, and $CB\perp HP$.
+
+Hence $BP=BQ=BH$, and the reflections give $\angle PBC=\angle CBH=90^\circ-C$ and $\angle QBA=\angle ABH=90^\circ-A$. So
+\[\angle PBQ=(90^\circ-C)+B+(90^\circ-A)=2B.\]
+Since $P,B,Q$ lie on the circumcircle, $PQ=2R\sin2B$, while $AC=2R\sin B$. Therefore $\dfrac{PQ}{AC}=2\cos B$.
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=dir(200),C=dir(3.6),B=dir(100);pair H=A+B+C;pair P=-B*C/A,Q=-A*B/C;
+draw(unitcircle,gray);draw(A--B--C--cycle);draw(A--P,dashed);draw(C--Q,dashed);draw(P--Q,linewidth(1));draw(B--P,dotted);draw(B--Q,dotted);
+dot(H);label("$H$",H,dir(30),fontsize(8pt));
+label("$A$",A,W);label("$B$",B,N);label("$C$",C,E);label("$P$",P,NE,fontsize(8pt));label("$Q$",Q,NW,fontsize(8pt));
+\end{asy}
+
+With $\dfrac{PQ}{AC}=\dfrac27$ we get $\cos B=\dfrac17$, so $\sin\angle ABC=\sqrt{1-\dfrac1{49}}=\boxed{\dfrac{4\sqrt3}7}$.
+
+(The ratio $PQ:AC=7:2$ in the original is impossible, since $2\cos B<2$.)

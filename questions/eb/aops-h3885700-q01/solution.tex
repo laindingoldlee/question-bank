@@ -1,0 +1,16 @@
+Let the semiaxes be $a\ge b$. For an ellipse rotated by angle $\theta$ inside an axis-parallel rectangle, its squared half-width and half-height are
+\[
+a^2\cos^2\theta+b^2\sin^2\theta=64,\qquad
+a^2\sin^2\theta+b^2\cos^2\theta=25.
+\]
+These formulas follow by maximising the coordinate of $(a\cos t,b\sin t)$ after rotation. Thus $a^2+b^2=89$. The focal distance gives $a^2-b^2=7^2=49$, so $a^2=69,b^2=20$. The area is
+\[
+\pi ab=\pi\sqrt{1380}=2\pi\sqrt{345}.
+\]
+Since $345=3\cdot5\cdot23$ is squarefree, $\boxed{m+n=347}$. The orientation exists because $\cos2\theta=\dfrac{39}{49}$ is between $-1$ and $1$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real t=acos(39.0/49)*90/pi;draw(box((-8,-5),(8,5)));draw(rotate(t)*xscale(sqrt(69))*yscale(sqrt(20))*unitcircle,blue);draw(-7dir(t)--7dir(t),dashed);dot(-7dir(t));dot(7dir(t));label("$14$",(0,0),N);label("$16$",(0,-5),S);label("$10$",(8,0),E);
+\end{asy}

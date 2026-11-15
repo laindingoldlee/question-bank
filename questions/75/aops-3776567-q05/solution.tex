@@ -1,0 +1,9 @@
+Put $\angle ABE=\beta$. Then $\angle B=2\beta$, $\angle A=135^\circ-\beta$, and $\angle C=45^\circ-\beta$, so $0<\beta<45^\circ$. Take $BC$ horizontal, $H$ below $A$. In triangle $ABE$, the sine rule gives $BE\sin\beta=AE\sin(45^\circ+\beta)=AE\cos\angle C$. The left side is the height of $E$ above $BC$; the right side is its horizontal displacement from $A$, hence from $H$. These two positive quantities are equal. Thus $HE$ makes $45^\circ$ with $BC$ and also with $HA$, giving $\boxed{45^\circ}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0.134,0.232),(0,0),(1,0)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));pair H=(.134,0),E=(.317,.183);draw(p[0]--H,dashed);draw(p[1]--E);draw(H--E);label("$H$",H,(0,-1));label("$E$",E,(1,1));
+\end{asy}
+

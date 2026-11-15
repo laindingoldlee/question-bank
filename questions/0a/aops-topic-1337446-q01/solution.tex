@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1337446_number_theory_terminating_decimals
+% Stable identity: aops-topic-1337446-q01
+A fraction $\dfrac{1}{n}$ terminates exactly when $n$ has no prime factors other than $2$ and $5$, that is, $n=2^a5^b$ with $a,b\ge0$. (Then $\dfrac{1}{n}=\dfrac{2^{m-a}5^{m-b}}{10^m}$ with $m=\max(a,b)$; conversely, if $\dfrac{1}{n}=\dfrac{k}{10^m}$ then $n\mid10^m$.) Being divisible by $2$ or $5$ is not enough: for example $\dfrac{1}{6}=0.1\overline6$ does not terminate.
+
+Count $2^a5^b\le1000$ by the power of $5$:
+\[
+\begin{aligned}
+b=0&:\ 2^a\le1000,\ a=0,\dots,9 &&(10)\\
+b=1&:\ 2^a\le200,\ a=0,\dots,7 &&(8)\\
+b=2&:\ 2^a\le40,\ a=0,\dots,5 &&(6)\\
+b=3&:\ 2^a\le8,\ a=0,\dots,3 &&(4)\\
+b=4&:\ 2^a\le1.6,\ a=0 &&(1)
+\end{aligned}
+\]
+That is $29$ values (including $n=1$, for which $\dfrac{1}{1}=1$ terminates), so the probability is $\boxed{\dfrac{29}{1000}}$.

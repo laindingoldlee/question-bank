@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2662238_solve_this_prob
+% Stable identity: aops-topic-2662238-q01
+Translate every line so that it passes through a fixed point $O$. A translation does not change the direction of a line, so the angle between any two lines is unchanged, and the eight translated lines are still distinct (no two of the original lines are parallel).
+
+Going around $O$, the eight lines through $O$ cut the half-turn from one ray of the first line to the opposite ray into eight consecutive angles between neighbouring lines, all positive, with total $180^\circ$. The smallest of them is at most $\dfrac{180^\circ}{8}=22.5^\circ<23^\circ$, and it is the angle between two of the lines. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real[] th={0,20,45,70,95,120,140,160};
+for(int k=0;k<8;++k)draw(-1.2*dir(th[k])--1.2*dir(th[k]));
+dot((0,0));label("$O$",0.36*dir(262.5),fontsize(8pt));
+draw(arc((0,0),0.75,0,20),red+linewidth(0.8));label("$\le22.5^\circ$",0.8*dir(10),E,red+fontsize(8pt));
+for(int k=1;k<8;++k)draw(arc((0,0),0.45,th[k-1],th[k]),gray);
+draw(arc((0,0),0.45,160,180),gray);
+\end{asy}

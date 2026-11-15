@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1550512_waterloo_challenge_problem
+% Stable identity: aops-topic-1550512-q01
+\textbf{Digit sum of $N$.} The units digits of $1,\dots,50$ contribute $5\cdot45=225$ and the tens digits contribute $10(1+2+3+4)+5=105$, a total of $330$. So the discarded digits must add up to $330-200=130$.
+
+\textbf{Number of digits.} An integer with more digits is larger, so we discard as few digits as possible. $N$ has $91$ digits, including exactly five 9s, five 8s, five 7s and five 6s (in $6,\dots,9$ and $16,\dots,19$, $26,\dots,29$, $36,\dots,39$, $46,\dots,49$). The $16$ largest digits of $N$ add up to $45+40+35+6=126<130$, so at least $17$ digits must be discarded; we will see that $17$ is enough, so $M$ has $91-17=74$ digits.
+
+\textbf{Which digits can be discarded.} If $17$ digits with sum $130$ are discarded and $d$ is one of them, the other $16$ add up to at most $126$, so $d\ge130-126=4$. Hence the digits $1,2,3$ at the start are kept, and $M$ begins $123$.
+
+\textbf{The fourth digit.} Next in $N$ come $4,5,6$. If the first $4$ is kept, $M$ begins $1234$. If it is discarded, the other $16$ discarded digits add up to $126$, so they must be exactly the $16$ largest digits: all the 9s, 8s and 7s and one 6. In particular the $5$ is kept and $M$ begins $1235$, which is larger. So the first $4$ is discarded, together with all the 7s, 8s and 9s and one 6 (this is $17$ digits with sum $4+45+40+35+6=130$, as needed).
+
+\textbf{Which 6.} The 6s are the units digits of $6,16,26,36,46$. Discarding the 6 in a block $\ldots k5\,k6\,k7\,k8\,k9\ldots$ replaces, at that position of $M$, the digit $6$ by the following kept digit $k$ (with $k\le4$); the earlier this happens, the smaller $M$ is. So the 6 of $46$ is discarded. Thus
+\[
+M=1235\,6\,10111213141516\,111\,20212223242526\,222\,30313233343536\,333\,404142434445\,4444\,50 ,
+\]
+whose digit sum is $200$, and its first ten digits are $\boxed{1235610111}$.

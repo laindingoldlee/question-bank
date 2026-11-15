@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2326244_angle_wanted_triangle_sum_2020_iii_european_math_tournament__geo_1
+% Stable identity: aops-topic-2326244-q01
+Let the angles be $A=2B$ and $C$, with $|A-C|=20^\circ$ and $A+B+C=180^\circ$.
+\begin{itemize}
+\item If $C=A-20^\circ=2B-20^\circ$: $2B+B+2B-20^\circ=180^\circ$, so $B=40^\circ$, $A=80^\circ$, $C=60^\circ$. The greatest angle is $80^\circ$.
+\item If $C=A+20^\circ=2B+20^\circ$: $5B+20^\circ=180^\circ$, so $B=32^\circ$, $A=64^\circ$, $C=84^\circ$. The greatest angle is $84^\circ$.
+\end{itemize}
+Both triangles exist (all angles positive, sum $180^\circ$).
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+void tr(pair o, real a, real b, string la, string lb, string lc){
+ real c=180-a-b; real s=4; pair P=o, Q=o+(s,0);
+ pair R=P+(s*Sin(b)/Sin(c))*dir(a);
+ draw(P--Q--R--cycle,linewidth(0.9));
+ label(la,P+0.7*dir(a/2),fontsize(8pt)); label(lb,Q+0.75*dir(180-b/2),fontsize(8pt)); label(lc,R+0.75*dir(270+(a-b)/2),fontsize(8pt));}
+tr((0,0),80,40,"$80^\circ$","$40^\circ$","$60^\circ$");
+tr((5.5,0),64,32,"$64^\circ$","$32^\circ$","$84^\circ$");
+label("$C=A-20^\circ$",(2,-0.3),S); label("$C=A+20^\circ$",(7.5,-0.3),S);
+\end{asy}
+
+So the greatest angle is $\boxed{80^\circ\text{ or }84^\circ}$.

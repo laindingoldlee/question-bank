@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2774448_diagram_help
+% Stable identity: aops-topic-2774448-q01
+Since $11^2+13^2=290<400=20^2$, the angle $B$ is obtuse, and $\cos B=\dfrac{121+169-400}{2\cdot11\cdot13}=-\dfrac5{13}$.
+
+\textbf{Position of $D$ and $E$.} A point $X$ lies inside the circle with diameter $AC$ exactly when $\angle AXC>90^\circ$; so $B$ is inside the circle. Each line through $B$ therefore meets the circle at two points on opposite sides of $B$. One of them is $A$ (respectively $C$), so $D$ lies on ray $AB$ beyond $B$, and $E$ lies on ray $CB$ beyond $B$.
+
+\textbf{Computing $DE$.} By Thales, $\angle ADC=\angle AEC=90^\circ$, so $D$ and $E$ are the feet of the perpendiculars from $C$ to line $AB$ and from $A$ to line $BC$. In the right triangles $BDC$ and $BEA$, the angle at $B$ is $180^\circ-B$, so $BD=13|\cos B|=5$ and $BE=11|\cos B|=\dfrac{55}{13}$. Thus $\dfrac{BD}{BC}=\dfrac{BE}{BA}=|\cos B|$, and triangles $BDE$ and $BCA$ are similar (the angles $\angle DBE$ and $\angle CBA$ are vertical angles). Hence
+\[DE=AC\cdot|\cos B|=20\cdot\dfrac5{13}=\boxed{\dfrac{100}{13}}.\]
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),C=(20,0);real c=(20^2+11^2-13^2)/(2*20);pair B=(c,sqrt(11^2-c^2));pair O=(10,0);
+pair D=A+(dot(C-A,B-A)/dot(B-A,B-A))*(B-A);pair Ee=C+(dot(A-C,B-C)/dot(B-C,B-C))*(B-C);
+draw(circle(O,10),gray);draw(A--B--C--cycle);draw(B--D,dashed);draw(B--Ee,dashed);draw(C--D,dotted);draw(A--Ee,dotted);draw(D--Ee,linewidth(1));
+dot(O);label("$A$",A,W);label("$C$",C,E);label("$B$",B,S);label("$D$",D,N);label("$E$",Ee,N);label("$O$",O,N);
+label("$11$",(A+B)/2,NW,fontsize(8pt));label("$13$",(B+C)/2,NE,fontsize(8pt));label("$20$",(5,0),S,fontsize(8pt));
+\end{asy}

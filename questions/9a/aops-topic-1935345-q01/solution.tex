@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1935345_confusing_question
+% Stable identity: aops-topic-1935345-q01
+The correct formulas are
+\[
+P(n,p)=\dfrac{n!}{(n-p)!}\qquad\text{and}\qquad\dbinom np=\dfrac{n!}{p!\,(n-p)!}.
+\]
+In the first, the parentheses are missing: $n-p!$ means $n-(p!)$, not $(n-p)!$. In the second, the factor $n!$ in the denominator should be $p!$; as written the formula equals $\dfrac{1}{(n-p)!}$, which is not even an integer in general.
+
+A permutation is an \emph{ordered} selection: there are $n(n-1)\cdots(n-p+1)=\dfrac{n!}{(n-p)!}$ ways to fill $p$ positions in order. A combination is an \emph{unordered} selection: each set of $p$ objects is counted $p!$ times among the ordered selections, so $\dbinom np=\dfrac{P(n,p)}{p!}$.
+
+For $n=5$, $p=2$: $P(5,2)=5\cdot4=20$ and $\dbinom52=\dfrac{20}{2}=10$. So the answers are $\boxed{20\text{ and }10}$.

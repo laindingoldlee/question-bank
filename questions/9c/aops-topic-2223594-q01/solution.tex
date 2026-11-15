@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2223594_find_all_positive_integers_n_satisfying
+% Stable identity: aops-topic-2223594-q01
+\textbf{Factor.} At $n=-2$ the polynomial is $-8+128-234+114=0$, so $n+2$ is a factor:
+\[n^3+32n^2+117n+114=(n+2)\left(n^2+30n+57\right).\]
+
+\textbf{The factors are coprime.} Since $n^2+30n+57=(n+2)(n+28)+1$, any common divisor of $n+2$ and $n^2+30n+57$ divides $1$. Two coprime positive integers whose product is a perfect square are both perfect squares (each prime appears to an even power in the product, and entirely in one factor). So for positive $n$,
+\[n+2=a^2\qquad\text{and}\qquad n^2+30n+57=m^2\]
+for positive integers $a,m$.
+
+\textbf{Solve the second condition.} Completing the square, $(n+15)^2-m^2=168$, so
+\[(n+15-m)(n+15+m)=168,\]
+where the two factors have the same parity and the second is larger. Since $168$ is even, both are even, giving $(2,84),(4,42),(6,28),(12,14)$, so $n+15=\dfrac{d+e}{2}\in\{43,23,17,13\}$ and $n\in\{28,8,2,-2\}$.
+
+\textbf{Check the first condition.} For $n=28,8,2$ we get $n+2=30,10,4$, and only $4$ is a square. So $\boxed{n=2}$, and indeed $8+128+234+114=484=22^2$.

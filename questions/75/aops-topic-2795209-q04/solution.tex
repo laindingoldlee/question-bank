@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2795209_2021_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2795209-q04
+A row contains $5$ points. With only two colours, some colour appears at least $3$ times in that row, and those three points are collinear. So at least $3$ colours are needed.
+
+Three colours suffice. Label the colours $A,B,C$ and colour the rows (top to bottom) as
+\[\begin{array}{ccccc}B&B&C&A&A\\A&A&B&B&C\\A&A&B&C&C\end{array}\]
+Place the bottom-left point at $(0,0)$ and the top-right at $(4,2)$. Each row uses every colour at most twice, and each column (three points) is not monochromatic: the columns read $BAA,BAA,CBB,ABC,ACC$ from top to bottom. Every other line through three array points contains exactly three points; there are eight of them: the lines of slope $1$ starting at $(0,0),(1,0),(2,0)$; of slope $-1$ starting at $(0,2),(1,2),(2,2)$; and slope $\pm\dfrac12$ through $(0,0),(2,1),(4,2)$ and $(0,2),(2,1),(4,0)$. Their colours are
+\[AAC,\ ABA,\ BBA;\quad BAB,\ BBC,\ CBC;\quad ABA,\ BBC,\]
+none monochromatic.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+string[] row2={"B","B","C","A","A"},row1={"A","A","B","B","C"},row0={"A","A","B","C","C"};
+for(int x=0;x<5;++x){label(row2[x],(x,2));label(row1[x],(x,1));label(row0[x],(x,0));}
+draw((0,0)--(2,2),dotted);draw((0,0)--(4,2),dotted);draw((0,2)--(4,0),dotted);
+\end{asy}
+
+
+Hence the minimum is $\boxed{3}$.

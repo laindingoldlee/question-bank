@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1763615_coordinate_math
+% Stable identity: aops-topic-1763615-q01
+Put $u=x-10$, $v=y-5$; this translation does not change areas, and the region becomes $|u|+|v|\le100$. In each quadrant this is a right triangle with legs $100$, for instance $u,v\ge0$, $u+v\le100$. So the region is a square (a ``diamond'') centred at $(10,5)$ with vertices $(110,5)$, $(10,105)$, $(-90,5)$, $(10,-95)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair Cc=(10,5);
+pair P1=(110,5),P2=(10,105),P3=(-90,5),P4=(10,-95);
+fill(P1--P2--P3--P4--cycle,paleblue);draw(P1--P2--P3--P4--cycle,blue+linewidth(0.9));
+draw((-110,0)--(135,0),Arrow);draw((0,-110)--(0,130),Arrow);
+label("$x$",(135,0),E);label("$y$",(0,130),N);
+dot(Cc);
+label("$(10,5)$",Cc,dir(45));
+label("$(110,5)$",P1,2*dir(35));label("$(10,105)$",P2,E);label("$(-90,5)$",P3,2*dir(145));label("$(10,-95)$",P4,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Its diagonals have length $200$, so its area is $\dfrac{1}{2}\cdot200\cdot200=\boxed{20000}$.

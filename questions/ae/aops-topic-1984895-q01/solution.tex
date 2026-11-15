@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1984895_2015_a_amc_10b
+% Stable identity: aops-topic-1984895-q01
+\textbf{(a)} Two corners are joined by an edge exactly when they differ in one coordinate, so each move changes exactly one coordinate by $1$ and therefore changes the parity of $x+y+z$. The start has sum $0$ (even), so after $7$ moves (an odd number) the sum is odd. This is why the end cannot be $(1,1,0)$, $(1,0,1)$ or $(0,1,1)$. The corners with odd sum are $(1,0,0),(0,1,0),(0,0,1)$, which are adjacent to the start, and $(1,1,1)$. Erin cannot return along an edge, so she ends at the opposite corner $(1,1,1)$.
+
+\textbf{(b)} We count the paths from $(0,0,0)$ to $(1,1,1)$ through all $8$ corners. The first move has $3$ choices; by symmetry say it goes to $100$ (writing $xyz$ for $(x,y,z)$). The second move goes to $110$ or $101$ ($2$ choices, symmetric); say $110$. Now the moves are forced, because $111$ must come last:
+\[
+110\to010\to011\to001\to101\to111 .
+\]
+(From $110$ the only new corners are $010$ and $111$; from $010$ only $011$; from $011$ the choice $111$ is too early, so $001$; then $101$; then $111$.) Hence there are $3\cdot2\cdot1=\boxed{6}$ paths.

@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2905256_hole_in_the_sphere
+% Stable identity: aops-topic-2905256-q01
+Let the sphere have radius $R$ and the hole radius $a$, with $a^2+3^2=R^2$. At height $z$ ($|z|\le3$) the cross-section is an annulus of area $\pi\bigl((R^2-z^2)-a^2\bigr)=\pi(9-z^2)$, which is independent of $R$.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),3));draw((-1.8,-2.4)--(1.8,-2.4)--(1.8,2.4)--(-1.8,2.4)--cycle,dashed);draw((0,0)--(1.8,2.4));draw((0,0)--(0,2.4),dotted);label("$R$",(0.9,1.2),SE);label("$3$",(0,1.2),W);label("$a$",(0.9,2.4),N);
+\end{asy}
+
+So $V=\displaystyle\int_{-3}^3\pi(9-z^2)\,dz=\pi(54-18)=\boxed{36\pi}$. (Remarkably, the answer does not depend on the sphere's size.)

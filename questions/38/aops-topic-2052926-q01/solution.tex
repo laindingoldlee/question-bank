@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2052926_circle_in_circle_problem
+% Stable identity: aops-topic-2052926-q01
+\textbf{(a)} Let $O$ be the centre of the large circle and $C$ the centre of the small one, so $OC=8-4=4$: the small circle always passes through $O$. Let $A$ be the point of the large circle where the small circle touched it when $P$ was the point of contact, and suppose that later the point of contact is $T$, with $\angle AOT=\alpha$.
+
+Rolling without slipping means that the arc $AT$ of the large circle and the arc $TP$ of the small circle have the same length, $8\alpha$ (in radians). So the arc $TP$ of the small circle subtends the central angle $\angle TCP=\dfrac{8\alpha}{4}=2\alpha$, with $P$ on the side of $T$ towards $A$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real al=50;
+pair O=(0,0), A=(8,0), A2=(-8,0);
+pair T=8*dir(al), Cc=4*dir(al), P=(8*Cos(al),0);
+draw(circle(O,8)); draw(circle(Cc,4),blue);
+draw(A2--A,red+dashed+linewidth(0.9));
+draw(O--T,gray); draw(Cc--P,blue); draw(T--P,gray+dotted);
+draw(arc(O,1.6,0,al)); label("$\alpha$",O+1.9*dir(al/2),fontsize(8pt));
+draw(arc(Cc,1.1,-al,al),blue); label("$2\alpha$",Cc+1.45*dir(0),blue+fontsize(8pt));
+dot(O); dot(A); dot(A2); dot(T); dot(Cc,blue); dot(P,red);
+label("$O$",O,SW); label("$A$",A,E); label("$A'$",A2,W); label("$T$",T,NE); label("$C$",Cc,NW,blue); label("$P$",P,S,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $O$ lies on the small circle, $\angle TOP$ is an inscribed angle of the small circle on the arc $TP$, so $\angle TOP=\dfrac{1}{2}\angle TCP=\alpha=\angle TOA$. Hence $P$ lies on the line $OA$. Moreover $OT$ is a diameter of the small circle, so $\angle OPT=90^\circ$ and $OP=OT\cos\alpha=8\cos\alpha$.
+
+In coordinates with $O=(0,0)$ and $A=(8,0)$: $C=4(\cos\alpha,\sin\alpha)$, the radius $CP$ points in the direction $-\alpha$, and
+\[P=4(\cos\alpha,\sin\alpha)+4(\cos\alpha,-\sin\alpha)=(8\cos\alpha,\,0).\]
+So $P$ always lies on the diameter $AA'$ of the large circle, at the point $8\cos\alpha$, and moves back and forth along it. Every point of the small circle is the point of contact at some moment, so this holds for every marked point (each moves along its own diameter).
+
+\textbf{(b)} As $\alpha$ goes from $0^\circ$ to $360^\circ$, $8\cos\alpha$ goes from $8$ down to $-8$ and back to $8$. So $P$ travels the diameter twice, a total distance of $2\cdot16=\boxed{32}$.

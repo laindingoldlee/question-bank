@@ -1,0 +1,18 @@
+Let $D$ be the product of the integers from $1$ through $100$ that are not divisible by $7$, so $D=\dfrac{100!}{(7^{14}14!)}$. For a nontrivial seventh root $z$, the unnormalised contribution of a die with $k\equiv r\ne0\pmod7$ is
+\[
+\sum_{j=1}^{k}z^{kj}=z^r\dfrac{1-z^{r^2}}{1-z^r}.
+\]
+The product over a complete set $r=1,\ldots,6$ is $-1$. To verify this, the squares of these residues are $1,2,4$, each twice, while $\prod_{r=1}^6(1-z^r)=7$. If $A=(1-z)(1-z^2)(1-z^4)$, the complementary three factors multiply to $-A$ because their exponents are the negatives of $1,2,4$ and these sum to $7$. Thus $-A^2=7$, and the product is $\dfrac{A^2}{7}=-1$.
+
+There are fourteen complete blocks through $98$. Dice with $7\mid k$ contribute probability generating value $1$. The last two dice contribute unnormalised factors $z$ and $z^2+z^4$. Hence the product of all probability generating values at $z$ is $\dfrac{(z^3+z^5)}{D}$.
+
+The roots-of-unity filter now gives
+\[
+P=\dfrac{1}{7}\left(1+\dfrac{1}{D}\sum_{j=1}^6(z^{3j}+z^{5j})\right)
+=\dfrac{D-2}{7D}.
+\]
+Since $D\equiv2\pmod7$ and $4\mid D$, the gcd of numerator and denominator is exactly $14$. Thus
+\[
+m+n=\dfrac{D-2}{14}+\dfrac{D}{2}=\dfrac{4D-1}{7}.
+\]
+Multiplying the nonmultiples of $7$ through $100$ modulo $7000$ gives $D\equiv5000\pmod{7000}$. Consequently $m+n\equiv\dfrac{19999}{7}=2857\equiv\boxed{857}\pmod{1000}$.

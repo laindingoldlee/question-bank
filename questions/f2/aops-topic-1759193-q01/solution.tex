@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1759193_mathcounts_problem
+% Stable identity: aops-topic-1759193-q01
+Split the seven consecutive Fridays into blocks of Fridays in the same month. Inside a block the dates go up by $7$. Months have at most $31$ days, so a block has at most $5$ Fridays, and seven Fridays span at least two months.
+
+\textbf{First block.} If it has $i$ Fridays, its dates end at most at $31$, so its sum is at most $31+24+\cdots$ ($i$ terms): $F(1)=31$, $F(2)=55$, $F(3)=72$, $F(4)=82$, $F(5)=85$.
+
+\textbf{Later blocks} start at the first Friday of a month, date at most $7$, so a block of $j$ Fridays has dates at most $7,14,\dots$ and at most $31$: $G(1)=7$, $G(2)=21$, $G(3)=42$, $G(4)=70$, $G(5)=3+10+17+24+31=85$ (a fifth Friday needs the first one on day $3$ or earlier). Since $G(j)+G(j')\le G(j+j')$ whenever $j+j'\le5$, merging later blocks only increases the bound.
+
+\textbf{Cases} for the size $i$ of the first block:
+\begin{itemize}
+\item $i=1$: the other $6$ Fridays need at least two later blocks: at most $31+\max(G(5)+G(1),\,G(4)+G(2),\,G(3)+G(3))=31+92=123$.
+\item $i=2$: at most $55+G(5)=140$.
+\item $i=3$: at most $72+G(4)=142$.
+\item $i=4$: at most $82+G(3)=124$.
+\item $i=5$: at most $85+G(2)=106$.
+\end{itemize}
+So the sum is at most $142$, and $142$ is attained when a $31$-day month has Fridays on the $17$th, $24$th and $31$st: the next Fridays are the $7$th, $14$th, $21$st and $28$th of the following month, and
+\[
+17+24+31+7+14+21+28=\boxed{142}.
+\]
+(For example, the Fridays from July 17 to August 28, 2015.)

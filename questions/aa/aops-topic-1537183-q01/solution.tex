@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1537183_help_me_solve_this_problem
+% Stable identity: aops-topic-1537183-q01
+We need integer solutions of $x^2+y^2=81$.
+
+If $x=0$ or $y=0$, we get the four points $(\pm9,0)$ and $(0,\pm9)$.
+
+If both $x$ and $y$ are nonzero, then $x^2$ is one of $1,4,9,16,25,36,49,64$, and $81-x^2$ is respectively $80,77,72,65,56,45,32,17$, none of which is a perfect square. (Alternatively: $81=3^4$, and a multiple of $3$ that is a sum of two squares must have both squares divisible by $3$, since squares are $0$ or $1$ modulo $3$; this reduces to $x^2+y^2=9$ and then to $x^2+y^2=1$, which has only the solutions on the axes.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+draw((-13,0)--(13,0),gray,Arrow(TeXHead));draw((0,-12)--(0,12),gray,Arrow(TeXHead));
+label("$x$",(13,0),E,gray);label("$y$",(0,12),N,gray);
+draw(circle((0,0),9),blue+linewidth(0.9));
+pair[] P={(9,0),(0,9),(-9,0),(0,-9)};
+for(pair p:P) dot(p,red+linewidth(5));
+label("$(9,0)$",(9,0),SE,red);label("$(0,9)$",(0,9),NE,red);label("$(-9,0)$",(-9,0),SW,red);label("$(0,-9)$",(0,-9),SE,red);label("$9$",(4.5,0),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So there are exactly $\boxed{4}$ such points.

@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2427190_interesting_problem_i_made
+% Stable identity: aops-topic-2427190-q01
+\textbf{Construction 1 (circles only).} Draw the circle with centre $A$ through $B$ and the circle with centre $B$ through $A$. Both have radius $AB$, and the distance between their centres is $AB$, which is less than the sum $2AB$ of the radii, so they meet in two points; let $C$ be one of them. Then
+\[AC=AB\quad(\text{radius of the first circle}),\qquad BC=BA\quad(\text{radius of the second circle}),\]
+so $AB=BC=CA$ and triangle $ABC$ is equilateral.
+
+\textbf{Construction 2 (perpendicular bisector).} Mark the midpoint $M$ of $AB$ and draw the line through $M$ perpendicular to $AB$. Draw the circle with centre $A$ through $B$; it meets this line at a point $C$ (the line passes through $M$, which is inside the circle). Then $AC=AB$. Also triangles $AMC$ and $BMC$ are congruent (SAS: $AM=BM$, $\angle AMC=\angle BMC=90^\circ$, common side $MC$), so $CB=CA$. Hence $AB=AC=BC$ and triangle $ABC$ is equilateral.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(2,0), C=(1,sqrt(3)), M=(1,0);
+draw(circle(A,2),gray); draw(circle(B,2),gray);
+draw((1,-2.2)--(1,2.2),dashed);
+draw(A--B--C--cycle,blue+linewidth(0.9));
+real s=0.13; draw(M+(s,0)--M+(s,s)--M+(0,s));
+dot(A); dot(B); dot(C); dot(M);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$M$",M,SE);
+\end{asy}
+
+Both constructions give the same point $C$ (or its mirror image below $AB$): the two circles meet exactly on the perpendicular bisector of $AB$.

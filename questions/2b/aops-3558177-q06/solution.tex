@@ -1,0 +1,6 @@
+Apply inclusion--exclusion to the six face events. For a selected collection of faces, identify vertices required to share a colour. If the identifications leave $c$ equivalence classes, there are $3^c$ assignments satisfying those events. Summing by the number of selected faces gives $6561,1458,351,108,45,18,3$ for sizes zero through six. The alternating sum is $5376$, counting colourings with no monochromatic face. Thus the desired probability is $1-\dfrac{5376}{6561}=\dfrac{395}{2187}\approx\boxed{0.181}$. For example a single specified face fixes its four vertices to one colour, leaving five colour classes, accounting for $6\cdot3^5=1458$ in the table.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair u=(2,0),v=(.8,.7),w=(0,2);draw((0,0)--u--u+v--v--cycle);draw(w--u+w--u+v+w--v+w--cycle);draw((0,0)--w^^u--u+w^^v--v+w^^u+v--u+v+w);pair[] VV={(0,0),u,u+v,v,w,u+w,u+v+w,v+w};string[] nn={"A","B","C","D","E","F","G","H"};for(int i=0;i<8;++i)label("$"+nn[i]+"$",VV[i],i<4?(0,-1):(0,1));
+\end{asy}
+

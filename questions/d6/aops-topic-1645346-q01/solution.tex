@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1645346_how_to_copy_an_angle_using_a_compass
+% Stable identity: aops-topic-1645346-q01
+\textbf{Construction.}
+\begin{enumerate}
+\item With centre $B$ and any radius $r$, draw an arc meeting ray $BA$ at $P$ and ray $BC$ at $Q$.
+\item With centre $B'$ and the same radius $r$, draw an arc meeting ray $B'A'$ at $P'$.
+\item Set the compass to the distance $PQ$. With centre $P'$ and this radius, draw an arc meeting the arc of step 2 at $Q'$.
+\item Draw the ray $B'Q'$.
+\end{enumerate}
+
+\begin{asy}
+usepackage("amsmath");
+size(10cm);
+defaultpen(fontsize(10pt));
+real t=50, r=1.6;
+pair B=(0,0),A=3*dir(0),C=3*dir(t);
+pair P=r*dir(0),Q=r*dir(t);
+draw(B--A,linewidth(0.9));draw(B--C,linewidth(0.9));
+draw(arc(B,r,-12,t+15),blue);draw(P--Q,red+dashed);
+dot(B);dot(P);dot(Q);
+label("$B$",B,SW);label("$P$",P,SE);label("$Q$",B+1.0*dir(72));label("$A$",A,E);label("$C$",C,NE);
+pair B2=(5,0),A2=B2+3*dir(0),C2=B2+3*dir(t);
+pair P2=B2+r*dir(0),Q2=B2+r*dir(t);
+draw(B2--A2,linewidth(0.9));draw(B2--C2,linewidth(0.9)+dashed);
+draw(arc(B2,r,-12,t+15),blue);
+real d=length(P-Q);
+draw(arc(P2,d,t+50,t+75),green+linewidth(0.8));
+draw(P2--Q2,red+dashed);
+dot(B2);dot(P2);dot(Q2);
+label("$B'$",B2,SW);label("$P'$",P2,SE);label("$Q'$",B2+1.0*dir(72));label("$A'$",A2,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Proof.} By construction $B'P'=BP=r$, $B'Q'=BQ=r$ and $P'Q'=PQ$. So triangles $PBQ$ and $P'B'Q'$ are congruent by SSS, and corresponding angles are equal: $\angle P'B'Q'=\angle PBQ$. Since $P,Q$ lie on the rays $BA,BC$ and $P',Q'$ on the rays $B'A',B'Q'$, this says $\angle A'B'Q'=\angle ABC$.
+
+The two arcs in step 3 do meet: the circles have radii $r$ and $PQ$ with centres $r$ apart, and $PQ<2r$ (the triangle inequality in triangle $PBQ$, or $PQ$ is a chord of a circle of radius $r$), so they intersect in two points, one on each side of line $B'A'$. Either one gives a copy of the angle; choose the side where the copy is wanted.

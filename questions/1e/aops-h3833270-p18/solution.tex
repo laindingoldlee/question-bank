@@ -1,0 +1,7 @@
+The initial altitude is $H=\dfrac{3}{2}(S-2)$. Subsequent projections alternate between lines BC and $BA_0$, which meet at sixty degrees. Each projection halves the distance to B; thus the perpendicular lengths are $H,\dfrac{H}{2},\dfrac{H}{4},\ldots$. Their sum is $2H=3(S-2)$. Equating this to S gives $S=3S-6$, hence $\boxed{S=3}$, which satisfies S>2 and gives a nondegenerate triangle.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair B=(0,0),C=(2,0),A0=(1,sqrt(3));pair[] a={A0,(1,0)};for(int i=1;i<5;++i){pair d=a[i-1];a.push(dot(a[i],d)/dot(d,d)*d);}draw(A0--B--C--cycle);for(int i=0;i<5;++i)draw(a[i]--a[i+1],blue+dashed);label("$B$",B,(-1,-1));label("$C$",C,(1,-1));for(int i=0;i<5;++i)label("$A_"+string(i)+"$",a[i],i%2==0?(0,1):(0,-1));
+\end{asy}

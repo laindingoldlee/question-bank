@@ -1,0 +1,6 @@
+% Source: https://artofproblemsolving.com/community/c3h2742001_how_many_ways_are_there_to_write_the_numbers_0_through_9_in_a_row_such_that_eac
+% Stable identity: aops-topic-2742001-q01
+We claim that after each step, the numbers written so far form a block of consecutive integers. This holds at the start; and if the numbers so far form a block $\{u,\dots,v\}$, the next number must differ by $1$ from one of them and is new, so it is $u-1$ or $v+1$, and the block grows.
+
+So a valid row is determined by the first number $s$ together with the order in which the block grows downward ($s$ times) and upward ($9-s$ times). There are $\dbinom{9}{s}$ such orders, so the total is
+\[\sum_{s=0}^{9}\dbinom9s=2^9=\boxed{512}.\]

@@ -1,0 +1,7 @@
+The second player wins by returning the rook to the main diagonal after every first-player move. If the rook is at $(k,k)$ and the first player increases one coordinate to $j>k$, increase the other to $j$. This is legal and maintains the invariant. Eventually the second player reaches $(8,8)$. The first player cannot reach that corner in one move from a different diagonal square. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+for(int i=0;i<=8;++i){draw((i,0)--(i,8),gray);draw((0,i)--(8,i),gray);}draw((.5,.5)--(7.5,7.5),dashed);draw((.5,.5)--(3.5,.5)--(3.5,3.5),Arrow);label("start",(.5,.5),(0,1));label("goal",(7.5,7.5),(0,-1));
+\end{asy}

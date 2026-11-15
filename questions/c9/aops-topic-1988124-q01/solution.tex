@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h1988124_amc_10_geometry_problem
+% Stable identity: aops-topic-1988124-q01
+\textbf{Step 1: the sphere meets the plane in the incircle.} Let $\Pi$ be the plane of the triangle and $I$ the foot of the perpendicular from $O$ to $\Pi$, with $OI=d$. The sphere meets $\Pi$ in a circle $\omega$ with centre $I$ and radius $\sqrt{36-d^2}$ (each point $X$ of the intersection has $IX^2=OX^2-OI^2$). Each side of the triangle lies in $\Pi$ and touches the sphere in exactly one point, so it meets $\omega$ in exactly one point; hence each side is tangent to $\omega$. A circle in the plane of a triangle that is tangent to all three sides (not just their extensions) is the incircle. So $\omega$ is the incircle and $\sqrt{36-d^2}=r$, the inradius.
+
+\textbf{Step 2: the inradius.} The triangle is isosceles; the altitude to the side $24$ has length $\sqrt{15^2-12^2}=9$, so the area is $\dfrac12\cdot24\cdot9=108$. The semiperimeter is $\dfrac{15+15+24}{2}=27$, so $r=\dfrac{108}{27}=4$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(-12,0), B=(12,0), C=(0,9), I=(0,4);
+draw(A--B--C--cycle,linewidth(0.9)); draw(circle(I,4),blue);
+dot(I); label("$I$",I,E);
+draw(I--(0,0),blue); label("$4$",(0,2),W,blue);
+label("$24$",(0,0),S); label("$15$",(A+C)/2,NW); label("$15$",(B+C)/2,NE);
+\end{asy}
+
+\textbf{Step 3: the distance.} In the cross-section through $O$, $I$ and a point of tangency $T$, triangle $OIT$ has a right angle at $I$, $OT=6$ and $IT=4$:
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair I=(0,0), O=(0,2*sqrt(5)), T=(4,0), T2=(-4,0);
+draw((-7.5,0)--(7.5,0),linewidth(0.9)); label("$\Pi$",(-7.2,0),N);
+draw(circle(O,6),blue);
+draw(O--I,red); draw(O--T,red); draw(I--T,red);
+draw(I+(0.4,0)--I+(0.4,0.4)--I+(0,0.4));
+dot(O); dot(I); dot(T); dot(T2);
+label("$O$",O,N); label("$I$",I,S); label("$T$",T,S);
+label("$d$",(O+I)/2,W,red); label("$6$",(O+T)/2,NE,red); label("$4$",(I+T)/2,S,red);
+\end{asy}
+
+\[d=\sqrt{6^2-4^2}=\sqrt{20}=2\sqrt5.\]
+The answer is $\boxed{\textbf{(D) }2\sqrt5}$.

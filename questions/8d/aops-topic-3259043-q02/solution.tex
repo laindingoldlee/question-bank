@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3259043_video_solutions_to_2024_math_in_the_matrix_competition_blitz_round__discussion
+% Stable identity: aops-topic-3259043-q02
+The square lies in one of the two congruent right triangles separated by the diagonal. Their hypotenuse is $c=\sqrt{20^2+24^2}=4\sqrt{61}$, and the altitude to it is $h=\dfrac{20\cdot24}{c}$. At distance $s$ from that hypotenuse, the available parallel width is $c(1-\dfrac{s}{h})$ by similarity. A square of side $s$ fits only if $s\le c(1-\dfrac{s}{h})$, and equality is attained when its opposite side's endpoints reach the legs. Thus
+\[s=\dfrac{ch}{c+h}=\dfrac{120\sqrt{61}}{91},\qquad \boxed{s^2=\dfrac{878400}{8281}}.\]
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real c=sqrt(20*20+24*24),s=480*c/(c*c+480);pair A=(0,0),B=(24,0),C=(24,20),D=(0,20),v=(20,-24)/c,P=(s*c/20,0),Q=(24,20-s*c/24);draw(A--B--C--D--cycle);draw(A--C,dashed);filldraw(P--Q--Q-s*v--P-s*v--cycle,lightblue);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$24$",(12,0),S);label("$20$",(24,10),E);label("$s$",(P+Q)/2,SE);
+\end{asy}

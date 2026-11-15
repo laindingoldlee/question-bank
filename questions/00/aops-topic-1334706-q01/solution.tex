@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1334706_congruency_of_triangles
+% Stable identity: aops-topic-1334706-q01
+Let $ABC$ be equilateral, so $AB=BC=CA$, and let $M$ be the midpoint of $BC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,1.732),B=(-1,0),C=(1,0),M=(0,0);
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--M,red+dashed);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$M$",M,S);
+draw((-0.55,0.95)--(-0.45,0.78)); draw((0.55,0.95)--(0.45,0.78)); draw((-0.5,0.08)--(-0.5,-0.08)); draw((0.5,0.08)--(0.5,-0.08));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangles $ABM$ and $ACM$ have $AB=AC$, $BM=CM$ and the common side $AM$, so they are congruent by SSS, and $\angle B=\angle ABM=\angle ACM=\angle C$.
+
+Repeating the argument with the midpoint of $CA$ (using $BA=BC$) gives $\angle A=\angle C$. Hence $\angle A=\angle B=\angle C$, and since the angles add to $180^\circ$, each is $60^\circ$. $\blacksquare$

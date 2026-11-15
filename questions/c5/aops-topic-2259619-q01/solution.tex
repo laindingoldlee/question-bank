@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2259619_counting_problem
+% Stable identity: aops-topic-2259619-q01
+Let $a_n$ be the number of strings of $n$ digits from $\{1,2,3\}$ with no two consecutive $1$s. Split by the last digit:
+\begin{itemize}
+\item if it is $2$ or $3$, the first $n-1$ digits form any valid string: $2a_{n-1}$ strings;
+\item if it is $1$, the digit before it (if any) must be $2$ or $3$, and the first $n-2$ digits form any valid string: $2a_{n-2}$ strings.
+\end{itemize}
+So $a_n=2a_{n-1}+2a_{n-2}$ for $n\ge3$, with $a_1=3$ and $a_2=3^2-1=8$ (only $11$ is forbidden). Then
+\[a_3=22,\quad a_4=60,\quad a_5=164,\quad a_6=448,\quad a_7=2\cdot448+2\cdot164=\boxed{1224}.\]

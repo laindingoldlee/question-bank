@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3166489_2021_lmt_fall_guts_round_p1p12_lexington_mathematical_tournament
+% Stable identity: aops-topic-3166489-q04
+Consider the leftmost column. Its two cells must be in the same tromino: if they were in different trominoes, each would need the opposite-row cell in the next column, forcing overlap. After the tromino covering the first column is placed, its one missing cell in column two forces a second tromino, completing a $2\times3$ block. There are exactly two orientations of this block. Repeating across four blocks gives $\boxed{2^4=16}$ tilings.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int k=0;k<=12;++k)draw((k,0)--(k,2),gray);for(int y=0;y<=2;++y)draw((0,y)--(12,y),gray);filldraw((0,0)--(1,0)--(1,1)--(2,1)--(2,2)--(0,2)--cycle,lightgray);draw((3,0)--(3,2),blue);label("forced first block",(1.5,-.6));
+\end{asy}

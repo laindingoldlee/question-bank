@@ -1,0 +1,7 @@
+Ignore visits to A and F until the first visit among B,C,D,E. Those four targets are symmetric, so this first visit is food with probability $\dfrac{1}{2}$. After reaching one food vertex, ignore neutral visits (including revisits to that food vertex) until the first visit among the remaining food vertex and the two crocodile vertices. These three targets are symmetric, so the remaining food is reached first with probability $\dfrac{1}{3}$. The desired probability is $\dfrac{1}{2}\cdot\dfrac{1}{3}=\boxed{\dfrac{1}{6}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p;for(int i=0;i<6;++i)p.push(2dir(90-60i));for(int i=0;i<6;++i)draw(p[i]--p[(i+1)%6],gray);for(int i=0;i<6;++i){filldraw(circle(p[i],.15),i==2||i==4?lightgreen:(i==1||i==3?lightred:white));label("$"+substr("ABCDEF",i,1)+"$",p[i],1.6p[i]);}label("Green: food; red: crocodiles",(0,-2.7));
+\end{asy}

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2116596_seo_problems
+% Stable identity: aops-topic-2116596-q02
+A rotation of $270^\circ$ clockwise is the same as a rotation of $90^\circ$ counterclockwise. The vector from $E$ to $S$ is $(12,16)$; rotating it $90^\circ$ counterclockwise gives $(-16,12)$. So
+\[O=E+(-16,12)=(-25,11).\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair Sx=(3,15), Ex=(-9,-1), Ox=(-25,11);
+fill(Sx--Ex--Ox--cycle,paleblue);
+draw(Sx--Ex--Ox--cycle,linewidth(0.9));
+draw(Ex--(3,-1)--Sx,dotted); draw(Ex--(-9,11)--Ox,dotted);
+label("$12$",(-3,-1),S); label("$16$",(3,7),E);
+label("$16$",(-17,11),S); label("$12$",(-9,5),E);
+draw(Ex+2*unit(Sx-Ex)--Ex+2*unit(Sx-Ex)+2*unit(Ox-Ex)--Ex+2*unit(Ox-Ex));
+draw(arc(Ex,3,degrees(Sx-Ex),degrees(Sx-Ex)-270,CW),red,Arrow(5));
+dot(Sx); dot(Ex); dot(Ox);
+label("$S(3,15)$",Sx,N); label("$E(-9,-1)$",Ex+(0,-3.4),S); label("$O(-25,11)$",Ox,W);
+label("$270^\circ$",Ex+(-5.5,-2.2),red+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(a)} $ES=EO=\sqrt{12^2+16^2}=20$ and $\angle SEO=90^\circ$, so
+\[[SEO]=\dfrac{1}{2}\cdot20\cdot20=\boxed{200}.\]
+
+\textbf{(b)} The sum is $3+15+(-9)+(-1)+(-25)+11=\boxed{-6}$.

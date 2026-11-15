@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2834689_hard_geometry_problems
+% Stable identity: aops-topic-2834689-q03
+The centroid $G$ lies on the Euler line with $OG:GH=1:2$ (schematic sketch below), so $G=\dfrac{2O+H}3=\left(\dfrac{17}3,\dfrac{14}3\right)$ and $A+B+C=3G=(17,14)$.
+
+The fourth vertex is $A+B-C$, $B+C-A$ or $C+A-B$; these three points sum to $A+B+C=(17,14)$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(4.6,3.8);
+pair O;{real d=2*(A.x*(B.y-C.y)+B.x*(C.y-A.y)+C.x*(A.y-B.y));O=((dot(A,A)*(B.y-C.y)+dot(B,B)*(C.y-A.y)+dot(C,C)*(A.y-B.y))/d,(dot(A,A)*(C.x-B.x)+dot(B,B)*(A.x-C.x)+dot(C,C)*(B.x-A.x))/d);}
+pair H=A+B+C-2*O,G=(A+B+C)/3;
+draw(A--B--C--cycle);pair D1=A+B-C,D2=B+C-A,D3=C+A-B;draw(A--D1--B,dotted);draw(B--D2--C,dotted);draw(C--D3--A,dotted);
+draw(O--H,dashed);dot(O);dot(G);dot(H);label("$O$",O,SW);label("$G$",G,SE);label("$H$",H,N);
+label("$A$",A,W);label("$B$",B,E);label("$C$",C,N);dot(D1);dot(D2);dot(D3);label("$D_1$",D1,S);label("$D_2$",D2,NE);label("$D_3$",D3,NW);
+\end{asy}
+
+So the sum of all their coordinates is $17+14=\boxed{31}$.

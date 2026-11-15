@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2586579_geometry_problem
+% Stable identity: aops-topic-2586579-q01
+The segment's endpoints lie on the boundary of the square. The diagonals split the square into equal halves, so they are excluded.
+
+\textbf{Endpoints on opposite sides} (this includes a segment from a vertex to a point of a side not containing that vertex). The segment joins two parallel lines at distance $1$, so $L\ge1$.
+
+\textbf{Endpoints on two adjacent sides}, away from their common corner. The line cuts off a right triangle with legs $u,v\le1$ and area $\dfrac{uv}{2}\le\dfrac12$. So the triangle is the smaller region, with area $\dfrac15$ of the square, and $uv=\dfrac25$. Then
+\[L^2=u^2+v^2\ge2uv=\dfrac45,\]
+with equality for $u=v=\sqrt{\dfrac25}<1$, which is allowed.
+
+Since $\dfrac45<1$, the smallest possible value is $\boxed{L^2=\dfrac45}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real u=sqrt(2/5);
+draw((0,0)--(1,0)--(1,1)--(0,1)--cycle,linewidth(0.8));
+filldraw((0,0)--(u,0)--(0,u)--cycle,lightgray,linewidth(0.8));
+draw((u,0)--(0,u),linewidth(1.2));
+label("$u$",(u/2,0),S);label("$v$",(0,u/2),W);label("$L$",(u/2,u/2),NE);
+label("$\dfrac15$",(u/3,u/3),fontsize(8pt));label("$\dfrac45$",(0.62,0.62));
+label("$1$",(1,0.5),E);label("$1$",(0.5,1),N);
+\end{asy}

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2666380_orthocentre_midpoint_of_a_side
+% Stable identity: aops-topic-2666380-q01
+Let $O$ be the circumcentre and let $X'$ be the point diametrically opposite $C$ on the circumcircle.
+
+Since $CX'$ is a diameter, $\angle CAX'=90^\circ$, so $X'A\perp AC$. Also $BH\perp AC$ (altitude from $B$). Hence $X'A\parallel BH$. In the same way $\angle CBX'=90^\circ$ gives $X'B\perp BC$, and $AH\perp BC$, so $X'B\parallel AH$. Therefore $AHBX'$ is a parallelogram (it is not degenerate: $H$ is inside the triangle, while $X'$ lies on the arc $AB$ not containing $C$, and $X'\ne A,B$ because no angle of the triangle is right).
+
+The diagonals of a parallelogram bisect each other, so the midpoint $N$ of $AB$ is also the midpoint of $HX'$. Thus $X'$ lies on the ray from $H$ through $N$, beyond $N$, with $NX'=HN$. Since the triangle is acute, $H$ is inside the circumcircle, so this ray meets the circle at exactly one point. Hence $X=X'$ and $NX=HN$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=dir(200),B=dir(340),C=dir(100),H=A+B+C,Nm=(A+B)/2,X=-C;
+pair Fa=B+dot(A-B,unit(C-B))*unit(C-B),Fb=A+dot(B-A,unit(C-A))*unit(C-A);
+draw(unitcircle,gray);draw(A--B--C--cycle,linewidth(0.8));
+draw(A--Fa,gray);draw(B--Fb,gray);draw(C--X,dashed);
+draw(A--X--B,dashed);draw(H--X,red+linewidth(0.8));
+dot(H);dot(Nm);dot(X);dot((0,0));
+label("$A$",A,W);label("$B$",B,E);label("$C$",C,N);label("$H$",H,W);label("$N$",Nm,SW);label("$X$",X,S);label("$O$",(0,0),W,fontsize(8pt));
+\end{asy}

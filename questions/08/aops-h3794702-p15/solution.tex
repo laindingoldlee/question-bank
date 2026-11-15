@@ -1,0 +1,7 @@
+An equilateral triangular grid with $n$ unit edges per side has $n^2$ small triangles. Thus $n^2=1024$, giving $n=32$. In each of the three edge directions, there are $1+2+\cdots+n=\dfrac{n(n+1)}{2}$ toothpicks. The total is $3\cdot\dfrac{32\cdot33}{2}=\boxed{1584}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair u=(1,0),v=dir(60);for(int i=0;i<=4;++i)for(int j=0;j<=4-i;++j){pair P=i*u+j*v;if(i+j<4){draw(P--(P+u));draw(P--(P+v));}if(j>0&&i+j<=4)draw(P--(P+u-v));}label("4 subdivisions shown",(2,-.6));
+\end{asy}

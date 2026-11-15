@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2382825_unfair_coins
+% Stable identity: aops-topic-2382825-q01
+\textbf{A model with uniform numbers.} Choose $p$ uniformly in $[0,1]$, and for each flip choose an independent uniform number $U_i$ in $[0,1]$; the $i$th flip is heads exactly when $U_i<p$ (which happens with probability $p$, as required).
+
+Then ``the first $k$ flips are heads'' means $U_1,\dots,U_k$ are all less than $p$, i.e. $p$ is the largest of the $k+1$ independent uniform numbers $p,U_1,\dots,U_k$. By symmetry each of these $k+1$ numbers is equally likely to be the largest (ties have probability $0$), so
+\[P(\text{first }k\text{ flips are heads})=\dfrac1{k+1}.\]
+Therefore
+\[P(\text{3rd is heads}\mid\text{first two are heads})=\dfrac{P(HHH)}{P(HH)}=\dfrac{\dfrac14}{\dfrac13}=\boxed{\dfrac34}.\]
+(With calculus: $P(HH)=\displaystyle\int_0^1p^2\,dp=\dfrac13$ and $P(HHH)=\displaystyle\int_0^1p^3\,dp=\dfrac14$. In general, after $k$ heads in $k$ flips the next flip is heads with probability $\dfrac{k+1}{k+2}$, Laplace's rule of succession.)

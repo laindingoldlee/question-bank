@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2970166_circumradius_of_a_triangle
+% Stable identity: aops-topic-2970166-q01
+Let $AA'$ be the diameter through $A$ and $AH$ the altitude to $BC$ (the sketch shows an acute triangle; the other cases are analogous).
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=dir(100),B=dir(210),C=dir(330),O=(0,0);pair Ap=-A;draw(circle(O,1));draw(A--B--C--cycle);draw(A--Ap,dashed);draw(Ap--C,dashed);
+pair H=(A.x,B.y);draw(A--H,dotted);dot(O);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$A'$",Ap,S);label("$O$",O,E);label("$H$",H,S);
+\end{asy}
+
+The inscribed angles $\angle AA'C$ and $\angle ABC$ subtend the same arc $AC$, so they are equal (or supplementary if $B$ and $A'$ lie on opposite sides of $AC$), and $\angle ACA'=90^\circ$. Hence triangles $AHB$ and $ACA'$ are similar (right angles at $H$ and $C$, equal angles at $B$ and $A'$), giving $\dfrac{AH}{AB}=\dfrac{AC}{AA'}$, i.e. $AH=\dfrac{bc}{2R}$. Then $K=\dfrac12a\cdot AH=\dfrac{abc}{4R}$, so $R=\dfrac{abc}{4K}$.
+
+Also $K=\dfrac12bc\sin A$, so $\dfrac{abc}{4R}=\dfrac12bc\sin A$, i.e. $\dfrac a{\sin A}=2R$. $\blacksquare$

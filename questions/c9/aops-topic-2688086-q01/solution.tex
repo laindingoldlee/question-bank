@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2688086_cool_geometry_problem
+% Stable identity: aops-topic-2688086-q01
+Draw segment $BE$ (dashed).
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(5,0),C=(1.5,3.5);pair D=0.6*B,Ep=0.5*C;
+fill(A--D--Ep--cycle,lightgray);draw(A--B--C--cycle,linewidth(0.8));draw(D--Ep);draw(B--Ep,dashed);
+dot(D);dot(Ep);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,S);label("$E$",Ep,W);
+\end{asy}
+
+Triangles $ADE$ and $ABE$ have bases $AD$ and $AB$ on the same line and the same apex $E$, hence the same height; so $\dfrac{[ADE]}{[ABE]}=\dfrac{AD}{AB}=r$. Similarly triangles $ABE$ and $ABC$ have bases $AE$ and $AC$ on line $AC$ and the common apex $B$, so $\dfrac{[ABE]}{[ABC]}=\dfrac{AE}{AC}=s$. Multiplying,
+\[\dfrac{[ADE]}{[ABC]}=\dfrac{[ADE]}{[ABE]}\cdot\dfrac{[ABE]}{[ABC]}=rs.\ \blacksquare\]

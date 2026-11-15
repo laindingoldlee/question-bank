@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h3162362_2017_lmt_spring_guts_round_p2536__lexington_mathematical_tournament
+% Stable identity: aops-topic-3162362-q34
+Initialize $\phi(n)=n $. For each prime divisor $ p $ of $ n $, multiply by $ 1-\dfrac{1}{p}$, as supplied by inclusion--exclusion over multiples of its distinct prime factors. A sieve applies each such factor once:
+\begin{verbatim}
+phi=list(range(2018))
+for p in range(2,2018):
+    if phi[p]==p:
+        for n in range(p,2018,p):phi[n]-=phi[n]//p
+assert sum(phi[1:])==1237456
+\end{verbatim}
+This includes $\phi(1)=1 $, and yields $\boxed{1237456}$.

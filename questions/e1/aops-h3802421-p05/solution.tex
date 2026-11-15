@@ -1,0 +1,11 @@
+Scale AB to one and choose $A=(0,0),B=(1,0)$, with C,D,E above AB. Let $\varphi=\dfrac{1+\sqrt5}{2}$. Standard pentagon coordinates give
+\[D=(\dfrac{1}{2},\sin72^\circ+\sin36^\circ),\quad E=(-\cos72^\circ,\sin72^\circ),\quad P=(-\varphi,0).\]
+The exterior rhombus has Q=E-(1,0) and R=D-(1,0). Thus
+\[\overrightarrow{PQ}=(\cos72^\circ,\sin72^\circ),\quad \overrightarrow{PR}=(\dfrac{\sqrt5}{2},\varphi\sin72^\circ).\]
+The first vector has direction 72 degrees. For the second, $\dfrac{2\varphi\sin72^\circ}{\sqrt5}=\cot36^\circ$, using $4\varphi\sin^2 36^\circ=\sqrt5$, so its direction is 54 degrees. Their angle is $72^\circ-54^\circ=\boxed{18^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(1,0),C=B+dir(72),D=C+dir(144),E=D+dir(216),Q=E-(1,0),R=D-(1,0),P=extension(A,B,D,E);draw(A--B--C--D--E--cycle);draw(D--E--Q--R--cycle,blue);draw(P--B,dashed);draw(P--D,dashed);draw(P--Q,red);draw(P--R,red);pair[] p={A,B,C,D,E,P,Q,R};string[] s={"A","B","C","D","E","P","Q","R"};pair[] a={(0,-1),(1,-1),(1,0),(0,1),(1,-1),(-1,-1),(-1,0),(0,1)};for(int i=0;i<8;++i)label("$"+s[i]+"$",p[i],a[i]);
+\end{asy}

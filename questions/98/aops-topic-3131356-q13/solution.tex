@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3131356_2023_mbmt_team_round__montgomery_blair_math_tournament
+% Stable identity: aops-topic-3131356-q13
+The triangle has area 9 and hypotenuse $ 2x+y=6 $. A unit lattice square with lower-left corner $(i,j)$ is contained precisely when $ i,j\ge0 $ and its upper-right corner satisfies $ 2(i+1)+(j+1)\le6 $, or $ 2i+j\le3 $. For $ i=0 $ there are 4 choices of $ j $, and for $ i=1 $ there are 2. Thus six squares fit, leaving $\boxed{3}$ square units.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw((0,0)--(3,0)--(0,6)--cycle);for(int i=0;i<2;++i)for(int j=0;j<=3-2i;++j)filldraw((i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle,lightblue);label("$(0,0)$",(0,0),SW);label("$(3,0)$",(3,0),SE);label("$(0,6)$",(0,6),N);
+\end{asy}

@@ -1,0 +1,8 @@
+Partition each row into its left four and right four cells. These are sixteen pairwise disjoint possible ship placements, so at least sixteen shots are necessary. For a matching construction, number rows and columns from $0$ through $7$ and shoot every cell with $r+c\equiv0\pmod4$. There are two shots per row, sixteen total. Every run of four consecutive cells in any row or column contains exactly one of these residues, so every ship is hit. The answer is $\boxed{16}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"X", "", "", "", "X", "", "", ""}, {"", "", "", "X", "", "", "", "X"}, {"", "", "X", "", "", "", "X", ""}, {"", "X", "", "", "", "X", "", ""}, {"X", "", "", "", "X", "", "", ""}, {"", "", "", "X", "", "", "", "X"}, {"", "", "X", "", "", "", "X", ""}, {"", "X", "", "", "", "X", "", ""}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("X marks the sixteen shots",(4.0,-8.2));
+\end{asy}

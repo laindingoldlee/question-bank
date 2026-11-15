@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2513342_how_do_you_solve_polynomial_congruences
+% Stable identity: aops-topic-2513342-q01
+A congruence modulo $13$ only depends on $x$ modulo $13$, so we look for residues. One root is $x\equiv7$: $7^3+7+1=351=27\cdot13$. Dividing by $x-7$:
+\[x^3+x+1\equiv(x-7)\left(x^2+7x+11\right)\pmod{13},\]
+since $(x-7)\left(x^2+7x+11\right)=x^3-38x-77$ and $-38\equiv1$, $-77\equiv1\pmod{13}$.
+
+Because $13$ is prime, a product is $\equiv0$ only if a factor is. For the quadratic factor, multiply by $4$ (invertible modulo $13$) and complete the square:
+\[4\left(x^2+7x+11\right)=(2x+7)^2-5.\]
+So we would need $(2x+7)^2\equiv5\pmod{13}$. The squares modulo $13$ are $0,1,4,9,3,12,10$ (from $0^2,1^2,\dots,6^2$; the others repeat these), and $5$ is not among them. So the quadratic factor has no roots, and the solutions are exactly
+\[\boxed{x\equiv7\pmod{13}}.\]
+(For a small modulus one can also simply test all $13$ residues.)

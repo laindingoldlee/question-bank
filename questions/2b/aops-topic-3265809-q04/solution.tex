@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h3265809_six_years
+% Stable identity: aops-topic-3265809-q04
+Let the radius be $R$, and consider any allowed rectangle. The circle centre cannot lie in its interior, since a neighbourhood of that point would enter the removed quadrant. Along at least one of the rectangle's two perpendicular coordinate directions, the entire rectangle therefore lies on one side of the centre.
+Write its dimensions as width $w$ and height $h$ in that direction, with the nearer edge at distance $d\ge0$ from the centre. At least one endpoint of the farther edge has horizontal distance at least $\dfrac{w}{2}$ from the centre. Since that endpoint lies in the circle,
+\[R^2\ge\dfrac{w^2}{4}+(d+h)^2\ge\dfrac{w^2}{4}+h^2\ge wh.\]
+Thus its area is at most $R^2$. This is attained by a rectangle of width $\sqrt2R$ and height $\dfrac{R}{\sqrt2}$ in a retained semicircle, with its upper edge on a diameter. The remaining pie has area $\dfrac{3\pi R^2}{4}$, so the greatest fraction is $\boxed{\dfrac{4}{3\pi}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+path pie=(0,0)--(0,1)--arc((0,0),1,90,360)--cycle;filldraw(pie,lightgray);real a=1/sqrt(2);filldraw((-a,0)--(a,0)--(a,-a)--(-a,-a)--cycle,lightblue);dot((0,0));label("$O$",(0,0),NW);label("$\sqrt2R$",(0,-a),S);label("$\dfrac{R}{\sqrt2}$",(a,-a/2),E);label("Removed quarter",(0.7,0.65));
+\end{asy}

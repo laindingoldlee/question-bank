@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h2443196_triangular_intersections
+% Stable identity: aops-topic-2443196-q01
+\textbf{When do two sides cross?} Each side of $DEF$ or $PQR$ joins points on two different sides of $ABC$, so apart from its endpoints it lies inside triangle $ABC$. Go once around the boundary of $ABC$; the six points appear in some cyclic order. For a side $UV$ of one triangle and a side $WZ$ of the other (four distinct points), the segments meet exactly when $W$ and $Z$ lie on different arcs of the boundary cut out by $U$ and $V$: the segment $UV$ divides triangle $ABC$ into two convex pieces, and $WZ$ crosses $UV$ exactly when $W$ and $Z$ lie in different pieces.
+
+All common points are such crossings: the boundaries share no point on the boundary of $ABC$ (the six points are distinct), and a point inside $ABC$ lies on at most one side of each triangle (two sides of a triangle meet only at a vertex). So the number of common points is the number of pairs (side of $PQR$, side of $DEF$) that cross.
+
+\textbf{Counting.} The points $P,Q,R$ cut the boundary of $ABC$ into three arcs: from $P$ to $Q$ through $B$, from $Q$ to $R$ through $C$, and from $R$ to $P$ through $A$. The side $PQ$ separates its arc from the rest. If that arc contains $j$ of the points $D,E,F$, then $PQ$ crosses the sides of $DEF$ that join one of these $j$ points to one of the other $3-j$, i.e. $j(3-j)$ sides: $0$ if $j=0$ or $3$, and $2$ if $j=1$ or $2$. The same holds for $QR$ and $RP$.
+
+Each arc contains interior points of only two sides of $ABC$; for example the arc from $P$ to $Q$ through $B$ contains no interior point of $CA$, so it does not contain $F$. Hence no arc contains all three of $D,E,F$, so at least two arcs contain one or two of them, and at least two sides of $PQR$ cross the boundary of $DEF$ twice each. So there are at least $4$ common points.
+
+\textbf{Four is possible.} Take, going around from $A$, the order $P,D$ on $AB$, then $E,Q$ on $BC$, then $F,R$ on $CA$ (left figure). The arc from $P$ to $Q$ contains $D$ and $E$, the arc from $Q$ to $R$ contains $F$, and the arc from $R$ to $P$ contains none, so there are exactly $2+2+0=4$ common points. (When the two triangles alternate, $D,P,E,Q,F,R$, every arc contains one point and there are $6$; these are the only two possibilities.)
+
+\begin{asy}
+usepackage("amsmath");
+size(12cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(10,0),C=(3,8);
+pair pt(pair P,pair Q,real t){return P+t*(Q-P);}
+picture p1,p2;
+// left: 4 common points (P,D on AB; E,Q on BC; F,R on CA)
+pair P=pt(A,B,0.3),D=pt(A,B,0.6),Ep=pt(B,C,0.25),Q=pt(B,C,0.6),F=pt(C,A,0.3),R=pt(C,A,0.65);
+draw(p1,A--B--C--cycle,gray);
+draw(p1,D--Ep--F--cycle,blue+linewidth(0.9)); draw(p1,P--Q--R--cycle,red+linewidth(0.9)); dot(p1,D,blue);dot(p1,Ep,blue);dot(p1,F,blue);dot(p1,P,red);dot(p1,Q,red);dot(p1,R,red);
+label(p1,"$A$",A,SW);label(p1,"$B$",B,SE);label(p1,"$C$",C,N);
+label(p1,"$D$",D,S,blue);label(p1,"$P$",P,S,red);label(p1,"$E$",Ep,E,blue);label(p1,"$Q$",Q,E,red);label(p1,"$F$",F,W,blue);label(p1,"$R$",R,W,red);
+label(p1,"order $P,D,E,Q,F,R$: $4$ points",(5,-1.3));
+// right: 6 common points (alternating)
+pair D2=pt(A,B,0.3),P2=pt(A,B,0.65),Ep2=pt(B,C,0.3),Q2=pt(B,C,0.65),F2=pt(C,A,0.3),R2=pt(C,A,0.65);
+draw(p2,A--B--C--cycle,gray);
+draw(p2,D2--Ep2--F2--cycle,blue+linewidth(0.9)); draw(p2,P2--Q2--R2--cycle,red+linewidth(0.9)); dot(p2,D2,blue);dot(p2,Ep2,blue);dot(p2,F2,blue);dot(p2,P2,red);dot(p2,Q2,red);dot(p2,R2,red);
+label(p2,"$A$",A,SW);label(p2,"$B$",B,SE);label(p2,"$C$",C,N);
+label(p2,"$D$",D2,S,blue);label(p2,"$P$",P2,S,red);label(p2,"$E$",Ep2,E,blue);label(p2,"$Q$",Q2,E,red);label(p2,"$F$",F2,W,blue);label(p2,"$R$",R2,W,red);
+label(p2,"order $D,P,E,Q,F,R$: $6$ points",(5,-1.3));
+add(p1); add(shift(13,0)*p2);
+\end{asy}
+
+The least possible number is $\boxed{4}$.

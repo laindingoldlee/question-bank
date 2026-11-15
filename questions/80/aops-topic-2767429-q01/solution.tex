@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2767429_math_problem
+% Stable identity: aops-topic-2767429-q01
+By the angle bisector theorem, $\dfrac{CE}{EB}=\dfrac{AC}{AB}$ and $\dfrac{BD}{DA}=\dfrac{BC}{AC}$. Hence
+\[\dfrac{CE}{EB}\cdot\dfrac{BD}{DA}=\dfrac{BC}{AB}=\dfrac{16}{14}=\boxed{\dfrac87}.\]
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(14,0);real a=16,c=14,bb=15;real cx=(bb^2+c^2-a^2)/(2*c);pair C=(cx,sqrt(bb^2-cx^2));
+pair D=(a*A+bb*B)/(a+bb),Ept=(c*C+bb*B)/(c+bb),F=(c*C+a*A)/(c+a);
+draw(A--B--C--cycle);draw(C--D,dashed);draw(A--Ept,dashed);draw(B--F,dashed);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,S);label("$E$",Ept,NE);label("$F$",F,NW);
+label("$14$",A+0.25*(B-A),S,fontsize(8pt));label("$16$",B+0.3*(C-B),E,fontsize(8pt));
+\end{asy}
+
+(The length $CF=8$ is not needed. It is consistent: $\dfrac{AF}{FC}=\dfrac{AB}{BC}=\dfrac78$ gives $AF=7$ and $AC=15$, and Ceva's theorem gives the same product, $\dfrac{FC}{AF}=\dfrac87$.)

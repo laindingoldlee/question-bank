@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3166099_2019_lmt_spring_guts_round_p25p36__lexington_mathematical_tournament
+% Stable identity: aops-topic-3166099-q28
+Use $B=(0,0)$, $C=(14,0)$, $A=(5,12)$. The orthocenter is $H=(5,\dfrac{15}{4})$ and $M=(7,0)$, so $HM$ has slope $-\dfrac{15}{8}$. Thus $HK$ has slope $\dfrac{8}{15}$, meeting the horizontal axis at $K=(-\dfrac{65}{32},0)$ and line $AB$, whose slope is $\dfrac{12}{5}$, at $P=(\dfrac{65}{112},\dfrac{39}{28})$. Consequently $BP=\dfrac{169}{112}$. Orthogonal projection onto $AB$ gives $BF=\dfrac{70}{13}$. Power of $B$ relative to the circle through $F,P,K$ gives the directed equation $BK\cdot BQ=BP\cdot BF=\dfrac{65}{8}$. Since directed $BK=-\dfrac{65}{32}$, directed $BQ=-4$, so $Q=(-4,0)$ and $\boxed{QK=\dfrac{63}{32}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair Bp=(0,0),C=(14,0),A=(5,12),H=(5,15/4),M=(7,0),K=(-65/32,0),P=(65/112,39/28),F=(350/169,840/169),Q=(-4,0);draw(A--Bp--C--cycle);draw(Q--C);draw(C--F,dashed);draw(H--M,dashed);draw(K--H,blue);pair[]v={A,Bp,C,H,M,K,P,F,Q};string[]names={"A","B","C","H","M","K","P","F","Q"};for(int j=0;j<v.length;++j)label("$"+names[j]+"$",v[j],dir(90+40*j));
+\end{asy}

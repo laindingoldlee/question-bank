@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2173200_prove_equality
+% Stable identity: aops-topic-2173200-q01
+Since $0^\circ<2\alpha<90^\circ$, all the angles below are acute and the right-triangle definitions apply. Take an isosceles triangle $ABC$ with $AB=AC=1$ and $\angle BAC=2\alpha$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real al=25;
+pair A=(0,0),C=(1,0),B=dir(2*al),H=(B.x,0),M=(B+C)/2;
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--H,blue); draw(A--M,gray+dashed);
+draw(H+(0,0.04)--H+(0.04,0.04)--H+(0.04,0),blue);
+draw(arc(A,0.18,0,2*al)); label("$2\alpha$",A+0.3*dir(39),fontsize(8pt));
+dot(A);dot(B);dot(C);dot(H);dot(M);
+label("$A$",A,W);label("$B$",B,N);label("$C$",C,E);label("$H$",H,S);label("$M$",M,NE);
+label("$1$",(A+B)/2,NW);
+label("$\cos2\alpha$",(A+H)/2,S,fontsize(8pt)); label("$1-\cos2\alpha$",(H+C)/2+(0.03,0),S,fontsize(8pt));
+label("$\sin2\alpha$",(B+H)/2,W,blue+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Computing $BC$ from the midpoint.} Let $M$ be the midpoint of $BC$. In the isosceles triangle, $AM$ is perpendicular to $BC$ and bisects the angle at $A$, so in the right triangle $ABM$ we get $BM=\sin\alpha$. Hence $BC=2\sin\alpha$.
+
+\textbf{Computing $BC$ from an altitude.} Let $H$ be the foot of the perpendicular from $B$ to $AC$. The angles of triangle $ABC$ at $A$ and at $C$ (which is $90^\circ-\alpha$) are acute, so $H$ lies between $A$ and $C$. In the right triangle $ABH$, $AH=\cos2\alpha$ and $BH=\sin2\alpha$, so $HC=1-\cos2\alpha$. By the Pythagorean theorem in triangle $BHC$,
+\[BC^2=\sin^22\alpha+\left(1-\cos2\alpha\right)^2=\left(\sin^22\alpha+\cos^22\alpha\right)+1-2\cos2\alpha=2-2\cos2\alpha ,\]
+using $\sin^2\theta+\cos^2\theta=1$ (the Pythagorean theorem in a right triangle with hypotenuse $1$).
+
+\textbf{Comparing.} $4\sin^2\alpha=2-2\cos2\alpha$, so $\cos2\alpha=1-2\sin^2\alpha=1-2\left(1-\cos^2\alpha\right)=2\cos^2\alpha-1$. $\blacksquare$
+
+(The restriction $\alpha<45^\circ$ is what makes $2\alpha$ an acute angle of a right triangle, so that $\cos2\alpha$ has a right-triangle meaning and $H$ falls inside the side $AC$.)

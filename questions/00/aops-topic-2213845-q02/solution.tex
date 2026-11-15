@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2213845_beginner_problems
+% Stable identity: aops-topic-2213845-q02
+Let the quadrilateral be $ABCD$ with diagonal $AC=l$ and sides $AB=a$, $BC=b$, $CD=c$, $DA=d$, so $a+b+c+d=10$. The diagonal splits the quadrilateral into triangles $ABC$ and $ACD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(2.2,-1.3),C=(4.4,0),D=(2.2,1.3);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(A--C,red+linewidth(0.9));
+label("$A$",A,W);label("$B$",B,S);label("$C$",C,E);label("$D$",D,N);
+label("$l$",(A+C)/2,N,red);label("$a$",(A+B)/2,SW);label("$b$",(B+C)/2,SE);label("$c$",(C+D)/2,NE);label("$d$",(D+A)/2,NW);
+\end{asy}
+
+By the triangle inequality, $l<a+b$ and $l<c+d$; adding, $2l<10$, so $l\le4$.
+
+Every $l\in\{1,2,3,4\}$ occurs: a rhombus with side $\dfrac{5}{2}$ (perimeter $10$) can have a diagonal of any length $l<5$, the other diagonal being $2\sqrt{\dfrac{25}{4}-\dfrac{l^2}{4}}$. Hence the sum of the possible values is $1+2+3+4=\boxed{10}$.

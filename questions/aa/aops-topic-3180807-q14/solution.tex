@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h3180807_2018_emcc_individual_speed_test__exeter_math_club_competition
+% Stable identity: aops-topic-3180807-q14
+Two triangles suffice: use $(0,0),(2,0),(0,2)$ and $(2,2),(2,0),(0,2)$. Their boundaries contain the eight perimeter points and the center $(1,1)$. To prove one does not suffice, the following exhaustive check examines all $\binom93=84$ vertex triples, skips collinear triples, and checks boundary membership by an exact cross product and bounding-box test. It prints $6$, the largest number of the nine points on one such boundary.
+\begin{verbatim}
+from itertools import product,combinations
+P=list(product(range(3),repeat=2))
+def cross(a,b,p):
+    return (b[0]-a[0])*(p[1]-a[1])-(b[1]-a[1])*(p[0]-a[0])
+def on(a,b,p):
+    return (cross(a,b,p)==0
+            and min(a[0],b[0])<=p[0]<=max(a[0],b[0])
+            and min(a[1],b[1])<=p[1]<=max(a[1],b[1]))
+best=0
+for T in combinations(P,3):
+    if cross(*T)==0: continue
+    edges=list(zip(T,T[1:]+T[:1]))
+    best=max(best,sum(any(on(a,b,p) for a,b in edges) for p in P))
+print(best)
+\end{verbatim}
+Thus one triangle cannot cover all nine points, and the answer is $\boxed2$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw((0,0)--(2,0)--(0,2)--cycle,blue);draw((2,2)--(2,0)--(0,2)--cycle,red);for(int x=0;x<3;++x)for(int y=0;y<3;++y)dot((x,y));label("$(0,0)$",(0,0),SW);label("$(2,2)$",(2,2),NE);
+\end{asy}

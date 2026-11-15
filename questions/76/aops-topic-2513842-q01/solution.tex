@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2513842_how_do_i_solve_equations_like_this
+% Stable identity: aops-topic-2513842-q01
+Let $f(x)=x^3+100x^2+19x+13251234$.
+
+\textbf{No root with $x>-100$.} For $x\ge0$ every term is nonnegative and the constant is positive, so $f(x)>0$. For $-100\le x<0$ we have $x^3+100x^2=x^2(x+100)\ge0$ and $19x\ge-1900$, so $f(x)\ge13251234-1900>0$.
+
+\textbf{At most one root with $x\le-100$.} For $y<x\le-100$,
+\[f(x)-f(y)=(x-y)\left(x^2+xy+y^2+100(x+y)+19\right)=(x-y)\bigl(x(x+100)+y(y+100)+xy+19\bigr).\]
+Here $x(x+100)\ge0$ and $y(y+100)\ge0$ (each a product of two non-positive numbers), and $xy>0$, so $f(x)>f(y)$. Thus $f$ is strictly increasing on $(-\infty,-100]$ and has at most one root there.
+
+\textbf{Locating the root.}
+\[f(-275)=-20796875+7562500-5225+13251234=11634>0,\]
+\[f(-276)=-21024576+7617600-5244+13251234=-160986<0.\]
+Since $f$ is continuous, it has a root between $-276$ and $-275$, and by the above this is its only real root $r$ (numerically $r\approx-275.07$). So $n=\boxed{-276}$.
+
+(There is a general formula for cubics, Cardano's formula, but for an equation like this one it is usually more practical to locate the real roots as above and then approximate them numerically. Integer roots, if any, would divide $13251234$, and the computation shows there is none.)

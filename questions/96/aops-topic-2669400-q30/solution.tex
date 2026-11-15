@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2669400_111th_post_solving_problems
+% Stable identity: aops-topic-2669400-q30
+\textbf{(a)} Lifted to height $h$ at the midpoint, the rope forms two straight halves of $50$ feet over horizontal distances $49.5$ feet, so
+\[h=\sqrt{50^2-49.5^2}=\sqrt{0.5\cdot99.5}=\sqrt{49.75}=\boxed{\dfrac{\sqrt{199}}{2}\approx7.05\text{ feet}}.\]
+That is higher than almost every person, so yes, a person can walk under it.
+
+\textbf{(b)} The rope now goes straight up from Josey's ankle to height $H$ and then straight to Beth's ankle, so $H+\sqrt{99^2+H^2}\le100$. Then $99^2+H^2\le(100-H)^2$, i.e. $200H\le199$, so
+\[H\le\boxed{\dfrac{199}{200}\text{ foot}},\]
+with equality when the rope is taut. That is just under $1$ foot: she can lift it only about to her knee, not above her head.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real k=3;
+draw((0,0)--(99,0),gray);draw((0,0)--(49.5,k*sqrt(49.75))--(99,0),linewidth(0.8));draw((49.5,0)--(49.5,k*sqrt(49.75)),dashed);
+label("$J$",(0,0),S,fontsize(8pt));label("$B$",(99,0),S,fontsize(8pt));label("$50$",(24.75,k*sqrt(49.75)/2),NW,fontsize(7pt));label("$49.5$",(24.75,0),S,fontsize(7pt));label("$h$",(49.5,k*3),E,fontsize(7pt));
+real H=0.995,k2=12;pair o=(0,-40);
+draw(o--o+(99,0),gray);draw(o--o+(0,k2*H)--o+(99,0),linewidth(0.8));
+label("$J$",o,S,fontsize(8pt));label("$B$",o+(99,0),S,fontsize(8pt));label("$H$",o+(0,k2*H/2),W,fontsize(7pt));label("$99$",o+(49.5,0),S,fontsize(7pt));
+label("(a)",(-20,8),fontsize(8pt));label("(b)",o+(-20,8),fontsize(8pt));label("vertical scale exaggerated",o+(49.5,-12),fontsize(6pt));
+\end{asy}

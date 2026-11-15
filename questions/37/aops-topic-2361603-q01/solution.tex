@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2361603_pretty_counterintuitive_money_problem
+% Stable identity: aops-topic-2361603-q01
+\textbf{Option 1.} Let $N_k(t)$ be the number of machines $a_k$ after $t$ seconds. Then $N_{10000}(t)=1$ and $N_k(t+1)=N_k(t)+N_{k+1}(t)$ for $k<10000$. These are the rules of Pascal's triangle, and by induction on $t$,
+\[N_{10000-j}(t)=\dbinom tj\qquad(j=0,1,\dots,9999),\]
+since $\dbinom{t+1}{j}=\dbinom tj+\dbinom t{j-1}$. In second number $t+1$ the machines $a_1$ pay $N_1(t)=\dbinom t{9999}$ dollars, so after $T$ seconds (by the hockey-stick identity)
+\[M_1(T)=\sum_{t=0}^{T-1}\dbinom{t}{9999}=\dbinom{T}{10000}.\]
+
+\textbf{Option 2.} Let $b_t$, $c_t$ be the numbers of machines after $t$ seconds. Then $b_{t+1}=b_t+c_t$ and $c_{t+1}=c_t+b_t$, with $b_0=c_0=1$, so $b_t=c_t=2^t$. In second $t+1$ the $b$'s pay $2^t$ dollars, so
+\[M_2(T)=1+2+\cdots+2^{T-1}=2^T-1.\]
+
+\textbf{Comparison.} By the binomial theorem,
+\[2^T-1=\sum_{k=1}^{T}\dbinom Tk\ge\dbinom T1+\dbinom T{10000}>\dbinom{T}{10000}\qquad(T\ge1),\]
+so Option 2 gives more money after every second, and certainly in the long run: $\boxed{\text{Option 2}}$. (Option 1 grows only like a polynomial of degree $10000$ in $T$, while Option 2 grows exponentially; for example, after $10000$ seconds Option 1 has paid only $\$1$.)

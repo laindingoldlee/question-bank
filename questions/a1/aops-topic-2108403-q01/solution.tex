@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h2108403_the_moving_rook_problem
+% Stable identity: aops-topic-2108403-q01
+Colour the board like a chessboard: the square in row $i$ and column $j$ is dark if $i+j$ is even and light if $i+j$ is odd. Every move goes to a square of the other colour.
+
+\textbf{(a)} A path through all $64$ squares makes $63$ moves. After an odd number of moves the rook is on the colour opposite to its starting colour. But opposite corners, in rows and columns $(1,1)$ and $(8,8)$, are both dark. So no such path exists, and the number of paths is $\boxed{0}$.
+
+\textbf{(b)} Such a path exists \textbf{if and only if at least one of $m$ and $n$ is odd}.
+
+\emph{Both even: impossible.} The path makes $mn-1$ moves, an odd number, so it ends on the colour opposite to its start. The corners $(1,1)$ and $(m,n)$ have $1+1$ and $m+n$ both even, so they have the same colour, a contradiction.
+
+\emph{$m$ odd: possible.} Start at $(1,1)$, go along row $1$ to column $n$, step down, go back along row $2$ to column $1$, step down, and so on, snaking through the rows. Odd rows are traversed from left to right, so the last row $m$ (odd) ends at column $n$: the path ends at $(m,n)$, the opposite corner, after visiting every square once. The figure shows $m=5$, $n=4$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.6cm);
+defaultpen(fontsize(10pt));
+int m=5, n=4;
+for(int i=0;i<=n;++i) draw((i,0)--(i,m),gray);
+for(int j=0;j<=m;++j) draw((0,j)--(n,j),gray);
+for(int r=1;r<=m;++r) for(int c=1;c<=n;++c) if((r+c)%2==1) fill(shift(c-1,m-r)*unitsquare,gray(0.85));
+for(int i=0;i<=n;++i) draw((i,0)--(i,m),gray);
+for(int j=0;j<=m;++j) draw((0,j)--(n,j),gray);
+pair ce(int r,int c){return (c-0.5,m-r+0.5);}
+path p=ce(1,1);
+for(int r=1;r<=m;++r){
+  if(r%2==1){ for(int c=1;c<=n;++c) if(!(r==1 && c==1)) p=p--ce(r,c); }
+  else { for(int c=n;c>=1;--c) p=p--ce(r,c); }
+}
+draw(p,blue+linewidth(1.2),Arrow(TeXHead));
+dot(ce(1,1),red+4); dot(ce(m,n),red+4);
+label("start",ce(1,1)+(0,0.5),N,red+fontsize(8pt)); label("end",ce(m,n)+(0,-0.5),S,red+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\emph{$n$ odd: possible.} Snake through the columns instead.

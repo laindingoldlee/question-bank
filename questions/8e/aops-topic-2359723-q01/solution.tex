@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2359723_interesting_problem_i_made
+% Stable identity: aops-topic-2359723-q01
+\textbf{(a)} Work backwards. $T(n)=5$ means $x=5$ and $y=0$: five applications of $\log_2$ give $0$, and the first four give numbers outside $[0,1)$. If the fourth value is $v_4$, then $\log_2v_4=0$, so $v_4=1$; then the earlier values are $v_3=2$, $v_2=4$, $v_1=16$, and $n=2^{16}=\boxed{65536}$. Check: $\log_2$ applied to $65536$ gives $16,4,2,1,0$, and only the last of these lies in $[0,1)$.
+
+\textbf{(b)} The function $\log_2$ maps $[t_{j+1},t_{j+2})$ increasingly and continuously onto $[t_j,t_{j+1})$. So if $t_k\le n<t_{k+1}$, applying $\log_2$ once, twice, \dots, $k$ times gives numbers in $[t_{k-1},t_k)$, \dots, $[t_0,t_1)=[0,1)$; the first $k-1$ results are at least $t_1=1$. Hence $x=k$ and $y=\log_2^{(k)}n$ (the $k$-fold logarithm), and
+\[T(n)=k+\log_2^{(k)}n\in[k,k+1),\]
+which is continuous and increasing on $[t_k,t_{k+1})$ and takes every value in $[k,k+1)$. As $n\to t_{k+1}$ from below, $\log_2^{(k)}n\to\log_2^{(k)}t_{k+1}=t_1=1$, so $T(n)\to k+1=T(t_{k+1})$: the pieces join up continuously. Since the $t_k$ increase to infinity, $T$ is a continuous increasing bijection from $[0,\infty)$ onto $[0,\infty)$. Its inverse is
+\[T^{-1}(k+a)=\underbrace{2^{2^{\cdot^{\cdot^{2^{a}}}}}}_{k\text{ twos}}\qquad(k\ge0\text{ an integer},\ 0\le a<1),\]
+a tower of $k$ twos with $a$ on top. (For example $T^{-1}(5)=2^{2^{2^{2^{2^0}}}}=2^{16}$, in agreement with (a).)
+
+\textbf{(c)} Since $T$ is increasing, $T(n)\ge6$ exactly when $n\ge T^{-1}(6)=t_6=\boxed{2^{65536}}$, a number with $19729$ digits. So $T$ grows extremely slowly: it is $5$ at $65536$ and reaches $6$ only at $2^{65536}$.

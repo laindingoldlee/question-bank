@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3295075_fun_fact
+% Stable identity: aops-topic-3295075-q02
+Write $\gamma=\angle ACB$. Reflection in the midpoint gives $\overrightarrow{CD^\prime}=\overrightarrow{DB}$, so $CE\parallel BD$. Since $BE\perp AC$, $\angle EBC=90^\circ-\gamma$. The altitude from $A$ is perpendicular to $BC$, so $\angle DAC=90^\circ-\gamma$; equal angles subtending chord $DC$ give $\angle DBC=90^\circ-\gamma$. The parallelism now gives $\angle ECB=90^\circ-\gamma$. Thus $\angle BEC=2\gamma$. Both $A,E$ are on the same side of chord $BC$ in the acute configuration, so they subtend the same angle: $\angle BAC=\angle BEC=\boxed{2\gamma}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real g=36;pair B=(0,0),C=(1,0);real u=tan(36*pi/180)/(tan(72*pi/180)+tan(36*pi/180)),v=u*tan(72*pi/180);pair A=(u,v),D=(u,(u*u-u)/v),Dp=B+C-D,Ee=(.5,(1-u)/(2*v));real cy=(u-u*u-v*v)/(2*v);pair O=(.5,-cy);draw(circle(O,abs(O-B)),gray);draw(A--B--C--cycle);draw(A--D^^B--Ee^^C--Dp,dashed);draw(B--D);label("$A$",A,NW);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$D^\prime$",Dp,NE);label("$E$",Ee,N);
+\end{asy}

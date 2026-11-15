@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h3109589_radix_radix_go_away_i_only_like_decimal_values_anyway
+% Stable identity: aops-topic-3109589-q01
+The digits require $x\ge6,y\ge8$. Squaring gives $4x^3+4x^2+2x+5+y^3+7y^2+5y=(4x+2y+5)^2$. Put $s=x+y$. The left side is at least $x^3+y^3\ge\dfrac{s^3}{4}$, while the right side is at most $(4s+5)^2$. For $s\ge69$, $s^3>4(4s+5)^2$: it holds at $69$ and the ratio $\dfrac{s^3}{(4s+5)^2}$ is increasing for positive $s$, as its derivative has positive numerator $s^2(4s+15)$. Therefore $s\le68$. The finite exact check below gives only $(x,y)=(6,8)$. Direct substitution gives radicand $1025+1000=2025=45^2$, and the right side is $45$. Positivity makes squaring reversible.
+\begin{verbatim}
+v=[]
+for x in range(6,69):
+    for y in range(8,69-x):
+        if x!=y and 4*x**3+4*x*x+2*x+5+y**3+7*y*y+5*y==(4*x+2*y+5)**2:
+            v.append((x,y))
+assert v==[(6,8)]
+assert 4*6+2*8+5==45
+\end{verbatim}

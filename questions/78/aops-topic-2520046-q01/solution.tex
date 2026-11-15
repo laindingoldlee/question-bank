@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2520046_pi_problem
+% Stable identity: aops-topic-2520046-q01
+Suppose, for contradiction, that $\pi=\dfrac ab$ with positive integers $a,b$. Fix a positive integer $n$ and let
+\[f(x)=\dfrac{x^n(a-bx)^n}{n!},\qquad F(x)=f(x)-f''(x)+f^{(4)}(x)-\cdots+(-1)^nf^{(2n)}(x).\]
+
+\textbf{Step 1: all derivatives of $f$ are integers at $0$ and at $\pi$.} Expanding, $f(x)=\dfrac{1}{n!}\sum_{j=n}^{2n}c_jx^j$ with integers $c_j$. So $f^{(j)}(0)=0$ for $j<n$ and for $j>2n$, while for $n\le j\le2n$, $f^{(j)}(0)=\dfrac{j!}{n!}c_j$, an integer because $j\ge n$. Next, since $a-b\left(\dfrac ab-x\right)=bx$,
+\[f(\pi-x)=\dfrac{\left(\dfrac ab-x\right)^n(bx)^n}{n!}=\dfrac{(a-bx)^nx^n}{n!}=f(x).\]
+Differentiating $j$ times gives $(-1)^jf^{(j)}(\pi-x)=f^{(j)}(x)$, so $f^{(j)}(\pi)=(-1)^jf^{(j)}(0)$ is an integer too. Hence $F(0)$ and $F(\pi)$ are integers.
+
+\textbf{Step 2: the integral is an integer.} Since $f$ has degree $2n$, $f^{(2n+2)}=0$, so $F''(x)+F(x)=f(x)$. Then
+\[\dfrac{d}{dx}\bigl(F'(x)\sin x-F(x)\cos x\bigr)=F''(x)\sin x+F(x)\sin x=f(x)\sin x,\]
+and therefore
+\[I_n=\int_0^\pi f(x)\sin x\,dx=\Bigl[F'(x)\sin x-F(x)\cos x\Bigr]_0^\pi=F(\pi)+F(0),\]
+an integer.
+
+\textbf{Step 3: $0<I_n<1$ for large $n$.} For $0<x<\pi$ we have $a-bx=b(\pi-x)>0$ and $\sin x>0$, so the integrand is positive and $I_n>0$. Also $0<x<\pi$ and $0<a-bx<a$, so
+\[0<f(x)\sin x<\dfrac{(\pi a)^n}{n!},\qquad 0<I_n<\dfrac{\pi(\pi a)^n}{n!}.\]
+Let $c=\pi a$. For $n\ge2c$, each further factor $\dfrac{c}{n+1},\dfrac{c}{n+2},\dots$ is at most $\dfrac12$, so $\dfrac{c^n}{n!}\to0$ as $n\to\infty$. Choose $n$ with $\dfrac{\pi c^n}{n!}<1$.
+
+Then $I_n$ is an integer with $0<I_n<1$, which is impossible. Hence $\pi$ is $\boxed{\text{irrational}}$. $\blacksquare$
+
+(This is Ivan Niven's proof, 1947.)

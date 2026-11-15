@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2587255_number_theory
+% Stable identity: aops-topic-2587255-q01
+We need $\dfrac{n(n+1)}{2}=m^2$. Of the coprime numbers $n$ and $n+1$, let $2u$ be the even one and $v$ the odd one. Then $uv=m^2$ with $\gcd(u,v)=1$, so $u=b^2$ and $v=a^2$ for positive integers $a,b$. Thus $\{n,n+1\}=\{a^2,2b^2\}$, so
+\[a^2-2b^2=\pm1,\qquad n=\min\left(a^2,2b^2\right),\qquad 2n+1=a^2+2b^2.\]
+Conversely every positive solution of $a^2-2b^2=\pm1$ gives such an $n$ (with $m=ab$).
+
+\emph{All positive solutions of $a^2-2b^2=\pm1$ are given by $a+b\sqrt2=\left(1+\sqrt2\right)^k$, $k\ge1$.} These are solutions, since $a-b\sqrt2=\left(1-\sqrt2\right)^k$ and $\left(1+\sqrt2\right)\left(1-\sqrt2\right)=-1$. Conversely, let $(a,b)$ be a positive solution with $b\ge2$, and put
+\[a'+b'\sqrt2=\dfrac{a+b\sqrt2}{1+\sqrt2}=\left(a+b\sqrt2\right)\left(\sqrt2-1\right),\qquad\text{i.e.}\qquad a'=2b-a,\ b'=a-b.\]
+Then $a'^2-2b'^2=-\left(a^2-2b^2\right)=\mp1$. From $a^2=2b^2\pm1$ and $b\ge2$ we get $b^2<a^2<4b^2$, so $b<a<2b$; hence $a'>0$ and $0<b'<b$. Repeating this, $b$ strictly decreases until $b=1$, where $a^2=2\pm1$ forces $a=1$. So every solution is $\left(1+\sqrt2\right)$ times a smaller one, down to $1+\sqrt2$, which proves the claim.
+
+Finally $2\left(a^2+2b^2\right)=\left(a+b\sqrt2\right)^2+\left(a-b\sqrt2\right)^2=\left(3+2\sqrt2\right)^k+\left(3-2\sqrt2\right)^k$, so
+\[n=\dfrac{\left(3+2\sqrt2\right)^k+\left(3-2\sqrt2\right)^k-2}{4},\qquad k=1,2,3,\dots\]
+These are
+\[\boxed{n=1,\ 8,\ 49,\ 288,\ 1681,\ 9800,\ \dots}\]
+with $n_{k+1}=6n_k-n_{k-1}+2$. For example $1+\cdots+8=36=6^2$ and $1+\cdots+49=1225=35^2$.

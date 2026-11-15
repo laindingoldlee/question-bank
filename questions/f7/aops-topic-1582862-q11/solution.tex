@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1582862_17_geometry_questions
+% Stable identity: aops-topic-1582862-q11
+A point on the edge travels one circumference, $\pi d$, per revolution.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair O1=(0,0),O2=(4.2,0);
+draw(circle(O1,1.75),linewidth(0.9));draw(circle(O1,0.2));
+draw(circle(O2,1.0208),linewidth(0.9));draw(circle(O2,0.2));
+draw(O1--O1+1.75*dir(30));label("$6$ in",O1+0.9*dir(30),dir(120));
+draw(O2--O2+1.0208*dir(30));label("$3.5$ in",O2+0.5*dir(30),dir(120),fontsize(8pt));
+label("$33$ rpm",O1+(0,-1.75),S);label("$45$ rpm",O2+(0,-1.02),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{$33$ rpm record:} $d=12$ in $=1$ ft, so its edge moves $33\pi\cdot1$ ft per minute, i.e.\ $\dfrac{33\pi}{60}\approx1.7279$ ft per second.
+
+\textbf{$45$ rpm record:} $d=7$ in $=\dfrac{7}{12}$ ft, so its edge moves $45\pi\cdot\dfrac{7}{12}=\dfrac{105\pi}{4}$ ft per minute, i.e.\ $\dfrac{105\pi}{240}\approx1.3744$ ft per second.
+
+The difference is
+\[
+\dfrac{33\pi}{60}-\dfrac{105\pi}{240}=\dfrac{132\pi-105\pi}{240}=\dfrac{27\pi}{240}=\dfrac{9\pi}{80}\approx\boxed{0.35\text{ ft per second}},
+\]
+the edge of the larger, slower record being faster.

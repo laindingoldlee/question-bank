@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1623154_2004_state_sprint_problem_26
+% Stable identity: aops-topic-1623154-q01
+Let $\angle A=x$ degrees. The three quantities are $3x$, $4(90-x)$ and $\dfrac{180-x}{2}$, and they are $3k$, $14k$, $4k$ for some $k>0$. From the first, $x=k$. Then
+\[
+4(90-x)=14x\iff360=18x\iff x=20 .
+\]
+Check the third: $\dfrac{180-20}{2}=80=4\cdot20$. So $\angle A=20^\circ$ and its complement is $\boxed{70}$ degrees.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);real a=20;
+draw(O--(4,0),linewidth(0.9));draw(O--(0,4),linewidth(0.9));draw(O--4*dir(a),blue+linewidth(0.9));
+draw((0,0.35)--(0.35,0.35)--(0.35,0));
+draw(arc(O,1.6,0,a),blue);draw(arc(O,2.2,a,90),red);
+label("$A=20^\circ$",O+2.75*dir(8.5),blue);label("$70^\circ$",O+2.2*dir((a+90)/2),NE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2324141_i_made_this_problem_since_i_had_to_wake_up_at_7_am_this_morning
+% Stable identity: aops-topic-2324141-q01
+Arrival times are wake-up times plus $30$ minutes, so we can work with the wake-up minutes $a,b,c$ (minutes after $7{:}00$) of the three friends. Friends $i$ and $j$ meet when their times differ by at most $5$, and all three are present together when $\max-\min\le5$. Every pair $(b,c)$ with $b\ge1$ has probability $0.02\cdot0.05=\dfrac1{1000}$, and every $c$ together with $b=0$ has probability $0.5\cdot0.05=\dfrac1{40}$.
+
+\textbf{(1)} We find the probability that no two meet: $a,b,c$ pairwise differ by at least $6$.
+\begin{itemize}
+\item $a=0$ (probability $0.9$): we need $b\ge6$, $c\ge6$ (so $b\neq0$) and $|b-c|\ge6$. For $c=6,\dots,20$ the number of $b\in\{6,\dots,25\}$ with $|b-c|\ge6$ is $\max(0,c-11)+\max(0,20-c)$; summing gives $45+105=150$ pairs, probability $\dfrac{150}{1000}$.
+\item $a=m\in\{1,\dots,10\}$ (probability $0.01$ each): count in the same way the pairs $(b,c)$ with all three differences at least $6$. For $m=1,\dots,5$, $b=0$ is impossible ($|m-0|\le5$) and the numbers of pairs with $b\ge1$ are $127,106,87,70,55$. For $m=6,\dots,10$, $b=0$ is possible with $c\ge m+6$ ($9,8,7,6,5$ values of $c$), and the numbers of pairs with $b\ge1$ are $42,52,60,66,70$.
+\end{itemize}
+So
+\[P(\text{no two meet})=0.9\cdot\dfrac{150}{1000}+0.01\cdot\dfrac{127+106+87+70+55+42+52+60+66+70}{1000}+0.01\cdot\dfrac{9+8+7+6+5}{40},\]
+which is $0.135+0.00735+0.00875=0.1511$. Hence
+\[P(\text{at least two meet})=1-0.1511=\boxed{0.8489}.\]
+
+\textbf{(2)} Now we need $\max(a,b,c)-\min(a,b,c)\le5$.
+\begin{itemize}
+\item $a=0$: we need $b\le5$ and $c\le5$. With $b=0$: $c\in\{1,\dots,5\}$, probability $0.5\cdot0.25=0.125$. With $b\in\{1,\dots,5\}$: probability $0.1\cdot0.25=0.025$. Total $0.15$.
+\item $a=m\in\{1,\dots,5\}$: either $b=0$ and $1\le c\le5$ (because $c\ge1$ and $c-0\le5$), or $b\ge1$ and all three of $m,b,c$ lie in a window of $6$ consecutive minutes. Counting pairs gives probabilities $0.161,0.172,0.183,0.194,0.205$ for $m=1,\dots,5$; for instance for $m=1$: $b=0$ gives $0.125$, and $b,c\in\{1,\dots,6\}$ gives $36$ pairs, $0.036$.
+\item $a=m\in\{6,\dots,10\}$: $b=0$ is impossible, and $b,c\ge1$ must lie with $m$ in a window of $6$ minutes; this gives $91$ pairs for each such $m$, probability $0.091$.
+\end{itemize}
+So
+\[P(\text{all three meet})=0.9\cdot0.15+0.01\,(0.161+0.172+0.183+0.194+0.205+5\cdot0.091)=0.135+0.0137=\boxed{0.1487}.\]

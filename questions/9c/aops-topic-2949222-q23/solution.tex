@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2949222_2018_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2949222-q23
+Normalize $JA=1$ and put $J=(0,0),A=(1,0)$. The ratio condition gives $JX=\dfrac{3-\sqrt5}{2}$ and $AX=\dfrac{\sqrt5-1}{2}$. Coordinates $M=(1+\cos72^\circ,\sin72^\circ)$ and $E=(\dfrac{1}{2},\sin72^\circ+\sin36^\circ)$ give $AE^2=\dfrac{3+\sqrt5}{2}$ and $XM^2=4-\sqrt5$. Write $P=A+t(E-A)$, $0\le t\le1$. The equation $XP^2=XM^2$ becomes $(3+\sqrt5)t^2-(\sqrt5-1)t-(5-\sqrt5)=0$. Its sole root in $[0,1]$ is $t=\dfrac{3\sqrt5-5}{2}$; the other is negative. Therefore $\dfrac{AE}{PE}=\dfrac{1}{1-t}=\boxed{\dfrac{7+3\sqrt5}{2}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair J=(0,0),A=(1,0),M=A+dir(72),Ep=M+dir(144),Spt=Ep+dir(216),X=((3-sqrt(5))/2,0);real t=(3*sqrt(5)-5)/2;pair P=A+t*(Ep-A);draw(J--A--M--Ep--Spt--cycle);draw(A--Ep,dashed);draw(X--M,blue);draw(X--P,blue);label("$J$",J,SW);label("$A$",A,SE);label("$M$",M,E);label("$E$",Ep,N);label("$S$",Spt,W);label("$X$",X,S);label("$P$",P,W);
+\end{asy}

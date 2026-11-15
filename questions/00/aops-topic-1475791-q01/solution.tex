@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1475791_number_theory
+% Stable identity: aops-topic-1475791-q01
+The answer is $\boxed{9}$.
+
+\textbf{Every green number contains $1$ or $9$.} We show that the leading digit $a$ of a green number $N$ is $1$ or $9$. Suppose $N$ has $k+1$ digits, so $a\cdot10^k\le N<(a+1)\cdot10^k$ and
+\[
+6a\cdot10^k\le 6N<6(a+1)\cdot10^k .
+\]
+\begin{itemize}
+\item If $a=2,3,4,5,6,7$, then $6N$ lies in $[12,18)$, $[18,24)$, $[24,30)$, $[30,36)$, $[36,42)$, $[42,48)$ times $10^k$ respectively, so the leading digit of $6N$ is one of $1,2,3,4$. Not green.
+\item If $a=8$, then $48\cdot10^k\le6N<54\cdot10^k$. Either $6N<50\cdot10^k$, and its leading digit is $4$; or $50\cdot10^k\le 6N<54\cdot10^k$, and $6N$ has at least two digits beginning with $50$, $51$, $52$ or $53$, so its second digit is one of $0,1,2,3$. (For $k=0$, that is $N=8$, we get $6N=48$.) Not green.
+\end{itemize}
+So $a=1$ or $a=9$, and every green number contains the digit $1$ or the digit $9$.
+
+\textbf{No other digit works with $1$.} The numbers $96$ and $98$ are green, since $6\cdot96=576$ and $6\cdot98=588$. If $\{1,d\}$ is a pair of digits that every green number meets, then $96$ forces $d\in\{9,6\}$ and $98$ forces $d\in\{9,8\}$, so $d=9$.
+
+This is exactly the official argument: looking at the first digit of $N$ rules out every leading digit except $1$ and $9$ (for $8$ the trouble is that $6N$ starts with $4$ or with $50$ to $53$).

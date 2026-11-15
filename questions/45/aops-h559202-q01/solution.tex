@@ -1,0 +1,11 @@
+The equal arcs $AE$ and $EC$ give $EA=EC$. Let $\beta=\angle EBC$. Because $ABEC$ is cyclic and $E$ bisects the specified arc, $\angle ABE=180^\circ-\beta$. Apply the cosine rule in triangles $ABE$ and $CBE$:
+\[EA^2=AB^2+BE^2+2AB\cdot BE\cos\beta,\]
+\[EC^2=BC^2+BE^2-2BC\cdot BE\cos\beta.\]
+Subtracting and dividing by $AB+BC>0$ yields $AB=BC-2BE\cos\beta$. The given circular order puts $D$ between $B,C$, and $BE\cos\beta=BD$. Therefore
+\[AB=BC-2BD=DC-BD,\qquad DC=\boxed{l_1+l_2}.\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=dir(-90),B=dir(-30),E=(1,0),C=(0,1),D=B+dot(E-B,C-B)/abs(C-B)^2*(C-B);draw(circle((0,0),1));draw(A--B--E--C--cycle);draw(B--C);draw(E--D,blue+dashed);label("$A$",A,(0,-1));label("$B$",B,(1,-1));label("$E$",E,(1,0));label("$C$",C,(0,1));label("$D$",D,(-1,-1));label("$l_1$",midpoint(A--B),(-1,-1));
+\end{asy}

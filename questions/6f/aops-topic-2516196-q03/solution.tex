@@ -1,0 +1,43 @@
+% Source: https://artofproblemsolving.com/community/c3h2516196_select_problems_from_the_imtc
+% Stable identity: aops-topic-2516196-q03
+Let $XN=d$, so $YN=d+5$, $XY=d+10$ and $BC=d+15$. Triangle $XNY$ has a right angle at $N$, so
+\[d^2+(d+5)^2=(d+10)^2\iff d^2-10d-75=0\iff(d-15)(d+5)=0,\]
+so $d=15$: $XN=15$, $YN=20$, $XY=25$, $BC=30$.
+
+The altitude of the right triangle $XNY$ from $N$ is $\dfrac{XN\cdot YN}{XY}=\dfrac{15\cdot20}{25}=12$. Since $N$ lies on $BC$ and $XY\parallel BC$, this is the distance between the lines $XY$ and $BC$.
+
+Since $XY\parallel BC$, triangle $AXY$ is similar to triangle $ABC$ with ratio $\dfrac{XY}{BC}=\dfrac{25}{30}=\dfrac56$. If $h$ is the altitude from $A$ to $BC$, the altitude from $A$ to $XY$ is $h-12$, so
+\[h-12=\dfrac56h\iff h=72.\]
+The area is $\dfrac12\cdot30\cdot72=\boxed{1080}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(30,0), A=(12,72);
+pair X=B+(A-B)/6, Y=C+(A-C)/6;
+fill(A--X--Y--cycle,rgb(0.92,0.92,0.92));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(X--Y,blue+linewidth(0.9));
+draw((A.x,0)--A,dashed);
+label("$A$",A,N,fontsize(8pt)); label("$B$",B,SW,fontsize(8pt)); label("$C$",C,SE,fontsize(8pt)); label("$X$",X,W,fontsize(8pt)); label("$Y$",Y,E,fontsize(8pt));
+label("$72$",(A.x,40),E,fontsize(7pt)); label("$30$",(B+C)/2+(6,0),S,fontsize(7pt));
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(30,0), A=(12,72);
+pair X=B+(A-B)/6, Y=C+(A-C)/6, Np=(11,0);
+draw(B--C,linewidth(0.9)); draw(B--(B+0.3*(A-B)),linewidth(0.9)); draw(C--(C+0.3*(A-C)),linewidth(0.9));
+draw(X--Y,blue+linewidth(0.9)); draw(X--Np--Y,red+linewidth(0.9));
+draw(Np--(Np.x,12),dashed);
+real s=1.2;
+draw(Np+s*unit(X-Np)--Np+s*unit(X-Np)+s*unit(Y-Np)--Np+s*unit(Y-Np));
+label("$B$",B,SW); label("$C$",C,SE); label("$X$",X,W); label("$Y$",Y,E); label("$N$",Np,S);
+label("$15$",(X+Np)/2,W,red+fontsize(8pt)); label("$20$",(Y+Np)/2,SE,red+fontsize(8pt)); label("$25$",(X+Y)/2+(5,0),N,blue+fontsize(8pt));
+label("$12$",(Np.x,7),W,fontsize(8pt)); label("$30$",(B+C)/2+(6,0),S,fontsize(8pt));
+\end{asy}
+
+The sketches show the whole triangle and an enlarged view of its lower part. (For instance $B=(0,0)$, $C=(30,0)$, $A=(12,72)$, $X=(2,12)$, $Y=(27,12)$, $N=(11,0)$ satisfy all the conditions.)

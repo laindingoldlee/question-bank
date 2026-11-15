@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2012045__of_squares_on_a_n_by_n_grid
+% Stable identity: aops-topic-2012045-q01
+Every such square fits in a smallest axis-parallel square (its bounding square) whose vertices are lattice points: if the square has vertices \((x_1,y_1),\dots\), the bounding square has side \(k\) equal to the horizontal extent of the square, with \(1\le k\le n\).
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=4;++i){draw((i,0)--(i,4),gray(0.7)); draw((0,i)--(4,i),gray(0.7));}
+for(int i=0;i<=4;++i) for(int j=0;j<=4;++j) dot((i,j),linewidth(2));
+draw((0,0)--(3,0)--(3,3)--(0,3)--cycle,dashed);
+draw((1,0)--(3,1)--(2,3)--(0,2)--cycle,blue+linewidth(1));
+label("$a$",(0.5,0),S); label("$k-a$",(2,0),S); label("$k$",(3,1.5),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\emph{Each bounding square of side \(k\) contains exactly \(k\) squares that it bounds.} Such a square has one vertex on each side of the bounding square. If its vertex on the bottom side is at distance \(a\) from the bottom-left corner (\(0\le a\le k-1\)), then rotating by \(90^\circ\) about the centre shows the other vertices are at distance \(a\) along the other sides (going around), giving the square with vertices \((a,0),(k,a),(k-a,k),(0,k-a)\) relative to the corner. Conversely each \(a\in\{0,1,\dots,k-1\}\) gives one such square (\(a=0\) is the bounding square itself), and different \(a\) give different squares.
+
+\emph{Counting.} An axis-parallel \(k\times k\) square with lattice vertices can be placed in \((n-k+1)^2\) positions. Hence the total is
+\[
+\sum_{k=1}^{n}k\,(n-k+1)^2 .
+\]
+Substituting \(j=n+1-k\), this is \(\sum_{j=1}^{n}(n+1-j)j^2=(n+1)\dfrac{n(n+1)(2n+1)}{6}-\dfrac{n^2(n+1)^2}{4}\), which simplifies to
+\[
+\boxed{\dfrac{n(n+1)^2(n+2)}{12}}.
+\]
+Check: \(n=1\) gives \(1\); \(n=2\) gives \(6\) (four unit squares, one \(2\times2\), one tilted square).

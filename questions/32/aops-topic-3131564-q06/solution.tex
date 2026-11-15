@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h3131564_2023_emcc_team_round__exeter_math_club_competition
+% Stable identity: aops-topic-3131564-q06
+Choosing colors for the seven distinct letters determines every cell. Test all $4^7$ assignments against the ten cyclic adjacency constraints:\begin{verbatim}
+from itertools import product
+word='EXETERMATH'; letters=sorted(set(word)); ans=0
+for colors in product(range(4),repeat=len(letters)):
+ d=dict(zip(letters,colors))
+ ans+=all(d[word[i]]!=d[word[(i+1)%len(word)]] for i in range(len(word)))
+print(ans) # 1440
+\end{verbatim}
+The exhaustive test counts each valid assignment once, so the answer is $\boxed{1440}$.

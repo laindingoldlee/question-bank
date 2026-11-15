@@ -1,0 +1,17 @@
+If the turning angle is $\theta$, going once around the closed path restores the original edge direction, so $n\theta=360^\circ k$ for an integer $k$. Equal edge lengths and a fixed turn imply that the vertices lie on a circle: the successive edge vectors form a geometric progression, and their partial sums are an affine image of roots of unity.
+
+Thus the path joins equally spaced vertices with a constant step $k$. Distinctness of all $n$ vertices is equivalent to $\gcd(k,n)=1$. The turning-angle restriction gives $1\le k<\dfrac{n}{2}$. Step 1 gives a convex polygon without crossings and is excluded; each coprime step $k\ge2$ gives a star with crossings. Different permitted steps have different vertex angles, so give nonsimilar stars.
+
+For $n=1000=2^3\cdot5^3$, the integers from 1 to 499 coprime to 1000 are precisely the 250 odd integers excluding the 50 odd multiples of 5. There are 200. Excluding step 1 leaves $\boxed{199}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+int n=7,k=2;pair[] P;for(int i=0;i<n;++i)P.push(dir(90+360*i/n));for(int i=0;i<n;++i){draw(P[i]--P[(i+k)%n],blue);dot(P[i]);}label("$n=7,\ k="+string(k)+"$",(0,-1.35));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+int n=7,k=3;pair[] P;for(int i=0;i<n;++i)P.push(dir(90+360*i/n));for(int i=0;i<n;++i){draw(P[i]--P[(i+k)%n],blue);dot(P[i]);}label("$n=7,\ k="+string(k)+"$",(0,-1.35));
+\end{asy}

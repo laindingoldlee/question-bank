@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3319844_plane_geometry
+% Stable identity: aops-topic-3319844-q01
+Put $A=(0,0),B=(1,0),C=(1,1),D=(0,1)$ and let $AP=p$, $AQ=q$. The condition gives $\sqrt{p^2+q^2}=2-p-q$. Squaring yields $pq=2p+2q-2$, equivalently $(1-p)(1-q)=p+q-1$. The vectors from $C$ to $P,Q$ are $(p-1,-1)$ and $(-1,q-1)$. Their dot product is $2-p-q$, while the magnitude of their determinant is $1-(1-p)(1-q)=2-p-q$. This quantity is positive, because $p+q=2$ would force $p=q=1$, which fails the perimeter condition, so the angle has positive cosine and tangent one. Therefore $\boxed{\angle PCQ=45^\circ}$.
+\begin{asy}
+import geometry;
+usepackage("amsmath");
+size(270);
+real p=.6,q=(2*p-2)/(p-2);pair A=(0,0),B=(1,0),C=(1,1),D=(0,1),P=(p,0),Q=(0,q);draw(A--B--C--D--cycle);draw(P--Q^^P--C^^Q--C);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$P$",P,S);label("$Q$",Q,W);
+\end{asy}

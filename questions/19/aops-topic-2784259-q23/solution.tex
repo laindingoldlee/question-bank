@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2784259_2016_mbmt_guts_round__p16__p30__montgomery_blair_math_tournament
+% Stable identity: aops-topic-2784259-q23
+Let $ E(h,t)$ be the expected remaining flips with capped counts $ h\le4,t\le2 $. Then $ E(4,2)=0 $. If one target is already met, $ E(4,t)=2+E(4,t+1)$ and $ E(h,2)=2+E(h+1,2)$, since a needed outcome takes two flips on average. Otherwise $ E(h,t)=1+\dfrac{E(h+1,t)+E(h,t+1)}{2}$. Evaluating the finite recurrence gives $ E(0,0)=\boxed{\dfrac{17}{2}}$:
+\begin{verbatim}
+from functools import lru_cache
+from fractions import Fraction as F
+@lru_cache(None)
+def E(h,t):
+ if (h,t)==(4,2):return F(0)
+ if h==4:return 2+E(h,t+1)
+ if t==2:return 2+E(h+1,t)
+ return 1+(E(h+1,t)+E(h,t+1))/2
+assert E(0,0)==F(17,2)
+\end{verbatim}

@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2898081_birthday_problems_2022
+% Stable identity: aops-topic-2898081-q12
+Place $D=(0,0)$, $C=(\sqrt3,0)$, $A=(0,1)$. The bisector is $y=x$, and $AC$ is $y=1-\dfrac x{\sqrt3}$. They meet at $x=\dfrac{\sqrt3}{\sqrt3+1}$.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0),C=(sqrt(3),0),B=(sqrt(3),1),A=(0,1);pair E=extension(A,C,D,D+(1,1));draw(A--B--C--D--cycle);draw(A--C);draw(D--E);fill(A--D--E--cycle,lightgray);
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);label("$E$",E,N);
+\end{asy}
+
+$[ADE]=\dfrac12\cdot AD\cdot x=\dfrac x2$ and $[ABCD]=\sqrt3$, so the ratio is $\dfrac1{2(\sqrt3+1)}=\boxed{\dfrac{\sqrt3-1}4}$.

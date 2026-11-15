@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2786880_2017_mbmt_guts_round_p1125_montgomery_blair_math_tournament
+% Stable identity: aops-topic-2786880-q22
+The centroid is $ G=(4,6)$, at radius $ R=2\sqrt{13}$ from the origin. The vertex distances from $ G $ are 5, $\sqrt{13}$, and $\sqrt{18}$, so unrestricted rotation about $ G $ sweeps the entire disk of radius 5: the centroid is inside the triangle, and its segment to the farthest vertex supplies every radial distance up to 5. Revolving that disk's centre along the circle of radius $ R>5 $ sweeps the annulus with radii $ R-5 $ and $ R+5 $. Its area is $\pi((R+5)^2-(R-5)^2)=\boxed{40\pi\sqrt{13}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair O=(0,0),G=(4,6);real R=abs(G);draw(circle(O,R-5));draw(circle(O,R+5));draw(circle(G,5),blue);draw(O--G,dashed);draw((-1,6)--(6,3)--(7,9)--cycle);label("$O$",O,S);label("$G$",G,E);label("$R$",G/2,W);
+\end{asy}

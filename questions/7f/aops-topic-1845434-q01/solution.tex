@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1845434_please_help
+% Stable identity: aops-topic-1845434-q01
+Let the first side be $f$, the second $s$ and the third $t$. Then
+\[
+f=2s+3,\qquad f=\dfrac{3}{2}t,\qquad f+s+t=31 .
+\]
+So $s=\dfrac{f-3}{2}$ and $t=\dfrac{2f}{3}$, and
+\[
+f+\dfrac{f-3}{2}+\dfrac{2f}{3}=31\iff6f+3f-9+4f=186\iff13f=195\iff f=15 .
+\]
+Then $s=6$ and $t=10$. These lengths form a triangle, since the two shorter sides satisfy $6+10>15$ (the triangle inequality). The sides are $\boxed{15,\ 6\text{ and }10}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0),Q=(15,0),R=(161/30,sqrt(36-(161/30)^2));
+draw(P--Q--R--cycle,linewidth(0.9));
+label("$15$",(P+Q)/2,S);label("$6$",(P+R)/2,NW);label("$10$",(Q+R)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

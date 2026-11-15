@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1695154_akbkckdk
+% Stable identity: aops-topic-1695154-q01
+Let $N=a^k+b^k=c^k+d^k$, $s=a+b$ and $t=c+d$. Since $k$ is odd, $x+y$ divides $x^k+y^k$, so $s\mid N$ and $t\mid N$.
+
+\textbf{Step 1: $s\ne t$.} For a fixed sum $x+y=\sigma$ write $x=\dfrac{\sigma}{2}+\delta$, $y=\dfrac{\sigma}{2}-\delta$ with $\delta\ge0$. Then $x^k+y^k=\sum_{j\text{ even}}2\dbinom kj\left(\dfrac{\sigma}{2}\right)^{k-j}\delta^j$ is strictly increasing in $\delta$. So if $s=t$, then $N$ determines $\delta$, and $\{a,b\}=\{c,d\}$, contrary to the hypothesis.
+
+\textbf{Step 2: a size bound.} By the power mean inequality, $\dfrac{x^k+y^k}{2}\ge\left(\dfrac{x+y}{2}\right)^k$, so
+\[
+N\ge2^{1-k}s^k\qquad\text{and}\qquad N\ge2^{1-k}t^k. \tag{$*$}
+\]
+Also, if $x,y\ge1$ then $x^k+y^k\le(x+y)^k$.
+
+\textbf{Step 3.} Suppose $p=\dfrac {N}{s}$ is a prime, so $N=ps$. Since $t\mid ps$, there are two cases.
+
+\emph{Case $p\nmid t$.} Then $\gcd(t,p)=1$, so $t\mid s$; as $t\ne s$, $t\le\dfrac {s}{2}$. Then
+\[
+N=c^k+d^k\le t^k\le\left(\dfrac {s}{2}\right)^k<2\left(\dfrac {s}{2}\right)^k=2^{1-k}s^k\le N
+\]
+by $(*)$, a contradiction.
+
+\emph{Case $p\mid t$.} Then $t\ge p=\dfrac {N}{s}$, so $st\ge N$. Multiplying the two inequalities in $(*)$,
+\[
+N^2\ge4^{1-k}(st)^k\ge4^{1-k}N^k,\qquad\text{so}\qquad N^{k-2}\le4^{k-1},\quad N\le4^{\dfrac{k-1}{k-2}}\le4^2=16
+\]
+(the exponent $\dfrac{k-1}{k-2}=1+\dfrac{1}{k-2}$ is largest for $k=3$). But then $a,b,c,d\le2$ (as $3^k\ge27$), and the possible values $1+1$, $1+2^k$, $2^k+2^k$ of $N$ are all different, so $N$ has only one representation and $\{a,b\}=\{c,d\}$, a contradiction.
+
+Both cases are impossible, so $\dfrac{a^k+b^k}{a+b}$ is not a prime. $\blacksquare$

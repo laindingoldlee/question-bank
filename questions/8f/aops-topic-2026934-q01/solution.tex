@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2026934_shortest_path_on_lattice_grid
+% Stable identity: aops-topic-2026934-q01
+\textbf{Lower bound.} List the $64$ points in the order in which the path first reaches them. Any two distinct grid points are at least $1$ cm apart, so the part of the path between consecutive points in this list has length at least $1$. There are $63$ such parts and they do not overlap, so the path has length at least $63$ cm.
+
+\textbf{Construction.} A ``snake'' path that runs along the first row, steps up $1$, runs back along the second row, and so on, visits all $64$ points using $63$ unit steps.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<8;++i){
+  if(i%2==0) draw((0,i)--(7,i),red+linewidth(0.9)); else draw((7,i)--(0,i),red+linewidth(0.9));
+  if(i<7){ if(i%2==0) draw((7,i)--(7,i+1),red+linewidth(0.9)); else draw((0,i)--(0,i+1),red+linewidth(0.9)); }
+}
+for(int i=0;i<8;++i) for(int j=0;j<8;++j) dot((i,j));
+label("start",(0,0),SW); label("end",(0,7),NW);
+label("$1$",(0.5,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence the shortest length is
+\[\boxed{63}\ \text{cm}.\]

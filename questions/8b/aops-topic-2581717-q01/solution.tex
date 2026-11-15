@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2581717_induction
+% Stable identity: aops-topic-2581717-q01
+Let $a_n=\left(5+\sqrt{17}\right)^n+\left(5-\sqrt{17}\right)^n$. The numbers $5\pm\sqrt{17}$ are the roots of $t^2=10t-8$, so for each of them $t^n=10t^{n-1}-8t^{n-2}$. Adding the two equations gives
+\[a_n=10a_{n-1}-8a_{n-2}\qquad(n\ge2),\qquad a_0=2,\ a_1=10.\]
+So every $a_n$ is an integer, and so is $I_n=10^n-a_n$. Since $10^n=10\cdot10^{n-1}-8\cdot10^{n-2}+8\cdot10^{n-2}$, subtracting gives
+\[I_n=10I_{n-1}-8I_{n-2}+8\cdot10^{n-2}\qquad(n\ge2).\]
+
+\emph{Base cases.} $I_1=10-10=0$ is divisible by $2^2$. Also $a_2=2(25+17)=84$, so $I_2=100-84=16$, which is divisible by $2^3$.
+
+\emph{Inductive step.} Let $n\ge3$ and assume $2^{n}\mid I_{n-1}$ and $2^{n-1}\mid I_{n-2}$. Then:
+\begin{itemize}
+\item $10I_{n-1}=2\cdot5\cdot I_{n-1}$ is divisible by $2^{n+1}$;
+\item $8I_{n-2}$ is divisible by $2^3\cdot2^{n-1}=2^{n+2}$;
+\item $8\cdot10^{n-2}=2^{n+1}\cdot5^{n-2}$ is divisible by $2^{n+1}$.
+\end{itemize}
+Hence $2^{n+1}\mid I_n$. By strong induction the statement holds for all $n\ge1$. $\blacksquare$
+
+(For example $I_3=1000-760=240=2^4\cdot15$.)

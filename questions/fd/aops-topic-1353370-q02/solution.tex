@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1353370_christmas_special_day_13
+% Stable identity: aops-topic-1353370-q02
+A diagonal joins two vertices that are not adjacent. From any vertex $P$ of the octagon, diagonals go to the $8-3=5$ vertices other than $P$ and its two neighbours:
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair[] V; for(int k=0;k<8;++k) V.push(dir(112.5+45*k));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--V[7]--cycle,linewidth(0.9));
+for(int k=2;k<7;++k) draw(V[0]--V[k],red+dashed);
+for(int k=0;k<8;++k) dot(V[k]);
+label("$P$",V[0],V[0]);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+That gives $8\cdot5=40$ endpoints-with-a-diagonal, but each diagonal is counted twice (once from each end), so the octagon has
+\[
+\dfrac{8\cdot5}{2}=\boxed{20}
+\]
+diagonals. (Equivalently, $\dbinom82-8=28-8=20$: all pairs of vertices minus the $8$ sides.)

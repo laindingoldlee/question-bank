@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2355316_snake_problems
+% Stable identity: aops-topic-2355316-q05
+Every reduced value is less than $252$, so he wins only if some computed value $f(x)$ equals $252$ exactly. Compute the scores from $5$ (a value above $252$ is reduced as described):
+\[5,\ 23,\ 104,\ 52,\ 26,\ 13,\ 54,\ 27,\ 124,\ 62,\ 31,\ 144,\ 72,\ 36,\ 18,\ 9,\ 75,\ 164,\ 82,\ 41,\ 194,\ 97,\ 174,\ 87,\ 224,\]
+\[112,\ 56,\ 28,\ 14,\ 7,\ 45,\ 214,\ 107,\ 224,\ \dots\]
+For example, $f(9)=81-9+3=75$, $f(75)=364\to264\to164$, $f(97)=474\to374\to274\to174$, and $f(107)=524\to\dots\to224$. Since the next score depends only on the current score, once $224$ appears for the second time the scores repeat the cycle
+\[224\to112\to56\to28\to14\to7\to45\to214\to107\to224\]
+forever. No computed value along the way was $252$ (the reductions produced $164$, $174$, $224$, $224$), so $252$ never occurs: $\boxed{\text{No, he never wins}}$.

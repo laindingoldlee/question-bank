@@ -1,0 +1,17 @@
+Put $d=\gcd(a,b)$, $a=dv$, $b=du$, so $\gcd(u,v)=1$, and let $T=\operatorname{lcm}(a,c)=dk$. The given equation implies
+\[
+\operatorname{lcm}(b,c)=d(d^2k^3-1).
+\]
+Since $b=du$ divides this number, $u\mid d^2k^3-1$, hence $\gcd(u,dk)=1$. As $c\mid dk$, also $\gcd(u,c)=1$, giving
+\[
+\operatorname{lcm}(du,c)=u\operatorname{lcm}(d,c).
+\]
+Write $\operatorname{lcm}(d,c)=dh$. Because both $d$ and $c$ divide $dk$, we have $h\mid k$. The original equation now becomes $1+uh=d^2k^3$. Reducing modulo $h$ forces $h=1$. Consequently $c\mid d$, $T=a$, and
+\[
+b=a^3-d,\qquad d\mid a.
+\]
+Conversely, for any $a\ge2$ and positive divisor $d\mid a$, take $b=a^3-d$ and $c=1$. Then $\gcd(a,b)=d$, $\operatorname{lcm}(b,1)=b$, and the equation holds.
+For $b\le1000$, the bound $b\ge a^3-a$ forces $2\le a\le10$; all divisors for these $a$ work since $b<a^3\le1000$. The ranges $[a^3-a,a^3-1]$ for different $a$ do not overlap. Thus the count is
+\[
+\sum_{a=2}^{10}\tau(a)=2+2+3+2+4+2+4+3+4=\boxed{26}.
+\]

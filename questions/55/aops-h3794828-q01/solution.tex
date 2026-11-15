@@ -1,0 +1,7 @@
+The $k$th line meets the previous $k-1$ lines in at most $k-1$ distinct interior points. It therefore has at most $k$ segments in the cake and creates at most $k$ new regions. Hence the maximum is $1+1+2+3+4+5=\boxed{16}$. Choose five lines with all pairwise intersections inside the cake and no triple intersection, as shown; then every bound is attained.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real R=3;draw(circle((0,0),R));for(int i=-2;i<=2;++i){real m=i,b=.09*i*i;pair f=(-m*b/(1+m*m),b/(1+m*m)),u=unit((1,m));real t=sqrt(R*R-dot(f,f));draw(f-t*u--f+t*u);label(string(i+3),f+t*u,unit(f+t*u));}
+\end{asy}

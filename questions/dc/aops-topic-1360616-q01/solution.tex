@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1360616_pythagorean_theorem_problem
+% Stable identity: aops-topic-1360616-q01
+The base of the triangle is $11$ m and its hypotenuse is $61$ m; the other leg is vertical, with length
+\[
+\sqrt{61^2-11^2}=\sqrt{(61-11)(61+11)}=\sqrt{3600}=60 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair P0=(0,0), P1=(11,0), P2=(11,5), P3=(0,5), T=(11,35);
+real k=1;
+filldraw(P0--P1--P2--P3--cycle,lightgray,linewidth(0.9));
+draw(P3--P2--T--cycle,linewidth(0.9));
+draw(ra(P2,(-1,0),(0,1),1.5));
+draw((-5,0)--(16,0),gray);
+label("$11$",(P0+P1)/2,S); label("$5$",(P1+P2)/2,E);
+label("$61$",(P3+T)/2,NW); label("$60$",(P2+T)/2,E,red);
+label("(not to scale)",(5.5,-9),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The top is $5+60=\boxed{65}$ metres above the ground.

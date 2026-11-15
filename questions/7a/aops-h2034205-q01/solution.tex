@@ -1,0 +1,27 @@
+Choose $A=(0,0)$ and $AD$ as the horizontal axis. Write
+\[
+B=(c\cos\theta,c\sin\theta),\qquad
+C=(b\cos\theta,-b\sin\theta),
+\]
+where $b=AC,c=AB$ and $2\theta=\angle A$. The angle-bisector theorem gives $D=(d,0)$ with $d=\dfrac{2bc\cos\theta}{b+c}$.
+
+Circle $ABD$ has equation $x^2+y^2-dx+vy=0$, where $v=\dfrac{d\cos\theta-c}{\sin\theta}$. On the vertical line $x=c\cos\theta$, the two intersection ordinates sum to $-v$. Subtracting the ordinate of $B$ gives
+\[
+E=\left(c\cos\theta,\ \dfrac{\cos\theta(c\cos\theta-d)}{\sin\theta}\right).
+\]
+The circumcenter equations $2O\cdot B=c^2$ and $2O\cdot C=b^2$ give
+\[
+O=\left(\dfrac{b+c}{4\cos\theta},\ \dfrac{c-b}{4\sin\theta}\right).
+\]
+Both $E$ and $O$ have the same slope from $A$:
+\[
+\dfrac{E_y}{E_x}=\dfrac{(c-b)\cos\theta}{(b+c)\sin\theta}
+=\dfrac{O_y}{O_x}.
+\]
+Thus $A,O,E$ are collinear, including the case $b=c$, when both ordinates are zero.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=4dir(30),C=6dir(-30),D=(12sqrt(3)/5,0),E=(2sqrt(3),-1.2),O=(5/sqrt(3),-1),U=(6sqrt(3)/5,.4);draw(circle(O,length(O)),gray);draw(circle(U,length(U)),lightblue);draw(A--B--C--cycle);draw(A--D,blue);draw(B--E,red);draw(A--1.2E,dashed);label("$A$",A,W);label("$B$",B,N);label("$C$",C,SE);label("$D$",D,NE);label("$E$",E,SE);label("$O$",O,SW);
+\end{asy}

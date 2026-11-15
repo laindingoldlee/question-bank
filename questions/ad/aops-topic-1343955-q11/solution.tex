@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1343955_mathcounts_2012_sprint_round_11
+% Stable identity: aops-topic-1343955-q11
+Let $Q$ be the midpoint of $MO$. In an isosceles triangle the altitude from the apex goes to the midpoint of the base, so $NQ\perp MO$ and $NQ$ is the required altitude. Also $NP=20$ and $PM=5$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+real h=10*sqrt(5), m=5*sqrt(5);
+pair Nn=(0,h), M=(-m,0), O=(m,0), Q=(0,0);
+pair P=Nn+20/25*(M-Nn);
+draw(M--Nn--O--cycle,linewidth(0.9));
+draw(Nn--Q,blue+dashed); draw(Q--P,red);
+draw(ra(Q,O-Q,Nn-Q,1.0),blue); draw(ra(P,Nn-P,Q-P,1.0),red);
+dot(P);dot(Q);
+label("$N$",Nn,N); label("$M$",M,SW); label("$O$",O,SE); label("$Q$",Q,S); label("$P$",P,W);
+label("$25$",(Nn+O)/2,NE); label("$20$",(Nn+P)/2,W); label("$5$",(P+M)/2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the right triangle $NQM$ (right angle at $Q$), $QP$ is the altitude to the hypotenuse $NM$. The two small right triangles are similar to the large one, which gives the leg relation $NQ^2=NP\cdot NM$:
+\[
+NQ^2=20\cdot25=500\quad\Longrightarrow\quad NQ=\sqrt{500}=\boxed{10\sqrt5}\text{ cm}.
+\]
+(Check: $MQ^2=MP\cdot MN=125$, and $NQ^2+MQ^2=625=25^2$.)

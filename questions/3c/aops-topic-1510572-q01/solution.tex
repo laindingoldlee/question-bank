@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1510572_help_with_factoring
+% Stable identity: aops-topic-1510572-q01
+Both polynomials $f$ have degree exactly $1$ in each variable separately. Suppose $f=PQ$ with $P,Q$ non-constant.
+
+\textbf{Step 1: each variable occurs in only one factor.} For any variable $x$, $\deg_x P+\deg_x Q=\deg_x f=1$, so $x$ occurs in exactly one of $P$, $Q$. A non-constant polynomial contains at least one variable, so there are variables $x$ occurring only in $P$ and $y$ occurring only in $Q$.
+
+\textbf{Step 2: an identity.} Then $f_x=P_xQ$, $f_y=PQ_y$ and $f_{xy}=P_xQ_y$ (partial derivatives, taken formally), so
+\[
+f\cdot f_{xy}=PQ\,P_xQ_y=f_x\cdot f_y .\qquad(\ast)
+\]
+
+\textbf{Step 3: contradiction.} Both polynomials are symmetric, so we may rename the variables so that $x=a$ and $y=b$.
+\begin{itemize}
+\item[(a)] $f=ab+bc+ca$: $f_a=b+c$, $f_b=a+c$, $f_{ab}=1$. At $a=b=0$, $c=1$, the left side of $(\ast)$ is $0\cdot1=0$ and the right side is $1\cdot1=1$. Contradiction.
+\item[(b)] $f=abc+bcd+cda+dab$: $f_a=bc+cd+db$, $f_b=ac+cd+da$, $f_{ab}=c+d$. At $a=b=0$, $c=d=1$, the left side is $1\cdot2=2$ and the right side is $1\cdot1=1$. Contradiction.
+\end{itemize}
+So neither expression factors. $\blacksquare$
+
+(Expressions like these are the elementary symmetric polynomials; in problems they are used as they are, e.g.\ through $(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ca)$, rather than factored.)

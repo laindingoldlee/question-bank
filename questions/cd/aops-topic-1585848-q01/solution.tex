@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1585848_hard_nt_problem
+% Stable identity: aops-topic-1585848-q01
+\textbf{Reduce to floors.} For every $k$, $\lceil\sqrt k\rceil=\lfloor\sqrt k\rfloor+1$ unless $k$ is a perfect square, when the two are equal. So the sum equals
+\[
+\sum_{k=1}^{2016}\lfloor\sqrt k\rfloor+(\text{number of even }k\le2016)-(\text{number of even squares}\le2016).
+\]
+
+\textbf{The floor sum.} Since $44^2=1936\le2016<2025=45^2$: for $1\le m\le43$, $\lfloor\sqrt k\rfloor=m$ for the $2m+1$ values $m^2\le k\le m^2+2m$, and $\lfloor\sqrt k\rfloor=44$ for the $2016-1936+1=81$ values $1936\le k\le2016$. Hence
+\[
+\sum_{k=1}^{2016}\lfloor\sqrt k\rfloor=\sum_{m=1}^{43}m(2m+1)+44\cdot81
+=2\cdot\dfrac{43\cdot44\cdot87}{6}+\dfrac{43\cdot44}{2}+3564=54868+946+3564=59378 .
+\]
+
+\textbf{The corrections.} There are $1008$ even $k\le2016$, and the even squares up to $2016$ are $2^2,4^2,\dots,44^2$, which are $22$ numbers. So the sum is
+\[
+59378+1008-22=60364,
+\]
+answer $\boxed{\text{(B) }60364}$.

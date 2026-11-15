@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2668968_proving_problems_thread
+% Stable identity: aops-topic-2668968-q15
+From each vertex $V$ there is a segment to each of the other $n-1$ vertices. Two of these segments are sides (to the two neighbours of $V$), so $V$ is an endpoint of $n-3$ diagonals. Adding over the $n$ vertices gives $n(n-3)$, but each diagonal is counted twice, once from each endpoint. Hence there are $\dfrac{n(n-3)}{2}$ diagonals. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair[] v;for(int i=0;i<6;++i)v[i]=dir(90+60*i);
+draw(v[0]--v[1]--v[2]--v[3]--v[4]--v[5]--cycle,linewidth(0.8));
+for(int i=2;i<5;++i)draw(v[0]--v[i],dashed+blue);
+dot(v[0]);label("$V$",v[0],N);
+\end{asy}
+
+(For $n=6$: $3$ diagonals from each vertex, $\dfrac{6\cdot3}{2}=9$ in all.)

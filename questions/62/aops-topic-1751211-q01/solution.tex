@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1751211_problem_help__reflected_triangle
+% Stable identity: aops-topic-1751211-q01
+Here $AB=AC=\sqrt{65}$. All three reflections are in lines through $C$, so we work with vectors from $C$: $\vec{CA}=(-1,8)$, $\vec{CB}=(-5,1)$.
+
+To reflect a vector $\mathbf v$ in the line through $C$ with direction $\mathbf d$, use $\mathbf v\mapsto 2\dfrac{\mathbf v\cdot\mathbf d}{\mathbf d\cdot\mathbf d}\,\mathbf d-\mathbf v$.
+
+\textbf{Over $BC$} ($\mathbf d=(-5,1)$): $\mathbf v=(-1,8)$, $\mathbf v\cdot\mathbf d=13$, $\mathbf d\cdot\mathbf d=26$, so $\vec{CA'}=(-5,1)-(-1,8)=(-4,-7)$ and $A'=(-1,-8)$.
+
+\textbf{Over $A'C$} ($\mathbf d=(-4,-7)$): $\mathbf v=\vec{CB}=(-5,1)$, $\mathbf v\cdot\mathbf d=13$, $\mathbf d\cdot\mathbf d=65$, so $\vec{CB'}=\dfrac{2}{5}(-4,-7)-(-5,1)=\left(\dfrac{17}{5},-\dfrac{19}{5}\right)$ and $B'=\left(\dfrac{32}{5},-\dfrac{24}{5}\right)$.
+
+\textbf{Over $B'C$} ($\mathbf d=(17,-19)$): $\mathbf v=\vec{CA'}=(-4,-7)$, $\mathbf v\cdot\mathbf d=65$, $\mathbf d\cdot\mathbf d=650$, so $\vec{CA''}=\dfrac{1}{5}(17,-19)-(-4,-7)=\left(\dfrac{37}{5},\dfrac{16}{5}\right)$ and $A''=\left(\dfrac{52}{5},\dfrac{11}{5}\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(2,7),B=(-2,0),C=(3,-1),A1=(-1,-8),B1=(6.4,-4.8),A2=(10.4,2.2);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A1--B--C--cycle,gray+dashed);
+draw(A1--B1--C--cycle,gray+dashed);
+draw(A2--B1--C--cycle,gray+dashed);
+draw(A--A2,red+linewidth(0.9));
+dot(A);dot(B);dot(C);dot(A1);dot(B1);dot(A2);
+label("$A(2,7)$",A,N);label("$B(-2,0)$",B,W);label("$C$",C,2*dir(205));
+label("$A'$",A1,SW);label("$B'$",B1,SE);label("$A''$",A2,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The slope of $AA''$ is
+\[
+\dfrac{\dfrac{11}{5}-7}{\dfrac{52}{5}-2}=\dfrac{-\dfrac{24}{5}}{\dfrac{42}{5}}=\boxed{-\dfrac{4}{7}}.
+\]
+(Check: $CA''=\sqrt{\dfrac{37^2+16^2}{25}}=\sqrt{65}=CA$, as it must be.)

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2530369_50th_post_problems
+% Stable identity: aops-topic-2530369-q07
+The diagonals of a parallelogram bisect each other, so $AE=EC=4.5$ and $BE=ED=4$. They split the parallelogram into four triangles $AEB$, $BEC$, $CED$, $DEA$. Each has two sides $4.5$ and $4$ enclosing an angle of $128^\circ$ or $52^\circ$, and $\sin128^\circ=\sin52^\circ$, so each has area $\dfrac12\cdot4.5\cdot4\cdot\sin52^\circ=9\sin52^\circ$. The area is
+\[4\cdot9\sin52^\circ=\boxed{36\sin52^\circ}\approx28.37.\]
+(In general the area is $\dfrac12\cdot AC\cdot BD\cdot\sin\angle AEB$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair Ep=(0,0);
+pair A=4.5*dir(200), C=-A, B=4*dir(72), D=-B;
+fill(A--Ep--B--cycle,rgb(0.85,0.9,1));
+draw(A--B--C--D--cycle,linewidth(0.8));
+draw(A--C,blue); draw(B--D,blue);
+draw(arc(Ep,0.7,72,200),red); label("$128^\circ$",1.25*dir(136),red+fontsize(8pt));
+dot(Ep);
+label("$A$",A,W);label("$B$",B,N);label("$C$",C,E);label("$D$",D,S);label("$E$",Ep,SE);
+label("$4.5$",(A+Ep)/2,S,fontsize(8pt)); label("$4$",(B+Ep)/2,E,fontsize(8pt));
+\end{asy}

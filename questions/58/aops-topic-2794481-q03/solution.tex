@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2794481_2005__midmichigan_mathematical_olympiad___grades_56
+% Stable identity: aops-topic-2794481-q03
+Choose a longest side $BC$ as horizontal base of length $b$. The altitude from $A$ meets its interior, so use coordinates $B=(0,0),C=(b,0),A=(t,h)$ with $0<t<b$. Let $M,N$ be midpoints of $AB,AC$, and $P=(t,\dfrac{h}{2})$ on $MN$. Cut along $MN$ and $AP$, obtaining the lower trapezoid and triangles $AMP,ANP$. Rotate $AMP$ by $180^\circ$ about $M$, sending $A$ to $B$ and $P$ to $(0,\dfrac{h}{2})$. Rotate $ANP$ similarly about $N$, sending $A$ to $C$ and $P$ to $(b,\dfrac{h}{2})$. These exactly fill the two missing corners of the rectangle $[0,b]\times[0,\dfrac{h}{2}]$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair B=(0,0),C=(4,0),A=(1.5,3),M=(.75,1.5),Np=(2.75,1.5),P=(1.5,1.5);draw(B--C--A--cycle);draw(M--Np^^A--P,blue);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$M$",M,W);label("$N$",Np,E);label("$P$",P,S);draw((6,0)--(10,0)--(10,1.5)--(6,1.5)--cycle);draw((6,0)--(6.75,1.5)^^(10,0)--(8.75,1.5),blue);label("reassembled",(8,-.4));
+\end{asy}

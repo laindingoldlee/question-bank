@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3114433_1962_ahsme_problemsproblem_39
+% Stable identity: aops-topic-3114433-q01
+Put its centroid at the origin and let the two corresponding vertex vectors be $ u,v $. They have lengths $ 2,4 $, and the third vertex is $-u-v $. The area is $\dfrac{3}{2}|u\times v|=12\sin\theta $, so $\sin\theta=\dfrac{\sqrt{15}}{4}$ and $\cos\theta=\pm\dfrac{1}{4}$. Thus the third median is $\dfrac{3}{2}\sqrt{20\pm4}$, namely $ 3\sqrt6 $ or $ 6 $. Equal medians imply equal corresponding sides, by $ m_a^2=\dfrac{2b^2+2c^2-a^2}{4}$, so the second value is excluded. The answer is $\boxed{3\sqrt6}$. The two possibilities are shown; the right one has equal medians and is rejected.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(2,0),B=(1,sqrt(15)),C=(-3,-sqrt(15)); draw(A--B--C--cycle); draw(A--(B+C)/2^^B--(A+C)/2^^C--(A+B)/2,dashed); dot((0,0)); label("$G$",(0,0),S); label("$A$",A,E);label("$B$",B,N);label("$C$",C,S); pair U=(11,0),V=(8,sqrt(15)),PtW=(8,-sqrt(15));draw(U--V--PtW--cycle);draw(U--(V+PtW)/2^^V--(U+PtW)/2^^PtW--(U+V)/2,dashed);label("equal medians",(9,-5));
+\end{asy}

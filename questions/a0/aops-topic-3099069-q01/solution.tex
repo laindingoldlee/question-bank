@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3099069_proof_with_complex_geo
+% Stable identity: aops-topic-3099069-q01
+Put $w_i=\dfrac{z_i}{r_i}$ and $s_i=\dfrac{1}{r_i}$. Then $h_{ij}=\dfrac{w_i-w_j}{s_i-s_j}$. Telescoping gives $(s_1-s_2)h_{12}+(s_2-s_3)h_{23}+(s_3-s_1)h_{31}=0$. The real coefficients sum to zero and are nonzero. Solving for any one point expresses it as a real affine combination of the other two, which proves collinearity. Noncollinearity of the original centres rules out all three homothety centres coinciding. This is Monge’s collinearity theorem in complex coordinates.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(-3,0),B=(2,0),C=(0,4),H12=(-8,0),H23=(6,-8),H31=(-4.5,-2);draw(circle(A,1));draw(circle(B,2));draw(circle(C,3));draw(H12--H23,blue);dot(H12);dot(H23);dot(H31);label("$h_{12}$",H12,W);label("$h_{23}$",H23,E);label("$h_{31}$",H31,SW);label("$z_1$",A,S);label("$z_2$",B,S);label("$z_3$",C,N);
+\end{asy}

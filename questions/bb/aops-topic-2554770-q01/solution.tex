@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2554770_question_from_class
+% Stable identity: aops-topic-2554770-q01
+Take a right triangle $ACB$ with the right angle at $C$, $\angle ABC=30^\circ$, $AC=1$, $CB=\sqrt3$ and $AB=2$. Extend $CB$ beyond $B$ to $D$ with $BD=BA=2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real r3=sqrt(3);
+pair C=(0,0),A=(0,1),B=(r3,0),D=(2+r3,0);
+draw(C--D--A--cycle,linewidth(0.8));draw(A--B);
+draw((0.12,0)--(0.12,0.12)--(0,0.12));
+label("$C$",C,SW);label("$A$",A,N);label("$B$",B,S);label("$D$",D,SE);
+label("$1$",(0,0.5),W);label("$\sqrt3$",(r3/2,0),S);label("$2$",(r3+1,0),S);label("$2$",(A+B)/2,NE);
+draw(arc(B,0.35,150,180));label("$30^\circ$",B+0.4*dir(165),W,fontsize(8pt));
+draw(arc(D,0.9,180-15,180));label("$15^\circ$",D+0.95*dir(172),W,fontsize(8pt));
+\end{asy}
+
+Triangle $ABD$ is isosceles with $\angle ABD=180^\circ-30^\circ=150^\circ$, so $\angle BDA=\angle BAD=15^\circ$. In the right triangle $ACD$, $CD=2+\sqrt3$ and $AC=1$, so
+\[AD^2=1+\left(2+\sqrt3\right)^2=8+4\sqrt3=\left(\sqrt6+\sqrt2\right)^2,\qquad AD=\sqrt6+\sqrt2.\]
+Therefore
+\[\sin15^\circ=\dfrac{AC}{AD}=\dfrac{1}{\sqrt6+\sqrt2}=\boxed{\dfrac{\sqrt6-\sqrt2}{4}},\qquad\cos15^\circ=\dfrac{CD}{AD}=\dfrac{2+\sqrt3}{\sqrt6+\sqrt2}=\boxed{\dfrac{\sqrt6+\sqrt2}{4}}.\]
+(For the last step, $(2+\sqrt3)\left(\sqrt6-\sqrt2\right)=2\sqrt6-2\sqrt2+3\sqrt2-\sqrt6=\sqrt6+\sqrt2$.) The same values follow from $\sin(45^\circ-30^\circ)=\sin45^\circ\cos30^\circ-\cos45^\circ\sin30^\circ$. In general, exact values come from special triangles and such formulas; calculators use other methods (such as series) to approximate the rest.

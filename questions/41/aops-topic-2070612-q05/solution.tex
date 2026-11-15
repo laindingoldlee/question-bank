@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2070612_first_and_final_five
+% Stable identity: aops-topic-2070612-q05
+Inside the circle the path consists of two perpendicular radii, each of length \(6\). They cut the disc into a quarter disc and a three-quarter disc.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+filldraw(O--(6,0)--arc(O,6,0,90)--cycle,paleyellow,nullpen);
+draw(circle(O,6));
+draw(6*dir(0)--O--6*dir(90),blue+linewidth(1));
+dot(O); label("$O$",O,SW);
+label("$6$",(3,0),S); label("$6$",(0,3),W);
+label("$P$",(2.5,2.5));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The smaller region is the quarter disc, of area \(P=\dfrac{1}{4}\pi\cdot 6^2=9\pi\). So \(\dfrac {P}{\pi}=9\): \(\boxed{\textbf{(B) } 9}\).

@@ -1,0 +1,8 @@
+Use coordinates $A=(3,0)$, $B=(\dfrac{3}{2},\dfrac{3\sqrt3}{2})$, $D=(-3,0)$, $E=(-\dfrac{3}{2},-\dfrac{3\sqrt3}{2})$, and $F=(\dfrac{3}{2},-\dfrac{3\sqrt3}{2})$. The division ratios give $M=(\dfrac{5}{2},-\dfrac{\sqrt3}{2})$ and $N=(-\dfrac{5}{2},-\dfrac{\sqrt3}{2})$. Thus $MN$ is horizontal, while $BE$ has equation $y=\sqrt3x$. Their intersection is $P=(-\dfrac{1}{2},-\dfrac{\sqrt3}{2})$, giving
+\[PD=\sqrt{\left(\dfrac{5}{2}\right)^2+\left(\dfrac{\sqrt3}{2}\right)^2}=\boxed{\sqrt7}.\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] v;for(int i=0;i<6;++i)v.push(3dir(60i));for(int i=0;i<6;++i){draw(v[i]--v[(i+1)%6]);label("$"+substr("ABCDEF",i,1)+"$",v[i],v[i]);}pair M=(2.5,-sqrt(3)/2),N=(-2.5,-sqrt(3)/2),P=(-.5,-sqrt(3)/2);draw(v[1]--v[4]);draw(M--N);draw(P--v[3],blue);label("$M$",M,(1,0));label("$N$",N,(-1,0));label("$P$",P,(0,-1));
+\end{asy}

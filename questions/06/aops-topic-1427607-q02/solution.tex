@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1427607_puzzle_style_problem
+% Stable identity: aops-topic-1427607-q02
+Number the rows and columns $1$ to $8$ and colour grey the $16$ unit squares whose row number and column number are both odd.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<8;++i) for(int j=0;j<8;++j){
+  if(i%2==0&&j%2==0) fill(shift(i,j)*unitsquare,gray(0.55));
+  draw(shift(i,j)*unitsquare,gray(0.3));
+}
+draw(box((2,4),(4,6)),red+linewidth(1.6));
+draw(box((0,0),(4,1)),blue+linewidth(1.6));
+draw(box((4,1),(8,2)),heavygreen+linewidth(1.6));
+draw(box((7,2),(8,6)),blue+linewidth(1.6));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item A $1\times4$ rectangle lying in a row covers four consecutive squares of that row. If the row is odd, two of the four columns are odd, so it covers exactly $2$ grey squares; if the row is even it covers $0$. The same holds for a rectangle lying in a column. So every $1\times4$ rectangle covers an \emph{even} number of grey squares (blue and green examples above).
+\item A $2\times2$ square covers one odd and one even row, and one odd and one even column, so it covers exactly $1$ grey square (red).
+\end{itemize}
+Hence one $2\times2$ square and fifteen $1\times4$ rectangles cover an odd number of grey squares. But a covering of the board covers all $16$ grey squares, an even number. So no such covering exists.

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1313565_congruent_triangle_problem
+% Stable identity: aops-topic-1313565-q01
+Compare triangles $QCB$ and $ACP$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(1.4,2.6);
+pair Pp=B+rotate(-60)*(C-B), Q=C+rotate(-60)*(A-C), R=A+rotate(-60)*(B-A);
+draw(A--B--C--cycle,linewidth(0.9)); draw(B--Pp--C,gray); draw(C--Q--A,gray); draw(A--R--B,gray);
+draw(A--Pp,red); draw(B--Q,blue); draw(C--R,heavygreen);
+label("$A$",A,W); label("$B$",B,E); label("$C$",C,N); label("$P$",Pp,NE); label("$Q$",Q,NW); label("$R$",R,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+They have $QC=AC$ (sides of the equilateral triangle $CAQ$) and $CB=CP$ (sides of $BCP$). The included angles are equal:
+\[
+\angle QCB=\angle QCA+\angle ACB=60^\circ+\angle C=\angle ACB+\angle BCP=\angle ACP .
+\]
+So the triangles are congruent by SAS, and $BQ=AP$. (Equivalently, the rotation about $C$ through $60^\circ$ maps $Q\mapsto A$ and $B\mapsto P$, hence segment $QB$ to segment $AP$.) In the same way, comparing triangles $RAC$ and $BAQ$ at vertex $A$ gives $CR=BQ$. Hence $AP=BQ=CR$. $\blacksquare$

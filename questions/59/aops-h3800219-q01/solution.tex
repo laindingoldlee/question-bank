@@ -1,0 +1,8 @@
+Any two corners share a row, a column, or a main diagonal, so the four corner entries must be distinct. Their sum is therefore at most $2+3+4+5=14$. The displayed grid meets every condition and has corner entries $2,4,5,3$, attaining $\boxed{14}$. One way to construct it is to start with entry $1+((r+2c)\bmod5)$ for row and column indices $r,c=0,\ldots,4$, then interchange the symbols $1$ and $2$. The coefficients along rows, columns, and both diagonals are nonzero modulo five, so each contains all residues.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"2", "3", "5", "1", "4"}, {"1", "4", "2", "3", "5"}, {"3", "5", "1", "4", "2"}, {"4", "2", "3", "5", "1"}, {"5", "1", "4", "2", "3"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("Corner sum 14",(2.5,-5.2));
+\end{asy}

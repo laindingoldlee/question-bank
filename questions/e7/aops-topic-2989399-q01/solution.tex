@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2989399_angle_measurement_basics
+% Stable identity: aops-topic-2989399-q01
+Adjacent hour marks are $\dfrac{360^\circ}{12}=30^\circ$ apart. At $8\!:\!00$ the minute hand points at $12$ and the hour hand at $8$, which is $4$ hour marks away going the short way ($8\to9\to10\to11\to12$).
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),1));
+for(int i=0;i<12;++i){pair p=dir(90-30*i);draw(0.9*p--p);}
+label("$12$",0.75*dir(90));label("$8$",0.75*dir(90-240));label("$4$",0.75*dir(90-120));
+draw((0,0)--0.85*dir(90),linewidth(1.2));draw((0,0)--0.55*dir(90-240),linewidth(2));
+draw(arc((0,0),0.25,90,210),Arrow);label("$120^\circ$",0.35*dir(150),NW,fontsize(8pt));
+\end{asy}
+
+The smaller angle is $4\cdot30^\circ=\boxed{120^\circ}$.

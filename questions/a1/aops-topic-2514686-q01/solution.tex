@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h2514686_problem_for_the_community
+% Stable identity: aops-topic-2514686-q01
+Let $\gamma=\angle ACB$ and let the bisector meet $AB$ at $D$, with $CD=6$.
+
+\textbf{The half-angle.} Triangles $ACD$ and $BCD$ make up triangle $ABC$, so comparing areas,
+\[\dfrac12\cdot5\cdot8\sin\gamma=\dfrac12\cdot5\cdot6\sin\dfrac\gamma2+\dfrac12\cdot8\cdot6\sin\dfrac\gamma2.\]
+Using $\sin\gamma=2\sin\dfrac\gamma2\cos\dfrac\gamma2$ and dividing by $\sin\dfrac\gamma2>0$: $80\cos\dfrac\gamma2=78$, so
+\[\cos\dfrac\gamma2=\dfrac{39}{40},\qquad\sin\dfrac\gamma2=\sqrt{1-\dfrac{1521}{1600}}=\dfrac{\sqrt{79}}{40}.\]
+Hence
+\[\cos\gamma=2\cdot\dfrac{1521}{1600}-1=\dfrac{721}{800},\qquad\sin\gamma=2\cdot\dfrac{\sqrt{79}}{40}\cdot\dfrac{39}{40}=\dfrac{39\sqrt{79}}{800}.\]
+
+\textbf{The third side.} By the law of cosines,
+\[AB^2=25+64-80\cdot\dfrac{721}{800}=89-\dfrac{721}{10}=\dfrac{169}{10},\qquad AB=\dfrac{13}{\sqrt{10}}=\dfrac{13\sqrt{10}}{10}.\]
+
+\textbf{The circumradius.} By the extended law of sines, $R=\dfrac{AB}{2\sin\gamma}$:
+\[R=\dfrac{13}{\sqrt{10}}\cdot\dfrac{400}{39\sqrt{79}}=\dfrac{400}{3\sqrt{790}}=\dfrac{40\sqrt{790}}{237}\approx4.744.\]
+So $AB=\boxed{\dfrac{13\sqrt{10}}{10}}$ and $R=\boxed{\dfrac{40\sqrt{790}}{237}}$. (This avoids Heron's formula: the bisector gives the half-angle directly, and the law of sines gives $R$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), B=(8,0);
+real cc=acos(721/800);
+pair A=5*dir(degrees(cc));
+pair D=(8*A+5*B)/13;
+pair m1=(A+C)/2, m2=(B+C)/2;
+pair O=extension(m1,m1+rotate(90)*(A-C),m2,m2+rotate(90)*(B-C));
+real R=abs(O-A);
+draw(circle(O,R),gray);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--D,red+linewidth(0.9));
+dot(O); draw(O--B,dashed);
+label("$A$",A,N); label("$B$",B,E); label("$C$",C,W); label("$D$",D,NE); label("$O$",O,S);
+label("$5$",(A+C)/2,NW,fontsize(8pt)); label("$8$",(B+C)/2,S,fontsize(8pt)); label("$6$",(C+D)/2,S,red+fontsize(8pt)); label("$R$",(O+B)/2,SE,fontsize(8pt));
+\end{asy}

@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2674806_prove_this
+% Stable identity: aops-topic-2674806-q01
+Put $O$ at the origin with $A=(-R,-R)$, $B=(R,-R)$, $C=(R,R)$, $D=(-R,R)$, and $M=(x,y)$ with $x^2+y^2=R^2$. Then
+\[MA^2=(x+R)^2+(y+R)^2=3R^2+2R(x+y),\qquad MC^2=3R^2-2R(x+y),\]
+\[MB^2=(x-R)^2+(y+R)^2=3R^2-2R(x-y),\qquad MD^2=3R^2+2R(x-y).\]
+Hence
+\[MA^2\cdot MC^2+MB^2\cdot MD^2=18R^4-4R^2\left[(x+y)^2+(x-y)^2\right]=18R^4-8R^2\left(x^2+y^2\right)=10R^4.\ \blacksquare\]
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+real R=1;pair A=(-R,-R),B=(R,-R),C=(R,R),D=(-R,R),M=R*dir(143),O=(0,0);
+draw(A--B--C--D--cycle,linewidth(0.8));draw(circle(O,R),linewidth(0.8));
+draw(M--A,dashed);draw(M--B,dashed);draw(M--C,dashed);draw(M--D,dashed);dot(M);dot(O);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$M$",M,W);label("$O$",O,N);
+draw(O--(R,0));label("$R$",(R/2,0),S,fontsize(8pt));
+\end{asy}

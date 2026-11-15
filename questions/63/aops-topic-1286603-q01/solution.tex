@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1286603_100gon_geometry
+% Stable identity: aops-topic-1286603-q01
+Let the blue numbers be $x_1,\dots,x_{100}$ (indices modulo $100$). The red sum is $S=\sum_{i=1}^{100}x_ix_{i+2}$.
+
+\textbf{Upper bound.} For $i=1,\dots,50$ group the terms $x_{2i-1}x_{2i+1}$ and $x_{2i}x_{2i+2}$. From the triples $(x_{2i-1},x_{2i},x_{2i+1})$ and $(x_{2i},x_{2i+1},x_{2i+2})$ we get $x_{2i-1}\le1-x_{2i}-x_{2i+1}$ and $x_{2i+2}\le1-x_{2i}-x_{2i+1}$. So with $t=x_{2i}+x_{2i+1}$,
+\[
+x_{2i-1}x_{2i+1}+x_{2i}x_{2i+2}\le(1-t)x_{2i+1}+x_{2i}(1-t)=t(1-t)\le\dfrac{1}{4} .
+\]
+These $50$ groups use every term of $S$ exactly once, so $S\le\dfrac{50}{4}=\dfrac{25}{2}$.
+
+\textbf{Equality.} Take $x_i=\dfrac{1}{2}$ for odd $i$ and $x_i=0$ for even $i$. Any three consecutive numbers sum to at most $\dfrac{1}{2}+0+\dfrac{1}{2}=1$, and each even vertex gets red number $\dfrac{1}{4}$, so $S=50\cdot\dfrac{1}{4}=\dfrac{25}{2}$.
+
+The maximum is $\boxed{\dfrac{25}{2}}$.

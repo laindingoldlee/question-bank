@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3064967_rectangular_pyramid_cross_sections
+% Stable identity: aops-topic-3064967-q01
+The possible listed shapes are $\boxed{\text{isosceles triangle, trapezoid, obtuse triangle}}$. To see the upper bound on the number of sides, project the cutting plane to a line in the base. If the plane contains the apex, its section is a triangle. Otherwise the apex lies on one side. Because opposite base vertices are symmetric about the point directly below the apex, at most two base vertices lie on the other side. Thus the cutting plane crosses at most two lateral edges and two base edges, giving at most four vertices; a pentagon is impossible. A rectangle is also impossible: the base contributes a horizontal side, so a rectangle would require vertical sides. No lateral face of a right pyramid contains a vertical line, so no section edge can be vertical. A central section parallel to a base edge gives an isosceles triangle; choosing a sufficiently small height makes its apex angle obtuse. A parallel section displaced from the centre gives a trapezoid. The sketches below use a square base with side 2: a central section of height 2, an offset section of a pyramid of height 1, and a central section of height $\dfrac{1}{2}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw((-1,0)--(1,0)--(0,2)--cycle);label("isosceles",(0,-.4));label("$2$",(0,2),N);draw((2,0)--(4,0)--(3.5,.5)--(2.5,.5)--cycle);label("trapezoid",(3,-.4));label("parallel bases",(3,.8));draw((5,0)--(7,0)--(6,.5)--cycle);label("obtuse apex",(6,-.4));label("$h=\dfrac{1}{2}$",(6,.5),N);
+\end{asy}

@@ -1,0 +1,7 @@
+A circle of radius $r$ contains an inscribed square of area $2r^2$, so its contribution is $(\pi-2)r^2$. The next circle has radius $\dfrac{r}{\sqrt2}$, so squared radii form $16,8,4,\ldots$. The contributions are disjoint. Their sum is $(\pi-2)\dfrac{16}{1-\dfrac{1}{2}}=\boxed{32(\pi-2)}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real r=4;for(int k=0;k<5;++k){filldraw(circle((0,0),r),lightgray);real a=r/sqrt(2);filldraw(box((-a,-a),(a,a)),white);r=a;}label("outer radius 4",(0,-4.7));
+\end{asy}

@@ -1,0 +1,7 @@
+Fix Ava's seat to remove rotational equivalence. Ben can sit two seats clockwise or counterclockwise from her, giving two symmetric cases.
+
+Take Ben two seats clockwise. Among the six free seats, one is isolated between Ava and Ben, and the other five form a path. Initially there are $6!=720$ assignments. For Cara and Diego to be adjacent, choose one of the path's four edges, orient the pair in two ways, and fill the others in $4!$ ways: $4\cdot2\cdot4!=192$. The same count applies to Ella and Finn.
+
+For both pairs to be adjacent, choose two disjoint edges of the five-seat path in three ways. Assign the named pairs to those edges in two ways, orient each pair in four ways, and place the last two siblings in two ways. This gives $3\cdot2\cdot4\cdot2=48$.
+
+Inclusion-exclusion gives $720-192-192+48=384$ per position of Ben. The answer is $\boxed{2\cdot384=768}$.

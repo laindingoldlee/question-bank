@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2402808_tetration__pentation_
+% Stable identity: aops-topic-2402808-q01
+\textbf{(a)} ${}^{2}2=2^2=4$, so ${}^{3}2=2^{\left({}^{2}2\right)}=2^4=\boxed{16}$ and ${}^{4}2=2^{16}=\boxed{65536}$.
+
+\textbf{(b)} ${}^{3}3=3^{27}=7625597484987$, while $\left(3^3\right)^3=3^9=19683$. A bottom-up tower collapses to a single power ($\left(a^a\right)^a=a^{a^2}$), which is why towers are evaluated from the top.
+
+\textbf{(c)} By definition, $\log_2\left({}^{k+1}2\right)=\log_2\left(2^{\left({}^{k}2\right)}\right)={}^{k}2$ for every $k\ge1$. So each application of $\log_2$ lowers the height of the tower by one: starting from $x={}^{n}2$, after $n-1$ applications we reach ${}^{1}2=2$, and one more application gives $\log_22=1$.
+
+For $65536$: $\log_265536=16$, $\log_216=4$, $\log_24=2$, $\log_22=1$, which is $4$ applications. So ${}^{4}2=65536$ and the super-logarithm is $\boxed{4}$, in agreement with (a). In general, the super-logarithm of a tower of $2$'s is the number of times $\log_2$ must be applied to reach $1$.

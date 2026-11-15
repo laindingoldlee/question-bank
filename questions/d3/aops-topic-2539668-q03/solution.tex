@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2539668_tringel_problems
+% Stable identity: aops-topic-2539668-q03
+Let $4AB=2BC=3AC=12k$. Then $AB=3k$, $BC=6k$ and $AC=4k$; take $k=1$. By the law of cosines in triangle $ABC$, the angle at $C$ (opposite $AB$) satisfies
+\[\cos C=\dfrac{BC^2+AC^2-AB^2}{2\cdot BC\cdot AC}=\dfrac{36+16-9}{48}=\dfrac{43}{48}.\]
+So $C$ is acute. The inscribed angle $C$ and the central angle $AOB$ subtend the same arc $AB$ (the one not containing $C$), which is less than a semicircle because $C<90^\circ$. Hence $\angle AOB=2\angle C$, and
+\[\cos\angle AOB=2\cos^2C-1=2\cdot\dfrac{1849}{2304}-1=\dfrac{1394}{2304}=\boxed{\dfrac{697}{1152}}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(6,0);
+real x=29/12;pair A=(x,sqrt(9-x*x));
+real y0=(x*x+A.y*A.y-6*x)/(2*A.y);pair O=(3,y0);
+real R=abs(O-B);
+draw(circle(O,R));
+draw(A--B--C--cycle,linewidth(0.8));
+draw(O--A,dashed);draw(O--B,dashed);
+draw(arc(O,0.8,degrees(B-O),degrees(A-O)));
+draw(arc(C,1.0,degrees(B-C),degrees(A-C)));
+dot(O);dot(A);dot(B);dot(C);
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,E);label("$O$",O,S);
+label("$3$",(A+B)/2,NW);label("$4$",(A+C)/2,NE);label("$6$",(4.4,0),S);
+\end{asy}
+
+(The triangle is obtuse at $A$, since $3^2+4^2<6^2$, so $O$ lies outside it; this does not affect $\angle AOB=2\angle C$.)

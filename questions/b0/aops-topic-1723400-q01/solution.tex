@@ -1,0 +1,44 @@
+% Source: https://artofproblemsolving.com/community/c3h1723400_outside_hexagon
+% Stable identity: aops-topic-1723400-q01
+Cut the hexagon into the triangle, three corner triangles at the vertices (green) and three quadrilaterals along the sides (blue).
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(5,0),C=(1.6,3.4);real x=1.2;
+pair A1=A+x*unit(A-B),A2=A+x*unit(A-C),B1=B+x*unit(B-A),B2=B+x*unit(B-C),C1=C+x*unit(C-B),C2=C+x*unit(C-A);
+fill(A--A1--A2--cycle,palegreen);fill(B--B2--B1--cycle,palegreen);fill(C--C2--C1--cycle,palegreen);
+fill(A--A2--B2--B--cycle,paleblue);fill(B--B1--C2--C--cycle,paleblue);fill(C--C1--A1--A--cycle,paleblue);
+draw(A1--A2--B2--B1--C2--C1--cycle,linewidth(0.9));
+draw(A--B--C--cycle,linewidth(1.1));
+draw(A1--B1,dashed);draw(B2--C1,dashed);draw(A2--C2,dashed);
+pair G=(A+B+C)/3;label("$A$",A+0.6*unit(G-A));label("$B$",B+0.7*unit(G-B));label("$C$",C+0.6*unit(G-C));
+label("$A_1$",A1,W);label("$A_2$",A2,SW);label("$B_1$",B1,E);label("$B_2$",B2,SE);label("$C_1$",C1,N);label("$C_2$",C2,NE);
+label("$x$",(A+A1)/2,N);label("$x$",(B+B1)/2,N);label("$x$",(C+C2)/2,NW);
+label("$T$",(A+B+C)/3+(0,-0.3));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Corner triangles.} At $A$, triangle $AA_1A_2$ has $AA_1=AA_2=x$ and angle $\angle A_1AA_2=\angle BAC$ (vertical angles), so its area is $\dfrac{1}{2}x^2\sin A$. Similarly at $B$ and $C$.
+
+\textbf{Side quadrilaterals.} The points $A_2$ and $B_2$ lie on the rays $CA$ and $CB$ beyond $A$ and $B$, with $CA_2=b+x$ and $CB_2=a+x$. So the quadrilateral $ABB_2A_2$ is triangle $CA_2B_2$ minus triangle $CAB$, with area
+\[
+\dfrac{1}{2}(a+x)(b+x)\sin C-\dfrac{1}{2}ab\sin C=\dfrac{1}{2}\left(x(a+b)+x^2\right)\sin C .
+\]
+Similarly for the other two sides.
+
+\textbf{Total.} Adding everything, the hexagon has area
+\[
+H=T+\sum_{\text{vertices}}\left(x^2+\dfrac{x(\text{sum of the two sides at the vertex})}{2}\right)\sin(\text{angle}) .
+\]
+Using $\sin C=\dfrac{2T}{ab}$, $\sin A=\dfrac{2T}{bc}$, $\sin B=\dfrac{2T}{ca}$:
+\[
+\sum x^2\sin C=2Tx^2\left(\dfrac{1}{ab}+\dfrac{1}{bc}+\dfrac{1}{ca}\right)=\dfrac{2Tx^2(a+b+c)}{abc},\qquad
+\sum\dfrac{x(a+b)}{2}\sin C=Tx\sum\left(\dfrac{1}{a}+\dfrac{1}{b}\right)=2Tx\left(\dfrac{1}{a}+\dfrac{1}{b}+\dfrac{1}{c}\right).
+\]
+Therefore
+\[
+\boxed{\ \dfrac{H}{T}=1+2x\left(\dfrac{1}{a}+\dfrac{1}{b}+\dfrac{1}{c}\right)+\dfrac{2x^2(a+b+c)}{abc}\ } .
+\]
+For example, for an equilateral triangle with side $1$ and $x=1$, the hexagon has $13$ times the area of the triangle.

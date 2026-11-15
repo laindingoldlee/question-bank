@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2790224_2015_manhattan_mathematical_olympiad_grades_78_problems_14
+% Stable identity: aops-topic-2790224-q02
+Rotating $k$ times by $48^\circ$ gives a symmetry by $48k^\circ$, and angles are taken mod $360^\circ$.
+
+(a) $\boxed{\text{Yes}}$: $48\cdot9=432=360+72$, so rotating by $48^\circ$ nine times is a rotation by $72^\circ$.
+
+(b) $\boxed{\text{No}}$: the rotations $48k^\circ$ mod $360^\circ$ are exactly the multiples of $\gcd(48,360)=24^\circ$, and $90$ is not one. For example, a regular $15$-gon centred at $P$ is unchanged by $48^\circ$ (a multiple of $24^\circ$) but not by $90^\circ$.
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0);path g;for(int k=0;k<15;++k) g=g--dir(90+24k);draw(g--cycle);dot(P);label("$P$",P,S);draw(P--dir(90),dashed);draw(P--dir(138),dashed);draw(arc(P,0.35,90,138),Arrow);label("$48^\circ$",0.45*dir(114),dir(114));
+\end{asy}

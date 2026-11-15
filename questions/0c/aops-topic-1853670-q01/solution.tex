@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h1853670_finding_the_centre_of_rotation
+% Stable identity: aops-topic-1853670-q01
+\textbf{(a)} A rotation keeps distances from its centre $C$, so $CA=CA'$: the centre is equidistant from $A$ and $A'$, i.e.\ it lies on the perpendicular bisector of $AA'$. The midpoint of $AA'$ is $M(1,4)$ and $\overrightarrow{AA'}=(4,-6)$, so the perpendicular bisector is
+\[
+4(x-1)-6(y-4)=0\iff\boxed{2x-3y+10=0}.
+\]
+Conversely, every point $C$ of this line is the centre of some rotation taking $A$ to $A'$ (through the angle $\angle ACA'$, in the appropriate direction), so the two points alone do not determine the centre; one also needs the angle (or a second pair of corresponding points).
+
+\textbf{(b)} For a $90^\circ$ rotation, $CA=CA'$ and $\angle ACA'=90^\circ$, so triangle $ACA'$ is right isosceles and $C$ is at distance $\dfrac{1}{2}AA'$ from $M$ along the bisector:
+\[
+C=M\pm\dfrac{1}{2}(6,4)=(1,4)\pm(3,2),\qquad C_1=(4,6),\quad C_2=(-2,2).
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(-1,7),Ap=(3,1),M=(1,4),C1=(4,6),C2=(-2,2);
+draw((-3.3,0)--(5.6,0),Arrow(TeXHead));draw((0,-0.6)--(0,8.2),Arrow(TeXHead));
+label("$x$",(5.6,0),S);label("$y$",(0,8.2),W);label("$O$",(0,0),SW);
+draw((-3.2,(2*(-3.2)+10)/3)--(5.4,(2*5.4+10)/3),blue+linewidth(0.9));
+label("$2x-3y+10=0$",(5.4,(2*5.4+10)/3),N,blue);
+draw(A--Ap,dashed);
+draw(C1--A,red);draw(C1--Ap,red);
+draw(C2--A,deepgreen);draw(C2--Ap,deepgreen);
+void ra(pair C,pair P,pair Q){real s=0.35;pair u=s*unit(P-C),v=s*unit(Q-C);draw(C+u--C+u+v--C+v,linewidth(0.5));}
+ra(C1,A,Ap);ra(C2,A,Ap);
+dot(A);dot(Ap);dot(M);dot(C1,red);dot(C2,deepgreen);
+label("$A(-1,7)$",A,NW);label("$A'(3,1)$",Ap,S);label("$M$",M,dir(169));
+label("$C_1(4,6)$",C1,SE,red);label("$C_2(-2,2)$",C2,NW,deepgreen);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check the direction. Rotating a vector $(p,q)$ by $90^\circ$ anticlockwise gives $(-q,p)$, and clockwise gives $(q,-p)$.
+\begin{itemize}
+\item About $C_1$: $A-C_1=(-5,1)$, and turning it anticlockwise gives $(-1,-5)=A'-C_1$.
+\item About $C_2$: $A-C_2=(1,5)$, and turning it clockwise gives $(5,-1)=A'-C_2$.
+\end{itemize}
+So the centre is $\boxed{(4,6)}$ for the $90^\circ$ anticlockwise rotation and $\boxed{(-2,2)}$ for the $90^\circ$ clockwise rotation.

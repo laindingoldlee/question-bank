@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2409373_interesting_question_regarding_the_pythagorean_theorem
+% Stable identity: aops-topic-2409373-q01
+\textbf{(a)} In a right triangle with legs $a,b$ and hypotenuse $c$, $c^2=a^2+b^2>a^2$, so $c>a$: the hypotenuse is longer than each leg. In particular $1^2+1^2=2\ne1^2$, so $1,1,1$ is not a Pythagorean triple (an equilateral triangle has all angles $60^\circ$).
+
+\textbf{(b)} The hypotenuse is $\sqrt{1^2+1^2}=\boxed{\sqrt2\text{ inches}}\approx1.414$ inches. In centimetres the legs are $2.54$ cm and the hypotenuse is $\boxed{2.54\sqrt2\text{ cm}}\approx3.592$ cm, and indeed
+\[2.54^2+2.54^2=2\cdot2.54^2=\left(2.54\sqrt2\right)^2.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(0,4);
+draw(A--B--C--cycle,linewidth(0.9));
+draw((0.35,0)--(0.35,0.35)--(0,0.35));
+label("$1$ in",(A+B)/2,S); label("$1$ in",(A+C)/2,W); label("$\sqrt2$ in",(B+C)/2,NE);
+\end{asy}
+
+\textbf{(c)} If $a^2+b^2=c^2$, then
+\[(ka)^2+(kb)^2=k^2\left(a^2+b^2\right)=k^2c^2=(kc)^2.\ \blacksquare\]
+Changing units multiplies every length by the same factor $k$ (here $k=2.54$), so a right triangle stays right and its sides keep satisfying the Pythagorean theorem; the student's problem came only from the false triple $1,1,1$.

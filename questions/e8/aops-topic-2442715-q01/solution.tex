@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2442715_400th_post_celebrations
+% Stable identity: aops-topic-2442715-q01
+A central angle of $120^\circ$ is $\dfrac{120}{360}=\dfrac13$ of the full angle, so the sector is one third of the disc.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0); real R=2;
+fill(O--arc(O,R,30,150)--cycle,rgb(0.85,0.92,1));
+draw(circle(O,R),gray); draw(O--R*dir(30),linewidth(0.8)); draw(O--R*dir(150),linewidth(0.8));
+draw(arc(O,R,30,150),blue+linewidth(1));
+draw(arc(O,0.4,30,150)); label("$120^\circ$",0.4*dir(90),N);
+dot(O); label("$O$",O,S); label("$r$",R/2*dir(30),SE);
+label("area $48\pi$",(0,1.25));
+\end{asy}
+
+If the radius is $r$, then
+\[\dfrac13\pi r^2=48\pi\quad\Longrightarrow\quad r^2=144\quad\Longrightarrow\quad r=\boxed{12}.\]

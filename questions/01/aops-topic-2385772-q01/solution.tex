@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2385772_polynomial_induction
+% Stable identity: aops-topic-2385772-q01
+\textbf{(a)} Multiplying out,
+\[t\,P_{n-1}=\left(x+\dfrac1x\right)\left(x^{n-1}+\dfrac{1}{x^{n-1}}\right)=x^n+\dfrac{1}{x^{n-2}}+x^{n-2}+\dfrac{1}{x^n}=P_n+P_{n-2},\]
+so $P_n=t\,P_{n-1}-P_{n-2}$.
+
+\textbf{(b)} We use strong induction on $n$; the statement is $S(n)$: ``$P_n$ is a polynomial in $t$ of degree $n$ with integer coefficients and leading coefficient $1$''.
+\begin{itemize}
+\item $S(1)$: $P_1=t$. $S(2)$: by (a), $P_2=t\cdot t-2=t^2-2$. Both are true.
+\item Let $n\ge3$ and assume $S(n-1)$ and $S(n-2)$. Then $t\,P_{n-1}$ is a polynomial in $t$ with integer coefficients, of degree $n$ and leading coefficient $1$, and $P_{n-2}$ has integer coefficients and degree $n-2<n$. So $P_n=t\,P_{n-1}-P_{n-2}$ has integer coefficients, degree $n$ and leading coefficient $1$, which is $S(n)$.
+\end{itemize}
+By induction $S(n)$ holds for all $n\ge1$. $\blacksquare$
+
+\textbf{(c)} Using (a) repeatedly:
+\begin{align*}
+P_2&=t^2-2,\\
+P_3&=t\left(t^2-2\right)-t=t^3-3t,\\
+P_4&=t\left(t^3-3t\right)-\left(t^2-2\right)=t^4-4t^2+2,\\
+P_5&=t\left(t^4-4t^2+2\right)-\left(t^3-3t\right)=t^5-5t^3+5t.
+\end{align*}
+So $\boxed{x^5+\dfrac{1}{x^5}=t^5-5t^3+5t}$ with $t=x+\dfrac1x$. (Check with $x=1$: $t=2$ and $32-40+10=2=P_5$.)

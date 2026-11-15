@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1607644_last_digit_of__fibonnaccis_googolplex_term
+% Stable identity: aops-topic-1607644-q01
+\textbf{The last digits repeat with period $60$.} The last digit of $F_n$ depends only on the last digits of $F_{n-1}$ and $F_{n-2}$. Listing the last digits from $F_0$ on, the pair $(0,1)$ of consecutive last digits first appears again at $(F_{60},F_{61})$ (one finds $F_{60}\equiv0$ and $F_{61}\equiv1\pmod{10}$). From then on the sequence of last digits repeats, so $F_n\equiv F_m\pmod{10}$ whenever $n\equiv m\pmod{60}$.
+
+\textbf{Reduce the index modulo $60$.} Let $N=10^{\text{googol}}$. Since the exponent is at least $2$, $N$ is divisible by $4$ and by $5$, hence by $20$; and $N\equiv1\pmod3$ because $10\equiv1\pmod3$. The residue modulo $60$ that is a multiple of $20$ and $\equiv1\pmod3$ is $40$, so
+\[
+N\equiv40\pmod{60}.
+\]
+
+\textbf{Finish.} Hence $F_N$ has the same last digit as $F_{40}=102\,334\,155$, namely $\boxed{5}$.
+
+(A check without computing $F_{40}$: $F_{5k}$ is divisible by $5$, because $F_5=5$ and $5\mid F_m$ exactly when $5\mid m$; and $F_{3k}$ is even, because the parities run $0,1,1,0,1,1,\dots$. Since $3\nmid40$, $F_{40}$ is odd and divisible by $5$, so it ends in $5$.)

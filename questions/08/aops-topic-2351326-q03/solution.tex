@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2351326_relay_race
+% Stable identity: aops-topic-2351326-q03
+Let the edge be $a$. Place the octahedron with centre $O$ at the origin and vertices $(\pm c,0,0)$, $(0,\pm c,0)$, $(0,0,\pm c)$; adjacent vertices are $c\sqrt2$ apart, so $c=\dfrac{a}{\sqrt2}$. By symmetry the inscribed sphere is centred at $O$, and its radius $r$ is the distance from $O$ to a face, say the face in the plane $x+y+z=c$:
+\[r=\dfrac{c}{\sqrt{1^2+1^2+1^2}}=\dfrac{c}{\sqrt3}=\dfrac{a}{\sqrt6}.\]
+The figure shows the cross-section through two opposite vertices $V,V'$ and the midpoints $M,M'$ of two opposite edges: a rhombus with half-diagonals $OV=\dfrac{a}{\sqrt2}$ and $OM=\dfrac a2$, whose sides are altitudes of faces, and the great circle of the sphere touching them.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real s=3; pair V=(0,s), Vp=(0,-s), M=(s/sqrt(2),0), Mp=(-s/sqrt(2),0), O=(0,0);
+real r=s/sqrt(3);
+draw(V--M--Vp--Mp--cycle,linewidth(0.9));
+draw(circle(O,r),blue);
+draw(V--Vp,dashed); draw(Mp--M,dashed);
+pair Tt=(r*sqrt(2/3),r/sqrt(3));
+draw(O--Tt,red); dot(Tt); label("$r$",(O+Tt)/2,NW,red);
+dot(O); dot(V); dot(Vp); dot(M); dot(Mp);
+label("$O$",O,SW); label("$V$",V,N); label("$V'$",Vp,S); label("$M$",M,E); label("$M'$",Mp,W);
+label("$\dfrac{a}{\sqrt2}$",(0,0.75*s),E,fontsize(7pt)); label("$\dfrac{a}{2}$",(s/(2*sqrt(2)),0),S,fontsize(8pt));
+\end{asy}
+
+(Check in the cross-section: the side $VM=\sqrt{\dfrac{a^2}{2}+\dfrac{a^2}{4}}=\dfrac{\sqrt3}{2}a$, and the distance from $O$ to it is $\dfrac{OV\cdot OM}{VM}=\dfrac{\dfrac{a}{\sqrt2}\cdot\dfrac a2}{\dfrac{\sqrt3}{2}a}=\dfrac{a}{\sqrt6}$.)
+
+The surface area is
+\[4\pi r^2=\dfrac{4\pi a^2}{6}=\dfrac{2\pi a^2}{3}=\dfrac{2\pi\cdot10816}{3}=\dfrac{21632\pi}{3}\approx22652.98,\]
+which rounds to $\boxed{22653}$.

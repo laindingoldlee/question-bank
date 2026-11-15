@@ -1,0 +1,9 @@
+Put $A=(0,0),B=(5,0),C=(x,y)$ with $y>0$. The side lengths give $x^2+y^2=900$ and $(x-5)^2+y^2=841$, hence $x = \dfrac{42}{5} , y = \dfrac{144}{5}$. Since $BH\perp AB$, write $H=(5,h)$. The condition $CH\perp AC$ gives $C\cdot(H-C)=0$, or $42 + \dfrac{144 h}{5} = 900$, so $h = \dfrac{715}{24}$. Taking vertical $BH$ as base, $[BCH] = (\dfrac{1}{2}) (\dfrac{715}{24}) (\dfrac{42}{5} - 5) = \boxed{\dfrac{2431}{48}}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(5,0),(42/5,144/5)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));pair H=(5,715/24);draw(p[1]--H--p[2]);label("$H$",H,(-1,1));
+\end{asy}
+

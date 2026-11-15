@@ -1,0 +1,6 @@
+Apply Burnside to the 12 symmetries. The six rotations fix $64,2,4,8,4,2$ binary colourings, summing to 84. Each of three vertex-axis reflections has four cycles and fixes 16 colourings; each of three edge-axis reflections has three cycles and fixes eight. Thus the orbit count is $\dfrac{(84+48+24)}{12}=\boxed{13}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair[] V;for(int i=0;i<6;++i)V.push(2*dir(60*i));path p=V[0];for(int i=1;i<6;++i)p=p--V[i];draw(p--cycle);for(int i=0;i<6;++i){dot(V[i],i%2==0?red:blue);label("$"+string(i+1)+"$",V[i],unit(V[i]));}label("one representative colouring",(0,-3));
+\end{asy}
+

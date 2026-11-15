@@ -1,0 +1,43 @@
+% Source: https://artofproblemsolving.com/community/c3h2670574_some_actually_good_proving_problems
+% Stable identity: aops-topic-2670574-q13
+Call polygons $F$ and $G$ \emph{equidecomposable}, $F\approx G$, if $F$ can be cut into finitely many polygons that can be rigidly moved to form $G$. Clearly $F\approx F$ and $F\approx G$ implies $G\approx F$.
+
+\emph{Step 0: transitivity.} If $F\approx G$ and $G\approx H$, draw on $G$ both the cuts coming from $F$ and the cuts used to form $H$. The pieces of this common refinement are polygons, each lying in one piece of each dissection; moving them back gives $F$ and moving them forward gives $H$. So $F\approx H$. Also, if two polygons are each cut into parts with corresponding parts equidecomposable, the polygons are equidecomposable.
+
+\emph{Step 1: parallelograms with a common side and equal heights.} Let $ABCD$ and $ABEF$ be parallelograms with $C,D,E,F$ on one line parallel to $AB$. In the strip between line $AB$ and line $CD$, the translates of $ABCD$ by integer multiples of $\overrightarrow{AB}$ tile the strip, and so do the translates of $ABEF$. Cut $ABEF$ into the finitely many nonempty pieces $ABEF\cap\left(ABCD+k\overrightarrow{AB}\right)$. Translating each piece by $-k\overrightarrow{AB}$ moves it to $\left(ABEF-k\overrightarrow{AB}\right)\cap ABCD$; since the translates of $ABEF$ tile the strip, these pieces fill $ABCD$ exactly. So $ABEF\approx ABCD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real bb=1.5,off=3.4;
+draw((-0.3,0)--(6.6,0),gray);draw((-0.3,1)--(6.6,1),gray);
+for(int k=1;k<=4;++k) draw((k*bb,0)--(k*bb,1),dotted);
+fill((0,0)--(bb,0)--(bb,1)--(0,1)--cycle,gray(0.85));
+draw((0,0)--(bb,0)--(off+bb,1)--(off,1)--cycle,linewidth(0.9));
+draw((0,0)--(bb,0)--(bb,1)--(0,1)--cycle,linewidth(0.6));
+label("$A$",(0,0),SW);label("$B$",(bb,0),S);label("$D$",(0,1),NW);label("$C$",(bb,1),N);label("$F$",(off,1),N);label("$E$",(off+bb,1),NE);
+\end{asy}
+
+\emph{Step 2: triangle to rectangle.} In triangle $ABC$ take $BC$ to be a longest side, so the foot of the altitude from $A$ lies on $BC$. Let $M,N$ be the midpoints of $AB,AC$ and $H$ the foot of the perpendicular from $A$ to $MN$. Rotating triangle $AMH$ by $180^\circ$ about $M$ and triangle $ANH$ by $180^\circ$ about $N$ turns the triangle into a rectangle with base $BC$ and height half the altitude.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(4,0),A=(1.2,2.4),M=(A+B)/2,N2=(A+C)/2,H=(1.2,1.2);
+fill(A--M--H--cycle,gray(0.75));fill(A--N2--H--cycle,gray(0.88));
+fill(B--M--(0,1.2)--cycle,gray(0.75));fill(C--N2--(4,1.2)--cycle,gray(0.88));
+draw(A--B--C--cycle,linewidth(0.8));draw(M--N2,dashed);draw(A--H,dashed);
+draw((0,0)--(0,1.2)--(4,1.2)--(4,0),dotted);
+dot(M);dot(N2);dot(H);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$M$",M,NW);label("$N$",N2,NE);label("$H$",H,NE,fontsize(8pt));
+\end{asy}
+
+\emph{Step 3: rectangle to rectangle.} (a) Let a rectangle $ABCD$ have base $AB=x$ and height $y$, and let $z\ge y$. Since the distance from $A$ to line $DC$ is $y\le z$, there is a point $F$ on line $DC$ with $AF=z$; let $E=F+\overrightarrow{AB}$. By Step 1, $ABCD\approx ABEF$. Now regard $ABEF$ as a parallelogram on the side $AF$: its height over $AF$ is $\dfrac{xy}{z}$, so by Step 1 again it is equidecomposable with the rectangle on $AF$ of height $\dfrac{xy}{z}$. Hence an $x\times y$ rectangle is equidecomposable with a $z\times\dfrac{xy}{z}$ rectangle whenever $z\ge y$.
+
+(b) Now let $R_1$ ($a\times b$) and $R_2$ ($c\times d$) have equal areas, and let $c$ be the largest of $a,b,c,d$ (otherwise swap the roles of $R_1$, $R_2$ or of $c$, $d$). Taking the shorter side of $R_1$ as its height, (a) gives $R_1\approx$ a $c\times\dfrac{ab}{c}=c\times d$ rectangle, i.e. $R_1\approx R_2$.
+
+\emph{Step 4: the polygon.} Cut the polygon into triangles $T_1,\ldots,T_n$ (a triangulation). By Steps 2 and 3 each $T_i$ is equidecomposable with a $1\times[T_i]$ rectangle. Stacking these rectangles gives a $1\times A$ rectangle, where $A$ is the area of the polygon, and by Step 3 this is equidecomposable with the $\sqrt A\times\sqrt A$ square. By Step 0 the polygon is equidecomposable with the square. $\blacksquare$
+
+(This is the Wallace--Bolyai--Gerwien theorem.)

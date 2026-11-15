@@ -1,0 +1,7 @@
+Let the airline route counts be $a,b,c$. After any airline closes, the remaining graph on 15 vertices must be connected, so $a+b,a+c,b+c\ge14$. Summing gives $a+b+c\ge21$. Attain 21 with seven triangles sharing one central city and otherwise disjoint: assign one edge of each triangle to each airline. Removing any one color leaves each triangle connected to the center. Thus the minimum is $\boxed{21}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0);for(int j=0;j<7;++j){pair A=3*dir(360*j/7.0),B=3*dir(360*j/7.0+20);draw(O--A,red);draw(A--B,blue);draw(B--O,green);dot(A);dot(B);}dot(O);label("O",O,E);label("O is the central city",(0,-3.7));
+\end{asy}

@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2254519_awesome_problem
+% Stable identity: aops-topic-2254519-q01
+Since no four points are coplanar, no three are collinear, so three points that are pairwise joined do form a genuine triangle.
+
+\textbf{(a)} Split the points into two groups of $n$ and join every point of the first group to every point of the second: $n\cdot n=n^2$ segments. Any three points include two from the same group, and these are not joined, so there is no triangle.
+
+\textbf{(b)} Suppose $m=n^2+1$ segments are drawn and there is no triangle. For a point $P$ let $d(P)$ be the number of drawn segments at $P$.
+
+If $PQ$ is drawn, no point $R$ is joined to both $P$ and $Q$ (otherwise $PQR$ would be a triangle). So the $d(P)-1$ other points joined to $P$ and the $d(Q)-1$ other points joined to $Q$ are disjoint sets among the remaining $2n-2$ points:
+\[d(P)+d(Q)\le2n\quad\text{for every drawn segment }PQ.\]
+Add this over all $m$ drawn segments. Each point $P$ is an endpoint of $d(P)$ segments, so it contributes $d(P)$ to the left side $d(P)$ times:
+\[\sum_{P}d(P)^2\le2n\,m.\]
+On the other hand $\sum_Pd(P)=2m$ (each segment has two ends), and by the Cauchy--Schwarz inequality (or QM-AM) over the $2n$ points,
+\[\sum_Pd(P)^2\ge\dfrac{\left(\sum_Pd(P)\right)^2}{2n}=\dfrac{4m^2}{2n}=\dfrac{2m^2}{n}.\]
+Combining, $\dfrac{2m^2}{n}\le2nm$, so $m\le n^2$, contradicting $m=n^2+1$. Hence the segments form at least one triangle. $\blacksquare$
+
+(This is Mantel's theorem; (a) shows that $n^2+1$ cannot be lowered.)

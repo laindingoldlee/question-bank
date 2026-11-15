@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2379127_a_question_on_angle
+% Stable identity: aops-topic-2379127-q01
+The incentre lies on the internal angle bisectors, so $\angle IAB=\dfrac A2$ and $\angle IBA=\dfrac B2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(6,0), C=(1.6,4);
+real a=abs(B-C), bb=abs(C-A), c=abs(A-B);
+pair I=(a*A+bb*B+c*C)/(a+bb+c);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--I,blue); draw(B--I,blue); draw(C--I,gray+dashed);
+dot(I);
+label("$A$",A,W); label("$B$",B,E); label("$C$",C,N); label("$I$",I,N);
+draw(arc(A,0.9,0,degrees(I-A)),red); label("$\dfrac A2$",A+(0.75,-0.55),red+fontsize(8pt));
+draw(arc(B,0.9,degrees(I-B),180),red); label("$\dfrac B2$",B+(-0.7,-0.55),red+fontsize(8pt));
+\end{asy}
+
+By the angle sum in triangle $AIB$,
+\[\angle AIB=180^\circ-\dfrac A2-\dfrac B2=180^\circ-\dfrac{A+B}{2}=180^\circ-\dfrac{180^\circ-C}{2}=90^\circ+\dfrac C2.\quad\blacksquare\]

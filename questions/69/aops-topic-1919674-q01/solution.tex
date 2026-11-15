@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1919674_number_theory
+% Stable identity: aops-topic-1919674-q01
+The digit sum of a $12$-digit number is between $1$ and $12\cdot9=108$, so it has two or three digits exactly when it is at least $10$. We count the complement: $12$-digit numbers with digit sum at most $9$.
+
+Write the digits as $d_1d_2\cdots d_{12}$ with $d_1\ge1$, and put $e_1=d_1-1$. We need $e_1+d_2+\cdots+d_{12}\le8$ with all twelve numbers nonnegative; since the total is at most $8$, the condition that each digit is at most $9$ holds automatically. Adding a slack variable $e_{13}\ge0$, these are the nonnegative solutions of $e_1+d_2+\cdots+d_{12}+e_{13}=8$, and by stars and bars there are
+\[
+\dbinom{8+12}{12}=\dbinom{20}{12}=125970
+\]
+of them. There are $9\cdot10^{11}$ twelve-digit numbers in all, so the answer is
+\[
+900000000000-125970=\boxed{899999874030}.
+\]

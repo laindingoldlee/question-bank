@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1604400_faberge_egg_heist
+% Stable identity: aops-topic-1604400-q01
+\textbf{An upper bound: how many floors $d$ drops can handle.} Let $f(d)$ be the largest number of floors for which $d$ drops with two eggs always determine $h$. With one egg we must test floors one at a time from the bottom, so one egg and $d$ drops handle exactly $d$ floors. With two eggs, drop the first one from floor $d$: if it breaks, the second egg checks floors $1,\dots,d-1$ one at a time ($d-1$ drops left); if it survives, $d-1$ drops remain for the floors above. So $f(d)\ge d+f(d-1)$.
+
+Conversely, suppose the first drop is from floor $k$. If it breaks, only one egg is left for the $k-1$ floors below, which needs $k-1\le d-1$ drops; if it survives, the floors above must be handled with $d-1$ drops. So $f(d)\le d+f(d-1)$. With $f(0)=0$,
+\[
+f(d)=d+(d-1)+\cdots+1=\dfrac{d(d+1)}{2}.
+\]
+
+\textbf{Apply to $100$ floors.} We need $\dfrac{d(d+1)}{2}\ge100$. Since $\dfrac{13\cdot14}{2}=91<100\le105=\dfrac{14\cdot15}{2}$, the answer is $\boxed{14}$.
+
+A strategy with $14$ drops: drop the first fake egg from floors $14,27,39,50,60,69,77,84,90,95,99,100$ (steps $14,13,12,\dots$) until it breaks; then test the floors between the last safe floor and the breaking floor one at a time from the bottom with the second egg. If the first egg breaks on its $j$-th drop, at most $14-j$ further drops are needed, so the total is never more than $14$.

@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1664848_transformation_problem
+% Stable identity: aops-topic-1664848-q01
+Build the function in steps:
+\begin{enumerate}
+\item $y=e^{x-1}$: replacing $x$ by $x-1$ \emph{translates the graph $1$ unit to the right};
+\item $y=5e^{x-1}$: multiplying by $5$ \emph{stretches it vertically by the factor $5$} (away from the $x$-axis);
+\item $y=-5e^{x-1}$: the minus sign \emph{reflects it in the $x$-axis}.
+\end{enumerate}
+The last two steps both act on $y$ and can be done in either order, and the translation commutes with them. For example, the point $(0,1)$ of $y=e^x$ goes to $(1,1)$, then $(1,5)$, then $(1,-5)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return exp(x);} real g(real x){return -5*exp(x-1);}
+draw((-3.2,0)--(2.4,0),gray,Arrow(TeXHead));draw((0,-7.6)--(0,4.6),gray,Arrow(TeXHead));
+label("$x$",(2.4,0),E,gray);label("$y$",(0,4.6),N,gray);
+draw(graph(f,-3,1.5),linewidth(0.9));draw(graph(g,-3,1.35),blue+linewidth(0.9));
+dot((0,1));dot((1,-5),blue);
+label("$y=e^x$",(1.5,exp(1.5)),E);label("$y=-5e^{x-1}$",(1.35,g(1.35)),E,blue);
+label("$(0,1)$",(0,1),NW);label("$(1,-5)$",(1,-5),E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the graph is obtained by \boxed{\text{a shift right by }1,\ \text{a vertical stretch by }5\text{ and a reflection in the }x\text{-axis}}.
+
+(Because $e^{x-1}=e^{-1}e^x$, the same graph is also $y=-\dfrac{5}{e}\,e^x$: a vertical stretch by $\dfrac{5}{e}\approx1.84$ followed by a reflection in the $x$-axis, with no shift. Both descriptions are correct.)

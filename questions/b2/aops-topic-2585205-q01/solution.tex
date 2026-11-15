@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2585205_recurrence_relation_6
+% Stable identity: aops-topic-2585205-q01
+We claim
+\[a_n=2\cos\dfrac{\pi}{3\cdot2^{n-1}}=2\cos\dfrac{60^\circ}{2^{n-1}}.\]
+\textbf{Key identity.} For $0\le\theta\le180^\circ$, $2+2\cos\theta=4\cos^2\dfrac\theta2$ and $\cos\dfrac\theta2\ge0$, so
+\[\sqrt{2+2\cos\theta}=2\cos\dfrac\theta2.\]
+\textbf{Induction.} For $n=1$: $2\cos60^\circ=1=a_1$. If $a_n=2\cos\theta_n$ with $\theta_n=\dfrac{60^\circ}{2^{n-1}}$, then
+\[a_{n+1}=\sqrt{2+2\cos\theta_n}=2\cos\dfrac{\theta_n}{2}=2\cos\theta_{n+1}.\]
+So $\boxed{a_n=2\cos\dfrac{\pi}{3\cdot2^{n-1}}}$ for all $n\ge1$. For example $a_2=\sqrt3=2\cos30^\circ$. In particular $a_n\to2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),P=(1,0),Q=dir(70),R=P+Q;
+draw(circle(O,1),gray);
+draw(O--P,linewidth(0.8));draw(O--Q,linewidth(0.8));draw(P--R--Q,dashed);draw(O--R,linewidth(0.8)+blue);
+draw(arc(O,0.25,35,70));label("$\dfrac\theta2$",0.25*dir(52),dir(52),fontsize(7pt));
+draw(arc(O,0.45,0,35),blue);label("$\dfrac\theta2$",0.45*dir(17),dir(17),blue+fontsize(7pt));
+dot(O);dot(P);dot(Q);dot(R);
+label("$O$",O,SW);label("$P$",P,SE);label("$Q$",Q,N);label("$R$",R,NE);label("$1$",(0.5,0),S);label("$1$",Q/2,W);
+\end{asy}
+
+For unit vectors $\overrightarrow{OP}$ and $\overrightarrow{OQ}$ at angle $\theta=\angle POQ$, the diagonal $OR$ of the rhombus $OPRQ$ bisects the angle, and $|OR|^2=2+2\cos\theta$, $|OR|=2\cos\dfrac\theta2$.

@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1547134_classroom_gamegreedy_pigs_statistical_strategy
+% Stable identity: aops-topic-1547134-q01
+\textbf{(a)} The chance of a $2$ on one roll is $\dfrac{1}{6}\approx16.7\%$, not $16.5\%$. More importantly, probabilities of events that can happen together cannot simply be added (with that rule seven rolls would give more than $100\%$). Use the complement: the rolls are independent and each avoids $2$ with probability $\dfrac{5}{6}$, so
+\[
+P(\text{at least one }2\text{ in }5\text{ rolls})=1-\left(\dfrac{5}{6}\right)^5=1-\dfrac{3125}{7776}=\dfrac{4651}{7776}\approx59.8\%,
+\]
+\[
+P(\text{at least one }2\text{ in }6\text{ rolls})=1-\left(\dfrac{5}{6}\right)^6=1-\dfrac{15625}{46656}=\dfrac{31031}{46656}\approx66.5\%.
+\]
+
+\textbf{(b)} If the player sits down now, the score is $t$. If the player rolls once more and then sits down, the score is $0$ with probability $\dfrac{1}{6}$ and $t+k$ for each $k\in\{1,3,4,5,6\}$ with probability $\dfrac{1}{6}$ each, so the expected score is
+\[
+\dfrac{(t+1)+(t+3)+(t+4)+(t+5)+(t+6)}{6}=\dfrac{5t+19}{6}.
+\]
+This exceeds $t$ exactly when $5t+19>6t$, that is, when $t<19$. (At $t=19$ the two choices have the same expected score.)
+
+So the expected-score rule is to keep rolling while the total is below $19$ and to sit down once it reaches $19$ or more; the decision depends on the total, not on how many rolls have been made.

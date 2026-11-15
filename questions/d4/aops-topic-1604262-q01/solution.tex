@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h1604262_trigonometry
+% Stable identity: aops-topic-1604262-q01
+Let $T$ be the top of the cliff, $F$ the point at sea level directly below it, and $P$, $Q$ the nearer and farther boats. The angles of depression equal the angles of elevation of $T$ seen from the boats (alternate angles):
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+real h=1.4; real c31=1/tan(31*pi/180), c11=1/tan(11*pi/180);
+pair F=(0,0),T=(0,h),P=(h*c31,0),Q=(h*c11,0);
+fill((-0.6,0)--F--T--(-0.6,h)--cycle,lightgray);
+draw((-0.6,h)--T--F,linewidth(0.9));
+draw(F--Q+(0.5,0),linewidth(0.9));
+draw(T--P,blue);draw(T--Q,blue);
+draw(T--(Q.x+0.5,h),gray+dashed);
+draw(arc(P,0.45,180-31,180),red);label("$31^\circ$",P+0.75*dir(180-15.5),red);
+draw(arc(Q,1.6,169,180),red);label("$11^\circ$",Q+2.1*dir(174.5),red);
+real q=0.15;draw((q,0)--(q,q)--(0,q));
+dot(T);dot(P);dot(Q);
+label("$T$",T,N);label("$F$",F,S);label("$P$",P,S);label("$Q$",Q,S);
+label("$298$",(0,h/2),E);
+draw((P.x,-0.45)--(Q.x,-0.45),Arrows(TeXHead));label("$d$",((P.x+Q.x)/2,-0.45),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the right triangles $TFP$ and $TFQ$,
+\[
+FP=\dfrac{298}{\tan31^\circ}\approx\dfrac{298}{0.60086}\approx495.95,\qquad FQ=\dfrac{298}{\tan11^\circ}\approx\dfrac{298}{0.19438}\approx1533.07 .
+\]
+So the boats are
+\[
+d=FQ-FP=298\left(\dfrac{1}{\tan11^\circ}-\dfrac{1}{\tan31^\circ}\right)\approx\boxed{1037\text{ feet}}
+\]
+apart.

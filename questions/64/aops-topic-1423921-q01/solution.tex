@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1423921_snugly_square
+% Stable identity: aops-topic-1423921-q01
+Put the line on the $x$-axis and the centres at $O_1=(-1,1)$ and $O_2=(1,1)$; the circles touch at $(0,1)$. By symmetry the square of side $s$ occupies $-\dfrac{s}{2}\le x\le\dfrac{s}{2}$, $0\le y\le s$, and its upper right corner $\left(\dfrac{s}{2},s\right)$ lies on the right circle:
+\[
+\left(1-\dfrac{s}{2}\right)^2+(s-1)^2=1 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair O1=(-1,1),O2=(1,1); real s=0.4;
+draw((-2.4,0)--(2.4,0),linewidth(0.9));
+draw(circle(O1,1)); draw(circle(O2,1));
+filldraw(box((-s/2,0),(s/2,s)),lightblue,blue+linewidth(0.9));
+pair T=(s/2,s);
+draw(O2--T,red+dashed); draw(O2--(1,0),gray+dashed); draw((s/2,s)--(1,s),gray+dotted);
+dot(O1); dot(O2); dot(T,red);
+label("$O_1$",O1,W); label("$O_2$",O2,E); label("$1$",(O2+T)/2,NW,red);
+label("$s$",(0,0),S,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Expanding, $\dfrac{5}{4}s^2-3s+1=0$, i.e.\ $5s^2-12s+4=0$, so $(5s-2)(s-2)=0$. The root $s=2$ is impossible (that square would overlap both circles; its corners $(\pm1,2)$ are the tops of the circles). Hence
+\[
+s=\boxed{\dfrac{2}{5}}.
+\]
+Check: the lower corners $(\pm0.2,0)$ are outside the circles, since $0.8^2+1^2>1$.

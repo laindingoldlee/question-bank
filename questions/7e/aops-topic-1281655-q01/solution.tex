@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1281655_geometry
+% Stable identity: aops-topic-1281655-q01
+$AB=DC=12$, so $AE=12-4=8$, and the right triangle $AED$ gives $AD=\sqrt{8^2+6^2}=10$; hence $BC=10$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(0,0),B=(12,0),Dp=(8,6),C=B+Dp; pair Ep=(8,0); pair F=B+dot(Dp-B,unit(C-B))*unit(C-B);
+draw(A--B--C--Dp--cycle); draw(Dp--Ep,red); draw(Dp--F,blue); draw(ra(Ep,(1,0),(0,1),0.8)); draw(ra(F,unit(Dp-F),unit(C-F),0.8));
+label("$A$",A,SW); label("$B$",B,S); label("$C$",C,NE); label("$D$",Dp,NW); label("$E$",Ep,S); label("$F$",F,2*E+N);
+label("$6$",(Dp+Ep)/2,W,red); label("$4$",(Ep+B)/2,S); label("$12$",(Dp+C)/2,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Computing the area in two ways, $AB\cdot DE=BC\cdot DF$, so $12\cdot6=10\cdot DF$ and $DF=\boxed{7.2}$, answer $\textbf{(C)}$.

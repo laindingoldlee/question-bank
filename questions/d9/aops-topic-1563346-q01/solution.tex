@@ -1,0 +1,127 @@
+% Source: https://artofproblemsolving.com/community/c3h1563346_geometry__drawing_type_mathcounts_question
+% Stable identity: aops-topic-1563346-q01
+\textbf{At least $10$.} Each piece covers $4$ squares, so at least $\dfrac{36}{4}=9$ pieces are needed. With exactly $9$ pieces the pieces cover exactly the $36$ squares of the grid, i.e.\ they tile the $6\times6$ square with no overhang. Colour the grid like a chessboard: $18$ black and $18$ white squares. Every T-piece covers $3$ squares of one colour and $1$ of the other (its three-in-a-row part alternates colours, and the middle square's neighbour has the colour of the two ends). If $k$ of the $9$ pieces cover three black squares, the number of black squares covered is $3k+(9-k)=2k+9$, which is odd and cannot equal $18$. So $9$ pieces are impossible.
+
+\textbf{$10$ pieces suffice.} The figure shows a covering by $10$ pieces; the grid is outlined in red, and pieces $1$ and $10$ stick out at two corners.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+fill(shift(-1,-1)*unitsquare,palered); fill(shift(0,-1)*unitsquare,palered); fill(shift(0,0)*unitsquare,palered); fill(shift(1,-1)*unitsquare,palered);
+fill(shift(0,1)*unitsquare,paleblue); fill(shift(1,0)*unitsquare,paleblue); fill(shift(1,1)*unitsquare,paleblue); fill(shift(1,2)*unitsquare,paleblue);
+fill(shift(2,0)*unitsquare,palegreen); fill(shift(3,0)*unitsquare,palegreen); fill(shift(3,1)*unitsquare,palegreen); fill(shift(4,0)*unitsquare,palegreen);
+fill(shift(4,1)*unitsquare,paleyellow); fill(shift(5,0)*unitsquare,paleyellow); fill(shift(5,1)*unitsquare,paleyellow); fill(shift(5,2)*unitsquare,paleyellow);
+fill(shift(2,1)*unitsquare,lightcyan); fill(shift(2,2)*unitsquare,lightcyan); fill(shift(2,3)*unitsquare,lightcyan); fill(shift(3,2)*unitsquare,lightcyan);
+fill(shift(0,2)*unitsquare,pink); fill(shift(0,3)*unitsquare,pink); fill(shift(0,4)*unitsquare,pink); fill(shift(1,3)*unitsquare,pink);
+fill(shift(3,3)*unitsquare,rgb(0.8,0.72,1)); fill(shift(4,2)*unitsquare,rgb(0.8,0.72,1)); fill(shift(4,3)*unitsquare,rgb(0.8,0.72,1)); fill(shift(5,3)*unitsquare,rgb(0.8,0.72,1));
+fill(shift(0,5)*unitsquare,rgb(1,0.82,0.55)); fill(shift(1,4)*unitsquare,rgb(1,0.82,0.55)); fill(shift(1,5)*unitsquare,rgb(1,0.82,0.55)); fill(shift(2,5)*unitsquare,rgb(1,0.82,0.55));
+fill(shift(2,4)*unitsquare,lightmagenta); fill(shift(3,4)*unitsquare,lightmagenta); fill(shift(3,5)*unitsquare,lightmagenta); fill(shift(4,4)*unitsquare,lightmagenta);
+fill(shift(4,5)*unitsquare,mediumgray); fill(shift(5,4)*unitsquare,mediumgray); fill(shift(5,5)*unitsquare,mediumgray); fill(shift(5,6)*unitsquare,mediumgray);
+for(int i=0;i<=6;++i){draw((i,0)--(i,6),gray+dashed);draw((0,i)--(6,i),gray+dashed);}
+draw((-1,-1)--(0,-1),black+linewidth(1));
+draw((-1,0)--(0,0),black+linewidth(1));
+draw((-1,-1)--(-1,0),black+linewidth(1));
+draw((0,-1)--(1,-1),black+linewidth(1));
+draw((0,1)--(1,1),black+linewidth(1));
+draw((0,0)--(0,1),black+linewidth(1));
+draw((1,0)--(1,1),black+linewidth(1));
+draw((1,-1)--(2,-1),black+linewidth(1));
+draw((1,0)--(2,0),black+linewidth(1));
+draw((2,-1)--(2,0),black+linewidth(1));
+draw((0,1)--(1,1),black+linewidth(1));
+draw((0,2)--(1,2),black+linewidth(1));
+draw((0,1)--(0,2),black+linewidth(1));
+draw((1,0)--(2,0),black+linewidth(1));
+draw((1,0)--(1,1),black+linewidth(1));
+draw((2,0)--(2,1),black+linewidth(1));
+draw((2,1)--(2,2),black+linewidth(1));
+draw((1,3)--(2,3),black+linewidth(1));
+draw((1,2)--(1,3),black+linewidth(1));
+draw((2,2)--(2,3),black+linewidth(1));
+draw((2,0)--(3,0),black+linewidth(1));
+draw((2,1)--(3,1),black+linewidth(1));
+draw((2,0)--(2,1),black+linewidth(1));
+draw((3,0)--(4,0),black+linewidth(1));
+draw((3,2)--(4,2),black+linewidth(1));
+draw((3,1)--(3,2),black+linewidth(1));
+draw((4,1)--(4,2),black+linewidth(1));
+draw((4,0)--(5,0),black+linewidth(1));
+draw((4,1)--(5,1),black+linewidth(1));
+draw((5,0)--(5,1),black+linewidth(1));
+draw((4,1)--(5,1),black+linewidth(1));
+draw((4,2)--(5,2),black+linewidth(1));
+draw((4,1)--(4,2),black+linewidth(1));
+draw((5,0)--(6,0),black+linewidth(1));
+draw((5,0)--(5,1),black+linewidth(1));
+draw((6,0)--(6,1),black+linewidth(1));
+draw((6,1)--(6,2),black+linewidth(1));
+draw((5,3)--(6,3),black+linewidth(1));
+draw((5,2)--(5,3),black+linewidth(1));
+draw((6,2)--(6,3),black+linewidth(1));
+draw((2,1)--(3,1),black+linewidth(1));
+draw((2,1)--(2,2),black+linewidth(1));
+draw((3,1)--(3,2),black+linewidth(1));
+draw((2,2)--(2,3),black+linewidth(1));
+draw((2,4)--(3,4),black+linewidth(1));
+draw((2,3)--(2,4),black+linewidth(1));
+draw((3,3)--(3,4),black+linewidth(1));
+draw((3,2)--(4,2),black+linewidth(1));
+draw((3,3)--(4,3),black+linewidth(1));
+draw((4,2)--(4,3),black+linewidth(1));
+draw((0,2)--(1,2),black+linewidth(1));
+draw((0,2)--(0,3),black+linewidth(1));
+draw((1,2)--(1,3),black+linewidth(1));
+draw((0,3)--(0,4),black+linewidth(1));
+draw((0,5)--(1,5),black+linewidth(1));
+draw((0,4)--(0,5),black+linewidth(1));
+draw((1,4)--(1,5),black+linewidth(1));
+draw((1,3)--(2,3),black+linewidth(1));
+draw((1,4)--(2,4),black+linewidth(1));
+draw((2,3)--(2,4),black+linewidth(1));
+draw((3,3)--(4,3),black+linewidth(1));
+draw((3,4)--(4,4),black+linewidth(1));
+draw((3,3)--(3,4),black+linewidth(1));
+draw((4,2)--(5,2),black+linewidth(1));
+draw((4,2)--(4,3),black+linewidth(1));
+draw((5,2)--(5,3),black+linewidth(1));
+draw((4,4)--(5,4),black+linewidth(1));
+draw((5,3)--(6,3),black+linewidth(1));
+draw((5,4)--(6,4),black+linewidth(1));
+draw((6,3)--(6,4),black+linewidth(1));
+draw((0,5)--(1,5),black+linewidth(1));
+draw((0,6)--(1,6),black+linewidth(1));
+draw((0,5)--(0,6),black+linewidth(1));
+draw((1,4)--(2,4),black+linewidth(1));
+draw((1,4)--(1,5),black+linewidth(1));
+draw((2,4)--(2,5),black+linewidth(1));
+draw((1,6)--(2,6),black+linewidth(1));
+draw((2,5)--(3,5),black+linewidth(1));
+draw((2,6)--(3,6),black+linewidth(1));
+draw((3,5)--(3,6),black+linewidth(1));
+draw((2,4)--(3,4),black+linewidth(1));
+draw((2,5)--(3,5),black+linewidth(1));
+draw((2,4)--(2,5),black+linewidth(1));
+draw((3,4)--(4,4),black+linewidth(1));
+draw((3,6)--(4,6),black+linewidth(1));
+draw((3,5)--(3,6),black+linewidth(1));
+draw((4,5)--(4,6),black+linewidth(1));
+draw((4,4)--(5,4),black+linewidth(1));
+draw((4,5)--(5,5),black+linewidth(1));
+draw((5,4)--(5,5),black+linewidth(1));
+draw((4,5)--(5,5),black+linewidth(1));
+draw((4,6)--(5,6),black+linewidth(1));
+draw((4,5)--(4,6),black+linewidth(1));
+draw((5,4)--(6,4),black+linewidth(1));
+draw((5,4)--(5,5),black+linewidth(1));
+draw((6,4)--(6,5),black+linewidth(1));
+draw((6,5)--(6,6),black+linewidth(1));
+draw((5,7)--(6,7),black+linewidth(1));
+draw((5,6)--(5,7),black+linewidth(1));
+draw((6,6)--(6,7),black+linewidth(1));
+draw((0,0)--(6,0)--(6,6)--(0,6)--cycle,red+linewidth(1.6));
+label("$1$",(0.500000,-0.500000)); label("$2$",(1.500000,1.500000)); label("$3$",(3.500000,0.500000)); label("$4$",(5.500000,1.500000)); label("$5$",(2.500000,2.500000)); label("$6$",(0.500000,3.500000)); label("$7$",(4.500000,3.500000)); label("$8$",(1.500000,5.500000)); label("$9$",(3.500000,4.500000)); label("$10$",(5.500000,5.500000));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence the fewest number of pieces is $\boxed{10}$.

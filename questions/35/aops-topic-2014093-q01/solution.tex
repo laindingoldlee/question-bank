@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2014093_distribution_cp
+% Stable identity: aops-topic-2014093-q01
+\textbf{(a)} A placement is a solution of $x_1+x_2+x_3=6$ in nonnegative integers. By stars and bars there are $\dbinom{6+2}{2}=\boxed{28}$. In general: $\dbinom{n+k-1}{k-1}$.
+
+\textbf{(b)} Each ball independently chooses a box: $3^6=\boxed{729}$. In general: $k^n$.
+
+\textbf{(c)} Now a placement is a partition of the set of $6$ balls into at most $3$ nonempty blocks (the empty boxes are indistinguishable from each other). Let $S(n,j)$ be the number of partitions of an $n$-set into exactly $j$ nonempty blocks. Then $S(6,1)=1$, and $S(6,2)=\dfrac{2^6-2}{2}=31$ (choose a nonempty proper subset for one block, then divide by $2$ since the blocks are unordered). By inclusion and exclusion, the number of ways to put $6$ distinguishable balls into $3$ distinguishable boxes with none empty is $3^6-3\cdot2^6+3=540$, and dividing by $3!$ gives $S(6,3)=90$. So the count is
+\[
+1+31+90=\boxed{122}.
+\]
+In general: $\sum_{j=1}^{k}S(n,j)$, where $S(n,j)=\dfrac{1}{j!}\sum_{i=0}^{j}(-1)^i\dbinom ji(j-i)^n$.
+
+\textbf{(d)} Now only the multiset of box contents matters, i.e. a partition of the integer $6$ into at most $3$ parts:
+\[
+6,\quad 5+1,\quad 4+2,\quad 3+3,\quad 4+1+1,\quad 3+2+1,\quad 2+2+2,
+\]
+so $\boxed{7}$ ways. In general: the number of partitions of $n$ into at most $k$ parts, which has no simple closed form and is found by listing or by the recursion $p_k(n)=p_{k-1}(n)+p_k(n-k)$ (either fewer than $k$ parts are used, or all $k$ parts are positive and we can remove $1$ from each).

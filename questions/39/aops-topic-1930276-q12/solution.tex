@@ -1,0 +1,42 @@
+% Source: https://artofproblemsolving.com/community/c3h1930276_help_needed_in_problems_of_varied_topics
+% Stable identity: aops-topic-1930276-q12
+\textbf{Construction.}
+\begin{enumerate}
+\item Choose a point $P$ on $a$, far enough inside the sheet.
+\item Through $P$ construct the line $b'$ parallel to $b$ (for instance, join $P$ to a point $Q$ of $b$ and copy at $P$ the angle that $PQ$ makes with $b$, as corresponding angles).
+\item Choose rays from $P$ along $a$ and along $b'$ that form the acute angle between these lines, and reflect the ray along $a$ in the line $b'$: take a point $U$ on the ray along $a$, drop the perpendicular from $U$ to $b'$ and extend it by its own length to $U^*$. Let $c$ be the ray $PU^*$.
+\end{enumerate}
+Then the angle between the ray along $a$ and the ray $c$ is $2\theta$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+real t=14;
+pair Z=(10,2.5);
+pair da=dir(t), db=dir(-t);
+pair a0=Z-10*da/da.x, b0=Z-10*db/db.x;
+filldraw((0,0)--(8,0)--(8,5)--(0,5)--cycle,palegray,gray);
+pair a8=a0+8*da/da.x, b8=b0+8*db/db.x;
+draw(a0--a8,linewidth(1)); draw(b0--b8,linewidth(1));
+draw(a8--Z,dotted); draw(b8--Z,dotted);
+pair P=a0+6*da/da.x;
+pair c=dir(180-3*t);
+draw((P-6*db/db.x)--(P+2*db/db.x),blue+dashed);
+draw(P--(P+5.2*c),red+linewidth(1));
+draw(arc(P,1.4,180-t,180+t),blue);
+draw(arc(P,1.8,180-t,180-3*t),red);
+draw(arc(Z,1.2,180-t,180+t));
+dot(P); dot(Z);
+label("$P$",P,SE); label("$Z$",Z,E);
+label("$a$",a0,W); label("$b$",b0,W);
+label("$b'$",P-6*db/db.x,W,blue);
+label("$c$",P+5.2*c,N,red);
+label("$\theta$",P+1.4*dir(180),W,blue);
+label("$\theta$",P+1.8*dir(180-2*t),NW,red);
+label("$\theta$",Z+1.2*dir(180),W);
+label("sheet",(7.2,4.6));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Proof.} Since $b'\parallel b$ and $a$ crosses both, the angles that $a$ makes with $b$ and with $b'$ are corresponding angles, so the acute angle between $a$ and $b'$ at $P$ equals $\theta$. The reflection in $b'$ fixes $P$ and preserves angles, so the ray $c$ makes the same angle $\theta$ with $b'$, on the other side of $b'$. Hence the angle between $a$ and $c$ at $P$ is $\theta+\theta=2\theta$ (less than $180^\circ$ because $\theta<90^\circ$). Every step uses only points near $P$, so the whole construction stays on the sheet. $\blacksquare$

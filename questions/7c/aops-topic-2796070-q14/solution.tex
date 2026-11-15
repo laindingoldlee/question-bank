@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2796070_2013_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2796070-q14
+Ratios along a line are unchanged by stretching the rectangle, so take $D=(0,0)$, $C=(3,0)$, $B=(3,1)$, $A=(0,1)$, $F=(1,0)$, $E=(2,0)$. Points of $BD$ are $(3t,t)$, with $t$ measuring the fraction of $DB$ from $D$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0),C=(6,0),B=(6,3),A=(0,3),F=(2,0),Ep=(4,0);
+pair X=extension(A,F,B,D),Y=extension(A,Ep,B,D);
+draw(A--B--C--D--cycle);draw(B--D);draw(A--F);draw(A--Ep);dot(X);dot(Y);
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);label("$F$",F,S);label("$E$",Ep,S);label("$X$",X,NW);label("$Y$",Y,N);
+\end{asy}
+
+Line $AF$: $x+y=1$, giving $4t=1$, $t=\dfrac14$. Line $AE$: $\dfrac x2+y=1$, giving $\dfrac{5t}{2}=1$, $t=\dfrac25$. Hence
+\[\dfrac{XY}{BD}=\dfrac25-\dfrac14=\boxed{\dfrac{3}{20}}.\]
+
+(Alternatively, $\triangle XDF\sim\triangle XBA$ gives $\dfrac{DX}{XB}=\dfrac13$, and $\triangle YDE\sim\triangle YBA$ gives $\dfrac{DY}{YB}=\dfrac23$.)

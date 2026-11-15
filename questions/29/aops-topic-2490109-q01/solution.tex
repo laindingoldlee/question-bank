@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2490109_how_many_triangles
+% Stable identity: aops-topic-2490109-q01
+Use the side of a small triangle as the unit, and number the rows of lattice points from the top: row $i$ ($i=0,1,\dots,16$) contains $i+1$ points.
+
+An upward triangle of side $s$ ($1\le s\le16$) is determined by its top vertex, and that vertex can be any lattice point in rows $0,1,\dots,16-s$ (then the triangle fits inside the big triangle). So there are
+\[1+2+\cdots+(17-s)=T_{17-s}\]
+upward triangles of side $s$, where $T_k=\dfrac{k(k+1)}{2}$. Summing over $s$,
+\[\sum_{s=1}^{16}T_{17-s}=T_1+T_2+\cdots+T_{16}=\sum_{k=1}^{16}\dbinom{k+1}{2}=\dbinom{18}{3}=\boxed{816},\]
+by the hockey-stick identity $\dbinom22+\dbinom32+\cdots+\dbinom{17}{2}=\dbinom{18}{3}$. (Directly: $\sum_{k=1}^{16}\dfrac{k(k+1)}{2}=\dfrac{16\cdot17\cdot18}{6}=816$.)

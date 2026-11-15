@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1605137_trigonometry
+% Stable identity: aops-topic-1605137-q01
+Let the hikers be at $H$, at height $h$ above the point $F$ of the road's plane directly below them, and let the markers be $A$ (depression $45^\circ$) and $B$ (depression $15^\circ$). Since the road runs directly away from the hikers, $F$, $A$, $B$ lie on one line in this order, and $AB=5280$ feet. The angle of depression at $H$ equals the angle of elevation at the marker (alternate angles with the horizontal through $H$):
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+real h=1.6; pair F=(0,0),H=(0,h),A=(h,0),B=(h*(2+sqrt(3)),0);
+draw((-0.4,0)--B+(0.8,0),linewidth(0.9));
+draw(F--H,linewidth(0.9));
+draw(H--A,blue);draw(H--B,blue);
+draw(H--(B.x+0.8,h),gray+dashed);
+real q=0.18; draw((q,0)--(q,q)--(0,q));
+draw(arc(A,0.45,135,180),red);label("$45^\circ$",A+0.72*dir(157.5),red);
+draw(arc(B,1.7,165,180),red);label("$15^\circ$",B+2.15*dir(172.5),red);
+draw(arc(H,0.55,-45,0),red);draw(arc(H,2.0,-15,0),red);
+label("$45^\circ$",H+1.0*dir(-27),red);label("$15^\circ$",H+2.3*dir(-7.5),red);
+dot(H);dot(A);dot(B);dot(F);
+label("$H$",H,NW);label("$F$",F,SW);label("$A$",A,S);label("$B$",B,S);
+label("$h$",(0,h/2),W);
+draw((A.x,-0.55)--(B.x,-0.55),Arrows(TeXHead));label("$5280$ ft",((A.x+B.x)/2,-0.55),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the right triangles $HFA$ and $HFB$,
+\[
+FA=\dfrac{h}{\tan45^\circ}=h,\qquad FB=\dfrac{h}{\tan15^\circ}=h\left(2+\sqrt3\right),
+\]
+because $\tan15^\circ=\tan(45^\circ-30^\circ)=\dfrac{1-\dfrac{1}{\sqrt3}}{1+\dfrac{1}{\sqrt3}}=\dfrac{\sqrt3-1}{\sqrt3+1}=2-\sqrt3$ and $\dfrac{1}{2-\sqrt3}=2+\sqrt3$. Hence
+\[
+AB=FB-FA=h\left(1+\sqrt3\right)=5280,\qquad h=\dfrac{5280}{1+\sqrt3}=\dfrac{5280\left(\sqrt3-1\right)}{2}=\boxed{2640\left(\sqrt3-1\right)\text{ feet}}\approx1933\text{ feet}.
+\]

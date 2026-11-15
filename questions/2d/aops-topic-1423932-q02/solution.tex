@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1423932_easter_math_competition_series
+% Stable identity: aops-topic-1423932-q02
+The sun's rays make an angle $\theta$ with the ground, where $\tan\theta=\dfrac{5\sqrt3}{5}=\sqrt3$, so the sun's elevation is $\theta=60^\circ$.
+
+The sun sweeps $180^\circ$ in the $12$ hours from 5:00 AM to 5:00 PM, that is, $15^\circ$ per hour, measured from the eastern horizon. Its elevation is $60^\circ$ when it has turned $60^\circ$ from the eastern horizon, which takes $4$ hours, or when it is $60^\circ$ above the western horizon, that is, $4$ hours before sunset. So the times are
+\[
+\boxed{9{:}00\text{ AM and }1{:}00\text{ PM}}.
+\]
+In the morning the shadow points west, in the afternoon east. (In the sketch the sun's rays are drawn through the top of the tree; the sun itself is very far away.)
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+real h=5*sqrt(3); real L=15;
+pair Ob=(0,0),T=(0,h),Pm=(-5,0),Pa=(5,0);
+draw((-12,0)--(12,0),linewidth(0.9));
+pair Sm=Pm+L*dir(60), Sa=Pa+L*dir(120);
+draw(Sm--Pm,blue); draw(Sa--Pa,red+dashed);
+draw(Ob--T,deepgreen+linewidth(2));
+draw(Ob--Pm,blue+linewidth(1.5)); draw(Ob--Pa,red+linewidth(1.5));
+dot(Sm,blue); dot(Sa,red);
+draw(arc(Pm,1.5,0,60),blue); label("$60^\circ$",Pm+2.4*dir(30),blue+fontsize(8pt));
+draw(arc(Pa,1.5,120,180),red); label("$60^\circ$",Pa+2.4*dir(150),red+fontsize(8pt));
+label("sun at $9{:}00$ AM",Sm,E,blue); label("sun at $1{:}00$ PM",Sa,W,red);
+label("east",(12,0),E); label("west",(-12,0),W);
+label("$5\sqrt{3}$",(0,h*0.35),W,deepgreen);
+label("$5$",(-2.5,0),S,blue); label("$5$",(2.5,0),S,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

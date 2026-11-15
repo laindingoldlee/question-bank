@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1369100_burnside_lemma_problems
+% Stable identity: aops-topic-1369100-q03
+We use Burnside's lemma with the $24$ rotations of the cube. A rotation fixes $3^c$ colourings, where $c$ is the number of cycles in which it permutes the $8$ vertices. The rotation axes are of three kinds (one of each is sketched).
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair o=(0.55,0.4);
+void cb(pair s){
+ pair a=s,b=s+(1,0),c=s+(1,1),d=s+(0,1);
+ draw(a--b--c--d--cycle);draw(d--d+o--c+o--c);draw(b--b+o--c+o);
+ draw(a--a+o,dashed);draw(a+o--b+o,dashed);draw(a+o--d+o,dashed);}
+cb((0,0));cb((2.4,0));cb((4.8,0));
+pair f1=(0.5,0)+o/2,f2=(0.5,1)+o/2;
+draw((f1+(0,-0.45))--(f2+(0,0.45)),red+linewidth(0.8));
+pair v1=(2.4,0),v2=(3.4,1)+o;
+draw((v1-0.25*(v2-v1))--(v2+0.25*(v2-v1)),red+linewidth(0.8));
+pair e1=(4.8,0)+o/2,e2=(5.8,1)+o/2;
+draw((e1-0.25*(e2-e1))--(e2+0.25*(e2-e1)),red+linewidth(0.8));
+dot(e1,red);dot(e2,red);
+label("face axis",(0.75,-0.65),fontsize(8pt));label("vertex axis",(3.15,-0.65),fontsize(8pt));label("edge axis",(5.55,-0.65),fontsize(8pt));
+\end{asy}
+
+\begin{itemize}
+\item The identity: $8$ cycles, $3^8=6561$.
+\item Through centres of opposite faces ($3$ axes): rotations by $90^\circ$ or $270^\circ$ ($6$ rotations) give two $4$-cycles, $3^2=9$ each; rotations by $180^\circ$ ($3$ rotations) give four $2$-cycles, $3^4=81$ each.
+\item Through opposite vertices ($4$ axes, rotations by $120^\circ$ or $240^\circ$, $8$ rotations): the two vertices on the axis are fixed and the other six form two $3$-cycles, so $4$ cycles, $81$ each.
+\item Through midpoints of opposite edges ($6$ axes, $180^\circ$): four $2$-cycles, $81$ each.
+\end{itemize}
+These are $1+6+3+8+6=24$ rotations. The number of colourings is
+\[\dfrac{6561+6\cdot9+3\cdot81+8\cdot81+6\cdot81}{24}=\dfrac{7992}{24}=\boxed{333}.\]

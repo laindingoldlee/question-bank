@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1339258_another_question
+% Stable identity: aops-topic-1339258-q01
+Let the area of the parallelogram be $P$. The diagonal $AC$ splits it into two triangles of area $\dfrac {P}{2}$, so $[ABC]=\dfrac {P}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(5,0), D=(1.5,3), C=B+D;
+pair Ee=(2,0);
+fill(A--Ee--C--D--cycle,paleblue);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(Ee--C,blue); draw(A--C,red+dashed);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW); label("$E$",Ee,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangle $EBC$ has the same height from $C$ as triangle $ABC$, so $[EBC]=\dfrac{EB}{AB}\cdot\dfrac {P}{2}$. Writing $t=\dfrac{EB}{AB}$,
+\[
+[AECD]=P-[EBC]=P\left(1-\dfrac {t}{2}\right).
+\]
+The condition $[AECD]:[ABC]=7:5$ gives $1-\dfrac {t}{2}=\dfrac{7}{10}$, so $t=\dfrac{3}{5}$. Then $AE=\dfrac{2}{5}AB$ and $EB=\dfrac{3}{5}AB$, so
+\[
+AE:EB=\boxed{2:3}.
+\]

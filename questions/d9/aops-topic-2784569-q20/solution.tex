@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2784569_2018_abmc_team_rounds_58__actonboxborough_math_competition
+% Stable identity: aops-topic-2784569-q20
+The row and column contribute 15 squares for every placement. For one diagonal direction, the diagonal lengths are 1,2,...,7,8,7,...,2,1. A diagonal of length $l$ contributes $l(l-1)$ ordered pairs of distinct squares. Thus the expected additional attacked squares from both diagonal directions are $\dfrac{2}{64}\left(2\sum_{l=1}^7l(l-1)+8\cdot7\right)=\dfrac{2}{64}(224+56)=\dfrac{35}{4}$. Total $15+\dfrac{35}{4}=\boxed{\dfrac{95}{4}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=0;i<=8;++i){draw((i,0)--(i,8),gray);draw((0,i)--(8,i),gray);}pair Q=(3.5,4.5);draw((0,4.5)--(8,4.5)^^(3.5,0)--(3.5,8),blue);draw((0,1)--(7,8)^^(0,8)--(8,0),red);dot(Q);label("$Q$",Q,NE);
+\end{asy}

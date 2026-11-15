@@ -1,0 +1,9 @@
+Let the square side be $s$ and the ray angle with $BA$ be $\theta$. The semicircle equation gives $BE=s\cos\theta=5$. Also $BF=s$ and $B G = \dfrac{s}{\cos \theta} = \dfrac{s^2}{5}$. Hence $F G = \dfrac{s^2}{5} - s = 2$, giving $s = \dfrac{5+\sqrt{65}}{2}$. Therefore $\boxed{E F = s - 5 = \dfrac{\sqrt{65}-5}{2}}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+real s=(5+sqrt(65))/2,t=acos(5/s);pair B=(0,0),A=(s,0),D=(s,s),C=(0,s),E=5*(cos(t),sin(t)),F=s*(cos(t),sin(t)),G=(s,s*tan(t));draw(A--B--C--D--cycle);draw(arc((s/2,0),s/2,0,180));draw(arc(B,s,0,90));draw(B--G);label("$A$",A,(0,-1));label("$B$",B,(-1,-1));label("$C$",C,(-1,1));label("$D$",D,(1,1));label("$E$",E,(1,-1));label("$F$",F,(-1,1));label("$G$",G,(1,0));
+\end{asy}
+

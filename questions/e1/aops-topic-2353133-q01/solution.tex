@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2353133_random_question_since_someone_brought_up_factorials
+% Stable identity: aops-topic-2353133-q01
+The number of trailing zeros of $n!$ is the exponent of $5$ in $n!$ (there are more factors $2$ than $5$):
+\[Z(n)=\left\lfloor\dfrac n5\right\rfloor+\left\lfloor\dfrac n{25}\right\rfloor+\left\lfloor\dfrac n{125}\right\rfloor+\cdots.\]
+$Z(n)$ only increases when $n$ passes a multiple of $5$, so the smallest $n$ with a given value of $Z(n)$ is a multiple of $5$. For $n=5m$ we have $Z(5m)=m+Z(m)$, and $m+Z(m)$ strictly increases with $m$. So we need the unique $m$ with
+\[m+Z(m)=2197934.\]
+Since $Z(m)$ is a little less than $\dfrac m4$, $m$ is a little more than $\dfrac45\cdot2197934\approx1758347$. Try $m=1758351$:
+\[Z(1758351)=351670+70334+14066+2813+562+112+22+4=439583,\]
+and $1758351+439583=2197934$. (For $m=1758350$ all the floors are the same, so $m+Z(m)=2197933$.) Hence $n=5\cdot1758351=\boxed{8791755}$: the factorial $8791755!$ is the first one ending in exactly $2197934$ zeros (and $8791754!$ ends in $2197933$ zeros).

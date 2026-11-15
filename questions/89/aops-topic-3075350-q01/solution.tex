@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3075350_combo_with_triangle_inequality
+% Stable identity: aops-topic-3075350-q01
+Suppose no triple works. For each consecutive triple, let $M$ be its largest entry. Failure of the strict triangle inequality means the sum of that triple is at most $2M$. Summing over all $15$ triples, every entry is counted three times, so the left side is $3(4+5+\cdots+18)=3\cdot165=495$. Each entry can be the largest in at most the three triples containing it. Hence the sum of the fifteen maxima is at most three times the sum of the five largest entries: $3(14+15+16+17+18)=240$. The assumed inequalities would give $495\le2\cdot240=480$, a contradiction. Therefore a valid triple exists.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(6,0),C=(3.75,sqrt(25-3.75^2));draw(A--B--C--cycle);label("$a_k$",(A+B)/2,S);label("$a_{k+1}$",(B+C)/2,NE);label("$a_{k+2}$",(C+A)/2,NW);label("a successful consecutive triple",(3,-1));
+\end{asy}

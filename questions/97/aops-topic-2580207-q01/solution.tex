@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2580207_jmpsc_accuracy_sample_5
+% Stable identity: aops-topic-2580207-q01
+After $7$ moves Christopher is at a lattice point. The lattice points at distance $5$ from $O$ are the $12$ points $(\pm5,0)$, $(0,\pm5)$, $(\pm3,\pm4)$, $(\pm4,\pm3)$.
+
+\emph{Endpoint $(3,4)$:} the moves must total $7$ with $3$ more rights than lefts and $4$ more ups than downs. Since $3+4=7$, he makes exactly $3$ right and $4$ up moves, in any order: $\dbinom73=35$ walks. The same holds for each of the $8$ points $(\pm3,\pm4)$, $(\pm4,\pm3)$, giving $280$ walks.
+
+\emph{Endpoint $(5,0)$:} he needs $R-L=5$ and $U=D$ with $R+L+U+D=7$. So either $(R,L,U,D)=(6,1,0,0)$, giving $\dfrac{7!}{6!\,1!}=7$ walks, or $(5,0,1,1)$, giving $\dfrac{7!}{5!\,1!\,1!}=42$ walks. That is $49$ walks for each of the $4$ points on the axes, $196$ in all.
+
+So $476$ of the $4^7=16384$ equally likely walks end at distance $5$, and the probability is $\dfrac{476}{16384}=\dfrac{119}{4096}$. Hence $m+n=\boxed{4215}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+for(int i=-6;i<=6;++i){draw((i,-6)--(i,6),gray(0.85));draw((-6,i)--(6,i),gray(0.85));}
+draw((-6.5,0)--(6.6,0),Arrow(5));draw((0,-6.5)--(0,6.6),Arrow(5));
+draw(circle((0,0),5));
+pair[] P={(5,0),(-5,0),(0,5),(0,-5),(3,4),(4,3),(-3,4),(-4,3),(3,-4),(4,-3),(-3,-4),(-4,-3)};
+for(pair p:P) dot(p,linewidth(3));
+draw((0,0)--(3,0)--(3,4),linewidth(0.9));
+label("$O$",(0,0),SW);label("$(3,4)$",(3,4),NE,fontsize(9pt));label("$(5,0)$",(5,0),SE,fontsize(9pt));
+\end{asy}

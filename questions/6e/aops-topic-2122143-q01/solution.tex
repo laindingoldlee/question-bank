@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2122143_pls_help
+% Stable identity: aops-topic-2122143-q01
+Let the side length be $s$ and let $d_{AB}$, $d_{AC}$, $d_{BC}$ be the distances from $P$ to the three sides. Then
+\[[ABP]=\dfrac {s}{2}\,d_{AB},\qquad[ACP]=\dfrac {s}{2}\,d_{AC},\qquad[BCP]=\dfrac {s}{2}\,d_{BC},\]
+so the condition is
+\[d_{AC}<d_{AB}<d_{BC}.\]
+
+The three medians of $ABC$ are also its angle bisectors; the median from $A$ consists of the points equidistant from $AB$ and $AC$, and similarly for the others. The medians cut the triangle into six small triangles of equal area (each is $\dfrac{1}{6}$ of $ABC$, since each median halves the triangle and the centroid $G$ divides each median in the ratio $2:1$). Inside each small triangle the three distances are in a fixed order, and the six small triangles give the six possible orders; this also follows from symmetry, since the six symmetries of the equilateral triangle permute its sides in all six ways and preserve the uniform distribution.
+
+The required order, closest to $AC$ and farthest from $BC$, holds in the small triangle with vertices $A$, $G$ and the midpoint of $AC$ (shaded; the dotted segments are the three distances from a point $P$ of this region).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(1,0), A=(0.5,sqrt(3)/2), G=(A+B+C)/3;
+pair Ma=(B+C)/2, Mb=(A+C)/2, Mc=(A+B)/2;
+fill(A--G--Mb--cycle,paleblue);
+draw(A--B--C--cycle,linewidth(1));
+draw(A--Ma,gray+dashed); draw(B--Mb,gray+dashed); draw(C--Mc,gray+dashed);
+dot(G); label("$G$",G,dir(-60),fontsize(8pt));
+pair ft(pair Q, pair X, pair Y){ return X+dot(Q-X,Y-X)/dot(Y-X,Y-X)*(Y-X); }
+pair Pp=(0.6,0.53); dot(Pp,red); label("$P$",Pp,SW,red+fontsize(8pt));
+draw(Pp--ft(Pp,B,C),red+dotted); draw(Pp--ft(Pp,A,B),red+dotted); draw(Pp--ft(Pp,A,C),red+dotted);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Ties happen only on the medians, which have zero area. Hence the probability is
+\[\boxed{\dfrac{1}{6}}.\]

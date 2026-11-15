@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2424716_how_to_check
+% Stable identity: aops-topic-2424716-q01
+\textbf{(a)} Divisors come in pairs $d$ and $\dfrac{100}{d}$, and the smaller one of each pair is at most $\sqrt{100}=10$. So it is enough to test $1,2,\dots,10$:
+\[1\cdot100,\quad2\cdot50,\quad4\cdot25,\quad5\cdot20,\quad10\cdot10,\]
+while $3,6,7,8,9$ do not divide $100$. The divisors are
+\[\boxed{1,\ 2,\ 4,\ 5,\ 10,\ 20,\ 25,\ 50,\ 100},\]
+nine in all. This agrees with $100=2^2\cdot5^2$, which has $(2+1)(2+1)=9$ divisors.
+
+\textbf{(b)} Do casework on the half-dollars and quarters, then count the ways to make the rest with pennies, nickels and dimes. Let $W(A)$ be the number of ways to make $A$ cents with pennies, nickels and dimes. With $d$ dimes, the remaining $A-10d$ cents can be made with $0,1,\dots,\left\lfloor\dfrac{A-10d}{5}\right\rfloor$ nickels and pennies for the rest, so
+\[W(A)=\sum_{d=0}^{\left\lfloor\dfrac{A}{10}\right\rfloor}\left(\left\lfloor\dfrac{A-10d}{5}\right\rfloor+1\right).\]
+Hence
+\begin{align*}
+W(97)&=20+18+16+14+12+10+8+6+4+2=110,\\
+W(72)&=15+13+11+9+7+5+3+1=64,\\
+W(47)&=10+8+6+4+2=30,\\
+W(22)&=5+3+1=9.
+\end{align*}
+The possible numbers of half-dollars and quarters, with the amount left over, are:
+\begin{itemize}
+\item no half-dollar: $0,1,2,3$ quarters leave $97,72,47,22$ cents;
+\item one half-dollar: $0,1$ quarters leave $47,22$ cents.
+\end{itemize}
+The total number of ways is
+\[W(97)+W(72)+W(47)+W(22)+W(47)+W(22)=110+64+30+9+30+9=\boxed{252}.\]

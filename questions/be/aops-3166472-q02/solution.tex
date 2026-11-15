@@ -1,0 +1,6 @@
+Let $A=(0,0)$, $B=(w,0)$, $C=(w,h)$, $D=(0,h)$. The $45^\circ$ condition gives $E=(h,0)$ and $DE=h\sqrt2$. If $F=(f,h)$, $FB=DE$ implies $(w-f)^2=h^2$, so $f=w-h$ since $f\le w$. Now $EF=DE$ gives $(w-2h)^2=h^2$, hence $w=3h$ or $w=h$. Both satisfy the written non-strict segment conditions: the latter has $E=B,F=D$. With coprime dimensions, the answers are $\boxed4$ for distinct interior points, or $\boxed2$ in the endpoint case. Thus without excluding endpoints the source has two answers.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+for(int j=0;j<2;++j){real t=-3*j,w=j==0?3:1;pair A=(0,t),B=(w,t),C=(w,t+1),D=(0,t+1),E=(1,t),F=(w-1,t+1);draw(A--B--C--D--cycle);draw(D--E--F--B,dashed);label("$A$",A,(-1,-1));label(j==0?"$B$":"$B=E$",B,(1,-1));label("$C$",C,(1,1));label(j==0?"$D$":"$D=F$",D,(-1,1));if(j==0){label("$E$",E,(0,-1));label("$F$",F,(0,1));}label(j==0?"$w=3h$":"$w=h$",(w/2,t-.9));}
+\end{asy}
+

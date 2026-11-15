@@ -1,0 +1,17 @@
+Write $AB=c$, $AC=b$, $BC=a$. Since $\angle C=50^\circ$, the sine rule gives
+\[
+b=c\,\dfrac{\sin100^\circ}{\sin50^\circ}=2c\cos50^\circ.
+\]
+Place $B$ at coordinate $0$ and $C$ at $a$ on the horizontal axis. The coordinate of $H$ is $c\cos100^\circ<0$, and projecting the two other sides gives $a=b\cos50^\circ+c\cos100^\circ$. Therefore
+\[
+HM=\dfrac{a}{2}-c\cos100^\circ
+=\dfrac{b\cos50^\circ-c\cos100^\circ}{2}
+=\dfrac{c}{2}\bigl(2\cos^250^\circ-\cos100^\circ\bigr)=\dfrac{c}{2}.
+\]
+Thus $AB=8$ exactly, and the nearest integer is $\boxed8$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real c=8,b=2*c*Cos(50),a=b*Cos(50)+c*Cos(100);pair B=(0,0),C=(a,0),A=c*dir(100),H=(A.x,0),M=(a/2,0);draw(A--B--C--cycle);draw(H--C,dashed);draw(A--H,dashed);draw(A--M,blue);label("$A$",A,(0,1));label("$B$",B,(0,-1));label("$C$",C,(1,-1));label("$H$",H,(-1,-1));label("$M$",M,(0,-1));label("$HM=4$",(((H+M)/2).x,-1.2));
+\end{asy}

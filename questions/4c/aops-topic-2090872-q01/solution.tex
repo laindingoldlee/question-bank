@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2090872_geometry_problem_without_trigonometry
+% Stable identity: aops-topic-2090872-q01
+We have $\angle ABC=180^\circ-24^\circ-30^\circ=126^\circ$. Since $\angle ABC>\angle ACB$, $AC>AB=CD$, so $D$ really lies on side $AC$, strictly between $A$ and $C$. Let $O$ be the circumcentre and $R$ the circumradius of triangle $ABC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), A=dir(216), C=dir(324), B=dir(276);
+pair D=C+(A-C)/length(A-C);
+draw(circle(O,1),gray);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(O--A,deepgreen); draw(O--B,deepgreen); draw(O--C,deepgreen); draw(O--D,deepgreen+dashed);
+draw(B--D,red+linewidth(1));
+dot(O); dot(A); dot(B); dot(C); dot(D);
+label("$O$",O,N); label("$A$",A,W); label("$B$",B,S); label("$C$",C,E); label("$D$",D,N);
+label("$24^\circ$",A+(0.2,-0.03),E,fontsize(7pt)); label("$30^\circ$",C+(-0.2,-0.03),W,fontsize(7pt));
+real aD=degrees(D-O);
+draw(arc(O,0.16,216,aD)); draw(arc(O,0.2,aD,324));
+label("$36^\circ$",O+0.3*dir((216+aD)/2),fontsize(7pt)); label("$72^\circ$",O+0.34*dir(300),fontsize(7pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\emph{Step 1: $AB=R$ and the angles of triangle $AOC$.} The inscribed angle $\angle ACB=30^\circ$ is acute, so the central angle $\angle AOB=60^\circ$; triangle $AOB$ is isosceles with apex $60^\circ$, hence equilateral, and $AB=R$. The angle $\angle ABC=126^\circ$ is obtuse, so $O$ and $B$ are on opposite sides of $AC$ and $\angle AOC=2\left(180^\circ-126^\circ\right)=108^\circ$. Triangle $AOC$ is isosceles, so $\angle OAC=\angle OCA=36^\circ$.
+
+\emph{Step 2: $AB^2=AD\cdot AC$.} Now $CD=AB=R=CO$, so triangle $OCD$ is isosceles with apex angle $\angle OCD=36^\circ$, and $\angle COD=\angle CDO=72^\circ$. Since $D$ lies on segment $AC$, $\angle AOD=108^\circ-72^\circ=36^\circ$. Triangles $AOD$ and $ACO$ share the angle at $A$ (equal to $36^\circ$) and have $\angle AOD=36^\circ=\angle ACO$, so they are similar, with $A\leftrightarrow A$, $O\leftrightarrow C$, $D\leftrightarrow O$. Hence
+\[\dfrac{AO}{AC}=\dfrac{AD}{AO},\qquad\text{so}\qquad AB^2=AO^2=AD\cdot AC .\]
+
+\emph{Step 3: similar triangles.} By Step 2, $\dfrac{AB}{AD}=\dfrac{AC}{AB}$, and triangles $ABD$ and $ACB$ share the angle at $A$. So they are similar (SAS), with $A\leftrightarrow A$, $B\leftrightarrow C$, $D\leftrightarrow B$. Therefore
+\[\dfrac{BD}{CB}=\dfrac{AB}{AC},\qquad\text{that is,}\qquad AB\cdot BC=BD\cdot AC .\qquad\blacksquare\]
+
+(With trigonometry: by the law of sines, $\dfrac{AC}{AB}=\dfrac{\sin126^\circ}{\sin30^\circ}=2\cos36^\circ=\dfrac{1+\sqrt5}{2}$, which gives $AB^2=AC(AC-AB)=AC\cdot AD$ directly; the similarity in Step 3 then finishes as above.)

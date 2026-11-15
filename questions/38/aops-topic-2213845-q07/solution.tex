@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2213845_beginner_problems
+% Stable identity: aops-topic-2213845-q07
+A regular octahedron has $8$ triangular faces:
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair T=(0,1.6), Bt=(0,-1.6), p1=(-1.4,-0.15), p2=(0.6,-0.45), p3=(1.4,0.15), p4=(-0.6,0.45);
+draw(T--p1--Bt--p2--T--p3--Bt,linewidth(0.8)); draw(p1--p2--p3,linewidth(0.8));
+draw(p3--p4--p1,dashed); draw(T--p4--Bt,dashed);
+dot(T);dot(Bt);
+\end{asy}
+
+\textbf{Rotations.} A rotation of the octahedron is determined by where it sends one face ($8$ choices) and how that face is turned onto its image ($3$ choices), so there are $8\cdot3=24$ rotations.
+
+\textbf{Counting.} There are $8!=40\,320$ ways to paint the faces with all colours different. A rotation other than the identity moves some face to a different face, so it changes such a colouring (the colours are all different). Hence the $24$ rotations of a colouring give $24$ different colourings, and the $40\,320$ colourings fall into groups of $24$ that count as the same. The number of distinguishable colourings is
+\[\dfrac{8!}{24}=\boxed{1680}.\]

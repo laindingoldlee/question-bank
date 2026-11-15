@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2454485_counting_paths_problem
+% Stable identity: aops-topic-2454485-q01
+Every path has exactly $9$ east moves. Suppose it has $j$ moves of $2$ units north; then it has $7-2j$ moves of $1$ unit north, so $j\in\{0,1,2,3\}$ and there are $7-j$ north moves in total. A path is determined by
+\begin{itemize}
+\item the order of its north moves: choose which $j$ of the $7-j$ north moves are double, in $\dbinom{7-j}{j}$ ways, and
+\item how the $7-j$ north moves are interleaved with the $9$ east moves: $\dbinom{16-j}{9}$ ways.
+\end{itemize}
+So the number of paths is
+\[\sum_{j=0}^{3}\dbinom{7-j}{j}\dbinom{16-j}{9}=1\cdot11440+6\cdot5005+10\cdot2002+4\cdot715=11440+30030+20020+2860=\boxed{64350}.\]

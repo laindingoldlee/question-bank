@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1843054_consecutive_sides_of_a_trapezoid
+% Stable identity: aops-topic-1843054-q01
+By symmetry we may assume $a>b$ (otherwise rename the vertices so that $AB$ is the longer base).
+
+Through $C$ draw the line parallel to $DA$; it meets $AB$ at a point $E$. Then $AECD$ is a parallelogram ($AE\parallel DC$ and $EC\parallel AD$), so $AE=DC=b$ and $EC=AD=d$. Since $AE=b<a=AB$, the point $E$ lies between $A$ and $B$, and $EB=a-b>0$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(9,0),C=(6.5,3.6),D=(2,3.6);
+pair Ep=A+(C-D);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(C--Ep,dashed);
+dot(Ep);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$E$",Ep,S);
+label("$b$",(D+C)/2,N);label("$d$",(A+D)/2,W);label("$c$",(B+C)/2,NE);
+label("$d$",(C+Ep)/2,W);
+label("$b$",(A+Ep)/2,S);label("$a-b$",(Ep+B)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The points $E$, $B$, $C$ form a genuine triangle ($C$ is not on line $AB$), with sides $EB=a-b$, $BC=c$ and $CE=d$. By the triangle inequality, $d<c+(a-b)$ and $c<d+(a-b)$, i.e.
+\[
+|d-c|<a-b=|b-a| .\qquad\blacksquare
+\]
+(If $a=b$ the figure would be a parallelogram, with $c=d$, and the inequality would fail as $0<0$; this is why the bases must have different lengths.)

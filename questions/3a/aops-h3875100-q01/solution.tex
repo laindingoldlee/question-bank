@@ -1,0 +1,16 @@
+Represent a move by $2$ or $3$. The target appears exactly after move $8$, and exactly when the first eight moves contain four of each symbol.
+
+For completeness, count admissible strings using $D(a,b,c,r)$, the number with $a$ twos, $b$ threes, final symbol $c$, and final run length $r\in\{1,2\}$. Start with $D(1,0,2,1)=D(0,1,3,1)=1$. Appending the other symbol resets $r$ to $1$; appending the same symbol is allowed only from $r=1$ and changes it to $2$. This recurrence gives the following totals for equal symbol counts:
+\[
+\begin{array}{c|rrrrrrrr}
+a=b&1&2&3&4&5&6&7&8\\\hline
+\text{total}&2&6&14&34&84&208&518&1296
+\end{array}
+\]
+For four of each symbol, the counts ending in a specified symbol with run lengths $1,2$ are $12,5$. By reversal these are also the starting-run counts.
+
+There are $34^2$ pairs of balanced length-eight halves. The concatenation fails only when the symbols at the join agree and the two run lengths sum to at least $3$. For each join symbol, the bad count is $12\cdot5+5\cdot12+5^2=145$. Hence the favourable count is $34^2-2\cdot145=866$. The probability is
+\[
+\dfrac{866}{1296}=\dfrac{433}{648},
+\]
+so $\boxed{m+n=1081}$.

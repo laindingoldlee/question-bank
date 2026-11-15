@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h1533511_cyclic_quadrilateral
+% Stable identity: aops-topic-1533511-q01
+The lines $AB$ and $CD$ meet at a point $P$ outside the circle, with a right angle at $P$. As in the figure, either $B$ lies between $A$ and $P$ and $C$ between $D$ and $P$, or $A$ lies between $B$ and $P$ and $D$ between $C$ and $P$; the argument is the same in both cases.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=dir(-20),B=dir(0),C=dir(60),D=dir(100);
+// P = intersection of lines AB and DC
+pair P=extension(A,B,D,C);
+draw(unitcircle,gray(0.5));
+draw(A--B--C--D--cycle,linewidth(1));
+draw(B--P,dashed);draw(C--P,dashed);
+real z=0.09; pair u=unit(A-P),v=unit(D-P);
+draw(P+z*u--P+z*u+z*v--P+z*v);
+dot(A);dot(B);dot(C);dot(D);dot(P);
+label("$A$",A,dir(-30));label("$B$",B,dir(-10));label("$C$",C,dir(120));label("$D$",D,NW);label("$P$",P,NE);
+label("$a$",(A+B)/2,W);label("$b$",(B+C)/2,SW);label("$c$",(C+D)/2,S);label("$d$",(D+A)/2,SW);
+draw(arc(B,0.13,degrees(P-B),degrees(C-B)),red);label("$\theta$",B+0.22*dir((degrees(P-B)+degrees(C-B))/2),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Two similar right triangles.} Triangles $PBC$ and $PDA$ have right angles at $P$ and hypotenuses $BC=b$ and $DA=d$. They are similar (with $B\leftrightarrow D$, $C\leftrightarrow A$): by the power of the point $P$, $PB\cdot PA=PC\cdot PD$, so $\dfrac{PB}{PD}=\dfrac{PC}{PA}$, and the angle at $P$ is common. Let $\theta=\angle PBC=\angle PDA$; then $\angle PCB=\angle PAD=90^\circ-\theta$.
+
+A right triangle with hypotenuse $h$ and an acute angle $\theta$ has legs $h\cos\theta$, $h\sin\theta$ and area $\dfrac{1}{2}h^2\sin\theta\cos\theta$. The quadrilateral is the difference of the two triangles, so its area is
+\[
+K=\left|[PDA]-[PBC]\right|=\dfrac{1}{2}\left|d^2-b^2\right|\sin\theta\cos\theta .
+\]
+\textbf{The area in terms of the sides.} The angle $\angle ABC$ of the quadrilateral is $\theta$ or $180^\circ-\theta$ (it is $\angle PBC$ or its supplement), and $\angle ADC=180^\circ-\angle ABC$ (cyclic), so both have sine $\sin\theta$. Similarly $\angle DAB$ is $90^\circ-\theta$ or its supplement, and $\angle BCD=180^\circ-\angle DAB$, so both have sine $\cos\theta$. Splitting along the diagonals,
+\[
+K=[ABC]+[CDA]=\dfrac{1}{2}(ab+cd)\sin\theta,\qquad K=[DAB]+[BCD]=\dfrac{1}{2}(ad+bc)\cos\theta .
+\]
+\textbf{Conclusion.} Therefore
+\[
+(ab+cd)^2+(ad+bc)^2=4K^2\left(\dfrac{1}{\sin^2\theta}+\dfrac{1}{\cos^2\theta}\right)=\dfrac{4K^2}{\sin^2\theta\cos^2\theta}=\left(d^2-b^2\right)^2 ,
+\]
+which is the claim. $\blacksquare$

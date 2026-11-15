@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1715915_junior_regional_olympiad__fbh_2015_grade_8_problem_3
+% Stable identity: aops-topic-1715915-q01
+Let $E'$ be the reflection of $E$ in $D$, so that $D$ is the midpoint of $EE'$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(1.5,4),B=(0,0),C=(6,0),D=(B+C)/2;
+pair Ep=B+0.5*(A-B);
+pair F=extension(D,D+rotate(90)*(Ep-D),A,C);
+pair Ep2=2*D-Ep;
+void ra(pair P,pair U,pair V,real s){draw(P+s*unit(U-P)--P+s*unit(U-P)+s*unit(V-P)--P+s*unit(V-P),linewidth(0.5));}
+draw(A--B--C--cycle,linewidth(0.9));
+draw(Ep--D--F,linewidth(0.8));draw(Ep--F,linewidth(0.8));
+draw(D--Ep2,blue+dashed);draw(C--Ep2,blue+dashed);draw(F--Ep2,blue+dashed);
+ra(D,Ep,F,0.3);
+dot(D);dot(Ep);dot(F);dot(Ep2,blue);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,E);label("$D$",D,dir(-100));
+label("$E$",Ep,W);label("$F$",F,NE);label("$E'$",Ep2,SE,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{$CE'=BE$.} The segments $BC$ and $EE'$ bisect each other at $D$, so $EBE'C$ is a parallelogram (or, directly, triangles $DBE$ and $DCE'$ are congruent by SAS with the vertical angles at $D$). Hence $CE'=BE$.
+
+\textbf{$FE'=FE$.} Since $\angle EDF=90^\circ$ and $D$ is the midpoint of $EE'$, the line $DF$ is the perpendicular bisector of $EE'$, so $FE'=FE$.
+
+\textbf{Triangle inequality.} In triangle $FCE'$,
+\[
+CF+CE'\ge FE',\qquad\text{that is,}\qquad CF+BE\ge EF ,
+\]
+with equality only if $C$ lies on segment $FE'$. That would put $E'$ on line $AC$. But $CE'\parallel BE$, i.e.\ $CE'$ is parallel to $AB$, and the line through $C$ parallel to $AB$ meets line $AC$ only at $C$; so $E'=C$ and $E=B$, which is excluded. Therefore $BE+CF>EF$. $\blacksquare$

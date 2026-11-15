@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1596758_fun_chess_math_problem
+% Stable identity: aops-topic-1596758-q01
+The pawn's move joins the centres of two adjacent squares, so its length is $1$. The knight's move goes $2$ units in one direction and $1$ unit in the perpendicular direction, so by Pythagoras' theorem its straight-line length is
+\[
+\sqrt{2^2+1^2}=\sqrt5 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=4;++i) draw((i,0)--(i,3),gray(0.7));
+for(int j=0;j<=3;++j) draw((0,j)--(4,j),gray(0.7));
+pair p0=(0.5,0.5),p1=(0.5,1.5),k0=(2.5,0.5),k1=(3.5,2.5);
+draw(p0--p1,red+linewidth(1.1),Arrow(TeXHead));dot(p0,red);
+draw(k0--(2.5,2.5)--k1,dashed+gray(0.4));
+draw(k0--k1,blue+linewidth(1.1),Arrow(TeXHead));dot(k0,blue);
+label("$1$",(0.5,0.8),E,red);label("$\sqrt5$",(3.1,1.4),SE,blue);
+label("$2$",(2.5,1.6),W);label("$1$",(3.3,2.5),N);
+label("pawn",(0.5,0),S,red);label("knight",(2.5,0),S,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The ratio is
+\[
+\boxed{1:\sqrt5}\qquad\left(\text{that is, }\dfrac{1}{\sqrt5}=\dfrac{\sqrt5}{5}\approx0.447\right).
+\]

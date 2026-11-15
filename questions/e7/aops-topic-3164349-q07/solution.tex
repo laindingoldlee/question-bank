@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3164349_2021_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3164349-q07
+Sides are inversely proportional to their corresponding altitudes, so write them as $7t,3t,5t$. The area $K$ satisfies $2K=7t\cdot\dfrac{15}{7}=15t$. Heron's formula gives $K^2=t^4\left(\dfrac{15}{2}\right)\left(\dfrac{1}{2}\right)\left(\dfrac{9}{2}\right)\left(\dfrac{5}{2}\right)=\dfrac{675t^4}{16}$. Comparing with $K^2=\dfrac{225t^2}{4}$ yields $t^2=\dfrac{4}{3}$. Consequently $K^2=\boxed{75}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] pts={(0,0),(7,0),(65/14,15*sqrt(3)/14)};string[] names={"$A$","$B$","$C$"};path boundary=pts[0];for(int j=1;j<pts.length;++j)boundary=boundary--pts[j];draw(boundary--cycle);for(int j=0;j<pts.length;++j)label(names[j],pts[j],dir(90+360*j/pts.length));
+\end{asy}

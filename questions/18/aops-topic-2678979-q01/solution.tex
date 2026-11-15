@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2678979_earthquake
+% Stable identity: aops-topic-2678979-q01
+Since the pieces do not attack each other, the knight is not in the rook's row or column, and neither piece blocks the other.
+
+\emph{Rook.} In each of the $4$ directions the rook reaches the $k$-th cell exactly when the first $k$ cells in that direction are intact, which has probability $(1-p)^k$. So the expected number of reachable cells in one direction is
+\[\sum_{k\ge1}(1-p)^k=\dfrac{1-p}{p},\]
+and in total $\dfrac{4(1-p)}{p}$ (by linearity of expectation).
+
+\emph{Knight.} Each of its $8$ target cells is intact with probability $1-p$, so the expectation is $8(1-p)$.
+
+Setting $\dfrac{4(1-p)}{p}=8(1-p)$ and dividing by $1-p\ne0$ gives $p=\boxed{\dfrac12}$.

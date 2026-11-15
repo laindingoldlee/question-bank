@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2793114_2004__midmichigan_mathematical_olympiad___grades_56
+% Stable identity: aops-topic-2793114-q05
+The second player mirrors each move across the main diagonal. Initially the rook has coordinates $(1,1)$. From $(k,k)$ a first-player move reaches $(j,k)$ or $(k,j)$ with $j>k$; the second moves to $(j,j)$. This is legal and preserves the diagonal invariant. The first player cannot reach $(8,8)$ directly from a lower diagonal position because a rook move changes only one coordinate. The second eventually reaches $(8,8)$ and wins.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int k=0;k<=8;++k){draw((k,0)--(k,8),gray);draw((0,k)--(8,k),gray);}draw((.5,.5)--(7.5,7.5),dashed);draw((2.5,2.5)--(5.5,2.5)--(5.5,5.5),blue,Arrows);label("start",(.5,.5),W);label("finish",(7.5,7.5),E);
+\end{asy}

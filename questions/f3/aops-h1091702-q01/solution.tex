@@ -1,0 +1,22 @@
+Completing the squares gives
+\[
+144(x+3)^2-25(y+2)^2=3600,
+\qquad
+\dfrac{(x+3)^2}{25}-\dfrac{(y+2)^2}{144}=1.
+\]
+The center is $(-3,-2)$ and the focal distance is $\sqrt{25+144}=13$. Thus the foci are $(10,-2)$ and $(-16,-2)$, while the conjugate axis is $x=-3$.
+
+For focus $(10,-2)$, equality of squared distances to the focus and directrix gives
+\[
+(x-10)^2+(y+2)^2=(x+3)^2,
+\]
+hence $(y+2)^2=26x-91$. For focus $(-16,-2)$ the same calculation gives $(y+2)^2=-26x-247$. Therefore the two parabolas are
+\[
+\boxed{(y+2)^2=26x-91\quad\text{and}\quad(y+2)^2=-26x-247}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;pair f(real t){return (3.5+t*t/26,t-2);}pair g(real t){return (-9.5-t*t/26,t-2);}draw(graph(f,-12,12),blue);draw(graph(g,-12,12),red);draw((-3,-15)--(-3,11),dashed);dot((10,-2));dot((-16,-2));label("$(10,-2)$",(10,-2),(1,0));label("$(-16,-2)$",(-16,-2),(-1,0));label("$x=-3$",(-3,11),(0,1));
+\end{asy}

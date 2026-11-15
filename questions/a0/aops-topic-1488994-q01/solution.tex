@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1488994_hard_geometry_problems
+% Stable identity: aops-topic-1488994-q01
+The conditions say $AB=AC=DB=DC=1$, so $ABDC$ is a square of side $1$. Use coordinates $A=(0,0)$, $B=(1,0)$, $D=(1,1)$, $C=(0,1)$. Any point inside all four circles lies inside the square (for example, a point with $x<0$ is more than $1$ away from $B$).
+
+The boundary of the common region consists of four arcs. Circles $A$ and $B$ meet at $T=\left(\dfrac{1}{2},\dfrac{\sqrt3}{2}\right)$ (triangle $ABT$ is equilateral), and similarly the four ``corners'' of the region are
+\[
+T=\left(\dfrac{1}{2},\dfrac{\sqrt3}{2}\right),\quad \left(\dfrac{\sqrt3}{2},\dfrac{1}{2}\right),\quad \left(\dfrac{1}{2},1-\dfrac{\sqrt3}{2}\right),\quad \left(1-\dfrac{\sqrt3}{2},\dfrac{1}{2}\right).
+\]
+Between $T$ and $\left(\dfrac{\sqrt3}{2},\dfrac{1}{2}\right)$ the boundary is an arc of circle $A$, from angle $60^\circ$ to $30^\circ$: a $30^\circ$ arc. The other three arcs are the same by symmetry.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(1,0),D=(1,1),C=(0,1);
+path reg=arc(A,1,60,30,CW)&arc(C,1,-30,-60,CW)&arc(D,1,240,210,CW)&arc(B,1,150,120,CW)&cycle;
+fill(reg,palegreen);
+draw(circle(A,1),blue); draw(circle(B,1),blue); draw(circle(C,1),blue); draw(circle(D,1),blue);
+draw(A--B--D--C--cycle,linewidth(0.9));
+pair T=(0.5,sqrt(3)/2),Rv=(sqrt(3)/2,0.5),Bv=(0.5,1-sqrt(3)/2),Lv=(1-sqrt(3)/2,0.5);
+draw(T--Rv--Bv--Lv--cycle,red+dashed);
+draw(A--T,gray); draw(A--Rv,gray);
+dot(A);dot(B);dot(C);dot(D);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NW);label("$D$",D,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Split the region into the square with these four corners (red, dashed) and four circular segments.
+\begin{itemize}
+\item The red square has diagonal $\dfrac{\sqrt3}{2}-\left(1-\dfrac{\sqrt3}{2}\right)=\sqrt3-1$, so its area is $\dfrac{\left(\sqrt3-1\right)^2}{2}=2-\sqrt3$.
+\item Each segment is a $30^\circ$ sector of radius $1$ minus a triangle with two sides $1$ and included angle $30^\circ$: $\dfrac{\pi}{12}-\dfrac{1}{2}\sin30^\circ=\dfrac{\pi}{12}-\dfrac{1}{4}$.
+\end{itemize}
+The area is
+\[
+2-\sqrt3+4\left(\dfrac{\pi}{12}-\dfrac{1}{4}\right)=\boxed{1+\dfrac{\pi}{3}-\sqrt3}\approx0.315 .
+\]

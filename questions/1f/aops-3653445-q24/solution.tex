@@ -1,0 +1,14 @@
+The literal conditions permit two values. Choose coordinates $P=(0,0)$, $R=(4,0)$, $A=(4,5)$, $D=(0,d)$, $S=(0,s)$. The circle through $D,S$ has equation $x^2+y^2+ux-(d+s)y+ds=0$. Substituting $A$ gives $4u=-41+5(d+s)-ds$. Let $C=(c,0)$, so $c^2+uc+ds=0$. Computing the projection $Q$ of $D$ on $AC$ with these identities shows that $PQ$ has slope $\dfrac{5-s}{4}$. Consequently $X=(4,5-s)$ and $AX=|s|$.
+But $AS^2=4^2+(5-s)^2=121$, so $s=5\pm\sqrt{105}$. Thus the possible lengths are $\boxed{\sqrt{105}-5,\ \sqrt{105}+5}$. Both are feasible: for the negative choice take $d=5$; for the positive choice take $d=20$. In each case take $B,C$ as the two horizontal-axis intersections of the displayed circle, in the order making $ABCD$ convex. The resulting intersections are distinct and give nondegenerate convex quadrilaterals. An extra positional condition on $S$ would be needed to select one length.
+
+
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+real s=5-sqrt(105),d=5,u=(-41+5*(d+s)-d*s)/4;real hi=(-u+sqrt(u*u-4*d*s))/2,lo=(-u-sqrt(u*u-4*d*s))/2;pair A=(4,5),B=(hi,0),C=(lo,0),D=(0,d),P=(0,0),R=(4,0),S=(0,s),X=(4,5-s),Q=C+dot(D-C,A-C)/dot(A-C,A-C)*(A-C);draw(A--B--C--D--cycle);draw(A--C^^D--S^^P--X^^R--X,dashed);draw(A--S,blue);draw(P--C^^D--Q^^Q--X,dashed+gray);dot(Q);label("$A$",A,(1,0));label("$B$",B,(0,-1));label("$C$",C,(0,-1));label("$D$",D,(-1,1));label("$P$",P,(-1,-1));label("$R$",R,(0,-1));label("$S$",S,(-1,0));label("$X$",X,(1,0));label("$Q$",Q,(1,1));
+\end{asy}
+
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+real s=5+sqrt(105),d=20,u=(-41+5*(d+s)-d*s)/4;real hi=(-u+sqrt(u*u-4*d*s))/2,lo=(-u-sqrt(u*u-4*d*s))/2;pair A=(4,5),B=(lo,0),C=(hi,0),D=(0,d),P=(0,0),R=(4,0),S=(0,s),X=(4,5-s),Q=C+dot(D-C,A-C)/dot(A-C,A-C)*(A-C);draw(A--B--C--D--cycle);draw(A--C^^D--S^^P--X^^R--X,dashed);draw(A--S,blue);draw(P--C^^D--Q^^Q--X,dashed+gray);dot(Q);label("$A$",A,(1,0));label("$B$",B,(0,-1));label("$C$",C,(0,-1));label("$D$",D,(-1,1));label("$P$",P,(-1,-1));label("$R$",R,(0,-1));label("$S$",S,(-1,0));label("$X$",X,(1,0));label("$Q$",Q,(1,1));
+\end{asy}
+

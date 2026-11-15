@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2532960_students_in_college
+% Stable identity: aops-topic-2532960-q01
+Let $x_i$ be the number of students in department $i$ (indices mod $8$) and $S_i=x_i+x_{i+1}+x_{i+2}$, so $S_1=93$, $S_2=96$, $\dots$, $S_8=94$.
+
+\textbf{Total.} Each $x_i$ appears in exactly three of the sums, so $3T=93+96+96+99+100+99+97+94=774$ and $T=x_1+\cdots+x_8=258$.
+
+\textbf{Differences.} $S_{i+1}-S_i=x_{i+3}-x_i$. Stepping by $3$ visits all eight departments:
+\begin{align*}
+x_4&=x_1+(S_2-S_1)=x_1+3, & x_7&=x_4+(S_5-S_4)=x_1+4, & x_2&=x_7+(S_8-S_7)=x_1+1,\\
+x_5&=x_2+(S_3-S_2)=x_1+1, & x_8&=x_5+(S_6-S_5)=x_1, & x_3&=x_8+(S_1-S_8)=x_1-1,\\
+x_6&=x_3+(S_4-S_3)=x_1+2, &&&&
+\end{align*}
+and the last step $x_1=x_6+(S_7-S_6)=x_1+2-2$ is consistent. Then
+\[T=8x_1+(3+4+1+1+0-1+2)=8x_1+10=258,\qquad x_1=31.\]
+So the departments have
+\[\boxed{31,\ 32,\ 30,\ 34,\ 32,\ 33,\ 35,\ 31}\]
+students respectively. (Check: $31+32+30=93$, $32+30+34=96$, $30+34+32=96$, $34+32+33=99$, $32+33+35=100$, $33+35+31=99$, $35+31+31=97$, $31+31+32=94$.)

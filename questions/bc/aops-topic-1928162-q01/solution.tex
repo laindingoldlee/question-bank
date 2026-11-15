@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1928162_the_fake_coin
+% Stable identity: aops-topic-1928162-q01
+The answer is $\boxed{3}$.
+
+\textbf{Two weighings are not enough.} Each weighing has $3$ outcomes (left heavier, right heavier, balance), so any strategy with at most $2$ weighings produces at most $3^2=9$ different outcome sequences. The coin named at the end depends only on the outcome sequence. If coin $i$ is fake, the strategy must name coin $i$, so the $12$ possible fake coins need $12$ different outcome sequences. Since $9<12$, some two coins give the same sequence and cannot be told apart.
+
+\textbf{Three weighings suffice.} Number the coins $1,\dots,12$.
+
+\emph{Weighing 1:} $\{1,2,3,4\}$ against $\{5,6,7,8\}$.
+
+\emph{Case 1: balance.} Coins $1$--$8$ are genuine and the fake is among $9$--$12$. \emph{Weighing 2:} $\{9,10,11\}$ against the genuine coins $\{1,2,3\}$.
+\begin{itemize}
+\item Balance: the fake is $12$.
+\item Left heavier: the fake is one of $9,10,11$ and is heavy. \emph{Weighing 3:} $9$ against $10$; the heavier one is fake, and if they balance the fake is $11$.
+\item Left lighter: the same, with ``lighter'' in place of ``heavier''.
+\end{itemize}
+
+\emph{Case 2: the left pan $\{1,2,3,4\}$ is heavier.} Coins $9$--$12$ are genuine, and either one of $1,2,3,4$ is heavy or one of $5,6,7,8$ is light. \emph{Weighing 2:} $\{1,2,5\}$ against $\{3,6,9\}$.
+\begin{itemize}
+\item Balance: the fake is $4$ (heavy), $7$ or $8$ (light). \emph{Weighing 3:} $7$ against $8$. The lighter one is fake; if they balance, the fake is $4$.
+\item Left heavier: the fake is $1$ or $2$ (heavy) or $6$ (light); a light $5$ or a heavy $3$ would make the left side lighter. \emph{Weighing 3:} $1$ against $2$. The heavier one is fake; if they balance, the fake is $6$.
+\item Left lighter: the fake is $3$ (heavy) or $5$ (light). \emph{Weighing 3:} $3$ against the genuine coin $9$. If $3$ is heavier it is fake; if they balance, the fake is $5$.
+\end{itemize}
+
+\emph{Case 3: the left pan is lighter.} This is Case 2 with ``heavy'' and ``light'' exchanged; the same weighings work.
+
+In every branch the fake coin is identified after at most $3$ weighings, so the minimum is $3$.

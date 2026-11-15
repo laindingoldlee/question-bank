@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3165919_2019_fall_lmt_individual_round__lexington_mathematical_tournament
+% Stable identity: aops-topic-3165919-q20
+The external point $T$ lies beyond $B$. Put $DC=x$, so $BC=x+2$ and $TB=8-x$, with $0<x<8$. The angle-bisector theorem gives $AB:AC=2:x$. By the tangent--chord theorem and sine rule in $TAB,TAC$, $\dfrac{TB}{TC}=\left(\dfrac{AB}{AC}\right)^2$, so $\dfrac{8-x}{10}=\dfrac{4}{x^2}$. Thus $x^3-8x^2+40=(x+2)(x^2-10x+20)=0$. The valid roots are $x=5\pm\sqrt5$. Power of $T$ yields $AT^2=TB\cdot TC=10(8-x)=(10-x)^2$, using $x^2=10x-20$. Therefore $\boxed{AT=5-\sqrt5\text{ or }5+\sqrt5}$. Both are realizable: choose $AB=3$, $AC=\dfrac{3x}{2}$, and $BC=x+2$ for either root; these satisfy strict triangle inequalities and the required tangent ratio.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real x=5-sqrt(5),a=x+2,c=3,b=1.5*x,ax=(c*c+a*a-b*b)/(2*a),ay=sqrt(c*c-ax*ax);pair Bp=(0,0),C=(a,0),A=(ax,ay),D=(2,0),T=(a-10,0);draw(T--C);draw(A--Bp--C--cycle);draw(A--D,dashed);draw(T--A,blue);label("$T$",T,W);label("$B$",Bp,S);label("$D$",D,S);label("$C$",C,E);label("$A$",A,N);
+\end{asy}

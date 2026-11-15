@@ -1,0 +1,30 @@
+Write $z_1=u+iv,z_2=u-iv$, with $v\ne0$. Squaring the first modulus equation gives $(2u-\dfrac{1}{9})^2+4v^2=4v^2$, so $u=\dfrac{1}{18}$. Hence $v^2=\dfrac{1}{k}-\dfrac{1}{324}>0$, requiring $1\le k<324$.
+
+The roots of the reversed quadratic are the reciprocals of the original roots, so
+\[
+\operatorname{Re}w=\dfrac{k}{18},\qquad
+(\operatorname{Im}w)^2=k-\dfrac{k^2}{324}.
+\]
+Every allowed $z_3$ has real part $\dfrac{k}{18}$ and integer imaginary part $j$. The modulus bound becomes
+\[
+j^2\le k-\dfrac{k^2}{324}.
+\]
+There are exactly nine such integers $j$ precisely when
+\[
+16\le k-\dfrac{k^2}{324}<25,
+\]
+or
+\[
+18144<(k-162)^2\le21060.
+\]
+Since $134^2<18144<135^2$ and $145^2<21060<146^2$, this is $135\le|k-162|\le145$. Thus
+\[
+k=17,\ldots,27\quad\text{or}\quad k=297,\ldots,307,
+\]
+giving $\boxed{22}$ values. Each is realizable, for example by $z^2-\dfrac{1}{9}z+\dfrac{1}{k}=0$, whose roots are nonreal and satisfy the original conditions.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real k=20,x=k/18,y=sqrt(k-k*k/324);draw(circle((0,0),sqrt(k)),gray);draw((x,-4.8)--(x,4.8),blue);for(int j=-4;j<=4;++j)dot((x,j));pair w=(x,y);dot(w,red);label("$w$",w,NE);label("$\operatorname{Re}z=\dfrac{k}{18}$",(x,-4.8),(1,-1));label("Nine integer heights",(0,-6.8));draw((-4.8,0)--(4.8,0),dashed);
+\end{asy}

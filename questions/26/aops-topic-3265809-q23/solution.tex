@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3265809_six_years
+% Stable identity: aops-topic-3265809-q23
+The orbit counts under the eight symmetries of a square are $2,1,4,8,8,4,4$ for $I,O,T,L,J,S,Z$ respectively. The straight piece has two orientations and the square one; the T has four; L and J each have four rotations of each handedness, giving eight; S and Z each have two rotations of each handedness, giving four. Averaging over the seven equally likely initial types gives
+\[\boxed{\dfrac{2+1+4+8+8+4+4}{7}=\dfrac{31}{7}}.\]
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[][] shapes={{(0,0),(1,0),(2,0),(3,0)},{(0,0),(1,0),(0,1),(1,1)},{(0,0),(1,0),(2,0),(1,1)},{(0,0),(0,1),(0,2),(1,0)},{(1,0),(1,1),(1,2),(0,0)},{(0,0),(1,0),(1,1),(2,1)},{(0,1),(1,1),(1,0),(2,0)}};string[] names={"I","O","T","L","J","S","Z"};for(int i=0;i<7;++i){pair off=(5*(i%4),-5*quotient(i,4));for(pair p:shapes[i])filldraw(p+off--p+off+(1,0)--p+off+(1,1)--p+off+(0,1)--cycle,lightblue);label(names[i],off+(1,-0.7));}
+\end{asy}

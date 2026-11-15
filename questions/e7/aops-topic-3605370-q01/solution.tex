@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h3605370_geo_problem
+% Stable identity: aops-topic-3605370-q01
+Drop perpendiculars $AE$ and $BF$ to $CD$. Since the two lower angles are acute, $D,E,F,C$ occur in that order. Let $h=AE=8\sin65^\circ$. Then $DE=8\cos65^\circ$, $FC=h\cot72^\circ$ and $BC=\dfrac{h}{\sin72^\circ}$. Thus $CD=11+8\cos65^\circ+h\cot72^\circ$. Consequently the perimeter is $\boxed{30+8\cos65^\circ+8\sin65^\circ\cot72^\circ+\dfrac{8\sin65^\circ}{\sin72^\circ}}$, and the area is $\boxed{4\sin65^\circ(22+8\cos65^\circ+8\sin65^\circ\cot72^\circ)}$. These formulas use degrees throughout.
+\begin{asy}
+size(7cm);
+real h=8*sin(65*pi/180),u=8*cos(65*pi/180),v=h/tan(72*pi/180);pair D=(0,0),A=(u,h),B=A+(11,0),C=(u+11+v,0),E=(u,0),F=(u+11,0);draw(A--B--C--D--cycle);draw(A--E,dashed);draw(B--F,dashed);label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);label("$E$",E,S);label("$F$",F,S);label("$8$",(A+D)/2,NW);label("$11$",(A+B)/2,N);label("$65^\circ$",D+(.8,.4),NE);label("$72^\circ$",C+(-.9,.35),NW);label("$h$",(A+E)/2,E);
+\end{asy}

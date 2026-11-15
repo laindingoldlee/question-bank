@@ -1,0 +1,41 @@
+% Source: https://artofproblemsolving.com/community/c3h1717412_junior_regional_olympiad__fbh_2014_grade_7_problem_3
+% Stable identity: aops-topic-1717412-q01
+\textbf{(a)} Through $C$ draw the line parallel to $BD$; it meets line $AB$ at $K$. Since $DC\parallel BK$ and $CK\parallel DB$, the quadrilateral $DBKC$ is a parallelogram, so $BK=DC=c$ and $CK=DB=n$. Because $\overrightarrow{AB}$ and $\overrightarrow{DC}$ point the same way, $K$ lies on ray $AB$ beyond $B$ and $AK=a+c$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+void ra(pair P,pair Q,pair R,real s){pair u=unit(Q-P),v=unit(R-P);draw(P+s*u--P+s*u+s*v--P+s*v,linewidth(0.5));}
+transform t=rotate(degrees((4,3)));
+pair O=t*(0,0),A=t*(-4,0),C=t*(2,0),B=t*(0,-3),D=t*(0,1.5);
+pair K=C+(B-D);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,linewidth(0.7));draw(B--D,linewidth(0.7));
+draw(B--K,dashed);draw(C--K,dashed+blue);
+ra(O,C,D,0.22);ra(C,A,K,0.22);
+dot(O);dot(K);
+label("$A$",A,SW);label("$B$",B,S);label("$C$",C,NE);label("$D$",D,NW);label("$O$",O,dir(-10)*1.6);label("$K$",K,SE);
+label("$a$",(A+B)/2,S);label("$c$",(D+C)/2,N);label("$c$",(B+K)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In triangle $ACK$,
+\[
+AC^2+CK^2=m^2+n^2=(a+c)^2=AK^2,
+\]
+so by the converse of Pythagoras' theorem $\angle ACK=90^\circ$. As $CK\parallel BD$, also $AC\perp BD$. $\blacksquare$
+
+\textbf{(b)} Let the diagonals meet at $O$. Since $AB\parallel CD$, triangles $OAB$ and $OCD$ are similar with ratio $a:c$, so there are $s,t>0$ with
+\[
+OA=at,\quad OC=ct,\quad OB=as,\quad OD=cs .
+\]
+By (a) the angles at $O$ are right angles. Pythagoras' theorem in the four right triangles around $O$ gives
+\[
+a^2=a^2(t^2+s^2),\qquad b^2=a^2s^2+c^2t^2,\qquad d^2=a^2t^2+c^2s^2 ,
+\]
+so $t^2+s^2=1$. Then
+\[
+b^2d^2-a^2c^2=(a^2s^2+c^2t^2)(a^2t^2+c^2s^2)-a^2c^2(s^2+t^2)^2=s^2t^2\left(a^4+c^4-2a^2c^2\right)=s^2t^2(a^2-c^2)^2 .
+\]
+Since $a\ne c$ (the bases of a trapezoid that is not a parallelogram are unequal), this is positive, so $b^2d^2>a^2c^2$ and $bd>ac$. $\blacksquare$

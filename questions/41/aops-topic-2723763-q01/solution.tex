@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2723763_60_degree_angles_problem
+% Stable identity: aops-topic-2723763-q01
+$QB$ bisects $\angle AQC=120^\circ$, so by the angle bisector theorem $\dfrac{QA}{QC}=\dfrac{AB}{BC}=\dfrac12$. Let $QA=t$, $QC=2t$. By the law of cosines,
+\[9=t^2+4t^2-2\cdot t\cdot2t\cos120^\circ=7t^2,\qquad t^2=\dfrac97.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real t=sqrt(9/7);pair Q=(0,0),A=t*dir(210),C=2t*dir(330);pair B=A+(C-A)/3;
+draw(A--C--Q--cycle,linewidth(0.8));draw(Q--B);
+label("$Q$",Q,N);label("$A$",A,W);label("$C$",C,E);label("$B$",B,S);
+label("$60^\circ$",Q+0.45*dir(240),fontsize(7pt));label("$60^\circ$",Q+0.5*dir(300),fontsize(7pt));
+\end{asy}
+
+The area is $\dfrac12\cdot t\cdot2t\sin120^\circ=t^2\cdot\dfrac{\sqrt3}{2}=\boxed{\dfrac{9\sqrt3}{14}}$.

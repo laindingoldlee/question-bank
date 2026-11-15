@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2784841_what__humungous_square_with_unknown_digits
+% Stable identity: aops-topic-2784841-q01
+Let $m=\overline{35811ab1}$, so the number is $N=10^{14}+m$ and $N^2=10^{28}+2m\cdot10^{14}+m^2$ with $m^2<10^{16}$.
+
+\textbf{Finding $a,b$.} $N^2\equiv m^2$ modulo $10^{14}$, so we match the last digits of $\overline{\dots ab1}^{\,2}$ with $\dots5361$.
+\begin{itemize}
+\item Mod $100$: $(10b+1)^2\equiv20b+1\equiv61$, so $20b\equiv60\pmod{100}$ and $b\in\{3,8\}$.
+\item Mod $1000$: $(100a+10b+1)^2\equiv200a+100b^2+20b+1\equiv361$. For $b=3$ this gives $200a\equiv400\pmod{1000}$, so $a\in\{2,7\}$; for $b=8$ it gives $200a\equiv800$, so $a\in\{4,9\}$.
+\item Mod $10^4$: the last four digits of $N$ are $\overline{1ab1}\in\{1231,1731,1481,1981\}$, whose squares end in $5361$, $6361$, $3361$, $4361$ respectively.
+\end{itemize}
+So $a=2$ and $b=3$.
+
+\textbf{Finding $c,d,e$.} Now $m=35811231$, $2m=71622462$ and $m^2=1282444265735361$. Hence
+\[N^2=10^{28}+71622462\cdot10^{14}+1282444265735361=10000007162247482444265735361,\]
+so $c=7$, $d=1$, $e=6$, and $a+b+c-d-e=2+3+7-1-6=\boxed{5}$.

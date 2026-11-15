@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2207601_amgm_inequality
+% Stable identity: aops-topic-2207601-q01
+Let the sides be $a,b,c$ with $a+b+c=2s$, and let $K$ be the area.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(6,0), C=(2,3.5);
+draw(A--B--C--cycle,linewidth(0.9));
+pair Ae=(0.5,4.8), Be=(5.5,4.8);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N);
+label("$c$",(A+B)/2,S); label("$a$",(B+C)/2,NE); label("$b$",(A+C)/2,NW);
+label("$a+b+c=2s$ fixed",(3,-0.9));
+\end{asy}
+
+By Heron's formula, $K^2=s(s-a)(s-b)(s-c)$, where $s-a$, $s-b$, $s-c$ are positive (triangle inequality) and
+\[(s-a)+(s-b)+(s-c)=3s-2s=s.\]
+By the AM-GM inequality for these three positive numbers,
+\[(s-a)(s-b)(s-c)\le\left(\dfrac{(s-a)+(s-b)+(s-c)}{3}\right)^3=\dfrac{s^3}{27}.\]
+Hence $K^2\le\dfrac{s^4}{27}$, i.e.
+\[K\le\dfrac{s^2}{3\sqrt3}=\boxed{\dfrac{\sqrt3\,s^2}{9}},\]
+with equality exactly when $s-a=s-b=s-c$, that is, $a=b=c=\dfrac{2s}{3}$. So among triangles with perimeter $2s$, the equilateral one has the largest area. (Check: an equilateral triangle of side $\dfrac{2s}{3}$ has area $\dfrac{\sqrt3}{4}\cdot\dfrac{4s^2}{9}=\dfrac{\sqrt3\,s^2}{9}$.) $\blacksquare$

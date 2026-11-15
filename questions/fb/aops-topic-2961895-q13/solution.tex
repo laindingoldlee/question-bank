@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2961895_2022_wmc_10_early_problems_discussion
+% Stable identity: aops-topic-2961895-q13
+$[ABD]=2[ABC]=120$. In triangle $ABD$, $AC$ and $BM$ are medians ($C$ is the midpoint of $BD$), so $N$ is the centroid.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(4,0),D=(8,0),A=(1.5,4);pair M=(A+D)/2;pair N=extension(A,C,B,M);
+fill(A--M--N--cycle,gray(0.8));draw(A--B--D--cycle);draw(A--C);draw(B--M);dot(N);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,S);label("$D$",D,SE);label("$M$",M,NE);label("$N$",N,W);
+\end{asy}
+
+The three medians cut a triangle into six triangles of equal area, and $AMN$ is one of them (between vertex $A$, the midpoint $M$ of $AD$, and the centroid). So $[AMN]=\dfrac{120}6=20$. \textbf{(D)}

@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h1580026_squares_from_more_squares
+% Stable identity: aops-topic-1580026-q01
+\textbf{Key dissection.} Two squares of sides $a\ge b$ can be cut into pieces that form one square of side $\sqrt{a^2+b^2}$, using two straight cuts.
+
+Place the squares side by side on a line: the big one with corners $(0,0)$, $(a,0)$, $(a,a)$, $(0,a)$ and the small one with corners $(a,0)$, $(a+b,0)$, $(a+b,b)$, $(a,b)$. Mark $P=(b,0)$ on the bottom edge and cut along $PU$ and $PQ$, where $U=(0,a)$ and $Q=(a+b,b)$. This cuts off two right triangles:
+\begin{itemize}
+\item the red triangle with vertices $(0,0)$, $P$, $U$ and legs $b$, $a$;
+\item the blue triangle with vertices $P$, $(a+b,0)$, $Q$ and legs $a$, $b$.
+\end{itemize}
+The vectors $\overrightarrow{PU}=(-b,a)$ and $\overrightarrow{PQ}=(a,b)$ are perpendicular and both have length $\sqrt{a^2+b^2}$. Turn the red triangle $90^\circ$ about $U$ so that it fills the corner at $R=(a,a+b)$ above the big square, and turn the blue triangle $90^\circ$ about $Q$ so that it fills the corner at $R$ to the right of the big square. The pieces then exactly fill the square $PQRU$ of side $\sqrt{a^2+b^2}$ (the areas agree: $a^2+b^2$).
+
+\begin{asy}
+usepackage("amsmath");
+size(10cm);
+defaultpen(fontsize(10pt));
+real a=3,bb=2;
+pair O=(0,0);
+pair P=(bb,0),Q=(a+bb,bb),R=(a,a+bb),U=(0,a);
+fill((0,0)--P--U--cycle,rgb(1,0.85,0.85));
+fill(P--(a+bb,0)--Q--cycle,rgb(0.85,0.9,1));
+draw((0,0)--(a,0)--(a,a)--(0,a)--cycle,linewidth(0.9));
+draw((a,0)--(a+bb,0)--(a+bb,bb)--(a,bb),linewidth(0.9));
+draw(P--U^^P--Q,red+dashed);
+label("$a$",(0,a/2),W);label("$b$",(a+bb,bb/2),E);
+label("$b$",(bb/2,0),S);label("$a$",(bb+a/2,0),S);
+dot(P);label("$P$",P,S);
+draw((6.2,1.6)--(7.6,1.6),Arrow(TeXHead));
+pair sh=(9.5,0);
+pair P2=P+sh,Q2=Q+sh,R2=R+sh,U2=U+sh;
+fill(U2--(a,a)+sh--R2--cycle,rgb(1,0.85,0.85));
+fill(Q2--(a,bb)+sh--R2--cycle,rgb(0.85,0.9,1));
+draw(P2--Q2--R2--U2--cycle,linewidth(0.9));
+draw(U2--(a,a)+sh--(a,bb)+sh--Q2,gray);
+label("$\sqrt{a^2+b^2}$",(P2+Q2)/2,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+
+\textbf{Induction on $n$.} For $n=1$ use one unit square. Suppose a square of area $n$ has been formed from $n$ unit squares. Apply the key dissection to it (side $a=\sqrt n\ge1$) and one more unit square ($b=1$): the result is a square of side $\sqrt{n+1}$, i.e.\ of area $n+1$, made from $n+1$ unit squares with straight cuts. Hence every positive integer area is possible. $\blacksquare$

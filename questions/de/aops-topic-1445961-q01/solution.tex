@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1445961_mathcounts_school_competition_countdown_round_level_problem
+% Stable identity: aops-topic-1445961-q01
+The area of a rectangle is length times width. The picture can be divided into $3$ rows of $4$ unit squares (each $1$ cm by $1$ cm):
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(4,0)--(4,3)--(0,3)--cycle,linewidth(1));
+for(int i=1;i<4;++i) draw((i,0)--(i,3),gray+dashed);
+for(int j=1;j<3;++j) draw((0,j)--(4,j),gray+dashed);
+label("$4$ cm",(2,0),S); label("$3$ cm",(0,1.5),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+so its area is $4\cdot3=\boxed{12}$ square centimetres.

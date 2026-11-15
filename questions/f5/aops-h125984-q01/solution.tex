@@ -1,0 +1,17 @@
+Let $x_1<\cdots<x_{10}$ be a ten-element subset without the triangle property. Then necessarily
+\[
+x_{i+2}\ge x_i+x_{i+1}\qquad(1\le i\le8),
+\]
+or the corresponding consecutive triple would form a triangle. Conversely these inequalities rule out every triple, because the two largest entries before $x_j$ have sum at most $x_j$.
+
+The smallest possible first entries are $4,5$. The recurrence therefore gives successive lower bounds
+\[
+4,\ 5,\ 9,\ 14,\ 23,\ 37,\ 60,\ 97,\ 157,\ 254.
+\]
+Thus no triangle-free ten-element subset fits below $254$, while this displayed sequence itself is one at $n=254$. Therefore the largest desired value is $\boxed{253}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(6,0),C=(9/4,sqrt(175)/4);draw(A--B--C--cycle);label("$4$",A--C,NW);label("$5$",B--C,NE);label("$6$",A--B,S);draw((9,0)--(18,0));dot((9,0));dot((13,0));dot((18,0));label("$4$",(11,0),N);label("$5$",(15.5,0),N);label("4 + 5 = 9: degenerate",(13.5,-.5));
+\end{asy}

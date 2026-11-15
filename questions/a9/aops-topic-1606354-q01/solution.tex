@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1606354_a_question_needs_help
+% Stable identity: aops-topic-1606354-q01
+Write the number as $N=10a+8$, where $a$ has $k$ digits ($a\ge10^{k-1}$, the original number has $k+1$ digits). Moving the $8$ to the front gives $8\cdot10^k+a$, so the condition is
+\[
+8\cdot10^k+a=2(10a+8)\iff19a=8\cdot10^k-16=8\left(10^k-2\right).
+\]
+Since $\gcd(19,8)=1$, we need $10^k\equiv2\pmod{19}$. The powers of $10$ modulo $19$ are
+\[
+10,\ 5,\ 12,\ 6,\ 3,\ 11,\ 15,\ 17,\ 18,\ 9,\ 14,\ 7,\ 13,\ 16,\ 8,\ 4,\ 2,\ \dots
+\]
+for $k=1,2,\dots,17$, so the least $k$ is $17$. Then
+\[
+a=\dfrac{8\left(10^{17}-2\right)}{19}=42\,105\,263\,157\,894\,736,
+\]
+which indeed has $17$ digits, and
+\[
+N=\boxed{421\,052\,631\,578\,947\,368}.
+\]
+Check: $2N=842\,105\,263\,157\,894\,736$, which is $N$ with its last digit $8$ moved to the front. (Larger solutions are obtained by repeating the $18$-digit block, since $10^k\equiv2\pmod{19}$ exactly when $k\equiv17\pmod{18}$.)

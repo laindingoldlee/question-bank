@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2512150_1000_upvotes_received_celebration
+% Stable identity: aops-topic-2512150-q15
+Write $f^j$ for $f$ applied $j$ times. For $m\ge2$ we have $f(m)\ge2$, with $f(m)=2$ exactly when $m$ is prime. So for $n\ge2$ all iterates are at least $2$, and $f^5(n)\ne2$ exactly when $f^4(n)$ is \emph{composite}.
+
+Let $B_j$ be the set of $n\ge2$ with $f^j(n)$ composite. Then $B_0$ is the set of composite numbers, with least element $4$, and for $j\ge1$, $n\in B_j$ exactly when $f(n)\in B_{j-1}$. Let $D(k)$ be the least positive integer with at least $k$ divisors. If $n\in B_j$, then $f(n)\ge\min B_{j-1}$, so $n\ge D\left(\min B_{j-1}\right)$. We use
+\[D(4)=6,\qquad D(6)=12,\qquad D(12)=60,\qquad D(60)=5040,\]
+justified below. Then:
+\begin{itemize}
+\item $\min B_1=6$: $n\ge D(4)=6$, and $f(6)=4$ is composite.
+\item $\min B_2=12$: $n\ge D(6)=12$, and $f(12)=6\in B_1$.
+\item $\min B_3=60$: $n\ge D(12)=60$, and $f(60)=12\in B_2$.
+\item $\min B_4=5040$: $n\ge D(60)=5040$, and $f(5040)=60\in B_3$.
+\end{itemize}
+Indeed $f(5040)=60$, $f(60)=12$, $f(12)=6$, $f(6)=4$, $f(4)=3\ne2$. The answer is $\boxed{5040}$.
+
+\textbf{The values of $D$.} The numbers $2,\dots,5$ have at most $3$ divisors and $f(6)=4$; the numbers below $12$ have at most $4$ divisors and $f(12)=6$. For the other two, note that moving the exponents of $n$ onto the smallest primes, in non-increasing order, does not increase $n$ and keeps the number of divisors. So it suffices to consider $n=2^a3^b5^c7^d\cdots$ with $a\ge b\ge c\ge d\ge\cdots$.
+\begin{itemize}
+\item $D(12)=60$: suppose $f(n)\ge12$. With four or more primes, $n\ge2\cdot3\cdot5\cdot7=210$. With exactly three primes, $2\cdot2\cdot2=8<12$ forces $a\ge2$, so $n\ge4\cdot3\cdot5=60$. With at most two primes, $(a+1)(b+1)\ge12$ and $a\ge b$ give $n\ge\min\left(2^{11},\ 2^5\cdot3,\ 2^3\cdot3^2,\ 2^3\cdot3^3\right)=72$ (for $b=0,1,2$ and $b\ge3$). And $f(60)=12$.
+\item $D(60)=5040$, where $5040=2^4\cdot3^2\cdot5\cdot7$ has $5\cdot3\cdot2\cdot2=60$ divisors. Suppose $f(n)\ge60$.
+\begin{itemize}
+\item Six or more primes: $n\ge2\cdot3\cdot5\cdot7\cdot11\cdot13=30030$.
+\item Exactly five primes: if $b=1$, then $f(n)=16(a+1)\ge60$ gives $a\ge3$ and $n\ge8\cdot3\cdot5\cdot7\cdot11=9240$; if $b\ge2$, then $a\ge2$ and $n\ge4\cdot9\cdot5\cdot7\cdot11=13860$.
+\item Exactly four primes: if $c\ge2$ then $n\ge4\cdot9\cdot25\cdot7=6300$. If $c=d=1$, then $(a+1)(b+1)\ge15$: $b=1$ needs $a\ge7$ ($n\ge13440$), $b=2$ needs $a\ge4$ ($n\ge5040$), and $b\ge3$ gives $n\ge8\cdot27\cdot35=7560$.
+\item Exactly three primes: if $c\ge2$, then $(a+1)(b+1)(c+1)\ge60$ gives $n\ge\min(2^6\cdot9\cdot25,\ 2^4\cdot27\cdot25,\ 2^4\cdot81\cdot25,\ 8\cdot27\cdot125)=10800$. If $c=1$, then $(a+1)(b+1)\ge30$ gives $n\ge\min(2^{14}\cdot15,\ 2^9\cdot45,\ 2^7\cdot135,\ 2^5\cdot405,\ 2^5\cdot1215)=12960$.
+\item At most two primes: $n=2^a3^b\ge2^{a+b}$, and by AM-GM $\dfrac{(a+1)+(b+1)}{2}\ge\sqrt{(a+1)(b+1)}\ge\sqrt{60}>7.7$, so $a+b\ge14$ and $n\ge2^{14}>5040$.
+\end{itemize}
+So $f(n)\ge60$ implies $n\ge5040$.
+\end{itemize}

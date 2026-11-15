@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3096514_cyclic_quadrilaterals_the_hard_way
+% Stable identity: aops-topic-3096514-q01
+Let $O$ be the midpoint of $BD$. In each right triangle with hypotenuse $BD$, this midpoint is equidistant from all three vertices; this follows immediately by placing the legs on coordinate axes. Hence $OA=OB=OC=OD$. To derive the angle rule, join the circle centre to a chord’s endpoints and to a vertex on the circle. The resulting triangles with two radii are isosceles. Each base angle is half of 180 degrees minus its central angle; adding or subtracting the base angles shows that the vertex angle is half the opposite arc’s angular measure. Thus vertices on the same side of a chord see equal angles. Vertices $A,D$ are on the same side of chord $BC$, proving the first equality. Vertices $C,D$ are on the same side of chord $AB$, proving the second.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair B=(-1,0),D=(1,0),A=dir(110),C=dir(280),O=(0,0);draw(unitcircle);draw(A--B--C--D--cycle);draw(B--D^^A--C,dashed);draw(O--A^^O--C,gray);label("$A$",A,N);label("$B$",B,W);label("$C$",C,S);label("$D$",D,E);label("$O$",O,SW);
+\end{asy}

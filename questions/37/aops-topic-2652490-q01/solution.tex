@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2652490_franzliszts_lemma
+% Stable identity: aops-topic-2652490-q01
+Triangles $BTC$ and $BAC$ have the same base $BC$, so the ratio of their areas is the ratio of their heights $TT_1$ and $AA_1$, where $T_1$ and $A_1$ are the feet of the perpendiculars from $T$ and $A$ to line $BC$.
+
+If $AD\perp BC$ then $A_1=T_1=D$ and the heights are $TD$ and $AD$. Otherwise $TT_1\parallel AA_1$, and triangles $DTT_1$ and $DAA_1$ are similar (they share the angle at $D$ and have right angles at $T_1$ and $A_1$). Hence
+\[\dfrac{[BTC]}{[ABC]}=\dfrac{TT_1}{AA_1}=\dfrac{TD}{AD}.\qquad\blacksquare\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(6,0),A=(1.4,3.6),D=(3.8,0);pair T=A+0.6*(D-A);
+pair A1=(A.x,0),T1=(T.x,0);
+fill(B--T--C--cycle,lightgray);draw(A--B--C--cycle,linewidth(0.8));draw(A--D);draw(B--T--C);
+draw(A--A1,dashed);draw(T--T1,dashed);
+draw(A1+(0.2,0)--A1+(0.2,0.2)--A1+(0,0.2));draw(T1+(0.2,0)--T1+(0.2,0.2)--T1+(0,0.2));
+dot(T);dot(D);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$T$",T,E);label("$A_1$",A1,S);label("$T_1$",T1,S);
+\end{asy}

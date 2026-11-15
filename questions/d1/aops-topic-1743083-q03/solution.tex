@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1743083_more_difficult_problems_of_the_2018_amc_8
+% Stable identity: aops-topic-1743083-q03
+Let $O$ be the centre of the cube. The half-turn (point reflection) about $O$ maps the cube to itself and swaps opposite vertices and opposite edges: $E\leftrightarrow C$, and edge $FB\leftrightarrow$ edge $HD$ with their midpoints $J\leftrightarrow I$. So it maps the plane $EJCI$ to itself. (The plane does pass through $O$, the midpoint of $EC$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real a=4; pair k=(0.42,0.55);
+pair A=(0,0),B=(a,0),C=(a,0)+a*k,D=a*k;
+pair Ep=A+(0,a),F=B+(0,a),G=C+(0,a),H=D+(0,a);
+pair J=(F+B)/2,I=(H+D)/2;
+fill(Ep--J--C--I--cycle,lightgray+opacity(0.6));
+draw(A--B--F--Ep--cycle,linewidth(0.9));draw(Ep--H--G--F,linewidth(0.9));draw(B--C--G,linewidth(0.9));
+draw(A--D,dashed+gray);draw(D--C,dashed+gray);draw(D--H,dashed+gray);
+draw(Ep--J--C,blue+linewidth(0.9));draw(C--I--Ep,blue+dashed);
+dot(J);dot(I);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,E);label("$D$",D,dir(160));
+label("$E$",Ep,W);label("$F$",F,dir(-10));label("$G$",G,NE);label("$H$",H,NW);
+label("$J$",J,dir(-50));label("$I$",I,1.5*dir(35));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The half-turn also swaps the two sides of this plane: for example $G$, on the same side as $F$ and $H$, goes to $A$ on the other side. Hence the two pieces are congruent, and the piece $EFGHICJ$ has $\boxed{\dfrac{1}{2}}$ of the cube's volume. (Its cross-section $EJCI$ is a rhombus.)

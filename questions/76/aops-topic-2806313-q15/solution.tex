@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2806313_2019_emic_individual_round_primary
+% Stable identity: aops-topic-2806313-q15
+Let $c_1,c_2,c_3,c_4$ be the carries out of the units, tens, hundreds and thousands columns. The columns give
+\[2C=S+10c_1,\quad 2M+c_1=H+10c_2,\quad 2I+c_2=T+10c_3,\quad 2A+c_3=A+10c_4,\quad 2S+c_4=M.\]
+The thousands column gives $A+c_3=10c_4$, so $(A,c_3,c_4)=(0,0,0)$ or $(9,1,1)$. $S$ is even and nonzero with $2S+c_4\le9$, so $S\in\{2,4\}$.
+
+$A=0$, $S=2$: $M=4$, and $C=1$ ($c_1=0$) or $C=6$ ($c_1=1$), giving $H=8$ or $9$ with $c_2=0$, and $T=2I$ with $I\le4$. For $C=1$ only $I=3$, $T=6$ uses new digits ($20341+20341=40682$). For $C=6$ there is none.
+
+$A=0$, $S=4$: $M=8$; $C=7$ would give $H=7=C$, so $C=2$, $H=6$, $c_2=1$, $T=2I+1$ with $I\le4$: $I=1,T=3$ or $I=3,T=7$.
+
+$A=9$, $S=2$: $M=5$, $c_2=1$, $H=c_1$, $T=2I+1-10$ with $I\ge5$. $C=1$, $H=0$: $I=6,T=3$ or $I=8,T=7$. $C=6$, $H=1$: $I=8,T=7$.
+
+$A=9$, $S=4$: $M=9=A$, impossible.
+
+The possible values of $T$ are $3,6,7$, with sum $\boxed{16}$ (confirmed by exhaustive search).

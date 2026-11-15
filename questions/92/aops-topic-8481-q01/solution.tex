@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h8481_math_counts_problem_hilbert_1
+% Stable identity: aops-topic-8481-q01
+Let the two sides perpendicular to the river have length $x$ feet, where $0<x<500$. The side parallel to the river uses the rest of the fence, $1000-2x$ feet.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real x=250,L=500;
+fill((0,0)--(L,0)--(L,x)--(0,x)--cycle,palegreen);
+draw((-80,x)--(L+80,x),blue+linewidth(1.6));
+label("river",(L/2,x),N,blue);
+draw((0,x)--(0,0)--(L,0)--(L,x),linewidth(1.1));
+label("$x$",(0,x/2),W);label("$x$",(L,x/2),E);label("$1000-2x$",(L/2,0),S);
+label("area $x(1000-2x)$",(L/2,x/2));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The area is
+\[
+A(x)=x(1000-2x)=1000x-2x^2=125000-2(x-250)^2 .
+\]
+(The figure shows the best plot, $x=250$.) Since $2(x-250)^2\ge0$, we get $A(x)\le125000$ for every $x$, with equality exactly when $x=250$, which gives a $250$ by $500$ plot. So the maximum area is
+\[
+\boxed{125000\text{ square feet}}.
+\]
+(Remark: if the region need not be a rectangle, the best shape is a semicircle with its diameter on the river, of area $\dfrac{1000^2}{2\pi}\approx159155$ square feet; the problem intends a rectangular plot.)

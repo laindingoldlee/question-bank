@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2786837_2017_mbmt_guts_round_r1630_p610p2630__montgomery_blair_math_tournament
+% Stable identity: aops-topic-2786837-q18
+The inscribed angles $\angle DBC$ and $\angle DAC$ stand on the same arc $DC$, so $\angle DBC=\angle DAC=40^\circ$.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=dir(190),B=dir(90),C=dir(350),D=dir(270);
+void mk(pair V,pair P,pair Q,real r){real a1=degrees(P-V),a2=degrees(Q-V);real d=a2-a1;while(d<0) d+=360;while(d>=360) d-=360;if(d<=180) draw(arc(V,r,a1,a1+d)); else draw(arc(V,r,a2,a2+360-d));}
+draw(unitcircle,gray);draw(A--B--C--D--cycle);draw(A--C);draw(B--D);
+mk(B,A,D,0.22);mk(A,D,C,0.22);mk(B,D,C,0.3);
+label("$A$",A,W);label("$B$",B,N);label("$C$",C,E);label("$D$",D,S);
+label("$40^\circ$",B+0.42*dir(242),fontsize(8pt));label("$40^\circ$",A+0.42*dir(-28),fontsize(8pt));label("$40^\circ$",B+0.45*dir(290),fontsize(8pt));
+\end{asy}
+
+Then $\angle ABC=\angle ABD+\angle DBC=80^\circ$, and since opposite angles of a cyclic quadrilateral are supplementary, $\angle ADC=180^\circ-80^\circ=\boxed{100^\circ}$.

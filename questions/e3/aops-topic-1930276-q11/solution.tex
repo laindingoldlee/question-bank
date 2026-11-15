@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1930276_help_needed_in_problems_of_varied_topics
+% Stable identity: aops-topic-1930276-q11
+Let the triangle be $T=KLM$, and let $\rho$ be the point reflection (half-turn) about $A$, which sends every point $Z$ to $2A-Z$; it is constructed by extending $ZA$ beyond $A$ by its own length.
+
+\textbf{Construction.} Construct $K'=\rho(K)$, $L'=\rho(L)$, $M'=\rho(M)$, and draw triangle $T'=K'L'M'=\rho(T)$. Let $X$ be a point where a side of $T'$ crosses a side of $T$. Draw line $XA$; it meets the perimeter of $T$ again at $Y$. Then $XY$ is the required segment.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair K=(0,0), L=(8,0), M=(2,6), A=(3.2,2.2);
+pair K2=2A-K, L2=2A-L, M2=2A-M;
+pair X=(5.7,2.3), Y=2A-X;
+draw(K2--L2--M2--cycle,gray+dashed);
+draw(K--L--M--cycle,linewidth(1));
+draw(X--Y,red+linewidth(1));
+dot(A);dot(X);dot(Y);
+label("$K$",K,SW); label("$L$",L,SE); label("$M$",M,N);
+label("$K'$",K2,NE,gray); label("$L'$",L2,NW,gray); label("$M'$",M2,S,gray);
+label("$A$",A,S); label("$X$",X,E); label("$Y$",Y,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Such a point $X$ exists.} The triangles $T$ and $T'$ are congruent, so they have equal areas, and $A$ lies inside both. If their boundaries did not meet, the boundary of $T'$ (a connected closed curve) would lie entirely inside $T$ or entirely outside $T$. In the first case $T'\subseteq T$; in the second, $T$ (which is connected, contains $A$ and misses the boundary of $T'$) lies inside $T'$. Either way one triangle contains the other, and equal areas force $T=T'$, in which case every boundary point of $T$ is on the boundary of $T'$. So a common boundary point $X$ exists.
+
+\textbf{Correctness.} Since $X$ lies on the boundary of $T'=\rho(T)$, the point $Y=\rho(X)=2A-X$ lies on the boundary of $T$. Also $X\ne A$ (as $A$ is inside $T$), so $X\ne Y$, and $A=\dfrac{X+Y}{2}$ is the midpoint of $XY$, which lies on line $XA$. Both endpoints are on the perimeter of the triangle. $\blacksquare$
+
+(In the figure the dashed triangle is $T'$; here three such segments exist, and one of them, $XY$, is drawn.)

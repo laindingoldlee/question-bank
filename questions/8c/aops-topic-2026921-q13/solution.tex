@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2026921_moldy_cheese_mock_mathcounts_problems_1115
+% Stable identity: aops-topic-2026921-q13
+Let $O$ be the centre of the square; $OA=OB=OC=OD=\dfrac{3\sqrt2}{2}\approx2.12>2$, so $O$ is in the shaded region.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(3,0), C=(3,3), D=(0,3);
+pair O=(1.5,1.5);
+real t=acos(1.5/2)*180/pi;
+path g=arc(A,2,t,90-t)--arc(D,2,t-90,-t)--arc(C,2,180+t,270-t)--arc(B,2,90+t,180-t)--cycle;
+fill(g,lightgray);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(arc(A,2,0,90)); draw(arc(B,2,90,180)); draw(arc(C,2,180,270)); draw(arc(D,2,270,360));
+real r=1.5*sqrt(2)-2;
+draw(circle(O,r),red);
+draw(A--C,dashed+gray);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$2$",(0.62,0.82),NW);
+draw((2.1,0.9)--O+(0.08,-0.08),red,Arrow(4)); label("$O$",(2.1,0.9),SE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Upper bound.} Suppose a circle with centre $P$ and radius $r$ lies in the shaded region. Then $P$ is in the square, and the circle stays outside each radius-$2$ circle, so $PV\ge2+r$ for every vertex $V$. The four small squares of side $\dfrac{3}{2}$ obtained by cutting $ABCD$ through $O$ cover the square; $P$ lies in one of them, whose corner is a vertex $V$ of $ABCD$, so $PV\le$ the diagonal of that small square $=\dfrac{3\sqrt2}{2}$. Hence
+\[2+r\le\dfrac{3\sqrt2}{2},\qquad r\le\dfrac{3\sqrt2}{2}-2.\]
+
+\textbf{Attained.} The circle centred at $O$ with radius $\dfrac{3\sqrt2}{2}-2\approx0.12$ is at distance exactly $2+r$ from each vertex, so it touches each of the four circles from outside, and it is far from the sides of the square. So the largest radius is
+\[\boxed{\dfrac{3\sqrt2-4}{2}}.\]

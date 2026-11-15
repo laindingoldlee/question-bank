@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1377457_similar_triangles_math_problems
+% Stable identity: aops-topic-1377457-q02
+The sun's rays are parallel, so each object, its shadow and the ray through its top form right triangles with the same angle of elevation. These triangles are similar.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair G=(0,0), T=(0,4.5), Sh=(3.6,0);
+draw(G--T,linewidth(1.6)); draw(G--Sh,linewidth(0.9)); draw(T--Sh,dashed);
+label("$h$",(G+T)/2,W); label("$36$",(G+Sh)/2,S);
+pair g=(5.2,0), t=(5.2,1.9*0.5), s=(5.2+1.52*0.5,0);
+draw(g--t,linewidth(1.6)); draw(g--s,linewidth(0.9)); draw(t--s,dashed);
+label("$1.9$",(g+t)/2,W); label("$1.52$",(g+s)/2,S);
+label("building",T,N,fontsize(8pt)); label("flagpole",t,N,fontsize(8pt));
+label("(not to scale)",(2.6,-0.9),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So height and shadow are proportional:
+\[
+\dfrac{h}{36}=\dfrac{1.9}{1.52}=\dfrac{5}{4}\quad\Longrightarrow\quad h=36\cdot\dfrac{5}{4}=\boxed{45\text{ m}}.
+\]

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2008800_interesting
+% Stable identity: aops-topic-2008800-q01
+Both sides are defined exactly when $\sin\theta\ne0$ and $\cos\theta\ne0$, that is, when $\theta$ is not an integer multiple of $90^\circ$.
+
+For such $\theta$, write everything in terms of sine and cosine and use the Pythagorean identity $\sin^2\theta+\cos^2\theta=1$, which for an acute angle is the Pythagorean theorem in a right triangle with hypotenuse $1$ and legs $\cos\theta$ and $\sin\theta$:
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real th=35;
+pair O=(0,0), H=(Cos(th),0), P=(Cos(th),Sin(th));
+draw(O--H--P--cycle,linewidth(0.8));
+draw(H+(-0.06,0)--H+(-0.06,0.06)--H+(0,0.06));
+draw(arc(O,0.2,0,th));
+label("$\theta$",0.2*dir(th/2),dir(th/2)*2);
+label("$1$",(O+P)/2,NW);
+label("$\cos\theta$",(O+H)/2,S);
+label("$\sin\theta$",(H+P)/2,E);
+dot(O);dot(H);dot(P);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[\csc^2\theta+\sec^2\theta=\dfrac{1}{\sin^2\theta}+\dfrac{1}{\cos^2\theta}=\dfrac{\cos^2\theta+\sin^2\theta}{\sin^2\theta\cos^2\theta}=\dfrac{1}{\sin^2\theta\cos^2\theta}=\csc^2\theta\sec^2\theta.\]
+So the identity holds for every $\theta$ that is not a multiple of $90^\circ$. $\blacksquare$
+
+(Equivalently, it says $\dfrac{1}{u}+\dfrac{1}{v}=\dfrac{1}{uv}$ whenever $u+v=1$, with $u=\sin^2\theta$ and $v=\cos^2\theta$.)

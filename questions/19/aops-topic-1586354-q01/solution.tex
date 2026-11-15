@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1586354_help_with_ratio_problem
+% Stable identity: aops-topic-1586354-q01
+Each side of the second triangle is $\dfrac{3}{2}$ times the corresponding side of the first: $4.5=\dfrac{3}{2}\cdot3$, $10.5=\dfrac{3}{2}\cdot7$, $13.5=\dfrac{3}{2}\cdot9$. So the triangles are similar (SSS) with ratio of lengths $\dfrac{2}{3}$ (smaller to larger). (Both triangles exist, since $3+7>9$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(9,0),A=(41/18,sqrt(9-(41/18)^2));
+draw(A--B--C--cycle,linewidth(0.9));
+label("$3$",(A+B)/2,NW);label("$7$",(A+C)/2,NE);label("$9$",(B+C)/2,S);
+pair o=(11,0);
+pair B2=o,C2=o+1.5*C,A2=o+1.5*A;
+draw(A2--B2--C2--cycle,linewidth(0.9));
+label("$4.5$",(A2+B2)/2,NW);label("$10.5$",(A2+C2)/2,NE);label("$13.5$",(B2+C2)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Areas of similar figures are in the ratio of the squares of corresponding lengths, so the ratio of the areas is
+\[
+\left(\dfrac{2}{3}\right)^2=\boxed{\dfrac{4}{9}}.
+\]

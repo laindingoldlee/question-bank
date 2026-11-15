@@ -1,0 +1,11 @@
+Let $D(c,r)$ count paths to row $r$ of column $c$. Set $D(1,r)=1$ for all eight rows and treat entries outside the board as zero. The last move gives
+\[D(c,r)=D(c-1,r-2)+D(c-1,r+2)+D(c-2,r-1)+D(c-2,r+1).\]
+Symmetry gives $D(c,r)=D(c,9-r)$. Computing the first four rows by this recurrence gives
+\[\begin{array}{c|rrrrrrrr}r\backslash c&1&2&3&4&5&6&7&8\\\hline1&1&1&3&6&15&36&86&205\\2&1&1&4&8&21&46&116&269\\3&1&2&5&11&28&65&159&373\\4&1&2&5&13&29&73&168&413\end{array}\]
+Every path has a unique final move, so none are missed or counted twice. Summing the last column and its reflected rows gives $\boxed{2(205+269+373+413)=2520}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int i=0;i<=8;++i){draw((i,0)--(i,8),gray);draw((0,i)--(8,i),gray);}draw((.5,2.5)--(2.5,3.5)--(4.5,4.5)--(5.5,6.5)--(7.5,5.5),blue+linewidth(1.2),EndArrow);label("column 1",(.5,-.5));label("column 8",(7.5,-.5));
+\end{asy}

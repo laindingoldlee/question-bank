@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1257512_geometry
+% Stable identity: aops-topic-1257512-q02
+Since $\angle APC=90^\circ$, $P$ lies on the circle with diameter $AC$, so $MP=7$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),C=(14,0),B=(5,12),M=(7,0);
+pair P=M+7*unit(B-M);
+draw(A--B--C--cycle,linewidth(1)); draw(B--M); draw(A--P--C,blue); draw(circle(M,7),gray+dashed);
+dot(P); dot(M);
+label("$A$",A,SW);label("$B$",B,N);label("$C$",C,SE);label("$M$",M,S);label("$P$",P,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Place $A=(0,0)$, $C=(14,0)$; then $B=(5,12)$ (check: $5^2+12^2=169$, $9^2+12^2=225$). So $BM=\sqrt{2^2+12^2}=2\sqrt{37}>7$, and $P$ is on segment $BM$ at distance $7$ from $M$. The distance from $P$ to $AC$ is $7$ times the sine of the angle between $MB$ and $AC$, which is $\dfrac{12}{2\sqrt{37}}=\dfrac{6}{\sqrt{37}}$. Hence
+\[[APC]=\dfrac{1}{2}\cdot14\cdot\dfrac{42}{\sqrt{37}}=\dfrac{294}{\sqrt{37}}=\dfrac{294\sqrt{37}}{37},\]
+so $p+q+r=294+37+37=\boxed{368}$.

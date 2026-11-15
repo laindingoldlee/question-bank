@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2005968_fun_tricky_vietas_problem
+% Stable identity: aops-topic-2005968-q01
+Let \(P(x)=x^3+ax^2+bx+c=(x-r)(x-s)(x-t)\). By Vieta's formulas \(r+s+t=-a\), \(rs+st+tr=b\) and \(rst=-c\).
+
+First suppose \(c\ne 0\), so no root is \(0\). Then \(rs=\dfrac{rst}{t}=-\dfrac{c}{t}\), so
+\[
+rs+t=\dfrac{t^2-c}{t},\quad\text{and similarly}\quad st+r=\dfrac{r^2-c}{r},\quad tr+s=\dfrac{s^2-c}{s}.
+\]
+Hence
+\[
+(rs+t)(st+r)(tr+s)=\dfrac{(r^2-c)(s^2-c)(t^2-c)}{rst}=-\dfrac{(r^2-c)(s^2-c)(t^2-c)}{c}.
+\]
+Choose a number \(k\) with \(k^2=c\). For each root \(u\), \((k-u)(-k-u)=u^2-k^2=u^2-c\), so
+\[
+(r^2-c)(s^2-c)(t^2-c)=P(k)\,P(-k).
+\]
+Now \(P(\pm k)=\pm k^3+ak^2\pm bk+c=(ac+c)\pm k(c+b)\), using \(k^2=c\). Therefore
+\[
+P(k)P(-k)=c^2(a+1)^2-k^2(b+c)^2=c^2(a+1)^2-c(b+c)^2,
+\]
+and
+\[
+(rs+t)(st+r)(tr+s)=-\dfrac{c^2(a+1)^2-c(b+c)^2}{c}=(b+c)^2-c(a+1)^2.
+\]
+Both sides are polynomials in \(r,s,t\) (with \(a,b,c\) given by Vieta's formulas) that agree whenever \(rst\ne 0\), so they agree identically, including when \(c=0\). (Directly: if \(c=0\), say \(t=0\), the product is \(rs\cdot r\cdot s=(rs)^2=b^2\), matching the formula.)
+\[
+\boxed{(rs+t)(st+r)(tr+s)=(b+c)^2-c(a+1)^2}
+\]

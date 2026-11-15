@@ -1,0 +1,9 @@
+Let $P$ be cells red only on the first board and $N$ those red only on the second; write $|P|=|N|=r$, since row totals agree. Suppose $r\le3$. In each changed row $x_i$, let $d_i$ be the sum of column indices of cells in $P$ minus that for $N$. Equal column totals imply $\sum d_i=0$. Equal diagonal counts imply equality of sums of $(x+y)^k$ and $(x-y)^k$ on the two difference sets. Subtracting these equalities for $k=2$ gives $\sum x_id_i=0$. For $k=3$, the $y^3$ sums cancel by equal column totals, giving $\sum x_i^2d_i=0$. At most three rows change, so the Vandermonde matrix on their distinct indices forces all $d_i=0$. If a row has just one cell of $P$, it has just one different cell of $N$, making $d_i\ne0$. Otherwise every changed row uses at least two $P$ cells; with $r\le3$ only one row can change, and equal column totals then force no changes. Both alternatives are impossible. Thus $r\ge4$, so at most $100-8=92$ cells are red on both.
+
+To attain 92, make every cell red except four blue cells in a $4\times4$ corner. On board one use $(0,1),(1,3),(2,0),(3,2)$; on board two use $(0,2),(1,0),(2,3),(3,1)$. Each set has one cell in each affected row and column. Both have $x+y$ values $1,2,4,5$ and $x-y$ values $-2,-1,1,2$. All required counts match. Their blue sets are disjoint, so exactly $\boxed{92}$ cells are red on both.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+int[][] a={{1,3,0,2},{2,0,3,1}};for(int k=0;k<2;++k)for(int i=0;i<4;++i)for(int j=0;j<4;++j)filldraw(box((j+5*k,3-i),(j+1+5*k,4-i)),j==a[k][i]?blue:red,black);label("first corner",(2,-0.4));label("second corner",(7,-0.4));
+\end{asy}

@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1960465_set_of_questions
+% Stable identity: aops-topic-1960465-q01
+A $1$-inch by $35$-inch piece of wood is divided into six pieces by making five $45^\circ$ cuts across it, as shown: the cuts alternate in direction, so that the two end pieces are right isosceles triangles and the four middle pieces are trapezoids with $45^\circ$ ends. The two triangular pieces are discarded, and all four trapezoidal pieces are used to form a rectangular picture frame (of width $1$ inch, with mitred corners). A picture measuring $17\dfrac{1}{2}$ inches by $20$ inches is reduced proportionally so that it fits exactly in the interior of the frame. If the cuts were made so that this works, what is the area of the interior of the frame?
+
+\begin{asy}
+usepackage("amsmath");
+size(11cm);
+defaultpen(fontsize(10pt));
+real L=35;
+draw((0,0)--(L,0)--(L,1)--(0,1)--cycle,linewidth(0.8));
+real[] tp={0,8,17,25,34}; real[] bt={1,7,18,24,35};
+fill((0,0)--(1,0)--(0,1)--cycle,gray(0.7));
+fill((34,1)--(35,1)--(35,0)--cycle,gray(0.7));
+draw((1,0)--(0,1)); draw((8,1)--(7,0)); draw((17,1)--(18,0)); draw((25,1)--(24,0)); draw((34,1)--(35,0));
+draw((0,-0.6)--(L,-0.6),Arrows(4)); label("$35$",(L/2,-0.6),S);
+draw((-0.6,0)--(-0.6,1),Arrows(3)); label("$1$",(-0.6,0.5),W);
+label("(not to scale)",(L/2,1),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

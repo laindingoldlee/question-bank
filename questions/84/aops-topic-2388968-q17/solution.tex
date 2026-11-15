@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2388968_christmas1000th_post_problems
+% Stable identity: aops-topic-2388968-q17
+In a $30^\circ$-$60^\circ$-$90^\circ$ triangle the leg opposite $30^\circ$ is half the hypotenuse and the other leg is $\sqrt3$ times as long. So the legs are $\dfrac{\sqrt7}{2}$ and $\dfrac{\sqrt{21}}{2}$, and the area is
+\[\dfrac12\cdot\dfrac{\sqrt7}{2}\cdot\dfrac{\sqrt{21}}{2}=\dfrac{\sqrt{147}}{8}=\boxed{\dfrac{7\sqrt3}{8}\text{ cm}^2}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real c=sqrt(7);
+pair A=(0,0), B=(c*sqrt(3)/2,0), C=(0,c/2);
+draw(A--B--C--cycle,linewidth(0.8));
+real s=0.12; draw((s,0)--(s,s)--(0,s));
+label("$\sqrt7$",(B+C)/2,NE); label("$\dfrac{\sqrt7}{2}$",(A+C)/2,W); label("$\dfrac{\sqrt{21}}{2}$",(A+B)/2,S);
+draw(arc(B,0.4,180-30,180),gray); label("$30^\circ$",B+0.62*dir(165),fontsize(8pt));
+draw(arc(C,0.25,-90,-30),gray); label("$60^\circ$",C+0.42*dir(-62),fontsize(8pt));
+\end{asy}

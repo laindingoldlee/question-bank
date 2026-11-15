@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1609357_some_old_workout_problems
+% Stable identity: aops-topic-1609357-q02
+Let the sides be even integers $a<b<c$. By the triangle inequality the triangle exists exactly when $a+b>c$.
+
+The smallest possible choices fail: if $a=2$, then $c\ge b+2=b+a$, so $a+b\le c$ and there is no triangle. Hence $a\ge4$, $b\ge6$, $c\ge8$, and the perimeter is at least $4+6+8=18$. The sides $4,6,8$ do form a triangle, since $4+6=10>8$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(8,0),A=(2.75,sqrt(16-2.75^2));
+draw(A--B--C--cycle,linewidth(0.9));
+label("$4$",(A+B)/2,NW);label("$6$",(A+C)/2,NE);label("$8$",(B+C)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the least perimeter is $\boxed{18}$ units.

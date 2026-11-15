@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1208306_minimize_a_value
+% Stable identity: aops-topic-1208306-q01
+Substitute $z=160-xy$:
+\[x+yz=x+160y-xy^2=160y-x(y^2-1).\]
+If $y=1$ the value is $160$. For $y\ge2$ it decreases as $x$ grows, so for each $y$ we take $x$ as large as possible with $z\ge1$, i.e. $x=\left\lfloor\dfrac{159}{y}\right\rfloor$, and then $z=160-xy=r+1$ where $r$ is the remainder of $159$ on division by $y$. The value is $x+y(r+1)$:
+\[\begin{array}{c|cccccc}
+y&2&3&4&5&6&7\\\hline
+(x,z)&(79,2)&(53,1)&(39,4)&(31,5)&(26,4)&(22,6)\\
+x+yz&83&56&55&56&50&64
+\end{array}\]
+For $y\ge7$, checking $y=7,\dots,52$ in the same way gives values at least $56$, and for $y\ge53$ we have $x+yz\ge y\ge53$. So the minimum is $\boxed{50}$, at $(x,y,z)=(26,6,4)$.

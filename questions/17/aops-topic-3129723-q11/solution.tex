@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h3129723_2023_abmc_team_rounds_59__actonboxborough_math_competition
+% Stable identity: aops-topic-3129723-q11
+Exhaustively checking distinct digits with nonzero leading digits gives the unique assignment $(A,B,C,D,E,F)=(4,3,2,8,6,5)$. It satisfies $432\cdot2=864$, $432\cdot8=3456$, and $864+34560=35424$. Thus $ABC+DE+F=432+86+5=\boxed{523}$. The exhaustive certificate establishes uniqueness, not merely existence.
+\begin{verbatim}
+from itertools import permutations
+sol=[]
+for A,B,C,D,E,F in permutations(range(10),6):
+ N=100*A+10*B+C
+ if A*B*D and N*C==100*D+10*E+A and N*D==1000*B+100*A+10*F+E and N*C+10*N*D==10000*B+1000*F+100*A+10*C+A:
+  sol.append((A,B,C,D,E,F))
+assert sol==[(4,3,2,8,6,5)]
+\end{verbatim}

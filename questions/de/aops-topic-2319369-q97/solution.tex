@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2319369_100th_post_problems
+% Stable identity: aops-topic-2319369-q97
+The new volume is $(4l)(2w)\left(\dfrac h2\right)=4lwh=\boxed{4V}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+void boxd(pair o, real a, real h, real d, pen p){
+ pair u=(a,0), v=(0.5*d,0.4*d), w=(0,h);
+ draw(o--o+u--o+u+w--o+w--cycle,p); draw(o+w--o+w+v--o+u+v+w--o+u+w,p); draw(o+u--o+u+v--o+u+v+w,p);
+}
+boxd((0,0),2,2,2,black); boxd((5,0),8,1,4,blue);
+label("$l$",(1,0),S); label("$h$",(0,1),W); label("$w$",(2.5,0.4),SE);
+label("$4l$",(9,0),S,blue); label("$\dfrac h2$",(5,0.5),W,blue); label("$2w$",(14,0.8),SE,blue);
+\end{asy}

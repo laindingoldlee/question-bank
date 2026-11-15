@@ -1,0 +1,9 @@
+Let $CA=u,CB=v$ and $\angle ACB=\theta$. Because $P$ is the midpoint of $ED$, its coordinates in the basis of unit vectors along the rays $CE,CD$ are $(\dfrac{7}{2} , \dfrac{7}{2})$. Since it lies on intercept line $AB$, $\dfrac{7}{2u}+\dfrac{7}{2v}=1$, giving $u+v=\dfrac{2uv}{7}$. The area condition gives $uv\sin\theta=70$. Hence $h_a+h_b=(u+v)\sin\theta=\dfrac{2}{7}\cdot70=\boxed{20}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(10,0),(1.5,5)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));pair C=(0,0),E=(7,0),D=7*unit((1.5,5));draw(E--D,dashed);label("$C$",C,(-1,-1));label("$E$",E,(0,-1));label("$D$",D,(0,1));
+\end{asy}
+

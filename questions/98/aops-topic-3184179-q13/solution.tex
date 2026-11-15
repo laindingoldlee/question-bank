@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h3184179_2013_bmmt_individual_round__berkley_mini_math_tournament
+% Stable identity: aops-topic-3184179-q13
+Denote the people by $B,C,D,A,E,F$, respectively. Test each permutation against the exact adjacency and ordering conditions:
+\begin{verbatim}
+from itertools import permutations
+valid=[]
+for p in permutations('BCDAEF'):
+    ok=True
+    for boy in 'BD':
+        i=p.index(boy)
+        ok &= sum(0<=j<6 and p[j] in 'AEF'
+                  for j in (i-1,i+1))==1
+    i=p.index('F')
+    ok &= 0<i<5 and p[i-1] in 'BCD' and p[i+1] in 'BCD'
+    ok &= p.index('A')<p.index('C')<p.index('E')
+    if ok:valid.append(''.join(p))
+assert valid==['ABDFCE','ACFBDE','ACFDBE','ADBFCE']
+\end{verbatim}
+The four displayed orders are valid, and the exhaustive test rules out all others. Thus $\boxed4$.

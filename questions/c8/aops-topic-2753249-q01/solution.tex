@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2753249_2017_mock_target_question
+% Stable identity: aops-topic-2753249-q01
+We use coordinates (no trigonometry). Put $B=(0,0)$ and $C=(17,0)$, and let $A=(p,q)$ with $q>0$. From $p^2+q^2=400$ and $(p-17)^2+q^2=144$ we get $34p=545$, so
+\[p=\dfrac{545}{34},\qquad q=\dfrac{105\sqrt{15}}{34},\qquad [ABC]=\dfrac12\cdot17\cdot q=\dfrac{105\sqrt{15}}{4}\approx101.67.\]
+The circumcircle passes through $B$ and $C$, so it has an equation $x^2+y^2-17x+Ey=0$. Substituting $A$ gives $400-17p+Eq=0$, so
+\[E=\dfrac{17p-400}{q}=-\dfrac{289}{7\sqrt{15}}.\]
+Since $\angle A<90^\circ$ (because $12^2+20^2>17^2$), the minor arc $BC$ is the arc on the other side of $BC$ from $A$, below the $x$-axis. Triangle $BKP$ is a right isosceles triangle, so $P=(t,-t)$ with $t=BK>0$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(17,0),A=(545/34,105*sqrt(15)/34);
+pair O=(8.5,289/(14*sqrt(15)));real R=abs(O-B);
+real t=(17-289/(7*sqrt(15)))/2;pair P=(t,-t),K=(t,0);
+draw(circle(O,R),gray);draw(A--B--C--cycle,linewidth(0.8));
+draw(B--P--K,linewidth(0.8));draw(P--C,dashed);
+draw(K+(-0.6,0)--K+(-0.6,-0.6)--K+(0,-0.6));
+dot(P);dot(K);
+label("$A$",A,NE);label("$B$",B,W);label("$C$",C,E);label("$P$",P,SW);label("$K$",K,N);
+label("$45^\circ$",B+(1.3,-0.45),fontsize(6pt));
+\end{asy}
+
+Substituting into the circle,
+\[2t^2-17t-Et=0,\qquad t=\dfrac{17+E}{2}=\dfrac12\left(17-\dfrac{289}{7\sqrt{15}}\right)\approx3.170.\]
+So $[BPK]=\dfrac{t^2}{2}\approx5.024$, and the ratio is
+\[\dfrac{[BPK]}{[ABC]}\approx\dfrac{5.024}{101.67}\approx\boxed{0.049}.\]

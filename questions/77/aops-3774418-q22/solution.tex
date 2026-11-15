@@ -1,0 +1,9 @@
+Translate the shorter base along the longer to form a triangle whose sides are $15,20,26-1=25$ and whose height equals the trapezoid height. This is a right triangle, of area $150$. Taking its side $25$ as base gives height $12$. Thus the trapezoid area is $\dfrac{1+26}{2}\cdot12=\boxed{162}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(26,0),(10,12),(9,12)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--p[3]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],(1,1));dot(p[3]);label("$D$",p[3],(-1,1));draw((9,12)--(25,0),dashed);draw((9,12)--(9,0),dashed);
+\end{asy}
+

@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1917408_tricky_parabola_questions
+% Stable identity: aops-topic-1917408-q01
+Since the vertex is on the $y$-axis and the axis is vertical, the parabola is $y=kx^2+m$ with $k\ne0$.
+
+Triangle $PQR$ has a right angle at $Q$, with legs $QR=9$ and $PQ=|x_1-3|$. So
+\[
+\dfrac{1}{2}\cdot9\cdot|x_1-3|=40.5\iff|x_1-3|=9\iff x_1=-6\ \text{or}\ x_1=12 .
+\]
+The parabola passes through $(3,9)$, so $9k+m=9$, and through $(x_1,0)$, so $kx_1^2+m=0$.
+\begin{itemize}
+\item $x_1=-6$: $36k+m=0$, so $27k=-9$, $k=-\dfrac{1}{3}$, $m=12$.
+\item $x_1=12$: $144k+m=0$, so $135k=-9$, $k=-\dfrac{1}{15}$, $m=9+\dfrac{3}{5}=\dfrac{48}{5}$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(8.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f1(real x){return 12-x^2/3;} real f2(real x){return 48/5-x^2/15;}
+pair P1=(-6,0),P2=(12,0),Q=(3,0),R=(3,9);
+fill(P1--Q--R--cycle,palered); fill(Q--P2--R--cycle,paleblue);
+draw((-8,0)--(15.5,0),Arrow(6)); draw((0,-1.5)--(0,13.5),Arrow(6));
+label("$x$",(15.5,0),E); label("$y$",(0,13.5),N);
+draw(graph(f1,-6,6),red+linewidth(1)); draw(graph(f2,-6.4,12),blue+linewidth(1));
+draw(P1--R--P2,linewidth(0.6)); draw(Q--R,linewidth(0.6));
+dot(P1);dot(P2);dot(Q);dot(R);
+label("$P_1(-6,0)$",P1,SW); label("$P_2(12,0)$",P2,S); label("$Q(3,0)$",Q,S); label("$R(3,9)$",R,NE);
+label("$y=12-\dfrac{x^2}{3}$",(-6,3.3),W,red); label("$y=\dfrac{48}{5}-\dfrac{x^2}{15}$",(9.2,4.6),NE,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Both work, so the parabola is
+\[
+\boxed{y=-\dfrac{x^2}{3}+12}\qquad\text{or}\qquad\boxed{y=-\dfrac{x^2}{15}+\dfrac{48}{5}} .
+\]

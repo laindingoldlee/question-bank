@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2541898_pipneys_50th_post_problems
+% Stable identity: aops-topic-2541898-q05
+Triangle $ABD$ is half the square, with area $\dfrac12\cdot16\cdot16=128$. So triangle $AEB$ has area $\dfrac38\cdot128=48$. It has a right angle at $A$, so its area is $\dfrac12\cdot AB\cdot AE=8\,AE$, giving $AE=6$. Hence $ED=16-6=\boxed{10}$ inches.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(16,0),C=(16,16),D=(0,16),Ep=(0,6);
+fill(A--B--Ep--cycle,lightgray);
+draw(A--B--C--D--cycle,linewidth(0.8));draw(B--D,dashed);draw(B--Ep);
+dot(Ep);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$E$",Ep,W);
+label("$6$",(A+Ep)/2,W);label("$10$",(Ep+D)/2,W);label("$16$",(A+B)/2,S);
+\end{asy}

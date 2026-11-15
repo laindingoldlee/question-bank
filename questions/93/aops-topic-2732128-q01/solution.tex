@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2732128_geometry_problem
+% Stable identity: aops-topic-2732128-q01
+Yes. Let $\omega=30^\circ$. Then $\angle PAB=A-\omega$, $\angle PBC=B-\omega$ and $\angle PCA=C-\omega$, all positive. By the trigonometric form of Ceva's theorem for the cevians through $P$,
+\[\dfrac{\sin\angle PAB}{\sin\angle PAC}\cdot\dfrac{\sin\angle PBC}{\sin\angle PBA}\cdot\dfrac{\sin\angle PCA}{\sin\angle PCB}=1,\quad\text{so}\quad\sin(A-\omega)\sin(B-\omega)\sin(C-\omega)=\sin^3\omega.\]
+The three angles $A-\omega$, $B-\omega$, $C-\omega$ are positive with sum $180^\circ-3\omega=90^\circ$. Since $\ln\sin$ is strictly concave on $(0^\circ,180^\circ)$, Jensen's inequality gives
+\[\sin(A-\omega)\sin(B-\omega)\sin(C-\omega)\le\sin^3 30^\circ=\sin^3\omega,\]
+with equality only when $A-\omega=B-\omega=C-\omega=30^\circ$. Equality does hold, so $A=B=C=60^\circ$: the triangle is equilateral (and $P$ is its centre).
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(1,0),C=dir(60),P=(A+B+C)/3;
+draw(A--B--C--cycle,linewidth(0.8));draw(A--P);draw(B--P);draw(C--P);dot(P);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$P$",P,S);
+label("$\omega$",A+0.2*dir(45),fontsize(7pt));label("$\omega$",B+0.2*dir(165),fontsize(7pt));label("$\omega$",C+0.2*dir(285),fontsize(7pt));
+\end{asy}

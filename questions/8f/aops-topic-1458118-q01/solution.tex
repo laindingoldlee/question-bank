@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1458118_geometry_question
+% Stable identity: aops-topic-1458118-q01
+In triangle $ABE$ the angle at $B$ is $\angle ABE=\angle ABD=45^\circ$. By the inscribed angle theorem, the central angle over the chord $AE$ of the circumcircle of $ABE$ (the arc not containing $B$) is $\angle AO_1E=2\cdot45^\circ=90^\circ$. Also, since this angle at $B$ is acute, $O_1$ lies on the same side of line $AE$ as $B$. As $O_1A=O_1E$, triangle $AO_1E$ is a right isosceles triangle with hypotenuse $AE$.
+
+In the same way $\angle ADE=45^\circ$, so triangle $AO_2E$ is a right isosceles triangle with hypotenuse $AE$, and $O_2$ is on the same side of $AE$ as $D$.
+
+Because $E$ lies strictly between $B$ and $D$, the line $AE$ separates $B$ from $D$, so $O_1$ and $O_2$ are on opposite sides of $AE$. Therefore $AO_1EO_2$ is formed by two congruent right isosceles triangles on opposite sides of their common hypotenuse $AE$. All four sides equal $\dfrac{AE}{\sqrt2}$ and the angles at $O_1$ and $O_2$ are right angles, so $AO_1EO_2$ is a rhombus with a right angle, i.e.\ a square. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair cc(pair A,pair B,pair C){real d=2*(A.x*(B.y-C.y)+B.x*(C.y-A.y)+C.x*(A.y-B.y));
+ return (((A.x^2+A.y^2)*(B.y-C.y)+(B.x^2+B.y^2)*(C.y-A.y)+(C.x^2+C.y^2)*(A.y-B.y))/d,((A.x^2+A.y^2)*(C.x-B.x)+(B.x^2+B.y^2)*(A.x-C.x)+(C.x^2+C.y^2)*(B.x-A.x))/d);}
+pair A=(0,0),B=(4,0),C=(4,4),D=(0,4);
+pair X=B+0.35*(D-B);
+pair O1=cc(A,B,X),O2=cc(A,D,X);
+draw(circle(O1,length(A-O1)),gray+dashed); draw(circle(O2,length(A-O2)),gray+dashed);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(B--D,linewidth(0.6));
+draw(A--X,blue); draw(B--X,blue+linewidth(0.4));
+draw(A--O1--X--O2--cycle,red+linewidth(0.9));
+draw(ra(O1,A-O1,X-O1,0.25),red); draw(ra(O2,A-O2,X-O2,0.25),red);
+dot(A);dot(B);dot(C);dot(D);dot(X);dot(O1,red);dot(O2,red);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$E$",X,1.6*dir(15)); label("$O_1$",O1,S,red); label("$O_2$",O2,W,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

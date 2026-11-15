@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1576313_weird_math_problem
+% Stable identity: aops-topic-1576313-q01
+\textbf{Line $n$.} Rewriting $6x-3y=7$ as $y=2x-\dfrac{7}{3}$ shows that $m$ has slope $2$. A perpendicular line has slope $-\dfrac{1}{2}$ (the product of the slopes is $-1$), so through $(6,2)$:
+\[
+n:\ y-2=-\dfrac{1}{2}(x-6),\qquad y=-\dfrac{1}{2}x+5 .
+\]
+
+\textbf{Intersection with $k$.} Line $k$ is $y=5x+1$. Setting $5x+1=-\dfrac{1}{2}x+5$ gives $\dfrac{11}{2}x=4$, so
+\[
+x=\boxed{\dfrac{8}{11}}
+\]
+(and $y=5\cdot\dfrac{8}{11}+1=\dfrac{51}{11}$, so the intersection is $P\left(\dfrac{8}{11},\dfrac{51}{11}\right)$).
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-1.5,0)--(7.5,0),gray,Arrow(TeXHead));draw((0,-2)--(0,8.3),gray,Arrow(TeXHead));
+label("$x$",(7.5,0),E,gray);label("$y$",(0,8.3),N,gray);
+real fm(real x){return 2x-7/3;} real fn(real x){return -x/2+5;} real fk(real x){return 5x+1;}
+draw(graph(fm,0.5,5),blue+linewidth(0.9));draw(graph(fn,-1.2,7.2),red+linewidth(0.9));draw(graph(fk,-0.6,1.45),deepgreen+linewidth(0.9));
+pair M=(44/15,53/15),P=(8/11,51/11),T=(6,2);
+pair u=unit((1,2)),v=unit((-2,1));real s=0.35;
+draw(M+s*u--M+s*(u+v)--M+s*v,red);
+dot(P);dot(T);
+label("$P$",P,1.6*dir(145));
+label("$(6,2)$",T,S);
+label("$m$",(4.7,fm(4.7)),E,blue);label("$n$",(7.2,fn(7.2)),N,red);label("$k$",(1.45,fk(1.45)),E,deepgreen);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check: $-\dfrac{1}{2}\cdot\dfrac{8}{11}+5=\dfrac{-4+55}{11}=\dfrac{51}{11}$. The posted value $\dfrac{8}{9}$ does not satisfy both equations: at $x=\dfrac{8}{9}$, line $k$ gives $y=\dfrac{49}{9}$ while line $n$ gives $y=\dfrac{41}{9}$.

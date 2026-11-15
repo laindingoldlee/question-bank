@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2219150_puzzle_collection_for_my_500th_post
+% Stable identity: aops-topic-2219150-q02
+\textbf{At least $4$ marks.} With $m$ marks there are $m+2$ points (marks and ends), so at most $\dbinom{m+2}{2}$ different distances can be measured. For $m=3$ this is $\dbinom52=10<12$, so $3$ marks (or fewer) cannot work.
+
+\textbf{$4$ marks suffice.} Put marks at $1,2,3$ and $8$:
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real L=12;
+fill((0,0)--(L,0)--(L,0.8)--(0,0.8)--cycle,lightyellow);
+draw((0,0)--(L,0)--(L,0.8)--(0,0.8)--cycle);
+int[] m={1,2,3,8};
+for(int i=0;i<4;++i){draw((m[i],0)--(m[i],0.45),linewidth(0.9)); label("$"+string(m[i])+"$",(m[i],0),S,fontsize(8pt));}
+label("$0$",(0,0),S,fontsize(8pt)); label("$12$",(L,0),S,fontsize(8pt));
+\end{asy}
+
+The points are $0,1,2,3,8,12$, and
+\[\begin{array}{llll}
+1=1-0, & 2=2-0, & 3=3-0, & 4=12-8,\\
+5=8-3, & 6=8-2, & 7=8-1, & 8=8-0,\\
+9=12-3, & 10=12-2, & 11=12-1, & 12=12-0.
+\end{array}\]
+So the least number of marks is $\boxed{4}$.

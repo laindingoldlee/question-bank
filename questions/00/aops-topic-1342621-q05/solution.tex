@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1342621_problems
+% Stable identity: aops-topic-1342621-q05
+Drop the perpendicular $CH$ to $AB$. By symmetry the overhang is $HB=\dfrac{AB-CD}{2}=\dfrac{1}{2}$, so $CH=\sqrt{1-\dfrac{1}{4}}=\dfrac{\sqrt3}{2}$ and $AH=2-\dfrac{1}{2}=\dfrac{3}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(2,0), C=(1.5,sqrt(3)/2), D=(0.5,sqrt(3)/2);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,red+dashed);
+pair H=(1.5,0); draw(C--H,gray+dashed);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$2$",(1,0),S); label("$1$",(B+C)/2,E); label("$1$",(C+D)/2,N); label("$1$",(A+D)/2,W);
+label("$\sqrt{3}$",A+0.42*(C-A),NW,red); label("$H$",H,S,gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then
+\[
+AC=\sqrt{AH^2+CH^2}=\sqrt{\dfrac{9}{4}+\dfrac{3}{4}}=\boxed{\sqrt3}.
+\]
+(The trapezoid is half of a regular hexagon of side $1$, and $AC$ is a short diagonal of that hexagon.)

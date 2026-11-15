@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1692460_coefficient_of_xr
+% Stable identity: aops-topic-1692460-q01
+Since $\dfrac{1-x^n}{1-x}=1+x+\cdots+x^{n-1}$, the coefficient of $x^r$ in $\left(1+x+\cdots+x^{n-1}\right)^k$ is the number of ways to write $r=e_1+e_2+\cdots+e_k$ with each $e_i\in\{0,1,\dots,n-1\}$ (choose the term $x^{e_i}$ from the $i$-th factor): the number of ordered sums of $k$ ``digits'' from $0$ to $n-1$ equal to $r$.
+
+\textbf{Formula.} Write the power as a product:
+\[
+\left(1-x^n\right)^k\cdot(1-x)^{-k}=\left(\sum_{j=0}^{k}(-1)^j\dbinom kj x^{nj}\right)\left(\sum_{m\ge0}\dbinom{m+k-1}{k-1}x^m\right),
+\]
+using the binomial theorem and the stars-and-bars expansion $(1-x)^{-k}=\sum_{m\ge0}\dbinom{m+k-1}{k-1}x^m$. Collecting the terms with $nj+m=r$:
+\[
+[x^r]\left(\dfrac{1-x^n}{1-x}\right)^k=\boxed{\sum_{j=0}^{\left\lfloor\dfrac {r}{n}\right\rfloor}(-1)^j\dbinom kj\dbinom{r-nj+k-1}{k-1}}.
+\]
+This is also the inclusion--exclusion count: $\dbinom{r+k-1}{k-1}$ solutions of $e_1+\cdots+e_k=r$ in non-negative integers, minus those in which some $e_i\ge n$.
+
+For example, with $n=6$, $k=3$, $r=10$ (sums of three dice faces $0$--$5$ equal to $10$): $\dbinom{12}{2}-3\dbinom62=66-45=21$.

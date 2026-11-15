@@ -1,0 +1,9 @@
+Axis-aligned containment makes each sorted dimension nondecreasing. The sum of dimensions starts at least at 3 and ends at most at 72, so 70 distinct nested boxes force endpoints $(1,1,1),(24,24,24)$ and exactly one unit increase per step. In a fixed oriented outer box, decreasing one dimension by one leaves two integer placements along that axis. If the changed dimension has multiplicity $r$ in the outer box, there are also $r$ choices of that axis. Thus a dimension chain has $M=2^{69}2^u3^v$, where $u,v$ count steps with multiplicity 2 and 3. These prime powers are distinct for distinct $(u,v)$. The possible pairs can be computed exactly on sorted triples: start $D(1,1,1)=\{(0,0)\}$; increase any coordinate by one while retaining sorted order and the bound 24, and add $(1,0)$, $(0,1)$, or $(0,0)$ according as its new value has multiplicity 2, 3, or 1. At $(24,24,24)$ the resulting set is $\{(u,v):1\le v\le23,\ v\le u\le46-v\}$. This can also be verified inductively with the stated recurrence. It has $\sum_{v=1}^{23}(47-2v)=\boxed{529}$ pairs.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+draw((0,0)--(4,0)--(4,3)--(0,3)--cycle);draw((0,3)--(1,4)--(5,4)--(4,3));draw((4,0)--(5,1)--(5,4));draw((0,0)--(3,0)--(3,3)--(0,3));draw((3,3)--(4,4));label("one dimension increases by 1",(2,-.5),(0,-1));
+\end{asy}
+

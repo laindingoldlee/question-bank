@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2128181_apri1_foo1s
+% Stable identity: aops-topic-2128181-q01
+Let $Y$ be the birth year. Statement $N$ is true exactly when $N\mid Y$, and every divisor of $Y$ is at most $Y\le2017$, so the number of true statements is $d(Y)$, the number of positive divisors of $Y$. We maximise $d(Y)$ over $1976\le Y\le2017$.
+
+\textbf{36 is possible.} $1980=2^2\cdot3^2\cdot5\cdot11$ has $3\cdot3\cdot2\cdot2=36$ divisors (so does $2016=2^5\cdot3^2\cdot7$, with $6\cdot3\cdot2=36$).
+
+\textbf{More than 36 is impossible.} Let $Y=q_1^{e_1}\cdots q_k^{e_k}$ with $e_1\ge e_2\ge\cdots\ge e_k\ge1$. Assigning the largest exponent to $2$, the next to $3$, and so on, gives a number $m=2^{e_1}3^{e_2}5^{e_3}7^{e_4}\cdots$ with $m\le Y\le2017$ and the same number of divisors. Since $2\cdot3\cdot5\cdot7\cdot11=2310>2017$, $k\le4$. Suppose $d(Y)=\prod(e_i+1)\ge37$.
+\begin{itemize}
+\item $k\le2$: $2^{e_1+e_2}\le m<2^{11}$, so $e_1+e_2\le10$ and $(e_1+1)(e_2+1)\le\left(\dfrac{e_1+e_2+2}{2}\right)^2\le36$.
+\item $k=3$, $e_3\ge2$: then $2^{e_1}3^{e_2}\le\dfrac{2017}{25}<81$ with $e_1\ge e_2\ge2$, so $(e_1,e_2,e_3)$ is $(2,2,2)$ or $(3,2,2)$, with at most $36$ divisors.
+\item $k=3$, $e_3=1$: we need $(e_1+1)(e_2+1)\ge19$ with $2^{e_1}3^{e_2}\le\dfrac{2017}{5}<404$. But $e_2=1$ forces $e_1\le7$ (product at most $16$), $e_2=2$ forces $e_1\le5$ (at most $18$), $e_2=3$ forces $e_1\le3$ ($16$), and $e_2\ge4$ is impossible.
+\item $k=4$: if $e_3\ge2$ then $m\ge2^2\cdot3^2\cdot5^2\cdot7=6300$; so $e_3=e_4=1$, $2^{e_1}3^{e_2}\le\dfrac{2017}{35}<58$, and we need $(e_1+1)(e_2+1)\ge10$. This forces $e_2=1$, $e_1=4$ (as $e_2=2$ allows only $e_1=2$, giving $9$). Then $Y=r^4\cdot(\text{three other primes})$ with $40$ divisors. If $r=2$, the other three primes are odd with product at most $\dfrac{2017}{16}<127$, so they are $3,5,7$ and $Y=1680$; if $r\ge3$, then $Y\ge3^4\cdot2\cdot5\cdot7=5670$.
+\end{itemize}
+So the only $Y\le2017$ with more than $36$ divisors is $1680$, which is not a possible birth year. The maximum number of true statements is $\boxed{36}$.

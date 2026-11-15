@@ -1,0 +1,15 @@
+For integers $n=360k+r$, with $r\in\{0,\ldots,359\}$, the degree interpretation is $r^\circ$. The radian interpretation, measured in degrees, is
+$360\left\{\dfrac{n}{2\pi}\right\}$.
+For a fixed $r$, the equidistribution fact applies because $\dfrac{360}{2\pi}$ is irrational. Thus the proportion within this residue class for which the radian angle exceeds $r^\circ$ is $1-\dfrac{r}{360}$. Each class has density $\dfrac{1}{360}$. Averaging gives
+\[
+\dfrac{1}{360}\sum_{r=0}^{359}\left(1-\dfrac{r}{360}\right)
+=1-\dfrac{359}{720}
+=\boxed{\dfrac{361}{720}}.
+\]
+This is approximately $50.1389\%$, rather than exactly $50\%$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(circle((0,0),1));draw((0,0)--(1,0));draw((0,0)--dir(70),blue);draw((0,0)--dir(230),red);draw(arc((0,0),.3,0,70),blue,Arrow);draw(arc((0,0),.55,0,230),red,Arrow);label("$r^\circ$",.5*dir(70),(1,0));label("$360\{\dfrac{n}{2\pi}\}^\circ$",1.1*dir(230),(-1,-1));
+\end{asy}

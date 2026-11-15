@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1439311_is_each_4_digit_palindrome_the_sum_of_two_other_palindromes
+% Stable identity: aops-topic-1439311-q01
+\textbf{Answer:} every four-digit palindrome except the seven numbers $1331, 1441, 1551, 1661, 1771, 1881, 1991$.
+
+Write a four-digit palindrome as $n=\overline{abba}=1001a+110b$ with $1\le a\le 9$, $0\le b\le 9$.
+
+\textbf{Representations.} If $a\ge2$, then
+\[
+\overline{abba}=\overline{1bb1}+\overline{(a-1)00(a-1)},
+\]
+since $1001+110b+1001(a-1)=1001a+110b$, and both summands are palindromes. If $a=1$ and $b\le2$:
+\[
+1001=2+999,\qquad 1111=202+909,\qquad 1221=232+989 .
+\]
+
+\textbf{The numbers $\overline{1bb1}$ with $b\ge3$ are not sums of two palindromes.} Suppose $n=1001+110b=p+q$ with palindromes $p\ge q$ and $3\le b\le9$, so $1331\le n\le1991$. Then $p\ge\dfrac{n}{2}>665$.
+\begin{itemize}
+\item If $p$ has four digits, then $p<n<2000$, so $p=\overline{1cc1}=1001+110c$ with $c<b$, and $q=n-p=110(b-c)$ is one of $110,220,\dots,990$. These end in $0$, and a palindrome cannot end in $0$ (its first digit is not $0$). Contradiction.
+\item If $p$ has three digits, then $q=n-p\ge1331-999=332$, so $q$ has three digits as well. Write $p=101x+10y$ and $q=101u+10v$ with $1\le x,u\le9$ and $0\le y,v\le9$. The units digit of $p+q$ is the units digit of $x+u$, and it must be $1$; since $2\le x+u\le18$, we get $x+u=11$. Then
+\[
+p+q=1111+10(y+v)=1001+110b\quad\Longrightarrow\quad y+v=11(b-1)\ge22,
+\]
+which is impossible because $y+v\le18$.
+\end{itemize}
+So exactly the seven palindromes $\overline{1bb1}$ with $3\le b\le9$ cannot be written as a sum of two palindromes; the smallest is $\boxed{1331}$, and every other four-digit palindrome can.

@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2651057_geo_question_i_had
+% Stable identity: aops-topic-2651057-q01
+The slopes are
+\[m_{PQ}=\dfrac{9-6}{-7+5}=-\dfrac32,\qquad m_{QR}=\dfrac{10-9}{1+7}=\dfrac18,\qquad m_{PR}=\dfrac{10-6}{1+5}=\dfrac23.\]
+Since $m_{PQ}\cdot m_{PR}=-\dfrac32\cdot\dfrac23=-1$, sides $PQ$ and $PR$ are perpendicular: the triangle has a right angle at $P$. Its legs are $PQ=\sqrt{2^2+3^2}=\sqrt{13}$ and $PR=\sqrt{6^2+4^2}=2\sqrt{13}$, so the area is $\dfrac12\cdot\sqrt{13}\cdot2\sqrt{13}=\boxed{13}$.
+
+So the slopes are $\boxed{-\dfrac32,\ \dfrac18,\ \dfrac23}$, and the triangle is right-angled at $P$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair P=(-5,6),Q=(-7,9),R=(1,10);
+draw((-8.5,0)--(2.5,0),gray,Arrow(4));draw((0,-0.5)--(0,11.5),gray,Arrow(4));
+for(int i=-8;i<=2;++i) draw((i,-0.12)--(i,0.12),gray);
+fill(P--Q--R--cycle,lightgray);draw(P--Q--R--cycle,linewidth(0.8));
+draw(P+0.5*unit(Q-P)--P+0.5*unit(Q-P)+0.5*unit(R-P)--P+0.5*unit(R-P));
+dot(P);dot(Q);dot(R);
+label("$P(-5,6)$",P,S);label("$Q(-7,9)$",Q,W);label("$R(1,10)$",R,NE);
+label("$-\dfrac32$",(P+Q)/2+(-0.3,0),W,fontsize(8pt));label("$\dfrac18$",(Q+R)/2,N,fontsize(8pt));label("$\dfrac23$",(P+R)/2,SE,fontsize(8pt));
+\end{asy}

@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2389623_maths_olympiad
+% Stable identity: aops-topic-2389623-q01
+The boundary is a closed path of length $4\cdot24=96$ m. Going once around it, the pots divide it into pieces of length $3$ m, and on a closed path there are as many pots as pieces (each pot starts one piece). So there are
+\[\dfrac{96}{3}=\boxed{32}\]
+pots.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(24,0)--(24,24)--(0,24)--cycle,linewidth(0.9));
+for(int i=0;i<8;++i){ dot((3i,0),darkgreen); dot((24,3i),darkgreen); dot((24-3i,24),darkgreen); dot((0,24-3i),darkgreen);}
+label("$24$ m",(12,0),S); label("$3$ m",(1.5,25.8),N,fontsize(8pt));
+draw((0,25.8)--(3,25.8),Arrows(3));
+\end{asy}
+
+(Check by sides: each side has $\dfrac{24}{3}+1=9$ pots including both corners; the $4$ corner pots are each counted on two sides, so the total is $4\cdot9-4=32$.)

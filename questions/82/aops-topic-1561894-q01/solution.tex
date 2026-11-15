@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1561894_functions
+% Stable identity: aops-topic-1561894-q01
+\textbf{(a)} Putting $x=y=0$ gives $f(0)=2f(0)$, so $f(0)=0$. Putting $y=-x$ gives $f(x)+f(-x)=f(0)=0$, so $f(-x)=-f(x)$.
+
+By induction on $n$, $f(nx)=nf(x)$ for every positive integer $n$: it holds for $n=1$, and $f((n+1)x)=f(nx)+f(x)=nf(x)+f(x)$.
+
+Now let $q=\dfrac {m}{n}$ with integers $m$ and $n\ge1$. First, $nf\!\left(\dfrac{1}{n}\right)=f(1)=c$, so $f\!\left(\dfrac{1}{n}\right)=\dfrac {c}{n}$. If $m\ge1$, then $f\!\left(\dfrac {m}{n}\right)=mf\!\left(\dfrac{1}{n}\right)=\dfrac{cm}{n}$; for $m=0$ both sides are $0$; for $m<0$ use $f(-x)=-f(x)$. Hence $f(q)=cq$ for every rational $q$.
+
+\textbf{(b)} Let $x$ be real and choose rational numbers $q_k\to x$ (for example its decimal truncations). By continuity and (a),
+\[
+f(x)=\lim_{k\to\infty}f(q_k)=\lim_{k\to\infty}cq_k=cx .
+\]
+So $f(x)=cx$ for all $x$; conversely every such function satisfies the equation. $\blacksquare$
+
+(Without an extra condition such as continuity, monotonicity or boundedness on an interval, the equation alone does not force $f(x)=cx$ for irrational $x$: there exist other, very irregular, solutions, whose construction needs the axiom of choice. So ``find $f(x)$'' has the answer $f(x)=cx$ only under such a condition.)

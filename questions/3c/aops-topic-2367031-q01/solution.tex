@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2367031_pigeonhole_principle_problem_geometry
+% Stable identity: aops-topic-2367031-q01
+Call a set of points ``red'' if all segments joining them are red. By assumption there is no triangle with three blue sides. Each point is joined to the $8$ others.
+
+\textbf{Step 1: a point with at least $4$ blue segments.} Suppose $P$ is joined by blue segments to $Q_1,Q_2,Q_3,Q_4$. If some $Q_iQ_j$ were blue, triangle $PQ_iQ_j$ would have three blue sides, which is impossible. So all six segments among $Q_1,\dots,Q_4$ are red, and we are done.
+
+\textbf{Step 2: a point with at least $6$ red segments.} Suppose $P$ is joined by red segments to $R_1,\dots,R_6$. Among six points with every segment red or blue there is always a triangle with all three sides of the same colour. (Indeed, $R_1$ has at least $3$ segments of one colour, say to $R_2,R_3,R_4$, all red; if one of $R_2R_3,R_2R_4,R_3R_4$ is red, it forms a red triangle with $R_1$; otherwise $R_2R_3R_4$ is a blue triangle. The case where the three segments from $R_1$ are blue is the same with the colours exchanged.) A blue triangle is impossible, so there is a red triangle $R_iR_jR_k$, and then $P,R_i,R_j,R_k$ are four points joined only by red segments.
+
+\textbf{Step 3: the remaining case.} If neither step applies, every point has at most $3$ blue and at most $5$ red segments; since $3+5=8$, every point has exactly $3$ blue segments. Counting the blue segments from both ends, the number of blue segments is $\dfrac{9\cdot3}{2}$, which is not an integer, a contradiction.
+
+So in every case there are four points joined only by red segments. $\blacksquare$

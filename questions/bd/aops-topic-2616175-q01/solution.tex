@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2616175_jmpsc_accuracy_problem_6
+% Stable identity: aops-topic-2616175-q01
+Triangles $ABC$ and $ADC$ share the side $AC$, and $\angle BAC=\angle DAC$ and $\angle BCA=\angle DCA$ because $AC$ bisects both angles. By ASA they are congruent, so $AD=AB=15$ and $CD=CB=13$ ($ABCD$ is a kite). The perimeter is $2(15+13)=\boxed{56}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(9,12),C=(14,0),D=(9,-12);
+draw(A--B--C--D--cycle,linewidth(0.8)); draw(A--C,dashed);
+draw(arc(A,2.2,0,degrees(B-A))); draw(arc(A,2.2,-degrees(B-A),0));
+draw(arc(C,1.6,degrees(B-C),180)); draw(arc(C,1.9,degrees(B-C),180));
+draw(arc(C,1.6,180,360+degrees(D-C))); draw(arc(C,1.9,180,360+degrees(D-C)));
+dot(A);dot(B);dot(C);dot(D);
+label("$A$",A,W);label("$B$",B,N);label("$C$",C,E);label("$D$",D,S);
+label("$15$",(A+B)/2,NW);label("$13$",(B+C)/2,NE);label("$15$",(A+D)/2,SW);label("$13$",(C+D)/2,SE);
+\end{asy}

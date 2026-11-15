@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h3296312_silksong_math_problems
+% Stable identity: aops-topic-3296312-q03
+For $n$ attempts, the complementary probability is $4^{-n}\sum_{j=0}^3\binom nj3^{n-j}$. Exact evaluation at $n=14$ gives a value above $\dfrac{1}{2}$; at $n=15$ it is below $\dfrac{1}{2}$. These checks can be reproduced by:
+\begin{verbatim}
+from math import comb
+for n in [14,15]:
+    print(n, 2*sum(comb(n,j)*3**(n-j)
+                   for j in range(4)) > 4**n)
+# 14 True
+# 15 False
+\end{verbatim}
+The probability of at least four successes is nondecreasing as trials are added, so the answer is $\boxed{15}$.

@@ -1,0 +1,18 @@
+The circle is $x^2+y^2-6x+2y=0$, with center $(3,-1)$ and radius $\sqrt{10}$. On $AB$, write $(x,y)=(2t,4t)$; substitution gives $20t^2-4t=0$, so $E=\left(\dfrac{2}{5},\dfrac{4}{5}\right)$.
+
+The lengths $AC=4\sqrt2$ and $AB=2\sqrt5$ give, on the specified rays,
+\[
+K=\left(\dfrac{8\sqrt{10}}{5},\dfrac{4\sqrt{10}}{5}\right),\qquad
+L=\left(6-\dfrac{7\sqrt{10}}{5},\dfrac{\sqrt{10}}{5}\right).
+\]
+Set $O=(3,\sqrt{10}-1)$. Direct substitution shows
+\[
+OA^2=OK^2=OL^2=36-10\sqrt{10}.
+\]
+The three vertices are noncollinear, so this equal-distance point is their circumcenter. Finally its distance from $(3,-1)$ is exactly $\sqrt{10}$, proving $\boxed{O\in\omega}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real r=sqrt(10);pair A=(2,4),B=(0,0),C=(6,0),D=(4,2),E=(.4,.8),K=(8r/5,4r/5),L=(6-7r/5,r/5),O=(3,r-1);draw(circle((3,-1),r),gray);draw(circle(O,length(O-A)),lightblue);draw(A--B--C--cycle);draw(B--K,blue);draw(C--E,blue);draw(A--K--L--cycle,red);draw(O--A,dashed);draw(O--K,dashed);draw(O--L,dashed);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,SE);label("$E$",E,W);label("$K$",K,NE);label("$L$",L,S);label("$O$",O,NW);
+\end{asy}

@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h2182711_hard_problems_plz_help
+% Stable identity: aops-topic-2182711-q01
+Any three of the points are not collinear, so they lie on exactly one circle. There are $\dbinom53=10$ triples, and a circle through exactly $k\ge3$ of the points is obtained from $\dbinom k3$ triples.
+
+\textbf{At most one circle contains four or more of the points.} Two different circles containing four of the five points each would share at least three points, and three non-collinear points determine only one circle, a contradiction.
+
+So there are three cases (left to right in the sketch):
+\begin{itemize}
+\item no four of the points are on a circle: all $10$ triples give different circles, $c=10$;
+\item exactly four are on a circle (the fifth is not): those four give $\dbinom43=4$ triples but one circle, so $c=10-4+1=7$;
+\item all five are on a circle: $c=1$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(11cm);
+defaultpen(fontsize(10pt));
+picture pa, pb, pc;
+// (a) general position
+pair[] Pa={(0,0),(2.1,0.3),(2.6,1.9),(0.9,2.6),(-0.6,1.8)};
+for(int i=0;i<5;++i) dot(pa,Pa[i]);
+label(pa,"$c=10$",(1.1,-0.9),fontsize(9pt));
+// (b) four concyclic
+for(int i=0;i<4;++i) dot(pb,(1.3,1.1)+1.3*dir(20+90*i+15*i));
+draw(pb,circle((1.3,1.1),1.3),blue);
+dot(pb,(1.1,1.1),red);
+label(pb,"$c=7$",(1.3,-0.9),fontsize(9pt));
+// (c) five concyclic
+draw(pc,circle((1.3,1.1),1.3),blue);
+for(int i=0;i<5;++i) dot(pc,(1.3,1.1)+1.3*dir(80+72*i+9*i));
+label(pc,"$c=1$",(1.3,-0.9),fontsize(9pt));
+add(pa); add(shift(4,0)*pb); add(shift(8,0)*pc);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+All three cases occur (for instance, four points on a circle together with a fifth point inside it, no three collinear). The possible values of $c$ are $10$, $7$ and $1$, and their sum is $\boxed{18}$.

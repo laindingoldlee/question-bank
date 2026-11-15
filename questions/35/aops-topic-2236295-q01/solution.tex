@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2236295_simple_geo_problem
+% Stable identity: aops-topic-2236295-q01
+Let $\alpha=\angle PQZ=\angle PZQ$ and $x=\angle RQZ$, so $\angle PQR=\alpha+x$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair Q=(0,0), R=(5,0);
+pair P=extension(Q,Q+dir(82),R,R+dir(140));
+pair Z=P+abs(Q-P)*unit(R-P);
+draw(P--Q--R--cycle,linewidth(0.9)); draw(Q--Z,blue);
+label("$P$",P,N); label("$Q$",Q,SW); label("$R$",R,SE); label("$Z$",Z,NE);
+real tz=degrees(Z-Q);
+draw(arc(Q,0.9,0,tz),blue); draw(arc(Q,0.6,tz,82));
+label("$\alpha$",Q+0.85*dir((tz+82)/2),fontsize(8pt));
+label("$x$",Q+1.25*dir(tz/2),blue+fontsize(8pt));
+pair bz=unit(unit(P-Z)+unit(Q-Z)); label("$\alpha$",Z+0.6*bz,fontsize(8pt));
+\end{asy}
+
+The angle $\angle PZQ$ is an exterior angle of triangle $QZR$, so it equals the sum of the two remote interior angles:
+\[\alpha=x+\angle PRQ,\qquad\text{so}\qquad\angle PRQ=\alpha-x .\]
+Then
+\[42^\circ=\angle PQR-\angle PRQ=(\alpha+x)-(\alpha-x)=2x,\]
+and $\angle RQZ=x=\boxed{21^\circ}$.

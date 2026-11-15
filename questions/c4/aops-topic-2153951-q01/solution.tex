@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2153951_perimeter_puzzle
+% Stable identity: aops-topic-2153951-q01
+Let the sides be $a\le b\le c$ with $a+b+c=26$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(11,0), C=(136/22,sqrt(64-(136/22)^2));
+draw(A--B--C--cycle,linewidth(0.9));
+label("$c$",(A+B)/2,S); label("$b$",(A+C)/2,NW); label("$a$",(B+C)/2,NE);
+label("$a\le b\le c,\quad a+b+c=26,\quad a+b>c$",(5.5,-1.6),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Such a triangle exists exactly when $a+b>c$ (the other two triangle inequalities hold automatically since $c$ is the largest side). As $a+b=26-c$, this means $26-c>c$, so $c\le12$; and since $c$ is the largest side, $3c\ge26$, so $c\ge9$. For each $c$ count the pairs $a\le b\le c$ with $a+b=26-c$:
+\begin{itemize}
+\item $c=12$: $a+b=14$, $b\le12$: $(2,12),(3,11),(4,10),(5,9),(6,8),(7,7)$, that is $6$;
+\item $c=11$: $a+b=15$, $b\le11$: $(4,11),(5,10),(6,9),(7,8)$, that is $4$;
+\item $c=10$: $a+b=16$, $b\le10$: $(6,10),(7,9),(8,8)$, that is $3$;
+\item $c=9$: $a+b=17$, $b\le9$: $(8,9)$, that is $1$.
+\end{itemize}
+In total $6+4+3+1=\boxed{14}$ types.

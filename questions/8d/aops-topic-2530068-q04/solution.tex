@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2530068_problems_for_anniversary_and_unpostban
+% Stable identity: aops-topic-2530068-q04
+Line $AB$ is $y=x$ and line $CD$ is $y=\dfrac{x+5}{10}$. They meet where $10x=x+5$, so $E=\left(\dfrac59,\dfrac59\right)$.
+
+Let $u=B-E=\dfrac{22}{9}(1,1)$ and $v=D-E=\left(\dfrac{40}{9},\dfrac49\right)=\dfrac49(10,1)$. Then
+\[EB=|u|=\dfrac{22\sqrt2}{9},\qquad ED=|v|=\dfrac{4\sqrt{101}}{9},\qquad u\cdot v=\dfrac{22}{9}\cdot\dfrac49\cdot11=\dfrac{968}{81}.\]
+By the angle bisector theorem $BF:FD=EB:ED$, so
+\[F=\dfrac{ED\cdot B+EB\cdot D}{EB+ED},\qquad F-E=\dfrac{ED\,u+EB\,v}{EB+ED}.\]
+Since $|ED\,u|=|EB\,v|=EB\cdot ED$,
+\[\left|ED\,u+EB\,v\right|^2=2\,EB\cdot ED\left(EB\cdot ED+u\cdot v\right).\]
+Here $EB\cdot ED=\dfrac{88\sqrt{202}}{81}$ and $EB+ED=\dfrac{2\sqrt2}{9}\left(11+\sqrt{202}\right)$, so
+\[EF^2=\dfrac{2\cdot\dfrac{88\sqrt{202}}{81}\cdot\dfrac{88\left(\sqrt{202}+11\right)}{81}}{\dfrac{8}{81}\left(11+\sqrt{202}\right)^2}=\dfrac{1936\sqrt{202}}{81\left(11+\sqrt{202}\right)}=\dfrac{1936\sqrt{202}\left(\sqrt{202}-11\right)}{81\cdot81}=\dfrac{1936\left(202-11\sqrt{202}\right)}{6561},\]
+using $\left(\sqrt{202}+11\right)\left(\sqrt{202}-11\right)=81$. Hence
+\[EF=\boxed{\dfrac{44}{81}\sqrt{202-11\sqrt{202}}}\approx3.67.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(-2,-2), B=(3,3), C=(-5,0), D=(5,1), E=(5/9,5/9);
+real eb=abs(B-E), ed=abs(D-E);
+pair F=(ed*B+eb*D)/(eb+ed);
+draw((-5.6,0)--(5.8,0),gray(0.6),Arrow(5)); draw((0,-2.6)--(0,3.8),gray(0.6),Arrow(5));
+draw(A--B,linewidth(0.8)); draw(C--D,linewidth(0.8)); draw(B--D,linewidth(0.8));
+draw(E--F,red+linewidth(0.9));
+real a1=degrees(D-E), a2=degrees(B-E), am=degrees(F-E);
+draw(arc(E,0.7,a1,am),red); draw(arc(E,0.8,am,a2),red);
+dot(A);dot(B);dot(C);dot(D);dot(E);dot(F);
+label("$A(-2,-2)$",A,SE,fontsize(8pt)); label("$B(3,3)$",B,N,fontsize(8pt));
+label("$C(-5,0)$",C,N,fontsize(8pt)); label("$D(5,1)$",D,SE,fontsize(8pt));
+label("$E$",E,NW); label("$F$",F,E);
+\end{asy}

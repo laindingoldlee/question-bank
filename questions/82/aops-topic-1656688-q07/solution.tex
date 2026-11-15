@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1656688_2018_mte_ms_target_full
+% Stable identity: aops-topic-1656688-q07
+Factor $650=2\cdot5^2\cdot13$ and use the Chinese remainder theorem.
+\begin{itemize}
+\item Modulo $2$: $7^{2018}\equiv1$.
+\item Modulo $25$: $7^2=49\equiv-1$, so $7^4\equiv1$ and $7^{2018}=\left(7^4\right)^{504}\cdot7^2\equiv-1\equiv24$.
+\item Modulo $13$: by Fermat, $7^{12}\equiv1$; $2018=12\cdot168+2$, so $7^{2018}\equiv7^2=49\equiv10$.
+\end{itemize}
+Modulo $50$: odd and $\equiv24\pmod{25}$ gives $49$. Now solve $x\equiv49\pmod{50}$, $x\equiv10\pmod{13}$: write $x=49+50m$; then $49+50m\equiv10+11m\equiv10\pmod{13}$, so $11m\equiv0$ and $m\equiv0\pmod{13}$. Hence $x=\boxed{49}$.
+
+(Indeed $7^{2018}\equiv49=7^2$: $7^{2016}\equiv1\pmod{650}$, since $7^4\equiv1\pmod{50}$ and $7^{12}\equiv1\pmod{13}$ and $\operatorname{lcm}(4,12)=12$ divides $2016$.)

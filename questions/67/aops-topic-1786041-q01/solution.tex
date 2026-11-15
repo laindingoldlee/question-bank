@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h1786041_dearangement_of_objects
+% Stable identity: aops-topic-1786041-q01
+\textbf{(a)} Consider derangements of $1,2,\dots,n+2$ (object $i$ must not be in place $i$). Object $1$ goes to some place $k\ne1$: $n+1$ choices, each giving the same count. Fix $k$ and look at object $k$.
+\begin{itemize}
+\item If object $k$ goes to place $1$, objects $1$ and $k$ simply swap, and the other $n$ objects form a derangement of their own places: $D_n$ ways.
+\item If object $k$ does not go to place $1$, then the remaining $n+1$ objects (all except object $1$) must fill places $\{1,\dots,n+2\}\setminus\{k\}$ with each object $j\ne k$ avoiding place $j$ and object $k$ avoiding place $1$. Treating place $1$ as object $k$'s ``forbidden'' place, these are exactly derangements of $n+1$ objects: $D_{n+1}$ ways.
+\end{itemize}
+Hence $D_{n+2}=(n+1)\left(D_{n+1}+D_n\right)$, so $a=b=n+1$ and $\dfrac {b}{a}=\boxed{1}$.
+
+\textbf{(b)} The first values are $D_1=0$, $D_2=1$, $D_3=2$, $D_4=9$, $D_5=44$. Constants $a,b$ would need $D_3=aD_2+bD_1$, so $a=2$; then $D_4=aD_3+bD_2$ gives $9=4+b$, so $b=5$; but then $aD_4+bD_3=18+10=28\ne44=D_5$. So no constant coefficients work, and $a$, $b$ must be read as depending on $n$. $\blacksquare$

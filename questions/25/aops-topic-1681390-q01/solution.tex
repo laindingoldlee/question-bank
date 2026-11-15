@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1681390_orthocentre
+% Stable identity: aops-topic-1681390-q01
+Let the circles have centres $O_1,O_2,O_3$ and common radius $r$, and label so that circles $1,2$ meet again at $C$, circles $2,3$ at $A$, and circles $3,1$ at $B$. Use vectors with origin $H$, so $|O_1|=|O_2|=|O_3|=r$.
+
+\textbf{The second intersection points.} The point $O_1+O_2$ is at distance $|O_2|=r$ from $O_1$ and at distance $|O_1|=r$ from $O_2$, so it lies on both circles $1$ and $2$; and it is not $H$, because the circles meet at a second point, so they are not tangent at $H$ and $O_2\ne-O_1$. Hence $C=O_1+O_2$ ($HO_1CO_2$ is a rhombus). Similarly $A=O_2+O_3$ and $B=O_3+O_1$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair H=(0,0);real r=1.6;
+pair O1=r*dir(95),O2=r*dir(210),O3=r*dir(330);
+pair C=O1+O2,A=O2+O3,B=O3+O1;
+draw(circle(O1,r),gray);draw(circle(O2,r),gray);draw(circle(O3,r),gray);
+draw(A--B--C--cycle,linewidth(0.9));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,unit(V-U))*unit(V-U);}
+pair Fc=ft(C,A,B),Fa=ft(A,B,C),Fb=ft(B,C,A);
+draw(C--Fc,dashed+blue);draw(A--Fa,dashed+blue);draw(B--Fb,dashed+blue);
+draw(H--O1--C--O2--cycle,red+linewidth(0.5));
+dot(H);dot(O1);dot(O2);dot(O3);
+label("$H$",H,1.9*dir(-59));label("$A$",A,S);label("$B$",B,NE);label("$C$",C,NW);
+label("$O_1$",O1,NE);label("$O_2$",O2,SW);label("$O_3$",O3,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Perpendicularity.} Now
+\[
+\overrightarrow{HC}\cdot\overrightarrow{BA}=(O_1+O_2)\cdot\bigl((O_2+O_3)-(O_3+O_1)\bigr)=(O_1+O_2)\cdot(O_2-O_1)=|O_2|^2-|O_1|^2=0,
+\]
+so $HC\perp AB$, i.e.\ $H$ lies on the altitude from $C$. In the same way $\overrightarrow{HA}\cdot\overrightarrow{CB}=|O_3|^2-|O_2|^2=0$, so $H$ lies on the altitude from $A$. Two altitudes meet only at the orthocentre, so $H$ is the orthocentre of triangle $ABC$. $\blacksquare$

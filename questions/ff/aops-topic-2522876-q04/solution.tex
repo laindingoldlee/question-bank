@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2522876_week_of_410_problems_
+% Stable identity: aops-topic-2522876-q04
+If the side is $s$, the diagonal splits the square into two right isosceles triangles, so by the Pythagorean theorem $s^2+s^2=2^2$, giving $s^2=2$. The area is $s^2=\boxed{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(1.4142,0), C=(1.4142,1.4142), D=(0,1.4142);
+draw(A--B--C--D--cycle,linewidth(0.8));
+draw(A--C,blue+linewidth(0.9));
+label("$2$",(A+C)/2+(-0.12,0.12),NW,blue);
+label("$s$",(A+B)/2,S); label("$s$",(B+C)/2,E);
+real t=0.12; draw(B+(-t,0)--B+(-t,t)--B+(0,t));
+\end{asy}
+
+(In general a square with diagonal $d$ has area $\dfrac{d^2}{2}$.)

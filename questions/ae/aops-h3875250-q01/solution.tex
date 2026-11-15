@@ -1,0 +1,13 @@
+If $x>2$, then $f(x)>x$ and subsequent iterates increase, so no periodic point lies there. If $x<-2$, the first and all later iterates exceed $2$, so it cannot return to $x$.
+
+For $-2\le x\le2$, write uniquely $x=2\cos\theta$ with $0\le\theta\le\pi$. The double-angle identity gives
+\[
+f^{(10)}(x)=2\cos(1024\theta).
+\]
+Thus either $1023\theta=2k\pi$ or $1025\theta=2k\pi$. In $[0,\pi]$, the first family has $512$ values ($k=0,\ldots,511$), and the second has $513$ ($k=0,\ldots,512$). Their only common value is $0$, since $1023$ and $1025$ are coprime. Hence there are $\boxed{512+513-1=1024}$ distinct real solutions.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(circle((0,0),1),gray);draw((-1.25,0)--(1.4,0),Arrow);draw((0,-1.2)--(0,1.4),Arrow);pair P=dir(35);draw((0,0)--P,blue);draw(P--(P.x,0),dashed);dot(P);label("$\theta$",(.25,.07));label("$\cos\theta$",(P.x/2,0),(0,-1));label("$\sin\theta$",(P.x,P.y/2),(1,0));label("$1$",P/2,NW);
+\end{asy}

@@ -1,0 +1,5 @@
+% Source: https://artofproblemsolving.com/community/c3h1234574_cubic_expression_and_modular_arithmetic
+% Stable identity: aops-topic-1234574-q01
+Note $x^3+30x^2+300x+1000=(x+10)^3$, so the expression is $(x+10)^3+1000x-1011$. Modulo $1001$, $1000x\equiv-x$ and $-1011\equiv-10$, so the condition is
+\[(x+10)^3-(x+10)\equiv0\pmod{1001},\quad\text{i.e.}\quad1001\mid(y-1)y(y+1),\ y=x+10.\]
+With $1001=7\cdot11\cdot13$, each of $7,11,13$ must divide one of $y-1,y,y+1$. We need the smallest $y\ge11$. Checking: $y=64$: $63=7\cdot9$, $65=5\cdot13$, but no factor $11$; $y=76$: $77=7\cdot11$, $75$, $76$, no $13$. A search over $y$ (or the Chinese remainder theorem with residues $y\equiv0,\pm1$ modulo $7$, $11$, $13$) gives the smallest $y\ge11$ as $y=77$: $76\cdot77\cdot78$ contains $7\cdot11$ and $78=6\cdot13$. So $x=\boxed{67}$.

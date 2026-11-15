@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2766070_eagles2018s_2000th_post_problem_thread
+% Stable identity: aops-topic-2766070-q10
+Call the eight non-centre cells the border; they form four antipodal pairs through the centre (two pairs of opposite corners, two pairs of opposite edge cells). The four lines through the centre are the middle row, middle column and two diagonals; each consists of the centre and one antipodal pair. The other four lines are the sides of the border.
+
+\textbf{Centre O.} The X's are $5$ border cells and the O's are the centre plus $3$ border cells. No O line through the centre means no antipodal pair is all O. No X side means each of the four sides contains an O. Three cells must cover four sides, so at least one is a corner (covering two sides).
+\begin{itemize}
+\item Two corners (necessarily adjacent, not opposite) and the edge cell of the opposite side: $4$ ways.
+\item One corner and the two edge cells of the sides it misses: $4$ ways.
+\end{itemize}
+Three corners would include an opposite pair. So there are $8$ ways.
+
+\textbf{Centre X.} The O's are $4$ border cells, and each line through the centre needs an O, so each antipodal pair contains exactly one O (and one X). Choose the O in each pair: $2^4=16$ ways. The antipodal map swaps opposite sides and swaps X's with O's, so a side is all X exactly when the opposite side is all O. Thus we only need to exclude sides that are all O. For a given side, its three cells fix three of the four choices, leaving $2$ ways, and two sides cannot both be all O (they would contain an antipodal pair). That excludes $4\cdot2=8$, leaving $8$ ways.
+
+In total there are $\boxed{16}$ ways (these are exactly the drawn final positions of tic-tac-toe).

@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2672140_very_hard_probability_problem
+% Stable identity: aops-topic-2672140-q01
+The second point lies on the same side as the first with probability $\dfrac13$ and on one of the other two sides with probability $\dfrac23$.
+
+\emph{Same side.} The positions $x,y$ are uniform on $[0,2]$. The region $|x-y|>1$ consists of two triangles of area $\dfrac12$ in the square of area $4$, so $P(|x-y|\le1)=\dfrac34$.
+
+\emph{Different sides.} The two sides meet at a vertex $V$ at $60^\circ$; let $u,v\in[0,2]$ be the distances from $V$ (uniform and independent). By the law of cosines the distance $d$ satisfies $d^2=u^2+v^2-uv$, so we need the area of $\left\{u,v\ge0:\ u^2-uv+v^2\le1\right\}$. (This region lies inside $[0,2]^2$, since $u^2-uv+v^2\ge\dfrac34u^2$ gives $u\le\dfrac2{\sqrt3}$.) The linear map $(u,v)\mapsto u\mathbf e_1-v\mathbf e_2$, where $\mathbf e_1,\mathbf e_2$ are unit vectors at $60^\circ$, satisfies $\left|u\mathbf e_1-v\mathbf e_2\right|^2=u^2+v^2-uv$, multiplies areas by $\sin60^\circ=\dfrac{\sqrt3}{2}$, and maps the quadrant onto a $120^\circ$ angle. So the region maps onto a $120^\circ$ sector of the unit disc, of area $\dfrac\pi3$, and its own area is $\dfrac{\pi}{3}\cdot\dfrac{2}{\sqrt3}=\dfrac{2\pi\sqrt3}{9}$. The probability is $\dfrac14\cdot\dfrac{2\pi\sqrt3}{9}=\dfrac{\pi\sqrt3}{18}$.
+
+\emph{Total.}
+\[\dfrac13\cdot\dfrac34+\dfrac23\cdot\dfrac{\pi\sqrt3}{18}=\boxed{\dfrac14+\dfrac{\pi\sqrt3}{27}\approx0.4515}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair V=(0,0),R1=(2,0),R2=2*dir(60);draw(V--R1--R2--cycle,linewidth(0.8));
+pair P=(1.4,0),Q=0.8*dir(60);draw(P--Q,dashed);dot(P);dot(Q);
+label("$u$",(0.7,0),S,fontsize(8pt));label("$v$",0.4*dir(60),NW,fontsize(8pt));label("$60^\circ$",V+(0.33,0.1),fontsize(6pt));
+label("$P$",P,S,fontsize(8pt));label("$Q$",Q,W,fontsize(8pt));label("$2$",(R1+R2)/2,NE,fontsize(8pt));
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+path g=(0,1);for(int i=1;i<=60;++i){pair w=dir(240+2i);real v=-w.y/Sin(60);real u=w.x+0.5*v;g=g--(u,v);}
+fill((0,0)--g--cycle,lightgray);draw(g,linewidth(0.8));draw((0,0)--(2,0)--(2,2)--(0,2)--cycle);
+label("$u$",(1,0),S,fontsize(8pt));label("$v$",(0,1.25),W,fontsize(8pt));label("$u^2-uv+v^2\le1$",(1.0,1.6),fontsize(6pt));
+label("$2$",(2,0),S,fontsize(7pt));label("$2$",(0,2),W,fontsize(7pt));label("$0$",(0,0),SW,fontsize(7pt));
+\end{asy}

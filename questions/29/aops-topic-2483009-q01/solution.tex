@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2483009_just_some_problems
+% Stable identity: aops-topic-2483009-q01
+In a regular hexagon the long diagonal $FC$ passes through the centre $O$ and equals twice the side, so the radius is $FC=12$. The triangles $OAF$ and $OFE$ are equilateral, so $\angle AFC=60^\circ$.
+
+\textbf{(a)} The line $AF$ passes through the centre $F$ of the circle, so $GH$ is a diameter, of length $24$. Since $C$ is on the circle, $\angle GCH=90^\circ$ (an angle in a semicircle). By Pythagoras,
+\[GC^2+HC^2=GH^2=24^2=\boxed{576}.\]
+
+\textbf{(b)} Name the points so that $G$ is on ray $FA$ (beyond $A$, since $FA=6<12$) and $H$ is on the opposite ray. In triangle $GFC$ we have $FG=FC=12$ and $\angle GFC=\angle AFC=60^\circ$, so it is equilateral and $GC=12$. In triangle $HFC$ we have $FH=FC=12$ and $\angle HFC=180^\circ-60^\circ=120^\circ$; it is isosceles with base angles $30^\circ$, so
+\[HC=2\cdot12\cos30^\circ=12\sqrt3.\]
+Hence $GC+HC=\boxed{12+12\sqrt3}$. (Check with (a): $144+432=576$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair O=(6,0), F=(0,0), C=(12,0);
+pair A=O+6*dir(120), B=O+6*dir(60), D=O+6*dir(-60), pE=O+6*dir(-120);
+pair G=12*dir(60), H=12*dir(240);
+draw(circle(F,12),gray);
+draw(A--B--C--D--pE--F--cycle,linewidth(0.8));
+draw(H--G,blue);
+draw(F--C,dashed);
+draw(G--C--H,red+linewidth(0.8));
+pair u=unit(G-C), v=unit(H-C);
+draw(C+1.0*u--C+1.0*u+1.0*v--C+1.0*v);
+dot(A);dot(B);dot(C);dot(D);dot(pE);dot(F);dot(G);dot(H);
+label("$A$",A,NW);label("$B$",B,N);label("$C$",C,E);label("$D$",D,SE);label("$E$",pE,SW);label("$F$",F,NW);
+label("$G$",G,N);label("$H$",H,SW);
+label("$12$",(F+C)/2+(0,0.1),N);
+label("$60^\circ$",F,3.2*dir(28));
+\end{asy}

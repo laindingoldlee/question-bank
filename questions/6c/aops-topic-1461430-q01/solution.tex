@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1461430_find_minmn_of_mn_n_such_that_4m4n__0_mod_100
+% Stable identity: aops-topic-1461430-q01
+By symmetry let $m\le n$ and write $n=m+k$ with $k\ge0$. Then $4^m+4^n=4^m\left(1+4^k\right)$.
+
+Since $100=4\cdot25$ and $\gcd(4^m,25)=1$, we need $25\mid1+4^k$, i.e. $4^k\equiv-1\pmod{25}$. ($k=0$ fails: $25\nmid2$.) The powers of $4$ modulo $25$ are
+\[
+4,\ 16,\ 14,\ 6,\ 24\equiv-1,\ \dots
+\]
+so $4^5\equiv-1$, $4^{10}\equiv1$, and $4^k\equiv-1\pmod{25}$ exactly when $k\equiv5\pmod{10}$. The smallest choice is $k=5$. The factor $4$ of $100$ divides $4^m$ for every $m\ge1$.
+
+So $m+n=2m+k\ge2\cdot1+5=7$, with equality for $m=1$, $n=6$: $4+4096=4100=41\cdot100$. The answer is $\boxed{7}$.

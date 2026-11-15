@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2349036_infinite_balls_in_a_boxdrawer
+% Stable identity: aops-topic-2349036-q01
+Ball $m$ enters the box when it is processed, at step $m$. It can leave only at step $m^2$, when ball $m^2$ is processed, and it does leave then (for $m\ge2$ it is still in the box at step $m^2>m$, and ball $1$ leaves at step $1$). After that it stays in the drawer for ever.
+
+\textbf{(a)} After step $N$, ball $m$ is in the box exactly when it has entered ($m\le N$) but not yet left ($m^2>N$), that is, when $\lfloor\sqrt N\rfloor<m\le N$. So the box contains
+\[\boxed{N-\lfloor\sqrt N\rfloor}\]
+balls. For example, after $16$ steps it contains balls $5,6,\dots,16$, which is $12=16-4$ balls.
+
+\textbf{(b)} Every ball $m$ is in the drawer from step $m^2$ onwards, so after the whole process \textbf{every ball is in the drawer and the box is empty}. Yet the number $N-\lfloor\sqrt N\rfloor\ge N-\sqrt N$ of balls in the box after step $N$ tends to infinity. There is no contradiction: each individual ball stays in the box only for a finite time, but there are always newer balls in the box. $\blacksquare$

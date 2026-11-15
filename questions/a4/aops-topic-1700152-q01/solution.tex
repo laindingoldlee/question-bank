@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1700152_number_of_possible_triangles
+% Stable identity: aops-topic-1700152-q01
+Let the sides be $a\le b\le c$ with $a+b+c=15$. By the triangle inequality, $a+b>c$, i.e.\ $15-c>c$, so $c\le7$; and since $c$ is the largest side, $3c\ge15$, so $c\ge5$.
+\begin{itemize}
+\item $c=7$: $a+b=8$ with $a\le b\le7$: $(1,7),(2,6),(3,5),(4,4)$. Four triangles.
+\item $c=6$: $a+b=9$ with $a\le b\le6$: $(3,6),(4,5)$. Two triangles.
+\item $c=5$: $a+b=10$ with $a\le b\le5$: $(5,5)$. One triangle.
+\end{itemize}
+In each case every pair automatically satisfies $a+b=15-c>c$, so all of them are triangles. The total is $\boxed{7}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(12cm);
+defaultpen(fontsize(10pt));
+void tri(pair o,real a,real b,real c,string s){
+  real x=(c^2+b^2-a^2)/(2c); real h=sqrt(b^2-x^2);
+  pair P=o,Q=o+(c,0),R=o+(x,h);
+  draw(P--Q--R--cycle,linewidth(0.8));
+  label(s,o+(c/2,-0.9));}
+tri((0,4),1,7,7,"$1,7,7$");tri((8.5,4),2,6,7,"$2,6,7$");tri((17,4),3,5,7,"$3,5,7$");tri((25.5,4),4,4,7,"$4,4,7$");
+tri((2,-4),3,6,6,"$3,6,6$");tri((11,-4),4,5,6,"$4,5,6$");tri((20,-4),5,5,5,"$5,5,5$");
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\emph{A shortcut.} There is a closed formula: for an odd perimeter $p$ the number of such triangles is the integer nearest to $\dfrac{(p+3)^2}{48}$, and for an even perimeter $p$ it is the integer nearest to $\dfrac{p^2}{48}$. For $p=15$ this gives the integer nearest to $\dfrac{324}{48}=6.75$, namely $7$. (The figure shows the seven triangles to scale.)

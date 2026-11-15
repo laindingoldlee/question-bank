@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1532757_trigonometry_problem
+% Stable identity: aops-topic-1532757-q01
+Let $\theta$ be the angle at $A$, opposite the leg $BC=936$:
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(702,0),C=(702,936);
+draw(A--B--C--cycle,linewidth(1));
+real z=55; draw(B+(-z,0)--B+(-z,z)--B+(0,z));
+draw(arc(A,140,0,degrees(C-A)),red);
+label("$\theta$",A+205*dir(degrees(C-A)/2),red);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$702$",(A+B)/2,S);label("$936$",(B+C)/2,E);label("$1170$",(A+C)/2,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The sine is the opposite leg over the hypotenuse:
+\[
+\sin\theta=\dfrac{936}{1170}=\dfrac{4\cdot234}{5\cdot234}=\dfrac{4}{5}=\boxed{0.8}.
+\]
+(The triangle is a $3$-$4$-$5$ triangle scaled by $234$; check: $702^2+936^2=492804+876096=1368900=1170^2$.)

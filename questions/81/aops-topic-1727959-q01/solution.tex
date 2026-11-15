@@ -1,0 +1,46 @@
+% Source: https://artofproblemsolving.com/community/c3h1727959_combinatorics
+% Stable identity: aops-topic-1727959-q01
+Name the empty cells as follows:
+\[
+\begin{array}{|c|c|c|c|}
+\hline 8 & p & q & 14\\
+\hline r & s & 3 & t\\
+\hline u & 12 & 13 & v\\
+\hline 10 & 11 & 6 & 4\\
+\hline
+\end{array}
+\]
+The numbers already used are $3,4,6,8,10,11,12,13,14$, so $p,q,r,s,t,u,v$ are $1,2,5,7,9,15,16$ in some order.
+
+\textbf{The ten sums are $30,31,\dots,39$.} Let the sums be $m,m+1,\dots,m+9$; they add up to $10m+45$. The four row sums add up to $1+2+\cdots+16=136$, and so do the four column sums. The diagonal from top-left is $8+s+13+4=25+s$ and the other diagonal is $14+3+12+10=39$. Hence
+\[
+10m+45=136+136+(25+s)+39\quad\Longrightarrow\quad 10m=291+s .
+\]
+So $s\equiv9\pmod{10}$, and since $s$ is one of $1,2,5,7,9,15,16$, we get $s=9$ and $m=30$. The sums are $30,\dots,39$; already the bottom row is $31$, the diagonals are $34$ and $39$.
+
+\textbf{The top row.} Column $2$ is $p+9+12+11=32+p\le39$, so $p\le7$; column $3$ is $q+3+13+6=22+q\ge30$, so $q\ge8$, i.e.\ $q\in\{15,16\}$. Row $1$ is $22+p+q\le39$, so $p+q\le17$, leaving $(p,q)=(1,15)$, $(2,15)$ or $(1,16)$. The last two make row $1$ equal to $39$, which is already the sum of a diagonal. So $p=1$, $q=15$, and row $1$, column $2$, column $3$ are $38,33,37$.
+
+\textbf{The rest.} The sums used so far are $31,33,34,37,38,39$, so rows $2,3$ and columns $1,4$ have the sums $30,32,35,36$ in some order, and $r,t,u,v$ are $2,5,7,16$. Row $3$ is $25+u+v$, and the only pair from $\{2,5,7,16\}$ giving a sum in $\{30,32,35,36\}$ is $\{u,v\}=\{2,5\}$ (sum $32$). Then $\{r,t\}=\{7,16\}$ and row $2$ is $12+7+16=35$. Columns $1$ and $4$ must be $30$ and $36$: column $1$ is $18+r+u$.
+\begin{itemize}
+\item $r=7$: column $1$ is $25+u\in\{30,36\}$, so $u=5$, $v=2$, $t=16$; column $4$ is $18+16+2=36$. \checkmark
+\item $r=16$: column $1$ is $34+u\in\{30,36\}$, so $u=2$, $v=5$, $t=7$; column $4$ is $18+7+5=30$. \checkmark
+\end{itemize}
+So there are exactly $\boxed{2}$ completions:
+\[
+\begin{array}{|c|c|c|c|}
+\hline 8 & 1 & 15 & 14\\
+\hline 7 & 9 & 3 & 16\\
+\hline 5 & 12 & 13 & 2\\
+\hline 10 & 11 & 6 & 4\\
+\hline
+\end{array}
+\qquad\qquad
+\begin{array}{|c|c|c|c|}
+\hline 8 & 1 & 15 & 14\\
+\hline 16 & 9 & 3 & 7\\
+\hline 2 & 12 & 13 & 5\\
+\hline 10 & 11 & 6 & 4\\
+\hline
+\end{array}
+\]
+with row sums $38,35,32,31$ in both, column sums $30,33,37,36$ and $36,33,37,30$, and diagonals $34$ and $39$.

@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2542401_hard_number_theory
+% Stable identity: aops-topic-2542401-q01
+\textbf{(a)} Let $H$ be the foot of the perpendicular from $O$ to $AB$. Computing the area of the right triangle $OAB$ in two ways, $OH\cdot AB=pq$, so $OH=\dfrac{pq}{\sqrt{p^2+q^2}}$.
+
+The line $OC$ is perpendicular to $OA$ and $OB$, hence to the plane $OAB$; so $OC\perp AB$ and $OC\perp OH$. As also $OH\perp AB$, the line $AB$ is perpendicular to the plane $OCH$, so $CH\perp AB$: $CH$ is the altitude of triangle $ABC$ from $C$. In the right triangle $COH$,
+\[CH^2=r^2+\dfrac{p^2q^2}{p^2+q^2}.\]
+Therefore
+\[[ABC]=\dfrac12\,AB\cdot CH=\dfrac12\sqrt{p^2+q^2}\,\sqrt{r^2+\dfrac{p^2q^2}{p^2+q^2}}=\dfrac12\sqrt{r^2\left(p^2+q^2\right)+p^2q^2},\]
+which is the stated formula. Squaring, $[ABC]^2=\left(\dfrac{pq}2\right)^2+\left(\dfrac{qr}2\right)^2+\left(\dfrac{rp}2\right)^2=[OAB]^2+[OBC]^2+[OCA]^2$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=(3,0),B=1.5*dir(215),C=(0,2.4);
+pair H=(A+B)/2;
+draw(A--B--C--cycle,linewidth(0.8));draw(C--H);
+draw(O--A,dashed);draw(O--B,dashed);draw(O--C,dashed);draw(O--H,dashed);
+dot(O);dot(H);
+label("$O$",O,NE);label("$A$",A,E);label("$B$",B,SW);label("$C$",C,N);label("$H$",H,S);
+label("$p$",(O+A)/2,N);label("$q$",(O+B)/2,NW);label("$r$",(O+C)/2,W);
+\end{asy}
+
+\textbf{(b)} Write $X=[OAB]=\dfrac{pq}2$, $Y=[OBC]=\dfrac{qr}2$, $Z=[OCA]=\dfrac{rp}2$. Conversely, for any positive numbers $X,Y,Z$ the lengths
+\[p=\sqrt{\dfrac{2XZ}{Y}},\qquad q=\sqrt{\dfrac{2XY}{Z}},\qquad r=\sqrt{\dfrac{2YZ}{X}}\]
+satisfy $pq=2X$, $qr=2Y$, $rp=2Z$, so they give a trirectangular tetrahedron with these three face areas. By (a) its fourth face has area $\sqrt{X^2+Y^2+Z^2}$. So we need positive integers $X,Y,Z$ with $X^2+Y^2+Z^2$ a perfect square. For every positive integer $k$,
+\[1^2+(2k)^2+\left(2k^2\right)^2=4k^4+4k^2+1=\left(2k^2+1\right)^2,\]
+so $(X,Y,Z)=\left(1,2k,2k^2\right)$ gives a tetrahedron with face areas $1$, $2k$, $2k^2$ and $2k^2+1$, all integers.
+
+These tetrahedra are pairwise non-similar: a similarity multiplies all four face areas by the same factor, so it preserves the ratio of the largest face area to the smallest, which here is $2k^2+1$ and is different for different $k$. Hence there are infinitely many. $\blacksquare$
+
+(For example, $k=1$ gives $p=q=\sqrt2$, $r=2\sqrt2$ with face areas $1,2,2,3$.)

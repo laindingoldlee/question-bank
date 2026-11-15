@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2692400_circle_geometry
+% Stable identity: aops-topic-2692400-q01
+The three regions are the two outer pieces, one beyond each line, and the band between the lines; each has area $\dfrac\pi3$. A line through the disc cuts it into two pieces, and the piece containing the centre $O$ (either piece, if the line passes through $O$) has area at least $\dfrac\pi2$. So if $O$ lay in an outer piece or on one of the lines, that outer piece would have area at least $\dfrac\pi2>\dfrac\pi3$. Hence $O$ lies strictly inside the band, the two lines are on opposite sides of $O$, and each line cuts off a cap, smaller than a half-disc, of area $\dfrac\pi3$.
+
+A cap whose chord subtends an angle $\theta$ at $O$ has area (sector minus triangle)
+\[\dfrac12\theta-\dfrac12\sin\theta,\]
+and its chord is at distance $\cos\dfrac\theta2$ from $O$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real h=0.264932;real w=sqrt(1-h^2);
+fill(arc((0,0),1,degrees(asin(h)),180-degrees(asin(h)))--cycle,lightgray);
+fill(arc((0,0),1,180+degrees(asin(h)),360-degrees(asin(h)))--cycle,lightgray);
+draw(unitcircle,linewidth(0.8));draw((-1.25,h)--(1.25,h));draw((-1.25,-h)--(1.25,-h));
+pair O=(0,0);dot(O);draw(O--(w,h),dashed);draw(O--(-w,h),dashed);
+draw(arc(O,0.18,degrees(asin(h)),180-degrees(asin(h))));label("$\theta$",(0,0.18),N,fontsize(8pt));
+draw((1.15,-h)--(1.15,h),Arrows(4));label("$d$",(1.15,0),E);label("$O$",O,S);
+\end{asy}
+
+The function $g(\theta)=\theta-\sin\theta$ is strictly increasing on $(0,\pi)$ (as $g'(\theta)=1-\cos\theta>0$) with $g(0)=0$ and $g(\pi)=\pi$, so $g(\theta)=\dfrac{2\pi}{3}$ has exactly one solution there. Both caps therefore have the same angle $\theta$, the lines are at distance $\cos\dfrac\theta2$ on opposite sides of $O$, and
+\[d=2\cos\dfrac\theta2.\]
+This equation has no elementary closed-form solution, so solve it numerically, e.g. by Newton's method $\theta\mapsto\theta-\dfrac{\theta-\sin\theta-\dfrac{2\pi}{3}}{1-\cos\theta}$: starting from $\theta=2.6$ gives $2.60533$, which is already stable. Then
+\[d=2\cos(1.302666)\approx\boxed{0.530}.\]

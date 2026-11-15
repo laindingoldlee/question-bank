@@ -1,0 +1,13 @@
+A line of sight through this cube contains exactly two unit cubes. Associate those unit cubes with adjacent vertices of a cube graph. The condition says that no adjacent pair may both be transparent; hence the transparent cubes form an independent set of the cube graph.
+
+Split the eight vertices into the two parity classes of four. Each vertex is adjacent to three of the four vertices in the opposite class, missing only its antipode. Independent sets contained in just one class contribute
+\[
+1+2(2^4-1)=31,
+\]
+including the empty set once. An independent set using both classes must consist of exactly one antipodal pair: two vertices from one class have no common non-neighbour in the other. There are four such pairs. Thus the count is $\boxed{31+4=35}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair f(int x,int y,int z){return (x+.5y,z+.3y);}for(int i=0;i<=1;++i)for(int j=0;j<=1;++j){draw(f(i,j,0)--f(i,j,1));draw(f(i,0,j)--f(i,1,j));draw(f(0,i,j)--f(1,i,j));}for(int i=0;i<=1;++i)for(int j=0;j<=1;++j)for(int k=0;k<=1;++k)dot(f(i,j,k),(i+j+k)%2==0?blue+6bp:red+6bp);label("the two parity classes",(.75,-.3));
+\end{asy}

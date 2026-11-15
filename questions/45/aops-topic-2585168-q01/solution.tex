@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2585168_mathematics
+% Stable identity: aops-topic-2585168-q01
+Let $G$ be the centroid, where the medians meet. It divides each median in the ratio $2:1$, so
+\[XG=\dfrac23XA=\dfrac23YB=YG,\qquad GA=\dfrac13XA=\dfrac13YB=GB.\]
+Since $G$ lies between $X$ and $A$ and between $Y$ and $B$, the angles $\angle XGB$ and $\angle YGA$ are vertical angles, hence equal. By SAS, triangles $XGB$ and $YGA$ are congruent, so $XB=YA$. But $XB=\dfrac12XZ$ and $YA=\dfrac12YZ$, hence $XZ=YZ$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair X=(0,0),Y=(6,0),Z=(3,5);
+pair A=(Y+Z)/2,B=(X+Z)/2,G=(X+Y+Z)/3;
+draw(X--Y--Z--cycle,linewidth(0.8));draw(X--A);draw(Y--B);
+draw(G--B,linewidth(1.2)+blue);draw(G--A,linewidth(1.2)+blue);
+dot(A);dot(B);dot(G);
+label("$X$",X,SW);label("$Y$",Y,SE);label("$Z$",Z,N);label("$A$",A,NE);label("$B$",B,NW);label("$G$",G,S);
+\end{asy}
+
+The congruent triangles $XGB$ and $YGA$ share the vertex $G$; the thick segments $GA$ and $GB$ are equal.

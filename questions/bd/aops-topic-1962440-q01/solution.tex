@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1962440_help_to_understand
+% Stable identity: aops-topic-1962440-q01
+An inscribed angle is half the arc it subtends, the arc lying on the opposite side from the vertex.
+
+$\angle ABC=130^\circ$ subtends the arc $AC$ not containing $B$, so that arc is $260^\circ$, and the arc $A\to B\to C$ is $360^\circ-260^\circ=100^\circ$. Likewise $\angle CDE=110^\circ$ gives arc $C\to D\to E$ equal to $360^\circ-220^\circ=140^\circ$. The remaining arc from $E$ back to $A$ (not containing $B,C,D$) is
+\[
+360^\circ-100^\circ-140^\circ=120^\circ .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real[] t={150,70,10,-90,-170};
+string[] nm={"$A$","$B$","$C$","$D$","$E$"};
+pair[] P;
+for(int i=0;i<5;++i) P.push(dir(t[i]));
+draw(unitcircle,linewidth(0.8));
+draw(P[0]--P[1]--P[2],blue);
+draw(P[2]--P[3]--P[4],deepgreen);
+draw(P[0]--P[2]--P[4],red+linewidth(0.9));
+for(int i=0;i<5;++i){dot(P[i]);label(nm[i],P[i],1.4*dir(t[i]));}
+label("$130^\circ$",P[1],3.2*dir(t[1]+180),blue+fontsize(8pt));
+label("$110^\circ$",P[3],3.2*dir(t[3]+180),deepgreen+fontsize(8pt));
+label("$60^\circ$",P[2]+(-0.56,0.0),red+fontsize(7pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+$\angle ACE$ subtends exactly this arc $EA$, so $\angle ACE=\dfrac{1}{2}\cdot120^\circ=\boxed{60^\circ}$.

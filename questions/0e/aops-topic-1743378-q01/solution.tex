@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1743378_aime_wiki_solution_help
+% Stable identity: aops-topic-1743378-q01
+Each of the six numbers $x\in\{1,2,3,5,6,7\}$ is a root of $f(x)-12$ or of $f(x)+12$. Both are cubic polynomials, so each has at most three roots; hence each has exactly three of the six numbers as roots. Write
+\[
+f(x)-12=a(x-p)(x-q)(x-r),\qquad f(x)+12=a(x-u)(x-v)(x-w),
+\]
+with $\{p,q,r,u,v,w\}=\{1,2,3,5,6,7\}$ (the same leading coefficient $a$). Subtracting, the $x^2$ coefficients agree, so $p+q+r=u+v+w=\dfrac{1+2+3+5+6+7}{2}=12$. The triples from the set with sum $12$ are $\{1,5,6\}$ and $\{2,3,7\}$ (and these are complementary), so one of $f\mp12$ vanishes at $1,5,6$ and the other at $2,3,7$. (This is the precise form of the ``bends'' argument: a cubic cannot alternate more often.)
+
+The $x$ coefficients must agree too, and they do: $1\cdot5+5\cdot6+6\cdot1=41=2\cdot3+3\cdot7+7\cdot2$. The constant terms then determine $a$. Say $f(x)-12=a(x-1)(x-5)(x-6)$ and $f(x)+12=a(x-2)(x-3)(x-7)$. Subtracting,
+\[
+-24=a\bigl[(x-1)(x-5)(x-6)-(x-2)(x-3)(x-7)\bigr]=a\bigl[(41x-30)-(41x-42)\bigr]=12a,
+\]
+so $a=-2$, and $f(0)=12+a(-1)(-5)(-6)=12+60=72$. (With the roles exchanged, $f$ is replaced by $-f$.) Hence $|f(0)|=\boxed{72}$.

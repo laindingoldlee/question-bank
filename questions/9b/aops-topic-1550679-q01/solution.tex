@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1550679_circles_inside_circle
+% Stable identity: aops-topic-1550679-q01
+Let $O$ be the centre of the large circle. A small circle touching the large circle from inside has its centre at distance $R-r$ from $O$, so all the small centres lie on a circle of radius $R-r$, equally spaced at angles $\dfrac{2\pi}{n}$ (the figure shows $n=6$):
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=3; int n=6; real r=R*sin(pi/n)/(1+sin(pi/n));
+draw(circle((0,0),R),linewidth(0.9));
+pair[] P; for(int i=0;i<n;++i){ P.push((R-r)*dir(90+360*i/n)); draw(circle(P[i],r),blue); dot(P[i],blue); }
+dot((0,0)); label("$O$",(0,0),S);
+draw((0,0)--P[0],dashed);draw((0,0)--P[1],dashed);draw(P[0]--P[1],red);
+pair T=(R)*dir(90); draw(P[0]--T,red+dashed);
+label("$r$",(P[0]+T)/2,E,red);
+draw(arc((0,0),0.45,90,150));label("$\theta$",0.62*dir(120));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Neighbouring small circles touch, so the red segment joining their centres passes through their point of contact and has length $2r$. In the isosceles triangle formed by $O$ and two neighbouring centres, the apex angle is $\theta=\dfrac{2\pi}{n}$ and the legs are $R-r$, so half the base is $(R-r)\sin\dfrac{\pi} {n}$:
+\[
+r=(R-r)\sin\dfrac{\pi} {n}\quad\Longrightarrow\quad\boxed{r=\dfrac{R\sin\dfrac{\pi}{n}}{1+\sin\dfrac{\pi}{n}}}.
+\]
+Checks: $n=2$ gives $r=\dfrac {R}{2}$ (two circles along a diameter) and $n=6$ gives $r=\dfrac {R}{3}$.

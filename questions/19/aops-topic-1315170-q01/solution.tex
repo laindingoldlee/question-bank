@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1315170_polygon_geometry
+% Stable identity: aops-topic-1315170-q01
+Measure directions of the sides as we go around each polygon counterclockwise, starting with $\overrightarrow{GH}$ at direction $0^\circ$. Each turn of the octagon is $45^\circ$ and each turn of the pentagon is $72^\circ$.
+\begin{itemize}
+\item In the octagon, $\overrightarrow{HA},\overrightarrow{AB},\overrightarrow{BC}$ follow $\overrightarrow{GH}$, so $\overrightarrow{BC}$ has direction $3\cdot45^\circ=135^\circ$.
+\item The pentagon $GHIJK$ lies inside the octagon, so it also turns counterclockwise from $\overrightarrow{GH}$: $\overrightarrow{HI}$ has direction $72^\circ$ and $\overrightarrow{IJ}$ has direction $144^\circ$.
+\end{itemize}
+The lines $BC$ and $IJ$ therefore make an angle of $144^\circ-135^\circ=\boxed{9^\circ}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair[] O; for(int k=0;k<8;++k) O[k]=dir(22.5+45*k);
+string[] L={"$A$","$B$","$C$","$D$","$E$","$F$","$G$","$H$"};
+pair G=dir(-112.5),Hh=dir(-67.5);
+for(int k=0;k<8;++k) O[k]=rotate(-112.5+45*k)*(1,0);
+draw(O[0]--O[1]--O[2]--O[3]--O[4]--O[5]--O[6]--O[7]--cycle,linewidth(0.9));
+for(int k=0;k<8;++k) label(L[(k+6)%8],O[k],O[k]);
+pair P0=O[0],P1=O[1]; pair d=P1-P0; pair[] Pt={P0,P1};
+for(int k=0;k<3;++k){d=rotate(72)*d; Pt.push(Pt[Pt.length-1]+d);}
+draw(Pt[0]--Pt[1]--Pt[2]--Pt[3]--Pt[4]--cycle,blue);
+label("$I$",Pt[2],W,blue); label("$J$",Pt[3],SW,blue); label("$K$",Pt[4],SE,blue);
+pair Bp=O[3],Cp=O[4]; pair X=extension(Bp,Cp,Pt[2],Pt[3]);
+draw(Cp--X,red+dashed); draw(Pt[3]--X,red+dashed); dot(X,red); label("$X$",X,W,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(A coordinate computation of the intersection point $X$ confirms $\angle BXI=9^\circ$.)

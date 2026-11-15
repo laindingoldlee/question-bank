@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1202926_polar_coordinates
+% Stable identity: aops-topic-1202926-q01
+Use $r=\sqrt{x^2+y^2}$ and the angle $\theta$ with $\cos\theta=\dfrac {x}{r}$, $\sin\theta=\dfrac {y}{r}$, choosing the quadrant from the signs of $x,y$:
+\[\begin{array}{c|c||c|c}
+\text{point}&(r,\theta)&\text{point}&(r,\theta)\\\hline
+(-6,8)&(10,\ 126.9^\circ)&(8,-15)&(17,\ 298.1^\circ)\\
+(0,-4)&(4,\ 270^\circ)&(2.4,1.8)&(3,\ 36.9^\circ)\\
+(-5,-5)&(7.1,\ 225^\circ)&(-7\sqrt2,7\sqrt2)&(14,\ 135^\circ)\\
+(3,-3)&(4.2,\ 315^\circ)&(-4.2,-3.6)&(5.5,\ 220.6^\circ)\\
+(-\sqrt3,1)&(2,\ 150^\circ)&(5.7,-0.6)&(5.7,\ 354.0^\circ)\\
+(-9,9\sqrt3)&(18,\ 120^\circ)&(-3.5,-10.5)&(11.1,\ 251.6^\circ)
+\end{array}\]
+For example, for $(-6,8)$: $r=10$, and $\theta=180^\circ-\arctan\dfrac{8}{6}\approx180^\circ-53.1^\circ=126.9^\circ$:
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+draw((-8,0)--(4,0),gray,Arrow); draw((0,-1)--(0,10),gray,Arrow); draw((0,0)--(-6,8),blue+linewidth(0.9)); dot((-6,8));
+draw(arc((0,0),2,0,126.87),red,Arrow); label("$(-6,8)$",(-6,8),NW); label("$r=10$",(-3,4),SW); label("$126.9^\circ$",(1.5,2.2),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

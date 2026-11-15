@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1916608_geometry
+% Stable identity: aops-topic-1916608-q01
+Let the centres be $O_1,O_2$ and the intersection points $P,Q$. All four segments $O_1P,O_1Q,O_2P,O_2Q$ have length $7$, so $O_1PO_2Q$ is a rhombus. Since $7^2+7^2=\left(7\sqrt2\right)^2$, the angle $O_1PO_2$ is a right angle, so the rhombus is a square of side $7$, and $\angle PO_1Q=\angle PO_2Q=90^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real d=7*sqrt(2); pair O1=(0,0),O2=(d,0),P=(d/2,d/2),Q=(d/2,-d/2);
+path lens=arc(O1,7,-45,45)--arc(O2,7,135,225)--cycle;
+fill(lens,palegreen);
+draw(circle(O1,7),linewidth(1)); draw(circle(O2,7),linewidth(1));
+draw(O1--P--O2--Q--cycle,dashed); draw(O1--O2,dashed); draw(P--Q,dashed);
+pair u=unit(P-O1), v=unit(Q-O1); draw(O1+0.9*u--O1+0.9*(u+v)--O1+0.9*v,linewidth(0.6));
+dot(O1);dot(O2);dot(P);dot(Q);
+label("$O_1$",O1,W); label("$O_2$",O2,E); label("$P$",P,N); label("$Q$",Q,S);
+label("$7$",(O1+P)/2,NW); label("$7$",(O2+P)/2,NE);
+draw((0,-8.2)--(d,-8.2),Arrows(4)); label("$7\sqrt{2}$",(d/2,-8.2),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The common region (shaded) consists of two congruent circular segments cut off by the chord $PQ$. Each is a quarter-circle sector minus a right triangle with legs $7$:
+\[
+\dfrac{\pi\cdot7^2}{4}-\dfrac{7\cdot7}{2}=\dfrac{49\pi}{4}-\dfrac{49}{2}.
+\]
+So the common area is
+\[
+2\left(\dfrac{49\pi}{4}-\dfrac{49}{2}\right)=\boxed{\dfrac{49\pi}{2}-49}\ \text{cm}^2\approx27.97\ \text{cm}^2 .
+\]

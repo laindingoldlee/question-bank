@@ -1,0 +1,7 @@
+Put $B=(-4,-4,0),C=(4,-4,0),D=(4,4,0),E=(-4,4,0)$ and $A=(0,0,4\sqrt2)$. Then $M=(-2,-2,2\sqrt2)$ and $N=(2,-2,2\sqrt2)$. The parallel sides $DE,MN$ have lengths $8,4$, and their perpendicular separation in the common plane is $\sqrt{6^2+(2\sqrt2)^2}=2\sqrt{11}$. Thus the trapezoid's area is $\boxed{\dfrac{8+4}{2}\cdot2\sqrt{11}=12\sqrt{11}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair pr(real x,real y,real z){return (x+.5*y,z+.3*y);}pair A=pr(0,0,4*sqrt(2)),B=pr(-4,-4,0),C=pr(4,-4,0),D=pr(4,4,0),E=pr(-4,4,0),M=midpoint(A--B),N=midpoint(A--C);fill(D--E--M--N--cycle,lightblue);draw(B--C--D--E--cycle);draw(A--B);draw(A--C);draw(A--D);draw(A--E);draw(D--E--M--N--cycle,blue);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,E);label("$E$",E,W);label("$M$",M,W);label("$N$",N,E);
+\end{asy}

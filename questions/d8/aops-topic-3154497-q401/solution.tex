@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h3154497_ryanbear_math_story__contest
+% Stable identity: aops-topic-3154497-q401
+After scaling and reflecting, place $ A=(0,0)$, $ B=(1,0)$, $ C=(\dfrac{1}{2},v)$, $ D=(-\dfrac{1}{2},v)$ with $ v>0 $; the horizontal coordinate of $ C $ follows from $ AC=BC $. Write $ P=(t,0)$ with $ t>1 $ and $ K=v^2+\dfrac{1}{4}$. The first circumcircle is $ x^2+y^2-\dfrac{K}{v} y=0 $. Substituting $ P+s(D-P)$ gives the two intersections $ s=1 $ and $ s=\dfrac{t^2}{(t+\dfrac{1}{2})^2+v^2}$. Thus
+\[Q=\left(\dfrac{t(\dfrac{t}{2}+K)}{(t+\dfrac{1}{2})^2+v^2},\dfrac{t^2v}{(t+\dfrac{1}{2})^2+v^2}\right).\]
+Consequently line $ AQ $ meets $ y=v $, the line $ CD $, at $ X=(\dfrac{1}{2}+\dfrac{K}{t},v)$. The circle through $ A,P,Q $ has equation $ x^2+y^2-tx+\dfrac{t}{2v}y=0 $, as direct substitution verifies. Put $ R=P+w(C-P)$. Substitution and removal of the root $ w=0 $ yield
+\[w=\dfrac{t(t-1)}{(t-\dfrac{1}{2})^2+v^2}.\]
+Both second intersections lie on the stated segments because their parameters are strictly between zero and one. The line through $ B $ and $ R $ meets $ y=v $ at horizontal coordinate
+\[1+\dfrac{R_x-1}{w}=1+\dfrac{t-1}{w}+\dfrac{1}{2}-t=\dfrac{1}{2}+\dfrac{K}{t}.\]
+It therefore passes through the same point $ X $, proving concurrency.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real v=1,t=2,K=v*v+.25,den=(t+.5)^2+v*v,s=t*t/den,w=t*(t-1)/((t-.5)^2+v*v);pair A=(0,0),B=(1,0),C=(.5,v),D=(-.5,v),P=(t,0),Q=P+s*(D-P),R=P+w*(C-P),X=(.5+K/t,v);draw(A--B--C--D--cycle);draw(P--D^^P--C,dashed);draw(A--X^^B--X^^D--X,blue);draw(circle((0,K/(2v)),K/(2v)),gray);pair O=(t/2,-t/(4v));draw(circle(O,abs(O)),gray);label("$A$",A,SW);label("$B$",B,S);label("$C$",C,N);label("$D$",D,NW);label("$P$",P,E);label("$Q$",Q,W);label("$R$",R,SE);label("$X$",X,NE);
+\end{asy}

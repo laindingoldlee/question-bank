@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h1642359_geometry
+% Stable identity: aops-topic-1642359-q01
+Suppose a triangle with integer sides has an angle $\theta$ between sides $b$ and $c$, opposite side $a$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(5,0),C=(1.6,2.4);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(arc(A,0.6,0,degrees(C-A)),red);
+label("$\theta$",0.95*dir(degrees(C-A)/2),red);
+label("$b$",(A+B)/2,S);label("$c$",(A+C)/2,NW);label("$a$",(B+C)/2,NE);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the law of cosines,
+\[
+\cos\theta=\dfrac{b^2+c^2-a^2}{2bc},
+\]
+which is a rational number.
+
+\textbf{$\theta=30^\circ,45^\circ,135^\circ,150^\circ$ are impossible.} Their cosines are $\pm\dfrac{\sqrt3}{2}$ and $\pm\dfrac{\sqrt2}{2}$, which are irrational.
+
+\textbf{$\theta=60^\circ$ or $120^\circ$ gives an irrational area.} Then $\sin\theta=\dfrac{\sqrt3}{2}$ and
+\[
+\text{area}=\dfrac{1}{2}bc\sin\theta=\dfrac{\sqrt3}{4}\,bc ,
+\]
+which is irrational because $bc$ is a positive integer. (Such triangles exist, for example the equilateral ones or $3,5,7$ with a $120^\circ$ angle, but none has integer area.)
+
+So no triangle has all three properties, and
+\[
+N=\boxed{0}.
+\]

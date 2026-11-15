@@ -1,0 +1,9 @@
+There is no finite upper bound when the hexagons need not be regular. Let $0<\varepsilon<\dfrac{1}{2}$. From a unit square remove two opposite corner triangles with leg lengths $\varepsilon$. The remaining hexagon has area $1-\varepsilon^2$. The square with vertices $(\varepsilon,0),(1,\varepsilon),(1-\varepsilon,1),(0,1-\varepsilon)$ lies in it with vertices on its boundary; its area is $q=(1-\varepsilon)^2+\varepsilon^2$. Repeat this construction inside each new square. Put $K=24\sqrt3-41>0$ and scale the initial figure so $h_1s_1=K$. Then $h_n=h_1q^{n-1}$ and $s_n=s_1q^{n-1}$, giving
+\[\left(\sum_{n\ge1}h_n\right)\left(\sum_{n\ge1}s_n\right)=\dfrac{K}{(1-q)^2}.\]
+As $\varepsilon\to0^+$, $q\to1^-$, so this is unbounded. A regularity or shape restriction is needed for a finite maximum.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+real e=0.2;draw((e,0)--(1,0)--(1,1-e)--(1-e,1)--(0,1)--(0,e)--cycle);filldraw((e,0)--(1,e)--(1-e,1)--(0,1-e)--cycle,lightgray,black);label("hexagon",(0.5,-0.15));label("square",(0.5,0.5));
+\end{asy}

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1198721_2006_cyprus_molyceumproblem_22
+% Stable identity: aops-topic-1198721-q01
+Let $AB=x$ and $B\Gamma=y$. The quadrilateral $K\Lambda MN$ is the rectangle minus four corner right triangles:
+\begin{itemize}
+\item at $B$: legs $KB=\dfrac {x}{3}$ and $B\Lambda=\dfrac{2y}{3}$, area $\dfrac{xy}{9}$;
+\item at $\Gamma$: legs $\Lambda\Gamma=\dfrac {y}{3}$ and $\Gamma M=\dfrac{2x}{3}$, area $\dfrac{xy}{9}$;
+\item at $\Delta$ and at $A$, likewise $\dfrac{xy}{9}$ each.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(6,3),D=(0,3); pair K=(4,0),L=(6,2),M=(2,3),N=(0,1);
+draw(A--B--C--D--cycle,linewidth(0.9)); filldraw(K--L--M--N--cycle,lightblue,blue);
+label("$A$",A,SW);label("$B$",B,SE);label("$\Gamma$",C,NE);label("$\Delta$",D,NW);label("$K$",K,S);label("$\Lambda$",L,E);label("$M$",M,N);label("$N$",N,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $E_1=xy-\dfrac{4xy}{9}=\dfrac{5}{9}xy$ and $\dfrac{E_1}{E_2}=\boxed{\dfrac{5}{9}}$, answer $\textbf{(A)}$, for every rectangle. (The posted solution wrongly treated $K\Lambda MN$ as a rhombus; it is a parallelogram, and the area-from-diagonals formula does not apply.)

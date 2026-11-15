@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2949414_2021_emcc_guts_round_p1_p12_exeter_math_club_competition
+% Stable identity: aops-topic-2949414-q11
+After a prime $p$, until the next prime, $f(n)=n-p+1$. The longest relevant run has length 8: $89,90,\ldots,96$ or $113,\ldots,120$. Checking primes through 120 gives no longer gap before the cutoff, so the answer is $\boxed8$. The exact recurrence verifies it.
+\begin{verbatim}
+from math import isqrt
+f=[0]*121
+for n in range(2,121):
+ prime=all(n%d for d in range(2,isqrt(n)+1))
+ f[n]=1 if prime else f[n-1]+1
+assert max(f)==8
+\end{verbatim}

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3180807_2018_emcc_individual_speed_test__exeter_math_club_competition
+% Stable identity: aops-topic-3180807-q12
+Set $B=(0,0)$, $C=(12,0)$, $D=(12,9)$, and $A=(0,a)$. Perpendicularity of $DB$ and $DA$ gives $(-12,-9)\cdot(-12,a-9)=0$, or $225-9a=0$, so $a=25$. The parallel sides $AB,CD$ have lengths $25,9$ and separation $12$. Therefore the area is $\dfrac{25+9}{2}\cdot12=\boxed{204}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] pts={(0,25),(0,0),(12,0),(12,9)}; string[] names={"$A$","$B$","$C$","$D$"}; path boundary=pts[0]; for(int j=1;j<pts.length;++j)boundary=boundary--pts[j];draw(boundary--cycle); for(int i=0;i<pts.length;++i) label(names[i],pts[i],dir(90+360*i/pts.length));draw((0,0)--(12,9),dashed);
+\end{asy}

@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2360552_objectzs_1000th_post_problems_and_other_special_posts
+% Stable identity: aops-topic-2360552-q10
+Put the centres at $A(-1,0)$, $B(1,0)$ and $C(0,1)$. Circle $C$ meets circle $A$ at $(0,0)$ and $(-1,1)$; the common part of the two discs is a lens made of two quarter-circle segments, of area $2\left(\dfrac\pi4-\dfrac12\right)=\dfrac\pi2-1$. The same holds for $B$, and the two lenses meet only at the origin. So the required area is
+\[\pi-2\left(\dfrac\pi2-1\right)=\boxed{2}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(-1,0),B=(1,0),C=(0,1);
+fill(circle(C,1),lightgray);fill(circle(A,1),white);fill(circle(B,1),white);
+draw(circle(A,1));draw(circle(B,1));draw(circle(C,1));draw(A--B,dashed);
+dot(A);dot(B);dot(C);dot((0,0));label("$A$",A,S);label("$B$",B,S);label("$C$",C,N);
+\end{asy}

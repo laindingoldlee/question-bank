@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2690584_cool_geometry_problem
+% Stable identity: aops-topic-2690584-q01
+\emph{The ratio $BF:FC$.} Apply Menelaus' theorem to triangle $DBC$ with the line through $A$, $E$, $F$ ($E$ on $DB$, $F$ on $BC$, $A$ on line $CD$ extended):
+\[\dfrac{DE}{EB}\cdot\dfrac{BF}{FC}\cdot\dfrac{CA}{AD}=1\qquad\Longrightarrow\qquad1\cdot\dfrac{BF}{FC}\cdot\dfrac32=1,\]
+so $BF:FC=2:3$ and $\dfrac{BF}{BC}=\dfrac25$. (With mass points: put mass $1$ at $A$ and $2$ at $C$, so $D$ has mass $3$; as $E$ is the midpoint of $BD$, $B$ has mass $3$; then $F$ on $BC$ satisfies $BF:FC=2:3$.)
+
+\emph{Areas.} Since $DC=\dfrac13AC$, $[DBC]=\dfrac13\cdot360=120$. Triangles $EBF$ and $DBC$ share the angle at $B$, so
+\[[EBF]=\dfrac{BE}{BD}\cdot\dfrac{BF}{BC}\cdot[DBC]=\dfrac12\cdot\dfrac25\cdot120=\boxed{24}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),C=(6,0),D=(4,0),B=(1.5,4);pair Ep=(B+D)/2;pair F=extension(A,Ep,B,C);
+fill(Ep--B--F--cycle,lightgray);
+draw(A--B--C--cycle,linewidth(0.8));draw(B--D);draw(A--F);dot(D);dot(Ep);dot(F);
+label("$A$",A,SW);label("$B$",B,N);label("$C$",C,SE);label("$D$",D,S);label("$E$",Ep,W);label("$F$",F,NE);
+label("$2$",(A+D)/2,S,fontsize(8pt));label("$1$",(D+C)/2,S,fontsize(8pt));
+\end{asy}

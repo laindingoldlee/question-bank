@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1656582_curled_around_cylindrical_problems_2018_aops_mu_alpha_theta_may_invite_geo_30
+% Stable identity: aops-topic-1656582-q01
+The circumference is $2\pi\cdot\dfrac{2}{\pi}=4$ feet. Cut the curved surface along a vertical line and unroll it; a path that winds $n$ times around and rises the full height $h$ becomes a path across $n$ copies of the $4\times h$ rectangle placed side by side. The shortest such path is the diagonal of an $(4n)\times h$ rectangle (not to scale below).
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+real h=192;real sc=0.55;
+pair o=(0,0);
+draw(box((0,0),(144,h)),linewidth(0.9));draw((0,0)--(144,h),blue+linewidth(1));
+label("$36\cdot4=144$",(72,0),S);label("$h$",(0,h/2),W);label("$L_1$",(72,h/2),NW,blue);
+pair q=(200,0);
+draw(box(q,q+(360,h)),linewidth(0.9));draw(q+(0,h)--q+(360,0),red+linewidth(1));
+label("$90\cdot4=360$",q+(180,0),S);label("$h$",q+(360,h/2),E);label("$L_2$",q+(180,h/2),NE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the snakes travel
+\[
+L_1=\sqrt{144^2+h^2},\qquad L_2=\sqrt{360^2+h^2},
+\]
+and equal travel times mean $\dfrac{L_1}{10}=\dfrac{L_2}{17}$, i.e.\ $289\left(144^2+h^2\right)=100\left(360^2+h^2\right)$:
+\[
+189h^2=12960000-5992704=6967296,\qquad h^2=36864,\qquad h=\boxed{192}\text{ feet}.
+\]
+Check: $L_1=\sqrt{144^2+192^2}=240$ and $L_2=\sqrt{360^2+192^2}=408$, and $\dfrac{240}{10}=\dfrac{408}{17}=24$ seconds.

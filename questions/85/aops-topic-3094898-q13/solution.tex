@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3094898_round_2_summer_math_comp_probs
+% Stable identity: aops-topic-3094898-q13
+Each such integer has a unique pair of prime factors $p\le q$. Count all pairs with $pq<1000$. The exact enumeration below uses trial division to generate every prime and gives $\boxed{299}$.\begin{verbatim}
+from math import isqrt
+primes=[n for n in range(2,1000)
+        if all(n%d for d in range(2,isqrt(n)+1))]
+count=sum(p*q<1000 for i,p in enumerate(primes) for q in primes[i:])
+assert count==299
+\end{verbatim}

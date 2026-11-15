@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2319138_200th_post_celebration_geometry
+% Stable identity: aops-topic-2319138-q07
+A bisector splits an angle into two equal angles, so
+\[m\angle SYZ=m\angle XYS=\boxed{34.2^\circ},\qquad m\angle XYZ=2\cdot34.2^\circ=\boxed{68.4^\circ}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair Y=(0,0), X=3*dir(0), Sp=3*dir(34.2), Z=3*dir(68.4);
+draw(Y--X,linewidth(0.9),Arrow(5)); draw(Y--Z,linewidth(0.9),Arrow(5)); draw(Y--Sp,blue+linewidth(0.9),Arrow(5));
+draw(arc(Y,1.0,0,34.2),red); draw(arc(Y,1.15,34.2,68.4),red);
+label("$34.2^\circ$",1.35*dir(14),red+fontsize(8pt)); label("$34.2^\circ$",1.55*dir(53),red+fontsize(8pt));
+label("$Y$",Y,SW); label("$X$",X,S); label("$S$",Sp,E,blue); label("$Z$",Z,NW);
+dot(Y);
+\end{asy}

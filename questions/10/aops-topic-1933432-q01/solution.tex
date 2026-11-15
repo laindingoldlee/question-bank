@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h1933432_mock_mathcounts_state_b_by_th3numb3rthr33
+% Stable identity: aops-topic-1933432-q01
+Since $a\ge1$ and the digits do not decrease, all four digits lie in $\{1,2,\dots,9\}$, and the number is determined by its digits.
+
+\textbf{The correspondence.} Put the grid with corners $(0,0)$ and $(8,4)$. Given digits $a\le b\le c\le d$, walk right along the bottom to $x=a-1$ and step up, then walk right to $x=b-1$ and step up, then to $x=c-1$ and step up, then to $x=d-1$ and step up, and finally walk right to $x=8$. Because the digits do not decrease the walk never goes left (equal digits give consecutive up-steps), so this is a path with $8$ right steps and $4$ up steps. Conversely, the $x$-coordinates $x_1\le x_2\le x_3\le x_4$ of the four up-steps of any such path lie in $\{0,\dots,8\}$, and the digits $x_1+1\le\cdots\le x_4+1$ give back the number. For example, $1355$ corresponds to up-steps at $x=0,2,4,4$.
+
+So the count equals the number of paths, which is the number of ways to choose which $4$ of the $12$ steps go up:
+\[
+\dbinom{12}{4}=\boxed{495}.
+\]

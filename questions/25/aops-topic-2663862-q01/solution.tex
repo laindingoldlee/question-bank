@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2663862_angle_equality_induces_equal_lengths
+% Stable identity: aops-topic-2663862-q01
+\textbf{(a)} Take three collinear points with $A$ between $B$ and $C$, for instance $B=0$, $A=1$, $C=3$ on a line. The rays $BA$ and $BC$ point the same way, so $\angle ABC=0^\circ$; likewise the rays $CA$ and $CB$ point the same way, so $\angle ACB=0^\circ$. The angles are equal, but $AB=1\ne2=AC$.
+
+\textbf{(b)} Three non-collinear points lie in a plane and form a genuine triangle. In triangles $ABC$ and $ACB$ (the same triangle with $B$ and $C$ exchanged) we have $BC=CB$, $\angle ABC=\angle ACB$ and $\angle ACB=\angle ABC$, so they are congruent by ASA. Corresponding sides give $AB=AC$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),A=(1,0),C=(3,0);
+draw((-0.3,0)--(3.3,0),gray);dot(B);dot(A);dot(C);
+label("$B$",B,S);label("$A$",A,S);label("$C$",C,S);
+label("$\angle ABC=\angle ACB=0^\circ$",(1.5,0.35),fontsize(8pt));
+pair P=(5,0),Q=(7.4,0),R=(6.2,1.6);
+draw(P--Q--R--cycle,linewidth(0.8));
+draw(arc(P,0.45,0,degrees(R-P)));draw(arc(Q,0.45,degrees(R-Q),180));
+label("$B$",P,SW);label("$C$",Q,SE);label("$A$",R,N);
+\end{asy}

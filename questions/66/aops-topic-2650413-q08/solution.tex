@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h2650413_sigma_mathematics_competition_smc_problems
+% Stable identity: aops-topic-2650413-q08
+A $90^\circ$ rotation turns every line through a right angle, so $A'C'\perp AC$ and $B'C'\perp BC$; thus $\angle CDE=90^\circ$ and $\angle EFC'=90^\circ$. The two triangles overlap in quadrilateral $DEFG$, with corner $C$ of $ABC$ cut off by $A'C'$ and corner $C'$ of $A'B'C'$ cut off by $BC$ (see the enlarged sketch).
+
+Triangle $CDE$ has a right angle at $D$ and shares angle $C$ with $ABC$ (right-angled at $A$), so $CD:DE:CE=4:3:5$; write $CD=4k$, $DE=3k$, $CE=5k$. Triangle $C'FE$ has a right angle at $F$ and $\angle FEC'=\angle DEC$ (vertical angles), so it is similar to $CDE$; since the areas are equal, the triangles are congruent, with $EF=DE=3k$ and $FC'=DC=4k$.
+
+Now triangle $CFG$ has a right angle at $F$, $CF=CE+EF=8k$ and $FG=CF\tan C=8k\cdot\dfrac34=6k$. So
+\[[DEFG]=[CFG]-[CDE]=24k^2-6k^2=18k^2=\dfrac{6}{27},\]
+giving $k=\dfrac19$.
+
+Coordinates: $A=(0,0)$, $B=(3,0)$, $C=(0,4)$. Line $A'C'$ is $y=4-4k=\dfrac{32}{9}$, so $C'$ has $y$-coordinate $\dfrac{32}{9}$. Going from $C'$ through $F$ to $B'$ is the direction $-\dfrac{(4,3)}{5}$ (perpendicular to $BC$, pointing away from $C'$ towards $F$), and $C'B'=CB=5$, so $B'=C'-(4,3)$ has $y$-coordinate $\dfrac{32}{9}-3=\dfrac59$. The distance from $B'$ to line $AB$ (the $x$-axis) is $\dfrac59$, and $m+n=\boxed{14}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(3,0),C=(0,4);real s=32/9,t=-28/9;pair A1=(t,s),B1=(t,s-3),C1=(t+4,s);
+draw(A--B--C--cycle,linewidth(0.8));draw(A1--B1--C1--cycle,dashed+linewidth(0.8));
+draw(box((-0.25,2.7),(1.05,4.15)),gray);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$A'$",A1,NW);label("$B'$",B1,W);label("$C'$",C1,E);
+draw(B1--(B1.x,0),dotted);label("$h$",(B1.x,B1.y/2),E);draw((-3.6,0)--A,dotted);
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real s=32/9,t=-28/9;pair A=(0,0),B=(3,0),C=(0,4),C1=(t+4,s);
+pair D=(0,s),Ep=(1/3,s),F=(8/15,148/45),G=(0,s-3*(t+4)/4);
+picture p;size(p,6cm);
+fill(p,D--Ep--F--G--cycle,lightgray);
+draw(p,(0,2.6)--(0,4.15),linewidth(0.8));draw(p,C--(1.15,4-4*1.15/3),linewidth(0.8));
+draw(p,(-0.25,s)--C1,dashed+linewidth(0.8));draw(p,C1--C1+1.35*(-4,-3)/5,dashed+linewidth(0.8));
+draw(p,D+(0.05,0)--D+(0.05,0.05)--D+(0,0.05));
+pair u=unit(C-F),v=unit(C1-F);draw(p,F+0.05*u--F+0.05*(u+v)--F+0.05*v);
+dot(p,D);dot(p,Ep);dot(p,F);dot(p,G);
+label(p,"$C$",C,N);label(p,"$D$",D,SW);label(p,"$E$",Ep,N);label(p,"$F$",F,SW);label(p,"$G$",G,W);label(p,"$C'$",C1,E);
+label(p,"$4k$",(0,(4+s)/2),W,fontsize(8pt));label(p,"$3k$",(D+Ep)/2,N,fontsize(8pt));label(p,"$3k$",(Ep+F)/2,SW,fontsize(8pt));label(p,"$4k$",(F+C1)/2,SE,fontsize(8pt));
+clip(p,box((-0.25,2.6),(1.15,4.15)));add(p);
+\end{asy}

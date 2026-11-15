@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2402916_interesting_polynomial_problem_try_to_solve_this
+% Stable identity: aops-topic-2402916-q01
+Let $P(x)$ be the polynomial; the coefficient of $x^{1998-k}$ is $(-1)^k(k+1)$ for $k=0,1,\dots,1998$. We claim that
+\[P(x)=\sum_{i=1}^{999}i\,x^{1998-2i}(x-1)^2+1000.\]
+Indeed, $i\,x^{1998-2i}(x-1)^2=i\,x^{2000-2i}-2i\,x^{1999-2i}+i\,x^{1998-2i}$. Compare coefficients on the right:
+\begin{itemize}
+\item an odd power $x^{1999-2i}$ ($1\le i\le999$) comes only from the $i$-th term, with coefficient $-2i$; in $P$ its coefficient is $(-1)^{2i-1}\cdot2i=-2i$;
+\item an even power $x^{1998-2j}$ with $1\le j\le998$ gets $j+1$ from the $(j+1)$-th term and $j$ from the $j$-th term, in total $2j+1$, as in $P$;
+\item $x^{1998}$ gets $1$ (from $i=1$), and the constant term is $999+1000=1999$, as in $P$.
+\end{itemize}
+Every term of the sum is nonnegative for real $x$, because $x^{1998-2i}$ is an even power and $(x-1)^2\ge0$. Therefore
+\[P(x)\ge1000>0\qquad\text{for all real }x,\]
+so $P(x)\ne0$. $\blacksquare$
+
+\emph{How to find the grouping.} For $x\le0$ every term of $P(x)$ is nonnegative and the constant is $1999$, so only $x>0$ is in question. Pairing terms as $x^{2m}-2x^{2m-1}+x^{2m-2}=x^{2m-2}(x-1)^2$ uses up the coefficients $1,-2,1$; the leftover $2x^{1996}$ starts the next group $2\left(x^{1996}-2x^{1995}+x^{1994}\right)$, and so on.

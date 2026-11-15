@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1584796_coordinate_geometry_countdown_help
+% Stable identity: aops-topic-1584796-q62
+If $a\ge0$, the graph of $y=|x|+a$ lies on or above the graph of $y=-|x|$ everywhere (they meet only at the origin when $a=0$), and no region is enclosed. So $a<0$.
+
+For $a<0$ the two graphs are a downward ``V'' with vertex $(0,0)$ and an upward ``V'' with vertex $(0,a)$. For $x\ge0$ they meet where $-x=x+a$, i.e.\ at $\left(-\dfrac {a}{2},\dfrac {a}{2}\right)$, and symmetrically at $\left(\dfrac {a}{2},\dfrac {a}{2}\right)$. The enclosed region is the quadrilateral with these four vertices; its sides have slopes $\pm1$, so it is a square, with diagonals of length $|a|$ (from $(0,0)$ to $(0,a)$, and between the two side vertices). Its area is half the product of the diagonals:
+\[
+\dfrac{a^2}{2}=72\qquad\Longrightarrow\qquad a^2=144\qquad\Longrightarrow\qquad a=\boxed{-12}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+real a=-12;
+draw((-15,0)--(15,0),gray,Arrow(TeXHead));draw((0,-12)--(0,4),gray,Arrow(TeXHead));
+label("$x$",(15,0),E,gray);label("$y$",(0,4),N,gray);
+fill((0,0)--(6,-6)--(0,a)--(-6,-6)--cycle,palegray);
+draw((-13,-13)--(0,0)--(13,-13),blue+linewidth(0.9));
+draw((-2.5,a+2.5)--(0,a)--(2.5,a+2.5),red+linewidth(0.9));
+draw((-2.5,a+2.5)--(-9,-3),red+linewidth(0.9));draw((2.5,a+2.5)--(9,-3),red+linewidth(0.9));
+dot((0,0));dot((0,a));dot((6,-6));dot((-6,-6));
+label("$y=-|x|$",(-13,-13),SW,blue);label("$y=|x|-12$",(9,-3),E,red);
+label("$(0,-12)$",(0,a),S);label("$(6,-6)$",(6,-6)+(1.0,0),E);label("$(-6,-6)$",(-6,-6)+(-1.0,0),W);label("$(0,0)$",(0,0),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(For $a=-12$ the vertices are $(0,0)$, $(6,-6)$, $(0,-12)$ and $(-6,-6)$, and the square has side $6\sqrt2$ and area $72$.)

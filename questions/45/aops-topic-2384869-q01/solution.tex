@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2384869_pythagorean
+% Stable identity: aops-topic-2384869-q01
+Since $b>0$, we have $c^2=a^2+b^2>a^2$, so $c>a$; in the same way $c>b$. Therefore
+\[a+c>c>b\qquad\text{and}\qquad b+c>c>a.\]
+For the third inequality,
+\[(a+b)^2=a^2+2ab+b^2=c^2+2ab>c^2,\]
+and since $a+b$ and $c$ are positive, $a+b>c$. $\blacksquare$
+
+So yes: three positive lengths satisfying the Pythagorean relation always satisfy the triangle inequality, and indeed they are the sides of a right triangle with hypotenuse $c$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), A=(4,0), B=(0,3);
+draw(A--B--C--cycle,linewidth(0.8));
+real s=0.3; draw((s,0)--(s,s)--(0,s));
+label("$a$",(0,1.5),W); label("$b$",(2,0),S); label("$c$",(2,1.5),NE);
+\end{asy}

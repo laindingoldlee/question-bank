@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1526865_geo_question
+% Stable identity: aops-topic-1526865-q01
+Since $AC=97>86$, the point $C$ lies outside the circle, and $X$ lies between $B$ and $C$. Let the line $CA$ meet the circle at $D$ (between $C$ and $A$) and at the point diametrically opposite $D$; their distances from $C$ are $97-86=11$ and $97+86=183$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real h=sqrt(7200);
+pair C=(0,0),X=(33,0),B=(61,0),A=(47,h);
+pair D=C+11/97*(A-C);
+draw(arc(A,86,228,292),blue);
+draw(A--B--C--cycle,linewidth(1));
+draw(A--X,dashed);
+dot(A);dot(B);dot(C);dot(X);dot(D);
+label("$A$",A,N);label("$B$",B,SE);label("$C$",C,SW);label("$X$",X,S);label("$D$",D,dir(15));
+label("$86$",(A+B)/2,E);label("$97$",(A+C)/2+(-1,4),NW);
+label("$33$",(C+X)/2,S);label("$28$",(X+B)/2,S);label("$11$",(C+D)/2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the power of the point $C$,
+\[
+CX\cdot CB=11\cdot183=2013=3\cdot11\cdot61 .
+\]
+Let $CX=m$ and $CB=m+BX$, both positive integers with $CB>m$. So $CB$ is a divisor of $2013$ larger than $\sqrt{2013}\approx44.9$, i.e.\ $CB\in\{61,183,671,2013\}$. The triangle inequality gives $CB<AB+AC=183$, so $CB=61$, with $CX=33$ and $BX=28$.
+
+This really occurs: put $C=(0,0)$, $X=(33,0)$, $B=(61,0)$; the centre $A$ is above the midpoint $(47,0)$ of $BX$ at height $\sqrt{86^2-14^2}=\sqrt{7200}$, and then $AC=\sqrt{47^2+7200}=\sqrt{9409}=97$. Hence $BC=\boxed{61}$.

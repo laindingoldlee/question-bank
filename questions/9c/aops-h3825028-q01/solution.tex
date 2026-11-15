@@ -1,0 +1,7 @@
+Each intersection uses at least one pair of lines, and each pair has at most one intersection, giving at most $\binom92=36$. The bound is attained when no two lines are parallel and no three meet at a point. For example take $y=ix+i^2$ for $i=0,1,\ldots,8$. Lines $i,j$ meet at $(-i-j,-ij)$. A third index $k$ could lie there only if $k^2-k(i+j)+ij=(k-i)(k-j)=0$, so $k=i$ or $k=j$. Hence all $\boxed{36}$ pairwise intersections are distinct.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+size(380);for(int i=0;i<9;++i){real xx=-17;pair a=(xx,(i*xx+i*i)/8),b=(1,(i+i*i)/8);draw(a--b,gray);real ly=-1+1.25i;draw(b--(3,ly),gray+dashed);label("$\ell_{"+string(i)+"}$",(3,ly),E);}for(int i=0;i<9;++i)for(int j=i+1;j<9;++j)dot((-i-j,-i*j/8),blue);label("Vertical scale compressed; dots mark all 36 intersections",(-8,-9.5));
+\end{asy}

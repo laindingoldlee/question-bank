@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2207888_geometry_in_geometry
+% Stable identity: aops-topic-2207888-q01
+The incentre and the $A$-excentre both lie on the bisector of angle $A$, which is line $AD$; $I$ lies between $A$ and $D$, and $I_A$ lies beyond $D$. Also, $BI$ bisects angle $ABC$ internally and $BI_A$ bisects it externally (the excentre lies on the external bisectors at $B$ and $C$).
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(1.2,4), B=(0,0), C=(5,0);
+real a=abs(B-C), b=abs(C-A), c=abs(A-B);
+pair I=(a*A+b*B+c*C)/(a+b+c);
+pair J=(-a*A+b*B+c*C)/(-a+b+c);
+pair D=extension(A,I,B,C);
+real s=(a+b+c)/2; real K=abs(cross(B-A,C-A))/2; real r=K/s; real ra=K/(s-a);
+draw(circle(I,r),gray); draw(circle(J,ra),gray+dashed);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--J,blue); draw(B--I,red); draw(B--J,red+dashed);
+draw(B--B+1.2*(B-C),gray); draw(C--C+0.6*(C-B),gray);
+dot(A);dot(B);dot(C);dot(I,red);dot(J,red);dot(D,blue);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,NE); label("$I$",I,E); label("$I_A$",J,SE); label("$D$",D,NE,blue);
+\end{asy}
+
+\textbf{A ratio lemma.} If $P$ lies on line $AD$, triangles $ABP$ and $DBP$ have the same height from $B$, so
+\[\dfrac{AP}{PD}=\dfrac{[ABP]}{[DBP]}=\dfrac{\dfrac{1}{2}\,BA\cdot BP\sin\angle ABP}{\dfrac{1}{2}\,BD\cdot BP\sin\angle DBP}=\dfrac{BA\sin\angle ABP}{BD\sin\angle DBP}.\]
+
+\textbf{$P=I$.} Since $D$ lies on segment $BC$, $\angle ABD=\angle ABC$, and $BI$ bisects it, so $\angle ABI=\angle DBI$ and $\dfrac{AI}{ID}=\dfrac{BA}{BD}$.
+
+\textbf{$P=I_A$.} The external bisector $BI_A$ is perpendicular to $BI$, so $\angle ABI_A=90^\circ+\angle ABI$ and $\angle DBI_A=90^\circ-\angle DBI$ (measured on the other side of $BI$). These two angles add up to $180^\circ$, so their sines are equal and $\dfrac{AI_A}{I_AD}=\dfrac{BA}{BD}$.
+
+Therefore $\dfrac{AI}{ID}=\dfrac{BA}{BD}=\dfrac{AI_A}{I_AD}$. $\blacksquare$

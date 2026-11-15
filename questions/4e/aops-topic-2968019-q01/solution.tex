@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2968019_spoiler_alert_solution_to_problem_number_18_on_amc_8_2022
+% Stable identity: aops-topic-2968019-q01
+The midpoints of the sides of any quadrilateral form a parallelogram (the Varignon parallelogram) whose area is half that of the quadrilateral.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+import graph;draw((-4.5,0)--(6.5,0),gray,Arrow);draw((0,-2.5)--(0,6.5),gray,Arrow);
+pair M1=(-3,0),M2=(2,0),M3=(5,4),M4=(0,4);
+draw((-2,-2)--(6,2)--(4,6)--(-4,2)--cycle);draw(M1--M2--M3--M4--cycle,dashed);dot(M1);dot(M2);dot(M3);dot(M4);
+label("$(-3,0)$",M1,SW);label("$(2,0)$",M2,S);label("$(5,4)$",M3,E);label("$(0,4)$",M4,NW);
+\end{asy}
+
+The four points form a parallelogram with base $5$ (from $(-3,0)$ to $(2,0)$) and height $4$, so its area is $20$. The rectangle's area is $2\cdot20=40$. \textbf{(C)}
+
+(Alternatively, the diagonals of the midpoint parallelogram, from $(-3,0)$ to $(5,4)$ and from $(2,0)$ to $(0,4)$, have lengths $\sqrt{80}$ and $\sqrt{20}$ and are parallel to the rectangle's sides, whose lengths they equal; the area is $\sqrt{80}\cdot\sqrt{20}=40$.)

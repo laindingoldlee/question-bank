@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1717424_junior_regional_olympiad__fbh_2014_grade_8_problem_3
+% Stable identity: aops-topic-1717424-q01
+Let $\angle C=\gamma$. Since $BK=KC$, triangle $BKC$ is isosceles and $\angle KBC=\gamma$; as $BK$ bisects angle $B$, $\angle ABK=\gamma$ and $\angle ABC=2\gamma$.
+
+By the angle bisector theorem, $\dfrac{AB}{BC}=\dfrac{AK}{KC}=\dfrac{1}{2}$, so $BC=2AB$. Let $M$ be the midpoint of $BC$; then $BM=AB$. Since $KB=KC$, the median $KM$ of the isosceles triangle $BKC$ is also an altitude: $KM\perp BC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+void ra(pair P,pair Q,pair R,real s){pair u=unit(Q-P),v=unit(R-P);draw(P+s*u--P+s*u+s*v--P+s*v,linewidth(0.5));}
+pair A=(0,0),B=(0,2),C=(2*sqrt(3),0),K=(2/sqrt(3),0),M=(B+C)/2;
+draw(A--B--C--cycle,linewidth(0.9));draw(B--K,linewidth(0.9));
+draw(K--M,dashed);
+ra(A,B,C,0.18);ra(M,C,K,0.15);
+draw(arc(B,0.5,degrees(K-B),-90),linewidth(0.5));draw(arc(B,0.58,degrees(C-B),degrees(K-B)),linewidth(0.5));
+pair t1=(B+K)/2,t2=(K+C)/2,n1=unit(rotate(90)*(K-B)),n2=(0,1);
+draw(t1-0.09*n1+0.03*unit(K-B)--t1+0.09*n1+0.03*unit(K-B));draw(t1-0.09*n1-0.03*unit(K-B)--t1+0.09*n1-0.03*unit(K-B));
+draw(t2-0.09*n2+(0.03,0)--t2+0.09*n2+(0.03,0));draw(t2-0.09*n2-(0.03,0)--t2+0.09*n2-(0.03,0));
+label("$A$",A,SW);label("$B$",B,N);label("$C$",C,SE);label("$K$",K,S);label("$M$",M,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangles $ABK$ and $MBK$ have $AB=MB$, $\angle ABK=\angle MBK$ and the common side $BK$, so they are congruent (SAS). Hence $\angle BAK=\angle BMK=90^\circ$.
+
+Now $90^\circ+2\gamma+\gamma=180^\circ$ gives $\gamma=30^\circ$. The angles are
+\[
+\boxed{\angle A=90^\circ,\quad\angle B=60^\circ,\quad\angle C=30^\circ}.
+\]
+Check: with $AB=1$, $AK=\tan30^\circ=\dfrac{1}{\sqrt3}$ and $BK=KC=\dfrac{2}{\sqrt3}=2AK$.

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1527995_fun_factoring
+% Stable identity: aops-topic-1527995-q01
+\textbf{Conditions.} A solution must satisfy $x\ge0$ (it equals a square root). Squaring, the equation is equivalent to
+\[
+\sqrt{k+x}=k-x^2\quad\text{with }x\ge0,\ k-x^2\ge0 ,
+\]
+and squaring again, to $k+x=\left(k-x^2\right)^2$ together with the same two conditions (then $k+x\ge0$ automatically).
+
+\textbf{Treat it as a quadratic in $k$.} Expanding, $k^2-\left(2x^2+1\right)k+x^4-x=0$. Its discriminant is
+\[
+\left(2x^2+1\right)^2-4\left(x^4-x\right)=4x^2+4x+1=(2x+1)^2,
+\]
+so
+\[
+k=\dfrac{2x^2+1\pm(2x+1)}{2},\qquad\text{i.e.}\qquad k=x^2+x+1\quad\text{or}\quad k=x^2-x .
+\]
+Equivalently, $\left(x^2+x+1-k\right)\left(x^2-x-k\right)=0$.
+
+\textbf{Case $k=x^2-x$.} Then $k-x^2=-x\ge0$ forces $x=0$ and $k=0$. Indeed $x=0$ solves the equation when $k=0$.
+
+\textbf{Case $k=x^2+x+1$.} Then $k-x^2=x+1\ge0$ holds, and $\sqrt{k+x}=\sqrt{(x+1)^2}=x+1=k-x^2$, so every $x\ge0$ with $x^2+x+1=k$ is a solution. Solving, $x=\dfrac{-1+\sqrt{4k-3}}{2}$ (the other root is negative), and $x\ge0$ requires $k\ge1$.
+
+\textbf{Answer.}
+\[
+\boxed{x=\dfrac{\sqrt{4k-3}-1}{2}\ \text{ for }k\ge1;\qquad x=0\ \text{ for }k=0;\qquad\text{no solution for }k<0\text{ or }0<k<1.}
+\]
+For example, $k=3$ gives $x=1$: $\sqrt{3-\sqrt4}=1$.

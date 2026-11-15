@@ -1,0 +1,15 @@
+The side length is $4$, and the pentagon apothem is $2\cot36^\circ$. Thus its area is $\dfrac{1}{2}(20)(2\cot36^\circ)=20\cot36^\circ$. The parabolic segment between $AB:y=-4$ and $y=-x^2$ has area
+\[
+\int_{-2}^{2}(4-x^2)\,dx=\dfrac{32}{3}.
+\]
+The five outward segments lie in the five disjoint exterior radial sectors of the pentagon, so their areas add without overlap. Consequently the enclosed area is
+\[
+20\cot36^\circ+\dfrac{160}{3}\approx80.86097174,
+\]
+which rounds to $\boxed{80.86}$ square units.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;pair I=(0,-4-2/tan(36*pi/180));pair f(real x){return (x,-x*x);}path g=graph(f,-2,2);for(int j=0;j<5;++j){transform T=shift(I)*rotate(72j)*shift(-I);draw(T*g,blue);draw(T*((-2,-4)--(2,-4)),dashed+gray);}dot(I);label("$I$",I,(0,-1));label("$A$",(-2,-4),(-1,0));label("$B$",(2,-4),(1,0));label("$O$",(0,0),(0,1));
+\end{asy}

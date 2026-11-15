@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3132170_2023_mbmt_guts_round_b1630_g1130_montgomery_blair_math_tournament
+% Stable identity: aops-topic-3132170-q20
+The orthocentre distance identities give $AH=2R|\cos A|$ and $BH=2R|\cos B|$, so $|\cos A|=\dfrac{3}{5}$, $|\cos B|=\dfrac{7}{25}$, with $\sin A=\dfrac{4}{5}$, $\sin B=\dfrac{24}{25}$. If both $A,B$ are acute, then $\cos C=\sin A\sin B-\cos A\cos B=\dfrac{3}{5}$, giving $CH=30$. If $B$ is obtuse and $A$ acute, then $\cos C=\dfrac{117}{125}$, giving $CH=\dfrac{234}{5}$; this is valid since the acute angle with cosine $\dfrac{3}{5}$ is smaller than the acute angle with cosine $\dfrac{7}{25}$. If $A$ is obtuse and $B$ acute, their sum exceeds $180^\circ$ by the same comparison, so no triangle results. Both cannot be obtuse. Thus $\boxed{30,\ \dfrac{234}{5}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int j=0;j<2;++j){real ca=0.6,sa=0.8,cb=(j==0?0.28:-0.28),sb=0.96,cc=sa*sb-ca*cb;pair u=(65*j,0),A=u,B=u+(50sqrt(1-cc^2),0),C=u+48*(ca,sa);real hx=C.x-u.x,hy=-(C.x-B.x)*hx/C.y;pair H=u+(hx,hy);draw(A--B--C--cycle);draw(A--H--B,dashed);draw(C--H,dashed);dot(H,red);label("$H$",H,E);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);}
+\end{asy}

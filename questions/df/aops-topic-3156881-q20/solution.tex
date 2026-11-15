@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h3156881_2013_lmt_individual_round__lexington_mathematical_tournament
+% Stable identity: aops-topic-3156881-q20
+Choose $ A=(0,0),B=(14,0)$ and the upper external tangent. The circle intersections satisfy $ x^2+y^2=169 $ and $(x-14)^2+y^2=225 $, yielding $(5,\pm12)$; the nearer one is $ P=(5,12)$. A common upward unit normal $ n=(n_x,n_y)$ at the two contacts satisfies $ n\cdot(B-A)=13-15=-2 $, so $ n=(-\dfrac{1}{7},\dfrac{4\sqrt3}{7})$. Hence $ C=13n $ and $ D=B+15n $, making $ M=\dfrac{C+D}{2}=(5,8\sqrt3)$. Therefore $\boxed{PM=8\sqrt3-12}$. The lower tangent gives the reflected configuration and the same length.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(14,0),n=(-1/7,4sqrt(3)/7),C=13n,D=B+15n,M=(C+D)/2,P=(5,12);draw(circle(A,13));draw(circle(B,15));draw(C--D,blue);draw(A--C^^B--D,dashed);draw(P--M,red);label("$A$",A,W);label("$B$",B,E);label("$C$",C,NW);label("$D$",D,NE);label("$M$",M,N);label("$P$",P,S);
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(14,0),n=(-1/7,-4sqrt(3)/7),C=13n,D=B+15n,M=(C+D)/2,P=(5,-12);draw(circle(A,13));draw(circle(B,15));draw(C--D,blue);draw(A--C^^B--D,dashed);draw(P--M,red);label("$A$",A,W);label("$B$",B,E);label("$C$",C,SW);label("$D$",D,SE);label("$M$",M,S);label("$P$",P,N);
+\end{asy}

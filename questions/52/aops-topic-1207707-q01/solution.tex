@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1207707_trapezoid
+% Stable identity: aops-topic-1207707-q01
+Drop perpendiculars from the ends of the short base. They cut off $\dfrac{21-17}{2}=2$ at each end of the long base, so the height is $h=\sqrt{15^2-2^2}=\sqrt{221}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(21,0),C=(19,sqrt(221)),D=(2,sqrt(221));
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(A--C,blue); draw(C--(19,0),dashed);
+label("$21$",(10.5,0),S); label("$17$",(10.5,sqrt(221)),N); label("$15$",(A+D)/2,W); label("$15$",(B+C)/2,E); label("$h$",(19,7),W); label("$2$",(20,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The diagonal from one end of the long base reaches the far end of the short base, which is $21-2=19$ along the base. So the diagonal is
+\[\sqrt{19^2+221}=\sqrt{582}\approx24.1.\]
+Answer: $\boxed{\sqrt{582}}$.

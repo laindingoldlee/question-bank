@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1585436_bamboo_tree
+% Stable identity: aops-topic-1585436-q01
+Let $g$ be the nightly growth and let $h_0\in[0,1)$ be the height after the cut on the morning before the $10$ days, $h_k\in[0,1)$ the height after the cut on morning $k$, and $c_k$ the piece cut on morning $k$. Since the piece is a whole number and the rest is shorter than $1$ metre, $c_k$ is the integer part of $h_{k-1}+g$ and $h_k=h_{k-1}+g-c_k$.
+
+\textbf{Key fact.} Over any $r$ consecutive mornings $k+1,\dots,k+r$,
+\[
+c_{k+1}+\cdots+c_{k+r}=h_k+rg-h_{k+r}.
+\]
+Since $h_k$ and $h_{k+r}$ lie in $[0,1)$, this total lies strictly between $rg-1$ and $rg+1$. An interval of length $2$ that is open at both ends contains at most two integers, and they are consecutive. So \emph{the totals of any two blocks of $r$ consecutive mornings differ by at most $1$.}
+
+\textbf{(b) Impossible.} In $7,7,7,6,7,6,7,7,6,7$ the first three mornings total $7+7+7=21$, while mornings $4,5,6$ total $6+7+6=19$. These two blocks of length $3$ differ by $2$, which the key fact forbids. So the sequence cannot be written.
+
+\textbf{(a) Possible.} Let the bamboo grow $g=6.72$ metres every night, and let it be $0.9$ metres tall after the cut on the morning before the ten days (the gardener's rule keeps the height in $[0,1)$ forever, so this can be the situation after many years). Then the heights before and after each cut are
+\[
+\begin{array}{c|cccccccccc}
+\text{morning}&1&2&3&4&5&6&7&8&9&10\\\hline
+\text{before the cut}&7.62&7.34&7.06&6.78&7.50&7.22&6.94&7.66&7.38&7.10\\
+\text{cut}&7&7&7&6&7&7&6&7&7&7\\
+\text{after the cut}&0.62&0.34&0.06&0.78&0.50&0.22&0.94&0.66&0.38&0.10
+\end{array}
+\]
+which writes exactly $7,7,7,6,7,7,6,7,7,7$.
+
+So the answers are \textbf{(a) yes} and \textbf{(b) no}.

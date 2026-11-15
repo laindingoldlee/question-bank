@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2545626_37_times_sum_of_digits
+% Stable identity: aops-topic-2545626-q01
+Let $n=37S$, where $S$ is the digit sum of $n$.
+
+\emph{Size.} If $n$ had $d\ge5$ digits, then $n\ge10^{d-1}>37\cdot9d\ge37S$. If $n$ had $4$ digits, then $S\le36$ and $n\le1332$; but every number from $1000$ to $1332$ has digit sum at most $1+2+9+9=21$, so $n\le37\cdot21<1000$, a contradiction. One- and two-digit $n$ are less than $37\le37S$. So $n=\overline{abc}$ has three digits.
+
+\emph{Three digits.} $100a+10b+c=37(a+b+c)$ gives $63a=27b+36c$, i.e. $7a=3b+4c$. For each $a$ from $1$ to $9$, the digit solutions $(b,c)$ are:
+\[\begin{array}{c|l}
+a&(b,c)\\\hline
+1&(1,1)\\
+2&(2,2)\\
+3&(3,3),\ (7,0)\\
+4&(4,4),\ (0,7),\ (8,1)\\
+5&(5,5),\ (1,8),\ (9,2)\\
+6&(6,6),\ (2,9)\\
+7&(7,7)\\
+8&(8,8)\\
+9&(9,9)
+\end{array}\]
+(For example, for $a=4$, $4c\equiv28\pmod3$ forces $c\equiv1\pmod3$, giving $c=1,4,7$.) The numbers are $111,222,\dots,999$ together with $370,407,481,518,592,629$. Their sum is
+\[111(1+2+\cdots+9)+(370+407+481+518+592+629)=4995+2997=\boxed{7992}.\]

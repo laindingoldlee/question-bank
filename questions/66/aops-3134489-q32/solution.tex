@@ -1,0 +1,6 @@
+Let the equilateral side be $s$. The inscribed angle $BPC$ is $120^\circ$, so $s^2=5^2+4^2-2\cdot5\cdot4\cos120^\circ=61$. Ptolemy gives $AP=BP+CP=9$. The sine form of the cevian ratio gives $BD:DC=\sin\angle BAP:\sin\angle PAC=BP:PC=5:4$. Thus $BD\cdot DC=\dfrac{20s^2}{81}=\dfrac{1220}{81}$. Stewart's theorem for the equal sides gives $AD^2=s^2-BD\cdot DC=\dfrac{3721}{81}$, so $AD=\dfrac{61}{9}$. Therefore $\boxed{DP=9-\dfrac{61}{9}=\dfrac{20}{9}}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair B=(-sqrt(61)/2,0),C=(sqrt(61)/2,0),A=(0,sqrt(183)/2),D=B+5/9*(C-B),P=A+81/61*(D-A),O=(0,sqrt(183)/6);draw(circle(O,sqrt(61/3)));draw(A--B--C--cycle);draw(A--P^^B--P^^C--P,blue);label("$A$",A,(0,1));label("$B$",B,(-1,0));label("$C$",C,(1,0));label("$D$",D,(1,1));label("$P$",P,(0,-1));label("$5$",(B+P)/2,(-1,-1));label("$4$",(C+P)/2,(1,-1));
+\end{asy}
+

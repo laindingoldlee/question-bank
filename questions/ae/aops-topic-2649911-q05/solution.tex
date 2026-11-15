@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h2649911_pi_post
+% Stable identity: aops-topic-2649911-q05
+Use coordinates with the axis of the cylinder as the $z$-axis and its centre $O$ at the origin, so the block is $x^2+y^2\le36$, $-4\le z\le4$. Take $A=(3,3\sqrt3,4)$ and $B=(3,-3\sqrt3,4)$ on the top rim; they subtend $120^\circ$ at the centre of the top face. The plane through $A$, $B$ and $O$ contains the line $x=3$, $z=4$ and the origin, so it is $z=\dfrac43x$.
+
+The unpainted face is the set of points $\left(x,y,\dfrac43x\right)$ with $x^2+y^2\le36$ and $-4\le\dfrac43x\le4$, i.e. $|x|\le3$. Its orthogonal projection onto the $xy$-plane is the disc of radius $6$ with the two caps $|x|>3$ removed. Each cap is a circular segment with central angle $120^\circ$, of area $\dfrac12\cdot36\left(\dfrac{2\pi}3-\dfrac{\sqrt3}2\right)=12\pi-9\sqrt3$, so the projection has area
+\[36\pi-2\left(12\pi-9\sqrt3\right)=12\pi+18\sqrt3.\]
+The plane $z=\dfrac43x$ makes an angle $\theta$ with the horizontal where $\tan\theta=\dfrac43$, so $\cos\theta=\dfrac35$, and projecting multiplies areas by $\cos\theta$. Hence the face has area
+\[\dfrac53\left(12\pi+18\sqrt3\right)=20\pi+30\sqrt3,\]
+and $a+b+c=20+30+3=\boxed{53}$.
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real k=0.35;
+pair Pj(real x,real y,real z){return (y,z-k*x);}
+path top=Pj(6,0,4);
+for(int i=1;i<=360;++i){real t=radians(i);top=top--Pj(6cos(t),6sin(t),4);}
+draw(top,linewidth(0.8));
+path front;
+for(int i=-90;i<=90;++i){real t=radians(i);front=(i==-90)?Pj(6cos(t),6sin(t),-4):(front--Pj(6cos(t),6sin(t),-4));}
+draw(front,linewidth(0.8));
+path bk;
+for(int i=90;i<=270;++i){real t=radians(i);bk=(i==90)?Pj(6cos(t),6sin(t),-4):(bk--Pj(6cos(t),6sin(t),-4));}
+draw(bk,dashed);
+draw(Pj(0,6,4)--Pj(0,6,-4),linewidth(0.8));draw(Pj(0,-6,4)--Pj(0,-6,-4),linewidth(0.8));
+path cut;
+for(int i=60;i<=120;++i){real t=radians(i);cut=(i==60)?Pj(6cos(t),6sin(t),8cos(t)):(cut--Pj(6cos(t),6sin(t),8cos(t)));}
+path cut2;
+for(int i=240;i<=300;++i){real t=radians(i);cut2=(i==240)?Pj(6cos(t),6sin(t),8cos(t)):(cut2--Pj(6cos(t),6sin(t),8cos(t)));}
+pair A=Pj(3,3*sqrt(3),4),B=Pj(3,-3*sqrt(3),4),A2=Pj(-3,3*sqrt(3),-4),B2=Pj(-3,-3*sqrt(3),-4);
+fill(cut--A2--cut2--B--cycle,opacity(0.25)+gray);
+draw(cut,dashed);draw(cut2,dashed);draw(A--B,dashed);draw(A2--B2,dashed);
+pair O=Pj(0,0,0);dot(O);label("$O$",O,E);
+dot(A);dot(B);label("$A$",A,NE);label("$B$",B,NW);
+pair T=Pj(0,0,4);dot(T);draw(T--A,dotted);draw(T--B,dotted);label("$120^\circ$",T,N,fontsize(8pt));
+label("$6$",(T+Pj(0,6,4))/2,N);label("$8$",Pj(0,6,0),E);
+\end{asy}

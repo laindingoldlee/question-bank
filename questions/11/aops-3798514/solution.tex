@@ -1,0 +1,9 @@
+The focus is $A=(0,12)$ and the directrix is the x-axis. Reflect if necessary so $P = (t , \dfrac{t^2}{24} + 6)$ and $B=(b,0)$ have $t,b>0$. The right angle $APB$ gives $b = \dfrac{t^4+576t^2-20736}{576t}$. The x-intercept of $AP$ is $c = \dfrac{288 t}{144-t^2}$. Thus the area condition is $| b - c | = \dfrac{32 \sqrt{3}}{3}$, or $\dfrac{(t^2+144)^3}{576t|t^2-144|} = \dfrac{32 \sqrt{3}}{3}$. Set $z=t^2$. The requirement $b>0$ gives $z>-288+144\sqrt5>33$. For $z>144$, the AM-GM bound $z+144\ge24\sqrt z$ makes the left side greater than 24, impossible. On $33<z<144$, logarithmic differentiation shows the left side is strictly increasing: its derivative sign is the sign of $\dfrac{z^2-864z+20736}{z-144}$, which is positive there. Substitution gives the unique solution $z=48$, then $b = \dfrac{4 \sqrt{3}}{3}$. The circle area is $\dfrac{\pi A B^2}{4} = \dfrac{\pi (144 + \dfrac{16}{3})}{4} = \dfrac{112 \pi}{3}$. Therefore $\boxed{m+n=115}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+import graph;pair A=(0,12),B=(4sqrt(3)/3,0),P=(4sqrt(3),8),C=(12sqrt(3),0);draw(graph(new real(real x){return x*x/24+6;},-8,10));draw((-2,0)--(22,0));draw(A--C--B--A);draw(P--B);draw(circle((A+B)/2,abs(A-B)/2));label("$A$",A,(0,1));label("$B$",B,(0,-1));label("$P$",P,(1,0));label("$C$",C,(0,-1));
+\end{asy}
+

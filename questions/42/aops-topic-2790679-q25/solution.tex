@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2790679_2018_mbmt_guts_round_g1625_montgomery_blair_math_tournament
+% Stable identity: aops-topic-2790679-q25
+Subtracting the equations and dividing by $ x-y\ne0 $ gives $ x^2+xy+y^2=4 $. Adding and dividing by $ x+y\ne0 $ gives $ x^2-xy+y^2=6 $. Thus $ xy=-1 $ and $ x^2+y^2=5 $. Put $ u=x+y,v=x-y $; then $ u^2=3,v^2=7 $, so the four possibilities are $(u,v)=(\pm\sqrt3,\pm\sqrt7)$. Conversely these identities reconstruct both original equations, so all four occur. The change to orthonormal coordinates $\dfrac{u}{\sqrt2},\dfrac{v}{\sqrt2}$ is a rotation-reflection, giving rectangle sides $\sqrt6 $ and $\sqrt{14}$. The area is $\boxed{2\sqrt{21}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real a=sqrt(3)/2,b=sqrt(7)/2;pair[] P={(a+b,a-b),(a-b,a+b),(-a-b,-a+b),(-a+b,-a-b)};draw(P[0]--P[1]--P[2]--P[3]--cycle,blue);draw((-3,0)--(3,0),Arrow);draw((0,-3)--(0,3),Arrow);for(int i=0;i<4;++i)label("$V_{"+string(i+1)+"}$",P[i],P[i]);
+\end{asy}

@@ -1,0 +1,15 @@
+Let $X\sim\operatorname{Bin}(2k,p)$ count the other blue choices. Compared with red, choosing blue changes the survivor count by $-1$ when $X<k$, by $k$ when $X=k$, and by $0$ when $X>k$. Thus
+\[
+\Delta=k\binom{2k}{k}p^k(1-p)^k-\sum_{j=0}^{k-1}\binom{2k}{j}p^j(1-p)^{2k-j}.
+\]
+For $0<p<1$, divide by the positive central probability. Blue is better exactly when
+\[
+\boxed{\sum_{j=0}^{k-1}\dfrac{\binom{2k}{j}}{\binom{2k}{k}}
+\left(\dfrac{1-p}{p}\right)^{k-j}<k.}
+\]
+The left side is continuous and strictly decreasing from infinity to zero as $p$ increases from $0$ to $1$. Thus it equals $k$ at a unique $p_k$; red is better below $p_k$, blue above it, and they tie at $p_k$. At $p=0$, choose red; at $p=1$, either choice gives universal survival.
+
+This finite sum, or bisection on it, computes the threshold for any $k$; for example $k=1$ gives $p_1=\dfrac{1}{3}$.
+
+To find the limit, fix $0<p<\dfrac{1}{2}$. The central probability is at most $[4p(1-p)]^k$, so its product with $k$ tends to zero. Meanwhile $X$ has mean $2kp$ and variance $2kp(1-p)$; Chebyshev's inequality shows $\Pr(X<k)\to1$. Hence $\Delta<0$ for large $k$.
+For fixed $p>\dfrac{1}{2}$, put $r=\dfrac{1-p}{p}<1$. Since each binomial coefficient in the displayed ratio is at most the central one, the sum is at most $\sum_{\ell\ge1}r^\ell=\dfrac{r}{1-r}$, which is eventually less than $k$. Thus $\Delta>0$ for large $k$. It follows that $\boxed{p_k\to\dfrac{1}{2}}$.

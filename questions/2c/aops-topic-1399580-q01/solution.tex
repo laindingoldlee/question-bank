@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1399580_picks_theorem
+% Stable identity: aops-topic-1399580-q01
+Let the vertices be $A=(x_1,y_1)$, $B=(x_2,y_2)$, $C=(x_3,y_3)$ with integer coordinates. By the shoelace formula,
+\[
+[ABC]=\dfrac{1}{2}\bigl|x_1(y_2-y_3)+x_2(y_3-y_1)+x_3(y_1-y_2)\bigr| .
+\]
+The expression inside the absolute value is an integer $K$, so $[ABC]=\dfrac{K}{2}$ with $K$ a nonnegative integer: the area is a multiple of $\dfrac{1}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=6;++i) for(int j=0;j<=4;++j) dot((i,j),gray(0.6)+2);
+pair A=(0,0),B=(5,1),C=(2,4);
+fill(A--B--C--cycle,paleblue); draw(A--(5,0)--(5,4)--(0,4)--cycle,dashed+gray);
+for(int i=0;i<=6;++i) for(int j=0;j<=4;++j) dot((i,j),gray(0.6)+2);
+draw(A--B--C--cycle,blue+linewidth(1));
+dot(A);dot(B);dot(C);
+label("$A$",A,SW); label("$B$",B,E); label("$C$",C,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(For instance, the triangle above has area $\dfrac{1}{2}\left|0(1-4)+5(4-0)+2(0-1)\right|=\dfrac{18}{2}=9$; equivalently it is the $5\times4$ rectangle minus three right triangles of areas $\dfrac{5}{2}$, $\dfrac{9}{2}$ and $4$.)
+
+Now $1223442.25=1223442+\dfrac{1}{4}$ is not a multiple of $\dfrac{1}{2}$, so no lattice triangle has this area, and the student's area computation contains an error. Pick's theorem $A=I+\dfrac{B}{2}-1$ is consistent with this: for any lattice polygon $I$ and $B$ are integers, so $A$ must be a multiple of $\dfrac{1}{2}$, and a non-integer value of $I$ is a sign that the area was wrong, not that Pick's theorem fails.

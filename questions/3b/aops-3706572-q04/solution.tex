@@ -1,0 +1,8 @@
+Use unit vectors $u,v$ along $CA,CB$, with $C=0$, $A=au$, $B=bv$, $b>a$, and $c=u\cdot v=\cos C>0$. Acuteness at $A$ gives $bc<a$. The perpendicular bisector equation is $2X\cdot(bv-au)=b^2-a^2$. Therefore $P=pv$, $Q=qu$, where $p=\dfrac{b^2-a^2}{2(b-ac)}>0$ and $q=\dfrac{b^2-a^2}{2(bc-a)}<0$. In particular both intersections exist. The projections are $R=pcu$ and $S=qcv$, while $M=\dfrac{a}{2}u+\dfrac{b}{2}v$. In the oblique coordinates $X=\xi u+\eta v$, line $RS$ has equation $\dfrac{\xi}{pc}+\dfrac{\eta}{qc}=1$. Substituting $M$ gives $\dfrac{a(b-ac)+b(bc-a)}{(b^2-a^2)c}=1$. Thus $M$ lies on $RS$. The proof also explains why $Q,S$ are on extensions; treating them as interior points would be misleading.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair C=(0,0),A=(4,0),B=(2,4),P=(1/3,2/3),Q=(-1,0),R=(1/3,0),S=(-.2,-.4),M=(3,2);draw(C--A--B--cycle);draw(Q--M,dashed);draw(Q--C^^S--C,dashed);draw(P--R^^Q--S,blue);draw(S--M,red);label("$A$",A,(1,-1));label("$B$",B,(0,1));label("$C$",C,(-1,1));label("$P$",P,(-1,1));label("$Q$",Q,(-1,0));label("$R$",R,(1,-1));label("$S$",S,(-1,-1));label("$M$",M,(1,1));
+void ra(pair U,pair V,pair W,real s){pair u=s*unit(U-V),w=s*unit(W-V);draw(V+u--V+u+w--V+w);}
+ra(P,R,A,.1);ra(Q,S,B,.1);ra(A,M,P,.14);
+\end{asy}
+

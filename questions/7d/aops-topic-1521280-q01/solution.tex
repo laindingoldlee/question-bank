@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h1521280_geometry_help_plz
+% Stable identity: aops-topic-1521280-q01
+\textbf{Why not $12$.} The broken line $A\to B\to C\to D$ turns at $B$ and at $C$, so it is not straight. By the triangle inequality, $AD<AB+BD\le AB+BC+CD=12$ (the first inequality is strict since $A$, $B$, $D$ are not collinear).
+
+\textbf{The length.} Each interior angle of a regular dodecagon is $\dfrac{10\cdot180^\circ}{12}=150^\circ$. The quadrilateral $ABCD$ is an isosceles trapezoid with $AD\parallel BC$ (it is symmetric about the perpendicular bisector of $BC$), so its base angles at $A$ and $D$ are $180^\circ-150^\circ=30^\circ$. Let $P$ and $Q$ be the feet of the perpendiculars from $B$ and $C$ to $AD$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real R=4/(2*sin(pi/12));
+pair[] W; for(int k=0;k<12;++k) W.push(R*dir(255-30*k));
+transform T=rotate(-degrees(W[3]-W[0]))*shift(-W[0]);
+pair[] V; for(int k=0;k<12;++k) V.push(T*W[k]);
+draw(V[11]--V[0],gray(0.6));draw(V[3]--V[4],gray(0.6));
+draw(V[0]--V[1]--V[2]--V[3],linewidth(1.1));
+draw(V[0]--V[3],blue+linewidth(1.1));
+pair P=(V[1].x,0), Q=(V[2].x,0);
+draw(V[1]--P,dashed);draw(V[2]--Q,dashed);
+real s=0.4;
+draw(P+(s,0)--P+(s,s)--P+(0,s));draw(Q-(s,0)--Q+(-s,s)--Q+(0,s));
+label("$A$",V[0],1.4*dir(155));label("$B$",V[1],N);label("$C$",V[2],N);label("$D$",V[3],1.4*dir(25));
+label("$4$",(V[0]+V[1])/2,NW);label("$4$",(V[1]+V[2])/2,N);label("$4$",(V[2]+V[3])/2,NE);
+label("$P$",P,S);label("$Q$",Q,S);
+draw(arc(V[0],1.5,0,30),red);
+label("$30^\circ$",V[0]+2.35*dir(11),red+fontsize(8pt));
+label("$2\sqrt{3}$",(V[0]+P)/2,S);label("$2\sqrt{3}$",(Q+V[3])/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then $PQ=BC=4$, and in the right triangle $APB$, with $\angle A=30^\circ$ and hypotenuse $AB=4$, we get $AP=4\cos30^\circ=2\sqrt3$; likewise $QD=2\sqrt3$. Therefore
+\[
+AD=2\sqrt3+4+2\sqrt3=\boxed{4+4\sqrt3}\approx10.93<12 .
+\]

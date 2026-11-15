@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h3140622_goals_for_the_school_year
+% Stable identity: aops-topic-3140622-q03
+An integer ratio of factorials occurs exactly when every prime exponent in the numerator is at least its exponent in the denominator. For a prime $p$, the exponent in $m!$ is $\sum_{j\ge1}\left\lfloor\dfrac{m}{p^j}\right\rfloor$, counting multiples of each power. The following exhaustive exact calculation applies this criterion to all 50 candidates and all relevant primes, establishing the answer without assuming a pattern from small cases.
+\begin{verbatim}
+from math import isqrt
+primes=[p for p in range(2,2500)
+        if all(p%d for d in range(2,isqrt(p)+1))]
+def v(m,p):
+    total=0
+    while m:
+        m//=p
+        total+=m
+    return total
+good=[n for n in range(1,51)
+      if all(v(n*n-1,p)>=n*v(n,p) for p in primes if p<=n)]
+assert len(good)==34
+print(len(good))
+\end{verbatim}
+Primes greater than $n$ need not be tested because their denominator exponent is 0. Thus $\boxed{34}$.

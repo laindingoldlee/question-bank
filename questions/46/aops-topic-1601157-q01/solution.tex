@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1601157_counting_prob
+% Stable identity: aops-topic-1601157-q01
+Put the points at $(x,y)$ with $x,y\in\{0,1,2\}$. There are $\binom92=36$ segments. Perpendicular directions pair up as: horizontal with vertical; slope $1$ with slope $-1$; slope $2$ with slope $-\dfrac{1}{2}$; slope $-2$ with slope $\dfrac{1}{2}$. Two perpendicular segments meet in at most one point.
+
+\textbf{Horizontal and vertical.} A horizontal segment lies in row $r$ and covers an interval $I$ of $x$-values, a vertical one lies in column $c$ and covers an interval $J$ of $y$-values; they meet exactly when $c\in I$ and $r\in J$. Of the three intervals $[0,1],[1,2],[0,2]$, two contain $0$, three contain $1$ and two contain $2$. So the number of meeting pairs is
+\[
+\Big(\sum_{c}\#\{I\ni c\}\Big)\Big(\sum_{r}\#\{J\ni r\}\Big)=(2+3+2)(2+3+2)=49 .
+\]
+
+\textbf{Slopes $1$ and $-1$.} The slope-$1$ segments are the three on $y=x$ and the short ones on $y=x+1$ and $y=x-1$; similarly for slope $-1$ on $x+y=2$, $x+y=1$, $x+y=3$.
+\begin{itemize}
+\item Long diagonal with long diagonal: they meet at $(1,1)$, which lies on all three segments of each, giving $9$ pairs.
+\item A long diagonal with a short one of the other slope: the meeting point is $\left(\dfrac{1}{2},\dfrac{1}{2}\right)$, $\left(\dfrac{3}{2},\dfrac{3}{2}\right)$, $\left(\dfrac{1}{2},\dfrac{3}{2}\right)$ or $\left(\dfrac{3}{2},\dfrac{1}{2}\right)$, each lying on $2$ of the three long segments: $4\cdot2=8$ pairs.
+\item Short with short: the four short segments form the square with vertices $(0,1),(1,2),(2,1),(1,0)$, whose adjacent sides meet at corners: $4$ pairs.
+\end{itemize}
+Total $9+8+4=21$.
+
+\textbf{Slopes $2$ and $-\dfrac{1}{2}$} (and, by reflection, $-2$ and $\dfrac{1}{2}$). The slope-$2$ segments are $(0,0)(1,2)$ and $(1,0)(2,2)$; the slope-$(-\dfrac{1}{2})$ segments are $(0,1)(2,0)$ and $(0,2)(2,1)$. Each of the $4$ pairs crosses inside both segments; for example $y=2x$ and $y=1-\dfrac {x}{2}$ meet at $(0.4,0.8)$. That gives $4+4=8$ pairs.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<3;++i) for(int j=0;j<3;++j) dot((i,j),gray);
+draw((0,1)--(2,1),blue+linewidth(1));draw((1,0)--(1,2),blue+linewidth(1));
+draw((0,0)--(1,2),red+linewidth(1));draw((0,1)--(2,0),red+linewidth(1));
+dot((0.4,0.8),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The figure shows one horizontal-vertical pair in blue and one slope $2$, slope $-\dfrac{1}{2}$ pair in red.)
+
+Altogether there are $49+21+8=\boxed{78}$ pairs.

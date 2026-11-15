@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1431975_sort_of_a_riddle
+% Stable identity: aops-topic-1431975-q01
+\textbf{Answer: $14$ drops.}
+
+Let $F(d)$ be the largest number of floors for which $d$ drops always suffice. With only one egg left and $m$ drops, the only safe method is to try the floors one at a time from the bottom, which handles $m$ floors. With two eggs and $d$ drops, suppose the first drop is from floor $x$.
+\begin{itemize}
+\item If it breaks, floors $1,\dots,x-1$ must be searched with one egg and $d-1$ drops, so $x-1\le d-1$.
+\item If it survives, the floors above $x$ remain, with two eggs and $d-1$ drops.
+\end{itemize}
+Hence $F(d)\le d+F(d-1)$, and the strategy "first drop from floor $d$, then continue the same way above it" achieves equality. With $F(0)=0$,
+\[
+F(d)=d+(d-1)+\cdots+1=\dfrac{d(d+1)}{2}.
+\]
+Since $F(13)=91<100\le105=F(14)$, $13$ drops are not enough and $14$ are.
+
+\textbf{Strategy.} Drop the first egg from floors
+\[
+14,\ 27,\ 39,\ 50,\ 60,\ 69,\ 77,\ 84,\ 90,\ 95,\ 99,\ 100
+\]
+(each step one floor shorter than the previous one) until it breaks. If it breaks at the $j$-th of these floors, test the floors strictly between the previous test floor and this one with the second egg, from the bottom up. For example, if it first breaks at $27$ (second drop), floors $15,\dots,26$ need at most $12$ more drops: $14$ in all. In every case the total is at most $14$, and in the worst case exactly $14$.

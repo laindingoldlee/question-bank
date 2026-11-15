@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1884433_5_rockets
+% Stable identity: aops-topic-1884433-q01
+A pattern is a sequence of launch times. A time with one rocket specifies the rocket and its pad ($2$ choices of pad); a time with two rockets specifies which rocket is on pad $1$ and which on pad $2$.
+
+Let $k$ be the number of double launches, so $k\in\{0,1,2\}$, there are $5-2k$ single launches and $5-k$ launch times. Choose which of the $5-k$ times are doubles: $\dbinom{5-k}{k}$ ways. Write the five rockets in a row in one of $5!$ orders and fill the times in order, a double time taking the next two rockets (the first on pad $1$, the second on pad $2$). Finally choose a pad for each single launch: $2^{5-2k}$ ways. Each pattern arises exactly once, so the number with $k$ doubles is
+\[
+\dbinom{5-k}{k}\cdot5!\cdot2^{5-2k}.
+\]
+This gives $1\cdot120\cdot32=3840$ for $k=0$, $4\cdot120\cdot8=3840$ for $k=1$ and $3\cdot120\cdot2=720$ for $k=2$. The total is
+\[
+3840+3840+720=\boxed{8400}.
+\]

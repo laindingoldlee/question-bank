@@ -1,0 +1,9 @@
+Regard north/east as signal state $0$ and south/west as state $1$. From every direction a $90^\circ$ rotation can either preserve the signal state or change it, so forced rotation does not prevent implementing a binary signal.
+Choose one counter. Each other player may send at most two signals in their lifetime: if state $0$ is seen and they have unused signals, change it to $1$ and use one signal; otherwise preserve the state. The counter changes state $1$ to $0$ and increments a private count; on state $0$, the counter preserves it. End when the count reaches $44$.
+At most one count can come from the unknown initial state. If even one of the other $22$ players had never visited, at most $21\cdot2+1=43$ counts could have occurred. Hence count $44$ certifies all have visited. The counter has also visited. Finally, under the fairness assumption, each pending signal is eventually counted and each remaining sender eventually encounters state $0$. All $44$ available real signals are eventually sent and counted unless the game already ended. Thus termination is guaranteed under that assumption, with no fixed time bound.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] v={(0,1),(1,0),(0,-1),(-1,0)};string[] s={"N: state 0","E: state 0","S: state 1","W: state 1"};for(int i=0;i<4;++i){draw(v[i]--v[(i+1)%4],Arrows);dot(v[i]);label(s[i],v[i],v[i]);}
+\end{asy}

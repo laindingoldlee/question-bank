@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2918711_100th_posta_few_problems_and_a_bit_of_information_about_me
+% Stable identity: aops-topic-2918711-q03
+Each vertex lies on three mutually adjacent faces, one from each opposite pair $\{1,6\},\{2,5\},\{3,4\}$, so its number is a multiple of the lcm of those three face numbers. Taking each vertex equal to that lcm gives
+\[6,4,15,20\ (\text{with }1),\quad6,12,30,60\ (\text{with }6),\]
+with sum $153$. Check the gcds: face $1$: $\gcd(6,4,15,20)=1$; face $6$: $\gcd(6,12,30,60)=6$; face $2$: $\gcd(6,4,6,12)=2$; face $5$: $\gcd(15,20,30,60)=5$; face $3$: $\gcd(6,15,6,30)=3$; face $4$: $\gcd(4,20,12,60)=4$.
+\begin{asy}
+usepackage("amsmath");
+size(2cm);
+defaultpen(fontsize(10pt));
+import three;currentprojection=orthographic(4,3,2);draw(unitcube,white,black);
+\end{asy}
+
+Each vertex is at least its lcm, so the minimum is $\boxed{153}$.

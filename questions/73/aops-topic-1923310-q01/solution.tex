@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1923310_combinatorics_question
+% Stable identity: aops-topic-1923310-q01
+Write the numbers as $a_1,a_2,\dots,a_{7}$ (so $a_1=1$, $a_2=2$, $a_3=3$, and so on).
+
+\textbf{Step 1: the shape of every value.} We show that for any chain $b_1\div b_2\div\cdots\div b_m$ with $m\ge2$, every way of inserting parentheses gives
+\[
+\dfrac{b_1}{b_2}\cdot b_3^{\pm1}\cdots b_m^{\pm1},
+\]
+that is, $b_1$ ends up in the numerator, $b_2$ in the denominator, and each later number in one of the two. Use induction on $m$; for $m=2$ it is clear. For $m>2$, the last division carried out splits the chain as $X\div Y$, where $X$ is a parenthesized chain $b_1\div\cdots\div b_k$ and $Y$ one of $b_{k+1}\div\cdots\div b_m$. By induction (or trivially, for a single number) the first number of $Y$ is in the numerator of $Y$. If $k\ge2$, then $b_1$ and $b_2$ are in the numerator and denominator of $X$, and dividing by $Y$ keeps them there. If $k=1$, then $X=b_1$ and $Y$ starts with $b_2$, which is in the numerator of $Y$ and hence in the denominator of $X\div Y$.
+
+So the value is $\dfrac{a_1}{a_2}\prod_{i\ge3}a_i^{\pm1}$, and there are at most $2^{5}$ sign patterns.
+
+\textbf{Step 2: every sign pattern occurs.} Choose which of $a_3,\dots,a_{7}$ should be in the numerator. Group the numbers $a_2,\dots,a_{7}$ into blocks: each number that should be in the denominator (including $a_2$) starts a new block, and each number that should be in the numerator joins the block of the nearest denominator number before it. Put each block in parentheses. A block $(d\div u_1\div\cdots\div u_r)$ equals $\dfrac{d}{u_1\cdots u_r}$, so dividing by it puts $d$ in the denominator and $u_1,\dots,u_r$ in the numerator. For example,
+\[
+1\div(2\div3)\div5\div(7\div11\div13)=\dfrac{1\cdot3\cdot11\cdot13}{2\cdot5\cdot7} .
+\]
+
+\textbf{Step 3: different patterns give different values.} The numbers $a_2,\dots,a_{7}$ are distinct primes, so by unique prime factorization the value determines which primes are in the numerator.
+
+Hence the number of different values is $2^{5}=\boxed{32}$.

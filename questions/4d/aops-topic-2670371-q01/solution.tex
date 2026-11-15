@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2670371_problem_set
+% Stable identity: aops-topic-2670371-q01
+Let the break points be at $x$ and $y$. By symmetry we may assume $x<y$; the outcomes then fill the triangle $0<x<y<8$ of area $32$. The pieces $x$, $y-x$, $8-y$ form a non-degenerate triangle exactly when each is less than half the total length $4$ (the triangle inequality, since each piece must be shorter than the sum $8$ minus itself):
+\[x<4,\qquad y-x<4,\qquad y>4.\]
+This is the shaded triangle with vertices $(0,4)$, $(4,4)$, $(4,8)$, of area $8$. The probability is $\dfrac{8}{32}=\boxed{\dfrac14}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+fill((0,4)--(4,4)--(4,8)--cycle,lightgray);
+draw((0,0)--(8,0)--(8,8)--(0,8)--cycle);draw((0,0)--(8,8),dashed);
+draw((0,4)--(4,4)--(4,8)--cycle,linewidth(0.8));
+label("$x$",(8,0),E);label("$y$",(0,8),N);label("$0$",(0,0),SW);label("$4$",(4,0),S);label("$8$",(8,0),S);label("$4$",(0,4),W);label("$8$",(0,8),W);
+label("$y=x$",(6.3,6.3),SE,fontsize(8pt));
+\end{asy}

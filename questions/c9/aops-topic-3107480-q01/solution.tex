@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3107480_malaysia_imonst2_2021_primary_1
+% Stable identity: aops-topic-3107480-q01
+Let the total area be $ K $. Similarity makes the top $ j $ bands have combined area $\dfrac{j^2K}{100}$. Hence band $ j $ has area $\dfrac{(2j-1)K}{100}$. Each adjacent blue-red pair differs by $\dfrac{2K}{100}$, and there are five pairs. Thus $\dfrac{K}{10}=20 $, so $\boxed{K=200}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,sqrt(3)),B=(-1,0),C=(1,0);for(int j=1;j<=10;++j){real u=(j-1)/10.0,v=j/10.0;pair L=A+u*(B-A),R=A+u*(C-A),LL=A+v*(B-A),RR=A+v*(C-A);filldraw(L--R--RR--LL--cycle,(j%2==1)?lightred:lightblue,black);}label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+\end{asy}

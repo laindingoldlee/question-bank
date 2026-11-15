@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2964886_nice_cp_or_geo_probelm
+% Stable identity: aops-topic-2964886-q01
+Any $4$ vertices form a convex quadrilateral whose sides join cyclically consecutive chosen vertices; a quadrilateral side is an $n$-gon side iff two chosen vertices are adjacent. So we subtract from $\binom n4$ the number of ways to choose $4$ pairwise non-adjacent vertices of an $n$-cycle.
+
+Fix vertex $1$. If it is not chosen, choose $4$ non-adjacent vertices from the path $2,\dots,n$ of $n-1$ vertices: $\binom{(n-1)-4+1}{4}=\binom{n-4}4$ (the usual gap argument). If it is chosen, its two neighbours are excluded and we choose $3$ non-adjacent vertices from the path $3,\dots,n-1$ of $n-3$ vertices: $\binom{n-5}3$. Hence the answer is
+\[\boxed{\binom n4-\binom{n-4}4-\binom{n-5}3}\quad\left(=\binom n4-\dfrac n{n-4}\binom{n-4}4\right).\]
+Check: for $n=8$ this gives $70-1-1=68$; the two excluded choices are the two sets of alternate vertices.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<8;++i){draw(dir(45i)--dir(45(i+1)));dot(dir(45i));}draw(dir(0)--dir(45)--dir(180)--dir(270)--cycle,linewidth(1));label("shared side",dir(22.5),NE,fontsize(7pt));
+\end{asy}

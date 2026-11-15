@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h1601149_geometry_qn_help
+% Stable identity: aops-topic-1601149-q01
+\textbf{Locate $E$.} Let $BE=x$. Triangle $ABE$ is right-angled at $B$, so $AE=\sqrt{1+x^2}$, and the condition reads $\sqrt{1+x^2}=\dfrac{3}{2}-x$. Squaring, $1+x^2=\dfrac{9}{4}-3x+x^2$, so $x=\dfrac{5}{12}$ and $AE=\dfrac{3}{2}-\dfrac{5}{12}=\dfrac{13}{12}$ (a scaled $5$-$12$-$13$ triangle).
+
+\textbf{Use the bisector.} Let $\angle DAF=\angle FAE=\theta$, so $\angle DAE=2\theta$ and $\angle BAE=90^\circ-2\theta$. In triangle $ABE$,
+\[
+\tan(90^\circ-2\theta)=\dfrac{BE}{AB}=\dfrac{5}{12}\qquad\Longrightarrow\qquad\tan2\theta=\dfrac{12}{5}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1);
+pair Ep=(1,5/12),F=(2/3,1);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--Ep,blue+linewidth(0.9));draw(A--F,red+linewidth(0.9));
+real a1=degrees(Ep-A),a2=degrees(F-A);
+draw(arc(A,0.22,a1,a2),red);draw(arc(A,0.26,a2,90),red);
+label("$\theta$",A+0.32*dir((a1+a2)/2),red);label("$\theta$",A+0.36*dir((a2+90)/2),red);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$E$",Ep,E);label("$F$",F,N);
+label("$\dfrac{5}{12}$",(B+Ep)/2,E);label("$\dfrac{13}{12}$",(A+Ep)/2,SE,blue);
+label("$1$",(A+B)/2,S);label("$\dfrac{2}{3}$",(D+F)/2,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In right triangle $ADF$, $DF=AD\tan\theta=\tan\theta=t$. The double-angle formula gives
+\[
+\dfrac{2t}{1-t^2}=\dfrac{12}{5}\quad\Longrightarrow\quad 6t^2+5t-6=0\quad\Longrightarrow\quad(3t-2)(2t+3)=0 .
+\]
+Since $t>0$, $t=\dfrac{2}{3}$, so $DF=\boxed{\dfrac{2}{3}}$, which indeed lies on side $CD$.
+
+(This agrees with the classical fact that $AE=BE+DF$ when $AF$ bisects $\angle DAE$: $\dfrac{13}{12}=\dfrac{5}{12}+\dfrac{2}{3}$.)

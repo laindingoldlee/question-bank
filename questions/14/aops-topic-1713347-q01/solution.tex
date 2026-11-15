@@ -1,0 +1,49 @@
+% Source: https://artofproblemsolving.com/community/c3h1713347_rmo_mock_test_question
+% Stable identity: aops-topic-1713347-q01
+Let $r$ be the radius of the circle and let $AA_1$, $BB_1$, $CC_1$ be the altitudes. As the triangle is acute, $H$ lies inside it, on each altitude between the vertex and the foot.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.2,4),B=(0,0),C=(5,0);
+pair A1=(A.x,0);
+pair H=extension(A,A1,B,B+rotate(90)*(C-A));
+real r=4.6;
+pair D=(B+C)/2,Ee=(C+A)/2,F=(A+B)/2;
+pair hit(pair X,pair Y){pair u=unit(Y-X);pair w=Y-H;real bb=dot(w,u);real cc=dot(w,w)-r*r;real t=-bb+sqrt(bb*bb-cc);return Y+t*u;}
+pair P=hit(Ee,F),Q=hit(F,D),R=hit(D,Ee);
+pair K=extension(A,A1,Ee,F);
+draw(circle(H,r),gray+linewidth(0.8));
+draw(Ee--P,gray);draw(F--Q,gray);draw(D--R,gray);
+draw(A--A1,dashed);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--P,red+linewidth(0.9));draw(B--Q,red+linewidth(0.9));draw(C--R,red+linewidth(0.9));
+dot(H);dot(D);dot(Ee);dot(F);dot(P,red);dot(Q,red);dot(R,red);dot(K);dot(A1);
+label("$A$",A,dir(60));label("$B$",B,dir(200));label("$C$",C,dir(-20));
+label("$H$",H,W);label("$D$",D,dir(-110));label("$E$",Ee,dir(40));label("$F$",F,dir(120));
+label("$P$",P,W);label("$Q$",Q,SE);label("$R$",R,N);
+label("$K$",K,dir(60));label("$A_1$",A1,dir(135));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{A formula for $AP$.} $EF$ is a midline, so $EF\parallel BC$, and therefore the altitude $AA_1$ is perpendicular to $EF$. Let $K=AA_1\cap EF$. The dilation with centre $A$ and ratio $\dfrac{1}{2}$ maps $B,C$ to $F,E$ and hence $A_1$ to $K$, so $K$ is the midpoint of $AA_1$. Write $h=AA_1$ and $t=AH$, with $0<t<h$.
+
+The points $A$, $H$, $K$ lie on a line perpendicular to line $EF$ at $K$, and $P$ lies on line $EF$. By Pythagoras in the right triangles $AKP$ and $HKP$,
+\[
+AP^2=AK^2+KP^2,\qquad r^2=HP^2=HK^2+KP^2 .
+\]
+Subtracting, and using $AK=\dfrac {h}{2}$, $HK=\left|t-\dfrac {h}{2}\right|$,
+\[
+AP^2=r^2+AK^2-HK^2=r^2+\dfrac{h^2}{4}-\left(t-\dfrac {h}{2}\right)^2=r^2+t(h-t)=r^2+AH\cdot HA_1 .
+\]
+This holds for either intersection point $P$. In the same way
+\[
+BQ^2=r^2+BH\cdot HB_1,\qquad CR^2=r^2+CH\cdot HC_1 .
+\]
+
+\textbf{The three products are equal.} Since $\angle AA_1B=\angle AB_1B=90^\circ$, the points $A_1$ and $B_1$ lie on the circle with diameter $AB$. The chords $AA_1$ and $BB_1$ of that circle meet at $H$, so by the power of the point $H$,
+\[
+AH\cdot HA_1=BH\cdot HB_1 ,
+\]
+and likewise $BH\cdot HB_1=CH\cdot HC_1$ (circle with diameter $BC$). Hence $AP^2=BQ^2=CR^2$, so $AP=BQ=CR$. $\blacksquare$

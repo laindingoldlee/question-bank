@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2981414_fun_geo_problems
+% Stable identity: aops-topic-2981414-q04
+Let the radius be $r$. Your distance to the centre is $r+9$, and the tangent segment is perpendicular to the radius at the point of tangency $T$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),Y=(-2.6,0);real r=1.4;draw(circle(O,r));pair T=r*dir(degrees(acos(r/2.6)));
+draw(Y--O,dashed);draw(Y--T);draw(O--T);dot(Y);dot(O);dot(T);
+label("you",Y,W);label("$O$",O,E);label("$T$",T,N);label("$9$",(Y+(-r,0))/2,S);label("$r$",(O+(-r,0))/2,S);label("$51$",(Y+T)/2,NW);
+\end{asy}
+
+So $(r+9)^2=r^2+51^2$: $18r+81=2601$, $r=\boxed{140}$ m.

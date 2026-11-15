@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1684980_geometry
+% Stable identity: aops-topic-1684980-q01
+Let $O$ be the centre and $r$ the radius. The perpendicular bisector of the chord $AB$ passes through $O$ and through the midpoint $D$ of the arc, so $O$, $C$, $D$ are collinear with $OC\perp AB$ and $OC=r-6$. In right triangle $OCA$, $AC=12$:
+\[
+r^2=12^2+(r-6)^2=144+r^2-12r+36\ \Longrightarrow\ 12r=180\ \Longrightarrow\ r=\boxed{15}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real R=15;
+pair O=(0,0),A=(-12,9),B=(12,9),C=(0,9),D=(0,15);
+draw(arc(O,R,degrees(B)-12,degrees(A)+12),linewidth(1));
+draw(A--B,linewidth(0.9));draw(C--D,linewidth(0.9));
+draw(O--A,blue+dashed);draw(O--C,blue+dashed);
+real q=1;draw(C+(q,0)--C+(q,q)--C+(0,q),red);
+dot(O);dot(A);dot(B);dot(C);dot(D);
+label("$O$",O,S);label("$A$",A,W);label("$B$",B,E);label("$C$",C,1.8*dir(-35));label("$D$",D,N);
+label("$12$",(A+C)/2,N);label("$6$",(C+D)/2,E);
+label("$r$",(O+A)/2,SW,blue);label("$r-6$",(O+C)/2,E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

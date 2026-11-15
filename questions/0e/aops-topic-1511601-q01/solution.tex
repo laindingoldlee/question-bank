@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h1511601_quadrilateral_problem
+% Stable identity: aops-topic-1511601-q01
+Plot the points; $ABCD$ is a convex quadrilateral, with the vertices in clockwise order:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+for(int i=-5;i<=6;++i){draw((i,-5)--(i,7),gray(0.88));}
+for(int j=-5;j<=7;++j){draw((-5,j)--(6,j),gray(0.88));}
+draw((-5,0)--(6,0),gray(0.4),Arrow(5));draw((0,-5)--(0,7),gray(0.4),Arrow(5));
+label("$x$",(6,0),E);label("$y$",(0,7),N);
+pair A=(-3,4),B=(4,6),C=(2,-3),D=(-4,-4);
+fill(A--B--C--D--cycle,paleblue);
+draw((-5,0)--(6,0),gray(0.4),Arrow(5));draw((0,-5)--(0,7),gray(0.4),Arrow(5));
+draw(A--B--C--D--cycle,blue+linewidth(1));
+dot(A);dot(B);dot(C);dot(D);
+label("$A(-3,4)$",A,NW);label("$B(4,6)$",B,NE);label("$C(2,-3)$",C,SE);label("$D(-4,-4)$",D,SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Perimeter.} By the distance formula,
+\[
+AB=\sqrt{7^2+2^2}=\sqrt{53},\quad BC=\sqrt{2^2+9^2}=\sqrt{85},\quad CD=\sqrt{6^2+1^2}=\sqrt{37},\quad DA=\sqrt{1^2+8^2}=\sqrt{65}.
+\]
+So the perimeter is $\boxed{\sqrt{53}+\sqrt{85}+\sqrt{37}+\sqrt{65}}\approx30.65$.
+
+\textbf{Area.} By the shoelace formula, with the vertices in the order $A,B,C,D$,
+\[
+\begin{aligned}
+2K&=\bigl|(-3)(6)-4\cdot4+4(-3)-2\cdot6+2(-4)-(-4)(-3)+(-4)(4)-(-3)(-4)\bigr|\\
+&=\bigl|-34-24-20-28\bigr|=106,
+\end{aligned}
+\]
+so the area is $K=\boxed{53}$.

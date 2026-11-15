@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3248725_2024_emcc_team_round__exeter_math_club_competition
+% Stable identity: aops-topic-3248725-q14
+The consecutive edge vectors are $u,v,w,-u,-v,-w$, all of length $3$. Rotate coordinates so their first three directions are $0,\alpha,\beta$ with $0<\alpha<\beta<\pi$. The shoelace formula gives area $K=u\times v+u\times w+v\times w=9[\sin\alpha+\sin\beta+\sin(\beta-\alpha)]$. The sum-to-product identity makes this $K=36\sin\dfrac{\beta}{2}\cos\dfrac{\alpha}{2}\cos\dfrac{\beta-\alpha}{2}$. Meanwhile $TU=|u+v|=6\cos\dfrac{\alpha}{2}$, $RM=|v+w|=6\cos\dfrac{\beta-\alpha}{2}$, and $UA=|w-u|=6\sin\dfrac{\beta}{2}$. Their opposite counterparts $MN,AT,NR$ have the same respective lengths. Therefore the requested product is $(TU\cdot RM\cdot UA)^2=(6K)^2=36\cdot25=\boxed{900}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real lo=0,hi=pi/2;for(int k=0;k<60;++k){real b=(lo+hi)/2;if(36*sin(b/2)*cos(b/4)^2<5)lo=b;else hi=b;}real b=(lo+hi)/2;pair u=(3,0),v=3dir(b/2*180/pi),w=3dir(b*180/pi),T=(0,0),R=u,U=u+v,M=u+v+w,A=v+w,Np=w;draw(T--R--U--M--A--Np--cycle);draw(T--U^^R--M^^U--A^^M--Np^^A--T^^Np--R,dashed+blue);label("$T$",T,SW);label("$R$",R,S);label("$U$",U,S);label("$M$",M,NE);label("$A$",A,N);label("$N$",Np,N);
+\end{asy}

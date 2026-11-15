@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1604355_birthday_cakeenvy
+% Stable identity: aops-topic-1604355-q01
+Let $O$ be the centre of the top, and let the cake have height $h$. The perimeter of the top is $28$ inches. Starting at a corner, mark seven points on the perimeter that divide it into seven arcs of length $4$ (measured along the boundary), and cut vertically from $O$ to each of the seven points:
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair O=(3.5,3.5);
+fill((0,0)--(4,0)--O--cycle,paleyellow);
+draw((0,0)--(7,0)--(7,7)--(0,7)--cycle,linewidth(1));
+pair[] P={(0,0),(4,0),(7,1),(7,5),(5,7),(1,7),(0,4)};
+for(int i=0;i<7;++i){draw(O--P[i],dashed);dot(P[i]);}
+dot(O);label("$O$",O+0.55*dir(198));
+pair[] M={(2.3,1.1),(5.5,1.4),(5.8,3.4),(5.3,5.6),(3.1,5.9),(1.1,5.1),(1.0,2.3)};
+for(int i=0;i<7;++i) label(string(i+1),M[i]);
+label("$4$",(2,0),S);label("$3$",(5.5,0),S);
+label("$1$",(7,0.5),E);label("$4$",(7,3),E);label("$2$",(7,6),E);
+label("$2$",(6,7),N);label("$4$",(3,7),N);label("$1$",(0.5,7),N);
+label("$3$",(0,5.5),W);label("$4$",(0,2),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The numbers outside the square are the lengths of the boundary pieces between consecutive marked points and corners; every piece has $4$ inches of boundary, for example piece 2 has $3+1$ and piece 4 has $2+2$.)
+
+\textbf{Top area (cake and top frosting).} Each piece is a union of one or two triangles with apex $O$ and bases on the sides of the square. Every such triangle has height $\dfrac{7}{2}$ (the distance from $O$ to each side), so its area is $\dfrac{1}{2}\cdot\text{base}\cdot\dfrac{7}{2}$. Adding over the triangles of one piece, its top has area $\dfrac{1}{2}\cdot4\cdot\dfrac{7}{2}=7$ square inches, one seventh of $49$. Since the cake has constant height, every piece also has the same volume $7h$, and the same amount of top frosting.
+
+\textbf{Side frosting.} The side frosting on a piece is a strip of height $h$ over its $4$ inches of boundary, of area $4h$, again the same for all seven pieces.
+
+So the seven pieces are equal in cake, in top frosting and in side frosting. $\blacksquare$

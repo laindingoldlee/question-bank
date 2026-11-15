@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1665269_simoc_singapore_international_math_olympiad_challenge
+% Stable identity: aops-topic-1665269-q01
+Let the new roads meet the existing road at $P$ (from $A$) and $Q$ (from $B$). The route has length $AP+PQ+QB$. Let $B'$ be the reflection of $B$ in the road; then $QB=QB'$ for every point $Q$ of the road.
+
+By the triangle inequality, twice,
+\[
+AP+PQ+QB=AP+PQ+QB'\ge AQ+QB'\ge AB'.
+\]
+Equality holds when $P=Q$ is the point where the segment $AB'$ crosses the road. So the shortest route goes straight from $A$ to that point $P$ and straight on to $B$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),D=(40,0),A=(0,10),B=(40,20),Bp=(40,-20),P=(40/3,0);
+draw((-6,0)--(46,0),linewidth(1.2));
+draw(A--C,gray+dashed);draw(B--D,gray+dashed);draw(D--Bp,gray+dashed);
+draw(A--P--B,blue+linewidth(0.9));draw(P--Bp,red+dashed);
+dot(A);dot(B);dot(Bp);dot(P);
+label("$A$",A,W);label("$B$",B,E);label("$B'$",Bp,E);label("$P$",P,dir(-120));label("$C$",C,SW);label("$D$",D,SE);
+label("$10$",(0,5),W);label("$20$",(40,10),E);label("$20$",(40,-10),E);draw((0,-3)--(0,-26),gray+dotted);draw((40,-22)--(40,-26),gray+dotted);draw((0,-25)--(40,-25),Arrows(TeXHead));label("$40$",(20,-25),S);
+label("road",(-6,0),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Now $B'$ is $20$ km south of $D$, so the horizontal and vertical distances from $A$ to $B'$ are $40$ km and $10+20=30$ km. Hence
+\[
+AB'=\sqrt{40^2+30^2}=\boxed{50\text{ km}}.
+\]
+(The point $P$ divides $CD$ in the ratio $10:20$, so $CP=\dfrac{40}{3}$ km.)

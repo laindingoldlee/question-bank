@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2793839_2017_geometry_bee__guts_rounds__sets_14
+% Stable identity: aops-topic-2793839-q09
+The six quadruples are $(A,E,H,F)$, $(B,D,H,F)$, $(C,D,H,E)$, $(A,B,D,E)$, $(B,C,E,F)$, and $(C,A,D,F)$. Their circles have diameters $AH,BH,CH,AB,BC,CA$, respectively. For example, $AE\perp EH$ and $AF\perp FH$, so $E,F$ lie on the circle with diameter $AH$. Also $AD\perp DB$ and $AE\perp EB$, so $D,E$ lie on the circle with diameter $AB$. The other four follow by cyclic relabeling. This proves all six assertions by Thales' theorem.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,3),B=(-2,0),C=(3,0),D=(0,0),Ee=C+dot(B-C,A-C)/dot(A-C,A-C)*(A-C),F=A+dot(C-A,B-A)/dot(B-A,B-A)*(B-A),H=(0,2);draw(A--B--C--cycle);draw(A--D);draw(B--Ee);draw(C--F);draw(circle((A+H)/2,abs(A-H)/2),dashed);draw(circle((B+H)/2,abs(B-H)/2),dashed);draw(circle((C+H)/2,abs(C-H)/2),dashed);draw(circle((A+B)/2,abs(A-B)/2),dotted);draw(circle((B+C)/2,abs(B-C)/2),dotted);draw(circle((C+A)/2,abs(C-A)/2),dotted);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$E$",Ee,NE);label("$F$",F,NW);label("$H$",H,E);
+\end{asy}

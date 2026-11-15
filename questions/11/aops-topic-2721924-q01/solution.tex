@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2721924_sum_of_precedding_term_and_largest_digit_of_term
+% Stable identity: aops-topic-2721924-q01
+\emph{Five is possible:} $807,815,823,831,839$ are odd (the largest digit is $8$ each time), and then $839+9=848$ is even.
+
+\emph{Six is impossible.} Let $a_1,\dots,a_k$ be consecutive odd terms with $k\ge2$, and let $d_i$ be the largest digit and $u_i$ the units digit of $a_i$. For $i<k$, $a_{i+1}=a_i+d_i$ is odd, so $d_i$ is even; hence $a_i$ contains no digit $9$, and the odd digit $u_i$ is less than $d_i$.
+\begin{itemize}
+\item If $u_i+d_i<10$, only the units digit changes, to $u_i+d_i>d_i$, which is odd and is now the largest digit; so $a_{i+2}$ is even and $i+1=k$.
+\item If $u_i+d_i\ge10$, the tens digit $t$ goes up by $1$ (no further carry, as $t\ne9$). If $t+1>d_i$ then $t=d_i$ and the new largest digit $d_i+1$ is odd, so again $i+1=k$. Otherwise the largest digit stays $d_i$, and the units digit becomes $u_i-(10-d_i)$.
+\end{itemize}
+So for $i\le k-2$ the largest digit stays equal to some even $d\le8$ and the units digit drops by $10-d\ge2$ at each step. The units digits $u_1>u_2>\cdots>u_{k-1}$ are odd, with $u_1<d\le8$, so $u_1\le7$ and $u_{k-1}\ge1$. Hence $2(k-2)\le7-1$, i.e. $k\le5$.
+
+The answer is $\boxed{5}$.

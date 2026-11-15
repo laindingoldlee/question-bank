@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3176265_2019_mbmt_geometry_round__montgomery_blair_math_tournament
+% Stable identity: aops-topic-3176265-q03
+The prism has five edges on each base and five joining corresponding vertices, totaling $15$. Each attached pyramid adds five apex-to-base edges; the existing base edges remain on the surface. Total edges are $15+5+5=\boxed{25}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] p;for(int j=0;j<5;++j)p.push((cos(2*pi*j/5),.35*sin(2*pi*j/5)));pair v=(0,2),U=(0,3.2),V=(0,-1.2);for(int j=0;j<5;++j){draw(p[j]--p[(j+1)%5]);draw(p[j]+v--p[(j+1)%5]+v);draw(p[j]--p[j]+v);draw(U--p[j]+v);draw(V--p[j]);}label("two pyramids and prism",(0,-1.6));
+\end{asy}

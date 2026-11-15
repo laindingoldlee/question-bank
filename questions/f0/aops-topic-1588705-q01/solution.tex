@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1588705_hard_transformations
+% Stable identity: aops-topic-1588705-q01
+The image $P'$ is found from the foot $F$ of the perpendicular from $P$ to the line: $F$ is the midpoint of $PP'$.
+
+\textbf{The perpendicular.} The line has slope $3$, so the perpendicular through $P$ has slope $-\dfrac{1}{3}$: $y-2=-\dfrac{1}{3}(x-3)$.
+
+\textbf{The foot.} Substituting $y=3x+1$: $3x+1=2-\dfrac{x-3}{3}$, so $9x+3=6-x+3$, $10x=6$, $x=\dfrac{3}{5}$ and $y=\dfrac{14}{5}$. So $F=\left(\dfrac{3}{5},\dfrac{14}{5}\right)$.
+
+\textbf{The image.} $P'=2F-P=\left(\dfrac{6}{5}-3,\ \dfrac{28}{5}-2\right)$, so
+\[
+P'=\boxed{\left(-\dfrac{9}{5},\ \dfrac{18}{5}\right)}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair P=(3,2),F=(3/5,14/5),Q=(-9/5,18/5);
+draw((-3,0)--(4.2,0),gray,Arrow(TeXHead));draw((0,-0.6)--(0,5),gray,Arrow(TeXHead));
+label("$x$",(4.2,0),E,gray);label("$y$",(0,5),N,gray);
+draw((-0.5,-0.5)--(4/3,5),blue+linewidth(0.9));label("$y=3x+1$",(4/3,5),E,blue);
+draw(P--Q,red+dashed);
+pair u=unit((1,3)),v=unit(P-F);real s=0.22;
+draw(F+s*u--F+s*(u+v)--F+s*v);
+dot(P);dot(Q);dot(F,red);
+label("$P(3,2)$",P,E);label("$P'$",Q,W);label("$F$",F+0.12*dir(-65),dir(-65),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check: the midpoint of $PP'$ is $\left(\dfrac{3}{5},\dfrac{14}{5}\right)$, which lies on the line since $3\cdot\dfrac{3}{5}+1=\dfrac{14}{5}$, and $PP'$ has slope $\dfrac{\dfrac{18}{5}-2}{-\dfrac{9}{5}-3}=\dfrac{\dfrac{8}{5}}{-\dfrac{24}{5}}=-\dfrac{1}{3}$, perpendicular to the line.
+
+The same method works for any line: drop the perpendicular, find the foot $F$, and take $P'=2F-P$. (For the line $ax+by+c=0$ this gives the formula $P'=P-\dfrac{2(ax_0+by_0+c)}{a^2+b^2}(a,b)$ for $P=(x_0,y_0)$.)

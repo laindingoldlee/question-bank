@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2786880_2017_mbmt_guts_round_p1125_montgomery_blair_math_tournament
+% Stable identity: aops-topic-2786880-q17
+If the legs are $ a,b $ and hypotenuse $ c $, their semicircle areas are proportional to $ a^2,b^2,c^2 $. Since $ a^2+b^2=c^2 $, the two small semicircle areas sum to the large semicircle area. The two circular segments cut from the large semicircle by the legs are exactly its area minus the triangle area. Subtracting those same segments from the small semicircles leaves the two lunes, whose combined area therefore equals the triangle's area, $\boxed{210}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(-1,0),B=(1,0),C=(0.3,sqrt(0.91));draw(arc((0,0),1,0,180));draw(A--B--C--cycle);pair U=(A+C)/2,V=(B+C)/2;draw(arc(U,abs(A-C)/2,degrees(C-U),degrees(A-U)+360),blue);draw(arc(V,abs(B-C)/2,degrees(B-V),degrees(C-V)),blue);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+\end{asy}

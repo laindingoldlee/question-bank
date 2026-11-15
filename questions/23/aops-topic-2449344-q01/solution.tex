@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2449344_interesting_snowman_problem_that_my_math_teacher_made
+% Stable identity: aops-topic-2449344-q01
+The diameters are $9$, $18$ and $36$ inches, so the radii are $\dfrac92$, $9$ and $18$ inches. The snowballs are stacked along the axis of the cylinder, so the cylinder has radius $18$ and height $9+18+36=63$ inches.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real R=18, H=63, h=73/16, sh=58;
+path cyl=(-R,0)--(R,0)--(R,H)--(-R,H)--cycle;
+draw(cyl,linewidth(0.9));
+draw(circle((0,18),18)); draw(circle((0,45),9)); draw(circle((0,58.5),4.5));
+draw((-18,18)--(18,18),dashed); label("$36$",(0,18),N);
+draw((-9,45)--(9,45),dashed); draw((-4.5,58.5)--(4.5,58.5),dashed);
+label("$18$",(13.5,45)); label("$9$",(11,58.5));
+draw((-R-5,0)--(-R-5,H),Arrows(4)); label("$63$",(-R-5,H/2),W);
+label("before",(0,-3),S);
+fill(shift(sh,0)*((-R,0)--(R,0)--(R,h)--(-R,h)--cycle),rgb(0.6,0.8,1));
+draw(shift(sh,0)*cyl,linewidth(0.9));
+draw((sh-R,h)--(sh+R,h),blue);
+draw((sh+R+5,0)--(sh+R+5,h),Arrows(3)); label("$\dfrac{73}{16}$",(sh+R+5,h/2),E);
+draw((sh+R+5,h)--(sh+R+5,H),Arrows(4)); label("$\dfrac{935}{16}$",(sh+R+5,(h+H)/2),E);
+draw((sh-R,H+3)--(sh+R,H+3),Arrows(4)); label("$36$",(sh,H+3),N);
+label("after melting",(sh,-3),S);
+\end{asy}
+
+The volume of snow is
+\[\dfrac43\pi\left(\left(\dfrac92\right)^3+9^3+18^3\right)=\dfrac43\pi\cdot\dfrac{729}{8}\left(1+8+64\right)=\dfrac43\pi\cdot\dfrac{729\cdot73}{8}=\dfrac{17739\pi}{2}\text{ cubic inches},\]
+so the water has volume $\dfrac16\cdot\dfrac{17739\pi}{2}=\dfrac{5913\pi}{4}$ cubic inches. The water fills the bottom of the cylinder to a depth $h$ with
+\[\pi\cdot18^2\cdot h=\dfrac{5913\pi}{4},\qquad h=\dfrac{5913}{4\cdot324}=\dfrac{5913}{1296}=\dfrac{73}{16}\text{ inches}\]
+(since $5913=81\cdot73$ and $1296=81\cdot16$). The surface of the water is therefore
+\[63-\dfrac{73}{16}=\boxed{\dfrac{935}{16}=58\dfrac{7}{16}\text{ inches}}\]
+below the top of the cylinder.

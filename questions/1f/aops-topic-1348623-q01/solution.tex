@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1348623_triangle_types
+% Stable identity: aops-topic-1348623-q01
+Three lengths form a non-degenerate triangle exactly when each is less than the sum of the other two (strict triangle inequality), and a degenerate triangle exactly when one of them equals the sum of the other two.
+
+(a) We need $x<3+5$, $3<5+x$ and $5<3+x$. The second always holds; the others give $\boxed{2<x<8}$.
+
+(b) Equality in one inequality: $x=3+5=8$ (the vertex between the $3$ and $5$ sides lies on the side of length $8$) or $5=3+x$, that is $x=2$ (the segment of length $2$ and the one of length $3$ lie along the segment of length $5$). So $\boxed{x=2\text{ or }x=8}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(6,0); real x=(36+9-25)/12; pair A=(x,sqrt(9-x*x));
+draw(A--B--C--cycle,linewidth(0.9));
+dot(A);dot(B);dot(C);
+label("$3$",(A+B)/2,NW); label("$5$",(A+C)/2,NE); label("$6$",(B+C)/2,S);
+label("non-degenerate ($x=6$)",(3,-1.9),fontsize(9pt));
+pair P=(9,0), Q=(12,0), R=(17,0);
+draw(P--R,linewidth(0.9));
+dot(P);dot(Q);dot(R);
+label("$3$",(P+Q)/2,N); label("$5$",(Q+R)/2,N); draw((9,-0.6)--(17,-0.6),Arrows(TeXHead)); label("$8$",(13,-0.6),S);
+label("degenerate ($x=8$)",(13,-1.9),fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For $x<2$ or $x>8$ no triangle of either kind exists.

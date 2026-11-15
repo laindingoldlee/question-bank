@@ -1,0 +1,6 @@
+Condition on six distinct points on the circle and fix the starting point. A noncrossing Hamiltonian path must at each step choose one of the two neighbours of the current endpoint among remaining vertices: a diagonal to any other vertex would strand unvisited points on opposite sides, forcing a later crossing. Conversely either neighbour choice preserves noncrossing. There are $2^{6-2}=16$ possible orders, since the last step is forced. Only the two cyclic boundary orders also close without crossings. Thus the conditional probability is $\dfrac{2}{16}=\dfrac{1}{8}$ and $\boxed{a=8}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair[] V;for(int i=0;i<6;++i)V.push(dir(60i));draw(unitcircle,gray);for(int i=0;i<5;++i)draw(V[i]--V[i+1],blue);draw(V[5]--V[0],red+dashed);for(int i=0;i<6;++i)label("$"+string(i+1)+"$",V[i],V[i]);
+\end{asy}
+

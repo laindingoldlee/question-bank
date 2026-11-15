@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3414169_250hundredfiftieth
+% Stable identity: aops-topic-3414169-q02
+Right triangle $AEB$ gives $EB=12$. Write $EC=x>0$, $ED=y>0$; integer diagonal lengths make $x,y$ integers. The area condition gives $(16+x)(12+y)=500$. The only factor pairs with first entry greater than $16$ and second greater than $12$ are $(20,25)$ and $(25,20)$. Thus $(x,y)=(4,13)$ or $(9,8)$, and $CD^2=x^2+y^2$ is $185$ or $145$. Both yield convex quadrilaterals. The sum is $\boxed{330}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int k=0;k<2;++k){pair shift=(40*k,0);real x=k==0?4:9,y=k==0?13:8;pair A=shift+(-16,0),B=shift+(0,12),C=shift+(x,0),D=shift+(0,-y),O=shift;draw(A--B--C--D--cycle);draw(A--C^^B--D,dashed);label("$A$",A,W);label("$B$",B,N);label("$C$",C,E);label("$D$",D,S);label("$E$",O,SW);label(k==0?"$(EC,ED)=(4,13)$":"$(EC,ED)=(9,8)$",shift+(0,-17));}
+\end{asy}

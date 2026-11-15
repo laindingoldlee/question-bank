@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1682192_textbook_geometry_question
+% Stable identity: aops-topic-1682192-q01
+We have $AD=30$ and $AE=10$, so
+\[
+\dfrac{AD}{AC}=\dfrac{30}{300}=\dfrac{1}{10}=\dfrac{10}{100}=\dfrac{AE}{AB}.
+\]
+With the common angle $A$, triangles $ADE$ and $ACB$ are similar (SAS), with ratio $\dfrac{1}{10}$; hence $BC=10\cdot DE=250$. Also $AD\cdot AB=3000=AE\cdot AC$, so by the converse of the power of a point, $B$, $C$, $E$, $D$ lie on a circle.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0);real ca=0.625;pair dC=(ca,sqrt(1-ca^2));
+real ab=4,ac=6;pair B=(ab,0),C=ac*dC;
+real ad=2.4,ae=ad*ab/ac;pair D=(ad,0),Ep=ae*dC;
+pair O=extension((B+D)/2,(B+D)/2+(0,1),(B+C)/2,(B+C)/2+rotate(90)*(C-B));
+draw(circle(O,abs(O-B)),gray+dashed);
+draw(A--B--C--cycle,linewidth(0.9));draw(D--Ep,linewidth(0.8));
+draw(B--Ep,blue);draw(C--D,blue);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,S);label("$E$",Ep,NW);
+label("$30$",(A+D)/2,S);label("$70$",(D+B)/2,S);label("$10$",(A+Ep)/2,NW);label("$290$",(Ep+C)/2,NW);
+label("$25$",(D+Ep)/2,3.2*dir(215),fontsize(8pt));
+label("(not to scale)",(3.2,-0.9),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the cyclic quadrilateral $BCED$ (vertices in this order around the circle), the diagonals are $BE$ and $CD$. Ptolemy's theorem gives
+\[
+BE\cdot CD=BC\cdot DE+BD\cdot CE=250\cdot25+70\cdot290=6250+20300=\boxed{26550}.
+\]
+Check with the law of cosines: $\cos A=\dfrac{100^2+300^2-250^2}{2\cdot100\cdot300}=\dfrac{5}{8}$, so $BE^2=100^2+10^2-2\cdot100\cdot10\cdot\dfrac{5}{8}=8850$ and $CD^2=300^2+30^2-2\cdot300\cdot30\cdot\dfrac{5}{8}=79650$, and $8850\cdot79650=26550^2$.

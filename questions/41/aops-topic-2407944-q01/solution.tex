@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2407944_selection_of_books_from_a_shelf
+% Stable identity: aops-topic-2407944-q01
+Number the positions on the shelf $1,2,\dots,10$. A selection with exactly two adjacent books consists of an adjacent pair $\{k,k+1\}$ ($k=1,\dots,9$) together with a third book that is next to neither book of the pair. Each such selection contains exactly one adjacent pair, so it is counted exactly once.
+\begin{itemize}
+\item If the pair is at an end ($k=1$ or $k=9$), it has only one neighbouring position, so the third book can be any of $10-2-1=7$ books.
+\item If the pair is not at an end ($k=2,\dots,8$, which is $7$ pairs), it has two neighbouring positions, so there are $10-2-2=6$ choices.
+\end{itemize}
+The total is $2\cdot7+7\cdot6=\boxed{56}$.
+
+\emph{Check.} Of the $\dbinom{10}{3}=120$ selections, $\dbinom{8}{3}=56$ have no two adjacent books (choose $3$ of $8$ objects and insert gaps) and $8$ consist of three consecutive books, leaving $120-56-8=56$.

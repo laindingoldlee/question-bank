@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3589608_variety_of_geometry
+% Stable identity: aops-topic-3589608-q13
+Scale so $BM=AC=1$ and put $M=(0,0)$, $A=(a,0)$ with $a>0$, $B=(u,t)$ and $t>0$. Then $BH=t=CM$, so $u^2+t^2=1$ and $C=(-tu,-t^2)$. Because $AC=1$ and $\angle MAC=30^\circ$, the vertical separation of $A,C$ is $\dfrac{1}{2}$. Thus $t^2=\dfrac{1}{2}$ and $u=\pm\dfrac{1}{\sqrt2}$. The ray $CA$ has direction $30^\circ$ from the positive horizontal axis. The ray $CB$ has direction $45^\circ$ if $u>0$ and $135^\circ$ if $u<0$. Hence $\angle ACB$ is $\boxed{15^\circ\text{ or }105^\circ}$. Both occur: take $t=\dfrac{1}{\sqrt2}$, the two signs of $u$, and $a=\dfrac{\sqrt3}{2}-tu>0$.
+\begin{asy}
+import geometry;
+size(240);
+for(int k=0;k<2;++k){real u=(k==0?1:-1)/sqrt(2),t=1/sqrt(2);pair shift=(3*k,0),M=shift,A=shift+(sqrt(3)/2-t*u,0),B=shift+(u,t),C=shift+(-t*u,-t*t),H=shift+(u,0);draw(A--B--C--cycle);draw(A--M);draw(B--H,dashed);label("$A$",A,E);label("$B$",B,N);label("$C$",C,S);label("$M$",M,SW);label("$H$",H,NW);}
+\end{asy}

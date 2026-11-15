@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2175343_geo_rocks_a_3_not_so_hard_problems
+% Stable identity: aops-topic-2175343-q02
+The point $M$ is equidistant from $A$ and $D$, so it lies on the perpendicular bisector of $AD$, which is also the perpendicular bisector of $BC$. So $M$ is the midpoint of $BC$. Triangle $AMD$ is then a right isosceles triangle with hypotenuse $AD$, and its height from $M$ is half the hypotenuse: $AB=\dfrac{AD}{2}$. Scale so that $AB=1$ and $BC=AD=2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(0,2),C=(4,2),D=(4,0),M=(2,2);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--M--D,blue); draw(A--C,red+dashed);
+pair u=unit(A-M),v=unit(D-M); draw(M+0.3*u--M+0.3*(u+v)--M+0.3*v,blue);
+draw(arc(C,0.8,180,180+degrees(atan(0.5))),red); label("$\theta$",C+1.05*dir(193),red+fontsize(8pt));
+dot(A);dot(B);dot(C);dot(D);dot(M);
+label("$A$",A,SW);label("$B$",B,NW);label("$C$",C,NE);label("$D$",D,SE);label("$M$",M,N);
+label("$1$",(A+B)/2,W);label("$1$",(B+M)/2,N);label("$1$",(M+C)/2,N);label("$2$",(A+D)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the right triangle $ABC$, the angle $\theta=\angle ACB$ is opposite the side $AB=1$, and the hypotenuse is $AC=\sqrt{1^2+2^2}=\sqrt5$. Hence
+\[\sin\angle ACB=\dfrac{AB}{AC}=\dfrac{1}{\sqrt5}=\boxed{\dfrac{\sqrt5}{5}}.\]

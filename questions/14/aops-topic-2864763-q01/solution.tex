@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2864763_polygon_dissected_into_another_polygon
+% Stable identity: aops-topic-2864763-q01
+Write $X\sim Y$ if $X$ can be cut into finitely many polygonal pieces that reassemble into $Y$. Clearly $\sim$ is symmetric. It is also transitive: if $X\sim Y$ and $Y\sim Z$, overlay on $Y$ the two systems of cuts. Their common refinement cuts $Y$ into pieces, each of which lies inside a piece of both systems; moving these small pieces back gives $X\sim Z$.
+
+\textbf{Step 1: a triangle is equivalent to a rectangle.} Take the longest side $AB$ as base, so the foot of the altitude from $C$ lies on $AB$; let the height be $h$. Cut along the midline $MN$ ($M,N$ midpoints of $CA$, $CB$) and along the perpendicular $CK$ from $C$ to $MN$. Rotating triangle $CMK$ by $180^\circ$ about $M$ and triangle $CKN$ by $180^\circ$ about $N$ fills the two corners, giving a rectangle with base $AB$ and height $\dfrac h2$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(5,0),C=(1.8,3);pair M=(A+C)/2,N=(B+C)/2,K=(C.x,M.y),H=(C.x,0);
+draw(A--B--C--cycle);draw(M--N);draw(C--K,dashed);
+fill(A--(0,M.y)--M--cycle,opacity(0.3)+red);fill(B--(5,M.y)--N--cycle,opacity(0.3)+blue);
+fill(C--M--K--cycle,opacity(0.3)+red);fill(C--K--N--cycle,opacity(0.3)+blue);
+draw(A--(0,M.y)--(5,M.y)--B,dotted);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$M$",M,W);label("$N$",N,NE);label("$K$",K,S);
+label("$\dfrac h2$",(5,M.y/2),E);
+\end{asy}
+
+\textbf{Step 2: parallelograms on a common base.} Two parallelograms with the same base and the same height are equivalent. If one is obtained from the other by sliding the top side a distance at most the base length, cut off a triangle from one end and translate it to the other end. A larger slide is a chain of such small slides, so transitivity finishes it.
+
+\textbf{Step 3: any rectangle is equivalent to a rectangle of width $1$.} Let the rectangle be $W\times H$. If $H>1$, cut it in half and place the halves side by side to get $2W\times\dfrac H2$; repeat until $H\le1$. Now tilt: by Step 2 the rectangle is equivalent to a parallelogram with base $W$, height $H$ and a slanted side of length $1$ (possible since $1\ge H$). Viewing that parallelogram as standing on a side of length $1$, Step 2 again makes it equivalent to a rectangle with a side $1$ and the other side $WH$.
+
+\textbf{Step 4.} Triangulate $\mathcal{P}$ into triangles $T_1,\dots,T_m$. Each $T_i$ is equivalent to a $1\times[T_i]$ rectangle, and stacking these gives $\mathcal{P}\sim$ a $1\times[\mathcal{P}]$ rectangle. Likewise $\mathcal{Q}\sim$ a $1\times[\mathcal{Q}]$ rectangle, which is the same rectangle since $[\mathcal{P}]=[\mathcal{Q}]$. By transitivity, $\mathcal{P}\sim\mathcal{Q}$. $\blacksquare$

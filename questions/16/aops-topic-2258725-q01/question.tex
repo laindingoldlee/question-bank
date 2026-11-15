@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2258725_sierpinski_triangle
+% Stable identity: aops-topic-2258725-q01
+The figures below are built as follows. Level $1$ is an equilateral triangle. To get level $n+1$ from level $n$, take each of the smallest upright triangles of level $n$ (there are $3^{n-1}$ of them) and join the midpoints of its sides, which splits it into three smaller upright triangles and one upside-down triangle in the middle.
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+void sier(pair a, pair b, pair c, int d){
+  draw(a--b--c--cycle,linewidth(0.7));
+  if(d>1){ pair ab=(a+b)/2, bc=(b+c)/2, ca=(c+a)/2;
+    sier(a,ab,ca,d-1); sier(ab,b,bc,d-1); sier(ca,bc,c,d-1); }
+}
+for(int k=1;k<=3;++k){
+  pair s=((k-1)*2.6,0);
+  sier(s,s+(2,0),s+(1,sqrt(3)),k);
+  label("Level "+string(k),s+(1,-0.1),S);
+}
+\end{asy}
+
+A triangle \emph{in the figure} is any triangle, of any size and orientation, whose three sides lie along drawn segments. For example, level $1$ contains $1$ triangle and level $2$ contains $5$. How many triangles does level $n$ contain?

@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1321908_reconstruction_problem
+% Stable identity: aops-topic-1321908-q01
+Use position vectors. The conditions say $B$ is the midpoint of $AA'$, $C$ of $BB'$, $D$ of $CC'$, and $A$ of $DD'$:
+\[
+A'=2B-A,\quad B'=2C-B,\quad C'=2D-C,\quad D'=2A-D .
+\]
+Eliminating, $D=2A-D'$, $C=2D-C'=4A-2D'-C'$, $B=2C-B'=8A-4D'-2C'-B'$, and then $A'=2B-A=15A-8D'-4C'-2B'$, so
+\[
+A=\dfrac{A'+2B'+4C'+8D'}{15}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0.5),C=(3.2,3),D=(0.6,2.4);
+pair A1=2B-A,B1=2C-B,C1=2D-C,D1=2A-D;
+draw(A--B--C--D--cycle,linewidth(1)); draw(B--A1,gray+dashed); draw(C--B1,gray+dashed); draw(D--C1,gray+dashed); draw(A--D1,gray+dashed);
+dot(A1,red);dot(B1,red);dot(C1,red);dot(D1,red);
+label("$A$",A,SE);label("$B$",B,SE);label("$C$",C,E);label("$D$",D,W);
+label("$A'$",A1,E,red);label("$B'$",B1,N,red);label("$C'$",C1,W,red);label("$D'$",D1,S,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Construction.} Choose any point $X$ as a trial vertex and run the doubling steps backwards: $D_X$ is the reflection of $D'$ in $X$, $C_X$ the reflection of $C'$ in $D_X$, $B_X$ the reflection of $B'$ in $C_X$, and $A'_X$ the reflection of $X$ in $B_X$. By the same algebra, $A'_X=15X-8D'-4C'-2B'$, so $A'_X-A'=15(X-A)$. Hence $A$ is found by moving from $X$ by $\dfrac{1}{15}$ of the vector from $A'_X$ to $A'$ (divide segment $A'_XA'$ into $15$ equal parts with parallel lines and copy one part to $X$). Then $D=2A-D'$ (reflect $D'$ in $A$), $C$, $B$ follow in the same way. The solution is unique.

@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1383448_mass_points_solution
+% Stable identity: aops-topic-1383448-q19
+\textbf{Ratio lemma.} If a line through $A$ meets segment $EF$ at $X$, then $\dfrac{EX}{XF}$ equals the ratio of the distances from $E$ and $F$ to that line, which is the ratio of the areas of the triangles with base $A$ to any other point $Y$ of the line: $\dfrac{EX}{XF}=\dfrac{[AEY]}{[AFY]}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(5,0),C=(5,4),D=(0,4),Ee=(4,0),G=(5,3),F=(2,4);
+pair P=extension(A,C,Ee,F), Q=extension(A,G,Ee,F);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(Ee--F,linewidth(0.9));
+draw(A--C,blue); draw(A--G,red);
+dot(Ee);dot(F);dot(G);dot(P,blue);dot(Q,red);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$E$",Ee,S); label("$F$",F,N); label("$G$",G,E);
+label("$P$",P,W,blue); label("$Q$",Q,dir(250),red);
+label("$1$",(4.5,0),S,fontsize(8pt)); label("$4$",(2,0),S,fontsize(8pt));
+label("$2$",(1,4),N,fontsize(8pt)); label("$3$",(3.5,4),N,fontsize(8pt));
+label("$1$",(5,3.5),E,fontsize(8pt)); label("$3$",(5,1.5),E,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The point $P$} (line $AC$). $[AEC]=\dfrac{1}{2}\cdot AE\cdot BC=\dfrac{1}{2}\cdot4\cdot4=8$ and $[AFC]=\dfrac{1}{2}\cdot FC\cdot AD=\dfrac{1}{2}\cdot3\cdot4=6$. So $\dfrac{EP}{PF}=\dfrac{8}{6}=\dfrac{4}{3}$ and $EP=\dfrac{4}{7}EF$.
+
+\textbf{The point $Q$} (line $AG$). $[AEG]=\dfrac{1}{2}\cdot AE\cdot BG=\dfrac{1}{2}\cdot4\cdot3=6$, and $[AFG]=[ABCD]-[ABG]-[GCF]-[ADF]=20-\dfrac{15}{2}-\dfrac{3}{2}-4=7$. So $\dfrac{EQ}{QF}=\dfrac{6}{7}$ and $EQ=\dfrac{6}{13}EF$.
+
+Both points lie on segment $EF$, with $Q$ nearer to $E$, so
+\[
+\dfrac{PQ}{EF}=\dfrac{4}{7}-\dfrac{6}{13}=\dfrac{52-42}{91}=\boxed{\dfrac{10}{91}} .
+\]
+(With coordinates $A=(0,0)$, $E=(4,0)$, $F=(2,4)$: $P=\left(\dfrac{20}{7},\dfrac{16}{7}\right)$ and $Q=\left(\dfrac{40}{13},\dfrac{24}{13}\right)$, which confirms this. Mass points do not apply directly, since $EF$ is not a cevian of a triangle containing both lines; the area ratios above play the same role.)

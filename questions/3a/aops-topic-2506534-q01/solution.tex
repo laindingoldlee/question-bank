@@ -1,0 +1,53 @@
+% Source: https://artofproblemsolving.com/community/c3h2506534_1_problem_from_a_contest_that_just_ended
+% Stable identity: aops-topic-2506534-q01
+Let $\omega_{AB}$, $\omega_{BC}$, $\omega_{CA}$ be the circles with diameters $AB$, $BC$, $CA$, and let $H_A$, $H_B$, $H_C$ be the feet of the altitudes from $A$, $B$, $C$ (on the lines $BC$, $CA$, $AB$). We use Thales' theorem: a point $P\ne A,B$ lies on $\omega_{AB}$ if and only if $\angle APB=90^\circ$.
+
+\textbf{All intersection points.}
+\begin{itemize}
+\item Two sides meet only at a vertex: $A$, $B$, $C$.
+\item $\omega_{AB}$ meets line $AB$ only at $A$ and $B$. It meets line $BC$ at $B$ and at the point $P$ of line $BC$ with $\angle APB=90^\circ$, which is $H_A$; similarly it meets line $CA$ at $A$ and $H_B$. The same holds for the other two circles, so every circle--side intersection is a vertex or a foot of an altitude.
+\item $\omega_{BC}$ and $\omega_{CA}$ both pass through $C$. A second common point $P\ne C$ would satisfy $PB\perp PC$ and $PA\perp PC$, so $A$, $P$, $B$ are collinear and $P$ is the foot of the perpendicular from $C$ to $AB$, i.e. $P=H_C$ (and $H_C$ is indeed on both circles). Similarly $\omega_{CA}\cap\omega_{AB}=\{A,H_A\}$ and $\omega_{AB}\cap\omega_{BC}=\{B,H_B\}$.
+\end{itemize}
+So the intersection points are exactly $A,B,C,H_A,H_B,H_C$, whether the feet lie on the sides or on their extensions.
+
+\textbf{Counting them.} A foot is never the vertex it is drawn from. $H_A=B$ exactly when $\angle B=90^\circ$, and $H_A=C$ exactly when $\angle C=90^\circ$; two feet can coincide only at a vertex (e.g. $H_A=H_B$ lies on lines $BC$ and $CA$, so it is $C$, and then $\angle C=90^\circ$). Hence:
+\begin{itemize}
+\item if the triangle has no right angle, the six points are distinct and $f=6$;
+\item if, say, $\angle C=90^\circ$, then $H_A=H_B=C$ and the points are $A,B,C,H_C$, so $f=4$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0.8,3.2), B=(0,0), C=(4,0);
+pair ft(pair P,pair U,pair V){return U+dot(P-U,unit(V-U))*unit(V-U);}
+pair HA=ft(A,B,C), HB=ft(B,C,A), HC=ft(C,A,B);
+draw(circle((A+B)/2,abs(A-B)/2),blue); draw(circle((B+C)/2,abs(B-C)/2),red); draw(circle((C+A)/2,abs(C-A)/2),deepgreen);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--HA,dashed); draw(B--HB,dashed); draw(C--HC,dashed);
+dot(A); dot(B); dot(C); dot(HA,red); dot(HB,red); dot(HC,red);
+label("$A$",A,N); label("$B$",B,W); label("$C$",C,E);
+label("$H_A$",HA,S); label("$H_B$",HB,NE); label("$H_C$",HC,W);
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), B=(2.1,0), A=(0,2.0);
+pair ft(pair P,pair U,pair V){return U+dot(P-U,unit(V-U))*unit(V-U);}
+pair HC=ft(C,A,B);
+draw(circle((A+B)/2,abs(A-B)/2),blue); draw(circle((B+C)/2,abs(B-C)/2),red); draw(circle((C+A)/2,abs(C-A)/2),deepgreen);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--HC,dashed);
+real s=0.15; draw((s,0)--(s,s)--(0,s));
+dot(A); dot(B); dot(C); dot(HC,red);
+label("$A$",A,NW); label("$B$",B,SE); label("$C=H_A=H_B$",C,SW,fontsize(8pt)); label("$H_C$",HC,NE);
+\end{asy}
+
+\textbf{The triangles.} Any three distinct integers from $20$ to $30$ form a triangle, since the two smallest sum to at least $20+21=41>30$. So there are $\dbinom{11}{3}=165$ triangles. A right triangle with legs $a<b$ and hypotenuse $c$ here has $a\ge20$, $b\ge21$, so $c^2\ge841$ and $c\in\{29,30\}$. For $c=29$: $a^2+b^2=841$ with $20\le a<b$ forces $a=20$, $b=21$, which works. For $c=30$: $b^2=900-a^2\ge441$ forces $a\in\{20,21\}$, and neither $900-400=500$ nor $900-441=459$ is a square. So $(20,21,29)$ is the only right triangle.
+
+The average is
+\[\dfrac{164\cdot6+1\cdot4}{165}=\dfrac{988}{165},\]
+in lowest terms since $988=2^2\cdot13\cdot19$ and $165=3\cdot5\cdot11$. Hence $x+y=\boxed{1153}$.

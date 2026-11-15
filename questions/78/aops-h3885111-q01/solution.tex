@@ -1,0 +1,17 @@
+Write the square's center as $(h,k)$ and its four offsets as $(u,v),(-v,u),(-u,-v),(v,-u)$. Set $R=u^2+v^2$, so the area is $2R$. The sum-of-squares conditions become
+\[
+4h^2+2R=600,\qquad4k^2+2R=700.
+\]
+The coordinate-product conditions are
+\[
+(h^2-u^2)(h^2-v^2)=(k^2-u^2)(k^2-v^2)=50.
+\]
+Subtracting gives $(h^2-k^2)(h^2+k^2-R)=0$. Since $k^2-h^2=25$, we have $h^2+k^2=R$. Adding the sum-of-squares equations then gives $8R=1300$, so the area is $\boxed{325}$.
+
+Existence is consistent with the conditions: take $h^2=\dfrac{275}{4}$, $k^2=\dfrac{375}{4}$, and $\{u^2,v^2\}=\{\dfrac{(325+10\sqrt{17})}{4},\dfrac{(325-10\sqrt{17})}{4}\}$, with positive square roots.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0),U=(2,1),V=(-1,2);draw(U--V--(-U)--(-V)--cycle);draw(U--(-U),dashed);draw(V--(-V),dashed);dot(O);label("$(h,k)$",O,S);label("$(u,v)$ offset",U,E);label("$(-v,u)$ offset",V,NW);
+\end{asy}

@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2697955_1_year_anniversary_post_d
+% Stable identity: aops-topic-2697955-q16
+A frustum of height $h$ and base radii $R,r$ has volume $\dfrac{\pi h}{3}\left(R^2+Rr+r^2\right)$. Here $R^2+Rr+r^2=0.04+0.036+0.0324=0.1084$ for both parts, so the total volume is
+\[\dfrac{\pi(2+4)}{3}\cdot0.1084=0.2168\pi=\boxed{\dfrac{271\pi}{1250}}\approx0.681\text{ in}^3.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(2cm);
+defaultpen(fontsize(10pt));
+void frus(real y0,real hh){
+ draw(xscale(1)*yscale(0.25)*shift(0,4*y0)*arc((0,0),1,180,360),linewidth(0.8));
+ draw(shift(0,y0+hh)*xscale(0.9)*yscale(0.225)*unitcircle,linewidth(0.8));
+ draw((-1,y0)--(-0.9,y0+hh),linewidth(0.8));draw((1,y0)--(0.9,y0+hh),linewidth(0.8));}
+frus(0,4);frus(0,-2);
+label("$B$, height $4$",(1.1,2),E,fontsize(7pt));label("$A$, height $2$",(1.1,-1),E,fontsize(7pt));
+\end{asy}

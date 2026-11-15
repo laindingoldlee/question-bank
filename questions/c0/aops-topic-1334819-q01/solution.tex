@@ -1,0 +1,47 @@
+% Source: https://artofproblemsolving.com/community/c3h1334819_geometry_shortest_distance
+% Stable identity: aops-topic-1334819-q01
+A trip touches $DE$ at some point $P$ and $FG$ at some point $Q$, and its length is at least $AP+PQ+QA$ (the order $A\to Q\to P\to A$ has the same length). We show that the minimum of $AP+PQ+QA$ is attained at $P=E$, $Q=F$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real R=1/(2*Sin(22.5));
+pair[] V; for(int k=0;k<8;++k) V.push(R*dir(112.5+45*k));
+pair A=V[0],B=V[1],C=V[2],D=V[3],Ee=V[4],F=V[5],G=V[6],H=V[7];
+draw(A--B--C--D--Ee--F--G--H--cycle,linewidth(0.9));
+draw(D--Ee,heavygreen+linewidth(2)); draw(F--G,blue+linewidth(2));
+draw(A--Ee--F--cycle,red+dashed);
+string[] nm={"A","B","C","D","E","F","G","H"};
+for(int k=0;k<8;++k){dot(V[k]); label("$"+nm[k]+"$",V[k],V[k]/length(V[k]));}
+label("nectar",(D+Ee)/2,S,heavygreen+fontsize(8pt));
+label("water",(F+G)/2,E,blue+fontsize(8pt));
+label("$1+\sqrt{2}$",(A+F)/2,NE,red+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Lengths.} The octagon has circumradius $R$ with $1=2R\sin22.5^\circ$. The diagonal $AE$ is a diameter: $AE=2R=\dfrac{1}{\sin22.5^\circ}=\sqrt{4+2\sqrt2}$. The diagonal $FA$ spans three sides: $FA=2R\sin67.5^\circ=\dfrac{\sin67.5^\circ}{\sin22.5^\circ}=\cot22.5^\circ=1+\sqrt2$. So
+\[
+L_0=AE+EF+FA=\sqrt{4+2\sqrt2}+1+1+\sqrt2=2+\sqrt2+\sqrt{4+2\sqrt2}.
+\]
+
+\textbf{Lower bound.} Let $\mathbf a,\mathbf b,\mathbf c$ be the unit vectors in the directions $A\to E$, $E\to F$, $F\to A$. For any vector $\mathbf w$ and unit vector $\mathbf u$, $|\mathbf w|\ge\mathbf w\cdot\mathbf u$. Hence
+\[
+AP+PQ+QA\ge(P-A)\cdot\mathbf a+(Q-P)\cdot\mathbf b+(A-Q)\cdot\mathbf c .
+\]
+Writing $P=E+(P-E)$ and $Q=F+(Q-F)$, the right side equals
+\[
+\underbrace{(E-A)\cdot\mathbf a+(F-E)\cdot\mathbf b+(A-F)\cdot\mathbf c}_{=AE+EF+FA=L_0}+(P-E)\cdot(\mathbf a-\mathbf b)+(Q-F)\cdot(\mathbf b-\mathbf c).
+\]
+Now $P-E=t(D-E)$ and $Q-F=u(G-F)$ with $0\le t,u\le1$, and $D-E$, $G-F$ are unit vectors. Using the angles of the octagon:
+\begin{itemize}
+\item $\angle AED=67.5^\circ$ (inscribed angle on the arc $ABCD$ of $135^\circ$), so the angle between $E\to D$ and $\mathbf a$ is $112.5^\circ$; and the angle between $E\to D$ and $\mathbf b$ is the interior angle $135^\circ$. So $(D-E)\cdot(\mathbf a-\mathbf b)=-\cos67.5^\circ+\cos45^\circ>0$.
+\item The angle between $F\to G$ and $\mathbf b$ is the exterior angle $45^\circ$, and $\angle GFA=45^\circ$ (inscribed angle on the arc $GHA$ of $90^\circ$). So $(G-F)\cdot(\mathbf b-\mathbf c)=\cos45^\circ-\cos45^\circ=0$.
+\end{itemize}
+Both extra terms are therefore $\ge0$, and $AP+PQ+QA\ge L_0$ for all allowed $P$, $Q$. The trip $A\to E\to F\to A$ (red in the figure) has length exactly $L_0$ and lies inside the octagon.
+
+The shortest trip has length
+\[
+\boxed{2+\sqrt2+\sqrt{4+2\sqrt2}}\approx6.03 .
+\]
+(Reflecting $A$ in the lines $DE$ and $FG$ would give a shorter value, $\approx5.91$, but the straight line between the reflections meets those lines outside the sides $DE$ and $FG$, so it is not an allowed trip.)

@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2723960_proofing_geometry_equation
+% Stable identity: aops-topic-2723960-q01
+Let $BC=a$, $AC=2a$ and $CD=d$. The bisector splits the $120^\circ$ angle into two $60^\circ$ angles, and $[ABC]=[ACD]+[BCD]$:
+\[\dfrac12\cdot a\cdot2a\sin120^\circ=\dfrac12\cdot2a\cdot d\sin60^\circ+\dfrac12\cdot a\cdot d\sin60^\circ.\]
+Since $\sin120^\circ=\sin60^\circ$, this gives $2a^2=3ad$, so $d=\dfrac23a$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+real a=1;pair C=(0,0),B=a*dir(0),A=2a*dir(120);
+pair D=extension(C,C+dir(60),A,B);
+draw(A--B--C--cycle,linewidth(0.8));draw(C--D,dashed);
+label("$A$",A,NW);label("$B$",B,E);label("$C$",C,S);label("$D$",D,NE);
+label("$60^\circ$",C+0.25*dir(30),fontsize(7pt));label("$60^\circ$",C+0.25*dir(90),fontsize(7pt));
+\end{asy}
+
+(With the post's hypothesis $AB=2\cdot BC$ instead, $AC=\dfrac{\sqrt{13}-1}{2}\,BC$ and $CD=\dfrac{7-\sqrt{13}}{6}\,BC\ne\dfrac23BC$, so that version is false.)

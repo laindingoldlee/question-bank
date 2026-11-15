@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1374100_preparation_contest
+% Stable identity: aops-topic-1374100-q19
+A move by the vector $(a,b)$ passes through no other lattice point exactly when $\gcd(|a|,|b|)=1$, and its length is $\sqrt{a^2+b^2}$. By the given fact, a total of $6$ forces every move to have integer length, so $a^2+b^2$ is a perfect square $\le36$ with $\gcd(|a|,|b|)=1$. The possibilities are length $1$ (the four unit steps) and length $5$ (the eight vectors $(\pm3,\pm4)$, $(\pm4,\pm3)$); length $6$ would need $(\pm6,0)$ or $(0,\pm6)$, which pass through other lattice points.
+
+\textbf{One move of length $5$ and one unit step.} The endpoint is $(\pm3,\pm4)$ or $(\pm4,\pm3)$ moved by a unit step, which changes $|x|+|y|=7$ by exactly $1$, to $6$ or $8$. It never reaches $4$, so this case gives nothing.
+
+\textbf{Six unit steps.} With $e,w,n,s$ steps east, west, north, south, $|e-w|+|n-s|=4$ while $e+w+n+s=6$, so exactly one pair of opposite steps cancels.
+\begin{itemize}
+\item Endpoint on an axis, say $(4,0)$: either $5$ east and $1$ west, $\dfrac{6!}{5!}=6$ walks, or $4$ east, $1$ north, $1$ south, $\dfrac{6!}{4!}=30$ walks: $36$ walks, and $4\cdot36=144$ over the four axis endpoints.
+\item Endpoint $(x,y)$ with $x,y>0$, $x+y=4$: the extra pair is east-west, $\dfrac{6!}{(x+1)!\,y!}$ walks, or north-south, $\dfrac{6!}{x!\,(y+1)!}$ walks. For $(3,1)$: $30+60=90$; for $(2,2)$: $60+60=120$; for $(1,3)$: $60+30=90$. That is $300$ per quadrant, $1200$ in all.
+\end{itemize}
+The total is $144+1200=\boxed{1344}$.

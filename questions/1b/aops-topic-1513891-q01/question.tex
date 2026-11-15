@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1513891_amc8_p22
+% Stable identity: aops-topic-1513891-q01
+Rectangle $DEFA$ below is a $3\times4$ rectangle with $DC=CB=BA=1$, where $C$ and $B$ lie on side $DA$. Segments $EC$, $CF$, $EB$ and $BF$ are drawn, and $EB$ and $CF$ meet at a point $P$. The ``bat wings'' are the shaded triangles $ECP$ and $FBP$. What is the area of the bat wings?
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair E=(0,0),F=(3,0),A=(3,4),D=(0,4),C=(1,4),B=(2,4);
+pair P=extension(E,B,F,C);
+fill(E--C--P--cycle,gray(0.55));fill(F--B--P--cycle,gray(0.55));
+draw(E--F--A--D--cycle,linewidth(1));
+draw(E--B--F,linewidth(0.8));draw(F--C--E,linewidth(0.8));
+label("$A$",A,NE);label("$B$",B,N);label("$C$",C,N);label("$D$",D,NW);label("$E$",E,SW);label("$F$",F,SE);
+label("$1$",(0.45,3.72));label("$1$",(1.5,3.72));label("$1$",(2.55,3.72));label("$4$",(3.3,2));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+\textbf{(A) }2\qquad\textbf{(B) }2\dfrac{1}{2}\qquad\textbf{(C) }3\qquad\textbf{(D) }3\dfrac{1}{2}\qquad\textbf{(E) }5
+\]

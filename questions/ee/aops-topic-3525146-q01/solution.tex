@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3525146_angle_chase_auckland_mo_2024_p4
+% Stable identity: aops-topic-3525146-q01
+In right triangle $COH$, $\angle OCH=\dfrac{1}{2}\angle ACB$, so $\angle COH=90^\circ-\dfrac{1}{2}\angle ACB$. Therefore the given difference equals $90^\circ-\dfrac{1}{2}(\angle ACB+\angle ABC)=\dfrac{1}{2}\angle BAC$. Thus $\boxed{\angle BAC=92^\circ}$. 
+\begin{asy}
+usepackage("amsmath");
+import geometry;
+size(260);
+pair B=(0,0),C=(5,0),A=5*sin(48*pi/180)/sin(92*pi/180)*dir(40),H=(A.x,0);real t=abs(C-B)/(abs(C-B)+abs(C-A));pair L=B+t*(A-B),O=intersectionpoint(A--H,C--L);draw(A--B--C--cycle);draw(A--H^^C--L,dashed);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$H$",H,S);label("$L$",L,W);label("$O$",O,E);
+\end{asy}

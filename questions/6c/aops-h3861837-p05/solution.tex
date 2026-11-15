@@ -1,0 +1,7 @@
+Set $O=(0,0),A=(4,0),E=(-e,0),R=(0,r),G=(0,-g)$. Intersecting chords give $4e=rg$. Since $EL:LR=9:4$, $L=(-\dfrac{4e}{13},\dfrac{9r}{13})$. The midpoint of $AG$ is $(2,-\dfrac{g}{2})$; collinearity with $L,O$ gives $g=\dfrac{9r}{e}$. These yield $r=\dfrac{2e}{3},g=6$. Since $ER=13$, $e=3\sqrt{13}$. Therefore $[LOG]=\dfrac{1}{2}g\cdot\dfrac{4e}{13}=\boxed{\dfrac{36\sqrt{13}}{13}}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+real e=3*sqrt(13),r=2*sqrt(13);pair O=(0,0),A=(4,0),E=(-e,0),R=(0,r),G=(0,-6),L=(-4*e/13,9*r/13),M=(2,-3);draw(R--A--G--E--cycle);draw(R--G);draw(A--E);draw(L--M,dashed);draw(L--G);pair[] P={R,A,G,E,O,L,M};string[] N={"R","A","G","E","O","L","M"};for(int i=0;i<P.length;++i)label("$"+N[i]+"$",P[i],i==4?(1,-1):unit(P[i]));
+\end{asy}

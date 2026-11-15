@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1936678_two_squares
+% Stable identity: aops-topic-1936678-q01
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real x=8, y=15;
+draw((0,0)--(x,0)--(x,x)--(0,x)--cycle,linewidth(0.8));
+draw((11,0)--(11+y,0)--(11+y,y)--(11,y)--cycle,linewidth(0.8));
+label("$A$",(x/2,x/2)); label("$B$",(11+y/2,y/2));
+label("$x$",(x/2,0),S); label("$y$",(11+y/2,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The perimeter condition gives $4y-4x=28$, so $y-x=7$. The area condition gives $y^2-x^2=161$. Factoring the difference of squares,
+\[(y-x)(y+x)=161\quad\Longrightarrow\quad 7(x+y)=161\quad\Longrightarrow\quad x+y=\boxed{23}.\]
+(Indeed $x=8$ and $y=15$: perimeters $32$ and $60$, areas $64$ and $225$.)

@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2433694_forester2015s_problems
+% Stable identity: aops-topic-2433694-q23
+The sides are $x$, $3x$ and $4x$ for some positive integer $x$, so the volume is $12x^3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real x=1; pair o=(0,0); pair dx=(3.2,0), dy=(0,1.1), dz=(0.9,0.6);
+path f1=o--o+dx--o+dx+dy--o+dy--cycle;
+draw(f1,linewidth(0.9)); draw(o+dy--o+dy+dz--o+dx+dy+dz--o+dx+dy,linewidth(0.9)); draw(o+dx--o+dx+dz--o+dx+dy+dz,linewidth(0.9));
+draw(o--o+dz,dashed); draw(o+dz--o+dz+dx,dashed); draw(o+dz--o+dz+dy,dashed);
+label("$4x$",o+dx/2,S); label("$x$",o+dy/2,W); label("$3x$",o+dx+dz/2,SE);
+\end{asy}
+
+Dividing the choices by $12$ gives $4$, $\dfrac{14}3$, $\dfrac{16}3$, $8$ and $12$; only $8=2^3$ is a perfect cube. So the volume could be $12\cdot2^3=96$ (a $2\times6\times8$ box): the answer is $\boxed{\textbf{(D)}\ 96}$.

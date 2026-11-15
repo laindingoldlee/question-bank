@@ -1,0 +1,13 @@
+Let $BC=b$, so $AC=b+7$, and write $\theta=\angle ADC=\angle BDC$. Applying the cosine rule twice gives
+\[(b+7)^2=452-448\cos\theta,\qquad b^2=281-160\cos\theta.\]
+Eliminating the cosine yields $9b^2-70b-1919=0$, or $(b-19)(9b+101)=0$. Since $b>0$, $b=19$, and the second equation then gives $\cos\theta=-\dfrac{1}{2}$, so $\theta=120^\circ$.
+
+Because $D$ is inside the triangle, its three angles around $D$ sum to $360^\circ$, giving $\angle ADB=120^\circ$ as well. Thus
+\[AB^2=14^2+5^2-2\cdot14\cdot5\cos120^\circ=291,\]
+and $AB=\boxed{\sqrt{291}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair D=(0,0),C=(16,0),A=14*dir(120),B=5*dir(240);draw(A--B--C--cycle);draw(A--D--B,blue);draw(C--D,blue);label("$A$",A,(-1,1));label("$B$",B,(-1,-1));label("$C$",C,(1,0));label("$D$",D,(0,1));label("$14$",midpoint(A--D),(-1,0));label("$5$",midpoint(B--D),(1,-1));label("$16$",midpoint(C--D),(0,1));
+\end{asy}

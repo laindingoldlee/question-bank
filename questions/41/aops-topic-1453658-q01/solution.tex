@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h1453658_basic_geometry_problem
+% Stable identity: aops-topic-1453658-q01
+\textbf{(a)} Drop perpendiculars from $D$ and $C$ to $AB$. By symmetry each cuts off $\dfrac{24-16}{2}=4$ from $AB$, so the height is $h=\sqrt{8^2-4^2}=\sqrt{48}=4\sqrt3$ and
+\[
+[ABCD]=\dfrac{24+16}{2}\cdot4\sqrt3=\boxed{80\sqrt3}.
+\]
+
+\textbf{(b)} An isosceles trapezoid is cyclic, and its circumcircle is the circumcircle of triangle $ABC$. In the right triangle formed by $BC$, the height and the piece $4$ of $AB$, $\cos\angle B=\dfrac{4}{8}=\dfrac{1}{2}$, so $\angle ABC=60^\circ$. The diagonal is
+\[
+AC=\sqrt{(24-4)^2+(4\sqrt3)^2}=\sqrt{400+48}=\sqrt{448}=8\sqrt7 .
+\]
+By the extended law of sines in triangle $ABC$,
+\[
+R=\dfrac{AC}{2\sin\angle ABC}=\dfrac{8\sqrt7}{\sqrt3}=\boxed{\dfrac{8\sqrt{21}}{3}}\approx12.22 .
+\]
+Check with coordinates $A=(0,0)$, $B=(24,0)$, $D=(4,4\sqrt3)$, $C=(20,4\sqrt3)$: the point $O=\left(12,-\dfrac{4\sqrt3}{3}\right)$ satisfies $OA^2=144+\dfrac{16}{3}=\dfrac{448}{3}$ and $OD^2=64+\left(\dfrac{16\sqrt3}{3}\right)^2=\dfrac{448}{3}$, and by symmetry $OB=OA$, $OC=OD$. The centre lies just below $AB$, outside the trapezoid.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(24,0),C=(20,4*sqrt(3)),D=(4,4*sqrt(3));
+pair O=(12,-4*sqrt(3)/3); real R=8*sqrt(21)/3;
+draw(circle(O,R),gray);
+draw(D--(4,0),blue+dashed);
+draw((4,0)--(4,0.9)--(3.1,0.9)--(3.1,0),blue);
+draw(A--C,red+dashed);
+draw(O--B,gray+dashed);
+draw(A--B--C--D--cycle,linewidth(0.9));
+dot(A);dot(B);dot(C);dot(D);dot(O);
+label("$A$",A,W); label("$B$",B,E); label("$C$",C,NE); label("$D$",D,NW);
+label("$O$",O,S); label("$R$",(O+B)/2+(0.3,-0.9));
+label("$24$",(15,0),S); label("$16$",(C+D)/2,N); label("$8$",(B+C)/2,SW); label("$8$",(A+D)/2,SE);
+label("$4\sqrt{3}$",(4,2*sqrt(3)),E,blue); label("$4$",(2,0),S,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

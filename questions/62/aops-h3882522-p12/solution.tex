@@ -1,0 +1,11 @@
+The six angles total $90^\circ$, so $[ABC]=12\cdot\dfrac{18}{2}=108$. Each small triangle has area one half the corresponding adjacent-ray product times $\sin15^\circ$. Adding their areas gives $K\dfrac{\sin15^\circ}{2}=108$. Therefore
+\[
+K=\dfrac{216}{\sin15^\circ}=216(\sqrt6+\sqrt2).
+\]
+Thus $\boxed{a+b+c=216+6+2=224}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(12,0),C=(0,18);draw(A--B--C--cycle);for(int j=1;j<=5;++j){real t=j*15*pi/180;real r=1/(cos(t)/12+sin(t)/18);pair P=r*(cos(t),sin(t));draw(A--P,blue);}label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$12$",(6,0),S);label("$18$",(0,9),W);
+\end{asy}

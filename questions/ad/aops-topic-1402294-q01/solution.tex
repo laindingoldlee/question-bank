@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1402294_geometry
+% Stable identity: aops-topic-1402294-q01
+Put the table at $0\le x\le M$, $0\le y\le N$ with the start at $(0,N)$, and \emph{unfold} the motion: instead of reflecting the ball at a side, reflect the table across that side and let the ball continue straight. In the plane tiled by reflected copies of the table the ball travels along the line $x=t$, $y=N-t$ ($t\ge0$). It hits a side of the real table exactly when it crosses a tiling line $x=kM$ or $y=N-kN$, and it falls into a pocket exactly when it reaches a tiling vertex, that is, when $t$ is a common multiple of $M$ and $N$. The first such time is
+\[
+t=L=\operatorname{lcm}(M,N)=gab .
+\]
+Before that moment the ball crosses the vertical tiling lines at $t=M,2M,\dots$, which is $\dfrac{L}{M}-1=b-1$ times, and the horizontal ones $\dfrac{L}{N}-1=a-1$ times; it never crosses both at once before time $L$ (that would be a tiling vertex). Hence the number of hits is
+\[
+\boxed{a+b-2}.
+\]
+\textbf{The pocket.} Each crossing of a vertical tiling line switches the ball between the left-moving and right-moving copies, so after $b$ widths it is on the right side of the table if $b$ is odd and on the left side if $b$ is even. Likewise after $a$ heights it is at the bottom if $a$ is odd and at the top if $a$ is even. Since $\gcd(a,b)=1$, $a$ and $b$ are not both even, so:
+\begin{itemize}
+\item $a$ and $b$ both odd: the bottom-right pocket (opposite the start);
+\item $a$ odd, $b$ even: the bottom-left pocket;
+\item $a$ even, $b$ odd: the top-right pocket.
+\end{itemize}
+The ball never returns to the starting pocket. For example, on a $5\times3$ table ($a=5$, $b=3$) the ball hits the sides $6$ times and ends in the bottom-right pocket:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(5,0)--(5,3)--(0,3)--cycle,linewidth(1.2));
+for(int i=1;i<5;++i) draw((i,0)--(i,3),gray(0.85));
+for(int j=1;j<3;++j) draw((0,j)--(5,j),gray(0.85));
+draw((0,3)--(3,0)--(5,2)--(4,3)--(1,0)--(0,1)--(2,3)--(5,0),blue+linewidth(0.9));
+pair[] H={(3,0),(5,2),(4,3),(1,0),(0,1),(2,3)};
+for(int i=0;i<H.length;++i) dot(H[i],red);
+dot((0,3),black+5); dot((5,0),black+5);
+label("start",(0,3),NW); label("finish",(5,0),SE);
+label("$M=5$",(2.5,-0.1),S); label("$N=3$",(5.1,1.5),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2784261_2019_mcamc_live_round_p13_p24__middlesex_county_academy_math_competition
+% Stable identity: aops-topic-2784261-q23
+Each rectangle is uniquely determined by its two diagonals, which have the same midpoint and length. Group unordered pairs of posts by their coordinate sum and squared distance; any two pairs in one group give a rectangle, since their four endpoints are distinct and form equal bisecting diagonals. The complete enumeration below gives $\boxed{44}$.\begin{verbatim}
+from itertools import combinations
+from collections import Counter
+pts=[(x,y) for x in range(4) for y in range(4)]
+g=Counter((a[0]+b[0],a[1]+b[1],
+           (a[0]-b[0])**2+(a[1]-b[1])**2)
+          for a,b in combinations(pts,2))
+assert sum(v*(v-1)//2 for v in g.values())==44
+\end{verbatim}
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=0;i<4;++i)for(int j=0;j<4;++j)dot((i,j));draw((0,1)--(1,0)--(3,2)--(2,3)--cycle);label("$(0,0)$",(0,0),SW);label("$(3,3)$",(3,3),NE);
+\end{asy}

@@ -1,0 +1,7 @@
+Two unit circles with distinct centres meet exactly when their centres are at distance at most $2$. Adjacent vertices are distance $2$ apart; vertices two or three steps apart are at distances $2\sqrt3$ and $4$. Thus exactly the six adjacent pairs give tangency. The probability is $\dfrac{6}{\binom62}=\boxed{\dfrac{2}{5}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p;for(int i=0;i<6;++i)p.push(2*dir(60*i));for(int i=0;i<6;++i){draw(p[i]--p[(i+1)%6]);dot(p[i]);label(substr("ABCDEF",i,1),p[i],unit(p[i]));}draw(circle(p[0],1),blue);draw(circle(p[1],1),red);label("side 2",(p[0]+p[1])/2,SW);
+\end{asy}

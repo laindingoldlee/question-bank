@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2796070_2013_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2796070-q13
+From $AB^2-BD^2=AC^2-CD^2$: $169-BD^2=400-(21-BD)^2$, giving $42BD=210$, $BD=5$ and $AD=12$.
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(21,0),A=(5,12),D=(5,0),X=(5,20/3);
+pair Ef=A+dot(B-A,C-A)/dot(C-A,C-A)*(C-A);
+draw(A--B--C--cycle);draw(A--D);draw(B--Ef);dot(X);
+draw(D+(0.6,0)--D+(0.6,0.6)--D+(0,0.6));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$E$",Ef,NE);label("$X$",X,W);
+\end{asy}
+
+Take $B=(0,0)$, $C=(21,0)$, $A=(5,12)$, so $X=(5,y)$ lies on $AD$. Since $BX\perp AC$ and $\overrightarrow{AC}=(16,-12)$, we need $5\cdot16-12y=0$, so $y=\dfrac{20}3$. Then $XD=\dfrac{20}3$ and $AX=12-\dfrac{20}3=\dfrac{16}3$, so
+\[AX:XD=\boxed{4:5}.\]

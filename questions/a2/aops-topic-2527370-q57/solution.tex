@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2527370_stuffedmaths_problem_thread
+% Stable identity: aops-topic-2527370-q57
+The poles have radius $4$. The centre of each outer pole is $4+4=8$ inches from the centre of the pot, and the outer pole touches the side, so the pot has radius $8+4=12$ inches. (Adjacent outer poles have centres $8\sqrt2>8$ apart, so they do not overlap.)
+
+The water fills the part of the pot not occupied by poles, up to the height $8$:
+\[\left(\pi\cdot12^2-5\cdot\pi\cdot4^2\right)\cdot8=(144-80)\pi\cdot8=\boxed{512\pi}\text{ cubic inches}.\]
+The sketch is a view from above.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),12),linewidth(0.8));
+for(int k=0;k<4;++k) filldraw(circle(8*dir(90*k),4),lightgray,linewidth(0.7));
+filldraw(circle((0,0),4),lightgray,linewidth(0.7));
+draw((0,0)--(12,0)*dir(45),dashed);
+label("$12$",9*dir(45),SE,fontsize(9pt));
+draw((-4,0)--(4,0),blue);label("$8$",(0,0),N,blue+fontsize(9pt));
+\end{asy}

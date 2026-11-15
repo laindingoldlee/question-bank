@@ -1,0 +1,7 @@
+Place six people at the vertices of a regular hexagon and three additional people in the interior of each side. Each side then forms a row containing its two endpoints and three interior people, for five people total. The number of distinct people is $6+6\cdot3=\boxed{24}$. Each vertex person belongs to two of the specified rows.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair[] V;for(int i=0;i<6;++i)V.push(3*dir(60*i));for(int i=0;i<6;++i){pair A=V[i],B=V[(i+1)%6];draw(A--B);for(int j=0;j<4;++j)dot(A+j*(B-A)/4);label("Row "+string(i+1),(A+B)/2,unit((A+B)/2));}
+\end{asy}

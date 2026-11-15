@@ -1,0 +1,7 @@
+Let the top dimensions be $a,b\ge2$, so $ab=77$, forcing $a,b$ to be $7,11$ in some order. After the top layer is removed, the height is $h-1$. The side layer has $44$ cubes, so its horizontal length must be $11$ and $h-1=4$, since $7\nmid44$. Removing that layer changes the other horizontal dimension from $7$ to $6$. Removing the adjacent front layer then changes $11$ to $10$. The remaining box has $6\cdot10\cdot4=\boxed{240}$ cubes.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair u=(6,0),v=(2,1.5),w=(0,4);draw((0,0)--u--(u+w)--w--cycle);draw(w--(w+v)--(u+w+v)--(u+w));draw(u--(u+v)--(u+v+w));draw((0,0)--v--(u+v),dashed);draw(v--(v+w),dashed);label("6",u/2,S);label("10",u+v/2,SE);label("4",w/2,W);
+\end{asy}

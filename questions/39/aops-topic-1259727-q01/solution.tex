@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1259727_right_triangle_lengths
+% Stable identity: aops-topic-1259727-q01
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=(4,0),B=(0,3); pair H=(A*9+B*16)/25;
+draw(O--A--B--cycle,linewidth(1)); draw(O--H,dashed);
+draw((0.3,0)--(0.3,0.3)--(0,0.3));
+label("$O$",O,SW);label("$A$",A,SE);label("$B$",B,N);label("$H$",H,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In a right triangle, the altitude to the hypotenuse gives three similar triangles, so
+\[OA^2=AH\cdot AB,\qquad OB^2=BH\cdot AB,\qquad OH^2=AH\cdot HB.\]
+Multiplying, $(OA\cdot OB\cdot OH)^2=(AB\cdot AH\cdot HB)^2=21^2$, so $OA\cdot OB\cdot OH=21$ for every such triangle. Hence $M=m=21$ and $M+m=\boxed{42}$.

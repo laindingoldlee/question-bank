@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1144787_rotational_symmetry
+% Stable identity: aops-topic-1144787-q01
+\textbf{(a)} Let $O$ be the centre and $V_1,\dots,V_5$ the vertices in order. The vertices lie on a circle about $O$, and consecutive vertices are $\dfrac{360^\circ}{5}=72^\circ$ apart as seen from $O$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+pair[] P; for(int k=0;k<5;++k) P.push(1.3*dir(90+72k));
+draw(P[0]--P[1]--P[2]--P[3]--P[4]--cycle,linewidth(0.9));
+pair O=(0,0); dot(O); label("$O$",O,S);
+draw(O--P[0],dashed); draw(O--P[1],dashed);
+draw(arc(O,0.3,90,162),Arrow(4)); label("$72^\circ$",0.3*dir(126),dir(126),fontsize(8pt));
+for(int k=0;k<5;++k) label("$V_{"+string(k+1)+"}$",P[k],P[k]);
+pair sh=(2.6,-1.1);
+pair A=sh+(0,0),B=sh+(2,0),C=sh+(2,1),D=sh+(1,2),Ee=sh+(0,1);
+draw(A--B--C--D--Ee--cycle,linewidth(0.9));
+label("$(0,0)$",A,SW,fontsize(8pt)); label("$(2,0)$",B,SE,fontsize(8pt)); label("$(2,1)$",C,E,fontsize(8pt)); label("$(1,2)$",D,N,fontsize(8pt)); label("$(0,1)$",Ee,W,fontsize(8pt));
+label("$2$",(A+B)/2,S,fontsize(8pt));
+\end{asy}
+
+A rotation about $O$ by $72^\circ$ sends each $V_i$ to the next vertex, so it maps the pentagon onto itself; so do its repeats by $144^\circ$, $216^\circ$ and $288^\circ$. Conversely, a rotation about $O$ mapping the pentagon onto itself must send $V_1$ to some vertex $V_j$, so its angle is a multiple of $72^\circ$. The answer is
+\[\boxed{\theta=72^\circ,\ 144^\circ,\ 216^\circ,\ 288^\circ},\]
+so a regular pentagon has rotational symmetry of order $5$.
+
+\textbf{(b)} A rotation preserves lengths and maps sides of the polygon onto sides. The sides have lengths $2,1,\sqrt2,\sqrt2,1$, so the only side of length $2$, from $(0,0)$ to $(2,0)$, must be mapped onto itself. A rotation that is not a full turn and maps a segment onto itself must swap its endpoints: it is the half-turn about the midpoint $(1,0)$, i.e. $(x,y)\mapsto(2-x,-y)$. But this sends the vertex $(1,2)$ to $(1,-2)$, which is not a vertex. So the only rotation mapping this pentagon onto itself is the full turn. (It does have a mirror symmetry, in the line $x=1$.) $\blacksquare$
+
+So a \emph{regular} pentagon has rotational symmetry, but a pentagon in general need not.

@@ -1,0 +1,7 @@
+There is one route from W to B. From V there are two routes, direct or through W. From U there are three, one through W and two through V. Thus from A there are $3+2=\boxed5$ routes.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,1),U=(1,2),V=(2,0),W=(3,2),B=(4,1);draw(A--U,Arrow);draw(A--V,Arrow);draw(U--V,Arrow);draw(U--W,Arrow);draw(V--W,Arrow);draw(V--B,Arrow);draw(W--B,Arrow);pair[] p={A,U,V,W,B};string[] a={"A","U","V","W","B"};for(int i=0;i<5;++i){filldraw(circle(p[i],.15),white);label(a[i],p[i]);}
+\end{asy}

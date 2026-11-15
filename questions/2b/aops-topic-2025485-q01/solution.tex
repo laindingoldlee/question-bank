@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2025485_probability_of_meeting
+% Stable identity: aops-topic-2025485-q01
+Measure time in minutes after 9:30. Om's arrival $x$ is uniform on $[0,90]$ and Madhav's arrival $y$ is uniform on $[30,150]$, so $(x,y)$ is uniform on a rectangle of area $90\cdot120=10800$. We need the area of the part where $|x-y|\le1$.
+
+For a fixed $x$, the allowed $y$ form the interval $[x-1,x+1]\cap[30,150]$:
+\begin{itemize}
+\item if $31\le x\le 90$, the whole interval $[x-1,x+1]$ lies in $[30,150]$, giving length $2$;
+\item if $29\le x\le 31$, the interval is $[30,x+1]$, of length $x-29$;
+\item if $x<29$, it is empty.
+\end{itemize}
+So the area is
+\[
+\int_{29}^{31}(x-29)\,dx+2(90-31)=2+118=120,
+\]
+and the probability is
+\[
+\dfrac{120}{10800}=\boxed{\dfrac{1}{90}}.
+\]

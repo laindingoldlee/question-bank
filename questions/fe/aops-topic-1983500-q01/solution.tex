@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1983500_an_interesting_geometry_problem
+% Stable identity: aops-topic-1983500-q01
+\textbf{Upper bound.} Rotate the plane by $60^\circ$ about $B$ so that $A$ goes to $C$, and let $P'$ be the image of $P$. Then $BP'=BP=3$ and $\angle PBP'=60^\circ$, so triangle $PBP'$ is equilateral and $PP'=3$. The rotation takes segment $AP$ to segment $CP'$, so $CP'=AP=2$. By the triangle inequality,
+\[
+PC\le PP'+P'C=3+2=5 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real s=sqrt(19);
+pair A=(0,0),B=(s,0),C=(s/2,s*sqrt(3)/2);
+pair P=(7/s,-sqrt(27/19));
+pair Pp=rotate(-60,B)*P;
+draw(A--B--C--cycle);
+draw(circle((s/2,s*sqrt(3)/6),s/sqrt(3)),gray(0.6));
+draw(P--A);draw(P--B);draw(P--C,dashed);draw(B--Pp);draw(P--Pp,gray(0.4));
+dot(A);dot(B);dot(C);dot(P);dot(Pp);
+label("$A$",A,W);label("$B$",B,E);label("$C$",C,N);label("$P$",P,S);label("$P'$",Pp,E);
+label("$2$",(A+P)/2,SW);label("$3$",(B+P)/2,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Equality.} Equality needs $P'$ on segment $PC$. Choose $P$ on the arc $AB$ of the circumcircle not containing $C$, with $PA=2$ and $PB=3$; then $\angle APB=180^\circ-\angle ACB=120^\circ$, so by the law of cosines (or by dropping a perpendicular) $AB^2=4+9+6=19$, and such a triangle exists with side $\sqrt{19}$. For a point on this arc, $\angle BPC=\angle BAC=60^\circ$, so $P'$ (with $\angle BPP'=60^\circ$) lies on ray $PC$; then $PC=PP'+P'C=5$. (This is Ptolemy's theorem for $APBC$: $PC\cdot AB=PA\cdot BC+PB\cdot AC$.)
+
+The greatest possible value is $\boxed{5}$.

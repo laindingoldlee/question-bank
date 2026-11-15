@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2498892_twice_question
+% Stable identity: aops-topic-2498892-q01
+\textbf{(a)} The number of new clones doubles each day: $2,4,8,\dots,2^{10}$ on days $1,\dots,10$. Together with the original,
+\[1+2+4+\cdots+2^{10}=2^{11}-1=\boxed{2047}.\]
+
+\textbf{(b)} The clones have strengths: $2$ of strength $\dfrac12$, $4$ of $\dfrac14$, $8$ of $\dfrac18$ and $2$ of $\dfrac1{16}$. The two clones of strength $\dfrac12$ beat everyone else, so each of them wins every match until they meet. If they are in different halves of the bracket, they meet only in the final and finish first and second. If they are in the same half, they meet before the final, the loser is eliminated, and the runner-up comes from the other half. Given the position of one of them, the other is equally likely to be in any of the other $15$ positions, $7$ of which are in the same half. The probability is $\boxed{\dfrac{7}{15}}$.
+
+\textbf{(c)} Strengths must be non-decreasing from left to right, so the order of the strength groups is forced: the two of strength $\dfrac1{16}$, then the eight of $\dfrac18$, then the four of $\dfrac14$, then the two of $\dfrac12$. Within each group the clones can be ordered freely, giving
+\[2!\cdot8!\cdot4!\cdot2!=2\cdot40320\cdot24\cdot2=\boxed{3870720}.\]
+
+\textbf{(d)} Number the rows $1$ (front) to $4$ (back) and the columns $1$ (left) to $4$ (right). Strengths must be non-decreasing along each row to the right and along each column to the back. Then for each level $v$, the cells holding clones of strength at most $v$ form a ``staircase'': if a cell is in the set, so are all cells in front of it and to its left. Describe such a set by its row lengths $\lambda_1\ge\lambda_2\ge\lambda_3\ge\lambda_4$ (from front to back). Conversely, any chain of staircases of sizes $2\subset10\subset14\subset16$ gives a valid pattern of strengths.
+\begin{itemize}
+\item Strength $\le\dfrac1{16}$: a staircase of size $2$, either $(2)$ or $(1,1)$: $2$ choices.
+\item Strength $\le\dfrac14$: a staircase of size $14$, i.e. all cells except two at the back right: $(4,4,4,2)$ or $(4,4,3,3)$: $2$ choices.
+\item Strength $\le\dfrac18$: a staircase of size $10$ in the $4\times4$ square. These are $(4,4,2)$, $(4,4,1,1)$, $(4,3,3)$, $(4,3,2,1)$, $(4,2,2,2)$, $(3,3,3,1)$ and $(3,3,2,2)$: seven in all. Each of them contains both staircases of size $2$ (it has $\lambda_1\ge2$ and at least two rows) and lies inside both staircases of size $14$ (its third and fourth rows have length at most $3$, and its fourth row length at most $2$).
+\end{itemize}
+So there are $2\cdot7\cdot2=28$ strength patterns, and with the hats each pattern can be filled in $2!\cdot8!\cdot4!\cdot2!$ ways. The answer is
+\[28\cdot3870720=\boxed{108380160}.\]

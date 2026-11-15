@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2411293_geometric_combo
+% Stable identity: aops-topic-2411293-q03
+Let $R_n$ be the greatest number of regions for $n$ circles. One circle gives $2$ regions. When the $k$th circle is added, it meets each of the $k-1$ earlier circles in at most $2$ points, so in at most $2(k-1)$ points. If there are $m\ge1$ such points, they cut the new circle into $m$ arcs; each arc runs through one existing region and splits it into at most two parts, so at most $m\le2(k-1)$ regions are added. (If $m=0$, exactly $1$ region is added.) Hence
+\[R_n\le2+\sum_{k=2}^{n}2(k-1)=2+n(n-1)=n^2-n+2.\]
+Equality holds when every two circles meet in two points and no three circles pass through a common point (for example, equal circles with centres close together): then every arc really does split a region into two. For three circles this gives $8$ regions:
+
+\begin{asy}
+usepackage("amsmath");
+size(3.2cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),1),blue); draw(circle((1,0),1),red); draw(circle((0.5,0.85),1),deepgreen);
+label("$8$ regions",(0.5,-1.4));
+\end{asy}
+
+For $n=100$: $100^2-100+2=\boxed{9902}$.

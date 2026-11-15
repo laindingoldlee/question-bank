@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1210434_analytic_geometry
+% Stable identity: aops-topic-1210434-q01
+The point $(x,y)$ lies on the circle with centre $C=(3,4)$ and radius $7$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw(circle((3,4),7)); draw((-5,0)--(11,0),gray,Arrow); draw((0,-4)--(0,12),gray,Arrow);
+pair C=(3,4); dot(C); dot((0,0)); pair P=C-7*unit(C); dot(P); draw((0,0)--C,dashed);
+pair Q=C-7*dir(45); dot(Q); draw((Q.x-4,Q.y+4)--(Q.x+4,Q.y-4),blue);
+label("$(3,4)$",C,NE); label("$O$",(0,0),NE); label("$P$",P,SE); label("$Q$",Q,W); label("$x+y=7-7\sqrt2$",(Q.x+4,Q.y-4),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\emph{Minimum of $x^2+y^2$.} This is the squared distance to the origin $O$, and $OC=5<7$, so $O$ is inside the circle. The nearest point of the circle to $O$ is $P$, on ray $CO$ beyond $O$, at distance $7-5=2$. So the minimum is $2^2=4$.
+
+\emph{Minimum of $x+y$.} Write $x=3+7\cos\theta$, $y=4+7\sin\theta$. Then
+\[x+y=7+7(\cos\theta+\sin\theta)=7+7\sqrt2\sin(\theta+45^\circ)\ge7-7\sqrt2,\]
+with equality at $\theta=225^\circ$ (the point $Q$ where the line $x+y=c$ is tangent to the circle).
+
+So the minima are $\boxed{x^2+y^2=4\ \text{and}\ x+y=7-7\sqrt2}$.

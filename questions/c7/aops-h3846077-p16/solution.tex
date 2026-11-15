@@ -1,0 +1,22 @@
+Scale so $AB=AC=L$ and choose $A=(0,0),B=(L,0),C=(Lu,Lv)$, where $u^2+v^2=1$, $v>0$. Put $D=(d,0)$. The stated ordering forces $0<d<Lu<L$, so $u>0$.
+Line intersections give
+\[
+F=(d,\dfrac{dv}{u}),\qquad E=(d,\dfrac{v(L-d)}{1-u}).
+\]
+Using vertical base $EF$ for the first area,
+\[
+[CEF]=\dfrac{v(Lu-d)^2}{2u(1-u)},\qquad
+[ADF]=\dfrac{d^2v}{2u}.
+\]
+The area condition therefore gives $(Lu-d)^2=2d^2(1-u)$. Since $CE$ lies along $BC$,
+\[
+CE=\dfrac{Lu-d}{L(1-u)}\,BC
+=(Lu-d)\sqrt{\dfrac{2}{1-u}},
+\]
+using $BC=L\sqrt{(1-u)^2+v^2}=L\sqrt{2(1-u)}$. Squaring yields $CE^2=4d^2$, and positivity gives $\boxed{CE=2AD}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(8,0),C=(4,4sqrt(3)),D=(2,0),F=(2,2sqrt(3)),E=(2,6sqrt(3));fill(C--E--F--cycle,lightgray);fill(A--D--F--cycle,paleblue);draw(A--B--C--cycle);draw(B--E,dashed);draw(D--E,blue);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,S);label("$F$",F,W);label("$E$",E,N);
+\end{asy}

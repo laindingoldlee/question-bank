@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3131308_2022_moaa_gunga_bowl__math_open_at_andover__last_3_sets__9_problems
+% Stable identity: aops-topic-3131308-q24
+By Thales' theorem, $ABD$ is right at $A$, with $AD=15$. Place $A=(0,0),B=(8,0),D=(0,15)$. Its incenter is $I=(3,3)$ and inradius $r=\dfrac{8+15-17}{2}=3$. The circumcenter is $(4,\dfrac{15}{2})$, radius $\dfrac{17}{2}$. The point on the opposite arc from $A$ equidistant from $B,D$ is $C=(\dfrac{23}{2},\dfrac{23}{2})$. Thus $AI=3\sqrt2$ and $AC=\dfrac{23}{\sqrt2}$ lie on one ray. If the line through $A$ makes angle $\theta$ with this ray and $t=|\sin\theta|$, its distance from $I$ is $3\sqrt2t$, its chord length is $2\sqrt{9-18t^2}$, and its distance from $C$ is $\dfrac{23}{\sqrt2}t$. Therefore $[CPQ]=\dfrac{23}{\sqrt2}t\sqrt{9-18t^2}$ for $0\le t\le\dfrac{1}{\sqrt2}$. Squaring, the variable factor is $9t^2-18t^4$, maximized at $t^2=\dfrac{1}{4}$. The maximum area is $\dfrac{69}{4}$, so $m+n=\boxed{73}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(8,0),D=(0,15),C=(11.5,11.5),I=(3,3);draw(A--B--C--D--cycle);draw(B--D);draw(circle((4,7.5),8.5),dashed);draw(circle(I,3));pair u=dir(15);real k=dot(I,u),h=sqrt(9-dot(I,I)+k*k);pair P=(k-h)*u,Q=(k+h)*u;draw(A--Q);draw(C--P--Q--C);label("$A$",A,SW);label("$B$",B,S);label("$C$",C,NE);label("$D$",D,NW);label("$I$",I,N);label("$P$",P,S);label("$Q$",Q,S);
+\end{asy}

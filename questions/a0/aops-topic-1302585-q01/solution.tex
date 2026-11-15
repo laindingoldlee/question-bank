@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1302585_filling_a_grid_hard_combo_problem
+% Stable identity: aops-topic-1302585-q01
+\textbf{Structure.} In a dead board the $3$s form a set of pairwise non-adjacent cells. Every other cell holds $1$ or $2$, and two adjacent non-$3$ cells must hold the same number (a $1$ cannot touch a $2$). So each connected region of non-$3$ cells is all $1$s or all $2$s. Hence the number of dead boards is
+\[
+\sum_{S}2^{c(S)},
+\]
+summing over sets $S$ of pairwise non-adjacent cells (the $3$s), where $c(S)$ is the number of connected components of the remaining cells.
+
+\textbf{Count.} This sum is evaluated row by row (a transfer computation over the $3^4$ possible rows that are dead within themselves, checking compatibility of consecutive rows); it gives $7812$ dead boards. For example, $S=\varnothing$ contributes $2$ (all $1$s or all $2$s), and each single cell $S$ contributes $2$ as well.
+
+The probability is
+\[
+\dfrac{7812}{3^{16}}=\dfrac{7812}{43046721}=\boxed{\dfrac{868}{4782969}}\approx0.00018 .
+\]

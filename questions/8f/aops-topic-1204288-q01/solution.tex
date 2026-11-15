@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1204288_visiting_10_cities_arranged_in_a_circle
+% Stable identity: aops-topic-1204288-q01
+\textbf{Answer: $10\cdot2^8=2560$.}
+
+\textbf{Key fact.} At every moment the visited cities form a block of consecutive cities on the circle, and the tourist stands at one end of the block.
+
+This is true at the start. Suppose it holds, the tourist is at the end $c$ of the visited block, and the unvisited cities form the complementary arc $u_1,u_2,\dots,u_k$ in circular order, with $u_1$ next to $c$ and $u_k$ next to the other end of the block. Suppose he goes next to $u_j$ with $1<j<k$. The road $cu_j$ splits the circle into two arcs; one contains $u_1,\dots,u_{j-1}$, the other contains $u_{j+1},\dots,u_k$. Both groups still have to be visited, and the cities $c$ and $u_j$ will not be endpoints of any later road except the next one from $u_j$. So at some later moment the route uses a road joining a city on one side of $cu_j$ to a city on the other side, and that road crosses $cu_j$. This is not allowed, so the next city is $u_1$ or $u_k$, and the visited cities again form a block with the tourist at an end.
+
+Conversely, such a move never creates a crossing: all earlier roads join two cities of the visited block, which lies (apart from $c$) entirely on one side of the new road.
+
+\textbf{Counting.} There are $10$ choices for the first city. Each of the next $8$ moves goes to one of the two cities next to the block, and these are different as long as at least two cities are unvisited: $2$ choices each. The last city is then forced. Hence the number of routes is
+\[
+10\cdot2^8=\boxed{2560}.
+\]
+(If a route and its reverse are considered the same path, the count is $\dfrac{2560}{2}=1280$.)

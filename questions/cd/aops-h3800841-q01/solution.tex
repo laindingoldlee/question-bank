@@ -1,0 +1,10 @@
+If the opposite-face pairs are $(a,a'),(b,b'),(c,c')$, the eight vertex products sum to $(a+a')(b+b')(c+c')=385=5\cdot7\cdot11$. Each pair sum is at least three, so each must receive one of these prime factors; the pair sums are $5,7,11$. Their total, the sum of all six face numbers, is $\boxed{23}$.
+Pairs summing to five are $(1,4),(2,3)$; those summing to seven are $(1,6),(2,5),(3,4)$; those summing to eleven are $(1,10),(2,9),(3,8),(4,7),(5,6)$. Requiring all six entries to be distinct leaves exactly
+\[\boxed{\{(1,4),(2,5),(3,8)\}\quad\text{or}\quad\{(2,3),(1,6),(4,7)\}}.\]
+Each pairing indeed makes the product of pair sums $385$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p={(1,1),(0,0),(1,0),(2,0),(3,0),(1,-1)};string[] s={"3","2","1","5","4","8"};for(int i=0;i<6;++i){draw(box(p[i],p[i]+(1,1)));label(s[i],p[i]+(.5,.5));}label("Cube net: opposite pairs $(1,4),(2,5),(3,8)$",(2,-1.8));
+\end{asy}

@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1887150_geometry
+% Stable identity: aops-topic-1887150-q01
+Put $B=(0,0)$ and $C=(\sqrt5+1,0)$, so $D=(\sqrt5,0)$. Let $A=(x,y)$ with $y>0$. From $AB=3$ and $AC=\sqrt5$,
+\[
+x^2+y^2=9,\qquad \left(x-\sqrt5-1\right)^2+y^2=5 .
+\]
+Subtracting, $2(\sqrt5+1)x-(\sqrt5+1)^2=4$, so $2(\sqrt5+1)x=10+2\sqrt5=2\sqrt5(\sqrt5+1)$ and $x=\sqrt5$. Then $y^2=4$, so $A=(\sqrt5,2)$. Thus $A$ lies directly above $D$: $AD\perp BC$, and $AD$ is the line $x=\sqrt5$.
+
+The altitude from $B$ is perpendicular to $AC$. Since $C-A=(1,-2)$, it is the line through the origin in direction $(2,1)$, namely $y=\dfrac {x}{2}$. It meets $x=\sqrt5$ at $E=\left(\sqrt5,\dfrac{\sqrt5}{2}\right)$ (the orthocentre, since $AD$ is also an altitude). Therefore
+\[
+CE=\sqrt{1^2+\left(\dfrac{\sqrt5}{2}\right)^2}=\sqrt{\dfrac{9}{4}}=\boxed{\dfrac{3}{2}}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real r5=sqrt(5);
+pair B=(0,0),C=(r5+1,0),D=(r5,0),A=(r5,2),Ee=(r5,r5/2);
+pair H=A+dot(B-A,unit(C-A))*unit(C-A);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,linewidth(0.7));draw(B--H,linewidth(0.7));
+draw(C--Ee,red+dashed+linewidth(0.8));
+void ra(pair P,pair u,pair v){real s=0.14; draw((P+s*u)--(P+s*u+s*v)--(P+s*v),linewidth(0.5));}
+ra(D,(-1,0),(0,1)); ra(H,unit(A-H),unit(B-H));
+dot(D);dot(Ee);dot(H);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$E$",Ee,dir(160));label("$H$",H,NE);
+label("$3$",(A+B)/2,NW);label("$\sqrt{5}$",(B+D)/2,S);label("$1$",(D+C)/2,S);label("$\sqrt{5}$",(A+C)/2+(0.12,0.12),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2796071_2012_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2796071-q10
+Let $H$ be the foot of the altitude from $A$, so $BH=\sqrt{13^2-12^2}=5$. Let $BC=AC=x$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real x=16.9; pair B=(0,0),C=(x,0);
+real bh=5; pair H=(bh,0); pair A=(bh,12);
+draw(A--B--C--cycle);draw(A--H,dashed);draw(H+(0.6,0)--H+(0.6,0.6)--H+(0,0.6));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$H$",H,S);label("$13$",(A+B)/2,W);label("$12$",(bh,6),E);
+\end{asy}
+
+If $H$ lies between $B$ and $C$, then $CH=x-5$ and $x^2=12^2+(x-5)^2$, so $10x=169$, $x=16.9$. If $B$ lies between $H$ and $C$, then $x^2=144+(x+5)^2$, which is impossible. If $C$ lies between $B$ and $H$, then $x=BC<BH=5$, contradicting $x=AC\ge AH=12$.
+
+So $BC=16.9$ and the area is $\dfrac12\cdot16.9\cdot12=\boxed{\dfrac{507}{5}}$.

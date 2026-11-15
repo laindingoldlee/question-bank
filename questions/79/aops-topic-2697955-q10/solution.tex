@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2697955_1_year_anniversary_post_d
+% Stable identity: aops-topic-2697955-q10
+Let $H'$ be the reflection of $H$ in $BC$. In quadrilateral $AFHE$, where $E,F$ are the feet of the altitudes from $B,C$, the angles at $E$ and $F$ are right, so $\angle BHC=\angle FHE=180^\circ-\angle A$. Reflection preserves angles, so $\angle BH'C=\angle BHC=180^\circ-\angle A$. Since $H'$ and $A$ lie on opposite sides of $BC$ and $\angle BH'C+\angle BAC=180^\circ$, quadrilateral $ABH'C$ is cyclic. So $H'$ lies on the circumcircle. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.2,3),B=(0,0),C=(4,0);
+pair Ha=A+dot(B-A,C-B)/dot(C-B,C-B)*(C-B);
+pair H=extension(A,(A.x,0),B,B+rotate(90)*(C-A));pair Hp=(H.x,-H.y);
+pair O=extension((B+C)/2,(B+C)/2+(0,1),(A+B)/2,(A+B)/2+rotate(90)*(B-A));
+draw(circle(O,abs(A-O)),gray);draw(A--B--C--cycle,linewidth(0.8));draw(A--Hp,dashed);draw(B--H);draw(C--H);draw(B--Hp);draw(C--Hp);
+dot(H);dot(Hp);label("$A$",A,N);label("$B$",B,W);label("$C$",C,E);label("$H$",H,NE);label("$H'$",Hp,S);
+\end{asy}

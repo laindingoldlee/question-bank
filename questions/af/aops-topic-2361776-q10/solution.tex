@@ -1,0 +1,44 @@
+% Source: https://artofproblemsolving.com/community/c3h2361776_30_posts_circles
+% Stable identity: aops-topic-2361776-q10
+Let $O$ (radius $12$) and $O'$ (radius $3$) be the centres; since the circles are internally tangent, $OO'=12-3=9$. Let the chord be $AB$ with midpoint $M$ and point of tangency $T$, so $O'T\perp AB$ and $O'T=3$.
+
+\textbf{Coordinates.} The distance from $O$ to the chord is $OM=\sqrt{12^2-\left(\dfrac{21}{2}\right)^2}=\sqrt{\dfrac{135}{4}}=\dfrac{3\sqrt{15}}{2}$. Put $O=(0,0)$ and the chord on the line $y=d$ with $d=\dfrac{3\sqrt{15}}2$, so $A=(-10.5,d)$, $B=(10.5,d)$ and $T=(t,d)$. Then $O'=(t,d+3)$ or $O'=(t,d-3)$: the small circle lies on the far side of the chord from $O$, or on the same side. Then $p=10.5+t$, $q=10.5-t$ and
+\[p^2+q^2=2\cdot10.5^2+2t^2=\dfrac{441}{2}+2t^2.\]
+From $OO'^2=81$:
+\begin{itemize}
+\item far side: $t^2=81-(d+3)^2=72-d^2-6d=\dfrac{153}{4}-9\sqrt{15}\approx3.39$;
+\item same side: $t^2=81-(d-3)^2=\dfrac{153}{4}+9\sqrt{15}\approx73.11$.
+\end{itemize}
+In both cases $0<t^2<10.5^2$, so $T$ lies inside the chord and both configurations really occur:
+
+\begin{asy}
+usepackage("amsmath");
+size(4.6cm);
+defaultpen(fontsize(10pt));
+real d=3*sqrt(15)/2; real sg=1;
+real b0=d+3*sg; real t=sqrt(81-b0^2);
+pair O=(0,0), Op=(t,b0), Tt=(t,d), A=(-10.5,d), B=(10.5,d), K=12*unit(Op);
+draw(circle(O,12)); draw(circle(Op,3),blue);
+draw(A--B,linewidth(0.9)); draw(Op--Tt,dashed+blue); draw(O--K,dotted);
+dot(O); dot(Op,blue); dot(Tt,red); dot(A); dot(B); dot(K);
+label("$O$",O,S); label("$O'$",Op,E,blue); label("$T$",Tt,SE,red); label("$A$",A,W); label("$B$",B,E); label("$K$",K,N);
+label("$p$",(A+Tt)/2,S); label("$q$",(Tt+B)/2+(sg>0 ? (0,0) : (-0.25,0)),S,fontsize(sg>0 ? 10pt : 8pt));
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(4.6cm);
+defaultpen(fontsize(10pt));
+real d=3*sqrt(15)/2; real sg=-1;
+real b0=d+3*sg; real t=sqrt(81-b0^2);
+pair O=(0,0), Op=(t,b0), Tt=(t,d), A=(-10.5,d), B=(10.5,d), K=12*unit(Op);
+draw(circle(O,12)); draw(circle(Op,3),blue);
+draw(A--B,linewidth(0.9)); draw(Op--Tt,dashed+blue); draw(O--K,dotted);
+dot(O); dot(Op,blue); dot(Tt,red); dot(A); dot(B); dot(K);
+label("$O$",O,S); label("$O'$",Op,NW,blue); label("$T$",Tt,NW,red); label("$A$",A,W); label("$B$",B,E); label("$K$",K,SE);
+label("$p$",(A+Tt)/2,N); label("$q$",(Tt+B)/2+(sg>0 ? (0,0) : (-0.25,0)),N,fontsize(sg>0 ? 10pt : 8pt));
+\end{asy}
+
+Hence
+\[p^2+q^2=\dfrac{441}{2}+\dfrac{153}{2}\mp18\sqrt{15}=\boxed{297-18\sqrt{15}\ \text{ or }\ 297+18\sqrt{15}},\]
+about $227.3$ when the small circle lies on the far side of the chord from $O$ (first figure) and about $366.7$ when it lies on the same side as $O$ (second figure).

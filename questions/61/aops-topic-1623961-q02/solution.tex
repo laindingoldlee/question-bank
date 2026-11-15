@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1623961_slope_of_a_line_question
+% Stable identity: aops-topic-1623961-q02
+Rise over run:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+draw((-8.5,0)--(4,0),Arrow(TeXHead));draw((0,-0.5)--(0,5.6),Arrow(TeXHead));
+label("$x$",(4,0),E);label("$y$",(0,5.6),N);
+pair A=(-7,1.6),B=(3,4.6);draw(A-0.12*(B-A)--B,blue+linewidth(0.9));
+draw(A--(B.x,A.y)--B,dashed);dot(A);dot(B);
+draw((-7,-0.12)--(-7,0.12));label("$-7$",(-7,0),S);
+label("$A(-7,a)$",A,NW);label("$B(c,d)$",B,E);
+label("$c+7$",((A.x+B.x)/2,A.y),S);label("$d-a$",(B.x,(A.y+B.y)/2),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+\text{slope}=\dfrac{d-a}{c-(-7)}=\boxed{\dfrac{d-a}{c+7}},
+\]
+which is defined because $c\ne-7$.

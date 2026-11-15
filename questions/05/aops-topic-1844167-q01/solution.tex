@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1844167_analytic_geometry
+% Stable identity: aops-topic-1844167-q01
+Let $M$ be the point with the given coordinates. We show that $AM=MB=\dfrac{1}{2}AB$ and that $M$ lies on segment $AB$.
+
+Going from $A$ to $M$, the coordinates change by $\dfrac{x_1+x_2}{2}-x_1=\dfrac{x_2-x_1}{2}$ and $\dfrac{y_2-y_1}{2}$; going from $M$ to $B$ they change by the same amounts. By the distance formula,
+\[
+AM=MB=\sqrt{\left(\dfrac{x_2-x_1}{2}\right)^2+\left(\dfrac{y_2-y_1}{2}\right)^2}=\dfrac{1}{2}\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}=\dfrac{1}{2}AB .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(1,1),B=(7,5),M=(A+B)/2;
+draw(A--B,linewidth(0.9));
+draw(A--(M.x,A.y)--M,dashed);draw(M--(B.x,M.y)--B,dashed);
+real e=0.3;
+draw((M.x-e,A.y)--(M.x-e,A.y+e)--(M.x,A.y+e));
+draw((B.x-e,M.y)--(B.x-e,M.y+e)--(B.x,M.y+e));
+dot(A);dot(B);dot(M,red);
+label("$A(x_1,y_1)$",A,W);label("$B(x_2,y_2)$",B,E);label("$M$",M,NW,red);
+label("$p$",((A.x+M.x)/2,A.y),S);label("$p$",((M.x+B.x)/2,M.y),S);
+label("$q$",(M.x,(A.y+M.y)/2),E);label("$q$",(B.x,(M.y+B.y)/2),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $AM+MB=AB$. If $M$ were not on segment $AB$, then $A$, $M$, $B$ would form a triangle (or $M$ would lie on line $AB$ outside the segment), and in both cases $AM+MB>AB$. Hence $M$ lies on segment $AB$, and since $AM=MB$ it is the midpoint. $\blacksquare$
+
+(In the figure, $p=\dfrac{x_2-x_1}{2}$ and $q=\dfrac{y_2-y_1}{2}$. The two dashed right triangles have the same legs $p$ and $q$, so they are congruent: $AM=MB$, and the segments $AM$ and $MB$ have the same direction.)

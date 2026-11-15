@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2784571_2021_abmc_team_rounds_58__actonboxborough_math_competition
+% Stable identity: aops-topic-2784571-q21
+\textbf{Step 1: $DE=AC$.} By inscribed angles, $\angle XDE=\angle CDE=\angle CAE=\angle CAX$ and $\angle XED=\angle AED=\angle ACD=\angle ACX$, so triangles $XDE$ and $XAC$ are similar. Equal areas force the ratio to be $1$, so $DE=AC$, and the arc $DE$ through $B$ measures $120^\circ$.
+
+\textbf{Step 2: $\angle AXC=120^\circ$.} The angle between two chords meeting inside a circle is half the sum of the intercepted arcs: $\angle AXC=\dfrac{120^\circ+120^\circ}2=120^\circ$.
+
+\textbf{Step 3: a similarity.} In triangle $AXC$, $\angle XAC+\angle XCA=60^\circ=\angle BAX+\angle XAC$, so $\angle YAX=\angle BAX=\angle XCA=\angle YCA$. Triangles $YAX$ and $YCA$ share the angle at $Y$, so they are similar and $\dfrac{YX}{YC}=\dfrac{YA^2}{YC^2}$.
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=dir(90),B=dir(210),C=dir(330);pair Y=A+(B-A)/4;
+pair[] I=intersectionpoints(C--(C+3*(Y-C)),unitcircle);pair D=(abs(I[0]-C)>0.01)?I[0]:I[1];
+pair E=rotate(120)*D;pair X=extension(C,D,A,E);
+fill(A--X--Y--cycle,rgb(1,0.85,0.85));fill(B--X--C--cycle,rgb(0.85,0.9,1));
+draw(unitcircle,gray);draw(A--B--C--cycle);draw(C--D);draw(A--E);draw(D--E,dashed);draw(B--X,dotted);
+dot(X);dot(Y);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,W);label("$E$",E,S);label("$X$",X,SE);label("$Y$",Y,W);
+\end{asy}
+
+\textbf{Step 4: computing.} Let the side be $s$ and $AY=ts$. Then $[AYC]=52t$, and by the law of cosines with $\angle A=60^\circ$, $YC^2=s^2(t^2-t+1)$. Hence
+\[1=[AXY]=[AYC]\cdot\dfrac{YX}{YC}=52t\cdot\dfrac{t^2}{t^2-t+1},\]
+so $52t^3-t^2+t-1=0$, which factors as $(4t-1)(13t^2+3t+1)=0$. The quadratic has no real roots, so $t=\dfrac14$.
+
+Then $\dfrac{YX}{YC}=\dfrac{t^2}{t^2-t+1}=\dfrac1{13}$. Also $[BYC]=(1-t)\cdot52=39$ and $[BYX]=\dfrac1{13}[BYC]=3$. Therefore $[BXC]=39-3=\boxed{36}$.

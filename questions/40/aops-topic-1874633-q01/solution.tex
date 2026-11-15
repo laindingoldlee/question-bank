@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1874633_fun_question_about_circumcircle
+% Stable identity: aops-topic-1874633-q01
+The statement is \textbf{true}. Use vectors (or coordinates) with origin $O$, and let $T$ have vertices $A$, $B$, $C$. Its centroid is $G=\dfrac{A+B+C}{3}$.
+
+A dilation with centre $O$ and factor $2$ sends each point $X$ to $2X$. So $T_1$ has vertices $2A$, $2B$, $2C$, and its centroid is
+\[
+G_1=\dfrac{2A+2B+2C}{3}=2G .
+\]
+In the same way $T_2$ has vertices $4A,4B,4C$ and centroid $G_2=4G$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair A=dir(25),B=dir(95),C=dir(160),O=(0,0);
+pair G=(A+B+C)/3;
+draw(circle(O,1),gray(0.5));draw(circle(O,2),gray(0.5));draw(circle(O,4),gray(0.5));
+draw(A--B--C--cycle,linewidth(1));
+draw(scale(2)*(A--B--C--cycle),blue+linewidth(1));
+draw(scale(4)*(A--B--C--cycle),red+linewidth(1));
+draw(O--4.25*G,dashed);
+dot(O);dot(G);dot(2*G,blue);dot(4*G,red);
+label("$O$",O,S);label("$G$",G,E,fontsize(9pt));label("$G_1$",2*G,E,blue);label("$G_2$",4*G,E,red);
+label("$T$",A,E);label("$T_1$",2*A,E,blue);label("$T_2$",4*A,E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+If $G\ne O$, the points $G$, $2G$, $4G$ all lie on the line through $O$ and $G$ (on the ray from $O$ through $G$), so they are collinear. If $G=O$ (which happens exactly when $T$ is equilateral), then $G=G_1=G_2=O$ and the three centroids coincide, which is trivially collinear. In both cases the centroids are collinear, and moreover $OG_1=2\,OG$ and $OG_2=4\,OG$. (The same holds for any point defined from the triangle in a way that commutes with dilations, such as the orthocentre or the incentre.)

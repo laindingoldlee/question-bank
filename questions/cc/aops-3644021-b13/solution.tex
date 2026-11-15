@@ -1,0 +1,6 @@
+The inequality is equivalent to $6<2|x|+3|y|<18$. For $|y|=0,1,2,3,4,5$, the allowed $x$ counts are respectively $10,12,10,9,5,3$. Nonzero $y$ rows occur twice, so the total is $10+2(12+10+9+5+3)=\boxed{88}$. Each bound is strict, so points on either diamond are excluded.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+draw((9,0)--(0,6)--(-9,0)--(0,-6)--cycle,dashed);draw((3,0)--(0,2)--(-3,0)--(0,-2)--cycle,dashed);for(int x=-8;x<=8;++x)for(int y=-5;y<=5;++y)if(6<2*abs(x)+3*abs(y)&&2*abs(x)+3*abs(y)<18)dot((x,y),blue);label("strictly between two diamonds",(0,-7));
+\end{asy}
+

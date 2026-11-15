@@ -1,0 +1,42 @@
+% Source: https://artofproblemsolving.com/community/c3h1650207_can_someone_check_my_proofs_for_these_theorems
+% Stable identity: aops-topic-1650207-q01
+\textbf{Gaps and errors.}
+\begin{enumerate}
+\item The point $P$ is never placed. The last step uses $BP+PD=BD$, so $P$ must be chosen \emph{on the diagonal $BD$}: $P$ is the point of segment $BD$ with $\angle PCD=\angle ACB$. (It exists: in the convex quadrilateral the ray $CA$ lies inside $\angle BCD$, so $\angle ACB<\angle BCD$, and the ray from $C$ inside $\angle BCD$ making the angle $\angle ACB$ with $CD$ meets segment $BD$.)
+\item With $P$ on $BD$, the angle used for the first similarity is $\angle PDC=\angle BDC$; this should be said.
+\item For the second similarity only one angle is given. The second pair is $\angle CBP=\angle CBD=\angle CAD$ (inscribed angles on arc $CD$), and $\angle BCP=\angle ACD$ needs a reason: $\angle BCP=\angle BCD-\angle PCD=\angle BCD-\angle ACB=\angle ACD$.
+\item ``$BM$'' is a typo for $BP$.
+\end{enumerate}
+
+\textbf{Correct proof.} Let $P$ be the point of segment $BD$ with $\angle PCD=\angle ACB$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+pair A=dir(205),B=dir(120),C=dir(35),D=dir(-85);
+pair P=(-0.26606,0.12407);
+draw(circle(O,1));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C);draw(B--D);
+draw(C--P,red+dashed);
+dot(P,red);
+label("$A$",A,dir(205));label("$B$",B,dir(120));label("$C$",C,dir(35));label("$D$",D,dir(-85));
+label("$P$",P,NW,red);
+draw(arc(C,0.2,degrees(B-C),degrees(A-C)),blue);draw(arc(C,0.42,degrees(P-C),degrees(D-C)),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\emph{First pair.} In triangles $ABC$ and $DPC$: $\angle BAC=\angle BDC=\angle PDC$ (inscribed angles on arc $BC$, and $P$ lies on $DB$) and $\angle ACB=\angle PCD$. So $\triangle ABC\sim\triangle DPC$ (with $A\leftrightarrow D$, $B\leftrightarrow P$, $C\leftrightarrow C$), and
+\[
+\dfrac{AB}{DP}=\dfrac{AC}{DC}\qquad\Longrightarrow\qquad AB\cdot CD=AC\cdot PD .
+\]
+\emph{Second pair.} In triangles $BCP$ and $ACD$: $\angle CBP=\angle CBD=\angle CAD$ (inscribed angles on arc $CD$), and $\angle BCP=\angle BCD-\angle PCD=\angle BCD-\angle ACB=\angle ACD$. So $\triangle BCP\sim\triangle ACD$ (with $B\leftrightarrow A$, $C\leftrightarrow C$, $P\leftrightarrow D$), and
+\[
+\dfrac{BC}{AC}=\dfrac{BP}{AD}\qquad\Longrightarrow\qquad BC\cdot AD=AC\cdot BP .
+\]
+\emph{Adding.} Since $P$ lies on segment $BD$,
+\[
+AB\cdot CD+BC\cdot AD=AC\,(PD+BP)=AC\cdot BD .\qquad\blacksquare
+\]

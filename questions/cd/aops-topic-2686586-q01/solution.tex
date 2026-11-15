@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2686586_angle_trisection
+% Stable identity: aops-topic-2686586-q01
+In triangle $ABE$, the segment $AD$ bisects $\angle BAE$ (because $\angle BAD=\angle DAE$) and $D$ lies on $\overline{BE}$. By the angle bisector theorem,
+\[\dfrac{BD}{DE}=\dfrac{AB}{AE}.\]
+In triangle $ADC$, the segment $AE$ bisects $\angle DAC$ and $E$ lies on $\overline{DC}$, so
+\[\dfrac{DE}{EC}=\dfrac{AD}{AC}.\]
+The first ratio says $BD:DE=AB\cdot AD:AE\cdot AD$, and the second says $DE:EC=AD\cdot AE:AC\cdot AE$. Both use the same middle term $AD\cdot AE$, so
+\[BD:DE:EC=AB\cdot AD:AD\cdot AE:AE\cdot AC.\ \blacksquare\]
+Unlike the angle bisector theorem, the ratios involve the trisectors $AD$ and $AE$ themselves, not only the sides.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.3,3),B=(0,0),C=(5,0);
+real a1=degrees(B-A),a2=degrees(C-A),t=(a2-a1)/3;
+pair D=extension(A,A+dir(a1+t),B,C),Ee=extension(A,A+dir(a1+2t),B,C);
+draw(A--B--C--cycle,linewidth(0.8));draw(A--D);draw(A--Ee);
+draw(arc(A,0.55,a1,a1+t));draw(arc(A,0.62,a1+t,a1+2t));draw(arc(A,0.69,a1+2t,a2));
+label("$\theta$",A+0.9*dir(a1+t/2),fontsize(8pt));label("$\theta$",A+0.95*dir(a1+1.5t),fontsize(8pt));label("$\theta$",A+1.0*dir(a1+2.5t),fontsize(8pt));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$E$",Ee,S);
+\end{asy}

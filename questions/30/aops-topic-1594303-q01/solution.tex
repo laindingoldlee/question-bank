@@ -1,0 +1,42 @@
+% Source: https://artofproblemsolving.com/community/c3h1594303_combinations
+% Stable identity: aops-topic-1594303-q01
+There are $\dbinom{20}{3}=1140$ triangles. Count the complement: triangles all of whose sides lie on the surface. Since the dodecahedron is convex, a segment joining two vertices lies on the surface exactly when the two vertices lie on a common face; call such a pair \emph{cofacial}. A cofacial pair is either an edge or a diagonal of a face.
+
+\textbf{Cofacial means graph distance at most $2$.} Two vertices of a pentagon are joined by an edge of the pentagon or by a path of two of its edges. Conversely, if $X$--$u$--$Y$ is a path of two edges, then $Xu$ and $uY$ are two of the three edges at $u$, and any two edges at a vertex of the dodecahedron lie in a common face (three faces meet at each vertex, each containing two of the three edges); so $X$ and $Y$ are cofacial. So the cofacial pairs are exactly the pairs at distance $1$ or $2$ in the graph of the dodecahedron (the edges and vertices).
+
+\textbf{Facts about the graph.} The graph has no cycles of length $3$, $4$ or $6$, and its $5$-cycles are exactly the boundaries of the $12$ faces. (These facts are standard, and are confirmed by a computer check of the graph.)
+
+\textbf{Classifying the triangles.} Let $X$, $Y$, $Z$ be pairwise cofacial. Joining them by shortest paths gives a closed walk $X\to Y\to Z\to X$ of length $3$, $4$, $5$ or $6$.
+\begin{itemize}
+\item If at least two of the three distances are $1$, say $XY$ and $YZ$ are edges, then $X$--$Y$--$Z$ is a path of two edges, which lies in a face; so $X,Y,Z$ lie on one face. (All three distances $1$ would be a $3$-cycle, which does not exist.)
+\item If exactly one distance is $1$, the closed walk has length $5$. A closed walk of odd length contains a cycle of odd length at most $5$, and the only one available is a $5$-cycle, which must be the whole walk. So the walk is the boundary of a face, and $X,Y,Z$ lie on one face.
+\item If all three distances are $2$, the closed walk $X-a-Y-b-Z-c-X$ has length $6$. There are no $6$-cycles and no shorter cycles that could fit in an even walk of length $6$ (a $5$-cycle would leave one more edge, which cannot close up), so the walk only goes back and forth along a tree. A tree containing $X,Y,Z$ with all three pairwise distances $2$ is a star: $a=b=c$ is a common neighbour. So $X,Y,Z$ are the three neighbours of one vertex.
+\end{itemize}
+The sketch shows the graph drawn flat (the outer pentagon is the back face), with the face at the front shaded; the red triangle is formed by the three neighbours of the vertex $v$, which lie on three different faces.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair[] Vo,M1,M2,In;
+for(int i=0;i<5;++i){Vo.push(3.2*dir(90+72*i));M1.push(2.15*dir(90+72*i));M2.push(1.6*dir(126+72*i));In.push(0.95*dir(126+72*i));}
+pen ed=linewidth(0.8);
+for(int i=0;i<5;++i){
+  draw(Vo[i]--Vo[(i+1)%5],ed);draw(Vo[i]--M1[i],ed);
+  draw(M1[i]--M2[i],ed);draw(M2[i]--M1[(i+1)%5],ed);
+  draw(M2[i]--In[i],ed);draw(In[i]--In[(i+1)%5],ed);
+}
+fill(In[0]--In[1]--In[2]--In[3]--In[4]--cycle,paleblue);
+for(int i=0;i<5;++i) draw(In[i]--In[(i+1)%5],ed);
+pen tri=red+linewidth(1.1);
+draw(Vo[0]--M2[0]--M2[4]--cycle,tri);
+for(int i=0;i<5;++i){dot(Vo[i]);dot(M1[i]);dot(M2[i]);dot(In[i]);}
+label("$v$",M1[0],W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Counting.} Triangles with all three vertices on one face: $12\cdot\dbinom53=120$ (no triangle lies in two faces, since two faces share at most two vertices). Triangles formed by the three neighbours of a vertex: $20$, one for each vertex; they are not on one face, and different vertices give different triangles (the three neighbours of $v$ have only $v$ as a common neighbour). So $120+20=140$ triangles lie entirely on the surface, and
+\[
+1140-140=\boxed{1000}
+\]
+triangles have at least one side through the interior.

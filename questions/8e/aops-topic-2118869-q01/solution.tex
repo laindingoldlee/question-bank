@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2118869_probability_with_geometry_and_a_square
+% Stable identity: aops-topic-2118869-q01
+Scale the square to have area $1$. With probability $1$, no three of the points are collinear, so we may assume this.
+
+\textbf{(a)} Four points, no three collinear, either are the vertices of a convex quadrilateral (their convex hull has all four as vertices) or one of them lies inside the triangle formed by the other three (their convex hull is a triangle).
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+path sqr=(0,0)--(1,0)--(1,1)--(0,1)--cycle;
+draw(sqr,linewidth(0.9));
+pair a=(0.15,0.25), bq=(0.75,0.15), c=(0.85,0.7), d=(0.3,0.8);
+fill(a--bq--c--d--cycle,paleblue); draw(a--bq--c--d--cycle,blue);
+dot(a); dot(bq); dot(c); dot(d);
+label("convex position",(0.5,-0.08),S,fontsize(8pt));
+path sq2=shift(1.6,0)*sqr; draw(sq2,linewidth(0.9));
+pair A2=(1.75,0.2), B2=(2.45,0.3), C2=(2.05,0.82), D2=(2.08,0.45);
+fill(A2--B2--C2--cycle,paleyellow); draw(A2--B2--C2--cycle,red);
+dot(A2); dot(B2); dot(C2); dot(D2,red);
+label("$A$",A2,W,fontsize(8pt)); label("$B$",B2,E,fontsize(8pt)); label("$C$",C2,N,fontsize(8pt)); label("$D$",D2,E,red+fontsize(8pt));
+label("$D$ inside triangle $ABC$",(2.1,-0.08),S,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Let $E_D$ be the event that $D$ lies inside triangle $ABC$. Once $A,B,C$ are chosen, $D$ is uniform in the unit square, so the conditional probability of $E_D$ is the area of triangle $ABC$. Averaging,
+\[P(E_D)=\mathbb{E}\left[\text{area of }ABC\right]=\dfrac{11}{144},\]
+and similarly for $E_A,E_B,E_C$. These four events are mutually exclusive: if $D$ is inside triangle $ABC$, then the convex hull of the four points is triangle $ABC$, and its vertices $A$, $B$, $C$ are corners of the hull, so none of them can lie inside a triangle formed by the other points (such a triangle lies inside the hull). Hence
+\[P(\text{not convex})=4\cdot\dfrac{11}{144}=\dfrac{11}{36},\qquad P(\text{convex})=1-\dfrac{11}{36}=\boxed{\dfrac{25}{36}}\approx0.694 .\]
+
+\textbf{(b)} Three non-collinear points $A,B,C$ lie on exactly one circle. The point $D$ lies on that circle with probability equal to the area of the part of the circle inside the square, which is $0$ because a circle has no area. So the probability is $\boxed{0}$.
+
+(The value $\dfrac{11}{144}$ comes from a double integral; the question in (a) is Sylvester's four-point problem for the square.)

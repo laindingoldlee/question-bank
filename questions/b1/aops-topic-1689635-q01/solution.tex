@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h1689635_a_problem_ofmath
+% Stable identity: aops-topic-1689635-q01
+\textbf{Reformulation.} Put $K(t)=e^t-\ln t$ for $t>0$. With $w=e^{-x}$ we have $-\ln w=x$, so
+\[
+K(w)=e^{e^{-x}}+x,\qquad K(x)=e^x-\ln x .
+\]
+Hence
+\[
+D(x):=K(x)-K(e^{-x})=e^x-x-\ln x-e^{e^{-x}},
+\]
+and the inequality to prove, $\ln(e^x-x-\ln x)\ge e^{-x}$, is equivalent to $e^x-x-\ln x\ge e^{e^{-x}}$, that is, $D(x)\ge0$ (the logarithm is increasing, and then $e^x-x-\ln x>0$ automatically).
+
+\textbf{The equality point.} Let $x_0>0$ be the number with $x_0e^{x_0}=1$ (it exists and is unique because $te^t$ increases from $0$ to $\infty$). Then $e^{-x_0}=x_0$ and $\ln x_0=-x_0$, so
+\[
+D(x_0)=\dfrac{1}{x_0}-x_0+x_0-e^{x_0}=\dfrac{1}{x_0}-\dfrac{1}{x_0}=0 .
+\]
+
+\textbf{Derivatives.} With $b=e^{-x}\in(0,1)$, and using $\dfrac{d}{dx}e^{e^{-x}}=-e^{-x}e^{e^{-x}}$,
+\[
+D'(x)=e^x-1-\dfrac{1}{x}+be^{b},\qquad D''(x)=e^x+\dfrac{1}{x^2}-b(1+b)e^{b}.
+\]
+At $x_0$: $b=x_0$, so $D'(x_0)=\dfrac{1}{x_0}-1-\dfrac{1}{x_0}+x_0e^{x_0}=0$.
+
+\textbf{$D$ is convex.} We show $D''(x)>0$ for all $x>0$.
+\begin{itemize}
+\item If $0<x\le0.4$: $\dfrac{1}{x^2}\ge6.25>2e>b(1+b)e^b$, since $b<1$.
+\item If $0.4\le x\le1$: $b\le e^{-0.4}<0.68$, so $b(1+b)e^b<0.68\cdot1.68\cdot e^{0.68}<0.68\cdot1.68\cdot2<2.3$, while $e^x+\dfrac{1}{x^2}\ge e^{0.4}+1>2.4$.
+\item If $x\ge1$: $b\le e^{-1}<0.37$, so $b(1+b)e^b<0.37\cdot1.37\cdot e^{0.37}<0.37\cdot1.37\cdot1.5<1<e\le e^x$.
+\end{itemize}
+
+\textbf{Conclusion.} A convex differentiable function lies above its tangent line; the tangent at $x_0$ is the horizontal line $y=D(x_0)=0$. Hence $D(x)\ge0$ for all $x>0$, with equality only at $x=x_0$ (strict convexity). Therefore
+\[
+e^{-x}-\ln\left(e^x-x-\ln x\right)\le0\quad\text{for all }x>0,
+\]
+with equality exactly when $xe^x=1$. $\blacksquare$

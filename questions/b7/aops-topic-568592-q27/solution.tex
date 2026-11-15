@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h568592_mathcounts_national_2009_sprint
+% Stable identity: aops-topic-568592-q27
+Let $M$ be the midpoint of the hypotenuse $BC$. In a right triangle the midpoint of the hypotenuse is the circumcentre, so $MA=MB=\dfrac{\sqrt3}{2}$. Triangle $MAB$ is isosceles with base angles $75^\circ$, so $\angle AMB=180^\circ-2\cdot75^\circ=30^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+void tk(pair P,pair Q,int n,real t=0.5,real h=0.08,real g=0.07,pen p=currentpen){pair m=P+t*(Q-P),u=unit(Q-P),v=rotate(90)*u;for(int i=0;i<n;++i){pair c=m+(i-(n-1)/2)*g*u;draw(c-h*v--c+h*v,p);}}
+real a=sqrt(3);
+pair B=(0,0),C=(a,0),A=a*Cos(75)*dir(75),M=(a/2,0),H=(A.x,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--M,red+dashed); draw(A--H,blue+dashed);
+draw(ra(A,B-A,C-A,0.07)); draw(ra(H,C-H,A-H,0.05));
+draw(arc(B,0.07,0,75)); label("$75^\circ$",(-0.12,0.2),W,fontsize(8pt)); draw((-0.12,0.2)--B+0.07*dir(45),gray+linewidth(0.3));
+draw(arc(M,0.16,degrees(A-M),180),red); label("$30^\circ$",M+0.28*dir(163),fontsize(8pt)+red);
+dot(M);dot(H);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$M$",M,S); label("$H$",H,S);
+label("$\dfrac{\sqrt{3}}{2}$",(0.34,0.19),fontsize(8pt)+red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Let $H$ be the foot of the altitude from $A$. In the right triangle $AHM$ with $\angle AMH=30^\circ$,
+\[
+AH=MA\sin30^\circ=\dfrac{\sqrt3}{2}\cdot\dfrac{1}{2}=\dfrac{\sqrt3}{4}.
+\]
+So the area is $\dfrac{1}{2}\cdot BC\cdot AH=\dfrac{1}{2}\cdot\sqrt3\cdot\dfrac{\sqrt3}{4}=\boxed{\dfrac{3}{8}}$.
+
+(With trigonometry: the legs are $\sqrt3\cos75^\circ$ and $\sqrt3\sin75^\circ$, so the area is $\dfrac{3}{2}\sin75^\circ\cos75^\circ=\dfrac{3}{4}\sin150^\circ=\dfrac{3}{8}$.)

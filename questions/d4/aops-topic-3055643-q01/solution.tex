@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3055643_team_round_marathon
+% Stable identity: aops-topic-3055643-q01
+There are $\binom{10}{3}=120 $ triples. In each of the three lattice directions, one line contains 4 points and another contains 3, yielding $\binom43+\binom33=5 $ collinear triples. There are no further collinear triples: in lattice coordinates $(i,j)$ with $ i,j\ge0,i+j\le3 $, three collinear integer points would have endpoints differing by twice a primitive integer direction. The only such directions fitting this triangle are $(1,0),(0,1),(1,-1)$. Thus $ 15 $ triples are degenerate and the answer is $\boxed{105}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair v=(0.5,sqrt(3)/2);draw((0,0)--(3,0)--3*v--cycle);for(int i=0;i<=3;++i)for(int j=0;j<=3-i;++j)dot((i,0)+j*v);label("side $3$",(1.5,0),S);
+\end{asy}

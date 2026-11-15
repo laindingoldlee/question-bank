@@ -1,0 +1,47 @@
+% Source: https://artofproblemsolving.com/community/c3h2672095_help_me_pro
+% Stable identity: aops-topic-2672095-q01
+Since $P$ is the midpoint of both $BC$ and $DK$, quadrilateral $BDCK$ is a parallelogram: $BK\parallel CE$, $CK\parallel BF$, $BK=CD$ and $CK=BD$. Also $B,C,F,E$ are concyclic.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair A=(1.4,2.6),B=(0,0),C=(3.4,0);pair Oc=(1.7,-0.6);
+pair secpt(pair P,pair Q){pair d=Q-P;real t=-2*dot(P-Oc,d)/dot(d,d);return P+t*d;}
+pair ft(pair X,pair U,pair V){pair d=V-U;return U+dot(X-U,d)/dot(d,d)*d;}
+pair cc(pair U,pair V,pair X){real a=2*(V.x-U.x),b=2*(V.y-U.y),c=2*(X.x-U.x),dd=2*(X.y-U.y);real e=dot(V,V)-dot(U,U),f=dot(X,X)-dot(U,U);real det=a*dd-b*c;return ((e*dd-b*f)/det,(a*f-c*e)/det);}
+pair Ep=secpt(B,A),F=secpt(C,A);pair D=extension(B,F,C,Ep);pair P=(B+C)/2,K=2*P-D;
+pair M=ft(D,A,B),Nn=ft(D,A,C);pair Ii=(A+D)/2,J=(M+Nn)/2;
+pair O1=cc(Ii,M,Nn);pair dv=J-Ii;real tt=-2*dot(Ii-O1,dv)/dot(dv,dv);pair T=Ii+tt*dv;
+draw(circle(Oc,abs(B-Oc)),gray(0.6));
+draw(A--B--C--cycle,linewidth(0.8));draw(B--F);draw(C--Ep);
+draw(B--K--C,dashed);draw(D--K,dotted);draw(A--K,blue);
+draw(D--M,dotted);draw(D--Nn,dotted);draw(M--Nn,blue);
+draw(circle(Ii,abs(A-Ii)),gray(0.75)+dashed);
+draw(Ii--T,dashed);draw(circle(O1,abs(Ii-O1)),gray(0.75)+dotted);
+dot(A);dot(B);dot(C);dot(Ep);dot(F);dot(D);dot(P);dot(K);dot(M);dot(Nn);dot(Ii);dot(J);dot(T);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$E$",Ep,W);label("$F$",F,NE);label("$D$",D,S);
+label("$P$",P,N);label("$K$",K,SE);label("$M$",M,W);label("$N$",Nn,E);label("$I$",Ii,W);label("$J$",J,E);label("$T$",T,S);
+\end{asy}
+
+\textbf{(a)} Using $BK\parallel CD$ and inscribed angles on the chord $BE$,
+\[\angle KBC=\angle BCD=\angle BCE=\angle BFE=\angle DFE.\]
+Similarly $\angle KCB=\angle CBD=\angle CBF=\angle CEF=\angle DEF$. Hence $\triangle KBC\sim\triangle DFE$, which gives $\dfrac{DE}{CK}=\dfrac{FE}{BC}$. Since $BCFE$ is cyclic, $\angle AEF=\angle ACB$, so $\triangle AEF\sim\triangle ACB$ and $\dfrac{AE}{AC}=\dfrac{EF}{CB}$. Therefore $\dfrac{AE}{AC}=\dfrac{DE}{CK}$. $\blacksquare$
+
+\textbf{(b)} Let $\varphi=\angle ABD=\angle EBF=\angle ECF=\angle ACD$ (inscribed angles on the chord $EF$). Then $DM=BD\sin\varphi$ and $DN=CD\sin\varphi$, so $\dfrac{DM}{DN}=\dfrac{BD}{CD}$.
+
+\emph{$AK$ and $AD$ are isogonal.} $K$ lies on the other side of $BC$ from $A$, with $\angle ABK=\angle B+\angle CBK=\angle B+\angle BCD<180^\circ$ and similarly at $C$, so $K$ is inside angle $BAC$. Its distances to the lines $AB$ and $AC$ are
+\[BK\sin\angle ABK=CD\sin\left(\varphi+\angle DBC+\angle BCD\right),\qquad CK\sin\angle ACK=BD\sin\left(\varphi+\angle DCB+\angle CBD\right),\]
+using $\angle B=\varphi+\angle DBC$, $\angle C=\varphi+\angle DCB$, $\angle CBK=\angle BCD$ and $\angle BCK=\angle CBD$. The two sines are equal, so the ratio of the distances from $K$ to $AB$ and $AC$ is $\dfrac{CD}{BD}=\dfrac{DN}{DM}$. For a point $X$ inside angle $BAC$, $\dfrac{\sin\angle BAX}{\sin\angle XAC}$ equals the ratio of its distances to $AB$ and $AC$. Hence
+\[\dfrac{\sin\angle BAK}{\sin\angle KAC}=\dfrac{\sin\angle DAC}{\sin\angle BAD}.\]
+The function $x\mapsto\dfrac{\sin x}{\sin(\angle A-x)}$ is strictly increasing on $(0,\angle A)$, so $\angle BAK=\angle DAC$.
+
+\emph{Perpendicularity.} $M$ and $N$ lie on the circle with diameter $AD$, so $\angle AMN=\angle ADN=90^\circ-\angle DAC=90^\circ-\angle BAK$. Thus, if $AK$ meets $MN$ at $X$, the angles of triangle $AMX$ at $A$ and $M$ add up to $90^\circ$, and $AK\perp MN$.
+
+Finally, for fixed $A$ and $K$ the points $Z$ with $ZA^2-ZK^2$ equal to a given constant form a line perpendicular to $AK$. Since $MN\perp AK$, $MA^2-MK^2=NA^2-NK^2$, i.e. $MA^2+NK^2=NA^2+MK^2$. $\blacksquare$
+
+\textbf{(c)} $I$ is the centre of the circle $AMDN$ and $J$ is the midpoint of its chord $MN$, so $IJ\perp MN$ ($I\ne J$ because $\angle MAN=\angle A<90^\circ$, so $MN$ is not a diameter). Also $IP$ is a midline of triangle $DAK$, so $IP\parallel AK\perp MN$. Two lines through $I$ perpendicular to $MN$ coincide, so $I$, $J$, $P$ are collinear. $\blacksquare$
+
+\textbf{(d)} Line $IJ$ is the perpendicular bisector of $MN$, so it passes through the centre of circle $IMN$, and $IT$ is a diameter of that circle. Hence $\angle IMT=90^\circ$, and $MJ$ is the altitude to the hypotenuse of right triangle $IMT$. So $IM^2=IJ\cdot IT$, with $J$ between $I$ and $T$. As $IM=ID$ (radii of circle $AMDN$),
+\[ID^2=IJ\cdot IT.\]
+So the power of $I$ with respect to circle $DTJ$ equals $ID^2$, where $D$ lies on that circle. By the converse of the power of a point, line $ID$, which is line $AD$, is tangent to circle $DTJ$ at $D$. ($D$ is not on line $IJ$: otherwise line $IJ=IP$, which is parallel to $AK$, would be line $AD$, so $K$ would lie on line $AD$; then $\angle BAD=\angle BAK=\angle DAC$, and line $AD$ would also contain the midpoint $P$ of $DK$. The bisector of angle $A$ would pass through the midpoint of $BC$, which forces $AB=AC$ by the angle bisector theorem, contradicting $AB<AC$.) $\blacksquare$

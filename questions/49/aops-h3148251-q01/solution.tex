@@ -1,0 +1,13 @@
+Two intersecting diagonals are determined by four distinct cyclically ordered vertices. Let the four positive cyclic gaps between them be $r,s,t,u$, with sum $n$. The angle between the diagonals is $\pi\dfrac{(r+t)}{n}$ or its supplement, so perpendicularity is equivalent to $r+t=s+u=\dfrac{n}{2}$. Thus $n$ must be even, say $n=2m$.
+
+Choose a starting vertex in $n$ ways, and choose the positive pairs $(r,t)$ and $(s,u)$ summing to $m$ in $(m-1)^2$ ways. Each four-vertex set is counted four times, once for each cyclic starting vertex. The number of perpendicular intersecting diagonal pairs is therefore
+\[
+\dfrac{n(m-1)^2}{4}=\dfrac{m(m-1)^2}{2}.
+\]
+This increases with $m\ge2$. At $m=13$ it is $936$, and at $m=14$ it is $1183$. Odd polygons contribute zero, so the least possible vertex count is $\boxed{28}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int j=0;j<12;++j){pair V=dir(30j);draw(V--dir(30(j+1)));dot(V);}draw(dir(0)--dir(150),red);draw(dir(60)--dir(270),blue);label("illustration with 12 vertices",(0,-1.4));
+\end{asy}

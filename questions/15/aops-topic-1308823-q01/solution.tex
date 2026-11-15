@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1308823_perimeter
+% Stable identity: aops-topic-1308823-q01
+Use coordinates $D=(0,0)$, $C=(a,0)$, $B=(a,c)$, $A=(0,c)$, and $E=(e,c)$, $F=(a,f)$, $G=(g,0)$, $H=(0,h)$ with $0\le e,g\le a$ and $0\le f,h\le c$. The four sides have lengths
+\[
+EF=\left|(a-e,\ c-f)\right|,\quad FG=\left|(a-g,\ f)\right|,\quad GH=\left|(g,\ h)\right|,\quad HE=\left|(e,\ c-h)\right|,
+\]
+where all the components shown are nonnegative. By the triangle inequality for vectors, $|\mathbf u_1|+|\mathbf u_2|+|\mathbf u_3|+|\mathbf u_4|\ge|\mathbf u_1+\mathbf u_2+\mathbf u_3+\mathbf u_4|$, so
+\[
+EF+FG+GH+HE\ge\left|(2a,\ 2c)\right|=2\sqrt{a^2+c^2}.
+\]
+Equality holds when the four vectors are parallel, i.e. when the sides of $EFGH$ are alternately parallel to the two diagonals (the ``billiard'' path, the same as unfolding the path by reflections into a straight segment). For every position of $E$ such points $F,G,H$ exist:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real a=6,c=4; pair A=(0,c),B=(a,c),C=(a,0),D=(0,0);
+draw(A--B--C--D--cycle,linewidth(0.9));
+pair Ep=(2.2,c);
+draw(Ep--(a,1.4667)--(3.8,0)--(0,2.5333)--cycle,blue);
+dot(Ep); label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);label("$E$",Ep,N);
+label("$F$",(a,1.47),E,blue); label("$G$",(3.8,0),S,blue); label("$H$",(0,2.53),W,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The minimum perimeter is $\boxed{2\sqrt{AB^2+BC^2}=2AC}$, independent of where $E$ is.

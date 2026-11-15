@@ -1,0 +1,25 @@
+Choose $B=(0,0),A=(0,h),C=(7,0),D=(8,h)$ with $h>0$. Write $E=(0,t)$. The circle's center must be $(r,t)$ with radius $r>0$, since it lies on the side of $AB$ containing $C,D$. Passing through $C,D$ gives
+\[
+49+t^2=14r,\qquad64+(h-t)^2=16r.
+\]
+Eliminating $r$ yields $t^2+14ht-7h^2-56=0$, or
+\[
+(t+7h)^2=56(h^2+1).
+\]
+Line $CD$ has equation $hx-y-7h=0$, so the required perpendicular distance is
+\[
+\dfrac{|t+7h|}{\sqrt{h^2+1}}=\boxed{2\sqrt{14}}.
+\]
+Both possible tangent points satisfy the same squared relation and give the same distance; $E$ is not assumed to lie on segment $AB$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real h=1,t=-7+1*sqrt(112),r=(49+t*t)/14;pair A=(0,h),B=(0,0),C=(7,0),D=(8,h),E=(0,t),O=(r,t),H=E-((E.x-E.y-7)/2)*(1,-1);real phi=degrees(D-O);if(t>0)draw(arc(O,r,180,phi+360),gray);else draw(arc(O,r,phi,180),gray);draw(A--B--C--D--cycle);draw((0,min(t-2,-2))--(0,max(t+2,3)),blue);real vH=(H.y-C.y)/(D.y-C.y);draw(C+(min(-1,vH)-1)*(D-C)--D+2*(D-C),dashed);draw(E--H,red);label("$A$",A,NW);label("$B$",B,SW);label("$C$",C,S);label("$D$",D,NE);label("$E$",E,W);label("$H$",H,SW);
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real h=1,t=-7+-1*sqrt(112),r=(49+t*t)/14;pair A=(0,h),B=(0,0),C=(7,0),D=(8,h),E=(0,t),O=(r,t),H=E-((E.x-E.y-7)/2)*(1,-1);real phi=degrees(D-O);if(t>0)draw(arc(O,r,180,phi+360),gray);else draw(arc(O,r,phi,180),gray);draw(A--B--C--D--cycle);draw((0,min(t-2,-2))--(0,max(t+2,3)),blue);real vH=(H.y-C.y)/(D.y-C.y);draw(C+(min(-1,vH)-1)*(D-C)--D+2*(D-C),dashed);draw(E--H,red);label("$A$",A,NW);label("$B$",B,SW);label("$C$",C,S);label("$D$",D,NE);label("$E$",E,W);label("$H$",H,SW);
+\end{asy}

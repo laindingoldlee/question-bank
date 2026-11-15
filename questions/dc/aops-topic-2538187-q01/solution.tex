@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2538187_probability_question
+% Stable identity: aops-topic-2538187-q01
+\textbf{After the first two flips.} The sequence TH has probability $\dfrac25\cdot\dfrac35=\dfrac6{25}$ for the unfair coin and $\dfrac14$ for the fair one. By Bayes' rule the coin in hand is unfair with probability
+\[q=\dfrac{\dfrac12\cdot\dfrac6{25}}{\dfrac12\cdot\dfrac6{25}+\dfrac12\cdot\dfrac14}=\dfrac{24}{49},\]
+and the other coin is unfair with probability $\dfrac{25}{49}$.
+
+\textbf{The last flip.} Suppose the coin we flip is unfair with probability $s$. After seeing the result we guess the more likely option, so we are right with probability
+\[\max\left(\dfrac35s,\ \dfrac12(1-s)\right)+\max\left(\dfrac25s,\ \dfrac12(1-s)\right),\]
+the two terms coming from the outcomes H and T (each term is the larger of the two joint probabilities for that outcome).
+\begin{itemize}
+\item \emph{Keep} ($s=\dfrac{24}{49}$): $\max\left(\dfrac{144}{490},\dfrac{125}{490}\right)+\max\left(\dfrac{96}{490},\dfrac{125}{490}\right)=\dfrac{269}{490}$.
+\item \emph{Switch} ($s=\dfrac{25}{49}$): $\max\left(\dfrac{150}{490},\dfrac{120}{490}\right)+\max\left(\dfrac{100}{490},\dfrac{120}{490}\right)=\dfrac{270}{490}=\dfrac{27}{49}$.
+\end{itemize}
+So it is best to switch: then guess that the coin just flipped is unfair if it shows heads, and that the first coin is unfair if it shows tails. The probability of being right is $\boxed{\dfrac{27}{49}}$. (Without the last flip one could only guess with probability $\dfrac{25}{49}$.)

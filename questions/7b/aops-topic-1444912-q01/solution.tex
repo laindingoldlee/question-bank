@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1444912_probability_help
+% Stable identity: aops-topic-1444912-q01
+All $20!$ ways of handing out the books are equally likely. To have exactly three children with their own book, choose those three children in $\dbinom{20}{3}$ ways; the other $17$ books must go to the other $17$ children so that nobody gets their own, a \emph{derangement} of $17$ objects. The number of derangements of $n$ objects is
+\[
+D_n=n!\sum_{k=0}^{n}\dfrac{(-1)^k}{k!}
+\]
+(by inclusion-exclusion), and it satisfies $D_n=(n-1)(D_{n-1}+D_{n-2})$ with $D_0=1$, $D_1=0$. This gives $D_{17}=130850092279664$. Hence
+\[
+P=\dfrac{\dbinom{20}{3}D_{17}}{20!}=\dfrac{D_{17}}{3!\cdot17!}=\dfrac{1}{6}\sum_{k=0}^{17}\dfrac{(-1)^k}{k!}=\boxed{\dfrac{8178130767479}{133382785536000}}\approx0.0613 .
+\]
+This is extremely close to $\dfrac{1}{6e}\approx0.0613$, since the sum is a partial sum of the series for $e^{-1}$.

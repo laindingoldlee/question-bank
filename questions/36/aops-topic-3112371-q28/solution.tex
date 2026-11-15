@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3112371_some_problem_i_wrote_for_fun450th_post
+% Stable identity: aops-topic-3112371-q28
+The smallest $38$ dishes already need area $15\cdot2+18\cdot3+5\cdot4=104>100$, so at most $37$ fit. To fit $37$, use all fifteen cups, all eighteen plates, and four bowls, with total area100. Put four bowls in an $8\times2$ strip at the top, with two horizontal cups filling its remaining $2\times2$ block. Fill the bottom two rows with ten horizontal cups. The middle $10\times6$ rectangle can hold twenty vertical plates; replace two adjacent plates in a $2\times3$ block by three horizontal cups. This uses eighteen plates and three more cups. The bound is attained, giving $\boxed{\dfrac{37}{46}}$, about $80\%$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw((0,0)--(10,0)--(10,10)--(0,10)--cycle);for(int x=0;x<10;x+=2)for(int y=0;y<2;++y)draw((x,y)--(x+2,y)--(x+2,y+1)--(x,y+1)--cycle,blue);for(int x=0;x<8;x+=2)draw((x,8)--(x+2,8)--(x+2,10)--(x,10)--cycle,red);for(int y=8;y<10;++y)draw((8,y)--(10,y)--(10,y+1)--(8,y+1)--cycle,blue);for(int x=0;x<10;++x)for(int y=2;y<8;y+=3)if(!(x<2&&y==2))draw((x,y)--(x+1,y)--(x+1,y+3)--(x,y+3)--cycle,green);for(int y=2;y<5;++y)draw((0,y)--(2,y)--(2,y+1)--(0,y+1)--cycle,blue);label("blue cups; red bowls; green plates",(5,-0.8));
+\end{asy}

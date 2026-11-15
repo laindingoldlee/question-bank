@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3180099_2018_abmc_online_november_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3180099-q11
+Each exterior angle is 60 degrees. Taking side directions 0, 60,120,180,240,300 degrees and writing $EF=e,FA=f$, vector closure gives $f-e=1$ and $e+f=11$, so $e=5,f=6$. Coordinates are $A=(0,0),B=(7,0),C=(\dfrac{17}{2},\dfrac{3\sqrt3}{2}),D=(\dfrac{9}{2},\dfrac{11\sqrt3}{2}),E=(-\dfrac{1}{2},\dfrac{11\sqrt3}{2}),F=(-3,3\sqrt3)$. The shoelace sum gives area $\dfrac{93\sqrt3}{2}$. Thus $\boxed{a+b+c=98}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] p={(0,0),(7,0),(8.5,1.5*sqrt(3)),(4.5,5.5*sqrt(3)),(-.5,5.5*sqrt(3)),(-3,3*sqrt(3))};path q;string[] s={"A","B","C","D","E","F"};for(int i=0;i<6;++i){q=q--p[i];label("$"+s[i]+"$",p[i],dir(60*i-120));}draw(q--cycle);
+\end{asy}

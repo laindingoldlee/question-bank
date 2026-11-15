@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1771651_two_problems_that_have_no_correlation_whatsoever
+% Stable identity: aops-topic-1771651-q02
+The shortest side is opposite the smallest angle, $40^\circ$. In the figure, $\angle C=40^\circ$, the right angle is at $B$, and the shortest side is $AB=a$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real c=3*cos(40*pi/180), s=3*sin(40*pi/180);
+pair Cc=(0,0),B=(c,0),A=(c,s);
+draw(Cc--B--A--cycle,linewidth(0.9));
+draw((c-0.2,0)--(c-0.2,0.2)--(c,0.2));
+draw(arc(Cc,0.55,0,40));label("$40^\circ$",Cc+0.95*dir(20));
+draw(arc(A,0.45,-90,-140));label("$50^\circ$",A+0.8*dir(-115));
+label("$A$",A,NE);label("$B$",B,SE);label("$C$",Cc,SW);
+label("$3$",(A+Cc)/2,NW);label("$a$",(A+B)/2,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $\sin C=\dfrac{\text{opposite}}{\text{hypotenuse}}$,
+\[
+a=3\sin40^\circ\approx3\cdot0.6428=1.928\ldots ,
+\]
+so the shortest side is about $\boxed{1.9}$ units.

@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2597947_help_on_hardish_problem
+% Stable identity: aops-topic-2597947-q01
+Putting $a=0$, $b=n$ gives
+\[f(0)+2f(n)=f(f(n))\qquad\text{for all }n.\tag{1}\]
+Applying (1) with $n=a+b$, the equation becomes
+\[f(2a)+2f(b)=f(0)+2f(a+b)\qquad\text{for all }a,b.\tag{2}\]
+Put $a=1$ in (2): $f(2)+2f(b)=f(0)+2f(b+1)$, so
+\[f(b+1)-f(b)=\dfrac{f(2)-f(0)}{2}\]
+is the same number $m$ for every $b$; it is an integer because $f$ takes integer values. Hence $f(n)=mn+c$ for all integers $n$, where $c=f(0)$.
+
+Substituting $f(n)=mn+c$ into the original equation:
+\[2ma+c+2mb+2c=m\left(m(a+b)+c\right)+c,\qquad\text{i.e.}\qquad2m(a+b)+3c=m^2(a+b)+mc+c\]
+for all $a,b$. So $m^2=2m$ and $2c=mc$.
+\begin{itemize}
+\item $m=0$: then $2c=0$, so $f(n)=0$ for all $n$.
+\item $m=2$: then $2c=2c$ holds for every integer $c$, so $f(n)=2n+c$.
+\end{itemize}
+Both work: for $f\equiv0$ both sides are $0$, and for $f(n)=2n+c$ both sides equal $4a+4b+3c$. The answer is
+\[\boxed{f(n)=0\text{ for all }n,\quad\text{or}\quad f(n)=2n+c\text{ for a constant integer }c}.\]

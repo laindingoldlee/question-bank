@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1342621_problems
+% Stable identity: aops-topic-1342621-q02
+When two circles are externally tangent, the point of tangency lies on the segment joining the centres, so the distance between the centres is the sum of the radii. Let $A$, $B$, $C$ be the centres of the circles with radii $3$, $4$, $5$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(7,0), C=(32/14,sqrt(64-(32/14)^2));
+draw(circle(A,3),blue); draw(circle(B,4),blue); draw(circle(C,5),blue);
+draw(A--B--C--cycle,red+linewidth(0.9));
+dot(A);dot(B);dot(C);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N);
+label("$7$",A+(1.5,0),S,red); label("$8$",A+0.7*(C-A),W,red); label("$9$",B+0.7*(C-B),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+AB=3+4=7,\qquad AC=3+5=8,\qquad BC=4+5=9 .
+\]
+The perimeter is $7+8+9=\boxed{24}$ (in general, twice the sum of the radii).

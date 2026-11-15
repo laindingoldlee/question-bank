@@ -1,0 +1,49 @@
+% Source: https://artofproblemsolving.com/community/c3h1411512_balls_in_corners
+% Stable identity: aops-topic-1411512-q01
+\textbf{(a) The book is right.} The wall and the floor meet in a \emph{line}, not a point, so the gap between the ball and this line is a long channel. A small ball of radius $r$ touching the wall and the floor has its centre at distance $r$ from both, that is, on a line parallel to the edge. The tightest place is the vertical cross-section through the centre of the big ball perpendicular to the wall, because moving the small ball along the edge only increases the distance between the centres. In that cross-section both balls are circles:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=6; real r=6*(3-2*sqrt(2));
+pair Ob=(R,R),Os=(r,r);
+draw((0,0)--(0,13),linewidth(1.1)); draw((0,0)--(13,0),linewidth(1.1));
+draw(circle(Ob,R),linewidth(0.9)); draw(circle(Os,r),blue+linewidth(0.9));
+draw((0,0)--Ob,gray+dashed);
+draw(Ob--Ob+(R,0)); label("$6$",Ob+(R/2,0),N);
+dot(Ob); dot(Os,blue);
+draw(Os--(r,0),blue); label("$r$",(r,r/2),E,blue+fontsize(8pt));
+label("wall",(0,11),W); label("floor",(11,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+the centres are $(6,6)$ and $(r,r)$, at distance $\sqrt2\,(6-r)$, and the balls touch when this equals $6+r$:
+\[
+\sqrt2\,(6-r)=6+r\quad\Longrightarrow\quad r=\dfrac{6\left(\sqrt2-1\right)}{\sqrt2+1}=6\left(\sqrt2-1\right)^2=\boxed{18-12\sqrt2}\approx1.03 .
+\]
+The student's error: the distance from the centre to the edge is the diagonal of a \emph{square} face, $6\sqrt2$, not the space diagonal $6\sqrt3$ of a cube. The space diagonal is the distance to a \emph{corner point} where three perpendicular planes meet, which is the situation of part (b), not of this problem.
+
+\textbf{(b)} Put the corner at the origin $O$ with the walls and the floor as the coordinate planes. The big ball has centre $(6,6,6)$, and a ball of radius $r$ touching all three planes has centre $(r,r,r)$. Both centres lie on the space diagonal through $O$, and the distance between them is $\sqrt3\,(6-r)$. The figure shows the vertical plane through $O$ and both centres (it contains the vertical edge where the walls meet; horizontal distances in it are $\sqrt2$ times the $x$-coordinates):
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real R=6; real r=12-6*sqrt(3); real k=sqrt(2);
+pair Ob=(k*R,R),Os=(k*r,r);
+draw((0,0)--(0,13),linewidth(1.1)); draw((0,0)--(16,0),linewidth(1.1));
+draw(circle(Ob,R),linewidth(0.9)); draw(circle(Os,r),blue+linewidth(0.9));
+draw((0,0)--Ob,gray+dashed);
+draw(Ob--Ob+(0,R)); label("$6$",Ob+(0,R/2),E);
+dot(Ob); dot(Os,blue);
+dot((0,0)); label("$O$",(0,0),SW);
+label("edge",(0,11),W); label("floor",(14,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The balls touch when $\sqrt3\,(6-r)=6+r$, so
+\[
+r=\dfrac{6\left(\sqrt3-1\right)}{\sqrt3+1}=\dfrac{6\left(\sqrt3-1\right)^2}{2}=\boxed{12-6\sqrt3}\approx1.61 .
+\]
+This is the problem the student's space diagonal belongs to. The corner leaves more room than the edge ($1.61>1.03$), because the corner point is farther from the big ball's centre.

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2270481_similar_to_zenos_paradox_but_with_paper
+% Stable identity: aops-topic-2270481-q01
+\textbf{(a)} After $n$ folds the base area is $\dfrac{A}{2^n}$ and the thickness is $2^n t$. The volume is
+\[\dfrac{A}{2^n}\cdot2^nt=\boxed{At},\]
+the same as for the flat sheet: folding only rearranges the paper. (The total area of paper, counted layer by layer, also stays $2^n\cdot\dfrac{A}{2^n}=A$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real L=8, t=0.12;
+draw(box((0,0),(L,t)),linewidth(0.8)); label("$0$ folds: base $A$, thickness $t$",(L/2,t),N,fontsize(9pt));
+draw(box((0,-1.6),(L/2,-1.6+2t)),linewidth(0.8)); label("$1$ fold: $\dfrac {A}{2}$, $2t$",(L/2,-1.6+t),E,fontsize(9pt));
+draw(box((0,-3.2),(L/4,-3.2+4t)),linewidth(0.8)); label("$2$ folds: $\dfrac {A}{4}$, $4t$",(L/4,-3.2+2t),E,fontsize(9pt));
+draw(box((0,-4.8),(L/8,-4.8+8t)),linewidth(0.8)); label("$3$ folds: $\dfrac {A}{8}$, $8t$",(L/8,-4.8+4t),E,fontsize(9pt));
+\end{asy}
+
+\textbf{(b)} The height $2^nt$ grows without bound, but the base $\dfrac{A}{2^n}$ shrinks at exactly the same rate, so the volume (height times base) stays $At$ for every $n$. Volume is not determined by height alone; an ever taller stack can have a constant, finite volume because it becomes ever thinner. (Physically, after a few folds the base becomes too small to fold again, and real paper cannot be folded more than a handful of times.)
+
+\textbf{(c)} We need $0.01\cdot2^n>100$, that is $2^n>10000$. Since $2^{13}=8192$ and $2^{14}=16384$, the least number is $\boxed{14}$ folds, giving a thickness of $163.84$ cm. The base area is then $\dfrac{600}{16384}\approx0.037$ cm$^2$, about the size of a $2$ mm by $2$ mm square; the volume is still $6$ cm$^3$.

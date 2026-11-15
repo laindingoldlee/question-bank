@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2416978_1200th_post_dedicated_to_bloggy
+% Stable identity: aops-topic-2416978-q07
+Use coordinates with $O=(0,0)$, $A=(-1,0)$, $B=(1,0)$.
+
+\textbf{The points $C$ and $P$.} The points at distance $1$ from both $O$ and $A$ are $\left(-\dfrac12,\pm\dfrac{\sqrt3}{2}\right)$; by the symmetry in line $AB$ we may take $C=\left(-\dfrac12,\dfrac{\sqrt3}2\right)$ (the other choice gives the mirror image and the same length $BH$). Since $AC=1$, the two points at distance $1$ from both $A$ and $C$ are the apexes of the two equilateral triangles on $AC$: one is $O$, and the other is its reflection in line $AC$,
+\[P=A+C-O=\left(-\dfrac32,\dfrac{\sqrt3}{2}\right).\]
+(Check: $PA=\left|\left(-\dfrac12,\dfrac{\sqrt3}2\right)\right|=1$ and $PC=|(-1,0)|=1$.)
+
+\textbf{The points $G$ and $H$.} The tangent at $A$ is perpendicular to the radius $OA$, so $L$ is the line $x=-1$. Line $PO$ is $y=-\dfrac{x}{\sqrt3}$, so $G=\left(-1,\dfrac1{\sqrt3}\right)$. The two points of $L$ at distance $3$ from $G$ are $\left(-1,\dfrac1{\sqrt3}\pm3\right)$, at distances $3\pm\dfrac{1}{\sqrt3}$ from $A$; the condition $AH<3$ picks $H=\left(-1,\dfrac1{\sqrt3}-3\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), A=(-1,0), B=(1,0), C=(-1/2,sqrt(3)/2), D=(-1/2,-sqrt(3)/2), P=(-3/2,sqrt(3)/2);
+pair G=(-1,1/sqrt(3)), H=(-1,1/sqrt(3)-3);
+draw(circle(O,1),blue); draw(circle(A,1),deepgreen); draw(circle(C,1),gray+dashed);
+draw(A--B,gray);
+draw((-1,1.9)--(-1,-2.9),linewidth(0.8));
+draw(P--O,red);
+draw(B--H,orange+linewidth(0.9));
+dot(O); dot(A); dot(B); dot(C); dot(D); dot(P); dot(G); dot(H);
+label("$O$",O,SE); label("$A$",A,SE); label("$B$",B,E); label("$C$",C,NE); label("$D$",D,S); label("$P$",P,W);
+label("$G$",G,NE); label("$H$",H,SE); label("$L$",(-1,1.9),N);
+draw((-2.25,G.y)--(-2.25,H.y),Arrows(4)); draw(G--(-2.3,G.y),dotted); draw(H--(-2.3,H.y),dotted);
+label("$3$",(-2.25,(G.y+H.y)/2),W);
+label("$T$",dir(-40),SE,blue); label("$Z$",A+dir(-140),SW,deepgreen);
+\end{asy}
+
+\textbf{The length.}
+\[BH^2=2^2+\left(\dfrac{1}{\sqrt3}-3\right)^2=4+\dfrac13-2\sqrt3+9=\dfrac{40}{3}-2\sqrt3=\dfrac{40-6\sqrt3}{3}.\]
+So $BH=\sqrt{\dfrac{40-6\sqrt3}{3}}$. This form is the only one allowed: $c$ squarefree forces $c=3$ (since $\dfrac{b}{d}\sqrt c=2\sqrt3$), and then $\dfrac ad=\dfrac{40}{3}$, $\dfrac bd=2$ give $(a,b,d)=(40k,6k,3k)$, with $k=1$ by the common-factor condition. Hence
+\[a+b+c+d=40+6+3+3=\boxed{52}.\]

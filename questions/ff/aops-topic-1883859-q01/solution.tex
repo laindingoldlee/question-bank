@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1883859_tricky_geo_problem
+% Stable identity: aops-topic-1883859-q01
+Triangles $BAD$ and $CAD$ have the same height from $A$, so the ratio of their areas is $\dfrac{BD}{DC}$. We have $\angle CAD=60^\circ-15^\circ=45^\circ$, $\angle ADB=180^\circ-60^\circ-15^\circ=105^\circ$ and $\angle ADC=75^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,sqrt(3)),B=(-1,0),C=(1,0);
+pair D=(-sqrt(3)*Cos(255)/Sin(255),0);
+draw(A--B--C--cycle,linewidth(1));
+draw(A--D);
+draw(arc(A,0.7,240,255));draw(arc(A,0.3,255,300));
+label("$15^\circ$",A+1.0*dir(247.5),fontsize(8pt));
+label("$45^\circ$",A+0.5*dir(281),fontsize(8pt));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the law of sines in triangles $ABD$ and $ACD$,
+\[
+BD=\dfrac{AB\sin15^\circ}{\sin105^\circ},\qquad DC=\dfrac{AC\sin45^\circ}{\sin75^\circ}.
+\]
+Since $AB=AC$ and $\sin105^\circ=\sin75^\circ$,
+\[
+\dfrac{BD}{DC}=\dfrac{\sin15^\circ}{\sin45^\circ}.
+\]
+Now $\sin15^\circ=\sin(45^\circ-30^\circ)=\dfrac{\sqrt2}{2}\cdot\dfrac{\sqrt3}{2}-\dfrac{\sqrt2}{2}\cdot\dfrac{1}{2}=\dfrac{\sqrt6-\sqrt2}{4}$, so
+\[
+\dfrac{[BAD]}{[CAD]}=\dfrac{\sqrt6-\sqrt2}{4}\cdot\dfrac{2}{\sqrt2}=\boxed{\dfrac{\sqrt3-1}{2}}\approx0.366 .
+\]

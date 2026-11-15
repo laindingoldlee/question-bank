@@ -1,0 +1,8 @@
+The larger triangle has height $6\sqrt3$ and its centroid is $2\sqrt3$ above its base. In centred coordinates, its top vertex has height $4\sqrt3$, while the top horizontal side of the downward smaller triangle has height $\dfrac{3\sqrt3}{2}$. That line cuts off a small equilateral corner triangle of height $\dfrac{5\sqrt3}{2}$, hence side length $5$. By threefold symmetry, all three larger corners are cut off in the same way.
+Each original side retains length $12-5-5=2$, and each of the three new cut edges has length $5$. Thus the intersection perimeter is $\boxed{3\cdot2+3\cdot5=21}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,4sqrt(3)),B=(-6,-2sqrt(3)),C=(6,-2sqrt(3)),D=(0,-3sqrt(3)),E=(4.5,1.5sqrt(3)),F=(-4.5,1.5sqrt(3));pair U=(-2.5,1.5sqrt(3)),V=(2.5,1.5sqrt(3));path g=U--V;for(int k=1;k<3;++k)g=g--(rotate(-120k)*U)--(rotate(-120k)*V);fill(g--cycle,lightblue);draw(A--B--C--cycle);draw(D--E--F--cycle,gray);draw(g--cycle,blue);label("$5$",(U+V)/2,(0,1));label("$2$",(V+rotate(-120)*U)/2,(1,0));
+\end{asy}

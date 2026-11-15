@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2055123_2020_mock_combo_amc_10_final_five
+% Stable identity: aops-topic-2055123-q23
+Track the partial sums $s_k$ modulo $5$, starting from $s_0=0$. Each step adds $2$ or $3\equiv-2$. Multiply every residue by $3$ (the inverse of $2$ modulo $5$): the walk $t_k=3s_k \bmod 5$ starts at $0$ and moves by $\pm1$ each step, and $s_k\equiv0$ exactly when $t_k=0$. So we need walks of length $15$ on the cycle $0,1,2,3,4$ with steps $\pm1$ that start at $0$, return to $0$ for the first time at step $15$.
+
+Step $1$ goes to $1$ or $4$, and step $15$ comes from $1$ or $4$. In between, for $13$ steps, the walk stays on $\{1,2,3,4\}$, which (without $0$) is the path $1-2-3-4$. Let $v=(x_1,x_2,x_3,x_4)$ count the walks ending at each vertex, starting from $(1,0,0,0)$, with the update $(x_1,x_2,x_3,x_4)\to(x_2,\,x_1+x_3,\,x_2+x_4,\,x_3)$:
+\[(0,1,0,0),(1,0,1,0),(0,2,0,1),(2,0,3,0),(0,5,0,3),(5,0,8,0),(0,13,0,8),\]
+\[(13,0,21,0),(0,34,0,21),(34,0,55,0),(0,89,0,55),(89,0,144,0),(0,233,0,144).\]
+After $13$ steps from vertex $1$ there are $0$ walks ending at $1$ and $144$ ending at $4$. By symmetry the same holds starting from $4$ (with $1$ and $4$ swapped). So the number of sequences is
+\[144+144=\boxed{\textbf{(D)}\ 288}.\]

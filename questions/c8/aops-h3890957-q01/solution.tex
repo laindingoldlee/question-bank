@@ -1,0 +1,10 @@
+Orient the plane so that $ABCD$ is counterclockwise. Use complex coordinates $A=0,B=u,D=v,C=u+v$, and put $\rho=e^{i\dfrac{\pi}{3}}$. The exterior equilateral vertices are
+\[X=u+\overline\rho\,v,\qquad
+Y=v+\rho u.\]
+Because $\rho\overline\rho=1$, we have $Y=\rho X$. Thus rotation about $A$ through $60^\circ$ takes $X$ to $Y$, so $AX=AY$ and $\angle XAY=60^\circ$. The parallelogram is nondegenerate and the exterior construction ensures $X\ne A$. Hence the cosine rule, or the definition of a $60^\circ$ rotation, gives $XY=AX=AY$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(3,0),D=(.7,2),C=B+D,X=B+dir(-60)*(C-B),Y=D+dir(60)*(C-D);fill(B--C--X--cycle,lightgray);fill(C--D--Y--cycle,lightgray);draw(A--B--C--D--cycle);draw(B--X--C);draw(C--Y--D);draw(A--X--Y--cycle,blue);label("$A$",A,(-1,-1));label("$B$",B,(0,-1));label("$C$",C,(1,0));label("$D$",D,(-1,0));label("$X$",X,(1,0));label("$Y$",Y,(0,1));
+\end{asy}

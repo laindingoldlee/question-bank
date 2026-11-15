@@ -1,0 +1,7 @@
+Write the bounding rectangle dimensions as $w,h$, where $w+h=10$ and $1\le w\le9$. There are nine unnotched rectangles. For fixed $w,h$, a proper notch has $(w-1)(h-1)$ choices of dimensions and four choices of corner. Each produces a different polygon, because the bounding box and missing corner recover its construction. Therefore the total is $9+4\sum_{w=1}^9(w-1)(9-w)=9+4\cdot84=\boxed{345}$. Every such notch replaces two boundary segments by equally long new ones, so the perimeter remains $20$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p={(0,0),(5,0),(5,3),(3,3),(3,5),(0,5)};path z=p[0];for(int i=1;i<p.length;++i)z=z--p[i];filldraw(z--cycle,lightblue);draw((5,3)--(5,5)--(3,5),dashed);label("$w$",(2.5,0),S);label("$h$",(0,2.5),W);label("$a$",(4,3),S);label("$b$",(3,4),W);
+\end{asy}

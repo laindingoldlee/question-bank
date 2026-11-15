@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2676815_2021_malaysia_imonst_1_primary_20_problems_25_hours_integer_0_answer_only
+% Stable identity: aops-topic-2676815-q06
+The unpainted cubes form the inner $3\times3\times8$ block (remove one layer from every face), which has $72$ cubes. So $250-72=\boxed{178}$ cubes are painted.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real a=5,c=10,s=0.45;pair d=(s*a*0.8,s*a*0.6);
+pair A=(0,0),B=(c,0),C=(c,a),D=(0,a);
+draw(A--B--C--D--cycle,linewidth(0.8));draw(B--B+d--C+d--C);draw(C+d--D+d--D);draw(A--A+d,dashed);draw(A+d--B+d,dashed);draw(A+d--D+d,dashed);
+pair a1=(1,1)+0.2*d,b1=(c-1,1)+0.2*d;draw(a1--b1--b1+(0,3)--a1+(0,3)--cycle,dashed+gray);
+label("$10$",(c/2,0),S,fontsize(8pt));label("$5$",(0,a/2),W,fontsize(8pt));label("$5$",B+d/2,SE,fontsize(8pt));
+label("$3\times3\times8$",(c/2,2.5)+0.2*d,fontsize(7pt));
+\end{asy}

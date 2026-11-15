@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2609379_reduce_the_line_2x__3y__5__0_in_slope__intercept_intercept
+% Stable identity: aops-topic-2609379-q01
+\textbf{(a)} $3y=2x+5$, so $y=\dfrac23x+\dfrac53$: slope $\dfrac23$ and $y$-intercept $\dfrac53$.
+
+\textbf{(b)} $2x-3y=-5$. Dividing by $-5$ gives
+\[\dfrac{x}{-\dfrac52}+\dfrac{y}{\dfrac53}=1,\]
+so the intercepts are $-\dfrac52$ on the $x$-axis and $\dfrac53$ on the $y$-axis.
+
+\textbf{(c)} Write the equation with a positive constant, $-2x+3y=5$, and divide by $\sqrt{(-2)^2+3^2}=\sqrt{13}$:
+\[x\left(-\dfrac{2}{\sqrt{13}}\right)+y\cdot\dfrac{3}{\sqrt{13}}=\dfrac{5}{\sqrt{13}}.\]
+So $\cos\omega=-\dfrac{2}{\sqrt{13}}$, $\sin\omega=\dfrac{3}{\sqrt{13}}$ (so $\omega\approx123.7^\circ$), and $p=\dfrac{5}{\sqrt{13}}=\dfrac{5\sqrt{13}}{13}$. Here $p$ is the distance from the origin to the line, and $\omega$ is the direction of the perpendicular $ON$ from the origin to the line, with foot $N=p(\cos\omega,\sin\omega)=\left(-\dfrac{10}{13},\dfrac{15}{13}\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),P1=(-2.5,0),P2=(0,5/3),N=(-10/13,15/13);
+draw((-4.2,0)--(2.2,0),gray,Arrow(4));draw((0,-1.3)--(0,3.2),gray,Arrow(4));
+draw((-4,-1)--(1.6,8.2/3),linewidth(0.8));draw(O--N,dashed);
+real k=0.17;pair u=unit(O-N),v=unit(P2-N);draw(N+k*u--N+k*u+k*v--N+k*v);
+dot(P1);dot(P2);dot(N);
+label("$x$",(2.2,0),E);label("$y$",(0,3.2),N);label("$O$",O,SE);
+label("$\left(-\dfrac52,0\right)$",P1,S,fontsize(8pt));label("$\left(0,\dfrac53\right)$",P2,SE,fontsize(8pt));
+label("$N$",N,NW);label("$p$",(O+N)/2,SW,fontsize(9pt));label("$2x-3y+5=0$",(1.6,8.2/3),E,fontsize(8pt));
+\end{asy}

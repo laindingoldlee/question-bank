@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2151722_the_national_aops_competition_for_gmaasology
+% Stable identity: aops-topic-2151722-q11
+The radii are $3$, $5$, $7$ and $9$ cm, so the board is a disc of radius $9$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+fill(circle((0,0),9),lightgray); fill(circle((0,0),7),white); fill(circle((0,0),5),lightgray); fill(circle((0,0),3),paleblue);
+draw(circle((0,0),9),linewidth(0.8)); draw(circle((0,0),7),linewidth(0.8)); draw(circle((0,0),5),linewidth(0.8));
+draw(circle((0,0),3),blue+linewidth(1));
+draw((0,0)--(3,0),blue); label("$3$",(1.5,0),N,blue);
+draw((0,0)--(0,-9),red); label("$9$",(0,-8),E,red);
+draw((0,0)--dir(135)*5,gray); label("$5$",dir(135)*4,SW,fontsize(8pt));
+draw((0,0)--dir(45)*7,gray); label("$7$",dir(45)*6,SE,fontsize(8pt));
+dot((0,0));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For a uniformly random point, the probability is the ratio of areas:
+\[\dfrac{\pi\cdot3^2}{\pi\cdot9^2}=\dfrac{9}{81}=\boxed{\dfrac{1}{9}}.\]

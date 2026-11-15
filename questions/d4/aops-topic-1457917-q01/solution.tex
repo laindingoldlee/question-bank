@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h1457917_equilateral_triangle_thingy
+% Stable identity: aops-topic-1457917-q01
+The side of the triangle is $4$, so $PS=2$. In triangle $PTS$ we have $PT=1$, $PS=2$ and $\angle P=60^\circ$, so by the law of cosines $TS^2=1+4-2=3$. Since $PT^2+TS^2=1+3=4=PS^2$, the angle at $T$ is a right angle: $ST\perp PQ$.
+
+Extend $TS$ to meet line $QR$ at $X$. Triangle $QTX$ has a right angle at $T$ and $\angle Q=60^\circ$, so it is a $30^\circ$-$60^\circ$-$90^\circ$ triangle with $QT=3$, $QX=6$, $TX=3\sqrt3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair Q=(-2,0),R=(2,0),P=(0,2*sqrt(3));
+pair Sx=(P+R)/2, T=P+(Q-P)/4, X=(4,0);
+real a=length(X-T),bb=length(Q-T),c=length(Q-X);
+pair I=(a*Q+bb*X+c*T)/(a+bb+c); real r=(3*sqrt(3)-3)/2;
+fill(Q--R--Sx--T--cycle,rgb(0.88,0.93,1));
+draw(R--X--Sx,gray+dashed);
+draw(P--Q--R--cycle,linewidth(0.9)); draw(Sx--T,linewidth(0.9));
+draw(circle(I,r),red);
+draw(ra(T,P-T,Sx-T,0.25));
+dot(P);dot(Q);dot(R);dot(Sx);dot(T);dot(X);dot(I,red);
+draw(I--I-(0,r),red+dashed); label("$r$",I-(0,r/2),E,red);
+label("$P$",P,N); label("$Q$",Q,SW); label("$R$",R,S); label("$S$",Sx,NE); label("$T$",T,W); label("$X$",X,SE);
+label("$1$",(P+T)/2,W); label("$3$",(T+Q)/2,W); label("$2$",(P+Sx)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The quadrilateral $QRST$ lies inside triangle $QTX$, so every circle inside $QRST$ lies inside triangle $QTX$ and has radius at most the inradius of $QTX$:
+\[
+r=\dfrac{QT+TX-QX}{2}=\dfrac{3+3\sqrt3-6}{2}=\dfrac{3\sqrt3-3}{2}.
+\]
+This incircle actually fits inside $QRST$. Put $Q=(-2,0)$, $R=(2,0)$, $P=(0,2\sqrt3)$. The incircle touches $QX$ at distance $\dfrac{QT+QX-TX}{2}=\dfrac{9-3\sqrt3}{2}\approx1.90<4=QR$ from $Q$, so its centre is $I=\left(\dfrac{5-3\sqrt3}{2},\,r\right)\approx(-0.10,\,1.10)$. The distance from $I$ to line $RS$ (that is, $\sqrt3x+y=2\sqrt3$) is
+\[
+\dfrac{2\sqrt3-\sqrt3\cdot\dfrac{5-3\sqrt3}{2}-r}{2}\approx1.27>r ,
+\]
+so the circle does not cross side $RS$. It lies inside $QRST$, touching $QR$, $ST$ and $TQ$. The largest radius is
+\[
+\boxed{\dfrac{3\sqrt3-3}{2}\approx1.10}.
+\]

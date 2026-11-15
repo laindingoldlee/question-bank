@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1242145_math_question
+% Stable identity: aops-topic-1242145-q01
+A circle tangent to the $x$-axis and passing through points above it has centre $(h,r)$ and radius $r$. Then
+\[(h-1)^2+(r-9)^2=r^2,\qquad(h-8)^2+(r-8)^2=r^2,\]
+i.e. $h^2-2h-18r+82=0$ and $h^2-16h-16r+128=0$. Subtracting gives $r=7h-23$, and then $h^2-128h+496=0$, so $h=4$ or $h=124$, with $r=5$ or $r=845$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+draw((-2,0)--(10,0),gray); pair P=(1,9),Q=(8,8);
+draw(circle((4,5),5),blue); dot(P); dot(Q); dot((4,5)); label("$(1,9)$",P,NW); label("$(8,8)$",Q,NE); draw((4,5)--(4,0),dashed); label("$r=5$",(4,2.5),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The sum of the radii is $5+845=\boxed{850}$. (Alternatively, by Vieta the two values of $h$ sum to $128$, so the radii sum to $7\cdot128-46=850$.)

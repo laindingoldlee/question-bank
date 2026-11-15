@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1408528_oops_i_suck_geometry
+% Stable identity: aops-topic-1408528-q01
+The angles $\angle BAC$ and $\angle EAD$ are vertical angles, so they are equal.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real Aang=aCos(-52/108);
+pair A=(0,0); pair u=dir(0), v=dir(Aang);
+pair B=6*u, C=9*v, EE=-20*u, DD=-30*v;
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--EE--DD--cycle,linewidth(0.9));
+dot(A);dot(B);dot(C);dot(DD);dot(EE);
+label("$A$",A+2.8*dir(155)); label("$B$",B,dir(0)); label("$C$",C,dir(90)); label("$D$",DD,dir(-90)); label("$E$",EE,dir(180));
+label("$6$",B/2,dir(-90)); label("$9$",C/2,dir(180)); label("$13$",(B+C)/2,dir(45));
+label("$20$",EE/2,dir(90)); label("$30$",DD/2,dir(0));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Moreover
+\[
+\dfrac{AB}{AE}=\dfrac{6}{20}=\dfrac{3}{10}\qquad\text{and}\qquad\dfrac{AC}{AD}=\dfrac{9}{30}=\dfrac{3}{10}.
+\]
+Two sides of triangle $ABC$ are proportional to two sides of triangle $AED$ and the angles between them are equal, so by the \textbf{SAS similarity criterion} $\triangle ABC\sim\triangle AED$, with $A\leftrightarrow A$, $B\leftrightarrow E$, $C\leftrightarrow D$. (The criterion uses the ratio of the sides \emph{enclosing} the equal angle, with corresponding sides matched by the correspondence: $AB$ with $AE$ and $AC$ with $AD$.) Corresponding sides are in the ratio $\dfrac{10}{3}$, so
+\[
+DE=\dfrac{10}{3}\cdot BC=\dfrac{10}{3}\cdot13=\boxed{\dfrac{130}{3}}.
+\]

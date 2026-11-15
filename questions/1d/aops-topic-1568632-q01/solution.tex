@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1568632_equation_setup
+% Stable identity: aops-topic-1568632-q01
+\textbf{(a)} The semicircle is the upper half of the circle $x^2+y^2=9$, centred at the origin. A rectangle with base on the $x$-axis and both upper vertices on it is symmetric about the $y$-axis, so its upper vertices are $\left(\pm x,\sqrt{9-x^2}\right)$ with $0<x<3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+import graph;
+real x0=3/sqrt(2);
+draw((-3.6,0)--(3.6,0),gray,Arrow(TeXHead));draw((0,-0.3)--(0,3.6),gray,Arrow(TeXHead));
+label("$x$",(3.6,0),E,gray);label("$y$",(0,3.6),N,gray);
+draw(arc((0,0),3,0,180),linewidth(1));
+real x=2.2;real h=sqrt(9-x^2);
+fill((-x,0)--(x,0)--(x,h)--(-x,h)--cycle,paleyellow);
+draw((-x,0)--(x,0)--(x,h)--(-x,h)--cycle,blue+linewidth(1));
+draw((0,0)--(x,h),dashed);
+dot((x,h));dot((-x,h));
+label("$(x,\sqrt{9-x^2})$",(x,h),NE);label("$(-x,\sqrt{9-x^2})$",(-x,h),NW);
+label("$3$",(x/2,h/2),SE);
+label("$-3$",(-3,0),S);label("$3$",(3,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Its width is $2x$ and its height is $\sqrt{9-x^2}$, so
+\[
+\boxed{A(x)=2x\sqrt{9-x^2},\qquad 0<x<3.}
+\]
+\textbf{(b)} By AM-GM applied to $x^2$ and $9-x^2$,
+\[
+A^2=4x^2\left(9-x^2\right)\le4\left(\dfrac{x^2+(9-x^2)}{2}\right)^2=4\cdot\dfrac{81}{4}=81,
+\]
+so $A\le9$, with equality when $x^2=9-x^2$, i.e.\ $x=\dfrac{3}{\sqrt2}=\dfrac{3\sqrt2}{2}$. The largest area is $\boxed{9}$ (a rectangle $3\sqrt2$ wide and $\dfrac{3\sqrt2}{2}$ tall).

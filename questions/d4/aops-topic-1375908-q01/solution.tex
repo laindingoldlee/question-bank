@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1375908_pows_warmup_8
+% Stable identity: aops-topic-1375908-q01
+The diameter has length
+\[
+AB=\sqrt{(10-(-2))^2+(2-4)^2}=\sqrt{144+4}=\sqrt{148},
+\]
+so the radius satisfies $r^2=\left(\dfrac{AB}{2}\right)^2=\dfrac{148}{4}=37$. The centre is the midpoint $(4,3)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair A=(-2,4), B=(10,2), O=(4,3); real r=sqrt(37);
+draw((-9,0)--(12,0),gray,Arrow(5)); draw((0,-4)--(0,10),gray,Arrow(5));
+label("$x$",(12,0),E,gray); label("$y$",(0,10),N,gray);
+draw(circle(O,r),linewidth(0.9)); draw(A--B,blue);
+dot(A); dot(B); dot(O);
+label("$A(-2,4)$",A,W); label("$B(10,2)$",B,E); label("$(4,3)$",O,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The area is $\pi r^2=\boxed{37\pi}$.

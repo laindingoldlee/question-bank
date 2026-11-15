@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h2380519_hopefully_theres_nothing_wrong_with_this
+% Stable identity: aops-topic-2380519-q07
+The sum is $S=\displaystyle\sum_{m=5}^{14}(15-m)\dbinom m5$. Write the coefficient $15-m$ as the number of integers $t$ with $m+1\le t\le15$ and swap the order of summation:
+\[S=\sum_{m=5}^{14}\sum_{t=m+1}^{15}\dbinom m5=\sum_{t=6}^{15}\sum_{m=5}^{t-1}\dbinom m5=\sum_{t=6}^{15}\dbinom t6=\dbinom{16}{7},\]
+using the hockey-stick identity $\displaystyle\sum_{m=r}^{N}\dbinom mr=\dbinom{N+1}{r+1}$ twice. So $S=\dbinom{16}7=11440$.
+
+\textbf{Uniqueness.} For fixed $k$, $\dbinom nk$ increases with $n$, so each $k$ gives at most one $n$. Checking neighbours: $\dbinom{151}{2}<11440<\dbinom{152}{2}$, $\dbinom{41}{3}<11440<\dbinom{42}{3}$, $\dbinom{24}{4}=10626$ and $\dbinom{25}{4}=12650$, $\dbinom{18}{5}=8568$ and $\dbinom{19}{5}=11628$, $\dbinom{16}{6}=8008$ and $\dbinom{17}{6}=12376$. For $k\ge8$ and $n\ge2k$, $\dbinom nk\ge\dbinom{2k}{k}\ge\dbinom{16}{8}=12870>11440$. So $(n,k)=(16,7)$ is the only choice, and $n+k=\boxed{23}$.

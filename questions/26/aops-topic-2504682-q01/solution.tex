@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2504682_target_6
+% Stable identity: aops-topic-2504682-q01
+\textbf{(a)} Triangles $AMB$ and $AMD$ have the same vertex $A$ and bases $MB$ and $MD$ on the line $BD$, so they have the same height and
+\[\dfrac{[AMB]}{[AMD]}=\dfrac{MB}{MD}.\]
+In the same way, triangles $CMB$ and $CMD$ give $\dfrac{[BMC]}{[CMD]}=\dfrac{MB}{MD}$. Hence $\dfrac{[AMB]}{[AMD]}=\dfrac{[BMC]}{[CMD]}$, which is $[AMB]\cdot[CMD]=[AMD]\cdot[BMC]$. Only the fact that the diagonals cross at $M$ was used, so this holds in every convex quadrilateral.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.2,2), B=(4,2), C=(6,0), D=(0,0);
+pair M=extension(A,C,B,D);
+fill(A--M--D--cycle,rgb(0.8,0.9,1)); fill(B--M--C--cycle,rgb(0.8,0.9,1));
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(A--C); draw(B--D);
+dot(M);
+label("$A$",A,NW); label("$B$",B,NE); label("$C$",C,SE); label("$D$",D,SW); label("$M$",M,S);
+\end{asy}
+
+\textbf{(b)} Triangles $ABD$ and $ABC$ have the common base $AB$, and since $CD\parallel AB$, the points $D$ and $C$ are at the same distance from line $AB$. So $[ABD]=[ABC]$. Subtracting the common part $[AMB]$ gives $[AMD]=[BMC]$ (the two shaded triangles).
+
+\textbf{(c)} Substituting (b) into (a): $[AMD]^2=[AMB]\cdot[CMD]$, so $[AMD]=\sqrt{[AMB]\cdot[CMD]}$. $\blacksquare$

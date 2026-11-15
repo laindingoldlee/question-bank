@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1844116_2018_emic_team_p10
+% Stable identity: aops-topic-1844116-q01
+Let the integers be $a_1,a_2,a_3,a_4$ and let $S$ be their sum, which equals their lcm.
+
+\textbf{A useful fact.} If $n_1,\dots,n_4$ all divide $L$, then
+\[
+\gcd\left(\dfrac{L}{n_1},\dots,\dfrac{L}{n_4}\right)=\dfrac{L}{\operatorname{lcm}(n_1,\dots,n_4)},\qquad \operatorname{lcm}\left(\dfrac{L}{n_1},\dots,\dfrac{L}{n_4}\right)=\dfrac{L}{\gcd(n_1,\dots,n_4)},
+\]
+because for each prime $p$ with $p^e\,\|\,L$ the exponent of $p$ in $\dfrac{L}{n_i}$ is $e$ minus the exponent in $n_i$, and the minimum (maximum) of $e-x_i$ is $e$ minus the maximum (minimum) of the $x_i$.
+
+\textbf{Reduction.} Each $a_i$ divides $S$, so $n_i=\dfrac{S}{a_i}$ is a positive integer, and dividing $a_1+a_2+a_3+a_4=S$ by $S$ gives
+\[
+\dfrac{1}{n_1}+\dfrac{1}{n_2}+\dfrac{1}{n_3}+\dfrac{1}{n_4}=1 . \qquad (\ast)
+\]
+Each $n_i$ divides $S$; let $L=\operatorname{lcm}(n_1,\dots,n_4)$, so $S=tL$ for a positive integer $t$. Then $a_i=t\cdot\dfrac{L}{n_i}$, so $t$ divides all the $a_i$ and $t=1$: $S=L$. Moreover $\operatorname{lcm}(a_i)=\dfrac{L}{\gcd(n_i)}$ must equal $L$, so $\gcd(n_1,\dots,n_4)=1$. Conversely, if $(\ast)$ holds with $\gcd(n_i)=1$, then $a_i=\dfrac{L}{n_i}$ are positive integers with sum $L$, gcd $\dfrac{L}{L}=1$ and lcm $\dfrac{L}{1}=L$. So the possible sums are exactly the values $\operatorname{lcm}(n_1,\dots,n_4)$ for solutions of $(\ast)$ with $\gcd(n_1,\dots,n_4)=1$.
+
+\textbf{Solving $(\ast)$.} Let $n_1\le n_2\le n_3\le n_4$. Then $\dfrac{4}{n_1}\ge1$, so $2\le n_1\le4$.
+\begin{itemize}
+\item $n_1=4$: only $(4,4,4,4)$.
+\item $n_1=3$: $\dfrac{1}{n_2}+\dfrac{1}{n_3}+\dfrac{1}{n_4}=\dfrac{2}{3}$ with $3\le n_2\le4$. For $n_2=3$: $\dfrac{1}{n_3}+\dfrac{1}{n_4}=\dfrac{1}{3}$, giving $(n_3,n_4)=(4,12),(6,6)$. For $n_2=4$: $\dfrac{1}{n_3}+\dfrac{1}{n_4}=\dfrac{5}{12}$ with $4\le n_3\le4$, giving $(4,6)$.
+\item $n_1=2$: $\dfrac{1}{n_2}+\dfrac{1}{n_3}+\dfrac{1}{n_4}=\dfrac{1}{2}$ with $3\le n_2\le6$. For $n_2=3$: $\dfrac{1}{n_3}+\dfrac{1}{n_4}=\dfrac{1}{6}$, $7\le n_3\le12$, giving $(7,42),(8,24),(9,18),(10,15),(12,12)$. For $n_2=4$: sum $\dfrac{1}{4}$, $5\le n_3\le8$, giving $(5,20),(6,12),(8,8)$. For $n_2=5$: sum $\dfrac{3}{10}$, $5\le n_3\le6$, giving $(5,10)$. For $n_2=6$: sum $\dfrac{1}{3}$, $n_3=6$, giving $(6,6)$.
+\end{itemize}
+These are $14$ solutions. Discarding those with a common factor, namely $(4,4,4,4)$, $(3,3,6,6)$, $(2,4,6,12)$, $(2,4,8,8)$ and $(2,6,6,6)$, the remaining nine solutions and their lcms are
+\[
+\begin{array}{ll}
+(2,3,7,42)\to42, & (2,3,8,24)\to24,\\
+(2,3,9,18)\to18, & (2,3,10,15)\to30,\\
+(2,3,12,12)\to12, & (2,4,5,20)\to20,\\
+(2,5,5,10)\to10, & (3,3,4,12)\to12,\\
+(3,4,4,6)\to12 . &
+\end{array}
+\]
+For example $(3,4,4,6)$ gives the numbers $4$, $3$, $3$, $2$, with sum and lcm $12$. The distinct sums are $10$, $12$, $18$, $20$, $24$, $30$ and $42$, so there are $\boxed{7}$ possible values.

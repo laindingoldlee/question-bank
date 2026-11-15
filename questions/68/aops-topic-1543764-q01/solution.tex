@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h1543764_mathematic
+% Stable identity: aops-topic-1543764-q01
+\textbf{Complete the squares.} Let
+\[
+u=\sqrt{(x-1)^2+(y-2)^2},\qquad v=\sqrt{(x+1)^2+(y+5)^2},\qquad w=\sqrt{(x-3)^2+y^2}.
+\]
+Then $x^2+y^2-2x-4y+5=u^2$, $5x^2+5y^2+10x+50y+130=5v^2$ and $5x^2+5y^2-30x+45=5w^2$, so the left side is
+\[
+3u+2\sqrt5\,v+\sqrt5\,w .
+\]
+Also
+\[
+u^2+v^2+w^2=3x^2+3y^2-6x+6y+40,
+\]
+so the right side is $\sqrt{34\left(u^2+v^2+w^2\right)}$.
+
+\textbf{Cauchy--Schwarz.} Since $3^2+(2\sqrt5)^2+(\sqrt5)^2=9+20+5=34$,
+\[
+\left(3u+2\sqrt5\,v+\sqrt5\,w\right)^2\le34\left(u^2+v^2+w^2\right),
+\]
+with equality exactly when $(u,v,w)$ is a nonnegative multiple of $(3,2\sqrt5,\sqrt5)$. So the equation holds exactly when
+\[
+u^2:v^2:w^2=9:20:5,\quad\text{i.e.}\quad v^2=4w^2\ \text{ and }\ 5u^2=9w^2 .
+\]
+(The case $u=v=w=0$ is impossible, as the three points $(1,2)$, $(-1,-5)$, $(3,0)$ are different.)
+
+\textbf{Solve.} The two conditions expand to
+\[
+3x^2+3y^2-26x-10y+10=0\qquad\text{and}\qquad x^2+y^2-11x+5y+14=0 .
+\]
+Subtracting three times the second from the first gives $7x-25y-32=0$, i.e.\ $x=\dfrac{25y+32}{7}$. Substituting into the second equation and multiplying by $49$:
+\[
+(25y+32)^2+49y^2-77(25y+32)+245y+686=0\iff674y^2-80y-754=0\iff337y^2-40y-377=0 ,
+\]
+so $(y+1)(337y-377)=0$. This gives
+\[
+\boxed{(x,y)=(1,-1)\quad\text{or}\quad(x,y)=\left(\dfrac{2887}{337},\dfrac{377}{337}\right)}.
+\]
+Check for $(1,-1)$: $u^2=9$, $v^2=20$, $w^2=5$, so the left side is $3\cdot3+2\sqrt5\cdot2\sqrt5+\sqrt5\cdot\sqrt5=34$ and the right side is $\sqrt{34\cdot34}=34$. For the second point, $u^2=\dfrac{9\cdot2173}{337}$, $v^2=\dfrac{20\cdot2173}{337}$, $w^2=\dfrac{5\cdot2173}{337}$, again in the ratio $9:20:5$, so the equation holds there too.

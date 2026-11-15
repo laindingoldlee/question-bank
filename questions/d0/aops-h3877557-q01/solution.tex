@@ -1,0 +1,13 @@
+The diagonal has length $2$. In coordinates along it, the other two vertices have axial positions $\dfrac{1}{2},\dfrac{3}{2}$ and perpendicular distances $\dfrac{\sqrt3}{2}$. Each half-rectangle triangle sweeps a double cone of total height $2$ and base radius $\dfrac{\sqrt3}{2}$, hence volume $\dfrac{\pi}{2}$. Their intersection is another double cone: the two radial profiles meet at the diagonal midpoint with radius $\dfrac{\sqrt3}{3}$, and its total height is $2$. Its volume is $\dfrac{2\pi}{9}$. Inclusion--exclusion gives swept volume $\pi-\dfrac{2\pi}{9}=\dfrac{7\pi}{9}$, so $\boxed{a+b=16}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),C=(2,0),B=(1.5,sqrt(3)/2),D=(.5,-sqrt(3)/2);draw(A--B--C--D--cycle);draw(A--C,blue);draw(B--(1.5,0),dashed);draw(D--(.5,0),dashed);label("A",A,W);label("C",C,E);label("B",B,N);label("D",D,S);label("axis",(1,0),N);
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real r=sqrt(3)/2;filldraw((0,0)--(.5,r)--(1,sqrt(3)/3)--(1.5,r)--(2,0)--(1.5,-r)--(1,-sqrt(3)/3)--(.5,-r)--cycle,lightblue);filldraw((0,0)--(1,sqrt(3)/3)--(2,0)--(1,-sqrt(3)/3)--cycle,lightgreen);draw((-.2,0)--(2.2,0),dashed);label("0",(0,0),W);label("2",(2,0),E);label("common double cone",(1,-1.1));
+\end{asy}

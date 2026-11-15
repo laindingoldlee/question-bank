@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1268289_volume_prism
+% Stable identity: aops-topic-1268289-q01
+Let the edge lengths be $a$, $b$, $c$, with face areas $A=ab$, $B=bc$, $C=ca$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(4,0)--(4,3)--(0,3)--cycle);
+draw((4,0)--(5.5,1)--(5.5,4)--(4,3)); draw((0,3)--(1.5,4)--(5.5,4));
+draw((0,0)--(1.5,1)--(5.5,1),dashed); draw((1.5,1)--(1.5,4),dashed);
+label("$a$",(2,0),S); label("$b$",(4.75,0.5),SE); label("$c$",(0,1.5),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then
+\[ABC=(ab)(bc)(ca)=(abc)^2,\]
+so the volume is $V=abc=\sqrt{ABC}$.
+
+For areas $6$, $8$, $12$: $V=\sqrt{6\cdot8\cdot12}=\sqrt{576}=\boxed{24}$ (the box is $2\times 3\times 4$).

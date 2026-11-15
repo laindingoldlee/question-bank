@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2586659_counting_problem
+% Stable identity: aops-topic-2586659-q01
+Write the grid as $\begin{array}{cc}a&b\\c&d\end{array}$. The conditions are
+\[a+b=cd,\qquad c+d=ab,\qquad a+c=bd,\qquad b+d=ac.\]
+Subtracting the third from the first and the fourth from the second gives
+\[b-c=d(c-b),\qquad c-b=a(b-c),\qquad\text{i.e.}\qquad(b-c)(1+d)=0,\quad(b-c)(1+a)=0.\]
+So either $b=c$, or $a=d=-1$.
+
+\textbf{Case $a=d=-1$.} All four conditions become $b+c=1$. With $|b|,|c|\le10$, $b$ can be any integer from $-9$ to $10$: $20$ grids.
+
+\textbf{Case $b=c$.} Subtracting the fourth condition from the first and the third from the second gives $(a-d)(1+c)=0$ and $(d-a)(1+b)=0$. So either $b=c=-1$, or $a=d$.
+\begin{itemize}
+\item $b=c=-1$: by symmetry with the previous case, the conditions become $a+d=1$, giving $20$ grids.
+\item $a=d$ (and $b=c$): every condition becomes $a+b=ab$, i.e. $(a-1)(b-1)=1$, so $a=b=2$ or $a=b=0$: $2$ grids.
+\end{itemize}
+
+These cases do not overlap. For instance, $a=d=-1$ with $b=c$ would need $2b=1$, and $b=c=-1$ with $a=d$ would need $2a=1$. The total is $20+20+2=\boxed{42}$.

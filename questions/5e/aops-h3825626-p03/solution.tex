@@ -1,0 +1,12 @@
+The fifth jump has endpoints $(4m,0)$ and $(5m,0)$. Since the apple has positive height, $4m<30<5m$, giving $6<m<7.5$. Hence $m=7$.
+
+Write the first arc as $y=kx(7-x)$ for $0\le x\le7$, with $k>0$. The fifth is $y=k(x-28)(35-x)$, so $4=k(2)(5)$ and $k=\dfrac{2}{5}$. Therefore
+\[
+\boxed{m=7,\qquad y=\dfrac{2}{5}x(7-x)\quad(0\le x\le7)}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;size(300,110,IgnoreAspect);for(int j=0;j<5;++j){real off=7*j;real f(real x){return .4*(x-off)*(off+7-x);}draw(graph(f,off,off+7),blue);}draw((0,0)--(36,0),Arrow);draw((0,0)--(0,6),Arrow);dot((30,4),red);label("$(30,4)$",(30,4),(0,1));label("$0$",(0,0),(0,-1));label("$28$",(28,0),(0,-1));label("$35$",(35,0),(0,-1));
+\end{asy}

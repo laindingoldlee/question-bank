@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2241717_expected_value
+% Stable identity: aops-topic-2241717-q01
+Only the total modulo $7$ matters. Let $E_r$ be the expected number of further flips when the total is $\equiv r\pmod7$, for $r=1,\ldots,6$, and put $E_0=0$ (we stop). Each flip adds $1$ or $2$ with probability $\dfrac{1}{2}$ each, so
+\[E_r=1+\dfrac{E_{r+1}+E_{r+2}}{2}\qquad(r=1,\ldots,6),\]
+with indices modulo $7$. We want $t=E_1$. Working down from $r=6$:
+\begin{align*}
+E_6&=1+\dfrac{E_0+E_1}{2}=1+\dfrac {t}{2}, & E_5&=1+\dfrac{E_6+E_0}{2}=\dfrac{3}{2}+\dfrac {t}{4},\\
+E_4&=1+\dfrac{E_5+E_6}{2}=\dfrac{9}{4}+\dfrac{3t}{8}, & E_3&=1+\dfrac{E_4+E_5}{2}=\dfrac{23}{8}+\dfrac{5t}{16},\\
+E_2&=1+\dfrac{E_3+E_4}{2}=\dfrac{57}{16}+\dfrac{11t}{32}, & E_1&=1+\dfrac{E_2+E_3}{2}=\dfrac{135}{32}+\dfrac{21t}{64}.
+\end{align*}
+So $t=\dfrac{135}{32}+\dfrac{21t}{64}$, i.e. $\dfrac{43t}{64}=\dfrac{135}{32}$, and
+\[E_1=\boxed{\dfrac{270}{43}}\approx6.28 .\]

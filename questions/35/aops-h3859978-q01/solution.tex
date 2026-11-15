@@ -1,0 +1,13 @@
+The slant height is $\sqrt{5^2+12^2}=13$. Unrolling the lateral surface gives a sector of radius $13$ whose arc length is the base circumference $10\pi$. Its angle is therefore $\dfrac{10\pi}{13}$ radians.
+
+One complete spin rolls through one such sector. To sweep a full $2\pi$ around the fixed vertex requires
+\[
+\dfrac{2\pi}{10\dfrac{\pi}{13}}=\dfrac{13}{5}
+\]
+spins. Hence $\boxed{m+n=18}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real th=360.0*5/13;pair O=(0,0),A=13dir(0),B=13dir(th);path p=O--A..arc(O,13,0,th)..B--O--cycle;filldraw(p,lightblue,blue);label("$13$",(O+A)/2,(0,-1));label("$13$",(O+B)/2,NW);label("arc length $10\pi$",13dir(th/2),dir(th/2));label("$\dfrac{10\pi}{13}$",(4,2.8));
+\end{asy}

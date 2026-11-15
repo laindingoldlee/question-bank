@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1734077_counting_triangles
+% Stable identity: aops-topic-1734077-q01
+A figure consists of a unit square with four more unit squares attached, one to each of its sides (a plus sign made of five squares). In each of the five squares both diagonals are drawn, as shown.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair[] sq={(0,0),(1,0),(-1,0),(0,1),(0,-1)};
+for(int i=0;i<5;++i){pair p=sq[i];
+ draw(p--p+(1,0)--p+(1,1)--p+(0,1)--cycle,linewidth(0.8));
+ draw(p--p+(1,1),linewidth(0.6));draw(p+(1,0)--p+(0,1),linewidth(0.6));}
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+How many triangles of any size are in the figure?

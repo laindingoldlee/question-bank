@@ -1,0 +1,45 @@
+% Source: https://artofproblemsolving.com/community/c3h1527773_cyclic_quedrilaterals
+% Stable identity: aops-topic-1527773-q01
+\textbf{(a) No.} A quadrilateral inscribed in a circle has opposite angles adding to $180^\circ$ (each pair subtends arcs that together make the whole circle). Consider the right trapezoid $A(0,0)$, $B(4,0)$, $C(3,2)$, $D(0,2)$, with $AB\parallel DC$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(3,2),D=(0,2);
+draw(A--B--C--D--cycle,linewidth(1));
+real s=0.22;
+draw((s,0)--(s,s)--(0,s));draw(D+(s,0)--D+(s,-s)--D+(0,-s));
+draw(arc(B,0.55,degrees(C-B),180));label("$63.4^\circ$",B+0.62*dir(150),W,fontsize(8pt));
+draw(arc(C,0.4,180,degrees(B-C)),red);label("$116.6^\circ$",C+0.5*dir(240),SW,red+fontsize(8pt));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$4$",(2,0),S);label("$3$",(1.5,2),N);label("$2$",(0,1),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Its angle at $A$ is $90^\circ$, while its angle at $C$ is obtuse: $\angle B=\arctan2\approx63.4^\circ$ and, since $DC\parallel AB$, $\angle C=180^\circ-\angle B\approx116.6^\circ$. So $\angle A+\angle C\approx206.6^\circ\ne180^\circ$, and this trapezoid is not cyclic. (In fact a trapezoid is cyclic exactly when it is isosceles.)
+
+\textbf{(b) Yes.} Let $ABC$ be a triangle. The perpendicular bisector of $AB$ is the set of points equidistant from $A$ and $B$, and the perpendicular bisector of $BC$ is the set of points equidistant from $B$ and $C$. These two lines are perpendicular to $AB$ and $BC$, which are not parallel (the points are not collinear), so the bisectors are not parallel and meet at a point $O$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(1.5,3.5);
+pair M1=(A+B)/2,M2=(B+C)/2;
+pair O=extension(M1,M1+(0,1),M2,M2+rotate(90)*(C-B));
+draw(circle(O,abs(O-A)),blue);
+draw(A--B--C--cycle,linewidth(1));
+draw(M1+(0,-0.8)--O+(0,0.9),dashed);
+pair u=unit(rotate(90)*(C-B));
+draw(M2+0.9*u--O-0.9*u,dashed);
+real s=0.22;
+draw(M1+(s,0)--M1+(s,s)--M1+(0,s));
+pair v=unit(C-B); draw(M2-s*v--M2-s*v-s*u--M2-s*u);
+draw(O--A,blue);draw(O--B,blue);draw(O--C,blue);
+dot(O);label("$O$",O,1.6*dir(156));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then $OA=OB$ and $OB=OC$, so the circle with centre $O$ and radius $OA$ passes through $A$, $B$ and $C$. $\blacksquare$ (Also $OA=OC$, so $O$ lies on the third perpendicular bisector as well.)

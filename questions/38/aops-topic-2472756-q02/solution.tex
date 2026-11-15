@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2472756_cp_problems_that_i_made
+% Stable identity: aops-topic-2472756-q02
+Let $N$ be the number of new customers who visit. After Billy's five-star rating the first new customer comes, so $N\ge1$. The $k$-th new customer comes exactly when new customers $1,\dots,k-1$ all gave five stars, so
+\[P(N\ge k)=\left(\dfrac{9}{10}\right)^{k-1}\qquad(k\ge1),\]
+and $N=k$ exactly when the first $k-1$ new customers give five stars and the $k$-th gives one star (that customer has visited and is counted):
+\[P(N=k)=\left(\dfrac{9}{10}\right)^{k-1}\cdot\dfrac{1}{10}.\]
+
+\textbf{(a)} Using $E[N]=\displaystyle\sum_{k\ge1}P(N\ge k)$ for a random variable with values $1,2,3,\dots$,
+\[E[N]=\sum_{k=1}^{\infty}\left(\dfrac{9}{10}\right)^{k-1}=\dfrac{1}{1-\dfrac{9}{10}}=\boxed{10}.\]
+
+\textbf{(b)} With $x=10$,
+\[P(N=10)=\left(\dfrac{9}{10}\right)^{9}\cdot\dfrac{1}{10}=\boxed{\dfrac{9^9}{10^{10}}=\dfrac{387420489}{10000000000}}\approx0.0387.\]
+So although $10$ is the expected number, exactly $10$ new customers come less than $4$ times in $100$.

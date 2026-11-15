@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h3153042_my_math_story_first_part
+% Stable identity: aops-topic-3153042-q02
+The place-value equation is $(101A+10B)B=1100C+11D $. Every possibility is covered by the finite digit test:
+\begin{verbatim}
+sol=[(a,b,c,d) for a in range(1,10) for b in range(1,10)
+     for c in range(1,10) for d in range(10)
+     if len({a,b,c,d})==4 and (101*a+10*b)*b==1100*c+11*d]
+assert sol==[(7,3,2,1)]
+\end{verbatim}
+Indeed $ 737\cdot3=2211 $. Hence the sole digit sum, and requested total, is $\boxed{13}$.

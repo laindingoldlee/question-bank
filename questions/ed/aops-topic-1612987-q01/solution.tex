@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1612987_triangle_question
+% Stable identity: aops-topic-1612987-q01
+\textbf{Rearranging the condition.} Cross-multiplying, $AD\cdot EC=AE\cdot BD$, so
+\[
+\dfrac{AD}{BD}=\dfrac{AE}{EC}.
+\]
+Since $D$ lies between $A$ and $B$, $AB=AD+DB$, and similarly $AC=AE+EC$. Therefore
+\[
+\dfrac{AB}{AD}=1+\dfrac{BD}{AD}=1+\dfrac{EC}{AE}=\dfrac{AC}{AE},\qquad\text{i.e.}\qquad \dfrac{AD}{AB}=\dfrac{AE}{AC}.
+\]
+
+\textbf{Similar triangles.} Triangles $ADE$ and $ABC$ share the angle at $A$, and the sides enclosing it are proportional: $\dfrac{AD}{AB}=\dfrac{AE}{AC}$. By the SAS similarity criterion, $\triangle ADE\sim\triangle ABC$ with $D\leftrightarrow B$ and $E\leftrightarrow C$. In particular $\angle ADE=\angle ABC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.2,3.2),B=(0,0),C=(4.5,0);real t=0.4;
+pair D=A+t*(B-A),E=A+t*(C-A);
+draw(A--B--C--cycle,linewidth(0.9));draw(D--E,blue+linewidth(0.9));
+dot(D);dot(E);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,W);label("$E$",E,NE);
+path ar=(0,0)--(0.25,0);
+draw(shift((D+E)/2-(0.12,0))*ar,blue,Arrow(TeXHead,5));draw(shift((B+C)/2-(0.12,0))*ar,Arrow(TeXHead,5));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Parallel lines.} The line $AB$ is a transversal of lines $DE$ and $BC$, and the angles $\angle ADE$ and $\angle ABC$ are corresponding angles (both on the same side of $AB$ as $C$ and $E$, at $D$ and at $B$). Since they are equal, $DE\parallel BC$. $\blacksquare$

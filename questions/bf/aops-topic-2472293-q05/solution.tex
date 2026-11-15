@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2472293_march_2021_problem_set
+% Stable identity: aops-topic-2472293-q05
+Call a path \emph{good} if it uses unit steps right and up and never goes above the line $y=x$.
+
+\textbf{Good paths from $(0,0)$ to $(j,j)$.} There are $\dbinom{2j}{j}$ paths in all. A bad path touches the line $y=x+1$; reflecting its part after the first touch in that line gives a path to $(j-1,j+1)$, and this is a bijection onto all $\dbinom{2j}{j-1}$ such paths. So the number of good paths is the Catalan number
+\[C_j=\dbinom{2j}j-\dbinom{2j}{j-1}=\dfrac{1}{j+1}\dbinom{2j}{j},\]
+with $C_0,\dots,C_{10}=1,1,2,5,14,42,132,429,1430,4862,16796$. The same count holds for good paths from $(n,n)$ to $(10,10)$, with $j=10-n$.
+
+\textbf{Paths through the black hole.} A good path through $(n,n)$ is a good path to $(n,n)$ followed by a good path from $(n,n)$ to $(10,10)$, so there are $C_nC_{10-n}$ of them, and
+\[k_n=C_{10}-C_nC_{10-n}.\]
+Hence
+\[\sum_{n=1}^9k_n=9C_{10}-\sum_{n=1}^{9}C_nC_{10-n}.\]
+By symmetry,
+\[\sum_{n=1}^{9}C_nC_{10-n}=2\left(C_1C_9+C_2C_8+C_3C_7+C_4C_6\right)+C_5^2=2(4862+2860+2145+1848)+1764=25194.\]
+So the answer is
+\[9\cdot16796-25194=151164-25194=\boxed{125970}.\]

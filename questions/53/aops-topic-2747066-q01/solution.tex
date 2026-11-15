@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2747066_infinite_root_and_sum_series
+% Stable identity: aops-topic-2747066-q01
+\textbf{(a)} The truncations satisfy $x_{k+1}=2+\sqrt{3-2x_k}$. Any value $x_{k+1}$ that is defined is at least $2$, and then $3-2x_{k+1}\le-1<0$, so $x_{k+2}$ is not a real number. (For example, starting from $0$: $x_1=2+\sqrt3$, and $3-2x_1<0$.) Likewise a limit $x$ would have to satisfy $x=2+\sqrt{3-2x}$, which needs both $x\ge2$ and $x\le\dfrac32$. So (a) has \textbf{no real value}.
+
+\textbf{(b)} Now $y_{k+1}=2-\sqrt{3-2y_k}$. A limit $y$ must satisfy $y=2-\sqrt{3-2y}$, so $(2-y)^2=3-2y$ with $y\le2$, i.e. $(y-1)^2=0$ and $y=1$; indeed $2-\sqrt{1}=1$.
+
+The truncations do converge to $1$ for every starting value $y_0<1$:
+\begin{itemize}
+\item if $y_k<1$, then $3-2y_k>1$, so $y_{k+1}<1$;
+\item $y_{k+1}>y_k$, because $2-y_k>\sqrt{3-2y_k}$ is equivalent to $(y_k-1)^2>0$.
+\end{itemize}
+So the sequence increases and is bounded by $1$; its limit is a solution of $y=2-\sqrt{3-2y}$, i.e. $1$. The value of (b) is $\boxed{1}$. (Convergence is slow, since the fixed point is neutral; a starting value above $1$ moves away from $1$ until the square root is undefined.)

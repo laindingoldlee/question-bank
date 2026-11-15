@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h1497056_geometry_proof
+% Stable identity: aops-topic-1497056-q01
+Let $F$ be the foot of the perpendicular from $A$ to $\ell$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real r=3; pair Ac=(0,0),M=(-r,0),D=(r,0);
+pair U=r*dir(145),L=r*dir(55);
+pair ft(pair P,pair X,pair Y){return X+dot(P-X,Y-X)/dot(Y-X,Y-X)*(Y-X);}
+pair H=ft(M,U,L),K=ft(D,U,L),F=ft(Ac,U,L);
+draw(arc(Ac,r,0,180),linewidth(1)); draw(M--D,linewidth(0.8));
+draw(H-0.3*(K-H)--K+0.15*(K-H),linewidth(0.9));
+draw(M--H,blue); draw(D--K,blue); draw(Ac--F,red+dashed);
+pair e=unit(K-H), n=unit(M-H); real s=0.22;
+draw(H+s*e--H+s*e+s*n--H+s*n,blue);
+pair n2=unit(D-K); draw(K-s*e--K-s*e+s*n2--K+s*n2,blue);
+pair n3=unit(Ac-F); draw(F+s*e--F+s*e+s*n3--F+s*n3,red);
+dot(Ac);dot(M);dot(D);dot(U);dot(L);dot(H);dot(K);dot(F);
+label("$A$",Ac,S);label("$M$",M,SW);label("$D$",D,SE);label("$U$",U,dir(140));label("$L$",L,dir(60));
+label("$H$",H,NW);label("$K$",K,dir(30));label("$F$",F,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+
+\textbf{$F$ is the midpoint of $UL$.} Since $AU=AL$ (radii), triangle $AUL$ is isosceles, and the perpendicular from $A$ to the chord $UL$ meets it at its midpoint.
+
+\textbf{$F$ is the midpoint of $HK$.} The lines $MH$, $AF$, $DK$ are all perpendicular to $\ell$, hence parallel. Since $A$ is the midpoint of $MD$, the parallel line $AF$ cuts the transversal $\ell$ at the midpoint of $HK$ (intercept theorem; equivalently, $AF$ is the midline of the trapezoid $MHKD$).
+
+\textbf{Conclusion.} Put a number line on $\ell$ with $F$ at $0$, so that $U=-u$, $L=u$, $H=-h$, $K=h$ for some real $u$, $h$. Then
+\[
+HU^2+UK^2=(h-u)^2+(h+u)^2,\qquad HL^2+LK^2=(h+u)^2+(h-u)^2 ,
+\]
+which are equal. (In fact $HU=LK$ and $UK=HL$.) $\blacksquare$

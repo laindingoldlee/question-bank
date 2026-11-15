@@ -1,0 +1,63 @@
+% Source: https://artofproblemsolving.com/community/c3h1531846_interesting_observation
+% Stable identity: aops-topic-1531846-q01
+\textbf{(b) first.} At vertex $A$ the full angle $360^\circ$ is made up of $\angle BAC=\alpha$, the two right angles of the squares $ABDE$ and $CAFG$, and $\angle EAF$. So
+\[
+\angle EAF=360^\circ-90^\circ-90^\circ-\alpha=180^\circ-\alpha .
+\]
+Also $AE=AB=c$ and $AF=AC=b$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(3.2,0),C=(0.9,2.0);
+pair n1=rotate(-90)*(B-A), n2=rotate(-90)*(A-C);
+pair D=B+n1,E1=A+n1,F=A+n2,G=C+n2;
+fill(A--E1--F--cycle,palegreen);fill(A--B--C--cycle,paleyellow);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--B--D--E1--cycle);draw(C--A--F--G--cycle);
+draw(E1--F,blue+linewidth(0.9));
+label("$A$",A,dir(-45));label("$B$",B,dir(0));label("$C$",C,N);
+label("$E$",E1,S);label("$F$",F,W);label("$D$",D,S);label("$G$",G,NW);
+label("$c$",(A+B)/2,N);label("$b$",(A+C)/2,dir(-20));
+label("$c$",(A+E1)/2,E);label("$b$",(A+F)/2,dir(80));
+draw(arc(A,0.3,0,degrees(C-A)),red);
+draw(arc(A,0.35,degrees(F-A),270),red);
+label("$\alpha$",A+0.48*dir(degrees(C-A)/2),red);
+label("$180^\circ-\alpha$",(-1.85,-1.75),red+fontsize(9pt));draw(A+0.37*dir(215)--(-1.45,-1.55),red+linewidth(0.4));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $\sin(180^\circ-\alpha)=\sin\alpha$,
+\[
+[AEF]=\dfrac{1}{2}\cdot AE\cdot AF\sin\angle EAF=\dfrac{1}{2}bc\sin\alpha=[ABC] .
+\]
+The same argument at $B$ and at $C$ gives $[BID]=[CGH]=[ABC]$. $\blacksquare$
+
+(Without trigonometry: rotate triangle $AEF$ by $90^\circ$ about $A$ so that $E$ goes to $B$; then $F$ goes to the point $F'$ with $A$ the midpoint of $CF'$, and triangles $ABF'$ and $ABC$ have equal bases $AF'=AC$ on one line and the same apex $B$.)
+
+\textbf{(a)} The hexagon consists of the triangle, the three squares and the three triangles between the squares:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=dir(90),B=dir(210),C=dir(330);
+pair D=B+rotate(-90)*(B-A),Ee=A+rotate(-90)*(B-A);
+pair H=C+rotate(-90)*(C-B),I=B+rotate(-90)*(C-B);
+pair F=A+rotate(-90)*(A-C),G=C+rotate(-90)*(A-C);
+fill(A--Ee--F--cycle,palegreen);fill(B--I--D--cycle,palegreen);fill(C--G--H--cycle,palegreen);
+fill(A--B--C--cycle,paleyellow);
+draw(A--B--D--Ee--cycle);draw(B--C--H--I--cycle);draw(C--A--F--G--cycle);
+draw(D--Ee--F--G--H--I--cycle,blue+linewidth(1.1));
+label("$A$",A,2*dir(270));label("$B$",B,2*dir(30));label("$C$",C,2*dir(150));
+label("$D$",D,dir(220));label("$E$",Ee,dir(160));label("$F$",F,dir(20));label("$G$",G,dir(-40));label("$H$",H,dir(-60));label("$I$",I,dir(240));
+label("$1$",(B+C)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By (b) each of the three green triangles has the area of $ABC$, which is $\dfrac{\sqrt3}{4}$. Hence
+\[
+[DEFGHI]=\dfrac{\sqrt3}{4}+3\cdot1+3\cdot\dfrac{\sqrt3}{4}=\boxed{3+\sqrt3},
+\]
+answer $\textbf{(C)}$.

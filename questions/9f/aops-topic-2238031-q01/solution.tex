@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2238031_306090_triangles
+% Stable identity: aops-topic-2238031-q01
+\textbf{(a)} No. The triangle with sides $2$, $4$, $5$ exists ($2+4>5$) and has one side twice another, but it is not even a right triangle, since $2^2+4^2=20\ne25=5^2$. (Another example: the isosceles triangle with sides $1$, $2$, $2$.)
+
+\textbf{(b)} Let the triangle be $ABC$ with the right angle at $C$, leg $BC=x$ and hypotenuse $AB=2x$. Reflect $B$ in the line $AC$ to $B'$. Since $BC\perp AC$, the point $B'$ lies on line $BC$ with $CB'=x$, so $BB'=2x$, and $AB'=AB=2x$ by the reflection.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(5,0), C=(3.7,sqrt(16-3.7^2));
+draw(A--B--C--cycle,linewidth(0.9));
+label("$5$",(A+B)/2,S,fontsize(8pt)); label("$4$",(A+C)/2,NW,fontsize(8pt)); label("$2$",(B+C)/2,NE,fontsize(8pt));
+label("(a)",(2.5,-1.1));
+pair C2=(8,0), B2=(8,1.6), A2=(8+1.6*sqrt(3),0), B3=(8,-1.6);
+draw(A2--B2--C2--cycle,linewidth(0.9)); draw(A2--B3--C2,dashed);
+draw((8,0.18)--(8.18,0.18)--(8.18,0));
+label("$C$",C2,W); label("$B$",B2,N); label("$A$",A2,E); label("$B'$",B3,S);
+label("$x$",(C2+B2)/2,W,fontsize(8pt)); label("$x$",(C2+B3)/2,W,fontsize(8pt));
+label("$2x$",(A2+B2)/2,NE,fontsize(8pt)); label("$2x$",(A2+B3)/2,SE,fontsize(8pt));
+label("(b)",(9.4,-2.4));
+\end{asy}
+
+So triangle $ABB'$ has all sides equal to $2x$: it is equilateral, and $\angle ABC=\angle ABB'=60^\circ$. Hence the angles of $ABC$ are $60^\circ$ at $B$, $90^\circ$ at $C$ and $180^\circ-90^\circ-60^\circ=30^\circ$ at $A$. $\blacksquare$
+
+\textbf{(c)} No. With legs $1$ and $2$ the hypotenuse is $\sqrt5$, which is not twice a leg; in a $30^\circ$-$60^\circ$-$90^\circ$ triangle the legs are in the ratio $1:\sqrt3$, not $1:2$. What makes the special triangle is the hypotenuse being twice the shorter leg, as in (b).

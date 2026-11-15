@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2389635_fish_problems
+% Stable identity: aops-topic-2389635-q11
+\textbf{Hemisphere.} Its curved surface is half of a sphere's surface: $\dfrac12\cdot4\pi\cdot5^2=50\pi$ square metres, costing $5\cdot50\pi=250\pi$ dollars.
+
+\textbf{Cone.} The slant height is $\sqrt{5^2+12^2}=13$, so the curved surface is $\pi\cdot5\cdot13=65\pi$ square metres, costing $8\cdot65\pi=520\pi$ dollars.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real r=2.5;
+draw(arc((0,0),r,0,180),linewidth(0.9));
+draw((-r,0)--(0,-6)--(r,0),linewidth(0.9));
+draw(xscale(r)*yscale(0.4*r)*arc((0,0),1,180,360),linewidth(0.6));
+draw(xscale(r)*yscale(0.4*r)*arc((0,0),1,0,180),dashed);
+draw((0,0)--(r,0),blue); label("$5$",(0.75,0),S,blue);
+draw((0,0)--(0,-6),dashed); label("$12$",(0,-3.2),W);
+label("$13$",(r/2,-3),E);
+label("hemisphere",(0,1.6)); label("cone",(0.9,-1.9));
+\end{asy}
+
+The total cost is $250\pi+520\pi=\boxed{770\pi}$ dollars, about $\$2419.03$.

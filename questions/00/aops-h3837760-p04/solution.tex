@@ -1,0 +1,7 @@
+The interior angle at the tether corner is $108^\circ$, leaving a $252^\circ$ sector of radius 25. Wrapping around either adjacent vertex uses ten feet and creates an additional $72^\circ$ sector of radius 15. Wrapping around the next vertex in either direction leaves five feet and adds another $72^\circ$ sector. These final two sectors meet only at the midpoint of the opposite side, since their centers are ten feet apart. No other overlaps have positive area. Thus the area is $\dfrac{252}{360}\pi25^2+2\dfrac{72}{360}\pi15^2+2\dfrac{72}{360}\pi5^2=\boxed{\dfrac{1075\pi}{2}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+real R=5/sin(pi/5);pair[] P;for(int i=0;i<5;++i)P.push(R*dir(90+72*i));draw(P[0]--P[1]--P[2]--P[3]--P[4]--cycle);string[] L={"A (tether)","B: 15 ft left","C: 5 ft left","D: 5 ft left","E: 15 ft left"};for(int i=0;i<5;++i)label(L[i],P[i],unit(P[i]));draw(P[0]--P[1]--P[2],dashed);draw(P[0]--P[4]--P[3],dashed);
+\end{asy}

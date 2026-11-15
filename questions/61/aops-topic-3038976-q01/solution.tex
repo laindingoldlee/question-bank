@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h3038976_last_digits_of_powers_of_twos
+% Stable identity: aops-topic-3038976-q01
+(a) The transient entries are $1,2$. The cycle has 20 entries, starting at 4: $4,8,16,32,64,28,56,12,24,48,96,92,84,68,36,72,44,88,76,52$, after which 4 repeats. (b) The transient entries are $1,2,4$. The cycle has 100 entries, starting at 8, listed in order below. (c) There is no transient: the cycle starts at 1 and has 20 entries: $1,3,9,27,81,43,29,87,61,83,49,47,41,23,69,7,21,63,89,67$, after which 1 repeats.
+\[\begin{array}{rrrrrrrrrr}008&016&032&064&128&256&512&024&048&096\\
+192&384&768&536&072&144&288&576&152&304\\
+608&216&432&864&728&456&912&824&648&296\\
+592&184&368&736&472&944&888&776&552&104\\
+208&416&832&664&328&656&312&624&248&496\\
+992&984&968&936&872&744&488&976&952&904\\
+808&616&232&464&928&856&712&424&848&696\\
+392&784&568&136&272&544&088&176&352&704\\
+408&816&632&264&528&056&112&224&448&896\\
+792&584&168&336&672&344&688&376&752&504\end{array}\]
+For completeness, the following algorithm stops exactly at the first repeated residue. Since each residue determines the next, its repeated suffix is precisely the cycle; earlier residues are the transient. This finite exact verification provides both lists and lengths without confusing transient entries with cycle entries.
+\begin{verbatim}
+def cycle(a,m):
+ seq=[];x=1
+ while x not in seq:
+  seq.append(x);x=a*x%m
+ k=seq.index(x)
+ return seq[:k],seq[k:]
+p,c=cycle(2,100);assert p==[1,2] and len(c)==20
+p,c=cycle(2,1000);assert p==[1,2,4] and len(c)==100
+p,c=cycle(3,100);assert p==[] and len(c)==20
+\end{verbatim}

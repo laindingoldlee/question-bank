@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1780989_math_problem_help
+% Stable identity: aops-topic-1780989-q01
+The points are the vertices of a regular hexagon, and any $3$ of them form a triangle, so there are $\dbinom63=20$ equally likely choices.
+
+Up to rotation and reflection there are three kinds of triangle:
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+pair[] V; string[] nm={"$A$","$B$","$C$","$D$","$E$","$F$"};
+for(int i=0;i<6;++i) V.push(dir(90-60*i));
+draw(circle(O,1),gray+linewidth(0.6));
+draw(V[0]--V[2]--V[4]--cycle,blue+linewidth(0.9));
+draw(V[0]--V[1]--V[5]--cycle,red+dashed+linewidth(0.9));
+for(int i=0;i<6;++i){dot(V[i]);label(nm[i],V[i],dir(90-60*i));}
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item three consecutive vertices, such as $FAB$ (dashed red): sides $s,s,s\sqrt3$, isosceles; there are $6$ of these (one for each middle vertex);
+\item alternate vertices $ACE$ or $BDF$ (blue): equilateral, hence isosceles; there are $2$;
+\item the remaining $20-6-2=12$ triangles, such as $ABD$, contain a diameter: sides $s$, $s\sqrt3$, $2s$, all different (a $30$-$60$-$90$ triangle).
+\end{itemize}
+So $8$ of the $20$ triangles are isosceles, and the probability is $\dfrac{8}{20}=\boxed{\dfrac{2}{5}}$.

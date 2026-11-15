@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2488089_prime_numbers
+% Stable identity: aops-topic-2488089-q01
+\textbf{Step 1: $x\equiv z\pmod 2$.} Modulo $3$ we have $2\equiv-1$ and $5\equiv-1$, so $(-1)^x\equiv(-1)^z\pmod3$, which forces $x$ and $z$ to have the same parity.
+
+\textbf{Step 2: a lemma.} \emph{The only positive integers $b,c$ with $5^c=3^b+2$ are $b=c=1$.}
+
+Modulo $3$: $(-1)^c\equiv2\equiv-1$, so $c$ is odd. Suppose $b\ge2$. Then $5^c\equiv2\pmod9$. The powers $5^1,5^2,\dots,5^6$ are $5,7,8,4,2,1$ modulo $9$, so $c\equiv5\pmod6$. Modulo $7$ we have $5^6\equiv1$, so $5^c\equiv5^5\equiv3\pmod7$ and $3^b\equiv3-2=1\pmod7$. The powers $3^1,\dots,3^6$ are $3,2,6,4,5,1$ modulo $7$, so $6\mid b$; in particular $b=2e$ is even. Then $3^b=9^e\equiv1\pmod4$ and $5^c=3^b+2\equiv3\pmod4$, contradicting $5^c\equiv1\pmod4$. Hence $b=1$, and $5^c=5$ gives $c=1$. $\square$
+
+\textbf{Step 3: $x=1$.} The equation is $5^z=3^y+2$, so by the lemma $y=z=1$, giving $(1,1,1)$.
+
+\textbf{Step 4: $x\ge2$.} Modulo $4$: $3^y\equiv5^z\equiv1$, so $(-1)^y\equiv1$ and $y=2b$ is even.
+\begin{itemize}
+\item If $z$ is odd, then $x$ is odd by Step 1, so $x\ge3$. Modulo $8$: $2^x\equiv0$, $3^{2b}=9^b\equiv1$ and $5^z\equiv5$ (as $5^2\equiv1$ and $z$ is odd). But $0+1\not\equiv5\pmod8$, a contradiction.
+\item If $z=2c$ is even, then
+\[2^x=5^{2c}-3^{2b}=\left(5^c-3^b\right)\left(5^c+3^b\right).\]
+Both factors are positive divisors of $2^x$, so $5^c-3^b=2^s$ and $5^c+3^b=2^t$ with $s<t$. Adding, $2\cdot5^c=2^s\left(1+2^{t-s}\right)$; the bracket is odd and $5^c$ is odd, so $s=1$. Thus $5^c=3^b+2$, and the lemma gives $b=c=1$. Then $2^x=2\cdot8=16$, so $x=4$, $y=2$, $z=2$.
+\end{itemize}
+
+Both triples work: $2+3=5$ and $16+9=25$. The solutions are
+\[(x,y,z)=\boxed{(1,1,1)\text{ and }(4,2,2)}.\]

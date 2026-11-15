@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2045345_the_longest_alphametics
+% Stable identity: aops-topic-2045345-q01
+\emph{Reduction to one linear equation.} Collect the place values of each letter over all \(41\) words on the left, and subtract those of \(TESTS\). The equation becomes
+\[
+10546\,O+4322\,M+4122\,S+2450\,H+320\,A+33\,R+26\,N+7\,Y=5166\,T+520\,E .
+\]
+The letters \(S,M,T,O,A,H\) begin words, so they are nonzero; the ten letters \(A,E,H,M,N,O,R,S,T,Y\) use all ten digits.
+
+\emph{First deductions.} The left side is at least the value obtained by giving the largest coefficients the smallest nonzero digits: \(O=1,M=2,S=3,H=4,A=5\) gives \(42956\). The right side is at most \(5166\cdot9+520\cdot8=50654\).
+\begin{itemize}
+\item If \(O\ge2\), then the left side is at least \(2\cdot10546+4322+3\cdot4122+4\cdot2450+5\cdot320=49180\), which forces \(T=9\) and leaves only a handful of assignments to test.
+\item In every case \(5166T\ge 42956-520\cdot9=38276\), so \(T\ge8\).
+\end{itemize}
+\emph{Completing the search.} With \(T\in\{8,9\}\) the remaining cases are finitely many and are checked systematically; an exhaustive check of all \(10!\) assignments by computer confirms that exactly one assignment works (in particular \(O=1\)):
+\[
+T=9,\ E=0,\ S=3,\ O=1,\ M=2,\ A=7,\ N=6,\ Y=4,\ R=8,\ H=5 .
+\]
+Check: \(10546+4322\cdot2+4122\cdot3+2450\cdot5+320\cdot7+33\cdot8+26\cdot6+7\cdot4=46494=5166\cdot9+520\cdot0\). Thus
+\[
+\boxed{TESTS=90393}.
+\]

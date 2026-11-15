@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1551663_geometry_problem
+% Stable identity: aops-topic-1551663-q01
+Let $O$ be the common centre of the sphere and the cube; the sphere has radius $5$.
+
+\textbf{Upper bound.} Every point $Q$ of the cube's surface satisfies $OQ\le5\sqrt3$, the distance from the centre to a corner (half the space diagonal $10\sqrt3$). For a point $P$ on the sphere and $Q$ on the cube, the triangle inequality gives
+\[
+PQ\le PO+OQ\le5+5\sqrt3 .
+\]
+
+\textbf{It is attained.} Take $Q$ a corner and $P$ the point of the sphere on the ray from $Q$ through $O$, beyond $O$ (sketch, not to scale):
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair k=(4.5,2);
+pair p(real x,real y,real z){return (x,z)+y/10*k;}
+draw(p(0,0,0)--p(10,0,0)--p(10,0,10)--p(0,0,10)--cycle,linewidth(0.9));
+draw(p(10,0,0)--p(10,10,0)--p(10,10,10)--p(10,0,10),linewidth(0.9));
+draw(p(0,0,10)--p(0,10,10)--p(10,10,10),linewidth(0.9));
+draw(p(0,0,0)--p(0,10,0)--p(10,10,0),dashed+gray(0.5));draw(p(0,10,0)--p(0,10,10),dashed+gray(0.5));
+pair O=p(5,5,5);
+draw(circle(O,5),blue+linewidth(0.9));
+pair Q=p(10,10,10);
+pair P=O+5*unit(O-Q);
+draw(Q--O,red+linewidth(1));draw(O--P,deepgreen+linewidth(1));
+dot(O);dot(Q);dot(P);
+label("$O$",O,SE);label("$Q$",Q,NE);label("$P$",P,W);
+label("$5\sqrt{3}$",O+0.3*(Q-O),NW,red);label("$5$",(O+P)/2,SE,deepgreen);
+label("$10$",p(5,0,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then $Q$, $O$, $P$ are collinear with $O$ between them, so $PQ=5\sqrt3+5$.
+
+The greatest distance is $\boxed{5+5\sqrt3}$ inches.

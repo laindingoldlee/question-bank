@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1946754_geometry
+% Stable identity: aops-topic-1946754-q01
+Let the common radius be $r$. A circle tangent to $AB$ and $BC$ has its centre on the bisector of angle $B$, which makes $30^\circ$ with $BC$. Since $R$ is at distance $r$ from $BC$, its foot on $BC$ is at distance $r\cot30^\circ=\sqrt3\,r$ from $B$; similarly for the other centres.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real r=1,s=2+2*sqrt(3);
+pair B=(0,0),C=(s,0),A=(s/2,s*sqrt(3)/2);
+pair R=(sqrt(3)*r,r),Q=(s-sqrt(3)*r,r),P=(s/2,s*sqrt(3)/2-2r);
+draw(A--B--C--cycle,linewidth(1));
+draw(circle(P,r));draw(circle(Q,r));draw(circle(R,r));
+draw(P--Q--R--cycle,dashed);
+draw(B--R,gray(0.5));draw(R--(R.x,0),gray(0.5));
+dot(P);dot(Q);dot(R);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$P$",P,N);label("$Q$",Q,NE);label("$R$",R,NW);
+label("$r$",(R.x,r/2),E);label("$\sqrt3\,r$",(R.x/2,0),S);label("$30^\circ$",(0.78,0.2),fontsize(7pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Externally tangent equal circles have centres $2r$ apart, so $PQR$ is an equilateral triangle of side $2r$. Its side $QR$ is parallel to $BC$ (both $Q$ and $R$ are at distance $r$ from $BC$), and
+\[
+BC=\sqrt3\,r+2r+\sqrt3\,r=(2+2\sqrt3)r .
+\]
+The two triangles are similar with ratio $\dfrac{BC}{QR}=\dfrac{(2+2\sqrt3)r}{2r}=1+\sqrt3$, so
+\[
+\dfrac{[ABC]}{[PQR]}=(1+\sqrt3)^2=4+2\sqrt3 .
+\]
+Thus $a=4$, $b=2$ and $a+b=\boxed{6}$.

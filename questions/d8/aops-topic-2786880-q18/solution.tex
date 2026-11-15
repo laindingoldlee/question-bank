@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2786880_2017_mbmt_guts_round_p1125_montgomery_blair_math_tournament
+% Stable identity: aops-topic-2786880-q18
+For $ n=\prod p_i^{e_i}$, the total divisor count is $\prod(e_i+1)$, and the square-divisor count is $\prod(\lfloor\dfrac{e_i}{2}\rfloor+1)$. The candidate $ 5040=2^4\cdot3^2\cdot5\cdot7 $ has 60 divisors and 6 square divisors. To certify minimality, the following exact enumeration tests every smaller integer by its prime exponents:
+\begin{verbatim}
+def counts(n):
+ total=squares=1;p=2
+ while p*p<=n:
+  e=0
+  while n%p==0:n//=p;e+=1
+  total*=e+1;squares*=e//2+1;p+=1
+ if n>1:total*=2
+ return total,squares
+assert counts(5040)==(60,6)
+assert all(t!=10*s for t,s in map(counts,range(1,5040)))
+\end{verbatim}
+Thus the minimum is $\boxed{5040}$.

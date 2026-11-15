@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h1355789_geometry_help
+% Stable identity: aops-topic-1355789-q01
+(a) By Brahmagupta's formula with $s=\dfrac{5+14+10+11}{2}=20$,
+\[
+[ABCD]=\sqrt{(20-5)(20-14)(20-10)(20-11)}=\sqrt{15\cdot6\cdot10\cdot9}=\sqrt{8100}=\boxed{90}.
+\]
+(b) Opposite angles of a cyclic quadrilateral are supplementary, so $\cos D=-\cos B$ and $\cos C=-\cos A$. The law of cosines for $AC$ in triangles $ABC$ and $ADC$:
+\[
+AC^2=25+196-140\cos B=100+121+220\cos B\quad\Longrightarrow\quad \cos B=0,\ AC^2=221 .
+\]
+So $\angle B=90^\circ$ (and $AC$ is a diameter). For $BD$ in triangles $ABD$ and $CBD$:
+\[
+BD^2=25+121-110\cos A=196+100+280\cos A\quad\Longrightarrow\quad \cos A=-\dfrac{150}{390}=-\dfrac{5}{13},
+\]
+\[
+BD^2=146+110\cdot\dfrac{5}{13}=\dfrac{2448}{13}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair B=(0,0),A=(0,5),C=(14,0);
+pair[] X=intersectionpoints(circle(C,10),circle(A,11));
+pair D=(X[0].x+X[0].y>X[1].x+X[1].y)?X[0]:X[1];
+pair O=(A+C)/2;
+draw(circle(O,abs(A-O)),gray);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,blue+dashed); draw(B--D,red+dashed);
+draw(ra(B,A-B,C-B,0.9));
+label("$A$",A,W); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,NE);
+label("$5$",(A+B)/2,E); label("$14$",(B+C)/2,S); label("$10$",(C+D)/2,NE); label("$11$",(A+D)/2,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence $AC^2+BD^2=221+\dfrac{2448}{13}=\boxed{\dfrac{5321}{13}}$.
+
+Checks: Ptolemy gives $AC\cdot BD=5\cdot10+14\cdot11=204$, and indeed $221\cdot\dfrac{2448}{13}=17\cdot2448=41616=204^2$. The area is also $\dfrac{1}{2}\cdot5\cdot14+\dfrac{1}{2}\cdot10\cdot11=35+55=90$, since $\angle B=\angle D=90^\circ$.

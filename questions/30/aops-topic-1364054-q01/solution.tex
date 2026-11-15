@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1364054_equilateral_triangle
+% Stable identity: aops-topic-1364054-q01
+The statement is false: \textbf{no} equilateral triangle has all three vertices at lattice points.
+
+Suppose $A$, $B$, $C$ were lattice points forming an equilateral triangle with side $s$.
+
+\emph{The area is rational.} By the shoelace formula,
+\[
+[ABC]=\dfrac{1}{2}\left|x_A(y_B-y_C)+x_B(y_C-y_A)+x_C(y_A-y_B)\right|,
+\]
+which is half an integer, hence rational.
+
+\emph{The area is irrational.} The squared side $s^2=(x_A-x_B)^2+(y_A-y_B)^2$ is a positive integer, and the area of an equilateral triangle is $\dfrac{\sqrt3}{4}s^2$. Since $\sqrt3$ is irrational and $\dfrac{s^2}{4}$ is a nonzero rational, the area is irrational.
+
+This contradiction shows that such a triangle does not exist. For example, with $A=(0,0)$ and $B=(4,0)$ the third vertex must be $(2,\pm2\sqrt3)$, which is not a lattice point.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=4;++i) for(int j=0;j<=4;++j) dot((i,j),gray+3);
+pair A=(0,0), B=(4,0), C=(2,2*sqrt(3));
+draw(A--B--C--cycle,blue+linewidth(0.9));
+dot(A,blue+5); dot(B,blue+5); dot(C,red+5);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

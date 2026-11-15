@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2512577_what_is_the_area_of_the_heart
+% Stable identity: aops-topic-2512577-q01
+In the heart-shaped figure below, $ABCD$ is a square. The arcs $AE$ and $AF$ are semicircles of radius $1$ (with diameters $AE$ and $AF$) that are externally tangent to each other at $A$, and the arcs $ED$ and $FB$ are both centred at $A$ and are congruent. The figure is bounded by the two semicircles, the arcs $FB$ and $ED$, and the sides $BC$ and $CD$ of the square. What is the area of the entire figure?
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),E1=(-2,0),F=(2,0),D=2*dir(225),B=2*dir(-45),C=B+D;
+draw(arc((-1,0),1,180,0)--arc((1,0),1,180,0),linewidth(0.8));
+draw(arc(A,2,0,-45),linewidth(0.8)); draw(arc(A,2,225,180),linewidth(0.8));
+draw(D--C--B,linewidth(0.8)); draw(D--A--B);
+dot(A);dot(B);dot(C);dot(D);dot(E1);dot(F);
+label("$A$",A,S);label("$B$",B,E);label("$C$",C,S);label("$D$",D,W);label("$E$",E1,W);label("$F$",F,E);
+\end{asy}
+
+$\textbf{(A) }4+2\pi\qquad\textbf{(B) }4\pi\qquad\textbf{(C) }1+4\pi\qquad\textbf{(D) }2+4\pi\qquad\textbf{(E) }1+6\pi$

@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h620563_tough_problem
+% Stable identity: aops-topic-620563-q01
+Let the hexagon have side $s$ and centre $O$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=dir(120),B=dir(60),C=dir(0),D=dir(-60),Ep=dir(-120),F=dir(180);
+pair G=(A+B)/2,H=(C+D)/2,I=(Ep+F)/2,O=(0,0);
+fill(G--H--I--cycle,paleyellow);
+draw(A--B--C--D--Ep--F--cycle,linewidth(0.9));
+draw(G--H--I--cycle,linewidth(0.9)+blue);
+draw(O--G,dashed);draw(O--H,dashed);draw(O--I,dashed);
+dot(O);label("$O$",O,NW);
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,E);label("$D$",D,SE);label("$E$",Ep,SW);label("$F$",F,W);
+label("$G$",G,N);label("$H$",H,SE);label("$I$",I,SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The midpoint of a side is at distance equal to the apothem $a=\dfrac{\sqrt3}{2}s$ from $O$. The points $G$, $H$, $I$ are the midpoints of alternate sides, so the angles $\angle GOH=\angle HOI=\angle IOG=120^\circ$, and triangle $GHI$ is equilateral with circumradius $a$. Its side is therefore $\sqrt3\,a=\dfrac{3}{2}s$, and
+\[
+[GHI]=\dfrac{\sqrt3}{4}\cdot\dfrac{9}{4}s^2=\dfrac{9\sqrt3}{16}s^2 .
+\]
+The hexagon consists of six equilateral triangles of side $s$, so $[ABCDEF]=\dfrac{3\sqrt3}{2}s^2$. Hence
+\[
+\dfrac{[ABCDEF]}{[GHI]}=\dfrac{3\sqrt3}{2}\cdot\dfrac{16}{9\sqrt3}=\dfrac{8}{3},
+\qquad
+[ABCDEF]=\dfrac{8}{3}\cdot225=\boxed{600}.
+\]

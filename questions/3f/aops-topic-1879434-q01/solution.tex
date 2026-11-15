@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1879434_how_to_write_triangle_congruence
+% Stable identity: aops-topic-1879434-q01
+A correspondence $A\leftrightarrow X$, $B\leftrightarrow Y$, $C\leftrightarrow Z$ is a congruence exactly when $AB=XY$, $BC=YZ$ and $CA=ZX$ (then the angles match too, by SSS).
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(6,0),A=(3,4),E2=(9,0),F=(15,0),D=(12,4);
+draw(A--B--C--cycle,linewidth(1));draw(D--E2--F--cycle,linewidth(1));
+void tick(pair P,pair Q,int n){pair m=(P+Q)/2,u=unit(Q-P),v=(-u.y,u.x);
+ for(int i=0;i<n;++i){pair c=m+(i-(n-1)/2)*0.28*u;draw((c-0.25*v)--(c+0.25*v),linewidth(0.7));}}
+tick(A,B,1);tick(A,C,1);tick(D,E2,1);tick(D,F,1);tick(B,C,2);tick(E2,F,2);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,N);label("$E$",E2,SW);label("$F$",F,SE);
+pair lp(pair P,pair Q,pair T){pair m=(P+Q)/2;return m+0.55*unit(rotate(90)*(Q-P))+0.5*unit(T-m);}
+label("$5$",lp(B,A,A));label("$5$",lp(A,C,A));label("$6$",(B+C)/2,2.4*S);
+label("$5$",lp(E2,D,D));label("$5$",lp(D,F,D));label("$6$",(E2+F)/2,2.4*S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $BC=6$ and the only side of length $6$ in $\triangle DEF$ is $EF$, we need $\{Y,Z\}=\{E,F\}$, and then $X=D$: the apex $A$ (where the two equal sides meet) must correspond to the apex $D$. Both remaining orders work:
+\begin{itemize}
+\item $\triangle DEF$: $DE=5=AB$, $EF=6=BC$, $FD=5=CA$;
+\item $\triangle DFE$: $DF=5=AB$, $FE=6=BC$, $ED=5=CA$.
+\end{itemize}
+So exactly two statements are correct: $\boxed{\triangle ABC\cong\triangle DEF\text{ and }\triangle ABC\cong\triangle DFE}$. The base vertices can be matched in either order because an isosceles triangle is symmetric about its axis; in particular $\triangle ABC\cong\triangle ACB$.

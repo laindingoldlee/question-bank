@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2789080_2011_manhattan_mathematical_olympiad_grades_56_problems_14
+% Stable identity: aops-topic-2789080-q04
+Draw a red edge for each outward pair and a blue edge for each return pair. Every vertex has one edge of each colour, so each component is an alternating even cycle, including a doubled edge when a pair stays together. Colour vertices alternately with two group colours around each component. Every travel edge joins different groups. To obtain exactly three nonempty groups, move one child from either 15-member group into a third group; removing a child cannot create a forbidden pair. Thus three groups are possible.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int k=0;k<6;++k){pair P=2*dir(60*k),Q=2*dir(60*(k+1));draw(P--Q,k%2==0 ? red : blue);dot(P);label(k%2==0 ? "I" : "II",P,dir(60*k));}label("alternating component",(0,-2.5));
+\end{asy}

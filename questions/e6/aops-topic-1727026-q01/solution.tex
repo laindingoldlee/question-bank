@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h1727026_400th_post_nt_problems
+% Stable identity: aops-topic-1727026-q01
+Compare $5^{n+1}=5\cdot5^n$ with $5^n$. Write $5^n=m\cdot10^k$ with $1\le m<10$ (so $5^n$ has $k+1$ digits and its leading digit is $\lfloor m\rfloor$).
+\begin{itemize}
+\item If the leading digit is $1$, then $1\le m<2$ and $5\le5m<10$: $5^{n+1}$ has the \emph{same} number of digits.
+\item If the leading digit is at least $2$, then $10\le5m<50$: $5^{n+1}$ has exactly \emph{one more} digit.
+\end{itemize}
+Going from $5^0=1$ ($1$ digit) to $5^{2018}$ ($1411$ digits) takes $2018$ steps, and the number of digits grows by $1410$. So exactly $1410$ of the steps $n=0,1,\dots,2017$ add a digit, and the other $2018-1410=608$ start from a power with leading digit $1$. One of these is $5^0=1$, so among $n=1,\dots,2017$ there are $607$ powers with leading digit $1$. Finally $5^{2018}$ has leading digit $3$. The answer is $\boxed{607}$.

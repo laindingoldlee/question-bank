@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2653498_1220_nt_amir_hossein
+% Stable identity: aops-topic-2653498-q01
+Write the fraction as $\dfrac{\overline{ab}}{\overline{ce}}$ with digits $a,c\ge1$. The deleted digit can be in four positions.
+\begin{itemize}
+\item \emph{Both units digits} ($b=e$): $\dfrac{10a+b}{10c+b}=\dfrac ac$ gives $bc=ab$, so $b=0$ (trivial) or $a=c$ (the fraction is $1$).
+\item \emph{Both tens digits} ($a=c$): $\dfrac{10a+b}{10a+e}=\dfrac be$ gives $10ae=10ab$, so $b=e$ and the fraction is $1$.
+\item \emph{Numerator's units and denominator's tens} ($b=c$): $\dfrac{10a+b}{10b+e}=\dfrac ae$ gives $e(10a+b)=a(10b+e)$, i.e.
+\[b(e-a)=9a(b-e).\qquad(*)\]
+\item \emph{Numerator's tens and denominator's units}: the reciprocal of such a fraction is of the previous type, so these fractions are the reciprocals of solutions of $(*)$.
+\end{itemize}
+\emph{Solving $(*)$} (digits $a,b,e\ge1$). If $e=a$, then $b=e=a$ and the fraction is $1$. Otherwise $0<|e-a|\le8$, so $9\nmid e-a$, and $9\mid b(e-a)$ forces $3\mid b$:
+\begin{itemize}
+\item $b=3$: $(*)$ becomes $10a=e(3a+1)$; as $\gcd(3a+1,a)=1$, $3a+1\mid10$, so $a=3=e$: trivial.
+\item $b=6$: $20a=e(3a+2)$, so $e=\dfrac{20a}{3a+2}$, an integer only for $a=1$ ($e=4$), $a=2$ ($e=5$) and $a=6$ ($e=6$, trivial).
+\item $b=9$: $10a=e(a+1)$; as $\gcd(a+1,a)=1$, $a+1\mid10$, so $a=1$ ($e=5$), $a=4$ ($e=8$) or $a=9$ ($e=9$, trivial).
+\end{itemize}
+The nontrivial solutions of $(*)$ are $\dfrac{16}{64},\dfrac{26}{65},\dfrac{19}{95},\dfrac{49}{98}$, all less than $1$; their reciprocals (the fourth type) are greater than $1$. So the answer is
+\[\boxed{\dfrac{16}{64}=\dfrac14,\quad\dfrac{19}{95}=\dfrac15,\quad\dfrac{26}{65}=\dfrac25,\quad\dfrac{49}{98}=\dfrac48}.\]

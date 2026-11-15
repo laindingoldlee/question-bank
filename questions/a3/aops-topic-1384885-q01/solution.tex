@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1384885_confusing_functions
+% Stable identity: aops-topic-1384885-q01
+\textbf{(a)} A product of two real numbers is $0$ exactly when one of them is $0$. So $xy=0$ holds exactly when $x=0$ or $y=0$: the set is the union of the two coordinate axes, origin included.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw((-3,0)--(3,0),blue+linewidth(1.6),Arrows(TeXHead));
+draw((0,-2.2)--(0,2.2),blue+linewidth(1.6),Arrows(TeXHead));
+label("$x$",(3,0),E); label("$y$",(0,2.2),N);
+dot((0,0),blue);
+for(int i=-2;i<=2;++i){ if(i!=0){draw((i,-0.08)--(i,0.08)); label("$"+string(i)+"$",(i,-0.08),S,fontsize(8pt));}}
+dot((0,1),red); dot((0,-1),red);
+label("$(0,1)$",(0,1),E,red); label("$(0,-1)$",(0,-1),E,red);
+label("$xy=0$",(2.2,1.4),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+It is \emph{not} the graph of a function $y=f(x)$: the input $x=0$ is paired with every $y$ (for example $(0,1)$ and $(0,-1)$ both lie on it), so it fails the vertical line test.
+
+\textbf{(b)} Dividing by $x$ is allowed only when $x\ne0$. So $y=\dfrac{0}{x}$ means ``$x\ne0$ and $y=0$'': it is the $x$-axis with the origin removed. It is the graph of the function $f(x)=0$ with domain $x\ne0$.
+
+Likewise $x=\dfrac{0}{y}$ means ``$y\ne0$ and $x=0$'': the $y$-axis with the origin removed. It is not the graph of a function of $x$ (the single input $0$ has infinitely many outputs).
+
+So the two rewritten equations are \emph{not} the same: they describe two different pieces of the original set, and each one loses not only the origin but the whole other axis. Dividing both sides of an equation by an expression that can be $0$ loses solutions; the correct way to rewrite $xy=0$ is ``$x=0$ or $y=0$''.

@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2660066_geometric_probability_ismmmmmmmmmmm
+% Stable identity: aops-topic-2660066-q01
+Represent the pair $(a,b)$ as a point of the square $[0,99]^2$, which has area $99^2$. The pairs with $|a-b|>15$ form two right isosceles triangles in the corners, each with legs $99-15=84$, of total area $84^2$. So the probability is
+\[1-\dfrac{84^2}{99^2}=1-\dfrac{7056}{9801}=\dfrac{2745}{9801}=\boxed{\dfrac{305}{1089}}\approx0.280.\]
+(If instead both numbers are integers from $0$ to $99$, chosen uniformly and independently, the number of pairs with $|a-b|\le15$ is $100+2(99+98+\cdots+85)=2860$, and the probability is $\dfrac{2860}{10000}=\dfrac{143}{500}$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+fill((0,0)--(15,0)--(99,84)--(99,99)--(84,99)--(0,15)--cycle,rgb(0.82,0.9,1));
+draw((0,0)--(99,0)--(99,99)--(0,99)--cycle,linewidth(0.8));
+draw((15,0)--(99,84),dashed);draw((0,15)--(84,99),dashed);
+label("$0$",(0,0),SW,fontsize(8pt));label("$99$",(99,0),S,fontsize(8pt));label("$99$",(0,99),W,fontsize(8pt));
+label("$15$",(15,0),S,fontsize(8pt));label("$15$",(0,15),W,fontsize(8pt));
+label("$a$",(50,0),2S,fontsize(8pt));label("$b$",(0,50),2W,fontsize(8pt));
+label(rotate(45)*Label("$|a-b|\le15$"),(50,50),fontsize(8pt));label("$84$",(57,0),N,fontsize(7pt));label("$84$",(99,42),W,fontsize(7pt));
+\end{asy}

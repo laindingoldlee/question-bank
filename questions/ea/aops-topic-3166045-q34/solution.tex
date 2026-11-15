@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h3166045_2018_lmt_fall_guts_round_p25p36__lexington_mathematical_tournament
+% Stable identity: aops-topic-3166045-q34
+Compute the power exactly by integer exponentiation and add its decimal digits. This yields $\boxed{30001}$. The following complete integer calculation is reproducible and uses no rounding.\begin{verbatim}
+import sys
+if hasattr(sys,'set_int_max_str_digits'):
+    sys.set_int_max_str_digits(0)
+value=pow(2018,2018)
+answer=sum(int(digit) for digit in str(value))
+assert answer==30001
+\end{verbatim}

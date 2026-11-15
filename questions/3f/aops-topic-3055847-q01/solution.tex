@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3055847_general_formula
+% Stable identity: aops-topic-3055847-q01
+For the first problem, fix $ x=-6,\ldots,6 $. The permitted number of $ y $ is $ 2\lfloor\sqrt{44-x^2}\rfloor+1 $. The values for $|x|=0,1,2,3,4,5,6 $ are $ 13,13,13,11,11,9,5 $, giving $ 13+2(13+13+11+11+9+5)=\boxed{137}$. In general put $ B=A-1 $ for the strict inequality and $ B=A $ for the weak one, and $ M=\lfloor B^{\dfrac{1}{2k}}\rfloor $. The count is \[\boxed{\sum_{x=-M}^M\left(2\left\lfloor(B-x^{2k})^{\dfrac{1}{2k}}\right\rfloor+1\right)}.\]Integer-valued powers justify replacing a strict bound by $ A-1 $. For an odd positive power, allowing all integer inputs gives infinitely many solutions, since $ x=y=-t $ works for every sufficiently large positive integer $ t $.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(circle((0,0),sqrt(45)));for(int x=-6;x<=6;++x)for(int y=-6;y<=6;++y)if(x*x+y*y<45)dot((x,y),1bp);label("$x^2+y^2<45$",(0,-8));
+\end{asy}

@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2417106_1900th_post_problems
+% Stable identity: aops-topic-2417106-q02
+Without restrictions there are $6\cdot5\cdot4\cdot3\cdot2=720$ seatings. Each row has $2$ pairs of adjacent seats, so there are $4$ adjacent pairs of seats in all. Let $X$, $Y$, $Z$ be the sets of seatings in which Sally-Bob, Bob-Methuselah and Mary-Susan, respectively, are adjacent. We count the bad seatings by inclusion-exclusion.
+
+\textbf{One pair.} Choose an adjacent pair of seats ($4$ ways), the order of the two people in it ($2$), and seats for the other three people among the remaining $4$ seats ($4\cdot3\cdot2=24$): $|X|=|Y|=|Z|=4\cdot2\cdot24=192$.
+
+\textbf{$X\cap Y$:} Bob sits in the middle of a row with Sally and Methuselah on either side: $2$ rows, $2$ orders, and $3\cdot2=6$ ways to seat Mary and Susan in the other three seats: $24$.
+
+\textbf{$X\cap Z$:} the two adjacent pairs share no person, and two adjacent pairs of seats in the same row overlap, so they are in different rows: $4$ choices of seats for Sally-Bob, then $2$ for Mary-Susan in the other row, $2\cdot2$ orders, and $2$ seats for Methuselah: $4\cdot2\cdot4\cdot2=64$. Likewise $|Y\cap Z|=64$.
+
+\textbf{$X\cap Y\cap Z$:} one row is Sally-Bob-Methuselah in some order with Bob in the middle ($2$ rows, $2$ orders) and Mary-Susan is an adjacent pair in the other row ($2$ positions, $2$ orders): $2\cdot2\cdot2\cdot2=16$.
+
+So the number of bad seatings is $3\cdot192-(24+64+64)+16=440$, and the number of allowed seatings is
+\[720-440=\boxed{280}.\]

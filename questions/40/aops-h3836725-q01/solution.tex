@@ -1,0 +1,17 @@
+Because $CF,EF$ bisect the angles at $C,E$,
+\[
+\angle FCE=\dfrac{1}{2}\angle BCE,\qquad
+\angle CEF=\dfrac{1}{2}\angle CEB.
+\]
+Using the angle sum in triangle $CFE$ gives
+\[
+\angle CFE=180^\circ-\dfrac{1}{2}(\angle BCE+\angle CEB)
+=90^\circ+\dfrac{1}{2}\angle CBE.
+\]
+At $\angle CBE=40^\circ$, this is $\boxed{110^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair B=(0,0),C=(6,0),E=4dir(40);real a=length(C-E),b=length(B-E),c=length(B-C);pair F=(a*B+b*C+c*E)/(a+b+c);draw(B--C--E--cycle);draw(C--F--E,blue);label("$B$",B,SW);label("$C$",C,SE);label("$E$",E,N);label("$F$",F,S);label("$40^\circ$",B+(.65,.15));
+\end{asy}

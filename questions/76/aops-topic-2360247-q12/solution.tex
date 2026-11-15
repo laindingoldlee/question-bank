@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2360247_math_advent_calendar
+% Stable identity: aops-topic-2360247-q12
+Since $\sin C=1$ and $0^\circ<C<180^\circ$, the angle at $C$ is $90^\circ$. So $AB$ is the hypotenuse, and $AC$ is the leg opposite $B$:
+\[\sin B=\dfrac{AC}{AB}=\dfrac35\quad\Longrightarrow\quad AB=10.\]
+By the Pythagorean theorem $BC=\sqrt{10^2-6^2}=8$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), A=(0,6), B=(8,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw((0,0.5)--(0.5,0.5)--(0.5,0));
+label("$C$",C,SW); label("$A$",A,N); label("$B$",B,SE);
+label("$6$",(A+C)/2,W); label("$8$",(B+C)/2,S); label("$10$",(A+B)/2,NE);
+draw(arc(B,1.2,180-degrees(atan(6/8)),180));
+\end{asy}
+
+The area is $\dfrac12\cdot AC\cdot BC=\dfrac12\cdot6\cdot8=\boxed{24}$.

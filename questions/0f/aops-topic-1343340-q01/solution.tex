@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h1343340_hard_problem
+% Stable identity: aops-topic-1343340-q01
+Let the circle have centre $O$ and radius $R$. A chord of length $4$ subtends a central angle $2\theta$ and a chord of length $10$ subtends $2\varphi$, where
+\[
+\sin\theta=\dfrac{2}{R},\qquad \sin\varphi=\dfrac{5}{R}.
+\]
+The six central angles fill the full turn: $2\cdot2\theta+4\cdot2\varphi=360^\circ$, so $\theta+2\varphi=90^\circ$. (The order of the sides does not matter: reordering the chords around the circle keeps the same circle. With the order $4,10,10,4,10,10$, the chords $AB,BC,CD$ span exactly a semicircle, so $AD$ is a diameter.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real R=1+sqrt(51);
+real t=2*aSin(2/R), u=2*aSin(5/R);
+pair P0=R*dir(180);
+pair P1=R*dir(180-t), P2=R*dir(180-t-u), P3=R*dir(180-t-2*u);
+pair P4=R*dir(180-2*t-2*u), P5=R*dir(180-2*t-3*u);
+draw(circle((0,0),R),gray);
+draw(P0--P1--P2--P3--P4--P5--cycle,linewidth(0.9));
+draw(P0--P3,red+dashed);
+dot((0,0)); label("$O$",(0,0),S);
+label("$A$",P0,W); label("$B$",P1,NW); label("$C$",P2,N); label("$D$",P3,E);
+label("$4$",(P0+P1)/2,E); label("$10$",(P1+P2)/2,SE); label("$10$",(P2+P3)/2,SW);
+label("$4$",(P3+P4)/2,W); label("$10$",(P4+P5)/2,NW); label("$10$",(P5+P0)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+From $\theta=90^\circ-2\varphi$,
+\[
+\sin\theta=\cos2\varphi=1-2\sin^2\varphi
+\quad\Longrightarrow\quad \dfrac{2}{R}=1-\dfrac{50}{R^2}
+\quad\Longrightarrow\quad R^2-2R-50=0 .
+\]
+The positive root is $R=1+\sqrt{51}$, so the area of the circle is
+\[
+\pi R^2=\pi\left(1+\sqrt{51}\right)^2=\boxed{\left(52+2\sqrt{51}\right)\pi}\approx208.2 .
+\]

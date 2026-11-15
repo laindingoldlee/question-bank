@@ -1,0 +1,7 @@
+Choose the leftmost vertical edge in three ways. For each successive square, its left edge is already fixed. If the right edge has the same colour, the top and bottom must be the other two colours in either order, giving two choices. If the right edge has a different colour, there are two choices for it, and the top and bottom must include the missing third colour, giving $3^2-2^2=5$ choices. Thus each square has $2+2\cdot5=12$ extensions, regardless of the entering colour. Therefore $N=3\cdot12^5=746496$, whose remainder is $\boxed{96}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int k=0;k<5;++k){draw((k,0)--(k+1,0),red+1.5);draw((k,1)--(k+1,1),blue+1.5);}for(int k=0;k<=5;++k)draw((k,0)--(k,1),green+1.5);label("one valid colouring",(2.5,-.5));
+\end{asy}

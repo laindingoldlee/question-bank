@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2560983_1597_post_celebration_late
+% Stable identity: aops-topic-2560983-q01
+Let the third side be $x$. By the triangle inequality $0<x<20$, so $x\in\{1,2,\dots,19\}$ (for $x=10$ the triangle is equilateral). The altitude to the side $x$ bisects it, so its length is $h=\sqrt{100-\dfrac{x^2}{4}}$ and the area is
+\[A(x)=\dfrac x2\sqrt{100-\dfrac{x^2}{4}}=\dfrac14\sqrt{x^2\left(400-x^2\right)}.\]
+With $t=x^2$, the product $t(400-t)=20000-(t-200)^2$ increases for $t<200$ and decreases for $t>200$. Among the integers, $14^2=196$ and $15^2=225$ are the squares nearest $200$ on either side, and $196\cdot204=39984>225\cdot175=39375$; so the maximum is at $x=14$, with $A=\dfrac{\sqrt{39984}}4=\sqrt{2499}\approx49.990$. The minimum is at an end: $x=1$ gives $1\cdot399=399$ and $x=19$ gives $361\cdot39=14079$, so the minimum is $A(1)=\dfrac{\sqrt{399}}4\approx4.994$.
+
+The difference is $\sqrt{2499}-\dfrac{\sqrt{399}}{4}\approx44.996$, which rounds to $\boxed{45}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair B=(-7,0),C=(7,0),A=(0,sqrt(51)),F=(0,0);
+draw(A--B--C--cycle,linewidth(0.8));draw(A--F,dashed);
+draw((0,0)--(0.6,0)--(0.6,0.6)--(0,0.6));
+label("$10$",(A+B)/2,NW);label("$10$",(A+C)/2,NE);
+label("$h$",(0,3.2),E);
+label("$\dfrac x2$",(-3.5,0),S,fontsize(9pt));label("$\dfrac x2$",(3.5,0),S,fontsize(9pt));
+\end{asy}

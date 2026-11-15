@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2026613_number_problem
+% Stable identity: aops-topic-2026613-q01
+Let the smaller number be $a=\overline{xyz}$ (decimal digits), so $100\le a\le 333$ and the larger number is $3a$. For a string of decimal digits $\overline{d_2d_1d_0}$ let $h=256d_2+16d_1+d_0$ be Ben's base-$16$ value. Then $h(a)=256x+16y+z$.
+
+Compute $3a$ digit by digit. Let $c_1=\left\lfloor\dfrac{3z}{10}\right\rfloor$ be the carry from the units and $c_2=\left\lfloor\dfrac{3y+c_1}{10}\right\rfloor$ the carry from the tens; both are $0,1$ or $2$. A carry from the units replaces $10$ units by one ten, which changes Ben's value by $-10+16=6$; a carry from the tens changes it by $-10\cdot16+256=96$. Hence
+\[
+h(3a)=3h(a)+6c_1+96c_2,\qquad \dfrac{h(3a)}{h(a)}=3+\dfrac{6c_1+96c_2}{h(a)}.
+\]
+
+\textbf{Smallest value.} The ratio is at least $3$, with equality when there are no carries, e.g.\ $a=100$. So the minimum is $3$.
+
+\textbf{Largest value.} We maximise $\dfrac{6c_1+96c_2}{h(a)}$. The numerator is at most $204$.
+\begin{itemize}
+\item If $x\ge2$, then $h(a)\ge512$ and the fraction is at most $\dfrac{204}{512}<\dfrac{204}{359}$.
+\item Let $x=1$. If $c_2=2$ and $c_1=2$, then $z\ge7$ and $3y+2\ge20$, so $y\ge6$; thus $h(a)\ge256+96+7=359$, giving at most $\dfrac{204}{359}$, attained at $a=167$.
+\item If $c_2=2$ and $c_1=1$: $z\ge4$, $y\ge7$, $h(a)\ge 372$, fraction at most $\dfrac{198}{372}<\dfrac{204}{359}$.
+\item If $c_2=2$ and $c_1=0$: $y\ge7$, $h(a)\ge368$, fraction at most $\dfrac{192}{368}<\dfrac{204}{359}$.
+\item If $c_2\le1$: the numerator is at most $108$ and $h(a)\ge256$, so the fraction is at most $\dfrac{108}{256}<\dfrac{204}{359}$.
+\end{itemize}
+So the maximum is $3+\dfrac{204}{359}=\dfrac{1281}{359}$, from $167$ and $501$: indeed $501_{16}=1281$ and $167_{16}=359$.
+
+The required difference is
+\[
+\dfrac{1281}{359}-3=\boxed{\dfrac{204}{359}}.
+\]

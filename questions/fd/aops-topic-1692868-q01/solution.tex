@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1692868_cards_problem
+% Stable identity: aops-topic-1692868-q01
+We show that for odd $n\ge3$ the minimum is $\dfrac{n+1}{2}$; so the answers are $\boxed{3}$, $\boxed{5}$ and $\boxed{7}$.
+
+\textbf{A move as a block swap.} Taking out a block and reinserting it elsewhere is the same as exchanging two adjacent blocks $X$ and $Y$:
+\[
+\cdots\,a\,\underbrace{x_1\cdots x_p}_{X}\,\underbrace{y_1\cdots y_q}_{Y}\,f\,\cdots\ \longrightarrow\ \cdots\,a\,y_1\cdots y_q\,x_1\cdots x_p\,f\,\cdots,
+\]
+where $a$ or $f$ may be missing (at the top or bottom of the deck). Only the neighbouring pairs at the (at most three) cuts change: the old pairs $(a,x_1)$, $(x_p,y_1)$, $(y_q,f)$ are replaced by $(a,y_1)$, $(y_q,x_1)$, $(x_p,f)$.
+
+\textbf{The quantity.} Call a pair of neighbouring cards \emph{ascending} if the upper card has the smaller number. Let $D$ be the number of ascending neighbouring pairs. At the start $D=n-1$; at the end $D=0$.
+
+\textbf{Claim 1: a move decreases $D$ by at most $2$.} Otherwise there are three cuts, all three old pairs are ascending and all three new pairs are descending: $a<x_1$, $x_p<y_1$, $y_q<f$ and $a>y_1$, $y_q>x_1$, $x_p>f$. Then $a<x_1<y_q<f<x_p<y_1<a$, a contradiction.
+
+\textbf{Claim 2: the first move decreases $D$ by exactly $1$.} At the start the cards are in increasing order, so $a<$ all of $X$ $<$ all of $Y<f$. The old pairs are all ascending; of the new pairs, $(a,y_1)$ and $(x_p,f)$ are ascending and $(y_q,x_1)$ is descending. So $D$ drops by $1$.
+
+\textbf{Claim 3: the last move decreases $D$ by at most $1$.} Undoing the last move is itself a move applied to the final, fully decreasing deck; the same computation (with all inequalities reversed) shows it creates exactly one ascending pair. So just before the last move $D=1$.
+
+\textbf{Lower bound.} With $m$ moves ($m\ge2$, since one move lowers $D$ by $1<n-1$), the total decrease $n-1$ is at most $1+2(m-2)+1=2m-2$, so $m\ge\dfrac{n+1}{2}$. This gives at least $3$, $5$, $7$ moves for $n=5,9,13$.
+
+\textbf{Constructions.} In each line one block is moved.
+\begin{itemize}
+\item $n=5$: $12345\to34125\to32541\to54321$.
+\item $n=9$: $1\,2\,3\,4\,5\,6\,7\,8\,9\to3\,4\,5\,6\,1\,2\,7\,8\,9\to3\,2\,7\,8\,9\,4\,5\,6\,1\to9\,4\,3\,2\,7\,8\,5\,6\,1\to9\,8\,5\,4\,3\,2\,7\,6\,1\to9\,8\,7\,6\,5\,4\,3\,2\,1$.
+\item $n=13$: $1\,2\,\cdots\,13\to3\,4\,5\,6\,7\,8\,1\,2\,9\,10\,11\,12\,13\to3\,2\,9\,10\,11\,12\,13\,4\,5\,6\,7\,8\,1\to13\,4\,3\,2\,9\,10\,11\,12\,5\,6\,7\,8\,1\to13\,12\,5\,4\,3\,2\,9\,10\,11\,6\,7\,8\,1\to13\,12\,11\,6\,5\,4\,3\,2\,9\,10\,7\,8\,1\to13\,12\,11\,10\,7\,6\,5\,4\,3\,2\,9\,8\,1\to13\,12\,\cdots\,2\,1$.
+\end{itemize}
+(For example, in the second step for $n=9$ the block $2\,7\,8\,9$ is moved up in front of $4\,5\,6\,1$.) Hence the minimum numbers of moves are $3$, $5$ and $7$.

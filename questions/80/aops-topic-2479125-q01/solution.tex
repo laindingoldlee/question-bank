@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2479125_parallelogram_iff_statement_rhombus
+% Stable identity: aops-topic-2479125-q01
+Let $ABCD$ be a parallelogram. Its opposite sides are congruent: $AB=CD$ and $BC=DA$. (The diagonal $AC$ splits it into triangles $ABC$ and $CDA$, which are congruent by ASA, since $AB\parallel CD$ and $BC\parallel AD$ give equal alternate angles at $A$ and $C$, and $AC$ is common.)
+
+\textbf{If.} Suppose two consecutive sides are congruent, say $AB=BC$ (any pair of consecutive sides can be named this way). Then
+\[AB=BC=DA\quad\text{and}\quad CD=AB,\]
+so all four sides are congruent and $ABCD$ is a rhombus.
+
+\textbf{Only if.} A rhombus has all four sides congruent, so in particular any two consecutive sides are congruent.
+
+Hence the statement is true. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(3,0), C=(3+1.8,2.4), D=(1.8,2.4);
+draw(A--B--C--D--cycle,linewidth(0.8));
+void tick(pair p, pair q){pair m=(p+q)/2, n=0.15*unit(rotate(90)*(q-p)); draw(m-n--m+n);}
+tick(A,B); tick(B,C); tick(C,D); tick(D,A);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+\end{asy}
+
+(If $AB=BC$, the equal opposite sides force all four sides to be equal.)

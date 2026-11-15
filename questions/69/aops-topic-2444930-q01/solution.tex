@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2444930_problem_thing
+% Stable identity: aops-topic-2444930-q01
+For $m\ge0$ let $f_m(s)=(2m+1)+\dfrac{2m+2}{s}$ for $s>0$. Then $C_n=f_0\left(f_1\left(\cdots f_{n-1}(2n+1)\cdots\right)\right)$; for example $C_2=f_0\left(f_1(5)\right)=1+\dfrac{2}{3+\dfrac45}$.
+
+\textbf{Numbers satisfying the same recursion.} For $m\ge0$ let
+\[J_m=\int_0^1t^m\sqrt{e^t}\,dt>0.\]
+Since $2\sqrt{e^t}$ has derivative $\sqrt{e^t}$, we get $J_0=2\left(\sqrt e-1\right)$, and integrating by parts, for $m\ge1$,
+\[J_m=\left[2t^m\sqrt{e^t}\right]_0^1-2m\int_0^1t^{m-1}\sqrt{e^t}\,dt=2\sqrt e-2mJ_{m-1}.\]
+Writing this for $m$ and for $m+1$ and subtracting gives $J_{m+1}+2(m+1)J_m=J_m+2mJ_{m-1}$, that is,
+\[2mJ_{m-1}=(2m+1)J_m+J_{m+1}\qquad(m\ge1).\]
+Put $v_m=\dfrac{J_m}{2^{m+1}m!}>0$. Dividing by $2^{m+1}m!$ turns this into
+\[v_{m-1}=(2m+1)v_m+(2m+2)v_{m+1}\qquad(m\ge1).\]
+Hence the positive numbers $t_m=\dfrac{v_{m-1}}{v_m}$ ($m\ge1$) satisfy
+\[t_m=(2m+1)+\dfrac{2m+2}{t_{m+1}}=f_m(t_{m+1}),\qquad\text{so in particular}\qquad t_m>2m+1.\]
+Let $V=f_0(t_1)=1+\dfrac{2}{t_1}$. Unwinding, $V=f_0\left(f_1\left(\cdots f_{n-1}(t_n)\cdots\right)\right)$ for every $n$: the same expression as $C_n$, except that the innermost number $2n+1$ is replaced by $t_n$.
+
+\textbf{$C_n\to V$.} If $s,s'\ge2m+3$, then
+\[\left|f_m(s)-f_m(s')\right|=\dfrac{(2m+2)\,|s-s'|}{ss'}\le\dfrac{2m+2}{(2m+3)^2}\,|s-s'|<\dfrac{|s-s'|}{2m+3}.\]
+In the two nested expressions for $V$ and $C_n$, every number fed into $f_m$ is at least $2m+3$: it is $t_n>2n+1$ or $2n+1$ (when $m=n-1$), or a value of $f_{m+1}$, which exceeds $2m+3$. At the innermost level, $\left|t_n-(2n+1)\right|=\dfrac{2n+2}{t_{n+1}}<\dfrac{2n+2}{2n+3}<1$. Applying $f_{n-1},f_{n-2},\dots,f_0$ multiplies the difference by less than $\dfrac1{2n+1},\dfrac1{2n-1},\dots,\dfrac13$, so
+\[|V-C_n|<\dfrac{1}{3\cdot5\cdot7\cdots(2n+1)}\longrightarrow0.\]
+Hence the continued fraction converges, and its value is $V$.
+
+\textbf{Computing $V$.} We have $J_1=2\sqrt e-2J_0=4-2\sqrt e$, so
+\[t_1=\dfrac{v_0}{v_1}=\dfrac{\dfrac{J_0}{2}}{\dfrac{J_1}{4}}=\dfrac{2J_0}{J_1}=\dfrac{4\left(\sqrt e-1\right)}{4-2\sqrt e}=\dfrac{2\left(\sqrt e-1\right)}{2-\sqrt e},\]
+and
+\[V=1+\dfrac{2}{t_1}=1+\dfrac{2-\sqrt e}{\sqrt e-1}=\boxed{\dfrac{1}{\sqrt e-1}}\approx1.5415.\]
+
+(How might one find this? The values $C_1\approx1.667$, $C_2\approx1.526$, $C_3\approx1.5434$, \dots\ settle quickly at $1.541494\dots$, which can be recognised as $\dfrac{1}{\sqrt e-1}$. Integrals $\int_0^1t^me^{ct}\,dt$ satisfy three-term recursions of exactly this shape by integration by parts, and the choice $c=\dfrac12$, that is $e^{ct}=\sqrt{e^t}$, produces the coefficients $2m+1$ and $2m+2$.)

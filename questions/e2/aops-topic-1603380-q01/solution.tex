@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1603380_fgeometry
+% Stable identity: aops-topic-1603380-q01
+Let the poles be $AB=12$ and $DC=16$, with $A$, $D$ on the ground, let the ropes $AC$ and $BD$ cross at $E$, and let $F$ be the foot of the perpendicular from $E$ to the ground, so $EF=x$. Let $AD=d$ and $AF=y$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real d=9; pair A=(0,0),B=(0,12),C=(d,16),D=(d,0);
+pair X=extension(B,D,A,C); pair F=(X.x,0);
+draw((-1,0)--(d+1,0),linewidth(0.9));
+draw(A--B,linewidth(1.2));draw(D--C,linewidth(1.2));
+draw(B--D,blue);draw(A--C,blue);
+draw(X--F,red+dashed);
+real q=0.5;draw(F+(q,0)--F+(q,q)--F+(0,q),red);
+dot(X);dot(F);
+label("$A$",A,SW);label("$B$",B,W);label("$C$",C,E);label("$D$",D,SE);label("$E$",X,2*W);label("$F$",F,S);
+label("$12$",(0,6),W);label("$16$",(d,8),E);label("$x$",(X.x,X.y/2),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The segments $AB$, $EF$, $DC$ are all vertical, hence parallel.
+\begin{itemize}
+\item Triangles $DFE$ and $DAB$ are similar: $\dfrac{x}{12}=\dfrac{d-y}{d}$.
+\item Triangles $AFE$ and $ADC$ are similar: $\dfrac{x}{16}=\dfrac{y}{d}$.
+\end{itemize}
+Adding, $\dfrac{x}{12}+\dfrac{x}{16}=1$, so $x\cdot\dfrac{7}{48}=1$ and
+\[
+x=\boxed{\dfrac{48}{7}}.
+\]
+This does not depend on the distance $d$ between the poles; in general $\dfrac{1}{x}=\dfrac{1}{a}+\dfrac{1}{b}$ for poles of heights $a$ and $b$ (half the harmonic mean).

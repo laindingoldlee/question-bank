@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2636758_intermediate_problems
+% Stable identity: aops-topic-2636758-q16
+Let the outer circles have radius $r$. Their centres are at distance $12+r$ from the centre, and the six angles they subtend there add to $360^\circ$, so each is $60^\circ$. The triangle formed by the centre and two adjacent outer centres is then equilateral, so $2r=12+r$ and $r=12$.
+
+Each gap lies in an equilateral triangle of side $24$ joining three centres, minus three $60^\circ$ sectors of radius $12$:
+\[\dfrac{\sqrt3}{4}\cdot24^2-3\cdot\dfrac16\cdot\pi\cdot12^2=144\sqrt3-72\pi.\]
+The six gaps have total area $\boxed{864\sqrt3-432\pi}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real R=12;draw(circle((0,0),R),linewidth(0.7));
+for(int i=0;i<6;++i) draw(circle(2R*dir(60i),R),linewidth(0.7));
+pair P1=(0,0),P2=2R*dir(0),P3=2R*dir(60);
+path g=arc(P1,R,0,60)--arc(P3,R,240,300)--arc(P2,R,120,180)--cycle;
+fill(g,lightgray);draw(P1--P2--P3--cycle,dashed);
+label("$12$",(R/2,0),S,fontsize(8pt));dot(P1);dot(P2);dot(P3);
+\end{asy}

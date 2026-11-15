@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1459800_mock_mathcounts_2015
+% Stable identity: aops-topic-1459800-q01
+Let $Q(x)=x^2P(x)-1$. It is a polynomial of degree at most $19$ with zeros $1,2,\dots,18$, so
+\[
+Q(x)=(ax+b)R(x),\qquad R(x)=(x-1)(x-2)\cdots(x-18),
+\]
+for some constants $a,b$.
+\begin{itemize}
+\item $Q(0)=-1$ and $R(0)=(-1)^{18}\,18!=18!$, so $b\cdot18!=-1$.
+\item $Q(x)=x^2P(x)-1$ has no $x$ term, so $Q'(0)=0$. Since $R'(0)=R(0)\displaystyle\sum_{i=1}^{18}\dfrac{1}{0-i}=-18!\,H$, where $H=1+\dfrac{1}{2}+\cdots+\dfrac{1}{18}$, we get $Q'(0)=a\,R(0)+b\,R'(0)=18!\,(a-bH)=0$, so $a=bH$.
+\end{itemize}
+Hence $Q(19)=(19a+b)R(19)=b\,(19H+1)\cdot18!=-(19H+1)$, and
+\[
+361\,P(19)=Q(19)+1=-19H,\qquad P(19)=-\dfrac{H}{19}.
+\]
+Adding the fractions, $H=\dfrac{14274301}{4084080}$, and $14274301=19\cdot751279$, so
+\[
+P(19)=\boxed{-\dfrac{751279}{4084080}} .
+\]

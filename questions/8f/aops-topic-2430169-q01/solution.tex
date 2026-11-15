@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h2430169_i_am_really_bad_at_transformations
+% Stable identity: aops-topic-2430169-q01
+A point $(X,Y)$ lies on the image exactly when the point it came from lies on $C$, i.e. satisfies $y=p(x)$.
+\begin{itemize}
+\item[(a)] Reflection in the $x$-axis sends $(x,y)\mapsto(x,-y)$, so $(X,Y)$ comes from $(X,-Y)$: the image is $-Y=p(X)$, i.e. $\boxed{y=-p(x)}$ (every coefficient changes sign).
+\item[(b)] Reflection in the $y$-axis sends $(x,y)\mapsto(-x,y)$: the image is $\boxed{y=p(-x)}$. In $p(-x)$ the coefficients of the odd powers of $x$ change sign and the others stay.
+\item[(c)] The half-turn sends $(x,y)\mapsto(-x,-y)$: the image is $-Y=p(-X)$, i.e. $\boxed{y=-p(-x)}$ (the coefficients of the even powers, including the constant, change sign).
+\item[(d)] The quarter-turn sends $(x,y)\mapsto(-y,x)$, so $(X,Y)$ comes from $(Y,-X)$: the image is $-X=p(Y)$, i.e. $\boxed{x=-p(y)}$. It is in general not the graph of a function of $x$.
+\end{itemize}
+For $p(x)=x^2-2x$: (a) $y=-x^2+2x$; (b) $y=x^2+2x$; (c) $y=-x^2-2x$; (d) $x=-y^2+2y$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+import graph;
+real p(real x){return x^2-2*x;}
+draw((-3.6,0)--(3.6,0),Arrow(5)); draw((0,-3.2)--(0,3.6),Arrow(5));
+label("$x$",(3.6,0),E); label("$y$",(0,3.6),N);
+draw(graph(p,-0.9,2.9),blue+linewidth(1));
+draw(graph(new real(real x){return -p(x);},-0.9,2.9),red+linewidth(1));
+draw(graph(new real(real x){return p(-x);},-2.9,0.9),heavygreen+linewidth(1));
+label("$y=x^2-2x$",(2.9,p(2.9)),E,blue+fontsize(8pt)); label("$y=-x^2+2x$",(2.9,-p(2.9)),E,red+fontsize(8pt)); label("$y=x^2+2x$",(-2.9,p(2.9)),W,heavygreen+fontsize(8pt));
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+import graph;
+real p(real x){return x^2-2*x;}
+draw((-3.6,0)--(3.6,0),Arrow(5)); draw((0,-3.6)--(0,3.6),Arrow(5));
+label("$x$",(3.6,0),E); label("$y$",(0,3.6),N);
+draw(graph(p,-0.9,2.9),blue+linewidth(1));
+draw(graph(new real(real x){return -p(-x);},-2.9,0.9),red+linewidth(1));
+path q=graph(p,-0.9,2.9); draw(rotate(90)*q,heavygreen+linewidth(1));
+label("$y=x^2-2x$",(2.9,p(2.9)),E,blue+fontsize(8pt)); label("$y=-x^2-2x$",(-2.9,-p(2.9)),W,red+fontsize(8pt)); label("$x=-y^2+2y$",rotate(90)*(2.9,p(2.9)),W,heavygreen+fontsize(8pt));
+\end{asy}

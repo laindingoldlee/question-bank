@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2263780_problem_solving
+% Stable identity: aops-topic-2263780-q01
+Let the circle use $x$ yards, $0<x<100$, and the square $100-x$ yards.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real L=10, x=4.4;
+draw((0,0)--(x,0),blue+linewidth(1.5)); draw((x,0)--(L,0),red+linewidth(1.5));
+draw((x,-0.25)--(x,0.25)); label("cut",(x,0.25),N,fontsize(8pt));
+label("$x$",(x/2,0),S,blue); label("$100-x$",((x+L)/2,0),S,red);
+real r=x/(2*pi), s=(L-x)/4;
+draw(circle((2,-2.6),r),blue+linewidth(1)); label("radius $\dfrac{x}{2\pi}$",(2,-2.6-r),S,blue+fontsize(8pt));
+draw(shift(5.4,-2.6-s/2)*scale(s)*unitsquare,red+linewidth(1)); label("side $\dfrac{100-x}{4}$",(5.4+s/2,-2.6-s/2),S,red+fontsize(8pt));
+\end{asy}
+
+The circle has radius $\dfrac{x}{2\pi}$ and area $\pi\left(\dfrac{x}{2\pi}\right)^2=\dfrac{x^2}{4\pi}$; the square has side $\dfrac{100-x}{4}$ and area $\dfrac{(100-x)^2}{16}$.
+
+\textbf{(a)} Equal areas: $\dfrac{x^2}{4\pi}=\dfrac{(100-x)^2}{16}$. Both $x$ and $100-x$ are positive, so we may take square roots: $\dfrac{x}{2\sqrt\pi}=\dfrac{100-x}{4}$, i.e. $4x=2\sqrt\pi(100-x)$, so
+\[x=\dfrac{100\sqrt\pi}{2+\sqrt\pi}\approx46.98.\]
+Cut the tape about $\boxed{46.98}$ yards from one end: about $46.98$ yards for the circle and $53.02$ yards for the square.
+
+\textbf{(b)} The total area is
+\[A(x)=\dfrac{x^2}{4\pi}+\dfrac{(100-x)^2}{16}=\left(\dfrac{1}{4\pi}+\dfrac{1}{16}\right)x^2-\dfrac{25}{2}x+625,\]
+a quadratic with positive leading coefficient. Its minimum is at the vertex
+\[x=\dfrac{\dfrac{25}{2}}{2\left(\dfrac{1}{4\pi}+\dfrac{1}{16}\right)}=\dfrac{100\pi}{4+\pi}\approx43.99,\]
+which lies between $0$ and $100$. So cut about $\boxed{43.99}$ yards for the circle and $\dfrac{400}{4+\pi}\approx56.01$ yards for the square. (At this cut the circle's diameter $\dfrac{x}{\pi}=\dfrac{100}{4+\pi}$ equals the square's side.) The minimum total area is
+\[A\left(\dfrac{100\pi}{4+\pi}\right)=\dfrac{2500}{4+\pi}\approx350.06\ \text{square yards}.\]

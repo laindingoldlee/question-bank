@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2117950_number_theory_divisibility
+% Stable identity: aops-topic-2117950-q01
+Let $N$ be such a number. Since $2\mid N$, the last digit of $N$ is even, so it is $0$, and $N=10M$ where $M$ is a positive integer whose digits are all $0$s and $1$s. Since $7\mid 10M$ and $\gcd(7,10)=1$, we need $7\mid M$. Also, smaller $M$ gives smaller $N$.
+
+So we look for the least positive integer with digits $0$ and $1$ that is divisible by $7$. Listing such numbers in increasing order, with their remainders on division by $7$:
+\[1\to1,\quad 10\to3,\quad 11\to4,\quad 100\to2,\quad 101\to3,\quad 110\to5,\quad 111\to6,\quad 1000\to6,\quad 1001\to0 .\]
+Indeed $1001=7\cdot11\cdot13$. Hence $M=1001$ and
+\[N=\boxed{10010}=14\cdot715 .\]
+
+\emph{General method.} For a divisor $d=2^a5^bk$ with $\gcd(k,10)=1$: the number must end in $\max(a,b)$ zeros, and the part before them must be a $0$-$1$ multiple of $k$. That part is found by listing the remainders of $1,10,100,\dots$ modulo $k$ and choosing a set of these powers of $10$ whose remainders add up to a multiple of $k$, making the resulting number as small as possible (few digits first).

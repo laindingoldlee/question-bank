@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1319179_triangle_inequalities
+% Stable identity: aops-topic-1319179-q02
+Since $ST>RT$, the angle opposite $ST$ is larger: $\angle R>\angle S$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair R=(0,0),Sp=(5,0),T=(1.5,2.5),Q=(3.2,0); draw(R--Sp--T--cycle,linewidth(0.9)); draw(T--Q,blue);
+label("$R$",R,SW); label("$S$",Sp,SE); label("$T$",T,N); label("$Q$",Q,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In triangle $TQR$, the exterior angle at $Q$ gives $\angle TQS=\angle R+\angle RTQ>\angle R>\angle S$. So in triangle $TQS$, $\angle TQS>\angle TSQ$, and the side opposite the larger angle is longer: $ST>TQ$. $\blacksquare$

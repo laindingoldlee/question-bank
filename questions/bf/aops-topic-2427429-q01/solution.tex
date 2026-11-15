@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2427429_fun_problem_i_made_about_digits_and_operations
+% Stable identity: aops-topic-2427429-q01
+Write $a\,[n]\,b$ for $a\mathbin{\fbox{$n$}}b$. By the definition, for $n>1$,
+\[a\,[n]\,1=a,\qquad a\,[n]\,(b+1)=a\,[n-1]\,\bigl(a\,[n]\,b\bigr).\]
+Let $T_h$ denote the tower $2^{2^{\cdot^{\cdot^{2}}}}$ of $h$ twos ($T_1=2$, $T_{h+1}=2^{T_h}$), so $T_2=4$, $T_3=16$, $T_4=65536$.
+
+\textbf{Step 1: for $n\ge2$, every $2\,[n]\,m$ is a tower of twos.} For $n=2$, $2\,[2]\,m=T_m$. If it holds for $n-1\ge2$, then $2\,[n]\,1=2=T_1$ and $2\,[n]\,(m+1)=2\,[n-1]\,(\text{something})$ is a tower of twos.
+
+\textbf{Step 2: $2\,[n]\,2=4$ for all $n$.} Indeed $2\,[1]\,2=4$ and $2\,[n]\,2=2\,[n-1]\,(2\,[n]\,1)=2\,[n-1]\,2$.
+
+\textbf{Step 3: $2\,[n]\,m\ge2^m$.} For $n=1$ this is an equality. For $n\ge2$, induct on $m$: $2\,[n]\,1=2$, and $2\,[n]\,(m+1)=2\,[n-1]\,(2\,[n]\,m)\ge2^{2\,[n]\,m}\ge2^{2^m}\ge2^{m+1}$, using the statement for $n-1$.
+
+\textbf{Step 4: the height.} By Step 2, $X=2\,[2021]\,3=2\,[2020]\,(2\,[2021]\,2)=2\,[2020]\,4$. In the same way $2\,[2020]\,3=2\,[2019]\,4\ge2^4=16$ by Step 3, and then
+\[X=2\,[2020]\,4=2\,[2019]\,\bigl(2\,[2020]\,3\bigr)\ge2^{2\,[2020]\,3}\ge2^{16}=65536=T_4.\]
+As $X$ is a tower of twos (Step 1) and towers grow with their height, $X=T_h$ with $h\ge4$.
+
+\textbf{Step 5: every $T_h$ with $h\ge4$ ends in $36$.} $T_4=65536$ ends in $36$. For $k\ge2$, $2^k\equiv0\pmod4$, and modulo $25$ the powers of $2$ repeat with period $20$ (as $2^{10}=1024\equiv-1\pmod{25}$). So for $k\ge2$, $2^k\bmod100$ depends only on $k\bmod20$. If $T_h\equiv36\pmod{100}$, then $T_h\equiv16\pmod{20}$, so $T_{h+1}=2^{T_h}\equiv2^{16}=65536\equiv36\pmod{100}$. By induction all $T_h$ with $h\ge4$ end in $36$.
+
+Therefore the last two digits of $2\mathbin{\fbox{$2021$}}3$ are $\boxed{36}$.

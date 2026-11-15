@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h1097915_2013_national_sprint
+% Stable identity: aops-topic-1097915-q28
+Put $C=(0,0)$, $A=(0,5)$, $B=(12,0)$; then $AB=13$ and $E=(6,0)$.
+
+\textbf{The point $D$.} In a right triangle the altitude to the hypotenuse gives $AD=\dfrac{AC^2}{AB}=\dfrac{25}{13}$, so $D$ is $\dfrac{25}{169}$ of the way from $A$ to $B$:
+\[
+D=\left(\dfrac{25}{169}\cdot12,\ 5-\dfrac{25}{169}\cdot5\right)=\left(\dfrac{300}{169},\dfrac{720}{169}\right).
+\]
+So line $CD$ is $y=\dfrac{720}{300}x=\dfrac{12}{5}x$.
+
+\textbf{The point $F$.} Line $AE$ is $y=5-\dfrac{5}{6}x$. Intersecting with $y=\dfrac{12}{5}x$:
+\[
+\dfrac{12}{5}x=5-\dfrac{5}{6}x\iff\left(\dfrac{72}{30}+\dfrac{25}{30}\right)x=5\iff x=\dfrac{150}{97}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),A=(0,5),B=(12,0);
+pair D=A+dot(C-A,B-A)/dot(B-A,B-A)*(B-A);
+pair E=(6,0);
+pair F=extension(A,E,C,D);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--D,linewidth(0.8));draw(A--E,linewidth(0.8));
+draw((0,0.6)--(0.6,0.6)--(0.6,0));
+pair u=unit(B-A),v=unit(C-D);draw(D+0.55*u--D+0.55*u+0.55*v--D+0.55*v);
+draw(F--(F.x,0),red+dashed);
+dot(F);
+label("$A$",A,NW);label("$B$",B,SE);label("$C$",C,SW);label("$D$",D,NE);label("$E$",E,S);label("$F$",F,(-1.3,-0.2));
+label("$5$",(0,2.5),W);label("$6$",(3,-0.3),S);label("$6$",(9,-0.3),S);
+draw((3,-0.25)--(3,0.25));draw((9,-0.25)--(9,0.25));
+label("$G$",(F.x,0),S,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The ratio.} Drop the perpendicular $FG$ to $BC$. Along $AE$, which runs from $x=0$ to $x=6$, the $x$-coordinate grows in proportion to the distance from $A$, so
+\[
+\dfrac{AF}{FE}=\dfrac{x_F-0}{6-x_F}=\dfrac{\dfrac{150}{97}}{\dfrac{432}{97}}=\dfrac{150}{432}=\boxed{\dfrac{25}{72}}.
+\]

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2970661_christmas_problem_set
+% Stable identity: aops-topic-2970661-q03
+Since $BA$ is a diameter, $\angle ACB=90^\circ$. With $AB=6$ and $AC=3$, $BC=3\sqrt3$. $P$ lies on ray $BC$ beyond $C$ with $CP=6-3\sqrt3$, and $\angle ACP=90^\circ$.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),B=(-3,0),A=(3,0);pair C=3*dir(60);pair P=B+6*dir(30);
+draw(circle(O,3));draw(B--A);draw(B--P);draw(A--C);draw(A--P);draw(C+0.4*unit(B-C)--C+0.4*unit(B-C)+0.4*unit(A-C)--C+0.4*unit(A-C));
+label("$B$",B,W);label("$A$",A,E);label("$O$",O,S);label("$C$",C,N);label("$P$",P,NE);dot(O);
+\end{asy}
+
+So $[ACP]=\dfrac12\cdot3\cdot(6-3\sqrt3)=9-\dfrac92\sqrt3$, giving $a=9$, $b=-\dfrac92$, $c=3$ and $a+b+c=\boxed{\dfrac{15}2}$.

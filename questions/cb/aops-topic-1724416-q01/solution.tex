@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1724416_angles_in_polygon
+% Stable identity: aops-topic-1724416-q01
+Walking around a convex polygon, we turn at each vertex through the exterior angle $180^\circ-(\text{interior angle})$, which is positive because each interior angle is less than $180^\circ$. After one full trip we have turned through exactly $360^\circ$, so the exterior angles add up to $360^\circ$.
+
+An interior angle of $60^\circ$ has exterior angle $120^\circ$. If three interior angles were $60^\circ$, their exterior angles alone would add up to $3\cdot120^\circ=360^\circ$, leaving $0^\circ$ for the other $n-3\ge1$ exterior angles, each of which is positive. This is impossible, so there are at most two angles of $60^\circ$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(3,0),C=B+3*dir(60),D=3*dir(60);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--A+1.4*dir(240),dashed);draw(C--C+1.4*dir(60),dashed);
+draw(arc(A,0.55,0,60));label("$60^\circ$",A+1.0*dir(30),fontsize(8pt));
+draw(arc(C,0.55,180,240));label("$60^\circ$",C+1.0*dir(210),fontsize(8pt));
+draw(arc(A,0.45,240,360),blue);label("$120^\circ$",A+0.95*dir(300),blue+fontsize(8pt));
+draw(arc(C,0.45,60,180),blue);label("$120^\circ$",C+0.95*dir(120),blue+fontsize(8pt));
+label("$A$",A,NW);label("$B$",B,SE);label("$C$",C,E);label("$D$",D,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Two is possible for every $n\ge4$: the rhombus $ABCD$ above with angles $60^\circ,120^\circ,60^\circ,120^\circ$ has two (its exterior angles at $A$ and $C$ are $120^\circ$ each, leaving $120^\circ$ for $B$ and $D$), and for larger $n$ one can cut the corners at $B$ and $D$ slightly. (For a triangle, $n=3$, all three angles can be $60^\circ$, and the statement needs convexity: it is about convex polygons.)

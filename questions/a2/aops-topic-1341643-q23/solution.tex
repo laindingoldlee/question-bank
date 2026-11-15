@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1341643_mathcounts_nationals_2016_sprint_round_23
+% Stable identity: aops-topic-1341643-q23
+The rotation takes the centre $O$ to the centre $O'$, with $PO'=PO=2$ and $\angle OPO'=90^\circ$, so $OO'=2\sqrt2$. Both circles have radius $4$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), P=(2,0), Op=(2,-2);
+pair H=(O+Op)/2; pair u=unit(Op-O); pair v=(u.y,-u.x);
+real hh=sqrt(16-2);
+pair M=H+hh*v, Nn=H-hh*v;
+draw(circle(O,4),linewidth(0.9)); draw(circle(Op,4),blue+linewidth(0.9));
+draw(M--Nn,red); draw(O--Op,dashed); draw(O--P--Op,gray+dashed);
+draw(O--M,gray);
+dot(O);dot(P);dot(Op);dot(M);dot(Nn);dot(H);
+label("$O$",O,W); label("$P$",P,E); label("$O'$",Op,SE,blue); label("$M$",M,dir(200)); label("$N$",Nn,NE);
+label("$4$",(O+M)/2,NW,gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The common chord $MN$ is perpendicular to $OO'$ and bisected by it at the midpoint $H$ of $OO'$, where $OH=\sqrt2$. In the right triangle $OHM$,
+\[
+HM=\sqrt{OM^2-OH^2}=\sqrt{16-2}=\sqrt{14},
+\]
+so $MN=2HM=\boxed{2\sqrt{14}}$.

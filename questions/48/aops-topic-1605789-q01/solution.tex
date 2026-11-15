@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1605789_2018_mathcounts_school_sprint_7
+% Stable identity: aops-topic-1605789-q01
+The slope is rise over run:
+\[
+m=\dfrac{-6-0}{3-0}=\boxed{-2}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw((-1,0)--(4.2,0),gray,Arrow(TeXHead));draw((0,-7)--(0,1.4),gray,Arrow(TeXHead));
+label("$x$",(4.2,0),E,gray);label("$y$",(0,1.4),N,gray);
+for(int i=1;i<=4;++i){draw((i,-0.08)--(i,0.08),gray);}
+for(int j=-6;j<=1;++j){if(j!=0) draw((-0.08,j)--(0.08,j),gray);}
+label("$3$",(3,0),N,gray);label("$-6$",(0,-6),W,gray);
+draw((-0.6,1.2)--(3.4,-6.8),blue+linewidth(0.9));
+draw((0,0)--(3,0)--(3,-6),red+dashed);
+dot((0,0));dot((3,-6));
+label("$(0,0)$",(0,0),SW);label("$(3,-6)$",(3,-6),E);
+label("run $3$",(1.9,-0.1),S,red);label("rise $-6$",(3,-3),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

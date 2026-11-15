@@ -1,0 +1,9 @@
+Put $u=x^2+y^2$ and $v=x^2y^2$. The equation of $S$ is $v^2+(3u+1)v-u^3=0$. Rotation replaces $v$ by $v^{\prime} = \dfrac{u^2}{4} - v$. For fixed $u\ge0$, the displayed polynomial is strictly increasing in $v\ge0$, so simultaneous membership requires $v = v^{\prime} = \dfrac{u^2}{8}$. Substituting gives $u^2(u^2-40u+8)=0$. The origin gives one point. Each positive value $u=20\pm14\sqrt2$ gives eight points, since $v = \dfrac{u^2}{8}$ means $\sin^2 (2\theta) = \dfrac{1}{2}$. Total: $\boxed{17}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+for(int k=0;k<8;++k){real t=22.5+45k;dot(sqrt(20+14sqrt(2))*dir(t));dot(sqrt(20-14sqrt(2))*dir(t));}dot((0,0));draw(circle((0,0),sqrt(20+14sqrt(2))),dashed);draw(circle((0,0),sqrt(20-14sqrt(2))),dashed);label("eight points on each radius",(0,-7),(0,-1));
+\end{asy}
+

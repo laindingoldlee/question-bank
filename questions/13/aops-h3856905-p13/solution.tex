@@ -1,0 +1,7 @@
+Let the altitude be $h=\dfrac{9+2\sqrt{30}}{8}$ and place the opposite side horizontally. A circle of radius $r$ tangent to that side has center height $r$. To remain between the other sides, its horizontal displacement from the symmetry axis is at most $\dfrac{h}{\sqrt3}-\sqrt3r$, with $r\le\dfrac{h}{3}$. To be outside the sector its center must be at least $1+r$ from the vertex. The largest possible squared distance is $\dfrac{4}{3}h^2-4hr+4r^2$, so $3r^2-(4h+2)r+\dfrac{4}{3}h^2-1\ge0$. The smaller root is $\dfrac{3}{4}$; the larger exceeds $\dfrac{h}{3}$. Thus $r\le\dfrac{3}{4}$. Equality is attained with the circle also tangent to either sloping side; the two mirror configurations are shown. The area is $\dfrac{9}{16}\pi$, giving $\boxed{25}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+real h=(9+2*sqrt(30))/8,L=2*h/sqrt(3),r=.75;for(int k=0;k<2;++k){real dx=k*(L+1);pair A=(dx,h),B=(dx-L/2,0),C=(dx+L/2,0),O=(dx+(k==0?-1:1)*(h/sqrt(3)-sqrt(3)*r),r);draw(A--B--C--cycle);draw(arc(A,1,240,300));draw(circle(O,r));label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));label("$O$",O);}
+\end{asy}

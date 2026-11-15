@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2430263_ahsme_1976need_help
+% Stable identity: aops-topic-2430263-q01
+Extend $BD$ beyond $D$ to meet the circle again at $G$. Since $D$ is inside the circle and $C$ is between $B$ and $D$, the line meets the circle at $C$ and $G$ with $B$, $C$, $D$, $G$ in this order, and $BD=6$.
+
+\textbf{Power of $B$:} $BA^2=BC\cdot BG$, so $36=3\cdot BG$ and $BG=12$. Hence $DG=BG-BD=6$.
+
+\textbf{Power of $D$:} for a point inside a circle of radius $r$, $DC\cdot DG=r^2-OD^2$ (draw the chord through $D$ perpendicular to $OD$, or use the diameter through $D$). So
+\[3\cdot6=r^2-4\iff r^2=22,\]
+and the radius is $\boxed{\sqrt{22}}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real r=sqrt(22); pair O=(0,0);
+real k=sqrt(22-20.25);
+pair C=(-4.5,-k), G=(4.5,-k), D=(-1.5,-k), B=(-7.5,-k);
+pair[] T=intersectionpoints(circle(O,r),circle(B,6));
+pair A=(T[0].y>T[1].y)?T[0]:T[1];
+draw(circle(O,r),linewidth(0.9));
+draw(B--G,linewidth(0.9)); draw(B--A,blue+linewidth(0.9)); draw(O--A,dashed); draw(O--D,red);
+dot(O); dot(A); dot(B); dot(C); dot(D); dot(G);
+label("$O$",O,E); label("$A$",A,NW); label("$B$",B,W); label("$C$",C,SW); label("$D$",D,S); label("$G$",G,SE);
+label("$6$",(A+B)/2,NW,blue); label("$3$",(B+C)/2,S); label("$3$",(C+D)/2,S); label("$6$",(D+G)/2,S); label("$2$",(O+D)/2,SE,red);
+\end{asy}
+
+(Such a configuration exists: with $r=\sqrt{22}$ the chord $CG=9$ is at distance $\sqrt{22-4.5^2}=\dfrac{\sqrt7}{2}$ from $O$, and $D$, the point of the chord $1.5$ from its midpoint, has $OD^2=\dfrac74+\dfrac94=4$. Then $OB^2=\dfrac74+7.5^2=58$, and the tangent length is $\sqrt{58-22}=6$, as required.)

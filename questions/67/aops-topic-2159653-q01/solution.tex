@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2159653_questionshandouts
+% Stable identity: aops-topic-2159653-q01
+Let $b$, $c$ and $d$ be the numbers of darts scoring $3$, $7$ and $8$ points; the remaining $10-b-c-d$ darts score $0$. We need nonnegative integers with
+\[3b+7c+8d=40,\qquad b+c+d\le10 .\]
+Work through the possible values of $d$ (at most $5$, since $8d\le40$). For each $d$ we need $3b+7c=40-8d$, and reducing modulo $3$ ($7\equiv1$) fixes $c$ modulo $3$:
+\begin{itemize}
+\item $d=0$: $3b+7c=40$, $c\equiv1\pmod3$. $c=1$ gives $b=11$ (too many darts: $12>10$); $c=4$ gives $b=4$, with $8$ darts. One way.
+\item $d=1$: $3b+7c=32$, $c\equiv2\pmod3$, $c\le4$. $c=2$ gives $b=6$, with $9$ darts. One way.
+\item $d=2$: $3b+7c=24$, $c\equiv0\pmod3$. $c=0$, $b=8$ ($10$ darts) and $c=3$, $b=1$ ($6$ darts). Two ways.
+\item $d=3$: $3b+7c=16$, $c\equiv1\pmod3$. $c=1$, $b=3$ ($7$ darts). One way.
+\item $d=4$: $3b+7c=8$, $c\equiv2\pmod3$, but $7c\le8$ forces $c\le1$. No way.
+\item $d=5$: $b=c=0$ ($5$ darts). One way.
+\end{itemize}
+In total there are $1+1+2+1+0+1=\boxed{6}$ ways.

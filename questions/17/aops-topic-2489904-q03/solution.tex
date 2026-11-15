@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2489904_sparklyflowers_1year_aops_anniversary_d
+% Stable identity: aops-topic-2489904-q03
+Let the integers be $a,a+1,\dots,a+n-1$ with $a\ge1$; we need $n\ge3$ for a third-largest term, and in fact $n\ge4$ since the sum is positive. The sum is $\dfrac{n(2a+n-1)}{2}=120(n-3)$, so
+\[2a+n-1=\dfrac{240(n-3)}{n}=240-\dfrac{720}{n}.\]
+Hence $n\mid720$ and $2a=241-n-\dfrac{720}{n}$, which must be a positive even integer: $n+\dfrac{720}{n}$ must be odd and at most $239$. The third-largest term is
+\[a+n-3=\dfrac{241-n-\dfrac{720}{n}}{2}+n-3=\dfrac{235+n-\dfrac{720}{n}}{2},\]
+which increases with $n$, so we want the largest admissible $n$.
+
+Since $720=2^4\cdot45$, the sum $n+\dfrac{720}{n}$ is odd exactly when one of $n,\dfrac{720}{n}$ is odd, i.e. $n$ is an odd divisor of $45$ or $n=16d$ with $d\mid45$. The largest candidates are $720,240,144,\dots$; $n=720$ and $n=240$ give $n+\dfrac{720}{n}=721$ and $243$, too large, while $n=144$ gives $144+5=149\le239$.
+
+For $n=144$: $a=\dfrac{241-144-5}{2}=46$, the integers are $46,\dots,189$ with sum $144\cdot\dfrac{46+189}{2}=16920=120\cdot141$, and the third-largest is $\boxed{187}$.

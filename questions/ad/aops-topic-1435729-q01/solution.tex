@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1435729_i_dont_like_this_question
+% Stable identity: aops-topic-1435729-q01
+\textbf{What is wrong.} The question asks for the smallest \emph{positive} value, so $0$ does not count. Also $m$ and $n$ may be negative, so they are not limited to small nonnegative trial values.
+
+\textbf{Lower bound.} Both $2002$ and $44444$ are even, so every number $2002m+44444n$ is even; the smallest positive value is at least $2$. (In general every such number is a multiple of $\gcd(2002,44444)$.)
+
+\textbf{The value $2$ is reached.} Run the Euclidean algorithm:
+\[
+44444=22\cdot2002+400,\qquad 2002=5\cdot400+2 .
+\]
+Working backwards,
+\[
+2=2002-5\cdot400=2002-5(44444-22\cdot2002)=111\cdot2002-5\cdot44444 .
+\]
+Indeed $111\cdot2002=222222$ and $5\cdot44444=222220$. So with $m=111$, $n=-5$ we get $2$, and the answer is $\boxed{2}=\gcd(2002,44444)$.

@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h2035756_whats_the_idea_behind_doing_geometry_problems_such_as_this_one
+% Stable identity: aops-topic-2035756-q01
+The base angles are \(\angle CAB=\angle CBA=50^\circ\). Hence
+\[
+\angle MAC=40^\circ,\qquad \angle MBC=20^\circ .
+\]
+Let \(x=\angle ACM\); then \(\angle BCM=80^\circ-x\), with \(0<x<80^\circ\).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(4,0);
+pair C=(2,2*Tan(50));
+pair M=extension(A,A+dir(10),B,B+dir(150));
+pair Ept=extension(B,M,A,C);
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--M--B); draw(C--M,blue+linewidth(0.9)); draw(M--Ept,dashed);
+dot(A);dot(B);dot(C);dot(M);dot(Ept);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$M$",M,NE); label("$E$",Ept,W);
+label("$10^\circ$",A+(0.9,0.05),fontsize(7pt)); label("$30^\circ$",B+(-0.72,0.13),fontsize(6pt)); label("$80^\circ$",C+(0,-0.6),fontsize(7pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the trigonometric form of Ceva's theorem for the concurrent cevians \(AM,BM,CM\),
+\[
+\dfrac{\sin\angle MAB}{\sin\angle MAC}\cdot\dfrac{\sin\angle MCA}{\sin\angle MCB}\cdot\dfrac{\sin\angle MBC}{\sin\angle MBA}=1,
+\qquad\text{i.e.}\qquad
+\dfrac{\sin10^\circ}{\sin40^\circ}\cdot\dfrac{\sin x}{\sin(80^\circ-x)}\cdot\dfrac{\sin20^\circ}{\sin30^\circ}=1 .
+\]
+\emph{\(x=70^\circ\) satisfies this:} the left side becomes
+\[
+\dfrac{\sin10^\circ\sin70^\circ\sin20^\circ}{\sin40^\circ\sin10^\circ\cdot\dfrac{1}{2}}=\dfrac{2\sin20^\circ\cos20^\circ}{\sin40^\circ}=1 .
+\]
+\emph{It is the only solution:} \(\dfrac{\sin x}{\sin(80^\circ-x)}\) is strictly increasing on \((0^\circ,80^\circ)\) (the numerator increases and the denominator decreases, both positive), so the equation has exactly one root.
+
+Thus \(\angle ACM=70^\circ\), and in triangle \(AMC\),
+\[
+\angle AMC=180^\circ-\angle MAC-\angle ACM=180^\circ-40^\circ-70^\circ=\boxed{70^\circ}.
+\]
+(So triangle \(AMC\) is isosceles with \(AM=AC\).)

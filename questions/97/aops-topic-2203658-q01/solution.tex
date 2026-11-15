@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2203658_basic_geometry
+% Stable identity: aops-topic-2203658-q01
+\textbf{(a)} When the triangles are joined along their bases, the common base becomes a diagonal of the rhombus, and the four sides of the rhombus are the four equal sides (legs) of the two triangles.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real h=sqrt(34^2-13.5^2);
+pair P=(-13.5,0), Q=(13.5,0), T=(0,h), U=(0,-h);
+fill(P--T--Q--cycle,paleblue); fill(P--U--Q--cycle,paleyellow);
+draw(P--T--Q--U--cycle,linewidth(0.9));
+draw(P--Q,red+dashed+linewidth(0.8));
+label("$34$",(P+T)/2,NW); label("$34$",(Q+T)/2,NE); label("$34$",(P+U)/2,SW); label("$34$",(Q+U)/2,SE);
+label("$27$",(4,0),N,red);
+dot(P); dot(Q); dot(T); dot(U);
+\end{asy}
+
+So each leg is $\dfrac{136}{4}=34$ inches, the base is $34-7=27$ inches, and the perimeter of one triangle is
+\[34+34+27=\boxed{95}\text{ inches}.\]
+(The triangle exists, since $27<34+34$.)
+
+\textbf{(b)} If the figure were a square with side $34$, the glued base would be a diagonal of that square, so by the Pythagorean theorem it would have length $\sqrt{34^2+34^2}=34\sqrt2\approx48.1$ inches. That is \emph{longer} than the legs, but the base must be $7$ inches \emph{shorter} than each leg. In general, two congruent isosceles triangles joined along their bases form a square only when they are right isosceles triangles, whose base is $\sqrt2$ times the leg; here the base is shorter than the leg, so the figure is a rhombus that is not a square.

@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2746193_infinite_boxes_strategies
+% Stable identity: aops-topic-2746193-q01
+\emph{Preparation.} Split the boxes into $100$ columns: column $j$ ($j=1,\dots,100$) consists of the boxes whose labels are $\equiv j\pmod{100}$, in increasing order. So each column holds an infinite sequence of reals.
+
+Call two real sequences equivalent if they differ in only finitely many places. Beforehand, using the axiom of choice, the prisoners agree on one representative sequence from each equivalence class. For a sequence $s$, let $N(s)$ be the last index where $s$ differs from the representative of its class ($N(s)=0$ if they agree everywhere).
+
+\emph{Strategy for prisoner $k$.} He opens all boxes in the $99$ columns other than column $k$, and for each such column $j$ computes $N_j=N(\text{column }j)$. Let $M_k=\max_{j\ne k}N_j$. In his own column he opens every box after position $M_k$. This tail determines the class of column $k$ and hence its representative $r$. He guesses that box number $M_k$ of column $k$ (still closed) contains the $M_k$th term of $r$. (If $M_k=0$, he uses position $1$ and opens positions from $2$ on.)
+
+\emph{Why it works.} Prisoner $k$ is right whenever $N_k\le M_k$, because from position $M_k$ on (position $1$ on if $M_k=0$), column $k$ agrees with $r$. He can be wrong only if $N_k>N_j$ for every $j\ne k$, i.e. column $k$ has the strictly largest value of $N$. At most one column can have this property, so at most one prisoner is wrong, and at least $99$ guess correctly.

@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2546385_playerryes_100th_post_celebration_problems
+% Stable identity: aops-topic-2546385-q03
+\emph{Smallest.} For lattice points, twice the area is $\left|(x_2-x_1)(y_3-y_1)-(x_3-x_1)(y_2-y_1)\right|$, a positive integer. So the area is at least $\dfrac12$, attained by $(0,0)$, $(1,0)$, $(0,1)$.
+
+\emph{Largest.} Let the vertices have $y$-coordinates $y_1\le y_2\le y_3$. The horizontal line through the middle vertex cuts the triangle into two triangles (one may be degenerate) with a common horizontal side of length $\ell\le285$ (it lies in the board) and heights $h_1$, $h_2$ with $h_1+h_2=y_3-y_1\le200$. So the area is
+\[\dfrac12\ell(h_1+h_2)\le\dfrac12\cdot285\cdot200=28500,\]
+attained by $(0,0)$, $(285,0)$, $(0,200)$.
+
+The difference is $28500-\dfrac12=\boxed{28499.5}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(2.85,0)--(2.85,2)--(0,2)--cycle,linewidth(0.8));
+pair X=(0.3,0.2),Y=(2.55,0.95),Z=(1.0,1.85);
+draw(X--Y--Z--cycle,blue+linewidth(0.8));
+pair U=extension(X,Z,Y,Y+(1,0));
+draw(U--Y,dashed);
+draw((2.7,0.2)--(2.7,1.85),Arrows(TeXHead));
+label("$h_1+h_2\le200$",(2.7,1.0),E,fontsize(8pt));
+label("$\ell$",(U+Y)/2,S,fontsize(9pt));
+label("$285$",(1.425,0),S);label("$200$",(0,1),W);
+\end{asy}

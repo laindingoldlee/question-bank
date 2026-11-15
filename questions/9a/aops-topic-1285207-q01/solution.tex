@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1285207_easy_geometry
+% Stable identity: aops-topic-1285207-q01
+Put $B=(0,0)$, $A=(0,2)$, $C=(3,0)$. Since $\angle B=90^\circ$, $AC=\sqrt{13}$, and triangle $ACD$ has sides $\sqrt{13},7,6$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair B=(0,0),A=(0,2),C=(3,0); pair D=(12*sqrt(13)/13,2+18*sqrt(13)/13); real r=(1+sqrt(13))/3;
+draw(A--B--C--D--cycle); draw(circle((r,r),r),blue); draw(ra(B,(1,0),(0,1),0.3)); dot((r,r)); draw((r,r)--(r,0),red); label("$r$",(r,r/2),E,red);
+label("$A$",A,W); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,N); label("$2$",(0,1),W); label("$3$",(1.5,0),S); label("$7$",(C+D)/2,E); label("$6$",(A+D)/2,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Area.} $[ABC]=3$. For triangle $ACD$ use Heron's formula in the form $16K^2=2(a^2b^2+b^2c^2+c^2a^2)-(a^4+b^4+c^4)$ with $a^2=13$, $b^2=49$, $c^2=36$:
+\[
+16K^2=2(637+1764+468)-(169+2401+1296)=5738-3866=1872,
+\]
+so $K^2=117$ and $K=3\sqrt{13}$. The quadrilateral has area $3+3\sqrt{13}$.
+
+\textbf{Radius.} A tangential quadrilateral has area $rs$, where $s$ is the semiperimeter, here $s=\dfrac{2+3+7+6}{2}=9$. So
+\[
+r=\dfrac{3+3\sqrt{13}}{9}=\boxed{\dfrac{1+\sqrt{13}}{3}}.
+\]
+(The incircle exists since $AB+CD=BC+DA=9$; coordinates give $D=\left(\dfrac{12\sqrt{13}}{13},2+\dfrac{18\sqrt{13}}{13}\right)$ and confirm the radius.)

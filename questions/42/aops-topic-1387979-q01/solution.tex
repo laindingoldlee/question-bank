@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1387979_mathcounts_questions
+% Stable identity: aops-topic-1387979-q01
+Let the triangle be $ABC$ with $\angle A=45^\circ$, $AB=12$ and $BC=10$ (the side opposite $A$), and let $x=AC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=12*dir(45);
+real r2=sqrt(2), r7=sqrt(7);
+pair C1=(6*r2-2*r7,0), C2=(6*r2+2*r7,0);
+draw(arc(B,10,-125,-55),gray+dashed);
+draw(A--C2,linewidth(0.9)); draw(A--B,linewidth(0.9));
+draw(B--C1,blue); draw(B--C2,red);
+draw(arc(A,1.6,0,45));
+dot(A);dot(B);dot(C1);dot(C2);
+label("$A$",A,SW); label("$B$",B,N); label("$C_1$",C1,S); label("$C_2$",C2,S);
+label("$45^\circ$",A+2.3*dir(22),fontsize(8pt));
+label("$12$",A+6*dir(45),NW); label("$10$",(B+C1)/2,W,blue); label("$10$",(B+C2)/2,E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the law of cosines,
+\[
+10^2=12^2+x^2-2\cdot12\cdot x\cos45^\circ\iff x^2-12\sqrt2\,x+44=0,
+\]
+so $x=6\sqrt2\pm2\sqrt7$; both roots are positive, giving the two triangles $ABC_1$ and $ABC_2$. The area of each is $\dfrac{1}{2}\cdot12\cdot x\sin45^\circ=3\sqrt2\,x$, so the sum of the areas is
+\[
+3\sqrt2\,(x_1+x_2)=3\sqrt2\cdot12\sqrt2=\boxed{72}
+\]
+square centimetres, using $x_1+x_2=12\sqrt2$ (Vieta).

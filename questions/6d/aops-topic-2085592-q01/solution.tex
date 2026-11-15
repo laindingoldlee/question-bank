@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2085592_math_kangaroo_problem
+% Stable identity: aops-topic-2085592-q01
+Call the numbers on the faces
+\[d\ (ABCD),\quad u\ (EFGH),\quad f\ (ABFE),\quad k\ (DCGH),\quad r\ (BCGF),\quad l\ (ADHE).\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(3,0), sh=(1.4,1.1), up=(0,3);
+pair C=B+sh, D=A+sh, Ee=A+up, F=B+up, G=C+up, H=D+up;
+draw(A--B--F--Ee--cycle,linewidth(0.9)); draw(B--C--G--F,linewidth(0.9)); draw(Ee--H--G,linewidth(0.9));
+draw(A--D,dashed); draw(D--C,dashed); draw(D--H,dashed);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,E); label("$D$",D,NW);
+label("$E$",Ee,W); label("$F$",F,dir(-20)); label("$G$",G,NE); label("$H$",H,NW);
+dot(C,red); dot(D,red); dot(Ee,red); dot(F,blue);
+label("$14$",C+(0.2,-0.4),red+fontsize(8pt)); label("$16$",D,dir(-30),red+fontsize(8pt));
+label("$24$",Ee+(-0.15,0.5),red+fontsize(8pt)); label("$?$",F,dir(120),blue);
+label("$f$",(2.2,2.1),fontsize(9pt)); label("$u$",(Ee+G)/2,fontsize(9pt)); label("$r$",(B+G)/2,fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The faces at each vertex give
+\[C:\ d+k+r=14,\qquad D:\ d+k+l=16,\qquad E:\ u+f+l=24,\qquad F:\ u+f+r=\ ?\]
+Subtracting the first equation from the second gives $l-r=2$. The totals at $E$ and $F$ differ by exactly the same exchange of face $l$ for face $r$, so the total at $F$ is
+\[u+f+r=(u+f+l)-(l-r)=24-2=\boxed{22}.\]

@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2374271_angle_question
+% Stable identity: aops-topic-2374271-q01
+Let $\angle ACB=x$.
+\begin{itemize}
+\item $CD=DA$, so triangle $ACD$ is isosceles and $\angle DAC=\angle DCA=x$.
+\item $AD$ bisects angle $A$, so $\angle DAB=x$ and $\angle CAB=2x$.
+\item $\angle ADB$ is an exterior angle of triangle $ACD$, so $\angle ADB=\angle DAC+\angle DCA=2x$.
+\item $AB=AD$, so triangle $ABD$ is isosceles and $\angle ABD=\angle ADB=2x$.
+\end{itemize}
+The angles of triangle $ABD$ give $x+2x+2x=180^\circ$, so $x=36^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real phi=(1+sqrt(5))/2;
+pair A=(0,0), B=(1,0), C=(0.5,0.5*Tan(72));
+pair D=B+(C-B)/phi^2;
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,blue+linewidth(0.9));
+dot(A); dot(B); dot(C); dot(D);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$D$",D,E);
+draw(arc(A,0.17,0,36)); draw(arc(A,0.21,36,72));
+label("$36^\circ$",A+0.3*dir(18),fontsize(7pt)); label("$36^\circ$",A+0.36*dir(52),fontsize(7pt));
+draw(arc(B,0.13,108,180)); label("$72^\circ$",B+0.26*dir(144),fontsize(7pt));
+draw(arc(D,0.12,180+36,180+108)); label("$72^\circ$",D+0.24*dir(248),fontsize(7pt));
+draw(arc(C,0.18,252,288)); label("$36^\circ$",C+0.32*dir(270),fontsize(7pt));
+void tick(pair P, pair Q){pair M=(P+Q)/2, u=unit(Q-P), v=rotate(90)*u; draw(M-0.03*v--M+0.03*v,linewidth(0.8));}
+tick(A,B); tick(A,D); tick(C,D);
+\end{asy}
+
+Then $\angle CAB=72^\circ=\angle ABC$, which agrees with the last given condition (it is not needed, but it is consistent). So $\angle ACB=\boxed{36^\circ}$.

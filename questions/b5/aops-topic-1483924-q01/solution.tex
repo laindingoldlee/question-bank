@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1483924_cutting_3_lines
+% Stable identity: aops-topic-1483924-q01
+Draw the lines one at a time. A new line that crosses $m$ of the earlier lines at distinct points inside the circle is cut by those points into at most $m+1$ pieces inside the circle, and each piece splits one region into two. So the new line adds at most $m+1$ regions, with $m$ at most the number of earlier lines.
+
+Starting from $1$ region, the three lines add at most $1$, $2$ and $3$ regions, for a total of at most $1+1+2+3=7$. Seven is achieved by three lines that cross pairwise at three different points inside the circle, as below.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair T1=(-0.5,-0.3),T2=(0.55,-0.3),T3=(0.02,0.5);
+void chord(pair a,pair b){pair[] ip=intersectionpoints((a+4*(a-b))--(b+4*(b-a)),unitcircle); draw(ip[0]--ip[1],blue+linewidth(0.8));}
+fill(T1--T2--T3--cycle,palegreen);
+draw(unitcircle,linewidth(0.9));
+chord(T1,T2); chord(T2,T3); chord(T3,T1);
+dot(T1);dot(T2);dot(T3);
+label("$1$",(T1+T2+T3)/3);
+label("$2$",(0.03,-0.62)); label("$3$",(0.52,0.2)); label("$4$",(-0.5,0.2));
+label("$5$",(0.02,0.8)); label("$6$",(-0.77,-0.5)); label("$7$",(0.79,-0.5));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The maximum is $\boxed{7}$.

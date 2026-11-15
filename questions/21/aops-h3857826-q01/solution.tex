@@ -1,0 +1,16 @@
+Label the points in circular order and fix the first. If it is joined to point $2j+2$, then $2j$ points lie on one side and $2(n-1-j)$ on the other; each side must be matched internally. Hence the count $C_n$ satisfies
+\[
+C_0=1,\qquad C_n=\sum_{j=0}^{n-1}C_jC_{n-1-j}.
+\]
+These are the Catalan numbers. For a direct formula, encode the two endpoints of each chord as an opening and closing parenthesis in circular order starting at the fixed label. Noncrossing matching pairs each closing parenthesis with the most recent unmatched opening parenthesis. This is a bijection with balanced parenthesis strings, or paths with $n$ up-steps and $n$ down-steps that never go below zero.
+There are $\binom{2n}{n}$ unrestricted strings. Reflecting the initial segment through the first step reaching height $-1$ bijects the bad paths with paths having $n+1$ up-steps and $n-1$ down-steps. Thus
+\[
+\boxed{C_n=\binom{2n}{n}-\binom{2n}{n+1}
+=\dfrac{1}{n+1}\binom{2n}{n}}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p;for(int j=0;j<8;++j){p.push(3dir(90-45*j));dot(p[j]);label(string(j+1),p[j],unit(p[j]));}draw(circle((0,0),3),gray);draw(p[0]--p[5],blue);draw(p[1]--p[4],blue);draw(p[2]--p[3],blue);draw(p[6]--p[7],blue);
+\end{asy}

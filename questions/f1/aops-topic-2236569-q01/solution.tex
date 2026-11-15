@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2236569_amamc_8_21_rectangle_geo
+% Stable identity: aops-topic-2236569-q01
+By the Pythagorean theorem $AD=\sqrt{5^2-4^2}=3$. Put $A=(0,0)$, $B=(4,0)$, $C=(4,3)$, $D=(0,3)$. Moving $2$ units from $B$ towards $D$ (that is, $\dfrac{2}{5}$ of the way),
+\[M=B+\dfrac{2}{5}(D-B)=(4,0)+\dfrac{2}{5}(-4,3)=\left(\dfrac{12}{5},\dfrac{6}{5}\right).\]
+Line $AM$ is $y=\dfrac {x}{2}$, which meets $BC$ ($x=4$) at $N=(4,2)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(4,0), C=(4,3), D=(0,3);
+pair M=(12/5,6/5), N=(4,2);
+fill(D--M--N--cycle,lightgray);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(B--D); draw(A--N);
+draw(D--M--N--cycle,blue);
+dot(M); dot(N);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW); label("$M$",M,S); label("$N$",N,E);
+label("$4$",(A+B)/2,S,fontsize(8pt)); label("$3$",(A+D)/2,W,fontsize(8pt));
+\end{asy}
+
+By the shoelace formula,
+\[[DMN]=\dfrac{1}{2}\left|0\left(\dfrac{6}{5}-2\right)+\dfrac{12}{5}(2-3)+4\left(3-\dfrac{6}{5}\right)\right|=\dfrac{1}{2}\left(-\dfrac{12}{5}+\dfrac{36}{5}\right)=\dfrac{12}{5}.\]
+The answer is $\boxed{\textbf{(B) } \dfrac{12}{5}}$.

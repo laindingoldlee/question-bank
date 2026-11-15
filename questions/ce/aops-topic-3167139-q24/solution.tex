@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3167139_2022_lmt_fall_guts_round_p16p27_lexington_mathematical_tournament
+% Stable identity: aops-topic-3167139-q24
+Center the hexagon at the origin with a vertex on the positive horizontal axis. For a square of fixed orientation, centering it loses no feasibility: for an inner square, average it with its reflection through the origin and use convexity of the hexagon; for an outer square, each projected hexagon interval is symmetric and has fixed width, so centering gives the smallest required side. By rotations and reflections reduce the square orientation to $0\le\theta\le15^\circ$. For an inner square of side $s$, the support in a unit direction making angle $\phi$ with a square axis is $\dfrac{s}{2}(|\cos\phi|+|\sin\phi|)$. The hexagon has support-line distance $\dfrac{\sqrt3}{2}$ in its three normal directions. Among these, the greatest square factor is $\cos(30^\circ+\theta)+\sin(30^\circ+\theta)$, minimized at $\theta=0$. Consequently $s\le\dfrac{2\sqrt3}{1+\sqrt3}=3-\sqrt3$, attained at that orientation, and $A=12-6\sqrt3$. For the outer square the two required widths are $2\cos\theta$ and $2\cos(30^\circ-\theta)$. Their maximum on this interval is $2\cos\theta$, minimized at $15^\circ$. Thus $B=4\cos^2(15^\circ)=2+\sqrt3$. Subtraction gives $\boxed{B-A=7\sqrt3-10}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+path h=dir(0);for(int k=1;k<6;++k)h=h--dir(60*k);draw(h--cycle);real a=(3-sqrt(3))/2,b=cos(15*pi/180);draw((-a,-a)--(a,-a)--(a,a)--(-a,a)--cycle,blue);path q=(-b,-b)--(b,-b)--(b,b)--(-b,b)--cycle;draw(rotate(15)*q,red);label("inner optimum",(0,-1.45),blue);label("outer optimum",(0,1.5),red);
+\end{asy}

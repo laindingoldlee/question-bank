@@ -1,0 +1,47 @@
+% Source: https://artofproblemsolving.com/community/c3h1616302_geometry_problem__two_circles_with_a_chord_find_the_radius_of_one_circle
+% Stable identity: aops-topic-1616302-q01
+Let the circles have centres $O_1$ (radius $13$) and $O_2$, and let the common chord be $PQ$. The line of centres $O_1O_2$ is the perpendicular bisector of $PQ$ (both centres are equidistant from $P$ and $Q$), so it meets $PQ$ at its midpoint $M$ at a right angle, and $PM=12$.
+
+In the right triangle $O_1MP$, $O_1M=\sqrt{13^2-12^2}=5$. The centre $O_2$ is $21$ cm from $O_1$ on the line $O_1M$, so either it is on the other side of the chord, with $O_2M=21-5=16$, or on the same side, with $O_2M=21+5=26$.
+
+\textbf{Centres on opposite sides of the chord.}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair O1=(-5,0),O2=(16,0),P=(0,12),Q=(0,-12),M=(0,0);real r2=20;real sd=1;
+draw(circle(O1,13),linewidth(0.9));draw(circle(O2,r2),linewidth(0.9));
+draw(P--Q,red+linewidth(1));
+draw(O1--P,blue+dashed);draw(O2--P,blue+dashed);draw(O1--O2,blue+dashed);
+draw(M+(0,1.2)--M+(1.2*sd,1.2)--M+(1.2*sd,0),red);
+dot(O1);dot(O2);dot(P);dot(Q);dot(M);
+label("$O_1$",O1,SW);label("$O_2$",O2,S);label("$P$",P+(0,1.9));label("$Q$",Q-(0,2.5));label("$M$",M,SE);
+label("$13$",(O1+P)/2+(-1.2,0),W,blue);label("$20$",O2+0.5*(P-O2),NE,blue);
+label("$12$",(0,4.5),E,red);label("$5$",(-2.2,0),N,blue);label("$16$",(O2+M)/2+(2,0),S,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Here $O_2P=\sqrt{16^2+12^2}=\sqrt{400}=20$.
+
+\textbf{Centres on the same side of the chord.}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair O1=(-5,0),O2=(-26,0),P=(0,12),Q=(0,-12),M=(0,0);real r2=sqrt(820);real sd=-1;
+draw(circle(O1,13),linewidth(0.9));draw(arc(O2,r2,-36,36),linewidth(0.9));
+draw(P--Q,red+linewidth(1));
+draw(O1--P,blue+dashed);draw(O2--P,blue+dashed);draw(O1--O2,blue+dashed);
+draw(M+(0,1.2)--M+(1.2*sd,1.2)--M+(1.2*sd,0),red);
+dot(O1);dot(O2);dot(P);dot(Q);dot(M);
+label("$O_1$",O1,SW);label("$O_2$",O2,S);label("$P$",P+(0,1.9));label("$Q$",Q-(0,2.5));label("$M$",M,E);
+label("$13$",(O1+P)/2+(-0.6,0),W,blue);label("$2\sqrt{205}$",O2+0.2*(P-O2),NW,blue);
+label("$12$",(0,4.5),W,red);label("$5$",(-2.5,0),S,blue);label("$21$",(O1+O2)/2,S,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Here $O_2P=\sqrt{26^2+12^2}=\sqrt{820}=2\sqrt{205}\approx28.6$.
+
+In both cases the two circles really meet at $P$ and $Q$, so both are possible: the other radius is $\boxed{20\text{ cm}}$ or $\boxed{2\sqrt{205}\text{ cm}}$. (The usual textbook answer, $20$ cm, is the case with the centres on opposite sides of the chord.)

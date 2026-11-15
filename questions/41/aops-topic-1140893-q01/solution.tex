@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1140893_guess_this_10digit_number
+% Stable identity: aops-topic-1140893-q01
+Write the number as $d_0d_1\cdots d_9$, where $d_i$ is the number of times the digit $i$ occurs. Since there are ten digits,
+\[d_0+d_1+\cdots+d_9=10 .\tag{1}\]
+The digit sum can be computed in two ways: it is $d_0+\cdots+d_9$, and also $\sum i\,d_i$ (digit $i$ occurs $d_i$ times). So by (1) the digit sum is $10$.
+
+Let $z=d_0\ge1$ (it is the leading digit). Exactly $10-z$ digits are nonzero, one of which is $d_0=z$. The other $9-z$ nonzero digits therefore sum to $10-z$. If $z=9$ there are no others and the digit sum would be $9$, which is impossible; so $9-z\ge1$, and $9-z$ positive integers with sum $(9-z)+1$ must be all $1$s except for a single $2$. Thus the digits are: $z$ zeros, the digit $z$, one $2$, and $8-z$ ones.
+
+\begin{itemize}
+\item $z=1$: the ones are $d_0$ and seven others, so $d_1=8$; but no digit equals $8$. Impossible.
+\item $z=2$: there are six $1$s, so $d_1=6$; but no digit equals $6$. Impossible.
+\item $z\ge3$: the digit $z$ occurs once and the digit $2$ occurs once, so $d_z=1$ and $d_2=1$, and $d_1=8-z$. If $z=8$, then $d_1=0$ and the nonzero digits are $d_0,d_2,d_8$, three of them, but there should be $10-z=2$. If $3\le z\le7$, then the nonzero digits are exactly $d_0,d_1,d_2,d_z$, so $10-z=4$ and $z=6$, giving $d_0=6,\ d_1=2,\ d_2=1,\ d_6=1$ and all other digits $0$.
+\end{itemize}
+The number is $6210001000$. Check: it has six $0$s, two $1$s, one $2$, one $6$ and no other digits. So the unique answer is $\boxed{6210001000}$.

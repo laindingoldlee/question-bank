@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1980089_easy_way_to_find_area_of_something_wcoordinates
+% Stable identity: aops-topic-1980089-q01
+The vertices are listed in order around the quadrilateral (counterclockwise), as the sketch shows.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+for(int i=-2;i<=7;++i){draw((i,-0.5)--(i,8),gray(0.88));}
+for(int j=0;j<=8;++j){draw((-2,j)--(7,j),gray(0.88));}
+draw((-2,0)--(7.4,0),Arrow(TeXHead));draw((0,-0.5)--(0,8.4),Arrow(TeXHead));
+label("$x$",(7.4,0),E);label("$y$",(0,8.4),N);
+pair A=(1,1),B=(6,2),C=(5,7),D=(-1,4);
+filldraw(A--B--C--D--cycle,lightgray,linewidth(1));
+dot(A);dot(B);dot(C);dot(D);
+label("$A(1,1)$",A,SE);label("$B(6,2)$",B,E);label("$C(5,7)$",C,N);label("$D(-1,4)$",D,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For a polygon with vertices $(x_1,y_1),\dots,(x_n,y_n)$ listed in order around it, the shoelace formula gives
+\[
+\text{Area}=\dfrac{1}{2}\left|\sum_{i=1}^{n}\left(x_iy_{i+1}-x_{i+1}y_i\right)\right|,\qquad (x_{n+1},y_{n+1})=(x_1,y_1).
+\]
+Here the four terms are
+\[
+1\cdot2-6\cdot1=-4,\quad 6\cdot7-5\cdot2=32,\quad 5\cdot4-(-1)\cdot7=27,\quad (-1)\cdot1-1\cdot4=-5,
+\]
+with sum $50$. So the area is $\dfrac{1}{2}\cdot50=\boxed{25}$.
+
+(Check by subtraction: the bounding box $[-1,6]\times[1,7]$ has area $42$; the four corner right triangles cut off have areas $\dfrac{5\cdot1}{2}$, $\dfrac{1\cdot5}{2}$, $\dfrac{6\cdot3}{2}$ and $\dfrac{2\cdot3}{2}$, totalling $17$, leaving $42-17=25$.)

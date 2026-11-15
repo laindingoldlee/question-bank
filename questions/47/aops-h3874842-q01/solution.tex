@@ -1,0 +1,12 @@
+Write $s=\sin x$, $c=\cos x$, and $u=\sqrt3s+8c$. Using $s^2+c^2=1$, the expression becomes
+\[
+256-4u^2+12\sqrt3u
+=283-4\left(u-\dfrac{3\sqrt3}{2}\right)^2.
+\]
+It is therefore at most $283$. As $x$ varies, $u=\sqrt3\sin x+8\cos x$ takes every value in $[-\sqrt{67},\sqrt{67}]$. Since $3\dfrac{\sqrt 3}{2}$ lies in that interval, equality is attained. The maximum is $\boxed{283}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(circle((0,0),1),gray);real u=3sqrt(3)/2;pair P=(8,sqrt(3)),F=u/67*P,V=unit((-sqrt(3),8))*sqrt(1-u*u/67);draw(F-1.3unit(V)--F+1.3unit(V),blue);dot(F+V);dot(F-V);draw((-1.3,0)--(1.3,0),gray);draw((0,-1.3)--(0,1.3),gray);label("$c$",(1.3,0),(1,0));label("$s$",(0,1.3),(0,1));label("$8c+\sqrt3s=\dfrac{3\sqrt3}{2}$",(0,-1.6));
+\end{asy}

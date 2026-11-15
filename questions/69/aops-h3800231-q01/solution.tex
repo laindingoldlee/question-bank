@@ -1,0 +1,9 @@
+Each row has six nonmonochromatic patterns, giving $6^3=216$ initial choices. For a specified monochromatic column, choose its colour in two ways; each row's other two cells then has three choices, giving $2\cdot3^3=54$. For two specified monochromatic columns, if they have the same colour, the last column is forced opposite, giving two choices. If their colours differ, there are two choices for those colours and $2^3$ choices for the last column, giving sixteen more, total eighteen. If all three columns are monochromatic, their three colours cannot all agree, giving six choices. Inclusion-exclusion yields
+\[\boxed{216-3\cdot54+3\cdot18-6=102}.\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"R", "R", "G"}, {"R", "G", "R"}, {"G", "R", "G"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("One valid colouring",(1.5,-3.2));
+\end{asy}

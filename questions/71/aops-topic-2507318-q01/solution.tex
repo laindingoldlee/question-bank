@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2507318_mathslayer4444_college_thesis
+% Stable identity: aops-topic-2507318-q01
+\textbf{(a)} \emph{Step 1 is invalid.} The partial sums of $1-1+1-1+\cdots$ are $1,0,1,0,\dots$, which do not approach any number, so the series has no sum. (The value $\dfrac12$ is the average of the partial sums, a different notion; treating it as a sum leads to contradictions, since grouping the terms as $(1-1)+(1-1)+\cdots$ would give $0$ and as $1-(1-1)-(1-1)-\cdots$ would give $1$.)
+
+\emph{Step 2 is valid.} Indeed $\dfrac{1}{11}=0.\overline{09}$ and $\dfrac{10}{11}=0.\overline{90}$, and the alternating series converges absolutely:
+\[\dfrac{9}{10}-\dfrac{9}{100}+\dfrac{9}{1000}-\cdots=\dfrac{\dfrac{9}{10}}{1+\dfrac{1}{10}}=\dfrac{9}{11},\]
+which agrees with $x=1$.
+
+\emph{Step 3 is invalid.} The inequality $\left(\sum a_i\right)\left(\sum b_i\right)\ge\left(\sum\sqrt{a_ib_i}\right)^2$ follows from Cauchy--Schwarz only when all $a_i$ and $b_i$ are \emph{nonnegative} (apply Cauchy--Schwarz to the vectors $(\sqrt{a_i})$ and $(\sqrt{b_i})$), and for infinite series it also needs the series to converge. Here the terms alternate in sign, and $\sum a_i$ does not converge at all. With signed terms the inequality is simply false: for $a=(1,-1)$ and $b=(1,-1)$,
+\[\left(\sum a_i\right)\left(\sum b_i\right)=0\cdot0=0<4=\left(\sqrt1+\sqrt1\right)^2.\]
+(The arithmetic in step 3 is correct, since $\sum_{i\ge1}\dfrac{3}{10^{\dfrac i2}}=\dfrac{3}{\sqrt{10}-1}$, but the inequality it starts from does not apply.)
+
+\textbf{(b)} By definition $0.\overline{9}=\displaystyle\sum_{i=1}^{\infty}\dfrac{9}{10^i}$, the limit of the partial sums
+\[s_n=\dfrac{9}{10}+\dfrac{9}{100}+\cdots+\dfrac{9}{10^n}=1-\dfrac{1}{10^n}.\]
+As $n\to\infty$, $\dfrac{1}{10^n}\to0$, so $s_n\to1$ and $\boxed{0.\overline{9}=1}$. $\blacksquare$

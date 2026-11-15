@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1542500_proving_ssa
+% Stable identity: aops-topic-1542500-q01
+Take $\angle A=30^\circ$ and $AB=2$, and let $C$ be a point on the other ray from $A$ with $BC=1.25$. The circle with centre $B$ and radius $1.25$ meets that ray in two points $C$ and $C'$, since the distance from $B$ to the ray is $2\sin30^\circ=1<1.25<2=AB$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=2*dir(30);
+real r=1.25;
+pair[] X=intersectionpoints(circle(B,r),A--(3.2,0));
+draw(A--(3.2,0));draw(A--B,linewidth(0.8));
+draw(B--X[0],linewidth(0.8));draw(B--X[1],linewidth(0.8));
+dot(X[0]);dot(X[1]);
+label("$A$",A,SW);label("$B$",B,N);label("$C$",X[0],S);label("$C'$",X[1],S);
+draw(arc(B,r,225,315),dotted);
+label("$30^\circ$",A+(0.5,0.12),fontsize(7pt));
+\end{asy}
+
+Triangles $ABC$ and $ABC'$ have $AB=AB$, $BC=BC'$ and the common angle $A$, which is not between the two sides. But $AC\ne AC'$, so they are not congruent. Hence SSA is not a congruence criterion. (It does work when the given angle is right or obtuse, or when the side opposite it is at least as long as the other given side.)

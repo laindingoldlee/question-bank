@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1964750_help_on_some_problems
+% Stable identity: aops-topic-1964750-q01
+Let the radii be \(r_1\ge r_2\) and the distance between the centres \(d=65\).
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real sc=0.04; real d=65, r1=38.5, r2=13.5;
+pair O1=(0,0), O2=(d,0);
+draw(scale(sc)*circle(O1,r1)); draw(scale(sc)*circle(O2,r2));
+real al=acos((r1-r2)/d); pair T1=O1+r1*dir(al*180/pi), T2=O2+r2*dir(al*180/pi);
+real be=acos((r1+r2)/d); pair U1=O1+r1*dir(-be*180/pi), U2=O2+r2*dir(180-be*180/pi);
+draw(scale(sc)*(T1--T2),blue+linewidth(0.9)); draw(scale(sc)*(U1--U2),red+linewidth(0.9));
+draw(scale(sc)*(O1--O2),dashed); dot(scale(sc)*O1); dot(scale(sc)*O2);
+draw(scale(sc)*(O1--T1),gray); draw(scale(sc)*(O2--T2),gray); draw(scale(sc)*(O1--U1),gray); draw(scale(sc)*(O2--U2),gray);
+label("$60$",scale(sc)*((T1+T2)/2),N,blue); label("$39$",scale(sc)*((U1+U2)/2)+(0.1,-0.1),SE,red); label("$65$",scale(sc)*(45,0),S);
+label("$r_1$",scale(sc)*(O1+0.5*(T1-O1)),W); label("$r_2$",scale(sc)*(O2+0.5*(T2-O2)),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For the external tangent, sliding it towards the centres by \(r_2\) gives a right triangle with hypotenuse \(d\) and legs \(60\) and \(r_1-r_2\); for the internal tangent, a right triangle with hypotenuse \(d\) and legs \(39\) and \(r_1+r_2\). So
+\[
+(r_1-r_2)^2=65^2-60^2=625,\qquad (r_1+r_2)^2=65^2-39^2=2704 .
+\]
+Therefore
+\[
+r_1r_2=\dfrac{(r_1+r_2)^2-(r_1-r_2)^2}{4}=\dfrac{2704-625}{4}=\boxed{\dfrac{2079}{4}}=519.75
+\]
+(the radii are \(38.5\) and \(13.5\)).

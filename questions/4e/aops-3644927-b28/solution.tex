@@ -1,0 +1,6 @@
+Let $r_2=1$. A regular $n$-gon with inradius $r_{n-1}$ has area $A_n=n r_{n-1}^2\tan(\dfrac{\pi}{n})$, and its circumradius is $r_n=\dfrac{r_{n-1}}{\cos(\dfrac{\pi}{n})}$. Therefore the exact requested result is $\boxed{\sum_{n=3}^8(-1)^n n\tan(\dfrac{\pi}{n})\prod_{j=3}^{n-1}\sec^2(\dfrac{\pi}{j})}$. The empty product is one. Evaluating the six terms gives approximately $\boxed{35.6738428760}$. The formula follows directly by splitting each polygon into $n$ triangles of height its inradius.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+draw(circle((0,0),1));real rr=2;draw(rr*dir(90)--rr*dir(210)--rr*dir(330)--cycle,blue);draw(circle((0,0),2),dashed);draw(box((-2,-2),(2,2)),red);label("first two polygon stages",(0,-2.5));
+\end{asy}
+

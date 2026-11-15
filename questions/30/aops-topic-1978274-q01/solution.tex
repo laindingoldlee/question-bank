@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1978274_combinatorial_identity
+% Stable identity: aops-topic-1978274-q01
+Count the $k$-person committees chosen from $n$ people in two ways.
+
+Directly, there are $\dbinom nk$ committees.
+
+Now fix one person, say Alex, and split the committees into two kinds.
+\begin{itemize}
+\item Committees containing Alex: the other $k-1$ members are chosen from the remaining $n-1$ people, in $\dbinom{n-1}{k-1}$ ways.
+\item Committees not containing Alex: all $k$ members are chosen from the other $n-1$ people, in $\dbinom{n-1}{k}$ ways (this is $0$ when $k=n$).
+\end{itemize}
+Every committee is of exactly one kind, so the total is $\dbinom{n-1}{k-1}+\dbinom{n-1}{k}$. Both counts describe the same set, hence they are equal. $\blacksquare$

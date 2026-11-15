@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1515713_solve_thisplease
+% Stable identity: aops-topic-1515713-q01
+A point $(x,y)$ is on the new line exactly when the point $(x-4,\,y+1)$, which the translation moves to $(x,y)$, is on the old line:
+\[
+y+1=5(x-4)-3\qquad\Longrightarrow\qquad y=5x-24 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-1.5,0)--(6.5,0),gray,Arrow(TeXHead));draw((0,-6.5)--(0,5),gray,Arrow(TeXHead));
+label("$x$",(6.5,0),E,gray);label("$y$",(0,5),N,gray);
+draw((-0.5,-5.5)--(1.6,5),blue+linewidth(0.9));
+draw((3.7,-5.5)--(5.8,5),red+linewidth(0.9));
+draw((0,-3)--(4,-4),dashed,Arrow(TeXHead));
+dot((0,-3));dot((4,-4));
+label("$(0,-3)$",(0,-3),W);label("$(4,-4)$",(4,-4),E);
+label("$y=5x-3$",(-0.5,-5.5),W,blue);label("$y=5x-24$",(5.8,5),E,red);
+label("$\langle4,-1\rangle$",(2.4,-1.95));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check: the point $(0,-3)$ of the old line moves to $(4,-4)$, and $5\cdot4-24=-4$. The slope stays $5$, since a translation does not change directions. The new line is $\boxed{y=5x-24}$.

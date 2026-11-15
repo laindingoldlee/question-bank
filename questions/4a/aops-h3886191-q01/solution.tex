@@ -1,0 +1,36 @@
+Reflection in the altitude pairs all qualifying points except the midpoint. An odd count forces the midpoint to qualify, so write $BC=2k$ and the altitude as an integer $h>0$. Here $k$ is an integer, the area is $kh\le500$, and obtuseness is equivalent to $k>h$.
+
+For an interior point at integer offset $t$ from the midpoint, $AD=\sqrt{h^2+t^2}$. Besides the midpoint, exactly one positive offset $t<k$ must give a square. Let $t_1<t_2$ be the first two positive offsets with $h^2+t^2$ square, taking $t_2=\infty$ if there is only one. They are found exhaustively from
+\[
+(c-t)(c+t)=h^2
+\]
+by positive factor pairs of the same parity. The allowed range is
+\[
+\max(h+1,t_1+1)\le k\le\min(\lfloor\dfrac{500}{h}\rfloor,t_2).
+\]
+Since $h<k$ and $hk\le500$, only $1\le h\le21$ need checking. The nonempty ranges are
+\[
+\begin{array}{c|c|c|r}
+h&t_1,t_2&k\text{ range}&\text{count}\\\hline
+3&4,\infty&5\text{--}166&162\\
+4&3,\infty&5\text{--}125&121\\
+5&12,\infty&13\text{--}100&88\\
+6&8,\infty&9\text{--}83&75\\
+7&24,\infty&25\text{--}71&47\\
+8&6,15&9\text{--}15&7\\
+9&12,40&13\text{--}40&28\\
+10&24,\infty&25\text{--}50&26\\
+15&8,20&16\text{--}20&5\\
+16&12,30&17\text{--}30&14\\
+18&24,80&25\text{--}27&3\\
+20&15,21&21&1\\
+21&20,28&22\text{--}23&2
+\end{array}
+\]
+Summing gives $\boxed{579}$. Each pair $(h,k)$ specifies one congruence class.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,3),B=(-5,0),C=(5,0);draw(A--B--C--cycle);draw(A--(0,0),dashed);draw(A--(-4,0),blue);draw(A--(4,0),blue);for(int j=-4;j<=4;j+=4)dot((j,0),red);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$h=3$",(-.3,1.5),W);label("$t=4$",(2,0),S);label("$k=5$",(-2.5,-.8));
+\end{asy}

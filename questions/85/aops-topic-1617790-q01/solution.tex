@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1617790_a_fun_math_problem_d
+% Stable identity: aops-topic-1617790-q01
+By the distance formula,
+\[
+PQ=\sqrt{(5-2)^2+(5-15)^2}=\sqrt{9+100}=\sqrt{109}.
+\]
+The midpoint averages the coordinates: $M=\left(\dfrac{2+5}{2},\dfrac{15+5}{2}\right)=\left(\dfrac{7}{2},10\right)$. Then
+\[
+MR=\sqrt{\left(8-\dfrac{7}{2}\right)^2+(18-10)^2}=\sqrt{\dfrac{81}{4}+64}=\sqrt{\dfrac{337}{4}}=\dfrac{\sqrt{337}}{2}\approx9.18 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair P=(2,15),Q=(5,5),M=(3.5,10),R=(8,18);
+draw(P--Q,linewidth(0.9));draw(M--R,red+dashed);
+dot(P);dot(Q);dot(M,blue);dot(R);
+label("$P(2,15)$",P,W);label("$Q(5,5)$",Q,E);label("$M$",M,W,blue);label("$R(8,18)$",R,E);
+label("$PQ=\sqrt{109}$",(5.6,7.5),E);label("$MR=\dfrac{\sqrt{337}}{2}$",(M+R)/2,SE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $PQ=\boxed{\sqrt{109}}$ and $MR=\boxed{\dfrac{\sqrt{337}}{2}}$. (Halving the length $PQ$ gives the distance from $M$ to $P$ or $Q$; to reach $R$ one needs the coordinates of $M$, as above.)

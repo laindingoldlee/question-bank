@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1931290_arrangements_of_letters
+% Stable identity: aops-topic-1931290-q01
+\textbf{Direct count.} The consonants M, C, H, N, S can be arranged in $5!=120$ ways. They leave $6$ gaps (before, between and after them), and the three vowels A, I, E must go into $3$ different gaps, in order: $6\cdot5\cdot4=120$ ways. So the answer is $120\cdot120=\boxed{14400}$.
+
+\textbf{The error.} Let $X_{AI}$, $X_{AE}$, $X_{IE}$ be the sets of arrangements in which that pair of vowels is adjacent. The student computed $|X_{AI}|+|X_{AE}|+|X_{IE}|=3\cdot2\cdot7!=30240$, but an arrangement in which all three vowels form a block (such as \dots AIE\dots) lies in two of these sets and is subtracted twice. By inclusion--exclusion, each intersection of two sets, e.g.\ $X_{AI}\cap X_{AE}$, consists of the arrangements with the block IAE or EAI, so it has $2\cdot6!=1440$ elements; there are $3$ such intersections, and all three sets cannot hold at once (three letters in a row cannot be pairwise adjacent). Hence
+\[
+8!-\left(3\cdot2\cdot7!-3\cdot2\cdot6!+0\right)=40320-30240+4320=14400,
+\]
+in agreement with the direct count.

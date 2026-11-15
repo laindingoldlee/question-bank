@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2027779_what_are_mass_points
+% Stable identity: aops-topic-2027779-q01
+\textbf{Mass points.} Place masses at the vertices so that $D$ and $E$ are balance points.
+\begin{itemize}
+\item On $BC$: $m_B\cdot BD=m_C\cdot DC$ gives $3m_B=2m_C$; take $m_B=2$, $m_C=3$, so $m_D=m_B+m_C=5$.
+\item On $CA$: $m_A\cdot AE=m_C\cdot EC$ gives $m_A=2m_C=6$, so $m_E=m_A+m_C=9$.
+\end{itemize}
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(5,0), A=(1.4,3.6);
+pair D=B+3/5*(C-B), Ept=A+1/3*(C-A);
+pair P=extension(A,D,B,Ept);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,blue); draw(B--Ept,red);
+dot(A);dot(B);dot(C);dot(D);dot(Ept);dot(P);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S); label("$E$",Ept,NE); label("$P$",P,(1,-0.2));
+label("$6$",A,W,deepgreen); label("$2$",B,(-1,1.2),deepgreen); label("$3$",C,(1,1.2),deepgreen);
+label("$5$",D,(-1.8,-1.6),deepgreen); label("$9$",Ept,(2,-0.8),deepgreen);
+label("$3$",(B+D)/2,S); label("$2$",(D+C)/2,S);
+label("$1$",(A+Ept)/2,NE); label("$2$",(Ept+C)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The centre of mass of the whole system lies on $AD$ (combine $B$ and $C$ at $D$) and on $BE$ (combine $A$ and $C$ at $E$), so it is $P$. Balancing on each segment,
+\[
+AP:PD=m_D:m_A=5:6,\qquad BP:PE=m_E:m_B=9:2.
+\]
+
+\textbf{Check with vectors.} With position vectors, $D=\dfrac{2B+3C}{5}$ and $E=\dfrac{2A+C}{3}$. The point $\dfrac{6A+2B+3C}{11}$ equals $\dfrac{6A+5D}{11}$ (on $AD$, with $AP:PD=5:6$) and also $\dfrac{2B+9E}{11}$ (on $BE$, with $BP:PE=9:2$). So
+\[\boxed{AP:PD=5:6,\quad BP:PE=9:2}.\]

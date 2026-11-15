@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2234578_question_from_test
+% Stable identity: aops-topic-2234578-q01
+A dilation with centre $T$ and factor $k$ sends a point $P$ to $T+k(P-T)$. Here $V-T=(3,-4)$, so
+\[V'=(-4,0)+2.5\,(3,-4)=(-4+7.5,\ -10)=\boxed{\left(\dfrac{7}{2},-10\right)}.\]
+(Similarly $U'=(-4,0)+2.5\,(3,0)=\left(\dfrac{7}{2},0\right)$, and $T'=T$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair T=(-4,0), U=(-1,0), V=(-1,-4), U2=(3.5,0), V2=(3.5,-10);
+draw((-5,0)--(5,0),Arrow(6)); draw((0,-11)--(0,1.5),Arrow(6));
+label("$x$",(5,0),N); label("$y$",(0,1.5),E);
+draw(T--U--V--cycle,linewidth(0.9)); draw(T--U2--V2--cycle,blue);
+draw(T--V2,dashed);
+dot(T); dot(U); dot(V); dot(U2,blue); dot(V2,blue);
+label("$T$",T,NW); label("$U$",U,N); label("$V$",V,W); label("$U'$",U2,N,blue); label("$V'\left(\dfrac{7}{2},-10\right)$",V2,E,blue);
+\end{asy}

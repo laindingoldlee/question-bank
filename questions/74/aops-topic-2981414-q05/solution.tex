@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2981414_fun_geo_problems
+% Stable identity: aops-topic-2981414-q05
+By power of a point, $FR\cdot FS=FP\cdot FM$:
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);real R=2;pair F=(-5,0.3);draw(circle(O,R));
+pair u1=dir(8),u2=dir(-22);
+path l1=F--(F+9*u1),l2=F--(F+9*u2);
+pair[] I1=intersectionpoints(l1,circle(O,R)),I2=intersectionpoints(l2,circle(O,R));
+draw(F--I1[1]);draw(F--I2[1]);dot(F);dot(I1[0]);dot(I1[1]);dot(I2[0]);dot(I2[1]);
+label("$F$",F,W);label("$R$",I1[0],N);label("$S$",I1[1],NE);label("$P$",I2[0],S);label("$M$",I2[1],SE);
+\end{asy}
+
+\[3(m+5)=(m+1)(2m)\iff 2m^2-m-15=0\iff(2m+5)(m-3)=0.\]
+Lengths must be positive, so $m=\boxed{3}$ (then $FR=3$, $FS=8$, $FP=4$, $FM=6$, and $3\cdot8=4\cdot6$).

@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h1548056_3digit_numbers
+% Stable identity: aops-topic-1548056-q01
+If $n^2\equiv n\pmod{1000}$, then by induction $n^k\equiv n$ for every $k\ge1$ (as $n^{k+1}=n^k\cdot n\equiv n\cdot n\equiv n$). Conversely the property for $k=2$ requires $n^2\equiv n$. So we need $1000\mid n(n-1)$.
+
+Since $n$ and $n-1$ are coprime, $8$ divides one of them and $125$ divides one of them. For a three-digit $n$ (so neither $n$ nor $n-1$ is divisible by $1000$) we need either
+\begin{itemize}
+\item $125\mid n$ and $8\mid n-1$: $n\in\{125,250,\dots,875\}$ with $n\equiv1\pmod8$: $n=625$;
+\item $8\mid n$ and $125\mid n-1$: $n\in\{126,251,376,501,626,751,876\}$ with $8\mid n$: $n=376$.
+\end{itemize}
+(The cases $1000\mid n$ or $1000\mid n-1$ give no three-digit numbers.) Indeed $625^2=390625$ and $376^2=141376$. So the two numbers are $376$ and $625$, and the difference is $625-376=\boxed{249}$.

@@ -1,0 +1,15 @@
+The radius gives amplitude $6$, the midline is $0$, and the angular speed is $2\dfrac{\pi}{10}=\dfrac{\pi}{5}$. Since the point starts at the maximum,
+\[
+h(t)=6\cos(\pi \dfrac{t}{5})=6\sin\left(\dfrac{\pi}{5}(t+\dfrac{5}{2})\right).
+\]
+Thus $(a,b,c,d)=(6,\dfrac{\pi}{5},\dfrac{5}{2},0)$ is one valid choice. The five points are
+\[
+F=(0,6),\quad G=(\dfrac{5}{2},0),\quad J=(5,-6),\quad K=(\dfrac{15}{2},0),\quad P=(10,6).
+\]
+On $5<t<\dfrac{15}{2}$, the height is negative and increasing. Also $h''(t)=-(\dfrac{\pi}{5})^2h(t)>0$, so the graph is concave upward and the rate of change $h'(t)$ is increasing.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;real f(real t){return 6*cos(pi*t/5);}draw(graph(f,0,20),blue);draw((0,0)--(20.7,0),dashed+gray,Arrow);draw((0,-7)--(0,7),gray,Arrow);real[] t={0,2.5,5,7.5,10};string[] n={"F","G","J","K","P"};for(int j=0;j<5;++j){pair Q=(t[j],f(t[j]));dot(Q);label("$"+n[j]+"$",Q,j==0?(1,0):(j==2?(0,-1):(0,1)));}label("$t$",(20.7,0),(1,0));label("$h$",(0,7),(0,1));
+\end{asy}

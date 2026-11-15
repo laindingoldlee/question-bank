@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h2794113_bamo8_problem_set
+% Stable identity: aops-topic-2794113-q01
+Card $x$ should come before card $y$ exactly when the concatenation $xy$ is larger than $yx$ (swapping two adjacent cards that violate this increases the number, so an optimal row is ordered by this rule, which is transitive).
+
+Applying it: for each leading digit $d=9,8,\dots,1$ in turn, place the two-digit cards $\overline{d9},\overline{d8},\dots,\overline{d(d+1)}$, then $d$ and $\overline{dd}$ (in either order), then $\overline{d(d-1)},\dots,\overline{d0}$; put $100$ last. For example the row begins
+\[9,99,98,\dots,90,\ 89,8,88,87,\dots,80,\ 79,78,7,77,\dots\]
+and ends $\dots,13,12,1,11,10,100$. (For instance $8$ goes after $89$ since $898>889$, but before $87$ since $887>878$.)

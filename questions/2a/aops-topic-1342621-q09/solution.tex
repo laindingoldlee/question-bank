@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1342621_problems
+% Stable identity: aops-topic-1342621-q09
+The solutions are $x=10\omega^k$ for $k=0,1,2$, where $\omega=\cos120^\circ+i\sin120^\circ$; that is, $10$ and $-5\pm5\sqrt3\,i$. They lie on the circle $|x|=10$, $120^\circ$ apart.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair Z0=(10,0), Z1=10*dir(120), Z2=10*dir(240);
+draw((-12,0)--(13,0),gray,Arrow(4)); draw((0,-11)--(0,12),gray,Arrow(4));
+draw(circle((0,0),10),gray+dashed);
+draw(Z0--Z1--Z2--cycle,red+linewidth(0.9));
+dot(Z0);dot(Z1);dot(Z2);
+label("$10$",Z0,NE); label("$-5+5\sqrt{3}\,i$",Z1,NW); label("$-5-5\sqrt{3}\,i$",Z2,SW);
+label("Re",(13,0),S); label("Im",(0,12),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The side of the triangle is the distance between $-5+5\sqrt3\,i$ and $-5-5\sqrt3\,i$, namely $10\sqrt3$. Its area is
+\[
+\dfrac{\sqrt3}{4}\left(10\sqrt3\right)^2=\dfrac{\sqrt3}{4}\cdot300=\boxed{75\sqrt3}.
+\]

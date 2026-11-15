@@ -1,0 +1,7 @@
+Use $O=(0,0),A=(a,0),B=(a,b)$ with $a>0,b\ne0$. The two centres lie on the perpendicular bisector of $AB$, so they are $(u_i,\dfrac{b}{2})$. Each radius satisfies $r_i^2=(u_i-a)^2+\dfrac{b^2}{4}$ and internal tangency gives $u_i^2+\dfrac{b^2}{4}=(10-r_i)^2$. Subtracting yields $au_i+10r_i=K$, where $K=\dfrac{100+a^2}{2}$. Substitute $r_i=\dfrac{K-au_i}{10}$ into the first relation. The quadratic in $u_i$ has leading coefficient $100-a^2$ and linear coefficient $-a(100-a^2)$, so its two roots satisfy $u_1+u_2=a$. Here $a<10$, since two internally tangent circles cannot have two intersections with one on the outer circle. Therefore $r_1+r_2=\dfrac{2K-a(u_1+u_2)}{10}=\boxed{10}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0),A=(3,0),B=(3,4),U=(-3.0392064950160185,2),V=(6.0392064950160185,2);draw(circle(O,10));draw(circle(U,6.361761948504806),blue);draw(circle(V,3.6382380514951946),red);draw(A--B);draw(O--A,dashed);draw(U--V,dashed);draw((2.7,0)--(2.7,.3)--(3,.3));label("O",O,S);label("A",A,SE);label("B",B,N);label("U",U,W);label("V",V,E);label("outer radius 10",(0,-11));
+\end{asy}

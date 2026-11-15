@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2673168_rotation__reflections
+% Stable identity: aops-topic-2673168-q01
+Reflection in the $y$-axis sends $(x,y)\mapsto(-x,y)$, and reflection in the $x$-axis sends $(x,y)\mapsto(x,-y)$; their composition sends $(x,y)\mapsto(-x,-y)$. The rotation by $180^\circ$ about the origin sends $(x,y)$ to
+\[\left(x\cos180^\circ-y\sin180^\circ,\ x\sin180^\circ+y\cos180^\circ\right)=(-x,-y).\]
+So the two transformations agree at every point, hence on every figure (and the order of the two reflections does not matter). $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair[] T={(1,0.5),(2.5,0.8),(1.5,2)};
+path t0=T[0]--T[1]--T[2]--cycle;path t1=reflect((0,0),(0,1))*t0;path t2=reflect((0,0),(1,0))*t1;
+filldraw(t0,lightgray);draw(t1,dashed);filldraw(t2,mediumgray);
+draw((-3.2,0)--(3.2,0),gray,Arrow);draw((0,-2.6)--(0,2.6),gray,Arrow);
+label("$F$",(1.7,1.1),fontsize(8pt));label("$F_1$",(-1.7,1.1),fontsize(8pt));label("$F_2$",(-1.7,-1.1),fontsize(8pt));
+dot((1.5,2));dot((-1.5,-2));draw((1.5,2)--(-1.5,-2),dotted);
+\end{asy}

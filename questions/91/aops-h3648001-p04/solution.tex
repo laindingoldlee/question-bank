@@ -1,0 +1,7 @@
+The diagonal is $AC=4\sqrt2$. An equilateral triangle of side s has area $\dfrac{\sqrt3}{4}s^2$, so $S=8\sqrt3$ and $\boxed{S^2=192}$. Either side of the diagonal gives the same area.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(4,0),C=(4,4),D=(0,4),E=(A+C)/2+rotate(90)*(C-A)*sqrt(3)/2;draw(A--B--C--D--cycle);draw(A--C--E--cycle,blue);pair[] p={A,B,C,D,E};string[] a={"A","B","C","D","E"};for(int i=0;i<5;++i)label("$"+a[i]+"$",p[i],i==4?(-1,1):(1,-1));
+\end{asy}

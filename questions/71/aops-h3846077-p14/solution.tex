@@ -1,0 +1,18 @@
+Use $B=(-3,0),C=(3,0),A=(0,\sqrt{15})$, so $M=(-1,0)$. The circumcenter is $O=(0,k)$, where equality of distances gives $9+k^2=(\sqrt{15}-k)^2$, hence $k=\dfrac{\sqrt{15}}{5}$. Its radius is $R=\dfrac{4\sqrt{15}}{5}$.
+
+The indicated arc is below $BC$. A circle tangent to $BC$ and touching that arc must lie below the line, so its center is $X=(-1,-r)$. Internal tangency gives $OX=R-r$, hence
+\[
+1+(r+k)^2=(R-r)^2
+\quad\Longrightarrow\quad
+2r(R+k)=R^2-k^2-1=8.
+\]
+Since $R+k=\sqrt{15}$,
+\[
+\boxed{r=\dfrac{4}{\sqrt{15}}=\dfrac{4\sqrt{15}}{15}}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real k=sqrt(15)/5,R=4sqrt(15)/5,r=4/sqrt(15);pair A=(0,sqrt(15)),B=(-3,0),C=(3,0),M=(-1,0),O=(0,k),X=(-1,-r),T=O+R*unit(X-O);draw(circle(O,R),gray);draw(A--B--C--cycle);draw(circle(X,r),blue);draw(O--T,dashed);dot(O);dot(X);dot(T);label("$A$",A,N);label("$B$",B,W);label("$C$",C,E);label("$M$",M,N);label("$O$",O,E);label("$X$",X,W);label("$T$",T,SW);
+\end{asy}

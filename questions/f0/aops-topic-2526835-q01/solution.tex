@@ -1,0 +1,46 @@
+% Source: https://artofproblemsolving.com/community/c3h2526835_spherical_geo_help
+% Stable identity: aops-topic-2526835-q01
+Recall that the angle between two planes that meet along a line $\ell$ is the angle between two lines, one in each plane, that are perpendicular to $\ell$ at the same point.
+
+\textbf{(a)} The planes of the great circles $NA$ and $NB$ are the planes $NOA$ and $NOB$; they meet along the line $ON$. The equatorial plane is perpendicular to the axis $ON$, so $OA\perp ON$ and $OB\perp ON$. Thus $OA$ and $OB$ are lines in the two planes perpendicular to the common line $ON$ at $O$, and the angle between the planes is $\angle AOB$.
+
+The tangent line to the great circle $NA$ at $N$ lies in the plane $NOA$ and is perpendicular to the radius $ON$. In that plane, $OA$ is also perpendicular to $ON$, so the tangent line is parallel to $OA$. Likewise the tangent to the circle $NB$ at $N$ is parallel to $OB$. Hence the angle between the two tangent lines is also $\angle AOB$.
+
+\textbf{(b)} \emph{At $N$:} by (a), the angle is $\angle AOB=90^\circ$.
+
+\emph{At $A$:} the two sides through $A$ lie in the plane $NOA$ and in the equatorial plane, which meet along $OA$. In the plane $NOA$, $ON\perp OA$; in the equatorial plane, $OB\perp OA$ because $\angle AOB=90^\circ$. So the angle between the planes is $\angle NOB=90^\circ$.
+
+\emph{At $B$:} in the same way (using $ON\perp OB$ and $OA\perp OB$) the angle is $\angle NOA=90^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real e=20, az=45;
+pair P(real x,real y,real z){return (-Sin(az)*x+Cos(az)*y, -Sin(e)*Cos(az)*x-Sin(e)*Sin(az)*y+Cos(e)*z);}
+real dep(real x,real y,real z){return Cos(e)*Cos(az)*x+Cos(e)*Sin(az)*y+Sin(e)*z;}
+pair O=(0,0), A=P(1,0,0), B=P(0,1,0), Np=P(0,0,1);
+guide tri;
+for(int i=0;i<=30;++i){real t=90*i/30; tri=tri--P(Cos(t),Sin(t),0);}
+for(int i=0;i<=30;++i){real t=90*i/30; tri=tri--P(0,Cos(t),Sin(t));}
+for(int i=0;i<=30;++i){real t=90*i/30; tri=tri--P(Sin(t),0,Cos(t));}
+fill(tri--cycle,rgb(0.85,0.9,1));
+draw(circle(O,1),linewidth(0.8));
+guide fr, bk;
+for(int i=0;i<=60;++i){real t=-45+3*i; fr=fr--P(Cos(t),Sin(t),0);}
+for(int i=0;i<=60;++i){real t=135+3*i; bk=bk--P(Cos(t),Sin(t),0);}
+draw(bk,dashed+gray); draw(fr,linewidth(0.7));
+for(int i=0;i<90;i+=3){
+  draw(P(Cos(i),0,Sin(i))--P(Cos(i+3),0,Sin(i+3)),blue+linewidth(0.9));
+  draw(P(0,Cos(i),Sin(i))--P(0,Cos(i+3),Sin(i+3)),blue+linewidth(0.9));
+}
+draw(O--A,dashed); draw(O--B,dashed); draw(O--Np,dashed);
+draw(Np--P(0.55,0,1),red+linewidth(0.9),Arrow(5)); draw(Np--P(0,0.55,1),red+linewidth(0.9),Arrow(5));
+dot(O); dot(A); dot(B); dot(Np);
+label("$O$",O,S); label("$A$",A,SW); label("$B$",B,SE); label("$N$",Np,N);
+label("equator",P(Cos(125),Sin(125),0),SE,fontsize(8pt));
+\end{asy}
+
+The spherical triangle $NAB$ (shaded) has three right angles, so its angle sum is
+\[90^\circ+90^\circ+90^\circ=\boxed{270^\circ},\]
+more than the $180^\circ$ of a Euclidean triangle. (The red arrows at $N$ are the tangent lines of part (a), parallel to $OA$ and $OB$.)

@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1373309_i_need_help_with_the_following_questions
+% Stable identity: aops-topic-1373309-q30
+The point satisfies $(x-5)^2+(y-15)^2=130$ and $x=2y$. Substituting,
+\[
+(2y-5)^2+(y-15)^2=130\iff5y^2-50y+250=130\iff y^2-10y+24=0\iff(y-4)(y-6)=0 .
+\]
+So $Q=(8,4)$ or $Q=(12,6)$, the two points where the line $x=2y$ meets the circle:
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-8,0)--(20,0),gray(0.4),Arrow(5));draw((0,-1)--(0,28),gray(0.4),Arrow(5));
+label("$x$",(20,0),E);label("$y$",(0,28),N);
+pair C=(5,15); real r=sqrt(130);
+draw(circle(C,r),blue+linewidth(0.9));
+draw((-2,-1)--(19,9.5),red);
+pair P1=(8,4),P2=(12,6);
+dot(C);dot(P1,red);dot(P2,red);
+label("$(5,15)$",C,N);label("$(8,4)$",(9.6,1.7));label("$(12,6)$",P2,SE);
+label("$x=2y$",(19,9.5),N,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Check: $3^2+11^2=130$ and $7^2+9^2=130$.) The greatest possible value of $x$ is $\boxed{12}$.

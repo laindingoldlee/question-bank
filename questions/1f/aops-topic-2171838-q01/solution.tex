@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2171838_square_in_a_octagon
+% Stable identity: aops-topic-2171838-q01
+The vertices of a regular octagon lie on a circle, its circumcircle, and the longest diagonals join opposite vertices, so they are diameters of that circle. Hence the circumcircle has diameter $20$ and radius $10$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair[] V; for(int k=0;k<8;++k) V.push(10*dir(22.5+45*k));
+draw(circle((0,0),10),gray+dashed);
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--V[7]--cycle,linewidth(0.9));
+filldraw(V[0]--V[2]--V[4]--V[6]--cycle,rgb(0.85,0.9,1),blue+linewidth(1));
+draw(V[0]--V[4],red+linewidth(0.9));
+dot((0,0)); label("$O$",(0,0),S);
+label("$20$",(V[0]+V[4])/2+(1.5,2.2),red+fontsize(9pt));
+for(int k=0;k<8;++k) dot(V[k]);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Upper bound.} The octagon lies inside its circumcircle, so any square inside the octagon lies inside the circle. A diagonal of the square is then a segment inside the circle, so it has length at most the diameter $20$, and the square's area is at most $\dfrac{20^2}{2}=200$ (a square with diagonal $d$ has area $\dfrac{d^2}{2}$).
+
+\textbf{The bound is attained.} Every other vertex of the octagon gives four points at $90^\circ$ intervals on the circle, which form a square with diagonals $20$ (shaded). Its area is $\dfrac{20^2}{2}$, so the largest square has area
+\[\boxed{200}\text{ square centimetres}.\]
+(For comparison, the square with sides parallel to sides of the octagon, touching four of them, is smaller: its area is $100\left(1+\dfrac{\sqrt2}{2}\right)\approx170.7$.)

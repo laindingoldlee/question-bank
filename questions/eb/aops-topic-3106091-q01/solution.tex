@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3106091_triangulation_of_octagon
+% Stable identity: aops-topic-3106091-q01
+Fix a boundary edge. If its triangle has a specified third vertex, the remaining choices are independent triangulations of the polygons on its two sides. Let $ C_m $ count triangulations of a polygon with $ m+2 $ vertices, with $ C_0=1 $ for an empty side. Then $ C_m=\sum_{i=0}^{m-1}C_iC_{m-1-i}$. Starting with $ 1 $, this recurrence gives $ C_1=1,C_2=2,C_3=5,C_4=14,C_5=42,C_6=132 $. Thus the octagon has $\boxed{132}$ triangulations.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] P;for(int k=0;k<8;++k)P.push(dir(45*k));path poly=P[0];for(int k=1;k<8;++k)poly=poly--P[k];draw(poly--cycle);for(int k=2;k<7;++k)draw(P[0]--P[k],dashed);for(int k=0;k<8;++k)label(string(k+1),P[k],P[k]);
+\end{asy}

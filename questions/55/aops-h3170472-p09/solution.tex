@@ -1,0 +1,14 @@
+For each fixed $A$, set $p=\prod_{a\in A}a$ and let $T$ be its complement. The number of allowed $B$ is the coefficient of $z^p$ in $\prod_{t\in T}(1+z^t)$. The following finite recurrence evaluates these coefficients without counting any subset twice. Start with $c(0)=1$ and all other $c(s)=0$; for each $t\in T$, replace the array by
+\[
+c_{\mathrm{new}}(s)=c(s)+c(s-t),
+\]
+where negative arguments have value zero. The second term selects $t$, and the first omits it. Only $0\le s\le p$ need be retained.
+
+Enumerating the possible $A$ by size and summing their resulting $c(p)$ gives
+\[
+\begin{array}{c|rrrrr}
+|A|&0&1&2&3&4\\\hline
+\text{number of pairs}&1&32&179&101&8
+\end{array}
+\]
+Here the empty $A$ gives only $B=\{1\}$. No $A$ of size at least five can work: its product is at least $1\cdot2\cdot3\cdot4\cdot5=120$, whereas the sum of every available number is at most $55$. Thus the exhaustive total is $\boxed{321}$.

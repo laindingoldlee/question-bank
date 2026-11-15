@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1622939_emic_2015
+% Stable identity: aops-topic-1622939-q05
+Place the numbers $1,\dots,19$ around a circle in order. Then ``$x$ is a follower of $y$'' means exactly that
+\[
+x-y\equiv1,2,\dots,9\pmod{19},
+\]
+i.e. $x$ is one of the $9$ numbers reached from $y$ by going $1$ to $9$ steps forward around the circle. (Indeed, $y-x\in[10,18]$ gives $x-y\in[-18,-10]$, which is $1$ to $9$ modulo $19$.)
+
+Choose $z$ first ($19$ ways). Then $y=z+j$ and $x=z+i$ (modulo $19$) with $1\le i,j\le9$, since both follow $z$. The condition that $x$ follows $y$ is $i-j\in\{1,\dots,9\}$ modulo $19$; because $-8\le i-j\le8$, this means $i>j$. There are $\dbinom92=36$ choices of $j<i$ in $\{1,\dots,9\}$. The number of ordered triples is
+\[
+19\cdot36=\boxed{684}.
+\]

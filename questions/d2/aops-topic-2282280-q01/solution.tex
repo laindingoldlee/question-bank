@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2282280_trolling
+% Stable identity: aops-topic-2282280-q01
+The probability of a success on each day is
+\[p_{\mathrm{Mon}}=0.8\cdot0.8=0.64,\quad p_{\mathrm{Tue}}=0.8\cdot0.3=0.24,\quad p_{\mathrm{Wed}}=0,\quad p_{\mathrm{Thu}}=\cdots=p_{\mathrm{Sun}}=0.3\cdot0.2=0.06.\]
+Wednesday never has a success, so two consecutive successful days must be Monday--Tuesday or two consecutive days among Thursday--Sunday. We find the probability that neither happens.
+
+\textbf{Monday and Tuesday.} Both succeed with probability $0.64\cdot0.24=0.1536$.
+
+\textbf{Thursday to Sunday.} Let $p=0.06$, $q=0.94$. The patterns of successes on these four days with no two consecutive successes are: none; exactly one success ($4$ patterns); two successes on non-adjacent days (Thu--Sat, Thu--Sun, Fri--Sun: $3$ patterns). Three or four successes always include two adjacent days. So
+\[P(\text{no two adjacent})=q^4+4pq^3+3p^2q^2=0.78074896+0.19934016+0.00954288=0.989632.\]
+
+The two blocks are independent, so
+\[P=1-(1-0.1536)\cdot0.989632=1-0.8376245248=\boxed{0.1623754752}\approx0.162.\]
+(As a fraction, $\dfrac{1585698}{9765625}$.)

@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2538251_please_help_me_with_this_clock_problem
+% Stable identity: aops-topic-2538251-q01
+Measure angles clockwise from the $12$, in degrees. The line $PQ$ is the line through the directions $120^\circ$ (the $4$) and $300^\circ$ (the $10$). Reflecting in this line sends the direction $\theta$ to $240^\circ-\theta$ (modulo $360^\circ$). So the hands are symmetric about $PQ$ exactly when
+\[H+M\equiv240\pmod{360},\]
+where $H$ and $M$ are the directions of the hour and minute hands.
+
+$t$ minutes after $4{:}00$ (with $0\le t<60$), $H=120+0.5t$ and $M=6t$. So $120+6.5t=240+360k$ for an integer $k$; the smallest $t\ge0$ comes from $k=0$:
+\[6.5t=120,\qquad t=\dfrac{240}{13}=\boxed{18\dfrac{6}{13}\text{ minutes}}.\]
+Then $H\approx129.2^\circ$ and $M\approx110.8^\circ$, both $9.2^\circ$ from the direction of the $4$, on opposite sides.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+draw(circle(O,1),linewidth(0.8));
+pair P=dir(90-300),Q=dir(90-120);
+draw(1.2*P--1.2*Q,dashed);
+for(int h=1;h<=12;++h){pair u=dir(90-30*h);draw(0.92*u--u);label(string(h),0.8*u,fontsize(7pt),Fill(white));}label("$P$",1.2*P,W);label("$Q$",1.2*Q,E);
+real t=240/13;
+pair Hh=0.55*dir(90-(120+t/2)),Mm=0.85*dir(90-6*t);
+draw(O--Hh,linewidth(2));draw(O--Mm,linewidth(1));
+dot(O);
+label("$H$",Hh,SW,fontsize(8pt));label("$M$",Mm,N,fontsize(8pt));
+\end{asy}

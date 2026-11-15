@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1930276_help_needed_in_problems_of_varied_topics
+% Stable identity: aops-topic-1930276-q18
+The condition for the square says $N^2\equiv N\pmod{1000}$, i.e.\ $1000\mid N(N-1)$. Conversely, if $N^2\equiv N$, then by induction $N^{k+1}=N^k\cdot N\equiv N\cdot N\equiv N\pmod{1000}$ for every $k\ge1$. So we need exactly $N(N-1)\equiv0\pmod{1000}$.
+
+As $1000=8\cdot125$ and $N$, $N-1$ are coprime, $8$ divides $N$ or $N-1$, and $125$ divides $N$ or $N-1$. By the Chinese remainder theorem this gives four classes modulo $1000$:
+\begin{itemize}
+\item $N\equiv0\pmod8$ and $N\equiv0\pmod{125}$: $N\equiv0\pmod{1000}$;
+\item $N\equiv1\pmod8$ and $N\equiv1\pmod{125}$: $N\equiv1\pmod{1000}$;
+\item $N\equiv0\pmod8$ and $N\equiv1\pmod{125}$: $N\equiv376\pmod{1000}$ (as $376=8\cdot47=3\cdot125+1$);
+\item $N\equiv1\pmod8$ and $N\equiv0\pmod{125}$: $N\equiv625\pmod{1000}$ (as $625=5\cdot125=78\cdot8+1$).
+\end{itemize}
+The only three-digit numbers among these are $\boxed{376\text{ and }625}$.

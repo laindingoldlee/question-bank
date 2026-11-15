@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2386090_100_posts
+% Stable identity: aops-topic-2386090-q23
+\textbf{Asymptotes.} The function is undefined at $x=-2$, where the numerator is $4\ne0$, so $x=-2$ is a vertical asymptote. Dividing,
+\[\dfrac{x^2}{x+2}=x-2+\dfrac{4}{x+2},\]
+so $y=x-2$ is an oblique asymptote: the graph is above it for $x>-2$ and below it for $x<-2$. Near $x=-2$, $y\to+\infty$ as $x\to-2^+$ and $y\to-\infty$ as $x\to-2^-$.
+
+\textbf{Intercepts and sign.} The only zero is $x=0$, where $y=x^2\cdot\dfrac{1}{x+2}$ touches the $x$-axis without crossing it. The sign of $y$ is the sign of $x+2$: $y<0$ for $x<-2$ and $y\ge0$ for $x>-2$.
+
+\textbf{Turning points.} A value $y$ is taken exactly when $x^2-yx-2y=0$ has a real solution $x\ne-2$, i.e. when the discriminant $y^2+8y=y(y+8)\ge0$, i.e. $y\le-8$ or $y\ge0$. So no value strictly between $-8$ and $0$ is taken. The value $0$ is taken only at $x=0$ (a local minimum) and $-8$ only at the double root $x=\dfrac y2=-4$ (a local maximum).
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real k=0.6;
+real f(real x){return k*x^2/(x+2);}
+real xa=-10, xb=6, ya=-22*k, yb=10*k;
+draw(graph(f,-10,-2.02,600),blue+linewidth(0.9));
+draw(graph(f,-1.98,6,600),blue+linewidth(0.9));
+draw((-2,ya)--(-2,yb),dashed+gray(0.4));
+draw((xa,k*(xa-2))--(xb,k*(xb-2)),dashed+gray(0.4));
+clip(box((xa,ya),(xb,yb)));
+draw((xa,0)--(xb+0.4,0),Arrow(6)); draw((0,ya)--(0,yb+0.4),Arrow(6));
+label("$x$",(xb+0.4,0),E); label("$y$",(0,yb+0.4),N);
+dot((0,0)); dot((-4,-8*k));
+label("$O$",(0,0),SW); label("$M$",(-4,-8*k),S);
+label("$x=-2$",(-2,ya),S,gray(0.3)); label("$y=x-2$",(xb,k*(xb-2)),SE,gray(0.3));
+\end{asy}
+
+So the right branch ($x>-2$) comes down from $+\infty$ next to the asymptote $x=-2$, touches the $x$-axis at its lowest point, the origin $O$, and then rises along $y=x-2$; the left branch rises from $-\infty$ along $y=x-2$ to its highest point $M=(-4,-8)$ and falls to $-\infty$ next to $x=-2$.

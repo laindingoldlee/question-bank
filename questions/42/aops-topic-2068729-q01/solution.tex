@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2068729_a_combi_question
+% Stable identity: aops-topic-2068729-q01
+\emph{Lanes.} First we show that the friends' intervals can be split into $5$ ``lanes'' so that intervals in the same lane do not overlap. Process the intervals in order of starting time and put each into any lane whose previous intervals have all ended. When an interval starts at time $t$, the lanes that are busy at $t$ contain intervals that are running at time $t$; together with the new interval that is at most $5$ running intervals, so at most $4$ lanes are busy and a free lane exists. (We use half-open intervals $[t,t+3)$, so an interval ending exactly when another starts does not overlap it.)
+
+\emph{$n=35$ is not enough.} Let each of $5$ ``lanes'' of friends game in the consecutive blocks $[0,3),[3,6),\dots,[18,21)$, with $7$ friends per lane. Then at most $5$ friends game at any moment, but nobody games from 21:00 to 24:00. For $n<35$ use fewer friends in the same pattern.
+
+\emph{$n=36$ is enough.} Split the $36$ intervals into $5$ lanes as above. By the pigeonhole principle some lane contains at least $8$ intervals. They are pairwise disjoint, each has length $3$, and they all lie in the $24$-hour day; since $8\cdot3=24$, they must fill the whole day without gaps. So that lane alone has someone gaming at every moment.
+
+Hence the least such $n$ is $\boxed{36}$.

@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2759280_2021_wmc_8_problems_16__20_discussion
+% Stable identity: aops-topic-2759280-q17
+Let the side be $1$, the centre $O$, and the vertices $V_1,\dots,V_6$; each circle has radius $1$. Circles centred at adjacent vertices $V_1,V_2$ (distance $1$ apart) meet at $O$ and at $O'$, the reflection of $O$ in $V_1V_2$. Circles at $V_1,V_3$ (distance $\sqrt3$) meet at $V_2$ and $O$, and circles at opposite vertices are tangent at $O$. So the six new points are the reflections of $O$ in the six sides.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);pair[] V,Wp;for(int k=0;k<6;++k){V.push(dir(60*k));Wp.push(sqrt(3)*dir(60*k+30));}
+for(int k=0;k<6;++k) draw(circle(V[k],1),gray(0.7));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,linewidth(0.9));
+draw(Wp[0]--Wp[1]--Wp[2]--Wp[3]--Wp[4]--Wp[5]--cycle,dashed);
+draw(O--Wp[0],dotted);
+for(int k=0;k<6;++k){dot(V[k]);dot(Wp[k],red);}
+dot(O);label("$O$",O,W);label("$V_1$",V[0],E);label("$V_2$",V[1],NE);label("$O'$",Wp[0],NE);
+\end{asy}
+
+The distance from $O$ to a side is $\dfrac{\sqrt3}2$, so each new point is at distance $\sqrt3$ from $O$. The new points form a regular hexagon (rotated by $30^\circ$) with circumradius $\sqrt3$, compared with $1$ for the original. The area ratio is $(\sqrt3)^2=3$, answer $\boxed{\textbf{(C)}\ 3}$.

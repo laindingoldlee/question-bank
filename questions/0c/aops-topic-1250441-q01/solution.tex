@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1250441_ssa_congruence
+% Stable identity: aops-topic-1250441-q01
+Place both triangles with $A=A'$, $B=B'$ and $C$, $C'$ on the same side of line $AB$; since $\angle A=\angle A'$, the points $C$ and $C'$ lie on the same ray from $A$. Both are at distance $BC$ from $B$, so both lie on the circle with centre $B$ and radius $BC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0); pair C=A+3.2*dir(120);
+draw(A--B--C--cycle,linewidth(1)); label("$A$",A,S); label("$B$",B,SE); label("$C$",C,N);
+draw(arc(A,0.5,0,120)); label("$\alpha\ge90^\circ$",A,NE);
+draw(circle(B,abs(B-C)),gray+dashed);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Suppose $C\ne C'$, say with $C$ between $A$ and $C'$. Triangle $BCC'$ is isosceles ($BC=BC'$), so its base angle $\angle BCC'$ is acute. But $\angle ACB+\angle BCC'=180^\circ$, and $\angle ACB<90^\circ$ because triangle $ABC$ already has the angle $\angle A\ge90^\circ$; hence $\angle BCC'>90^\circ$, a contradiction. So $C=C'$, and the triangles are congruent. $\blacksquare$
+
+(More generally, SSA works whenever the side opposite the given angle is at least as long as the other given side; the ambiguous case needs an acute angle and a shorter opposite side.)

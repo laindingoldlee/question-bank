@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2865360_math_problem__games__other
+% Stable identity: aops-topic-2865360-q01
+Suppose the point of tangency moves through an angle $\theta$ around the clock. The arc of the clock face rolled over has length $20\theta$, so the disk turns through $\dfrac{20\theta}{10}=2\theta$ relative to the line joining the two centres. That line itself has turned through $\theta$, so the disk has turned through a total of $2\theta+\theta=3\theta$ in the plane.
+
+The arrow next points up when $3\theta=360^\circ$, i.e. $\theta=120^\circ$. Moving $120^\circ$ clockwise from $12$ o'clock reaches $4$ o'clock.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw(circle((0,0),2));dot((0,0));label("$O$",(0,0),SW);
+pair P0=(0,3),P1=3*dir(-30);
+draw(circle(P0,1),gray);draw(P0--P0+(0,0.8),gray,Arrow);
+draw(circle(P1,1));draw(P1--P1+(0,0.8),Arrow);
+draw(arc((0,0),4.3,80,-12,CW),dashed,Arrow);
+draw((0,0)--P1,dotted);draw((0,0)--P0,dotted);
+label("$12$",(0,1.75));label("$4$",1.75*dir(-30));
+label("$120^\circ$",(0,0),5*dir(30));
+label("start",P0+(1,0),E,gray);label("end",P1-(0,1),S);
+\end{asy}
+
+The answer is $\boxed{\textbf{(C)}\ \text{4 o'clock}}$.

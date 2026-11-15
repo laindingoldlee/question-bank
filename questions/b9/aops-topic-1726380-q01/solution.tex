@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1726380_geometry
+% Stable identity: aops-topic-1726380-q01
+Let the top face be the rectangle $ABCD$ with $AB=6$, cut from the corner $A$. The two cuts make angles of $30^\circ$ and $60^\circ$ with $AB$. A diagonal $AC$ makes an angle less than $45^\circ$ with the longer side $AB$, so the diagonal is the $30^\circ$ cut and the width is $BC=6\tan30^\circ=2\sqrt3$. The $60^\circ$ cut meets $DC$ at $P$ with $DP=AD\tan30^\circ=2\sqrt3\cdot\dfrac{1}{\sqrt3}=2$, so $PC=4$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real w=2*sqrt(3);
+pair A=(0,0),B=(6,0),C=(6,w),D=(0,w),P=(2,w);
+fill(A--B--C--cycle,paleyellow);fill(A--C--P--cycle,palecyan);fill(A--P--D--cycle,pink);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,linewidth(0.8));draw(A--P,linewidth(0.8));
+draw(arc(A,0.9,0,30));draw(arc(A,1.1,30,60));draw(arc(A,0.9,60,90));
+label("$30^\circ$",A+1.45*dir(15),fontsize(8pt));label("$30^\circ$",A+1.6*dir(45),fontsize(8pt));label("$30^\circ$",A+1.45*dir(75),fontsize(8pt));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$P$",P,N);
+label("$6$",(A+B)/2,S);label("$2\sqrt3$",(A+D)/2,W);label("$2$",(D+P)/2,N);label("$4$",(P+C)/2,N);
+label("$M$",(4,1.1));label("$R$",(3.1,2.6));label("$K$",(0.55,2.75));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+With thickness $1$, the volumes of the pieces equal the areas of the triangles:
+\[
+[ABC]=\dfrac{1}{2}\cdot6\cdot2\sqrt3=6\sqrt3,\qquad [ACP]=\dfrac{1}{2}\cdot4\cdot2\sqrt3=4\sqrt3,\qquad [APD]=\dfrac{1}{2}\cdot2\cdot2\sqrt3=2\sqrt3 .
+\]
+A full bar has volume $6\cdot2\sqrt3=12\sqrt3$. Kyle gets the smallest piece and RJ the middle one, and each also has a full bar; Meit keeps only the biggest piece:
+\[
+K=12\sqrt3+2\sqrt3=14\sqrt3,\qquad R=12\sqrt3+4\sqrt3=16\sqrt3,\qquad M=6\sqrt3 .
+\]
+Hence $K(R-M)=14\sqrt3\cdot10\sqrt3=\boxed{420}$.

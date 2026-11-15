@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2567607_aops_open_mathcounts_year_2_problems
+% Stable identity: aops-topic-2567607-q04
+Let $p(s)$ be the fraction of days with mood pattern $s$, written as moods of penguins $1,2,3$ ($H$ = happy, $S$ = sad).
+
+\textbf{Every pattern occurs.} If a pattern occurs on some days, then changing the mood of one penguin gives a pattern that also occurs: given its neighbours' moods, each mood of a penguin has frequency strictly between $0$ and $1$. Every pattern is reached from any other by such changes, so all $8$ patterns occur and the conditions below make sense.
+
+\textbf{Ratios.} Apply rule 1 to a penguin whose neighbours are happy: comparing $HHH$ with the pattern where that penguin is sad,
+\[\dfrac{p(HHH)}{p(HHH)+p(SHH)}=\dfrac23\quad\Longrightarrow\quad p(SHH)=\dfrac12p(HHH),\]
+and the same for $HSH$ and $HHS$. Rule 2 for penguin $1$ when its neighbours are happy and sad (patterns $HHS$ and $SHS$):
+\[\dfrac{p(HHS)}{p(HHS)+p(SHS)}=\dfrac12\quad\Longrightarrow\quad p(SHS)=p(HHS)=\dfrac12p(HHH),\]
+and likewise for the other one-happy patterns. Rule 3 for penguin $1$ with both neighbours sad:
+\[\dfrac{p(HSS)}{p(HSS)+p(SSS)}=\dfrac13\quad\Longrightarrow\quad p(SSS)=2p(HSS)=p(HHH).\]
+
+\textbf{Total.} With $q=p(HHH)$, the eight frequencies are $q$, three times $\dfrac q2$, three times $\dfrac q2$, and $q$, adding up to $5q=1$. So all three penguins are happy on $\boxed{\dfrac15}$ of the days.

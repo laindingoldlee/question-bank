@@ -1,0 +1,17 @@
+Repeated use of $\sin2t=2\sin t\cos t$ gives
+\[
+\cos12^\circ\cos24^\circ\cos48^\circ
+=\dfrac{\sin96^\circ}{8\sin12^\circ}.
+\]
+Since $\sin96^\circ=\cos6^\circ$ and $\cos84^\circ=\sin6^\circ$, multiplication by $\cos84^\circ$ leaves $\dfrac{1}{16}$. Also
+\[
+\sin36^\circ=\sin144^\circ=2\sin72^\circ\cos72^\circ
+=4\sin36^\circ\cos36^\circ\cos72^\circ,
+\]
+so $\cos36^\circ\cos72^\circ=\dfrac{1}{4}$. The required product is therefore $\boxed{\dfrac{1}{64}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(unitcircle);draw((0,0)--(1.2,0));for(int t:new int[]{12,24,48,84}){draw((0,0)--dir(t),gray);label(string(t)+"$^\circ$",1.2dir(t));}label("$O$",(0,0),SW);
+\end{asy}

@@ -1,0 +1,7 @@
+Write $a_j=\sin\theta_j$, where $0<\theta_j\le\dfrac{\pi}{2}$. Strict increase at step $j$ implies $2\sqrt{1-a_j^2}>1$, so $\theta_j<\dfrac{\pi}{3}$ for $j\le25$. For $j\le24$, if $\theta_j\ge\dfrac{\pi}{4}$, the recurrence would give $\theta_{j+1}=\pi-2\theta_j>\dfrac{\pi}{3}$, a contradiction. Thus $\theta_{j+1}=2\theta_j$ for $j\le24$. Consequently $2^{25}\theta_0=\theta_{25}<\dfrac{\pi}{3}$. Since $\sin t<t$ for positive $t$, $a_0<\dfrac{\pi}{3\cdot2^{25}}<10^{-7}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw((0,0)--(1.3,0),Arrow);draw((0,0)--(0,1.3),Arrow);draw(arc((0,0),1,0,90),blue);pair P=dir(30);draw((0,0)--P);draw(P--(P.x,0),dashed);label("$1$",P/2,NW);label("$\theta$",(.3,.06));label("$\sin\theta$",(P.x,P.y/2),E);label("$\cos\theta$",(P.x/2,0),S);
+\end{asy}

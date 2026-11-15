@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3131523_2023_emcc_guts_round_p1_p12__exeter_math_club_competition
+% Stable identity: aops-topic-3131523-q12
+Only $1<c\le3$ can qualify: a shorter interval contains at most one integer, while an open interval of length greater than 3 contains at least three. Except at endpoints, the count is $\lfloor3c\rfloor-\lfloor2c\rfloor$. Splitting at multiples of one half and one third, the qualifying intervals, up to endpoints and isolated points, are $(\dfrac{4}{3},\dfrac{3}{2})$, $(\dfrac{5}{3},\dfrac{7}{3})$, and $(\dfrac{5}{2},\dfrac{8}{3})$. They have total length 1 and are invariant under $c\mapsto4-c$. Endpoints have probability 0, so this symmetry gives mean $\boxed2$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw((1,0)--(3,0),Arrow);draw((4.0/3,0)--(1.5,0),blue+3);draw((5.0/3,0)--(7.0/3,0),blue+3);draw((2.5,0)--(8.0/3,0),blue+3);for(int k=1;k<=3;++k)label(string(k),(k,0),S);
+\end{asy}

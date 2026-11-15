@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1936147_find_the_last_digit
+% Stable identity: aops-topic-1936147-q01
+Write $A=31973428^{7242946}$, $B=329486538^{67892364}$ and $C=6835986^{8753097543}$, so $N=A+B-C$.
+
+\textbf{The sign.} We have $A<\left(10^8\right)^{7242946}<10^{6\cdot10^7}$ and $B<\left(10^9\right)^{67892364}<10^{7\cdot10^8}$, while $C>\left(10^6\right)^{8753097543}>10^{5\cdot10^{10}}$. Hence $A+B<2\cdot10^{7\cdot10^8}<C$, and $N$ is \emph{negative}.
+
+\textbf{Units digits.} The units digits of the powers $8^1,8^2,8^3,8^4,\dots$ repeat with period $4$: $8,4,2,6$. Since $7242946\equiv2\pmod4$, $A$ ends in $4$; since $67892364\equiv0\pmod4$, $B$ ends in $6$. Every positive power of a number ending in $6$ ends in $6$, so $C$ ends in $6$.
+
+Because $N<0$, its decimal representation is $-(C-A-B)$, and its last digit is the last digit of the positive integer $C-A-B$:
+\[
+C-A-B\equiv6-4-6=-4\equiv6\pmod{10}.
+\]
+So $N$ is $\boxed{\text{negative, with last digit }6}$. (The quick computation $4+6-6=4$ would be the last digit only if $N$ were positive.)

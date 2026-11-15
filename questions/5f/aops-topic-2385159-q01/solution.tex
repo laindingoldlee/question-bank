@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2385159_clever_problem
+% Stable identity: aops-topic-2385159-q01
+Let $\theta=\angle ABE=\angle BCF=\angle CAD$, and write $A$, $B$, $C$ also for the angles of the triangle.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(5,0), C=(3.2594,4.8338), D=(3.4101,2.9388), E=(1.202,1.0358), F=(3.6139,0.378);
+fill(D--E--F--cycle,rgb(1,0.85,0.6));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,blue); draw(B--E,blue); draw(C--F,blue);
+dot(D); dot(E); dot(F);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N);
+label("$D$",D,NE); label("$E$",E,NW); label("$F$",F,NE);
+draw(arc(B,0.9,180-15.25,180),red); draw(arc(C,0.9,degrees(B-C)-15.25,degrees(B-C)),red); draw(arc(A,0.9,degrees(C-A)-15.25,degrees(C-A)),red);
+label("$\theta$",B+1.15*dir(180-7.6),red+fontsize(8pt)); label("$\theta$",C+1.15*dir(degrees(B-C)-7.6),red+fontsize(8pt)); label("$\theta$",A+1.15*dir(degrees(C-A)-7.6),red+fontsize(8pt));
+label("$30$",(A+B+E)/3); label("$35$",(B+C+F)/3); label("$40$",(C+A+D)/3);
+\end{asy}
+
+\textbf{Triangle $DEF$ is similar to triangle $ABC$.} In triangle $ABE$ the angle at $A$ is $\angle BAD=A-\theta$ and the angle at $B$ is $\theta$, so $\angle AEB=180^\circ-A$. Since $E$ lies between $A$ and $D$, and $F$ between $B$ and $E$, the angle $\angle DEF$ is the supplement of $\angle AEB$:
+\[\angle DEF=180^\circ-\angle AEB=A.\]
+In the same way, triangle $BCF$ has angles $B-\theta$ at $B$ and $\theta$ at $C$, so $\angle EFD=180^\circ-\angle BFC=B$, and then $\angle FDE=C$. Hence triangle $EFD\sim$ triangle $ABC$ with $E\leftrightarrow A$, $F\leftrightarrow B$, $D\leftrightarrow C$. The side $FD$ corresponds to $BC$, so the ratio of similarity is $\dfrac{FD}{BC}=\dfrac12$, and
+\[[DEF]=\left(\dfrac12\right)^2[ABC]=\dfrac14[ABC].\]
+
+\textbf{The pieces.} The segments $AD$, $BE$ and $CF$ cut triangle $ABC$ into the four triangles $ABE$, $BCF$, $CAD$ and $DEF$ (each of the three segments is a side of two of these pieces, and they meet only along these sides). Therefore
+\[[ABC]=30+35+40+\dfrac14[ABC]\quad\Longrightarrow\quad\dfrac34[ABC]=105\quad\Longrightarrow\quad[ABC]=\boxed{140}.\]
+
+(Such a triangle exists: for example, a triangle with angles about $56.0^\circ$, $70.2^\circ$, $53.8^\circ$ and $\theta\approx15.25^\circ$, scaled to the right size, has exactly these areas and $BC=2DF$; the figure is drawn to scale for it.)

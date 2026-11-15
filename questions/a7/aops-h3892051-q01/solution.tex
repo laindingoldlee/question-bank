@@ -1,0 +1,15 @@
+Scale so that $A=(0,0)$ and $B=(1,0)$. Write $c=\tan33^\circ$, $e=\tan15^\circ$, and $t=\tan24^\circ$. Then $C=(0,c)$, $E=(0,e)$, and $D=(ct,0)$. The ray $EB$ has direction $-15^\circ$. Of the two rays making $21^\circ$ with it, only direction $-36^\circ$ puts $J$ inside $ABE$. Hence
+\[J=((c-e)\cos36^\circ,\ e-(c-e)\sin36^\circ).\]
+We show $J_x-ct=tJ_y$. This equality is equivalent to
+\[(c+e)\sin24^\circ=(c-e)\cos12^\circ.\]
+But $\dfrac{c-e}{c+e}=\dfrac{\sin18^\circ}{\sin48^\circ}$, and
+\[\sin24^\circ\sin48^\circ=\sin18^\circ\cos12^\circ.\]
+For the last identity, multiply by 2 and use product-to-sum: it becomes $\cos24^\circ-\cos72^\circ=\sin30^\circ+\sin6^\circ$. This follows from $\cos24^\circ-\sin6^\circ=\cos36^\circ$ and $\cos36^\circ-\cos72^\circ=\dfrac{1}{2}$, the usual exact pentagon-angle identity.
+
+Since $J$ is above $AB$, the relation $J_x-ct=tJ_y>0$ shows that $DJ$ makes angle $\arctan(\cot24^\circ)=66^\circ$ with the rightward ray $DB$. Thus $\angle JDB=\boxed{66^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real c=tan(33*pi/180),e=tan(15*pi/180),d=c*tan(24*pi/180);pair A=(0,0),B=(1,0),C=(0,c),E=(0,e),D=(d,0),J=E+(c-e)*dir(-36);draw(A--B--C--cycle);draw(B--E);draw(C--D);draw(circle(E,c-e),gray);draw(E--J--D,blue);label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$C$",C,(0,1));label("$E$",E,(-1,0));label("$D$",D,(0,-1));dot(J,blue);draw(J--(.48,.12),gray+dashed);label("$J$",(.48,.12),(1,0));
+\end{asy}

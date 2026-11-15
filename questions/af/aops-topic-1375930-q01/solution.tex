@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1375930_weird_problem
+% Stable identity: aops-topic-1375930-q01
+Let the length be $L$ and the width $W$ (in cm). The perimeter gives $2(L+W)=70$, so $L+W=35$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4.1,0),C=(4.1,2.9),D=(0,2.9);
+draw(A--B--C--D--cycle,linewidth(0.9));
+label("$L$",(A+B)/2,S); label("$W$",(B+C)/2,E);
+pair o=(5.3,0);
+draw(o--o+(3.1,0)--o+(3.1,3.9)--o+(0,3.9)--cycle,blue+linewidth(0.9));
+label("$L-5$",o+(1.55,0),S,blue); label("$W+5$",o+(3.1,1.95),E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The new rectangle is $(L-5)$ by $(W+5)$, and
+\[
+(L-5)(W+5)=LW+5\iff LW+5L-5W-25=LW+5\iff L-W=6 .
+\]
+Solving $L+W=35$ and $L-W=6$ gives $L=20.5$ and $W=14.5$. The original rectangle is $\boxed{20.5\text{ cm by }14.5\text{ cm}}$. Check: $2(20.5+14.5)=70$, and $15.5\cdot19.5=302.25=297.25+5=20.5\cdot14.5+5$.

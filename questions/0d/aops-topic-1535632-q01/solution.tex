@@ -1,0 +1,43 @@
+% Source: https://artofproblemsolving.com/community/c3h1535632_help_with_problem
+% Stable identity: aops-topic-1535632-q01
+The point $P$ lies outside the quadrilateral, and since $ABCD$ is convex, either $A$ lies between $P$ and $B$ and $D$ between $P$ and $C$, or $B$ lies between $P$ and $A$ and $C$ between $P$ and $D$. Renaming $A\leftrightarrow B$ and $C\leftrightarrow D$ turns the second case into the first: $BADC$ is the same quadrilateral, and the renaming only exchanges $M$ and $R$, which does not change triangle $PMR$. So we may assume that $A$ lies between $P$ and $B$ and $D$ lies between $P$ and $C$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair u=dir(8),v=dir(58);
+pair P=(0,0),A=2*u,B=6.4*u,D=2.3*v,C=5.6*v;
+pair M=(A+C)/2,R=(B+D)/2;
+fill(P--M--R--cycle,paleyellow);
+draw(A--B--C--D--cycle,linewidth(1));
+draw(P--A,dashed);draw(P--D,dashed);
+draw(A--C,gray(0.55));draw(B--D,gray(0.55));
+draw(P--M--R--cycle,red+linewidth(0.9));
+dot(P);dot(A);dot(B);dot(C);dot(D);dot(M,red);dot(R,red);
+label("$P$",P,W);label("$A$",A,S);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,NW);
+label("$M$",M,dir(135),red);label("$R$",R,dir(-60),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Put $P$ at the origin and let $\vec u$, $\vec v$ be unit vectors along the rays $PB$ and $PC$. Then
+\[
+\vec A=\alpha\vec u,\quad \vec B=\beta\vec u,\quad \vec D=\delta\vec v,\quad \vec C=\gamma\vec v,\qquad 0<\alpha<\beta,\ 0<\delta<\gamma .
+\]
+Write $\vec x\times\vec y$ for the cross product $x_1y_2-x_2y_1$ of plane vectors, so that the area of a triangle $PXY$ is $\dfrac{1}{2}\left|\vec X\times\vec Y\right|$, and put $k=\vec u\times\vec v\ne0$.
+
+\textbf{The quadrilateral.} Triangle $PBC$ is cut by $AD$ into triangle $PAD$ and the quadrilateral $ABCD$, so
+\[
+[ABCD]=[PBC]-[PAD]=\dfrac{1}{2}|k|\,(\beta\gamma-\alpha\delta),
+\]
+which is positive.
+
+\textbf{The triangle $PMR$.} We have $\vec M=\dfrac{1}{2}(\alpha\vec u+\gamma\vec v)$ and $\vec R=\dfrac{1}{2}(\beta\vec u+\delta\vec v)$. Since $\vec u\times\vec u=\vec v\times\vec v=0$ and $\vec v\times\vec u=-k$,
+\[
+\vec M\times\vec R=\dfrac{1}{4}\left(\alpha\delta\,k+\gamma\beta\,(-k)\right)=-\dfrac {k}{4}\,(\beta\gamma-\alpha\delta).
+\]
+Therefore
+\[
+[PMR]=\dfrac{1}{2}\left|\vec M\times\vec R\right|=\dfrac{1}{8}|k|\,(\beta\gamma-\alpha\delta)=\dfrac{1}{4}[ABCD],
+\]
+that is, $4[PMR]=[ABCD]$. $\blacksquare$

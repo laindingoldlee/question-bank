@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1870135_question_about_intro_to_alg_texts825
+% Stable identity: aops-topic-1870135-q01
+Suppose, for contradiction, that a point $(x_0,y_0)$ lies on both lines:
+\[
+y_0-y_1=m(x_0-x_1)\qquad\text{and}\qquad y_0-y_2=m(x_0-x_2).
+\]
+Subtracting the second equation from the first gives
+\[
+y_2-y_1=m(x_2-x_1).
+\]
+This says that $P_2$ satisfies the equation of $\ell_1$.
+
+Now take any point $(x,y)$ of $\ell_2$, so $y-y_2=m(x-x_2)$. Adding $y_2-y_1=m(x_2-x_1)$ gives $y-y_1=m(x-x_1)$, so $(x,y)$ lies on $\ell_1$. Hence $\ell_2\subseteq\ell_1$. The same argument with the roles exchanged gives $\ell_1\subseteq\ell_2$, so $\ell_1=\ell_2$. This contradicts the assumption that the lines are distinct.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-0.5,0)--(5.5,0),gray,Arrow(5));draw((0,-0.5)--(0,4.6),gray,Arrow(5));
+real m=0.5;
+pair P1=(2.6,2.8),P2=(3,0.5);
+draw((-0.4,P1.y+m*(-0.4-P1.x))--(5.3,P1.y+m*(5.3-P1.x)),blue+linewidth(1));
+draw((-0.4,P2.y+m*(-0.4-P2.x))--(5.3,P2.y+m*(5.3-P2.x)),red+linewidth(1));
+dot(P1);dot(P2);
+label("$P_1(x_1,y_1)$",P1,NW);label("$P_2(x_2,y_2)$",P2,SE);
+label("$\ell_1$",(5.3,P1.y+m*(5.3-P1.x)),E,blue);label("$\ell_2$",(5.3,P2.y+m*(5.3-P2.x)),E,red);
+label("$x$",(5.5,0),S);label("$y$",(0,4.6),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Therefore two distinct lines with the same slope have no common point: they are parallel.

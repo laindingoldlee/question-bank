@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3359785_400th_post_problems
+% Stable identity: aops-topic-3359785-q07
+Put $B=(0,0)$, $C=(180,0)$, $A=(90,45\sqrt{21})$. The angle-bisector theorem gives $AX:XB=225:180=5:4$, hence $X=(40,20\sqrt{21})$. Write $D=C+t(A-C)$. The equation $BD^2=180^2$ reduces to $t(50625t-32400)=0$. Excluding $D=C$ gives $t=\dfrac{16}{25}$ and $D=(\dfrac{612}{5},\dfrac{144\sqrt{21}}{5})$. Write $P=C+u(X-C)=(180-140u,20\sqrt{21}u)$. The determinant condition for $B,P,D$ to be collinear gives $25920-32400u=0$, so $u=\dfrac{4}{5}$. Finally $CX^2=140^2+(20\sqrt{21})^2=28000$, and $CP^2=\dfrac{16}{25}\cdot28000=\boxed{17920}$. 
+\begin{asy}
+usepackage("amsmath");
+import geometry;
+size(260);
+pair B=(0,0),C=(180,0),A=(90,45*sqrt(21)),X=(40,20*sqrt(21)),D=(612.0/5,144*sqrt(21)/5),P=C+.8*(X-C);draw(A--B--C--cycle);draw(C--X^^B--D);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$X$",X,W);label("$D$",D,NE);label("$P$",P,S);
+\end{asy}

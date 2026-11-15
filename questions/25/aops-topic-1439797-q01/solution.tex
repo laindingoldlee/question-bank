@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1439797_geometry
+% Stable identity: aops-topic-1439797-q01
+Adjacent angles of a parallelogram are supplementary (they add to $180^\circ$), and opposite angles are equal. Since $204^\circ\ne180^\circ$, the two given angles are not adjacent; they are opposite, so each is $102^\circ$. The other two angles are each $180^\circ-102^\circ=\boxed{78^\circ}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),D=(-1.2,3.5),C=B+D;
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(arc(A,0.6,0,degrees(D)),red); draw(arc(C,0.6,180,180+degrees(D)),red);
+draw(arc(B,0.6,degrees(D),180),blue); draw(arc(D,0.6,degrees(D)+180,360),blue);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$102^\circ$",A+0.65*dir(54),dir(54),red); label("$102^\circ$",C+0.65*dir(234),dir(234),red);
+label("$78^\circ$",B+0.65*dir(144),dir(144),blue); label("$78^\circ$",D+0.65*dir(-36),dir(-36),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The poster's answer $78^\circ$ is correct.)

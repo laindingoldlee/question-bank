@@ -1,0 +1,11 @@
+There are two triangular faces $T_0,T_1$ and three rectangular faces. Each triangle is adjacent to all three rectangles; each rectangle is adjacent to both triangles and the other two rectangles. Let $r_n$ be the probability of occupying a rectangle after $n$ turns. Then
+\[
+r_0=0,\qquad r_{n+1}=(1-r_n)+\dfrac{1}{2}r_n=1-\dfrac{1}{2}r_n.
+\]
+Successively $r_1=1,r_2=\dfrac{1}{2},r_3=\dfrac{3}{4},r_4=\dfrac{5}{8}$. From any rectangle the probability of moving to $T_0$ is $\dfrac{1}{4}$, and from a triangle it is zero. The answer is $\dfrac{1}{4}r_4=\boxed{\dfrac{5}{32}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p={(0,2),(4,2),(0,0),(2,-1),(4,0)};string[] n={"$T_0$","$T_1$","$R_1$","$R_2$","$R_3$"};for(int i=0;i<5;++i)for(int j=i+1;j<5;++j)if(!(i==0&&j==1))draw(p[i]--p[j],gray);for(int i=0;i<5;++i){fill(circle(p[i],.23),white);draw(circle(p[i],.23));label(n[i],p[i]);}
+\end{asy}

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2577870_lamboreghinis_problem_thread_math_and_programming
+% Stable identity: aops-topic-2577870-q102
+Reversing the current list when a pass starts on the right makes index 0 the first encountered position. Delete indices divisible by the pass number, then reverse back. The following exact simulation always removes at least one label and never removes all labels while at least two remain, so it terminates.\begin{verbatim}
+a=list(range(1,1501)); k=2; left=True
+while len(a)>1:
+    if not left: a.reverse()
+    a=[v for i,v in enumerate(a) if i%k!=0]
+    if not left: a.reverse()
+    left=not left
+    k+=1
+print(a[0]) # 764
+\end{verbatim}
+The survivor is $\boxed{764}$.

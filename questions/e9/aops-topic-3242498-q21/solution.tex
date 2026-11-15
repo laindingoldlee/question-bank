@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h3242498_the_polymath_competition
+% Stable identity: aops-topic-3242498-q21
+Use $D=(0,0),C=(27,0),A=(6,8),B=(21,8)$, since the height is $\sqrt{10^2-6^2}=8$. The median is $y=4$, $3\le x\le24$. The circle with diameter $AD$ has centre $(3,4)$ and radius $5$, meeting that line at $x=-2,8$. Only $x=8$ lies on the median, so $X_1=(8,4)$. Reflection gives $X_2=(19,4)$.
+Projection onto $AD$ gives
+\[H_1=\dfrac{(8,4)\cdot(6,8)}{6^2+8^2}(6,8)=\dfrac{4}{5}(6,8)=(\dfrac{24}{5},\dfrac{32}{5}).\]
+Reflecting across $x=\dfrac{27}{2}$ gives $H_2=(\dfrac{111}{5},\dfrac{32}{5})$. Thus $H_1H_2=\dfrac{87}{5}$ and $\boxed{m+n=92}$, choice E.
+\begin{asy}
+usepackage("amsmath"); size(230);
+pair A=(6,8),B=(21,8),C=(27,0),D=(0,0),X1=(8,4),X2=(19,4),H1=(4.8,6.4),H2=(22.2,6.4);draw(A--B--C--D--cycle);draw((3,4)--(24,4),dashed);draw(A--X1--D,blue);draw(B--X2--C,blue);draw(X1--H1,dashed);draw(X2--H2,dashed);draw(H1--H2,red);label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);label("$X_1$",X1,S);label("$X_2$",X2,S);label("$H_1$",H1,NW);label("$H_2$",H2,NE);label("$15$",(A+B)/2,N);label("$27$",(C+D)/2,S);
+\end{asy}

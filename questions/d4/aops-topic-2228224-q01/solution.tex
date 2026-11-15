@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2228224_confusing_geometry
+% Stable identity: aops-topic-2228224-q01
+The three midsegments of a triangle cut it into four congruent triangles, each similar to the original with ratio $\dfrac{1}{2}$ (each midsegment is parallel to a side and half as long). So the medial triangle has $\dfrac{1}{4}$ of the area.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(8,0),C=(2.4,6);
+path t(pair a,pair b,pair c){return a--b--c--cycle;}
+pair a=A,bb=B,c=C;
+draw(t(a,bb,c),linewidth(0.9));
+pen[] col={blue,red,deepgreen,heavymagenta};
+for(int k=0;k<4;++k){pair a2=(bb+c)/2,b2=(c+a)/2,c2=(a+bb)/2; draw(t(a2,b2,c2),col[k]); a=a2;bb=b2;c=c2;}
+fill(t(a,bb,c),heavymagenta+opacity(0.4));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+\end{asy}
+
+Repeating four times,
+\[\dfrac{[MON]}{[ABC]}=\left(\dfrac{1}{4}\right)^4=\boxed{\dfrac{1}{256}}.\]

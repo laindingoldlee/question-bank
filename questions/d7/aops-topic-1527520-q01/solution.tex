@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1527520_geo_problem
+% Stable identity: aops-topic-1527520-q01
+By the power of the point $P$,
+\[
+PB\cdot PC=PD\cdot PE=PA^2=36 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real r=5,d=sqrt(61);
+pair O=(0,0),P=(-d,0);
+real t1=-aSin(sqrt(18.75)/d),t2=aSin(sqrt(4.75)/d),t3=aSin(r/d);
+pair Bq=P+4*dir(t1),Cq=P+9*dir(t1),Dq=P+3*dir(t2),Eq=P+12*dir(t2),Aq=P+6*dir(t3);
+draw(circle(O,r),linewidth(0.9));
+draw(P--Cq,linewidth(0.9));draw(P--Eq,linewidth(0.9));draw(P--Aq,blue+linewidth(0.9));
+draw(O--Aq,dashed);
+real s=0.45; pair u=unit(P-Aq),v=unit(O-Aq); draw(Aq+s*u--Aq+s*u+s*v--Aq+s*v);
+dot(P);dot(Aq);dot(Bq);dot(Cq);dot(Dq);dot(Eq);dot(O);
+label("$P$",P,W);label("$A$",Aq,N);label("$B$",Bq,SW);label("$C$",Cq,SE);label("$D$",Dq,dir(110));label("$E$",Eq,E);label("$O$",O,S);
+label("$6$",(P+Aq)/2,NW,blue);label("$5$",(Bq+Cq)/2,NE);label("$9$",Dq+0.72*(Eq-Dq),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Line $PBC$.} With $PB=p$, $PC=p+5$: $p(p+5)=36$, i.e.\ $p^2+5p-36=(p+9)(p-4)=0$, so $PB=4$.
+
+\textbf{Line $PDE$.} With $PD=q$, $PE=q+9$: $q(q+9)=36$, i.e.\ $q^2+9q-36=0$, so $q=\dfrac{-9+\sqrt{81+144}}{2}=\dfrac{-9+15}{2}=3$.
+
+Hence $BP\cdot PD=4\cdot3=\boxed{12}$. (Such a configuration exists: the figure uses a circle of radius $5$ with $PO=\sqrt{61}$, so that $PO^2-5^2=36$.)

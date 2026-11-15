@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h2231355_kor_grade_10_sat_msm_level
+% Stable identity: aops-topic-2231355-q21
+A circle is tangent to a line exactly when the distance from its centre to the line equals its radius. Let the centre be $\left(t,\dfrac{t^2}{2}+\dfrac{7}{2}\right)$.
+
+\textbf{The line $x-y+7=0$.} The distance from the centre to this line is
+\[\dfrac{\left|t-\dfrac{t^2}{2}-\dfrac{7}{2}+7\right|}{\sqrt2}=\dfrac{|g(t)|}{\sqrt2},\qquad g(t)=-\dfrac{(t-1)^2}{2}+4 .\]
+So the circle is tangent exactly when $|g(t)|=k$, where $k=r\sqrt2>0$.
+\begin{itemize}
+\item $g(t)=-k$ means $(t-1)^2=2(4+k)>0$: always two values of $t$.
+\item $g(t)=k$ means $(t-1)^2=2(4-k)$: two values if $k<4$, one value if $k=4$, none if $k>4$.
+\end{itemize}
+Hence $m=4$, $3$ or $2$, and $m$ is odd only when $k=4$, that is $r=\dfrac{4}{\sqrt2}=2\sqrt2$. Then $m=3$ (centres at $t=1$, $t=5$ and $t=-3$) and $r^2=8$.
+
+\textbf{The line $x-y=0$.} Now the distance is $\dfrac{|h(t)|}{\sqrt2}$ with
+\[h(t)=t-\dfrac{t^2}{2}-\dfrac{7}{2}=-\left(\dfrac{(t-1)^2}{2}+3\right)\le-3 .\]
+Tangency means $|h(t)|=4$, i.e. $\dfrac{(t-1)^2}{2}+3=4$, so $(t-1)^2=2$ and $t=1\pm\sqrt2$. Thus $n=2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return x^2/2+3.5;}
+draw((-6.5,0)--(9.5,0),Arrow(6)); draw((0,-2.5)--(0,20.5),Arrow(6));
+label("$x$",(9.5,0),E); label("$y$",(0,20.5),N);
+draw(graph(f,-3.9,5.6),linewidth(0.9));
+draw((-6.5,0.5)--(8,15),blue+linewidth(0.8)); label("$y=x+7$",(8,15),E,blue);
+draw((-2,-2)--(8.5,8.5),deepgreen+linewidth(0.8)); label("$y=x$",(8.5,8.5),E,deepgreen);
+real r=2*sqrt(2);
+pair[] c={(1,4),(5,16),(-3,8)};
+for(int i=0;i<3;++i){draw(circle(c[i],r),blue+dashed); dot(c[i],blue);}
+pair d1=(1+sqrt(2),(1+sqrt(2))^2/2+3.5), d2=(1-sqrt(2),(1-sqrt(2))^2/2+3.5);
+draw(circle(d1,r),deepgreen+linewidth(0.4)); draw(circle(d2,r),deepgreen+linewidth(0.4)); dot(d1,deepgreen); dot(d2,deepgreen);
+label("$(5,16)$",(5+r,16),E,blue+fontsize(8pt)); label("$(-3,8)$",(-3-r,8),W,blue+fontsize(8pt));
+draw((1,4)--(4.3,1.7),blue+linewidth(0.3)); label("$(1,4)$",(4.3,1.7),E,blue+fontsize(8pt));
+label("$y=\dfrac{x^2}{2}+\dfrac{7}{2}$",(-3.9,f(-3.9)),(-0.6,1),fontsize(8pt));
+\end{asy}
+
+(Blue: the three circles tangent to $y=x+7$; green: the two circles tangent to $y=x$.) Therefore
+\[m+n+r^2=3+2+8=\boxed{13}.\]

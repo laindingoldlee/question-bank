@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2435486_problem_i_madetwo_versions
+% Stable identity: aops-topic-2435486-q01
+Colour row by row. A row of $3$ squares with neighbours different can be coloured in $3\cdot2\cdot2=12$ ways: $6$ of type $xyx$ (the two ends equal) and $6$ of type $xyz$ (all three colours).
+
+\textbf{Which rows can follow a given row?} Each square must differ from its neighbour in the row and from the square above it. Let the colours be $x,y,z$.
+\begin{itemize}
+\item Below $xyx$: the end squares are $y$ or $z$. If both are $y$, the middle is $x$ or $z$ ($yxy$, $yzy$); if both are $z$, the middle is $x$ ($zxz$); if they are $y,z$ or $z,y$, the middle is $x$ ($yxz$, $zxy$). That is $3$ rows of type $xyx$ and $2$ of type $xyz$.
+\item Below $xyz$: the first square is $y$ or $z$ and the last is $x$ or $y$. The choices give $yzx$, $yxy$, $yzy$ and $zxy$ (the pair $z\ldots x$ leaves no colour for the middle). That is $2$ rows of each type.
+\end{itemize}
+Let $a_k$ and $c_k$ be the numbers of colourings of the first $k$ rows whose last row is of type $xyx$ and $xyz$, respectively. Then $a_1=c_1=6$ and
+\[a_{k+1}=3a_k+2c_k,\qquad c_{k+1}=2a_k+2c_k.\]
+So $(a_2,c_2)=(30,24)$ and $(a_3,c_3)=(3\cdot30+2\cdot24,\ 2\cdot30+2\cdot24)=(138,108)$. The number of colourings is $138+108=\boxed{246}$.

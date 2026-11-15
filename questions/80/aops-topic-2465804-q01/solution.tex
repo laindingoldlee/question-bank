@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2465804_how_to_derive_ax__by__c_from_y__mx__b
+% Stable identity: aops-topic-2465804-q01
+\textbf{(a)} Expanding $y-y_1=m(x-x_1)$ and moving the $x$-term to the left gives
+\[-mx+y=y_1-mx_1,\]
+which is $Ax+By=C$ with $A=-m$, $B=1$, $C=y_1-mx_1$. (If $m$ is rational, multiplying through by its denominator makes $A,B,C$ integers.) A vertical line $x=x_1$ is $1\cdot x+0\cdot y=x_1$. In every case $A,B$ are not both zero.
+
+Conversely, take $Ax+By=C$ with $A,B$ not both zero. If $B\ne0$, dividing by $B$ gives
+\[y=-\dfrac ABx+\dfrac CB,\]
+the line with slope $-\dfrac AB$ and $y$-intercept $\dfrac CB$. If $B=0$, then $A\ne0$ and the equation is $x=\dfrac CA$, a vertical line. $\blacksquare$
+
+So, for $A,B,C$ all nonzero, the standard form can be read directly: slope $-\dfrac AB$, $x$-intercept $\dfrac CA$ (put $y=0$) and $y$-intercept $\dfrac CB$ (put $x=0$).
+
+\textbf{(b)} Here $A=3$, $B=-4$, $C=12$: the slope is $-\dfrac{3}{-4}=\boxed{\dfrac34}$, the $x$-intercept is $\dfrac{12}{3}=\boxed{4}$ and the $y$-intercept is $\dfrac{12}{-4}=\boxed{-3}$. The line passes through $(4,0)$ and $(0,-3)$; from $(0,-3)$ it rises $3$ for every $4$ to the right.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-1.5,0)--(6.5,0),Arrow(6)); draw((0,-4.5)--(0,2.5),Arrow(6));
+label("$x$",(6.5,0),E); label("$y$",(0,2.5),N);
+for(int i=-1;i<=6;++i) if(i!=0){draw((i,-0.08)--(i,0.08));}
+for(int j=-4;j<=2;++j) if(j!=0){draw((-0.08,j)--(0.08,j));}
+draw((-1.2,-3.9)--(6.2,1.65),blue+linewidth(0.9));
+dot((4,0)); dot((0,-3));
+label("$(4,0)$",(4,0),NW,fontsize(8pt)); label("$(0,-3)$",(0,-3),W,fontsize(8pt));
+draw((4,0)--(4,-3)--(0,-3),dashed);
+label("$3x-4y=12$",(6.2,1.65),N,blue+fontsize(8pt));
+label("$4$",(2,-3),S,fontsize(8pt)); label("$3$",(4,-1.5),E,fontsize(8pt));
+\end{asy}

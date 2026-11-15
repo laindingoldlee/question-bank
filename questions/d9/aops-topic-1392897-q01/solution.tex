@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1392897_i_need_help
+% Stable identity: aops-topic-1392897-q01
+Let $BC=a$ and $AC=b$. The median $AD$ goes to the midpoint $D$ of $BC$, so triangle $ACD$ is right-angled at $C$ with legs $b$ and $\dfrac{a}{2}$; similarly triangle $BCE$ has legs $a$ and $\dfrac{b}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair C=(0,0),B=(6,0),A=(0,4),D=(3,0),Ep=(0,2);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,red+linewidth(0.9)); draw(B--Ep,blue+linewidth(0.9));
+draw(ra(C,B-C,A-C,0.35));
+dot(A);dot(B);dot(C);dot(D);dot(Ep);
+label("$A$",A,N);label("$B$",B,E);label("$C$",C,SW);label("$D$",D,S);label("$E$",Ep,W);
+label("$5$",A+0.4*(D-A),E,red);label("$2\sqrt{10}$",(1.12,1.07),blue);
+label("$\dfrac{a}{2}$",(C+D)/2,S);label("$\dfrac{a}{2}$",(D+B)/2,S);
+label("$\dfrac{b}{2}$",(C+Ep)/2,W);label("$\dfrac{b}{2}$",(Ep+A)/2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the Pythagorean theorem,
+\[
+b^2+\dfrac{a^2}{4}=25,\qquad a^2+\dfrac{b^2}{4}=40 .
+\]
+Adding: $\dfrac{5}{4}\left(a^2+b^2\right)=65$, so $a^2+b^2=52$ and the hypotenuse is
+\[
+AB=\sqrt{52}=\boxed{2\sqrt{13}} .
+\]
+(Solving fully gives $a=6$ and $b=4$, as drawn.)

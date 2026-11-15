@@ -1,0 +1,14 @@
+We count permutations avoiding the pattern $123$ by relating them to those avoiding $132$.
+
+Fix the positions and values of the left-to-right minima, meaning entries smaller than every preceding entry. In a $123$-avoiding permutation all other entries must occur in decreasing order: two increasing nonminimum entries, together with an earlier minimum smaller than the first, would form a $123$ pattern. Conversely, decreasing nonminimum entries prevent such a pattern. Thus an admissible minimum pattern determines a unique $123$-avoiding permutation.
+
+For the same minimum pattern, fill each nonminimum position with the smallest unused nonminimum value greater than the current minimum. This gives a unique $132$-avoiding permutation: if a larger eligible value were used while a smaller eligible value remained for later, the current minimum and those two values would form $132$. Conversely that is the only way a $132$ pattern can arise. The filling is possible because the current minimum never increases; choosing the smallest eligible value cannot deprive a later position with a weaker threshold. Filling in decreasing order gives the inverse construction. This establishes a bijection.
+
+Let $C_n$ count $132$-avoiding permutations. If the maximum entry has $k$ entries to its left, every left entry must exceed every right entry, or the maximum would be the middle member of a $132$ pattern. The sets on the two sides are then determined, and each side must avoid $132$. Hence
+\[
+C_0=1,\qquad C_n=\sum_{k=0}^{n-1}C_kC_{n-1-k}.
+\]
+This gives $C_1=1,C_2=2,C_3=5,C_4=14,C_5=42$, and
+\[
+C_6=42+14+10+10+14+42=\boxed{132}.
+\]

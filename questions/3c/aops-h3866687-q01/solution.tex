@@ -1,0 +1,22 @@
+Write $u=a^2$, $v=b^2$, $w=c^2$, and let the area be $K$. The condition is $u+2v+3w=12$. Heron's identity gives
+\[
+16K^2=Q=2uv+2vw+2wu-u^2-v^2-w^2.
+\]
+The following sum-of-squares identity provides a sharp bound:
+\[
+(u+2v+3w)^2-11Q
+=\dfrac{(12u-9v-8w)^2+11(3v-4w)^2}{12}\ge0.
+\]
+Thus $176K^2\le144$, so $K\le\dfrac{3}{\sqrt{11}}$.
+
+Equality requires $u:v:w=5:4:3$. Combined with the given sum, this gives
+\[
+(a^2,b^2,c^2)=\left(\dfrac{30}{11},\dfrac{24}{11},\dfrac{18}{11}\right).
+\]
+These lengths form a nondegenerate triangle and attain the bound. Therefore the maximum area is $\boxed{3\dfrac{\sqrt{11}}{11}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real c=sqrt(18.0/11);pair A=(0,0),B=(c,0),C=(6/(11c),sqrt(2));draw(A--B--C--cycle);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,(0,1));label("$c$",(A+B)/2,(0,-1));label("$b$",(A+C)/2,NW);label("$a$",(B+C)/2,NE);
+\end{asy}

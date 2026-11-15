@@ -1,0 +1,8 @@
+Scale and orient the rectangle so $A=(0,0),B=(1,0),D=(0,\sqrt3)$. Then $M=(\dfrac{1}{2},\dfrac{\sqrt3}{2})$. The perpendicular to $BD$ has slope $\dfrac{1}{\sqrt3}$ and equation $y=\dfrac{x+1}{\sqrt3}$. Thus $E=(-1,0)$ and $F=(0,\dfrac{1}{\sqrt3})$.
+Triangle $EAF$ has perpendicular legs $1$ and $\dfrac{1}{\sqrt3}$, giving area $\dfrac{1}{2\sqrt3}$. Triangle $FMD$ has base $FD=\dfrac{2}{\sqrt3}$ and perpendicular height $\dfrac{1}{2}$, also giving area $\dfrac{1}{2\sqrt3}$. Restoring scale multiplies both areas by the same factor, proving the equality.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(1,0),C=(1,sqrt(3)),D=(0,sqrt(3)),M=(B+D)/2,E=(-1,0),F=(0,1/sqrt(3));fill(E--A--F--cycle,lightblue);fill(F--M--D--cycle,lightblue);draw(A--B--C--D--cycle);draw(B--D);draw(E--M);draw(E--A);pair[] p={A,B,C,D,M,E,F};string[] n={"A","B","C","D","M","E","F"};pair[] al={(0,-1),(1,-1),(1,1),(-1,1),(1,0),(-1,-1),(-1,0)};for(int i=0;i<7;++i)label("$"+n[i]+"$",p[i],al[i]);
+\end{asy}

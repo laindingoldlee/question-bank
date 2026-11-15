@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1391564_circle_chords
+% Stable identity: aops-topic-1391564-q01
+Since $CE=9$ and $OC=15$, the point $E$ is at distance $OE=6$ from the centre. A chord through $E$ at distance $h$ from $O$ has length $2\sqrt{225-h^2}$, and $h$ takes every value from $0$ (the diameter $CD$) to $OE=6$ (the chord perpendicular to $CD$ at $E$, dashed below).
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), C=(-15,0), D=(15,0), Ep=(-6,0);
+pair P1=(-6,sqrt(189)), P2=(-6,-sqrt(189));
+real t=aTan(0.75); pair u=dir(t);
+real s1=-dot(Ep,u)+sqrt(dot(Ep,u)^2-(dot(Ep,Ep)-225));
+real s2=-dot(Ep,u)-sqrt(dot(Ep,u)^2-(dot(Ep,Ep)-225));
+pair A=Ep+s1*u, B=Ep+s2*u;
+draw(circle(O,15),linewidth(0.9));
+draw(C--D,linewidth(0.9));
+draw(A--B,blue);
+draw(P1--P2,red+dashed);
+draw(Ep+(0,1.2)--Ep+(-1.2,1.2)--Ep+(-1.2,0));
+dot(O);dot(C);dot(D);dot(Ep);dot(A);dot(B);
+label("$O$",O,S); label("$C$",C,W); label("$D$",D,E); label("$E$",Ep,SE);
+label("$A$",A,NE); label("$B$",B,SW);
+label("$9$",(C+Ep)/2,S); label("$6$",Ep+0.72*(O-Ep),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the lengths of chords through $E$ fill the interval from $2\sqrt{225-36}=2\sqrt{189}\approx27.5$ to $30$. The integer lengths are $28$, $29$, $30$.
+\begin{itemize}
+\item Length $30$: only the diameter, $1$ chord.
+\item Lengths $28$ and $29$: each is strictly between the minimum and the maximum, and there are two chords through $E$ of each such length (mirror images in line $CD$): $2+2=4$ chords.
+\end{itemize}
+The number of chords is $1+4=\boxed{5}$.

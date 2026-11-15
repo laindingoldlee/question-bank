@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2577870_lamboreghinis_problem_thread_math_and_programming
+% Stable identity: aops-topic-2577870-q112
+Euler's method adds $h$ times the derivatives evaluated at the current state; all three updates must use the old coordinates.\begin{verbatim}
+def lorenz(x,y,z,sigma,rho,beta,h,N):
+    out=[(x,y,z)]
+    for k in range(N):
+        dx=sigma*(y-x)
+        dy=x*(rho-z)-y
+        dz=x*y-beta*z
+        x,y,z=x+h*dx,y+h*dy,z+h*dz
+        out.append((x,y,z))
+    return out
+\end{verbatim}
+The initial derivatives are $(0,26,-\dfrac{5}{3})$, so the first Euler point is $\boxed{(1,\dfrac{63}{50},\dfrac{59}{60})}$. These are numerical-method approximations to the differential equation, not exact flow values.

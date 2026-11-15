@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1696873_2016_mathcounts_chapter_sprint_25
+% Stable identity: aops-topic-1696873-q01
+In isosceles triangle $ABC$, $AB=AC$ and $\angle A=32^\circ$. Triangle $PQR$ is congruent to triangle $ABC$, with $P$, $Q$, $R$ corresponding to $A$, $B$, $C$. Side $AC$ meets side $PR$ at $X$, with $\angle PXC=114^\circ$, and side $PQ$ meets side $BC$ at $Y$, as shown. What is the degree measure of $\angle PYC$?
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real h=Tan(74);
+pair A=(0,h),B=(-1,0),C=(1,0);
+real Lt=abs(C-A);
+pair X=A+0.65*(C-A);
+pair u=unit(C-X);
+pair P=X+2.4*(rotate(-114)*u);
+pair r=unit(X-P);
+pair R=P+Lt*r;
+pair Q=P+Lt*(rotate(-32)*r);
+pair Y=extension(P,Q,B,C);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(P--Q--R--cycle,linewidth(0.9)+deepgreen);
+dot(X);dot(Y);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,dir(-30));
+label("$P$",P,W);label("$Q$",Q,SE);label("$R$",R,E);
+label("$X$",X,dir(40));label("$Y$",Y,dir(-130));
+draw(arc(A,0.75,degrees(B-A),degrees(C-A)));label("$32^\circ$",A+1.05*dir(-90));
+draw(arc(X,0.32,degrees(C-X),degrees(P-X)));label("$114^\circ$",X+0.55*dir((degrees(C-X)+degrees(P-X))/2));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

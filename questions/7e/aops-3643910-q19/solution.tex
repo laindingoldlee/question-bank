@@ -1,0 +1,8 @@
+Let the cylinder radius be r and height h=4r. Its axis direction is $\dfrac{(1,1,1)}{\sqrt3}$. Along each coordinate, the half-height contributes $\dfrac{h}{(2\sqrt3)}$ and the circular radius contributes $r\sqrt{\dfrac{2}{3}}$. Tangency to opposite unit-cube faces makes their sum one half. Therefore $\dfrac{r(2+\sqrt2)}{\sqrt3}=\dfrac{1}{2}$ and $h=\dfrac{2\sqrt3}{(2+\sqrt2)}=\boxed{\sqrt3(2-\sqrt2)}$.
+
+
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair proj(triple p){return (p.x+.45*p.y,p.z+.3*p.y);}triple u=(1,1,1)/sqrt(3),v=(1,-1,0)/sqrt(2),w=cross(u,v),O=(.5,.5,.5);real r=sqrt(3)/(2*(2+sqrt(2))),h=4*r;for(int j=0;j<2;++j){triple P=O+(j-.5)*h*u;path p=proj(P+r*v);for(int i=1;i<=100;++i)p=p--proj(P+r*(cos(2*pi*i/100)*v+sin(2*pi*i/100)*w));draw(p,blue);}for(int i=0;i<8;++i){real a=2*pi*i/8;triple V=r*(cos(a)*v+sin(a)*w);draw(proj(O-h*u/2+V)--proj(O+h*u/2+V),blue);}for(int i=0;i<2;++i)for(int j=0;j<2;++j){draw(proj((i,j,0))--proj((i,j,1)));draw(proj((i,0,j))--proj((i,1,j)));draw(proj((0,i,j))--proj((1,i,j)));}draw(proj((0,0,0))--proj((1,1,1)),dashed+red);label("$h=4r$",proj(O),(1,-1));label("unit cube",(.7,-.3));
+\end{asy}
+

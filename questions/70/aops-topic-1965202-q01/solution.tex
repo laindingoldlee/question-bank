@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1965202_combinatorics
+% Stable identity: aops-topic-1965202-q01
+\textbf{Counting argument.} For a student with $c$ correct answers, the number of pairs of questions that he answered both correctly or both incorrectly is
+\[
+g(c)=\binom c2+\binom{10-c}{2}.
+\]
+The values for $c=0,1,\dots,10$ are $45,36,29,24,21,20,21,24,29,36,45$, so $g(c)\ge20$ always, with equality only at $c=5$.
+
+Count pairs (student, pair of questions) where the student answered the two questions the same way. On one hand there are at least $20n$ of them. On the other hand, if the performance is not laughable, each of the $\binom{10}{2}=45$ pairs of questions has at most $56$ students who got both right and at most $56$ who got both wrong, so there are at most $45\cdot112=5040$. Hence a non-laughable performance has $20n\le5040$, i.e. $n\le252$. So $253$ students force a laughable performance.
+
+\textbf{$252$ is not enough.} Let $252=\binom{10}{5}$ students each answer correctly exactly a different set of $5$ questions. For any pair of questions, the students with both correct are those whose set contains both: $\binom83=56$; those with both wrong have sets avoiding both: $\binom85=56$. Neither reaches $57$, so this performance is not laughable.
+
+The answer is $\boxed{253}$.

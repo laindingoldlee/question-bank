@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2454557_geometric_proof_of_cauchyschwartz_inequality
+% Stable identity: aops-topic-2454557-q01
+\textbf{(a)} Let $H$ be the foot of the perpendicular from $P$ to $\ell$, so $PH$ is the distance from $P$ to $\ell$. Since $O$ lies on $\ell$, either $H=O$, or triangle $PHO$ has a right angle at $H$ and $PO$ is its hypotenuse. In both cases $PH\le PO$:
+\[\dfrac{|ax_1+by_1|}{\sqrt{a^2+b^2}}\le\sqrt{x_1^2+y_1^2}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), P=(1.8,2.6);
+pair u=dir(-15);
+pair H=dot(P,u)*u;
+draw((-1.6*u)--(3.4*u),blue+linewidth(0.9)); label("$\ell:\ ax+by=0$",3.4*u,E,blue+fontsize(8pt));
+draw(O--P,red); draw(P--H,dashed);
+draw(H+0.18*unit(O-H)--H+0.18*unit(O-H)+0.18*unit(P-H)--H+0.18*unit(P-H));
+dot(O); dot(P); dot(H);
+label("$O$",O,SW); label("$P(x_1,y_1)$",P,N); label("$H$",H,S);
+\end{asy}
+
+Both sides are nonnegative, so squaring and multiplying by $a^2+b^2>0$ gives
+\[(ax_1+by_1)^2\le\left(a^2+b^2\right)\left(x_1^2+y_1^2\right).\]
+Equality holds exactly when $PH=PO$, i.e. $H=O$, i.e. $OP\perp\ell$ (or $P=O$). The vector $(a,b)$ is perpendicular to $\ell$, so this means that $(x_1,y_1)$ is a multiple of $(a,b)$, i.e. $ay_1=bx_1$. $\blacksquare$
+
+\textbf{(b)} The distance is $\dfrac{|ax_1+by_1|}{\sqrt{a^2+b^2}}$, with an absolute value. Without it, $ax_1+by_1$ may be negative (for example $a=b=1$, $x_1=y_1=-1$), and then the left side of the student's inequality is negative, so ``both sides are nonnegative'' is false; squaring an inequality whose smaller side is negative is not allowed in general ($-3\le1$ but $9>1$). The repair is to keep the absolute value, as in (a): $|ax_1+by_1|\le\sqrt{x_1^2+y_1^2}\sqrt{a^2+b^2}$ has both sides nonnegative, and squaring is valid. (The same argument with a plane $ax+by+cz=0$ through the origin proves the three-variable inequality.)

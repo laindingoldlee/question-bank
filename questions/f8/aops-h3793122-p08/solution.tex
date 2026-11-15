@@ -1,0 +1,7 @@
+The median and angle bisector cannot start at the same vertex: their directions lie inside the vertex angle, and a ray perpendicular to its internal bisector lies outside. Put the angle-bisector vertex at the origin with its bisector horizontal, and the other vertices at $(c\cos\theta,c\sin\theta)$ and $(b\cos\theta,-b\sin\theta)$. If the median from the first of these vertices is vertical, its horizontal coordinate equals that of the opposite midpoint: $c\cos\theta=\dfrac{b}{2}\cos\theta$, so $b=2c$. Thus two sides have ratio $2:1$. If 21 were the smaller or larger of these, the perimeter condition would give a degenerate triangle. Therefore it is the third side, leaving $c+2c=42$. The sides are $14,28,21$, and the smallest is $\boxed{14}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(21*sqrt(6)/4,7*sqrt(10)/4),C=(21*sqrt(6)/2,-7*sqrt(10)/2),M=C/2;draw(A--B--C--cycle);draw(B--M,dashed);draw(A--(15,0));label("$A$",A,(-1,0));label("$B$",B,(0,1));label("$C$",C,(1,-1));label("$M$",M,(0,-1));
+\end{asy}

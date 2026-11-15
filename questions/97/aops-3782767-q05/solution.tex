@@ -1,0 +1,9 @@
+Put $E=(0,0),A=(a,0),G=(0,g),B=(0,b),A^{\prime}=(x,y)$ with $a,g>0$. Since $L$ is on the opposite ray from $A$, $BG=BL\ge BE=b$, so $g\ge2b$. Let $p=AA^{\prime}$. From $AR=p$ and $ER=20$, $p^2=a^2+400$. Also $x^2+y^2=676$, so $p^2=a^2+676-2ax$ gives $ax=138$. The right angle at $A^{\prime}$ gives $ax+by=676$, hence $by=538$. Collinearity on $AG$ gives $\dfrac{x}{a} + \dfrac{y}{g} = 1$, or $g = \dfrac{a^2 y}{a^2-138}$. Combining $g\ge2b$ with $a^2y^2=676a^2-138^2$ yields $a^2 \le \dfrac{129444}{400}$. Therefore $p \le \dfrac{269}{10}$. Equality is attained with $g=2b$ and $L=E$; the resulting $g>20$ and $0<b<g$ meet all segment conditions. Hence $\boxed{m+n=279}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+real a=sqrt(129444)/20,x=138/a,y=sqrt(676-x*x),b=538/y,g=2b;pair E=(0,0),A=(a,0),G=(0,g),B=(0,b),Q=(x,y),R=(0,20);draw(A--E--G--A);draw(B--Q);draw(A--R,dashed);label("$E=L$",E,(-1,-1));label("$A$",A,(1,-1));label("$G$",G,(0,1));label("$B$",B,(-1,1));label("$A^{\prime}$",Q,(1,1));label("$R$",R,(-1,-1));
+\end{asy}
+

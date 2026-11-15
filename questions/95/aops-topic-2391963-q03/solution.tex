@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2391963_mathcounts_drills
+% Stable identity: aops-topic-2391963-q03
+Every side is horizontal or vertical, so each length is a difference of coordinates:
+\[AB=4,\quad BC=2,\quad CD=2,\quad DE=2,\quad EF=2,\quad FA=4.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=5;++i){draw((i,-0.3)--(i,5),gray+0.3); draw((-0.3,i)--(5,i),gray+0.3);}
+draw((-0.3,0)--(5.2,0),Arrow(5)); draw((0,-0.3)--(0,5.2),Arrow(5));
+pair A=(0,0),B=(4,0),C=(4,2),D=(2,2),E2=(2,4),F=(0,4);
+draw(A--B--C--D--E2--F--cycle,blue+linewidth(1));
+dot(A);dot(B);dot(C);dot(D);dot(E2);dot(F);
+label("$A$",A,SW); label("$B$",B,S); label("$C$",C,E); label("$D$",D,NE); label("$E$",E2,NE); label("$F$",F,W);
+label("$4$",(2,0),S,blue); label("$2$",(4,1),E,blue); label("$2$",(3,2),N,blue); label("$2$",(2,3),E,blue); label("$2$",(1,4),N,blue); label("$4$",(0,2),W,blue);
+\end{asy}
+
+The perimeter is $4+2+2+2+2+4=\boxed{16}$. (It is also the perimeter of the $4$ by $4$ square, since the notch at $C$, $D$, $E$ only moves two sides inward.)

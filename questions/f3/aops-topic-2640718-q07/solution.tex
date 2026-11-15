@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2640718_mathcounts_and_amc_problems
+% Stable identity: aops-topic-2640718-q07
+Number the people $0,1,\dots,9$ around the circle; person $i$ knows $i\pm1$ and $i+5$ (mod $10$). Call a pair $\{i,i+5\}$ a \emph{diameter}. Count the pairings by the number of diameters used.
+\begin{itemize}
+\item \emph{No diameters:} the $10$ people pair with neighbours around the cycle in $2$ ways.
+\item \emph{One diameter $\{i,i+5\}$:} the others form two paths of $4$ people (the two arcs), and each path with only neighbour pairs has exactly one pairing: $5$ ways.
+\item \emph{Two diameters} $\{i,i+5\}$ and $\{j,j+5\}$ with $0\le i<j\le4$: the remaining people form arcs of consecutive people containing $j-i-1$ and $4-(j-i)$ people (twice each). These two numbers add up to $3$, so one of them is odd. People in an arc can only pair with neighbours inside that arc, so an odd arc cannot be paired: $0$ ways.
+\item \emph{Three diameters:} the four remaining people are the ends of two diameters, which must pair as neighbours; this requires the two diameters to be adjacent, i.e. $\{i,i+5\}$ and $\{i+1,i+6\}$: $5$ ways.
+\item \emph{Four diameters} leave the fifth diameter, so this is the case of all $5$ diameters: $1$ way.
+\end{itemize}
+The total is $2+5+0+5+1=\boxed{13}$.

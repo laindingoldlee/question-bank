@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1392675_interesting_result
+% Stable identity: aops-topic-1392675-q01
+\textbf{(a)} Take $X=(0,0)$, $A=(-1,0)$, $B=(2,0)$, $C=(0,-1)$, $D=(0,1)$. Then $AX\cdot CX=1\cdot1=1$ but $BX\cdot DX=2\cdot1=2$.
+
+(The correct classical statement is the intersecting chords theorem: if $A,B,C,D$ lie on a circle, then $AX\cdot XB=CX\cdot XD$. It pairs the two pieces of the \emph{same} segment, and it is the power of a point.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair X=(0,0), A=(-2.4,1.2), B=(3.0,-1.5), C=(-0.9,-1.6), D=(1.2,2.0);
+draw(A--B,linewidth(0.9)); draw(C--D,linewidth(0.9));
+draw(A--D,gray+dashed); draw(B--C,gray+dashed);
+dot(A);dot(B);dot(C);dot(D);dot(X);
+label("$A$",A,W); label("$B$",B,E); label("$C$",C,SW); label("$D$",D,N); label("$X$",X,2.2*dir(5));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(b)} The angles $\angle AXD$ and $\angle BXC$ are vertical angles, so they are equal. The condition can be rewritten as
+\[
+AX\cdot CX=BX\cdot DX\iff \dfrac{XA}{XB}=\dfrac{XD}{XC}.
+\]
+If this holds, triangles $XAD$ and $XBC$ are similar by SAS (with $A\leftrightarrow B$, $D\leftrightarrow C$), so $\angle XAD=\angle XBC$. These are alternate angles for the lines $AD$ and $BC$ cut by the transversal $AB$ (with $A$ and $B$ on opposite sides of $X$), hence $AD\parallel BC$.
+
+Conversely, if $AD\parallel BC$, then $\angle XAD=\angle XBC$ (alternate angles) and $\angle AXD=\angle BXC$, so triangles $XAD$ and $XBC$ are similar by AA, which gives $\dfrac{XA}{XB}=\dfrac{XD}{XC}$, i.e. $AX\cdot CX=BX\cdot DX$.
+
+So the student's identity holds exactly when $AD\parallel BC$, which is why it is not a general theorem. (The area argument with $\dfrac{1}{2}ab\sin C$ gives $\dfrac{[AXC]}{[BXD]}=\dfrac{AX\cdot CX}{BX\cdot DX}$, so the identity is equivalent to $[AXC]=[BXD]$, again not true in general.)

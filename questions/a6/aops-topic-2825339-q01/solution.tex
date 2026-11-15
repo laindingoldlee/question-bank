@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2825339_square_inscribed_in_circle_angle
+% Stable identity: aops-topic-2825339-q01
+Since $\angle AOB=90^\circ$, the minor arc $AB$ is $90^\circ$ and the major arc $AB$ (through $C$ and $D$) is $270^\circ$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=dir(135),B=dir(45),C=dir(-45),D=dir(-135),P=dir(80),O=(0,0);
+draw(unitcircle);draw(A--B--C--D--cycle);draw(A--P--B);draw(A--O--B,dashed);dot(O);
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);label("$P$",P,N);label("$O$",O,S);label("$90^\circ$",(0,0.22),N);
+\end{asy}
+
+The inscribed angle $\angle APB$ subtends the arc not containing $P$, namely the major arc, so $\angle APB=\dfrac{270^\circ}2=\boxed{135^\circ}$. It does not depend on the radius or on where $P$ lies on the minor arc.

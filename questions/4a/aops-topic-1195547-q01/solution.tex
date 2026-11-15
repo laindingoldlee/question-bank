@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1195547_mathcounts_questions
+% Stable identity: aops-topic-1195547-q01
+The mirror line is the perpendicular bisector of the segment joining a point to its image. That segment has slope $\dfrac{5-3}{2-6}=-\dfrac{1}{2}$, so $\ell$ has slope $\boxed{2}$ (and passes through the midpoint $(4,4)$).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair P=(6,3),Q=(2,5),M=(P+Q)/2; draw(P--Q,dashed); draw((M-1.6*(1,2))--(M+1.6*(1,2)),blue+linewidth(1)); dot(P);dot(Q);dot(M);
+label("$(6,3)$",P,E); label("$(2,5)$",Q,W); label("$(4,4)$",M,W); label("$\ell$",M+1.6*(1,2),N,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

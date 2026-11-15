@@ -1,0 +1,68 @@
+% Source: https://artofproblemsolving.com/community/c3h2474530_power_of_a_point
+% Stable identity: aops-topic-2474530-q01
+In each part we find two similar triangles.
+
+\textbf{(a) $P$ inside.} The chords $AB$ and $CD$ cross at $P$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), A=dir(160), B=dir(-10), C=dir(75), D=dir(245);
+pair P=extension(A,B,C,D);
+fill(P--A--C--cycle,rgb(0.85,0.9,1)); fill(P--D--B--cycle,rgb(1,0.88,0.85));
+draw(circle(O,1));
+draw(A--B); draw(C--D);
+draw(A--C,dashed); draw(D--B,dashed);
+dot(P); dot(A); dot(B); dot(C); dot(D);
+label("$A$",A,W); label("$B$",B,E); label("$C$",C,N); label("$D$",D,S); label("$P$",P,dir(-60));
+\end{asy}
+
+The inscribed angles $\angle BAC$ and $\angle BDC$ stand on the same arc $BC$, so $\angle PAC=\angle PDB$. Also $\angle APC=\angle DPB$ (vertical angles). Hence triangles $PAC$ and $PDB$ are similar (AA), so
+\[\dfrac{PA}{PD}=\dfrac{PC}{PB},\qquad\text{i.e.}\qquad PA\cdot PB=PC\cdot PD.\]
+
+\textbf{(b) $P$ outside.} Name the points so that $A$ lies between $P$ and $B$, and $C$ between $P$ and $D$. Then $A,B,D,C$ lie on $\omega$ in this order, so $ABDC$ is a cyclic quadrilateral.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), P=(-2.3,0);
+pair B=dir(48), D=dir(-42);
+pair[] X1=intersectionpoints(P--(P+5*unit(B-P)),circle(O,1));
+pair[] X2=intersectionpoints(P--(P+5*unit(D-P)),circle(O,1));
+pair A=X1[0], C=X2[0];
+fill(P--D--B--cycle,rgb(1,0.88,0.85)); fill(P--A--C--cycle,rgb(0.8,0.87,1));
+draw(circle(O,1));
+draw(P--B); draw(P--D);
+draw(A--C,dashed); draw(D--B,dashed);
+dot(P); dot(A); dot(B); dot(C); dot(D);
+label("$P$",P,W); label("$A$",A,dir(110)); label("$B$",B,NE); label("$C$",C,dir(250)); label("$D$",D,SE);
+\end{asy}
+
+Opposite angles of a cyclic quadrilateral are supplementary, so $\angle BAC+\angle BDC=180^\circ$. Since $P,A,B$ are collinear, $\angle PAC=180^\circ-\angle BAC=\angle BDC=\angle PDB$. Triangles $PAC$ and $PDB$ also share the angle at $P$, so they are similar, and again $\dfrac{PA}{PD}=\dfrac{PC}{PB}$, i.e. $PA\cdot PB=PC\cdot PD$.
+
+\textbf{(c) Tangent.} Let $A$ lie between $P$ and $B$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), P=(-2.6,0);
+real th=aCos(1/2.6);
+pair T=dir(180-th);
+pair B=dir(-40);
+pair[] X1=intersectionpoints(P--(P+5*unit(B-P)),circle(O,1));
+pair A=X1[0];
+draw(circle(O,1));
+draw(P--T,blue+linewidth(0.9)); draw(P--B);
+draw(T--A,dashed); draw(T--B,dashed);
+draw(O--T,gray);
+real s=0.12; pair u=unit(P-T), v=unit(O-T);
+draw(T+s*u--T+s*u+s*v--T+s*v,gray);
+dot(P); dot(A); dot(B); dot(T); dot(O);
+label("$P$",P,W); label("$A$",A,dir(250)); label("$B$",B,SE); label("$T$",T,N); label("$O$",O,S);
+\end{asy}
+
+By the tangent--chord angle theorem, the angle between the tangent $TP$ and the chord $TA$ equals the inscribed angle on the arc $TA$: $\angle PTA=\angle TBA=\angle TBP$. Triangles $PTA$ and $PBT$ share the angle at $P$, so they are similar, and
+\[\dfrac{PT}{PB}=\dfrac{PA}{PT},\qquad\text{i.e.}\qquad PT^2=PA\cdot PB.\ \blacksquare\]

@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1595402_another_circles_question
+% Stable identity: aops-topic-1595402-q01
+Each piece is a sector $OPQ$ of radius $6$ with central angle $\dfrac{360^\circ}{3}=120^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real r=6; pair O=(0,0),P=r*dir(210),Q=r*dir(330),T=r*dir(90);
+fill(O--arc(O,r,210,330)--cycle,paleblue);
+draw(circle(O,r),linewidth(0.9));draw(O--P,linewidth(0.9));draw(O--Q,linewidth(0.9));draw(O--T,linewidth(0.9));
+draw(P--Q,red+dashed+linewidth(1));
+label("$6\sqrt3$",(0,-4.4),red);
+label("$6$",(O+P)/2,NW);label("$6$",(O+Q)/2,NE);
+label("$120^\circ$",O+1.6*dir(270));draw(arc(O,0.8,210,330));
+dot(O);label("$O$",O,dir(30));label("$P$",P,SW);label("$Q$",Q,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The longest segment is the chord $PQ$.} The sector is convex (its angle is less than $180^\circ$), and it is the convex hull of the centre $O$ and the arc $PQ$. For a fixed point $U$, the distance $UV$ is a convex function of $V$, so its largest value over the sector is attained at $O$ or at a point of the arc; applying this to both endpoints, the longest segment in the piece joins two points of the set consisting of $O$ and the arc. The centre is at distance $6$ from every point of the arc. Two points of the arc that subtend an angle $\varphi\le120^\circ$ at $O$ are $2\cdot6\sin\dfrac{\varphi}{2}\le12\sin60^\circ$ apart, with equality for the endpoints $P$ and $Q$. So the maximum is
+\[
+l=PQ=2\cdot6\sin60^\circ=6\sqrt3 .
+\]
+(Directly: triangle $OPQ$ is isosceles with apex angle $120^\circ$; the altitude from $O$ splits it into two $30$-$60$-$90$ triangles with hypotenuse $6$, so $PQ=2\cdot3\sqrt3$.)
+
+Hence
+\[
+l^2=\left(6\sqrt3\right)^2=\boxed{108}.
+\]

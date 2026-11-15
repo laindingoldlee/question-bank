@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2453709_how_hard_is_this_question
+% Stable identity: aops-topic-2453709-q01
+The hypotenuse of a right triangle is a diameter of its circumcircle (the right angle is inscribed in a semicircle). From $\pi R^2=42.25\pi$ we get $R=6.5$, so the hypotenuse is $c=13$ and, by the Pythagorean theorem, $a^2+b^2=169$. Then
+\[(a+b)^2=a^2+b^2+2ab=169+120=\boxed{289}.\]
+(Indeed $a+b=17$ and $ab=60$ give legs $5$ and $12$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(-6.5,0), B=(6.5,0);
+pair C=A+5*dir(aCos(5/13));
+draw(circle((0,0),6.5),blue);
+draw(A--B--C--cycle,linewidth(0.9));
+dot((0,0)); label("$O$",(0,0),S);
+label("$A$",A,W); label("$B$",B,E); label("$C$",C,N);
+label("$a$",(A+C)/2,NW); label("$b$",(B+C)/2,NE); label("$13$",(3,0),S);
+draw(C+0.6*unit(A-C)--C+0.6*unit(A-C)+0.6*unit(B-C)--C+0.6*unit(B-C));
+\end{asy}

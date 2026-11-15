@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2958114_geometry_triangles
+% Stable identity: aops-topic-2958114-q01
+Extend $CA$ beyond $A$ to $D$ with $AD=AB=c$, so $CD=b+c$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(5,0);real b=28;pair A=intersectionpoint(B--B+8*dir(b),C--C+8*dir(180-(180-3*b)));
+pair D=A+(A-C)/length(A-C)*length(A-B);draw(A--B--C--cycle);draw(A--D--B,dashed);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NW);label("$c$",(A+D)/2,NE);label("$c$",(A+B)/2,SE);label("$b$",(A+C)/2,NE);label("$a$",(B+C)/2,S);
+\end{asy}
+
+Triangle $ABD$ is isosceles, and its exterior angle at $A$ is $\angle BAC=2\angle B$, so $\angle ADB=\angle ABD=\angle B$. Triangles $CBD$ and $CAB$ share angle $C$ and have $\angle CDB=\angle CBA$, so they are similar. Hence
+\[\dfrac{CB}{CA}=\dfrac{CD}{CB}\implies a^2=b(b+c)=b^2+bc.\ \blacksquare\]

@@ -1,0 +1,8 @@
+An upright triangle of side $k$ has $\binom{12-k}{2}$ possible positions, for $1\le k\le10$. Summing gives $\binom{12}{3}=220$ upright triangles: equivalently, each placement leaves three nonnegative boundary gaps totalling $10-k$.
+An inverted triangle of side $k$ requires a supporting upright triangle of side at least $2k$. It therefore has $\binom{12-2k}{2}$ positions, for $1\le k\le5$. These counts are $45,28,15,6,1$, totalling $95$. No other orientations can have all sides on the three grid-line directions. Thus the total is $\boxed{220+95=315}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real h=sqrt(3)/2;for(int i=0;i<=10;++i){draw((i/2,i*h)--(10-i/2,i*h),gray);draw((i,0)--(i+(10-i)/2,(10-i)*h),gray);draw((i,0)--(i/2,i*h),gray);}label("10 unit segments",(5,-.6));label("$A$",(0,0),(-1,-1));label("$B$",(10,0),(1,-1));label("$C$",(5,10h),(0,1));
+\end{asy}

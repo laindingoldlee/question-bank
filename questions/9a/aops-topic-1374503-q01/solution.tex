@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1374503_casework_problems_without_burnsides
+% Stable identity: aops-topic-1374503-q01
+Sort by the number of distinct colours used.
+\begin{itemize}
+\item \textbf{One colour:} $6$ colourings.
+\item \textbf{Two colours.} Pattern $3+1$ (three vertices of one colour): every position of the odd vertex is equivalent, so a colouring is fixed by the ordered choice of the main colour and the odd colour: $6\cdot5=30$. Pattern $2+2$: the two vertices of one colour are adjacent or opposite (two different patterns, each symmetric in the two colours): $2\dbinom62=30$. Total $60$.
+\item \textbf{Three colours} (pattern $2+1+1$). Choose the repeated colour ($6$ ways) and the two single colours ($\dbinom52=10$ ways). The two vertices of the repeated colour are adjacent or opposite; in either case a reflection swaps the two single vertices, so the order of the single colours does not matter. That gives $2\cdot6\cdot10=120$.
+\item \textbf{Four colours} (all different). Choose the colours: $\dbinom64=15$ ways. The $4!=24$ placements fall into classes of $8$ (the $8$ symmetries of the square move a colouring with all colours different to $8$ different placements), so there are $3$ arrangements: $15\cdot3=45$.
+\end{itemize}
+The total is $6+60+120+45=\boxed{231}$.
+
+(Burnside's lemma gives the same: $\dfrac{6^4+2\cdot6+6^2+2\cdot6^3+2\cdot6^2}{8}=\dfrac{1848}{8}=231$.)

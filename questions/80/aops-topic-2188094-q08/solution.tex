@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2188094_some_fun_problemweek_1
+% Stable identity: aops-topic-2188094-q08
+The vertices of the cube lie on the sphere, so a space diagonal of the cube is a diameter, of length $10$. The picture shows the cross-section through two opposite edges of the cube: a rectangle with sides $s$ and $s\sqrt2$ (a face diagonal), whose diagonal is the space diagonal.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real R=5, s=10/sqrt(3);
+draw(circle((0,0),R),linewidth(1));
+pair A=(-s*sqrt(2)/2,-s/2), B=(s*sqrt(2)/2,-s/2), C=(s*sqrt(2)/2,s/2), D=(-s*sqrt(2)/2,s/2);
+fill(A--B--C--D--cycle,paleblue); draw(A--B--C--D--cycle,blue+linewidth(1));
+draw(A--C,red+dashed);
+label("$s$",(B+C)/2,E,blue); label("$s\sqrt2$",(A+B)/2,S,blue);
+label("$10$",(0,0.35),NW,red);
+dot((0,0));
+\end{asy}
+
+By the Pythagorean theorem, $s^2+\left(s\sqrt2\right)^2=10^2$, so $3s^2=100$ and $s=\dfrac{10}{\sqrt3}$. The cube's volume is $s^3=\dfrac{1000}{3\sqrt3}=\dfrac{1000\sqrt3}{9}$, and the sphere's volume is $\dfrac{4}{3}\pi\cdot5^3=\dfrac{500\pi}{3}$. The required volume is
+\[\boxed{\dfrac{500\pi}{3}-\dfrac{1000\sqrt3}{9}}\approx331.1 .\]

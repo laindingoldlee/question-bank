@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2427111_several_problems_that_i_made
+% Stable identity: aops-topic-2427111-q22
+Place $A=(0,0)$ and $B=(4,0)$. Then $E=(-4,0)$ and $F=(8,0)$, so $E,A,B,F$ lie on a line in this order with $EA=AB=BF=4$. The circles meet where $x=2$ and $y^2=16-4=12$, so $C=\left(2,2\sqrt3\right)$ and $D=\left(2,-2\sqrt3\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(2,2*sqrt(3)),D=(2,-2*sqrt(3)),Ep=(-4,0),F=(8,0);
+fill(C--Ep--A--D--F--cycle,rgb(0.8,0.88,1));
+draw(circle(A,4),gray); draw(circle(B,4),gray);
+draw(Ep--F,dashed);
+draw(C--Ep--A--D--F--cycle,blue+linewidth(0.9));
+draw(C--D,dotted);
+dot(A); dot(B); dot(C); dot(D); dot(Ep); dot(F);
+label("$A$",A,NW); label("$B$",B,NE); label("$C$",C,N); label("$D$",D,S); label("$E$",Ep,W); label("$F$",F,E);
+\end{asy}
+
+Split the pentagon along $CA$ into triangle $CEA$ and quadrilateral $CADF$:
+\begin{itemize}
+\item triangle $CEA$ has base $EA=4$ on the $x$-axis and height $2\sqrt3$, so its area is $4\sqrt3$;
+\item quadrilateral $CADF$ has the vertical diagonal $CD=4\sqrt3$, and the other two vertices $A$ and $F$ lie on opposite sides of it at distances $2$ and $6$, so its area is $\dfrac12\cdot4\sqrt3\cdot(2+6)=16\sqrt3$.
+\end{itemize}
+The area of the pentagon is
+\[4\sqrt3+16\sqrt3=\boxed{20\sqrt3\approx34.64}.\]
+(The shoelace formula for $C,E,A,D,F$ gives the same value.)

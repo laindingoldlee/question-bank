@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h7922_some_fun_questions
+% Stable identity: aops-topic-7922-q02
+Both sides must be defined, so $x\ne\dfrac\pi4+k\pi$. If $\tan x$ is undefined, i.e. $x=\dfrac\pi2+k\pi$, the equation reads $-1=-9$, which is false. Otherwise put $t=\tan x$, with $t\ne\pm1$. By the addition formulas,
+\[\tan\left(\dfrac\pi4+x\right)=\dfrac{1+t}{1-t},\qquad\tan\left(\dfrac\pi4-x\right)=\dfrac{1-t}{1+t},\]
+so the equation becomes
+\[(1+t)^2=9(1-t)^2\iff1+t=\pm3(1-t)\iff t=\dfrac12\ \text{or}\ t=2.\]
+So the solutions are $x=\arctan\dfrac12+k\pi$ and $x=\arctan2+k\pi$. Both $\arctan\dfrac12\approx0.4636$ and $\arctan2\approx1.1071$ lie in $\left(0,\dfrac\pi2\right)$, and every other positive solution exceeds $\pi$. So the two smallest positive solutions are
+\[\boxed{x_1=\arctan\dfrac12,\qquad x_2=\arctan2}.\]
+Since $\tan x_2=2=\dfrac{1}{\tan x_1}=\tan\left(\dfrac\pi2-x_1\right)$, and both $x_2$ and $\dfrac\pi2-x_1$ lie in $\left(0,\dfrac\pi2\right)$, where $\tan$ is one-to-one, we get $x_2=\dfrac\pi2-x_1$, i.e. $x_1+x_2=\dfrac\pi2$. (Their product, $\arctan\dfrac12\cdot\arctan2\approx0.5133$, has no simpler closed form.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return tan(pi/4+x);}
+real g(real x){return 9*tan(pi/4-x);}
+real ys=0.15;
+pair T(real x,real y){return (3*x,ys*y);}
+draw(T(0,0)--T(1.75,0),Arrow(5)); draw(T(0,-12.5)--T(0,21),Arrow(5));
+label("$x$",T(1.75,0),E); label("$y$",T(0,21),N);
+guide f1, f2, gg;
+for(int i=0;i<=150;++i){real x=0.735*i/150; f1=f1--T(x,f(x));}
+for(int i=0;i<=150;++i){real x=0.87+(pi/2-0.87)*i/150; f2=f2--T(x,f(x));}
+for(int i=0;i<=150;++i){real x=(pi/2)*i/150; gg=gg--T(x,g(x));}
+draw(f1,blue+linewidth(0.9)); draw(f2,blue+linewidth(0.9)); draw(gg,red+linewidth(0.9));
+draw(T(pi/4,-12.5)--T(pi/4,20),dashed+gray);
+draw(T(pi/2,-0.4)--T(pi/2,0.4)); label("$\dfrac{\pi}{2}$",T(pi/2,0),N,fontsize(7pt));
+real x1=atan(0.5), x2=atan(2);
+dot(T(x1,3)); dot(T(x2,-3));
+draw(T(x1,0)--T(x1,3),dotted); draw(T(x2,0)--T(x2,-3),dotted);
+label("$\arctan\dfrac12$",T(x1,0),S,fontsize(7pt)); label("$\arctan2$",T(x2,0),N,fontsize(7pt));
+label("$\dfrac{\pi}{4}$",T(pi/4,20),N,gray+fontsize(7pt));
+label("$\tan\left(\dfrac{\pi}{4}+x\right)$",T(0.7,16),W,blue+fontsize(7pt));
+label("$9\tan\left(\dfrac{\pi}{4}-x\right)$",T(0.02,9),NE,red+fontsize(7pt));
+\end{asy}
+
+The graphs of the two sides on $\left(0,\dfrac\pi2\right]$ (vertical axis compressed) cross exactly at $x_1$, where both equal $3$, and at $x_2$, where both equal $-3$.

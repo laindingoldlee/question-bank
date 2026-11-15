@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2041893_an_arcangle_problem
+% Stable identity: aops-topic-2041893-q01
+First \(\angle A=180^\circ-43^\circ-69^\circ=68^\circ\), so \(\angle BAX=\angle XAC=34^\circ\).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+pair B=dir(202), C=dir(338);
+// inscribed angle at A: arc BC (not containing A) = 2*68 = 136; place A so that angle B=43, C=69
+// arc CA (not containing B) = 2*43 = 86, arc AB = 2*69 = 138
+pair A=dir(338+86);
+pair X=dir(270);
+draw(circle(O,1),gray);
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--X,blue); draw(B--X--C,red);
+dot(A);dot(B);dot(C);dot(X);
+label("$A$",A,N); label("$B$",B,W); label("$C$",C,E); label("$X$",X,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The inscribed angles \(\angle CBX\) and \(\angle CAX\) both subtend arc \(CX\) (and \(A\), \(B\) lie on the same side of chord \(CX\)), so they are equal:
+\[
+\angle CBX=\angle CAX=\boxed{34^\circ}.
+\]

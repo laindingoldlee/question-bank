@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1925341_2017_amc_8_16
+% Stable identity: aops-topic-1925341-q01
+Let $BD=x$, so $DC=5-x$. The perimeters are $AD+4+x$ and $AD+3+(5-x)$. Setting them equal gives $4+x=8-x$, so $x=2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(0,4),C=(3,0);pair D=B+2/5*(C-B);
+pair H=B+(dot(A-B,C-B)/dot(C-B,C-B))*(C-B);
+fill(A--B--D--cycle,paleblue);
+draw(A--B--C--cycle,linewidth(1));draw(A--D);
+draw(A--H,dashed);pair u=unit(C-H),v=unit(A-H);draw(H+0.22u--H+0.22u+0.22v--H+0.22v);
+draw((0,0.25)--(0.25,0.25)--(0.25,0));
+dot(D);
+label("$A$",A,SW);label("$B$",B,N);label("$C$",C,SE);label("$D$",D,NE);label("$H$",H,NE);
+label("$4$",(0,2),W);label("$3$",(1.5,0),S);label("$2$",(B+D)/2,NE);label("$3$",D+0.72*(C-D),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangles $ABD$ and $ABC$ have the same vertex $A$, and their bases $BD$ and $BC$ lie on the same line, so they have the same height $AH$ (dashed). Their areas are therefore in the ratio of the bases:
+\[
+[ABD]=\dfrac{BD}{BC}\cdot[ABC]=\dfrac{2}{5}\cdot6=\dfrac{2\cdot6}{5},
+\]
+since $[ABC]=\dfrac{1}{2}\cdot3\cdot4=6$. (That is where the $6$ and the $5$ come from: $6$ is the area of the whole triangle and $\dfrac{2}{5}$ is the fraction of the base used.) The answer is $\boxed{\textbf{(D)}\ \dfrac{12}{5}}$.

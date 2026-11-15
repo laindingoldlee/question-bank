@@ -1,0 +1,15 @@
+Each of the thirty columns must contain a golden cell, or its vertical column would be an unblocked bottom-to-top path. Thus at least thirty golden-making events are needed. Because four consecutive upward moves are forbidden, their three-up blocks do not overlap. There must be at least $90$ upward moves. The net vertical rise is at most $22$, so at least $68$ downward moves are required. The walker must reach the rightmost column, requiring at least $29$ horizontal moves. Therefore at least $90+68+29=187$ moves are necessary.
+
+Number rows $0$ through $22$ and columns $0$ through $29$. Create a golden cell in column $j$ at height
+\[
+h_j=3+\min(j,19).
+\]
+First move up three times. For the next nineteen columns, move down twice, right once, and up three times; for the final ten, move down three times, right once, and up three times. Every move stays in the grid and respects the direction limit. The total is $3+19(6)+10(7)=187$.
+
+The golden cells form an unbroken barrier from the left edge to the right edge: neighboring cells in the chain share an edge or a corner. Such a chain blocks every edge-adjacent crossing; locally, a diagonal pair cannot be passed between by an edge step. Equivalently, the nongolden cells above and below the staircase have no edge joining the two regions. Thus the lower bound is attained and the answer is $\boxed{187}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+size(330);for(int x=0;x<30;++x)for(int y=0;y<23;++y){if(y==3+min(x,19))fill(box((x,y),(x+1,y+1)),yellow);draw(box((x,y),(x+1,y+1)),lightgray+.2bp);}pair q=(.5,.5);path p=q--(.5,3.5);q=(.5,3.5);for(int j=1;j<30;++j){real drop=(j<=19?2:3);p=p--(q-(0,drop))--(q+(1,-drop))--(j+.5,3.5+min(j,19));q=(j+.5,3.5+min(j,19));}draw(p,blue+.5bp);label("Bottom",(15,-1));label("Top",(15,24));
+\end{asy}

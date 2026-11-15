@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2046088_need_geo_help__again
+% Stable identity: aops-topic-2046088-q01
+Let \(h=AM\), \(\alpha=\angle BAM\) and \(\beta=\angle CAM\), so \(\alpha+\beta=45^\circ\) because \(M\) lies between \(B\) and \(C\).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real h=(13+sqrt(337))/2;
+pair M=(0,0), B=(-7,0), C=(6,0), A=(0,h);
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--M,dashed);
+draw((0,0.9)--(0.9,0.9)--(0.9,0));
+dot(A);dot(B);dot(C);dot(M);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$M$",M,S);
+label("$7$",(B+M)/2,S); label("$6$",(M+C)/2,S); label("$h$",(0,h*0.55),W);
+label("$\alpha$",A+(-0.75,-3.1)); label("$\beta$",A+(0.65,-3.1));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the right triangles \(ABM\) and \(ACM\), \(\tan\alpha=\dfrac{7}{h}\) and \(\tan\beta=\dfrac{6}{h}\). Then
+\[
+1=\tan45^\circ=\tan(\alpha+\beta)=\dfrac{\dfrac{7}{h}+\dfrac{6}{h}}{1-\dfrac{42}{h^2}}=\dfrac{13h}{h^2-42}.
+\]
+(Here \(h^2>42\), since \(\alpha,\beta<45^\circ\) forces \(\tan\alpha\tan\beta<1\).) So \(h^2-13h-42=0\), whose positive root is
+\[
+h=\boxed{\dfrac{13+\sqrt{337}}{2}}\approx 15.68 .
+\]

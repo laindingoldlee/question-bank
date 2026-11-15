@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3579385_1434th_post
+% Stable identity: aops-topic-3579385-q06
+Let the common side length be $s$ and put $\alpha=\angle EAB=\angle AED$. The angle sum gives $\angle ABC=\angle CDE=270^\circ-2\alpha$, and convexity forces $45^\circ<\alpha<90^\circ$. Take $AE$ horizontal with $A$ left of $E$. The directions of the four equal successive sides are $\alpha,90^\circ-\alpha,\alpha-90^\circ,-\alpha$. Thus, after translation, the vertices have coordinates\[A=(-h,0),\ B=(-s\sin\alpha,s\sin\alpha),\ C=(0,h),\ D=(s\sin\alpha,s\sin\alpha),\ E=(h,0),\quad h=s(\sin\alpha+\cos\alpha).\]The directions of $AB$ and $CD$ differ by $90^\circ$, so $BCX$ is right, with hypotenuse $BC=s$ and legs $u=s\sin2\alpha$, $v=-s\cos2\alpha$, both positive. From $u+v+s=18$ and $uv=22$, we obtain $s^2=(18-s)^2-44$, hence $s=\dfrac{70}{9}$. Splitting the pentagon into trapezoid $ABDE$ and triangle $BCD$ gives area\[2s^2\sin\alpha(\sin\alpha+\cos\alpha)=s^2(1-\cos2\alpha+\sin2\alpha)=s(s+u+v)=18s=\boxed{140}.\]Both possible orders of the two leg lengths give the same result; they are shown below.
+\begin{asy}
+import geometry;
+size(260);
+real s=70.0/9;for(int k=0;k<2;++k){real u=(46+(k==0?1:-1)*sqrt(334))/9,v=(46-(k==0?1:-1)*sqrt(334))/9,al=atan2(u,-v)/2,h=s*(sin(al)+cos(al));pair T=(30*k,0),A=T+(-h,0),B=T+(-s*sin(al),s*sin(al)),C=T+(0,h),D=T+(s*sin(al),s*sin(al)),E=T+(h,0),X=B+u*(cos(al),sin(al));draw(A--B--C--D--E--cycle);draw(B--X--C,dashed);label("$A$",A,SW);label("$B$",B,W);label("$C$",C,N);label("$D$",D,E);label("$E$",E,SE);label("$X$",X,NW);}
+\end{asy}

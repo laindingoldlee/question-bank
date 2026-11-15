@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2421367_can_someone_give_a_hint
+% Stable identity: aops-topic-2421367-q01
+We use Menelaus' theorem twice (all lengths unsigned).
+
+\textbf{Step 1: the ratio $BN:NC$.} In triangle $ABN$, the line through $C$, $P$, $M$ meets side $AB$ at $M$, side $AN$ at $P$ and the extension of side $BN$ at $C$. Menelaus' theorem gives
+\[\dfrac{AM}{MB}\cdot\dfrac{BC}{CN}\cdot\dfrac{NP}{PA}=1,\qquad\text{so}\qquad 1\cdot\dfrac{BC}{CN}\cdot\dfrac37=1,\qquad\dfrac{BC}{CN}=\dfrac73.\]
+Hence $BN:NC=4:3$.
+
+\textbf{Step 2: the length $PM$.} In triangle $BCM$, the line through $A$, $P$, $N$ meets side $BC$ at $N$, side $CM$ at $P$ and the extension of side $MB$ at $A$. Menelaus' theorem gives
+\[\dfrac{BN}{NC}\cdot\dfrac{CP}{PM}\cdot\dfrac{MA}{AB}=1,\qquad\text{so}\qquad\dfrac43\cdot\dfrac{5}{PM}\cdot\dfrac12=1,\qquad PM=\dfrac{10}{3}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0), A=7*dir(200), Nn=3*dir(20), C=5*dir(100), M=(10/3)*dir(280), B=2*M-A;
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--Nn,blue); draw(C--M,blue);
+pair u=unit(B-A), v=rotate(90)*u;
+for(pair m : new pair[]{(A+M)/2,(M+B)/2}) draw((m-0.3v)--(m+0.3v));
+dot(A); dot(B); dot(C); dot(M); dot(Nn); dot(P);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$M$",M,S); label("$N$",Nn,NE); label("$P$",P,dir(150));
+label("$7$",(A+P)/2,dir(290),blue); label("$3$",(P+Nn)/2,dir(290),blue);
+label("$5$",(P+C)/2,dir(10),blue); label("$\dfrac{10}{3}$",(P+M)/2,dir(10),red);
+label("$4k$",(B+Nn)/2,dir(30)); label("$3k$",(Nn+C)/2,dir(30));
+\end{asy}
+
+\textbf{Check with mass points.} Put masses $1$ at $A$ and $1$ at $B$ (so $M$, the midpoint, has mass $2$), and mass $\dfrac43$ at $C$, so that $N$ with $BN:NC=4:3$ is the balance point of $B$ and $C$ (mass $\dfrac73$). Then $AP:PN=\dfrac73:1=7:3$, which agrees with $PA=7$, $PN=3$, and $CP:PM=2:\dfrac43=3:2$, so $PM=\dfrac23\cdot5=\dfrac{10}{3}$.
+
+Such a triangle exists: for example, with $P$ at the origin, $A=7(\cos200^\circ,\sin200^\circ)$, $C=5(\cos100^\circ,\sin100^\circ)$, $M=-\dfrac{2}{3}C$ and $B=2M-A$, the point $N=-\dfrac37A$ lies on $BC$ (the figure is drawn this way). So $PM=\boxed{\dfrac{10}{3}}$.

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1570991_please_help_me_to_solve_this
+% Stable identity: aops-topic-1570991-q01
+The square has side $QR=2-(-4)=6$, so its area is $36$.
+
+The triangle shares the vertical side $QT$ (length $8-2=6$) with the square, and $TU=6-2=4$ is horizontal, so the triangle has a right angle at $T$ and area $\dfrac{1}{2}\cdot6\cdot4=12$. It lies to the right of $QT$, outside the square.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair Q=(2,8),R=(-4,8),Sq=(-4,2),T=(2,2),U=(6,2);
+fill(R--Q--U--Sq--cycle,paleyellow);
+for(int i=-5;i<=7;++i) draw((i,0)--(i,9),gray(0.88));
+for(int j=0;j<=9;++j) draw((-5,j)--(7,j),gray(0.88));
+draw((-5,0)--(7.4,0),gray,Arrow(TeXHead));draw((0,0)--(0,9.4),gray,Arrow(TeXHead));
+draw(R--Q--T--Sq--cycle,linewidth(0.9));draw(Q--U--T,linewidth(0.9));
+label("$Q(2,8)$",Q,N);label("$R(-4,8)$",R,N);label("$S(-4,2)$",Sq,S);label("$T(2,2)$",T,S);label("$U(6,2)$",U,SE);
+label("$6$",(R+Q)/2,S);label("$4$",(T+U)/2,S);label("$6$",(Q+T)/2+(0.15,0.8),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $S$, $T$, $U$ all lie on the line $y=2$, the union is the quadrilateral (trapezoid) $RQUS$ with parallel sides $RQ=6$ and $SU=10$ and height $6$. Its area is
+\[
+36+12=\dfrac{6+10}{2}\cdot6=48,
+\]
+answer $\boxed{\text{(B) } 48}$.

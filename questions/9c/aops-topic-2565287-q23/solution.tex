@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2565287_alex131s_problem_solving_algebra_thread
+% Stable identity: aops-topic-2565287-q23
+Since $5^2+12^2=25+144=169=13^2$, the squares of the two shorter sides add up to the square of the longest side. By the converse of the Pythagorean theorem, the angle opposite the side of length $13$ is a right angle. $\blacksquare$
+
+(Proof of the converse in this case: a right triangle with legs $5$ and $12$ has hypotenuse $\sqrt{169}=13$, so it has the same three side lengths and is congruent to the given triangle by SSS.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(12,0),A=(0,5);
+draw(A--B--C--cycle,linewidth(0.8));draw((0,0.7)--(0.7,0.7)--(0.7,0));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$5$",(A+B)/2,W);label("$12$",(B+C)/2,S);label("$13$",(A+C)/2,NE);
+\end{asy}

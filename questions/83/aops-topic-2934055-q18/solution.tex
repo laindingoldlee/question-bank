@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2934055_2016_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2934055-q18
+Represent the points by $(i,j)$ with $i,j\ge0,i+j\le62$ in two 60-degree lattice directions. Comparing two adjacent unit triangles shows that their opposite vertices have the same color. Propagating these equalities yields the three classes $i-j\pmod3$, with a constant color on each class. Every unit triangle uses one of each class, so exactly one class must be black. Each class has 672 points; for instance this follows by counting the residues in the rows, or the finite check below. All three choices are valid, so the sole possible count is $\boxed{672}$.\begin{verbatim}
+from collections import Counter
+assert Counter((i-j)%3 for i in range(63) for j in range(63-i))=={0:672,1:672,2:672}
+\end{verbatim}
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=0;i<6;++i)for(int j=0;j<6-i;++j){pair p=(i+.5*j,sqrt(3)*j/2);dot(p,(i-j)%3==0?black:gray);}label("six-row illustration",(2.5,-.5));
+\end{asy}

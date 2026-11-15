@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2655301_about_something_wrong_with_the_hilbert_hotel
+% Stable identity: aops-topic-2655301-q01
+\textbf{(i)} The digits of $x=0.d_1d_2d_3\dots$ are indexed by their positions $1,2,3,\dots$: there is a first digit, a second digit, and so on, one digit for each positive integer. So every real number has \emph{countably} many digits, and this is exactly what the diagonal argument uses. Given any list $r_1,r_2,r_3,\dots$ of numbers in $[0,1)$, it builds a number $y$ whose $n$th digit differs from the $n$th digit of $r_n$ for every $n$ (using only digits other than $0$ and $9$, so that $y$ has just one decimal expansion). Then $y\ne r_n$ for every $n$, so no list contains all of $[0,1)$.
+
+\textbf{(ii)} The Fundamental Theorem of Arithmetic encodes only \emph{finite} lists: a positive integer has finitely many prime factors, so $2^{a_1+1}3^{a_2+1}\cdots$ is a positive integer only when the list stops. But for most $x$ the procedure does not produce a finite list of integers.
+\begin{itemize}
+\item If the expansion of $x$ has infinitely many $9$s, there are infinitely many pieces. For example, $\dfrac1{11}=0.090909\dots$ gives the pieces $0,0,0,\dots$ without end.
+\item If it has finitely many $9$s, the last piece is the whole infinite tail after the last $9$ (or the whole expansion if there is no $9$), which is a finite numeral only when $x$ is a terminating decimal. For example, $\dfrac13=0.333\dots$ has no $9$, and its only piece $333\dots$ is not the base-$9$ numeral of any integer.
+\end{itemize}
+So the procedure assigns a positive integer only to terminating decimals, which do form a countable set. Numbers such as $\dfrac13$ and $\dfrac1{11}$ receive no integer at all, so the argument does not match $[0,1)$ with the positive integers, and there is no contradiction with Cantor's theorem. $\blacksquare$

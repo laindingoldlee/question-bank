@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1876344_introduction_to_counting_and_probability
+% Stable identity: aops-topic-1876344-q01
+Write the numbers as $x<y<z$; we need $z>xy$ with $z\le100$.
+
+\textbf{$x=1$.} The condition $z>y$ is automatic, so we count pairs $2\le y<z\le100$. For $y=2$ there are $98$ choices of $z$ ($3,\dots,100$), for $y=3$ there are $97$, \dots, for $y=99$ there is $1$. That is $98+97+\cdots+1=4851$ pairs. (For a fixed $y$, $z$ can be any of the $100-y$ numbers above $y$.)
+
+\textbf{$x\ge2$.} Now $xy>y$, so the condition is $xy<z\le100$, giving $100-xy$ choices of $z$ whenever $xy<100$. For $x=2$, $y$ runs from $3$ to $49$ and the counts are $100-2y=94,92,\dots,2$, with sum $2(47+46+\cdots+1)=2256$. In general
+\[
+\sum_{y=x+1}^{\left\lfloor\dfrac{99}{x}\right\rfloor}(100-xy):\qquad
+\begin{array}{c|ccccccccc}
+x&1&2&3&4&5&6&7&8&9\\\hline
+\text{count}&4851&2256&1335&840&525&310&161&64&11
+\end{array}
+\]
+(for example $x=3$: $\sum_{y=4}^{33}(100-3y)=3000-3\cdot555=1335$). For $x\ge10$, $xy\ge10\cdot11>100$, so there are none.
+
+The total is $4851+2256+1335+840+525+310+161+64+11=\boxed{10353}$.

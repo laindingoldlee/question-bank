@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1719666_geometry
+% Stable identity: aops-topic-1719666-q01
+Let the sides be $a<b<11$ (scalene, and $11$ is the longest). The triangle inequality reduces to $a+b>11$ (the other two inequalities hold automatically since $11$ is the longest side).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(11,0),C=(3.4,5.2);
+draw(A--B--C--cycle,linewidth(0.9));
+label("$11$",(A+B)/2,S);label("$a$",(A+C)/2,NW);label("$b$",(B+C)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For each $b$, $a$ runs over $12-b\le a\le b-1$:
+\[
+b=10:\ a=2,\dots,9\ (8);\quad b=9:\ 3,\dots,8\ (6);\quad b=8:\ 4,\dots,7\ (4);\quad b=7:\ 5,6\ (2);\quad b\le6:\ \text{none}.
+\]
+Total $8+6+4+2=\boxed{20}$.

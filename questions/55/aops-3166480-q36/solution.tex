@@ -1,0 +1,6 @@
+If $k$ chords are drawn, choose their $2k$ endpoints in $\binom{30}{2k}$ ways. Noncrossing perfect matchings of those endpoints are counted by the Catalan number $C_k=\dfrac{1}{k+1}\binom{2k}{k}$. One derivation pairs the first endpoint with an odd-numbered position, splitting the circle into two independent matchings and giving $C_k=\sum_{j=0}^{k-1}C_jC_{k-1-j}$, $C_0=1$. Thus the answer is $\boxed{\sum_{k=0}^{15}\binom{30}{2k}\dfrac{1}{k+1}\binom{2k}{k}=1697385471211}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+draw(unitcircle);for(int k=0;k<30;++k)dot(dir(12*k));draw(dir(0)--dir(60)^^dir(12)--dir(48)^^dir(96)--dir(132)^^dir(168)--dir(300)^^dir(192)--dir(276));label("one noncrossing matching",(0,-1.4));
+\end{asy}
+

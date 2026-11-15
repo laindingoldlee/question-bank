@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2949128_mathematical_circles_russian_experience_ch1_sec2_p12
+% Stable identity: aops-topic-2949128-q01
+\textbf{No.} We show that in any dissection of a convex polygon into parallelograms, every side has another side parallel to it.
+
+Take a side $s$. A parallelogram $Q_1$ of the dissection has a side along part of $s$; its opposite side is parallel to $s$ and strictly farther from $s$. If that opposite side is not on the boundary, the region just beyond part of it belongs to another parallelogram $Q_2$, whose side contains that piece and hence is parallel to $s$. Its opposite side is farther still. Since the distance from $s$ strictly increases and there are finitely many parallelograms, the chain stops at a side of the polygon parallel to $s$ and different from $s$. (In the hexagon below, dissected into three parallelograms, side $s$ is paired with the opposite side $s'$.)
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);pair[] V;for(int k=0;k<6;++k){V.push(2*dir(30+60*k));}
+fill(O--V[0]--V[1]--V[2]--cycle,lightgray);
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle);draw(O--V[0]);draw(O--V[2]);draw(O--V[4]);
+label("$s$",(V[4]+V[5])/2,SE);label("$s'$",(V[1]+V[2])/2,NW);
+\end{asy}
+
+In a convex polygon, at most two sides are parallel to a given direction. So the sides split into disjoint parallel pairs, and the number of sides is even. Since $13$ is odd, the dissection is $\boxed{\text{impossible}}$.

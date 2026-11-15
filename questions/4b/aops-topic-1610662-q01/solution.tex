@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1610662_circle_question
+% Stable identity: aops-topic-1610662-q01
+A circle tangent to both axes has centre $(\pm r,\pm r)$ and radius $r$. The point $(-8,-1)$ is in the third quadrant and the circle does not cross the axes, so the centre is $(-r,-r)$. The circle passes through $(-8,-1)$ when
+\[
+(r-8)^2+(r-1)^2=r^2\quad\Longleftrightarrow\quad r^2-18r+65=0\quad\Longleftrightarrow\quad(r-5)(r-13)=0 .
+\]
+So the centres are $O_1=(-5,-5)$ and $O_2=(-13,-13)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+draw((-28,0)--(3,0),gray,Arrow(TeXHead));draw((0,-28)--(0,3),gray,Arrow(TeXHead));
+label("$x$",(3,0),E,gray);label("$y$",(0,3),N,gray);
+draw(circle((-5,-5),5),linewidth(0.9));draw(circle((-13,-13),13),linewidth(0.9));
+pair P=(-8,-1);dot(P);label("$(-8,-1)$",(-8,2.3));draw((-8,-0.6)--(-8,1.2),gray+dotted);
+dot((-5,-5));dot((-13,-13));
+label("$O_1$",(-5,-5),NW);label("$O_2$",(-13,-13),SE);
+draw((-5,-5)--(-13,-13),red+dashed);label("$8\sqrt2$",(-12.2,-8.2),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Their distance is $\sqrt{8^2+8^2}=\boxed{8\sqrt2}$.

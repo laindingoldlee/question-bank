@@ -1,0 +1,46 @@
+% Source: https://artofproblemsolving.com/community/c3h1762490_pizza_and_pepperoni
+% Stable identity: aops-topic-1762490-q01
+Let the pizza have radius $R$ and centre $O$. The largest circle inside a $45^\circ$ sector is tangent to both straight edges and to the arc, so its centre $K$ lies on the bisector of the sector, at distance $R-r$ from $O$, where $r$ is its radius.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real s=sin(pi/8); real r=s/(1+s);
+draw(circle((0,0),1),linewidth(0.9));
+for(int i=0;i<8;++i) draw((0,0)--dir(45*i),linewidth(0.6));
+for(int i=0;i<8;++i) filldraw(circle((1-r)*dir(22.5+45*i),r),rgb(0.95,0.55,0.5),black+linewidth(0.5));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real s=sin(pi/8); real r=s/(1+s);
+pair O=(0,0), X=dir(0), Y=dir(45);
+pair K=(1-r)*dir(22.5);
+pair T=(K.x,0);
+draw(O--X,linewidth(0.8));draw(O--Y,linewidth(0.8));draw(arc(O,1,0,45),linewidth(0.8));
+filldraw(circle(K,r),rgb(0.95,0.55,0.5),black+linewidth(0.6));
+draw(O--K,dashed);draw(K--(1)*dir(22.5),dashed);
+draw(K--T,blue+linewidth(0.7));
+draw((T+(-0.035,0))--(T+(-0.035,0.035))--(T+(0,0.035)),linewidth(0.4));
+dot(O);dot(K);
+label("$O$",O,W);label("$K$",K,NW);label("$T$",T,S);
+label("$r$",(K+T)/2,E,blue);
+label("$R-r$",(O+K)/2,N+0.6*W);
+draw(arc(O,0.22,0,22.5),linewidth(0.5));
+label("$22.5^\circ$",0.27*dir(11),E,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+If $T$ is the point of tangency with one straight edge, then $KT\perp OT$ and $\angle KOT=22.5^\circ$, so
+\[
+r=KT=(R-r)\sin22.5^\circ\quad\Longrightarrow\quad \dfrac {r}{R}=\dfrac{s}{1+s},\qquad s=\sin22.5^\circ=\dfrac{\sqrt{2-\sqrt2}}{2}.
+\]
+The eight pepperoni circles cover $8\pi r^2$ out of $\pi R^2$, so the fraction covered is
+\[
+8\left(\dfrac{s}{1+s}\right)^2=\dfrac{8(2-\sqrt2)}{\left(2+\sqrt{2-\sqrt2}\right)^2}\approx\boxed{0.613}.
+\]
+(Here $s^2=\dfrac{2-\sqrt2}{4}$ and $1+s=\dfrac{2+\sqrt{2-\sqrt2}}{2}$.)

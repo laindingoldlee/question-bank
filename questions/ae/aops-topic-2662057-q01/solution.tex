@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2662057_problem
+% Stable identity: aops-topic-2662057-q01
+List a set as $a_1<a_2<a_3<a_4<a_5$ and put $b_i=a_i-i$. Since $a_{i+1}\ge a_i+1$, we get $0\le b_1\le b_2\le\cdots\le b_5$ with $\sum b_i=30-15=15$, and this is reversible. So we must count the partitions of $15$ into at most $5$ parts.
+
+Let $P(n,k)$ be the number of partitions of $n$ into at most $k$ parts. Either fewer than $k$ parts are used, or there are exactly $k$ parts and subtracting $1$ from each leaves a partition of $n-k$ into at most $k$ parts:
+\[P(n,k)=P(n,k-1)+P(n-k,k).\]
+With $P(n,1)=1$, $P(n,2)=\left\lfloor\dfrac n2\right\rfloor+1$ and $P(n,3)$ read off from small lists ($P(15,3)=27$, $P(11,3)=16$, $P(10,3)=14$, $P(7,3)=8$, $P(6,3)=7$):
+\[P(6,4)=7+2=9,\quad P(10,4)=14+9=23,\quad P(10,5)=23+P(5,5)=23+7=30,\]
+\[P(7,4)=8+3=11,\quad P(11,4)=16+11=27,\quad P(15,4)=27+27=54,\]
+\[P(15,5)=P(15,4)+P(10,5)=54+30=84.\]
+So there are $\boxed{84}$ such sets.

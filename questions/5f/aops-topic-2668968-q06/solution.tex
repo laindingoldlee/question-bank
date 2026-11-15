@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2668968_proving_problems_thread
+% Stable identity: aops-topic-2668968-q06
+Let each face be a regular $p$-gon and let $q$ faces meet at each vertex, with $p\ge3$ and $q\ge3$. Each face angle is $\dfrac{180^\circ(p-2)}{p}$. At a vertex of a convex polyhedron the face angles add up to less than $360^\circ$ (if they added up to $360^\circ$ or more, the faces around the vertex could not fold up into a corner). Hence
+\[q\cdot\dfrac{180(p-2)}{p}<360\iff q(p-2)<2p\iff(p-2)(q-2)<4.\]
+With $p-2\ge1$ and $q-2\ge1$, the only possibilities are
+\[(p,q)=(3,3),\ (3,4),\ (3,5),\ (4,3),\ (5,3).\]
+For $p\ge6$ even three faces already give at least $3\cdot120^\circ=360^\circ$; for squares and pentagons only $q=3$ works ($4\cdot90^\circ=360^\circ$, $4\cdot108^\circ>360^\circ$), and for triangles $q\le5$ ($6\cdot60^\circ=360^\circ$).
+
+The five pairs are realised by the tetrahedron $(3,3)$, the octahedron $(3,4)$, the icosahedron $(3,5)$, the cube $(4,3)$ and the dodecahedron $(5,3)$. So there are $\boxed{5}$ Platonic solids. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+void pentagon(real th){pair[] v;v[0]=O;v[1]=dir(th);
+ for(int j=2;j<5;++j)v[j]=v[j-1]+dir(th+72*(j-1));
+ draw(v[0]--v[1]--v[2]--v[3]--v[4]--cycle,linewidth(0.8));}
+pentagon(-54);pentagon(54);pentagon(162);
+label("$108^\circ$",0.42*dir(108),fontsize(7pt));
+label("gap $36^\circ$",1.35*dir(288),fontsize(7pt));dot(O);
+\end{asy}
+
+(The sketch shows three regular pentagons around a vertex: $3\cdot108^\circ=324^\circ$ leaves a $36^\circ$ gap, so they fold into a corner of the dodecahedron.)

@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2551425_ohmc_1115
+% Stable identity: aops-topic-2551425-q12
+An integer that is both a square and a cube is a sixth power; the smallest one greater than $1$ is $2^6=64$. So the shorter side is $\sqrt[3]{64}=4$.
+
+Let the kite be $PQTR$ with $PQ=PR=4$, $\angle QPR=90^\circ$, $TQ=TR=x$ and $\angle QTR=60^\circ$. Triangle $PQR$ is an isosceles right triangle, so $QR=4\sqrt2$. Triangle $TQR$ is isosceles with apex angle $60^\circ$, so its base angles are also $60^\circ$ and it is equilateral. Hence $x=QR=\boxed{4\sqrt2}$, answer $\textbf{(A)}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair P=(0,2*sqrt(2)), Q=(-2*sqrt(2),0), R=(2*sqrt(2),0), T=(0,-2*sqrt(6));
+draw(P--Q--T--R--cycle,linewidth(0.8));
+draw(Q--R,dashed);
+real s=0.35;
+draw(P+s*unit(Q-P)--P+s*unit(Q-P)+s*unit(R-P)--P+s*unit(R-P));
+draw(arc(T,0.8,60,120));
+label("$60^\circ$",T+(0,1.1),fontsize(9pt));
+label("$P$",P,N);label("$Q$",Q,W);label("$R$",R,E);label("$T$",T,S);
+label("$4$",(P+Q)/2,NW);label("$4$",(P+R)/2,NE);
+label("$4\sqrt2$",(Q+R)/2,N,fontsize(9pt));
+label("$x$",(Q+T)/2,SW);label("$x$",(R+T)/2,SE);
+\end{asy}

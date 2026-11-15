@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1573750_angles_are_bad
+% Stable identity: aops-topic-1573750-q01
+At each vertex the interior angle $I$ and the exterior angle $X$ are supplementary: $I+X=180^\circ$.
+
+\textbf{Case $I-X=140^\circ$.} Then $I=160^\circ$ and $X=20^\circ$. The exterior angles of a convex polygon add up to $360^\circ$, and in a regular polygon they are all equal, so the number of sides is $n=\dfrac{360^\circ}{20^\circ}=18$.
+
+\textbf{Case $X-I=140^\circ$.} Then $X=160^\circ$, and $n=\dfrac{360}{160}$ is not an integer, so this case is impossible.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real R=10;
+pair[] V; for(int i=-3;i<=3;++i) V.push(R*dir(90+20*i));
+for(int i=0;i<6;++i) draw(V[i]--V[i+1],linewidth(0.9));
+draw(V[0]--R*dir(90-80),gray+dotted);draw(V[6]--R*dir(90+80),gray+dotted);
+pair Vt=V[3],Vp=V[2],Vn=V[4];
+pair ext=Vt+4.8*unit(Vt-Vp);
+draw(Vt--ext,dashed);
+draw(arc(Vt,1.0,degrees(Vn-Vt),degrees(Vp-Vt)+360),blue);
+label("$160^\circ$",Vt+1.6*dir(270),blue+fontsize(9pt));
+draw(arc(Vt,2.4,degrees(ext-Vt),degrees(Vn-Vt)),red);
+pair m20=Vt+2.4*dir(180);draw(m20--Vt+(-3.6,2.2),gray);label("$20^\circ$",Vt+(-3.6,2.2),W,red+fontsize(9pt));
+dot(Vt);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence the polygon has $\boxed{18}$ sides. (Check: the interior angle of a regular $18$-gon is $\dfrac{(18-2)\cdot180^\circ}{18}=160^\circ$.)

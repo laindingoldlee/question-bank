@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1624042_quick_tile_question
+% Stable identity: aops-topic-1624042-q01
+Put the floor on a grid with corners $(0,0)$ and $(81,63)$; the diagonal is the segment from $(0,0)$ to $(81,63)$.
+
+Moving along the diagonal, we enter a new tile each time we cross an interior grid line. The diagonal crosses $80$ interior vertical lines and $62$ interior horizontal lines. When it passes through an interior lattice point it crosses a vertical and a horizontal line at the same moment but enters only one new tile. The lattice points on the diagonal are $(9t,7t)$ for $t=0,1,\dots,9$, because $\gcd(81,63)=9$ and $\dfrac{63}{81}=\dfrac{7}{9}$; so there are $9-1=8$ interior ones. The number of tiles is
+\[
+1+80+62-8=81+63-\gcd(81,63)=\boxed{135}.
+\]
+The floor consists of $9$ copies, along the diagonal, of a $9$ by $7$ block, and in each block the diagonal crosses $9+7-1=15$ tiles (shaded below); $9\cdot15=135$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<9;++i)for(int j=0;j<7;++j){real lo=7.0*i/9,hi=7.0*(i+1)/9;
+ if(max(lo,j)<min(hi,j+1)) fill((i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle,lightgray);}
+for(int i=0;i<=9;++i)draw((i,0)--(i,7),gray(0.45));
+for(int j=0;j<=7;++j)draw((0,j)--(9,j),gray(0.45));
+draw((0,0)--(9,7),red+linewidth(1));draw((0,0)--(9,0)--(9,7)--(0,7)--cycle,linewidth(1));
+label("$9$",(4.5,0),S);label("$7$",(0,3.5),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

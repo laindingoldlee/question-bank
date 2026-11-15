@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h3581567_how_many_combinations_of_abcdefghi_can_be_placed_in_a_3x3_grid
+% Stable identity: aops-topic-3581567-q01
+Fix distinct cells $a,f$ for A and F. For each unordered pair of remaining cells $U$ not adjacent to $a$, assign B and C to $U$ in $2!$ ways. Among the five still unoccupied cells, let $m$ be the number not adjacent to $f$. Choose three of those for G,H,I in $\binom{m}{3} 3!$ ways; D,E fill the remaining two in $2!$ ways. Thus this pair $(a,f)$ contributes $24\sum_U\binom{m(U)}{3}$. Evaluating the small finite sum over the eight choices of $f$ gives $5136$ for each corner $a$, $5136$ for each edge-center $a$, and $2880$ for the center $a$. These are disjoint, so the total is $4(5136)+4(5136)+2880=\boxed{43968}$. The audit includes exact enumeration of these cell choices.
+\begin{asy}
+size(7cm);
+for(int i=0;i<=3;++i){draw((i,0)--(i,3));draw((0,i)--(3,i));}for(int r=0;r<3;++r)for(int c=0;c<3;++c)label(string(3*r+c+1),(c+.5,2.5-r));label("Adjacency: shared edge",(1.5,-.5));
+\end{asy}

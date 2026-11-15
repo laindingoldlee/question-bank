@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1511047_inverse_funtions_observation
+% Stable identity: aops-topic-1511047-q01
+\textbf{Perpendicular bisector.} The midpoint of $PP'$ is $M\left(\dfrac{a+b}{2},\dfrac{a+b}{2}\right)$, which lies on $y=x$. The slope of $PP'$ is $\dfrac{a-b}{b-a}=-1$, and the slope of $y=x$ is $1$; since $(-1)\cdot1=-1$, the two lines are perpendicular.
+
+\textbf{The square.} Consider the four points
+\[
+P(a,b),\quad U(a,a),\quad P'(b,a),\quad V(b,b).
+\]
+They are the corners of the region $\min(a,b)\le x\le\max(a,b)$, $\min(a,b)\le y\le\max(a,b)$, whose sides lie on the lines $x=a$, $x=b$, $y=a$, $y=b$; both side lengths are $|a-b|$, so $PUP'V$ is a square:
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real a=5,b=2;
+draw((-0.3,0)--(6.3,0),gray(0.4),Arrow(5));draw((0,-0.3)--(0,6.3),gray(0.4),Arrow(5));
+label("$x$",(6.3,0),E);label("$y$",(0,6.3),N);
+draw((-0.2,-0.2)--(6,6),dashed);label("$y=x$",(6,6),NE);
+pair P=(a,b),Q=(b,a),U=(a,a),V=(b,b),M=((a+b)/2,(a+b)/2);
+draw(V--P--U--Q--cycle,red+linewidth(0.9));
+draw(P--Q,blue+linewidth(1.1));
+dot(P);dot(Q);dot(U);dot(V);dot(M);
+label("$P(a,b)$",P,SE);label("$P'(b,a)$",Q,NW);label("$(a,a)$",U,SE);label("$(b,b)$",V,NW);label("$M$",M,2.6*S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Its diagonals are $PP'$ and $UV$, and $U$, $V$ both lie on $y=x$. So the observation in the question is correct, and the other two vertices are $\boxed{(a,a)\text{ and }(b,b)}$. (This also re-proves the first part: the diagonals of a square are perpendicular and bisect each other.)
+
+The square is unique: a square is determined by one diagonal, since its other diagonal is the perpendicular segment of the same length through the same midpoint.

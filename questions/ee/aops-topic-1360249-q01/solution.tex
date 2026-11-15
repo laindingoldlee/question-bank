@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1360249_weird_summation_thingy
+% Stable identity: aops-topic-1360249-q01
+The $k$th term is
+\[
+a_k=\dfrac{1\cdot3\cdots(2k-1)}{2\cdot4\cdots(2k)}=\dfrac{(2k)!}{(2^kk!)^2}=\dfrac{1}{4^k}\dbinom{2k}{k},
+\]
+and the sum is $a_1+\cdots+a_n$ with $n=1008$.
+
+\textbf{Claim.} $1+a_1+\cdots+a_n=(2n+1)a_n$. For $n=0$ both sides are $1$. If it holds for $n-1$, then, using $a_n=a_{n-1}\cdot\dfrac{2n-1}{2n}$,
+\[
+(2n-1)a_{n-1}+a_n=2n\,a_n+a_n=(2n+1)a_n .
+\]
+
+So the sum is $(2n+1)a_n-1=\dfrac{(2n+1)\dbinom{2n}{n}-4^n}{4^n}$. The numerator $N=(2n+1)\dbinom{2n}{n}-4^n$ has the same power of $2$ as $\dbinom{2n}{n}$ (as $2n+1$ is odd and $4^n$ is divisible by a higher power of $2$). By Kummer's theorem (or Legendre's formula), the power of $2$ in $\dbinom{2n}{n}$ equals the number of $1$s in the binary expansion of $n$. Since $1008=1111110000_2$ has six $1$s, $2^6$ exactly divides $N$, and the fraction reduces to
+\[
+\dfrac{N\cdot2^{-6}}{2^{2016-6}}=\dfrac{\text{odd}}{2^{2010}} .
+\]
+So $x=2010$ and $y=1$, and $xy=\boxed{2010}$.

@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2023819_calculating_this_problem
+% Stable identity: aops-topic-2023819-q01
+There are $\dbinom{40}{2}=780$ games, so $2^{780}$ equally likely outcomes.
+
+Each team wins between $0$ and $39$ games. If the $40$ win totals are distinct, they are exactly $0,1,\dots,39$. Then the team with $39$ wins beat everyone; removing it, the team with $38$ wins beat all remaining teams; and so on. So the outcome is determined by the ranking of the teams, and conversely every ranking (each team beats exactly the teams ranked below it) gives distinct win totals. Hence there are $40!$ favourable outcomes and the probability is
+\[
+\dfrac{40!}{2^{780}}.
+\]
+The power of $2$ in $40!$ is $\left\lfloor\dfrac{40}{2}\right\rfloor+\left\lfloor\dfrac{40}{4}\right\rfloor+\left\lfloor\dfrac{40}{8}\right\rfloor+\left\lfloor\dfrac{40}{16}\right\rfloor+\left\lfloor\dfrac{40}{32}\right\rfloor=20+10+5+2+1=38$. After cancelling, $n=2^{780-38}=2^{742}$, so $\log_2n=\boxed{742}$.

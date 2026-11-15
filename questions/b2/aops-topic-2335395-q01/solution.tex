@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2335395_angle_bisectors_question
+% Stable identity: aops-topic-2335395-q01
+Since $\angle PYX=\angle PYZ=\dfrac12\angle XYZ<90^\circ$, the feet $Q$ and $R$ lie on the rays $YX$ and $YZ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair Y=(0,0), X=(6.5,0), Z=6.5*dir(64), P=4.2*dir(32);
+pair Q=(P.x,0), R=dot(P,dir(64))*dir(64), Q2=(5.6,0);
+draw(Y--X,linewidth(0.9)); draw(Y--Z,linewidth(0.9)); draw(Y--P,blue);
+draw(P--Q,red); draw(P--R,red); draw(P--Q2,dotted);
+draw(Q+(-0.25,0)--Q+(-0.25,0.25)--Q+(0,0.25));
+pair u=unit(Y-R), v=unit(P-R); draw(R+0.25*u--R+0.25*u+0.25*v--R+0.25*v);
+dot(P); dot(Q); dot(R); dot(Q2);
+label("$Y$",Y,SW); label("$X$",X,E); label("$Z$",Z,N); label("$P$",P,E);
+label("$Q$",Q,S); label("$R$",R,NW); label("$Q'$",Q2,S);
+\end{asy}
+
+\textbf{(a)} The triangles $YQP$ and $YRP$ have right angles at $Q$ and $R$, equal angles at $Y$ (since $YP$ is the bisector), and the common side $YP$. By AAS they are congruent, so $PQ=PR$ and $YQ=YR$. $\blacksquare$
+
+\textbf{(b)} If $Q'\ne Q$ is on the line $YX$, then $PQQ'$ is a right triangle with hypotenuse $PQ'$, so by the Pythagorean theorem $PQ'^2=PQ^2+QQ'^2>PQ^2$. $\blacksquare$
+
+So the two points on the sides that are ``equally far'' from $P$ are not arbitrary: they are the feet $Q$ and $R$ of the perpendiculars, which are the closest points of the two sides to $P$, and they are also equally far from the vertex $Y$. Points $Q'$ on $YX$ and $R'$ on $YZ$ chosen in another way are in general not equally far from $P$.

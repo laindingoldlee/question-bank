@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1579429_circumference_questions
+% Stable identity: aops-topic-1579429-q04
+The cross-section is roughly a circle of circumference $766$ cm, so its radius is
+\[
+r=\dfrac{766}{2\pi}\approx\dfrac{766}{6.283}\approx121.9\text{ cm}.
+\]
+Each year adds about $0.5$ cm to the radius, so the number of rings is about
+\[
+\dfrac{121.9}{0.5}\approx244 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+for(int k=1;k<=8;++k) draw(circle((0,0),k*0.5),k==8?black+linewidth(1):gray+linewidth(0.5));
+draw((0,0)--(4,0),red+linewidth(0.9));label("$r\approx122$ cm",(4,0),E,red);
+label("rings $0.5$ cm thick",(0,-4.1),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The tree is about $\boxed{244}$ years old. (The sketch shows the rings schematically, not to scale.)

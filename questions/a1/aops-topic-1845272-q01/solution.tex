@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1845272_2_proofs_for_123n123n1n2
+% Stable identity: aops-topic-1845272-q01
+\textbf{(a)} By the formula with $k=n$ and $k=n-1$,
+\[
+\dfrac{n(n+1)}{2}+\dfrac{(n-1)n}{2}=\dfrac{n\bigl((n+1)+(n-1)\bigr)}{2}=\dfrac{n\cdot2n}{2}=n^2 .
+\]
+(Careful with brackets: the numerators must be added before dividing by $2$, i.e.\ $\dfrac{(n^2+n)+(n^2-n)}{2}=\dfrac{2n^2}{2}=n^2$.) $\blacksquare$
+
+\textbf{(b)} Cut an $n\times n$ square of unit squares along a staircase. Below and on the diagonal there are $1+2+\cdots+n$ squares (columns of heights $1,2,\dots,n$); above it there are $1+2+\cdots+(n-1)$ squares (rows of lengths $1,2,\dots,n-1$). Together they fill the square, so the sum is $n^2$. The picture shows $n=5$: $15+10=25$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+int n=5;
+for(int c=0;c<n;++c) for(int r=0;r<n;++r){
+  path sq=(c,r)--(c+1,r)--(c+1,r+1)--(c,r+1)--cycle;
+  if(r<=c) fill(sq,paleblue); else fill(sq,palered);
+  draw(sq,gray(0.35));
+}
+draw((0,1)--(1,1)--(1,2)--(2,2)--(2,3)--(3,3)--(3,4)--(4,4)--(4,5),linewidth(1.6));
+label("$1+2+3+4+5$",(2.5,-0.15),S,blue);
+label(rotate(90)*"$1+2+3+4$",(-0.15,2.5),W,red);
+label("$5$",(2.5,5),N);label("$5$",(5,2.5),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+$\blacksquare$

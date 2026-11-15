@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1677934_necklaces_out_of_phosphor
+% Stable identity: aops-topic-1677934-q01
+First count necklaces using colours from a set of $k$ colours, with no requirement to use all of them, by Burnside's lemma for the rotation group of order $9$. A rotation by $j$ places ($0\le j\le8$) splits the beads into $\gcd(j,9)$ cycles, and a colouring is fixed exactly when each cycle is one colour. Rotations with $\gcd=9$: $1$ (the identity); $\gcd=3$: $j=3,6$; $\gcd=1$: the other $6$. So
+\[
+N_k=\dfrac{k^9+2k^3+6k}{9}.
+\]
+This gives $N_3=\dfrac{19683+54+18}{9}=2195$, $N_2=\dfrac{512+16+12}{9}=60$ and $N_1=1$.
+
+A rotation does not change which colours appear, so we can apply inclusion--exclusion to the colour sets: the number of necklaces using all three colours is
+\[
+N_3-3N_2+3N_1=2195-180+3=\boxed{2018}.
+\]

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1423517_pythagorean_oops
+% Stable identity: aops-topic-1423517-q01
+Let the legs be $a$ and $b$, so $a^2=97^2-b^2=(97-b)(97+b)$ with $0<b<97$. Let $g=\gcd(97-b,97+b)$. Then $g$ divides their sum $194=2\cdot97$; it cannot be divisible by the prime $97$ (because $0<97-b<97$), so $g=1$ or $g=2$.
+\begin{itemize}
+\item If $g=1$: two coprime numbers with a square product are both squares, $97-b=u^2$ and $97+b=v^2$ with $u^2+v^2=194$. The only way to write $194$ as a sum of two positive squares is $25+169$, so $97-b=25$, $97+b=169$, $b=72$ and $a=5\cdot13=65$. This is the solution manual's step: $97-b=5^2$ makes $97+b=169=13^2$ also a square.
+\item If $g=2$: $97-b=2u^2$ and $97+b=2v^2$ with $u^2+v^2=97=16+81$ (the only way), so $97-b=32$, $97+b=162$, $b=65$ and $a=2\cdot4\cdot9=72$.
+\end{itemize}
+Either way the legs are $\boxed{65\text{ and }72}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair C=(0,0),A=(7.2,0),B=(0,6.5);
+draw(A--B--C--cycle,linewidth(0.9)); draw(ra(C,A-C,B-C,0.5));
+label("$72$",(A+C)/2,S); label("$65$",(B+C)/2,W); label("$97$",(A+B)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check: $65^2+72^2=4225+5184=9409=97^2$.

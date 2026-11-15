@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2355164_triangle_inequality
+% Stable identity: aops-topic-2355164-q01
+We may assume $B\ne C$. Let $A'$ be the foot of the perpendicular from $A$ to the line $BC$ (so $A'=A$ if $A$ is on that line). The figure shows the two possible positions of $A'$: on the segment $BC$, or outside it.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(5,0), A=(1.8,2.2), Ap=(A.x,0);
+draw(B--C,linewidth(0.9)); draw(A--B,blue); draw(A--C,blue); draw(A--Ap,dashed);
+real m=0.2; draw(Ap+(m,0)--Ap+(m,m)--Ap+(0,m));
+dot(A); dot(B); dot(C); dot(Ap);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$A'$",Ap,S);
+pair B2=(7,0), C2=(10.5,0), A2=(12.2,2.2), Ap2=(A2.x,0);
+draw(B2--Ap2,linewidth(0.9)+gray); draw(B2--C2,linewidth(0.9)); draw(A2--B2,blue); draw(A2--C2,blue); draw(A2--Ap2,dashed);
+draw(Ap2+(-m,0)--Ap2+(-m,m)--Ap2+(0,m));
+dot(A2); dot(B2); dot(C2); dot(Ap2);
+label("$A$",A2,N); label("$B$",B2,SW); label("$C$",C2,S); label("$A'$",Ap2,SE);
+\end{asy}
+
+\textbf{Step 1.} If $A\ne A'$, triangle $AA'B$ has a right angle at $A'$, so $AB^2=AA'^2+A'B^2>A'B^2$. Hence $AB\ge A'B$, with equality exactly when $A=A'$. In the same way $AC\ge A'C$, with equality exactly when $A=A'$.
+
+\textbf{Step 2.} The points $A'$, $B$, $C$ lie on one line. If $A'$ is on the segment $BC$, then $A'B+A'C=BC$. If $A'$ is outside it, say beyond $C$ (right picture), then $A'B=A'C+CB$, so $A'B+A'C=BC+2A'C>BC$; the case beyond $B$ is the same. So $A'B+A'C\ge BC$, with equality exactly when $A'$ is on the segment $BC$.
+
+\textbf{(a)} Combining, $AB+AC\ge A'B+A'C\ge BC$. $\blacksquare$
+
+\textbf{(b)} Equality $AB+AC=BC$ holds only if both inequalities are equalities, that is, $A=A'$ (so $A$ is on the line $BC$) and $A'$ is on the segment $BC$: together, $A$ is on the segment $BC$. Conversely, if $A$ is on the segment $BC$, then $AB+AC=BC$ directly. $\blacksquare$
+
+This is why the inequality is often written with $\ge$ for arbitrary points: for the three vertices of a genuine (non-flat) triangle it is strict, $AB+AC>BC$.

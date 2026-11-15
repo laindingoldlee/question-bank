@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1518681_length_of_rhombus_diagonal_stuck
+% Stable identity: aops-topic-1518681-q01
+Let the rhombus be $ABCD$. A rhombus is a parallelogram, so its opposite angles are equal: $\angle A=\angle C$. A quadrilateral inscribed in a circle has opposite angles adding to $180^\circ$: $\angle A+\angle C=180^\circ$. Hence $\angle A=\angle C=90^\circ$, and likewise $\angle B=\angle D=90^\circ$. A rhombus with a right angle is a square:
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+draw(unitcircle,linewidth(0.9));
+pair A=dir(90),B=dir(180),C=dir(270),D=dir(0);
+draw(A--B--C--D--cycle,linewidth(1));
+draw(A--C,blue+dashed);draw(B--D,blue+dashed);
+real s=0.09;
+draw((0,0)+(s,0)--(s,s)--(0,s),blue);
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,S);label("$D$",D,E);
+label("$8x$",(0,-0.45),E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The diagonals of a square are equal (both are diameters of the circle), so the other diagonal also has length $\boxed{8x}$.

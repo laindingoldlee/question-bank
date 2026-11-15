@@ -1,0 +1,18 @@
+Place $B=(0,0)$, $A=(6,0)$, $C=(0,8)$. The triangle is right, with inradius $\dfrac{(6+8-10)}{2}=2$, so its incenter is $I=(2,2)$. Reflection across $AB$ and $BC$ gives $A'=(2,-2)$ and $B'=(-2,2)$.
+
+The hypotenuse has equation $4x+3y=24$. Reflecting $I$ across it gives
+\[
+C'=I-\dfrac{2(4\cdot2+3\cdot2-24)}{4^2+3^2}(4,3)
+=\left(\dfrac{26}{5},\dfrac{22}{5}\right).
+\]
+Using vectors $B'-A'=(-4,4)$ and $C'-A'=(\dfrac{16}{5},\dfrac{32}{5})$,
+\[
+[A'B'C']=\dfrac{1}{2}\left|-\dfrac{128}{5}-\dfrac{64}{5}\right|=\dfrac{96}{5}.
+\]
+Thus $\boxed{|m-n|=91}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(6,0),B=(0,0),C=(0,8),I=(2,2),U=(2,-2),V=(-2,2),W=(26.0/5,22.0/5);draw(A--B--C--cycle);draw(circle(I,2),gray);draw(U--V--W--cycle,blue);draw(I--U,dashed);draw(I--V,dashed);draw(I--W,dashed);label("$A$",A,SE);label("$B$",B,SW);label("$C$",C,(0,1));label("$I$",I,(0,1));label("$A^{\prime}$",U,(0,-1));label("$B^{\prime}$",V,(-1,0));label("$C^{\prime}$",W,(1,0));
+\end{asy}

@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1952183_geometry_problems__
+% Stable identity: aops-topic-1952183-q01
+Let $AC=16$, $AB=15$, $BC=17$, and let the bisector from $B$ meet $AC$ at $D$, with $BD=\ell$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),C=(16,0),B=(6,sqrt(189)),D=(7.5,0);
+draw(A--B--C--cycle,linewidth(1));draw(B--D,blue+linewidth(1));
+dot(A);dot(B);dot(C);dot(D);
+label("$A$",A,SW);label("$C$",C,SE);label("$B$",B,N);label("$D$",D,S);
+label("$15$",(A+B)/2,NW);label("$17$",(B+C)/2,NE);
+label("$7.5$",(A+D)/2,S);label("$8.5$",(D+C)/2,S);
+label("$\ell$",(B+D)/2+(0.15,0),E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the angle bisector theorem, $\dfrac{AD}{DC}=\dfrac{AB}{BC}=\dfrac{15}{17}$, so $AD=\dfrac{15}{32}\cdot16=7.5$ and $DC=8.5$. Stewart's theorem for cevian $BD$ gives
+\[
+AB^2\cdot DC+BC^2\cdot AD=AC\left(\ell^2+AD\cdot DC\right),
+\]
+\[
+225\cdot8.5+289\cdot7.5=16\left(\ell^2+63.75\right)\quad\Longrightarrow\quad 4080=16\ell^2+1020\quad\Longrightarrow\quad\ell^2=\dfrac{765}{4}.
+\]
+Hence $\ell=\boxed{\dfrac{3\sqrt{85}}{2}}\approx13.83$.
+
+This is the general formula for the bisector from the vertex between sides $p$ and $q$ to the opposite side $s$:
+\[
+\ell^2=pq\left(1-\dfrac{s^2}{(p+q)^2}\right),\qquad\text{here } \ell^2=255\cdot\dfrac{3}{4}=\dfrac{765}{4} .
+\]

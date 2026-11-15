@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1344049_geometry_proof
+% Stable identity: aops-topic-1344049-q01
+Through $C$ draw the line parallel to $DB$; it meets line $AB$ at $E$, beyond $B$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(6,0), C=(4.5,3), D=(1.5,3), Ep=B+(C-D);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,blue); draw(B--D,blue);
+draw(B--Ep,gray+dashed); draw(C--Ep,red+dashed);
+draw(arc(A,0.8,0,degrees(C-A)),blue); draw(arc(B,0.8,degrees(D-B),180),blue); draw(arc(Ep,0.8,degrees(C-Ep),180),red);
+dot(Ep);
+label("$A$",A,SW); label("$B$",B,S); label("$C$",C,NE); label("$D$",D,NW); label("$E$",Ep,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Step 1.} $DBEC$ has $DC\parallel BE$ and $DB\parallel CE$, so it is a parallelogram, and $CE=DB=AC$. Hence triangle $ACE$ is isosceles with $\angle CAE=\angle CEA$.
+
+\textbf{Step 2.} Since $CE\parallel DB$, the corresponding angles on the transversal $AE$ are equal: $\angle CEA=\angle DBA$. Combining, $\angle CAB=\angle CAE=\angle CEA=\angle DBA$.
+
+\textbf{Step 3.} Triangles $CAB$ and $DBA$ have $AC=BD$, the common side $AB$, and equal included angles $\angle CAB=\angle DBA$. By SAS they are congruent, so $BC=AD$. $\blacksquare$

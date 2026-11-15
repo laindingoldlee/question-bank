@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1414394_400th_post
+% Stable identity: aops-topic-1414394-q03
+Here a palindrome is a nonnegative integer that reads the same forwards and backwards. Two palindromes differing by $10$ cannot both have one digit (they would differ by at most $9$). If $N-6$ is a one-digit number, then $N+4$ has two digits, between $10$ and $19$, and the only two-digit palindrome there is $11$, giving $N=7$, but $7+21=28$ is not a square. Two two-digit palindromes are multiples of $11$ and cannot differ by $10$. If $N-6\le99$ and $N+4\ge100$, then $N+4\in\{101,\dots,109\}$, so $N+4=101$ and $N-6=91$, not a palindrome.
+
+So both are three-digit palindromes $\overline{xyx}$, and adding $10$ to $\overline{xyx}$ keeps a palindrome only if no carry reaches the last digit, i.e.\ $y\le8$: then $\overline{xyx}+10=\overline{x(y+1)x}$. So $N-6=101x+10y$ with $y\le8$, and
+\[
+N+21=101x+10y+27 .
+\]
+For $x=1$: $128+10y$ for $y=0,\dots,8$ gives $128,138,\dots,208$; none is a square ($144,169,196$ end in $4,9,6$, not $8$). For $x=2$: $229+10y$ gives $229,239,\dots,309$, and $289=17^2$ occurs at $y=6$. So $N-6=262$, $N+4=272$, $N+21=289$, and
+\[
+N=\boxed{268}.
+\]

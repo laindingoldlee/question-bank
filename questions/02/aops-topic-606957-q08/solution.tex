@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h606957_array_of_problems_for_warm_up_13_2009_mathcounts_handbook
+% Stable identity: aops-topic-606957-q08
+Reflect Caleigh's house $C$ in the river to $C'$. Any path from Georgia's house $G$ to a point $P$ on the river and then to $C$ has the same length as the path $G\to P\to C'$, which is at least the straight segment $GC'$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw((-1,0)--(13,0),blue+linewidth(1)); pair G=(0,3),C=(12,2),C2=(12,-2); pair P=(36/5,0);
+draw(G--P--C,linewidth(0.9)); draw(P--C2,dashed); dot(G);dot(C);dot(C2);dot(P);
+label("$G$",G,N); label("$C$",C,N); label("$C'$",C2,S); label("river",(1.5,0),S); label("$3$",(0,1.5),W); label("$2$",(12,1),E); label("$12$",(6,-2.5));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+$GC'$ spans $12$ miles along the river and $3+2=5$ miles across, so $GC'=13$ miles, and the least time is $\dfrac{13}{5}=\boxed{2\dfrac{3}{5}}$ hours.

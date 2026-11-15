@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h1641772_two_questions
+% Stable identity: aops-topic-1641772-q02
+Use coordinates $(x,y)$ with $0\le x,y\le4$. An isosceles trapezoid has a line of symmetry perpendicular to its two parallel sides (the bases) through their midpoints. Let the bases have direction given by a primitive integer vector $v$; since the endpoints are dots, the bases are $m v$ and $n v$ with integers $m>n\ge1$ ($m\ne n$, since equal bases would give a rectangle).
+
+\textbf{Possible directions.} Write $v=(p,q)$. The long base $mv$ with $m\ge2$ must fit in the array, so $2|p|\le4$ and $2|q|\le4$. Up to sign, $v$ is therefore horizontal $(1,0)$, vertical $(0,1)$, diagonal $(1,\pm1)$, or one of $(1,\pm2)$, $(2,\pm1)$; in the last four cases $m=2$ and $n=1$. Take $v=(1,2)$: the long base has midpoint $P+v$ (a dot), the short base has midpoint $Q+\dfrac{v}{2}$ for a dot $Q$, and the segment joining the midpoints is perpendicular to $v$, so $Q-P-\dfrac{v}{2}=t(-2,1)$. Comparing second coordinates gives $t=Q_y-P_y-1$, an integer, and then the first coordinate gives $Q_x-P_x-\dfrac{1}{2}=-2t$, which is impossible. The other three cases are the same by symmetry.
+
+\textbf{Horizontal (or vertical) bases.} The two midpoints lie on one vertical line, so $m\equiv n\pmod 2$; with $m\le4$ this gives $(m,n)=(3,1)$ or $(4,2)$. The height $h$ can be $1,2,3,4$, and each choice fits. That is $2\cdot4=8$ trapezoids.
+
+\textbf{Diagonal bases}, along $(1,1)$, of lengths $m\sqrt2$ and $n\sqrt2$, at distance $h\sqrt2$ apart. Put the long base from $(0,0)$ to $(m,m)$; the short base starts at $\left(\dfrac{m-n}{2}-h,\dfrac{m-n}{2}+h\right)$. Its endpoints are dots exactly when $2h$ is an integer and $h-\dfrac{m-n}{2}$ is an integer. The trapezoid then spans a square box of side $\max\left(m,\dfrac{m+n}{2}+h\right)$, which must be at most $4$:
+\[
+\begin{array}{c|c|c}
+(m,n)&\text{allowed }h&\text{count}\\\hline
+(2,1)&\dfrac{1}{2},\dfrac{3}{2},\dfrac{5}{2}&3\\
+(3,1)&1,2&2\\
+(3,2)&\dfrac{1}{2},\dfrac{3}{2}&2\\
+(4,1)&\dfrac{1}{2},\dfrac{3}{2}&2\\
+(4,2)&1&1\\
+(4,3)&\dfrac{1}{2}&1
+\end{array}
+\]
+That is $11$ trapezoids.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<5;++i)for(int j=0;j<5;++j)dot((i,j));
+draw((0,1)--(4,1)--(3,3)--(1,3)--cycle,blue+linewidth(1));
+for(int i=0;i<5;++i)for(int j=0;j<5;++j)dot((i+6,j));
+draw((6,1)--(7,0)--(10,2)--(8,4)--cycle,red+linewidth(1));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The figure shows the horizontal case $(m,n,h)=(4,2,2)$ and the diagonal case $(m,n,h)=\left(2,1,\dfrac{5}{2}\right)$, with legs $\sqrt{13}$.)
+
+Different triples (base lengths and height) give non-congruent trapezoids, and horizontal and diagonal bases have different lengths (integers versus multiples of $\sqrt2$). So the number of non-congruent isosceles trapezoids is
+\[
+8+11=\boxed{19}.
+\]
+(If rectangles are counted as isosceles trapezoids, the $16$ non-congruent rectangles in the array are added, giving $35$.)

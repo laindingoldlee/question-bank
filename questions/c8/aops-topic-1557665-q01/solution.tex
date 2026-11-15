@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1557665_special_right_triangles
+% Stable identity: aops-topic-1557665-q01
+Scale so that $BC=1$. Choose $D$ on segment $AC$ with $DA=DB$ (it lies on the perpendicular bisector of $AB$).
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real s3=sqrt(3);
+pair C=(0,0),B=(0,1),D=(s3,0),A=(2+s3,0);
+draw(A--B--C--cycle,linewidth(1));draw(B--D,blue+linewidth(1));
+draw((0.13,0)--(0.13,0.13)--(0,0.13));
+draw(arc(A,0.9,180-15,180),red);label("$15^\circ$",A+1.35*dir(172.5),red);
+draw(arc(D,0.45,150,180),red);label("$30^\circ$",D+0.75*dir(165),red);
+draw(arc(B,0.6,-30,-15),red);draw(B+0.62*dir(-22.5)--(0.9,1.13),red);label("$15^\circ$",(0.9,1.13),NE,red);
+label("$A$",A,SE);label("$B$",B,N);label("$C$",C,SW);label("$D$",D,S);
+label("$1$",(B+C)/2,W);label("$\sqrt3$",(C+D)/2,S);label("$2$",(D+A)/2,S);label("$2$",(B+D)/2,SW,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Angles.} Triangle $ABD$ is isosceles with $DA=DB$, so $\angle DBA=\angle DAB=15^\circ$. The angle $BDC$ is an exterior angle of triangle $ABD$, so $\angle BDC=15^\circ+15^\circ=30^\circ$.
+
+\textbf{The $30$-$60$-$90$ triangle $BCD$.} In right triangle $BCD$ the side opposite $30^\circ$ is half the hypotenuse, so $BD=2BC=2$, and by Pythagoras $CD=\sqrt{2^2-1^2}=\sqrt3$. (Here $D$ is between $C$ and $A$ because $\angle CBD=60^\circ<\angle CBA=75^\circ$.)
+
+\textbf{The sides.} $AD=BD=2$, so $AC=CD+DA=2+\sqrt3$. Then
+\[
+AB^2=BC^2+AC^2=1+\left(2+\sqrt3\right)^2=8+4\sqrt3=\left(\sqrt6+\sqrt2\right)^2,
+\]
+since $\left(\sqrt6+\sqrt2\right)^2=6+2+2\sqrt{12}=8+4\sqrt3$. So $AB=\sqrt6+\sqrt2$, and
+\[
+BC:AC:AB=1:\left(2+\sqrt3\right):\left(\sqrt6+\sqrt2\right).\qquad\blacksquare
+\]
+(Dividing by $AB$ gives the familiar values $\sin15^\circ=\dfrac{\sqrt6-\sqrt2}{4}$ and $\cos15^\circ=\dfrac{\sqrt6+\sqrt2}{4}$.)

@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h1512360_problem_on_geometry
+% Stable identity: aops-topic-1512360-q02
+Use complex numbers, with $a,b,c,d$ the points $A,B,C,D$, labelled counterclockwise. The outside of the quadrilateral is to the right of each directed side. For a side from $u$ to $v$, the centre of the outward square is the midpoint of $uv$ moved by half the side length to the right, i.e.\ by $\dfrac{v-u}{2}$ rotated by $-90^\circ$, which is multiplication by $-i$:
+\[
+\text{centre}=\dfrac{u+v}{2}-i\,\dfrac{v-u}{2}=\dfrac{(1+i)u+(1-i)v}{2}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(5,3),D=(1,4);
+pair cen(pair u,pair v){return (u+v)/2+rotate(-90)*(v-u)/2;}
+pair sq(pair u,pair v){return v+rotate(-90)*(v-u);}
+pair[] V={A,B,C,D};
+for(int i=0;i<4;++i){pair u=V[i],v=V[(i+1)%4]; path q=u--v--sq(u,v)--(u+rotate(-90)*(v-u))--cycle; fill(q,gray(0.92)); draw(q,gray(0.5));}
+pair P=cen(A,B),Q=cen(B,C),R=cen(C,D),Sp=cen(D,A);
+draw(A--B--C--D--cycle,linewidth(1));
+draw(P--R,blue+linewidth(1));draw(Q--Sp,red+linewidth(1));
+pair X=extension(P,R,Q,Sp);
+real s=0.3; pair u=unit(R-X)*s,v=unit(Q-X)*s; draw(X+u--X+u+v--X+v);
+dot(P);dot(Q);dot(R);dot(Sp);
+label("$A$",A,dir(200));label("$B$",B,dir(-20));label("$C$",C,dir(30));label("$D$",D,dir(120));
+label("$P$",P,S);label("$Q$",Q,E);label("$R$",R,N);label("$S$",Sp,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So
+\[
+2p=(1+i)a+(1-i)b,\quad 2q=(1+i)b+(1-i)c,\quad 2r=(1+i)c+(1-i)d,\quad 2s=(1+i)d+(1-i)a .
+\]
+Then
+\[
+2(r-p)=(1+i)c+(1-i)d-(1+i)a-(1-i)b,\qquad 2(s-q)=(1+i)d+(1-i)a-(1+i)b-(1-i)c .
+\]
+Multiply the first by $i$, using $i(1+i)=-(1-i)$ and $i(1-i)=1+i$:
+\[
+2i(r-p)=-(1-i)c+(1+i)d+(1-i)a-(1+i)b=2(s-q).
+\]
+Hence $s-q=i(r-p)$: the vector $\overrightarrow{QS}$ is the vector $\overrightarrow{PR}$ rotated by $90^\circ$. Therefore $QS=PR$ and $QS\perp PR$. $\blacksquare$ (This is Van Aubel's theorem; convexity is not even needed.)

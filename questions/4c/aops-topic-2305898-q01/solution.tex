@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2305898_math_problem
+% Stable identity: aops-topic-2305898-q01
+\textbf{With an equation.} Put the origin at the middle of the base. The ellipse is
+\[\dfrac{x^2}{50^2}+\dfrac{y^2}{40^2}=1.\]
+A point $5$ feet from the edge has $x=45$, so
+\[y=40\sqrt{1-\dfrac{45^2}{50^2}}=40\sqrt{1-\dfrac{81}{100}}=40\cdot\dfrac{\sqrt{19}}{10}=\boxed{4\sqrt{19}}\approx17.4\text{ feet}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real k=0.06;
+path e=scale(50k,40k)*arc((0,0),1,0,180);
+draw(e,blue+linewidth(1));
+draw((-55k,0)--(55k,0));
+draw((45k,0)--(45k,4*sqrt(19)*k),red+dashed); dot((45k,4*sqrt(19)*k),red);
+label("$h$",(45k,2*sqrt(19)*k),W,red);
+draw((0,0)--(0,40k),dashed); label("$40$",(0,20k),W);
+draw((-50k,-0.35)--(50k,-0.35),Arrows(4)); label("$100$",(0,-0.35),S);
+draw((45k,-0.9)--(50k,-0.9),Arrows(3)); label("$5$",(47.5k,-0.9),S,fontsize(8pt));
+label("$O$",(0,0),SW,fontsize(8pt));
+\end{asy}
+
+\textbf{Another way: squash a semicircle.} The arch is the semicircle of radius $50$ squeezed vertically by the factor $\dfrac{40}{50}=\dfrac45$. At $45$ feet from the centre, the semicircle has height $\sqrt{50^2-45^2}=\sqrt{475}=5\sqrt{19}$, so the arch has height $\dfrac45\cdot5\sqrt{19}=4\sqrt{19}$ feet.

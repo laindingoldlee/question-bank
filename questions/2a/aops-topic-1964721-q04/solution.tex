@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h1964721_sample_packet_1
+% Stable identity: aops-topic-1964721-q04
+The circle is $x^2+y^2=16$ and the translated line is $y=x-1$.
+
+\textbf{Chord lengths.} The distance from the origin to $14x+3y=7$ is $\dfrac{7}{\sqrt{205}}$, so
+\[
+CD=2\sqrt{16-\dfrac{49}{205}}=2\sqrt{\dfrac{3231}{205}}=\dfrac{6\sqrt{359}}{\sqrt{205}} .
+\]
+The distance from the origin to $x-y-1=0$ is $\dfrac{1}{\sqrt2}$, so $EF=2\sqrt{16-\dfrac{1}{2}}=\sqrt{62}$.
+
+\textbf{The chords cross.} The two lines meet where $14x+3(x-1)=7$, i.e. at $\left(\dfrac{10}{17},-\dfrac{7}{17}\right)$, which is inside the circle. So $CD$ and $EF$ are the diagonals of the convex quadrilateral $CEDF$ (shaded).
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair C=(-0.3538,3.9843),D=(1.3099,-3.7794),Ep=(-2.2839,-3.2839),Fp=(3.2839,2.2839);
+fill(C--Ep--D--Fp--cycle,palegray);
+draw((-5.2,0)--(5.2,0),Arrows(TeXHead));draw((0,-5.2)--(0,5.2),Arrows(TeXHead));
+draw(circle((0,0),4),linewidth(0.9));
+draw(C--Ep--D--Fp--cycle,blue+linewidth(0.9));
+draw((-0.5,(7+7)/3)--(1.55,(7-14*1.55)/3),dashed);
+draw((-2.9,-3.9)--(5.2,4.2),dashed);
+dot(C);dot(D);dot(Ep);dot(Fp);dot((10/17,-7/17));
+label("$C$",C,2*dir(150));label("$D$",D,E);label("$E$",Ep,W);label("$F$",Fp,E);
+label("$14x+3y=7$",(1.55,-4.9),E);label("$y=x-1$",(5.2,4.2),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Area.} A convex quadrilateral with diagonals $d_1,d_2$ meeting at angle $\theta$ has area $\dfrac{1}{2}d_1d_2\sin\theta$. Direction vectors of the two lines are $(3,-14)$ and $(1,1)$, so
+\[
+\sin\theta=\dfrac{|3\cdot1-(-14)\cdot1|}{\sqrt{205}\,\sqrt2}=\dfrac{17}{\sqrt{410}} .
+\]
+Therefore
+\[
+[CEDF]=\dfrac{1}{2}\cdot\dfrac{6\sqrt{359}}{\sqrt{205}}\cdot\sqrt{62}\cdot\dfrac{17}{\sqrt{410}}=\dfrac{51\sqrt{359\cdot62}}{\sqrt{205\cdot410}}=\dfrac{51\sqrt{22258}}{205\sqrt2}=\boxed{\dfrac{51\sqrt{11129}}{205}}\approx26.24 .
+\]

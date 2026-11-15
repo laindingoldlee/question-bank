@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1926072_last_2_digits_of_a_factoreeeeeal
+% Stable identity: aops-topic-1926072-q01
+\textbf{Prime factorization.} By Legendre's formula the exponents of $2,3,5,7$ in $30!$ are
+\[
+15+7+3+1=26,\qquad 10+3+1=14,\qquad 6+1=7,\qquad 4,
+\]
+and $11,13$ appear twice and $17,19,23,29$ once:
+\[
+30!=2^{26}\cdot3^{14}\cdot5^{7}\cdot7^4\cdot11^2\cdot13^2\cdot17\cdot19\cdot23\cdot29 .
+\]
+So $30!$ ends in exactly $7$ zeros, and the last two nonzero digits of $30!$ are the last two digits of
+\[
+N=\dfrac{30!}{10^7}=2^{19}\cdot3^{14}\cdot7^4\cdot11^2\cdot13^2\cdot17\cdot19\cdot23\cdot29 .
+\]
+
+\textbf{Modulo $4$ and $25$.} Clearly $N\equiv0\pmod4$. Modulo $25$: $2^{10}=1024\equiv-1$, so $2^{19}\equiv-2^9=-512\equiv13$; $3^3=27\equiv2$, so $3^{14}=(3^3)^4\cdot9\equiv16\cdot9=144\equiv19$; $7^4=2401\equiv1$; $11^2=121\equiv-4$; $13^2=169\equiv-6$; $17\cdot19=323\equiv-2$; $23\cdot29=667\equiv-8$. Hence
+\[
+N\equiv13\cdot19\cdot1\cdot(-4)(-6)(-2)(-8)=247\cdot384\equiv(-3)\cdot9=-27\equiv23\pmod{25}.
+\]
+
+\textbf{Combine.} The numbers below $100$ that are $\equiv23\pmod{25}$ are $23,48,73,98$; the only multiple of $4$ is $48$. So $N\equiv48\pmod{100}$, and the last two nonzero digits of $30!$ are $\boxed{48}$. (Indeed $30!=265252859812191058636308480000000$.)

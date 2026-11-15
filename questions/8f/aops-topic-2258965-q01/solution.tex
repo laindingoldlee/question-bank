@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2258965_some_mathcounts_problems
+% Stable identity: aops-topic-2258965-q01
+The dilation multiplies every coordinate by $2$, so the image has vertices $A'(0,8)$, $B'(6,0)$ and $C'(8,14)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair A=(0,4), B=(3,0), C=(4,7);
+xaxis("$x$",-1,9.5,Arrow(5)); yaxis("$y$",-1,15,Arrow(5));
+draw(A--B--C--cycle,blue+linewidth(0.9));
+draw(2A--2B--2C--cycle,red+linewidth(0.9));
+draw((0,0)--2C,gray+dashed); draw((0,0)--2B,gray+dashed);
+dot(A,blue); dot(B,blue); dot(C,blue); dot(2A,red); dot(2B,red); dot(2C,red); dot((0,0));
+label("$A$",A,W,blue); label("$B$",B,SE,blue); label("$C$",C,NW,blue);
+label("$A'(0,8)$",2A,W,red); label("$B'(6,0)$",2B,S,red); label("$C'(8,14)$",2C,E,red);
+\end{asy}
+
+By the shoelace formula, the original triangle has area
+\[\dfrac{1}{2}\left|0(0-7)+3(7-4)+4(4-0)\right|=\dfrac{1}{2}(9+16)=\dfrac{25}{2}.\]
+A dilation by factor $2$ multiplies all lengths by $2$ and hence all areas by $2^2=4$, so the dilated triangle has area
+\[4\cdot\dfrac{25}{2}=\boxed{50}.\]
+(Directly: $\dfrac{1}{2}\left|0(0-14)+6(14-8)+8(8-0)\right|=\dfrac{1}{2}(36+64)=50$.)

@@ -1,0 +1,9 @@
+Scale the hour to $[0,1]$ and set $a = \dfrac{1}{4}$. The three meet exactly when the largest arrival minus the smallest is at most $a$. Except on probability-zero ties, select which of the three is earliest. If its time is $t\le1-a$, the other two times occupy a square of area $a^2$; if $t>1-a$, the square has area $(1-t)^2$. The favourable volume is $3 ((1-a)a^2+\int_{1-a}^1(1-t)^2\,dt) = 3 a^2 - 2 a^3 = \boxed{\dfrac{5}{32}}$. Geometrically the integral is the volume of a square pyramid of height $a$ and base area $a^2$, namely $\dfrac{a^3}{3}$, so calculus is unnecessary.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+draw((0,0)--(3,0)--(4,1)--(1,1)--cycle);draw((0,0)--(2,3)--(3,0));draw((4,1)--(2,3)--(1,1),dashed);label("base area $a^2$",(2,0),(0,-1));label("height $a$",(2,2),(1,0));
+\end{asy}
+

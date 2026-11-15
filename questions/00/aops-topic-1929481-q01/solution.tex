@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1929481_frosty_the_snowman
+% Stable identity: aops-topic-1929481-q01
+The volume of a sphere is $\dfrac{4}{3}\pi r^3$, so using all the snow means
+\[
+r_1^3+r_2^3+r_3^3=6^3=216,\qquad r_1\ge r_2\ge r_3\ge1 .
+\]
+Here $r_1\le5$ (with $r_1=6$ nothing would be left).
+\begin{itemize}
+\item $r_1=5$: $r_2^3+r_3^3=91$. With $r_2=4$ we get $r_3^3=27$, $r_3=3$. With $r_2\le3$ the sum is at most $54<91$.
+\item $r_1=4$: $r_2^3+r_3^3=152>2\cdot4^3$, impossible.
+\item $r_1\le3$: the total is at most $3\cdot27=81<216$.
+\end{itemize}
+So $\boxed{\text{yes}}$: the only way is radii $5$, $4$ and $3$ inches, because $3^3+4^3+5^3=6^3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+draw(circle((-13,6),6),dashed);
+label("$6$",(-10,6),N);
+draw((-13,6)--(-7,6));
+draw((-5.5,6)--(-1.5,6),Arrow(8));
+draw(circle((5,5),5),linewidth(1)); draw(circle((5,14),4),linewidth(1)); draw(circle((5,21),3),linewidth(1));
+draw((5,5)--(10,5)); label("$5$",(7.5,5),N);
+draw((5,14)--(9,14)); label("$4$",(7,14),N);
+draw((5,21)--(8,21)); label("$3$",(6.5,21),N);
+dot((-13,6));dot((5,5));dot((5,14));dot((5,21));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

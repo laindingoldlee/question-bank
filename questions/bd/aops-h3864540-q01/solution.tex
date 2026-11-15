@@ -1,0 +1,9 @@
+Six rounds suffice. Assign twenty students the twenty distinct three-element subsets of $\{1,\ldots,6\}$. Assign the remaining student the full six-element set. In round $i$, invite the students whose assigned sets contain $i$.
+
+If the thief is one of the twenty students with a three-element set $T$, every other assigned set has an element outside $T$. In particular the witness's set does, so some round includes the witness and excludes the thief, identifying the thief. If all six rounds are silent, the thief must therefore be the student assigned the full set.
+
+For the lower bound, consider the all-silent branch of any strategy with $r$ rounds, including an adaptive strategy. Along that branch each student has a fixed membership set in $\{1,\ldots,r\}$. A student with set $T$ can still be the thief after total silence exactly when another student's set is contained in $T$. To identify the thief, at most one student can have that property. The other at least twenty membership sets must therefore be distinct and pairwise incomparable by inclusion.
+
+An incomparable family on an $r$-element set has at most $\binom r{\lfloor \dfrac{r}{2}\rfloor}$ members. To justify the bound, count permutations whose initial segment is a family member: a set of size $k$ is an initial segment in $k!(r-k)!$ permutations, and a permutation cannot contain two incomparable initial segments. Dividing by $r!$ gives $\sum \dfrac{1}{\binom r k}\le1$, which implies the bound. For $r\le5$ the bound is at most $\binom52=10<20$, impossible.
+
+Thus the minimum is $\boxed6$.

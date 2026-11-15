@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2590949_similar_triangle_question
+% Stable identity: aops-topic-2590949-q01
+Let the angles of triangle $ABC$ be $\alpha=\angle A$, $\beta=\angle B$, $\gamma=\angle C$.
+
+\textbf{Each angle of $DEF$ equals the corresponding angle of $ABC$ or its supplement.} The ray $DE$ is parallel to line $AB$, so it points either in the same direction as ray $AB$ or in the opposite direction; the same holds for ray $DF$ and ray $AC$. If both rays keep their directions, or both are reversed, then $\angle EDF=\alpha$. If exactly one is reversed, then $\angle EDF=180^\circ-\alpha$. In the same way $\angle DEF\in\{\beta,180^\circ-\beta\}$ and $\angle DFE\in\{\gamma,180^\circ-\gamma\}$.
+
+\textbf{They are all equal.} Let $X$ be the set of vertices where the angle of $DEF$ is the supplement. Then
+\[180^\circ=\angle D+\angle E+\angle F=(\alpha+\beta+\gamma)+\sum_{X}\left(180^\circ-2\theta\right)=180^\circ+2\sum_{X}\left(90^\circ-\theta\right),\]
+where $\theta$ runs over the angles of $ABC$ at the vertices in $X$. So $\sum_X(90^\circ-\theta)=0$.
+\begin{itemize}
+\item If $X$ has one vertex, its angle is $90^\circ$, and then the supplement equals the angle anyway.
+\item If $X$ has two vertices, their angles sum to $180^\circ$, which is impossible in a triangle.
+\item If $X$ has all three, the sum is $270^\circ-180^\circ=90^\circ\ne0$.
+\end{itemize}
+Hence $\angle D=\alpha$, $\angle E=\beta$, $\angle F=\gamma$, and the triangles are similar by AA. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(1.2,2.8);pair Z=(6,1.6);real k=-0.6;
+pair D=Z+k*(A-Z),Ee=Z+k*(B-Z),F=Z+k*(C-Z);
+draw(A--B--C--cycle,linewidth(0.8));draw(D--Ee--F--cycle,linewidth(0.8));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$D$",D,NE);label("$E$",Ee,NW);label("$F$",F,S);
+label("$\alpha$",A+(0.45,0.3),fontsize(9pt));label("$\alpha$",D+(-0.4,-0.25),fontsize(9pt));
+\end{asy}
+
+Here $DEF$ is a ``reversed'' copy of $ABC$ (both rays at $D$ point opposite to those at $A$), yet the angles at $A$ and $D$ are equal.

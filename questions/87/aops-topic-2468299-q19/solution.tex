@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2468299_2021_mathcounts_chapter_invitational_problems__solutions
+% Stable identity: aops-topic-2468299-q19
+The space diagonal has length $\sqrt{9^2+8^2+12^2}=\sqrt{289}=\boxed{17}$ cm. (The base diagonal is $\sqrt{81+64}=\sqrt{145}$, and then $\sqrt{145+144}=17$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+real a=9,w=8,h=12;pair d=0.5*(w*0.6,w*0.45);
+pair A=(0,0),B=(a,0),C=(a,h),D=(0,h);
+draw(A--B--C--D--cycle,linewidth(0.8));draw(B--B+d--C+d--C);draw(D--D+d--C+d);draw(A--A+d,dashed);draw(A+d--B+d,dashed);draw(A+d--D+d,dashed);
+draw(A--C+d,linewidth(0.8)+gray);draw(A--B+d,dotted);
+label("$9$",(a/2,0),S,fontsize(8pt));label("$12$",(0,h/2),W,fontsize(8pt));label("$8$",B+d/2,SE,fontsize(8pt));
+\end{asy}

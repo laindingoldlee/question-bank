@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2615970_problem_3_of_finals__vi_ifym_sozopol_2015_67_theme
+% Stable identity: aops-topic-2615970-q01
+Let $N$ be an $n$-digit number with $\operatorname{rev}(N)=9N$, where $\operatorname{rev}$ reverses the digits.
+
+\emph{First and last digits.} $9N=\operatorname{rev}(N)<10^n$ gives $N<\dfrac{10^n}{9}$, so $N$ starts with $1$ and $N\le\underbrace{11\cdots1}_{n}$. Then $9N\ge9\cdot10^{n-1}$, so $\operatorname{rev}(N)$ starts with $9$, i.e. $N$ ends with $9$.
+
+\emph{Second digit.} Because $N\le11\cdots1$, its second digit is $0$ or $1$. Suppose it is $1$. Then $9N\ge99\cdot10^{n-2}$, so $\operatorname{rev}(N)$ starts with $99$ and $N$ ends with $99$. But then $9N\equiv9\cdot99=891\equiv91\pmod{100}$, so $\operatorname{rev}(N)$ ends with $91$ and $N$ starts with $19$, a contradiction. So $N$ starts with $10$, and
+\[N\le1\underbrace{099\cdots9}_{n-1}=11\cdot10^{n-2}-1.\]
+This largest candidate fails: its reverse ends in $01$, while $9\left(11\cdot10^{n-2}-1\right)$ ends in $91$. The next number ending in $9$ is
+\[M=11\cdot10^{n-2}-11=10\underbrace{9\cdots9}_{n-4}89,\]
+and $9M=99\cdot10^{n-2}-99=98\underbrace{9\cdots9}_{n-4}01=\operatorname{rev}(M)$. Hence
+\[g_n=11\left(10^{n-2}-1\right).\]
+(For example $g_4=1089$ and $9\cdot1089=9801$.)
+
+\emph{The gcd.} Every $10^{n-2}-1=99\cdots9$ is divisible by $9$, so $99\mid g_n$ for all $n$. Also $g_4=11\cdot99$ and $g_5=11\cdot999$, and $\gcd(99,999)=9$, so $\gcd(g_4,g_5)=99$. Therefore the greatest common divisor is $\boxed{99}$.

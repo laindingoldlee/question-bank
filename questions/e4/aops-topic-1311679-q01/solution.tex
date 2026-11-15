@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1311679_the_problem_that_has_baffled_entire_mathematics_departments
+% Stable identity: aops-topic-1311679-q01
+Consider triangle $DEC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0),C=(5,0),A=(1.2,2.5),B=A+C; pair E=(3.0,2.5);
+pair v=C-0.4*E; pair F=E+v, G=v;
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(D--E--F--G--cycle,blue);
+draw(D--E--C--cycle,red+dashed);
+label("$A$",A,NW); label("$B$",B,NE); label("$C$",C,E); label("$D$",D,W); label("$E$",E,N); label("$F$",F,SE,blue); label("$G$",G,SW,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Its base $DC$ is a side of $ABCD$, and its third vertex $E$ lies on the opposite side $AB$, so its height equals the height of $ABCD$: $[DEC]=\dfrac{1}{2}[ABCD]$.
+
+Also, its base $DE$ is a side of $EFGD$, and its third vertex $C$ lies on the opposite side $FG$, so $[DEC]=\dfrac{1}{2}[EFGD]$.
+
+Hence $[EFGD]=[ABCD]=\boxed{20}$.

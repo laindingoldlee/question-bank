@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3588098_distances_from_vertices_to_straight_line
+% Stable identity: aops-topic-3588098-q01
+Take the given line as the $x$-axis, with all three vertices above it. Their $y$-coordinates are $7,9,14$. The centroid has the average of the vertex coordinates, so its distance is $\dfrac{7+9+14}{3}=\boxed{10\text{ cm}}$.
+\begin{asy}
+import geometry;
+size(240);
+pair A=(0,7),B=(9,9),C=(3,14),G=(A+B+C)/3;draw((-2,0)--(11,0));draw(A--B--C--cycle);draw(A--(A.x,0)^^B--(B.x,0)^^C--(C.x,0)^^G--(G.x,0),dashed);dot(G);label("$A$",A,W);label("$B$",B,E);label("$C$",C,N);label("$G$",G,E);label("$7$",(0,3),W);label("$9$",(9,4),E);label("$14$",(3,7),E);
+\end{asy}

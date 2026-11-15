@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1438408_2009_mathcounts_problem
+% Stable identity: aops-topic-1438408-q01
+The bisector from $B$ meets the opposite side $AC$, so $AC$ is the shortest side, the "$2$" of the ratio. Then the other two sides are $\dfrac{3}{2}\cdot10=15$ and $\dfrac{4}{2}\cdot10=20$. Say $AB=20$ and $BC=15$ (the other choice only swaps the two pieces). By the angle bisector theorem,
+\[
+\dfrac{AD}{DC}=\dfrac{AB}{BC}=\dfrac{20}{15}=\dfrac{4}{3} ,
+\]
+so $AD=\dfrac{4}{7}\cdot10=\dfrac{40}{7}$ and $DC=\dfrac{30}{7}$. The longer subsegment has length $\boxed{\dfrac{40}{7}}$ inches.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),C=(10,0);
+real x=(400-225+100)/20; pair B=(x,sqrt(400-x^2));
+pair D=(40/7,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--D,blue);
+dot(A);dot(B);dot(C);dot(D);
+label("$A$",A,SW); label("$B$",B,N); label("$C$",C,SE); label("$D$",D,S);
+label("$20$",(A+B)/2,NW); label("$15$",(B+C)/2,E);
+label("$\dfrac{40}{7}$",(A+D)/2,S); label("$\dfrac{30}{7}$",(D+C)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

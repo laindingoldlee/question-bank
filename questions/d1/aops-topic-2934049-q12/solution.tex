@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2934049_2016_emcc_guts_round_p1_p12__exeter_math_club_competition
+% Stable identity: aops-topic-2934049-q12
+Rotate axes to make the square axis-parallel, and let its side be $s$. The origin is outside it. If its nearest point lies on an edge, let that edge be at distance $d\ge2$. The opposite edge is distance $d+s$ in that coordinate, and at least one of its vertices has other-coordinate magnitude at least $\dfrac{s}{2}$. Hence $25\ge(d+s)^2+\dfrac{s^2}{4}\ge(2+s)^2+\dfrac{s^2}{4}$, giving $s\le\dfrac{14}{5}$. If the closest point is a vertex $(a,b)$ with $a,b\ge0$ and $a^2+b^2\ge4$, its opposite vertex has squared distance $a^2+b^2+2s(a+b)+2s^2\ge4+4s+2s^2$. This implies $s\le\dfrac{-2+\sqrt{46}}{2}<\dfrac{14}{5}$. The bound is attained by the square $[2,\dfrac{24}{5}]\times[-\dfrac{7}{5},\dfrac{7}{5}]$, whose nearest side is tangent to the inner circle and far vertices lie on the outer circle. Thus $\boxed{\dfrac{14}{5}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(circle((0,0),2));draw(circle((0,0),5));draw((2,-1.4)--(4.8,-1.4)--(4.8,1.4)--(2,1.4)--cycle,blue);draw((0,0)--(4.8,1.4),dashed);label("$O$",(0,0),W);label("$2$",(1,0),N);label("$5$",(2.4,.7),NW);label("$\dfrac{14}{5}$",(3.4,-1.4),S);
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair O=(0,0),V=(sqrt(2),sqrt(2));draw(circle(O,2)^^circle(O,5));draw(V--(V+(1,0))--(V+(1,1))--(V+(0,1))--cycle,blue);draw(O--V,dashed);label("$O$",O,SW);label("$(a,b)$",V,SE);label("closest point is a vertex",(0,-5.8));
+\end{asy}

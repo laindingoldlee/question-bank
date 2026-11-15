@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h398857_2005_national_sprint_round_30
+% Stable identity: aops-topic-398857-q01
+Any path from one side wall to the other must cross the ceiling, the front wall or the back wall (possibly several of them). For a fixed sequence of faces, unfold those faces into a plane; the shortest path through them becomes a straight segment, provided the segment really passes through the faces in that order.
+
+\textbf{Gecko's wall, ceiling, front wall, fly's wall.} Lay the ceiling flat as a $12\times10$ rectangle, with the front edge at the bottom. Unfold the gecko's wall to the left of the ceiling and the front wall below it, and unfold the fly's wall to the right of the front wall:
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+defaultpen(fontsize(8pt));
+draw(box((0,0),(12,10)),linewidth(0.8));
+draw(box((-8,0),(0,10)));
+draw(box((0,-8),(12,0)));
+draw(box((12,-8),(22,0)));
+pair G=(-1,9), F=(13,-7);
+draw(G--F,red+linewidth(1));
+dot(G); dot(F);
+label("gecko",G,W); label("fly",F,E);
+label("ceiling",(6,5)); label("gecko's wall",(-4,3)); label("front wall",(6,-4.2)); label("fly's wall",(17,-2.2));
+label("$12$",(6,10),N); label("$10$",(12,5),E); label("$8$",(-4,10),N); label("$8$",(0,-4),W); label("$10$",(17,-8),S);
+\end{asy}
+
+In coordinates with the ceiling $[0,12]\times[0,10]$, the gecko (one foot below the ceiling, one foot from the back wall) is at $(-1,9)$. On the front wall a point $d$ feet below the ceiling is at height $-d$, and the fly's wall is attached along the corner $x=12$; the fly, one foot from the front wall and $7$ feet below the ceiling, is at $(13,-7)$. The segment from $(-1,9)$ to $(13,-7)$ crosses $x=0$ at $y\approx7.86$, then $y=0$ at $x=6.875$, then $x=12$ at a depth of about $5.86$, so it does pass through the four faces in order. Its length is
+\[\sqrt{14^2+16^2}=\sqrt{452}=2\sqrt{113}\approx21.26.\]
+
+\textbf{Other routes} (by the same unfolding):
+\begin{itemize}
+\item across the ceiling only: $\sqrt{(1+12+7)^2+(9-1)^2}=\sqrt{464}\approx21.54$;
+\item across the front wall only, or the back wall only: $\sqrt{22^2+6^2}=\sqrt{520}\approx22.80$;
+\item gecko's wall, back wall, ceiling, fly's wall: $\sqrt{500}\approx22.36$;
+\end{itemize}
+and the remaining face sequences are longer still. So the shortest path has length $\boxed{2\sqrt{113}}$ feet.

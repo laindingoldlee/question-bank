@@ -1,0 +1,19 @@
+Write $AB=r$, $AC=s$, $t=\dfrac{s}{r}>0$, $\alpha=\dfrac{1}{2}\angle A$, and $\beta=\angle ABD=\angle AEB$. The sine rule in triangles $ABD$ and $ABE$ gives
+\[
+BD=\dfrac{(\dfrac{s}{2})\sin(2\alpha)}{\sin\beta},
+\qquad BE=\dfrac{r\sin\alpha}{\sin\beta},
+\]
+so $BD=t\,BE\cos\alpha$. The angle bisector theorem gives $CE=t\,BE$.
+To locate $P$, assign masses $r,r,s$ at $A,C,B$, respectively. Equal masses at $A,C$ place their combined mass $2r$ at midpoint $D$; the masses at $B,C$ balance at $E$ because $BE:EC=r:s$. Thus their common balance point is $P$, and
+$BP:PD=2r:s=2:t$. Therefore
+\[
+\dfrac{BP}{CE}=\dfrac{2BD}{(t+2)CE}
+=\dfrac{2\cos\alpha}{t+2}<1.
+\]
+This proves the claim. In particular, imposing $BP=CE$ as an additional condition would make the configuration impossible.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(sqrt(3)/2,.5),C=(sqrt(3),-1),D=C/2,E=(2*sqrt(3)/3,0),P=(sqrt(3)/2,0);draw(A--B--C--cycle);draw(A--E,blue);draw(B--D,red);label("$A$",A,(-1,0));label("$B$",B,(0,1));label("$C$",C,(1,-1));label("$D$",D,(-1,-1));label("$E$",E,(1,1));label("$P$",P,(-1,1));
+\end{asy}

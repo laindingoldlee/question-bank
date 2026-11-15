@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2318443_olympaid_mathematics
+% Stable identity: aops-topic-2318443-q01
+\textbf{Lemma.} If $Z$ is a point of the segment $XY$ other than $X$ and $Y$, then for every point $P$,
+\[PZ<\max\{PX,PY\}.\]
+\emph{Proof.} If $P$ lies on the line $XY$, then $P$ is not on both sides of $Z$: if $P$ is on the same side of $Z$ as $X$ (or $P=Z$), then $PY=PZ+ZY>PZ$, and otherwise $PX=PZ+ZX>PZ$. If $P$ is not on the line $XY$, then $\angle PZX+\angle PZY=180^\circ$, so one of these angles, say $\angle PZY$, is at least $90^\circ$. In triangle $PZY$ it is then the largest angle, so the side opposite it is the longest: $PY>PZ$. $\blacksquare$
+
+\textbf{Distances from a point to an interior point.} Since $D$ is inside the triangle, the ray $AD$ meets the side $BC$ at a point $D'$, and $D$ lies strictly between $A$ and $D'$. For any point $P$, the lemma (applied twice) gives
+\[PD<\max\{PA,PD'\}\le\max\{PA,PB,PC\},\]
+where the second step holds because $D'$ lies strictly between $B$ and $C$ (if $D'$ were $B$ or $C$, then $D$ would lie on a side), so that $PD'<\max\{PB,PC\}$ by the lemma.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(7,0), C=(2.2,4.6);
+pair D=(2.6,1.6), Ep=(4.6,1.1);
+pair D1=extension(A,D,B,C);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D1,dashed+blue);
+draw(Ep--A,dotted+gray(0.4)); draw(Ep--B,dotted+gray(0.4)); draw(Ep--C,dotted+gray(0.4)); draw(Ep--D1,dotted+blue);
+draw(D--Ep,red+linewidth(1));
+dot(A); dot(B); dot(C); dot(D,red); dot(Ep,red); dot(D1,blue);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N);
+label("$D$",D,NW,red); label("$E$",Ep,S,red); label("$D'$",D1,NE,blue);
+\end{asy}
+
+\textbf{Conclusion.} Let $M=\max\{AB,BC,CA\}$. With $P=E$,
+\[DE<\max\{EA,EB,EC\}.\]
+Now apply the same fact to the interior point $E$ and $P=A$: $AE<\max\{AA,AB,AC\}=\max\{AB,AC\}\le M$ (as $AA=0<AE$, the maximum is not $AA$). In the same way $BE<\max\{BA,BC\}\le M$ and $CE<\max\{CA,CB\}\le M$. Hence
+\[DE<\max\{EA,EB,EC\}<M=\max\{AB,BC,CA\}.\qquad\blacksquare\]

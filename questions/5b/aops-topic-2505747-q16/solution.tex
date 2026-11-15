@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2505747_countdown_round_questions
+% Stable identity: aops-topic-2505747-q16
+The side of length $15$ is the leg opposite the $15^\circ$ angle, so the other leg (opposite $75^\circ$) is $15\tan75^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real a=15, bb=15*(2+sqrt(3));
+pair C=(0,0), B=(bb,0), A=(0,a);
+draw(A--B--C--cycle,linewidth(0.9));
+draw((2,0)--(2,2)--(0,2));
+draw(arc(B,9,180-15,180),red); label("$15^\circ$",B+20*dir(173),red+fontsize(8pt));
+draw(arc(A,4,270,270+75),red); label("$75^\circ$",A+6*dir(307.5),red+fontsize(8pt));
+label("$15$",(A+C)/2,W); label("$15(2+\sqrt3)$",(B+C)/2,S);
+label("$A$",A,N); label("$B$",B,E); label("$C$",C,SW);
+\end{asy}
+
+Since $\tan75^\circ=\tan(45^\circ+30^\circ)=\dfrac{1+\dfrac{1}{\sqrt3}}{1-\dfrac{1}{\sqrt3}}=2+\sqrt3$, the area is
+\[\dfrac12\cdot15\cdot15\left(2+\sqrt3\right)=225+\dfrac{225\sqrt3}{2}\approx\boxed{419.9}.\]

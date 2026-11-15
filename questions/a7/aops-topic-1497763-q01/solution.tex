@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1497763_geometry_problem_from_an_aops_book_needing_help
+% Stable identity: aops-topic-1497763-q01
+Let the cube have edge $s$.
+\begin{itemize}
+\item The inscribed sphere touches all six faces, so its diameter is the distance between opposite faces, $s$. Its radius is $r=\dfrac {s}{2}$.
+\item The circumscribed sphere passes through all eight vertices, so its diameter is a space diagonal, $\sqrt{s^2+s^2+s^2}=s\sqrt3$. Its radius is $R=\dfrac{s\sqrt3}{2}$.
+\end{itemize}
+The figure shows the cross-section through two opposite edges of the cube. It is an $s\sqrt2$ by $s$ rectangle, whose diagonals are space diagonals of the cube. The section of the circumscribed sphere is the circle through the four corners, and the section of the inscribed sphere is the circle of radius $\dfrac {s}{2}$:
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real s=2; real hw=s*sqrt(2)/2, hh=s/2;
+pair P1=(-hw,-hh),P2=(hw,-hh),P3=(hw,hh),P4=(-hw,hh);
+draw(circle((0,0),s*sqrt(3)/2),red+linewidth(0.9));
+draw(circle((0,0),s/2),blue+linewidth(0.9));
+draw(P1--P2--P3--P4--cycle,linewidth(1));
+draw((0,0)--P3,red+dashed); draw((0,0)--(0,-hh),blue+dashed);
+dot((0,0));
+label("$s\sqrt2$",(0,-hh),S,fontsize(9pt));label("$s$",(-hw,0),W,fontsize(9pt));
+label("$R$",0.3*P3,dir(125),red);label("$r$",(0,-hh/2),E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Surface areas scale as the square of the radius, so
+\[
+\dfrac{4\pi r^2}{4\pi R^2}=\left(\dfrac {r}{R}\right)^2=\left(\dfrac{1}{\sqrt3}\right)^2=\dfrac{1}{3} .
+\]
+The ratio is $\boxed{1:3}$.
+
+The poster's answer $1:2\sqrt2$ has two errors. The distance $\dfrac{s\sqrt2}{2}$ from the centre to the midpoint of an edge is the radius of the sphere touching the edges, not of the circumscribed sphere; that needs the distance to a vertex, $\dfrac{s\sqrt3}{2}$. Also, a ratio of surface areas is the square of the ratio of radii.

@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2669400_111th_post_solving_problems
+% Stable identity: aops-topic-2669400-q31
+The interior angle of triangle $ABC$ at $B$ is $180^\circ-\alpha$, so by the law of cosines
+\[AC^2=64+25-80\cos\left(180^\circ-\alpha\right)=89+80\cos\alpha.\]
+$AC<7$ means $89+80\cos\alpha<49$, i.e. $\cos\alpha<-\dfrac12$, i.e. $\alpha>120^\circ$. The probability is $\dfrac{180-120}{180}=\boxed{\dfrac13}$. (If $\alpha$ is read as the angle $ABC$ instead, the condition is $\alpha<60^\circ$ and the probability is again $\dfrac13$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(8,0);real al=140;pair C=B+5*dir(al);
+draw(A--B--C,linewidth(0.8));draw(A--C,dashed);draw(B--B+(2.5,0),dotted);
+draw(arc(B,0.9,0,al));label("$\alpha$",B+1.1*dir(al/2),fontsize(8pt));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$8$",(4,0),S,fontsize(8pt));label("$5$",(B+C)/2,NE,fontsize(8pt));
+\end{asy}

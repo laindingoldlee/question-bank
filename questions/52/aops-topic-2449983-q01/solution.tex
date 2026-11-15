@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2449983_interesting_thing_on_nt
+% Stable identity: aops-topic-2449983-q01
+Work one prime at a time. For a prime $p$, let $p^\alpha$, $p^\beta$, $p^\gamma$ be the highest powers of $p$ dividing $a$, $b$, $c$. In a gcd the exponent of $p$ is the \emph{smallest} of the exponents and in an lcm it is the \emph{largest}; in a product or quotient of positive integers the exponents add or subtract. Two positive rational numbers are equal when every prime has the same exponent in both.
+
+\textbf{(a)} The exponent of $p$ on the right is $\max\left(\max(\alpha,\beta),\max(\beta,\gamma)\right)=\max(\alpha,\beta,\gamma)$, which is its exponent in $\operatorname{lcm}(a,b,c)$. This holds for every prime, so the two sides are equal. $\blacksquare$
+
+For (b) and (c), both sides are unchanged when $a,b,c$ are permuted, so for the prime $p$ we may assume (relabelling if necessary) that $\alpha\le\beta\le\gamma$. Then
+\begin{itemize}
+\item $\operatorname{lcm}(a,b,c)$ has exponent $\gamma$ and $\gcd(a,b,c)$ has exponent $\alpha$;
+\item $\operatorname{lcm}(a,b)$, $\operatorname{lcm}(b,c)$, $\operatorname{lcm}(c,a)$ have exponents $\beta,\gamma,\gamma$, with sum $\beta+2\gamma$;
+\item $\gcd(a,b)$, $\gcd(b,c)$, $\gcd(c,a)$ have exponents $\alpha,\beta,\alpha$, with sum $2\alpha+\beta$;
+\item $abc$ has exponent $\alpha+\beta+\gamma$.
+\end{itemize}
+
+\textbf{(b)} The exponent of $p$ on the right is $(\beta+2\gamma)+\alpha-(\alpha+\beta+\gamma)=\gamma$, the same as on the left. $\blacksquare$
+
+\textbf{(c)} The exponent of $p$ on the left is $2\gamma-(\beta+2\gamma)=-\beta$, and on the right it is $2\alpha-(2\alpha+\beta)=-\beta$. $\blacksquare$
+
+So $\operatorname{lcm}(a,b,c)$ is the lcm of any two of the pairwise lcms, but a formula built from products of the pairwise lcms also needs gcds, as in (b) and (c). (For example, with $a=b=c=2$ all three pairwise lcms are $2$ and their product is $8$, while $\operatorname{lcm}(a,b,c)=2$.)

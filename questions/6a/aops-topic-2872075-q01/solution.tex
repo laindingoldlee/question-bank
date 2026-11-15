@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2872075_proof_for_descartes_rule_of_signs
+% Stable identity: aops-topic-2872075-q01
+\textbf{Lemma.} If $r>0$ then $V((x-r)p)\ge V(p)+1$.
+
+\emph{Proof.} Assume $a_n>0$. Let $n\ge i_1>i_2>\cdots>i_V$ be the degrees at which the sign changes: $a_{i_j}$ is the first nonzero coefficient (reading downward from degree $n$) whose sign differs from the previous nonzero coefficient. Let $m$ be the smallest degree with $a_m\ne0$.
+
+Write $q=(x-r)p=\sum b_kx^k$, so $b_k=a_{k-1}-ra_k$. Then:
+\begin{itemize}
+\item $b_{n+1}=a_n>0$.
+\item For each $j$, $b_{i_j+1}=a_{i_j}-ra_{i_j+1}$. Here $a_{i_j+1}$ is either $0$ or has the sign opposite to $a_{i_j}$ (it lies before the change), so $b_{i_j+1}$ is nonzero with the sign of $a_{i_j}$.
+\item $b_m=a_{m-1}-ra_m=-ra_m$ (as $a_{m-1}=0$), whose sign is opposite to $a_m$, which has the sign of $a_{i_V}$ (or of $a_n$ if $V=0$).
+\end{itemize}
+The degrees $n+1>i_1+1>\cdots>i_V+1>m$ are decreasing (since $i_V\ge m$). At these degrees the signs of $b$ alternate $V+1$ times, so $V(q)\ge V+1$. $\square$
+
+\textbf{Theorem.} Let $r_1,\dots,r_k$ be the positive roots of $p$ with multiplicity, so $p=(x-r_1)\cdots(x-r_k)g$ for a nonzero polynomial $g$. Applying the lemma $k$ times,
+\[V(p)\ge V(g)+k\ge k.\]
+So $p$ has at most $V(p)$ positive roots. $\blacksquare$
+
+(Applying this to $p(-x)$ bounds the negative roots in the same way.)

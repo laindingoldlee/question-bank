@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2951585_geometry_problemo_
+% Stable identity: aops-topic-2951585-q01
+\textbf{True.} Let $ABCD$ have $AB\parallel CD$, and place $A=(0,0)$, $B=(b,0)$, $D=(p,h)$, $C=(q,h)$ with $b,h>0$. Because $ABCD$ is a simple quadrilateral traversed in order, $\overrightarrow{DC}$ points in the direction of $\overrightarrow{AB}$, so $q>p$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(4.5,2.5),D=(1.5,2.5);draw(A--B--C--D--cycle);draw(A--C,dashed);draw(B--D,dashed);
+draw(D--(1.5,0),dotted);draw(C--(4.5,0),dotted);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$h$",(1.5,1.25),W);
+\end{asy}
+
+$AC=BD$ gives $q^2+h^2=(p-b)^2+h^2$, so $q=b-p$ or $q=p-b$. The second option gives $q-p=-b<0$, which is impossible. Hence $q=b-p$ and
+\[AD^2=p^2+h^2=(b-q)^2+h^2=BC^2.\]
+So the legs are equal. (If the trapezoid happens to be a parallelogram, equal diagonals make it a rectangle, whose legs are also equal.) $\blacksquare$

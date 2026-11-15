@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1563289_integer_solutions
+% Stable identity: aops-topic-1563289-q01
+Let $n=3x+4\ge0$ and $m=y^3+5y^2+7y+4$, both integers. The equation says $\sqrt n=\sqrt[3]m$; raising to the sixth power, $n^3=m^2$, and $m\ge0$ because $\sqrt[3]m=\sqrt n\ge0$.
+
+\textbf{$n$ is a perfect square.} For each prime $p$, the exponent of $p$ in $n^3=m^2$ is $3a$ (with $a$ its exponent in $n$) and is even, so $a$ is even. Hence $n=t^2$ for an integer $t\ge0$, and $m^2=t^6$ with $m\ge0$ gives $m=t^3$. So we need
+\[
+y^3+5y^2+7y+4=t^3 .
+\]
+\textbf{Squeezing between cubes.}
+\[
+m-(y+1)^3=2y^2+4y+3=2(y+1)^2+1>0,\qquad (y+2)^3-m=y^2+5y+4=(y+1)(y+4).
+\]
+If $y>-1$ or $y<-4$, then $(y+1)(y+4)>0$, so $(y+1)^3<m<(y+2)^3$ and $m$ lies strictly between consecutive cubes: impossible. So $y\in\{-4,-3,-2,-1\}$:
+\begin{itemize}
+\item $y=-4$: $m=-8<0$, rejected;
+\item $y=-3$: $m=-27+45-21+4=1=1^3$;
+\item $y=-2$: $m=-8+20-14+4=2$, not a cube;
+\item $y=-1$: $m=-1+5-7+4=1=1^3$.
+\end{itemize}
+In both remaining cases $t=1$, so $3x+4=1$ and $x=-1$. The solutions are
+\[
+\boxed{(x,y)=(-1,-1)\ \text{and}\ (-1,-3)}.
+\]

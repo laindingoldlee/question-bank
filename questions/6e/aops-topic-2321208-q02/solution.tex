@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2321208_minecraft_math
+% Stable identity: aops-topic-2321208-q02
+Let $q_n$ be the probability that $n$ games contain no $3$ consecutive wins. Such a sequence ends with a loss, or with a loss followed by one win, or with a loss followed by two wins (or it is just one or two wins at the start). Conditioning on the last loss gives, for $n\ge3$,
+\[q_n=\dfrac14q_{n-1}+\dfrac34\cdot\dfrac14q_{n-2}+\left(\dfrac34\right)^2\dfrac14q_{n-3},\]
+with $q_0=q_1=q_2=1$. Multiply by $4^n$ and let $Q_n=4^nq_n$ (the weighted count of good sequences, where a win has weight $3$ and a loss weight $1$):
+\[Q_n=Q_{n-1}+3Q_{n-2}+9Q_{n-3},\qquad Q_0=1,\ Q_1=4,\ Q_2=16.\]
+Then
+\[Q_3=37,\ Q_4=121,\ Q_5=376,\ Q_6=1072,\ Q_7=3289,\ Q_8=9889,\ Q_9=29404,\ Q_{10}=88672.\]
+(Check: $Q_3=64-27$, all weighted sequences minus $WWW$.) So $q_{10}=\dfrac{88672}{4^{10}}=\dfrac{2771}{32768}$, and the probability of $3$ wins in a row is
+\[1-\dfrac{2771}{32768}=\boxed{\dfrac{29997}{32768}}\approx0.915.\]

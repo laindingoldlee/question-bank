@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1240717_2011_math_unco
+% Stable identity: aops-topic-1240717-q01
+\textbf{(a)} The triangles counted by $T(n)$ but not by $T(n-1)$ are those with largest side $n$. Their other sides $a<b<n$ need $a+b>n$. For each $b$ with $\dfrac {n}{2}<b\le n-1$, the values $a=n-b+1,\dots,b-1$ give $2b-n-1$ choices, and the total over $b$ is $f(n)=\left\lfloor\dfrac{(n-2)^2}{4}\right\rfloor$. (For example $f(5)=0+2=2$.) Hence
+\[T(n)=T(n-1)+\left\lfloor\dfrac{(n-2)^2}{4}\right\rfloor,\qquad T(3)=0.\]
+\textbf{(b)} Summing the recursion (separately over even and odd $n$, where $\dfrac{(n-2)^2}{4}$ is exact or exceeds the floor by $\dfrac{1}{4}$) gives
+\[T(n)=\begin{cases}\dfrac{n(n-2)(2n-5)}{24},& n\text{ even},\\[2ex] \dfrac{(n-1)(n-3)(2n-1)}{24},& n\text{ odd}.\end{cases}\]
+Check: $T(4)=\dfrac{4\cdot2\cdot3}{24}=1$, $T(5)=\dfrac{4\cdot2\cdot9}{24}=3$, $T(6)=\dfrac{6\cdot4\cdot7}{24}=7=3+4$. Both formulas can be verified by induction from the recursion.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(5,0)--(3.2,2.4)--cycle,linewidth(1)); label("$n$",(2.5,0),S); label("$b$",(1.6,1.2),NW); label("$a$",(4.1,1.2),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

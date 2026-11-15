@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3180824_2021_emcc_individual_speed_test__exeter_math_club_competition
+% Stable identity: aops-topic-3180824-q10
+Every vertex has odd degree 3, so at least one stroke endpoint must occur at each of the eight vertices. Each stroke supplies at most two endpoints, giving a lower bound 4. Pair the eight vertices arbitrarily and add four temporary edges joining the pairs. All degrees are now even and the graph remains connected, so an Euler circuit exists. Delete the four temporary edges from that circuit to obtain at most four trails of original edges. The lower bound forces exactly $\boxed4$ strokes.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] p={(0,0),(2,0),(2,2),(0,2),(.8,.7),(2.8,.7),(2.8,2.7),(.8,2.7)};draw(p[0]--p[1]--p[2]--p[3]--cycle);draw(p[4]--p[5]--p[6]--p[7]--cycle);for(int i=0;i<4;++i)draw(p[i]--p[i+4]);for(int i=0;i<8;++i){dot(p[i]);label(string(i+1),p[i],i<4?SW:NE);}
+\end{asy}

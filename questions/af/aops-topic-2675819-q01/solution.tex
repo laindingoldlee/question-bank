@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2675819_chicken_mcnugget_problem
+% Stable identity: aops-topic-2675819-q01
+For each residue $r$ mod $13$ let $m_r$ be the smallest number of the form $15y+19z$ that is $\equiv r\pmod{13}$. Then $n$ is representable exactly when $n\ge m_{n\bmod13}$ (add $13$s to $m_r$; conversely $n-13x$ must be some $15y+19z\equiv n$). So the answer is $\max_r m_r-13$.
+
+The numbers $15y+19z$ in increasing order, with residues mod $13$ (note $15\equiv2$, $19\equiv6$), are
+\[0_{(0)},\,15_{(2)},\,19_{(6)},\,30_{(4)},\,34_{(8)},\,38_{(12)},\,45_{(6)},\,49_{(10)},\,53_{(1)},\,57_{(5)},\,60_{(8)},\,64_{(12)},\,68_{(3)},\,72_{(7)},\,75_{(10)},\,76_{(11)},\,79_{(1)},\,83_{(5)},\,87_{(9)}.\]
+So all residues except $9$ appear by $76$, and residue $9$ first appears at $87=2\cdot15+3\cdot19$. Hence $\max m_r=87$ and the answer is $87-13=\boxed{74}$.
+
+(Check: $74\equiv9\pmod{13}$ and $74<87$, so $74$ is not representable; every $n\ge75$ is at least $m_{n\bmod13}$.)

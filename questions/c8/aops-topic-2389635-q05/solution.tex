@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2389635_fish_problems
+% Stable identity: aops-topic-2389635-q05
+Put the launch point at the origin, with $x$ the horizontal distance and $y$ the height. The vertex of the parabola is $(15,112.5)$, so
+\[y=112.5-a(x-15)^2\]
+for some $a>0$. It passes through $(0,0)$: $0=112.5-225a$, so $a=\dfrac12$. At $x=20$:
+\[y=112.5-\dfrac12\cdot5^2=112.5-12.5=\boxed{100\text{ metres}}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real s=0.25;
+real f(real x){return s*(112.5-0.5*(x-15)^2);}
+draw((-1,0)--(35,0),Arrow(6)); draw((0,-1.5)--(0,33),Arrow(6));
+label("$x$",(35,0),E); label("$y$",(0,33),N);
+draw(graph(f,0,30),blue+linewidth(0.9));
+dot((0,0)); dot((15,s*112.5)); dot((20,s*100),red);
+draw((15,0)--(15,s*112.5),dashed); draw((20,0)--(20,s*100),red+dashed);
+label("$(15,\,112.5)$",(15,s*112.5),N); label("$(20,\,100)$",(20,s*100),NE,red);
+label("$15$",(15,0),S); label("$20$",(20,0),S); label("$30$",(30,0),S); label("$0$",(0,0),SW);
+\end{asy}
+
+(By symmetry the fish lands $30$ metres from the beach.)

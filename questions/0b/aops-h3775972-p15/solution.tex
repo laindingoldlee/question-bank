@@ -1,0 +1,7 @@
+Every path crosses the middle antidiagonal of eight cells once. Its six interior cells are each used exactly once, so six paths cross there. The other two paths must pass through the top-left or bottom-right corner, forcing the two boundary-only paths. Thus the remaining six paths partition all $36$ interior cells. Look at their successive interior antidiagonals, of sizes $1,2,\ldots,6,5,\ldots,1$. The first cell can be entered from the bottom or left boundary: two choices. At each of the five growing transitions, all previous cells need distinct successors, and the one extra cell must enter from a boundary. Only the two endpoints of the new antidiagonal touch a boundary, so there are exactly two choices; either choice forces all other links. Similarly, at each of the five shrinking transitions exactly one endpoint exits to the top or right boundary, giving two choices and forcing the rest. The last cell has two exit choices. All choices are independent; boundary portions are uniquely determined, and the directed paths cannot form cycles. Hence the number of unordered path sets is $2^{1+5+5+1}=\boxed{4096}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=0;x<8;++x)for(int y=0;y<8;++y)filldraw(box((x-.5,y-.5),(x+.5,y+.5)),x>0&&x<7&&y>0&&y<7?lightgray:white);for(int x=0;x<8;++x)draw((0,0)--(x,0)--(x,7)--(7,7),blue);draw((.5,6.5)--(6.5,.5),red+dashed);label("start",(0,0),SW);label("finish",(7,7),NE);
+\end{asy}

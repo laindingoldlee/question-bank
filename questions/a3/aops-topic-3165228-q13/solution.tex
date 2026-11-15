@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3165228_2022_moaa_speed_round__math_open_at_andover
+% Stable identity: aops-topic-3165228-q13
+The endpoint graph of three edges has no isolated edge and cannot have two nontrivial components, so it is connected. It is either a triangle on three vertices or a tree on four vertices. Every triple of points yields one triangle, contributing $\binom83=56$. For four fixed cyclic points, there are $16$ labeled spanning trees: four stars and twelve paths (the latter are the $4!$ vertex orders divided by reversal). Four of these cross: they use both diagonals and one of the four sides. Hence twelve are noncrossing. The total is $56+12\binom84=\boxed{896}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[]v;for(int j=0;j<8;++j)v.push(dir(45*j));draw(circle((0,0),1));for(int j=0;j<8;++j)dot(v[j]);draw(v[0]--v[2]--v[4]--v[6],blue);label("a noncrossing three-edge path",(0,-1.4));
+\end{asy}

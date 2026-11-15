@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2754368_veryv_hard_comboo
+% Stable identity: aops-topic-2754368-q01
+Let $N_k$ be the number of ways to choose $k$ chairs, no two adjacent, from the $12$ chairs in the circle. Split by whether chair $1$ is used.
+\begin{itemize}
+\item If chair $1$ is empty, choose $k$ non-adjacent chairs from the row of chairs $2,\dots,12$: $\dbinom{12-k}{k}$ ways.
+\item If chair $1$ is used, chairs $2$ and $12$ are empty, and we choose $k-1$ non-adjacent chairs from the row $3,\dots,11$: $\dbinom{11-k}{k-1}$ ways.
+\end{itemize}
+So $N_0=1$ and, for $k\ge1$, $N_k=\dbinom{12-k}{k}+\dbinom{11-k}{k-1}$. This gives
+\[N_1=12,\ N_2=54,\ N_3=112,\ N_4=105,\ N_5=36,\ N_6=2,\]
+and $N_k=0$ for $k=7$. For $k$ seated people, choose and order them in $7\cdot6\cdots(8-k)$ ways (the number of ordered $k$-selections of the $7$ people). The total is
+\[1+12\cdot7+54\cdot42+112\cdot210+105\cdot840+36\cdot2520+2\cdot5040\]
+\[=1+84+2268+23520+88200+90720+10080=\boxed{214873}.\]
+(If only the set of occupied chairs mattered, the count would be $\sum N_k=322$.)

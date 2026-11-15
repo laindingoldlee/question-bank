@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2202871_partial_fractions
+% Stable identity: aops-topic-2202871-q01
+\textbf{(a)} We want $\dfrac{1}{n}\cdot\dfrac{1}{m(m+n+1)}=\dfrac{A}{m}+\dfrac{B}{m+n+1}$. Multiplying by $m(m+n+1)$ gives
+\[\dfrac{1}{n}=A(m+n+1)+Bm\]
+for all $m$. Putting $m=0$ gives $A=\dfrac{1}{n(n+1)}$, and putting $m=-(n+1)$ gives $B=-\dfrac{1}{n(n+1)}$. So
+\[\dfrac{1}{mn(m+n+1)}=\dfrac{1}{n(n+1)}\left(\dfrac{1}{m}-\dfrac{1}{m+n+1}\right).\]
+
+\textbf{(b)} All terms are positive, so we may sum in any order. Write $H_k=1+\dfrac{1}{2}+\cdots+\dfrac{1}{k}$. For fixed $n$, the sum over $m$ telescopes:
+\[\sum_{m=1}^{M}\left(\dfrac{1}{m}-\dfrac{1}{m+n+1}\right)=H_{n+1}-\left(\dfrac{1}{M+1}+\dfrac{1}{M+2}+\cdots+\dfrac{1}{M+n+1}\right),\]
+and the bracket has $n+1$ terms, each at most $\dfrac{1}{M+1}$, so it tends to $0$. Hence the inner sum is $\dfrac{H_{n+1}}{n(n+1)}$, and
+\[\sum_{n=1}^{\infty}\dfrac{H_{n+1}}{n(n+1)}=\sum_{n=1}^{\infty}H_{n+1}\left(\dfrac{1}{n}-\dfrac{1}{n+1}\right)=\sum_{n=1}^{\infty}\left(\dfrac{H_n}{n}-\dfrac{H_{n+1}}{n+1}\right)+\sum_{n=1}^{\infty}\dfrac{1}{n(n+1)},\]
+using $H_{n+1}=H_n+\dfrac{1}{n+1}$.
+
+The second sum telescopes to $1$. The first has partial sums $\dfrac{H_1}{1}-\dfrac{H_{N+1}}{N+1}=1-\dfrac{H_{N+1}}{N+1}$. Since $\dfrac{1}{j}\le\dfrac{2}{\sqrt j+\sqrt{j-1}}=2\left(\sqrt j-\sqrt{j-1}\right)$, we have $H_k\le2\sqrt k$, so $\dfrac{H_{N+1}}{N+1}\le\dfrac{2}{\sqrt{N+1}}\to0$ and the first sum is $1$. Therefore
+\[\sum_{m=1}^{\infty}\sum_{n=1}^{\infty}\dfrac{1}{mn(m+n+1)}=1+1=\boxed{2}.\]

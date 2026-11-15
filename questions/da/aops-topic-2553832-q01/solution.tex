@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2553832_extra_hard_math_problem
+% Stable identity: aops-topic-2553832-q01
+Let $O$ be the centre. Joining $O$ to the vertices divides the polygon into $n$ congruent isosceles triangles, each with base $s$ and apex angle $\dfrac{360^\circ}{n}$ (shown for $n=6$).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair[] V;for(int i=0;i<6;++i) V.push(dir(60*i));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,linewidth(0.8));
+pair O=(0,0),Mf=(V[4]+V[5])/2;
+filldraw(O--V[4]--V[5]--cycle,lightgray);
+draw(O--Mf,dashed);
+pair u=unit(V[5]-V[4]),v=unit(O-Mf);
+draw((Mf+0.07*u)--(Mf+0.07*u+0.07*v)--(Mf+0.07*v));
+dot(O);label("$O$",O,N);label("$a$",(O+Mf)/2,E,fontsize(9pt));label("$s$",Mf,S);
+draw(arc(O,0.2,240,300));
+\end{asy}
+
+The altitude from $O$ (the apothem $a$) bisects the base and the apex angle, giving a right triangle with legs $\dfrac s2$ and $a$ and angle $\dfrac{180^\circ}{n}$ at $O$. So
+\[\tan\dfrac{180^\circ}{n}=\dfrac{s}{2a},\qquad a=\dfrac{s}{2\tan\dfrac{180^\circ}{n}}.\]
+Each triangle has area $\dfrac{sa}{2}$, so the polygon has area
+\[\boxed{A=\dfrac{nsa}{2}=\dfrac{ns^2}{4\tan\dfrac{180^\circ}{n}}}.\]
+Checks: for $n=4$, $\tan45^\circ=1$ gives $s^2$; for $n=6$, $\tan30^\circ=\dfrac{1}{\sqrt3}$ gives $\dfrac{3\sqrt3}{2}s^2$, six equilateral triangles of area $\dfrac{\sqrt3}{4}s^2$.

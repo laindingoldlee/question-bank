@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3167372_2023_lmt_spring_guts_round_p16p27_lexington_mathematical_tournament
+% Stable identity: aops-topic-3167372-q16
+Let the rhombus side be $s$, and choose coordinates $A=(0,0)$, $E=(s,0)$, $C=(s+3,0)$, $B=(s\cos\theta,s\sin\theta)$, and $D=(s+s\cos\theta,s\sin\theta)$. The circle through $A,C$ has equation $x^2+y^2-(s+3)x+vy=0$. Subtracting its equations at $B,D$ gives $2s^2\cos\theta-3s=0$, hence $2s\cos\theta=3$. Then $CD^2=s^2-6s\cos\theta+9=s^2$, so $s=4$. Finally $AD^2=2s^2(1+\cos\theta)=32(1+\dfrac{3}{8})=\boxed{44}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),Ep=(4,0),C=(7,0),Bp=(1.5,sqrt(55)/2),D=(5.5,sqrt(55)/2);draw(A--Bp--C--cycle);draw(A--Bp--D--Ep--cycle,blue);draw(C--D);draw(A--D,dashed);pair[]v={A,Bp,C,D,Ep};string[]names={"A","B","C","D","E"};for(int j=0;j<v.length;++j)label("$"+names[j]+"$",v[j],dir(180-45*j));
+\end{asy}

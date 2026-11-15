@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1526030_help_with_a_proof
+% Stable identity: aops-topic-1526030-q01
+\textbf{The error.} Factoring $x^{1111}$ out of $\sum x^{1111n}$ gives $\sum x^{1111n-1111}=\sum_{n=0}^{9}x^{1111(n-1)}$, not $\sum x^n$; exponents are multiplied by $1111$, they are not shifted. Indeed $x^{1111}\sum_{n=0}^9x^n=x^{1111}+x^{1112}+\cdots+x^{1120}$, which is a different polynomial (for instance it has no constant term).
+
+\textbf{Proof.} Let $A(x)=\sum_{n=0}^{9}x^n$ and $B(x)=\sum_{n=0}^{9}x^{1111n}$. For each $n$,
+\[
+x^{1111n}-x^n=x^n\left(x^{1110n}-1\right),
+\]
+and since $10\mid1110n$, the polynomial $x^{10}-1$ divides $\left(x^{10}\right)^{111n}-1=x^{1110n}-1$ (because $t-1$ divides $t^m-1$). Summing over $n$, $x^{10}-1$ divides $B(x)-A(x)$. But $x^{10}-1=(x-1)A(x)$, so $A(x)$ divides $B(x)-A(x)$, and hence $A(x)\mid B(x)$. All quotients involved have integer coefficients, because each division by $t-1$ does. $\blacksquare$
+
+(Equivalently: the roots of $A$ are the ten tenth roots of unity other than $1$, each simple; for such $\omega$, $\omega^{1111n}=\omega^n$ because $\omega^{10}=1$, so $B(\omega)=A(\omega)=0$.)

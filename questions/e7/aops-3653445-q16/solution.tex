@@ -1,0 +1,6 @@
+Let the four equal side chords subtend half-central angle $\alpha$, and each length-six chord half-angle $\beta$. Then $4\alpha+2\beta=\pi$, so $\beta=\dfrac{\pi}{2}-2\alpha$. With circumradius $R$, $14=2R\sin2\alpha$ and $6=2R\cos2\alpha$. Thus $R^2=58$, $\sin2\alpha=\dfrac{7}{\sqrt{58}}$ and $\cos2\alpha=\dfrac{3}{\sqrt{58}}$. Summing the six centre triangles gives area $2R^2\sin2\alpha+R^2\sin2\beta=14\sqrt{58}+42$. Hence $\boxed{42+14\sqrt{58}}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+real a=degrees(atan(7/3))/2,b=90-2a;real[] ang={0,2a,4a,4a+2b,4a+4b,6a+4b};string[] names={"A","B","C","D","E","F"};pair[] V;for(int i=0;i<6;++i)V.push(dir(ang[i]));for(int i=0;i<6;++i){draw(V[i]--V[(i+1)%6]);draw((0,0)--V[i],dashed);label("$"+names[i]+"$",V[i],V[i]);}draw(unitcircle,gray);draw(V[5]--V[1],blue);label("$14$",(V[5]+V[1])/2,(1,0));label("$6$",(V[2]+V[3])/2,(-1,0));label("$6$",(V[3]+V[4])/2,(-1,0));
+\end{asy}
+

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2577870_lamboreghinis_problem_thread_math_and_programming
+% Stable identity: aops-topic-2577870-q105
+Use $P_k=(\cos(\dfrac{2\pi k}{n}),\sin(\dfrac{2\pi k}{n}))$ for $k=0,\ldots,n-1$ and join consecutively, including the last to the first. Adjacent central angles all equal $\dfrac{2\pi}{n}$, so every side is a chord of length $2\sin(\dfrac{\pi}{n})$. After $n$ steps the angle has increased by $2\pi$, closing the polygon.\begin{verbatim}
+from math import cos,sin,pi
+def regular_polygon(n):
+    assert isinstance(n,int) and n>=3
+    return [(cos(2*pi*k/n),sin(2*pi*k/n)) for k in range(n)]
+\end{verbatim}
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+path p;for(int k=0;k<5;++k)p=p--dir(90+72*k);draw(p--cycle);draw(unitcircle,dashed);label("$P_0$",dir(90),N);label("$P_1$",dir(162),W);dot((0,0));label("$O$",(0,0),S);
+\end{asy}

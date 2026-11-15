@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2603491_hard_problem_that_i_need_a_solution_for
+% Stable identity: aops-topic-2603491-q01
+The volume of the ball is about
+\[V=\dfrac43\pi\left(2\text{ m}\right)^3\approx33.5\text{ m}^3.\]
+Each metre of string occupies a box of volume $(0.004\text{ m})^2\times1\text{ m}=1.6\times10^{-5}\text{ m}^3$. So
+\[L\approx\dfrac{33.5}{1.6\times10^{-5}}\text{ m}\approx2.1\times10^{6}\text{ m},\]
+and to the nearest order of magnitude $\boxed{L\approx10^{6}\text{ m}}$ (about $2000$ km).
+
+A square cross-section is used because round strands cannot fill space; the square around each strand includes the gaps. Using the circle of diameter $4$ mm instead (no gaps), $L\approx\dfrac{33.5}{\pi\cdot(0.002)^2}\approx2.7\times10^6$ m, the same order of magnitude.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),2),linewidth(0.8));draw(ellipse((0,0),2,0.5),dashed);
+draw((0,0)--(0,2));label("$2\text{ m}$",(0,1.2),E);dot((0,0));
+draw(shift(2.8,-0.6)*scale(0.6)*unitsquare);label("$4\text{ mm}$",(3.1,-0.6),S,fontsize(8pt));label("$4\text{ mm}$",(3.4,-0.3),E,fontsize(8pt));
+label("one strand",(3.1,0),N,fontsize(8pt));
+\end{asy}

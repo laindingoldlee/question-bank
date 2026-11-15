@@ -1,0 +1,7 @@
+Each group of four segments has lengths $2k+1,2k+1,2k+2,2k+2$ in the four directions and net displacement $(-1,-1)$. Since $2015=4\cdot503+3$, the first $2012$ segments end at $(-503,-503)$. The next three displacements are $(1007,0),(0,1007),(-1008,0)$. Thus the final point is $\boxed{(-504,504)}$, or $504$ units left and $504$ units up from the start.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair p=(0,0);path g=p;pair[] d={(1,0),(0,1),(-1,0),(0,-1)};for(int i=0;i<11;++i){p+=(floor(i/2)+1)*d[i%4];g=g--p;}draw(g,blue+linewidth(1.2),EndArrow);dot((0,0));label("start",(0,0),(0,-1));label("first 11 segments",(0,-4.3));
+\end{asy}

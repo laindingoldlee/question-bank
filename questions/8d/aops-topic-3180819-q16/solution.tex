@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3180819_2020_emcc_individual_speed_test__exeter_math_club_competition
+% Stable identity: aops-topic-3180819-q16
+There are fifteen diagonals of one slope, so at most fifteen bishops can occur. If fifteen occurred, both single-cell extreme diagonals would contain bishops; those two corner cells share the other long diagonal and attack. Hence at most fourteen occur. To attain fourteen, place bishops in all eight cells of the top row and the six noncorner cells of the bottom row. Within each row there are no diagonal pairs; between rows a diagonal would require column difference seven, impossible after excluding the bottom corners. Thus the maximum is $\boxed{14}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=0;i<8;++i)for(int j=0;j<8;++j){filldraw((i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle,(i+j)%2==0?white:lightgray,black);}for(int i=0;i<8;++i)dot((i+.5,7.5),blue+linewidth(5));for(int i=1;i<7;++i)dot((i+.5,.5),blue+linewidth(5));
+\end{asy}

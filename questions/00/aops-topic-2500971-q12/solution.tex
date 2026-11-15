@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2500971_stemhcounts_states_sprint_1115
+% Stable identity: aops-topic-2500971-q12
+An isosceles triangle with perimeter $48$ has two equal sides $a$ and a third side $48-2a$, where $a$ is a positive integer.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(4,0), A=(2,3.2);
+draw(A--B--C--cycle,linewidth(0.8));
+label("$a$",(A+B)/2,NW); label("$a$",(A+C)/2,NE); label("$48-2a$",(B+C)/2,S);
+draw(((A+B)/2+0.12*dir(-32))--((A+B)/2-0.12*dir(-32)));
+draw(((A+C)/2+0.12*dir(32))--((A+C)/2-0.12*dir(32)));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+\end{asy}
+
+The triangle exists exactly when $48-2a>0$ and the triangle inequality holds. The only inequality that can fail is $a+a>48-2a$ (the others say $a+(48-2a)>a$, i.e. $48>2a$). So we need
+\[4a>48\quad\text{and}\quad 2a<48,\qquad\text{i.e.}\qquad 13\le a\le23.\]
+Different values of $a$ give non-congruent triangles, because a non-equilateral isosceles triangle has only one pair of equal sides, and the equilateral triangle $16,16,16$ arises only once (from $a=16$). So the triangles are $(a,a,48-2a)$ for $a=13,14,\dots,23$, and there are $\boxed{11}$ of them.

@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2417983_from_nt_marathon
+% Stable identity: aops-topic-2417983-q01
+\textbf{Trailing zeros.} The exponent of $5$ in $256!$ is
+\[\left\lfloor\dfrac{256}{5}\right\rfloor+\left\lfloor\dfrac{256}{25}\right\rfloor+\left\lfloor\dfrac{256}{125}\right\rfloor=51+10+2=63,\]
+and the exponent of $2$ is $128+64+32+16+8+4+2+1=255$. So $256!$ ends in exactly $63$ zeros, and we need the last digit of $M=\dfrac{256!}{10^{63}}$. Since $M$ still contains the factor $2^{192}$, it is even, so it is enough to find $M\bmod5$.
+
+\textbf{Removing the factors $5$.} For $n\ge0$ let $n!_5$ be $n!$ with all factors $5$ removed, i.e. $\dfrac{n!}{5^v}$ where $5^v$ is the largest power of $5$ dividing $n!$. Write $n=5q+r$ with $0\le r\le4$. The numbers $1,\dots,n$ not divisible by $5$ fall into $q$ complete blocks $5j+1,\dots,5j+4$, each with product $\equiv1\cdot2\cdot3\cdot4=24\equiv-1\pmod5$, and a final block with product $\equiv r!$. The multiples of $5$ are $5\cdot1,5\cdot2,\dots,5\cdot q$, and removing their factors $5$ leaves $q!_5$. Hence
+\[n!_5\equiv(-1)^q\,r!\,q!_5\pmod5.\]
+With $256=5\cdot51+1$, $51=5\cdot10+1$, $10=5\cdot2$:
+\[2!_5=2,\qquad10!_5\equiv(-1)^2\cdot0!\cdot2=2,\qquad51!_5\equiv(-1)^{10}\cdot1!\cdot2=2,\qquad256!_5\equiv(-1)^{51}\cdot1!\cdot2=-2\equiv3\pmod5.\]
+
+\textbf{Finishing.} Since $256!=5^{63}\cdot256!_5=10^{63}M$, we have $256!_5=2^{63}M$. As $2^4\equiv1\pmod5$, $2^{63}\equiv2^3=8\equiv3$, so
+\[3M\equiv3\pmod5,\qquad M\equiv1\pmod5.\]
+The last digit of $M$ is even and $\equiv1\pmod5$, so it is $\boxed{6}$.

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1695735_solve_for_me_thanks
+% Stable identity: aops-topic-1695735-q01
+Let the angles be $\alpha$, $\beta$, $\gamma$ with $\gamma=\alpha+\beta$. The angles of a triangle add up to $180^\circ$, so
+\[
+180^\circ=\alpha+\beta+\gamma=2\gamma,
+\]
+and $\gamma=90^\circ$. Hence the triangle has a right angle (at the vertex of the angle that equals the sum of the other two), so it is a right triangle. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(5,0),C=(1.8,2.4);
+draw(A--B--C--cycle,linewidth(0.9));
+real q=0.3; pair u=unit(A-C),v=unit(B-C);
+draw(C+q*u--C+q*(u+v)--C+q*v,red);
+draw(arc(A,0.6,0,degrees(C-A)));draw(arc(B,0.6,degrees(C-B),180));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$\alpha$",A+0.95*dir(degrees(C-A)/2));label("$\beta$",B+0.95*dir((degrees(C-B)+180)/2));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

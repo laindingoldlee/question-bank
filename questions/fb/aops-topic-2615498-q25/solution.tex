@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2615498_peace09s_3000th_post
+% Stable identity: aops-topic-2615498-q25
+Triangles $IBD$ and $ICD$ share the height from $I$ to $BC$, so their area ratio is $\dfrac{BD}{DC}=\dfrac{AB}{AC}$ by the angle bisector theorem. Similarly $\dfrac{[IAF]}{[IBF]}=\dfrac{AF}{FB}=\dfrac{CA}{CB}$ and $\dfrac{[ICE]}{[IAE]}=\dfrac{CE}{EA}=\dfrac{BC}{BA}$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(1.5,4),B=(0,0),C=(5,0);real a=abs(B-C),bb=abs(C-A),c=abs(A-B);pair I=(a*A+bb*B+c*C)/(a+bb+c);
+pair D=extension(A,I,B,C),E=extension(B,I,A,C),F=extension(C,I,A,B);
+draw(A--B--C--cycle);draw(A--D,dashed);draw(B--E,dashed);draw(C--F,dashed);dot(I);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$E$",E,NE);label("$F$",F,W);label("$I$",I,SE);
+\end{asy}
+
+With $a=BC$, $b=CA$, $c=AB$: $\dfrac cb=\dfrac{18}{19}$ and $\dfrac ba=\dfrac{20}{21}$. Then
+\[\dfrac ac=\dfrac{a}{b}\cdot\dfrac bc=\dfrac{21}{20}\cdot\dfrac{19}{18}=\dfrac{399}{360}=\dfrac{133}{120},\]
+so $m+n=\boxed{253}$.

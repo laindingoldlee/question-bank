@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1999337_geometry_length_problem
+% Stable identity: aops-topic-1999337-q01
+Set up coordinates with $BD$ on the $x$-axis: $B=(0,0)$, $E=(t,0)$, $F=(2t,0)$, $D=(3t,0)$ for some $t>0$. Since $AF=AD$, the point $A$ lies on the perpendicular bisector of $FD$, so $A=\left(\dfrac{5t}{2},\,h\right)$ for some $h\ne0$; let $M=\left(\dfrac{5t}{2},0\right)$ be the midpoint of $FD$.
+
+Since $D$ is the midpoint of $AC$, we get $C=2D-A=\left(\dfrac{7t}{2},\,-h\right)$. Then
+\[
+AB^2=\left(\dfrac{5t}{2}\right)^2+h^2,\qquad CE^2=\left(\dfrac{7t}{2}-t\right)^2+(-h)^2=\left(\dfrac{5t}{2}\right)^2+h^2 .
+\]
+So $CE=AB=\boxed{1}$. Geometrically: $A$ is $\dfrac{5t}{2}$ to the right of $B$ and $C$ is $\dfrac{5t}{2}$ to the right of $E$, at the same distance $|h|$ from line $BD$, so $CE$ and $AB$ are hypotenuses of congruent right triangles.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real t=0.3, h=sqrt(1-6.25t^2);
+pair B=(0,0), Ep=(t,0), F=(2t,0), D=(3t,0), A=(2.5t,h), C=(3.5t,-h);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--D);
+draw(A--F,blue); draw(A--D,blue);
+draw(C--Ep,red+dashed+linewidth(1));
+dot(Ep);dot(F);dot(D);
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,S);
+label("$E$",Ep,(0,1.2));label("$F$",F,(-0.6,-1.3));label("$D$",D,E);
+pair M=(2.5t,0); draw(A--M,dotted); label("$M$",M,(0.3,-1.4));
+label("$1$",(A+B)/2,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The answer does not depend on $t$: every admissible triangle has $CE=1$.

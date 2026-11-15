@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1986138_quick_solution_clarify
+% Stable identity: aops-topic-1986138-q01
+We use Burnside's lemma: the number of colorings up to rotation is the average, over the $24$ rotations of the cube, of the number of colorings each rotation leaves unchanged. A rotation fixes a coloring exactly when every cycle of faces under the rotation is one color.
+\begin{itemize}
+\item Identity ($1$ rotation): all $\dfrac{6!}{2!\,2!\,2!}=90$ colorings are fixed.
+\item Quarter turns about an axis through two face centres ($6$ rotations): the four side faces form one cycle and would need one color, but each color is used only twice. $0$ fixed.
+\item Half turns about an axis through two face centres ($3$ rotations): the cycles are the top, the bottom, $\{\text{front},\text{back}\}$ and $\{\text{left},\text{right}\}$. The two $2$-cycles get two different colors and the top and bottom both get the third color: $3!=6$ fixed.
+\item Turns of $120^\circ$ about an axis through two opposite corners ($8$ rotations): two $3$-cycles of faces, which would need three faces of one color. $0$ fixed.
+\item Half turns about an axis through the midpoints of two opposite edges ($6$ rotations): three $2$-cycles, which receive the three colors in $3!=6$ ways. $6$ fixed.
+\end{itemize}
+Hence the number of colorings is
+\[
+\dfrac{90+0+3\cdot6+0+6\cdot6}{24}=\dfrac{144}{24}=\boxed{6}.
+\]
+They can be listed: the three colors on the three pairs of opposite faces ($1$ coloring); exactly one color on a pair of opposite faces and the other two colors each on two adjacent side faces ($3$ colorings, one for each choice of the opposite color); and no color on opposite faces, which gives two colorings that are mirror images of each other ($2$ colorings).

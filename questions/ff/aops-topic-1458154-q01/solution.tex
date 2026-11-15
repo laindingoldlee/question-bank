@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1458154_geomtry17
+% Stable identity: aops-topic-1458154-q01
+The angles $\angle AXB$ and $\angle AXC$ add up to $180^\circ$, so one of them is at least $90^\circ$; say $\angle AXC\ge90^\circ$ (the other case is the same with $B$ in place of $C$).
+
+In triangle $AXC$ the other two angles then add up to at most $90^\circ$, so each is less than $90^\circ\le\angle AXC$. Thus $\angle AXC$ is the largest angle of triangle $AXC$, in particular $\angle AXC>\angle ACX$. In a triangle the larger side is opposite the larger angle, so $AC>AX$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.5,3),B=(0,0),C=(5,0),X=(2.5,0);
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--X,blue+linewidth(0.9));
+draw(arc(X,0.45,0,degrees(A-X)),red);
+label("$\ge 90^\circ$",X+1.05*dir(42),red);
+dot(A);dot(B);dot(C);dot(X);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$X$",X,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(If $X$ could be $B$ or $C$, then $AX$ would equal $AB$ or $AC$, and the claim could fail; this is why $X$ is taken strictly inside the side.)

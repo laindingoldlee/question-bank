@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3064003_my_math_story_for_325_year_anniversary
+% Stable identity: aops-topic-3064003-q07
+Use coordinates $A=(0,0)$, $B=(1,0)$, $C=(1,1)$, $D=(0,1)$, $X=\left(\dfrac{1}{2},-h\right)$ and $Y=\left(\dfrac{1}{2},1+h\right)$, where $h=\dfrac{\sqrt3}{2}$. At height $y$ in $[0,1]$, the left boundary of the intersection is $\dfrac{\max(y,1-y)}{2(1+h)}$; its right boundary is the reflection in $x=\dfrac{1}{2}$. Thus its width at heights 0 and 1 is $1-\dfrac{1}{1+h}$ and its width at height $\dfrac{1}{2}$ is $1-\dfrac{1}{2(1+h)}$. The two halves are trapezoids of height $\dfrac{1}{2}$, so their total area is $1-\dfrac{3}{4(1+h)}=\boxed{\dfrac{3\sqrt3}{2}-2}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real h=sqrt(3)/2,u=1/(2*(1+h));pair A=(0,0),B=(1,0),C=(1,1),D=(0,1),X=(.5,-h),Y=(.5,1+h);fill((u,0)--(1-u,0)--(1-u/2,.5)--(1-u,1)--(u,1)--(u/2,.5)--cycle,lightgray);draw(A--B--C--D--cycle);draw(A--X--B);draw(C--Y--D);draw(X--C--D--cycle,blue);draw(Y--A--B--cycle,blue);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$X$",X,S);label("$Y$",Y,N);
+\end{asy}

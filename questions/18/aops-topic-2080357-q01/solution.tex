@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2080357_converse_pythag_theorem
+% Stable identity: aops-topic-2080357-q01
+Let triangle \(ABC\) have \(BC=a\), \(CA=b\), \(AB=c\) and \(a^2+b^2=c^2\). Construct a right triangle \(DEF\) with the right angle at \(D\), legs \(DF=a\) and \(DE=b\).
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(4,0), C=(1.44,1.92);
+pair A2=(6,0), B2=(6+3.2,0), C2=(6,2.4);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C2--A2--B2--cycle,linewidth(0.9));
+draw(A2--(A2+(0.25,0))--(A2+(0.25,0.25))--(A2+(0,0.25)));
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N);
+label("$a$",(B+C)/2,NE); label("$b$",(A+C)/2,NW); label("$c$",(A+B)/2,S);
+label("$D$",A2,SW); label("$E$",C2,N); label("$F$",B2,SE);
+label("$b$",(A2+C2)/2,W); label("$a$",(A2+B2)/2,S); label("$\sqrt{a^2+b^2}=c$",(C2+B2)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the Pythagorean theorem applied to \(DEF\), its hypotenuse is \(EF=\sqrt{a^2+b^2}=c\). So triangles \(ABC\) and \(DEF\) have the same three side lengths (\(a\), \(b\) and \(c\)) and are congruent by SSS. Corresponding angles are equal, so the angle of \(ABC\) opposite the side \(c\), namely \(\angle C\), equals \(\angle D=90^\circ\). \(\blacksquare\)
+
+The technique is \emph{proof by construction and congruence}: build an auxiliary triangle known to have the property, then use SSS congruence to transfer it. (An alternative proof uses the law of cosines: \(c^2=a^2+b^2-2ab\cos C\) forces \(\cos C=0\).)

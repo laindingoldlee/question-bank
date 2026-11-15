@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1734599_2019_mathcounts_handbook_warmup_3_6
+% Stable identity: aops-topic-1734599-q01
+By the intersecting chords theorem (power of the point $A$), the products of the pieces of the two chords are equal:
+\[
+AB\cdot AD=AC\cdot AE\quad\Longrightarrow\quad3\cdot6=8\cdot AE\quad\Longrightarrow\quad AE=\dfrac{18}{8}=\boxed{2\dfrac{1}{4}}\text{ units}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(-3,0),D=(6,0); pair u=dir(115); pair C=8*u,Ep=-(9/4)*u;
+real k=(C.x^2+C.y^2-3*C.x-18)/(2*C.y); pair P=(1.5,k);
+draw(circle(P,abs(B-P)),linewidth(0.9));
+draw(B--D,linewidth(0.9));draw(C--Ep,linewidth(0.9));
+dot(A);dot(P);
+label("$A$",A,dir(55));label("$B$",B,W);label("$D$",D,E);label("$C$",C,N);label("$E$",Ep,S);label("$P$",P,E);
+label("$3$",(A+B)/2,S);label("$6$",(A+D)/2,S);label("$8$",(A+C)/2,W);label("$2\dfrac{1}{4}$",(A+Ep)/2,E,blue+fontsize(8pt));draw(A--Ep,blue+linewidth(1));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The triangles $ABC$ and $AED$ are similar, since $\angle BAC=\angle EAD$ (vertical angles) and $\angle ABC=\angle AED$ (both inscribed in arc $CD$), which is why the products agree.)

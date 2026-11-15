@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1514124_mathcounts_problem__please_help
+% Stable identity: aops-topic-1514124-q01
+Let $O$ be the centre. The segments from $O$ to the six vertices cut the hexagon into six congruent equilateral triangles; call the area of each one $1$, so the hexagon has area $6$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=dir(120),B=dir(60),C=dir(0),D=dir(-60),E=dir(-120),F=dir(180),O=(0,0);
+fill(A--B--F--cycle,rgb(0.75,0.85,1));fill(B--C--D--cycle,rgb(0.75,0.85,1));
+fill(B--D--E--F--cycle,rgb(1,0.9,0.75));
+draw(A--B--C--D--E--F--cycle,linewidth(1));
+draw(F--B--D,linewidth(0.9));
+draw(O--A,dashed+gray(0.4));draw(O--C,dashed+gray(0.4));draw(O--E,dashed+gray(0.4));draw(O--B,dashed+gray(0.4));draw(O--D,dashed+gray(0.4));draw(O--F,dashed+gray(0.4));
+dot(O);label("$O$",(0,-0.3));
+label("$A$",A,A);label("$B$",B,B);label("$C$",C,C);label("$D$",D,D);label("$E$",E,E);label("$F$",F,F);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+$ABOF$ is a rhombus made of two of these triangles (all its sides equal the side of the hexagon), and its diagonal $FB$ cuts it into two congruent halves, so $[ABF]=\dfrac{1}{2}\cdot2=1$. In the same way $[BCD]=1$, using the rhombus $BCDO$. The rest of the hexagon is the quadrilateral $BDEF$, with area $6-1-1=4$. The ratio is
+\[
+\dfrac{1+1}{4}=\boxed{\dfrac{1}{2}}.
+\]

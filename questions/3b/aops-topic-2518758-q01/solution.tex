@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2518758_at_what_point_is_the_slope_of_a_line_greatest
+% Stable identity: aops-topic-2518758-q01
+Let $P=(x_1,y_1)$ and $Q=(x_2,y_2)$, so $0\le x_1,y_1\le2$, $5\le x_2\le7$ and $1\le y_2\le3$. The run is always positive,
+\[x_2-x_1\ge5-2=3,\]
+so the slope $m=\dfrac{y_2-y_1}{x_2-x_1}$ is defined, and the rise satisfies $-1=1-2\le y_2-y_1\le3-0=3$.
+
+\textbf{Greatest slope.} If the rise is $\le0$, then $m\le0$. If the rise is positive, then $m\le\dfrac{3}{x_2-x_1}\le\dfrac33=1$: make the rise as large and the run as small as possible. Equality needs $y_2-y_1=3$ and $x_2-x_1=3$, i.e. $P=(2,0)$ and $Q=(5,3)$.
+
+\textbf{Least slope.} If the rise is $\ge0$, then $m\ge0$. If it is negative, then $m\ge\dfrac{-1}{x_2-x_1}\ge-\dfrac13$, with equality exactly for $P=(2,2)$, $Q=(5,1)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+import graph;
+fill(box((0,0),(2,2)),rgb(0.85,0.9,1)); draw(box((0,0),(2,2)),blue);
+fill(box((5,1),(7,3)),rgb(1,0.88,0.85)); draw(box((5,1),(7,3)),red);
+draw((-0.5,0)--(7.8,0),Arrow(5)); draw((0,-0.5)--(0,3.8),Arrow(5));
+label("$x$",(7.8,0),E); label("$y$",(0,3.8),N);
+draw((2,0)--(5,3),deepgreen+linewidth(1)); draw((2,2)--(5,1),purple+linewidth(1)+dashed);
+dot((2,0)); dot((5,3)); dot((2,2)); dot((5,1));
+label("$(2,0)$",(2,0),S,fontsize(8pt)); label("$(5,3)$",(5,3),NW,fontsize(8pt));
+label("$(2,2)$",(2,2),N,fontsize(8pt)); label("$(5,1)$",(5,1),S,fontsize(8pt));
+label("$\mathcal{R}_1$",(1,1)); label("$\mathcal{R}_2$",(6,2));
+\end{asy}
+
+So the slope is greatest, $\boxed{1}$, for $P=(2,0)$, $Q=(5,3)$, and least, $\boxed{-\dfrac13}$, for $P=(2,2)$, $Q=(5,1)$. In general, for two regions side by side, a steep line wants a large rise over a short run, so the extremes occur at corners of the regions.

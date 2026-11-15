@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2936505_2017_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2936505-q19
+Let $u_0=|x|$ and $u_k=|u_{k-1}+(-1)^{k+1}k|$. Work backwards from $u_{100}=0$. At a backward step $k$, each allowed $u_k=y$ permits $u_{k-1}=y-(-1)^{k+1}k$ or $-y-(-1)^{k+1}k$, retaining only nonnegative values. Repeatedly applying this rule gives $u_0\in\{0,2,4,\ldots,50\}$. The following finite algorithm implements exactly that inversion and makes the count reproducible:
+\begin{verbatim}
+allowed = {0}
+for k in range(100, 0, -1):
+    shift = k if k % 2 else -k
+    allowed = {z - shift for y in allowed
+               for z in (y, -y) if z - shift >= 0}
+assert allowed == set(range(0, 51, 2))
+\end{verbatim}
+Each positive value gives two choices of $x$, and zero gives one. Thus the answer is $2\cdot25+1=\boxed{51}$.

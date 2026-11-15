@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1487390_one_wheel_of_a_tractor
+% Stable identity: aops-topic-1487390-q01
+In one turn the wheel rolls a distance equal to its circumference $2\pi r$. One mile is $5280$ feet, so each turn covers
+\[
+2\pi r=\dfrac{5280}{240}=22\ \text{feet}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real r=1; real L=2*pi*r;
+draw((-1.4,0)--(L+1.4,0),gray);
+draw(circle((0,r),r),linewidth(0.9));
+draw(circle((L,r),r),gray+dashed);
+dot((0,r)); draw((0,r)--(0,r)+r*dir(40),blue);
+label("$r$",(0,r)+0.5*r*dir(40),NW,blue);
+dot((0,0)); dot((L,0));
+draw((0,-0.35)--(L,-0.35),red,Arrows(6));
+label("one turn: $22$ ft",(L/2,-0.35),S,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence
+\[
+r=\dfrac{22}{2\pi}=\boxed{\dfrac{11}{\pi}\ \text{feet}}\approx3.5\ \text{feet}
+\]
+(about $42$ inches; with $\pi\approx\dfrac{22}{7}$ the radius is exactly $3.5$ feet).

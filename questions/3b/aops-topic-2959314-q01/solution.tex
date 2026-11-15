@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2959314_what_is_the_largest_circle_that_can_fit_in_pentagon
+% Stable identity: aops-topic-2959314-q01
+Let $s=\sqrt{21}$ and put $A=(0,0)$, $B=(s,0)$, $D=(0,s)$. The cut line $PQ$ is $x+y=\dfrac s2$. The inscribed circle of the square does not fit: its centre is at distance $\dfrac{s}{2\sqrt2}<\dfrac s2$ from $PQ$.
+
+By symmetry about diagonal $AC$, the best circle has centre $(t,t)$ and touches $BC$, $CD$ and $PQ$:
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(4,4),D=(0,4),P=(0,2),Q=(2,0);
+real r=3*4*(2-sqrt(2))/4; pair O=(4-r,4-r);
+fill(P--Q--B--C--D--cycle,lightgray);draw(A--B--C--D--cycle,dotted);draw(P--Q--B--C--D--cycle);
+draw(circle(O,r));dot(O);draw(O--(4,4-r));draw(O--O-r*dir(45),dashed);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$P$",P,W);label("$Q$",Q,S);label("$r$",(4-r/2,4-r),N);
+\end{asy}
+
+\[r=s-t=\dfrac{2t-\dfrac s2}{\sqrt2}.\]
+Solving, $r=\dfrac{3s}{2(2+\sqrt2)}=\dfrac{3(2-\sqrt2)}4\,s\approx0.44s$. This circle also stays away from sides $AB$ and $AD$, since $t-r>0$. So it fits, and it is the largest: any larger circle would have to cross one of $BC$, $CD$, $PQ$. Its area is
+\[\pi r^2=\pi\cdot\dfrac{9(6-4\sqrt2)}{16}\cdot21=\boxed{\dfrac{189(3-2\sqrt2)}{8}\,\pi}\approx12.73.\]

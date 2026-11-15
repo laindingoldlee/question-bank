@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h1531957_problem_on_geometry
+% Stable identity: aops-topic-1531957-q01
+\textbf{The triangle.} Put $B=(0,0)$ and $C=(28,0)$. If $A=(x,y)$, then $x^2+y^2=625$ and $(x-28)^2+y^2=289$; subtracting gives $56x-784=336$, so $x=20$ and $y=15$. Thus $A=(20,15)$, the area is $\dfrac{1}{2}\cdot28\cdot15=210$, and
+\[
+\cos A=\dfrac{25^2+17^2-28^2}{2\cdot25\cdot17}=\dfrac{130}{850}=\dfrac{13}{85}.
+\]
+All three angles are acute (also $\cos B=\dfrac{4}{5}$ and $\cos C=\dfrac{8}{17}$), so $E$ and $F$ lie on the sides and the orthocentre $H$ is inside the triangle.
+
+\textbf{The circle through $A$, $E$, $F$.} Since $\angle AEH=\angle AFH=90^\circ$, the points $E$ and $F$ lie on the circle with diameter $AH$:
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(28,0),A=(20,15);
+pair Ef=A+dot(B-A,unit(C-A))*unit(C-A);
+pair Ff=A+dot(C-A,unit(B-A))*unit(B-A);
+pair H=(20,32/3);
+draw(circle((A+H)/2,abs(A-H)/2),blue+dashed);
+draw(A--B--C--cycle,linewidth(1));
+draw(B--Ef,linewidth(0.8));draw(C--Ff,linewidth(0.8));
+draw(A--H,blue+dashed);
+real s=1.0;
+pair u=unit(A-Ef),v=unit(B-Ef); draw(Ef+s*u--Ef+s*u+s*v--Ef+s*v);
+pair u2=unit(A-Ff),v2=unit(C-Ff); draw(Ff+s*u2--Ff+s*u2+s*v2--Ff+s*v2);
+dot(A);dot(B);dot(C);dot(Ef);dot(Ff);dot(H);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$E$",Ef,1.8*dir(-15));label("$F$",Ff,W);label("$H$",H,3*S);
+label("$25$",(10,7.5),NW);label("$17$",(24,7.5),NE);label("$28$",(14,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The altitude from $A$ is the vertical line $x=20$. The altitude from $B$ is perpendicular to $AC$, whose direction is $C-A=(8,-15)$, so it is the line $8x-15y=0$; at $x=20$ it gives $y=\dfrac{32}{3}$. Hence $H=\left(20,\dfrac{32}{3}\right)$ and
+\[
+AH=15-\dfrac{32}{3}=\dfrac{13}{3}.
+\]
+The circumradius of triangle $AEF$ is $\dfrac{AH}{2}=\boxed{\dfrac{13}{6}}$.
+
+\textbf{Check.} Triangle $AEF$ is similar to triangle $ABC$ with ratio $\cos A$ (because $AE=AB\cos A$ and $AF=AC\cos A$), so its circumradius is $R\cos A$, where $R=\dfrac{abc}{4K}=\dfrac{25\cdot28\cdot17}{840}=\dfrac{85}{6}$. Indeed $\dfrac{85}{6}\cdot\dfrac{13}{85}=\dfrac{13}{6}$.

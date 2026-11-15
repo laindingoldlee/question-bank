@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1364535_help_please
+% Stable identity: aops-topic-1364535-q01
+The third angle is $\angle A=180^\circ-41^\circ-41^\circ=98^\circ$, so the triangle is obtuse and the circumcentre $O$ lies outside it, on the other side of $BC$ from $A$.
+
+By the inscribed angle theorem, the arc $BC$ not containing $A$ measures $2\angle A=196^\circ$. So the arc $BC$ containing $A$ measures $360^\circ-196^\circ=164^\circ$, and the angle $\angle BOC$ (which is less than $180^\circ$) is the central angle on this arc.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), A=dir(90), B=dir(172), C=dir(8);
+draw(circle(O,1),blue);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(O--B,red+dashed); draw(O--C,red+dashed);
+draw(arc(O,0.08,8,172),red); draw((0,0.085)--(0,0.3),red+linewidth(0.3)); label("$164^\circ$",(0,0.3),N,red+fontsize(8pt));
+draw(arc(B,0.3,0,41)); label("$41^\circ$",B+0.48*dir(20),fontsize(8pt));
+draw(arc(C,0.3,139,180)); label("$41^\circ$",C+0.48*dir(160),fontsize(8pt));
+dot(O);
+label("$A$",A,N); label("$B$",B,W); label("$C$",C,E); label("$O$",O,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Alternatively, $OB=OC$ and $\angle OBC=\angle OCB=\angle A-90^\circ=8^\circ$ when $\angle A$ is obtuse, giving $180^\circ-16^\circ=164^\circ$. So
+\[
+\angle BOC=\boxed{164^\circ}.
+\]
+(The formula $\angle BOC=2\angle A$ would give $196^\circ$, which is the reflex angle; it applies directly only when $\angle A$ is acute.)

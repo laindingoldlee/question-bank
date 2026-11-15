@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3174937_2023_dmc_individual_theme_round__deerfield_math_competition__planets
+% Stable identity: aops-topic-3174937-q06
+The asteroid distance at time $t$ is $180-20t-5t^2$. Before reaching the ship, it meets the satellite only at the initial-facing point of the orbit, so a positive-time interception has $t=\dfrac{kR}{5}$ for an integer number $k\ge1$ of full revolutions. Put $m=kR$. Then $R=180-4m-\dfrac{m^2}{5}>0$. Since $R,m$ are integers, $5\mid m^2$, hence $m=5j$ for a positive integer $j$. Positivity gives $j\le4$, and $R=180-20j-5j^2$ has values $155,120,75,20$ for $j=1,2,3,4$. The further condition $m=kR$ requires $R\mid5j$; only $R=20$, $j=4$ works. It intercepts at $t=4$ seconds after one revolution. An immediate interception at $R=180$ is larger. Thus the minimum is $\boxed{20}$ kilometers.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(circle((0,0),1));dot((0,0));dot((1,0));draw((3,0)--(1,0),red,Arrow);label("ship",(0,0),S);label("satellite",(1,0),S);label("asteroid",(3,0),N);label("$R$",(.5,0),N);
+\end{asy}

@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2532147_divisibility_by_7
+% Stable identity: aops-topic-2532147-q01
+Modulo $7$, the powers of $2$ repeat with period $3$: $2^n\equiv2,4,1$ for $n\equiv1,2,0\pmod3$. The squares depend on $n$ mod $7$: $n^2\equiv1$ for $n\equiv\pm1$, $n^2\equiv4$ for $n\equiv\pm2$, $n^2\equiv2$ for $n\equiv\pm3$ and $n^2\equiv0$ for $n\equiv0$. Since $2^n$ is never $0$ mod $7$, we need:
+\begin{itemize}
+\item $2^n\equiv1$, $n^2\equiv1$: $n\equiv0\pmod3$ and $n\equiv1$ or $6\pmod7$, i.e. $n\equiv15$ or $6\pmod{21}$;
+\item $2^n\equiv2$, $n^2\equiv2$: $n\equiv1\pmod3$ and $n\equiv3$ or $4\pmod7$, i.e. $n\equiv10$ or $4\pmod{21}$;
+\item $2^n\equiv4$, $n^2\equiv4$: $n\equiv2\pmod3$ and $n\equiv2$ or $5\pmod7$, i.e. $n\equiv2$ or $5\pmod{21}$.
+\end{itemize}
+So $7\mid2^n-n^2$ exactly when $n\equiv2,4,5,6,10,15\pmod{21}$: six residues in each block of $21$ consecutive integers.
+
+Since $10000=21\cdot476+4$, the integers $1,\dots,9996$ form $476$ full blocks, giving $476\cdot6=2856$ values. Among $9997,\dots,10000$, which are $\equiv1,2,3,4\pmod{21}$, two more work. The answer is $\boxed{2858}$.

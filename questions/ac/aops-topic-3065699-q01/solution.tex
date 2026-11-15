@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h3065699_triangles_all_acute_or_all_obtuse
+% Stable identity: aops-topic-3065699-q01
+(a) Three vertices of an equilateral triangle work. Any four points either form a convex quadrilateral, which has an interior angle at least $90^\circ$, or have one point inside the triangle of the other three. In the latter case the three angles around the interior point sum to $360^\circ$, so one is at least $120^\circ$; because the point is strictly inside the triangle, each consecutive angle is less than $180^\circ$ and is a triangle angle. Either case produces a triangle that is not acute. Thus the maximum is $\boxed{3}$. (b) Yes. Choose $(i,i^2)$ for $i=1,\ldots,n$. No three lie on a line because a line meets a parabola in at most two points. For $i<j<k$, the dot product of vectors from the middle point to the outer points is $(i-j)(k-j)\bigl[1+(i+j)(k+j)\bigr]<0$. Thus the angle at $(j,j^2)$ is obtuse. This works for every $n$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] P={(1,1),(2,4),(3,9),(4,16)};for(int i=0;i<4;++i){dot(P[i]);label("$("+string(i+1)+","+string((i+1)^2)+")$",P[i],E);}draw(P[0]--P[1]--P[3]--cycle,blue);
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(2,0),C=(2,2),D=(0,2); draw(A--B--C--D--cycle); draw(A--C,dashed); label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW); label("Convex case",(1,-.6)); pair U=(4,0),V=(7,0),Wpt=(5,3),P=(5.2,1); draw(U--V--Wpt--cycle); draw(P--U); draw(P--V); draw(P--Wpt); label("$P$",P,E); label("$U$",U,SW); label("$V$",V,SE); label("$W$",Wpt,N); label("Interior-point case",(5.5,-.6));
+\end{asy}

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1392853_number_theory
+% Stable identity: aops-topic-1392853-q01
+\textbf{Rational points.} A line through $(-1,0)$ with rational slope $t$ is $Y=t(X+1)$. Substituting into $X^2+XY+Y^2=1$:
+\[
+(X^2-1)+tX(X+1)+t^2(X+1)^2=0\iff (X+1)\left[(X-1)+tX+t^2(X+1)\right]=0 .
+\]
+Besides $X=-1$, the second intersection has $X(1+t+t^2)=1-t^2$, so
+\[
+X=\dfrac{1-t^2}{1+t+t^2},\qquad Y=t(X+1)=\dfrac{2t+t^2}{1+t+t^2}.
+\]
+Conversely, every rational point $(X,Y)\ne(-1,0)$ with $X\ne-1$ lies on the line through $(-1,0)$ with the rational slope $t=\dfrac{Y}{X+1}$, so it is obtained this way.
+
+\textbf{Integer triples.} Put $t=\dfrac{n}{m}$ and multiply through by $m^2$: then $X=\dfrac{a}{c}$, $Y=\dfrac{b}{c}$ with
+\[
+a=m^2-n^2,\qquad b=2mn+n^2,\qquad c=m^2+mn+n^2 .
+\]
+Directly, since $a+b=m^2+2mn$,
+\[
+a^2+ab+b^2=a(a+b)+b^2=(m^2-n^2)(m^2+2mn)+(2mn+n^2)^2=m^4+2m^3n+3m^2n^2+2mn^3+n^4=(m^2+mn+n^2)^2,
+\]
+so these triples are solutions; for $m>n>0$ all three entries are positive. (For $m=2$, $n=1$ we get $(3,5,7)$.)
+
+Now let $(a,b,c)$ be any solution in positive integers. Then $(X,Y)=\left(\dfrac{a}{c},\dfrac{b}{c}\right)$ is a rational point of the curve with $X,Y>0$, so $t=\dfrac{Y}{X+1}$ is a positive rational number, and $X>0$ forces $1-t^2>0$, i.e. $t<1$. Writing $t=\dfrac{n}{m}$ with integers $m>n>0$, we get $\dfrac{a}{c}=\dfrac{m^2-n^2}{m^2+mn+n^2}$ and $\dfrac{b}{c}=\dfrac{2mn+n^2}{m^2+mn+n^2}$, so
+\[
+(a,b,c)=\lambda\left(m^2-n^2,\ 2mn+n^2,\ m^2+mn+n^2\right),\qquad \lambda=\dfrac{c}{m^2+mn+n^2}>0 .
+\]
+So every positive solution is a rational multiple of a triple in the family.

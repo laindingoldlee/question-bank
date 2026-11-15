@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1625313_i_dont_know_how_to_do
+% Stable identity: aops-topic-1625313-q01
+We need $m\ge\sqrt{2016}$ for the second root to be real. Note that $2016=144\cdot14$, so $\sqrt{2016}=12\sqrt{14}$ is irrational.
+
+Let $a=\sqrt{n+\sqrt{2016}}$, $b=\sqrt{m-\sqrt{2016}}$ and suppose $r=a+b$ is rational; $r>0$ since $a>0$. Then $a^2-b^2=n-m+2\sqrt{2016}$, so
+\[
+a-b=\dfrac{n-m+2\sqrt{2016}}{r},\qquad a=\dfrac{(a+b)+(a-b)}{2}=p+q\sqrt{2016},\quad\text{with }p=\dfrac{r^2+n-m}{2r},\ q=\dfrac{1}{r}\ \text{rational}.
+\]
+Squaring, $a^2=p^2+2016q^2+2pq\sqrt{2016}=n+\sqrt{2016}$. Since $\sqrt{2016}$ is irrational, comparing gives $2pq=1$ and $p^2+2016q^2=n$. From $2pq=1$ we get $p=\dfrac {r}{2}$, i.e. $n-m=0$. So $m=n$, and with $w=\dfrac {r}{2}$ (rational, positive)
+\[
+n=w^2+\dfrac{504}{w^2},\qquad a=w+\dfrac{\sqrt{504}}{w},\qquad b=r-a=w-\dfrac{\sqrt{504}}{w}.
+\]
+Since $b\ge0$ we need $v=w^2\ge\sqrt{504}$. Now $v$ is a root of $v^2-nv+504=0$, so $v=\dfrac{n\pm\sqrt{n^2-2016}}{2}$; the two roots have product $504$, so the root with $v\ge\sqrt{504}$ is the larger one, $v=\dfrac{n+k}{2}$, where $k=\sqrt{n^2-2016}$ must be rational, hence a non-negative integer (and $k\ne0$, as $2016$ is not a square).
+
+So $(n-k)(n+k)=2016$, and $n-k$, $n+k$ have the same parity, so both are even. Also $v=\dfrac{n+k}{2}=w^2$ must be the square of a rational number; being an integer, it must be a perfect square. The even factor pairs $(n-k,n+k)$ of $2016$ with $n+k>n-k$ are
+\[
+(2,1008),(4,504),(6,336),(8,252),(12,168),(14,144),(16,126),(18,112),(24,84),(28,72),(36,56),(42,48),
+\]
+and the values of $\dfrac{n+k}{2}$ are $504,252,168,126,84,72,63,56,42,36,28,24$. Only $36$ is a perfect square, giving $n+k=72$, $n-k=28$, so $n=50$ (and $k=22$, $w=6$, $r=12$).
+
+\textbf{Check.} $(6+\sqrt{14})^2=50+12\sqrt{14}=50+\sqrt{2016}$ and $(6-\sqrt{14})^2=50-\sqrt{2016}$ with $6-\sqrt{14}>0$, so
+\[
+\sqrt{50+\sqrt{2016}}+\sqrt{50-\sqrt{2016}}=(6+\sqrt{14})+(6-\sqrt{14})=12 .
+\]
+The only pair is $\boxed{(m,n)=(50,50)}$.

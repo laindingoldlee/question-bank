@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1404162_lithuanian_math_kangaroo_2008__student_21
+% Stable identity: aops-topic-1404162-q30
+The two-digit multiples of $17$ are $17,34,51,68,85$ and of $23$ are $23,46,69,92$. So each digit determines the possible next digits:
+\[
+1\to7,\quad 2\to3,\quad 3\to4,\quad 4\to6,\quad 5\to1,\quad 6\to8\text{ or }9,\quad 8\to5,\quad 9\to2,
+\]
+and nothing may follow $7$ (and $0$ never occurs). The digits $2\to3\to4\to6\to9\to2$ form a cycle of length $5$, and the only exit is $6\to8\to5\to1\to7$, after which the number must stop.
+
+Since $8,5,1,7$ can be followed by at most $3$ more digits, a $2008$-digit number must start on the cycle. Reading backwards from its end, it is determined by its last digit:
+\begin{itemize}
+\item it never leaves the cycle: it ends in one of $2,3,4,6,9$, giving $5$ numbers;
+\item it leaves the cycle at the end, finishing with $\dots68$, $\dots685$, $\dots6851$ or $\dots68517$: $4$ more numbers.
+\end{itemize}
+(In each case the number is determined, since every digit on the cycle and in the tail has a unique predecessor within the number.) The total is $5+4=\boxed{9}$, choice (D).

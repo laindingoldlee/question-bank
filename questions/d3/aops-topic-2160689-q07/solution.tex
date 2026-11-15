@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2160689_basic_geometry
+% Stable identity: aops-topic-2160689-q07
+The area of a trapezoid is the average of the bases times the height:
+\[\dfrac{12+6}{2}\cdot9=9\cdot9=\boxed{81}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(12,0), C=(8,9), D=(2,9);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(D--(2,0),dashed); draw((2,0)--(2.7,0)--(2.7,0.7)--(2,0.7));
+label("$12$",(A+B)/2,S); label("$6$",(C+D)/2,N); label("$9$",(2,4.5),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

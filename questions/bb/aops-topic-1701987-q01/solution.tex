@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1701987_problem_29_chapter_sprint_2007_mathcounts
+% Stable identity: aops-topic-1701987-q01
+Take the spacing to be $1$, so the possible distances between grid points are $1,\sqrt2,2,\sqrt5,2\sqrt2$. Sort the isosceles triangles by shape.
+\begin{itemize}
+\item \textbf{Legs $1,1$, base $\sqrt2$} (right isosceles in a unit square): each of the $4$ unit squares gives $4$ such triangles (omit one vertex), so $16$.
+\item \textbf{Legs $\sqrt2,\sqrt2$, base $2$} (right angle at the apex): the base is a whole row or a whole column of the grid ($3+3=6$ choices), and the apex is a grid point at distance $1$ from the midpoint of the base, perpendicular to it. For the middle row or column there are $2$ such points, for an outer row or column only $1$, so $2\cdot(2+1+1)=8$.
+\item \textbf{Legs $2,2$, base $2\sqrt2$} (right isosceles with legs along the sides of the big square): one for each corner of the big square, so $4$.
+\item \textbf{Legs $\sqrt5,\sqrt5$, base $2$}: the base is a side of the big square and the apex is the midpoint of the opposite side, so $4$.
+\item \textbf{Legs $\sqrt5,\sqrt5$, base $\sqrt2$}: a corner of the big square together with the two points that are a knight's move away from it, such as $(0,0),(1,2),(2,1)$, so $4$.
+\end{itemize}
+No other combination of two equal sides gives a triangle (for example two sides of length $2\sqrt2$ would need both diagonals of the big square, and three points with two sides of length $1$ along a line are collinear).
+
+\begin{asy}
+usepackage("amsmath");
+size(11cm);
+defaultpen(fontsize(10pt));
+void grid(pair o){for(int i=0;i<3;++i) for(int j=0;j<3;++j) dot(o+(i,j),linewidth(3));}
+pair[] o={(0,0),(3.6,0),(7.2,0),(10.8,0),(14.4,0)};
+for(int k=0;k<5;++k) grid(o[k]);
+draw(o[0]+(0,0)--o[0]+(1,0)--o[0]+(0,1)--cycle,blue+linewidth(0.9));
+draw(o[1]+(0,1)--o[1]+(1,0)--o[1]+(2,1)--cycle,blue+linewidth(0.9));
+draw(o[2]+(0,0)--o[2]+(2,0)--o[2]+(0,2)--cycle,blue+linewidth(0.9));
+draw(o[3]+(0,0)--o[3]+(1,2)--o[3]+(2,1)--cycle,blue+linewidth(0.9));
+draw(o[4]+(0,0)--o[4]+(2,0)--o[4]+(1,2)--cycle,blue+linewidth(0.9));
+label("$16$",o[0]+(1,-0.6));label("$8$",o[1]+(1,-0.6));label("$4$",o[2]+(1,-0.6));
+label("$4$",o[3]+(1,-0.6));label("$4$",o[4]+(1,-0.6));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The total is $16+8+4+4+4=\boxed{36}$. (The figure shows one example of each shape with its count.)

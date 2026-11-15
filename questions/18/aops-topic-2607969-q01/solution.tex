@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2607969_2005_amc_8_problemsproblem_21
+% Stable identity: aops-topic-2607969-q01
+\textbf{(a)} There are $\dbinom63=20$ sets of three dots. Three dots are collinear only when they form a whole row, which happens for $2$ sets. So there are $20-2=18$ triangles, answer $\boxed{\textbf{(C)}\ 18}$.
+
+\textbf{(b)} Every triangle has two vertices in one row and one in the other. Use coordinates with the rows $y=0$ and $y=1$; by reflecting, the two same-row vertices can be taken in the bottom row.
+\begin{itemize}
+\item Base of length $1$, say $(0,0),(1,0)$: the third vertex $(0,1)$ or $(1,1)$ gives sides $1,1,\sqrt2$; the third vertex $(2,1)$ gives $1,\sqrt2,\sqrt5$.
+\item Base of length $2$, $(0,0),(2,0)$: the third vertex $(1,1)$ gives $\sqrt2,\sqrt2,2$; the third vertex $(0,1)$ or $(2,1)$ gives $1,2,\sqrt5$.
+\end{itemize}
+The four side-length triples are different, so there are $\boxed{4}$ non-congruent triangles.
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+pair[][] T={{(0,0),(1,0),(0,1)},{(0,0),(1,0),(2,1)},{(0,0),(2,0),(0,1)},{(0,0),(2,0),(1,1)}};
+string[] L={"$1,\ 1,\ \sqrt2$","$1,\ \sqrt2,\ \sqrt5$","$1,\ 2,\ \sqrt5$","$\sqrt2,\ \sqrt2,\ 2$"};
+for(int k=0;k<4;++k){
+  pair sh=(3.2*k,0);
+  for(int i=0;i<3;++i) for(int j=0;j<2;++j) dot(sh+(i,j),gray(0.6)+linewidth(3));
+  filldraw(shift(sh)*(T[k][0]--T[k][1]--T[k][2]--cycle),lightgray,linewidth(0.8));
+  for(int v=0;v<3;++v) dot(sh+T[k][v],linewidth(3.5));
+  label(L[k],sh+(1,-0.15),S,fontsize(8pt));}
+\end{asy}
+
+So the $18$ triangles of (a) fall into $4$ congruence classes. In the contest problem ``distinct'' means different vertex sets, which is why its answer is $18$ and not $4$.

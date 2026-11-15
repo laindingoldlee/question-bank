@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1486345_euclidean_algorithm
+% Stable identity: aops-topic-1486345-q01
+\textbf{(a)} If $d\mid a$ and $d\mid b$, then $d\mid a-qb$. Conversely, if $d\mid b$ and $d\mid a-qb$, then $d\mid(a-qb)+qb=a$. So the pairs $(a,b)$ and $(b,a-qb)$ have exactly the same common divisors, and hence the same greatest common divisor.
+
+\textbf{(b)} The remainders satisfy $b>r_1>r_2>\cdots\ge0$, a strictly decreasing sequence of nonnegative integers, so some remainder is $0$ after at most $b$ steps. By (a) (with $a-qb=r$) every step keeps the gcd of the current pair unchanged. When the pair becomes $(d,0)$, the gcd is $\gcd(d,0)=d$, the last nonzero remainder. So $d=\gcd(a,b)$.
+
+\textbf{(c)}
+\[1071=1\cdot1029+42,\qquad 1029=24\cdot42+21,\qquad 42=2\cdot21.\]
+So $\gcd(1071,1029)=21$. Working backwards,
+\[21=1029-24\cdot42=1029-24\,(1071-1029)=25\cdot1029-24\cdot1071,\]
+i.e. $\boxed{21=1071\cdot(-24)+1029\cdot25}$.
+
+\textbf{(d)} Since $n^2+5=(n+3)(n-3)+14$, part (a) with $q=n-3$ gives
+\[\gcd\left(n^2+5,\ n+3\right)=\gcd(n+3,\ 14).\]
+So the gcd is a divisor of $14$. All four divisors occur: $n=2$ gives $\gcd(5,9)=1$, $n=1$ gives $\gcd(4,6)=2$, $n=4$ gives $\gcd(7,21)=7$, and $n=11$ gives $\gcd(14,126)=14$. The possible values are $\boxed{1,\ 2,\ 7,\ 14}$.

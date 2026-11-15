@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1742347_weird_necklace_problem
+% Stable identity: aops-topic-1742347-q01
+There are $16$ beads; use Burnside's lemma with the dihedral group of order $32$ acting on the arrangements of the beads at the vertices of a regular $16$-gon.
+\begin{itemize}
+\item \textbf{Identity:} all $\dfrac{16!}{3!\,5!\,2!\,2!\,4!}=302702400$ arrangements.
+\item \textbf{Rotations by $r\ne0$ steps:} the vertices fall into $\gcd(r,16)$ cycles of equal length $L=\dfrac{16}{\gcd(r,16)}\ge2$, and a fixed arrangement is constant on each cycle, so every colour count would be a multiple of $L$. But $3$ is odd, so no arrangement is fixed.
+\item \textbf{Reflections through two opposite beads} ($8$ of them): the two beads on the axis are fixed and the other $14$ form $7$ pairs. The colours with odd counts (red and blue) must each have one bead on the axis: $2$ ways to place them. The $7$ pairs then get $1$ red, $2$ blue, $1$ orange, $1$ white, $2$ black: $\dfrac{7!}{1!\,2!\,1!\,1!\,2!}=1260$ ways. So $2520$ fixed arrangements each.
+\item \textbf{Reflections through two opposite gaps} ($8$ of them): all $16$ beads are in $8$ pairs, so every count would be even; none is fixed.
+\end{itemize}
+The number of necklaces is
+\[
+\dfrac{302702400+8\cdot2520}{32}=\dfrac{302722560}{32}=\boxed{9460080}.
+\]

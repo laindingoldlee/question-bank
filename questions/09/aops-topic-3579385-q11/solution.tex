@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3579385_1434th_post
+% Stable identity: aops-topic-3579385-q11
+Partition the labels into $U=\{1,4\}$ and $V=\{2,3\}$. Two labels from the same group are either equal or sum to $5$, so adjacent cells must use opposite groups. Conversely any two labels from opposite groups satisfy both restrictions. The grid is connected, so choosing the group of one cell forces the checkerboard group pattern everywhere; there are two patterns. Then each of the sixteen cells independently chooses either label in its group. The total is $2\cdot2^{16}=\boxed{131072}$.
+\begin{asy}
+import geometry;
+size(260);
+for(int i=0;i<4;++i)for(int j=0;j<4;++j){filldraw((i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle,((i+j)%2==0?lightgray:white),black);label(((i+j)%2==0?"$U$":"$V$"),(i+.5,j+.5));}
+\end{asy}

@@ -1,0 +1,8 @@
+The mean condition gives $a_{j+1}-a_j=a_j-a_{j-1}$, so the numbers form an arithmetic progression. Its common difference is $\dfrac{44-20}{4}=6$. The row is $20,26,32,38,44$, giving $\boxed{a_3=32}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"20", "26", "32", "38", "44"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("the completed arithmetic progression",(2.5,-1.2));
+\end{asy}

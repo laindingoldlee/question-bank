@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1266239_question_i_came_up_with
+% Stable identity: aops-topic-1266239-q01
+Angle $ACB$ is a right angle exactly when $C$ lies on the circle with diameter $AB$ (Thales' theorem and its converse), with $C\ne A,B$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(-1,0),B=(1,0); draw(unitcircle,blue+dashed); draw(A--B,linewidth(1));
+pair C=dir(60),C2=dir(150),C3=dir(-110);
+draw(A--C--B); draw(A--C2--B,gray); draw(A--C3--B,gray);
+dot(A);dot(B);dot(C);dot(C2);dot(C3); label("$A$",A,W);label("$B$",B,E);label("$C$",C,NE); label("$5$",(0.5,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the points $C$ form the circle of radius $5$ centred at the midpoint of $AB$, with the two points $A$ and $B$ removed. The region it bounds is a disc of radius $5$, with area $\boxed{25\pi}$.

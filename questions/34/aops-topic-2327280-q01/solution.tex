@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2327280_trapezoid_proofs
+% Stable identity: aops-topic-2327280-q01
+Mark the angles $\angle1=\angle CAB$, $\angle2=\angle DAC$ and $\angle3=\angle DCA$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real t=70; pair A=(0,0), D=dir(t), C=D+(1,0), B=(1+2*Cos(t),0);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(A--C,blue);
+dot(A); dot(B); dot(C); dot(D);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+void tick(pair P, pair Q){pair M=(P+Q)/2, u=unit(Q-P), v=rotate(90)*u; draw(M-0.04*v--M+0.04*v,linewidth(0.8));}
+tick(A,D); tick(D,C); tick(B,C);
+real a1=degrees(C-A);
+draw(arc(A,0.25,0,a1),red); draw(arc(A,0.3,a1,t),red);
+draw(arc(C,0.25,180,180+a1),red);
+label("$1$",A+0.42*dir(a1/2),red+fontsize(7pt)); label("$2$",A+0.48*dir((a1+t)/2),red+fontsize(7pt)); label("$3$",C+0.42*dir(180+a1/2),red+fontsize(7pt));
+\end{asy}
+
+\begin{itemize}
+\item Since $AD=DC$, triangle $ADC$ is isosceles with apex $D$, so its base angles are equal: $\angle2=\angle DAC=\angle DCA=\angle3$.
+\item Since $DC\parallel AB$, the alternate angles made by the transversal $AC$ are equal: $\angle3=\angle DCA=\angle CAB=\angle1$.
+\end{itemize}
+Hence $\angle DAC=\angle CAB$, so $AC$ bisects $\angle DAB$. $\blacksquare$ (By symmetry, $BD$ bisects $\angle ABC$. Only $AD=DC$ and $AB\parallel CD$ were used.)

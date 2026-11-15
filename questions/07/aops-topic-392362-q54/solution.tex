@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h392362_2010_chapter_countdown_round__rectangles
+% Stable identity: aops-topic-392362-q54
+Let the sides be positive integers $l\ge w$. The condition $lw=2l+2w$ can be rewritten as
+\[
+lw-2l-2w+4=4,\qquad (l-2)(w-2)=4 .
+\]
+Both factors are integers greater than $-2$, and their product is positive. If both were negative, each would be $-1$ and the product would be $1$; so both are positive. The factorisations $4=4\cdot1=2\cdot2$ give
+\[
+(l,w)=(6,3)\quad\text{or}\quad(l,w)=(4,4).
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+void rect(pair o,int w,int h,string s){
+ for(int i=0;i<=w;++i) draw(o+(i,0)--o+(i,h),gray(0.75));
+ for(int j=0;j<=h;++j) draw(o+(0,j)--o+(w,j),gray(0.75));
+ draw(o--o+(w,0)--o+(w,h)--o+(0,h)--cycle,linewidth(0.9));
+ label("$"+(string)w+"$",o+(w/2,0),S); label("$"+(string)h+"$",o+(0,h/2),W);
+ label(s,o+(w/2,h),N);
+}
+rect((0,0),6,3,"area $18$, perimeter $18$");
+rect((8.5,0),4,4,"area $16$, perimeter $16$");
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The perimeters are $18$ and $16$, so the difference is $\boxed{2}$.

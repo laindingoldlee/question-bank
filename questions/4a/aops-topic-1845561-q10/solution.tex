@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h1845561_problems_collection
+% Stable identity: aops-topic-1845561-q10
+Let the palindrome have $2m$ digits $d_{2m-1}d_{2m-2}\cdots d_1d_0$, where $d_j$ is the digit of $10^j$. Being a palindrome means $d_j=d_{2m-1-j}$ for all $j$. Group the digits in the pairs $\{j,\ 2m-1-j\}$ for $j=0,\dots,m-1$:
+\[
+N=\sum_{j=0}^{m-1}d_j\left(10^j+10^{2m-1-j}\right)=\sum_{j=0}^{m-1}d_j\,10^j\left(1+10^{2m-1-2j}\right).
+\]
+The exponent $2m-1-2j$ is odd, and $10\equiv-1\pmod{11}$, so $10^{2m-1-2j}\equiv-1$ and $1+10^{2m-1-2j}\equiv0\pmod{11}$. Hence every term, and therefore $N$, is divisible by $11$. (Equivalently: in the alternating digit sum the two digits of each pair have opposite signs and cancel, so the alternating sum is $0$.) For example $12255221=11\cdot1114111$.

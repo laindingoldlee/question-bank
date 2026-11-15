@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1365649_summation_of_digits
+% Stable identity: aops-topic-1365649-q01
+Write the number as $\overline{abcd}$ with $1\le a\le9$ and $0\le b,c,d\le9$. Put $a'=a-1$, so we count solutions of
+\[
+a'+b+c+d=16,\qquad 0\le a'\le8,\quad 0\le b,c,d\le9 .
+\]
+\textbf{Stars and bars without the upper bounds:} $\dbinom{16+3}{3}=\dbinom{19}{3}=969$.
+
+\textbf{Subtract the solutions that break a bound} (complementary counting with inclusion-exclusion):
+\begin{itemize}
+\item $a'\ge9$: put $a''=a'-9$, then $a''+b+c+d=7$: $\dbinom{10}{3}=120$ solutions.
+\item $b\ge10$: then the remaining sum is $6$: $\dbinom93=84$ solutions; the same for $c$ and for $d$.
+\item Two bounds broken at once would need a sum of at least $19>16$, impossible.
+\end{itemize}
+So the count is $969-120-3\cdot84=\boxed{597}$.

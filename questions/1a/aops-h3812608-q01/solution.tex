@@ -1,0 +1,7 @@
+With the spines facing the observer, volume 1's front cover is on its right, next to volume 2. Volume 3's back cover is on its left, also next to volume 2. Between their outer surfaces lies just volume 2, of thickness $\boxed2$ inches. If instead the journey included boring through the full starting and ending covers, it would be $\dfrac{1}{4}+2+\dfrac{1}{4}=\dfrac{5}{2}$ inches; that is a different endpoint convention.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int i=0;i<3;++i){draw(box((2i,0),(2i+2,3)));fill(box((2i,0),(2i+.25,3)),lightgray);fill(box((2i+1.75,0),(2i+2,3)),lightgray);label("volume "+string(i+1),(2i+1,2));label(rotate(90)*"back",(2i+.125,3.15),N);label(rotate(90)*"front",(2i+1.875,3.15),N);}draw((2,1)--(4,1),red+linewidth(1.4),Arrows);label("$2$ inches",(3,.5));
+\end{asy}

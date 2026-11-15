@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1472113_how_do_you_solve_these
+% Stable identity: aops-topic-1472113-q01
+\textbf{Adding curves one at a time.} Suppose a new curve meets the curves already drawn in $k$ points (all distinct).
+\begin{itemize}
+\item A new \emph{line} is cut into $k+1$ pieces; each piece splits at most one region into two, so the number of regions grows by at most $k+1$.
+\item A new \emph{circle} with $k\ge1$ crossing points is cut into $k$ arcs, so the number of regions grows by at most $k$.
+\end{itemize}
+Equality holds when every new piece really separates a region into two, which happens when the curves are in general position (every pair of curves crosses as often as possible and no three curves pass through one point).
+
+\textbf{The count.} Draw the lines first. Two lines meet in at most $1$ point, so the $j$-th line adds at most $(j-1)+1=j$ regions: three lines give at most $1+1+2+3=7$ regions. A circle meets a line in at most $2$ points and another circle in at most $2$ points, so the $i$-th circle has at most $2\cdot3+2(i-1)$ crossing points and adds at most that many regions:
+\[
+7+(6+8+10+12)=\boxed{43}.
+\]
+This is attained: for example, take the circles of radius $10$ centred at $(0,0)$, $(1,0)$, $(0,1)$, $(1,1)$ and three lines through points near the origin in general directions, such as $y=0.3x+0.1$, $y=-2x+0.2$ and $y=5x-0.7$. Every pair of curves crosses the maximum number of times and all $3+12+24=39$ crossing points are different.
+
+\textbf{General formula.} The same argument gives, for $l\ge1$ lines and $c$ circles,
+\[
+1+\dfrac{l(l+1)}{2}+2lc+c(c-1)
+\]
+regions. (A common slip is to add the lines last and count $k+1$ new regions for the first line; when there are no other lines, the two infinite ends of that line lie in the same outer region, so it adds only $k$.)

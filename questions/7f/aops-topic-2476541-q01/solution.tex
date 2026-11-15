@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2476541_quick_number_theory_verification_question
+% Stable identity: aops-topic-2476541-q01
+\textbf{(a)} A congruence $a\equiv b\pmod m$ allows us to replace a \emph{base} $a$ by $b$, because $a^k-b^k$ is a multiple of $a-b$. It says nothing about exponents. For example, $3\equiv0\pmod3$, but $2^3=8\equiv2\pmod3$ while $2^0=1$. (The correct rule is Euler's theorem: if $\gcd(a,m)=1$, exponents of $a$ may be reduced modulo $\varphi(m)$, not modulo $m$.)
+
+\textbf{(b)} \emph{Modulo $100$.} Work modulo $4$ and modulo $25$. Clearly $2^{100}\equiv0\pmod4$. Since $\varphi(25)=20$ and $\gcd(2,25)=1$, Euler's theorem gives $2^{20}\equiv1\pmod{25}$, so $2^{100}=\left(2^{20}\right)^5\equiv1\pmod{25}$. The numbers below $100$ that are $\equiv1\pmod{25}$ are $1,26,51,76$, and the only multiple of $4$ among them is $76$. So $2^{100}\equiv76\pmod{100}$ and
+\[2^{100}-2\equiv\boxed{74}\pmod{100}.\]
+
+\emph{Modulo $101$.} $101$ is prime, so by Fermat's little theorem $3^{100}\equiv1\pmod{101}$. Then $3^{102}\equiv3^2=9$ and
+\[3^{102}-5\equiv\boxed{4}\pmod{101}.\]
+
+Both of the student's answers ($99$) are wrong.

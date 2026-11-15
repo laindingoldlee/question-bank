@@ -1,0 +1,7 @@
+Each choice of four vertices determines exactly one crossing of the diagonals joining opposite vertices. In a regular heptagon these $\binom74=35$ crossings are distinct. An exact way to check the absence of coincidences is to set $\zeta=e^{\dfrac{2\pi i}{7}}$: the line through $\zeta^a,\zeta^b$ is $z+\zeta^{a+b}\overline z=\zeta^a+\zeta^b$. Solve this two-by-two linear system for each alternating quadruple and reduce using $1+\zeta+\cdots+\zeta^6=0$. The results have 35 distinct coefficient vectors in the basis $1,\zeta,\ldots,\zeta^5$. This is a finite exact test, independent of the drawing. There are consequently $7+35=42$ marked points. A segment is determined uniquely by its unordered pair of distinct endpoints, even when several points are collinear. Thus $\binom{42}{2}=\boxed{861}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair[] V;for(int i=0;i<7;++i){V.push(dir(90+360*i/7));label("$"+string(i+1)+"$",V[i],V[i]);}for(int i=0;i<7;++i)for(int j=i+1;j<7;++j)draw(V[i]--V[j],gray);for(int a=0;a<7;++a)for(int b=a+1;b<7;++b)for(int c=b+1;c<7;++c)for(int d=c+1;d<7;++d)dot(extension(V[a],V[c],V[b],V[d]));
+\end{asy}

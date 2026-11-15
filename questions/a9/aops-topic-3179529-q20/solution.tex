@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h3179529_2014_emcc_individual_speed_test__exeter_math_club_competition
+% Stable identity: aops-topic-3179529-q20
+Maintain that product exactly. The test is precisely the stated divisibility rule, so induction guarantees the generated list is correct. The first twenty are $1,2,3,4,5,7,9,11,13,16,17,19,23,25,29,31,37,41,43,47$. The answer is $\boxed{47}$.
+\begin{verbatim}
+spoken=[1]; product=1; n=2
+while len(spoken)<20:
+    if product%n:
+        spoken.append(n); product*=n
+    n+=1
+assert spoken[-1]==47
+\end{verbatim}

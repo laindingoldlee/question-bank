@@ -1,0 +1,8 @@
+Let $d_i$ be the difference of two configurations, with $d_0=d_{n+1}=0$. Equal displayed sums require $d_{i-1}+d_i+d_{i+1}=0$. Starting with $d_1=t$ gives the repeating pattern $t,-t,0$. A nonzero solution meets the final boundary condition precisely when $n+1$ is divisible by three. Taking $t=1$ produces two valid binary configurations by putting mines at the positive positions in one and negative positions in the other. The eligible lengths are $2,5,8,11,14,17$, whose sum is $\boxed{57}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"1", "0", "0", "1", "0"}, {"0", "1", "0", "0", "1"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("Two length-five configurations with identical clues",(2.5,-2.2));
+\end{asy}

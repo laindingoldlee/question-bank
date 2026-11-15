@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2713043_one_eight_seven_a_hundred_eighty_seven
+% Stable identity: aops-topic-2713043-q01
+For $m\ge3$ we have $2\le f(m)<m$, and $f(2)=2$, so iterating $f$ reaches $2$; let $L(m)$ be the number of steps. Then orz means $L(m)\ge5$, very orz means $L(m)\ge6$, and $L(m)=1+L(f(m))$.
+\begin{itemize}
+\item $L\ge2$: $m$ is not prime.
+\item $L\ge3$: $f(m)$ is not prime; the smallest such $m$ is $6$.
+\item $L\ge4$: $L(f(m))\ge3$ needs $f(m)\ge6$; the smallest such $m$ is $12$.
+\item $L\ge5$: $f(m)\ge12$; the smallest number with at least $12$ divisors is $60$, and $f(60)=12$ works.
+\item $L\ge6$: $f(m)\ge60$; the smallest number with at least $60$ divisors is $5040$ (every number below $5040$ has at most $48$ divisors), and $f(5040)=60$ works.
+\end{itemize}
+So $b=60$ (chain $60\to12\to6\to4\to3\to2$) and $a=5040$.
+
+\textbf{(1)} If $f^4(m)=2$ then $f^5(m)=f(2)=2$, so every very orz number is orz and $a\ge b$. Since $f^5(60)=2$, $60$ is not very orz, so $a>b$.
+
+\textbf{(2)} A four-digit cube of a digit sum is $s^3$ with $10\le s\le21$. Going up: $1000,1331,1728,2197,2744,3375,4096$ fail, and $4913=17^3$ has digit sum $17$. So $c=4913$ and $a+b-c=5040+60-4913=\boxed{187}$.

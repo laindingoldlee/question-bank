@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1338174_areaperimeter_problem
+% Stable identity: aops-topic-1338174-q01
+If a side of length $L$ is moved outward by $d$, the area grows by $Ld$ and the two adjacent sides each grow by $d$, so the extra fencing is $2d$ (the moved side keeps its length).
+\begin{itemize}
+\item Moving a $20$ m side: $20d=40$, so $d=2$ and the extra fencing is $4$ m.
+\item Moving a $10$ m side: $10d=40$, so $d=4$ and the extra fencing is $8$ m.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(20,0)--(20,10)--(0,10)--cycle,linewidth(0.9));
+draw((0,10)--(0,12)--(20,12)--(20,10),blue+dashed);
+label("$20$",(10,0),S); label("$10$",(0,5),W);
+label("$2$",(20,11),E,blue); label("$2$",(0,11),W,blue);
+label("$+40$",(10,11),blue+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The fewest is $\boxed{4}$ metres: move one of the long sides out by $2$ m, giving a $20\times12$ garden of area $240=200+40$.

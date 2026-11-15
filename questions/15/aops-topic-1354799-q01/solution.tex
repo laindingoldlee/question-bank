@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1354799_rectangle_area
+% Stable identity: aops-topic-1354799-q01
+(a) For a fixed value of $x$ with $2x^2+x-3>0$, say $x=3$ (area $18$), many rectangles have that area, for example $3\times6$ (perimeter $18$) and $2\times9$ (perimeter $22$). So without more information the perimeter is not determined; the poster's objection is correct.
+
+(b) Factor: $2x^2+x-3=(2x+3)(x-1)$. Up to order and constant factors $\pm1$, this is the only factorisation into polynomials with integer coefficients (both factors are linear and cannot be factored further), and positive leading coefficients fix the signs. So the sides are $2x+3$ and $x-1$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(6,0)--(6,2.4)--(0,2.4)--cycle,linewidth(0.9));
+label("$2x+3$",(3,0),S); label("$x-1$",(6,1.2),E);
+label("$2x^2+x-3$",(3,1.2));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The perimeter is
+\[
+2\left[(2x+3)+(x-1)\right]=\boxed{6x+4}\text{ units},
+\]
+and both sides are positive exactly when $x>1$.

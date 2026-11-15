@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1314772_casework
+% Stable identity: aops-topic-1314772-q01
+At each intersection, the number of crosswalks equals the number of road segments leaving it. Each road segment between two neighbouring intersections is counted at both of its ends, so the number of crosswalks is twice the number of road segments.
+
+\textbf{Street segments.} Each street has $15$ segments, $150$ in all, except that Seventh Street does not run through the park, losing the $8$ segments between Fourth and Twelfth Avenues: $142$.
+
+\textbf{Avenue segments.} Each avenue has $9$ segments, $144$ in all, except that Avenues $5$ to $11$ (seven avenues) do not run through the park, each losing the $2$ segments between Sixth and Eighth Streets: $144-14=130$.
+
+There are $142+130=272$ segments, so $2\cdot272=\boxed{544}$ crosswalks.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+for(int i=1;i<=16;++i){ if(i>=5 && i<=11){draw((i,1)--(i,6),gray); draw((i,8)--(i,10),gray);} else draw((i,1)--(i,10),gray);}
+for(int j=1;j<=10;++j){ if(j==7){draw((1,7)--(4,7),gray); draw((12,7)--(16,7),gray);} else draw((1,j)--(16,j),gray);}
+filldraw((4,6)--(12,6)--(12,8)--(4,8)--cycle,green+opacity(0.3),gray); label("park",(8,7));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

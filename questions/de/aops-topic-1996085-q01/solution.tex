@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1996085_why_not_collinear
+% Stable identity: aops-topic-1996085-q01
+Let $\angle CAB=\alpha$ and $\angle CBA=\beta$, so $\alpha+\beta=90^\circ$. Triangle $ACD$ is isosceles with $CA=CD$, so $\angle CDA=\alpha$; triangle $DEB$ is isosceles with $ED=EB$, so $\angle EDB=\beta$. Since $A,D,B$ are collinear,
+\[
+\angle CDE=180^\circ-\alpha-\beta=90^\circ .
+\]
+(So $D$, $E$, $B$ are \emph{not} collinear: $E$ is on $BC$ but $D$ is not, and $\angle CDE$ is a right angle.)
+
+Scale so that $AC=CD=4$ and $DE=EB=3$. In right triangle $CDE$, $CE=\sqrt{4^2+3^2}=5$, so $BC=5+3=8$ and $AB=\sqrt{4^2+8^2}=4\sqrt5$. Dropping the perpendicular from $C$ to $AD$ bisects $AD$, so
+\[
+AD=2\cdot AC\cos\alpha=2\cdot4\cdot\dfrac{4}{4\sqrt5}=\dfrac{8}{\sqrt5},\qquad DB=4\sqrt5-\dfrac{8}{\sqrt5}=\dfrac{12}{\sqrt5}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), A=(0,4), B=(8,0), D=(16/5,12/5), Ep=(5,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--D,blue); draw(D--Ep,red);
+draw((0,0.35)--(0.35,0.35)--(0.35,0));
+pair u=unit(C-D), v=unit(Ep-D); draw(D+0.35*u--D+0.35*(u+v)--D+0.35*v);
+label("$A$",A,NW); label("$B$",B,SE); label("$C$",C,SW); label("$D$",D,NE); label("$E$",Ep,S);
+label("$4$",(A+C)/2,W); label("$4$",(C+D)/2,NW,blue); label("$3$",(D+Ep)/2,E,red); label("$3$",(Ep+B)/2,S); label("$5$",(C+Ep)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence $AD:DB=8:12=\boxed{\textbf{(A)}\ 2:3}$.

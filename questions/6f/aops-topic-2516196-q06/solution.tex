@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2516196_select_problems_from_the_imtc
+% Stable identity: aops-topic-2516196-q06
+Number the steps $0,1,2,\dots$ from the bottom, so step $k$ has height $h_k=2\cdot\left(\dfrac12\right)^k$. Let $p_k$ be the probability that the bug ever stands on step $k$; then $p_0=1$. For $k\ge1$, the bug stands on step $k$ exactly when it stands on step $k-j$ and then jumps $j$ steps, for some $j\in\{1,2,3\}$. These three events are disjoint, because the step from which the bug reaches $k$ is unique. So
+\[p_k=\dfrac13\left(p_{k-1}+p_{k-2}+p_{k-3}\right)\qquad(k\ge1),\]
+with $p_{-1}=p_{-2}=0$. By linearity of expectation (all terms are nonnegative),
+\[n=\sum_{k\ge0}p_kh_k=2G,\qquad G=\sum_{k\ge0}p_k\left(\dfrac12\right)^k,\]
+and $G\le\sum\left(\dfrac12\right)^k=2$ converges. Multiply the recurrence by $\left(\dfrac12\right)^k$ and sum over $k\ge1$:
+\[G-1=\dfrac13\left(\dfrac12G+\dfrac14G+\dfrac18G\right)=\dfrac{7}{24}G,\qquad\text{so}\qquad G=\dfrac{24}{17}.\]
+Hence $n=\dfrac{48}{17}$, and $a+b=48+17=\boxed{65}$.

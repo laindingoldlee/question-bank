@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2934049_2016_emcc_guts_round_p1_p12__exeter_math_club_competition
+% Stable identity: aops-topic-2934049-q03
+Let $O$ be the centre. The two quadrilaterals lie on the indicated sides of diameters $ZI$ and $MG$, and their intersection is triangle $IMO$. Joining the centre to all six vertices partitions the hexagon into six congruent equilateral triangles, one of which is $IMO$. The fraction is $\boxed{\dfrac{1}{6}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] p;path q;for(int k=0;k<6;++k){p.push(2*dir(60*k));q=q--p[k];}draw(q--cycle);draw(p[0]--p[3]^^p[2]--p[5]);filldraw(p[2]--p[3]--(0,0)--cycle,lightgray);string[] names={"Z","U","M","I","N","G"};for(int k=0;k<6;++k)label("$"+names[k]+"$",p[k],dir(60*k));label("$O$",(0,0),SE);
+\end{asy}

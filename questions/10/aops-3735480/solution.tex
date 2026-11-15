@@ -1,0 +1,6 @@
+The ray and the centre determine a plane; reflection in a sphere keeps the ray in this plane. In the circular section, a chord meeting the tangent at angle $\alpha$ subtends a central angle $2\alpha$. Equal reflection angles preserve this angle at each successive chord. For $20^\circ$, successive contact points advance by $40^\circ$. The least positive number of chord traversals returning to the start is $\dfrac{360}{40}=9$. The initial departure and final arrival are not intermediate reflections, so there are $\boxed8$ reflections. For $60^\circ$, the same count gives three chords and two reflections, agreeing with the stated convention.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+draw(unitcircle);for(int j=0;j<9;++j){pair P=dir(90+40*j),Q=dir(90+40*(j+1));draw(P--Q);dot(P);label(string(j),P,unit(P));}label("start",(0,1.25),(0,1));
+\end{asy}
+

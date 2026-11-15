@@ -1,0 +1,7 @@
+Colour the board as a chessboard, with all four corners white. Removing them leaves $57$ white and $60$ black cells, so at most $57$ dominoes fit. For a construction, fill each pair of columns $(2,3),(4,5),(6,7),(8,9)$ with eleven horizontal dominoes, using $44$. In each remaining outside column $1,11$, pair eight of its nine cells vertically, giving four dominoes per column. In column $10$, pair ten of its eleven cells vertically, giving five more. Total $44+4+4+5=\boxed{57}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=0;x<11;++x)for(int y=0;y<11;++y)if(!((x==0||x==10)&&(y==0||y==10)))draw(box((x,y),(x+1,y+1)),gray);for(int x=1;x<=7;x+=2)for(int y=0;y<11;++y)filldraw(box((x+.06,y+.06),(x+1.94,y+.94)),lightblue);for(int y=1;y<=7;y+=2){filldraw(box((.06,y+.06),(.94,y+1.94)),lightgreen);filldraw(box((10.06,y+.06),(10.94,y+1.94)),lightgreen);}for(int y=0;y<=8;y+=2)filldraw(box((9.06,y+.06),(9.94,y+1.94)),lightgreen);
+\end{asy}

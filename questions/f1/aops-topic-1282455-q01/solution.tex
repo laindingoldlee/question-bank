@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1282455_analytic_geometry
+% Stable identity: aops-topic-1282455-q01
+The centre $(3,4)$ is at distance $5$ from the origin and the radius is $2$, so each tangent segment has length $\sqrt{5^2-2^2}=\boxed{\sqrt{21}}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real m1=(12-2*sqrt(21))/5, m2=(12+2*sqrt(21))/5; draw(circle((3,4),2),blue);
+draw((0,0)--(5.6,5.6*m1),red); draw((0,0)--(1.6,1.6*m2),red); dot((3,4)); label("$(3,4)$",(3,4),E);
+draw((-0.5,0)--(5.8,0),gray,Arrow); draw((0,-0.5)--(0,6.5),gray,Arrow); dot("$O$",(0,0),SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+A line $y=mx$ is tangent when its distance from $(3,4)$ is $2$:
+\[
+\dfrac{|3m-4|}{\sqrt{m^2+1}}=2\iff9m^2-24m+16=4m^2+4\iff5m^2-24m+12=0,
+\]
+so $m=\boxed{\dfrac{12\pm2\sqrt{21}}{5}}$. (The vertical line $x=0$ is at distance $3$ from the centre, so it is not a tangent.)

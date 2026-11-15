@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1284564_ant_on_a_hypercube
+% Stable identity: aops-topic-1284564-q01
+Track the ant's distance $k$ from the start (the number of coordinates that differ), $0\le k\le4$. From distance $k$ it moves to $k-1$ with probability $\dfrac {k}{4}$ and to $k+1$ with probability $\dfrac{4-k}{4}$. Let $h_k$ be the expected number of further steps to reach distance $0$. Then $h_0=0$ and
+\[
+h_1=1+\dfrac{3}{4}h_2,\quad h_2=1+\dfrac{1}{2}h_1+\dfrac{1}{2}h_3,\quad h_3=1+\dfrac{3}{4}h_2+\dfrac{1}{4}h_4,\quad h_4=1+h_3 .
+\]
+From the last two, $h_3=1+\dfrac{3}{4}h_2+\dfrac{1}{4}(1+h_3)$, so $h_3=\dfrac{5}{3}+h_2$ and $h_4=\dfrac{8}{3}+h_2$. Substituting into the second: $h_2=1+\dfrac{1}{2}h_1+\dfrac{5}{6}+\dfrac{1}{2}h_2$, so $h_2=\dfrac{11}{3}+h_1$. Then $h_1=1+\dfrac{3}{4}\left(\dfrac{11}{3}+h_1\right)$ gives $\dfrac{1}{4}h_1=\dfrac{15}{4}$, so $h_1=15$ (and $h_2=\dfrac{56}{3}$, $h_3=\dfrac{61}{3}$, $h_4=\dfrac{64}{3}$).
+
+The first step always moves to distance $1$, so the expected length is $1+h_1=\boxed{16}$. This agrees with the general fact that for a random walk on a connected regular graph the expected return time to a vertex is the number of vertices.

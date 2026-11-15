@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3411093_2023_state_mathcounts_sprint_19
+% Stable identity: aops-topic-3411093-q01
+If its radial distance is $r$, its distances to the circumferences are $|r-1|,|r-5|,|r-7|$. The radius-$5$ circle is closest exactly when $3<r<6$, bounded by radial midpoints. This annulus has area $\pi(6^2-3^2)=27\pi$, while the board has area $49\pi$. The probability is $\boxed{\dfrac{27}{49}}$; boundary ties have area zero.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+fill(circle((0,0),6),lightgray);fill(circle((0,0),3),white);int[] radii={1,5,7};for(int r:radii)draw(circle((0,0),r));draw(circle((0,0),3),dashed);draw(circle((0,0),6),dashed);draw((0,0)--(7,0),dashed);dot((0,0));label("$O$",(0,0),W);label("$1$",(1,0),S);label("$3$",(3,0),S);label("$5$",(5,0),S);label("$6$",(6,0),N);label("$7$",(7,0),S);
+\end{asy}

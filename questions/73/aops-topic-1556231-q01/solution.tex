@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1556231_i_remember_when_i_lost_my
+% Stable identity: aops-topic-1556231-q01
+Split the line into maximal blocks of one colour. The condition says exactly that every block has at least $2$ marbles. Blocks alternate in colour, so the red blocks and the blue blocks differ in number by at most one.
+
+\textbf{Blocks of one colour.} Splitting $n$ marbles of one colour into $k$ blocks of size at least $2$, in order, is a composition of $n$ into $k$ parts $\ge2$. Removing one marble from each block leaves a composition of $n-k$ into $k$ positive parts, so the number is
+\[
+c_k=\binom{n-k-1}{k-1}.
+\]
+
+\textbf{Combining.} If there are $k$ red and $k$ blue blocks, the line may start with either colour: $2c_k^2$ arrangements. If one colour has $k+1$ blocks and the other $k$, the line starts and ends with the first colour: $c_kc_{k+1}$ arrangements for each of the two choices of which colour has more blocks. Hence the answer to (b) is
+\[
+\boxed{\;2\sum_{k\ge1}c_k^2+2\sum_{k\ge1}c_kc_{k+1},\qquad c_k=\binom{n-k-1}{k-1}\;}
+\]
+(the terms vanish once $2k>n$).
+
+\textbf{(a)} For $n=6$: $c_1=1$, $c_2=\binom31=3$, $c_3=\binom22=1$. So the number of arrangements is
+\[
+2(1+9+1)+2(1\cdot3+3\cdot1)=22+12=\boxed{34}.
+\]
+(Small values of the formula: $2,2,6,14,34,84$ for $n=2,\dots,7$.)

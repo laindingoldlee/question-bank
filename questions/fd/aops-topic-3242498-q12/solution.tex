@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h3242498_the_polymath_competition
+% Stable identity: aops-topic-3242498-q12
+Rearrangement gives $x^3+(2x+y)^3=8z^3$. A direct finite enumeration avoids invoking a deep theorem:
+\begin{verbatim}
+sol=[(x,y,z) for x in range(11)
+     for y in range(11) for z in range(11)
+     if x**3+(2*x+y)**3 == 8*z**3]
+print(sol)
+# [(0,0,0),(0,2,1),(0,4,2),
+#  (0,6,3),(0,8,4),(0,10,5)]
+\end{verbatim}
+The loops cover every allowed triple exactly once, and the transformed equation is equivalent to the original. Therefore $\boxed6$, choice D.

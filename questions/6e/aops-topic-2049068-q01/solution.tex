@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2049068_recursion_help
+% Stable identity: aops-topic-2049068-q01
+The condition says that the blue marbles form blocks of length at least $2$. Count rows of length $n$ in which every blue block has length $\ge2$, allowing zero blue marbles for now. Let $B_n$ and $G_n$ be those ending in blue and in green. A row ending in green is any such row of length $n-1$ followed by $G$. A row ending in blue either extends a row ending in blue, or ends in $GBB$ (or is $BB$ at the very start). So
+\[B_n=B_{n-1}+G_{n-2},\qquad G_n=B_{n-1}+G_{n-1},\]
+with $G_0=1$ (the empty row), $B_1=0$, $G_1=1$:
+\[\begin{array}{c|ccccc}n&1&2&3&4&5\\\hline B_n&0&1&2&3&5\\ G_n&1&1&2&4&7\end{array}\]
+So $B_5+G_5=12$. But this count includes the all-green row $GGGGG$, which has no blue marbles and violates "at least two blue marbles". Removing it gives
+\[12-1=\boxed{11}.\]
+The student's recursion and arithmetic are correct; the error is forgetting to exclude the row with no blue marbles. (The eleven rows are: $BBBBB$; $BBBBG$, $GBBBB$; $BBBGG$, $GBBBG$, $GGBBB$; $BBGGG$, $GBBGG$, $GGBBG$, $GGGBB$; $BBGBB$.)

@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h1606094_telephone_numbers
+% Stable identity: aops-topic-1606094-q01
+\textbf{At most $10^5$.} Two numbers that agree in their first five digits differ in at most one position (the last). So all issued numbers have different first five digits, and there are only $10^5$ possible strings of five digits. Hence at most $100\,000$ numbers can be issued.
+
+\textbf{$10^5$ is possible.} Issue every number $d_1d_2d_3d_4d_5d_6$ whose last digit is a check digit: $d_6$ is the remainder of $d_1+d_2+d_3+d_4+d_5$ modulo $10$. There are $10^5$ of them, one for each choice of $d_1,\dots,d_5$. If two of them differ in exactly one position, that position cannot be among the first five (changing one of $d_1,\dots,d_5$ changes the sum modulo $10$, and so forces a change in $d_6$ as well), and it cannot be only the last one (equal first five digits give equal check digits). So any two issued numbers differ in at least two positions.
+
+The largest possible number is therefore $\boxed{100\,000}$.

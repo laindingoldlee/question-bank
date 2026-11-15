@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1582862_17_geometry_questions
+% Stable identity: aops-topic-1582862-q16
+Let chords $AB$ and $CD$ meet at $X$ inside the circle, with $\angle AXC=87^\circ$ intercepting arc $AC=103^\circ$, and its vertical angle $\angle BXD$ intercepting arc $BD=y$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);real r=2;
+real a1=0,a2=103,a3=a2+111,a4=a3+71;
+pair A=r*dir(a1),C=r*dir(a2),B=r*dir(a3),D=r*dir(a4);
+pair X=extension(A,B,C,D);
+draw(circle(O,r),linewidth(0.9));
+draw(A--B,linewidth(0.9));draw(C--D,linewidth(0.9));
+draw(arc(O,r,a1,a2),red+linewidth(1.8));draw(arc(O,r,a3,a4),blue+linewidth(1.8));
+label("$103^\circ$",(r+0.15)*dir((a1+a2)/2),dir((a1+a2)/2),red);
+label("$y$",(r+0.15)*dir((a3+a4)/2),dir((a3+a4)/2),blue);
+real t1=degrees(A-X),t2=degrees(C-X);
+draw(arc(X,0.35,t1,t2));label("$87^\circ$",X+0.62*dir((t1+t2)/2),fontsize(8pt));
+dot(A);dot(B);dot(C);dot(D);dot(X);
+label("$A$",A,E);label("$B$",B,dir(a3));label("$C$",C,dir(a2));label("$D$",D,dir(a4));label("$X$",X,dir(t1+180+25));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The angle between two chords.} Draw chord $BC$. The angle $\angle AXC$ is an exterior angle of triangle $XBC$, so $\angle AXC=\angle XBC+\angle XCB=\angle ABC+\angle DCB$. These are inscribed angles, equal to half of the arcs $AC$ and $BD$ they subtend. Hence
+\[
+\angle AXC=\dfrac{\overset{\frown}{AC}+\overset{\frown}{BD}}{2},\qquad 87^\circ=\dfrac{103^\circ+y}{2}.
+\]
+So $y=174^\circ-103^\circ=\boxed{71^\circ}$.

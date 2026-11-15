@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1698004_2014_mathcounts_chapter_sprint_26
+% Stable identity: aops-topic-1698004-q01
+Three lengths $a<b<c$ form a (nondegenerate) triangle exactly when $a+b>c$; the other two triangle inequalities hold automatically. If $a+b=c$, the ``triangle'' is flat.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),Cc=(3.6/2+0.0,0);
+pair P=(0,0),Q=(6,0); pair R=intersectionpoints(circle(P,4),circle(Q,3))[0];
+draw(P--Q--R--cycle,linewidth(0.8)); label("$6$",(P+Q)/2,S); label("$4$",(P+R)/2,NW); label("$3$",(Q+R)/2,NE);
+label("$3+4>6$",(3,-1.2),fontsize(8pt));
+pair P2=(8,0),Q2=(13,0),R2=(10,0);
+draw(P2--Q2,linewidth(0.8)); dot(P2); dot(Q2); dot(R2,red);
+label("$2$",(P2+R2)/2,N,red); label("$3$",(R2+Q2)/2,N,red); label("$5$",(P2+Q2)/2,S);
+label("$2+3=5$: flat",(10.5,-1.2),fontsize(8pt));
+\end{asy}
+
+Count by the largest number $c$, listing the pairs $a<b<c$ with $a+b>c$:
+\begin{itemize}
+\item $c\le3$: none (for $c=3$ the only pair $1,2$ has sum $3$);
+\item $c=4$: $(2,3)$: $1$;
+\item $c=5$: $(2,4),(3,4)$: $2$;
+\item $c=6$: $(2,5),(3,4),(3,5),(4,5)$: $4$;
+\item $c=7$: $(2,6),(3,5),(3,6),(4,5),(4,6),(5,6)$: $6$;
+\item $c=8$: $(2,7),(3,6),(3,7),(4,5),(4,6),(4,7),(5,6),(5,7),(6,7)$: $9$.
+\end{itemize}
+The total is $1+2+4+6+9=\boxed{22}$.
+
+A faster count: for a fixed $c$, the number of pairs is $\left\lfloor\dfrac{(c-2)^2}{4}\right\rfloor$ (for $b=c-1,c-2,\ldots$ there are $c-2,c-4,\ldots$ choices of $a$), giving $0,1,2,4,6,9$ for $c=3,\ldots,8$.

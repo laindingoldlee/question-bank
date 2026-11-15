@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1727878_hellooooo
+% Stable identity: aops-topic-1727878-q01
+Use vectors with origin $B$, writing $\vec A$ and $\vec C$ for the position vectors of $A$ and $C$. Then
+\[
+\vec E=\dfrac{1}{4}\vec A,\qquad\vec D=\dfrac{4}{5}\vec C,\qquad\vec F=\dfrac{1}{6}\vec E+\dfrac{5}{6}\vec D=\dfrac{1}{24}\vec A+\dfrac{2}{3}\vec C .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),A=(1.8,7),C=(7,0);
+pair Ep=(3*B+A)/4,D=(4*C+B)/5,F=(Ep+5*D)/6,G=extension(B,F,A,C);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(Ep--D,linewidth(0.8));draw(B--G,blue+linewidth(0.8));
+dot(Ep);dot(D);dot(F);dot(G);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$E$",Ep,W);label("$D$",D,S);label("$F$",F,dir(80));label("$G$",G,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+A point $t\vec F$ on line $BF$ lies on line $AC$ exactly when its coefficients of $\vec A$ and $\vec C$ add up to $1$:
+\[
+t\left(\dfrac{1}{24}+\dfrac{16}{24}\right)=1\iff t=\dfrac{24}{17}.
+\]
+So $\vec G=\dfrac{24}{17}\vec F=\dfrac{1}{17}\vec A+\dfrac{16}{17}\vec C$ (so $AG:GC=16:1$), and $BG=\dfrac{24}{17}BF$. Hence $FG=\dfrac{7}{17}BF$ and
+\[
+BF:FG=\boxed{17:7}.
+\]
+The problem is consistent. The poster's mass points ($A=1$, $B=3$, $C=12$) balance $E$ and $D$, and they locate the point where $ED$ meets the cevian from $B$ to the point $G_0$ with $AG_0:G_0C=12:1$, giving $15:4$ on $ED$. That point is not $F$ (since $15:4\ne5:1$), so $G\ne G_0$ and those masses do not apply to line $BG$.

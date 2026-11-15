@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2690692_inverses_of_functions
+% Stable identity: aops-topic-2690692-q04
+\textbf{(b)} A function has an inverse only if it is one-to-one. The sine function is not: for example $\sin0=\sin\pi=0$, and every value in $[-1,1]$ is taken infinitely often. So ``$\sin^{-1}(0)$'' would not know whether to be $0$, $\pi$, $2\pi$, \ldots
+
+\textbf{(a)} On $\left[-\dfrac\pi2,\dfrac\pi2\right]$ the sine function is increasing and takes every value in $[-1,1]$ exactly once. Its inverse is
+\[\boxed{\arcsin:[-1,1]\to\left[-\dfrac\pi2,\dfrac\pi2\right]},\]
+where $\arcsin x$ is the unique angle in $\left[-\dfrac\pi2,\dfrac\pi2\right]$ whose sine is $x$. Its graph is the reflection of the restricted sine graph in the line $y=x$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return sin(x);} real g(real x){return asin(x);}
+draw((-2,0)--(2,0),gray,Arrow(4));draw((0,-2)--(0,2),gray,Arrow(4));
+draw((-1.9,-1.9)--(1.9,1.9),dotted);
+draw(graph(f,-pi/2,pi/2),linewidth(0.9));draw(graph(g,-1,1,400),gray(0.45)+linewidth(1.2));
+dot((pi/2,1));dot((1,pi/2));dot((-pi/2,-1));dot((-1,-pi/2));
+label("$y=\sin x$",(pi/2,1),E,fontsize(8pt));label("$y=\arcsin x$",(1,pi/2),E,fontsize(8pt));label("$y=x$",(1.9,1.9),NE,fontsize(8pt));
+label("$\dfrac{\pi}{2}$",(pi/2,0),S,fontsize(7pt));label("$-\dfrac{\pi}{2}$",(-pi/2,0),N,fontsize(7pt));
+\end{asy}

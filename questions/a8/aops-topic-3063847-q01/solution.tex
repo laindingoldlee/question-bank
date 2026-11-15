@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3063847_frog_jumps_to_reach_44_on_grid
+% Stable identity: aops-topic-3063847-q01
+If the horizontal motion uses $h$ steps, then $2\le h\le4$ and $4-h$ of them have length 2. Their possible orders number $\binom h{4-h}$. Similarly $v$ vertical steps have $\binom v{4-v}$ possible orders. Interleave the horizontal and vertical steps in $\binom{h+v}{h}$ ways. Thus the answer is $\sum_{h=2}^4\sum_{v=2}^4\binom h{4-h}\binom v{4-v}\binom{h+v}{h}=\boxed{556}$.
+\begin{verbatim}
+from math import comb
+a=sum(comb(h,4-h)*comb(v,4-v)*comb(h+v,h)
+      for h in range(2,5) for v in range(2,5))
+assert a==556
+\end{verbatim}

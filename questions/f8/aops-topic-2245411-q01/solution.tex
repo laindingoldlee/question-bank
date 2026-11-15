@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2245411_recursive_counting
+% Stable identity: aops-topic-2245411-q01
+Let $a_n$ be the number of tilings of a $2\times n$ rectangle, and let $b_n$ be the number of tilings of a $2\times n$ rectangle with one extra cell attached to the right end of its top row (the top row has $n+1$ cells, the bottom row $n$). By symmetry $b_n$ also counts the shape with the extra cell on the bottom row. Set $a_0=1$, $b_0=1$.
+
+\textbf{Recursion for $b_n$.} The extra cell is covered either by a square (leaving a $2\times n$ rectangle: $a_n$ ways) or by a horizontal domino together with the last top cell of the rectangle (leaving a shape whose bottom row is one cell longer: $b_{n-1}$ ways). So $b_n=a_n+b_{n-1}$.
+
+\textbf{Recursion for $a_n$.} Look at the two cells of the last column.
+\begin{itemize}
+\item They are covered by two squares or by one vertical domino: $2a_{n-1}$ ways.
+\item Both are covered by horizontal dominoes: $a_{n-2}$ ways.
+\item One is covered by a horizontal domino and the other by a square: what is left is a $2\times(n-2)$ rectangle with one extra cell in one row, $b_{n-2}$ ways, and there are $2$ choices of which row has the domino: $2b_{n-2}$ ways.
+\end{itemize}
+So $a_n=2a_{n-1}+a_{n-2}+2b_{n-2}$ for $n\ge2$, with $a_1=2$.
+
+\textbf{Computing.}
+\begin{align*}
+a_2&=2\cdot2+1+2\cdot1=7, & b_1&=a_1+b_0=3,\\
+a_3&=2\cdot7+2+2\cdot3=22, & b_2&=7+3=10,\\
+a_4&=2\cdot22+7+2\cdot10=71, & b_3&=22+10=32,\\
+a_5&=2\cdot71+22+2\cdot32=228.
+\end{align*}
+So there are $\boxed{228}$ ways.

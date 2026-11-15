@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2160689_basic_geometry
+% Stable identity: aops-topic-2160689-q03
+The area of a triangle is half the base times the height:
+\[\dfrac{1}{2}\cdot9\cdot40=\boxed{180}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(9,0), C=(3,40);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--(3,0),dashed);
+draw((3,0)--(4.2,0)--(4.2,1.2)--(3,1.2));
+draw(C--(13,40),dotted); draw(B--(13,0),dotted);
+draw((13,0)--(13,40),Arrows(TeXHead));
+label("$9$",(A+B)/2,S); label("$40$",(13,20),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

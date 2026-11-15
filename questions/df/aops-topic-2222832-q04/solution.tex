@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2222832_100th_post_celebration_avatar_themed
+% Stable identity: aops-topic-2222832-q04
+The ink sac holds
+\[V=\pi r^2h=\pi\cdot3^2\cdot13=117\pi\ \text{mm}^3.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+real rx=3, ry=1, h=13;
+draw((-rx,0)--(-rx,h)); draw((rx,0)--(rx,h));
+draw(ellipse((0,h),rx,ry));
+path e=scale(rx,ry)*unitcircle;
+draw(subpath(e,2,4));
+draw(subpath(e,0,2),dashed);
+draw((0,h)--(rx,h),blue,Arrow(4)); label("$3$",(rx/2,h+ry),N,blue);
+draw((rx+1,0)--(rx+1,h),Arrows(5)); label("$13$",(rx+1,h/2),E);
+\end{asy}
+
+A full page uses $2\cdot3=6$ cubic millimetres, so the ink lasts for
+\[\dfrac{117\pi}{6}=19.5\pi\approx61.26\]
+pages. Since $19.5\pi>19.5\cdot3.14=61.23>61$ and $19.5\pi<19.5\cdot3.15=61.425<62$, the pen writes $\boxed{61}$ full pages (and about a quarter of another).

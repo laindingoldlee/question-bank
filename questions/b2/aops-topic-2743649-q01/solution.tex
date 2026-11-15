@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2743649_formula_for_square_triangle_etc
+% Stable identity: aops-topic-2743649-q01
+\textbf{(a)} For real $u,v$, $\dfrac{|u+v|+|u-v|}{2}=\max(|u|,|v|)$ (check the cases $|u|\ge|v|$ and $|u|<|v|$). So the equation says $\max(|x|,|y|)=s$: the graph is the square with vertices $(\pm s,\pm s)$, whose side length is $2s$, not $s$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+real s=1;
+draw((-1.6,0)--(1.6,0),gray,Arrow(4));draw((0,-1.6)--(0,1.6),gray,Arrow(4));
+draw((s,s)--(-s,s)--(-s,-s)--(s,-s)--cycle,linewidth(1));
+draw((s,s)--(-s,-s),dashed+gray);draw((-s,s)--(s,-s),dashed+gray);
+label("$(s,s)$",(s,s),NE,fontsize(8pt));label("$(s,-s)$",(s,-s),SE,fontsize(8pt));
+label("$y=x$",(-1.25,-1.25),SW,fontsize(7pt));label("$y=-x$",(-1.25,1.25),NW,fontsize(7pt));
+\end{asy}
+
+\textbf{(b)} Let $\theta_k=\dfrac{2\pi k}{n}$ for $k=0,1,\dots,n-1$ be the directions of the perpendiculars from the centre to the sides. The point $(x,y)$ lies on the side with outward normal $(\cos\theta_k,\sin\theta_k)$ exactly when $x\cos\theta_k+y\sin\theta_k=r$, and inside the polygon all these expressions are at most $r$. Hence the polygon is
+\[\max_{0\le k\le n-1}\left(x\cos\theta_k+y\sin\theta_k\right)=r.\]
+For $n=4$ and $\theta_k=\dfrac{\pi k}{2}$ this is $\max(|x|,|y|)=r$, as in (a).

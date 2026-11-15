@@ -1,0 +1,9 @@
+For any two neighbouring rows, their column sums $s_j$ satisfy $s_j+s_{j+1}=2$. If some $s_j$ is 0 or 2, these sums alternate 0 and 2, forcing both rows to be the same alternating row. Otherwise every $s_j=1$, so the rows are complements. If any row is nonalternating, every neighbouring row must be its complement, and the entire board is fixed by its first row; there are $2^{10}-2$ choices. If all rows are alternating, each row has two independent choices, giving $2^{10}$. The cases are disjoint, so the total is $\boxed{2046}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+for(int i=0;i<10;++i)for(int j=0;j<10;++j){path q=(i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle;if((i+j)%2==0)fill(q,lightgray);draw(q);}label("one valid grid",(5,-.5),(0,-1));
+\end{asy}
+

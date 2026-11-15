@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1676195_smallest_number_of_planes_to_enclose_a_bounded_part
+% Stable identity: aops-topic-1676195-q01
+\textbf{Four planes suffice.} The four faces of a tetrahedron $ABCD$ lie in four planes, and the solid tetrahedron is one of the regions they cut out (it is the set of points on the same side as the tetrahedron of each of the four planes); it is bounded.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0.3),B=(2.6,-0.6),C=(4,0.8),D=(1.9,3.2);
+fill(A--B--D--cycle,paleblue);
+draw(A--B--C--D--cycle,linewidth(0.9));draw(B--D,linewidth(0.9));draw(A--C,dashed);
+label("$A$",A,W);label("$B$",B,E);label("$C$",C,E);label("$D$",D,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+
+\textbf{Three planes never suffice.} It is enough to deal with exactly three planes (fewer planes can be supplemented by extra planes parallel to one of them, which only cut regions into smaller pieces; a bounded region of the smaller set would contain a bounded region of the larger set). Write the planes as $\mathbf n_i\cdot\mathbf x=d_i$ $(i=1,2,3)$. A region is a set of points where each $\mathbf n_i\cdot\mathbf x-d_i$ has a fixed sign $s_i\in\{+1,-1\}$ (the points on the planes themselves belong to no region). Take a point $\mathbf p$ of a region.
+\begin{itemize}
+\item If the normals $\mathbf n_1,\mathbf n_2,\mathbf n_3$ are linearly independent, the system $\mathbf n_i\cdot\mathbf v=s_i$ $(i=1,2,3)$ has a solution $\mathbf v\ne\mathbf 0$. Then for $t>0$, $\mathbf n_i\cdot(\mathbf p+t\mathbf v)-d_i=(\mathbf n_i\cdot\mathbf p-d_i)+ts_i$ keeps the sign $s_i$, so the whole ray $\mathbf p+t\mathbf v$ ($t\ge0$) stays in the region.
+\item If they are linearly dependent, they lie in a plane through the origin, and a nonzero vector $\mathbf v$ perpendicular to that plane satisfies $\mathbf n_i\cdot\mathbf v=0$ for all $i$. Then the whole line $\mathbf p+t\mathbf v$ stays in the region.
+\end{itemize}
+In both cases the region contains a ray, so it is unbounded.
+
+So the smallest number is $\boxed{4}$. $\blacksquare$

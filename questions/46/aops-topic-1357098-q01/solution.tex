@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1357098_the_pigeonhole_principle
+% Stable identity: aops-topic-1357098-q01
+Join the midpoints of opposite sides; this divides the square into four closed squares of side $\dfrac{1}{2}$ and area $\dfrac{1}{4}$. Assign each point to one small square containing it (a point on a dividing line may be assigned to either). Since $13>3\cdot4$, by the pigeonhole principle some small square $T$ receives at least $\left\lceil\dfrac{13}{4}\right\rceil=4$ points.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(1,0)--(1,1)--(0,1)--cycle,linewidth(0.9));
+draw((0.5,0)--(0.5,1),dashed); draw((0,0.5)--(1,0.5),dashed);
+pair[] q={(0.08,0.62),(0.38,0.9),(0.42,0.58),(0.13,0.85)};
+fill(q[0]--q[2]--q[1]--q[3]--cycle,paleblue);
+draw(q[0]--q[2]--q[1]--q[3]--cycle,blue);
+for(int i=0;i<4;++i) dot(q[i],blue);
+pair[] o={(0.7,0.8),(0.88,0.6),(0.6,0.95),(0.2,0.3),(0.35,0.12),(0.1,0.1),(0.7,0.3),(0.9,0.15),(0.62,0.08)};
+for(int i=0;i<o.length;++i) dot(o[i]);
+label("$0$",(0,0),SW); label("$1$",(1,0),S); label("$1$",(0,1),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Take four of these points. Because no three are collinear, they are the vertices of at least one simple (non-self-intersecting) quadrilateral: if they are in convex position, take them in order around their convex hull; if one lies inside the triangle formed by the other three, a non-convex quadrilateral works. Every such quadrilateral lies in the convex hull of the four points, and that hull lies in the convex square $T$. So its area is at most $[T]=\dfrac{1}{4}$. $\blacksquare$
+
+The two details missing from the posted argument are the treatment of points on the dividing lines (closed squares, assign each point once) and the reason why four points in a small square really form a quadrilateral inside it (no three collinear, and convexity of $T$).

@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2542384_help_on_a_probability_problem
+% Stable identity: aops-topic-2542384-q01
+A chord whose (minor) central angle is $\theta$, with $0\le\theta\le180^\circ$, has length $2r\sin\dfrac\theta2$, which is at most $r$ exactly when $\sin\dfrac\theta2\le\dfrac12$, i.e. $\theta\le60^\circ$.
+
+The three points cut the circle into three arcs $\alpha_1,\alpha_2,\alpha_3$ with $\alpha_1+\alpha_2+\alpha_3=360^\circ$, and each side of the triangle is the chord of one of these arcs. Its minor central angle is $\min\left(\alpha_i,360^\circ-\alpha_i\right)$. So every side is at most $r$ exactly when each $\alpha_i$ is at most $60^\circ$ or at least $300^\circ$. They cannot all be at most $60^\circ$ (their sum is $360^\circ$), so one arc is at least $300^\circ$, and then the other two automatically total at most $60^\circ$. Hence:
+\[\text{no side exceeds } r\iff\text{the three points lie on some arc of } 60^\circ.\]
+For $i=1,2,3$ let $A_i$ be the event that the other two points lie on the $60^\circ$ arc going counterclockwise from $P_i$. Each other point lands there with probability $\dfrac{60}{360}=\dfrac16$, independently, so $P(A_i)=\dfrac1{36}$. The points lie on some $60^\circ$ arc exactly when one of the $A_i$ occurs (take $P_i$ to be the first point of that arc). Two of these events cannot happen together: if $A_i$ and $A_j$ both held, going counterclockwise from $P_i$ to $P_j$ and back to $P_i$ would take at most $60^\circ+60^\circ<360^\circ$. Therefore the probability is
+\[3\cdot\dfrac1{36}=\boxed{\dfrac1{12}}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+draw(circle(O,1));
+pair P1=dir(78),P2=dir(101),P3=dir(126);
+draw(O--dir(70),dashed);draw(O--dir(130),dashed);
+draw(arc(O,0.3,70,130));label("$60^\circ$",0.42*dir(100));
+draw(arc(O,1,70,130),linewidth(1.6));
+draw(P1--P2--P3--cycle,linewidth(0.8));
+dot(O);dot(P1);dot(P2);dot(P3);
+label("$O$",O,S);label("$P_1$",P1,dir(78));label("$P_2$",P2,dir(101));label("$P_3$",P3,dir(126));
+label("$r$",(0.5*dir(-30)),NE);draw(O--dir(-30));
+\end{asy}
+
+In the sketch the three points lie on an arc of $60^\circ$, so all three sides are at most $r$.

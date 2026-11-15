@@ -1,0 +1,43 @@
+% Source: https://artofproblemsolving.com/community/c3h1970864_need_proof_for_this_geometry_problem
+% Stable identity: aops-topic-1970864-q01
+Let every side have length $1$, and write $A,B,\dots,F$ also for the interior angles. The angles of a hexagon sum to $720^\circ$, so
+\[
+A+C+E=B+D+F=360^\circ.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair u=dir(0), v=dir(50), w=dir(115);
+pair A=(0,0), B=A+u, C=B+v, D=C+w, Ep=D-u, F=Ep-v;
+draw(A--B--C--D--Ep--F--cycle, linewidth(0.9));
+draw(B--D--F--cycle, blue+dashed);
+dot(A); dot(B); dot(C); dot(D); dot(Ep); dot(F);
+label("$A$", A, SW); label("$B$", B, SE); label("$C$", C, E);
+label("$D$", D, NE); label("$E$", Ep, N); label("$F$", F, W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Step 1: the triangle $BDF$.} Triangle $FAB$ is isosceles with $AF=AB=1$ and apex angle $A$, so $FB=2\sin\dfrac {A}{2}$ and its base angles are $\angle ABF=\angle AFB=90^\circ-\dfrac {A}{2}$. Similarly
+\[
+BD=2\sin\dfrac {C}{2},\quad \angle CBD=\angle CDB=90^\circ-\dfrac {C}{2};\qquad
+DF=2\sin\dfrac {E}{2},\quad \angle EDF=\angle EFD=90^\circ-\dfrac {E}{2}.
+\]
+Since $\dfrac {A}{2}+\dfrac {C}{2}+\dfrac {E}{2}=180^\circ$ and each is positive, there is a triangle $XYZ$ with angles $X=\dfrac {A}{2}$, $Y=\dfrac {C}{2}$, $Z=\dfrac {E}{2}$. By the law of sines its sides opposite $X,Y,Z$ are proportional to $\sin\dfrac {A}{2},\sin\dfrac {C}{2},\sin\dfrac {E}{2}$, that is, to $FB,BD,DF$. By SSS similarity, triangle $BDF$ is similar to $XYZ$, with the angle opposite $FB$ equal to $X$, and so on:
+\[
+\angle BDF=\dfrac {A}{2},\qquad \angle BFD=\dfrac {C}{2},\qquad \angle FBD=\dfrac {E}{2}.
+\]
+
+\textbf{Step 2: the angles of the hexagon.} Because the hexagon is convex, seen from $B$ the other vertices appear in the order $C,D,E,F,A$, so the rays $BF$ and $BD$ lie inside $\angle ABC$ in the order $BA,BF,BD,BC$. Hence
+\[
+B=\angle ABF+\angle FBD+\angle DBC=\left(90^\circ-\dfrac {A}{2}\right)+\dfrac {E}{2}+\left(90^\circ-\dfrac {C}{2}\right)=180^\circ-\dfrac{A+C}{2}+\dfrac {E}{2}.
+\]
+Using $A+C=360^\circ-E$, this gives $B=E$. In the same way, at $D$ and at $F$,
+\[
+D=\left(90^\circ-\dfrac {C}{2}\right)+\dfrac {A}{2}+\left(90^\circ-\dfrac {E}{2}\right)=180^\circ-\dfrac{C+E}{2}+\dfrac {A}{2}=A,
+\]
+\[
+F=\left(90^\circ-\dfrac {E}{2}\right)+\dfrac {C}{2}+\left(90^\circ-\dfrac {A}{2}\right)=180^\circ-\dfrac{E+A}{2}+\dfrac {C}{2}=C.
+\]
+Therefore $\angle A=\angle D$, $\angle B=\angle E$ and $\angle C=\angle F$. $\blacksquare$

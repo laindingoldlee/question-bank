@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2691847_mahalers_1000th_post
+% Stable identity: aops-topic-2691847-q24
+The ellipses are $\dfrac{x^2}{16}+\dfrac{y^2}{9}=1$ and $\dfrac{x^2}{9}+\dfrac{y^2}{16}=1$. Subtracting, $\left(\dfrac1{16}-\dfrac19\right)(x^2-y^2)=0$, so $x^2=y^2$. Then $x^2\left(\dfrac1{16}+\dfrac19\right)=1$, so $x^2=\dfrac{144}{25}$. The intersection points are $\left(\pm\dfrac{12}5,\pm\dfrac{12}5\right)$ (all four sign choices).
+
+These are the vertices of an axis-parallel square of side $\dfrac{24}{5}$ (consecutive vertices differ in exactly one coordinate, by $\dfrac{24}5$). Its area is $\left(\dfrac{24}{5}\right)^2=\boxed{\dfrac{576}{25}}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw(ellipse((0,0),4,3),linewidth(0.8));draw(ellipse((0,0),3,4),linewidth(0.8));
+real t=12/5;pair A=(t,t),B=(-t,t),C=(-t,-t),D=(t,-t);
+draw(A--B--C--D--cycle,linewidth(1));dot(A);dot(B);dot(C);dot(D);
+draw((-4.6,0)--(4.6,0),gray,Arrow(4));draw((0,-4.6)--(0,4.6),gray,Arrow(4));
+label("$\left(\dfrac{12}{5},\dfrac{12}{5}\right)$",A,NE,fontsize(7pt));
+\end{asy}

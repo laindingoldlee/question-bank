@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2661719_how_should_we_go_about_this_question
+% Stable identity: aops-topic-2661719-q01
+\emph{The missing digit.} A number is congruent to its digit sum mod $9$. The nine digits are $0,\dots,9$ with one digit $d$ missing, so $2418\equiv45-d\pmod9$. Since $2418\equiv2+4+1+8=15\equiv6$, we get $d\equiv3\pmod9$, so $d=3$. Also the third number $z$ satisfies $z\equiv2418\equiv6\pmod9$.
+
+\emph{Column sums.} Let the hundreds, tens and units digits sum to $H$, $T$, $U$. Then $100H+10T+U=2418$ and $H+T+U=45-3=42$. Subtracting, $99H+9T=2376$, i.e. $11H+T=264$. Since $U\equiv8\pmod{10}$ and $U\le9+8+7$, either $U=8$ (then $H+T=34$, $H=23$, $T=11$) or $U=18$ (then $H=24$, $T=0$, impossible for three different digits). So $H=23$, $T=11$, $U=8$.
+
+\emph{Digits.} Three different digits (no $3$) with sum $23$ must be $\{6,8,9\}$. The remaining digits $\{0,1,2,4,5,7\}$ split into units with sum $8$ and tens with sum $11$: units $\{0,1,7\}$ with tens $\{2,4,5\}$, or units $\{1,2,5\}$ with tens $\{0,4,7\}$.
+
+\emph{Minimising $z$.} The smallest possible hundreds digit of $z$ is $6$, so try $z=\overline{6tu}$. From $z\equiv6\pmod9$, $t+u\equiv0\pmod9$, so $t+u=9$.
+\begin{itemize}
+\item Units $\{0,1,7\}$, tens $\{2,4,5\}$: only $z=627$. The other two numbers then start with $8$ and $9$ and use tens digits $4,5$ and units digits $0,1$; a multiple of $9$ starting with $8$ needs its other two digits to sum to $1$ or $10$, impossible here.
+\item Units $\{1,2,5\}$, tens $\{0,4,7\}$: $z=645$ or $z=672$. For $z=645$ the other numbers can be $801$ and $972$, both multiples of $9$, and $801+972+645=2418$.
+\end{itemize}
+So the smallest possible third number is $\boxed{645}$.

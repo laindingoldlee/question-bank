@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1465919_why_prime_checking_works
+% Stable identity: aops-topic-1465919-q01
+Suppose $n$ is not prime. Then $n=ab$ with integers $1<a\le b<n$. Since $a\le b$,
+\[
+a^2\le ab=n,\qquad\text{so}\qquad a\le\sqrt{n} .
+\]
+Let $p$ be any prime factor of $a$. Then $p\le a\le\sqrt{n}$ and $p$ divides $a$, hence divides $n$. So a composite $n$ always has a prime factor at most $\sqrt{n}$. Taking the contrapositive: if no prime $p\le\sqrt{n}$ divides $n$, then $n$ is prime. $\blacksquare$
+
+Since primes are integers, $p\le\sqrt{n}$ is the same as $p\le\lfloor\sqrt{n}\rfloor$. So trial division only has to try the primes up to $\lfloor\sqrt{n}\rfloor$: if none divides $n$, then $n$ is prime. When factorising, after dividing out all small primes, the same argument applied to the remaining cofactor shows it is prime as soon as no prime up to its square root divides it. For example, $\sqrt{221}<15$, and $221=13\cdot17$ is found by trying $2,3,5,7,11,13$.

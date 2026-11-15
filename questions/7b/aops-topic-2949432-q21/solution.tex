@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h2949432_2022_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2949432-q21
+By the Chinese remainder theorem the sequence modulo $15$ is determined by the sequences modulo $3$ and modulo $5$. These can be chosen independently via $(x,y)$, and $t$ is the lcm of the return times $t_3,t_5$. If $p\mid y$, then $a_{n+2}\equiv xa_{n+1}\pmod p$, and a return to $(1,1)$ forces $x\equiv1$, giving return time $1$; so assume $p\nmid y$.
+
+Modulo a prime $p$, the state $(a_n,a_{n+1})$ evolves by an invertible $2\times2$ matrix with characteristic polynomial $z^2-xz-y$. If it is irreducible, the return time divides $p^2-1$. If it has distinct roots in $\mathbb F_p$, it divides $p-1$. If it has a double root $r$, then $a_n=(c+dn)r^n$ and the return time divides $p\cdot\operatorname{ord}(r)$, which divides $p(p-1)$.
+
+So $t_5$ divides $24$ or $20$, and $t_3$ divides $8$ or $6$. The largest possible lcm is $\operatorname{lcm}(20,6)=60$; the other combinations give at most $\operatorname{lcm}(20,8)=40$ or $24$. It is attained: modulo $5$ take $(z-2)^2$, i.e. $x\equiv4,y\equiv1$; modulo $3$ take $(z-2)^2$, i.e. $x\equiv1,y\equiv2$. Then $(x,y)=(4,11)$, and direct computation shows the return time is $60$. Answer $\boxed{60}$.

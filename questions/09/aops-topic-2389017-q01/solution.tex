@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2389017_polymomial_remainder_theorem
+% Stable identity: aops-topic-2389017-q01
+\textbf{(a) Existence.} Let $d=\deg D$ and let $D$ have leading coefficient $c\ne0$. We use induction on the degree of $P$. If $P=0$ or $\deg P<d$, take $Q=0$ and $R=P$. Otherwise let $\deg P=m\ge d$ with leading coefficient $a$, and put
+\[P_1(x)=P(x)-\dfrac ac\,x^{m-d}D(x).\]
+The leading terms cancel, so $P_1=0$ or $\deg P_1<m$. By the induction hypothesis $P_1=DQ_1+R$ with $R=0$ or $\deg R<d$, and then
+\[P=D\left(Q_1+\dfrac ac\,x^{m-d}\right)+R.\]
+
+\textbf{Uniqueness.} If $DQ+R=DQ'+R'$ with both remainders of degree less than $d$ (or zero), then $D(Q-Q')=R'-R$. If $Q\ne Q'$, the left side has degree at least $d$, while the right side is $0$ or has degree less than $d$, which is impossible. So $Q=Q'$ and then $R=R'$. $\blacksquare$
+
+\textbf{(b)} The leading coefficients give $Q=2$:
+\[2x^2+3x+1=2\left(x^2+1\right)+(3x-1),\]
+and the remainder $R=3x-1$ has degree $1<2=\deg D$, as required. So division by a polynomial of the same degree is perfectly fine: the quotient is a constant. (When $\deg D>\deg P$, the quotient is $0$ and the remainder is $P$ itself.)

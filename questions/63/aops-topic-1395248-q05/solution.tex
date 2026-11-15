@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1395248_why_does_the_perimeter_change
+% Stable identity: aops-topic-1395248-q05
+Let $h$ be the distance between $AB$ and the line $\ell$ along which $P$ moves; it stays the same.
+\begin{enumerate}
+\item[(a)] By the midline theorem $MN=\dfrac{1}{2}AB$: does not change.
+\item[(c)] $[PAB]=\dfrac{1}{2}\cdot AB\cdot h$: does not change.
+\item[(d)] $MN\parallel AB$ and $MN$ is at distance $\dfrac{h}{2}$ from $AB$, so $[ABNM]=\dfrac{1}{2}\left(AB+\dfrac{AB}{2}\right)\dfrac{h}{2}=\dfrac{3}{8}AB\cdot h$ (equivalently, $\dfrac{3}{4}$ of the triangle): does not change.
+\item[(b)] The perimeter is $AB+PA+PB$, and $PA+PB$ is \emph{not} constant.
+\end{enumerate}
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),P1=(1.2,3.2),P2=(9.6,3.2);
+draw((-0.8,3.2)--(10.6,3.2),gray); label("$\ell$",(10.6,3.2),E,gray);
+draw(A--B--P1--cycle,linewidth(0.9));
+draw(A--P2--B,blue+dashed);
+pair M1=(A+P1)/2,N1=(B+P1)/2,M2=(A+P2)/2,N2=(B+P2)/2;
+draw(M1--N1,red); draw(M2--N2,red+dashed);
+dot(A);dot(B);dot(P1);dot(P2,blue);dot(M1);dot(N1);dot(M2,blue);dot(N2,blue);
+label("$A$",A,SW);label("$B$",B,SE);label("$P$",P1,N);label("$P'$",P2,N,blue);
+label("$M$",M1,W);label("$N$",N1,NE);label("$M'$",M2,SE,blue);label("$N'$",N2,E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Why the perimeter changes.} Put $A=(0,0)$, $B=(c,0)$ and $P=(x,h)$. Then
+\[
+PA+PB=\sqrt{x^2+h^2}+\sqrt{(x-c)^2+h^2}.
+\]
+For $x=\dfrac{c}{2}$ this is $2\sqrt{\dfrac{c^2}{4}+h^2}$, while for large $x$ it is larger than $2x-c$ (because $PA>x$ and $PB>x-c$), which grows without bound. So as $P$ slides along $\ell$, the base and the height stay the same (keeping the area and the midline fixed) but the two slanted sides get longer or shorter; the perimeter is smallest when $P$ is directly above the midpoint of $AB$ (by reflecting $A$ in $\ell$ and using the triangle inequality). In the figure, the dashed triangle $ABP'$ has the same area as $ABP$ but a much larger perimeter.
+
+Exactly one quantity changes: $\boxed{\text{(B) }1}$.

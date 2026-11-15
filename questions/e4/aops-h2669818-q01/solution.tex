@@ -1,0 +1,7 @@
+The four two-entry row sums total $37$, so $e=45-37=8$. Since $c+d=4$, the pair is $(1,3)$ or $(3,1)$. If $c=1,d=3$, then $f=4,g=7$ and $f+g=11$, but the remaining values are $2,5,6,9$; none of the pairs summing to $13$ among these leaves a complementary row pair summing to $11$ with $b+i=9$ (checking $a=2,5,6,9$ suffices). More directly, $a+b=11$, $a+h=13$, $b+i=9$ give $b=11-a,h=13-a,i=a-2$; none yields four distinct remaining values. Thus $c=3,d=1$, giving $f=2,g=9$. The remaining values are $4,5,6,7$. The same formulas allow $a=6$ or $7$. The first diagonal sum is $a+3+8+9+(a-2)=2a+18=32$, so $a=7$. Therefore the rows are $\boxed{(7,4),(3,1),(8),(2,9),(6,5)}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p={(0,4),(4,4),(1,3),(3,3),(2,2),(1,1),(3,1),(0,0),(4,0)};string[] s={"7","4","3","1","8","2","9","6","5"};draw((0,4)--(4,0),dashed);draw((4,4)--(0,0),dashed);for(int i=0;i<9;++i){filldraw(box(p[i]-(.25,.25),p[i]+(.25,.25)),white);label(s[i],p[i]);}label("sum $32$",(4.3,-.4));label("sum $21$",(-.3,-.4));
+\end{asy}

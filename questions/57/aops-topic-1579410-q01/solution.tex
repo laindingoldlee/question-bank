@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1579410_factor_counting_factorials
+% Stable identity: aops-topic-1579410-q01
+\textbf{Legendre's formula.} Among $1,2,\dots,n$, exactly $\left\lfloor\dfrac{n}{p^k}\right\rfloor$ numbers are multiples of $p^k$. A number divisible by exactly $p^e$ is counted once for each $k=1,\dots,e$, so the exponent of $p$ in $n!$ is
+\[
+v_p(n!)=\sum_{k\ge1}\left\lfloor\dfrac{n}{p^k}\right\rfloor .
+\]
+
+\textbf{In base $p$.} Write $n=d_rp^r+\dots+d_1p+d_0$ with digits $0\le d_i\le p-1$. Dividing by $p^k$ and discarding the fractional part removes the last $k$ digits:
+\[
+\left\lfloor\dfrac{n}{p^k}\right\rfloor=d_rp^{r-k}+\dots+d_{k+1}p+d_k ,
+\]
+since the discarded part $\dfrac{d_{k-1}p^{k-1}+\dots+d_0}{p^k}$ lies in $[0,1)$. Adding over $k=1,\dots,r$, the digit $d_i$ appears with total weight $p^{i-1}+p^{i-2}+\dots+1=\dfrac{p^i-1}{p-1}$. Hence
+\[
+v_p(n!)=\sum_{i=0}^{r}d_i\cdot\dfrac{p^i-1}{p-1}=\dfrac{\sum d_ip^i-\sum d_i}{p-1}=\dfrac{n-s_p(n)}{p-1}.\qquad\blacksquare
+\]
+If $p>n$, then $n$ is a single digit in base $p$, $s_p(n)=n$ and the formula gives $0$, matching the first step of the procedure in the question.

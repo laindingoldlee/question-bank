@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1657159_mean_inequality_chain_exploration
+% Stable identity: aops-topic-1657159-q01
+\textbf{Answer: no.} In fact the quadratic mean and the geometric mean alone cannot both be integers when $a\ne b$.
+
+\textbf{Proof of the lemma (infinite descent).} Suppose positive solutions exist and take one with $x$ as small as possible. If a prime $\ell$ divides both $x$ and $y$, then $\ell^4\mid z^2$, so $\ell^2\mid z$, and $\left(\dfrac {x}{\ell},\dfrac {y}{\ell},\dfrac{z}{\ell^2}\right)$ is a smaller solution; hence $\gcd(x,y)=1$. Then $(y^2)^2+z^2=(x^2)^2$ with $\gcd(y^2,z)=1$ is a primitive Pythagorean triple, so there are coprime $m>n>0$ of opposite parity with $x^2=m^2+n^2$ and one of the following.
+\begin{itemize}
+\item $y^2=m^2-n^2$ and $z=2mn$. Then $m^4-n^4=(m^2+n^2)(m^2-n^2)=(xy)^2$ is a positive solution with $m<x$ (as $x^2=m^2+n^2>m^2$).
+\item $y^2=2mn$ and $z=m^2-n^2$. Now $(m,n,x)$ is itself a primitive Pythagorean triple. Let $e$ be the even one and $o$ the odd one of $m,n$; then $e=2uv$, $o=u^2-v^2$ and $x=u^2+v^2$ for coprime $u>v>0$ of opposite parity. From $y^2=2eo=4uv\left(u^2-v^2\right)$ we get $uv\left(u^2-v^2\right)=\left(\dfrac {y}{2}\right)^2$. The factors $u$, $v$, $u^2-v^2$ are pairwise coprime, so each is a square: $u=r^2$, $v=s^2$, $u^2-v^2=t^2$. Then $r^4-s^4=t^2$ is a positive solution with $r\le r^2=u<u^2+v^2=x$.
+\end{itemize}
+Either way there is a positive solution with a smaller first entry, a contradiction.
+
+\textbf{The means.} Suppose $\sqrt{ab}$ and $k=\sqrt{\dfrac{a^2+b^2}{2}}$ are integers. Let $g=\gcd(a,b)$, $a=ga'$, $b=gb'$ with $\gcd(a',b')=1$. Since $ab=g^2a'b'$ is a square, $a'b'$ is a square, and as $a',b'$ are coprime, $a'=p^2$ and $b'=q^2$ with $\gcd(p,q)=1$; also $p\ne q$ because $a\ne b$. Now
+\[
+g^2\left(p^4+q^4\right)=2k^2 .
+\]
+If $p^4+q^4$ were odd, the power of $2$ dividing the left side would be even and the power dividing the right side odd, which is impossible. So $p$ and $q$ are both odd, $w=\dfrac{p^4+q^4}{2}$ is an integer, and $g^2w=k^2$ shows that $w=\left(\dfrac {k}{g}\right)^2$ is the square of a rational number, hence of an integer: $p^4+q^4=2c^2$ for a positive integer $c$.
+
+Now use the identity
+\[
+\left(p^4+q^4\right)^2-4p^4q^4=\left(p^4-q^4\right)^2,\qquad\text{i.e.}\qquad 4c^4-4(pq)^4=\left(p^4-q^4\right)^2 .
+\]
+As $p,q$ are odd, $p^4-q^4$ is even, so $c^4-(pq)^4=\left(\dfrac{p^4-q^4}{2}\right)^2$, and $\dfrac{p^4-q^4}{2}\ne0$ because $p\ne q$. This is a positive solution of $x^4-y^4=z^2$ (with $x=c$, $y=pq$, $z=\dfrac{\left|p^4-q^4\right|}{2}$), contradicting the lemma.
+
+Therefore \boxed{\text{no such integers }a\ne b\text{ exist}}. (Three of the means can be integers, as in the post: for $a=56$, $b=8$ the quadratic, arithmetic and harmonic means are $40$, $32$ and $14$, but $\sqrt{ab}=8\sqrt7$.)

@@ -1,0 +1,19 @@
+Using $z=x+iy$, the first inequality is $|z(z-12)|^2\le144|z|^2$. It is equivalent to the disk $|z-12|\le12$, with the origin included. In polar coordinates this disk is
+\[
+-\dfrac{\pi}{2}\le\theta\le\dfrac{\pi}{2},\qquad0\le r\le24\cos\theta.
+\]
+The second inequality is $\operatorname{Re}(z^3)=r^3\cos3\theta\ge0$. Within the disk's angular range, the nonzero-area portion satisfying it has $-\dfrac{\pi}{6}\le\theta\le\dfrac{\pi}{6}$. Hence
+\[
+\begin{aligned}
+[R]&=\dfrac{1}{2}\int_{-\dfrac{\pi}{6}}^{\dfrac{\pi}{6}}(24\cos\theta)^2\,d\theta\\
+&=288\left(\dfrac{\pi}{6}+\dfrac{\sqrt3}{4}\right)
+=48\pi+72\sqrt3.
+\end{aligned}
+\]
+Thus $\boxed{a+b+c=48+72+3=123}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;pair f(real t){return (24cos(t)^2,24cos(t)*sin(t));}path p=(0,0)--f(-pi/6)..graph(f,-pi/6,pi/6)..(0,0)--cycle;filldraw(p,lightblue,blue);draw(circle((12,0),12),gray);draw((0,0)--(25,0),dashed);label("$O$",(0,0),(-1,0));label("$30^\circ$",(5,1.3));label("$30^\circ$",(5,-1.3));
+\end{asy}

@@ -1,0 +1,7 @@
+For each coordinate direction, the number of bricks crossing the central plane perpendicular to that direction is even: either half contains four unit cubes, and all other bricks occupy two of those cubes. Thus the four bricks have direction counts $(4,0,0)$ or $(2,2,0)$ in some order. The first case gives three all-parallel tilings. In the second case choose the unused direction in three ways; its two layers each contain two parallel bricks, and the two used directions can be assigned to the layers in two ways. Total $3+3\cdot2=\boxed9$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int k=0;k<2;++k){pair O=(3*k,0);draw(box(O,O+(2,2)));if(k==0)draw(O+(1,0)--O+(1,2),blue);else draw(O+(0,1)--O+(2,1),red);label(k==0?"lower layer":"upper layer",O+(1,-.5));}
+\end{asy}

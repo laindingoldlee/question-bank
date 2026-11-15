@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1763222_2011_amc10a_problem_25
+% Stable identity: aops-topic-1763222-q01
+Let $R$ be the unit square $[0,1]^2$ and $X=(x,y)$ an interior point.
+
+\textbf{The rays must go to the four corners.} Each of the $n$ regions is a triangle with a vertex at $X$; a region containing a corner of the square in the interior of its boundary arc would not be a triangle. So four of the rays go to the corners, and they split $R$ into four triangles on the sides with areas $\dfrac {x}{2},\dfrac{1-x}{2},\dfrac {y}{2},\dfrac{1-y}{2}$ (base $1$, height the distance from $X$ to that side). The sketch shows the case $n=10$, $X=\left(\dfrac{2}{5},\dfrac{3}{5}\right)$: the solid rays go to the corners and the dashed rays cut the four side triangles into $2,3,3,2$ equal parts.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real u=5; pair X=(0.4u,0.6u);
+pair[] K={(0,0),(u,0),(u,u),(0,u)};
+filldraw((0,0)--(u,0)--(u,u)--(0,u)--cycle,white,linewidth(0.9));
+for(int i=0;i<4;++i) draw(X--K[i],linewidth(0.8));
+pair[] Pp={(0,0.5u),(u,u/3),(u,2u/3),(u/3,0),(2u/3,0),(0.5u,u)};
+for(int i=0;i<6;++i) draw(X--Pp[i],blue+dashed);
+dot(X);label("$X$",X+0.62*dir(103));
+label("$x$",(0.2u,0.6u),N);label("$1-x$",(3.9,0.6u),S);
+draw(X--(0,0.6u),dotted);draw(X--(u,0.6u),dotted);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+
+\textbf{Counting.} The remaining rays split each of these four triangles into triangles with a common height, so each triangle on a side is cut into some number $m_i\ge1$ of pieces of area $\dfrac{1}{n}$. Hence $\dfrac {x}{2}=\dfrac{m_1}{n}$ and $\dfrac{1-x}{2}=\dfrac{m_2}{n}$, so $x=\dfrac{2m_1}{n}$, and similarly for $y$. Conversely, if $x$ and $y$ are multiples of $\dfrac{2}{n}$ strictly between $0$ and $1$, dividing each side into equal parts gives $n$ triangles of area $\dfrac{1}{n}$ (then $m_1+m_2+m_3+m_4=\dfrac {n}{2}+\dfrac {n}{2}=n$).
+
+So the $100$-ray partitional points are those with $x,y\in\left\{\dfrac{1}{50},\dots,\dfrac{49}{50}\right\}$: $49^2=2401$ points. The $60$-ray partitional points have coordinates that are multiples of $\dfrac{1}{30}$. A number that is a multiple of both $\dfrac{1}{50}$ and $\dfrac{1}{30}$ is a multiple of $\dfrac{1}{10}$ (if $\dfrac {p}{50}=\dfrac {q}{30}$ then $3p=5q$, so $5\mid p$), and there are $9^2=81$ points with both coordinates in $\left\{\dfrac{1}{10},\dots,\dfrac{9}{10}\right\}$. The answer is $2401-81=\boxed{\textbf{(C)}\ 2320}$.

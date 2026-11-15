@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2084517_strange_counting_problem
+% Stable identity: aops-topic-2084517-q01
+Let $A_i$ be the set of phone numbers with the block $123$ starting at position $i$, for $i=1,\dots,5$.
+\begin{itemize}
+\item $|A_1|=10^4$: positions $4$ to $7$ are free, and the first digit is $1\ne0$.
+\item $|A_i|=9\cdot10^3$ for $i=2,3,4,5$: the first digit has $9$ choices and the other three free positions $10$ each.
+\end{itemize}
+Two occurrences of $123$ cannot overlap (no proper ending of $123$ is a beginning of $123$), so $A_i\cap A_j$ is empty unless $j\ge i+3$, and there is no room for three occurrences. The possible pairs are
+\[|A_1\cap A_4|=10,\qquad |A_1\cap A_5|=10,\qquad |A_2\cap A_5|=9\]
+(one free digit each, which in the last case is the first digit). By inclusion-exclusion the count is
+\[10000+4\cdot9000-(10+10+9)=46000-29=\boxed{45971}.\]

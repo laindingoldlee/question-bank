@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1564697_alternate_forms_for_cotx
+% Stable identity: aops-topic-1564697-q01
+\textbf{Right triangle, $0^\circ<x<90^\circ$.} In right triangle $ABC$ with the right angle at $B$ and $\angle A=x$, the third angle is $\angle C=90^\circ-x$. The side $BC$ is opposite $A$ and adjacent to $C$; the side $AB$ is adjacent to $A$ and opposite $C$. Hence
+\[
+\cot x=\dfrac{AB}{BC}=\tan C=\tan\left(90^\circ-x\right).
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(4,3);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B+(-0.3,0)--B+(-0.3,0.3)--B+(0,0.3));
+draw(arc(A,0.8,0,degrees(C)),red);label("$x$",A+1.1*dir(degrees(C)/2),red);
+draw(arc(C,0.7,-90,-180+degrees(C)),blue);label("$90^\circ-x$",(3.3,1.7),blue+fontsize(9pt));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);
+label("adjacent to $x$",(A+B)/2,S);label("opposite $x$",(B+C)/2,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{In general.} For every $x$, $\sin\left(90^\circ-x\right)=\cos x$ and $\cos\left(90^\circ-x\right)=\sin x$ (cofunction identities). If $\sin x\ne0$, then
+\[
+\tan\left(90^\circ-x\right)=\dfrac{\sin\left(90^\circ-x\right)}{\cos\left(90^\circ-x\right)}=\dfrac{\cos x}{\sin x}=\cot x .\qquad\blacksquare
+\]
+(Other fraction-free forms are $\cot x=(\tan x)^{-1}$, valid when $\tan x$ is defined and nonzero, and $\cot x=\cos x\csc x$.)

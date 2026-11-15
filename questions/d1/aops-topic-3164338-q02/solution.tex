@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3164338_2017_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3164338-q02
+Write the angles $a,a+d,\ldots,a+4d$, with positive integer $d$. Their sum 540 gives $a+2d=108$. Convexity requires $a+4d=108+2d<180$, so $d\le35$. Hence $a=108-2d\ge38$. The angles 38, 73,108,143,178 attain the bound: take five tangent lines to a circle with successive outward-normal gaps 142,107, 72, 37, 2 degrees; their intersections form a convex pentagon with exactly these interior angles. Thus $\boxed{38^\circ}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real[] t={0,142,249,321,358,360};pair[] p;path h;for(int k=0;k<5;++k){real m=(t[k]+t[k+1])/2;real d=(t[k+1]-t[k])/2;p.push(dir(m)/cos(d*pi/180));h=h--p[k];}draw(h--cycle);for(int k=0;k<5;++k)label("$"+string(38+35*k)+"^\circ$",p[k],unit(p[k]));
+\end{asy}

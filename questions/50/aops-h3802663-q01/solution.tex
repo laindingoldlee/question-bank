@@ -1,0 +1,8 @@
+Every solution lies in $[-99,99]$, and the equation is odd, so nonzero roots come in opposite pairs. For positive $x$, solutions can occur only on the positive sine humps $(2j,2j+1)$, $j=0,\ldots,49$. On each such interval, $g(x)=99\sin(\pi x)-x$ is strictly concave.
+On $(0,1)$, $g(0)=0$, its initial derivative is positive, and $g(1)<0$, so there is exactly one positive root. On each of the other $49$ humps both endpoint values are negative, while at the midpoint $g(2j+\dfrac{1}{2})=99-(2j+\dfrac{1}{2})>0$. Strict concavity and the strictly decreasing derivative give exactly two roots in each. Thus there are $99$ positive roots, $99$ negative roots, and zero, for a total of $\boxed{199}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;size(300,160,IgnoreAspect);real f(real x){return 99*sin(pi*x);}draw(graph(f,0,5,500),blue);draw((0,0)--(5,5),red);draw((0,0)--(5,0),gray);label("$99\sin(\pi x)$",(2.5,99),N);label("$x$",(4.7,4.7),NE);
+\end{asy}

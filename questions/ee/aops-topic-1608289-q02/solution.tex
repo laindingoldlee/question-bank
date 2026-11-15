@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h1608289_2010_national_mathcounts_questions_urgent
+% Stable identity: aops-topic-1608289-q02
+A plane parallel to the base at distance $t$ from the apex $V$ cuts the pyramid in a hexagon similar to the base, with all lengths proportional to $t$ (it is the image of the base under the dilation centred at $V$ with ratio $\dfrac{t}{\text{height}}$). So its area is proportional to $t^2$.
+
+The ratio of the areas is $\dfrac{216\sqrt3}{486\sqrt3}=\dfrac{4}{9}$, so the ratio of the distances from the apex is $\sqrt{\dfrac{4}{9}}=\dfrac{2}{3}$. Let the smaller section be at distance $2u$ and the larger at distance $3u$. They are $8$ feet apart, so $3u-2u=8$, $u=8$, and the larger cross section is
+\[
+3u=\boxed{24\text{ feet}}
+\]
+from the apex (the smaller one is $16$ feet from it).
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real R=3,k=0.35,H=6.2;
+pair V=(0,H);
+pair hx(real r,real y,int i){return (r*cos(pi*i/3+0.3),y+k*r*sin(pi*i/3+0.3));}
+void hexa(real r,real y,pen p){
+  for(int i=0;i<6;++i){
+    pen q=(sin(pi*i/3+0.3)+sin(pi*(i+1)/3+0.3)>0)?p+dashed:p;
+    draw(hx(r,y,i)--hx(r,y,i+1),q);}
+}
+hexa(R,0,linewidth(0.9));
+for(int i=0;i<6;++i){pen q=(sin(pi*i/3+0.3)>0.5)?dashed:linewidth(0.9);draw(V--hx(R,0,i),q);}
+real t1=16/30,t2=24/30;
+hexa(R*t1,H*(1-t1),blue);hexa(R*t2,H*(1-t2),red);
+dot(V);label("$V$",V,N);
+draw((0,H)--(0,H*(1-t2)),gray+dashed);
+dot((0,H*(1-t1)),blue);dot((0,H*(1-t2)),red);
+real xx=R+0.9;
+draw((xx,H)--(xx,H*(1-t1)),blue,Arrows(TeXHead));label("$16$",(xx,H*(1-t1/2)),E,blue);
+draw((xx+1.3,H)--(xx+1.3,H*(1-t2)),red,Arrows(TeXHead));label("$24$",(xx+1.3,H*(1-t2/2)),E,red);
+draw(V--(xx+1.5,H),gray+dotted);
+draw((0,H*(1-t1))--(xx+0.2,H*(1-t1)),gray+dotted);draw((0,H*(1-t2))--(xx+1.5,H*(1-t2)),gray+dotted);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The figure shows the two cross sections in blue and red, with their distances $16$ and $24$ from the apex $V$; the height of the pyramid itself is not determined by the data.)

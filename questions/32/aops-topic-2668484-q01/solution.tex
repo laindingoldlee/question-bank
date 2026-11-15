@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2668484_hard_counting_problem
+% Stable identity: aops-topic-2668484-q01
+The second point is on the same side as the first with probability $\dfrac14$, on an adjacent side with probability $\dfrac12$, and on the opposite side with probability $\dfrac14$.
+\begin{itemize}
+\item \emph{Same side.} The positions $x,y$ are uniform on $[0,3]$. The region $|x-y|>2$ consists of two right triangles with legs $1$, of total area $1$, so the probability is $1-\dfrac19=\dfrac89$.
+\item \emph{Adjacent sides.} Let $x$, $y$ be the distances from the common corner, uniform on $[0,3]$. The distance is $\sqrt{x^2+y^2}\le2$ on a quarter disc of radius $2$, which lies inside the $3\times3$ square of outcomes. The probability is $\dfrac{\pi}{9}$.
+\item \emph{Opposite sides.} The distance is at least $3$, so the probability is $0$.
+\end{itemize}
+In total,
+\[\dfrac14\cdot\dfrac89+\dfrac12\cdot\dfrac\pi9=\boxed{\dfrac{4+\pi}{18}}\approx0.397.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(3,0)--(3,3)--(0,3)--cycle,linewidth(0.8));
+pair P=(1.2,0),Q=(0,1.7);draw(P--Q,blue);dot(P);dot(Q);
+label("$x$",(0.6,0),S,fontsize(8pt));label("$y$",(0,0.85),W,fontsize(8pt));label("$3$",(1.5,3),N,fontsize(8pt));
+pair o=(4.2,0);draw(o--o+(3,0)--o+(3,3)--o+(0,3)--cycle);
+fill(o--o+(2,0)--arc(o,2,0,90)--cycle,lightgray);draw(arc(o,2,0,90));
+label("$x^2+y^2\le4$",o+(0.9,0.6),fontsize(7pt));label("$0$",o,SW,fontsize(7pt));label("$3$",o+(3,0),S,fontsize(7pt));label("$2$",o+(2,0),S,fontsize(7pt));label("$3$",o+(0,3),W,fontsize(7pt));
+label("$x$",o+(3,0),E,fontsize(8pt));label("$y$",o+(0,3),N,fontsize(8pt));
+\end{asy}

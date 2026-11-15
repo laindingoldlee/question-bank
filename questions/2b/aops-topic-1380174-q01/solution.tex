@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1380174_help_please
+% Stable identity: aops-topic-1380174-q01
+For each $x\ge0$ count the integers $y\ge0$ with $17y<100-20x$:
+\begin{itemize}
+\item $x=0$: $17y<100$, $y\le5$: $6$ points;
+\item $x=1$: $17y<80$, $y\le4$: $5$ points;
+\item $x=2$: $17y<60$, $y\le3$: $4$ points;
+\item $x=3$: $17y<40$, $y\le2$: $3$ points;
+\item $x=4$: $17y<20$, $y\le1$: $2$ points;
+\item $x\ge5$: $20x\ge100$, no points.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+for(int x=0;x<=5;++x) for(int y=0;y<=6;++y) dot((x,y),gray(0.8)+linewidth(2.5));
+draw((0,0)--(5.6,0),Arrow(6)); draw((0,0)--(0,6.6),Arrow(6));
+label("$x$",(5.6,0),E); label("$y$",(0,6.6),N);
+draw((5,0)--(0,100/17),red+dashed);
+for(int x=0;x<=4;++x) for(int y=0;y<=6;++y) if(20*x+17*y<100) dot((x,y),blue+linewidth(4));
+for(int x=1;x<=5;++x) label("$"+string(x)+"$",(x,0),S);
+for(int y=1;y<=6;++y) label("$"+string(y)+"$",(0,y),W);
+label("$20x+17y=100$",(5.2,3.3),E,fontsize(9pt)+red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The total is $6+5+4+3+2=\boxed{20}$. (The point $(5,0)$ lies on the line $20x+17y=100$ and is not counted, since the inequality is strict.)

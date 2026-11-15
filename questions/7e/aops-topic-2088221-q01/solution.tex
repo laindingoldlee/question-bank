@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2088221_please_give_me_a_great_solution
+% Stable identity: aops-topic-2088221-q01
+Let $H$ be the foot of the perpendicular from $C$ to line $AB$. Since $\angle BAC=30^\circ$ is acute, $H$ lies on the ray $AB$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), H=(sqrt(3),0), B=(sqrt(3)+1,0), C=(sqrt(3),1), P=(sqrt(3)/2,1/2);
+draw(A--B--C--cycle,linewidth(0.9)); draw(P--B,linewidth(0.9));
+draw(C--H,dashed); draw(P--H,dashed);
+draw(H+(-0.08,0)--H+(-0.08,0.08)--H+(0,0.08));
+dot(A); dot(B); dot(C); dot(P); dot(H);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$P$",P,NW); label("$H$",H,S);
+label("$30^\circ$",A+0.5*dir(15),fontsize(7pt));
+draw(arc(P,0.22,-15,30)); label("$45^\circ$",P+0.38*dir(7),fontsize(7pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\emph{Triangle $PHC$ is equilateral.} In the right triangle $AHC$, $\angle A=30^\circ$, so $CH=\dfrac{1}{2}AC=PC$. Also $P$ is the midpoint of the hypotenuse $AC$, so $PH=PA=PC$. Thus $PH=PC=CH$, triangle $PHC$ is equilateral and $\angle HPC=60^\circ$. Triangle $PAH$ is isosceles with $PA=PH$, so $\angle PHA=\angle PAH=30^\circ$.
+
+\emph{Locating $B$.} As a point $X$ moves along the ray $AB$ away from $A$, the ray $PX$ turns steadily away from $PA$, so $\angle APX$ increases and $\angle CPX=180^\circ-\angle APX$ decreases. Since $\angle CPB=45^\circ<60^\circ=\angle CPH$, the point $B$ is farther from $A$ than $H$. So $H$ lies between $A$ and $B$, and $\angle HPB=\angle HPC-\angle BPC=60^\circ-45^\circ=15^\circ$.
+
+\emph{Finishing.} In triangle $PHB$, $\angle PHB=180^\circ-\angle PHA=150^\circ$ and $\angle HPB=15^\circ$, so $\angle HBP=15^\circ=\angle HPB$ and $HB=HP=HC$. The right triangle $CHB$ is therefore isosceles, and $\angle HBC=45^\circ$. Hence
+\[\angle ABC=\boxed{45^\circ}.\]
+(The third angle is $\angle ACB=180^\circ-30^\circ-45^\circ=105^\circ$.)

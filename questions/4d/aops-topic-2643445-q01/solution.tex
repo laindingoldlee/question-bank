@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2643445_solve_the_problem
+% Stable identity: aops-topic-2643445-q01
+\textbf{No.} Suppose the string $S$ is a palindrome. It begins with $1$, so it ends with $1$: the last digit of $n$ is $1$. As $n>1$, $n$ has $k\ge2$ digits, and $n\ge10^{k-1}+1$.
+
+\emph{Zero blocks.} No number begins with $0$, so every maximal block of consecutive zeros in $S$ lies inside one number. A number with at most $k$ digits has at most $k-1$ consecutive zeros, with equality only for $d\cdot10^{k-1}$ ($1\le d\le9$). If $D$ is the leading digit of $n$, the numbers $10^{k-1},2\cdot10^{k-1},\dots,D\cdot10^{k-1}$ are at most $n$, and $n$ is not one of them (it ends in $1$). So the maximal zero blocks of length $k-1$ are exactly those inside these $D$ numbers, in this order.
+
+\emph{Reflection.} Reversing $S$ maps maximal zero blocks of length $k-1$ to such blocks, in reverse order, so the first one (in $10^{k-1}$) corresponds to the last one (in $D\cdot10^{k-1}$), and the digit just before the first corresponds to the digit just after the last. The first is preceded by $1$ (the leading digit of $10^{k-1}$); the last is followed by the leading digit of $D\cdot10^{k-1}+1\le n$, which is $D$. So $D=1$, there is only one such block, and it must be its own mirror image.
+
+\emph{Contradiction.} Reading outward from this block, the digits on both sides must agree. To the right we read $10^{k-1}+1$: first $1$, then $0$ (if $k\ge3$) or $1$ (if $k=2$, the number $11$). To the left we read the leading $1$ of $10^{k-1}$ and then the last digit of $10^{k-1}-1=99\ldots9$, which is $9$. The second digits differ, a contradiction.
+
+Hence the number is $\boxed{\text{never a palindrome}}$. $\blacksquare$

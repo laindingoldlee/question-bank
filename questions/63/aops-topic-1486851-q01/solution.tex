@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1486851_some_help
+% Stable identity: aops-topic-1486851-q01
+The outer edge is a circle of circumference $660$ cm, so its radius is
+\[
+R=\dfrac{660}{2\pi}\approx\dfrac{660\cdot7}{2\cdot22}=105\ \text{cm}.
+\]
+The well's radius is $75$ cm, so the width of the parapet is $105-75=30$ cm, answer $\boxed{\textbf{(A)}}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real r=75, R=105;
+filldraw(circle((0,0),R),lightgray,linewidth(0.9));
+filldraw(circle((0,0),r),white,linewidth(0.9));
+draw((-r,0)--(r,0),blue,Arrows(6));
+label("$150$",(0,0),N,blue);
+draw((r,0)--(R,0),red+linewidth(0.9));
+label("$w$",((r+R)/2,0),N,red);
+label("outer edge $660$",R*dir(-60),SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(With the exact value of $\pi$ the width is $\dfrac{330}{\pi}-75\approx30.04$ cm, still $30$ cm to the nearest centimetre.)

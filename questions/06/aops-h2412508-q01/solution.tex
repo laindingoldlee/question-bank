@@ -1,0 +1,11 @@
+Scale and place the square as $A=(0,0)$, $B=(1,0)$, $C=(1,1)$, $D=(0,1)$. Write $X=(1,t)$ with $0<t<1$. The condition on $Y$ gives $Y=(-t,1)$. The midpoint of $XY$ is
+\[
+\left(\dfrac{1-t}{2},\dfrac{1+t}{2}\right).
+\]
+Its coordinates sum to $1$, which is the equation of diagonal $BD$. This proves the claim.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1),X=(1,.6),Y=(-.6,1),M=(X+Y)/2;draw(A--B--C--D--cycle);draw(D--Y);draw(X--Y,blue);draw(B--D,red);dot(M);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,(0,1));label("$X$",X,(1,0));label("$Y$",Y,(-1,0));label("$M$",M,(0,-1));
+\end{asy}

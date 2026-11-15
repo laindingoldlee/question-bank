@@ -1,0 +1,22 @@
+Translate and scale so that $N=(0,0)$, $A=(0,1)$, $B=(0,-1)$, $P=(p,0)$ with $p>0$. The tangent conditions give the circle equation
+\[
+x^2+y^2+\dfrac{2}{p} x=1.
+\]
+Write $M=(m,t)$, where $0<m<p$ and $t=1-\dfrac{m}{p}>0$. The reflected point $Q_0=(m,-t)$ lies on $PB$.
+
+The line $MN$ meets the circle at points with coordinates $\lambda(m,t)$, where
+\[
+(m^2+t^2)\lambda^2+\dfrac{2m}{p}\lambda-1=0.
+\]
+Let its negative and positive roots be $\lambda,\mu$. Then $C=(\lambda m,\lambda t)$, and reflection symmetry puts $D_0=(\mu m,-\mu t)$ on the circle and line $NQ_0$. The $x$-intercept of line $CD_0$ is
+\[
+\dfrac{2m\lambda\mu}{\lambda+\mu}
+=\dfrac{2m[-\dfrac{1}{(m^2+t^2)}]}{-2\dfrac{m}{[p(m^2+t^2)]}}=p.
+\]
+Thus $P,C,D_0$ are collinear, so $D_0=D$ and $Q_0=Q$. Consequently $M,Q$ have the same $x$-coordinate, proving $MQ\parallel AB$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real p=2,m=1,t=.5,la=(-1-sqrt(6))/2.5,mu=(-1+sqrt(6))/2.5;pair N=(0,0),A=(0,1),B=(0,-1),P=(p,0),M=(m,t),Q=(m,-t),C=la*(m,t),D=mu*(m,-t);draw(circle((-.5,0),sqrt(1.25)),gray);draw(A--P--B);draw(A--B,dashed);draw(M--C,blue);draw(P--C);draw(N--Q,blue);draw(M--Q,red);label("$A$",A,(0,1));label("$B$",B,(0,-1));label("$P$",P,(1,0));label("$M$",M,NE);label("$Q$",Q,SE);label("$N$",N,NW);label("$C$",C,SW);label("$D$",D,(0,-1));
+\end{asy}

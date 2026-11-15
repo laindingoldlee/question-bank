@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h1493503_special_segments_of_similar_figures
+% Stable identity: aops-topic-1493503-q01
+Let $a,b,c$ be the sides of $ABC$, $K$ its area, $s$ its semiperimeter, $R$ its circumradius and $r$ its inradius; use primes for $A'B'C'$. Similar triangles have equal angles, so $\angle A'=\angle A$.
+
+\textbf{Circumradius.} By the extended law of sines, $2R=\dfrac{a}{\sin A}$. Hence
+\[
+2R'=\dfrac{a'}{\sin A'}=\dfrac{ka}{\sin A}=k\cdot2R,
+\]
+so $R'=kR$.
+
+\textbf{Inradius.} Splitting the triangle into three triangles with apex at the incentre gives $K=rs$. Areas of similar figures scale by $k^2$ (each height scales by $k$, like the sides), so $K'=k^2K$, while $s'=ks$. Hence
+\[
+r'=\dfrac{K'}{s'}=\dfrac{k^2K}{ks}=kr. \qquad\blacksquare
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(0,0),B=(2.2,0),C=(0.7,1.4);
+real k=1.6; pair sh=(3.6,0);
+pair A2=sh+k*A,B2=sh+k*B,C2=sh+k*C;
+pair cc(pair A,pair B,pair C){return extension((A+B)/2,(A+B)/2+rotate(90)*(B-A),(A+C)/2,(A+C)/2+rotate(90)*(C-A));}
+pair ic(pair A,pair B,pair C){real a=abs(B-C),b=abs(C-A),c=abs(A-B);return (a*A+b*B+c*C)/(a+b+c);}
+void tri(pair A,pair B,pair C,string s){
+ pair O=cc(A,B,C), I=ic(A,B,C);
+ draw(circle(O,abs(A-O)),blue); draw(circle(I,abs(I-ft(I,A,B))),red);
+ draw(A--B--C--cycle,linewidth(0.9));
+ draw(O--C,blue+dashed); draw(I--ft(I,A,B),red+dashed);
+ dot(O,blue); dot(I,red);
+ label("$A"+s+"$",A,SW); label("$B"+s+"$",B,SE); label("$C"+s+"$",C,N);
+}
+tri(A,B,C,""); tri(A2,B2,C2,"'");
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+More generally, any length defined from the triangle in a way that does not depend on its position (a median, an altitude, the circumradius, the inradius, the distance between two centres) scales by the same factor $k$, because the similarity can be realised as a rigid motion followed by a dilation with ratio $k$, which multiplies every distance by $k$.

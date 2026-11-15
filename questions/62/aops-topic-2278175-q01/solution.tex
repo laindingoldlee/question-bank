@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2278175_passing_through_the_mid_point
+% Stable identity: aops-topic-2278175-q01
+Let $\omega$ be the circumcircle of $ABC$ (its centre is the midpoint of $BC$, since $\angle A=90^\circ$) and let $\gamma$ be the circle with centre $A$ and radius $AD$. The line $XY$ is the radical axis of $\gamma$ and $\omega$: the set of points with equal power with respect to both circles.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(4,0), C=(0,3);
+real t=dot(A-B,C-B)/dot(C-B,C-B); pair D=B+t*(C-B);
+pair M=(B+C)/2; real R=abs(B-M), h=abs(D-A);
+path c1=circle(A,h), c2=circle(M,R);
+pair[] I=intersectionpoints(c1,c2); pair X=I[0], Y=I[1];
+pair A2=2*D-A, N=(A+D)/2;
+draw(c2,gray); draw(c1,blue);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--A2,dashed); draw(X--Y,red);
+draw(D+0.15*unit(A-D)--D+0.15*unit(A-D)+0.15*unit(B-D)--D+0.15*unit(B-D)); draw((0,0.22)--(0.22,0.22)--(0.22,0));
+dot(D); dot(N,red); dot(X); dot(Y); dot(A2);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NW); label("$D$",D,dir(95));
+label("$N$",N,dir(170),red); label("$X$",X,dir(X-A)); label("$Y$",Y,dir(Y-A)); label("$A'$",A2,NE);
+\end{asy}
+
+\textbf{The second intersection of line $AD$ with $\omega$.} Let line $AD$ meet $\omega$ again at $A'$. Since $D$ is inside $\omega$ on the chords $BC$ and $AA'$, the power of a point gives $DA\cdot DA'=DB\cdot DC$. In a right triangle, the altitude to the hypotenuse satisfies $AD^2=DB\cdot DC$ (triangles $ABD$ and $CAD$ are similar). Hence $DA'=AD$, and $AA'=2AD$.
+
+\textbf{Powers of a point $P$ on segment $AD$.} Let $P$ be on segment $AD$ with $AP=p$, $0\le p\le AD$. Then
+\[\operatorname{pow}_\gamma(P)=AP^2-AD^2=p^2-AD^2,\qquad \operatorname{pow}_\omega(P)=-PA\cdot PA'=-p(2AD-p)=p^2-2p\cdot AD .\]
+These are equal exactly when $AD^2=2p\cdot AD$, i.e. $p=\dfrac{AD}{2}$. So the midpoint $N$ of $AD$ has equal powers with respect to the two circles, which means it lies on the radical axis $XY$. Hence $XY$ passes through the midpoint of $AD$.

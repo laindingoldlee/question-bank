@@ -1,0 +1,21 @@
+When both dimensions are even, the second player rotates each of the first player's moves by $180^\circ$ about the board centre. The image segment is disjoint from the original: horizontal segments are in different rows, and vertical segments in different columns. After each response the filled set is centrally symmetric, so the image of a newly legal move is also unfilled. The second player can therefore always respond and makes the last move.
+If $N$ is odd, the first player fills the entire middle row. Subsequent legal moves lie entirely above or below it. The first player then answers by a $180^\circ$ rotation, which places the answer in the opposite half. The same argument forces a win. If $N$ is even and $M$ odd, use the middle column instead. This includes one-row or one-column boards: filling the whole board wins immediately in the normal game.
+For the misere $1\times M$ board, if $M=1$ the first player must make the losing last move. If $M\ge2$, the first player fills a contiguous block of $M-1$ cells, leaving one. The second player must fill it and loses. Thus the first player wins exactly when $M\ge2$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=0;x<6;++x)for(int y=0;y<4;++y)draw(box((x,y),(x+1,y+1)),gray);fill(box((0,0),(3,1)),lightblue);fill(box((3,3),(6,4)),lightred);label("move",(1.5,.5));label("rotated reply",(4.5,3.5));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=0;x<5;++x)for(int y=0;y<5;++y)draw(box((x,y),(x+1,y+1)),gray);fill(box((0,2),(5,3)),lightgray);fill(box((0,0),(1,2)),lightblue);fill(box((4,3),(5,5)),lightred);label("first move: middle row",(2.5,2.5));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=0;x<5;++x)for(int y=0;y<4;++y)draw(box((x,y),(x+1,y+1)),gray);fill(box((2,0),(3,4)),lightgray);fill(box((0,0),(2,1)),lightblue);fill(box((3,3),(5,4)),lightred);label("middle column",(2.5,4.6));
+\end{asy}

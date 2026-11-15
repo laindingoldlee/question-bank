@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1206933_rectangle_parabolas
+% Stable identity: aops-topic-1206933-q01
+By symmetry $A=(-3,9)$ and $B=(3,9)$. The area is $6\cdot AB=36$, so the other side is $BC=6$, and $C=(3,15)$, $D=(-3,15)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+import graph; real k=0.15;
+draw(graph(new real(real x){return k*x^2;},-3.6,3.6),blue); draw(graph(new real(real x){return k*(-3x^2+42);},-3.9,3.9),red);
+pair A=(-3,9k),B=(3,9k),C=(3,15k),D=(-3,15k); draw(A--B--C--D--cycle,linewidth(0.9)); draw((-5,0)--(5,0),gray,Arrow); draw((0,-0.3)--(0,44k),gray,Arrow);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW); label("$y=x^2$",(-3.6,13k),W); label("$y=-3x^2+g$",(0.3,42k),E);
+label("$6$",(-1,9k),N); label("$6$",(3,12k),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $C$ lies on $y=-3x^2+g$: $15=-27+g$, so $g=\boxed{42}$.

@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2615498_peace09s_3000th_post
+% Stable identity: aops-topic-2615498-q22
+Let $M$ be the midpoint of $BC$. Triangle $OBC$ has two $45^\circ$ angles, so it is a right isosceles triangle with $OM\perp BC$ and $OM=\dfrac{BC}2=8$. Also $AM\perp BC$ and $AM=\sqrt{17^2-8^2}=15$. So $BC$ is perpendicular to the plane $OAM$, and the distance from $O$ to plane $ABC$ equals the distance from $O$ to line $AM$ (the foot $F$ lies on $AM$).
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair Bp=(0,0),Cp=(6,0),Ap=(4.2,2.6),Mp=(3,0);pair Op=(2.4,3.6);pair Fp=Mp+0.285*(Ap-Mp);
+draw(Bp--Cp--Ap--cycle);draw(Op--Bp,dashed);draw(Op--Cp,dashed);draw(Op--Mp,dashed);draw(Mp--Ap,dotted);draw(Op--Fp,red);
+dot(Fp,red);label("$B$",Bp,SW);label("$C$",Cp,SE);label("$A$",Ap,E);label("$M$",Mp,S);label("$O$",Op,N);label("$F$",Fp,SE,red);
+\end{asy}
+
+In triangle $OAM$, $OM=8$, $AM=15$, $OA=\sqrt{161}$, so
+\[\cos\angle OMA=\dfrac{64+225-161}{2\cdot8\cdot15}=\dfrac{8}{15},\qquad\sin\angle OMA=\dfrac{\sqrt{161}}{15}.\]
+The distance is $OM\sin\angle OMA=\dfrac{8\sqrt{161}}{15}$. (The foot $F$ is $8\cdot\dfrac8{15}=\dfrac{64}{15}<15$ from $M$ toward $A$, so it lies inside the triangle.) With $161=7\cdot23$ squarefree, $a+b+c=8+161+15=\boxed{184}$.

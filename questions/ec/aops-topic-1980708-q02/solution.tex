@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1980708_integer_sequences
+% Stable identity: aops-topic-1980708-q02
+If neither of the first two terms is divisible by $3$, then no term is, and every term lies in $\{1,2,4,5,7,8\}$, which are the powers $2^0,2^1,2^2,2^3,2^5,2^4$ of $2$ modulo $9$ ($2^6=64\equiv1$). Write $a_n\equiv2^{e_n}$ with $e_n$ taken modulo $6$. Then $a_n=a_{n-1}a_{n-2}$ (mod $9$) becomes
+\[
+e_n\equiv e_{n-1}+e_{n-2}\pmod 6 .
+\]
+By induction $e_n\equiv F_{n-2}e_1+F_{n-1}e_2\pmod6$ for $n\ge2$, where $F_0=0$, $F_1=1$, $F_{k+1}=F_k+F_{k-1}$ are the Fibonacci numbers. Modulo $6$ the Fibonacci numbers are
+\[
+0,1,1,2,3,5,2,1,3,4,1,5,0,5,5,4,3,1,4,5,3,2,5,1,\ 0,1,\dots
+\]
+so they repeat with period $24$. Since $2016=24\cdot84$, we have $F_{2016}\equiv0$ and $F_{2017}\equiv1\pmod 6$, so $e_{2018}\equiv e_2$, i.e.
+\[
+a_{2018}=a_2\quad\text{whenever }3\nmid a_1\text{ and }3\nmid a_2 .
+\]
+Here $a_1=1$, $a_2=2$, so $a_{2018}=\boxed{2}$. (Indeed the sequence $1,2,2,4,8,5,4,2,8,7,2,5,1,5,5,7,8,2,7,5,8,4,5,2,1,2,\dots$ repeats every $24$ terms, and $2018\equiv2\pmod{24}$.)

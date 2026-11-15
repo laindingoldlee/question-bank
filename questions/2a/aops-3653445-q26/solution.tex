@@ -1,0 +1,6 @@
+Count side triples $1\le a\le b\le c\le2024$. The triangle inequality requires $a\ge c-b+1$; obtuseness requires $a^2+b^2<c^2$, or $a\le\lfloor\sqrt{c^2-b^2-1}\rfloor$. Thus for each $b<c$ the number is $\max(0,\min(b,\lfloor\sqrt{c^2-b^2-1}\rfloor)-c+b)$. Sum this expression over $1\le b<c\le2024$ to obtain $\boxed{394363287}$. Every integer-sided triangle is counted exactly once by sorting its sides; strictness is handled by the minus one under the square root.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair A=(0,0),B=(4,0),C=(.8,1);draw(A--B--C--cycle);label("$c$",(2,0),(0,-1));label("$a$",C/2,(-1,1));label("$b$",(B+C)/2,(1,1));label("$a+b>c,\quad a^2+b^2<c^2$",(2,-.7));
+\end{asy}
+

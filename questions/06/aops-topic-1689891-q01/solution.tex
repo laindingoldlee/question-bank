@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1689891_right_triangles
+% Stable identity: aops-topic-1689891-q01
+Let $ABCD$ be a rectangle and let its diagonals meet at $O$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(6,3.6),D=(0,3.6),O=(A+C)/2;
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,linewidth(0.8));draw(B--D,dashed);
+real s=0.35;
+draw(B+(-s,0)--B+(-s,s)--B+(0,s),linewidth(0.6));
+dot(O);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$O$",O,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(a)} A rectangle is a parallelogram, so its diagonals bisect each other: $OA=OC$ and $OB=OD$. Triangles $ABC$ and $BAD$ have $AB$ in common, $BC=AD$ and right angles at $B$ and $A$, so they are congruent (SAS), and $AC=BD$.
+
+\textbf{(b)} Take a right triangle $ABC$ with the right angle at $B$ and complete it to the rectangle $ABCD$. The midpoint of the hypotenuse $AC$ is $O$, and by (a)
+\[
+BO=\dfrac{1}{2}BD=\dfrac{1}{2}AC .
+\]
+So the median $BO$ is half the hypotenuse; equivalently $O$ is equidistant from $A$, $B$, $C$.
+
+\textbf{(c)} The first part of the argument is right: the diagonals of every rectangle \emph{are} equal, as (a) shows. The error is the claim that equal diagonals force a square. A square is a rectangle with equal \emph{sides}; equal diagonals only characterise rectangles among parallelograms. For example the $6\times3.6$ rectangle in the figure has both diagonals equal to $\sqrt{6^2+3.6^2}$, but it is not a square. (A parallelogram whose diagonals are equal \emph{and perpendicular} is a square.)

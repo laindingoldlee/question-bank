@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1709775_squares_and_square_roots
+% Stable identity: aops-topic-1709775-q01
+The sides of the first two squares are $\dfrac{40}{4}=10$ m and $\dfrac{96}{4}=24$ m, so their areas are $100\text{ m}^2$ and $576\text{ m}^2$. The third square has area $100+576=676\text{ m}^2$, so its side is $\sqrt{676}=26$ m.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(10,0)--(10,10)--(0,10)--cycle,linewidth(0.8));
+draw((13,0)--(37,0)--(37,24)--(13,24)--cycle,linewidth(0.8));
+draw((40,0)--(66,0)--(66,26)--(40,26)--cycle,blue+linewidth(0.8));
+label("$10$",(5,0),S);label("$24$",(25,0),S);label("$26$",(53,0),S);
+label("$100$",(5,5));label("$576$",(25,12));label("$676$",(53,13),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Its perimeter is $4\cdot26=\boxed{104\text{ m}}$. (Note that $10^2+24^2=26^2$: the three sides form a right triangle.)

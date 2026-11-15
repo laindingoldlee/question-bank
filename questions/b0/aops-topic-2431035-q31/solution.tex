@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2431035_500th_celebration_post
+% Stable identity: aops-topic-2431035-q31
+The reflection $(x,y)\mapsto(16-x,y)$ sends the triangle $T$ with vertices $(6,5)$, $(8,-3)$, $(9,1)$ to the triangle $T'$ with vertices $(10,5)$, $(8,-3)$, $(7,1)$.
+
+\textbf{Area of $T$.} By the shoelace formula,
+\[[T]=\dfrac12\left|6(-3)-8\cdot5+8\cdot1-9(-3)+9\cdot5-6\cdot1\right|=\dfrac12|{-58}+35+39|=8,\]
+and $[T']=8$ too.
+
+\textbf{The overlap.} The sides of $T$ lie on the lines $y=-4x+29$ (through $(6,5)$ and $(8,-3)$), $y=4x-35$ (through $(8,-3)$ and $(9,1)$) and $y=-\dfrac43x+13$. Reflecting, the sides of $T'$ lie on $y=4x-35$, $y=-4x+29$ and $y=\dfrac43x-\dfrac{25}{3}$. So both triangles lie above the two lines through $(8,-3)$, and
+\[T\cap T'=\left\{(x,y):\ y\ge-4x+29,\ y\ge4x-35,\ y\le-\dfrac43x+13,\ y\le\dfrac43x-\dfrac{25}{3}\right\}.\]
+This is the quadrilateral with vertices $(8,-3)$, $(9,1)$ (where $y=4x-35$ meets $y=-\dfrac43x+13$), $\left(8,\dfrac73\right)$ (where the two top lines meet) and $(7,1)$. It is a kite with diagonals of lengths $\dfrac73+3=\dfrac{16}{3}$ and $2$, so its area is $\dfrac12\cdot\dfrac{16}{3}\cdot2=\dfrac{16}{3}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair P1=(6,5), Q1=(8,-3), R1=(9,1);
+pair P2=(10,5), R2=(7,1), K=(8,7/3);
+fill(Q1--R1--K--R2--cycle,rgb(0.8,0.9,0.8));
+draw(P1--Q1--R1--cycle,blue+linewidth(0.9));
+draw(P2--Q1--R2--cycle,red+linewidth(0.9));
+draw((8,-3)--(8,6.2),dashed); label("$x=8$",(8,6.2),N);
+dot(P1); dot(Q1); dot(R1); dot(P2); dot(R2); dot(K);
+label("$(6,5)$",P1,W,blue); label("$(9,1)$",R1,E,blue);
+label("$(10,5)$",P2,E,red); label("$(7,1)$",R2,W,red);
+label("$(8,-3)$",Q1,S); label("$\left(8,\dfrac{7}{3}\right)$",(5.6,2.33),W,fontsize(8pt)); draw((5.65,2.33)--(7.88,2.33),gray+0.4,Arrow(3));
+\end{asy}
+
+\textbf{The union} has area
+\[8+8-\dfrac{16}{3}=\boxed{\textbf{(E) }\dfrac{32}{3}}.\]

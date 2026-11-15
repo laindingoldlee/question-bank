@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3064003_my_math_story_for_325_year_anniversary
+% Stable identity: aops-topic-3064003-q03
+Write $AB=c$, $AC=b$, $BC=a$, so $a+b+c=4$. Relabel $B,C$ if necessary so that $b>c$; equality would make $XY$ parallel to $BC$, contrary to the unique intersection. Write $BM=ta$ with $0\le t\le1$. Affine coordinates along the two rays show that $M\in XY$ precisely when $(1-t)c+tb=1$, so $t=\dfrac{1-c}{b-c}$. In particular $c\le1\le b$. Stewart's theorem gives $AM^2=(1-t)c^2+tb^2-t(1-t)a^2$. Substituting $a=4-b-c$ and $t(b-c)=1-c$, direct expansion gives $AM^2=(2-c-ta)^2$. Moreover $2-c-ta=\dfrac{(b+c-2)+2(b-1)(1-c)}{b-c}>0$: the triangle inequality gives $b+c>2$, and $b\ge1$, $c\le1$. Thus $AM=2-c-ta$, and $AB+BM+AM=2$, as required.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(0.8,0),C=(1.2,1.3416407865),X=(1,0),Y=C/1.8,M=0.8*B+0.2*C; draw(A--B--C--cycle); draw(X--Y,blue); draw(A--M,dashed); dot(A);dot(B);dot(C);dot(X);dot(Y);dot(M); label("$A$",A,SW);label("$B$",B,S);label("$C$",C,N);label("$X$",X,SE);label("$Y$",Y,NW);label("$M$",M,E);
+\end{asy}

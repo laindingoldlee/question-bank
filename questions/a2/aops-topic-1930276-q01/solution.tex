@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1930276_help_needed_in_problems_of_varied_topics
+% Stable identity: aops-topic-1930276-q01
+Yes. Measure lengths in inches and take
+\[
+A=(0,0),\qquad B=(2002,0),\qquad C=\left(1001,\ \dfrac{1}{2000}\right).
+\]
+Then $AB=2002>1000$ and
+\[
+AC=BC=\sqrt{1001^2+\left(\dfrac{1}{2000}\right)^2}>1001>1000,
+\]
+so all three sides are longer than $1000$ inches. The height from $C$ to $AB$ is $\dfrac{1}{2000}$, so
+\[
+[ABC]=\dfrac{1}{2}\cdot2002\cdot\dfrac{1}{2000}=\dfrac{1001}{2000}<1 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+void ra(pair V, pair P1, pair P2, real s){pair u=unit(P1-V), v=unit(P2-V); draw(V+s*u--V+s*(u+v)--V+s*v);}
+pair A=(0,0), B=(10,0), C=(5,2.6), F=(5,0);
+draw(A--B--C--cycle,linewidth(1));
+draw(C--F,dashed); ra(F,B,C,0.25);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N);
+label("$2002$",(7.5,0),S);
+label("$\dfrac{1}{2000}$",(5,1.0),E);
+label("$>1001$",(A+C)/2,NW); label("$>1001$",(B+C)/2,NE);
+label("(not to scale)",(5,-1.1));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the answer is $\boxed{\text{yes}}$: a very flat triangle can have long sides and tiny area.

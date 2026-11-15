@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1901420_dilations_problem
+% Stable identity: aops-topic-1901420-q01
+The square has side $2$, its sides are horizontal and vertical, and its center is $(8,-8)$, so its vertices are $(7,-7)$, $(9,-7)$, $(9,-9)$ and $(7,-9)$. A dilation with center $(0,0)$ and factor $2$ doubles every coordinate, so the image has vertices $(14,-14)$, $(18,-14)$, $(18,-18)$ and $(14,-18)$ (a square of side $4$ centred at $(16,-16)$).
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+draw((-1,0)--(20,0),Arrow(TeXHead));draw((0,-20)--(0,2),Arrow(TeXHead));
+label("$x$",(20,0),E);label("$y$",(0,2),N);
+draw((7,-7)--(9,-7)--(9,-9)--(7,-9)--cycle,linewidth(0.9));
+draw((14,-14)--(18,-14)--(18,-18)--(14,-18)--cycle,blue+linewidth(0.9));
+draw((0,0)--(18,-18),dashed);
+dot((0,0));dot((8,-8));dot((16,-16),blue);dot((9,-9));dot((18,-18),blue);
+label("$O$",(0,0),NW);
+label("$(9,-9)$",(9,-9),SW,fontsize(8pt));label("$ABCD$",(7,-8),W,fontsize(8pt));
+label("image",(14,-16),W,blue+fontsize(8pt));label("$(18,-18)$",(18,-18),SE,blue+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The distance from the origin is largest for the vertex with the largest $x^2+y^2$, which is $(18,-18)$ (with $x^2+y^2=648$). The answer is $\boxed{(18,-18)}$.

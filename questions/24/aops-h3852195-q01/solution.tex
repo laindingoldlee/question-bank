@@ -1,0 +1,24 @@
+The tangent-secant relation gives $AD^2=DB\cdot DC$, so $B,C$ lie on the same ray from $D$. Put $DC=v$, $DB=u>v$, and choose $D=(0,0),C=(v,0),B=(u,0),A=(h,k)$, with $k>0$. Then $h^2+k^2=uv$. The tangent-chord similarity of triangles $DAB,DCA$ gives
+\[
+q:=\dfrac{AB}{AC}=\sqrt{\dfrac{u}{v}}>1.
+\]
+Invert about $D$ with squared radius $uv$. This fixes $A$, swaps $B,C$, and maps $\Omega_1$ to itself. Because $\Omega_2$ passes through $D$ and is tangent to the horizontal axis there, it becomes the horizontal line through $A$. Thus the image of $E$ is $E'=(u+v-h,k)$. In particular
+\[
+AE'=u+v-2h>0,\quad BE'=AC,\quad AC^2=v(u+v-2h)=vAE'.
+\]
+The inversion distance formula, obtained by taking distances between the inverted coordinate vectors, gives
+\[
+\dfrac{AE}{CE}=\dfrac{AD}{DC}\dfrac{AE'}{BE'}
+=q\,\dfrac{AC}{v}.
+\]
+Also $\dfrac{BC}{AC}=\dfrac{u-v}{AC}=\dfrac{q^2-1}{\dfrac{AC}{v}}$. Multiplying the two given ratios yields
+\[
+q(q^2-1)=\dfrac{28}{27}.
+\]
+The function $q^3-q$ is strictly increasing for $q>1$, and $q=\dfrac{4}{3}$ satisfies the equation. Therefore $\boxed{\dfrac{AB}{AC}=\dfrac{4}{3}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real h=-41.0/32,k=sqrt(145775.0)/32;pair D=(0,0),C=(9,0),B=(16,0),A=(h,k),O1=(12.5,(288-25h)/(2k)),O2=(0,72/k),Q=(25-h,k),E=144Q/dot(Q,Q);draw(circle(O1,sqrt(dot(O1,O1)-144)),gray);draw(circle(O2,O2.y),gray);draw(D--B);draw(D--A,blue);draw(A--B);draw(A--C);draw(A--E--C,red);draw(A--Q,dashed);label("$A$",A,NW);label("$B$",B,SE);label("$C$",C,S);label("$D$",D,SW);label("$E$",E,SE);label("$E'$",Q,(1,0));
+\end{asy}

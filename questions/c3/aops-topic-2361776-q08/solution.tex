@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2361776_30_posts_circles
+% Stable identity: aops-topic-2361776-q08
+Let $O$ be the centre. The radii $OA$ and $OB$ are perpendicular to the tangents, and by symmetry $PO$ bisects $\angle APB$, so $\angle APO=60^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0); real d=24/Sin(60); pair P=(-d,0);
+pair A=24*dir(150), B=24*dir(210);
+draw(circle(O,24));
+draw(P--A,linewidth(0.9)); draw(P--B,linewidth(0.9));
+draw(O--A,dashed); draw(O--B,dashed); draw(O--P,dotted);
+draw(arc(P,4,-60,60),blue); label("$120^\circ$",P+(8.5,3.2),blue+fontsize(7pt));
+pair u=unit(P-A), v=unit(O-A); draw((A+2.5*u)--(A+2.5*u+2.5*v)--(A+2.5*v));
+dot(O); dot(P); dot(A); dot(B);
+label("$O$",O,E); label("$P$",P,W); label("$A$",A,N); label("$B$",B,S); label("$24$",(O+A)/2,NE);
+\end{asy}
+
+In the right triangle $OAP$ (right angle at $A$), the leg $OA=24$ is opposite the $60^\circ$ angle, so
+\[PA=\dfrac{OA}{\tan60^\circ}=\dfrac{24}{\sqrt3}=\boxed{8\sqrt3}.\]

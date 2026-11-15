@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1368278_intro_to_nt_question_145
+% Stable identity: aops-topic-1368278-q01
+Consider the $60$ numbers $r\cdot0,\ r\cdot1,\ \ldots,\ r\cdot59$ modulo $60$.
+
+\textbf{They are all different.} Suppose $rx\equiv ry\pmod{60}$ with $0\le x,y\le59$. Then $60\mid r(x-y)$. Since $\gcd(r,60)=1$, $60$ shares no prime factor with $r$, so $60\mid x-y$. As $|x-y|<60$, this forces $x=y$.
+
+\textbf{Conclusion.} So the $60$ products give $60$ different residues modulo $60$. There are only $60$ residues, so every residue appears exactly once; in particular some $x$ gives $rx\equiv1\pmod{60}$. $\blacksquare$
+
+(This is the logic of the book's argument: it first shows that $rx\equiv ry$ forces $x\equiv y$, i.e.\ \emph{different} $x$ give \emph{different} products, and then counts. There is no contradiction: ``$rx\equiv ry$ implies $x=y$'' is exactly the statement that the products are distinct. Alternatively, B\'ezout's identity gives integers $x,y$ with $rx+60y=1$, so $rx\equiv1$.)

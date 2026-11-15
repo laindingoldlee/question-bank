@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h1992049_generating_functions
+% Stable identity: aops-topic-1992049-q01
+\textbf{(a)} To expand the product, choose one term from each factor and multiply: choosing $x^a$ from the first, $x^{5b}$ from the second and $x^{10c}$ from the third gives $x^{a+5b+10c}$. Each choice corresponds to using $a$ pennies, $b$ nickels and $c$ dimes, worth $a+5b+10c$ cents, and different choices are different collections of coins. So the coefficient of $x^n$, which counts the choices with $a+5b+10c=n$, is exactly the number of ways to make $n$ cents.
+
+\textbf{(b)} First multiply the last two factors: the coefficient of $x^{5m}$ in $\left(1+x^5+x^{10}+\cdots\right)\left(1+x^{10}+\cdots\right)$ counts pairs $(b,c)$ with $b+2c=m$, which is $\left\lfloor\dfrac m2\right\rfloor+1$, and all other coefficients are $0$. Multiplying by $1+x+x^2+\cdots$ adds up all coefficients of exponent at most $25$:
+\[\sum_{m=0}^{5}\left(\left\lfloor\dfrac m2\right\rfloor+1\right)=1+1+2+2+3+3=\boxed{12}.\]
+(Directly: with $0$, $1$ or $2$ dimes there are $6$, $4$ and $2$ choices for the nickels, and the pennies make up the rest.)

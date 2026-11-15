@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2438117_math_check
+% Stable identity: aops-topic-2438117-q01
+Let the old tiles have side $t$. Four of them cover the table, arranged $2$ by $2$, so the table has side $2t$. Decreasing $t$ by $75\%$ leaves $25\%$ of it: the new side is $\dfrac t4$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real s=4;
+fill((0,0)--(s,0)--(s,s)--(0,s)--cycle,rgb(0.95,0.95,0.85));
+for(int i=1;i<8;++i){ draw((i*s/8,0)--(i*s/8,s),gray(0.6)); draw((0,i*s/8)--(s,i*s/8),gray(0.6)); }
+draw((s/2,0)--(s/2,s),linewidth(1.2)); draw((0,s/2)--(s,s/2),linewidth(1.2));
+draw((0,0)--(s,0)--(s,s)--(0,s)--cycle,linewidth(1.2));
+draw((0,-0.3)--(s/2,-0.3),Arrows(4)); label("old tile side $t$",(s/4,-0.3),S);
+draw((s+0.3,0)--(s+0.3,s/8),Arrows(4)); label("$\dfrac t4$",(s+0.3,s/16),E);
+\end{asy}
+
+Along each side of the table fit $\dfrac{2t}{\dfrac t4}=8$ new tiles, so $8\cdot8=\boxed{64}$ new tiles are needed. (Equivalently, each old tile is replaced by $4\cdot4=16$ new ones, and $4\cdot16=64$.)

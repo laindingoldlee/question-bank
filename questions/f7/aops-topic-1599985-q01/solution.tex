@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1599985_numbers_and_digits
+% Stable identity: aops-topic-1599985-q01
+\textbf{The digits.} Seven different digits have sum at least $0+1+\dots+6=21$, so the digits are exactly $0,1,\dots,6$.
+
+\textbf{No carries.} Let $p=a+g$, $q=b+f$, $r=c+e$, $t=2d$. Reading the addition from the right, the seven columns add $p,q,r,t,r,q,p$ (plus carries), and each of these is at most $6+5=11$. Let every digit of the sum be $s$.
+\begin{itemize}
+\item If $p\ge10$, the units column gives $s=p-10\le1$, and the leftmost column, adding $p\ge10$, produces an eighth digit $1$, so $s=1$ and $p=11$. Then the tens and hundreds columns give $q+1\equiv1$ and $r+1\equiv1\pmod{10}$, so $q=r=10$ (both are at least $1$), each passing a carry on. The fifth column adds $r=10$ and the carry from the thousands column and must end in $1$, so that carry is $1$; hence the sixth column is $q+1=11$, passing a carry on, and the leftmost column is $p+1=12$, whose digit $2\ne1$. Contradiction. So $p\le9$, $s=p$, there is no carry out of the units column, and the leftmost column $p+(\text{carry})$ must again give digit $p$ with no further digit, so the carry into it is $0$.
+\item The tens column gives $q\equiv s\pmod{10}$. If $q\ge10$ then the sixth column, adding $q\ge10$, would send a carry into the leftmost column, which we just excluded. So $q=s$, and the carry into the sixth column is $0$. In the same way $r=s$, the carry into the fifth column is $0$, and finally $t=s$.
+\end{itemize}
+So there are no carries at all and
+\[
+a+g=b+f=c+e=2d=s .
+\]
+Adding, $4s=(a+g)+(b+f)+(c+e)+2d=21+d$; with $s=2d$ this gives $8d=21+d$, $d=3$, $s=6$.
+
+\textbf{Maximise.} The pairs $\{a,g\},\{b,f\},\{c,e\}$ are $\{6,0\},\{5,1\},\{4,2\}$ in some order, with $a,g\ne0$, so $\{a,g\}\ne\{6,0\}$. To make the number large, take $a=5$ (then $g=1$), $b=6$, $f=0$, $c=4$, $e=2$:
+\[
+\boxed{5643201},\qquad 5643201+1023465=6666666 .
+\]

@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h3326257_mock_state_problems
+% Stable identity: aops-topic-3326257-q108
+The pair $(p,q)=(691,947)$ works because $691^2+947^2+691+947+1=1173^2$, giving sum 1638. For completeness, generate every prime below 1000 by trial division and test each unordered pair with an exact integer square root. The following finite code checks every allowed pair and confirms the maximum:\begin{verbatim}
+from math import isqrt
+primes=[n for n in range(2,1000)
+        if all(n%d for d in range(2,isqrt(n)+1))]
+best=0
+for p in primes:
+    for q in primes:
+        if p>q: continue
+        n=p*p+q*q+p+q+1
+        if isqrt(n)**2==n: best=max(best,p+q)
+assert best==1638
+\end{verbatim}
+The test is exact, and symmetry justifies restricting to $p\le q$. Thus the answer is $\boxed{1638}$.

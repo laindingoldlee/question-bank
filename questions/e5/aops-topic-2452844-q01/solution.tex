@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2452844_trigonometry_problem
+% Stable identity: aops-topic-2452844-q01
+By the sum of cubes, $s^3+c^3=(s+c)\left(s^2-sc+c^2\right)$. With $s=\sin x$, $c=\cos x$ and $s+c\ne0$,
+\[\dfrac{\sin^3x+\cos^3x}{\sin x+\cos x}=\sin^2x-\sin x\cos x+\cos^2x=\boxed{1-\sin x\cos x}=1-\dfrac12\sin2x.\]
+The expression is undefined where $\sin x+\cos x=0$, i.e. $\tan x=-1$, $x=-\dfrac{\pi}{4}+k\pi$; there the simplified formula would give $1-\dfrac12\sin\left(-\dfrac{\pi}{2}+2k\pi\right)=\dfrac32$, but the original expression has no value.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return 1-0.5*sin(2x);}
+real sx=0.9;
+draw((-pi*sx-0.3,0)--(pi*sx+0.4,0),Arrow(6)); draw((0,-0.3)--(0,2.0),Arrow(6));
+label("$x$",(pi*sx+0.4,0),E); label("$y$",(0,2.0),N);
+draw(xscale(sx)*graph(f,-pi,pi),blue+linewidth(0.9));
+draw((-pi*sx,1.5)--(pi*sx,1.5),dotted); draw((-pi*sx,0.5)--(pi*sx,0.5),dotted);
+label("$\dfrac32$",(-pi*sx,1.5),W,fontsize(7pt)); label("$\dfrac12$",(-pi*sx,0.5),W,fontsize(7pt));
+for(real t: new real[]{-pi/4,3pi/4}){filldraw(circle((t*sx,f(t)),0.07),white,blue);}
+label("$-\dfrac{\pi}{4}$",(-pi/4*sx,0),S,fontsize(7pt)); label("$\dfrac{3\pi}{4}$",(3pi/4*sx,0),S,fontsize(7pt));
+draw((-pi/4*sx,0)--(-pi/4*sx,1.5),dashed+gray); draw((3pi/4*sx,0)--(3pi/4*sx,1.5),dashed+gray);
+label("$y=1-\sin x\cos x$",(pi*sx,f(pi)),SE,blue+fontsize(8pt));
+\end{asy}
+
+The graph on $[-\pi,\pi]$ oscillates between $\dfrac12$ and $\dfrac32$, with holes (open circles) at the excluded points $x=-\dfrac{\pi}{4}$ and $x=\dfrac{3\pi}{4}$.

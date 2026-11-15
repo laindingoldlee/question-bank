@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2784860_2021_winmac_guts_rounds_58__winchester_math_competition
+% Stable identity: aops-topic-2784860-q21
+Tile the first empty cell with a unit square, a horizontal domino, or a vertical domino whenever available. Recursing counts each tiling once and gives $\boxed{22}$:
+\begin{verbatim}
+from functools import lru_cache
+@lru_cache(None)
+def f(mask):
+ if mask==63:return 1
+ k=next(i for i in range(6) if not(mask>>i&1));r,c=divmod(k,3)
+ ans=f(mask|(1<<k))
+ for j in ([k+1] if c<2 else [])+([k+3] if r==0 else []):
+  if not(mask>>j&1):ans+=f(mask|(1<<k)|(1<<j))
+ return ans
+assert f(0)==22
+\end{verbatim}
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int x=0;x<=3;++x)draw((x,0)--(x,2));for(int y=0;y<=2;++y)draw((0,y)--(3,y));label("$3$",(1.5,0),S);label("$2$",(0,1),W);
+\end{asy}

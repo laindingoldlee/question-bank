@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h1528221_wmtc_2015_intermediate_individual_round_problem__19_and_17
+% Stable identity: aops-topic-1528221-q17
+Let $x=[BCF]$, and split $AEFD$ by $AF$ into $u=[AEF]$ and $v=[AFD]$, so $u+v=\dfrac{204}{13}$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(10,0),F=(4,3);
+pair Ep=F+0.8*(F-C),D=F+0.6*(F-B);
+pair A=extension(B,Ep,C,D);
+fill(A--Ep--F--D--cycle,paleblue);
+draw(A--B--C--cycle,linewidth(1));
+draw(B--D,linewidth(0.9));draw(C--Ep,linewidth(0.9));
+draw(A--F,dashed);
+dot(F);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NE);label("$E$",Ep,W);label("$F$",F,S);
+label("$4$",(B+Ep+F)/3);label("$x$",(B+C+F)/3);label("$3$",(C+D+F)/3);
+label("$u$",(A+Ep+F)/3,blue);label("$v$",(A+F+D)/3,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangles with the same apex and bases on one line have areas in the ratio of the bases.
+\begin{itemize}
+\item On line $EC$, with apex $B$ and with apex $A$: $\dfrac{EF}{FC}=\dfrac{[BEF]}{[BCF]}=\dfrac{4}{x}$ and $\dfrac{EF}{FC}=\dfrac{[AEF]}{[ACF]}=\dfrac{u}{v+3}$.
+\item On line $BD$, with apex $C$ and with apex $A$: $\dfrac{DF}{FB}=\dfrac{[CDF]}{[CBF]}=\dfrac{3}{x}$ and $\dfrac{DF}{FB}=\dfrac{[ADF]}{[ABF]}=\dfrac{v}{u+4}$.
+\end{itemize}
+Hence $ux=4v+12$ and $vx=3u+12$. Solving this linear system for $u$ and $v$,
+\[
+u=\dfrac{12x+48}{x^2-12},\qquad v=\dfrac{12x+36}{x^2-12},\qquad u+v=\dfrac{24x+84}{x^2-12}.
+\]
+Setting $u+v=\dfrac{204}{13}$:
+\[
+13(24x+84)=204\left(x^2-12\right)\iff 204x^2-312x-3540=0\iff 17x^2-26x-295=0 .
+\]
+The discriminant is $26^2+4\cdot17\cdot295=20736=144^2$, so $x=\dfrac{26\pm144}{34}$, and the positive root is $x=\dfrac{170}{34}=\boxed{5}$.
+
+(Check: $u=\dfrac{108}{13}$, $v=\dfrac{96}{13}$, $u+v=\dfrac{204}{13}$; and $\dfrac{u}{v+3}=\dfrac{108}{135}=\dfrac{4}{5}$, $\dfrac{v}{u+4}=\dfrac{96}{160}=\dfrac{3}{5}$.)

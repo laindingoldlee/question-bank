@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3129237_2023_math_hour_olympiad__university_of_washington__grades_67
+% Stable identity: aops-topic-3129237-q06
+Delete cycle edges to obtain a spanning tree of length at most the original network length $L$. Traverse each tree edge twice in a closed walk, of total length at most $2L$. List the houses in order of their first appearances, and join them in that cyclic order. Shortcutting along the traversal cannot increase length, by the triangle inequality, so the resulting cycle has total length at most $2L$. Its alternate edges form two perfect pairings of the $100$ houses. Their lengths add to the cycle length; at least one pairing therefore has length at most $L$, as required.
+\begin{asy}
+import geometry;
+usepackage("amsmath");
+size(270);
+pair[] P={(0,0),(2,0),(3,2),(1,3),(-1,2),(-1,1)};draw(P[0]--P[1]--P[2]--P[3]--P[4]--P[5]--cycle,gray);for(int i=0;i<6;++i){dot(P[i]);label(string(i+1),P[i],unit(P[i]-(1,1)));}draw(P[0]--P[1]^^P[2]--P[3]^^P[4]--P[5],blue+linewidth(1.2));label("alternate pairing: six-house illustration",(1,-1));
+\end{asy}

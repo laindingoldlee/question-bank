@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1748217_geo_question
+% Stable identity: aops-topic-1748217-q02
+Turning through the same angle after each equal step traces a regular polygon whose exterior angle is the turning angle. Kevin traces a regular polygon with $\dfrac{360}{18}=20$ sides of $8$ m (perimeter $160$ m) and Allen one with $\dfrac{360}{15}=24$ sides of $6$ m (perimeter $144$ m); each returns to the start exactly when he has walked a multiple of his perimeter.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair K=(0,0);path kev=K;pair p=K;real h=90;
+for(int i=0;i<20;++i){p+=8*dir(h);kev=kev--p;h+=18;}
+pair q=K;path al=K;real g=-90;
+for(int i=0;i<24;++i){q+=6*dir(g);al=al--q;g+=15;}
+draw(kev,blue+linewidth(0.9));draw(al,red+linewidth(0.9));
+draw(K--(0,8),blue+linewidth(1.2),EndArrow(6));draw(K--(0,-6),red+linewidth(1.2),EndArrow(6));
+dot(K);label("start",K,2*W);
+label("Kevin",(-25.6,9),blue);label("$20$ sides of $8$ m",(-25.6,5),blue);
+label("Allen",(22.9,2),red);label("$24$ sides of $6$ m",(22.9,-2),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{They can meet only at the start.} Kevin's first step points north and he always turns left, so his convex polygon lies in the half-plane to the left of his first step, i.e.\ west of the north-south line through the start. Allen's first step points south and he turns left, so his polygon lies to the east of that line. The two polygons have only the starting point in common (the parts of them on the north-south line are Kevin's first side, going north, and Allen's first side, going south).
+
+Since they walk at the same speed, they have always walked the same distance $D$. They are together at the start exactly when $D$ is a common multiple of $160$ and $144$. The least positive one is
+\[
+\operatorname{lcm}(160,144)=\operatorname{lcm}(2^5\cdot5,\ 2^4\cdot3^2)=2^5\cdot3^2\cdot5=1440 .
+\]
+So Kevin must walk $\boxed{1440}$ m (that is, $9$ laps for Kevin and $10$ for Allen).

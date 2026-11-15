@@ -1,0 +1,44 @@
+% Source: https://artofproblemsolving.com/community/c3h1856999_lines_and_circles
+% Stable identity: aops-topic-1856999-q01
+Let the circle have centre $O$ and radius $r=\dfrac{5}{2}$. A line at distance $d<r$ from $O$ cuts a chord of length
+\[
+L=2\sqrt{r^2-d^2}=2\sqrt{\dfrac{25}{4}-d^2},
+\]
+so every chord has length $0<L\le5$, and each value of $L$ in this range corresponds to exactly one distance $d=\sqrt{\dfrac{25}{4}-\dfrac{L^2}{4}}$.
+
+Fix the slope $\dfrac{3}{4}$. Lines with this slope are parallel, and for each distance $d>0$ there are exactly two of them (one on each side of $O$), while $d=0$ gives the single line through $O$. The integer chord lengths are $L=1,2,3,4,5$:
+\begin{itemize}
+\item $L=5$ gives $d=0$: one line (a diameter);
+\item $L=1,2,3,4$ give $d=\dfrac{\sqrt{24}}{2},\ \dfrac{\sqrt{21}}{2},\ 2,\ \dfrac{3}{2}$, all positive: two lines each.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real r=2.5;
+pair O=(0,0), u=(0.8,0.6), n=(-0.6,0.8);
+draw(circle(O,r),linewidth(1));
+int[] L={1,2,3,4};
+for(int i=0;i<4;++i){
+  real d=sqrt(r^2-L[i]^2/4);
+  for(int sg=-1;sg<=1;sg+=2){
+    pair c=sg*d*n;
+    draw((c-L[i]/2*u)--(c+L[i]/2*u),gray(0.45)+linewidth(0.8));
+  }
+  pair e=d*n+L[i]/2*u;
+  label("$"+string(L[i])+"$",e,unit(e),fontsize(9pt));
+}
+draw(-r*u--r*u,red+linewidth(1.1));
+label("$5$",r*u,unit(u),red+fontsize(9pt));
+pair c4=1.5*n, P=c4+2*u;
+draw(c4-2*u--c4+2*u,blue+linewidth(1.1));
+draw(O--c4,dashed);draw(O--P,dashed);
+draw(c4+0.18*(-n)--c4+0.18*(-n)+0.18*u--c4+0.18*u,linewidth(0.5));
+label("$\dfrac{3}{2}$",0.75*n,0.9*W+0.35*S,fontsize(9pt));
+label("$\dfrac{5}{2}$",(O+P)/2+0.32*(0.96,-0.28),fontsize(9pt));
+dot(O);label("$O$",O,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the figure the chord of length $4$ (blue) is at distance $\dfrac{3}{2}$ from $O$: half of it, the distance $\dfrac{3}{2}$ and the radius $\dfrac{5}{2}$ form a right triangle with sides $2,\dfrac{3}{2},\dfrac{5}{2}$. The total is $1+4\cdot2=\boxed{9}$ lines.

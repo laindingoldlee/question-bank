@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1951204_perfect_square
+% Stable identity: aops-topic-1951204-q01
+We have $\overline{ababab}=\overline{ab}\cdot10101$ and $10101=3\cdot7\cdot13\cdot37$. For $nN$ to be a square, $n$ must contain every prime that appears to an odd power in $N$; the least $n$ for a given $N$ is the product of those primes (the squarefree part of $N$).
+
+Each of $3,7,13,37$ appears in $10101$ exactly once, so such a prime is missing from $n$ exactly when it divides $\overline{ab}$ to an odd power. Since $\overline{ab}\le99$, it is divisible by at most two of these primes (a product of three of them is at least $3\cdot7\cdot13=273$), and $37$ cannot be one of two (as $3\cdot37=111>99$). So at least two of $3,7,13,37$ remain in $n$.
+\begin{itemize}
+\item If three or four remain, $n\ge3\cdot7\cdot13=273$.
+\item If exactly two remain, $\overline{ab}$ is divisible by two of $3,7,13$, and $37$ remains. The pairs give $\overline{ab}$ a multiple of $21$ (leaving $13\cdot37=481$), of $39$ (leaving $7\cdot37=259$), or of $91$ (leaving $3\cdot37=111$).
+\end{itemize}
+So $n\ge111$, and $n=111$ requires $91\mid\overline{ab}$ with no further prime to an odd power, i.e. $\overline{ab}=91$; then $N=91\cdot10101=3\cdot7^2\cdot13^2\cdot37$ and $n=3\cdot37=111$ indeed works.
+
+So the smallest value is $\boxed{n=111}$, achieved only for $\boxed{a=9,\ b=1}$: indeed $111\cdot919191=102030201=10101^2$.

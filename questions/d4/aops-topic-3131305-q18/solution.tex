@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3131305_2022_moaa_gunga_bowl__math_open_at_andover__second_3_sets__9_problems
+% Stable identity: aops-topic-3131305-q18
+An area-bisecting line passes through the square's center: for each fixed direction the area on one side changes strictly as the line translates through the square, and the central line bisects by symmetry. Reflecting the full square across the fold gives another centered square. Let $I$ be the overlap area of the two full squares. The overlap of the two folded halves is $\dfrac{I}{2}$ by central symmetry, so the folded union has area $1-\dfrac{I}{2}$. By symmetry their relative angle may be taken as $0\le\phi\le45^\circ$. For $0<\phi\le45^\circ$, put $c=\cos\phi,s=\sin\phi$. Each of the four corners cut off from the first square is a right triangle with legs $\dfrac{c+s-1}{2c}$ and $\dfrac{c+s-1}{2s}$. Hence $I=1-\dfrac{(c+s-1)^2}{2cs}=\dfrac{2}{1+c+s}$. The same formula holds at $\phi=0$ by continuity. Thus the folded area is $1-\dfrac{1}{1+c+s}$, maximized when $c+s=\sqrt2$, giving $B=2-\sqrt2\approx0.585786$. The required nearest integer is $\boxed{59}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] p={(-.5,-.5),(.5,-.5),(.5,.5),(-.5,.5)};draw(p[0]--p[1]--p[2]--p[3]--cycle);draw(rotate(45)*(p[0]--p[1]--p[2]--p[3]--cycle),dashed);draw(-.8dir(22.5)--.8dir(22.5),blue);label("fold",.8dir(22.5),E);label("two full squares",(0,-.9));
+\end{asy}

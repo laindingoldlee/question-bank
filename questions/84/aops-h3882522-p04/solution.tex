@@ -1,0 +1,12 @@
+The areas are $\sqrt3\dfrac{x^2}{4}$ and $2(1+\sqrt2)y^2$. Equating them gives
+\[
+\dfrac{x^2}{y^2}=\dfrac{8(1+\sqrt2)}{\sqrt3}
+=\dfrac{8(\sqrt3+\sqrt6)}{3}.
+\]
+Thus $\boxed{a+b+c+d=8+3+6+3=20}$. The octagon formula follows by dividing it into eight triangles with base $y$ and apothem $\dfrac{y}{(2\tan22.5^\circ)}=\dfrac{y(1+\sqrt2)}{2}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real x=sqrt(8*(1+sqrt(2))/sqrt(3));draw((0,0)--(x,0)--(x/2,sqrt(3)*x/2)--cycle);label("$x$",(x/2,0),S);pair O=(6,1.5);real R=1/(2sin(22.5*pi/180));for(int j=0;j<8;++j)draw(O+R*dir(22.5+45j)--O+R*dir(22.5+45(j+1)));label("$y=1$",O+(0,-R-.25));
+\end{asy}

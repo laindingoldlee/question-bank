@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1352697_christmas_special_day_12
+% Stable identity: aops-topic-1352697-q03
+The diagonals of a kite are perpendicular. They split the kite into four right triangles, and adding up their areas shows that the area of a kite is half the product of its diagonals:
+\[
+\text{Area}=\dfrac{d_1d_2}{2}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(0,0),B=(4,2.5),C=(16,0),D=(4,-2.5),O=(4,0);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,blue); draw(B--D,red);
+draw(ra(O,C-O,B-O,0.7));
+draw(B--(-1.3,2.5),gray+dotted); draw(D--(-1.3,-2.5),gray+dotted);
+draw(A--(0,-3.8),gray+dotted); draw(C--(16,-3.8),gray+dotted);
+draw((-1,-2.5)--(-1,2.5),red,Arrows(TeXHead)); draw((0,-3.5)--(16,-3.5),blue,Arrows(TeXHead));
+label("$5$",(-1,0),W,red); label("$16$",(8,-3.5),S,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $\dfrac{5\cdot d_2}{2}=40$, which gives $d_2=\boxed{16}$ inches. (The figure shows one such kite, with the perpendicular diagonals $5$ and $16$.)

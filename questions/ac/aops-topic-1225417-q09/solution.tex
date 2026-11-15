@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1225417_2016_lmt_individual_9
+% Stable identity: aops-topic-1225417-q09
+$S$ is the union of three disks of radius $5$ about the vertices. Since every side is at least $10$, the disks do not overlap, so $S$ has area $3\cdot25\pi=75\pi$. Each side is less than half the perimeter, $21$, so every altitude is more than $\dfrac{2\cdot84}{21}=8>5$, so the part of each disk inside the triangle is exactly the sector cut out by the angle at that vertex. The three angles sum to $180^\circ$, so these sectors make up half of one disk: $\dfrac{25\pi}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(14,0),C=(5,12);
+draw(circle(A,5),blue); draw(circle(B,5),blue); draw(circle(C,5),blue);
+draw(A--B--C--cycle,linewidth(1));
+label("$13$",(A+C)/2,W); label("$14$",(A+B)/2,S); label("$15$",(B+C)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The fraction outside is $\dfrac{75\pi-\dfrac{25\pi}{2}}{75\pi}=\boxed{\dfrac{5}{6}}$. (The triangle is in fact $13$--$14$--$15$, but this is not needed.)

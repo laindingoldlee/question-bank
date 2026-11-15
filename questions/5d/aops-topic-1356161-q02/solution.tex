@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1356161_similar_triangles_in_parallelograms
+% Stable identity: aops-topic-1356161-q02
+The vertical angles at $E$ are equal: $\angle AEB=\angle FEC$. Since $AB\parallel DC$, and so $AB\parallel CF$, with transversal $AF$, the alternate angles are equal: $\angle BAE=\angle CFE$. By AA, $\triangle ABE\sim\triangle FCE$ (with $A\leftrightarrow F$, $B\leftrightarrow C$, $E\leftrightarrow E$). $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(8,4),D=(2,4),Em=(7,2),F=(14,4);
+fill(A--B--Em--cycle,paleblue); fill(F--C--Em--cycle,palered);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(C--F,dashed); draw(A--F);
+dot(Em);dot(F);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$D$",D,NW); label("$E$",Em,SE); label("$F$",F,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The triangles are similar but in general not congruent; they are congruent only when $E$ is the midpoint of $BC$, as in the figure ($AB=CF=6$ there). The posted solution's final sentence ``the triangles are congruent'' should read ``similar''.

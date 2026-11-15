@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2434748_200th_post_problems
+% Stable identity: aops-topic-2434748-q02
+\textbf{Answer: $n=1$ and $n=2$.}
+
+For $n=1$, Grogg gives his only piece to the next beast, who then holds all the candy. For $n=2$, the next two beasts get one piece each; the first of them gives his piece to the second, who then holds both pieces.
+
+Now let $n\ge3$. Describe the line after Grogg has left by the numbers of pieces $c_1,c_2,c_3,\dots$ held by the beasts in order from the front.
+
+\textbf{Claim: always $c_1\ge c_2\ge c_3\ge\cdots$.} Right after Grogg leaves, the sequence is $1,1,\dots,1,0,0,\dots$ ($n$ ones), which is non-increasing. If the front beast holds $k=c_1$ and passes his candy, the new sequence is
+\[c'_i=c_{i+1}+\begin{cases}1,&i\le k,\\0,&i>k,\end{cases}\]
+the sum of two non-increasing sequences of $i$, so it is non-increasing again. This proves the claim by induction on the number of moves.
+
+In particular the front beast always holds the most candy, so it is never empty-handed (there are $n\ge1$ pieces in total).
+
+\textbf{No beast ever holds all $n$ pieces.} Right after Grogg leaves, every beast holds at most $1<n$ piece. Suppose that some later move makes a beast $X$ hold all $n$ pieces, and consider the first such move, made by the front beast $Y$ holding $k\ge1$ pieces. This move gives one piece to each of the $k$ beasts directly behind $Y$, and after it every beast other than $X$ holds nothing. So $X$ is the only beast that received a piece: $k=1$, $X$ stands directly behind $Y$, and before the move $Y$ held $1$ piece and $X$ held $n-1$. By the claim, $X$ held at most as many pieces as $Y$, so $n-1\le1$, i.e. $n\le2$, a contradiction.
+
+So the values are $\boxed{n=1\text{ and }n=2}$. $\blacksquare$

@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2168963_2020_mock_amc_11_problem_18_discussion
+% Stable identity: aops-topic-2168963-q18
+Let $\sigma(i)$ be the number on the card in position $i$; $\sigma$ is a uniformly random permutation of $\{1,\dots,10\}$. Michael turns over the cards in positions $p_0=1$, $p_1=\sigma(p_0)$, $p_2=\sigma(p_1)$, \dots, and stops at the first position that has already been visited.
+
+\textbf{He stops exactly when he returns to position $1$.} If the first repeat were $p_j=p_i$ with $1\le i<j$, then $\sigma(p_{i-1})=\sigma(p_{j-1})$, so $p_{i-1}=p_{j-1}$ (since $\sigma$ is a bijection), an earlier repeat. Hence the first repeated position is $p_0=1$, and the cards turned over are exactly those in the cycle of $\sigma$ that contains $1$.
+
+\textbf{The length $L$ of that cycle is uniform on $\{1,\dots,10\}$.} A permutation whose cycle through $1$ has length $\ell$ is determined by the ordered list of the other $\ell-1$ elements of the cycle ($9\cdot8\cdots(11-\ell)=\dfrac{9!}{(10-\ell)!}$ choices) and a permutation of the remaining $10-\ell$ elements ($(10-\ell)!$ choices), so there are exactly $9!$ of them for each $\ell$, and $P(L=\ell)=\dfrac{9!}{10!}=\dfrac{1}{10}$.
+
+So $E[L]=\dfrac{1+2+\cdots+10}{10}=\dfrac{11}{2}$, and the expected number of cards still face down is
+\[10-\dfrac{11}{2}=\boxed{\dfrac{9}{2}},\]
+answer $\textbf{(C)}$.

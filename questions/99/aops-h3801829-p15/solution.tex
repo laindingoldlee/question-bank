@@ -1,0 +1,7 @@
+Split every row into its first four and last four cells. Avoiding four consecutive queens permits at most three in each half, so at most six per row and 48 overall. This is attainable by the row pattern QQQ.QQQ. in all eight rows, which has no run of four. Thus one more queen guarantees the condition, giving $\boxed{49}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=0;x<8;++x)for(int y=0;y<8;++y){draw(box((x,y),(x+1,y+1)),gray);if(x%4!=3)label("Q",(x+.5,y+.5));}
+\end{asy}

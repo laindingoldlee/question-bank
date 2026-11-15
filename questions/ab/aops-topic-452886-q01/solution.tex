@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h452886_geometry__b_and_c_are_disjoint_sections_of_the_circles
+% Stable identity: aops-topic-452886-q01
+Let the circles have areas $P$ (larger) and $Q$ (smaller), and let $x$ be the area of $X$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O1=(0,0), O2=(3.2,0); real r1=2.6, r2=1.7;
+fill(circle(O1,r1),palegreen); fill(circle(O2,r2),paleblue);
+picture p; fill(p,circle(O1,r1),gray(0.75)); clip(p,circle(O2,r2)); add(p);
+draw(circle(O1,r1)); draw(circle(O2,r2));
+label("$B$",(-1,0)); label("$C$",(4.2,0)); label("$X$",(2.05,0));
+\end{asy}
+
+Then $B=P-x$ and $C=Q-x$, so
+\[B-C=(P-x)-(Q-x)=P-Q.\]
+This does not depend on $x$. Since the sizes of the circles do not change, $B-C$ changes by $\boxed{0\text{\%}}$: it stays equal to $P-Q$ (which is nonzero, so the percent change is defined).

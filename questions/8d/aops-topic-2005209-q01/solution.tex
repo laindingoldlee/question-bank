@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2005209_2018_national_mathcounts_sprint_18
+% Stable identity: aops-topic-2005209-q01
+Base $6$ forces $A,B,C,D\in\{0,\dots,5\}$ with $A\ge1$. In base $10$, divisibility by $5$ means $D\in\{0,5\}$. Since $6\equiv1\pmod5$,
+\[
+\overline{ABCD}_6=216A+36B+6C+D\equiv A+B+C+D\pmod5,
+\]
+and $D\equiv0\pmod 5$ in both cases, so we need $A+B+C\equiv0\pmod5$. With $1\le A\le5$ and $0\le B,C\le5$ the sum is between $1$ and $15$, so it is $5$, $10$ or $15$. Put $A'=A-1\in\{0,\dots,4\}$.
+\begin{itemize}
+\item $A+B+C=5$: $A'+B+C=4$ with no upper bounds active: $\binom62=15$ solutions.
+\item $A+B+C=10$: $A'+B+C=9$. Without bounds, $\binom{11}2=55$. Subtract those with $A'\ge5$ ($\binom62=15$), $B\ge6$ ($\binom52=10$) and $C\ge6$ ($10$); no two of these can happen together. This leaves $55-35=20$.
+\item $A+B+C=15$: only $A=B=C=5$, so $1$ solution.
+\end{itemize}
+So there are $15+20+1=36$ choices of $(A,B,C)$, and two choices of $D$, for a total of $\boxed{72}$, matching the official answer. The student's error is the middle case: there are $20$, not $10$, solutions with $A+B+C=10$.

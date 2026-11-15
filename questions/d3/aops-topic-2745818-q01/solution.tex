@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2745818_geometry_prob
+% Stable identity: aops-topic-2745818-q01
+Place $A=(0,0)$, $B=(8,0)$, $C=(8,6)$, $D=(0,6)$, so $E=(3,6)$ and $F=(6,6)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(8,0),C=(8,6),D=(0,6),E=(3,6),F=(6,6),H=(48/11,48/11);
+draw(A--B--C--D--cycle,linewidth(0.8));draw(A--F);draw(B--E);
+filldraw(A--H--B--cycle,lightgray);
+dot(H);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$E$",E,N);label("$F$",F,N);label("$H$",H,N);
+label("$3$",(1.5,6),N,fontsize(8pt));label("$2$",(7,6),N,fontsize(8pt));label("$8$",(4,0),S,fontsize(8pt));label("$6$",(0,3),W,fontsize(8pt));
+\end{asy}
+
+Line $AF$ is $y=x$, and line $BE$ is $y=\dfrac65(8-x)$. They meet where $x=\dfrac65(8-x)$, i.e. $x=\dfrac{48}{11}$, so the height of triangle $AHB$ above $AB$ is $\dfrac{48}{11}$. (Equivalently, triangles $HEF$ and $HBA$ are similar with ratio $EF:AB=3:8$, so the height is $\dfrac{8}{11}\cdot6$.) The area is
+\[\dfrac12\cdot8\cdot\dfrac{48}{11}=\dfrac{192}{11},\]
+so $x=\boxed{192}$.

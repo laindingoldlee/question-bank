@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h3307570_knight_in_a_chessboard
+% Stable identity: aops-topic-3307570-q01
+A finite exhaustive proof is short because there are only $16$ squares. Index $(r,c)$ by $4r+c$, where $0\le r,c<4$, and form a bitmask of the squares attacked from each position. Check subsets in increasing size:
+\begin{verbatim}
+from itertools import combinations
+attack = []
+for k in range(16):
+    r,c = divmod(k,4)
+    attack.append(sum(1 << (4*a+b)
+        for a in range(4) for b in range(4)
+        if sorted((abs(a-r),abs(b-c))) == [1,2]))
+for size in range(17):
+    witness = None
+    for group in combinations(range(16),size):
+        covered = 0
+        for k in group:
+            covered |= attack[k]
+        if covered == (1 << 16)-1:
+            witness = group
+            break
+    if witness is not None:
+        print(size,witness)
+        break
+# 6 (0, 1, 5, 6, 10, 11)
+\end{verbatim}
+The first successful size proves minimality, and the displayed placement proves existence. Occupied squares are not automatically covered. Thus $\boxed6$.
+\begin{asy}
+usepackage("amsmath"); size(220);
+for(int k=0;k<=4;++k){draw((k,0)--(k,4));draw((0,k)--(4,k));}int[] a={0,1,5,6,10,11};for(int k:a){int r=quotient(k,4),c=k%4;label("$K$",(c+0.5,3.5-r));}for(int k=0;k<4;++k){label(string(k),(k+0.5,-0.3));label(string(k),(-0.3,3.5-k));}label("Columns",(2,-0.8));
+\end{asy}

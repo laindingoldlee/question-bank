@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h1643147_prove_that_4_points_are_vertexes_of_a_rhombus
+% Stable identity: aops-topic-1643147-q01
+Use coordinates with $O=(0,0)$ and $AB$ on the $x$-axis, the semicircle above it.
+
+\textbf{The circle $k_1$.} It touches $AB$ at $O$, so its centre is $O_1=(0,r_1)$. It touches $k$ from inside at the top point $(0,r)$, so $2r_1=r$ and $r_1=\dfrac{r}{2}$.
+
+\textbf{The circle $k_2$.} It touches $AB$, so $O_2=(-t,r_2)$ with $t>0$. Internal tangency with $k$ gives $OO_2=r-r_2$, and external tangency with $k_1$ gives $O_1O_2=r_1+r_2=\dfrac{r}{2}+r_2$:
+\[
+t^2+r_2^2=(r-r_2)^2,\qquad t^2+\left(r_2-\dfrac{r}{2}\right)^2=\left(r_2+\dfrac{r}{2}\right)^2 .
+\]
+These simplify to $t^2=r^2-2rr_2$ and $t^2=2rr_2$. Hence $r^2=4rr_2$, so
+\[
+r_2=\dfrac{r}{4},\qquad t=\dfrac{r}{\sqrt2}.
+\]
+By the reflection in the line $OO_1$ the same holds for $k_3$: $r_3=\dfrac{r}{4}$ and $O_3=\left(\dfrac{r}{\sqrt2},\dfrac{r}{4}\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+real R=4;real r2=1;real a=R/sqrt(2);
+pair O=(0,0),A=(-R,0),B=(R,0),O1=(0,R/2),O2=(-a,r2),O3=(a,r2);
+draw(arc(O,R,0,180),linewidth(0.9));draw(A--B,linewidth(0.9));
+draw(circle(O1,R/2),linewidth(0.9));draw(circle(O2,r2),linewidth(0.9));draw(circle(O3,r2),linewidth(0.9));
+draw(O--O2--O1--O3--cycle,blue+dashed);
+dot(O);dot(O1);dot(O2);dot(O3);
+label("$O$",O,S);label("$A$",A,SW);label("$B$",B,SE);
+label("$O_1$",O1,N);label("$O_2$",O2,W);label("$O_3$",O3,E);
+label("$k$",1.04*R*dir(125),NW);label("$k_1$",O1+0.72*(R/2)*dir(50));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The four sides.}
+\[
+OO_2=OO_3=r-r_2=\dfrac{3r}{4},\qquad O_1O_2=O_1O_3=r_1+r_2=\dfrac{r}{2}+\dfrac{r}{4}=\dfrac{3r}{4}.
+\]
+So the quadrilateral $OO_2O_1O_3$ has four equal sides. It is a genuine quadrilateral: $O$ and $O_1$ lie on the line $x=0$, while $O_2$ and $O_3$ lie on opposite sides of it, so its diagonals $OO_1$ and $O_2O_3$ cross. A quadrilateral with four equal sides is a rhombus. $\blacksquare$
+
+(The key fact is $r_2=\dfrac{r}{4}$: it makes $OO_2=r-r_2$ equal to $O_1O_2=\dfrac{r}{2}+r_2$.)

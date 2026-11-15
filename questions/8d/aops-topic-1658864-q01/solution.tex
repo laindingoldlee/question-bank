@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1658864_geo_problem
+% Stable identity: aops-topic-1658864-q01
+Draw $BZ$ and let $u=[BXZ]$ and $v=[BZY]$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(10,0),A=(3,7);
+pair Y=B+(17/36)*(C-B),X=B+(32/51)*(A-B);
+pair Z=extension(A,Y,C,X);
+draw(A--B--C--cycle,linewidth(0.9));draw(A--Y);draw(C--X);
+dot(X);dot(Y);dot(Z);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$X$",X,W);label("$Y$",Y,S);label("$Z$",Z,NE);
+label("$9$",(A+Z+C)/3);label("$8$",(Y+Z+C)/3);label("$3$",(A+Z+X)/3,fontsize(9pt));
+label("$?$",(B+X+Z+Y)/4);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangles with the same apex and bases on one line have areas in the ratio of their bases.
+
+\textbf{On line $AY$.} Triangles $AZC$ and $YZC$ share the apex $C$, so $\dfrac{AZ}{ZY}=\dfrac{9}{8}$. Triangles $ABZ$ and $YBZ$ share the apex $B$, so
+\[
+\dfrac{3+u}{v}=\dfrac{AZ}{ZY}=\dfrac{9}{8} .
+\]
+\textbf{On line $CX$.} Triangles $AZX$ and $AZC$ share the apex $A$, so $\dfrac{XZ}{ZC}=\dfrac{3}{9}=\dfrac{1}{3}$. Triangles $BXZ$ and $BZC$ share the apex $B$, so
+\[
+\dfrac{u}{v+8}=\dfrac{XZ}{ZC}=\dfrac{1}{3} .
+\]
+From the second equation $v=3u-8$. Substituting into $8(3+u)=9v$ gives $24+8u=27u-72$, so $u=\dfrac{96}{19}$ and $v=\dfrac{288}{19}-8=\dfrac{136}{19}$. Hence
+\[
+[BXZY]=u+v=\boxed{\dfrac{232}{19}} .
+\]

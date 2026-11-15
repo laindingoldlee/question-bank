@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1979096_about_rook_polynomials
+% Stable identity: aops-topic-1979096-q01
+Take a placement of $k$ non-attacking rooks on $B$. Its rooks on $B_1$ form a non-attacking placement of some $i$ rooks on $B_1$, and those on $B_2$ a non-attacking placement of $j=k-i$ rooks on $B_2$.
+
+Conversely, take any non-attacking placement of $i$ rooks on $B_1$ and any non-attacking placement of $j$ rooks on $B_2$. Together they are non-attacking on $B$: two rooks on the same part do not attack by assumption, and a rook on $B_1$ and a rook on $B_2$ cannot share a row or a column, because $B_1$ and $B_2$ have no row or column in common.
+
+So placements of $k$ rooks on $B$ correspond bijectively to pairs (placement of $i$ rooks on $B_1$, placement of $k-i$ rooks on $B_2$), $0\le i\le k$, and
+\[
+r_k(B)=\sum_{i=0}^{k}r_i(B_1)\,r_{k-i}(B_2).
+\]
+The right side is exactly the coefficient of $x^k$ in $R(B_1,x)R(B_2,x)$, since multiplying the polynomials collects all products $r_i(B_1)x^i\cdot r_j(B_2)x^j$ with $i+j=k$. Hence $R(B,x)=R(B_1,x)R(B_2,x)$. $\blacksquare$
+
+\emph{Example.} Two single cells in different rows and columns: each has $R=1+x$, and the union has $r_0=1$, $r_1=2$, $r_2=1$, i.e.\ $R=1+2x+x^2=(1+x)^2$. If the two cells shared a row, $r_2$ would be $0$ and the product rule would fail, which is why the hypothesis is needed.

@@ -1,0 +1,7 @@
+Box A has side $6$ and surface area $216$. The spheres have total volume $27\cdot\dfrac{4}{3}\pi=36\pi$, so box B has side $(36\pi)^{\dfrac{1}{3}}$ and surface area $6(36\pi)^{\dfrac{2}{3}}$. The difference is $216-6(36\pi)^{\dfrac{2}{3}}\approx\boxed{75.7}$ square centimetres. Box B is defined by volume alone; it need not contain the spheres.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair u=(1,0),v=(.45,.35),w=(0,1);pair A=(0,0),B=3*u,C=3*(u+v),D=3*v,E=3*w,F=3*(u+w),G=3*(u+v+w),H=3*(v+w);draw(A--B--C--D--cycle);draw(E--F--G--H--cycle);draw(A--E);draw(B--F);draw(C--G);draw(D--H,dashed);for(int j=0;j<3;++j)for(int k=0;k<3;++k)draw(circle((j+.5)*u+(k+.5)*w,.45),blue);label("3 spheres per edge",(1.5,-.5));label("side 6 cm",(4.6,2));
+\end{asy}

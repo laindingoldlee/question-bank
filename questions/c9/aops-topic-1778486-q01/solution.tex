@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1778486_geometry_triangle_parallel_question
+% Stable identity: aops-topic-1778486-q01
+Let the triangle be $ABC$ with $BC=36$, and let the line meet $AB$ at $D$ and $AC$ at $E$, with $DE\parallel BC$ and $DE=x$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(36,0),A=(12,24);
+real k=1/sqrt(2);
+pair D=A+k*(B-A),Ep=A+k*(C-A);
+fill(A--D--Ep--cycle,paleblue);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(D--Ep,red+linewidth(0.9));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,W);label("$E$",Ep,E);
+label("$36$",(B+C)/2,S);label("$x$",(D+Ep)/2,N,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $DE\parallel BC$, triangle $ADE$ is similar to triangle $ABC$ with ratio $\dfrac{x}{36}$, so its area is $\left(\dfrac {x}{36}\right)^2$ times the area of $ABC$. The two parts have equal area, so triangle $ADE$ has half the area of $ABC$:
+\[
+\left(\dfrac{x}{36}\right)^2=\dfrac{1}{2}\ \Longrightarrow\ x=\dfrac{36}{\sqrt2}=\boxed{18\sqrt2}.
+\]

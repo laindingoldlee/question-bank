@@ -1,0 +1,60 @@
+% Source: https://artofproblemsolving.com/community/c3h1535278_drawing_a_decagon
+% Stable identity: aops-topic-1535278-q01
+Let the circle have centre $O$ and radius $R$.
+
+\textbf{Step 1: the side length.} Let $XY$ be a side of the regular decagon, with $OX=OY=R$ and $\angle XOY=\dfrac{360^\circ}{10}=36^\circ$. The triangle $OXY$ is isosceles with base angles $72^\circ$. Let the bisector of $\angle OXY$ meet $OY$ at $Z$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),X=4*dir(72),Y=4*dir(108);
+real s=4*2*sin(pi/10);
+pair Z=O+(Y-O)*(s/4);
+draw(O--X--Y--cycle,linewidth(0.9));draw(X--Z,red);
+label("$O$",O,S);label("$X$",X,NE);label("$Y$",Y,NW);label("$Z$",Z,W);
+draw(arc(O,0.9,72,108));label("$36^\circ$",O+1.25*dir(90),N,fontsize(8pt));
+label("$R$",(O+X)/2,SE);label("$s$",(X+Y)/2,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then $\angle ZXY=36^\circ$ and $\angle XYZ=72^\circ$, so $\angle XZY=72^\circ$ and triangle $XYZ$ is isosceles with $XZ=XY=s$. Also $\angle ZOX=\angle ZXO=36^\circ$, so $OZ=XZ=s$ and $ZY=R-s$. Triangles $XYZ$ and $OXY$ have the same angles $36^\circ,72^\circ,72^\circ$, so they are similar:
+\[
+\dfrac{ZY}{XY}=\dfrac{XY}{OX}\quad\Longrightarrow\quad \dfrac{R-s}{s}=\dfrac {s}{R}\quad\Longrightarrow\quad s^2+Rs-R^2=0,
+\]
+whose positive root is
+\[
+s=\dfrac{\sqrt5-1}{2}\,R .
+\]
+
+\textbf{Step 2: construct a segment of length $s$.}
+\begin{enumerate}
+\item Draw a diameter through $O$ and the perpendicular radius $OB$ (perpendicular bisector construction). Let $OA$ be a radius along the diameter.
+\item Bisect $OA$ to get its midpoint $M$. Then $MB=\sqrt{\left(\dfrac {R}{2}\right)^2+R^2}=\dfrac{\sqrt5}{2}R$.
+\item Draw the circle with centre $M$ and radius $MB$; let it meet the diameter at the point $P$ on the far side of $O$ from $M$. Then
+\[
+OP=MP-MO=\dfrac{\sqrt5}{2}R-\dfrac{1}{2}R=\dfrac{\sqrt5-1}{2}R=s .
+\]
+\end{enumerate}
+
+\textbf{Step 3: the decagon.} Set the compass to the length $OP$ and, starting at $A$, mark off successive points on the circle at this distance. Each chord of length $s$ subtends the central angle $36^\circ$ (by Step 1 and the fact that chord length determines the central angle), so after ten steps we return to $A$, and the ten points are the vertices of a regular decagon.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real R=3; pair O=(0,0),A=(R,0),Bp=(0,R),M=(R/2,0),P=(R/2-R*sqrt(5)/2,0);
+draw(circle(O,R),linewidth(0.8));
+draw((-R,0)--(R,0),gray);draw((0,-R)--(0,R),gray);
+draw(M--Bp,dashed);draw(arc(M,R*sqrt(5)/2,degrees(Bp-M),180),dashed);
+real s=R*(sqrt(5)-1)/2;
+pair[] V; for(int i=0;i<10;++i) V.push(R*dir(36*i));
+for(int i=0;i<10;++i) draw(V[i]--V[(i+1)%10],blue+linewidth(0.9));
+for(int i=0;i<10;++i) dot(V[i],blue);
+draw(O--P,red+linewidth(1.2));
+dot(O);dot(M);dot(P,red);dot(Bp);
+label("$O$",O,SE);label("$M$",M,S);label("$P$",P,SW);label("$A$",A,E);label("$B$",Bp,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Dashed: the segment $MB$ and the arc of the circle with centre $M$ through $B$; red: the segment $OP$ of length $s$; blue: the decagon.) An equivalent route is to construct a regular pentagon (whose side is the chord of $72^\circ$) and bisect each of its arcs. $\blacksquare$

@@ -1,0 +1,26 @@
+Set $B=(0,0),C=(14,0),A=(\dfrac{17}{4},\dfrac{3\sqrt{55}}{4}),D=(10,0)$. Then $AD=8$, so the ray condition allows two points: $E=D+\varepsilon\dfrac{5}{8}(D-A)$, with $\varepsilon=1$ beyond $D$ or $-1$ between $A,D$. The circumcenters are $O=(7,-\dfrac{7}{\sqrt{55}})$, $P=(5,\dfrac{13}{3\sqrt{55}})$, and $Q=(12,\dfrac{46-80\varepsilon}{3\sqrt{55}})$, found by equal-distance equations. Therefore $OD^2+PQ^2=\dfrac{36640-5280\varepsilon}{495}$. For $\varepsilon=1$ its square root is $\dfrac{56\sqrt{22}}{33}$, giving 111. For $\varepsilon=-1$ it is $\dfrac{8\sqrt{1441}}{33}$, giving 1482. Thus the stated ray condition permits $\boxed{111\text{ or }1482}$. 
+
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+int e=1;
+pair B=(0,0),C=(14,0),A=(17/4,3*sqrt(55)/4),D=(10,0),E=D+e*5/8*(D-A),O=(7,-7/sqrt(55)),P=(5,13/(3*sqrt(55))),Q=(12,(46-80*e)/(3*sqrt(55)));
+draw(A--B--C--cycle);draw(A--E);draw(C--E);draw(O--D,dashed);draw(P--Q,dashed);
+pair[] W={A,B,C,D,E,O,P,Q};string[] L={"A","B","C","D","E","O","P","Q"};
+for(int i=0;i<W.length;++i){dot(W[i]);label("$"+L[i]+"$",W[i],i==0?(0,1):(i<5?(0,-1):(1,0)));}
+
+\end{asy}
+
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+int e=-1;
+pair B=(0,0),C=(14,0),A=(17/4,3*sqrt(55)/4),D=(10,0),E=D+e*5/8*(D-A),O=(7,-7/sqrt(55)),P=(5,13/(3*sqrt(55))),Q=(12,(46-80*e)/(3*sqrt(55)));
+draw(A--B--C--cycle);draw(A--E);draw(C--E);draw(O--D,dashed);draw(P--Q,dashed);
+pair[] W={A,B,C,D,E,O,P,Q};string[] L={"A","B","C","D","E","O","P","Q"};
+for(int i=0;i<W.length;++i){dot(W[i]);label("$"+L[i]+"$",W[i],i==0?(0,1):(i<5?(0,-1):(1,0)));}
+
+\end{asy}
+

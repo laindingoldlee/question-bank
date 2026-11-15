@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1638007_gcd_fibonacci
+% Stable identity: aops-topic-1638007-q01
+Set $F_0=0$. We use two facts.
+
+\textbf{1. $\gcd(F_n,F_{n+1})=1$.} A common divisor of $F_n$ and $F_{n+1}$ divides $F_{n+1}-F_n=F_{n-1}$; going down, it divides $F_1=1$.
+
+\textbf{2. $F_{m+n}=F_{m+1}F_n+F_mF_{n-1}$ for $m\ge0$, $n\ge1$.} For $m=0$ this reads $F_n=F_n$ and for $m=1$ it reads $F_{n+1}=F_n+F_{n-1}$. If it holds for $m-1$ and $m$, adding the two equations gives it for $m+1$, because $F_m+F_{m+1}=F_{m+2}$ and $F_{m-1}+F_m=F_{m+1}$. So it holds for all $m$ by induction.
+
+From fact 2, $\gcd(F_{m+n},F_n)=\gcd(F_mF_{n-1},F_n)=\gcd(F_m,F_n)$, where the last step uses fact 1 ($F_{n-1}$ is coprime to $F_n$). So subtracting one index from the other does not change the gcd, exactly as in the Euclidean algorithm for the indices:
+\[
+\gcd(F_{300},F_{66})=\gcd(F_{36},F_{66})=\gcd(F_{36},F_{30})=\gcd(F_6,F_{30})=\gcd(F_6,F_0)=F_6 ,
+\]
+using $300-4\cdot66=36$, $66-36=30$, $36-30=6$ and $30-5\cdot6=0$ (each step being several subtractions). In general $\gcd(F_m,F_n)=F_{\gcd(m,n)}$. Since $F_6=8$, the answer is $\boxed{8}$.

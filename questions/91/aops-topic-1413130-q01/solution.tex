@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1413130_ovalselipses
+% Stable identity: aops-topic-1413130-q01
+\textbf{(a)} The stretch $(x,y)\mapsto\left(\dfrac {a}{b}\,x,\ y\right)$ maps the disc $x^2+y^2\le b^2$ onto the region inside the ellipse, because $\dfrac{\left(\dfrac{ax}{b}\right)^2}{a^2}+\dfrac{y^2}{b^2}=\dfrac{x^2+y^2}{b^2}$. A stretch by the factor $k$ in one direction multiplies all areas by $k$ (it multiplies the width of every thin horizontal strip by $k$ and keeps its height). So the area of the ellipse is
+\[
+\dfrac {a}{b}\cdot\pi b^2=\boxed{\pi ab}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real a=3,bb=1.8;
+draw(scale(a,bb)*unitcircle,linewidth(0.9));
+draw(circle((0,0),bb),gray+dashed);
+draw((-3.6,0)--(3.6,0),gray,Arrow(TeXHead)); draw((0,-2.3)--(0,2.4),gray,Arrow(TeXHead));
+draw((0,0)--(a,0),red+linewidth(0.9)); draw((0,0)--(0,bb),blue+linewidth(0.9));
+label("$a$",(2.45,0),S,red); label("$b$",(0,bb/2),W,blue);
+draw((1.0,1.0*sqrt(bb^2-1))--(1.0*a/bb,1.0*sqrt(bb^2-1)),deepgreen,Arrow(TeXHead));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(b)} The map $(x,y,z)\mapsto(ax,by,cz)$ sends the unit ball onto the ellipsoid and multiplies volumes by $abc$. The unit ball has volume $\dfrac{4}{3}\pi$, so the ellipsoid has volume
+\[
+\boxed{\dfrac{4}{3}\pi abc}.
+\]
+(The surface area of an ellipsoid, and the perimeter of an ellipse, have no such elementary formula; they are given by elliptic integrals.)

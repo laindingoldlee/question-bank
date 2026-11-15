@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3134466_2012_lmt_spring_guts_round_p13p24_lexington_mathematical_tournament
+% Stable identity: aops-topic-3134466-q23
+The tetrahedron is obtained by extending the four alternating face planes of the octahedron. Equivalently, start with a regular tetrahedron of side 2 and cut off the four corner tetrahedra at its edge midpoints; the remaining octahedron has side 1. Each removed tetrahedron has half the outer edge length and hence one eighth its volume. The octahedron fraction is $1-4(\dfrac{1}{8})=\boxed{\dfrac{1}{2}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,4),B=(-3,0),C=(3,0),D=(.4,1);draw(A--B--C--A);draw(A--D--B,dashed);draw(C--D,dashed);pair Ee=(A+B)/2,F=(A+C)/2,G=(B+C)/2,H=(A+D)/2,I=(B+D)/2,J=(C+D)/2;draw(Ee--F--G--Ee,blue);draw(H--I--J--H,blue+dashed);draw(Ee--H,blue+dashed);draw(F--H,blue+dashed);draw(Ee--I,blue+dashed);draw(G--I,blue+dashed);draw(F--J,blue+dashed);draw(G--J,blue+dashed);label("midpoint octahedron",(0,-.7));
+\end{asy}

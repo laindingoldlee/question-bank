@@ -1,0 +1,7 @@
+Cyclic angles give similarity of triangles EAB and ECD, with $EA$ corresponding to $EC$ and $EB$ to $ED$. Their scale factor is $\dfrac{AB}{CD}=\dfrac{3}{4}$. Writing $EA=x,EB=y$ gives $\dfrac{x}{y+6}=\dfrac{y}{x+5}=\dfrac{3}{4}$, or $4x-3y=18$ and $4y-3x=15$. Adding yields $x+y=33$, so the perimeter is $\boxed{36}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair E=(0,0),A=(117.0/7,0),D=A+(5,0);real y=114.0/7,co=(abs(A)^2+y*y-9)/(2*abs(A)*y);pair B=y*(co,sqrt(1-co*co)),C=(y+6)*unit(B);draw(E--D);draw(E--C);draw(A--B--C--D--cycle,blue);pair[] p={E,A,B,C,D};string[] a={"E","A","B","C","D"};pair[] al={(-1,0),(0,-1),(0,1),(0,1),(0,-1)};for(int i=0;i<5;++i)label("$"+a[i]+"$",p[i],al[i]);
+\end{asy}

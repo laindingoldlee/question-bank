@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1263743_bmc2_12__kite_reflections
+% Stable identity: aops-topic-1263743-q12
+Use position vectors. The images are $A'=2C-A$, $C'=2A-C$, $B'=2D-B$, $D'=2B-D$. Then
+\[A'-C'=3(C-A),\qquad B'-D'=3(D-B),\]
+so the new diagonals are parallel to the old ones and three times as long. A kite's diagonals are perpendicular and its area is half their product, so the area is multiplied by $3\cdot3=9$:
+\[9\cdot137=\boxed{1233}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,2),B=(-1.2,0),C=(0,-1),D=(1.2,0);
+pair A2=2C-A,C2=2A-C,B2=2D-B,D2=2B-D;
+draw(A--B--C--D--cycle,linewidth(1)); draw(A2--B2--C2--D2--cycle,blue);
+draw(C2--A2,gray+dashed); draw(B2--D2,gray+dashed);
+label("$A$",A,NE);label("$B$",B,W);label("$C$",C,S);label("$D$",D,E);
+label("$A'$",A2,S);label("$B'$",B2,E);label("$C'$",C2,N);label("$D'$",D2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

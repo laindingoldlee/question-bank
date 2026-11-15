@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1311757_the_frog_riddle
+% Stable identity: aops-topic-1311757-q01
+\textbf{(a)} For the two clearing frogs, let $C$ be the event that at least one croak is heard.
+\[
+\begin{array}{c|c|c}
+\text{frogs} & \text{probability} & P(C\mid\text{frogs})\\ \hline
+MM & \dfrac{1}{4} & 1-(1-q)^2=2q-q^2\\
+MF\text{ or }FM & \dfrac{1}{2} & q\\
+FF & \dfrac{1}{4} & 0
+\end{array}
+\]
+So $P(C)=\dfrac{2q-q^2}{4}+\dfrac{q}{2}=\dfrac{4q-q^2}{4}$, and you survive exactly when there is a female, which (given $C$) means the case $MF$ or $FM$:
+\[
+P(\text{survive}\mid C)=\dfrac{\dfrac{q}{2}}{\dfrac{4q-q^2}{4}}=\boxed{\dfrac{2}{4-q}} .
+\]
+
+\textbf{(b)} The stump frog is female with probability $\dfrac{1}{2}$. For $0<q\le1$ we have $3\le4-q<4$, so
+\[
+\dfrac{1}{2}<\dfrac{2}{4-q}\le\dfrac{2}{3}.
+\]
+\begin{itemize}
+\item If every male surely croaks ($q=1$), hearing a croak tells you only that the pair is not $FF$; the three remaining cases $MM, MF, FM$ are equally likely and the answer is $\dfrac{2}{3}$. This is the first argument.
+\item If croaks are rare ($q\to0$), a pair with two males is about twice as likely to produce a croak as a pair with one male, which exactly cancels the extra case and the answer tends to $\dfrac{1}{2}$. This is the second argument (it is the limit, not the exact value for any $q>0$).
+\end{itemize}
+In every case the clearing is at least as good as the stump, and strictly better for every $q>0$, so you should go to the clearing. The exact advantage depends on how likely a male is to croak.

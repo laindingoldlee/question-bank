@@ -1,0 +1,12 @@
+Scale the side length to $1$ and put $E=(0,0)$, $A=(1,0)$. The directions of $AB$ and $BC$ are $72^\circ$ and $144^\circ$. Therefore
+\[B=(1+\cos72^\circ,\sin72^\circ),\quad C=(1+\cos72^\circ+\cos144^\circ,\sin72^\circ+\sin144^\circ).\]
+Since $F=(\dfrac{1}{2},0)$ and $H=\dfrac{1}{2}(F+\dfrac{1}{2}(B+C))$, its coordinates are
+\[H=\left(\dfrac{3+2\cos72^\circ+\cos144^\circ}{4},\dfrac{2\sin72^\circ+\sin144^\circ}{4}\right).\]
+Both coordinates are positive, and $EF$ lies on the positive horizontal axis, so the tangent of the required angle is their ratio. Using $\cos72^\circ=\dfrac{\sqrt5-1}{4}$, $\cos36^\circ=\dfrac{\sqrt5+1}{4}$ and the corresponding positive sine values gives
+\[\boxed{\dfrac{2\sqrt{10+2\sqrt5}+\sqrt{10-2\sqrt5}}{9+\sqrt5}}.\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair E=(0,0),A=(1,0),B=A+dir(72),C=B+dir(144),D=C+dir(216),F=(E+A)/2,G=(B+C)/2,H=(F+G)/2;draw(A--B--C--D--E--cycle);draw(F--G);draw(E--H,blue);draw(D--H,dashed);label("$E$",E,(-1,-1));label("$A$",A,(1,-1));label("$B$",B,(1,0));label("$C$",C,(0,1));label("$D$",D,(-1,0));label("$F$",F,(0,-1));label("$G$",G,(1,1));label("$H$",H,(1,0));
+\end{asy}

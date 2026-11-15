@@ -1,0 +1,7 @@
+Let $\alpha=\angle BAC$. Triangle ABC gives $\angle ABC=134^\circ-\alpha$, so $\angle KBC=56^\circ-\alpha$. In triangle BKC, $\angle BKC=78^\circ+\alpha$. Its supplementary angle $CKD$ is $102^\circ-\alpha$. Because $CK=DK$, the base angle $KCD$ is $39^\circ+\dfrac{\alpha}{2}$. The bisector of BAC makes angle $\dfrac{\alpha}{2}$ with AC. Comparing the directions of these two lines therefore gives the acute difference $(39^\circ+\dfrac{\alpha}{2})-\dfrac{\alpha}{2}=\boxed{39^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),C=(5,0),B=extension(A,dir(50),C,C+dir(134));pair K=extension(B,B+dir(308),A,C),D=K+abs(C-K)*dir(308);draw(A--B--C--D--cycle);draw(A--C,dashed);draw(B--D,dashed);draw(A--3dir(25),blue);label("bisector",2.4dir(25),NW);pair[] p={A,B,C,D,K};string[] s={"A","B","C","D","K"};pair[] a={(-1,0),(0,1),(1,0),(0,-1),(0,1)};for(int i=0;i<5;++i)label("$"+s[i]+"$",p[i],a[i]);
+\end{asy}

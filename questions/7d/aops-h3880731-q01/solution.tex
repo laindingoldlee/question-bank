@@ -1,0 +1,12 @@
+Use coordinates $A=(0,0),B=(b,0),D=(d,h),C=(b-d,h)$, where $b,h>0$, $b-2d>0$, and $d\ne0$. Write $P=(td,th)$ with $0<t<1$, and put $e=b-d$. Intersection and parallel-line equations give $M=(2td,0)$, $Q=(b-\lambda e,\lambda h)$, and $N=(b-2\lambda e,0)$, where $\lambda=\dfrac{b-2dt}{2e-bt}$. Here the numerator and denominator are positive. The circle centres and radii are
+\[O_1=\left(td,\dfrac{t(h^2-d^2)}{2h}\right),\quad r_1=\dfrac{t(h^2+d^2)}{2h},\]
+\[O_2=\left(b-\lambda e,\dfrac{\lambda(h^2-e^2)}{2h}\right),\quad r_2=\dfrac{\lambda(h^2+e^2)}{2h}.\]
+These follow by taking the perpendicular bisector of each base chord and equating its distances to the third point. Expanding and cancelling gives
+\[|O_2-O_1|^2-(r_2-r_1)^2=b\bigl[(b-2td)-\lambda(2e-bt)\bigr]=0.\]
+The circles are distinct: if they coincided, their intersections with the horizontal axis would force $M=B$, or $2td=b$, which is impossible for $0<t<1$ and $b-2d>0$. Thus the distance between distinct centres equals the difference of the radii, proving internal tangency.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(4,0),C=(3,2),D=(1,2),P=(0.5,1),Q=(1.75,1.5),M=(1,0),N=(-0.5,0),O=(0.5,0.375),V=(1.75,-0.9375);draw(A--B--C--D--cycle);draw(C--P);draw(B--D);draw(P--M,dashed);draw(Q--N,dashed);draw(circle(O,0.625));draw(circle(V,2.4375));pair[] p={A,B,C,D,P,Q,M,N};string[] s={"A","B","C","D","P","Q","M","N"};for(int i=0;i<8;++i){dot(p[i]);label("$"+s[i]+"$",p[i],dir(220+40*i));}
+\end{asy}

@@ -1,0 +1,7 @@
+A line $y=mx+k$ is tangent to the first parabola exactly when $k=9-\dfrac{(m-4)^2}{4}$, and to the second exactly when $k=3-\dfrac{(m+8)^2}{16}$. Equating these gives $m^2-16m-32=0$, with two distinct real slopes. Using that relation in the first formula gives $k=-3-2m$. Thus both lines have form $y=m(x-2)-3$, so they meet at $\boxed{(2,-3)}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;draw(graph(new pair(real x){return (10*x,x*x+4*x+9);},-4,7.5),blue);draw(graph(new pair(real x){return (10*x,4*x*x-8*x+3);},-3,6),red);real[] ms={8-4*sqrt(6),8+4*sqrt(6)};for(real m:ms)draw((-40,m*(-4-2)-3)--(75,m*(7.5-2)-3),gray);clip(box((-40,-45),(75,120)));dot((20,-3));label("$(2,-3)$",(20,-3),S);label("horizontal scale expanded",(15,-42));
+\end{asy}

@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2938480_rickrolling_problem
+% Stable identity: aops-topic-2938480-q01
+Let $T(n)$ be the total started by one person of stupidity $n$: $T(n)=1+\sum_{d\mid n,\,d<n}T(d)$. Equivalently, $T(n)$ counts chains $n=d_0>d_1>\dots>d_k$ with $d_{i+1}\mid d_i$.
+
+Let $H(m)$ be the number of ordered factorisations of $m$ into factors $>1$ ($H(1)=1$). A chain ending at $d_k$ corresponds to an ordered factorisation of $\dfrac n{d_k}$, so $T(n)=\sum_{m\mid n}H(m)$. Also $H(n)=\sum_{m\mid n,\,m<n}H(m)$ (split off the last factor), so $T(n)=2H(n)$ for $n>1$.
+
+For $n=2160=2^4\cdot3^3\cdot5$, the number of ordered factorisations into exactly $k$ factors is, by inclusion--exclusion,
+\[f_k=\sum_{j=0}^{k-1}(-1)^j\dbinom kj\dbinom{k-j+3}{4}\dbinom{k-j+2}{3}\dbinom{k-j}{1},\]
+giving $f_1,\dots,f_8=1,38,333,1236,2355,2430,1295,280$. So $H=7968$ and $T=\boxed{15936}$.

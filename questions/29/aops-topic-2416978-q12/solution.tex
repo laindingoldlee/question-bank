@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2416978_1200th_post_dedicated_to_bloggy
+% Stable identity: aops-topic-2416978-q12
+Place $B=(0,0)$ and $C=(20,0)$. If $A=(p,q)$ with $q>0$, then $p^2+q^2=784$ and $(p-20)^2+q^2=576$; subtracting gives $40p-400=208$, so $p=\dfrac{76}{5}$ and $q^2=784-\dfrac{5776}{25}=\dfrac{13824}{25}$, $q=\dfrac{48\sqrt6}{5}$.
+
+\textbf{The circumcentre.} $O$ lies on the perpendicular bisector $x=10$ of $BC$. Writing $O=(10,y)$, the condition $OB=OA$ gives
+\[100+y^2=\left(10-\dfrac{76}5\right)^2+\left(y-\dfrac{48\sqrt6}{5}\right)^2\iff\dfrac{96\sqrt6}{5}y=\dfrac{676+13824}{25}-100=480,\]
+so $y=\dfrac{25}{\sqrt6}=\dfrac{25\sqrt6}{6}$ and $R=OB=\sqrt{100+\dfrac{625}{6}}=\dfrac{35\sqrt6}{6}$. (Check: $R=\dfrac{abc}{4K}=\dfrac{28\cdot20\cdot24}{4\cdot96\sqrt6}=\dfrac{35}{\sqrt6}$, since the area is $K=\dfrac12\cdot20\cdot\dfrac{48\sqrt6}5=96\sqrt6$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(20,0), A=(76/5,48*sqrt(6)/5), O=(10,25*sqrt(6)/6);
+real R=35*sqrt(6)/6; pair D=(48/29)*O;
+draw(circle(O,R),gray);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(B--D,red+linewidth(0.8));
+draw((10,0)--O,dashed);
+dot(O); dot(D);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$O$",O,W); label("$D$",D,E);
+label("$28$",(A+B)/2,NW); label("$20$",(6,0),S); label("$24$",(A+C)/2,E);
+\end{asy}
+
+\textbf{The point $D$.} The points of line $BO$ are $t\,O=\left(10t,\dfrac{25\sqrt6}{6}t\right)$, and the points of line $AC$ are $A+u(C-A)=\left(\dfrac{76}5+\dfrac{24}5u,\ \dfrac{48\sqrt6}{5}(1-u)\right)$. Equating coordinates,
+\[10t=\dfrac{76+24u}{5},\qquad\dfrac{25}{6}t=\dfrac{48}{5}(1-u).\]
+From the first, $t=\dfrac{76+24u}{50}$; substituting into the second gives $125(76+24u)=14400(1-u)$, so $u=\dfrac{49}{174}$ (between $0$ and $1$, so $D$ is on the side $AC$) and $t=\dfrac{48}{29}$. Hence $BD=\dfrac{48}{29}R$ and
+\[OD=BD-BO=\dfrac{19}{29}R=\dfrac{19}{29}\cdot\dfrac{35\sqrt6}{6}=\boxed{\dfrac{665\sqrt6}{174}\approx9.36}.\]

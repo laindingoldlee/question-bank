@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h3152394_5000th_postmath_problemsmath_story
+% Stable identity: aops-topic-3152394-q03
+Only A and M repeat, with multiplicities three and two; the other five letters are distinct. A recurrence tracks the remaining multiplicities and the previous letter, allowing exactly the choices that do not repeat the previous letter. It counts each valid word once, and gives $\boxed{115920}$:
+\begin{verbatim}
+from collections import Counter
+from functools import lru_cache
+counts=tuple(Counter('MATHMAXBAD').values())
+@lru_cache(None)
+def count(t,last):
+    if not sum(t):return 1
+    return sum(count(t[:i]+(v-1,)+t[i+1:],i)
+               for i,v in enumerate(t) if v and i!=last)
+assert count(counts,-1)==115920
+\end{verbatim}

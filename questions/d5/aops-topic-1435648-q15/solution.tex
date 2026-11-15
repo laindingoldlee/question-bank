@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1435648_httpsartofproblemsolvingcomwikiindexphptitle2008_am
+% Stable identity: aops-topic-1435648-q15
+By the Pythagorean theorem the legs and hypotenuse satisfy
+\[
+a^2+b^2=(b+1)^2=b^2+2b+1 ,
+\]
+which is where the equation $a^2+b^2=b^2+2b+1$ comes from. Cancelling $b^2$ gives $a^2=2b+1$. So $a^2$ is odd, hence $a$ is odd, and then $b=\dfrac{a^2-1}{2}$. Conversely every odd $a\ge3$ gives a positive integer $b$ and a right triangle with sides $a$, $b$, $b+1$ ($a=1$ gives $b=0$, which is not a triangle). This is why the solution looks at odd numbers.
+
+The condition $b<100$ means $a^2-1<200$, that is $a^2\le199$, so $a\le14$. The odd values are $a=3,5,7,9,11,13$, giving the triangles
+\[
+(3,4,5),\ (5,12,13),\ (7,24,25),\ (9,40,41),\ (11,60,61),\ (13,84,85).
+\]
+There are $6$ triangles: $\boxed{\textbf{(A)}\ 6}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair C=(0,0),A=(0,5),B=(12,0);
+draw(A--B--C--cycle,linewidth(0.9)); draw(ra(C,A-C,B-C,0.8));
+label("$a$",(0,2.5),W); label("$b$",(6,0),S); label("$b+1$",(6,2.5),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The figure shows the case $a=5$, $b=12$.

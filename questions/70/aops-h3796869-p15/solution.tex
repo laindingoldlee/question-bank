@@ -1,0 +1,7 @@
+Use a unit circumradius temporarily. Each regular hexagon has area $\dfrac{3\sqrt3}{2}$. Two consecutive hexagons overlap in a rhombus with diagonals one and $\sqrt3$, hence area $\dfrac{\sqrt3}{2}$, one-third of a hexagon. Each overlap therefore has actual area four. The first and third hexagons meet only at one vertex. Their union area is $3\cdot12-2\cdot4=\boxed{28\text{ cm}^2}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int k=0;k<3;++k){path p=(k,0)+dir(0);for(int i=1;i<6;++i)p=p--((k,0)+dir(60i));filldraw(p--cycle,lightblue,blue);}for(int k=0;k<3;++k){dot((k,0));label("$O_"+string(k+1)+"$",(k,0),(0,-1));}
+\end{asy}

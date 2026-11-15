@@ -1,0 +1,19 @@
+The tangent at eccentric angle $\theta$ is
+\[
+\dfrac{x}{a}\cos\theta+\dfrac{y}{b}\sin\theta=1.
+\]
+Write $\theta_1=\phi+\delta$, $\theta_2=\phi-\delta$. Subtracting the two equations and using the distinctness of the points gives
+\[
+-\dfrac{x}{a}\sin\phi+\dfrac{y}{b}\cos\phi=0.
+\]
+This is a fixed line through the origin, directed by $(a\cos\phi,b\sin\phi)$. Adding the tangent equations yields, more specifically,
+\[
+(x,y)=\dfrac{1}{\cos\delta}(a\cos\phi,b\sin\phi).
+\]
+The finite-intersection assumption excludes $\cos\delta=0$. Distinct tangency points also exclude the boundary points where $|\sec\delta|=1$, so the locus is the corresponding exterior portion of the fixed line.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;pair e(real t){return (3cos(t),2sin(t));}draw(graph(e,0,2pi),blue);real phi=pi/6,delta=pi/4;pair U=e(phi+delta),V=e(phi-delta),P=e(phi)/cos(delta);draw(U--P--V);draw(-1.3P--1.3P,dashed+gray);label("$P$",P,NE);label("$U$",U,(0,1));label("$V$",V,(0,-1));
+\end{asy}

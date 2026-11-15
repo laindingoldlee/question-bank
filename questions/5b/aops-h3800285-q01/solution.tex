@@ -1,0 +1,7 @@
+Let $t_A,t_B,t_C,t_D$ be the side lengths of the four removed tetrahedra. At vertex $V$, each of the three original incident edges loses a segment of length $t_V$, so the total length removed from original edges is $3\sum t_V$. The new triangular cut face has three edges of length $t_V$, adding exactly $3\sum t_V$. Thus the total edge length is unchanged from the original six edges: $\boxed{6\cdot10=60}$. The stated eighteen-edge configuration ensures no original edge has disappeared completely.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] v={(0,0),(4,0),(3,1.4),(2.1,4)};real t=.22;for(int i=0;i<4;++i){pair[] cut;for(int j=0;j<4;++j)if(j!=i){pair p=(1-t)*v[i]+t*v[j];cut.push(p);draw(v[i]--p,gray+dashed);if(j>i)draw(p--((1-t)*v[j]+t*v[i]),(i==0&&j==2)?dashed:solid);}draw(cut[0]--cut[1]--cut[2]--cycle,blue);label("$"+substr("ABCD",i,1)+"$",v[i],v[i]-(2,1.5));}
+\end{asy}

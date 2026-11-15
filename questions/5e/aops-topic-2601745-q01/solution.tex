@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2601745_tangent_circles
+% Stable identity: aops-topic-2601745-q01
+Both statements are \textbf{false}. Take three circles of radius $1$ with centres $O_1=(-3,0)$, $O_2=(0,0)$, $O_3=(3,0)$.
+
+\textbf{(a)} A circle with centre $O$ and radius $R$ is externally tangent to a circle with centre $O_i$ and radius $1$ exactly when $OO_i=R+1$. So $O$ would be at the same distance from $O_1$, $O_2$ and $O_3$. The points equidistant from $O_1$ and $O_2$ form the perpendicular bisector $x=-\dfrac32$, and those equidistant from $O_2$ and $O_3$ form the line $x=\dfrac32$. These lines do not meet, so no such circle exists.
+
+\textbf{(b)} Internal tangency with the small circle inside means $OO_i=R-1$ for each $i$, which again makes $O$ equidistant from $O_1$, $O_2$, $O_3$: impossible for the same reason. (A circle inside all three disks cannot exist either, since the disks are disjoint.)
+
+So neither kind of tangent circle exists in general; this disproves both statements. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair O1=(-3,0),O2=(0,0),O3=(3,0);
+draw(circle(O1,1),linewidth(0.8));draw(circle(O2,1),linewidth(0.8));draw(circle(O3,1),linewidth(0.8));
+draw((-4.6,1)--(4.6,1),dashed);draw((-4.6,-1)--(4.6,-1),dashed);
+draw((-1.5,-1.8)--(-1.5,1.8),dotted);draw((1.5,-1.8)--(1.5,1.8),dotted);
+dot(O1);dot(O2);dot(O3);label("$O_1$",O1,S);label("$O_2$",O2,S);label("$O_3$",O3,S);
+label("$x=-\dfrac32$",(-1.5,1.8),N,fontsize(8pt));label("$x=\dfrac32$",(1.5,1.8),N,fontsize(8pt));
+\end{asy}
+
+The dashed lines $y=\pm1$ are tangent to all three circles, but they are lines, not circles. (For other configurations such circles can exist: for example, three equal circles that touch each other in pairs have a small circle touching all three externally in the middle gap and a large circle enclosing all three. The statements fail because they claim this for \emph{any} three circles.)

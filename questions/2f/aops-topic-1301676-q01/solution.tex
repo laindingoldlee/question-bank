@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1301676_find_all_3_digit_numbers
+% Stable identity: aops-topic-1301676-q01
+The three digits form a multiset $\{x,\,y,\,x+y\}$ with $0\le x\le y$ and $x+y\le9$, not all zero; the largest digit is the sum. Count the three-digit arrangements (first digit nonzero) of each type.
+\begin{itemize}
+\item $x=0$: digits $\{0,y,y\}$, $y=1,\dots,9$. The $0$ cannot lead, so it is in one of $2$ places: $9\cdot2=18$.
+\item $x=y\ge1$: digits $\{x,x,2x\}$, $x=1,\dots,4$, with $3$ arrangements each: $12$.
+\item $1\le x<y$, $x+y\le9$: there are $7+5+3+1=16$ such pairs, each giving three different nonzero digits with $3!=6$ arrangements: $96$.
+\end{itemize}
+A multiset is of exactly one of these types, so the total is $18+12+96=\boxed{126}$. The student's $258$ overcounts.

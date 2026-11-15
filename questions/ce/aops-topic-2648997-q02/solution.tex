@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2648997_help_on_geometric_probability
+% Stable identity: aops-topic-2648997-q02
+The points equidistant from $(0,0)$ and $(3,3)$ form the perpendicular bisector of the segment joining them: it passes through the midpoint $\left(\dfrac32,\dfrac32\right)$ with slope $-1$, i.e. the line $x+y=3$. (Algebraically, $x^2+y^2<(x-3)^2+(y-3)^2\iff x+y<3$.) Inside the square, the points with $x+y\ge3$ form the triangle with vertices $(2,1)$, $(1,2)$, $(2,2)$, of area $\dfrac12$. So the favourable area is $4-\dfrac12=\dfrac72$, and the probability is $\dfrac{7}{2}\cdot\dfrac14=\boxed{\dfrac78}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+fill((0,0)--(2,0)--(2,1)--(1,2)--(0,2)--cycle,lightgray);draw((0,0)--(2,0)--(2,2)--(0,2)--cycle,linewidth(0.8));
+draw((0.6,2.4)--(2.4,0.6),dashed);draw((0,0)--(3,3),dotted);dot((0,0));dot((3,3));dot((1.5,1.5));
+dot((1,2));dot((2,1));label("$(0,0)$",(0,0),SW,fontsize(9pt));label("$(3,3)$",(3,3),NE,fontsize(9pt));label("$x+y=3$",(2.4,0.6),SE,fontsize(9pt));label("$(2,1)$",(2,1),E,fontsize(8pt));label("$(1,2)$",(1,2),SW,fontsize(8pt));label("$(2,2)$",(2,2),SE,fontsize(8pt));
+\end{asy}

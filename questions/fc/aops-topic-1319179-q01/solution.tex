@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1319179_triangle_inequalities
+% Stable identity: aops-topic-1319179-q01
+Let $AH$ be the altitude from $A$ in triangle $ABC$, with $H$ on line $BC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(0.8,3),B=(0,0),C=(4,0),H=(0.8,0); draw(A--B--C--cycle,linewidth(0.9)); draw(A--H,red+dashed); draw(ra(H,A-H,C-H,0.2));
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$H$",H,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+If $H\ne B$, triangle $AHB$ has a right angle at $H$, so $AB$ is its hypotenuse and $AB>AH$ (the hypotenuse is opposite the largest angle, or by Pythagoras $AB^2=AH^2+HB^2>AH^2$). If $H=B$ (right angle at $B$), then $AH=AB$. The same argument applies to $AC$. So the altitude from $A$ is never longer than $AB$ or $AC$, and is strictly shorter unless the triangle has a right angle at $B$ or $C$. $\blacksquare$

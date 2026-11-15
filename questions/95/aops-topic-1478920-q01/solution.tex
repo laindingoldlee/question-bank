@@ -1,0 +1,57 @@
+% Source: https://artofproblemsolving.com/community/c3h1478920_the_187290_triangle
+% Stable identity: aops-topic-1478920-q01
+\textbf{Step 1: the $36^\circ$--$72^\circ$--$72^\circ$ triangle.} Let $ABC$ be isosceles with $AB=AC=1$ and $\angle A=36^\circ$, so $\angle B=\angle C=72^\circ$; let $BC=x$. Let the bisector of $\angle B$ meet $AC$ at $D$. Then $\angle ABD=\angle DBC=36^\circ$, so:
+\begin{itemize}
+\item in triangle $ABD$ the angles at $A$ and $B$ are both $36^\circ$, so $AD=BD$;
+\item in triangle $BDC$, $\angle BDC=180^\circ-36^\circ-72^\circ=72^\circ=\angle C$, so $BD=BC=x$.
+\end{itemize}
+Hence $AD=BD=x$ and $DC=1-x$. Triangles $ABC$ and $BCD$ have the same angles ($36^\circ,72^\circ,72^\circ$), so they are similar, and
+\[
+\dfrac{BC}{AB}=\dfrac{CD}{BC}\qquad\Longrightarrow\qquad \dfrac{x}{1}=\dfrac{1-x}{x}\qquad\Longrightarrow\qquad x^2+x-1=0,
+\]
+so $x=\dfrac{\sqrt5-1}{2}$ (the positive root).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real x=(sqrt(5)-1)/2; pair B=(-x/2,0),C=(x/2,0),A=(0,sqrt(1-x^2/4)); pair D=A+x*(C-A);
+draw(A--B--C--cycle,linewidth(0.9)); draw(B--D,blue+linewidth(0.9));
+dot(A);dot(B);dot(C);dot(D);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,E);
+draw(arc(A,0.16,degrees(B-A),degrees(C-A))); label("$36^\circ$",A+0.25*dir(-90),fontsize(8pt));
+draw(arc(B,0.1,0,36),blue); draw(arc(B,0.12,36,72),blue);
+label("$36^\circ$",B+0.2*dir(17),blue+fontsize(7pt)); label("$36^\circ$",B+0.24*dir(56),blue+fontsize(7pt));
+draw(arc(C,0.1,180-72,180)); label("$72^\circ$",C+0.2*dir(144),fontsize(7pt));
+label("$1$",(A+B)/2,W); label("$x$",(A+D)/2,E); label("$1-x$",(D+C)/2,E); label("$x$",(B+C)/2,S); label("$x$",(B+D)/2+(0,0.03),N,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Step 2: cut in half.} The altitude $AM$ of the isosceles triangle bisects the base and the apex angle, so triangle $AMC$ has a right angle at $M$, the angle $18^\circ$ at $A$ and $72^\circ$ at $C$. Its sides are:
+\[
+MC=\dfrac{x}{2}=\dfrac{\sqrt5-1}{4}\ (\text{opposite }18^\circ),\qquad AC=1\ (\text{hypotenuse}),
+\]
+and by the Pythagorean theorem, using $x^2=1-x$,
+\[
+AM=\sqrt{1-\dfrac{x^2}{4}}=\sqrt{\dfrac{3+x}{4}}=\sqrt{\dfrac{5+\sqrt5}{8}}=\dfrac{\sqrt{10+2\sqrt5}}{4}\ (\text{opposite }72^\circ).
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real x=(sqrt(5)-1)/2; pair B=(-x/2,0),C=(x/2,0),A=(0,sqrt(1-x^2/4)); pair M=(0,0);
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--M,red+dashed);
+draw((0.04,0)--(0.04,0.04)--(0,0.04),red);
+dot(A);dot(B);dot(C);dot(M,red);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$M$",M,S,red);
+draw(arc(A,0.32,-90,degrees(C-A)),red); label("$18^\circ$",A+0.5*dir(-81),red+fontsize(7pt));
+label("$1$",(A+C)/2,E); label("$\dfrac{x}{2}$",(M+C)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Multiplying by $4$, the sides opposite $18^\circ$, $72^\circ$ and $90^\circ$ are in the ratio
+\[
+\boxed{\left(\sqrt5-1\right):\sqrt{10+2\sqrt5}:4}\approx0.309:0.951:1 .
+\]
+(In trigonometric language this says $\sin18^\circ=\dfrac{\sqrt5-1}{4}$.)

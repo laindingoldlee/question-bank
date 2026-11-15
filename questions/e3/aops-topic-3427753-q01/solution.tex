@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3427753_counting_problem
+% Stable identity: aops-topic-3427753-q01
+There are $\binom{12}{6}=924$ unrestricted paths. Write the forbidden points as $A,B,C$ in the stated order. Paths through $A$ number $\binom21\binom{10}{5}=504$; through $B$ or $C$ they number $\binom72\binom51=105$ each. Paths through both $A,B$ number $\binom21\binom51\binom51=50$, and the same holds for $A,C$. No increasing path visits both $B,C$, since this would require a coordinate to decrease. Inclusion--exclusion gives $924-504-105-105+50+50=\boxed{310}$.
+\begin{asy}
+import geometry;
+usepackage("amsmath");
+size(260);
+for(int i=4;i<=10;++i){draw((i,4)--(i,10),lightgray);draw((4,i)--(10,i),lightgray);} pair ptS=(4,4),T=(10,10),A=(5,5),B=(6,9),C=(9,6); dot(ptS);dot(T);dot(A,red);dot(B,red);dot(C,red);label("$S(4,4)$",ptS,SW);label("$T(10,10)$",T,NE);label("$A$",A,SW);label("$B$",B,N);label("$C$",C,E);
+\end{asy}

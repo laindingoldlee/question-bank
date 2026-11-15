@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2636758_intermediate_problems
+% Stable identity: aops-topic-2636758-q32
+Since the circumcentre $O$ is on $AB$, $AB$ is a diameter and $\angle C=90^\circ$. Then $BC=\sqrt{29^2-20^2}=21$ and the inradius is $r=\dfrac{20+21-29}{2}=6$.
+
+Put $C=(0,0)$, $A=(20,0)$, $B=(0,21)$. Then $O$ is the midpoint of $AB$, $(10,10.5)$, and the incentre is $I=(r,r)=(6,6)$. So
+\[OI=\sqrt{4^2+4.5^2}=\sqrt{36.25}=\boxed{\dfrac{\sqrt{145}}{2}\approx6.02}.\]
+(This agrees with Euler's formula $OI^2=R^2-2Rr=14.5^2-2\cdot14.5\cdot6$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),A=(20,0),B=(0,21),O=(10,10.5),I=(6,6);
+draw(circle(O,14.5),gray);draw(A--B--C--cycle,linewidth(0.8));draw(circle(I,6),dashed);
+draw(O--I,linewidth(0.8));dot(O);dot(I);draw((0,1.5)--(1.5,1.5)--(1.5,0));
+label("$A$",A,SE);label("$B$",B,NW);label("$C$",C,SW);label("$O$",O,NE);label("$I$",I,SW);
+label("$20$",(10,0),S,fontsize(8pt));label("$21$",(0,10.5),W,fontsize(8pt));
+\end{asy}

@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2976156_math_puzzles
+% Stable identity: aops-topic-2976156-q01
+Place the cube as $[0,1]^3$ and take the plane $x+y+z=\dfrac32$, perpendicular to the space diagonal through the centre. It crosses six edges at their midpoints:
+\[\left(1,\dfrac12,0\right),\left(1,0,\dfrac12\right),\left(\dfrac12,0,1\right),\left(0,\dfrac12,1\right),\left(0,1,\dfrac12\right),\left(\dfrac12,1,0\right).\]
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair x=(3,0),y=(-1.4,1.0),z=(0,3);
+pair P(real a,real b,real c){return a*x+b*y+c*z;}
+path h=P(1,0.5,0)--P(1,0,0.5)--P(0.5,0,1)--P(0,0.5,1)--P(0,1,0.5)--P(0.5,1,0)--cycle;
+fill(h,gray(0.8));
+draw(P(0,0,0)--P(1,0,0)--P(1,0,1)--P(0,0,1)--cycle);draw(P(0,0,1)--P(0,1,1)--P(1,1,1)--P(1,0,1));draw(P(1,0,0)--P(1,1,0)--P(1,1,1));
+draw(P(0,0,0)--P(0,1,0)--P(0,1,1),dashed);draw(P(0,1,0)--P(1,1,0),dashed);draw(h,linewidth(1));
+\end{asy}
+
+Consecutive points differ by vectors such as $\left(0,-\dfrac12,\dfrac12\right)$, of length $\dfrac{\sqrt2}2$. The cyclic permutation of coordinates (a $120^\circ$ rotation about the diagonal) and the swap of two coordinates both preserve the plane and the cube, and together they map the hexagon to itself carrying any vertex to any other; so all sides and all angles are equal and the hexagon is regular with side $s=\dfrac{\sqrt2}2$. Its area is
+\[\dfrac{3\sqrt3}{2}s^2=\dfrac{3\sqrt3}{2}\cdot\dfrac12=\boxed{\dfrac{3\sqrt3}4}.\]

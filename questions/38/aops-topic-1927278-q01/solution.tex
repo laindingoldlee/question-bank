@@ -1,0 +1,41 @@
+% Source: https://artofproblemsolving.com/community/c3h1927278_i_suck_at_geometry
+% Stable identity: aops-topic-1927278-q01
+Label the pentagon counterclockwise. We use \emph{signed areas}: $[X_1X_2\cdots X_n]$ is the area when the vertices go counterclockwise and minus the area when they go clockwise. For any point $P$ and polygon $X_1\cdots X_n$, $[X_1\cdots X_n]=\sum[PX_iX_{i+1}]$ (indices mod $n$), whatever the position of $P$.
+
+\textbf{Two rotations.} Since $BA=BC$ and $\angle CBA=120^\circ$, the rotation $\rho_B$ about $B$ through $120^\circ$ (counterclockwise) maps $C$ to $A$. Since $DC=DE$ and $\angle EDC=60^\circ$, the rotation $\rho_D$ about $D$ through $60^\circ$ maps $E$ to $C$. Their composition $\rho_B\circ\rho_D$ maps $E\mapsto C\mapsto A$, and a composition of rotations through $60^\circ$ and $120^\circ$ is a rotation through $180^\circ$, i.e.\ a half-turn. A half-turn mapping $E$ to $A$ has centre the midpoint $M$ of $AE$.
+
+Let $M'=\rho_D(M)$. Then $\rho_B(M')=(\rho_B\circ\rho_D)(M)=M$. Hence
+\[
+DM'=DM,\ \angle MDM'=60^\circ,\qquad BM'=BM,\ \angle M'BM=120^\circ .
+\]
+So triangle $DMM'$ is equilateral and triangle $BM'M$ is isosceles with apex angle $120^\circ$. Let $t=MM'$. Both $B$ and $D$ lie on the perpendicular bisector of $MM'$, at distances $\dfrac{t}{2\sqrt3}$ and $\dfrac{\sqrt3\,t}{2}$ from its midpoint. A counterclockwise rotation by an angle less than $180^\circ$ that moves $X$ to $Y$ has its centre to the left of $\overrightarrow{XY}$: $\rho_D$ moves $M$ to $M'$ and $\rho_B$ moves $M'$ to $M$, so $D$ and $B$ lie on opposite sides of $MM'$. Thus $MBM'D$ is a kite with perpendicular diagonals and
+\[
+BD=\dfrac{t}{2\sqrt3}+\dfrac{\sqrt3\,t}{2}=\dfrac{2t}{\sqrt3}=2\quad\Longrightarrow\quad t=\sqrt3 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0),B=(2,0),C=(1.32,0.43);
+pair A=rotate(120,B)*C,Ee=rotate(-60,D)*C;
+pair M=(A+Ee)/2,Mp=rotate(60,D)*M;
+fill(M--A--B--cycle,paleblue);fill(Mp--C--B--cycle,paleblue);
+fill(M--D--Ee--cycle,palegreen);fill(Mp--D--C--cycle,palegreen);
+draw(A--B--C--D--Ee--cycle,linewidth(1));
+draw(M--B--Mp--D--cycle,red+dashed);draw(M--Mp,red+dotted);draw(B--D,dotted);
+draw(Mp--C,gray);
+dot(M);dot(Mp);
+label("$A$",A,SE);label("$B$",B,E);label("$C$",C,NE);label("$D$",D,W);label("$E$",Ee,SW);
+label("$M$",M,S);label("$M'$",Mp,N);label("$2$",(0.55,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Moving two triangles.} Since $M$ lies on side $AE$, $[ABCDE]=[MAB]+[MBC]+[MCD]+[MDE]$. The rotation $\rho_B$ maps triangle $M'CB$ onto triangle $MAB$, so $[MAB]=[M'CB]$ (blue). The rotation $\rho_D$ maps triangle $MED$ onto triangle $M'CD$, so $[MDE]=-[MED]=-[M'CD]=[M'DC]$ (green). Therefore
+\[
+[ABCDE]=[M'CB]+[MBC]+[MCD]+[M'DC]=[CMB]+[CBM']+[CM'D]+[CDM]=[MBM'D],
+\]
+the last step being the fan decomposition of the kite $MBM'D$ from the point $C$. The kite has perpendicular diagonals $MM'=\sqrt3$ and $BD=2$, so
+\[
+[ABCDE]=\dfrac{1}{2}\cdot\sqrt3\cdot2=\boxed{\sqrt3}.
+\]

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2781864_classifying_seconddegree_equations_proof
+% Stable identity: aops-topic-2781864-q01
+\textbf{Rotation.} Rotate the axes through an angle $\theta$: $x=x'\cos\theta-y'\sin\theta$, $y=x'\sin\theta+y'\cos\theta$. The equation becomes $A'x'^2+B'x'y'+C'y'^2+D'x'+E'y'+F=0$ with
+\[A'+C'=A+C,\qquad A'-C'=(A-C)\cos2\theta+B\sin2\theta,\qquad B'=B\cos2\theta-(A-C)\sin2\theta.\]
+(Expand and use $\cos^2\theta-\sin^2\theta=\cos2\theta$ and $2\sin\theta\cos\theta=\sin2\theta$.)
+
+\textbf{The discriminant is unchanged.} The pair $(A'-C',B')$ is the vector $(A-C,B)$ rotated through $2\theta$, so $(A'-C')^2+B'^2=(A-C)^2+B^2$. Hence
+\[B'^2-4A'C'=B'^2+(A'-C')^2-(A'+C')^2=(A-C)^2+B^2-(A+C)^2=B^2-4AC.\]
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real th=30;
+draw((-4,0)--(4,0),Arrow(4));draw((0,-3.2)--(0,3.2),Arrow(4));label("$x$",(4,0),E);label("$y$",(0,3.2),N);
+draw(rotate(th)*((-4,0)--(4,0)),dashed,Arrow(4));draw(rotate(th)*((0,-3)--(0,3)),dashed,Arrow(4));
+label("$x'$",rotate(th)*(4,0),NE);label("$y'$",rotate(th)*(0,3),NW);
+draw(rotate(th)*scale(3,1.7)*unitcircle,linewidth(0.9));
+draw(arc((0,0),1.2,0,th),Arrow(3));label("$\theta$",1.4*dir(th/2),E);
+\end{asy}
+
+\textbf{Removing the $xy$ term.} If $B\ne0$, choose $\theta$ with $\cot2\theta=\dfrac{A-C}B$; then $B'=0$ (if $B=0$, take $\theta=0$). Now the discriminant is $-4A'C'$, and $A',C'$ are not both $0$.
+\begin{itemize}
+\item If $B^2-4AC<0$, then $A'C'>0$. Completing the square in $x'$ and $y'$ gives $A'(x'-h)^2+C'(y'-k)^2=G$ with $A',C'$ of the same sign: an ellipse (a circle if $A'=C'$), since the degenerate cases (a point, or no graph) are excluded.
+\item If $B^2-4AC>0$, then $A'C'<0$, and completing squares gives $A'(x'-h)^2+C'(y'-k)^2=G$ with coefficients of opposite signs. Since the conic is non-degenerate, $G\ne0$, and this is a hyperbola.
+\item If $B^2-4AC=0$, exactly one of $A',C'$ is $0$, say $C'=0\ne A'$. Then the equation is $A'(x'-h)^2+E'y'+G=0$. Non-degeneracy forces $E'\ne0$ (otherwise the graph is a pair of parallel lines, one line, or empty), so $y'$ is a quadratic function of $x'$: a parabola.
+\end{itemize}
+Rotation does not change the shape of a curve, so the classification holds for the original equation. $\blacksquare$

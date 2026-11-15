@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3071787_minimum_value
+% Stable identity: aops-topic-3071787-q01
+Put $u=(a,b)$ and $v=(c,d)$, so $\det(u,v)=1$. The expression is $|u+\dfrac{v}{2}|^2+\dfrac{3}{4}|v|^2$. By AM-GM and the determinant bound $|\det(w,v)|\le|w||v|$, it is at least $\sqrt3|u+\dfrac{v}{2}||v|\ge\sqrt3|\det(u+\dfrac{v}{2},v)|=\sqrt3$. Equality is attainable: choose $v=(0,t)$ and $u=(\dfrac{1}{t},-\dfrac{t}{2})$, where $t^2=\dfrac{2}{\sqrt3}$. Then the determinant is $1$, the two relevant vectors are perpendicular, and their lengths have the AM-GM equality ratio. Hence the minimum is $\boxed{\sqrt3}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair O=(0,0),V=(0,2),Wv=(sqrt(3),0),U=Wv-V/2;draw(O--V,blue,Arrow);draw(O--U,red,Arrow);draw(O--Wv,Arrow);draw(U--Wv,dashed);label("$v$",V,N);label("$u$",U,SE);label("$u+\dfrac{v}{2}$",Wv,E);label("equality configuration, scaled",(1,-1.6));
+\end{asy}

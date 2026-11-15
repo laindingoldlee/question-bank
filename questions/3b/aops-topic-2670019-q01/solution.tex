@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2670019_a_proving_problem_part
+% Stable identity: aops-topic-2670019-q01
+Name the elements of $V_3$: $0=\varnothing$, $1=\{0\}$, $c=\{1\}$, $2=\{0,1\}$. Then $V_4$ is the set of all $16$ subsets of $\{0,1,c,2\}$; it contains $0,1,c,2$ themselves (they are subsets of $\{0,1\}$), and $12$ other sets. An element $x\in V_5$ is any subset of $V_4$.
+
+Let $T=x\cap\{0,1,c,2\}$. Every element $y$ of $x$ is a set of elements of $V_3$, so $y\subseteq x$ exactly when $y\subseteq T$. Hence $x$ is transitive exactly when
+\begin{itemize}
+\item every $t\in T$ satisfies $t\subseteq T$ ($T$ is ``closed''), and
+\item every other element $y\in x$ (one of the $12$) satisfies $y\subseteq T$.
+\end{itemize}
+For a closed $T$, the second part of $x$ can be any set of subsets of $T$ that are not among $0,1,c,2$. Closedness means: $1\in T\Rightarrow0\in T$; $c\in T\Rightarrow1\in T$; $2\in T\Rightarrow0,1\in T$. The closed sets and their counts are:
+\begin{itemize}
+\item $T=\varnothing$, $\{0\}$, $\{0,1\}$: every subset of $T$ is one of $0,1,c,2$ (namely $\varnothing,\{0\},\{1\},\{0,1\}$), so $1$ set $x$ each;
+\item $T=\{0,1,2\}$ and $T=\{0,1,c\}$: $T$ has $8$ subsets, $4$ of them special, so $2^4=16$ each;
+\item $T=\{0,1,c,2\}$: $16-4=12$ free subsets, so $2^{12}=4096$.
+\end{itemize}
+The total is $1+1+1+16+16+4096=\boxed{4131}$.

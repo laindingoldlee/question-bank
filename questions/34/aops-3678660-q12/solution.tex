@@ -1,0 +1,6 @@
+For each labelled point $(x_i,y_i,c_i)$, compute squared distance $d_i=(x_i-x)^2+(y_i-y)^2$. For part (a), return the colour of an index minimizing $d_i$. For part (b), sort the ten indices by $d_i$, count red among the first three, and return red if that count is at least two, otherwise blue. Squared distance gives the same order as distance and avoids square roots. Break any equal-distance ties by a fixed index order so both algorithms are fully specified.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair[] P={(0,0),(.4,.6),(.8,.2),(3,2),(3.4,2.2),(3.1,2.7)};for(int i=0;i<6;++i){dot(P[i],i<3?blue:red);label("$P_{"+string(i+1)+"}$",P[i],i==1||i==5?(0,1):(0,-1));}pair U=(P[0]+P[1]+P[2])/3,V=(P[3]+P[4]+P[5])/3;draw(U--V,dashed);dot(U);dot(V);draw(U--U+(-1,1),gray);draw(V--V+(1,1),gray);label("centroid",U+(-1,1));label("centroid",V+(1,1));
+\end{asy}
+

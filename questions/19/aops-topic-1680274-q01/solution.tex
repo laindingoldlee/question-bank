@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1680274_is_sqrt2_equal_to_2
+% Stable identity: aops-topic-1680274-q01
+\textbf{Every route has length $2$.} Let the eastward moves have lengths $e_1,\dots,e_k$ and the northward moves lengths $n_1,\dots,n_l$. Only eastward moves change the $x$-coordinate, which goes from $0$ to $1$, so $e_1+\cdots+e_k=1$; similarly $n_1+\cdots+n_l=1$. The length of the route is the sum of all move lengths:
+\[
+(e_1+\cdots+e_k)+(n_1+\cdots+n_l)=1+1=\boxed{2}.
+\]
+(The same holds for a route made of infinitely many moves, since the eastward lengths still add up to $1$ and the northward lengths to $1$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+int n=5;
+draw((0,0)--(1.15,0),Arrow(TeXHead));draw((0,0)--(0,1.15),Arrow(TeXHead));
+draw((0,0)--(1,1),gray+dashed);
+path st=(0,0);
+for(int i=0;i<n;++i){st=st--(i/n,(i+1)/n)--((i+1)/n,(i+1)/n);}
+draw(st,blue+linewidth(0.9));
+dot((0,0));dot((1,1));
+label("$(0,0)$",(0,0),SW);label("$(1,1)$",(1,1),NE);
+label("$\sqrt{2}$",(0.62,0.5),SE,gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The staircase.} The staircase with $n$ steps of size $\dfrac{1}{n}$ (blue, $n=5$) stays within distance $\dfrac{1}{n\sqrt2}$ of the diagonal (dashed), so as $n$ grows the staircases approach the diagonal as sets of points. But each of them has length $2$, so their lengths are the constant sequence $2,2,2,\dots$, whose limit is $2$, not $\sqrt2$. Length is not preserved under this kind of limit: being close to a curve in position does not make a path close to it in length, because the tiny steps are never in the direction of the diagonal. The diagonal itself is not a route of the allowed kind. So the minimum distance is $2$. $\blacksquare$

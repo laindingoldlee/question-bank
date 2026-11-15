@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1950451_geometry_problem
+% Stable identity: aops-topic-1950451-q01
+Let $C$, $M$, $V$ be Capital City, Myhouse and The Village, with $CV=760$ and $CM=210$. By the triangle inequality in triangle $CMV$ (allowing the degenerate collinear cases),
+\[
+760-210\le MV\le760+210,\qquad\text{i.e. }550\le MV\le970 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),V=(7.6,0);real a=2.1;
+draw(circle(C,a),blue);
+pair M1=(a,0),M2=(-a,0),M3=a*dir(70);
+draw(C--V,linewidth(1));
+draw(M3--V,dashed);
+dot(C);dot(V);dot(M1);dot(M2);dot(M3);
+label("$C$",C,SW);label("$V$",V,E);
+label("$M$",M3,N);label("$M_1$",M1,SE);label("$M_2$",M2,W);
+label("$210$",C--M3,W,blue);label("$760$",(4.6,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Every value in this range occurs: as $M$ moves around the circle of radius $210$ about $C$, the distance $MV$ varies continuously from $550$ (at $M_1$, between $C$ and $V$) to $970$ (at $M_2$, with $C$ between $M_2$ and $V$). The other two distances add no restriction, because nothing relates Zouatop or Ourrtown to each other or to $C$: Zouatop can be any point $213$ miles from $M$, and Ourrtown any point $167$ miles from $V$.
+
+So $MV$ can be any whole number from $550$ to $970$: $970-550+1=\boxed{421}$ values.

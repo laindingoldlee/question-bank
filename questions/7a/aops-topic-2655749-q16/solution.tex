@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2655749_amc_10_problems
+% Stable identity: aops-topic-2655749-q16
+Since $CB=CD$, triangle $BCD$ is isosceles and the median $CP$ is perpendicular to $BD$. Also $AD\perp BD$, so $AD\parallel CP$.
+
+First, $O$ lies between $D$ and $P$: if it were between $P$ and $B$, then from $AB\parallel CD$ we would get $\dfrac{AO}{OC}=\dfrac{BO}{OD}<1$, while from $AD\parallel CP$ we would get $\dfrac{AO}{OC}=\dfrac{DO}{OP}>1$. So let $DO=x$; then $DP=PB=x+11$ and $BO=x+22$.
+\begin{itemize}
+\item $AB\parallel CD$: triangles $OAB$ and $OCD$ are similar, so $\dfrac{AO}{OC}=\dfrac{BO}{DO}=\dfrac{x+22}{x}$.
+\item $AD\parallel CP$: triangles $OAD$ and $OCP$ are similar, so $\dfrac{AO}{OC}=\dfrac{DO}{PO}=\dfrac{x}{11}$.
+\end{itemize}
+Hence $x^2=11x+242$, i.e. $(x-22)(x+11)=0$, so $x=22$ and $DP=33$. In right triangle $CPD$, $CP=\sqrt{43^2-33^2}=\sqrt{760}=2\sqrt{190}$. Finally $\dfrac{AD}{CP}=\dfrac{DO}{OP}=2$, so $AD=4\sqrt{190}$ and $m+n=\boxed{194}$.
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real s=sqrt(190);
+pair D=(0,0),B=(66,0),P=(33,0),O=(22,0),C=(33,2*s),A=(0,-4*s);
+real t=-degrees(atan2(2*s,33));
+transform T=rotate(t);
+pair d=T*D,b=T*B,p=T*P,o=T*O,c=T*C,a=T*A;
+draw(a--b--c--d--cycle,linewidth(0.9));
+draw(a--c);draw(b--d);draw(c--p,dashed);
+pair u=unit(b-d),v=unit(a-d);draw(d+3*u--d+3*u+3*v--d+3*v);
+pair w=unit(c-p);draw(p+3*u--p+3*u+3*w--p+3*w);
+dot(o);dot(p);
+label("$A$",a,SW);label("$B$",b,SE);label("$C$",c,NE);label("$D$",d,NW);
+label("$O$",o,S);label("$P$",p,N);
+label("$43$",(b+c)/2,E);label("$43$",(c+d)/2,N);
+\end{asy}

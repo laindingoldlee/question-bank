@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2026921_moldy_cheese_mock_mathcounts_problems_1115
+% Stable identity: aops-topic-2026921-q13
+Square $ABCD$ has side length $3$. Circles of radius $2$ are drawn with centres at each of the four vertices. The shaded region is the part of the square that lies outside all four circles, as shown. Find the radius of the largest circle that can be drawn inside the shaded region.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(3,0), C=(3,3), D=(0,3);
+path sq=A--B--C--D--cycle;
+pair O=(1.5,1.5);
+real t=acos(1.5/2)*180/pi;
+path g=arc(A,2,t,90-t)--arc(D,2,t-90,-t)--arc(C,2,180+t,270-t)--arc(B,2,90+t,180-t)--cycle;
+fill(g,lightgray);
+draw(sq,linewidth(0.9));
+draw(arc(A,2,0,90)); draw(arc(B,2,90,180)); draw(arc(C,2,180,270)); draw(arc(D,2,270,360));
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

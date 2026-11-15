@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1684143_mathcounts_20152016_area_stretch
+% Stable identity: aops-topic-1684143-q01
+The first circle has centre $M$, the midpoint of $AB$, radius $2$ and area $4\pi$. The minor arc $AB$ of the larger circle is a quarter of it, so its centre $O$ sees $AB$ at $90^\circ$: triangle $AOB$ is an isosceles right triangle with hypotenuse $4$, so the radius is $OA=2\sqrt2$, the area is $8\pi$, and $OM=2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(-2,0),B=(2,0),M=(0,0),O=(0,-2);
+real R=2*sqrt(2);
+fill(circle(O,R),gray(0.9));fill(circle(M,2),gray(0.9));
+draw(circle(O,R),linewidth(0.9));draw(circle(M,2),linewidth(0.9)+blue);
+draw(A--B,linewidth(0.7));draw(O--A,dashed);draw(O--B,dashed);
+real r=0.3;pair u=unit(A-O),v=unit(B-O);draw(O+r*u--O+r*(u+v)--O+r*v,linewidth(0.6));
+dot(A);dot(B);dot(M);dot(O);
+label("$A$",A,W);label("$B$",B,E);label("$M$",M,N);label("$O$",O,S);
+label("$2\sqrt{2}$",(O+B)/2+0.6*dir(135));label("$2$",(M+B)/2,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Two different circles meet in at most two points, here $A$ and $B$. On the side of $AB$ containing $O$, the point $O$ itself (at distance $2$ from $M$) lies on the small circle, so that half of the small circle lies inside the large circle. On the other side of $AB$ the large circle bulges out only $2\sqrt2-2<2$ beyond $AB$, so the minor segment of the large circle cut off by $AB$ lies inside the small circle.
+
+So the part of the small circle outside the large circle is the half-disc beyond $AB$ minus that segment:
+\[
+2\pi-\left(\dfrac{1}{4}\cdot8\pi-\dfrac{1}{2}\cdot2\sqrt2\cdot2\sqrt2\right)=2\pi-(2\pi-4)=4 .
+\]
+The total area covered is $8\pi+4$, that is, $\boxed{8\pi+4}$ square inches.

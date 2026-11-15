@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h3259625_help_with_the_following_problems_please
+% Stable identity: aops-topic-3259625-q04
+Write $ED=DC=x$ and place $D=(0,0)$, $E=(-\dfrac{\sqrt3}{2}x,\dfrac{x}{2})$, $C=(\dfrac{\sqrt3}{2}x,\dfrac{x}{2})$. The right angles and convexity place
+\[A=(9-\dfrac{\sqrt3}{2}x,\dfrac{x}{2}+9\sqrt3),\quad B=(-9+\dfrac{\sqrt3}{2}x,\dfrac{x}{2}+9\sqrt3).\]
+Convexity requires $A$ to the left of $B$, so $AB=\sqrt3x-18=12$. Hence $x=\dfrac{30}{\sqrt3}=\boxed{10\sqrt3}$. The alternative sign in an absolute-distance equation would reverse $A,B$ and make the sides cross, so it is not a valid convex pentagon.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real x=10*sqrt(3);pair D=(0,0),Ep=(-sqrt(3)*x/2,x/2),C=(sqrt(3)*x/2,x/2),A=Ep+(9,9*sqrt(3)),B=C+(-9,9*sqrt(3));draw(A--B--C--D--Ep--cycle);draw(Ep--C,dashed);label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,E);label("$D$",D,S);label("$E$",Ep,W);label("$12$",(A+B)/2,N);label("$18$",(A+Ep)/2,NW);label("$18$",(B+C)/2,NE);label("$x$",(D+C)/2,SE);label("$x$",(D+Ep)/2,SW);label("$120^\circ$",(0,3));
+\end{asy}

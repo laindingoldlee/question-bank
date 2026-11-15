@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h3259625_help_with_the_following_problems_please
+% Stable identity: aops-topic-3259625-q02
+Put the side corresponding to this altitude along the horizontal axis, with vector $(a,0)$, $a>0$, and the adjacent side $(u,18)$. Choose the direction so that the longer diagonal has horizontal magnitude $80$, because $\sqrt{82^2-18^2}=80$; the shorter has magnitude $\sqrt{30^2-18^2}=24$. Thus $|a+u|=80$, $|a-u|=24$, up to exchanging diagonal labels. It follows that $a$ is either $\dfrac{80+24}{2}=52$ or $\dfrac{80-24}{2}=28$. Both occur, for example with $(a,u)=(52,28)$ and $(28,52)$. Therefore the least area is $\boxed{28(18)=504\text{ cm}^2}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(28,0),D=(52,18),C=B+D;draw(A--B--C--D--cycle);draw(A--C,dashed);draw(B--D,dashed);draw(D--(52,0),blue+dashed);label("$A$",A,SW);label("$B$",B,S);label("$C$",C,NE);label("$D$",D,NW);label("$28$",(14,0),S);label("$18$",(52,9),E);label("Area 504",(40,-7));
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(52,0),D=(28,18),C=B+D;draw(A--B--C--D--cycle);draw(A--C,dashed);draw(B--D,dashed);draw(D--(28,0),blue+dashed);label("$A$",A,SW);label("$B$",B,S);label("$C$",C,NE);label("$D$",D,NW);label("$52$",(26,0),S);label("$18$",(28,9),E);label("Other case: area 936",(40,-7));
+\end{asy}

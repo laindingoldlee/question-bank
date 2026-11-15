@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1442926_minimization
+% Stable identity: aops-topic-1442926-q01
+The points $(x,y)$ form the circle with centre $(3,3)$ and radius $\sqrt6$; it lies in the region $x>0$ (since $3>\sqrt6$). The value $\dfrac{y}{x}=k$ is the slope of the line through the origin and $(x,y)$, so we want the steepest line $y=kx$ through the origin that meets the circle. It is the tangent line $OT$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair Cc=(3,3); real r=sqrt(6);
+real k1=3+2*sqrt(2),k2=3-2*sqrt(2);
+pair T1=(3+3*k1)/(1+k1^2)*(1,k1), T2=(3+3*k2)/(1+k2^2)*(1,k2);
+draw((-0.5,0)--(6.5,0),Arrow); draw((0,-0.5)--(0,6.5),Arrow);
+draw(circle(Cc,r),linewidth(0.9));
+draw((0,0)--(6.3/k1,6.3),blue); draw((0,0)--(6.5,6.5*k2),gray);
+draw(Cc--T1,red+dashed);
+dot((0,0)); dot(Cc); dot(T1,blue); dot(T2);
+label("$O$",(0,0),SW); label("$(3,3)$",Cc,E); label("$T$",T1,W,blue);
+label("$y=kx$",(6.3/k1,6.3),E,blue); label("$\sqrt{6}$",(Cc+T1)/2,2*S,red);
+label("$x$",(6.5,0),S); label("$y$",(0,6.5),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The line $kx-y=0$ meets the circle exactly when its distance from the centre is at most the radius:
+\[
+\dfrac{|3k-3|}{\sqrt{k^2+1}}\le\sqrt6\iff 9(k-1)^2\le6(k^2+1)\iff k^2-6k+1\le0\iff 3-2\sqrt2\le k\le3+2\sqrt2 .
+\]
+So the largest value of $\dfrac {y}{x}$ is $\boxed{3+2\sqrt2}$, attained at the tangency point $T$.

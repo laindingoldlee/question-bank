@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2424496_why_flt_is_failed_here
+% Stable identity: aops-topic-2424496-q01
+\textbf{(a)} Let $E=2017^{2016^{\cdots^{2^1}}}$ be the exponent. It is a power of the odd number $2017$, so $E$ is odd, and $E\ge2017\ge3$. Since $1000=8\cdot125$ with $\gcd(8,125)=1$, we work modulo $125$ and modulo $8$.
+\begin{itemize}
+\item Modulo $125$: $E\ge3$, so $125\mid5^E$ and $N\equiv0\pmod{125}$.
+\item Modulo $8$: $5^2=25\equiv1\pmod8$, and $E$ is odd, so $N=5^E\equiv5\pmod8$.
+\end{itemize}
+The multiples of $125$ below $1000$ are $0,125,250,\dots,875$, and the only one that is $\equiv5\pmod8$ is $125$ (as $125=15\cdot8+5$). By the Chinese remainder theorem $N\equiv125\pmod{1000}$, so the last three digits are $\boxed{125}$.
+
+\textbf{(b)} Fermat's little theorem says $a^{p-1}\equiv1\pmod p$ when $p$ is \emph{prime} and $p\nmid a$. The modulus $8$ is not prime, so the theorem does not apply, and indeed
+\[5^7=\left(5^2\right)^3\cdot5\equiv5\not\equiv1\pmod8.\]
+The correct generalisation is Euler's theorem: if $\gcd(a,n)=1$ then $a^{\varphi(n)}\equiv1\pmod n$. Here $\varphi(8)=4$, so $5^4\equiv1\pmod8$; in fact already $5^2\equiv1\pmod8$.

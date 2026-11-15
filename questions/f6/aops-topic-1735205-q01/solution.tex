@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1735205_2018_mathcounts_national_team_round_9
+% Stable identity: aops-topic-1735205-q01
+Use the identity $m=\sum_{d\mid m}\varphi(d)$ ($\varphi$ is Euler's totient). For a set of ten consecutive integers,
+\[
+\sum_{\text{pairs}}\gcd(x,y)=\sum_{\text{pairs}}\ \sum_{d\mid x,\ d\mid y}\varphi(d)=\sum_{d\ge1}\varphi(d)\binom{c_d}{2},
+\]
+where $c_d$ is the number of multiples of $d$ in the set. For $d\ge10$ there is at most one multiple, so only $d\le9$ count, and $c_d$ is $\left\lfloor\dfrac{10}{d}\right\rfloor$ or $\left\lceil\dfrac{10}{d}\right\rceil$:
+\[
+\begin{array}{c|ccccccccc}
+d&1&2&3&4&5&6&7&8&9\\\hline
+\varphi(d)&1&1&2&2&4&2&6&4&6\\
+c_d&10&5&3\text{ or }4&2\text{ or }3&2&1\text{ or }2&1\text{ or }2&1\text{ or }2&1\text{ or }2\\
+\varphi(d)\binom{c_d}2&45&10&6\text{ or }12&2\text{ or }6&4&0\text{ or }2&0\text{ or }6&0\text{ or }4&0\text{ or }6
+\end{array}
+\]
+So every sum lies between $45+10+6+2+4=67$ and $45+10+12+6+4+2+6+4+6=95$.
+
+Both extremes occur. The set $504,505,\dots,513$ starts with a multiple of $9$, $8$ and $7$ ($504=7\cdot8\cdot9$), so it contains $4$ multiples of $3$, $3$ of $4$ ($504,508,512$), $2$ of $6$ ($504,510$), $2$ of $7$, $2$ of $8$ and $2$ of $9$: its sum is $95$. The set $2,3,\dots,11$ contains $3$ multiples of $3$, $2$ of $4$, and only one multiple each of $6,7,8,9$: its sum is $67$. Hence the greatest possible value of $C-M$ is $95-67=\boxed{28}$.

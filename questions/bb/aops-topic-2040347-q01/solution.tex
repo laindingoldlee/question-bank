@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2040347_counting_question
+% Stable identity: aops-topic-2040347-q01
+An axis-parallel \(k\times k\) square needs \(k+1\) rows and \(k+1\) columns of points, so \(1\le k\le4\). In a grid with \(5\) rows and \(n\) columns, its lower-left corner can be chosen in \((5-k)(n-k)\) ways.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<12;++i) for(int j=0;j<5;++j) dot((i,j),linewidth(2));
+draw((0,0)--(1,0)--(1,1)--(0,1)--cycle,blue+linewidth(1));
+draw((1,2)--(3,2)--(3,4)--(1,4)--cycle,red+linewidth(1));
+draw((4,0)--(7,0)--(7,3)--(4,3)--cycle,deepgreen+linewidth(1));
+draw((8,0)--(11,0)--(11,3)--(8,3)--cycle,invisible);
+draw((7,0)--(11,0)--(11,4)--(7,4)--cycle,orange+linewidth(1)+dashed);
+label("$n=12$ columns",(5.5,4.3),N); label("$5$ rows",(0,2),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the number of such squares is
+\[
+4(n-1)+3(n-2)+2(n-3)+1\cdot(n-4)=10n-20 .
+\]
+Setting \(10n-20=100\) gives \(n=\boxed{12}\).

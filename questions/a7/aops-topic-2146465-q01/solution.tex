@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2146465_trigy_trig
+% Stable identity: aops-topic-2146465-q01
+Put $A$ at the origin with east and north as the axes. The first traveller ends at $A'=(0,20)$ and the second at $B'=(25,-50)$. So from $A'$, the point $B'$ is $25$ km east and $70$ km south.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+pair A0=(0,0), A1=(0,20), B0=(25,0), B1=(25,-50);
+draw(A0--A1,gray,Arrow(5)); draw(B0--B1,gray,Arrow(5));
+draw(A0--B0,gray+dashed); label("$25$",(A0+B0)/2,N,gray);
+draw(A1--(0,-50)--B1,dotted);
+draw(A1--B1,red+linewidth(1));
+draw(A1--A1+(0,12),Arrow(5)); label("N",A1+(0,12),N);
+draw(arc(A1,6,90,degrees(B1-A1),CW),blue,Arrow(5));
+label("$160.346^\circ$",A1+(8,4),E,blue);
+draw(arc(A1,14,-90,degrees(B1-A1)),deepgreen);
+label("$\theta$",A1+15*dir(-80),deepgreen);
+dot(A0); dot(A1); dot(B0); dot(B1);
+label("$A$",A0,W); label("$A'$",A1,W); label("$B$",B0,E); label("$B'$",B1,E);
+label("$20$",(A0+A1)/2,W); label("$50$",(B0+B1)/2,E);
+label("$70$",(0,-15),W); label("$25$",(12.5,-50),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Let $\theta$ be the angle between due south and $A'B'$. In the right triangle with legs $25$ (east) and $70$ (south),
+\[\tan\theta=\dfrac{25}{70}=\dfrac{5}{14},\qquad \theta\approx19.654^\circ .\]
+The direction $A'B'$ is $\theta$ east of south, so its bearing is
+\[180^\circ-\theta\approx\boxed{160.346^\circ}.\]

@@ -1,0 +1,9 @@
+Choose $r$ uniformly from $\{0,\ldots,1008\}$. Give employee $i$ the share
+\[
+s_i\equiv c+ir\pmod{1009},\qquad i=1,2,3,4,
+\]
+with each employee's index public.
+
+Employees $i\ne j$ recover $r\equiv(s_j-s_i)(j-i)^{-1}\pmod{1009}$ and then $c\equiv s_i-ir$. The inverse exists because $1009$ is prime and $0<|j-i|<1009$. The recovered residue is the unique code in $0,\ldots,999$.
+
+For any fixed share $s_i$ and any candidate code $c$, there is exactly one $r\equiv(s_i-c)i^{-1}$. Thus a single share has the same distribution for every code; it reveals no digit or other information about the code.

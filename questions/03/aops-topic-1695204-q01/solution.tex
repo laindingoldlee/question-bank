@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1695204_inclusionexclusion_principle_explanation
+% Stable identity: aops-topic-1695204-q01
+\textbf{Idea.} Count how many times a single element is counted on each side.
+
+\textbf{(a)} An element outside $A\cup B\cup C$ is counted $0$ times on both sides. Take an element $e$ of the union, and suppose it lies in exactly $m$ of the three sets ($m=1,2,3$).
+\begin{itemize}
+\item $m=1$: counted once in $|A|+|B|+|C|$ and in none of the intersections: total $1$.
+\item $m=2$ (say $e\in A,B$, $e\notin C$): counted $2$ times in the singles, once in $|A\cap B|$ and in no other intersection: $2-1=1$.
+\item $m=3$: counted $3$ times in the singles, $3$ times in the pairwise intersections and once in the triple: $3-3+1=1$.
+\end{itemize}
+So every element of the union is counted exactly once on the right, which proves the formula.
+
+\textbf{(b)} Again an element outside the union contributes $0$ to both sides. If $e$ lies in exactly $m\ge1$ of the sets, then it lies in $A_{i_1}\cap\cdots\cap A_{i_k}$ exactly when all of $i_1,\dots,i_k$ are among those $m$ indices, which happens for $\dbinom mk$ of the $k$-fold intersections. So $e$ contributes
+\[
+\sum_{k=1}^{m}(-1)^{k+1}\dbinom mk=1-\sum_{k=0}^{m}(-1)^{k}\dbinom mk=1-(1-1)^m=1
+\]
+to the right side (by the binomial theorem), and $1$ to the left side. Summing over all elements proves the formula. $\blacksquare$
+
+For example, if $14$ students play in a band, $13$ sing in a choir, $17$ play in an orchestra, $5$, $6$, $7$ do band and choir, band and orchestra, choir and orchestra respectively, and $4$ do all three, then $14+13+17-5-6-7+4=30$ students take part.

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2667905_interesting_geo_prob
+% Stable identity: aops-topic-2667905-q01
+Reflect $A$ in line $CD$. Since $CD$ bisects angle $C$, the reflection swaps lines $CA$ and $CB$, so the image $A'$ lies on line $BC$ with $CA'=CA=12$; and $M$ is the midpoint of $AA'$. Likewise the reflection $A''$ of $A$ in $BE$ lies on line $BC$ with $BA''=BA=10$, and $N$ is the midpoint of $AA''$.
+
+So $MN$ is a midline of triangle $AA'A''$, and $MN=\dfrac12A'A''$. Put $B$ at $0$ and $C$ at $a=BC$ on the line $BC$: then $A''$ is at $10$ and $A'$ at $a-12$, so $A'A''=|22-a|=22-a$ (as $a<10+12$). Hence
+\[4=\dfrac{22-a}{2},\qquad a=\boxed{14}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(14,0);real ax=152/28;pair A=(ax,sqrt(100-ax^2));
+pair D=A+(12/26)*(B-A),Ep=A+(5/12)*(C-A);
+pair ft(pair X,pair U,pair V){pair d=V-U;return U+dot(X-U,d)/dot(d,d)*d;}
+pair M=ft(A,C,D),Nn=ft(A,B,Ep);pair A1=2*M-A,A2=2*Nn-A;
+draw(A--B--C--cycle,linewidth(0.8));draw(C--D);draw(B--Ep);
+draw(A--A1,dashed);draw(A--A2,dashed);draw(M--Nn,blue+linewidth(0.8));
+dot(A);dot(B);dot(C);dot(D);dot(Ep);dot(M);dot(Nn);dot(A1);dot(A2);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,W);label("$E$",Ep,NE);
+label("$M$",M,dir(295));label("$N$",Nn,dir(-25));label("$A'$",A1,S);label("$A''$",A2,S);
+\end{asy}

@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2126704_number_theory_problem
+% Stable identity: aops-topic-2126704-q01
+A number is divisible by $12$ exactly when it is divisible by both $4$ and $3$.
+
+\textbf{Divisibility by $4$.} The last two digits form $\overline{AA}=11A$, which must be divisible by $4$. Since $\gcd(11,4)=1$, this means $4\mid A$, so $A\in\{0,4,8\}$.
+
+\textbf{Divisibility by $3$.} The digit sum $3+B+2A$ must be divisible by $3$, that is, $B+2A\equiv0$, or equivalently $B\equiv A\pmod3$.
+\begin{itemize}
+\item $A=0$: $B\in\{0,3,6,9\}$, so $A+B\in\{0,3,6,9\}$ (the numbers $3000$, $3300$, $3600$, $3900$).
+\item $A=4$: $B\in\{1,4,7\}$, so $A+B\in\{5,8,11\}$.
+\item $A=8$: $B\in\{2,5,8\}$, so $A+B\in\{10,13,16\}$.
+\end{itemize}
+These ten values of $A+B$ are all different, and their sum is
+\[(0+3+6+9)+(5+8+11)+(10+13+16)=18+24+39=\boxed{81}.\]
+(The total $63$ that one gets by leaving out the case $A=0$ is too small: $3000=12\cdot250$, $3300=12\cdot275$, $3600=12\cdot300$ and $3900=12\cdot325$ are all valid. If $A$ and $B$ had to be different digits, the values $0$, $8$ and $16$ would be lost and the sum would be $57$.)

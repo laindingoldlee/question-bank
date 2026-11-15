@@ -1,0 +1,11 @@
+The active lines have slopes $-11,1,9$ on $x<-3$, $-3<x<-\dfrac{1}{2}$, and $x>-\dfrac{1}{2}$. Write the quadratic as $p(x)=ax^2+bx+c$. At a tangency to a line $mx+\beta$,
+\[
+t=\dfrac{m-b}{2a},\qquad \beta=c-\dfrac{(m-b)^2}{4a}.
+\]
+Subtracting the intercept equations for slopes $-11,1$ gives $b=6a-5$; using slopes $1,9$ gives $b=a+5$. Hence $a=2,b=7,c=\dfrac{7}{2}$. The three contact coordinates are $-\dfrac{9}{2},-\dfrac{3}{2},\dfrac{1}{2}$, which lie in their required intervals. Their sum is $\boxed{-\dfrac{11}{2}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;size(250,180,IgnoreAspect);real p(real x){return 2x*x+7x+3.5;}real f(real x){return max(max(-11x-37,x-1),9x+3);}draw(graph(f,-5.3,1),blue);draw(graph(p,-5.3,1),red);draw((-5.5,0)--(1.2,0),Arrow);for(real x:new real[]{-4.5,-1.5,.5}){dot((x,p(x)));label(string(x),(x,p(x)),S);}label("$f$",(-5,18),W);label("$p$",(1,12),E);
+\end{asy}

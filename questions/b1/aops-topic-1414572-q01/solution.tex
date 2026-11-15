@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1414572_can_someone_check_if_this_is_right
+% Stable identity: aops-topic-1414572-q01
+\textbf{Key inequality.} If $x^2-px+q=0$ has integer roots $r,s$ with $p,q>0$, then $r+s=p>0$ and $rs=q>0$, so $r,s$ are positive integers and
+\[
+q-p=rs-r-s=(r-1)(s-1)-1\ge-1 .
+\]
+Moreover $q-p=-1$ exactly when one root is $1$ (then $(p,q)=(t+1,t)$); $q-p=0$ exactly when $(r-1)(s-1)=1$, i.e.\ $r=s=2$ and $(p,q)=(4,4)$; $q-p=1$ exactly when $\{r,s\}=\{2,3\}$, $(p,q)=(5,6)$; $q-p=2$ exactly when $\{r,s\}=\{2,4\}$, $(p,q)=(6,8)$.
+
+\textbf{The differences.} Let $u=b-a$, $v=c-b$, $w=a-c$. Each is at least $-1$, and $u+v+w=0$. So $(u,v,w)$ is $(0,0,0)$, or a permutation of $(-1,0,1)$, or a permutation of $(-1,-1,2)$ (if the largest were $3$ or more, the other two would have to sum to $-3$ or less).
+\begin{itemize}
+\item $(0,0,0)$: every pair of coefficients is $(4,4)$, so $(a,b,c)=(4,4,4)$.
+\item A permutation of $(-1,0,1)$: the pair with difference $0$ is $(4,4)$ and the pair with difference $1$ is $(5,6)$. But any two of the pairs $(a,b)$, $(b,c)$, $(c,a)$ share a variable, and $\{4\}\cap\{5,6\}=\varnothing$. Impossible.
+\item A permutation of $(-1,-1,2)$: the pair with difference $2$ is $(6,8)$. If $(a,b)=(6,8)$ then $v=w=-1$ gives $c=7$, and indeed $c-a=1$, $(b,c)=(8,7)$, $(c,a)=(7,6)$ have one root equal to $1$. The other two positions of the $2$ give the cyclic shifts.
+\end{itemize}
+Check $(6,8,7)$: $x^2-6x+8=(x-2)(x-4)$, $x^2-8x+7=(x-1)(x-7)$, $x^2-7x+6=(x-1)(x-6)$.
+
+\textbf{Answer:}
+\[
+\boxed{(a,b,c)=(4,4,4),\ (6,8,7),\ (8,7,6),\ (7,6,8)} .
+\]
+
+\textbf{The student's error.} The three equations are not required to have a \emph{common} root, so equating them (as if the same $x$ solved all three) is not justified; the derived relations need not hold. The triple $(6,8,7)$ is a counterexample to the claim $a=b=c$. (Also, for $a=b=c$ the equation is $x^2-ax+a=0$, and the "factor pair" step assumed $a$ and $a-4$ are both squares, which does not follow from their product being a square; the correct finish uses the inequality above.)

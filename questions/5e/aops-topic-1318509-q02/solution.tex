@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1318509_please_help
+% Stable identity: aops-topic-1318509-q02
+A cube has two or more painted faces exactly when it lies on an edge of the block. The $8$ corner cubes, the $8$ edges of length $5$ (each with $3$ non-corner cubes) and the $4$ edges of length $N$ (each with $N-2$ non-corner cubes) give
+\[
+8+8\cdot3+4(N-2)=4N+24=100,
+\]
+so $N=19$. The unpainted cubes form the interior block $3\times3\times17$, so there are $\boxed{153}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(5,0)--(5,5)--(0,5)--cycle); draw((5,0)--(7,1.5)--(7,6.5)--(5,5)); draw((0,5)--(2,6.5)--(7,6.5));
+for(int i=1;i<5;++i){draw((i,0)--(i,5),gray); draw((0,i)--(5,i),gray);}
+label("$5$",(2.5,0),S); label("$5$",(0,2.5),W); label("$N$",(6,0.75),SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

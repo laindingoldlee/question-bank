@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1708456_geometry_help
+% Stable identity: aops-topic-1708456-q01
+\textbf{No.} We use the basic fact of solid geometry that if a plane contains two distinct points of a line, it contains the whole line.
+
+Let $\ell$ be a line and $\Pi$ a plane. There are three cases.
+\begin{itemize}
+\item $\ell$ and $\Pi$ have no common point: the intersection is empty ($\ell$ is parallel to $\Pi$).
+\item They have exactly one common point $P$: the intersection is the single point $P$ ($\ell$ pierces $\Pi$, like line $\ell$ in the sketch).
+\item They have at least two distinct common points: by the fact above, $\Pi$ contains all of $\ell$, and the intersection is the whole line (like line $m$ in the sketch).
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair P1=(0,0),P2=(6,0),P3=(8,3),P4=(2,3),X=(4,1.5);
+fill(P1--P2--P3--P4--cycle,palegray);
+draw(P1--P2--P3--P4--cycle,linewidth(0.8));
+draw(X--(4.6,4.5),blue+linewidth(0.9));draw(X--(3.7,0),blue+dashed);draw((3.7,0)--(3.6,-0.5),blue+linewidth(0.9));
+draw((0.9,0.4)--(3.0,2.5),red+linewidth(0.9));
+dot(X);
+label("$P$",X,E);label("$\Pi$",(5.6,0.45));label("$\ell$",(4.6,4.5),N,blue);label("$m$",(3.0,2.5),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+A line segment contains more than one point, so it could only occur in the third case; but there the intersection is the entire (unbounded) line, which is not a segment. Hence the intersection of a line and a plane is never a segment: it is $\boxed{\text{empty, a single point, or the whole line}}$. $\blacksquare$

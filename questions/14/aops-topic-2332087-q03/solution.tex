@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2332087_3_geo_problems
+% Stable identity: aops-topic-2332087-q03
+Let $P=AD\cap BE$, $Q=BE\cap CF$, $R=CF\cap AD$. The conditions say that $P$, $Q$, $R$ are the midpoints of $AD$, $BE$, $CF$. Let
+\[x=\dfrac{BD}{BC},\qquad y=\dfrac{CE}{CA},\qquad z=\dfrac{AF}{AB}.\]
+\textbf{The ratios.} By Menelaus' theorem in triangle $ADC$ with the line $BPE$ (which meets $DC$ extended at $B$),
+\[\dfrac{AP}{PD}\cdot\dfrac{DB}{BC}\cdot\dfrac{CE}{EA}=1\quad\Longrightarrow\quad x\cdot\dfrac{y}{1-y}=1\quad\Longrightarrow\quad y=\dfrac1{1+x}.\]
+In the same way, triangle $BEA$ with the line $CQF$ gives $z=\dfrac{1}{1+y}$, and triangle $CFB$ with the line $ARD$ gives $x=\dfrac1{1+z}$. With $h(t)=\dfrac1{1+t}$ we get $x=h(h(h(x)))$. Since $h$ is decreasing for $t>0$, so is $h\circ h\circ h$, which therefore has at most one fixed point; the fixed point of $h$ itself, the positive root of $t^2+t-1=0$, is one. Hence
+\[x=y=z=\dfrac{\sqrt5-1}{2}.\]
+\textbf{The area.} Since $P$ is the midpoint of $AD$, $[ABP]=\dfrac12[ABD]=\dfrac12\cdot\dfrac{BD}{BC}[ABC]=\dfrac x2$. Likewise $[BCQ]=\dfrac12[BCE]=\dfrac y2$ and $[CAR]=\dfrac12[CAF]=\dfrac z2$. The triangles $ABP$, $BCQ$, $CAR$ and $PQR$ fill triangle $ABC$ without overlapping (see the figure, where $PQR$ is shaded), so
+\[[PQR]=1-\dfrac{x+y+z}{2}=1-\dfrac{3\left(\sqrt5-1\right)}{4}=\boxed{\dfrac{7-3\sqrt5}{4}}\approx0.073.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.3,3.8), B=(0,0), C=(5.2,0);
+real t=(sqrt(5)-1)/2;
+pair Dd=B+t*(C-B), Ee=C+t*(A-C), F=A+t*(B-A);
+pair P=(A+Dd)/2, Q=(B+Ee)/2, R=(C+F)/2;
+filldraw(P--Q--R--cycle,orange+opacity(0.7),red);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--Dd,blue); draw(B--Ee,blue); draw(C--F,blue);
+dot(Dd); dot(Ee); dot(F); dot(P); dot(Q); dot(R);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE);
+label("$D$",Dd,S); label("$E$",Ee,NE); label("$F$",F,W);
+label("$P$",P,W,fontsize(8pt)); label("$Q$",Q,S,fontsize(8pt)); label("$R$",R,NE,fontsize(8pt));
+\end{asy}

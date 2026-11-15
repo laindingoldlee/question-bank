@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2778565_2016_winmac_team_round__winchester_math_competition
+% Stable identity: aops-topic-2778565-q16
+They satisfy $x^2+y^2=4225$ and $1\le y<\dfrac{65}{\sqrt2}$, hence $1\le y\le45$. Testing this bounded interval for square values of $4225-y^2$ gives exactly $\boxed{(63,16),(60,25),(56,33),(52,39)}$. The exact integer-square check below verifies completeness.
+\begin{verbatim}
+from math import isqrt
+pairs=[]
+for y in range(1,46):
+ x=isqrt(4225-y*y)
+ if x>y and x*x+y*y==4225:pairs.append((x,y))
+assert pairs==[(63,16),(60,25),(56,33),(52,39)]
+\end{verbatim}
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw((0,0)--(6.3,0)--(0,1.6)--cycle);label("$x$",(3.15,0),S);label("$y$",(0,.8),W);label("$65$",(3.15,.8),NE);label("schematic",(3,-.7));
+\end{asy}

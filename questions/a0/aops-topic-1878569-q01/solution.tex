@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1878569_question_about_videos
+% Stable identity: aops-topic-1878569-q01
+Place the right angle at $O=(0,0)$ with the legs along the axes, $A=(a,0)$ and $B=(0,b)$. The hypotenuse is the segment $\dfrac{x}{a}+\dfrac{y}{b}=1$ with $0\le x\le a$, and the rectangle has opposite corners $O$ and a point $(x,y)$ of the hypotenuse.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=(8,0),B=(0,6);real x=5,y=6*(1-x/8);pair P=(x,y);
+filldraw(O--(x,0)--P--(0,y)--cycle,paleblue,linewidth(0.8));
+draw(O--A--B--cycle,linewidth(1));
+draw((0.35,0)--(0.35,0.35)--(0,0.35));
+dot(P);label("$(x,y)$",P,NE);
+label("$O$",O,SW);label("$A$",A,SE);label("$B$",B,NW);
+label("$x$",(x/2,0),N);label("$y$",(0,y/2),E);
+draw((0,-0.8)--(8,-0.8),Arrows(5));label("$a$",(4,-0.8),S);
+draw((-0.8,0)--(-0.8,6),Arrows(5));label("$b$",(-0.8,3),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Its area is
+\[
+xy=x\cdot b\left(1-\dfrac {x}{a}\right)=\dfrac {b}{a}\,x(a-x).
+\]
+By AM-GM, $x(a-x)\le\left(\dfrac{x+(a-x)}{2}\right)^2=\dfrac{a^2}{4}$, with equality exactly when $x=\dfrac {a}{2}$. So the area is at most $\dfrac {b}{a}\cdot\dfrac{a^2}{4}=\dfrac{ab}{4}$, attained for the rectangle with sides $\dfrac {a}{2}$ and $\dfrac {b}{2}$, whose fourth vertex is the midpoint of the hypotenuse.
+
+The greatest area is $\boxed{\dfrac{ab}{4}}$, half the area of the triangle, for the $\dfrac {a}{2}\times\dfrac {b}{2}$ rectangle.

@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2458508_pascals_triangle_patterns
+% Stable identity: aops-topic-2458508-q01
+Use the convention $\dbinom ab=0$ when $b<0$ or $b>a$ (for integers $a\ge0$), so that we may write
+\[S_n=\sum_{k=0}^{\left\lfloor\dfrac n2\right\rfloor}\dbinom{n-k}{k}=\sum_{k=0}^{n}\dbinom{n-k}{k},\]
+since the added terms (with $k>n-k$) are $0$. With this convention Pascal's rule $\dbinom ab=\dbinom{a-1}{b}+\dbinom{a-1}{b-1}$ holds for all integers $a\ge1$ and all integers $b$.
+
+\textbf{Initial values.} $S_0=\dbinom00=1=F_1$ and $S_1=\dbinom10+\dbinom01=1+0=1=F_2$.
+
+\textbf{Recurrence.} Let $n\ge2$. The term with $k=n$ is $\dbinom0n=0$, and for $0\le k\le n-1$ we have $n-k\ge1$, so Pascal's rule gives
+\[S_n=\sum_{k=0}^{n-1}\dbinom{n-k}{k}=\sum_{k=0}^{n-1}\dbinom{n-1-k}{k}+\sum_{k=0}^{n-1}\dbinom{n-1-k}{k-1}.\]
+The first sum is exactly $S_{n-1}$. In the second sum the term $k=0$ is $0$; putting $j=k-1$ it becomes $\displaystyle\sum_{j=0}^{n-2}\dbinom{n-2-j}{j}=S_{n-2}$. Hence
+\[S_n=S_{n-1}+S_{n-2}\qquad(n\ge2).\]
+
+So $S_n$ and $F_{n+1}$ satisfy the same recurrence with the same two initial values, and by induction on $n$, $S_n=F_{n+1}$ for all $n\ge0$. $\blacksquare$
+
+(For instance $S_5=\dbinom50+\dbinom41+\dbinom32=1+4+3=8=F_6$.)

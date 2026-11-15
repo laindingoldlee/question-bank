@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2468517_today_is_my_birthday
+% Stable identity: aops-topic-2468517-q04
+Perpendicular lines (neither of them vertical) have slopes with product $-1$, so line $b$ has slope $-\dfrac45$. Through $G(4,2)$:
+\[y-2=-\dfrac45(x-4)\iff y=-\dfrac45x+\dfrac{16}5+2=-\dfrac45x+\dfrac{26}5.\]
+At $x=0$ we get $y=\dfrac{26}{5}=5.2$, so the $y$-intercept is $\boxed{(0,\,5.2)}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real fa(real x){return 1.25*x-3;}
+real fb(real x){return -0.8*x+5.2;}
+draw((-1.2,0)--(7.2,0),Arrow(6)); draw((0,-4.2)--(0,7),Arrow(6));
+label("$x$",(7.2,0),E); label("$y$",(0,7),N);
+for(int i=1;i<=6;++i){draw((i,-0.08)--(i,0.08)); label("$"+string(i)+"$",(i,-0.08),S,fontsize(7pt));}
+for(int j=-3;j<=6;++j){ if(j!=0){draw((-0.08,j)--(0.08,j)); label("$"+string(j)+"$",(-0.08,j),W,fontsize(7pt));}}
+draw(graph(fa,-0.6,6.6),blue+linewidth(0.9));
+draw(graph(fb,-0.8,7),red+linewidth(0.9));
+pair G=(4,2), Y=(0,5.2);
+real s=0.3; pair u=unit((1,1.25)), v=unit((1,-0.8));
+draw(G+s*u--G+s*u+s*v--G+s*v);
+dot(G); dot(Y);
+label("$G(4,2)$",G,dir(195));
+label("$(0,5.2)$",Y,NE);
+label("line $a$",(6.4,fa(6.4)),W,blue);
+label("line $b$",(1.2,fb(1.2)),NE,red);
+\end{asy}

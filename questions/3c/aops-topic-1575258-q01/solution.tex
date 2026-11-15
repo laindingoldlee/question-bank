@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1575258_help_quick
+% Stable identity: aops-topic-1575258-q01
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.6,3.6),B=(0,0),C=(6,0),M=(A+B)/2,N=(A+C)/2;
+draw(A--B--C--cycle,linewidth(0.9));draw(M--N,blue+linewidth(0.9));
+dot(M);dot(N);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$M$",M,W);label("$N$",N,NE);
+void tick(pair P,pair Q,int k){pair m=(P+Q)/2,u=unit(Q-P),v=rotate(90)*u;for(int i=0;i<k;++i){pair c=m+(i-(k-1)/2)*0.13*u;draw(c-0.14*v--c+0.14*v);}}
+tick(A,M,1);tick(M,B,1);tick(A,N,2);tick(N,C,2);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Compare triangles $AMN$ and $ABC$. They share the angle at $A$, and
+\[
+\dfrac{AM}{AB}=\dfrac{1}{2}=\dfrac{AN}{AC},
+\]
+because $M$ and $N$ are midpoints. By the SAS similarity criterion, $\triangle AMN\sim\triangle ABC$ with ratio $\dfrac{1}{2}$. Corresponding sides are in the same ratio, so
+\[
+\dfrac{MN}{BC}=\dfrac{1}{2},\qquad\text{i.e.}\qquad BC=2MN .
+\]
+Moreover, corresponding angles are equal: $\angle AMN=\angle ABC$. These are corresponding angles for the lines $MN$ and $BC$ cut by the transversal $AB$, so $MN\parallel BC$. $\blacksquare$

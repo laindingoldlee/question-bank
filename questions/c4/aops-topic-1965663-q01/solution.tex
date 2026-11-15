@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1965663_unit_cube_question
+% Stable identity: aops-topic-1965663-q01
+A solid $4\times4\times4$ cube has $4^3=64$ unit cubes.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair d=(0.45,0.32);
+for(int i=0;i<=4;++i){draw((i,0)--(i,4),gray(0.5));draw((0,i)--(4,i),gray(0.5));}
+for(int i=0;i<=4;++i){draw((0,4)+i*d--(4,4)+i*d,gray(0.5));draw((i,4)--(i,4)+4*d,gray(0.5));}
+for(int i=0;i<=4;++i){draw((4,0)+i*d--(4,4)+i*d,gray(0.5));draw((4,i)--(4,i)+4*d,gray(0.5));}
+draw((0,0)--(4,0)--(4,4)--(0,4)--cycle,linewidth(1));
+draw((0,4)--(0,4)+4*d--(4,4)+4*d--(4,0)+4*d--(4,0),linewidth(1));draw((4,4)--(4,4)+4*d,linewidth(1));
+draw((0,0)+4*d--(0,4)+4*d,dashed);draw((0,0)+4*d--(4,0)+4*d,dashed);draw((0,0)--(0,0)+4*d,dashed);
+label("$4$",(2,0),S);label("$4$",(0,2),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Removing a wall of thickness $1$ from each face leaves an inner cube of edge $4-2=2$, which is the hollow part and contains $2^3=8$ unit cubes. So the shell uses
+\[
+64-8=\boxed{56}
+\]
+unit cubes. (Check by faces: the top and bottom layers have $16$ cubes each, and each of the two middle layers is a ring of $16-4=12$ cubes: $16+16+12+12=56$.)

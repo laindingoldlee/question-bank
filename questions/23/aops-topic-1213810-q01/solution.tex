@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1213810_math_problemtiles
+% Stable identity: aops-topic-1213810-q01
+Draw the tray $18$ cm wide and $7$ cm tall. Any vertical line through the tray (avoiding tile edges) crosses tiles whose heights add up to $7$. The only way to write $7$ as a sum of $3$s and $2$s is $3+2+2$, so every such line crosses exactly one $3\times3$ tile and two $2\times2$ tiles.
+
+Now slide the vertical line across the tray. Each $3\times3$ tile is crossed for a horizontal stretch of $3$ cm, and at every position exactly one $3\times3$ tile is crossed, so the $3\times3$ tiles cover the full width: their number is $\dfrac{18}{3}=6$. Similarly each $2\times2$ tile is crossed for $2$ cm and at each position two of them are crossed, so their number is $\dfrac{2\cdot18}{2}=18$.
+
+So she always uses $6+18=\boxed{24}$ tiles (check: $6\cdot9+18\cdot4=126=7\cdot18$). Such a tiling exists, for example:
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+for(int k=0;k<6;++k) filldraw(shift(3*k,0)*scale(3)*unitsquare,lightblue,black);
+for(int k=0;k<9;++k){ filldraw(shift(2*k,3)*scale(2)*unitsquare,palegreen,black); filldraw(shift(2*k,5)*scale(2)*unitsquare,palegreen,black);}
+label("$18$",(9,0),S); label("$7$",(0,3.5),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

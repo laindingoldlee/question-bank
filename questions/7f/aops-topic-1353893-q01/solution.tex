@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1353893_legendres_formula_at_the_highest_degree
+% Stable identity: aops-topic-1353893-q01
+\emph{Hint: Legendre's formula in binary.} By Legendre's formula $f(n)=\left\lfloor\dfrac {n}{2}\right\rfloor+\left\lfloor\dfrac {n}{4}\right\rfloor+\cdots$. If $n=\sum_i b_i2^i$ in binary, then $\left\lfloor\dfrac{n}{2^j}\right\rfloor=\sum_{i\ge j}b_i2^{i-j}$, and summing over $j\ge1$,
+\[
+f(n)=\sum_i b_i\left(2^{i-1}+2^{i-2}+\cdots+1\right)=\sum_ib_i\left(2^i-1\right)=n-s(n),
+\]
+where $s(n)$ is the number of $1$'s in the binary representation of $n$.
+
+\emph{Solution.} Hence
+\[
+\sum_{n=1}^{1023}f(n)=\sum_{n=1}^{1023}n-\sum_{n=1}^{1023}s(n).
+\]
+The first sum is $\dfrac{1023\cdot1024}{2}=523776$. The numbers $0$ to $1023$ are all $10$-bit strings, and each of the $10$ bits is $1$ in exactly half of them, so $\sum s(n)=10\cdot512=5120$. The answer is $523776-5120=\boxed{518656}$.

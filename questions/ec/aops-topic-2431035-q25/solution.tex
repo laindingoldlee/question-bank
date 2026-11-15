@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2431035_500th_celebration_post
+% Stable identity: aops-topic-2431035-q25
+Each semicircle reaches from the centre line to an edge, so its radius is half the width, $20$ feet, and its diameter, $40$ feet, lies along the centre line.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+real w=40, r=20; int n=6;
+fill((0,-w/2)--(n*w,-w/2)--(n*w,w/2)--(0,w/2)--cycle,rgb(0.9,0.9,0.9));
+draw((0,-w/2)--(n*w,-w/2),linewidth(1)); draw((0,w/2)--(n*w,w/2),linewidth(1));
+draw((0,0)--(n*w,0),dashed+gray);
+for(int i=0;i<n;++i){
+  pair c=(i*w+r,0);
+  if(i%2==0) draw(arc(c,r,180,0),red+linewidth(1)); else draw(arc(c,r,180,360),red+linewidth(1));
+}
+draw((w+r,0)--(w+r,-r),blue,Arrow(4)); label("$20$",(w+r,-r/2),E,blue); draw((0,4)--(w,4),blue,Arrows(4)); label("$40$",(r,4),N,blue);
+\end{asy}
+
+The diameters cover the mile, so there are $\dfrac{5280}{40}=132$ semicircles, each of length $\pi\cdot20=20\pi$ feet. The path has length
+\[132\cdot20\pi=2640\pi\text{ feet}=\dfrac{2640\pi}{5280}\text{ mile}=\dfrac{\pi}{2}\text{ mile},\]
+and at $5$ miles per hour it takes $\dfrac{\pi}{2}\div5=\boxed{\textbf{(B) }\dfrac{\pi}{10}}$ hours.

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2398641_convergence__divergence
+% Stable identity: aops-topic-2398641-q01
+\textbf{(a)} Let $H_N=\displaystyle\sum_{i=1}^N\dfrac1i$. For each $k\ge0$, the block of terms $\dfrac1{2^k+1},\dots,\dfrac1{2^{k+1}}$ has $2^k$ terms, each at least $\dfrac{1}{2^{k+1}}$, so the block adds up to at least $\dfrac12$. Hence
+\[H_{2^m}=1+\sum_{k=0}^{m-1}\left(\dfrac1{2^k+1}+\cdots+\dfrac1{2^{k+1}}\right)\ge1+\dfrac m2.\]
+The partial sums are unbounded, so the series diverges. $\blacksquare$
+
+\textbf{(b)} First, $i!\ge2^{i-1}$ for every $i\ge1$: it holds for $i=1$, and $(i+1)!=(i+1)\,i!\ge2\cdot2^{i-1}=2^i$. For $i\ge3$ the inequality is strict, because $3!=6>4$ and the later factors $i+1\ge2$ keep it strict. So for every $N\ge1$,
+\[\sum_{i=0}^{N}\dfrac1{i!}\le1+\sum_{i=1}^{N}\dfrac1{2^{i-1}}<1+2=3.\]
+The partial sums increase and are bounded, so the series converges, and its sum $S$ satisfies
+\[S\le1+1+\dfrac12+\dfrac16+\sum_{i\ge4}\dfrac1{2^{i-1}}=\dfrac83+\dfrac14<3.\]
+For the lower bound, all terms are positive, so $S>\dfrac1{0!}+\dfrac1{1!}+\dfrac1{2!}=\dfrac52>2$. Hence $2<S<3$. $\blacksquare$
+
+(The sum is the number $e\approx2.718$.)

@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1337104_divisibility_problem
+% Stable identity: aops-topic-1337104-q01
+\textbf{Idea.} Make the digit sum $2^{11}=2048$, and make $n$ divisible by $2^{11}$. Since $10^{11}$ is divisible by $2^{11}$, a number is divisible by $2^{11}$ exactly when the number formed by its last $11$ digits is.
+
+\textbf{The last $11$ digits.} The number $m=11212122112$ uses only the digits $1$ and $2$, and
+\[
+m=11212122112=2048\cdot5474669 ,
+\]
+so $2^{11}\mid m$. Its digit sum is $1+1+2+1+2+1+2+2+1+1+2=16$.
+
+(Such an $m$ can be built one digit at a time: if a $k$-digit number $x$ with digits $1,2$ is divisible by $2^k$, then one of $10^k+x$, $2\cdot10^k+x$ is divisible by $2^{k+1}$, because $10^k=2^k5^k$ with $5^k$ odd, so the two numbers differ by $2^k\cdot(\text{odd})$ and exactly one of $\dfrac{x}{2^k}+5^k$, $\dfrac{x}{2^k}+2\cdot5^k$ is even.)
+
+\textbf{The first $2002$ digits.} They must have sum $2048-16=2032=2002+30$. Take the digits $9,9,9,7$ followed by $1998$ ones: the sum is $27+7+1998=2032$.
+
+So
+\[
+n=\boxed{9997\underbrace{11\ldots1}_{1998}11212122112}
+\]
+has $4+1998+11=2013$ digits, none of them $0$, digit sum $2032+16=2048$, and is divisible by $2^{11}=2048$ because its last $11$ digits are.

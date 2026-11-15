@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2859676_help_mathcounts_20212022_handbook_prob_243
+% Stable identity: aops-topic-2859676-q01
+With radius $r$, the metal area is the base plus the side: $\pi r^2+2\pi r(1.21)=19.11$.
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+real r=1.54,h=1.21;
+draw(ellipse((0,0),r,0.35*r));draw(ellipse((0,h*1.6),r,0.35*r),dashed);
+draw((-r,0)--(-r,h*1.6));draw((r,0)--(r,h*1.6));
+draw((0,0)--(r,0));label("$r$",(r/2,0),S);label("$1.21$",(r,0.8*h),E);label("open top",(0,h*1.6+0.5),N);
+\end{asy}
+
+So $r^2+2.42r-\dfrac{19.11}\pi=0$. With $\dfrac{19.11}{\pi}\approx6.0829$,
+\[r=\dfrac{-2.42+\sqrt{2.42^2+4\cdot6.0829}}2=\dfrac{-2.42+\sqrt{30.188}}2\approx1.5372.\]
+The volume is $\pi r^2h\approx\pi\cdot2.3630\cdot1.21\approx\boxed{8.98}$ cubic metres.

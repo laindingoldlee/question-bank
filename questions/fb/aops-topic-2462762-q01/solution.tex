@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2462762_best_form
+% Stable identity: aops-topic-2462762-q01
+\textbf{(a)} Using $b=-2ah$,
+\[f(h\pm t)=a\left(h^2\pm2ht+t^2\right)+b(h\pm t)+c=\left(ah^2+bh+c+at^2\right)\pm t(2ah+b)=ah^2+bh+c+at^2,\]
+since $2ah+b=0$. The two values are equal, so the points of the graph at $x=h+t$ and $x=h-t$ have the same height and are mirror images in the line $x=h$. $\blacksquare$
+
+\textbf{(b)} Completing the square,
+\[f(x)=a\left(x^2+\dfrac bax\right)+c=a\left(x+\dfrac{b}{2a}\right)^2+c-\dfrac{b^2}{4a}=a(x-h)^2+k,\qquad k=c-\dfrac{b^2}{4a}.\]
+In vertex form $a(x-h)^2+k$ the value depends only on $(x-h)^2$, which is the same at $h+t$ and $h-t$; so the axis is $x=h$, read off directly, and the vertex is $(h,k)$.
+
+\textbf{(c)} With $a=2$, $b=-12$: $h=-\dfrac{-12}{4}=3$. Completing the square, $2x^2-12x+7=2(x-3)^2-11$. Both ways the axis of symmetry is $\boxed{x=3}$, and the vertex is $\boxed{(3,-11)}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real q=0.35;
+real f(real x){return 2x^2-12x+7;}
+pair T(real x,real y){return (x,q*y);}
+draw(T(-0.6,0)--T(6.8,0),Arrow(6)); draw(T(0,-12.5)--T(0,8.5),Arrow(6));
+label("$x$",T(6.8,0),E); label("$y$",T(0,8.5),N);
+guide g; for(int i=0;i<=60;++i){real x=0.15+5.7*i/60; g=g--T(x,f(x));}
+draw(g,blue+linewidth(0.9));
+draw(T(3,-12.5)--T(3,8),red+dashed);
+dot(T(3,-11)); label("$(3,-11)$",T(3,-11),SE,fontsize(8pt));
+real t=1.7; dot(T(3-t,f(3-t))); dot(T(3+t,f(3+t))); draw(T(3-t,f(3-t))--T(3+t,f(3+t)),dotted);
+label("$x=3$",T(3,8),N,red+fontsize(8pt)); label("$y=2x^2-12x+7$",T(5.85,f(5.85)),E,blue+fontsize(8pt));
+\end{asy}

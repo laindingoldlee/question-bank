@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3541838_is_there_a_way_to_derive_herons_formula_with_just_pure_geometry
+% Stable identity: aops-topic-3541838-q01
+Relabel so a is the longest side BC, and let $AB=c$, $AC=b$. The altitude AH meets BC internally because the angles at B and C are acute. Set $BH=x$, $AH=h$. Pythagoras gives $c^2=h^2+x^2$ and $b^2=h^2+(a-x)^2$, hence $2 ax=a^2+c^2-b^2$. Since $\Delta=\dfrac{ah}{2}$,\[16\Delta^2=4 a^2 c^2-(a^2+c^2-b^2)^2=((a+c)^2-b^2)(b^2-(a-c)^2).\]Factoring yields $(a+b+c)(a+c-b)(a+b-c)(b+c-a)=16 s(s-a)(s-b)(s-c)$. Taking positive square roots proves the formula.
+\begin{asy}
+usepackage("amsmath");
+import geometry; size(240);
+pair B=(0,0),C=(6,0),A=(2.5,2.5),H=(2.5,0);draw(A--B--C--cycle);draw(A--H,dashed);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$H$",H,S);label("$x$",(B+H)/2,S);label("$h$",(A+H)/2,E);label("$c$",(A+B)/2,NW);label("$b$",(A+C)/2,NE);
+\end{asy}

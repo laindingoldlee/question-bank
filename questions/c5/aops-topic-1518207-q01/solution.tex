@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1518207_combinatorics
+% Stable identity: aops-topic-1518207-q01
+\textbf{Without the upper bound.} By stars and bars, the number of solutions of $x_1+\cdots+x_b=m$ in positive integers is $\dbinom{m-1}{b-1}$ (choose $b-1$ of the $m-1$ gaps between $m$ stars), interpreted as $0$ when $m<b$.
+
+\textbf{Inclusion--exclusion.} For a set $J$ of $j$ indices, the solutions with $x_i\ge c+1$ for all $i\in J$ correspond, by replacing $x_i$ with $x_i-c$ for $i\in J$, to positive solutions of a sum equal to $a-jc$; there are $\dbinom{a-jc-1}{b-1}$ of them. By inclusion--exclusion over the parts that are too large,
+\[
+\boxed{N(a,b,c)=\sum_{j=0}^{b}(-1)^j\dbinom bj\dbinom{a-jc-1}{b-1}},
+\]
+where terms with $a-jc-1<b-1$ are $0$.
+
+\textbf{Example.} For $a=10$, $b=3$, $c=4$:
+\[
+N=\dbinom92-3\dbinom52+3\dbinom12-\dbinom{-3}{2}=36-30+0-0=\boxed{6}.
+\]
+Indeed the solutions are the arrangements of $2+4+4$ ($3$ of them) and $3+3+4$ ($3$ of them).
+
+(If parts may be $0$, i.e.\ $0\le x_i\le c$, the same method gives $\sum_j(-1)^j\dbinom bj\dbinom{a-j(c+1)+b-1}{b-1}$. If the order of the parts does not matter, one is counting partitions, for which there is no comparably simple closed formula.)

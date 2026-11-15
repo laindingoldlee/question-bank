@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1557554_coordinate_geometry_problem_need_help
+% Stable identity: aops-topic-1557554-q01
+We have $\overrightarrow{AB}=(3,4)$ with $AB=5$, and $\overrightarrow{AC}=(-8,6)$ with $AC=10$. The bisector of angle $A$ points along the sum of the unit vectors:
+\[
+\dfrac{(3,4)}{5}+\dfrac{(-8,6)}{10}=\left(-\dfrac{1}{5},\dfrac{7}{5}\right)\parallel(-1,7).
+\]
+The line through $A(4,1)$ with direction $(-1,7)$ is $7(x-4)+(y-1)=0$, that is,
+\[
+7x+y-29=0 .
+\]
+(Check with the angle bisector theorem: the line meets $BC$ at $D=\left(\dfrac{10}{3},\dfrac{17}{3}\right)$, which divides $BC$ in the ratio $BD:DC=1:2=AB:AC$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(4,1),B=(7,5),C=(-4,7),D=(10/3,17/3);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,blue+linewidth(0.9));
+draw((4.43,-2)--(2.86,9),blue+dashed);
+draw(arc(A,1.0,degrees(B-A),degrees(D-A)),red);
+draw(arc(A,1.15,degrees(D-A),degrees(C-A)),red);
+dot(A);dot(B);dot(C);dot(D,blue);
+label("$A(4,1)$",A,SE);label("$B(7,5)$",B,E);label("$C(-4,7)$",C,W);
+label("$D$",D,NE,blue);
+label("$5$",(A+B)/2,SE);label("$10$",(A+C)/2,SW);
+label("$7x+y=29$",(3.2,8.4),E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Every equation of this line with integer coefficients is $k(7x+y-29)=0$ for a nonzero integer $k$, so $a+b=8k$. The least positive value is $\boxed{8}$.

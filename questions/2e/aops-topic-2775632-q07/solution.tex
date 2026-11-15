@@ -1,0 +1,52 @@
+% Source: https://artofproblemsolving.com/community/c3h2775632_2021_integirls_team_round__middle_school__spring
+% Stable identity: aops-topic-2775632-q07
+Every pair of crossing diagonals corresponds to four cyclically ordered vertices $a<b<c<d$, with diagonals $(a,c)$ and $(b,d)$. Thus enumerate all $\binom{10}{4}=210$ such crossings and merge coincident locations. To do this exactly rather than by a floating-point tolerance, represent complex coordinates in $\mathbb Q(\zeta)$ where $\zeta^4+\zeta^3+\zeta^2+\zeta+1=0$. The decagon vertices are powers of $-\zeta^3$. For chords $p+tu$ and $q+sv$, $t=\dfrac{[q-p,v]}{[u,v]}$, where $[a,b]=a\overline b-\overline a b$. The following rational-arithmetic certificate performs these operations and obtains $\boxed{161}$ distinct points.
+\begin{verbatim}
+from fractions import Fraction as F
+from itertools import combinations
+Z=(F(0),)*4
+ONE=(F(1),F(0),F(0),F(0))
+def add(a,b):return tuple(x+y for x,y in zip(a,b))
+def neg(a):return tuple(-x for x in a)
+def sub(a,b):return add(a,neg(b))
+def mul(a,b):
+ c=[F(0)]*7
+ for i in range(4):
+  for j in range(4):c[i+j]+=a[i]*b[j]
+ for i in range(6,3,-1):
+  for j in range(1,5):c[i-j]-=c[i]
+ return tuple(c[:4])
+def power(a,n):
+ b=ONE
+ for _ in range(n):b=mul(b,a)
+ return b
+zeta=(F(0),F(1),F(0),F(0))
+def conj(a):
+ out=Z
+ for i in range(4):out=add(out,tuple(a[i]*x for x in power(zeta,(5-i)%5)))
+ return out
+def inv(a):
+ cols=[mul(a,tuple(F(i==j) for i in range(4))) for j in range(4)]
+ M=[[cols[j][i] for j in range(4)]+[F(i==0)] for i in range(4)]
+ for j in range(4):
+  k=next(k for k in range(j,4) if M[k][j]);M[j],M[k]=M[k],M[j]
+  v=M[j][j];M[j]=[x/v for x in M[j]]
+  for k in range(4):
+   if k!=j:
+    v=M[k][j];M[k]=[x-v*y for x,y in zip(M[k],M[j])]
+ return tuple(M[i][4] for i in range(4))
+def cross(a,b):return sub(mul(a,conj(b)),mul(conj(a),b))
+w=neg(power(zeta,3));pts=[power(w,k) for k in range(10)]
+intersections=set()
+for a,b,c,d in combinations(range(10),4):
+ p,q=pts[a],pts[b];u=sub(pts[c],p);v=sub(pts[d],q)
+ t=mul(cross(sub(q,p),v),inv(cross(u,v)))
+ intersections.add(add(p,mul(t,u)))
+assert len(intersections)==161
+\end{verbatim}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] V;for(int i=0;i<10;++i)V.push(dir(36*i));for(int i=0;i<10;++i)for(int j=i+1;j<10;++j)draw(V[i]--V[j],gray);for(int i=0;i<10;++i)label(string(i),V[i],V[i]);
+\end{asy}

@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h15248_mathcounts_contest_1_sprint_questions
+% Stable identity: aops-topic-15248-q27
+The sphere has radius $25$. The centre $O$ of the sphere, the centre of the circle and any point of the circle form a right triangle (the segment from $O$ to the centre of the circle is perpendicular to the plane), with hypotenuse $25$ and one leg equal to the radius $7$ of the circle. The cross-section through $O$ perpendicular to the plane is shown.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0); real R=2.5;
+draw(box((-R,-R),(R,R)),gray); draw(circle(O,R),linewidth(0.8));
+real d=R*24/25, h=R*7/25;
+draw((-h,d)--(h,d),red); draw((0,d)--(h,d),red+linewidth(1.8)); draw(O--(0,d),blue); draw(O--(h,d),dashed);
+dot(O); dot((0,d),red);
+label("$24$",(0,d/2),W,blue); label("$25$",(h/2,d/2),E); label("$7$",(h/2,d),N,red);
+label("$O$",O,S);
+\end{asy}
+
+The distance is $\sqrt{25^2-7^2}=\sqrt{576}=\boxed{24}$.

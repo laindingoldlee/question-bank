@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h606957_array_of_problems_for_warm_up_13_2009_mathcounts_handbook
+% Stable identity: aops-topic-606957-q10
+Triangle $DAC$ is right-angled at $A$ with legs $5$ and $12$, so the base $DC=13$. Its altitude from $A$ is $h=\dfrac{5\cdot12}{13}=\dfrac{60}{13}$, and the foot of that altitude is at distance $\dfrac{AD^2}{DC}=\dfrac{25}{13}$ from $D$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0),C=(13,0); pair A=(25/13,60/13),B=(13-25/13,60/13);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(A--C,blue); draw(A--(A.x,0),dashed);
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);label("$5$",(A+D)/2,W);label("$5$",(B+C)/2,E);label("$12$",(A+C)/2,N);label("$13$",(6.5,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By symmetry the same length is cut off at $C$, so
+\[AB=13-2\cdot\dfrac{25}{13}=\dfrac{119}{13}=\boxed{9\dfrac{2}{13}}.\]

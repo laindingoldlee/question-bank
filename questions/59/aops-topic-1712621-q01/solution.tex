@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h1712621_need_help
+% Stable identity: aops-topic-1712621-q01
+The third angle is $\angle L=180^\circ-105^\circ-30^\circ=45^\circ$. Drop the altitude $KH=h$ to $LM$; since $\angle L$ and $\angle M$ are acute, $H$ lies between $L$ and $M$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+void ra(pair P,pair U,pair V,real s){draw(P+s*unit(U-P)--P+s*unit(U-P)+s*unit(V-P)--P+s*unit(V-P),linewidth(0.5));}
+real s=sqrt(3);
+pair L=(0,0),M=(20*s,0),Hh=(30-10*s,0),K=(30-10*s,30-10*s);
+draw(K--L--M--cycle,linewidth(0.9));
+draw(K--Hh,dashed);
+ra(Hh,K,M,1.4);
+draw(arc(L,3.5,0,45));draw(arc(M,4.5,150,180));
+label("$45^\circ$",L+5.2*dir(22.5));label("$30^\circ$",M+6.6*dir(165));draw(arc(K,2.2,degrees(L-K),degrees(M-K)+360));label("$105^\circ$",K+4.8*dir(312));
+label("$K$",K,N);label("$L$",L,SW);label("$M$",M,SE);label("$H$",Hh,S);
+label("$20\sqrt3$",(L+M)/2+(0,-3),S);
+label("$h$",(K+Hh)/2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item In the $45^\circ$-$45^\circ$-$90^\circ$ triangle $KHL$: $LH=h$ and $KL=h\sqrt2$.
+\item In the $30^\circ$-$60^\circ$-$90^\circ$ triangle $KHM$: $HM=h\sqrt3$ and $KM=2h$.
+\end{itemize}
+So $LM=h+h\sqrt3=20\sqrt3$, giving
+\[
+h=\dfrac{20\sqrt3}{1+\sqrt3}=\dfrac{20\sqrt3(\sqrt3-1)}{2}=30-10\sqrt3 .
+\]
+Therefore
+\[
+\boxed{KL=h\sqrt2=30\sqrt2-10\sqrt6\approx17.93},\qquad \boxed{KM=2h=60-20\sqrt3\approx25.36}.
+\]
+(Check with the law of sines: $\dfrac{KL}{\sin30^\circ}=\dfrac{KM}{\sin45^\circ}=\dfrac{LM}{\sin105^\circ}\approx35.86$.)

@@ -1,0 +1,46 @@
+% Source: https://artofproblemsolving.com/community/c3h2126034_probability_of_drawing_circles_problem
+% Stable identity: aops-topic-2126034-q01
+\textbf{Step 1: when is $O$ inside the circle on $AB$?} For points $X,Y,P$, let $M$ be the midpoint of $XY$. Writing vectors from $M$, $P-X=(P-M)+(M-X)$ and $P-Y=(P-M)-(M-X)$, so
+\[(P-X)\cdot(P-Y)=|P-M|^2-|M-X|^2=|PM|^2-\left(\dfrac{XY}{2}\right)^2 .\]
+Hence $P$ is strictly inside the circle with diameter $XY$ exactly when $(P-X)\cdot(P-Y)<0$, that is, when $\angle XPY>90^\circ$ (the converse of Thales' theorem). With $P=O$: the origin is inside the circle on $AB$ exactly when $\angle AOB>90^\circ$, and similarly for the other two circles.
+
+\textbf{Step 2: the complementary event.} The three points cut the circle into three arcs with central angles $\alpha,\beta,\gamma$, where $\alpha+\beta+\gamma=360^\circ$. The angle between two of the radii is one of these arcs or $360^\circ$ minus it, whichever is at most $180^\circ$. So $O$ lies in none of the circles exactly when each of $\alpha,\beta,\gamma$ is at most $90^\circ$ or at least $270^\circ$. They cannot all be at most $90^\circ$ (their sum would be at most $270^\circ$), so one arc is at least $270^\circ$, and then the other two together are at most $90^\circ$. In other words, $O$ lies in none of the circles exactly when \emph{all three points lie on an arc of $90^\circ$}, a quarter of the circle.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.2cm);
+defaultpen(fontsize(10pt));
+draw(unitcircle,linewidth(1));
+pair A=dir(100), B=dir(215), C=dir(330), O=(0,0);
+draw(A--B--C--cycle,gray);
+draw(circle((A+B)/2,abs(A-B)/2),red);
+draw(O--A,blue); draw(O--B,blue);
+draw(arc(O,0.18,100,215),blue);
+dot(O); dot(A); dot(B); dot(C);
+
+label("$\angle AOB>90^\circ$: $O$ is inside the circle on $AB$",(0,-1.2),blue+fontsize(8pt));
+label("$O$",O,E,fontsize(9pt)); label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(4.2cm);
+defaultpen(fontsize(10pt));
+draw(unitcircle,linewidth(1));
+pair A=dir(20), B=dir(55), C=dir(100), O=(0,0);
+draw(arc(O,1,10,100),blue+linewidth(2.2));
+draw(circle((A+B)/2,abs(A-B)/2),red); draw(circle((B+C)/2,abs(B-C)/2),red); draw(circle((C+A)/2,abs(C-A)/2),red);
+draw(O--A,gray+dashed); draw(O--C,gray+dashed);
+dot(O); dot(A); dot(B); dot(C);
+
+label("all three points on a $90^\circ$ arc",(0,-1.25),blue+fontsize(8pt));
+label("$O$",O,SW,fontsize(9pt)); label("$A$",A,E); label("$B$",B,NE); label("$C$",C,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Step 3: the probability that the three points lie on a quarter circle.} For each of the three points, consider the event that the other two points lie on the quarter circle that starts at this point and goes counterclockwise. Each of these events has probability $\left(\dfrac{1}{4}\right)^2=\dfrac{1}{16}$, because the other two points are independent and uniform. The events are mutually exclusive (apart from probability-zero coincidences): if $B$ is within $90^\circ$ counterclockwise of $A$, then $A$ is more than $270^\circ$ counterclockwise of $B$. And if all three points lie on some quarter circle, the event happens for the first of them in counterclockwise order. So the three points lie on a quarter circle with probability $3\cdot\dfrac{1}{16}=\dfrac{3}{16}$.
+
+Therefore the probability that $O$ lies inside at least one of the circles is
+\[1-\dfrac{3}{16}=\boxed{\dfrac{13}{16}}.\]
+(Boundary cases, such as a right angle at $O$, have probability $0$.)

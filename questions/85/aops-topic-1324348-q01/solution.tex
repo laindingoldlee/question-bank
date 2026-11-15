@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1324348_geometry
+% Stable identity: aops-topic-1324348-q01
+Let $O$ be the centre and $R$ the radius of the circle. Because the arc is less than a semicircle, $O$ lies on the other side of the chord, so the ray from $O$ through $A$ crosses the chord at $A$ and then meets the arc at a point $X$.
+
+For any point $Y$ of the arc, the triangle inequality gives $R=OY\le OA+AY$, so $AY\ge R-OA$. For $Y=X$ on the ray $OA$ beyond $A$, we have $AX=OX-OA=R-OA$, so equality holds.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0); real R=3; pair U=R*dir(35),V=R*dir(145);
+draw(arc(O,R,35,145),linewidth(1)); draw(U--V,linewidth(0.9)); draw(arc(O,R,145,395),gray+dotted);
+pair A=(0.9,U.y); pair X=R*unit(A); dot(O); dot(A); dot(X);
+draw(O--X,blue+dashed); draw(A--X,red);
+pair Y=R*dir(70); draw(A--Y,gray); dot(Y); label("$Y$",Y,N);
+label("$O$",O,S); label("$A$",A,S); label("$X$",X,NE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Equality in $OY\le OA+AY$ requires $A$ to lie on segment $OY$, so $X$ is the unique minimiser: \textbf{the point where the ray from the centre through $A$ meets the arc}, and the minimum distance is $R-OA$.

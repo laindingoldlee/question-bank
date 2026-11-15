@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1375431_combinatorics_problem
+% Stable identity: aops-topic-1375431-q01
+Treat the twins as a block occupying two adjacent chairs $i,i+1$ with $1\le i\le7$; the twins can sit in the block in $2$ orders. The third sister may not sit in chair $i-1$ or $i+2$ (when these exist).
+\begin{itemize}
+\item Block at an end ($i=1$ or $i=7$): one forbidden chair, so the sister has $8-2-1=5$ chairs. That gives $2\cdot5=10$ placements of block and sister.
+\item Block inside ($i=2,\dots,6$): two forbidden chairs, so the sister has $8-2-2=4$ chairs, giving $5\cdot4=20$ placements.
+\end{itemize}
+The $5$ boys then fill the remaining $5$ chairs in $5!$ ways. The total is
+\[
+2\cdot(10+20)\cdot5!=60\cdot120=\boxed{7200}.
+\]
+The quoted solution, $2!\cdot2!\cdot5!\cdot5!$ (which actually equals $57600$, not the $2400$ claimed for it), is wrong: nothing forces the twins to sit at an end of the row.

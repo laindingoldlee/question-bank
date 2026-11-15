@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h3164339_2018_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3164339-q10
+An exact enumeration over all $9!=362880$ grids gives $\boxed{432}$. Each permutation specifies the grid in row-major order, so every allowed arrangement occurs once. The test below uses sets exactly as stated. No geometric identifications are taken: rotations and reflections remain distinct grids. The enumeration is small enough to check directly and certifies the count.
+\begin{verbatim}
+from itertools import permutations
+count=0
+for a in permutations(range(1,10)):
+ rows={a[3*i]*a[3*i+1]*a[3*i+2] for i in range(3)}
+ cols={a[i]*a[i+3]*a[i+6] for i in range(3)}
+ if rows==cols:count+=1
+assert count==432
+\end{verbatim}

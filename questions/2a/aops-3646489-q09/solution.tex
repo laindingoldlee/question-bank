@@ -1,0 +1,6 @@
+Count a teleport as instantaneous, not an up or right move. A path with $k$ teleports uses $10+4k$ moves, hence $k=0,1,2$. Paths never hitting $(3,3)$ number $\binom{10}5-\binom63\binom42=132$. A first visit to $(3,3)$ has $\binom63=20$ approaches; a return from $(1,1)$ has $\binom42=6$. A final escape from $(1,1)$ to $(5,5)$ avoiding $(3,3)$ has $\binom84-\binom42^2=34$ paths. Thus the total is $132+20\cdot34+20\cdot6\cdot34=\boxed{4892}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+for(int i=0;i<=5;++i){draw((i,0)--(i,5),gray);draw((0,i)--(5,i),gray);}dot((0,0));dot((5,5));dot((3,3),red);dot((1,1),blue);draw((3,3)--(1,1),red,Arrow);label("start",(0,0),(-1,-1));label("finish",(5,5),(1,1));label("$(3,3)$",(3,3),(1,0));label("$(1,1)$",(1,1),(-1,0));
+\end{asy}
+

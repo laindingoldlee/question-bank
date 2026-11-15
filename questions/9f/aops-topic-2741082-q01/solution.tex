@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2741082_opposite_of_angle_bisector_theorem
+% Stable identity: aops-topic-2741082-q01
+Let the bisector of angle $C$ meet $AB$ at $D'$. By the angle bisector theorem, $\dfrac{BD'}{AD'}=\dfrac{BC}{AC}=\dfrac{BD}{AD}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(1.5,3.5);
+real t=abs(C-A)/(abs(C-A)+abs(C-B));pair D=A+t*(B-A);
+draw(A--B--C--cycle,linewidth(0.8));draw(C--D);
+dot(D);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,S);
+\end{asy}
+
+On segment $AB$ the ratio $\dfrac{BX}{AX}=\dfrac{AB-AX}{AX}=\dfrac{AB}{AX}-1$ is strictly decreasing in $AX$, so exactly one point $X$ of the segment has a given ratio. Hence $D'=D$, and $CD$ is the bisector of angle $C$. $\blacksquare$

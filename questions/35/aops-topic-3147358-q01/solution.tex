@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3147358_moaa_2022_15
+% Stable identity: aops-topic-3147358-q01
+Write $\angle A=2t$ and let $R$ be the circumradius. Since $AI$ bisects $A$, ray $AO$ makes angle $\dfrac{3t}{2}$ with $AB$. The circumcenter identity $\angle OAB=90^\circ-C$ gives $C=90^\circ-\dfrac{3t}{2}$ and $B=90^\circ-\dfrac{t}{2}$. The sine rule yields $7=4R\sin t\cos t$ and $21=4R\cos t\cos\dfrac{t}{2}$. Dividing gives $\sin\dfrac{t}{2}=\dfrac{1}{6}$, so $\cos t=\dfrac{17}{18}$. Using $r=4R\sin\dfrac{A}{2}\sin\dfrac{B}{2}\sin\dfrac{C}{2}$ and $AI=\dfrac{r}{\sin t}$ gives $AI=2R(\cos\dfrac{t}{2}-\sin t)=\dfrac{4R}{3}\cos\dfrac{t}{2}=\dfrac{7}{\cos t}=\dfrac{126}{17}$. Thus $\boxed{m+n=143}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real t=2*asin(1/6),R=7/(4*sin(t)*cos(t)); real c=2*R*cos(1.5*t),bb=2*R*cos(.5*t);pair A=(0,0),B=(c,0),C=bb*(cos(2*t),sin(2*t)),I=(126/17)*(cos(t),sin(t)),O=R*(cos(1.5*t),sin(1.5*t));draw(A--B--C--cycle);draw(A--I,blue);draw(A--O,red);dot(I);dot(O);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$I$",I,S);label("$O$",O,NW);
+\end{asy}

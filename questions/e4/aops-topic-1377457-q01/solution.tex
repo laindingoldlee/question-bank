@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1377457_similar_triangles_math_problems
+% Stable identity: aops-topic-1377457-q01
+In similar triangles all corresponding lengths, including the perimeters, are in the same ratio. Let the side of the first triangle be $x$, so the corresponding side of the second is $x+1$ (the second triangle is the larger one).
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(3.3,0),C=(0.9,2.0);
+real k=13/11; pair o=(4.4,0);
+pair A2=o+k*A,B2=o+k*B,C2=o+k*C;
+draw(A--B--C--cycle,linewidth(0.9)); draw(A2--B2--C2--cycle,linewidth(0.9));
+draw(A--B,blue+linewidth(1.4)); draw(A2--B2,blue+linewidth(1.4));
+label("$x$",(A+B)/2,S,blue); label("$x+1$",(A2+B2)/2,S,blue);
+label("perimeter $11t$",(A+B)/2+(0,-0.75),fontsize(8pt));
+label("perimeter $13t$",(A2+B2)/2+(0,-0.75),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then
+\[
+\dfrac{x}{x+1}=\dfrac{11}{13}\quad\Longrightarrow\quad13x=11x+11\quad\Longrightarrow\quad x=\dfrac{11}{2}.
+\]
+The sides are $\boxed{\dfrac{11}{2}=5.5\text{ m and }\dfrac{13}{2}=6.5\text{ m}}$. Check: $\dfrac{5.5}{6.5}=\dfrac{11}{13}$ and $6.5-5.5=1$.

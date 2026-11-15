@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1396838_my_mathcounts_journey_so_far_inspired_by_fatant
+% Stable identity: aops-topic-1396838-q09
+Let the short side be $x$, with $x<40$. The folded sheet measures $x$ by $20$. Its long side must be $x$: if it were $20$, the condition $\dfrac{40}{x}=\dfrac{20}{x}$ would be impossible. So $x\ge20$ and
+\[
+\dfrac{40}{x}=\dfrac{x}{20}\quad\Longrightarrow\quad x^2=800\quad\Longrightarrow\quad x=\boxed{20\sqrt2}.
+\]
+Indeed $20\sqrt2\approx28.3$ lies between $20$ and $40$. (This is the shape of A4 paper: halving it gives a similar rectangle.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real x=20*sqrt(2);
+draw((0,0)--(40,0)--(40,x)--(0,x)--cycle,linewidth(0.9));
+draw((20,0)--(20,x+2),dashed);
+label("$40$",(20,0),S); label("$x$",(40,x/2),E); label("$20$",(10,x),N); label("$20$",(30,x),N);
+label("fold",(20,x+2),N,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

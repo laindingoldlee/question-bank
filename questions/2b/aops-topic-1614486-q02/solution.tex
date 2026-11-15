@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1614486_euclidean_and_division_algorithim
+% Stable identity: aops-topic-1614486-q02
+\textbf{(a)} We show that $a,b$ and $b,r$ have exactly the same common divisors.
+\begin{itemize}
+\item If $d\mid a$ and $d\mid b$, then $d$ divides $a-bq=r$, so $d$ is a common divisor of $b$ and $r$.
+\item If $e\mid b$ and $e\mid r$, then $e$ divides $bq+r=a$, so $e$ is a common divisor of $a$ and $b$.
+\end{itemize}
+Two equal sets of common divisors have the same greatest element, so $\gcd(a,b)=\gcd(b,r)$. (If $r=0$, then $b\mid a$ and both sides equal $b$.)
+
+\textbf{(b)} Each step replaces the pair $(a,b)$ by $(b,r)$ with $0\le r<b$, so the second entries form a strictly decreasing sequence of nonnegative integers $b>r_1>r_2>\cdots$. Such a sequence cannot go on forever, so some remainder is $0$. If the last nonzero remainder is $r_k$, the last step is $r_{k-1}=r_kq'+0$, and by (a) applied at every step,
+\[
+\gcd(a,b)=\gcd(b,r_1)=\cdots=\gcd(r_{k-1},r_k)=\gcd(r_k,0)=r_k. \qquad\blacksquare
+\]
+(The key point, which is easy to leave out, is that the two pairs have the \emph{same set} of common divisors; showing only that one particular divisor works is not enough.)

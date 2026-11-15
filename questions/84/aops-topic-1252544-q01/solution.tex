@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1252544_regular_problem
+% Stable identity: aops-topic-1252544-q01
+A triangle inscribed in a circle is right-angled exactly when one of its sides is a diameter (Thales' theorem).
+
+If $n$ is odd, no two of the points are diametrically opposite, so there are $\boxed{0}$ right triangles.
+
+If $n$ is even, there are $\dfrac {n}{2}$ diameters with both ends among the points, and each can be completed by any of the other $n-2$ points. Different diameters give different triangles (a right triangle has only one hypotenuse), so there are $\boxed{\dfrac {n}{2}(n-2)}$ right triangles.
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+draw(unitcircle); pair[] P; for(int k=0;k<8;++k){P[k]=dir(45*k); dot(P[k]);}
+draw(P[0]--P[4],red); draw(P[0]--P[2]--P[4],blue); draw(P[0]--P[6]--P[4],blue+dashed);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

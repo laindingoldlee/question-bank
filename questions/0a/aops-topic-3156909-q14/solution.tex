@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h3156909_2015_lmt_individual_round__lexington_mathematical_tournament
+% Stable identity: aops-topic-3156909-q14
+The outside factors must be $ a $ and its digit reversal $ r(a)$, with neither ending in zero. Removing them leaves another palindromic product. Let $ F(1)=1 $ represent an empty centre; for $ n>1 $, allow one central factor if $ n $ is a digit palindrome and recursively add all allowable outside pairs. This decomposition is unique, so the exact recurrence counts without duplication:
+\begin{verbatim}
+from functools import lru_cache
+@lru_cache(None)
+def F(n):
+    if n==1:return 1
+    out=int(str(n)==str(n)[::-1])
+    for a in range(2,n+1):
+        if n%a or str(a).endswith('0'):continue
+        q=a*int(str(a)[::-1])
+        if q<=n and n%q==0:out+=F(n//q)
+    return out
+assert F(2016)==8
+\end{verbatim}
+Thus the answer is $\boxed8 $.

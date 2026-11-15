@@ -1,0 +1,9 @@
+Use directed angles modulo $180^\circ$, so perpendicular feet on extensions cause no difficulty. The right angles imply $P,K,B,S$ are concyclic and $P,L,C,S$ are concyclic. Hence $\angle KSP=\angle KBP=\angle ABP$ and $\angle PSL=\angle PCL=\angle PCA$. Since $A,B,C,P$ are concyclic, $\angle ABP=\angle ACP=-\angle PCA$. Therefore $\angle KSL=0\pmod{180^\circ}$, proving $K,L,S$ are collinear. Coincident-foot cases follow directly or by continuity.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair A=2dir(90),B=2dir(210),C=2dir(330),P=2dir(280);pair K=A+dot(P-A,B-A)/dot(B-A,B-A)*(B-A),L=A+dot(P-A,C-A)/dot(C-A,C-A)*(C-A),S=B+dot(P-B,C-B)/dot(C-B,C-B)*(C-B);draw(circle((0,0),2));draw(A--B--C--A);draw(P--K--L--P);draw(P--S,dashed);draw(K--L,linewidth(1));label("$A$",A,(0,1));label("$B$",B,(-1,0));label("$C$",C,(1,0));label("$P$",P,(0,-1));label("$K$",K,(-1,1));label("$L$",L,(1,-1));label("$S$",S,(0,1));
+\end{asy}
+

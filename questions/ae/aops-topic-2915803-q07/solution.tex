@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2915803_2014_emcc_guts_round_p1_p12__exeter_math_club_competition
+% Stable identity: aops-topic-2915803-q07
+The qualifying integers through 61 are $1,11,19,41,61$, so the answer is $\boxed{61}$. An exhaustive check of this finite interval certifies that none was missed.
+\begin{verbatim}
+a=[n for n in range(1,62)
+   if not any(c in str(n) for c in "2357")
+   and all(n%p for p in (2,3,5,7))]
+assert a==[1,11,19,41,61]
+\end{verbatim}

@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h3245080_91021_problems
+% Stable identity: aops-topic-3245080-q03
+For counts $a,b,c\ge0$ with $1\le a+b+c\le6$, the mean is $\dfrac{9a+10b+21c}{a+b+c}$. Exact enumeration of these finitely many triples gives possible integer means $9,10,11,12,13,14,15,17,18,19,21$. Thus $\boxed{21-11=10}$ integers are impossible. The following checks every allowable class composition.\begin{verbatim}
+means=set()
+for a in range(7):
+ for b in range(7):
+  for c in range(7):
+   n=a+b+c
+   if 1<=n<=6 and (9*a+10*b+21*c)%n==0:
+    means.add((9*a+10*b+21*c)//n)
+print(sorted(means))
+\end{verbatim}

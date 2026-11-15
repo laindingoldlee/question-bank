@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3248725_2024_emcc_team_round__exeter_math_club_competition
+% Stable identity: aops-topic-3248725-q12
+Unfolding the eight folds divides each original square into a $16\times16$ array of congruent cells. The cut becomes one diagonal in each cell, with adjacent diagonals reflected across their shared grid edge. Give the original grid integer coordinates from $0$ to $16$. For sheet $A$, all cut endpoints have even coordinate sum; for sheet $B$, all have odd coordinate sum. Each cut graph has $256$ edges and is connected to the boundary. Including the outer boundary, Euler's formula gives the number of regions as $1+E-V_{\rm int}$: boundary edges and vertices cancel. Among interior grid points $1\le x,y\le15$, the even-parity count is $8^2+7^2=113$, and the odd-parity count is $2\cdot8\cdot7=112$. Therefore sheet $A$ yields $1+256-113=144$ pieces and sheet $B$ yields $1+256-112=145$. The total is $\boxed{289}$. The sketches show the fully unfolded cuts.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int p=0;p<2;++p){real t=20*p;draw((t,0)--(t+16,0)--(t+16,16)--(t,16)--cycle);for(int i=0;i<16;++i)for(int j=0;j<16;++j){if((i+j)%2==p)draw((t+i,j)--(t+i+1,j+1),blue);else draw((t+i+1,j)--(t+i,j+1),blue);}label(p==0?"sheet $A$: $144$":"sheet $B$: $145$",(t+8,-2));}
+\end{asy}

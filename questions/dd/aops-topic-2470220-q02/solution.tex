@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2470220_fun_pie_problems_
+% Stable identity: aops-topic-2470220-q02
+For a set $T$ of the four numbers, let $N(T)$ be the number of $x\le10000$ divisible by every element of $T$, that is, by $\operatorname{lcm}(T)$; so $N(T)=\left\lfloor\dfrac{10000}{\operatorname{lcm}(T)}\right\rfloor$. Let $S_k$ be the sum of $N(T)$ over all $T$ with $k$ elements.
+
+\textbf{The counting formula.} An integer divisible by exactly $j$ of the four numbers is counted $\dbinom j2$ times in $S_2$, $\dbinom j3$ times in $S_3$ and $\dbinom j4$ times in $S_4$. In $S_2-3S_3+6S_4$ it is therefore counted
+\[\dbinom j2-3\dbinom j3+6\dbinom j4=\begin{cases}1,&j=2,\\3-3=0,&j=3,\\6-12+6=0,&j=4,\end{cases}\]
+times, and $0$ times if $j\le1$. So the answer is $S_2-3S_3+6S_4$.
+
+\textbf{The sums.}
+\begin{itemize}
+\item Pairs: the least common multiples are $20,12,28,30,35,42$, giving $500+833+357+333+285+238=2546=S_2$.
+\item Triples: $\operatorname{lcm}(4,5,6)=60$, $\operatorname{lcm}(4,5,7)=140$, $\operatorname{lcm}(4,6,7)=84$, $\operatorname{lcm}(5,6,7)=210$, giving $166+71+119+47=403=S_3$.
+\item All four: $\operatorname{lcm}(4,5,6,7)=420$, giving $S_4=23$.
+\end{itemize}
+Hence the answer is
+\[2546-3\cdot403+6\cdot23=2546-1209+138=\boxed{1475}.\]

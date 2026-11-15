@@ -1,0 +1,15 @@
+Each removed corner is a right tetrahedron with three mutually perpendicular edges of length $\dfrac{1}{2}$. Its volume is
+\[
+\dfrac{1}{6}\left(\dfrac{1}{2}\right)^3=\dfrac{1}{48}.
+\]
+The corner tetrahedra have disjoint interiors: each occupies only points within a sum of coordinate distances $\dfrac{1}{2}$ from its vertex. Thus the remaining volume is
+\[
+1-8\cdot\dfrac{1}{48}=\dfrac{5}{6},
+\]
+and $\boxed{m+n=11}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair f(real x,real y,real z){return (x+.5y,z+.3y);}pair O=f(0,0,0);for(int i=0;i<=1;++i)for(int j=0;j<=1;++j){draw(f(i,j,0)--f(i,j,1),gray);draw(f(i,0,j)--f(i,1,j),gray);draw(f(0,i,j)--f(1,i,j),gray);}pair A=f(.5,0,0),B=f(0,.5,0),C=f(0,0,.5);filldraw(A--B--C--cycle,lightblue,blue);draw(O--A--C--O--B--C,red);label("$\dfrac{1}{2}$",(O+A)/2,(0,-1));label("one corner cut",(.75,1.4));
+\end{asy}

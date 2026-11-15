@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1633921_april_fools_mock_amc_8_25_did_anyone_do_similar_triangles
+% Stable identity: aops-topic-1633921-q01
+Here $BC=12+15=27$, and
+\[
+\dfrac{BD}{BA}=\dfrac{12}{18}=\dfrac{2}{3}=\dfrac{18}{27}=\dfrac{BA}{BC}.
+\]
+Triangles $DBA$ and $ABC$ share the angle at $B$, and the sides enclosing it are proportional, so $\triangle DBA\sim\triangle ABC$ (SAS similarity), with $D\leftrightarrow A$, $B\leftrightarrow B$, $A\leftrightarrow C$. In particular $\angle BAD=\angle BCA$ (the red angles) and
+\[
+\dfrac{DA}{AC}=\dfrac{BA}{BC}=\dfrac{2}{3},\qquad\text{so}\qquad\dfrac {x}{y}=\dfrac{AC}{AD}=\boxed{\textbf{(E)}\ \dfrac{3}{2}}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),D=(12,0),C=(27,0),A=18*dir(64);
+draw(A--B--C--cycle,linewidth(0.9));draw(A--D,linewidth(0.9));
+draw(arc(B,2.2,0,64),blue);
+draw(arc(A,2.4,degrees(B-A),degrees(D-A)),red);draw(arc(C,3.4,degrees(A-C),180),red);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);
+label("$18$",(A+B)/2,NW);label("$12$",(B+D)/2,S);label("$15$",(D+C)/2,S);
+label("$x$",(A+C)/2,NE);label("$y$",(A+D)/2+(0.5,0.5),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The answer does not depend on the shape of the triangle; the words ``non-right'' play no role. The key fact is $BA^2=BD\cdot BC$, i.e.\ $18^2=12\cdot27$.)

@@ -1,0 +1,6 @@
+With one ball and $d$ remaining drops, one can test at most $d$ floors in increasing order. Let $F(d)$ be the number of floors that two balls and $d$ drops can cover, allowing also the possibility of no breaking floor in that range. The first drop divides into a broken-ball branch covering at most $d-1$ lower floors and an unbroken branch covering at most $F(d-1)$ higher floors. Thus
+\[
+F(d)=F(d-1)+d,\qquad F(0)=0,
+\]
+so $F(d)=\dfrac{d(d+1)}{2}$. A strategy achieving this drops the first ball after successive gaps $d,d-1,\ldots,1$, then tests sequentially within the last gap if it breaks.
+For $d=13$, even the $F(13)+1=92$ possible thresholds including a no-break outcome are fewer than the $100$ possible values of $m$. Fourteen drops cover $F(14)=105$ floors, so they suffice after truncation at floor $100$. The minimum is $\boxed{14}$.

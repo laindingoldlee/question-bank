@@ -1,0 +1,14 @@
+Let $F(n)=\sum_i a_i\binom ni$ and $G(n)=\sum_j b_j\binom nj$. The identity $\binom{n-1}{i}=\dfrac{n-i}{n}\binom ni$ shows that the left side is
+\[n^2\bigl(F(n)G(n)-F(n-1)G(n-1)\bigr).\]
+The desired difference therefore follows if
+\[F(n)G(n)=H(n):=26\binom{n+1}{13}+5\binom{n+1}{6},\]
+by Pascal's identity.
+
+Because the problem guarantees uniqueness of the requested product, it suffices to construct one valid choice. Take
+\[F(n)=\binom{n+1}{6}=\binom n6+\binom n5,\qquad
+G(n)=5+\dfrac{(n-5)(n-6)\cdots(n-11)}{332640}.\]
+Their product is exactly $H(n)$. Moreover $G(0)=0$, so the degree-seven rational polynomial $G$ has an expansion in $\binom n1,\ldots,\binom n7$, as required. We have $a_5=1$.
+
+In a binomial-basis expansion, $b_3=\Delta^3G(0)=G(3)-3G(2)+3G(1)-G(0)$. Direct substitution gives
+\[G(1)=\dfrac{35}{11},\quad G(2)=\dfrac{49}{11},\quad G(3)=\dfrac{161}{33}.\]
+Thus $b_3=\dfrac{161-441+315}{33}=\dfrac{35}{33}$, and $p+q=\boxed{68}$.

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1979728_geo_problem
+% Stable identity: aops-topic-1979728-q01
+Since $\angle ABC=90^\circ$ is inscribed in the circle, $AC$ is a diameter, and $AC=\sqrt{24^2+32^2}=40$. So the circle has centre $O$, the midpoint of $AC$, and radius $20$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real R=20;
+pair O=(0,0),A=(-R,0),C=(R,0),B=(-5.6,-19.2),D=R*dir(60),Ee=R*dir(120);
+draw(circle(O,R),gray);
+fill(A--B--C--cycle,lightgray);
+draw(A--B--C--D--Ee--cycle,linewidth(1));
+draw(A--C,dashed);draw(O--D,dashed);draw(O--Ee,dashed);
+dot(O);label("$O$",O,S);
+label("$A$",A,W);label("$B$",B,S);label("$C$",C,E);label("$D$",D,NE);label("$E$",Ee,NW);
+label("$24$",(A+B)/2,SW);label("$32$",(B+C)/2,SE);
+label("$20$",(C+D)/2,E);label("$20$",(D+Ee)/2,N);label("$20$",(Ee+A)/2,W);
+draw(B+0.12*R*unit(A-B)--B+0.12*R*unit(A-B)+0.12*R*unit(C-B)--B+0.12*R*unit(C-B));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Each of $CD$, $DE$, $EA$ equals the radius, so triangles $OCD$, $ODE$, $OEA$ are equilateral with side $20$. (Their central angles $60^\circ+60^\circ+60^\circ=180^\circ$ exactly fill the half of the circle opposite $B$, consistent with $AC$ being a diameter.) Hence
+\[
+[ABCDE]=[ABC]+3\cdot\dfrac{\sqrt3}{4}\cdot20^2=\dfrac{24\cdot32}{2}+300\sqrt3=384+300\sqrt3 .
+\]
+So $a=384$, $b=300$, $c=3$, and $a+b+c=\boxed{687}$.

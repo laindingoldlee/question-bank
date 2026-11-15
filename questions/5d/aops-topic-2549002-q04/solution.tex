@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2549002_weird_digit_problems_inspired_by_that_thread
+% Stable identity: aops-topic-2549002-q04
+In base $b$,
+\[0.x\overline{yz}_{\,b}=\dfrac xb+\dfrac{yb+z}{b\left(b^2-1\right)}=\dfrac{x\left(b^2-1\right)+yb+z}{b\left(b^2-1\right)}.\]
+So we need $x\left(b^2-1\right)+yb+z=T$, where $T=\dfrac{19b\left(b^2-1\right)}{60}$ must be an integer. As $\gcd(19,60)=1$, we need $60\mid(b-1)b(b+1)$; checking $b=10,\dots,20$, this holds only for $b=11,15,16,19,20$, with $T=418,1064,1292,2166,2527$.
+
+Since $y,z\le9<b-1$, we have $0\le yb+z<b^2-1$, so $x$ is the quotient and $yb+z$ the remainder of $T$ divided by $b^2-1$ (and then $y$, $z$ are the quotient and remainder of $yb+z$ divided by $b$):
+\begin{itemize}
+\item $b=11$: $418=3\cdot120+58$ and $58=5\cdot11+3$: $(x,y,z)=(3,5,3)$.
+\item $b=15$: $1064=4\cdot224+168$ and $168=11\cdot15+3$: $y=11$ is not allowed.
+\item $b=16$: $1292=5\cdot255+17$ and $17=1\cdot16+1$: $(5,1,1)$.
+\item $b=19$: $2166=6\cdot360+6$ and $6=0\cdot19+6$: $(6,0,6)$.
+\item $b=20$: $2527=6\cdot399+133$ and $133=6\cdot20+13$: $z=13$ is not allowed.
+\end{itemize}
+The possible strings are $\boxed{353,\ 511,\ 606}$ (in bases $11$, $16$, $19$).

@@ -1,0 +1,17 @@
+Let circle $O$ have radius $R$. Its radius to $C$ is parallel to $AB$, so use $O=(0,0),C=(R,0),A=(-u,v),B=(u,v)$ with $u>0$ and $u^2+v^2=R^2$. The condition $AB=BC$ gives $4u^2=2R(R-u)$, hence $u=\dfrac{R}{2}$ and, after reflection if needed, $v=\dfrac{\sqrt3R}{2}$. Thus $AB=BC=R$ and $AC=\sqrt3R=16$, giving $R=\dfrac{16}{\sqrt3}$ and $v=8$.
+
+Since $DE$ is horizontal and $E$ lies on the vertical tangent at $C$, $D_y=EC=\dfrac{16}{3}$. Along segment $AC$ this makes $D$ two-thirds of the height of $A$, hence $D=(0,\dfrac{16}{3})$. The center of circle $P$ is $(0,k)$ because $A,B$ have equal heights. Equating its distances to $A$ and $D$,
+\[
+\dfrac{64}{3}+(8-k)^2=(\dfrac{16}{3}-k)^2
+\quad\Longrightarrow\quad k=\dfrac{32}{3}.
+\]
+Its radius is $\dfrac{16}{3}$. Consequently the area ratio is
+\[
+\boxed{\dfrac{R^2}{(\dfrac{16}{3})^2}=3}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real R=16/sqrt(3);pair O=(0,0),A=(-R/2,8),B=(R/2,8),C=(R,0),D=(0,16.0/3),E=(R,16.0/3),P=(0,32.0/3);draw(circle(O,R),gray);draw(circle(P,16.0/3),blue);draw(A--B--C--cycle);draw((R,-2)--(R,10));draw(D--E,dashed);dot(O);dot(P);label("$O$",O,SW);label("$P$",P,N);label("$A$",A,W);label("$B$",B,(1,0));label("$C$",C,SE);label("$D$",D,W);label("$E$",E,(1,0));label("$\dfrac{16}{3}$",(E+C)/2,(1,0));
+\end{asy}

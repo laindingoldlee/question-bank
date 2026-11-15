@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2577870_lamboreghinis_problem_thread_math_and_programming
+% Stable identity: aops-topic-2577870-q107
+Maintain two consecutive sequence values. Before each loop iteration they are $F_k,F_{k+1}$; append the first and replace the pair by $F_{k+1},F_k+F_{k+1}$. This invariant proves correctness.\begin{verbatim}
+def sequence(a,b,N):
+    assert N>=0
+    out=[]
+    for k in range(N):
+        out.append(a)
+        a,b=b,a+b
+    return out
+assert sequence(1,1,6)==[1,1,2,3,5,8]
+\end{verbatim}
+There are $N$ iterations and only two working sequence values besides the output.

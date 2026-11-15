@@ -1,0 +1,7 @@
+Let the side length be $s$ and let $\phi=\dfrac{1+\sqrt5}{2}$. The diagonal length is $\phi s$: Ptolemy applied to four successive vertices gives $d^2=s^2+sd$, whose positive ratio is $\phi$. Use coordinates $A=(0,0)$, $E=(s,0)$, $B=s(-\cos72^\circ,\sin72^\circ)$, and $C=s(\dfrac{1}{2},\phi\sin72^\circ)$. Since $\phi\cos72^\circ=\dfrac{1}{2}$, these satisfy $C=\phi B+E$. Writing $Z=tC=(1-u)B+\dfrac{uE}{2}$ and comparing coefficients gives $t\phi=1-u$, $t=\dfrac{u}{2}$, hence $t=\dfrac{1}{\phi+2}$. Therefore $AZ=\dfrac{\phi s}{\phi+2}=\dfrac{s}{\sqrt5}$. With $AZ=3$, $\boxed{AB=3\sqrt5}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real c=cos(72*pi/180),h=sin(72*pi/180),f=(1+sqrt(5))/2;pair A=(0,0),E=(1,0),B=(-c,h),C=(.5,f*h),D=(1+c,h),M=(.5,0),Z=C/(f+2);draw(A--B--C--D--E--cycle);draw(A--C,blue);draw(B--M,red);dot(Z);label("A",A,SW);label("B",B,W);label("C",C,N);label("D",D,(1,0));label("E",E,SE);label("M",M,S);label("Z",Z,(1,0));label("3",Z/2,SE);
+\end{asy}

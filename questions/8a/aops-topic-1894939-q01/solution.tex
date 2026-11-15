@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1894939_number_theory_problem
+% Stable identity: aops-topic-1894939-q01
+\textbf{A sum of two squares.} Since $(2^9-1)^2=2^{18}-2^{10}+1$,
+\[
+2^{19}-2^{10}+1=2^{18}+(2^9-1)^2=512^2+511^2 ,
+\]
+and $\gcd(512,511)=1$. The number is odd, so $2$ is not a factor.
+
+\textbf{Each prime factor is $1$ more than a multiple of $4$.} Let $p$ be an odd prime with $p\mid m^2+n^2$, where $\gcd(m,n)=1$. Then $p\nmid n$ (otherwise $p\mid m$ too), so $n$ has an inverse modulo $p$, and $c=mn^{-1}$ satisfies $c^2\equiv-1\pmod p$. If $p\equiv3\pmod4$, then $\dfrac{p-1}{2}$ is odd and
+\[
+c^{p-1}=\left(c^2\right)^{\dfrac{p-1}{2}}\equiv(-1)^{\dfrac{p-1}{2}}=-1\pmod p,
+\]
+contradicting Fermat's little theorem $c^{p-1}\equiv1$. So $p\equiv1\pmod4$.
+
+Hence each of the three prime factors leaves remainder $1$, and the sum of the remainders is $\boxed{3}$. (Indeed $2^{19}-2^{10}+1=523265=5\cdot229\cdot457$, and $5,229,457$ are all $\equiv1\pmod4$.)

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1349989_triangle_confusion
+% Stable identity: aops-topic-1349989-q01
+Let the triangle be $ABC$ with the right angle at $C$, so $CA=CB$, and let the bisector of $\angle C$ meet the hypotenuse $AB$ at $D$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair C=(0,0),A=(0,4),B=(4,0),D=(2,2);
+draw(A--B--C--cycle,linewidth(0.9)); draw(C--D,red);
+draw(ra(C,B-C,A-C,0.4));
+draw(arc(C,1.05,0,45),blue); draw(arc(C,1.2,45,90),blue);
+draw((A+D)/2+0.15*dir(45)--(A+D)/2-0.15*dir(45)); draw((B+D)/2+0.15*dir(45)--(B+D)/2-0.15*dir(45));
+draw((A+C)/2+(-0.15,0)--(A+C)/2+(0.15,0)); draw((B+C)/2+(0,-0.15)--(B+C)/2+(0,0.15));
+label("$A$",A,N); label("$B$",B,E); label("$C$",C,SW); label("$D$",D,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In triangles $ACD$ and $BCD$: $CA=CB$, $\angle ACD=\angle BCD=45^\circ$, and $CD$ is common. By SAS the triangles are congruent, so $\boxed{AD=BD}$: the bisector meets the hypotenuse at its midpoint. (Moreover $\angle ADC=\angle BDC=90^\circ$, so the bisector is also the altitude and the median. The same argument works for the apex angle of any isosceles triangle. It is special to the angle between the equal sides: in a right triangle with unequal legs, the angle bisector theorem gives $\dfrac{AD}{DB}=\dfrac{CA}{CB}\ne1$.)

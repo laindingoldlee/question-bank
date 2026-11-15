@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h1712630_kinda_bashy_problem
+% Stable identity: aops-topic-1712630-q01
+Place $A=(0,0)$ and $C=(10,0)$, and let $B=(p,q)$ with $q>0$. Then $p^2+q^2=529$ and $(p-10)^2+q^2=625$; subtracting gives $-20p+100=96$, so $p=\dfrac{1}{5}$ and
+\[
+q^2=529-\dfrac{1}{25}=\dfrac{13224}{25},\qquad q=\dfrac{2\sqrt{3306}}{5}
+\]
+(as $13224=4\cdot3306$). Now:
+\begin{itemize}
+\item $D=\dfrac{B+C}{2}=\left(\dfrac{51}{10},\dfrac {q}{2}\right)$;
+\item $E=\left(\dfrac{1}{5},0\right)$, since $AC$ lies on the $x$-axis (and $0<\dfrac{1}{5}<10$, so $E$ is on side $AC$);
+\item by the angle bisector theorem $\dfrac{AF}{FB}=\dfrac{CA}{CB}=\dfrac{10}{25}=\dfrac{2}{5}$, so $F=\dfrac{2}{7}B=\left(\dfrac{2}{35},\dfrac{2q}{7}\right)$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+void ra(pair P,pair U,pair V,real s){draw(P+s*unit(U-P)--P+s*unit(U-P)+s*unit(V-P)--P+s*unit(V-P),linewidth(0.5));}
+pair A=(0,0),C=(10,0),B=(0.2,sqrt(528.96));
+pair D=(B+C)/2,Ep=(B.x,0),F=A+(2/7)*(B-A);
+filldraw(D--Ep--F--cycle,rgb(1,0.85,0.85),red+linewidth(0.8));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,dashed+gray);draw(C--F,dashed+gray);
+dot(D);dot(Ep);dot(F);
+label("$A$",A,dir(-135));label("$B$",B,N);label("$C$",C,SE);
+label("$D$",D,NE);label("$E$",Ep,dir(-45));label("$F$",F,W);
+label("$23$",(A+B)/2+(0,4),W);label("$25$",(B+C)/2+(0.6,3),NE);label("$10$",(A+C)/2+(1.5,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+With $D-E=\left(\dfrac{49}{10},\dfrac {q}{2}\right)$ and $F-E=\left(-\dfrac{1}{7},\dfrac{2q}{7}\right)$,
+\[
+[DEF]=\dfrac{1}{2}\left|\dfrac{49}{10}\cdot\dfrac{2q}{7}-\dfrac {q}{2}\cdot\left(-\dfrac{1}{7}\right)\right|=\dfrac{1}{2}\left(\dfrac{7q}{5}+\dfrac{q}{14}\right)=\dfrac{1}{2}\cdot\dfrac{103q}{70}=\dfrac{103q}{140}.
+\]
+Substituting $q=\dfrac{2\sqrt{3306}}{5}$:
+\[
+[DEF]=\dfrac{103\cdot2\sqrt{3306}}{700}=\boxed{\dfrac{103\sqrt{3306}}{350}}\approx16.92 .
+\]

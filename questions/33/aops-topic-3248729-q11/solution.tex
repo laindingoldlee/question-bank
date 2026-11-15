@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3248729_2024_emcc_guts_round_p1_p12_exeter_math_club_competition
+% Stable identity: aops-topic-3248729-q11
+Let the outer and inner radii be $R,r$. Joining the centre to a vertex and to an adjacent side midpoint forms a right triangle with hypotenuse $R$ and legs $r,\dfrac{1}{2}$. Thus $R^2-r^2=\dfrac{1}{4}$, and the annular area is $\boxed{\pi(R^2-r^2)=\dfrac{\pi}{4}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real R=1/(2*sin(36*pi/180)),r=R*cos(36*pi/180);pair[] v;for(int k=0;k<5;++k)v.push(R*dir(90+72*k));draw(circle((0,0),R));draw(circle((0,0),r),blue);for(int k=0;k<5;++k)draw(v[k]--v[(k+1)%5]);pair M=(v[0]+v[1])/2;draw((0,0)--v[0],dashed);draw((0,0)--M,dashed);label("$O$",(0,0),SE);label("$R$",v[0]/2,E);label("$r$",M/2,SW);label("$\dfrac{1}{2}$",(M+v[0])/2,NW);
+\end{asy}

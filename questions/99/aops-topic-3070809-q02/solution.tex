@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3070809_cube_math
+% Stable identity: aops-topic-3070809-q02
+On each outer face, remove its boundary rows and columns. The remaining $(n-2)^2$ cubes have exactly one painted face. These six sets are disjoint, giving $\boxed{6(n-2)^2}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(3,0),C=(4,1),D=(1,1),u=(0,3);draw(A--B--C--(C+u)--(D+u)--(A+u)--cycle);draw(B--(B+u)--(A+u));draw((B+u)--(C+u));draw(A--D--C,dashed);draw(D--(D+u),dashed);fill((.6,.6)--(2.4,.6)--(2.4,2.4)--(.6,2.4)--cycle,lightgray);draw((.6,.6)--(2.4,.6)--(2.4,2.4)--(.6,2.4)--cycle,blue);label("$n$ cubes",(1.5,-.4));label("face interior",(1.5,1.5));label("edge rows excluded",(1.5,3.6));
+\end{asy}

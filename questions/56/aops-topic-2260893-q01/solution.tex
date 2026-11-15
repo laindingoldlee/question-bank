@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2260893_proof_the_circle
+% Stable identity: aops-topic-2260893-q01
+Let the triangle be $ABC$.
+
+\textbf{Lemma.} A point $P$ inside an angle is equidistant from its two sides if it lies on the bisector of the angle. Indeed, if $P$ is on the bisector of $\angle A$ and $E$, $F$ are the feet of the perpendiculars from $P$ to the two sides, then the right triangles $AEP$ and $AFP$ have the common hypotenuse $AP$ and equal angles at $A$, so they are congruent (AAS) and $PE=PF$.
+
+\textbf{The centre.} The bisector of $\angle A$ meets side $BC$ at a point $A_1$, and the bisector of $\angle B$ meets side $CA$ at a point $B_1$. The segment $BB_1$ divides the triangle into triangles $ABB_1$ and $B_1BC$; the point $A$ lies in the first and $A_1$ (on side $BC$) in the second, so segment $AA_1$ crosses $BB_1$ at a point $I$ inside the triangle.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(7,0), C=(2,5);
+real a=abs(B-C), b_=abs(C-A), c=abs(A-B);
+pair I=(a*A+b_*B+c*C)/(a+b_+c);
+pair foot(pair P,pair Q,pair R){return Q+dot(P-Q,R-Q)/dot(R-Q,R-Q)*(R-Q);}
+pair F1=foot(I,B,C), F2=foot(I,C,A), F3=foot(I,A,B);
+real r=abs(I-F3);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--I,blue); draw(B--I,blue); draw(C--I,blue+dotted);
+draw(circle(I,r),red);
+draw(I--F1,dashed); draw(I--F2,dashed); draw(I--F3,dashed);
+dot(I); dot(F1); dot(F2); dot(F3);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$I$",I,E);
+label("$D$",F1,NE); label("$E$",F2,NW); label("$F$",F3,S);
+label("$r$",(I+F3)/2,E,fontsize(8pt));
+\end{asy}
+
+Let $D$, $E$, $F$ be the feet of the perpendiculars from $I$ to the lines $BC$, $CA$, $AB$. Since $I$ is on the bisector of $\angle A$, $IE=IF$; since $I$ is on the bisector of $\angle B$, $ID=IF$. So $ID=IE=IF=r$.
+
+\textbf{The circle.} Consider the circle with centre $I$ and radius $r$. At $D$ the radius $ID$ is perpendicular to line $BC$, so the line $BC$ is tangent to the circle at $D$; similarly $CA$ is tangent at $E$ and $AB$ at $F$. The disc lies on the same side of each of the three lines as $I$ (it only touches each line), so it lies inside the triangle; hence the touching points $D$, $E$, $F$ belong to the triangle and lie on its sides, not on their extensions. So the circle touches all three sides; it is the inscribed circle (incircle) of the triangle. (Moreover, the right triangles $CDI$ and $CEI$ have the common hypotenuse $CI$ and the equal legs $ID=IE$, so they are congruent and $\angle DCI=\angle ECI$: the point $I$ also lies on the bisector of $\angle C$, so the three angle bisectors are concurrent.)

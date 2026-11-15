@@ -1,0 +1,46 @@
+% Source: https://artofproblemsolving.com/community/c3h1649869_venns_diagram_of_set
+% Stable identity: aops-topic-1649869-q01
+In interval notation $D=(-5,6]$, $E=(5,6]$ and $F=[-6,3)$. The relations between them decide the Venn diagram:
+\begin{itemize}
+\item $E\subseteq D$, so the circle $E$ is drawn inside $D$;
+\item $F\cap D=(-5,3)$ is nonempty, while $F\not\subseteq D$ (e.g. $-6\in F$) and $D\not\subseteq F$ (e.g. $4\in D$), so $F$ and $D$ partly overlap;
+\item $F\cap E=\varnothing$ (every element of $F$ is less than $3$, every element of $E$ more than $5$), so $F$ and $E$ do not meet.
+\end{itemize}
+
+\textbf{(a)} Since $E\subseteq D$, $D\cup E=D$. Since $D\subseteq F\cup D$, $(F\cup D)\cap D=D$. Hence
+\[
+(F\cup D)\cap(D\cup E)=D=\boxed{(-5,6]} ,
+\]
+the shaded region:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+usepackage("amssymb");
+draw((-3.3,-2)--(3.3,-2)--(3.3,2.2)--(-3.3,2.2)--cycle);
+fill(circle((0.4,0),1.6),paleblue);
+draw(circle((0.4,0),1.6),linewidth(0.9));draw(circle((1.15,0),0.55),linewidth(0.9));draw(circle((-1.2,0),1.25),linewidth(0.9));
+label("$D$",(0.4,0)+1.6*dir(60),NE);label("$E$",(1.15,0));label("$F$",(-1.2,0)+1.25*dir(130),NW);
+label("$\mathbb{R}$",(-3.3,2.2),SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(b)} $F\cap E=\varnothing$, so $F\cap D\cap E=\varnothing$ and its complement is everything:
+\[
+(F\cap D\cap E)^c=\boxed{\mathbb{R}} ,
+\]
+the whole shaded rectangle:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+usepackage("amssymb");
+fill((-3.3,-2)--(3.3,-2)--(3.3,2.2)--(-3.3,2.2)--cycle,paleblue);
+draw((-3.3,-2)--(3.3,-2)--(3.3,2.2)--(-3.3,2.2)--cycle);
+draw(circle((0.4,0),1.6),linewidth(0.9));draw(circle((1.15,0),0.55),linewidth(0.9));draw(circle((-1.2,0),1.25),linewidth(0.9));
+label("$D$",(0.4,0)+1.6*dir(60),NE);label("$E$",(1.15,0));label("$F$",(-1.2,0)+1.25*dir(130),NW);
+label("$\mathbb{R}$",(-3.3,2.2),SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

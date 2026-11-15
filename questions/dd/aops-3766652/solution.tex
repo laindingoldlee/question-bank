@@ -1,0 +1,9 @@
+Each pair of cevians from different vertices intersects once in the interior, giving $3\cdot9^2=243$ pairwise crossings. At most three cevians meet at an interior point. A triple crossing is counted three times as a pair but contributes only two new regions in total, so it must be subtracted once. Ceva\textquotesingle s theorem gives the concurrency condition $ijk=(10-i)(10-j)(10-k)$ for the three division ratios. Checking $i,j\in\{1,\ldots,9\}$ using $k = \dfrac{10 (10-i) (10-j)}{ij+(10-i)(10-j)}$ gives exactly the permutations of $(1,5,9),(2,5,8),(3,5,7),(4,5,6)$ and $(5,5,5)$: 25 triples. Starting with one region, the 27 cevians therefore produce $1+27+243-25=\boxed{246}$ regions.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair A=(0,5),B=(-4,0),C=(4,0);draw(A--B--C--cycle);for(int i=1;i<10;++i){draw(A--((10-i)*B+i*C)/10,gray);draw(B--((10-i)*C+i*A)/10,gray);draw(C--((10-i)*A+i*B)/10,gray);}label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));
+\end{asy}
+

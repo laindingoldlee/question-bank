@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3529433_probability_pentagon_contains_center
+% Stable identity: aops-topic-3529433-q01
+The triangle fails to contain $O$ exactly when the three ray directions lie within some open semicircle; boundary coincidences have probability zero. Whenever this occurs, exactly one of the sampled directions begins the clockwise semicircle containing the other two. For each specified starting direction, both others lie in its next half-turn with probability $(\dfrac{1}{2})^2=\dfrac{1}{4}$. The three events are disjoint apart from null boundaries, so failure has probability $\dfrac{3}{4}$. The desired probability is $\boxed{\dfrac{1}{4}}$. Distances to the pentagon boundary do not affect this angular criterion.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair O=(0,0);pair[] V;for(int i=0;i<5;++i)V.push(2*dir(90+72*i));draw(V[0]--V[1]--V[2]--V[3]--V[4]--cycle);pair A=.76*V[0]+.24*V[1],B=.42*V[2]+.58*V[3],C=.3*V[3]+.7*V[4];draw(A--B--C--cycle,dashed);draw(O--A,gray);draw(O--B,gray);draw(O--C,gray);dot(O);label("$O$",O,N);label("$A$",A,NW);label("$B$",B,SW);label("$C$",C,SE);
+\end{asy}

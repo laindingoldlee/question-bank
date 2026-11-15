@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1666895_expected_number_of_matches_to_win_2_games
+% Stable identity: aops-topic-1666895-q01
+\textbf{(a)} The series lasts $2$ games if the same team wins both (probability $\dfrac{1}{2}$) and $3$ games otherwise (probability $\dfrac{1}{2}$). The expected number is $2\cdot\dfrac{1}{2}+3\cdot\dfrac{1}{2}=\boxed{\dfrac{5}{2}}$.
+
+\textbf{(b)} Let $X$ be the number of games. The series ends with game $k$ ($n\le k\le 2n-1$) when one team wins game $k$ and exactly $n-1$ of the first $k-1$ games. For each of the two teams this has probability $\dbinom{k-1}{n-1}\left(\dfrac{1}{2}\right)^{k}$, so
+\[
+P(X=k)=2\dbinom{k-1}{n-1}\dfrac{1}{2^k},\qquad E[X]=\sum_{k=n}^{2n-1}2k\dbinom{k-1}{n-1}\dfrac{1}{2^k}.
+\]
+Since $k\dbinom{k-1}{n-1}=n\dbinom{k}{n}$,
+\[
+E[X]=2n\sum_{k=n}^{2n-1}\dbinom kn\dfrac{1}{2^k}.
+\]
+To evaluate the sum, apply the same formula to a series won by the first team to win $n+1$ games: it ends with game $k+1$ with probability $2\dbinom{k}{n}\dfrac{1}{2^{k+1}}=\dbinom kn\dfrac{1}{2^k}$, for $k=n,n+1,\dots,2n$. These probabilities add up to $1$, so
+\[
+\sum_{k=n}^{2n}\dbinom kn\dfrac{1}{2^k}=1,\qquad \sum_{k=n}^{2n-1}\dbinom kn\dfrac{1}{2^k}=1-\dbinom{2n}{n}\dfrac{1}{4^n}.
+\]
+Therefore
+\[
+\boxed{E[X]=2n\left(1-\dfrac{1}{4^n}\dbinom{2n}{n}\right)}.
+\]
+Checks: $n=1$ gives $2\left(1-\dfrac{2}{4}\right)=1$, and $n=2$ gives $4\left(1-\dfrac{6}{16}\right)=\dfrac{5}{2}$, as in (a).

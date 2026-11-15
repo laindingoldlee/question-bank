@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2450977_tetrahedron
+% Stable identity: aops-topic-2450977-q01
+\textbf{(b)} Let the edges $OA=a$, $OB=b$, $OC=c$ be mutually perpendicular. Take triangle $OAB$ as the base: it is a right triangle with area $\dfrac{ab}{2}$. The edge $OC$ is perpendicular to both $OA$ and $OB$, hence to the plane $OAB$, so the height from $C$ is $OC=c$. Therefore
+\[V=\dfrac13\cdot\dfrac{ab}{2}\cdot c=\dfrac{abc}{6}.\ \blacksquare\]
+
+\textbf{(a)} By (b), the tetrahedron whose three edges at $O$ are mutually perpendicular with length $1$ has volume $\dfrac16$.
+
+The regular tetrahedron with edge $1$ also has three edges of length $1$ at each vertex. Its base is an equilateral triangle with area $\dfrac{\sqrt3}{4}$; the foot of the height from the top vertex is the centre of the base, at distance $\dfrac{1}{\sqrt3}$ from each base vertex, so the height is $\sqrt{1-\dfrac13}=\sqrt{\dfrac23}$. Its volume is
+\[\dfrac13\cdot\dfrac{\sqrt3}{4}\cdot\sqrt{\dfrac23}=\dfrac{\sqrt2}{12}\approx0.118,\]
+which differs from $\dfrac16\approx0.167$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair pr(real x,real y,real z){return (x+0.75*y,z+0.45*y);}
+pair O=pr(0,0,0), A=pr(1,0,0), B=pr(0,1,0), C=pr(0,0,1);
+draw(O--A--C--cycle,linewidth(0.8)); draw(A--B--C,linewidth(0.8)); draw(O--B,dashed);
+draw(pr(0.12,0,0)--pr(0.12,0,0.12)--pr(0,0,0.12));
+label("$1$",(O+A)/2,S,fontsize(8pt)); label("$1$",(O+C)/2,W,fontsize(8pt)); label("$1$",(O+B)/2,NW,fontsize(8pt));
+label("$V=\dfrac16$",(0.5,-0.35),fontsize(8pt));
+pair sh=(2.0,0);
+pair P0=sh+pr(0,0,0), P1=sh+pr(1,0,0), P2=sh+pr(0.5,sqrt(3)/2,0), P3=sh+pr(0.5,sqrt(3)/6,sqrt(2/3));
+draw(P0--P1--P3--cycle,linewidth(0.8)); draw(P1--P2--P3,linewidth(0.8)); draw(P0--P2,dashed);
+label("$1$",(P0+P1)/2,S,fontsize(8pt)); label("$1$",(P0+P3)/2,W,fontsize(8pt)); label("$1$",(P0+P2)/2,NW,fontsize(8pt));
+label("$V=\dfrac{\sqrt2}{12}$",sh+(0.5,-0.35),fontsize(8pt));
+\end{asy}
+
+So three edge lengths do not determine the volume. (In general all six edges are needed; then the volume can be computed, for example with coordinates.)

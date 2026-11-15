@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1342435_easy_and_evil_
+% Stable identity: aops-topic-1342435-q01
+Let the hypotenuse be $AB=10$, with the right angle at $C$, and let $O$ be the midpoint of $AB$. Since $\angle ACB=90^\circ$, the point $C$ lies on the circle with diameter $AB$ (Thales' theorem), so $OC=5$. If $H$ is the foot of the altitude from $C$, then
+\[CH\le CO=5,\]
+because $CH$ is the shortest distance from $C$ to the line $AB$. So the altitude to the hypotenuse is at most $5$, never $6$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(-5,0), B=(5,0), O=(0,0);
+draw(arc(O,5,0,180),blue); draw(A--B,linewidth(0.9));
+pair C=(0,5); draw(C--O,dashed);
+draw((-6,6)--(6,6),red+dashed); label("height $6$",(6,6),E,red+fontsize(8pt));
+pair C2=5*dir(130); draw(A--C2--B); pair H2=(C2.x,0); draw(C2--H2,dashed); dot(C2); dot(H2);
+draw(H2+(0.3,0)--H2+(0.3,0.3)--H2+(0,0.3));
+label("$C$",C2,NW); label("$H$",H2,S); label("$A$",A,W); label("$B$",B,E); label("$O$",O,S); label("$5$",(0,4.1),E);
+dot(C);
+\end{asy}
+
+(Algebraically: the legs would satisfy $a^2+b^2=100$ and $ab=10\cdot6=60$, since both $ab$ and $10\cdot6$ are twice the area. Then $(a-b)^2=100-120<0$, which is impossible.) So \textbf{no such triangle exists}, and the ``area $30$'' is meaningless.

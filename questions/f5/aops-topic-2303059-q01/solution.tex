@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2303059_help_i_guess
+% Stable identity: aops-topic-2303059-q01
+Let $O$ be the point of the throw. Sam always needs time $\dfrac du$ to reach the stick, whatever the direction, so only the return trip matters. When Sam picks up the stick at the point $S$, Dr.~Pisani has walked $\dfrac{vd}{u}$ to a point $W$, and by the triangle inequality the distance $D=SW$ satisfies
+\[D\le SO+OW=d+\dfrac{vd}{u},\]
+with equality only when $O$ lies between $S$ and $W$ on his path, that is, when the stick is thrown straight back.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+draw((-3.6,0)--(4.6,0),gray+dashed,Arrow(5)); label("path of Dr.~Pisani",(4.6,0),S,gray+fontsize(8pt));
+pair W1=(0.67,0);
+pair Sb=(-2,0), Ss=(0,2);
+dot(O); label("$O$",O,S); dot(W1); label("$W$",W1,S);
+dot(Sb,red); label("stick behind",Sb,N,red+fontsize(8pt)); dot(Ss,blue); label("stick sideways",Ss,N,blue+fontsize(8pt));
+draw(O--Ss,blue,Arrow(5)); draw(Ss--(1.5,0),blue+dashed,Arrow(5)); dot((1.5,0),blue); label("$M$",(1.5,0),S,blue);
+draw(Ss--W1,blue+dotted); label("$D$",(Ss+W1)/2,E,blue+fontsize(8pt));
+label("$d$",(O+Ss)/2,W,blue+fontsize(8pt));
+draw((0,-0.6)--(-2,-0.6),red,Arrow(5)); label("$d$",(-1,-0.6),S,red+fontsize(8pt));
+draw((-2,-1.3)--(2,-1.3),red,Arrow(5)); label("behind: Sam chases him at relative speed $u-v$",(0.5,-1.3),S,red+fontsize(8pt));
+\end{asy}
+
+Suppose the return takes time $t$, and Sam meets him at $M$, so $SM=ut$ and $WM=vt$. Again by the triangle inequality, $ut=SM\le SW+WM=D+vt$, so
+\[t\le\dfrac{D}{u-v}\le\dfrac{d}{u-v}\left(1+\dfrac vu\right),\]
+and both inequalities are equalities exactly when the stick is thrown straight back (then Dr.~Pisani walks directly away from Sam, who must chase him). So throwing the stick behind him gives the longest time, $\boxed{\textbf{(B)}}$. Explicitly:
+\begin{itemize}
+\item behind: $\dfrac du+\dfrac{d+\dfrac{vd}u}{u-v}=\dfrac{2d}{u-v}$;
+\item in front: Sam meets him head-on after picking up the stick at distance $d-\dfrac{vd}{u}$, so the time is $\dfrac du+\dfrac{d-\dfrac{vd}u}{u+v}=\dfrac{2d}{u+v}$;
+\item sideways: strictly between these two (for example, $u=3v$ gives $\dfrac{3d}{4v}$, compared with $\dfrac dv$ behind and $\dfrac d{2v}$ in front).
+\end{itemize}
+The student's argument compares the sideways throw only with a throw in front: Sam's sideways path is indeed longer than in that case. But it ignores the backward throw, where Sam must catch up with someone walking away from him, closing the gap only at the relative speed $u-v$. So (C) is wrong, and (D) is wrong too, since the times differ.

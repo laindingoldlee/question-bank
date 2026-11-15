@@ -1,0 +1,9 @@
+Write $a=AB,c=BC$. The angle-bisector length formula is $BD=\dfrac{2ac\cos60^\circ}{a+c}=\dfrac{ac}{a+c}$. It follows either by adding the areas of $ABD,BCD$ and using the angle-bisector theorem, or directly from the sine rule. Substituting gives $10=\dfrac{ac}{49}$, hence $\boxed{ac=490}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(14,0),(0,0),(-17.5,17.5sqrt(3))}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));pair D=(p[0]*35+p[2]*14)/49;draw(p[1]--D);label("$D$",D,(0,1));
+\end{asy}
+

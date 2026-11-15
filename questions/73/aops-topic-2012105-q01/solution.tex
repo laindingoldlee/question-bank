@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2012105_space_diagonal_of_rectangular_prism
+% Stable identity: aops-topic-2012105-q01
+With $x=2$ and $y=3$:
+\[\text{length}=2^3=8,\qquad \text{width}=3!=6,\qquad \text{height}=\dfrac{8\cdot6}{2}=24.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair o=(0.45,0.3);
+real L=8, Wd=6, H=24; real s=0.12;
+pair P0=(0,0), P1=(L*s*1.6,0), P2=P1+Wd*s*o*1.6, P3=P0+Wd*s*o*1.6;
+pair up=(0,H*s*0.9);
+draw(P0--P1--P1+up--P0+up--cycle,linewidth(0.8));
+draw(P1--P2--P2+up--P1+up,linewidth(0.8));
+draw(P0+up--P3+up--P2+up,linewidth(0.8));
+draw(P0--P3--P2,dashed+gray);
+draw(P3--P3+up,dashed+gray);
+draw(P0--P2+up,red+linewidth(0.9));
+label("$8$",(P0+P1)/2,S);
+label("$6$",(P1+P2)/2,SE);
+label("$24$",P1+up/2,E);
+label("$d$",(P0+P2+up)/2+(-0.15,0.15),NW,red);
+dot(P0);dot(P2+up);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The space diagonal $d$ of a rectangular prism with edges $\ell,w,h$ satisfies $d^2=\ell^2+w^2+h^2$ (apply the Pythagorean theorem to a face diagonal and then to the vertical edge). Hence
+\[d=\sqrt{8^2+6^2+24^2}=\sqrt{64+36+576}=\sqrt{676}=\boxed{26}.\]

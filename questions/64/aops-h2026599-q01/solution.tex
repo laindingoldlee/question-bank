@@ -1,0 +1,21 @@
+Scale to $A=(0,0),B=(1,0),C=(u,v)$ with $v>0$. Write $D=tC$ and $E=B+s(C-B)$, where $0<t,s<1$, and put
+\[
+U=u^2+v^2,\qquad V=(u-1)^2+v^2.
+\]
+The power of $C$ in the circle $ABED$ gives $(1-t)U=(1-s)V$.
+
+Let the coordinates of $X,Y$ on $AB$ be $x,y$. Their circle meets $AC$ at $D,C$ and $BC$ at $E,C$. Taking powers of $A,B$ gives
+\[
+xy=tU,\qquad(1-x)(1-y)=sV.
+\]
+Subtracting yields
+\[
+x+y=1+tU-sV=1+U-V=2u.
+\]
+Thus the midpoint of $XY$ is $(u,0)$, precisely the perpendicular projection of $C=(u,v)$ onto $AB$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(6,0),C=(2,5),D=(.2,.5),E=(6,0)+(149/410)*(-4,5),X=(2-sqrt(1.1),0),Y=(2+sqrt(1.1),0),H=(2,0);draw(circle((3,-.91),sqrt(9+.91*.91)),gray);draw(circle((2,2.39),2.61),blue);draw(A--B--C--cycle);draw(D--E,gray);draw(C--H,dashed);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,W);label("$E$",E,NE);label("$X$",X,S);label("$Y$",Y,S);label("$H$",H,S);
+\end{asy}

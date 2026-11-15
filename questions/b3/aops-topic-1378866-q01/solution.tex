@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1378866_kmo_nt_problem_
+% Stable identity: aops-topic-1378866-q01
+Let $s=2m+1$, an odd integer $\ge3$. Since $m^4+2m^3+m^2=\left(m(m+1)\right)^2$ and $m(m+1)=\dfrac{s^2-1}{4}$,
+\[
+16\cdot157p=(s^2-1)^2+48=s^4-2s^2+49=(s^2+7)^2-16s^2=(s^2-4s+7)(s^2+4s+7).
+\]
+For odd $s$, $s^2\equiv1\pmod8$ and $4s\equiv4\pmod8$, so each factor is $\equiv4\pmod8$: each is $4$ times an odd number. Thus
+\[
+157p=u\cdot v,\qquad u=\dfrac{(s-2)^2+3}{4},\quad v=\dfrac{(s+2)^2+3}{4},\qquad 1\le u<v .
+\]
+Since $157$ and $p$ are primes, $\{u,v\}$ is $\{1,157p\}$ or $\{157,p\}$.
+\begin{itemize}
+\item $u=1$: $(s-2)^2=1$, so $s=3$ ($m=1$); then $157p=v=7$, impossible.
+\item $u=157$, $v=p$: $(s-2)^2=625$, so $s=27$, $m=13$ and $p=v=\dfrac{29^2+3}{4}=211$, which is prime.
+\item $u=p$, $v=157$: $(s+2)^2=625$, so $s=23$, $m=11$ and $p=u=\dfrac{21^2+3}{4}=111=3\cdot37$, not prime.
+\end{itemize}
+So $m=13$, $p=211$ (check: $13^2\cdot14^2+3=33127=157\cdot211$), and $m+p=\boxed{224}$.

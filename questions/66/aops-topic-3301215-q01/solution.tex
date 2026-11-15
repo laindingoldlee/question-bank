@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h3301215_gen_a_using_up_my_brain_cells
+% Stable identity: aops-topic-3301215-q01
+A full week changes the balance by $7(724)-5(1434)=-2102$. To check the daytime balance before the nightly addition, simulate in the specified order:
+\begin{verbatim}
+from datetime import date, timedelta
+balance = 1000000
+d = date(2023, 1, 1)
+while True:
+    if d.weekday() < 5:
+        balance -= 1434
+    if balance <= 0:
+        break
+    balance += 724
+    d += timedelta(days=1)
+print(d, balance)
+# 2032-02-11 -580
+\end{verbatim}
+Every previous day is checked, so the first date is $\boxed{\text{Wednesday, February 11, 2032}}$.

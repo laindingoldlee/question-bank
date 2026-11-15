@@ -1,0 +1,42 @@
+% Source: https://artofproblemsolving.com/community/c3h1564751_geometry_problem
+% Stable identity: aops-topic-1564751-q01
+Put $A=(0,0)$, $B=(2,0)$, $C=(2,2)$, $D=(0,2)$. Since $EB=ED$, $E$ lies on the perpendicular bisector of $BD$, the line $y=x$; since $C$ is inside triangle $BDE$, $E=(t,t)$ with $t>2$.
+
+\textbf{The point $F$.} Line $DE$ through $(0,2)$ and $(t,t)$ meets the line $x=2$ (line $BC$) at
+\[
+F=\left(2,\ 2+\dfrac{2(t-2)}{t}\right)=\left(2,\ 4-\dfrac{4}{t}\right),
+\]
+above $C$: $F$ is on side $DE$ and on line $BC$ extended beyond $C$.
+
+\textbf{The parallel condition.} $FA\parallel EB$ means the vectors $F-A=\left(2,4-\dfrac{4}{t}\right)$ and $E-B=(t-2,t)$ are parallel:
+\[
+2t=\left(4-\dfrac{4}{t}\right)(t-2)\iff2t^2=(4t-4)(t-2)\iff t^2-6t+4=0 .
+\]
+So $t=3\pm\sqrt5$, and $t>2$ forces $t=3+\sqrt5$. Then $\dfrac{4}{t}=\dfrac{4}{3+\sqrt5}=3-\sqrt5$ and $F=\left(2,1+\sqrt5\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real t=3+sqrt(5);
+pair A=(0,0),B=(2,0),C=(2,2),D=(0,2),Ep=(t,t),F=(2,1+sqrt(5));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(B--D--Ep--cycle,linewidth(0.9));
+draw(C--F,red+linewidth(1));
+draw(A--F,blue+dashed);
+draw(B--Ep,blue);
+draw(B--(C+0*(1,0)),linewidth(0.9));
+dot(F);dot(C);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,(1.2,-0.6));label("$D$",D,W);label("$E$",Ep,NE);label("$F$",F,NW);
+label("$2$",(A+B)/2,S);label("$2$",(A+D)/2,W);
+pair m1=(B+Ep)/2,m2=(D+Ep)/2;
+draw(m1+0.15*unit(rotate(90)*(Ep-B))--m1-0.15*unit(rotate(90)*(Ep-B)));
+draw(m2+0.15*unit(rotate(90)*(Ep-D))--m2-0.15*unit(rotate(90)*(Ep-D)));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence
+\[
+FC=\left(1+\sqrt5\right)-2=\boxed{\sqrt5-1}\text{ cm}\approx1.236\text{ cm}.
+\]
+(Check: $FA$ and $EB$ both have slope $\dfrac{1+\sqrt5}{2}$.)

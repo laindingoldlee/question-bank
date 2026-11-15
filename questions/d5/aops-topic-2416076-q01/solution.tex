@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2416076_a_nice_counting_problem
+% Stable identity: aops-topic-2416076-q01
+Let $a_n$ be the number of valid lines of $n$ beads. Look at the last bead:
+\begin{itemize}
+\item if it is black or red ($2$ choices), the first $n-1$ beads form any valid line: $2a_{n-1}$ ways;
+\item if it is white, the bead before it must be black or red ($2$ choices), and the first $n-2$ beads form any valid line: $2a_{n-2}$ ways.
+\end{itemize}
+So $a_n=2a_{n-1}+2a_{n-2}$, with $a_1=3$ and $a_2=9-1=8$ (all pairs except white-white). Then
+\[a_3=2\cdot8+2\cdot3=22,\quad a_4=2\cdot22+2\cdot8=60,\quad a_5=2\cdot60+2\cdot22=164,\quad a_6=2\cdot164+2\cdot60=\boxed{448}.\]

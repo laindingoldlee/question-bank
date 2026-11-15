@@ -1,0 +1,9 @@
+Let the diagonals meet at $O$. Applying strict triangle inequality in $AOB,BOC,COD,DOA$ and summing gives $u<2(AO+BO+CO+DO)=2(e+f)$. Each diagonal is shorter than either boundary route between its endpoints. Thus $2e<u$ and $2f<u$, and adding yields $e+f<u$. Combining proves $\boxed{u<2(e+f)<2u}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(5,0),(4,3),(1,4)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--p[3]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));dot(p[3]);label("$D$",p[3],unit(p[3]-labelCentre));draw(p[0]--p[2]);draw(p[1]--p[3]);label("$O$",(2.5,1.875),(0,1));
+\end{asy}
+

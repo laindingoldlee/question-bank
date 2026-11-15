@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1729943_3_hats_logic_problem
+% Stable identity: aops-topic-1729943-q01
+Let the numbers be $m$ (Mark), $a$ (Ahmed), $d$ (David). Whoever looks at two numbers $u,v$ knows that his own number is $u+v$ or $|u-v|$, and the second option is impossible exactly when $u=v$ (it would be $0$).
+
+\textbf{Mark cannot tell.} Mark sees $a$ and $d$, so this says exactly that $a\ne d$.
+
+\textbf{Ahmed cannot tell.} Ahmed sees $m$ and $d$; his options are $m+d$ and $|m-d|$. He could rule one out if it were $0$ (i.e.\ $m=d$) or if it would have let Mark know, i.e.\ if it equalled $d$; $m+d=d$ is impossible and $|m-d|=d$ means $m=2d$. So Ahmed's statement says $m\ne d$ and $m\ne2d$.
+
+\textbf{David knows.} David sees $m$ and $a$; his options are $m+a$ and $|m-a|$. He can rule out an option $d'$ only if it is $0$, or if it would have let Mark know ($d'=a$), or let Ahmed know ($d'=m$ or $m=2d'$).
+\begin{itemize}
+\item If his number is $|m-a|$, the other option $m+a$ is positive, differs from $a$ and $m$, and $m=2(m+a)$ is impossible; so he could not rule it out and could not know.
+\item So his number is $d=m+a=25$, and he must be able to rule out $d'=|m-a|$. Now $d'=0$ would need $m=a=12.5$; $d'=a$ means $m=2a$ and $d'=m$ means $a=2m$, giving $25=3a$ or $25=3m$, impossible; so the reason must be $m=2|m-a|$. With $m=2(m-a)$ we get $m=2a$ again (impossible); with $m=2(a-m)$ we get $3m=2a$, so $m=2t$, $a=3t$ and $5t=25$, $t=5$.
+\end{itemize}
+Thus $m=10$, $a=15$, $d=25$. This is consistent with the first two statements: $a=15\ne25=d$, and $m=10$ is neither $25$ nor $50$. Mark's hat shows $\boxed{10}$ and Ahmed's hat shows $\boxed{15}$.

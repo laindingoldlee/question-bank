@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1939746_numbers_and_digit
+% Stable identity: aops-topic-1939746-q01
+Let $R_n=\dfrac{10^n-1}{9}=\underbrace{11\cdots1}_{n}$, so the condition is $6^a+1=bR_n$, with $b\ge1$.
+
+\textbf{$a=0$.} Then $bR_n=2$. Since $R_n\ge11$ for $n\ge2$, we get $n=1$, $b=2$.
+
+\textbf{$a\ge1$.} Every power $6^a$ ends in $6$, so $6^a+1$ ends in $7$, and the last digit of $bR_n$ is $b$; hence $b=7$. Then $7(10^n-1)=9(6^a+1)$, i.e.
+\[
+7\cdot2^n5^n=9\cdot2^a3^a+2^4 .
+\]
+Compare the powers of $2$ dividing both sides. The left side is divisible by exactly $2^n$.
+\begin{itemize}
+\item If $a\le3$, the right side is divisible by exactly $2^a$, so $n=a$. Checking, $a=1$ gives $70=70$; $a=2$ gives $700\ne340$; $a=3$ gives $7000\ne1960$.
+\item If $a=4$, the right side is $11664+16=11680=2^5\cdot365$, so $n=5$, but $700000\ne11680$.
+\item If $a\ge5$, the right side is $2^4(9\cdot2^{a-4}3^a+1)$ with the bracket odd, so $n=4$. Then $70000=9\cdot6^a+16$ gives $6^a=7776=6^5$, so $a=5$.
+\end{itemize}
+The solutions are $\boxed{(a,n,b)=(0,1,2),\ (1,1,7),\ (5,4,7)}$, that is, $6^0+1=2$, $6^1+1=7$ and $6^5+1=7777$.

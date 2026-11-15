@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1203277_four_tangent_spheres
+% Stable identity: aops-topic-1203277-q01
+The four centres are pairwise $16$ apart, so they form a regular tetrahedron of edge $16$, with the bottom three centres at height $8$. The height of a regular tetrahedron of edge $s$ is $s\sqrt{\dfrac{2}{3}}$, here $\dfrac{16\sqrt6}{3}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+real h=16*sqrt(6)/3; real g=16/sqrt(3); pair A=(0,8),T=(g,8+h),M=(8*sqrt(3),8);
+draw((-10,0)--(24,0)); draw(circle(A,8)); draw(circle(T,8),blue); draw(A--T,gray); dot(A); dot(T); dot(M); dot((g,8));
+draw((g,0)--(g,16+h),dashed); label("$A$",A,W); label("$T$",T,E); label("$M$",M,E); label("$16$",(A+T)/2,NW);
+label("$8$",(g,4),E); label("$8$",(g,12+h),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The figure shows the vertical plane through one lower centre $A$, the top centre $T$ and the point $M$ where the other two lower spheres touch; $T$ lies above the centroid of the lower centres. The top of the fourth sphere is at height
+\[8+\dfrac{16\sqrt6}{3}+8=\boxed{16+\dfrac{16\sqrt6}{3}}\approx29.1.\]

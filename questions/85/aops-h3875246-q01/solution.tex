@@ -1,0 +1,22 @@
+\begin{enumerate}
+\item The equations are $\boxed{ab=27.2,\ ab^6=14.8}$.
+\item Dividing gives $b^5=\dfrac{14.8}{27.2}=\dfrac{37}{68}$. Hence
+\[
+b=(\dfrac{37}{68})^{\dfrac{1}{5}}\approx\boxed{0.88540},\qquad
+a=27.2(\dfrac{68}{37})^{\dfrac{1}{5}}\approx\boxed{30.72065}.
+\]
+\item The average rate is $\dfrac{(14.8-27.2)}{(6-1)}=\boxed{-2.48}$ thousand dollars per year.
+\item The secant line is $A(t)=27.2-2.48(t-1)$, so $\boxed{A(3)=22.24}$ thousand dollars.
+\item $V''(t)=ab^t(\log b)^2>0$. Thus the graph is strictly convex, and its chord lies strictly above the graph between the two endpoints: $A(t)>V(t)$ for $1<t<6$.
+\item Solving $ab^t=2$ gives
+\[
+T=\dfrac{\log(\dfrac{2}{a})}{\log b}\approx22.44359.
+\]
+The model for the retained value before donation therefore has domain $\boxed{[0,T)}$. At $T$ the stated donation rule replaces the model with value zero.
+\end{enumerate}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;real b=(37.0/68)^(1.0/5),a=27.2/b;real f(real t){return a*b^t;}real g(real t){return 29.68-2.48t;}draw(graph(f,0,7),blue);draw(graph(g,1,6),red);draw((0,0)--(7.5,0),Arrow);draw((0,0)--(0,33),Arrow);dot((1,27.2));dot((6,14.8));label("$(1,27.2)$",(1,27.2),NE);label("$(6,14.8)$",(6,14.8),NE);label("$V$",(3,f(3)),SW);label("$A$",(3,g(3)),NE);label("$t$",(7.5,0),(1,0));
+\end{asy}

@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h3589523_combinatorics_exercises
+% Stable identity: aops-topic-3589523-q25
+For $n=5$, a row with $b$ black points creates $\binom b2+\binom{5-b}{2}\ge4$ same-colour pairs of columns. Across five rows there are at least $20$ such pairs. There are only $2\binom52=20$ colour-and-column-pair types, and no type may repeat without forming a forbidden rectangle. Equality must therefore hold everywhere, so each row has two or three black points, and exactly ten black pairs occur. If $r$ rows have three black points, the number of black pairs is $3r+(5-r)=5+2r$, which cannot equal ten. Hence $n=5$ is impossible, and any larger grid also contains a forbidden $5\times5$ subgrid. For $n=4$, the rows $0011,0101,1010,1100$ (where $1$ means black) work: any two rows share at most one black column and at most one white column. Thus $\boxed{n=4}$.
+\begin{asy}
+size(7cm);
+int[][] a={{0,0,1,1},{0,1,0,1},{1,0,1,0},{1,1,0,0}};for(int i=0;i<4;++i){for(int j=0;j<4;++j){filldraw(circle((j,-i),.13),a[i][j]==1?black:white,black);}}label("columns 1--4",(1.5,.5),N);label("rows 1--4",(-.5,-1.5),W);
+\end{asy}

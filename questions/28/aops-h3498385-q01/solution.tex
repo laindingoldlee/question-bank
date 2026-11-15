@@ -1,0 +1,15 @@
+Put $\zeta=e^{\dfrac{2\pi i}{2024}}$. Expanding $\cos(\dfrac{2\pi j}{2024})=\dfrac{\zeta^j+\zeta^{-j}}{2}$ and summing over $j$ eliminates every term whose exponent is not a multiple of $2024$. Odd $k$ therefore gives zero, which qualifies; there are $1500$ such $k$.
+
+For $k=2m$, $1\le m\le1500$, the possible surviving exponents are $0,\pm2024$, giving
+\[
+S_{2m}=\dfrac{2024}{2^{2m}}\left[\binom{2m}{m}+2\binom{2m}{m-1012}\right],
+\]
+where the second binomial is zero for $m<1012$. Since $2017$ is prime (trial division by primes at most $43$ verifies this) and divides neither $2024$ nor $2$, we need the bracket divisible by $2017$.
+
+For $m\le1008$, all factorials in the central binomial have arguments below $2017$, so it is nonzero modulo $2017$ and the second term is absent. For $1009\le m\le1500$, the central binomial is divisible by $2017$: its numerator factorial contains one factor of $2017$, while its denominator contains none. Hence $m=1009,1010,1011$ qualify.
+
+For $m\ge1012$, put $r=2m-2017$, $s=m-1012$. The congruence $(1+X)^{2017}\equiv1+X^{2017}\pmod{2017}$ implies
+\[
+\binom{2017+r}{s}\equiv\binom rs\not\equiv0\pmod{2017},
+\]
+because $0\le s\le r<2017$. Thus the second term prevents divisibility. Exactly three even $k$ qualify, so $N=1503$ and the requested remainder is $\boxed{503}$.

@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h2312584_hard_geometry_problem
+% Stable identity: aops-topic-2312584-q01
+Place the right angle at $C=(0,0)$, with $B=(8,0)$ and $A=(0,6)$, so $AB=10$.
+
+The midpoint of the arc of a semicircle on a segment is obtained from the midpoint of the segment by moving one radius perpendicular to the segment, away from the triangle.
+\begin{itemize}
+\item On $CB$: midpoint $(4,0)$, radius $4$, move downward: $P=(4,-4)$.
+\item On $CA$: midpoint $(0,3)$, radius $3$, move left: $R=(-3,3)$.
+\item On $AB$: midpoint $(4,3)$, radius $5$. The line $AB$ is $3x+4y=24$, and $C$ lies on the side where $3x+4y<24$, so the outward unit normal is $\left(\dfrac35,\dfrac45\right)$ and $Q=(4,3)+5\left(\dfrac35,\dfrac45\right)=(7,7)$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), B=(8,0), A=(0,6);
+pair M1=(4,0), M2=(0,3), M3=(4,3);
+pair P=(4,-4), Q=(7,7), R=(-3,3);
+fill(P--Q--R--cycle,paleyellow);
+draw(arc(M1,4,180,360),gray); draw(arc(M2,3,90,270),gray);
+real t=degrees(B-A); draw(arc(M3,5,t,t+180),gray);
+draw(A--B--C--cycle,linewidth(1));
+draw(P--Q--R--cycle,red+linewidth(0.9));
+draw(M1--P,dashed); draw(M2--R,dashed); draw(M3--Q,dashed);
+draw((0.4,0)--(0.4,0.4)--(0,0.4));
+dot(P,red); dot(Q,red); dot(R,red);
+label("$C$",C,SW); label("$B$",B,E); label("$A$",A,NW);
+label("$P(4,-4)$",P,S,red); label("$Q(7,7)$",Q,NE,red); label("$R(-3,3)$",R,W,red);
+label("$8$",(2.2,0),N,fontsize(9pt)); label("$6$",(0,1.6),E,fontsize(9pt)); label("$10$",(2.3,4.3),SW,fontsize(9pt));
+\end{asy}
+
+By the shoelace formula,
+\[[PQR]=\dfrac12\left|4(7-3)+7(3-(-4))+(-3)(-4-7)\right|=\dfrac12\,|16+49+33|=\boxed{49}.\]
+(In general, for legs $a$ and $b$ the same computation gives $\dfrac{(a+b)^2}{4}$; here $\dfrac{14^2}{4}=49$.)

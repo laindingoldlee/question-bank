@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2024318_fun_geo_in_2020_chapter_sprint_28
+% Stable identity: aops-topic-2024318-q01
+In the figure, a kite with two right angles is inscribed in a circle, and the circle is inscribed in a square, so that the diagonals of the kite are parallel to the sides of the square. The two longer sides of the kite each have length $x$ meters. The sides of the kite divide the square into three regions (dark grey, white and light grey), each of area $2$ m$^2$. If $x^2=a+\sqrt b$ for integers $a$ and $b$, what is the value of $a+b$?
+
+\begin{asy}
+usepackage("amsmath");
+size(4.2cm);
+defaultpen(fontsize(10pt));
+real R=sqrt(1.5), h=1/R, bb=sqrt(5/6);
+pair A=(-R,0), C=(R,0), B=(bb,h), D=(bb,-h);
+fill((-R,0)--(-R,R)--(R,R)--(R,0)--B--cycle, gray(0.45));
+fill((-R,0)--(-R,-R)--(R,-R)--(R,0)--D--cycle, gray(0.85));
+draw((-R,-R)--(R,-R)--(R,R)--(-R,R)--cycle, linewidth(0.8));
+draw(circle((0,0),R), linewidth(0.6));
+draw(A--B--C--D--cycle, linewidth(0.9));
+label("$x$", (A+B)/2, NW); label("$x$", (A+D)/2, SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

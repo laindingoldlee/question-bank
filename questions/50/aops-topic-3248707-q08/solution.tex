@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3248707_2023_winmac_team_round__winchester_math_competition
+% Stable identity: aops-topic-3248707-q08
+There are $224$ unit cubes, so the assembled side is at most $6$, since $7^3>224$. The original block yields eight three-painted-face corner cubes, $4(0+6+12)=72$ two-painted-face edge cubes, and $144$ one-painted-face cubes. A side-six cube needs eight corners, $12(6-2)=48$ edge positions, and $6(6-2)^2=96$ face-interior positions. Use corner cubes at corners, forty-eight two-face cubes at edges, and ninety-six one-face cubes on face interiors, rotating the painted faces outward. The remaining interior $4^3=64$ positions may use any unused cubes; $224-8-48-96=72$ remain, enough. Thus side six is attainable and the volume is $\boxed{216}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair v=(.8,.7);draw((0,0)--(3,0)--(3,3)--(0,3)--cycle);draw((0,3)--(0,3)+v--(3,3)+v--(3,3)^^(3,3)+v--(3,0)+v--(3,0));for(int k=1;k<6;++k){draw((k*.5,0)--(k*.5,3),gray);draw((0,k*.5)--(3,k*.5),gray);}label("$6$",(1.5,0),S);label("all exterior faces red",(1.5,-.6));
+\end{asy}

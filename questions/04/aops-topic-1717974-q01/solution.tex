@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1717974_proving_the_euclidean_algorithm
+% Stable identity: aops-topic-1717974-q01
+\textbf{Key lemma.} If $a=qb+r$, then $\gcd(a,b)=\gcd(b,r)$. Indeed, if $d\mid a$ and $d\mid b$, then $d\mid a-qb=r$; and if $d\mid b$ and $d\mid r$, then $d\mid qb+r=a$. So the pairs $(a,b)$ and $(b,r)$ have exactly the same common divisors, hence the same greatest common divisor.
+
+\textbf{Termination.} The successive remainders satisfy $b>r_1>r_2>\dots\ge0$. A strictly decreasing sequence of non-negative integers cannot go on forever, so some remainder is $0$.
+
+\textbf{Output.} Write the steps as $(a,b)\to(b,r_1)\to(r_1,r_2)\to\dots\to(r_{k-1},r_k)\to(r_k,0)$, where $r_k$ is the last nonzero remainder (if already $r_1=0$, read $r_k=b$). By the lemma the gcd is the same for every pair in this chain, so
+\[
+\gcd(a,b)=\gcd(r_k,0)=r_k .
+\]
+Hence the algorithm stops and outputs $\gcd(a,b)$. $\blacksquare$
+
+(Example: $\gcd(84,36)$: $84=2\cdot36+12$, $36=3\cdot12+0$, output $12$.)

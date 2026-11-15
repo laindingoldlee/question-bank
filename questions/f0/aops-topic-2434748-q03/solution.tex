@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2434748_200th_post_problems
+% Stable identity: aops-topic-2434748-q03
+\textbf{Answer:} $n=4$ and the squarefree $n$ (including $n=1$).
+
+Let $d(N)$ be the number of divisors of $N$, and write $n=\prod_i p_i^{e_i}$. A multiple $N$ of $n$ has the form $N=\prod_i p_i^{f_i}\cdot M$ with $f_i\ge e_i$ and $\gcd(M,n)=1$, and then $d(N)=\prod_i(f_i+1)\cdot d(M)$.
+
+\textbf{A criterion.} Call a choice of exponents $f_i\ge e_i$ \emph{good} if $D=\prod_i(f_i+1)$ divides $n$ and $D<n$.
+\begin{itemize}
+\item If a good choice exists, then for every prime $Q$ not dividing $n$, the number $N=\prod_i p_i^{f_i}\cdot Q^{\dfrac nD-1}$ is a multiple of $n$ with $d(N)=D\cdot\dfrac nD=n$. Different $Q$ give different $N$, so there are infinitely many such multiples.
+\item If no good choice exists, then for every multiple $N$ of $n$ with $d(N)=n$, the number $\prod_i(f_i+1)$ divides $n$ and is not less than $n$, so it equals $n$; then $d(M)=1$, $M=1$, and $f_i+1\le n$ for each $i$. So there are only finitely many such $N$.
+\end{itemize}
+
+\textbf{Squarefree $n$: finitely many.} Let $n=p_1p_2\cdots p_k$ with distinct primes. In any choice, each factor $f_i+1\ge2$ has at least one prime factor, so $D=\prod(f_i+1)$ has at least $k$ prime factors counted with multiplicity. A divisor of $n$ has at most $k$, and the only divisor of $n$ with $k$ prime factors is $n$ itself. So $D=n$ whenever $D\mid n$: no good choice. (For $n=1$ the only such multiple is $1$.)
+
+\textbf{$n=4$: finitely many.} Here $f\ge2$, so $f+1\in\{3,4,\dots\}$, and the only such divisor of $4$ is $4$ itself: no good choice. (The only such multiple is $8$.)
+
+\textbf{All other $n$: infinitely many.} Such an $n$ is not squarefree, so some prime has exponent at least $2$. Note that $q^c\ge c+1$ for every prime $q$ and $c\ge1$.
+\begin{itemize}
+\item \emph{Some prime $p$ has exponent $e\ge2$ with $p\ge3$, or $p=2$ and $e\ge3$.} Take $f_p+1=p^{e-1}$, and $f_q+1=q^c$ for every other prime $q\mid n$ (with exponent $c$ in $n$). This is allowed because $p^{e-1}\ge e+1$ (for $p\ge3$: $3^{e-1}\ge e+1$ when $e\ge2$; for $p=2$: $2^{e-1}\ge e+1$ when $e\ge3$). Then $D=\dfrac np$, a proper divisor of $n$: a good choice.
+\item \emph{Otherwise} the only repeated prime factor is $2$, with exponent exactly $2$, so $n=4m$ with $m$ odd and squarefree, and $m>1$ as $n\ne4$. Let $q$ be a prime factor of $m$ (so $q\ge3$). Take $f_2+1=q$ (so $f_2=q-1\ge2$), $f_q+1=2$ (so $f_q=1$), and $f_r+1=r$ for the other primes $r\mid m$. Then $D=q\cdot2\cdot\dfrac mq=2m=\dfrac n2$: a good choice.
+\end{itemize}
+(For example, $n=12$: the numbers $2^2\cdot3\cdot Q$ with primes $Q\ge5$ are multiples of $12$ with $12$ divisors.)
+
+So the integers with the property are exactly $\boxed{n=4\text{ and all squarefree }n}$. $\blacksquare$

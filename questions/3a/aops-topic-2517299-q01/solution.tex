@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2517299_use_polynomial_interpolation_to_find_the_cubic
+% Stable identity: aops-topic-2517299-q01
+\textbf{A quadratic through the three points.} By Newton's forward differences: the values $46,38,39$ have first differences $-8$ and $1$, and second difference $9$. So
+\[q(x)=46-8(x-1)+\dfrac92(x-1)(x-2)=\dfrac{9x^2-43x+126}{2}\]
+satisfies $q(1)=46$, $q(2)=38$, $q(3)=39$. Check: $q(2)=\dfrac{36-86+126}{2}=38$ and $q(3)=\dfrac{81-129+126}{2}=39$.
+
+\textbf{All solutions.} If $p$ has degree at most $3$ and takes these values, then $p-q$ has degree at most $3$ and roots $1,2,3$, so by the factor theorem
+\[p(x)-q(x)=k(x-1)(x-2)(x-3)\]
+for a constant $k$. Conversely every such $p$ works. It is cubic exactly when $k\ne0$. So the answer is
+\[\boxed{p(x)=k(x-1)(x-2)(x-3)+\dfrac{9x^2-43x+126}{2},\quad k\ne0.}\]
+Three values do not determine a cubic: one more condition, such as the value $p(0)$ or the leading coefficient, fixes $k$. For example, the monic one ($k=1$) is $x^3-\dfrac32x^2-\dfrac{21}{2}x+57$.

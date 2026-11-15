@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h1588646_proof__egyptian_fractions
+% Stable identity: aops-topic-1588646-q01
+\textbf{(a)} Put the right side over the common denominator $b(x+1)$ and use $b=ax+y$:
+\[
+\dfrac{1}{x+1}+\dfrac{a-y}{b(x+1)}=\dfrac{b+a-y}{b(x+1)}=\dfrac{ax+y+a-y}{b(x+1)}=\dfrac{a(x+1)}{b(x+1)}=\dfrac {a}{b} .\qquad\blacksquare
+\]
+
+\textbf{(b)} Since $y<a$ we have $a-y\ge1$, and since $y\ge1$ we have $a-y\le a-1<a$. $\blacksquare$
+
+\textbf{Why this matters.} The identity is the step of the greedy (Fibonacci--Sylvester) algorithm for Egyptian fractions: $\dfrac{1}{x+1}$ is the largest unit fraction not exceeding $\dfrac {a}{b}$ when $y\ge1$, and the remainder $\dfrac{a-y}{b(x+1)}$ has a smaller numerator. Repeating the step on the remainder, the numerators strictly decrease, so the process ends, and every fraction $\dfrac {a}{b}$ with $0<a<b$ is a finite sum of unit fractions. (If $y=0$, then $\dfrac {a}{b}=\dfrac{1}{x}$ is already a unit fraction.) For example, $\dfrac{4}{13}$ has $13=4\cdot3+1$, and the identity gives $\dfrac{4}{13}=\dfrac{1}{4}+\dfrac{3}{52}$.

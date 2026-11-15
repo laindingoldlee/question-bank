@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2616858_jmpsc_invitationals_problem_7
+% Stable identity: aops-topic-2616858-q01
+Two shaded cells must not share a row, column or diagonal, as for queens in chess.
+\begin{itemize}
+\item \emph{One cell:} $9$ ways.
+\item \emph{Two cells:} the centre shares a line with every other cell, so it is never paired. A corner shares a line with every cell except the two a knight's move away. For example $(1,1)$ is compatible only with $(2,3)$ and $(3,2)$. An edge-middle cell such as $(1,2)$ is compatible only with $(3,1)$ and $(3,3)$. So the compatible pairs are the knight-move pairs: each of the $8$ outer cells has $2$, giving $\dfrac{8\cdot2}{2}=8$ pairs.
+\item \emph{Three cells:} they would use all three rows and columns, so one of them would be in the middle row and one in the middle column. Neither can be the centre, so they are an edge-middle cell of the middle row, $(2,1)$ or $(2,3)$, and one of the middle column, $(1,2)$ or $(3,2)$. Any such two cells are diagonal neighbours, which is not allowed. So there are $0$ ways.
+\end{itemize}
+The total is $9+8=\boxed{17}$.

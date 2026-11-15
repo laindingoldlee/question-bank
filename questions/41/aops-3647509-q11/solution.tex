@@ -1,0 +1,6 @@
+Both sides repeat when $x$ increases by ten. Divide $[0,10)$ into 20 half-unit intervals. On each, evaluate $\lfloor\operatorname{mod}(x,\dfrac{5}{2})\rfloor$ and $\operatorname{mod}(\lfloor x\rfloor,2)$ at its midpoint; both are constant there. Equality holds on eight intervals. Endpoints have probability zero, so the probability is $\dfrac{8}{20}=\boxed{\dfrac{2}{5}}$. The included computation audit enumerates the intervals exactly.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+draw((0,0)--(10,0));for(int i=0;i<=20;++i){real x=i/2;draw((x,-.1)--(x,.1));}for(int i=0;i<20;++i){real x=i/2+.25;int a=floor(x-2.5*floor(x/2.5)),b=floor(x)%2;if(a==b)draw((i/2,.25)--((i+1)/2,.25),blue+linewidth(3));}label("one period: $0$ to $10$",(5,-.5));label("blue intervals satisfy equality",(5,1));
+\end{asy}
+

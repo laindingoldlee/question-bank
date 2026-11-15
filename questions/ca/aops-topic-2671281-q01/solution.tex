@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2671281_let_n_be_the_smallest_integer_such_that_the_sum_of_digits_of_n_and_n1_are
+% Stable identity: aops-topic-2671281-q01
+Let $s(m)$ denote the digit sum. Suppose $n$ ends in exactly $k\ge0$ nines. Adding $1$ turns these nines into zeros and raises the digit before them by $1$, so
+\[s(n+1)=s(n)-9k+1.\]
+Both are multiples of $19$, so $9k\equiv1\pmod{19}$. Since $9\cdot17=153=8\cdot19+1$, this means $k\equiv17\pmod{19}$, so $k\ge17$; and $k\ge36$ would force at least $36$ digits, more than the example below. So take $k=17$.
+
+Write $n=m\cdot10^{17}+\left(10^{17}-1\right)$, where $m$ is the number formed by the digits before the trailing nines (its last digit is not $9$). Then $s(n)=s(m)+153$, and $153\equiv1\pmod{19}$, so $s(m)\equiv18\pmod{19}$; in particular $s(m)\ge18$.
+\begin{itemize}
+\item $m$ cannot have one digit, and the only two-digit number with digit sum $18$ is $99$, which ends in $9$.
+\item The smallest three-digit $m$ with digit sum $18$ and last digit at most $8$ starts with $1$, and then the other two digits are $9$ and $8$: $m=198$.
+\end{itemize}
+So $n=198\underbrace{99\cdots9}_{17}$, with $s(n)=171=9\cdot19$ and $s(n+1)=s\left(199\cdot10^{17}\right)=19$. The number of nines in $n$ is $17+1=\boxed{18}$.

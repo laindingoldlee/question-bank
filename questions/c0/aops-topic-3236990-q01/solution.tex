@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3236990_geo_halp
+% Stable identity: aops-topic-3236990-q01
+The line of centres bisects the common chord perpendicularly. The known centre is $\sqrt{15^2-9^2}=12$ units from the chord line. The other centre can therefore lie 40 or 64 units from that line, depending on whether the centres are on opposite sides or the same side. The other squared radius is $40^2+9^2=1681$ or $64^2+9^2=4177$. Both satisfy the circle-intersection inequalities, so the areas are $\boxed{1681\pi\text{ or }4177\pi}$. For example take the chord endpoints $(0,\pm9)$ and the first centre $(-12,0)$; the second centre may be $(40,0)$ or $(-64,0)$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair P=(0,9),Q=(0,-9),O1=(-12,0),O2=(40,0);draw(circle(O1,15));draw(circle(O2,41));draw(P--Q,red);draw(O1--O2,dashed);label("$P$",P,N);label("$Q$",Q,S);label("$O_1$",O1,W);label("$O_2$",O2,E);pair off=(140,0);draw(circle(off+(-12,0),15));draw(circle(off+(-64,0),sqrt(4177)));draw(off+P--off+Q,red);draw(off+(-64,0)--off+(-12,0),dashed);label("$O_1$",off+(-12,0),E);label("$O_2$",off+(-64,0),W);label("$P$",off+P,N);label("$Q$",off+Q,S);
+\end{asy}

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1579827_balls_and_boxes
+% Stable identity: aops-topic-1579827-q01
+\textbf{(a)} Because the three box sizes $5$, $3$, $2$ are all different, the boxes become distinguishable once they are filled: we can call them "the box with $5$", "the box with $3$" and "the box with $2$". So a placement is just a choice of which $5$ balls go together, then which $3$ of the remaining $5$:
+\[
+\dbinom{10}{5}\dbinom{5}{3}\dbinom{2}{2}=252\cdot10\cdot1=\boxed{2520}.
+\]
+There is no division at all; dividing $\dbinom{10}{5}\dbinom52\dbinom53$ by $3!$ would be wrong.
+
+\textbf{(b)} Count first as if the boxes were labelled "first pair", "second pair", "single": $\dbinom52\dbinom32\dbinom11=10\cdot3\cdot1=30$. Each actual placement is counted twice, because the two boxes with $2$ balls can be swapped (the single box cannot be swapped with them, since it has a different size). So the answer is
+\[
+\dfrac{30}{2!}=\boxed{15}.
+\]
+In general one divides by $k!$ for each group of $k$ boxes that receive the same number of balls. In (b) only the two boxes of size $2$ are interchangeable, giving $2!$, not $3!$; in (a) no two boxes have the same size, so nothing is divided.

@@ -1,0 +1,44 @@
+% Source: https://artofproblemsolving.com/community/c3h2531005_school_math_strikes_again
+% Stable identity: aops-topic-2531005-q01
+No. Place the cylinder as $K=\{(x,y,z):x^2+y^2\le r^2,\ 0\le z\le h\}$, with the $z$-axis as its axis, and let $\Pi$ be the cutting plane. Suppose the cross-section $Q=\Pi\cap K$ is a polygon; it is convex, being an intersection of convex sets. Its sides lie on the boundary of $K$, which consists of the curved surface $x^2+y^2=r^2$ and the two discs $z=0$ and $z=h$.
+
+\textbf{Case 1: $\Pi$ is parallel to the axis.} Then $\Pi$ has an equation $ax+by=c$, so a point lies in $Q$ exactly when its $(x,y)$ lies on the chord $\{ax+by=c\}$ of the disc $x^2+y^2\le r^2$ and $0\le z\le h$. So $Q$ is a rectangle (or a segment, or empty). A rectangle has two pairs of parallel sides, so it is not a trapezoid with exactly one pair.
+
+\textbf{Case 2: $\Pi$ is not parallel to the axis.} Then $\Pi$ contains no vertical segment.
+
+Let $s$ be a side of $Q$, with points $X+tv$ ($0\le t\le1$). If $s$ does not lie in one of the planes $z=0$, $z=h$, then it meets each of them in at most one point, so all other points of $s$ lie on the curved surface. Then the polynomial
+\[\left(X_x+tv_x\right)^2+\left(X_y+tv_y\right)^2-r^2\]
+of degree at most $2$ in $t$ has infinitely many zeros, so it is identically zero. Its $t^2$-coefficient $v_x^2+v_y^2$ is then $0$, so $v$ is vertical. This contradicts that $\Pi$ contains no vertical segment.
+
+Hence every side of $Q$ lies in the plane $z=0$ or in the plane $z=h$. If $\Pi$ is one of these two planes, then $Q$ is a disc, not a polygon. Otherwise $\Pi$ meets each of them in at most one line, and a convex polygon has at most one side on any line. So $Q$ has at most two sides, which is impossible for a polygon.
+
+So the only polygonal cross-sections are rectangles, and no cross-section is a trapezoid with exactly one pair of parallel sides. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair pr(real x,real y,real z){return (y-0.3*x,z-0.3*x);}
+real Hh=3, sl=1.8, c0=1.5;
+real x0=-c0/sl, x1=(Hh-c0)/sl; real w=sqrt(1-x0^2);
+real ts=atan(1/0.3);
+path bot=graph(new pair(real t){return pr(cos(t),sin(t),0);},-ts,pi-ts);
+path botb=graph(new pair(real t){return pr(cos(t),sin(t),0);},pi-ts,2pi-ts);
+path top=graph(new pair(real t){return pr(cos(t),sin(t),Hh);},0,2pi)--cycle;
+guide sec;
+int nn=40;
+for(int i=0;i<=nn;++i){real x=x0+(x1-x0)*i/nn; sec=sec--pr(x,sqrt(1-x^2),c0+sl*x);}
+for(int i=0;i<=nn;++i){real x=x1-(x1-x0)*i/nn; sec=sec--pr(x,-sqrt(1-x^2),c0+sl*x);}
+sec=sec--cycle;
+fill(sec,rgb(0.75,0.85,1));
+draw(sec,blue+linewidth(0.9));
+draw(bot,linewidth(0.8)); draw(botb,dashed); draw(top,linewidth(0.8));
+draw(pr(cos(-ts),sin(-ts),0)--pr(cos(-ts),sin(-ts),Hh),linewidth(0.8)); draw(pr(cos(pi-ts),sin(pi-ts),0)--pr(cos(pi-ts),sin(pi-ts),Hh),linewidth(0.8));
+pair P=pr(x0,-w,0),Q=pr(x0,w,0),R=pr(x1,w,Hh),T=pr(x1,-w,Hh);
+draw(P--Q,red+linewidth(1.1)); draw(T--R,red+linewidth(1.1));
+dot(P);dot(Q);dot(R);dot(T);
+label("$P$",P,N);label("$Q$",Q,N);label("$R$",R,S);label("$T$",T,S);
+\end{asy}
+
+The sketch shows a typical slanted cut through both bases: the section is bounded by the parallel chords $PQ$ and $TR$ in the two bases and by two curved arcs on the curved surface, so it is not a trapezoid.

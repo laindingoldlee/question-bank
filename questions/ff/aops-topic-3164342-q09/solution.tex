@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3164342_2019_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3164342-q09
+A point is visible exactly when $\gcd(|x|,|y|)=1$: otherwise division by the gcd gives an intervening tree, whereas a primitive direction has no earlier lattice point. In the positive quadrant, there are $1+2\sum_{k=2}^{10}\varphi(k)=1+2(1+2+2+4+2+6+4+6+4)=63$ coprime ordered pairs. Four quadrants give 252, and the four nearest axis points give 256. There are $21^2-1=440$ trees in all, so the fraction is $\boxed{\dfrac{32}{55}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+size(8cm);for(int x=-10;x<=10;++x)for(int y=-10;y<=10;++y)if(x!=0||y!=0){int a=abs(x),b=abs(y);while(b!=0){int t=a%b;a=b;b=t;}dot((x,y),a==1?blue:gray);}dot((0,0),red);label("$O$",(0,0),SE);label("visible trees in blue",(0,-12));
+\end{asy}

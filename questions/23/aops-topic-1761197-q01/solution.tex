@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1761197_science_bowl
+% Stable identity: aops-topic-1761197-q01
+The side of length $9$ is the axis, so the cylinder has height $9$, and the side of length $10$ sweeps out the base, giving radius $10$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=10,H=9,k=0.3;
+pair c0=(0,0),c1=(0,H);
+path bot=ellipse(c0,R,k*R), top=ellipse(c1,R,k*R);
+fill(c0--(R,0)--(R,H)--c1--cycle,rgb(0.85,0.9,1));
+draw(subpath(bot,0,2),dashed);draw(subpath(bot,2,4),linewidth(0.8));
+draw(top,linewidth(0.8));
+draw((-R,0)--(-R,H),linewidth(0.8));draw((R,0)--(R,H),linewidth(0.8));
+draw(c0--(R,0)--(R,H)--c1,blue+linewidth(0.9));
+draw((0,-4.5)--(0,H+4.5),dashed+red);
+label("$10$",(R/2,0),S,blue);label("$9$",(R,H/2),E,blue);
+label("axis",(0,H+4.5),N,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The volume is $\pi r^2h=\pi\cdot10^2\cdot9=\boxed{900\pi}$.

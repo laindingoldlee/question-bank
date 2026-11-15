@@ -1,0 +1,7 @@
+Translate the centres to coordinates in $\{0,1,2\}^3$. Any three collinear grid points here form a length-three line with step components $0,1,$ or $-1$. Classify by how many coordinates change. If one changes, there are $3\cdot3^2=27$ axis-parallel lines. If two change, choose their coordinate plane in three ways, the fixed coordinate in three ways, and one of two diagonal directions, giving $18$. If all three change, there are four body diagonals. Hence there are $\boxed{27+18+4=49}$ choices.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair p(real x,real y,real z){return (x+.45y,z+.25y);}for(int x=0;x<3;++x)for(int y=0;y<3;++y)for(int z=0;z<3;++z)dot(p(x,y,z),gray);draw(p(0,0,0)--p(2,0,0),blue+linewidth(1.2));draw(p(0,0,0)--p(2,2,0),green+linewidth(1.2));draw(p(0,0,0)--p(2,2,2),red+linewidth(1.2));label("axis",p(1,0,0),(0,-1));label("face diagonal",p(1,1,0),(1,0));label("body diagonal",p(1,1,1),(-1,0));
+\end{asy}

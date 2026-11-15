@@ -1,0 +1,26 @@
+The remaining triangle is right isosceles with legs $w$, so its inradius is
+\[
+r=\dfrac{w+w-w\sqrt2}{2}=\dfrac{2-\sqrt2}{2}w.
+\]
+The total area is
+\[
+S=w(a-w)+\pi r^2
+=aw-\left(1-\dfrac{\pi(3-2\sqrt2)}{2}\right)w^2.
+\]
+Put $K=2-\pi(3-2\sqrt2)$. Since $1<K<2$, completing the square gives
+\[
+S=\dfrac{a^2}{2K}-\dfrac{K}{2}\left(w-\dfrac{a}{K}\right)^2.
+\]
+The maximizer lies in $0<w<a$ and is
+\[
+\boxed{w=\dfrac{a}{K},\quad h=\dfrac{a(K-1)}{K},\quad
+r=\dfrac{a(2-\sqrt2)}{2K}},
+\quad K=2-\pi(3-2\sqrt2).
+\]
+The maximum area is $\dfrac{a^2}{2K}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real a=6,K=2-pi*(3-2sqrt(2)),w=a/K,h=a-w,r=(2-sqrt(2))*w/2;filldraw(box((0,0),(w,h)),lightblue);draw((0,0)--(a,0)--(0,a)--cycle);draw((0,h)--(w,h),dashed);draw(circle((r,h+r),r),red);label("$w$",(w/2,0),S);label("$h$",(w,h/2),E);label("$r$",(r,h+r),E);draw((r,h+r)--(0,h+r),red);label("$a$",(0,a/2),W);
+\end{asy}

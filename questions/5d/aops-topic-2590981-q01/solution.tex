@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2590981_coordinatesequence_problem
+% Stable identity: aops-topic-2590981-q01
+Move $k$ has length $2^{k-1}$. The horizontal moves are the odd-numbered ones, alternating right and left: $+1,-4,+16,\dots$; the vertical moves are the even-numbered ones, alternating up and down: $+2,-8,+32,\dots$. After $13$ moves (seven horizontal and six vertical), these are geometric series with ratio $-4$:
+\[x=1-4+16-\cdots+4096=\sum_{j=0}^{6}(-4)^j=\dfrac{1-(-4)^7}{1-(-4)}=\dfrac{16385}{5}=3277,\]
+\[y=2-8+32-\cdots-2048=2\sum_{j=0}^{5}(-4)^j=2\cdot\dfrac{1-(-4)^6}{5}=2\cdot\dfrac{-4095}{5}=-1638.\]
+Bob ends at $\boxed{(3277,-1638)}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair[] P={(0,0),(1,0),(1,2),(-3,2),(-3,-6),(13,-6)};
+for(int i=0;i<5;++i){draw(P[i]--P[i+1],linewidth(0.7),MidArrow);dot(P[i+1]);}
+dot(P[0],red);label("$O$",P[0],W,red);
+label("$1$",(0.5,0),S,fontsize(9pt));label("$2$",(1,1),E);label("$4$",(-1,2),N);label("$8$",(-3,-2),W);label("$16$",(5,-6),S);
+label("$(13,-6)$",P[5],E);
+\end{asy}
+
+The first five moves, starting at the origin $O=(0,0)$.

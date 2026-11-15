@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2052631_hi_a_little_help_here
+% Stable identity: aops-topic-2052631-q01
+Put the cube in coordinates with $A=(0,0,0)$, $B=(1,0,0)$, $C=(1,1,0)$, $D=(0,1,0)$, and $F=(1,0,1)$ directly above $B$. The center of face $ABCD$ is $X=\left(\dfrac{1}{2},\dfrac{1}{2},0\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(3,0), C=(4.2,1.2), D=(1.2,1.2), up=(0,3);
+pair EE=A+up, F=B+up, G=C+up, H=D+up;
+pair X=(A+C)/2;
+draw(A--B--C);draw(C--D--A,dashed);
+draw(EE--F--G--H--cycle);
+draw(A--EE);draw(B--F);draw(C--G);draw(D--H,dashed);
+draw(A--C,gray+dashed);draw(B--D,gray+dashed);
+draw(F--X,red+linewidth(0.9));
+draw(B--X,blue+dashed);
+dot(X);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,E);label("$D$",D,NW);
+label("$E$",EE,W);label("$F$",F,SE);label("$G$",G,NE);label("$H$",H,NW);
+label("$X$",X,S);
+label("$1$",(B+F)/2,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Segment $BX$ lies in the bottom face and $BF$ is perpendicular to that face, so triangle $FBX$ has a right angle at $B$. Here $BX$ is half the diagonal of a unit square, $BX=\dfrac{\sqrt2}{2}$, and $BF=1$. By the Pythagorean theorem,
+\[FX^2=BX^2+BF^2=\dfrac{1}{2}+1=\dfrac{3}{2},\qquad FX=\sqrt{\dfrac{3}{2}}=\boxed{\dfrac{\sqrt6}{2}}.\]
+(This equals $\dfrac{\sqrt3}{\sqrt2}$, so that form of the answer is also correct.)

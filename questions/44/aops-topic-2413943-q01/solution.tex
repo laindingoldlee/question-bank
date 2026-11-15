@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2413943_equation
+% Stable identity: aops-topic-2413943-q01
+\textbf{(a)} Since $p$ and $q$ are the roots of $ax^2+bx+c=0$, the quadratic factors as
+\[y=a(x-p)(x-q).\]
+(If $p=q$, the parabola touches the axis at $p$ and $y=a(x-p)^2$, which is the same formula.) The $y$-intercept is the value at $x=0$: $k=a(-p)(-q)=apq$, so $a=\dfrac{k}{pq}$ and
+\[\boxed{y=\dfrac{k}{pq}(x-p)(x-q)}.\]
+(This is why $p$ and $q$ must be nonzero: if one $x$-intercept were $0$, then $k=0$ as well, and the intercepts would not determine $a$.)
+
+\textbf{(b)} Here $pq=-3$ and $k=-6$, so $a=\dfrac{-6}{-3}=2$ and
+\[y=2(x+1)(x-3)=\boxed{2x^2-4x-6}.\]
+Check: $y(-1)=2+4-6=0$, $y(3)=18-12-6=0$, $y(0)=-6$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real k=0.4;
+real f(real x){return k*(2*x^2-4*x-6);}
+draw((-2.5,0)--(5,0),Arrow(6)); draw((0,-9*k)--(0,8*k),Arrow(6));
+label("$x$",(5,0),E); label("$y$",(0,8*k),N);
+draw(graph(f,-1.6,3.6),blue+linewidth(0.9));
+dot((-1,0)); dot((3,0)); dot((0,-6*k)); dot((1,-8*k));
+label("$(-1,0)$",(-1,0),NW); label("$(3,0)$",(3,0),SE); label("$(0,-6)$",(0,-6*k),W); label("$(1,-8)$",(1,-8*k),SE);
+label("$y=2(x+1)(x-3)$",(3.6,f(3.6)),E,blue);
+\end{asy}

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1692486_2013_mathcounts_school_sprint_round_questions
+% Stable identity: aops-topic-1692486-q29
+Triangle $PQB$ has a right angle at $Q$, so $PQ^2+QB^2=25^2=625$ with $PQ$ and $QB$ positive integers. The solutions are $(PQ,QB)=(7,24),(15,20),(20,15),(24,7)$. The smallest possible $PQ$ is $7$, with $QB=24$. Then $AQ=PQ=7$ and
+\[
+AB=AQ+QB=7+24=\boxed{31}\text{ cm}.
+\]
+(The rectangle's other side only needs to exceed $7$, so that $P$ is inside.)
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(31,0),C=(31,12),D=(0,12),Q=(7,0),P=(7,7);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(P--Q,blue+linewidth(0.8));draw(P--B,red+linewidth(0.8));draw(A--P,gray+dashed);
+real q=1;draw(Q+(q,0)--Q+(q,q)--Q+(0,q),blue);
+dot(P);dot(Q);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$Q$",Q,S);label("$P$",P,N);
+label("$7$",(A+Q)/2,S);label("$24$",(Q+B)/2,S);label("$7$",(P+Q)/2,W,blue);label("$25$",(P+B)/2,NE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

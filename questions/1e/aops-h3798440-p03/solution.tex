@@ -1,0 +1,7 @@
+Since $AD\perp AB$, line $AL$ makes $76^\circ$ with $AB$. From $\angle ALK=40^\circ$ and the locations of $K,L$ on opposite sides, ray $KL$ makes $116^\circ$ with the rightward horizontal. From $\angle BCK=15^\circ$ and $BC\perp AB$, ray $KC$ makes $75^\circ$ with that horizontal. Thus $\angle CKL=116^\circ-75^\circ=\boxed{41^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real h=3,x=h*tan(14*pi/180),k=x+h*tan(26*pi/180),w=k+h*tan(15*pi/180);pair A=(0,0),B=(w,0),C=(w,h),D=(0,h),L=(x,h),K=(k,0);draw(A--B--C--D--cycle);draw(A--L--K--C,blue);pair[] p={A,B,C,D,K,L};string[] s={"A","B","C","D","K","L"};for(int i=0;i<6;++i)label("$"+s[i]+"$",p[i],i==2||i==3||i==5?(0,1):(0,-1));
+\end{asy}

@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2013942_random_geometry_theorem
+% Stable identity: aops-topic-2013942-q01
+The angles at $B$ and $C$ are acute (they add to $90^\circ$), so the foot $D$ lies strictly between $B$ and $C$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(6.5,0); real t=1.8;
+pair A=(t,sqrt(t*(6.5-t)));
+pair D=(t,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,red+linewidth(0.9));
+draw(D+(0.25,0)--D+(0.25,0.25)--D+(0,0.25));
+pair ua=unit(B-A), ub=unit(C-A);
+draw(A+0.3*ua--A+0.3*ua+0.3*ub--A+0.3*ub);
+dot(A); dot(B); dot(C); dot(D);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Compare the right triangles $DBA$ and $DAC$, both with a right angle at $D$. In triangle $ABD$, $\angle DAB=90^\circ-\angle B$. In triangle $ABC$, $\angle C=90^\circ-\angle B$. Hence
+\[
+\angle DAB=\angle C=\angle DCA,
+\]
+and similarly $\angle DBA=\angle DAC$. So triangles $DBA$ and $DAC$ are similar, with $D\leftrightarrow D$, $B\leftrightarrow A$, $A\leftrightarrow C$. Corresponding sides are proportional:
+\[
+\dfrac{BD}{AD}=\dfrac{AD}{CD},
+\]
+and cross-multiplying gives $AD^2=BD\cdot CD$.

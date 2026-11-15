@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2854420_my_little_pony_songs_in_a_playlist
+% Stable identity: aops-topic-2854420-q01
+Count the complement: orders in which the $6$ show songs form blocks of length at most $2$.
+
+Arrange the $94$ other songs in $94!$ ways; they create $95$ gaps (including the ends). Put the show songs into the gaps with at most $2$ per gap. If $j$ gaps receive $2$ songs and $6-2j$ gaps receive $1$, the gaps can be chosen in $\binom{95}{j}\binom{95-j}{6-2j}$ ways, and the $6$ distinct songs can then be placed in the chosen slots in $6!$ orders. Summing over $j=0,1,2,3$:
+\[S=869107785+289702595+19101270+138415=1178050065.\]
+So the complement has $94!\cdot720\cdot S$ orders, and the answer is
+\[100!-720S\cdot94!=94!\,(100\cdot99\cdot98\cdot97\cdot96\cdot95-720S)=\boxed{10081681200\cdot94!}.\]
+(About $1.17\%$ of all orders.)

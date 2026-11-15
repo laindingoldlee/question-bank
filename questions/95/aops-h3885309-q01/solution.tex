@@ -1,0 +1,15 @@
+The $400$ points are partitioned by their lines, so $\sum_LC_L=400$. Each line has a unique primitive direction $(a,b)$ with $\gcd(a,b)=1$ and $1\le a,b\le20$. There is one direction with $a=b$, namely $(1,1)$. For each $b=2,\ldots,20$, there are $\phi(b)$ primitive directions with $a<b$, and the same number with $a>b$. Thus
+\[
+K=1+2\sum_{b=2}^{20}\phi(b)=2\sum_{b=1}^{20}\phi(b)-1=255,
+\]
+using
+\[
+\phi(1),\ldots,\phi(20)=1,1,2,2,4,2,6,4,6,4,10,4,12,6,8,8,16,6,18,8,
+\]
+whose sum is $128$. Hence the answer is $400-255=\boxed{145}$. More generally the sum for a bound $N$ is $N^2-2\sum_{b=1}^{N}\phi(b)+1$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=1;x<=5;++x)for(int y=1;y<=5;++y)dot((x,y),gray);draw((0,0)--(5,5),blue);draw((0,0)--(2.5,5),red);draw((0,0)--(5,2.5),heavygreen);label("Illustration for bound 5",(2.5,-.6));
+\end{asy}

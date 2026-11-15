@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2283147_simple_nt_proof
+% Stable identity: aops-topic-2283147-q01
+We show that $\dfrac{n!}{n+1}$ is an integer exactly when $n+1$ is composite and $n+1\ne4$.
+
+\textbf{$n+1$ prime.} If $n+1=p$ is prime, then $p$ does not divide $n!=1\cdot2\cdots(p-1)$, because a prime dividing a product divides one of its factors, and all factors are less than $p$. So the quotient is not an integer.
+
+\textbf{$n+1$ composite.} Write $n+1=ab$ with $1<a\le b<n+1$, choosing $a$ to be the smallest prime factor of $n+1$.
+\begin{itemize}
+\item If $a<b$: both $a$ and $b$ are at most $n$ and they are different, so $a$ and $b$ are two different factors in $1\cdot2\cdots n$, and $ab=n+1$ divides $n!$.
+\item If $a=b$, i.e. $n+1=a^2$ with $a$ prime: if $a\ge3$, then $a$ and $2a$ are different numbers with $2a<a^2=n+1$, so both appear in $n!$ and $a\cdot2a=2a^2$ divides $n!$; hence $a^2=n+1$ divides $n!$. If $a=2$, then $n+1=4$, $n=3$ and $\dfrac{3!}{4}=\dfrac32$ is not an integer.
+\end{itemize}
+
+So the answer is: $\boxed{\text{all positive integers }n\text{ such that }n+1\text{ is composite, except }n=3}$, i.e. $n=5,7,8,9,11,13,14,15,17,\dots$ (For example $\dfrac{5!}{6}=20$, while $\dfrac{4!}{5}$ and $\dfrac{3!}{4}$ are not integers.)

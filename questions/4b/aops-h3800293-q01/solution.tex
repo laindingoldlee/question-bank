@@ -1,0 +1,7 @@
+Each regular pentagon contributes $\dfrac{(5-2)180^\circ}{5}=108^\circ$. Three contribute $324^\circ$, while four would contribute $432^\circ>360^\circ$. Three can be placed in disjoint consecutive angular sectors, so the maximum is $\boxed3$ and the remaining angle is $\boxed{36^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int j=0;j<3;++j){pair p=(0,0);path g=p;for(int i=0;i<4;++i){p+=dir(108j+72i);g=g--p;}filldraw(g--cycle,j==1?lightblue:lightgray);}dot((0,0));label("$36^\circ$",.5dir(342));
+\end{asy}

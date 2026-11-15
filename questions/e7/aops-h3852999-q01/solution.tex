@@ -1,0 +1,20 @@
+Choose $B=(0,0)$, $C=(7,0)$. Subtracting $AB^2=25$ from $AC^2=64$ gives $A=(\dfrac{5}{7},\dfrac{20\sqrt3}{7})$, and $D=(\dfrac{7}{2},0)$. The equation $|X-A|^2=|X-D|^2$ of the perpendicular bisector simplifies to
+\[
+\dfrac{39}{7}x-\dfrac{40\sqrt3}{7}y=-\dfrac{51}{4}.
+\]
+Intersecting with $AB$ (where $y=4\sqrt3 x$) and $AC$ (where $y=\dfrac{5\sqrt3}{11}(7-x)$) gives
+\[
+E=\left(\dfrac{17}{84},\dfrac{17\sqrt3}{21}\right),\quad
+F=\left(\dfrac{613}{196},\dfrac{345\sqrt3}{196}\right).
+\]
+Both points lie on the stated segments. The determinant area formula yields
+\[
+[DEF]=\dfrac{1}{2}\left|(E_x-D_x)F_y-E_y(F_x-D_x)\right|
+=\boxed{\dfrac{1849\sqrt3}{672}}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(5.0/7,20sqrt(3)/7),B=(0,0),C=(7,0),D=(3.5,0),E=(17.0/84,17sqrt(3)/21),F=(613.0/196,345sqrt(3)/196);fill(D--E--F--cycle,lightgray);draw(A--B--C--cycle);draw(A--D,dashed);draw(E--F,blue);draw(D--E--F--cycle);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$E$",E,W);label("$F$",F,E);
+\end{asy}

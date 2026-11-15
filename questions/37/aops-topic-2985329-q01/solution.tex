@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2985329_an_intersection_proof_involving_the_angle_qualities_of_cyclic_quadrilaterals
+% Stable identity: aops-topic-2985329-q01
+The arcs $AB,BC,CD,DA$ are each $90^\circ$ and $BD$ is a diameter.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=dir(135),B=dir(45),C=dir(-45),D=dir(-135),P=dir(80);
+pair X=extension(P,D,A,B),Y=extension(P,C,B,D);
+draw(circle((0,0),1));draw(A--B--C--D--cycle);draw(B--D);draw(P--D);draw(P--C);draw(X--Y,dashed);draw(P--B,dotted);
+dot(X);dot(Y);label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);label("$P$",P,N);label("$X$",X,NW);label("$Y$",Y,E);
+\end{asy}
+
+\emph{Step 1.} $\angle XPY=\angle DPC=45^\circ$, an inscribed angle on arc $DC$; and $\angle XBY=\angle ABD=45^\circ$.
+
+\emph{Step 2.} $P$ and $B$ are on the same side of line $XY$: the line crosses segment $BD$ at $Y$, so $B$ and $D$ are on opposite sides; $X$ lies between $D$ and $P$ on chord $DP$, so $P$ is on the opposite side from $D$. Hence $X,Y,B,P$ are concyclic (segment $XY$ subtends equal angles at $P$ and $B$ on the same side).
+
+\emph{Step 3.} In this circle, $Y$ and $P$ lie on opposite sides of line $XB$ (which is line $AB$: $Y$ is inside the square, $P$ is on the arc beyond $AB$), so $\angle XYB=180^\circ-\angle XPB$. Since $BD$ is a diameter of $\omega$, $\angle XPB=\angle DPB=90^\circ$. Therefore $\angle XYB=90^\circ$, i.e. $XY\perp BD$. $\blacksquare$

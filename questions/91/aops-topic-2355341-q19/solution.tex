@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2355341_25_fun_problems
+% Stable identity: aops-topic-2355341-q19
+In the isosceles triangle, the bisector of the apex angle is also the median and the altitude, so $AD\perp BC$ and $BD=DC$. By Pythagoras in triangle $ABD$, $BD=\sqrt{10^2-8^2}=6$, so $BC=12$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,8), B=(-6,0), C=(6,0), D=(0,0), Ep=A+(5/11)*(B-A);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,blue); draw(C--Ep,red);
+draw((0,0.5)--(0.5,0.5)--(0.5,0));
+dot(A); dot(B); dot(C); dot(D); dot(Ep);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S); label("$E$",Ep,W);
+label("$10$",(A+C)/2,NE); label("$8$",(0,1.8),W,blue); label("$6$",(-3,0),S); label("$6$",(3,0),S);
+\end{asy}
+
+By the angle bisector theorem in triangle $ABC$, the bisector from $C$ divides $AB$ in the ratio of the adjacent sides:
+\[\dfrac{AE}{BE}=\dfrac{CA}{CB}=\dfrac{10}{12}=\dfrac56,\]
+choice $\boxed{\textbf{(B)}\ \dfrac56}$.

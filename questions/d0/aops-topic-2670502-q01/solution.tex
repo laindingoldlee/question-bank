@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h2670502_a_proving_problem_part_26
+% Stable identity: aops-topic-2670502-q01
+The answer is \textbf{no}. Fix any strategy of the hunter, that is, a rule choosing each move $B_n$ from the points $P_1,\dots,P_n$ reported so far. We describe moves of the rabbit and reports of the device (depending on this rule) for which the distance $d_n=A_nB_n$ exceeds $100$ after round $10^9$.
+
+\emph{Lemma.} Suppose that after round $n$ the distance is $d=d_n\le100$. Then the rabbit and the device can act in the next $r=1000$ rounds so that $d_{n+r}^2>d^2+\dfrac12$.
+
+\emph{Proof.} Take coordinates with $B_n=(0,0)$ and $A_n=(d,0)$, and let $\ell$ be the $x$-axis. Let $s=\sqrt{r^2-1}$ and $Y_{\pm}=(d+s,\pm1)$; both points are at distance $\sqrt{s^2+1}=r$ from $A_n$. The rabbit walks to one of them along a straight segment in $r$ steps of length $1$, so after $k$ steps it is at $\left(d+\dfrac{ks}{r},\pm\dfrac kr\right)$. In each of these rounds the device reports the point $\left(d+\dfrac{ks}{r},0\right)$ of $\ell$, which is within $\dfrac kr\le1$ of the rabbit. The reports, and the history before round $n$, are the same whichever of $Y_+$ and $Y_-$ the rabbit heads for, so the hunter's rule makes the same moves in both cases; let $H=(x,y)$ be her position after these $r$ rounds. The rabbit takes the target on the other side of $\ell$ from $H$: $Y_+$ if $y\le0$ and $Y_-$ if $y>0$. Then the vertical distance between $H$ and the rabbit is at least $1$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),A=(2.5,0);real s=6;pair Yp=A+(s,1.8),Ym=A+(s,-1.8);
+draw((-0.8,0)--(10.4,0),gray(0.6));
+draw(B--A,linewidth(0.8));
+draw(A--Yp,dashed+blue);draw(A--Ym,dashed+blue);
+pair Rp=A+0.5*(Yp-A),Rm=A+0.5*(Ym-A),Pk=(Rp.x,0);
+draw(Rp--Rm,dotted);dot(Rp,blue);dot(Rm,blue);dot(Pk);
+pair H=(4.2,-1.6);draw(H--Yp,dotted+linewidth(0.8));
+dot(B);dot(A);dot(Yp);dot(Ym);dot(H);
+label("$B_n$",B,S);label("$A_n$",A,S);label("$Y_+$",Yp,E);label("$Y_-$",Ym,E);label("$H$",H,SW);label("$\ell$",(10.4,0),E);
+label("$d$",(B+A)/2,N);label("report",Pk,NW,fontsize(7pt));
+\end{asy}
+
+(The sketch is not to scale: the two possible paths, one report on $\ell$, and the hunter's position $H$.)
+
+The hunter is within $r$ of the origin, so $x\le r$, and the horizontal distance from $H$ to the rabbit satisfies $d+s-x\ge d-\varepsilon$, where
+\[\varepsilon=r-s=\dfrac{1}{r+s}<\dfrac1r=\dfrac{1}{1000}.\]
+If $d\ge\varepsilon$, then
+\[d_{n+r}^2\ge(d-\varepsilon)^2+1=d^2+1-2d\varepsilon+\varepsilon^2>d^2+1-\dfrac{2\cdot100}{1000}>d^2+\dfrac12.\]
+If $d<\varepsilon$, then $d_{n+r}^2\ge1>\varepsilon^2+\dfrac12>d^2+\dfrac12$. $\square$
+
+\emph{Getting far away.} We have $d_0=0$. Apply the lemma in consecutive blocks of $1000$ rounds for as long as the distance at the start of a block is at most $100$. Each block raises $d^2$ by more than $\dfrac12$, and $\dfrac{20001}{2}>100^2$, so this can continue for at most $20001$ blocks. Hence at some block boundary $N=1000m$ with $m\le20001$, so $N\le20001000<10^9$, we have $d_N>100$.
+
+\emph{Staying far away.} From round $N$ on, in every round the rabbit moves $1$ unit directly away from the hunter (along the ray from $B_n$ through $A_n$), and the device reports the rabbit's true position. Then $A_{n+1}B_n=d_n+1$, and since the hunter moves only $1$ unit,
+\[d_{n+1}=A_{n+1}B_{n+1}\ge A_{n+1}B_n-B_nB_{n+1}=d_n.\]
+So the distance never decreases, and $d_{10^9}\ge d_N>100$.
+
+Hence the hunter cannot guarantee a distance of at most $100$ after $10^9$ rounds: the answer is $\boxed{\text{No}}$. $\blacksquare$

@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1441560_cpctc_applications
+% Stable identity: aops-topic-1441560-q01
+\textbf{(a)} Similar triangles have equal corresponding angles, $\angle A=\angle D$, $\angle B=\angle E$, $\angle C=\angle F$, and proportional corresponding sides:
+\[
+\dfrac{DE}{AB}=\dfrac{EF}{BC}=\dfrac{FD}{CA}=k .
+\]
+So corresponding \emph{angles} are always congruent, but sides are only proportional. For example, the right triangles with legs $3,4$ and $6,8$ (hypotenuses $5$ and $10$) are similar with $k=2$, and no pair of corresponding sides is congruent.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(0,3);
+pair D=(7,0),Ee=(15,0),F=(7,6);
+draw(A--B--C--cycle,linewidth(0.9)); draw(D--Ee--F--cycle,linewidth(0.9));
+draw(A+(0.3,0)--A+(0.3,0.3)--A+(0,0.3)); draw(D+(0.4,0)--D+(0.4,0.4)--D+(0,0.4));
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N);
+label("$D$",D,SW); label("$E$",Ee,SE); label("$F$",F,N);
+label("$4$",(A+B)/2,S); label("$3$",(A+C)/2,W); label("$5$",(B+C)/2,NE);
+label("$8$",(D+Ee)/2,S); label("$6$",(D+F)/2,W); label("$10$",(Ee+F)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(b)} If $AB=DE$, the ratio is $k=\dfrac{DE}{AB}=1$, so $EF=BC$ and $FD=CA$ as well. By SSS the triangles are congruent, and then all corresponding parts are congruent. (Equivalently, $\angle A=\angle D$, $AB=DE$, $\angle B=\angle E$ gives congruence by ASA.) $\blacksquare$

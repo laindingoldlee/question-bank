@@ -1,0 +1,17 @@
+If $K=M$, then $L=B$ and $KL=MB=MC=CK=AB=AL$, so the claim follows.
+
+Otherwise $K$ lies strictly inside $AM$, and the ray $CK$ meets segment $AB$ at an interior point $L$. Triangles $ABM$ and $ACM$ have equal areas. Scaling their bases on $AM$ from $AM$ to $AK$ shows $[ABK]=[ACK]$.
+
+Comparing each with triangle $AKL$ gives
+\[
+\dfrac{[ABK]}{[AKL]}=\dfrac{AB}{AL},
+\qquad
+\dfrac{[ACK]}{[AKL]}=\dfrac{CK}{KL}.
+\]
+Thus $\dfrac{AB}{AL}=\dfrac{CK}{KL}$. The hypothesis $AB=CK$ implies $\boxed{AL=KL}$, so triangle $AKL$ is isosceles.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),M=(4,0),K=(2,0),B=(3,3),C=(5,-3),L=B/3;draw(A--B--C--cycle);draw(A--M,dashed);draw(C--L,blue);draw(A--L--K--cycle,red);label("$A$",A,(-1,0));label("$B$",B,(0,1));label("$C$",C,(0,-1));label("$M$",M,(1,0));label("$K$",K,SE);label("$L$",L,NW);
+\end{asy}

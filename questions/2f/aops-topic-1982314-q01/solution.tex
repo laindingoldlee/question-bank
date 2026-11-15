@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1982314_hyperbola_or_straight_line
+% Stable identity: aops-topic-1982314-q01
+\textbf{(a)} We have $x+y=\dfrac{2}{t}$ and $x-y=2t$, so
+\[
+x^2-y^2=(x+y)(x-y)=\dfrac{2}{t}\cdot2t=4 .
+\]
+Conversely, if $x^2-y^2=4$ then $x+y\ne0$, and $t=\dfrac{x-y}{2}$ satisfies $\dfrac{1}{t}=\dfrac{2}{x-y}=\dfrac{x+y}{2}$, which reproduces $x$ and $y$. So the curve is the whole hyperbola $\boxed{x^2-y^2=4}$, with asymptotes $y=\pm x$ and vertices $(\pm2,0)$. The branch with $x\ge2$ comes from $t>0$ and the branch with $x\le-2$ from $t<0$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real fx(real t){return t+1/t;} real fy(real t){return 1/t-t;}
+draw(graph(fx,fy,0.25,4),linewidth(1));
+draw(graph(fx,fy,-4,-0.25),linewidth(1));
+draw((-5,0)--(5,0),Arrow(TeXHead));draw((0,-4.5)--(0,4.5),Arrow(TeXHead));
+draw((-4.5,-4.5)--(4.5,4.5),dashed+gray(0.6));draw((-4.5,4.5)--(4.5,-4.5),dashed+gray(0.6));
+dot((2,0));dot((-2,0));label("$(2,0)$",(2,0),SE);label("$(-2,0)$",(-2,0),SW);
+label("$t>0$",(4.3,0.9));label("$t<0$",(-4.3,0.9));
+label("$x$",(5,0),S);label("$y$",(0,4.5),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(b)} The equation $y=\dfrac{2}{t}-x$ still contains the parameter $t$, so it has not eliminated $t$. Fixing $t=1$ keeps only the single point with $t=1$, namely $(x,y)=(2,0)$, which does lie on the line $y=2-x$. For each other value of $t$ one gets a different line $y=\dfrac{2}{t}-x$, each containing just one point of the curve. The curve is not a line; eliminating $t$ correctly gives the hyperbola in (a).

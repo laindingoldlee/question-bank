@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1425289_i_should_have_learned_this_ealier
+% Stable identity: aops-topic-1425289-q01
+At each vertex the interior angle and the exterior angle are supplementary, so each exterior angle is $180^\circ-140^\circ=40^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair[] V={(0.0000,1.0000),(-0.6428,0.7660),(-0.9848,0.1736),(-0.8660,-0.5000),(-0.3420,-0.9397),(0.3420,-0.9397),(0.8660,-0.5000),(0.9848,0.1736),(0.6428,0.7660)};
+for(int k=0;k<9;++k) draw(V[k]--V[(k+1)%9],linewidth(0.9));
+pair X=(0.6428,1.2340);
+draw(V[0]--X,dashed);
+real e1=degrees(V[8]-V[0])-360, e2=degrees(X-V[0]);
+draw(arc(V[0],0.3,e1,e2),red);
+label("$40^\circ$",V[0]+0.32*dir((e1+e2)/2),dir((e1+e2)/2),red+fontsize(9pt));
+draw(arc(V[0],0.18,degrees(V[1]-V[0]),degrees(V[8]-V[0])),blue);
+label("$140^\circ$",V[0]+0.2*dir(-90),S,blue+fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The exterior angles of a convex polygon add up to $360^\circ$, so the number of sides is $\dfrac{360}{40}=\boxed{9}$. (Equivalently, $(n-2)\cdot180=140n$ gives $40n=360$.)

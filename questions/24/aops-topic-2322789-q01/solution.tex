@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2322789_number_theory_problem__with_composers_dont_use_information
+% Stable identity: aops-topic-2322789-q01
+The odd numbers up to $50$ ending in $3$ are $3,13,23,33,43$, so $q$ is one of these; all except $33$ are prime.
+
+\textbf{Case $q=33$.} Then $n+2p+b=95-33-6=56$. Since $b\equiv p\pmod 9$, also $b\equiv p\pmod3$, so $n+3p\equiv56\equiv2\pmod 3$, i.e. $n\equiv2\pmod3$. With $n$ odd, $n\in\{5,11,17,23,29,35,41,47\}$; all of these are prime except $35$.
+\begin{itemize}
+\item If $n$ is prime, then $p$ and $b$ are not prime, and since $npb$ is a square, $n$ divides $p$ or $b$. For $n\ge29$ the only odd multiple of $n$ up to $50$ is $n$ itself, which is prime; $34$ and $46$ are even; so $n=5$ or $n=11$. If $n=11$, then $p$ or $b$ is $33$, and $2p+b=45$ gives $b=-21$ or $p=6$, impossible. If $n=5$, then $p$ or $b$ is also a multiple of $5$, so two numbers are divisible by $5$, impossible.
+\item If $n=35$, it is the only multiple of $5$, but $npb$ square requires $5\mid pb$, impossible.
+\end{itemize}
+
+\textbf{Case $q\in\{3,13,23,43\}$.} Then $q$ is the only prime, so $n,p,r,b$ are odd non-primes up to $50$ without the digit $6$:
+\[1,9,15,21,25,27,33,35,39,45,49.\]
+Both $p$ and $r=p+6$ are in this list only for $(p,r)=(9,15),(15,21),(21,27),(27,33),(33,39),(39,45)$. For each, $b$ is in the list with $b\equiv p\pmod 9$, and $n=95-p-r-b-q$:
+\begin{itemize}
+\item $(9,15)$, $b\in\{9,27,45\}$. For $b=9$: $n=62-q\in\{59,49,39,19\}$; $59$ and $19$ are prime, $39\cdot9\cdot9$ is not a square, and $n=49$, $q=13$ works: $49\cdot9\cdot9=63^2$. For $b=27$: $n=44-q\in\{41,31,21,1\}$; $41,31$ are prime, and $21\cdot9\cdot27=3^6\cdot7$ and $1\cdot9\cdot27=3^5$ are not squares. For $b=45$: $n=26-q\in\{23,13,3\}$, all prime.
+\item $(15,21)$, $b\in\{15,33\}$. For $b=15$: two multiples of $5$ ($p$ and $b$). For $b=33$: $n=26-q\in\{23,13,3\}$, prime.
+\item $(21,27)$, $b\in\{21,39\}$: $n=26-q$ (prime) or $n=8-q=5$ (prime).
+\item $(27,33)$, $b\in\{9,27,45\}$: $n=26-q$ (prime), $n=8-q=5$ (prime), or $n<0$.
+\item $(33,39)$, $b\in\{15,33\}$: $n=8-q=5$ (prime) or $n<0$.
+\item $(39,45)$: $n=11-b-q<0$.
+\end{itemize}
+The only solution is $\boxed{n=49,\ p=9,\ r=15,\ b=9,\ q=13}$. Check: sum $95$, only $13$ is prime, only $15$ is divisible by $5$, $npb=3969=63^2$, $9\equiv9\pmod 9$, $15-9=6$.

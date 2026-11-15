@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2765486_2017_abmc_team_round__actonboxborough_math_competition__21_problems
+% Stable identity: aops-topic-2765486-q18
+The conditions are $f^2=sg$ and $2m=s+5+g$. The bounds give $1818\le g<s\le2012$. Exhaustively checking these finite year pairs, requiring a square product and an integral mother year in the specified order, gives uniquely $(s,f,g,s+5,m)=(1936,1892,1849,1941,1895)$. Thus $\boxed{m=1895}$. The complete exact check is:
+\begin{verbatim}
+from math import isqrt
+answers=[]
+for s in range(1818,2013):
+ for g in range(1818,s):
+  f=isqrt(s*g)
+  if f*f!=s*g or not g<f<s or (s+5+g)%2:continue
+  m=(s+5+g)//2
+  if g<m<s:answers.append((s,f,g,s+5,m))
+assert answers==[(1936,1892,1849,1941,1895)]
+\end{verbatim}

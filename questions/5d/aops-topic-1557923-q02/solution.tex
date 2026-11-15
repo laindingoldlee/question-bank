@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1557923_hard_combinatorics_problems
+% Stable identity: aops-topic-1557923-q02
+There are $\binom62=15$ segments and $\binom{15}5=3003$ ways to colour five of them. Count the colourings that contain a red triangle and subtract.
+
+For a triangle $T$ (one of $\binom63=20$), the colourings containing all three sides of $T$ choose the other $2$ red segments from the remaining $12$: $\binom{12}2=66$ ways.
+
+Five segments can contain two triangles only if the triangles share a side (otherwise they need $6$ segments); then the five segments are exactly the union. Each segment lies in $4$ triangles, so the number of pairs of triangles sharing a side is $15\binom42=90$, and each pair is contained in exactly one colouring. Five segments never contain three triangles: three triangles have at least $6$ distinct sides between them (two of them already use $5$, and a third triangle inside those $5$ segments would have to be one of the two).
+
+By inclusion--exclusion, the number of colourings with a red triangle is $20\cdot66-90=1230$, so the number of red-triangle-free colourings is
+\[
+3003-1230=\boxed{1773}.
+\]

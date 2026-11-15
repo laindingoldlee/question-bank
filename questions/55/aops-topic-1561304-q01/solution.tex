@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h1561304_faces_of_a_cube
+% Stable identity: aops-topic-1561304-q01
+\textbf{Which faces are red.} Three faces of a cube that are pairwise adjacent meet at a corner, and the corner unit cube would then have three red faces. So the three red faces are not pairwise adjacent, which means two of them are opposite. Call the red faces top, bottom and front; then the blue faces are left, right and back. (The blue faces also contain an opposite pair, left and right.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real n=4; pair k=(0.5,0.35);
+pair F(real x,real y){return (x,y);}
+pair T(real x,real z){return (x,n)+z*k;}
+pair R(real z,real y){return (n,y)+z*k;}
+fill((0,0)--(n,0)--(n,n)--(0,n)--cycle,rgb(1,0.8,0.8));
+fill(T(0,0)--T(n,0)--T(n,n)--T(0,n)--cycle,rgb(1,0.7,0.7));
+fill(R(0,0)--R(n,0)--R(n,n)--R(0,n)--cycle,rgb(0.75,0.85,1));
+for(int i=1;i<n;++i){
+  draw(F(i,0)--F(i,n),gray(0.4));draw(F(0,i)--F(n,i),gray(0.4));
+  draw(T(i,0)--T(i,n),gray(0.4));draw(T(0,i)--T(n,i),gray(0.4));
+  draw(R(i,0)--R(i,n),gray(0.4));draw(R(0,i)--R(n,i),gray(0.4));
+}
+draw((0,0)--(n,0)--(n,n)--(0,n)--cycle,linewidth(1));
+draw(T(0,0)--T(0,n)--T(n,n)--T(n,0),linewidth(1));
+draw(R(0,0)--R(n,0)--R(n,n),linewidth(1));
+label("front: red",(n/2,-0.1),S);label("top: red",T(n/2,n),N);label("right: blue",R(n,n/2),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The figure shows the visible faces: front and top red, right blue; bottom is red, left and back are blue.)
+
+\textbf{Counting.} A unit cube has faces of both colours only if it lies on an edge where a red face meets a blue face.
+\begin{itemize}
+\item \textbf{Corners.} Each of the $8$ corner cubes lies on the top or the bottom face (red) and on the left or the right face (blue), so all $8$ have both colours.
+\item \textbf{Edges.} Of the $12$ edges, the red--red edges are top--front and bottom--front, and the blue--blue edges are left--back and right--back; the other $8$ edges join a red face to a blue face. Each edge has $2$ non-corner unit cubes, giving $8\cdot2=16$ cubes, and each of them has exactly the two colours of its edge.
+\end{itemize}
+Face-centre cubes and the hidden interior cubes show at most one colour. So the answer is $8+16=\boxed{24}$.

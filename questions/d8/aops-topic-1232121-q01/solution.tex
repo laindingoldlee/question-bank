@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1232121_3d_geometry
+% Stable identity: aops-topic-1232121-q01
+The centres form a regular tetrahedron $T$ of edge $2$. The faces of the big tetrahedron are parallel to the faces of $T$, each at distance $1$ (outside $T$), because each face is tangent to three spheres. So both tetrahedra have the same centre, and the inradius grows by $1$.
+
+A regular tetrahedron of edge $e$ has height $e\sqrt{\dfrac{2}{3}}$ and inradius one quarter of the height, $\dfrac{e}{2\sqrt6}$. For $T$ this is $\dfrac{1}{\sqrt6}$, so the big tetrahedron has inradius $1+\dfrac{1}{\sqrt6}$ and edge
+\[2\sqrt6\left(1+\dfrac{1}{\sqrt6}\right)=\boxed{2+2\sqrt6}.\]
+In the side view below (the plane through one edge and the midpoint of the opposite edge), the tetrahedron of centres (dashed) sits inside the outer one, every face at distance $1$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real e=2; real E2=2+2*sqrt(6);
+pair f(real ed, pair c){ return c; }
+real h1=e*sqrt(2/3), h2=E2*sqrt(2/3);
+real m1=e*sqrt(3)/2, m2=E2*sqrt(3)/2;
+// side view: triangle with base = median of a face, apex = top vertex
+pair O=(0,0);
+pair B1=(-m1/3,-h1/4), A1=(2*m1/3,-h1/4), T1=(0,3*h1/4);
+pair B2=(-m2/3,-h2/4), A2=(2*m2/3,-h2/4), T2=(0,3*h2/4);
+draw(B2--A2--T2--cycle,linewidth(1)); draw(B1--A1--T1--cycle,blue+dashed);
+dot(A1);dot(T1); draw(circle(T1,1),gray); draw(circle(A1,1),gray);
+label("outer tetrahedron",T2,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

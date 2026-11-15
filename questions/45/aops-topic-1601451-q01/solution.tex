@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1601451_geometry_true_or_false
+% Stable identity: aops-topic-1601451-q01
+\textbf{Any two are coplanar: true.} Let the rays start at $A$ and $B$ and have the common direction $\vec d$ (if they lie on one line, any plane through that line contains both). Otherwise the lines $A+t\vec d$ and $B+t\vec d$ are two distinct parallel lines, and two distinct parallel lines lie in exactly one plane $\alpha$: the plane through $A$, $B$ and $A+\vec d$. Every point $B+t\vec d$ lies in this plane, because $B+t\vec d=A+(B-A)+t\vec d$ is $A$ plus a combination of the vectors $B-A$ and $\vec d$, which both lie in $\alpha$. Hence the two rays lie in $\alpha$.
+
+\textbf{All three need not be coplanar: false in general.} Take the starting points $A$, $B$, $C$ not on one line and the direction $\vec d$ not parallel to the plane $ABC$ (for example, three vertical rays starting at the vertices of a horizontal triangle, like three edges of a triangular prism). A plane containing all three rays would contain $A$, $B$, $C$, so it would be the plane $ABC$; but that plane does not contain $A+\vec d$, a contradiction.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair d=(0.9,2.2);
+pair A=(0,0),B=(3,0.35),C=(1.6,-1.1);
+fill(A--B--B+d--A+d--cycle,paleblue+opacity(0.6));
+draw(A--A+1.35*d,blue+linewidth(1),Arrow(TeXHead));draw(B--B+1.35*d,blue+linewidth(1),Arrow(TeXHead));
+draw(C--C+1.35*d,red+linewidth(1),Arrow(TeXHead));
+draw(A--B,gray+dashed);draw(A--C,gray+dashed);draw(B--C,gray+dashed);
+dot(A);dot(B);dot(C);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,S);
+label("$\alpha$",(A+B+d)/2+(-0.15,0.35),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(In the figure, the rays from $A$ and $B$ lie in the shaded plane $\alpha$; the ray from $C$ is parallel to them but not in $\alpha$.)
+
+So the answer is $\boxed{\text{true}}$ for every two of the rays, but the three rays need not lie in one plane.

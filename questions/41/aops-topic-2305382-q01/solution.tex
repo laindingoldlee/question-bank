@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2305382_confusing_mathcounts_problem
+% Stable identity: aops-topic-2305382-q01
+Every turn is a right turn, so the directions repeat in the cycle east, south, west, north (say she starts walking east); stretch $k$ goes east, south, west or north according as $k$ leaves remainder $1$, $2$, $3$ or $0$ on division by $4$. Consecutive odd integers differ by $2$, so $x_{k+2}=x_k+4$.
+
+\textbf{East-west.} The eastward stretches are $x_1,x_5,\dots,x_{97}$ and the westward ones $x_3,x_7,\dots,x_{99}$. Pairing them, the net eastward distance is
+\[(x_1-x_3)+(x_5-x_7)+\cdots+(x_{97}-x_{99})=25\cdot(-4)=-100.\]
+
+\textbf{North-south.} The southward stretches are $x_2,x_6,\dots,x_{98}$ and the northward ones $x_4,x_8,\dots,x_{100}$, so the net northward distance is
+\[(x_4-x_2)+(x_8-x_6)+\cdots+(x_{100}-x_{98})=25\cdot4=100.\]
+
+So she ends $100$ yards west and $100$ yards north of home, and
+\[d=\sqrt{100^2+100^2}=\boxed{100\sqrt2}.\]
+The answer does not depend on $x_1$. The path is a spiral that turns right every time; after every $4$ stretches she is $4$ yards further west and $4$ yards further north (the figure shows $x_k=2k-1$ for $k\le12$):
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair[] dirs={(1,0),(0,-1),(-1,0),(0,1)};
+pair p=(0,0);
+for(int k=1;k<=12;++k){pair q=p+(2k-1)*dirs[(k-1)%4]; draw(p--q,k<=4?blue:gray,Arrow(5)); p=q;}
+dot((0,0)); label("home",(0,0),SW,fontsize(8pt));
+dot((-4,4),blue); label("after $4$",(-4,4),W,blue+fontsize(8pt));
+dot((-12,12)); label("after $12$",(-12,12),NE,fontsize(8pt));
+draw((0,0)--(-12,12),dashed+red);
+label("$x_1$",(0.5,0),N,fontsize(8pt)); label("$x_2$",(1,-1.5),E,fontsize(8pt)); label("$x_3$",(-1.5,-3),S,fontsize(8pt)); label("$x_4$",(-4,0.5),W,fontsize(8pt));
+\end{asy}

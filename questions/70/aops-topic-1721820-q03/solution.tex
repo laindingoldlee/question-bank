@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1721820_modular_arithmetic_bonanza
+% Stable identity: aops-topic-1721820-q03
+Work modulo $100$.
+
+\textbf{First term.} Modulo $4$: $2018$ is even and the exponent is at least $2$, so $2018^{2019^{2020}}\equiv0\pmod4$. Modulo $25$: $2018\equiv18$ and $\gcd(18,25)=1$, so by Euler's theorem exponents can be reduced modulo $\varphi(25)=20$. Since $2019\equiv-1\pmod{20}$ and $2020$ is even, $2019^{2020}\equiv1\pmod{20}$, and the term is $\equiv18^1=18\pmod{25}$. The number below $100$ that is $\equiv0\pmod4$ and $\equiv18\pmod{25}$ is $68$.
+
+\textbf{Second term.} $2021\equiv21\pmod{100}$, and by the binomial theorem $21^n=(1+20)^n\equiv1+20n\pmod{100}$, because every later term contains $20^2=400$. So only $n$ modulo $5$ matters, where $n=2022^{2023}\equiv2^{2023}\pmod5$. The powers of $2$ modulo $5$ repeat as $2,4,3,1$, and $2023\equiv3\pmod4$, so $n\equiv3\pmod5$ and the term is $\equiv1+60=61\pmod{100}$.
+
+\textbf{Sum.} $68+61=129\equiv29\pmod{100}$. The two rightmost digits are $2$ and $9$, with sum $\boxed{11}$.

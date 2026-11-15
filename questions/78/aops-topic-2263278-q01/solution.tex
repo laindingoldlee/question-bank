@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2263278_geometry
+% Stable identity: aops-topic-2263278-q01
+In triangle $ABC$, $\angle ACB=180^\circ-30^\circ-140^\circ=10^\circ$.
+
+\textbf{The circumcircle of $ABC$.} Let $O$ be its centre. The inscribed angle $\angle BAC=30^\circ$ is acute, so the central angle on the same arc is $\angle BOC=2\cdot30^\circ=60^\circ$. Since $OB=OC$, triangle $OBC$ is equilateral, and $OA=OB=BC$. Similarly the inscribed angle $\angle ACB=10^\circ$ gives $\angle AOB=20^\circ$. So triangle $AOB$ is isosceles with legs $OA=OB=BC$ and apex angle $20^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(1,0), A=2*Sin(10)*dir(140), O=(0.5,sqrt(3)/2), D=C+2*Sin(10)*dir(-100);
+draw(circle(O,1),gray);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--D--C,linewidth(0.9)+blue);
+draw(O--A,red+dashed); draw(O--B,red+dashed); draw(O--C,red+dashed);
+dot(O,red);
+label("$A$",A,W); label("$B$",B,S); label("$C$",C,E); label("$D$",D,S,blue); label("$O$",O,N,red);
+label("$30^\circ$",A+0.2*dir(-25),fontsize(7pt)); draw(arc(C,0.3,170,180)); label("$10^\circ$",C+0.36*dir(160),fontsize(7pt));
+label("$80^\circ$",C+0.2*dir(222),blue+fontsize(7pt)); label("$20^\circ$",B+0.38*dir(-10),blue+fontsize(7pt));
+label("$20^\circ$",O+0.32*dir(230),red+fontsize(7pt));
+\end{asy}
+
+\textbf{A comparison triangle.} On the side of line $BC$ where $D$ lies, take the point $D'$ with $BD'=BC$ and $\angle CBD'=20^\circ$. Triangle $D'BC$ is isosceles with apex angle $20^\circ$, so its base angles are $80^\circ$; in particular $\angle BCD'=80^\circ$, so $D'$ lies on ray $CD$. Triangles $AOB$ and $D'BC$ are congruent by SAS (legs equal to $BC$, apex angles $20^\circ$), so $CD'=AB=CD$.
+
+Since $D$ and $D'$ lie on the same ray from $C$ at the same distance from $C$, they coincide. Therefore
+\[\angle CBD=\angle CBD'=\boxed{20^\circ}.\]
+(The argument is the same whichever side of line $BC$ the point $D$ is on.)

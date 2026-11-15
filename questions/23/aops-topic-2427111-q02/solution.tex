@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2427111_several_problems_that_i_made
+% Stable identity: aops-topic-2427111-q02
+Place $P=(0,0)$, $B=(0,4)$, $C=(4,0)$ (any other choice of the quarter circle is a reflection of this one and gives the same area), so $M=(2,0)$.
+
+Line $L$ is $y=4-2x$. Substituting into $x^2+y^2=16$:
+\[x^2+(4-2x)^2=16\iff5x^2-16x=0,\]
+so $x=0$ (the point $B$) or $x=\dfrac{16}5$, giving $D=\left(\dfrac{16}5,-\dfrac{12}5\right)$.
+
+Line $T$ is $y=-\dfrac{12}5$ and line $K$ is $x+y=4$, so $E=\left(\dfrac{32}5,-\dfrac{12}5\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0),B=(0,4),C=(4,0),M=(2,0),D=(16/5,-12/5),Ep=(32/5,-12/5);
+fill(B--D--Ep--cycle,rgb(0.8,0.88,1));
+draw(circle(P,4),linewidth(0.8));
+draw(P--B,dashed); draw(P--C,dashed);
+draw(B--D,blue); draw(B--Ep,red); draw((-1,-12/5)--(7.2,-12/5));
+draw(D--Ep,linewidth(0.9));
+dot(P); dot(B); dot(C); dot(M); dot(D); dot(Ep);
+label("$P$",P,W); label("$B$",B,N); label("$C$",C,NE); label("$M$",M,SW); label("$D$",D,dir(-60)); label("$E$",Ep,SE);
+label("$L$",B+0.3*(D-B),W,blue); label("$K$",B+0.75*(Ep-B),NE,red); label("$T$",(7.2,-12/5),E);
+\end{asy}
+
+Triangle $BDE$ has the horizontal base $DE=\dfrac{32}5-\dfrac{16}5=\dfrac{16}5$ and height $4+\dfrac{12}5=\dfrac{32}5$ (the vertical distance from $B$ to line $T$), so its area is
+\[\dfrac12\cdot\dfrac{16}5\cdot\dfrac{32}5=\boxed{\dfrac{256}{25}}=10.24.\]

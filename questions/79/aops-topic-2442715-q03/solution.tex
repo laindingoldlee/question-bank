@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2442715_400th_post_celebrations
+% Stable identity: aops-topic-2442715-q03
+We use one fact repeatedly: two triangles with equal bases on the same line and a common opposite vertex have the same height, hence the same area.
+
+Since $M$ is the midpoint of $BC$, triangles $MPB$ and $CPM$ have equal bases $BM=MC$ and the common vertex $P$, so $[MPB]=[CPM]=x$ say. In the same way $[APN]=[NPC]=y$ (as $AN=NC$) and $[BPO]=[OPA]=z$ (as $AO=OB$).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0.8,3.2),B=(0,0),C=(4.4,0);
+pair M=(B+C)/2,Nn=(A+C)/2,Oo=(A+B)/2,P=(A+B+C)/3;
+fill(B--P--M--cycle,rgb(0.85,0.92,1)); fill(C--P--M--cycle,rgb(0.85,0.92,1));
+fill(A--P--Nn--cycle,rgb(1,0.88,0.75)); fill(C--P--Nn--cycle,rgb(1,0.88,0.75));
+fill(A--P--Oo--cycle,rgb(0.85,1,0.85)); fill(B--P--Oo--cycle,rgb(0.85,1,0.85));
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--M); draw(B--Nn); draw(C--Oo);
+dot(P); dot(M); dot(Nn); dot(Oo);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$M$",M,S);label("$N$",Nn,NE);label("$O$",Oo,W);label("$P$",P,dir(65));
+label("$x$",(B+P+M)/3); label("$x$",(C+P+M)/3); label("$y$",(A+P+Nn)/3); label("$y$",(C+P+Nn)/3); label("$z$",(A+P+Oo)/3); label("$z$",(B+P+Oo)/3);
+\end{asy}
+
+The median $AM$ also splits triangle $ABC$ into two triangles of equal area: $[ABM]=[ACM]$, since $BM=MC$ and $A$ is a common vertex. Now $ABM$ consists of the triangles $OPA$, $BPO$, $MPB$, and $ACM$ consists of $APN$, $NPC$, $CPM$, so
+\[2z+x=2y+x,\qquad\text{i.e.}\qquad z=y.\]
+Likewise the median $BN$ gives $[BCN]=[BAN]$, i.e. $2x+y=2z+y$, so $x=z$. Hence $x=y=z$, and since the six triangles fill triangle $ABC$, each has area $\dfrac16[ABC]$. $\blacksquare$

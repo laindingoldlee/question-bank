@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h3632554_finding_angles_of_a_trapezoid
+% Stable identity: aops-topic-3632554-q01
+Write $AB=BC=a$, $AC=CD=b$, and $\angle DAB=\theta$. Coordinates $A=(0,0)$, $D=(a+b,0)$, $B=(a\cos\theta,a\sin\theta)$, $C=(a+a\cos\theta,a\sin\theta)$ give $b^2=2a^2(1+\cos\theta)$ from $AC$, and $a^2=2ab\cos\theta$ from $CD=b$. With $t=\dfrac{b}{a}>0$, these imply $t^3-2t-1=0=(t+1)(t^2-t-1)$, hence $t=\dfrac{1+\sqrt 5}{2}$ and $\cos\theta=\dfrac{\sqrt 5-1}{4}=\cos 72^\circ$. Thus $\angle A=72^\circ$, $\angle B=108^\circ$. Triangle $ABC$ is isosceles, so $\angle BAC=36^\circ$; consequently $\angle CAD=36^\circ$. Since $AC=CD$, $\angle D=36^\circ$, and $\angle C=144^\circ$.
+\begin{asy}
+import geometry; size(220);
+real a=1,b=(1+sqrt(5))/2;pair A=(0,0),D=(a+b,0),B=dir(72),C=B+(1,0);draw(A--B--C--D--cycle);draw(A--C,dashed);label("$A$",A,SW);label("$B$",B,NW);label("$C$",C,NE);label("$D$",D,SE);
+\end{asy}

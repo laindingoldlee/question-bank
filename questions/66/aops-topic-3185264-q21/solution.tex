@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3185264_2020_abmc_speed_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3185264-q21
+Put $A=(0,0),B=(12,0),D=(0,4),C=(12,4)$, and $E=(e,0)$. Then $F=(4,4)$ and $G=(8,4)$, while $DB$ has equation $y=4-\dfrac{x}{3}$. Parameterizing $X=E+t(F-E)$ and $Y=E+u(G-E)$ gives $t=\dfrac{12-e}{16-e}$ and $u=\dfrac{12-e}{20-e}$. The determinant area is $[EXY]=8tu$. Let $b=EB=12-e\ge0$. The given area becomes $\dfrac{8b^2}{(b+4)(b+8)}=\dfrac{8}{15}$, so $(7b+8)(b-2)=0$. Hence $\boxed{EB=2}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(12,0),C=(12,4),D=(0,4),F=(4,4),G=(8,4),Ee=(10,0),X=extension(Ee,F,D,B),Y=extension(Ee,G,D,B);draw(A--B--C--D--cycle);draw(D--B^^Ee--F^^Ee--G);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$E$",Ee,S);label("$F$",F,N);label("$G$",G,N);label("$X$",X,W);label("$Y$",Y,E);
+\end{asy}

@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1297887_the_diameter_of_a_pipe
+% Stable identity: aops-topic-1297887-q01
+Let the radius be $r$. The deepest point is at the bottom of the circle, so the centre is $128-r$ above the water surface (the water fills more than half the pipe if $128>r$). The half-chord is $32$, so
+\[
+r^2=32^2+(128-r)^2\quad\Longrightarrow\quad0=1024+16384-256r\quad\Longrightarrow\quad r=68 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),68),linewidth(0.9)); draw((-32,60)--(32,60),blue); draw((0,0)--(32,60),red); draw((0,-68)--(0,60),gray+dashed);
+dot((0,0)); label("$O$",(0,0),W); label("$P$",(-32,60),NW); label("$Q$",(32,60),NE); label("$32$",(16,60),N,blue); label("$r$",(16,30),SE,red); label("$128$",(0,-25),E,gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The diameter is $\boxed{136\text{ cm}}$. (Using $32^2+64^2$, as the poster tried, treats the wrong segments as legs.)

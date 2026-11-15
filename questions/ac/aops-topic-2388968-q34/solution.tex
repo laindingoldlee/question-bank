@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2388968_christmas1000th_post_problems
+% Stable identity: aops-topic-2388968-q34
+Since $\cos(2\pi)=1$, his speed with the wind is $v(t)=1+\sin t$ km per hour. This is never negative, so he never turns back and the distance travelled is
+\[\int_0^{10\pi}(1+\sin t)\,dt=\Bigl[t-\cos t\Bigr]_0^{10\pi}=(10\pi-\cos10\pi)-(0-\cos0)=10\pi-1+1=10\pi\text{ km}.\]
+Without the wind he travels $1\cdot10\pi=10\pi$ km. The difference is $\boxed{0}$ km: over the $5$ full periods of $\sin t$, the wind helps and hinders equally.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real xs=0.12;
+real f(real t){return 1+sin(t);}
+draw((-0.2,0)--(xs*10*pi+0.5,0),Arrow(6)); draw((0,-0.2)--(0,2.5),Arrow(6));
+path g=graph(new pair(real t){return (xs*t,f(t));},0,10*pi,400);
+fill((0,0)--g--(xs*10*pi,0)--cycle,rgb(0.85,0.9,1));
+draw(g,blue+linewidth(0.9));
+draw((0,1)--(xs*10*pi,1),dashed+red);
+label("$t$",(xs*10*pi+0.5,0),E); label("speed",(0,2.5),N,fontsize(8pt));
+label("$10\pi$",(xs*10*pi,0),S,fontsize(8pt)); label("$1$",(0,1),W,fontsize(8pt)); label("$2$",(0,2),W,fontsize(8pt));
+label("$1+\sin t$",(xs*2.5*pi,2),N,blue+fontsize(8pt));
+\end{asy}

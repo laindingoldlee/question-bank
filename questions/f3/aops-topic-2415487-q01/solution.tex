@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2415487_counting_in_a_circle
+% Stable identity: aops-topic-2415487-q01
+\textbf{(a)} Fix six positions around the circle. There are $6!=720$ ways to put the beads into the positions. The positions have $12$ symmetries: $6$ rotations (including turning by $0^\circ$) and $6$ reflections (flips). Applying the $12$ symmetries to one placement gives $12$ different placements: since the beads are all different, a symmetry that gives back the same placement must leave every position where it is, and only the identity does that. So each bracelet corresponds to exactly $12$ placements, and the number of bracelets is
+\[\dfrac{720}{12}=\boxed{60}.\]
+(Equivalently: fix one bead and arrange the other five in $5!=120$ ways around it, then divide by $2$ for flipping: $\dfrac{(6-1)!}{2}=60$.)
+
+\textbf{(b)} Turning through $180^\circ$ and flipping over are different symmetries, so they give different placements. Read clockwise from the top:
+\begin{itemize}
+\item the start is $A,B,C,D,E,F$;
+\item after turning through $180^\circ$ it is $D,E,F,A,B,C$;
+\item after flipping over (about the vertical axis) it is $A,F,E,D,C,B$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+void hexa(pair c, string[] L, string cap){
+ draw(circle(c,1),gray);
+ for(int k=0;k<6;++k){pair p=c+dir(90-60k); dot(p); label(L[k],c+1.32*dir(90-60k));}
+ label(cap,c+(0,-1.9));}
+hexa((0,0),new string[]{"$A$","$B$","$C$","$D$","$E$","$F$"},"start");
+hexa((4,0),new string[]{"$D$","$E$","$F$","$A$","$B$","$C$"},"turned $180^\circ$");
+hexa((8,0),new string[]{"$A$","$F$","$E$","$D$","$C$","$B$"},"flipped over");
+\end{asy}
+
+A rotation keeps the clockwise order of the beads; a flip reverses it. (A $180^\circ$ turn of a flat figure is a reflection in a \emph{point}; flipping a bracelet over is a reflection in a \emph{line}, which is a different motion.) So all $12$ symmetries are different, and dividing by $6$ for the rotations and then by $2$ for flipping is correct.

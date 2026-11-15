@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1557923_hard_combinatorics_problems
+% Stable identity: aops-topic-1557923-q03
+Let $\sigma(i)$ be the person whose badge person $i$ holds; $\sigma$ is a permutation of the six people. In one turn person $i$ takes the badge held by $\sigma(i)$, namely the badge of $\sigma(\sigma(i))$ (a person with their own badge keeps it, and $\sigma(\sigma(i))=i$ in that case anyway). So one turn replaces $\sigma$ by $\sigma^2$, and after $k$ turns the permutation is $\sigma^{2^k}$.
+
+A cycle of length $\ell$ of $\sigma$ becomes the identity in $\sigma^{2^k}$ exactly when $\ell\mid2^k$. Hence everyone eventually has their own badge exactly when every cycle length of $\sigma$ is a power of $2$; with six people the allowed lengths are $1,2,4$.
+
+Count such permutations by cycle type:
+\[
+\begin{array}{l|c}
+\text{type} & \text{number}\\\hline
+1^6 & 1\\
+2\,1^4 & \binom62=15\\
+2^2\,1^2 & \binom64\cdot3=45\\
+2^3 & 15\\
+4\,1^2 & \binom64\cdot3!=90\\
+4\,2 & \binom64\cdot3!=90
+\end{array}
+\]
+The total is $256$, so the probability is
+\[
+\dfrac{256}{720}=\boxed{\dfrac{16}{45}}.
+\]

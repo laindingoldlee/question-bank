@@ -1,0 +1,5 @@
+For a smallest integer with a given divisor count, larger exponents must belong to smaller consecutive primes: exchanging an inverted pair of exponents makes the integer smaller. Write $b=\prod p_i^{e_i}$ with $e_1\ge e_2\ge\cdots\ge1$ and $\prod(e_i+1)=46656$.
+An exhaustive finite minimisation can be performed with $F(R,i,m)=\min_{d\mid R,\ 2\le d\le m+1}p_i^{d-1}F(\dfrac{R}{d},i+1,d-1)$, and $F(1,i,m)=1$. Keep only products below a current known candidate; no discarded branch can improve that candidate. A candidate below $2^{55}$ bounds $e_1\le54$. This recurrence gives the minimizing exponent list $(8,5,2,2,2,1,1,1,1,1)$ and $b=25824945072326400$. Its divisor count is $9\cdot6\cdot3^3\cdot2^5=46656$.
+Now $\sigma(b)$ is the product of the prime-power divisor sums
+\[511,364,31,57,133,14,18,20,24,30.\]
+Their prime factors are contained in $\{2,3,5,7,13,19,31,73\}$, with $511=7\cdot73$. The largest is $\boxed{73}$.

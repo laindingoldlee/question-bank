@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1973835_tough_counting_problem_i_cant_solve
+% Stable identity: aops-topic-1973835-q01
+Let the vegetarian get $k\in\{1,2,3\}$ cheese slices. The other $4$ children share $6$ pepperoni and $3-k$ cheese slices, each getting at least one slice. Count these by inclusion--exclusion on the set of children who get nothing. Distributing $m$ identical slices to $j$ children (no restriction) can be done in $\dbinom{m+j-1}{j-1}$ ways, so with $c=3-k$ cheese slices the count is
+\[
+N(c)=\sum_{i=0}^{4}(-1)^i\dbinom4i\dbinom{6+(4-i)-1}{(4-i)-1}\dbinom{c+(4-i)-1}{(4-i)-1},
+\]
+where the $i=4$ term counts the empty assignment (only possible with no slices, so it is $0$ here).
+\begin{itemize}
+\item $k=1$, $c=2$: $\dbinom93\dbinom53-4\dbinom82\dbinom42+6\dbinom71\dbinom31-4\dbinom60\dbinom20=840-672+126-4=290$.
+\item $k=2$, $c=1$: $\dbinom93\cdot4-4\dbinom82\cdot3+6\cdot7\cdot2-4\cdot1\cdot1=336-336+84-4=80$.
+\item $k=3$, $c=0$: each of the $4$ children needs a pepperoni slice, leaving $2$ to share: $\dbinom{2+3}{3}=10$.
+\end{itemize}
+In total there are $290+80+10=\boxed{380}$ ways.

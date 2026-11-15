@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h2222539_external_bisector_intersection_ratio
+% Stable identity: aops-topic-2222539-q01
+\textbf{(a)} Suppose $AB>AC$ (the other case is the same with $B$ and $C$ swapped). Let $P$ be a point on ray $BA$ beyond $A$; the exterior angle at $A$ is $\angle PAC$, and $AX$ bisects it.
+
+Let $E$ be the point on segment $AB$ with $AE=AC$ (it exists because $AC<AB$). Then triangle $AEC$ is isosceles, so $\angle AEC=\angle ACE$. The exterior angle of this triangle at $A$ is $\angle PAC=\angle AEC+\angle ACE=2\angle AEC$, so
+\[\angle PAX=\dfrac{1}{2}\angle PAC=\angle AEC.\]
+These are corresponding angles for the lines $AX$ and $EC$ with transversal $BP$, so $EC\parallel AX$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(3,0), A=(3.5,1.9);
+pair d=unit(A-B)+unit(C-A);
+pair X=extension(A,A+d,B,C);
+pair Ept=A+(B-A)*abs(C-A)/abs(B-A);
+pair P=A+0.9*unit(A-B);
+draw(B--X,gray);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(B--P);
+draw(A--X,blue+linewidth(0.8));
+draw(C--Ept,red+dashed);
+dot(A);dot(B);dot(C);dot(X,blue);dot(Ept,red);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,S);label("$X$",X,S,blue);label("$E$",Ept,NW,red);label("$P$",P,N);
+real tP=angle(P-A)*180/pi, tD=angle(d)*180/pi, tC=angle(C-A)*180/pi;
+draw(arc(A,0.4,tD,tP),blue);
+draw(arc(A,0.48,tC,tD),blue);
+\end{asy}
+
+Because $E$ lies between $B$ and $A$ and $EC\parallel AX$, the line $AX$ meets line $BC$ on the far side of $C$ from $B$: the triangles $BEC$ and $BAX$ are similar (parallel lines), with ratio $\dfrac{BA}{BE}>1$, so $X$ lies on ray $BC$ beyond $C$. In particular $X$ is outside segment $BC$, and
+\[\dfrac{BX}{BC}=\dfrac{BA}{BE}\quad\Longrightarrow\quad\dfrac{XC}{BC}=\dfrac{BX-BC}{BC}=\dfrac{BA-BE}{BE}=\dfrac{AE}{BE},\]
+hence
+\[\dfrac{BX}{XC}=\dfrac{BA}{BE}\cdot\dfrac{BE}{AE}=\dfrac{AB}{AE}=\dfrac{AB}{AC}.\]
+Since $X$ is outside segment $BC$, the directed segments $BX$ and $XC$ point in opposite directions, so as a directed ratio $\dfrac{BX}{XC}=-\dfrac{AB}{AC}$. (For an internal division the ratio is positive; that is the internal angle bisector theorem.)
+
+\textbf{(b)} If $AB=AC$, then $\angle B=\angle C$ and the exterior angle at $A$ equals $\angle B+\angle C=2\angle B$, so the exterior bisector makes the angle $\angle B$ with ray $AP$; it is parallel to $BC$ and \textbf{does not meet line $BC$ at all}. This matches the formula: the ratio $-1$ would require $BX=-XC$, i.e. $B=C$, which is impossible.

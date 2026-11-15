@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1641150_work_out_the_length_of_the_shorter_side
+% Stable identity: aops-topic-1641150-q01
+The perimeter is $2\big((3x+5)+(x+7)\big)=8x+24$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(11,0),C=(11,9),D=(0,9);
+draw(A--B--C--D--cycle,linewidth(0.9));
+label("$3x+5$",(A+B)/2,S);label("$x+7$",(B+C)/2,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $8x+24=40$, $x=2$. The sides are $3\cdot2+5=11$ and $2+7=9$ (check: $2(11+9)=40$), and the shorter side has length $\boxed{9}$.

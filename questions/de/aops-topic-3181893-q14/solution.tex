@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3181893_2020_abmc_online_december_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3181893-q14
+Let $R$ be the circumradius and $r=OM$. Since $OM\perp AB$, $R^2-r^2=12^2=144$. The circle centred at $O$ of radius $r$ meets line $BC$ at two points whose distances from $B$ multiply to 144 and sum to 25. They are 9 and 16, so $BK=9,CK=16$. On $CA$, the distances from $C$ multiply to 144 and sum to 26, giving 8 and 18; thus $CL=8,AL=18$. Removing the three corner triangles from $ABC$ yields the area fraction $1-\dfrac{1}{2}\cdot\dfrac{9}{25}-\dfrac{16}{25}\cdot\dfrac{8}{26}-\dfrac{18}{26}\cdot\dfrac{1}{2}=\dfrac{18}{65}$. Heron gives $[ABC]=\sqrt{\dfrac{75}{2}\dfrac{27}{2}\dfrac{25}{2}\dfrac{23}{2}}=\dfrac{225\sqrt{23}}{4}$. Hence $[MLK]=\dfrac{405\sqrt{23}}{26}$ and $\boxed{a+b+c=454}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(24,0),C=(627/48,sqrt(676-(627/48)^2)),M=(12,0),K=B+9*(C-B)/25,L=C+8*(A-C)/26,O=(12,(676-24*C.x)/(2*C.y));draw(A--B--C--cycle);draw(circle(O,abs(O)));draw(circle(O,abs(O-M)),dashed);filldraw(M--K--L--cycle,lightgray);draw(O--M);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$M$",M,S);label("$K$",K,E);label("$L$",L,W);label("$O$",O,N);
+\end{asy}

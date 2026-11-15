@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h3326257_mock_state_problems
+% Stable identity: aops-topic-3326257-q106
+The number 1105 has the four representations $4^2+33^2$, $9^2+32^2$, $12^2+31^2$, $23^2+24^2$. To prove it is the first and has no extra representation, count all pairs with $1\le y\le x\le33$ and $x^2+y^2\le1105$. These include every possible representation at or below 1105, since $x^2<1105$ implies $x\le33$. The following exact enumeration verifies that no smaller integer has four representations and that 1105 has exactly four:\begin{verbatim}
+counts=[0]*1106
+for x in range(1,34):
+    for y in range(1,x+1):
+        n=x*x+y*y
+        if n<=1105: counts[n]+=1
+assert counts[1105]==4
+assert all(counts[n]!=4 for n in range(1,1105))
+\end{verbatim}
+Thus the minimum is $\boxed{1105}$.

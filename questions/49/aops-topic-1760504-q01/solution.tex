@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1760504_parabola_problem
+% Stable identity: aops-topic-1760504-q01
+The answer is: \textbf{infinitely many}. In fact every point of the parabola is a vertex of such a triangle.
+
+Since $y=(x+1)^2+3$, translating by $(1,-3)$ (which preserves distances) turns the graph into the parabola $\mathcal P:\ y=x^2$, so we work with $\mathcal P$. Fix $A=(a,a^2)$ on $\mathcal P$ and let $\rho$ be the rotation about $A$ through $60^\circ$ counterclockwise, $\rho(A+(p,q))=A+\left(\dfrac {p}{2}-\dfrac{\sqrt3}{2}q,\ \dfrac{\sqrt3}{2}p+\dfrac {q}{2}\right)$. For a point $B\ne A$ on $\mathcal P$, the triangle $A,B,\rho(B)$ is equilateral; we need $\rho(B)$ to lie on $\mathcal P$ as well.
+
+Put $B=(t,t^2)$ and $\rho(B)=(u(t),v(t))$:
+\[
+u(t)=a+\dfrac{t-a}{2}-\dfrac{\sqrt3}{2}(t^2-a^2),\qquad v(t)=a^2+\dfrac{\sqrt3}{2}(t-a)+\dfrac{t^2-a^2}{2},
+\]
+and let $g(t)=v(t)-u(t)^2$, so $\rho(B)\in\mathcal P$ exactly when $g(t)=0$. Then:
+\begin{itemize}
+\item $g(a)=a^2-a^2=0$, and $g'(a)=v'(a)-2u(a)u'(a)=\left(\dfrac{\sqrt3}{2}+a\right)-2a\left(\dfrac{1}{2}-\sqrt3a\right)=\dfrac{\sqrt3}{2}+2\sqrt3a^2>0$, so $g(t)>0$ for $t$ slightly larger than $a$.
+\item As $t\to\infty$, $u(t)^2$ grows like $\dfrac{3}{4}t^4$ while $v(t)$ grows like $\dfrac{1}{2}t^2$, so $g(t)\to-\infty$.
+\end{itemize}
+By the intermediate value theorem $g(b)=0$ for some $b>a$. With $B=(b,b^2)$ and $C=\rho(B)$, both on $\mathcal P$ and distinct from $A$, the triangle $ABC$ is equilateral.
+
+So every point $A$ of the parabola is a vertex of an inscribed equilateral triangle. Each triangle has only three vertices and there are infinitely many points $A$, hence infinitely many such triangles. Two of them are drawn: the one symmetric about the axis, with vertices $(-1,3)$ and $(-1\pm\sqrt3,6)$ (side $2\sqrt3$), and the one with a vertex at $(0,4)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return x^2+2x+4;}
+draw(graph(f,-4.1,2.1),linewidth(0.9));
+pair A1=(-1,3),B1=(sqrt(3)-1,6),C1=(-sqrt(3)-1,6);
+pair A2=(0,4),B2=(1.3005,f(1.3005)),C2=(-3.0670,f(-3.0670));
+draw(A1--B1--C1--cycle,blue+linewidth(0.8));
+draw(A2--B2--C2--cycle,red+linewidth(0.8));
+dot(A1,blue);dot(B1,blue);dot(C1,blue);dot(A2,red);dot(B2,red);dot(C2,red);
+label("$y=x^2+2x+4$",(2.1,f(2.1)),E);
+draw((-4.5,0)--(3,0),Arrow(4));draw((0,-0.5)--(0,13),Arrow(4));
+label("$x$",(3,0),S);label("$y$",(0,13),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

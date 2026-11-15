@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h3113017_iwymic_2023_t10b
+% Stable identity: aops-topic-3113017-q01
+No. Modulo $2$, both sum and difference are exclusive-or: the upper parity is the sum of the two lower parities modulo $2$. Consequently the six bottom parities determine the entire array. Since the numbers $1,\ldots,21$ include exactly eleven odd numbers, the parity array would need eleven ones. The following exhaustive check of all $2^6=64$ bottom parity rows proves this never occurs; hence no original arrangement can exist.
+\begin{verbatim}
+from itertools import product
+for row in product((0,1),repeat=6):
+    odd=sum(row)
+    while len(row)>1:
+        row=tuple(a^b for a,b in zip(row,row[1:]))
+        odd+=sum(row)
+    assert odd!=11
+\end{verbatim}

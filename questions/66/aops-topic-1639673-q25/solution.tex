@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1639673_venn_diagram__number_theory
+% Stable identity: aops-topic-1639673-q25
+\textbf{Divisibility.} The numbers $\dfrac{9N}{14}$ and $\dfrac{7N}{12}$ are integers. Since $\gcd(9,14)=1$ and $\gcd(7,12)=1$, this means $14\mid N$ and $12\mid N$, that is, $\operatorname{lcm}(14,12)=84$ divides $N$. Write $N=84k$; then $\dfrac{9N}{14}=54k$ people care about colour and $\dfrac{7N}{12}=49k$ about smell.
+
+\textbf{Venn-diagram conditions.} With $753$ people in both groups:
+\begin{itemize}
+\item the overlap cannot exceed the smaller group: $753\le49k$, so $k\ge\dfrac{753}{49}>15$, i.e.\ $k\ge16$;
+\item the union cannot exceed everybody: $54k+49k-753\le84k$, i.e.\ $19k\le753$, so $k\le39$ (as $19\cdot39=741$ and $19\cdot40=760$).
+\end{itemize}
+Conversely, for every $k$ with $16\le k\le39$ we can take $54k-753\ge111$ people who care only about colour, $49k-753\ge31$ who care only about smell, $753$ who care about both, and $84k-(103k-753)=753-19k\ge12$ who care about neither, so every such $k$ occurs.
+
+Hence $k$ runs over $16,17,\dots,39$, giving $39-16+1=\boxed{\textbf{(D)}\ 24}$ values of $N$.

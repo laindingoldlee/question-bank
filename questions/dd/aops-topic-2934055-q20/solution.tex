@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2934055_2016_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2934055-q20
+Label the opposite vertex pairs $(0,1),(2,3),(4,5)$. Edges join vertices from distinct pairs; faces select one vertex from each pair. This yields the following complete enumeration.\begin{verbatim}
+from itertools import combinations,product
+edges=[(a,b) for a,b in combinations(range(6),2) if a//2!=b//2]
+index={e:i for i,e in enumerate(edges)}
+faces=[[index[tuple(sorted(e))] for e in combinations(f,2)]
+       for f in product([0,1],[2,3],[4,5])]
+ans=sum(all(len({col[i] for i in f})==3 for f in faces)
+        for col in product(range(3),repeat=12))
+print(ans) # 24
+\end{verbatim}
+Every labelled edge assignment is checked exactly once, so the answer is $\boxed{24}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair U=(0,2),D=(0,-2);pair[] p={(-1,0),(0,.5),(1,0),(0,-.5)};for(int k=0;k<4;++k){draw(U--p[k]);draw(D--p[k]);draw(p[k]--p[(k+1)%4]);}label("$0$",U,N);label("$1$",D,S);for(int k=0;k<4;++k)label(string(k+2),p[k],p[k]);
+\end{asy}

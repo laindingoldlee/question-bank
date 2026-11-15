@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2981414_fun_geo_problems
+% Stable identity: aops-topic-2981414-q09
+The radius is $5$, so the centre is $5-3.75=1.25$ inches above the surface. The cut on the surface is a chord of the blade at distance $1.25$ from the centre.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,1.25);real r=5;draw(circle(O,r));fill((-7,-5)--(7,-5)--(7,0)--(-7,0)--cycle,gray(0.85)+opacity(0.6));
+draw((-7,0)--(7,0));draw((-7,-5)--(7,-5));real h=sqrt(25-1.25^2);pair L=(-h,0),Rr=(h,0);
+draw(O--Rr,dashed);draw(O--(0,0),dashed);draw(L--Rr,linewidth(1.2));dot(O);
+label("$O$",O,N);label("$5$",(O+Rr)/2,NE);label("$1.25$",(0,0.6),W);label("cut",(0,0),S);
+\end{asy}
+
+Its length is $2\sqrt{5^2-1.25^2}=2\sqrt{\dfrac{375}{16}}=\boxed{\dfrac{5\sqrt{15}}{2}}\approx9.68$ inches.

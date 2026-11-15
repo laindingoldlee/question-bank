@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2659194_find_all_xyinmathbbz_such_that_fracxy2_y7x2_yxyinmathbbz
+% Stable identity: aops-topic-2659194-q01
+Let $D=x^2y+x+y>0$ and $N=xy^2+y+7$, and suppose $D\mid N$. Since $yD-xN=y^2-7x$, also $D\mid y^2-7x$.
+
+\emph{Case 1: $y^2=7x$.} Then $7\mid y$; write $y=7k$, $x=7k^2$. Now $D=343k^5+7k^2+7k=k\left(343k^4+7k+7\right)=kN$, so $\dfrac ND=\dfrac1k$ is an integer only for $k=1$: $(x,y)=(7,7)$, with ratio $1$.
+
+\emph{Case 2: $y^2<7x$.} Then $D\le7x-y^2<7x$, so $x^2y<6x$ and $xy\le5$. The pairs with $xy\le5$ and $y^2<7x$ are $(1,1),(1,2),(2,1),(2,2),(3,1),(4,1),(5,1)$, with $(D,N)=(3,9),(5,13),(7,10),(12,17),(13,11),(21,12),(31,13)$. Only $(1,1)$ works (ratio $3$).
+
+\emph{Case 3: $y^2>7x$.} Write $y^2-7x=mD$ with $m\ge1$. Then $y$ is a root of
+\[t^2-m\left(x^2+1\right)t-(m+7)x=0.\]
+The other root $y'=m\left(x^2+1\right)-y$ is an integer with $yy'=-(m+7)x<0$, so $y'=-s$ with $s\ge1$, $y=m\left(x^2+1\right)+s$ and $sy=(m+7)x$. Then $sm\left(x^2+1\right)<(m+7)x$, so
+\[s\left(x^2+1\right)<\left(1+\dfrac7m\right)x\le8x.\]
+This forces $x\le7$ and $s<\dfrac{8x}{x^2+1}$. Substituting $y=m\left(x^2+1\right)+s$ into $sy=(m+7)x$ gives $m\left(s\left(x^2+1\right)-x\right)=7x-s^2$:
+\begin{itemize}
+\item $x=1$, $s\in\{1,2,3\}$: $m(2s-1)=7-s^2$ gives $m=6$ ($s=1$, $y=13$) or $m=1$ ($s=2$, $y=4$); $s=3$ fails.
+\item $x=2$, $s\in\{1,2,3\}$: $m(5s-2)=14-s^2$, i.e. $3m=13$, $8m=10$, $13m=5$; no solutions.
+\item $x=3$, $s\in\{1,2\}$: $m(10s-3)=21-s^2$, i.e. $7m=20$ or $17m=17$; the latter gives $y=12$.
+\item $x=4,5,6,7$, $s=1$: $m(x^2+1-x)=7x-1$, i.e. $13m=27$, $21m=34$, $31m=41$, $43m=48$; no solutions.
+\end{itemize}
+Checking these candidates in the original condition: $(1,13)$ gives $\dfrac{189}{27}=7$ and $(1,4)$ gives $\dfrac{27}9=3$, while $(3,12)$ gives $\dfrac{451}{123}$, not an integer.
+
+The solutions are $\boxed{(x,y)=(1,1),\ (1,4),\ (1,13),\ (7,7)}$.
+
+(Remark: over all integers there are infinitely many solutions, for example $(x,y)=\left(x,-7\left(x^2+1\right)\right)$, for which the ratio is $-7x$.)

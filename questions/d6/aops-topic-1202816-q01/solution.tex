@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1202816_proof_for_the_ratio
+% Stable identity: aops-topic-1202816-q01
+Let the similarity ratio be $k$: every length in the second triangle is $k$ times the corresponding length in the first. The perimeters are then in ratio $k$ (each side is multiplied by $k$).
+
+Take a side $b$ of the first triangle and its altitude $h$. Corresponding to them are the side $kb$ and the altitude $kh$ (the altitude is a length in the figure, and the similarity maps the foot of the altitude to the foot of the corresponding altitude, preserving right angles).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(1.2,2.4); draw(A--B--C--cycle); draw(C--(C.x,0),dashed);
+pair s=(6,0); real k=1.6; draw(shift(s)*scale(k)*(A--B--C--cycle),blue); draw(shift(s)*scale(k)*(C--(C.x,0)),blue+dashed);
+label("$h$",(C.x,1.2),W); label("$b$",(2,0),S); label("$kh$",s+k*(C.x,1.2),W); label("$kb$",s+k*(2,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the areas are $\dfrac{1}{2}bh$ and $\dfrac{1}{2}(kb)(kh)=k^2\cdot\dfrac{1}{2}bh$, in ratio $k^2$, which is the square of the ratio of perimeters.

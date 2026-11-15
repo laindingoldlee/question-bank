@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2228555_mock_target_questions
+% Stable identity: aops-topic-2228555-q04
+The two cylinders have equal volume (the second has radius $r-1>0$):
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real r=1.6, h=1.6;
+draw(ellipse((0,0),r,0.35*r),linewidth(0.8));
+draw((-r,0)--(-r,-h)); draw((r,0)--(r,-h));
+draw(shift(0,-h)*yscale(0.35)*arc((0,0),r,180,360));
+draw((0,0)--(r,0),blue); label("$r$",(r/2,0),S,blue);
+label("$h$",(r,-h/2),E);
+real r2=0.6, h2=3.2; pair o=(4.3,0);
+draw(ellipse(o,r2,0.35*r2),linewidth(0.8));
+draw(o+(-r2,0)--o+(-r2,-h2)); draw(o+(r2,0)--o+(r2,-h2));
+draw(shift(o+(0,-h2))*yscale(0.35)*arc((0,0),r2,180,360));
+draw(o--o+(r2,0),blue); label("$r-1$",o+(r2,0),E,blue);
+label("$bh$",o+(r2,-h2/2),E);
+\end{asy}
+
+\[\pi r^2h=\pi(r-1)^2\,bh\iff r^2=b(r-1)^2\iff\dfrac{r}{r-1}=\sqrt b\]
+(both sides positive, since $r>1$). So $r=\dfrac{\sqrt b}{\sqrt b-1}$.
+
+\textbf{Rationality.} If $r$ is rational, so is $\sqrt b=\dfrac{r}{r-1}$, and for an integer $b$ this means $b$ is a perfect square. Conversely, a perfect square $b$ gives a rational $r$.
+
+\textbf{The bound.} With $s=\sqrt b>1$, $r=\dfrac{s}{s-1}=1+\dfrac{1}{s-1}<1.15$ means $s-1>\dfrac{1}{0.15}=\dfrac{20}{3}$, i.e. $s>\dfrac{23}{3}\approx7.67$.
+
+The smallest integer $s>7.67$ is $8$, so $b=\boxed{64}$ (with $r=\dfrac{8}{7}\approx1.143$; $b=49$ would give $r=\dfrac{7}{6}\approx1.167$).

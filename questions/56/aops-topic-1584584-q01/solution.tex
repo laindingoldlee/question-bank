@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1584584_mathcounts_sprint_questions_26
+% Stable identity: aops-topic-1584584-q01
+\textbf{What is wrong.}
+\begin{itemize}
+\item \emph{Stars and bars treats the remaining prizes as identical.} It counts how many of the $4$ prizes each winner gets, not which prizes. Since the prizes are different, each remaining prize independently goes to one of $3$ winners, in $3^4=81$ ways; and for $4$ identical items among $3$ people the correct stars-and-bars count would be $\dbinom62=15$, not $\dbinom92$.
+\item \emph{Overcounting.} Even with $7\cdot6\cdot5\cdot3^4$, each distribution is counted several times: a winner who ends with prizes $P$ and $Q$ is counted once with $P$ as the ``first'' prize and once with $Q$. So the method cannot be repaired by a simple fix.
+\end{itemize}
+
+\textbf{Correct count (inclusion--exclusion).} Without the condition there are $3^7$ ways. Subtract those in which a given winner gets nothing ($2^7$ for each of the $3$ winners) and add back those in which two given winners get nothing ($1$ for each of the $3$ pairs):
+\[
+3^7-3\cdot2^7+3\cdot1=2187-384+3=\boxed{1806}.
+\]

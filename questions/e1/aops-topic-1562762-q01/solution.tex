@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1562762_how_many_possible_four_digits
+% Stable identity: aops-topic-1562762-q01
+Since $a+b+c+d=20$, the condition $b+c+d\ne15$ just says $a\ne5$. So count the even four-digit numbers with digit sum $20$, then subtract those with $a=5$.
+
+\textbf{Triples of digits.} For $0\le s\le 27$ let $T(s)$ be the number of triples of digits $(a,b,c)$, each $0$ to $9$, with sum $s$. By stars and bars with inclusion--exclusion (a digit exceeding $9$ is at least $10$),
+\[
+T(s)=\binom{s+2}{2}-3\binom{s-8}{2}+3\binom{s-18}{2},
+\]
+where $\binom m2=0$ for $m<2$. The number of pairs of digits with sum $s$ is $s+1$ for $s\le9$ and $19-s$ for $10\le s\le18$.
+
+\textbf{All even numbers with digit sum $20$.} For each even $d$, the digits $a,b,c$ have sum $20-d$ and $a\ge1$: that is $T(20-d)$ minus the triples with $a=0$ (pairs $b+c=20-d$).
+\[
+\begin{array}{c|c|c|c}
+d & T(20-d) & a=0 & \text{count}\\\hline
+0 & 231-198+3=36 & 0 & 36\\
+2 & 190-135=55 & 1 & 54\\
+4 & 153-84=69 & 3 & 66\\
+6 & 120-45=75 & 5 & 70\\
+8 & 91-18=73 & 7 & 66
+\end{array}
+\]
+Total: $36+54+66+70+66=292$.
+
+\textbf{Those with $a=5$.} Then $b+c+d=15$ with $d$ even: the number of pairs $b+c=15-d$ is $4,6,8,10,8$ for $d=0,2,4,6,8$, a total of $36$.
+
+Hence the answer is $292-36=\boxed{256}$.

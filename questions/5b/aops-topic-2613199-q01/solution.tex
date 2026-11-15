@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2613199_permutation_and_combina
+% Stable identity: aops-topic-2613199-q01
+A permutation counts ordered choices; a combination counts unordered ones.
+
+Count the ordered arrangements of $k$ of the $n$ objects in two ways:
+\begin{itemize}
+\item directly, there are $P(n,k)=n(n-1)\cdots(n-k+1)=\dfrac{n!}{(n-k)!}$ of them;
+\item alternatively, first choose which $k$ objects to use, in $\dbinom nk$ ways, then put them in order, in $k!$ ways.
+\end{itemize}
+So $P(n,k)=k!\dbinom nk$ and $\dbinom nk=\dfrac{n!}{k!\,(n-k)!}$. $\blacksquare$
+
+For the letters $A,B,C,D,E$ and $k=3$: there are $P(5,3)=5\cdot4\cdot3=60$ ordered choices (so $ABC$ and $CBA$ are different), but only $\dbinom53=10$ sets (so $\{A,B,C\}=\{C,B,A\}$). Each set gives $3!=6$ orders: $60=6\cdot10$.
+
+So $\boxed{P(5,3)=60,\ \dbinom53=10}$. Use permutations when order matters, e.g. choosing a president, a secretary and a treasurer, and combinations when it does not, e.g. choosing a three-person committee.

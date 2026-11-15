@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1374503_casework_problems_without_burnsides
+% Stable identity: aops-topic-1374503-q03
+Here casework by colour patterns becomes very long, and the efficient tool is Burnside's lemma: the number of classes equals the average, over the $48$ symmetries of the cube (rotations and reflections), of the number of colourings that the symmetry leaves unchanged. A symmetry whose permutation of the $8$ vertices has $c$ cycles fixes $5^c$ colourings (each cycle must be one colour).
+
+\[
+\begin{array}{lcc}
+\text{symmetry}&\text{number}&\text{cycles on vertices}\\\hline
+\text{identity}&1&8\\
+\text{rotation }\pm90^\circ\text{ about a face axis}&6&2\\
+\text{rotation }180^\circ\text{ about a face axis}&3&4\\
+\text{rotation }\pm120^\circ\text{ about a vertex diagonal}&8&4\\
+\text{rotation }180^\circ\text{ about an edge axis}&6&4\\
+\text{central inversion}&1&4\\
+\text{reflection in a plane parallel to faces}&3&4\\
+\text{reflection in a plane through two opposite edges}&6&6\\
+\text{rotary reflection by }\pm90^\circ&6&2\\
+\text{rotary reflection by }\pm60^\circ&8&2
+\end{array}
+\]
+(For instance, a reflection in a plane through two opposite edges fixes the $4$ vertices on those edges and swaps the other $4$ in two pairs: $6$ cycles. A rotary reflection about a body diagonal swaps the two end vertices of the diagonal and moves the other six around one $6$-cycle: $2$ cycles.) So
+\[
+\begin{aligned}
+\text{sum}&=5^8+6\cdot5^2+3\cdot5^4+8\cdot5^4+6\cdot5^4+5^4+3\cdot5^4+6\cdot5^6+6\cdot5^2+8\cdot5^2\\
+&=390625+150+1875+5000+3750+625+1875+93750+150+200=498000,
+\end{aligned}
+\]
+and the number of colourings is $\dfrac{498000}{48}=\boxed{10375}$.

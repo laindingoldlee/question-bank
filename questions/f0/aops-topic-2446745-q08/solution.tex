@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2446745_150th_msm_post
+% Stable identity: aops-topic-2446745-q08
+The triple $(x,y,z)$ is uniformly distributed in the cube $[0,2]^3$, of volume $8$. The triples with $x+y+z<2$ form the tetrahedron with vertices $(0,0,0)$, $(2,0,0)$, $(0,2,0)$, $(0,0,2)$, a pyramid with a right-triangular base of area $\dfrac12\cdot2\cdot2=2$ and height $2$, so its volume is $\dfrac13\cdot2\cdot2=\dfrac43$. (The tetrahedron lies inside the cube, because $x+y+z<2$ with nonnegative coordinates forces each coordinate to be less than $2$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair pr(real x,real y,real z){return (x+0.45*y,z+0.35*y);}
+real s=2;
+pair O=pr(0,0,0),X=pr(s,0,0),Y=pr(0,s,0),Z=pr(0,0,s);
+fill(X--Y--Z--cycle,rgb(0.8,0.88,1));
+draw(pr(0,s,0)--pr(s,s,0),dashed); draw(pr(0,s,0)--pr(0,s,s),dashed); draw(O--Y,dashed);
+draw(O--X--pr(s,0,s)--Z--cycle,linewidth(0.8));
+draw(X--pr(s,s,0)--pr(s,s,s)--pr(s,0,s)); draw(Z--pr(0,s,s)--pr(s,s,s));
+draw(X--Y,blue+dashed); draw(Y--Z,blue+dashed); draw(X--Z,blue);
+dot(O); dot(X); dot(Y); dot(Z);
+label("$O$",O,SW,fontsize(8pt)); label("$(2,0,0)$",X,S,fontsize(8pt)); label("$(0,2,0)$",Y,2*W,fontsize(7pt)); label("$(0,0,2)$",Z,W,fontsize(8pt));
+\end{asy}
+
+The probability is
+\[\dfrac{\dfrac43}{8}=\boxed{\dfrac16}.\]

@@ -1,0 +1,49 @@
+% Source: https://artofproblemsolving.com/community/c3h1621353_triangles
+% Stable identity: aops-topic-1621353-q01
+Let the triangle be $ABC$ with hypotenuse $AB=45$ and right angle at $C$, so $\angle A=\angle B=45^\circ$. Let the rectangle have side $x$ along $AB$ and height $y$. Each of the two small triangles at $A$ and $B$ has a right angle on $AB$ and a $45^\circ$ angle, so it is an isosceles right triangle, and its leg along $AB$ equals the height $y$. Hence
+\[
+y+x+y=45,\qquad\text{that is}\qquad x+2y=45 .
+\]
+The rectangle fits inside the triangle as long as $y$ is less than the height of the triangle from $C$, which is $\dfrac{45}{2}=22.5$.
+
+\textbf{Case 1: the side on the hypotenuse is the longer side,} $x:y=5:2$. Put $x=5k$, $y=2k$: then $9k=45$, $k=5$, and the rectangle is $25$ in by $10$ in.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(45,0),C=(22.5,22.5);
+real L=25,h=10; real x0=(45-L)/2;
+draw(A--B--C--cycle,linewidth(0.9));
+filldraw((x0,0)--(x0+L,0)--(x0+L,h)--(x0,h)--cycle,paleblue,blue+linewidth(0.9));
+draw((x0,h)--(x0,0),blue);
+path rm(pair P,pair u,pair v,real s){return P+s*u--P+s*(u+v)--P+s*v;}
+draw(rm(C,dir(-135),dir(-45),2));
+draw(rm((x0,0),(1,0),(0,1),1.6));draw(rm((x0+L,0),(-1,0),(0,1),1.6));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$10$",(x0/2,0),S);label("$25$",(x0+L/2,0),S);label("$10$",(x0+L+x0/2,0),S);
+label("$10$",(x0+L,h/2),W,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Case 2: the side on the hypotenuse is the shorter side,} $x:y=2:5$. Put $x=2k$, $y=5k$: then $12k=45$, $k=\dfrac{15}{4}$, and the rectangle is $\dfrac{15}{2}=7.5$ in by $\dfrac{75}{4}=18.75$ in. Since $18.75<22.5$, this rectangle also fits.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(45,0),C=(22.5,22.5);
+real L=7.5,h=18.75; real x0=(45-L)/2;
+draw(A--B--C--cycle,linewidth(0.9));
+filldraw((x0,0)--(x0+L,0)--(x0+L,h)--(x0,h)--cycle,paleblue,blue+linewidth(0.9));
+draw((x0,h)--(x0,0),blue);
+path rm(pair P,pair u,pair v,real s){return P+s*u--P+s*(u+v)--P+s*v;}
+draw(rm(C,dir(-135),dir(-45),2));
+draw(rm((x0,0),(1,0),(0,1),1.6));draw(rm((x0+L,0),(-1,0),(0,1),1.6));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$18.75$",(x0/2,0),S);label("$7.5$",(x0+L/2,0),S);label("$18.75$",(x0+L+x0/2,0),S);
+label("$18.75$",(x0+L,h/2),W,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the rectangle is either $\boxed{25\text{ in by }10\text{ in}}$ (longer side on the hypotenuse) or $\boxed{7.5\text{ in by }18.75\text{ in}}$ (shorter side on the hypotenuse).

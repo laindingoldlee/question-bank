@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1238042_mt10__24
+% Stable identity: aops-topic-1238042-q01
+In \emph{every} triangle the six parts have equal area. Each median splits the triangle into halves of equal area, and the centroid $G$ divides each median $2:1$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(2,4); pair G=(A+B+C)/3;
+draw(A--B--C--cycle,linewidth(1)); draw(A--(B+C)/2); draw(B--(A+C)/2); draw(C--(A+B)/2);
+dot(G); label("$G$",G,NE); label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The two small triangles with a common vertex $G$ and bases on the two halves of a side (e.g. $GBM$ and $GMC$ for the midpoint $M$ of $BC$) have equal bases and the same height, so they are equal; call the areas of the three equal pairs $x$ (at side $BC$), $y$ (at $CA$) and $z$ (at $AB$). The median from $A$ halves the triangle: $x+2z=x+2y$, so $y=z$; similarly the median from $B$ gives $x=z$. So the answer is $\boxed{\text{(B)}}$.

@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1751489_geometry_problem_i_need_help
+% Stable identity: aops-topic-1751489-q01
+Let $NC=x$. Then $AN=2x$ and $AB=3x$. Both triangles $ANC$ and $ANB$ have a right angle at $N$, so by the Pythagorean theorem
+\[
+AC=\sqrt{AN^2+NC^2}=\sqrt{4x^2+x^2}=\sqrt5\,x,
+\qquad
+BN=\sqrt{AB^2-AN^2}=\sqrt{9x^2-4x^2}=\sqrt5\,x .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real x=1;pair N0=(0,0),C=(x,0),B=(-sqrt(5)*x,0),A=(0,2x);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--N0,linewidth(0.8));
+draw((0,0.16)--(0.16,0.16)--(0.16,0),linewidth(0.6));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$N$",N0,S);
+label("$x$",(N0+C)/2,S);label("$2x$",(A+N0)/2,W);
+label("$3x$",(A+B)/2,NW);label("$\sqrt{5}\,x$",(B+N0)/2,S);label("$\sqrt{5}\,x$",(A+C)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence $AC=BN$. $\blacksquare$ (The argument does not depend on whether $N$ lies between $B$ and $C$.)

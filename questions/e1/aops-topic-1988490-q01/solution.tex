@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1988490_prove_that_a_sequence_converges_to_sqrt_2
+% Stable identity: aops-topic-1988490-q01
+By induction all $a_n$ are positive: $a_1=1>0$, and if $a_{n-1}>0$ then $a_n>0$. For $a=a_{n-1}$,
+\[
+a_n-\sqrt2=\dfrac{a+2-\sqrt2\,a-\sqrt2}{a+1}=\dfrac{(1-\sqrt2)(a-\sqrt2)}{a+1},
+\]
+since $(1-\sqrt2)(a-\sqrt2)=a-\sqrt2-\sqrt2\,a+2$. As $a+1>1$,
+\[
+\left|a_n-\sqrt2\right|\le(\sqrt2-1)\left|a_{n-1}-\sqrt2\right| .
+\]
+Repeating this,
+\[
+\left|a_n-\sqrt2\right|\le(\sqrt2-1)^{n-1}\left|a_1-\sqrt2\right|=(\sqrt2-1)^{n},
+\]
+and since $0<\sqrt2-1<1$, the right side tends to $0$. Hence $a_n\to\sqrt2$. $\blacksquare$
+
+(The factor $1-\sqrt2$ is negative, so the terms lie alternately below and above $\sqrt2$: $1<\sqrt2$, $\dfrac{3}{2}>\sqrt2$, $\dfrac{7}{5}<\sqrt2$, and so on. The formula $\dfrac{p+2q}{p+q}$ gives the same value whether or not $\dfrac {p}{q}$ is in lowest terms.)

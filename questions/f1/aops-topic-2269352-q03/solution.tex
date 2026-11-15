@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2269352_i_equations
+% Stable identity: aops-topic-2269352-q03
+As $|x|^5=1$, $|x|=1$; write $x=\cos\theta+i\sin\theta$. By De Moivre's theorem $5\theta=90^\circ+360^\circ m$, so
+\[\theta=18^\circ,\ 90^\circ,\ 162^\circ,\ 234^\circ,\ 306^\circ.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+fill((0,0)--(1.35,0)--(1.35,1.35)--(0,1.35)--cycle,palegreen);
+draw((-1.4,0)--(1.45,0),Arrow(4)); draw((0,-1.4)--(0,1.45),Arrow(4));
+draw(unitcircle);
+for(int k=0;k<5;++k){ pair z=dir(18+72*k); dot(z,(k==0)?red:black); draw((0,0)--z,(k==0)?red:gray); }
+label("$x$",dir(18),E,red); label("$i$",dir(90),NW); draw(arc((0,0),0.3,0,18),red); label("$18^\circ$",0.3*dir(5),E,red+fontsize(7pt));
+label("$\mathrm{Re}$",(1.45,0),S); label("$\mathrm{Im}$",(0,1.45),W);
+\end{asy}
+
+Only $\theta=18^\circ$ lies strictly inside the first quadrant; $\theta=90^\circ$ gives $x=i$, which is on the imaginary axis (its real part is $0$). So $x=\cos18^\circ+i\sin18^\circ$.
+
+\textbf{Exact values.} Let $\alpha=18^\circ$. Then $2\alpha=90^\circ-3\alpha$, so $\sin2\alpha=\cos3\alpha$:
+\[2\sin\alpha\cos\alpha=4\cos^3\alpha-3\cos\alpha.\]
+Dividing by $\cos\alpha\ne0$: $2\sin\alpha=4\cos^2\alpha-3=1-4\sin^2\alpha$, so $4\sin^2\alpha+2\sin\alpha-1=0$ and, as $\sin\alpha>0$,
+\[\sin18^\circ=\dfrac{-2+\sqrt{20}}{8}=\dfrac{\sqrt5-1}{4},\qquad\cos18^\circ=\sqrt{1-\dfrac{6-2\sqrt5}{16}}=\dfrac{\sqrt{10+2\sqrt5}}{4}.\]
+Hence the only solution is
+\[x=\boxed{\dfrac{\sqrt{10+2\sqrt5}}{4}+\dfrac{\sqrt5-1}{4}\,i}.\]

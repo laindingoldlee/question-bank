@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h508142_1996_national_team_6_counting_problem
+% Stable identity: aops-topic-508142-q01
+Write $n=\overline{xyz}$. Each guess must share exactly two digits with $n$, so the guesses share $6$ digit-occurrences with $n$ in total. The digit $3$ occurs in all three guesses, $8$ in two of them, and $6,1,5,9$ in one each. Three distinct digits of $n$ can account for $6$ occurrences only as $3+2+1$, so $n$ contains $3$, $8$ and one digit $t\in\{6,1,5,9\}$.
+
+Now $836$ and $983$ already share $8$ and $3$ with $n$, so $t\ne6,9$; and $315$ shares only $3$ unless $t\in\{1,5\}$. So $t\in\{1,5\}$.
+
+\textbf{Positions.} Exactly one of the shared digits is in the right place for each guess.
+\begin{itemize}
+\item If $x\ne8$, then for $836$ the $3$ must be in the tens place, $y=3$. But then for $983$ neither $8$ (tens) nor $3$ (units) is in place, a contradiction.
+\item So $x=8$, and for $836$ the $3$ is not in the tens place, so $z=3$ and $y=t$. For $315$, the $3$ is not in the hundreds place, so the in-place digit must be $1$ in the tens place: $t=1$.
+\end{itemize}
+This gives $n=813$. Checking: with $836$ the $8$ is in place and $3$ is misplaced; with $315$ the $1$ is in place and $3$ is misplaced; with $983$ the $3$ is in place and $8$ is misplaced. The answer is $\boxed{813}$, and the argument shows it is unique.

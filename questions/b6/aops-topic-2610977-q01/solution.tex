@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2610977_perimeter_minimization
+% Stable identity: aops-topic-2610977-q01
+Let the legs be $a,b>0$. The area condition is $\dfrac{ab}{2}=1$, so $ab=2$, and the perimeter is
+\[P=a+b+\sqrt{a^2+b^2}.\]
+By AM-GM, $a+b\ge2\sqrt{ab}=2\sqrt2$. Also $a^2+b^2\ge2ab=4$, so $\sqrt{a^2+b^2}\ge2$. Hence $P\ge2\sqrt2+2$, and both inequalities are equalities when $a=b=\sqrt2$ (an isosceles right triangle with hypotenuse $2$). The smallest perimeter is $\boxed{2+2\sqrt2}$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),A=(0,2),B=(3.4,0);
+draw(A--B--C--cycle,linewidth(0.8));
+real m=0.22; draw((m,0)--(m,m)--(0,m));
+label("$a$",(A+C)/2,W);label("$b$",(B+C)/2,S);label("$\sqrt{a^2+b^2}$",(A+B)/2,NE);
+label("area $\dfrac{ab}{2}=1$",(0.9,0.6),fontsize(8pt));
+\end{asy}

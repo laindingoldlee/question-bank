@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1423375_im_confused
+% Stable identity: aops-topic-1423375-q01
+Since $\cos2x=2\cos^2x-1$, squaring gives $\cos^2 2x=(2\cos^2x-1)^2$, so \textbf{(ii) is correct}. Continuation (i) wrongly squares only the first term inside $2\cos^2x-1$. It fails, for example, at $x=\dfrac{\pi}{2}$: there $\cos^2 2x=\cos^2\pi=1$ but $2\cos^4x-1=-1$ (a square cannot be negative).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return cos(2x)^2;} real g(real x){return 2*cos(x)^4-1;}
+draw((0,0)--(3.45,0),gray,Arrow(4)); draw((0,-1.25)--(0,1.5),gray,Arrow(4));
+label("$x$",(3.45,0),E,gray);
+draw(graph(f,0,pi),blue+linewidth(0.9)); draw(graph(g,0,pi),red+linewidth(0.9));
+draw((pi/2,1)--(pi/2,-1),dotted); dot((pi/2,1),blue); dot((pi/2,-1),red);
+label("$\dfrac{\pi}{2}$",(pi/2,0),SE,fontsize(8pt)); label("$\pi$",(pi,0),S,fontsize(8pt));
+label("$1$",(0,1),W,fontsize(8pt)); label("$-1$",(0,-1),W,fontsize(8pt));
+label("$\cos^2 2x$",(pi/2,1),N,blue); label("$2\cos^4x-1$",(pi/2,-1),S,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The two curves agree only at isolated points.) Hence
+\[
+\cos4x=2\cos^2 2x-1=2(2\cos^2x-1)^2-1=\boxed{8\cos^4x-8\cos^2x+1}.
+\]

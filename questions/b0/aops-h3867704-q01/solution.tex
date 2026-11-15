@@ -1,0 +1,17 @@
+Let the positive side lengths of the square and equilateral triangle be $u,v$. The hypotheses are
+\[
+u^2=3v,\qquad \dfrac{\sqrt3}{4}v^2=4u.
+\]
+Multiplying and dividing by $uv>0$ gives
+\[
+uv=\boxed{16\sqrt3},
+\]
+which is the rectangle's area without first determining either side.
+
+For uniqueness, substitute $v=\dfrac{u^2}{3}$ into the second equation, obtaining $u^3=48\sqrt3$. This has exactly one positive solution, $u=\sqrt[3]{48\sqrt3}$, and then $v=\dfrac{u^2}{3}$ is uniquely fixed. These values satisfy both equations, proving existence and uniqueness.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real u=(48sqrt(3))^(1.0/3),v=u*u/3;draw(box((0,0),(u,u)));draw((u+2,0)--(u+2+v,0)--(u+2+v/2,sqrt(3)*v/2)--cycle);draw(box((0,-v-2),(u,-2)));label("$u$",(u/2,0),(0,-1));label("$v$",(u+2+v/2,0),(0,-1));label("$u$",(u/2,-2),(0,1));label("$v$",(u,-v/2-2),(1,0));
+\end{asy}

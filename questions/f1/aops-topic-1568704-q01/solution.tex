@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1568704_algebra_interesing_prob
+% Stable identity: aops-topic-1568704-q01
+If $n=1$, any $k$ works. Let $n\ge2$.
+
+Consider the $n+1$ numbers $m^1,m^2,\dots,m^{n+1}$. There are only $n$ possible remainders modulo $n$, so by the pigeonhole principle two of them have the same remainder: $m^i\equiv m^j\pmod n$ for some $1\le i<j\le n+1$. Then
+\[
+n\mid m^j-m^i=m^i\left(m^{j-i}-1\right).
+\]
+Since $\gcd(m,n)=1$, also $\gcd(m^i,n)=1$, so $n\mid m^{j-i}-1$. Thus $k=j-i\ge1$ works. $\blacksquare$
+
+(Euler's theorem gives an explicit choice: $m^{\varphi(n)}\equiv1\pmod n$, so $k=\varphi(n)$ works. The smallest such $k$ is the multiplicative order of $m$ modulo $n$.)

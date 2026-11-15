@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2945150_san_jose_math_circle_monthly_contest_201819_intermediate_contest_34
+% Stable identity: aops-topic-2945150-q01
+Let $t$ be minutes since 12:00, with $0\le t<720$, and let $u$ be the time represented after interchange. The angular conditions are $u\equiv12t\pmod{720}$ and $12u\equiv t\pmod{720}$. Combining gives $143t\equiv0\pmod{720}$. Thus $t=\dfrac{720k}{143}$ for $k=0,\ldots,142$. Conversely each such $t$ has a unique $u\in[0,720)$ satisfying both congruences. There are $\boxed{143}$ instants.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(circle((0,0),1));draw((0,0)--.65*dir(90-360/143),blue);draw((0,0)--dir(90-4320/143),red);label("hour",.7*dir(90-360/143),E);label("minute",dir(90-4320/143),E);label("one interchangeable display",(0,-1.4));
+\end{asy}

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3393935_problem_writing
+% Stable identity: aops-topic-3393935-q01
+On the circle, write $(x,y)=(\cos\theta,\sin\theta)$. The other equation gives $1=4\sin^22\theta$, so $|\sin2\theta|=\dfrac{1}{2}$. The vertex angles are $15^\circ,75^\circ,105^\circ,165^\circ,195^\circ,255^\circ,285^\circ,345^\circ$, with alternating gaps $60^\circ,30^\circ$. Splitting into eight central triangles gives area $\dfrac{1}{2}\cdot4(\sin60^\circ+\sin30^\circ)=\sqrt3+1$. Thus $a=1,b=3$, and $\boxed{2a^2+b^2=11}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+path p;int[] angles={15,75,105,165,195,255,285,345};for(int k=0;k<8;++k){pair V=dir(angles[k]);p=p--V;draw((0,0)--V,dashed);label(string(k+1),1.13*V);}draw(circle((0,0),1),gray);draw(p--cycle);label("$O$",(0,0),S);
+\end{asy}

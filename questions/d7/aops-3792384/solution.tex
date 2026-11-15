@@ -1,0 +1,9 @@
+There are $\dfrac{11(11-3)}{2}=44$ diagonals, hence $\binom{44}2=946$ equally likely unordered pairs. A favourable pair has four distinct endpoints. For endpoints $a<b<c<d$, the two noncrossing pairings are $(a,b),(c,d)$ and $(a,d),(b,c)$; the third pairing crosses. Count each listed pairing only when neither edge is a polygon side and each endpoint sum is odd. A direct bounded count by the smallest endpoint $a=1,2,\ldots,8$ gives respectively $22,19,7,6,1,1,0,0$, totaling $56$. This count can be reproduced by looping over all $1\le a<b<c<d\le11$, testing the two pairings, rejecting index differences $1$ or $10$, and testing odd endpoint sums. Thus the probability is $\dfrac{56}{946}=\dfrac{28}{473}$, and $\boxed{p+q=501}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(3.0,0.0),(2.52376,1.62192),(1.24625,2.7289),(-0.42694,2.96946),(-1.96458,2.26725),(-2.87848,0.8452),(-2.87848,-0.8452),(-1.96458,-2.26725),(-0.42694,-2.96946),(1.24625,-2.7289),(2.52376,-1.62192)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--p[3]--p[4]--p[5]--p[6]--p[7]--p[8]--p[9]--p[10]--cycle); dot(p[0]);label("$A_{1}$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$A_{2}$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$A_{3}$",p[2],unit(p[2]-labelCentre));dot(p[3]);label("$A_{4}$",p[3],unit(p[3]-labelCentre));dot(p[4]);label("$A_{5}$",p[4],unit(p[4]-labelCentre));dot(p[5]);label("$A_{6}$",p[5],unit(p[5]-labelCentre));dot(p[6]);label("$A_{7}$",p[6],unit(p[6]-labelCentre));dot(p[7]);label("$A_{8}$",p[7],unit(p[7]-labelCentre));dot(p[8]);label("$A_{9}$",p[8],unit(p[8]-labelCentre));dot(p[9]);label("$A_{10}$",p[9],unit(p[9]-labelCentre));dot(p[10]);label("$A_{11}$",p[10],unit(p[10]-labelCentre));
+\end{asy}
+

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2256974_right_triangle_legs
+% Stable identity: aops-topic-2256974-q01
+Let the other leg be $b$ and the hypotenuse $c$, positive integers with $c>b$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(6,0), C=(0,3.2);
+draw(A--B--C--cycle,linewidth(0.9));
+draw((0.3,0)--(0.3,0.3)--(0,0.3));
+label("$b$",(3,0),S); label("$20$",(0,1.6),W); label("$c$",(3,1.6),NE);
+\end{asy}
+
+By the Pythagorean theorem $c^2-b^2=400$, that is,
+\[(c-b)(c+b)=400.\]
+The factors $c-b$ and $c+b$ are positive, $c-b<c+b$, and they have the same parity (their sum $2c$ is even). As $400$ is even, both must be even. Writing $c-b=2u$ and $c+b=2v$ gives $uv=100$ with $u<v$:
+\[(u,v)=(1,100),\ (2,50),\ (4,25),\ (5,20).\]
+(The pair $u=v=10$ would give $b=0$.) Then $c=u+v$ and $b=v-u$:
+\[(b,c)=(99,101),\quad(48,52),\quad(21,29),\quad(15,25).\]
+So the possible hypotenuses are $\boxed{25,\ 29,\ 52,\ 101}$.

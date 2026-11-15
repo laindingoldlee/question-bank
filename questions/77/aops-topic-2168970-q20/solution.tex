@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2168970_2020_mock_amc_11_problem_20_discussion
+% Stable identity: aops-topic-2168970-q20
+Squaring $k$ times raises to the power $2^k$, so $g_0^{\,k}(T)=T^{2^k}$ and
+\[g_{i+1}(T)=T^{\,2^{g_i(T)}} .\]
+(Check: $g_1(2)=2^{2^4}=65536$.) Let $N=g_{42}(42)=42^{2^M}$ with $M=g_{41}(42)=42^{2^{g_{40}(42)}}$. The exponent $2^{g_{40}(42)}$ is at least $2$, so $42^2$ divides $M$; in particular $4\mid M$.
+
+\textbf{Modulo 4.} $N$ is a huge power of $42$, so $4\mid N$.
+
+\textbf{Modulo 25.} Since $\gcd(42,25)=1$ and $\varphi(25)=20$, we have $42^{20}\equiv1\pmod{25}$, so we need $2^M$ modulo $20$. As $M\ge2$, $2^M\equiv0\pmod4$; as $4\mid M$ and $2^4\equiv1\pmod5$, $2^M\equiv1\pmod5$. Hence $2^M\equiv16\pmod{20}$ and
+\[N\equiv42^{16}\equiv17^{16}\pmod{25}.\]
+Squaring repeatedly: $17^2=289\equiv14$, $14^2=196\equiv-4$, $(-4)^2=16$, $16^2=256\equiv6$. So $N\equiv6\pmod{25}$.
+
+\textbf{Combining.} The numbers below $100$ that are $\equiv6\pmod{25}$ are $6,31,56,81$, and the only multiple of $4$ among them is $56$. The last two digits are $\boxed{56}$, answer $\textbf{(E)}$.

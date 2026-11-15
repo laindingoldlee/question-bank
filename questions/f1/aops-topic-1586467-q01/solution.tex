@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1586467_how_to_do_these_types_of_problems
+% Stable identity: aops-topic-1586467-q01
+\textbf{(a)} All $2^{10}$ step sequences are equally likely. Bob returns exactly when he takes $5$ steps left and $5$ right, which happens for $\dbinom{10}{5}=252$ sequences. The probability is
+\[
+\dfrac{252}{1024}=\boxed{\dfrac{63}{256}}.
+\]
+
+\textbf{(b)} \emph{Trick: rotate by $45^\circ$.} Use the coordinates $u=x+y$ and $v=x-y$. The four steps $(1,0)$, $(-1,0)$, $(0,1)$, $(0,-1)$ change $(u,v)$ by $(1,1)$, $(-1,-1)$, $(1,-1)$, $(-1,1)$: each step changes $u$ by $\pm1$ and $v$ by $\pm1$, and the four sign combinations are equally likely. So $u$ and $v$ perform two \emph{independent} walks of the type in part (a). Bob is back at the origin exactly when $u=v=0$, so the probability is
+\[
+\left(\dfrac{63}{256}\right)^2=\boxed{\dfrac{3969}{65536}}.
+\]
+(Equivalently, $\dbinom{10}{5}^2$ of the $4^{10}$ step sequences return.)
+
+\textbf{(c)} The trick does not extend to three dimensions, so count directly. A returning walk has $a$ steps in each of the directions $\pm x$, $b$ in each of $\pm y$ and $c$ in each of $\pm z$, with $a+b+c=5$. The number of such step sequences is
+\[
+\sum_{a+b+c=5}\dfrac{10!}{a!^2\,b!^2\,c!^2}=\dbinom{10}{5}\sum_{a+b+c=5}\left(\dfrac{5!}{a!\,b!\,c!}\right)^2 .
+\]
+The multinomial coefficients $\dfrac{5!}{a!b!c!}$ are $1$ (three times, for $(5,0,0)$ and its permutations), $5$ (six times), $10$ (six times), $20$ (three times, for $(3,1,1)$ and permutations) and $30$ (three times, for $(2,2,1)$ and permutations), so the sum of their squares is
+\[
+3\cdot1+6\cdot25+6\cdot100+3\cdot400+3\cdot900=4653 .
+\]
+The number of returning walks is $252\cdot4653=1172556$, out of $6^{10}=60466176$, so the probability is
+\[
+\dfrac{1172556}{60466176}=\boxed{\dfrac{3619}{186624}}\approx0.0194 .
+\]

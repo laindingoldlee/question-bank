@@ -1,0 +1,43 @@
+% Source: https://artofproblemsolving.com/community/c3h2073395_problem_to_day_01
+% Stable identity: aops-topic-2073395-q01
+Put $AB=1$. Since $\angle A=90^\circ$,
+\[
+AC=\tan 20^\circ,\qquad AE=AB\tan\angle ABE=\tan10^\circ,\qquad AF=AC\tan\angle ACF=\tan20^\circ\tan30^\circ .
+\]
+These lengths are less than $AC$ and $AB$ respectively, so $E$ and $F$ really lie on the sides.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real t=Tan(20); pair A=(0,0), B=(6,0), C=(0,6*t), E=(0,6*Tan(10)), F=(6*t*Tan(30),0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--E,blue); draw(C--F,blue); draw(F--E,red+linewidth(0.9));
+draw((0,0.25)--(0.25,0.25)--(0.25,0));
+dot(A);dot(B);dot(C);dot(E);dot(F);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$E$",E,W); label("$F$",F,S);
+label("$10^\circ$",B+(-1.5,0.13),fontsize(8pt));
+label("$30^\circ$",C+(0.15,-0.62),fontsize(8pt));
+label("$40^\circ$",F+(-0.55,0.15),fontsize(8pt));
+draw(arc(F,0.7,120,140),red); label("$20^\circ$",F+1.3*dir(100),red+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In right triangle $AFC$, $\angle AFC=90^\circ-30^\circ=60^\circ$. In right triangle $AFE$,
+\[
+\tan\angle AFE=\dfrac{AE}{AF}=\dfrac{\tan10^\circ}{\tan20^\circ\tan30^\circ}.
+\]
+We show this equals $\tan40^\circ$, i.e.\ $\tan20^\circ\tan30^\circ\tan40^\circ=\tan10^\circ$.
+
+\emph{Lemma.} $\tan\theta\tan(60^\circ-\theta)\tan(60^\circ+\theta)=\tan3\theta$ whenever all terms are defined. Indeed, with $t=\tan\theta$ and $\tan60^\circ=\sqrt3$,
+\[
+\tan(60^\circ-\theta)\tan(60^\circ+\theta)=\dfrac{(\sqrt3-t)(\sqrt3+t)}{(1+\sqrt3t)(1-\sqrt3t)}=\dfrac{3-t^2}{1-3t^2},
+\]
+so the product is $\dfrac{3t-t^3}{1-3t^2}=\tan3\theta$.
+
+With $\theta=20^\circ$: $\tan20^\circ\tan40^\circ\tan80^\circ=\tan60^\circ=\sqrt3$. Since $\tan80^\circ=\dfrac{1}{\tan10^\circ}$, we get $\tan20^\circ\tan40^\circ=\sqrt3\tan10^\circ$, and multiplying by $\tan30^\circ=\dfrac{1}{\sqrt3}$ gives $\tan20^\circ\tan30^\circ\tan40^\circ=\tan10^\circ$.
+
+Hence $\tan\angle AFE=\tan40^\circ$, so $\angle AFE=40^\circ$ (both are acute). Because $E$ lies between $A$ and $C$, ray $FE$ lies between rays $FA$ and $FC$, so
+\[
+\angle CFE=\angle AFC-\angle AFE=60^\circ-40^\circ=\boxed{20^\circ}.
+\]

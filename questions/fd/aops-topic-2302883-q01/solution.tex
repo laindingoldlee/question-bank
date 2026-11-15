@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2302883_solution_without_sines
+% Stable identity: aops-topic-2302883-q01
+The pole, the vertical drop and the ground form a right triangle with hypotenuse $5$ m and an angle of $20^\circ$ at the base of the pole. The honey lands at the foot of the vertical through the top, at distance $d$ from the base:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), T=5*dir(20), F=(T.x,0);
+draw((-0.6,0)--(5.6,0),linewidth(0.8));
+draw(O--T,brown+linewidth(2));
+draw(T--F,dashed+orange,Arrow(5));
+draw(F+(-0.15,0)--F+(-0.15,0.15)--F+(0,0.15));
+filldraw(circle(T,0.09),orange,orange);
+draw(arc(O,0.8,0,20)); label("$20^\circ$",0.85*dir(8),E,fontsize(8pt));
+label("$5$ m",(O+T)/2,NW); label("$d$",(O+F)/2,S,blue);
+label("base",O,SW,fontsize(8pt)); label("honey",T,N,fontsize(8pt));
+\end{asy}
+
+\[d=5\cos20^\circ\approx5\cdot0.93969\approx\boxed{4.70\text{ m}}.\]
+A trigonometric value cannot be avoided here, because $20^\circ$ is not one of the angles of the special right triangles ($30^\circ$, $45^\circ$, $60^\circ$); one needs a table, a calculator, an accurate scale drawing, or some equation that $\cos20^\circ$ satisfies. (For example, the triple-angle identity $\cos60^\circ=4\cos^320^\circ-3\cos20^\circ$ shows that $d$ is the root near $4.7$ of $8d^3-150d-125=0$, which can be found to any accuracy by trial.)

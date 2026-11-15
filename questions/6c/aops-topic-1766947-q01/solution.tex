@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1766947_geometry
+% Stable identity: aops-topic-1766947-q01
+\textbf{The five parts are three angles and two sides.} If all three pairs of sides were congruent, the triangles would be congruent (SSS). So at most two pairs of sides are congruent, and the five pairs are two sides and all three angles. Hence the triangles are similar with some ratio $k\ne1$, say $k>1$: if the first triangle has sides $x\le y\le z$, the second has sides $kx\le ky\le kz$.
+
+\textbf{Which sides are shared.} The side $kz$ is longer than every side of the first triangle, and $x$ is shorter than every side of the second. So the two common lengths are among $y,z$ and among $kx,ky$; since $kx<ky$, we need $y=kx$ and $z=ky$ (and $y<z$). The sides are therefore
+\[
+x,\ kx,\ k^2x\qquad\text{and}\qquad kx,\ k^2x,\ k^3x .
+\]
+\textbf{Use $6$ and $8$.} Both triangles contain $6$ and $8$. The first triangle's side $x$ is not in the second, and the second's side $k^3x$ is not in the first, so $\{kx,k^2x\}=\{6,8\}$: $kx=6$, $k^2x=8$, $k=\dfrac{4}{3}$, $x=\dfrac{9}{2}$ and $k^3x=\dfrac{32}{3}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair P(real a,real b,real c){ real x=(b^2+a^2-c^2)/(2*a); return (x,sqrt(b^2-x^2)); }
+pair A1=(0,0),B1=(8,0),C1=P(8,6,4.5);
+draw(A1--B1--C1--cycle,linewidth(0.9));
+label("$8$",(A1+B1)/2,S);label("$6$",(A1+C1)/2,NW);label("$\dfrac{9}{2}$",(B1+C1)/2,NE);
+pair sh=(10.5,0);
+pair A2=sh,B2=sh+(32/3,0),C2=sh+P(32/3,8,6);
+draw(A2--B2--C2--cycle,linewidth(0.9));
+label("$\dfrac{32}{3}$",(A2+B2)/2,S);label("$8$",(A2+C2)/2,NW);label("$6$",(B2+C2)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The triangles have sides $\dfrac{9}{2},6,8$ and $6,8,\dfrac{32}{3}$; both satisfy the triangle inequality ($\dfrac{9}{2}+6>8$ and $6+8>\dfrac{32}{3}$), and their angles agree because the side ratios are $\dfrac{4}{3}$. The third sides are $\boxed{\dfrac{9}{2}\text{ and }\dfrac{32}{3}}$.

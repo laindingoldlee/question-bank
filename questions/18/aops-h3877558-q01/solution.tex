@@ -1,0 +1,12 @@
+Every maximal monochromatic run must have length at least $2$. There are $3$ monochromatic assignments. Otherwise let $k$ be the number of runs; then $2\le k\le4$.
+
+The ordered run lengths are compositions of $8$ into $k$ parts at least $2$, counted by $\binom{7-k}{k-1}$. Choose the first run's starting seat in $8$ ways; division by $k$ corrects for the possible starting runs. The run colours must form a properly coloured cycle. For $k=2,3,4$ there are respectively $6,6,18$ such colourings. Therefore the counts are
+\[
+\begin{array}{c|c|c|c}
+k&\text{length compositions}&\text{run colours}&\text{assignments}\\\hline
+2&5&6&120\\
+3&6&6&96\\
+4&1&18&36
+\end{array}
+\]
+For the last colour count, choose the first colour in $3$ ways and the second in $2$; the third either equals the first (two choices for the fourth) or is the remaining colour (one choice for the fourth). The answer is $\boxed{3+120+96+36=255}$.

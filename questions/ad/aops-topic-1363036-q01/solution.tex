@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1363036_sums_of_squares
+% Stable identity: aops-topic-1363036-q01
+A circle of radius $r$ about the origin passes through the lattice points $(x,y)$ with $x^2+y^2=r^2$, so $n=r^2$ must be a positive integer, and we want the smallest $n$ with at least $16$ representations $n=x^2+y^2$ as ordered pairs of integers (signs and order count).
+
+\textbf{How many representations?} The number of such pairs is
+\[r_2(n)=4\left(d_1(n)-d_3(n)\right),\]
+where $d_1(n)$ and $d_3(n)$ are the numbers of divisors of $n$ that are $\equiv1$ and $\equiv3\pmod4$. So we need $d_1-d_3\ge4$. A prime $p\equiv3\pmod4$ never helps (an odd power of it makes $r_2=0$), and the factor $2$ does not change the count. If $n=2^e\prod p_i^{a_i}\prod q_j^{b_j}$ with $p_i\equiv1$ and $q_j\equiv3\pmod 4$ and all $b_j$ even, then $d_1-d_3=\prod(a_i+1)$. The smallest $n$ with $\prod(a_i+1)\ge4$ are $5^3=125$ and $5\cdot13=65$, and $65$ is smaller. Checking directly, every $n<65$ has at most $12$ representations.
+
+For $n=65$:
+\[65=1^2+8^2=4^2+7^2,\]
+and with all signs and both orders these give the $16$ points $(\pm1,\pm8)$, $(\pm8,\pm1)$, $(\pm4,\pm7)$, $(\pm7,\pm4)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+for(int i=-9;i<=9;++i){draw((i,-9)--(i,9),gray(0.88)); draw((-9,i)--(9,i),gray(0.88));}
+draw((-9.6,0)--(9.6,0),gray,Arrow(4)); draw((0,-9.6)--(0,9.6),gray,Arrow(4));
+draw(circle((0,0),sqrt(65)),blue+linewidth(0.9));
+pair[] P={(1,8),(8,1),(4,7),(7,4)};
+for(pair p:P){dot(p,red); dot((-p.x,p.y),red); dot((p.x,-p.y),red); dot((-p.x,-p.y),red);}
+draw((0,0)--(4,7),red+dashed); label("$\sqrt{65}$",(2,3.5),SE,red);
+label("$(1,8)$",(1,8),N,fontsize(8pt)); label("$(4,7)$",(4,7),NE,fontsize(8pt));
+label("$(7,4)$",(7,4),NE,fontsize(8pt)); label("$(8,1)$",(8,1),E,fontsize(8pt));
+label("$O$",(0,0),SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the smallest radius is $\boxed{\sqrt{65}}$.

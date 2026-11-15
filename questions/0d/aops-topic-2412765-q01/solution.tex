@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2412765_algebra_question_or_maybe_combo
+% Stable identity: aops-topic-2412765-q01
+The value is at least $0$ and at most $8(81+27+9+3+1)=968$. We show that every integer from $0$ to $968$ occurs, so there are $\boxed{969}$ values.
+
+For $k\ge1$ let $T_k$ be the set of values of $3^{k-1}x_{k-1}+\cdots+3x_1+x_0$ with all $x_i\in\{0,1,\dots,8\}$, and let $M_k=8\left(3^{k-1}+\cdots+3+1\right)=4\left(3^k-1\right)$ be its largest element. We prove by induction that $T_k$ consists of all integers from $0$ to $M_k$.
+
+For $k=1$, $T_1=\{0,1,\dots,8\}$ and $M_1=8$. Suppose the claim holds for $k$. Every element of $T_{k+1}$ has the form $3t+x$ with $t\in T_k$ and $x\in\{0,\dots,8\}$. Take an integer $m$ with $0\le m\le M_{k+1}=3M_k+8$.
+\begin{itemize}
+\item If $\left\lfloor\dfrac m3\right\rfloor\le M_k$, take $t=\left\lfloor\dfrac m3\right\rfloor$ and $x=m-3t\in\{0,1,2\}$.
+\item Otherwise $m\ge3M_k+3$; take $t=M_k$ and $x=m-3M_k$, which lies between $3$ and $8$.
+\end{itemize}
+In both cases $m\in T_{k+1}$, which completes the induction.
+
+The expression in the problem gives the set $T_5$, which is $\{0,1,\dots,968\}$: $969$ values.
+
+(The number of choices of $(a,b,c,d,e)$ is $9^5=59049$, but many of them give the same value; for example $a=0,b=3$ and $a=1,b=0$ both give $81$.)

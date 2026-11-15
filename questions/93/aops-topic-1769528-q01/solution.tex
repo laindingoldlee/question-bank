@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1769528_smallest_n
+% Stable identity: aops-topic-1769528-q01
+Since $\underbrace{11\ldots1}_{k}=\dfrac{10^k-1}{9}$,
+\[
+a_n=\sum_{k=1}^{n}\dfrac{10^k-1}{9}=\dfrac{1}{9}\left(\dfrac{10^{n+1}-10}{9}-n\right)=\dfrac{10^{n+1}-10-9n}{81}.
+\]
+As $\gcd(81,101)=1$, we need $10^{n+1}\equiv10+9n\pmod{101}$. Now $10^2=100\equiv-1$, so $10^4\equiv1$ and $10^{n+1}$ depends only on $n\bmod4$. Using $9^{-1}\equiv45\pmod{101}$ (since $9\cdot45=405=4\cdot101+1$):
+\begin{itemize}
+\item $n\equiv3\pmod4$: $1\equiv10+9n$, so $9n\equiv-9$ and $n\equiv-1\equiv100\pmod{101}$;
+\item $n\equiv0\pmod4$: $10\equiv10+9n$, so $n\equiv0\pmod{101}$;
+\item $n\equiv1\pmod4$: $-1\equiv10+9n$, so $n\equiv-11\cdot45\equiv10\pmod{101}$;
+\item $n\equiv2\pmod4$: $-10\equiv10+9n$, so $n\equiv-20\cdot45\equiv9\pmod{101}$.
+\end{itemize}
+Combining each case by the Chinese remainder theorem modulo $404$ gives $n\equiv403,\ 0,\ 313,\ 110\pmod{404}$. The values from $1000$ upwards are $808+313=1121$, $808+403=1211$, $1212$, \dots{} (and $808+110=918<1000$). The smallest is $n=\boxed{1121}$.

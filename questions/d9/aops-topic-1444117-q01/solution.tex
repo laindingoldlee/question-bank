@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1444117_infinite_sum
+% Stable identity: aops-topic-1444117-q01
+\textbf{(a)} For $n\ge2$,
+\[
+\dfrac{1}{n^2}<\dfrac{1}{n(n-1)}=\dfrac{1}{n-1}-\dfrac{1}{n} .
+\]
+Adding for $n=2,\dots,N$, the right side telescopes:
+\[
+S_N<1+\left(1-\dfrac{1}{N}\right)=2-\dfrac{1}{N} .
+\]
+The partial sums $S_N$ increase with $N$ and are bounded above by $2$, so they converge to a limit at most $2$. (A geometric-series formula does not apply, since the ratio of consecutive terms $\dfrac{n^2}{(n+1)^2}$ is not constant.)
+
+\textbf{(b)} Split the full sum into even and odd $n$. The even terms are
+\[
+\sum_{m=1}^{\infty}\dfrac{1}{(2m)^2}=\dfrac{1}{4}\sum_{m=1}^{\infty}\dfrac{1}{m^2}=\dfrac{1}{4}\cdot\dfrac{\pi^2}{6}.
+\]
+(Rearranging is allowed because all terms are positive.) So the odd terms add up to
+\[
+\dfrac{\pi^2}{6}-\dfrac{\pi^2}{24}=\boxed{\dfrac{\pi^2}{8}}.
+\]
+
+Euler's value $\dfrac{\pi^2}{6}$ itself needs more than algebra (for example, Fourier series, or an argument with $\cot^2$ of the angles $\dfrac{k\pi}{2m+1}$); the bound in (a) at least shows that the sum is a finite number between $S_2=1.25$ and $2$.

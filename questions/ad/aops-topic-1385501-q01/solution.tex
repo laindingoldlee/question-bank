@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1385501_circle_tangent_question
+% Stable identity: aops-topic-1385501-q01
+Let $O=(0,0)$ be the centre. A point $T=(x,y)$ on the circle is a point of tangency of a line through $P$ exactly when the radius is perpendicular to the line: $\overrightarrow{OT}\cdot\overrightarrow{TP}=0$, that is
+\[
+x(7-x)+y(1-y)=0\iff 7x+y=x^2+y^2=25 .
+\]
+So $y=25-7x$, and substituting in $x^2+y^2=25$:
+\[
+x^2+(25-7x)^2=25\iff 50x^2-350x+600=0\iff x^2-7x+12=0\iff x=3\text{ or }x=4 .
+\]
+This gives the two points of tangency $\boxed{(3,4)\text{ and }(4,-3)}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair O=(0,0),P=(7,1),T1=(3,4),T2=(4,-3);
+draw((-6,0)--(8.5,0),Arrow(TeXHead)); draw((0,-6)--(0,6.2),Arrow(TeXHead));
+label("$x$",(8.5,0),E); label("$y$",(0,6.2),N);
+draw(circle(O,5),linewidth(1));
+draw(P--T1,blue+linewidth(1)); draw(P--T2,blue+linewidth(1));
+draw(O--T1,red+dashed); draw(O--T2,red+dashed);
+draw(ra(T1,O-T1,P-T1,0.45)); draw(ra(T2,O-T2,P-T2,0.45));
+dot(O);dot(P);dot(T1);dot(T2);
+label("$O$",O,SW); label("$P(7,1)$",P,E); label("$T_1(3,4)$",T1,NE); label("$T_2(4,-3)$",T2,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check: $(3,4)\cdot(7-3,1-4)=12-12=0$ and $(4,-3)\cdot(3,4)=12-12=0$. Also $PT=\sqrt{OP^2-25}=\sqrt{50-25}=5$ for both, as it must be. The same method works for any circle $x^2+y^2=r^2$ and outside point $P=(p,q)$: the points of tangency lie on the line $px+qy=r^2$.

@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h1640068_geometry_20089
+% Stable identity: aops-topic-1640068-q01
+From triangle $BCD$, $\angle BCD=180^\circ-30^\circ-25^\circ=125^\circ$. Also $\angle BAD=50^\circ+60^\circ=110^\circ$, and $125^\circ=180^\circ-\dfrac{110^\circ}{2}$. This suggests that $C$ lies on the circle with centre $A$ through $B$ and $D$.
+
+\textbf{A comparison point.} Let $A'$ be the point on the same side of $BD$ as $A$ with $A'B=A'D$ and $\angle BA'D=110^\circ$, and let $\Gamma$ be the circle with centre $A'$ through $B$ and $D$. For a point $X$ of $\Gamma$ on the other side of $BD$, the inscribed angle $\angle BXD$ stands on the arc $BD$ of central angle $360^\circ-110^\circ=250^\circ$, so $\angle BXD=125^\circ$; and as $X$ moves across this arc, these are exactly the points on that side of $BD$ that see $BD$ under $125^\circ$. Hence $C$ lies on $\Gamma$. Inscribed angles in $\Gamma$ then give
+\[
+\angle BA'C=2\angle BDC=50^\circ,\qquad \angle CA'D=2\angle CBD=60^\circ .
+\]
+
+\textbf{$A'=A$.} The points $X$ on the same side of line $BC$ as $D$ with $\angle BXC=50^\circ$ form an arc of a circle $\omega_1$ through $B$ and $C$; the points $X$ on the same side of line $CD$ as $B$ with $\angle CXD=60^\circ$ form an arc of a circle $\omega_2$ through $C$ and $D$. The circles are different (if they coincided, $D$ would lie on $\omega_1$ and $\angle BDC$ would be $50^\circ$ or $130^\circ$, not $25^\circ$), so they meet in $C$ and at most one other point. Since $ABCD$ is convex, $A$ lies on both arcs. So does $A'$: the centre $A'$ of $\Gamma$ is on the same side of chord $BC$ as $D$ because the inscribed angle $\angle BDC=25^\circ$ is acute, and on the same side of chord $CD$ as $B$ because $\angle CBD=30^\circ$ is acute. Therefore $A=A'$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real t=6;pair B=(0,0),D=(t,0);
+pair C=extension(B,B+dir(-30),D,D+dir(205));
+pair A=(t/2,(t/2)*Tan(35));
+pair Ee=extension(A,C,B,D);
+draw(A--B--C--D--cycle,linewidth(0.9));draw(A--C^^B--D,linewidth(0.9));
+draw(circle(A,abs(A-B)),blue+dashed);
+draw(arc(A,1.0,degrees(B-A),degrees(C-A)),red);label("$50^\circ$",A+1.45*dir((degrees(B-A)+degrees(C-A))/2),red);
+draw(arc(A,1.3,degrees(C-A),degrees(D-A)),red);label("$60^\circ$",A+1.8*dir((degrees(C-A)+degrees(D-A))/2),red);
+draw(arc(B,1.4,-30,0),red);label("$30^\circ$",B+1.95*dir(-15),red);
+draw(arc(D,1.4,180,205),red);label("$25^\circ$",D+1.95*dir(192.5),red);
+dot(Ee);
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,S);label("$D$",D,E);label("$E$",Ee,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The answer.} Now $AB=AD$ and $\angle BAD=110^\circ$, so $\angle ABD=\dfrac{180^\circ-110^\circ}{2}=35^\circ$. In triangle $ABE$, $\angle BAE=50^\circ$ and $\angle ABE=35^\circ$, so
+\[
+\angle AEB=180^\circ-50^\circ-35^\circ=\boxed{95^\circ}.
+\]
+(Check: $AC=AB$ gives $\angle ABC=\dfrac{180^\circ-50^\circ}{2}=65^\circ=35^\circ+30^\circ$, consistent.)

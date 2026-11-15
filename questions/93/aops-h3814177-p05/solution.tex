@@ -1,0 +1,7 @@
+Adding the three side sums counts each midpoint once and each vertex twice. Thus $3S=75+V$, where $V$ is the sum at the vertices. Since $V\le13+14+15=42$, we get $S\le39$. Put $13,14,15$ at the vertices and $12,10,11$ on the sides joining $(13,14),(14,15),(15,13)$ respectively. Every side sums to $39$, attaining the bound. Hence $\boxed{S=39}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(4,0),C=(2,3.5);draw(A--B--C--cycle);pair[] p={A,B,C,(A+B)/2,(B+C)/2,(C+A)/2};string[] s={"13","14","15","12","10","11"};for(int i=0;i<6;++i){filldraw(circle(p[i],.25),white);label(s[i],p[i]);}
+\end{asy}

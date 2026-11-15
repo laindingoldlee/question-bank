@@ -1,0 +1,7 @@
+Right triangle OAC has OA=5 and angle ACO=30 degrees, so OC=10 and $AC=5\sqrt3$. If the smaller radius is r, its centre lies 2r from C along CO. External tangency gives $10-2r=5+r$, hence $r=\dfrac{5}{3}$. Quadrilateral OACB has area $2\cdot\dfrac{1}{2}\cdot5\cdot5\sqrt3=25\sqrt3$. The portion of the large disk inside it is a 120-degree sector, of area $\dfrac{25\pi}{3}$; the small disk is entirely inside it and has area $\dfrac{25\pi}{9}$. Thus the requested area is $\boxed{25\sqrt3-\dfrac{100\pi}{9}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair C=(0,0),O=(10,0),A=(7.5,5sqrt(3)/2),B=(7.5,-5sqrt(3)/2),Q=(10.0/3,0);fill(O--A--C--B--cycle,lightblue);filldraw(circle(O,5),white,gray);filldraw(circle(Q,5.0/3),white,gray);draw(O--A--C--B--cycle);draw(C--O,dashed);draw(O--A,red);label("$C$",C,(-1,0));label("$O$",O,(0,1));label("$Q$",Q,(0,1));label("$A$",A,(0,1));label("$B$",B,(0,-1));label("$5$",(O+A)/2,(1,0));
+\end{asy}

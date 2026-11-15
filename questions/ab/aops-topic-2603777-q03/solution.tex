@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2603777_geometry2
+% Stable identity: aops-topic-2603777-q03
+Let the sides be $x$, $x$, $y$. The longest side is unique only if it is the base and $y>x$; if $y<x$ the two legs tie for longest, and $y=x$ is equilateral. The triangle inequality requires $y<2x$. With $y=144-2x$:
+\[144-2x>x\iff x<48,\qquad 144-2x<2x\iff x>36.\]
+So $x=37,38,\dots,47$, which gives $\boxed{11}$ triangles.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real x=40,y=64;pair A=(0,0),B=(y,0),C=(y/2,sqrt(x^2-(y/2)^2));
+draw(A--B--C--cycle,linewidth(0.8));
+label("$y$",(A+B)/2,S);label("$x$",(A+C)/2,NW);label("$x$",(B+C)/2,NE);
+\end{asy}
+
+The sketch shows $x=40$, $y=64$.

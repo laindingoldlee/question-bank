@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2577722_ajax31_birthday_problems
+% Stable identity: aops-topic-2577722-q04
+Place the half-disc as $\{(x,y):\ y\ge0,\ x^2+y^2\le25\}$. Every point of it has $0\le y\le5$.
+
+\emph{Upper bound.} Let an equilateral triangle of side $s$ lie in the half-disc. Its three sides point in three directions that are $60^\circ$ apart, so they split the $180^\circ$ of possible directions into three arcs of $60^\circ$. Hence some side makes an angle of at most $30^\circ$ with the vertical, and so an angle of at least $60^\circ$ with the horizontal. The two endpoints of that side differ in height by at least $s\sin60^\circ=\dfrac{\sqrt3}2s$. Both endpoints lie in the half-disc, so this difference is at most $5$. Hence $s\le\dfrac{10}{\sqrt3}$.
+
+\emph{Construction.} The triangle $PQT$ with $P=\left(-\dfrac5{\sqrt3},0\right)$, $Q=\left(\dfrac5{\sqrt3},0\right)$, $T=(0,5)$ has side $\dfrac{10}{\sqrt3}$ and height $5$, and lies in the half-disc: $T$ is on the arc and $P$, $Q$ are on the diameter.
+
+So the largest area is
+\[\dfrac{\sqrt3}4\cdot\left(\dfrac{10}{\sqrt3}\right)^2=\boxed{\dfrac{25\sqrt3}{3}}\approx14.43.\]
+(The dashed triangle in the sketch is a tilted triangle; any such triangle is no larger.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real R=5;pair O=(0,0);
+real s=10/sqrt(3);
+draw(arc(O,R,0,180)--cycle,linewidth(0.8));
+pair P=(-s/2,0),Q=(s/2,0),T=(0,R);
+fill(P--Q--T--cycle,gray(0.88));draw(P--Q--T--cycle,linewidth(0.8));
+pair A1=(-2.6,0.6),A2=A1+3.8*dir(20),A3=A1+3.8*dir(80);
+draw(A1--A2--A3--cycle,dashed);
+draw((5.8,0)--(5.8,5),Arrows(5));label("$5$",(5.8,2.5),E);
+draw((5.6,5)--(6,5));draw((5.6,0)--(6,0));
+dot(O);label("$O$",O,S);label("$P$",P,S);label("$Q$",Q,S);label("$T$",T,N);
+\end{asy}

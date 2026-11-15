@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3176251_2017_mbmt_geometry_round__montgomery_blair_math_tournament
+% Stable identity: aops-topic-3176251-q13
+Unrolling the cone gives a sector of radius $6$ whose angle is $\dfrac{2\pi\cdot2}{6}=\dfrac{2\pi}{3}$. Opposite azimuths are separated by half that angle, $\dfrac{\pi}{3}$. Other unrollings differ by full-sector angles, so this is the least absolute angular separation. If the current slant distance is $r$, the next is $\dfrac{r}{2}$. The shortest unfolded path is a straight chord; the cosine rule gives length $\sqrt{r^2+\dfrac{r^2}{4}-r^2\cos(\dfrac{\pi}{3})}=\dfrac{\sqrt3r}{2}$. Since the slant distances are $6,3,\dfrac{3}{2},\ldots$, their sum is $12$. The total is $\boxed{6\sqrt3}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair X=(0,0),P=(6,0),Q=3dir(60);draw(X--arc(X,6,0,120)--cycle);draw(P--Q,blue+linewidth(1.2));draw(X--Q,dashed);label("$X$",X,SW);label("$P$",P,SE);label("$Q$",Q,N);label("$6$",(3,0),S);label("$3$",Q/2,NW);label("$60^\circ$",.8dir(30));label("unrolled cone",(2.5,5.8));
+\end{asy}

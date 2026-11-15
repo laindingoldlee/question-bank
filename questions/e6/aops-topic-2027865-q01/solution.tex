@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2027865_pi_contest_week_1_problem_1
+% Stable identity: aops-topic-2027865-q01
+Since $AC\perp CD$ and $AC\perp CB$, the points $D$, $C$, $B$ are collinear, with $C$ between $D$ and $B$.
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), A=(0,1.57), B=(1.57,0), D=(-1.57*sqrt(3),0);
+draw(A--B--D--cycle,linewidth(0.9));
+draw(A--C,linewidth(0.9));
+draw(C+(0.12,0)--C+(0.12,0.12)--C+(0,0.12));
+draw(C+(-0.12,0)--C+(-0.12,0.12)--C+(0,0.12));
+dot(A);dot(B);dot(C);dot(D);
+label("$A$",A,N); label("$B$",B,SE); label("$C$",C,S); label("$D$",D,SW);
+label("$314$",(A+D)/2,NW); label("$157$",(A+C)/2,E);
+label("$30^\circ$",D+(0.55,0.1)); label("$45^\circ$",A+0.5*dir(-62),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangle $ADC$ is a $30^\circ$-$60^\circ$-$90^\circ$ triangle with hypotenuse $AD=314$, so the leg opposite the $30^\circ$ angle is
+\[AC=\dfrac{314}{2}=157.\]
+Triangle $ABC$ has a right angle at $C$ and $\angle BAC=45^\circ$, so it is an isosceles right triangle: $BC=AC=157$ and $AB=157\sqrt2$. Its perimeter is
+\[157+157+157\sqrt2=\boxed{314+157\sqrt2}.\]

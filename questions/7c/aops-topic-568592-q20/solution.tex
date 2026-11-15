@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h568592_mathcounts_national_2009_sprint
+% Stable identity: aops-topic-568592-q20
+The first circle has centre $O_1=(9,5)$ and radius $2.5$; the second has centre $O_2=(-6,-3)$ and radius $7$. The distance between the centres is
+\[
+\sqrt{15^2+8^2}=\sqrt{289}=17 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair C1=(9,5), C2=(-6,-3);
+pair u=unit(C1-C2), v=rotate(90)*u;
+draw(circle(C1,2.5),blue); draw(circle(C2,7),blue);
+draw(C2--C2+7*u,dashed); draw(C1-2.5*u--C1,dashed);
+draw(C2+7*u--C1-2.5*u,red+linewidth(1));
+dot(C1);dot(C2);dot(C2+7*u);dot(C1-2.5*u);
+label("$O_1$",C1,NE); label("$O_2(-6,-3)$",C2,S);
+label("$7$",C2+3.5*u,v); label("$2.5$",C1-1.25*u,-v,fontsize(8pt));
+label("$7.5$",C2+(7+3.75)*u,v,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $17>2.5+7$, the circles lie outside each other, and the shortest distance between them is measured along the line of centres:
+\[
+17-7-2.5=\boxed{7.5}.
+\]

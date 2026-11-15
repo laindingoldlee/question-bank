@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1204933_mock_mathcounts_state_sprint_21__altitudes
+% Stable identity: aops-topic-1204933-q01
+The altitude $AD$ bisects $BC$, so $AD=\sqrt{25^2-15^2}=20$ and the area is $\dfrac{1}{2}\cdot30\cdot20=300$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(30,0),A=(15,20); pair D=(15,0); pair F1=B+dot(C-B,unit(A-B))*unit(A-B); pair E1=C+dot(B-C,unit(A-C))*unit(A-C);
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--D,blue); draw(B--E1,blue); draw(C--F1,blue);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$E$",E1,NE);label("$F$",F1,NW);
+label("$25$",(A+B)/2,W); label("$30$",(7.5,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then $BE=\dfrac{2\cdot300}{AC}=24$ and $CF=\dfrac{2\cdot300}{AB}=24$. The sum is $20+24+24=\boxed{68}$.

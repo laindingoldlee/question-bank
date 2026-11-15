@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1287114_geometry_math_word_problems
+% Stable identity: aops-topic-1287114-q01
+A slice is a sector bounded by two radii of length $8$ and an arc equal to $\dfrac{1}{8}$ of the circumference $16\pi$, i.e. $2\pi$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real r=8; pair O=(0,0); fill(O--arc(O,r,60,105)--cycle,lightyellow); draw(O--r*dir(60),blue); draw(O--r*dir(105),blue); draw(arc(O,r,60,105),red+1.2);
+draw(circle(O,r),gray); label("$8$",r*dir(60)/2,SE,blue); label("$8$",r*dir(105)/2,W,blue); label("arc $2\pi$",r*dir(82),N,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The perimeter is $8+8+2\pi=16+2\pi$: answer $\boxed{\textbf{(a)}}$. (The post writes $\pi$ as $3.14$.)

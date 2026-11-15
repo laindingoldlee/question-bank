@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h1443861_sum_of_digits_from_1100
+% Stable identity: aops-topic-1443861-q01
+\textbf{The error.} The pairs $(n,101-n)$ do not all have digit sum $20$. For $n=10t+u$:
+\begin{itemize}
+\item if $u\ge2$, then $101-n=10(9-t)+(11-u)$ with $11-u\le9$, and the digit sum is $t+u+(9-t)+(11-u)=20$;
+\item if $u=0$ or $u=1$, there is a carry: for example $10+91$ gives $1+0+9+1=11$, and $11+90$ gives $1+1+9+0=11$.
+\end{itemize}
+Among $n=2,\dots,50$ the numbers ending in $0$ or $1$ are $10,11,20,21,30,31,40,41,50$: nine pairs have digit sum $11$, not $20$. The corrected version of this method gives $40\cdot20+9\cdot11+1+1=901$.
+
+\textbf{A cleaner count.} Write $0,1,\dots,99$ as two-digit strings $00,01,\dots,99$. Each of the digits $0,\dots,9$ appears $10$ times in the tens place and $10$ times in the units place, so the digit sum is $20(0+1+\cdots+9)=900$. Adding the digits of $100$ gives $\boxed{901}$.

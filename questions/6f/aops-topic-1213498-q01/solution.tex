@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h1213498_combinations
+% Stable identity: aops-topic-1213498-q01
+For $1\le j\le n-1$ write $v(m)$ for the exponent of $2$ in $m$. We use
+\[\dbinom{n}{j}=\dfrac{n}{j}\dbinom{n-1}{j-1}\qquad\text{and}\qquad \dbinom{n-1}{j-1}=\prod_{i=1}^{j-1}\dfrac{2^k-i}{i}.\]
+For $0<i<2^k$ we have $v(2^k-i)=v(i)$ (if $i=2^ab$ with $b$ odd and $a<k$, then $2^k-i=2^a(2^{k-a}-b)$ with $2^{k-a}-b$ odd). So every factor $\dfrac{2^k-i}{i}$ has equal powers of $2$ on top and bottom, and $\dbinom{n-1}{j-1}$ is odd. Hence
+\[v\!\left(\dbinom nj\right)=v(n)-v(j)=k-v(j).\]
+
+(a) Since $1\le j<2^k$, $v(j)\le k-1$, so $v\!\left(\dbinom nj\right)\ge1$: every coefficient is even.
+
+(b) $\dbinom nj$ is divisible by $4$ exactly when $v(j)\le k-2$, that is, unless $v(j)=k-1$. The only $j$ in $1,\dots,2^k-1$ with $v(j)=k-1$ is $j=2^{k-1}$. So exactly $\boxed{2^k-2}$ of the coefficients are divisible by $4$ (for $k=1$ this is $0$, correctly: the only coefficient is $\dbinom21=2$).

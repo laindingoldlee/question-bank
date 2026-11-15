@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1268949_cool_problems
+% Stable identity: aops-topic-1268949-q02
+Both lines are parallel to the $y$-axis. Let $P_1=(4,s,4)$, $P_2=(u,v,0)$ and $P_3=(9,t,9)$. Changing only $y$-coordinates, the distances
+\[P_1P_2=\sqrt{(u-4)^2+(v-s)^2+16},\qquad P_2P_3=\sqrt{(u-9)^2+(v-t)^2+81}\]
+are smallest when $s=v=t$; so we may assume all three points have the same $y$-coordinate and work in the $xz$-plane with points $(4,4)$ and $(9,9)$ and a point $(u,0)$ on the $x$-axis.
+
+Reflect $(9,9)$ in the $x$-axis to $(9,-9)$. For any point $Q=(u,0)$, the distance from $Q$ to $(9,9)$ equals its distance to $(9,-9)$, so
+\[P_1P_2+P_2P_3\ge \text{dist}\bigl((4,4),(9,-9)\bigr)=\sqrt{5^2+13^2}=\sqrt{194},\]
+with equality when $Q$ is where the segment from $(4,4)$ to $(9,-9)$ meets the axis, at $u=4+\dfrac{4}{13}\cdot 5=\dfrac{72}{13}$. The minimum is $\boxed{\sqrt{194}}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(11,0),Arrow); draw((0,-10)--(0,10),Arrow);
+label("$x$",(11,0),E); label("$z$",(0,10),N);
+pair P=(4,4),R=(9,9),Rp=(9,-9),Q=(72/13,0);
+draw(P--Q--R,blue+linewidth(1)); draw(Q--Rp,blue+dashed); draw(R--Rp,gray+dashed);
+dot(P);dot(R);dot(Rp);dot(Q);
+label("$(4,4)$",P,W); label("$(9,9)$",R,E); label("$(9,-9)$",Rp,E); label("$P_2$",Q,SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

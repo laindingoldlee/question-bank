@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2292547_not_sure_how_to_solve_it
+% Stable identity: aops-topic-2292547-q01
+Let $N=2^{90}+2^{65}+2^n$. In a perfect square, every prime appears with an even exponent.
+
+\textbf{Case $n\ge66$.} $N=2^{65}\left(2^{25}+1+2^{n-65}\right)$ and the bracket is odd, so $2$ appears in $N$ with the odd exponent $65$. Not a square.
+
+\textbf{Case $n=65$.} $N=2^{90}+2^{66}=2^{66}\left(2^{24}+1\right)$, and $2^{24}+1$ lies strictly between the consecutive squares $\left(2^{12}\right)^2$ and $\left(2^{12}+1\right)^2$. Not a square.
+
+\textbf{Case $n\le64$.} Suppose $N=m^2$ with $m>0$. Since
+\[2^{90}<N\le2^{90}+2^{65}+2^{64}<2^{90}+2^{66}+2^{40}=\left(2^{45}+2^{20}\right)^2,\]
+we can write $m=2^{45}+t$ with $0<t<2^{20}$. Then $m^2=2^{90}+2^{46}t+t^2$, so
+\[2^{46}t+t^2=2^{65}+2^n.\tag{$*$}\]
+Write $t=2^vw$ with $w$ odd; then $v\le19$. On the left, $2^{46}t$ is divisible by $2^{46+v}$, while $t^2=2^{2v}w^2$ is divisible by $2^{2v}$ but not by $2^{2v+1}$; since $2v<46+v$, the left side is divisible by $2^{2v}$ but not by $2^{2v+1}$. On the right, $2^{65}+2^n=2^n\left(2^{65-n}+1\right)$ with an odd bracket. Hence $n=2v$. Dividing $(*)$ by $2^{2v}$:
+\[2^{46-v}w+w^2=2^{65-2v}+1,\qquad\text{so}\qquad w^2-1=2^{46-v}\left(2^{19-v}-w\right).\]
+\begin{itemize}
+\item If $w=1$, then $2^{19-v}=1$, so $v=19$ and $n=38$.
+\item If $w\ge3$, the left side is positive, so $2^{19-v}-w\ge1$; then $w<2^{19-v}$ and $w^2-1<2^{38-2v}$. But the right side is at least $2^{46-v}>2^{38-2v}$. Contradiction.
+\end{itemize}
+Finally, $n=38$ works:
+\[2^{90}+2^{65}+2^{38}=\left(2^{45}\right)^2+2\cdot2^{45}\cdot2^{19}+\left(2^{19}\right)^2=\left(2^{45}+2^{19}\right)^2.\]
+So the only value is $\boxed{n=38}$.

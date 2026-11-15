@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2133915_rectangle_coordinates
+% Stable identity: aops-topic-2133915-q01
+\textbf{(a)} Since $ABCD$ is a rectangle, $\mathbf u$ and $\mathbf w$ are nonzero and perpendicular, so $\mathbf u\cdot\mathbf w=0$, and $\overrightarrow{AC}=\mathbf u+\mathbf w$. Every point $P$ of the plane can be written as $\overrightarrow{AP}=s\mathbf u+t\mathbf w$ for real numbers $s,t$ (two perpendicular nonzero vectors span the plane). Taking the dot product with $\mathbf u$ and with $\mathbf w$ and using $\mathbf u\cdot\mathbf w=0$,
+\[\overrightarrow{AP}\cdot\mathbf u=s\,(\mathbf u\cdot\mathbf u),\qquad \overrightarrow{AP}\cdot\mathbf w=t\,(\mathbf w\cdot\mathbf w).\]
+In these coordinates the sides $AD$, $BC$, $AB$, $DC$ lie on the lines $s=0$, $s=1$, $t=0$, $t=1$, and the closed rectangle is the set of points with $0\le s\le1$ and $0\le t\le1$. Multiplying these inequalities by the positive numbers $\mathbf u\cdot\mathbf u$ and $\mathbf w\cdot\mathbf w$ gives exactly the stated conditions. (Geometrically, $\dfrac{\overrightarrow{AP}\cdot\mathbf u}{|\mathbf u|}$ is the signed length of the projection of $AP$ onto line $AB$, and it must lie between $0$ and $AB$; similarly for $AD$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(4,2), C=(1,8), D=(-3,6), P=(1,4), Q=(4,4);
+fill(A--B--C--D--cycle,paleyellow);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--B,blue+linewidth(1.2),Arrow(8)); draw(A--D,blue+linewidth(1.2),Arrow(8));
+real dd(pair a,pair c){return a.x*c.x+a.y*c.y;}
+pair Fp=(dd(P,B)/dd(B,B))*B, Gp=(dd(P,D)/dd(D,D))*D;
+draw(P--Fp,dashed+gray); draw(P--Gp,dashed+gray);
+pair Fq=(dd(Q,B)/dd(B,B))*B;
+draw(B--Fq,gray+dotted); draw(Q--Fq,dashed+gray);
+dot(A); dot(B); dot(C); dot(D); dot(P,heavygreen); dot(Q,red);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$D$",D,W);
+label("$P(1,4)$",P,N,heavygreen); label("$Q(4,4)$",Q,E,red);
+label("$\mathbf{u}$",(A+B)/2,SE,blue); label("$\mathbf{w}$",(A+D)/2,SW,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(b)} Here $\mathbf u=(4,2)$, $\mathbf w=(-3,6)$, $\mathbf u\cdot\mathbf w=-12+12=0$ and $B+\mathbf w=(1,8)=C$, so $ABCD$ is indeed a rectangle, with $\mathbf u\cdot\mathbf u=20$ and $\mathbf w\cdot\mathbf w=45$.
+\begin{itemize}
+\item For $P$: $\overrightarrow{AP}=(1,4)$, $\overrightarrow{AP}\cdot\mathbf u=4+8=12\in[0,20]$ and $\overrightarrow{AP}\cdot\mathbf w=-3+24=21\in[0,45]$, so $P$ is inside.
+\item For $Q$: $\overrightarrow{AQ}=(4,4)$, $\overrightarrow{AQ}\cdot\mathbf u=16+8=24>20$, so $Q$ is outside (beyond side $BC$).
+\end{itemize}
+So $\boxed{P\text{ is inside the rectangle and }Q\text{ is outside}}$.

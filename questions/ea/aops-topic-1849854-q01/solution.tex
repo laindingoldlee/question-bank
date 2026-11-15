@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1849854_section_51_conic_section_problem
+% Stable identity: aops-topic-1849854-q01
+\textbf{(a)} A plane perpendicular to the axis is $z=h$. Substituting, $x^2+y^2=h^2$: for $h\ne0$ this is a circle of radius $|h|$ in that plane, and for $h=0$ (the plane through $V$) it is $x^2+y^2=0$, i.e.\ only the point $x=y=0$, $z=0$. So yes: the plane through the vertex perpendicular to the axis gives a single point, a degenerate conic.
+
+\textbf{(b)} On the plane $z=mx$ the points of $K$ satisfy $x^2+y^2=m^2x^2$, i.e.
+\[
+y^2=\left(m^2-1\right)x^2 .
+\]
+\begin{itemize}
+\item If $|m|<1$, the right side is $\le0$, so $x=y=0$ and $z=0$: the intersection is \textbf{the single point $V$}.
+\item If $|m|=1$, then $y=0$ and $z=\pm x$: \textbf{one line} (a generator of the cone, along which the plane is tangent).
+\item If $|m|>1$, then $y=\pm\sqrt{m^2-1}\,x$: \textbf{two lines} through $V$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real L=3;
+draw((-L,-L)--(L,L),linewidth(1));draw((-L,L)--(L,-L),linewidth(1));
+draw(shift(0,L)*xscale(L)*yscale(0.4)*unitcircle,linewidth(0.8));
+draw(shift(0,-L)*xscale(L)*yscale(0.4)*unitcircle,linewidth(0.8));
+draw((0,-L-0.7)--(0,L+0.7),dotted);label("axis",(0,L+0.7),N);
+draw((-3.9,2)--(3.9,2),gray(0.5)+dashed);label("$z=2$",(3.9,2),E,gray(0.4));
+draw((-3.9,0)--(3.9,0),blue+linewidth(1));label("$z=0$",(3.9,0),E,blue);
+draw((-3.9,-0.975)--(3.9,0.975),deepgreen+linewidth(1));label("$z=\dfrac{x}{4}$",(3.9,0.975),E,deepgreen);
+draw((-1.7,-3.4)--(1.7,3.4),red+linewidth(1));label("$z=2x$",(1.7,3.4),NE,red);
+dot((0,0));label("$V$",(0,0),2*dir(-67));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The figure is the side view in the $xz$-plane: the cone appears as the lines $z=\pm x$, and the plane $z=mx$ appears as a line through $V$. Planes less steep than the cone's sides ($|m|<1$, such as $z=0$ and $z=\dfrac {x}{4}$) touch $K$ only at $V$; steeper planes ($|m|>1$, such as $z=2x$) cut it in two lines. (The vertical plane $x=0$ behaves like $|m|>1$: it gives the two lines $y=\pm z$.) These are the degenerate conics, the limits of the ellipses, parabolas and hyperbolas obtained when the plane is moved to pass through the vertex.

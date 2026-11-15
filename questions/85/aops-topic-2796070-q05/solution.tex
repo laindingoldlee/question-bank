@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2796070_2013_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2796070-q05
+Let the centres be $O_1,O_2$ and the intersection points $P,Q$. Triangles $O_1O_2P$ and $O_1O_2Q$ are equilateral with side $1$, so $\angle PO_1Q=120^\circ$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O1=(0,0),O2=(1,0),P=(0.5,sqrt(3)/2),Q=(0.5,-sqrt(3)/2);
+fill(arc(O1,1,-60,60)--arc(O2,1,120,240)--cycle,gray(0.8));
+draw(circle(O1,1));draw(circle(O2,1));dot(O1);dot(O2);
+draw(O1--P--O2--Q--cycle,dashed);draw(P--Q,dashed);label("$O_1$",O1,W);label("$O_2$",O2,E);label("$P$",P,N);label("$Q$",Q,S);
+\end{asy}
+
+The common region is two congruent circular segments cut off by chord $PQ$. One segment is a $120^\circ$ sector minus triangle $O_1PQ$:
+\[\dfrac{\pi}{3}-\dfrac12\cdot1\cdot1\cdot\sin120^\circ=\dfrac\pi3-\dfrac{\sqrt3}4.\]
+The common area is $\boxed{\dfrac{2\pi}3-\dfrac{\sqrt3}2}$.

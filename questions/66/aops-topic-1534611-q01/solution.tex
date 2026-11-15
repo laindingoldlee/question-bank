@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1534611_trigonometry
+% Stable identity: aops-topic-1534611-q01
+In the figure the right angle is at $B$ and $\theta$ is the angle at $A$:
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(8,0),C=(8,15);
+draw(A--B--C--cycle,linewidth(1));
+real z=0.8; draw(B+(-z,0)--B+(-z,z)--B+(0,z));
+draw(arc(A,2.2,0,degrees(C-A)),red);
+label("$\theta$",A+3.1*dir(degrees(C-A)/2),red);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$8$",(A+B)/2,S);label("$15$",(B+C)/2,E);label("$17$",(A+C)/2,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+\tan\theta=\dfrac{15}{8},\qquad \cos\theta=\dfrac{8}{17},\qquad \sin\theta=\dfrac{15}{17}.
+\]
+Hence
+\[
+\tan\theta+\cos\theta\sin\theta=\dfrac{15}{8}+\dfrac{120}{289}=\dfrac{15\cdot289+120\cdot8}{8\cdot289}=\dfrac{4335+960}{2312}=\boxed{\dfrac{5295}{2312}}\approx2.29 .
+\]

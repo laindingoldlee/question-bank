@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2242124_problems_involving_scores_on_amc_1012
+% Stable identity: aops-topic-2242124-q02
+All $2^{25}$ strings are equally likely.
+
+\textbf{(a)} A string with no block $10$ never has a $1$ followed by a $0$, so once a $1$ appears, all later digits are $1$: the string is some $0$s followed by some $1$s. There are $26$ such strings (the number of $0$s is $0,1,\ldots,25$). The probability is
+\[\dfrac{26}{2^{25}}=\boxed{\dfrac{13}{16777216}}.\]
+
+\textbf{(b)} Let $a_n$ be the number of strings of length $n$ with no block $101$, and $b_n$ the number of those that start with $1$; put $a_0=1$.
+\begin{itemize}
+\item A good string starting with $0$ is $0$ followed by any good string of length $n-1$: $a_n=a_{n-1}+b_n$.
+\item A good string starting with $11$ is $1$ followed by a good string of length $n-1$ starting with $1$. A good string starting with $10$ must continue with $0$ (for $n\ge3$), and $100$ followed by any good string of length $n-3$ is good (a block $101$ cannot overlap the prefix $100$). So $b_n=b_{n-1}+a_{n-3}$ for $n\ge3$, with $b_1=1$, $b_2=2$.
+\end{itemize}
+Eliminating $b$: $a_n-a_{n-1}=b_n=b_{n-1}+a_{n-3}=(a_{n-1}-a_{n-2})+a_{n-3}$, so
+\[a_n=2a_{n-1}-a_{n-2}+a_{n-3}\qquad(n\ge4),\]
+with $a_1=2$, $a_2=4$, $a_3=7$. This gives
+\[\begin{array}{l}
+2,\ 4,\ 7,\ 12,\ 21,\ 37,\ 65,\ 114,\ 200,\ 351,\ 616,\ 1081,\ 1897,\ 3329,\ 5842,\ 10252,\ 17991,\\
+31572,\ 55405,\ 97229,\ 170625,\ 299426,\ 525456,\ 922111,\ 1618192
+\end{array}\]
+for $n=1,\ldots,25$. The probability is
+\[\dfrac{1618192}{2^{25}}=\boxed{\dfrac{101137}{2097152}}\approx0.0482.\]

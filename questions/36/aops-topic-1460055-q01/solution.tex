@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1460055_mathematicians_of_the_square_table
+% Stable identity: aops-topic-1460055-q01
+Let the common side be $s$. The square has area $s^2$. The hexagon splits into $6$ equilateral triangles of side $s$, each of area $\dfrac{\sqrt3}{4}s^2$, so its area is $\dfrac{3\sqrt3}{2}s^2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair o=(3.8,0);
+draw(box((0,0),(2,2)),linewidth(0.9));
+label("$s$",(1,0),S);label("$s$",(0,1),W);
+pair[] H; for(int k=0;k<6;++k) H.push(o+(1,1)+2*dir(60*k));
+for(int k=0;k<6;++k) draw((o+(1,1))--H[k],gray+dashed);
+draw(H[0]--H[1]--H[2]--H[3]--H[4]--H[5]--cycle,linewidth(0.9));
+label("$s$",(H[4]+H[5])/2,S);
+label("area $s^2$",(1,-0.8));label("area $6\cdot\dfrac{\sqrt3}{4}s^2$",o+(1,-1.6));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The percent change from the square to the hexagon is
+\[
+\dfrac{\dfrac{3\sqrt3}{2}s^2-s^2}{s^2}\cdot100\%=\left(\dfrac{3\sqrt3}{2}-1\right)\cdot100\%=\boxed{(150\sqrt3-100)\%}\approx159.8\%,
+\]
+an increase.

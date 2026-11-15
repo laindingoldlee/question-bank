@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1354783_toughy
+% Stable identity: aops-topic-1354783-q01
+Number rows and columns $1$ to $9$; square $(i,j)$ has the colour of the corners if $i+j$ is even. Rows and columns each have $5$ odd and $4$ even numbers. Eight non-attacking rooks leave exactly one row $r$ and one column $c$ empty and match the other rows to the other columns bijectively.
+
+\emph{Corner colour ($i+j$ even).} Odd rows are matched to odd columns and even rows to even columns, so the empty row and column have the same parity.
+\begin{itemize}
+\item Both odd ($5\cdot5$ choices): $4$ odd rows to $4$ odd columns and $4$ even rows to $4$ even columns: $4!\cdot4!=576$ each, total $25\cdot576=14400$.
+\item Both even ($4\cdot4$ choices): $5$ odd rows to $5$ odd columns and $3$ even rows to $3$ even columns: $5!\cdot3!=720$ each, total $16\cdot720=11520$.
+\end{itemize}
+Subtotal $25920$.
+
+\emph{Other colour ($i+j$ odd).} Odd rows go to even columns and even rows to odd columns. The used odd rows must equal in number the used even columns ($\le4$), so the empty row is odd; likewise the empty column is odd. Then $4$ odd rows go to the $4$ even columns and $4$ even rows to the $4$ remaining odd columns: $5\cdot5\cdot4!\cdot4!=14400$.
+
+Total: $25920+14400=\boxed{40320}$ $(=8!)$.

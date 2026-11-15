@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1414394_400th_post
+% Stable identity: aops-topic-1414394-q01
+Put the circumcentre $O$ at the origin and treat points as vectors, so $|A|=|B|=|C|=R=200$. Then $H=A+B+C$: indeed $(H-A)\cdot(B-C)=(B+C)\cdot(B-C)=|B|^2-|C|^2=0$, so $H$ lies on the altitude from $A$, and similarly on the other altitudes.
+
+The reflection of $H$ in the midpoint $M=\dfrac{A+B}{2}$ of $AB$ is
+\[
+H_1=2M-H=A+B-(A+B+C)=-C,
+\]
+the point of the circumcircle diametrically opposite $C$. So $CH_1=2R=400$, and in the same way $AH_2=BH_3=400$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=dir(125),B=dir(20),C=dir(250);
+pair H=A+B+C, M=(A+B)/2, H1=A+B-H;
+draw(unitcircle,gray);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(H--H1,blue+dashed); draw(C--H1,red);
+draw(A--H1,gray+dashed); draw(B--H1,gray+dashed);
+dot(O);dot(H,blue);dot(M);dot(H1,red);
+label("$A$",A,NW); label("$B$",B,E); label("$C$",C,S);
+label("$O$",O,W); label("$H$",H,W,blue); label("$M$",M+0.17*dir(-63)); label("$H_1$",H1,N,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The average is $\boxed{400}$. The inradius plays no role; it only has to be consistent with $R=200$ (Euler's inequality $r\le\dfrac {R}{2}=100$ holds, and isosceles triangles with $R=200$ realise every inradius between $0$ and $100$).

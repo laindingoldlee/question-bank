@@ -1,0 +1,7 @@
+Triangles $ADE$ and $ACB$ share angle $A$, and $\angle ADE=\angle ACB$, so they are similar, with $D$ corresponding to $C$. Their areas are $16$ and $81$, so their side ratio is $\dfrac{4}{9}$. Thus $\dfrac{DE}{CB}=\dfrac{8}{CB}=\dfrac{4}{9}$, giving $\boxed{BC=18}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(0,4),B=(-3,0),C=(4,0); draw(A--B--C--cycle); label("$A$",A,(-1,-1)); label("$B$",B,(1,-1)); label("$C$",C,(0,1)); real r=4/9;pair D=A+r*abs(C-A)/abs(B-A)*(B-A),E=A+r*abs(B-A)/abs(C-A)*(C-A);draw(D--E);label("$D$",D,(-1,0));label("$E$",E,(1,0));label("$DE=8$",(D+E)/2,(0,-1));label("$16$",(A+D+E)/3);label("$65$",(B+C+D+E)/4);
+\end{asy}

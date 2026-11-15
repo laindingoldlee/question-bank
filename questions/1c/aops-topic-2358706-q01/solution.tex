@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2358706_help_continuing_an_induction_proof
+% Stable identity: aops-topic-2358706-q01
+\textbf{Lemma.} For every integer $m\ge1$, $m(m+1)$ is even.
+
+\emph{Proof by induction.} For $m=1$, $1\cdot2=2$ is even. If $m(m+1)$ is even, then
+\[(m+1)(m+2)=m(m+1)+2(m+1)\]
+is a sum of two even numbers, hence even. $\square$
+
+\textbf{Main proof.} Let $P(n)=n(n+1)(n+2)(n+3)(n+4)$. The base case $P(1)=120=10\cdot12$ holds. Assume $P(n)$ is a multiple of $10$, say $P(n)=10k$. The student's identity is correct, since
+\[P(n+1)-P(n)=(n+1)(n+2)(n+3)(n+4)\bigl((n+5)-n\bigr)=5(n+1)(n+2)(n+3)(n+4).\]
+By the lemma with $m=n+1$, the product $(n+1)(n+2)$ is even, say $(n+1)(n+2)=2j$. Then
+\[5(n+1)(n+2)(n+3)(n+4)=10\,j\,(n+3)(n+4)\]
+is a multiple of $10$, and so is $P(n+1)=10k+10j(n+3)(n+4)$. By induction, $P(n)$ is a multiple of $10$ for every $n\ge1$. $\blacksquare$

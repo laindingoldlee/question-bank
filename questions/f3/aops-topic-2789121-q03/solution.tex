@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2789121_2012_manhattan_mathematical_olympiad_grades_56_problems_14
+% Stable identity: aops-topic-2789121-q03
+(a) Join the points $(1,8),(3,2),(8,2),(2,6),(3,1),(5,3)$ in that order and close the path. The exact cross-product check below verifies each segment crosses exactly one nonadjacent segment. (b) In the intersection graph each segment has degree 1. The degree sum equals twice the number of crossings and must be even, so seven segments are impossible. (c) No: eight is even, so this argument gives no decision for eight segments.
+\begin{verbatim}
+P=[(1,8),(3,2),(8,2),(2,6),(3,1),(5,3)]
+E=list(zip(P,P[1:]+P[:1]))
+def orient(a,b,c):
+    return (b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0])
+def cross(a,b,c,d):
+    return orient(a,b,c)*orient(a,b,d)<0 and orient(c,d,a)*orient(c,d,b)<0
+assert all(sum(cross(*e,*f) for f in E)==1 for e in E)
+\end{verbatim}
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] P={(1,8),(3,2),(8,2),(2,6),(3,1),(5,3)};for(int k=0;k<6;++k){draw(P[k]--P[(k+1)%6]);dot(P[k]);label(string(k+1),P[k],dir(30+60*k));}
+\end{asy}

@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1421678_please_help
+% Stable identity: aops-topic-1421678-q01
+Let $AB=4.2$ cm, with altitude $DH=3.6$ cm to line $AB$, and let $BK=2.4$ cm be the altitude to side $AD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+real t=asin(3.6/6.3);
+pair A=(0,0),B=(4.2,0),D=6.3*dir(degrees(t)),C=D+(4.2,0);
+pair H=(D.x,0), K=ft(B,A,D);
+draw(B--H,gray+dashed);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(D--H,red+dashed); draw(ra(H,A-H,D-H,0.2),red);
+draw(B--K,blue+dashed); draw(ra(K,A-K,B-K,0.2),blue);
+label("$A$",A,SW); label("$B$",B,S); label("$C$",C,NE); label("$D$",D,N);
+label("$H$",H,S); label("$K$",K,NW);
+label("$4.2$",(A+B)/2,S); label("$3.6$",(D+H)/2,E,red); label("$2.4$",(B+K)/2,SW,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The area of a parallelogram is any side times the altitude to that side, so
+\[
+AB\cdot DH=AD\cdot BK\quad\Longrightarrow\quad 4.2\cdot3.6=AD\cdot2.4\quad\Longrightarrow\quad AD=\dfrac{15.12}{2.4}=6.3\text{ cm}.
+\]
+The perimeter is $2(4.2+6.3)=\boxed{21\text{ cm}}$.
+
+The student's answer is wrong ($8.4+8\sqrt{1.17}\approx17.05$). It seems to treat the altitude as if it met the side at a vertex and to apply the Pythagorean theorem to the wrong triangle; no Pythagorean step is needed, only the two expressions for the area.

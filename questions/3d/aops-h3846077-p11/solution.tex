@@ -1,0 +1,13 @@
+Each cell is independently odd or even with probability $\dfrac{1}{2}$. Every adjacent product is even exactly when no two odd cells are adjacent. A column can therefore have no odd cell, only its top cell odd, or only its bottom cell odd.
+
+Let $T_k$ count valid parity patterns on $k$ columns, and let $U_k$ count those ending with a specified one of the two single-odd states. Then
+\[
+T_k=T_{k-1}+2U_k,\qquad U_k=T_{k-1}-U_{k-1}.
+\]
+Eliminating $U$ gives $T_k=2T_{k-1}+T_{k-2}$, with $T_0=1,T_1=3$. Thus $T_2=7,T_3=17,T_4=41,T_5=99$. There are $2^{10}=1024$ equally likely parity patterns, so the probability is $\dfrac{99}{1024}$ and $\boxed{m+n=1123}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int r=0;r<2;++r)for(int c=0;c<5;++c){bool odd=(r+c)%2==0;fill(box((c,-r),(c+1,1-r)),odd?lightgray:white);draw(box((c,-r),(c+1,1-r)));label(odd?"O":"E",(c+.5,.5-r));}label("One valid parity pattern",(2.5,-2));
+\end{asy}

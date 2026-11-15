@@ -1,0 +1,24 @@
+Let $\theta=\angle A$; then $\angle C=180^\circ-\theta$. Applying the cosine rule to diagonal $BD$ in the two triangles gives
+\[
+BD^2=50^2+120^2-2(50)(120)\cos\theta
+=78^2+104^2+2(78)(104)\cos\theta.
+\]
+Both sums of squares equal $16900$, so $\cos\theta=0$, $BD=130$, and the circumradius is $R=65$. Its center lies on diagonal $BD$, hence inside the quadrilateral.
+
+For a side chord at distance $h$ from the center, the exterior region is the minor circular segment. The two outer vertices of the square must be symmetric about the perpendicular chord bisector, because they have equal height and lie on the circle. If the square side is $s$, then
+\[
+\left(\dfrac{s}{2}\right)^2+(h+s)^2=R^2,\qquad
+s=\dfrac{2}{5}\left(\sqrt{5R^2-h^2}-2h\right).
+\]
+This decreases with $h\ge0$, so the largest square uses the longest chord, the side of length $120$, for which $h=\sqrt{65^2-60^2}=25$.
+Thus $s=4\sqrt{205}-20$ and
+\[
+s^2=3680-160\sqrt{205}=160(23-\sqrt{205}).
+\]
+This square fits on the side since $s<120$, and its remaining vertices lie in the exterior cap. Since $205=5\cdot41$ is squarefree, $\boxed{a+b+c=388}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real s=4*sqrt(205)-20;pair A=(-60,-25),B=(-60,25),C=(36./5,323./5),D=(60,-25),O=(0,0);draw(circle(O,65));draw(A--B--C--D--cycle);draw(B--D,dashed);filldraw((-s/2,-25)--(s/2,-25)--(s/2,-25-s)--(-s/2,-25-s)--cycle,lightblue);draw(O--(0,-25),dashed);dot(O);label("$A$",A,(-1,-1));label("$B$",B,(-1,1));label("$C$",C,(0,1));label("$D$",D,(1,0));label("$O$",O,(1,1));label("$25$",(0,-12),(1,0));label("$120$",(35,-25),(0,1));
+\end{asy}

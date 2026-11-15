@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1444547_a_special_number
+% Stable identity: aops-topic-1444547-q01
+Let $M=5N$. Since $M$ is a multiple of $5$, its last digit is $5$ (not $7$). Then $N=\dfrac{M}{5}=\dfrac{2M}{10}$, so the digits of $N$ are those of $2M$ without its final $0$, and $N$ and $2M$ have the same digit sum.
+
+Double $M$ digit by digit, from the right. Each digit of $M$ is $5$ or $7$, and doubling gives $10$ or $14$: the digit $0$ or $4$ with a carry of $1$. Adding an incoming carry gives at most $5$, which causes no further carry. So \emph{every} one of the $40$ positions produces exactly one carry, and the digits of $2M$ are
+\[
+(2\cdot\text{digit} - 10) + (\text{carry in}),
+\]
+plus a leading digit $1$ from the last carry. The digit sum of $2M$ is therefore
+\[
+\sum(2\cdot\text{digit})-10\cdot40+40=2(30\cdot5+10\cdot7)-360=440-360=80 .
+\]
+(Each carry replaces $10$ in one place by $1$ in the next place, lowering the digit sum by $9$: $440-9\cdot40=80$.)
+
+So the digit sum of $N$ is $\boxed{80}$, whatever the order of the digits of $M$.

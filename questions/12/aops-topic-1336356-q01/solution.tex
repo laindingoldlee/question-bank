@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1336356_triangle_area_maximum
+% Stable identity: aops-topic-1336356-q01
+\textbf{Proof.} Let the triangle be $ABC$ with angles $A$, $B$, $C$ (in radians, $A+B+C=\pi$). By the extended law of sines its sides are $a=2R\sin A$, $b=2R\sin B$, $c=2R\sin C$, so
+\[
+[ABC]=\dfrac{1}{2}ab\sin C=2R^2\sin A\sin B\sin C .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=dir(100), B=dir(205), C=dir(-20);
+pair P=dir(90), Q=dir(210), Rr=dir(330);
+draw(unitcircle,gray);
+draw(P--Q--Rr--cycle,red+dashed);
+draw(A--B--C--cycle,linewidth(0.9));
+dot((0,0)); label("$O$",(0,0),SW);
+label("$A$",A,N); label("$B$",B,W); label("$C$",C,E);
+draw((0,0)--C,gray); label("$R$",C/2,N,gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By AM-GM (all three sines are positive),
+\[
+\sin A\sin B\sin C\le\left(\dfrac{\sin A+\sin B+\sin C}{3}\right)^3 .
+\]
+On $[0,\pi]$ the sine function is concave, so its graph lies below the tangent line at $x=\dfrac{\pi}{3}$:
+$\sin x\le\dfrac{\sqrt3}{2}+\dfrac{1}{2}\left(x-\dfrac{\pi}{3}\right)$. Adding this for $x=A,B,C$ gives
+\[
+\sin A+\sin B+\sin C\le\dfrac{3\sqrt3}{2}+\dfrac{1}{2}\left(A+B+C-\pi\right)=\dfrac{3\sqrt3}{2}.
+\]
+Hence
+\[
+[ABC]\le2R^2\left(\dfrac{\sqrt3}{2}\right)^3=\dfrac{3\sqrt3}{4}R^2 .
+\]
+Equality in the tangent-line bound requires $A=B=C=\dfrac{\pi}{3}$, and the equilateral triangle does reach the value $\dfrac{3\sqrt3}{4}R^2$. So the equilateral triangle, and only it, has the largest area.

@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2601280_easy_cartesian_plane_inequality_problem_i_made
+% Stable identity: aops-topic-2601280-q01
+The lines $x=\dfrac y2+7$ and $y=\dfrac x2+7$ meet where $x=\dfrac{x}{4}+\dfrac72+7$, i.e. at $(14,14)$. The first two inequalities describe the wedge between these lines that opens towards larger $x$ and $y$. The line $x=\dfrac y2+7$ meets $y=\dfrac{55}3$ at $x=\dfrac{55}6+7=\dfrac{97}6<\dfrac{55}{3}$, and similarly $y=\dfrac x2+7$ meets $x=\dfrac{55}3$ at $y=\dfrac{97}6$. So the region is the quadrilateral with vertices
+\[(14,14),\quad\left(\dfrac{55}3,\dfrac{97}6\right),\quad\left(\dfrac{55}3,\dfrac{55}3\right),\quad\left(\dfrac{97}6,\dfrac{55}3\right).\]
+It is a kite, symmetric in the line $y=x$, so its diagonals are perpendicular. Their lengths are
+\[\left(\dfrac{55}3-14\right)\sqrt2=\dfrac{13\sqrt2}3\qquad\text{and}\qquad\left(\dfrac{55}3-\dfrac{97}6\right)\sqrt2=\dfrac{13\sqrt2}6.\]
+The area is half their product:
+\[\dfrac12\cdot\dfrac{13\sqrt2}3\cdot\dfrac{13\sqrt2}6=\dfrac{169}{18}.\]
+So $m+n=169+18=\boxed{187}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real m=55/3,q=97/6;
+pair P0=(14,14),P1=(m,q),P2=(m,m),P3=(q,m);
+fill(P0--P1--P2--P3--cycle,lightgray);
+draw((12,13)--(20,17));draw((13,12)--(17,20));
+draw((m,12)--(m,20),dashed);draw((12,m)--(20,m),dashed);
+draw(P0--P2,dotted);draw(P1--P3,dotted);
+draw(P0--P1--P2--P3--cycle,linewidth(0.8));
+dot(P0);dot(P1);dot(P2);dot(P3);
+label("$(14,14)$",P0,SE,fontsize(8pt));label("$\left(\dfrac{55}3,\dfrac{97}6\right)$",P1,SE,fontsize(8pt));
+label("$\left(\dfrac{55}3,\dfrac{55}3\right)$",P2,NE,fontsize(8pt));label("$\left(\dfrac{97}6,\dfrac{55}3\right)$",P3,NW,fontsize(8pt));
+label("$y=\dfrac x2+7$",(20,17),E,fontsize(8pt));label("$x=\dfrac y2+7$",(17,20),N,fontsize(8pt));
+\end{asy}

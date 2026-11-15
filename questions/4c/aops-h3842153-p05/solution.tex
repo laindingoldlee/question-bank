@@ -1,0 +1,7 @@
+Unfold the reflected rooms into a rectangular grid. The ray is then $y=x$ and first reaches a grid corner at $(36,36)$ because $\operatorname{lcm}(9,12)=36$. Before that it crosses three vertical and two horizontal walls, with no simultaneous crossing. Thus it bounces $\boxed5$ times.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+for(int i=0;i<=4;++i)draw((9*i,0)--(9*i,36),gray);for(int j=0;j<=3;++j)draw((0,12*j)--(36,12*j),gray);draw((0,0)--(36,36),Arrow);label("start",(0,0),(-1,-1));label("$(36,36)$",(36,36),(1,1));
+\end{asy}

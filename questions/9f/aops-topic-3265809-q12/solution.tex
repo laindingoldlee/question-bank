@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3265809_six_years
+% Stable identity: aops-topic-3265809-q12
+A regular hexagon is six equilateral triangles, so its area is $6(\dfrac{\sqrt3}{4})(2^2)=6\sqrt3$. The total prism height is $8+2=10$, hence the volume is $\boxed{60\sqrt3\text{ cubic inches}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] v;for(int k=0;k<6;++k)v.push((2*cos(k*pi/3),0.7*2*sin(k*pi/3)));pair top=(0,5),join=(0,4);for(int k=0;k<6;++k){draw(v[k]--v[(k+1)%6]);draw(v[k]+top--v[(k+1)%6]+top);draw(v[k]--v[k]+top);draw(v[k]+join--v[(k+1)%6]+join,blue);}label("$8$",(-2.5,2));label("$2$",(-2.5,4.5));label("Base side 2",(0,-1.8));
+\end{asy}

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2521178_aggs_1st_anniversary_problems
+% Stable identity: aops-topic-2521178-q06
+A small cube has icing on one face for each iced face of the cake that it touches. A cube touching two iced faces of the cake lies along an edge where two iced faces meet. The edges of the cake between two iced faces are the $4$ edges of the top face and the $4$ vertical edges; the $4$ bottom edges meet the un-iced bottom.
+\begin{itemize}
+\item \textbf{Top edges.} Each has $4$ cubes. The $2$ end cubes are top corners, touching the top and two sides ($3$ iced faces); the $2$ middle ones touch exactly the top and one side. This gives $4\cdot2=8$ cubes.
+\item \textbf{Vertical edges.} Each has $4$ cubes. The top one is a top corner ($3$ iced faces). The other $3$ touch exactly two side faces (the bottom one also touches the bottom, which has no icing). This gives $4\cdot3=12$ cubes.
+\end{itemize}
+No other cube touches two iced faces, so the answer is $8+12=\boxed{20}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair P(real x,real y,real z){return (x+0.45*y, z+0.3*y);}
+pen two=rgb(0.55,0.75,1), three=rgb(1,0.75,0.45);
+int kind(int i,int j,int k){ int s=0; if(k==3) ++s; if(i==0) ++s; if(i==3) ++s; if(j==0) ++s; if(j==3) ++s; return s; }
+pen col(int s){ return s==2 ? two : (s==3 ? three : white); }
+for(int i=0;i<4;++i) for(int k=0;k<4;++k){ fill(P(i,0,k)--P(i+1,0,k)--P(i+1,0,k+1)--P(i,0,k+1)--cycle,col(kind(i,0,k))); draw(P(i,0,k)--P(i+1,0,k)--P(i+1,0,k+1)--P(i,0,k+1)--cycle,linewidth(0.6)); }
+for(int j=0;j<4;++j) for(int k=0;k<4;++k){ fill(P(4,j,k)--P(4,j+1,k)--P(4,j+1,k+1)--P(4,j,k+1)--cycle,col(kind(3,j,k))); draw(P(4,j,k)--P(4,j+1,k)--P(4,j+1,k+1)--P(4,j,k+1)--cycle,linewidth(0.6)); }
+for(int i=0;i<4;++i) for(int j=0;j<4;++j){ fill(P(i,j,4)--P(i+1,j,4)--P(i+1,j+1,4)--P(i,j+1,4)--cycle,col(kind(i,j,3))); draw(P(i,j,4)--P(i+1,j,4)--P(i+1,j+1,4)--P(i,j+1,4)--cycle,linewidth(0.6)); }
+draw(P(0,0,0)--P(4,0,0)--P(4,4,0)--P(4,4,4)--P(0,4,4)--P(0,0,4)--cycle,linewidth(1));
+draw(P(0,0,0)--P(0,4,0)--P(4,4,0),dashed+gray); draw(P(0,4,0)--P(0,4,4),dashed+gray);
+label("top (iced)",P(2,4,4),N,fontsize(8pt));
+label("bottom (not iced)",P(2,0,0),S,fontsize(8pt));
+\end{asy}
+
+(In the sketch, the visible faces of the cubes with exactly two iced faces are blue and the top corner cubes, with three, are orange.)

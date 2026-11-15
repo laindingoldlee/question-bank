@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h2662679_math_in_minesweeper
+% Stable identity: aops-topic-2662679-q01
+Let the first square have $d$ neighbours ($d=3$, $5$ or $8$ for a corner, edge or interior square). The other safe square $Q$ is equally likely to be any of the other $23$ squares. The number shown is $d-1$ if $Q$ is a neighbour and $d$ otherwise. So the number tells Jordan exactly whether $Q$ is among the $d$ neighbours or among the other $23-d$ squares, and nothing more: given this information, $Q$ is equally likely to be any square of that group.
+
+Whatever square he clicks next, he wins only if it is $Q$; clicking a square outside the indicated group loses for sure, and a square inside it wins with probability one over the size of the group. So the best he can do is click any square of the indicated group, and then
+\[P(\text{win})=\dfrac d{23}\cdot\dfrac1d+\dfrac{23-d}{23}\cdot\dfrac1{23-d}=\dfrac2{23}.\]
+So the choice of first square does not matter; the best strategy is to click any square consistent with the revealed number, and the winning probability is $\boxed{\dfrac2{23}}\approx8.7\%$.

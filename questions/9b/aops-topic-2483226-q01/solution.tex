@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2483226_interesting_algebra__geometry_problem
+% Stable identity: aops-topic-2483226-q01
+Let the edge lengths be $a$, $b$, $c$ (see the sketch). By Pythagoras' theorem on the three faces,
+\[a^2+b^2=19,\qquad b^2+c^2=23,\qquad a^2+c^2=30.\]
+Adding, $2\left(a^2+b^2+c^2\right)=72$, so $a^2+b^2+c^2=36$. (Then $a^2=13$, $b^2=6$, $c^2=17$, all positive, so such a box exists.)
+
+A space diagonal is the hypotenuse of a right triangle whose legs are an edge of length $c$ and a diagonal of length $\sqrt{a^2+b^2}$ of the face perpendicular to that edge, so its length is
+\[\sqrt{a^2+b^2+c^2}=\sqrt{36}=\boxed{6}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real a=sqrt(13), bb=sqrt(6), c=sqrt(17);
+pair d=bb*(0.55,0.4);
+pair P0=(0,0), P1=(a,0), P2=(a,c), P3=(0,c);
+draw(P0--P1--P2--P3--cycle,linewidth(0.8));
+draw(P3--P3+d--P2+d--P2,linewidth(0.8));
+draw(P1--P1+d--P2+d,linewidth(0.8));
+draw(P0--P0+d,dashed+gray); draw(P0+d--P1+d,dashed+gray); draw(P0+d--P3+d,dashed+gray);
+draw(P0--P2,blue); draw(P3--P2+d,blue); draw(P1--P2+d,blue);
+draw(P0--P2+d,red+dashed+linewidth(0.9));
+label("$a$",(P0+P1)/2,S); label("$c$",(P0+P3)/2,W); label("$b$",(P1+P1+d)/2,SE);
+label("$\sqrt{30}$",P0+0.3*(P2-P0),NW,blue);
+label("$\sqrt{19}$",(P3+P2+d)/2,N,blue);
+label("$\sqrt{23}$",P1+0.7*(P2+d-P1),E,blue);
+label("$6$",P0+0.62*(P2+d-P0),SE,red);
+\end{asy}

@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2539911_2010_mathcounts_state_team_6
+% Stable identity: aops-topic-2539911-q01
+The pairs of digits that are \emph{not} relatively prime are $\{2,4\}$, $\{2,6\}$, $\{4,6\}$ and $\{3,6\}$. So no two even digits may be adjacent, and $3$ may not be next to $6$.
+
+\emph{Even digits apart.} The three even digits must occupy three pairwise non-adjacent positions out of six: $\{1,3,5\}$, $\{2,4,6\}$, $\{1,3,6\}$ or $\{1,4,6\}$. For each choice there are $3!\cdot3!=36$ ways to place the even and odd digits.
+
+\emph{Subtract $3$ next to $6$.} For a given position pattern, count the placements where $6$ is at an even position and $3$ at a neighbouring odd position; the other two even and two odd digits can then be arranged in $2\cdot2=4$ ways.
+\begin{itemize}
+\item $\{1,3,5\}$ (pattern EOEOEO): $6$ in position $1$, $3$ or $5$ has $1$, $2$, $2$ odd neighbours: $5\cdot4=20$ bad, $16$ good.
+\item $\{2,4,6\}$ is the mirror image: $16$ good.
+\item $\{1,3,6\}$ (pattern EOEOOE): $6$ in position $1$, $3$ or $6$ has $1$, $2$, $1$ odd neighbours: $4\cdot4=16$ bad, $20$ good.
+\item $\{1,4,6\}$ is the mirror image: $20$ good.
+\end{itemize}
+The total is $16+16+20+20=\boxed{72}$.

@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2790818_2019_mbmt_guts_round_d1630_l1015_montgomery_blair_math_tournament
+% Stable identity: aops-topic-2790818-q20
+Put the centre $O$ at the origin with $\ell$ the $x$-axis, and let $m$ touch the semicircle at $T=(\cos\theta,\sin\theta)$, so $m$ is $x\cos\theta+y\sin\theta=1$; by symmetry take $0\le\theta\le90^\circ$. The largest circle lies on the far side of the semicircle from where $m$ meets $\ell$; let it have centre $(-h,r)$ with $h>0$.
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real th=50;real s=(Cos(th)+2*sqrt(1+Sin(th)))/(1+Sin(th));real r=(s*s-1)/2;pair O=(0,0),T=dir(th),X=(1/Cos(th),0),d=(-Sin(th),Cos(th));
+draw((-4,0)--(2.5,0));draw(arc(O,1,0,180));draw((-1,0)--(1,0));draw(X-0.8*d--X+6*d);draw(circle((-s,r),r));dot(T);dot(O);
+label("$\ell$",(2.5,0),E);label("$m$",X+6*d,N);label("$T$",T,NE);label("$O$",O,S);label("$r$",(-s,r)+(0,r/2),E);draw((-s,r)--(-s,2*r),dashed);
+\end{asy}
+
+Tangency to the semicircle gives $h^2+r^2=(1+r)^2$, so $h=\sqrt{1+2r}$. Tangency to $m$ (on the semicircle's side) gives $1+h\cos\theta-r\sin\theta=r$. Writing $h=u$ and $r=\dfrac{u^2-1}2$, this becomes
+\[(1+\sin\theta)u^2-2u\cos\theta-(3+\sin\theta)=0,\qquad u=\dfrac{\cos\theta+2\sqrt{1+\sin\theta}}{1+\sin\theta}\]
+(the discriminant is $16(1+\sin\theta)$). As $\theta$ goes from $0$ to $90^\circ$, both $\dfrac{\cos\theta}{1+\sin\theta}$ and $\dfrac2{\sqrt{1+\sin\theta}}$ decrease, so $u$ decreases from $3$ to $\sqrt2$ and $r$ decreases from $4$ to $\dfrac12$. Hence $[a,b]=\left[\dfrac12,4\right]$ and $b-a=\boxed{\dfrac72}$.

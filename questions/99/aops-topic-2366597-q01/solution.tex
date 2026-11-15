@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h2366597_difficult
+% Stable identity: aops-topic-2366597-q01
+Write $n=[x]$ and $f=\{x\}$, so $x=n+f$ with $n$ an integer and $0\le f<1$. All three sides must be positive, so $n\ge1$ and $0<f<1$. The triangle inequalities are:
+\begin{itemize}
+\item $n+f>\dfrac{n+f}{2}$: always true.
+\item $\dfrac{n+f}{2}+n>f$, i.e. $3n>f$: always true, since $n\ge1>f$.
+\item $\dfrac{n+f}{2}+f>n$, i.e. $3f>n$.
+\end{itemize}
+Since $f<1$, the last condition needs $n<3$, so $n=1$ or $n=2$:
+\begin{itemize}
+\item $n=1$: $f>\dfrac13$, so $\dfrac43<x<2$;
+\item $n=2$: $f>\dfrac23$, so $\dfrac83<x<3$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+pair tri(pair c, real a, real b, real cc){ // side cc on the base, side b at the left vertex
+  real x=(b^2-a^2+cc^2)/(2cc); real y=sqrt(b^2-x^2); return c+(x,y);}
+void pic(pair c, real X, string s){
+  int n=floor(X); real f=X-n;
+  real a=X/2, b=f, cc=n, k=2.5;
+  pair P=tri(c,k*a,k*b,k*cc); cc=k*cc;
+  draw(c--c+(cc,0)--P--cycle,linewidth(0.9));
+  label("$["+"x]="+string(n)+"$",c+(cc/2,0),S,fontsize(8pt));
+  label("$\{x\}="+format("%.1f",f)+"$",(c+P)/2,NW,fontsize(8pt));
+  label("$\dfrac x2="+format("%.2f",a)+"$",(c+(cc,0)+P)/2,NE,fontsize(8pt));
+  label(s,c+(cc/2,-0.75),S,fontsize(8pt));
+}
+pic((0,0),1.8,"$x=1.8$");
+pic((6,0),2.9,"$x=2.9$");
+\end{asy}
+
+The answer is $\boxed{\dfrac43<x<2\ \text{ or }\ \dfrac83<x<3}$. (The figure shows one triangle from each case.)

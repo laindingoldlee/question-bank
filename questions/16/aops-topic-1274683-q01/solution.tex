@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1274683_a_geometry_problem
+% Stable identity: aops-topic-1274683-q01
+We show $HE=HD$.
+
+Let $E'$ be the point on the extension of $AB$ beyond $B$ with $HE'=HA$. In the isosceles triangle $AHE'$ the base angle at $A$ is $\angle HAB=30^\circ$, so $\angle AHE'=180^\circ-2\cdot30^\circ=120^\circ$. Since $\angle AHB=90^\circ$, $\angle BHE'=120^\circ-90^\circ=30^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(2,0),A=(1,sqrt(3)),H=(1,0); pair Dp=(1+sqrt(3),0); pair Ex=H+sqrt(3)*dir(-150);
+draw(A--B--C--cycle); draw(A--H,gray); draw(C--Dp); draw(B--Ex,dashed); draw(H--Ex,red); draw(Ex--Dp,blue); draw(arc(H,sqrt(3),-150,90),gray+dotted);
+label("$A$",A,N); label("$B$",B,NW); label("$C$",C,S); label("$H$",H,S); label("$D$",Dp,SE); label("$E$",Ex,SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The points $B$, $H$, $D$ are collinear with $H$ between $B$ and $D$, so $\angle DHE'=180^\circ-30^\circ=150^\circ$. Triangle $HDE'$ is isosceles with $HD=HA=HE'$, so
+\[
+\angle HDE'=\dfrac{180^\circ-150^\circ}{2}=15^\circ .
+\]
+Ray $DH$ is ray $DB$, so $\angle BDE'=15^\circ$. As a point moves outward from $B$ along the extension of $AB$, the angle it makes with ray $DB$ at $D$ increases strictly, so exactly one point on that ray gives $15^\circ$. Hence $E=E'$ and $HE=HA=HD$: triangle $HED$ is isosceles with apex $H$. $\blacksquare$

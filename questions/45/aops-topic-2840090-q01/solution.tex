@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2840090_a_simple_doubt
+% Stable identity: aops-topic-2840090-q01
+$y=\dfrac{x^2-x+18}{10}$ must be an integer, so $x^2-x+18\equiv0\pmod{10}$; checking residues, this means $x\equiv2$ or $4\pmod5$ (and $x^2-x$ is always even).
+\begin{itemize}
+\item $x\ge0$: $y\le x$ means $x^2-x+18\le10x$, i.e. $x^2-11x+18=(x-2)(x-9)\le0$, so $2\le x\le9$. With the congruence: $x=2,4,7,9$.
+\item $x<0$: $y\le-x$ means $x^2-x+18\le-10x$, i.e. $x^2+9x+18=(x+3)(x+6)\le0$, so $-6\le x\le-3$: $x=-6,-3$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;real u=0.35;
+draw((-8*u,0)--(11*u,0),Arrow);draw((0,-0.3)--(0,11*u),Arrow);
+draw((-8*u,8*u)--(0,0)--(10.5*u,10.5*u),blue);
+draw(graph(new real(real x){return u*((x/u)^2-(x/u)+18)/10;},-8*u,10.2*u),red);
+pair[] pts={(2,2),(4,3),(7,6),(9,9),(-6,6),(-3,3)};for(pair p:pts) dot(u*p);
+label("$y=|x|$",(10.5*u,10.5*u),E,blue);label("$y=\dfrac{x^2-x+18}{10}$",(-8*u,9.5*u),N,red);
+\end{asy}
+
+The points are $\boxed{(2,2),(4,3),(7,6),(9,9),(-6,6),(-3,3)}$.

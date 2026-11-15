@@ -1,0 +1,17 @@
+Take $B=(0,0)$ and $C=(8,0)$, with the pentagon oriented counterclockwise. The $60^\circ$ angle and equal adjacent sides give $A=(4,4\sqrt3)$. At $C,D$ the exterior turns are $30^\circ$, so
+\[
+D=C+4\sqrt3(\cos30^\circ,\sin30^\circ)=(14,2\sqrt3),
+\]
+\[
+E=D+6(\cos60^\circ,\sin60^\circ)=(17,5\sqrt3).
+\]
+The shoelace determinant for $A,B,C,D,E$ has forward sum $(16+70+68)\sqrt3=154\sqrt3$ and backward sum $(34+20)\sqrt3=54\sqrt3$. Thus
+\[
+\boxed{[ABCDE]=\dfrac{1}{2}(154-54)\sqrt3=50\sqrt3}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(4,4sqrt(3)),B=(0,0),C=(8,0),D=(14,2sqrt(3)),E=(17,5sqrt(3));draw(A--B--C--D--E--cycle);label("$A$",A,NW);label("$B$",B,SW);label("$C$",C,S);label("$D$",D,SE);label("$E$",E,(1,0));label("$8$",(A+B)/2,NW);label("$8$",(B+C)/2,S);label("$4\sqrt3$",(C+D)/2,SE);label("$6$",(D+E)/2,SE);
+\end{asy}

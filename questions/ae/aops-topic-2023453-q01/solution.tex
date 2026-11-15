@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2023453_angle_chasing
+% Stable identity: aops-topic-2023453-q01
+Since $\angle C=90^\circ$, we have $\angle A+\angle B=90^\circ$. In triangle $AFB$, $\angle FAB=\dfrac{\angle A}{2}$ and $\angle FBA=\dfrac{\angle B}{2}$, because $AF$ and $BF$ are the angle bisectors.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), A=(0,3), B=(4,0);
+real a=abs(B-C), b=abs(A-C), c=abs(A-B);
+pair F=(a*A+b*B+c*C)/(a+b+c);
+pair Dp=(b*B+c*C)/(b+c), Ep=(a*A+c*C)/(a+c);
+draw(A--B--C--cycle, linewidth(0.9));
+draw(A--Dp, blue); draw(B--Ep, blue);
+draw((0.3,0)--(0.3,0.3)--(0,0.3), linewidth(0.5));
+dot(A); dot(B); dot(C); dot(Dp); dot(Ep); dot(F);
+label("$A$", A, N); label("$B$", B, E); label("$C$", C, SW);
+label("$D$", Dp, S); label("$E$", Ep, W); label("$F$", F, 1.5*dir(70));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Therefore
+\[
+\angle AFB=180^\circ-\dfrac{\angle A+\angle B}{2}=180^\circ-45^\circ=\boxed{135^\circ}.
+\]
+($F$ is the incentre, and in general $\angle AFB=90^\circ+\dfrac{\angle C}{2}$.)

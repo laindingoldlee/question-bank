@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2475449_intro_to_counting_prob__234
+% Stable identity: aops-topic-2475449-q01
+\textbf{The count.} There are $26^5=11881376$ strings. A string with no two equal neighbours has $26$ choices for the first letter and $25$ for each later letter (anything except the previous letter): $26\cdot25^4=10156250$ strings. So
+\[26^5-26\cdot25^4=11881376-10156250=\boxed{1725126}\]
+strings have two equal consecutive letters.
+
+\textbf{What the cases miss.} Record for a string which of its $4$ neighbouring pairs (positions $12,23,34,45$) are equal, as a pattern of four bits ($1$ = equal). A pattern with $j$ zeros is shared by $26\cdot25^{j}$ strings: $26$ choices for the first letter, and each later letter is either forced (equal to the previous one) or one of $25$.
+
+The student's cases count exactly the patterns whose $1$s form a single block: $1000,0100,0010,0001$ (case 1, each $26\cdot25^3$), $1100,0110,0011$ (case 2), $1110,0111$ (case 3) and $1111$ (case 4). These counts are right, but some patterns are missing: those with two separate blocks of equal letters,
+\begin{itemize}
+\item $1010$, $1001$, $0101$ (e.g. $AABBC$, $AABCC$, $ABBCC$): $3\cdot26\cdot25^2=48750$ strings;
+\item $1101$, $1011$ (e.g. $AAABB$, $AABBB$): $2\cdot26\cdot25=1300$ strings.
+\end{itemize}
+In total the student misses $48750+1300=50050$ strings, and indeed $1675076+50050=1725126$.

@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1617676_coin_problems
+% Stable identity: aops-topic-1617676-q01
+Choose the numbers of quarters, dimes and nickels so that their total is at most $47$ cents; the pennies then make up the rest in exactly one way. So we count the triples $(q,d,n)$ with $25q+10d+5n\le47$.
+
+\textbf{No quarter.} For $d=0,1,2,3,4$ dimes, the amount left is $47,37,27,17,7$ cents, which allows $n=0,\dots,9$; $0,\dots,7$; $0,\dots,5$; $0,\dots,3$; $0,1$ nickels: $10+8+6+4+2=30$ ways.
+
+\textbf{One quarter.} The remaining $22$ cents: for $d=0,1,2$ the amount left is $22,12,2$, allowing $5,3,1$ choices of $n$: $9$ ways.
+
+Two quarters are too much. The total is $30+9=\boxed{39}$.
+
+(A general method: the answer is the coefficient of $x^{47}$ in
+\[
+\dfrac{1}{(1-x)\left(1-x^5\right)\left(1-x^{10}\right)\left(1-x^{25}\right)},
+\]
+but for small amounts the organised casework above, by the largest coin first, is the quickest.)

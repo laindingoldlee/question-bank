@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2023468_2018_state_sprint_problem_21
+% Stable identity: aops-topic-2023468-q01
+The line $3x-y=24$ meets the axes at $(8,0)$ and $(0,-24)$, so the triangle has legs $8$ and $24$ and area $A=\dfrac{1}{2}\cdot8\cdot24=96$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm,7cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), P=(8,0), Q=(0,-24);
+draw((-1,0)--(10,0), gray); draw((0,2)--(0,-26), gray);
+draw(O--P--Q--cycle, linewidth(0.9));
+for(int i=0;i<=8;++i) dot((i,0), blue+linewidth(2.5));
+for(int j=0;j<=24;++j) dot((0,-j), blue+linewidth(2.5));
+for(int i=1;i<=7;++i) dot((i,3*i-24), blue+linewidth(2.5));
+label("$(8,0)$", P, N); label("$(0,-24)$", Q, W); label("$O$", O, NW);
+label("$3x-y=24$", (P+Q)/2, E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Boundary lattice points (blue): counting each side with its starting point but not its end, the leg from $(0,0)$ to $(8,0)$ contributes $8$, the hypotenuse from $(8,0)$ to $(0,-24)$ contributes $\gcd(8,24)=8$ (the points $(i,3i-24)$), and the leg from $(0,-24)$ to $(0,0)$ contributes $24$. So $B=8+8+24=40$. By Pick's theorem $A=I+\dfrac {B}{2}-1$, so
+\[
+I=96-20+1=\boxed{77}.
+\]
+(Check with the first triangle: vertices $(0,0),(2,0),(0,-6)$ give $A=6$ and $B=2+6+2=10$, so $I=6-5+1=2$, as stated.) The calculation in the post used $B=20$; that misses half of the boundary points, which is why it gave $87$.

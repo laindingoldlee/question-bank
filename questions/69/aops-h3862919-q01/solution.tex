@@ -1,0 +1,11 @@
+For three binary integers, their ordinary sum equals their exclusive-or plus twice their bitwise majority. Thus $M_i=\dfrac{(R_i-U_i)}{2}$ is the majority number. The bits of $U_i,M_i$ recover, for each binary position, the number of ones in the corresponding three-entry window: this count is $U_{i,\text{bit}}+2M_{i,\text{bit}}$. Therefore the five bit positions are independent. If $K$ is the number of distinct five-window-sum sequences from a binary string of length seven, then $N=K^5$.
+
+Two binary strings have the same length-three window sums exactly when their difference repeats with period three and the three repeating differences sum to zero. A nonzero difference therefore has values $1,-1,0$ in some order. It exchanges an all-zero residue class and an all-one residue class of positions modulo three, leaving the third class unchanged. The three classes have sizes $3,2,2$.
+
+Among the $128$ binary strings, those with all three classes constant are eight strings but produce only four outputs, according to whether zero, one, two, or three classes are ones. This removes four repetitions. If exactly two classes are constant and opposite, and the third is nonconstant, swapping the two constant classes produces an output class of size two. There are
+\[
+(2^3-2)+(2^2-2)+(2^2-2)=10
+\]
+such pairs, removing ten more repetitions. All remaining strings have unique outputs. Hence $K=128-4-10=114$.
+
+Finally, $114^2\equiv-4\pmod{1000}$, so $114^5\equiv16\cdot114\equiv\boxed{824}\pmod{1000}$.

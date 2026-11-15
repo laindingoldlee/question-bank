@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2796070_2013_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2796070-q11
+(Sketch not to scale.) Triangles $BCE$ and $BEF$ share the altitude from $B$ to line $CF$, so $\dfrac{CE}{EF}=10$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(6,4),D=(0,4),F=(4,0);
+pair G=extension(C,F,A,D),E=extension(C,F,B,D);
+draw(A--B--C--D--cycle);draw(B--D);draw(C--G);draw(A--G,dashed);
+dot(E);label("$A$",A,W);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$F$",F,S);label("$G$",G,SW);label("$E$",E,NE);
+\end{asy}
+
+Since $FB\parallel DC$, triangles $EFB$ and $ECD$ are similar with ratio $\dfrac{EF}{EC}$, so $\dfrac{FB}{DC}=\dfrac1{10}$. With $AB=DC$, $AF=\dfrac9{10}AB=9\,FB$.
+
+Since $AG\parallel BC$, triangles $FAG$ and $FBC$ are similar with ratio $\dfrac{AF}{FB}=9$, so $[AFG]=81[BFC]$ and $[BFC]=\dfrac{2013}{81}$.
+
+Finally $[BEF]=\dfrac{EF}{FC}[BFC]=\dfrac1{11}\cdot\dfrac{2013}{81}=\dfrac{183}{81}=\boxed{\dfrac{61}{27}}$.

@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2411379_geometry_algebra_and_more_problems
+% Stable identity: aops-topic-2411379-q02
+A sphere of radius $r$ has surface area $4\pi r^2$. The new radius is $\dfrac32r$, so the new surface area is
+\[4\pi\left(\dfrac32r\right)^2=\dfrac94\cdot4\pi r^2.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+void ball(pair c,real r,string s){
+  draw(circle(c,r),linewidth(0.9));
+  draw(shift(c)*xscale(r)*yscale(0.3*r)*arc((0,0),1,180,360));
+  draw(shift(c)*xscale(r)*yscale(0.3*r)*arc((0,0),1,0,180),dashed);
+  dot(c); draw(c--c+r*dir(60),red); label(s,c+0.78*r*dir(60),W,red);
+}
+ball((0,0),1,"$r$"); ball((3.2,0),1.5,"$1.5r$");
+\end{asy}
+
+The surface area is multiplied by $\dfrac94=2.25$, so it increases by $\boxed{125\%}$. (In general, scaling lengths by a factor $k$ multiplies areas by $k^2$.)

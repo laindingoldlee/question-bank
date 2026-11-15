@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1756275_equations
+% Stable identity: aops-topic-1756275-q01
+A line through $(1,1)$ with slope $m$ is $y=1+m(x-1)$; it meets the $y$-axis at $y=1-m$. The condition is $2<1-m<3$, that is, $\boxed{-2<m<-1}$. The boundary slopes are those of the lines through $(1,1)$ and $(0,2)$ (slope $-1$) and through $(1,1)$ and $(0,3)$ (slope $-2$).
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+fill((1,1)--(0,2)--(0,3)--cycle,paleblue);
+xaxis(Label("$x$",position=EndPoint,align=3E),-0.6,2.4,Arrow(6));
+yaxis(Label("$y$",position=EndPoint,align=3N),-0.4,3.8,Arrow(6));
+pair P=(1,1),A=(0,2),B=(0,3);
+draw((1.6,-0.2)--(0,3),dashed);draw((1.8,0.2)--(0,2),dashed);
+draw((1.7,-0.05)--(0,2.5),red+linewidth(0.8));
+dot(P);dot(A);dot(B);
+label("$(1,1)$",P,E);label("$(0,2)$",A,W);label("$(0,3)$",B,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the figure the dashed lines are the two boundary lines (slopes $-1$ and $-2$, not included), and the red line, with slope $-\dfrac{3}{2}$, is one admissible line.

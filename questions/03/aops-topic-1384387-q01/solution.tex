@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1384387_geometry
+% Stable identity: aops-topic-1384387-q01
+The car's speed is
+\[
+96\ \text{km per hour}=\dfrac{96000\text{ m}}{3600\text{ s}}=\dfrac{80}{3}\ \text{metres per second}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real r=1;
+draw(circle((0,0),r),linewidth(1));
+draw((-2.2,-r)--(2.6,-r),linewidth(0.8));
+dot((0,0));
+draw((0,0)--r*dir(-35),red); label("$\dfrac{1}{\pi}$",0.5*r*dir(-35),NE,red+fontsize(9pt));
+draw(arc((0,0),0.6,160,50,CW),Arrow(TeXHead));
+draw((1.5,0)--(2.5,0),blue,Arrow(TeXHead)); label("$96$ km/h",(2,0),N,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+A wheel of radius $\dfrac{1}{\pi}$ m (marked in red) has circumference $2\pi\cdot\dfrac{1}{\pi}=2$ m, and rolling without slipping, one full turn ($360^\circ$) moves the car $2$ m. So the wheel makes $\dfrac{80}{3}\div2=\dfrac{40}{3}$ turns per second, that is,
+\[
+\dfrac{40}{3}\cdot360^\circ=\boxed{4800}\ \text{degrees per second}.
+\]

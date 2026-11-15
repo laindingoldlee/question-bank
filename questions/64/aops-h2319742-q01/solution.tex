@@ -1,0 +1,15 @@
+Each asymptote passes through two lattice points, so it has an equation $L_i(x,y)=a_ix+b_iy+c_i=0$ with integer coefficients. The two linear parts are independent.
+
+After translating to the center, a nondegenerate hyperbola has an equation equal to a nonzero constant times the product of its two asymptotic linear forms. Thus, with the chosen integer-scaled forms, its equation is
+\[
+L_1(x,y)L_2(x,y)=K
+\]
+for a fixed nonzero real constant $K$. At an integer point both factors are integers. If $K$ is not an integer, there are no lattice points. If $K$ is an integer, there are only finitely many ordered integer factor pairs $(u,v)$ with $uv=K$.
+
+For each pair, the equations $L_1(x,y)=u$, $L_2(x,y)=v$ have at most one solution because the asymptotes are not parallel. Hence only finitely many lattice points lie on the hyperbola.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;real f(real x){return 6/x;}draw(graph(f,1,6),blue);draw(graph(f,-6,-1),blue);draw((-6.5,0)--(6.5,0),dashed+gray);draw((0,-6.5)--(0,6.5),dashed+gray);int[] a={1,2,3,6};for(int t:a){dot((t,6.0/t));dot((-t,-6.0/t));}label("$xy=6$",(4,4));
+\end{asy}

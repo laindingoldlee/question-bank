@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h3164342_2019_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3164342-q01
+There are $\boxed7$. For an exhaustive construction, use axial coordinates $(x,y)$ for hexagon centres, with neighbours displaced by $(1,0),(0,1),(-1,1),(-1,0),(0,-1),(1,-1)$. Starting from one cell, add an adjacent cell three times. Every connected four-cell shape has a spanning tree, so a leaf-removal order shows that this process finds it. Canonicalize by translations, six rotations $(x,y)\mapsto(-y,x+y)$, and reflection $(x,y)\mapsto(y,x)$. The following exact finite enumeration leaves precisely the seven shapes illustrated.
+\begin{verbatim}
+def rot(p):x,y=p;return(-y,x+y)
+def refl(p):x,y=p;return(y,x)
+def canon(P):
+ forms=[]
+ for flip in [False,True]:
+  Q=[refl(p) if flip else p for p in P]
+  for _ in range(6):
+   m=min(x for x,y in Q);n=min(y for x,y in Q)
+   forms.append(tuple(sorted((x-m,y-n) for x,y in Q)))
+   Q=[rot(p) for p in Q]
+ return min(forms)
+S={((0,0),)}
+D=[(1,0),(0,1),(-1,1),(-1,0),(0,-1),(1,-1)]
+for n in range(3):
+ S={canon(set(P)|{(x+dx,y+dy)}) for P in S
+    for x,y in P for dx,dy in D if (x+dx,y+dy) not in P}
+assert len(S)==7
+\end{verbatim}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+size(14cm);{pair c=(0.0,0*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(0.5,1*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(1.0,2*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(1.5,3*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}label("1",(1,-1*sqrt(3)/2));{pair c=(5.0,0*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(5.5,1*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(6.0,2*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(6.0,0*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}label("2",(6,-1*sqrt(3)/2));{pair c=(10.0,0*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(10.5,1*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(11.0,2*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(12.0,2*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}label("3",(11,-1*sqrt(3)/2));{pair c=(15.0,0*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(15.5,1*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(16.0,0*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(16.5,1*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}label("4",(16,-1*sqrt(3)/2));{pair c=(0.0,-5*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(0.5,-4*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(1.5,-4*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(2.0,-3*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}label("5",(1,-6*sqrt(3)/2));{pair c=(5.0,-5*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(5.5,-4*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(6.5,-4*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(7.0,-5*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}label("6",(6,-6*sqrt(3)/2));{pair c=(10.5,-4*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(11.5,-4*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(12.0,-3*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}{pair c=(12.0,-5*sqrt(3)/2);path h;for(int k=0;k<6;++k)h=h--(c+dir(30+60*k)/sqrt(3));draw(h--cycle);}label("7",(11,-6*sqrt(3)/2));
+\end{asy}

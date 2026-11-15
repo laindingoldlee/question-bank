@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2548500_a_problem_a_day_keeps_rustiness_away
+% Stable identity: aops-topic-2548500-q01
+Let $c$ be the hypotenuse. By the Pythagorean theorem $c^2=840^2+41^2$, so
+\[(c-840)(c+840)=c^2-840^2=41^2=1681.\]
+Try $c-840=1$ and $c+840=1681$: both give $c=841$. Indeed
+\[841^2-840^2=(841-840)(841+840)=1681=41^2,\]
+so $c=841$ satisfies $c^2=840^2+41^2$. Since the hypotenuse is the unique positive number with this property, $c=\boxed{841}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(840,0),C=(840,41);
+draw(A--B--C--cycle,linewidth(0.8));
+draw((828,0)--(828,12)--(840,12),linewidth(0.5));
+label("$840$",(A+B)/2,S);label("$41$",(B+C)/2,E);label("$c$",(A+C)/2,N);
+\end{asy}
+
+(The sketch is to scale.)

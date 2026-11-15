@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2319369_100th_post_problems
+% Stable identity: aops-topic-2319369-q42
+The volume is $60$ cubic feet, so we need $(5+x)(4+x)(3+x)=120$, i.e.
+\[x^3+12x^2+47x+60=120,\qquad x^3+12x^2+47x-60=0.\]
+$x=1$ is a root ($1+12+47-60=0$), and $x^3+12x^2+47x-60=(x-1)(x^2+13x+60)$, where $x^2+13x+60$ has discriminant $169-240<0$. So the only solution is $x=\boxed{1\text{ foot}}$ (the new box is $6\times5\times4$, volume $120$).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair o=(0,0), u=(6,0), v=(2.4,1.8), w=(0,4);
+draw(o--u--u+w--w--cycle); draw(w--w+v--u+v+w--u+w); draw(u--u+v--u+v+w);
+draw(o--v,dashed); draw(v--v+w,dashed); draw(v--u+v,dashed);
+label("$5+x$",(3,0),S); label("$4+x$",u+v/2,SE); label("$3+x$",(0,2),W);
+\end{asy}

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3351886_geometry
+% Stable identity: aops-topic-3351886-q01
+The leg semicircles reach left to $x=-3$ and down to $y=-4$. The hypotenuse is $10$, so its semicircle has center $(4,3)$ and radius $5$, on the side $3x+4y\ge24$. Its rightmost point is $(9,3)$ and topmost point $(4,8)$; both lie in that half-plane. No disk extends beyond these four extremes. The enclosing rectangle therefore has width $9-(-3)=12$ and height $8-(-4)=12$, hence area $\boxed{144}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair P=(0,6),Q=(0,0),R=(8,0),H=(4,3);draw(P--Q--R--cycle);draw(arc((0,3),3,90,270),blue);draw(arc((4,0),4,180,360),blue);real t=atan2(-3,4)*180/pi;draw(arc(H,5,t,t+180),blue);draw((-3,-4)--(9,-4)--(9,8)--(-3,8)--cycle,dashed);label("$P$",P,W);label("$Q$",Q,NE);label("$R$",R,E);label("$12$",(3,-4),S);label("$12$",(9,2),E);
+\end{asy}

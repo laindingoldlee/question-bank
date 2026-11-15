@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1567202_classic_geometric_probability
+% Stable identity: aops-topic-1567202-q01
+Let $O$ be the centre. An inscribed angle is half the arc it subtends, so the angle at a vertex is obtuse (or right) exactly when the opposite arc is at least a semicircle. Hence the triangle is acute exactly when $O$ lies strictly inside it, that is, when the three points do \emph{not} all lie on some closed semicircle. (Right triangles, where two points are diametrically opposite, have probability $0$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+draw(circle(O,1),linewidth(0.8));dot(O);label("$O$",O,S);
+pair A=dir(100),B=dir(220),C=dir(330);
+draw(A--B--C--cycle,blue+linewidth(0.9));
+dot(A);dot(B);dot(C);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("acute: $O$ inside",(0,-1.35));
+pair O2=(2.8,0);
+draw(circle(O2,1),linewidth(0.8));
+draw(arc(O2,1,30,210),red+linewidth(2));
+draw(O2+dir(30)--O2+dir(210),red+dashed);
+dot(O2);label("$O$",O2,SE);
+pair P=O2+dir(30),Q=O2+dir(110),R=O2+dir(170);
+draw(P--Q--R--cycle,blue+linewidth(0.9));
+dot(P);dot(Q);dot(R);label("$P$",P,E);label("$Q$",Q,N);label("$R$",R,W);
+label("obtuse: all in a semicircle",O2+(0,-1.35));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Probability that all three lie on a semicircle.} For each of the three points $P_i$, let $E_i$ be the event that the other two points lie on the semicircle that starts at $P_i$ and runs counterclockwise. Each other point independently lands there with probability $\dfrac{1}{2}$, so $P(E_i)=\dfrac{1}{4}$.
+
+If the three points lie on some semicircle, then going counterclockwise from the first of them along that semicircle reaches the other two, so some $E_i$ occurs. Two of the events cannot occur together (apart from probability-zero coincidences): if the other two points are within half a turn counterclockwise of $P_1$, then $P_1$ is more than half a turn counterclockwise of each of them. So
+\[
+P(\text{all on a semicircle})=P(E_1)+P(E_2)+P(E_3)=\dfrac{3}{4} .
+\]
+Therefore
+\[
+P(\text{acute})=1-\dfrac{3}{4}=\boxed{\dfrac{1}{4}}.
+\]

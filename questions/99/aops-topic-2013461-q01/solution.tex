@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2013461_integer_triangle
+% Stable identity: aops-topic-2013461-q01
+No. We show that the perimeter of such a triangle is always even. (For example, the triangle with vertices $(0,0)$, $(4,0)$, $(4,3)$ has sides $4,3,5$ and perimeter $12$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=5;++i){draw((i,0)--(i,4),gray(0.85)); }
+for(int j=0;j<=4;++j){draw((0,j)--(5,j),gray(0.85)); }
+pair A=(0,0), B=(4,0), C=(4,3);
+draw(A--B--C--cycle,blue+linewidth(1));
+dot(A); dot(B); dot(C);
+label("$(0,0)$",A,SW); label("$(4,0)$",B,SE); label("$(4,3)$",C,NE);
+label("$4$",(A+B)/2,S,blue); label("$3$",(B+C)/2,E,blue); label("$5$",(A+C)/2,NW,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Write the sides as vectors $(p_1,q_1)$, $(p_2,q_2)$, $(p_3,q_3)$, going around the triangle; all $p_i,q_i$ are integers and, since we return to the start,
+\[
+p_1+p_2+p_3=0,\qquad q_1+q_2+q_3=0 .
+\]
+The length $L_i$ of side $i$ is an integer with $L_i^2=p_i^2+q_i^2$. For any integer $m$, $m^2\equiv m\pmod 2$. Hence
+\[
+L_i\equiv L_i^2=p_i^2+q_i^2\equiv p_i+q_i\pmod2 .
+\]
+Adding over the three sides,
+\[
+L_1+L_2+L_3\equiv (p_1+p_2+p_3)+(q_1+q_2+q_3)=0\pmod 2 .
+\]
+So the perimeter is even, and a perimeter of $43$ is $\boxed{\text{impossible}}$.

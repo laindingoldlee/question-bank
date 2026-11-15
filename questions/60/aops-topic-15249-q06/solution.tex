@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h15249_mathcounts_contest_1_target_questions
+% Stable identity: aops-topic-15249-q06
+In a cyclic quadrilateral opposite angles are supplementary, so $\angle D=180^\circ-\angle B$ and $\cos D=-\cos B$. Apply the law of cosines to the diagonal $AC$ in triangles $ABC$ and $ADC$:
+\[AC^2=17^2+13^2-2\cdot17\cdot13\cos B=7^2+13^2+2\cdot7\cdot13\cos B.\]
+So $458-442\cos B=218+182\cos B$, giving $624\cos B=240$ and $\cos B=\dfrac{5}{13}$. Then
+\[AC^2=458-442\cdot\dfrac{5}{13}=458-170=288,\qquad AC=12\sqrt2,\]
+and $\sin B=\sqrt{1-\dfrac{25}{169}}=\dfrac{12}{13}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real R=13*sqrt(2)/2;
+real t1=2*aSin(17/(2R)), t2=2*aSin(13/(2R)), t3=2*aSin(13/(2R)), t4=2*aSin(7/(2R));
+pair A=R*dir(200), B=R*dir(200-t1), C=R*dir(200-t1-t2), D=R*dir(200-t1-t2-t3);
+draw(circle((0,0),R)); draw(A--B--C--D--cycle,linewidth(0.8)); draw(A--C,dashed+blue);
+dot((0,0)); label("$P$",(0,0),SW);
+label("$A$",A,dir(A)); label("$B$",B,dir(B)); label("$C$",C,dir(C)); label("$D$",D,dir(D));
+label("$17$",(A+B)/2,dir((A+B)/2)*(-1)); label("$13$",(B+C)/2,-dir((B+C)/2)); label("$13$",(C+D)/2,-dir((C+D)/2)); label("$7$",(D+A)/2,-dir((D+A)/2));
+label("$12\sqrt2$",(A+C)/2,NW,blue);
+\end{asy}
+
+The circle is the circumcircle of triangle $ABC$, so by the extended law of sines its radius is
+\[R=\dfrac{AC}{2\sin B}=\dfrac{12\sqrt2}{2\cdot\dfrac{12}{13}}=\dfrac{13\sqrt2}{2}.\]
+The area of the circle is $\pi R^2=\pi\cdot\dfrac{169\cdot2}{4}=\boxed{\dfrac{169\pi}{2}}$.

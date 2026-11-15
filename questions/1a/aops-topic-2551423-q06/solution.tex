@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2551423_ohmc_610
+% Stable identity: aops-topic-2551423-q06
+The angles of a quadrilateral add up to $360^\circ$, so the other three add up to $360^\circ-138^\circ=222^\circ$. With common difference $d$,
+\[70+(70+d)+(70+2d)=222\quad\Longrightarrow\quad3d=12\quad\Longrightarrow\quad d=4.\]
+The angles are $70^\circ$, $74^\circ$, $78^\circ$, and the last one is $\boxed{\textbf{(A) }78}$. Such a quadrilateral exists (all four angles are less than $180^\circ$):
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=A+5*dir(0),C=B+2.5*dir(42);
+pair D=extension(C,C+dir(148),A,A+dir(70));
+draw(A--B--C--D--cycle,linewidth(0.8));
+label("$70^\circ$",A+0.7*dir(35),fontsize(8pt));
+label("$138^\circ$",B+0.75*dir(111),fontsize(8pt));
+label("$74^\circ$",C+0.85*dir(185),fontsize(8pt));
+label("$78^\circ$",D+0.8*dir(289),fontsize(8pt));
+draw(arc(A,0.35,0,70));draw(arc(B,0.35,42,180));draw(arc(C,0.35,148,222));draw(arc(D,0.35,250,328));
+\end{asy}

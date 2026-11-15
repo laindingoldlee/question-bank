@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2315509_3_year_anniversary
+% Stable identity: aops-topic-2315509-q15
+The triangle with $CA=15$, $CB=13$ and the one with $CA=13$, $CB=15$ are mirror images (swap $A$ and $B$), so the ratio is the same; take $CA=15$, $CB=13$.
+
+\textbf{Coordinates.} Put $A=(0,0)$, $B=(14,0)$ and $C=(x,y)$ with $y>0$. From $x^2+y^2=225$ and $(x-14)^2+y^2=169$ we get $28x=252$, so $x=9$ and $y=12$. The area is $\dfrac12\cdot14\cdot12=84$ and the semiperimeter is $21$, so the inradius is $\dfrac{84}{21}=4$. The tangent length from $A$ is $s-BC=21-13=8$, so $E=(8,0)$, $I=(8,4)$ and $H=(8,8)$. Also $F=(7,0)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(14,0), C=(9,12), I=(8,4), Ep=(8,0), H=(8,8), Fm=(7,0), G=(8,6);
+draw(A--B--C--cycle,linewidth(0.9)); draw(circle(I,4),blue);
+draw(C--Fm,red); draw(Ep--H,heavygreen+linewidth(0.9));
+dot(A); dot(B); dot(C); dot(I); dot(Ep); dot(H); dot(Fm); dot(G);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$I$",I,E); label("$E$",Ep,SE); label("$F$",Fm,SW); label("$H$",H,W); label("$G$",G,E);
+label("$15$",(A+C)/2,NW); label("$13$",(B+C)/2,NE);
+\end{asy}
+
+\textbf{The intersection.} $EH$ is the line $x=8$. The line $CF$ passes through $F=(7,0)$ and $C=(9,12)$: $y=6(x-7)$, which gives $y=6$ at $x=8$. So $G=(8,6)$, and
+\[\dfrac{HG}{GE}=\dfrac{8-6}{6-0}=\boxed{\dfrac13}.\]

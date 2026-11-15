@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2321208_minecraft_math
+% Stable identity: aops-topic-2321208-q08
+Three hits kill ($2$ hits leave $2$ hearts, $3$ hits take $12$). Let $W(d,t)$ be the probability that Dream wins when Dream still needs $d$ hits on Techno and Techno still needs $t$ hits on Dream. In a round,
+\begin{itemize}
+\item both hit with probability $\dfrac12\cdot\dfrac34=\dfrac38$; only Dream hits: $\dfrac12\cdot\dfrac14=\dfrac18$; only Techno hits: $\dfrac12\cdot\dfrac34=\dfrac38$; nobody hits: $\dfrac18$.
+\end{itemize}
+Rounds where nobody hits change nothing, so we condition on something happening: both hit with probability $\dfrac37$, only Dream $\dfrac17$, only Techno $\dfrac37$. Hence
+\[W(d,t)=\dfrac37W(d-1,t-1)+\dfrac17W(d-1,t)+\dfrac37W(d,t-1),\]
+with $W(0,t)=1$ for $t\ge1$, $W(d,0)=0$ for all $d$ (Dream is dead, including a tie $W(0,0)=0$). Computing step by step:
+\[W(1,1)=\dfrac17,\quad W(1,2)=\dfrac37+\dfrac17+\dfrac37\cdot\dfrac17=\dfrac{31}{49},\quad W(2,1)=\dfrac{1}{49},\]
+\[W(1,3)=\dfrac37+\dfrac17+\dfrac37\cdot\dfrac{31}{49}=\dfrac{289}{343},\quad W(2,2)=\dfrac37\cdot\dfrac17+\dfrac17\cdot\dfrac{31}{49}+\dfrac37\cdot\dfrac1{49}=\dfrac{55}{343},\quad W(3,1)=\dfrac1{343},\]
+\[W(2,3)=\dfrac37\cdot\dfrac{31}{49}+\dfrac17\cdot\dfrac{289}{343}+\dfrac37\cdot\dfrac{55}{343}=\dfrac{1105}{2401},\quad W(3,2)=\dfrac37\cdot\dfrac1{49}+\dfrac17\cdot\dfrac{55}{343}+\dfrac37\cdot\dfrac{1}{343}=\dfrac{79}{2401},\]
+\[W(3,3)=\dfrac37\cdot\dfrac{55}{343}+\dfrac17\cdot\dfrac{1105}{2401}+\dfrac37\cdot\dfrac{79}{2401}=\dfrac{1155+1105+237}{16807}=\boxed{\dfrac{2497}{16807}}\approx0.149.\]

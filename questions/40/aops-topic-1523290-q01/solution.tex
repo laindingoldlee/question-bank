@@ -1,0 +1,44 @@
+% Source: https://artofproblemsolving.com/community/c3h1523290_shading_squares
+% Stable identity: aops-topic-1523290-q01
+Call a set of three consecutive squares in a row, column or diagonal a \emph{triple}; each triple contains at most $2$ shaded squares. Number the rows and columns $1$ to $5$; the centre square is $(3,3)$.
+
+\textbf{Case 1: the centre is not shaded.} The other $24$ squares split into $8$ triples (four $2\times3$ blocks arranged like a pinwheel around the centre, each made of two triples):
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+for(int k=0;k<=5;++k){draw((0,k)--(5,k),gray(0.6));draw((k,0)--(k,5),gray(0.6));}
+pen p=blue+linewidth(2.2);
+draw((0.2,4.5)--(2.8,4.5),p);draw((0.2,3.5)--(2.8,3.5),p);
+draw((3.5,4.8)--(3.5,2.2),p);draw((4.5,4.8)--(4.5,2.2),p);
+draw((2.2,1.5)--(4.8,1.5),p);draw((2.2,0.5)--(4.8,0.5),p);
+draw((0.5,2.8)--(0.5,0.2),p);draw((1.5,2.8)--(1.5,0.2),p);
+fill((2,2)--(3,2)--(3,3)--(2,3)--cycle,palered);
+for(int k=0;k<=5;++k){draw((0,k)--(5,k),gray(0.6));draw((k,0)--(k,5),gray(0.6));}
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So at most $8\cdot2=16$ squares are shaded.
+
+\textbf{Case 2: the centre is shaded.} The four triples through the centre with the centre in the middle (horizontal, vertical and both diagonal ones) each contain at most one more shaded square, so the $3\times3$ block around the centre has at most $1+4=5$ shaded squares. The remaining $16$ squares form the border: rows $1$ and $5$ have at most $4$ each (five squares in a row with no three consecutive shaded), and the three middle squares of columns $1$ and $5$ have at most $2$ each. So at most $5+12=17$ squares are shaded, and $17$ would need all these bounds to be attained.
+
+Suppose they are. A row of five with four shaded squares must be shaded, unshaded in the middle only: so in rows $1$ and $5$ every square except the middle one is shaded. In particular the four corners are shaded. Now consider the diagonal triples from a corner to the centre, such as $(1,1),(2,2),(3,3)$: the corner and the centre are shaded, so $(2,2)$ is not. In the same way $(2,4)$, $(4,2)$ and $(4,4)$ are unshaded. But then the diagonal triple $(2,2),(3,3),(4,4)$ contributes no square besides the centre, so the $3\times3$ block has at most $4$ shaded squares, not $5$. This contradiction shows that at most $16$ squares are shaded in Case 2 as well.
+
+\textbf{Construction.} Shade every square that is not in the middle row or the middle column, that is, the four $2\times2$ corner blocks:
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<5;++i) for(int j=0;j<5;++j){
+  bool sh=(i!=2)&&(j!=2);
+  if(sh) fill((j,4-i)--(j+1,4-i)--(j+1,5-i)--(j,5-i)--cycle,gray(0.55));
+}
+for(int k=0;k<=5;++k){draw((0,k)--(5,k));draw((k,0)--(k,5));}
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In a horizontal triple the column numbers are three consecutive numbers from $1$ to $5$, and three such numbers always include $3$; in a vertical or diagonal triple the same holds for the row numbers. So every triple contains a square of the middle column or the middle row, which is unshaded, and $16$ squares are shaded with no triple fully shaded.
+
+The maximum is $\boxed{16}$.

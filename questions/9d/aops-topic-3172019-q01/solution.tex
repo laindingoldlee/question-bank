@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3172019_curve_in_plane
+% Stable identity: aops-topic-3172019-q01
+The intercepts are $(\pm1,0)$ and $(0,\pm1)$. Even exponents give symmetry across both axes, and exchanging $x,y$ preserves the equation. In the first quadrant, $y=(1-x^{10})^{\dfrac{1}{10}}$ for $0\le x\le1$. Thus the enclosed area is $\boxed{4\int_0^1(1-x^{10})^{\dfrac{1}{10}}\,dx}$. This curve is a superellipse, lying inside the square $[-1,1]^2$ and touching it at the four intercepts.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+import graph;real f(real x){return (1-x^10)^0.1;}path q=graph(f,0,1);draw(q);draw(reflect((0,0),(0,1))*q);draw(reflect((0,0),(1,0))*q);draw(scale(-1)*q);draw((-1.2,0)--(1.2,0),Arrow);draw((0,-1.2)--(0,1.2),Arrow);label("$x$",(1.2,0),E);label("$y$",(0,1.2),N);
+\end{asy}

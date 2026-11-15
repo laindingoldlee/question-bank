@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2275637_partial_fraction_decomposition
+% Stable identity: aops-topic-2275637-q01
+\textbf{(a)} The equation is an identity exactly when
+\[A(m+n+1)+Bmn=1\]
+holds as a polynomial identity in $m$ and $n$. Comparing coefficients: the $mn$ term gives $B=0$, the $m$ term gives $A=0$, and the constant term gives $A=1$. These contradict each other, so \textbf{no constants work}. The three substitutions in the post produce inconsistent equations for exactly this reason: substituting values can only find $A$ and $B$ if a decomposition of the assumed form exists, and here it does not. (The substitution $m=0$ is also outside the domain of the original fraction, although that alone would not matter for a true polynomial identity.)
+
+The assumed form is wrong because in one variable, partial fractions have constant numerators over \emph{linear} factors. Here $mn$ is not linear and $m+n+1$ involves both variables, so the numerators have to be allowed to depend on the other variable.
+
+\textbf{(b)} As a function of $n$, the denominator has the two linear factors $n$ and $n+(m+1)$, and their difference is the constant $m+1$:
+\[\dfrac{1}{n}-\dfrac{1}{m+n+1}=\dfrac{(m+n+1)-n}{n(m+n+1)}=\dfrac{m+1}{n(m+n+1)}.\]
+Dividing by $m(m+1)$,
+\[\dfrac{1}{mn(m+n+1)}=\dfrac{1}{m(m+1)}\cdot\dfrac{1}{n}-\dfrac{1}{m(m+1)}\cdot\dfrac{1}{m+n+1},\]
+so $C=\boxed{\dfrac{1}{m(m+1)}}$ and $D=\boxed{-\dfrac{1}{m(m+1)}}$.
+
+\textbf{(c)} By (b), the partial sums telescope. For $N>m+1$,
+\[\sum_{n=1}^{N}\left(\dfrac{1}{n}-\dfrac{1}{n+m+1}\right)=\left(1+\dfrac{1}{2}+\cdots+\dfrac{1}{m+1}\right)-\left(\dfrac{1}{N+1}+\dfrac{1}{N+2}+\cdots+\dfrac{1}{N+m+1}\right),\]
+because every $\dfrac{1}{k}$ with $m+2\le k\le N$ appears once with each sign. The second bracket has $m+1$ terms, each at most $\dfrac{1}{N+1}$, so it tends to $0$ as $N\to\infty$. Hence
+\[\sum_{n=1}^{\infty}\dfrac{1}{mn(m+n+1)}=\dfrac{1}{m(m+1)}\,H_{m+1}=\boxed{\dfrac{H_{m+1}}{m(m+1)}}.\]
+For example, for $m=1$ this gives $\displaystyle\sum_{n\ge1}\dfrac{1}{n(n+2)}=\dfrac{1}{2}\cdot\dfrac{3}{2}=\dfrac{3}{4}$.

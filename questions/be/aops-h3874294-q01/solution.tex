@@ -1,0 +1,7 @@
+Center the ground-level span at the origin. The parabola is $y=100-kx^2$. Its ground intersections are $x=\pm20$, so $0=100-400k$ and $k=\dfrac{1}{4}$. At distance ten from the symmetry axis, $y=100-\dfrac{10^2}{4}=\boxed{75}$ feet.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+draw((-22,0)--(22,0));draw((0,0)--(0,105),dashed);path p;for(int i=-20;i<=20;++i){pair X=(i,100-i*i/4);if(i==-20)p=X;else p=p--X;}draw(p);draw((10,0)--(10,75),dotted);label("$(-20,0)$",(-20,0),(0,-1));label("$(20,0)$",(20,0),(0,-1));label("$(0,100)$",(0,100),(0,1));label("$(10,75)$",(10,75),(1,0));
+\end{asy}

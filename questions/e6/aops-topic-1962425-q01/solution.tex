@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1962425_help_to_solve
+% Stable identity: aops-topic-1962425-q01
+Reflection in line $AB$ fixes $A$, so $AQ=AP$ and $\angle QAB=\angle BAP$. Similarly $AR=AP$ and $\angle PAC=\angle CAR$. Since $P$ is inside the triangle, ray $AP$ lies inside angle $BAC$, $Q$ lies on the other side of line $AB$ from $P$, and $R$ on the other side of line $AC$. Going around $A$ from ray $AQ$ to ray $AR$ through the triangle,
+\[
+\angle QAR=\angle QAB+\angle BAP+\angle PAC+\angle CAR=2\angle BAP+2\angle PAC=2\angle BAC .
+\]
+Since $0<\angle BAC<180^\circ$, this angle is strictly between $0^\circ$ and $360^\circ$. The points $Q$, $A$, $R$ are collinear with $Q\ne A\ne R$ (because $AQ=AR=AP>0$) exactly when $\angle QAR=180^\circ$, that is $2\angle BAC=180^\circ$. Hence
+\[
+\angle BAC=\boxed{90^\circ}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(0,3),P=(1.2,1),Q=(1.2,-1),R=(-1.2,1);
+draw(A--B--C--cycle,linewidth(1));
+draw(1.25*R--1.25*Q,dashed);
+draw(P--Q,gray(0.5));draw(P--R,gray(0.5));draw(A--P);
+draw((0,0.22)--(0.22,0.22)--(0.22,0));
+dot(A);dot(B);dot(C);dot(P);dot(Q);dot(R);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$P$",P,NE);label("$Q$",Q,E);label("$R$",R,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Conversely, if $\angle BAC=90^\circ$, the sketch (with $A$ at the origin and the legs along the axes) shows $Q$ and $R$ as $P$ reflected in the two axes, so $R=-Q$ and $Q,A,R$ lie on a line through $A$.

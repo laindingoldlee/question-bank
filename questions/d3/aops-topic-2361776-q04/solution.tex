@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2361776_30_posts_circles
+% Stable identity: aops-topic-2361776-q04
+The angle in each corner of the square is a right angle inscribed in the circle, so each diagonal of the square is a diameter, of length $20$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+pair A=10*dir(45), B=10*dir(135), C=10*dir(225), D=10*dir(315);
+draw(circle(O,10));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,blue);
+dot(O); label("$O$",O,SE);
+label("$20$",(A+C)/2+(1.5,3.4),blue);
+label("$s$",(A+B)/2,N); label("$s$",(B+C)/2,W);
+\end{asy}
+
+If the side is $s$, the Pythagorean theorem in the right isosceles triangle formed by two sides and a diagonal gives $s^2+s^2=20^2$, so $s^2=200$ and
+\[s=\boxed{10\sqrt2}.\]

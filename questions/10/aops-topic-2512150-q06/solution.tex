@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2512150_1000_upvotes_received_celebration
+% Stable identity: aops-topic-2512150-q06
+The areas are $\dfrac{\sqrt3}{4}t^2$ and $s^2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(3,0),C=(1.5,1.5*sqrt(3));
+draw(A--B--C--cycle,linewidth(0.8));
+real s=sqrt(sqrt(3)/4)*3;
+pair O=(4,0);
+draw(O--(O+(s,0))--(O+(s,s))--(O+(0,s))--cycle,linewidth(0.8));
+label("$t$",(A+B)/2,S);label("$t$",(A+C)/2,NW);label("$t$",(B+C)/2,NE);
+label("$s$",O+(s/2,0),S);label("$s$",O+(0,s/2),W);
+label("area $\dfrac{\sqrt3}{4}t^2$",(1.5,-0.9),fontsize(8pt));label("area $s^2$",O+(s/2,-0.9),fontsize(8pt));
+\end{asy}
+
+Setting them equal gives
+\[\left(\dfrac st\right)^2=\dfrac{\sqrt3}{4},\qquad\dfrac st=\dfrac{\sqrt[4]{3}}{2},\qquad\left(\dfrac st\right)^n=\dfrac{\left(\sqrt[4]{3}\right)^n}{2^n}.\]
+This is rational exactly when $\left(\sqrt[4]{3}\right)^n$ is rational. Write $n=4k+r$ with $r\in\{0,1,2,3\}$; then $\left(\sqrt[4]{3}\right)^n=3^k\left(\sqrt[4]{3}\right)^r$. If $r\ne0$ and $\left(\sqrt[4]{3}\right)^r=\dfrac ab$ with positive integers $a,b$, then $3^rb^4=a^4$; the exponent of $3$ is $\equiv r\pmod4$ on the left and $\equiv0\pmod4$ on the right, a contradiction. So the expression is rational exactly when $4\mid n$, and the smallest such $n$ is $4$:
+\[\left(\dfrac st\right)^4=\dfrac{3}{16}.\]
+Thus $n+p+q=4+3+16=\boxed{23}$.

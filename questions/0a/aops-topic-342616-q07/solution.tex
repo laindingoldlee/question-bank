@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h342616_2005_national_target_7
+% Stable identity: aops-topic-342616-q07
+\textbf{British flag theorem.} If $P$ is any point and $ABCD$ is a square (or rectangle), then $PA^2+PC^2=PB^2+PD^2$. Proof: with $A=(0,0)$, $B=(s,0)$, $C=(s,s)$, $D=(0,s)$ and $P=(u,v)$,
+\[
+PA^2+PC^2=u^2+v^2+(s-u)^2+(s-v)^2=PB^2+PD^2 .
+\]
+So the four distances split into two pairs of opposite vertices with equal sums of squares. The distance $27$ is opposite one of $21$, $6$, $x$:
+\begin{itemize}
+\item opposite $21$: $27^2+21^2=1170=6^2+x^2$ gives $x^2=1134$, not a square;
+\item opposite $x$: $27^2+x^2=21^2+6^2=477$ is impossible;
+\item opposite $6$: $27^2+6^2=765=21^2+x^2$ gives $x^2=324$, so $x=18$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real s=23.0991058914485, u=17.7835604729727, v=20.3161260309174;
+pair A=(0,0),B=(s,0),C=(s,s),D=(0,s),P=(u,v);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(P--A,blue); draw(P--B,blue); draw(P--C,blue); draw(P--D,red);
+dot(A);dot(B);dot(C);dot(D);dot(P);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW); label("$P$",P,dir(70));
+label("$27$",(P+A)/2,NW,blue); label("$21$",(P+B)/2,W,blue); label("$6$",(P+C)/2,SE,blue); label("$x$",(P+D)/2,S,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Such a point exists: with $PA=27$, $PB=21$, $PC=6$, $PD=18$, the coordinates give $2su-s^2=288$ and $2sv-s^2=405$ with $u^2+v^2=729$, which has the solution $s\approx23.10$, $P\approx(17.78,\,20.32)$, inside the square. Hence $x=\boxed{18}$.

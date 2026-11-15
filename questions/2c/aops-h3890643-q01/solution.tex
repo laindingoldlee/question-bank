@@ -1,0 +1,9 @@
+The two feet from $P$ to lines through a vertex $V$ lie on the circle with diameter $PV$. The chord joining them therefore has length $PV$ times the sine of the angle between those lines. Consequently
+\[A_1B_1=PB\sin B,\quad B_1C_1=PC\sin C,\quad C_1D_1=PD\sin D,\quad D_1A_1=PA\sin A.\]
+Opposite angles of a cyclic quadrilateral are supplementary, so $\sin D=\sin B$ and $\sin C=\sin A$. Thus the two opposite-side sums are $BD\sin B$ and $AC\sin A$. By the extended sine rule in triangles on the original circumcircle of radius $R$, $BD=2R\sin A$ and $AC=2R\sin B$. Both sums equal $2R\sin A\sin B$, proving the identity.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(-3,0),B=(3,0),C=(2,3),D=(-2,3),P=(0,1.8),F=(0,0),G=(2.16,2.52),H=(0,3),I=(-2.16,2.52);draw(circle((0,2/3),sqrt(85)/3),gray);draw(A--B--C--D--cycle);draw(A--C,dashed);draw(B--D,dashed);draw(F--G--H--I--cycle,blue);for(pair T:new pair[]{F,G,H,I})draw(P--T,blue+dashed);label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$C$",C,(1,1));label("$D$",D,(-1,1));label("$P$",P,(0,-1));label("$A_1$",F,(0,-1));label("$B_1$",G,(1,0));label("$C_1$",H,(0,1));label("$D_1$",I,(-1,0));
+\end{asy}

@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1216440_1st_reun_mock_middle_school_math_contest
+% Stable identity: aops-topic-1216440-q24
+The radii are $r=3$ and $R=4$. The frustum volume formula gives
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+draw(ellipse((0,0),4,0.8)); draw(ellipse((0,6),3,0.6)); draw((-4,0)--(-3,6)); draw((4,0)--(3,6));
+draw((0,0)--(0,6),dashed); draw((0,0)--(4,0),dashed); draw((0,6)--(3,6),dashed);
+label("$6$",(0,3),W); label("$4$",(2,0),S); label("$3$",(1.5,6),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[V=\dfrac{\pi h}{3}\left(R^2+Rr+r^2\right)=\dfrac{6\pi}{3}(16+12+9)=\boxed{74\pi}.\]
+(Check: completing the cone, the full cone has height $24$ and radius $4$, the removed top cone height $18$ and radius $3$, and $\dfrac{\pi}{3}(16\cdot24-9\cdot18)=\dfrac{\pi}{3}\cdot222=74\pi$.)

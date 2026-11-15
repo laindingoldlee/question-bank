@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2536207_functional_equation_problem
+% Stable identity: aops-topic-2536207-q01
+\textbf{Step 1: $g(n)=f(n)+n$.} Consider the integers $1,2,\dots,g(n)$. Among them are exactly $n$ values of $g$, namely $g(1),\dots,g(n)$. The values of $f$ among them are those at most $g(n)-1=f(f(n))$ (as $g(n)$ itself is not a value of $f$), i.e. $f(1),\dots,f(f(n))$: exactly $f(n)$ of them. Every integer is a value of exactly one of $f,g$, so $g(n)=n+f(n)$. Consequently
+\[f(f(n))=g(n)-1=f(n)+n-1.\tag{$*$}\]
+Also $g(n+1)-g(n)=f(n+1)-f(n)+1\ge2$, so no two consecutive integers are both values of $g$.
+
+\textbf{Step 2: a chain of values.} $g(1)=f(f(1))+1\ge2$, so $1=f(1)$ and $g(1)=2$. Then $f(2)=3$, because $2=g(1)$ and $3$ cannot be a value of $g$ (it is next to $2$). Now apply $(*)$ repeatedly, each time to the previous argument:
+\[f(3)=f(f(2))=3+2-1=4,\quad f(4)=f(f(3))=6,\quad f(6)=9,\quad f(9)=14,\quad f(14)=22,\]
+\[f(22)=35,\quad f(35)=56,\quad f(56)=90,\quad f(90)=145,\quad f(145)=234,\quad f(234)=378.\]
+\textbf{Step 3: values of $g$ near $378$.} By Step 1, $g(56)=146$, $g(90)=235$ and $g(145)=379$.
+\begin{itemize}
+\item $f(146)$: after $f(145)=234$ comes $235=g(90)$, then $236$, which is not a value of $g$; so $f(146)=236$ and $g(146)=382$.
+\item $f(91)$: after $f(90)=145$ comes $146=g(56)$, and $147$ (next to $146$) is not a value of $g$; so $f(91)=147$ and $g(91)=238$. Hence $237$ lies strictly between $g(90)$ and $g(91)$ and is a value of $f$: $f(147)=237$, $g(147)=384$.
+\item $238=g(91)$, so $f(148)=239$ and $g(148)=387$. Also $g(149)=f(149)+149\ge240+149=389$.
+\end{itemize}
+\textbf{Step 4.} So among $379,380,\dots,388$ the values of $g$ are exactly $379,382,384,387$, and the other six numbers $380,381,383,385,386,388$ are $f(235),f(236),\dots,f(240)$ in order. Therefore $f(240)=\boxed{388}$.
+
+(In fact $f(n)=\left\lfloor n\varphi\right\rfloor$ and $g(n)=\left\lfloor n\varphi^2\right\rfloor$ with $\varphi=\dfrac{1+\sqrt5}2$; indeed $\left\lfloor240\varphi\right\rfloor=388$.)

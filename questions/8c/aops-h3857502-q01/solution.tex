@@ -1,0 +1,18 @@
+The absolute sine values repeat every $45$ terms, because increasing $k$ by $45$ adds $180^\circ$. There are $45$ complete blocks.
+The sine-product identity
+\[
+\left|\prod_{j=0}^{m-1}\sin\left(\theta+\dfrac{j\pi}{m}\right)\right|
+=2^{1-m}|\sin(m\theta)|
+\]
+follows by factoring $z^m-1$ over its roots of unity and taking absolute values, with $z=e^{2i\theta}$. Taking $m=45$ and $\theta=1^\circ$ gives
+\[
+\prod_{j=0}^{44}|\sin(4j+1)^\circ|
+=2^{-44}\sin45^\circ=2^{-\dfrac{89}{2}}.
+\]
+Thus each block contributes $\log_4(2^{\dfrac{89}{2}})=\dfrac{89}{4}$, and the entire sum is $45\cdot\dfrac{89}{4}=1001.25$. Therefore $N=1001$, whose remainder modulo $1000$ is $\boxed{1}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(circle((0,0),1),gray);for(int j=0;j<45;++j)dot(dir(8*j),blue+1bp);draw((-1.3,0)--(1.4,0),gray);draw((0,-1.3)--(0,1.4),gray);label("$1$",(1,0),(1,0));label("$-1$",(-1,0),(-1,0));label("45 equally spaced phases",(0,-1.6));
+\end{asy}

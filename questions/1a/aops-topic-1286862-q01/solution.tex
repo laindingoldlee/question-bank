@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1286862_please_help_me
+% Stable identity: aops-topic-1286862-q01
+Place $A=(0,0)$, $B=(1,0)$, $C=(1,2)$, $D=(0,2)$. Since $\angle PAB=\angle PBA$, $P$ is on the perpendicular bisector of $AB$, so $P=\left(\dfrac{1}{2},\dfrac{1}{2}\tan15^\circ\right)=\left(\dfrac{1}{2},\dfrac{2-\sqrt3}{2}\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.2cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(1,0),C=(1,2),D=(0,2); pair P=(0.5,0.5*tan(pi/12));
+draw(A--B--C--D--cycle); draw(A--P--B,blue); draw(D--P--C,red);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW); label("$P$",P+(0,0.5)); dot(P);
+draw(arc(A,0.3,0,15),gray); draw(arc(B,0.3,165,180),gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By symmetry $PC=PD$, and the line $x=\dfrac{1}{2}$ bisects $\angle CPD$. The half-angle $\alpha$ satisfies
+\[
+\tan\alpha=\dfrac{\dfrac{1}{2}}{2-\dfrac{2-\sqrt3}{2}}=\dfrac{1}{2+\sqrt3}=2-\sqrt3=\tan15^\circ,
+\]
+so $\alpha=15^\circ$ and $\angle CPD=\boxed{30^\circ}$.

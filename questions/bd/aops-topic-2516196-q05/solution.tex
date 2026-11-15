@@ -1,0 +1,41 @@
+% Source: https://artofproblemsolving.com/community/c3h2516196_select_problems_from_the_imtc
+% Stable identity: aops-topic-2516196-q05
+\textbf{Two isosceles triangles.} Since $AI$ bisects $\angle A$ and $MI\parallel AC$,
+\[\angle MIA=\angle IAC=\angle IAM,\]
+so triangle $AMI$ is isosceles with $MI=AM=4$. In the same way $\angle NIC=\angle ICA=\angle ICN$, so $NI=NC$. Hence $NC=MN-MI=7-4=3$.
+
+\textbf{The angles.} The line $\ell$ is at distance $2$ (the inradius) from $AC$, so $M$ and $N$ are at height $2$ above $AC$:
+\[\sin A=\dfrac{2}{AM}=\dfrac12,\qquad\sin C=\dfrac{2}{NC}=\dfrac23.\]
+$C$ is acute, so $\cos C=\dfrac{\sqrt5}{3}$, and $C=\arcsin\dfrac23>30^\circ$ (as $\dfrac23>\dfrac12$). If $A$ were $150^\circ$, then $A+C>180^\circ$; so $A=30^\circ$ and $\cos A=\dfrac{\sqrt3}{2}$.
+
+\textbf{The base $AC$.} Drop perpendiculars from $M$ and $N$ to $AC$. Their feet are at distances $AM\cos A=2\sqrt3$ from $A$ and $NC\cos C=\sqrt5$ from $C$, and are $MN=7$ apart, since $MN\parallel AC$. As both angles are acute,
+\[AC=2\sqrt3+7+\sqrt5.\]
+
+\textbf{The area.} $AMNC$ is a trapezoid with parallel sides $MN=7$ and $AC$ and height $2$:
+\[[AMNC]=\dfrac{7+AC}{2}\cdot2=14+2\sqrt3+\sqrt5.\]
+So $a=14$, $b=2$, $c=1$ and $a+b+c=\boxed{17}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real r=2;
+pair A=(0,0);
+real Cang=aSin(2/3);
+real b=7+2*sqrt(3)+sqrt(5);
+pair C=(b,0);
+pair B=extension(A,A+dir(30),C,C+dir(180-Cang));
+pair I=(2*sqrt(3)+4,2);
+pair M=extension(A,B,I,I+(1,0)), Nn=extension(C,B,I,I+(1,0));
+fill(A--M--Nn--C--cycle,rgb(0.88,0.92,1));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(circle(I,r),blue);
+draw(M--Nn,red+linewidth(0.9));
+draw(I--(I.x,0),dashed); draw(A--I,dotted); draw(C--I,dotted);
+dot(I); dot(M); dot(Nn);
+label("$A$",A,SW); label("$B$",B,N); label("$C$",C,SE); label("$M$",M,NW); label("$N$",Nn,NE); label("$I$",I,N);
+label("$2$",(I.x,1),E,fontsize(8pt)); label("$4$",(A+M)/2,NW,fontsize(8pt)); label("$3$",(C+Nn)/2,NE,fontsize(8pt));
+label("$\ell$",M+(0.5,0),N,red);
+\end{asy}
+
+(Such a triangle exists: the triangle with $\angle A=30^\circ$, $\angle C=\arcsin\dfrac23\approx41.8^\circ$ and inradius $2$ has $AM=\dfrac{2}{\sin A}=4$ and $NC=\dfrac{2}{\sin C}=3$. Without the condition that $\angle C$ is acute, $\angle C\approx138.2^\circ$ is also possible, giving $AC=7+2\sqrt3-\sqrt5$ and $a+b+c=15$.)

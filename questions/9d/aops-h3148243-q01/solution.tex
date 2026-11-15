@@ -1,0 +1,7 @@
+Let $k$ be the number of crossing pairs. Each pair determines a quadrilateral. Its interior cannot contain another selected edge: an edge entering it would cross one of the two diagonals already used in a crossing. The interiors of these quadrilaterals are therefore disjoint. Add their boundary edges, remove the crossing diagonals, and triangulate all remaining regions. If the resulting dissection has $t$ triangular and $k$ quadrilateral regions, counting polygon angles gives $t+2k=48$, so $k\le24$. This dissection has $47-k$ internal edges; restoring the two diagonals of every quadrilateral gives at most $47+k\le71$ selected diagonals. To attain this, dissect the polygon into the $24$ quadrilaterals $(1,2,3,4),(1,4,5,6),\ldots,(1,48,49,50)$. Select the $23$ separating diagonals and both diagonals of each quadrilateral, for $23+48=\boxed{71}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p;for(int i=0;i<10;++i){p.push(dir(90+36*i));label(string(i+1),1.15*p[i]);}for(int i=0;i<10;++i)draw(p[i]--p[(i+1)%10]);for(int j=3;j<9;j+=2)draw(p[0]--p[j]);for(int j=1;j<9;j+=2){draw(p[0]--p[j+1],blue);draw(p[j]--p[j+2],red);}label("pattern shown for 10 vertices",(0,-1.5));
+\end{asy}

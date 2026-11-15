@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2754539_3_problems
+% Stable identity: aops-topic-2754539-q01
+On the line, $y=-\dfrac x2$. Substituting, the $x$-coordinates of $A$ and $B$ are the roots $x_1,x_2$ of
+\[x^2+\dfrac x2-a=0,\]
+so $x_1+x_2=-\dfrac12$ and $x_1x_2=-a$. Then $(x_1-x_2)^2=\dfrac14+4a$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+real a=11/80;
+real f(real x){return x^2-a;}
+draw(graph(f,-0.85,0.75),linewidth(0.8));
+draw((-0.9,0.45)--(0.8,-0.4));
+draw((-0.95,0)--(0.85,0),Arrow(4));draw((0,-0.25)--(0,0.65),Arrow(4));
+real x1=(-0.5-sqrt(0.25+4a))/2,x2=(-0.5+sqrt(0.25+4a))/2;
+pair A=(x1,-x1/2),B=(x2,-x2/2);dot(A);dot(B);
+label("$A$",A,SW,fontsize(8pt));label("$B$",B,S,fontsize(8pt));label("$y=x^2-a$",(0.75,f(0.75)),E,fontsize(7pt));label("$x+2y=0$",(0.8,-0.4),E,fontsize(7pt));
+\end{asy}
+
+Since both points are on a line of slope $-\dfrac12$,
+\[AB^2=(x_1-x_2)^2\left(1+\dfrac14\right)=\dfrac54\left(\dfrac14+4a\right)=1.\]
+So $\dfrac14+4a=\dfrac45$ and $a=\boxed{\dfrac{11}{80}}$.

@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2181477_triangles
+% Stable identity: aops-topic-2181477-q02
+Compare triangles $ADM$ and $ACD$ (shaded: triangle $ADM$).
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), C=(6,0), D=(2.2,2.3);
+real ad=abs(D-A); pair M=(ad^2/6,0);
+fill(A--M--D--cycle,paleblue);
+draw(A--C--D--cycle,linewidth(1)); draw(D--M,blue);
+draw(arc(D,0.5,degrees(A-D),degrees(M-D)),red); draw(arc(D,0.58,degrees(A-D),degrees(M-D)),red);
+draw(arc(C,0.6,180,degrees(D-C)),red); draw(arc(C,0.68,180,degrees(D-C)),red);
+dot(A); dot(C); dot(D); dot(M);
+label("$A$",A,SW); label("$C$",C,SE); label("$D$",D,N); label("$M$",M,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item They share the angle at $A$: since $M$ lies on $\overline{AC}$, $\angle DAM=\angle CAD$.
+\item $\angle ADM=\angle ACD$ by hypothesis (marked).
+\end{itemize}
+So by AA similarity, triangle $ADM$ is similar to triangle $ACD$, with $A\leftrightarrow A$, $D\leftrightarrow C$, $M\leftrightarrow D$. Corresponding sides are proportional:
+\[\dfrac{AD}{AC}=\dfrac{AM}{AD},\qquad\text{hence}\qquad AD^2=AM\cdot AC .\qquad\blacksquare\]

@@ -1,0 +1,9 @@
+Use $A=(0,0),B=(10,0),C=(10,10),D=(0,10)$. The first two drawn lines are $y=\dfrac{x}{2}$ and $y=-2x+20$, intersecting at $(8,4)$. Rotating by $90^\circ$ around the centre gives the other three central vertices $(6,8),(2,6),(4,2)$. A side vector is $(-2,4)$, whose squared length is $20$. Hence the central square has area $\boxed{20}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(10,0),(10,10),(0,10)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--p[3]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));dot(p[3]);label("$D$",p[3],unit(p[3]-labelCentre));for(int i=0;i<4;++i)draw(p[i]--(p[(i+1)%4]+p[(i+2)%4])/2);filldraw((8,4)--(6,8)--(2,6)--(4,2)--cycle,lightgray);
+\end{asy}
+

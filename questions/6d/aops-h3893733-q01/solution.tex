@@ -1,0 +1,5 @@
+For a permutation of $n$ middle heights, append a smaller height on its left and a larger height on its right. A valley ends each maximal run of descents. Let $A_n$ count permutations with exactly one such run, with $A_1=0$.
+
+If the largest middle height is last, deletion leaves $A_{n-1}$ choices. Otherwise choose the $k\ge1$ entries to its right in $\binom{n-1}{k}$ ways. The left segment must increase; the right segment must decrease to its smallest entry and then increase. Each of the other $k-1$ right-hand entries may be put before that minimum (in decreasing order) or after it (in increasing order), giving $2^{k-1}$ choices. Therefore
+\[A_n=A_{n-1}+\sum_{k=1}^{n-1}\binom{n-1}{k}2^{k-1}=A_{n-1}+\dfrac{3^{n-1}-1}{2}.\]
+Summing gives $A_n=\dfrac{3^n-2n-1}{4}$. Thus $N=A_8=1636$ and $a+b=16+36=\boxed{52}$.

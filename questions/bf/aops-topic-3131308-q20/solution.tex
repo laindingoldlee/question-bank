@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3131308_2022_moaa_gunga_bowl__math_open_at_andover__last_3_sets__9_problems
+% Stable identity: aops-topic-3131308-q20
+Choose coordinates $D=(0,0),A=(0,a),H=(0,h),B=(b,0),C=(c,0)$, with $a\ne0$. The altitude from $B$ is perpendicular to $AC$, so $bc=-ah$. Write $O=(u,v)$. Equal distances to $B,C,A$ give $u=\dfrac{b+c}{2}$ and $v=\dfrac{a^2+bc}{2a}=\dfrac{a-h}{2}$. The right-angle condition gives $0=(A-O)\cdot(H-O)=u^2+\dfrac{(a+h)(3h-a)}{4}$. Therefore $BC^2=(b-c)^2=4u^2-4bc=(a-h)^2+4h(a-h)$. Since $(a-h)^2=64$ and $h^2=9$, the possible values are $64\pm96$. A squared positive length cannot be $-32$, leaving $\boxed{160}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real u=sqrt(7),v=sqrt(40);pair A=(0,11),H=(0,3),D=(0,0),B=(u-v,0),C=(u+v,0),O=(u,4);draw(A--B--C--cycle);draw(A--D);draw(A--O--H,dashed);dot(H);dot(O);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$H$",H,W);label("$O$",O,E);
+\end{asy}

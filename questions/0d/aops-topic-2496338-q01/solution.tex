@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2496338_mass_points_question
+% Stable identity: aops-topic-2496338-q01
+\textbf{(a)} The centre of mass of masses $m_1,\dots,m_k$ at points $P_1,\dots,P_k$ is the weighted average
+\[\dfrac{m_1P_1+\cdots+m_kP_k}{m_1+\cdots+m_k}.\]
+With four equal masses $m$ this is $\dfrac{m(A+B+C+D)}{4m}=\dfrac{A+B+C+D}{4}$. The sum $A+B+C+D$ alone is not a sensible answer: it depends on where the origin is (moving the origin moves the sum by four times as much as the quadrilateral moves), while the average does not.
+
+\textbf{(b)} $G_v=\dfrac{(0,0)+(6,0)+(4,3)+(0,3)}{4}=\left(\dfrac52,\dfrac32\right)$.
+
+For the plate, cut the trapezoid by the dashed segment from $(4,0)$ to $C$ into the rectangle $[0,4]\times[0,3]$ (area $12$, centroid $\left(2,\dfrac32\right)$) and the right triangle with vertices $(4,0)$, $(6,0)$, $(4,3)$ (area $3$, centroid at the average of its vertices, $\left(\dfrac{14}{3},1\right)$). The centroid of the plate is the area-weighted average:
+\[G=\dfrac{12\left(2,\dfrac32\right)+3\left(\dfrac{14}{3},1\right)}{15}=\left(\dfrac{38}{15},\dfrac{7}{5}\right).\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(6,0), C=(4,3), D=(0,3);
+fill(A--B--C--D--cycle,rgb(0.9,0.93,1));
+draw(A--B--C--D--cycle,linewidth(0.8)); draw((4,0)--C,dashed);
+pair Gv=(2.5,1.5), G=(38/15,7/5);
+dot(Gv,red); dot(G,blue);
+label("$G_v$",Gv,NW,red); label("$G$",G,SE,blue);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$(4,0)$",(4,0),S,fontsize(7pt));
+\end{asy}
+
+Since $\left(\dfrac{38}{15},\dfrac75\right)\ne\left(\dfrac52,\dfrac32\right)$, the two points are \textbf{different}. (For a parallelogram they do coincide, at the intersection of the diagonals; in general a plate's mass is spread over its area, not concentrated at its corners.)

@@ -1,0 +1,21 @@
+Use complex coordinates with the circumcircle of $ABC$ the unit circle and $O=0$. Write $a,b,c,p,q$ for the point coordinates and $k$ for the center of the circle through $0,A,P,Q$. Its equation is
+\[
+z\bar z=\bar k z+k\bar z.
+\]
+At $z=a$, this gives $a\bar k+\dfrac{k}{a}=1$. The line $AB$ has equation $z+ab\bar z=a+b$. Substituting this into the circle equation produces a quadratic in $z$ with roots $a,p$ and product $k(a+b)$. Hence $p=\dfrac{k(a+b)}{a}$; similarly $q=\dfrac{k(a+c)}{a}$.
+
+For a triangle with vertices $u,v,w$ and circumcenter $k$, its orthocenter is $u+v+w-2k$. Indeed, the vector from this point to $u$ is $(v-k)+(w-k)$, which is perpendicular to $v-w$ because $|v-k|=|w-k|$. Therefore the orthocenter here has coordinate
+\[
+h=p+q-2k=\dfrac{k(b+c)}{a}.
+\]
+Using $|a|=|b|=|c|=1$,
+\[
+h+bc\bar h=(b+c)(\dfrac{k}{a}+a\bar k)=b+c.
+\]
+This is precisely the equation of line $BC$, proving the result.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,1),B=dir(210),C=dir(330),O=(0,0),K=(.15,.5),P=K+rotate(120)*K,Q=K+rotate(240)*K,H=-K;draw(unitcircle,gray);draw(A--B--C--cycle);draw(circle(K,length(K)),blue);draw(P--O--Q--cycle,blue);draw(P--H,dashed+red);draw(Q--H,dashed+red);dot(H,red);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$O$",O,W);label("$P$",P,W);label("$Q$",Q,E);label("$H$",H,S);
+\end{asy}

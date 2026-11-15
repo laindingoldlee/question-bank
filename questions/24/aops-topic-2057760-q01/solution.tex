@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2057760_very_confused
+% Stable identity: aops-topic-2057760-q01
+The angles $\angle ACB$ and $\angle ADB$ are both inscribed angles standing on the same arc $AB$ (the arc not containing $C$ and $D$), so
+\[\angle ACB=\angle ADB=40^\circ .\]
+This does not conflict with the fact about opposite angles. The angles of the quadrilateral itself are $\angle DAB,\angle ABC,\angle BCD,\angle CDA$, and it is the opposite pairs of these, such as $\angle ABC+\angle CDA=180^\circ$, that are supplementary. The angles $\angle ACB$ and $\angle ADB$ are not angles of the quadrilateral; each is formed by a side and a diagonal, and they subtend the same arc, so they are equal.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real R=2.4;
+pair O=(0,0);
+pair A=R*dir(200), B=R*dir(280), C=R*dir(60), D=R*dir(122.4);
+draw(circle(O,R),gray(0.5));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,blue+linewidth(0.8));
+draw(B--D,red+linewidth(0.8));
+dot(A);dot(B);dot(C);dot(D);
+label("$A$",A,W);label("$B$",B,S);label("$C$",C,NE);label("$D$",D,NW);
+label("$70^\circ$",A+0.75*unit(unit(B-A)+unit(C-A)),blue);
+label("$40^\circ$",D+0.75*unit(unit(A-D)+unit(B-D)),red);
+label("$40^\circ$",C+0.75*unit(unit(A-C)+unit(B-C)),blue);
+label("$4$",(A+D)/2,W);
+label("$6$",(B+C)/2,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In triangle $ABC$,
+\[\angle ABC=180^\circ-\angle BAC-\angle ACB=180^\circ-70^\circ-40^\circ=70^\circ=\angle BAC .\]
+So triangle $ABC$ is isosceles, and the sides opposite the equal angles are equal: the side opposite $\angle ABC$ is $AC$ and the side opposite $\angle BAC$ is $BC$. Hence
+\[AC=BC=\boxed{6}.\]
+(The length $AD=4$ is not needed; it is consistent with the other data.)

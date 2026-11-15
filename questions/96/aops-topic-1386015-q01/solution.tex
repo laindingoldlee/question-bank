@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1386015_a_nice_one
+% Stable identity: aops-topic-1386015-q01
+Since the circles touch externally, $O_1O_2=25+16=41$. The radii $O_1A$ and $O_2B$ are perpendicular to the tangent line, so $O_1ABO_2$ is a right trapezoid. Let $H$ be the point of $O_1A$ with $O_1H=25-16=9$ (so $HA=16$); then $HABO_2$ is a rectangle, so $HO_2=AB$ and $HO_2\perp O_1A$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair O1=(0,25),O2=(40,16),A=(0,0),B=(40,0),H=(0,16);
+pair T=O1+25*unit(O2-O1);
+draw(circle(O1,25)); draw(circle(O2,16));
+draw((-8,0)--(52,0),linewidth(0.9));
+draw(O1--A); draw(O2--B); draw(O1--O2,linewidth(0.6));
+draw(H--O2,red+dashed);
+draw(ra(A,B-A,O1-A,2.2)); draw(ra(B,A-B,O2-B,2.2)); draw(ra(H,O2-H,O1-H,2.2),red);
+dot(O1);dot(O2);dot(A);dot(B);dot(T);dot(H,red);
+label("$O_1$",O1,NW); label("$O_2$",O2,NE); label("$A$",A,S); label("$B$",B,S); label("$E$",T,NE);
+label("$H$",H,W,red);
+label("$16$",(0,8),W); label("$16$",(40,8),E); label("$9$",(0,20.5),W,red);
+label("$41$",O1+0.3*(O2-O1),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In right triangle $O_1HO_2$,
+\[
+AB=HO_2=\sqrt{41^2-9^2}=\sqrt{1600}=\boxed{40}\text{ cm}.
+\]
+(In general $AB=2\sqrt{r_1r_2}=2\sqrt{25\cdot16}$.)

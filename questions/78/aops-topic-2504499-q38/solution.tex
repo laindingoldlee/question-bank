@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2504499_2021_mathcounts_states_problems_solutions_and_answer_key
+% Stable identity: aops-topic-2504499-q38
+For a vertex $v$ and a target vertex $w$, exactly one rotation and one reflection send $v$ to $w$ if $w\ne v$, and only one reflection (the axis through $v$) fixes $v$.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair[] V;for(int k=0;k<6;++k) V.push(dir(60k));draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle);for(int k=0;k<3;++k){draw(1.2*dir(60k)--1.2*dir(60k+180),dashed);draw(1.2*dir(60k+30)--1.2*dir(60k+210),dashed);}dot(V[0]);label("$P$",V[0],E);
+\end{asy}
+
+Let $p_1,\dots,p_6$ be the positions of $P$ after each step; they must be the six vertices in some order. Any of the $11$ transformations may come first ($p_1$ may even be $P$ itself). After $j$ vertices have been visited, the next step must go from $p_j$ to one of the $6-j$ unvisited vertices, and each such move can be made by exactly $2$ transformations. So
+\[k=11\cdot(2\cdot5)\cdot(2\cdot4)\cdot(2\cdot3)\cdot(2\cdot2)\cdot(2\cdot1)=\boxed{42240}.\]

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1738877_periodic_sequences__scientific_calculators
+% Stable identity: aops-topic-1738877-q01
+We only need addition, subtraction, multiplication and division with constants. For $n=1$ take $f(x)=a_1$ (a constant is allowed). For $n\ge2$ use Lagrange interpolation: for each $i$ let
+\[
+L_i(x)=\prod_{j\ne i}\dfrac{x-a_j}{a_i-a_j}.
+\]
+The denominators are nonzero because the $a_j$ are distinct. If $x=a_k$ with $k\ne i$, the factor with $j=k$ is $0$, so $L_i(a_k)=0$; and $L_i(a_i)=\prod_{j\ne i}1=1$. Now define
+\[
+f(x)=\sum_{i=1}^{n}a_{i+1}L_i(x).
+\]
+For each $k$, all terms vanish at $x=a_k$ except the $k$-th, so $f(a_k)=a_{k+1}\cdot1=a_{k+1}$. This $f$ is a polynomial written with $+,-,\times,\div$ and the constants $a_i$, so it is calculator-made. Hence $\boxed{\text{such an }f\text{ always exists}}$.
+
+For example, for $n=2$ the function $f(x)=a_1+a_2-x$ swaps $a_1$ and $a_2$. $\blacksquare$

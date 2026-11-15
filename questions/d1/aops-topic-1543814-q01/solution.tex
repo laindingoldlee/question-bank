@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1543814_nice_inequality
+% Stable identity: aops-topic-1543814-q01
+Multiplying by $abc>0$ and using $\dfrac {a}{b}\cdot abc=a^2c$, $\dfrac {b}{c}\cdot abc=ab^2$, $\dfrac {c}{a}\cdot abc=bc^2$, the inequality becomes
+\[
+9\ge2\left(a^2c+ab^2+bc^2\right)+3abc,\quad\text{i.e.}\quad a^2c+ab^2+bc^2+abc+\dfrac{abc}{2}\le\dfrac{9}{2} .
+\]
+
+\textbf{Lemma.} For nonnegative $x,y,z$: $x^2y+y^2z+z^2x+xyz\le\dfrac{4}{27}(x+y+z)^3$.
+
+\emph{Proof.} The left side is unchanged by the cyclic shift $(x,y,z)\to(y,z,x)$, and among the three shifts the middle letter $y$ takes each of the three values; so we may assume $y$ lies between $x$ and $z$. Then $z(y-x)(y-z)\le0$, i.e.\ $y^2z+z^2x\le xyz+yz^2$. Hence
+\[
+x^2y+y^2z+z^2x+xyz\le x^2y+yz^2+2xyz=y(x+z)^2=4\cdot y\cdot\dfrac{x+z}{2}\cdot\dfrac{x+z}{2}\le4\left(\dfrac{x+y+z}{3}\right)^3
+\]
+by AM-GM on $y,\dfrac{x+z}{2},\dfrac{x+z}{2}$. $\square$
+
+With $(x,y,z)=(a,c,b)$ the lemma gives $a^2c+c^2b+b^2a+abc\le\dfrac{4}{27}\cdot27=4$. Also by AM-GM, $abc\le\left(\dfrac{a+b+c}{3}\right)^3=1$, so $\dfrac{abc}{2}\le\dfrac{1}{2}$. Adding,
+\[
+a^2c+ab^2+bc^2+abc+\dfrac{abc}{2}\le4+\dfrac{1}{2}=\dfrac{9}{2},
+\]
+which is the required inequality. Equality holds for $a=b=c=1$, where both sides equal $9$. $\blacksquare$

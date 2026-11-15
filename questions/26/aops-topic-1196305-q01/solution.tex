@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1196305_geo_prob
+% Stable identity: aops-topic-1196305-q01
+Draw the diagonal $BD$. Since the quadrilateral is simple, $A$ and $C$ lie on opposite sides of $BD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(5,0),D=(1.5,3),C=B+D; draw(A--B--C--D--cycle,linewidth(0.9)); draw(B--D,dashed);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW); label("$|$",(A+B)/2); label("$|$",(C+D)/2); label("$||$",(A+D)/2); label("$||$",(B+C)/2);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangles $ABD$ and $CDB$ have $AB=CD$, $AD=CB$ and the common side $BD$, so they are congruent (SSS). Then $\angle ABD=\angle CDB$; these are alternate angles for $AB$ and $CD$ with transversal $BD$ (as $A$ and $C$ are on opposite sides of it), so $AB\parallel CD$. Likewise $\angle ADB=\angle CBD$ gives $AD\parallel BC$. Hence $ABCD$ is a parallelogram. $\blacksquare$
+
+So Ronald can measure the four sides with his ruler: if both pairs of opposite sides have equal lengths, the picture is a parallelogram. (Measuring only one pair is not enough, as an isosceles trapezoid shows.)

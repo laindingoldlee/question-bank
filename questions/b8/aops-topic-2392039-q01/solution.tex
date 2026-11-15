@@ -1,0 +1,46 @@
+% Source: https://artofproblemsolving.com/community/c3h2392039_graph_of_root
+% Stable identity: aops-topic-2392039-q01
+\textbf{(a)} The square root $\sqrt y$ is defined for $y\ge0$ and is the nonnegative number whose square is $y$. Hence
+\[x=\sqrt y\iff x\ge0\ \text{and}\ x^2=y .\]
+(If $x\ge0$ and $y=x^2$, then $y\ge0$ and $\sqrt y=x$.) So the graph is the right half of the parabola $y=x^2$, including its vertex $(0,0)$: the points $(x,x^2)$ with $x\ge0$, such as $(0,0)$, $(1,1)$, $(2,4)$. In other words, $x=\sqrt y$ describes the same points as $y=x^2$ with the restriction $x\ge0$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return x^2;}
+draw((-2.6,0)--(3.0,0),Arrow(6)); draw((0,-0.5)--(0,5.2),Arrow(6));
+label("$x$",(3.0,0),E); label("$y$",(0,5.2),N);
+draw(graph(f,-2.15,0),gray+dashed);
+draw(graph(f,0,2.15),blue+linewidth(1.1));
+dot((0,0),blue);
+label("$x=\sqrt{y}$",(2.15,f(2.15)),E,blue+fontsize(9pt));
+label("$y=x^2,\ x<0$",(-2.0,f(-2.0)),W,gray+fontsize(8pt));
+dot((1,1)); label("$(1,1)$",(1,1),E,fontsize(8pt));
+dot((2,4)); label("$(2,4)$",(2,4),E,fontsize(8pt));
+\end{asy}
+
+\textbf{(b)} \emph{Even $n$.} As in (a), $x=\sqrt[n]{y}\iff x\ge0$ and $y=x^n$, so the graph is the right half ($x\ge0$) of the curve $y=x^n$.
+
+\emph{Odd $n$.} The function $x\mapsto x^n$ is increasing on all real numbers and takes every real value, and $\sqrt[n]{y}$ is the unique real number whose $n$-th power is $y$. So $x=\sqrt[n]{y}\iff y=x^n$, with no restriction on $x$: the graph is the whole curve $y=x^n$.
+
+So in every case the graph of $x=\sqrt[n]{y}$ is $\boxed{\text{the curve } y=x^n, \text{ restricted to } x\ge0 \text{ when } n \text{ is even}}$. The figure shows $n=3$ (whole curve) and $n=4$ (right half).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return x^3;}
+real g(real x){return x^4;}
+draw((-2.2,0)--(2.3,0),Arrow(6)); draw((0,-3.6)--(0,4.0),Arrow(6));
+label("$x$",(2.3,0),E); label("$y$",(0,4.0),N);
+draw(graph(f,-1.5,1.5),red+linewidth(1.1));
+draw(graph(g,0,1.38),blue+linewidth(1.1));
+draw(graph(g,-1.38,0),gray+dashed);
+label("$x=\sqrt[3]{y}$",(1.5,f(1.5)),E,red+fontsize(9pt));
+label("$x=\sqrt[4]{y}$",(1.38,g(1.38)),NE,blue+fontsize(9pt));
+dot((1,1)); dot((-1,-1),red);
+label("$(-1,-1)$",(-1,-1),W,red+fontsize(8pt)); label("$(1,1)$",(1,1),E,fontsize(8pt));
+\end{asy}

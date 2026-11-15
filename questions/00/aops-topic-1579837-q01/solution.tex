@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1579837_right_triangle_properties
+% Stable identity: aops-topic-1579837-q01
+Since $M$ is the midpoint of $AB$ and $CM=\dfrac{1}{2}AB$, we have $MA=MB=MC$. So triangles $MAC$ and $MBC$ are isosceles:
+\[
+\angle MAC=\angle MCA=x,\qquad \angle MBC=\angle MCB=y .
+\]
+The angles of triangle $ABC$ are then $x$ at $A$, $y$ at $B$ and $x+y$ at $C$, and they add up to $180^\circ$:
+\[
+x+y+(x+y)=180^\circ\qquad\Longrightarrow\qquad \angle ACB=x+y=90^\circ .\qquad\blacksquare
+\]
+Equivalently, $A$, $B$, $C$ lie on the circle with centre $M$ and diameter $AB$, and an angle inscribed in a semicircle is a right angle (Thales' theorem). The converse also holds: in a right triangle the median to the hypotenuse is half the hypotenuse.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(-3,0),B=(3,0),M=(0,0);pair C=3*dir(62);
+draw(circle(M,3),gray+dashed);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--M,blue+linewidth(0.9));
+real s=0.3; draw(C+s*unit(A-C)--C+s*unit(A-C)+s*unit(B-C)--C+s*unit(B-C));
+dot(M);
+label("$A$",A,W);label("$B$",B,E);label("$C$",C,N);label("$M$",M,S);
+path t1=((-0.12,-0.12)--(0.12,0.12)); draw(shift((A+M)/2)*t1);draw(shift((B+M)/2)*t1);draw(shift((C+M)/2)*t1);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The three equal segments $MA$, $MB$, $MC$ are marked; the dashed circle has centre $M$.)

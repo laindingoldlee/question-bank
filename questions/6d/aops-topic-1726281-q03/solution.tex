@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1726281_a_few_geo_questions
+% Stable identity: aops-topic-1726281-q03
+Let the side be $s$ and the radius $r$. The centre $O$ lies on the perpendicular to $EN$ at $M$ (the radius to a point of tangency is perpendicular to the tangent), so $O$ is on the horizontal line through $M$ at distance $r$ from $EN$. This line also passes through the midpoint $H$ of $ZG$, and $OH=s-r$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair Z=(0,0),Ep=(16,0),Nn=(16,16),G=(0,16),M=(16,8),O=(6,8),H=(0,8);
+draw(Z--Ep--Nn--G--cycle,linewidth(0.9));
+draw(circle(O,10),blue+linewidth(0.8));
+dot(O);dot(M);
+draw(O--M,dashed);draw(O--Z,red+dashed);draw(O--H,dashed);
+draw((0,8)--(0.9,8)--(0.9,8.9)--(0,8.9),linewidth(0.5));
+draw((16,8)--(15.1,8)--(15.1,8.9)--(16,8.9),linewidth(0.5));
+label("$Z$",Z,SW);label("$E$",Ep,SE);label("$N$",Nn,NE);label("$G$",G,NW);
+label("$M$",M,E);label("$O$",O,N);label("$H$",H,W);
+label("$r$",(O+M)/2,N);label("$r$",(O+Z)/2,SE,red);
+label("$s-r$",(O+H)/2,S);label("$\dfrac {s}{2}$",(Z+H)/2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In right triangle $OHZ$, $OZ=r$, $OH=s-r$ and $HZ=\dfrac {s}{2}$, so
+\[
+r^2=(s-r)^2+\dfrac{s^2}{4}\quad\Longrightarrow\quad 0=s^2-2sr+\dfrac{s^2}{4}\quad\Longrightarrow\quad r=\dfrac{5s}{8}.
+\]
+With $r=10$ we get $s=16$, and the area is $16^2=\boxed{256}$.

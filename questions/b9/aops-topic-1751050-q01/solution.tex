@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1751050_coordinate_geometry
+% Stable identity: aops-topic-1751050-q01
+The diagonals of a square bisect each other, are equal, and are perpendicular. The centre is the midpoint of the given diagonal,
+\[
+M=\left(\dfrac{5+1}{2},\dfrac{4+(-6)}{2}\right)=(3,-1),
+\]
+and the vector from $M$ to $(5,4)$ is $(2,5)$. The other half-diagonals are this vector turned through $\pm90^\circ$, namely $(5,-2)$ and $(-5,2)$. Hence the other two vertices are
+\[
+M\pm(5,-2)=\boxed{(8,-3)\ \text{and}\ (-2,1)}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(5,4),C=(1,-6),B=(8,-3),D=(-2,1),M=(3,-1);
+draw((-4,0)--(10,0),gray,Arrow(5));draw((0,-8)--(0,6),gray,Arrow(5));
+label("$x$",(10,0),NE,gray);label("$y$",(0,6),NE,gray);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,dashed);draw(B--D,dashed);
+dot(A);dot(B);dot(C);dot(D);dot(M);
+label("$(5,4)$",A,NE);label("$(8,-3)$",B,E);label("$(1,-6)$",C,SE);label("$(-2,1)$",D,W);
+label("$M$",M,3*dir(298));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check: the four sides all have length $\sqrt{3^2+7^2}=\sqrt{58}$, e.g.\ from $(5,4)$ to $(8,-3)$ the vector is $(3,-7)$ and from $(8,-3)$ to $(1,-6)$ it is $(-7,-3)$, which is perpendicular to it.

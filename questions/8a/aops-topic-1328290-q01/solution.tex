@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1328290_an_interesting_problem
+% Stable identity: aops-topic-1328290-q01
+Heron's formula can be written without square roots of sums as $16K^2=2(a^2b^2+b^2c^2+c^2a^2)-(a^4+b^4+c^4)$. With $a^2=12$, $b^2=21$, $c^2=25$:
+\[
+16K^2=2(252+525+300)-(144+441+625)=2154-1210=944,
+\]
+so $K^2=59$ and $K=\boxed{\sqrt{59}}$.
+
+Check with the altitude $h$ to the side $5$: if its foot is $x$ from the end of side $\sqrt{12}$, then $12-x^2=21-(5-x)^2$, giving $x=\dfrac{8}{5}$ and $h^2=12-\dfrac{64}{25}=\dfrac{236}{25}$, so $K=\dfrac{1}{2}\cdot5\cdot\dfrac{2\sqrt{59}}{5}=\sqrt{59}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(0,0),B=(5,0); real x=(25+12-21)/10; pair C=(x,sqrt(12-x*x));
+draw(A--B--C--cycle,linewidth(0.9)); draw(C--(x,0),red+dashed); draw(ra((x,0),C-(x,0),B-(x,0),0.18));
+label("$5$",(A+B)/2,S); label("$\sqrt{12}$",(A+C)/2,NW); label("$\sqrt{21}$",(B+C)/2,NE); label("$h$",(x,C.y/2),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

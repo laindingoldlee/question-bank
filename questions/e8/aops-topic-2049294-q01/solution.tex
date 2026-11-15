@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2049294_mock_amc_10_problem
+% Stable identity: aops-topic-2049294-q01
+A line of slope \(m\) through \((7,5)\) is \(y=5+m(x-7)\), with \(y\)-intercept \(5-7m\). (The slopes satisfy \(m_1m_2=-1\) and \(m_1+m_2=10\), so they are \(5\pm\sqrt{26}\), both finite and nonzero.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair P=(7,5);
+real m1=5+sqrt(26), m2=5-sqrt(26);
+draw((-1,0)--(9,0),gray,Arrow(TeXHead)); draw((0,-1)--(0,8),gray,Arrow(TeXHead));
+real f1(real x){return 5+m1*(x-7);} real f2(real x){return 5+m2*(x-7);}
+draw(graph(f2,-0.5,9),red);
+draw(graph(f1,6.4,7.3),blue);
+dot(P); label("$(7,5)$",P,NE);
+label("$\ell_2$",(-0.5,f2(-0.5)),NW,red); label("$\ell_1$",(7.3,f1(7.3)),E,blue);
+label("$x$",(9,0),E); label("$y$",(0,8),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The sum of the intercepts is
+\[
+(5-7m_1)+(5-7m_2)=10-7(m_1+m_2)=10-70=\boxed{-60}.
+\]

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1501723_games_and_invariants_problem
+% Stable identity: aops-topic-1501723-q01
+\textbf{No.} Put the box on coordinates so that the unit cells are $(x,y,z)$ with $0\le x\le6$, $0\le y\le8$, $0\le z\le10$ (the edge of length $7$ along $x$ and the edge of length $11$ along $z$). Colour cell $(x,y,z)$ with colour $(x+z)\bmod3$.
+
+\textbf{Each brick covers $3$ cells of each colour.} A brick has two edges of length $3$ and one of length $1$. So at least one of its edges along the $x$- or the $z$-direction has length $3$; say it is along $x$ (the case $z$ is the same). The brick then splits into rows of three cells $(x,y,z)$, $(x+1,y,z)$, $(x+2,y,z)$, and the colours in each row are three consecutive residues, i.e.\ all three colours once. So the brick covers equally many cells of each colour, namely $3$.
+
+\textbf{The box does not.} Among $x=0,\dots,6$ there are $3$ values $\equiv0$, $2$ values $\equiv1$ and $2$ values $\equiv2\pmod3$. Among $z=0,\dots,10$ there are $4$, $4$, $3$. For each $y$ (there are $9$ values), the number of cells with $x+z\equiv2\pmod3$ is
+\[
+3\cdot3+2\cdot4+2\cdot4=25 ,
+\]
+while the colour $0$ has $3\cdot4+2\cdot3+2\cdot4=26$ cells. So the box has $225$ cells of colour $2$ but $234$ of colour $0$.
+
+A tiling by bricks would cover equally many cells of each colour. Hence the box cannot be filled, although its volume $693=77\cdot9$ is a multiple of the brick volume $9$. $\blacksquare$

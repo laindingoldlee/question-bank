@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1249590_simple_geometry
+% Stable identity: aops-topic-1249590-q01
+Yes. Reflection through a point gives $P_a=2A-P$, $P_b=2B-P$, $P_c=2C-P$ (as vectors). So $P_aP_bP_c$ is the triangle with vertices $2A,2B,2C$ translated by $-P$: a copy of $ABC$ enlarged by factor $2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(3,0),C=(1,2),P=(1.6,0.8);
+pair Pa=2A-P,Pb=2B-P,Pc=2C-P;
+draw(A--B--C--cycle,linewidth(1)); draw(Pa--Pb--Pc--cycle,blue);
+draw(P--Pa,gray+dashed); draw(P--Pb,gray+dashed); draw(P--Pc,gray+dashed);
+dot(P); label("$P$",P,E); label("$A$",A,SE); label("$B$",B,SE); label("$C$",C,E);
+label("$P_a$",Pa,SW); label("$P_b$",Pb,SE); label("$P_c$",Pc,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Equivalently, $A$ and $B$ are midpoints of $PP_a$ and $PP_b$, so $P_aP_b=2AB$, and similarly for the other sides.) Its area is $\boxed{4[ABC]}$, whatever $P$ is.

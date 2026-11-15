@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2924123_geo_proof_problems
+% Stable identity: aops-topic-2924123-q01
+\emph{Case 1: $O$ lies on $CA$.} Triangle $OBC$ is isosceles ($OB=OC$), so $\angle OCB=\angle OBC$. The exterior angle at $O$ is $\angle AOB=\angle OCB+\angle OBC=2\angle ACB$.
+
+\emph{General case.} Draw the diameter $CD$.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=dir(250),B=dir(-20),C=dir(110);pair A2=-C;draw(circle(O,1));draw(C--A--O--B--C);draw(C--A2,dashed);dot(O);
+label("$O$",O,E);label("$A$",A,SW);label("$B$",B,E);label("$C$",C,N);label("$D$",A2,S);
+\end{asy}
+
+If $O$ is inside $\angle ACB$, then $\angle ACB=\angle ACD+\angle DCB=\dfrac12\angle AOD+\dfrac12\angle DOB=\dfrac12\angle AOB$ by Case 1 applied twice. If $O$ is outside, subtract instead of adding. $\blacksquare$

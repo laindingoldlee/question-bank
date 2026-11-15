@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1923412_im_stuck
+% Stable identity: aops-topic-1923412-q01
+First, $\tan15^\circ=\tan(45^\circ-30^\circ)=\dfrac{1-\dfrac{1}{\sqrt3}}{1+\dfrac{1}{\sqrt3}}=\dfrac{\sqrt3-1}{\sqrt3+1}=\dfrac{(\sqrt3-1)^2}{2}=2-\sqrt3$.
+
+In right triangle $BCE$ (right angle at $C$), $CE=BC\tan15^\circ=10(2-\sqrt3)=20-10\sqrt3$. Since $CD=AB=20$,
+\[
+DE=CD-CE=20-(20-10\sqrt3)=10\sqrt3 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real ce=20-10*sqrt(3);
+pair A=(0,0),B=(20,0),C=(20,10),D=(0,10),Ee=(20-ce,10);
+draw(A--B--C--D--cycle,linewidth(1));draw(B--Ee,linewidth(0.8));draw(A--Ee,red+dashed+linewidth(0.9));
+draw(arc(B,3.2,90,105),linewidth(0.7));draw(B+3.3*dir(97.5)--B+4.6*dir(122),linewidth(0.4));label("$15^\circ$",B+4.6*dir(122),W);
+draw(D+(0,-0.9)--D+(0.9,-0.9)--D+(0.9,0));
+dot(Ee);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$E$",Ee,N);
+label("$20$",(10,0),S);label("$10$",(20,5),E);label("$10\sqrt3$",(Ee+D)/2,N);label("$20$",(A+Ee)/2+(-0.5,0.4),NW,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In right triangle $ADE$ (right angle at $D$), $AD=10$, so
+\[
+AE=\sqrt{AD^2+DE^2}=\sqrt{100+300}=\boxed{20}.
+\]
+(So $AE=AB$: triangle $ABE$ is isosceles.)

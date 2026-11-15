@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1694512_paralleling_in_3d
+% Stable identity: aops-topic-1694512-q01
+Put the cube in coordinates with edge $1$: $A=(0,0,0)$, $B=(1,0,0)$, $C=(1,1,0)$, $D=(0,1,0)$ and $E,F,G,H$ the same points with third coordinate $1$. Then $AB$ has direction $(1,0,0)$, and $FG$ runs from $F=(1,0,1)$ to $G=(1,1,1)$, with direction $(0,1,0)$, the same as $BC$.
+
+\textbf{Not parallel:} the directions $(1,0,0)$ and $(0,1,0)$ are not multiples of each other.
+
+\textbf{Not intersecting:} every point of line $AB$ has height $z=0$, every point of line $FG$ has height $z=1$.
+
+So $AB$ and $FG$ are $\boxed{\text{skew lines}}$ (neither parallel nor intersecting). Since $FG\parallel BC$ and $BC\perp AB$, the angle between their directions is $\boxed{90^\circ}$ (the dot product of the directions is $0$).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair ob=(0.45,0.35);
+pair A=(0,0),B=(2,0),Fp=(2,2),Ep=(0,2);
+pair D=A+2*ob,C=B+2*ob,G=Fp+2*ob,H=Ep+2*ob;
+draw(A--B--Fp--Ep--cycle,linewidth(0.8));
+draw(B--C--G--Fp,linewidth(0.8));draw(Ep--H--G,linewidth(0.8));
+draw(A--D--C,dashed);draw(D--H,dashed);
+draw(A--B,red+linewidth(1.6));draw(Fp--G,blue+linewidth(1.6));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,E);label("$D$",D,NW);
+label("$E$",Ep,W);label("$F$",Fp,dir(-135));label("$G$",G,NE);label("$H$",H,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

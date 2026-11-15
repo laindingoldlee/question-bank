@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2574858_how_many_triangles
+% Stable identity: aops-topic-2574858-q01
+A triple of the points gives a nondegenerate triangle unless the three points are collinear. So we must minimise the number of collinear triples.
+
+\textbf{A lower bound.} Assign each point to one side of the triangle that contains it (a point at a vertex lies on two sides; choose either). If the sides receive $m_1,m_2,m_3$ points, $m_1+m_2+m_3=n$, then any three points assigned to the same side are collinear, so there are at least $\dbinom{m_1}3+\dbinom{m_2}3+\dbinom{m_3}3$ collinear triples.
+
+This sum is smallest when the $m_i$ differ by at most $1$. Indeed, if $m_1\ge m_2+2$, moving one point from the first group to the second changes the sum by
+\[\dbinom{m_2}{2}-\dbinom{m_1-1}{2}\le0,\]
+using $\dbinom{m+1}3-\dbinom m3=\dbinom m2$ and $m_2<m_1-1$. So such moves never increase the sum, and repeating them ends with three numbers that differ by at most $1$. Writing $n=3q+r$ with $r\in\{0,1,2\}$, these numbers are $q$ or $q+1$, with exactly $r$ of them equal to $q+1$. Hence there are at least $(3-r)\dbinom q3+r\dbinom{q+1}3$ collinear triples.
+
+\textbf{The bound is attained.} Put $q$ or $q+1$ points (with $r$ sides getting $q+1$) in the interiors of the sides, none at a vertex. A line through two points of different sides is not a side line, and such a line meets the boundary in at most two points: if a boundary point $P$ on side $s$ lay strictly between two boundary points $U,V$ of the line, then since the triangle lies on one side of line $s$, both $U$ and $V$ would lie on line $s$, so the line would be line $s$. Hence the only collinear triples are those within one side.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(8,0),C=(3,6);draw(A--B--C--cycle,linewidth(0.9));
+real[] f={0.25,0.5,0.75};
+for(real t:f){dot(A+t*(B-A));dot(B+t*(C-B));dot(C+t*(A-C));}
+draw((A+0.25*(B-A))--(B+0.5*(C-B))--(C+0.75*(A-C))--cycle,dashed);
+label("$q$ points",(4,0),2*S);label("$q$ points",(B+C)/2,2*NE);label("$q$ points",(A+C)/2,2*NW);
+\end{asy}
+
+Therefore the maximum is
+\[\boxed{\dbinom n3-(3-r)\dbinom q3-r\dbinom{q+1}3},\qquad n=3q+r,\ r\in\{0,1,2\}.\]
+In closed form this is $q^2(4q-3)$ for $n=3q$, $q\left(4q^2+q-1\right)$ for $n=3q+1$, and $q(q+1)(4q+1)$ for $n=3q+2$. For example, $n=9$ gives $84-3=81$.

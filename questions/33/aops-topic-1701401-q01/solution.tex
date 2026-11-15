@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1701401_find_positive_number
+% Stable identity: aops-topic-1701401-q01
+Let $s=a+b+c+d$, so the number is $N=11s^2$.
+
+\textbf{Range.} $1000\le11s^2\le9999$ gives $91\le s^2\le909$, so $10\le s\le30$.
+
+\textbf{Modulo $9$.} A number is congruent to its digit sum modulo $9$, so $11s^2\equiv s$, i.e.\ $2s^2\equiv s\pmod9$, i.e.\ $9\mid s(2s-1)$. Since $\gcd(s,2s-1)=1$, either $9\mid s$ or $9\mid 2s-1$, i.e.\ $s\equiv0$ or $s\equiv5\pmod9$. In the range this leaves $s=14,18,23,27$.
+
+\textbf{Check each.}
+\begin{itemize}
+\item $s=14$: $11\cdot196=2156$, digit sum $2+1+5+6=14$. Yes.
+\item $s=18$: $11\cdot324=3564$, digit sum $18$. Yes.
+\item $s=23$: $11\cdot529=5819$, digit sum $23$. Yes.
+\item $s=27$: $11\cdot729=8019$, digit sum $18\ne27$. No.
+\end{itemize}
+So the numbers are $\boxed{2156,\ 3564,\ 5819}$.

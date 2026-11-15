@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1660500_counting_problem
+% Stable identity: aops-topic-1660500-q01
+Number the squares $0$ to $8$ row by row, so the centre is $4$. X owns the centre, so every line through the centre is closed to O: O can win only along one of the four sides of the board. O moves at moves $2,4,6,8$, so O can complete a line only at move $6$ or move $8$. A sequence counts only if nobody completed a line earlier; X's lines are completed either by two opposite squares (with the centre) or by three squares of a side.
+
+\textbf{O wins at move 6.} Choose O's side ($4$ ways) and the order of O's three moves on it ($3!=6$ ways). X's moves $3$ and $5$ go to two of the remaining $5$ squares, and they must not be opposite each other (else X wins at move $5$). For the top side $\{0,1,2\}$ the remaining squares are $3,5,6,7,8$, and the only opposite pair among them is $\{3,5\}$; by symmetry every side behaves the same. So X has $5\cdot4-2=18$ ordered choices, and there are
+\[
+4\cdot6\cdot18=432
+\]
+such games.
+
+\textbf{O wins at move 8.} At the end O has a side $S$ and one more square $e$; X has the centre and three squares $T$; one square is empty. Take $S=\{0,1,2\}$ (multiply by $4$ at the end); then $e$ and $T$ lie in $\{3,5,6,7,8\}$.
+\begin{itemize}
+\item X must not have won by move $7$: $T$ contains no opposite pair, so not both $3$ and $5$, and $T$ is not the side $\{6,7,8\}$. Of the $\dbinom53=10$ triples, $3$ contain $\{3,5\}$ and one is $\{6,7,8\}$, leaving $6$. Then $e$ is one of the other $2$ squares: $12$ placements.
+\item O must not have won at move $6$: O's three earlier marks must not form a line. Any line through two squares of $S$ is $S$ itself, so this just says that $e$ is not O's last move. Of the $4!=24$ orders of O's moves, $3!=6$ put $e$ last, leaving $18$.
+\item X's three moves can come in any of $3!=6$ orders.
+\end{itemize}
+This gives $4\cdot12\cdot18\cdot6=5184$ games.
+
+In total O wins in $432+5184=\boxed{5616}$ games. (An exhaustive computer enumeration of all games starting with X in the centre confirms this: $15648$ X wins, $5616$ O wins and $4608$ draws.)

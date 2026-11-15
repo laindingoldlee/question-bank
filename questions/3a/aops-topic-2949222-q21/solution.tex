@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2949222_2018_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2949222-q21
+Write the slow position as $h$ turns modulo 1 and the fast position as $kh$ with $k=2018$. A swapped valid pair requires $k^2h\equiv h\pmod1$, giving $k^2-1$ possible values of $h$ in $[0,1)$. Of these, $k-1$ have coincident positions, since $(k-1)h\in\mathbb Z$. Excluding them gives $(k^2-1)-(k-1)=k(k-1)=\boxed{4070306}$. Every valid pair recurs after whole common periods, so the swapped occurrence can be chosen later.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(unitcircle);pair A=dir(40),B=dir(210);dot(A);dot(B);label("fast",A,NE);label("slow",B,SW);draw(arc((0,0),1.2,60,120),Arrow);
+\end{asy}

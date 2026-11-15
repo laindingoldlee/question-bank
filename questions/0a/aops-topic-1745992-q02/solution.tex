@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1745992_geometry
+% Stable identity: aops-topic-1745992-q02
+Let the inradius be $r$, the incentre $I$, and the perimeter $p$. Joining $I$ to the three vertices splits the triangle into three triangles whose bases are the sides and whose heights are all $r$, so the area is $\dfrac{1}{2} r(a+b+c)=\dfrac{rp}{2}$. The condition $\dfrac{rp}{2}=p$ gives $r=\boxed{2}$. For example, the $6$-$8$-$10$ right triangle has area $24$ and perimeter $24$, and its inradius is $2$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),B=(8,0),A=(0,6),I=(2,2);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(circle(I,2),blue+linewidth(0.8));
+draw((0,0.4)--(0.4,0.4)--(0.4,0));
+dot(I);draw(I--(2,0),dashed);label("$r$",(2,1),E);
+label("$A$",A,N);label("$B$",B,E);label("$C$",C,SW);label("$I$",I,NE);
+label("$6$",(0,3),W);label("$8$",(4,0),S);label("$10$",(4,3),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

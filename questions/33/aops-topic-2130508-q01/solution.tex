@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2130508_2019_amc_10b_problemsproblem_25
+% Stable identity: aops-topic-2130508-q01
+Such a sequence consists of $0$s separated by blocks of $1$s. Because the sequence begins and ends with $0$ and has no two consecutive $0$s, if there are $k$ zeros then there are exactly $k-1$ blocks of $1$s between them, each nonempty; because there are no three consecutive $1$s, each block has length $1$ or $2$. So the sequence is
+\[0\,B_1\,0\,B_2\,0\cdots0\,B_{k-1}\,0,\]
+with each $B_i$ equal to $1$ or $11$, and conversely every such word satisfies all the conditions.
+
+If $j$ of the $k-1$ blocks have length $2$, the length is $k+(k-1)+j=2k-1+j=19$, so $j=20-2k$. We need $0\le j\le k-1$, that is, $7\le k\le10$, and then the blocks of length $2$ can be chosen in $\dbinom{k-1}{20-2k}$ ways:
+\[k=7:\ \binom66=1,\qquad k=8:\ \binom74=35,\qquad k=9:\ \binom82=28,\qquad k=10:\ \binom90=1 .\]
+The total is $1+35+28+1=\boxed{65}$.

@@ -1,0 +1,19 @@
+For each $q=7^j$, let $n_r$ count the chosen integers in residue class $r$ modulo $q$. The exponent of $7$ in the difference product is
+\[
+\sum_{j\ge1}\sum_{r=0}^{7^j-1}\binom{n_r}{2}.
+\]
+For fixed $n$, each inner sum is minimized when the class sizes differ by at most one. If $n=aq+b$ with $0\le b<q$, that minimum is
+\[
+(q-b)\binom a2+b\binom{a+1}{2}.
+\]
+Consecutive integers attain these balanced sizes for every $q$ simultaneously. Therefore the minimum possible valuation is the sum of these expressions. It increases with $n$.
+
+The threshold is $7^7=823543$. Near the crossing, the only nonzero contributions are:
+\[
+\begin{array}{c|rrrr|r}
+n&q=7&q=49&q=343&q=2401&\text{total}\\\hline
+3155&709425&100000&12960&754&823139\\
+3156&709875&100064&12969&755&823663
+\end{array}
+\]
+Thus $3155$ consecutive integers give a counterexample, whereas every $3156$-term sequence has enough factors of $7$. Hence $N=3156$ and the requested remainder is $\boxed{156}$.

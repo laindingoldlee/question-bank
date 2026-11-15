@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2398652_a2b2c2_a__b_are_either_both_even_or_both_odd_show_that_4b
+% Stable identity: aops-topic-2398652-q01
+Recall that an odd square is $\equiv1\pmod 8$ (as $(2k+1)^2=4k(k+1)+1$ and $k(k+1)$ is even), and an even square is $\equiv0\pmod4$.
+
+\textbf{(a)} If $a$ and $b$ were both odd, then $c^2=a^2+b^2\equiv2\pmod4$, but no square is $\equiv2\pmod4$.
+
+\textbf{(b)} By (a), the hypothesis means that $a$ and $b$ are both even. The triple $(16,30,34)=2\cdot(8,15,17)$ satisfies $16^2+30^2=256+900=1156=34^2$, $16<30<34$, and $a,b$ are both even, but $4\nmid30$. So the claim is false.
+
+\textbf{(c)} If $a$ is odd, then $b$ is even by (a), and $c^2=a^2+b^2$ is odd, so $c$ is odd. Now $b^2=(c-a)(c+a)$, where $c-a$ and $c+a$ are both even and their sum $2c$ is $\equiv2\pmod4$. Two even numbers with sum $\equiv2\pmod4$ are one $\equiv0$ and one $\equiv2\pmod4$, so their product is divisible by $8$. Writing $b=2m$, $8\mid4m^2$ gives $2\mid m^2$, so $m$ is even and $4\mid b$. $\blacksquare$
+
+\textbf{(d)} Let $g=\gcd(a,b)$. Then $g^2\mid c^2$, so $g\mid c$, and $(a',b',c')=\left(\dfrac ag,\dfrac bg,\dfrac cg\right)$ is a Pythagorean triple with $\gcd(a',b')=1$. Then $a'$, $b'$ are not both even, and by (a) not both odd, so exactly one of them is odd. Applying (c) (the argument there does not use $a<b$), the other one is divisible by $4$, and so is the corresponding one of $a=ga'$, $b=gb'$. $\blacksquare$
+
+So the correct statement is that $4$ divides one of the legs; it need not be the larger leg $b$ when both legs are even.

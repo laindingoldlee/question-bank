@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h2584900_mathematics
+% Stable identity: aops-topic-2584900-q01
+Let $M$ be the midpoint of $AB$. The median from $C$ is $CM$, and the centroid satisfies $CG=\dfrac23CM$.
+
+\textbf{(a)} $AB=15$ is the hypotenuse. The midpoint of the hypotenuse is equidistant from all three vertices (it is the centre of the circumcircle), so $CM=\dfrac{15}{2}$ and
+\[CG=\dfrac23\cdot\dfrac{15}{2}=\boxed{5}.\]
+
+\textbf{(b)} The legs are $AC=8$ and $AB=15$, and $AM=\dfrac{15}{2}$. In the right triangle $CAM$,
+\[CM=\sqrt{8^2+\left(\dfrac{15}{2}\right)^2}=\sqrt{\dfrac{481}{4}}=\dfrac{\sqrt{481}}{2},\qquad CG=\dfrac23\cdot\dfrac{\sqrt{481}}{2}=\boxed{\dfrac{\sqrt{481}}{3}}\approx7.31.\]
+
+A right angle at $B$ would make $AC$ the hypotenuse, but $AC=8<15=AB$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),B=(sqrt(161),0),A=(0,8);
+pair M=(A+B)/2,G=(A+B+C)/3;
+draw(A--B--C--cycle,linewidth(0.8));draw(C--M,dashed);
+draw((0,0.6)--(0.6,0.6)--(0.6,0));dot(M);dot(G);
+label("$C$",C,SW);label("$B$",B,SE);label("$A$",A,N);label("$M$",M,NE);label("$G$",G,SE);
+label("$8$",(A+C)/2,W);label("$AB=15$",(A+3*B)/4,NE);
+label("(a) right angle at $C$",(6,-1.8));
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(15,0),C=(0,8);
+pair M=(A+B)/2,G=(A+B+C)/3;
+draw(A--B--C--cycle,linewidth(0.8));draw(C--M,dashed);
+draw((0,0.6)--(0.6,0.6)--(0.6,0));dot(M);dot(G);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$M$",M,S);label("$G$",G,NE);
+label("$8$",(A+C)/2,W);label("$AB=15$",(A+3*B)/4,S);
+label("(b) right angle at $A$",(7.5,-2.6));
+\end{asy}

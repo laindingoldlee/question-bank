@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2581009_reversing_digits
+% Stable identity: aops-topic-2581009-q01
+\textbf{(a)} Let $n=10a+b$ with digits $a,b\in\{1,\dots,9\}$ ($b\ne0$ because $10\nmid n$), and let $m=f(n)=10b+a$. If $n^2$ ended in $0$, then $2\mid n$ and $5\mid n$, so $10\mid n$. Hence $n^2$ does not end in $0$, and $f\left(n^2\right)$ has as many digits as $n^2$. So if $n$ is good, then $n^2$ and $m^2=f\left(n^2\right)$ have the same number of digits, which is $3$ or $4$.
+
+\emph{Four digits.} Since $10\equiv-1\pmod{11}$, a four-digit number $N=\overline{d_3d_2d_1d_0}$ satisfies $N\equiv-d_3+d_2-d_1+d_0$, and its reversal satisfies $f(N)\equiv-d_0+d_1-d_2+d_3\equiv-N\pmod{11}$. So $m^2\equiv-n^2\pmod{11}$. But $n\equiv b-a$ and $m\equiv a-b\equiv-n\pmod{11}$, so $m^2\equiv n^2$. Hence $2n^2\equiv0$, so $11\mid n$ and $a=b$. Then $n^2=m^2=f\left(n^2\right)$, which is not allowed.
+
+\emph{Three digits.} Then $n\le31$ and $m\le31$. So $a,b\le3$, and neither $23$ nor $32$ nor $33$ is possible. The candidates are $11,12,13,21,22,31$:
+\begin{itemize}
+\item $11^2=121$ and $22^2=484$ are palindromes, so they fail;
+\item $12^2=144$ and $f(144)=441=21^2$; \quad $21^2=441$ and $f(441)=144=12^2$;
+\item $13^2=169$ and $f(169)=961=31^2$; \quad $31^2=961$ and $f(961)=169=13^2$.
+\end{itemize}
+So exactly $\boxed{4}$ two-digit numbers are good: $12,13,21,31$.
+
+\textbf{(b)} Let $n=10^k+2$ with $k\ge1$. Then $n^2=10^{2k}+4\cdot10^k+4$, whose digits are $1$, then $k-1$ zeros, $4$, $k-1$ zeros, $4$. Also $f(n)=2\cdot10^k+1$ and
+\[f(n)^2=4\cdot10^{2k}+4\cdot10^k+1,\]
+whose digits are $4$, $k-1$ zeros, $4$, $k-1$ zeros, $1$. This is exactly the reversal of $n^2$. Moreover $10\nmid n$, and $n^2$ is not a palindrome (it starts with $1$ and ends with $4$). So $12,102,1002,\dots$ are all good. $\blacksquare$

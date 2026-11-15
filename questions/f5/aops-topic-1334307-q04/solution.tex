@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1334307_squeep_national_olympics
+% Stable identity: aops-topic-1334307-q04
+Let $r$ be the inner radius of the track. The innermost runner runs on a circle of radius $r+\dfrac{1}{2}$ and the outermost on a circle of radius $r+9\dfrac{1}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),2),linewidth(0.9)); draw(circle((0,0),4),linewidth(0.9));
+for(int k=1;k<10;++k) draw(circle((0,0),2+0.2*k),gray+0.3);
+draw(circle((0,0),2.1),blue+dashed); draw(circle((0,0),3.9),red+dashed);
+dot((0,0)); draw((0,0)--2.1*dir(-30),blue); draw((0,0)--3.9*dir(150),red);
+label("$r+0.5$",(0,-0.15),S,blue); label("$r+9.5$",2.9*dir(150),N,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+One lap of the outer lane is longer by
+\[
+2\pi\left(r+\dfrac{19}{2}\right)-2\pi\left(r+\dfrac{1}{2}\right)=2\pi\cdot9=\boxed{18\pi\text{ metres}},
+\]
+so the outer runner should start $18\pi\approx56.5$ m ahead (measured along the outer lane). The answer does not depend on $r$.

@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1427270_combinatorics_question
+% Stable identity: aops-topic-1427270-q01
+\textbf{Number of players.} The total score is the number of games, $\binom{n}{2}$. Exactly one score is odd, so $\binom{n}{2}$ is odd, which happens exactly when $n\equiv2$ or $3\pmod4$. A fourth-ranked player needs $n\ge4$, so $n=6$ or $n=7$. The odd player cannot tie with anyone (all other scores are even); call his score $s$.
+
+\textbf{$n=6$} (total $15$, scores $0$ to $5$).
+\begin{itemize}
+\item $s=5$: no one can score more. Impossible.
+\item $s=3$: the three players above score $4$ each ($12$ points), so the two below score $15-12-3=0$ in total; but they played each other, so one of them won. Impossible.
+\item $s=1$: the two players below both score $0$, impossible for the same reason.
+\end{itemize}
+\textbf{$n=7$} (total $21$, scores $0$ to $6$).
+\begin{itemize}
+\item $s=5$: the three above would all score $6$, but two players cannot both win all their games. Impossible.
+\item $s=1$: the three below would all score $0$; impossible.
+\item $s=3$: the three above score $4$ or $6$ (at most one $6$), so they total $12$ or $14$; the three below score $0$ or $2$ (at most one $0$) and play $3$ games among themselves, so they total $4$ or $6$. We need $\text{above}+3+\text{below}=21$, e.g. scores $4,4,4,3,2,2,2$.
+\end{itemize}
+Such a tournament exists. Number the players $1$ to $7$ and let
+\[
+\begin{array}{l}
+1\text{ beat }2,3,4,5;\quad 2\text{ beat }3,4,5,6;\quad 3\text{ beat }4,5,6,7;\quad 4\text{ beat }5,6,7;\\
+5\text{ beat }6,7;\quad 6\text{ beat }1,7;\quad 7\text{ beat }1,2 .
+\end{array}
+\]
+The scores are $4,4,4,3,2,2,2$: player $4$ alone has an odd score and is fourth.
+
+So it is possible, only with $7$ players, and the player had $\boxed{3}$ wins.

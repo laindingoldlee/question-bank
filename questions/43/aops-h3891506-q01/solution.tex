@@ -1,0 +1,20 @@
+Write $AB=a,BC=b,CD=c$ and place
+\[B=(0,0),\quad C=(b,0),\quad
+A=\left(-\dfrac{a}{2},\dfrac{\sqrt3a}{2}\right),\quad
+D=\left(b+\dfrac{c}{2},\dfrac{\sqrt3c}{2}\right).\]
+Then $AD^2=a^2+b^2+c^2+b(a+c)-ac$, so the hypothesis gives $ac=b(a+c)$. In particular $b<\min(a,c)$, and
+\[AD^2=(a+c-b)^2,\qquad AD=a+c-b.\]
+Consider the circle with center $I=(\dfrac{b}{2},\dfrac{\sqrt3b}{2})$ and radius $r=\dfrac{\sqrt3b}{2}$. It is tangent to $AB,BC,CD$, since $I$ lies on the internal bisectors of the two $120^\circ$ angles. Its tangency distances from $B$ and $C$ along their adjacent sides are each $\dfrac{b}{2}$, so those contacts lie on the three segments.
+
+The line $AD$ has equation
+\[\sqrt3(c-a)x-(2b+a+c)y+\sqrt3a(b+c)=0.\]
+At $I$, the absolute value of its left side is $\sqrt3(ac-b^2)$, and the norm of its normal vector is $2AD$. Thus its distance from $I$ is
+\[\dfrac{\sqrt3(ac-b^2)}{2AD}
+=\dfrac{\sqrt3 b(a+c-b)}{2AD}=r.\]
+Moreover $I$ lies on the same side of $AD$ as $B,C$, since $ac>b^2$. The circle lies in all four inward half-planes and is tangent to every side, so it is an inscribed circle.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair B=(0,0),C=(2,0),A=(-1.5,3*sqrt(3)/2),D=(5,3*sqrt(3)),I=(1,sqrt(3));draw(A--B--C--D--cycle);draw(circle(I,sqrt(3)),blue);draw(B--I--C,gray+dashed);dot(I);label("$A$",A,(-1,0));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));label("$D$",D,(1,1));label("$I$",I,(0,1));label("$b$",midpoint(B--C),(0,-1));
+\end{asy}

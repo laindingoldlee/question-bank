@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2567607_aops_open_mathcounts_year_2_problems
+% Stable identity: aops-topic-2567607-q06
+The numbers $1,\dots,20$ form the $10$ pairs $\{i,21-i\}$. Charlie takes $10$ numbers with at most one from each pair, so he takes exactly one from each pair. Likewise $1,\dots,24$ form the $12$ pairs $\{j,25-j\}$, and Henry takes exactly one from each.
+
+Join the numbers by ``C-edges'' $\{i,21-i\}$ and ``H-edges'' $\{j,25-j\}$. Following them alternately gives two paths, each with $12$ numbers and $11$ edges:
+\[24\overset{H}{-}1\overset{C}{-}20\overset{H}{-}5\overset{C}{-}16\overset{H}{-}9\overset{C}{-}12\overset{H}{-}13\overset{C}{-}8\overset{H}{-}17\overset{C}{-}4\overset{H}{-}21,\]
+\[23\overset{H}{-}2\overset{C}{-}19\overset{H}{-}6\overset{C}{-}15\overset{H}{-}10\overset{C}{-}11\overset{H}{-}14\overset{C}{-}7\overset{H}{-}18\overset{C}{-}3\overset{H}{-}22.\]
+A valid choice picks one endpoint of every edge (C-edges for Charlie, H-edges for Henry), with no number picked twice.
+
+In one path $v_1,\dots,v_{12}$ the $11$ edges pick $11$ different numbers, so exactly one number $v_k$ is not picked. Then the edges to the left of $v_k$ must pick their left endpoints: $v_1$ lies only on the first edge, so that edge picks $v_1$ (if $k\ne1$); then $v_2$ must be picked by the second edge, and so on. Likewise the edges to the right of $v_k$ pick their right endpoints. Conversely, each choice of $k$ gives a valid choice. So each path allows $12$ ways, and the paths are independent: $12\cdot12=\boxed{144}$.

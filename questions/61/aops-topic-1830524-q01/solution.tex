@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1830524_powers_of_2
+% Stable identity: aops-topic-1830524-q01
+The partial sums can be computed exactly. For $N\ge1$,
+\[
+S_N=\sum_{j=1}^{N}2^{n-j}=2^n\left(\dfrac{1}{2}+\dfrac{1}{4}+\dots+\dfrac{1}{2^N}\right)=2^n\left(1-\dfrac{1}{2^N}\right)=2^n-2^{n-N}.
+\]
+(The bracket is a finite geometric series; equivalently, one checks $S_1=2^n-2^{n-1}$ and $S_{N+1}=S_N+2^{n-N-1}=2^n-2^{n-N}+2^{n-N-1}=2^n-2^{n-N-1}$, which is the induction step.)
+
+As $N\to\infty$, $2^{n-N}\to0$, so the series converges and
+\[
+\sum_{j=1}^{\infty}2^{n-j}=\lim_{N\to\infty}\left(2^n-2^{n-N}\right)=2^n .\qquad\blacksquare
+\]

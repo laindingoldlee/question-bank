@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2110942_100th_post
+% Stable identity: aops-topic-2110942-q01
+Label the cells $1,2,\dots,15$ (the $3\times5$ shape plays no role). The \emph{distance} between two patterns is the number of cells in which they differ. The board stays alive for $D$ days exactly when it shows $D$ patterns $P_1,\dots,P_D$, with $P_1$ all black, that are pairwise at distance at least $3$ and none of which is all white. We show that the maximum is $\boxed{2047}$.
+
+\textbf{Upper bound.} For each shown pattern $P_i$, let $B_i$ be the set of $16$ patterns at distance at most $1$ from $P_i$ ($P_i$ itself and the $15$ patterns obtained by toggling one cell). These sets are disjoint, since a pattern in $B_i\cap B_j$ would give $P_i$ and $P_j$ distance at most $2$. Hence $16D\le2^{15}$, so $D\le2048$.
+
+Suppose $D=2048$. Then the sets $B_i$ cover every one of the $2^{15}$ patterns exactly once. Let $N_w$ be the number of shown patterns with exactly $w$ white cells; then $N_0=1$ (the all-black pattern) and $N_1=N_2=0$ (distance at least $3$ from it). Count the $\dbinom{15}{w}$ patterns with exactly $w$ white cells: each lies in exactly one $B_i$, and that $P_i$ has $w-1$, $w$ or $w+1$ white cells. A shown pattern with $w-1$ white cells has $16-w$ neighbours with $w$ white cells (turn one of its black cells white), and one with $w+1$ white cells has $w+1$ such neighbours. Hence, for $1\le w\le14$,
+\[\dbinom{15}{w}=(16-w)N_{w-1}+N_w+(w+1)N_{w+1}.\]
+Starting from $N_0=1$, $N_1=0$, these equations determine $N_2,N_3,\dots,N_{15}$ one after another:
+\[\begin{array}{c|cccccccccccccccc}
+w&0&1&2&3&4&5&6&7&8&9&10&11&12&13&14&15\\\hline
+N_w&1&0&0&35&105&168&280&435&435&280&168&105&35&0&0&1
+\end{array}\]
+(for example, $w=2$ gives $105=14\cdot0+0+3N_3$, so $N_3=35$; and $w=14$ gives $15=2\cdot0+0+15N_{15}$, so $N_{15}=1$). Thus $N_{15}=1$: the all-white pattern would be one of the shown patterns, and the board would die. Therefore $D\le2047$.
+
+\textbf{A construction with $2047$ days.} Call a pattern \emph{good} if the binary XOR (addition of binary digits without carrying) of the labels of its black cells is $0$.
+\begin{itemize}
+\item The all-black pattern is good: each of the four binary digits is $1$ in exactly $8$ of the numbers $1,\dots,15$, an even number.
+\item Two good patterns differ in at least $3$ cells. If they differ exactly in a set $S$ of cells, the XOR of the labels in $S$ is $0\oplus0=0$ (toggling a cell changes the XOR by its label). But a single label is nonzero, and two different labels $i\ne j$ have $i\oplus j\ne0$; so $|S|\ge3$.
+\item There are $2^{11}=2048$ good patterns: colour the $11$ cells whose labels are not $1,2,4,8$ arbitrarily; the XOR $s$ of their black labels is a $4$-digit binary number, and the total XOR is $0$ exactly when the cells $1,2,4,8$ are black precisely for the binary digits that are $1$ in $s$.
+\end{itemize}
+The all-white pattern is also good (its XOR is empty), so leaving it out gives $2047$ good patterns, including the all-black one. Showing the all-black pattern on Day $1$ and the other $2046$ in any order keeps the board alive for $2047$ days. Hence the maximum is $2047$.

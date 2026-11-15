@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h3175726_2023_abmc_accuracy_round__actonboxborough_math_competition
+% Stable identity: aops-topic-3175726-q05
+For an isosceles right triangle with leg $s$, its circumradius is $\dfrac{s}{\sqrt2}$ and inradius is $\dfrac{s(2-\sqrt2)}{2}$. Thus the ratio of circumradius to inradius is $1+\sqrt2$. The next triangle has inradius equal to the previous circumradius, so successive side ratios are $1+\sqrt2$. Across two steps the area ratio is $(1+\sqrt2)^4=17+12\sqrt2$. Hence $a+b+c=\boxed{31}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw((0,0)--(4,0)--(0,4)--cycle);real r=4-2*sqrt(2);draw(circle((r,r),r));draw((0,0)--(4,0),blue);label("$s$",(2,0),S);label("one scaling step",(2,-.6));
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real s=4,r=s*(2-sqrt(2))/2;pair O=(r,r),A=(0,0),Bp=(s,0),C=(0,s);draw(A--Bp--C--cycle);draw(circle(O,r),gray);pair P=O+r*dir(0),Q=O+r*dir(180),T=O+r*dir(90);draw(P--Q--T--cycle,blue);label("outer triangle",(2,-0.5));label("inner triangle",O,N);label("shared circle",O+(r,0),E);
+\end{asy}

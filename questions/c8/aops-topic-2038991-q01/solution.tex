@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2038991_hard_probability_problem
+% Stable identity: aops-topic-2038991-q01
+Track the relevant progress after each roll: state \(0\) (no progress), state \(1\) (last roll was \(1\)), state \(2\) (last two rolls were \(1,2\)). From any state, rolling a \(1\) leads to state \(1\). From state \(0\) any other roll leads to state \(0\); from state \(1\) a \(2\) leads to state \(2\) and \(3,4,5,6\) to state \(0\); from state \(2\) a \(3\) ends the game and \(2,4,5,6\) lead to state \(0\).
+
+Let \(o_s\) be the probability that, starting from state \(s\), the number of further rolls is odd. Each roll flips the parity, and ending on this roll counts as odd, so
+\[
+\begin{aligned}
+o_0&=\dfrac{1}{6}(1-o_1)+\dfrac{5}{6}(1-o_0),\\
+o_1&=\dfrac{1}{6}(1-o_1)+\dfrac{1}{6}(1-o_2)+\dfrac{4}{6}(1-o_0),\\
+o_2&=\dfrac{1}{6}+\dfrac{1}{6}(1-o_1)+\dfrac{4}{6}(1-o_0).
+\end{aligned}
+\]
+From the first equation, \(11o_0+o_1=6\), so \(o_1=6-11o_0\). The second gives \(6o_1=6-o_1-o_2-4o_0\), i.e. \(4o_0+7o_1+o_2=6\). The third gives \(6o_2=6-o_1-4o_0\), i.e. \(4o_0+o_1+6o_2=6\). Substituting \(o_1=6-11o_0\): from the third, \(6o_2=7o_0\), so \(o_2=\dfrac{7}{6}o_0\); then the second becomes
+\[
+4o_0+42-77o_0+\dfrac{7}{6}o_0=6\iff\left(77-4-\dfrac{7}{6}\right)o_0=36\iff\dfrac{431}{6}o_0=36,
+\]
+so \(o_0=\dfrac{216}{431}\). Since \(431\) is prime, \(m=216\), \(n=431\), and
+\[
+m+n=\boxed{647}.
+\]

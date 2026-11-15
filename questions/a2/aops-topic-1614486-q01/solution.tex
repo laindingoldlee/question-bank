@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1614486_euclidean_and_division_algorithim
+% Stable identity: aops-topic-1614486-q01
+\textbf{Existence.} Let $T=\{b-xa:\ x\in\mathbb Z,\ b-xa\ge0\}$.
+\begin{itemize}
+\item $T$ is nonempty: take $x=-|b|$. Then $b-xa=b+|b|a\ge b+|b|\ge0$, because $a\ge1$.
+\item $T$ is a nonempty set of nonnegative integers, so it has a least element $r=b-qa$ (well-ordering principle). Then $b=qa+r$ and $r\ge0$.
+\item Suppose $r\ge a$. Then $r-a=b-(q+1)a\ge0$ is also in $T$, and $r-a<r$, contradicting the minimality of $r$. Hence $r<a$.
+\end{itemize}
+\textbf{Uniqueness.} If $b=qa+r=q'a+r'$ with $0\le r,r'<a$, then $a(q-q')=r'-r$. The right side satisfies $-a<r'-r<a$ and is a multiple of $a$, so it is $0$. Hence $r=r'$ and then $q=q'$. $\blacksquare$
+
+\emph{Remarks on a common attempt.} Splitting into the cases $b\ge0$ (take $x=0$) and $b<0$ (take $x=b$, giving $b(1-a)\ge0$) also shows that $T$ is nonempty. The contradiction step must use the element $r-a$ of $T$, which is smaller than $r$; writing ``$r\ge a$ means $b-qa-a\ge a$'' is not correct. Uniqueness needs its own argument, as above.

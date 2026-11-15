@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2949432_2022_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2949432-q23
+Here $AX=11$ and $AY=27$. Let $\omega$ be the circle $BXY$ and let it meet line $AC$ again at $Y'$. By power of the point $A$, $AY\cdot AY'=AX\cdot AB=297$, so $AY'=11$. Hence $\omega$ meets the two sides at distances $11$ and $27$ from $A$ on each, so $\omega$ is symmetric about the bisector of angle $A$ and $O$ lies on it. The foot of the perpendicular from $O$ to $AB$ is the midpoint of $XB$, at distance $19$ from $A$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(27,0),C=(25.111,22.922);pair u=unit(C-A);pair X=(11,0),Y=A+27*u,Y2=A+11*u;
+pair O=(19,19*Tan(0.5*aCos(113/153)));draw(A--B--C--cycle);draw(circle(O,abs(O-B)));dot(O);draw(O--C,dashed);
+dot(X);dot(Y);dot(Y2);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$X$",X,S);label("$Y$",Y,NW);label("$Y'$",Y2,NW);label("$O$",O,E);
+\end{asy}
+
+By the Law of Cosines, $\cos A=\dfrac{27^2+34^2-23^2}{2\cdot27\cdot34}=\dfrac{113}{153}$, so $\cos^2\dfrac A2=\dfrac{133}{153}$ and
+\[AO^2=\dfrac{19^2}{\cos^2\dfrac A2}=\dfrac{361\cdot153}{133}=\dfrac{2907}7,\qquad R^2=AO^2-297=\dfrac{828}7.\]
+The power of $C$ is $CY\cdot CY'=7\cdot23=161=CO^2-R^2$. So $CO^2=\dfrac{828}7+161=\dfrac{1955}7$ and $m+n=\boxed{1962}$.

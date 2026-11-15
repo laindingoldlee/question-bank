@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1515482_paint_188_cubes
+% Stable identity: aops-topic-1515482-q01
+\textbf{Lower bound.} There are $188\cdot6=1128$ faces, that is, $1128\cdot5=5640$ seconds of painting. Three men can do at most $3$ seconds of painting per second, so the job takes at least $\dfrac{5640}{3}=1880$ seconds.
+
+\textbf{Painting each cube by one man is not enough.} Then some man paints at least $\left\lceil\dfrac{188}{3}\right\rceil=63$ cubes, which takes $63\cdot30=1890$ seconds.
+
+\textbf{A schedule taking $1880$ seconds.} Each man must paint $1880$ seconds of faces: $62$ whole cubes ($1860$ s) plus $4$ faces ($20$ s). Give each man $62$ whole cubes ($186$ cubes) and share the two remaining cubes $X$ and $Y$ (twelve faces):
+\begin{itemize}
+\item Man 1: four faces of $X$ during $[0,20]$, then his $62$ cubes during $[20,1880]$.
+\item Man 2: his $62$ cubes during $[0,1860]$, then four faces of $Y$ during $[1860,1880]$.
+\item Man 3: two faces of $Y$ during $[0,10]$, his $62$ cubes during $[10,1870]$, then the last two faces of $X$ during $[1870,1880]$.
+\end{itemize}
+Cube $X$ is worked on during $[0,20]$ and $[1870,1880]$, and cube $Y$ during $[0,10]$ and $[1860,1880]$, each time by one man only, so the rule is respected. Hence the shortest time is
+\[
+\boxed{1880\text{ seconds}}=31\text{ minutes }20\text{ seconds}.
+\]

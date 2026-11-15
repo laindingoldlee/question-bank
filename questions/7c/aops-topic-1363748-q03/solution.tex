@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1363748_old_mock_competition
+% Stable identity: aops-topic-1363748-q03
+Let $C$ be the third vertex on $\ell_2$; every such $C$ gives a genuine triangle, since $C\notin\ell_1$. The triangle is isosceles in one of three ways.
+\begin{itemize}
+\item $CA=CB$: $C$ lies on the perpendicular bisector of $AB$, which meets $\ell_2$ in one point $C_3$.
+\item $AC=AB$: $C$ lies on the circle with centre $A$ and radius $AB$. Since $AB>d$, this circle crosses $\ell_2$ in two points $C_1$, $C_4$.
+\item $BC=BA$: likewise two points $C_2$, $C_5$ on the circle with centre $B$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0); real d=1.5;
+real w=sqrt(16-d^2); real th=degrees(asin(d/4));
+draw((-4.8,0)--(8.8,0),linewidth(0.8)); draw((-4.8,-d)--(8.8,-d),linewidth(0.8));
+label("$\ell_1$",(8.8,0),E); label("$\ell_2$",(8.8,-d),E);
+draw(arc(A,4,-th,-th+16),red+dashed); draw(arc(A,4,-180+th-16,-180+th),red+dashed);
+draw(arc(B,4,-th,-th+16),blue+dashed); draw(arc(B,4,-180+th-16,-180+th),blue+dashed);
+draw((2,0)--(2,-d),gray+dashed);
+pair C1=(-w,-d),C2=(4-w,-d),C3=(2,-d),C4=(w,-d),C5=(4+w,-d);
+dot(A);dot(B);
+dot(C1,red);dot(C4,red);dot(C2,blue);dot(C5,blue);dot(C3,gray);
+label("$A$",A,N);label("$B$",B,N);
+label("$C_1$",C1,S,red);label("$C_2$",C2,S,blue);label("$C_3$",C3,S);label("$C_4$",C4,S,red);label("$C_5$",C5,S,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+A point can belong to two of these sets only if two of the equalities hold at once, which makes the triangle equilateral ($CA=CB=AB$); and a point in two of the sets is in all three. The two circles meet only on the perpendicular bisector, so the five points are distinct unless $C_3$ is at distance $AB$ from $A$, that is, unless the equilateral triangle on $AB$ has its third vertex on $\ell_2$:
+\[
+d=\dfrac{\sqrt3}{2}AB .
+\]
+So in general there are $\boxed{5}$ isosceles triangles. When $d=\dfrac{\sqrt3}{2}AB$ (which is allowed, as it is less than $AB$), the points $C_3$, $C_4$, $C_2$ coincide and there are only $\boxed{3}$: the equilateral triangle and the two triangles $ABC_1$, $ABC_5$.

@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2793070_2016_geometry_bee__guts_rounds__sets_57
+% Stable identity: aops-topic-2793070-q16
+Write the other vertices as $P=(u,u^2)$ and $Q=(v,v^2)$. Equal distances from the origin imply $u^2+u^4=v^2+v^4$. Since $t+t^2$ is strictly increasing for $t\ge0$, we get $u^2=v^2$. Distinct vertices require $v=-u$. Thus $PQ=2|u|$, and equality with $OP$ gives $4u^2=u^2+u^4$, so $u^2=3$. The side is $2\sqrt3$, yielding area $\boxed{3\sqrt3}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+import graph;
+draw(graph(new real(real x){return x*x;},-2,2));pair O=(0,0),P=(sqrt(3),3),Q=(-sqrt(3),3);draw(O--P--Q--cycle);label("$O$",O,S);label("$P$",P,E);label("$Q$",Q,W);
+\end{asy}

@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2583901_geometry_and_probability_question
+% Stable identity: aops-topic-2583901-q02
+The side of $ABC$ is $8$. Use coordinates $B=(0,0)$, $C=(8,0)$, $A=\left(4,4\sqrt3\right)$, $D=(3,0)$. Equilateral triangle $BDF$ has $BF=3$ along $BA$, so $F=\left(\dfrac32,\dfrac{3\sqrt3}{2}\right)$. Triangle $CDE$ has $CE=5$ along $CA$, so $E=\left(\dfrac{11}{2},\dfrac{5\sqrt3}{2}\right)$.
+
+The midpoint of $EF$ is $K=\left(\dfrac72,2\sqrt3\right)$ and $\overrightarrow{FE}=\left(4,\sqrt3\right)$. The apex $N$ of the equilateral triangle on $EF$ is $K\pm\dfrac{\sqrt3}{2}\left(-\sqrt3,4\right)$, the vector $\overrightarrow{FE}$ turned by $90^\circ$ and scaled by $\dfrac{\sqrt3}{2}$. Since $\overrightarrow{KA}=\left(\dfrac12,2\sqrt3\right)$ has positive dot product with $\left(-\sqrt3,4\right)$, the point $A$ is on the ``$+$'' side, so
+\[N=\left(\dfrac72,2\sqrt3\right)+\left(-\dfrac32,2\sqrt3\right)=\left(2,4\sqrt3\right).\]
+Then $NA=4-2=2$ and $NA^2=\boxed{4}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real s3=sqrt(3);
+pair B=(0,0),C=(8,0),A=(4,4*s3),D=(3,0),F=(1.5,1.5*s3),Ee=(5.5,2.5*s3),Nn=(2,4*s3);
+filldraw(Nn--Ee--F--cycle,lightgray,linewidth(0.8));
+draw(A--B--C--cycle,linewidth(0.8));
+draw(B--D--F--cycle);draw(C--D--Ee--cycle);
+draw(Nn--A,dashed+blue);
+dot(D);dot(Ee);dot(F);dot(Nn);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$E$",Ee,NE);label("$F$",F,W);label("$N$",Nn,NW);
+label("$3$",(B+D)/2,S);label("$5$",(D+C)/2,S);label("$2$",(Nn+A)/2,N,fontsize(9pt));
+\end{asy}

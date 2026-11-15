@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2483605_nt_problems
+% Stable identity: aops-topic-2483605-q06
+Let $d=\gcd\left(n!+1,(n+1)!\right)$ and let $q$ be a prime dividing $d$. Since $q\mid(n+1)!$, we have $q\le n+1$. If $q\le n$, then $q\mid n!$, so $q\nmid n!+1$; hence $q=n+1$. So $d=1$ unless $n+1$ is prime.
+
+Suppose $p=n+1$ is prime. Then $p$ divides $(n+1)!=p\cdot n!$ exactly once, since $n!$ is a product of numbers smaller than $p$. By Wilson's theorem, $(p-1)!\equiv-1\pmod p$, i.e. $p\mid n!+1$. So $d=p$.
+
+Therefore
+\[\gcd\left(n!+1,(n+1)!\right)=\boxed{\begin{cases}n+1,&\text{if }n+1\text{ is prime},\\1,&\text{otherwise.}\end{cases}}\]
+For example, $n=4$: $\gcd(25,120)=5$; $n=5$: $\gcd(121,720)=1$.

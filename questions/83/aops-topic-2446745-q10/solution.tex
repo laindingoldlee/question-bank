@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2446745_150th_msm_post
+% Stable identity: aops-topic-2446745-q10
+The midpoint is $M=\left(\dfrac{5+11}{2},\dfrac{8-14}{2}\right)=(8,-3)$.
+
+Reflection across $y=x$ swaps the coordinates: $(x,y)\mapsto(y,x)$, so $M\mapsto(-3,8)$. Reflection across $y=-x$ maps $(x,y)\mapsto(-y,-x)$, so $(-3,8)\mapsto\boxed{(-8,3)}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+real u=0.32;
+pair T(pair p){return u*p;}
+draw(T((-10,0))--T((13,0)),Arrow(6)); draw(T((0,-15))--T((0,10)),Arrow(6));
+label("$x$",T((13,0)),E); label("$y$",T((0,10)),N);
+draw(T((-9,-9))--T((9.5,9.5)),dashed); draw(T((-9.5,9.5))--T((9,-9)),dashed);
+label("$y=x$",T((9.5,9.5)),NE,fontsize(8pt)); label("$y=-x$",T((-9.5,9.5)),NW,fontsize(8pt));
+pair P1=(5,8),P2=(11,-14),M=(8,-3),M1=(-3,8),M2=(-8,3);
+draw(T(P1)--T(P2),gray);
+draw(T(M)--T(M1),blue+dotted); draw(T(M1)--T(M2),blue+dotted);
+dot(T(P1)); dot(T(P2)); dot(T(M),red); dot(T(M1),red); dot(T(M2),red);
+label("$(5,8)$",T(P1),E,fontsize(8pt)); label("$(11,-14)$",T(P2),E,fontsize(8pt));
+label("$M(8,-3)$",T(M),E,fontsize(8pt)); label("$(-3,8)$",T(M1),N,fontsize(8pt)); label("$(-8,3)$",T(M2),W,fontsize(8pt));
+\end{asy}
+
+(The two reflections are in perpendicular lines through the origin, so together they are the rotation by $180^\circ$ about the origin, $(x,y)\mapsto(-x,-y)$; indeed $(-8,3)=-(8,-3)$.)

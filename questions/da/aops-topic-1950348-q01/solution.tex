@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1950348_math_puzzle
+% Stable identity: aops-topic-1950348-q01
+Use coordinates $A=(0,0)$, $B=(16,0)$, $C=(16,12)$, $D=(0,12)$, $S=(4,0)$.
+
+\emph{Lower bound.} Any route can be approximated by a polygonal path, made of pieces with horizontal and vertical displacements $(\Delta x_k,\Delta y_k)$. The route starts and ends at $x=4$ and visits both $x=16$ (wall $BC$) and $x=0$ (wall $DA$), so its total horizontal travel is at least $12+16+4=32$ (going from $4$ to the farther of the two walls, across to the other, and back to $4$, in either order). It starts and ends at $y=0$ and visits $y=12$, so its total vertical travel is at least $24$. By the triangle inequality for vectors (Minkowski),
+\[
+\text{length}=\sum_k\sqrt{\Delta x_k^2+\Delta y_k^2}\ \ge\ \sqrt{\Bigl(\sum_k|\Delta x_k|\Bigr)^2+\Bigl(\sum_k|\Delta y_k|\Bigr)^2}\ \ge\ \sqrt{32^2+24^2}=40 .
+\]
+
+\emph{A route of length 40.} Run $S\to(16,9)\to(12,12)\to(0,3)\to S$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(16,0),C=(16,12),D=(0,12),Sp=(4,0);
+draw(A--B--C--D--cycle,linewidth(1));
+pair P1=(16,9),P2=(12,12),P3=(0,3);
+draw(Sp--P1--P2--P3--cycle,blue+linewidth(1.1));
+dot(Sp);dot(P1);dot(P2);dot(P3);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$S$",Sp,S);
+label("$(16,9)$",P1,E);label("$(12,12)$",P2,2*N);label("$(0,3)$",P3,W);
+label("$15$",(Sp+P1)/2,SE,blue);label("$5$",(P1+P2)/2,SW,blue);label("$15$",(P2+P3)/2,NW,blue);label("$5$",(P3+Sp)/2,SW,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The pieces have lengths $\sqrt{12^2+9^2}=15$, $\sqrt{4^2+3^2}=5$, $\sqrt{12^2+9^2}=15$ and $\sqrt{4^2+3^2}=5$, total $40$. Every piece moves in a direction $(\pm4,\pm3)$, so all the inequalities above are equalities. (It is also the path of a ball bouncing off the walls with equal angles; unfolding the rectangle by reflections turns it into the straight segment from $(4,0)$ to $(36,24)$, of length $\sqrt{32^2+24^2}=40$.)
+
+The shortest route has length $\boxed{40\text{ yards}}$.

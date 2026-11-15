@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2432293_fun_problem
+% Stable identity: aops-topic-2432293-q01
+Bob needs the three straight wires $AB$, $AP$ and $BP$. The length $AB=\sqrt{10^2+1^2}=\sqrt{101}$ is fixed, so he must minimise $AP+PB$.
+
+Reflect $B$ in the $x$-axis to $B'=(10,-5)$. For every $P$ on the $x$-axis, $PB=PB'$, so
+\[AP+PB=AP+PB'\ge AB'=\sqrt{10^2+11^2}=\sqrt{221},\]
+with equality when $P$ is where segment $AB'$ crosses the $x$-axis, at $P=\left(\dfrac{60}{11},0\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair A=(0,6), B=(10,5), Bp=(10,-5), P=(60/11,0);
+draw((-1,0)--(11.5,0),Arrow(6)); draw((0,-6)--(0,7.3),Arrow(6));
+label("$x$",(11.5,0),E); label("$y$",(0,7.3),N);
+draw(A--B,blue+linewidth(1)); draw(A--P--B,red+linewidth(1)); draw(P--Bp,red+dashed); draw(B--Bp,gray+dotted);
+dot(A); dot(B); dot(Bp); dot(P);
+label("$A(0,6)$",A,NE); label("$B(10,5)$",B,NE); label("$B'(10,-5)$",Bp,E); label("$P$",P,SW);
+\end{asy}
+
+The least total length is $\sqrt{101}+\sqrt{221}\approx10.0499+14.8661=24.9160$ feet. Wire costs $5$ dollars per foot, so the cost is about $5\cdot24.916\approx124.58$ dollars, which rounds to $\boxed{125}$ dollars.

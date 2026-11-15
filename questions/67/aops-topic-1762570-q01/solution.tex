@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h1762570_cmimc_2018_djs_homemade_problem_collection
+% Stable identity: aops-topic-1762570-q01
+Place $A=(0,0)$, $B=(1,0)$, $C=(1,1)$, $D=(0,1)$ and $P=(t,1)$ with $0\le t\le1$. By the angle bisector theorem in triangle $APB$,
+\[
+\dfrac{AQ}{QB}=\dfrac{PA}{PB},\qquad\text{so}\qquad AQ=\dfrac{PA}{PA+PB}=\dfrac{1}{1+\dfrac{PB}{PA}},
+\]
+where $PA=\sqrt{t^2+1}$ and $PB=\sqrt{(1-t)^2+1}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1);
+real t=0.3; pair P=(t,1);
+real pa=abs(P-A), pb=abs(P-B); pair Q=(pa/(pa+pb),0);
+pair Q0=(sqrt(2)-1,0), Q1=(2-sqrt(2),0);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(P--A,linewidth(0.7));draw(P--B,linewidth(0.7));
+draw(P--Q,blue+linewidth(0.8));
+draw(Q0--Q1,red+linewidth(2.2));
+real a1=degrees(A-P),a2=degrees(Q-P),a3=degrees(B-P);
+draw(arc(P,0.14,a1,a2),linewidth(0.5));draw(arc(P,0.14,a2,a3),linewidth(0.5));
+draw((P+0.11*dir((a1+a2)/2))--(P+0.17*dir((a1+a2)/2)),linewidth(0.5));
+draw((P+0.11*dir((a2+a3)/2))--(P+0.17*dir((a2+a3)/2)),linewidth(0.5));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$P$",P,N);label("$Q$",Q,NE);
+label("$Q_0$",Q0,S,red);label("$Q_1$",Q1,S,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+As $t$ increases from $0$ to $1$, $PA$ increases and $PB$ decreases, so $\dfrac{PB}{PA}$ decreases and $AQ$ increases strictly and continuously. Hence $Q$ sweeps out the segment from $Q_0$ (for $P=D$) to $Q_1$ (for $P=C$), shown in red:
+\[
+AQ_0=\dfrac{1}{1+\sqrt2}=\sqrt2-1,\qquad AQ_1=\dfrac{\sqrt2}{\sqrt2+1}=2-\sqrt2 .
+\]
+The length of the segment is $(2-\sqrt2)-(\sqrt2-1)=\boxed{3-2\sqrt2}$.

@@ -1,0 +1,12 @@
+(a) The midpoint theorem gives $EF\parallel AC\parallel GH$ and $FG\parallel BD\parallel HE$, so $EFGH$ is a parallelogram. The corner triangles at $B,D$ have one quarter the areas of $ABC,ADC$, respectively, and together have one quarter the quadrilateral's area. Similarly the corner triangles at $A,C$ together have one quarter its area. The remaining midpoint parallelogram therefore has half the area.
+(b) Successively solving the midpoint equations gives
+\[
+B=(-p,-q),\quad C=(p,q-2),\quad D=(2-p,-q).
+\]
+The cross products of consecutive edge vectors are $4p,4(1-q),4(1-p),4q$. A strictly convex quadrilateral requires these all to have the same nonzero sign. Since $p,q>0$, this is precisely $\boxed{0<p<1,\quad0<q<1}$. Conversely these inequalities make the displayed vertices a simple strictly convex quadrilateral: its opposite sides do not cross, and the four turns are positive. Thus they are sufficient as well.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(.4,.6),B=(-.4,-.6),C=(.4,-1.4),D=(1.6,-.6),E=(0,0),F=(0,-1),G=(1,-1),H=(1,0);draw(A--B--C--D--cycle);filldraw(E--F--G--H--cycle,lightblue,blue);draw(A--C,dashed);draw(B--D,dashed);label("$A$",A,N);label("$B$",B,W);label("$C$",C,S);label("$D$",D,E);label("$E$",E,NW);label("$F$",F,SW);label("$G$",G,SE);label("$H$",H,NE);
+\end{asy}

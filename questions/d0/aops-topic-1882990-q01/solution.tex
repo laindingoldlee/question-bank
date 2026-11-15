@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1882990_geometry_practice
+% Stable identity: aops-topic-1882990-q01
+If the radius is $r$, then $\pi r^2\cdot3=6.75\pi$, so $r^2=2.25$ and $r=1.5$: each cylinder has diameter $3$ inches. Its height equals the height of the box, so cylinders cannot be stacked, and each one stands on a disc of diameter $3$ on the $3\times3$ floor (top view below).
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(3,0),C=(3,3),D=(0,3),O=(1.5,1.5);
+draw(A--B--C--D--cycle,linewidth(1));
+filldraw(circle(O,1.5),paleblue,linewidth(0.8));
+dot(O);draw(O--(3,1.5),dashed);
+label("$r=\dfrac{3}{2}$",(2.25,1.5),N);
+label("$3$",(1.5,0),S);label("$3$",(0,1.5),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The centre of such a disc must be at distance at least $1.5$ from every side of the square floor, so it must be the centre of the floor. Two cylinders would need two different centres at distance at least $3$, which is impossible. So Ella can fit exactly $\boxed{1}$ cylinder.

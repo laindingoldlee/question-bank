@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2655749_amc_10_problems
+% Stable identity: aops-topic-2655749-q04
+The big square is tiled by $2020^2$ unit squares, all alike, so it suffices to consider one unit square $[0,1]^2$. The lattice point nearest to a point of this square is one of its four corners.
+
+If $d\le\dfrac12$, the points of the unit square within $d$ of a corner form four non-overlapping quarter discs of radius $d$, of total area $\pi d^2$. At $d=\dfrac12$ this is $\dfrac\pi4>\dfrac12$, so the required $d$ is less than $\dfrac12$ and satisfies $\pi d^2=\dfrac12$:
+\[d=\dfrac{1}{\sqrt{2\pi}}\approx0.399.\]
+Since $\pi(0.35)^2\approx0.385<0.5<0.636\approx\pi(0.45)^2$, $d$ lies between $0.35$ and $0.45$, so to the nearest tenth $d=\boxed{0.4}$.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real d=0.399;
+fill(arc((0,0),d,0,90)--(0,0)--cycle,lightgray);fill(arc((1,0),d,90,180)--(1,0)--cycle,lightgray);
+fill(arc((1,1),d,180,270)--(1,1)--cycle,lightgray);fill(arc((0,1),d,270,360)--(0,1)--cycle,lightgray);
+draw((0,0)--(1,0)--(1,1)--(0,1)--cycle,linewidth(0.9));
+draw(arc((0,0),d,0,90));draw(arc((1,0),d,90,180));draw(arc((1,1),d,180,270));draw(arc((0,1),d,270,360));
+draw((0,0)--d*dir(45),Arrow);label("$d$",0.5*d*dir(45),NW,fontsize(8pt));
+label("$(0,0)$",(0,0),SW,fontsize(8pt));label("$(1,0)$",(1,0),SE,fontsize(8pt));label("$(1,1)$",(1,1),NE,fontsize(8pt));label("$(0,1)$",(0,1),NW,fontsize(8pt));
+label("$1$",(0.5,0),S,fontsize(8pt));
+\end{asy}

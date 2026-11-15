@@ -1,0 +1,17 @@
+The semiperimeter is $105$, so Heron's formula gives
+\[
+[ABC]=\sqrt{105\cdot40\cdot35\cdot30}=2100.
+\]
+The altitude from $A$ to $BC$ is therefore $\dfrac{2(2100)}{70}=60$.
+Write $AD=t\,AB=65t$. The distance from $D$ to $BC$ is $60(1-t)$. By the focus-directrix definition, $65t=60(1-t)$, giving $t=\dfrac{12}{25}$.
+Similarly, if $AE=s\,AC=75s$, then $75s=60(1-s)$, so $s=\dfrac{4}{9}$.
+The included angle at $A$ is common to the two triangles, hence
+\[
+[ADE]=ts[ABC]=\dfrac{12}{25}\dfrac{4}{9}\cdot2100=\boxed{448}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;pair A=(25,60),B=(0,0),C=(70,0),D=(13,31.2),E=(45,100.0/3);real f(real x){return (x-25)^2/120+30;}draw(A--B--C--cycle);draw(graph(f,-5,75),blue);filldraw(A--D--E--cycle,lightred);draw((-7,0)--(77,0),gray);label("$A$",A,(0,1));label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,(-1,0));label("$E$",E,(1,0));
+\end{asy}

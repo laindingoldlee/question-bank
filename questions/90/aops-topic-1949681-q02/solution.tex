@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1949681_1000th_post_problems
+% Stable identity: aops-topic-1949681-q02
+The lines meet the $x$-axis at $x=-\dfrac{5}{2}$ and $x=\dfrac{7}{3}$, and meet each other where $2x+5=-3x+7$, i.e. $x=\dfrac{2}{5}$, $y=\dfrac{29}{5}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair Pa=(-2.5,0),Pb=(7/3,0),Pc=(0.4,5.8);
+fill(Pa--Pb--Pc--cycle,palegray);
+draw((-3.5,0)--(3.8,0),Arrow(TeXHead));draw((0,-0.8)--(0,6.8),Arrow(TeXHead));
+label("$x$",(3.8,0),N);label("$y$",(0,6.8),N);
+draw((-2.9,-0.8)--(0.75,6.5),linewidth(1));draw((2.6,-0.8)--(0.15,6.55),linewidth(1));
+dot(Pa);dot(Pb);dot(Pc);
+label("$\left(-\dfrac{5}{2},0\right)$",(-3.0,-0.75),W,fontsize(8pt));label("$\left(\dfrac{7}{3},0\right)$",(2.95,-0.8),E,fontsize(8pt));
+label("$\left(\dfrac{2}{5},\dfrac{29}{5}\right)$",Pc,(-2.2,0.6),fontsize(8pt));
+label("$y=2x+5$",(-1.6,3.4),W);label("$y=-3x+7$",(1.75,2.4),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The triangle has base $\dfrac{7}{3}+\dfrac{5}{2}=\dfrac{29}{6}$ on the $x$-axis and height $\dfrac{29}{5}$, so its area is
+\[
+\dfrac{1}{2}\cdot\dfrac{29}{6}\cdot\dfrac{29}{5}=\boxed{\dfrac{841}{60}}.
+\]

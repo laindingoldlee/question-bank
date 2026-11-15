@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1208858_huh_hard_geometry_problem
+% Stable identity: aops-topic-1208858-q01
+For fixed side lengths, the area is largest when the quadrilateral is cyclic, and then Brahmagupta's formula gives it: with $s=\dfrac{39+52+25+60}{2}=88$,
+\[\sqrt{(88-39)(88-52)(88-25)(88-60)}=\sqrt{49\cdot36\cdot63\cdot28}=\sqrt{49\cdot36\cdot1764}=7\cdot6\cdot42=\boxed{1764}.\]
+A pleasant check: $39^2+52^2=65^2=25^2+60^2$, so the cyclic quadrilateral is two right triangles on the common hypotenuse $AC=65$ (a diameter), with area $\dfrac{39\cdot52}{2}+\dfrac{25\cdot60}{2}=1014+750=1764$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),C=(65,0); pair B=(39*39/65,39*52/65); pair D=(25*25/65,-25*60/65);
+draw(circle((32.5,0),32.5),gray); draw(A--B--C--D--cycle,linewidth(0.9)); draw(A--C,dashed);
+label("$A$",A,W); label("$B$",B,N); label("$C$",C,E); label("$D$",D,S);
+label("$39$",(A+B)/2,NW); label("$52$",(B+C)/2,NE); label("$25$",(A+D)/2,SW); label("$60$",(C+D)/2,SE); label("$65$",(A+C)/2+(8,0),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2587266_difficult_mod_inverses_problem
+% Stable identity: aops-topic-2587266-q01
+We need $\gcd(n,54700000547)>1$ and $\gcd(n,54700547)>1$. Factor:
+\[54700000547=547\left(10^8+1\right),\qquad54700547=547\left(10^5+1\right)=547\cdot11\cdot9091.\]
+Since $100\equiv-2\pmod{17}$, we get $10^8=100^4\equiv16\equiv-1\pmod{17}$, so $17\mid10^8+1$. In fact $10^8+1=17\cdot5882353$. Checking $2,3,5,7,11,13$ shows that $10^8+1$ has no smaller prime factor: it is odd, does not end in $0$ or $5$, and $10^8\equiv1$, $2$, $1$, $9\pmod{3,7,11,13}$, so $10^8+1\not\equiv0$ in each case.
+
+So the prime factors of the first modulus are $547$, $17$ and primes greater than $17$, and those of the second are $11$, $547$ and $9091$. The only common prime is $547$, since $\gcd\left(10^8+1,10^5+1\right)=1$ (the Euclidean algorithm gives $\gcd(100001,999)=1$).
+
+So $n$ must be divisible by $547$, or by a prime factor of $10^8+1$ (at least $17$) and a different prime from $\{11,9091\}$. The latter gives $n\ge17\cdot11=187$. Since $187=11\cdot17$ works, the answer is $\boxed{187}$.

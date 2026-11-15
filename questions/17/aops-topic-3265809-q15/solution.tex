@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h3265809_six_years
+% Stable identity: aops-topic-3265809-q15
+Let the circle radius be $R$, chord length $L$, and the smaller central angle be $\theta\in(0,\pi)$ in radians. The minor segment has area $\dfrac{R^2}{2}(\theta-\sin\theta)=\dfrac{\pi R^2}{3}$, so $\theta$ is the unique solution of
+\[\theta-\sin\theta=\dfrac{2\pi}{3},\quad0<\theta<\pi,\]
+because the left side increases strictly from zero to $\pi$. The chord satisfies $L=2R\sin(\dfrac{\theta}{2})$.
+The square's cut-off right-isosceles triangle has hypotenuse $L$ and area $\dfrac{L^2}{4}$. Such a corner triangle has at most half the square's area, so it is the smaller one-third region, making square area $\dfrac{3L^2}{4}$. Consequently the desired ratio is
+\[\boxed{\dfrac{\pi}{3\sin^2(\dfrac{\theta}{2})}}\approx1.126248,\]
+where $\theta\approx2.605326$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real theta=2.6053256746,h=cos(theta/2),s=sin(theta/2),q=sqrt(3)*s;pair V=(h+s,0),u=(-1,1)/sqrt(2),v=(-1,-1)/sqrt(2),P=(h,s),Q=(h,-s);draw(circle((0,0),1),gray);draw(V--V+q*u--V+q*(u+v)--V+q*v--cycle,blue);draw(P--Q,red+linewidth(1.2));draw((0,0)--P,dashed);draw((0,0)--Q,dashed);label("$O$",(0,0),SW);label("$P$",P,N);label("$Q$",Q,S);label("$V$",V,E);label("$L$",(P+Q)/2,E);label("Circle and square share chord PQ",(0,-1.8));
+\end{asy}

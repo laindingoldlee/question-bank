@@ -1,0 +1,7 @@
+Both cubes together have label sum $2(1+2+4+8+16+32)=126$. On the lower cube, the two hidden faces are opposite, so their possible sums are $33,18,12$. Their minimum is $4+8=12$. The upper cube has only one hidden face, whose label can independently be 1. Thus $N=126-12-1=113$, attainable by these orientations. Its digit-square sum is $1^2+1^2+3^2=\boxed{11}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int k=0;k<2;++k){real y=2*k;draw((0,y)--(2,y)--(2,y+2)--(0,y+2)--cycle);draw((2,y)--(2.6,y+.5)--(2.6,y+2.5)--(2,y+2));}draw((0,4)--(.6,4.5)--(2.6,4.5));draw((0,2)--(.6,2.5)--(2.6,2.5),dashed);label("lower: hidden 4 and 8",(1,-.7));label("upper: hidden bottom 1",(1,5.1));
+\end{asy}

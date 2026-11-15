@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2968023_circles
+% Stable identity: aops-topic-2968023-q01
+\begin{enumerate}
+\item $\angle AMB=90^\circ$ (angle in a semicircle), so $BM=\sqrt{10^2-8^2}=\boxed{6}$ cm.
+\item The tangent at $A$ is perpendicular to $AB$, so triangle $PAB$ has a right angle at $A$, and $\tan\angle ABM=\dfrac{AM}{BM}=\dfrac43$. Hence $AP=AB\tan\angle ABP=10\cdot\dfrac43=\boxed{\dfrac{40}3}$ cm.
+\item $[ABM]=\dfrac12\cdot8\cdot6=24$, and $O$ is the midpoint of $AB$, so $[AOM]=\dfrac12[ABM]=\boxed{12}$ cm$^2$.
+\end{enumerate}
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=(-5,0),B=(5,0);pair M=A+8*dir(degrees(acos(0.8)));pair P=extension(B,M,A,A+(0,1));
+draw(circle(O,5));draw(A--B);draw(A--M--B);draw(M--P,dashed);draw(A--P);draw(O--M,dotted);
+dot(O);label("$A$",A,W);label("$B$",B,E);label("$M$",M,NE);label("$O$",O,S);label("$P$",P,NW);
+\end{asy}

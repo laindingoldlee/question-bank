@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1199873_prove_that_equality
+% Stable identity: aops-topic-1199873-q01
+Use $a=BC$, $b=CA$, $c=AB$ and $s=\dfrac{a+b+c}{2}$. The point $O$ is the incentre, and it divides the bisector $BD$ in the ratio $BO:OD=(a+c):b$ (by the angle bisector theorem in triangle $ABD$ with $AD=\dfrac{bc}{a+c}$). Hence $\dfrac{BO}{BD}=\dfrac{a+c}{a+b+c}$, and similarly $\dfrac{CO}{CE}=\dfrac{a+b}{a+b+c}$. The hypothesis becomes
+\[(a+b+c)^2=2(a+b)(a+c)\iff b^2+c^2=a^2,\]
+so the hypothesis is equivalent to $\angle A=90^\circ$.
+
+$H$ is the point where the incircle touches $BC$, so $HB=s-b$ and $HC=s-c$. With $b^2+c^2=a^2$,
+\[4(s-b)(s-c)=(a-b+c)(a+b-c)=a^2-(b-c)^2=a^2-b^2-c^2+2bc=2bc,\]
+so $2\,HB\cdot HC=bc=AB\cdot AC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,3),B=(0,0),C=(4,0); real a=5,b=4,c=3; pair O=(a*A+b*B+c*C)/(a+b+c); pair H=(O.x,0);
+pair D=extension(B,O,A,C), Ee=extension(C,O,A,B); draw(A--B--C--cycle,linewidth(0.9)); draw(B--D,blue); draw(C--Ee,blue); draw(O--H,dashed);
+dot(O); dot(H); label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,NE); label("$E$",Ee,W); label("$O$",O,NE); label("$H$",H,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

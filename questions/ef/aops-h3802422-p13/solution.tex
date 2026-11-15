@@ -1,0 +1,7 @@
+A regular hexagon of side s comprises six equilateral triangles and has area $\dfrac{3\sqrt3}{2}s^2$. The required area is $\dfrac{3\sqrt3}{2}(2^2+6^2-4^2)=\dfrac{3\sqrt3}{2}\cdot24=\boxed{36\sqrt3}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int s=6;s>=2;s-=2){path p=s*dir(0);for(int i=1;i<6;++i)p=p--s*dir(60i);filldraw(p--cycle,s==4?white:lightblue);}label("2",(1,1));label("4",(3,1));label("6",(5,1));
+\end{asy}

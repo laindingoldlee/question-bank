@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1569735_problemlast_man_standing
+% Stable identity: aops-topic-1569735-q01
+We use induction on $n$. Since all distances are different, ``the nearest person'' is well defined.
+
+\textbf{Key step.} Let $A$, $B$ be the two people at the smallest distance. Each of $A$, $B$ is the other's nearest person, so $A$ and $B$ shoot each other.
+
+\textbf{Base case $n=1$.} With three people $A,B,C$, $A$ and $B$ shoot each other and $C$ shoots one of them, so nobody shoots $C$.
+
+\textbf{Induction step.} Suppose the claim holds for $2n-1$ people, and consider $2n+1$ people with $A$, $B$ as above. Let $R$ be the set of the other $2n-1$ people.
+\begin{itemize}
+\item \emph{Someone in $R$ shoots $A$ or $B$.} Then the people of $R$ are hit by at most the bullets fired by $R$ other than that one, which is at most $2n-2$ bullets (A's and B's bullets go to each other). So at most $2n-2$ of the $2n-1$ people in $R$ are shot, and someone is not shot.
+\item \emph{Nobody in $R$ shoots $A$ or $B$.} Then each person in $R$ has his nearest person inside $R$, so the people of $R$ shoot exactly as they would if $A$ and $B$ were absent. By the induction hypothesis someone in $R$ is not shot by anyone in $R$, and he is not shot by $A$ or $B$ either.
+\end{itemize}
+In both cases somebody survives, completing the induction. $\blacksquare$
+
+(The distinct-distances condition is needed: for three people at the vertices of an equilateral triangle, ``the nearest person'' is not determined, and they could shoot in a cycle.)

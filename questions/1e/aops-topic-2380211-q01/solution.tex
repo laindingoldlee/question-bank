@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2380211_deams_speedrun_odds
+% Stable identity: aops-topic-2380211-q01
+\textbf{(a)} The number $X$ of rods has $P(X=k)=\dbinom{1000}{k}2^{-1000}$. For $900\le k\le1000$ we have $\dbinom{1000}{k}=\dbinom{1000}{1000-k}$ with $1000-k\le100$, and the binomial coefficients $\dbinom{1000}{j}$ increase for $j\le500$, so each term is at most $\dbinom{1000}{100}$. There are $101$ terms, hence
+\[P(X\ge900)\le101\dbinom{1000}{100}2^{-1000}.\]
+Now $\dbinom{1000}{100}=\dfrac{1000\cdot999\cdots901}{100!}<\dfrac{1000^{100}}{100!}$, and $100!>51\cdot52\cdots100>50^{50}$. Therefore
+\[\dbinom{1000}{100}<\dfrac{10^{300}}{50^{50}}=\dfrac{10^{300}\cdot2^{50}}{100^{50}}=2^{50}\cdot10^{200}.\]
+So
+\[P(X\ge900)<101\cdot10^{200}\cdot2^{-950}=\dfrac{101\cdot10^{200}}{1024^{95}}<\dfrac{101\cdot10^{200}}{10^{285}}<10^{-82}<10^{-80}.\quad\blacksquare\]
+
+\textbf{(b)} As a percentage the probability is less than $10^{-80}\cdot100\%=10^{-78}\%$, far less than half a millionth of a percent. Rounded to the nearest millionth of a percent it is $\boxed{0.000000\%}$.
+
+(The exact value is about $6.7\times10^{-162}$; the probability of exactly $900$ rods is even smaller, about $6.0\times10^{-162}$.)

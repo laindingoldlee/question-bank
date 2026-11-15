@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1363168_orthocenter_help
+% Stable identity: aops-topic-1363168-q01
+\textbf{Key fact.} The circumcircle of $BHC$ has the same radius as the circumcircle of $ABC$. Indeed, in quadrilateral $AFHE$ the angles at $E$ and $F$ are right angles, so $\angle FHE=180^\circ-\angle A$, and hence $\angle BHC=\angle FHE=180^\circ-\angle A$ (vertical angles). By the extended law of sines in triangle $BHC$, its circumradius is
+\[\dfrac{BC}{2\sin\angle BHC}=\dfrac{BC}{2\sin(180^\circ-A)}=\dfrac{BC}{2\sin A}=R,\]
+the circumradius of $ABC$. (Equivalently, the reflection of $H$ in $BC$ lies on the circumcircle of $ABC$, so the circle through $B$, $H$, $C$ is the reflection of that circumcircle; its centre $O'$ is the reflection of the circumcentre $O$ in $BC$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair ft(pair P,pair A,pair B){return A+dot(P-A,unit(B-A))*unit(B-A);}
+pair B=(0,0),C=(5,0),A=(3.8,sqrt(49-3.8^2));
+pair D=ft(A,B,C),EE=ft(B,A,C),F=ft(C,A,B);
+pair H=extension(A,D,B,EE);
+pair O=(2.5,(A.y^2+A.x^2-5*A.x)/(2*A.y)); pair Op=(O.x,-O.y);
+draw(circle(Op,abs(B-Op)),blue);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,red+dashed); draw(B--EE,red+dashed); draw(C--F,red+dashed);
+draw(ra(D,C-D,A-D,0.25),red);
+dot(H); dot(Op,blue);
+label("$A$",A,N); label("$B$",B,W); label("$C$",C,E); label("$D$",D,S); label("$E$",EE,NE); label("$F$",F,NW);
+label("$H$",H,2.2*dir(50)); label("$O'$",Op+(0,-0.12),S,blue);
+label("$7$",B+0.75*(A-B),NW); label("$6$",(A+C)/2+(0.2,0.1),NE); label("$5$",(B+C)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Computing $R$.} The triangle is acute ($5^2+6^2>7^2$), so $H$ is inside it. By Heron's formula with $s=\dfrac{7+5+6}{2}=9$,
+\[[ABC]=\sqrt{9\cdot2\cdot4\cdot3}=\sqrt{216}=6\sqrt6 .\]
+Then
+\[R=\dfrac{abc}{4[ABC]}=\dfrac{5\cdot6\cdot7}{24\sqrt6}=\dfrac{35}{4\sqrt6}=\boxed{\dfrac{35\sqrt6}{24}}\approx3.57 .\]

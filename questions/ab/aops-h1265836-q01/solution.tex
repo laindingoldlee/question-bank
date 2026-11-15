@@ -1,0 +1,20 @@
+The Cartesian vertices are $(3,0)$ and $(15,0)$, since the second polar radius is negative. Thus the center is $(9,0)$, $a=6$, and the focal distance from the center is $c=9$. Hence $b^2=c^2-a^2=45$, and
+\[
+\dfrac{(x-9)^2}{36}-\dfrac{y^2}{45}=1.
+\]
+Substituting $x=r\cos\theta$, $y=r\sin\theta$ factors this equation as
+\[
+\bigl((3\cos\theta+2)r-15\bigr)
+\bigl((3\cos\theta-2)r-15\bigr)=0.
+\]
+With signed radii, either factor describes the entire Cartesian hyperbola, because replacing $(r,\theta)$ by $(-r,\theta+\pi)$ swaps the two factors. A suitable equation is
+\[
+\boxed{r=\dfrac{15}{2+3\cos\theta}},
+\]
+with zero denominators excluded. It gives the two specified signed polar vertex coordinates directly.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;pair f(real t){return (9+6cosh(t),sqrt(45)*sinh(t));}pair g(real t){return (9-6cosh(t),sqrt(45)*sinh(t));}draw(graph(f,-1,1),blue);draw(graph(g,-1,1),blue);draw((-3,0)--(21,0),gray,Arrow);dot((0,0));dot((3,0));dot((15,0));label("focus",(0,0),(0,-1));label("$3$",(3,0),(0,-1));label("$15$",(15,0),(0,-1));
+\end{asy}

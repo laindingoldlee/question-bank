@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1348947_problem_compilation
+% Stable identity: aops-topic-1348947-q02
+Place $B=(0,0)$ and $C=(15,0)$. From $x^2+y^2=14^2$ and $(x-15)^2+y^2=13^2$ we get $-30x+225=-27$, so $A=\left(\dfrac{42}{5},\dfrac{56}{5}\right)$. The altitude from $A$ is the line $x=\dfrac{42}{5}$, so $H=\left(\dfrac{42}{5},t\right)$. The altitude from $B$ is perpendicular to $AC$, whose direction is $C-A=\left(\dfrac{33}{5},-\dfrac{56}{5}\right)$, so $H\cdot(C-A)=0$:
+\[
+\dfrac{42}{5}\cdot\dfrac{33}{5}-\dfrac{56}{5}t=0\quad\Longrightarrow\quad t=\dfrac{99}{20}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair foot(pair P,pair A,pair B){return A+dot(P-A,B-A)/dot(B-A,B-A)*(B-A);}
+pair B=(0,0),C=(15,0),A=(8.4,11.2);
+pair D=foot(A,B,C),E=foot(B,A,C),F=foot(C,A,B),H=(8.4,4.95);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,dashed); draw(B--E,dashed); draw(C--F,dashed);
+draw(D--E--F--cycle,blue);
+draw(ra(D,C-D,A-D,0.6)); draw(ra(E,A-E,B-E,0.6)); draw(ra(F,B-F,C-F,0.6));
+dot(H,red);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S); label("$E$",E,NE); label("$F$",F,NW); label("$H$",H+(1.2,0),red);
+label("$14$",(A+B)/2+(-0.6,0.5)); label("$13$",(A+C)/2+(0.6,0.6)); draw((0,-1.5)--(15,-1.5),Arrows(4)); draw((0,-1.0)--(0,-1.9),gray); draw((15,-1.0)--(15,-1.9),gray); label("$15$",(7.5,-1.5),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then
+\[
+AH=\dfrac{56}{5}-\dfrac{99}{20}=\dfrac{25}{4},\qquad BH=\sqrt{\left(\dfrac{42}{5}\right)^2+\left(\dfrac{99}{20}\right)^2}=\dfrac{39}{4},\qquad CH=\sqrt{\left(\dfrac{33}{5}\right)^2+\left(\dfrac{99}{20}\right)^2}=\dfrac{33}{4}.
+\]
+(For $BH$: $\dfrac{1}{400}\left(168^2+99^2\right)=\dfrac{38025}{400}=\left(\dfrac{195}{20}\right)^2$; for $CH$: $\dfrac{1}{400}\left(132^2+99^2\right)=\dfrac{27225}{400}=\left(\dfrac{165}{20}\right)^2$.) So $AH+BH+CH=\dfrac{97}{4}$ and $a+b=\boxed{101}$.
+
+This agrees with $AH=2R\cos A$ etc.: $R=\dfrac{65}{8}$ and $\cos A+\cos B+\cos C=\dfrac{5}{13}+\dfrac{3}{5}+\dfrac{33}{65}=\dfrac{97}{65}$, so the sum is $2R\cdot\dfrac{97}{65}=\dfrac{97}{4}$.

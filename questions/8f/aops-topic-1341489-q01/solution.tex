@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1341489_trapezoid_midsegments
+% Stable identity: aops-topic-1341489-q01
+Since $\angle F=\angle G=90^\circ$, the side $FG$ is perpendicular to both $GK$ and $FL$, so the parallel sides (bases) are $GK$ and $FL$, and $\angle L=180^\circ-120^\circ=60^\circ$.
+
+In triangle $FKL$ we have $KF=KL=a$, so it is isosceles with $\angle KFL=\angle KLF=60^\circ$; hence it is equilateral and $FL=a$. Also $\angle GKF=\angle KFL=60^\circ$ (alternate angles), so in the right triangle $FGK$ the side $GK=FK\cos60^\circ=\dfrac {a}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+real a=4, h=a*sqrt(3)/2;
+pair G=(0,0), K=(a/2,0), F=(0,h), L=(a,h);
+pair M1=(F+G)/2, M2=(K+L)/2;
+draw(F--G--K--L--cycle,linewidth(0.9));
+draw(F--K,blue); draw(M1--M2,red+dashed);
+draw(ra(G,K-G,F-G,0.3)); draw(ra(F,G-F,L-F,0.3));
+label("$F$",F,NW); label("$G$",G,SW); label("$K$",K,SE); label("$L$",L,NE);
+label("$a$",F+0.25*(K-F),NE,blue); label("$a$",K+0.3*(L-K),E);
+label("$\dfrac{a}{2}$",(G+K)/2,S); label("$a$",(F+L)/2,N);
+draw(arc(K,0.45,60,180)); label("$120^\circ$",K+0.8*dir(90),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The midsegment is the average of the bases:
+\[
+\dfrac{GK+FL}{2}=\dfrac{\dfrac {a}{2}+a}{2}=\boxed{\dfrac{3a}{4}}.
+\]

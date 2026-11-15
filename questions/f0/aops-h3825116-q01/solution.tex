@@ -1,0 +1,8 @@
+A cycle must contain an odd term: repeated halving alone strictly decreases positive integers. If $K$ is even, an odd term maps to a larger odd term forever, which is impossible in a cycle. Thus $K$ is odd, and every odd step is followed by an even term.
+
+Let $o$ and $e$ be the numbers of odd and even steps among the six steps. Then $o+e=6$ and $1\le o\le e$. Composition of the steps has the form $C^6(n)=\dfrac{K^o n+b}{2^e}$ with $b>0$, so $K^o<2^e$.
+
+If $o=1$, begin at the unique odd term $m$. Five halvings follow, so $Km+1=32m$. Hence $(32-K)m=1$, giving $m=1,K=31$.
+If $o=2$, then $K^2<16$, so odd $K$ is $1$ or $3$.
+If $o=3$, then $K^3<8$, so $K=1$.
+All three candidates work: the cycles are $1\to2\to1$ for $K=1$, $1\to4\to2\to1$ for $K=3$, and $1\to32\to16\to8\to4\to2\to1$ for $K=31$. Their lengths divide six. Therefore $\boxed{K\in\{1,3,31\}}$.

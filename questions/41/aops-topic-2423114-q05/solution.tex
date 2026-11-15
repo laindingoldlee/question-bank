@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2423114_late_100th_post
+% Stable identity: aops-topic-2423114-q05
+If all lengths are multiplied by a factor $k$, all volumes are multiplied by $k^3$; with the same material, the weight is proportional to the volume.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair o=(0,0); real k=1;
+path box(real w,real h,real d){ return (0,0)--(w,0)--(w,h)--(0,h)--cycle; }
+void solid(pair o,real w,real h,real d){
+  pair dz=(0.5*d,0.35*d);
+  draw(shift(o)*box(w,h,d),linewidth(0.9));
+  draw(o+(0,h)--o+(0,h)+dz--o+(w,h)+dz--o+(w,h),linewidth(0.9));
+  draw(o+(w,0)--o+(w,0)+dz--o+(w,h)+dz,linewidth(0.9));
+}
+solid((0,0),3,4,2); solid((6.2,0),1.5,2,1);
+draw((-0.4,0)--(-0.4,4),Arrows(4)); label("$4$ ft",(-0.4,2),W);
+draw((5.8,0)--(5.8,2),Arrows(4)); label("$x$",(5.8,1),W);
+label("$96$ lb",(1.5,-0.1),S); label("$12$ lb",(6.95,-0.1),S);
+\end{asy}
+
+Here the weight ratio is $\dfrac{12}{96}=\dfrac18$, so $k^3=\dfrac18$ and $k=\dfrac12$. Hence $x=4k=\boxed{2}$.

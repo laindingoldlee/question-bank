@@ -1,0 +1,9 @@
+Let $A=(0,0),B=(4,0),C=(0,3)$. The angle-bisector theorem gives feet $D=(\dfrac{12}{7},\dfrac{12}{7})$ on $BC$, $E=(0,\dfrac{4}{3})$ on $CA$, and $F=(\dfrac{3}{2},0)$ on $AB$. The determinant of $D-F$ and $E-F$ is $\dfrac{20}{7}$, so $[DEF]=\boxed{\dfrac{10}{7}}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(4,0),(0,3)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));pair D=(12/7,12/7),E=(0,4/3),F=(1.5,0);draw(D--E--F--cycle);label("$D$",D,(1,1));label("$E$",E,(-1,0));label("$F$",F,(0,-1));
+\end{asy}
+

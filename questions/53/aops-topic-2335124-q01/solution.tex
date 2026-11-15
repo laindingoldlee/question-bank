@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2335124_a_question_on_coordinate_geometry
+% Stable identity: aops-topic-2335124-q01
+\textbf{(a)} The line is not vertical (it has a slope). The point $\left(x_0,y_0\right)$ is on the line and satisfies the equation. A point $(x,y)$ with $x=x_0$ and $y\ne y_0$ is not on the line and does not satisfy the equation. Any other point $(x,y)$ has $x\ne x_0$, and it lies on the line exactly when the slope from $\left(x_0,y_0\right)$ to $(x,y)$ is $m$:
+\[\dfrac{y-y_0}{x-x_0}=m\iff y-y_0=m\left(x-x_0\right).\]
+So the line is exactly the set of solutions of $y-y_0=m\left(x-x_0\right)$ (the \emph{point-slope form}). $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return -2/3*x+7;}
+draw((-0.5,0)--(10.8,0),Arrow(6)); draw((0,-0.5)--(0,8.2),Arrow(6));
+label("$x$",(10.8,0),E); label("$y$",(0,8.2),N);
+draw(graph(f,-0.3,10.5),blue+linewidth(0.9));
+pair P0=(3,5), P1=(7.5,2);
+draw(P0--(P1.x,P0.y),dashed); draw((P1.x,P0.y)--P1,dashed);
+dot(P0); dot(P1);
+label("$(3,5)$",P0,SW); label("$(x,y)$",P1,NE);
+label("$x-3$",((P0.x+P1.x)/2,P0.y),N,fontsize(8pt)); label("$y-5$",(P1.x,(P0.y+P1.y)/2),E,fontsize(8pt));
+\end{asy}
+
+\textbf{(b)} With $m=-\dfrac23$ and $\left(x_0,y_0\right)=(3,5)$:
+\[y-5=-\dfrac23(x-3)\iff y=-\dfrac23x+2+5\iff\boxed{y=-\dfrac23x+7}.\]
+(Check: $x=3$ gives $y=-2+7=5$.)

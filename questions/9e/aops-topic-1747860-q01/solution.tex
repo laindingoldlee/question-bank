@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1747860_probability_problem_from_2017_mathcounts_nats
+% Stable identity: aops-topic-1747860-q01
+On each roll a player escapes with probability $p=\dfrac{1}{6}$ and stays with probability $q=\dfrac{5}{6}$.
+
+\textbf{Who escapes first.} Rounds of three rolls (Piper, Quincy, Riley) repeat until someone escapes. Summing over the number of failed rounds, the first escape is by Quincy with probability $\dfrac{qp}{1-q^3}$ and by Riley with probability $\dfrac{q^2p}{1-q^3}$ (Piper must not escape first).
+
+\textbf{The race between the other two.} Once one player has escaped, the remaining two alternate. The player who rolls first escapes first with probability
+\[
+p+q^2p+q^4p+\cdots=\dfrac{p}{1-q^2}=\dfrac{1}{1+q}=\dfrac{6}{11},
+\]
+and the other with probability $\dfrac{5}{11}$.
+\begin{itemize}
+\item If Quincy escapes first, Riley rolls next, then Piper. Riley must beat Piper: probability $\dfrac{6}{11}$.
+\item If Riley escapes first, Piper rolls next, then Quincy. Quincy must beat Piper: probability $\dfrac{5}{11}$.
+\end{itemize}
+Therefore, with $1-q^3=\dfrac{91}{216}$, $qp=\dfrac{30}{216}$ and $q^2p=\dfrac{25}{216}$,
+\[
+P=\dfrac{\dfrac{30}{216}\cdot\dfrac{6}{11}+\dfrac{25}{216}\cdot\dfrac{5}{11}}{\dfrac{91}{216}}=\dfrac{180+125}{11\cdot91}=\boxed{\dfrac{305}{1001}} .
+\]
+(The poster's $\dfrac{6}{11}$ is the probability that the first of two alternating players wins the race; it is only one ingredient. The rule of the turn order after an escape matters: the next roller is the next remaining player in the original order.)

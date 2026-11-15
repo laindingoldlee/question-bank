@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1374433_a_challenging_problem
+% Stable identity: aops-topic-1374433-q01
+In quadrilateral $ADPE$ the angles at $D$ and $E$ are right angles and the angle at $A$ is $60^\circ$, so $\angle DPE=360^\circ-90^\circ-90^\circ-60^\circ=120^\circ$. In the same way $\angle EPF=\angle FPD=120^\circ$. These three angles add up to $360^\circ$, so $P$ lies inside triangle $DEF$ and splits it into triangles $PDE$, $PEF$, $PFD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+real h=42, sd=28*sqrt(3);
+pair B=(0,0),C=(sd,0),A=(sd/2,h);
+pair P=(41/sqrt(3),15);
+pair pr(pair X,pair U,pair V){return U+dot(X-U,unit(V-U))*unit(V-U);}
+pair F=pr(P,B,C), D=pr(P,B,A), Ep=pr(P,A,C);
+fill(D--Ep--F--cycle,palegray);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(D--Ep--F--cycle,blue);
+draw(P--D,red); draw(P--Ep,red); draw(P--F,red);
+draw(ra(D,P-D,A-D,2)); draw(ra(Ep,P-Ep,A-Ep,2)); draw(ra(F,P-F,C-F,2));
+dot(P);dot(D);dot(Ep);dot(F);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE);
+label("$P$",P,dir(200)); label("$D$",D,NW); label("$E$",Ep,NE); label("$F$",F,S);
+label("$13$",(P+D)/2,dir(D-P)*dir(90),red); label("$14$",(P+Ep)/2,dir(Ep-P)*dir(90),red); label("$15$",(P+F)/2,W,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Using $[XYZ]=\dfrac{1}{2}\,xy\sin\theta$ and $\sin120^\circ=\dfrac{\sqrt3}{2}$:
+\[
+[DEF]=\dfrac{1}{2}\cdot\dfrac{\sqrt3}{2}\left(13\cdot14+14\cdot15+15\cdot13\right)=\dfrac{\sqrt3}{4}(182+210+195)=\boxed{\dfrac{587\sqrt3}{4}}\approx254.2 .
+\]
+The side length of $ABC$ is not needed. (For the record, the three distances add up to the height, $13+14+15=42$, so the side is $\dfrac{2\cdot42}{\sqrt3}=28\sqrt3$, and such a point $P$ exists.)

@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2646257_is_this_true_altitude2__left_part_of_hypotenuseright_part
+% Stable identity: aops-topic-2646257-q01
+Since $\angle ACD=90^\circ-\angle A=\angle B$, triangles $ADC$ and $CDB$ (both right-angled at $D$) are similar, with $A\leftrightarrow C$ and $C\leftrightarrow B$. Hence
+\[\dfrac{AD}{CD}=\dfrac{CD}{DB},\qquad\text{so}\qquad CD^2=AD\cdot DB=pq.\qquad\blacksquare\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,3),A=(-4,0),B=(2.25,0),D=(0,0);
+draw(A--B--C--cycle,linewidth(0.8));draw(C--D,dashed);
+draw((0.25,0)--(0.25,0.25)--(0,0.25));pair u=unit(A-C),v=unit(B-C);draw(C+0.3*u--C+0.3*(u+v)--C+0.3*v);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,S);label("$p$",(A+D)/2,S);label("$q$",(D+B)/2,S);label("$h$",(C+D)/2,E);
+\end{asy}

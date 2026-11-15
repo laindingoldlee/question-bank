@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h3184179_2013_bmmt_individual_round__berkley_mini_math_tournament
+% Stable identity: aops-topic-3184179-q03
+For each column, the top and bottom entries must differ from the middle, giving 12 possible column patterns. Two neighbouring columns are compatible exactly when their entries differ in all three positions. Start with count 1 for each possible first column and apply this compatibility transition three times:
+\begin{verbatim}
+from itertools import product
+states=[s for s in product((1,2,3),repeat=3)
+        if s[0]!=s[1] and s[1]!=s[2]]
+counts={s:1 for s in states}
+for _ in range(3):
+    counts={t:sum(counts[s] for s in states
+                 if all(s[j]!=t[j] for j in range(3)))
+            for t in states}
+assert sum(counts.values())==1122
+\end{verbatim}
+Every valid grid has a unique sequence of compatible columns, so the answer is $\boxed{1122}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int x=0;x<=4;++x)draw((x,0)--(x,3));for(int y=0;y<=3;++y)draw((0,y)--(4,y));label("3 rows, 4 columns",(2,-.5));
+\end{asy}

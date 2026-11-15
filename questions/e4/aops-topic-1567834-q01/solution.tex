@@ -1,0 +1,44 @@
+% Source: https://artofproblemsolving.com/community/c3h1567834_201415_mathcounts_school_handbook268
+% Stable identity: aops-topic-1567834-q01
+The slant height of the cone is $\sqrt{48^2+14^2}=\sqrt{2304+196}=\sqrt{2500}=50$ feet. Unrolled, the lateral surface is a sector of a circle of radius $50$ (centred at the apex $V$), and its arc is the circumference of the base, $2\pi\cdot48=96\pi$.
+
+The full circle of radius $50$ has circumference $100\pi$, so the sector is $\dfrac{96\pi}{100\pi}=\dfrac{24}{25}$ of the circle and has central angle $\dfrac{24}{25}\cdot360^\circ=345.6^\circ$. The missing sector has central angle
+\[
+360^\circ-345.6^\circ=\boxed{14.4^\circ}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real r=48,h=14,ry=4;
+pair O=(0,0),V=(0,h);
+path el=ellipse(O,r,ry);
+draw(subpath(el,0,2),dashed);draw(subpath(el,2,4),linewidth(0.9));
+draw((-r,0)--V--(r,0),linewidth(0.9));
+draw(O--(r,0),dashed);draw(O--V,dashed);
+draw((0,0)--(2.2,0)--(2.2,2.2)--(0,2.2));
+label("$48$",(r/2,-3.5),S);label("$14$",(0,8.5),W);label("$50$",(r/2,h/2),NE);
+label("$V$",V,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=50,g=360*48/50; pair C=(0,0);
+real a0=90+(360-g)/2;
+fill(C--arc(C,R,a0,a0+g)--cycle,lightgray);
+draw(C--arc(C,R,a0,a0+g)--cycle,linewidth(0.9));
+draw(arc(C,R,90-(360-g)/2,a0),dashed);
+draw(arc(C,14,90-(360-g)/2,a0),red);
+label("$14.4^\circ$",C+(0,R+8),red);
+draw(C+(0,15)--C+(0,R+4),red+linewidth(0.4));
+draw(C--C+R*dir(220),dashed);
+label("$50$",C+R*dir(220)/2,SE);
+label("$V$",C,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The first figure is the cone, drawn to scale; the second is the unrolled lateral surface, where the dashed arc closes the missing sector.

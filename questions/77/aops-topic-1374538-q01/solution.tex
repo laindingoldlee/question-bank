@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1374538_problem_from_oldaops_memorial_comp
+% Stable identity: aops-topic-1374538-q01
+Let $r_k$ be the remainder of $F_k$ on division by $n$. Then $r_{k+2}$ is the remainder of $r_{k+1}+r_k$, so each pair $(r_k,r_{k+1})$ determines the next pair $(r_{k+1},r_{k+2})$.
+
+There are only $n^2$ possible pairs of remainders, so among the $n^2+1$ pairs $(r_k,r_{k+1})$ with $1\le k\le n^2+1$ two are equal (pigeonhole principle): $(r_i,r_{i+1})=(r_j,r_{j+1})$ with $i<j$. Put $p=j-i$.
+
+The recursion can also be run backwards: $F_k=F_{k+2}-F_{k+1}$, so $r_k$ is the remainder of $r_{k+2}-r_{k+1}$, and each pair also determines the previous pair. Going backwards from the equal pairs $(r_i,r_{i+1})=(r_{i+p},r_{i+p+1})$ step by step gives $(r_1,r_2)=(r_{1+p},r_{2+p})$. Going forwards from $(r_1,r_2)=(r_{1+p},r_{2+p})$ then gives $r_k=r_{k+p}$ for every $k\ge1$, by induction on $k$.
+
+So the remainders repeat with period $p\le n^2$, starting from the very first term. For example, modulo $2$ the remainders are $1,1,0,1,1,0,\dots$ (period $3$), and modulo $10$ the last digits repeat with period $60$.

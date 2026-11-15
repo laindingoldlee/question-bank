@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2433694_forester2015s_problems
+% Stable identity: aops-topic-2433694-q19
+The four corner triangles are right triangles whose hypotenuses are the sides of the small square, of length $2$. At each vertex of the small square, the two acute angles of the neighbouring corner triangles add up to $180^\circ-90^\circ=90^\circ$, so all four corner triangles have the same angles and the same hypotenuse: they are congruent. Hence every side of the large square is split into the same two lengths $a$ and $b$, and each corner triangle has legs $a$ and $b$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+real a=(sqrt(5)-sqrt(3))/2, b=(sqrt(5)+sqrt(3))/2, s=sqrt(5);
+pair A=(0,0),B=(s,0),C=(s,s),D=(0,s);
+pair P=(a,0),Q=(s,a),R=(s-a,s),S2=(0,s-a);
+fill(A--P--S2--cycle,rgb(1,0.88,0.7)); fill(B--Q--P--cycle,rgb(1,0.88,0.7)); fill(C--R--Q--cycle,rgb(1,0.88,0.7)); fill(D--S2--R--cycle,rgb(1,0.88,0.7));
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(P--Q--R--S2--cycle,linewidth(0.9));
+label("$a$",(a/2,0),S); label("$b$",(a+b/2,0),S); label("$a$",(s,a/2),E); label("$b$",(s,a+b/2),E);
+label("$2$",(P+Q)/2,NW); label("area $4$",(s/2,s/2));
+\end{asy}
+
+Comparing areas, the large square is the small square plus the four triangles:
+\[5=4+4\cdot\dfrac{ab}{2},\qquad\text{so}\qquad ab=\dfrac12.\]
+(Equivalently, $a+b=\sqrt5$ and $a^2+b^2=2^2=4$ give $2ab=5-4=1$.) The answer is $\boxed{\textbf{(C)}\ \dfrac12}$.

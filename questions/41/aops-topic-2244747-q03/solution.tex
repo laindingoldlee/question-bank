@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2244747_spelling_covid_related_words
+% Stable identity: aops-topic-2244747-q03
+The graphs meet where $|3x-2|=|x-3|$, i.e. $3x-2=x-3$ or $3x-2=-(x-3)$. This gives $x=-\dfrac{1}{2}$ and $x=\dfrac{5}{4}$, and the points
+\[P=\left(-\dfrac{1}{2},-\dfrac{7}{2}\right),\qquad Q=\left(\dfrac{5}{4},-\dfrac{7}{4}\right).\]
+The vertex of $y=-|3x-2|$ is $V=\left(\dfrac{2}{3},0\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-2,0)--(4.5,0),Arrow(6)); draw((0,-4.5)--(0,1),Arrow(6)); label("$x$",(4.5,0),E); label("$y$",(0,1),N);
+draw(graph(new real(real x){return -abs(3x-2);},-1.2,1.9),blue);
+draw(graph(new real(real x){return -abs(x-3);},-1.5,4.3),red);
+pair V=(2/3,0),P=(-1/2,-7/2),Q=(5/4,-7/4);
+filldraw(V--P--Q--cycle,rgb(1,0.9,0.7),black);
+dot(V); dot(P); dot(Q);
+label("$\left(\dfrac{2}{3},0\right)$",V,N,fontsize(8pt)); label("$\left(-\dfrac{1}{2},-\dfrac{7}{2}\right)$",P,W,fontsize(8pt)); label("$\left(\dfrac{5}{4},-\dfrac{7}{4}\right)$",Q,E,fontsize(8pt));
+label("$y=-|3x-2|$",(1.9,-3.7),E,blue+fontsize(8pt)); label("$y=-|x-3|$",(3.5,-0.5),E,red+fontsize(8pt));
+\end{asy}
+
+By the shoelace formula,
+\[[VPQ]=\dfrac{1}{2}\left|\dfrac{2}{3}\left(-\dfrac{7}{2}+\dfrac{7}{4}\right)-\dfrac{1}{2}\left(-\dfrac{7}{4}-0\right)+\dfrac{5}{4}\left(0+\dfrac{7}{2}\right)\right|=\dfrac{1}{2}\left|-\dfrac{7}{6}+\dfrac{7}{8}+\dfrac{35}{8}\right|=\dfrac{1}{2}\cdot\dfrac{49}{12}=\boxed{\dfrac{49}{24}}.\]

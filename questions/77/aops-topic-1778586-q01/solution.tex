@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1778586_math_problems_week
+% Stable identity: aops-topic-1778586-q01
+Draw the lines through $P$ parallel to the sides (dashed). Let $r$ and $s$ be the distances from $P$ to $AD$ and to $BC$, and $p$ and $t$ the distances from $P$ to $AB$ and to $CD$; in the figure they appear as the pieces of the sides $AB$ and $AD$.
+\begin{asy}
+usepackage("amsmath");
+size(0,7cm);
+defaultpen(fontsize(10pt));
+real x=1.2,y=1.6,w=x+sqrt(9-y^2),h=y+sqrt(100-(w-x)^2);
+pair A=(0,0),B=(w,0),C=(w,h),D=(0,h),P=(x,y);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw((x,0)--(x,h),dashed+gray); draw((0,y)--(w,y),dashed+gray);
+draw(P--A,blue);draw(P--B,blue);draw(P--C,blue);draw(P--D,red);
+dot(P);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$P$",P+0.5*dir(140));
+label("$2$",(P+A)/2,dir(140),blue);label("$3$",(P+B)/2,dir(80),blue);label("$10$",P+0.62*(C-P),dir(-5),blue);
+label("$p$",(0,y/2),W);label("$t$",(0,(y+h)/2),W);label("$r$",(x/2,0),S);label("$s$",((x+w)/2,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the Pythagorean theorem in the four right triangles with hypotenuses $PA,PB,PC,PD$:
+\[
+PA^2=r^2+p^2,\quad PB^2=s^2+p^2,\quad PC^2=s^2+t^2,\quad PD^2=r^2+t^2 .
+\]
+Hence $PA^2+PC^2=r^2+s^2+p^2+t^2=PB^2+PD^2$ (the British flag theorem), so
+\[
+PD^2=PA^2+PC^2-PB^2=4+100-9=95,\qquad PD=\boxed{\sqrt{95}}.
+\]
+The figure is drawn to scale (one such rectangle; the answer does not depend on which).

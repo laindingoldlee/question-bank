@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2000490_my_question
+% Stable identity: aops-topic-2000490-q01
+\textbf{Angles.} The side $A'B'$ is parallel to $AB$ and $A'C'$ is parallel to $AC$, and both pairs lie on the same side (towards the interior). An angle whose sides are parallel to, and point in the same directions as, the sides of another angle is equal to it, so $\angle B'A'C'=\angle BAC$. In the same way $\angle A'B'C'=\angle ABC$ and $\angle A'C'B'=\angle ACB$. Two triangles with equal corresponding angles are similar (AA), so $\triangle A'B'C'\sim\triangle ABC$. $\blacksquare$
+
+\textbf{A sharper description.} Let $I$ be the incentre of $ABC$ and $\varrho$ its inradius. The incentre is at distance $\varrho$ from all three sides, so it is at distance $\varrho-6$ from all three inner sides, and the dilation with centre $I$ and ratio $k=\dfrac{\varrho-6}{\varrho}$ maps each side line of $ABC$ to the parallel line at distance $\varrho-6$ from $I$, that is, to the corresponding inner side. Hence it maps $ABC$ onto $A'B'C'$, which proves the similarity again and shows the ratio is $\dfrac{\varrho-6}{\varrho}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(6,0), C=(3,5.196);
+real d=0.7;
+pair I=(A+B+C)/3; real rin=5.196/3;
+real k=(rin-d)/rin;
+pair A1=I+k*(A-I), B1=I+k*(B-I), C1=I+k*(C-I);
+filldraw(A--B--C--cycle,palered,black+1);
+filldraw(A1--B1--C1--cycle,white,black);
+dot(I); label("$I$",I,W);
+draw(I--I+k*((A+B)/2-I),dashed); draw(I+k*((A+B)/2-I)--(A+B)/2,linewidth(1.2)+blue);
+label("$6$",((A+B)/2+I+k*((A+B)/2-I))/2,E,blue);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+label("$A'$",A1,NE);label("$B'$",B1,NW);label("$C'$",C1,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

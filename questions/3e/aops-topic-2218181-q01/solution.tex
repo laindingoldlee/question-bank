@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2218181_my_favorite_amc_problems
+% Stable identity: aops-topic-2218181-q01
+There are $\dbinom83=56$ equally likely triangles. Count by the number of octagon sides they use (label the vertices $1,\dots,8$ around the octagon).
+\begin{itemize}
+\item \textbf{Two sides:} three consecutive vertices; there are $8$ such triangles (one for each middle vertex).
+\item \textbf{Exactly one side:} choose the side ($8$ ways) and a third vertex that is not one of its endpoints and not next to either endpoint: $8-2-2=4$ ways. That gives $32$ triangles (like the red triangle $1,2,5$ below).
+\end{itemize}
+So $8+32=40$ triangles use at least one side of the octagon (the other $16$, like the dashed triangle $3,5,7$, use none). The probability is
+\[\dfrac{40}{56}=\boxed{\textbf{(D)}\ \dfrac{5}{7}}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair[] V; for(int k=0;k<8;++k) V[k]=dir(90+45k);
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--V[7]--cycle,linewidth(0.9));
+for(int k=0;k<8;++k) dot(V[k]);
+fill(V[0]--V[1]--V[4]--cycle,palered+opacity(0.6)); draw(V[0]--V[1]--V[4]--cycle,red);
+draw(V[2]--V[4]--V[6]--cycle,blue+dashed);
+for(int k=0;k<8;++k) label("$"+string(k+1)+"$",1.15*V[k]);
+\end{asy}

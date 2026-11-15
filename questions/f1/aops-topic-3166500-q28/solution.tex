@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3166500_2021_lmt_fall_guts_round_p25p36_lexington_mathematical_tournament
+% Stable identity: aops-topic-3166500-q28
+Let the successive arcs $AB,BC,CP,PD,DA$ have measures $a,b,t,t,e$; the middle two are equal because $PC=PD$. The given inscribed angles give $b+2t=274^\circ$ and $e+2t=218^\circ$, so $a=2t-132^\circ$. Positivity of all arcs implies $66^\circ<t<109^\circ$. Intersecting chords give $\angle BIC=\dfrac{b+e}{2}=246^\circ-2t$, hence $\angle CID=2t-66^\circ$. Since $I,C,D$ lie on the circle centered at $P$, whose central angle $\angle CPD=180^\circ-t$, the inscribed angle $\angle CID$ is either $90^\circ-\dfrac{t}{2}$ or $90^\circ+\dfrac{t}{2}$. The first choice gives $t=\dfrac{312}{5}^\circ<66^\circ$, impossible. The second gives $t=104^\circ$. Thus $\boxed{\angle BIC=38^\circ}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=dir(0),Bp=dir(76),C=dir(142),P=dir(246),D=dir(350),I=(.8351852525238674,.0567502686333956);draw(circle((0,0),1));draw(A--C);draw(Bp--D);draw(P--I,blue);draw(P--C,blue);draw(P--D,blue);pair[]v={A,Bp,C,P,D,I};string[]names={"A","B","C","P","D","I"};for(int j=0;j<v.length;++j)label("$"+names[j]+"$",v[j],dir(30+60*j));
+\end{asy}

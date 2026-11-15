@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1776426_2006_state_sprint_29
+% Stable identity: aops-topic-1776426-q01
+Let $P=(x,y)$. The distance conditions are
+\[
+x^2+y^2=10,\qquad x^2+(y-3)^2=13 .
+\]
+Subtracting, $-6y+9=3$, so $y=1$ and $x^2=9$. As $P$ is inside the triangle, $x>0$, so $P=(3,1)$ (indeed $3\cdot3+5\cdot1<15$, so $P$ is below line $BC$).
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(0,3),C=(5,0),P=(3,1);
+draw((-0.6,0)--(5.8,0),gray,Arrow(5)); draw((0,-0.6)--(0,3.8),gray,Arrow(5));
+label("$x$",(5.8,0),E,gray); label("$y$",(0,3.8),N,gray);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(P--A,blue+dashed); draw(P--B,blue+dashed); draw(P--C,red+dashed);
+dot(P); dot(A); dot(B); dot(C);
+label("$A$",A,SW); label("$B(0,3)$",B,W); label("$C(5,0)$",C,S); label("$P$",P,dir(-90));
+label("$\sqrt{10}$",(1.6,0.92),blue); label("$\sqrt{13}$",(1.3,1.7),blue); label("$\sqrt{5}$",(3.9,0.22),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then $PC=\sqrt{(5-3)^2+(0-1)^2}=\boxed{\sqrt5}$.

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1195820_some_problem_from_mathleague
+% Stable identity: aops-topic-1195820-q01
+Let the legs be $a$ and $b$, so $a^2+b^2=89^2$. Since $89$ is prime, it divides neither leg (if $89\mid a$, then $89\mid b$, and $a^2+b^2\ge2\cdot89^2$). So $\gcd(a,b,89)=1$ and the triple is primitive. Every primitive triple has the form
+\[
+a=m^2-n^2,\qquad b=2mn,\qquad c=m^2+n^2
+\]
+with $m>n>0$. So $89=m^2+n^2$; checking $m=7,8,9$ shows the only possibility is $m=8$, $n=5$ ($89-49=40$ and $89-81=8$ are not squares). Hence the legs are $64-25=39$ and $2\cdot8\cdot5=80$, and indeed $39^2+80^2=1521+6400=7921=89^2$. The area is
+\[
+\dfrac{39\cdot80}{2}=\boxed{1560}.
+\]
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),A=(80,0),B=(0,39);
+draw(A--B--C--cycle,linewidth(0.9));
+draw((0,4)--(4,4)--(4,0));
+label("$80$",(A+C)/2,S); label("$39$",(B+C)/2,W); label("$89$",(A+B)/2,NE);
+label("$A$",A,E); label("$B$",B,N); label("$C$",C,SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

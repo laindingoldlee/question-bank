@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1359912_mathcounts_2010_school_spring_round
+% Stable identity: aops-topic-1359912-q20
+The segment $EF$ joining the midpoints of the legs is the midline: it is parallel to the bases, has length $\dfrac{8+20}{2}=14$, and lies halfway between them, at distance $6$ from $CD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0), C=(20,0), A=(4,12), B=(12,12);
+pair Ep=(A+D)/2, Fp=(B+C)/2;
+filldraw(Ep--Fp--C--D--cycle,paleblue,linewidth(0.9));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(Ep--Fp,blue);
+draw((22,0)--(22,6),Arrows(4)); draw((22,6)--(22,12),Arrows(4));
+draw((20.5,0)--(23,0),gray); draw((18.2,6)--(23,6),gray+dashed); draw((12.5,12)--(23,12),gray);
+label("$6$",(22,3),E); label("$6$",(22,9),E);
+dot(Ep); dot(Fp);
+label("$A$",A,N); label("$B$",B,N); label("$C$",C,SE); label("$D$",D,SW);
+label("$E$",Ep,W); label("$F$",Fp,E,fontsize(9pt));
+label("$8$",(A+B)/2,N); label("$20$",(D+C)/2,S); label("$14$",(Ep+Fp)/2,N,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $EFCD$ is a trapezoid with parallel sides $14$ and $20$ and height $6$, and its area is $\dfrac{14+20}{2}\cdot6=\boxed{102}$ square units.

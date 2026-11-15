@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1567907_more_mc_qs
+% Stable identity: aops-topic-1567907-q41
+The points $(2,2)$ and $(2,-2)$ lie on the circle, since $2^2+2^2=8$. The radii to them point along the lines $y=x$ and $y=-x$, which are perpendicular, so the chord subtends a central angle of $90^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real r=2*sqrt(2);
+fill(arc((0,0),r,-45,45)--cycle,lightblue);
+draw(circle((0,0),r),linewidth(1));
+draw((2,2)--(2,-2),red+linewidth(1));
+draw((0,0)--(2,2),dashed);draw((0,0)--(2,-2),dashed);
+real q=0.3;pair u=unit((2,2)),v=unit((2,-2));draw(q*u--q*(u+v)--q*v);
+draw((-3.3,0)--(3.6,0),gray,Arrow(TeXHead));draw((0,-3.3)--(0,3.4),gray,Arrow(TeXHead));
+dot((2,2));dot((2,-2));
+label("$(2,2)$",(2,2),NE);label("$(2,-2)$",(2,-2),SE);label("$O$",(0,0),SW);
+label("$2\sqrt{2}$",(1,1),NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The smaller region (shaded) is a quarter of the disc minus the right triangle with legs $2\sqrt2$:
+\[
+\dfrac{1}{4}\cdot\pi\left(2\sqrt2\right)^2-\dfrac{1}{2}\left(2\sqrt2\right)^2=2\pi-4 .
+\]
+The disc has area $8\pi$, so the larger region has area $8\pi-(2\pi-4)=6\pi+4$. Thus $a=6$, $b=4$ and
+\[
+ab=\boxed{24}.
+\]

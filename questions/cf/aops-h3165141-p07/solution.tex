@@ -1,0 +1,7 @@
+The linear map $(x,y)\mapsto(u,v)=(3x+5y,5x+2y)$ sends the open unit square bijectively to the interior of the lattice parallelogram with vertices $(0,0),(3,5),(8,7),(5,2)$. Its area is the absolute determinant $|6-25|=19$. Each edge has no lattice points between its endpoints because the coordinate steps $(3,5)$ and $(5,2)$ are coprime; hence there are four boundary lattice points. Pick\textquotesingle s theorem gives $I=19-\dfrac{4}{2}+1=\boxed{18}$ interior lattice points, one for each allowed pair.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+filldraw((0,0)--(3,5)--(8,7)--(5,2)--cycle,lightblue);for(int u=1;u<8;++u)for(int v=1;v<7;++v)if(0<5*v-2*u&&5*v-2*u<19&&0<5*u-3*v&&5*u-3*v<19)dot((u,v),black+3bp);label("(0,0)",(0,0),SW);label("(3,5)",(3,5),NW);label("(8,7)",(8,7),NE);label("(5,2)",(5,2),SE);
+\end{asy}

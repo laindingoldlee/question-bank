@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1611210_find_the_least_positive_integral_solution
+% Stable identity: aops-topic-1611210-q01
+Factor $2013=3\cdot11\cdot61$ and solve the congruence modulo each factor.
+\begin{itemize}
+\item Mod $3$: $1234\equiv1$ and $33\equiv0$, so $x\equiv0$.
+\item Mod $11$: $1234=11\cdot112+2$ and $33\equiv0$, so $2x\equiv0$ and $x\equiv0$.
+\item Mod $61$: $1234=61\cdot20+14$, so $14x\equiv33$. Since $14\cdot48=672=11\cdot61+1$, the inverse of $14$ is $48$, and $x\equiv33\cdot48=1584\equiv1584-25\cdot61=59\pmod{61}$.
+\end{itemize}
+So $x\equiv0\pmod{33}$ and $x\equiv59\pmod{61}$. Write $x=33k$: $33k\equiv59\pmod{61}$. Since $33\cdot37=1221=20\cdot61+1$, $k\equiv59\cdot37=2183\equiv2183-35\cdot61=48\pmod{61}$. Hence $x\equiv33\cdot48=1584\pmod{2013}$.
+
+Since $\gcd(1234,2013)=1$ the solution is unique mod $2013$, and the least positive one is $\boxed{1584}$. (Check: $1234\cdot1584=1954656=971\cdot2013+33$.)

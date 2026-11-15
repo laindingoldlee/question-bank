@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1724204_counting_question
+% Stable identity: aops-topic-1724204-q01
+Fix a colouring of $1,2,\dots,N$ with $k$ colours, where $N=(k+1)^{L}$ and $L=3k+2$. We find distinct $a<b<c\le N$ of the same colour with $a+b=c$.
+
+\textbf{Colouring pairs.} For integers $1\le u<v\le N+1$ give the pair $\{u,v\}$ the colour of the number $v-u\in\{1,\dots,N\}$.
+
+\textbf{A sequence with a simple pattern.} Start with $V_0=\{1,2,\dots,N+1\}$. Let $v_1$ be the smallest element of $V_0$. The other elements $v$ of $V_0$ are split into $k$ classes by the colour of $\{v_1,v\}$; let $V_1$ be a largest class, so $|V_1|\ge\dfrac{|V_0|-1}{k}$. Repeat: $v_2$ is the smallest element of $V_1$, $V_2$ is a largest class of $V_1\setminus\{v_2\}$ by the colour of $\{v_2,v\}$, and so on. If $|V_{i-1}|\ge(k+1)^{L-i+1}$ then
+\[
+|V_i|\ge\dfrac{(k+1)^{L-i+1}-1}{k}\ge(k+1)^{L-i},
+\]
+since $(k+1)^{j+1}-1-k(k+1)^j=(k+1)^j-1\ge0$. As $|V_0|>(k+1)^L$, every $V_i$ with $i\le L-1$ is nonempty, and we obtain $v_1<v_2<\cdots<v_L$ with the property: \emph{the colour of $\{v_i,v_j\}$ for $i<j$ depends only on $i$}; call it $c_i$.
+
+\textbf{Four indices of one colour.} Among $c_1,\dots,c_{L-1}$ (that is, $3k+1$ values in $k$ colours) some colour occurs at least $4$ times, by the pigeonhole principle: at indices $i_1<i_2<i_3<i_4$. Put $w=v_{i_1}$, $x=v_{i_2}$, $y=v_{i_3}$, $z=v_{i_4}$. Every pair among $w,x,y,z$ has this common colour, because the colour of a pair is $c$ of its smaller index.
+
+\textbf{The triple.} The numbers $x-w$, $y-x$, $y-w$ all have this colour and $(x-w)+(y-x)=y-w$. If $x-w\ne y-x$, they are three distinct numbers, as required. If $x-w=y-x$, use $w,x,z$ instead: $(x-w)+(z-x)=z-w$, and $z-x>y-x=x-w$, so $x-w<z-x<z-w$ are distinct and all have the common colour.
+
+In both cases the rule is broken, so no $k$-colouring of $1,\dots,N$ obeys it. $\blacksquare$
+
+(The poster's colouring of $1,\dots,23$ with three colours shows that for $k=3$ one can go at least to $23$; the exact largest values for $3,4,5$ colours are known only through computer searches and are not asked for here.)

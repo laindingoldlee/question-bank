@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2386090_100_posts
+% Stable identity: aops-topic-2386090-q19
+The number $\operatorname{cis}\theta$ is the point of the unit circle at angle $\theta$ from the positive real axis. Turning through $\dfrac{3\pi}{2}$ (three quarter turns) ends at the bottom of the circle:
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+draw((-1.5,0)--(1.5,0),Arrow(6)); draw((0,-1.5)--(0,1.5),Arrow(6));
+label("Re",(1.5,0),E); label("Im",(0,1.5),N);
+draw(unitcircle,gray(0.5));
+draw(arc((0,0),0.35,0,270),red,Arrow(5));
+label("$\dfrac{3\pi}{2}$",0.35*dir(135),NW,red);
+draw((0,0)--(0,-1),blue+linewidth(0.9)); dot((0,-1),blue); dot((1,0));
+label("$-i$",(0,-1),SE,blue); label("$1$",(1,0),SE);
+\end{asy}
+
+Indeed $\cos\dfrac{3\pi}{2}=0$ and $\sin\dfrac{3\pi}{2}=-1$, so $\operatorname{cis}\dfrac{3\pi}{2}=\boxed{-i}$.

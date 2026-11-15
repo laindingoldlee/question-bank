@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2388968_christmas1000th_post_problems
+% Stable identity: aops-topic-2388968-q22
+Write the number as $d_1d_2\cdots d_7$ with $d_1\ne0$, and sort the evil numbers by the position $i$ where the \emph{first} block $666$ starts ($1\le i\le5$). The first block starts at $i$ exactly when $d_id_{i+1}d_{i+2}=666$, $d_{i-1}\ne6$ (if $i\ge2$), and no block starts earlier. A block starting at $i-3$, $i-2$ or $i-1$ would need $d_{i-1}=6$, so the only extra condition is for $i=5$, where $d_1d_2d_3\ne666$.
+\begin{itemize}
+\item $i=1$: $666d_4d_5d_6d_7$: $10^4=10000$.
+\item $i=2$: $d_1\notin\{0,6\}$ ($8$ ways), then $666$, then $3$ free digits: $8000$.
+\item $i=3$: $d_1\ne0$ ($9$), $d_2\ne6$ ($9$), $666$, $2$ free digits: $8100$.
+\item $i=4$: $d_1\ne0$ ($9$), $d_2$ ($10$), $d_3\ne6$ ($9$), $666$, $d_7$ ($10$): $8100$.
+\item $i=5$: $d_1d_2d_3$ any of the $900$ three-digit strings with $d_1\ne0$ except $666$ ($899$), $d_4\ne6$ ($9$), then $666$: $8091$.
+\end{itemize}
+The total is $10000+8000+8100+8100+8091=\boxed{42291}$.

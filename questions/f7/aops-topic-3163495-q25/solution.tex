@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h3163495_2018_spring_lmt__individual_round__lexington_mathematical_tournament
+% Stable identity: aops-topic-3163495-q25
+Put $D=(0,0),A=(0,h),B=(b,0),C=(c,0)$, where $h=2018$, $|b|=20$, and $|c|=18$. The circumcenter and centroid are $O=(\dfrac{b+c}{2},\dfrac{h^2+bc}{2h})$ and $G=(\dfrac{b+c}{3},\dfrac{h}{3})$. Therefore $[DOG]=\dfrac{1}{2}|\det(O,G)|=\dfrac{|bc(b+c)|}{12h}$. If $D$ lies between $B,C$, then $|b+c|=2$, giving $\dfrac{60}{2018}=\dfrac{30}{1009}$. If $B,C$ lie on the same side of $D$, then $|b+c|=38$, giving $\dfrac{1140}{2018}=\dfrac{570}{1009}$. Both configurations are nondegenerate, so the answers are $\boxed{\dfrac{30}{1009}\text{ and }\dfrac{570}{1009}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real h=2018;pair A=(0,h),Bp=(-20,0),C=(18,0),D=(0,0),O=(-1,(h*h-360)/(2*h)),G=(-2/3,h/3);transform visual=scale(25,0.04);draw(visual*(A--Bp--C--cycle));draw(visual*(D--O--G--cycle),blue);label("$A$",visual*A,N);label("$B$",visual*Bp,SW);label("$C$",visual*C,SE);label("$D$",visual*D,S);label("$O$",visual*O,W);label("$G$",visual*G,E);label("axes scaled differently",(0,-12));
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real h=2018;pair A=(0,h),Bp=(20,0),C=(18,0),D=(0,0),O=(19,(h*h+360)/(2*h)),G=(38.0/3,h/3);transform visual=scale(25,0.04);draw(visual*(A--Bp--C--cycle));draw(visual*(D--O--G--cycle),blue);draw(visual*(D--Bp),dashed);label("$A$",visual*A,N);label("$B$",visual*Bp,SE);label("$C$",visual*C,SW);label("$D$",visual*D,SW);label("$O$",visual*O,E);label("$G$",visual*G,W);label("same-side case; axes scaled differently",(250,-12));
+\end{asy}

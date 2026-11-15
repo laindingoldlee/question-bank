@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1348319_similarity_problem
+% Stable identity: aops-topic-1348319-q01
+Since $BC\parallel AD$, the angles $\angle KBE=\angle KDA$ (alternate angles on the transversal $BD$) and $\angle BKE=\angle DKA$ (vertical angles). So $\triangle BKE\sim\triangle DKA$ by AA, with ratio $\dfrac{BK}{DK}=\dfrac{1}{4}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(5,0), C=(6.5,3), D=(1.5,3);
+pair K=B+(D-B)/5, Ep=B+(C-B)/4;
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(B--D,gray); draw(A--Ep,red);
+dot(K);dot(Ep);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$K$",K,1.6*N); label("$E$",Ep,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence $BE=\dfrac{1}{4}AD=\dfrac{1}{4}BC$, so $EC=BC-BE=\dfrac{3}{4}BC$ and
+\[
+BE:EC=\boxed{1:3}.
+\]

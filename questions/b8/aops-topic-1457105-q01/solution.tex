@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1457105_area_of_trapezium_new_way
+% Stable identity: aops-topic-1457105-q01
+\textbf{(a)} Since $AB\parallel DC$, triangles $VAB$ and $VDC$ are similar (corresponding angles), with ratio $\dfrac{b_1}{b_2}$. Let $d$ be the distance from $V$ to line $AB$; then the distance from $V$ to line $DC$ is $d+h$, and the heights are in the same ratio:
+\[
+\dfrac{d}{d+h}=\dfrac{b_1}{b_2}\quad\Longrightarrow\quad b_2d=b_1d+b_1h\quad\Longrightarrow\quad d=\dfrac{b_1h}{b_2-b_1}.
+\]
+The trapezoid is triangle $VDC$ with triangle $VAB$ removed, so
+\[
+[ABCD]=\dfrac{1}{2}b_2(d+h)-\dfrac{1}{2}b_1d=\dfrac{1}{2}\big((b_2-b_1)d+b_2h\big)=\dfrac{1}{2}\big(b_1h+b_2h\big)=\dfrac{1}{2}h(b_1+b_2). \qquad\blacksquare
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0),C=(6,0),A=(1.5,2),B=(3.5,2),V=(2.25,3);
+draw(A--V--B,gray+dashed);
+draw(D--C--B--A--cycle,linewidth(0.9));
+draw((V.x,0)--V,blue+dashed);
+draw((V.x,2)--(V.x+0.18,2)--(V.x+0.18,2.18)--(V.x,2.18),blue);
+draw((V.x,0)--(V.x+0.18,0)--(V.x+0.18,0.18)--(V.x,0.18),blue);
+dot(A);dot(B);dot(C);dot(D);dot(V);
+label("$A$",A,W); label("$B$",B,E); label("$C$",C,SE); label("$D$",D,SW); label("$V$",V,N);
+label("$d$",(V.x,2.5),W,blue); label("$h$",(V.x,1.0),W,blue);
+label("$b_1$",(2.95,2),S); label("$b_2$",(4.4,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(b)} In a parallelogram $b_1=b_2$, the legs are parallel and never meet, so there is no point $V$ (and the formula for $d$ would divide by $b_2-b_1=0$). The area formula is still true there, as base times height, but it needs a different proof.

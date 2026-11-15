@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2177402_triangle_problem
+% Stable identity: aops-topic-2177402-q01
+\textbf{(a)} If the triangle has area $K$, the side to which an altitude $h$ is drawn has length $\dfrac{2K}{h}$. So the sides are proportional to
+\[\dfrac{1}{21}:\dfrac{1}{28}:\dfrac{1}{60}=20:15:7\]
+(multiply through by $420$). Write the sides as $20k$, $15k$, $7k$; the perimeter is $42k=420$, so $k=10$ and the sides are $200$, $150$ and $70$ (a genuine triangle, since $70+150>200$). The shortest side is $\boxed{70}$.
+
+\textbf{(b)} For sides $20k$, $15k$, $7k$, Heron's formula with $s=21k$ gives
+\[K=\sqrt{21k\cdot k\cdot6k\cdot14k}=k^2\sqrt{1764}=42k^2 ,\]
+so the altitudes are
+\[\dfrac{2K}{20k}=4.2k,\qquad\dfrac{2K}{15k}=5.6k,\qquad\dfrac{2K}{7k}=12k .\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(20,0),A=(5.6,4.2);
+pair Ha=(5.6,0);
+pair Hb=C+dot(B-C,unit(A-C))*unit(A-C);
+pair Hc=A+dot(C-A,unit(A-B))*unit(A-B);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--Hb,gray+dashed); draw(A--Hc,gray+dashed);
+draw(A--Ha,blue); draw(B--Hb,red); draw(C--Hc,deepgreen);
+dot(A);dot(B);dot(C);dot(Ha);dot(Hb);dot(Hc);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$20k$",(10,0),S);label("$15k$",(A+C)/2,NE);label("$7k$",(A+B)/2,SE);
+label("$4.2k$",(A+Ha)/2,E,blue+fontsize(8pt));
+label("$5.6k$",(B+Hb)/2,W,red+fontsize(8pt));
+label("$12k$",(C+Hc)/2,SE,deepgreen+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The angle at $A$ is obtuse, since $7^2+15^2<20^2$, so two of the altitudes meet the extensions of the sides.) These are $21$, $28$, $60$ exactly when $k=5$, so the triangle with these altitudes has sides $100$, $75$, $35$ and perimeter $\boxed{210}$, not $420$. With perimeter $420$ ($k=10$) the altitudes would be $42$, $56$ and $120$. So only the ratio of the altitudes can be used together with the perimeter.

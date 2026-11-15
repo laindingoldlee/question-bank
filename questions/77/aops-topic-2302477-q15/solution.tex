@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2302477_ab2024s_math_hard_questions
+% Stable identity: aops-topic-2302477-q15
+All three lengths are positive because $n>1$. The longest is $n^2+1$ (it exceeds $n^2-1$, and $n^2+1-2n=(n-1)^2>0$), and
+\[(n^2-1)+2n-(n^2+1)=2n-2>0,\]
+so the sum of the two shorter sides exceeds the longest side, and a triangle with these sides exists. Moreover
+\[\left(n^2-1\right)^2+(2n)^2=n^4-2n^2+1+4n^2=n^4+2n^2+1=\left(n^2+1\right)^2,\]
+so by the converse of the Pythagorean theorem the angle opposite the side $n^2+1$ is a right angle. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), A=(4,0), B=(0,3);
+draw(A--B--C--cycle,linewidth(0.9));
+draw((0.22,0)--(0.22,0.22)--(0,0.22));
+label("$A$",A,SE); label("$B$",B,N); label("$C$",C,SW);
+label("$2n$",(A+C)/2,S); label("$n^2-1$",(B+C)/2,W); label("$n^2+1$",(A+B)/2,NE);
+\end{asy}
+
+(For $n=2,3,4$ this gives the right triangles $3,4,5$; $8,6,10$; $15,8,17$.)

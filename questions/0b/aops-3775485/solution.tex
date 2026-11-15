@@ -1,0 +1,9 @@
+Write $BD=u^2$ and $BC=q^7$. If $AB=2$, acuteness forces $BD=1$, and $AC^2=(BC-1)^2+3$ lies between consecutive squares for $BC\ge3$, impossible. Thus both prime side lengths $p=AB<r=AC$ are odd. Their square difference is $r^2-p^2=BC(BC-2u^2)$, which is even only if $BC$ is even. Hence $BC=2^7=128$. The inequality $p<r$ gives $u^2<64$. From $\angle BXC=90^\circ$, $DX^2=BD\cdot DC=u^2(128-u^2)$. The area $[BXD] = \dfrac{u^3 \sqrt{128-u^2}}{2}$ is strictly increasing for $1\le u\le7$, as its square has positive derivative there. At $u=1$, the prime pair $p=439,r=457$ satisfies $r^2-p^2=16128=128\cdot126$, and $AD^2=439^2-1=192720$. This attains the smallest possible area. Therefore $AX=\sqrt{192720}-\sqrt{127}$, giving $\boxed{\lfloor \dfrac{m}{n} \rfloor = 1517}$. To see the prime pair is forced at this minimum, enumerate the even factor pairs $(r-p,r+p)$ of 16128; only $(18,896)$ gives two primes with $p>1$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair B=(0,0),C=(12.8,0),D=(.1,0),A=(.1,9),X=(.1,sqrt(1.27));draw(A--B--C--cycle);draw(A--D);draw(B--X--C);label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));label("$D$",D,(1,-1));label("$X$",X,(1,0));label("schematic; not to scale",(6,-1),S);
+\end{asy}
+

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3143800_cube_split_into_1331
+% Stable identity: aops-topic-3143800-q01
+Orient the unpainted face as the bottom. To avoid paint on the four vertical sides, a cube must occupy one of $9$ interior positions in each horizontal direction. Vertically it may occupy any of the bottom ten layers, excluding only the painted top layer. Therefore the count is $9\cdot9\cdot10=\boxed{810}$. The usual $9^3$ interior count omits the $81$ unpainted cubes exposed on the bottom face.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),Bp=(3,0),C=(3,3),D=(0,3),v=(1,1);draw(A--Bp--C--D--cycle);draw(A+v--Bp+v--C+v--D+v--cycle);draw(A--A+v^^Bp--Bp+v^^C--C+v^^D--D+v);label("unpainted bottom face",(1.5,-.5),S);label("$11$",(0,1.5),W);
+\end{asy}

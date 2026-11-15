@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1648223_circular_cones
+% Stable identity: aops-topic-1648223-q01
+Let the base of the first cone have centre $O_1$ and radius $r_1$, and the base of the second have centre $O_2$ and radius $r_2$. The apex of the first cone is $O_2$ and the apex of the second is $O_1$, so both cones have axis $O_1O_2$ and the same height $h=O_1O_2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real r1=2,r2=3,h=4,t=1.6,r=1.2,k=0.25;
+path el(real y,real rr){return shift(0,y)*scale(rr,k*rr)*unitcircle;}
+draw(el(0,r1),linewidth(0.9));draw(el(h,r2),linewidth(0.9));
+draw((-r1,0)--(0,h)--(r1,0),linewidth(0.9));
+draw((-r2,h)--(0,0)--(r2,h),blue+linewidth(0.9));
+draw(el(t,r),red+linewidth(0.9));
+draw((0,0)--(0,h),dashed);
+draw((0,0)--(r1,0),dashed);draw((0,h)--(r2,h),dashed);draw((0,t)--(r,t),red+dashed);
+dot((0,0));dot((0,h));
+label("$O_1$",(0,0),S);label("$O_2$",(0,h),N);
+label("$r_1$",(r1/2,0),S);label("$r_2$",(r2/2,h),N);label("$r$",(r+0.4,t),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+At distance $t$ above the plane of the first base, the cross-section of the first cone is a circle of radius $r_1\left(1-\dfrac {t}{h}\right)$ (it shrinks linearly from $r_1$ to $0$ at its apex $O_2$), and the cross-section of the second cone is a circle of radius $r_2\cdot\dfrac {t}{h}$ (it grows linearly from $0$ at its apex $O_1$). The surfaces meet where these are equal:
+\[
+r_1\left(1-\dfrac {t}{h}\right)=r_2\,\dfrac {t}{h}\iff\dfrac {t}{h}=\dfrac{r_1}{r_1+r_2},\qquad\text{radius } r=\dfrac{r_1r_2}{r_1+r_2}.
+\]
+Now $\pi r_1^2=256$ and $\pi r_2^2=576$, so $\sqrt\pi\,r_1=16$ and $\sqrt\pi\,r_2=24$. Hence $\sqrt\pi\,r=\dfrac{16\cdot24}{16+24}=\dfrac{48}{5}$, and the area of the circle is
+\[
+\pi r^2=\left(\dfrac{48}{5}\right)^2=\boxed{\dfrac{2304}{25}}=92.16 .
+\]
+The height $h$ does not matter.

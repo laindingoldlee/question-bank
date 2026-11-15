@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2650413_sigma_mathematics_competition_smc_problems
+% Stable identity: aops-topic-2650413-q12
+By the extended law of sines, $\Omega$ has radius $R=\dfrac{BC}{2\sin A}=\dfrac{216\sqrt2}{\sqrt2}=216$.
+
+Describe points of $\Omega$ by their angles $a,b,c,\dots$ about the centre $O$. Since $AD\parallel BC$, $D$ is the reflection of $A$ in the perpendicular bisector of $BC$, which is the line through $O$ at angle $\dfrac{b+c}{2}$. Reflection in that line sends angle $\theta$ to $b+c-\theta$, so $D$ has angle $b+c-a$. Similarly $E$ has angle $a+c-b$ and $F$ has angle $a+b-c$. (The condition $\angle A<\angle B<\angle C$ makes the triangle scalene, so $D,E,F$ differ from $A,B,C$.)
+
+So the central angle between $E$ and $F$ is $2(c-b)$, and $EF=2R\left|\sin(c-b)\right|$. The central angle $c-b$ of chord $BC$ is $\pm2A$ modulo $360^\circ$, hence $\left|\sin(c-b)\right|=\sin2A=\sin90^\circ=1$. Therefore $EF=2R=\boxed{432}$; in fact $EF$ is a diameter.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real Ad=45,Bd=60,Cd=75;real tA=90,tB=tA+2*Cd,tC=tB+2*Ad;
+pair P(real t){return dir(t);}
+pair A=P(tA),B=P(tB),C=P(tC),D=P(tB+tC-tA),Ep=P(tA+tC-tB),F=P(tA+tB-tC);
+draw(unitcircle,gray);draw(A--B--C--cycle,linewidth(0.8));draw(A--D,dashed);draw(B--Ep,dashed);draw(C--F,dashed);draw(Ep--F,linewidth(1.1));dot((0,0));
+label("$A$",A,dir(tA));label("$B$",B,dir(tB));label("$C$",C,dir(tC));label("$D$",D,dir(tB+tC-tA));label("$E$",Ep,dir(tA+tC-tB));label("$F$",F,dir(tA+tB-tC));label("$O$",(0,0),NE);
+\end{asy}

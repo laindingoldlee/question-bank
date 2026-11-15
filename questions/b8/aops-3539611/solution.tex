@@ -1,0 +1,9 @@
+The cosine rule in $AOB$ gives $AB^2=25+64-2\cdot5\cdot8\cos120^\circ=129$. Put $A=(0,0),B=(\sqrt{129},0)$ and take the upper-half-plane configuration. Subtracting the distance equations gives $O = (\dfrac{45}{\sqrt{129}} , \dfrac{20 \sqrt{3}}{\sqrt{129}})$, while $M = (\dfrac{\sqrt{129}}{2} , 0)$. Since $\angle BAC=60^\circ$, write $C=(t,t\sqrt3)$. Its collinearity with $M,O$ gives $t = \dfrac{20 \sqrt{129}}{79}$, and the distance formula gives $\boxed{C M = \dfrac{903}{158}}$. The computed points put $O$ on segment $CM$ and yield an acute triangle, verifying the stated configuration; reflecting all points gives the same length.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+real r=sqrt(129);pair A=(0,0),B=(r,0),M=(r/2,0),O=(45/r,20sqrt(3)/r),C=(20r/79,60sqrt(43)/79);draw(A--B--C--cycle);draw(C--M);draw(A--O--B,dashed);label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$C$",C,(0,1));label("$M$",M,(0,-1));label("$O$",O,(1,0));
+\end{asy}
+

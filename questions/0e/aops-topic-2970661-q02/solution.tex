@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2970661_christmas_problem_set
+% Stable identity: aops-topic-2970661-q02
+By Ptolemy's theorem for the cyclic (isosceles) trapezoid, $AC\cdot BD=AD\cdot BC+AB\cdot CD$, i.e. $AC^2=9+40=49$, so $AC=7$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real h=3*sqrt(3)/2;pair D=(0,0),C=(8,0),A=(1.5,h),B=(6.5,h);pair P=A+(3/11)*(C-A);
+draw(A--B--C--D--cycle);draw(A--C);draw(D--P,dashed);dot(P);
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);label("$P$",P,N);label("$3$",(A+D)/2,W);label("$5$",(A+B)/2,N);label("$8$",(D+C)/2,S);
+\end{asy}
+
+In triangle $ADC$ ($AD=3$, $DC=8$, $AC=7$) the bisector from $D$ gives $\dfrac{AP}{PC}=\dfrac38$, so $PC=\dfrac{56}{11}$. By the bisector-length formula,
+\[DP^2=AD\cdot DC\left(1-\left(\dfrac{AC}{AD+DC}\right)^2\right)=24\left(1-\dfrac{49}{121}\right)=\dfrac{1728}{121},\]
+so $DP=\dfrac{24\sqrt3}{11}$ and $\dfrac{DP}{PC}=\boxed{\dfrac{3\sqrt3}7}$.

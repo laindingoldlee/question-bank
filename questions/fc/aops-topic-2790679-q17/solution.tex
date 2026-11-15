@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2790679_2018_mbmt_guts_round_g1625_montgomery_blair_math_tournament
+% Stable identity: aops-topic-2790679-q17
+The inequality is $ 2x^2+3y^2\le72 $, so $|y|\le4 $. For $ y=0 $, there are 13 choices $-6\le x\le6 $. For $|y|=1,2,3,4 $, the allowed absolute bounds on $ x $ are 5, 5, 4, 3, respectively, giving 11, 11, 9, 7 choices per row. The total is $ 13+2(11+11+9+7)=\boxed{89}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(ellipse((0,0),6,sqrt(24)));for(int x=-6;x<=6;++x)for(int y=-4;y<=4;++y)if(2x*x+3y*y<=72)dot((x,y),1bp);draw((-7,0)--(7,0),Arrow);draw((0,-5)--(0,5),Arrow);label("$x$",(7,0),E);label("$y$",(0,5),N);
+\end{asy}

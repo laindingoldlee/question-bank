@@ -1,0 +1,8 @@
+By the sine law, $\dfrac{BC}{\sin A}=\dfrac{10}{\dfrac{1}{2}}=20$. Since $AB=20$, we get $\sin C=\dfrac{AB}{20}=1$, so $C=90^\circ$ is forced. There is only one congruence class, with $AC=\sqrt{20^2-10^2}=10\sqrt3$. Its area, hence also its expected area, is $\boxed{50\sqrt3}$. Uniform selection of all translated or rotated embedded triangles would not itself define a finite uniform measure, which is why the congruence-class interpretation is specified.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair A=(0, 17.320508),B=(10, 0),C=(0, 0);draw(A--B--C--cycle);label("$A$",A,(-1,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));label("$20$",(5,8.660254),(1,1));label("$10$",(5,0),(0,-1));label("$30^\circ$",(1,13));
+void ra(pair U,pair V,pair W,real s){pair u=s*unit(U-V),w=s*unit(W-V);draw(V+u--V+u+w--V+w);}
+ra(A,C,B,.7);
+\end{asy}
+

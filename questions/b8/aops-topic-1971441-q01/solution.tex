@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h1971441_hard_geometry_exam_prob
+% Stable identity: aops-topic-1971441-q01
+Let $d>0$ be the common difference and let $\mathbf u,\mathbf v,\mathbf w$ be the unit vectors in the directions of $\overrightarrow{AB}$, $\overrightarrow{BC}$, $\overrightarrow{CD}$.
+
+Traverse the convex hexagon counterclockwise. The directions of the side vectors turn in the same sense at every vertex, by angles between $0^\circ$ and $180^\circ$, with total $360^\circ$. Since $DE\parallel AB$ and three turns separate them, $\overrightarrow{DE}$ points in the direction opposite to $\overrightarrow{AB}$ (the same direction would need a turn of $0^\circ$ or $360^\circ$ over three or over the other three vertices). Likewise for the other two pairs. Hence
+\[
+\overrightarrow{DE}=-(AB+d)\mathbf u,\qquad \overrightarrow{EF}=-(BC-d)\mathbf v,\qquad \overrightarrow{FA}=-(CD+d)\mathbf w .
+\]
+The six side vectors add up to $\mathbf 0$:
+\[
+AB\,\mathbf u+BC\,\mathbf v+CD\,\mathbf w-(AB+d)\mathbf u-(BC-d)\mathbf v-(CD+d)\mathbf w=d(-\mathbf u+\mathbf v-\mathbf w)=\mathbf 0 .
+\]
+Since $d\ne0$, $\mathbf v=\mathbf u+\mathbf w$. Taking squared lengths, $1=1+1+2\,\mathbf u\cdot\mathbf w$, so $\mathbf u\cdot\mathbf w=-\dfrac{1}{2}$, and then $\mathbf u\cdot\mathbf v=1-\dfrac{1}{2}=\dfrac{1}{2}$ and $\mathbf v\cdot\mathbf w=\dfrac{1}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0);
+pair[] V={A};
+real[] L={2,4,2,3,3,3};
+for(int i=0;i<5;++i) V.push(V[i]+L[i]*dir(60*i));
+string[] nm={"$A$","$B$","$C$","$D$","$E$","$F$"};
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,linewidth(1));
+pair cen=(V[0]+V[1]+V[2]+V[3]+V[4]+V[5])/6;
+for(int i=0;i<6;++i) label(nm[i],V[i],unit(V[i]-cen));
+label("$2$",(V[0]+V[1])/2,S);label("$4$",(V[1]+V[2])/2,SE);label("$2$",(V[2]+V[3])/2,NE);
+label("$3$",(V[3]+V[4])/2,N);label("$3$",(V[4]+V[5])/2,NW);label("$3$",(V[5]+V[0])/2,SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the angle between $\mathbf u$ and $\mathbf v$ is $60^\circ$, between $\mathbf v$ and $\mathbf w$ is $60^\circ$, and between $\mathbf w$ and $-\mathbf u$ is $60^\circ$ (as $\mathbf w\cdot(-\mathbf u)=\dfrac{1}{2}$). The side directions are therefore, in order,
+\[
+\mathbf u,\ \mathbf v,\ \mathbf w,\ -\mathbf u,\ -\mathbf v,\ -\mathbf w,
+\]
+and each consecutive pair (including $-\mathbf w$ back to $\mathbf u$) makes an angle of $60^\circ$. So the hexagon turns by $60^\circ$ at every vertex, and every interior angle is $180^\circ-60^\circ=120^\circ$. $\blacksquare$
+
+(The figure shows an example with $AB=2$, $BC=4$, $CD=2$, $DE=EF=FA=3$ and $d=1$.)

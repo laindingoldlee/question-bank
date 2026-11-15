@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2474826_inequality_question_related_to_sequencesin_my_opinion_
+% Stable identity: aops-topic-2474826-q01
+\textbf{(a)} By the geometric series, $1-r^{2m+1}=(1-r)\left(1+r+r^2+\cdots+r^{2m}\right)$. Since $1-r>0$, it suffices to show
+\[(2m+1)r^m<\sum_{k=0}^{2m}r^k.\]
+Pair the term $r^k$ with $r^{2m-k}$ for $k=0,1,\dots,m-1$; the term $r^m$ is left alone. By the AM-GM inequality,
+\[r^k+r^{2m-k}\ge2\sqrt{r^k\cdot r^{2m-k}}=2r^m,\]
+with equality only if $r^k=r^{2m-k}$, which is false for $k<m$ because the powers of $r$ are strictly decreasing. So each pair sum is strictly greater than $2r^m$, and
+\[\sum_{k=0}^{2m}r^k=r^m+\sum_{k=0}^{m-1}\left(r^k+r^{2m-k}\right)>r^m+2m\,r^m=(2m+1)r^m.\ \blacksquare\]
+
+\textbf{(b)} Let $s=\sqrt r$, so $0<s<1$. Applying (a) to $s$:
+\[(2n+1)s^n(1-s)<1-s^{2n+1}<1,\qquad\text{so}\qquad n\,s^n<\dfrac{1}{1-s}\quad\text{for all }n\ge1.\]
+Therefore
+\[0<nr^n=\left(ns^n\right)s^n<\dfrac{s^n}{1-s}.\]
+Finally $s^n\to0$: writing $\dfrac1s=1+h$ with $h>0$, Bernoulli's inequality gives $(1+h)^n\ge1+nh$, so $0<s^n\le\dfrac{1}{1+nh}$, which tends to $0$. Hence $nr^n\to0$. $\blacksquare$

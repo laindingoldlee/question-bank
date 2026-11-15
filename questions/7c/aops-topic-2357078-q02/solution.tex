@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2357078_500_post_celebration
+% Stable identity: aops-topic-2357078-q02
+The segment between the houses is the hypotenuse of a right triangle with legs $13$ and $21$ along the axis directions, so by the Pythagorean theorem (the distance formula) the distance is
+\[\sqrt{13^2+21^2}=\sqrt{169+441}=\boxed{\sqrt{610}}\approx24.7.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-1,0)--(15,0),Arrow(5)); draw((0,-1)--(0,23),Arrow(5));
+pair M=(0,0), T=(13,21);
+draw(M--(13,0)--T,dashed); draw(M--T,blue+linewidth(1));
+dot(M); dot(T);
+label("$x$",(15,0),E); label("$y$",(0,23),N);
+label("$(0,0)$",M,SW); label("$(13,21)$",T,NE);
+label("$13$",(6.5,0),S); label("$21$",(13,10.5),E); label("$\sqrt{610}$",(6.5,10.5),NW,blue);
+\end{asy}

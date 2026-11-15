@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1426923_geometry
+% Stable identity: aops-topic-1426923-q01
+An equilateral triangle with side $s$ has area $\dfrac{\sqrt3}{4}s^2$. From $\dfrac{\sqrt3}{4}s^2=\sqrt3$ we get $s^2=4$, so $s=2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+pair[] V={(2.0000,0.0000),(1.0000,1.7321),(-1.0000,1.7321),(-2.0000,0.0000),(-1.0000,-1.7321),(1.0000,-1.7321)};
+draw(circle(O,2),blue);
+for(int k=0;k<6;++k){draw(V[k]--V[(k+1)%6],linewidth(0.9)); draw(O--V[k],gray);}
+fill(O--V[0]--V[1]--cycle,palegreen); draw(O--V[0]--V[1]--cycle,linewidth(0.9));
+dot(O); label("$O$",O,W);
+label("$2$",(V[0]+V[1])/2,NE); label("$R=2$",(O+V[3])/2+(0,0.12),N,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Each triangle has a vertex at the centre $O$ and its other two vertices at vertices of the hexagon, so every vertex of the hexagon is at distance $s=2$ from $O$. Thus the circumcircle has radius $2$ and area $\pi\cdot2^2=\boxed{4\pi}$.

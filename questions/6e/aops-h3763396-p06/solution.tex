@@ -1,0 +1,7 @@
+A small cube has exactly one painted face precisely when it lies in the interior of one of the six original faces, away from edges. Each face has $(4-2)^2=4$ such cubes. Thus the total is $6\cdot4=\boxed{24}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=0;x<4;++x)for(int y=0;y<4;++y)filldraw(box((x,y),(x+1,y+1)),x>0&&x<3&&y>0&&y<3?lightblue:white);label("one face: 4 interior cells",(2,-.6));
+\end{asy}

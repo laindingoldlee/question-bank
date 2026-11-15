@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1587906_geomtery_problem
+% Stable identity: aops-topic-1587906-q01
+\textbf{Ratios along $CE$ and $DB$.} Triangles $EFB$ and $FBC$ have the same height from $B$ to the line $CE$, so $\dfrac{EF}{FC}=\dfrac{[EFB]}{[FBC]}=\dfrac{2}{3}$. Since $EB\parallel DC$, triangles $FEB$ and $FCD$ are similar with ratio $\dfrac{EF}{FC}=\dfrac{2}{3}$, so also $\dfrac{BF}{FD}=\dfrac{2}{3}$.
+
+\textbf{Triangle $FCD$.} Triangles $FBC$ and $FCD$ have the same height from $C$ to the line $BD$, so
+\[
+[FCD]=\dfrac{FD}{BF}\cdot[FBC]=\dfrac{3}{2}\cdot3=\dfrac{9}{2} .
+\]
+
+\textbf{The rectangle.} The diagonal $BD$ cuts the rectangle in half, and $[BCD]=[FBC]+[FCD]=3+\dfrac{9}{2}=\dfrac{15}{2}$, so the rectangle has area $15$. Finally
+\[
+[AEFD]=15-[EFB]-[FBC]-[FCD]=15-2-3-\dfrac{9}{2}=\boxed{\dfrac{11}{2}}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real w=5,h=3; pair A=(0,h),B=(w,h),C=(w,0),D=(0,0),Ep=(w-10/3,h);
+pair F=extension(C,Ep,D,B);
+fill(A--Ep--F--D--cycle,palegray);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(C--Ep,linewidth(0.9));draw(D--B,linewidth(0.9));
+dot(Ep);dot(F);
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);label("$E$",Ep,N);label("$F$",F,dir(250));
+label("$2$",(Ep+F+B)/3);label("$3$",(F+B+C)/3);label("$4.5$",(F+C+D)/3,blue);label("$5.5$",(A+Ep+F+D)/4+(-0.3,0));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The figure is drawn for $AB=5$, $BC=3$, $EB=\dfrac{10}{3}$, which realises the data; the answer does not depend on the shape of the rectangle.)

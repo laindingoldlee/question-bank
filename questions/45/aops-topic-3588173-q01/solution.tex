@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3588173_digits_in_octahedron
+% Stable identity: aops-topic-3588173-q01
+Name the opposite vertex pairs $X_\pm,Y_\pm,Z_\pm$. A face is determined by one choice from each pair. Assign the labels to sign triples $(---),(--+),(-+-),(-++),(+--),(+-+),(++-),(+++)$ respectively as $1,5,6,4,8,3,7,2$. The products at $X_-,X_+$ are $120,336$; at $Y_-,Y_+$ they are $120,336$; and at $Z_-,Z_+$ they are $336,120$. Each opposite-pair sum is therefore $\boxed{456}$, verifying the construction. The diagrams show the four upper and four lower faces, with face labels in their interiors.
+\begin{asy}
+size(7cm);
+pair X=(2,0),Y=(0,2),U=(-2,0),V=(0,-2),O=(0,0);draw(X--Y--U--V--cycle);draw(X--O--Y);draw(U--O--V);label("$X_+$",X,E);label("$Y_+$",Y,N);label("$X_-$",U,W);label("$Y_-$",V,S);label("$Z_+$",O,N);label("$2$",(.65,.65));label("$4$",(-.65,.65));label("$5$",(-.65,-.65));label("$3$",(.65,-.65));label("upper four faces",(0,-2.7),S);
+pair shift=(6,0);draw((X+shift)--(Y+shift)--(U+shift)--(V+shift)--cycle);draw((X+shift)--shift--(Y+shift));draw((U+shift)--shift--(V+shift));label("$X_+$",X+shift,E);label("$Y_+$",Y+shift,N);label("$X_-$",U+shift,W);label("$Y_-$",V+shift,S);label("$Z_-$",shift,N);label("$7$",shift+(.65,.65));label("$6$",shift+(-.65,.65));label("$1$",shift+(-.65,-.65));label("$8$",shift+(.65,-.65));label("lower four faces",shift+(0,-2.7),S);
+\end{asy}

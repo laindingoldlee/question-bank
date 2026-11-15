@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h2554031_mass_points_question
+% Stable identity: aops-topic-2554031-q01
+\textbf{(a)} Let $m=m_A+m_B\ne0$. Then
+\[\vec P-\vec A=\dfrac{m_A\vec A+m_B\vec B-m\vec A}{m}=\dfrac{m_B}{m}\left(\vec B-\vec A\right),\]
+so $P$ lies on line $AB$. Also
+\[m_A\left(\vec A-\vec P\right)+m_B\left(\vec B-\vec P\right)=m_A\vec A+m_B\vec B-m\vec P=\vec0,\]
+which is $m_A\overrightarrow{PA}+m_B\overrightarrow{PB}=\vec0$. If $m_A,m_B\ne0$, dividing by $m_A$ gives
+\[\overrightarrow{PA}=-\dfrac{m_B}{m_A}\,\overrightarrow{PB}.\]
+Taking lengths, $|m_A|\cdot PA=|m_B|\cdot PB$, i.e. $PA:PB=|m_B|:|m_A|$. If $m_A$ and $m_B$ have the same sign, the factor $-\dfrac{m_B}{m_A}$ is negative, so $\overrightarrow{PA}$ and $\overrightarrow{PB}$ point in opposite directions and $P$ lies between $A$ and $B$. If they have opposite signs, the factor is positive, the two vectors point the same way, and $P$ lies on line $AB$ outside the segment (nearer to the point with the larger absolute mass). $\blacksquare$
+
+So negative masses are allowed, as long as the masses being combined do not add up to $0$: they describe points that divide a segment externally.
+
+\textbf{(b)} With masses $-1$, $2$, $2$ at $A$, $B$, $C$:
+\begin{itemize}
+\item $B$ and $C$ balance at $\dfrac{2\vec B+2\vec C}{4}$, the midpoint $D$ (total mass $4$);
+\item $A$ and $B$ balance at $\dfrac{-\vec A+2\vec B}{1}=\vec B+\left(\vec B-\vec A\right)$, which is the point beyond $B$ with $BF=AB$, i.e. $F$ (total mass $1$);
+\item similarly $A$ and $C$ balance at $\vec E=2\vec C-\vec A$ (total mass $1$).
+\end{itemize}
+Let $\vec G=\dfrac{-\vec A+2\vec B+2\vec C}{3}$, the balance point of all three masses. Grouping the terms in three ways,
+\[\vec G=\dfrac{-\vec A+4\vec D}{3}=\dfrac{2\vec B+\vec E}{3}=\dfrac{2\vec C+\vec F}{3},\]
+since $4\vec D=2\vec B+2\vec C$, $\vec E=-\vec A+2\vec C$ and $\vec F=-\vec A+2\vec B$. So $G$ is the balance point of $-1$ at $A$ and $4$ at $D$, of $2$ at $B$ and $1$ at $E$, and of $2$ at $C$ and $1$ at $F$. By (a), $G$ lies on each of the lines $AD$, $BE$ and $CF$, so the three lines pass through $G$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(2,4),B=(0,0),C=(5,0),D=(2.5,0),F=(-2,-4),Ep=(8,-4),G=(8/3,-4/3);
+draw(B--F,gray);draw(C--Ep,gray);draw(B--Ep);draw(C--F);
+draw(A--D);draw(D--G,dashed);
+draw(A--B--C--cycle,linewidth(0.9));
+draw((1.25,-0.12)--(1.25,0.12));draw((3.75,-0.12)--(3.75,0.12));
+dot(G);
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,E);label("$D$",D,NE);label("$E$",Ep,SE);label("$F$",F,SW);label("$G$",G,S);
+label("$-1$",A,1.8*E,fontsize(8pt));label("$2$",B,1.8*dir(295),fontsize(8pt));label("$2$",C,1.8*S,fontsize(8pt));
+\end{asy}
+
+On line $AD$ the masses $-1$ and $4$ have opposite signs, so by (a) $G$ lies outside segment $AD$, beyond $D$ (the larger absolute mass), with
+\[AG:GD=4:1.\]
+(Check: $B$ and $C$ are the midpoints of $AF$ and $AE$, so $BE$ and $CF$ are medians of triangle $AFE$ and $G$ is its centroid, at $\dfrac23$ of the median from $A$; and $D$, the midpoint of the midline $BC$, lies halfway along that median. So $AG=\dfrac23\cdot2AD=\dfrac43AD$ and $GD=\dfrac13AD$.) The answer is $\boxed{AG:GD=4:1}$, with $G$ beyond $D$.

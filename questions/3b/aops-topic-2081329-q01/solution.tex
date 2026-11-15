@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2081329_please_do_this_for_me
+% Stable identity: aops-topic-2081329-q01
+\begin{enumerate}
+\item[(a)] The diagonals \(AI\) and \(BC\) of quadrilateral \(ABIC\) bisect each other at \(D\), so \(ABIC\) is a parallelogram. (Equivalently, triangles \(ADB\) and \(IDC\) are congruent by SAS: \(AD=ID\), \(BD=CD\), vertical angles at \(D\).) Hence \(AB=CI\).
+\end{enumerate}
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0.8,3.2), B=(0,0), C=(5,0);
+pair D=(B+C)/2, I=2*D-A, E1=(C+A)/2, F=(A+B)/2;
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--I,blue); draw(B--I,gray+dashed); draw(C--I,red+dashed);
+draw(B--E1,deepgreen); draw(C--F,deepgreen);
+dot(A);dot(B);dot(C);dot(D);dot(I);dot(E1);dot(F);
+label("$A$",A,N); label("$B$",B,W); label("$C$",C,E); label("$D$",D,dir(-150)); label("$I$",I,S);
+label("$E$",E1,NE); label("$F$",F,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{enumerate}
+\item[(b)] The points \(A\), \(C\), \(I\) are not collinear (otherwise \(D\) would lie on line \(AC\) and \(B\) would too). By the triangle inequality in triangle \(ACI\) and part (a),
+\[
+AB+AC=CI+AC>AI=2AD.
+\]
+\item[(c)] Applying (b) at each vertex (with the medians from \(B\) and \(C\)),
+\[
+AB+AC>2AD,\qquad BA+BC>2BE,\qquad CA+CB>2CF.
+\]
+Adding gives \(2(AB+BC+CA)>2(AD+BE+CF)\), which is the claim. \(\blacksquare\)
+\end{enumerate}

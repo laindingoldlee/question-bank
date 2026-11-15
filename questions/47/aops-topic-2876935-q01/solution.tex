@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2876935_solution_to_p7_from_the_marathon
+% Stable identity: aops-topic-2876935-q01
+Write $f(x)=x^5+ax^4+bx^3+cx^2+dx+e=\prod(x-a_i)$. By Vieta, $-a_1a_2a_3a_4a_5=e$, which is a power of $2$, hence a positive integer.
+
+Also $\prod(2a_i-1)=-32\prod\left(\dfrac12-a_i\right)=-32f\left(\dfrac12\right)$ and $\prod a_i=-e$. So the condition says
+\[\dfrac{32f\left(\dfrac12\right)}{e}=\dfrac{1+2a+4b+8c+16d+32e}{e}=225,\]
+i.e. $1+2a+4b+8c+16d=193e$. The left side is odd, so $e$ is an odd power of $2$ and $e=1$. Then $2a+4b+8c+16d=192$, i.e.
+\[a+2b+4c+8d=96.\]
+Count nonnegative solutions. For fixed $c,d$, the number of $(a,b)$ with $a+2b=m$ is $\left\lfloor\dfrac m2\right\rfloor+1$. With $m=96-4c-8d$ this is $49-2c-4d$. For fixed $d$, $c$ runs from $0$ to $24-2d$, and
+\[\sum_{c=0}^{24-2d}(49-4d-2c)=(25-2d)^2.\]
+Summing over $d=0,\dots,12$ gives $25^2+23^2+\cdots+1^2=\dfrac{13\cdot25\cdot27}{3}=2925$. Distinct coefficient tuples give distinct polynomials, so the answer is $\boxed{\textbf{(A)}\ 2925}$.

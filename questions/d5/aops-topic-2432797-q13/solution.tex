@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2432797_flower_problems
+% Stable identity: aops-topic-2432797-q13
+Let the painting be $a\times b$. The framed picture is $(a+2)\times(b+2)$, so the frame has area
+\[(a+2)(b+2)-ab=2a+2b+4.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(12,0)--(12,8)--(0,8)--cycle,linewidth(0.9));
+fill((-1,-1)--(13,-1)--(13,9)--(-1,9)--cycle,rgb(0.9,0.8,0.6)); fill((0,0)--(12,0)--(12,8)--(0,8)--cycle,white);
+draw((-1,-1)--(13,-1)--(13,9)--(-1,9)--cycle,linewidth(0.9)); draw((0,0)--(12,0)--(12,8)--(0,8)--cycle,linewidth(0.9));
+label("painting $a\times b$",(6,4)); label("$a$",(6,0),N); label("$b$",(0,4),E); label("$1$",(12.5,4),fontsize(8pt));
+\end{asy}
+
+The condition is $2a+2b+4=\dfrac25ab$, i.e. $ab-5a-5b=10$, i.e.
+\[(a-5)(b-5)=35.\]
+Both factors are positive (if both were negative, then $a,b<5$ and $(5-a)(5-b)\le16<35$). So $\{a-5,b-5\}=\{1,35\}$ or $\{5,7\}$, giving paintings $6\times40$ (area $240$) and $10\times12$ (area $120$). The greatest possible area is $\boxed{240}$ square inches.

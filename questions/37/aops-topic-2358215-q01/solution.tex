@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2358215_proof_problem
+% Stable identity: aops-topic-2358215-q01
+Let $F(n)$ be the final size of a tribe that starts with $n$ members (only the ranking matters). We prove that $F(n)$ is the largest power of $2$ that is at most $n$, by induction on $n$.
+
+For $n=1$: the only member votes no ($0$ yes votes is not more than half), so $F(1)=1$.
+
+Suppose the claim holds for $n-1$, and consider $n$ members. If the expulsion passes, the game continues with $n-1$ members and ends with the top $F(n-1)$ of them; if it fails, all $n$ stay.
+\begin{itemize}
+\item The top $F(n-1)$ members stay in either case and prefer the smaller final tribe ($F(n-1)<n$), so they vote yes.
+\item Each of the other $n-F(n-1)$ members would eventually be expelled if the vote passed, so they vote no.
+\end{itemize}
+So the vote passes exactly when $F(n-1)>\dfrac n2$. Write $2^m\le n<2^{m+1}$.
+\begin{itemize}
+\item If $n=2^m$ (with $m\ge1$): $F(n-1)=2^{m-1}=\dfrac n2$, which is not more than half, so the game ends and $F(n)=n=2^m$.
+\item If $2^m<n<2^{m+1}$: $F(n-1)=2^m>\dfrac n2$, so the vote passes and $F(n)=F(n-1)=2^m$.
+\end{itemize}
+This completes the induction. For $n=50$, the largest power of $2$ not exceeding $50$ is $32$: the tribe expels its $18$ least worthy members, one at a time, and $\boxed{32}$ members remain.

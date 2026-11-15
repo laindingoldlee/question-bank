@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1757873_list_of_logical_and_interesting_problems
+% Stable identity: aops-topic-1757873-q02
+Let $\angle BAC=x$.
+
+\begin{asy}
+usepackage("amsmath");
+size(0,6cm);
+defaultpen(fontsize(10pt));
+real x=180/7;
+pair A=(0,0),B=3*dir(-90-x/2),C=3*dir(-90+x/2);
+real t=abs(B-C);
+pair D=t*dir(-90+x/2),Ep=2*t*Cos(x)*dir(-90-x/2);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(D--Ep--C,blue+linewidth(0.8));
+void tk(pair P,pair Q){pair m=(P+Q)/2,v=0.12*unit(rotate(90)*(Q-P));draw(m-v--m+v,linewidth(0.7));}
+tk(A,D);tk(D,Ep);tk(Ep,C);tk(C,B);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,E);label("$E$",Ep,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item $AD=DE$: in triangle $ADE$, $\angle DEA=\angle DAE=x$, so the exterior angle $\angle EDC=2x$.
+\item $DE=EC$: in triangle $DEC$, $\angle ECD=\angle EDC=2x$.
+\item In triangle $AEC$, the exterior angle at $E$ is $\angle CEB=\angle EAC+\angle ECA=x+2x=3x$.
+\item $EC=CB$: in triangle $ECB$, $\angle CBE=\angle CEB=3x$.
+\end{itemize}
+Since $AB=AC$, also $\angle ACB=\angle ABC=3x$. The angle sum of triangle $ABC$ gives $x+3x+3x=180^\circ$, so $\angle BAC=\boxed{\left(\dfrac{180}{7}\right)^\circ}\approx25.7^\circ$.

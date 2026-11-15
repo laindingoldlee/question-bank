@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h2784569_2018_abmc_team_rounds_58__actonboxborough_math_competition
+% Stable identity: aops-topic-2784569-q22
+Since $2018=2\cdot1009$, removing the factor 2 leaves period equal to the multiplicative order of 10 modulo 1009. Direct modular exponentiation gives $10^{252}\equiv1$, while $10^{126}\equiv1008$, $10^{84}\equiv634$, and $10^{36}\equiv394\pmod{1009}$. Since $252=2^2\cdot3^2\cdot7$, any proper divisor of 252 divides at least one of 126,84,36. Therefore the order is exactly $\boxed{252}$. These congruences can be checked by repeated squaring.
+\begin{verbatim}
+assert pow(10,252,1009)==1
+assert [pow(10,k,1009) for k in (126,84,36)]==[1008,634,394]
+\end{verbatim}

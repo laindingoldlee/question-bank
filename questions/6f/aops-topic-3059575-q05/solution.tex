@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3059575_special_pi_post_geometry_problems_
+% Stable identity: aops-topic-3059575-q05
+Put $ O=(0,0),P=(p,0)$, $ A=(a,b),B=(a,-b)$, with $ a,b>0 $. Tangency gives $ ap=r^2 $ and $ a^2+b^2=r^2 $. Thus $ M=(a,0)$, $ D=(-r,0)$, and $ C=(c,\dfrac{b}{2})$ for $ c>a $. Parallelism of $ AC $ and $ BD $ gives $ 2(c-a)=a+r $, hence $ c=\dfrac{3a+r}{2}$. Since $ C $ lies on the circle, $(3a+r)^2+b^2=4r^2 $. Using $ b^2=r^2-a^2 $ yields $ 4a^2+3ar-r^2=(4a-r)(a+r)=0 $. Therefore $ a=\dfrac{r}{4},p=4r,c=\dfrac{7r}{8}$. Line $ AC $ meets the axis at $ x=2c-a=\dfrac{3r}{2}$. The centroid of $ A,B,P $ is $(\dfrac{2a+p}{3},0)=(\dfrac{3r}{2},0)$, exactly $ G $.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair O=(0,0),A=(1,sqrt(15)),B=(1,-sqrt(15)),M=(1,0),C=(3.5,sqrt(15)/2),D=(-4,0),P=(16,0),G=(6,0);draw(circle(O,4));draw(A--P--B--A^^D--P^^A--G^^B--D);dot(C);label("$O$",O,SW);label("$A$",A,N);label("$B$",B,S);label("$M$",M,SE);label("$C$",C,NE);label("$D$",D,W);label("$G$",G,S);label("$P$",P,E);
+\end{asy}

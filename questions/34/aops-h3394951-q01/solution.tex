@@ -1,0 +1,7 @@
+The squared distance between the given vertices is $2^2+1^2+2^2=9$. In a cube with side $s$, two distinct vertices are separated by $s$, $s\sqrt2$, or $s\sqrt3$. Thus $s^2$ can be $9,\dfrac{9}{2},3$, and the corresponding surface areas are $54,27,18$. All three types occur in cubes, so the sum is $\boxed{99}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair f(real x,real y,real z){return (x+.4y,z+.3y);}for(int k=0;k<3;++k){pair off=(2.1k,0);for(int x=0;x<2;++x)for(int y=0;y<2;++y)draw(off+f(x,y,0)--off+f(x,y,1));for(int z=0;z<2;++z){draw(off+f(0,0,z)--off+f(1,0,z)--off+f(1,1,z)--off+f(0,1,z)--cycle);}pair T=(k==0?f(1,0,0):(k==1?f(1,1,0):f(1,1,1)));draw(off--off+T,red+1.5bp);string[] n={"edge","face diagonal","body diagonal"};label(n[k],off+(.7,-.4));}
+\end{asy}

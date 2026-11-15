@@ -1,0 +1,7 @@
+Let $u,v$ be the two similarity ratios produced by one altitude cut. Every descendant has scale $u^iv^j$ relative to the original, for nonnegative integers $i,j$. Label it by its ancestry counts $(i,j)$; cutting replaces $(i,j)$ by $(i+1,j)$ and $(i,j+1)$. Give a triangle of type $(i,j)$ the artificial weight $2^{-i-j}$. Total weight remains $4$, since a cut replaces a weight by two halves. If no two current triangles were congruent, each type could occur at most once. But a finite subset of the nonnegative integer pairs has total weight strictly less than $\sum_{i=0}^{\infty}\sum_{j=0}^{\infty}2^{-i-j}=4$, a contradiction. Equal types always give congruent triangles; possible additional coincidences only strengthen the argument.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(4,0),C=(0,3); draw(A--B--C--cycle); label("$A$",A,(-1,-1)); label("$B$",B,(1,-1)); label("$C$",C,(0,1)); pair H=(36/25,48/25);draw(A--H,dashed);label("$H$",H,(1,1));label("$(i+1,j)$",(1.8,0.5));label("$(i,j+1)$",(0.45,1.4));
+\end{asy}

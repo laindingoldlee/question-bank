@@ -1,0 +1,15 @@
+Scale to $A=(0,0),C=(1,0),B=(u,v)$ with $v>0$, and put $s=u^2+v^2$. The side and acute-angle assumptions give $0<u<\dfrac{1}{2}$ and $u<s<2u$. Write $D=(d,0),E=(e,0)$. Squaring the equal-length conditions gives
+\[d=\dfrac{1-s}{2(1-u)},\qquad e=\dfrac{s}{2u}.\]
+Consider $T=(\dfrac{1}{2},\dfrac{s-u}{2v})$. The circle through $A,D,B$ has equation
+\[F(x,y)=x^2+y^2-dx+\dfrac{du-s}{v}y=0.\]
+A substitution, collecting terms with $u^2+v^2=s$, gives
+\[4v^2 F(T)=s\bigl(1-s-2d(1-u)\bigr)=0.\]
+Thus $T$ is on this circle. Reflect the coordinates by $x\mapsto1-x$. Then $C$ becomes the origin, $B$ has first coordinate $1-u$, its squared distance to that origin is $s'=1-2u+s$, and the other point on the axis is $1-e=\dfrac{1-s'}{2u}$. The identical calculation shows that the same point $T$ lies on the circle through $C,E,B$, because $s'-(1-u)=s-u$.
+
+Since $u<\dfrac{1}{2}$, $T\ne B$. Therefore $T=X$. Its first coordinate is $\dfrac{1}{2}$, so it lies on the perpendicular bisector of $AC$. Hence $AX=XC$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real u=.35,v=.65,s=u*u+v*v,d=(1-s)/(2*(1-u)),e=s/(2*u),l=(d*u-s)/v,m=((1+e)*u-e-s)/v;pair A=(0,0),C=(1,0),B=(u,v),D=(d,0),E=(e,0),X=(.5,(s-u)/(2*v)),O1=(d/2,-l/2),O2=((1+e)/2,-m/2);draw(circle(O1,abs(O1-A)),gray);draw(circle(O2,abs(O2-C)),gray);draw(A--B--C--cycle);draw(B--D);draw(B--E);draw(A--X--C,blue);draw((.5,-.03)--(.5,.75),blue+dashed);label("$A$",A,(-1,-1));label("$B$",B,(0,1));label("$C$",C,(1,-1));label("$D$",D,(0,-1));label("$E$",E,(0,-1));label("$X$",X,(1,1));
+\end{asy}

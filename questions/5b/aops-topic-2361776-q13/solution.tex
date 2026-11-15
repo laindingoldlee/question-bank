@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2361776_30_posts_circles
+% Stable identity: aops-topic-2361776-q13
+The segment is the sector $OAB$ minus the triangle $OAB$, where $O$ is the centre.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), A=6*dir(30), B=6*dir(150);
+fill(arc(O,6,30,150)--cycle,rgb(0.85,0.92,1));
+draw(circle(O,6)); draw(A--B,linewidth(0.9)); draw(O--A,dashed); draw(O--B,dashed);
+draw(arc(O,1,30,150),red); label("$120^\circ$",O+1.8*dir(90),red+fontsize(8pt));
+dot(O); dot(A); dot(B); label("$O$",O,S); label("$A$",A,E); label("$B$",B,W); label("$6$",(O+A)/2,SE);
+\end{asy}
+
+The sector is $\dfrac{120}{360}=\dfrac13$ of the disc, with area $\dfrac13\cdot36\pi=12\pi$. The triangle has two sides $6$ with included angle $120^\circ$, so its area is $\dfrac12\cdot6\cdot6\sin120^\circ=9\sqrt3$. The segment has area
+\[\boxed{12\pi-9\sqrt3}\approx22.11.\]

@@ -1,0 +1,9 @@
+Put the square at $[0,5]^2$. A point $(x,y)$ has distances $x,5-x,y,5-y$. The opposite-distance pairs must therefore be $\{1,4\}$ and $\{2,3\}$. Choose which pair is horizontal in two ways, then its order in two ways and the vertical order in two ways. The total is $2\cdot2\cdot2=\boxed8$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(5,0),(5,5),(0,5)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--p[3]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));dot(p[3]);label("$D$",p[3],unit(p[3]-labelCentre));pair X=(1,2);dot(X);draw((1,0)--(1,5),dashed);draw((0,2)--(5,2),dashed);label("$X$",X,(1,1));
+\end{asy}
+

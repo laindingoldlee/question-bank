@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2077121_mass_points
+% Stable identity: aops-topic-2077121-q01
+\textbf{The principle.} Place positive masses \(m_A,m_B,m_C\) at the vertices. The centre of mass of \(\{A,B\}\) is the point of \(AB\) dividing it in the ratio \(m_B:m_A\) (the lever law: \(m_A\cdot AX=m_B\cdot XB\)), and it carries mass \(m_A+m_B\). The centre of mass \(G\) of all three masses can be found by combining any two first. Hence it lies on the segment from the third vertex to the centre of mass of the first two, and divides that segment in the inverse ratio of the masses at its ends.
+
+\textbf{Assigning masses.} For \(E\) to be the balance point of \(A\) and \(B\) we need \(m_A:m_B=EB:AE=2:1\). For \(D\) to be the balance point of \(B\) and \(C\) we need \(m_B:m_C=DC:BD=2:3\). Both hold with \(m_A=4\), \(m_B=2\), \(m_C=3\). Then \(D\) carries mass \(5\) and \(E\) carries mass \(6\).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(1,4), B=(0,0), C=(5,0);
+pair D=(2*B+3*C)/5, Ept=(2*A+1*B)/3;
+pair P=(4*A+2*B+3*C)/9;
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,blue); draw(C--Ept,red);
+dot(A);dot(B);dot(C);dot(D);dot(Ept);dot(P);
+label("$A\ (4)$",A,N); label("$B\ (2)$",B,SW); label("$C\ (3)$",C,SE);
+label("$D\ (5)$",D,S); label("$E\ (6)$",Ept,W); label("$P$",P,dir(70));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The centre of mass \(G\) lies on \(AD\) (combine \(B,C\) into \(D\) first) and on \(CE\) (combine \(A,B\) into \(E\) first), so \(G=P\). On \(AD\), \(AP:PD=m_D:m_A=5:4\). On \(CE\), \(CP:PE=m_E:m_C=6:3=2:1\).
+
+Check with vectors: \(P=\dfrac{4A+2B+3C}{9}\), and \(D=\dfrac{2B+3C}{5}\) gives \(P=\dfrac{4A+5D}{9}\), so \(AP:PD=5:4\). Likewise \(E=\dfrac{2A+B}{3}\) gives \(P=\dfrac{6E+3C}{9}\), so \(CP:PE=6:3\).
+\[
+\boxed{AP:PD=5:4,\qquad CP:PE=2:1}
+\]

@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1866785_geometry_section_12__excercise_17
+% Stable identity: aops-topic-1866785-q01
+Setting the measures equal,
+\[
+\dfrac{3x}{2}+2=2x-\dfrac{117}{4}\quad\Longrightarrow\quad 2+\dfrac{117}{4}=2x-\dfrac{3x}{2}\quad\Longrightarrow\quad\dfrac{125}{4}=\dfrac {x}{2}\quad\Longrightarrow\quad x=\boxed{\dfrac{125}{2}} .
+\]
+The student had the correct equation $-\dfrac {x}{2}=-\dfrac{125}{4}$ but then dropped a sign (writing $x=-\dfrac{125}{2}$), and later substituted $-\dfrac{125}{4}$ instead. A negative angle measure is a signal that something went wrong.
+
+With $x=\dfrac{125}{2}$, each angle measures $\dfrac{3}{2}\cdot\dfrac{125}{2}+2=\dfrac{383}{4}=95.75^\circ$ (and $2\cdot\dfrac{125}{2}-\dfrac{117}{4}=\dfrac{383}{4}$ as well).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0);real t=95.75;
+pair C=2.6*dir(90),A=2.6*dir(90+t),D=2.6*dir(90-t);
+draw(B--A,linewidth(1));draw(B--C,linewidth(1));draw(B--D,linewidth(1));
+draw((-2.9,0)--(2.9,0),dotted+gray);
+draw(arc(B,0.75,90,90+t),red);draw(arc(B,0.95,90-t,90),blue);
+label("$95.75^\circ$",B+1.35*dir(90+t/2),NW,red);label("$95.75^\circ$",B+1.5*dir(90-t/2),NE,blue);
+dot(B);label("$B$",B,S);label("$A$",A,W);label("$C$",C,N);label("$D$",D,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For $\angle ABD$ to be a straight angle, the two adjacent angles would have to add up to $180^\circ$, i.e.\ each would be $90^\circ$. Here they add up to $191.5^\circ$, so rays $BA$ and $BD$ are not opposite rays, and $\boxed{\angle ABD\text{ is not a straight angle}}$.

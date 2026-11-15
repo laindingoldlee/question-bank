@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3129226_2023_math_hour_olympiad__university_of_washington__grades_810
+% Stable identity: aops-topic-3129226-q05
+Discard edges until a spanning tree remains, without increasing length. Traverse each tree edge once in each direction, obtaining a closed walk of length twice the tree length. List houses in their order of first appearance, and join successive listed houses, including the last to the first. The triangle inequality shows this 100-vertex cycle has total length no greater than the closed walk. Its alternating edges form two perfect matchings. Their lengths sum to the cycle length, so at least one is no greater than half the cycle length, hence no greater than the tree length and therefore the original wire length. Crossings of the pairing segments are allowed.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] V={(0,0),(2,0),(4,1),(4,3),(2,4),(0,3)};draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,gray);for(int i=0;i<6;++i)dot(V[i]);draw(V[0]--V[1],blue+linewidth(1.4));draw(V[2]--V[3],blue+linewidth(1.4));draw(V[4]--V[5],blue+linewidth(1.4));label("alternating matching (six-house illustration)",(2,-1));
+\end{asy}

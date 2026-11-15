@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2779747_2018_mbmt_team_round__montgomery_blair_math_tournament
+% Stable identity: aops-topic-2779747-q113
+The endpoint polar radii are 10 and $ r=3\sqrt2 $, with angular separation $\dfrac{\pi}{4}$. If a route uses circular roads and the smallest radius of any used circle is the integer $ k $, its total angular travel costs at least $ k\cdot\dfrac{\pi}{4}$, and radial travel costs at least $|10-k|+|r-k|$. This bound is attained by travelling radially to radius $ k $, turning through $\dfrac{\pi}{4}$ there, then travelling radially to the destination. A route through the origin is the case $ k=0 $. For integers $ k\le r $, the expression $ 10+r-2k+\dfrac{\pi k}{4}$ decreases with $ k $; for $ r\le k\le10 $, it increases with $ k $; beyond 10 it also increases. Only $ k=4,5 $ need comparison. Their lengths are $ 2+3\sqrt2+\pi $ and $ 10-3\sqrt2+\dfrac{5\pi}{4}$; the first is smaller because $ 8-6\sqrt2+\dfrac{\pi}{4}>0 $. Therefore the minimum is $\boxed{2+3\sqrt2+\pi}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int j=0;j<24;++j)draw((0,0)--10.5dir(15j),lightgray);for(int k=1;k<=10;++k)draw(circle((0,0),k),lightgray);pair A=(10,0),B=(3,3),P=(4,0),Q=4dir(45);draw(A--P,blue+linewidth(1.5));draw(arc((0,0),4,0,45),blue+linewidth(1.5));draw(Q--B,blue+linewidth(1.5));label("$(10,0)$",A,E);label("$(3,3)$",B,NE);label("radius $4$",Q,NW);
+\end{asy}

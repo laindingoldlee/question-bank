@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1208305_shoelace_theorem
+% Stable identity: aops-topic-1208305-q01
+The sides from $(1,11)$ to $(8,4)$ and from $(1,7)$ to $(4,4)$ both have slope $-1$, so they are the parallel sides, and the boundary goes $(1,7)\to(1,11)\to(8,4)\to(4,4)\to(1,7)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+import graph; pair A=(1,7),B=(1,11),C=(8,4),D=(4,4);
+draw(A--B--C--D--cycle,blue+linewidth(0.9));
+dot(A);dot(B);dot(C);dot(D); label("$(1,7)$",A,W); label("$(1,11)$",B,W); label("$(8,4)$",C,SE); label("$(4,4)$",D,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The shoelace formula needs the vertices in order around the boundary; listing them in another order (for example $(1,7),(1,11),(4,4),(8,4)$) traces a self-crossing path and gives a wrong number. In the correct order,
+\[\dfrac{1}{2}\left|(1\cdot11-1\cdot7)+(1\cdot4-8\cdot11)+(8\cdot4-4\cdot4)+(4\cdot7-1\cdot4)\right|=\dfrac{1}{2}|4-84+16+24|=\boxed{20}.\]
+Check with the trapezoid formula: the parallel sides have lengths $7\sqrt2$ and $3\sqrt2$ and lie on $x+y=12$ and $x+y=8$, at distance $\dfrac{4}{\sqrt2}=2\sqrt2$, so the area is $\dfrac{10\sqrt2}{2}\cdot2\sqrt2=20$.

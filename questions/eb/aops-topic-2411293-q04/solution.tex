@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2411293_geometric_combo
+% Stable identity: aops-topic-2411293-q04
+\textbf{Two triangle boundaries meet in at most $6$ pieces.} Each side of one triangle is a segment, and a segment meets the boundary of a convex figure (the other triangle) in at most $2$ points, or, if it runs along a side, in a single segment. So two triangle boundaries meet in at most $3\cdot2=6$ pieces (points or segments).
+
+\textbf{Upper bound.} One triangle gives $2$ regions. When the $k$th triangle is added, its boundary meets the earlier $k-1$ boundaries in at most $6(k-1)$ pieces. If there are $m\ge1$ of them, the rest of the new boundary consists of at most $m$ arcs, and each arc, running through one existing region, splits it into at most two parts; so at most $m\le6(k-1)$ regions are added (and exactly $1$ if $m=0$). Hence the number of regions is at most
+\[2+\sum_{k=2}^{n}6(k-1)=3n^2-3n+2.\]
+
+\textbf{Construction.} Take $n$ congruent equilateral triangles with a common centre, rotated through different angles in $[0^\circ,120^\circ)$. Two of them form a six-pointed star and cross in exactly $6$ points. A point at distance $\rho$ from the centre in direction $\varphi$ lies on the triangle rotated by $\theta$ exactly when $\rho\cos\delta=r$ (the inradius), where $\delta\in[0^\circ,60^\circ]$ is the distance from $\varphi-\theta$ to the nearest direction of a side's midpoint; for a given point this allows only two values of $\theta$ modulo $120^\circ$. So no point lies on three triangles, and no corner of one triangle lies on another.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real[] th={0,40,80}; pen[] cl={blue,red,deepgreen};
+path T(real t){ return rotate(t)*(dir(90)--dir(210)--dir(330)--cycle); }
+for(int k=0;k<3;++k) draw(T(th[k]),cl[k]+linewidth(0.9));
+for(int i=0;i<3;++i) for(int j=i+1;j<3;++j) for(pair x : intersectionpoints(T(th[i]),T(th[j]))) dot(x,black+2.5pt);
+\end{asy}
+
+Now, for $n\ge2$, count with Euler's formula $V-E+F=2$ for the connected plane graph formed by the boundaries (every two of them cross). The vertices are the $6\dbinom n2=3n(n-1)$ crossing points; each triangle boundary carries $6(n-1)$ of them and is cut into $6(n-1)$ edges, so $E=6n(n-1)$. Hence
+\[F=2-V+E=2+3n(n-1)=3n^2-3n+2,\]
+and the bound is attained.
+
+\textbf{Answers.} (b) $\boxed{3n^2-3n+2}$ for $n\ge1$; (a) for $n=5$: $3\cdot25-15+2=\boxed{62}$.

@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1783346_trapezoid
+% Stable identity: aops-topic-1783346-q01
+Through $B$ draw the line parallel to $AD$, meeting $DC$ at $T$. Then $ABTD$ is a parallelogram, so $DT=AB=3$, $BT=AD=3$ and $TC=8-3=5$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0),C=(8,0),A=(1.8,2.4),B=(4.8,2.4),T=(3,0),H=(4.8,0);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(B--T,dashed);draw(B--H,dashed);
+pair u1=unit(T-B),u2=unit(C-B);
+draw((B+0.3*u1)--(B+0.3*(u1+u2))--(B+0.3*u2));
+draw((H+(0.25,0))--(H+(0.25,0.25))--(H+(0,0.25)));
+label("$A$",A,NW);label("$B$",B,N);label("$C$",C,SE);label("$D$",D,SW);label("$T$",T,S);label("$H$",H,S);
+label("$3$",(A+B)/2,N);label("$3$",(A+D)/2,NW);label("$4$",(B+C)/2,NE);
+label("$3$",(D+T)/2,S);label("$5$",(T+C)/2+(0.5,0),S);label("$3$",(B+T)/2+(-0.3,0.15),W);label("$h$",(B+H)/2,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangle $TBC$ has sides $3,4,5$, so it is right-angled at $B$. Its altitude from $B$ is the height $h$ of the trapezoid:
+\[
+h=\dfrac{TB\cdot BC}{TC}=\dfrac{3\cdot4}{5}=\dfrac{12}{5}.
+\]
+The area of the trapezoid is
+\[
+\dfrac{AB+CD}{2}\cdot h=\dfrac{3+8}{2}\cdot\dfrac{12}{5}=\boxed{\dfrac{66}{5}}.
+\]
+(The other reading, $BC\parallel DA$, is impossible: then the same construction would give a triangle with sides $3$, $8$ and $4-3=1$, which violates the triangle inequality.)

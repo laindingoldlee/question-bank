@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1934908_math_y_define_xbut_with_a_catch
+% Stable identity: aops-topic-1934908-q01
+By the Pythagorean theorem $c=\sqrt{55^2+54^2}=\sqrt{3025+2916}=\sqrt{5941}$ (not an integer, as $77^2<5941<78^2$).
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0), Q=(55,0), R=(0,54);
+draw(P--Q--R--cycle,linewidth(1));
+draw((5,0)--(5,5)--(0,5));
+label("$55$",(P+Q)/2,S); label("$54$",(P+R)/2,W); label("$c$",(Q+R)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+We need $x\ne0$. The constants on the left add up to $7-8+54+9=62$, so the equation reads $62+c+x-\dfrac{55}{x}=x$. The $x$ terms cancel, leaving
+\[
+\dfrac{55}{x}=62+\sqrt{5941}\quad\Longrightarrow\quad x=\dfrac{55}{62+\sqrt{5941}}=\dfrac{55\left(\sqrt{5941}-62\right)}{5941-3844}=\boxed{\dfrac{55\left(\sqrt{5941}-62\right)}{2097}}\approx0.3955 .
+\]

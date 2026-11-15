@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h2698241_modular_arithmetic_question_with_an_epic_solution
+% Stable identity: aops-topic-2698241-q01
+Let $A_m$ be the concatenation of the first $m$ powers and $d_m$ the number of digits of $2^{10m}$. Then $A_n=A_{n-1}\cdot10^{d_n}+2^{10n}$, so the condition is $2^{170}\mid A_{n-1}\cdot10^{d_n}$, i.e. $v_2(A_{n-1})+d_n\ge170$.
+
+\emph{Computing $v_2(A_m)$.} $A_2=1024\cdot10^7+2^{20}$ has $v_2=17$. Then $v_2(A_3)=\min(17+10,30)=27$; $v_2(A_4)\ge40$; $v_2(A_5)=50$, since $v_2(A_4)+16>50$. From then on $v_2(A_{m-1})+d_m=10(m-1)+d_m>10m$, so $v_2(A_m)=10m$ for $m\ge5$.
+
+\emph{The condition.} For $n\ge6$ it reads $10(n-1)+d_n\ge170$. Since $2^{130}$ has $40$ digits and $2^{140}$ has $43$, $n=13$ gives $160$ and $n=14$ gives $173$. Smaller $n$ give far less. So the answer is $\boxed{14}$.

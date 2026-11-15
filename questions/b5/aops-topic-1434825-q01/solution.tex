@@ -1,0 +1,41 @@
+% Source: https://artofproblemsolving.com/community/c3h1434825_geometry_question
+% Stable identity: aops-topic-1434825-q01
+Let $O$ be the circumcentre and let $t$ be the tangent to the circumcircle at $A$. We show that $t\parallel EF$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair cc(pair a,pair b,pair c){real d=2*(a.x*(b.y-c.y)+b.x*(c.y-a.y)+c.x*(a.y-b.y));
+ real ux=((a.x^2+a.y^2)*(b.y-c.y)+(b.x^2+b.y^2)*(c.y-a.y)+(c.x^2+c.y^2)*(a.y-b.y))/d;
+ real uy=((a.x^2+a.y^2)*(c.x-b.x)+(b.x^2+b.y^2)*(a.x-c.x)+(c.x^2+c.y^2)*(b.x-a.x))/d;return (ux,uy);}
+pair ft(pair p,pair a,pair b){return a+dot(p-a,b-a)/dot(b-a,b-a)*(b-a);}
+pair A=(1.5,4),B=(0,0),C=(5,0);
+pair O=cc(A,B,C);real R=abs(A-O);
+pair D=ft(A,B,C),Ee=ft(B,A,C),F=ft(C,A,B);
+pair[] X=intersectionpoints(circle(O,R),(F+12*(F-Ee))--(Ee+12*(Ee-F)));
+pair G=X[0],H=X[1]; if(G.x>H.x){pair t=G;G=H;H=t;}
+draw(circle(O,R),gray);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,linewidth(0.6));draw(B--Ee,linewidth(0.6));draw(C--F,linewidth(0.6));
+draw(G--H,linewidth(0.8));
+pair u=unit(rotate(90)*(A-O));draw(A-2.3*u--A+2.3*u,red+dashed);
+draw(O--A,blue+dashed);
+draw(A--G,deepgreen);draw(A--H,deepgreen);
+dot(O);
+label("$A$",A+0.4*unit(A-O));label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);
+label("$E$",Ee,dir(75));label("$F$",F+0.32*dir(222));label("$G$",G,W);label("$H$",H,E);label("$O$",O,SE);
+label("$t$",A+2.3*u,N,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The tangent.} Let $T$ be a point of $t$ on the opposite side of line $AB$ from $C$. By the tangent-chord theorem, the angle between the tangent and the chord $AB$ equals the inscribed angle on $AB$ in the other arc: $\angle TAB=\angle ACB$.
+
+\textbf{The line $EF$.} Since $\angle BEC=\angle BFC=90^\circ$, the points $E$ and $F$ lie on the circle with diameter $BC$, so $BCEF$ is a cyclic quadrilateral (the triangle is acute, so $E$ lies on side $AC$ and $F$ on side $AB$). In a cyclic quadrilateral an exterior angle equals the opposite interior angle, so
+\[
+\angle AFE=180^\circ-\angle BFE=\angle ECB=\angle ACB .
+\]
+
+\textbf{Parallel.} Hence $\angle TAB=\angle AFE$. These are alternate angles for the lines $t$ and $EF$ cut by the transversal $AB$ (the points $T$ and $E$ lie on opposite sides of $AB$, since $E$ is on side $AC$). So $t\parallel EF$.
+
+\textbf{Conclusion.} The radius $OA$ is perpendicular to the tangent $t$, hence also to the chord $GH$ (which lies on line $EF$). The perpendicular from the centre to a chord bisects it, so line $OA$ is the perpendicular bisector of $GH$, and $A$ lies on it. Therefore $AG=AH$. $\blacksquare$

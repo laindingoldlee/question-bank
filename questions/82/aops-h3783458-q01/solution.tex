@@ -1,0 +1,7 @@
+(a) Exponentiation precedes unary negation: $-2^4=-(2^4)=-16$, while $(-2)^4=16$. (b) The inverse sine returns an angle, while the reciprocal sine is $\csc x$. For instance $\arcsin0=0$ but $\dfrac{1}{\sin0}$ is undefined. (c) Both expressions equal $4$, since $5-4+3=(5-4)+3$. (d) Cancelling a common nonzero factor is valid: $\dfrac{4\cdot3}{2}=\dfrac{4}{2}\cdot3=6$. (e) A sketch may suggest symmetry, but an exact identity such as $f(-x)=f(x)$, together with a symmetric domain, proves symmetry about the vertical axis. For example $f(x)=x^2+\dfrac{x}{1000000}$ looks almost symmetric at ordinary scale but fails that identity.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+draw((-2,0)--(2,0),Arrow);draw((0,-0.2)--(0,4),Arrow);path p;for(int i=0;i<=100;++i){real x=-1.8+3.6*i/100;pair P=(x,x*x);if(i==0)p=P;else p=p--P;}draw(p);label("$y=x^2$",(1.3,3),(1,0));
+\end{asy}

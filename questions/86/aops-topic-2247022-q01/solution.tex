@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2247022_eulers_totient_for_last_few_digits
+% Stable identity: aops-topic-2247022-q01
+\textbf{(a)} $\gcd(2,100)=2\ne1$. In fact no power $2^k$ with $k\ge2$ can be $\equiv1\pmod{100}$, since it is divisible by $4$ while $1$ is not. So we split $100=4\cdot25$ into coprime factors.
+
+\textbf{(b)} \emph{Modulo $4$:} $2^{56}\equiv0$, so $2^{56}+7\equiv3\pmod 4$.
+
+\emph{Modulo $25$:} $\gcd(2,25)=1$ and $\varphi(25)=20$, so $2^{20}\equiv1\pmod{25}$ and $2^{56}=\left(2^{20}\right)^2\cdot2^{16}\equiv2^{16}$. Also $2^{10}=1024\equiv-1\pmod{25}$, so $2^{16}=2^{10}\cdot2^6\equiv-64\equiv11\pmod{25}$. Hence $2^{56}+7\equiv18\pmod{25}$.
+
+\emph{Combining:} the numbers $\equiv18\pmod{25}$ below $100$ are $18,43,68,93$, with remainders $2,3,0,1$ modulo $4$. Only $43$ is $\equiv3\pmod4$, so by the Chinese remainder theorem $2^{56}+7\equiv43\pmod{100}$, and its last two digits are $\boxed{43}$ (whose digit sum is $7$, as the post says).

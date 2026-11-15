@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2759274_2021_wmc_8_problems_01__05_discussion
+% Stable identity: aops-topic-2759274-q05
+Since $|x+y|+|x-y|=2\max(|x|,|y|)$, the first two conditions say $2\max(|x|,|y|)\ge|x||y|$. The region is symmetric in all four quadrants, so take $x,y\ge0$. If $x\ge y$ the condition is $2x\ge xy$, i.e. $y\le2$ (or $x=0$); if $y\ge x$ it is $x\le2$. So in the first quadrant we keep the part of the triangle $x+y\le15$ where $\min(x,y)\le2$, removing the triangle $x,y>2$, $x+y\le15$ with legs $11$.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+fill((15,0)--(0,15)--(-15,0)--(0,-15)--cycle,rgb(0.85,0.9,1));
+fill((2,2)--(13,2)--(2,13)--cycle,white);fill((-2,2)--(-13,2)--(-2,13)--cycle,white);fill((2,-2)--(13,-2)--(2,-13)--cycle,white);fill((-2,-2)--(-13,-2)--(-2,-13)--cycle,white);
+draw((15,0)--(0,15)--(-15,0)--(0,-15)--cycle);
+draw((2,2)--(13,2)--(2,13)--cycle,dashed);draw((-2,2)--(-13,2)--(-2,13)--cycle,dashed);draw((2,-2)--(13,-2)--(2,-13)--cycle,dashed);draw((-2,-2)--(-13,-2)--(-2,-13)--cycle,dashed);
+draw((-17,0)--(17,0),gray,Arrow(4));draw((0,-17)--(0,17),gray,Arrow(4));label("$15$",(15,0),SE,fontsize(8pt));label("$2$",(2,0),S,fontsize(8pt));
+\end{asy}
+
+The area is $4\left(\dfrac{15^2}2-\dfrac{11^2}2\right)=4\cdot52=208$. Answer $\boxed{\textbf{(B)}\ 208}$.

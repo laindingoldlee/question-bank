@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h1525774_find_the_dimensions_of
+% Stable identity: aops-topic-1525774-q01
+Let the painting be an $a\times b$ rectangle with $a\le b$, and suppose it lies inside a square of side $s$, tilted at an angle $\theta$ to the sides of the square. By symmetry we may take $0^\circ\le\theta\le45^\circ$.
+
+\textbf{A lower bound.} The projection of the rectangle onto a side of the square has length $b\cos\theta+a\sin\theta$, and it must fit inside the projection of the square, which has length $s$. So
+\[
+s\ge g(\theta)=b\cos\theta+a\sin\theta .
+\]
+Writing $g(\theta)=\sqrt{a^2+b^2}\cos(\theta-\varphi)$ with $\tan\varphi=\dfrac {a}{b}$, $0<\varphi\le45^\circ$, we see that $g$ increases up to $\theta=\varphi$ and then decreases, so on $[0^\circ,45^\circ]$ its least value is at an endpoint:
+\[
+s\ge\min\left(g(0^\circ),g(45^\circ)\right)=\min\left(b,\ \dfrac{a+b}{\sqrt2}\right).
+\]
+
+\textbf{Both values are attained.} An untilted rectangle fits in a square of side $b$. A rectangle tilted at $45^\circ$ has both projections equal to $\dfrac{a+b}{\sqrt2}$, so it fits in a square of that side, with its four corners on the four sides:
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real a=40,bb=100;
+real s=(a+bb)/sqrt(2);
+pair O=(0,0);
+draw((0,0)--(s,0)--(s,s)--(0,s)--cycle,linewidth(1));
+pair P=(bb/sqrt(2),0), Q=(s,a/sqrt(2)), R=(a/sqrt(2),s), T=(0,bb/sqrt(2));
+fill(P--Q--R--T--cycle,paleyellow);
+draw(P--Q--R--T--cycle,blue+linewidth(1));
+label("$100$",(P+T)/2,SW,blue);label("$40$",(P+Q)/2,NW,blue);
+label("$70\sqrt{2}$",(s/2,0),S);label("$70\sqrt{2}$",(s,s/2),E);
+draw(arc(P,9,135,180),red);label("$45^\circ$",P+15*dir(157),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The two paintings.}
+\begin{itemize}
+\item $40\times100$: $\dfrac{140}{\sqrt2}=70\sqrt2\approx98.99<100$, so the smallest square has side $\boxed{70\sqrt2\approx98.99\text{ inches}}$, with the painting tilted at $45^\circ$.
+\item $40\times90$: $\dfrac{130}{\sqrt2}=65\sqrt2\approx91.92>90$, so the smallest square has side $\boxed{90\text{ inches}}$, with the painting untilted.
+\end{itemize}

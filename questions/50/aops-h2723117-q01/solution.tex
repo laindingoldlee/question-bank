@@ -1,0 +1,12 @@
+Since $\angle C=60^\circ$, the incenter formula gives $\angle AOB=90^\circ+\dfrac{C}{2}=120^\circ$. Also $\angle KAO=180^\circ-\dfrac{A}{2}=140^\circ$. The isosceles triangle $AKO$ therefore gives $\angle AOK=20^\circ$. Similarly $\angle LBO=160^\circ$ and $\angle BOL=10^\circ$.
+The rays $OK$ and $OL$ lie inside angle $AOB$, on the respective sides near $OA$ and $OB$: the extensions beyond $A,B$ and the positive equal-length choices give these orientations. Thus
+\[
+\angle KOL=120^\circ-20^\circ-10^\circ=\boxed{90^\circ}.
+\]
+More generally the same angle calculation gives $\angle KOL=45^\circ+\dfrac{3}{4}\angle C$, so fixing $\angle A$ alone would not determine it.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(6,0);real t=6*Sin(40)/Sin(60);pair C=t*dir(80);real aa=abs(B-C),bb=abs(A-C),cc=6;pair O=(aa*A+bb*B+cc*C)/(aa+bb+cc),K=A+abs(O-A)*(A-C)/abs(A-C),L=B+abs(O-B)*(B-C)/abs(B-C);draw(C--K);draw(C--L);draw(A--B);draw(A--O--B,dashed);draw(K--O--L,blue);label("$A$",A,(-1,0));label("$B$",B,(1,0));label("$C$",C,(0,1));label("$O$",O,(0,1));label("$K$",K,(-1,-1));label("$L$",L,(1,-1));
+\end{asy}

@@ -1,0 +1,6 @@
+Each face contributes its label with probability $\dfrac{1}{12}$, giving expected contribution $\dfrac{21}{12}$. Each of the twelve edges contributes the sum of its two incident face labels with probability $\dfrac{1}{24}$. Every face occurs on four edges, so this contribution is $\dfrac{4\cdot21}{24}$. Total expectation is $\boxed{\dfrac{21}{4}}$. No assumption about opposite labels is necessary.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair u=(2,0),v=(.8,.7),w=(0,2);draw((0,0)--u--u+v--v--cycle);draw(w--u+w--u+v+w--v+w--cycle);draw((0,0)--w^^u--u+w^^v--v+w^^u+v--u+v+w);pair[] VV={(0,0),u,u+v,v,w,u+w,u+v+w,v+w};string[] nn={"A","B","C","D","E","F","G","H"};for(int i=0;i<8;++i)label("$"+nn[i]+"$",VV[i],i<4?(0,-1):(0,1));
+\end{asy}
+

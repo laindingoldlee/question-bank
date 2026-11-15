@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h1765502_amc_8_2018_19
+% Stable identity: aops-topic-1765502-q01
+Write $1$ for ``$+$'' and $0$ for ``$-$''. Two cells with values $x,y$ produce $1$ above them exactly when $x=y$. It is easier to work with $0$ for ``$+$'' and $1$ for ``$-$'' instead: then the cell above $x,y$ is $1$ exactly when $x\ne y$. This is the operation $x$ XOR $y$ (``exclusive or'': true when exactly one of $x,y$ is $1$), and it equals $x+y$ reduced modulo $2$:
+\[
+0+0\equiv0,\quad0+1\equiv1,\quad1+0\equiv1,\quad1+1\equiv0\pmod2 .
+\]
+With bottom row $a,b,c,d$ (in this coding) the rows above are $a+b,\ b+c,\ c+d$, then $a+2b+c,\ b+2c+d$, then $a+3b+3c+d\equiv a+b+c+d\pmod 2$. The top is ``$+$'', i.e.\ $0$, exactly when $a+b+c+d$ is even: an even number of ``$-$'' signs in the bottom row. For any choice of $a,b,c$ there is exactly one $d$ that makes the sum even, so there are $2^3=8$ ways. The answer is $\boxed{\textbf{(C) } 8}$.

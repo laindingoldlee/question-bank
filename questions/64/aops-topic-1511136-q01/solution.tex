@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1511136_probability_using_graphs
+% Stable identity: aops-topic-1511136-q01
+Let $x$ and $y$ be Stanley's and Andrew's arrival times, in minutes after 2:00 pm. The point $(x,y)$ is uniformly distributed in the $60\times60$ square, and the match happens exactly when $|x-y|\le15$, the shaded band:
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real u=4;real w=1;
+fill((0,0)--(w,0)--(u,u-w)--(u,u)--(u-w,u)--(0,w)--cycle,paleblue);
+draw((0,0)--(u,0)--(u,u)--(0,u)--cycle,linewidth(0.9));
+draw((w,0)--(u,u-w),blue);draw((0,w)--(u-w,u),blue);
+label("$0$",(0,0),SW);label("$15$",(w,0),S);label("$60$",(u,0),S);label("$15$",(0,w),W);label("$60$",(0,u),W);
+label("$x$",(u/2,-0.45));label("$y$",(-0.5,u/2));
+label(rotate(45)*"$|x-y|\le15$",(u/2,u/2),blue);
+label("$y>x+15$",(0.95,3.1));label("$x>y+15$",(3.05,0.9));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The complement consists of two right triangles with legs $60-15=45$, of total area $45^2=2025$. The square has area $3600$, so
+\[
+P=1-\dfrac{2025}{3600}=1-\dfrac{9}{16}=\boxed{\dfrac{7}{16}} .
+\]
+(Leaving at 3:00 pm changes nothing: someone arriving after 2:45 still sees the other if he arrived within the last $15$ minutes.)

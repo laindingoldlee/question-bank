@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2015342_question_which_involves_degrees
+% Stable identity: aops-topic-2015342-q01
+Measure angles clockwise from the $12$. The minute hand moves $6^\circ$ per minute, so at $46$ minutes it is at $46\cdot6^\circ=276^\circ$. The hour hand moves $30^\circ$ per hour plus $\dfrac{1}{2}^\circ$ per minute, so at 2:46 it is at
+\[
+2\cdot30^\circ+46\cdot\dfrac{1}{2}^\circ=60^\circ+23^\circ=83^\circ.
+\]
+The angle between the hands is $276^\circ-83^\circ=193^\circ$ one way round and $360^\circ-193^\circ=167^\circ$ the other way.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+draw(circle(O,1),linewidth(0.9));
+for(int i=0;i<12;++i){pair d=dir(90-30*i); draw(0.9*d--d);}
+label("$12$",0.75*dir(90)); label("$3$",0.75*dir(0)); label("$6$",0.75*dir(-90)); label("$9$",0.75*dir(180));
+draw(O--0.55*dir(7),linewidth(1.6)); draw(O--0.85*dir(174),linewidth(1));
+draw(arc(O,0.25,7,174),red,Arrow(4));
+label("$167^\circ$",0.3*dir(95),N,red);
+dot(O);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The smaller angle is $\boxed{167^\circ}$.

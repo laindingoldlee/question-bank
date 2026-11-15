@@ -1,0 +1,7 @@
+Between adjacent corners the shortest street distance is four; between opposite corners it is eight. If any consecutive corner visits are opposite, visiting all four corners already needs at least sixteen. Otherwise a shortest corner order follows three sides, of total twelve, but visiting the centre forces an extra four: a route between adjacent corners through the centre has length eight, or reaching the centre after the final corner costs four. Thus sixteen is a lower bound. It is attained by going from home along the top edge through its midpoint to the upper-right corner, then through the centre to the lower-right corner, then along the bottom to the lower-left corner. Choose shortest street routes for each leg, of lengths four, four, four, four. The minimum is $\boxed{16}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int i=0;i<=4;i+=2){draw((i,0)--(i,4),gray);draw((0,i)--(4,i),gray);}draw((0,4)--(4,4)--(2,4)--(2,2)--(4,2)--(4,0)--(0,0),blue+linewidth(1.2),Arrow);pair[] p={(0,4),(2,4),(4,4),(2,2),(4,0),(0,0)};for(pair q:p)dot(q);label("Home",(0,4),(-1,1));label("Centre",(2,2),(-1,-1));label("$4$",(2,0),(0,-1));
+\end{asy}

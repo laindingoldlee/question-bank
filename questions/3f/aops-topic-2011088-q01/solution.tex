@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2011088_quadrilateral_problem
+% Stable identity: aops-topic-2011088-q01
+Set up coordinates with the midpoint of $BC$ at the origin and $BC$ on the $x$-axis: $B=(-b,0)$ and $C=(b,0)$ with $b>0$. The perpendicular bisector $\ell$ of $BC$ is then the $y$-axis, so the midpoint $M$ of $AD$ is $M=(0,m)$ for some $m$. Write $A=(p,q)$; since $M$ is the midpoint of $AD$, $D=2M-A=(-p,2m-q)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(-3,0), C=(3,0);
+pair A=(-1.8,2.6), M=(0,2.6);
+pair D=2*M-A;
+draw(A--B--C--D--cycle,linewidth(0.8));
+draw((0,-0.3)--(0,4.2),dashed);
+draw(A--C,blue); draw(B--D,blue);
+draw(A--D,gray);
+label("$\ell$",(0,4.2),N);
+dot(A);dot(B);dot(C);dot(D);dot(M);dot((0,0));
+label("$A(p,q)$",A,W); label("$B(-b,0)$",B,SW); label("$C(b,0)$",C,SE);
+label("$D(-p,2m-q)$",D,E); label("$M(0,m)$",M+(0.08,0.12),NE);
+label("$O$",(0,0),SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the distance formula,
+\begin{align*}
+AC^2&=(p-b)^2+q^2, & BD^2&=(-p+b)^2+(2m-q)^2=(p-b)^2+(2m-q)^2,\\
+AB^2&=(p+b)^2+q^2, & CD^2&=(-p-b)^2+(2m-q)^2=(p+b)^2+(2m-q)^2.
+\end{align*}
+Subtracting,
+\[AC^2-BD^2=q^2-(2m-q)^2=AB^2-CD^2.\]
+Since $AC=BD$, the left side is $0$, hence $AB^2=CD^2$ and, as lengths are positive, $AB=CD$. $\blacksquare$
+
+(The identity shows more: under the midpoint condition, $AC=BD$ and $AB=CD$ are equivalent. Convexity is not needed for the argument.)

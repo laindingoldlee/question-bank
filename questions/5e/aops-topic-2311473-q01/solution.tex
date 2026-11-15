@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h2311473_formula_to_get_distance_between_circumstances_and_incentre
+% Stable identity: aops-topic-2311473-q01
+Let the line $AI$ meet the circumcircle again at $M$; since $AI$ bisects angle $A$, $M$ is the midpoint of the arc $BC$ not containing $A$. Let $F$ be the foot of the perpendicular from $I$ to $AB$, so $IF=r$. Write $A$, $B$, $C$ also for the angles of the triangle.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+pair A=dir(100), B=dir(215), C=dir(325);
+real a=abs(B-C), bb=abs(C-A), c=abs(A-B);
+pair I=(a*A+bb*B+c*C)/(a+bb+c);
+pair F=A+dot(I-A,B-A)/dot(B-A,B-A)*(B-A);
+real r=abs(I-F);
+pair M=dir(270);
+pair u=unit(I-O); pair X=u, Y=-u;
+draw(circle(O,1),gray);
+draw(circle(I,r),heavygreen);
+draw(A--B--C--cycle,linewidth(1));
+draw(A--M,blue); draw(M--B,blue);
+draw(I--F,heavygreen);
+draw(X--Y,dashed+red);
+dot(O); dot(I); dot(M,blue); dot(F,heavygreen);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE);
+label("$O$",O,SE); label("$I$",I,W); label("$M$",M,S,blue); label("$F$",F,NW,heavygreen);
+label("$r$",(I+F)/2,NE,heavygreen+fontsize(8pt));
+dot(X,red); dot(Y,red); label("$X$",X,dir(X),red); label("$Y$",Y,dir(Y),red);
+\end{asy}
+
+\textbf{Step 1: $MB=MI$.} The inscribed angles $\angle MBC$ and $\angle MAC$ stand on the same arc $MC$, so $\angle MBC=\angle MAC=\dfrac A2$. Hence $\angle MBI=\angle MBC+\angle CBI=\dfrac A2+\dfrac B2$. On the other hand, $\angle MIB$ is an exterior angle of triangle $ABI$, so $\angle MIB=\angle IAB+\angle IBA=\dfrac A2+\dfrac B2$. Triangle $MBI$ has two equal angles, so $MB=MI$.
+
+\textbf{Step 2: $AI\cdot IM=2Rr$.} In the right triangle $AFI$, $\angle IAF=\dfrac A2$, so $AI=\dfrac{r}{\sin\dfrac A2}$. The chord $MB$ subtends the inscribed angle $\angle MAB=\dfrac A2$, so by the extended law of sines $MB=2R\sin\dfrac A2$. With Step 1,
+\[AI\cdot IM=AI\cdot MB=\dfrac{r}{\sin\dfrac A2}\cdot2R\sin\dfrac A2=2Rr.\]
+
+\textbf{Step 3: power of the point $I$.} The point $I$ lies inside the circumcircle. For any chord through $I$, the product of the two pieces is the same (intersecting chords). For the chord $AM$ it is $AI\cdot IM$; for the diameter $XY$ through $I$ (dashed) it is $IX\cdot IY=(R-OI)(R+OI)=R^2-OI^2$. (If $I=O$, every chord through $I$ gives $R\cdot R$.) Therefore
+\[R^2-OI^2=2Rr,\qquad\text{i.e.}\qquad OI^2=R^2-2Rr.\]
+Since $OI^2\ge0$, also $R\ge2r$. $\blacksquare$

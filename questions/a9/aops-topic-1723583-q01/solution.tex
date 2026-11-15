@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1723583_linear_equations_problems
+% Stable identity: aops-topic-1723583-q01
+\textbf{(a)} The equation $x^2+y^2=0$ has exactly one real solution, $(x,y)=(0,0)$, since a sum of squares is zero only when both squares are zero.
+
+\textbf{(b)} First a lemma.
+
+\emph{Lemma.} A \emph{homogeneous} linear system (all right-hand sides $0$) with fewer equations than variables has a solution other than all zeros.
+
+\emph{Proof by induction on the number $m$ of equations.} If $m=0$, take any nonzero values. Suppose $m\ge1$ and the lemma holds for $m-1$ equations. If no equation involves some variable $x_j$ with a nonzero coefficient, set $x_j=1$ and all other variables $0$. Otherwise pick an equation with a nonzero coefficient of some variable, solve it for that variable, and substitute into the other $m-1$ equations. This gives a homogeneous system of $m-1$ equations in the remaining $n-1$ variables, and $m-1<n-1$. By the induction hypothesis it has a solution that is not all zeros; computing the eliminated variable from the chosen equation gives a nonzero solution of the original system. $\square$
+
+Now let the system with $m<n$ have a solution $p=(p_1,\dots,p_n)$. Its homogeneous version (same left sides, right sides $0$) has a nonzero solution $q$ by the lemma. For every real $t$, $p+tq$ is again a solution, because each linear left side changes by $t$ times its value at $q$, which is $0$. Since $q\ne0$, these are infinitely many different solutions. So the system has no solution or infinitely many, never exactly one. $\blacksquare$

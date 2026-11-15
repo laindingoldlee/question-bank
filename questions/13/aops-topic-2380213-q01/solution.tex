@@ -1,0 +1,41 @@
+% Source: https://artofproblemsolving.com/community/c3h2380213_geometric_probability
+% Stable identity: aops-topic-2380213-q01
+Measure time in hours after 3 p.m., so the arrival times $X,Y,Z$ are independent and uniform in $[0,1]$. Each friend stays from arrival until $30$ minutes later (or 4 p.m.). All three are together at some moment exactly when the last arrival comes at most half an hour after the first:
+\[\max(X,Y,Z)-\min(X,Y,Z)\le\dfrac12.\]
+Indeed, if this holds, at the moment of the last arrival the other two are still waiting (no one has waited more than half an hour, and that moment is before 4 p.m.); if it fails, the first friend has left before the last one arrives.
+
+\textbf{As a volume.} The point $(X,Y,Z)$ is uniform in the unit cube, so the probability is the volume of the region. By symmetry, each of the three friends is the first to arrive with probability $\dfrac13$, and ties have probability $0$; so the answer is $3V$, where $V$ is the volume of the region where $X$ is the minimum and $Y,Z\in\left[X,X+\dfrac12\right]$.
+
+For a fixed $X=x$, the cross-section is the square $\left[x,\min\left(x+\dfrac12,1\right)\right]^2$ in the $(y,z)$-plane:
+\begin{itemize}
+\item for $0\le x\le\dfrac12$ it is a square of side $\dfrac12$, sliding diagonally: a slanted prism (parallelepiped) with base $\dfrac14$ and length $\dfrac12$ along the $x$-axis, of volume $\dfrac14\cdot\dfrac12=\dfrac18$;
+\item for $\dfrac12\le x\le1$ the side $1-x$ shrinks linearly to $0$: a square pyramid with base $\dfrac12\times\dfrac12$, apex $(1,1,1)$ and height $\dfrac12$, of volume $\dfrac13\cdot\dfrac14\cdot\dfrac12=\dfrac1{24}$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair P(real x,real y,real z){return (y+0.42*x, z+0.32*x);}
+real t=0.5;
+draw(P(0,0,0)--P(0,1,0)--P(0,1,1)--P(0,0,1)--cycle,gray);
+draw(P(0,1,0)--P(1,1,0)--P(1,1,1)--P(0,1,1),gray); draw(P(0,0,1)--P(1,0,1)--P(1,1,1),gray);
+draw(P(0,0,0)--P(1,0,0)--P(1,1,0),gray+dashed); draw(P(1,0,0)--P(1,0,1),gray+dashed);
+pair a0=P(0,0,0), a1=P(0,t,0), a2=P(0,t,t), a3=P(0,0,t);
+pair b0=P(t,t,t), b1=P(t,1,t), b2=P(t,1,1), b3=P(t,t,1);
+pair apex=P(1,1,1);
+pen pr=rgb(0.2,0.4,0.9), py=rgb(0.9,0.3,0.2);
+fill(a0--a1--a2--a3--cycle,rgb(0.85,0.9,1)); fill(b0--b1--b2--b3--cycle,rgb(0.85,0.9,1));
+draw(a0--a1--a2--a3--cycle,pr+linewidth(0.9)); draw(b0--b1--b2--b3--cycle,pr+linewidth(0.9));
+draw(a0--b0,pr); draw(a1--b1,pr); draw(a2--b2,pr); draw(a3--b3,pr);
+draw(b0--apex,py); draw(b1--apex,py); draw(b2--apex,py); draw(b3--apex,py);
+dot(apex,py); label("$(1,1,1)$",apex,NE,fontsize(8pt));
+draw(P(0,1.15,0)--P(1,1.15,0),Arrow(5)); label("$x$",P(1,1.15,0),SE);
+draw(P(0,0,-0.12)--P(0,1,-0.12),Arrow(5)); label("$y$",P(0,1,-0.12),E);
+draw(P(0,-0.12,0)--P(0,-0.12,1),Arrow(5)); label("$z$",P(0,-0.12,1),N);
+label("$0$",P(0,0,0),SW,fontsize(8pt));
+\end{asy}
+
+So $V=\dfrac18+\dfrac1{24}=\dfrac16$, and the probability is $3\cdot\dfrac16=\boxed{\dfrac12}$.
+
+(In general, the probability that three uniform times lie within $t$ of each other is $3t^2-2t^3$.)

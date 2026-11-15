@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2777181_a_precalculus_exercise_and_2019_aime_ii_10__notice_the_similarities
+% Stable identity: aops-topic-2777181-q02
+Let $x=\dfrac\theta{180^\circ}\in\left(0,\dfrac12\right)$, written in binary as $x=0.b_1b_2b_3\ldots$. Since $\tan$ has period $180^\circ$, $\tan(2^n\theta)$ depends on the fractional part of $2^nx$, which is $0.b_{n+1}b_{n+2}\ldots$; it is positive when this lies in $\left(0,\dfrac12\right)$, i.e. $b_{n+1}=0$, and negative when it lies in $\left(\dfrac12,1\right)$, i.e. $b_{n+1}=1$. (The values $0$ and $\dfrac12$ are excluded, since the tangent is never zero or undefined here.)
+
+So $b_{n+1}=0$ exactly when $3\mid n$: the binary digits are $0,1,1,0,1,1,\dots$, and
+\[x=0.\overline{011}_2=\dfrac{3}{7},\qquad\theta=\dfrac37\cdot180^\circ=\dfrac{540}7^\circ.\]
+Check: $\theta\approx77.1^\circ$ (tan $>0$), $2\theta\approx154.3^\circ$ ($<0$), $4\theta\equiv128.6^\circ$ ($<0$), and $8\theta\equiv\theta\pmod{180^\circ}$, so the pattern repeats.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw(unitcircle,gray);draw((-1.3,0)--(1.3,0));draw((0,-1.3)--(0,1.3));
+fill((0,0)--arc((0,0),1,0,90)--cycle,rgb(0.85,0.95,0.85));fill((0,0)--arc((0,0),1,180,270)--cycle,rgb(0.85,0.95,0.85));
+real t=540/7;
+pair[] Q={dir(t),dir(2*t),dir(4*t)};
+string[] L={"$\theta$","$2\theta$","$4\theta$"};
+for(int i=0;i<3;++i){draw((0,0)--Q[i],linewidth(0.9));dot(Q[i]);label(L[i],1.18*Q[i]);}
+label("$\tan>0$",(0.55,0.4),fontsize(8pt));label("$\tan>0$",(-0.55,-0.4),fontsize(8pt));label("$8\theta\equiv\theta$",(-1.05,1.1),fontsize(8pt));
+\end{asy}
+
+Thus $p+q=540+7=\boxed{547}$.

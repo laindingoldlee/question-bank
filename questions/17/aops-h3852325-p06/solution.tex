@@ -1,0 +1,17 @@
+On the stated interval, $0\le4y\le\dfrac{\pi}{2}$, so $\sin4y=\dfrac{1}{2}$ implies $\boxed{y=\dfrac{\pi}{24}}$.
+Differentiating,
+\[
+\boxed{\dfrac{dx}{dy}=8\sin4y\cos4y=4\sin8y}.
+\]
+In the open interval both factors are positive, so
+\[
+\dfrac{dy}{dx}=\dfrac{1}{8\sqrt{x(1-x)}}
+=\dfrac{1}{\sqrt{16-64(x-\dfrac{1}{2})^2}}.
+\]
+Thus $\boxed{q=16,\ r=-64,\ s=-\dfrac{1}{2}}$. The denominator is largest at $x=\dfrac{1}{2}$, where it is $4$. Hence the minimum derivative is $\boxed{\dfrac{1}{4}}$ at $\boxed{x=\dfrac{1}{2}}$; the derivative is unbounded at the endpoints.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;pair f(real t){return (sin(4t)^2,t);}draw(graph(f,0,pi/8),blue);draw((0,0)--(1.15,0),Arrow);draw((0,0)--(0,.5),Arrow);dot((.25,pi/24));label("$P$",(.25,pi/24),NW);dot((.5,pi/16));label("$x=\dfrac{1}{2}$",(.5,pi/16),SE);label("$1$",(1,0),S);label("$\dfrac{\pi}{8}$",(0,pi/8),W);
+\end{asy}

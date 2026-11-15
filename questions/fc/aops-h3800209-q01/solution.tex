@@ -1,0 +1,8 @@
+Put $m=n-1$, so consecutive corners are $m$ positions apart. At any time after all four corners are occupied, their four visible numbers, in increasing order, are $jm+1,(j+1)m+1,(j+2)m+1,(j+3)m+1$ for some integer $j\ge0$. Their sum gives $(4j+6)m+4=2012$, or $(2j+3)m=1004=4\cdot251$.
+The odd factor $2j+3$ is at least three, so it must be $251$. Hence $j=124,m=4$, and the corner numbers are $\boxed{497,501,505,509}$. They occur on a $5\times5$ board, with these values clockwise from the top-left corner, so the solution is attainable and unique.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int r=0;r<5;++r)for(int c=0;c<5;++c){if(r==0||r==4||c==0||c==4)fill(box((c,-r),(c+1,1-r)),lightgray);draw(box((c,-r),(c+1,1-r)),gray);}label("497",(.5,.5));label("501",(4.5,.5));label("505",(4.5,-3.5));label("509",(.5,-3.5));
+\end{asy}

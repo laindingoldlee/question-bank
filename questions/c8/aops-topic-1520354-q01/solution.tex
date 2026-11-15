@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1520354_nt__combo_problem
+% Stable identity: aops-topic-1520354-q01
+\textbf{Ordered triples.} An ordered triple $(x,y,z)$ with $xyz=2^65^6$ is given by how the six $2$'s and the six $5$'s are distributed among $x,y,z$: by stars and bars $\dbinom82=28$ ways each, so there are $28^2=784$ ordered triples.
+
+\textbf{Passing to unordered triples.} Sort the ordered triples by how many factors are equal.
+\begin{itemize}
+\item All three equal: $x^3=10^6$, so $x=100$: $1$ triple.
+\item Exactly two equal, $(a,a,c)$ in some order with $a\ne c$: $a^2$ must divide $2^65^6$, so $a=2^i5^j$ with $0\le i,j\le3$, $16$ choices, minus $a=100$ (which makes $c=a$): $15$ choices, each giving $3$ ordered triples, $45$ in all.
+\item All different: $784-1-45=738$ ordered triples, which form $\dfrac{738}{6}=123$ unordered ones.
+\end{itemize}
+So the number of unordered products is $123+15+1=\boxed{139}$.
+
+\textbf{The error.} The student treats the $2$'s as unordered but the $5$'s as ordered. Once the $2$'s are split as, say, $(0,1,5)$, the three factors are different, and all $28$ ordered ways of giving out the $5$'s really are different products; but when the split of the $2$'s has equal parts, like $(0,3,3)$ or $(2,2,2)$, some of the $28$ ways give the same unordered product. Also, the unordered splits of the $2$'s should be matched with the $5$'s factor by factor, which the product $7\cdot28$ does not do. The count $196$ is neither the number of ordered triples ($784$) nor the number of unordered ones ($139$).

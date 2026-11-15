@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1725794_geometric_probability
+% Stable identity: aops-topic-1725794-q01
+Place $B=(0,0)$, $C=(2,0)$, $D=(2,1)$, $A=(0,1)$, and let $X=(x,y)$ with $0<x<2$, $0<y<1$. Triangle $ABX$ has base $AB=1$ on the line $x=0$ and height $x$, so its area is $\dfrac {x}{2}$. Triangle $BCX$ has base $BC=2$ on the line $y=0$ and height $y$, so its area is $y$.
+
+The condition $\dfrac {x}{2}>2y$ means $y<\dfrac {x}{4}$: the point lies below the line through $B$ with slope $\dfrac{1}{4}$, which meets side $CD$ at $\left(2,\dfrac{1}{2}\right)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(6,0),D=(6,3),A=(0,3),Q=(6,1.5);
+fill(B--C--Q--cycle,lightgray);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(B--Q,red+dashed+linewidth(0.8));
+label("$A$",A,NW);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NE);
+label("$\dfrac{1}{2}$",(C+Q)/2,E);label("$y=\dfrac{x}{4}$",(3.0,1.5),red);
+label("$1$",(A+B)/2,W);label("$2$",(B+C)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The favourable region is the shaded triangle with legs $2$ and $\dfrac{1}{2}$, of area $\dfrac{1}{2}\cdot2\cdot\dfrac{1}{2}=\dfrac{1}{2}$. The rectangle has area $2$, so the probability is $\dfrac{\dfrac{1}{2}}{2}=\boxed{\dfrac{1}{4}}$.

@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2563115_cool_problem_that_my_university_brother_is_still_having_trouble_on_solving
+% Stable identity: aops-topic-2563115-q01
+Let the circles have centres $O_1$ (small, radius $r$) and $O$ (large, radius $R>r$). Since the circles are tangent at $A$, the points $A$, $O_1$, $O$ are collinear with $AO=\dfrac Rr\,AO_1$. Let line $AD$ meet the large circle again at $M$.
+
+Consider the homothety (enlargement) $h$ with centre $A$ and ratio $k=\dfrac Rr>1$. It maps $O_1$ to $O$ and multiplies all distances by $k$, so it maps the small circle onto the large circle. It maps $D$ to the point of ray $AD$ at distance $k\cdot AD$ from $A$, which lies on the large circle; this point is $M$. A homothety maps each line to a parallel line, so the tangent line to the small circle at $D$, namely line $BC$, is mapped to the tangent line to the large circle at $M$, which is therefore parallel to $BC$.
+
+The radius $OM$ is perpendicular to that tangent, hence perpendicular to $BC$. So $M$ lies on the perpendicular from $O$ to the chord $BC$, which is the perpendicular bisector of $BC$; thus $MB=MC$, and $M$ is the midpoint of one of the two arcs $BC$.
+
+The small circle touches line $BC$ only at $D$, so all its other points, including $A$, lie on one side of $BC$. Since $AM=k\cdot AD>AD$, the point $D$ lies between $A$ and $M$, so $M$ is on the other side of $BC$. Hence $M$ is the midpoint of the arc $BC$ not containing $A$. The inscribed angles $\angle BAM$ and $\angle MAC$ stand on the equal arcs $BM$ and $MC$, so they are equal. As $D$ lies on segment $AM$, the line $AD$ bisects $\angle BAC$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0); real R=3; pair A=(0,3); real r=1.6; pair P=(0,R-r);
+pair D=P+r*dir(250); pair u=rotate(90)*unit(D-P);
+real bb=dot(D,u), cc=dot(D,D)-R*R;
+pair C=D+(-bb+sqrt(bb*bb-cc))*u, B=D+(-bb-sqrt(bb*bb-cc))*u;
+pair M=A+(R/r)*(D-A);
+draw(circle(O,R),linewidth(0.8));draw(circle(P,r));
+draw(B--C,linewidth(0.8));draw(A--B);draw(A--C);draw(A--M,dashed);
+draw(M+0.9*unit(rotate(90)*(M-O))--M-0.9*unit(rotate(90)*(M-O)),dotted);
+dot(A);dot(B);dot(C);dot(D);dot(M);dot(P);dot(O);
+label("$A$",A,N);label("$B$",B,dir(B));label("$C$",C,dir(C));label("$D$",D,dir(D-P));label("$M$",M,dir(M));
+label("$O_1$",P,E,fontsize(8pt));label("$O$",O,E,fontsize(8pt));
+\end{asy}
+
+In the sketch, the dotted line is the tangent at $M$, parallel to $BC$.

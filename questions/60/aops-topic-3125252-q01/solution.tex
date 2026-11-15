@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3125252_geometry_problem
+% Stable identity: aops-topic-3125252-q01
+If the undetected vertex is $H=(x,y)$, the other two vertices must be $V=(x,a)$ with $a<y$ and $U=(b,y)$ with $b<x$, to block its two rays. These blockers are themselves detected, and the triangle is nondegenerate. Conversely every such choice gives exactly one hidden vertex, so no triangle is counted twice. Its area is $\dfrac{1}{2}(x-b)(y-a)$. Summing independently over horizontal and vertical choices gives $\dfrac{1}{2}\left(\sum_{x=1}^{100}\sum_{b=1}^{x-1}(x-b)\right)^2=\dfrac{1}{2}\left(\sum_{x=1}^{100}\dfrac{x(x-1)}{2}\right)^2=\dfrac{1}{2}\binom{101}{3}^2=\boxed{13886111250}$. The middle identity follows by counting 3-element subsets according to their largest element.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair H=(5,4),U=(2,4),V=(5,1);draw((0,4)--U,red,Arrow);draw(U--H,red+dashed);draw((5,0)--V,blue,Arrow);draw(V--H,blue+dashed);draw(U--V--H--cycle);label("H=(x,y)",H,NE);label("U=(b,y)",U,W);label("V=(x,a)",V,SE);
+\end{asy}

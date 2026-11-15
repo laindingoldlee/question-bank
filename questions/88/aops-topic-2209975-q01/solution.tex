@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2209975_triangle_and_altitude_geo_problem
+% Stable identity: aops-topic-2209975-q01
+Let $a=BC$, $b=CA$, $c=AB$ (all rational).
+
+Since $\angle A$ is the largest angle, $\angle B$ and $\angle C$ are acute: if, say, $\angle B\ge90^\circ$, then $\angle A\ge\angle B\ge90^\circ$ and the angle sum would exceed $180^\circ$. Hence the foot $D$ lies strictly between $B$ and $C$. Put $x=BD$, so $DC=a-x$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(7,0), A=(2.2,3.6), D=(A.x,0);
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--D,blue+dashed);
+draw(D+(0.25,0)--D+(0.25,0.25)--D+(0,0.25));
+dot(D,blue);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S,blue);
+label("$c$",(A+B)/2,NW); label("$b$",(A+C)/2,NE); label("$x$",(B+D)/2,S); label("$a-x$",(D+C)/2,S);
+\end{asy}
+
+By the Pythagorean theorem in the right triangles $ABD$ and $ACD$,
+\[AD^2=c^2-x^2=b^2-(a-x)^2.\]
+Expanding, $c^2-x^2=b^2-a^2+2ax-x^2$, so
+\[BD=x=\dfrac{a^2+c^2-b^2}{2a},\]
+which is rational, since it is built from rational numbers by addition, multiplication and division by $2a\ne0$. $\blacksquare$
+
+(Without the hypothesis on $\angle A$, $D$ might lie outside segment $BC$; then the same computation gives $BD=\left|\dfrac{a^2+c^2-b^2}{2a}\right|$, still rational.)

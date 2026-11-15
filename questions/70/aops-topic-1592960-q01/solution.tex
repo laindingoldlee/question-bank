@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1592960_sets_problem
+% Stable identity: aops-topic-1592960-q01
+The smallest sum of $N$ distinct elements is $1+2+\dots+N=\dfrac{N(N+1)}{2}$ and the largest is $(14-N)+\dots+13=\dfrac{N(27-N)}{2}$.
+
+\textbf{Every integer in between occurs.} Start from $\{1,\dots,N\}$. As long as the chosen set is not $\{14-N,\dots,13\}$, some chosen element $a$ has $a+1$ not chosen and $a+1\le13$ (take the largest chosen element that is not part of the top block). Replacing $a$ by $a+1$ raises the sum by exactly $1$. Repeating, we pass through every integer from the minimum to the maximum.
+
+Hence
+\[
+S(N)=\dfrac{N(27-N)}{2}-\dfrac{N(N+1)}{2}+1=N(13-N)+1 .
+\]
+The product $N(13-N)$ is largest when $N$ is as close as possible to $\dfrac{13}{2}$, i.e.\ for $N=6$ and $N=7$, both giving $S=43$. The requested sum is $6+7=\boxed{13}$.

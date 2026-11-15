@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1726281_a_few_geo_questions
+% Stable identity: aops-topic-1726281-q01
+The two tangent segments from a point outside a circle to the circle are equal. Let the tangent lengths from $L,M,N,O$ be $\ell,m,n,o$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair T(real a){return dir(a);}
+real[] t={95,200,265,330};
+pair V(real a,real c){return dir((a+c)/2)/Cos((c-a)/2);}
+pair L=V(t[0],t[1]),M=V(t[1],t[2]),Nn=V(t[2],t[3]),O=V(t[3],t[0]+360);
+draw(unitcircle,gray);dot((0,0));label("$P$",(0,0),NE);
+draw(L--M--Nn--O--cycle,linewidth(0.9));
+for(int i=0;i<4;++i) dot(T(t[i]),blue);
+label("$L$",L,dir(L));label("$M$",M,dir(M));label("$N$",Nn,dir(Nn));label("$O$",O,dir(O));
+void tl(pair X,real a,string s){pair P=T(a);label(s,(X+P)/2,unit(X+P),blue+fontsize(9pt));}
+tl(L,t[0],"$\ell$");tl(L,t[1],"$\ell$");
+tl(M,t[1],"$m$");tl(M,t[2],"$m$");
+tl(Nn,t[2],"$n$");tl(Nn,t[3],"$n$");
+tl(O,t[3],"$o$");tl(O,t[0],"$o$");
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Each side is the sum of the tangent lengths at its ends:
+\[
+LM=\ell+m,\quad MN=m+n,\quad NO=n+o,\quad OL=o+\ell .
+\]
+Hence $LM+NO=\ell+m+n+o=MN+OL=13+17=30$, and the perimeter is $30+30=\boxed{60}$.

@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1445533_the_knights_of_the_square_table
+% Stable identity: aops-topic-1445533-q01
+Colour the board like a chessboard. A knight move changes both coordinates by $1$ and $2$ in some order, so the sum of the coordinates changes by an odd number and the knight always moves to a square of the other colour. Two squares sharing a side have different colours, so the number of moves must be \textbf{odd}. One move is not enough, since a knight move never goes to an adjacent square. So at least $3$ moves are needed.
+
+Three moves always suffice. By symmetry (rotating or reflecting the board) we may assume the target is the square to the right, from $(x,y)$ to $(x+1,y)$, with $0\le x\le2015$ and $0\le y\le2016$. The three moves $(+2,+1)$, $(-2,+1)$, $(+1,-2)$ add up to $(1,0)$:
+\begin{itemize}
+\item if $x\le2014$, use the order $(+2,+1),(-2,+1),(+1,-2)$: the knight visits columns $x+2$, $x$, $x+1$;
+\item if $x=2015$, use the order $(-2,+1),(+2,+1),(+1,-2)$: the knight visits columns $x-2$, $x$, $x+1$.
+\end{itemize}
+In both orders the rows visited are $y+1$, $y+2$, $y$; if $y+2>2016$, reflect top to bottom and use $(+2,-1),(-2,-1),(+1,+2)$ (or the analogous second order) instead, which visit rows $y-1$, $y-2$, $y$. Since the board is at least $5$ squares wide in each direction, all intermediate squares are on the board.
+
+So \textbf{yes}, and the minimum number of moves is $\boxed{3}$.

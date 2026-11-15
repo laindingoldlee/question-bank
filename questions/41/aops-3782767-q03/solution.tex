@@ -1,0 +1,9 @@
+The eight available cells form an 8-cycle under knight moves. The two specified corners are opposite vertices of that cycle. If $j$ of the twelve moves go clockwise, the displacement is $2j-12\equiv4\pmod8$. Thus $j\in\{0,4,8,12\}$. The count is $\binom{12}0+\binom{12}4+\binom{12}8+\binom{12}{12}=\boxed{992}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] P={(0,0),(1,2),(2,0),(0,1),(2,2),(1,0),(0,2),(2,1)};for(int i=0;i<8;++i){dot(P[i]);label(string(i),P[i],(0,1));draw(P[i]--P[(i+1)%8]);}
+\end{asy}
+

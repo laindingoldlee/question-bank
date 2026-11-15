@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2485935_proof_that_all_cyclic_polygons_angles_are_not_supplementary
+% Stable identity: aops-topic-2485935-q01
+\textbf{(a)} The assumption is that \emph{one} pair of opposite angles is supplementary, but the computation uses that \emph{all} $\dfrac n2$ pairs are. The argument therefore only shows that not every pair can be supplementary when $n\ne4$; it says nothing about a single pair. It also never uses that the polygon is inscribed in a circle, and for general polygons a single supplementary pair is possible: a convex hexagon with angles $90^\circ,135^\circ,135^\circ,90^\circ,135^\circ,135^\circ$ exists (its exterior angles $90^\circ,45^\circ,45^\circ,90^\circ,45^\circ,45^\circ$ add up to $360^\circ$), and its opposite angles $90^\circ$ and $90^\circ$ are supplementary.
+
+\textbf{(b)} Let $x_k$ be the measure of the arc $A_kA_{k+1}$ not containing the other vertices (indices mod $2m$), so $x_1+x_2+\cdots+x_{2m}=360^\circ$ and every $x_k>0$. The angle at $A_i$ is an inscribed angle standing on the arc from $A_{i+1}$ to $A_{i-1}$ that does not contain $A_i$, which measures $360^\circ-x_{i-1}-x_i$. Hence
+\[\angle A_i=180^\circ-\dfrac{x_{i-1}+x_i}{2},\qquad\angle A_{i+m}=180^\circ-\dfrac{x_{i+m-1}+x_{i+m}}{2}.\]
+Adding, and writing $R$ for the sum of the other $2m-4$ arcs,
+\[\angle A_i+\angle A_{i+m}=360^\circ-\dfrac{360^\circ-R}{2}=180^\circ+\dfrac R2.\]
+Since $m\ge3$, there are $2m-4\ge2$ other arcs (for instance $x_{i+1}$), each of positive measure, so $R>0$ and $\angle A_i+\angle A_{i+m}>180^\circ$. $\blacksquare$
+
+(For $m=2$ there are no other arcs, $R=0$, and we recover that opposite angles of a cyclic quadrilateral are supplementary.) In the hexagon sketch, the opposite angles at $A_1$ and $A_4$ exceed $180^\circ$ in total by half of the blue arcs $x_2$ and $x_5$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real[] t={10,60,120,175,235,300};
+pair[] A; for(int i=0;i<6;++i) A.push(dir(t[i]));
+draw(unitcircle);
+draw(A[0]--A[1]--A[2]--A[3]--A[4]--A[5]--cycle,linewidth(0.8));
+for(int i=0;i<6;++i){dot(A[i]);label("$A_"+string(i+1)+"$",A[i],unit(A[i]));}
+pair O=(0,0);dot(O);label("$O$",O,SE,fontsize(8pt));
+for(int i=0;i<6;++i){real a=t[i], c=(i==5 ? 370 : t[i+1]); label("$x_"+string(i+1)+"$",1.22*dir((a+c)/2),blue+fontsize(8pt));}
+draw(arc(O,1.06,t[1],t[2]),blue+linewidth(1));draw(arc(O,1.06,t[4],t[5]),blue+linewidth(1));
+\end{asy}

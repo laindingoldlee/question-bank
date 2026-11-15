@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1312264_puzzling_question_combinatorics
+% Stable identity: aops-topic-1312264-q01
+Letters are arranged in the grid below, with neighbouring letters one unit apart horizontally or vertically.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair[] Pp={(0,2),(-1,1),(1,1),(-2,0),(0,0),(2,0),(-1,-1),(1,-1),(0,-2)};
+pair[] O={(0,1),(-1,0),(1,0),(0,-1)};
+for(pair p: Pp) label("$P$",p); for(pair o: O) label("$O$",o);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+A copy of the word $POP$ is a sequence of three positions (first $P$, then $O$, then $P$) in which each consecutive pair are horizontal or vertical neighbours; the path need not be straight, and the first and last $P$ may be the same letter. Two copies are different if their sequences of positions differ (so reading the same three letters in reverse order counts separately). How many copies of $POP$ are there?

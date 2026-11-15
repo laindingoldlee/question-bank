@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1602281_need_help
+% Stable identity: aops-topic-1602281-q01
+\textbf{Reduce.} By the Euclidean algorithm,
+\[
+1234=5\cdot234+64,\quad 234=3\cdot64+42,\quad 64=42+22,\quad 42=22+20,\quad 22=20+2,\quad 20=10\cdot2,
+\]
+so $\gcd(1234,234)=2$, which divides $6$. Dividing by $2$, the equation becomes $617x+117y=3$ with $\gcd(617,117)=1$.
+
+\textbf{A particular solution.} Running the algorithm for $617$ and $117$ backwards (or by trial) gives $617\cdot11-117\cdot58=6787-6786=1$. Multiplying by $3$: $617\cdot33+117\cdot(-174)=3$, so $(x,y)=(33,-174)$ is a solution.
+
+\textbf{All solutions.} If $(x,y)$ is any solution, subtracting gives $617(x-33)=-117(y+174)$. Since $\gcd(617,117)=1$, $117$ divides $x-33$; write $x-33=117t$, and then $y+174=-617t$. Conversely every such pair is a solution. Hence the integer solutions are exactly
+\[
+\boxed{x=33+117t,\quad y=-174-617t\qquad(t\in\mathbb Z)}.
+\]

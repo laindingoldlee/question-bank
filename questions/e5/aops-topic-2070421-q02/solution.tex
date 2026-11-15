@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2070421_struggling_with_these_problems
+% Stable identity: aops-topic-2070421-q02
+Since $AD\ne BC$, the lines $AB$ and $CD$ meet at a point $P$; as $BC\parallel AD$ and $BC<AD$, $P$ lies beyond $B$ on ray $AB$ and beyond $C$ on ray $DC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm,8cm);
+defaultpen(fontsize(10pt));
+real e=-9+sqrt(120); real r=(9+e^2)/6;
+pair B=(0,0), A=(0,3), C=(3,0), D=(4,3), P=(0,-9), Ept=(r*0,e), O=(r,e);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(circle(O,r),blue);
+draw(P--B,dashed); draw(P--C,dashed);
+pair H=C+(D-C)*dot(Ept-C,D-C)/dot(D-C,D-C);
+draw(Ept--H,red+linewidth(0.9));
+draw((0,0.2)--(0.2,0.2)--(0.2,0));
+dot(A);dot(B);dot(C);dot(D);dot(P);dot(Ept);dot(H);
+label("$A$",A,NW); label("$B$",B,W); label("$C$",C,SE); label("$D$",D,NE); label("$P$",P,W); label("$E$",Ept,W); label("$H$",H,E);
+label("$4$",(A+D)/2,N); label("$3$",(B+C)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangles $PBC$ and $PAD$ are similar (parallel sides) with ratio $BC:AD=3:4$, so we may write $PC=3t$ and $PD=4t$ for some $t>0$.
+
+$PE$ is a tangent from $P$ and $PCD$ is a secant of the same circle, so by the power of a point,
+\[
+PE^2=PC\cdot PD=12t^2,\qquad PE=2\sqrt3\,t .
+\]
+Let $H$ be the foot of the perpendicular from $E$ to line $CD$. Then $EH=PE\sin\angle EPH=PE\sin\angle BPC$, and in right triangle $PBC$ (right angle at $B$), $\sin\angle BPC=\dfrac{BC}{PC}=\dfrac{3}{3t}=\dfrac{1}{t}$. Therefore
+\[
+EH=2\sqrt3\,t\cdot\dfrac{1}{t}=\boxed{2\sqrt3}.
+\]
+(The answer does not depend on the height $AB$; in general the distance is $\sqrt{AD\cdot BC}$.)

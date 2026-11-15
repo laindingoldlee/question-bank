@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2454921_counting_problem
+% Stable identity: aops-topic-2454921-q01
+By stars and bars, the number of ordered triples of positive integers with sum $2019$, \emph{without} the condition $x\le y\le z$, is $\dbinom{2018}{2}=2035153$. That is what the student counted. Each triple with $x\le y\le z$ corresponds to a multiset $\{x,y,z\}$, and a multiset is counted $6$, $3$ or $1$ times among the ordered triples, according as its three numbers are distinct, exactly two are equal, or all are equal. So we count the three kinds separately.
+\begin{itemize}
+\item All equal: $3x=2019$, $x=673$: $1$ triple.
+\item Exactly two equal: a pair $(x,z)$ with $2x+z=2019$, $x\ge1$, $z\ge1$, $z\ne x$. There are $1009$ choices $x=1,\dots,1009$, minus $x=673$: $1008$ multisets, which give $3\cdot1008=3024$ ordered triples.
+\item All distinct: the remaining $2035153-3024-1=2032128$ ordered triples, forming $\dfrac{2032128}{6}=338688$ multisets.
+\end{itemize}
+Each multiset gives exactly one triple with $x\le y\le z$, so the answer is
+\[338688+1008+1=\boxed{339697}.\]
+(This agrees with the formula for the number of partitions of $N$ into three positive parts, the nearest integer to $\dfrac{N^2}{12}$: $\dfrac{2019^2}{12}=339696.75$.)

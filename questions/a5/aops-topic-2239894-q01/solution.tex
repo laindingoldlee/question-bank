@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2239894_turning_the_ship
+% Stable identity: aops-topic-2239894-q01
+Turning at a constant rate, the ship moves along a circle; $18^\circ$ is $\dfrac{18}{360}=\dfrac{1}{20}$ of a full turn.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real r=1;
+draw(circle((0,0),r));
+draw(arc((0,0),r,70,88),red+linewidth(1.5));
+draw((0,0)--dir(70),dashed); draw((0,0)--dir(88),dashed);
+draw(arc((0,0),0.3,70,88),blue);
+label("$18^\circ$",0.42*dir(64),E,blue+fontsize(8pt));
+label("$25$ min",dir(79),N,red+fontsize(8pt));
+draw((0,0)--dir(-30)); label("$r$",dir(-30)/2,N,fontsize(8pt));
+dot((0,0));
+\end{asy}
+
+So the full circle takes $20\cdot25=500$ minutes $=\dfrac{25}{3}$ hours, and its circumference is
+\[20\cdot\dfrac{25}{3}=\dfrac{500}{3}\ \text{nautical miles}.\]
+The radius is $r=\dfrac{500}{3}\cdot\dfrac{1}{2\pi}=\dfrac{250}{3\pi}$, and the area is
+\[\pi r^2=\pi\cdot\dfrac{62500}{9\pi^2}=\boxed{\dfrac{62500}{9\pi}}\approx2210\ \text{square nautical miles}.\]

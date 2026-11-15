@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1579624_countdown_round_problem_help
+% Stable identity: aops-topic-1579624-q01
+Let the legs be $a=BC$, $c=AB$ and the hypotenuse $b=AC$. Twice the area is $ac=b\cdot BD=12b$.
+
+Every integer right triangle is a multiple $k$ of a primitive one with sides $m^2-n^2$, $2mn$, $m^2+n^2$, where $m>n\ge1$ are coprime and of opposite parity. The altitude to the hypotenuse is
+\[
+BD=\dfrac{k(m^2-n^2)\cdot k\,2mn}{k(m^2+n^2)}=\dfrac{k\cdot2mn(m^2-n^2)}{m^2+n^2}.
+\]
+In a primitive triple, $m^2+n^2$ is coprime to both legs $m^2-n^2$ and $2mn$, so for $BD=12$ to be an integer $m^2+n^2$ must divide $k$; write $k=t(m^2+n^2)$. Then
+\[
+BD=2t\,mn(m-n)(m+n)=12\qquad\Longrightarrow\qquad t\,mn(m-n)(m+n)=6 .
+\]
+For $(m,n)=(2,1)$ the product $mn(m-n)(m+n)$ is $2\cdot1\cdot1\cdot3=6$; every other admissible pair gives more (for $(3,2)$ it is $30$, for $(4,1)$ it is $60$, and it grows with $m$). So $(m,n)=(2,1)$, $t=1$, $k=5$, and the triangle is $5\cdot(3,4,5)=(15,20,25)$.
+
+Check: $\dfrac{15\cdot20}{25}=12$. The hypotenuse is split into $AD=\dfrac{15^2}{25}=9$ and $DC=\dfrac{20^2}{25}=16$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),C=(25,0),B=(9,12),D=(9,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--D,blue+linewidth(0.9));
+real s=0.9; draw(D+(s,0)--D+(s,s)--D+(0,s),blue);
+draw(B+s*unit(A-B)--B+s*unit(A-B)+s*unit(C-B)--B+s*unit(C-B));
+label("$A$",A,SW);label("$B$",B,N);label("$C$",C,SE);label("$D$",D,S);
+label("$15$",(A+B)/2,NW);label("$20$",(B+C)/2,NE);label("$12$",(B+D)/2,W,blue);
+label("$9$",(A+D)/2,S);label("$16$",(D+C)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The perimeter is $15+20+25=\boxed{60}$ units.

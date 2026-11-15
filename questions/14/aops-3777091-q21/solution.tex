@@ -1,0 +1,9 @@
+Any subset of at least three points determines exactly one convex polygon, with its vertices in circular order. Remove subsets of sizes zero, one and two from all subsets: $2^{7}-1-7-\binom{7}2=\boxed{99}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(3.0,0.0),(1.87047,2.34549),(-0.66756,2.92478),(-2.70291,1.30165),(-2.70291,-1.30165),(-0.66756,-2.92478),(1.87047,-2.34549)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--p[3]--p[4]--p[5]--p[6]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));dot(p[3]);label("$D$",p[3],unit(p[3]-labelCentre));dot(p[4]);label("$E$",p[4],unit(p[4]-labelCentre));dot(p[5]);label("$F$",p[5],unit(p[5]-labelCentre));dot(p[6]);label("$G$",p[6],unit(p[6]-labelCentre));
+\end{asy}
+

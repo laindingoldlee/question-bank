@@ -1,0 +1,7 @@
+Write a point of the hyperbola as $X=(ct,\dfrac{c}{t})$, $t\ne0$. The diameter-circle criterion is $(X-P)\cdot(X-Q)=0$. After dividing by $c^2$, this becomes $(t-p)(t-q)\left(1+\dfrac{1}{t^2pq}\right)=0$. Since $pq<0$, the two additional parameters are $t=\pm\dfrac{1}{\sqrt{-pq}}$, giving $\boxed{(\dfrac{c}{\sqrt{-pq}},c\sqrt{-pq})}$ and its negative. They are distinct, and the two extra assumptions ensure neither parameter equals $p$ or $q$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;pair P=(2,.5),Q=(-1,-1),R=(1/sqrt(2),sqrt(2)),S=-R;draw(graph(new real(real x){return 1/x;},.32,3));draw(graph(new real(real x){return 1/x;},-3,-.32));draw(circle((P+Q)/2,abs(P-Q)/2),blue);draw(P--Q,dashed);label("P",P,E);label("Q",Q,W);label("R",R,N);label("S",S,(0,-1));
+\end{asy}

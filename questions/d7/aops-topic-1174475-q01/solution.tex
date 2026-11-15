@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1174475_nice_inequality
+% Stable identity: aops-topic-1174475-q01
+\emph{Step 1: a substitution.} Expanding shows that
+\[\dfrac{1}{x+2}+\dfrac{1}{y+2}+\dfrac{1}{z+2}=1\iff(x+2)(y+2)+(y+2)(z+2)+(z+2)(x+2)=(x+2)(y+2)(z+2)\iff xy+yz+zx+xyz=4.\]
+Put $p=\dfrac{1}{x+2}$, $q=\dfrac{1}{y+2}$, $r=\dfrac{1}{z+2}$; then $p+q+r=1$ and $0<p,q,r<\dfrac{1}{2}$. Let $a=1-2p$, $b=1-2q$, $c=1-2r$, which are positive with $a+b+c=1$ and $b+c=2p$, $c+a=2q$, $a+b=2r$. Then $x=\dfrac{1}{p}-2=\dfrac{1-2p}{p}=\dfrac{2a}{b+c}$, and similarly $y=\dfrac{2b}{c+a}$, $z=\dfrac{2c}{a+b}$.
+
+\emph{Step 2: reduce to Schur.} With these values, the inequality is
+\[\sum\dfrac{2a}{b+c}\ge\sum\dfrac{4ab}{(b+c)(c+a)}.\]
+Multiply by $(a+b)(b+c)(c+a)>0$:
+\[2\sum a(a+b)(a+c)\ge4\sum ab(a+b).\]
+Since $a(a+b)(a+c)=a^3+a^2b+a^2c+abc$, the left side is $2\sum a^3+2\sum_{\text{sym}}a^2b+6abc$, while $\sum ab(a+b)=\sum_{\text{sym}}a^2b$ (the six terms $a^2b,ab^2,\dots$). So we need
+\[a^3+b^3+c^3+3abc\ge a^2b+ab^2+b^2c+bc^2+c^2a+ca^2,\]
+which is Schur's inequality $\sum a(a-b)(a-c)\ge0$.
+
+\emph{Step 3: Schur's inequality.} Assume $a\ge b\ge c$. Then
+\[a(a-b)(a-c)+b(b-a)(b-c)=(a-b)\left[a(a-c)-b(b-c)\right]=(a-b)^2(a+b-c)\ge0\]
+and $c(c-a)(c-b)\ge0$ as both factors $c-a$, $c-b$ are $\le0$. Adding gives the result. $\blacksquare$
+
+Equality holds for $x=y=z=1$ (i.e. $a=b=c$).

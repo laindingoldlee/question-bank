@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3167130_2022_lmt_spring_guts_round_p16p27_lexington_mathematical_tournament
+% Stable identity: aops-topic-3167130-q19
+By Vieta, $r+s+t=0$ and $rs+rt+st=-B$, so $A=2B$. The tangent--chord theorem gives $\angle XPY=\angle XYQ$ and $\angle XYP=\angle XQY$ (using the corresponding nondegenerate triangles), hence triangles $PXY$ and $YXQ$ are similar. Their corresponding sides give $\dfrac{PX}{YX}=\dfrac{XY}{XQ}$, so $B^2=AC$. Combining with $A=2B$ gives $B=2C$ and $A=4C$. Put $C=p$, an odd prime. Then $A^B=2^{4p}p^{2p}$ has $(4p+1)(2p+1)$ divisors, while $B^A=2^{4p}p^{4p}$ has $(4p+1)^2$ divisors. Thus $D=2p(4p+1)$ and the last condition becomes $p=4p+1-40$, giving $p=13$. Therefore $\boxed{(A,B,C)=(52,26,13)}$. The displayed circle construction verifies that these lengths are realizable.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair Y=(0,0),X=(26,0),P=(26,52),Q=(26,-13);draw(circle((13,26),13*sqrt(5)));draw(circle((13,-6.5),13*sqrt(5)/2));draw(P--Y--Q,blue);draw(P--Q,dashed);draw(X--Y);label("$Y$",Y,W);label("$X$",X,E);label("$P$",P,N);label("$Q$",Q,S);label("$52$",(26,26),E);label("$13$",(26,-6.5),E);label("$26$",(13,0),S);
+\end{asy}

@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2361776_30_posts_circles
+% Stable identity: aops-topic-2361776-q19
+The centres of the three circles are pairwise $2$ apart, so they form an equilateral triangle of side $2$. Each circle touches two sides of the big triangle, so its centre lies on the bisector of the corresponding angle, at distance $1$ from both sides; the sides of the small triangle are parallel to those of the big one.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real s=2+2*sqrt(3);
+pair A=(0,0), B=(s,0), C=(s/2,s*sqrt(3)/2);
+pair P1=(sqrt(3),1), P2=(s-sqrt(3),1), P3=(s/2,1+sqrt(3));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(circle(P1,1),blue); draw(circle(P2,1),blue); draw(circle(P3,1),blue);
+draw(P1--P2--P3--cycle,dashed);
+draw(P1--(sqrt(3),0),red); draw(A--P1,dotted);
+dot(P1); dot(P2); dot(P3);
+label("$\sqrt3$",(sqrt(3)/2,0),S,fontsize(8pt)); label("$2$",(s/2,0),S,fontsize(8pt)); label("$\sqrt3$",(s-sqrt(3)/2,0),S,fontsize(8pt));
+label("$1$",(sqrt(3),0.5),E,red+fontsize(8pt)); label("$30^\circ$",A+(0.95,0.18),fontsize(7pt));
+\end{asy}
+
+Look at the bottom side. The two lower centres are at height $1$, and $2$ apart. The bisector from a corner makes a $30^\circ$ angle with the side, so the foot of the perpendicular from a lower centre is at distance $\dfrac{1}{\tan30^\circ}=\sqrt3$ from the corner. The bottom side therefore has length
+\[\sqrt3+2+\sqrt3=\boxed{2+2\sqrt3}\approx5.46.\]

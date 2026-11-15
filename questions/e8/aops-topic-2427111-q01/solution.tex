@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2427111_several_problems_that_i_made
+% Stable identity: aops-topic-2427111-q01
+The radius is $CM=\dfrac12AC=5\sqrt2$, and $CE=5\sqrt2<10$, so $E$ lies on side $BC$. Diagonal $CA$ makes an angle of $45^\circ$ with side $CB$, so the sector $CME$ of the circle has angle $45^\circ$ and area
+\[\dfrac{45}{360}\cdot\pi\left(5\sqrt2\right)^2=\dfrac{25\pi}{4}.\]
+The region in question is this sector minus triangle $CFE$ (with $F$ on $CM$ and $E$ on $CB$).
+
+To find $F$, place $A=(0,0)$, $B=(10,0)$, $C=(10,10)$, $D=(0,10)$, so $E=\left(10,10-5\sqrt2\right)$. Line $ED$ is $y=10-\dfrac{\sqrt2}{2}x$ and line $AC$ is $y=x$; they meet where $x\left(1+\dfrac{\sqrt2}2\right)=10$, i.e.
+\[x=\dfrac{20}{2+\sqrt2}=10\left(2-\sqrt2\right)=20-10\sqrt2.\]
+So $CF=\sqrt2\left(10-\left(20-10\sqrt2\right)\right)=\sqrt2\left(10\sqrt2-10\right)=20-10\sqrt2$, which is less than $CM=5\sqrt2$, so $F$ lies between $M$ and $C$. Then
+\[[CFE]=\dfrac12\cdot CF\cdot CE\cdot\sin45^\circ=\dfrac12\left(20-10\sqrt2\right)\left(5\sqrt2\right)\dfrac{\sqrt2}{2}=50-25\sqrt2.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real R=5*sqrt(2);
+pair A=(0,0),B=(10,0),C=(10,10),D=(0,10),M=(5,5);
+pair Ep=(10,10-R), F=(20-10*sqrt(2),20-10*sqrt(2));
+fill(arc(C,R,225,270)--F--cycle,rgb(0.8,0.88,1));
+draw(A--B--C--D--cycle,linewidth(0.8));
+draw(A--C); draw(Ep--D);
+draw(arc(C,R,180,270),blue);
+draw(C--M,dashed); draw(C--Ep,dashed);
+dot(M); dot(Ep); dot(F);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$M$",M,SW); label("$E$",Ep,E); label("$F$",F,N);
+label("$45^\circ$",C+1.6*dir(247.5),fontsize(8pt));
+\end{asy}
+
+The area of the region is
+\[\dfrac{25\pi}{4}-\left(50-25\sqrt2\right)=\boxed{\dfrac{25\pi}{4}+25\sqrt2-50\approx4.99}.\]

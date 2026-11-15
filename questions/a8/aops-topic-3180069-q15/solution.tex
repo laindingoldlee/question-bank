@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3180069_2023_lmt_spring_speed_round__lexington_mathematical_tournament
+% Stable identity: aops-topic-3180069-q15
+If the centre triangle side is $d$, non-overlap requires $d\ge2$. A containing square must have side 2 larger than a square containing the three centres, because every centre is at least 1 from each side. For an equilateral triangle of side $d$, symmetry permits its base angle to the horizontal to be $0\le\theta\le30^\circ$. Its horizontal span is $d\cos\theta$, and its vertical span is $d\sin(60^\circ+\theta)$. The first decreases and the second increases in this interval. Their maximum is minimized when they coincide, at $\theta=15^\circ$, giving $d\cos15^\circ$. Choosing the least allowed $d=2$ yields square side $2+2\cos15^\circ=\boxed{2+\dfrac{\sqrt6+\sqrt2}{2}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real w=2*cos(pi/12),s=w+2;pair A=(1,1),B=A+2*dir(15),C=A+2*dir(75);draw((0,0)--(s,0)--(s,s)--(0,s)--cycle);draw(circle(A,1)^^circle(B,1)^^circle(C,1));draw(A--B--C--cycle,dashed);label("$A$",A,SW);label("$B$",B,E);label("$C$",C,N);label("$2+2\cos15^\circ$",(s/2,0),S);
+\end{asy}

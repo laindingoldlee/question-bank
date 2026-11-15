@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1746837_constructions
+% Stable identity: aops-topic-1746837-q01
+\textbf{True}, for diagonal lengths $d_1,d_2>0$ and an angle $\theta$ with $0^\circ<\theta<180^\circ$.
+
+\textbf{Construction.} Draw a segment $AC$ of length $d_1$ with midpoint $O$. Draw the line through $O$ making the angle $\theta$ with $AC$, and on it mark $B$ and $D$ on opposite sides of $O$ with $OB=OD=\dfrac{d_2}{2}$. The diagonals of the quadrilateral $ABCD$ bisect each other, so $ABCD$ is a parallelogram (triangles $OAB$ and $OCD$ are congruent by SAS, so $\angle OAB=\angle OCD$ and $AB\parallel CD$; similarly $AD\parallel BC$). It has the required diagonals and angle.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);real th=55;real p=3,q=2;
+pair A=-p*dir(0),C=p*dir(0),B=-q*dir(th),D=q*dir(th);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,blue+linewidth(0.8));draw(B--D,blue+linewidth(0.8));
+draw(arc(O,0.5,0,th),linewidth(0.6));label("$\theta$",0.8*dir(th/2));
+dot(O);
+label("$A$",A,W);label("$B$",B,SW);label("$C$",C,E);label("$D$",D,NE);label("$O$",O,dir(-60));
+label("$\dfrac{d_1}{2}$",A+0.38*(O-A),S,blue);label("$\dfrac{d_1}{2}$",(C+O)/2+(0.4,0),N,blue);
+label("$\dfrac{d_2}{2}$",0.68*B,dir(th+90),blue);label("$\dfrac{d_2}{2}$",0.4*D,dir(th+90),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Uniqueness.} In any parallelogram $ABCD$ with these data, the diagonals bisect each other at a point $O$, so $OA=OC=\dfrac{d_1}{2}$ and $OB=OD=\dfrac{d_2}{2}$, and the angles at $O$ are $\theta$ and $180^\circ-\theta$. By SAS the four triangles $OAB$, $OBC$, $OCD$, $ODA$ are determined (two of them have angle $\theta$ at $O$, two have $180^\circ-\theta$), so all the sides and angles of the parallelogram are determined. Two such parallelograms can be moved onto each other by placing their diagonals on top of each other, so they are congruent. $\boxed{\text{True}}$

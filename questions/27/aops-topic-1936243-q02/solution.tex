@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1936243_100_lightbulbs_problem
+% Stable identity: aops-topic-1936243-q02
+Counting from the right, the $m$th bulb is bulb $101-m$. So bulb $i$ is flipped by every odd $k$ dividing $i$ and by every even $k$ dividing $101-i$. Write $o(m)$ for the number of odd divisors of $m$ and $e(m)$ for the number of even divisors. Bulb $i$ is on exactly when $o(i)+e(101-i)$ is odd.
+
+Two facts. Write $m=2^a q$ with $q$ odd. Then $o(m)=d(q)$, which is odd exactly when $q$ is a square, that is, when $m$ is a square or twice a square. And $e(m)=a\cdot d(q)$, which is odd exactly when $a$ is odd and $q$ is a square, that is, when $m$ is twice a square.
+
+\emph{$i$ even.} Then $101-i$ is odd, so $e(101-i)=0$, and bulb $i$ is on exactly when $i$ is a square or twice a square. The even squares are $4,16,36,64,100$ and the numbers $2s^2\le100$ are $2,8,18,32,50,72,98$: $12$ bulbs.
+
+\emph{$i$ odd.} Then $o(i)=d(i)$ is odd exactly when $i$ is a square, and $e(101-i)$ is odd exactly when $101-i$ is twice a square. The odd squares are $1,9,25,49,81$; and $101-i\in\{2,8,18,32,50,72,98\}$ gives $i\in\{99,93,83,69,51,29,3\}$. No number is in both lists, so exactly one condition holds for each of these $5+7=12$ bulbs, and neither holds for any other odd bulb.
+
+Hence $12+12=\boxed{24}$ bulbs are on.

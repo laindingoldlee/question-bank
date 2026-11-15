@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h1715429_distance_between_the_two_points
+% Stable identity: aops-topic-1715429-q01
+Let $M$ be the midpoint of the side of length $6$ in the base containing $T$; then $M'$ is the image of $M$ in the other base, and $MM'=1$ is a lateral edge direction perpendicular to the base.
+
+In the isosceles base, the median $TM$ to the side of length $6$ is also an altitude, so
+\[
+TM=\sqrt{10^2-3^2}=\sqrt{91}.
+\]
+Since $MM'$ is perpendicular to the plane of the base, it is perpendicular to $TM$, and triangle $TMM'$ has a right angle at $M$:
+\[
+TM'=\sqrt{TM^2+MM'^2}=\sqrt{91+1}=\sqrt{92}=\boxed{2\sqrt{23}}.
+\]
+The sketch is not to scale (the height $1$ is drawn larger so the back face is visible).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair d=(3.6,1.4); // drawn depth for the height 1 (not to scale)
+real h=sqrt(91);
+pair B1=(-3,0),B2=(3,0),T=(0,h),M=(0,0);
+pair B1b=B1+d,B2b=B2+d,Tb=T+d,Mb=M+d;
+draw(B1b--B2b,dashed+gray);draw(B1b--B1,dashed+gray);draw(B1b--Tb,dashed+gray);
+draw(B1--B2--T--cycle,linewidth(0.9));
+draw(T--Tb--B2b--B2,linewidth(0.9));
+draw(T--M,blue+dashed);draw(M--Mb,blue+dashed);
+draw(T--Mb,red+linewidth(0.9));
+void ra(pair P,pair U,pair V,real s){draw(P+s*unit(U-P)--P+s*unit(U-P)+s*unit(V-P)--P+s*unit(V-P),linewidth(0.5));}
+ra(M,T,B2,0.4);
+dot(T);dot(Mb,red);
+label("$T$",T,N);label("$M$",M,S);label("$M'$",Mb,NE);
+label("$3$",(B1+M)/2,S);label("$3$",(M+B2)/2,S);
+label("$10$",(B1+T)/2,W);
+label("$1$",(B2+B2b)/2,SE);
+label("$\sqrt{91}$",(-1.1,2.1),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

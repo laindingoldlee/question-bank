@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1210477_a_trapezoid
+% Stable identity: aops-topic-1210477-q01
+In triangle $BCD$, the segment joining the midpoints of $BC$ and $CD$ is a midline, so its length is $\dfrac{1}{2} BD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0),C=(8,0),A=(1.4,4.8),B=(4.4,4.8); pair P=(B+C)/2,Q=(C+D)/2;
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(B--D,dashed+gray); draw(P--Q,red+linewidth(0.9));
+dot(P);dot(Q); label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);
+label("$3$",(A+B)/2,N);label("$6$",(B+C)/2,NE);label("$8$",(C+D)/2,S);label("$5$",(A+D)/2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Put $D=(0,0)$, $C=(8,0)$, $A=(p,h)$, $B=(p+3,h)$. Then
+\[p^2+h^2=25,\qquad (p-5)^2+h^2=36.\]
+Subtracting, $-10p+25=11$, so $p=\dfrac{7}{5}$ and $h^2=25-\dfrac{49}{25}=\dfrac{576}{25}$, $h=\dfrac{24}{5}$. Hence $B=\left(\dfrac{22}{5},\dfrac{24}{5}\right)$ and
+\[BD^2=\dfrac{484+576}{25}=\dfrac{1060}{25},\qquad BD=\dfrac{2\sqrt{265}}{5}.\]
+The required length is $\boxed{\dfrac{\sqrt{265}}{5}}\approx3.26$.

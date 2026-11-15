@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1706122_geometry_question_please_help
+% Stable identity: aops-topic-1706122-q01
+A grade of $100\%$ means the vertical drop equals the horizontal distance, say both equal $d$. The slope is then the hypotenuse of a right isosceles triangle with legs $d$ (vertical) and $d$ (horizontal).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,4),B=(4,0),Cc=(0,0);
+draw(A--B,linewidth(1.1));draw(A--Cc--B,gray+dashed);draw(A--(0,4.3),gray+dashed);
+draw((0.35,0)--(0.35,0.35)--(0,0.35));
+draw(arc(A,0.9,-90,-45),blue);
+label("$45^\circ$",A+1.5*dir(-67.5),blue);
+label("$d$",(0,2),W);label("$d$",(2,0),S);
+label("vertical",(0,4.3),N);label("slope",(2.4,2.2),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The two acute angles of a right isosceles triangle are equal, so each is $45^\circ$. The angle between the slope and the vertical leg is therefore $\boxed{45^\circ}$ (and so is the angle with the horizontal).

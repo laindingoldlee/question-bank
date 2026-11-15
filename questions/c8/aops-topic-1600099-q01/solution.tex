@@ -1,0 +1,47 @@
+% Source: https://artofproblemsolving.com/community/c3h1600099_my_math_mock_10
+% Stable identity: aops-topic-1600099-q01
+Place the octagon with its bottom side from $(-10,0)$ to $V=(10,0)$, and let the dog be tied at $V$. The interior angle of a regular octagon is $135^\circ$.
+
+\textbf{Before the fence.} With the leash straight, the dog sweeps a sector of radius $37$ centred at $V$ through $360^\circ-135^\circ=225^\circ$. Wrapping around either neighbouring corner leaves $37-20=17$ meters of leash, which sweeps a further sector of radius $17$ through the exterior angle $45^\circ$; since $17<20$ the leash cannot reach the next corner. So
+\[
+A=\dfrac{225}{360}\pi\cdot37^2+2\cdot\dfrac{45}{360}\pi\cdot17^2 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+real a=20/sqrt(2);
+pair[] O={(-10,0),(10,0),(10+a,a),(10+a,20+a),(10,20+2*a),(-10,20+2*a),(-10-a,20+a),(-10-a,a)};
+pair V=(10,0),V2=(10+a,a),V8=(-10,0);
+real yb=-30,yt=20+2*a+30,xl=-10-a-30,xr=10+a+30;
+path sec=V--arc(V,37,180,405)--cycle;
+fill(sec,paleyellow);fill(V2--arc(V2,17,45,90)--cycle,paleyellow);fill(V8--arc(V8,17,135,180)--cycle,paleyellow);
+real t=degrees(acos(30/37));
+path segm=arc(V,37,270-t,270+t)--cycle;
+fill(segm,pink);
+fill(O[0]--O[1]--O[2]--O[3]--O[4]--O[5]--O[6]--O[7]--cycle,lightgray);
+draw(O[0]--O[1]--O[2]--O[3]--O[4]--O[5]--O[6]--O[7]--cycle,linewidth(1));
+draw(arc(V,37,180,405),orange);draw(arc(V2,17,45,90),orange);draw(arc(V8,17,135,180),orange);
+draw((xl,yb)--(xr,yb)--(xr,yt)--(xl,yt)--cycle,brown+linewidth(1.2));
+dot(V);label("$V$",V,SW);
+draw(V--V+37*dir(330),dashed);label("$37$",V+20*dir(330),NE);
+draw(V2--V2+17*dir(67.5),dashed);label("$17$",V2+10*dir(67.5),E);
+draw(V8--V8+17*dir(157.5),dashed);label("$17$",V8+10*dir(157.5),N);
+draw((-30,0)--(-30,yb),Arrows(TeXHead));label("$30$",(-30,yb/2),W);
+draw((-34,0)--(-26,0),gray);
+label("$20$",(0,0),N);
+label("fence",(xr-14,yb),S,brown);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Effect of the fence.} The bottom side of the fence is the line $y=-30$, which the radius-$37$ sector reaches; it cuts off the circular segment of that circle below $y=-30$ (pink). Its half-angle $\varphi$ satisfies $\cos\varphi=\dfrac{30}{37}$, about $35.8^\circ$, so the whole segment lies within the $225^\circ$ sector (which contains every direction pointing below the bottom side). Nothing else is affected:
+\begin{itemize}
+\item the nearer side fence (on the right) is $\dfrac{20}{\sqrt2}+30\approx44.1$ meters from $V$ horizontally, more than $37$, and the left and top fences are farther still;
+\item the small sectors reach at most $17\sin45^\circ\approx12$ meters below the bottom side, less than $30$.
+\end{itemize}
+So $B=A-(\text{segment area})$, and
+\[
+B-A=-\left(37^2\varphi-30\sqrt{37^2-30^2}\right)=-\left(1369\arccos\dfrac{30}{37}-30\sqrt{469}\right)\approx-(855.0-649.7)\approx\boxed{-206.3}
+\]
+square meters (with $\varphi$ in radians). The dog loses about $206.3$ square meters.

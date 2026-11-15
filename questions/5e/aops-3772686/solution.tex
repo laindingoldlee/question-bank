@@ -1,0 +1,9 @@
+The pyramid\textquotesingle s perpendicular height is $\sqrt{11^2-(6\sqrt2)^2}=7$, so its volume is $12^2 \cdot \dfrac{7}{3} = 336$. Label the resting face $SAB$ and the other base vertices $C,D$. Their heights above the resting plane are equal to some $h$, while $S,A,B$ have height zero. Split the pyramid along diagonal $AC$ into equal-volume tetrahedra $SABC,SACD$. In the first, the part above height $\dfrac{h}{2}$ is similar to the whole with scale $\dfrac{1}{2}$, so its filled fraction is $\dfrac{7}{8}$. In the second, two vertices have height zero and two have height $h$; interchanging the two pairs is a volume-preserving affine symmetry that exchanges the two halves, so its filled fraction is $\dfrac{1}{2}$. The filled volume is $168 (\dfrac{7}{8} + \dfrac{1}{2}) = \boxed{231}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair A=(0,0),B=(4,0),C=(5,1.5),D=(1,1.5),S=(2.5,4);draw(A--B--C--D--cycle);draw(S--A--C--S--B);draw(S--D,dashed);label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$C$",C,(1,0));label("$D$",D,(-1,0));label("$S$",S,(0,1));label("split along $AC$",(2,-.5),(0,-1));
+\end{asy}
+

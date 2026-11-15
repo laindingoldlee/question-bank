@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2360330_forester2015s_problems_day_1
+% Stable identity: aops-topic-2360330-q01
+A small cube has exactly two faces on the outside exactly when it lies on an edge of the big cube but not at a corner. Each of the $12$ edges of the big cube consists of $3$ small cubes: $2$ corner pieces and $1$ edge piece in the middle (shown in red below).
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+real k=0.45; pair dz=(k*cos(pi/6),k*sin(pi/6));
+pair p(real x,real y,real z){return (x,y)+z*dz;}
+void E(real x1,real y1,real z1,real x2,real y2,real z2,bool hid){
+  pair a=p(x1,y1,z1), c=p(x2,y2,z2);
+  draw(a--c, hid ? dashed+gray : black);
+  draw((a+(c-a)/3)--(a+2*(c-a)/3), red+linewidth(2.2));
+}
+E(0,0,0,3,0,0,false); E(3,0,0,3,3,0,false); E(3,3,0,0,3,0,false); E(0,3,0,0,0,0,false);
+E(0,3,3,3,3,3,false); E(3,3,3,3,0,3,false); E(0,0,3,3,0,3,true); E(0,0,3,0,3,3,true);
+E(0,0,0,0,0,3,true); E(3,0,0,3,0,3,false); E(3,3,0,3,3,3,false); E(0,3,0,0,3,3,false);
+\end{asy}
+
+So there are $\boxed{12}$ edge pieces, one for each edge of the cube.

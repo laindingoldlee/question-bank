@@ -1,0 +1,7 @@
+The possible integer $x$ values are $2$ through $10$. For each, $\left\lceil\dfrac{2x}{3}\right\rceil\le y\le2x$, giving $2x-\left\lceil\dfrac{2x}{3}\right\rceil+1$ points. For $x=2,\ldots,10$ these counts are $3,5,6,7,9,10,11,13,14$. Their sum is $\boxed{78}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw((0,0)--(11,0),Arrow);draw((0,0)--(0,21),Arrow);filldraw((1.5,1)--(1.5,3)--(10,20)--(10,20/3)--cycle,lightgray);for(int x=2;x<=10;++x)for(int y=ceil(2*x/3.0);y<=2*x;++y)dot((x,y),blue+2);label("$x$",(11,0),E);label("$y$",(0,21),N);label("$y=2x$",(5,10),NW);label("$y=\dfrac{2x}{3}$",(6,4),SE);label("$x=10$",(10,13),E);
+\end{asy}

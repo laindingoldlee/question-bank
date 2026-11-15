@@ -1,0 +1,7 @@
+Scale the radius to $1$ and place $C=(0,0)$. After possibly exchanging the names, write $A=(\cos\theta,\sin\theta)$ and $B=(-\sin\theta,\cos\theta)$, where $0\le\theta\le\dfrac{\pi}{2}$. The circumcircle equation is $x^2+y^2-(\cos\theta-\sin\theta)x-(\sin\theta+\cos\theta)y=0$. Setting $y=0$ gives $P=(\cos\theta-\sin\theta,0)$. Hence $AP=\sqrt2\sin\theta$ and $BP=\sqrt2\cos\theta$, so $(AP-BP)^2=2(\cos\theta-\sin\theta)^2=2CP^2$. Restoring the radius scales both sides equally.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair C=(0,0),A=dir(20),B=dir(110),P=(A.x+B.x,0);draw(arc(C,1,0,180));draw((-1.1,0)--(1.1,0));draw(circle((A+B)/2,abs(A-B)/2),blue);draw(A--C--B);draw(A--P--B,dashed);label("A",A,NE);label("B",B,NW);label("C",C,S);label("P",P,S);
+\end{asy}

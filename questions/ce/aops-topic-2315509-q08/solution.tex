@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2315509_3_year_anniversary
+% Stable identity: aops-topic-2315509-q08
+The diameter is $FE=9+16+9=34$, so the radius is $17$, and the centre $O$ is the midpoint of $FE$, which is also the midpoint of $DA$. So $OA=8$, and in the right triangle $OAB$,
+\[AB=\sqrt{OB^2-OA^2}=\sqrt{17^2-8^2}=15.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0), F=(-17,0), Ep=(17,0), D=(-8,0), A=(8,0), B=(8,15), C=(-8,15);
+fill(arc(O,17,0,180)--cycle,rgb(0.85,0.9,1)); fill(A--B--C--D--cycle,white);
+draw(arc(O,17,0,180)--cycle,linewidth(0.9)); draw(A--B--C--D--cycle,linewidth(0.9));
+dot(O); dot(F); dot(Ep); dot(D); dot(A); dot(B); dot(C);
+label("$F$",F,S); label("$E$",Ep,S); label("$D$",D,S); label("$A$",A,S); label("$B$",B,NE); label("$C$",C,NW); label("$O$",O,S);
+draw(O--B,dashed); label("$17$",(4,7.5),E,fontsize(8pt)); label("$15$",(8,7.5),E,fontsize(8pt));
+label("$9$",(-12.5,0),S,fontsize(8pt)); label("$9$",(12.5,0),S,fontsize(8pt)); label("$8$",(4,0),S,fontsize(8pt));
+\end{asy}
+
+The rectangle has area $16\cdot15=240$ and the semicircle has area $\dfrac12\pi\cdot17^2=\dfrac{289\pi}{2}$. The required area is
+\[\boxed{\dfrac{289\pi}{2}-240}\approx214.0.\]

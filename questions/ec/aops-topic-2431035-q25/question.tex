@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2431035_500th_celebration_post
+% Stable identity: aops-topic-2431035-q25
+A straight one-mile stretch of highway, $40$ feet wide, is closed. Robert rides his bike on a path composed of semicircles: their diameters lie end to end along the centre line of the highway, they lie alternately on the two sides of the centre line, and each one just reaches an edge of the highway, as in the figure.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+real w=40, r=20; int n=6;
+fill((0,-w/2)--(n*w,-w/2)--(n*w,w/2)--(0,w/2)--cycle,rgb(0.9,0.9,0.9));
+draw((0,-w/2)--(n*w,-w/2),linewidth(1)); draw((0,w/2)--(n*w,w/2),linewidth(1));
+draw((0,0)--(n*w,0),dashed+gray);
+for(int i=0;i<n;++i){
+  pair c=(i*w+r,0);
+  if(i%2==0) draw(arc(c,r,180,0),red+linewidth(1)); else draw(arc(c,r,180,360),red+linewidth(1));
+}
+draw((n*w+12,-w/2)--(n*w+12,w/2),Arrows(4)); label("$40$ ft",(n*w+12,0),E);
+\end{asy}
+
+If he rides at $5$ miles per hour, how many hours will it take to cover the one-mile stretch? (Note: $1$ mile $=5280$ feet.)
+
+$\textbf{(A) }\dfrac{\pi}{11}\qquad\textbf{(B) }\dfrac{\pi}{10}\qquad\textbf{(C) }\dfrac{\pi}{5}\qquad\textbf{(D) }\dfrac{2\pi}{5}\qquad\textbf{(E) }\dfrac{2\pi}{3}$

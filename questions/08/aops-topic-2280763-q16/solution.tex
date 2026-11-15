@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2280763_alphademic_mc_questions_i_got_wrong
+% Stable identity: aops-topic-2280763-q16
+Since $BD=BC+CD=26$ and $\angle A=90^\circ$, the Pythagorean theorem gives $AB=\sqrt{26^2-24^2}=10$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(10,0), D=(0,24), C=(5,12), F=(4.8,0);
+pair E=extension(D,F,A,C);
+draw(A--B--D--cycle,linewidth(0.9)); draw(A--C,linewidth(0.9));
+draw(D--F,blue);
+draw((0,1)--(1,1)--(1,0));
+dot(C); dot(E); dot(F);
+label("$A$",A,SW); label("$B$",B,SE); label("$D$",D,N); label("$C$",C,NE); label("$E$",E,W); label("$F$",F,S);
+label("$24$",(A+D)/2,W); label("$13$",(B+C)/2,NE); label("$13$",(C+D)/2,NE);
+\end{asy}
+
+In triangle $ABD$, $DF$ bisects angle $D$, so by the angle bisector theorem
+\[\dfrac{AF}{FB}=\dfrac{DA}{DB}=\dfrac{24}{26}=\dfrac{12}{13}.\]
+Hence $AF=\dfrac{12}{25}\cdot AB=\dfrac{12}{25}\cdot10=\boxed{\dfrac{24}{5}}$.
+
+(The point $E$ and the median $AC$ are not needed.)

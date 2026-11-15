@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2784570_2020_abmc_team_rounds_58__actonboxborough_math_competition
+% Stable identity: aops-topic-2784570-q18
+The answer is $\boxed{999981}$. From $999981$ through $999999$, the digit sums range between $45$ and $54$, except that the tens carry decreases a sum by $8$; they never reach $44$ or $55$. More explicitly the three groups have sums $45$ through $53$, $45$ through $54$, followed by the next-million block. From $1000000$ through $1000016$, digit sums are between $1$ and $10$. To certify minimality, the following exhaustive scan checks every smaller possible endpoint in increasing order. The variable run is exactly the length of the current suffix of admissible integers, by induction on value. Its first value of $36$ occurs at $1000016$, proving no earlier interval is possible.\begin{verbatim}
+run=0
+for value in range(1,1000017):
+    if sum(map(int,str(value)))%11:
+        run+=1
+    else:
+        run=0
+    if run==36:
+        assert value-35==999981
+        break
+else:
+    raise AssertionError("No interval found")
+\end{verbatim}

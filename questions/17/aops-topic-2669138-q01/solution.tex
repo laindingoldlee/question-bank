@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2669138_a_cute_inequality_
+% Stable identity: aops-topic-2669138-q01
+Geometrically, with $P=(a,b)$, $Q=(c,d)$, $R=(e,f)$ the inequality says $PQ+QR\ge PR$, the triangle inequality. Here is an algebraic proof.
+
+Let $u=(u_1,u_2)=(a-c,\,b-d)$ and $w=(w_1,w_2)=(c-e,\,d-f)$, so that $u+w=(a-e,\,b-f)$. We must show $|u|+|w|\ge|u+w|$. Both sides are nonnegative, so it suffices to compare squares:
+\[|u|^2+2|u||w|+|w|^2\ge|u|^2+2\left(u_1w_1+u_2w_2\right)+|w|^2\iff|u||w|\ge u_1w_1+u_2w_2.\]
+This holds because
+\[\left(u_1^2+u_2^2\right)\left(w_1^2+w_2^2\right)-\left(u_1w_1+u_2w_2\right)^2=\left(u_1w_2-u_2w_1\right)^2\ge0,\]
+so $|u||w|\ge\left|u_1w_1+u_2w_2\right|$. Equality holds when $u$ and $w$ point in the same direction (or one is zero), i.e. when $Q$ lies on segment $PR$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0),Q=(3,1.6),R=(5,0.2);
+draw(P--Q--R,linewidth(0.8));draw(P--R,dashed+blue);
+dot(P);dot(Q);dot(R);
+label("$P(a,b)$",P,SW);label("$Q(c,d)$",Q,N);label("$R(e,f)$",R,SE);
+\end{asy}

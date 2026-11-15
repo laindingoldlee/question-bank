@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1950759_from_a_mock
+% Stable identity: aops-topic-1950759-q01
+Let the centres be $A$ and $B$, so $AB=10$, and let the circles meet at $P$ and $Q$. Then $AP=BP=AB=10$, so triangles $ABP$ and $ABQ$ are equilateral and $\angle PAQ=\angle PBQ=120^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(10,0);real r=10;
+pair P=(5,5*sqrt(3)),Q=(5,-5*sqrt(3));
+fill(arc(A,r,-60,60)--arc(B,r,120,240)--cycle,palegray);
+draw(circle(A,r));draw(circle(B,r));
+draw(A--P--B--Q--cycle,dashed);draw(A--B);draw(P--Q,dashed+gray);
+dot(A);dot(B);dot(P);dot(Q);
+label("$A$",A,W);label("$B$",B,E);label("$P$",P,N);label("$Q$",Q,S);
+label("$10$",(A+B)/2+(-2.6,0),S);label("$10$",(A+P)/2,NW);label("$10$",(B+P)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The chord $PQ$ splits the lens into two congruent circular segments. The segment cut off from the circle about $A$ is the $120^\circ$ sector $APQ$ minus triangle $APQ$:
+\[
+\dfrac{120}{360}\pi\cdot10^2-\dfrac{1}{2}\cdot10\cdot10\sin120^\circ=\dfrac{100\pi}{3}-25\sqrt3 .
+\]
+The intersection is twice this:
+\[
+\boxed{\dfrac{200\pi}{3}-50\sqrt3}\approx122.8 .
+\]

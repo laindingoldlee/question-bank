@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1320286_vertices
+% Stable identity: aops-topic-1320286-q01
+A regular octahedron has $8$ triangular faces. Each face has $3$ edges and each edge lies on $2$ faces, so $E=\dfrac{8\cdot3}{2}=12$. Euler's formula $V-E+F=2$ gives $V=2+12-8=\boxed{6}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair T=(0,1.5),Bt=(0,-1.5),P1=(-1.2,-0.15),P2=(0.5,-0.35),P3=(1.2,0.15),P4=(-0.5,0.35);
+draw(T--P1);draw(T--P2);draw(T--P3);draw(T--P4,dashed);draw(Bt--P1);draw(Bt--P2);draw(Bt--P3);draw(Bt--P4,dashed);
+draw(P1--P2--P3); draw(P3--P4--P1,dashed);
+for(pair p: new pair[]{T,Bt,P1,P2,P3,P4}) dot(p,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Directly: one vertex at the top, one at the bottom and four around the middle.)

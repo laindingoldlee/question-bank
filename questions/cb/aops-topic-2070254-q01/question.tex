@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2070254_a_problem
+% Stable identity: aops-topic-2070254-q01
+Seven identical circles of radius $3$ are arranged as shown: one central circle, and six circles around it, each tangent to the central circle and to its two neighbours. A regular hexagon is drawn around them so that each side of the hexagon is tangent to two of the outer circles. Find the area of the region inside the hexagon but outside all seven circles.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real r=3; real R=(3*sqrt(3)+3)/Cos(30);
+path hx=R*dir(0)--R*dir(60)--R*dir(120)--R*dir(180)--R*dir(240)--R*dir(300)--cycle;
+draw(hx,linewidth(1));
+draw(circle((0,0),r)); for(int k=0;k<6;++k) draw(circle(6*dir(60*k),r));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

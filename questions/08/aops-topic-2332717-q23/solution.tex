@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2332717_mock_contest__apocalyptic_amc_8
+% Stable identity: aops-topic-2332717-q23
+Let $A=(0,0)$, $B=(a,0)$, $C=(a,b)$, $D=(0,b)$, and let $M=\left(\dfrac a2,b\right)$ be the midpoint of $CD$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real a=sqrt(2),bb=1;pair A=(0,0),B=(a,0),C=(a,bb),D=(0,bb);pair Fp=(a/2,bb);pair H=A+dot(B-A,C-A)/dot(C-A,C-A)*(C-A);
+draw(A--B--C--D--cycle);draw(A--C);draw(B--Fp,dashed);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$M$",Fp,N);label("$H$",H,W);
+draw(H+0.08*dir(H--B)--H+0.08*dir(H--B)+0.08*dir(H--C)--H+0.08*dir(H--C));
+\end{asy}
+
+$\overrightarrow{BM}=\left(-\dfrac a2,b\right)$ must be perpendicular to $\overrightarrow{AC}=(a,b)$: $-\dfrac{a^2}{2}+b^2=0$, so $\dfrac ab=\sqrt2\approx1.414$. The closest choice is $\dfrac75=1.4$. \textbf{(C)}

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1351108_geometry_problem
+% Stable identity: aops-topic-1351108-q01
+Let $BC=8$, $AB=7$, $AC=9$, and drop the altitude $AH=h$ to $BC$; let $BH=x$, so $HC=8-x$. (Since $9^2<7^2+8^2$ and $7^2<8^2+9^2$, the angles at $B$ and $C$ are acute and $H$ lies between them.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair B=(0,0),C=(8,0),A=(2,3*sqrt(5)),H=(2,0);
+draw(A--B--C--cycle,linewidth(0.9)); draw(A--H,red+dashed);
+draw(ra(H,C-H,A-H,0.45));
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$H$",H,S);
+label("$7$",(A+B)/2,W); label("$9$",(A+C)/2,NE); label("$x$",(B+H)/2,S); label("$8-x$",(H+C)/2,S);
+label("$h$",(A+H)/2,E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the Pythagorean theorem in the two right triangles,
+\[
+h^2=49-x^2=81-(8-x)^2=17+16x-x^2 ,
+\]
+so $16x=32$, $x=2$ and $h=\sqrt{49-4}=\sqrt{45}=3\sqrt5$. The area is
+\[
+\dfrac{1}{2}\cdot8\cdot3\sqrt5=\boxed{12\sqrt5},
+\]
+so the student's answer is correct. (Heron's formula agrees: $\sqrt{12\cdot5\cdot4\cdot3}=\sqrt{720}=12\sqrt5$.)

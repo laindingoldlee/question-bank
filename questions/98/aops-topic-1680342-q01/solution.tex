@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1680342_maximizing_product_by_forming_numbers
+% Stable identity: aops-topic-1680342-q01
+Let the numbers be $X$, $Y$ (three-digit) and $Z$ (two-digit). Two exchange facts:
+
+\textbf{(i) Swapping digits between places.} Suppose a digit $p$ in a place of value $P$ of a number $U$ is swapped with a larger digit $q=p+\delta$ in a place of value $Q$ of a different number $V$. The product is multiplied by
+\[
+\left(1+\dfrac{\delta P}{U}\right)\left(1-\dfrac{\delta Q}{V}\right),
+\]
+which exceeds $1$ when $\dfrac{\delta P}{U}>\dfrac{y}{1-y}$ with $y=\dfrac{\delta Q}{V}$. (Inside one number, putting the larger digit in the higher place obviously increases it.)
+
+\textbf{Leading places get $8,7,6$.} If a leading place (hundreds of $X$ or $Y$, tens of $Z$) held a digit $p\le5$ while some $q\ge6$ sat in a lower place of another number, then $U<(p+1)P\le6P$ gives $\dfrac{\delta P}{U}>\dfrac{\delta}{6}$, while the number $V$ containing $q$ in a non-leading place has $V\ge16Q$ (it is at least $100+10q$ if $Q=10$ and at least $10+q$ if $Q=1$ in $Z$, and much larger if $Q=1$ in a three-digit number), so $y\le\dfrac{\delta}{16}$ and $\dfrac{y}{1-y}\le\dfrac{\delta}{16-\delta}\le\dfrac{\delta}{9}$. The swap would increase the product. The same comparison, with far more room, shows that the middle places (tens of $X,Y$ and units of $Z$) get $5,4,3$ and the units of $X,Y$ get $2,1$.
+
+\textbf{(ii) Balancing.} If two numbers $U>V$ have digits in places of the same (scaled) value $P$ and $U$ has the larger one, by $\delta$, then swapping them changes the product of the two by $\delta P(U-V)-\delta^2P^2$, which is positive when $U-V>\delta P$. Comparing $X$, $Y$ and $10Z$ (whose places have values $100,10,1$ and $100,10$), the leading digits $6,7,8$ already make the numbers differ by far more than the swap sizes, so the larger middle digit goes with the smaller leading digit ($6$ with $5$, $7$ with $4$, $8$ with $3$), and the larger unit digit goes to the smaller three-digit number.
+
+\textbf{The three cases.} It remains to choose which of the three goes to $Z$:
+\[
+Z=83:\ 652\cdot741\cdot83=40{,}099{,}956;\qquad Z=74:\ 652\cdot831\cdot74=40{,}094{,}088;\qquad Z=65:\ 742\cdot831\cdot65=40{,}079{,}130 .
+\]
+The largest product is $652\cdot741\cdot83$, and the requested sum is $652+741+83=\boxed{1476}$.

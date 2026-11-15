@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2987118_happy_new_year
+% Stable identity: aops-topic-2987118-q02
+Since $DA\perp AB$ and $AB$ is a diameter, $DA$ is tangent to $\omega$ at $A$. By power of a point, $DP\cdot DQ=DA^2=144$, so $DP=8$ and $PQ=10$. Thus the diameter of $\omega$ is $10$ (so $AB=10<12=BC$), and indeed $DM=\sqrt{12^2+5^2}=13=8+5$.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real r=5; pair A=(0,0),B=(10,0),C=(10,12),D=(0,12),M=(5,0);
+pair u=unit(M-D);pair P=M-5*u,Q=M+5*u;
+real R=8;
+draw(A--B--C--D--cycle);draw(circle(M,5));draw(D--Q);
+pair X=intersectionpoints(circle(P,R),circle(M,5))[0];
+draw(arc(P,R,200,340),dotted);draw(P--X,dashed);draw(X--Q,dashed);
+dot(P);dot(Q);dot(X);dot(M);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$M$",M,S);label("$P$",P,NE);label("$Q$",Q,SE);label("$X$",X,S);
+\end{asy}
+
+Now $PX=PD=8$, and $PQ$ is a diameter of $\omega$ with $X$ on $\omega$, so $\angle PXQ=90^\circ$. Hence $QX=\sqrt{10^2-8^2}=\boxed{6}$. (This holds for either intersection point $X$.)

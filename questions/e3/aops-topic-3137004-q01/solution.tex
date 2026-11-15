@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3137004_mathcounts_test_problem
+% Stable identity: aops-topic-3137004-q01
+If the radius is $ r $, its centre is $(4-r,4-r)$. External tangency gives $(2-r)^2+(4-r)^2=(2+r)^2 $, or $ r^2-16r+16=0 $. The roots are $ 8\pm4\sqrt3 $. Only the smaller fits inside the square, so $\boxed{r=8-4\sqrt3}$. It is approximately 1.0718, and its bottom lies above 0, confirming the specified corner placement.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real r=8-4sqrt(3);pair O=(2,0),P=(4-r,4-r);draw((0,0)--(4,0)--(4,4)--(0,4)--cycle);draw(arc(O,2,0,180),blue);draw(circle(P,r));draw(O--P,dashed);label("$O$",O,S);label("$P$",P,N);label("$4$",(0,2),W);label("$r$",P+(r/2,0),S);
+\end{asy}

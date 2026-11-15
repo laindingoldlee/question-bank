@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2552041_combo_problem
+% Stable identity: aops-topic-2552041-q01
+Let $\omega=\cos\dfrac{2\pi}{n}+i\sin\dfrac{2\pi}{n}$, a primitive $n$th root of unity.
+
+\emph{Filter.} For an integer $m$, $\displaystyle\sum_{r=0}^{n-1}\omega^{rm}$ equals $n$ if $n\mid m$ (every term is $1$), and $0$ otherwise (a geometric series with ratio $\omega^m\ne1$ and $\left(\omega^m\right)^n=1$, so the sum is $\dfrac{\omega^{mn}-1}{\omega^m-1}=0$). Hence, by the binomial theorem,
+\[\sum_{r=0}^{n-1}\left(1+\omega^r\right)^{nk}=\sum_{m=0}^{nk}\binom{nk}{m}\sum_{r=0}^{n-1}\omega^{rm}=n\sum_{j=0}^{k}\binom{nk}{jn}.\]
+
+\emph{Simplifying.} Write $\omega^r=e^{\dfrac{2\pi ir}{n}}$. Then
+\[1+\omega^r=e^{\dfrac{\pi ir}{n}}\left(e^{-\dfrac{\pi ir}{n}}+e^{\dfrac{\pi ir}{n}}\right)=2\cos\dfrac{\pi r}{n}\cdot e^{\dfrac{\pi ir}{n}},\]
+so
+\[\left(1+\omega^r\right)^{nk}=\left(2\cos\dfrac{\pi r}{n}\right)^{nk}e^{\pi irk}=(-1)^{rk}\left(2\cos\dfrac{\pi r}{n}\right)^{nk}.\]
+Therefore
+\[\boxed{\sum_{j=0}^{k}\binom{nk}{jn}=\dfrac1n\sum_{r=0}^{n-1}(-1)^{rk}\left(2\cos\dfrac{\pi r}{n}\right)^{nk}}.\]
+The term $r=0$ is $2^{nk}$, and every other term has smaller absolute value. For example, $n=2$ gives $2^{2k-1}$, and $n=3$ gives $\dfrac{2^{3k}+2(-1)^k}{3}$ (for $k=1$: $\dbinom30+\dbinom33=2$).

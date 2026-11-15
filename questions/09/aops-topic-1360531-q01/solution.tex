@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1360531_similarity_questions
+% Stable identity: aops-topic-1360531-q01
+Let $C$ be the right angle, $CA=6$, $CB=8$, and let the square have side $s$ with vertex $R$ on $AB$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+real s=24/7;
+pair C=(0,0), A=(0,6), B=(8,0), P=(s,0), Q=(0,s), R=(s,s);
+draw(A--B--C--cycle,linewidth(0.9)); filldraw(C--P--R--Q--cycle,paleblue,blue);
+draw(ra(C,(1,0),(0,1),0.35));
+dot(R);
+label("$C$",C,SW); label("$A$",A,N); label("$B$",B,SE); label("$R$",R,NE);
+label("$s$",(s/2,0),N,blue); label("$s$",(0,s/2),E,blue);
+label("$6-s$",(0,(6+s)/2),E,fontsize(8pt));
+draw((-0.9,0)--(-0.9,6),Arrows(4)); draw((-0.3,0)--(-1.2,0),gray); draw((-0.3,6)--(-1.2,6),gray); label("$6$",(-0.9,3),W);
+draw((0,-0.9)--(8,-0.9),Arrows(4)); draw((0,-0.3)--(0,-1.2),gray); draw((8,-0.3)--(8,-1.2),gray); label("$8$",(4,-0.9),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The small triangle above the square (with legs $s$ and $6-s$) is similar to triangle $ACB$, because its sides are parallel to those of $ACB$. Hence
+\[
+\dfrac{6-s}{s}=\dfrac{6}{8}\iff 48-8s=6s\iff s=\boxed{\dfrac{24}{7}} .
+\]
+(In general the side is $\dfrac{ab}{a+b}$ for legs $a$ and $b$.)

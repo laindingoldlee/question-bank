@@ -1,0 +1,19 @@
+The points lie on the same side with probability $\dfrac{1}{4}$, in which case the condition always holds. They lie on adjacent sides with probability $\dfrac{1}{2}$. Their distances $u,v$ from the common corner are then independent uniform variables in $[0,1]$; the condition $u^2+v^2\le1$ occupies a quarter-unit-disk of area $\dfrac{\pi}{4}$. Opposite sides occur with probability $\dfrac{1}{4}$ and contribute probability zero, since only exactly aligned points have distance $1$. Therefore the answer is $\dfrac{1}{4}+\dfrac{1}{2}\cdot\dfrac{\pi}{4}=\boxed{\dfrac{2+\pi}{8}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(box((0,0),(1,1)));pair P=(0.2,0),Q=(0.8,0);draw(P--Q,blue);dot(P);dot(Q);label("P",P,SW);label("Q",Q,NW);label("Same side",(.5,1.3));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(box((0,0),(1,1)));pair P=(0.3,0),Q=(0,0.6);draw(P--Q,blue);dot(P);dot(Q);label("P",P,SW);label("Q",Q,NW);label("Adjacent sides",(.5,1.3));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(box((0,0),(1,1)));pair P=(0.3,0),Q=(0.7,1);draw(P--Q,blue);dot(P);dot(Q);label("P",P,SW);label("Q",Q,NW);label("Opposite sides",(.5,1.3));
+\end{asy}

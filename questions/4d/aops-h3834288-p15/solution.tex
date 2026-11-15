@@ -1,0 +1,7 @@
+The chord has length $BC=32\sin120^\circ=16\sqrt3$. Put $B=(-8\sqrt3,0),C=(8\sqrt3,0)$ and the large center at $(0,8)$. Since $\angle BAC=120^\circ$, $A$ lies on the minor arc below the chord. The small center is thirteen-sixteenths of the way from the large center to $A$, and its vertical coordinate is $-3$ by tangency to $BC$. Thus $y_A=-\dfrac{72}{13}$ and $x_A=\pm\dfrac{64\sqrt3}{13}$. Area comparison gives $AB\cdot AC=\dfrac{2304}{13}$, and the distance formula gives $AB^2+AC^2=\dfrac{7680}{13}$. Hence $(AB+AC)^2=\dfrac{12288}{13}$ and $AB+AC=\dfrac{64\sqrt{39}}{13}$. Therefore $\boxed{a+b+c=116}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+for(int k=0;k<2;++k){pair v=(40*k,0),O=v+(0,8),A=v+((k==0?-1:1)*64*sqrt(3)/13,-72/13),U=O+13/16*(A-O),B=v+(-8*sqrt(3),0),C=v+(8*sqrt(3),0);draw(circle(O,16));draw(circle(U,3));draw(A--B--C--A);draw(O--A,dashed);label("$A$",A,(0,-1));label("$B$",B,(-1,0));label("$C$",C,(1,0));label("$O$",O,(0,1));}
+\end{asy}

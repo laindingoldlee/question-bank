@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2906951_quads_triangles
+% Stable identity: aops-topic-2906951-q01
+With diagonals meeting at $P$, $[APB]\cdot[CPD]=[BPC]\cdot[DPA]$, since each side equals $\dfrac14PA\cdot PB\cdot PC\cdot PD\sin^2\angle APB$.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(3.2,2.8),D=(0.6,2.2);pair P=extension(A,C,B,D);draw(A--B--C--D--cycle);draw(A--C);draw(B--D);dot(P);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$P$",P,S);
+\end{asy}
+
+So the unknown $t$ times the area opposite it equals the product of the other two. If $t$ is opposite $1$: $t=6$; opposite $2$: $t=\dfrac32$; opposite $3$: $t=\dfrac23$. The sum is $\dfrac{49}6$, so $p+q=\boxed{55}$.

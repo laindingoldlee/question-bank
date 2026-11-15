@@ -1,0 +1,9 @@
+Place $A=(0,0),D=(0,14),B=(14,0),C=(14,14)$. A circle through $A,D$ has centre $(t,7)$. Tangency to $x=14$ gives radius $|14-t|$, while passage through $A$ gives radius squared $t^2+49$. Thus $(14-t)^2=t^2+49$, yielding $t=\dfrac{21}{4}$ and radius $14-t=\boxed{\dfrac{35}{4}=8.75}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(14,0),(14,14),(0,14)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--p[3]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));dot(p[3]);label("$D$",p[3],unit(p[3]-labelCentre));pair O=(21/4,7);draw(circle(O,35/4));dot(O);draw(O--(14,7));label("$O$",O,(0,1));
+\end{asy}
+

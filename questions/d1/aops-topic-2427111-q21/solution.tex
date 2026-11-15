@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2427111_several_problems_that_i_made
+% Stable identity: aops-topic-2427111-q21
+Let $O$ be the centre and $R$ the distance from $O$ to each vertex.
+
+\textbf{The circumradius.} A regular octagon of side $4$ is a square with its corners cut off by isosceles right triangles with legs $\dfrac{4}{\sqrt2}=2\sqrt2$, so the distance between opposite sides is $4+4\sqrt2$ and the distance from $O$ to a side is $2+2\sqrt2$. The foot of that perpendicular is the midpoint of the side, so
+\[R^2=2^2+\left(2+2\sqrt2\right)^2=4+12+8\sqrt2=16+8\sqrt2.\]
+
+\textbf{The triangle.} $F$ and $B$ are opposite vertices, so $FB$ is a diameter through $O$. The vertices $G$ and $E$ are symmetric about line $OF$, so $GE\perp FB$ and $J$ is the midpoint of $GE$; since $\angle FOE=45^\circ$,
+\[OJ=R\cos45^\circ=\dfrac{R}{\sqrt2},\qquad JE=R\sin45^\circ=\dfrac{R}{\sqrt2}.\]
+In the same way $A$ and $C$ are symmetric about line $OB$, so $AC\perp FB$ at its midpoint $I$, with $OI=\dfrac{R}{\sqrt2}$ on the other side of $O$. Hence $JI=OJ+OI=\sqrt2\,R$, and triangle $JEI$ has a right angle at $J$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real R=sqrt(16+8*sqrt(2));
+pair[] V; string[] nm={"A","B","C","D","E","F","G","H"};
+for(int k=0;k<8;++k) V.push(R*dir(135+45*k));
+pair A=V[0],B=V[1],C=V[2],Ep=V[4],F=V[5],G=V[6];
+pair J=extension(G,Ep,F,B), I=extension(A,C,F,B);
+fill(J--Ep--I--cycle,rgb(0.8,0.88,1));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--V[7]--cycle,linewidth(0.8));
+draw(F--B); draw(G--Ep); draw(A--C);
+draw(J--Ep--I,blue);
+draw(J+(-0.35,0)--J+(-0.35,-0.35)--J+(0,-0.35));
+dot((0,0)); label("$O$",(0,0),N);
+for(int k=0;k<8;++k) label("$"+nm[k]+"$",V[k],dir(135+45*k));
+dot(J); dot(I); label("$J$",J,NE); label("$I$",I,NW);
+\end{asy}
+
+Therefore
+\[[JEI]=\dfrac12\cdot JI\cdot JE=\dfrac12\cdot\sqrt2R\cdot\dfrac{R}{\sqrt2}=\dfrac{R^2}{2}=\boxed{8+4\sqrt2\approx13.7}.\]

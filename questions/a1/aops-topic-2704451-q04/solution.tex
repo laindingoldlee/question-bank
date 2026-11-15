@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2704451_six_problems
+% Stable identity: aops-topic-2704451-q04
+Let $\theta=\angle APB$. The four angles at $P$ are $\theta$ and $180^\circ-\theta$ alternately, so they all have sine $\sin\theta$. By the law of sines,
+\[AB=2R_1\sin\theta,\quad BC=2R_2\sin\theta,\quad CD=2R_3\sin\theta,\quad DA=2R_4\sin\theta.\]
+A quadrilateral with an inscribed circle satisfies $AB+CD=BC+DA$ (equal tangent lengths), so $R_1+R_3=R_2+R_4$ and $R_4=31+12-24=\boxed{19}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair V(real a,real b){return dir((a+b)/2)/Cos((b-a)/2);}
+real[] t={20,110,200,290};
+pair A=V(t[0],t[1]),B=V(t[1],t[2]),C=V(t[2],t[3]),D=V(t[3],t[0]+360);
+draw(unitcircle,gray);draw(A--B--C--D--cycle,linewidth(0.8));draw(A--C);draw(B--D);
+pair P=extension(A,C,B,D);dot(P);
+label("$A$",A,NE);label("$B$",B,NW);label("$C$",C,SW);label("$D$",D,SE);label("$P$",P,N,fontsize(8pt));
+\end{asy}

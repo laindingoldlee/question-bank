@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1320517_problem_i_need_feed_back_on
+% Stable identity: aops-topic-1320517-q01
+\textbf{The flaw.} Multiplying gives $a^xc^y=a^zc^q$, which mixes two different bases on each side; there is no rule that turns it into $xy=qz$ (exponents of a product are not multiplied together). The bases $a$ and $c$ are different, so ``the bases are equal'' is false, and even for equal bases, $a^xa^y=a^za^q$ would give $x+y=z+q$, a statement about sums, not products. The equation $a^xc^y=a^zc^q$ is also much weaker than the two hypotheses: with $a=2$, $c=4$ it says $x+2y=z+2q$, which holds for $x=y=z=q=1$, where $xy=qz$, but also for $x=3$, $y=0$, $z=1$, $q=1$, where $xy=0\ne1=qz$.
+
+\textbf{A correct proof.} Raise the first equation to the power $y$ and use the second:
+\[
+a^{xy}=(a^x)^y=(c^q)^y=(c^y)^q=(a^z)^q=a^{qz}.
+\]
+If $a\ne1$, the function $t\mapsto a^t$ is one-to-one, so $xy=qz$.
+
+If $a=1$, then $c\ne1$ (because $c\ne a$). From $1=a^x=c^q$ we get $q=0$, and from $c^y=a^z=1$ we get $y=0$. Then $xy=0=qz$.
+
+In every case $xy=qz$. $\blacksquare$
+
+(The hypothesis that $a$ and $c$ are positive matters: with $a=-1$, $c=1$, $x=2$, $q=1$, $y=1$, $z=4$ we have $a^x=c^q$ and $c^y=a^z$ but $xy=2\ne4=qz$.)

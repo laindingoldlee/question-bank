@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1883606_angle_chasing
+% Stable identity: aops-topic-1883606-q01
+Since $ABP$ is equilateral, $AP=AB=AD$ and $\angle PAB=60^\circ$, so $\angle DAP=90^\circ-60^\circ=30^\circ$. Triangle $ADP$ is isosceles with $AD=AP$, so its base angles are
+\[
+\angle ADP=\angle APD=\dfrac{180^\circ-30^\circ}{2}=75^\circ .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(4,4),D=(0,4),P=(2,2*sqrt(3));
+draw(A--B--C--D--cycle,linewidth(1));
+draw(A--P--B);draw(D--P--C);
+draw(arc(D,0.9,-15,0));label("$15^\circ$",D+1.4*dir(-7.5),fontsize(8pt));
+draw(arc(A,0.8,0,60));label("$60^\circ$",A+1.25*dir(30),fontsize(8pt));
+draw(arc(A,1.6,60,90));label("$30^\circ$",A+2.0*dir(75),fontsize(8pt));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$P$",P+(0,-0.45));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Therefore $\angle CDP=\angle ADC-\angle ADP=90^\circ-75^\circ=\boxed{15^\circ}$.

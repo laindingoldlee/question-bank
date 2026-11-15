@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1317945_triangular__3
+% Stable identity: aops-topic-1317945-q01
+Let the triangle have side $t$ and the hexagon side $h$. The hexagon is made of six equilateral triangles of side $h$, so
+\[
+\dfrac{\sqrt3}{4}t^2=6\cdot\dfrac{\sqrt3}{4}h^2\quad\Longrightarrow\quad t^2=6h^2\quad\Longrightarrow\quad t=\sqrt6\,h .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real h=1; real t=sqrt(6)*h;
+pair A=(0,0),B=(t,0),C=(t/2,t*sqrt(3)/2); draw(A--B--C--cycle,linewidth(0.9)); label("$t$",(A+B)/2,S);
+path hx=shift(t+1.6,0.9)*scale(h)*polygon(6); draw(hx,linewidth(0.9)); label("$h$",(t+1.6,0.9)+h*(dir(0)+dir(60))/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The ratio of perimeters is $\dfrac{3t}{6h}=\dfrac{3\sqrt6\,h}{6h}=\boxed{\dfrac{\sqrt6}{2}}\approx1.22$.

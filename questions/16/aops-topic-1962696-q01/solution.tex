@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1962696_mathcounts_geo_problem
+% Stable identity: aops-topic-1962696-q01
+Put the original rhombus with centre $O_1=(0,0)$, its long diagonal from $(-8,0)$ to $(8,0)$ and its short diagonal from $(0,-6)$ to $(0,6)$. The rotated copy has its short diagonal (length $12$) on the $x$-axis and its long diagonal (length $16$) vertical. Its short diagonal overlaps $[-8,8]$ in a segment of length $4$, so it runs from $(4,0)$ to $(16,0)$ and its centre is $O_2=(10,0)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(12cm);
+defaultpen(fontsize(10pt));
+pair A1=(-8,0),B1=(0,6),C1=(8,0),D1=(0,-6);
+pair A2=(4,0),B2=(10,8),C2=(16,0),D2=(10,-8);
+pair P=(136/25,48/25),Q=(136/25,-48/25);
+fill(A2--P--C1--Q--cycle,palegray);
+draw(A1--B1--C1--D1--cycle,linewidth(0.9));
+draw(A2--B2--C2--D2--cycle,linewidth(0.9));
+draw(A1--C2,dashed);
+draw(B1--D1,dashed);draw(B2--D2,dashed);
+dot(A2);dot(C1);dot(P);dot(Q);dot((0,0));dot((10,0));
+label("$(4,0)$",A2,SW);label("$(8,0)$",C1,SE);
+label("$P$",P,2.5*N);label("$Q$",Q,2.5*S);
+label("$O_1$",(0,0),SW);label("$O_2$",(10,0),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The common region is the shaded quadrilateral with vertices $(4,0)$, $P$, $(8,0)$, $Q$, symmetric about the $x$-axis. In the upper half plane, the upper right side of the original rhombus is $y=6-\dfrac{3}{4}x$ and the upper left side of the copy is $y=\dfrac{4}{3}(x-4)$. They meet where
+\[
+6-\dfrac{3}{4}x=\dfrac{4}{3}x-\dfrac{16}{3}\quad\Longrightarrow\quad \dfrac{25}{12}x=\dfrac{34}{3}\quad\Longrightarrow\quad x=\dfrac{136}{25},\qquad y=\dfrac{48}{25}=1.92 .
+\]
+So $P=\left(\dfrac{136}{25},\dfrac{48}{25}\right)$ and $Q$ is its mirror image. The overlap is two triangles with base $4$ (the segment from $(4,0)$ to $(8,0)$) and height $1.92$:
+\[
+\text{Area}=2\cdot\dfrac{1}{2}\cdot4\cdot1.92=\boxed{7.68}.
+\]

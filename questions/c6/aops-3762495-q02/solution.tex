@@ -1,0 +1,9 @@
+There are $\binom63=20$ first paths and 63 second paths, the latter from the recurrence $D(i,j)=D(i-1,j)+D(i,j-1)+D(i-1,j-1)$ with boundary values 1. For exact area counting, represent each path over the three vertical unit strips by its height at the left and right endpoints; vertical segments have zero width. For strip height differences $v,w$, the area is $\dfrac{|v|+|w|}{2}$ if $vw\ge0$, and $\dfrac{v^2+w^2}{2|v-w|}$ otherwise (two triangles when the paths cross). Enumerating the 20 by 63 pairs with this exact rational test gives 80 pairs of area less than 1. Hence the probability is $\dfrac{80}{1260} = \boxed{\dfrac{4}{63}}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+for(int i=0;i<=3;++i){draw((i,0)--(i,3),gray);draw((0,i)--(3,i),gray);}draw((0,0)--(1,0)--(1,1)--(2,1)--(2,2)--(3,2)--(3,3),linewidth(1));draw((0,0)--(3,3),dashed);label("$(0,0)$",(0,0),(-1,-1));label("$(3,3)$",(3,3),(1,1));
+\end{asy}
+

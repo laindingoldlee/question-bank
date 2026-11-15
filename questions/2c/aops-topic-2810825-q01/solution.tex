@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2810825_simple_but_not_simple_geo
+% Stable identity: aops-topic-2810825-q01
+Use coordinates $A=(0,0)$, $B=(b,0)$, $C=(0,c)$ and put $k=b^2+c^2$.
+
+$D=(0,d)$ with $\overrightarrow{BD}\cdot\overrightarrow{BC}=b^2+dc=0$, so $D=\left(0,-\dfrac{b^2}c\right)$; similarly $E=\left(-\dfrac{c^2}b,0\right)$. Line $DE$ is $b^3x+c^3y=-b^2c^2$, with normal vector $(b^3,c^3)$.
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real b=3,c=2,k=b^2+c^2;pair A=(0,0),B=(b,0),C=(0,c),D=(0,-b^2/c),E=(-c^2/b,0),X=(b^3/k,c^3/k),Y=(-b*c^2/k,-b^2*c/k);
+draw(A--B--C--cycle);draw(A--D,dashed);draw(A--E,dashed);draw(B--D);draw(C--E);draw(D--E);draw(A--X,dotted);draw(A--Y,dotted);draw(X--Y,linewidth(1));
+dot(X);dot(Y);label("$A$",A,NW);label("$B$",B,E);label("$C$",C,N);label("$D$",D,S);label("$E$",E,W);label("$X$",X,NE);label("$Y$",Y,SW);
+\end{asy}
+
+$Y$: the line through $A$ perpendicular to $BC$ (direction $(-b,c)$) is $\{(ct,bt)\}$. Substituting into $DE$: $bct(b^2+c^2)=-b^2c^2$, so $Y=\left(-\dfrac{bc^2}k,-\dfrac{b^2c}k\right)$.
+
+$X$: the line through $A$ perpendicular to $DE$ is $\{(b^3u,c^3u)\}$. On $BC$ ($\dfrac xb+\dfrac yc=1$): $(b^2+c^2)u=1$, so $X=\left(\dfrac{b^3}k,\dfrac{c^3}k\right)$.
+
+Then $\overrightarrow{YX}=\left(\dfrac{b(b^2+c^2)}k,\dfrac{c(c^2+b^2)}k\right)=(b,c)$, so $XY=\sqrt{b^2+c^2}=BC$. $\blacksquare$

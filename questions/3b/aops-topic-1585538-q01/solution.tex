@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1585538_is_it_possible
+% Stable identity: aops-topic-1585538-q01
+\textbf{The error.} Divisibility of the area by $12$ is necessary but not sufficient: it shows only that $341$ tiles would have the right total area, not that they can be fitted together without gaps or overlaps.
+
+\textbf{The answer is no.} Each $1\times12$ tile can be cut into three $1\times4$ tiles, so it suffices to show that the rectangle cannot be tiled by $1\times4$ tiles.
+
+Number the rows $0,\dots,65$ and the columns $0,\dots,61$, and colour the cell in row $i$ and column $j$ with colour $(i+j)\bmod 4$. A $1\times4$ tile, horizontal or vertical, covers four cells whose values of $i+j$ are consecutive integers, so it covers one cell of each colour. Hence in a tiling every colour would be used equally often.
+
+Count the cells of colours $1$ and $3$:
+\begin{itemize}
+\item Rows $0$--$63$ form $16$ blocks of $4$ consecutive rows; in each column such a block contains one cell of each colour. So these rows contain equally many cells of every colour.
+\item In rows $64$ and $65$, columns $0$--$59$ split into $15$ blocks of $4$ consecutive columns; each row of such a block contains one cell of each colour.
+\item The remaining $2\times2$ corner (rows $64,65$, columns $60,61$) has colours $(64+60)\bmod4=0$, $1$, $1$, $2$.
+\end{itemize}
+So colour $1$ occurs two more times than colour $3$, and no tiling by $1\times4$ tiles, hence none by $1\times12$ tiles, exists. $\blacksquare$
+
+(In general an $a\times b$ rectangle can be tiled by $1\times n$ tiles exactly when $n$ divides $a$ or $b$; here $12$ divides neither $66$ nor $62$.)

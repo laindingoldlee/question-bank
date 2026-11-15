@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3077457_equation_of_the_line
+% Stable identity: aops-topic-3077457-q01
+The data have $n=4$, $\sum x=65$, $\sum y=82$, $\sum x^2=1425$, and $\sum xy=1290$. Minimizing the sum of squared residuals yields the normal equations $65m+4b=82$ and $1425m+65b=1290$. Solving gives $m=-\dfrac{34}{295}$ and $b=\dfrac{1320}{59}$. Thus an integer-coefficient equation is $\boxed{34x+295y=6600}$. The quadratic error function is strictly convex because the $x$ values are not all equal, so this solution is the unique least-squares line.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] P={(5,22),(10,21),(20,20),(30,19)};for(pair p:P)dot(p);draw((0,1320.0/59)--(35,1320.0/59-34.0*35/295));draw((0,18)--(35,18),Arrow);draw((0,18)--(0,23),Arrow);label("week",(35,18),E);label("handicap",(0,23),N);for(pair p:P)label("$("+string(p.x)+","+string(p.y)+")$",p,NE);
+\end{asy}

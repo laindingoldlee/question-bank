@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h1630169_is_that_a_computer
+% Stable identity: aops-topic-1630169-q01
+Give the centre the coordinates $(0,0)$. The letter at $(x,y)$ is the $(|x|+|y|+1)$-th letter of $COMPUTER$: it is $C$ at distance $0$, $O$ at distance $1$, \dots, $R$ at distance $7$. To spell the word, every step must increase the distance $|x|+|y|$ by exactly $1$.
+
+A step in the $x$-direction increases $|x|$ only if it moves away from the axis $x=0$ (or starts on it). So along a spelling path the $x$-coordinate, once it is non-zero, keeps its sign, and the same holds for $y$. Hence each spelling path lies in a closed quadrant, say $x\ge0,\ y\ge0$; there the spelling paths are exactly the sequences of $7$ steps, each ``right'' or ``up'', and each such sequence works. So each closed quadrant contains $2^7=128$ spelling paths.
+
+A path lies in two closed quadrants only if one of its coordinates stays $0$ throughout, i.e. it is one of the $4$ straight paths along an axis, and each of these is counted twice. By inclusion-exclusion the number of paths is
+\[
+4\cdot128-4=\boxed{508}.
+\]

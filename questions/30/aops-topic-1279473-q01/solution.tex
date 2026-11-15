@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1279473_hard_mock_amc_problem
+% Stable identity: aops-topic-1279473-q01
+The remaining $7$ flights must connect all $8$ cities. A connected graph on $8$ vertices with $7$ edges is a tree, so we are counting spanning trees of the complete bipartite graph $K_{4,4}$.
+
+The number of spanning trees of $K_{m,n}$ is $m^{n-1}n^{m-1}$. This can be proved with a Pr\"ufer-type code: repeatedly remove the smallest leaf and record its neighbour. The codes are exactly the sequences consisting of $n-1$ entries from one side and $m-1$ entries from the other, giving $m^{n-1}n^{m-1}$ codes. For $m=n=4$ this is
+\[
+4^3\cdot4^3=\boxed{4096}.
+\]
+A computer enumeration of all $\dbinom{16}7$ sets of $7$ flights confirms the count.

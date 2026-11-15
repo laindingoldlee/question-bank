@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1512360_problem_on_geometry
+% Stable identity: aops-topic-1512360-q01
+Put $A$ at the origin and use vectors; write $\vec b=\overrightarrow{AB}$, $\vec c=\overrightarrow{AC}$. Label the triangle counterclockwise, and let $\rho$ denote rotation by $90^\circ$ counterclockwise about $A$; $\rho$ is linear, preserves lengths and turns every vector through a right angle.
+
+The square on $AB$ lies on the side of $AB$ away from $C$, that is, to the right of $\overrightarrow{AB}$; so $\overrightarrow{AM}$ is $\vec b$ rotated by $90^\circ$ clockwise: $\overrightarrow{AM}=-\rho(\vec b)$. The square on $AC$ lies on the side away from $B$, to the left of $\overrightarrow{AC}$, so $\overrightarrow{AN}=\rho(\vec c)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(-1.5,-3),C=(2.2,-3);
+pair M=rotate(-90)*B, T=B+M, N=rotate(90)*C, R=C+N, D=(B+C)/2;
+pair H=extension(D,A,M,N);
+fill(A--B--T--M--cycle,rgb(0.85,0.92,1));fill(A--C--R--N--cycle,rgb(1,0.92,0.8));
+draw(A--B--C--cycle,linewidth(1));
+draw(A--B--T--M--cycle,linewidth(0.8));draw(A--C--R--N--cycle,linewidth(0.8));
+draw(M--N,red+linewidth(1));
+draw(D--A,blue+linewidth(1));draw(A--H,blue+dashed);
+real s=0.22; pair u=unit(N-H)*s,v=unit(A-H)*s; draw(H+u--H+u+v--H+v);
+dot(D);dot(H);
+label("$A$",A+0.75*dir(200));label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);
+label("$M$",M,NW);label("$N$",N,NE);label("$T$",T,W);label("$R$",R,E);label("$H$",H,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence
+\[
+\overrightarrow{MN}=\overrightarrow{AN}-\overrightarrow{AM}=\rho(\vec c)+\rho(\vec b)=\rho(\vec b+\vec c)=\rho\left(2\overrightarrow{AD}\right),
+\]
+since $D$ is the midpoint of $BC$, so $\overrightarrow{AD}=\dfrac{\vec b+\vec c}{2}$. Thus $\overrightarrow{MN}$ is $2\overrightarrow{AD}$ turned through $90^\circ$: its length is $2AD$ and it is perpendicular to $AD$. So $MN=2AD$ and $MN\perp AD$; in the figure, line $DA$ meets $MN$ at a right angle at $H$. $\blacksquare$

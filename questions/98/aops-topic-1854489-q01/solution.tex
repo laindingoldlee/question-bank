@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1854489_combinatorics
+% Stable identity: aops-topic-1854489-q01
+Define a map $\varphi$ on $A\cup B$ by
+\[
+\varphi(k)=\begin{cases}k+17,&\text{if }k+17\in A,\\ k-31,&\text{otherwise (then }k-31\in B).\end{cases}
+\]
+Call the first kind of step a \emph{$+17$ step} and the second a \emph{$-31$ step}. Every value $\varphi(k)$ lies in $A\cup B$; a $+17$ step lands in $A$ and a $-31$ step lands in $B$.
+
+\textbf{$\varphi$ is one-to-one.} If $\varphi(k)=\varphi(k')$ with $k\ne k'$, the two steps cannot be of the same kind (they would give $k=k'$). So one of them lands in $A$ and the other in $B$, which is impossible because $A$ and $B$ are disjoint.
+
+Hence $\varphi$ is a one-to-one map of the finite set $A\cup B$ to itself, so it is a bijection (a permutation of $A\cup B$). Two consequences:
+\begin{itemize}
+\item The values $\varphi(k)$ run over all of $A\cup B$ exactly once. The values in $A$ come exactly from $+17$ steps and those in $B$ from $-31$ steps, so there are exactly $m$ steps of $+17$ and $n$ steps of $-31$.
+\item $\displaystyle\sum_{k\in A\cup B}\varphi(k)=\sum_{k\in A\cup B}k$, so the total change $\displaystyle\sum\bigl(\varphi(k)-k\bigr)=17m-31n$ is $0$.
+\end{itemize}
+Therefore $17m=31n$ and $\boxed{m:n=31:17}$.
+
+Such sets exist: $A=\{17,18,\dots,47\}$ and $B=\{0,1,\dots,16\}$. For $k\le30$ in $A\cup B$ we have $k+17\in A$, and for $31\le k\le47$ we have $k-31\in B$; here $m=31$ and $n=17$.

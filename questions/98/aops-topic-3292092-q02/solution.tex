@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3292092_alternative
+% Stable identity: aops-topic-3292092-q02
+There are seven eligible nights. Let $K$ be the number spent on the bottom row. The first $k$ moves are right with probability $2^{-k}$ for $1\le k\le4$; after four right moves an up move is forced. Thus $E[K]=\sum_{k=1}^4 2^{-k}=\dfrac{15}{16}$. Each bottom-row night certainly produces a complaint, and every other eligible night does so with probability $\dfrac{1}{2}$. Hence $E[\text{complaints}]=\dfrac{7}{2}+\dfrac{1}{2}E[K]=\boxed{\dfrac{127}{32}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=0;i<=4;++i){draw((i,0)--(i,4),lightgray);draw((0,i)--(4,i),lightgray);}draw((0,0)--(4,0),blue+linewidth(2));dot((0,0));dot((4,4));label("start",(0,0),SW);label("finish",(4,4),NE);label("dry row",(2,0),S);
+\end{asy}

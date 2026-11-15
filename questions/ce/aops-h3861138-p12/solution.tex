@@ -1,0 +1,7 @@
+For lattice points $p,q$, the distance to the origin decreases throughout the segment from $p$ to $q$ exactly when $p\cdot q\ge|q|^2$ and $|q|<|p|$. This follows by differentiating the squared distance along that segment; its derivative is increasing and is nonpositive at the endpoint under this condition. There are finitely many lattice points in the radius-five disk. Set $D(0)=0$ and, in order of increasing squared norm, compute $D(p)=\max_q(|p-q|+D(q))$ over those eligible endpoints. This exhaustive dynamic program gives $D(5,0)=\boxed{6+3\sqrt2+\sqrt5}$. An attaining route is $(5,0),(4,2),(4,1),(4,0),(3,1),(3,0),(2,1),(2,0),(1,1),(1,0),(0,0)$. Each step satisfies the dot-product test, and its lengths sum to the displayed value. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair[] P={(5,0),(4,2),(4,1),(4,0),(3,1),(3,0),(2,1),(2,0),(1,1),(1,0),(0,0)};for(int x=0;x<=5;++x)for(int y=0;y<=2;++y)dot((x,y),gray);for(int i=0;i<P.length-1;++i)draw(P[i]--P[i+1],Arrow);label("start",P[0],(0,-1));label("classroom",P[P.length-1],(0,-1));
+\end{asy}

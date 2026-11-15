@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2029806_happy_pi_day_maybe_a_competition
+% Stable identity: aops-topic-2029806-q03
+In kilometres the moon has radius \(R=1600\cdot1.6=2560\), and the haze extends to radius \(R+t=3160\).
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),1.234),dashed+gray); fill(circle((0,0),1.234),gray(0.9));
+fill(circle((0,0),1),paleblue); draw(circle((0,0),1),linewidth(0.9));
+draw((0,0)--(1,0),red); label("$R$",(0.5,0),S,red);
+draw((1,0)--(1.234,0),blue); label("$t$",(1.117,0),N,blue);
+label("haze",(0,1.12),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The haze is the shell between the two spheres, so the required ratio is
+\[
+\dfrac{\dfrac{4}{3}\pi(3160^3-2560^3)}{\dfrac{4}{3}\pi\cdot2560^3}=\left(\dfrac{3160}{2560}\right)^3-1=\left(\dfrac{79}{64}\right)^3-1=\dfrac{493039-262144}{262144}=\dfrac{230895}{262144}\approx0.8808 .
+\]
+So the haze has about \(\boxed{88.1\%}\) of the volume of the moon.

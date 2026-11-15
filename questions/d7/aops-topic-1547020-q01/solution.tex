@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h1547020_hard_geometry_problem
+% Stable identity: aops-topic-1547020-q01
+For a lattice polygon $P$ write $f(P)=I+\dfrac {B}{2}-1$. We show $f(P)=A$ in steps. For example, in the pentagon below $B=10$ (red) and $I=11$ (blue), so $f=11+5-1=15$, which is its area by the shoelace formula.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair[] V={(0,0),(4,0),(5,3),(2,4),(0,2)};
+for(int x=0;x<=5;++x) for(int y=0;y<=4;++y) dot((x,y),gray(0.7)+linewidth(2.5));
+fill(V[0]--V[1]--V[2]--V[3]--V[4]--cycle,paleyellow);
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--cycle,linewidth(1));
+pair[] Bd={(0,0),(1,0),(2,0),(3,0),(4,0),(5,3),(2,4),(1,3),(0,2),(0,1)};
+pair[] In={(1,1),(1,2),(2,1),(2,2),(2,3),(3,1),(3,2),(3,3),(4,1),(4,2),(4,3)};
+for(pair p:Bd) dot(p,red+linewidth(5));
+for(pair p:In) dot(p,blue+linewidth(5));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+
+\textbf{1. $f$ is additive.} Suppose $P$ is cut into two lattice polygons $P_1$, $P_2$ along a polygonal path between two boundary points of $P$, and the path contains $k$ lattice points (including its two ends). The $k-2$ lattice points inside the path are interior points of $P$ but boundary points of both pieces; the two ends are boundary points of $P$ and of both pieces. Hence
+\[
+I=I_1+I_2+(k-2),\qquad B=B_1+B_2-2(k-2)-2=B_1+B_2-2k+2,
+\]
+and so
+\[
+f(P)=I_1+I_2+k-2+\dfrac{B_1+B_2}{2}-k+1-1=f(P_1)+f(P_2).
+\]
+Area is additive in the same way, so if the formula holds for two of $P,P_1,P_2$ it holds for the third.
+
+\textbf{2. Rectangles.} For an $m\times n$ rectangle with sides along grid lines, $I=(m-1)(n-1)$ and $B=2m+2n$, so $f=mn-m-n+1+m+n-1=mn=A$.
+
+\textbf{3. Right triangles with legs along grid lines.} The diagonal cuts such a rectangle into two congruent triangles $T$ and $T'$ with the same lattice-point counts, so $f(T)=f(T')$ and by step 1, $2f(T)=mn$. Thus $f(T)=\dfrac{mn}{2}$, the area of $T$.
+
+\textbf{4. Any lattice triangle.} Enclose it in its smallest rectangle with sides along grid lines. The rectangle is the union of the triangle and at most three right triangles with legs along grid lines (plus possibly a rectangle), each meeting the rest along lattice segments. The formula holds for the rectangle and for each of these pieces (steps 2 and 3), so by step 1 it holds for the triangle.
+
+\textbf{5. Any lattice polygon.} Every polygon with at least four vertices that does not cross itself has a diagonal lying inside it, which cuts it into two smaller polygons whose vertices are vertices of the original. Repeating, the polygon is cut into lattice triangles, and by steps 4 and 1 the formula holds for the whole polygon. $\blacksquare$
+
+This is \emph{Pick's theorem}. Both conditions matter: for a polygon with a non-lattice vertex the formula can fail (the triangle with vertices $(0,0)$, $(1,0)$, $\left(0,\dfrac{1}{2}\right)$ has $I=0$, $B=2$ but area $\dfrac{1}{4}\ne0$), and for a region with a hole it fails as well.

@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1560683_geometry_problem
+% Stable identity: aops-topic-1560683-q01
+The parallelogram is spanned by $\vec{AB}=(20,10)$ and $\vec{AD}=(10,y)$, and its area is the absolute value of the determinant:
+\[
+\left|20\cdot y-10\cdot10\right|=|20y-100| .
+\]
+Setting $|20y-100|=600$ gives $20y-100=600$ or $20y-100=-600$, so
+\[
+\boxed{y=35\ \text{or}\ y=-25}.
+\]
+Both work. In each case $C=B+D-A$, so $C=(30,45)$ or $C=(30,-15)$. The two parallelograms lie on opposite sides of line $AB$, which is why there are two answers.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(20,10),D1=(10,35),C1=B+D1,D2=(10,-25),C2=B+D2;
+fill(A--B--C1--D1--cycle,paleblue);draw(A--B--C1--D1--cycle,blue+linewidth(0.9));
+fill(A--B--C2--D2--cycle,palered);draw(A--B--C2--D2--cycle,red+linewidth(0.9));
+draw(A--B,linewidth(1.1));
+dot(A);dot(B);dot(D1);dot(D2);dot(C1);dot(C2);
+label("$A(0,0)$",A,W);label("$B(20,10)$",B,E);
+label("$D(10,35)$",D1,NW,blue);label("$C(30,45)$",C1,NE,blue);
+label("$D(10,-25)$",D2,SW,red);label("$C(30,-15)$",C2,SE,red);
+label("$600$",(A+B+C1+D1)/4,blue);label("$600$",(A+B+C2+D2)/4,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Check with base and height: $AB=10\sqrt5$, and the distance from $D(10,y)$ to the line $x-2y=0$ is $\dfrac{|10-2y|}{\sqrt5}$; the product is $10|10-2y|=600$, again $y=35$ or $y=-25$.)

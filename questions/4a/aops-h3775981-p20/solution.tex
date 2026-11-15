@@ -1,0 +1,13 @@
+Let the common sphere centre be $O$, scale the circumradius to $1$, and let the insphere radius be $\rho$. The base plane is distance $\rho$ below $O$, and the apex is distance $1$ above it. Thus pyramid height $H=1+\rho$ and base circumradius $R=\sqrt{1-\rho^2}$. Write $c=\cos18^\circ$; the base apothem is $r=Rc$. In the axial section through a base-edge midpoint, distance from $O$ to the sloping face is $\dfrac{r}{\sqrt{r^2+H^2}}=\rho$. Therefore $r^2(1-\rho^2)=\rho^2H^2$, so $R^2c=\rho H$. Cancelling $1+\rho$ gives $(1-\rho)c=\rho$, hence $\rho=\dfrac{c}{1+c}$ and $\dfrac{H^2}{R^2}=1+2c$. A lateral edge consequently has length $L=\sqrt{H^2+R^2}=2R\cos9^\circ$, while a base edge is $a=2R\sin18^\circ$. In its isosceles lateral face, the base angle $\beta=\angle PA_1A_2$ satisfies $\cos\beta=\dfrac{a}{2L}=\sin9^\circ$. Thus $\boxed{\beta=81^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real c=cos(18*pi/180),rho=c/(1+c),R=sqrt(1-rho*rho),r=R*c;pair O=(0,0),P=(0,1),B=(0,-rho),M=(r,-rho);draw(circle(O,rho),blue);draw(P--M--(-r,-rho)--cycle);draw(P--B,dashed);draw(O--M,dashed);label("P",P,N);label("O",O,W);label("base centre",B,S);label("edge midpoint",M,SE);label("$r$",(B+M)/2,S);label("$H$",(-.15,(1-rho)/2),W);
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(-sin(9*pi/180),0),B=(sin(9*pi/180),0),P=(0,cos(9*pi/180));draw(A--B--P--cycle);label("$A_1$",A,SW);label("$A_2$",B,SE);label("P",P,N);label("$L$",(A+P)/2,W);label("$L$",(B+P)/2,E);label("$a$",(A+B)/2,S);
+\end{asy}

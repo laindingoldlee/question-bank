@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1629052_prove_this
+% Stable identity: aops-topic-1629052-q01
+We use induction three times.
+
+\textbf{Lemma 1: $0\cdot n=0$ for all $n$.} For $n=0$ this is the definition. If $0\cdot n=0$, then $0\cdot(n+1)=0\cdot n+0=0+0=0$.
+
+\textbf{Lemma 2: $(m+1)\cdot n=m\cdot n+n$ for all $m,n$.} Fix $m$ and induct on $n$. For $n=0$ both sides are $0$. If it holds for $n$, then
+\[
+(m+1)\cdot(n+1)=(m+1)\cdot n+(m+1)=(m\cdot n+n)+(m+1)=(m\cdot n+m)+(n+1)=m\cdot(n+1)+(n+1),
+\]
+where the first and last equalities are the definition, the second is the induction hypothesis, and the third only regroups and reorders a sum, which is allowed because addition is associative and commutative.
+
+\textbf{Theorem: $m\cdot n=n\cdot m$.} Fix $n$ and induct on $m$. For $m=0$: $0\cdot n=0$ by Lemma 1 and $n\cdot0=0$ by the definition. If $m\cdot n=n\cdot m$, then
+\[
+(m+1)\cdot n=m\cdot n+n=n\cdot m+n=n\cdot(m+1),
+\]
+by Lemma 2, the induction hypothesis and the definition. This completes the induction. $\blacksquare$

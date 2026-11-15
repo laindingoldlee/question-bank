@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2411759_john0512s_e_lemma
+% Stable identity: aops-topic-2411759-q01
+The equation is $a\left(10^b-e\right)=b$. Since $10^b$ is rational and $e$ is irrational, $10^b\ne e$, so for each integer $b$ there is exactly one real $a$, namely
+\[a=\dfrac{b}{10^b-e}.\]
+We count the integers $b$ for which this $a$ satisfies $1\le a<10$.
+
+\textbf{$b=0$.} Then $a=0$: not allowed.
+
+\textbf{$b\ge1$.} Then $10^b\ge10b=b+9b\ge b+9>b+e$, so $0<10^b-e$ and $a=\dfrac{b}{10^b-e}<1$: not allowed.
+
+\textbf{$b=-m$ with $m\ge1$.} Then $a=\dfrac{m}{e-10^{-m}}$, where $0<10^{-m}\le\dfrac1{10}$, so
+\[\dfrac me<a\le\dfrac{m}{e-10^{-m}}.\]
+\begin{itemize}
+\item $m=1$: $a=\dfrac{1}{e-0.1}<1$; $m=2$: $a=\dfrac{2}{e-0.01}<\dfrac{2}{2.7}<1$. Not allowed.
+\item $3\le m\le27$: $a>\dfrac me\ge\dfrac3e>1$, and, since $10^{-m}\le10^{-3}$, $a\le\dfrac{27}{e-10^{-3}}<\dfrac{27}{2.7}=10$. Allowed.
+\item $m\ge28$: $a>\dfrac me\ge\dfrac{28}{e}>\dfrac{28}{2.8}=10$. Not allowed.
+\end{itemize}
+So exactly the $25$ values $b=-3,-4,\dots,-27$ work, each with one value of $a$: there are exactly $\boxed{25}$ pairs. $\blacksquare$
+
+(For example, $b=-3$ gives $a=\dfrac{3}{e-0.001}\approx1.1041$.)

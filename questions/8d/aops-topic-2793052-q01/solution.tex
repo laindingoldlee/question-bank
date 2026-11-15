@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2793052_how_to_get_frac11frac12sin2_2x_from_frac1sin4_x_cos4
+% Stable identity: aops-topic-2793052-q01
+Square $\sin^2x+\cos^2x=1$ (the unit-circle relation):
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+draw(unitcircle);pair P=dir(35);draw((0,0)--P);draw((-1.2,0)--(1.2,0));draw((0,-1.2)--(0,1.2));draw(P--(P.x,0),dashed);label("$\cos x$",(P.x/2,0),S);label("$\sin x$",(P.x,P.y/2),E);label("$x$",0.45*dir(17));
+\end{asy}
+
+$\sin^4x+\cos^4x=(\sin^2x+\cos^2x)^2-2\sin^2x\cos^2x=1-\dfrac12(2\sin x\cos x)^2=1-\dfrac12\sin^22x$. This is never $0$ (it is at least $\dfrac12$), so taking reciprocals gives the identity. $\blacksquare$

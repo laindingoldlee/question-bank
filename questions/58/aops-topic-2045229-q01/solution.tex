@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h2045229_mysteries_of_the_right_triangle
+% Stable identity: aops-topic-2045229-q01
+\textbf{(a)} Let \(ABC\) and \(A'B'C'\) be right triangles with right angles at \(B\) and \(B'\) and \(\angle A=\angle A'=\theta\).
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(4,0), C=(4,4*Tan(40));
+pair A2=(5.2,0), B2=(5.2+2.6,0), C2=(5.2+2.6,2.6*Tan(40));
+draw(A--B--C--cycle,linewidth(0.9)); draw(A2--B2--C2--cycle,linewidth(0.9));
+draw(B+(-0.3,0)--B+(-0.3,0.3)--B+(0,0.3)); draw(B2+(-0.25,0)--B2+(-0.25,0.25)--B2+(0,0.25));
+draw(arc(A,0.7,0,40)); draw(arc(A2,0.6,0,40));
+label("$\theta$",A+0.9*dir(20)); label("$\theta$",A2+0.8*dir(20));
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N);
+label("$A'$",A2,SW); label("$B'$",B2,SE); label("$C'$",C2,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then the third angles are both \(90^\circ-\theta\), so the triangles are similar (AA). Hence
+\[
+\dfrac{BC}{B'C'}=\dfrac{AB}{A'B'}=\dfrac{AC}{A'C'}=k
+\]
+for some \(k>0\), so \(BC:AB:AC=B'C':A'B':A'C'\): the ratio depends only on \(\theta\). Taking the hypotenuse as \(1\), the side opposite \(\theta\) has length \(\sin\theta\) and the adjacent side has length \(\cos\theta\) (this is the definition of sine and cosine in a right triangle, which is consistent precisely because of the similarity just proved). So for every acute \(\theta\),
+\[
+\text{opposite}:\text{adjacent}:\text{hypotenuse}=\sin\theta:\cos\theta:1 .
+\]
+For \(\theta=30^\circ\) this is \(\dfrac{1}{2}:\dfrac{\sqrt3}{2}:1=1:\sqrt3:2\), and for \(\theta=45^\circ\) it is \(1:1:\sqrt2\).
+
+\textbf{(b)} With \(\theta=40^\circ\), divide by \(\sin40^\circ\):
+\[
+1:\dfrac{\cos40^\circ}{\sin40^\circ}:\dfrac{1}{\sin40^\circ}=\boxed{1:\tan50^\circ:\dfrac{1}{\sin 40^\circ}}\approx 1:1.192:1.556 .
+\]
+So such a three-number ratio exists for every right triangle; for most angles the numbers are not expressible with simple radicals, which is why only special cases like \(30^\circ\) and \(45^\circ\) are usually memorised.

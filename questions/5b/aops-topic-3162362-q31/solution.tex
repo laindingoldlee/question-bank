@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h3162362_2017_lmt_spring_guts_round_p2536__lexington_mathematical_tournament
+% Stable identity: aops-topic-3162362-q31
+A bisector consists of points equidistant from the two lines. For a point $(1,m)$ this gives $\dfrac{|m-20|}{\sqrt{401}}=\dfrac{|m-17|}{\sqrt{290}}$. Squaring and simplifying yields $ 37m^2-678m-37=0 $, so
+\[\boxed{\left\{\dfrac{339+\sqrt{116290}}{37},\dfrac{339-\sqrt{116290}}{37}\right\}}.\]
+The vertical line is not a bisector because points $(0,y)$ have unequal distances to the given lines unless $ y=0 $, so both have been captured. Their slope product is $-1 $, as expected for perpendicular bisectors.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real m=(339+sqrt(116290))/37,n=(339-sqrt(116290))/37;draw((-.2,-4)--(.2,4));draw((-.235294,-4)--(.235294,4));draw((-4/m,-4)--(4/m,4),blue);draw((-4,-4*n)--(4,4*n),red);label("$20x$",(.2,4),NE);label("$17x$",(.235294,4),NW);label("Bisectors",(2,-.5));dot("$O$",(0,0),SE);
+\end{asy}

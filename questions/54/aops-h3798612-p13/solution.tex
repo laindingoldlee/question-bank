@@ -1,0 +1,7 @@
+Reflection in the internal bisector at $C$ sends ray $CB$ to ray $CA$. The perpendicular through $M$ joins it to its reflected point $K$, so $CK=CM=1$. Hence $AK=AC-CK=5$. Similarly reflection in the bisector at $A$ sends $K$ to $D$ on ray $AB$, giving $AD=AK=5$. Since $AB=3$, $D$ lies beyond $B$ and $BD=5-3=\boxed2$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(3,0),C=6dir(60),M=C+(B-C)/abs(B-C),K=5dir(60),D=(5,0);draw(A--B--C--cycle);draw(B--D);draw(M--K--D,blue);draw(A--4dir(30),dashed);draw(C--(C+3unit(unit(A-C)+unit(B-C))),dashed);pair[] p={A,B,C,M,K,D};string[] s={"A","B","C","M","K","D"};for(int i=0;i<6;++i)label("$"+s[i]+"$",p[i],i<2?(0,-1):(i==3?(1,0):(-1,1)));
+\end{asy}

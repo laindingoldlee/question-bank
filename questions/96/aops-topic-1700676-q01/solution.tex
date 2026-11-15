@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1700676_same_birthdays
+% Stable identity: aops-topic-1700676-q01
+\textbf{Complement.} The probability that all $23$ birthdays are different is
+\[
+q=\dfrac{365}{365}\cdot\dfrac{364}{365}\cdots\dfrac{343}{365}=\prod_{k=0}^{22}\left(1-\dfrac{k}{365}\right),
+\]
+since the $(k+1)$-th person must avoid the $k$ days already used. We show $q<\dfrac{1}{2}$.
+
+\textbf{Estimate.} For every real $t$, $1-t\le e^{-t}$ (the line $1-t$ is tangent to the convex curve $e^{-t}$ at $t=0$). Hence
+\[
+q\le\exp\left(-\sum_{k=0}^{22}\dfrac{k}{365}\right)=\exp\left(-\dfrac{253}{365}\right),
+\]
+because $0+1+\cdots+22=\dfrac{22\cdot23}{2}=253$; the inequality is strict since $1-t<e^{-t}$ for $t\ne0$. Now $\dfrac{253}{365}=0.693150\ldots>0.693147\ldots=\ln2$, so $\exp\left(-\dfrac{253}{365}\right)<e^{-\ln2}=\dfrac{1}{2}$.
+
+Therefore $q<\dfrac{1}{2}$, and the probability that two people share a birthday is $1-q>\dfrac{1}{2}$. $\blacksquare$
+
+(Computing the product exactly gives $q\approx0.4927$, so the probability is about $0.5073$. With $22$ people it is only about $0.4757$, so $23$ is the smallest group for which a shared birthday is more likely than not.)

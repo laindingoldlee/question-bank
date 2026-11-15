@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2549002_weird_digit_problems_inspired_by_that_thread
+% Stable identity: aops-topic-2549002-q05
+Let $S$ and $Q$ be the digit sum and the sum of the squares of the digits of $n$, so $n=SQ$. Every digit $t$ satisfies $t^2\le9t$, so $Q\le9S$ and
+\[n=SQ\le9S^2.\]
+
+\emph{At most five digits.} If $n$ has $d$ digits, then $S\le9d$, so $10^{d-1}\le n\le9(9d)^2=729d^2$. For $d=6$ this says $100000\le26244$, which is false; and increasing $d$ by $1$ multiplies $10^{d-1}$ by $10$ but $729d^2$ by $\left(\dfrac{d+1}{d}\right)^2<2$, so it stays false for all $d\ge6$.
+
+\emph{Not five digits.} If $n$ had five digits, then $n\le729\cdot25=18225$. A five-digit number up to $18225$ starts with $1$; if its second digit is $8$ it is at most $18225$ and its digit sum is at most $1+8+1+9+9=28$, and otherwise its digit sum is at most $1+7+9+9+9=35$. So $S\le35$ and $n\le9\cdot35^2=11025$. A five-digit number up to $11025$ has digit sum at most $1+0+9+9+9=28$, so $n\le9\cdot28^2=7056<10000$, a contradiction. Hence $n<10000$.
+
+\emph{The finite check.} Checking the numbers below $10000$ (by computer; it also helps to note that $n\equiv S\pmod 9$ forces $9\mid S(Q-1)$) gives exactly
+\[1,\quad133,\quad315,\quad803,\quad1148,\quad1547,\quad2196.\]
+Each of them works: $1=1\cdot1$, $133=7\cdot19$, $315=9\cdot35$, $803=11\cdot73$, $1148=14\cdot82$, $1547=17\cdot91$ and $2196=18\cdot122$ (for example, $2196$ has $S=2+1+9+6=18$ and $Q=4+1+81+36=122$).
+
+The sum is $1+133+315+803+1148+1547+2196=\boxed{6143}$.

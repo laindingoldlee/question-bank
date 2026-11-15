@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2200843_three_variable_probability
+% Stable identity: aops-topic-2200843-q01
+The point $(a,b,c)$ is uniformly distributed in the cube $(-20,20)^3$, of volume $40^3=64000$, so the probability is the volume of the region described divided by $64000$.
+
+The condition $a^2+b^2+c^2\le1$ describes the ball of radius $1$ centred at the origin, which lies inside the cube and has volume $\dfrac{4}{3}\pi$. The plane $a=b$ and the plane $c=0$ pass through the centre and cut the ball into four pieces according to whether $a\ge b$ or $a<b$ and whether $c>0$ or $c\le0$. The reflections $(a,b,c)\mapsto(b,a,c)$ and $(a,b,c)\mapsto(a,b,-c)$ map the ball to itself and carry these four pieces onto one another (up to boundary points, which have no volume), so each piece has volume $\dfrac{1}{4}\cdot\dfrac{4}{3}\pi=\dfrac{\pi}{3}$. The picture shows the cross-section $c=0$ with the half $a\ge b$ shaded.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+fill((0,0)--arc((0,0),1,-135,45)--cycle,paleblue);
+draw(circle((0,0),1),linewidth(1));
+draw((-1.4,0)--(1.4,0),Arrow(6)); draw((0,-1.4)--(0,1.4),Arrow(6));
+draw((-1.3,-1.3)--(1.3,1.3),red+dashed);
+label("$a$",(1.4,0),E); label("$b$",(0,1.4),N); label("$b=a$",(1.3,1.3),NE,red);
+label("$a\ge b$",(0.45,-0.35),fontsize(9pt));
+label("$1$",(1,0),SE,fontsize(8pt));
+\end{asy}
+
+Hence the probability is
+\[\dfrac{\pi\div3}{64000}=\boxed{\dfrac{\pi}{192000}}\approx1.64\times10^{-5}.\]

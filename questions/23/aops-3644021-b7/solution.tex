@@ -1,0 +1,6 @@
+A regular hexagon of side three has apothem $\dfrac{3\sqrt3}{2}$. Each external equilateral apex lies another $\dfrac{3\sqrt3}{2}$ outward along a side normal. Thus the six new vertices form a regular hexagon of circumradius $3\sqrt3$, which equals its side length. The answer is $\boxed{3\sqrt3}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair[] V,W;for(int i=0;i<6;++i){V.push(3*dir(60*i));W.push(3*sqrt(3)*dir(30+60*i));}for(int i=0;i<6;++i){draw(V[i]--V[(i+1)%6]--W[i]--cycle);draw(W[i]--W[(i+1)%6],blue);}
+\end{asy}
+

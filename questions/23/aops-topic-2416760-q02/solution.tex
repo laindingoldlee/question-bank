@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2416760_two_math_questions_i_need_help_with
+% Stable identity: aops-topic-2416760-q02
+All three solids have radius $5$ feet.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+draw((-5,0)--(-5,10)); draw((5,0)--(5,10));
+draw((-5,10)--(0,15)--(5,10)); draw((-5,0)--(0,-5)--(5,0));
+draw(shift(0,10)*xscale(5)*yscale(1.2)*unitcircle,dashed);
+draw(shift(0,0)*xscale(5)*yscale(1.2)*arc((0,0),1,180,360));
+draw(shift(0,0)*xscale(5)*yscale(1.2)*arc((0,0),1,0,180),dashed);
+draw((-5,5)--(5,5),Arrows(4)); label("$10$",(0,5),N);
+draw((6.2,0)--(6.2,10),Arrows(4)); label("$10$",(6.2,5),E);
+draw((6.2,10)--(6.2,15),Arrows(4)); label("$5$",(6.2,12.5),E);
+draw((6.2,-5)--(6.2,0),Arrows(4)); label("$5$",(6.2,-2.5),E);
+\end{asy}
+
+\[V_{\text{cylinder}}=\pi\cdot5^2\cdot10=250\pi,\qquad V_{\text{cone}}=\dfrac13\pi\cdot5^2\cdot5=\dfrac{125\pi}{3}.\]
+So the silo holds
+\[250\pi+2\cdot\dfrac{125\pi}{3}=\dfrac{1000\pi}{3}\approx1047.2\text{ cubic feet},\]
+and the answer is $\boxed{\textbf{(D) } 1047.2}$. (The other choices are the two cones alone, $\dfrac{250\pi}{3}\approx261.8$, the cylinder alone, $250\pi\approx785.4$, and the cylinder with one cone, $\dfrac{875\pi}{3}\approx916.3$.)

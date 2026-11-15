@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2795007_2011_tx_mmc__texas__mathworks_math_contest
+% Stable identity: aops-topic-2795007-q14
+Extend the legs $DA$ and $CB$ to meet at $P$. Triangles $PAB$, $PEF$, $PDC$ are similar (all their bases are parallel), so their areas are $k\cdot14^2$, $k\cdot EF^2$, $k\cdot30^2$ for some constant $k$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(14,0),C=(22,-12),D=(-8,-12);
+real t=(sqrt(548)-14)/16; pair PE=A+t*(D-A),PF=B+t*(C-B);
+draw(A--B--C--D--cycle);draw(PE--PF,dashed);
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);label("$E$",PE,W);label("$F$",PF,E);
+label("$14$",(7,0),N);label("$30$",(7,-12),S);
+pair P=extension(A,D,B,C);draw(A--P--B,dotted);label("$P$",P,N);
+\end{asy}
+
+The two parts of the trapezoid have areas $k(EF^2-196)$ and $k(900-EF^2)$. Setting them equal gives $EF^2=\dfrac{196+900}{2}=548$, so
+\[EF=\sqrt{548}=\boxed{2\sqrt{137}}.\]

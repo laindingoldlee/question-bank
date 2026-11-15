@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2577870_lamboreghinis_problem_thread_math_and_programming
+% Stable identity: aops-topic-2577870-q113
+A state consists of the multiset of remaining strings and the player to move. Every actual move decreases the total length; a pass is followed by a legal move because every nonempty string begins with 0 or 1. Thus there is no infinite play. Use memoized minimax: a position is winning if some legal move leaves a losing position for the opponent. An empty position is winning for the player now to move, because the preceding player made the losing last erasure.\begin{verbatim}
+from functools import lru_cache
+@lru_cache(None)
+def win(state,turn):
+    if not state: return True
+    wanted='1' if turn==0 else '0'
+    eligible=[i for i,s in enumerate(state) if s[0]==wanted]
+    if not eligible: return not win(state,1-turn)
+    for i in eligible:
+        s=state[i]
+        for mask in range(1,1<<len(s)):
+            rest=''.join(ch for j,ch in enumerate(s)
+                         if not (mask>>j)&1)
+            nxt=list(state[:i]+state[i+1:])
+            if rest: nxt.append(rest)
+            nxt=tuple(sorted(nxt))
+            if not win(nxt,1-turn): return True
+    return False
+
+def solve(numbers):
+    assert 1<=len(numbers)<=4 and all(0<=n<=15 for n in numbers)
+    strings=[format(n,'04b') for n in numbers]
+    winner='Paco' if win(tuple(sorted(strings)),0) else 'Diana'
+    return strings,winner
+\end{verbatim}
+Every permitted deletion is one of the nonzero masks and no forbidden move is generated. Induction on total remaining length, treating forced passes as changing the player before the next deletion, proves correctness. Sorting merges strategically identical states. The stated small input bound makes exhaustive state search practical.

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h458403_1997_mc_chapter_problems
+% Stable identity: aops-topic-458403-q27
+Add up the three side sums. Every number is counted once, except the three corner numbers, which lie on two sides and are counted twice. So
+\[
+3s=(1+2+\cdots+9)+(\text{corner sum})=45+12=57,
+\qquad s=\boxed{19}.
+\]
+Such an arrangement exists, for example with corners $1$, $4$, $7$ and sides $1+5+9+4$, $4+2+6+7$, $7+3+8+1$, all equal to $19$:
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair[] P={(0,6),(-1,4),(-2,2),(-3,0),(-1,0),(1,0),(3,0),(2,2),(1,4)};
+int[] v={1,5,9,4,2,6,7,3,8};
+draw((0,6)--(-3,0)--(3,0)--cycle,gray);
+for(int i=0;i<9;++i){filldraw(circle(P[i],0.55),(i==0||i==3||i==6)?paleyellow:white,linewidth(0.8));label("$"+string(v[i])+"$",P[i]);}
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The corner circles are shaded.)

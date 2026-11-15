@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2142021_problem_collection
+% Stable identity: aops-topic-2142021-q02
+Let $K$ be the polygon together with its interior, a convex region whose boundary is made of the $2020$ edges.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+int n=16; real R=2;
+pair[] V; for(int k=0;k<n;++k) V[k]=R*dir(90+360*k/n);
+path pg=V[0]; for(int k=1;k<n;++k) pg=pg--V[k]; pg=pg--cycle;
+fill(pg,paleyellow); draw(pg,linewidth(0.9));
+draw((-3.1,-2.4)--(-3.1,2.4),gray);
+label("$0$ points",(-3.1,-2.4),S,fontsize(8pt));
+draw((-2.6,R-0.26)--(2.6,R+0.26),blue);
+dot(V[0],blue); label("$1$ point",(2.6,R+0.26),E,blue+fontsize(8pt));
+path l2=(-2.8,-1.6)--(2.6,0.52);
+draw(l2,red);
+pair[] X=intersectionpoints(l2,pg);
+for(int i=0;i<X.length;++i) dot(X[i],red);
+label("$2$ points",(2.6,0.52),E,red+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The picture shows a polygon with fewer sides; the argument does not depend on the number of sides.)
+
+\textbf{At most two points.} Suppose the line $\ell$ met the edges in three points $P$, $Q$, $R$, with $Q$ between $P$ and $R$. The point $Q$ lies on some edge; let $m$ be the line containing that edge. The convex region $K$ lies in one closed half-plane bounded by $m$, so $P$ and $R$ lie in that closed half-plane. If one of them were strictly inside the half-plane, then every point strictly between $P$ and $R$, in particular $Q$, would be strictly inside it too, which is false because $Q$ is on $m$. So $P$ and $R$ lie on $m$, and $\ell=m$ contains an edge, which is not allowed. Hence $x\le2$.
+
+\textbf{All of $0$, $1$, $2$ occur.} A line far away from the polygon gives $x=0$. A line through one vertex that leaves the rest of the polygon on one side (for example, the line through the vertex perpendicular to the line from the centre to that vertex) gives $x=1$; note that the vertex is a single point, although it lies on two edges. A line through the centre that avoids the vertices gives $x=2$.
+
+So the possible values are $0$, $1$, $2$, and their sum is $\boxed{3}$.

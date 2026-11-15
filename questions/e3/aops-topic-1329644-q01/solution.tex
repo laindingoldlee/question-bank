@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1329644_advanced_mddlehigh_school_marathon
+% Stable identity: aops-topic-1329644-q01
+Number the points so that arc $AC_k$ is $\dfrac{k\pi}{7}$. In the triangle $AC_kB$ the angle at $C_k$ is right (Thales), and the inscribed angle at $B$ is $\dfrac{k\pi}{14}$, so with diameter $4$,
+\[
+AC_k=4\sin\dfrac{k\pi}{14},\qquad BC_k=4\cos\dfrac{k\pi}{14}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real r=2; pair A=(-2,0),B=(2,0);
+draw(arc((0,0),2,0,180),linewidth(0.9)); draw(A--B,gray);
+for(int i=1;i<7;++i){pair C=2*dir(180-180*i/7); draw(A--C,blue+0.5); draw(B--C,red+0.5); dot(C);}
+label("$A$",A,SW); label("$B$",B,SE); label("$C_1$",2*dir(180-180/7),W); label("$C_6$",2*dir(180/7),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence $AC_k\cdot BC_k=16\sin\dfrac{k\pi}{14}\cos\dfrac{k\pi}{14}=8\sin\dfrac{k\pi}{7}$, and
+\[
+n=8^6\prod_{k=1}^{6}\sin\dfrac{k\pi}{7}.
+\]
+Using the identity $\prod_{k=1}^{m-1}\sin\dfrac{k\pi}{m}=\dfrac{m}{2^{m-1}}$ with $m=7$ (it follows from $\prod_{k=1}^{m-1}(1-\omega^k)=m$ for $\omega=e^{\dfrac{2\pi i}{m}}$ and $|1-\omega^k|=2\sin\dfrac{k\pi}{m}$),
+\[
+n=2^{18}\cdot\dfrac{7}{2^6}=7\cdot2^{12}=28672,
+\]
+and the remainder is $\boxed{672}$.

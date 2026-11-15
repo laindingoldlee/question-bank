@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1431678_geometry_marathon
+% Stable identity: aops-topic-1431678-q01
+Let the right angle be at $C$, with $CB=5$, $CA=12$ and hypotenuse $AB=13$, and let the incircle have centre $I$ and radius $r$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair C=(0,0),A=(12,0),B=(0,5),I=(2,2);
+pair T3=ft(I,A,B);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(circle(I,2),blue);
+draw(ra(C,A-C,B-C,0.6));
+draw(I--(2,0),red); draw(I--(0,2),red+dashed); draw(I--T3,red+dashed);
+dot(I);dot((2,0));dot((0,2));dot(T3);
+label("$A$",A,SE); label("$B$",B,N); label("$C$",C,SW); label("$I$",I,dir(-20));
+label("$r$",(2,1),W,red);
+label("$12$",(7,0),S); label("$5$",(0,3.5),W); label("$13$",(B+A)/2+(0.3,0.5),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Method 1 (area).} The area is $\dfrac{1}{2}\cdot5\cdot12=30$, and it also equals $r$ times the semiperimeter $s=\dfrac{5+12+13}{2}=15$ (split the triangle into three triangles with apex $I$). So $r=\dfrac{30}{15}=2$.
+
+\textbf{Method 2 (tangent lengths).} The two tangent segments from $C$ have length $r$ (they form a square with the radii), so the tangent lengths from $A$ and $B$ are $12-r$ and $5-r$, and they add up to the hypotenuse: $(12-r)+(5-r)=13$, so $r=2$.
+
+The radius is $\boxed{2}$.

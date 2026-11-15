@@ -1,0 +1,8 @@
+A regular hexagon of side $a$ consists of six equilateral triangles of side $a$. Its circumradius is $a$, each opposite-vertex diagonal is $2a$, and thus $s=6a$, $k=6a$. The condition gives $18a=108$, so $\boxed{a=6}$.
+Its area is $6\cdot\dfrac{\sqrt3}{4}a^2=\boxed{54\sqrt3}$. Each vertex has $OP^2=a^2=36$, so the sum is $\boxed{216}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] v;for(int i=0;i<6;++i)v.push(6dir(60i));path h;for(pair P:v)h=h--P;draw(h--cycle);for(int i=0;i<3;++i)draw(v[i]--v[i+3],blue);label("$O$",(0,0),SW);label("$6$",(v[0]+v[1])/2,NE);for(int i=0;i<6;++i)label(string(i+1),v[i],unit(v[i]));
+\end{asy}

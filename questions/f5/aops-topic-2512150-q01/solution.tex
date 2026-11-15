@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2512150_1000_upvotes_received_celebration
+% Stable identity: aops-topic-2512150-q01
+\textbf{(a)} Arjun always chooses $1$, so a player who chooses $1$ never gets a point. Choosing some other number instead can only help: a player's expected score is $\sum_k p_k q_k$, where $q_k$ is the probability that nobody else chooses $k$, and $q_1=0$. So moving the probability $p_1$ onto other numbers never lowers the expected score, and a sensible strategy has $p_1=0$.
+
+\textbf{(b)} With $p_1=0$, nobody else ever chooses $1$, so Arjun gets a point every time: his expected score is $1$.
+
+Consider Beth (the others are the same). She chooses $k\in\{2,\dots,10\}$ with probability $p_k$, and then scores exactly when the other three random players all avoid $k$ (Arjun's $1$ never equals $k$), which has probability $(1-p_k)^3$ by independence. So her expected score is
+\[\sum_{k=2}^{10}p_k(1-p_k)^3\le\sum_{k=2}^{10}p_k=1.\]
+Equality would need $(1-p_k)^3=1$, i.e. $p_k=0$, for every $k$ with $p_k>0$, which is impossible because the $p_k$ add up to $1$. So each of the others has expected score less than $1$, and the answer is $\boxed{\textbf{(A)}}$.
+
+\textbf{(c)} With $p_k=\dfrac19$ for $k=2,\dots,10$, the expected score is $9\cdot\dfrac19\left(\dfrac89\right)^3=\boxed{\dfrac{512}{729}}\approx0.70$.

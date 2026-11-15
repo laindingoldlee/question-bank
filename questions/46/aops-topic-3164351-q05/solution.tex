@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h3164351_2023_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3164351-q05
+Let H be the perpendicular projection of D onto the base plane. If F is the perpendicular foot on any base-side line, then $DF^2=DH^2+HF^2$, so H is at equal distance $r=\sqrt{49-25}=2\sqrt 6$ from all three base-side lines. Since the side faces are acute, each F lies inside its corresponding base edge. The point H must therefore be the incenter, not an excenter (an excenter has two perpendicular feet on side extensions). The base area is $\Delta=\dfrac{3\cdot 60}{5}=36$, giving semiperimeter $s=\dfrac{\Delta}{r}=3\sqrt 6$. But every triangle satisfies $s\ge 3\sqrt 3 r$. To prove this bound, write its tangent lengths as positive u,v,w: Heron's formula gives $r^2=\dfrac{uvw}{u+v+w}$, and AM--GM gives $(u+v+w)^3\ge 27 uvw$, hence $s^2\ge 27 r^2$. Here $s^2=54$ while $27 r^2=648$, a contradiction. Thus $\boxed{\text{no such tetrahedron exists}}$.
+\begin{asy}
+usepackage("amsmath");
+import geometry;size(240);
+pair H=(0,0),D=(0,5),F=(sqrt(24),0);draw(D--H--F--D);draw((0,0.3)--(0.3,0.3)--(0.3,0));label("$D$",D,N);label("$H$",H,SW);label("$F$",F,SE);label("$5$",(D+H)/2,W);label("$7$",(D+F)/2,NE);label("$r=2\sqrt6$",(H+F)/2,S);
+\end{asy}
+The following base diagram is schematic: it illustrates the incenter and perpendicular feet used in the argument, not a realization of the inconsistent numerical data.
+\begin{asy}
+usepackage("amsmath");
+import geometry;size(240);
+pair A=(2,4),B=(0,0),C=(6,0);real a=abs(B-C),b=abs(A-C),c=abs(A-B);pair H=(a*A+b*B+c*C)/(a+b+c),F=foot(H,B,C),G=foot(H,C,A),J=foot(H,A,B);draw(A--B--C--cycle);draw(circle(H,abs(H-F)));draw(H--F^^H--G^^H--J,dashed);dot(H);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$H$",H,E);label("$F$",F,S);label("$G$",G,NE);label("$J$",J,NW);label("$r$",(H+F)/2,E);
+\end{asy}

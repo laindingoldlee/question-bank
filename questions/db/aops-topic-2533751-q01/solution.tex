@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2533751_the_poor_town
+% Stable identity: aops-topic-2533751-q01
+Let $k$ be the number of coffins waiting. Each trip changes $k$ to $k-1$ or $k+1$ with probability $\dfrac12$ each, and the process stops when $k=0$. To get from $k$ waiting coffins down to $0$, the count must first drop from $k$ to $k-1$, then from $k-1$ to $k-2$, and so on. Each of these stages behaves exactly like the whole process started from one coffin, independently of the others.
+
+\textbf{(a)} Let $q$ be the probability that the process started from one coffin ever ends. Starting from two coffins it ends with probability $q^2$ (both stages must end). Looking at the first trip,
+\[q=\dfrac12\cdot1+\dfrac12\cdot q^2,\qquad\text{so}\qquad q^2-2q+1=(q-1)^2=0,\]
+and $q=1$.
+
+\textbf{(b)} Let $E=\mathbb E[T]$ for one waiting coffin, and suppose $E$ is finite. From two coffins the expected number of trips is $2E$ (two stages). Looking at the first trip,
+\[E=1+\dfrac12\cdot0+\dfrac12\cdot2E=1+E,\]
+which is impossible. Hence $\boxed{\mathbb E[T]=\infty}$: the process ends for sure, but the average number of carriers is infinite. $\blacksquare$
+
+(In fact $T=2n+1$ with probability $\dfrac{C_n}{2^{2n+1}}$, where $C_n=\dfrac1{n+1}\dbinom{2n}n$ is a Catalan number. These probabilities add up to $1$, but the terms $(2n+1)\dfrac{C_n}{2^{2n+1}}$ of the expectation behave like $\dfrac{1}{\sqrt{\pi n}}$, whose sum diverges. If instead a dropped coffin did not need to be carried again, $T$ would be geometric with mean $2$.)

@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1656688_2018_mte_ms_target_full
+% Stable identity: aops-topic-1656688-q06
+Use coordinates $A=(0,0)$, $B=(20,0)$, $C=(20,18)$, $D=(0,18)$. Then $AP=\dfrac{2}{5}\cdot20=8$, so $P=(8,0)$, and $BQ=\dfrac{4}{9}\cdot18=8$, so $Q=(20,8)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(20,0),C=(20,18),D=(0,18);
+pair P=(8,0),Q=(20,8);pair R=extension(D,P,A,Q);pair Sx=extension(C,R,A,B);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(D--P);draw(A--Q);draw(C--Sx,red);
+dot(P);dot(Q);dot(R);dot(Sx);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$P$",P,S);label("$Q$",Q,E);label("$R$",R,2.6*dir(84));label("$S$",Sx,S);
+label("$20$",(D+C)/2,N);label("$18$",(A+D)/2,W);label("$8$",(B+Q)/2,E);label("$10$",(Q+C)/2,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Point $R$.} Line $AQ$ is $y=\dfrac{2}{5}x$. Line $DP$ is $\dfrac {x}{8}+\dfrac{y}{18}=1$. Substituting, $\dfrac {x}{8}+\dfrac{x}{45}=1$, so $x=\dfrac{360}{53}$ and $y=\dfrac{144}{53}$.
+
+\textbf{Point $S$.} Line $CR$ passes through $C=(20,18)$ and $R=\left(\dfrac{360}{53},\dfrac{144}{53}\right)$; it meets $y=0$ where
+\[
+x=20-18\cdot\dfrac{20-\dfrac{360}{53}}{18-\dfrac{144}{53}}=20-18\cdot\dfrac{700}{810}=20-\dfrac{140}{9}=\dfrac{40}{9} .
+\]
+So $AS=\boxed{\dfrac{40}{9}}$.

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2787236_1998_manhattan_mathematical_olympiad_grades_78_problems_14
+% Stable identity: aops-topic-2787236-q04
+Partition the square into 50 vertical strips of width $\dfrac{1}{50}$, assigning boundary points consistently to one adjacent strip. Some strip contains at least 3 points. Any triangle inside a rectangle of width $w$ and height 1 has area at most $\dfrac{w}{2}$: for fixed two vertices, moving the third to a rectangle corner cannot decrease the maximum possible area; repeat for the other vertices, reducing to three corners. Thus the three points in that strip form a triangle of area at most $\dfrac{1}{100}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw((0,0)--(5,0)--(5,5)--(0,5)--cycle);for(int k=1;k<50;++k)draw((k/10,0)--(k/10,5),lightgray);pair A=(2.01,.8),B=(2.09,4.4),C=(2.02,3);draw(A--B--C--cycle,blue+1);label("$A$",A,W);label("$B$",B,E);label("$C$",C,W);label("$1$",(2.5,-.3));
+\end{asy}

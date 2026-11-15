@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2636758_intermediate_problems
+% Stable identity: aops-topic-2636758-q12
+The slant height is $8$. The arc length, $\dfrac{300}{360}\cdot2\pi\cdot8=\dfrac{40\pi}{3}$, becomes the base circumference, so the base radius is $\rho=\dfrac{20}{3}$. The height is $h=\sqrt{8^2-\left(\dfrac{20}{3}\right)^2}=\sqrt{\dfrac{176}{9}}=\dfrac{4\sqrt{11}}{3}$. Hence
+\[V=\dfrac13\pi\rho^2h=\dfrac13\pi\cdot\dfrac{400}{9}\cdot\dfrac{4\sqrt{11}}{3}=\boxed{\dfrac{1600\sqrt{11}\,\pi}{81}}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);draw(O--8*dir(0)--arc(O,8,0,300)--cycle,linewidth(0.8));
+label("$8$",4*dir(0),N,fontsize(8pt));label("$300^\circ$",2.4*dir(150),fontsize(8pt));draw(arc(O,1.2,0,300),gray);
+pair c=(17,-1);real rr=20/3,h=4*sqrt(11)/3;
+draw(ellipse(c,rr,0.8));draw((c.x-rr,c.y)--(c.x,c.y+h)--(c.x+rr,c.y),linewidth(0.8));draw(c--(c.x,c.y+h),dashed);draw(c--(c.x+rr,c.y),dashed);
+label("$8$",(c.x+rr/2,c.y+h/2),NE,fontsize(8pt));label("$h$",(c.x,c.y+h/2),W,fontsize(8pt));label("$\dfrac{20}{3}$",(c.x+rr/2,c.y-0.8),S,fontsize(7pt));
+\end{asy}

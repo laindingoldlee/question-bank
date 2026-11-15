@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3165261_2020_moaa_general_round__math_open_at_andover
+% Stable identity: aops-topic-3165261-q16
+Use the prime-exponent formula $\tau(\prod p^e)=\prod(e+1)$ to test the finite range $1\le n\le99$. The qualifying values are $1,2,6,10,18,22,30,42,46,58,66,70,78,82$, so the answer is $\boxed{14}$. The following short exhaustive certificate computes divisor counts directly, independently of any factorization choices.\begin{verbatim}
+def tau(n):
+    return sum(n%d==0 for d in range(1,n+1))
+valid=[n for n in range(1,100) if tau(n)==tau(n*(n+1)//2)]
+assert valid==[1,2,6,10,18,22,30,42,46,58,66,70,78,82]
+assert len(valid)==14
+\end{verbatim}

@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2531345_dog_admiring_mariokart_disc
+% Stable identity: aops-topic-2531345-q01
+Measure times in minutes after 12:00: the dog arrives at $s$ and the person at $m$, with $(s,m)$ uniform in the square $[0,60]\times[0,60]$. They overlap exactly when $|s-m|\le20$. The complementary region consists of two right triangles with legs $40$, of total area $40^2=1600$, out of $3600$. So on one day
+\[P(\text{play})=1-\dfrac{1600}{3600}=\dfrac59.\]
+The dog fails to play on both days with probability $\left(\dfrac49\right)^2=\dfrac{16}{81}$, so the answer is $1-\dfrac{16}{81}=\boxed{\dfrac{65}{81}}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+fill((0,0)--(20,0)--(60,40)--(60,60)--(40,60)--(0,20)--cycle,lightgray);
+draw((0,0)--(60,0)--(60,60)--(0,60)--cycle,linewidth(0.8));
+draw((0,20)--(40,60));draw((20,0)--(60,40));
+label("$0$",(0,0),SW);label("$60$",(60,0),S);label("$60$",(0,60),W);label("$20$",(20,0),S);label("$20$",(0,20),W);
+label("$s$",(30,0),2S);label("$m$",(0,30),2W);
+label("$|s-m|\le20$",(30,30),fontsize(8pt));
+\end{asy}

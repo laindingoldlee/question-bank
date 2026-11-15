@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2517137_multiply_of_gcd_and_lcm
+% Stable identity: aops-topic-2517137-q01
+Let $g=\gcd(a,b)$ and write $a=ga'$, $b=gb'$.
+
+\textbf{Step 1: $\gcd(a',b')=1$.} If $e>1$ divided both $a'$ and $b'$, then $ge$ would be a common divisor of $a$ and $b$ larger than $g$, which is impossible.
+
+\textbf{Step 2: $\operatorname{lcm}(a,b)=ga'b'$.} The number $L=ga'b'$ is a common multiple: $L=a\cdot b'=b\cdot a'$. Now let $m$ be any positive common multiple of $a$ and $b$. Since $a\mid m$, write $m=ga'k$. Since $b=gb'$ divides $m=ga'k$, we get $b'\mid a'k$. As $\gcd(a',b')=1$, Euclid's lemma gives $b'\mid k$, so $k\ge b'$ and $m=ga'k\ge ga'b'=L$. Hence $L$ is the least common multiple.
+
+\textbf{Step 3.} Therefore
+\[\gcd(a,b)\cdot\operatorname{lcm}(a,b)=g\cdot ga'b'=(ga')(gb')=ab.\qquad\blacksquare\]
+
+(Equivalently, with prime factorisations $a=\prod p^{\alpha_p}$ and $b=\prod p^{\beta_p}$, the gcd and lcm have exponents $\min(\alpha_p,\beta_p)$ and $\max(\alpha_p,\beta_p)$, and $\min+\max=\alpha_p+\beta_p$.)

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1580459_vertex_of_a_graph
+% Stable identity: aops-topic-1580459-q01
+The graph of $y=|x|$ is a V with vertex at the origin. Replacing $x$ by $x+5$ shifts it $5$ units to the left, and subtracting $6$ shifts it $6$ units down. So the vertex moves from $(0,0)$ to $\boxed{(-5,-6)}$.
+
+Directly: $|x+5|\ge0$ with equality only at $x=-5$, so $f$ has its minimum value $-6$ there, and the graph changes from slope $-1$ to slope $+1$ at $(-5,-6)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-13,0)--(4,0),gray,Arrow(TeXHead));draw((0,-7.5)--(0,7),gray,Arrow(TeXHead));
+label("$x$",(4,0),E,gray);label("$y$",(0,7),N,gray);
+real f(real x){return abs(x+5)-6;}
+draw(graph(f,-12,1.5),blue+linewidth(1));
+draw((-5,0)--(-5,-6),dashed);
+dot((-5,-6));label("$(-5,-6)$",(-5,-6),S);
+dot((-11,0));dot((1,0));label("$-11$",(-11,0),SW);label("$1$",(1,0),SE);
+label("$-5$",(-5,0),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The graph crosses the $x$-axis where $|x+5|=6$, at $x=-11$ and $x=1$.)

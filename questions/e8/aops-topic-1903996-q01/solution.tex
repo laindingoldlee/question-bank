@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1903996_geometry
+% Stable identity: aops-topic-1903996-q01
+Rotate the plane about $B$ through $60^\circ$ in the direction that takes $A$ to $C$, and let $O'$ be the image of $O$. The rotation maps triangle $BOA$ onto triangle $BO'C$, so
+\[
+O'C=OA\qquad\text{and}\qquad \angle BO'C=\angle BOA .
+\]
+Also $BO'=BO$ and $\angle OBO'=60^\circ$, so triangle $BOO'$ is equilateral: $OO'=OB$ and $\angle BO'O=60^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(6,0), C=(3,3*sqrt(3));
+pair O=extension(A,A+dir(20),B,B+dir(170));
+pair Op=B+rotate(-60)*(O-B);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(O--A);draw(O--B);draw(O--C);
+draw(B--Op--C,blue+dashed);
+draw(O--Op,blue);
+pair u=unit(O-Op), v=unit(C-Op);
+draw((Op+0.3*u)--(Op+0.3*u+0.3*v)--(Op+0.3*v),blue);
+dot(O);dot(Op);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$O$",O,S);label("$O'$",Op,E);
+draw(arc(B,0.7,degrees(O-B),degrees(Op-B)),red);label("$60^\circ$",B+1.0*dir((degrees(O-B)+degrees(Op-B))/2),red+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In triangle $OO'C$ the sides are $OO'=OB$, $O'C=OA$ and $OC$. The hypothesis $OA^2+OB^2=OC^2$ says $O'C^2+OO'^2=OC^2$, so by the converse of the Pythagorean theorem $\angle OO'C=90^\circ$.
+
+The rotation maps triangle $ABC$ to triangle $CBC^*$, where $C^*$ is the reflection of $A$ in $BC$, so $O'$ lies inside the rhombus $ABC^*C$ on the other side of $BC$ from $O$. Hence segment $OO'$ crosses side $BC$, and ray $O'O$ lies inside angle $BO'C$. Therefore
+\[
+\angle AOB=\angle BO'C=\angle BO'O+\angle OO'C=60^\circ+90^\circ=\boxed{150^\circ}.
+\]

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2500971_stemhcounts_states_sprint_1115
+% Stable identity: aops-topic-2500971-q13
+The volume is preserved. The sphere has volume
+\[\dfrac43\pi\cdot28^3,\]
+so the edge $s$ of the cube satisfies $s^3=\dfrac43\pi\cdot28^3$, and
+\[s=28\sqrt[3]{\dfrac{4\pi}{3}}=\boxed{\dfrac{28}{3}\sqrt[3]{36\pi}\text{ cm}}\approx45.1\text{ cm}.\]
+(We used $\sqrt[3]{\dfrac{4\pi}{3}}=\sqrt[3]{\dfrac{36\pi}{27}}=\dfrac13\sqrt[3]{36\pi}$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw(circle((0,0),1.2),linewidth(0.8));
+draw(xscale(1.2)*yscale(0.35)*arc((0,0),1,180,360),linewidth(0.6));
+draw(xscale(1.2)*yscale(0.35)*arc((0,0),1,0,180),dashed);
+draw((0,0)--1.2*dir(40)); dot((0,0)); label("$28$",0.6*dir(40),NW,fontsize(8pt));
+real s=1.8, d=0.6; pair o=(2.6,-0.9);
+pair p1=o, p2=o+(s,0), p3=o+(s,s), p4=o+(0,s);
+pair q=(d,d*0.7);
+draw(p1--p2--p3--p4--cycle,linewidth(0.8));
+draw(p4--p4+q--p3+q--p3); draw(p3+q--p2+q--p2);
+draw(p1--p1+q,dashed); draw(p1+q--p2+q,dashed); draw(p1+q--p4+q,dashed);
+label("$s$",(p1+p2)/2,S);
+\end{asy}
+
+Because of the factor $\pi$, the edge cannot be written as $m\sqrt[3]{n}$ with integers $m$ and $n$.

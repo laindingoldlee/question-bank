@@ -1,0 +1,21 @@
+Set $A=(0,0)$, $B=(60,0)$, $C=(60,60)$, $D=(0,60)$. Then $X=(30,0)$, $Y=(60,40)$. The line through $D$ parallel to $XY$ is at perpendicular distance $60$ from $XY$. Thus the rectangle translation is $(-48,36)$, giving $Q=(-18,36)$ and $P=(12,76)$.
+
+The circle equations, obtained by substituting their three points, are
+\[
+AQD:\ x^2+y^2-30x-60y=0,
+\]
+\[
+CPD:\ x^2+y^2-60x-100y+2400=0.
+\]
+Their radical axis is $3x+4y=240$. Substitution into the first circle gives $x(25\dfrac{x}{16}-75)=0$. One intersection is $D$; the other is $Z=(48,24)$.
+
+Line $BD$ is $x+y=60$, with length $60\sqrt2$. The distance from $Z$ to it is $\dfrac{(48+24-60)}{\sqrt2}=6\sqrt2$. Therefore
+\[
+[BDZ]=\dfrac{1}{2}(60\sqrt2)(6\sqrt2)=\boxed{360}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(60,0),C=(60,60),D=(0,60),X=(30,0),Y=(60,40),P=(12,76),Q=(-18,36),Z=(48,24);fill(B--D--Z--cycle,lightblue);draw(circle((15,30),15sqrt(5)),gray);draw(circle((30,50),10sqrt(10)),gray);draw(A--B--C--D--cycle);draw(X--Y--P--Q--cycle,blue);draw(B--D--Z--cycle,red);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,(-1,0));label("$X$",X,(0,-1));label("$Y$",Y,(1,0));label("$P$",P,(0,1));label("$Q$",Q,(-1,0));label("$Z$",Z,(1,0));
+\end{asy}

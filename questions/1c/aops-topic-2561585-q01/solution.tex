@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2561585_dice_game
+% Stable identity: aops-topic-2561585-q01
+\textbf{(a)} With $n$ planned rolls he keeps his points only if none of the $n$ rolls is a $46$, which has probability $\left(\dfrac{45}{46}\right)^n$; given that, each roll is uniform on $1,\dots,45$ with mean $23$. So his expected score is
+\[f(n)=23n\left(\dfrac{45}{46}\right)^n,\qquad \dfrac{f(n+1)}{f(n)}=\dfrac{45}{46}\cdot\dfrac{n+1}{n}.\]
+This ratio is greater than $1$ for $n<45$, equal to $1$ for $n=45$ and less than $1$ for $n>45$. So $f$ is largest at $\boxed{n=45\text{ or }n=46}$, with expected score
+\[f(45)=f(46)=1035\left(\dfrac{45}{46}\right)^{45}\approx\boxed{384.95}.\]
+
+\textbf{(b)} If his current total is $s$, rolling once more and then stopping gives an expected score of
+\[\dfrac{45}{46}(s+23)=s+\dfrac{1035-s}{46},\]
+which is more than $s$ exactly when $s<1035$. We show that the following strategy is optimal: \emph{keep rolling while the total is less than $1035$, and stop as soon as it is at least $1035$} (at exactly $1035$ stopping and rolling once more are equally good).
+
+Consider all strategies that never make more than $N$ rolls in total, for any fixed $N\ge1035$ (the strategy above always stops within $1035$ rolls, since each roll adds at least $1$).
+
+\emph{Claim 1: from a total $s\ge1035$, no strategy has expected final score above $s$.} By induction on the number $k$ of rolls still allowed. For $k=0$ he must stop. If he rolls, the game ends with $0$ points (probability $\dfrac1{46}$), or the total becomes $s+j\ge1035$ for $j=1,\dots,45$, from which, by the induction hypothesis, he expects at most $s+j$. So he expects at most $\dfrac1{46}\sum_{j=1}^{45}(s+j)=\dfrac{45}{46}(s+23)\le s$.
+
+\emph{Claim 2: from a total $s<1035$ (with rolls still allowed), stopping is strictly worse than rolling.} Rolling once and then stopping already gives $\dfrac{45}{46}(s+23)>s$.
+
+By Claim 1, stopping is optimal once the total is at least $1035$, and by Claim 2, an optimal player never stops below $1035$. So the strategy is optimal among all strategies with at most $N$ rolls, for every $N\ge1035$.
+
+\emph{Strategies without a bound on the number of rolls.} Let $\sigma$ be any strategy, with expected score $e$, and let $\sigma_N$ follow $\sigma$ but stop after $N$ rolls at the latest, with expected score $e_N$. The two scores differ only when $\sigma$ makes more than $N$ rolls. Then $\sigma_N$ scores at least $0$, while $\sigma$ scores at most $45M$ if it stops after exactly $M>N$ rolls, which requires $M$ rolls without a $46$. Hence
+\[e\le e_N+\sum_{M>N}45M\left(\dfrac{45}{46}\right)^M.\]
+Here $e_N$ is at most the expected score of our strategy, and the sum is the tail of a convergent series, so it tends to $0$ as $N$ grows. Therefore $e$ is also at most the expected score of our strategy, which is optimal among all strategies.
+
+(The question does not ask for the optimal expected score: it is a fraction whose denominator is a power of $46$, with no simple closed form. The recursion $E(s)=\dfrac1{46}\sum_{j=1}^{45}E(s+j)$ for $s<1035$, with $E(s)=s$ for $s\ge1035$, gives $E(0)\approx386.29$, slightly more than in (a).)
+
+\textbf{Answer:} $\boxed{\text{roll until the total is at least }1035}$.

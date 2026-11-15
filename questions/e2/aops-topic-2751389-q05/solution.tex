@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2751389_800th_post_1_year_aops_anniversary_and_maff_problems
+% Stable identity: aops-topic-2751389-q05
+Put $A=(-5,0)$, $C=(5,0)$, $B=(0,12)$, with midpoint $M=(0,0)$ of $AC$. A clockwise quarter-turn sends a vector $(x,y)$ to $(y,-x)$, so it sends $A-M$, $C-M$, $B-M$ to $(0,5)$, $(0,-5)$, $(12,0)$. With dilation factor $k$ and new midpoint $(x_0,y_0)$,
+\[A'=(x_0,\,y_0+5k),\qquad C'=(x_0,\,y_0-5k),\qquad B'=(x_0+12k,\,y_0).\]
+$C'$ on $AC$ gives $y_0=5k$, so $A'=(x_0,10k)$ and $B'=(x_0+12k,5k)$.
+\begin{itemize}
+\item $A'$ on line $AB$ (equation $y=\dfrac{12}{5}(x+5)$): $x_0=\dfrac{25k}{6}-5$.
+\item $B'$ on line $BC$ (equation $x=\dfrac{5}{12}(12-y)$): $x_0+12k=5-\dfrac{25k}{12}$.
+\end{itemize}
+Hence $\dfrac{25k}{6}-5+12k=5-\dfrac{25k}{12}$, so $219k=120$ and $k=\dfrac{40}{73}$. All three points then lie on the sides themselves (not just the lines), and
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real k=40/73,x0=25k/6-5;
+pair A=(-5,0),B=(0,12),C=(5,0);
+pair A1=(x0,10k),B1=(x0+12k,5k),C1=(x0,0);
+draw(A--B--C--cycle,linewidth(0.8));draw(A1--B1--C1--cycle,linewidth(0.8)+gray);
+dot(A1);dot(B1);dot(C1);
+label("$A$",A,SW);label("$B$",B,N);label("$C$",C,SE);
+label("$A'$",A1,W,fontsize(8pt));label("$B'$",B1,NE,fontsize(8pt));label("$C'$",C1,S,fontsize(8pt));
+\end{asy}
+
+\[A'C'=10k=\dfrac{400}{73},\]
+so $a+b=\boxed{473}$. (A counterclockwise rotation gives the mirror-image configuration and the same length.)

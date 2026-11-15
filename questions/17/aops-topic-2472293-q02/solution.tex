@@ -1,0 +1,46 @@
+% Source: https://artofproblemsolving.com/community/c3h2472293_march_2021_problem_set
+% Stable identity: aops-topic-2472293-q02
+Since $CD=17=BD+BC$, the point $B$ lies between $D$ and $C$. Let $X$ be a point on ray $CA$ beyond $A$; the external bisector satisfies $\angle BAD=\angle DAX$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair Dd=(0,0), B=(12,0), C=(17,0), A=(116/9,sqrt(1232)/9);
+pair X=A+0.5*(A-C);
+draw(Dd--C,linewidth(0.8)); draw(A--B--C--cycle,linewidth(0.8));
+draw(A--X,dashed);
+draw(Dd--A,red+linewidth(0.9));
+dot(Dd); dot(A); dot(B); dot(C);
+label("$D$",Dd,SW); label("$B$",B,S); label("$C$",C,SE); label("$A$",A,dir(80)); label("$X$",X,NW);
+label("$12$",(Dd+B)/2,S); label("$5$",(B+C)/2,S); label("$4$",(A+B)/2,W,fontsize(8pt));
+\end{asy}
+
+\textbf{$E$ and the length $AC$.} As $BE\parallel AD$:
+\begin{itemize}
+\item $\angle ABE=\angle BAD$ (alternate angles, transversal $AB$);
+\item $\angle AEB=\angle XAD$ (corresponding angles, transversal $CA$).
+\end{itemize}
+Since $\angle BAD=\angle XAD$, triangle $ABE$ is isosceles with $AE=AB=4$. (This is the proof of the external angle bisector theorem.) Also $BE\parallel DA$ gives triangle $CBE\sim$ triangle $CDA$, so
+\[\dfrac{CE}{CA}=\dfrac{CB}{CD}=\dfrac5{17}.\]
+With $CE=CA-4$: $17(CA-4)=5\,CA$, so $CA=\dfrac{17}3$ and $CE=\dfrac53$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair Dd=(0,0), B=(12,0), C=(17,0), A=(116/9,sqrt(1232)/9);
+pair Ep=C+(5/17)*(A-C), F=(17-25/17,0), G=C+(25/289)*(A-C);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(A--(A+0.12*(Dd-A)),red+linewidth(0.9));
+draw(B--Ep,red); draw(Ep--F,blue); draw(F--G,red);
+dot(A); dot(B); dot(C); dot(Ep); dot(F); dot(G);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$E$",Ep,NE); label("$F$",F,S); label("$G$",G,NE);
+label("to $D$",A+0.12*(Dd-A),W,red+fontsize(8pt));
+\end{asy}
+
+\textbf{$F$.} $EF\parallel AB$ gives triangle $CEF\sim$ triangle $CAB$, so $\dfrac{CF}{CB}=\dfrac{CE}{CA}=\dfrac5{17}$ and $CF=\dfrac{25}{17}$.
+
+\textbf{$G$.} $FG\parallel DA$ gives triangle $CFG\sim$ triangle $CDA$, so
+\[\dfrac{CG}{CA}=\dfrac{CF}{CD}=\dfrac{25}{17\cdot17},\qquad CG=\dfrac{25}{289}\cdot\dfrac{17}3=\dfrac{25}{51}.\]
+(All three points lie on the stated segments, since $\dfrac53<\dfrac{17}3$, $\dfrac{25}{17}<5$ and $\dfrac{25}{51}<\dfrac53$.) So $m+n=25+51=\boxed{76}$.

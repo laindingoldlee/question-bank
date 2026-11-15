@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1731630_help_with_mathcounts_problems
+% Stable identity: aops-topic-1731630-q01
+Go along the diagonal from one corner to the other. It starts in one tile, and it enters a new tile each time it crosses a vertical grid line ($71$ interior lines) or a horizontal grid line ($23$ interior lines), except that when it passes exactly through a lattice point it crosses both lines at once and enters only one new tile.
+
+The diagonal from $(0,0)$ to $(72,24)$ passes through the lattice points $(3k,k)$; the interior ones are $k=1,\dots,23$, that is $\gcd(72,24)-1=23$ points. So the number of tiles is
+\[
+1+71+23-23=72=72+24-\gcd(72,24),
+\]
+answer $\boxed{72}$. (Equivalently, the floor splits into $24$ copies of a $3\times1$ block, and the diagonal crosses $3$ tiles in each. The picture shows the same pattern for a $6\times2$ floor: $6+2-2=6$ tiles.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=6;++i) draw((i,0)--(i,2),gray(0.6));
+for(int j=0;j<=2;++j) draw((0,j)--(6,j),gray(0.6));
+pen f=rgb(0.82,0.9,1);
+fill(box((0,0),(1,1)),f);fill(box((1,0),(2,1)),f);fill(box((2,0),(3,1)),f);
+fill(box((3,1),(4,2)),f);fill(box((4,1),(5,2)),f);fill(box((5,1),(6,2)),f);
+for(int i=0;i<=6;++i) draw((i,0)--(i,2),gray(0.6));
+for(int j=0;j<=2;++j) draw((0,j)--(6,j),gray(0.6));
+draw(box((0,0),(6,2)),linewidth(0.9));
+draw((0,0)--(6,2),red+linewidth(0.9));dot((3,1),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

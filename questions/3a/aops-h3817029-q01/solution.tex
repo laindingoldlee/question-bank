@@ -1,0 +1,15 @@
+Set $d=5-s$, so $0<d<5$. The vectors $QU=(-5,-d)$ and $QS=(-d,-5)$ have equal length $\sqrt{25+d^2}$ and dot product $10d>0$. Because $V$ is the perpendicular foot, $V$ is on the forward ray $QS$. The right triangle $QUV$ has equal legs exactly when its angle at $Q$ is $45^\circ$. Therefore
+\[
+\dfrac{10d}{25+d^2}=\dfrac{1}{\sqrt2},
+\qquad d^2-10\sqrt2\,d+25=0.
+\]
+The two roots are $5(\sqrt2\pm1)$; only $5(\sqrt2-1)$ is less than $5$. Hence $s=10-5\sqrt2$ and the requested area is
+\[
+\boxed{s^2=150-100\sqrt2}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real s=10-5*sqrt(2);pair O=(0,0),P=(5,0),Q=(5,5),R=(0,5),S=(s,0),T=(s,s),U=(0,s),v=S-Q,V=Q+dot(U-Q,v)/dot(v,v)*v;draw(O--P--Q--R--cycle);draw(O--S--T--U--cycle,blue);draw(Q--S);draw(U--Q--V--U,red);label("$O$",O,(-1,-1));label("$P$",P,(1,-1));label("$Q$",Q,(1,1));label("$R$",R,(-1,1));label("$S$",S,(0,-1));label("$T$",T,(1,1));label("$U$",U,(-1,0));label("$V$",V,(1,0));
+\end{asy}

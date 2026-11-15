@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3347134_tedious_bash_problem
+% Stable identity: aops-topic-3347134-q01
+The five-digit condition forces $5000\le a\le9999$. Checking in increasing order gives first valid pair $\boxed{a=6729,\ b=13458}$. The nine digits are precisely $1,2,3,4,5,6,7,8,9$. The following exact test verifies minimality by rejecting every smaller possible $a$:\begin{verbatim}
+for a in range(5000,10000):
+    b=2*a
+    if sorted(str(a)+str(b))==list("123456789"):
+        assert a==6729
+        break
+\end{verbatim}

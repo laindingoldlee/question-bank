@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2419206_pythagorean_triple_for_2021
+% Stable identity: aops-topic-2419206-q01
+Note that $2021=43\cdot47$, a product of two primes, both $\equiv3\pmod4$.
+
+\textbf{Case 1: $2021$ is a leg.} Let the other leg be $m$ and the hypotenuse $c$, so $(c-m)(c+m)=2021^2=43^2\cdot47^2$. The two factors are positive with $c-m<c+m$, and they are both odd since their product is odd. So $c-m=d$ is a divisor of $2021^2$ with $d<2021$, and $c+m=\dfrac{2021^2}{d}$. The divisors of $2021^2$ below $2021$ are $1$, $43$, $47$ and $43^2=1849$ (note $47^2=2209>2021$). They give
+\begin{center}
+\begin{tabular}{c|c|c|c}
+$d=c-m$ & $c+m$ & $c$ & $m$\\
+\hline
+$1$ & $4084441$ & $2042221$ & $2042220$\\
+$43$ & $94987$ & $47515$ & $47472$\\
+$47$ & $86903$ & $43475$ & $43428$\\
+$1849$ & $2209$ & $2029$ & $180$
+\end{tabular}
+\end{center}
+
+\textbf{Case 2: $2021$ is the hypotenuse.} We use a lemma: \emph{if $p$ is a prime with $p\equiv3\pmod4$ and $p\mid x^2+y^2$, then $p\mid x$ and $p\mid y$.} Indeed, if $p\nmid x$, let $x'$ be an inverse of $x$ modulo $p$ and $t=yx'$; then $t^2\equiv-1\pmod p$, so $p\nmid t$. Raising to the odd power $\dfrac{p-1}{2}$ gives $t^{p-1}\equiv(-1)^{\dfrac{p-1}{2}}=-1$, while Fermat's little theorem gives $t^{p-1}\equiv1$. Then $p\mid2$, which is false. So $p\mid x$, and then $p\mid y^2$, so $p\mid y$.
+
+Now suppose $a^2+b^2=2021^2$ with $a,b>0$. As $43\mid a^2+b^2$, the lemma gives $43\mid a$ and $43\mid b$, and dividing by $43^2$, $\left(\dfrac a{43}\right)^2+\left(\dfrac b{43}\right)^2=47^2$. By the lemma with $p=47$, both $\dfrac a{43}$ and $\dfrac b{43}$ are multiples of $47$, so $\left(\dfrac{a}{2021}\right)^2+\left(\dfrac{b}{2021}\right)^2=1$ with positive integers $\dfrac{a}{2021}$, $\dfrac{b}{2021}$. That is impossible, since the left side is at least $2$. So $2021$ is never the hypotenuse.
+
+\textbf{Answer.} There are exactly four such triples:
+\[\boxed{(180,2021,2029),\ (2021,43428,43475),\ (2021,47472,47515),\ (2021,2042220,2042221)}.\]
+(For example, $180^2+2021^2=32400+4084441=4116841=2029^2$.)

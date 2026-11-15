@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1784575_geometry
+% Stable identity: aops-topic-1784575-q01
+From $QR^2=PR\cdot XR$ we get
+\[
+\dfrac{QR}{PR}=\dfrac{XR}{QR}.
+\]
+Triangles $RQX$ and $RPQ$ share the angle at $R$ (the angle $QRX$ is the angle $PRQ$, because $X$ lies on $RP$), and the sides enclosing that angle are proportional: $\dfrac{RX}{RQ}=\dfrac{RQ}{RP}$. Hence, by SAS similarity, $\triangle RXQ\sim\triangle RQP$, with $R\to R$, $X\to Q$, $Q\to P$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair Q=(-2,0),R=(2,0),P=(0,6),X=(1.2,2.4);
+draw(P--Q--R--cycle,linewidth(0.9));
+draw(Q--X,blue+linewidth(0.8));
+dot(X);
+label("$P$",P,N);label("$Q$",Q,SW);label("$R$",R,SE);label("$X$",X,E);
+// equal sides PQ = PR
+pair m1=(P+Q)/2,m2=(P+R)/2;
+draw((m1-0.18*unit(rotate(90)*(P-Q)))--(m1+0.18*unit(rotate(90)*(P-Q))));
+draw((m2-0.18*unit(rotate(90)*(R-P)))--(m2+0.18*unit(rotate(90)*(R-P))));
+// equal segments QX = QR (double ticks)
+pair m3=(Q+X)/2,m4=(Q+R)/2;
+for(int k=-1;k<=1;k+=2){
+ pair o3=0.08*k*unit(X-Q),o4=(0.08*k,0);
+ draw((m3+o3-0.18*unit(rotate(90)*(X-Q)))--(m3+o3+0.18*unit(rotate(90)*(X-Q))),blue);
+ draw((m4+o4-(0,0.18))--(m4+o4+(0,0.18)),blue);
+}
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Corresponding angles give $\angle RXQ=\angle RQP$. Since $PQ=PR$, the base angles of triangle $PQR$ are equal: $\angle RQP=\angle PRQ$. Therefore
+\[
+\angle QXR=\angle RQP=\angle PRQ=\angle QRX ,
+\]
+so triangle $QXR$ has equal angles at $X$ and $R$, and is isosceles with $QX=QR$. $\blacksquare$

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3527490_geometry_problem
+% Stable identity: aops-topic-3527490-q01
+Each center lies $2r$ from its vertex along the angle bisector. On either side of the triangle, the adjacent center projects a distance $2r\cos30^\circ=\sqrt3r$ from the vertex. Thus the distance between two adjacent centers is $s-2\sqrt3r$. Tangency sets it equal to $2r$, so $s=2r(1+\sqrt3)$ and $\boxed{\dfrac{r}{s}=\dfrac{\sqrt3-1}{4}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real r=1,s=2+2*sqrt(3),h=s*sqrt(3)/2;pair A=(0,h),B=(-s/2,0),C=(s/2,0),O=(0,h/3);draw(A--B--C--cycle);pair[] V={A,B,C};pair[] P;for(int i=0;i<3;++i){P.push(V[i]+2*r*unit(O-V[i]));draw(circle(P[i],r));dot(P[i]);}draw(P[0]--P[1]--P[2]--cycle,dashed);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$s$",(B+C)/2,S);label("$2r$",(P[1]+P[2])/2,N);
+\end{asy}

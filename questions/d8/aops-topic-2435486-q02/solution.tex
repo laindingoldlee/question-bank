@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2435486_problem_i_madetwo_versions
+% Stable identity: aops-topic-2435486-q02
+Colour row by row. A row of $4$ squares with neighbours different can be coloured in $3\cdot2^3=24$ ways. Up to renaming the colours, there are four patterns, each with $3!=6$ colourings: $ABAB$, $ABAC$, $ABCB$ and $ABCA$. The patterns $ABAC$ and $ABCB$ are mirror images of each other, so we group the rows into three types:
+\[P:\ ABAB\ (6\text{ rows}),\qquad Q:\ ABAC\text{ or }ABCB\ (12\text{ rows}),\qquad R:\ ABCA\ (6\text{ rows}).\]
+A row can follow another when every square differs from the square above it. Checking, for one row of each type, which of the $24$ rows can follow it gives the following counts (for example, with colours $0,1,2$, the rows that can follow $0101$ are $1010$, $1212$, $2020$ of type $P$, $1012$, $1020$, $1210$, $2010$ of type $Q$ and $2012$ of type $R$):
+\begin{center}
+\begin{tabular}{c|ccc|c}
+row above & next of type $P$ & next of type $Q$ & next of type $R$ & total\\ \hline
+$P$ & $3$ & $4$ & $1$ & $8$\\
+$Q$ & $2$ & $4$ & $1$ & $7$\\
+$R$ & $1$ & $2$ & $2$ & $5$
+\end{tabular}
+\end{center}
+Let $p_k,q_k,r_k$ count the colourings of the first $k$ rows whose last row is of type $P,Q,R$. Then $(p_1,q_1,r_1)=(6,12,6)$ and
+\[p_{k+1}=3p_k+2q_k+r_k,\qquad q_{k+1}=4p_k+4q_k+2r_k,\qquad r_{k+1}=p_k+q_k+2r_k.\]
+This gives
+\[(p_2,q_2,r_2)=(48,84,30),\quad(p_3,q_3,r_3)=(342,588,192),\quad(p_4,q_4,r_4)=(2394,4104,1314),\]
+and the number of colourings is $2394+4104+1314=\boxed{7812}$. (For $1$, $2$ and $3$ rows of length $4$ the same recursion gives $24$, $162$ and $1122$ colourings.)

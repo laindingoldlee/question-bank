@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1779767_at_least_two_of_alice_blice_and_clice_meet
+% Stable identity: aops-topic-1779767-q01
+Measure time in hours from 6 AM, so the arrival times $x,y,z$ are independent and uniform on $[0,12]$. Two people meet exactly when their arrival times differ by less than $3$ (they may stay after 6 PM; meeting at a single instant has probability $0$).
+
+Use the complement: nobody meets when all pairwise differences are at least $3$. For the ordering $x<y<z$ this means $y\ge x+3$ and $z\ge y+3$. Substituting $y'=y-3$, $z'=z-6$ turns this region into $0\le x\le y'\le z'\le6$, which has volume $\dfrac{6^3}{3!}=36$. There are $3!=6$ orderings, so the region where nobody meets has volume $6\cdot36=216$, out of $12^3=1728$. Hence
+\[
+P(\text{at least two meet})=1-\dfrac{216}{1728}=1-\dfrac{1}{8}=\boxed{\dfrac{7}{8}},
+\]
+confirming the poster's answer.

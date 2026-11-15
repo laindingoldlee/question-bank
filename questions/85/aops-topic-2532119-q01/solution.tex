@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h2532119_a_problem_lol
+% Stable identity: aops-topic-2532119-q01
+Let $f(x)=x^2-1-2^x$. We show that $f$ has exactly three real zeros.
+
+\textbf{At least three.} $f$ is continuous.
+\begin{itemize}
+\item $f(-2)=4-1-\dfrac14=\dfrac{11}{4}>0$ and $f(-1)=1-1-\dfrac12=-\dfrac12<0$, so $f$ has a zero in $(-2,-1)$.
+\item $f(3)=9-1-8=0$.
+\item $f'(x)=2x-2^x\ln2$, so $f'(3)=6-8\ln2$. Since $e^3>2.7^3>16$, we have $\ln2<\dfrac34$ and $f'(3)>0$. Hence $f(x_1)>0$ for some $x_1$ slightly larger than $3$ (with $x_1<4$). As $f(4)=16-1-16=-1<0$, $f$ has a zero in $(x_1,4)$.
+\end{itemize}
+These three zeros are distinct.
+
+\textbf{At most three.} $f''(x)=2-(\ln2)^2\,2^x$ is strictly decreasing, so $f''$ has at most one zero. If $f$ had four zeros, then by Rolle's theorem $f'$ would have a zero strictly between each pair of consecutive ones, so at least three zeros, and applying Rolle's theorem again, $f''$ would have at least two zeros, a contradiction.
+
+So the equation has exactly $\boxed{3}$ real solutions: $x\approx-1.198$, $x=3$ and $x\approx3.407$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+import graph;
+real k=0.3;
+real f(real x){return k*(x^2-1);}
+real g(real x){return k*2^x;}
+draw((-2.8,0)--(4.5,0),Arrow(6)); draw((0,-0.7)--(0,5.7),Arrow(6));
+label("$x$",(4.5,0),E); label("$y$",(0,5.7),N);
+for(int i=-2;i<=4;++i){ if(i!=0){draw((i,-0.07)--(i,0.07)); label("$"+string(i)+"$",(i,-0.07),S,fontsize(8pt));}}
+for(int j=5;j<=15;j+=5){draw((-0.07,k*j)--(0.07,k*j)); label("$"+string(j)+"$",(-0.07,k*j),W,fontsize(8pt));}
+draw(graph(f,-2.6,4.3),blue+linewidth(0.9));
+draw(graph(g,-2.8,4.17),red+linewidth(0.9));
+dot((-1.1983,f(-1.1983))); dot((3,f(3))); dot((3.4074,f(3.4074)));
+label("$y=x^2-1$",(-2.55,f(-2.55)),W,blue);
+label("$y=2^x$",(4.0,5.5),W,red);
+label("$(3,8)$",(3,f(3)),SE,fontsize(8pt));
+\end{asy}
+
+(The vertical axis is compressed. The parabola and the exponential cross once for negative $x$ and twice near $x=3$.)

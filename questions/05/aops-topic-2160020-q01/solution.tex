@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2160020_power_of_point
+% Stable identity: aops-topic-2160020-q01
+Let the line $KT$ meet the circle again at $Y'$ (the far end of the diameter through $Y$), and let $KQ$ be a tangent segment, touching the circle at $Q$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair T=(0,0), K=(8,0), Y=(2,0), Y2=(-2,0);
+real th=acos(1/4); pair Q=2*dir(degrees(th));
+draw(circle(T,2),linewidth(0.9));
+draw(Y2--K,linewidth(0.8));
+draw(K--Q,blue+linewidth(1)); draw(T--Q,dashed);
+real s=0.22; pair p=unit(K-Q), q=unit(T-Q);
+draw((Q+s*p)--(Q+s*p+s*q)--(Q+s*q));
+dot(T); dot(K); dot(Y); dot(Y2); dot(Q,blue);
+label("$T$",T,S); label("$K$",K,E); label("$Y$",Y,SE); label("$Y'$",Y2,W); label("$Q$",Q,N,blue);
+label("$6$",(Y+K)/2,S); label("$2$",(T+Y)/2,S); label("$2$",(T+Q)/2,W);
+label("$2\sqrt{15}$",(Q+K)/2,NE,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(a)} Power of a point: $KQ^2=KY\cdot KY'$. Here $KY=6$ and $KY'=KY+YY'=6+4=10$, so
+\[KQ^2=60,\qquad KQ=\boxed{2\sqrt{15}}.\]
+Check with the Pythagorean theorem: the radius $TQ$ is perpendicular to the tangent, and $KT=8$, so $KQ^2=KT^2-TQ^2=64-4=60$.
+
+\textbf{(b)} The power of a point multiplies the distances from $K$ to the \emph{two} points where the line meets the circle, $KY=6$ and $KY'=10$. The student used $KT=8$, the distance to the centre, instead of $KY'=10$. (Equivalently, the power of $K$ is $KT^2-r^2=64-4=60$, not $6\cdot8$.)

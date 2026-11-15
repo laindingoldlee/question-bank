@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1333218_triangle_midsegment_problems
+% Stable identity: aops-topic-1333218-q02
+\textbf{Proof.} By the midsegment theorem, a segment joining the midpoints of two sides of a triangle is half as long as the third side.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair Q=(0,0), R=(6,0), P=(1.8,4);
+pair Sx=(R+P)/2, T=(P+Q)/2, U=(Q+R)/2;
+fill(Sx--P--T--cycle,palegreen); fill(U--T--Q--cycle,paleblue);
+draw(P--Q--R--cycle,linewidth(0.9)); draw(Sx--T--U,dashed);
+dot(Sx);dot(T);dot(U);
+label("$P$",P,N); label("$Q$",Q,SW); label("$R$",R,SE);
+label("$S$",Sx,NE); label("$T$",T,NW); label("$U$",U,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Compare the sides of the two triangles:
+\begin{itemize}
+\item $PT=TQ=\dfrac{1}{2}PQ$, since $T$ is the midpoint of $PQ$;
+\item $SP=\dfrac{1}{2}RP$ (as $S$ is the midpoint of $RP$), and $UT=\dfrac{1}{2}RP$ (midsegment of $\triangle PQR$ joining the midpoints of $QR$ and $PQ$); so $SP=UT$;
+\item $ST=\dfrac{1}{2}QR$ (midsegment joining the midpoints of $RP$ and $PQ$), and $QU=\dfrac{1}{2}QR$ ($U$ is the midpoint of $QR$); so $ST=QU$.
+\end{itemize}
+Hence $\triangle SPT\cong\triangle UTQ$ by SSS, with $S\leftrightarrow U$, $P\leftrightarrow T$, $T\leftrightarrow Q$.

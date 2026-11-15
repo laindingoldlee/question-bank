@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h1657804_combinatoring_problem
+% Stable identity: aops-topic-1657804-q01
+Subtract $1$ from each variable: the new variables $u_1,\dots,u_6$ satisfy $0\le u_i\le59$ and $u_1+\cdots+u_6=194$. Without the upper bounds, stars and bars gives $\dbinom{194+5}{5}$ solutions. Let $A_i$ be the set of solutions with $u_i\ge60$; replacing $u_i$ by $u_i-60$ shows $|A_i|=\dbinom{134+5}{5}$, and similarly for intersections of $2$ and $3$ sets ($4\cdot60>194$, so no four can happen together). By inclusion-exclusion the number of solutions is
+\[
+\binom{199}{5}-\binom61\binom{139}{5}+\binom62\binom{79}{5}-\binom63\binom{19}{5}.
+\]
+Numerically, $\dbinom{199}{5}=2472258789$, $\dbinom{139}{5}=402073902$, $\dbinom{79}{5}=22537515$ and $\dbinom{19}{5}=11628$, so the count is
+\[
+2472258789-2412443412+338062725-232560=\boxed{397645542}.
+\]

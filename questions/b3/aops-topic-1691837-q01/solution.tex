@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h1691837_a_geometry_doubt
+% Stable identity: aops-topic-1691837-q01
+Since $M$ is the midpoint of the hypotenuse, it is the centre of the circle through $A$, $B$, $C$, so $CM=AM=BM=\dfrac{AB}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(16,0),M=(8,0);
+pair C=M+8*dir(150);
+pair H=(C.x,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--M,linewidth(0.8));
+draw(C--H,dashed);
+real s=0.6;
+draw(H+(0,s)--H+(s,s)--H+(s,0),linewidth(0.6));
+pair u=unit(A-C),v=unit(B-C);
+draw(C+s*u--C+s*u+s*v--C+s*v,linewidth(0.6));
+draw(arc(M,2.2,150,180),linewidth(0.6));
+label("$30^\circ$",M+3.3*dir(167));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$M$",M,S);label("$H$",H,S);
+label("$4$",(C+H)/2,E);
+label("$8$",(C+M)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the right triangle $CHM$ (right angle at $H$), the angle at $M$ is $30^\circ$, so the side opposite it is half the hypotenuse:
+\[
+CH=CM\sin30^\circ=\dfrac{CM}{2}\quad\Longrightarrow\quad CM=8 .
+\]
+Hence $AB=2CM=16$, and the area is
+\[
+[ABC]=\dfrac{1}{2}\cdot AB\cdot CH=\dfrac{1}{2}\cdot16\cdot4=\boxed{32}.
+\]

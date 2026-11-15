@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h3158491_2017_lmt_spring_guts_round_p1p12__lexington_mathematical_tournament
+% Stable identity: aops-topic-3158491-q12
+Bases above 217 give the single digit 217, which fails. For $ 15\le b\le217 $, the representation has at most two digits; it can be 10 or 11 only, giving $ b=217 $ or 216. Check the remaining bases by repeated division:
+\begin{verbatim}
+def digits(n,b):
+    out=[]
+    while n:out.append(n%b);n//=b
+    return out
+assert [b for b in range(2,15) if max(digits(217,b))<=1]==[2,6]
+\end{verbatim}
+Indeed $ 217=(11011001)_2=(1001)_6=(11)_{216}=(10)_{217}$. Thus $\boxed{b\in\{2,6,216,217\}}$.

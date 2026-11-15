@@ -1,0 +1,6 @@
+Use a finite occupancy recurrence. Number the 12 cells row by row and mark the missing bottom-left cell occupied initially. For occupied set $S$, let $F(S)$ count completions. If all cells are occupied, set $F=1$. Otherwise take the first unoccupied cell $v$; sum $F(S\cup\{v\})$ for a monomino and $F(S\cup\{v,w\})$ for each unoccupied right or lower neighbour $w$. These cases are disjoint and exhaustive because every tiling has exactly one tile covering $v$. Evaluating from the initial set gives $\boxed{331}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+for(int r=0;r<2;++r)for(int c=0;c<6;++c)if(!(r==0&&c==0))draw((c,r)--(c+1,r)--(c+1,r+1)--(c,r+1)--cycle);label("missing",(.5,.5));label("$6$ columns",(3,-.5));
+\end{asy}
+

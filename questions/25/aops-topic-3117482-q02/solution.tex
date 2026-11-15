@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h3117482_pigeon_hole_principles
+% Stable identity: aops-topic-3117482-q02
+Use an exact dynamic program. After considering the first $i$ integers, retain a seven-bit mask of whether $i,i-1,\ldots,i-6$ were chosen; bit zero refers to $i$. The next integer may be omitted, or included only if bits $3$ and $6$ are zero, excluding differences $4$ and $7$. Keep the largest count for each mask. These are the only relevant earlier elements, so induction on $i$ proves every feasible subset is represented and every retained count is attainable. The exhaustive recurrence below returns $\boxed{905}$.
+\begin{verbatim}
+D={0:0}
+for i in range(1989):
+    E={}
+    for m,v in D.items():
+        n=(m<<1)&127
+        E[n]=max(E.get(n,-1),v)
+        if not (m&8 or m&64):
+            E[n|1]=max(E.get(n|1,-1),v+1)
+    D=E
+assert max(D.values())==905
+\end{verbatim}

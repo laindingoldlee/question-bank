@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2160972_casework_is_so_hard
+% Stable identity: aops-topic-2160972-q01
+Let $X$ and $Y$ be the numbers of correct answers on the first test and on the retake. Each has $P(X=k)=\dfrac{1}{1024}\dbinom{10}{k}$, and they are independent. The kept score is
+\[K=\begin{cases}X,& X\ge8,\\ \max(X,Y)=X+(Y-X)^{+},& X\le7,\end{cases}\]
+where $z^{+}$ means $\max(z,0)$. Since $E[X]=10\cdot\dfrac{1}{2}=5$,
+\[E[K]=5+\sum_{x=0}^{7}P(X=x)\,E\!\left[(Y-x)^{+}\right],\qquad E\!\left[(Y-x)^{+}\right]=\dfrac{g(x)}{1024},\quad g(x)=\sum_{y>x}(y-x)\dbinom{10}{y}.\]
+For example $g(0)=\sum y\dbinom{10}{y}=10\cdot2^9=5120$. The values are:
+\[\begin{array}{c|cccccccc}
+x&0&1&2&3&4&5&6&7\\\hline
+\binom{10}{x}&1&10&45&120&210&252&210&120\\
+g(x)&5120&4097&3084&2116&1268&630&244&68
+\end{array}\]
+Hence
+\[\sum_{x=0}^{7}\dbinom{10}{x}g(x)=5120+40970+138780+253920+266280+158760+51240+8160=923230,\]
+and
+\[E[K]=5+\dfrac{923230}{1024^2}=5+\dfrac{461615}{524288}=\boxed{\dfrac{3083055}{524288}}\approx5.88 .\]
+So you can expect about $5.88$ correct answers, a score of about $\boxed{58.8\%}$.

@@ -1,0 +1,7 @@
+Let $D(i,j)$ count monotone paths needing i horizontal and j vertical moves, allowing diagonals. The recurrence is $D(i,j)=D(i-1,j)+D(i,j-1)+D(i-1,j-1)$, with boundary values one. It gives $D(2,2)=13$ and $D(4,4)=321$; for example the last two rows of the four-by-four index table are $(1,7,25,63,129)$ and $(1,9,41,129,321)$. Paths through the central cell number $13^2=169$, since their two halves are independent. Thus the avoiding count is $321-169=\boxed{152}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=0;x<5;++x)for(int y=0;y<5;++y){if(x==2&&y==2)fill(box((x,y),(x+1,y+1)),lightred);draw(box((x,y),(x+1,y+1)),gray);}label("Start",(4.5,4.5),(0,1));label("End",(.5,.5),(0,-1));label("Removed",(2.5,2.5),fontsize(6pt));
+\end{asy}

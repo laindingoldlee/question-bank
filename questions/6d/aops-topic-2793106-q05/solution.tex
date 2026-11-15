@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2793106_2003_midmichigan_mathematical_olympiad__grades_56
+% Stable identity: aops-topic-2793106-q05
+Let the circumference be $L$, speed $v$, and $T=\dfrac{L}{v}$. Ignore ant labels and replace each collision by the two ants passing through each other. The occupied positions and travel directions are unchanged by this replacement, since reversing equal velocities is equivalent to exchanging the two labels. After time $T$, every passing-through trajectory has completed one circuit. Thus the unlabelled position-and-direction configuration repeats. The labelled ants are permuted among its finitely many slots. If there are $n$ ants, this permutation raised to the power $n!$ is the identity. After time $n!T$, every ant therefore occupies its initial slot and position.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(circle((0,0),2));pair[] P={2*dir(20),2*dir(130),2*dir(250)};for(int k=0;k<3;++k){dot(P[k]);label("$A_"+string(k+1)+"$",P[k],P[k]);}draw(arc((0,0),2,35,65),blue,Arrow);draw(arc((0,0),2,110,90),red,Arrow);
+\end{asy}

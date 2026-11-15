@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2278240_pixelated_circles
+% Stable identity: aops-topic-2278240-q01
+\textbf{(b)} The centre $(x,y)$ is in the pixelated circle when $x^2+y^2\le r^2$. This requires $|x|\le r$, and for a fixed integer $x$ with $|x|\le r$ the allowed $y$ are the integers with $|y|\le\sqrt{r^2-x^2}$, that is, $|y|\le\left\lfloor\sqrt{r^2-x^2}\right\rfloor$. There are $2\left\lfloor\sqrt{r^2-x^2}\right\rfloor+1$ of them. Adding over $x$ gives the formula. (There is no simple closed form; $N(r)$ is close to the area $\pi r^2$ of the circle.)
+
+\textbf{(a)} For $r=3$ the columns $x=0,\pm1,\pm2,\pm3$ contribute $7$, $5$, $5$, $1$ pixels ($\lfloor\sqrt9\rfloor=3$, $\lfloor\sqrt8\rfloor=2$, $\lfloor\sqrt5\rfloor=2$, $\lfloor\sqrt0\rfloor=0$), so
+\[N(3)=7+2\cdot5+2\cdot5+2\cdot1=\boxed{29}.\]
+The list misses the four pixels centred at $(\pm2,\pm2)$ (orange in the figure): $2^2+2^2=8\le9$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+for(int x=-3;x<=3;++x) for(int y=-3;y<=3;++y) if(x*x+y*y<=9){
+  pen f=(abs(x)==2 && abs(y)==2) ? orange : gray(0.82);
+  filldraw(shift(x-0.5,y-0.5)*unitsquare,f,gray(0.4)); dot((x,y),black+2pt);}
+draw(circle((0,0),3),blue+dashed);
+draw((-4,0)--(4,0),Arrow(5)); draw((0,-4)--(0,4),Arrow(5));
+label("$x$",(4,0),E); label("$y$",(0,4),N);
+\end{asy}
+
+\textbf{(c)} For $r=5$ and $x=0,\pm1,\pm2,\pm3,\pm4,\pm5$, the values of $\left\lfloor\sqrt{25-x^2}\right\rfloor$ are $5,4,4,4,3,0$, giving columns of $11,9,9,9,7,1$ pixels. So
+\[N(5)=11+2(9+9+9+7+1)=\boxed{81},\]
+compared with $\pi\cdot25\approx78.5$.

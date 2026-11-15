@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h1759128_a_couple_of_problems_from_a_local_contest
+% Stable identity: aops-topic-1759128-q01
+The displaced volume is the volume of the part of the cylinder below the water surface: the length $16$ times the area of the circular segment of height $2$ in a circle of radius $4$ (the cross-section).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real r=4,h=2;
+pair O=(0,0);
+real yw=-r+h; real xw=sqrt(r^2-(r-h)^2);
+real t=degrees(acos((r-h)/r));
+path seg=arc(O,r,270-t,270+t)--cycle;
+fill(seg,rgb(0.75,0.85,1));
+draw(circle(O,r),linewidth(0.9));
+draw((-6.5,yw)--(6.5,yw),blue+linewidth(0.6));
+draw(O--(xw,yw),dashed);draw(O--(-xw,yw),dashed);draw(O--(0,yw),dashed);
+dot(O);label("$O$",O,N);
+label("$4$",(xw/2,yw/2),NE);label("$2$",(0,yw/2),E);
+draw((-5,-r)--(-5,yw),Arrows(4));draw((-5.4,-r)--(-0.3,-r),gray+dotted);
+label("$2$",(-5,(yw-r)/2),W);
+label("water level",(6.5,yw),N,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The water line is at distance $4-2=2$ from the centre $O$, so its half-chord is $\sqrt{16-4}=2\sqrt3$ and it subtends an angle $2\cos^{-1}\dfrac{2}{4}=120^\circ$ at $O$. The segment's area is the sector minus the triangle:
+\[
+\dfrac{120}{360}\pi\cdot4^2-\dfrac{1}{2}\cdot4\sqrt3\cdot2=\dfrac{16\pi}{3}-4\sqrt3 .
+\]
+The displaced volume is
+\[
+16\left(\dfrac{16\pi}{3}-4\sqrt3\right)=\boxed{\dfrac{256\pi}{3}-64\sqrt3}\approx157.2\text{ cubic inches}.
+\]

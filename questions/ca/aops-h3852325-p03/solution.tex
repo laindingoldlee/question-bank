@@ -1,0 +1,15 @@
+The left side is $3\sin\theta+\dfrac{2\cos^2\theta}{\sin\theta}=\sin\theta+\dfrac{2}{\sin\theta}$, using $\cos^2\theta=1-\sin^2\theta$. Put $s=\sin x\ne0$. The equation becomes $s+\dfrac{2}{s}=4s-5$, or
+\[
+3s^2-5s-2=(3s+1)(s-2)=0.
+\]
+The value $s=2$ is impossible. Thus $s=-\dfrac{1}{3}$, giving
+\[
+x=\pi+\arcsin\dfrac{1}{3}\quad\hbox{or}\quad 2\pi-\arcsin\dfrac{1}{3}.
+\]
+Both have nonzero sine and cosine, so both satisfy the original equation. To three significant figures, $\boxed{x=3.48\text{ or }5.94}$ radians.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(unitcircle);draw((-1.3,0)--(1.3,0),Arrow);draw((0,-1.3)--(0,1.3),Arrow);real u=sqrt(8.0/9);draw((-1.2,-1.0/3)--(1.2,-1.0/3),blue);for(real x:new real[]{-u,u}){draw((0,0)--(x,-1.0/3),dashed);dot((x,-1.0/3));}label("$y=-\dfrac{1}{3}$",(1.2,-1.0/3),SE);
+\end{asy}

@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2264395_circles_circles
+% Stable identity: aops-topic-2264395-q01
+Let $M$ be the midpoint of $AB$ and let $\ell$ be the perpendicular bisector of $AB$ (the line through $M$ perpendicular to $AB$).
+
+\textbf{Claim.} A point $O$ is equidistant from $A$ and $B$ if and only if $O$ lies on $\ell$. If $O$ is on $\ell$, then triangles $OMA$ and $OMB$ are congruent (SAS: $MA=MB$, right angles at $M$, common side $OM$), so $OA=OB$; if $O=M$ this is clear. Conversely, if $OA=OB$ and $O\ne M$, then triangles $OMA$ and $OMB$ are congruent (SSS), so the angles at $M$ are equal and add up to $180^\circ$; they are right angles and $O$ lies on $\ell$.
+
+\textbf{The circles.} A circle with centre $O$ passes through $A$ and $B$ exactly when $OA=OB$ (both equal to the radius), that is, exactly when $O\in\ell$. For every point $O$ of $\ell$, the circle with centre $O$ and radius $OA$ passes through $A$ and $B$; different centres give different circles. Since the line $\ell$ has infinitely many points, there are \textbf{infinitely many} such circles, and their centres form exactly the \textbf{perpendicular bisector of $AB$}.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(-1,0), B=(1,0);
+draw((0,-2.2)--(0,3.4),gray+dashed); label("$\ell$",(0,3.4),N,gray);
+pair[] O={(0,-0.8),(0,0.6),(0,2)};
+pen[] pc={heavygreen,blue,red};
+for(int i=0;i<3;++i){ draw(circle(O[i],abs(O[i]-A)),pc[i]); dot(O[i],pc[i]); draw(O[i]--A,pc[i]+dotted); draw(O[i]--B,pc[i]+dotted);}
+draw(A--B,linewidth(0.9)); dot(A); dot(B);
+draw((0,0.12)--(0.12,0.12)--(0.12,0));
+label("$A$",A,W); label("$B$",B,E); label("$M$",(0,0),SE);
+label("$O_1$",O[0],E,heavygreen); label("$O_2$",O[1],E,blue); label("$O_3$",O[2],E,red);
+\end{asy}
+
+(The smallest of these circles is the one with centre $M$ and diameter $AB$.)

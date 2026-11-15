@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1354027_3_number_chicken_nugget
+% Stable identity: aops-topic-1354027-q01
+Call $n$ \emph{attainable} if $n=4a+9b+13c$ with $a,b,c\ge0$.
+
+\textbf{Every $n\ge24$ is attainable.} The four consecutive numbers
+\[24=4\cdot6,\qquad 25=4\cdot4+9,\qquad 26=13\cdot2,\qquad 27=9\cdot3\]
+are attainable. Adding packages of $4$ to these reaches every larger integer, since every $n\ge24$ is one of $24,25,26,27$ plus a multiple of $4$.
+
+\textbf{$23$ is not attainable.} We use $c\in\{0,1\}$ packages of $13$ (two would be $26>23$).
+\begin{itemize}
+\item $c=0$: $4a+9b=23$ needs $b$ odd ($23$ is odd), so $b=1$, giving $4a=14$: impossible.
+\item $c=1$: $4a+9b=10$ needs $b$ even, so $b=0$, giving $4a=10$: impossible.
+\end{itemize}
+So the greatest number that cannot be bought is $\boxed{23}$.
+
+\textbf{Method for three or more sizes.} There is no simple formula like $ab-a-b$ for three sizes. The standard method is the one above: find a run of consecutive attainable numbers as long as the smallest package size, then show the number just before the run is not attainable. Working modulo the smallest size organises the search: since $4a+9b+13c\equiv b+c\pmod4$, the least attainable number in each residue class mod $4$ uses only $9$'s and $13$'s with $b+c$ as small as possible, giving $0$, $9$, $18$, $27$ for the classes $0,1,2,3$. Once the least member of a class is reached, every larger member of the class is attainable (add $4$'s), so the largest unattainable number is the largest least member minus $4$: $27-4=23$.

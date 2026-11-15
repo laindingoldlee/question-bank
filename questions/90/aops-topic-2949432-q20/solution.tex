@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2949432_2022_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2949432-q20
+Let $R$ be the circumradius and $C$ the angle at $C$. Both excentres lie on the external bisector at $C$, and standard formulas give
+\[I_AI_B=4R\cos\dfrac C2,\qquad r_a+r_b=4R\cos\dfrac C2\left(\sin\dfrac A2\cos\dfrac B2+\cos\dfrac A2\sin\dfrac B2\right)=4R\cos^2\dfrac C2.\]
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(5,0),C=(2.5,2.625);pair IA=(6.125,2.625),IB=(-1.125,2.625);real r=2.625;
+draw(A--B--C--cycle);draw(circle(IA,r));draw(circle(IB,r));draw((A-(4,0))--(B+(4,0)),gray);draw(A--(A+2.3*(C-A)),gray);draw(B--(B+2.3*(C-B)),gray);
+draw(IB--IA,dashed);dot(IA);dot(IB);label("$A$",A,S);label("$B$",B,S);label("$C$",C,N);label("$I_A$",IA,E);label("$I_B$",IB,W);
+\end{asy}
+
+The circles are disjoint, so the shortest distance is $I_AI_B-r_a-r_b=4R\cos\dfrac C2\left(1-\cos\dfrac C2\right)=2$. Also $AB=2R\sin C=4R\sin\dfrac C2\cos\dfrac C2=5$. Dividing, $\dfrac{1-\cos\dfrac C2}{\sin\dfrac C2}=\tan\dfrac C4=\dfrac25$, so $\tan\dfrac C2=\dfrac{2\cdot\dfrac25}{1-\dfrac4{25}}=\dfrac{20}{21}$. Then
+\[2\pi(r_a+r_b)=2\pi\cdot4R\cos\dfrac C2\cdot\cos\dfrac C2=2\pi\cdot\dfrac5{\sin\dfrac C2}\cos\dfrac C2=10\pi\cdot\dfrac{21}{20}=\dfrac{21}2\pi.\]
+So $m+n=\boxed{23}$.

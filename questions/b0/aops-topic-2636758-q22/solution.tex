@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2636758_intermediate_problems
+% Stable identity: aops-topic-2636758-q22
+Each face of the cube has area $\dfrac{648}{6}=108$ square feet, so the edge is $s=\sqrt{108}=6\sqrt3$ feet.
+
+\emph{Cube.} The bottom is not painted and the top is covered by the roof, so only the four side faces are painted, minus the windows: $4\cdot108-4\cdot2^2=416$ square feet.
+
+\emph{Roof.} The cross-section has base $6\sqrt3$ and height $9$, so its equal sides are $\sqrt{\left(3\sqrt3\right)^2+9^2}=\sqrt{108}=6\sqrt3$: it is equilateral. The two triangular ends have total area $2\cdot\dfrac12\cdot6\sqrt3\cdot9=54\sqrt3$, and the two sloping faces are $6\sqrt3\times6\sqrt3$ squares with total area $216$.
+
+The painted area is $416+216+54\sqrt3=632+54\sqrt3\approx725.5$ square feet. The paint is $\dfrac14$ inch $=\dfrac1{48}$ foot thick, so its volume is $\dfrac{632+54\sqrt3}{48}\approx15.1$ cubic feet (as $93.5<54\sqrt3<93.6$, it lies between $15.1$ and $15.2$). Seven cans hold $14$ cubic feet and eight hold $16$, so $\boxed{8}$ cans are needed.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real s=6*sqrt(3);pair k=(4.2,3.0);
+pair A=(0,0),B=(s,0),C=(s,s),D=(0,s),T=(s/2,s+9);
+draw(A--A+k--B+k,dashed);draw(A+k--D+k,dashed);
+draw(A--B--C--D--cycle,linewidth(0.8));draw(D--T--C,linewidth(0.8));
+draw(B--B+k--C+k--C,linewidth(0.8));draw(T--T+k--C+k,linewidth(0.8));
+draw(shift(6.4,4.6)*scale(2)*unitsquare,linewidth(0.6));
+real a0=0.5-1/s,a1=0.5+1/s;
+draw((B+a0*k+(0,4.6))--(B+a1*k+(0,4.6))--(B+a1*k+(0,6.6))--(B+a0*k+(0,6.6))--cycle,linewidth(0.6));
+draw((-2,s)--(-2,s+9),Arrows(TeXHead));draw((-2.4,s+9)--T,dotted);draw((-2.4,s)--D,dotted);
+label("$6\sqrt3$",(A+B)/2,S,fontsize(8pt));label("$6\sqrt3$",(D+T)/2,NW,fontsize(8pt));
+label("$9$",(-2,s+4.5),W,fontsize(8pt));label("$2$",(7.4,4.6),S,fontsize(7pt));
+\end{asy}

@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h3559987_math_with_connect4_boards
+% Stable identity: aops-topic-3559987-q01
+Consider a board whose bottom three rows are all red and top three rows all yellow. It has $21$ pieces of each color. Its first piece must be red, because all bottom cells are red. The second piece must be yellow, but every yellow target cell is above three red cells in its column, and only one red piece has been placed. Thus this board is unreachable. Swapping colors gives another distinct unreachable balanced board. Therefore the number of reachable boards is at most $\boxed{\binom{42}{21}-2}$; this is an upper bound, not an exact enumeration.
+\begin{asy}
+size(7cm);
+for(int x=0;x<=7;++x)draw((x,0)--(x,6));for(int y=0;y<=6;++y)draw((0,y)--(7,y));for(int x=0;x<7;++x)for(int y=0;y<6;++y)label(y<3?"R":"Y",(x+.5,y+.5));label("bottom",(3.5,-.5));
+\end{asy}

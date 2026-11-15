@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1542751_question
+% Stable identity: aops-topic-1542751-q01
+Let the centres be $O_1$ (radius $5$) and $O_2$ (radius $3$), with $d=O_1O_2$. Concentric circles with different radii have no common point, so $d>0$.
+
+\textbf{The common point lies on the line of centres.} Let $T$ be the common point. If $T$ were not on line $O_1O_2$, its mirror image $T'$ in that line would satisfy $O_1T'=O_1T=5$ and $O_2T'=O_2T=3$, so $T'\ne T$ would be a second common point. Hence $T$ is on line $O_1O_2$.
+
+\textbf{Possible distances.} Put the line on a number line with $O_1=0$ and $O_2=d>0$. Then $T=\pm5$ and $|T-d|=3$.
+\begin{itemize}
+\item $T=5$: $d=8$ ($T$ between the centres) or $d=2$ ($O_2$ between $O_1$ and $T$).
+\item $T=-5$: $d=-8$ or $d=-2$, impossible since $d>0$.
+\end{itemize}
+
+\textbf{Both distances work.} If $P$ is any common point, the triangle inequality in triangle $O_1O_2P$ (possibly degenerate) gives $5\le3+d$, $3\le5+d$ and $d\le5+3$. For $d=8$ we have $d=5+3$, and for $d=2$ we have $5=3+d$; in both cases equality holds, so $P$ must lie on the line $O_1O_2$ at a definite position, and there is exactly one common point $T$:
+
+\begin{asy}
+usepackage("amsmath");
+size(10cm);
+defaultpen(fontsize(10pt));
+pair O1=(0,0),O2=(8,0),T=(5,0);
+draw(circle(O1,5),linewidth(1));draw(circle(O2,3),linewidth(1));
+draw(O1--O2,blue+linewidth(0.9));
+dot(O1);dot(O2);dot(T,red);
+label("$O_1$",O1,S);label("$O_2$",O2,S);label("$T$",T,NE,red);
+label("$5$",(2.5,0),S,blue);label("$3$",(6.5,0),S,blue);
+label("external: $O_1O_2=8$",(3,-5.6),S);
+pair P1=(17,0),P2=(19,0),T2=(22,0);
+draw(circle(P1,5),linewidth(1));draw(circle(P2,3),linewidth(1));
+draw(P1--T2,blue+linewidth(0.9));
+dot(P1);dot(P2);dot(T2,red);
+label("$O_1$",P1,S);label("$O_2$",P2,S);label("$T$",T2,E,red);
+label("$2$",(18,0),N,blue);label("$3$",(20.5,0),N,blue);
+label("internal: $O_1O_2=2$",(17,-5.6),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the distance between the centres is $\boxed{8\text{ or }2}$: the sum of the radii when the circles touch from outside (externally tangent) and the difference of the radii when the smaller circle touches the larger from inside (internally tangent). In general, circles with radii $R\ne r$ are tangent exactly when $d=R+r$ or $d=|R-r|$.

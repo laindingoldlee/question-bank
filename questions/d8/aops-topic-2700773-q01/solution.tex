@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2700773_area_of_square_with_given_area_of_quadrilateral
+% Stable identity: aops-topic-2700773-q01
+Put $A=(0,0)$, $B=(s,0)$, $C=(s,s)$, $D=(0,s)$, $M=\left(\dfrac s2,0\right)$. Line $AC$ is $y=x$ and line $DM$ is $y=s-2x$, so $E=\left(\dfrac s3,\dfrac s3\right)$. By the shoelace formula on $M,B,C,E$:
+\[[BCEM]=\dfrac12\left|s^2-\dfrac{s^2}{6}\right|=\dfrac{5s^2}{12}.\]
+So $\dfrac{5s^2}{12}=400$ and the square has area $s^2=\boxed{960}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(3,0),C=(3,3),D=(0,3),M=(1.5,0),Ep=(1,1);
+fill(M--B--C--Ep--cycle,lightgray);draw(A--B--C--D--cycle,linewidth(0.8));draw(A--C);draw(D--M);dot(Ep);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$M$",M,S);label("$E$",Ep,W);
+\end{asy}

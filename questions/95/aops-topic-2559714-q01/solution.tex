@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2559714_mathematics
+% Stable identity: aops-topic-2559714-q01
+Let $K$ be the area, $h_A$ the altitude from $A$ (to $BC$) and $h_C$ the altitude from $C$ (to $AB$).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(7,0),A=(2,4.5);
+pair F=B+dot(A-B,unit(C-B))*unit(C-B);pair G=B+dot(C-B,unit(A-B))*unit(A-B);
+draw(A--B--C--cycle,linewidth(0.9));draw(A--F,dashed);draw(C--G,dashed);
+draw(F+0.25*dir(0)--F+0.25*dir(0)+0.25*dir(90)--F+0.25*dir(90));
+pair ua=unit(A-B),uc=unit(C-G);draw(G+0.25*uc--G+0.25*uc+0.25*ua--G+0.25*ua);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$h_A$",(A+3*F)/4,E);label("$h_C$",(C+G)/2,NE);
+\end{asy}
+
+Then $K=\dfrac12\,AB\cdot h_C=\dfrac12\,BC\cdot h_A$. Sue's number is $s=\dfrac12\,AB\cdot h_A$ and Barry's is $t=\dfrac12\,BC\cdot h_C$, so
+\[st=\dfrac14\,AB\cdot h_A\cdot BC\cdot h_C=\left(\dfrac12\,AB\cdot h_C\right)\left(\dfrac12\,BC\cdot h_A\right)=K^2,\qquad K=\sqrt{st}.\]
+
+\textbf{(a)} $K=\sqrt{12\cdot27}=\sqrt{324}=\boxed{18}$.
+
+\textbf{(b)} $K=\sqrt{120\cdot150}=\sqrt{18000}=\boxed{60\sqrt5}$.
+
+(Such triangles exist: since $h_A=\dfrac{2K}{BC}$, Sue's number is $s=K\cdot\dfrac{AB}{BC}$, so any triangle with area $K$ and $\dfrac{AB}{BC}=\dfrac sK$ works, for instance a right triangle with legs $AB$ and $BC$.)

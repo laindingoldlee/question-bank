@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2547653_geometric_probability_problem
+% Stable identity: aops-topic-2547653-q01
+Let the side be $s$ and the centre $O$; every vertex $V$ is at distance $s$ from $O$. A point is at least as close to $O$ as to $V$ exactly when it lies on $O$'s side of the perpendicular bisector of $OV$, a line at distance $\dfrac s2$ from $O$.
+
+So the points closer to $O$ than to every vertex form the region bounded by the six perpendicular bisectors: a regular hexagon with centre $O$ and apothem $\dfrac s2$ (red in the sketch). Its vertices are at distance $\dfrac{s}{\sqrt3}<\dfrac{\sqrt3}{2}s$ from $O$, so it lies inside the original hexagon, whose apothem is $\dfrac{\sqrt3}{2}s$.
+
+The two hexagons are similar with ratio of apothems $\dfrac{s}{2}:\dfrac{\sqrt3 s}{2}=1:\sqrt3$, so the area ratio is $\dfrac13$. The probability that $P$ is closer to some vertex than to the centre is
+\[1-\dfrac13=\boxed{\dfrac23}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair[] V; for(int k=0;k<6;++k) V.push(dir(60*k));
+fill(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,paleblue);
+pair[] U; for(int k=0;k<6;++k) U.push(dir(30+60*k)/sqrt(3));
+fill(U[0]--U[1]--U[2]--U[3]--U[4]--U[5]--cycle,white);
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,linewidth(0.8));
+draw(U[0]--U[1]--U[2]--U[3]--U[4]--U[5]--cycle,red);
+pair O=(0,0); dot(O); label("$O$",O,SW,fontsize(9pt));
+draw(O--V[0],dashed); dot(V[0]/2); label("$\dfrac s2$",V[0]/4,N,fontsize(8pt));
+label("$s$",V[0]+(0,0.05)+0.5*(V[1]-V[0]),E,fontsize(9pt));
+\end{asy}

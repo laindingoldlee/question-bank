@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2796070_2013_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2796070-q10
+Let $AB=a$, $BC=b$, so $a+b=2013$ and $ab=2013$. Place $A=(0,0)$, $B=(a,0)$, $C=(a,b)$, $D=(0,b)$. Then
+\[P=\left(\dfrac a2,-\dfrac{\sqrt3}2a\right),\ Q=\left(a+\dfrac{\sqrt3}2b,\dfrac b2\right),\ R=\left(\dfrac a2,b+\dfrac{\sqrt3}2a\right),\ S=\left(-\dfrac{\sqrt3}2b,\dfrac b2\right).\]
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real a=2.6,bb=1.3;
+pair A=(0,0),B=(a,0),C=(a,bb),D=(0,bb);
+pair P=(a/2,-a*sqrt(3)/2),Q=(a+bb*sqrt(3)/2,bb/2),R=(a/2,bb+a*sqrt(3)/2),S=(-bb*sqrt(3)/2,bb/2);
+draw(A--B--C--D--cycle);draw(A--P--B);draw(B--Q--C);draw(C--R--D);draw(D--S--A);
+label("$A$",A,W);label("$B$",B,E);label("$C$",C,E);label("$D$",D,W);
+label("$P$",P,S);label("$Q$",Q,E);label("$R$",R,N);label("$S$",S,W);
+draw(P--Q--R--S--cycle,dashed);draw(P--R,dotted);draw(S--Q,dotted);
+\end{asy}
+
+The diagonals $PR$ (vertical, length $b+\sqrt3a$) and $SQ$ (horizontal, length $a+\sqrt3b$) are perpendicular, so
+\[[PQRS]=\dfrac{(b+\sqrt3a)(a+\sqrt3b)}2=\dfrac{4ab+\sqrt3(a^2+b^2)}{2}.\]
+Now $a^2+b^2=(a+b)^2-2ab=2013^2-2\cdot2013=2013\cdot2011$. Dividing by $ab=2013$:
+\[\dfrac{[PQRS]}{[ABCD]}=\dfrac{4+2011\sqrt3}{2}=\boxed{2+\dfrac{2011\sqrt3}{2}}.\]

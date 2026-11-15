@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h3158844_1_2__n_with_4_numbers
+% Stable identity: aops-topic-3158844-q01
+For a tuple of available numbers, recursively split it into two nonempty subtuples. Every binary expression has such a final split, so combining every attainable pair with each permitted operation generates every expression value. Conversely every generated value comes from a valid expression. Exact rational arithmetic avoids rounding:
+\begin{verbatim}
+from functools import lru_cache
+from fractions import Fraction as F
+@lru_cache(None)
+def values(v):
+    if len(v)==1:return {F(v[0])}
+    out=set()
+    for mask in range(1,2**len(v)-1):
+        a=tuple(v[i] for i in range(len(v)) if mask>>i&1)
+        b=tuple(v[i] for i in range(len(v)) if not mask>>i&1)
+        for x in values(a):
+            for y in values(b):
+                out.update((x+y,x-y,x*y))
+                if y:out.add(x/y)
+    return out
+V=values((1,2,3,12))
+assert all(F(n) in V for n in range(1,44)) and F(44) not in V
+\end{verbatim}
+Thus $\boxed{n=43}$.

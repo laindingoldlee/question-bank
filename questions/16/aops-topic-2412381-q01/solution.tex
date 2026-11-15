@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2412381_late_400th_post__dice_games
+% Stable identity: aops-topic-2412381-q01
+Count the answer sheets (out of $6^{25}$ equally likely ones) with \emph{no} two consecutive correct answers. Let $a_n$ be this number for a test of $n$ questions; on each question there is $1$ correct and $5$ wrong choices. Then $a_0=1$, $a_1=6$, and for $n\ge2$, looking at the last question:
+\begin{itemize}
+\item if it is wrong ($5$ ways), the first $n-1$ answers are any good sheet: $5a_{n-1}$;
+\item if it is right, question $n-1$ must be wrong ($5$ ways) and the first $n-2$ answers form any good sheet: $5a_{n-2}$.
+\end{itemize}
+So $a_n=5a_{n-1}+5a_{n-2}$, giving $a_2=35$, $a_3=205$, $a_4=1200$, $\dots$, and $a_{25}=15698254688964843750$. The required probability is
+\[1-\dfrac{a_{25}}{6^{25}}=\boxed{\dfrac{235778395203052919}{526486815369068544}}\approx0.448.\]

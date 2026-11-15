@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1671557_simple_pythagoras_problem
+% Stable identity: aops-topic-1671557-q01
+Work in inches: the pole is $7\cdot12=84$ inches tall. The pole, the ground and the wire form a right triangle $TBG$ with the right angle at the foot $B$ of the pole.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),T=(0,84),G=(43,0);
+draw(B--T,linewidth(1.2));draw(B--G,linewidth(0.9));draw(T--G,blue+linewidth(0.9));
+draw((0,7)--(7,7)--(7,0));
+draw((-12,0)--(60,0),gray);
+label("pole",(0,50),W);label("$84$ in",(0,30),W);label("$43$ in",(21.5,0),S);
+label("wire",(24,44),NE,blue);
+label("$T$",T,N);label("$B$",B,SW);label("$G$",G,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the Pythagorean theorem the wire has length
+\[
+TG=\sqrt{84^2+43^2}=\sqrt{7056+1849}=\sqrt{8905}\ \text{inches}.
+\]
+Since $8905=5\cdot13\cdot137$ has no square factor, this does not simplify. In feet the wire is
+\[
+\boxed{\dfrac{\sqrt{8905}}{12}\approx 7.86\text{ feet}}.
+\]

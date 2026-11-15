@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1762187_cmimc_2018
+% Stable identity: aops-topic-1762187-q01
+In triangle $BPC$, $\angle BPC=180^\circ-\angle PBC-\angle PCB$. Since $P$ is inside the triangle,
+\[
+\angle PBC=\angle ABC-20^\circ,\qquad \angle PCB=\angle ACB-15^\circ .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(7,0);
+real Bb=70,Cg=50;
+pair A=extension(B,B+dir(Bb),C,C+dir(180-Cg));
+pair P=extension(B,B+dir(Bb-20),C,C+dir(180-Cg+15));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--P--C,blue+linewidth(0.8));
+draw(arc(B,2.2,Bb-20,Bb),red);label("$20^\circ$",B+2.95*dir(Bb-10),red);
+draw(arc(C,2.9,180-Cg,180-Cg+15),red);label("$15^\circ$",C+3.75*dir(180-Cg+7.5),red);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$P$",P,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence
+\[
+\angle BPC=180^\circ-\angle ABC-\angle ACB+35^\circ=\angle BAC+35^\circ,
+\]
+using the angle sum of triangle $ABC$. So $\angle BPC-\angle BAC=\boxed{35^\circ}$, whatever the shape of the triangle.

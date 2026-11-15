@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2055123_2020_mock_combo_amc_10_final_five
+% Stable identity: aops-topic-2055123-q24
+Such tuples are compositions of $2004$ (ordered sums of positive integers) with every part at most $1001$. There are $2^{2003}$ compositions of $2004$ in all (choose which of the $2003$ gaps between $2004$ unit dots are cut). Let $c(0)=1$ and $c(s)=2^{s-1}$ for $s\ge1$ be the number of compositions of $s$ (with the empty one for $s=0$).
+
+A bad composition has a part $L\ge1002$. Count pairs (composition, marked part $\ge1002$): the marked part $L$ splits the rest into a composition of $s_1$ before and $s_2$ after, with $s_1+s_2=T=2004-L$, $0\le T\le1002$. The number of choices for the two sides is
+\[h(T)=\sum_{s_1+s_2=T}c(s_1)c(s_2)=\begin{cases}1,&T=0,\\ 2^T+(T-1)2^{T-2},&T\ge1.\end{cases}\]
+Summing (using $\sum_{j=0}^{M-1}j2^{j-1}=(M-2)2^{M-1}+1$),
+\[\sum_{T=0}^{M}h(T)=1+(2^{M+1}-2)+(M-2)2^{M-1}+1=2^{M+1}+(M-2)2^{M-1},\]
+which for $M=1002$ equals $2^{1003}+1000\cdot2^{1001}=1004\cdot2^{1001}$. A composition has two parts $\ge1002$ only if it is $(1002,1002)$, which was marked twice. Hence the number of bad compositions is $1004\cdot2^{1001}-1$, and
+\[N=2^{2003}-1004\cdot2^{1001}+1 .\]
+Modulo $1000$, $1004\cdot2^{1001}\equiv4\cdot2^{1001}=2^{1003}$. Both $2^{2003}$ and $2^{1003}$ are divisible by $8$, and modulo $125$ both are $\equiv2^3$ because $2^{100}\equiv1\pmod{125}$. So $2^{2003}\equiv2^{1003}\pmod{1000}$ and
+\[N\equiv1\pmod{1000}.\]
+The answer is $\boxed{\textbf{(A)}\ 001}$.

@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1619605_probability_problem
+% Stable identity: aops-topic-1619605-q01
+Measure times in minutes after 9:00. Ann arrives at $a\in[0,45]$ and Bob at $b\in[30,60]$; the point $(a,b)$ is uniform in a $45\times30$ rectangle of area $1350$. Ann is there during $[a,a+15]$ and Bob during $[b,b+5]$. The intervals overlap exactly when $a\le b+5$ and $b\le a+15$, that is
+\[
+b-15\le a\le b+5 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+fill((15,30)--(35,30)--(45,40)--(45,60)--cycle,paleblue);
+draw((15,30)--(45,60),blue);draw((35,30)--(45,40),blue);
+draw((0,30)--(45,30)--(45,60)--(0,60)--cycle,linewidth(0.9));
+label("$0$",(0,30),S);label("$15$",(15,30),S);label("$35$",(35,30),S);label("$45$",(45,30),S);
+label("$30$",(0,30),W);label("$40$",(0,40),W);label("$60$",(0,60),W);
+draw((0,40)--(0.8,40));
+label("$a$",(22.5,27),S);label("$b$",(-6,45),W);
+label("$a=b-15$",(20,50),blue+fontsize(9pt));label("$a=b+5$",(45,40),E,blue+fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For each $b$ the allowed $a$ form an interval (the shaded band):
+\begin{itemize}
+\item $30\le b\le40$: $a$ runs from $b-15$ to $b+5$, length $20$; this strip has area $10\cdot20=200$.
+\item $40\le b\le60$: $a$ runs from $b-15$ to $45$, length $60-b$; this part is a triangle of area $\dfrac{1}{2}\cdot20\cdot20=200$.
+\end{itemize}
+The probability is
+\[
+\dfrac{200+200}{1350}=\boxed{\dfrac{8}{27}}.
+\]

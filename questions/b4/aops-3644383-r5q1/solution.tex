@@ -1,0 +1,11 @@
+Heron gives area 84 and circumradius $R=13\cdot14\cdot\dfrac{15}{(4\cdot84)}=\dfrac{65}{8}$. The perpendicular centre-to-chord distances for sides 13,14,15 are $\dfrac{39}{8},\dfrac{33}{8},\dfrac{25}{8}$. A circle in the larger disk segment, tangent to its chord, has radius at most $\dfrac{(R+d)}{2}$: along the chord normal the available width is $R+d$, and equality occurs with its centre on that normal. Thus the three maximal radii are $\dfrac{13}{2},\dfrac{49}{8},\dfrac{45}{8}$. No mutual non-overlap condition is imposed, so these maxima may be chosen independently. The product of areas is $\pi^3(\dfrac{28665}{128})^2=\dfrac{821682225\pi^3}{16384}$, giving $m+n=\boxed{821698609}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair A=(33.0/7,12),B=(0,0),C=(14,0),O=(7,33.0/8);real R=65.0/8;draw(circle(O,R));draw(A--B--C--cycle);pair[] V={A,B,C};for(int i=0;i<3;++i){pair M=(V[i]+V[(i+1)%3])/2;real d=length(M-O);pair u=unit(M-O);real r=(R+d)/2;pair P=M-r*u;draw(circle(P,r),blue);dot(P,blue);}label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));label("larger segments",(7,-5));
+\end{asy}
+
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair A=(33.0/7,12),B=(0,0),C=(14,0),O=(7,33.0/8);real R=65.0/8;draw(circle(O,R));draw(A--B--C--cycle);pair[] V={A,B,C};for(int i=0;i<3;++i){pair M=(V[i]+V[(i+1)%3])/2;real d=length(M-O);pair u=unit(M-O);real r=(R-d)/2;pair P=M+r*u;draw(circle(P,r),blue);dot(P,blue);}label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));label("smaller segments",(7,-5));
+\end{asy}
+ If externally tangent is intended to place each circle outside the triangle in the smaller circular segment, the maximal radii instead are $\dfrac{13}{8},2,\dfrac{5}{2}$, with area product $\dfrac{4225\pi^3}{64}$ and coefficient sum 4289. The source needs this side-of-line convention to select that alternative.

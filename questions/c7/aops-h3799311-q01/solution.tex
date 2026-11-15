@@ -1,0 +1,23 @@
+It is $\boxed{\text{not constant}}$. Set $O=(0,0)$ and $E=(2,0)$. A point $T$ is the perpendicular foot from $O$ to the line $ET$ exactly when $(O-T)\cdot(E-T)=0$. If also $|T|<1$, that line is a secant of the unit circle and $T$ is its chord midpoint.
+
+First take $F=\left(\dfrac{1}{5},\dfrac{3}{5}\right)$ and $G=\left(\dfrac{1}{5},-\dfrac{3}{5}\right)$. They satisfy this foot condition and are inside the circle. Here $M=\left(\dfrac{1}{5},0\right)$, and symmetry gives $\angle GFE=\angle FGE$, while $\angle FME=90^\circ$. The expression is $90^\circ$.
+
+Next keep $F$ and take $G=\left(\dfrac{2}{5},\dfrac{4}{5}\right)$, again a valid interior foot. Now $M=\left(-\dfrac{2}{5},0\right)$ and $\angle FME=45^\circ$. Put $\theta=\arctan\dfrac{1}{3}$ and $\phi=\arctan\dfrac{1}{2}$. The line directions give
+\[
+\angle GFE=45^\circ+\theta,\qquad
+\angle FGE=135^\circ-\phi.
+\]
+Since $\tan(\theta+\phi)=1$ and the sum is acute, $\theta+\phi=45^\circ$. The expression is therefore $0^\circ$, different from the first value.
+The missing choice of relative positions cannot be ignored.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0),E=(2,0),F=(.2,.6),G=(.2,-.6),M=(.2,0);draw(circle(O,1));draw(E--(-.8,14./15));draw(E--(-.8,-14./15));draw(F--G,blue);draw(O--E,dashed);dot(F);dot(G);label("$O$",O,(-1,-1));label("$E$",E,(1,0));label("$F$",F,(0,1));label("$G$",G,(0,-1));label("$M$",M,(1,1));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0),E=(2,0),F=(.2,.6),G=(.4,.8),M=(-.4,0);draw(circle(O,1));draw(E--(-1,1));draw(E--(-.6,1.3));draw(M--G,blue);draw(M--E,dashed);dot(F);dot(G);label("$O$",O,(0,-1));label("$E$",E,(1,0));label("$F$",F,(1,-1));label("$G$",G,(0,1));label("$M$",M,(-1,-1));
+\end{asy}

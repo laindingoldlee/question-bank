@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2687215_amc_help
+% Stable identity: aops-topic-2687215-q01
+\emph{When do the curves meet?} They meet exactly when some real $x$ satisfies $Ax^2+B=Cx^2+D$, that is,
+\[(A-C)x^2=D-B.\]
+Since $A\ne C$ and $B\ne D$, this means $x^2=\dfrac{D-B}{A-C}$, and a real $x$ exists exactly when this quotient is positive: $A-C$ and $D-B$ have the same sign.
+
+In picture form: both curves are upward parabolas with vertices on the $y$-axis. The one with the larger leading coefficient is narrower. If the narrower one starts lower (smaller constant term), it rises faster and must cross the wider one; if it starts higher, it stays above the wider one forever.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+import graph;
+real s=0.4;
+real f1(real x){return s*(3x^2+1);}
+real g1(real x){return s*(x^2+4);}
+real f2(real x){return s*(3x^2+4);}
+real g2(real x){return s*(x^2+1);}
+pair sh=(6.6,0);
+for(int k=0;k<2;++k){pair o=k*sh;draw(shift(o)*((-1.9,0)--(1.9,0)),gray,Arrow(4));draw(shift(o)*((0,-0.2)--(0,4.4)),gray,Arrow(4));}
+draw(graph(f1,-1.6,1.6),blue+linewidth(0.8));draw(graph(g1,-1.7,1.7),red+linewidth(0.8));
+draw(shift(sh)*graph(f2,-1.4,1.4),blue+linewidth(0.8));draw(shift(sh)*graph(g2,-1.7,1.7),red+linewidth(0.8));
+real xi=sqrt(1.5);dot((xi,f1(xi)));dot((-xi,f1(xi)));
+label("$y=3x^2+1$",(-1.6,f1(-1.6)),N,blue+fontsize(8pt));label("$y=x^2+4$",(1.7,g1(1.7)),E,red+fontsize(8pt));
+label("$y=3x^2+4$",sh+(1.4,f2(1.4)),E,blue+fontsize(8pt));label("$y=x^2+1$",sh+(1.7,g2(1.7)),E,red+fontsize(8pt));
+label("curves meet",(0,-0.6),fontsize(8pt));label("curves do not meet",sh+(0,-0.6),fontsize(8pt));
+\end{asy}
+
+\emph{Counting.} There are $6\cdot5\cdot4\cdot3=360$ ordered choices of $(A,B,C,D)$, and each unordered pair of curves is counted twice, so there are $180$ pairs of curves. Swapping the constant terms (replacing the pair $\{Ax^2+B,\ Cx^2+D\}$ by $\{Ax^2+D,\ Cx^2+B\}$) keeps the sign of $A-C$ and reverses the sign of $D-B$. This swap pairs up the $180$ pairs of curves so that in each couple exactly one intersects. Hence exactly half intersect: $\dfrac{180}{2}=\boxed{\textbf{(C) }90}$.

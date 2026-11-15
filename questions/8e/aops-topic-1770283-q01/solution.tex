@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1770283_eagle_snake_problem
+% Stable identity: aops-topic-1770283-q01
+Let the eagle start at the top $P$ of the pillar $PH$, and let it catch the snake at $G$, $x$ ft from the bottom $H$. The snake slides from $S$ to $G$, a distance $27-x$, and in the same time the eagle flies the same distance, so $PG=27-x$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair Bt=(0,0),T=(0,9),Sn=(27,0),G=(12,0);
+draw(Bt--T,linewidth(1.6));draw((-2,0)--(29,0));
+draw(T--G,blue+linewidth(0.9));
+draw((0.8,0)--(0.8,0.8)--(0,0.8));
+dot(T);dot(Sn);dot(G,blue);
+label("$P$",T,NW);label("$H$",Bt,SW);label("$S$",Sn,S);label("$G$",G,S,blue);
+label("$9$",(0,4.5),W);
+label("$x$",(6,0),S);label("$27-x$",(19.5,0),S);
+label("$27-x$",(T+G)/2,NE,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangle $PHG$ has a right angle at $H$, so by the Pythagorean theorem
+\[
+x^2+9^2=(27-x)^2\ \Longrightarrow\ x^2+81=729-54x+x^2\ \Longrightarrow\ 54x=648\ \Longrightarrow\ x=12 .
+\]
+The eagle grabs the snake $\boxed{12}$ ft from the bottom of the pillar. Check: the eagle flies $\sqrt{144+81}=15$ ft and the snake slides $27-12=15$ ft.

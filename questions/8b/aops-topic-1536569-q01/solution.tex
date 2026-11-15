@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1536569_challenge_problem_waterloo
+% Stable identity: aops-topic-1536569-q01
+The two-digit multiples of $17$ are $17,34,51,68,85$ and those of $23$ are $23,46,69,92$. So the digit after a given digit must be:
+\[
+1\to7,\quad 2\to3,\quad 3\to4,\quad 4\to6,\quad 5\to1,\quad 6\to8\text{ or }9,\quad 8\to5,\quad 9\to2,
+\]
+and nothing can follow $7$ (no multiple begins with $7$, or with $0$).
+
+Starting from $3$, the digits are forced until a $6$: $3,4,6$. At each $6$ there is a choice:
+\begin{itemize}
+\item $6\to9\to2\to3\to4\to6$ returns to $6$ after $5$ steps (the cycle $3,4,6,9,2$);
+\item $6\to8\to5\to1\to7$, after which the number must end.
+\end{itemize}
+In the cycle the $6$'s are the digits in positions $3,8,13,\dots$, that is, positions $\equiv3\pmod5$.
+
+If the number never leaves the cycle, all $100$ digits are determined (the $100$th is $2$): one integer.
+
+If it leaves the cycle at the $6$ in position $p$, its digits after position $p$ are $8,5,1,7$ in positions $p+1,\dots,p+4$, and it must end there or earlier, so $p<100\le p+4$. With $p\equiv3\pmod5$ the only choice is $p=98$, giving the digits $8,5$ in positions $99$ and $100$: one more integer.
+
+So there are $\boxed{2}$ such integers.

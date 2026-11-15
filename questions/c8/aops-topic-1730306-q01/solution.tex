@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1730306_help_with_this_problem
+% Stable identity: aops-topic-1730306-q01
+Write the expression as $a_1-a_2-\cdots-a_n$ with $n=2000$ (all $a_i=1$). After brackets are placed and removed, the value is $\sum\varepsilon_ia_i$ with signs $\varepsilon_i=\pm1$.
+
+\textbf{$\varepsilon_1=+1$ and $\varepsilon_2=-1$ always.} A bracketed expression of at least two terms has the form $L-R$, where $L$ contains $a_1,\dots,a_k$ and $R$ contains $a_{k+1},\dots,a_n$. By induction on the length, the first term of any bracketed expression has sign $+$. If $k=1$, then $a_2$ is the first term of $R$, has sign $+$ in $R$ and so $-$ overall; if $k\ge2$, then by induction $a_2$ has sign $-$ in $L$, which enters with $+$.
+
+\textbf{Every sign pattern for $a_3,\dots,a_n$ occurs.} Split $a_2,\dots,a_n$ into consecutive blocks, starting a new block at $a_2$ and at every $a_i$ ($i\ge3$) that should get a minus sign, and write
+\[
+a_1-(a_2-a_{i_1}-\cdots)-(a_j-\cdots)-\cdots .
+\]
+Inside a block $(a_j-a_{j+1}-\cdots-a_l)$ the first term gets $-$ overall and the others $+$. So exactly the block starts get $-$.
+
+Therefore the possible values are $1-1+\sum_{i=3}^{2000}\varepsilon_i$ with arbitrary $\varepsilon_i=\pm1$: a sum of $1998$ terms $\pm1$, which takes exactly the values $-1998,-1996,\dots,1996,1998$. That is $1999$ values, answer $\boxed{\textbf{(B)}\ 1999}$.

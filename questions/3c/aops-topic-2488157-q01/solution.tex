@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2488157_fibonacci_problem_i_made_
+% Stable identity: aops-topic-2488157-q01
+We prove that
+\[F_{2k+1}=F_{k+1}^2+F_k^2\qquad(k\ge0),\]
+which gives the result.
+
+\textbf{Lemma.} For every integer $m\ge1$ and every integer $n\ge0$,
+\[F_{m+n}=F_mF_{n+1}+F_{m-1}F_n.\]
+\emph{Proof.} Fix $m\ge1$ and use induction on $n$. For $n=0$ the right side is $F_m\cdot1+F_{m-1}\cdot0=F_m$, and for $n=1$ it is $F_m\cdot1+F_{m-1}\cdot1=F_{m+1}$. Suppose the formula holds for $n-1$ and $n$, where $n\ge1$. Adding the two formulas,
+\[F_{m+n+1}=F_{m+n}+F_{m+n-1}=F_m\left(F_{n+1}+F_n\right)+F_{m-1}\left(F_n+F_{n-1}\right)=F_mF_{n+2}+F_{m-1}F_{n+1},\]
+which is the formula for $n+1$. $\square$
+
+Now take $m=k+1\ge1$ and $n=k$ in the lemma:
+\[F_{2k+1}=F_{k+1}F_{k+1}+F_kF_k=F_{k+1}^2+F_k^2.\]
+Both $F_k$ and $F_{k+1}$ are nonnegative integers, so $F_{2k+1}$ is a sum of two squares of nonnegative integers. For example, $F_1=1=1^2+0^2$, $F_5=5=2^2+1^2$ and $F_9=34=5^2+3^2$. $\blacksquare$

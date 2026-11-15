@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3175339_2018_abmc_accuracy_round__actonboxborough_math_competition
+% Stable identity: aops-topic-3175339-q07
+Let $D(i,j)$ count paths to $(i,j)$. The last step gives $D(i,j)=D(i-1,j)+D(i,j-1)+D(i-1,j-1)$, with $D(i,0)=D(0,j)=1$. Equivalently, with exactly $k$ diagonal steps, the remaining horizontal and vertical counts are both $5-k$, so the count is $\sum_{k=0}^{5}\dfrac{(10-k)!}{k!(5-k)!^2}=252+630+560+210+30+1=\boxed{1683}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int k=0;k<=5;++k){draw((k,0)--(k,5),gray);draw((0,k)--(5,k),gray);}draw((0,0)--(1,1)--(2,1)--(2,2)--(3,3)--(4,4)--(5,5),blue);dot("$(0,0)$",(0,0),SW);dot("$(5,5)$",(5,5),NE);
+\end{asy}

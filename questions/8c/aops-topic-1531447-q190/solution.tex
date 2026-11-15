@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1531447_help_me_with_mc_2018_handbook_problem__187_190
+% Stable identity: aops-topic-1531447-q190
+Similar cylinders have all lengths in the same ratio. The radius ratio is $\dfrac{4.5}{3}=1.5$, so the new container has height $1.5\cdot12=18$ inches:
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+void cyl(pair c,real r,real h,string lr,string lh){
+  real e=0.3*r;
+  path bot=shift(c)*scale(r,e)*unitcircle;
+  path top=shift(c+(0,h))*scale(r,e)*unitcircle;
+  draw(top,linewidth(0.9));
+  draw(shift(c)*scale(r,e)*arc((0,0),1,180,360),linewidth(0.9));
+  draw(shift(c)*scale(r,e)*arc((0,0),1,0,180),dashed);
+  draw(c+(-r,0)--c+(-r,h),linewidth(0.9));draw(c+(r,0)--c+(r,h),linewidth(0.9));
+  draw(c+(0,h)--c+(r,h),dashed);label(lr,c+(r,h),E);
+  label(lh,c+(-r,h/2),W);
+}
+cyl((0,0),3,12,"$3$","$12$");
+cyl((13,0),4.5,18,"$4.5$","$18$");
+label("$20$ fl oz",(0,-2),S);label("?",(13,-2.5),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Volume scales as the cube of the length ratio, since $V=\pi r^2h$ and both $r$ and $h$ are multiplied by $1.5$:
+\[
+20\cdot1.5^3=20\cdot3.375=\boxed{67.5}\text{ fluid ounces}.
+\]

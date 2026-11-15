@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2213845_beginner_problems
+% Stable identity: aops-topic-2213845-q09
+The answer is $256+8-2=\boxed{262}$.
+
+\textbf{A method with $262$ comparisons.} Run a knockout tournament: pair the boxes, keep the heavier of each pair, and repeat. Each comparison eliminates one box, so $255$ comparisons find the heaviest box $H$, which took part in $8$ comparisons (one per round, $2^8=256$). The second heaviest box lost only to $H$ (any other box that beat it would be heavier), so it is one of the $8$ boxes that lost directly to $H$; $7$ more comparisons find the heaviest of these. In total $255+7=262$.
+
+\textbf{No method needs fewer.} Fix a correct method, and let it end by naming $H$ (heaviest) and $S$ (second heaviest).
+\begin{enumerate}
+\item[(i)] $S$ must have lost a comparison, and only to $H$ (a box that beat $S$ would be heavier than $S$). Every other box $X\ne H,S$ must have lost a comparison to a box other than $H$: otherwise every comparison that $X$ lost (if any) was against $H$, and making $X$ heavier than $S$ (but lighter than $H$) would not change any result, so the method would be wrong.
+\item[(ii)] Hence, if $k$ boxes lost directly to $H$, the number of comparisons (each produces one loser) is at least $(256-2)+k$: one loss to a box other than $H$ for each of the $254$ boxes $X\ne H,S$, plus the $k$ losses to $H$.
+\item[(iii)] We show that the balance can answer so that $k\ge8$. Give every box a score, initially $1$. When two boxes that have never lost are compared, let the one with the larger score win (either one if the scores are equal), and add the loser's score to the winner's, setting the loser's to $0$. When an unbeaten box meets a beaten one, the unbeaten box wins; when two beaten boxes meet, the box that was beaten later wins. All these answers agree with the weights ``ordered by the time of the first defeat, unbeaten boxes heaviest'', so they can really occur. The total score is always $256$, and only unbeaten boxes have positive scores. At the end only $H$ can be unbeaten (otherwise the method could not know the heaviest box), so the score of $H$ is $256$. The score of $H$ grows only when $H$ beats an unbeaten box, and then at most doubles. Since $2^7<256$, this happened at least $8$ times, so $k\ge8$.
+\end{enumerate}
+Therefore every method may need at least $254+8=262$ comparisons, and $262$ is the minimum. $\blacksquare$

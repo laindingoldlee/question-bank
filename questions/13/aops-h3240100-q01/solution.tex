@@ -1,0 +1,14 @@
+The set $\{32,33,\ldots,1000\}$ works because every product of two of its members exceeds $1000$. It has $969$ elements.
+
+For the upper bound, $1$ cannot belong to $S$. If $S$ has no member below $32$, the bound is immediate. Otherwise choose $a\in S$ with $2\le a\le31$. For each integer
+\[
+\left\lfloor\dfrac{1000}{a^2}\right\rfloor<x\le
+\left\lfloor\dfrac{1000}{a}\right\rfloor,
+\]
+consider the pair $\{x,ax\}$. All endpoints lie in $\{1,\ldots,1000\}$. The lower endpoints satisfy $x\le\dfrac{1000}{a}$, and the upper endpoints satisfy $ax>\dfrac{1000}{a}$, so these pairs are mutually disjoint. Each pair must omit at least one member from $S$, since $a\in S$.
+
+The number of pairs is at least
+\[
+\left\lfloor\dfrac{1000(a-1)}{a^2}\right\rfloor\ge31.
+\]
+For the last inequality, $\dfrac{(a-1)}{a^2}$ decreases for $a\ge2$, so its minimum in this range is $\dfrac{30}{961}$, and $\dfrac{30000}{961}>31$. Thus at least $31$ of the thousand integers are absent. The maximum is $\boxed{969}$.

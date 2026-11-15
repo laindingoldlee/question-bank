@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h15248_mathcounts_contest_1_sprint_questions
+% Stable identity: aops-topic-15248-q20
+The sides are $\dfrac{13}{4}$, $\dfrac{14}{4}$ and $\dfrac{15}{4}$, so the triangle is the $13$-$14$-$15$ triangle scaled by $\dfrac{1}{4}$.
+
+The $13$-$14$-$15$ triangle has area $84$: by Heron's formula with $s=21$, the area is $\sqrt{21\cdot8\cdot7\cdot6}=\sqrt{7056}=84$. (Its altitude to the side $14$ is $12$, splitting that side into $5$ and $9$.) Scaling lengths by $\dfrac{1}{4}$ scales areas by $\dfrac{1}{16}$; in the scaled triangle the altitude to the side $\dfrac{14}{4}$ is $3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(3.5,0),A=(1.25,3);
+draw(A--B--C--cycle,linewidth(0.8)); draw(A--(1.25,0),dashed+blue);
+draw((1.25,0)+(0,0.18)--(1.43,0.18)--(1.43,0),blue);
+label("$\dfrac{13}{4}$",(A+B)/2,W); label("$\dfrac{15}{4}$",(A+C)/2,NE); label("$\dfrac{14}{4}$",(B+C)/2,S);
+label("$3$",(1.25,1.5),E,blue);
+\end{asy}
+
+So the area is $\dfrac{84}{16}=\boxed{\dfrac{21}{4}}$.

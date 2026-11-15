@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2244747_spelling_covid_related_words
+% Stable identity: aops-topic-2244747-q04
+For $k\ne k'$, the lines $x=k$ and $x=k'$ are distinct vertical lines, hence parallel, and a point on both would have $x=k$ and $x=k'$ at the same time, which is impossible.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw((-3,0)--(3,0),Arrow(6)); draw((0,-2)--(0,2),Arrow(6)); label("$x$",(3,0),E); label("$y$",(0,2),N);
+for(real k=-2.5;k<=2.6;k+=0.5) if(abs(k)>0.01) draw((k,-1.8)--(k,1.8),blue+dashed);
+draw((0,-1.8)--(0,1.8),blue+dashed);
+label("$x=k$",(1.5,1.8),N,blue+fontsize(8pt));
+\end{asy}
+
+So no point lies on two of the lines, and the answer is $\boxed{0}$. (The lines cover the whole plane, each point lying on exactly one of them.)

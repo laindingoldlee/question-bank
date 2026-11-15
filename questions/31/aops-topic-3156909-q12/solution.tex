@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h3156909_2015_lmt_individual_round__lexington_mathematical_tournament
+% Stable identity: aops-topic-3156909-q12
+The column equation in place values simplifies to $ 100L+2011H+100I+10G+S+9000C-10000O=0 $. The unused three digits are $ M,A,T $, whose sum is $ 45-(L+H+S+I+G+C+O)$. Thus enumerate only the seven used letters:
+\begin{verbatim}
+from itertools import permutations
+out=set();count=0
+for L,H,S,I,G,C,O in permutations(range(10),7):
+    if not L or not H or not S:continue
+    if 100*L+2011*H+100*I+10*G+S+9000*C-10000*O==0:
+        count+=1
+        u=45-(L+H+S+I+G+C+O)
+        out.add((u+H,u+2))
+assert count==3 and out=={(20,15)}
+\end{verbatim}
+The second component uses $\lfloor u+e\rfloor=u+2 $. All valid assignments give $\boxed{(20,15)}$.

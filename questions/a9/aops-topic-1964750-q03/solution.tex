@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1964750_help_on_some_problems
+% Stable identity: aops-topic-1964750-q03
+For an acute angle \(\theta\), \(\tan\theta\cdot\tan(90^\circ-\theta)=1\): in a right triangle with legs \(a\) (opposite \(\theta\)) and \(b\), \(\tan\theta=\dfrac {a}{b}\) and the other acute angle \(90^\circ-\theta\) has \(\tan(90^\circ-\theta)=\dfrac {b}{a}\).
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(4,0), C=(4,4*Tan(20));
+draw(A--B--C--cycle,linewidth(0.9)); draw((3.75,0)--(3.75,0.25)--(4,0.25));
+draw(arc(A,0.8,0,20)); label("$20^\circ$",A+1.1*dir(10),fontsize(8pt));
+draw(arc(C,0.45,250,270)); label("$70^\circ$",C+1.0*dir(253),fontsize(8pt));
+label("$a$",(B+C)/2+(0.15,0),E); label("$b$",(A+B)/2,S);
+label("$A$",A,W); label("$B$",B,SE); label("$C$",C,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Pairing \(20^\circ\) with \(70^\circ\) and \(40^\circ\) with \(50^\circ\),
+\[
+\tan20^\circ\tan70^\circ\cdot\tan40^\circ\tan50^\circ=1\cdot1=\boxed{1}.
+\]

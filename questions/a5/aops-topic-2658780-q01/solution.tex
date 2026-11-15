@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2658780_let_abcinmathbb_r_such_that_a2_abb225__b2_bcc249__c2
+% Stable identity: aops-topic-2658780-q01
+\emph{A triangle.} Since $a^2+ab+b^2=a^2+b^2-2ab\cos120^\circ$, take a point $P$ and three rays from $P$ at $120^\circ$ to each other, and mark $X$, $Y$, $Z$ on them with $PX=a$, $PY=b$, $PZ=c$. By the law of cosines, $XY=5$, $YZ=7$ and $ZX=8$. The three angles at $P$ are $120^\circ$, so $P$ lies inside triangle $XYZ$ and
+\[[XYZ]=[PXY]+[PYZ]+[PZX]=\dfrac12\sin120^\circ\,(ab+bc+ca)=\dfrac{\sqrt3}4(ab+bc+ca).\]
+By Heron's formula with $s=10$, $[XYZ]=\sqrt{10\cdot5\cdot3\cdot2}=10\sqrt3$. Hence $ab+bc+ca=40$.
+
+\emph{Finish.} Adding the three equations, $2\left(a^2+b^2+c^2\right)+(ab+bc+ca)=138$, so $a^2+b^2+c^2=49$. Therefore
+\[(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ca)=49+80=\boxed{129}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real a=3.52180363,bb=2.20112727,c=5.6348858;
+pair P=(0,0),X=a*dir(90),Y=bb*dir(210),Z=c*dir(330);
+draw(X--Y--Z--cycle,linewidth(0.8));draw(P--X,dashed);draw(P--Y,dashed);draw(P--Z,dashed);
+label("$X$",X,N);label("$Y$",Y,W);label("$Z$",Z,E);label("$P$",(0,-0.36),fontsize(8pt));
+label("$a$",(P+X)/2,E,fontsize(8pt));label("$b$",(P+Y)/2,S,fontsize(8pt));label("$c$",(P+Z)/2,N,fontsize(8pt));
+label("$5$",(X+Y)/2,NW);label("$7$",(Y+Z)/2,S);label("$8$",(X+Z)/2,NE);
+draw(arc(P,0.7,96,204));draw(arc(P,0.7,216,324));draw(arc(P,0.7,-24,84));
+label("$120^\circ$",1.25*dir(150),fontsize(7pt));label("$120^\circ$",1.25*dir(30),fontsize(7pt));label("$120^\circ$",1.12*dir(285),fontsize(7pt));
+\end{asy}

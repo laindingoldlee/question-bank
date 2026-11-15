@@ -1,0 +1,19 @@
+The left side is positive, so write $x=t+k\pi$ with $k\in\mathbb Z$ and $0<t<\dfrac{\pi}{2}$. Taking logarithms, define
+\[
+H_k(t)=(-1)^k(\log3)(\sin t-\cos t)-\log(\tan t).
+\]
+For odd $k$, its derivative is negative. For even $k$,
+\[
+H_k'(t)=(\log3)(\cos t+\sin t)-\dfrac{1}{\sin t\cos t}
+\le\sqrt2\log3-2<0.
+\]
+Here $\log3<\sqrt2$, for instance because $e^{\sqrt2}>1+\sqrt2+\dfrac{(\sqrt2)^2}{2}>3$. Hence $H_k$ is strictly decreasing. Since $H_k(\dfrac{\pi}{4})=0$, that is its only zero. All solutions are
+\[
+\boxed{x=\dfrac{\pi}{4}+k\pi,\qquad k\in\mathbb Z}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(circle((0,0),1),gray);draw((-1.25,0)--(1.4,0),Arrow);draw((0,-1.2)--(0,1.4),Arrow);pair P=dir(35);draw((0,0)--P,blue);draw(P--(P.x,0),dashed);dot(P);label("$\theta$",(.25,.07));label("$\cos\theta$",(P.x/2,0),(0,-1));label("$\sin\theta$",(P.x,P.y/2),(1,0));label("$1$",P/2,NW);
+\end{asy}

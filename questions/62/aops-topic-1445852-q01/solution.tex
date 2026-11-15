@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1445852_help_me_people_graphing
+% Stable identity: aops-topic-1445852-q01
+The equation puts no condition on $x$ and requires $y=-2$. So the graph consists of all points $(x,-2)$, where $x$ is any real number: for example $(-3,-2)$, $(0,-2)$ and $(2.5,-2)$. You do not ``find $x$'': every value of $x$ works.
+
+These points form the \textbf{horizontal line $2$ units below the $x$-axis}, crossing the $y$-axis at $(0,-2)$. Its slope is $0$ (write it as $y=0\cdot x-2$).
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-4,0)--(4,0),Arrow(6)); draw((0,-3.6)--(0,1.6),Arrow(6));
+label("$x$",(4,0),SE); label("$y$",(0,1.6),NE);
+for(int i=-3;i<=3;++i) if(i!=0) {draw((i,-0.08)--(i,0.08)); label("$"+string(i)+"$",(i,0),N,fontsize(8pt));}
+for(int j=-3;j<=1;++j) if(j!=0) draw((-0.08,j)--(0.08,j));
+label("$-2$",(-0.1,-1.75),W,fontsize(8pt));
+draw((-3.8,-2)--(3.8,-2),blue+linewidth(1.1),Arrows(6));
+dot((-3,-2),red); dot((0,-2),red); dot((2.5,-2),red);
+label("$(-3,-2)$",(-3,-2),S,red); label("$(2.5,-2)$",(2.5,-2),S,red);
+label("$y=-2$",(3.8,-2),N,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

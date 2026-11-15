@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2791511_2010_math_hour_olympiad_university_of_washington__grades_67
+% Stable identity: aops-topic-2791511-q06
+Yes. Use radius $\dfrac{1}{2}$ and centers $(u+\dfrac{v}{2},\dfrac{\sqrt3}{2}v)$ for the 24 integer pairs listed in the exact verification below. The squared distance between centers is $(\Delta u)^2+\Delta u\Delta v+(\Delta v)^2$. For distinct integer pairs this is a positive integer, hence at least 1, so coins do not overlap. The check establishes exactly three pairs at squared distance 1 from every center; these are precisely the tangencies.
+\begin{verbatim}
+P=[(-3, 0), (-3, 1), (-3, 2), (-3, 3), (-2, -1), (-2, 0), (-2, 2), (-2, 3), (-1, -2), (-1, 3), (0, -3), (0, -2), (0, 2), (0, 3), (1, -3), (1, 2), (2, -3), (2, -2), (2, 0), (2, 1), (3, -3), (3, -2), (3, -1), (3, 0)]
+def d2(a,b):
+    u=a[0]-b[0];v=a[1]-b[1]
+    return u*u+u*v+v*v
+assert len(set(P))==24
+assert all(d2(a,b)>=1 for i,a in enumerate(P) for b in P[i+1:])
+assert all(sum(d2(a,b)==1 for b in P)==3 for a in P)
+\end{verbatim}
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] L={(-3,0),(-3,1),(-3,2),(-3,3),(-2,-1),(-2,0),(-2,2),(-2,3),(-1,-2),(-1,3),(0,-3),(0,-2),(0,2),(0,3),(1,-3),(1,2),(2,-3),(2,-2),(2,0),(2,1),(3,-3),(3,-2),(3,-1),(3,0)};for(int k=0;k<L.length;++k){pair Q=(L[k].x+L[k].y/2,sqrt(3)*L[k].y/2);draw(circle(Q,.5));label(string(k+1),Q);}
+\end{asy}

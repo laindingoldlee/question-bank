@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2493177_marble_math
+% Stable identity: aops-topic-2493177-q01
+For the circle and two-row layout, choose the first five colors in $3^5$ ways and the five paired colors in $2^5$ ways, before imposing the triple restrictions. Exhaustively filtering these 7776 candidates gives respectively $\boxed{780}$ and $\boxed{1830}$. The following complete finite enumeration makes the count reproducible: each color string is visited once, and the tests are exactly the stated restrictions.\begin{verbatim}
+from itertools import product
+bad = {(0,0,0),(1,1,1),(2,2,2),
+       (2,0,2),(1,2,1),(0,1,0)}
+circle = rows = 0
+for a in product(range(3), repeat=10):
+    if any(a[i] == a[i+5] for i in range(5)):
+        continue
+    if all((a[(i-1)%10],a[i],a[(i+1)%10])
+           not in bad for i in range(10)):
+        circle += 1
+    if all(tuple(a[i:i+3]) not in bad
+           for i in (0,1,2,5,6,7)):
+        rows += 1
+print(circle, rows)  # 780 1830
+\end{verbatim}
+For the five-row layout, each labelled row has 3 choices for its first color and 2 for its second. The five rows are independent, giving $6^5=\boxed{7776}$.

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3232644_swapping_hands_on_a_clock
+% Stable identity: aops-topic-3232644-q01
+Let $h=\dfrac{t}{12}$ be the hour-hand position in clockwise turns, so $0\le h<1$, and let $m\equiv12h\pmod1$ be the minute-hand position. After exchange, validity requires $12m\equiv h\pmod1$. Substitution gives $144h\equiv h\pmod1$, or $143h\in\mathbb Z$. Thus $h=\dfrac{k}{143}$ for $k=0,1,\ldots,142$, giving $\boxed{143}$ placements.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(unitcircle);for(int k=0;k<12;++k)label(string(k==0?12:k),1.2*dir(90-30*k));draw((0,0)--.6*dir(90-360/143),blue+linewidth(2));draw((0,0)--.9*dir(90-4320/143),red);dot((0,0));
+\end{asy}

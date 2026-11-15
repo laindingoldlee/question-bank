@@ -1,0 +1,6 @@
+Use unit matchsticks along a triangular lattice. For the seven-stick polygon, take a trapezoid with parallel bases three and two and legs one; its height is $\dfrac{\sqrt3}{2}$ and its area $\dfrac{5\sqrt3}{4}$. For the thirteen-stick polygon, start with a parallelogram whose adjacent sides are four and two and whose included angle is $60^\circ$. Its perimeter is 12 and area $4\sqrt3$. Remove an inward unit equilateral triangle from a non-corner unit segment of the length-four base. Replacing that one boundary segment by two raises the perimeter to 13 and reduces area by $\dfrac{\sqrt3}{4}$, leaving $\dfrac{15\sqrt3}{4}$, exactly three times the smaller area. The boundaries can be subdivided into unit segments as drawn.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+real h=sqrt(3)/2;path p=(0,0)--(3,0)--(2.5,h)--(.5,h)--cycle;filldraw(p,lightblue,black);pair[] small={(0,0),(1,0),(2,0),(3,0),(2.5,h),(1.5,h),(.5,h)};for(pair v:small)dot(v);pair z=(5,0);path q=z--z+(1,0)--z+(1.5,h)--z+(2,0)--z+(4,0)--z+(5,2*h)--z+(1,2*h)--cycle;filldraw(q,lightgreen,black);pair[] big={(0,0),(1,0),(1.5,h),(2,0),(3,0),(4,0),(4.5,h),(5,2*h),(4,2*h),(3,2*h),(2,2*h),(1,2*h),(.5,h)};for(pair v:big)dot(z+v);label("7 sticks",(1.5,-.5));label("13 sticks",(7.5,-.5));
+\end{asy}
+

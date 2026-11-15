@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1547199_triangle_problem
+% Stable identity: aops-topic-1547199-q01
+Let $S$ be the area of triangle $ABC$ and let $t=\dfrac{CD}{CA}$. Since $DE\parallel AB$, triangles $CDE$ and $CAB$ are similar, so also $\dfrac{CE}{CB}=t$.
+
+\begin{asy}
+usepackage("amsmath");
+size(10cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(2.2,4.2);real t=0.55;
+pair D=C+t*(A-C),Ee=C+t*(B-C);
+picture p1,p2;
+fill(p1,A--B--D--cycle,paleblue);
+draw(p1,A--B--C--cycle,linewidth(1));draw(p1,D-0.3*(Ee-D)--Ee+0.45*(Ee-D),linewidth(0.9));draw(p1,B--D,blue+linewidth(0.9));
+label(p1,"$A$",A,SW);label(p1,"$B$",B,SE);label(p1,"$C$",C,N);label(p1,"$D$",D,dir(120));label(p1,"$E$",Ee,dir(60));label(p1,"$p$",Ee+0.45*(Ee-D),E);
+label(p1,"$[ABD]=a$",(3,-0.6),S);
+fill(p2,A--Ee--C--cycle,palered);
+draw(p2,A--B--C--cycle,linewidth(1));draw(p2,D-0.3*(Ee-D)--Ee+0.45*(Ee-D),linewidth(0.9));draw(p2,A--Ee,red+linewidth(0.9));
+label(p2,"$A$",A,SW);label(p2,"$B$",B,SE);label(p2,"$C$",C,N);label(p2,"$D$",D,dir(120));label(p2,"$E$",Ee,dir(60));label(p2,"$p$",Ee+0.45*(Ee-D),E);
+label(p2,"$[AEC]=b$",(3,-0.6),S);
+add(p1);add(shift(9,0)*p2);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Triangle $ABD$.} It has the same height from $B$ as triangle $ABC$, measured to line $AC$, and its base is $AD=(1-t)\,AC$. Hence $a=[ABD]=(1-t)S$.
+
+\textbf{Triangle $AEC$.} It has the same height from $A$ as triangle $ABC$, measured to line $BC$, and its base is $CE=t\cdot CB$. Hence $b=[AEC]=tS$.
+
+Adding, $a+b=(1-t)S+tS=S$. The area of triangle $ABC$ is $\boxed{a+b}$.

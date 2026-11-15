@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2317476_a_lit_cp_prob
+% Stable identity: aops-topic-2317476-q01
+Number the people $1,2,\dots,2n$ from shortest to tallest.
+
+\textbf{A formation is a word.} By (b), a formation is determined by the set of people in the back row: each row is then in increasing order. Record it as a word $w_1w_2\cdots w_{2n}$, where $w_i=B$ if person $i$ is in the back row and $w_i=F$ otherwise; the word has $n$ letters $B$ and $n$ letters $F$. (The example gives $FBFFBFBB$.)
+
+\textbf{Condition (a) as a prefix condition.} We claim that (a) holds if and only if every prefix $w_1\cdots w_m$ contains at least as many $F$'s as $B$'s.
+\begin{itemize}
+\item Suppose some prefix $w_1\cdots w_m$ has more $B$'s than $F$'s, say $j$ letters $B$ and fewer than $j$ letters $F$. Then the $j$-th shortest back-row person is among the people $1,\dots,m$, but the $j$-th shortest front-row person is not, so is taller. They stand in column $j$, and (a) fails.
+\item Conversely, if (a) fails in column $j$, then the $j$-th front-row person is taller than the $j$-th back-row person, say person $m$. Then the prefix $w_1\cdots w_m$ contains $j$ letters $B$ but at most $j-1$ letters $F$.
+\end{itemize}
+
+\textbf{Counting the words (reflection).} There are $\dbinom{2n}{n}$ words with $n$ letters of each kind. Call a word bad if some prefix has more $B$'s than $F$'s; then there is a first position where the number of $B$'s exceeds the number of $F$'s by exactly $1$. Swapping $B\leftrightarrow F$ in all letters after that position turns a bad word into a word with $n+1$ letters $B$ and $n-1$ letters $F$. This is a bijection: every word with $n+1$ letters $B$ and $n-1$ letters $F$ has a first position where the $B$'s lead by $1$ (the lead goes from $0$ to $2$ in steps of $1$), and swapping after it recovers a bad word. So there are $\dbinom{2n}{n+1}$ bad words, and the number of formations is
+\[\dbinom{2n}{n}-\dbinom{2n}{n+1}=\dbinom{2n}{n}\left(1-\dfrac{n}{n+1}\right)=\boxed{\dfrac{1}{n+1}\dbinom{2n}{n}=\dfrac{(2n)!}{n!\,(n+1)!}},\]
+the $n$-th Catalan number. (For $n=4$ this is $14$.)

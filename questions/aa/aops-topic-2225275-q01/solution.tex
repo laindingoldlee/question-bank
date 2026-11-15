@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2225275_is_there_a_solution_to_this_problem
+% Stable identity: aops-topic-2225275-q01
+\textbf{(a)} In the long division of $1$ by $p$, the remainders are $r_0=1$ and $r_{k}=$ the remainder of $10r_{k-1}$ on division by $p$, so $r_k\equiv10^k\pmod p$. Each digit is determined by the remainder before it, and the remainders are never $0$ because $p\nmid10^k$. So the remainders lie in $\{1,2,\dots,p-1\}$, and among $r_0,r_1,\dots,r_{p-1}$ ($p$ values) two are equal, say $r_i=r_j$ with $i<j\le p-1$.
+
+Since $p\nmid10$, multiplication by $10$ is a one-to-one map on the nonzero remainders modulo $p$, so $r_i=r_j$ forces $r_{i-1}=r_{j-1}$, and so on down to $r_0=r_{j-i}$. Hence $r_{j-i}=r_0=1$, and from then on the remainders and the digits repeat. The repeating block has length $k=j-i\le p-1$. (The length is the least $k\ge1$ with $10^k\equiv1\pmod p$; for example, $\dfrac{1}{7}=0.\overline{142857}$ attains $p-1=6$.)
+
+\textbf{(b)} Infinitely many primes alone do not give long blocks: a priori, infinitely many primes could all have blocks of length at most, say, $6$. What is needed is a link between the length and the size of $p$.
+
+If the repeating block of $\dfrac{1}{p}$ has length $k$, then by (a) $10^k\equiv1\pmod p$, that is, $p\mid10^k-1$. Hence $p\le10^k-1<10^k$.
+
+Now let $K$ be any positive integer. Since there are infinitely many primes, there is a prime $p>10^K$ (and $p\ne2,5$). Its block length $k$ satisfies $10^k>p>10^K$, so $k>K$. Therefore the lengths are unbounded: there is \textbf{no largest possible length}, although for each fixed $p$ the length is at most $p-1$.

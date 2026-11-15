@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1763579_geometry
+% Stable identity: aops-topic-1763579-q01
+Such a triangle has two equal sides $a$ and a different third side $b$, with $1\le a,b\le10$ and $b\ne a$; the triangle inequality requires only $b<2a$ (the other inequality $a<a+b$ is automatic). For each $a$ count the $b$:
+\begin{itemize}
+\item $a=1$: $b<2$, $b\ne1$: none;
+\item $a=2,3,4,5$: $b=1,\dots,2a-1$ except $a$: $2,4,6,8$ choices;
+\item $a=6,\dots,10$: $b=1,\dots,10$ except $a$: $9$ choices each.
+\end{itemize}
+Different pairs $(a,b)$ give different triangles. The total is $2+4+6+8+5\cdot9=\boxed{65}$, choice (1).
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(3,0),A=(1.5,2.6);
+draw(A--B--C--cycle,linewidth(0.9));
+void tk(pair P,pair Q){pair m=(P+Q)/2,v=0.12*unit(rotate(90)*(Q-P));draw(m-v--m+v,linewidth(0.7));}
+tk(A,B);tk(A,C);
+label("$a$",A+0.3*(B-A),W);label("$a$",A+0.3*(C-A),E);label("$b<2a$",(B+C)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The sketch shows a triangle with equal sides $a$ and base $b$; the triangle inequality only requires $b<a+a$.

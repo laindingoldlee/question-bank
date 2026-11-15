@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1772864_cool_and_difficult_2_problems
+% Stable identity: aops-topic-1772864-q02
+Complete a square:
+\[
+p=\left(a^2+b^2-c^2\right)^2-4a^2b^2 ,
+\]
+since $(a^2+b^2-c^2)^2=a^4+b^4+c^4+2a^2b^2-2a^2c^2-2b^2c^2$. By the difference of squares, twice,
+\[
+p=\left(a^2+b^2-c^2-2ab\right)\left(a^2+b^2-c^2+2ab\right)=\bigl((a-b)^2-c^2\bigr)\bigl((a+b)^2-c^2\bigr)
+\]
+\[
+=(a-b-c)(a-b+c)(a+b-c)(a+b+c).
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(5,0),A=(1.6,3);
+draw(A--B--C--cycle,linewidth(0.9));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$a$",(B+C)/2,S);label("$b$",(A+C)/2,NE);label("$c$",(A+B)/2,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the triangle inequality $a<b+c$, $b<a+c$ and $c<a+b$, so $a-b-c<0$ while $a-b+c>0$, $a+b-c>0$ and $a+b+c>0$. Hence $\boxed{p<0}$ for every triangle.
+
+(In fact $p=-16K^2$, where $K$ is the area of the triangle, by Heron's formula.)

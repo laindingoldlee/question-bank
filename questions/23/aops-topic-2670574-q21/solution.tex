@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2670574_some_actually_good_proving_problems
+% Stable identity: aops-topic-2670574-q21
+\textbf{Yes.} Let $O$ be the centre.
+
+\emph{First step.} From $O$ any step leaves you at distance $1$ from $O$.
+
+\emph{Later steps.} If you are at $P$ with $OP=r>0$, face along the line through $P$ perpendicular to $OP$. Whether the adversary sends you forward or backward, you land at a point $P'$ or $P''$ with $PP'=1$ and $\angle OPP'=90^\circ$, so by the Pythagorean theorem your new distance from $O$ is $\sqrt{r^2+1}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),P=(1.6,0.8);pair dv=unit(rotate(90)*(P-O));pair P1=P+1.2*dv,P2=P-1.2*dv;
+draw(circle(O,3.2),gray);dot(O);dot(P);dot(P1);dot(P2);
+draw(O--P);draw(P1--P2,linewidth(0.8));draw(O--P1,dashed);draw(O--P2,dashed);
+pair e1=unit(O-P);draw(P+0.18*e1--P+0.18*(e1+dv)--P+0.18*dv);
+label("$O$",O,SW);label("$P$",P,NE);label("$P'$",P1,N);label("$P''$",P2,SE);label("$r$",(O+P)/2,SE);label("$1$",(P+P1)/2,NE);label("$1$",(P+P2)/2,NE);
+\end{asy}
+
+Hence after $n$ steps your distance from $O$ is exactly $\sqrt n$, regardless of the adversary's choices (by induction: $\sqrt{n}\to\sqrt{n+1}$). After $n=10000$ steps you are at distance $\sqrt{10000}=100$, i.e. on the edge. So you are guaranteed to escape within $10000$ seconds. $\blacksquare$

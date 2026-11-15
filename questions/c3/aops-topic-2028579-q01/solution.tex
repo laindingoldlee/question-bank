@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2028579_circle_fact
+% Stable identity: aops-topic-2028579-q01
+(a) The point $\left(\dfrac{r}{\sqrt2},\dfrac{r}{\sqrt2}\right)$ lies on the circle, since $\dfrac{r^2}{2}+\dfrac{r^2}{2}=r^2$, but $x+y=r\sqrt2\ne r$. (Also $(-r,0)$ gives $x+y=-r$.) So the claim is false.
+
+(b) If $x^2+y^2=r^2$ and $x+y=r$, then
+\[r^2=(x+y)^2=x^2+y^2+2xy=r^2+2xy,\]
+so $xy=0$. If $x=0$ then $y=r$; if $y=0$ then $x=r$. Both points work. So the line $x+y=r$ meets the circle in exactly two points,
+\[\boxed{(r,0)\ \text{and}\ (0,r)}.\]
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real r=2;
+draw((-2.8,0)--(2.8,0),gray,Arrow(5)); draw((0,-2.8)--(0,2.8),gray,Arrow(5));
+draw(circle((0,0),r),linewidth(0.9));
+draw((-0.7,2.7)--(2.7,-0.7),blue);
+dot((r,0),red); dot((0,r),red);
+pair Q=r*dir(45); dot(Q);
+label("$(r,0)$",(r,0),SW,red); label("$(0,r)$",(0,r),SW,red);
+label("$\left(\dfrac{r}{\sqrt2},\dfrac{r}{\sqrt2}\right)$",Q,NE);
+label("$x+y=r$",(2.7,-0.7),SE,blue);
+label("$x^2+y^2=r^2$",r*dir(215),SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

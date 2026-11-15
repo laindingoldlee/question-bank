@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2794195_2018_geometry_bee_invitational_round
+% Stable identity: aops-topic-2794195-q10
+The two disks lie on opposite sides of $AD$. They can touch only at their tangency points with $AD$, so these points must coincide. Their distances from $A$ are $\dfrac{AB+AD-BD}{2}$ and $\dfrac{AC+AD-DC}{2}$. Equating gives $DC-BD=1$. Since $DC+BD=5$, $\boxed{BD=2}$. Conversely with these lengths the tangency points coincide, so the circles do touch.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(3,0),C=(0,4),D=B+.4*(C-B);real ad=length(D);pair I1=(2*A+ad*B+3*D)/(5+ad),I2=(3*A+4*D+ad*C)/(7+ad);real r1=I1.y,r2=I2.x;draw(A--B--C--cycle);draw(A--D);draw(circle(I1,r1),blue);draw(circle(I2,r2),red);label("A",A,SW);label("B",B,SE);label("C",C,N);label("D",D,NE);
+\end{asy}

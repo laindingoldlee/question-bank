@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3248731_2024_emcc_guts_round_p1324__exeter_math_club_competition
+% Stable identity: aops-topic-3248731-q16
+The initial cube has eight vertices of degree three; the octahedron has six of degree four. Truncating a vertex of degree $d$ creates $d$ new vertices, each of degree three. Thus after day one both remaining solids have $24$ vertices, all of degree three. Every later truncation triples the vertex count, so the numbers of pieces removed on every day from day two onward are equal. Only day one differs, by $8-6=\boxed2$ pieces.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] V={(0,0),(2,0),(2,2),(0,2),(.6,.5),(2.6,.5),(2.6,2.5),(.6,2.5)};draw(V[0]--V[1]--V[2]--V[3]--cycle^^V[4]--V[5]--V[6]--V[7]--cycle);for(int i=0;i<4;++i)draw(V[i]--V[i+4]);label("cube: degree 3",(1,-.6));pair U=(6,3),L=(6,-1),A=(4.5,1),B=(6,.5),C=(7.5,1),D=(6,1.5);draw(A--B--C--D--cycle^^U--A^^U--B^^U--C^^U--D^^L--A^^L--B^^L--C^^L--D);label("octahedron: degree 4",(6,-1.6));
+\end{asy}

@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2109600_mathcounts_2020_state_5_is_wrong
+% Stable identity: aops-topic-2109600-q01
+\textbf{(a)} The tiles are laid in rows along the sides of the rectangle, and only whole tiles are used, so a whole number of tiles must fit exactly along each side: the side length $s$ (in feet) must divide both $40$ and $72$. The largest such $s$ is
+\[\gcd(40,72)=8 .\]
+The area is then covered by $\dfrac{40}{8}\cdot\dfrac{72}{8}=5\cdot9=\boxed{45}$ tiles.
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=9;++i) draw((8i,0)--(8i,40),gray);
+for(int j=0;j<=5;++j) draw((0,8j)--(72,8j),gray);
+draw((0,0)--(72,0)--(72,40)--(0,40)--cycle,linewidth(1));
+label("$72$",(36,0),S); label("$40$",(0,20),W);
+label("$45$ congruent $8\times8$ tiles",(36,40),N,fontsize(9pt));
+real o=88;
+draw(shift(o,0)*((0,0)--(40,0)--(40,40)--(0,40)--cycle),blue+linewidth(1));
+draw(shift(o,0)*((40,0)--(72,0)--(72,32)--(40,32)--cycle),red+linewidth(1));
+for(int i=0;i<4;++i) draw(shift(o,0)*((40+8i,32)--(48+8i,32)--(48+8i,40)--(40+8i,40)--cycle),darkgreen+linewidth(1));
+draw(shift(o,0)*((0,0)--(72,0)--(72,40)--(0,40)--cycle),linewidth(1));
+label("$40\times40$",(o+20,20),blue); label("$32\times32$",(o+56,16),red);
+label("$6$ tiles, not congruent",(o+36,40),N,fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(b)} No. The tiling with one $40\times40$, one $32\times32$ and four $8\times8$ squares does cover the area with $6$ squares (right), but these squares are not congruent. The problem requires \emph{congruent} tiles, so the answer remains $45$.

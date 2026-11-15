@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1656214_the_frustum_formulas_complicated__intimidating_but_nice_msa127a128
+% Stable identity: aops-topic-1656214-q27
+Complete the frustum to a cone of height $H$. By similar triangles in the cross-section (not to scale),
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair o=(0,0);
+draw((-20,0)--(20,0)--(18,1)--(-18,1)--cycle,linewidth(0.9));
+draw((18,1)--(0,10)--(-18,1),dashed);draw((0,0)--(0,10),dashed);
+label("$20$",(10,0),S);label("$18$",(9,1),N);label("$1$",(20,0.5),E);label("$H$",(0,5),W);
+dot((0,10));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+\dfrac{H-1}{H}=\dfrac{18}{20}\quad\Longrightarrow\quad H=10 .
+\]
+The frustum is the cone of radius $20$ and height $10$ minus the cone of radius $18$ and height $9$:
+\[
+V=\dfrac{\pi}{3}\left(20^2\cdot10-18^2\cdot9\right)=\dfrac{\pi}{3}(4000-2916)=\boxed{\textbf{(e)}\ \dfrac{1084\pi}{3}} .
+\]
+(This agrees with the frustum formula $V=\dfrac{\pi h}{3}\left(R^2+Rr+r^2\right)=\dfrac{\pi}{3}(400+360+324)$.)

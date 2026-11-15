@@ -1,0 +1,41 @@
+% Source: https://artofproblemsolving.com/community/c3h1734263_herons_formula
+% Stable identity: aops-topic-1734263-q01
+\textbf{(a)} A unit square and a rhombus with side $1$ and an angle of $60^\circ$ have the same four side lengths:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw(box((0,0),(1,1)),linewidth(0.9));
+pair A=(1.6,0),B=(2.6,0),C=B+dir(60),D=A+dir(60);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(arc(A,0.22,0,60));label("$60^\circ$",A+0.42*dir(30),fontsize(7pt));
+label("$1$",(0.5,0),S);label("$1$",(1,0.5),E);label("$1$",(0.5,1),N);label("$1$",(0,0.5),W);
+label("$1$",(A+B)/2,S);label("$1$",(B+C)/2,E);label("$1$",(C+D)/2,N);label("$1$",(D+A)/2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+but their areas are $1$ and $1\cdot1\cdot\sin60^\circ=\dfrac{\sqrt3}{2}$. So the side lengths do not determine the area of a quadrilateral, and no formula in the side lengths alone can work. (A quadrilateral with given sides can flex, unlike a triangle.)
+
+\textbf{(b)} Here $s=\dfrac{25+39+52+60}{2}=88$, so
+\[
+K=\sqrt{63\cdot49\cdot36\cdot28}=\sqrt{(7\cdot9)\cdot7^2\cdot6^2\cdot(4\cdot7)}=7^2\cdot6\cdot3\cdot2=\boxed{1764}.
+\]
+Check by splitting: $25^2+60^2=65^2$ and $39^2+52^2=65^2$. Let the vertices be $V_1,\dots,V_4$ with $V_1V_2=25$, $V_2V_3=39$, $V_3V_4=52$, $V_4V_1=60$. The triangles $V_4V_1V_2$ and $V_2V_3V_4$ with the common side $V_2V_4=65$ are right triangles, so both right angles are inscribed in the circle with diameter $V_2V_4$, which is therefore the circumcircle:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=32.5; pair V2=(-R,0),V4=(R,0),V1=V2+25*dir(degrees(acos(5/13))),V3=V2+39*dir(-degrees(acos(3/5)));
+draw(circle((0,0),R),gray(0.6));
+draw(V1--V2--V3--V4--cycle,linewidth(0.9));draw(V2--V4,dashed);
+pair u=unit(V2-V1),w=unit(V4-V1);draw(V1+2.5*u--V1+2.5*u+2.5*w--V1+2.5*w);
+pair u2=unit(V2-V3),w2=unit(V4-V3);draw(V3+2.5*u2--V3+2.5*u2+2.5*w2--V3+2.5*w2);
+label("$V_1$",V1,N);label("$V_2$",V2,W);label("$V_3$",V3,S);label("$V_4$",V4,E);
+label("$25$",(V1+V2)/2,unit(-(V1+V2)));label("$39$",(V2+V3)/2,unit(-(V2+V3)));label("$52$",(V3+V4)/2,unit(-(V3+V4)));label("$60$",(V4+V1)/2,unit(-(V4+V1)));
+label("$65$",(12,0),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The area is $\dfrac{1}{2}\cdot25\cdot60+\dfrac{1}{2}\cdot39\cdot52=750+1014=1764$, as before.

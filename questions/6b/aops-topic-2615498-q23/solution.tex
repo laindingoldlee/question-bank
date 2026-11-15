@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2615498_peace09s_3000th_post
+% Stable identity: aops-topic-2615498-q23
+Triangles $ABP$ and $ACP$ have right angles at $P$, so their circumcentres are the midpoints of their hypotenuses: $O_1$ is the midpoint of $AB$ and $O_2$ the midpoint of $AC$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(17,0),A=(6,22),P=(6,0);pair O1=(A+B)/2,O2=(A+C)/2;
+draw(A--B--C--cycle);draw(A--P,dashed);filldraw(O1--O2--P--cycle,opacity(0.2)+blue,blue);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$P$",P,S);label("$O_1$",O1,W);label("$O_2$",O2,E);
+\end{asy}
+
+So $O_1O_2\parallel BC$ with $O_1O_2=\dfrac{BC}2=17$, and it lies on the midline at height $\dfrac{AP}2=22$ above $BC$. Hence $[O_1O_2P]=\dfrac12\cdot17\cdot22=\boxed{187}$.

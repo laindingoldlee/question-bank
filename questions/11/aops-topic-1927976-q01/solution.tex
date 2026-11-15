@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h1927976_am_doubtful_about_the_solution_i_got
+% Stable identity: aops-topic-1927976-q01
+Let $K$ be the centre of $\Gamma$ and $\rho$ its radius, and let $R$ be the radius of $\omega$.
+
+\textbf{Step 1: the arc midpoints.} Since $OA=OB=R$, the point $O$ lies on the perpendicular bisector of $AB$, and so does $K$ (the centre of a circle through $A$ and $B$). This line meets $\Gamma$ at $O$ and at a second point $O'$, and $OO'$ is a diameter of $\Gamma$. Points of $\Gamma$ on the perpendicular bisector of the chord $AB$ are the midpoints of the two arcs $AB$, so $O$ and $O'$ are the midpoints of the two arcs $AB$ of $\Gamma$.
+
+\textbf{Step 2: $P$ lies on the arc through $O$.} The chord $OA$ of $\Gamma$ is not a diameter (otherwise $A=O'$ would lie on the perpendicular bisector of $AB$), so $R=OA<2\rho=OO'$. Thus $O'$ lies outside $\omega$. The circles $\omega$ and $\Gamma$ meet only at $A$ and $B$, so each of the two open arcs $AB$ of $\Gamma$ lies entirely inside or entirely outside $\omega$; the arc through $O'$ lies outside. The point $P$ is on the diameter $CD$ and is not an endpoint of it (an endpoint on $\Gamma$ would be $A$ or $B$, and then one of the angles is undefined), so $P$ is inside $\omega$ and lies on the other arc, the one through $O$. In particular $P\ne O'$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),K=(1.9,0.7);real R=3,rho=abs(K);
+path w=circle(O,R),g=circle(K,rho);
+pair[] X=intersectionpoints(w,g);pair A=X[0],B=X[1];
+if(A.y<B.y){pair T=A;A=B;B=T;}
+pair u=dir(95);pair P=2*dot(K,u)*u;pair C=R*u,D=-R*u;pair Op=2K;
+draw(w,linewidth(0.9));draw(g,blue+linewidth(0.9));
+draw(C--D,linewidth(0.9));
+draw(P--A);draw(P--B);
+draw(P--Op,red+dashed);draw(O--Op,gray+dotted);
+draw(arc(P,0.6,degrees(A-P),degrees(C-P)),linewidth(0.8));
+draw(arc(P,0.6,degrees(D-P),degrees(B-P)),linewidth(0.8));
+draw(arc(P,0.72,degrees(D-P),degrees(B-P)),linewidth(0.8));
+draw(arc(P,0.72,degrees(A-P),degrees(C-P)),linewidth(0.8));
+dot(O);dot(P);dot(A);dot(B);dot(C);dot(D);dot(Op);
+label("$O$",O,W);label("$P$",P,W);label("$A$",A,NE);label("$B$",B,SE);
+label("$C$",C,N);label("$D$",D,S);label("$O'$",Op,E);
+label("$\omega$",R*dir(215),SW);label("$\Gamma$",K+rho*dir(25),NE,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Step 3: two lines through $P$.} Since $P$ and $O'$ are on different arcs $AB$, and the arcs $AO'$ and $O'B$ not containing $P$ are equal, the inscribed angles $\angle APO'$ and $\angle O'PB$ are equal: the line $PO'$ bisects $\angle APB$. Also $OO'$ is a diameter of $\Gamma$ and $P\ne O,O'$, so $\angle OPO'=90^\circ$. The line $CD$ passes through $O$ and $P$, so $CD\perp PO'$.
+
+\textbf{Step 4: reflect.} Reflect in the line $PO'$. Because $PO'$ bisects $\angle APB$, the reflection maps ray $PA$ onto ray $PB$. Because $CD$ is perpendicular to $PO'$ at $P$, it maps the line $CD$ to itself with its direction reversed, so it maps ray $PC$ onto ray $PD$. Reflections preserve angles, hence
+\[
+\angle APC=\angle BPD .\qquad\blacksquare
+\]

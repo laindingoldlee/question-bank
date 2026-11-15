@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1295247_median_geometry
+% Stable identity: aops-topic-1295247-q01
+Place $A=(0,0)$, $B=(20,0)$, $C=(0,15)$, so $D=(18,0)$. Points of ray $CA$ have the form $E=(0,e)$ with $e\le15$, and points of ray $CB$ the form $F=(20u,15-15u)$ with $u\ge0$. ``$CD$ is a median'' means $D$ is the midpoint of $EF$:
+\[\dfrac{20u}{2}=18,\qquad\dfrac{e+15-15u}{2}=0.\]
+So $u=\dfrac95$, $F=(36,-12)$, and $e=12$, $E=(0,12)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(20,0),C=(0,15),D=(18,0),E=(0,12),F=(36,-12);
+draw(A--B--C--cycle,linewidth(0.8));draw(C--E--F--cycle,linewidth(1)+gray);draw(B--F,dashed);draw(C--D,dashed);
+dot(D);dot(E);dot(F);
+label("$A$",A,W);label("$B$",B,NE);label("$C$",C,N);label("$D$",D,S);label("$E$",E,W);label("$F$",F,SE);
+\end{asy}
+
+Triangle $CEF$ has base $CE=3$ on the $y$-axis and height $36$ (the distance from $F$ to that axis), so its area is $\dfrac12\cdot3\cdot36=\boxed{54}$.

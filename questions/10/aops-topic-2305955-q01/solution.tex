@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2305955_a_remarkable_triangle_problem
+% Stable identity: aops-topic-2305955-q01
+\textbf{Lemma.} If $Z$ is a point of a segment $XY$ and $P$ is any point, then $PZ\le\max(PX,PY)$.
+
+\emph{Proof.} If $Z=X$ or $Z=Y$ there is nothing to prove. If $P$ lies on the line $XY$, the distance from $P$ to points of the segment is largest at an endpoint. Otherwise, the angles $\angle PZX$ and $\angle PZY$ add up to $180^\circ$, so one of them, say $\angle PZY$, is at least $90^\circ$. Then it is the largest angle of triangle $PZY$, so the opposite side $PY$ is longer than $PZ$. Hence $PZ\le\max(PX,PY)$.
+
+\textbf{Main proof.}
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(6,0), A=(2.2,3.2);
+pair D=(3.8,0), E=C+0.55*(A-C);
+draw(A--B--C--cycle,linewidth(1));
+draw(D--E,red+linewidth(1)); draw(D--A,dashed+blue);
+dot(D); dot(E);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S); label("$E$",E,NE);
+\end{asy}
+
+Since $E$ lies on segment $CA$, the lemma (with $P=D$) gives $DE\le\max(DC,DA)$. Now $DC\le BC$ because $D$ lies on segment $BC$. And since $D$ lies on segment $BC$, the lemma (with $P=A$) gives $DA\le\max(AB,AC)\le BC$, because $BC$ is a longest side. Therefore
+\[DE\le\max(DC,DA)\le BC.\]
+$\blacksquare$

@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h3166115_2019_lmt_fall_guts_round_p25p36__lexington_mathematical_tournament
+% Stable identity: aops-topic-3166115-q36
+Process rows from top to bottom. A bitmask records cells already occupied from vertical dominoes in the preceding row. In each row, fill its first free cell either by a horizontal domino, if the next cell is free, or by a vertical domino that occupies the corresponding cell of the next row. This recursion generates each tiling exactly once. After eight rows, only outgoing mask zero is permitted. The following complete transfer computation gives $\boxed{12988816}$.\begin{verbatim}
+from collections import defaultdict
+width=8
+def transitions(mask):
+    result=defaultdict(int)
+    def fill(col,used,nxt):
+        while col<width and (used>>col)&1: col+=1
+        if col==width:
+            result[nxt]+=1
+            return
+        fill(col+1,used|(1<<col),nxt|(1<<col))
+        if col+1<width and not (used>>(col+1))&1:
+            fill(col+2,used|(3<<col),nxt)
+    fill(0,mask,0)
+    return result
+dp={0:1}
+for row in range(8):
+    new=defaultdict(int)
+    for mask,count in dp.items():
+        for nxt,multiplicity in transitions(mask).items():
+            new[nxt]+=count*multiplicity
+    dp=new
+assert dp[0]==12988816
+\end{verbatim}
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int k=0;k<=8;++k){draw((k,0)--(k,8),gray);draw((0,k)--(8,k),gray);}filldraw((0,0)--(2,0)--(2,1)--(0,1)--cycle,lightgray);filldraw((3,0)--(4,0)--(4,2)--(3,2)--cycle,lightgray);label("$8\times8$ board",(4,-.7));
+\end{asy}

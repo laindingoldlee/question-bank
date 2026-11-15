@@ -1,0 +1,51 @@
+% Source: https://artofproblemsolving.com/community/c3h1631688_help_on_geometry_proof
+% Stable identity: aops-topic-1631688-q01
+Let $\omega_1$ and $\omega_2$ be the circles and $t$ their common tangent at $T$. We use the tangent-chord theorem: the angle between a tangent and a chord through the point of tangency equals the inscribed angle on that chord from the other side. There are two cases.
+
+\textbf{Case 1: external tangency.} Then $T$ lies between $A_1$ and $A_2$ and between $B_1$ and $B_2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair T=(0,0),c1=(-2,0),c2=(3,0);
+pair d1=dir(30),d2=dir(-40);
+pair A1=2*dot(c1,d1)*d1,A2=2*dot(c2,d1)*d1,B1=2*dot(c1,d2)*d2,B2=2*dot(c2,d2)*d2;
+draw(circle(c1,2));draw(circle(c2,3));
+draw((0,-3.4)--(0,3.4),gray+dashed);label("$t$",(0,3.4),N,gray);
+draw(A1--A2,linewidth(0.8));draw(B1--B2,linewidth(0.8));
+draw(A1--B1,blue+linewidth(1));draw(A2--B2,blue+linewidth(1));
+dot(T);
+label("$T$",T+(0.75,0));label("$A_1$",A1,SW);label("$A_2$",A2,NE);label("$B_1$",B1,NW);label("$B_2$",B2,SE);
+label("$\omega_1$",c1+2*dir(150),NW);label("$\omega_2$",c2+3*dir(315),SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Let $U$ and $V$ be points of $t$ on opposite sides of $T$, with $U$ on the same side of the line $A_1A_2$ as $B_2$ and $V$ on the same side as $B_1$. In $\omega_1$ the angle between the tangent ray $TU$ and the chord $TA_1$ equals the inscribed angle at $B_1$ on that chord: $\angle UTA_1=\angle TB_1A_1$. In $\omega_2$ similarly $\angle VTA_2=\angle TB_2A_2$. The angles $\angle UTA_1$ and $\angle VTA_2$ are vertical angles, hence equal. So
+\[
+\angle A_1B_1B_2=\angle TB_1A_1=\angle TB_2A_2=\angle A_2B_2B_1 .
+\]
+These are alternate angles for the lines $A_1B_1$ and $A_2B_2$ cut by the transversal $B_1B_2$ ($A_1$ and $A_2$ are on opposite sides of it, because $T$ is on it between them). Hence $A_1B_1\parallel A_2B_2$.
+
+\textbf{Case 2: internal tangency.} Now $A_1$ lies on segment $TA_2$ and $B_1$ on segment $TB_2$ (say $\omega_1$ is the smaller circle).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair T=(0,0),c1=(1.5,0),c2=(3,0);
+pair d1=dir(28),d2=dir(-36);
+pair A1=2*dot(c1,d1)*d1,A2=2*dot(c2,d1)*d1,B1=2*dot(c1,d2)*d2,B2=2*dot(c2,d2)*d2;
+draw(circle(c1,1.5));draw(circle(c2,3));
+draw((0,-3.4)--(0,3.4),gray+dashed);label("$t$",(0,3.4),N,gray);
+draw(T--A2,linewidth(0.8));draw(T--B2,linewidth(0.8));
+draw(A1--B1,blue+linewidth(1));draw(A2--B2,blue+linewidth(1));
+dot(T);
+label("$T$",T,W);label("$A_1$",A1,dir(85));label("$A_2$",A2,NE);label("$B_1$",B1,SW);label("$B_2$",B2,SE);
+label("$\omega_1$",c1+(1.5,0),E);label("$\omega_2$",c2+3*dir(315),SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Let $V$ be a point of $t$ on the side of line $TA_2$ away from $B_1$ and $B_2$. The tangent-chord theorem in each circle gives $\angle VTA_1=\angle TB_1A_1$ and $\angle VTA_2=\angle TB_2A_2$. But $\angle VTA_1$ and $\angle VTA_2$ are the same angle, so $\angle TB_1A_1=\angle TB_2A_2$. These are corresponding angles for the lines $A_1B_1$ and $A_2B_2$ cut by the transversal $TB_2$, so again $A_1B_1\parallel A_2B_2$. $\blacksquare$
+
+\emph{Remark.} Both cases also follow at once from the homothety (enlargement) centred at $T$ that maps $\omega_1$ to $\omega_2$: it maps each line through $T$ to itself, hence $A_1\mapsto A_2$ and $B_1\mapsto B_2$, and a homothety maps every segment to a parallel segment.

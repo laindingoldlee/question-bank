@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1722305_geometry_problem
+% Stable identity: aops-topic-1722305-q01
+Let $x=[DXA]$. Triangles $AXB$ and $CXB$ have bases $XA$ and $XC$ on line $AC$ and the same apex $B$, so they have the same height and
+\[
+\dfrac{[AXB]}{[CXB]}=\dfrac{XA}{XC}.
+\]
+In the same way, triangles $AXD$ and $CXD$ share the apex $D$, so $\dfrac{[AXD]}{[CXD]}=\dfrac{XA}{XC}$. Therefore
+\[
+\dfrac{x}{5}=\dfrac{8}{15}\quad\Longrightarrow\quad x=\boxed{\dfrac{8}{3}}.
+\]
+Equivalently, $[AXB]\cdot[CXD]=[BXC]\cdot[DXA]$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair X=(0,0),A=(-2,0),C=(3.75,0),B=4*dir(250),D=(4/3)*dir(70);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,linewidth(0.6));draw(B--D,linewidth(0.6));
+label("$A$",A,W);label("$B$",B,S);label("$C$",C,E);label("$D$",D,N);label("$X$",X,dir(-40));
+label("$8$",(A+B+X)/3);label("$15$",(B+C+X)/3);label("$5$",(C+D+X)/3+(0.15,0));label("$x$",(D+A+X)/3+(-0.1,0.02));
+dot(X);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The figure is drawn to scale with $XA:XC=2:3.75$ and $XB:XD=4:\dfrac{4}{3}$, which gives the four areas in the ratio $8:15:5:\dfrac{8}{3}$.

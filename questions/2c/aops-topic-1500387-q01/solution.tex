@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1500387_special_parts_of_a_triangle
+% Stable identity: aops-topic-1500387-q01
+Let $ABC$ be the triangle, with incentre $I$ equal to its centroid $G$. Let $D$ be the midpoint of $BC$.
+
+\textbf{The median from $A$ is the angle bisector from $A$.} The centroid lies on the median $AD$, and the incentre lies on the bisector of angle $A$. Both lines pass through $A$ and through the point $G=I$, which is inside the triangle and so different from $A$. Two distinct points determine a line, so the bisector of angle $A$ is the line $AD$, and it meets $BC$ at the midpoint $D$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(2,3.4),B=(0,0),C=(4,0),D=(B+C)/2,G=(A+B+C)/3;
+draw(A--B--C--cycle,linewidth(1)); draw(A--D,blue+linewidth(0.9));
+pair t1=(B+D)/2,t2=(D+C)/2; draw(t1+(0,-0.1)--t1+(0,0.1)); draw(t2+(0,-0.1)--t2+(0,0.1));
+real ab=degrees(B-A), ad=degrees(D-A), ac=degrees(C-A);
+draw(arc(A,0.75,ab,ad),red); draw(arc(A,0.9,ad,ac),red);
+dot(A);dot(B);dot(C);dot(D);dot(G);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$G=I$",G,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Angle bisector theorem.} The bisector from $A$ divides $BC$ in the ratio of the adjacent sides:
+\[
+\dfrac{AB}{AC}=\dfrac{BD}{DC}=1 ,
+\]
+so $AB=AC$.
+
+\textbf{The same at $B$.} The same argument for the median and the bisector from $B$ gives $BA=BC$. Hence $AB=BC=CA$, and the triangle is equilateral. $\blacksquare$

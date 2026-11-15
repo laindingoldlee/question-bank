@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1765109_geometrycounting
+% Stable identity: aops-topic-1765109-q01
+In isosceles right triangle $ABC$ with right angle at $C$, $AC=BC=10$ units. Inside the triangle, horizontal segments (parallel to $BC$) are drawn $1$ unit apart, and vertical segments (parallel to $AC$) are drawn $1$ unit apart, each running from a leg to the hypotenuse $AB$, as shown. Including triangle $ABC$, how many triangles in this figure are isosceles?
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),A=(0,10),B=(10,0);
+for(int i=1;i<10;++i){draw((i,0)--(i,10-i),gray);draw((0,i)--(10-i,i),gray);}
+draw(A--B--C--cycle,linewidth(0.9));
+label("$A$",A,N);label("$B$",B,E);label("$C$",C,SW);
+label("$10$",(0,5),W);label("$10$",(5,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

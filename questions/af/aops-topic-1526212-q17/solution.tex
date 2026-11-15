@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1526212_last_post_continued
+% Stable identity: aops-topic-1526212-q17
+Let the legs be $a$ and $b$. Then $\dfrac{1}{2}ab=10$, so $ab=20$, and $a^2+b^2=100$ by the Pythagorean theorem.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real a=sqrt(35)+sqrt(15), c=sqrt(35)-sqrt(15);
+pair C=(0,0),A=(a,0),B=(0,c);
+draw(A--B--C--cycle,linewidth(1));
+real r=0.35; draw((r,0)--(r,r)--(0,r));
+label("$a$",(A+C)/2,S);label("$b$",(B+C)/2,W);label("$10$",(A+B)/2,NE);
+label("area $10$",(a*0.33,c*0.3),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence
+\[
+(a+b)^2=a^2+b^2+2ab=100+40=140,\qquad a+b=\sqrt{140}=2\sqrt{35},
+\]
+and the perimeter is $\boxed{10+2\sqrt{35}}$ cm. (Such a triangle exists: $a$ and $b$ are the roots of $t^2-2\sqrt{35}\,t+20=0$, namely $\sqrt{35}\pm\sqrt{15}$, both positive.)

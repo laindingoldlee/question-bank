@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3174964_2017_dmc_individual_theme_round__deerfield_math_competition__bob_the_builder
+% Stable identity: aops-topic-3174964-q05
+Let $T_n$ count triangulations of a convex $(n+2)$-gon, and put $T_0=1$ for an empty side region. Fix one boundary edge. The triangle containing it splits the remaining polygon into two independent regions, so $T_n=\sum_{j=0}^{n-1}T_jT_{n-1-j}$. Starting with $T_0=1$, this gives $T_1=1$, $T_2=2$, $T_3=5$, $T_4=14$, and $T_5=14+5+4+5+14=\boxed{42}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[]v;for(int j=0;j<7;++j)v.push(dir(90+360*j/7));path p=v[0];for(int j=1;j<7;++j)p=p--v[j];draw(p--cycle);for(int j=2;j<6;++j)draw(v[0]--v[j],blue);label("one triangulation",(0,-1.4));
+\end{asy}

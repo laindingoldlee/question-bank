@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1715049_junior_regional_olympiad__fbh_2016_grade_7_problem_4
+% Stable identity: aops-topic-1715049-q01
+Let $E'$ be the reflection of $E$ in $D$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+void ra(pair P,pair U,pair V,real s){draw(P+s*unit(U-P)--P+s*unit(U-P)+s*unit(V-P)--P+s*unit(V-P),linewidth(0.5));}
+pair C=(0,0),A=(0,6),B=(8,0),D=(A+B)/2;
+pair Ep=(0,4);
+pair F=extension(D,D+rotate(-90)*(Ep-D),C,B);
+pair Ep2=2*D-Ep;
+draw(A--B--C--cycle,linewidth(0.9));
+draw(Ep--D--F,linewidth(0.8));draw(Ep--F,linewidth(0.8));
+draw(D--Ep2,blue+dashed);draw(B--Ep2,blue+dashed);draw(F--Ep2,blue+dashed);
+ra(C,A,B,0.4);ra(D,Ep,F,0.4);ra(B,Ep2,C,0.4);
+dot(D);dot(Ep);dot(F);dot(Ep2,blue);
+label("$C$",C,SW);label("$A$",A,N);label("$B$",B,SE);label("$D$",D,N);
+label("$E$",Ep,W);label("$F$",F,S);label("$E'$",Ep2,E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{$BE'=AE$ and $BE'\parallel AC$.} The segments $AB$ and $EE'$ bisect each other at $D$, so $AEBE'$ is a parallelogram (if $E=A$ then $E'=B$ and everything below is trivial). Hence $BE'=AE$ and $BE'\parallel AE$, i.e.\ $BE'\parallel AC$. Since $AC\perp BC$, also $BE'\perp BC$, so $\angle E'BF=90^\circ$.
+
+\textbf{$FE'=FE$.} $D$ is the midpoint of $EE'$ and $DF\perp EE'$, so $DF$ is the perpendicular bisector of $EE'$ and $FE'=FE$.
+
+\textbf{Pythagoras.} In the right triangle $E'BF$,
+\[
+EF^2=FE'^2=BE'^2+BF^2=AE^2+BF^2 . \qquad\blacksquare
+\]

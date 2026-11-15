@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1983550_3d_geometry
+% Stable identity: aops-topic-1983550-q01
+Let the cube have edge $1$ and vertices $(x,y,z)$ with coordinates $0$ or $1$. The vertices $(0,0,0)$, $(1,1,0)$, $(1,0,1)$, $(0,1,1)$ are pairwise at distance $\sqrt2$ (each pair differs in two coordinates), so they form a regular tetrahedron with edge $\sqrt2$, each edge a face diagonal of the cube.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair o=(0.45,0.35);
+pair v000=(0,0),v100=(1,0),v010=o,v110=(1,0)+o,v001=(0,1),v101=(1,1),v011=o+(0,1),v111=(1,1)+o;
+draw(v000--v100--v101--v001--cycle);draw(v100--v110--v111--v101);draw(v001--v011--v111);
+draw(v000--v010--v110,dashed);draw(v010--v011,dashed);
+draw(v000--v110,dashed+linewidth(0.9));draw(v000--v101,linewidth(0.9));draw(v000--v011,linewidth(0.9));
+draw(v110--v101,linewidth(0.9));draw(v110--v011,linewidth(0.9));draw(v101--v011,linewidth(0.9));
+dot(v000);dot(v110);dot(v101);dot(v011);
+label("$1$",(v000+v100)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The cube has surface area $6$. Each face of the tetrahedron is an equilateral triangle of side $\sqrt2$ and area $\dfrac{\sqrt3}{4}\cdot2=\dfrac{\sqrt3}{2}$, so the tetrahedron has surface area $2\sqrt3$. The ratio is
+\[
+\dfrac{6}{2\sqrt3}=\boxed{\sqrt3}.
+\]

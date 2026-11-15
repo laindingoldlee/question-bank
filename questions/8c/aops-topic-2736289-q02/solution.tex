@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2736289_f1_problem
+% Stable identity: aops-topic-2736289-q02
+\textbf{Invariants.} For each prime $p$, a move replaces the $p$-adic exponents $x,y$ of $a,b$ by $\min(x,y)$ and $\max(x,y)$. So for every prime $p$, the multiset of exponents of $p$ on the board never changes. In particular the product of all the numbers and their lcm $L$ are invariant, and every number on the board always divides $L$.
+
+\textbf{Termination.} Let $g=\gcd(a,b)$ and $l=\operatorname{lcm}(a,b)$, so $gl=ab$. Since neither of $a,b$ divides the other, $g<\min(a,b)$ and $l>\max(a,b)$. Then
+\[(g+l)-(a+b)=\dfrac{(a-g)(b-g)}{g}>0,\]
+because $ab=gl$ gives $g+l-a-b=\dfrac{g^2+ab-ag-bg}{g}$. So the sum of the numbers strictly increases. The board always has the same count of numbers, each dividing $L$, so there are finitely many possible boards and the process must stop.
+
+\textbf{Uniqueness.} The process stops exactly when every two numbers are comparable under divisibility, i.e. the final numbers form a chain $c_1\mid c_2\mid\cdots\mid c_m$. In a chain the exponent of each prime is weakly increasing along the chain. Since the multiset of exponents of $p$ is invariant, the exponent of $p$ in $c_i$ must be the $i$th smallest element of that multiset. So each $c_i$ is determined by the initial numbers alone, and the final set is independent of the moves. $\blacksquare$

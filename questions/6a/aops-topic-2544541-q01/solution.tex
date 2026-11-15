@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2544541_geometry_problem
+% Stable identity: aops-topic-2544541-q01
+The diagonals of a rhombus are perpendicular and bisect each other, so we may take coordinates with $O$ at the origin and
+\[A=(p,0),\quad B=(0,q),\quad C=(-p,0),\quad D=(0,-q)\qquad(p,q>0).\]
+
+\textbf{(a)} The midpoints are
+\[E=\left(\dfrac p2,\dfrac q2\right),\quad F=\left(-\dfrac p2,\dfrac q2\right),\quad G=\left(-\dfrac p2,-\dfrac q2\right),\quad H=\left(\dfrac p2,-\dfrac q2\right).\]
+Its sides are horizontal and vertical, so $EFGH$ is a rectangle (with sides $p$ and $q$, parallel to the diagonals of $ABCD$).
+
+\textbf{(b)} The midpoints of its sides are
+\[I=\left(0,\dfrac q2\right)=\dfrac12B,\quad J=\left(-\dfrac p2,0\right)=\dfrac12C,\quad K=\left(0,-\dfrac q2\right)=\dfrac12D,\quad L=\left(\dfrac p2,0\right)=\dfrac12A.\]
+So $L,I,J,K$ are the images of $A,B,C,D$ under the dilation with centre $O$ and ratio $\dfrac12$. A dilation maps a rhombus to a similar rhombus with parallel sides, scaled by $\dfrac12$; hence $IJKL$ is a rhombus similar to $ABCD$ with half the side length and $\left(\dfrac12\right)^2=\dfrac14$ of its area. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real p=3,q=1.8;
+pair A=(p,0),B=(0,q),C=(-p,0),D=(0,-q);
+pair E1=(A+B)/2,F=(B+C)/2,G=(C+D)/2,H=(D+A)/2;
+pair I=(E1+F)/2,J=(F+G)/2,K=(G+H)/2,L=(H+E1)/2;
+draw(A--B--C--D--cycle,linewidth(0.8));
+draw(E1--F--G--H--cycle,blue);
+draw(I--J--K--L--cycle,red+linewidth(0.8));
+draw(A--C,gray+dotted);draw(B--D,gray+dotted);
+dot((0,0));label("$O$",(0,0),SW,fontsize(8pt));
+label("$A$",A,E);label("$B$",B,N);label("$C$",C,W);label("$D$",D,S);
+label("$E$",E1,NE,blue);label("$F$",F,NW,blue);label("$G$",G,SW,blue);label("$H$",H,SE,blue);
+label("$I$",I,N,red+fontsize(9pt));label("$J$",J,W,red+fontsize(9pt));label("$K$",K,S,red+fontsize(9pt));label("$L$",L,E,red+fontsize(9pt));
+\end{asy}

@@ -1,0 +1,10 @@
+The quarter-disks have disjoint interiors and together have the area of one disk of radius $\dfrac{1}{2}$, namely $\dfrac{\pi}{4}$. Thus each tile has shaded area $1-\dfrac{\pi}{4}$. There are $80$ tiles, so the total shaded area is
+\[
+\boxed{80-20\pi\text{ square feet}}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+filldraw(box((0,0),(1,1)),lightblue);pair[] c={(0,0),(1,0),(1,1),(0,1)};for(int i=0;i<4;++i){real t=90*i;path p=c[i]--(c[i]+.5dir(t))..arc(c[i],.5,t,t+90)..(c[i]+.5dir(t+90))--cycle;filldraw(p,white);}draw(box((0,0),(1,1)));label("$1$",(0.5,0),(0,-1));
+\end{asy}

@@ -1,0 +1,21 @@
+Let the common center be $O$ and the circumradii be $R,r$. For any point $F$ on chord $AB$,
+$AF\cdot FB=R^2-OF^2$; this follows either from the power of $F$ or from the chord equation. Since $OD=OE=OF=r$, put $K=R^2-r^2>0$. Then
+\[
+4FB=18DC=3EA=K.
+\]
+Ceva's theorem gives
+\[
+1=\dfrac{BD}{DC}\dfrac{CE}{EA}\dfrac{AF}{FB}
+=\dfrac{18^2\,3^2\,4^2}{K^3}.
+\]
+Hence $K^3=216^2=36^3$, so $K=36$. The sides are
+\[
+AB=4+9=13,\quad BC=18+2=20,\quad CA=3+12=15.
+\]
+Their perimeter is $\boxed{48}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair B=(0,0),C=(20,0),A=(43./5,6*sqrt(66)/5),D=(18,0),E=C+(A-C)/5,F=A+4*(B-A)/13;pair O=(10,(169-20*A.x)/(2*A.y));real t=18/(18+2);draw(circle(O,abs(A-O)),gray);draw(circle(O,abs(D-O)),blue);draw(A--B--C--cycle);draw(D--E--F--cycle,blue);draw(A--D,dashed);draw(B--E,dashed);draw(C--F,dashed);dot(O);label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));label("$D$",D,(0,-1));label("$E$",E,(1,1));label("$F$",F,(-1,0));label("$O$",O,(0,-1));
+\end{asy}

@@ -1,0 +1,7 @@
+There are $\binom{10}{4}=210$ paths without restrictions. Those through $(2,3)$ number $\binom52\binom51=50$, and those through $(5,4)$ number $\binom94=126$. Paths through both must visit them in that order and number $\binom52\binom41=40$. Inclusion-exclusion gives $\boxed{210-50-126+40=74}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=0;x<=6;++x)draw((x,0)--(x,4),lightgray);for(int y=0;y<=4;++y)draw((0,y)--(6,y),lightgray);dot((2,3),red+5bp);dot((5,4),red+5bp);label("$(2,3)$",(2,3),NW);label("$(5,4)$",(5,4),N);label("start",(0,0),SW);label("finish",(6,4),NE);
+\end{asy}

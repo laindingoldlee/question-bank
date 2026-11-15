@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2452011_ash_ketchum_problems
+% Stable identity: aops-topic-2452011-q27
+Each interior angle of an equiangular hexagon is $120^\circ$. Extend sides $AB$, $CD$ and $EF$. Lines $AB$ and $CD$ meet at a point $Q$ beyond $B$ and $C$, and triangle $BQC$ has angles $180^\circ-120^\circ=60^\circ$ at $B$ and at $C$, so it is equilateral with side $BC=4$. In the same way lines $CD$ and $EF$ meet at $R$, with triangle $DRE$ equilateral of side $DE=3$, and lines $EF$ and $AB$ meet at $P$, with triangle $FPA$ equilateral of side $FA=5$. So the three lines form a large equilateral triangle $PQR$ with side
+\[PQ=PA+AB+BQ=FA+AB+BC=5+3+4=12.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0), Q=(12,0), R=(6,6*sqrt(3));
+pair A=(5,0), B=(8,0), C=Q+4*dir(120), D=Q+9*dir(120), Ep=R+3*dir(240), F=5*dir(60);
+fill(A--B--C--D--Ep--F--cycle,rgb(0.85,0.9,1));
+draw(P--Q--R--cycle,dashed);
+draw(A--B--C--D--Ep--F--cycle,linewidth(0.9));
+label("$A$",A,S); label("$B$",B,S); label("$C$",C,E); label("$D$",D,E); label("$E$",Ep,W); label("$F$",F,W);
+label("$3$",(A+B)/2,N); label("$4$",(B+C)/2,NW); label("$5$",(C+D)/2,W); label("$3$",(D+Ep)/2,S); label("$4$",(Ep+F)/2,E); label("$5$",(F+A)/2,E);
+label("$5$",(P+A)/2,S,gray); label("$4$",(B+Q)/2,S,gray); label("$3$",(D+R)/2,E,gray);
+label("$P$",P,SW); label("$Q$",Q,SE); label("$R$",R,N);
+\end{asy}
+
+The hexagon is the large triangle minus the three corner triangles, so its area is
+\[\dfrac{\sqrt3}{4}\left(12^2-5^2-4^2-3^2\right)=\dfrac{\sqrt3}{4}\cdot94=\boxed{\dfrac{47\sqrt3}{2}}.\]

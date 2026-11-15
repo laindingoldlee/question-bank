@@ -1,0 +1,45 @@
+% Source: https://artofproblemsolving.com/community/c3h1378404_geometric_problem
+% Stable identity: aops-topic-1378404-q01
+Let $\angle BAD=\angle DAC=\alpha$, so $\angle A=2\alpha$.
+
+\textbf{Angles from $AC=AD$.} Triangle $ACD$ is isosceles with apex angle $\alpha$, so $\angle ACD=\angle ADC=90^\circ-\dfrac{\alpha}{2}$. Hence $\angle C=90^\circ-\dfrac{\alpha}{2}$, $\angle B=180^\circ-2\alpha-\angle C=90^\circ-\dfrac{3\alpha}{2}$ (so $\alpha<60^\circ$), and $\angle ADB=180^\circ-\angle ADC=90^\circ+\dfrac{\alpha}{2}$.
+
+\textbf{Two expressions for $AB$.} Take $AD=AC=1$.
+\begin{itemize}
+\item In triangle $ABD$, the law of sines gives $\dfrac{AB}{\sin\angle ADB}=\dfrac{AD}{\sin B}$, so $AB=\dfrac{\cos\dfrac{\alpha}{2}}{\cos\dfrac{3\alpha}{2}}$.
+\item Since $DE\parallel AB$, $\angle ADE=\angle BAD=\alpha=\angle DAE$, so triangle $ADE$ is isosceles with $EA=ED$ and $AE=\dfrac{AD}{2\cos\alpha}=\dfrac{1}{2\cos\alpha}$. Since $AB=BE$, triangle $ABE$ is isosceles with base $AE$ and base angles $\angle BAE=2\alpha$, so $AE=2AB\cos2\alpha$ and $AB=\dfrac{1}{4\cos\alpha\cos2\alpha}$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+void tk(pair P,pair Q,int n,real t=0.5,real h=0.08,real g=0.07,pen p=currentpen){pair m=P+t*(Q-P),u=unit(Q-P),v=rotate(90)*u;for(int i=0;i<n;++i){pair c=m+(i-(n-1)/2)*g*u;draw(c-h*v--c+h*v,p);}}
+pair A=(0,0),B=(4*Sin(70),0),C=4*Sin(30)*dir(80);
+pair D=B+(4*Sin(70))/(4*Sin(70)+4*Sin(30))*(C-B);
+pair E=C*(D.y/C.y);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,linewidth(0.9)); draw(E--D,linewidth(0.9),MidArrow(4)); draw(A--B,linewidth(0.9),MidArrow(4));
+draw(B--E,blue+dashed);
+tk(A,C,1); tk(A,D,1); tk(A,B,2,0.72,0.08,0.07,blue); tk(B,E,2,0.5,0.08,0.07,blue);
+draw(arc(A,0.42,0,40)); draw(arc(A,0.5,40,80));
+label("$40^\circ$",A+0.72*dir(16),fontsize(8pt)); label("$40^\circ$",A+0.75*dir(61),fontsize(8pt));
+dot(D);dot(E);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$D$",D,NE); label("$E$",E,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Solve.} Equating the two expressions,
+\[
+4\cos\dfrac{\alpha}{2}\cos\alpha\cos2\alpha=\cos\dfrac{3\alpha}{2}.
+\]
+Multiply by $2\sin\dfrac{\alpha}{2}$ and use $2\sin x\cos x=\sin2x$ three times on the left, and $2\sin x\cos y=\sin(x+y)+\sin(x-y)$ on the right:
+\[
+\sin4\alpha=\sin2\alpha-\sin\alpha .
+\]
+Since $\sin4\alpha-\sin2\alpha=2\cos3\alpha\sin\alpha$, this becomes $\sin\alpha\,(2\cos3\alpha+1)=0$, so $\cos3\alpha=-\dfrac{1}{2}$. With $0<3\alpha<180^\circ$, $3\alpha=120^\circ$ and $\alpha=40^\circ$. Therefore $\angle A=80^\circ$, $\angle C=70^\circ$ and
+\[
+m\angle ABC=90^\circ-60^\circ=\boxed{30^\circ}.
+\]
+Check: with $\angle A=80^\circ$, $\angle B=30^\circ$, $\angle C=70^\circ$, the figure (drawn to scale from these angles) has $AD=AC$ and $BE=AB$.

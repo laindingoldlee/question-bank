@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1359377_happy_polygons
+% Stable identity: aops-topic-1359377-q01
+\textbf{Convex implies happy.} Let $K$ be a convex polygon (with its interior) and $\ell$ a line not containing a side. Then $\ell\cap K$ is convex, so it is empty, a point, or a segment $XY$.
+\begin{itemize}
+\item If $\ell$ contains an interior point $Z$ of $K$, take a disc $D$ around $Z$ inside $K$. For a point $W$ strictly between $X$ and $Z$, the homothety with centre $X$ and ratio $\dfrac{XW}{XZ}$ maps $D$ to a disc around $W$ that lies in the convex hull of $X$ and $D$, hence in $K$; so $W$ is interior. The same holds between $Z$ and $Y$. So $\ell$ meets the boundary only at $X$ and $Y$.
+\item If $\ell$ contains no interior point, then $\ell\cap K$ lies on the boundary and $\ell$ is a supporting line, which meets a convex polygon in a vertex or a whole side. A side is excluded, so it meets the boundary in one point.
+\end{itemize}
+\textbf{Happy implies convex.} Suppose $K$ is not convex. Then there are points of $K$ whose connecting segment leaves $K$; since $K$ is the closure of its interior and its exterior is open, we can move them slightly to interior points $P,Q$ such that some point $R$ between them is exterior, and (moving them a little more) such that line $PQ$ contains no side (only finitely many lines are to be avoided).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair p1=(0,0),p2=(4,0),p3=(4,3),p4=(2,1.2),p5=(0,3);
+fill(p1--p2--p3--p4--p5--cycle,paleblue);
+draw(p1--p2--p3--p4--p5--cycle,linewidth(0.9));
+draw((-0.8,2)--(4.8,2),red);
+pair X1=(0,2),X2=(10/9,2),X3=(26/9,2),X4=(4,2);
+dot(X1,red);dot(X2,red);dot(X3,red);dot(X4,red);
+pair P=(0.45,2),R=(2,2),Q=(3.55,2);
+dot(P);dot(R);dot(Q);
+label("$P$",P,S); label("$R$",R,N); label("$Q$",Q,S);
+label("$V$",p4,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Walk along the line from $P$ to $R$: we go from an interior point to an exterior point, so we cross the boundary at least once strictly between $P$ and $R$. Likewise strictly between $R$ and $Q$. Beyond $Q$ the line eventually leaves the bounded polygon, so it crosses the boundary again beyond $Q$. These are three different boundary points, so $K$ is not happy. (In the figure the line through $P,R,Q$ meets the boundary of the non-convex pentagon in four points.)
+
+So a polygon is happy if and only if it is convex. Without the restriction ``not containing a side'' no polygon would be happy, because the line through a side meets the boundary in infinitely many points.

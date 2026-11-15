@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1846778_two_random_proofs
+% Stable identity: aops-topic-1846778-q01
+\textbf{(a)} Since $\angle DAB=90^\circ$ and $\angle ABC=90^\circ$, the sides $AD$ and $BC$ are both perpendicular to $AB$. Two lines in a plane that are perpendicular to the same line are parallel (the transversal $AB$ makes co-interior angles $90^\circ+90^\circ=180^\circ$ with them). So $AD\parallel BC$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(5,0),C=(5,2.3),D=(0,3.5);
+draw(A--B--C--D--cycle,linewidth(0.9));
+real e=0.35;
+draw((e,0)--(e,e)--(0,e));
+draw((5-e,0)--(5-e,e)--(5,e));
+// parallel marks on AD and BC
+path chev(pair p){return (p+(-0.13,-0.1))--p--(p+(0.13,-0.1));}
+draw(chev((0,1.85)),linewidth(0.8));draw(chev((5,1.25)),linewidth(0.8));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(b)} In a parallelogram, opposite angles are equal. So $\angle C=\angle A=90^\circ$ and $\angle D=\angle B=90^\circ$. All four angles are right angles, so $ABCD$ is a rectangle. $\blacksquare$

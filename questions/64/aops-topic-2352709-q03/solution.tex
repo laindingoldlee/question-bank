@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2352709_619th_post
+% Stable identity: aops-topic-2352709-q03
+Let $t=\dfrac{AX}{AB}=\dfrac{BY}{BC}=\dfrac{CZ}{CA}$, with $0<t<1$. Then $AZ=(1-t)\,AC$, and since triangles $AXZ$ and $ABC$ share the angle at $A$,
+\[\dfrac{[AXZ]}{[ABC]}=\dfrac{AX}{AB}\cdot\dfrac{AZ}{AC}=t(1-t).\]
+The same holds for the corner triangles at $B$ and at $C$. Removing the three corners,
+\[\dfrac{[XYZ]}{[ABC]}=1-3t(1-t)=\dfrac{7}{12},\qquad t(1-t)=\dfrac{5}{36},\]
+so $36t^2-36t+5=0$ and $t=\dfrac16$ or $t=\dfrac56$. The two cases are mirror images of each other (shown below); in both,
+\[|AX-BX|=|7t-7(1-t)|=7|2t-1|=7\cdot\dfrac23=\boxed{\dfrac{14}{3}}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(10cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(7,0), C=(2.5,24/7);
+real[] ts={1/6,5/6};
+for(int i=0;i<2;++i){
+  real t=ts[i]; pair s=(i*9.5,0);
+  pair X=A+t*(B-A), Y=B+t*(C-B), Z=C+t*(A-C);
+  fill(shift(s)*(X--Y--Z--cycle),paleblue);
+  draw(shift(s)*(A--B--C--cycle),linewidth(0.9)); draw(shift(s)*(X--Y--Z--cycle),blue);
+  dot(shift(s)*X); dot(shift(s)*Y); dot(shift(s)*Z);
+  label("$A$",shift(s)*A,SW); label("$B$",shift(s)*B,SE); label("$C$",shift(s)*C,N);
+  label("$X$",shift(s)*X,S); label("$Y$",shift(s)*Y,NE); label("$Z$",shift(s)*Z,NW);
+  label(i==0 ? "$t=\dfrac16$" : "$t=\dfrac56$",shift(s)*(3.5,-1.1));
+}
+\end{asy}

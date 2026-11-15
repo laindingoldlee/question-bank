@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h1682086_manhole_covers_are_round
+% Stable identity: aops-topic-1682086-q01
+\textbf{(a)} Turn the cover on its edge and lower it so that its side of length $s$ lies along a diagonal of the hole. The diagonal has length $h\sqrt2>s$, and the cover is (practically) flat, so it passes through. So a square cover can fall into its hole, while a round cover of diameter $d$ over a round hole of smaller diameter cannot: every chord of the hole is shorter than $d$.
+
+\textbf{(b)} The boundary consists of three arcs of $60^\circ$: arc $BC$ centred at $A$, arc $CA$ centred at $B$, arc $AB$ centred at $C$. At a point $X$ of arc $BC$ the outward normal is the direction of $\overrightarrow{AX}$; as $X$ runs from $B$ to $C$ these directions fill a $60^\circ$ range. At the vertex $A$, the region lies within the angle of the two arcs meeting there, and the lines touching the region at $A$ only are those whose outward normal lies between the directions $\overrightarrow{BA}$ and $\overrightarrow{CA}$ (a $60^\circ$ range): these are exactly the directions opposite to the normals of arc $BC$. The same holds for the other arcs and vertices, so the $3\cdot60^\circ+3\cdot60^\circ=360^\circ$ of directions are all covered.
+
+Now take any direction $u$ of a supporting line. Then $u$ or $-u$ is the outward normal of an arc at some point; say (after relabelling, and swapping $u$ and $-u$ if needed) $u$ is the unit vector $\dfrac{1}{w}\overrightarrow{AX}$ for a point $X$ of arc $BC$. The supporting line with outward normal $u$ touches the region at $X$, and the supporting line with outward normal $-u$ touches it at $A$. Both lines are perpendicular to $AX$, so the distance between them is $AX=w$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real w=4;
+pair A=(0,0),B=(w,0),C=w*dir(60);
+path arcBC=arc(A,w,0,60),arcCA=arc(B,w,120,180),arcAB=arc(C,w,240,300);
+fill(arcBC--arcCA--arcAB--cycle,palegray);
+draw(arcBC,linewidth(1));draw(arcCA,linewidth(1));draw(arcAB,linewidth(1));
+draw(A--B--C--cycle,dashed+gray);
+real t=25; pair u=dir(t);
+pair X=A+w*u;
+pair nn=rotate(90)*u;draw((A-2.2*nn)--(A+2.2*nn),blue);
+draw((X-2.2*nn)--(X+2.2*nn),blue);
+draw(A--X,red+linewidth(0.8));
+dot(A);dot(B);dot(C);dot(X,red);
+label("$A$",A,dir(200));label("$B$",B,dir(-40));label("$C$",C,N);
+label("$X$",X,dir(30),red);label("$w$",(A+X)/2,dir(115),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+
+\textbf{(c)} Each arc has radius $w$ and angle $60^\circ$, so the perimeter is $3\cdot\dfrac{\pi w}{3}=\boxed{\pi w}$ (the same as a circle of diameter $w$). The region is the triangle plus three circular segments, each a $60^\circ$ sector minus the triangle:
+\[
+\text{Area}=\dfrac{\sqrt3}{4}w^2+3\left(\dfrac{\pi w^2}{6}-\dfrac{\sqrt3}{4}w^2\right)=\boxed{\dfrac{(\pi-\sqrt3)w^2}{2}}.
+\]

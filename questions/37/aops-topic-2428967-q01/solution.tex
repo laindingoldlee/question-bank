@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2428967_least_common_multiplelcm____what_are_all_the_triads_a_b_c__that_will_be_
+% Stable identity: aops-topic-2428967-q01
+\textbf{(a)} Each of $a,b,c$ divides $100=2^2\cdot5^2$, so we can write $a=2^{x_1}5^{y_1}$, $b=2^{x_2}5^{y_2}$, $c=2^{x_3}5^{y_3}$ with all exponents in $\{0,1,2\}$. Then $\operatorname{lcm}(a,b,c)=100$ exactly when $\max(x_1,x_2,x_3)=2$ and $\max(y_1,y_2,y_3)=2$, i.e. at least one of the numbers is divisible by $4$ and at least one is divisible by $25$. The number of triples $(x_1,x_2,x_3)\in\{0,1,2\}^3$ with maximum $2$ is $3^3-2^3=19$ (all triples minus those using only $0$ and $1$), and the same holds for the $y$'s, independently. So there are $19^2=\boxed{361}$ ordered triples.
+
+\textbf{(b)} Sort the ordered triples by how many entries are equal.
+\begin{itemize}
+\item All three equal: $\operatorname{lcm}(a,a,a)=a$, so only $(100,100,100)$: $1$ ordered triple.
+\item Exactly two equal, say the values $u,u,w$ with $u\ne w$: then $\operatorname{lcm}(u,w)=100$. The ordered pairs $(u,w)$ with $\operatorname{lcm}(u,w)=100$ number $(3^2-2^2)^2=25$; removing $u=w=100$ leaves $24$. Each gives one unordered triple $\{u,u,w\}$ and $3$ ordered triples (choose the position of $w$): $72$ ordered triples.
+\item All different: $361-1-72=288$ ordered triples, and each unordered triple of three different numbers is counted $3!=6$ times: $48$ unordered triples.
+\end{itemize}
+So there are $1+24+48=\boxed{73}$ unordered triples.

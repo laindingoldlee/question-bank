@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1684550_area_of_a_parallelogram
+% Stable identity: aops-topic-1684550-q01
+Let $AD=a$, so $AB=2a$ and $AM=MB=a$. Also $BC=AD=a$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),D=2*dir(62),C=B+D,M=(A+B)/2;
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(D--M--C,linewidth(0.8)+blue);
+pair u=unit(D-M),v=unit(C-M);real r=0.28;
+draw(M+r*u--M+r*(u+v)--M+r*v,linewidth(0.6));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$M$",M,S);
+label("$a$",(A+M)/2,S);label("$a$",(M+B)/2,S);label("$a$",(A+D)/2,W);label("$a$",(B+C)/2,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{$\angle DMC=90^\circ$.} Triangle $AMD$ is isosceles with $AM=AD$, so $\angle AMD=\angle ADM=\dfrac{180^\circ-\angle A}{2}$. Triangle $BMC$ is isosceles with $BM=BC$, so $\angle BMC=\dfrac{180^\circ-\angle B}{2}$. Since $\angle A+\angle B=180^\circ$ in a parallelogram,
+\[
+\angle AMD+\angle BMC=\dfrac{360^\circ-180^\circ}{2}=90^\circ,
+\]
+and therefore $\angle DMC=180^\circ-90^\circ=90^\circ$.
+
+\textbf{Areas.} Triangle $DMC$ has base $DC$ and its vertex $M$ on the opposite side $AB$, so its area is half the area of the parallelogram. Since it is right-angled at $M$, its area is also $\dfrac{1}{2}MC\cdot MD$. Hence
+\[
+[ABCD]=2[DMC]=MC\cdot MD. \qquad\blacksquare
+\]

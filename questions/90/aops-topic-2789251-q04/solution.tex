@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2789251_2012_manhattan_mathematical_olympiad_grades_78_problems_14
+% Stable identity: aops-topic-2789251-q04
+Label the vertices $0,1,2,3,4$ around the pentagon. The diagonals join $i$ to $i\pm2$, so they form a single $5$-cycle $0\to2\to4\to1\to3\to0$ (a pentagram). Moving along diagonals is therefore moving along the sides of this new pentagon. Along a cycle, pawns can never pass each other, so their cyclic order around that $5$-cycle never changes. With three pawns, keeping one fixed and swapping the other two reverses their cyclic order. So $\boxed{\text{no}}$.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair[] V;for(int k=0;k<5;++k) V.push(dir(90-72k));draw(V[0]--V[1]--V[2]--V[3]--V[4]--cycle,gray(0.6));draw(V[0]--V[2]--V[4]--V[1]--V[3]--cycle);for(int k=0;k<5;++k) label("$"+string(k)+"$",V[k],V[k]);dot(V[0],black+linewidth(5));dot(V[1],black+linewidth(5));dot(V[2],black+linewidth(5));
+\end{asy}

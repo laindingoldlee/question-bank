@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1440120_which_is_greater_gamemarathon
+% Stable identity: aops-topic-1440120-q02
+Let $O$ be the circumcentre and $I$ the incentre:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0.6,2.6),B=(-2.2,-0.9),C=(2.4,-0.9);
+real a=abs(B-C),bb=abs(C-A),c=abs(A-B);
+pair I=(a*A+bb*B+c*C)/(a+bb+c);
+real s=(a+bb+c)/2; real K=abs(cross(B-A,C-A))/2; real r=K/s;
+// circumcentre
+pair O; { real d=2*(A.x*(B.y-C.y)+B.x*(C.y-A.y)+C.x*(A.y-B.y));
+ real ux=((A.x^2+A.y^2)*(B.y-C.y)+(B.x^2+B.y^2)*(C.y-A.y)+(C.x^2+C.y^2)*(A.y-B.y))/d;
+ real uy=((A.x^2+A.y^2)*(C.x-B.x)+(B.x^2+B.y^2)*(A.x-C.x)+(C.x^2+C.y^2)*(B.x-A.x))/d; O=(ux,uy);}
+real R=abs(A-O);
+draw(circle(O,R),blue+linewidth(0.9));
+draw(A--B--C--cycle,linewidth(1));
+draw(circle(I,r),red+linewidth(0.9));
+pair T=(I.x,B.y);
+dot(T,red);label("$T$",T,S,red);
+dot(A);dot(B);dot(C);
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,E);
+dot(I,red);label("$I$",I,N,red);
+dot(O,blue);label("$O$",O,dir(150),blue);
+draw(O--C,blue+dashed);label("$R$",O+0.75*(C-O)+0.2*unit(rotate(90)*(C-O)),blue);
+draw(I--T,red+dashed);label("$r$",(I+T)/2,W,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The incircle lies inside the triangle, and the triangle lies inside the circumcircle: the circumdisc is convex and contains the three vertices, so it contains the whole triangle. Hence the incircle, together with its interior, lies in the closed circumdisc. A disc of radius $r$ contained in a disc of radius $R$ has $r\le R$ (its diameter is a segment inside the bigger disc, whose longest segments are its diameters, of length $2R$).
+
+Equality $r=R$ would force the two discs to coincide. But the incircle touches $BC$ at a point $T$ strictly between $B$ and $C$, and every point of the chord $BC$ other than $B$ and $C$ lies strictly inside the circumcircle; so $T$ is on the incircle but not on the circumcircle, and the circles are different. Therefore $R>r$. $\blacksquare$
+
+(In fact Euler's inequality gives the stronger bound $R\ge2r$, with equality only for equilateral triangles.)

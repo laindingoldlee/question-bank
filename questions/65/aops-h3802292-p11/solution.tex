@@ -1,0 +1,7 @@
+The first move has two choices, clockwise or counterclockwise. Thereafter the island behind has sunk, so each next move is forced in the chosen direction. After visiting all twenty islands the frog is trapped, giving exactly one maximal path for each initial direction. Thus there are $\boxed2$ paths.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p;for(int i=0;i<20;++i)p.push(3dir(90-18i));for(int i=0;i<20;++i){draw(p[i]--p[(i+1)%20]);dot(p[i]);}label("$A$",p[0],(0,1));draw(p[0]--p[1],blue,Arrow);draw(p[0]--p[19],red,Arrow);
+\end{asy}

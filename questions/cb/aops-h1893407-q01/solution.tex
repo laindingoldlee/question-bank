@@ -1,0 +1,9 @@
+Each removed corner is an isosceles right triangle with legs $x$. The resulting horizontal or vertical octagon sides have length $5-2x$, while the slanted sides have length $x\sqrt2$. Regularity gives $5-2x=x\sqrt2$, so $x=\dfrac{5}{2+\sqrt2}$. The four removed triangles have total area
+\[4\cdot\dfrac{x^2}{2}=2x^2=25(3-2\sqrt2)\approx4.2893.\]
+Rounded to the nearest integer, this is $\boxed4$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real x=5/(2+sqrt(2));fill((0,0)--(x,0)--(0,x)--cycle,lightgray);fill((5,0)--(5-x,0)--(5,x)--cycle,lightgray);fill((5,5)--(5-x,5)--(5,5-x)--cycle,lightgray);fill((0,5)--(x,5)--(0,5-x)--cycle,lightgray);draw(box((0,0),(5,5)));draw((x,0)--(5-x,0)--(5,x)--(5,5-x)--(5-x,5)--(x,5)--(0,5-x)--(0,x)--cycle,blue);label("$x$",(x/2,0),(0,-1));label("$5-2x$",(2.5,0),(0,-1));label("$5$",(5,2.5),(1,0));
+\end{asy}

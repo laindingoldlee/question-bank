@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2697553_ellipse_problem
+% Stable identity: aops-topic-2697553-q01
+With $x=AX$ and $y=AY$ uniform on $[0,1]$, the law of cosines gives $XY^2=x^2-xy+y^2$, and the condition is $x^2-xy+y^2\le\dfrac1{\sqrt3}=\rho^2$. The curve $x^2-xy+y^2=\rho^2$ is an ellipse whose first-quadrant arc stays within the unit square (its largest $x$ is $\dfrac{2\rho}{\sqrt3}<1$).
+
+In polar coordinates the first-quadrant region has area
+\[\dfrac{\rho^2}{2}\int_0^{\dfrac\pi2}\dfrac{d\theta}{1-\sin\theta\cos\theta}=\dfrac{\rho^2}{2}\cdot\dfrac{4\pi}{3\sqrt3}=\dfrac{2\pi\rho^2}{3\sqrt3}=\dfrac{2\pi}{9}.\]
+So $p=\dfrac{2\pi}{9}$, $900p=200\pi\approx628.3$, and the answer is $\boxed{628}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(2.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(1,0),C=dir(60);draw(A--B--C--cycle,linewidth(0.8));
+pair X=(0.7,0),Y=0.55*dir(60);dot(X);dot(Y);draw(X--Y,dashed);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$X$",X,S);label("$Y$",Y,NW);
+\end{asy}

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1644406_a_sequence_and_the_arithmetic_mean
+% Stable identity: aops-topic-1644406-q01
+\textbf{(a)} The operation keeps the total sum $1995$ fixed, so the final common value must be $\dfrac{1995}{1996}$. Note that $1996=4\cdot499$.
+
+\emph{Step 1.} Choose the $0$ and $498$ of the ones ($499$ numbers, not all). Their mean is $\dfrac{498}{499}$, so we now have $499$ copies of $a=\dfrac{498}{499}$ and $1497$ ones.
+
+\emph{Steps 2 to 500.} Split the $1996$ numbers into $499$ groups, each consisting of one copy of $a$ and three ones (this uses exactly the $499$ copies of $a$ and the $3\cdot499=1497$ ones). Apply the operation to each group in turn (four numbers each time, not all). The mean of a group is
+\[
+\dfrac{a+3}{4}=\dfrac{\dfrac{498}{499}+3}{4}=\dfrac{498+1497}{4\cdot499}=\dfrac{1995}{1996},
+\]
+and the groups do not overlap, so after the $499$ operations every number equals $\dfrac{1995}{1996}$.
+
+\textbf{(b)} Suppose that in each operation only one chosen number $u$ is replaced by the mean of the chosen numbers, and that after some operation all numbers are equal to $c$. Before that operation, all numbers other than the replaced one were already $c$ (they did not change), so the chosen numbers were $u$ and some copies of $c$, say $m\ge1$ of them, with mean $\dfrac{u+mc}{m+1}$. This mean is the new value $c$, so $u+mc=(m+1)c$, that is $u=c$: the sequence was already constant before the operation. Going back step by step, the starting sequence would be constant, which it is not. So with this rule the numbers can never all become equal.

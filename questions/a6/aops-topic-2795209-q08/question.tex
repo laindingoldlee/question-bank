@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2795209_2021_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2795209-q08
+Trapezoid $ABCD$ has $AB\parallel DC$, $AB=12$, $CD=8$ and area $50$. Points $P_1,P_2,P_3$ lie on $AB$ (in order from $A$) and points $Q_1,Q_2$ lie on $DC$ (in order from $D$). Segments $DP_1$, $P_1Q_1$, $Q_1P_2$, $P_2Q_2$, $Q_2P_3$, $P_3C$ divide the trapezoid into seven triangles: the four light triangles $AP_1D$, $P_1P_2Q_1$, $P_2P_3Q_2$, $P_3BC$ and the three dark triangles $DQ_1P_1$, $Q_1Q_2P_2$, $Q_2CP_3$. Find the total light area minus the total dark area.
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(12,0),C=(10,5),D=(2,5),P1=(3,0),P2=(6,0),P3=(9,0),Q1=(4.5,5),Q2=(7,5);
+fill(A--P1--D--cycle,gray(0.85));fill(P1--P2--Q1--cycle,gray(0.85));fill(P2--P3--Q2--cycle,gray(0.85));fill(P3--B--C--cycle,gray(0.85));
+fill(D--Q1--P1--cycle,gray(0.45));fill(Q1--Q2--P2--cycle,gray(0.45));fill(Q2--C--P3--cycle,gray(0.45));
+draw(A--B--C--D--cycle);draw(D--P1--Q1--P2--Q2--P3--C);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$P_1$",P1,S);label("$P_2$",P2,S);label("$P_3$",P3,S);label("$Q_1$",Q1,N);label("$Q_2$",Q2,N);
+\end{asy}

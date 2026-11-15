@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2423114_late_100th_post
+% Stable identity: aops-topic-2423114-q11
+A circle of radius $1$ is surrounded by $4$ circles of radius $r$ as shown: each of the four circles is tangent to the circle of radius $1$ and to two of the other three, and their centres form a square. What is $r$?
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real r=1+sqrt(2);
+draw(circle((0,0),1),linewidth(0.9));
+for(int k=0;k<4;++k) draw(circle((1+r)*dir(45+90k),r),linewidth(0.9));
+dot((0,0)); draw((0,0)--(1,0)); label("$1$",(0.5,0),S);
+pair c=(1+r)*dir(45); dot(c); draw(c--c+r*dir(45)); label("$r$",c+r/2*dir(45),NW);
+\end{asy}

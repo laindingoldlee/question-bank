@@ -1,0 +1,8 @@
+Every area is a positive even integer. If there are $p$ distinct areas, their sum is at least $2+4+\cdots+2p=p(p+1)\le100$, hence $p\le9$.
+To achieve nine, divide the board into five horizontal strips of height $2$. Split the first four strips into widths $(1,9),(2,8),(3,7),(4,6)$, and leave the fifth at width $10$. The nine areas are $2,18,4,16,6,14,8,12,20$, all different. Height $2$ ensures balanced colors in every rectangle. Thus $\boxed{p_{\max}=9}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=0;x<10;++x)for(int y=0;y<10;++y)filldraw(box((x,y),(x+1,y+1)),(x+y)%2==0?white:lightgray,gray(.8));for(int y=0;y<=10;y+=2)draw((0,y)--(10,y),linewidth(1));draw((0,0)--(0,10),linewidth(1));draw((10,0)--(10,10),linewidth(1));for(int j=1;j<=4;++j)draw((j,2*(j-1))--(j,2*j),linewidth(1.4));label("Nine distinct even areas",(5,-1));
+\end{asy}

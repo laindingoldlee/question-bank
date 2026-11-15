@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1952249_triangle_area
+% Stable identity: aops-topic-1952249-q01
+The centres form an equilateral triangle of side $2r$. Each side of the big triangle is tangent to two circles, so it is parallel to the line of their centres at distance $r$; hence the big triangle is equilateral too, with the same centre.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real r=1;pair A=(0,0),B=(2,0),C=(1,sqrt(3));pair G=(A+B+C)/3;
+real s=2+2*sqrt(3);real ir=s/(2*sqrt(3));
+pair X=G+ir*dir(-90)+(-s/2,0),Y=G+ir*dir(-90)+(s/2,0),Z=G+(0,2*ir);
+draw(X--Y--Z--cycle,linewidth(1));
+draw(circle(A,r));draw(circle(B,r));draw(circle(C,r));
+draw(A--B--C--cycle,dashed);dot(A);dot(B);dot(C);
+draw(A--(0,-1),blue);label("$r$",(0,-0.5),W,blue);
+draw((0,-1)--X,red+linewidth(1.2));
+label("$r\sqrt3$",(X+(0,-1))/2,S,red);label("$2r$",(1,-1),S);
+label("$30^\circ$",X,(2.6,0.75),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Look at a side, say the bottom one. Its length consists of the segment of length $2r$ between the two tangency points (directly below the two centres) plus two corner pieces. At a corner, the angle of the big triangle is $60^\circ$ and the line from the vertex to the nearby centre bisects it, so the piece from the vertex to the tangency point is $\dfrac{r}{\tan30^\circ}=r\sqrt3$. So the side length is
+\[
+s=2r+2r\sqrt3=2r\left(1+\sqrt3\right),
+\]
+and the area is
+\[
+\dfrac{\sqrt3}{4}s^2=\sqrt3\,r^2\left(1+\sqrt3\right)^2=\sqrt3\,r^2\left(4+2\sqrt3\right)=\boxed{\left(6+4\sqrt3\right)r^2}.
+\]

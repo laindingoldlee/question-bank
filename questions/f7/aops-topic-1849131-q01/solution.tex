@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1849131_geometry_question_from_intro_to_geometry_textbook
+% Stable identity: aops-topic-1849131-q01
+\textbf{(a)} Let $P$ be the floor of a room and let $M$ and $N$ be two walls that meet at a corner. Both walls are perpendicular to the floor, and they meet along the vertical corner line. In coordinates: $P$ is the plane $z=0$, $M$ is the plane $x=0$ and $N$ is the plane $y=0$; $M$ and $N$ are both perpendicular to $P$ and meet in the $z$-axis.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair pr(real x,real y,real z){return (x+0.42*y,z+0.30*y);}
+path floor=pr(-2.6,-3.6,0)--pr(4.6,-3.6,0)--pr(4.6,2.8,0)--pr(-2.6,2.8,0)--cycle;
+fill(floor,gray(0.93));draw(floor,gray(0.4));
+path wallN=pr(0,0,0)--pr(4,0,0)--pr(4,0,3.2)--pr(0,0,3.2)--cycle;
+path wallM=pr(0,0,0)--pr(0,-3.2,0)--pr(0,-3.2,3.2)--pr(0,0,3.2)--cycle;
+fill(wallN,paleblue);draw(wallN,blue);
+fill(wallM,palered);draw(wallM,red);
+draw(pr(0,0,0)--pr(0,0,3.9),linewidth(1.4));
+real e=0.4;
+draw(pr(e,0,0)--pr(e,0,e)--pr(0,0,e),linewidth(0.6));
+draw(pr(0,-e,0)--pr(0,-e,e)--pr(0,0,e),linewidth(0.6));
+dot(pr(0,0,0));
+label("$m$",pr(0,0,3.9),N);
+label("$N$",pr(3.4,0,2.6),blue);
+label("$M$",pr(0,-2.6,2.6),red);
+label("$P$",pr(3.8,-2.9,0));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(b)} We use two standard facts.
+\begin{itemize}
+\item If planes $M$ and $P$ are perpendicular and meet in the line $g$, then a line lying in $M$ and perpendicular to $g$ is perpendicular to the plane $P$. (This is what a right dihedral angle means: such a line is perpendicular to $g$ and to the line of $P$ perpendicular to $g$ at the same point, i.e.\ to two intersecting lines of $P$.)
+\item Through a given point there is exactly one line perpendicular to a given plane.
+\end{itemize}
+
+First, $m$ is not contained in $P$. Otherwise $m$ would be the line in which $M$ meets $P$ and also the line in which $N$ meets $P$; but there is only one plane through a line of $P$ perpendicular to $P$, so $M=N$, which contradicts the fact that $M$ and $N$ meet in a line.
+
+So choose a point $X$ on $m$ that is not on $P$. Let $g=M\cap P$. In the plane $M$, draw the line $\ell$ through $X$ perpendicular to $g$. By the first fact, $\ell$ is perpendicular to $P$. In the same way, the line $\ell'$ through $X$ in the plane $N$ perpendicular to $N\cap P$ is perpendicular to $P$. By the second fact, $\ell=\ell'$. This line lies in $M$ and in $N$, so it lies in their intersection $m$. Both are lines, so $\ell=m$, and therefore $\boxed{m\perp P}$. $\blacksquare$

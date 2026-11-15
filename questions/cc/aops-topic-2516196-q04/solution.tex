@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2516196_select_problems_from_the_imtc
+% Stable identity: aops-topic-2516196-q04
+\textbf{The triangle $ABC$.} $3x-2=5x+6$ gives $x=-4$, so $(-4,-14)$; $3x-2=2x$ gives $(2,4)$; $5x+6=2x$ gives $(-2,-4)$. By the shoelace formula,
+\[[ABC]=\dfrac12\left|(-4)(4-(-4))+2\bigl((-4)-(-14)\bigr)+(-2)\bigl((-14)-4\bigr)\right|=\dfrac12\left|-32+20+36\right|=12.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair A=(-4,-14), B=(2,4), C=(-2,-4);
+real u=0.28;
+pair T(pair p){return (u*p.x,u*p.y);}
+draw(T((-7,0))--T((7,0)),Arrow(5)); draw(T((0,-16))--T((0,9)),Arrow(5));
+label("$x$",T((7,0)),E); label("$y$",T((0,9)),N);
+fill(T(A)--T(B)--T(C)--cycle,rgb(0.85,0.9,1)); draw(T(A)--T(B)--T(C)--cycle,blue+linewidth(0.9));
+draw(T((5,-16))--T((5,9)),red+dashed); label("$x=5$",T((5,9)),N,red+fontsize(8pt));
+dot(T(A)); dot(T(B)); dot(T(C));
+label("$(-4,-14)$",T(A),W,fontsize(7pt)); label("$(2,4)$",T(B),E,fontsize(7pt)); label("$(-2,-4)$",T(C),W,fontsize(7pt));
+\end{asy}
+
+\textbf{The tilted copy.} Use space coordinates $(x,y,z)$ with the coordinate plane as $z=0$. A plane through the line $x=5$, $z=0$ at angle $30^\circ$ to $z=0$ is $z=t(x-5)$ with $t=\pm\tan30^\circ$. The vertical line through $(p,q,0)$ meets it at $(p,q,t(p-5))$. So if $\vec u=(u_1,u_2)$ and $\vec v=(v_1,v_2)$ are two edge vectors of $ABC$, the corresponding edges of $A'B'C'$ are $(u_1,u_2,tu_1)$ and $(v_1,v_2,tv_1)$, whose cross product is
+\[\bigl(t(u_2v_1-u_1v_2),\ 0,\ u_1v_2-u_2v_1\bigr),\qquad\text{of length }|u_1v_2-u_2v_1|\sqrt{1+t^2}.\]
+Hence $[A'B'C']=[ABC]\sqrt{1+\tan^230^\circ}=\dfrac{[ABC]}{\cos30^\circ}$, i.e. the area is divided by the cosine of the angle between the planes. Therefore
+\[[A'B'C']=\dfrac{12}{\dfrac{\sqrt3}{2}}=\dfrac{24}{\sqrt3}=8\sqrt3=\dfrac{8\sqrt3}{1}.\]
+So $x=8$, $y=3$, $z=1$ and $xyz=\boxed{24}$.

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3181916_2021_abmc_online_november_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3181916-q10
+The eight cells form an adjacency cycle. Its independent subsets number 47: if one fixed cell is unselected, count independent subsets of a 7-vertex path, namely 34; if it is selected, remove its two neighbours and count a 5-vertex path, namely 13. These path counts follow from $F_n=F_{n-1}+F_{n-2}$ with $F_0=1,F_1=2$. Under either 90-degree rotation, an invariant colouring has period 2 around the cycle; only the empty set and the two alternating sets work, giving 3. Under 180 degrees it has period 4, giving the 7 independent subsets of a 4-cycle. Burnside's lemma gives $\dfrac{47+3+7+3}{4}=\boxed{15}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int x=0;x<3;++x)for(int y=0;y<3;++y)if(x!=1||y!=1){draw((x,y)--(x+1,y)--(x+1,y+1)--(x,y+1)--cycle);}label("missing",(1.5,1.5));
+\end{asy}

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2579833_interesting_property
+% Stable identity: aops-topic-2579833-q01
+Let $r$ be the radius. Since $OB\perp AB$ and $OC\perp AC$, triangles $ABO$ and $ACO$ are right-angled at $B$ and $C$. By the Pythagorean theorem,
+\[AB^2=AO^2-OB^2=AO^2-r^2=AO^2-OC^2=AC^2.\]
+Hence $AB=AC$, and triangle $ABC$ is isosceles. $\blacksquare$ (Equivalently, the two right triangles are congruent by RHS.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);real d=1.9;
+pair A=(-d,0.0);
+pair B=(-1/d,sqrt(d^2-1)/d),C=(-1/d,-sqrt(d^2-1)/d);
+draw(circle(O,1));
+draw(A--B--C--cycle,linewidth(0.8));
+draw(O--B,dashed);draw(O--C,dashed);draw(O--A,dotted);
+pair u=unit(O-B),v=unit(A-B);draw((B+0.12*u)--(B+0.12*u+0.12*v)--(B+0.12*v));
+pair u2=unit(O-C),v2=unit(A-C);draw((C+0.12*u2)--(C+0.12*u2+0.12*v2)--(C+0.12*v2));
+dot(O);dot(A);dot(B);dot(C);
+label("$O$",O,E);label("$A$",A,W);label("$B$",B,N);label("$C$",C,S);label("$r$",(O+B)/2,NE,fontsize(9pt));label("$r$",(O+C)/2,SE,fontsize(9pt));
+\end{asy}

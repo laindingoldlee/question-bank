@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2789262_area_ratio
+% Stable identity: aops-topic-2789262-q01
+Use vectors with origin $B$. Then $P=2A-D$ and $Q=-E$, where $E=A+s(C-A)$ for some $s$.
+
+We claim $O=2A-3C$. First, $D$ lies on $BC$, so $P=2A-D$ and $2A-3C$ differ by $D-3C$, a vector along $BC$; hence $2A-3C$ lies on $\ell$. Second, $(2A-3C)-Q=2A-3C+A+s(C-A)=(s-3)(C-A)$, which is parallel to $AC$; hence $2A-3C$ lies on $m$.
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(4,0),A=(1.2,2.2);pair O=2*A-3*C;pair D=(A.x,0),P=2*A-D;draw(A--B--C--cycle);draw(O--A--B--cycle,dashed);draw((O.x-1,P.y)--(P.x+1,P.y),dotted);dot(O);dot(P);
+label("$A$",A,N);label("$B$",B,S);label("$C$",C,SE);label("$O$",O,W);label("$P$",P,N);label("$\ell$",(P.x+1,P.y),E);
+\end{asy}
+
+So $[OAB]=\dfrac12|A\times(2A-3C)|=\dfrac32|A\times C|=3[ABC]$, and the ratio is $\boxed{3}$.

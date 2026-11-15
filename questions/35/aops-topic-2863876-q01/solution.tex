@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2863876_hardish_combo_problem_lmt_accuracy_9_2022_spring
+% Stable identity: aops-topic-2863876-q01
+Group the squares other than the target into two states:
+\begin{itemize}
+\item $L$: the $14$ squares in the top row or left column,
+\item $O$: the other $49$ squares.
+\end{itemize}
+From an $O$ square, exactly $2$ of the $14$ moves go to $L$ (one to the top row, one to the left column) and $12$ stay in $O$. From an $L$ square, say in the top row, $1$ move reaches the target, $6$ stay in that row (state $L$), and $7$ go down the column into $O$.
+
+Let $e_O$ and $e_L$ be the expected numbers of moves. Then
+\[e_O=1+\dfrac{2}{14}e_L+\dfrac{12}{14}e_O,\qquad e_L=1+\dfrac6{14}e_L+\dfrac7{14}e_O.\]
+The first gives $e_O=7+e_L$. Substituting in the second, $\dfrac8{14}e_L=1+\dfrac7{14}(7+e_L)$, so $\dfrac1{14}e_L=\dfrac{63}{14}$ and $e_L=63$, $e_O=70$.
+
+(a) $\boxed{70}$.
+
+(b) $\dfrac{1\cdot0+14\cdot63+49\cdot70}{64}=\dfrac{4312}{64}=\boxed{\dfrac{539}{8}}$.

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1613164_sprint_2017_number_25
+% Stable identity: aops-topic-1613164-q25
+Give each square integer coordinates $(x,y)$, with the shaded squares at $(0,0),(1,0),(0,-1),(1,-1)$, so square $1$ is $(0,1)$ and square $5$ is $(2,-1)$. The square we want is $(8,-1)$.
+
+\textbf{Rings.} Call ring $k$ the squares at ``distance'' exactly $k$ from the block: $-k\le x\le 1+k$, $-1-k\le y\le k$, on the boundary of this $(2k+2)\times(2k+2)$ square. Ring $k$ has $(2k+2)^2-(2k)^2=8k+4$ squares. The spiral numbers ring $1$ (squares $1$ to $12$), then ring $2$, and so on; ring $k$ starts at the square $(1-k,k)$, goes right along the top row to $(1+k,k)$, then down the right column, along the bottom and up the left column. (Ring $1$: $1$ at $(0,1)$, \dots, $12$ at $(-1,1)$; ring $2$ starts with $13$ at $(-1,2)$, as in the figure.)
+
+Before ring $k$ there are $\sum_{j=1}^{k-1}(8j+4)=4(k^2-1)$ numbers, so ring $k$ starts with $4k^2-3$.
+
+\textbf{The square $(8,-1)$.} It is in the right column of ring $7$ (since $x=1+7$). In ring $7$, the top row from $x=-6$ to $x=8$ uses $15$ numbers, starting at $4\cdot49-3=193$, so $(8,7)$ gets $207$. Going down the right column, $(8,y)$ gets $207+(7-y)$, and for $y=-1$ that is
+\[
+207+8=\boxed{215}.
+\]
+\emph{Check with ring $1$:} the formula $4k^2-3+(2k)+(k-y)$ for $(1+k,y)$ gives, for $k=1$, $y=-1$: $1+2+2=5$, which is indeed square $5$.

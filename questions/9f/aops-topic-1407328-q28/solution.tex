@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1407328_mathcounts_problems_for_practice
+% Stable identity: aops-topic-1407328-q28
+Let the centre be $(h,k)$. Equal distances to $(-3,3)$ and $(11,7)$, and to $(-3,3)$ and $(1,-11)$, give
+\[
+(h+3)^2+(k-3)^2=(h-11)^2+(k-7)^2\ \Longrightarrow\ 28h+8k=152\ \Longrightarrow\ 7h+2k=38,
+\]
+\[
+(h+3)^2+(k-3)^2=(h-1)^2+(k+11)^2\ \Longrightarrow\ 8h-28k=104\ \Longrightarrow\ 2h-7k=26 .
+\]
+Solving, $h=6$ and $k=-2$. The squared radius is $(6+3)^2+(-2-3)^2=81+25=106$ (the other two points give $5^2+9^2=106$ as well).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair P1=(-3,3),P2=(11,7),P3=(1,-11),O=(6,-2); real R=sqrt(106);
+draw((-6,0)--(18,0),gray,Arrow(6)); draw((0,-14)--(0,10),gray,Arrow(6));
+label("$x$",(18,0),E,gray); label("$y$",(0,10),N,gray);
+draw(circle(O,R),blue+linewidth(0.9));
+draw(O--P1,red+dashed); draw(O--P2,red+dashed); draw(O--P3,red+dashed);
+dot(P1);dot(P2);dot(P3);dot(O,red);
+label("$(-3,3)$",P1,NW); label("$(11,7)$",P2,NE); label("$(1,-11)$",(-0.2,-11.2),SW);
+label("$(6,-2)$",O,SE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The area is $\boxed{106\pi}$.

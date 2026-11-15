@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2656133_curious_geometry_problem
+% Stable identity: aops-topic-2656133-q01
+The points may lie in the order $B,D,E,C$ or $B,E,D,C$ (both shown below; the figures are drawn with $AB=AC$, as the result says).
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+pair B=(-3,0),C=(3,0),A=(0,4),D=(-1,0),Ep=(1,0);
+draw(A--B--C--cycle,linewidth(0.9));draw(A--D);draw(A--Ep);
+draw(arc(A,0.75,degrees(B-A),degrees(D-A)));draw(arc(A,0.75,degrees(Ep-A),degrees(C-A)));
+dot(D);dot(Ep);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$E$",Ep,S);
+label("$x$",(B+D)/2,S);label("$x$",(Ep+C)/2,S);
+pair s=(8,0);
+pair B2=B+s,C2=C+s,A2=A+s,D2=(1,0)+s,E2=(-1,0)+s;
+draw(A2--B2--C2--cycle,linewidth(0.9));draw(A2--D2);draw(A2--E2);
+draw(arc(A2,0.65,degrees(B2-A2),degrees(D2-A2)));draw(arc(A2,0.95,degrees(E2-A2),degrees(C2-A2)));
+dot(D2);dot(E2);
+label("$A$",A2,N);label("$B$",B2,SW);label("$C$",C2,SE);label("$D$",D2,S);label("$E$",E2,S);
+draw((B2+(0,-0.75))--(D2+(0,-0.75)),Arrows(TeXHead));label("$x$",(B2+D2)/2+(0,-0.75),S);
+draw((E2+(0,-1.55))--(C2+(0,-1.55)),Arrows(TeXHead));label("$x$",(E2+C2)/2+(0,-1.55),S);
+\end{asy}
+
+\emph{Step 1.} $BE=CD$ and $\angle BAE=\angle CAD$. In the order $B,D,E,C$: $BE=BD+DE=CE+DE=CD$, and $\angle BAE=\angle BAD+\angle DAE=\angle CAE+\angle EAD=\angle CAD$. In the order $B,E,D,C$ the same holds with differences: $BE=BD-ED=CE-ED=CD$ and $\angle BAE=\angle BAD-\angle EAD=\angle CAE-\angle DAE=\angle CAD$.
+
+\emph{Step 2.} Triangles with equal bases on line $BC$ and common apex $A$ have equal areas. Using $[XYZ]=\dfrac12\,XY\cdot XZ\sin\angle YXZ$:
+\begin{itemize}
+\item $[ABD]=[ACE]$ (as $BD=CE$): $\dfrac12AB\cdot AD\sin\angle BAD=\dfrac12AC\cdot AE\sin\angle CAE$, so $AB\cdot AD=AC\cdot AE$.
+\item $[ABE]=[ACD]$ (as $BE=CD$): $\dfrac12AB\cdot AE\sin\angle BAE=\dfrac12AC\cdot AD\sin\angle CAD$, so $AB\cdot AE=AC\cdot AD$.
+\end{itemize}
+Multiplying the two equations, $AB^2\cdot AD\cdot AE=AC^2\cdot AD\cdot AE$, so $AB^2=AC^2$ and $AB=AC$. $\blacksquare$

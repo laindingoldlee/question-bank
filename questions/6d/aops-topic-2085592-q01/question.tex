@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2085592_math_kangaroo_problem
+% Stable identity: aops-topic-2085592-q01
+The vertices of a cube are labelled $A$ to $H$ so that $ABCD$, $ABFE$ and $BCGF$ are faces of the cube, as shown ($D$ is a hidden vertex).
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(3,0), sh=(1.4,1.1), up=(0,3);
+pair C=B+sh, D=A+sh, Ee=A+up, F=B+up, G=C+up, H=D+up;
+draw(A--B--F--Ee--cycle,linewidth(0.9)); draw(B--C--G--F,linewidth(0.9)); draw(Ee--H--G,linewidth(0.9));
+draw(A--D,dashed); draw(D--C,dashed); draw(D--H,dashed);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,E); label("$D$",D,NW);
+label("$E$",Ee,W); label("$F$",F,dir(-20)); label("$G$",G,NE); label("$H$",H,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Maria writes a number on each face of the cube. Then, for each vertex, she adds the numbers on the three faces that meet at that vertex. She gets a total of $14$ at vertex $C$, $16$ at vertex $D$ and $24$ at vertex $E$. What total does she get at vertex $F$?

@@ -1,0 +1,6 @@
+Use inclusion--exclusion on the six monochromatic-face events. If a set of faces forces edge colours to agree, count equivalence classes of the twelve edges; $c$ classes allow $3^c$ colourings. Summing by the number of selected faces gives $531441,118098,10935,972,117,18,3$ for sizes zero through six. Their alternating sum is $423408$. Dividing by $3^{12}$ gives $\dfrac{141136}{177147}\approx\boxed{0.797}$. For instance one face forces four edges into one class, leaving nine classes, which accounts for $6\cdot3^9=118098$. The same union-of-equal-edges rule computes all higher intersections.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair u=(2,0),v=(.8,.7),w=(0,2);draw((0,0)--u--u+v--v--cycle);draw(w--u+w--u+v+w--v+w--cycle);draw((0,0)--w^^u--u+w^^v--v+w^^u+v--u+v+w);pair[] VV={(0,0),u,u+v,v,w,u+w,u+v+w,v+w};string[] nn={"A","B","C","D","E","F","G","H"};for(int i=0;i<8;++i)label("$"+nn[i]+"$",VV[i],i<4?(0,-1):(0,1));
+\end{asy}
+

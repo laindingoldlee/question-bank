@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2235863_solve_in_integers
+% Stable identity: aops-topic-2235863-q01
+Let $a_0=0$, $a_1=1$ and $a_{k+1}=4a_k-a_{k-1}$, so the sequence is $0,1,4,15,56,209,\ldots$. We show that the solutions are exactly
+\[(x,y)=\pm(a_{k+1},a_k)\quad\text{and}\quad(x,y)=\pm(a_k,a_{k+1}),\qquad k\ge0 .\]
+
+\textbf{Signs.} If $xy<0$, the right side is negative, while $x^2+y^2-1\ge1+1-1>0$: impossible. If $xy=0$, then $x^2+y^2=1$, giving $(\pm1,0)$ and $(0,\pm1)$. The equation is unchanged by $(x,y)\to(-x,-y)$ and by $(x,y)\to(y,x)$, so it remains to find the solutions with $x\ge y\ge1$. Here $x=y$ is impossible ($2x^2-1=4x^2$), so $x>y\ge1$.
+
+\textbf{Going down.} Fix such a solution and view the equation as a quadratic in $t$:
+\[t^2-4y\,t+(y^2-1)=0 ,\]
+with root $t=x$. By Vieta's formulas its other root is
+\[x'=4y-x=\dfrac{y^2-1}{x}.\]
+The first form shows that $x'$ is an integer; the second shows $0\le x'<\dfrac{y^2}{x}<y$. So $(y,x')$ is again a solution, with $y>x'\ge0$ and a smaller larger entry. Repeating this, the larger entry keeps decreasing, so we must reach a solution whose smaller entry is $0$; then the other entry is $1$, i.e. we reach $(1,0)$.
+
+\textbf{Going up.} Reading the steps backwards, $(x,y)=(4y-x',\,y)$ is obtained from $(y,x')$ by the map $(u,v)\mapsto(4u-v,\,u)$. So every solution with $x>y\ge1$ is obtained from $(1,0)=(a_1,a_0)$ by applying this map repeatedly, which gives $(a_2,a_1)=(4,1)$, $(a_3,a_2)=(15,4)$, and in general $(a_{k+1},a_k)$. Conversely, the map turns solutions into solutions:
+\[(4u-v)^2+u^2-1-4(4u-v)u=u^2+v^2-1-4uv=0 .\]
+
+Together with the symmetries, the integer solutions are $\pm(a_{k+1},a_k)$ and $\pm(a_k,a_{k+1})$ for $k\ge0$: for example $(1,0)$, $(4,1)$, $(15,4)$, $(56,15)$, their swaps, and their negatives. (Equivalently, $(x-2y)^2-3y^2=1$, a Pell equation.)

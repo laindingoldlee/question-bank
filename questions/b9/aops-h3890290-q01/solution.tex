@@ -1,0 +1,17 @@
+For the first square, similar triangles give side length $s_1=\dfrac{ab}{a+b}$. For the second, the altitude to the hypotenuse is $h=\dfrac{ab}{c}$. At distance $s_2$ from that hypotenuse, the triangle's parallel cross-section has length $c(1-\dfrac{s_2}{h})$. This equals the square side, so
+\[s_2=\dfrac{ch}{c+h}=\dfrac{abc}{c^2+ab}.\]
+Both are positive, and $s_1>s_2$ is equivalent to $c^2+ab>c(a+b)$. Since $c^2=a^2+b^2$,
+\[c^2+ab-c(a+b)=\dfrac{(a+b-c)^2}{2}>0,\]
+where strictness follows from the triangle inequality. Thus the square at the right-angle vertex is always strictly larger; the two squares are never congruent in a nondegenerate triangle.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real s=12/7;draw((0,0)--(4,0)--(0,3)--cycle);filldraw(box((0,0),(s,s)),lightblue);label("$a$",(2,0),(0,-1));label("$b$",(0,1.5),(-1,0));label("$s_1$",(s,s/2),(1,0));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real s=60/37;pair A=(0,0),B=(4,0),C=(0,3),P=(4*s/5,0),Q=(0,3*s/5),R=P+s*(.6,.8),S=Q+s*(.6,.8);draw(A--B--C--cycle);filldraw(P--R--S--Q--cycle,lightblue);draw(A--(1.44,1.92),gray+dashed);label("$c$",midpoint(B--C),(1,1));label("$s_2$",midpoint(P--Q),(-1,-1));label("$A$",A,(-1,-1));
+\end{asy}

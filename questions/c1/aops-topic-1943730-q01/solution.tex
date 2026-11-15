@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1943730_maximizing_perimeter
+% Stable identity: aops-topic-1943730-q01
+The square has side $10$. Let rectangle $i$ have sides $w_i,h_i$; each fits in the square, so $w_i,h_i\le10$, and the areas add up: $\sum w_ih_i=100$.
+
+From $(10-w_i)(10-h_i)\ge0$ we get $100-10(w_i+h_i)+w_ih_i\ge0$, i.e.
+\[
+w_i+h_i\le10+\dfrac{w_ih_i}{10}.
+\]
+Summing over the four rectangles,
+\[
+\sum_{i=1}^4 2(w_i+h_i)\le2\left(40+\dfrac{100}{10}\right)=100 .
+\]
+Equality needs $(10-w_i)(10-h_i)=0$ for each $i$, i.e. every rectangle has a side of length $10$: cut the square into four strips by three parallel cuts.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(10,0)--(10,10)--(0,10)--cycle,linewidth(1));
+for(int i=1;i<4;++i) draw((2.5*i,0)--(2.5*i,10));
+label("$10$",(5,10),N);label("$10$",(0,5),W);
+label("$x_1$",(1.25,0),S);label("$x_2$",(3.75,0),S);label("$x_3$",(6.25,0),S);label("$x_4$",(8.75,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then the perimeters are $2(10+x_i)$ with $\sum x_i=10$, total $80+20=100$. So the maximum is $\boxed{100}$, answer $\textbf{(E)}$.

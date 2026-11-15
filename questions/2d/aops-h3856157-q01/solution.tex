@@ -1,0 +1,11 @@
+Since $AH\perp BC$ and $EH\perp AC$, the acute angle between lines $AH$ and $EH$ equals the acute angle between $BC$ and $AC$. In the acute triangle, $H$ lies inside, and $E$ lies on the ray from $H$ away from $B$. Thus $\angle AHE$ is that acute angle.
+More explicitly, quadrilateral $CDHE$ has right angles at $D$ and $E$, so $\angle DHE=180^\circ-\angle DCE$. Rays $HA$ and $HD$ are opposite, giving
+\[
+\angle AHE=180^\circ-\angle DHE=\angle DCE=\angle ACB.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(1.4,3),B=(0,0),C=(5,0),D=(1.4,0);pair E=A+dot(B-A,C-A)/dot(C-A,C-A)*(C-A);pair H=(1.4,1.68);draw(A--B--C--cycle);draw(A--D,blue);draw(B--E,red);label("$A$",A,(0,1));label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,(0,-1));label("$E$",E,NE);label("$H$",H,(-1,0));
+\end{asy}

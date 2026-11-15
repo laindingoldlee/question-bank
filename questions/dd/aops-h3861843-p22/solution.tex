@@ -1,0 +1,7 @@
+Put $D=(0,0),C=(2t+5,0),A=(t,h),B=(t+5,h)$; equal legs give $t^2+h^2=25$. Since $CG=7$, the unit square has $G=(2t-2,0),H=(2t-3,0),F=(2t-2,1),E=(2t-3,1)$. The condition $BF=5$ becomes $(t-7)^2+(h-1)^2=25$, or $h+7t=25$. Substituting into the leg equation gives $(t-3)(t-4)=0$. Only $t=3$ yields positive $h$, namely four. Thus $D=(0,0),A=(3,4),E=(3,1)$, and $\boxed{[ADE]=\dfrac{9}{2}}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair D=(0,0),C=(11,0),A=(3,4),B=(8,4),E=(3,1),F=(4,1),G=(4,0),H=(3,0);draw(A--B--C--D--cycle);draw(E--F--G--H--cycle);draw(B--F,dashed);draw(A--E--D);pair[] P={A,B,C,D,E,F,G,H};string[] L={"A","B","C","D","E","F","G","H"};for(int i=0;i<8;++i)label("$"+L[i]+"$",P[i],i<2?(0,1):(i==4||i==5?(1,1):(0,-1)));
+\end{asy}

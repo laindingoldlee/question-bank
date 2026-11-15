@@ -1,0 +1,8 @@
+The two fixed right triangles $ABC,AFE$ each have area $\dfrac{1}{2}$, and $AC=AE=\sqrt2$. The remaining quadrilateral $ACDE$ is split by $AD$ into triangles $ACD,AED$. Each has area at most half the product of its two known sides, namely $\dfrac{\sqrt2}{2}$. Thus the hexagon's area is at most $1+\sqrt2$.
+Equality is attained when both $\angle ACD$ and $\angle AED$ are right angles. Take two congruent right triangles with legs $\sqrt2,1$ on opposite sides of their common hypotenuse $AD=\sqrt3$, then attach the two exterior right isosceles triangles on $AC,AE$. This gives a convex hexagon with all the stated side lengths. In this configuration $\angle BCA=45^\circ$ and $\angle ACD=90^\circ$, so $\boxed{\angle BCD=135^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),D=(sqrt(3),0),C=(2/sqrt(3),sqrt(2/3)),E=(2/sqrt(3),-sqrt(2/3)),B=(C+rotate(90)*C)/2,F=(E-rotate(90)*E)/2;draw(A--B--C--D--E--F--cycle);draw(A--C,dashed);draw(A--E,dashed);draw(A--D,dashed);pair[] p={A,B,C,D,E,F};string[] n={"A","B","C","D","E","F"};for(int i=0;i<6;++i)label("$"+n[i]+"$",p[i],p[i]-(.8,0));label("$135^\circ$",C+(-.05,-.3));
+\end{asy}

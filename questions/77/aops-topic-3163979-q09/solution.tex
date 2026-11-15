@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3163979_2015_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3163979-q09
+Put $a=|m|,b=|n|$. If $ab$ is even, exactly half the squares are black, so $ab=64$. Its seven ordered positive factor pairs each allow all four sign choices, giving 28. If $ab$ is odd, both sides are odd and the black count is either $\dfrac{ab+1}{2}$ or $\dfrac{ab-1}{2}$. Exactly two of the four quadrants have each case. Thus $ab=63$ or 65 contributes $2(\tau(63)+\tau(65))=2(6+4)=20$. Total $\boxed{48}$. Reversing all colors merely exchanges the two quadrant classes and leaves the count unchanged.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=-3;i<4;++i)for(int j=-3;j<4;++j){path q=(i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle;if((i+j)%2==0)fill(q,gray);draw(q,lightgray);}draw((-3,0)--(4,0),Arrow);draw((0,-3)--(0,4),Arrow);label("$O$",(0,0),SW);label("$x$",(4,0),E);label("$y$",(0,4),N);
+\end{asy}

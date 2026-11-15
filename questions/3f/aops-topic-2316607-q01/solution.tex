@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2316607_500_posts_celebration
+% Stable identity: aops-topic-2316607-q01
+The container consists of two circular discs of radius $r=5$ and a curved side, which unrolls into a rectangle of height $h=34$ and width equal to the circumference $2\pi r=10\pi$.
+
+\begin{asy}
+usepackage("amsmath");
+size(0,5.5cm);
+defaultpen(fontsize(10pt));
+real r=5, h=34, e=1.8;
+path bot=ellipse((0,0),r,e), top=ellipse((0,h),r,e);
+draw(top,linewidth(0.9));
+draw(subpath(bot,2,4),linewidth(0.9)); draw(subpath(bot,0,2),dashed);
+draw((-r,0)--(-r,h),linewidth(0.9)); draw((r,0)--(r,h),linewidth(0.9));
+draw((0,h)--(r,h),red); dot((0,h));
+label("$r=5$",(r/2,h+e),N,red+fontsize(8pt));
+draw((r+1.5,0)--(r+1.5,h),Arrows(5)); label("$h=34$",(r+1.5,h/2),E,fontsize(8pt));
+\end{asy}
+
+\textbf{Surface area:}
+\[2\pi r^2+2\pi rh=2\pi\cdot25+2\pi\cdot5\cdot34=50\pi+340\pi=\boxed{390\pi\text{ cm}^2}\approx1225.2\text{ cm}^2.\]
+\textbf{Volume:}
+\[\pi r^2h=\pi\cdot25\cdot34=\boxed{850\pi\text{ cm}^3}\approx2670.4\text{ cm}^3.\]

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1788440_mathcounts_2013_sprint_state
+% Stable identity: aops-topic-1788440-q01
+First choose how many pieces of each size are used, say $a$ fours, $b$ threes, $c$ twos and $d$ ones, with $a\le1$, $b\le2$, $c\le3$, $d\le4$ and $4a+3b+2c+d=10$. Since pieces of the same size are identical, such a choice can be put in a row in $\dfrac{(a+b+c+d)!}{a!\,b!\,c!\,d!}$ ways. The possible choices are:
+\[
+\begin{array}{c|c|c}
+\text{pieces used} & \text{number of pieces} & \text{arrangements}\\ \hline
+2,2,2,1,1,1,1 & 7 & \dfrac{7!}{3!\,4!}=35\\
+3,2,2,1,1,1 & 6 & \dfrac{6!}{2!\,3!}=60\\
+3,2,2,2,1 & 5 & \dfrac{5!}{3!}=20\\
+3,3,1,1,1,1 & 6 & \dfrac{6!}{2!\,4!}=15\\
+3,3,2,1,1 & 5 & \dfrac{5!}{2!\,2!}=30\\
+3,3,2,2 & 4 & \dfrac{4!}{2!\,2!}=6\\
+4,2,1,1,1,1 & 6 & \dfrac{6!}{4!}=30\\
+4,2,2,1,1 & 5 & \dfrac{5!}{2!\,2!}=30\\
+4,2,2,2 & 4 & \dfrac{4!}{3!}=4\\
+4,3,1,1,1 & 5 & \dfrac{5!}{3!}=20\\
+4,3,2,1 & 4 & 4!=24\\
+4,3,3 & 3 & \dfrac{3!}{2!}=3
+\end{array}
+\]
+(Without the $4$-piece: with no $3$s we need $2c+d=10$, only $c=3,d=4$; with one $3$, $2c+d=7$ gives $(c,d)=(2,3),(3,1)$; with two $3$s, $2c+d=4$ gives $(0,4),(1,2),(2,0)$. With the $4$-piece: no $3$s, $2c+d=6$ gives $(1,4),(2,2),(3,0)$; one $3$, $2c+d=3$ gives $(0,3),(1,1)$; two $3$s, $2c+d=0$.)
+
+The total is $35+60+20+15+30+6+30+30+4+20+24+3=\boxed{277}$.

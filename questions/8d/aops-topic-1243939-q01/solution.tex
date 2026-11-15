@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1243939_vertices_of_a_circle
+% Stable identity: aops-topic-1243939-q01
+The points form a regular hexagon of side $r$; chords skipping one point have length $\sqrt3r$ and diameters $2r$. Going round the circle, the four chosen points split the six arcs into gaps summing to $6$, either $3,1,1,1$ or $2,2,1,1$ (in some order). The perimeters are $r+r+r+2r=5r$ and $\sqrt3r+\sqrt3r+r+r=\left(2+2\sqrt3\right)r\approx5.46r$. Both exceed $4r$, so the probability is $\boxed{1}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair[] V; for(int k=0;k<6;++k) V[k]=dir(60*k); draw(unitcircle,gray);
+draw(V[0]--V[1]--V[2]--V[3]--cycle,blue); draw(V[0]--V[2]--V[3]--V[5]--cycle,red+dashed);
+for(int k=0;k<6;++k) dot(V[k]);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

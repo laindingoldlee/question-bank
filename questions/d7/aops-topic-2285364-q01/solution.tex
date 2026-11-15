@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2285364_side_length_of_a_polygon_function
+% Stable identity: aops-topic-2285364-q01
+Let $O$ be the centre and let $A$, $B$ be adjacent vertices, so $OA=OB=1$ and $AB=s(n)$. The $n$ triangles formed by $O$ and the sides are congruent and fill the full angle at $O$, so $\angle AOB=\dfrac{360^\circ}{n}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+int n=7; pair O=(0,0);
+pair V(int k){return dir(90+360*k/n);}
+draw(circle(O,1),gray+dashed);
+for(int k=0;k<n;++k) draw(V(k)--V(k+1));
+pair A=V(3), B=V(4), M=(A+B)/2;
+draw(O--A,blue); draw(O--B,blue); draw(O--M,red+dashed);
+pair u=unit(A-M), w=unit(O-M); draw(M+0.07*u--M+0.07*u+0.07*w--M+0.07*w);
+draw(arc(O,0.22,degrees(A),270),red);
+dot(O); label("$O$",O,N);
+label("$A$",A,SW); label("$B$",B,SE); label("$M$",M,SE);
+label("$1$",(O+A)/2,W,blue);
+label("$\theta$",O+0.33*dir(257),red+fontsize(9pt));
+\end{asy}
+
+Triangle $AOB$ is isosceles, so the line from $O$ to the midpoint $M$ of $AB$ is perpendicular to $AB$ and bisects $\angle AOB$; thus $\theta=\angle AOM=\dfrac{180^\circ}{n}$. In the right triangle $AOM$,
+\[AM=OA\sin\theta=\sin\dfrac{180^\circ}{n},\qquad\text{so}\qquad \boxed{s(n)=2\sin\dfrac{180^\circ}{n}}.\]
+(Equivalently, by the law of cosines in triangle $AOB$, $s(n)=\sqrt{2-2\cos\dfrac{360^\circ}{n}}$.)
+
+Checks: $s(3)=2\sin60^\circ=\sqrt3$, $s(4)=2\sin45^\circ=\sqrt2$ (the diagonal of the square is the diameter $2$, so the side is $\dfrac{2}{\sqrt2}=\sqrt2$), and $s(6)=2\sin30^\circ=1$ (the hexagon is made of six equilateral triangles of side $1$).

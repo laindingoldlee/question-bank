@@ -1,0 +1,20 @@
+Suppose $k=h+v$ segments are used, of which $h$ are vertical and $v$ horizontal. Each added segment increases the region count by at most one plus the number of its intersections with previous segments. There are at most $hv$ crossings between perpendicular segments, so
+\[
+n\le1+h+v+hv=(h+1)(v+1)
+\le\left\lfloor\dfrac{(k+2)^2}{4}\right\rfloor.
+\]
+Overlaps or endpoints touching earlier segments cannot increase this upper bound. It follows that $k\ge\lceil2\sqrt n\rceil-2$.
+
+For the construction set $k=\lceil2\sqrt n\rceil-2$, $h=\left\lfloor\dfrac{k}{2}\right\rfloor$, $v=k-h$. Draw $h$ full vertical segments, producing $h+1$ strips. At distinct heights, draw each of the $v$ horizontal segments from the left boundary across any chosen $r_j$ consecutive strips, where $1\le r_j\le h+1$. Each adds exactly $r_j$ rectangles and leaves all regions rectangular.
+
+Thus every count from $h+1+v=k+1$ through $(h+1)(v+1)$ is obtainable. The desired $n$ lies in this interval: the upper inequality follows from the definition of $k$, and $k+1\le n$ follows from $2\sqrt n\le n+1$. This construction proves
+\[
+\boxed{\lceil2\sqrt n\rceil-2}.
+\]
+For $n=1$, use no segments.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(box((0,0),(6,4)));draw((2,0)--(2,4),blue);draw((4,0)--(4,4),blue);draw((0,1.3)--(6,1.3),red);draw((0,2.7)--(4,2.7),red);label("Four segments, eight rectangles",(3,-.5));
+\end{asy}

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2363616_tesseractexe
+% Stable identity: aops-topic-2363616-q05
+Use coordinates with $A=(0,0,0,0)$ and $B=(1,1,1,1)$. Each square face is a set where two coordinates vary in $[0,1]$ and the other two are fixed at $0$ or $1$.
+
+\textbf{Lower bound.} On a piece of the path lying in a face where $x_i$ and $x_j$ vary, the other two coordinates are constant, and a short step has length
+\[\sqrt{(\Delta x_i)^2+(\Delta x_j)^2}\ge\dfrac{|\Delta x_i|+|\Delta x_j|}{\sqrt2}=\dfrac{|\Delta x_1|+|\Delta x_2|+|\Delta x_3|+|\Delta x_4|}{\sqrt2},\]
+using $2\left(u^2+v^2\right)\ge(u+v)^2$. Adding over the whole path, its length is at least $\dfrac{1}{\sqrt2}$ times the total change of all four coordinates. Each coordinate goes from $0$ to $1$, so its total change is at least $1$, and the length is at least $\dfrac{4}{\sqrt2}=2\sqrt2$.
+
+\textbf{A path of length $2\sqrt2$.} Walk along the diagonal of the face $x_3=x_4=0$ from $A$ to $(1,1,0,0)$, length $\sqrt2$, and then along the diagonal of the face $x_1=x_2=1$ from $(1,1,0,0)$ to $B$, length $\sqrt2$. Unfolding the faces $x_3=x_4=0$, $\{x_1=1,x_4=0\}$ and $x_1=x_2=1$ into the plane shows this path as one straight segment:
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(2,2);
+filldraw((0,0)--(1,0)--(1,1)--(0,1)--cycle,rgb(0.85,0.9,1));
+filldraw((1,0)--(2,0)--(2,1)--(1,1)--cycle,rgb(0.92,0.92,0.92));
+filldraw((1,1)--(2,1)--(2,2)--(1,2)--cycle,rgb(0.85,0.9,1));
+draw(A--B,red+linewidth(1.1));
+dot(A); dot(B); dot((1,1));
+label("$A$",A,W); label("$B$",B,NE); label("$(1,1,0,0)$",(1,1),NW,fontsize(8pt));
+label("$x_1,x_2$ vary",(0.62,0),S,fontsize(7pt)); label("$x_2,x_3$ vary",(2,0.5),E,fontsize(7pt)); label("$x_3,x_4$ vary",(2,1.5),E,fontsize(7pt));
+\end{asy}
+
+So the shortest path has length $\boxed{2\sqrt2}$.
+
+(For an ordinary cube the same bound gives $\dfrac{3}{\sqrt2}$, which is not reached; there the shortest path over the faces is $\sqrt5$. In the tesseract the four coordinate changes split evenly into two diagonal moves, so the bound is attained.)

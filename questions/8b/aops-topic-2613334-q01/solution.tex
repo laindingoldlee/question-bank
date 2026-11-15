@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2613334_fun_problem
+% Stable identity: aops-topic-2613334-q01
+The roots are
+\[x=\dfrac{51\pm\sqrt{51^2-4\cdot279}}{2}=\dfrac{51\pm\sqrt{1485}}{2}=\dfrac{51\pm3\sqrt{165}}{2}.\]
+Let $M$ be the midpoint of $AC$. Since $\angle B=90^\circ$, $B$ lies on the circle with diameter $AC$, so $BM=9$, and the altitude $BH$ is at most $BM=9$. The larger root exceeds $25$, so it is impossible. The smaller root works: $\sqrt{165}>11$ gives $x<\dfrac{51-33}{2}=9$, and $x>0$ because $9\cdot165<51^2$. (A point $B$ on the circle at height $x\le9$ above $AC$ exists.)
+
+So $x=\dfrac{51-3\sqrt{165}}{2}\approx6.23$ is the only possibility, and the area is
+\[\dfrac12\cdot18\cdot x=9x=\dfrac{459-27\sqrt{165}}{2}.\]
+Here $a=459$, $b=-27$, $c=165=3\cdot5\cdot11$ (squarefree), $d=2$, and $\gcd(459,27,2)=1$. Hence
+\[a+b+c+7d=459-27+165+14=\boxed{611}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real h=(51-3*sqrt(165))/2; real t=9-sqrt(81-h*h);
+pair A=(0,0),C=(18,0),B=(t,h),H=(t,0),M=(9,0);
+draw(arc(M,9,0,180),gray(0.55)+dotted);
+draw(A--B--C--cycle,linewidth(0.8)); draw(B--H,dashed); draw(B--M,dotted);
+real m=0.7; draw(H+(m,0)--H+(m,m)--H+(0,m));
+pair u=unit(A-B),v=unit(C-B); draw(B+m*u--B+m*u+m*v--B+m*v);
+dot(A);dot(B);dot(C);dot(M);
+label("$A$",A,SW);label("$B$",B,NW);label("$C$",C,SE);label("$H$",H,S);label("$M$",M,S);
+label("$x$",(B+H)/2,W);label("$9$",(B+M)/2,NE);
+draw((0,-2.6)--(18,-2.6),Arrows(TeXHead)); draw((0,-2.1)--(0,-3.1)); draw((18,-2.1)--(18,-3.1));
+label("$AC=18$",(9,-2.6),S);
+\end{asy}

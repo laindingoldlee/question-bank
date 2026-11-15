@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2800884_help_on_problems_please
+% Stable identity: aops-topic-2800884-q01
+A triangle inside a circle of radius $20$ has perimeter at most that of the inscribed equilateral triangle, $3\cdot20\sqrt3\approx103.9$ (for a triangle inside the circle, moving its vertices out to the circle along rays from a suitable point only increases the perimeter, and among inscribed triangles the equilateral one has the largest perimeter). So the perimeter is at most $103$.
+
+The triangle $31,35,37$ has perimeter $103$. It is acute ($31^2+35^2>37^2$), and its circumradius is $R=\dfrac{abc}{4K}$ with $16K^2=4041411$, so $K\approx502.58$ and $R\approx19.97<20$. Hence it fits inside the circle (it is inscribed in a slightly smaller concentric circle), and the answer is $\boxed{103}$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),20));real R=19.969;real A=2*asin(31/(2*R)),B=2*asin(35/(2*R));pair P=R*dir(90),Q=R*dir(90+degrees(A)),S=R*dir(90-degrees(B));draw(P--Q--S--cycle);label("$31$",(P+Q)/2,NW);label("$35$",(P+S)/2,NE);label("$37$",0.8*(Q+S)/2,N);dot((0,0));
+\end{asy}

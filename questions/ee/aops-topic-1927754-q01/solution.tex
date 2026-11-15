@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1927754_counting_problem
+% Stable identity: aops-topic-1927754-q01
+Count the elements of $S$ smaller than $11111$. A $d$-digit number with digit sum $5$ corresponds to a solution of $a_1+\cdots+a_d=5$ with $a_1\ge1$ and all $a_i\ge0$ (no digit can exceed $5$ anyway). Writing $a_1=1+a_1'$, this is $a_1'+a_2+\cdots+a_d=4$ in nonnegative integers, which has $\dbinom{4+d-1}{d-1}$ solutions by stars and bars.
+\begin{itemize}
+\item $1$ digit: $\dbinom40=1$ (the number $5$).
+\item $2$ digits: $\dbinom51=5$.
+\item $3$ digits: $\dbinom62=15$.
+\item $4$ digits: $\dbinom73=35$.
+\item $5$ digits below $11111$: the first digit is $1$ and the other four digits sum to $4$. If the second digit is $0$, the last three sum to $4$: $\dbinom62=15$ numbers. If the number starts $110$, the last two sum to $3$: $4$ numbers. If it starts $111$, it is below $11111$ only for $11102$: $1$ number. That is $15+4+1=20$.
+\end{itemize}
+So $1+5+15+35+20=76$ elements come before $11111$, and it is in position $\boxed{77}$.

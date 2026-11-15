@@ -1,0 +1,7 @@
+No. If the robot stayed on the finite board forever, its positions would contain a simple directed cycle. Each move is two cells in a coordinate direction, so all visited cell centers lie in one parity sublattice. Draw the cycle through those centers. Every boundary cell is occupied by one of the dominoes used for the moves, so an interior cell cannot be paired with an exterior cell. In units of the ordinary cell-center lattice, the cycle\textquotesingle s area is a multiple of four and its boundary lattice-point count is twice an even cycle length. Pick\textquotesingle s formula therefore makes the number of interior cell centers odd: $I=A-\dfrac{B}{2}+1$ is odd. Those interior cells cannot be tiled by dominoes, a contradiction. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+for(int x=0;x<3;++x)for(int y=0;y<3;++y)dot((x,y));draw((0,0)--(2,0)--(2,2)--(0,2)--cycle,Arrow);draw((0,0)--(1,0),linewidth(4));draw((2,0)--(2,1),linewidth(4));draw((2,2)--(1,2),linewidth(4));draw((0,2)--(0,1),linewidth(4));label("interior",(1,1),(0,1));label("cycle boundary",(1,-.4),(0,-1));
+\end{asy}

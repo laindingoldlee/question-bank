@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2646259_fun_trig
+% Stable identity: aops-topic-2646259-q01
+Let $u=\cos x+\cos y$. Then
+\[u^2+1=(\cos x+\cos y)^2+(\sin x+\sin y)^2=2+2(\cos x\cos y+\sin x\sin y)=2+2\cos(x-y)\le4,\]
+so $u^2\le3$ and $-\sqrt3\le u\le\sqrt3$. Equality needs $\cos(x-y)=1$, e.g. $x=y$ with $\sin x=\dfrac12$: $x=y=30^\circ$ gives $u=\sqrt3$ and $x=y=150^\circ$ gives $u=-\sqrt3$.
+
+So the maximum is $\boxed{\sqrt3}$ and the minimum is $\boxed{-\sqrt3}$. Geometrically, $P+Q=(u,1)$, where $P=(\cos x,\sin x)$ and $Q=(\cos y,\sin y)$ are unit vectors, so $P+Q$ lies in the disc of radius $2$ and on the line $y=1$, between $\left(-\sqrt3,1\right)$ and $\left(\sqrt3,1\right)$. (The sketch shows $x=0$, $y=90^\circ$, with $u=1$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);draw(circle(O,2),dashed+gray);draw(unitcircle,gray);draw((-2.4,1)--(2.4,1));
+pair P=dir(0),Q=dir(90),Sm=P+Q;
+draw(O--P,Arrow(4));draw(O--Q,Arrow(4));draw(P--Sm,dotted);draw(Q--Sm,dotted);draw(O--Sm,linewidth(0.8),Arrow(4));
+dot((sqrt(3),1));dot((-sqrt(3),1));dot(Sm);
+label("$P$",P,SE,fontsize(8pt));label("$Q$",Q,NW,fontsize(8pt));label("$P+Q$",Sm,N,fontsize(8pt));
+label("$(\sqrt3,1)$",(sqrt(3),1),SE,fontsize(8pt));label("$(-\sqrt3,1)$",(-sqrt(3),1),SW,fontsize(8pt));label("$O$",O,SW);label("radius $2$",2*dir(-45),SE,fontsize(8pt));
+\end{asy}

@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1639346_fun_problem
+% Stable identity: aops-topic-1639346-q01
+We show that $36<5^{\sqrt5}<37$, so the answer is $\boxed{36}$. Since $t\mapsto5^t$ is increasing, it is enough to trap $\sqrt5$ between two fractions.
+
+\textbf{Lower bound.} $38^2=1444<1445=5\cdot17^2$, so $\sqrt5>\dfrac{38}{17}$. Now
+\[
+5^{\dfrac{38}{17}}>36\iff5^{38}>36^{17}=6^{34}\iff5^{19}>6^{17}\iff\left(\dfrac{6}{5}\right)^{17}<25 .
+\]
+Using $\left(\dfrac{6}{5}\right)^2=1.44$ and rounding up at each step:
+\[
+\left(\dfrac{6}{5}\right)^4=2.0736<2.08,\quad\left(\dfrac{6}{5}\right)^8<2.08^2=4.3264<4.33,\quad\left(\dfrac{6}{5}\right)^{16}<4.33^2=18.7489<18.75,
+\]
+so $\left(\dfrac{6}{5}\right)^{17}<18.75\cdot1.2=22.5<25$. Hence $5^{\sqrt5}>5^{\dfrac{38}{17}}>36$.
+
+\textbf{Upper bound.} $56^2=3136>3125=5\cdot25^2$, so $\sqrt5<\dfrac{56}{25}$. Now
+\[
+5^{\dfrac{56}{25}}<37\iff5^{56}<37^{25}\iff5^{6}\cdot25^{25}<37^{25}\iff15625<1.48^{25}.
+\]
+Rounding down at each step:
+\[
+1.48^2=2.1904>2.19,\quad1.48^4>2.19^2>4.79,\quad1.48^8>4.79^2>22.9,\quad1.48^{16}>22.9^2>524,
+\]
+so $1.48^{25}=1.48^{16}\cdot1.48^{8}\cdot1.48>524\cdot22.9\cdot1.48>11999\cdot1.48>17758>15625$. Hence $5^{\sqrt5}<5^{\dfrac{56}{25}}<37$.
+
+Therefore $36<5^{\sqrt5}<37$ (in fact $5^{\sqrt5}\approx36.55$), and the greatest integer less than $5^{\sqrt5}$ is $36$.

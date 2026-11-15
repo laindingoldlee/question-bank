@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1656688_2018_mte_ms_target_full
+% Stable identity: aops-topic-1656688-q10
+The lattice points on the circle of radius $r$ are the integer solutions of $x^2+y^2=r^2$. A classical result (from the factorisation of Gaussian integers) says: if $N=2^{a}\prod p_i^{e_i}\prod q_j^{f_j}$ with primes $p_i\equiv1\pmod4$ and $q_j\equiv3\pmod4$, then $x^2+y^2=N$ has $4\prod(e_i+1)$ integer solutions when every $f_j$ is even, and none otherwise.
+
+For $N=r^2$ all exponents are even. If $r$ has the primes $p_i\equiv1\pmod4$ with exponents $k_i$, the number of points is $4\prod\left(2k_i+1\right)$. We need $\prod(2k_i+1)=5$, so $r$ has exactly one prime factor $p\equiv1\pmod4$, with exponent $2$, and any primes $2$ or $\equiv3\pmod4$:
+\[
+r=p^2m,\qquad p\equiv1\pmod4,\quad m\text{ with no prime factor}\equiv1\pmod4 .
+\]
+The smallest such $r$ are $25$, $50$ and $75$ ($p=5$, $m=1,2,3$; the next are $100$, $150$, and $169$ is the first with $p=13$). For $r=25$ the $20$ points are $(\pm25,0)$, $(0,\pm25)$ and the sign and order variants of $(7,24)$ and $(15,20)$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-30,0)--(30,0),gray,Arrow(TeXHead));draw((0,-30)--(0,30),gray,Arrow(TeXHead));
+draw(circle((0,0),25),linewidth(0.9));
+pair[] base={(25,0),(24,7),(20,15),(15,20),(7,24)};
+for(pair p:base){for(int k=0;k<4;++k){dot(rotate(90*k)*p,red);}}
+label("$(24,7)$",(24,7),NE,fontsize(8pt));label("$(20,15)$",(20,15),NE,fontsize(8pt));label("$(7,24)$",(7,24),NE,fontsize(8pt));
+label("$25$",(25,0),SE,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $r_1+r_2+r_3=25+50+75=\boxed{150}$. (Confirmed by counting lattice points for every radius up to $200$.)

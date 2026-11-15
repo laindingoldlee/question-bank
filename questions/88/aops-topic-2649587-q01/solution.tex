@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2649587_interesting_geo_prob
+% Stable identity: aops-topic-2649587-q01
+Let the side be $3$, so $AD=BE=1$ and $AE=2$.
+
+Triangles $BAD$ and $CBE$ are congruent (SAS: $BA=CB$, $AD=BE$, $\angle BAD=\angle CBE=60^\circ$), so $\angle ABD=\angle BCE$. In triangle $OBC$,
+\[\angle OBC+\angle OCB=\left(60^\circ-\angle ABD\right)+\angle BCE=60^\circ,\]
+so $\angle BOC=120^\circ$. Hence $\angle EOD=\angle BOC=120^\circ$ (vertical angles) and $\angle DOC=60^\circ$.
+
+Since $\angle EAD+\angle EOD=60^\circ+120^\circ=180^\circ$, quadrilateral $AEOD$ is cyclic. In triangle $AED$, $AE=2$, $AD=1$ and $\angle A=60^\circ$, so $ED=\sqrt{4+1-2}=\sqrt3$ and $AD^2+ED^2=AE^2$: the angle at $D$ is $90^\circ$ and $\angle AED=30^\circ$. Inscribed angles on chord $AD$ give $\angle AOD=\angle AED=30^\circ$. Therefore
+\[\angle AOC=\angle AOD+\angle DOC=30^\circ+60^\circ=\boxed{90^\circ}.\]
+(Since $\angle ADE=90^\circ$, $AE$ is a diameter of the dotted circle.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,sqrt(3)),B=(-1,0),C=(1,0);pair D=A+(C-A)/3,Ep=B+(A-B)/3;pair O=extension(B,D,C,Ep);
+draw(A--B--C--cycle,linewidth(0.8));draw(B--D);draw(C--Ep);draw(O--A,dashed);draw(Ep--D,dashed);
+path cc=circle((A+O)/2,abs(A-O)/2);draw(cc,dotted);
+dot(O);dot(D);dot(Ep);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NE);label("$E$",Ep,NW);label("$O$",O,S);
+\end{asy}

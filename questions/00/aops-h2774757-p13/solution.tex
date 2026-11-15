@@ -1,0 +1,12 @@
+Write $a=BC,b=CA,c=AB$ and use $A,B,C$ for the angles. Right-triangle geometry gives $DE=c\cos C$ and $DF=b\cos B$. The angle between lines $EF$ and $BC$ is $|B-C|$, hence $PQ=a\cos(B-C)$ (positive for an acute triangle). By the sine rule,
+\[
+DE+DF=2R(\sin C\cos C+\sin B\cos B)
+=2R\sin(B+C)\cos(B-C)=a\cos(B-C)=2018.
+\]
+Combining this with $DE-DF=4$ yields $\boxed{DE=1011}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(1.7,3),B=(0,0),C=(5,0);pair foot(pair X,pair U,pair V){return U+dot(X-U,V-U)/dot(V-U,V-U)*(V-U);}pair D=foot(A,B,C),E=foot(B,A,C),F=foot(C,A,B),P=foot(B,E,F),Q=foot(C,E,F);draw(A--B--C--cycle);draw(A--D,dashed);draw(B--E,dashed);draw(C--F,dashed);draw(P--Q,blue);draw(B--P,red);draw(C--Q,red);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$E$",E,NE);label("$F$",F,NW);label("$P$",P,W);label("$Q$",Q,E);
+\end{asy}

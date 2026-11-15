@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1426267_2017_state_team_round_dreaded_number_7
+% Stable identity: aops-topic-1426267-q07
+Let $\angle ABC=\angle BAC=\beta$ (the base angles of the isosceles triangle). Since $AP$ bisects $\angle BAC$, $\angle PAB=\dfrac{\beta}{2}$. From $\triangle DQB\sim\triangle APB$, $\angle QDB=\angle PAB=\dfrac{\beta}{2}$, and since $DR$ bisects it, $\angle RDB=\dfrac{\beta}{4}$.
+
+Let $X$ be the intersection of $AP$ and $DR$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(0.0000,0.0000),B=(1.0000,0.0000),C=(0.5000,0.6270),P=(0.7225,0.3479),D=(0.2750,0.9091),Q=(0.4825,0.0000),R=(0.7128,0.0000),X=(0.5786,0.2786);
+draw(A--B--D); draw(A--C);
+draw(A--P,blue+linewidth(0.9)); draw(D--Q,heavygreen); draw(D--R,red+linewidth(0.9));
+draw(ra(X,A-X,D-X,0.035));
+dot(A);dot(B);dot(C);dot(P);dot(D);dot(Q);dot(R);dot(X);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$P$",P,E); label("$D$",D,N);
+label("$Q$",Q,S); label("$R$",R,S); label("$X$",X,dir(-20));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In triangle $RDB$ the angles at $B$ and $D$ are $\beta$ and $\dfrac{\beta}{4}$, so the exterior angle at $R$ is
+\[
+\angle DRA=\beta+\dfrac{\beta}{4}=\dfrac{5\beta}{4}.
+\]
+Now look at triangle $AXR$: its angles are $\angle XAR=\dfrac{\beta}{2}$, $\angle XRA=\dfrac{5\beta}{4}$ and $\angle AXR=90^\circ$. Hence
+\[
+\dfrac{\beta}{2}+\dfrac{5\beta}{4}+90^\circ=180^\circ\quad\Longrightarrow\quad\dfrac{7\beta}{4}=90^\circ\quad\Longrightarrow\quad\beta=\boxed{\dfrac{360}{7}}\text{ degrees}.
+\]

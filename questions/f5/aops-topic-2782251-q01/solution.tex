@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2782251_weird_problem
+% Stable identity: aops-topic-2782251-q01
+Put $A$ at the origin, $M_0=(1,0)$ and $P_0=(0,2)$. Then $M_1=(0,1)$, $M_2=(-1,0)$ and $M_3=(0,-1)$: the four points $M_k$ are the unit points on the axes, and $M_{k+2}=-M_k$.
+
+$P_{n-1}$ lies on line $AM_n$, which is perpendicular to line $AM_{n-1}$, and $P_n$ lies on line $AM_{n+1}$, which is the same line as $AM_{n-1}$. So in triangle $M_{n-1}P_{n-1}P_n$ the angle at $P_{n-1}$ is right and $A$ is the foot of the altitude from $P_{n-1}$. Hence
+\[AP_{n-1}^2=AM_{n-1}\cdot AP_n=AP_n.\]
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),M0=(1,0),M1=(0,1),M2=(-1,0),M3=(0,-1),P0=(0,2),P1=(-4,0);
+draw((-4.6,0)--(1.6,0));draw((0,-1.4)--(0,2.6));
+draw(M0--P0--P1,linewidth(0.9));
+pair u=unit(M0-P0),v=unit(P1-P0);draw(P0+0.25u--P0+0.25u+0.25v--P0+0.25v);
+dot(A);dot(M0);dot(M1);dot(M2);dot(M3);dot(P0);dot(P1);
+label("$A$",A,SE);label("$M_0$",M0,S);label("$M_1$",M1,W);label("$M_2$",M2,S);label("$M_3$",M3,W);label("$P_0$",P0,N);label("$P_1$",P1,S);
+label("$2$",(0,1.55),W,fontsize(8pt));label("$4$",(-2,0),S,fontsize(8pt));
+\end{asy}
+
+(For $n=1$: $P_1=(-4,0)$ and $AP_1=4=2^2$.) With $AP_0=2$ this gives $AP_n=2^{2^n}$; indeed $P_2=(0,-16)$ and $P_3=(256,0)$. Also $P_n$ lies on the ray $AM_{n+1}$.
+
+(a) $AP_{100}=2^{2^{100}}$ has $D=\lfloor2^{100}\log_{10}2\rfloor+1$ digits. Since $2^{100}\approx1.2677\times10^{30}$ and $\log_{10}2\approx0.30103$, $2^{100}\log_{10}2\approx3.816\times10^{29}$. So $10^{29}<D<10^{30}$, and $D$ has $\boxed{30}$ digits.
+
+(b) $P_{99}$ and $P_{101}$ lie on the rays $AM_0$ and $AM_2$, on opposite sides of $A$ along one line, and $P_{100}$ lies on the perpendicular ray $AM_1$. With $x=AP_{99}$ we have $AP_{100}=x^2$ and $AP_{101}=x^4$, so
+\[\angle P_{99}P_{100}P_{101}=\arctan\dfrac{x}{x^2}+\arctan\dfrac{x^4}{x^2}=\arctan\dfrac1x+\left(90^\circ-\arctan\dfrac1{x^2}\right).\]
+Since $x=2^{2^{99}}$ is astronomically large, the angle exceeds $90^\circ$ by a negligible amount: it is $\boxed{90^\circ}$ to the nearest degree.

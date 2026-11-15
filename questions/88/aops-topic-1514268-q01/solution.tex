@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1514268_geometry_marathon
+% Stable identity: aops-topic-1514268-q01
+Angle $A$ and its complement together make a right angle:
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+draw(O--(3,0),linewidth(1));draw(O--(0,3),linewidth(1));draw(O--3*dir(18),linewidth(1));
+real s=0.3; draw((s,0)--(s,s)--(0,s));
+draw(arc(O,1.2,18,90),blue);draw(arc(O,2.2,0,18),red);
+label("$A$",1.55*dir(54),blue);label("$90^\circ-A$",2.3*dir(9),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+A=4(90^\circ-A)\qquad\Longrightarrow\qquad5A=360^\circ\qquad\Longrightarrow\qquad A=\boxed{72^\circ}.
+\]
+(Check: the complement is $18^\circ$, and $4\cdot18^\circ=72^\circ$.)

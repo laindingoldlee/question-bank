@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2790676_2018_mbmt_guts_round_c1630_g10152530_montgomery_blair_math_tournament
+% Stable identity: aops-topic-2790676-q17
+Take the initial direction as the positive horizontal axis. The five displacement vectors have directions $ 0,-60,-120,-180,-240 $ degrees and lengths 3, 2, 1, 4, 1. Their sum is $(-1,-\sqrt3)$. The final direction is $-300^\circ $, with unit vector $(\dfrac{1}{2},\dfrac{\sqrt3}{2})$. A distance 2 gives the required displacement $(1,\sqrt3)$. Thus the answer is $\boxed2 $ metres.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] P={(0,0)};real[] L={3,2,1,4,1};for(int j=0;j<5;++j)P.push(P[j]+L[j]*dir(-60j));for(int j=0;j<5;++j){draw(P[j]--P[j+1],Arrow);label(string(L[j]),(P[j]+P[j+1])/2,dir(90-60j));}draw(P[5]--P[0],blue,Arrow);label("start",P[0],NW);label("$2$",(P[5]+P[0])/2,W);
+\end{asy}

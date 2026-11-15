@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1667130_geometry_problem
+% Stable identity: aops-topic-1667130-q01
+Since $AB$ and $DC$ are parallel and equal and point the same way, moving $A$ to $P$ along $AB$ and moving $D$ to $R$ along $DC$ by the same distance are the same translation. Hence $\overrightarrow{PR}=\overrightarrow{AD}$: the segment $PR$ is parallel and equal to $AD$ (and to $BC$). So $APRD$ and $PBCR$ are parallelograms, and together they make up $ABCD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),D=(1.5,3.5),C=B+D;
+pair P=A+0.35*(B-A),R=D+0.35*(B-A),Q=B+0.6*(C-B),T=A+0.3*(D-A);
+fill(P--Q--R--T--cycle,paleblue);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(P--Q--R--T--cycle,blue+linewidth(0.9));
+draw(P--R,red+dashed);
+draw(((A+P)/2+(0,-0.15))--((A+P)/2+(0,0.15)));draw(((D+R)/2+(0,-0.15))--((D+R)/2+(0,0.15)));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$P$",P,S);label("$Q$",Q,E);label("$R$",R,N);label("$S$",T,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The diagonal $PR$ splits $PQRS$ into triangles $PRS$ and $PQR$, which lie on opposite sides of $PR$.
+\begin{itemize}
+\item Triangle $PRS$ has base $PR$ and its vertex $S$ on the side $AD$, which is parallel to $PR$; so its height equals the distance between $AD$ and $PR$, and its area is half the area of parallelogram $APRD$.
+\item In the same way the area of triangle $PQR$ is half the area of parallelogram $PBCR$.
+\end{itemize}
+Therefore
+\[
+[PQRS]=\dfrac{1}{2}[APRD]+\dfrac{1}{2}[PBCR]=\dfrac{1}{2}[ABCD]=\boxed{50\text{ square metres}},
+\]
+wherever $Q$ and $S$ are on their sides.

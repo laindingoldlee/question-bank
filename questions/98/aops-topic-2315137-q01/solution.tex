@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2315137_help_with_a_cubes_problem
+% Stable identity: aops-topic-2315137-q01
+Put the big cube at $0\le x,y,z\le5$ with the two edges on the lines $x=y=0$ and $x=y=5$, so that the cutting plane is $x=y$. The unit cubes are $[i,i+1]\times[j,j+1]\times[k,k+1]$ with $i,j,k\in\{0,1,2,3,4\}$.
+
+The plane passes through the interior of such a cube exactly when some interior point has $x=y$, that is, when the open intervals $(i,i+1)$ and $(j,j+1)$ overlap, which happens exactly when $i=j$. If $|i-j|=1$ the plane only touches the cube along an edge, and if $|i-j|\ge2$ it misses it.
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<5;++i) fill(shift(i,i)*unitsquare,rgb(1,0.85,0.75));
+for(int i=0;i<=5;++i){ draw((i,0)--(i,5),gray(0.6)); draw((0,i)--(5,i),gray(0.6)); }
+draw((0,0)--(5,0)--(5,5)--(0,5)--cycle,linewidth(0.9));
+draw((0,0)--(5,5),red+linewidth(1.2));
+label("$x$",(5,0),SE); label("$y$",(0,5),NW); label("$0$",(0,0),SW);
+label("top view: $x=y$",(2.5,-0.6),S,red);
+transform t=shift(9.8,0.2);
+pair o=(-0.45,0.3);
+pair P(real x,real y,real z){ return t*((x,z)+y*o); }
+fill(P(0,0,0)--P(5,5,0)--P(5,5,5)--P(0,0,5)--cycle,rgb(1,0.85,0.75)+opacity(0.75));
+draw(P(5,5,0)--P(0,5,0),dashed+gray(0.5)); draw(P(5,5,0)--P(5,0,0),dashed+gray(0.5));
+draw(P(0,0,0)--P(5,0,0)--P(5,0,5)--P(0,0,5)--cycle,linewidth(0.8));
+draw(P(0,0,0)--P(0,5,0)--P(0,5,5)--P(0,0,5)); draw(P(0,5,5)--P(5,5,5)--P(5,0,5));
+draw(P(0,0,0)--P(5,5,0),red+dashed); draw(P(0,0,5)--P(5,5,5),red);
+draw(P(0,0,0)--P(0,0,5),red+linewidth(1.2)); draw(P(5,5,0)--P(5,5,5),red+dashed+linewidth(1.2));
+label("cutting plane",P(5,0,2.5),E,red+fontsize(8pt));
+draw(P(5,0,2.5)+(0.1,0)--P(2.5,2.5,2.2),red+linewidth(0.4),EndArrow(3));
+\end{asy}
+
+In the top view, the plane crosses the $5$ diagonal squares, and each of them is the top of a column of $5$ unit cubes. So the number of cut cubes is $5\cdot5=25$: $\boxed{\textbf{(B) }25}$.

@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h3162282_2016_lmt_spring_guts_round_p2536__lexington_mathematical_tournament
+% Stable identity: aops-topic-3162282-q35
+Use $ 2016=2^5\cdot3^2\cdot7 $. Its 36 divisors are exactly $ 2^a3^b7^c $ with $ 0\le a\le5 $, $ 0\le b\le2 $, $ 0\le c\le1 $. The logarithm of the product is the sum of factorial logarithms. A directly reproducible evaluation is:
+\begin{verbatim}
+import math
+D=[2**a*3**b*7**c for a in range(6) for b in range(3) for c in range(2)]
+v=sum(sum(math.log10(j) for j in range(1,d+1)) for d in D)
+assert abs(v-15170.761890211)<0.000001
+assert round(v)==15171
+\end{verbatim}
+Thus the answer is $\boxed{15171}$.

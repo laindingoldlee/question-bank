@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1720781_geometrycounting_problem
+% Stable identity: aops-topic-1720781-q01
+The position of the points plays no role: we have a red/blue colouring of the edges of the complete graph $K_n$ and want a monochromatic $K_4$. The answer is $\boxed{18}$.
+
+\textbf{Lemma 1.} Among $6$ points there is always a monochromatic triangle. A point $v$ has $5$ edges, so at least $3$ of the same colour, say red to $x,y,z$. If one of $xy,yz,zx$ is red it forms a red triangle with $v$; otherwise $xyz$ is a blue triangle.
+
+\textbf{Lemma 2.} Among $9$ points there is a red triangle or a blue $K_4$. If some point $v$ has $4$ red edges, to $a,b,c,d$: a red edge among them gives a red triangle with $v$, and otherwise $abcd$ is a blue $K_4$. If some point has $6$ blue edges, by Lemma 1 its $6$ blue neighbours contain a red triangle or a blue triangle, and a blue triangle together with $v$ is a blue $K_4$. Otherwise every point has at most $3$ red and at most $5$ blue edges, so exactly $3$ red edges, as $3+5=8$. Then the number of red edges would be $\dfrac{9\cdot3}{2}$, not an integer, a contradiction. By symmetry, among $9$ points there is also always a blue triangle or a red $K_4$.
+
+\textbf{$n=18$ suffices.} A point $v$ has $17$ edges, so at least $9$ of one colour, say red. By Lemma 2, these $9$ red neighbours contain a red triangle, which together with $v$ forms a red $K_4$, or a blue $K_4$. (If the $9$ edges are blue, use the form of Lemma 2 with the colours swapped.) Either way there is a monochromatic $K_4$.
+
+\textbf{$n=17$ is not enough.} Number the points $0,1,\dots,16$ and colour the edge $\{x,y\}$ red if $x-y$ is a nonzero square modulo $17$, i.e.\ $x-y\equiv\pm1,\pm2,\pm4,\pm8\pmod{17}$, and blue otherwise. (Since $-1\equiv4^2$ is a square, this does not depend on the order of $x,y$.) The squares form the set $Q=\{1,2,4,8,9,13,15,16\}$.
+\begin{itemize}
+\item The maps $x\mapsto x+t$ and $x\mapsto qx$ with $q\in Q$ preserve the colouring (a product of squares is a square). Given a red $K_4$ $\{a,b,c,d\}$, subtract $a$ and then multiply by the inverse of $b-a$ (a square, since the inverse of a square is a square): we get a red $K_4$ containing $0$ and $1$.
+\item Its other two points must be red neighbours of both $0$ and $1$, i.e.\ $x\in Q$ with $x-1\in Q$: only $x=2,9,16$. But $9-2=7$, $16-2=14$, $16-9=7$ are not in $Q$, so no two of $2,9,16$ are joined in red. Hence there is no red $K_4$.
+\item Multiplying by $3$ (not a square modulo $17$) swaps the two colours, since $3$ times a square is a non-square and $3$ times a non-square is a square. So a blue $K_4$ would be mapped to a red $K_4$; there is none.
+\end{itemize}
+So $17$ points can be coloured with no monochromatic $K_4$, and the smallest $n$ is $18$.

@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h1946277_geometric_proof
+% Stable identity: aops-topic-1946277-q01
+\textbf{Step 1: $\angle EBF=45^\circ$.} The radius of $k$ is $BA=BC$, and $DA\perp AB$, $CD\perp CB$, so $DA$ and $CD$ are tangent to $k$ at $A$ and $C$. From $E$ the two tangents to $k$ are $EC$ and $ET$, so $BE$ bisects $\angle CBT$; likewise $BF$ bisects $\angle ABT$. As $T$ lies inside the right angle $ABC$,
+\[
+\angle EBF=\dfrac{1}{2}\angle CBT+\dfrac{1}{2}\angle TBA=\dfrac{1}{2}\cdot90^\circ=45^\circ .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real th=52;
+pair B=(0,0),A=(0,1),C=(1,0),D=(1,1);
+pair T=dir(th);
+pair E0=(1,(1-Cos(th))/Sin(th)),F=((1-Sin(th))/Cos(th),1);
+pair G=E0/(E0.x+E0.y),H=F/(F.x+F.y);
+pair X=extension(B,T,E0,H);
+draw(A--B--C--D--cycle,linewidth(1));
+draw(arc(B,1,0,90),gray(0.4));
+draw(A--C,gray(0.6));
+draw(E0--F,linewidth(0.9));
+draw(B--E0);draw(B--F);
+draw(B--T,blue);draw(E0--H,blue);draw(F--G,blue);
+dot(T);dot(E0);dot(F);dot(G);dot(H);dot(X,red);
+label("$A$",A,NW);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NE);
+label("$T$",T,NE);label("$E$",E0,E);label("$F$",F,N);label("$G$",G,S);label("$H$",H,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Step 2: $EH\perp BF$.} The diagonal $AC$ makes $45^\circ$ with the side $CD$, so $\angle HCE=\angle ACD=45^\circ=\angle HBE$. The points $B$ and $C$ lie on the same side of line $HE$ (the segment $HE$ joins a point of the diagonal $AC$ to a point of side $CD$, and $B$, $C$ are both on the side of it away from $D$). Hence $B$, $C$, $E$, $H$ are concyclic, with $BCEH$ a cyclic quadrilateral, and
+\[
+\angle BHE=180^\circ-\angle BCE=180^\circ-90^\circ=90^\circ .
+\]
+So $EH\perp BH$, i.e. $EH\perp BF$.
+
+\textbf{Step 3: $FG\perp BE$.} In the same way $\angle GAF=\angle CAD=45^\circ=\angle GBF$, with $A$ and $B$ on the same side of line $GF$, so $A$, $B$, $G$, $F$ are concyclic and $\angle BGF=180^\circ-\angle BAF=90^\circ$. So $FG\perp BE$.
+
+\textbf{Step 4.} The radius $BT$ is perpendicular to the tangent $EF$. Hence $BT$, $EH$ and $FG$ are the three altitudes of triangle $BEF$ (from $B$, $E$ and $F$ respectively), and the altitudes of a triangle are concurrent, at its orthocentre (red in the figure). $\blacksquare$

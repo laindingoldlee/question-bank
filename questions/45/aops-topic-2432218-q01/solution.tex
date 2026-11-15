@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2432218_amc_10_grading_problem
+% Stable identity: aops-topic-2432218-q01
+Let $c$ be the number of correct answers and $k$ the number of blanks, with $c,k\ge0$ and $c+k\le25$; the number of wrong answers $25-c-k$ is then determined. The score is $S=6c+1.5k$.
+
+\textbf{When do two combinations give the same score?} $(c,k)$ and $(c',k')$ have the same score exactly when $6(c-c')=1.5(k'-k)$, i.e. $k'-k=4(c-c')$. So the combinations with the same score as $(c,k)$ are $(c-t,\,k+4t)$ for the integers $t$ with
+\[c-t\ge0,\qquad k+4t\ge0,\qquad (c-t)+(k+4t)=c+k+3t\le25.\]
+Each condition is a linear inequality in $t$, so the admissible values of $t$ form a block of consecutive integers containing $t=0$. Hence $(c,k)$ is the only combination with its score exactly when neither $t=1$ nor $t=-1$ is admissible.
+\begin{itemize}
+\item $t=1$ is not admissible exactly when $c=0$ or $c+k\ge23$.
+\item $t=-1$ is not admissible exactly when $k\le3$ (the other two conditions, $c+1\ge0$ and $c+k-3\le25$, always hold).
+\end{itemize}
+So the score is achieved by a unique combination exactly when $k\le3$ and ($c=0$ or $c+k\ge23$):
+\begin{itemize}
+\item $c=0$, $k=0,1,2,3$: scores $0$, $1.5$, $3$, $4.5$;
+\item $k=0$, $c=23,24,25$: scores $138$, $144$, $150$;
+\item $k=1$, $c=22,23,24$: scores $133.5$, $139.5$, $145.5$;
+\item $k=2$, $c=21,22,23$: scores $129$, $135$, $141$;
+\item $k=3$, $c=20,21,22$: scores $124.5$, $130.5$, $136.5$.
+\end{itemize}
+So there are $16$ such scores:
+\[\boxed{0,\ 1.5,\ 3,\ 4.5,\ 124.5,\ 129,\ 130.5,\ 133.5,\ 135,\ 136.5,\ 138,\ 139.5,\ 141,\ 144,\ 145.5,\ 150}.\]

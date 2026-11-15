@@ -1,0 +1,7 @@
+Put $A=(0,0)$, $AB$ on the positive horizontal axis, and the center at $O=(1,2)$. Since the tangent distance $AX=1$ and radius is two, $\tan(\dfrac{\angle A}{2})=2$, giving $\cos A=-\dfrac{3}{5},\sin A=\dfrac{4}{5}$. The parallel tangent $BC$ touches at $C=O+2(\dfrac{4}{5},\dfrac{3}{5})=(\dfrac{13}{5},\dfrac{16}{5})$. It meets the horizontal axis at $B=(5,0)$, hence $D=C-B=(-\dfrac{12}{5},\dfrac{16}{5})$. On $CD$, the circle equation gives $x=1\pm\dfrac{8}{5}$, so $Z=(-\dfrac{3}{5},\dfrac{16}{5})$ and $\boxed{DZ=\dfrac{9}{5}}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(5,0),C=(13/5,16/5),D=(-12/5,16/5),O=(1,2),X=(1,0),Z=(-3/5,16/5),Y=(-3/5,4/5);draw(A--B--C--D--cycle);draw(circle(O,2));draw(O--X,dashed);pair[] P={A,B,C,D,O,X,Y,Z};string[] L={"A","B","C","D","O","X","Y","Z"};for(int i=0;i<P.length;++i)label("$"+L[i]+"$",P[i],i==4?(1,0):unit(P[i]-O));
+\end{asy}

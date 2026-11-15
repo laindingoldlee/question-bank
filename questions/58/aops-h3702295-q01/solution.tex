@@ -1,0 +1,7 @@
+A right triangle inscribed in a circle has a diameter as its hypotenuse. Opposite vertices of the $2n$-gon have the same colour precisely when $n$ is even. Thus $n$ is even. Each colour then has $\dfrac{n}{2}$ diameter pairs, and for each pair the third vertex can be any of its other $n-2$ vertices. Each right triangle has a unique hypotenuse, so the count is $2(\dfrac{n}{2})(n-2)=n(n-2)$. Hence $(n-1)^2=2025$, giving $\boxed{n=46}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int k=0;k<12;++k){pair P=dir(30*k);dot(P,(k%2==0?red:blue)+4bp);}draw(unitcircle);draw(dir(0)--dir(60)--dir(180)--cycle,heavygreen);label("Illustration with 12 vertices",(0,-1.4));
+\end{asy}

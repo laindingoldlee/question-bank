@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1197435_math_question
+% Stable identity: aops-topic-1197435-q01
+The sphere is tangent to the base plane at distance $6$ from $V$, so its radius is $6$, and $VX=6$. Since the height equals the radius, every generator of the cone makes a $45^\circ$ angle with the axis.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair V=(0,6); draw((-6,0)--V--(6,0)); draw(xscale(6)*yscale(1.2)*arc((0,0),1,180,360)); draw(xscale(6)*yscale(1.2)*arc((0,0),1,0,180),dashed);
+draw(arc(V,6,-135,-45),blue); draw(V--(0,0),dashed); dot(V); label("$V$",V,N);
+pair X=V+6*dir(-45); dot(X); label("$X$",X,E); draw(X--(0,X.y),red); label("$6$",(V+X)/2,NE); label("$6$",(0,3),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the distance from $X$ to the axis is $VX\sin45^\circ=6\cdot\dfrac{\sqrt2}{2}=\boxed{3\sqrt2}$.

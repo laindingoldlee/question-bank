@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1789275_circumscribed_circle_problem
+% Stable identity: aops-topic-1789275-q01
+In an equilateral triangle the altitude $AD$ is also a median and a perpendicular bisector, so the circumcentre $O$ lies on $AD$, and it coincides with the centroid. Hence $AO=\dfrac{2}{3}AD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(6,0),A=(3,3*sqrt(3)),D=(3,0),O=(3,sqrt(3));
+draw(circle(O,2*sqrt(3)),gray+linewidth(0.7));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,dashed);
+draw(O--C,blue+linewidth(0.8));
+draw((3,0)--(3,0.35)--(3.35,0.35)--(3.35,0),linewidth(0.5));
+dot(O);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);label("$O$",O,W);
+label("$6$",(A+B)/2,NW);
+label("$R$",(O+C)/2,N,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $D$ is the midpoint of $BC$, $BD=3$ and by Pythagoras $AD=\sqrt{6^2-3^2}=3\sqrt3$. Therefore
+\[
+R=AO=\dfrac{2}{3}\cdot3\sqrt3=\boxed{2\sqrt3}.
+\]
+(Check: $OD=\sqrt3$ and $OC=\sqrt{OD^2+DC^2}=\sqrt{3+9}=2\sqrt3$.)

@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1654896_a_little_doubt
+% Stable identity: aops-topic-1654896-q01
+Let the floor be $\ell$ by $b$ metres, let $s=\ell+b$ be the semi-perimeter of the floor, and let $h=0.4s$ be the height.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair o=(0,0);real l=6,w=4,h=4;pair d=(2.2,1.6);
+pair A=o,B=(l,0),C=(l,h),D=(0,h);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(B--B+d--C+d--C,linewidth(0.9));draw(D--D+d--C+d,linewidth(0.9));
+draw(A--A+d,dashed);draw(A+d--B+d,dashed);draw(A+d--D+d,dashed);
+label("$\ell$",(A+B)/2,S);label("$b$",B+d/2,SE);label("$h$",(A+D)/2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Paper used.} Rs.\ $260$ at Rs.\ $2$ per metre buys $130$ m of paper, which is $0.5$ m wide, so it covers $130\cdot0.5=65\text{ m}^2$.
+
+\textbf{Wall area.} The four walls have total area $2\ell h+2bh=2sh$. Since $15\text{ m}^2$ is not papered,
+\[
+2sh-15=65\quad\Longrightarrow\quad 2s(0.4s)=80\quad\Longrightarrow\quad s^2=100,
+\]
+so $s=10$ m and the height is $h=0.4\cdot10=\boxed{4\text{ m}}$.

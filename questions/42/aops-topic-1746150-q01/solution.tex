@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1746150_breaking_math_iv
+% Stable identity: aops-topic-1746150-q01
+Let $EF=c$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair v=unit((0.35,1));
+pair A=(0,0),B=(7,0),C=A+3*v,D=B+5*v;
+pair Ep=extension(C,B,D,A);pair F=extension(Ep,Ep-v,A,B);
+draw(A--B,linewidth(0.9));draw(A--C,linewidth(0.9));draw(B--D,linewidth(0.9));
+draw(C--B);draw(D--A);draw(Ep--F,blue+linewidth(0.9));
+dot(Ep);dot(F);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NW);label("$D$",D,NE);label("$E$",Ep,N);label("$F$",F,S);
+label("$a$",(A+C)/2,W);label("$b$",(B+D)/2,E);label("$c$",(Ep+F)/2,W,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(a)} Since $EF\parallel AC$, triangles $BFE$ and $BAC$ are similar (common angle at $B$, corresponding angles equal), so $\dfrac {c}{a}=\dfrac{BF}{BA}$. Since $EF\parallel BD$, triangles $AFE$ and $ABD$ are similar, so $\dfrac {c}{b}=\dfrac{AF}{AB}$. Adding, and using $AF+FB=AB$ (the point $F$ lies between $A$ and $B$ because $E$ lies inside both segments $CB$ and $DA$),
+\[
+\dfrac {c}{a}+\dfrac {c}{b}=\dfrac{AF+FB}{AB}=1,\qquad\text{so}\qquad EF=c=\dfrac{1}{\dfrac{1}{a}+\dfrac{1}{b}}=\dfrac{ab}{a+b}. \qquad\blacksquare
+\]
+
+\textbf{(b)} The painters paint $\dfrac{1}{x}$ and $\dfrac{1}{y}$ of the fence per hour, so together $\dfrac{1}{x}+\dfrac{1}{y}$ per hour, and the job takes $\dfrac{1}{\dfrac{1}{x}+\dfrac{1}{y}}=\boxed{\dfrac{xy}{x+y}}$ hours. This is the same formula: in (a) the reciprocal of $EF$ is the sum of the reciprocals of $a$ and $b$, just as the combined time is the reciprocal of the sum of the reciprocal times. (Both quantities are half the harmonic mean of the two given numbers.)

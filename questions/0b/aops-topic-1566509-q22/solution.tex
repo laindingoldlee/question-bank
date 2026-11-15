@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1566509_mathcounts_mock_test_2015
+% Stable identity: aops-topic-1566509-q22
+\textbf{The regular hexagon.} Its centre is the centre $O$ of the circle, and it splits into six equilateral triangles of side $20$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=20;pair O=(0,0);
+draw(circle(O,R),linewidth(0.9));
+pair[] V;for(int i=0;i<6;++i) V.push(R*dir(60*i));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,blue+linewidth(1));
+for(int i=2;i<6;++i) draw(O+0.18*R*dir(60*i)--V[i],dashed);
+fill(O--V[0]--V[1]--cycle,paleyellow);
+draw(O--V[0]--V[1]--cycle,blue+linewidth(1));
+draw(arc(O,4,0,60));label("$60^\circ$",6.5*dir(30));
+dot(O);label("$O$",O,dir(210));label("$20$",(O+V[0])/2,S);label("$20$",(V[0]+V[1])/2,dir(210),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+6\cdot\dfrac{\sqrt3}{4}\cdot20^2=6\cdot100\sqrt3=600\sqrt3 .
+\]
+\textbf{No inscribed hexagon is larger.} Let the sides of an inscribed hexagon subtend central angles $\theta_1,\dots,\theta_6$ (going around the circle), with $\theta_1+\cdots+\theta_6=360^\circ$. If $O$ is inside the hexagon or on its boundary, the hexagon splits into six triangles with apex $O$, and its area is
+\[
+\dfrac{1}{2}R^2\left(\sin\theta_1+\cdots+\sin\theta_6\right),\qquad 0<\theta_i\le180^\circ .
+\]
+For two angles $\alpha,\beta$ in this range, $\sin\alpha+\sin\beta=2\sin\dfrac{\alpha+\beta}{2}\cos\dfrac{\alpha-\beta}{2}\le2\sin\dfrac{\alpha+\beta}{2}$, so replacing two unequal angles by their average never decreases the sum. Because $\sin$ is concave on $[0^\circ,180^\circ]$, the sum is largest when all six angles are equal (Jensen's inequality), giving $6\sin60^\circ=3\sqrt3$ and area $\dfrac{1}{2}\cdot400\cdot3\sqrt3=600\sqrt3$. If $O$ is outside the hexagon, the hexagon lies on one side of a chord, inside half of the disc, so its area is less than $\dfrac{1}{2}\pi\cdot20^2=200\pi<600\sqrt3$.
+
+Hence the largest area is $\boxed{600\sqrt3}$.

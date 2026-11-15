@@ -1,0 +1,19 @@
+Let $r$ be the inradius and $R$ the circumradius. Splitting into eight congruent center triangles and bisecting one gives
+\[
+r=2\cot22.5^\circ=2(1+\sqrt2).
+\]
+Thus $\boxed{r^2=12+8\sqrt2}$. The right triangle with legs $r,2$ and hypotenuse $R$ gives $\boxed{R^2=16+8\sqrt2}$.
+The octagon's area is half its perimeter times its inradius:
+\[
+\boxed{K=\dfrac{1}{2}(32)\,2(1+\sqrt2)=32(1+\sqrt2)}.
+\]
+Finally the two concentric circles bound an annulus of area
+\[
+\boxed{\pi(R^2-r^2)=4\pi}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real r=2*(1+sqrt(2)),R=sqrt(r*r+4);path p;for(int j=0;j<8;++j)p=p--R*dir(22.5+45j);p=p--cycle;draw(circle((0,0),R),gray);draw(circle((0,0),r),blue);draw(p);draw((0,0)--(r,0)--R*dir(22.5),red);label("$r$",(r/2,0),S);label("$2$",(r,1),E);label("$R$",.55R*dir(22.5),N);label("$O$",(0,0),W);
+\end{asy}

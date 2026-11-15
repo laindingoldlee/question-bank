@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h3311785_coding_exercise
+% Stable identity: aops-topic-3311785-q01
+Use the sieve of Eratosthenes: for every prime $p\le\sqrt{2{,}003{,}999}$, remove its multiples starting at $p^2$. Every composite has a prime factor no greater than its square root, so precisely the primes remain. The following exact computation sums them:
+\begin{verbatim}
+from math import isqrt
+N = 2004000
+prime = bytearray([1]) * N
+prime[0:2] = bytes(2)
+for p in range(2, isqrt(N-1)+1):
+    if prime[p]:
+        for k in range(p*p, N, p):
+            prime[k] = 0
+print(sum(k for k in range(N) if prime[k]))
+# 143460374601
+\end{verbatim}
+The requested digits are $\boxed{1434}$.

@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2523565_purple_comet_2018_problems_11_15_19
+% Stable identity: aops-topic-2523565-q02
+Work with polynomials whose coefficients are taken modulo $3$. Since $x+3j\equiv x$, $x+3j+1\equiv x+1$ and $x+3j+2\equiv x+2$, and $x(x+1)(x+2)=x^3+3x^2+2x\equiv x^3-x$, the $80$ blocks of three consecutive factors give
+\[\sum_{k=1}^{240}a_kx^k\equiv\left(x^3-x\right)^{80}=x^{80}\left(x^2-1\right)^{80}=\sum_{i=0}^{80}(-1)^{80-i}\dbinom{80}{i}x^{80+2i}\pmod 3.\]
+So $a_k\equiv0\pmod3$ unless $k=80+2i$ with $0\le i\le80$, and $a_{80+2i}\equiv\pm\dbinom{80}{i}\pmod3$.
+
+\textbf{No $\dbinom{80}{i}$ is a multiple of $3$.} Modulo $3$, $(1+y)^3\equiv1+y^3$ (the middle coefficients $3$ vanish), and applying this four times gives $(1+y)^{81}\equiv1+y^{81}$. Also, as integer polynomials, $1+y^{81}=(1+y)\left(1-y+y^2-\cdots+y^{80}\right)$. Hence
+\[(1+y)\left[(1+y)^{80}-\left(1-y+y^2-\cdots+y^{80}\right)\right]\equiv0\pmod3.\]
+The product of a nonzero polynomial modulo $3$ with $1+y$ is nonzero (compare the highest terms), so the bracket is $0$ modulo $3$, that is, $\dbinom{80}{i}\equiv(-1)^i\not\equiv0\pmod3$ for every $i$.
+
+So exactly $81$ of the coefficients, namely $a_{80},a_{82},\dots,a_{240}$, are not multiples of $3$, and the answer is $240-81=\boxed{159}$.

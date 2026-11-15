@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1710109_kootrapalis_easy_problems_kep
+% Stable identity: aops-topic-1710109-q05
+Recall that $\varphi\left(p_1^{k_1}\cdots p_r^{k_r}\right)=\prod p_i^{k_i-1}(p_i-1)$, that $\varphi(n)$ is even for $n\ge3$, and that if a prime $p$ divides $n$ then $p-1\mid\varphi(n)$.
+
+\textbf{Step 1: $\varphi(M)=20$.} The primes dividing $M$ satisfy $p-1\mid20$, so $p\in\{2,3,5,11\}$; since $3,11\nmid20$, the primes $3$ and $11$ appear at most to the first power, and $5$ at most squared.
+\begin{itemize}
+\item If $11\mid M$: $\varphi(11)=10$, and the rest $M'$ needs $\varphi(M')=2$, so $M'\in\{3,4,6\}$: $M=33,44,66$.
+\item If $11\nmid M$ and $25\mid M$: $\varphi(25)=20$ and $M'\in\{1,2\}$: $M=25,50$.
+\item Otherwise $\varphi(M)$ is $2^i$ or $4\cdot2^i$ (from $2$, $3$, $5$ to the first power), never $20$.
+\end{itemize}
+So $M\in\{25,33,44,50,66\}$, and $M=\varphi(N)$ must be even (or $1$): $M\in\{44,50,66\}$.
+
+\textbf{Step 2: $\varphi(N)=44$.} Possible primes: $p-1\mid44$ gives $p\in\{2,3,5,23\}$. The factor $11$ can only come from $23-1=22$, so $23\,\|\,N$ and the rest $N'$ has $\varphi(N')=2$: $N=69,92,138$.
+
+\textbf{$\varphi(N)=50$.} Possible primes: $p\in\{2,3,11\}$, and the factor $25$ cannot arise ($5\nmid N$, and $11$ appears at most once, giving one factor $5$). No solutions.
+
+\textbf{$\varphi(N)=66$.} Possible primes: $p\in\{2,3,7,23,67\}$. The factor $11$ comes from $23$ (leaving $\varphi(N')=3$, impossible) or from $67$ (leaving $\varphi(N')=1$, $N'\in\{1,2\}$): $N=67,134$.
+
+All solutions are $67,69,92,134,138$; the three-digit ones are $134$ and $138$, with sum $\boxed{272}$.

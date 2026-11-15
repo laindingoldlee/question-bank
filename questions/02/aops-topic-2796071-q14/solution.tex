@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2796071_2012_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2796071-q14
+From $AB^2-BN^2=AC^2-(12-BN)^2$: $121-BN^2=169-144+24BN-BN^2$, so $BN=4$ and $AN=\sqrt{105}$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(12,0),A=(4,sqrt(105)),Nn=(4,0);pair M=(A+C)/2,K=(4,sqrt(105)/4);
+draw(A--B--C--cycle);draw(A--Nn,dashed);draw(B--M);dot(K);
+draw(Nn+(0.5,0)--Nn+(0.5,0.5)--Nn+(0,0.5));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$N$",Nn,S);label("$M$",M,NE);label("$K$",K,NW);
+\end{asy}
+
+With $B=(0,0)$, $C=(12,0)$, $A=(4,\sqrt{105})$ we get $M=(8,\dfrac{\sqrt{105}}2)$. Line $BM$ reaches $x=4$ halfway, at $K=(4,\dfrac{\sqrt{105}}4)$. So $KN=\dfrac{\sqrt{105}}4$, $AK=\dfrac{3\sqrt{105}}4$, and $AK:KN=\boxed{3:1}$.

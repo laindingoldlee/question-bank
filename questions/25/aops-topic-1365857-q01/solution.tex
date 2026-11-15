@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1365857_inscribed_quadrilaterals
+% Stable identity: aops-topic-1365857-q01
+Triangles $ABC$ and $ADC$ are congruent (SSS: $AB=AD$, $CB=CD$, $AC$ common), so $\angle B=\angle D$. Opposite angles of a cyclic quadrilateral add to $180^\circ$, so $\angle B=\angle D=90^\circ$. An inscribed right angle subtends a diameter, so $AC=12$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(-6,0), C=(6,0), B=(sqrt(11),5), D=(sqrt(11),-5), O=(0,0);
+draw(circle(O,6),blue);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,red+dashed);
+draw(B+0.6*unit(A-B)--B+0.6*unit(A-B)+0.6*unit(C-B)--B+0.6*unit(C-B));
+draw(D+0.6*unit(A-D)--D+0.6*unit(A-D)+0.6*unit(C-D)--D+0.6*unit(C-D));
+dot(O);
+label("$A$",A,W); label("$B$",B,N); label("$C$",C,E); label("$D$",D,S); label("$O$",O,S);
+label("$x$",(A+B)/2,NW); label("$y$",(B+C)/2,NE); label("$x$",(A+D)/2,SW); label("$y$",(C+D)/2,SE);
+label("$6$",(-3,0),N,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Let $AB=AD=x$ and $BC=CD=y$. From the right triangle $ABC$,
+\[
+x^2+y^2=AC^2=144,
+\]
+and the area is $2\cdot\dfrac{xy}{2}=xy=60$. Then
+\[
+(x+y)^2=x^2+y^2+2xy=144+120=264,\qquad x+y=\sqrt{264}=2\sqrt{66}.
+\]
+The perimeter is $2(x+y)=\boxed{4\sqrt{66}}$ cm $\approx32.5$ cm. (Here $x,y=\sqrt{66}\pm\sqrt6$, which are positive, so the kite exists.)

@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1503732_new_problem
+% Stable identity: aops-topic-1503732-q01
+Call a number \emph{losing} if the player who has to move from it loses against best play, and \emph{winning} otherwise.
+
+\textbf{From $112$ to $1000$: winning.} Multiplying by $9$ gives at least $1008>1000$, which wins at once.
+
+\textbf{From $56$ to $111$: losing.} Every move gives a number between $2\cdot56=112$ and $9\cdot111=999$. That does not exceed $1000$, and it hands the opponent a winning number.
+
+\textbf{From $8$ to $55$: winning.} For such $n$ let $k=\left\lceil\dfrac{56}{n}\right\rceil$. Then $2\le k\le7$ and $56\le kn<56+n\le111$, so the move ``multiply by $k$'' gives the opponent a losing number.
+
+\textbf{From $4$, $5$, $6$: losing.} Every move gives a number from $8$ to $54$, which is winning for the opponent.
+
+\textbf{From $1$: winning.} Multiplying by $4$, $5$ or $6$ hands the opponent a losing number.
+
+So the \textbf{first player} wins. Strategy: first say $4$, $5$ or $6$. The opponent must then reach a number from $8$ to $54$, and the first player moves into $56$--$111$. The opponent must then move to a number from $112$ to $999$, and the first player multiplies by $9$ and exceeds $1000$.

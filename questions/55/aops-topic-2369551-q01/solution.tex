@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2369551_counting_help
+% Stable identity: aops-topic-2369551-q01
+\textbf{Gap counts (stars and bars).} The solutions of $a+b+c=22$ in nonnegative integers correspond to arrangements of $22$ stars and $2$ bars, so there are $\dbinom{24}{2}=276$. With $a,b,c\ge1$, put $a=a'+1$, $b=b'+1$, $c=c'+1$: then $a'+b'+c'=19$ with $a',b',c'\ge0$, which has $\dbinom{21}{2}=210$ solutions.
+
+\textbf{Why the ratio works.} Pick one of the three chosen students as a ``starting'' student, and read the gaps $a,b,c$ clockwise from that student. A pair (choice of three students, starting student) corresponds exactly to a pair (seat of the starting student, ordered triple $(a,b,c)$ with sum $22$). Each choice of three students has exactly $3$ starting students, so
+\[3\cdot(\text{number of choices})=25\cdot(\text{number of gap triples}).\]
+This holds both for all choices ($3\cdot2300=25\cdot276$) and for the choices with no two neighbours, where all gaps are at least $1$ ($3N=25\cdot210$, so $N=1750$). The factor $\dfrac{25}{3}$ is the same in both counts and cancels in the ratio:
+\[P(\text{no two neighbours})=\dfrac{1750}{2300}=\dfrac{210}{276}=\dfrac{35}{46}.\]
+
+\textbf{(a)} Hence the probability that at least two of the chosen students were neighbours is
+\[1-\dfrac{35}{46}=\boxed{\dfrac{11}{46}}.\]

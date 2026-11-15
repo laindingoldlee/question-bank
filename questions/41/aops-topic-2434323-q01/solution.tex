@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2434323_geometry
+% Stable identity: aops-topic-2434323-q01
+Use coordinates in centimetres: $A=(0,0)$, $B=(30,0)$, $C=(30,30)$, $D=(0,30)$, so $F=(0,36)$.
+
+Since $AE=EF$, the point $E$ lies on the perpendicular bisector of $AF$, which is the line $y=18$. As $E$ is on $BC$ (the line $x=30$), $E=(30,18)$.
+
+The line $EF$ goes from $(30,18)$ to $(0,36)$: $y=36-\dfrac{3}{5}x$. It meets the line $DC$ ($y=30$) where $\dfrac35x=6$, i.e. $x=10$; so $G=(10,30)$, which is indeed on side $DC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(30,0), C=(30,30), D=(0,30), F=(0,36), Ep=(30,18), G=(10,30);
+fill(D--G--F--cycle,rgb(1,0.85,0.6));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(D--F,dashed); draw(A--Ep--F,blue+linewidth(0.9)); draw(A--F,dotted);
+draw((-2,18)--(32,18),gray+dotted);
+dot(A); dot(B); dot(C); dot(D); dot(F); dot(Ep); dot(G);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,W); label("$F$",F,NW); label("$E$",Ep,E); label("$G$",G,N);
+label("$30$",(15,0),S); label("$6$",(0,33),W); label("$18$",(30,9),E); label("$12$",(30,24),E); label("$10$",(5,30),S);
+pair m1=(A+Ep)/2, m2=(Ep+F)/2;
+draw(shift(m1)*rotate(degrees(Ep-A)+90)*((-0.8,0)--(0.8,0)),blue); draw(shift(m2)*rotate(degrees(F-Ep)+90)*((-0.8,0)--(0.8,0)),blue);
+\end{asy}
+
+Triangle $DGF$ has a right angle at $D$, with legs $DG=10$ and $DF=6$, so its area is
+\[\dfrac12\cdot10\cdot6=\boxed{30\text{ cm}^2}.\]
+(Without coordinates: the foot of the perpendicular from $E$ to $AF$ is the midpoint of $AF$, at distance $18$ from $A$; triangles $FDG$ and $FME$, where $M=(0,18)$, are similar with ratio $\dfrac{FD}{FM}=\dfrac{6}{18}$, so $DG=\dfrac13\cdot30=10$.)

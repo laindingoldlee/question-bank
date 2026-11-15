@@ -1,0 +1,46 @@
+% Source: https://artofproblemsolving.com/community/c3h2500401_math_kangaroo_2013
+% Stable identity: aops-topic-2500401-q01
+Travel once round the track. Each piece turns the direction of travel through $45^\circ$, either to the left ($L$) or to the right ($R$), so the directions of travel at the joints are multiples of $45^\circ$. Let the track have $n$ pieces, $l$ of type $L$ and $r$ of type $R$; because of the S-bend, $l\ge1$ and $r\ge1$.
+
+\textbf{Chords.} Replace each piece by its chord, the segment from its start to its end. All chords have the same length, and the chord of an arc makes equal angles with the tangents at its two ends, so a chord points in the average of the directions of travel at the ends of its piece: an odd multiple of $22.5^\circ$. Write $u_j$ for the unit vector in direction $22.5^\circ+45^\circ j$, where $j$ is taken mod $8$ (the \emph{index} of the chord). If the direction of travel before piece $k$ is $h$ and piece $k$ turns by $45^\circ t_k$ (with $t_k=\pm1$), the chords of pieces $k$ and $k+1$ point in directions
+\[h+22.5^\circ t_k\qquad\text{and}\qquad h+45^\circ t_k+22.5^\circ t_{k+1},\]
+which differ by $22.5^\circ(t_k+t_{k+1})$. So \emph{the index stays the same when consecutive pieces turn opposite ways, and changes by $\pm1$ when they turn the same way.}
+
+\textbf{When does the track close?} The direction must return, so $45^\circ(l-r)$ is a multiple of $360^\circ$, i.e. $l-r=8q$ for an integer $q$; and the chords must add up to zero. Let $a_j$ be the number of chords of index $j$. Since $u_{j+4}=-u_j$,
+\[\sum_j a_ju_j=b_0u_0+b_1u_1+b_2u_2+b_3u_3,\qquad b_j=a_j-a_{j+4}.\]
+Here $u_0\perp u_2$, $u_1=\dfrac{u_0+u_2}{\sqrt2}$ and $u_3=\dfrac{u_2-u_0}{\sqrt2}$, so the sum is zero exactly when $b_0+\dfrac{b_1-b_3}{\sqrt2}=0$ and $b_2+\dfrac{b_1+b_3}{\sqrt2}=0$. As $\sqrt2$ is irrational and the $b_j$ are integers, this forces $b_1=b_3$, $b_1=-b_3$, hence all $b_j=0$. So
+\[\text{the chords add up to zero}\iff a_j=a_{j+4}\text{ for every }j.\]
+In particular $n=\sum a_j=2(a_0+a_1+a_2+a_3)$ is even.
+
+\textbf{Case $q=0$, i.e. $l=r$.} Going once round, the index changes in total by $\sum_k\dfrac{t_k+t_{k+1}}{2}=l-r=0$, so if we record the index as an integer (without reducing mod $8$) it returns to its starting value and takes all the integer values in some interval $[m,M]$. The indices that occur (mod $8$) form a set closed under adding $4$. If $M-m\le6$, the complementary set of indices would be a nonempty run of at most $7$ consecutive residues closed under adding and subtracting $4$; but the residue just before the run is not in it, while that residue plus $4$ is in it (the run has length at least $5$, since it contains $x$ and $x+4$), a contradiction. So $M-m\ge7$, and the walk needs at least $7$ steps up and $7$ steps down. Besides, the turn directions change from $L$ to $R$ or back at least twice round the loop, giving at least $2$ steps where the index stays put. Hence $n\ge16$.
+
+\textbf{Case $q\ne0$.} Then $|l-r|\ge8$, so $n=|l-r|+2\min(l,r)\ge8+2=10$, and $n$ is even.
+\begin{itemize}
+\item $n=10$ forces one piece of one type and nine of the other, say one $R$ and nine $L$ (the other case is the mirror image). Starting with the $R$ piece at index $j$, the indices of the ten chords are
+\[j,\ j,\ j+1,\ j+2,\ \dots,\ j+7,\ j+8\equiv j,\]
+so $a_j=3$ but $a_{j+4}=1$. The track does not close.
+\end{itemize}
+So every closed track containing an S-bend has at least $12$ pieces.
+
+\textbf{Twelve pieces suffice.} Take the turns $L\,R\,L\,L\,L\,L\,L\,R\,L\,L\,L\,L$ (starting with the S-bend). Then $l-r=8$, so the direction returns, and the indices are
+\[0,0,0,1,2,3,4,4,4,5,6,7,\]
+so $a_0=a_4=3$ and $a_1=a_5=a_2=a_6=a_3=a_7=1$: the chords add up to zero and the track closes. It does not cross itself:
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real R=1; pair pos=(0,0); real h=0;
+int[] t={1,-1,1,1,1,1,1,-1,1,1,1,1};
+for(int k=0;k<t.length;++k){
+  pair c=pos+R*dir(h+90*t[k]);
+  real a0=degrees(pos-c); real a1=a0+45*t[k];
+  path p=arc(c,R,a0,a1,t[k]==1 ? CCW : CW);
+  draw(p, k<2 ? red+linewidth(1.6) : linewidth(1));
+  dot(pos,linewidth(3));
+  pos=c+R*dir(a1); h=h+45*t[k];
+}
+dot(pos,linewidth(3));
+\end{asy}
+
+(The S-bend is shown in red; the dots are the joints.) So the smallest track has $\boxed{12}$ pieces.

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1721154_some_notsoquick_counting_problems
+% Stable identity: aops-topic-1721154-q01
+There are $6^4=1296$ equally likely rolls. For a score $s$, let $N(s)$ be the number of rolls giving $s$. Counting by the smallest die $m$: the other three dice are all at least $m$ and the score is their sum. Carrying out this count for each $s$ (for example, $s=3$ needs all four dice equal to $1$, and $s=18$ needs at least three sixes) gives
+\[
+\begin{array}{c|cccccccccccccccc}
+s&3&4&5&6&7&8&9&10&11&12&13&14&15&16&17&18\\ \hline
+N(s)&1&4&10&21&38&62&91&122&148&167&172&160&131&94&54&21
+\end{array}
+\]
+(the counts add up to $1296$). Two entries can be checked by hand: $N(3)=1$ (all ones), and $N(18)=\dbinom43\cdot5+1=21$ (exactly three sixes with the fourth die $1$ to $5$, or four sixes).
+\begin{enumerate}
+\item The most likely score is $\boxed{13}$ ($172$ rolls).
+\item The least likely score is $\boxed{3}$ ($1$ roll).
+\item $P(s\ge15)=\dfrac{131+94+54+21}{1296}=\dfrac{300}{1296}=\boxed{\dfrac{25}{108}}$.
+\item $P(s\le5)=\dfrac{1+4+10}{1296}=\dfrac{15}{1296}=\boxed{\dfrac{5}{432}}$.
+\item The six scores can be arranged in $\dfrac{6!}{1!\,2!\,2!\,1!}=180$ orders, so the probability is
+\[
+180\cdot\dfrac{91\cdot172^2\cdot131^2\cdot21}{1296^6}=\boxed{\dfrac{101062244465}{2742118830047232}}\approx3.69\times10^{-5}.
+\]
+\end{enumerate}
+For example, $N(4)=4$: the dice must be three $1$s and one $2$ (the score drops one $1$ and keeps $1+1+2$), in $4$ orders.

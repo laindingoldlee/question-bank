@@ -1,0 +1,9 @@
+Take $O$ as the origin and denote the radius vectors by $a,b,c$. The vector $h=a+b+c$ is the orthocenter: $(h-a)\cdot(b-c)=(b+c)\cdot(b-c)=|b|^2-|c|^2=0$, and likewise for the other altitudes. Thus $|h|^2=3\cdot12^2+2(a\cdot b+b\cdot c+c\cdot a)$. Independent uniform points have mean vector zero, so each cross term has expectation zero. Hence $\boxed{\mathbb E(OH^2)=432}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair O=(0,0),A=2dir(80),B=2dir(210),C=2dir(330),H=A+B+C;draw(circle(O,2));draw(A--B--C--cycle);draw(A--H--B,dashed);draw(C--H,dashed);label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));label("$H$",H,(-1,1));label("$O$",O,(0,-1));
+\end{asy}
+

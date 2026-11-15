@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2597912_sum_of_all_elements_of_subset
+% Stable identity: aops-topic-2597912-q01
+\textbf{Step 1: $|S|\le6$.} Suppose $S$ has at least $7$ elements and take $7$ of them. Their subsets with $1$, $2$, $3$ or $4$ elements number $7+21+35+35=98$, and each has a sum between $1$ and $25+24+23+22=94$. By the pigeonhole principle two of them have the same sum, a contradiction.
+
+\textbf{Step 2: at most $5$ elements.} Then $\sigma(S)\le25+24+23+22+21=115$.
+
+\textbf{Step 3: exactly $6$ elements.} Write the elements as $25-e_1,\dots,25-e_6$ with $0\le e_1<e_2<\dots<e_6\le24$. Then $\sigma(S)=150-(e_1+\cdots+e_6)$, so we must show $e_1+\cdots+e_6\ge27$.
+
+Let $E=\{e_1,\dots,e_6\}$. A $k$-element subset of $S$ has sum $25k$ minus the sum of the corresponding subset of $E$. Since different subsets of $S$ have different sums, different $k$-element subsets of $E$ also have different sums. In particular, \emph{all $2$-element subsets of $E$ have different sums, and so do all $3$-element subsets.}
+
+The $20$ three-element sums of $E$ are different integers between $e_1+e_2+e_3$ and $e_4+e_5+e_6$, so $e_4+e_5+e_6\ge e_1+e_2+e_3+19$ and
+\[e_1+\cdots+e_6\ge2(e_1+e_2+e_3)+19.\]
+As $e_1,e_2,e_3$ are different nonnegative integers, $e_1+e_2+e_3\ge3$. If $e_1+e_2+e_3\ge4$, the total is at least $27$. Otherwise $(e_1,e_2,e_3)=(0,1,2)$, and:
+\begin{itemize}
+\item $e_4\ne3$, since $0+3=1+2$. So $e_4\ge4$, and every three-element sum other than $0+1+2=3$ is at least $0+1+e_4\ge5$. The value $4$ is missed, so the $20$ sums lie in $\{3,5,6,\dots,T\}$ with $T=e_4+e_5+e_6$, forcing $T\ge23$.
+\item If $T\ge24$ the total is at least $27$. If $T=23$, the $20$ sums are exactly $3,5,6,\dots,23$. In particular $5$ is a sum, which forces $e_4=4$, and then $e_5+e_6=19$ with $5\le e_5\le9$.
+\item Each choice fails: $e_5=5$ gives $0+5=1+4$; $e_5=6$ gives $0+6=2+4$; $e_5=7$, $e_6=12$ gives $0+1+12=2+4+7$; $e_5=8$, $e_6=11$ gives $1+11=4+8$; $e_5=9$, $e_6=10$ gives $0+10=1+9$.
+\end{itemize}
+So in every case $e_1+\cdots+e_6\ge27$ and $\sigma(S)\le150-27=123$.
+
+\textbf{Step 4: $123$ is attained} by $E=\{0,1,2,4,7,13\}$, i.e. $S=\{25,24,23,21,18,12\}$. It suffices to check that no two disjoint nonempty subsets $A$, $B$ of $S$ have equal sums (common elements can always be removed).
+\begin{itemize}
+\item $|A|=|B|=1$: the elements are different.
+\item $|A|=|B|=2$: the pair sums of $E$ are $1,2,4,7,13,3,5,8,14,6,9,15,11,17,20$, all different.
+\item $|A|=|B|=3$: then $B$ is the complement of $A$ in $E$, and the two $e$-sums add up to $27$, which is odd, so they are not equal.
+\item $|A|\ne|B|$, say $|A|=|B|+j$ with $j\ge1$: since $\sigma(A)=25|A|-e(A)$ and $\sigma(B)=25|B|-e(B)$, equal sums would need $e(A)-e(B)=25j$. If $j\ge2$ this is impossible, as $e(A)\le27<50$. If $j=1$, then $2|B|+1=|A|+|B|\le6$, so $|A|\le3$ and $e(A)\le13+7+4=24<25$.
+\end{itemize}
+Hence the largest possible value is $\sigma(S)=25+24+23+21+18+12=\boxed{123}$.

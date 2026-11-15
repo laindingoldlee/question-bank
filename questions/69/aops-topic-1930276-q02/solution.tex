@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h1930276_help_needed_in_problems_of_varied_topics
+% Stable identity: aops-topic-1930276-q02
+Since the legs are not parallel, lines $AB$ and $CD$ meet at a point $O$; say $BC$ is the base nearer to $O$ (the other case is the same with the bases exchanged).
+
+\textbf{$O$, $N$, $M$ are collinear.} Let line $OM$ meet $BC$ at $N'$. Because $BC\parallel AD$, triangles $OBN'$ and $OAM$ are similar, as are $OCN'$ and $ODM$, so
+\[
+\dfrac{BN'}{AM}=\dfrac{ON'}{OM}=\dfrac{CN'}{DM}.
+\]
+As $AM=MD$, we get $BN'=CN'$, so $N'=N$. Hence line $MN$ is the line $OM$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(4,6), A=(0,0), D=(8,0), B=(2,3), C=(6,3), M=(4,0), Npt=(4,3);
+draw(B--O--C,dashed);
+draw(A--B--C--D--cycle,linewidth(1));
+draw(O--M,blue+linewidth(0.9));
+real a1=degrees(A-O), a2=degrees(M-O), a3=degrees(D-O);
+draw(arc(O,1.6,a1+1.5,a2-1.5)); draw(arc(O,1.6,a2+1.5,a3-1.5));
+draw(O+1.42*dir((a1+a2)/2)--O+1.78*dir((a1+a2)/2));
+draw(O+1.42*dir((a2+a3)/2)--O+1.78*dir((a2+a3)/2));
+dot(O);dot(M);dot(Npt);
+label("$O$",O,N); label("$A$",A,SW); label("$D$",D,SE); label("$B$",B,W); label("$C$",C,E);
+label("$M$",M,S); label("$N$",Npt,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{$OM$ bisects angle $AOD$.} The angles that line $OM$ makes with lines $AB$ and $CD$ are related to $\angle AOM$ and $\angle MOD$, whose sum is $\angle AOD<180^\circ$. If one of them were obtuse, say $\angle AOM>90^\circ$, the angles between the lines would be $180^\circ-\angle AOM$ and $\angle MOD$, and their equality would give $\angle AOM+\angle MOD=180^\circ$, which is impossible. So both are at most $90^\circ$ and the condition says $\angle AOM=\angle MOD$.
+
+\textbf{Conclusion.} In triangle $AOD$ the bisector from $O$ meets $AD$ at its midpoint $M$, so by the angle bisector theorem $\dfrac{OA}{OD}=\dfrac{AM}{MD}=1$, i.e.\ $OA=OD$. By the similarity of triangles $OBC$ and $OAD$, $\dfrac{OB}{OA}=\dfrac{OC}{OD}$, so also $OB=OC$. Therefore
+\[
+AB=OA-OB=OD-OC=CD,
+\]
+and the trapezoid is isosceles. $\blacksquare$

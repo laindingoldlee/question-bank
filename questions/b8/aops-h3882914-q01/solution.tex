@@ -1,0 +1,11 @@
+The projections of the three large-sphere centers onto the plane form an equilateral triangle of side $4$. The small sphere's center lies above its center, at horizontal distance $\dfrac{4}{\sqrt3}$ from each large-sphere center. If its radius is $r$, the vertical center separation is $2-r$ and the center distance from tangency is $2+r$. Thus
+\[
+\dfrac{16}{3}+(2-r)^2=(2+r)^2,
+\]
+giving $\dfrac{16}{3}=8r$ and $\boxed{r=\dfrac{2}{3}}$. Symmetry gives tangency to all three large spheres, and the center height $r$ gives tangency to the plane.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair S=(0,2.0/3),B=(4/sqrt(3),2);draw((-1,0)--(5,0));draw(circle(S,2.0/3),blue);draw(circle(B,2));draw(S--B,dashed+red);draw(S--(B.x,S.y)--B,dashed);label("$r$",S,W);label("$2$",B,E);label("$\dfrac{4}{\sqrt3}$",(B.x/2,S.y),S);label("vertical center section",(2,-.5));
+\end{asy}

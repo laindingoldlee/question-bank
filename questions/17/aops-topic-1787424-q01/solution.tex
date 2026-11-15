@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1787424_geoaalgebra
+% Stable identity: aops-topic-1787424-q01
+A circle of area $\pi r^2$ has radius $r$, so the two circles have radii $4$ (since $\pi\cdot4^2=16\pi$) and $10$ (since $\pi\cdot10^2=100\pi$). Their average is $\dfrac{4+10}{2}=7$, and the circle of radius $7$ has area $\pi\cdot7^2=\boxed{49\pi}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+draw(circle(O,10),linewidth(0.8));
+draw(circle(O,7),blue+linewidth(0.9));
+draw(circle(O,4),linewidth(0.8));
+dot(O);
+draw(O--4*dir(200),linewidth(0.6));draw(O--7*dir(90),blue+linewidth(0.6));draw(O--10*dir(-30),linewidth(0.6));
+label("$4$",2*dir(200),dir(110));
+label("$7$",(0,4.6),E,blue);
+label("$10$",8.5*dir(-30),dir(60));
+label("$O$",O,dir(-115));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Note that this is not the average of the two areas, $58\pi$.)

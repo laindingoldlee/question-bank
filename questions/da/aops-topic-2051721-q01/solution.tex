@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h2051721_geometry_problem
+% Stable identity: aops-topic-2051721-q01
+We have $\angle B=130^\circ$, $\angle MAB=10^\circ$, and $\angle MCB=20^\circ$. Since $\angle MAC=\angle MCA$, $MA=MC$.
+
+\textbf{Construction.} Reflect $C$ in the line $AM$ to get $C'$. As $\angle MAC=10^\circ$, also $\angle MAC'=10^\circ$ on the other side of $AM$, so $\angle CAC'=20^\circ=\angle CAB$ and $C'$ lies on ray $AB$, with $AC'=AC$ and $MC'=MC=MA$. Because $\angle C<\angle B$, $AB<AC=AC'$, so $B$ lies between $A$ and $C'$. Let $T$ be the point such that $C'CT$ is equilateral, on the same side of $CC'$ as $M$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), C=(10,0);
+real t=10*sin(radians(30))/sin(radians(130));
+pair B=t*dir(20);
+pair M=(5,5*tan(radians(10)));
+pair Cp=10*dir(20);
+pair T=rotate(-60,Cp)*C;
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--Cp,gray+dashed);
+draw(A--M--C,blue);
+draw(B--M,red+linewidth(0.8));
+draw(M--Cp,dashed);draw(Cp--C,dashed);draw(C--T--Cp,green+dashed);draw(M--T,green+dashed);
+dot(A);dot(B);dot(C);dot(M);dot(Cp);dot(T);
+label("$A$",A,SW);label("$B$",B,NW);label("$C$",C,SE);label("$M$",M,S);label("$C'$",Cp,NE);label("$T$",T,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Angles.} Triangle $ACC'$ is isosceles with apex angle $20^\circ$, so $\angle AC'C=\angle ACC'=80^\circ$. Triangle $AMC'$ is isosceles ($MA=MC'$), so $\angle MC'A=\angle MAC'=10^\circ$, and hence $\angle MC'C=70^\circ$. Triangle $MC'C$ is isosceles ($MC'=MC$), so $\angle MCC'=70^\circ$ and $\angle C'MC=40^\circ$.
+
+\textbf{$C'B=C'C$.} In triangle $BC'C$, $\angle BC'C=80^\circ$ and $\angle BCC'=\angle ACC'-\angle ACB=80^\circ-30^\circ=50^\circ$, so $\angle C'BC=50^\circ=\angle BCC'$ and $C'B=C'C$.
+
+\textbf{The point $T$.} Both $M$ and $T$ are equidistant from $C$ and $C'$, so both lie on the perpendicular bisector of $CC'$, which bisects $\angle C'MC$. Hence $\angle C'MT=20^\circ$ (here $T$ is between $M$ and $CC'$, since $\angle C'TC=60^\circ>40^\circ=\angle C'MC$). Also $\angle MC'T=\angle MC'C-\angle TC'C=70^\circ-60^\circ=10^\circ$.
+
+\textbf{Congruence.} Triangles $MC'B$ and $MC'T$ have $C'B=C'C=C'T$, the common side $C'M$, and $\angle MC'B=\angle MC'A=10^\circ=\angle MC'T$. So they are congruent (SAS), and $\angle C'MB=\angle C'MT=20^\circ$. In triangle $MBC'$ this gives $\angle MBC'=180^\circ-10^\circ-20^\circ=150^\circ$, so $\angle ABM=30^\circ$.
+
+\textbf{Conclusion.} $\angle MBC=\angle ABC-\angle ABM=130^\circ-30^\circ=100^\circ$, and in triangle $MBC$,
+\[\angle BMC=180^\circ-100^\circ-20^\circ=\boxed{60^\circ}.\]

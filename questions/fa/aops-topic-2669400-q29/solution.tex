@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2669400_111th_post_solving_problems
+% Stable identity: aops-topic-2669400-q29
+Let line $WB$ meet line $ZY$ at $T$. Since $WX\parallel ZY$, the triangles $BXW$ and $BYT$ have equal alternate angles at $X$ and $Y$, equal vertical angles at $B$, and $BX=BY$; so they are congruent and $YT=XW$. In a parallelogram $XW=YZ$, so $YT=YZ$ and $Y$ is the midpoint of $ZT$.
+
+Now $\angle ZAT=90^\circ$, so in right triangle $ZAT$ the midpoint $Y$ of the hypotenuse is equidistant from all three vertices (it is the centre of the circle with diameter $ZT$). Hence $AY=YZ$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair W1=(0,0),X1=(5,0),Y1=(6.5,3),Z1=(1.5,3),B1=(X1+Y1)/2,T1=(11.5,3);
+pair u=unit(B1-W1);pair A1=dot(Z1-W1,u)*u;
+draw(W1--X1--Y1--Z1--cycle,linewidth(0.8));draw(W1--T1,linewidth(0.6));draw(Y1--T1,dashed);draw(Z1--A1);draw(A1--Y1,dashed);
+draw(A1+0.3*u--A1+0.3*u+0.3*unit(Z1-A1)--A1+0.3*unit(Z1-A1));
+dot(A1);dot(B1);dot(T1);
+label("$W$",W1,SW);label("$X$",X1,SE);label("$Y$",Y1,N);label("$Z$",Z1,NW);label("$B$",B1,SE);label("$A$",A1,S);label("$T$",T1,NE);
+\end{asy}

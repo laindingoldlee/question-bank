@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2013398_how_many_zeros_do_we_write_when_we_write_all_the_integers_from_1_to_256_in_binar
+% Stable identity: aops-topic-2013398-q01
+\textbf{(a)} A $k$-digit binary number with $k\ge 2$ has leading digit $1$, followed by $k-1$ free digits, so there are $2^{k-1}$ such numbers. In each of the $k-1$ free positions, exactly half of these numbers, $2^{k-2}$ of them, have a $0$. So the $k$-digit numbers contain
+\[
+(k-1)\cdot 2^{k-2}
+\]
+zeros in total. The numbers from $1$ to $255$ have $1$ to $8$ digits ($1$ has none), giving
+\[
+\sum_{k=2}^{8}(k-1)2^{k-2}=1+4+12+32+80+192+448=769
+\]
+zeros. Finally $256=100000000_2$ contributes $8$ more zeros. The total is $769+8=\boxed{777}$.
+
+\textbf{(b)} The sum $\dbinom81+\dbinom82+\cdots+\dbinom88=2^8-1$ counts \emph{numbers}: $\dbinom8j$ is the number of $9$-digit strings $1\ast\ast\cdots\ast$ with exactly $j$ zeros, and adding over $j\ge1$ counts the strings with at least one zero. To count \emph{zeros}, each such number must be weighted by its number of zeros: the $9$-digit-style sum should be $\sum_j j\dbinom8j=8\cdot 2^7$, which agrees with the count by positions used in (a) (each of the $8$ positions after the leading $1$ is zero in half of the $2^8$ strings).

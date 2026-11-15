@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2085967_may_match_school_math_with_advanced_graphing_10_questions
+% Stable identity: aops-topic-2085967-q10
+The range of \(f\) is \([2,\infty)\), and \(f^{-1}(x)=\dfrac{(x-2)^2+3}{a}\) for \(x\ge 2\); thus \(g(x)=\min\bigl(f(x),f^{-1}(x)\bigr)\) for \(x\ge 2\).
+
+\textbf{Shape of \(g\).} Since \(f\) is increasing, \(f(x)>x\iff x>f^{-1}(x)\). Also \(f(x)>x\) (for \(x\ge 2\)) \(\iff ax-3>(x-2)^2\iff x^2-(a+4)x+7<0\). At \(x=2\) this quadratic equals \(3-2a\le 0\), so \([2,x_2)\) lies between its roots, where \(x_2\) is its larger root. Hence
+\[
+g(x)=f^{-1}(x)\ \ (2\le x\le x_2),\qquad g(x)=f(x)\ \ (x\ge x_2),
+\]
+with \(g(x_2)=x_2\).
+
+\textbf{Intersections with \(y=x-n\).} For \(x\ge x_2\), \(f(x)-x\) starts at \(0\) and is strictly decreasing to \(-\infty\): \(f\) is concave, and since it crosses \(y=x\) from above at \(x_2\), \(f'(x)<1\) there and beyond. So this part always gives exactly one intersection.
+
+On \([2,x_2)\), \(\varphi(x)=f^{-1}(x)-x\) is a convex parabola. It has \(\varphi(2)=\dfrac{3}{a}-2\in(-2,0]\), minimum value \(m=\varphi\!\left(2+\dfrac {a}{2}\right)=\dfrac{3}{a}-\dfrac {a}{4}-2\), and \(\varphi\to 0\) at \(x_2\). The equation \(\varphi(x)=-n\) has two solutions if \(m<-n\le\varphi(2)\), one if \(-n=m\) or \(-n>\varphi(2)\) (with \(-n>m\)), and none if \(-n<m\).
+
+\textbf{Using the condition.} Since \(h(2)>h(1)\), the parabola part must give two intersections for \(n=2\) (so \(m<-2\)) and one for \(n=1\). Since \(-1>-2>m\), one intersection for \(n=1\) means \(-1>\varphi(2)\), that is, \(a>3\). Now \(h(3)=h(1)=2\) requires exactly one parabola intersection for \(n=3\). As \(-3<\varphi(2)\), this forces tangency, \(m=-3\):
+\[
+\dfrac{3}{a}-\dfrac {a}{4}-2=-3\iff a^2-4a-12=0\iff a=6.
+\]
+Check with \(a=6\): \(m=-3\) at \(x=5<x_2=5+3\sqrt2\), \(\varphi(2)=-\dfrac{3}{2}\), so the parabola part gives \(1,2,1\) intersections for \(n=1,2,3\), and \(h(1)=2\), \(h(2)=3\), \(h(3)=2\).
+
+Finally, \(4\in[2,x_2)\), so
+\[
+g(4)=f^{-1}(4)=\dfrac{(4-2)^2+3}{6}=\dfrac{7}{6},
+\]
+and \(p+q=6+7=\boxed{13}\).

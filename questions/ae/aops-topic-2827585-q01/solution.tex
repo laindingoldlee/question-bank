@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2827585_weird_question
+% Stable identity: aops-topic-2827585-q01
+The plane, $Q$ and the atoll form a right triangle with the right angle at $Q$. The angle of depression equals the angle at the plane between the horizontal line to $Q$ and the line of sight.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair P=(0,2.2),A=(6,0),Q=(6,2.2),G=(0,0);
+draw(P--Q--A--cycle);draw(G--A,dashed);draw(P--G,dashed);
+dot(P);dot(A);dot(Q);label("plane",P,W);label("atoll",A,SE);label("$Q$",Q,NE);
+label("$895$ m",(6,1.1),E);label("$d$",(3,2.2),N);
+draw(arc(P,0.9,-20.1,0));label("$14^\circ$",P+(1.05,-0.2),E);
+\end{asy}
+
+So $\tan14^\circ=\dfrac{895}d$, giving $d=\dfrac{895}{\tan14^\circ}\approx3590$ m $\approx\boxed{3.59\text{ km}}$.

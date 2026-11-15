@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1290331_intro_to_geometry_aops_square_problems
+% Stable identity: aops-topic-1290331-q02
+Let $ABCD$ be the rectangle and $O$ the intersection of its diagonals. The diagonals of a rectangle are equal and bisect each other, so $OA=OB$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(0,0),B=(3,0),C=(3,2),D=(0,2),O=(1.5,1);
+draw(A--B--C--D--cycle); draw(A--C,blue); draw(B--D,red);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW); label("$O$",O,S); dot(O);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+If $AC\perp BD$, then triangle $AOB$ has a right angle at $O$, and so does triangle $BOC$. These triangles are congruent by SAS, since $OA=OC$, $OB=OB$ and the included angles are both $90^\circ$. Hence $AB=BC$. A rectangle with two adjacent sides equal has all four sides equal, so it is a square. $\blacksquare$
+
+(The sketch shows a general rectangle for labelling; under the hypothesis the blue and red diagonals would be perpendicular.)

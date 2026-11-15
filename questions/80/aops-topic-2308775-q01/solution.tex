@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2308775_big_prime_moment
+% Stable identity: aops-topic-2308775-q01
+Let $g$ be this greatest common divisor.
+
+\textbf{$6$ divides every term.} A prime $p>3$ is odd and not divisible by $3$. Then $p^2\equiv1\pmod 8$, so $p^{420}\equiv1\pmod8$; and since $\varphi(9)=6$ divides $420$, Euler's theorem gives $p^{420}\equiv1\pmod 9$. Hence
+\[p^{420}+2021\equiv2022\pmod 8\quad\text{and}\quad p^{420}+2021\equiv2022\pmod 9.\]
+As $2022\equiv6\pmod8$ and $2022\equiv6\pmod9$ (digit sum $6$), every term is divisible by $2$ and by $3$, but every term leaves remainder $6$ on division by $8$ and by $9$. So $6\mid g$, while $4\nmid g$ and $9\nmid g$.
+
+\textbf{No prime $q\ge5$ divides $g$.} Suppose a prime $q\ge5$ divides $g$. Then $q$ is itself one of the primes $p$, and $q\mid q^{420}+2021$ forces $q\mid2021=43\cdot47$. So $q=43$ or $q=47$.
+\begin{itemize}
+\item $q=43$: since $42\mid420$, Fermat's little theorem gives $5^{420}\equiv1\pmod{43}$, so $5^{420}+2021\equiv2022=43\cdot47+1\equiv1\pmod{43}$. So $43$ does not divide the term with $p=5$.
+\item $q=47$: since $46\cdot9=414$, $5^{420}\equiv5^6\pmod{47}$. Now $5^2=25$, $5^3=125\equiv31$, $5^6\equiv31^2=961=20\cdot47+21\equiv21$. So $5^{420}+2021\equiv21+0=21\pmod{47}$, and $47$ does not divide the term with $p=5$.
+\end{itemize}
+Hence $g$ has no prime factor other than $2$ and $3$, each to the first power only: $g=\boxed{6}$.

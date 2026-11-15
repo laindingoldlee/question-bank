@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2747671_mathcounts_book_problem_thread
+% Stable identity: aops-topic-2747671-q01
+Through $D$ draw the line parallel to $AC$, meeting line $AB$ at $E$. Then $ACDE$ is a parallelogram, so $DE=AC=5$ and $EA=DC$. Hence $EB=EA+AB=DC+AB$, and since $DE\parallel AC\perp BD$, triangle $EDB$ has a right angle at $D$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(19/3,0),C=(3,4),D=(1,4),E=(-2,0),X=extension(A,C,B,D);
+draw(A--B--C--D--cycle,linewidth(0.8));draw(A--C);draw(B--D);
+draw(E--A,dashed);draw(E--D,dashed);
+draw(D--(1,0),dotted);
+dot(X);
+label("$A$",A,S);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,N);label("$E$",E,SW);
+label("$4$",(1,1.2),E,fontsize(8pt));label("$5$",(E+D)/2,NW,fontsize(8pt));
+\end{asy}
+
+The distance from $D$ to line $EB$ is the height $4$. In right triangle $EDB$, $\sin\angle DEB=\dfrac45$, so $\cos\angle DEB=\dfrac35$ and
+\[EB=\dfrac{DE}{\cos\angle DEB}=\dfrac{5}{\dfrac35}=\dfrac{25}{3}.\]
+The area of the trapezoid is
+\[\dfrac12(AB+DC)\cdot4=\dfrac12\cdot EB\cdot4=\boxed{\dfrac{50}{3}}.\]
+(Check: $BD=\sqrt{EB^2-DE^2}=\dfrac{20}{3}$, and for perpendicular diagonals the area is $\dfrac12\cdot AC\cdot BD=\dfrac12\cdot5\cdot\dfrac{20}{3}=\dfrac{50}{3}$.)

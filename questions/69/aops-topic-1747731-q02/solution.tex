@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1747731_discarded_questions
+% Stable identity: aops-topic-1747731-q02
+Measure times in minutes after 8:00: $A\in[0,30]$, $B\in[10,40]$, $C\in[20,30]$, uniform and independent. Each pair sees each other exactly when their arrival times differ by at most $5$; then the three time intervals overlap pairwise and so have a common point. So we need
+\[
+\max(A,B,C)-\min(A,B,C)\le5 .
+\]
+The sample space has volume $30\cdot30\cdot10=9000$. Fix $C=k\in[20,30]$ and write $u=A-k$, $v=B-k$. We need $u,v\in[-5,5]$ and $|u-v|\le5$; the constraint $A\le30$ gives $u\le m$ with $m=\min(5,30-k)$, while $A\ge0$, $B\ge10$ and $B\le40$ are automatic.
+
+For $0\le m\le5$ the area of $\{-5\le u\le m,\ -5\le v\le5,\ |u-v|\le5\}$ is
+\[
+\int_{-5}^{0}(u+10)\,du+\int_0^{m}(10-u)\,du=\dfrac{75}{2}+10m-\dfrac{m^2}{2}.
+\]
+For $20\le k\le25$, $m=5$ and the area is $75$; for $25\le k\le30$, $m=30-k$. The favourable volume is
+\[
+5\cdot75+\int_0^5\left(\dfrac{75}{2}+10m-\dfrac{m^2}{2}\right)dm=375+\dfrac{375}{2}+125-\dfrac{125}{6}=\dfrac{2000}{3}.
+\]
+The probability is $\dfrac{2000}{3\cdot9000}=\boxed{\dfrac{2}{27}}$.

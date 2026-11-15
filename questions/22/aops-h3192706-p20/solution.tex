@@ -1,0 +1,8 @@
+The eight centres lie on a circle of radius R+1. Adjacent centres are two apart, so their consecutive central angles are equal: each is the same minor angle or its reflex counterpart, and a reflex gap would make the sum of the eight gaps exceed 360 degrees. Hence each gap is 45 degrees. Half of a centre triangle gives $(R+1)\sin22.5^\circ=1$, so
+\[R=\dfrac{1}{\sin22.5^\circ}-1=\boxed{\sqrt{4+2\sqrt2}-1}.\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real d=1/sin(pi/8),r=d-1;draw(circle((0,0),r),blue);for(int i=0;i<8;++i){pair p=d*dir(45i);draw(circle(p,1));dot(p);label("$O_"+string(i+1)+"$",p);}draw((0,0)--(d,0)--d*dir(45)--cycle,dashed);label("$C$",(0,0),(0,-1));label("$R$",(r/2,0),(0,1));
+\end{asy}

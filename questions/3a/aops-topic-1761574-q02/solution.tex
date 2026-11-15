@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1761574_new_years_problems_ii
+% Stable identity: aops-topic-1761574-q02
+Distinct values among these are relatively prime: consecutive integers always are, and $\gcd(2017,2019)$ divides $2$ while both are odd. Equal values are not. So we count the arrangements of $a,a,b,b,b,c,c$ (with $a=2017$, $b=2018$, $c=2019$) with no two equal letters adjacent.
+
+First arrange $a,a,c,c$ in a row ($6$ ways), then put the three $b$'s into the $5$ gaps (ends included), at most one per gap so that no two $b$'s touch; every gap between two equal letters must receive a $b$.
+\begin{itemize}
+\item $acac$, $caca$: no forced gap; $\dbinom53=10$ ways each.
+\item $acca$, $caac$: the middle gap is forced; $\dbinom42=6$ ways each.
+\item $aacc$, $ccaa$: two forced gaps; $\dbinom31=3$ ways each.
+\end{itemize}
+Total: $20+12+6=\boxed{38}$.

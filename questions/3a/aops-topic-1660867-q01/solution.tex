@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1660867_pipipi
+% Stable identity: aops-topic-1660867-q01
+The arc of a sector is the same fraction of the whole circumference as its central angle is of $360^\circ$. Here the fraction is $\dfrac{20}{360}=\dfrac{1}{18}$, so
+\[
+\text{circumference}=18\cdot\pi=\boxed{18\pi}\text{ units}.
+\]
+(The radius is $9$, since $2\pi\cdot9=18\pi$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real R=3;pair O=(0,0);
+fill(O--arc(O,R,80,100)--cycle,palegray);
+draw(circle(O,R),linewidth(0.9));
+draw(O--R*dir(80));draw(O--R*dir(100));
+draw(arc(O,R,80,100),red+linewidth(1.6));
+draw(arc(O,0.9,80,100));
+draw(0.93*dir(86)--1.45*dir(62),gray);
+label("$20^\circ$",1.45*dir(62),E,fontsize(9pt));
+label("$\pi$",R*dir(90),N,red);
+dot(O);label("$O$",O,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

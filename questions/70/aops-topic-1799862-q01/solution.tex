@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1799862_tic_tac_toe_problem
+% Stable identity: aops-topic-1799862-q01
+\textbf{Reduction to a random set of squares.} Imagine that, after the game stops, the players keep filling the empty squares in the same random way until the board is full. Then the order in which the nine squares are filled is a uniformly random ordering of the nine squares, and X owns the squares filled at moves $1,3,5,7,9$. So the set $\mathcal X$ of the five squares X owns on the full board is equally likely to be any of the $\dbinom95=126$ sets of five squares, and O owns the other four.
+
+The game ends in a tie exactly when the full board contains no line of three X's and no line of three O's: a player's set of squares only grows, so if one of them owns a whole line on the full board, then that player completed it at some moment (and the game ended at that moment or earlier with a win); and if nobody owns a line on the full board, nobody ever won.
+
+\textbf{Counting the full boards without a line.} Call the four lines through the centre (the middle row, the middle column and the two diagonals) the \emph{central lines}; each consists of the centre and a pair of opposite border squares. The other four lines are the sides of the board.
+\begin{itemize}
+\item \emph{X owns the centre.} X must not own both squares of any opposite pair, and X has $4$ border squares among the $4$ opposite pairs, so X owns exactly one square of each pair. Then X owns two corners that are not opposite, that is, two corners of one side, and O owns the two corners of the opposite side. Neither side may be completed, so the middle square of X's side belongs to O and the middle square of O's side belongs to X (this is consistent, as these two squares are opposite). The remaining opposite pair of edge squares can be split in $2$ ways, and no line is completed either way. With $4$ choices of X's side this gives $4\cdot2=8$ boards.
+\item \emph{O owns the centre.} Then O owns $3$ border squares, no two of them opposite, and every side must contain a square of O (X owns the other five border squares). A corner lies on two sides and an edge square on one, so O needs at least one corner; it cannot have three corners (two of them would be opposite). If O has two corners, they lie on one side and cover three sides, and the fourth side must be covered by its middle square (its corners are opposite to O's corners): $4$ boards. If O has one corner, it covers two sides, and the two edge squares of the other two sides must belong to O: $4$ boards. This gives $8$ boards.
+\end{itemize}
+So $16$ of the $126$ equally likely full boards contain no line, and the probability of a tie is
+\[\dfrac{16}{126}=\boxed{\dfrac{8}{63}}\approx0.127.\]

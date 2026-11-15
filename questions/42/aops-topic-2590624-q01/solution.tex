@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2590624_a_tiles_problem
+% Stable identity: aops-topic-2590624-q01
+The $4\times4$ grid has $3\times3=9$ interior grid points. For an interior point $v$, let $E_v$ be the event that a circle is formed at $v$; then $P(E_v)=\left(\dfrac14\right)^4=\dfrac{1}{256}$.
+
+If two interior points share a tile, their events are disjoint, since a tile cannot point at two corners. If they share no tile, their events depend on disjoint sets of tiles and are independent. So by inclusion--exclusion,
+\[P\left(\bigcup E_v\right)=\sum_{k\ge1}(-1)^{k+1}N_k\left(\dfrac{1}{256}\right)^k,\]
+where $N_k$ is the number of $k$-sets of interior points no two of which share a tile.
+
+Label the interior points $(i,j)$ with $i,j\in\{1,2,3\}$. Two of them share a tile exactly when $|i-i'|\le1$ and $|j-j'|\le1$, so they share no tile exactly when $\{i,i'\}=\{1,3\}$ or $\{j,j'\}=\{1,3\}$.
+\begin{itemize}
+\item $N_1=9$.
+\item $N_2=9+9-2=16$: $9$ pairs in rows $1$ and $3$, $9$ pairs in columns $1$ and $3$, and the $2$ diagonal corner pairs are counted twice.
+\item $N_3=8$: any three of the four corners ($4$ sets), or two adjacent corners together with the middle of the opposite side ($4$ sets).
+\item $N_4=1$: the four corners.
+\end{itemize}
+The centre shares a tile with every point, and no larger sets exist. Therefore
+\[P=\dfrac{9}{256}-\dfrac{16}{256^2}+\dfrac{8}{256^3}-\dfrac{1}{256^4}=\boxed{\dfrac{149948415}{4294967296}}\approx0.0349.\]

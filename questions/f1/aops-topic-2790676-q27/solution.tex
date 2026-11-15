@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2790676_2018_mbmt_guts_round_c1630_g10152530_montgomery_blair_math_tournament
+% Stable identity: aops-topic-2790676-q27
+By symmetry and strict monotonicity of cap area, the cuts are at distances $ a $ and $-a $ from the centre. The strip's area is $\int_{-a}^a2\sqrt{100-x^2}\,dx=2a\sqrt{100-a^2}+200\arcsin(\dfrac{a}{10})$. Set this equal to $\dfrac{100\pi}{3}$. With $ t=\dfrac{a}{10}$, the equation is $ t\sqrt{1-t^2}+\arcsin t=\dfrac{\pi}{6}$, strictly increasing for $ 0<t<1 $. Numerical bisection yields $ 2a=20t\approx5.298641692 $, so the width is $\boxed{5.299}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real a=2.649320846;draw(circle((0,0),10));draw((-a,-sqrt(100-a*a))--(-a,sqrt(100-a*a)),blue);draw((a,-sqrt(100-a*a))--(a,sqrt(100-a*a)),blue);draw((-a,0)--(a,0),Arrows);label("$2a$",(0,0),N);label("radius $10$",(0,10),N);
+\end{asy}

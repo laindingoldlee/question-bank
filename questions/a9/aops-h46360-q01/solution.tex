@@ -1,0 +1,9 @@
+Place the rectangle at $0\le x\le36,0\le y\le15$, and use the diagonal $5x-12y=0$. The allowed centers fill $1\le x\le35,1\le y\le14$, with area $34\cdot13=442$. A circle misses the diagonal precisely when its center is at perpendicular distance greater than 1 from its line, equivalently $|5x-12y|>13$. The perpendicular foot always lies on the diagonal segment for these centers.
+
+Inside the center rectangle, the two safe regions are congruent right triangles. The upper one's vertices are $(1,\dfrac{3}{2}),(1,14),(31,14)$, so its legs are $\dfrac{25}{2}$ and 30. Both safe triangles together have area $30\cdot\dfrac{25}{2}=375$. The probability is $\dfrac{375}{442}$, already reduced, giving $m+n=\boxed{817}$. Boundary tangencies have probability zero.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+fill((1,1.5)--(1,14)--(31,14)--cycle,lightblue);fill((35,13.5)--(35,1)--(5,1)--cycle,lightblue);draw(box((0,0),(36,15)));draw(box((1,1),(35,14)),gray+dashed);draw((0,0)--(36,15),red);draw((1,1.5)--(31,14),blue);draw((5,1)--(35,13.5),blue);label("$36$",(18,0),(0,-1));label("$15$",(36,7.5),(1,0));label("safe centers",(8,11));label("$A$",(0,0),(-1,-1));label("$C$",(36,15),(1,1));
+\end{asy}

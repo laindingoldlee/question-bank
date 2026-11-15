@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h513324_isosceles_triangle__1992_state_target_6
+% Stable identity: aops-topic-513324-q01
+\textbf{The error.} The centre of the circle through the three vertices is the \emph{circumcentre} $O$, the point equidistant from $A$, $B$ and $C$. The centroid $G$ is where the medians meet; it is $\dfrac{2}{3}$ of the way down the median, but its distances to the vertices are in general not equal. They coincide only in an equilateral triangle. Here $GA=\dfrac{8}{3}$ but $GB=\sqrt{3^2+\left(\dfrac{4}{3}\right)^2}=\dfrac{\sqrt{97}}{3}\ne\dfrac{8}{3}$.
+
+\textbf{Correct radius.} Let $M$ be the midpoint of the base $BC$, so $AM\perp BC$, $BM=3$ and $AM=\sqrt{5^2-3^2}=4$. The circumcentre lies on $AM$ (the perpendicular bisector of $BC$), say at distance $R$ from $A$, so $OM=4-R$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=25/8;
+pair O=(0,0),A=(0,R),B=(-3,R-4),C=(3,R-4);
+pair M=(0,R-4),G=(0,R-8/3);
+draw(circle(O,R),linewidth(0.9));
+draw(A--B--C--cycle,linewidth(1));
+draw(A--M,dashed);draw(O--B,blue);
+real s=0.22; draw(M+(s,0)--M+(s,s)--M+(0,s));
+dot(O,blue);dot(G,red);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$M$",M,S);
+label("$O$",O,SE,blue);label("$G$",G,NE,red);
+label("$5$",(A+B)/2,NW);label("$5$",(A+C)/2,NE);label("$3$",(B+M)/2,S);
+label("$R$",(O+B)/2,dir(80),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+From $OB=R$ and the right triangle $OMB$,
+\[
+R^2=3^2+(4-R)^2=25-8R+R^2\quad\Longrightarrow\quad R=\dfrac{25}{8}=\boxed{3\dfrac{1}{8}}\text{ inches}.
+\]
+(Check: $R=\dfrac{abc}{4K}=\dfrac{5\cdot5\cdot6}{4\cdot12}=\dfrac{25}{8}$.)

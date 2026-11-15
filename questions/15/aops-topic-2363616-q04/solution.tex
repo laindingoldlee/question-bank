@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2363616_tesseractexe
+% Stable identity: aops-topic-2363616-q04
+Use coordinates with $A=(0,0,0,0)$ and $B=(1,1,1,1)$; walking along an edge changes exactly one coordinate (from $0$ to $1$ or back). To reach $B$, each of the $4$ coordinates must change an odd number of times, so at least once; with only $4$ steps, each coordinate changes exactly once. So a route is just an order in which to change the $4$ coordinates, and every order gives a valid route. There are $4!=\boxed{24}$ routes. One of them is shown in red:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair e1=(1,0), e2=(0,1), e3=(0.35,0.42), e4=(1.25,0.55);
+pair P(int a,int b,int c,int d){return a*e1+b*e2+c*e3+d*e4;}
+for(int a=0;a<2;++a) for(int b=0;b<2;++b) for(int c=0;c<2;++c) for(int d=0;d<2;++d){
+  if(a==0) draw(P(0,b,c,d)--P(1,b,c,d),gray);
+  if(b==0) draw(P(a,0,c,d)--P(a,1,c,d),gray);
+  if(c==0) draw(P(a,b,0,d)--P(a,b,1,d),gray);
+  if(d==0) draw(P(a,b,c,0)--P(a,b,c,1),gray);
+  dot(P(a,b,c,d));
+}
+draw(P(0,0,0,0)--P(1,0,0,0)--P(1,1,0,0)--P(1,1,1,0)--P(1,1,1,1),red+linewidth(1.2));
+label("$A$",P(0,0,0,0),SW); label("$B$",P(1,1,1,1),NE);
+\end{asy}

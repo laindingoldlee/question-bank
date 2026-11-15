@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2793839_2017_geometry_bee__guts_rounds__sets_14
+% Stable identity: aops-topic-2793839-q05
+Any one of the three given points may be the common vertex of the two sides. If their position vectors are $a,b,c$, the fourth point is respectively $b+c-a$, $a+c-b$, or $a+b-c$. These are distinct because the original points are distinct, and each produces a parallelogram. Hence there are $\boxed3$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(3,0),C=(1,2);dot(A);dot(B);dot(C);pair P=B+C-A,Q=A+C-B,R=A+B-C;draw(A--B--P--C--cycle);draw(A--B--C--Q--cycle,dashed);draw(A--C--B--R--cycle,dotted);dot(R);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$P$",P,E);label("$Q$",Q,W);label("$R$",R,S);
+\end{asy}

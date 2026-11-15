@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h2419509_hard_geometry_problem
+% Stable identity: aops-topic-2419509-q01
+\textbf{Lemma 1.} If a point $X$ lies in a triangle $UVW$ (inside or on its boundary) and $X\ne W$, then $UX+XV<UW+WV$.
+
+\emph{Proof.} If $X$ is on side $UV$, then $UX+XV=UV<UW+WV$. Otherwise the ray from $U$ through $X$ leaves the triangle at a point $T$ of side $VW$. By the triangle inequality, $UX+XT=UT\le UW+WT$ and $XV\le XT+TV$. Adding, $UX+XV\le UW+WT+TV=UW+WV$, and equality would need $T=W$ and $X$ on segment $TV$, i.e. $X=W$. $\blacksquare$
+
+\textbf{Lemma 2.} If the interior angle at a vertex $X$ of the quadrilateral is at least $180^\circ$, then $X$ lies in the triangle formed by the other three vertices.
+
+\emph{Proof.} The quadrilateral lies inside the convex hull of its four vertices. At a corner of the convex hull, the interior angle of the quadrilateral is at most the angle of the hull there, which is less than $180^\circ$. So $X$ is not a corner of the hull. The convex hull of four points one of which is not a corner is the triangle formed by the other three, and $X$ lies in that triangle. $\blacksquare$
+
+\textbf{Applying the lemmas.} If the angle at a vertex $X$ is at least $180^\circ$, and $U$, $W$ are the neighbours of $X$ and $O$ the opposite vertex, then by the two lemmas $UX+XW<UO+OW$. Check each vertex:
+\begin{itemize}
+\item at $P$: $SP+PQ=4015$ and $SR+RQ=4015$, and $4015<4015$ is false;
+\item at $R$: $QR+RS=4015$ and $QP+PS=4015$: false;
+\item at $S$: $RS+SP=4016$ and $RQ+QP=4014$: false;
+\item at $Q$: $PQ+QR=4014$ and $PS+SR=4016$: possible.
+\end{itemize}
+So the angles at $P$, $R$ and $S$ are certainly less than $180^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0), R=(6,0), Ss=(3.4,4), Q=(2.8,1.6);
+pair T=extension(P,Q,R,Ss);
+fill(P--Q--R--Ss--cycle,rgb(0.88,0.94,1));
+draw(P--R,dashed);
+draw(P--Q--R--Ss--cycle,linewidth(1));
+draw(Q--T,dotted);
+dot(P); dot(Q); dot(R); dot(Ss); dot(T);
+label("$P$",P,SW); label("$Q$",Q,S); label("$R$",R,SE); label("$S$",Ss,N); label("$T$",T,NE);
+label("(not to scale)",(3,-0.7));
+\end{asy}
+
+\textbf{The angle at $Q$ can be reflex.} Take $P=(0,0)$ and $R=(4000,0)$. The point $S$ above $PR$ with $SP=2009$, $SR=2007$ is $S\approx(2001.0,\ 179.1)$, and the point $Q$ above $PR$ with $QP=2006$, $QR=2008$ is $Q\approx(1999.0,\ 167.5)$. Then $Q$ lies inside triangle $PRS$ (it is above $PR$ and below the line $PS$, which has height about $178.9$ at $x=1999.0$). So $PQRS$ is triangle $PRS$ with the notch $PQR$ cut out, as in the sketch, and its angle at $Q$ is greater than $180^\circ$. (Of course a convex quadrilateral with these sides also exists, so no angle is forced to be reflex.)
+
+Hence the vertices whose angles must be less than $180^\circ$ are exactly $\boxed{P,\ R\text{ and }S}$.

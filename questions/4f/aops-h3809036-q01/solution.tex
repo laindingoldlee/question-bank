@@ -1,0 +1,28 @@
+For the unit square, Pythagoras gives diagonal $\boxed{\sqrt2}$. Bisecting the equilateral triangle gives a right triangle with hypotenuse $1$ and short leg $\dfrac{1}{2}$, so the altitude is $\boxed{\dfrac{\sqrt3}{2}}$.
+For the regular pentagon let its diagonal be $d$. Four consecutive vertices form a cyclic quadrilateral with sides $1,1,1,d$ and diagonals both $d$. Ptolemy gives $d^2=d+1$, hence the positive solution is $\boxed{d=\dfrac{1+\sqrt5}{2}}$.
+
+There is no universal rule assigning one irrational number to every shape. For instance a rectangle of sides $3,4$ has diagonal $5$, area $12$, and perimeter $14$, all rational. Even for a fixed shape, changing the scale changes its lengths; different quantities can involve different constants.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(unitsquare);draw((0,0)--(1,1),blue);label("$1$",(.5,0),(0,-1));label("$\sqrt2$",(.5,.5),(-1,1));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(1,0),C=(.5,sqrt(3)/2);draw(A--B--C--cycle);draw(C--(.5,0),dashed);label("$1$",(A+C)/2,(-1,0));label("$\dfrac{1}{2}$",(.25,0),(0,-1));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] P;for(int j=0;j<5;++j)P.push(dir(90+72*j));for(int j=0;j<5;++j)draw(P[j]--P[(j+1)%5]);draw(P[0]--P[2],blue);draw(P[1]--P[3],blue);draw(P[0]--P[3],dashed);label("$d$",(P[0]+P[2])/2,(1,0));label("$1$",(P[1]+P[2])/2,(-1,0));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(box((0,0),(4,3)));draw((0,0)--(4,3),blue);label("$4$",(2,0),(0,-1));label("$3$",(4,1.5),(1,0));label("$5$",(2,1.5),(0,1));
+\end{asy}

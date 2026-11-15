@@ -1,0 +1,18 @@
+The tangent at $P$ is $2x-y=1$, so the normal has direction $(2,-1)$. Substitute $(x,y)=(2+2t,3-t)$ into the hyperbola:
+\[
+\dfrac{t(11t+30)}{3}=0.
+\]
+The second point corresponds to $t=-\dfrac{30}{11}$, giving $Q=\left(-\dfrac{38}{11},\dfrac{63}{11}\right)$.
+Its tangent is $-38x-21y=11$. Solving it with $2x-y=1$ gives $R=\left(\dfrac{1}{8},-\dfrac{3}{4}\right)$.
+
+Now $Q-P=\left(-\dfrac{60}{11},\dfrac{30}{11}\right)$ and $R-P=\left(-\dfrac{15}{8},-\dfrac{15}{4}\right)$. The determinant formula gives
+\[
+[PQR]=\dfrac{1}{2}\left|\dfrac{900}{44}+\dfrac{450}{88}\right|
+=\boxed{\dfrac{1125}{88}}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;pair P=(2,3),Q=(-38./11,63./11),R=(1./8,-3./4);real yp(real x){return sqrt(3*(x*x-1));}draw(graph(yp,1,4),gray);draw(graph(yp,-4,-1),gray);draw(P--Q--R--cycle);dot(P);dot(Q);dot(R);label("$P$",P,(1,0));label("$Q$",Q,(-1,0));label("$R$",R,(0,-1));draw((-4,0)--(4,0),dashed);
+\end{asy}

@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1482051_find_the_pattern_in_the_series
+% Stable identity: aops-topic-1482051-q01
+Let $\omega=\cos\dfrac{2\pi}{7}+i\sin\dfrac{2\pi}{7}$. By De Moivre's theorem $\omega^k=\cos\dfrac{2\pi k}{7}+i\sin\dfrac{2\pi k}{7}$, so the numbers $\omega,\omega^2,\dots,\omega^7=1$ are the seven vertices of a regular heptagon on the unit circle, and the sum in the problem is the real part of
+\[
+s=\omega+\omega^2+\cdots+\omega^7 .
+\]
+Since $\omega^7=1$,
+\[
+\omega s=\omega^2+\omega^3+\cdots+\omega^7+\omega^8=\omega^2+\cdots+\omega^7+\omega=s ,
+\]
+so $(\omega-1)s=0$. As $\omega\ne1$, we get $s=0$. Taking real parts, $\displaystyle\sum_{k=1}^{7}\cos\dfrac{2\pi k}{7}=0$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw(unitcircle,gray);
+draw((-1.35,0)--(1.4,0),gray,Arrow(4)); draw((0,-1.3)--(0,1.35),gray,Arrow(4));
+pair[] w; for(int k=0;k<7;++k) w.push(dir(360*k/7));
+draw(w[0]--w[1]--w[2]--w[3]--w[4]--w[5]--w[6]--cycle,blue);
+for(int k=0;k<7;++k) dot(w[k],blue);
+label("$1=\omega^7$",w[0],SE); label("$\omega$",w[1],NE); label("$\omega^2$",w[2],N); label("$\omega^3$",w[3],W);
+label("$\omega^4$",w[4],W); label("$\omega^5$",w[5],S); label("$\omega^6$",w[6],SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For the second part, the $k=7$ term is $\cos2\pi=1$, and $\cos\dfrac{2\pi(7-k)}{7}=\cos\dfrac{2\pi k}{7}$ pairs the terms $k=1,6$, $k=2,5$ and $k=3,4$. So
+\[
+0=1+2\left(\cos\dfrac{2\pi}{7}+\cos\dfrac{4\pi}{7}+\cos\dfrac{6\pi}{7}\right),\qquad \cos\dfrac{2\pi}{7}+\cos\dfrac{4\pi}{7}+\cos\dfrac{6\pi}{7}=\boxed{-\dfrac{1}{2}}.
+\]
+Geometrically, the vertices of a regular polygon centred at the origin add up to $0$ (rotating the set by $\dfrac{2\pi}{7}$ about the origin leaves it unchanged, so it also leaves the sum unchanged), and the cosines are the $x$-coordinates of the vertices.

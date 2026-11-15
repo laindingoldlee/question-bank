@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h3029826_formula
+% Stable identity: aops-topic-3029826-q01
+A path is determined by its current cell and set of visited cells. Recursively try every unvisited neighbour, counting 1 when all nine cells have been visited. Each valid path has a unique sequence of these choices, so the recurrence counts it once and rejects only forbidden revisits. The exact certificate gives $\boxed8$ paths.
+\begin{verbatim}
+from functools import lru_cache
+@lru_cache(None)
+def count(v,mask):
+    if mask==511:return 1
+    x,y=divmod(v,3)
+    total=0
+    for dx,dy in ((1,0),(-1,0),(0,1),(0,-1)):
+        a,b=x+dx,y+dy
+        if 0<=a<3 and 0<=b<3:
+            w=3*a+b
+            if not mask>>w&1:
+                total+=count(w,mask|1<<w)
+    return total
+assert count(0,1)==8
+\end{verbatim}
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=0;i<3;++i)for(int j=0;j<3;++j)draw((i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle,gray);draw((0.5,2.5)--(1.5,2.5)--(2.5,2.5)--(2.5,1.5)--(1.5,1.5)--(0.5,1.5)--(0.5,0.5)--(1.5,0.5)--(2.5,0.5),blue,Arrow);label("start",(0.5,2.5),N);
+\end{asy}

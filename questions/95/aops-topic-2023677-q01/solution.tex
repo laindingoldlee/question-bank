@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h2023677_2018_mathcounts_state_problem_28
+% Stable identity: aops-topic-2023677-q01
+Put $D=(0,0)$ and $C=(1,1)$, with the square $0\le x,y\le1$. The sectors centred at $D$ end at
+\[
+A=\left(\dfrac{\sqrt2}{2},-\dfrac{\sqrt2}{2}\right),\qquad B=\left(-\dfrac{\sqrt2}{2},\dfrac{\sqrt2}{2}\right),
+\]
+so $D$ is the midpoint of $AB$ and $AB=2$. By the symmetry of the figure in the line $y=x$ (which swaps $A$ and $B$ and swaps the two possible centres of the arc), we may take the arc centred at $O=(0,1)$: its points are $X=(\cos t,\ 1+\sin t)$ for $-90^\circ\le t\le0^\circ$, and a uniform point on the arc has $t$ uniform on this interval.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0), C=(1,1), Pp=(1,0), Q=(0,1);
+pair A=dir(-45), B=dir(135);
+draw(arc(D,1,135,90)--C--Pp--arc(D,1,0,-45), gray);
+draw(A--B, linewidth(0.9));
+draw(circle(D,1), dashed);
+draw(arc(Q,1,-90,-30), blue+linewidth(0.9));
+draw(arc(Q,1,-30,0), red+linewidth(2));
+pair X=Q+dir(-30);
+draw(Q--X, gray); draw(Q--D, gray);
+draw(A--X--B, red+linewidth(0.6));
+dot(A); dot(B); dot(C); dot(D); dot(Q); dot(X);
+label("$A$", A, SE); label("$B$", B, NW); label("$C$", C, NE); label("$D$", D, SW);
+label("$O$", Q, NW); label("$X_0$", X, E); draw(arc(Q,0.22,-30,0)); label("$30^\circ$", Q+0.3*dir(-15), E, fontsize(7pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Angle at $X$.} By Thales' theorem, $\angle AXB$ is acute exactly when $X$ lies outside the circle with diameter $AB$, i.e.\ when $XD>1$. Now
+\[
+XD^2=\cos^2t+(1+\sin t)^2=2+2\sin t>1\iff \sin t>-\dfrac{1}{2}\iff t>-30^\circ.
+\]
+
+\textbf{Angles at $A$ and $B$.} These are acute exactly when the projection of $X$ onto line $AB$ lies strictly between $A$ and $B$, i.e.\ when $|X\cdot u|<1$ for the unit vector $u=\left(\dfrac{\sqrt2}{2},-\dfrac{\sqrt2}{2}\right)$ along $AB$. Here
+\[
+X\cdot u=\dfrac{\sqrt2}{2}(\cos t-\sin t-1),
+\]
+and for $-90^\circ\le t\le0^\circ$ we have $1\le\cos t-\sin t\le\sqrt2$, so $0\le X\cdot u\le 1-\dfrac{\sqrt2}{2}<1$. These angles are always acute (apart from the endpoint $X=D$, where there is no triangle).
+
+So the triangle is acute exactly for $-30^\circ<t\le0^\circ$, the red part of the arc, which is $\dfrac{30}{90}=\dfrac{1}{3}$ of the arc. The probability is $33.33\ldots\%$, which is $\boxed{33.3}$ percent.

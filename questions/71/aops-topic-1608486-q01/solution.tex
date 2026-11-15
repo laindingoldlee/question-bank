@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1608486_happy_half_tau_day
+% Stable identity: aops-topic-1608486-q01
+A circle of diameter $d$ has area $\pi\left(\dfrac {d}{2}\right)^2=\dfrac{\pi d^2}{4}$. So the areas add exactly when the squares of the diameters add: the new diameter $D$ satisfies
+\[
+\dfrac{\pi D^2}{4}=\dfrac{\pi}{4}\left(12^2+13^2+14^2+15^2\right)\qquad\Longrightarrow\qquad D^2=144+169+196+225=734 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(12cm);
+defaultpen(fontsize(10pt));
+real[] d={12,13,14,15,sqrt(734)};
+real x=0;
+for(int i=0;i<5;++i){
+  real r=d[i]/2; pair O=(x+r,0);
+  draw(circle(O,r),linewidth(0.9));
+  draw(O-(r,0)--O+(r,0),dashed);
+  string s=(i<4)?"$"+string(d[i])+"$":"$\sqrt{734}$";
+  label(s,O+(0,0.3*r));
+  x+=d[i]+(i==3?6:2.5);
+}
+label("$+$",(12+1.25,0)+(0,-9));label("$+$",(12+2.5+13+1.25,0)+(0,-9));label("$+$",(12+2.5+13+2.5+14+1.25,0)+(0,-9));
+label("$=$",(12+13+14+15+7.5+3,0)+(0,-9));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence the new pie has diameter
+\[
+D=\boxed{\sqrt{734}\text{ inches}}\approx27.1\text{ inches}.
+\]
+(The dashed segments are the diameters; the figure is to scale.)

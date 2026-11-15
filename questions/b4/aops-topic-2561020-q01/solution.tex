@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2561020_in_how_many_ways
+% Stable identity: aops-topic-2561020-q01
+Each row and each column has $4$ squares in $4$ different colours, so it contains every colour exactly once. Call the colours $1,2,3,4$.
+
+\textbf{Reduction.} Permuting the colour names maps valid colourings to valid colourings, and exactly one of the $4!=24$ renamings makes the first row read $1\,2\,3\,4$. Then permuting rows $2,3,4$ keeps the colouring valid, and exactly one of the $3!=6$ orders makes the first column read $1,2,3,4$ from top to bottom. So the total is $24\cdot6\cdot R$, where $R$ is the number of valid colourings whose first row and first column both read $1,2,3,4$.
+
+\textbf{Counting $R$.} Row $2$ starts with $2$; its second square is not $2$, so it is $1$, $3$ or $4$.
+\begin{itemize}
+\item Second square $1$: column $3$ already has $3$, so row $2$ is $2\,1\,4\,3$. Then column $2$ needs $3,4$ in rows $3,4$, and row $3$ already has $3$, so row $3$ starts $3\,4$ and row $4$ starts $4\,3$. Rows $3,4$ end in $1\,2$ and $2\,1$ in either order: $2$ colourings.
+\item Second square $3$: column $4$ already has $4$, so row $2$ is $2\,3\,4\,1$. Row $3$ must end with $2$ (column $4$ needs $2,3$ and row $3$ has $3$), then its third square is $1$ (column $3$ needs $1,2$), so rows $3,4$ are $3\,4\,1\,2$ and $4\,1\,2\,3$: $1$ colouring.
+\item Second square $4$: column $3$ already has $3$, so row $2$ is $2\,4\,1\,3$. Column $2$ needs $1,3$ and row $3$ has $3$, so row $3$ starts $3\,1$, and it must be $3\,1\,4\,2$; row $4$ is $4\,3\,2\,1$: $1$ colouring.
+\end{itemize}
+So $R=4$, and the number of colourings is $24\cdot6\cdot4=\boxed{576}$.

@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1404162_lithuanian_math_kangaroo_2008__student_21
+% Stable identity: aops-topic-1404162-q21
+The edges are $a$, $2a$, $4a$ for a positive integer $a$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real a=1.0;
+pair v=(0.55,0.4);
+pair p0=(0,0),p1=(4a,0),p2=(4a,a),p3=(0,a);
+draw(p0--p1--p2--p3--cycle,linewidth(0.9));
+draw(p3--p3+2a*v--p2+2a*v--p2,linewidth(0.9)); draw(p1--p1+2a*v--p2+2a*v,linewidth(0.9));
+draw(p0--p0+2a*v,dashed); draw(p0+2a*v--p1+2a*v,dashed); draw(p0+2a*v--p3+2a*v,dashed);
+label("$4a$",(p0+p1)/2,S); label("$a$",(p1+p2)/2,E); label("$2a$",(p1+p1+2a*v)/2,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the volume is $a\cdot2a\cdot4a=8a^3=(2a)^3$, a perfect cube that is $8$ times a cube. Among the choices only $216=6^3=8\cdot27$ is a cube, with $a=3$ (edges $3$, $6$, $12$). The answer is $\boxed{\text{(C) } 216}$.

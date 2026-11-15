@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2573646_factoring_a_multivariable_polynomial
+% Stable identity: aops-topic-2573646-q01
+Since the polynomial is homogeneous of degree $7$, first study $g(t)=(t+1)^7-t^7-1$, so that $(x+y)^7-x^7-y^7=y^7g\!\left(\dfrac xy\right)$ for $y\ne0$. The $t^7$ terms cancel, so $g$ has degree $6$ with leading coefficient $\dbinom71=7$.
+
+\begin{itemize}
+\item $g(0)=1-0-1=0$ and $g(-1)=0+1-1=0$, so $t$ and $t+1$ divide $g$.
+\item Let $\omega$ be a non-real cube root of unity, so $\omega^3=1$ and $\omega^2+\omega+1=0$. Then $\omega+1=-\omega^2$ and
+\[g(\omega)=\left(-\omega^2\right)^7-\omega^7-1=-\omega^{14}-\omega^7-1=-\omega^2-\omega-1=0.\]
+\item Moreover $g'(t)=7(t+1)^6-7t^6$, so $g'(\omega)=7\left(\omega^{12}-\omega^6\right)=7(1-1)=0$. A root of a polynomial at which the derivative also vanishes is a multiple root, so $\omega$ is at least a double root. The same holds for its conjugate $\omega^2$ (the coefficients are real), so $\left(t^2+t+1\right)^2=\left((t-\omega)\left(t-\omega^2\right)\right)^2$ divides $g$.
+\end{itemize}
+The factors $t$, $t+1$, $\left(t^2+t+1\right)^2$ are pairwise coprime and have total degree $6$, so comparing leading coefficients,
+\[g(t)=7t(t+1)\left(t^2+t+1\right)^2.\]
+Multiplying by $y^7$ (with $t=\dfrac xy$) gives a polynomial identity valid for all $y\ne0$, hence for all $x,y$:
+\[\boxed{(x+y)^7-x^7-y^7=7xy(x+y)\left(x^2+xy+y^2\right)^2}.\]
+This is complete over the reals: as a quadratic in $x$, $x^2+xy+y^2$ has discriminant $-3y^2<0$ for $y\ne0$, so it has no real linear factor.

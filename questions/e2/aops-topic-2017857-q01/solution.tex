@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2017857_help_needed
+% Stable identity: aops-topic-2017857-q01
+Write the number as $\overline{d_1d_2d_3d_4}$ with $1\le d_1\le9$ and $0\le d_2,d_3,d_4\le9$. Put $e_1=d_1-1$; then $e_1+d_2+d_3+d_4=12$ with $0\le e_1\le8$ and $0\le d_i\le9$.
+
+Without upper bounds, stars and bars gives $\binom{12+3}{3}=455$ solutions. Now subtract the bad ones:
+\begin{itemize}
+\item $e_1\ge9$: write $e_1=9+e_1'$; then the sum of the others plus $e_1'$ is $3$: $\binom{6}{3}=20$ solutions.
+\item $d_i\ge10$ for a given $i\in\{2,3,4\}$: the remaining sum is $2$: $\binom{5}{3}=10$ solutions each, $30$ in all.
+\end{itemize}
+Two bounds cannot be violated at once ($9+10>12$). The count is $455-20-30=\boxed{405}$.

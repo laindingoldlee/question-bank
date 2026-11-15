@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3040935_kids_circle
+% Stable identity: aops-topic-3040935-q01
+Number the positions clockwise modulo $N$, with Fabian at $0$. Marco is at $6$, and Julio is at $10\pmod N$. Julio is also at $-8\pmod N$, so $N$ divides $18$. Since an eighth other child is counted, $N\ge9$, leaving $N=9$ or $18$. For $N=9$, Julio is at $1$; clockwise he reaches Marco after $5$ steps and Fabian after $8$, contrary to the condition. For $N=18$, Julio is at $10$ and reaches Fabian after $8$ steps, then Marco after $14$. Thus $\boxed{18}$ children satisfy all conditions.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw(circle((0,0),3)); for(int i=0;i<18;++i) dot(3*dir(90-20*i)); label("Fabian",3*dir(90),N); label("Marco",3*dir(-30),SE); label("Julio",3*dir(-110),SW); draw(reverse(arc((0,0),3.5,40,80)),Arrow); label("clockwise",(3.8,2));
+\end{asy}

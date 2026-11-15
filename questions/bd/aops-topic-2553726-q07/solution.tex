@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2553726_187__11_problems
+% Stable identity: aops-topic-2553726-q07
+The interior angles of a heptagon add up to $(7-2)\cdot180^\circ=900^\circ$, so each interior angle of a regular heptagon is $\left(\dfrac{900}{7}\right)^\circ$. (Equivalently, the exterior angle is $\dfrac{360^\circ}{7}$ and the interior angle is $180^\circ-\dfrac{360^\circ}{7}$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair[] V;for(int i=0;i<7;++i) V.push(dir(90+360*i/7));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--cycle,linewidth(0.8));
+pair c=V[4];pair bis=unit(unit(V[5]-c)+unit(V[3]-c));
+draw(arc(c,0.15,degrees(V[5]-c),degrees(V[3]-c)));
+label("$\left(\dfrac{900}{7}\right)^\circ$",c+0.42*bis,fontsize(8pt));
+\end{asy}
+
+Dividing by $5$ gives $\left(\dfrac{180}{7}\right)^\circ$, so $m+n=180+7=\boxed{187}$.

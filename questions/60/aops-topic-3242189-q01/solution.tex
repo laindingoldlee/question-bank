@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3242189_2024_amc_8_problems_and_solutions
+% Stable identity: aops-topic-3242189-q01
+The polar arc-length formula gives $L=\int_0^{132\pi}\sqrt{r^2+(r\prime)^2}\,d\theta$. Put $u=44+\theta$, obtaining $L=\dfrac{1}{44}\int_{44}^{44+132\pi}\sqrt{u^2+1}\,du$. Therefore $\boxed{L=\dfrac{1}{88}\left[u\sqrt{u^2+1}+\ln(u+\sqrt{u^2+1})\right]_{44}^{44+132\pi}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+import graph; real xx(real t){return (1+t/44)*cos(t);} real yy(real t){return (1+t/44)*sin(t);} draw(graph(xx,yy,0,132*pi,3000),blue);dot((0,0));label("$O$",(0,0),S);label("$r=1+\dfrac{\theta}{44}$",(0,12));
+\end{asy}

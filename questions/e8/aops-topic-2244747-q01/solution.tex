@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2244747_spelling_covid_related_words
+% Stable identity: aops-topic-2244747-q01
+\textbf{(a)} A point $(x,y)$ is on the parabola when its distance to the focus equals its distance to the directrix:
+\[(x-6)^2+(y-6)^2=(x-4)^2 .\]
+Expanding, $-12x+36+(y-6)^2=-8x+16$, so $4x=(y-6)^2+20$ and
+\[\boxed{x=\dfrac{1}{4}(y-6)^2+5}.\]
+The vertex $(5,6)$ is halfway between the focus and the directrix, as it should be.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-1,0)--(20,0),Arrow(6)); draw((0,-3)--(0,15),Arrow(6)); label("$x$",(20,0),E); label("$y$",(0,15),N);
+path p=graph(new real(real y){return (y-6)^2/4+5;},-1.2,13,operator ..);
+path q=reflect((0,0),(1,1))*p;
+draw(q,blue+linewidth(0.9));
+draw((4,-3)--(4,15),red+dashed); label("$x=4$",(4,15),NE,red+fontsize(8pt));
+dot((6,6),red); label("$F(6,6)$",(6,6),E,red+fontsize(8pt));
+dot((5,6),blue); label("$(5,6)$",(5,6),W,blue+fontsize(8pt));
+dot((14,0)); label("$(14,0)$",(14,0),2*S+W,fontsize(8pt));
+\end{asy}
+
+\textbf{(b)} On the $x$-axis $y=0$, so $x=\dfrac{36}{4}+5=14$. The parabola meets the $x$-axis only at $(14,0)$, and the sum of the coordinates is $\boxed{14}$.

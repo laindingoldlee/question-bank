@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2128295_a_trivial_proof_problem
+% Stable identity: aops-topic-2128295-q01
+Let $n=\lfloor x\rfloor$. Since $x$ is not an integer, $\lceil x\rceil=n+1$, so $y=n(n+1)$; and $y\ne0$ with $x>0$ gives $n\ge1$, so $y=n^2+n\ge2$.
+
+\textbf{(a)} We show $a_k\to n+1$. First, $a_k<n+1$ for all $k$: $a_1=\sqrt{n^2+n}<n+1$, and if $a_k<n+1$ then $a_{k+1}=\sqrt{n^2+n+a_k}<\sqrt{n^2+2n+1}=n+1$. Second, the sequence increases: $a_2=\sqrt{y+\sqrt y}>\sqrt y=a_1$, and if $a_k>a_{k-1}$ then $a_{k+1}=\sqrt{y+a_k}>\sqrt{y+a_{k-1}}=a_k$. An increasing sequence that is bounded above converges, say to $L>0$, and letting $k\to\infty$ in $a_{k+1}^2=y+a_k$ gives $L^2-L-y=0$. Since $1+4y=4n^2+4n+1=(2n+1)^2$, the positive root is
+\[L=\dfrac{1+(2n+1)}{2}=n+1,\]
+an integer.
+
+\textbf{(b)} First, every $b_k$ is defined and $0\le b_k\le\sqrt y$: this holds for $b_1$, and if $0\le b_k\le\sqrt y$ then $y-b_k\ge y-\sqrt y\ge0$ (as $y\ge1$), so $b_{k+1}=\sqrt{y-b_k}$ exists and is at most $\sqrt y$. Moreover $y-\sqrt y\ge2-\sqrt2>\dfrac{1}{2}$ for $y\ge2$, so $b_{k+1}\ge\sqrt{\dfrac{1}{2}}>\dfrac{1}{2}$ for all $k$.
+
+Now $n$ satisfies $n=\sqrt{y-n}$, because $y-n=n^2$. Hence
+\[\left|b_{k+1}-n\right|=\left|\sqrt{y-b_k}-\sqrt{y-n}\right|=\dfrac{\left|b_k-n\right|}{\sqrt{y-b_k}+\sqrt{y-n}}=\dfrac{\left|b_k-n\right|}{b_{k+1}+n}\le\dfrac{\left|b_k-n\right|}{\dfrac{1}{2}+1}=\dfrac{2}{3}\left|b_k-n\right|.\]
+So $\left|b_k-n\right|\le\left(\dfrac{2}{3}\right)^{k-1}\left|b_1-n\right|\to0$, and the limit is $n$, an integer.
+
+\textbf{(c)} The difference is $(n+1)-n=\boxed{1}$ (which is the poster's $\dfrac {y}{y}$). $\blacksquare$
+
+For example, $x=2.5$ gives $y=6$, and $\sqrt{6+\sqrt{6+\cdots}}=3$, $\sqrt{6-\sqrt{6-\cdots}}=2$.

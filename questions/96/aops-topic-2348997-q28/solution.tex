@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2348997_pogs_daily_questions_makes_a_return
+% Stable identity: aops-topic-2348997-q28
+The vertex angle is $90^\circ-18^\circ=72^\circ$, and the two base angles are equal, so each is $\dfrac{180^\circ-72^\circ}{2}=\boxed{54^\circ}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(2,0);pair A=(1,tan(radians(54)));
+draw(A--B--C--cycle,linewidth(0.8));
+draw(arc(A,0.35,270-36,270+36));label("$72^\circ$",A,8S,fontsize(8pt));
+draw(arc(B,0.3,0,54));label("$54^\circ$",B+(0.52,0.15),fontsize(8pt));
+draw(arc(C,0.3,126,180));label("$54^\circ$",C+(-0.52,0.15),fontsize(8pt));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+pair m1=(A+B)/2,m2=(A+C)/2;pair u1=0.07*unit(rotate(90)*(A-B)),u2=0.07*unit(rotate(90)*(A-C));
+draw(m1-u1--m1+u1);draw(m2-u2--m2+u2);
+\end{asy}

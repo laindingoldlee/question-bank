@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2615498_peace09s_3000th_post
+% Stable identity: aops-topic-2615498-q21
+Let $AB=a$, $BC=c$ and the side be $s$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),A=(0,4),C=(6,0);real s=4*6/10;draw(A--B--C--cycle);
+filldraw((0,0)--(0,s)--(s,s)--(s,0)--cycle,opacity(0.15)+blue,blue);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$X$",(0,s),W);label("$Y$",(s,0),S);label("$P$",(s,s),NE);
+label("$s$",(s/2,s),N);label("$a$",(0,1.2),W);label("$c$",(4.3,0),S);
+\end{asy}
+
+Triangle $AXP$ is similar to $ABC$ (since $XP\parallel BC$), so $\dfrac{XP}{BC}=\dfrac{AX}{AB}$, i.e. $\dfrac sc=\dfrac{a-s}{a}$. Hence $as=ac-cs$ and
+\[s=\dfrac{ac}{a+c}=\dfrac12\cdot\dfrac{2ac}{a+c},\]
+which is half the harmonic mean of $a$ and $c$. $\blacksquare$

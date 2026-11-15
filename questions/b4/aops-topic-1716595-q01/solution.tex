@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1716595_similar_triangles
+% Stable identity: aops-topic-1716595-q01
+The sun's rays are parallel, so the ray over the top of the man also passes over the top of the tree and both shadows end at the same point $X$. The man and the tree are both vertical, so the right triangles formed by the man and his shadow and by the tree and its shadow are similar (they share the angle at $X$). The tree's shadow is $6+1.2=7.2$ metres long, so
+\[
+\dfrac{h}{7.2}=\dfrac{1.5}{1.2}\quad\Longrightarrow\quad h=7.2\cdot1.25=\boxed{9\text{ metres}}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+void ra(pair P,pair Q,pair R,real s){pair u=unit(Q-P),v=unit(R-P);draw(P+s*u--P+s*u+s*v--P+s*v,linewidth(0.5));}
+pair T=(0,0),Tt=(0,9),M=(6,0),Mt=(6,1.5),X=(7.2,0);
+draw((-0.8,0)--(8.2,0),linewidth(0.6));
+draw(T--Tt,linewidth(1.6));draw(M--Mt,linewidth(1.4));
+draw(Tt--X,dashed);
+ra(T,X,Tt,0.35);ra(M,X,Mt,0.25);
+label("$9$",(0,4.5),W);label("$1.5$",(6,0.75),W);
+label("$6$",(3,0),S);label("$1.2$",(6.6,0),S);
+label("$X$",X,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

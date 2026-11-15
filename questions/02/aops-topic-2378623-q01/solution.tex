@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2378623_infinity_and_laser_pointers
+% Stable identity: aops-topic-2378623-q01
+\textbf{(a)} The laser, $F$ and $P$ form a right triangle with the right angle at $F$, legs $h$ and $p$, and angle $\theta$ at the laser:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair L=(0,2.2), Fp=(0,0), P=(3.2,0);
+draw((-0.6,0)--(7.4,0),linewidth(0.9)); label("$\ell$",(7.4,0),E);
+draw(L--Fp,dashed); dot(L); label("laser",L,W);
+draw(L--(1.4,0),gray+dotted); draw(L--(6.6,0),gray+dotted);
+draw(L--P,red); dot(P,red);
+label("$P$",P,S,red); label("$F$",Fp,S);
+label("$h$",(0,1.1),W); draw((0,-0.75)--(3.2,-0.75),Arrows(4)); label("$p$",(1.6,-0.75),S);
+draw(arc(L,0.6,-90,-34.51),blue); label("$\theta$",L+0.85*dir(-62),blue);
+draw(L--(7.4,2.2),gray+dashed); label("$\theta=90^\circ$",(7.2,2.2),N,gray);
+\end{asy}
+
+so $\tan\theta=\dfrac ph$ and $\boxed{\theta=\arctan\dfrac ph}$.
+
+\textbf{(b)} For every actual hitting point $P$ (every finite $p\ge0$) we have $\theta=\arctan\dfrac ph<90^\circ$, so the beam is never parallel to $\ell$. As $p$ grows, $\theta$ gets as close to $90^\circ$ as we like, which is all that $\lim\theta=90^\circ$ means; but the limit value is never attained. The beam at exactly $90^\circ$ is horizontal, parallel to $\ell$, and it meets $\ell$ nowhere: there is no point $P$ for it.
+
+So the argument wrongly treats the limit as if it were one of the values: ``$\theta\to90^\circ$'' does not mean that some beam with $\theta=90^\circ$ hits $\ell$. (Compare $\dfrac1n\to0$, although $\dfrac1n$ is never $0$.) No line is both parallel to $\ell$ and intersecting it.

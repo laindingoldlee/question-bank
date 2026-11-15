@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1659773_a_problem_on_summations
+% Stable identity: aops-topic-1659773-q01
+\textbf{(a)} Each of the $n$ terms of $B_n$ is at least its last term $\dfrac{1}{\sqrt{2n}}$, so
+\[
+B_n\ge\dfrac{n}{\sqrt{2n}}=\sqrt{\dfrac {n}{2}},
+\]
+which grows without bound. Since $\dfrac{1}{\sqrt{2k-1}}>\dfrac{1}{\sqrt{2k}}$ term by term, $A_n>B_n$ grows without bound as well.
+
+\textbf{(b)} Compare the sums term by term, shifting by one place. For every $k\ge1$,
+\[
+\dfrac{1}{\sqrt{2k}}<\dfrac{1}{\sqrt{2k-1}}\qquad\text{and, for }k\ge2,\qquad \dfrac{1}{\sqrt{2k-1}}<\dfrac{1}{\sqrt{2k-2}} .
+\]
+Summing the first inequality gives $B_n<A_n$. Summing the second over $k=2,\dots,n$ and adding the first term $1$ gives
+\[
+A_n<1+\dfrac{1}{\sqrt2}+\dfrac{1}{\sqrt4}+\cdots+\dfrac{1}{\sqrt{2n-2}}=1+B_{n-1}<1+B_n .
+\]
+Dividing by $B_n>0$,
+\[
+1<\dfrac{A_n}{B_n}<1+\dfrac{1}{B_n} .
+\]
+By (a), $\dfrac{1}{B_n}\to0$, so by squeezing,
+\[
+\lim_{n\to\infty}\dfrac{A_n}{B_n}=\boxed{1}.
+\]
+(The finite sums in the post, $a=A_4$ and $b=B_5$, are ordinary numbers, $a\approx2.4025$ and $b\approx2.2851$, with no special closed form for $\dfrac {a}{b}$.)

@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2348997_pogs_daily_questions_makes_a_return
+% Stable identity: aops-topic-2348997-q43
+Let the edge lengths be $x,y,z$ with $xz=50$, $yz=81$, $xy=128$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real a=2.4,b2=1.5,c=1.9;pair dz=(0.75,0.5);
+pair O=(0,0);
+draw(O--(a,0)--(a,c)--(0,c)--cycle,linewidth(0.8));
+draw((a,0)--(a,0)+dz--(a,c)+dz--(0,c)+dz--(0,c),linewidth(0.8));
+draw((a,c)--(a,c)+dz,linewidth(0.8));
+draw(O--dz,dashed);draw(dz--(a,0)+dz,dashed);draw(dz--(0,c)+dz,dashed);
+label("$x$",(a/2,0),S);label("$z$",(0,c/2),W);label("$y$",(a,0)+dz/2,SE);
+label("$xz=50$",(1.55,1.25));label("$yz=81$",(a,c/2)+dz/2,fontsize(8pt));label("$xy=128$",(a/2,c)+dz/2,fontsize(8pt));
+\end{asy}
+
+Multiplying, $(xyz)^2=50\cdot81\cdot128=518400=720^2$, so the volume is $xyz=720$ (with $x=\dfrac{80}9$, $y=\dfrac{72}5$, $z=\dfrac{45}8$). The surface area is $2(50+81+128)=518$. The difference is $720-518=\boxed{202}$.

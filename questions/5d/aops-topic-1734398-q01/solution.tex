@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1734398_degenerate_triangle
+% Stable identity: aops-topic-1734398-q01
+Here $s=\dfrac{a+b+(a+b)}{2}=a+b=c$, so $s-c=0$ and
+\[
+[ABC]=\sqrt{(a+b)\cdot b\cdot a\cdot0}=\boxed{0}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),C=(3,0),B=(7,0);
+draw(A--B,linewidth(0.9));
+dot(A);dot(B);dot(C);
+label("$A$",A,W);label("$C$",C,S);label("$B$",B,E);
+draw((0,0.45)--(3,0.45),Arrows(4));label("$b$",(1.5,0.45),N);
+draw((3,0.45)--(7,0.45),Arrows(4));label("$a$",(5,0.45),N);
+draw((0,-0.75)--(7,-0.75),Arrows(4));label("$a+b$",(3.5,-0.75),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+With base $AB$, the third vertex $C$ lies on line $AB$, so the height is $0$ and $\dfrac{1}{2}\cdot c\cdot0=0$ as well. So the area of a degenerate triangle is defined and equals $0$: the three points enclose no region. (Heron's formula also shows the converse: for positive sides, the area is $0$ exactly when one side equals the sum of the other two.)

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h3247493_amy_question
+% Stable identity: aops-topic-3247493-q01
+The probability-generating polynomial is $\prod_{n=1}^{15}(\dfrac{n-1}{n}+\dfrac{t}{n})=\dfrac{t(t+1)\cdots(t+14)}{15!}$. The sum of its coefficients of degrees $11$ through $15$ is the desired probability. The exact recurrence below computes these coefficients and gives $\boxed{\dfrac{966061}{435891456000}}$. At stage $n$, coefficient $k$ is the probability of exactly $k$ solved questions, proving the update.\begin{verbatim}
+from fractions import Fraction as F
+p=[F(1)]
+for n in range(1,16):
+    q=[F(0)]*(len(p)+1)
+    for k,v in enumerate(p):
+        q[k]+=v*F(n-1,n)
+        q[k+1]+=v*F(1,n)
+    p=q
+print(sum(p[11:]))
+\end{verbatim}

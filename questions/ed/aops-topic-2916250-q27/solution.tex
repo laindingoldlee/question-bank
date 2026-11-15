@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2916250_2022_mbmt_guts_round_d1630_z914172630_montgomery_blair_math_tournament
+% Stable identity: aops-topic-2916250-q27
+Centre the square at the origin. $P=(u,v)$ is in all four circles iff $(|u|+3)^2+(|v|+3)^2\le25$. In the quadrant $u,v\ge0$, this region has area $\displaystyle\int_0^1\left(\sqrt{25-(u+3)^2}-3\right)du=\dfrac{25}2\left(\arcsin\dfrac45-\arcsin\dfrac35\right)-3$.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(6,0)--(6,6)--(0,6)--cycle);draw(circle((0,0),5),dotted);draw(circle((6,0),5),dotted);draw(circle((0,6),5),dotted);draw(circle((6,6),5),dotted);
+path r=buildcycle(arc((0,0),5,10,80),arc((6,0),5,100,170),arc((6,6),5,190,260),arc((0,6),5,280,350));fill(r,lightgray);
+\end{asy}
+
+Since $\arcsin\dfrac45-\arcsin\dfrac35=\arcsin\dfrac7{25}$, the region has total area $50\arcsin\dfrac7{25}-12$, and the probability is
+\[\boxed{\dfrac{25\arcsin\frac7{25}-6}{18}}\approx0.0608.\]

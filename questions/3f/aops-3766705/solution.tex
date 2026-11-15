@@ -1,0 +1,9 @@
+Let the ten strip widths be $w_1,\ldots,w_{10}$ and heights $h_1,\ldots,h_{10}$. A cell is square exactly when its width equals its height. Suppose all nine squares have distinct sizes. Each such size must occur exactly once among widths and once among heights, since a repeated occurrence would produce equal-sized squares. Remove those nine matching entries from each list. The remaining width and height are equal because both complete lists sum to the side length of the large square. They therefore form a tenth square, a contradiction.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+draw((0,0)--(5,0)--(5,5)--(0,5)--cycle);for(int i=1;i<10;++i){draw((i/2,0)--(i/2,5),gray);draw((0,i/2)--(5,i/2),gray);}label("strip widths $w_i$",(2.5,-.4),(0,-1));label("strip heights $h_j$",(5.2,2.5),(1,0));
+\end{asy}
+

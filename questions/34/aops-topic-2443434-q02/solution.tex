@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2443434_number_theory_problems
+% Stable identity: aops-topic-2443434-q02
+Combine the congruences one at a time.
+\begin{itemize}
+\item $x\equiv1\pmod3$ and $x\equiv2\pmod4$: checking $2,6,10$ (the numbers $\equiv2\pmod4$ below $12$), only $10\equiv1\pmod3$. So $x\equiv10\pmod{12}$.
+\item Write $x=10+12t$. Then $x\equiv3+5t\pmod7$, so $5t\equiv0\pmod7$ and $t\equiv0\pmod7$. So $x\equiv10\pmod{84}$.
+\item Write $x=10+84s$. Since $84\equiv7\pmod{11}$, we need $10+7s\equiv4$, i.e. $7s\equiv-6\equiv5\pmod{11}$. As $7\cdot8=56\equiv1\pmod{11}$, $s\equiv5\cdot8=40\equiv7\pmod{11}$. So $x=10+84\cdot7=598$ modulo $84\cdot11=924$.
+\end{itemize}
+Since $3,4,7,11$ are pairwise coprime, the solutions form a single residue class modulo $3\cdot4\cdot7\cdot11=924$ (Chinese remainder theorem):
+\[\boxed{x\equiv598\pmod{924}}.\]
+Check: $598=3\cdot199+1=4\cdot149+2=7\cdot85+3=11\cdot54+4$.

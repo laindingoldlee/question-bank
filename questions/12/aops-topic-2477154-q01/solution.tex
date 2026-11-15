@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2477154_sum_of_digits
+% Stable identity: aops-topic-2477154-q01
+Write $s(m)$ for the digit sum of $m$, and let $u$ be the units digit of $n$.
+
+\textbf{Case $u\le2$.} Adding $7$ only changes the units digit, to $u+7\le9$, so $s(n+7)=2009+7=2016$.
+
+\textbf{Case $u\ge3$.} The units digit becomes $u+7-10=u-3$ and a $1$ is carried. Suppose the next $j\ge0$ digits of $n$ (tens, hundreds, \dots) are $9$ and the digit after them is not $9$ (or does not exist, i.e. is a leading $0$). The carry turns these $j$ nines into zeros and raises the next digit by $1$. So
+\[s(n+7)=2009-u+(u-3)-9j+1=2007-9j.\]
+The units digit and the $j$ nines are digits of $n$, so $u+9j\le2009$, i.e. $9j\le2006$ and $j\le222$.
+
+Hence $s(n+7)\in\{2016\}\cup\{2007-9j:0\le j\le222\}$, the set of multiples of $9$ from $2007-9\cdot222=9$ to $2016$.
+
+\textbf{All of them occur.}
+\begin{itemize}
+\item Let $n$ be the number $2\underbrace{99\cdots9}_{223}0$. Then $s(n)=2+2007=2009$ and $n+7=2\underbrace{99\cdots9}_{223}7$ has digit sum $2016$.
+\item For $0\le j\le222$, let $D$ be any positive integer with digit sum $2006-9j\ge8$, and let $n$ be the number formed by the digits of $D$, then a $0$, then $j$ nines, then $3$. Then $s(n)=2006-9j+9j+3=2009$, and $n+7$ consists of the digits of $D$, then $1$, then $j+1$ zeros, so $s(n+7)=2007-9j$.
+\end{itemize}
+
+So the digit sum of $n+7$ can be any multiple of $9$ from $9$ to $2016$:
+\[\boxed{9,\ 18,\ 27,\ \dots,\ 2016}\quad(224\text{ values}).\]
+(As a check, $n\equiv s(n)=2009\equiv2\pmod9$, so $n+7\equiv0\pmod9$, and its digit sum must be a multiple of $9$.)

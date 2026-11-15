@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2636482_basic_number_theory
+% Stable identity: aops-topic-2636482-q01
+\emph{The gcd.} $m^2+6=(m+1)(m-1)+7$, so $\gcd\left(m^2+6,m+1\right)=\gcd(m+1,7)$, which is $1$ or $7$. Call it $g$.
+
+\emph{Case $p\ne q$.} Then $\gcd(pq,p+q)=1$: a prime factor of $pq$ is $p$ or $q$, and $p\mid p+q$ would give $p\mid q$. So $\dfrac{pq}{p+q}$ is in lowest terms, and so is the fraction with numerator $\dfrac{m^2+6}{g}$ and denominator $\dfrac{m+1}{g}$. Two equal fractions in lowest terms with positive denominators have equal numerators and denominators. This is why the solution divides by $7$ (the case $g=7$):
+\[pq=\dfrac{m^2+6}{g},\qquad p+q=\dfrac{m+1}{g}.\]
+By AM-GM, $pq\le\dfrac{(p+q)^2}{4}$.
+\begin{itemize}
+\item $g=1$: $m^2+6=pq\le\dfrac{(m+1)^2}{4}$, i.e. $3m^2-2m+23\le0$, impossible.
+\item $g=7$: $\dfrac{m^2+6}{7}=pq\le\dfrac{(m+1)^2}{196}$, i.e. $28\left(m^2+6\right)\le(m+1)^2$, impossible.
+\end{itemize}
+So there are no solutions with $p\ne q$.
+
+\emph{Case $p=q$.} The equation becomes $\dfrac p2=\dfrac{m^2+6}{m+1}$, i.e. $p(m+1)=2\left(m^2+6\right)$. Then $m+1$ divides $2\left(m^2+6\right)-2(m-1)(m+1)=14$, so $m+1\in\{2,7,14\}$:
+\[m=1\Rightarrow p=7,\qquad m=6\Rightarrow p=12,\qquad m=13\Rightarrow p=25.\]
+Only $p=7$ is prime.
+
+The only pair is $\boxed{(p,q)=(7,7)}$, with $m=1$: $\dfrac{49}{14}=\dfrac72=\dfrac{1+6}{1+1}$.

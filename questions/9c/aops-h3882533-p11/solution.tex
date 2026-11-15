@@ -1,0 +1,13 @@
+Label a face by $(j,\varepsilon)$, where $j\in\mathbb Z_{12}$ identifies a base edge and $\varepsilon\in\{0,1\}$ identifies the upper or lower pyramid. A move either changes $j$ by $1$ or $-1$, or flips $\varepsilon$. The opposite face to $(0,0)$ is $(6,1)$.
+
+If there are $h$ horizontal moves, the number of flips is $13-h$, which must be odd. Also $h$ must be even and at least $6$. Thus $h=6,8,10,12$. The net horizontal displacement must be $6$ or $-6$, since $h\le12$. For each $h$, choose its move positions and then the right/left directions. The total is
+\[
+\sum_{h\in\{6,8,10,12\}}\binom{13}{h}\,2\binom{h}{\dfrac{(h+6)}{2}}
+=3432+20592+25740+5720=\boxed{55484}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+size(420);for(int j=0;j<12;++j){for(int e=0;e<2;++e){pair P=(j,3e);dot(P);label(string(j),P,e==0?S:N);if(j<11)draw(P--(j+1,3e));}draw((j,0)--(j,3),gray);}draw((0,0)--(-.5,-.8)--(11.5,-.8)--(11,0));draw((0,3)--(-.5,3.8)--(11.5,3.8)--(11,3));dot((0,0),blue+5bp);dot((6,3),red+5bp);label("start",(-.5,0),W);label("opposite",(6,3),S);
+\end{asy}

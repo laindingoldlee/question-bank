@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1565143_question_from_nationals_team_round
+% Stable identity: aops-topic-1565143-q01
+The primes in the factorization must be distinct (a repeated prime repeats its digits), and together their digits are $1,3,5,7,9$, each once. The digit $1$ is not a prime, so it sits inside a prime with at least two digits. A prime whose digits are three of the odd digits with digit sum divisible by $3$ is impossible (it would be a multiple of $3$). Group by the numbers of digits of the primes:
+\begin{itemize}
+\item \textbf{Four primes} (digits $1,1,1,2$): the primes $3,5,7$ and a two-digit prime from $\{1,9\}$; $91=7\cdot13$, so only $3\cdot5\cdot7\cdot19=1995$.
+\item \textbf{Three primes, digits $1,1,3$}:
+\begin{itemize}
+\item $3\cdot5$ times a prime from $\{1,7,9\}$: $179$ and $197$ are prime, giving $2685$ and $2955$; $719$ and $971$ give larger products.
+\item $3\cdot7$ with $\{1,5,9\}$: digit sum $15$, impossible.
+\item $5\cdot7$ with $\{1,3,9\}$: the smallest is $35\cdot139=4865$.
+\end{itemize}
+\item \textbf{Three primes, digits $1,2,2$}:
+\begin{itemize}
+\item $3\cdot17\cdot59=3009$ ($\{1,5,7,9\}$ splits into primes only as $17,59$ or $71,59$);
+\item $5\cdot19\cdot37=3515$ (the smallest for $\{1,3,7,9\}$);
+\item $7\cdot13\cdot59=5369$ (the smallest for $\{1,3,5,9\}$).
+\end{itemize}
+\item \textbf{Two primes.} A one-digit prime times a four-digit prime is more than $3\cdot1000=3000$. A two-digit prime $p$ times a three-digit prime $q$: $q$'s digit sum must not be divisible by $3$. That rules out $p=13,19,31,37,91$ (the other three digits sum to $21$, $15$, $21$, $15$). The remaining $p$ are at least $17$, with $q\ge359$ when $p=17$, so the product is at least $17\cdot359=6103$.
+\item \textbf{One prime} with five digits: more than $10000$.
+\end{itemize}
+The smallest product above $1995$ is $3\cdot5\cdot179=\boxed{2685}$.

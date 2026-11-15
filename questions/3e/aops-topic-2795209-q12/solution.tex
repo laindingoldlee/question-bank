@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2795209_2021_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2795209-q12
+Place $A=(0,0)$, $B=(16,0)$, $C=(8,6)$ (the apex is $6$ above the midpoint since $10^2-8^2=36$). Line $BC$ is $y=-\dfrac34(x-16)$.
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(16,0),C=(8,6),Y=(9.6,4.8),X=(12,0);
+draw(A--B--C--cycle);draw(A--Y--X,dashed);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$Y$",Y,NE);label("$X$",X,S);
+draw(Y+0.8*dir(Y--A)--Y+0.8*dir(Y--A)+0.8*dir(Y--X)--Y+0.8*dir(Y--X));
+\end{asy}
+
+Let $\theta=\angle YAX$; in right triangle $AXY$, $\tan\theta=\dfrac{XY}{AY}$.
+
+\emph{Case $AY=2XY$}: $\tan\theta=\dfrac12$, so $Y$ lies on $y=\dfrac x2$. Intersecting with $BC$: $\dfrac x2=12-\dfrac{3x}4$, so $Y=(9.6,4.8)$ and $AY=\sqrt{9.6^2+4.8^2}=4.8\sqrt5$. Then $AX=\dfrac{AY}{\cos\theta}=4.8\sqrt5\cdot\dfrac{\sqrt5}{2}=12$, and $X=(12,0)$ is on $AB$.
+
+\emph{Case $XY=2AY$}: $\tan\theta=2$, so $Y$ is on $y=2x$; then $2x=12-\dfrac{3x}{4}$ gives $x=\dfrac{48}{11}$ and $AX=\dfrac{AY}{\cos\theta}=\sqrt5\,AY=5x=\dfrac{240}{11}>16$, so $X$ is not on side $AB$.
+
+Hence the hypotenuse is $\boxed{12}$.

@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1333851_bashy_counting_problem
+% Stable identity: aops-topic-1333851-q01
+Let $R$ be the event that every rank appears and $U$ the event that every suit appears. There are $\dbinom{25}{10}=3268760$ hands.
+
+By inclusion-exclusion over the missing ranks (a hand missing $k$ given ranks is chosen from $25-5k$ cards),
+\[
+|R|=\sum_{k=0}^{5}(-1)^k\dbinom5k\dbinom{25-5k}{10}=3268760-5\cdot184756+10\cdot3003-10\cdot1=2375000,
+\]
+and $|U|=|R|$ by symmetry. A hand missing $i$ given ranks and $j$ given suits is chosen from $(5-i)(5-j)$ cards, so
+\[
+|R\cap U|=\sum_{i=0}^{5}\sum_{j=0}^{5}(-1)^{i+j}\dbinom5i\dbinom5j\dbinom{(5-i)(5-j)}{10}=1674840 .
+\]
+Hence $|R\cup U|=2\cdot2375000-1674840=3075160$, and the probability is
+\[
+\dfrac{3075160}{3268760}=\boxed{\dfrac{6989}{7429}}\approx0.941 .
+\]

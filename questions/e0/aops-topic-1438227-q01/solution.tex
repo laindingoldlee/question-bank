@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1438227_circle_in_a_triangle
+% Stable identity: aops-topic-1438227-q01
+The circle is the incircle. Its centre $O$ is equidistant from the three sides, so it lies on all three angle bisectors; in an equilateral triangle these are also the medians and altitudes. Let $M$ be the midpoint of side $AB$. Then $OM\perp AB$, $OM=r$, $AM=1$, and $AO$ bisects the $60^\circ$ angle at $A$, so $\angle OAM=30^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(0,0),B=(2,0),C=(1,sqrt(3));
+pair O=(1,sqrt(3)/3), M=(1,0);
+draw(circle(O,sqrt(3)/3),blue);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(O--M,red+dashed); draw(A--O,gray+dashed);
+draw(ra(M,B-M,O-M,0.09));
+dot(A);dot(B);dot(C);dot(O);dot(M);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N);
+label("$O$",O,NE); label("$M$",M,S);
+label("$1$",(0.5,0),S); label("$r$",(1,0.29),E,red);
+draw(arc(A,0.3,0,30)); label("$30^\circ$",A+0.45*dir(15),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the $30$-$60$-$90$ triangle $AMO$ the side opposite the $30^\circ$ angle is $\dfrac{1}{\sqrt3}$ times the side opposite the $60^\circ$ angle:
+\[
+r=OM=\dfrac{AM}{\sqrt3}=\dfrac{1}{\sqrt3}=\boxed{\dfrac{\sqrt3}{3}} .
+\]
+(Equivalently, $O$ is the centroid, so $r$ is one third of the altitude $\sqrt3$.)

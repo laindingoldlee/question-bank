@@ -1,0 +1,6 @@
+Reduce $\dfrac{10}{b}$ to $\dfrac{p}{q}$ with positive coprime integers. If $4\mid b$, then $q$ is even and the real-power convention permits only $x\ge0$. If $b$ is odd, $q$ is odd and $p$ is even, so the graph is the even function $|x|^{\dfrac{10}{b}}$. If $b\equiv2\pmod4$, both $p,q$ are odd, so the graph is the odd function $\operatorname{sgn}(x)|x|^{\dfrac{10}{b}}$. All these exponents lie between zero and one and all curves pass through the origin. In particular the third case is not a reciprocal-power graph, which would be undefined at zero and decay towards zero at infinity.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+real f(real x){return x^(5/6);}real g(real x){return abs(x)^(10/13);}real h(real x){return sgn(x)*abs(x)^(5/7);}draw((-2,0)--(2,0),gray);draw((0,-2)--(0,2),gray);draw(graph(f,0,2),blue);draw(graph(g,-2,2),red+dashed);draw(graph(h,-2,2),green+dotted);label("$b=12$",(1.6,1.6),(1,0),blue);label("$b=13$",(-1.5,1.6),(-1,0),red);label("$b=14$",(-1.5,-1.6),(-1,0),green);
+\end{asy}
+

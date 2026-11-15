@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2524531_jhmt_combo_variation_2020_p11
+% Stable identity: aops-topic-2524531-q01
+\textbf{(a)} For each of the $\dbinom{25}{2}=300$ pairs of people, let $I$ be $1$ if the two chose the same colour and $0$ otherwise. Whatever the first person chooses, the second matches with probability $\dfrac16$, so $E(I)=\dfrac16$. The number of same-colour pairs is the sum of these $300$ indicators, and by linearity of expectation (which needs no independence)
+\[E=300\cdot\dfrac16=\boxed{50}.\]
+
+\textbf{(b)} The approach has two flaws.
+\begin{itemize}
+\item It counts the wrong objects. A ``pair of people with the same colour'' is any two people with equal colours, and these pairs overlap: $k$ people with one colour form $\dbinom k2$ pairs, not $\left\lfloor\dfrac k2\right\rfloor$ disjoint pairs. (Indeed there are always at least $40$ same-colour pairs: moving one person from a group of $k$ to a group of $j\le k-2$ changes the number of pairs by $j-(k-1)<0$, so the number of pairs is smallest for the most even split $5,4,4,4,4,4$, which gives $10+5\cdot6=40$.)
+\item It adds up numbers of arrangements. An expected value is a sum of (value $\times$ probability), so even correct counts would have to be weighted by their values and divided by $6^{25}$; a raw count of arrangements is not an expected number.
+\end{itemize}

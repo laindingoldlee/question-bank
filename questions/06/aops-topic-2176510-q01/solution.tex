@@ -1,0 +1,41 @@
+% Source: https://artofproblemsolving.com/community/c3h2176510_dissection_problem_i_came_up_with
+% Stable identity: aops-topic-2176510-q01
+\textbf{The dissection.} Let the rhombus $ABCD$ have centre $O$, side $1$, and half-diagonals $OA=OC=c$ and $OB=OD=s$, so $c^2+s^2=1$ (triangle $AOB$ has a right angle at $O$). Cut along both diagonals, and also along the four perpendiculars from $O$ to the sides; let $H$ be the foot of the perpendicular from $O$ to $AB$. This gives $8$ right triangles: in the quarter $AOB$ they are $OHA$ and $OHB$, and the other three quarters are cut in the same way.
+
+\begin{asy}
+usepackage("amsmath");
+size(12cm);
+defaultpen(fontsize(10pt));
+real th=70; real c=Cos(th/2), s=Sin(th/2);
+pair ft(pair P,pair X,pair Y){ return X+dot(P-X,Y-X)/dot(Y-X,Y-X)*(Y-X); }
+pair O=(0,0),A=(c,0),B=(0,s),C=(-c,0),D=(0,-s);
+pair[] V={A,B,C,D};
+pen pc=rgb(0.75,0.85,1), ps=rgb(1,0.85,0.7);
+for(int k=0;k<4;++k){ pair X=V[k],Y=V[(k+1)%4]; pair H=ft(O,X,Y);
+  pair L=(abs(X)>abs(Y))?X:Y, Sm=(abs(X)>abs(Y))?Y:X;
+  filldraw(O--H--L--cycle,pc,black+linewidth(0.5)); filldraw(O--H--Sm--cycle,ps,black+linewidth(0.5)); dot(H,linewidth(2.5)); }
+draw(A--B--C--D--cycle,linewidth(1));
+label("$A$",A,E);label("$B$",B,N);label("$C$",C,W);label("$D$",D,S);dot(O,linewidth(2.5)); label("$O$",O+0.16*dir(-27),fontsize(9pt));
+label("$H$",ft(O,A,B),NE,fontsize(9pt));
+// reassembled rhombi, same scale, to the right
+pair P1=(2.45,0), P2=(3.85,0);
+pair[] U={(c*c,0),(0,c*s),(-c*c,0),(0,-c*s)};
+for(int k=0;k<4;++k) filldraw(shift(P1)*((0,0)--U[k]--U[(k+1)%4]--cycle),pc,black+linewidth(0.5));
+draw(shift(P1)*(U[0]--U[1]--U[2]--U[3]--cycle),linewidth(1));
+pair[] Wv={(c*s,0),(0,s*s),(-c*s,0),(0,-s*s)};
+for(int k=0;k<4;++k) filldraw(shift(P2)*((0,0)--Wv[k]--Wv[(k+1)%4]--cycle),ps,black+linewidth(0.5));
+draw(shift(P2)*(Wv[0]--Wv[1]--Wv[2]--Wv[3]--cycle),linewidth(1));
+label("side $c$",P1+(0,-c*s),S,fontsize(8pt)); label("side $s$",P2+(0,-s*s),S,fontsize(8pt));
+draw((1.15,0)--(1.5,0),Arrow(TeXHead));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The pieces.} Triangle $AOB$ has a right angle at $O$, legs $OA=c$, $OB=s$ and hypotenuse $AB=1$. Triangle $AHO$ has a right angle at $H$ and shares the angle at $A$, so $\triangle AHO\sim\triangle AOB$; its hypotenuse is $AO=c$, so the ratio is $\dfrac{AO}{AB}=c$. Its legs are $AH=c\cdot AO=c^2$ (corresponding to $AO$) and $HO=c\cdot OB=cs$ (corresponding to $OB$). Similarly $\triangle BHO\sim\triangle BOA$ with ratio $\dfrac{BO}{BA}=s$, and its legs are $BH=s\cdot BO=s^2$ (corresponding to $BO$) and $HO=s\cdot OA=cs$ (corresponding to $OA$). The same holds in each quarter, so the $8$ pieces are:
+\begin{itemize}
+\item four right triangles (blue) with legs $c^2$, $cs$ and hypotenuse $c$, each similar to the quarter-triangle $AOB$ with ratio $c$;
+\item four right triangles (orange) with legs $cs$, $s^2$ and hypotenuse $s$, each similar to $AOB$ with ratio $s$.
+\end{itemize}
+
+\textbf{Reassembly.} The original rhombus consists of four copies of triangle $AOB$ placed with their right angles at $O$, the legs $c$ along one line and the legs $s$ along the perpendicular line. Doing the same with the four blue pieces (right angles together, legs $c^2$ along one line, legs $cs$ along the perpendicular line) gives a rhombus with half-diagonals $c^2$ and $cs$, which is the original rhombus scaled by the factor $c$. Likewise the four orange pieces form a rhombus with half-diagonals $cs$ and $s^2$, the original scaled by $s$. Both are similar to $ABCD$ and smaller than it, since $c<1$ and $s<1$. (Each new rhombus needs two pieces of each mirror orientation, and the four pieces of each colour come in two mirror-image pairs, so turning pieces over is not even necessary.)
+
+As a check, the areas add up: the two new rhombuses have areas $c^2[ABCD]$ and $s^2[ABCD]$, and $c^2+s^2=1$. $\blacksquare$

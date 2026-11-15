@@ -1,0 +1,7 @@
+Because $AM$ bisects $\angle DAN$, reflection in $AM$ exchanges rays $AD$ and $AN$. The perpendicular projection of $M$ on $AD$ is $D$ (since $CD\perp AD$), and its projection on $AN$ is $E$. Reflection therefore exchanges $D,E$, giving $AD=AE$. In isosceles triangle $ADE$, the angle at $A$ is $36^\circ$, so $\angle ADE=72^\circ$. Since $DN\perp DA$, $\angle EDN=90^\circ-72^\circ=\boxed{18^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1),M=(1/tan(72*pi/180),1),N=(tan(36*pi/180),1),E=dir(54);draw(A--B--C--D--cycle);draw(A--M,dashed);draw(A--N);draw(M--E,blue);draw(D--E,red);pair[] p={A,B,C,D,M,N,E};string[] s={"A","B","C","D","M","N","E"};pair[] a={(-1,-1),(1,-1),(1,1),(-1,1),(0,1),(0,1),(1,-1)};for(int i=0;i<7;++i)label("$"+s[i]+"$",p[i],a[i]);
+\end{asy}

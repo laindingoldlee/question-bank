@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2319369_100th_post_problems
+% Stable identity: aops-topic-2319369-q78
+The surface areas are $6(2x)^2=24x^2$ and $6(4x)^2=96x^2$, so the large cube has $\boxed{4}$ times the surface area. (Doubling every length multiplies areas by $2^2=4$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+void cube(pair o, real s, pen p){
+ pair u=(s,0), v=(0.45*s,0.35*s), w=(0,s);
+ draw(o--o+u--o+u+w--o+w--cycle,p); draw(o+w--o+w+v--o+u+v+w--o+u+w,p); draw(o+u--o+u+v--o+u+v+w,p);
+}
+cube((0,0),2,black); cube((3.5,0),4,blue);
+label("$2x$",(1,0),S); label("$4x$",(5.5,0),S,blue);
+\end{asy}

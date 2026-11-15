@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2670274_parabola_basics
+% Stable identity: aops-topic-2670274-q01
+A point $P=(x,y)$ is on the parabola exactly when its distance to the focus equals its distance $|y-k+p|$ to the directrix:
+\[(x-h)^2+(y-k-p)^2=(y-k+p)^2.\]
+Write $u=y-k$. Then
+\[(x-h)^2=(u+p)^2-(u-p)^2=4pu=4p(y-k).\]
+All steps are reversible, so this is exactly the equation of the parabola.
+
+\emph{Meaning.} The vertex $V=(h,k)$ is the point of the parabola midway between the focus and the directrix (put $x=h$). The number $p$ is the directed distance from the vertex to the focus: the parabola opens upwards if $p>0$ and downwards if $p<0$. The factor $4p$ is the difference of squares $(u+p)^2-(u-p)^2$. It also has a geometric meaning: at the height of the focus ($u=p$) we get $(x-h)^2=4p^2$, so the chord through the focus parallel to the directrix has length $4|p|$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real p=1;
+real f(real x){return x^2/(4*p);}
+draw(graph(f,-2.6,2.6),linewidth(0.8));
+draw((-3,-p)--(3,-p),dashed);draw((-3,0)--(3,0),gray(0.7));
+pair F=(0,p),V=(0,0),Pt=(2,f(2)),Q=(2,-p);
+draw(F--Pt,blue);draw(Pt--Q,blue);
+dot(F);dot(V);dot(Pt);dot(Q);
+label("$F(h,k+p)$",F,N,fontsize(8pt));label("$V(h,k)$",V,SE,fontsize(8pt));label("$P(x,y)$",Pt,E,fontsize(8pt));
+label("$y=k-p$",(-3,-p),N,fontsize(8pt));label("$Q$",Q,S,fontsize(8pt));
+\end{asy}
+
+(The sketch shows $h=k=0$, $p=1$: $PF=PQ$ for every point $P$ of the curve.)

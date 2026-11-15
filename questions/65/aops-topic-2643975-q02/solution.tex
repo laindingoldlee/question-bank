@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2643975_jhu08s_1000th_post_celebration
+% Stable identity: aops-topic-2643975-q02
+Since $0<A+B<\pi$ and $\cos(A+B)>0$, the angle $A+B$ is acute and $\sin(A+B)=\dfrac35$. Since $0<2A+B<\dfrac{3\pi}{2}$ and $\cos(2A+B)>0$, the angle $2A+B$ is also acute, so $\sin(2A+B)=\dfrac45$. Now $A=(2A+B)-(A+B)$, so
+\[\cos A=\cos(2A+B)\cos(A+B)+\sin(2A+B)\sin(A+B)=\dfrac35\cdot\dfrac45+\dfrac45\cdot\dfrac35=\boxed{\dfrac{24}{25}}.\]
+(Check: $A\approx16.26^\circ$ and $B\approx20.61^\circ$ are indeed acute.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw(arc((0,0),1,0,70),gray);draw((0,0)--(1.15,0),gray);
+pair P=(0.8,0.6),Q=(0.6,0.8);
+draw((0,0)--P,linewidth(0.8));draw((0,0)--Q,linewidth(0.8));dot(P);dot(Q);
+label("$\left(\dfrac45,\dfrac35\right)$",P,E,fontsize(9pt));
+label("$\left(\dfrac35,\dfrac45\right)$",Q,NE,fontsize(9pt));
+draw(arc((0,0),0.45,36.87,53.13),Arrow);label("$A$",0.5*dir(45),NE,fontsize(8pt));
+draw(arc((0,0),0.25,0,36.87));label("$A+B$",0.28*dir(18),E,fontsize(7pt));
+\end{asy}

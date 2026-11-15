@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2486543_100th_post_celebration
+% Stable identity: aops-topic-2486543-q03
+Let $x=[CDO]$ and $y=[AOE]$. Triangles with the same height have areas in the ratio of their bases. For the cevian $CF$, both $\dfrac{[ACF]}{[BCF]}$ and $\dfrac{[AOF]}{[BOF]}$ equal $\dfrac{AF}{FB}$, so
+\[\dfrac{40+y+84}{30+35+x}=\dfrac{40}{30}\quad\Longrightarrow\quad4x-3y=112.\]
+For the cevian $BE$, both $\dfrac{[CBE]}{[ABE]}$ and $\dfrac{[COE]}{[AOE]}$ equal $\dfrac{CE}{EA}$, so
+\[\dfrac{84+x+35}{y+40+30}=\dfrac{84}{y}\quad\Longrightarrow\quad xy+35y=5880.\]
+Substituting $x=\dfrac{112+3y}{4}$ gives $3y^2+252y-23520=0$, i.e. $y^2+84y-7840=(y-56)(y+140)=0$. So $y=56$ and $x=70$. (Check with the cevian $AD$: $\dfrac{40+30+35}{56+84+70}=\dfrac12=\dfrac{35}{70}$.)
+
+The area is $40+30+35+70+84+56=\boxed{315}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(9,0),C=(3,7);
+pair O=A/3+4*B/9+2*C/9;
+pair F=(A/3+4*B/9)/(7/9), D=(4*B/9+2*C/9)/(6/9), Ep=(A/3+2*C/9)/(5/9);
+draw(A--B--C--cycle,linewidth(0.8)); draw(A--D); draw(B--Ep); draw(C--F);
+dot(O);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,NE);label("$E$",Ep,NW);label("$F$",F,S);label("$O$",O,2*dir(250),fontsize(9pt));
+label("$40$",(A+F+O)/3,fontsize(9pt));label("$30$",(B+F+O)/3,fontsize(9pt));label("$35$",(B+D+O)/3,fontsize(9pt));
+label("$x$",(C+D+O)/3,fontsize(9pt));label("$84$",(C+Ep+O)/3,fontsize(9pt));label("$y$",(A+Ep+O)/3,fontsize(9pt));
+\end{asy}

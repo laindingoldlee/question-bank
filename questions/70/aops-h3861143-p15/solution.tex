@@ -1,0 +1,7 @@
+No such convex pentagon exists. Let the common length be $s$. Because $BC,ED$ are equal and parallel, $BCDE$ is a parallelogram, so $CD=BE=\sqrt3s$ from $\angle EAB=120^\circ$. Thus $s=\dfrac{11}{\sqrt3}$. Put $A=(0,0),B=(s,0),E=s(\cos120^\circ,\sin120^\circ)$ and write $C=B+v,D=E+v$, with $|v|=s$. Convexity forces the angle of $v$ strictly between $0^\circ$ and $120^\circ$. Its component along the $60^\circ$ normal to $BE$ is therefore greater than $\dfrac{s}{2}$. Since $BE$ is itself distance $\dfrac{s}{2}$ from $A$, line $CD$ is distance greater than $s$ from $A$. Consequently $[ACD]>\dfrac{1}{2}(11)s=\dfrac{121}{2\sqrt3}>27$, a contradiction. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+real s=2;pair A=(0,0),B=(s,0),E=s*dir(120),v=s*dir(60),C=B+v,D=E+v;draw(A--B--C--D--E--cycle);draw(B--E,dashed);draw(A--C);draw(A--D);pair[] P={A,B,C,D,E};string[] L={"A","B","C","D","E"};for(int i=0;i<5;++i)label("$"+L[i]+"$",P[i],unit(P[i]-(.5,1)));label("schematic convex case",(.5,-.5),(0,-1));
+\end{asy}

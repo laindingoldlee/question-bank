@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2220719_money____question
+% Stable identity: aops-topic-2220719-q01
+\textbf{Reformulate.} An amount $x$ can be withdrawn exactly when $x=15a+44b$ with integers $a,b\ge1$, that is, when $N=x-59$ can be written as $15a'+44b'$ with integers $a',b'\ge0$ (put $a'=a-1$, $b'=b-1$). Call such $N$ \emph{representable}. With $y=719-x$ we get $y-59=601-N$. So we must show:
+\[\text{for every integer }N,\ \text{exactly one of }N\text{ and }601-N\text{ is representable}.\]
+Note that $601=15\cdot44-15-44$.
+
+\textbf{A standard form.} Since $44\equiv-1\pmod{15}$, for each integer $N$ there is exactly one $b\in\{0,1,\dots,14\}$ with $44b\equiv N\pmod{15}$ (namely $b\equiv-N$), and then $N=15a+44b$ for an integer $a$. Call this the standard form of $N$.
+
+\emph{Claim:} $N$ is representable if and only if $a\ge0$ in its standard form. If $a\ge0$, the standard form itself is a representation. Conversely, if $N=15a'+44b'$ with $a',b'\ge0$, write $b'=b+15m$ with $0\le b\le14$ and $m\ge0$; then $N=15(a'+44m)+44b$ is the standard form, and $a=a'+44m\ge0$.
+
+\textbf{The pairing.} If $N=15a+44b$ is the standard form, then
+\[601-N=15\cdot44-15-44-15a-44b=15(-1-a)+44(14-b),\]
+and since $0\le14-b\le14$ this is the standard form of $601-N$. By the claim:
+\begin{itemize}
+\item if $N$ is representable, then $a\ge0$, so $-1-a<0$ and $601-N$ is not representable;
+\item if $N$ is not representable, then $a\le-1$, so $-1-a\ge0$ and $601-N$ is representable.
+\end{itemize}
+So exactly one of $N=x-59$ and $601-N=y-59$ is representable, i.e. exactly one of $\$x$ and $\$y$ can be withdrawn. $\blacksquare$
+
+(For example, $x=59$ can be withdrawn with one bill of each kind, and indeed $y=660$ cannot: $660=15a+44b$ with $a,b\ge1$ would need $15\mid44b$, so $b\ge15$ and $44b\ge660$, leaving nothing for the $\$15$ bills.)

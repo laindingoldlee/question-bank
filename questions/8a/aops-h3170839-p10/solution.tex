@@ -1,0 +1,9 @@
+At position $5$, the coin leaves only when the chosen destination is $5$, with probability $\dfrac{1}{4}$ each step. The expected waiting time to leave is $4$, and it then occupies position $4$.
+
+Let $E_j$ be its expected time to hit position $5$ from position $j$, with $E_5=0$. From $j>1$ it moves to $j-1$ when the chosen destination is at least $j$, so
+\[
+E_2=1+E_1,\quad E_3=\dfrac{4}{3}+E_2,\quad E_4=2+E_3.
+\]
+From position $1$, the next position is uniform on $2,3,4,5$, giving
+$E_1=1+\dfrac{E_2+E_3+E_4}{4}$.
+Substituting yields $E_1=\dfrac{35}{3}$, and then $E_4=16$. Including the initial wait, the requested expectation is $\boxed{4+16=20}$.

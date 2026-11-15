@@ -1,0 +1,14 @@
+Let $AB=c$. By Thales' theorem, triangles $ABM$ and $ABN$ are right-angled at $M$ and $N$. Hence
+\[c^2-2AM\cdot BM=(AM-BM)^2=9,\]
+\[c^2-2AN\cdot BN=(AN-BN)^2=49.\]
+Subtracting gives $AM\cdot BM-AN\cdot BN=20$. The difference of the two right-triangle areas is consequently 10.
+
+The increasing distance differences place the points in circular order $A,M,N,B$, so $P$ is inside both triangles. Their common triangle is $ABP$:
+\[[ABM]=[ABP]+[AMP],\qquad [ABN]=[ABP]+[BNP].\]
+Subtract to obtain $[AMP]-[BNP]=\boxed{10}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real a=(sqrt(191)+3)/2,b=a-3,c=(sqrt(151)+7)/2,d=c-7;pair A=(0,0),B=(10,0),M=(a*a/10,a*b/10),N=(c*c/10,c*d/10);pair intersect(pair U,pair V,pair W,pair Z){pair r=V-U,s=Z-W;real t=((W-U).x*s.y-(W-U).y*s.x)/(r.x*s.y-r.y*s.x);return U+t*r;}pair P=intersect(A,N,B,M);draw(arc((5,0),5,0,180));draw(A--B);fill(A--M--P--cycle,lightblue);fill(B--N--P--cycle,lightgray);draw(A--M--B);draw(A--N--B);label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$M$",M,(0,1));label("$N$",N,(1,1));label("$P$",P,(-1,-1));
+\end{asy}

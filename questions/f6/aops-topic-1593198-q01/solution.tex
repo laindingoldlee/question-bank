@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1593198_lines_and_planes_problem
+% Stable identity: aops-topic-1593198-q01
+Draw the lines one at a time. When a new line is drawn, it is cut by the earlier lines at some number $p$ of distinct points into $p+1$ pieces, and each piece splits one existing region into two, so the number of regions increases by $p+1$. Start with $1$ region.
+\begin{itemize}
+\item Line $1$ (first parallel pair): no crossings, $+1$, total $2$.
+\item Line $2$, parallel to line 1: no crossings, $+1$, total $3$.
+\item Line $3$ (second parallel pair): crosses lines 1, 2, so $p=2$, $+3$, total $6$.
+\item Line $4$, parallel to line 3: crosses lines 1, 2, $+3$, total $9$.
+\item Line $5$ (first of the concurrent three): crosses lines 1-4 at $4$ distinct points, $+5$, total $14$.
+\item Line $6$: crosses lines 1-4 and line 5, at $5$ distinct points, $+6$, total $20$.
+\item Line $7$: crosses lines 1-4 at $4$ points, and lines 5 and 6 at the \emph{same} point (the common point of the three lines), so $p=5$, $+6$, total $26$.
+\end{itemize}
+The crossings with lines 1-4 are all distinct from each other and from the common point, because no other point lies on more than two lines. Hence the seven lines divide the plane into $\boxed{26}$ regions.

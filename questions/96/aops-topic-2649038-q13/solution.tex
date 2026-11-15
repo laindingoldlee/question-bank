@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2649038_mathimatika2_problems_1__14
+% Stable identity: aops-topic-2649038-q13
+In right triangle $ABE$, $AB=12\cos30^\circ=6\sqrt3$ and $BE=12\sin30^\circ=6$. Put $A=(0,0)$, $B=\left(6\sqrt3,0\right)$, $E=\left(6\sqrt3,6\right)$ and $C=\left(6\sqrt3,h\right)$, so $F$, the midpoint of $DC$, is $\left(3\sqrt3,h\right)$.
+
+The ray $EA$ points in direction $210^\circ$. Since $\angle AEF=75^\circ$, ray $EF$ points in direction $135^\circ$ or $285^\circ$; as $F$ is to the left of $E$, it is $135^\circ$. So $\overrightarrow{EF}=\left(-3\sqrt3,h-6\right)$ is a multiple of $(-1,1)$, giving $h-6=3\sqrt3$. Hence $BC=6+3\sqrt3$, and $x+y\cdot z=6+3\cdot3=\boxed{15}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real w=6*sqrt(3),h=6+3*sqrt(3);pair A=(0,0),B=(w,0),C=(w,h),D=(0,h),Ep=(w,6),F=(w/2,h);
+draw(A--B--C--D--cycle,linewidth(0.8));draw(A--Ep--F);draw(A--F,dotted);
+dot(Ep);dot(F);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$E$",Ep,E);label("$F$",F,N);
+label("$12$",(A+Ep)/2,SE);label("$6$",(B+Ep)/2,E);label("$6\sqrt3$",(A+B)/2,S);label("$3\sqrt3$",(Ep+C)/2,E);
+draw(arc(A,1.6,0,30));label("$30^\circ$",A+1.6*dir(15),E,fontsize(8pt));
+draw(arc(Ep,1.2,135,210));label("$75^\circ$",Ep+1.2*dir(172),W,fontsize(8pt));
+\end{asy}

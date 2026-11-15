@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3383506_mildred_the_cow_problem
+% Stable identity: aops-topic-3383506-q01
+The unobstructed side contributes a semicircle of radius $14$. Wrapping around the nearer and farther corners leaves lengths $14-2=12$ and $14-8=6$, each contributing an exterior quarter-circle. From the nearer corner the rope can also wrap around the next corner, leaving $14-2-10=2$, adding another quarter-circle. No other corner can be reached along the shed. These four regions have disjoint interiors. Thus the area is $\dfrac{1}{2}\pi14^2+\dfrac{1}{4}\pi(12^2+6^2+2^2)=\boxed{144\pi}$ square meters, so $n=144$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair P=(2,0),A=(0,0),B=(10,0),D=(0,10);fill(P--arc(P,14,180,360)--cycle,lightgreen);fill(A--arc(A,12,90,180)--cycle,lightblue);fill(B--arc(B,6,0,90)--cycle,lightblue);fill(D--arc(D,2,0,90)--cycle,lightred);draw((0,0)--(10,0)--(10,10)--(0,10)--cycle,linewidth(1));draw(arc(P,14,180,360));draw(arc(A,12,90,180));draw(arc(B,6,0,90));draw(arc(D,2,0,90));dot("tether",P,S);label("$2$",(1,0),N);label("$8$",(6,0),N);label("shed",(5,5));label("$14$",(2,-7));label("$12$",(-6,5));label("$6$",(13,3));label("$2$",(1,11));
+\end{asy}

@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h2864369_fun_problem_me_and_my_dad_came_up_with_yesterday
+% Stable identity: aops-topic-2864369-q02
+\textbf{Answer:} exactly when $\boxed{\gcd(A,B)=1}$.
+
+\emph{Necessity.} Let $g=\gcd(A,B)$. Filling, emptying and pouring (which moves $\min$ of one bucket's content and the other's free space) keep every bucket's content a multiple of $g$, by induction. So the pot only ever receives multiples of $g$. To get $1$ ounce we need $g=1$.
+
+\emph{Sufficiency.} Suppose $\gcd(A,B)=1$. Then $B\ge2$, and $A$ is invertible modulo $B$, so $kA\equiv1\pmod B$ for some $k\ge1$. Repeatedly fill the $A$-bucket and pour it into the $B$-bucket, emptying the $B$-bucket into the well whenever it becomes full and then continuing to pour. After the $k$th fill has been poured in, a total of $kA$ ounces has entered the $B$-bucket and a multiple of $B$ has been discarded, so it holds $kA\bmod B=1$ ounce. Pour it into the pot. Repeating $n$ times puts exactly $n$ ounces into the pot. $\blacksquare$

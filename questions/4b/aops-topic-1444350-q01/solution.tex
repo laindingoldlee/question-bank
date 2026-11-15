@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1444350_chicken_mcnugget_theorem
+% Stable identity: aops-topic-1444350-q01
+\textbf{Proof by strong induction} on the amount $n\ge12$.
+
+\emph{Base cases:} $12=4+4+4$, $13=4+4+5$, $14=4+5+5$, $15=5+5+5$.
+
+\emph{Inductive step:} let $n\ge16$ and suppose every amount from $12$ to $n-1$ can be made. Then $n-4\ge12$, so $n-4$ can be made; adding one $4$-cent stamp makes $n$.
+
+Hence every amount $n\ge12$ can be made. $\blacksquare$
+
+\emph{A direct formula} (no induction): write $n=4q+r$ with $r\in\{0,1,2,3\}$. Then
+\[
+n=4(q-r)+5r,
+\]
+and $q-r\ge0$ because $n\ge12$ gives $q\ge3\ge r$. So $n$ uses $r$ five-cent stamps and $q-r$ four-cent stamps.
+
+($11$ cannot be made, so $12$ is the best possible bound; in general, with coprime stamp values $a$ and $b$ the largest impossible amount is $ab-a-b$, here $20-4-5=11$. This is the Chicken McNugget theorem, but it is not needed for the proof above.)

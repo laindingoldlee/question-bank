@@ -1,0 +1,14 @@
+Join the center to all vertices, producing $n$ congruent triangles. Bisecting one gives a right triangle with opposite side $\dfrac{x}{2}$ and angle $\dfrac{\pi}{n}$ at the center. Therefore the apothem is
+\[
+h=\dfrac{x}{2\tan(\dfrac{\pi}{n})}.
+\]
+Each central triangle has area $\dfrac{xh}{2}$, so the polygon has area
+\[
+\boxed{\dfrac{nx^2}{4\tan(\dfrac{\pi}{n})}}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+int n=7;pair O=(0,0),A=dir(0),B=dir(360.0/n),H=(A+B)/2;for(int j=0;j<n;++j){draw(dir(360.0*j/n)--dir(360.0*(j+1)/n));draw(O--dir(360.0*j/n),gray);}draw(O--H,red);label("$x$",(A+B)/2,NE);label("$h$",H/2,NW);label("$O$",O,SW);
+\end{asy}

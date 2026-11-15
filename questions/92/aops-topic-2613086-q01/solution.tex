@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2613086_fraction_into_base_4
+% Stable identity: aops-topic-2613086-q01
+\emph{Range of a fractional part.} The value of $0.e_1e_2\cdots$ is largest with $e_j=3$ in the even places and $0$ in the odd places, giving $3\left(\dfrac1{16}+\dfrac1{256}+\cdots\right)=\dfrac15$. It is smallest with $3$ in the odd places and $0$ in the even places, giving $-3\left(\dfrac14+\dfrac1{64}+\cdots\right)=-\dfrac45$. So the fractional part lies in $\left[-\dfrac45,\dfrac15\right]$. Hence the integer part $K$ of the representation satisfies $33\dfrac13-K\in\left[-\dfrac45,\dfrac15\right]$, which forces $K=34$ and fractional part $-\dfrac23$.
+
+\emph{Integer part.} Repeated division by $-4$ with remainders in $\{0,1,2,3\}$:
+\[34=(-4)(-8)+2,\qquad-8=(-4)\cdot2+0,\qquad2=(-4)\cdot0+2.\]
+Reading the remainders backwards, $34=202_{-4}$ (check: $2\cdot16+0\cdot(-4)+2=34$).
+
+\emph{Fractional part.} If $x=0.e_1e_2\cdots$, then $-4x=e_1+0.e_2e_3\cdots$, so $e_1$ is the digit with $-4x-e_1\in\left[-\dfrac45,\dfrac15\right]$; the intervals $\left[d-\dfrac45,d+\dfrac15\right]$ for $d=0,1,2,3$ overlap only at endpoints, so the digit is determined. Starting from $x=-\dfrac23$:
+\[-4\left(-\dfrac23\right)=\dfrac83=3+\left(-\dfrac13\right),\qquad -4\left(-\dfrac13\right)=\dfrac43=2+\left(-\dfrac23\right).\]
+We are back at $-\dfrac23$, so the digits repeat: $-\dfrac23=0.\overline{32}_{-4}$. Check:
+\[0.\overline{32}_{-4}=\dfrac{3\cdot\left(-\dfrac14\right)+2\cdot\dfrac1{16}}{1-\dfrac1{16}}=-\dfrac58\cdot\dfrac{16}{15}=-\dfrac23.\]
+Therefore
+\[33\dfrac13=\boxed{202.\overline{32}_{-4}}.\]

@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h2252078_pascals_triangle
+% Stable identity: aops-topic-2252078-q01
+\textbf{(a)} By the binomial theorem,
+\[11^n=(10+1)^n=\sum_{k=0}^n\dbinom nk10^{\,n-k}1^k=\sum_{k=0}^n\dbinom nk10^{\,n-k}.\]
+So $11^n$ is the number whose ``digits'' are the entries of row $n$, the first entry in the $10^n$ place, the next in the $10^{n-1}$ place, and so on. For $n\le4$ every entry is at most $9$, so these really are the decimal digits, which explains $1,11,121,1331,14641$.
+
+\textbf{(b)} For $n\ge5$ some entries are $10$ or more, so the sum in (a) still equals $11^n$, but the entries overlap into neighbouring places and must be carried. For row $5$:
+\[1\cdot10^5+5\cdot10^4+10\cdot10^3+10\cdot10^2+5\cdot10+1=100000+50000+10000+1000+50+1=161051=11^5.\]
+Row $6$ is $1,6,15,20,15,6,1$, so
+\[11^6=10^6+6\cdot10^5+15\cdot10^4+20\cdot10^3+15\cdot10^2+6\cdot10+1=\boxed{1771561}.\]

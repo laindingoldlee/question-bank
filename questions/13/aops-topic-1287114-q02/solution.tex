@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1287114_geometry_math_word_problems
+% Stable identity: aops-topic-1287114-q02
+The transversal makes eight angles, four at each intersection.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw((-3,0)--(3,0),blue); draw((-3,1.4)--(3,1.4),blue); draw((-1.6,-0.9)--(1.6,2.3),red);
+pair P=(-0.7,0),Q=(0.7,1.4); dot(P); dot(Q);
+label("$1$",P,NW); label("$2$",P,NE); label("$4$",P,SW); label("$3$",P,SE);
+label("$5$",Q,NW); label("$6$",Q,NE); label("$8$",Q,SW); label("$7$",Q,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The angles $1,2,7,8$ lie in the strip between the parallel lines and are interior; the angles $3,4,5,6$ lie outside it and are exterior. So there are always $4$ of each, and (c) is always true. (a) and (b) fail, because at each intersection two angles are supplementary, so they cannot both be obtuse or both be acute unless both are right angles; and (d) fails because the eight angles sum to $2\cdot360^\circ=720^\circ$. Answer: $\boxed{\textbf{(c)}}$.

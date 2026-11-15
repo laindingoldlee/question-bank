@@ -1,0 +1,6 @@
+Write $D=-pA$, $E=-qB$, $F=-rC$ as position vectors based at $O$, with $p,q,r>0$. Put $x=[OAB]$, $y=[OBC]$, $t=[OAC]$, all positive. The areas of the six consecutive-vertex triangles, in order starting with $ABC$, are $x+y-t$, $y+pt-px$, $pt+pqx-qy$, $pqx+qry-prt$, $qry+rt-qx$, and $rt+x-ry$. Equating the first and last gives $(1+r)(y-t)=0$, so $y=t$ and then $x=2$. The second equation now gives $y=t=2$. The third gives $(p-1)(q+1)=0$, hence $p=1$; the fourth gives $(q-1)(r+1)=0$, hence $q=1$; the fifth gives $r=1$. Thus all six central triangles have area two, and the hexagon has area $\boxed{12}$. Each area formula is the sum of two central triangles minus the central triangle across their outer chord.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair[] V;for(int k=0;k<6;++k)V.push(dir(60*k));path p;for(pair v:V)p=p--v;draw(p--cycle);for(int k=0;k<3;++k)draw(V[k]--V[k+3],dashed);string[] L={"A","B","C","D","E","F"};for(int k=0;k<6;++k)label("$"+L[k]+"$",V[k],V[k]);label("$O$",(0,0),(0,-1));
+\end{asy}
+

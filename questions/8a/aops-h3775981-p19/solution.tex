@@ -1,0 +1,7 @@
+A diagonal joins lattice vertices of the same checkerboard parity, so a cycle belongs to one of two disjoint parity graphs. In a strip of height three, each parity graph has eleven bounded diamond-shaped faces, arranged in a chain: adjacent faces share an edge, and the dual graph is a path. Every simple cycle encloses a nonempty consecutive interval of these faces. Conversely, the boundary of any such interval is one simple cycle; nonconsecutive face groups would give disconnected or touching boundaries. A chain of eleven faces has $\dfrac{11\cdot12}{2}=66$ nonempty intervals. Both parities contribute equally, giving $\boxed{132}$. Diagonals in one parity graph cannot cross inside a unit cell, because the other diagonal has the opposite parity.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=0;x<=12;++x)draw((x,0)--(x,3),lightgray);for(int y=0;y<=3;++y)draw((0,y)--(12,y),lightgray);for(int x=0;x<12;++x)for(int y=0;y<3;++y)if((x+y)%2==0)draw((x,y)--(x+1,y+1),blue);else draw((x+1,y)--(x,y+1),blue);for(int x=1;x<=11;++x){int y=x%2==0?1:2;dot((x,y),red+3);if(x<11)draw((x,y)--(x+1,3-y),red+dashed);}label("one parity graph: 11 faces in a chain",(6,-.7));
+\end{asy}

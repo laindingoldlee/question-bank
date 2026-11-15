@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1335575_triangle_areas
+% Stable identity: aops-topic-1335575-q01
+Triangles $ABF$ and $AFE$ share the height from $A$ to line $BE$, so $\dfrac{BF}{FE}=\dfrac{15}{10}=\dfrac{3}{2}$. Also $[ABE]=25$, and triangles $ABE$, $ABC$ share the height from $B$ to line $AC$, so $\dfrac{AE}{AC}=\dfrac{25}{40}=\dfrac{5}{8}$, i.e. $AE:EC=5:3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(8,0),C=(2.2,6);
+pair Ee=A+5/8*(C-A); pair D=B+15/31*(C-B);
+pair F=extension(B,Ee,A,D);
+draw(A--B--C--cycle,linewidth(0.9)); draw(B--Ee,blue); draw(A--D,blue);
+dot(D);dot(Ee);dot(F);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$D$",D,NE); label("$E$",Ee,W); label("$F$",F,N);
+label("$15$",(A+B+F)/3); label("$10$",(A+F+Ee)/3+(-0.15,0));
+label("$?$",(B+D+F)/3,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Mass points.} Put masses $m_A=3$, $m_C=5$ so that $E$ (with $AE:EC=5:3$) is their balance point, $m_E=8$. On $BE$ we need $m_B\cdot BF=m_E\cdot FE$, so $m_B=8\cdot\dfrac{2}{3}=\dfrac{16}{3}$. Then $D$ on $BC$ has $\dfrac{BD}{DC}=\dfrac{m_C}{m_B}=\dfrac{15}{16}$, and $\dfrac{AF}{FD}=\dfrac{m_B+m_C}{m_A}=\dfrac{31}{9}$.
+
+\textbf{Areas.} $[ABD]=\dfrac{BD}{BC}[ABC]=\dfrac{15}{31}\cdot40=\dfrac{600}{31}$. Triangle $BDF$ is the part of $ABD$ cut off by $F$, with $\dfrac{FD}{AD}=\dfrac{9}{40}$, so
+\[
+[BDF]=\dfrac{9}{40}\cdot\dfrac{600}{31}=\boxed{\dfrac{135}{31}}.
+\]
+Check: $[ABF]=\dfrac{31}{40}[ABD]=\dfrac{31}{40}\cdot\dfrac{600}{31}=15$, as given.

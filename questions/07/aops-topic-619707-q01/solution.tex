@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h619707_triangle
+% Stable identity: aops-topic-619707-q01
+Let $\theta$ be the angle between the sides $2$ and $5$. Then the area is $\dfrac{1}{2}\cdot2\cdot5\sin\theta=5\sin\theta$, and by the law of cosines $x^2=29-20\cos\theta$. So
+\[
+\sin\theta=\dfrac {x}{5},\qquad \cos\theta=\dfrac{29-x^2}{20}.
+\]
+Using $\sin^2\theta+\cos^2\theta=1$ and multiplying by $400$:
+\[
+16x^2+\left(29-x^2\right)^2=400\quad\Longrightarrow\quad x^4-42x^2+441=0\quad\Longrightarrow\quad\left(x^2-21\right)^2=0 .
+\]
+So $x=\boxed{\sqrt{21}}$, the only possibility. (Then $\cos\theta=\dfrac{2}{5}$, $\sin\theta=\dfrac{\sqrt{21}}{5}$, and the area is $\sqrt{21}$, as required.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real th=acos(0.4);
+pair A=(0,0),B=(5,0),Cc=2*dir(degrees(th));
+draw(A--B--Cc--cycle,linewidth(0.9));
+draw(arc(A,0.5,0,degrees(th)),red);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",Cc,N);
+label("$5$",(A+B)/2,S); label("$2$",(A+Cc)/2,NW); label("$x$",(B+Cc)/2,NE);
+label("$\theta$",A+0.65*dir(degrees(th)/2),dir(degrees(th)/2),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+This is quicker than Heron's formula, which leads to the same quartic.

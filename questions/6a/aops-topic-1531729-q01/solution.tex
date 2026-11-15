@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1531729_need_help
+% Stable identity: aops-topic-1531729-q01
+Number the four angles $1,2,3,4$ in order around $O$:
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+draw(2.4*dir(200)--2.4*dir(20),linewidth(1));
+draw(2.4*dir(250)--2.4*dir(70),linewidth(1));
+label("$1$",0.6*dir(45));label("$2$",0.6*dir(135));label("$3$",0.6*dir(225));label("$4$",0.6*dir(315));
+label("$\ell$",2.4*dir(20),E);label("$m$",2.4*dir(70),N);
+dot(O);label("$O$",O,dir(-25),fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(a)} Angles $1$ and $3$ are vertical angles, and so are angles $2$ and $4$. Vertical angles are always congruent: $\angle1+\angle2=180^\circ$ and $\angle2+\angle3=180^\circ$ (each pair forms a straight angle), so $\angle1=\angle3$. Thus \emph{any} two intersecting lines have two congruent angles among the four, for example lines meeting at $60^\circ$ and $120^\circ$, and these are not perpendicular. The statement is false.
+
+\textbf{(b)} Insert the word \textbf{adjacent}: ``If two \emph{adjacent} angles of the four angles formed by two intersecting lines are congruent, then the lines are perpendicular.''
+
+\emph{Proof.} Two adjacent angles, say $1$ and $2$, together form a straight angle along one of the lines, so $\angle1+\angle2=180^\circ$. If they are congruent, then $2\angle1=180^\circ$, so $\angle1=90^\circ$. Then the lines meet at a right angle, i.e.\ they are perpendicular (and all four angles are $90^\circ$, since vertical angles are equal and adjacent angles are supplementary). $\blacksquare$

@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2332717_mock_contest__apocalyptic_amc_8
+% Stable identity: aops-topic-2332717-q11
+Every such polygon has the same centre as the $24$-gon, and consecutive vertices are separated by the same number $k$ of steps around the $24$-gon; returning to the start after $N$ steps with no repetition requires $Nk=24$. So $N$ is a divisor of $24$ with $N\ge3$, and conversely every such divisor works (take every $\dfrac{24}N$th vertex).
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<24;++i) draw(dir(15*i)--dir(15*(i+1)),gray);
+draw(dir(0)--dir(120)--dir(240)--cycle);draw(dir(45)--dir(135)--dir(225)--dir(315)--cycle,dashed);
+\end{asy}
+
+The divisors are $3,4,6,8,12,24$: six values. \textbf{(A)}

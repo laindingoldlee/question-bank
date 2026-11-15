@@ -1,0 +1,7 @@
+The condition implies $47\nmid k$. Write $r=k\bmod46$, so $r$ is one of $0,2,\ldots,44$, and write $k=a+47b\bmod47^2$, with $1\le a\le46$. Modulo $47$ we require $a^r=1$.
+For each admissible $(r,a)$, the exponent $k\bmod(46\cdot47)$ is fixed by the Chinese remainder theorem. Thus $a^k\bmod47^2$ is fixed and has the form $1+47t$. The binomial theorem gives
+\[
+(a+47b)^k\equiv a^k(1+\dfrac{47bk}{a})\equiv1+47(t+b)\pmod{47^2},
+\]
+since $k\equiv a\pmod{47}$. The target congruence is therefore exactly $b\equiv a-t\pmod{47}$, determining a unique $b$.
+There are $46$ choices of $a$ when $r=0$. For each of the other $22$ even residues, $\gcd(r,46)=2$, so in the cyclic multiplicative group modulo $47$ there are exactly two choices. Each resulting CRT class gives one even integer in the stated range. Hence the count is $\boxed{46+22\cdot2=90}$.

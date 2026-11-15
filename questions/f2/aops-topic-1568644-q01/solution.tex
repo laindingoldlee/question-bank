@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1568644_plane_geometry_problem
+% Stable identity: aops-topic-1568644-q01
+Let $x=\angle CDB$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(1,0);
+pair C=extension(A,A+dir(100),B,B+dir(150)),D=extension(A,A+dir(140),B,B+dir(170));
+draw(A--B--C--D--cycle,linewidth(1));
+draw(A--C,linewidth(0.8));draw(B--D,linewidth(0.8));
+draw(arc(A,0.1,0,100),red);label("$100^\circ$",A+0.165*dir(20),red);
+draw(arc(A,0.07,100,140),blue);draw(A+0.075*dir(120)--A+0.2*dir(170),blue+linewidth(0.4));label("$40^\circ$",A+0.2*dir(170),W,blue);
+draw(arc(B,0.3,170,180),red);label("$10^\circ$",B+0.37*dir(175),W,red);
+draw(arc(B,0.22,150,170),blue);label("$20^\circ$",B+0.25*dir(158),NW,blue);
+real a1=degrees(B-D),a2=degrees(C-D);if(a1>180)a1-=360;if(a2>180)a2-=360;
+draw(arc(D,0.08,a1,a2),heavygreen);label("$x$",D+0.12*dir((a1+a2)/2),heavygreen);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Angles of the two triangles at $A$ and $B$.} In triangle $ABC$: $\angle BAC=100^\circ$ and $\angle ABC=10^\circ+20^\circ=30^\circ$, so $\angle ACB=50^\circ$. In triangle $ABD$: $\angle BAD=100^\circ+40^\circ=140^\circ$ and $\angle ABD=10^\circ$, so $\angle ADB=30^\circ$.
+
+\textbf{$BC=BD$.} By the law of sines, with $AB=1$,
+\[
+BC=\dfrac{\sin100^\circ}{\sin50^\circ}=\dfrac{2\sin50^\circ\cos50^\circ}{\sin50^\circ}=2\cos50^\circ=2\sin40^\circ,
+\qquad
+BD=\dfrac{\sin140^\circ}{\sin30^\circ}=2\sin40^\circ .
+\]
+So $BC=BD$.
+
+\textbf{Conclusion.} Triangle $BCD$ is isosceles with apex angle $\angle DBC=20^\circ$, so its base angles are
+\[
+\angle CDB=\angle BCD=\dfrac{180^\circ-20^\circ}{2}=\boxed{80^\circ}.
+\]

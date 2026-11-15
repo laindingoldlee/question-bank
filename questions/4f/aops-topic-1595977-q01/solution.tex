@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1595977_number_theory
+% Stable identity: aops-topic-1595977-q01
+We prove that there are no solutions, so the answer is $\boxed{0}$. Write $k=2018$.
+
+Suppose there is a solution. The equation is symmetric, so among all solutions choose one with $x+y+z$ as small as possible and order it as $x\le y\le z$.
+
+\textbf{Vieta jumping.} Regard the equation as a quadratic in its largest variable: $z$ is a root of
+\[
+t^2+\bigl(2(x+y)-kxy\bigr)t+(x+y)^2=0 .
+\]
+Its other root $z'$ satisfies
+\[
+z+z'=kxy-2(x+y),\qquad zz'=(x+y)^2 .
+\]
+The first relation shows $z'$ is an integer, and the second shows $z'>0$. So $(x,y,z')$ is also a solution in positive integers. By minimality, $x+y+z'\ge x+y+z$, so $z'\ge z$, and therefore
+\[
+(x+y)^2=zz'\ge z^2,\qquad\text{i.e.}\qquad z\le x+y\le 2y .
+\]
+
+\textbf{A bound on $k$.} Now $x+y+z\le y+y+2y=4y$, so
+\[
+kxyz=(x+y+z)^2\le16y^2 .
+\]
+Since $z\ge y$ and $x\ge1$, the left side is at least $k\cdot1\cdot y\cdot y=ky^2$. Hence $ky^2\le16y^2$, so $k\le16$.
+
+This contradicts $k=2018$. Hence the equation has no solutions in positive integers, and the number of triples is $\boxed{0}$. $\blacksquare$
+
+(The same argument shows that $(x+y+z)^2=kxyz$ can only have positive solutions when $k\le16$; for example $k=9$ has the solution $(1,1,1)$, and then infinitely many.)

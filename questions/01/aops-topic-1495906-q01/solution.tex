@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1495906_optimizing_monty_hall_problem
+% Stable identity: aops-topic-1495906-q01
+The answer is $\boxed{\dfrac{n}{n+1}}$, achieved by \textbf{staying in every round except the last, and switching in the last round}.
+
+\textbf{This strategy wins with probability $\dfrac{n}{n+1}$.} Let $c$ be the first choice. The host never opens $c$ (it is the current curtain in every round) and never opens the car. After the $n-1$ openings exactly two curtains are closed: $c$ and one other curtain $d$. If the car is not behind $c$, which has probability $\dfrac{n}{n+1}$, it is behind $d$, and switching to $d$ in the last round wins. If the car is behind $c$, the contestant loses.
+
+\textbf{No strategy does better.} Fix a strategy, and consider a moment just before the host opens a curtain, with $k\ge3$ curtains closed and a particular history so far. For each closed curtain $x$ let $w(x)$ be the probability that this history occurs and the car is behind $x$. We prove by induction on $k$:
+
+\emph{Claim.} From such a moment, the probability that this history occurs and the contestant goes on to lose is at least $m=\min_x w(x)$.
+
+Let $c$ be the contestant's current curtain. The host opens some $r\ne c$. If the car is behind $c$, each of the other $k-1$ closed curtains is opened with probability $\dfrac{1}{k-1}$. If the car is behind some $x\ne c$, each of the $k-2$ closed curtains other than $c$ and $x$ is opened with probability $\dfrac{1}{k-2}$. So after the host opens $r$, the new weights of the $k-1$ closed curtains are
+\[
+w'(c)=\dfrac{w(c)}{k-1},\qquad w'(x)=\dfrac{w(x)}{k-2}\quad(x\ne c,r),
+\]
+and all of them are at least $\dfrac{m}{k-1}$. The contestant's stay-or-switch decision does not change these weights.
+\begin{itemize}
+\item If $k-1=2$, this was the last round. The contestant ends on one of the two closed curtains and loses if the car is behind the other one, which has weight at least $\dfrac{m}{k-1}$.
+\item If $k-1\ge3$, the next moment is again just before an opening, and by the induction hypothesis the losing probability from there is at least $\dfrac{m}{k-1}$.
+\end{itemize}
+Either way, each of the $k-1$ possible choices of $r$ contributes at least $\dfrac{m}{k-1}$ to the losing probability, so in total it is at least $m$. This proves the claim. (A strategy that uses random choices is a mixture of strategies without them, so the bound holds for it too.)
+
+At the start of the first round $k=n+1$ and every curtain has weight $\dfrac{1}{n+1}$, so every strategy loses with probability at least $\dfrac{1}{n+1}$ and wins with probability at most $\dfrac{n}{n+1}$. The strategy above is therefore optimal.

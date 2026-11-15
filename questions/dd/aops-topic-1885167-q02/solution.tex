@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1885167_logical_problems
+% Stable identity: aops-topic-1885167-q02
+Take the candy radius to be $1$ and the box radius $3$, with centre $O$. A candy lies in the box exactly when its centre is within distance $2$ of $O$, and two candies do not overlap exactly when their centres are at least $2$ apart.
+
+\textbf{Seven fit.} Put one candy at $O$ and six with centres at distance $2$ from $O$ in the directions $0^\circ,60^\circ,\dots,300^\circ$. Adjacent outer centres form a regular hexagon of side $2$, so all centres are at least $2$ apart, and the outer candies just touch the box.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),3),linewidth(1));
+draw(circle((0,0),1));
+for(int k=0;k<6;++k) draw(circle(2*dir(60*k),1));
+dot((0,0));label("$O$",(0,0),S,fontsize(9pt));
+draw((0,0)--3*dir(90),dashed);label("$3$",(0,2.6),E,fontsize(9pt));
+draw((0,0)--2*dir(0),red);label("$2$",(0.5,0),S,red+fontsize(9pt));dot(2*dir(0),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Eight do not fit.} Let $P$ and $Q$ be centres of two candies, both different from $O$. Then $OP\le2$, $OQ\le2$ and $PQ\ge2$. They cannot lie on the same ray from $O$ (then $PQ=|OP-OQ|<2$), so $\angle POQ$ is defined, and in triangle $OPQ$ (or on a line, if $\angle POQ=180^\circ$) the side $PQ$ is a longest side. The largest angle of a triangle is at least $60^\circ$, so $\angle POQ\ge60^\circ$. Thus the rays from $O$ to the centres different from $O$ are pairwise at least $60^\circ$ apart. Going around $O$, the consecutive gaps between these rays add up to $360^\circ$ and are each at least $60^\circ$, so there are at most $6$ such centres. With possibly one more centre at $O$, at most $7$ candies fit.
+
+The answer is $\boxed{7}$.

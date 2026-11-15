@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2109400_magic_squares
+% Stable identity: aops-topic-2109400-q01
+\textbf{(a)} The entries add up to $1+2+\cdots+n^2=\dfrac{n^2\left(n^2+1\right)}{2}$, and the $n$ rows have equal sums, so each row sum is $\dfrac{n\left(n^2+1\right)}{2}$.
+
+\textbf{(b)} Write $u=r\!\left(i+j+\dfrac{n+1}{2}\right)$ and $v=r\!\left(i-j+\dfrac{n-1}{2}\right)$, so that $A(i,j)=nu+v+1$ with $0\le u,v\le n-1$; the pair $(u,v)$ is the pair of base-$n$ digits of $A(i,j)-1$.
+
+\emph{Every number appears once.} If two cells $(i,j)$ and $(i',j')$ gave the same $(u,v)$, then $i+j\equiv i'+j'$ and $i-j\equiv i'-j'\pmod n$; adding and subtracting, $2i\equiv2i'$ and $2j\equiv2j'\pmod n$. As $n$ is odd, $2$ is invertible modulo $n$, so $i=i'$ and $j=j'$. Hence the $n^2$ cells give $n^2$ different pairs $(u,v)$, i.e. all of them, and $A$ takes each value $1,\dots,n^2$ exactly once.
+
+\emph{Line sums.} Let $T=0+1+\cdots+(n-1)=\dfrac{n(n-1)}{2}$. If along a line $u$ and $v$ each take every value $0,\dots,n-1$ once, or are constant equal to $\dfrac{n-1}{2}$ (which gives the same total $n\cdot\dfrac{n-1}{2}=T$), then the line sum is
+\[nT+T+n=(n+1)\dfrac{n(n-1)}{2}+n=\dfrac{n\left(n^2+1\right)}{2} .\]
+\begin{itemize}
+\item In row $i$, as $j$ runs through $0,\dots,n-1$, the numbers $i+j+\dfrac{n+1}{2}$ are $n$ consecutive integers, so $u$ takes every residue once; so does $v$. The same holds in every column.
+\item On the main diagonal $i=j$: $v=r\!\left(\dfrac{n-1}{2}\right)=\dfrac{n-1}{2}$ is constant, and $u=r\!\left(2i+\dfrac{n+1}{2}\right)$ takes every residue once because $2$ is invertible modulo $n$.
+\item On the other diagonal $j=n-1-i$: $u=r\!\left(n-1+\dfrac{n+1}{2}\right)=r\!\left(n+\dfrac{n-1}{2}\right)=\dfrac{n-1}{2}$ is constant, and $v=r\!\left(2i-\dfrac{n-1}{2}\right)$ takes every residue once.
+\end{itemize}
+So every row, column and main diagonal has sum $\dfrac{n\left(n^2+1\right)}{2}$, and $A$ is a magic square. $\blacksquare$
+
+\textbf{(c)} For $n=7$ (magic sum $175$):
+\[\begin{array}{|c|c|c|c|c|c|c|}\hline
+32&38&44&1&14&20&26\\\hline
+40&46&3&9&15&28&34\\\hline
+48&5&11&17&23&29&42\\\hline
+7&13&19&25&31&37&43\\\hline
+8&21&27&33&39&45&2\\\hline
+16&22&35&41&47&4&10\\\hline
+24&30&36&49&6&12&18\\\hline
+\end{array}\]
+
+\emph{Remark.} Even orders need different constructions: there is no magic square of order $2$, and for $n=4,6,8,\dots$ other methods are used.

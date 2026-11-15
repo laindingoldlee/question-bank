@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2013860_a_circle_has_infiniteundefined_interior_angles
+% Stable identity: aops-topic-2013860-q01
+\textbf{(a)} From one vertex of a convex $n$-gon, the diagonals to the $n-3$ non-adjacent vertices cut it into $n-2$ triangles whose angles together make up exactly the interior angles of the polygon, giving $180^\circ(n-2)$. This needs an actual polygon, so $n\ge3$ (vertices joined by straight sides). A circle has no vertices and no straight sides, so it is not a ``$1$-gon''; substituting $n=1$ applies the formula outside the situation in which it was proved, and the result $-180^\circ$ has no meaning.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw(unitcircle,gray(0.6));
+pair[] V; for(int i=0;i<8;++i){V.push(dir(90+45*i));}
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--V[7]--cycle,linewidth(0.9));
+for(int i=2;i<7;++i){draw(V[0]--V[i],blue+dashed);}
+pair ext=V[1]+0.45*(V[1]-V[0]);
+draw(V[1]--ext,red,Arrow(4));
+draw(arc(V[1],0.18,degrees(V[2]-V[1]),degrees(ext-V[1])),red);
+label("$\dfrac{360^\circ}{n}$",V[1]+0.22*dir(215),SW,red+fontsize(8pt));
+for(int i=0;i<8;++i){dot(V[i]);}
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(b)} For a regular $n$-gon,
+\[
+S_n=180^\circ(n-2),\qquad a_n=\dfrac{S_n}{n}=180^\circ-\dfrac{360^\circ}{n},\qquad E_n=n\left(180^\circ-a_n\right)=n\cdot\dfrac{360^\circ}{n}=360^\circ .
+\]
+As $n$ grows (the polygons look more and more like the circumscribed circle), $S_n$ increases without bound, each interior angle $a_n$ approaches $180^\circ$ (a ``straight'' angle, as at any point of a smooth curve), and the exterior angle sum stays exactly $360^\circ$ (one full turn).
+
+\textbf{(c)} If the circle's interior angle sum were defined as the limit of $S_n$, there would be no finite limit, because $S_n\to\infty$; ``infinity'' only records that the sequence is unbounded and is not an angle measure. The value $360^\circ$ belongs to $E_n$ (the total turning when going once around, which does make sense for a circle), not to $S_n$, and $-180^\circ$ comes from misusing the formula as in (a). So the interior angle sum of a circle is
+\[
+\boxed{\text{undefined}};
+\]
+the meaningful quantities are the limiting interior angle $180^\circ$ and the total turning $360^\circ$.

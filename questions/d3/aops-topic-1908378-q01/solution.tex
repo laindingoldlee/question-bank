@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1908378_halp_question
+% Stable identity: aops-topic-1908378-q01
+Draw the segments one at a time. Two segments cross at most once. Suppose the $k$-th segment crosses the earlier segments at $c$ distinct points inside the rectangle. These points cut it into at most $c+1$ pieces, and each piece splits one existing section into two. So the $k$-th segment adds at most $c+1\le (k-1)+1=k$ sections.
+
+Starting from $1$ section, after four segments there are at most
+\[
+1+1+2+3+4=11
+\]
+sections.
+
+The bound is attained when every two segments cross inside the rectangle and no three pass through one point. Then each segment gains the full $k$ new sections. In the figure below the $11$ sections are numbered.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(8,0)--(8,5)--(0,5)--cycle,linewidth(0.9));
+pair Mp=(4.2,5), Np=(5,0);
+draw(Mp--Np,linewidth(0.9));
+draw((0,3)--(8,4.3),blue+linewidth(0.9));
+draw((0.7,0)--(7.5,5),deepgreen+linewidth(0.9));
+draw((0,4.7)--(7.2,0),red+linewidth(0.9));
+label("$M$",Mp,N);label("$N$",Np,S);
+pen q=fontsize(8pt);
+label("$1$",(7.62,4.62),q);label("$2$",(4.9,4.4),q);label("$3$",(2.24,4.2),q);
+label("$4$",(0.56,3.66),q);label("$5$",(4.8,3.44),q);label("$6$",(3.76,3.0),q);
+label("$7$",(6.46,2.32),q);label("$8$",(4.32,2.26),q);label("$9$",(1.24,1.94),q);
+label("$10$",(3.8,1.02),q);label("$11$",(5.44,0.52),q);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The largest number of sections is $\boxed{11}$.

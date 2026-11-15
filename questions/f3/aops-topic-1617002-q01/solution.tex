@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1617002_wording_of_problem
+% Stable identity: aops-topic-1617002-q01
+Let the radius be $r$ inches.
+
+\begin{asy}
+usepackage("amsmath");
+size(2.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);draw(circle(O,1),linewidth(0.9));dot(O);label("$O$",O,SW);
+draw(O--dir(30),blue);label("$r$",dir(30)/2,NW,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The area is $\pi r^2$ square inches and the circumference is $2\pi r$ inches. Comparing the numbers,
+\[
+\pi r^2>2\pi r\iff r>2\qquad(\text{dividing by }\pi r>0).
+\]
+So the condition holds exactly for radii greater than $2$ inches (at $r=2$ the two numbers are both $4\pi$). The least whole number of inches is $\boxed{3}$.

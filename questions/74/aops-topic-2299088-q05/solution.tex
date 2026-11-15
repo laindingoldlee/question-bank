@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2299088_1000_posts
+% Stable identity: aops-topic-2299088-q05
+\textbf{Centre.} Substitute $x=u+h$, $y=v+k$ and choose $h,k$ so that the linear terms in $u$ and $v$ vanish. The coefficient of $u$ is $4h-3k+6$ and that of $v$ is $-3h+8k-3$, so we need
+\[4h-3k+6=0,\qquad-3h+8k-3=0,\]
+which gives $h=-\dfrac{39}{23}$, $k=-\dfrac{6}{23}$. The constant term becomes $\dfrac{6h-3k}{2}-4=\dfrac{-\dfrac{234}{23}+\dfrac{18}{23}}{2}-4=-\dfrac{108}{23}-\dfrac{92}{23}=-\dfrac{200}{23}$ (for a quadratic with no linear terms left, the new constant is half the old linear part evaluated at the centre, plus the old constant). So the equation is
+\[2u^2-3uv+4v^2=\dfrac{200}{23}.\]
+
+\textbf{Axes.} Rotate the $uv$-axes by an angle $\theta$: $u=X\cos\theta-Y\sin\theta$, $v=X\sin\theta+Y\cos\theta$. The equation becomes $A'X^2+B'XY+C'Y^2=\dfrac{200}{23}$, and a direct expansion shows that $A'+C'=2+4=6$ and $4A'C'-B'^2=4\cdot2\cdot4-(-3)^2=23$ for every $\theta$. Choose $\theta$ with $B'=0$ (possible because $B'$ changes sign as $\theta$ goes from $0^\circ$ to $90^\circ$). Then $A'+C'=6$ and $A'C'=\dfrac{23}{4}$, so $A'$ and $C'$ are the roots $3\pm\dfrac{\sqrt{13}}{2}$ of $t^2-6t+\dfrac{23}{4}=0$, both positive. The curve
+\[\dfrac{X^2}{\dfrac{200}{23A'}}+\dfrac{Y^2}{\dfrac{200}{23C'}}=1\]
+is an ellipse with semi-axes $\sqrt{\dfrac{200}{23A'}}$ and $\sqrt{\dfrac{200}{23C'}}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real k=200/23, l1=3-sqrt(13)/2, l2=3+sqrt(13)/2;
+pair c=(-39/23,-6/23);
+real th=aTan((2-l1)/1.5);
+path e=shift(c)*rotate(th)*scale(sqrt(k/l1),sqrt(k/l2))*unitcircle;
+draw((-5,0)--(1.8,0),Arrow(5)); draw((0,-2.4)--(0,2.6),Arrow(5));
+label("$x$",(1.8,0),E); label("$y$",(0,2.6),N);
+fill(e,lightblue+opacity(0.5)); draw(e,blue+linewidth(1));
+draw(c-sqrt(k/l1)*dir(th)--c+sqrt(k/l1)*dir(th),dashed);
+draw(c-sqrt(k/l2)*dir(th+90)--c+sqrt(k/l2)*dir(th+90),dashed);
+dot(c); draw(c--(-3.3,-2.0),gray); label("centre $\left(-\dfrac{39}{23},-\dfrac{6}{23}\right)$",(-3.3,-2.0),S,fontsize(8pt));
+\end{asy}
+
+\textbf{Area.} The area is $\pi$ times the product of the semi-axes:
+\[\pi\cdot\dfrac{200}{23}\cdot\dfrac{1}{\sqrt{A'C'}}=\pi\cdot\dfrac{200}{23}\cdot\dfrac{2}{\sqrt{23}}=\dfrac{400\pi}{23\sqrt{23}}=\boxed{\dfrac{400\sqrt{23}\,\pi}{529}}\approx11.39.\]

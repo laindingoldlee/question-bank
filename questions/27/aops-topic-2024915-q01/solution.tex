@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2024915_number_theory
+% Stable identity: aops-topic-2024915-q01
+Since $1001=7\cdot11\cdot13$ with distinct primes, $1001\mid 2^k-1$ exactly when $2^k\equiv1$ modulo each of $7$, $11$ and $13$, i.e.\ when $k$ is a multiple of the order of $2$ modulo each prime.
+\begin{itemize}
+\item Modulo $7$: $2^1=2$, $2^2=4$, $2^3=8\equiv1$. Order $3$.
+\item Modulo $11$: $2^2=4$, $2^5=32\equiv-1$, so $2^{10}\equiv1$; the order divides $10$ and is not $1,2,5$. Order $10$.
+\item Modulo $13$: $2^4=16\equiv3$, $2^6=64\equiv-1$, so $2^{12}\equiv1$; the order divides $12$, and $2^1,2^2,2^3,2^4,2^6\not\equiv1$. Order $12$.
+\end{itemize}
+Hence the smallest $k$ is $\operatorname{lcm}(3,10,12)=\boxed{60}$.
+
+Euler's theorem gives $2^{\varphi(1001)}=2^{720}\equiv1\pmod{1001}$, but this only shows that the order divides $720$; it need not be the smallest exponent, which is why $720$ is not the answer.

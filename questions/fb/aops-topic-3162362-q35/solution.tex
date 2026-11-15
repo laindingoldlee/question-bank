@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h3162362_2017_lmt_spring_guts_round_p2536__lexington_mathematical_tournament
+% Stable identity: aops-topic-3162362-q35
+The largest entry must occupy an even position $ j $. Choose its $ j-1 $ left labels in $\binom{n-1}{j-1}$ ways; the left and right portions independently have the same up-down pattern, with counts $ P_{j-1},P_{n-j}$. Thus $ P_0=P_1=1 $ and
+\[P_n=\sum_{\substack{2\le j\le n\\j\text{ even}}}\binom{n-1}{j-1}P_{j-1}P_{n-j}.\]
+This recurrence exhausts every permutation according to its unique largest-entry position.
+\begin{verbatim}
+from math import comb
+P=[1,1]
+for n in range(2,21):
+    P.append(sum(comb(n-1,j-1)*P[j-1]*P[n-j] for j in range(2,n+1,2)))
+assert P[17]==209865342976 and P[20]==370371188237525
+\end{verbatim}
+Their sum is $\boxed{370581053580501}$.

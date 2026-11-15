@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2003504_probability_question
+% Stable identity: aops-topic-2003504-q01
+Let the break points be $u$ and $v$, a uniform random point of the unit square. Three pieces of total length $1$ form a triangle exactly when each piece is shorter than $\dfrac{1}{2}$ (each piece must be less than the sum of the other two, which is $1$ minus itself).
+
+If $u<v$, the pieces are $u$, $v-u$ and $1-v$, and the conditions are
+\[
+u<\dfrac{1}{2},\qquad v>\dfrac{1}{2},\qquad v-u<\dfrac{1}{2} .
+\]
+In the triangle $u<v$ (area $\dfrac{1}{2}$), this is the triangle with vertices $\left(0,\dfrac{1}{2}\right)$, $\left(\dfrac{1}{2},\dfrac{1}{2}\right)$, $\left(\dfrac{1}{2},1\right)$, of area $\dfrac{1}{8}$. By symmetry the case $v<u$ gives another triangle of area $\dfrac{1}{8}$, and $u=v$ has probability $0$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+fill((0,0.5)--(0.5,0.5)--(0.5,1)--cycle,palegray);
+fill((0.5,0)--(0.5,0.5)--(1,0.5)--cycle,palegray);
+draw((0,0)--(1,0)--(1,1)--(0,1)--cycle,linewidth(1));
+draw((0,0)--(1,1),dashed);
+draw((0,0.5)--(1,0.5),dotted);draw((0.5,0)--(0.5,1),dotted);
+label("$u$",(1.12,0));label("$v$",(0,1.12));label("$0$",(0,0),SW);
+label("$\dfrac{1}{2}$",(0.5,0),S);label("$\dfrac{1}{2}$",(0,0.5),W);label("$1$",(1,0),S);label("$1$",(0,1),W);
+label("$v=u$",(1,1),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the probability is $\dfrac{1}{8}+\dfrac{1}{8}=\boxed{\dfrac{1}{4}}$.

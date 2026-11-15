@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1656204_cubic_tetrahedron__add_em_up_to_get_a_perfect_square_msa123_msa124
+% Stable identity: aops-topic-1656204-q24
+Shift the centre to the origin; this does not change the count, since the centre is a lattice point. The number $N(r)$ of lattice points with $x^2+y^2\le r^2$ increases with $r$, so at most one radius gives $81$. For $r=5$, count by columns: $x=0$ gives $11$ points ($|y|\le5$); $x=\pm1,\pm2,\pm3$ give $9$ each ($|y|\le4$); $x=\pm4$ give $7$ each ($|y|\le3$); $x=\pm5$ give $1$ each. In total
+\[
+11+2(9+9+9+7+1)=81 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+for(int x=-6;x<=6;++x)for(int y=-6;y<=6;++y){if(x*x+y*y<=25)dot((x,y),red+3pt);else dot((x,y),gray+1.5pt);}
+draw(circle((0,0),5),blue+linewidth(0.9));
+dot((0,0),black+4pt);
+draw((0,0)--(5,0),dashed);label("$5$",(2.5,0),N,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(For comparison $N(4)=49$ and $N(6)=113$.) The radius is $\boxed{\textbf{(e)}\ 5}$.

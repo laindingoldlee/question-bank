@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1842354_number_theory_mediocre_problem
+% Stable identity: aops-topic-1842354-q01
+Let the number be $d_1d_2\cdots d_8$, with $d_1\ne0$.
+
+\textbf{Neighbouring digits are congruent modulo $7$.} Fix $i$ with $1\le i\le7$. Deleting $d_i$ and deleting $d_{i+1}$ give two seven-digit numbers that agree in every position except the $i$th from the left, where one has $d_{i+1}$ and the other $d_i$. So their difference is $(d_{i+1}-d_i)\cdot10^{7-i}$. Both numbers are divisible by $7$, and $\gcd(10,7)=1$, so $7\mid d_{i+1}-d_i$. Hence all eight digits are congruent to the same $r$ modulo $7$.
+
+\textbf{The common residue is $0$.} Deleting $d_8$ leaves $\sum_{j=1}^{7}d_j10^{7-j}\equiv r\left(10^6+10^5+\cdots+1\right)=r\cdot1111111\pmod7$. Since $1111111=7\cdot158730+1\equiv1\pmod7$, this number is $\equiv r\pmod7$, so $r\equiv0$. The only digits divisible by $7$ are $0$ and $7$, so every digit is $0$ or $7$.
+
+\textbf{Leading digits.} We need $d_1\ne0$, so $d_1=7$. Deleting $d_1$ leaves the number $d_2d_3\cdots d_8$, which must have a nonzero first digit, so $d_2=7$. (Deleting any other digit leaves first digit $d_1=7$.)
+
+\textbf{Sufficiency.} If $d_1=d_2=7$ and the other digits are $0$ or $7$, then every number obtained by deleting a digit starts with $7$ and has all digits in $\{0,7\}$, so it is $7$ times a number whose digits are $0$ and $1$, hence divisible by $7$.
+
+So $d_3,\dots,d_8$ can be chosen freely from $\{0,7\}$, giving $2^6=\boxed{64}$ numbers.
+
+(If seven-digit strings with a leading $0$ were also allowed after deleting $d_1$, the digit $d_2$ could also be $0$, giving $2^7=128$.)

@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1361628_word_problems
+% Stable identity: aops-topic-1361628-q04
+Each leg has length $\dfrac{q}{\sqrt2}$, so the right triangle has area $\dfrac{1}{2}\cdot\dfrac{q^2}{2}=\dfrac{q^2}{4}$. An equilateral triangle of side $s$ has area $\dfrac{\sqrt3}{4}s^2$. The two on the legs have total area $2\cdot\dfrac{\sqrt3}{4}\cdot\dfrac{q^2}{2}=\dfrac{\sqrt3}{4}q^2$, and the one on the hypotenuse has area $\dfrac{\sqrt3}{4}q^2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), A=(1,0), B=(0,1);
+pair P1=(0.5,-sqrt(3)/2), P2=(-sqrt(3)/2,0.5), P3=(0.5,0.5)+(sqrt(3)/2)*(1,1);
+filldraw(C--A--P1--cycle,palegreen,linewidth(0.8));
+filldraw(C--B--P2--cycle,palegreen,linewidth(0.8));
+filldraw(A--B--P3--cycle,paleblue,linewidth(0.8));
+filldraw(C--A--B--cycle,lightgray,linewidth(0.9));
+draw(C+(0.08,0)--C+(0.08,0.08)--C+(0,0.08));
+label("$C$",C,SW); label("$A$",A,E); label("$B$",B,N);
+label("$q$",(A+B)/2,NE);
+label("$\dfrac{q}{\sqrt{2}}$",(C+A)/2,N,fontsize(8pt)); label("$\dfrac{q}{\sqrt{2}}$",(C+B)/2,E,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The total is
+\[
+\dfrac{q^2}{4}+\dfrac{\sqrt3}{4}q^2+\dfrac{\sqrt3}{4}q^2=\boxed{\textbf{(b) }\dfrac{q^2(2\sqrt3+1)}{4}} .
+\]

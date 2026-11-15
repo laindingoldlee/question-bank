@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1359760_thales_theorem
+% Stable identity: aops-topic-1359760-q01
+Let $O$ be the centre. Then $OA=OB=OC$ (radii), so triangles $OAC$ and $OBC$ are isosceles.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair O=(0,0), A=(-1,0), B=(1,0), C=dir(62);
+draw(arc(O,1,0,180),linewidth(0.9)); draw(A--B,linewidth(0.9));
+draw(A--C--B,linewidth(0.9)); draw(O--C,red+dashed);
+draw(arc(A,0.22,0,31),blue); label("$\alpha$",A+0.33*dir(15),blue+fontsize(8pt));
+draw(arc(C,0.2,211,242),blue); label("$\alpha$",C+0.32*dir(226),blue+fontsize(8pt));
+draw(arc(B,0.2,121,180),deepgreen); label("$\beta$",B+0.31*dir(150),deepgreen+fontsize(8pt));
+draw(arc(C,0.28,242,301),deepgreen); label("$\beta$",C+0.4*dir(272),deepgreen+fontsize(8pt));
+dot(O);dot(C);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$O$",O,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Let $\angle OAC=\angle OCA=\alpha$ and $\angle OBC=\angle OCB=\beta$. Since $O$ lies on segment $AB$, the angle $\angle ACB$ is split by $OC$ into $\alpha+\beta$, and the angles of triangle $ABC$ are $\alpha$, $\beta$ and $\alpha+\beta$. Their sum is $180^\circ$, so $2(\alpha+\beta)=180^\circ$ and
+\[
+\angle ACB=\alpha+\beta=\boxed{90^\circ}.\qquad\blacksquare
+\]
+\textbf{When it applies.} The segment must be a diameter (pass through the centre) and $C$ must lie on the circle and be different from $A$ and $B$. If $AB$ is a chord that is not a diameter, the angle is acute or obtuse depending on the side of $C$. The converse also holds and is often what is used: if $\angle ACB=90^\circ$, then $C$ lies on the circle with diameter $AB$.

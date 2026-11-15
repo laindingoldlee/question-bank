@@ -1,0 +1,19 @@
+Use opposite vertices $A=(0,0,0)$ and $B=(a,a,a)$. For a segment from $A$ to a surface point $P$ to lie on the surface, at least one coordinate of $P$ must be $0$; otherwise its interior is inside the cube. Similarly $BP$ requires a coordinate equal to $a$. These must be different coordinates. By cube symmetry write $P=(a,0,t)$ with $0\le t\le a$.
+
+The perimeter is
+\[
+a\sqrt3+\sqrt{a^2+t^2}+\sqrt{a^2+(a-t)^2}.
+\]
+The vector triangle inequality bounds the last two terms below by $\sqrt{(2a)^2+a^2}=a\sqrt5$, with equality at $t=\dfrac{a}{2}$. Hence the minimum perimeter is $\boxed{a(\sqrt3+\sqrt5)}$.
+The area is half the cross-product magnitude:
+\[
+[ABP]=\dfrac{a}{2}\sqrt{t^2+(a-t)^2+a^2}
+=\dfrac{a}{2}\sqrt{2\left(t-\dfrac{a}{2}\right)^2+\dfrac{3a^2}{2}}.
+\]
+It is minimized at the same midpoint, giving $\boxed{\dfrac{a^2\sqrt6}{4}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair pr(real x,real y,real z){return (x+.5*y,z+.3*y);}for(int x=0;x<=1;++x)for(int y=0;y<=1;++y)draw(pr(x,y,0)--pr(x,y,1),gray);for(int x=0;x<=1;++x)for(int z=0;z<=1;++z)draw(pr(x,0,z)--pr(x,1,z),gray);for(int y=0;y<=1;++y)for(int z=0;z<=1;++z)draw(pr(0,y,z)--pr(1,y,z),gray);pair A=pr(0,0,0),B=pr(1,1,1),P=pr(1,0,.5);draw(A--B--P--cycle,blue);label("$A$",A,(-1,-1));label("$B$",B,(1,1));label("$P$",P,(1,0));
+\end{asy}

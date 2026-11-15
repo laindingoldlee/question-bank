@@ -1,0 +1,9 @@
+For $P=(x,2^x)$, the expression is the sum of the distances from $P$ to $O=(0,0)$ and $Q=(-5,1)$. By the triangle inequality it is at least $OQ=\sqrt{26}$, with equality precisely when $P$ lies on segment $OQ$.
+
+The segment has equation $y=-\dfrac{x}{5}$ with $-5\le x\le0$. The function $2^x+\dfrac{x}{5}$ is strictly increasing and is negative at $x=-2$ but positive at $x=-1$. It therefore has a unique zero in $(-2,-1)$, giving the unique equality point on the segment. This point attains the global minimum, so $\boxed{\lfloor x_0\rfloor=-2}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;real f(real x){return 2^x;}pair O=(0,0),Q=(-5,1),P=(-1.623140346,2^(-1.623140346));draw(graph(f,-5,.4),blue);draw(O--Q,red);dot(P);label("$O$",O,SE);label("$Q=(-5,1)$",Q,NW);label("$P$",P,(0,1));label("$y=2^x$",(-.4,f(-.4)),NE);
+\end{asy}

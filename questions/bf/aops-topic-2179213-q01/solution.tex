@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2179213_remainder_problem_help_please
+% Stable identity: aops-topic-2179213-q01
+Since $a\ne0$, dividing $a^2-6a+1=0$ by $a$ gives $a+\dfrac{1}{a}=6$. Let $s_k=a^k+a^{-k}$. Then $s_0=2$, $s_1=6$, and
+\[s_{k+1}=\left(a+\dfrac{1}{a}\right)\left(a^k+a^{-k}\right)-\left(a^{k-1}+a^{-(k-1)}\right)=6s_k-s_{k-1}.\]
+By induction every $s_k$ is an integer. Modulo $5$ the recurrence is $s_{k+1}\equiv s_k-s_{k-1}$, which gives
+\[s_0,s_1,s_2,\dots\equiv2,\ 1,\ 4,\ 3,\ 4,\ 1,\ 2,\ 1,\ \dots\pmod5 .\]
+Since $(s_6,s_7)\equiv(s_0,s_1)$ and each term depends only on the previous two, the residues repeat with period $6$. As $2020=6\cdot336+4$,
+\[s_{2020}\equiv s_4\equiv\boxed{4}\pmod5 .\]
+(Check: $s_2=34$, $s_3=198$, $s_4=1154\equiv4$.)

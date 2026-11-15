@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2300364_
+% Stable identity: aops-topic-2300364-q01
+An inequality $|x-c|<r$ says that $x$ is less than $r$ away from $c$, that is, $c-r<x<c+r$.
+\begin{itemize}
+\item $|x+3|<10$ means $-10<x+3<10$, i.e. $-13<x<7$ (within $10$ of $-3$).
+\item $|x-5|<4$ means $-4<x-5<4$, i.e. $1<x<9$ (within $4$ of $5$).
+\end{itemize}
+``Or'' means $x$ may satisfy either one, so the solution set is the union of the two intervals. They overlap (on $1<x<7$), so the union is the single interval
+\[\boxed{-13<x<9}.\]
+On the number line, draw open circles at $-13$ and $9$ (the endpoints are not included) and shade between them:
+
+\begin{asy}
+usepackage("amsmath");
+size(11cm);
+defaultpen(fontsize(10pt));
+draw((-16,0)--(12,0),Arrows(5));
+for(int k=-15;k<=11;k+=1) draw((k,-0.15)--(k,0.15),gray);
+for(int k=-15;k<=10;k+=5) label("$"+string(k)+"$",(k,-0.2),S,fontsize(7pt));
+draw((-13,1.2)--(7,1.2),blue+linewidth(1.5)); draw(circle((-13,1.2),0.25),blue); draw(circle((7,1.2),0.25),blue);
+label("$|x+3|<10$",(-3,1.2),N,blue+fontsize(8pt));
+draw((1,2.4)--(9,2.4),red+linewidth(1.5)); draw(circle((1,2.4),0.25),red); draw(circle((9,2.4),0.25),red);
+label("$|x-5|<4$",(5,2.4),N,red+fontsize(8pt));
+draw((-13,0)--(9,0),linewidth(2.5)); filldraw(circle((-13,0),0.3),white,black); filldraw(circle((9,0),0.3),white,black);
+draw((-13,-1.6)--(-13,-0.4),dotted); draw((9,-1.6)--(9,-0.4),dotted);
+label("$-13$",(-13,-1.6),S,fontsize(8pt)); label("$9$",(9,-1.6),S,fontsize(8pt));
+\end{asy}

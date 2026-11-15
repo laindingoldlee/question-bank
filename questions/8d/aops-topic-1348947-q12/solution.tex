@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1348947_problem_compilation
+% Stable identity: aops-topic-1348947-q12
+Let $z_1=\sqrt{2+\sqrt{2+\sqrt{2-\sqrt{2-\sqrt{2+\cdots}}}}}$, so $E=2+z_1$; the radical $z_1$ has the repeating sign pattern $+,+,-,-,+$, and in general $z_k=\sqrt{2+s_kz_{k+1}}$ with $s_1,\dots,s_5=+,+,-,-,+$ and $z_6=z_1$. All $z_k$ lie in $[0,2]$, so write $z_k=2\cos\theta_k$ with $\theta_k\in\left[0,\dfrac{\pi}{2}\right]$.
+
+\emph{Half-angle facts.} For $\theta\in[0,\pi]$: $\sqrt{2+2\cos\theta}=2\cos\dfrac{\theta}{2}$ and $\sqrt{2-2\cos\theta}=2\sin\dfrac{\theta}{2}=2\cos\left(\dfrac{\pi}{2}-\dfrac{\theta}{2}\right)$. In the figure, $B$ is on the unit semicircle with $\angle AOB=\theta$; triangle $ABC$ has a right angle at $B$ and $\angle BCA=\dfrac{\theta}{2}$, so $CB=2\cos\dfrac{\theta}{2}$, $AB=2\sin\dfrac{\theta}{2}$, and by the law of cosines in triangles $OCB$ and $OAB$, $CB^2=2+2\cos\theta$, $AB^2=2-2\cos\theta$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair foot(pair P,pair A,pair B){return A+dot(P-A,B-A)/dot(B-A,B-A)*(B-A);}
+real th=50;
+pair O=(0,0),A=(1,0),Cc=(-1,0),Bp=dir(th);
+draw(arc(O,1,0,180)); draw(Cc--A);
+draw(Cc--Bp--A,blue); draw(O--Bp,dashed);
+draw(ra(Bp,Cc-Bp,A-Bp,0.09));
+draw(arc(O,0.22,0,th),red); label("$\theta$",0.32*dir(th/2),red);
+draw(arc(Cc,0.55,0,th/2),red); label("$\dfrac{\theta}{2}$",Cc+0.8*dir(11),red+fontsize(7pt));
+dot(O);
+label("$O$",O,S); label("$A$",A,SE); label("$C$",Cc,SW); label("$B$",Bp,N);
+label("$1$",(O+A)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $z_k=\sqrt{2+z_{k+1}}$ means $\theta_k=\dfrac{\theta_{k+1}}{2}$, i.e.\ $\theta_{k+1}=2\theta_k$, and $z_k=\sqrt{2-z_{k+1}}$ means $\theta_k=\dfrac{\pi}{2}-\dfrac{\theta_{k+1}}{2}$, i.e.\ $\theta_{k+1}=\pi-2\theta_k$. With $\theta=\theta_1$:
+\[
+\theta_2=2\theta,\quad \theta_3=4\theta,\quad \theta_4=\pi-8\theta,\quad \theta_5=\pi-2(\pi-8\theta)=16\theta-\pi,\quad \theta_6=32\theta-2\pi .
+\]
+Periodicity $\theta_6=\theta_1$ gives $31\theta=2\pi$, $\theta=\dfrac{2\pi}{31}$; then $\theta_1,\dots,\theta_5=\dfrac{2\pi}{31},\dfrac{4\pi}{31},\dfrac{8\pi}{31},\dfrac{15\pi}{31},\dfrac{\pi}{31}$ all lie in $\left[0,\dfrac{\pi}{2}\right]$, as required. (Numerically $z_1\approx1.95906$.) Therefore
+\[
+E=2+2\cos\dfrac{2\pi}{31}=4\cos^2\dfrac{\pi}{31},
+\]
+so $a=4$, $b=2$, $c=31$ and $a^2bc=16\cdot2\cdot31=\boxed{992}$.
+
+The posted answer $352=16\cdot2\cdot11$ would correspond to $c=11$, which does not match the value $E\approx3.95906$ ($4\cos^2\dfrac{\pi}{11}\approx3.68251$).

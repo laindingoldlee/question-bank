@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2020601_perimeter_of_monster
+% Stable identity: aops-topic-2020601-q01
+In an arcade game, the ``monster'' is the shaded sector of a circle of radius $1$ cm, as shown in the figure. The missing piece (the mouth) has central angle $60^\circ$. What is the perimeter of the monster in cm?
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+filldraw(O--arc(O,1,30,330)--cycle,gray(0.75),linewidth(0.9));
+dot(O); label("$60^\circ$",O,8*dir(0)+(0.0,0));
+draw(arc(O,0.3,-30,30));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

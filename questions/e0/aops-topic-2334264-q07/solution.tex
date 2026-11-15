@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2334264_halloween_mock_amc_8_problems_610
+% Stable identity: aops-topic-2334264-q07
+Centre the figure at the origin: it is the union of the rectangles $\left[-\dfrac52,\dfrac52\right]\times\left[-\dfrac12,\dfrac12\right]$ and $\left[-\dfrac12,\dfrac12\right]\times\left[-\dfrac52,\dfrac52\right]$. A rectangle with half-sides $p$ and $q$, turned through an angle $\theta$, reaches a horizontal distance $p\left|\cos\theta\right|+q\left|\sin\theta\right|$ from its centre. So the figure turned through $\theta$ reaches horizontally to the distance
+\[w(\theta)=\max\left(\dfrac52\left|\cos\theta\right|+\dfrac12\left|\sin\theta\right|,\ \dfrac12\left|\cos\theta\right|+\dfrac52\left|\sin\theta\right|\right)\]
+on both sides of its centre, and, because the figure is unchanged by a quarter turn, also vertically up and down.
+
+Put the square at $[0,7]\times[0,7]$. The figure turned through $\theta$ with centre $(x,y)$ fits exactly when $w(\theta)\le x\le7-w(\theta)$ and $w(\theta)\le y\le7-w(\theta)$. For each $\theta$ these centres form a square of side $7-2w(\theta)$ centred at $\left(\dfrac72,\dfrac72\right)$. These squares are nested, so the region is the largest of them, the one with the smallest $w(\theta)$.
+
+By symmetry it suffices to take $0\le\theta\le45^\circ$, where $\cos\theta\ge\sin\theta$ and $w(\theta)=\dfrac52\cos\theta+\dfrac12\sin\theta=\dfrac{\sqrt{26}}{2}\cos(\theta-\alpha)$ with $\tan\alpha=\dfrac15$. This increases on $[0,\alpha]$ and decreases on $[\alpha,45^\circ]$, so its minimum is at an endpoint:
+\[w(0)=\dfrac52,\qquad w(45^\circ)=\dfrac{3}{\sqrt2}=\dfrac{3\sqrt2}{2}\approx2.12.\]
+So the smallest reach is $\dfrac{3\sqrt2}{2}$, attained for the figure turned through $45^\circ$, and the region is a square of side $7-3\sqrt2$ (shaded below; the figure is drawn with its centre $P$ at a corner of the region).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real w=3/sqrt(2);
+draw(box((0,0),(7,7)),linewidth(1));
+filldraw(box((w,w),(7-w,7-w)),lightblue+opacity(0.5),blue+dashed);
+path pl=(2.5,0.5)--(0.5,0.5)--(0.5,2.5)--(-0.5,2.5)--(-0.5,0.5)--(-2.5,0.5)--(-2.5,-0.5)--(-0.5,-0.5)--(-0.5,-2.5)--(0.5,-2.5)--(0.5,-0.5)--(2.5,-0.5)--cycle;
+draw(shift(w,w)*rotate(45)*pl,red+linewidth(0.9));
+dot((w,w),red); label("$P$",(w,w),NW,red);
+draw((w,w)--(w,-0.7),dotted); draw((0,-0.7)--(w,-0.7),Arrows(3)); label("$\dfrac{3\sqrt2}{2}$",(w/2,-0.7),S,fontsize(7pt));
+label("$7$",(4.6,0),S); label("$7$",(7,3.5),E);
+\end{asy}
+
+Its area is
+\[\left(7-3\sqrt2\right)^2=49-42\sqrt2+18=\boxed{\textbf{(B) }67-42\sqrt2}.\]

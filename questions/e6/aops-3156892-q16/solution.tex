@@ -1,0 +1,6 @@
+Let $C_n$ count triangulations of a polygon with $n+2$ vertices. Choosing the triangle incident to a fixed side gives $C_n=\sum_{j=0}^{n-1}C_jC_{n-1-j}$, $C_0=1$. This produces $1,1,2,5,14,42,132$ through $C_6$. An octagon therefore has $\boxed{132}$ triangulations.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair[] V;for(int i=0;i<8;++i)V.push(dir(45i));for(int i=0;i<8;++i)draw(V[i]--V[(i+1)%8]);for(int j=2;j<7;++j)draw(V[0]--V[j],blue);label("one triangulation",(0,-1.4));
+\end{asy}
+

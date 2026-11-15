@@ -1,0 +1,7 @@
+Since $LN\parallel AC$ and $CL$ bisects angle C, triangle $CLN$ has equal angles at C and L, so $CN=LN=24$. Similarly, $AM$ bisects angle A and $KM\parallel AC$, so triangle $AKM$ is isosceles and $AK=KM=24$. The parallel cut $KN$ gives $\dfrac{AK}{AB}=\dfrac{CN}{CB}$, hence $AB=BC$. With angle B equal to 60 degrees, triangle ABC is equilateral. Triangle BKN is also equilateral, so $BK=KN=36$. Consequently $AC=AB=AK+BK=24+36=\boxed{60}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair B=(0,0),A=(6,0),C=6dir(60),P=(3,0),Q=C/2,I=(A+B+C)/3,K=.6A,N=.6C,L=K+(N-K)/3,M=K+2(N-K)/3;draw(A--B--C--cycle);draw(A--Q,dashed);draw(C--P,dashed);draw(K--N,blue);pair[] p={A,B,C,P,Q,I,K,L,M,N};string[] s={"A","B","C","P","Q","I","K","L","M","N"};pair[] a={(1,-1),(-1,-1),(0,1),(0,-1),(-1,0),(1,0),(0,-1),(-1,-1),(1,1),(-1,0)};for(int i=0;i<10;++i)label("$"+s[i]+"$",p[i],a[i]);
+\end{asy}

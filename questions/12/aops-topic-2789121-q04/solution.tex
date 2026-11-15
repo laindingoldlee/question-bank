@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2789121_2012_manhattan_mathematical_olympiad_grades_56_problems_14
+% Stable identity: aops-topic-2789121-q04
+Use heads as a target; stop whenever the cave opens. (1)Inspect opposite coins and make both heads. (2)Inspect adjacent coins and make both heads. At least one old head lies outside this pair, so if the cave is still closed there are exactly three heads. (3)Inspect opposite coins. If a tail is present, turn it to heads and finish. Otherwise they are both heads: turn exactly one to tails. Now there are two adjacent heads and two adjacent tails. (4)Inspect adjacent coins and turn both over. If they match, this finishes. If they differ, the four coins now alternate heads and tails. (5)Inspect opposite coins, which match, and turn both over. All four now match. Rotation never changes adjacency or opposition, so every step is valid without tracking positions.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int k=0;k<4;++k){pair P=2*dir(90*k);draw(circle(P,.4));label("$"+string(k+1)+"$",P);}draw((2,0)--(-2,0),dashed);draw(arc((0,0),2,0,90),blue);label("opposite pair",(0,-.4));
+\end{asy}

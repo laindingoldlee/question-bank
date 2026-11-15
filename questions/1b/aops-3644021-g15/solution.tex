@@ -1,0 +1,6 @@
+Heron gives $[ABC]=6\sqrt6$. Use signed distances to the three side lines, positive on the interior side. They obey $5d_{AB}+6d_{AC}+7d_{BC}=2[ABC]=12\sqrt6$, by signed area decomposition. The four intersections of the offset lines have $d_{AB}=\pm2$ and $d_{AC}=\pm3$, so their distances to $BC$ are $\dfrac{|12\sqrt6\pm10\pm18|}{7}$. Since $12\sqrt6>28$, all four numerators are positive. Summing cancels the signed terms and gives $\boxed{\dfrac{48\sqrt6}{7}}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair A=(0,0),B=(5,0),C=(1.2,12*sqrt(6)/5);draw(A--B--C--cycle);pair u=unit(C);for(int s:new int[]{-1,1})for(int t:new int[]{-1,1}){real yy=2*s;real xx=(u.x*yy-3*t)/u.y;pair P=(xx,yy);dot(P,blue);label("$P$",P,(t,s));}draw((-4,2)--(6,2)^^(-4,-2)--(6,-2),dashed);label("four intersections of offset lines",(1,-3.5));
+\end{asy}
+

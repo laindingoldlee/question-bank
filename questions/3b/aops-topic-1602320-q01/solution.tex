@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1602320_inscribed_circle_problem
+% Stable identity: aops-topic-1602320-q01
+Let the right angle be at $C$ and the $60^\circ$ angle at $A$, and let the shortest side be $CA=x$; then $CB=x\sqrt3$ and $AB=2x$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real k=6*(sqrt(3)+1); pair C=(0,0),A=(0,k),B=(k*sqrt(3),0); pair I=(6,6);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(circle(I,6),blue);
+dot(I,blue);draw(I--(6,0),blue+dashed);draw(I--(0,6),blue+dashed);
+label("$6$",(6,3),E,blue);label("$6$",(3,6),N,blue);
+real q=1.2;draw((q,0)--(q,q)--(0,q));
+draw(arc(A,3,-90,-30),red);label("$60^\circ$",A+4.2*dir(-60),red);
+draw(arc(B,5,150,180),red);label("$30^\circ$",B+6.3*dir(165),red);
+label("$A$",A,N);label("$B$",B,E);label("$C$",C,SW);label("$I$",I,NE,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Inradius of a right triangle.} The incircle touches the legs at distance $r$ from $C$ (the incentre $I$ and the two touch points form a square with corner $C$). Tangent segments from a vertex are equal, so the hypotenuse is $AB=(CA-r)+(CB-r)$, i.e.\ $r=\dfrac{CA+CB-AB}{2}$. Here
+\[
+6=\dfrac{x+x\sqrt3-2x}{2}=\dfrac{x\left(\sqrt3-1\right)}{2},\qquad x=\dfrac{12}{\sqrt3-1}=6\left(\sqrt3+1\right).
+\]
+Hence
+\[
+AB=2x=\boxed{12+12\sqrt3}\text{ cm}.
+\]

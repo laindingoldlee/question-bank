@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1917914_please_help_with_problem
+% Stable identity: aops-topic-1917914-q01
+\textbf{(a)} Split $1,2,\dots,19$ into the nine pairs $\{k,20-k\}$ ($k=1,\dots,9$) and the single number $10$. Each pair has sum $20$, so $S$ contains at most one number from each pair, and $|S|\le9+1=10$. The set $\{10,11,\dots,19\}$ has $10$ elements and works: each element is at most $19$, and any two elements have sum at least $21$. So $m=\boxed{10}$.
+
+\textbf{(b)} A set of size $10$ must contain $10$ and exactly one number from each pair. Let $L=S\cap\{1,\dots,9\}$; for each $k\in\{1,\dots,9\}$ not in $L$, the set contains $20-k$. Since $10+\sum_{k=1}^{9}(20-k)=145$,
+\[
+\text{sum of }S=145-\sum_{k\in L}(20-2k),
+\]
+so we must maximise the \emph{saving} $w(L)=\sum_{k\in L}(20-2k)$; the numbers $1,2,\dots,9$ save $18,16,\dots,2$.
+
+\emph{Which $L$ are allowed?} A subset of $S$ with sum $20$ cannot contain two numbers $\ge11$. If it contains one of them, $20-b$ with $b\notin L$, it cannot contain $10$, so the rest is a subset of $L$ with sum $b$. Otherwise it is a subset of $L$ with sum $20$, or a subset of $L$ with sum $10$ together with $10$. Hence $S$ is allowed exactly when
+\begin{itemize}
+\item[(i)] no subset of $L$ has sum $10$ or $20$, and
+\item[(ii)] every sum of a subset of $L$ that is at most $9$ belongs to $L$.
+\end{itemize}
+
+\emph{Case $1\in L$.} By (i), $9\notin L$. If some $a$ with $2\le a\le8$ were in $L$, then by (ii) $a+1,a+2,\dots,9$ would all be in $L$, a contradiction. So $L=\{1\}$ and $w=18$.
+
+\emph{Case $1\notin L$, $2\in L$.} By (i), $8\notin L$. By (ii), $a\in L$ with $a\le7$ forces $a+2\in L$. Then $4\in L$ or $6\in L$ would force $8\in L$, and $3\in L$ would force $5,7\in L$ with $3+7=10$. So $L\subseteq\{2,5,7,9\}$, where $5\in L$ forces $7\in L$, which forces $9\in L$. The candidates $\{2\},\{2,9\},\{2,7,9\},\{2,5,7,9\}$ save $16,18,24,34$. The last one is allowed: its subset sums are $2,5,7,9$ and $7,9,11,12,14,16,14,16,18,21,23$, so (i) and (ii) hold.
+
+\emph{Case $1,2\notin L$, $3\in L$.} By (i), $7\notin L$; and $4\in L$ would force $3+4=7\in L$, so $4\notin L$. Thus $L\subseteq\{3,5,6,8,9\}$, where $5\in L$ forces $8\in L$, $6\in L$ forces $9\in L$, and $8,9$ are not both in $L$ (as $3+8+9=20$). So $5$ and $6$ are not both in $L$, and $w\le\max(14+10+4,\ 14+8+2,\ 14+4)=28$.
+
+\emph{Case $1,2,3\notin L$.} Now $4$ and $6$ are not both in $L$. If $4\in L$, then $w\le12+10+6+4+2=34$ with equality only for $L=\{4,5,7,8,9\}$, which contains $4+7+9=20$; so $w<34$. If $4\notin L$, then $w\le10+8+6+4+2=30$.
+
+So the largest saving is $34$, only for $L=\{2,5,7,9\}$. The smallest possible sum is $145-34=111$, attained by exactly one set:
+\[
+\boxed{S=\{2,5,7,9,10,12,14,16,17,19\}} .
+\]

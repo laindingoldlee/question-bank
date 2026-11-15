@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1555721_mathcounts_state_problem
+% Stable identity: aops-topic-1555721-q01
+Let the edges be $x,y,z$ with $xy=48$, $yz=49$ and $zx=50$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real x=7.0,y=6.86,z=7.14; pair k=(0.5,0.35);
+pair O=(0,0),X=(x,0),Z=(0,z),K=y*k;
+draw(O--X--X+Z--Z--cycle,linewidth(0.9));
+draw(X--X+K--X+K+Z--Z+K--Z,linewidth(0.9));draw(X+Z--X+Z+K,linewidth(0.9));
+draw(O--K,dashed);draw(K--K+X,dashed);draw(K--K+Z,dashed);
+label("$xz=50$",(5.3,4.8));label("$yz=49$",X+K/2+(0,z/2));label("$xy=48$",Z+K/2+(x/2,0));
+label("$x$",(x/2,0),S);label("$z$",(0,z/2),W);label("$y$",X+K/2,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Multiplying the three equations,
+\[
+(xyz)^2=48\cdot49\cdot50=117600,\qquad V=xyz=\sqrt{117600}=70\sqrt{24}=140\sqrt6\approx342.93 .
+\]
+To the nearest whole number the volume is $\boxed{343}$. (Here $x=\dfrac{V}{49}\approx7.00$, $y=\dfrac {V}{50}\approx6.86$, $z=\dfrac {V}{48}\approx7.14$.)

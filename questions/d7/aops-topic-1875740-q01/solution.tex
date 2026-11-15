@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1875740_choose_function_problem
+% Stable identity: aops-topic-1875740-q01
+We show that the solutions are $\boxed{(n,k)=(1,0)\text{ and }(4,2)}$. Check: $\dbinom10=1=1+0$ and $\dbinom42=6=4+2$.
+\begin{itemize}
+\item $k=0$: $1=n$, giving $(1,0)$.
+\item $k=n$: $1=2n$, impossible.
+\item $k=1$ ($n\ge2$): $n=n+1$, impossible. $k=n-1$ ($n\ge2$): $n=2n-1$ gives $n=1$, contradiction.
+\item $k=2$ ($n\ge3$): $\dfrac{n(n-1)}{2}=n+2$, i.e. $n^2-3n-4=(n-4)(n+1)=0$, so $n=4$: the pair $(4,2)$.
+\item $k=n-2$ ($n\ge3$): $\dfrac{n(n-1)}{2}=2n-2$, i.e. $(n-1)(n-4)=0$, so $n=4$, $k=2$ again.
+\item $3\le k\le n-3$ (so $n\ge6$): the ratio $\dfrac{\dbinom n{j+1}}{\dbinom nj}=\dfrac{n-j}{j+1}$ is at least $1$ for $j\le\dfrac{n-1}{2}$, so the binomial coefficients increase up to the middle of the row and decrease symmetrically after it. Hence for $3\le k\le n-3$,
+\[
+\dbinom nk\ge\dbinom n3=n\cdot\dfrac{(n-1)(n-2)}{6}\ge n\cdot\dfrac{5\cdot4}{6}>3n>n+k ,
+\]
+so there is no solution.
+\end{itemize}
+Every $k$ with $0\le k\le n$ falls into one of these cases, which completes the proof.

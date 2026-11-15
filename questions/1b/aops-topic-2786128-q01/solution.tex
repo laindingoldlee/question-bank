@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2786128_trig_question
+% Stable identity: aops-topic-2786128-q01
+Take an equilateral triangle $ABC$ with side $2$ and drop the altitude $AD$. By symmetry $D$ is the midpoint of $BC$ and $AD$ bisects $\angle A$, so triangle $ABD$ has angles $30^\circ$ at $A$, $60^\circ$ at $B$ and $90^\circ$ at $D$, with $AB=2$ and $BD=1$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(2,0),A=(1,sqrt(3)),D=(1,0);
+draw(A--B--C--cycle);draw(A--D,dashed);draw((1,0)--(0.88,0)--(0.88,0.12)--(1,0.12));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);
+label("$2$",(A+B)/2,NW);label("$1$",(B+D)/2,S);label("$30^\circ$",A+(-0.17,-0.62),fontsize(8pt));label("$60^\circ$",B+(0.33,0.13));
+\end{asy}
+
+In the right triangle $ABD$, the side opposite the $30^\circ$ angle is $BD$, so
+\[\sin30^\circ=\dfrac{BD}{AB}=\boxed{\dfrac12}.\]

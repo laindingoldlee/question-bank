@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1381451_mathcounts_state_problem
+% Stable identity: aops-topic-1381451-q01
+Before the return flight the plane is $3+2=5$ miles north and $5+3=8$ miles west of the airport. The direct flight back is the hypotenuse of a right triangle with legs $5$ and $8$:
+\[
+\sqrt{5^2+8^2}=\sqrt{89}\approx9.434\text{ miles}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),P1=(0,3),P2=(-5,3),P3=(-5,5),P4=(-8,5);
+draw(A--P1--P2--P3--P4,linewidth(0.9),MidArrow(4));
+draw(P4--A,red+dashed);
+draw(P4--(-8,0)--A,gray+dotted);
+dot(A);dot(P4);
+label("airport",A,SE);
+label("$3$",(A+P1)/2,E); label("$5$",(P1+P2)/2,S); label("$2$",(P2+P3)/2,E); label("$3$",(P3+P4)/2,N);
+label("$8$",(-4,0),S,gray); label("$5$",(-8,2.5),W,gray);
+label("$\sqrt{89}$",(-5.0,2.81),2.2*S,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The total distance includes the four outbound legs, $3+5+2+3=13$ miles, and the return:
+\[
+13+\sqrt{89}\approx22.434\approx\boxed{22.4\text{ miles}} .
+\]
+Neither student answer is right: $9.4$ is only the return flight, and $18.8=2\sqrt{89}$ counts the straight-line distance twice, but the outbound route is not a straight line; it is $13$ miles long.

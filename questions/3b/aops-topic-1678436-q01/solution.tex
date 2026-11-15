@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1678436_bisector_of_an_angle
+% Stable identity: aops-topic-1678436-q01
+Let $\angle AOB=x$, with $0^\circ<x<90^\circ$. Then $\angle BOC=90^\circ$ and $\angle COD=180^\circ-90^\circ-x=90^\circ-x$. Measure every ray by its angle from $OA$, turning towards $B$; the rays $OB$, $OC$, $OD$ are at $x$, $x+90^\circ$ and $180^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);real x=50;
+pair A=3*dir(0),D=3*dir(180),B=3*dir(x),C=3*dir(x+90);
+pair P=3.2*dir((x+90)/2),Q=3.2*dir((180+x)/2);
+draw(D--A,linewidth(0.9));draw(O--B,linewidth(0.9));draw(O--C,linewidth(0.9));
+draw(O--P,blue+dashed);draw(O--Q,blue+dashed);
+draw(0.45*dir(x)--0.45*dir(x)+0.45*dir(x+90)--0.45*dir(x+90));
+draw(arc(O,1.5,(x+90)/2,(180+x)/2),red);
+label("$45^\circ$",1.95*dir((x+90)/4+(180+x)/4),red);
+label("$A$",A,E);label("$D$",D,W);label("$B$",B,NE);label("$C$",C,NW);label("$O$",O,S);
+label("$P$",P,dir((x+90)/2));label("$Q$",Q,dir((180+x)/2));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The bisector $OP$ of $\angle AOC$ (from $0^\circ$ to $x+90^\circ$) is at $\dfrac{x+90^\circ}{2}$. The bisector $OQ$ of $\angle BOD$ (from $x$ to $180^\circ$) is at $\dfrac{x+180^\circ}{2}$. Hence
+\[
+\angle POQ=\dfrac{x+180^\circ}{2}-\dfrac{x+90^\circ}{2}=\boxed{45^\circ},
+\]
+whatever the value of $x$. (The figure uses $x=50^\circ$.)

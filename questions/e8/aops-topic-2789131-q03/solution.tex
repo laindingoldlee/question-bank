@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2789131_2013_manhattan_mathematical_olympiad_grades_56_problems_14
+% Stable identity: aops-topic-2789131-q03
+Scale the side length to 2. Put $a=1+\sqrt2$ and take the vertices in order as $(-1,-a),(1,-a),(a,-1),(a,1),(1,a),(-1,a),(-a,1),(-a,-1)$. Successive edges all have length 2 and successive directions differ by $45^\circ$, so this is a regular octagon. The rectangle has area $2\cdot2a=4a$. Each outer trapezoid has parallel side lengths 2 and $2a$ and width $a-1=\sqrt2$, hence area $\dfrac{2+2a}{2}\sqrt2=2a$. The two therefore sum to $4a$, as required.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real a=1+sqrt(2);pair[] P={(-1,-a),(1,-a),(a,-1),(a,1),(1,a),(-1,a),(-a,1),(-a,-1)};fill(P[0]--P[1]--P[4]--P[5]--cycle,lightblue);string[] names={"A","B","C","D","E","F","G","H"};for(int k=0;k<8;++k){draw(P[k]--P[(k+1)%8]);label("$"+names[k]+"$",P[k],P[k]);}draw(P[0]--P[5]^^P[1]--P[4],blue);
+\end{asy}

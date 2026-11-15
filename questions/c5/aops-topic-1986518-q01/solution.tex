@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h1986518_decimal_notation
+% Stable identity: aops-topic-1986518-q01
+Each number is $N\cdot R_k$, where $R_k=\underbrace{11\ldots1}_{k}=\dfrac{10^k-1}{9}$. So the sum is $N\cdot S$, where $S$ is a sum of $17$ repunits.
+
+\emph{Last digit.} Every repunit ends in $1$, so $S\equiv17\equiv7\pmod{10}$ and the sum ends in the last digit of $7N$.
+\begin{itemize}
+\item $2052201301$ would need $7N\equiv1\pmod{10}$, so $N=3$; but its digit sum is $16$, so it is not divisible by $3$.
+\item $2052201302$ would need $7N\equiv2$, so $N=6$; its digit sum is $17$, so it is not divisible by $3$ (or $6$).
+\item $2052201303$ needs $N=9$; its digit sum is $18$, so it is divisible by $9$.
+\end{itemize}
+\emph{Construction for $2052201303$ with $N=9$.} If the $17$ numbers use $c_k$ copies of the $k$-digit number $99\ldots9=10^k-1$, the sum is $\sum c_k10^k-17$. We need $\sum c_k10^k=2052201303+17=2052201320$, whose digits $2,0,5,2,2,0,1,3,2,0$ add up to exactly $17$ and whose units digit is $0$. So take
+\[
+c_{9}=2,\ c_{7}=5,\ c_{6}=2,\ c_{5}=2,\ c_{3}=1,\ c_{2}=3,\ c_{1}=2,
+\]
+that is: two copies of $999999999$, five of $9999999$, two of $999999$, two of $99999$, one $999$, three $99$'s and two $9$'s. That is $17$ numbers with sum $2052201320-17=2052201303$.
+
+The smallest possible sum is $\boxed{2052201303}$.

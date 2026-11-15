@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2128244_interesting_problem
+% Stable identity: aops-topic-2128244-q01
+Each car is at distance half a diagonal from the centre $O$, that is, $\dfrac{60\sqrt2}{2}=30\sqrt2$ miles. At $30$ miles per hour the cars meet at $O$ after
+\[\dfrac{30\sqrt2}{30}=\sqrt2\ \text{hours}.\]
+The dragonfly flies at a constant $60$ miles per hour during the whole of this time (its path is sketched below, not to scale in time), so it flies
+\[60\cdot\sqrt2=\boxed{60\sqrt2}\approx84.9\text{ miles}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real hs=3; pair[] K={(-hs,hs),(hs,hs),(hs,-hs),(-hs,-hs)};
+draw(K[0]--K[1]--K[2]--K[3]--cycle,linewidth(0.9));
+for(int i=0;i<4;++i) draw(K[i]--0.12*K[i],gray,Arrow(5));
+real q=(4-sqrt(7))/3; real r0=hs*sqrt(2);
+path pth=r0*dir(135);
+for(int k=1;k<=7;++k) pth=pth--(r0*q^k)*dir(135-90*k);
+draw(pth,heavygreen+linewidth(1));
+for(int k=0;k<=3;++k) dot((r0*q^k)*dir(135-90*k),heavygreen);
+dot((0,0)); label("$O$",(0,0.08),N,fontsize(8pt));
+label("$A$",K[0],NW); label("$B$",K[1],NE); label("$C$",K[2],SE); label("$D$",K[3],SW);
+label("$60$",(K[0]+K[1])/2,N);
+label("$30\sqrt{2}$",(K[3]+0.1*K[3])/2,SE,gray+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+It does not matter that the path is complicated: the dragonfly makes infinitely many ever shorter trips, but only its speed and the total time are needed. (Each trip can be completed, since the dragonfly is faster than the cars; when it leaves one car at distance $\rho$ from $O$, it reaches the next at distance $\dfrac{4-\sqrt7}{3}\rho\approx0.45\rho$, so the trips shrink geometrically.)

@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1592298_hard_riddle
+% Stable identity: aops-topic-1592298-q01
+\textbf{Streets.} The chain alternates boy, girl, boy, \dots, and each street has one boy and one girl.
+\begin{itemize}
+\item Clue 2: Matt is the boy on Oak, so the Walker child is the girl on Oak.
+\item Clue 4: the Douglas boy is the boy on Ash, so Jean is the girl on Ash.
+\item Clue 6: Chuck is the boy on Maple, so the Manning child is the girl on Maple.
+\item Clue 8: Wendy is the girl on Elm, so the Putnam child is the boy on Elm.
+\end{itemize}
+So the boys on Ash and Elm are Roger and Dave (in some order), with surnames Douglas and Putnam.
+
+\textbf{Roger and Dave.} By clue 3, Roger sends to the Maple girl (Manning), who sends to Putnam. If Roger were Putnam, the circle would close after two children, which is impossible. So Roger is Douglas (Ash) and Dave is Putnam (Elm), and the chain contains Roger $\to$ Manning $\to$ Dave.
+
+\textbf{Clayborne.} By clue 7, Dave sends to the Clayborne girl. The surnames Walker and Manning already belong to the girls on Oak and Maple, so the Clayborne girl is Jean (Ash) or Wendy (Elm). Dave lives on Elm, so by clue 1 he does not send to Wendy: the Clayborne girl is Jean, and by clue 7 Jean sends to the Oak boy, Matt. Hence Wendy is Rockwell.
+
+\textbf{Matt, Wendy and Chuck.} Matt (Oak) must send to a girl not on Oak who has not yet received a valentine; Manning and Jean have, so Matt sends to Wendy Rockwell. By clue 9 Matt is Johnson, so Chuck is Baxter. Wendy sends to the only boy left, Chuck, and by clue 5 Chuck sends to Pam. Pam is the remaining girl, the Walker girl on Oak, and she sends to Roger, closing the circle. Finally Barbara is the Manning girl on Maple.
+
+\textbf{Answer.} The circle of valentines is
+\[
+\begin{array}{l}
+\text{Barbara Manning (Maple)}\to\text{Dave Putnam (Elm)}\to\text{Jean Clayborne (Ash)}\to\text{Matt Johnson (Oak)}\\
+\to\text{Wendy Rockwell (Elm)}\to\text{Chuck Baxter (Maple)}\to\text{Pam Walker (Oak)}\to\text{Roger Douglas (Ash)}\to\text{Barbara}.
+\end{array}
+\]
+Every clue checks: for instance, no arrow joins two children of the same street. A complete search over all assignments confirms that this is the only solution.

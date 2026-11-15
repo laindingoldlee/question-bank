@@ -1,0 +1,7 @@
+A unit cube has exactly two painted faces precisely when it lies on an original edge but is not a corner. Each of twelve edges contains $6-2=4$ such cubes, and these sets do not overlap. Thus $12\cdot4=\boxed{48}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(3,0),C=(3,3),D=(0,3),v=(1,1);draw(A--B--C--D--cycle);draw(A+v--B+v--C+v--D+v--cycle,dashed);draw(A--A+v,dashed);draw(B--B+v);draw(C--C+v);draw(D--D+v);for(int k=1;k<6;++k)dot(A+k*(B-A)/6);label("6 unit cubes per edge",(1.5,-.3),(0,-1));
+\end{asy}

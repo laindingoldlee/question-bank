@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1551749_quadratic_inequality_graph_without_using_quadratics_help
+% Stable identity: aops-topic-1551749-q01
+The inequality asks for the values of $x$ at which the parabola $y=x^2-5$ lies \emph{above} the line $y=x+1$.
+
+\textbf{Where they meet.} Setting $x^2-5=x+1$ gives $x^2-x-6=0$, that is $(x-3)(x+2)=0$, so the graphs cross at $x=-2$ (point $(-2,-1)$) and $x=3$ (point $(3,4)$).
+
+\textbf{Reading the graph.}
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return x^2-5;} real g(real x){return x+1;}
+draw((-4.2,0)--(4.8,0),gray(0.3),Arrow(5));draw((0,-6)--(0,8.5),gray(0.3),Arrow(5));
+label("$x$",(4.8,0),E);label("$y$",(0,8.5),N);
+draw(graph(f,-3.5,3.7),blue+linewidth(0.9));
+draw(graph(g,-4,4.3),red+linewidth(0.9));
+draw((-4.2,0)--(-2,0),deepgreen+linewidth(2.5));draw((3,0)--(4.6,0),deepgreen+linewidth(2.5));
+draw((-2,-1)--(-2,0),dashed);draw((3,4)--(3,0),dashed);
+dot((-2,-1));dot((3,4));
+label("$(-2,-1)$",(-2,-1),SE);label("$(3,4)$",(3,4),E);
+label("$y=x^2-5$",(-3.4,6.56),W,blue);label("$y=x+1$",(4.3,5.3),E,red);
+label("$-2$",(-2,0),NE);label("$3$",(3,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Between the crossings (for example at $x=0$: $-5<1$) the parabola is below the line; outside them it is above, because the parabola grows faster than any line. The crossing points themselves are excluded since the inequality is strict. The solution set (thick green on the $x$-axis) is
+\[
+\boxed{x<-2\ \text{ or }\ x>3}.
+\]
+Algebraically this is the same as $(x-3)(x+2)>0$, a product of two factors with the same sign.

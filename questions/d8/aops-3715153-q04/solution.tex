@@ -1,0 +1,8 @@
+(a) The axial cross-section gives $\ell=\sqrt{7^2+24^2}=\boxed{25\text{ cm}}$. (b) Include both the base and curved surface: $S=\pi r^2+\pi r\ell=\pi\cdot7(7+25)=224\pi=\boxed{703.36\text{ cm}^2}$ using the requested approximation.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair V=(0,24),O=(0,0),T=(7,0);draw(shift(O)*scale(7,1.5)*unitcircle);draw((-7,0)--V--T);draw(V--O--T,dashed);label("$24$",(V+O)/2,(-1,0));label("$7$",(O+T)/2,(0,-1));label("$25$",(V+T)/2,(1,0));label("$V$",V,(0,1));label("$O$",O,(-1,-1));
+void ra(pair U,pair V,pair W,real s){pair u=s*unit(U-V),w=s*unit(W-V);draw(V+u--V+u+w--V+w);}
+ra(V,O,T,.8);
+\end{asy}
+

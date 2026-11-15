@@ -1,0 +1,6 @@
+Draw independent $U,V$ uniformly from $[0,1]$, set $r=\sqrt U$, $\theta=2\pi V$, and return $(r\cos\theta,r\sin\theta)$. Then $\Pr(r\le t)=t^2$, exactly the area fraction of a radius-$t$ disk, and the angle is uniform independently; therefore area is uniform throughout the disk. Alternatively repeatedly draw $(x,y)$ uniformly from $[-1,1]^2$ until $x^2+y^2\le1$. Conditioning a uniform square sample on membership in the disk gives uniform area. Choosing radius uniformly would overconcentrate points near the centre.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+draw(unitcircle);draw(circle((0,0),.5),blue);draw((0,0)--(.5,0),blue);label("$t$",(.25,0),(0,1));label("area fraction $t^2$",(0,-1.4));
+\end{asy}
+

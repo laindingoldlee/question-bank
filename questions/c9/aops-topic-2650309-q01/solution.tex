@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2650309_my_secret_book_number
+% Stable identity: aops-topic-2650309-q01
+For the digits $0,8,2,1,7,7,4,8,3$ the weighted sum is
+\[0+16+6+4+35+42+28+64+27=222\equiv2\pmod{11},\]
+but it should be $\equiv8$. Swapping the digits in positions $i<j$ changes the weighted sum by $id_j+jd_i-id_i-jd_j=(j-i)\left(d_i-d_j\right)$. So we need $(j-i)\left(d_i-d_j\right)\equiv6\pmod{11}$, with $1\le j-i\le8$ and $\left|d_i-d_j\right|\le8$.
+
+The products in $[-64,64]$ that are $\equiv6\pmod{11}$ and factor this way are $6,-5,-16,28,-49$. Checking the $36$ pairs of positions against these values (for example, $j-i=1$ needs $d_i-d_j=6$ or $-5$), only two pairs work:
+\begin{itemize}
+\item positions $2,3$: $(3-2)(8-2)=6$;
+\item positions $5,7$: $(7-5)(7-4)=6$.
+\end{itemize}
+So either the 2nd and 3rd digits ($8$ and $2$) were swapped, and the ISBN is $0$-$2817$-$7483$-$8$, or the 5th and 7th digits ($7$ and $4$) were swapped, and it is $0$-$8214$-$7783$-$8$. Both have a correct check digit:
+\[\boxed{\text{positions }2,3\ \text{ or positions }5,7}.\]

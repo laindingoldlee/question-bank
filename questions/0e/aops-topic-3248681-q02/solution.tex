@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3248681_202324_abmc_online_december_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3248681-q02
+The outer triangle contributes one. The first subdivision contributes its four half-side triangles: three corner triangles and the central triangle. The second subdivision contributes four quarter-side triangles inside that central triangle. This totals $1+4+4=\boxed9$. No other size is possible: every drawn edge has one of the three original side directions, and the only supporting lines added in the second stage terminate inside the central triangle, so any triangle using one of them is one of its four subdivisions.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(4,0),C=(2,2sqrt(3)),M=(A+B)/2,Np=(B+C)/2,P=(C+A)/2;draw(A--B--C--cycle);draw(M--Np--P--cycle);draw((M+Np)/2--(Np+P)/2--(P+M)/2--cycle,blue);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+\end{asy}

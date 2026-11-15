@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2711167_sum_of_first_n_kth_powers_is_degree_k__1_polynomial
+% Stable identity: aops-topic-2711167-q01
+Induct on $k$. For $k=0$, $S_0(n)=n$. Summing the binomial expansion
+\[(i+1)^{k+1}-i^{k+1}=\sum_{j=0}^{k}\dbinom{k+1}{j}i^j\]
+over $i=1,\dots,n$, the left side telescopes:
+\[(n+1)^{k+1}-1=\sum_{j=0}^{k}\dbinom{k+1}{j}S_j(n)=(k+1)S_k(n)+\sum_{j=0}^{k-1}\dbinom{k+1}{j}S_j(n).\]
+By the induction hypothesis each $S_j$ with $j<k$ is a polynomial of degree $j+1\le k$. So
+\[S_k(n)=\dfrac{1}{k+1}\left((n+1)^{k+1}-1-\sum_{j=0}^{k-1}\dbinom{k+1}{j}S_j(n)\right)\]
+is a polynomial whose only term of degree $k+1$ is $\dfrac{n^{k+1}}{k+1}$. $\blacksquare$

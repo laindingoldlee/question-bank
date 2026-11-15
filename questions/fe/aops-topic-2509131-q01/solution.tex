@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2509131_geometry_problems
+% Stable identity: aops-topic-2509131-q01
+Two facts about a regular hexagon:
+\begin{itemize}
+\item A regular hexagon inscribed in a circle of radius $r$ has side $r$, since it splits into six equilateral triangles with a common vertex at the centre.
+\item The circle inscribed in a regular hexagon with side $s$ has radius equal to the height of one of these equilateral triangles, $\dfrac{\sqrt3}{2}s$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair[] H1,H2;
+for(int k=0;k<6;++k){H1.push(dir(60k)); H2.push((sqrt(3)/2)*dir(60k+30));}
+draw(H1[0]--H1[1]--H1[2]--H1[3]--H1[4]--H1[5]--cycle,linewidth(0.9));
+draw(circle((0,0),sqrt(3)/2),blue);
+draw(H2[0]--H2[1]--H2[2]--H2[3]--H2[4]--H2[5]--cycle,linewidth(0.7));
+draw(circle((0,0),3/4),red);
+pair O=(0,0); dot(O); label("$O$",O,SW,fontsize(8pt));
+draw(O--(sqrt(3)/2)*dir(-90),blue); label("$r_1$",(sqrt(3)/2)*dir(-90)*0.55,E,blue+fontsize(8pt));
+draw(O--(3/4)*dir(0),red); label("$r_2$",(3/8,0),N,red+fontsize(8pt));
+label("$1$",(H1[4]+H1[5])/2,S,fontsize(8pt));
+\end{asy}
+
+So $r_1=\dfrac{\sqrt3}{2}\cdot1$, and the next hexagon has side $r_1$, so $r_2=\dfrac{\sqrt3}{2}r_1$. In general $r_{k+1}=\dfrac{\sqrt3}{2}r_k$, and
+\[r_n=\left(\dfrac{\sqrt3}{2}\right)^n,\qquad r_{10}=\dfrac{\left(\sqrt3\right)^{10}}{2^{10}}=\dfrac{3^5}{2^{10}}=\boxed{\dfrac{243}{1024}}.\]

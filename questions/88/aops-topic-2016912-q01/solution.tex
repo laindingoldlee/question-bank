@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2016912_hard_problems
+% Stable identity: aops-topic-2016912-q01
+We count triples $\ell\ge w\ge h\ge1$ of integers with $\ell wh=150=2\cdot3\cdot5^2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair o=(0,0); real L=3.2, H=1.4; pair dz=(1.0,0.6);
+draw(o--(L,0)--(L,H)--(0,H)--cycle,linewidth(0.9));
+draw((L,0)--(L,0)+dz--(L,H)+dz--(L,H)); draw((0,H)--dz+(0,H)--(L,H)+dz);
+draw(o--dz--dz+(L,0),dashed); draw(dz--dz+(0,H),dashed);
+label("$\ell$",(L/2,0),S); label("$w$",(L,0)+dz/2,SE); label("$h$",(0,H/2),W);
+label("$\ell w h=150$",(L/2+0.5,H+0.6),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $h^3\le\ell wh=150$, we have $h\le5$, and $h$ must divide $150$, so $h\in\{1,2,3,5\}$. For each $h$, $w$ divides $\dfrac{150}{h}$ with $h\le w$ and $w^2\le\dfrac{150}{h}$:
+\begin{itemize}
+\item $h=1$: $w\ell=150$, $w\le12$: $w\in\{1,2,3,5,6,10\}$, $6$ prisms.
+\item $h=2$: $w\ell=75$, $2\le w\le8$: $w\in\{3,5\}$, $2$ prisms.
+\item $h=3$: $w\ell=50$, $3\le w\le7$: $w=5$, $1$ prism.
+\item $h=5$: $w\ell=30$, $w=5$: $\ell=6$, $1$ prism.
+\end{itemize}
+The total is $6+2+1+1=\boxed{10}$.

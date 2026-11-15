@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3343086_coordinate_system_change
+% Stable identity: aops-topic-3343086-q01
+Write $a-1=3r+s$ and $b-1=3u+v$ with $0\le r,s,u,v\le2$. Then the block begins at column $3s$, row $3r$, and the cell adds offsets $v,u$. Thus $\boxed{c=3((a-1)\bmod3)+(b-1)\bmod3}$ and $\boxed{d=3\lfloor\dfrac{a-1}{3}\rfloor+\lfloor\dfrac{b-1}{3}\rfloor}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=0;i<=9;++i){draw((i,0)--(i,9),i%3==0?black:gray);draw((0,i)--(9,i),i%3==0?black:gray);}for(int r=0;r<3;++r)for(int c=0;c<3;++c)label(string(3*r+c+1),(3*c+1.5,7.5-3*r));label("columns $0$ to $8$",(4.5,9.5));label("rows increase downward",(4.5,-.7));
+\end{asy}

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2794853_2016_geometry_bee_invitational_round
+% Stable identity: aops-topic-2794853-q10
+Use $A=(0,0),B=(3,0),C=(3,3),D=(0,3)$ and put $t=\sqrt3$. Then $E=(t,0)$ and $F=(\dfrac{3+t}{2},\dfrac{3-3t}{2})$. A circle through $B,D$ has equation $x^2+y^2+u(x+y)+w=0$, with $w=-9-3u$. Substituting $F$ yields $u=\dfrac{t}{2}-3$, $w=-\dfrac{3t}{2}$. On $x=3$ its intersections have $y=0$ and $y=3-\dfrac{t}{2}$; on $y=3$ the second coordinate is symmetric. The other roots on $AB,AD$ are $-\dfrac{t}{2}$, outside the square. Therefore $M=(3,3-\dfrac{t}{2})$, $N=(3-\dfrac{t}{2},3)$, and $\boxed{MN=\dfrac{\sqrt6}{2}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real t=sqrt(3),u=t/2-3;pair A=(0,0),B=(3,0),C=(3,3),D=(0,3),E0=(t,0),F=((3+t)/2,(3-3*t)/2),O=(-u/2,-u/2),M=(3,3-t/2),Nn=(3-t/2,3);draw(A--B--C--D--cycle);draw(E0--F--B);draw(D--E0);draw(circle(O,length(O-B)));draw(M--Nn,blue);label("A",A,SW);label("B",B,SE);label("C",C,NE);label("D",D,NW);label("E",E0,N);label("F",F,S);label("M",M,E);label("N",Nn,N);
+\end{asy}

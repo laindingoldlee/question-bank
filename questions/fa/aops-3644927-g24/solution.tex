@@ -1,0 +1,8 @@
+Let $O$ be the circle centre. Projection onto the secant takes the midpoint $O$ of $AC$ to the midpoint of $EF$. The perpendicular from a circle centre to a chord also bisects $BD$, so $EF$ and $BD$ have the same midpoint. Reflection in that midpoint exchanges $E,F$ and $B,D$, hence $DF=EB=\boxed2$.
+
+
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+real R=sqrt(34);pair O=(0,0),A=(-R,0),C=(R,0);real ang=acos(5/R);pair u=(cos(ang),sin(ang)),v=(-u.y,u.x),H=5*v,E=H+dot(A-H,u)*u,F=H+dot(C-H,u)*u,B=H-3*u,D=H+3*u,P=(-5/u.y,0);draw(circle(O,R));draw(P--C);draw(H-5*u--H+5*u,blue);draw(A--E^^C--F,dashed);dot(P);label("$P$",P,(0,-1));label("$A$",A,(-1,1));label("$C$",C,(1,0));label("$E$",E+(-1,-.6));draw(E--E+(-.6,-.35),gray);label("$F$",F,(1,0));label("$B$",B+(1,0));draw(B--B+(.6,0),gray);label("$D$",D,(-1,1));label("$2$",(E+B)/2+(-1.5,0));label("$6$",H,(-1,0));
+\end{asy}
+

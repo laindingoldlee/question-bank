@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1330502_tessellating_shapes
+% Stable identity: aops-topic-1330502-q01
+The interior angle of a regular $n$-gon is $\dfrac{(n-2)180^\circ}{n}$. At each vertex of an edge-to-edge tiling, some number $k\ge3$ of polygons meet and their angles fill $360^\circ$:
+\[
+k\cdot\dfrac{(n-2)180^\circ}{n}=360^\circ\quad\Longleftrightarrow\quad k=\dfrac{2n}{n-2}=2+\dfrac{4}{n-2}.
+\]
+So $n-2$ must divide $4$, giving $n=3,4,6$ (with $k=6,4,3$). For $n>6$ we have $2<k<3$, impossible; $n=5$ gives $k=\dfrac{10}{3}$, also impossible. These three tilings do exist:
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+real h=sqrt(3)/2;
+// triangles
+for(int i=0;i<3;++i){draw((i,0)--(i+1,0)--(i+0.5,h)--cycle); if(i<2) draw((i+0.5,h)--(i+1.5,h)--(i+1,0));}
+// squares
+for(int i=0;i<2;++i) for(int j=0;j<2;++j) draw(shift(4+i,j*0.9)*scale(1,0.9)*unitsquare);
+// hexagons
+path hx=polygon(6);
+for(pair c: new pair[]{(7.8,0.4),(7.8+1.5*0.55,0.4+0.866*0.55),(7.8+1.5*0.55,0.4-0.866*0.55)}) draw(shift(c)*scale(0.55)*hx);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence \textbf{only the equilateral triangle, the square and the regular hexagon} tile the plane. A regular decagon (angle $144^\circ$) and a regular $11$-gon (angle about $147.3^\circ$) cannot. (Non-regular polygons with many sides can tile if they are not convex, so the question is answered for regular polygons.)

@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1387113_forming_triangles
+% Stable identity: aops-topic-1387113-q01
+\textbf{Answer:} $\boxed{\dfrac{n!\,(n-2)!}{(2n-2)!}}$; for example $\dfrac{1}{4}$ for $n=3$ and $\dfrac{1}{15}$ for $n=4$.
+
+\textbf{Reduce to one inequality.} Sort the pieces as $x_1\le x_2\le\dots\le x_n$. Three pieces $a\le b\le c$ form a triangle exactly when $c<a+b$. The hardest triple is the largest piece with the two smallest, so every triple works if and only if
+\[
+x_n<x_1+x_2 .
+\]
+This condition does not change if all lengths are multiplied by the same positive number, so by the stated fact we may replace the pieces by independent exponential variables $E_1,\dots,E_n$ with mean $1$ (dividing by $T$ does not affect the inequality).
+
+\textbf{Spacings of exponentials.} Let $Y_{(1)}\le\dots\le Y_{(n)}$ be the sorted values of $E_1,\dots,E_n$. The minimum of $n$ independent mean-$1$ exponentials is exponential with rate $n$, and by memorylessness, after the $(k-1)$-st smallest value the remaining $n-k+1$ variables start afresh. Hence
+\[
+Y_{(1)}=\dfrac{Z_1}{n},\qquad Y_{(k)}-Y_{(k-1)}=\dfrac{Z_k}{n-k+1}\quad(2\le k\le n),
+\]
+with $Z_1,\dots,Z_n$ independent exponentials of mean $1$.
+
+\textbf{The probability.} Now $Y_{(n)}-Y_{(2)}<Y_{(1)}$ reads
+\[
+\sum_{k=3}^{n}\dfrac{Z_k}{n-k+1}<\dfrac{Z_1}{n},\qquad\text{that is}\qquad Z_1>n\,U,\quad U=\sum_{m=1}^{n-2}\dfrac{Z'_m}{m},
+\]
+where $Z'_m=Z_{n-m+1}$. Given $U$, the probability that $Z_1>nU$ is $e^{-nU}$, and since the $Z'_m$ are independent,
+\[
+P=\mathbb E\left[e^{-nU}\right]=\prod_{m=1}^{n-2}\mathbb E\left[e^{-\dfrac{n}{m}Z'_m}\right]=\prod_{m=1}^{n-2}\dfrac{1}{1+\dfrac{n}{m}}=\prod_{m=1}^{n-2}\dfrac{m}{m+n},
+\]
+using $\mathbb E[e^{-sZ}]=\displaystyle\int_0^\infty e^{-sz}e^{-z}\,dz=\dfrac{1}{1+s}$. Finally $\displaystyle\prod_{m=1}^{n-2}m=(n-2)!$ and $\displaystyle\prod_{m=1}^{n-2}(m+n)=\dfrac{(2n-2)!}{n!}$, so
+\[
+P=\dfrac{n!\,(n-2)!}{(2n-2)!}.
+\]
+For $n=3$ this is the classical answer $\dfrac{3!\cdot1!}{4!}=\dfrac{1}{4}$.

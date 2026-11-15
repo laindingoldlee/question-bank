@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2565287_alex131s_problem_solving_algebra_thread
+% Stable identity: aops-topic-2565287-q06
+If some $a_i=0$, the right side is $0$ and the inequality is clear; equality then forces all $a_i=0$. So assume all $a_i>0$.
+
+\textbf{Lemma.} If $x_1,\dots,x_n>0$ and $x_1x_2\cdots x_n=1$, then $x_1+\cdots+x_n\ge n$, with equality only when all $x_i=1$.
+
+\emph{Proof by induction on $n$.} For $n=1$, $x_1=1$. Let $n\ge2$. If all $x_i=1$ we have equality. Otherwise the largest $x_i$ is greater than $1$ and the smallest is less than $1$; renumber so that $x_{n-1}>1>x_n$. Then $(x_{n-1}-1)(1-x_n)>0$, i.e.
+\[x_{n-1}+x_n>x_{n-1}x_n+1.\]
+The $n-1$ numbers $x_1,\dots,x_{n-2},x_{n-1}x_n$ have product $1$, so by the induction hypothesis their sum is at least $n-1$. Hence
+\[x_1+\cdots+x_n>x_1+\cdots+x_{n-2}+x_{n-1}x_n+1\ge(n-1)+1=n.\]
+So the sum is strictly greater than $n$ unless all $x_i=1$. $\square$
+
+\textbf{The inequality.} Let $G=\sqrt[n]{a_1\cdots a_n}>0$ and $x_i=\dfrac{a_i}{G}$. Then $x_1\cdots x_n=1$, so by the lemma $\dfrac{a_1+\cdots+a_n}{G}\ge n$, which is the AM--GM inequality. Equality holds exactly when all $x_i=1$, i.e. all $a_i=G$. $\blacksquare$

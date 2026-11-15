@@ -1,0 +1,7 @@
+Disjoint externally separated circles have four common tangents. At external tangency the two internal common tangents coincide, leaving exactly three. Thus the circles are externally tangent and the center distance is the sum of the radii, $\boxed{11}$. Intersecting circles have two, internally tangent circles one, and nested non-tangent circles none, so these do not meet the condition.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0),P=(11,0);draw(circle(O,4));draw(circle(P,7));draw((4,-8)--(4,8),blue);real c=-3.0/11,s=sqrt(1-c*c);for(int k:new int[]{-1,1}){pair n=(c,k*s),A=4n,B=P+7n;draw(A-2unit(B-A)--B+2unit(B-A),blue);}draw(O--P,dashed);label("$4$",(2,0),S);label("$7$",(7.5,0),S);label("$O$",O,W);label("$P$",P,E);
+\end{asy}

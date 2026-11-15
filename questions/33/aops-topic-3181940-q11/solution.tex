@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3181940_2022_abmc_online_october_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3181940-q11
+Count by the last layer, carrying whether it is a graham cracker. Start with the fixed bottom graham cracker; each non-graham extension has two choices, while a graham extension is allowed only after a non-graham. After eight layers accept only states ending in non-graham, to allow the fixed top cracker.\begin{verbatim}
+g,ng=1,0
+for k in range(8):g,ng=ng,2*(g+ng)
+print(ng) # 1792
+\end{verbatim}
+Thus $\boxed{1792}$.

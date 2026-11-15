@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2961130_mathematic
+% Stable identity: aops-topic-2961130-q01
+Scale so that $AB=BC=CD=1$ and use complex numbers with $B=0$, $C=1$, $A=u=e^{i\alpha}$, $D=1+w$ with $w=e^{i\beta}$.
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(1,0);pair A=B+dir(110),D=C+dir(-10);pair M=(A+D)/2;
+draw(A--B--C--D--cycle);draw(A--C,dashed);draw(B--D,dashed);draw(B--M--C,dotted);
+label("$A$",A,NW);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NE);label("$M$",M,N);
+\end{asy}
+
+Then $M=\dfrac{u+1+w}2$, $\overrightarrow{MB}$ and $\overrightarrow{MC}$ correspond to $-\dfrac{u+w+1}2$ and $\dfrac{1-u-w}2$. Their dot product is $\dfrac14\left(|u+w|^2-1\right)$, so $\angle BMC=90^\circ$ means $|u+w|=1$, i.e. $2+2\cos(\alpha-\beta)=1$ and $\alpha-\beta=\pm120^\circ$.
+
+The diagonals are $\overrightarrow{AC}=1-e^{i\alpha}=-2i\sin\dfrac\alpha2\exp\left(\dfrac{i\alpha}2\right)$ and $\overrightarrow{BD}=1+e^{i\beta}=2\cos\dfrac\beta2\exp\left(\dfrac{i\beta}2\right)$, with directions $\dfrac\alpha2-90^\circ$ and $\dfrac\beta2$ (up to $180^\circ$). The angle between them is $\left|\dfrac{\alpha-\beta}2-90^\circ\right|=|\pm60^\circ-90^\circ|$, i.e. $30^\circ$ or $150^\circ$. The acute angle is $\boxed{30^\circ}$.

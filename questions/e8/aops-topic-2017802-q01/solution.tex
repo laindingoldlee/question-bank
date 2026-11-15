@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2017802_overlapping_quartercircles
+% Stable identity: aops-topic-2017802-q01
+Let $Q_A$ be the quarter-disc of radius $6$ centred at $A$ (inside the square) and $Q_C$ the quarter-disc centred at $C$. The required region is $Q_A\cap Q_C$, the lens between the two arcs.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(6,0), C=(6,6), D=(0,6);
+path lens=arc(A,B,D)--arc(C,D,B)--cycle;
+fill(lens,paleblue);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(arc(A,B,D),blue+linewidth(0.9)); draw(arc(C,D,B),blue+linewidth(0.9));
+dot(A); dot(B); dot(C); dot(D);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$6$",(A+B)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+First, $Q_A\cup Q_C$ is the whole square. Put $A=(0,0)$ and $C=(6,6)$. If a point $(x,y)$ of the square were in neither quarter-disc, then
+\[
+x^2+y^2>36\quad\text{and}\quad (6-x)^2+(6-y)^2>36 .
+\]
+Adding gives $2x^2-12x+2y^2-12y+72>72$, that is $x(x-6)+y(y-6)>0$, which is impossible because $0\le x\le 6$ and $0\le y\le 6$ make both products at most $0$.
+
+Therefore, by inclusion and exclusion,
+\[
+[Q_A\cap Q_C]=[Q_A]+[Q_C]-[Q_A\cup Q_C]=9\pi+9\pi-36=\boxed{18\pi-36}.
+\]

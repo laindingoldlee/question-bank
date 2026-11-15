@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1508016_help_with_inverse_in_modulo
+% Stable identity: aops-topic-1508016-q01
+\textbf{(a)} Consider the $p-1$ numbers $a\cdot1,\ a\cdot2,\ \dots,\ a\cdot(p-1)$ modulo $p$.
+\begin{itemize}
+\item None is $\equiv0$: $p\mid ax$ would force $p\mid a$ or $p\mid x$ ($p$ is prime), but $1\le a,x\le p-1$.
+\item No two are congruent: if $ax\equiv ay$, then $p\mid a(x-y)$, so $p\mid x-y$, and since $|x-y|<p$, $x=y$.
+\end{itemize}
+So these $p-1$ products have $p-1$ different nonzero remainders; there are only $p-1$ nonzero remainders, so each one, in particular $1$, occurs exactly once. Hence exactly one $b$ in the set has $ab\equiv1$. $\blacksquare$
+
+\textbf{(b)} $b=a$ means $a^2\equiv1$, i.e.\ $p\mid(a-1)(a+1)$, so $p\mid a-1$ or $p\mid a+1$. In the range $1\le a\le p-1$ this means $a=1$ or $a=p-1$; conversely $1\cdot1=1$ and $(p-1)^2=p(p-2)+1\equiv1$. $\blacksquare$
+
+Consequently the numbers $2,3,\dots,p-2$ split into pairs $\{a,b\}$ with $ab\equiv1$; their product is $\equiv1$, which gives Wilson's theorem $(p-1)!\equiv1\cdot(p-1)\equiv-1\pmod p$. For a composite modulus inverses can fail to exist: modulo $6$, $2x$ is never $\equiv1$.

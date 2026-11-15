@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1589461_estimation
+% Stable identity: aops-topic-1589461-q01
+Write $5^{345}=\dfrac{10^{345}}{2^{345}}$ and estimate $2^{345}=2^5\cdot\left(2^{10}\right)^{34}=32\cdot1024^{34}$.
+
+\textbf{A lower bound for $2^{345}$.} Since $1024>10^3$, $2^{345}>32\cdot10^{102}=3.2\cdot10^{103}$. Hence
+\[
+5^{345}<\dfrac{10^{345}}{3.2\cdot10^{103}}=3.125\cdot10^{241}.
+\]
+
+\textbf{An upper bound for $2^{345}$.} Using $1+t\le e^t$,
+\[
+1024^{34}=10^{102}\cdot1.024^{34}\le10^{102}\cdot e^{0.024\cdot34}=10^{102}\cdot e^{0.816}<10^{102}\cdot e<3.125\cdot10^{102},
+\]
+so $2^{345}<32\cdot3.125\cdot10^{102}=10^{104}$, and therefore $5^{345}>\dfrac{10^{345}}{10^{104}}=10^{241}$.
+
+\textbf{Conclusion.} We have shown
+\[
+10^{241}<5^{345}<3.125\cdot10^{241}.
+\]
+The neighbouring powers of ten are $10^{241}$ and $10^{242}$, and $5^{345}$ is much closer to the first (the midpoint is $5.5\cdot10^{241}$; even on a logarithmic scale the midpoint is $\sqrt{10}\cdot10^{241}\approx3.16\cdot10^{241}$). So the nearest power of ten is $\boxed{10^{241}}$. (In fact $5^{345}\approx1.395\cdot10^{241}$.)

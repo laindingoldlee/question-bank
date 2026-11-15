@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1290331_intro_to_geometry_aops_square_problems
+% Stable identity: aops-topic-1290331-q03
+If $ABCD$ has side $s$, its diagonal is $AC=s\sqrt2$ by the Pythagorean theorem.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(2,0),C=(2,2),D=(0,2); pair F=C+(-2,2),G=A+(-2,2);
+draw(A--B--C--D--cycle,blue); draw(A--C--F--G--cycle,red);
+label("$A$",A,S); label("$B$",B,SE); label("$C$",C,E); label("$D$",D,SE); label("$F$",F,N); label("$G$",G,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $[ACFG]=AC^2=2s^2$ and $[ABCD]=s^2$, giving
+\[
+\dfrac{[ACFG]}{[ABCD]}=\boxed{2}.
+\]

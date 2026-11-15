@@ -1,0 +1,20 @@
+Scale the ray parameter so that $A,B,C,D$ have parameters $1,r,r^2,r^3$, where $r>1$. Its coordinates are
+\[
+x=a(1-\dfrac{t}{r^2}),\qquad y=2(1-\dfrac{t}{r}).
+\]
+Put $K=\dfrac{a^2}{9}$. Substitution into the ellipse gives a quadratic in $t$ with roots $1,r^3$:
+\[
+\left(\dfrac{K}{r^4}+\dfrac{1}{r^2}\right)t^2
+-2\left(\dfrac{K}{r^2}+\dfrac{1}{r}\right)t+K=0.
+\]
+The product of roots yields $K=\dfrac{r^2}{(r-1)}$. The sum then yields $1+r^3=4r-2$, or $(r-1)(r^2+r-3)=0$. Therefore $r=\dfrac{(\sqrt{13}-1)}{2}$ and $K=2+\sqrt{13}$, giving
+\[
+\boxed{a=3\sqrt{2+\sqrt{13}}}.
+\]
+Conversely these values in the parametrisation give exactly the required intersections and order, so the configuration exists.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real r=(sqrt(13)-1)/2,a=3sqrt(2+sqrt(13));pair F(real t){return (a*(1-t/r^2),2*(1-t/r));}draw(xscale(3)*yscale(2)*unitcircle);draw((-3.5,0)--(8,0),gray);draw((0,-2.5)--(0,2.5),gray);draw(F(0)--F(r^3+.08),red);pair[] Z={F(0),F(1),F(r),F(r^2),F(r^3)};string[] n={"P","A","B","C","D"};for(int j=0;j<5;++j){dot(Z[j]);label("$"+n[j]+"$",Z[j],j%2==0?NE:SW);} 
+\end{asy}

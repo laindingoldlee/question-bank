@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1967658_help_me_on_this_mathcounts_problem
+% Stable identity: aops-topic-1967658-q01
+\textbf{Mass points.} Put masses on the vertices so that $E$ and $D$ are balance points. For $E$ on $AB$ with $AE:EB=3:2$ we need $3m_A=2m_B$; for $D$ on $AC$ with $AD:DC=1:4$ we need $m_A=4m_C$. Take $m_A=2$, $m_B=3$, $m_C=\dfrac{1}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.6,4),B=(0,0),C=(5.5,0);
+pair Ep=A+3/5*(B-A),D=A+1/5*(C-A);pair F=extension(B,D,C,Ep);
+draw(A--B--C--cycle,linewidth(1));draw(B--D);draw(C--Ep);
+dot(A);dot(B);dot(C);dot(D);dot(Ep);dot(F);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NE);label("$E$",Ep,W);label("$F$",F,SE);
+label("$3$",(A+Ep)/2,W);label("$2$",(Ep+B)/2,W);label("$1$",(A+D)/2,NE);label("$4$",(D+C)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then $E$ carries mass $m_A+m_B=5$, and $F$ is the balance point of segment $EC$ with masses $5$ at $E$ and $\dfrac{1}{2}$ at $C$. The lever rule gives
+\[
+\dfrac{EF}{FC}=\dfrac{m_C}{m_E}=\dfrac{\dfrac{1}{2}}{5}=\boxed{\dfrac{1}{10}} .
+\]
+\textbf{Check with Menelaus.} Line $BFD$ crosses the sides of triangle $AEC$ (with $B$ on the extension of $AE$). Menelaus' theorem gives
+\[
+\dfrac{AB}{BE}\cdot\dfrac{EF}{FC}\cdot\dfrac{CD}{DA}=1\quad\Longrightarrow\quad \dfrac{5}{2}\cdot\dfrac{EF}{FC}\cdot4=1\quad\Longrightarrow\quad\dfrac{EF}{FC}=\dfrac{1}{10} .
+\]

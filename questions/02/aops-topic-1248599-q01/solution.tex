@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1248599_symmetry_of_a_cube
+% Stable identity: aops-topic-1248599-q01
+A plane of symmetry of a cube passes through its centre and maps the cube to itself. There are two kinds.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+import three; currentprojection=orthographic(4,2.5,2);
+draw(unitbox,gray);
+draw(surface((0.5,0,0)--(0.5,1,0)--(0.5,1,1)--(0.5,0,1)--cycle),lightblue+opacity(0.6));
+draw(surface((0,0,0)--(1,1,0)--(1,1,1)--(0,0,1)--cycle),pink+opacity(0.6));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item Planes parallel to a pair of faces, through the midpoints of the four edges perpendicular to them (blue): one for each pair of opposite faces, $3$ planes.
+\item Planes through two opposite edges, containing a diagonal of two opposite faces (pink): there are $12$ edges forming $6$ pairs of opposite edges, giving $6$ planes.
+\end{itemize}
+No other plane works (a symmetry plane must map vertices to vertices and so must be one of these). In total $3+6=\boxed{9}$ planes.

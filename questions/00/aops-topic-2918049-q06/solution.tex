@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2918049_argentina_nmo_round_2_intercollegiate_geo__level_1_1995__2005
+% Stable identity: aops-topic-2918049-q06
+$\angle C=45^\circ$. Triangle $ABP$ is isosceles with apex angle $180^\circ-70^\circ=110^\circ$, so $\angle APB=35^\circ$. Triangle $ACQ$ is isosceles with apex angle $135^\circ$, so $\angle AQC=22.5^\circ$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(4,0);pair A=extension(B,B+dir(70),C,C+dir(135));pair P=B-length(A-B)*(1,0),Q=C+length(A-C)*(1,0);draw(P--Q);draw(P--A--Q);draw(A--B);draw(A--C);
+label("$A$",A,N);label("$B$",B,S);label("$C$",C,S);label("$P$",P,S);label("$Q$",Q,S);
+\end{asy}
+
+In triangle $APQ$, the angles at $P$ and $Q$ are $35^\circ$ and $22.5^\circ$. For a circumcentre, $\angle OAQ=90^\circ-\angle APQ$ and $\angle OAP=90^\circ-\angle AQP$ (both angles are acute). So $\angle OAQ=\boxed{55^\circ}$ and $\angle OAP=\boxed{67.5^\circ}$. Their sum, $122.5^\circ$, equals $\angle PAQ$, as it should.

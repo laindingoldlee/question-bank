@@ -1,0 +1,8 @@
+In one diagonal direction there are eight odd-length diagonals, each requiring an empty cell. All these diagonals lie on one checkerboard colour. In the other direction there are eight odd-length diagonals on the opposite colour, also requiring eight empty cells. Thus at least sixteen cells are empty, giving at most $48$ tokens. For equality, leave both longest diagonals empty and fill every other cell. Each row and column loses two cells. Each short odd-length diagonal loses one cell, every other short even-length diagonal loses none, and each longest diagonal loses all eight. All line counts are even, so the maximum is $\boxed{48}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"", "X", "X", "X", "X", "X", "X", ""}, {"X", "", "X", "X", "X", "X", "", "X"}, {"X", "X", "", "X", "X", "", "X", "X"}, {"X", "X", "X", "", "", "X", "X", "X"}, {"X", "X", "X", "", "", "X", "X", "X"}, {"X", "X", "", "X", "X", "", "X", "X"}, {"X", "", "X", "X", "X", "X", "", "X"}, {"", "X", "X", "X", "X", "X", "X", ""}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("X means a token; the two long diagonals are empty",(4.0,-8.2));
+\end{asy}

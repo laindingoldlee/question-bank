@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2497539_word_combinatorics
+% Stable identity: aops-topic-2497539-q01
+TOILETPAPER has $11$ letters: T, E and P twice each, and O, I, L, A, R once each.
+
+\textbf{(a)} There are $\dfrac{11!}{2!\,2!\,2!}=4989600$ arrangements in all. Gluing the two T's into one block gives $\dfrac{10!}{2!\,2!}=907200$ arrangements with the T's together; likewise $907200$ with the P's together; and gluing both pairs gives $\dfrac{9!}{2!}=181440$ with both together. By inclusion--exclusion the answer is
+\[4989600-2\cdot907200+181440=\boxed{3356640}.\]
+
+\textbf{(b)} First arrange the other seven letters O, I, L, E, E, A, R: $\dfrac{7!}{2!}=2520$ ways. They create $8$ gaps (including both ends), and the T's and P's go into gaps, letters in the same gap standing together. A T is next to a P exactly when some gap contains both a T and a P. So the condition is that every gap contains only T's or only P's.
+\begin{itemize}
+\item The two T's go into one gap ($8$ ways) or into two different gaps ($\dbinom82=28$ ways).
+\item The P's then use the remaining gaps: if the T's used one gap, $7+\dbinom72=28$ ways; if two gaps, $6+\dbinom62=21$ ways.
+\end{itemize}
+This gives $8\cdot28+28\cdot21=812$ ways to place the T's and P's, and the answer is $812\cdot2520=\boxed{2046240}$.

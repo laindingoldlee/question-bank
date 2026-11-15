@@ -1,0 +1,12 @@
+Write the diameter endpoints as $C_1\pm u$ and $C_2\pm v$, with $|u|=|v|=1$, and put $w=C_2-C_1$. A common point of the arcs is at distance $1$ from each center, so $|w|\le2$. The scalar triple product formula for tetrahedron volume gives
+\[
+V=\dfrac{2}{3}|w\cdot(u\times v)|
+\le\dfrac{2}{3}|w|\,|u\times v|\le\dfrac{4}{3}.
+\]
+To attain equality, choose endpoints $(\pm1,0,1)$ and $(0,\pm1,-1)$. Take the semicircle in the plane $y=0$ with center $(0,0,1)$ that passes through the origin, and the semicircle in $x=0$ with center $(0,0,-1)$ that also passes through the origin. They meet at the origin, and $u=(1,0,0),v=(0,1,0),w=(0,0,-2)$ make the bound an equality. Therefore $\boxed{V_{\max}=\dfrac{4}{3}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;pair pr(real x,real y,real z){return (x+.55*y,z+.25*y);}pair A=pr(-1,0,1),B=pr(1,0,1),C=pr(0,-1,-1),D=pr(0,1,-1),O=pr(0,0,0);draw(A--B--C--D--A);draw(A--C);draw(B--D,dashed);pair f(real t){return pr(cos(t),0,1-sin(t));}pair g(real t){return pr(0,cos(t),-1+sin(t));}draw(graph(f,0,pi),blue);draw(graph(g,0,pi),red);dot(O);label("$A$",A,(-1,1));label("$B$",B,(1,1));label("$C$",C,(-1,-1));label("$D$",D,(1,-1));label("$O$",O,(1,0));
+\end{asy}

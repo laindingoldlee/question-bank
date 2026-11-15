@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2319666_a_lot_of_not_very_hard_cp_problems_keeping_yall_busy
+% Stable identity: aops-topic-2319666-q05
+Number the places $1$ to $8$. ``Geoff is not next to anyone who is next to Betty'' means that Geoff is not two places away from Betty. (If Geoff stands next to Betty, his other neighbour is two places from Betty, and Betty is not next to herself, so that is allowed.)
+
+Use inclusion-exclusion on the $8!=40320$ line-ups.
+\begin{itemize}
+\item Charlie next to Danny: $7$ adjacent pairs of places, $2$ orders, $6!$ for the rest: $7\cdot2\cdot720=10080$.
+\item Geoff two places from Betty: $6$ pairs of places $\{i,i+2\}$, $2$ orders, $6!$ for the rest: $6\cdot2\cdot720=8640$.
+\item Both: count pairs of disjoint places $\{i,i+1\}$ and $\{j,j+2\}$. For $i=1,2,\dots,7$ the number of $j\in\{1,\dots,6\}$ with $j\notin\{i-2,i-1,i,i+1\}$ is $4,3,2,2,2,3,4$, a total of $20$. Each gives $2\cdot2\cdot4!=96$ line-ups: $1920$.
+\end{itemize}
+Hence the number of allowed line-ups is
+\[40320-10080-8640+1920=\boxed{23520}.\]

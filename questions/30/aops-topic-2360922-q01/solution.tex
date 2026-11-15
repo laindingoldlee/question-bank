@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2360922_parabola_question
+% Stable identity: aops-topic-2360922-q01
+A point $(x,y)$ is on the parabola when its distance to the focus equals its distance to the directrix:
+\[\sqrt{(x-1)^2+(y-1)^2}=\dfrac{|x+y|}{\sqrt2}.\]
+Squaring and multiplying by $2$:
+\[2(x-1)^2+2(y-1)^2=(x+y)^2\iff x^2-2xy+y^2-4x-4y+4=0\iff\boxed{(x-y)^2=4(x+y-1)}.\]
+The axis is the line through the focus perpendicular to the directrix, which is the line $\boxed{y=x}$, and the vertex is midway between $F$ and the foot $(0,0)$ of the perpendicular from $F$ to the directrix: $V=\left(\dfrac12,\dfrac12\right)$ (indeed $(0)^2=4(1-1)$).
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair Fp=(1,1);
+pair f(real t){ real u=(t^2+2)/(2*sqrt(2)); return ((u+t)/sqrt(2),(u-t)/sqrt(2)); }
+draw((-1.6,0)--(4.2,0),Arrow(5)); draw((0,-1.6)--(0,4.2),Arrow(5));
+draw(graph(f,-2.5,2.5),blue+linewidth(0.9));
+draw((-1.5,1.5)--(1.5,-1.5),red+dashed); label("$x+y=0$",(-1.5,1.5),W,red+fontsize(8pt));
+draw((-0.8,-0.8)--(3.6,3.6),dotted); label("axis $y=x$",(3.6,3.6),NE,fontsize(8pt));
+dot(Fp); label("$F(1,1)$",Fp,NE,fontsize(8pt)); dot((0.5,0.5)); label("$V$",(0.5,0.5),1.5*dir(-80),fontsize(8pt));
+\end{asy}
+
+So \textbf{yes}: this parabola's axis, $y=x$, is parallel to neither coordinate axis. (In general, a parabola can have any line as its axis; its equation then contains an $xy$ term.)

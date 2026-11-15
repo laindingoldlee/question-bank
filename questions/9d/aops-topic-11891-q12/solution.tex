@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h11891_toppers_random_nats_problems
+% Stable identity: aops-topic-11891-q12
+Let the bisectors meet at $P$, and write $\angle BAC=2\alpha$ and $\angle CBD=2\beta$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0.0000,0.0000),B=(4.0000,0.0000),C=(1.3054,1.5557),P=(4.5712,2.1316),D=(6.2,0);
+draw(A--D,linewidth(0.9)); draw(A--C--B,linewidth(0.9));
+draw(A--P,blue); draw(B--P,red);
+draw(arc(P,0.7,degrees(A-P),degrees(B-P)),linewidth(0.6));
+label("$50^\circ$",P+1.0*dir((degrees(A-P)+degrees(B-P))/2),dir((degrees(A-P)+degrees(B-P))/2),fontsize(9pt));
+dot(A);dot(B);dot(C);dot(P);dot(D);
+label("$A$",A,SW); label("$B$",B,S); label("$C$",C,N); label("$P$",P,N); label("$D$",D,S);
+label("$\alpha$",A+0.9*dir(37.5),fontsize(8pt)+blue); label("$\alpha$",A+0.9*dir(12.5),fontsize(8pt)+blue);
+label("$\beta$",B+0.75*dir(112.5),fontsize(8pt)+red); label("$\beta$",B+0.75*dir(37.5),fontsize(8pt)+red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The exterior angle at $B$ equals the sum of the two remote interior angles: $2\beta=2\alpha+\angle C$, so $\beta-\alpha=\dfrac{\angle C}{2}$.
+
+In triangle $ABP$, the angle at $A$ is $\alpha$, and the angle at $B$ is $\angle ABC+\beta=(180^\circ-2\beta)+\beta=180^\circ-\beta$. Hence
+\[
+\angle APB=180^\circ-\alpha-(180^\circ-\beta)=\beta-\alpha=\dfrac{\angle C}{2}.
+\]
+Since $\angle APB=50^\circ$, $\angle C=\boxed{100^\circ}$.

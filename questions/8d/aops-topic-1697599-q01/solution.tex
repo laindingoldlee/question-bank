@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1697599_2016_mathcounts_school_sprint_24
+% Stable identity: aops-topic-1697599-q01
+Since $\angle CBA=90^\circ$, the bisector makes $\angle ABD=\angle DBC=45^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(4,0),A=(0,4/Tan(40));
+pair D=extension(B,(1,1),A,C);
+draw(A--B--C--cycle,linewidth(0.9));draw(B--D,linewidth(0.7));
+real q=0.3; draw((0,q)--(q,q)--(q,0),linewidth(0.5));
+draw(arc(A,0.8,-90,degrees(C-A)),linewidth(0.5));label("$40^\circ$",A+1.35*dir(-70));
+draw(arc(B,0.9,45,90),linewidth(0.5));draw(arc(B,1.05,0,45),linewidth(0.5));
+label("$45^\circ$",B+1.35*dir(67.5));label("$45^\circ$",B+1.5*dir(22));
+draw(arc(D,0.55,degrees(C-D),degrees(B-D)),red+linewidth(0.6));label("$x$",D+0.9*dir((degrees(C-D)+degrees(B-D))/2),red);
+dot(D);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The angle $\angle BDC$ is an exterior angle of triangle $ABD$ at $D$, so it equals the sum of the two remote interior angles:
+\[
+\angle BDC=\angle BAD+\angle ABD=40^\circ+45^\circ=\boxed{85^\circ}.
+\]
+(Check in triangle $BDC$: $\angle C=50^\circ$, and $45^\circ+50^\circ+85^\circ=180^\circ$.)

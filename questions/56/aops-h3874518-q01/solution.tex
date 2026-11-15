@@ -1,0 +1,11 @@
+The sample square has area $100$. When $X>7$, the first conclusion is automatic and the second implication has false premise, so this entire width-three strip is allowed. For $X<7$, failure occurs exactly when $|X-Y|\le2$. The failing vertical length is $X+2$ for $0\le X\le2$, and $4$ for $2\le X\le7$. Hence the failing area is
+\[
+\int_0^2(X+2)\,dX+\int_2^7 4\,dX=6+20=26.
+\]
+The line $X=7$ has probability zero. Therefore the probability is $\dfrac{74}{100}=\dfrac{37}{50}$, giving $\boxed{m+n=87}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(box((0,0),(10,10)));filldraw((0,0)--(2,0)--(7,5)--(7,9)--(0,2)--cycle,lightred,red);draw((7,0)--(7,10),dashed);label("$X$",(10,0),(1,0));label("$Y$",(0,10),(0,1));label("failure",(4.5,4));label("$7$",(7,0),(0,-1));
+\end{asy}

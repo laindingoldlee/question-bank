@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2570349_fun_question
+% Stable identity: aops-topic-2570349-q01
+Place the octagon with centre $O$ so that four of its sides are horizontal or vertical, and take the midpoints $M_1,M_2,M_3,M_4$ of these four sides; they are every other side's midpoints. Each $M_i$ is at distance $a$ (the apothem) from $O$, and $OM_1\perp OM_2$, so $M_1M_2M_3M_4$ is a square with diagonals of length $2a$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real a=5+5*sqrt(2);
+pair[] V={(5,-a),(a,-5),(a,5),(5,a),(-5,a),(-a,5),(-a,-5),(-5,-a)};
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--V[7]--cycle,linewidth(0.9));
+pair M1=(a,0),M2=(0,a),M3=(-a,0),M4=(0,-a);
+draw(M1--M2--M3--M4--cycle,blue+linewidth(0.9));draw((0,0)--M1,dashed);draw((0,0)--M2,dashed);dot((0,0));
+dot(M1);dot(M2);dot(M3);dot(M4);label("$O$",(0,0),SW);
+label("$M_1$",M1,E);label("$M_2$",M2,N);label("$M_3$",M3,W);label("$M_4$",M4,S);
+label("$5$",(a,2.5),E,fontsize(8pt));label("$10$",(V[2]+V[3])/2,NE,fontsize(8pt));label("$5$",(2.5,a),S,fontsize(8pt));
+label("$a$",(a/2,0),S,fontsize(8pt));
+\end{asy}
+
+Each slanted side of length $10$ has horizontal and vertical projections $\dfrac{10}{\sqrt2}=5\sqrt2$. Going from $M_1$ up half a side, then along a slanted side, then left half a side to $M_2$ shows
+\[a=5+5\sqrt2.\]
+A square with diagonal $2a$ has area $\dfrac{(2a)^2}2=2a^2$, so the area is
+\[2\left(5+5\sqrt2\right)^2=50\left(1+\sqrt2\right)^2=50\left(3+2\sqrt2\right)=\boxed{150+100\sqrt2}\ \text{square inches}.\]
+(The side of the square is $a\sqrt2=10+5\sqrt2$, which agrees with the poster's computation $\dfrac5{\sqrt2}+10+\dfrac5{\sqrt2}$. If instead every other \emph{vertex} were joined, the area would be $200+100\sqrt2$.)

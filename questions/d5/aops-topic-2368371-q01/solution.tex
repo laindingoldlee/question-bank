@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h2368371_parabola_and_circle_tangent_to_each_other
+% Stable identity: aops-topic-2368371-q01
+\textbf{Condition for tangency.} Write the parabola as $F(x,y)=y+x^2+1=0$ and the circle as $G(x,y)=x^2+(y+a)^2-1=0$. At a common point the curves have the same tangent line exactly when the normal vectors $(2x,1)$ and $(2x,2(y+a))$ are parallel:
+\[2x\cdot2(y+a)-2x\cdot1=0\iff x\bigl(2(y+a)-1\bigr)=0.\]
+
+\textbf{Case $x=0$.} Then $y=-1$ on the parabola, and the circle passes through $(0,-1)$ when $(a-1)^2=1$, i.e. $a=0$ or $a=2$.
+
+\textbf{Case $x\ne0$.} Then $y=\dfrac12-a$, and the parabola gives $x^2=-y-1=a-\dfrac32$, which must be positive. The circle gives $x^2+(y+a)^2=1$, i.e. $a-\dfrac32+\dfrac14=1$, so $a=\dfrac94$. Then $y=-\dfrac74$ and $x=\pm\dfrac{\sqrt3}{2}$: the curves touch at two symmetric points.
+
+So the values are $\boxed{a=0,\ a=2,\ a=\dfrac94}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(10cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return -x^2-1;}
+void panel(pair c, real a, string s){
+  draw(shift(c)*((-1.8,0)--(1.8,0)),gray); draw(shift(c)*((0,-3.6)--(0,0.8)),gray);
+  draw(shift(c)*graph(f,-1.6,1.6),blue+linewidth(0.9));
+  draw(circle(c+(0,-a),1),red+linewidth(0.9));
+  dot(c+(0,-a),red);
+  label(s,c+(0,-3.6),S,fontsize(8pt));
+}
+panel((0,0),0,"$a=0$"); dot((0,-1));
+panel((4,0),2,"$a=2$"); dot((4,-1)); dot((4+1,-2),heavygreen); dot((4-1,-2),heavygreen);
+panel((8,0),9/4,"$a=\dfrac94$"); dot((8+sqrt(3)/2,-7/4)); dot((8-sqrt(3)/2,-7/4));
+\end{asy}
+
+\textbf{Other common points.} Substituting $x^2=-y-1$ into the circle gives $y^2+(2a-1)y+a^2-2=0$, and each root $y\le-1$ gives the common points with that $y$.
+\begin{itemize}
+\item $a=0$: $y^2-y-2=0$, $y=-1$ or $y=2$; only $y=-1$ is possible, so $(0,-1)$ is the only common point.
+\item $a=2$: $y^2+3y+2=0$, $y=-1$ or $y=-2$. Besides the tangency at $(0,-1)$, the curves meet at $(\pm1,-2)$, where they cross: there the parabola has slope $\mp2$, while the circle has a vertical tangent, because $(\pm1,-2)$ is level with its centre $(0,-2)$.
+\item $a=\dfrac94$: $y^2+\dfrac72y+\dfrac{49}{16}=\left(y+\dfrac74\right)^2=0$, a double root, so the only common points are the two points of tangency.
+\end{itemize}
+So only for $\boxed{a=2}$ do the curves also cross at other points.

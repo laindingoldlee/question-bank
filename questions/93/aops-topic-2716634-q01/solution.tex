@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2716634_not_amc_problem
+% Stable identity: aops-topic-2716634-q01
+Reflect $A$ in the $y$-axis to $A'(-2,7)$ and $B$ in the $x$-axis to $B'(6,-1)$. For touching points $T_1$ on the $y$-axis and $T_2$ on the $x$-axis, the path length is $AT_1+T_1T_2+T_2B=A'T_1+T_1T_2+T_2B'\ge A'B'$. Equality holds on the segment $A'B'$, which meets the $y$-axis at $(0,5)$ and then the $x$-axis at $(5,0)$, in the required order. So
+\[d^2=A'B'^2=8^2+8^2=\boxed{\textbf{(d)}\ 128}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(2,7),B=(6,1),Ap=(-2,7),Bp=(6,-1),T1=(0,5),T2=(5,0);
+draw((-2.8,0)--(7,0),gray,Arrow(4));draw((0,-1.8)--(0,8),gray,Arrow(4));
+draw(A--T1--T2--B,linewidth(0.9));draw(Ap--T1,dashed);draw(T2--Bp,dashed);
+dot(A);dot(B);dot(Ap);dot(Bp);dot(T1);dot(T2);
+label("$A(2,7)$",A,NE,fontsize(7pt));label("$B(6,1)$",B,NE,fontsize(7pt));label("$A'(-2,7)$",Ap,W,fontsize(7pt));label("$B'(6,-1)$",Bp,SE,fontsize(7pt));
+label("$(0,5)$",T1,E,fontsize(7pt));label("$(5,0)$",T2,SW,fontsize(7pt));
+\end{asy}
+
+(The path through the origin has length $\sqrt{53}+\sqrt{37}\approx13.36>\sqrt{128}\approx11.31$.)

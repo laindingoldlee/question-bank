@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1349530_christmas_special_day_4
+% Stable identity: aops-topic-1349530-q01
+The diagonals of a kite are perpendicular, and one of them (the axis of symmetry) bisects the other. They divide the kite into four right triangles:
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(0,0),B=(12,8),C=(58,0),D=(12,-8),O=(12,0);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,blue); draw(B--D,red);
+draw(ra(O,C-O,B-O,2.2));
+draw(B--(-5,8),gray+dotted); draw(D--(-5,-8),gray+dotted);
+draw(A--(0,-12),gray+dotted); draw(C--(58,-12),gray+dotted);
+draw((-4,-8)--(-4,8),red,Arrows(TeXHead)); draw((0,-11)--(58,-11),blue,Arrows(TeXHead));
+label("$24$",(-4,0),W,red); label("$58$",(29,-11),S,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+If the axis is split into pieces $p$ and $q$ with $p+q=58$, the two triangles on one side of the axis have total area $\dfrac{12p}{2}+\dfrac{12q}{2}=6\cdot58$, and the same holds on the other side. So the area is
+\[
+\dfrac{24\cdot58}{2}=\boxed{696}.
+\]

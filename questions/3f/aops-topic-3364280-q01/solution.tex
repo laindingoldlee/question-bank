@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h3364280_abcxabc_or_abcxxabc
+% Stable identity: aops-topic-3364280-q01
+Every four-digit $n$ has $1000\le n\le9999$, and its square has seven or eight digits. Therefore the following exhaustive loop covers precisely the required domain; its string slices preserve zeroes in the final three places. Equality of strings implements (a), while equality of sets implements the different rule in (b). It returns $\boxed{4}$ and $\boxed{42}$ respectively.\begin{verbatim}
+exact=[]
+same_set=[]
+for n in range(1000,10000):
+    s=str(n*n)
+    if s[:3]==s[-3:]:
+        exact.append(n)
+    if set(s[:3])==set(s[-3:]):
+        same_set.append(n)
+print(len(exact),len(same_set)) # 4 42
+\end{verbatim}

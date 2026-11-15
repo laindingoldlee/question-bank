@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1405948_geometry_problem
+% Stable identity: aops-topic-1405948-q01
+Let the sheet be $ABCD$ with $AB=8$, $BC=6$, and fold $A$ onto $C$. Every point of the crease is equidistant from $A$ and $C$, so the crease is the part of the perpendicular bisector of $AC$ inside the rectangle; it passes through the centre $M$, and it meets $AB$ at $X$ and $CD$ at $Y$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(0,0),B=(8,0),C=(8,6),D=(0,6);
+pair X=(6.25,0),Y=(1.75,6),M=(4,3);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,gray+dashed);
+draw(X--Y,red+linewidth(0.9));
+draw(ra(M,C-M,Y-M,0.35));
+dot(A);dot(B);dot(C);dot(D);dot(X,red);dot(Y,red);dot(M);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$X$",X,S,red); label("$Y$",Y,N,red); label("$M$",(4.8,2.85));
+label("$8$",(4,0),S); label("$6$",(0,3),W);
+label("$x$",(3.2,0),N); label("$8-x$",(7.1,0),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Let $AX=x$. Then $XC=XA=x$ and $XB=8-x$, so in right triangle $XBC$
+\[
+(8-x)^2+6^2=x^2\quad\Longrightarrow\quad 100=16x\quad\Longrightarrow\quad x=\dfrac{25}{4}.
+\]
+The diagonal is $AC=10$, so $AM=5$, and in right triangle $AMX$
+\[
+MX=\sqrt{AX^2-AM^2}=\sqrt{\dfrac{625}{16}-25}=\sqrt{\dfrac{225}{16}}=\dfrac{15}{4}.
+\]
+By symmetry about $M$, $MY=MX$, so the crease has length $XY=2\cdot\dfrac{15}{4}=\boxed{\dfrac{15}{2}}$.

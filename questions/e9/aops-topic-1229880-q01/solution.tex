@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1229880_basic_trigo
+% Stable identity: aops-topic-1229880-q01
+$\sin u=\cos\left(u-\dfrac{\pi}{2}\right)$, so $\sin\left(\theta+\dfrac{\pi}{4}\right)=\cos\left(\theta-\dfrac{\pi}{4}\right)=\cos\left(\theta+\dfrac{7\pi}{4}\right)$, using period $2\pi$. The answer is $\boxed{\text{(E)}}$. (The others are $-\sin$, $-\sin$, $-\cos\left(\theta-\dfrac{\pi}{4}\right)$ and a shifted sine, which differ.)
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph; real f(real t){return sin(t+pi/4);} real g(real t){return cos(t+7pi/4);}
+draw((-0.2,0)--(6.6,0),Arrow); draw((0,-1.2)--(0,1.2),Arrow);
+draw(graph(f,0,2pi),blue+linewidth(1.5)); draw(graph(g,0,2pi),red+dashed); label("$\theta$",(6.6,0),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

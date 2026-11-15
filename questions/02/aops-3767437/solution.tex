@@ -1,0 +1,9 @@
+Two disks have an overlap of positive area exactly when their centres are a cardinal-axis point and one of its two neighbouring corner points. These eight overlap pairs form an 8-cycle; other pairs are disjoint or only tangent. At each overlap, the higher disk\textquotesingle s colour is visible, so a photograph specifies an orientation of each cycle edge by height. A height order yields an acyclic orientation, and every acyclic orientation extends to a height order. Distinct orientations give different colours on some overlap. Of the $2^8$ cycle orientations, precisely the two directed cycles are impossible. Hence there are $\boxed{254}$ pictures.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] P={(0,2),(1,1),(2,0),(1,-1),(0,-2),(-1,-1),(-2,0),(-1,1)};for(int i=0;i<8;++i){draw(circle(P[i],1));label(string(i+1),P[i]);}for(int i=0;i<8;++i)draw(P[i]--P[(i+1)%8],dashed);
+\end{asy}
+

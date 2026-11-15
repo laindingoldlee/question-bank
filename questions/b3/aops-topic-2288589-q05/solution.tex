@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2288589_a_questionnaire
+% Stable identity: aops-topic-2288589-q05
+The angle $\angle QRT$ and the $128^\circ$ angle together form a straight angle at $R$, so $\angle QRT=180^\circ-128^\circ=52^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair Q=(0,0), R=(6,0);
+pair P=Q+(2.5/Sin(116))*dir(116), T=R+(2.5/Sin(128))*dir(128);
+draw(P--Q--R--T--cycle,linewidth(0.9)); draw(R--(8.3,0),dashed);
+label("$P$",P,NW); label("$Q$",Q,SW); label("$R$",R,S); label("$T$",T,NE);
+draw(arc(P,0.6,-64,0)); label("$x^\circ$",P+0.6*dir(-30),SE);
+draw(arc(T,0.5,180,degrees(R-T)+360)); label("$2x^\circ$",T+0.55*dir(244),S);
+draw(arc(R,0.55,0,128),blue); label("$128^\circ$",R+0.6*dir(64),NE,blue);
+draw(arc(R,0.9,128,180),red); label("$52^\circ$",R+0.95*dir(154),NW,red);
+draw(arc(Q,0.6,0,116),red); label("$?$",Q+0.6*dir(58),NE,red);
+\end{asy}
+
+Since $PT\parallel QR$, the co-interior angles along the transversal $RT$ add up to $180^\circ$:
+\[2x+52=180,\qquad\text{so}\qquad x=64.\]
+Along the transversal $PQ$, the co-interior angles $\angle QPT$ and $\angle PQR$ also add up to $180^\circ$, so
+\[\angle PQR=180^\circ-64^\circ=\boxed{116^\circ}.\]
+(Check: the four angles $64^\circ$, $116^\circ$, $52^\circ$, $128^\circ$ add up to $360^\circ$.)

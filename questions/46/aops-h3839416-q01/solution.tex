@@ -1,0 +1,14 @@
+On $\sqrt k\le x<\sqrt{k+1}$, where $k=1,\ldots,99$, we have $f(x)=kx$. The endpoint jumps do not affect area. Therefore
+\[
+\int_1^{10}x\lfloor x^2\rfloor\,dx
+=\sum_{k=1}^{99}\int_{\sqrt k}^{\sqrt{k+1}}kx\,dx
+=\sum_{k=1}^{99}\dfrac{k}{2}
+=\dfrac{1}{2}\cdot\dfrac{99\cdot100}{2}
+=\boxed{2475}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+size(270,170,IgnoreAspect);for(int k=1;k<100;++k){real a=sqrt(k),b=sqrt(k+1);fill((a,0)--(a,k*a)--(b,k*b)--(b,0)--cycle,lightblue);draw((a,k*a)--(b,k*b),blue);}draw((0,0)--(10.5,0),Arrow);draw((0,0)--(0,1050),Arrow);label("$1$",(1,0),S);label("$10$",(10,0),S);label("$x$",(10.5,0),E);label("$y$",(0,1050),N);
+\end{asy}

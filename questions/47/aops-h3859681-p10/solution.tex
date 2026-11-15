@@ -1,0 +1,16 @@
+The first graph comprises four circles of radius $\sqrt k$, centered at $(\pm k,\pm k)$. A common tangent to three requires their centers on two parallel lines distance $2\sqrt k$ apart. For three square vertices, those lines may have separation $2k$ or $\sqrt2k$. The first gives $k=1$, excluded; the second gives $\boxed{k=2}$. In the first quadrant the second region lies under $y=\sqrt{16-(x+2)^2}-2$, for $0\le x\le2\sqrt3-2$. Its area is a $30^\circ$ sector contribution $\dfrac{4\pi}{3}$ minus the rectangle contribution $4\sqrt3-4$. Multiplying by four gives $\dfrac{48-48\sqrt3+16\pi}{3}$. Thus $a+bn+c+d=48+48\cdot3+16+3=\boxed{211}$. 
+
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+for(int i=-1;i<=1;i+=2)for(int j=-1;j<=1;j+=2){pair O=(2*i,2*j);draw(circle(O,sqrt(2)));dot(O);}draw((-4,6)--(6,-4),dashed);label("$x+y=2$",(4,-2),(1,0));label("$r=\sqrt2$",(2,3.5),(0,1));
+\end{asy}
+
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+for(int i=-1;i<=1;i+=2)for(int j=-1;j<=1;j+=2){path q;for(int h=0;h<=80;++h){real x=(2*sqrt(3)-2)*h/80;pair P=(i*x,j*(sqrt(16-(x+2)^2)-2));if(h==0)q=P;else q=q--P;}draw(q);}draw((-1.8,0)--(1.8,0),dashed);draw((0,-1.8)--(0,1.8),dashed);label("second region",(0,-1.9),(0,-1));
+\end{asy}
+

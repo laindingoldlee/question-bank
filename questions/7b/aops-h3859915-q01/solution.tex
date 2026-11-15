@@ -1,0 +1,20 @@
+During the first two rounds, each ordered transfer is chosen from $12$ possibilities: no one can have been eliminated before round two. Thus the first two transfers have $144$ equally likely ordered histories.
+Group the resulting states by Audrey's coins $a$ and the sorted multiset of the other three coin counts. Only the following groups can produce the desired event after one more transfer:
+\[
+\begin{array}{c|c|r|c}
+a&\text{other coins}&\text{histories}&\text{successful third-round probability}\\ \hline
+1&(1,2,4)&12&\dfrac{1}{12}\\
+1&(1,3,3)&12&\dfrac{1}{12}\\
+2&(0,2,4)&6&\dfrac{1}{3}\\
+2&(0,3,3)&6&\dfrac{1}{3}\\
+2&(1,1,4)&6&\dfrac{1}{3}\\
+2&(1,2,3)&24&\dfrac{1}{6}\\
+3&(0,2,3)&12&\dfrac{1}{3}
+\end{array}
+\]
+The history counts come from choosing the first giver and receiver and then the second. For example, state $(2;0,2,4)$ requires one of the other three to give twice to another of those three, giving $3\cdot2=6$ histories. State $(2;1,2,3)$ has $24$ histories: Audrey is the intermediate player in a two-transfer chain, with $3\cdot2\cdot2=12$ histories, or the chain uses all three other players, with another $3\cdot2\cdot2=12$.
+For the last column, choose among the $12$ active ordered pairs, or among $6$ when one player is already out. For instance, in $(2;1,1,4)$ one of the two one-coin players must give to another non-Audrey player, giving $\dfrac{4}{12}=\dfrac{1}{3}$.
+Summing the products gives
+\[
+\dfrac{1}{144}(1+1+2+2+2+4+4)=\boxed{\dfrac{1}{9}}.
+\]

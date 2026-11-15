@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h2576965_something_about_solid_classification
+% Stable identity: aops-topic-2576965-q01
+\textbf{(a)} Each of the $F=10$ faces has $4$ edges, and each edge lies on exactly $2$ faces, so $E=\dfrac{10\cdot4}2=20$. By Euler's formula, $V=2-F+E=2-10+20=12$. So
+\[\boxed{V=12,\qquad E=20}.\]
+Check by counting edge ends at the vertices: the top and bottom vertices have $5$ edges each and the other $10$ vertices have $3$ each, giving $5+5+30=40=2E$.
+
+\textbf{(b)}
+\begin{itemize}
+\item The faces are kites that are not squares, so they are not regular polygons. (A regular quadrilateral is a square.)
+\item The vertices are not all alike: $5$ faces meet at the top and bottom vertices, but only $3$ at the other ten.
+\end{itemize}
+(Also, the only Platonic solid with quadrilateral faces is the cube, which has $6$ faces, not $10$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real c=0.12, t=c*(1+Cos(36))/(1-Cos(36));
+triple[] P={(0,0,t),(0,0,-t)};
+for(int k=0;k<5;++k) P.push((Cos(72k),Sin(72k),c));
+for(int k=0;k<5;++k) P.push((Cos(72k+36),Sin(72k+36),-c));
+real el=15, az=-100;
+triple v=(Cos(el)*Cos(az),Cos(el)*Sin(az),Sin(el));
+triple e1=(-Sin(az),Cos(az),0);
+triple e2=cross(v,e1);
+pair pr(triple Q){return (dot(Q,e1),dot(Q,e2));}
+int[][] F;
+for(int k=0;k<5;++k){F.push(new int[]{0,2+k,7+k,2+(k+1)%5}); F.push(new int[]{1,7+k,2+(k+1)%5,7+(k+1)%5});}
+bool front(int[] f){triple n=cross(P[f[1]]-P[f[0]],P[f[3]]-P[f[0]]); triple g=(P[f[0]]+P[f[1]]+P[f[2]]+P[f[3]])/4; if(dot(n,g)<0) n=-n; return dot(n,v)>0;}
+path pf(int[] f){return pr(P[f[0]])--pr(P[f[1]])--pr(P[f[2]])--pr(P[f[3]])--cycle;}
+fill(pf(F[6]),gray(0.88));
+bool[][] seen=new bool[12][12], vis=new bool[12][12];
+for(int i=0;i<12;++i) for(int j=0;j<12;++j){seen[i][j]=false; vis[i][j]=false;}
+for(int[] f:F){bool fr=front(f); for(int j=0;j<4;++j){int a=min(f[j],f[(j+1)%4]), b=max(f[j],f[(j+1)%4]); seen[a][b]=true; if(fr) vis[a][b]=true;}}
+for(int a=0;a<12;++a) for(int b=a+1;b<12;++b) if(seen[a][b] && !vis[a][b]) draw(pr(P[a])--pr(P[b]),dashed+gray(0.4));
+for(int a=0;a<12;++a) for(int b=a+1;b<12;++b) if(vis[a][b]) draw(pr(P[a])--pr(P[b]),linewidth(0.8));
+dot(pr(P[0]));dot(pr(P[1]));
+label("$5$ faces",pr(P[0]),N,fontsize(9pt));label("$5$ faces",pr(P[1]),S,fontsize(9pt));
+\end{asy}

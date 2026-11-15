@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h1539881_geo_help
+% Stable identity: aops-topic-1539881-q01
+Write $a=BC=450$, $b=AC=510$, $c=AB=425$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.3669,4.0242),B=(0,0),C=(4.5,0);
+real al=0.32,be=0.40,ga=0.28;
+pair P=al*A+be*B+ga*C;
+pair D=be*B+(1-be)*A, F=be*B+(1-be)*C;
+pair Ee=al*A+(1-al)*B, H=al*A+(1-al)*C;
+pair G=ga*C+(1-ga)*B, I=ga*C+(1-ga)*A;
+draw(A--B--C--cycle,linewidth(0.9));
+draw(D--F,blue+linewidth(0.9));draw(Ee--H,red+linewidth(0.9));draw(G--I,heavygreen+linewidth(0.9));
+dot(P);label("$P$",P,3.2*dir(-22));
+dot(D);dot(F);dot(Ee);dot(H);dot(G);dot(I);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$D$",D,W);label("$E$",Ee,W);label("$F$",F,S);label("$G$",G,S);label("$H$",H,NE);label("$I$",I,NE);
+label("$425$",(A+B)/2+(-0.45,0.05));label("$450$",(B+C)/2+(0,-0.42));label("$510$",(A+C)/2+(0.42,0.18));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Two parallelograms.} The quadrilateral $EPGB$ has $EP\parallel BG$ and $PG\parallel EB$, so it is a parallelogram and $EP=BG$. Likewise $PHCF$ has $PH\parallel FC$ and $PF\parallel HC$, so $PH=FC$. Hence $x=EH=EP+PH=BG+FC$. On side $BC$ the points lie in the order $B,G,F,C$, so
+\[
+GF=BC-BG-FC=a-x .
+\]
+
+\textbf{Similar triangles.} Since $DF\parallel AC$, triangle $DBF$ is similar to triangle $ABC$, so $\dfrac{BF}{a}=\dfrac{DF}{b}=\dfrac {x}{b}$. Since $GI\parallel AB$, triangle $IGC$ is similar to triangle $ABC$, so $\dfrac{GC}{a}=\dfrac{GI}{c}=\dfrac {x}{c}$. The segments $BF$ and $GC$ overlap exactly in $GF$, so
+\[
+\dfrac{ax}{b}+\dfrac{ax}{c}=BF+GC=BC+GF=a+(a-x)=2a-x .
+\]
+Dividing by $a$:
+\[
+\dfrac {x}{a}+\dfrac {x}{b}+\dfrac {x}{c}=2,\qquad\text{so}\qquad x=\dfrac{2}{\dfrac{1}{a}+\dfrac{1}{b}+\dfrac{1}{c}}.
+\]
+
+\textbf{Computation.} $\dfrac{1}{450}+\dfrac{1}{510}+\dfrac{1}{425}$: with the common denominator $7650=2\cdot3^2\cdot5^2\cdot17$ this is $\dfrac{17+15+18}{7650}=\dfrac{50}{7650}=\dfrac{1}{153}$. Hence $x=2\cdot153=\boxed{306}$.

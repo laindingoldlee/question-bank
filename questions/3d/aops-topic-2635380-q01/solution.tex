@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2635380_funny_problem
+% Stable identity: aops-topic-2635380-q01
+Read the letters as base-$26$ digits ($\text{a}=0,\dots,\text{z}=25$). Then the words of $A_n$ are the numbers $0,1,\dots,26^n-1$ written with $n$ digits, in increasing order, so each word $w$ is followed by $w+1$. Write $m_1m_2\cdots m_9=\text{mathicorn}$; its nine letters are distinct and none of them is z. An occurrence lies inside one word, straddles two consecutive words, or touches at least three words.
+
+\emph{Inside one word.} This needs $n\ge9$; for $n\le9$ it happens only for $n=9$, once (the word mathicorn itself).
+
+\emph{Three or more words.} Then some word $w'$ lies entirely inside the occurrence, preceded by a letter of the previous word $w=w'-1$. So $w'=m_i\cdots m_{i+n-1}$ with $i\ge2$, $i+n-1\le8$, and $n\le7$. For $n=1$, $A_1$ is the alphabet, which does not contain ``ma''. For $n\ge2$ the last letter of $w'$ is not a (the only a is $m_2$), so $w'-1$ is $w'$ with its last letter moved back one place in the alphabet; that letter is the one just before $w'$ in the occurrence. Hence $m_{i-1}$ and $m_{i+n-1}$ are consecutive letters of the alphabet, in that order, $n$ positions apart. The only such pairs in mathicorn are h,i (positions $4,5$) and m,n (positions $1,9$), which are $1$ and $8$ apart. So this case never occurs for $2\le n\le7$.
+
+\emph{Two words $w$, $w'=w+1$.} Then $w$ ends with $m_1\cdots m_j$ and $w'$ begins with $m_{j+1}\cdots m_9$, where $1\le j\le n$ and $9-j\le n$. Since $w$ does not end in z, $w'$ is $w$ with only its last letter increased.
+\begin{itemize}
+\item If $9-j\le n-1$, the beginning of $w'$ is also the beginning of $w$, so $w$ begins with $m_{j+1}\cdots m_9$ and ends with $m_1\cdots m_j$. For $n=9$ these two blocks fill the word exactly, giving one word for each $j=1,\dots,8$: $8$ occurrences. For $n\le8$ the blocks overlap, and position $n-j+1$ of $w$ would have to be both $m_1$ and $m_{n+1}$, which is impossible because the letters are distinct.
+\item If $9-j=n$, then $w'=m_{j+1}\cdots m_9$, and $w=w'-1$ ends with the letter before $m_9=\text{n}$, namely m. So $m_j=\text{m}$, giving $j=1$ and $n=8$: the words athicorm, athicorn produce one occurrence in $A_8$.
+\end{itemize}
+
+Therefore $f(1)=\cdots=f(7)=0$, $f(8)=1$ and $f(9)=1+8=9$, and the sum is $\boxed{10}$.

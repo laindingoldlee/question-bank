@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2560983_1597_post_celebration_late
+% Stable identity: aops-topic-2560983-q02
+Put $M=(0,0)$, $A=(1,0)$, $T=(1,1)$, $H=(0,1)$; both circles have centre $Q=\left(\dfrac12,\dfrac12\right)$, with radii $\dfrac12$ and $\dfrac{\sqrt2}{2}$.
+
+\emph{The point $I$.} For $P=(x,y)$ on the incircle let $p=\left|x-\dfrac12\right|$, $q=\left|y-\dfrac12\right|$, so $p^2+q^2=\dfrac14$. The distances from $P$ to the four sides are $\dfrac12-p$, $\dfrac12+p$, $\dfrac12-q$ and $\dfrac12+q$, so the two nearest sides are at distances $\dfrac12-p$ and $\dfrac12-q$. Their sum is $1-(p+q)$, and $p+q\le\sqrt{2\left(p^2+q^2\right)}=\dfrac{\sqrt2}{2}$, with equality iff $p=q=\dfrac{\sqrt2}{4}$. Of the four such points, the one nearest $H$ is $I=\left(\dfrac12-\dfrac{\sqrt2}{4},\ \dfrac12+\dfrac{\sqrt2}{4}\right)$.
+
+\emph{The point $Z$.} A point of the circumcircle outside side $HM$ (with $x\le0$) has distance $-x$ to that side, its nearest one; this is largest at the midpoint of the arc, $\left(\dfrac12-\dfrac{\sqrt2}{2},\dfrac12\right)$, at distance $\dfrac{\sqrt2}{2}-\dfrac12$. By symmetry the four arc midpoints are the maximisers. Only for the one beyond side $HM$ is $MATHZ$ not self-intersecting (otherwise the edges $HZ$ and $ZM$ would cross the square's boundary), so $Z=\left(\dfrac12-\dfrac{\sqrt2}{2},\dfrac12\right)$.
+
+\emph{Areas.} $I$ lies inside the square, so $MATHI$ is the square minus triangle $HIM$, whose base $HM=1$ has height equal to the $x$-coordinate of $I$:
+\[[MATHI]=1-\dfrac12\left(\dfrac12-\dfrac{\sqrt2}{4}\right)=\dfrac34+\dfrac{\sqrt2}{8}.\]
+$Z$ lies outside, so $MATHZ$ is the square plus triangle $HZM$:
+\[[MATHZ]=1+\dfrac12\left(\dfrac{\sqrt2}{2}-\dfrac12\right)=\dfrac34+\dfrac{\sqrt2}{4}.\]
+The sum is $\dfrac32+\dfrac{3\sqrt2}{8}=\dfrac{12+3\sqrt2}{8}$, so $a+b+c+d=12+3+2+8=\boxed{25}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair M=(0,0),A=(1,0),T=(1,1),H=(0,1),Q=(0.5,0.5);
+pair I=(0.5-sqrt(2)/4,0.5+sqrt(2)/4),Z=(0.5-sqrt(2)/2,0.5);
+fill(H--Z--M--cycle,gray(0.75));fill(H--I--M--cycle,gray(0.92));
+draw(circle(Q,0.5),gray(0.5));draw(circle(Q,sqrt(2)/2),gray(0.5));
+draw(M--A--T--H--cycle,linewidth(0.8));
+draw(H--I--M,dashed);draw(H--Z--M);
+draw(I--(0,I.y),dotted);draw(I--(I.x,1),dotted);
+dot(I);dot(Z);dot(Q);
+label("$M$",M,SE);label("$A$",A,SE);label("$T$",T,NE);label("$H$",H,NE);
+label("$I$",I,SE);label("$Z$",Z,W);
+\end{asy}
+
+In the sketch, the light triangle $HIM$ is removed from the square and the darker triangle $HZM$ is added.

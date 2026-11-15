@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1212221_cube_question_need_help
+% Stable identity: aops-topic-1212221-q01
+First find the configuration. If the small cubes have edge $1$ and the large ones edge $m$, the volumes give $32+4m^3=n^3$ for the big cube's edge $n$; $m=2$, $n=4$ works ($32+32=64$), and a cube of edge $4$ cannot contain four cubes of edge $3$ or more. So the cube is $4\times4\times4$, with four $2\times2\times2$ cubes.
+
+Let the blue faces be the top and bottom. A $2\times2\times2$ cube avoids both only if it occupies the middle two layers, and four of them then fill the whole middle $4\times4\times2$ slab. So the $32$ unit cubes form the top and bottom layers ($16$ each), and the four large cubes sit at the four corners of the middle slab, each touching two side faces (one yellow, one black).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real s=0.35;
+void box(real x0,real y0,real z0,real a,pen p){
+ pair P(real x,real y,real z){return (x+s*y,z+s*y);}
+ filldraw(P(x0,y0,z0+a)--P(x0+a,y0,z0+a)--P(x0+a,y0+a,z0+a)--P(x0,y0+a,z0+a)--cycle,p,black);
+ filldraw(P(x0,y0,z0)--P(x0+a,y0,z0)--P(x0+a,y0,z0+a)--P(x0,y0,z0+a)--cycle,p,black);
+ filldraw(P(x0+a,y0,z0)--P(x0+a,y0+a,z0)--P(x0+a,y0+a,z0+a)--P(x0+a,y0,z0+a)--cycle,p,black);}
+for(int i=3;i>=0;--i) for(int j=3;j>=0;--j){}
+for(int j=3;j>=0;j-=1) for(int i=0;i<4;++i) box(i,j,0,1,lightblue);
+box(0,2,1,2,mediumgray); box(2,2,1,2,mediumgray); box(0,0,1,2,mediumgray); box(2,0,1,2,mediumgray);
+for(int j=3;j>=0;j-=1) for(int i=0;i<4;++i) box(i,j,3,1,lightblue);
+label("blue",(5.6,0.5)); label("blue",(5.6,3.5));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{enumerate}
+\item[(a)] Every unit cube lies in the top or bottom layer, so it has a blue face; the large cubes have none: $\boxed{32}$.
+\item[(b)] In each of the top and bottom layers, only the $4$ central unit cubes have just one painted face (the blue one); the large cubes have two painted faces. Answer: $\boxed{8}$.
+\item[(c)] Black is on two opposite side faces. In each of the top and bottom layers, the unit cubes in the two outer rows touching those faces number $8$; all four large cubes also touch a black face. Answer: $16+4=\boxed{20}$.
+\item[(d)] Every unit cube has a blue face and every large cube has a yellow face: $\boxed{36}$.
+\end{enumerate}

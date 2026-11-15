@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2682028_angle_bisectors_in_a_trapezoid
+% Stable identity: aops-topic-2682028-q01
+Let $M$ and $N$ be the midpoints of the legs $\overline{AB}$ and $\overline{CD}$.
+
+Since $\overline{BC}\parallel\overline{AD}$, $\angle A+\angle B=180^\circ$, so in triangle $AXB$ the angles at $A$ and $B$ add up to $90^\circ$ and $\angle AXB=90^\circ$. The midpoint of the hypotenuse is equidistant from the vertices, so $MX=MA=MB=2$. Then $\angle MXA=\angle MAX=\angle XAD$, so $\overline{MX}\parallel\overline{AD}$: $X$ lies on the midline $\overline{MN}$, at distance $2$ from $M$.
+
+In the same way $\angle CYD=90^\circ$, $NY=\dfrac{CD}2=4$, and $Y$ lies on $\overline{MN}$ at distance $4$ from $N$. The midline has length $MN=\dfrac{6+12}2=9$, so
+\[XY=9-2-4=3\qquad\text{and}\qquad XY^2=\boxed{\textbf{(D) }9}.\]
+(Such a trapezoid exists: with $A=(0,0)$ and $D=(12,0)$ one gets $B=\left(-1,\sqrt{15}\right)$ and $C=\left(5,\sqrt{15}\right)$, and then $X=\left(\dfrac32,\dfrac{\sqrt{15}}2\right)$, $Y=\left(\dfrac92,\dfrac{\sqrt{15}}2\right)$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real h=sqrt(15);pair A=(0,0),D=(12,0),B=(-1,h),C=(5,h);
+pair M=(A+B)/2,Nn=(C+D)/2,X=M+(2,0),Y=Nn-(4,0);
+draw(A--B--C--D--cycle,linewidth(0.8));
+draw(A--X--B,dashed);draw(C--Y--D,dashed);draw(M--Nn,dotted);
+dot(M);dot(Nn);dot(X);dot(Y);
+label("$A$",A,SW);label("$B$",B,NW);label("$C$",C,NE);label("$D$",D,SE);
+label("$M$",M,W);label("$N$",Nn,E);label("$X$",X,dir(80));label("$Y$",Y,dir(130));
+label("$4$",A+0.75*(B-A),W,fontsize(8pt));label("$6$",(B+C)/2,N,fontsize(8pt));label("$8$",C+0.3*(D-C),NE,fontsize(8pt));label("$12$",(A+D)/2,S,fontsize(8pt));
+\end{asy}

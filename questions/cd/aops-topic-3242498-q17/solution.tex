@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h3242498_the_polymath_competition
+% Stable identity: aops-topic-3242498-q17
+Let the side length be $s$, and put $A=(0,0)$ with $AC$ on the positive horizontal axis. Write $c=\cos36^\circ=\dfrac{1+\sqrt5}{4}$ and $t=\sin36^\circ$. Then
+\[B=(sc,st),\quad E=(s(2c^2-1),-2sct),\quad M=(\dfrac{s(2c^2-1)}{2},-sct).\]
+The segment from $B$ to $M$ reaches height zero at parameter $\dfrac{1}{1+c}$. Its horizontal coordinate is therefore $\dfrac{s(2c^2-\dfrac{1}{2})}{1+c}=\dfrac{sc}{1+c}$, since $2c^2-\dfrac{1}{2}=c$. Thus $s=\dfrac{2(1+c)}{c}$. Finally,
+\[BZ^2=(sc-2)^2+s^2t^2=s^2-4sc+4=14-2\sqrt5.\]
+Hence $\boxed{BZ=\sqrt{14-2\sqrt5}}$, choice D.
+\begin{asy}
+usepackage("amsmath"); size(230);
+pair[] v;for(int k=0;k<5;++k)v.push(dir(90-72*k));pair A=v[0],B=v[1],C=v[2],D=v[3],Ep=v[4],M=(A+Ep)/2;pair Z=intersectionpoint(A--C,B--M);draw(A--B--C--D--Ep--cycle);draw(A--C,dashed);draw(B--M,blue);dot(Z);dot(M);label("$A$",A,N);label("$B$",B,E);label("$C$",C,SE);label("$D$",D,SW);label("$E$",Ep,W);label("$M$",M,NW);label("$Z$",Z,S);label("$2$",(A+Z)/2,E);
+\end{asy}

@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1576612_mathcounts_handbook_question_155
+% Stable identity: aops-topic-1576612-q01
+After the exchange Gabriel has $20-2+5=23$ coins and Isabel has $20+2-5=17$ coins. Measure values in nickels ($5$ cents).
+
+\textbf{Values.} If Gabriel ends with $d_1$ dimes and $q_1$ quarters (the rest nickels), his pile is worth
+\[
+g=23+d_1+4q_1\quad\text{nickels},\qquad d_1+q_1\le23 ;
+\]
+similarly Isabel's pile is worth $i=17+d_2+4q_2$ with $d_2+q_2\le17$. The condition is $g=2i$, and the combined value is $g+i=3i$, so we must make $i$ as large as possible.
+
+\textbf{Upper bound.} Gabriel's pile is worth at most $23\cdot5=115$ nickels, so $2i\le115$ and $i\le57$.
+\begin{itemize}
+\item $i=57$ needs $g=114$, i.e.\ $d_1+4q_1=91$. Since $d_1+4q_1\le 4(d_1+q_1)\le92$ with equality only for $q_1=23$, the value $91$ would need $q_1=22$ and $d_1=3$, which is $25>23$ coins. Impossible.
+\item $i=56$ needs $g=112$, i.e.\ $d_1+4q_1=89$: $q_1=22$, $d_1=1$, $0$ nickels. This works.
+\end{itemize}
+So the greatest combined value is $3\cdot56=168$ nickels, that is \$8.40, and in that case Isabel's pile is worth $56$ nickels.
+
+\textbf{Isabel's dimes.} Now $17+d_2+4q_2=56$, so $d_2+4q_2=39$ with $d_2+q_2\le17$. Since $d_2=39-4q_2\ge0$ we need $q_2\le9$, and $d_2+q_2=39-3q_2\le17$ needs $q_2\ge8$ (as $q_2\ge\dfrac{22}{3}$). The two options are
+\[
+q_2=9,\ d_2=3,\ 5\text{ nickels}\qquad\text{or}\qquad q_2=8,\ d_2=7,\ 2\text{ nickels}.
+\]
+
+\textbf{The exchange can really happen.} For example, start Gabriel with $1$ nickel, $2$ dimes and $17$ quarters and Isabel with $4$ nickels, $2$ dimes and $14$ quarters. Gabriel gives Isabel a nickel and a dime; Isabel gives Gabriel $5$ quarters. Then Gabriel has $1$ dime and $22$ quarters ($560$ cents) and Isabel has $5$ nickels, $3$ dimes and $9$ quarters ($280$ cents).
+
+Hence the least number of dimes Isabel can end up with is $\boxed{3}$.

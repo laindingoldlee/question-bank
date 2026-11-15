@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2858769_idk_geometry
+% Stable identity: aops-topic-2858769-q01
+Let $K=(1,10)$. For any $W$, the distance to the disc ranges between $WK-2.4$ and $WK+2.4$, so the minimum of $WZ$ is $\min WK-2.4$ and the maximum is $\max WK+2.4$ (the disc does not meet the rectangle).
+
+The point of the rectangle nearest to $K$ is $(1,5)$, with $WK=5$; the farthest is a far corner, $(-5,0)$, with $WK=\sqrt{36+100}=2\sqrt{34}$.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+fill((-5,0)--(5,0)--(5,5)--(-5,5)--cycle,opacity(0.15)+blue);draw((-5,0)--(5,0)--(5,5)--(-5,5)--cycle,blue);
+filldraw(circle((1,10),2.4),opacity(0.15)+red,red);dot((1,10));label("$(1,10)$",(1,10),SE);
+draw((1,5)--(1,7.6),linewidth(1));draw((-5,0)--(1,10)+2.4*unit((1,10)-(-5,0)),dashed);
+dot((1,5));dot((-5,0));label("$(1,5)$",(1,5),S);label("$(-5,0)$",(-5,0),SW);
+label("min",(1,6.3),E);label("max",(-2.5,4.2),W);
+\end{asy}
+
+So the minimum is $2.6$ and the maximum is $2\sqrt{34}+2.4$, with product $2.6(2.4+2\sqrt{34})=6.24+5.2\sqrt{34}$. Thus $s=6.24$, $r=5.2$, $q=34$, and $rqs=5.2\cdot34\cdot6.24=\boxed{1103.232}$.

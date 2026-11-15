@@ -1,0 +1,17 @@
+The lines $AD,BE$ have equations $y=2-2x$ and $y=\dfrac{1}{5}(x+1)$. Hence $T=\left(\dfrac{9}{11},\dfrac{4}{11}\right)$. The parallel to $CD$ is $y=x-\dfrac{5}{11}$. Intersecting it with $AB$, whose equation is $y=\dfrac{1}{2}(x+1)$, and $CE$, whose equation is $y=\dfrac{3}{2}x-1$, gives
+\[
+X=\left(\dfrac{21}{11},\dfrac{16}{11}\right),\qquad
+Y=\left(\dfrac{12}{11},\dfrac{7}{11}\right).
+\]
+The point $U=\left(\dfrac{12}{11},\dfrac{16}{11}\right)$ is at distance $\dfrac{9}{11}$ from each of $A,X,Y$, so it is their circumcenter. Furthermore
+\[
+OU=\dfrac{20}{11}=1+\dfrac{9}{11},\qquad
+A=\dfrac{11}{20}U.
+\]
+Thus the centers and $A$ are collinear and the center distance is the sum of the radii. The circles are externally tangent at $\boxed A$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0),A=(.6,.8),B=(-1,0),C=(0,-1),D=(1,0),E=(12/13,5/13),T=(9/11,4/11),X=(21/11,16/11),Y=(12/11,7/11),U=(12/11,16/11);draw(circle(O,1));draw(circle(U,9/11),blue);draw(A--B--C--D--E--cycle,gray);draw(B--E);draw(B--X,gray);draw(C--Y,gray);draw(A--D);draw(T--X,red);draw(O--U,dashed);label("$A$",A,NW);label("$B$",B,W);label("$C$",C,S);label("$D$",D,SE);draw(E--(1.45,.2));label("$E$",(1.45,.2),(1,0));label("$T$",T,SW);label("$X$",X,(1,0));label("$Y$",Y,SE);label("$U$",U,N);label("$O$",O,W);
+\end{asy}

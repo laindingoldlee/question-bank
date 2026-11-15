@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3166019_2019_lmt_fall_guts_round_p13p24__lexington_mathematical_tournament
+% Stable identity: aops-topic-3166019-q20
+The four even positions must form an independent set of four cells. Color the grid as a checkerboard with the four corners and center black. Four black cells can be chosen in $\binom54=5$ ways, and all four white cells give one more way. There are no mixed choices of size four: including the center forbids all white cells; one corner allows only two white cells; two corners allow at most one white cell if adjacent or none if opposite; three corners allow none. Thus there are six position sets. Assign the four distinct even digits and five odd digits in $4!5!$ ways, yielding $6\cdot4!5!=\boxed{17280}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int j=0;j<3;++j)for(int k=0;k<3;++k)if((j+k)%2==0)fill((j,k)--(j+1,k)--(j+1,k+1)--(j,k+1)--cycle,lightgray);for(int k=0;k<=3;++k){draw((k,0)--(k,3));draw((0,k)--(3,k));}label("five black-parity cells",(1.5,-.5));
+\end{asy}

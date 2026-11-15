@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1976638_simple_geometry
+% Stable identity: aops-topic-1976638-q01
+The perpendicular from the centre $O$ to a chord bisects it. For the $120$-cm chord the half-chord is $60$, so its distance from $O$ is $\sqrt{65^2-60^2}=\sqrt{625}=25$. For the $78$-cm chord the half-chord is $39$, so its distance is $\sqrt{65^2-39^2}=\sqrt{2704}=52$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=65;
+pair O=(0,0);
+draw(circle(O,R),linewidth(1));
+draw((-60,25)--(60,25),linewidth(1));draw((-39,-52)--(39,-52),linewidth(1));
+draw(O--(0,25),dashed);draw(O--(0,-52),dashed);
+draw(O--(60,25),gray);draw(O--(39,-52),gray);
+dot(O);label("$O$",O,W);
+label("$60$",(30,25),N);label("$39$",(19.5,-52),N);
+label("$25$",(0,12.5),W);label("$52$",(0,-26),W);
+label("$65$",(30,12.5),SE,gray);label("$65$",(19.5,-26),E,gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $O$ lies between the chords, the distance between them is $25+52=\boxed{77}$ cm, confirming the poster's answer.

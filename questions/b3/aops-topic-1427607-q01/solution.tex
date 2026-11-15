@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1427607_puzzle_style_problem
+% Stable identity: aops-topic-1427607-q01
+Colour the $4\times4$ board like a chessboard. The two removed corners lie on the same diagonal, so they have the same colour, say grey:
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<4;++i) for(int j=0;j<4;++j){
+  if((i==0&&j==3)||(i==3&&j==0)) continue;
+  if((i+j)%2==1) fill(shift(i,j)*unitsquare,gray(0.6));
+  draw(shift(i,j)*unitsquare);
+}
+draw(shift(0,3)*unitsquare,dashed); draw(shift(3,0)*unitsquare,dashed);
+draw((0.15,3.15)--(0.85,3.85),red); draw((0.15,3.85)--(0.85,3.15),red);
+draw((3.15,0.15)--(3.85,0.85),red); draw((3.15,0.85)--(3.85,0.15),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The board had $8$ grey and $8$ white squares, so the remaining $14$ squares are $6$ grey and $8$ white. Two neighbouring squares always have different colours, so every domino covers one grey and one white square, and $7$ dominoes would cover $7$ grey and $7$ white squares. Since there are only $6$ grey squares, the cutting is impossible.

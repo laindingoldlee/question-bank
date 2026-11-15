@@ -1,0 +1,41 @@
+% Source: https://artofproblemsolving.com/community/c3h1463102_really_really_weird_question
+% Stable identity: aops-topic-1463102-q01
+\textbf{(a)} Join the centre $O$ to the vertices of the inscribed $n$-gon. This cuts it into $n$ congruent isosceles triangles, each with base one side $\dfrac{P_n}{n}$ and height $h_n$ (the apothem). So its area is
+\[
+n\cdot\dfrac{1}{2}\cdot\dfrac{P_n}{n}\cdot h_n=\dfrac{1}{2}P_nh_n .
+\]
+For the circumscribed $n$-gon, each side touches the circle, so the radius to the point of tangency is perpendicular to that side; the triangles from $O$ now have height $r$, and the area is $\dfrac{1}{2}Q_nr$ in the same way.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+int n=6; real r=2;
+pair O=(0,0);
+pair V(int k,real R){return R*dir(90+360*k/n);}
+real R2=r/Cos(180/n);
+draw(circle(O,r),linewidth(0.8));
+path inn=V(0,r);
+for(int k=1;k<n;++k) inn=inn--V(k,r);
+draw(inn--cycle,blue);
+path ot=R2*dir(90+180/n);
+for(int k=1;k<n;++k) ot=ot--R2*dir(90+180/n+360*k/n);
+draw(ot--cycle,red);
+fill(O--V(0,r)--V(1,r)--cycle,lightblue+opacity(0.6));
+draw(O--V(0,r)--V(1,r)--cycle,blue);
+pair M=(V(0,r)+V(1,r))/2;
+draw(O--M,blue+dashed);
+draw(O--V(3,r),red+dashed);
+dot(O);label("$O$",O,E);
+label("$h_n$",(O+M)/2+0.25*dir(30),blue+fontsize(8pt));
+label("$r$",0.55*V(3,r),E,red+fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(b)} The circle contains the inscribed polygon and is contained in the circumscribed one, so its area $K$ satisfies
+\[
+\dfrac{1}{2}P_nh_n<K<\dfrac{1}{2}Q_nr\qquad\text{for every }n\ge3 .
+\]
+As $n$ grows, the left side approaches $\dfrac{1}{2}\cdot2\pi r\cdot r=\pi r^2$ and so does the right side. A fixed number $K$ that is squeezed between two quantities with the same limit must equal that limit, so $K=\pi r^2$. $\blacksquare$
+
+So $\pi r^2$ is not a pattern found by luck: informally, a circle is like a triangle with ``base'' the circumference $2\pi r$ and height $r$.

@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2524764_base_10_and_the_property_of_11s
+% Stable identity: aops-topic-2524764-q01
+By the binomial theorem,
+\[\left(10^{32}+1\right)^{78}=\sum_{k=0}^{78}\dbinom{78}{k}10^{32k}.\]
+Every coefficient satisfies $\dbinom{78}{k}\le2^{78}<10^{24}<10^{32}$, so the terms occupy separate blocks of $32$ digits and no carrying occurs: the decimal expansion is the coefficients written in their blocks, padded with zeros.
+
+The number has $32\cdot78+1=2497$ digits; the digit in place $10^e$ is the $(2497-e)$-th digit from the left. By symmetry $\dbinom{78}{78-j}=\dbinom{78}{j}$, so the leading blocks hold
+\begin{itemize}
+\item $\dbinom{78}{78}=1$ in place $10^{2496}$: digit $1$;
+\item $\dbinom{78}{77}=78$ in places $10^{2465},10^{2464}$: digits $32,33$;
+\item $\dbinom{78}{76}=3003$ in places $10^{2435},\dots,10^{2432}$: digits $62$ to $65$;
+\item $\dbinom{78}{75}=\dfrac{78\cdot77\cdot76}{6}=76076$ in places $10^{2404},\dots,10^{2400}$: digits $93$ to $97$;
+\item $\dbinom{78}{74}=1426425$ starts in place $10^{2374}$, which is digit $123$, beyond the first $100$.
+\end{itemize}
+All other digits among the first $100$ are $0$. So the sum is
+\[1+(7+8)+(3+0+0+3)+(7+6+0+7+6)=1+15+6+26=\boxed{48}.\]

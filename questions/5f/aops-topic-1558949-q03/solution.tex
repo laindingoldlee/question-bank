@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1558949_math_problems
+% Stable identity: aops-topic-1558949-q03
+Let the equal sides be $a$ and the third side $b$, so $2a+b=2017$ with positive integers $a,b$:
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(3,0),A=(1.5,2.4);
+draw(A--B--C--cycle,linewidth(1));
+pair t1=unit(rotate(90)*(A-B)),t2=unit(rotate(90)*(C-A));
+label("$a$",A+0.3*(B-A)+0.25*t1);label("$a$",A+0.3*(C-A)+0.25*t2);label("$b$",(B+C)/2,S);
+draw((A+B)/2+0.12*t1--(A+B)/2-0.12*t1);
+draw((A+C)/2+0.12*t2--(A+C)/2-0.12*t2);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+An equilateral triangle is impossible, since $3\nmid2017$, so each triangle is described by exactly one pair $(a,b)$ with $b\ne a$.
+
+\textbf{Conditions.} $b=2017-2a\ge1$ gives $a\le1008$. The triangle inequality $a+a>b$ gives $2a>2017-2a$, i.e.\ $a>504.25$, so $a\ge505$ (the inequality $a+b>a$ is automatic).
+
+So $a$ can be any integer from $505$ to $1008$: there are $1008-505+1=\boxed{504}$ triangles.

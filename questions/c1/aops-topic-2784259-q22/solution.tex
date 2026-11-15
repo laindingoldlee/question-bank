@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2784259_2016_mbmt_guts_round__p16__p30__montgomery_blair_math_tournament
+% Stable identity: aops-topic-2784259-q22
+Every five-digit square has root between 100 and 316 inclusive. Checking each root's square, requiring five different permitted digits, yields only 38025 and 87025. Their sum is $\boxed{125050}$. This exhaustive certificate verifies both completeness and the sum:
+\begin{verbatim}
+a=[n*n for n in range(100,317)
+ if len(set(str(n*n)))==5 and set(str(n*n))<=set('023578')]
+assert a==[38025,87025]
+assert sum(a)==125050
+\end{verbatim}

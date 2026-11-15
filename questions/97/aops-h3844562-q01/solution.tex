@@ -1,0 +1,19 @@
+Work modulo $2$, recording which cards are flipped an odd number of times. Let $u_1,u_2,u_3$ represent flips of prefixes of lengths $1,3,5$, and let $w$ flip all six cards. The six die moves, grouped as $(1,2),(3,4),(5,6)$, are
+\[
+u_1,\ u_1+w;\qquad u_2,\ u_2+w;\qquad u_3,\ u_3+w.
+\]
+These four vectors are independent, as is seen from successive coordinate differences. The required net flip of cards $1,6$ is $u_1+u_3+w$. Thus the counts of the three move groups must have parities odd, even, odd, and the number of even die results must be odd.
+
+For any sequence of $2n$ group choices, exactly $2^{2n-1}$ choices between the two moves in each group have odd even-result count. The number $B$ of group sequences with the required three parities is obtained by a sign filter:
+\[
+B=\dfrac{1}{8}\sum_{\epsilon_1,\epsilon_2,\epsilon_3=\pm1}
+\epsilon_1\epsilon_3(\epsilon_1+\epsilon_2+\epsilon_3)^{2n}
+=\dfrac{3^{2n}-1}{4}.
+\]
+Indeed expanding a monomial and averaging its signs keeps exactly odd powers in groups one and three and an even power in group two. In the eight-term sum, the all-equal signs contribute $2\cdot3^{2n}$, while the six mixed signs contribute $-2$.
+Therefore
+\[
+\boxed{f(n)=2^{2n-1}\dfrac{3^{2n}-1}{4}
+=\dfrac{6^{2n}-2^{2n}}{8}}.
+\]
+For four rolls this gives $160$ successful sequences, or probability $\dfrac{10}{81}$ for a fair die.

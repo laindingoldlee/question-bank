@@ -1,0 +1,7 @@
+Choose an equation $L_i(x,y)=0$ for each line. At any point off all the lines, colour it according to the sign of $\prod_i L_i(x,y)$: positive red and negative blue. The sign is constant within each region. Across the interior of an edge exactly one line is crossed, so exactly one factor changes sign and the colours differ. Intersections of lines are vertices, not shared edges, and cause no problem.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int i=0;i<2;++i)for(int j=0;j<2;++j)filldraw(box((2i-2,2j-2),(2i,2j)),(i+j)%2==0?lightred:lightblue,white);draw((-2,0)--(2,0));draw((0,-2)--(0,2));
+\end{asy}

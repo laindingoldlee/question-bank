@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2279275_minimum_weightings
+% Stable identity: aops-topic-2279275-q01
+\textbf{Answer: $\boxed{7}$.}
+
+\textbf{$7$ weighings suffice.} Weigh coins $1$ vs $2$, $3$ vs $4$, $5$ vs $6$ (3 weighings). Compare the first two winners (the lighter coins), and compare the winner of that with the third winner (2 more weighings). The final winner $m$ is the lightest coin. The second lightest coin was compared directly with $m$ and lost: any other coin lost to some coin other than $m$, so at least two coins are lighter than it. The coin $m$ was compared with at most $3$ coins, so the second lightest is the lightest of at most $3$ candidates, found with at most $2$ more weighings. Total: at most $3+2+2=7$.
+
+\textbf{$7$ weighings are necessary.} Call the heavier coin of a weighing its \emph{loser}; each weighing has exactly one loser. Suppose a procedure always identifies the second lightest coin $s$, and look at the results at the end, with lightest coin $m$.
+\begin{itemize}
+\item Every coin except one must have lost at least once. If two coins $x,y$ never lost, nothing distinguishes the orders ``$x$ lightest, $y$ second'' and ``$y$ lightest, $x$ second'' (both are consistent with all results), so the second lightest would not be known. So there are at least $5$ losses by coins other than $m$.
+\item Let $L$ be the set of coins that lost directly to $m$. Every coin $y\in L$ other than $s$ must also have lost to some coin other than $m$: otherwise the only coin known to be lighter than $y$ is $m$, and the order ``$m$, then $y$, then the rest'' would be consistent with all results, so $y$ could be second lightest.
+\end{itemize}
+Hence the number of weighings is at least $5+(|L|-1)$.
+
+Finally, an adversary can force $|L|\ge3$. Give every coin a score, initially $1$, and let the adversary answer each weighing as follows. If two coins that have never lost are compared, it declares the one with the larger score (either one in case of a tie) lighter, and that coin adds the loser's score to its own. If a coin that has never lost is compared with a coin that has lost, it declares the coin that has never lost lighter; this is consistent, because no coin is known to be lighter than a coin that has never lost. If two coins that have both lost are compared, it gives any answer consistent with the results so far. Scores change only in the first case. The scores of the coins that have never lost always add up to $6$, so at the end the lightest coin $m$ has score $6$. Its score changes only when it beats a coin that has never lost, and then at most doubles. Starting from $1$, it needs at least $3$ such wins to reach $6>2^2$, and each of those coins is in $L$.
+
+So at least $5+3-1=7$ weighings are needed in the worst case.

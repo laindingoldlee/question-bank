@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1570988_geometry_problem
+% Stable identity: aops-topic-1570988-q01
+Draw the diagonal $AC$; it splits $ABCE$ into triangles $ABC$ and $ACE$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=dir(240),B=dir(300),C=dir(0),D=dir(60),Ep=dir(120),F=dir(180);
+fill(A--B--C--Ep--cycle,paleyellow);
+draw(A--B--C--D--Ep--F--cycle,linewidth(0.9));
+draw(C--Ep,linewidth(0.9));
+draw(A--C,dashed+blue);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,E);label("$D$",D,NE);label("$E$",Ep,NW);label("$F$",F,W);
+label("$1$",(A+B)/2,S);label("$1$",(B+C)/2,SE);
+label("$\sqrt{3}$",(A+C)/2+(0.1,-0.06),SE,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Triangle $ABC$.} Each interior angle of a regular hexagon is $120^\circ$, so
+\[
+[ABC]=\dfrac{1}{2}\cdot1\cdot1\cdot\sin120^\circ=\dfrac{\sqrt3}{4}.
+\]
+\textbf{Triangle $ACE$.} The short diagonals $AC$, $CE$, $EA$ are equal, so $ACE$ is equilateral. In isosceles triangle $ABC$ with apex angle $120^\circ$, the base is $AC=2\cdot1\cdot\sin60^\circ=\sqrt3$. Hence
+\[
+[ACE]=\dfrac{\sqrt3}{4}\left(\sqrt3\right)^2=\dfrac{3\sqrt3}{4}.
+\]
+Therefore
+\[
+[ABCE]=\dfrac{\sqrt3}{4}+\dfrac{3\sqrt3}{4}=\boxed{\sqrt3}\text{ square inches}.
+\]
+(Check: the whole hexagon has area $\dfrac{3\sqrt3}{2}$, and the part cut off, triangle $CDE$ together with triangle $EFA$, has area $2\cdot\dfrac{\sqrt3}{4}=\dfrac{\sqrt3}{2}$.)

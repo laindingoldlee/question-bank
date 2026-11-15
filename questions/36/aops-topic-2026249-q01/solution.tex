@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2026249_intersections_and_regions
+% Stable identity: aops-topic-2026249-q01
+\textbf{(a)} Two distinct lines meet in at most one point, so there are at most $\dbinom n2$ intersection points.
+
+For regions, add the lines one at a time. When the $k$th line is added, it meets the previous $k-1$ lines in at most $k-1$ points, which cut it into at most $k$ pieces (segments and rays). Each piece splits one existing region into two, so the number of regions increases by at most $k$. Starting from $1$ region,
+\[
+R\le 1+(1+2+\cdots+n)=1+n+\dbinom n2.
+\]
+Both bounds are attained when no two lines are parallel and no three pass through a point: then every pair meets in a distinct point and the $k$th line is cut into exactly $k$ pieces. For $n=4$: $\boxed{6}$ intersection points and $\boxed{11}$ regions.
+
+\textbf{(b)} Two distinct circles meet in at most $2$ points, so there are at most $2\dbinom n2=n(n-1)$ intersection points.
+
+One circle makes $2$ regions. The $k$th circle ($k\ge2$) meets the previous ones in at most $2(k-1)$ points, which cut it into at most $2(k-1)$ arcs, each splitting a region; so it adds at most $2(k-1)$ regions. Hence
+\[
+R\le 2+\sum_{k=2}^{n}2(k-1)=2+n(n-1)=n^2-n+2.
+\]
+Both bounds are attained, for instance, by $n$ unit circles whose centres are distinct points within distance $1$ of each other, chosen so that no three circles pass through a common point: every two circles cross twice and every intersection point is distinct. For $n=4$: $\boxed{12}$ intersection points and $\boxed{14}$ regions.
+
+\textbf{(c)} No. In the extremal configurations, lines give $R=I+n+1$ and circles give $R=I+2$, where $I$ is the number of intersection points. For $4$ lines, $11\ne 6+1$; for $4$ circles, $14\ne 12+1$. Even a single line ($0$ intersections, $2$ regions) is a counterexample. The claim is \textbf{false}.

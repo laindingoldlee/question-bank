@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2197144_easy_triangle_problem
+% Stable identity: aops-topic-2197144-q01
+Since $P$ lies on $AB$, $\angle CAP=\angle MAP$, so in triangle $AMP$ the angles at $A$ and $P$ are equal. Hence the triangle is isosceles with $MP=MA=\dfrac{AC}{2}=3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real cA=7/9, sA=sqrt(1-cA^2);
+pair A=(0,0), B=(6,0), C=6*(cA,sA), M=(A+C)/2, P=(14/3,0);
+draw(A--B--C--cycle,linewidth(1));
+draw(M--P,blue+linewidth(1));
+draw(M--(M.x,0),dotted);
+dot(A); dot(B); dot(C); dot(M); dot(P);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$M$",M,NW); label("$P$",P,S);
+label("$3$",(A+M)/2,NW,fontsize(8pt)); label("$3$",(M+P)/2,NE,blue+fontsize(8pt));
+label("$4$",(B+C)/2,NE,fontsize(8pt));
+label("$F$",(M.x,0),S,fontsize(8pt));
+draw(arc(A,0.7,0,degrees(C)),red); draw(arc(P,0.6,180-degrees(C),180),red);
+\end{asy}
+
+Let $F$ be the foot of the perpendicular from $M$ to $AB$; it is the midpoint of $AP$, so $AP=2AF=2\cdot AM\cos A=6\cos A$. By the law of cosines in triangle $ABC$,
+\[\cos A=\dfrac{AB^2+AC^2-BC^2}{2\cdot AB\cdot AC}=\dfrac{36+36-16}{72}=\dfrac{7}{9} .\]
+Therefore $AP=6\cdot\dfrac{7}{9}=\boxed{\dfrac{14}{3}}$, which is less than $AB=6$, so $P$ does lie on side $AB$.

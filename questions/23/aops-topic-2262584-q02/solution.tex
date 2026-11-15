@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2262584_combo_squares_and_a_question
+% Stable identity: aops-topic-2262584-q02
+\textbf{It can.}
+
+\textbf{Step 1 (hockey stick).} For every $m\ge0$,
+\[\dbinom{n}{0}+\dbinom{n+1}{1}+\cdots+\dbinom{n+m}{m}=\dbinom{n+m+1}{m}.\]
+For $m=0$ both sides are $1$; and if it holds for $m$, adding $\dbinom{n+m+1}{m+1}$ gives $\dbinom{n+m+1}{m}+\dbinom{n+m+1}{m+1}=\dbinom{n+m+2}{m+1}$ by Pascal's rule, which is the statement for $m+1$. With $m=n+1$ and $\dbinom n0=1$,
+\[\dbinom{n+1}{1}+\dbinom{n+2}{2}+\cdots+\dbinom{2n+1}{n+1}=\dbinom{2n+2}{n+1}-1,\]
+so the given expression equals $\dbinom{2n+2}{n+1}-2$.
+
+\textbf{Step 2 (sum of squares of a row).} Choosing $n+1$ people from $n+1$ boys and $n+1$ girls, by the number $k$ of boys chosen, gives
+\[\dbinom{2n+2}{n+1}=\sum_{k=0}^{n+1}\dbinom{n+1}{k}\dbinom{n+1}{n+1-k}=\sum_{k=0}^{n+1}\dbinom{n+1}{k}^2.\]
+
+\textbf{Conclusion.} The terms $k=0$ and $k=n+1$ are both $1$, so
+\[\dbinom{2n+2}{n+1}-2=\dbinom{n+1}{1}^2+\dbinom{n+1}{2}^2+\cdots+\dbinom{n+1}{n}^2,\]
+a sum of $n$ perfect squares, each at least $1$. For example, for $n=2$: $3+6+10-1=18=3^2+3^2$.

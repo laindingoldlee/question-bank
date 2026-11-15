@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2518403_system_of_algebraic_equation_with_constraints
+% Stable identity: aops-topic-2518403-q01
+Both inequalities bound $y$ from above:
+\[2y<3x+30\qquad\text{and}\qquad 2y<63-3x.\]
+With $y\ge0$ the second needs $3x<63$, so $0\le x\le20$. The first bound is the smaller one exactly when $3x+30\le63-3x$, i.e. $x\le5$. For a fixed $x$, the number of integers $y\ge0$ with $2y<L$ is $\left\lceil\dfrac L2\right\rceil$.
+
+For $x=0,\dots,5$ ($L=3x+30$): $15,17,18,20,21,23$, with sum $114$.
+
+For $x=6,\dots,20$ ($L=63-3x$): $23,21,20,18,17,15,14,12,11,9,8,6,5,3,2$, with sum $184$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+import graph;
+real u=0.25;
+fill((0,0)--(0,15*u)--(5.5*u,23.25*u)--(21*u,0)--cycle,rgb(0.9,0.93,1));
+draw((-1*u,0)--(23*u,0),Arrow(5)); draw((0,-1*u)--(0,25*u),Arrow(5));
+label("$x$",(23*u,0),E); label("$y$",(0,25*u),N);
+draw((0,15*u)--(6*u,24*u),blue); draw((2*u,28.5*u)--(21.4*u,-0.6*u),red);
+for(int x=0;x<=20;++x) for(int y=0;y<=23;++y) if(3*x-2*y+30>0 && 3*x+2*y-63<0) dot((x*u,y*u),black+1.6pt);
+label("$\ell_1$",(6*u,24*u),E,blue);
+label("$\ell_2$",(14*u,11*u),NE,red);
+label("$5$",(5*u,0),S,fontsize(7pt)); label("$20$",(20*u,0),S,fontsize(7pt)); label("$15$",(0,15*u),W,fontsize(7pt));
+\end{asy}
+
+(In the sketch, $\ell_1$ is the line $3x-2y+30=0$ and $\ell_2$ is the line $3x+2y-63=0$; the dots are the pairs counted.) The total is $114+184=\boxed{298}$ pairs.
+
+(If $\mathbb N$ is taken to start at $1$, remove the $15$ pairs with $x=0$ and the $20$ pairs with $y=0$, $1\le x\le20$, leaving $263$.)

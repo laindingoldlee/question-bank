@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1358181_problemmath_counts
+% Stable identity: aops-topic-1358181-q01
+Each piece is $24$ feet long. The triangle has side $8$, and the circle has circumference $24$, so its radius is $r=\dfrac{24}{2\pi}=\dfrac{12}{\pi}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real r=12/pi;
+pair A=(0,0),B=(8,0),C=(4,4*sqrt(3));
+draw(A--B--C--cycle,linewidth(0.9));
+label("$8$",(A+B)/2,S); label("$8$",(B+C)/2,NE); label("$8$",(A+C)/2,NW);
+pair O=(14,r);
+draw(circle(O,r),linewidth(0.9)+blue); dot(O,blue);
+draw(O--O+r*dir(0),blue+dashed);
+label("$r$",O+(r/2,0.45),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+\text{triangle: }\dfrac{\sqrt3}{4}\cdot8^2=16\sqrt3\approx27.71,\qquad \text{circle: }\pi r^2=\dfrac{144}{\pi}\approx45.84 .
+\]
+The combined area is about $73.55$, which is $\boxed{74}$ square feet to the nearest whole number.

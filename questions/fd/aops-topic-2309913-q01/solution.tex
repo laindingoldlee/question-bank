@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2309913_a_geometry_problem_on_orthocentre_and_circumcentre
+% Stable identity: aops-topic-2309913-q01
+Write $\angle B$ for the angle of the triangle at $B$, and let $D$ be the foot of the altitude from $A$. The orthocentre $H$ lies on $AD$, and since the triangle is acute, $H$ is inside the triangle and $D$ lies between $B$ and $C$; so $\angle BAH=\angle BAD$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0), C=(4,0), A=(1.2,3.2);
+pair O=(2,1.075);
+pair H=A+B+C-2*O;
+pair D=(A.x,0);
+draw(circle(O,abs(A-O)),gray);
+draw(A--B--C--cycle,linewidth(1));
+draw(A--D,blue); draw(A--O,red); draw(O--C,red+dashed);
+draw(D+(0.15,0)--D+(0.15,0.15)--D+(0,0.15),blue);
+draw(arc(A,0.6,degrees(B-A),degrees(D-A)),blue); draw(arc(A,0.7,degrees(B-A),degrees(D-A)),blue);
+draw(arc(A,0.6,degrees(O-A),degrees(C-A)),red); draw(arc(A,0.7,degrees(O-A),degrees(C-A)),red);
+dot(O,red); dot(H,blue); dot(D,blue);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE);
+label("$O$",O,NE,red); label("$H$",H,W,blue); label("$D$",D,S,blue);
+\end{asy}
+
+\textbf{The angle at $H$.} In the right triangle $ABD$, $\angle BAD=90^\circ-\angle B$. So $\angle BAH=90^\circ-\angle B$.
+
+\textbf{The angle at $O$.} The central angle $\angle AOC$ stands on the arc $AC$ not containing $B$, on which the inscribed angle $\angle ABC$ also stands (the triangle is acute, so $O$ is inside it), hence $\angle AOC=2\angle B$. Triangle $AOC$ is isosceles with $OA=OC$, so
+\[\angle CAO=\dfrac{180^\circ-2\angle B}{2}=90^\circ-\angle B.\]
+
+Therefore $\angle BAH=\angle CAO$. $\blacksquare$

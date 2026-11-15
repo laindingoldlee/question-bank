@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1753987_simple_geometry_problem
+% Stable identity: aops-topic-1753987-q01
+The small piece is a cone similar to the whole cone, with the same apex $V$; let its height be $h$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real H=10,R=5,h=7.93701; real yc=H-h, rc=R*h/H;
+pair V=(0,H);
+draw(shift(0,0)*xscale(R)*yscale(R*0.15)*arc((0,0),1,180,360),linewidth(0.9));
+draw(shift(0,0)*xscale(R)*yscale(R*0.15)*arc((0,0),1,0,180),dashed);
+draw(shift(0,yc)*xscale(rc)*yscale(rc*0.15)*unitcircle,blue+linewidth(0.8));
+draw((-R,0)--V--(R,0),linewidth(0.9));
+draw(V--(0,0),dashed);
+dot(V);
+label("$V$",V,N);
+draw((R+1.2,0)--(R+1.2,H),Arrows(5));label("$10$",(R+1.2,H/2),E);
+draw((-R-1.2,yc)--(-R-1.2,H),blue,Arrows(5));label("$h$",(-R-1.2,(yc+H)/2),W,blue);
+draw((0,0)--(R,0),dashed);
+draw((0,-1.9)--(R,-1.9),Arrows(5));label("$5$",(R/2,-1.9),S);
+draw((0,-0.1)--(0,-2.1),dotted);draw((R,-0.1)--(R,-2.1),dotted);
+draw((-R-1.4,yc)--(-rc,yc),dotted);draw((-R-1.4,H)--(-0.3,H),dotted);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The ratio of similarity is $\dfrac {h}{10}$, so the volume ratio is $\left(\dfrac {h}{10}\right)^3$. Equal pieces mean the small cone has half the volume:
+\[
+\left(\dfrac {h}{10}\right)^3=\dfrac{1}{2}\quad\Longrightarrow\quad h=\dfrac{10}{\sqrt[3]2}=\boxed{5\sqrt[3]4}\approx7.94 .
+\]
+(The radius $5$ is not needed.)

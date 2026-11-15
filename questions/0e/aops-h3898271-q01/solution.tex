@@ -1,0 +1,7 @@
+There are eight choices for vertex $1$. At any stage, the next vertex must be one of the two neighbours of the current endpoint in the convex polygon of remaining vertices: a diagonal would put unvisited vertices on both sides, forcing a later crossing to visit both. Conversely choosing an endpoint neighbour creates an edge on the remaining convex boundary, so recursively never forces a crossing. There are two choices for each of the next six vertices, after which the last is forced. Thus $N=8\cdot2^6=512$, and the remainder is $\boxed{12}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p;for(int i=0;i<8;++i)p.push(dir(90+45*i));int[] order={0,1,7,2,6,3,5,4};for(int i=0;i<8;++i){draw(p[i]--p[(i+1)%8],gray+dashed);label(string(i+1),p[order[i]],unit(p[order[i]]));if(i>0)draw(p[order[i-1]]--p[order[i]],blue);}label("one good path",(0,-1.5));
+\end{asy}

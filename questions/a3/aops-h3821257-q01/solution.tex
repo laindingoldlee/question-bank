@@ -1,0 +1,20 @@
+Apply Burnside's lemma to the ten rotations. The identity fixes $D(10,5)=\dfrac{1}{6}\binom{14}{5}\binom75=7007$ choices.
+
+A half-turn must fix one of the five diagonals individually, since the total number is odd and all nonfixed diagonals occur in pairs. An individually fixed diagonal is a diameter. There cannot be two diameters because they cross. There are five choices for this diameter. It divides the decagon into two hexagons, with the other four diagonals forming two symmetric pairs. Choose two noncrossing diagonals in one hexagon; the other half is then determined. Thus the half-turn fixes $5D(6,2)=5\cdot21=105$ choices.
+
+Each of the four rotations of order five forces the diagonals to form a single orbit of five. An orbit of diameters crosses; among other diagonals, only the edges of the pentagon on alternating vertices do not cross. There are two such pentagons. To see the exclusion directly, the other possible chord lengths skip two or three intervening vertices, and their rotations interlace endpoints, causing crossings.
+
+Each of the four rotations of order ten fixes no choice: an orbit has ten non-diameter diagonals or five mutually crossing diameters. Therefore the answer is
+\[\boxed{\dfrac{7007+105+4\cdot2}{10}=712}.\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] v;for(int i=0;i<10;++i)v.push(dir(90+36i));for(int i=0;i<10;++i){draw(v[i]--v[(i+1)%10]);label(string(i),1.13v[i]);}for(int i=0;i<5;++i)draw(v[2i]--v[(2i+2)%10],blue+linewidth(1.2));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] v;for(int i=0;i<10;++i)v.push(dir(90+36i));for(int i=0;i<10;++i){draw(v[i]--v[(i+1)%10]);label(string(i),1.13v[i]);}draw(v[0]--v[5],blue+linewidth(1.2));draw(v[0]--v[2]);draw(v[0]--v[3]);draw(v[5]--v[7]);draw(v[5]--v[8]);
+\end{asy}

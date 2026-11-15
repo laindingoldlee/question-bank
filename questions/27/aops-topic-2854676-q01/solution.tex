@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2854676_original_geo_problem_i_made
+% Stable identity: aops-topic-2854676-q01
+Put the quarter circle's centre $O$ at the origin, with bounding radii along the positive axes. A circle tangent to both axes (inside the quarter) has centre $C=(r,r)$, so $OC=r\sqrt2$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real R=4;real r=R/(1+sqrt(2));pair O=(0,0),C=(r,r);
+draw(O--(R,0));draw(O--(0,R));draw(arc(O,R,0,90));draw(circle(C,r));
+pair T=R*dir(45);draw(O--T,dashed);dot(O);dot(C);
+draw(C--(r,0),dotted);draw(C--(0,r),dotted);
+label("$O$",O,SW);label("$C$",C,SE);label("$r$",(r,r/2),E);label("$R$",(R/2,0),S);label("$T$",T,NE);
+\end{asy}
+
+Internal tangency with the arc means the centres and the tangency point $T$ are collinear, with $OT=OC+CT$, i.e. $R=r\sqrt2+r$. Hence $r=\dfrac{R}{1+\sqrt2}=(\sqrt2-1)R$. $\blacksquare$

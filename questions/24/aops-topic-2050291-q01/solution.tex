@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2050291_help_me_solve_this_remainder_problem_please
+% Stable identity: aops-topic-2050291-q01
+\textbf{The values.} In a right triangle $BCA$ with $\angle C=90^\circ$, $BC=1$, $CA=\sqrt3$, $AB=2$, we have $\angle BAC=30^\circ$. Extend $CA$ beyond $A$ to $D$ with $AD=AB=2$. Triangle $ABD$ is isosceles, so $\angle ADB=\dfrac{30^\circ}{2}=15^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), B=(0,1), A=(-sqrt(3),0), D=(-sqrt(3)-2,0);
+draw(D--C--B--cycle,linewidth(0.9));
+draw(A--B);
+draw((-0.12,0)--(-0.12,0.12)--(0,0.12));
+dot(A);dot(B);dot(C);dot(D);
+label("$C$",C,SE);label("$B$",B,N);label("$A$",A,S);label("$D$",D,SW);
+label("$1$",(B+C)/2,E);label("$\sqrt3$",(A+C)/2,S);label("$2$",(A+D)/2,S);label("$2$",(A+B)/2,NE);
+label("$15^\circ$",D,10*dir(12));label("$30^\circ$",A,4*dir(15));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the right triangle $BCD$, $DC=2+\sqrt3$ and $BC=1$, so
+\[\cot15^\circ=2+\sqrt3,\qquad \tan15^\circ=\dfrac{1}{2+\sqrt3}=2-\sqrt3 .\]
+Since $\dfrac{\pi}{12}=15^\circ$, the number is $s_{1997}$, where $s_n=(2+\sqrt3)^n+(2-\sqrt3)^n$.
+
+\textbf{A recurrence.} The numbers $2\pm\sqrt3$ are the roots of $t^2=4t-1$, so $s_{n+1}=4s_n-s_{n-1}$, with $s_0=2$ and $s_1=4$. In particular every $s_n$ is an integer. Modulo $9$:
+\[s_0,s_1,s_2,\dots\equiv2,4,5,7,5,4,\ 2,4,5,7,5,4,\ \dots\]
+(e.g.\ $s_2=14\equiv5$, $s_3=52\equiv7$, $s_4=194\equiv5$, $s_5=724\equiv4$, $s_6=2702\equiv2$, $s_7\equiv4$). Since two consecutive terms repeat, the residues are periodic with period $6$. As $1997=6\cdot332+5$, $s_{1997}\equiv s_5\equiv4\pmod9$.
+
+The remainder is $\boxed{4}$.

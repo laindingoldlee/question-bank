@@ -44,5 +44,6 @@ The full spec is `Question_Bank_Import_Prompt_Complete_Detailed.md` in the owner
 
 ## Status
 
-- Pilot: batches 89 and 90 (133 questions) loaded. The full bank (32,212 questions) is waiting on a database dump from the old site (Supabase), which also holds the folder structure.
-- Tested at full size with synthetic data: about 24 MB of data files, first results in about 2 s, filters respond in under 0.5 s.
+- All 32,212 questions imported on 2026-11-15 from the old site's full export (`aops_question_bank_backup_all_middle.zip`, import format) with `tools/import_backup.py`. That export had no folders and no editorial notes, so `state/` starts empty.
+- Site data is about 38 MB; first results show in about 3 s and filters respond in under 0.5 s.
+- A rendering audit of 2,000 random questions found about 0.5% with LaTeX source problems (text-mode `\boxed`, unbalanced `$`, e.g. dollar amounts written as `$34.90`). These also break pdflatex and should be fixed in the source.

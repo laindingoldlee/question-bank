@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2543496_pascal_contest_2021_p25
+% Stable identity: aops-topic-2543496-q01
+Let $T=p+q+r+s$. Since $89.5625=\dfrac{1433}{16}$, the remaining sum is
+\[\dfrac{n(n+1)}2-T=\dfrac{1433(n-4)}{16}.\]
+This is an integer and $1433$ is odd, so $16\mid n-4$.
+
+\emph{Finding $n$.} We have $410=101+102+103+104\le T\le n+(n-1)+(n-2)+(n-3)=4n-6$.
+\begin{itemize}
+\item From $T\le4n-6$: the average is at least $\dfrac{\dfrac{n(n+1)}2-4n+6}{n-4}=\dfrac{(n-3)(n-4)}{2(n-4)}=\dfrac{n-3}2$. So $\dfrac{n-3}2\le89.5625$, which gives $n\le182$.
+\item From $T\ge410$: the average is at most $\dfrac{n^2+n-820}{2(n-4)}=\dfrac{n+5}2-\dfrac{400}{n-4}$. This increases with $n$ and equals $82<89.5625$ at $n=164$, so $n>164$.
+\end{itemize}
+The only $n\equiv4\pmod{16}$ with $164<n\le182$ is $n=180$. Then
+\[T=\dfrac{180\cdot181}2-\dfrac{1433\cdot176}{16}=16290-15763=527.\]
+
+\emph{Counting $s$.} The three consecutive numbers are $p,q,r$ or $q,r,s$.
+\begin{itemize}
+\item $p,p+1,p+2,s$: then $s=524-3p$. The conditions $s>p+2$ and $s\le180$ give $115\le p\le130$. So there are $16$ values $s=179,176,\dots,134$, all $\equiv2\pmod3$.
+\item $p,q,q+1,q+2$: then $p=524-3q$. The conditions $100<p<q$ give $132\le q\le141$. So there are $10$ values $s=q+2=134,135,\dots,143$.
+\end{itemize}
+The values $134,137,140,143$ occur in both lists. So the number of possible values of $s$ is $16+10-4=\boxed{\textbf{(E) }22}$.

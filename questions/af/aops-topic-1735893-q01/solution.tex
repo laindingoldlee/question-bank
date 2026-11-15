@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1735893_algebra_challenge_question
+% Stable identity: aops-topic-1735893-q01
+A point $P=(x,y)$ is at distance $\sqrt{x^2+y^2}$ from the origin $O$ and at distance $\dfrac{|3x-2y-6|}{\sqrt{3^2+2^2}}=\dfrac{|3x-2y-6|}{\sqrt{13}}$ from the line. Setting these equal and squaring (both sides are nonnegative),
+\[
+13(x^2+y^2)=(3x-2y-6)^2=9x^2+4y^2+36-12xy-36x+24y ,
+\]
+which simplifies to
+\[
+\boxed{4x^2+12xy+9y^2+36x-24y-36=0}.
+\]
+This is the parabola with focus $O$ and directrix $3x-2y-6=0$ (note $4x^2+12xy+9y^2=(2x+3y)^2$, a perfect square, as for every parabola):
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real p=3/sqrt(13); pair nn=(3,-2)/sqrt(13), t=(2,3)/sqrt(13), V=(9/13,-6/13);
+guide g; for(int i=0;i<=80;++i){real v=-4.6+9.2*i/80; g=g..(V-(v^2/(4p))*nn+v*t);}
+draw((-6.5,0)--(4.5,0),gray(0.5),Arrow(TeXHead));draw((0,-4.5)--(0,6),gray(0.5),Arrow(TeXHead));
+label("$x$",(4.5,0),S,gray(0.3));label("$y$",(0,6),W,gray(0.3));
+draw((-0.6,-3.9)--(3.6,2.4),red+linewidth(0.9));
+label("$3x-2y-6=0$",(3.6,2.4),E,red);
+draw(g,blue+linewidth(0.9));
+real v0=-3; pair P=V-(v0^2/(4p))*nn+v0*t; pair Fp=P-((3*P.x-2*P.y-6)/13)*(3,-2);
+draw(P--(0,0),dashed);draw(P--Fp,dashed);
+pair u=unit(P-Fp),w=unit((2,3));
+draw(Fp+0.25*u--Fp+0.25*u+0.25*w--Fp+0.25*w);
+dot((0,0));dot(P);
+label("$O$",(0,0),dir(135));label("$P$",P,dir(235));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

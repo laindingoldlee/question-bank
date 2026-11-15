@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1296650_math_placement_test
+% Stable identity: aops-topic-1296650-q03
+We prove the British flag theorem: $AX^2+CX^2=BX^2+DX^2$.
+
+Put $D=(0,0)$, $C=(w,0)$, $B=(w,h)$, $A=(0,h)$ and $X=(x,y)$. Then
+\[
+AX^2+CX^2=x^2+(y-h)^2+(x-w)^2+y^2=BX^2+DX^2,
+\]
+since $BX^2+DX^2=(x-w)^2+(y-h)^2+x^2+y^2$ contains the same four squares.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,3),B=(5,3),C=(5,0),D=(0,0),X=(1.8,1.9); draw(A--B--C--D--cycle,linewidth(0.9));
+draw(X--A,blue); draw(X--C,blue); draw(X--B,red); draw(X--D,red); dot(X);
+draw((1.8,0)--(1.8,3),gray+dashed); draw((0,1.9)--(5,1.9),gray+dashed);
+label("$A$",A,NW); label("$B$",B,NE); label("$C$",C,SE); label("$D$",D,SW); label("$X$",X,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Geometrically, the lines through $X$ parallel to the sides cut the rectangle into four smaller rectangles, and each of the four distances is the hypotenuse of a right triangle whose legs are two of the four pieces; both sums equal the sum of the squares of all four pieces. So $\boxed{AX^2+CX^2=BX^2+DX^2}$. $\blacksquare$

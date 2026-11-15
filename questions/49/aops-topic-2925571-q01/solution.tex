@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2925571_2r__asina__bsinb__csinc
+% Stable identity: aops-topic-2925571-q01
+Let $CA'$ be the diameter of the circumcircle through $C$. Then $\angle CBA'=90^\circ$ (angle in a semicircle), and $\angle BA'C=\angle BAC=A$ when $A$ and $A'$ are on the same arc (otherwise the two angles are supplementary, with the same sine).
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);pair A=dir(110),B=dir(210),C=dir(330),A2=-C;draw(circle(O,1));draw(A--B--C--cycle);draw(C--A2,dashed);draw(B--A2,dashed);dot(O);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$A'$",A2,NW);label("$O$",O,S);
+\end{asy}
+
+In the right triangle $A'BC$, $BC=CA'\sin\angle BA'C$, i.e. $a=2R\sin A$. If $A=90^\circ$, $a$ is itself a diameter. The same argument applies to $b$ and $c$. $\blacksquare$

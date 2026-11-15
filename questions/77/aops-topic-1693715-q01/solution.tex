@@ -1,0 +1,45 @@
+% Source: https://artofproblemsolving.com/community/c3h1693715_spheres
+% Stable identity: aops-topic-1693715-q01
+On the sphere the shortest path between two points is an arc of a great circle, so:
+\begin{itemize}
+\item $N$ is at surface distance $\dfrac{\pi R}{2}$ from each of $A,B,C,D$ (a quarter of a meridian);
+\item adjacent points such as $A$ and $B$ are at distance $\dfrac{\pi R}{2}$ (a quarter of the equator);
+\item opposite points $A$ and $C$ are antipodal, at distance $\pi R$ (half a great circle, e.g.\ over the pole); the same holds for $B$ and $D$.
+\end{itemize}
+These shortest paths all lie on the hemisphere.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=3,e=20;
+pair pr(real X,real Y,real Z){return (X,Y*Sin(e)+Z*Cos(e));}
+real vis(real X,real Y,real Z){return -Y*Cos(e)+Z*Sin(e);}
+void curve(real[] X,real[] Y,real[] Z,pen p){
+ path cur=pr(X[0],Y[0],Z[0]); bool st=vis((X[0]+X[1])/2,(Y[0]+Y[1])/2,(Z[0]+Z[1])/2)>=0;
+ for(int i=0;i<X.length-1;++i){
+  bool v=vis((X[i]+X[i+1])/2,(Y[i]+Y[i+1])/2,(Z[i]+Z[i+1])/2)>=0;
+  if(v!=st){ draw(cur,st?p:p+dashed); cur=pr(X[i],Y[i],Z[i]); st=v; }
+  cur=cur--pr(X[i+1],Y[i+1],Z[i+1]);}
+ draw(cur,st?p:p+dashed);}
+void meridian(real th,pen p){real[] X,Y,Z;for(int i=0;i<=60;++i){real f=90*i/60;X.push(R*Cos(f)*Cos(th));Y.push(R*Cos(f)*Sin(th));Z.push(R*Sin(f));}curve(X,Y,Z,p);}
+real[] X,Y,Z;for(int i=0;i<=120;++i){real t=3*i;X.push(R*Cos(t));Y.push(R*Sin(t));Z.push(0);}
+curve(X,Y,Z,black+linewidth(0.9));
+draw(arc((0,0),R,0,180),linewidth(0.9));
+meridian(-150,blue+linewidth(0.7));meridian(30,blue+linewidth(0.7));
+meridian(-60,red+linewidth(0.7));meridian(120,red+linewidth(0.7));
+pair Np=pr(0,0,R),A=pr(R*Cos(-150),R*Sin(-150),0),Bq=pr(R*Cos(-60),R*Sin(-60),0),C=pr(R*Cos(30),R*Sin(30),0),Dq=pr(R*Cos(120),R*Sin(120),0);
+dot(Np);dot(A);dot(Bq);dot(C);dot(Dq);
+label("$N$",Np,dir(250));label("$A$",A,dir(-120));label("$B$",Bq,dir(-60));label("$C$",C,dir(-140));label("$D$",Dq,dir(160));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Suppose a placement $P\mapsto P'$ in the plane preserves all these distances. Then $|N'A'|=|N'C'|=\dfrac{\pi R}{2}$ and $|A'C'|=\pi R=|A'N'|+|N'C'|$. Equality in the triangle inequality means that $N'$ lies on segment $A'C'$, so $N'$ is the midpoint of $A'C'$. Likewise $N'$ is the midpoint of $B'D'$.
+
+Write $A'=N'+u$, $C'=N'-u$ and $B'=N'+v$, with $|u|=|v|=\dfrac{\pi R}{2}=:\ell$. Then
+\[
+|A'B'|^2=|u-v|^2=2\ell^2-2\,u\cdot v,\qquad |B'C'|^2=|v+u|^2=2\ell^2+2\,u\cdot v .
+\]
+Both must equal $\ell^2$ (as $AB=BC=\dfrac{\pi R}{2}$), so $u\cdot v=\dfrac{\ell^2}{2}$ and $u\cdot v=-\dfrac{\ell^2}{2}$, a contradiction since $\ell>0$.
+
+Hence $\boxed{\text{no distance-preserving flat placement exists}}$: the hemisphere cannot be flattened without stretching or tearing. (This is why every flat map of the Earth distorts distances.) What the cut-off piece ``looks like'' is a dome; its area is $2\pi R^2$, but no flat region has the same distances. $\blacksquare$

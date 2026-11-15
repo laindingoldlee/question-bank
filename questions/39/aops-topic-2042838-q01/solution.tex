@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2042838_distance_question
+% Stable identity: aops-topic-2042838-q01
+Moving $4$ units right and $3$ units down along the line covers a distance of $\sqrt{4^2+3^2}=5$. To cover a distance of $12$, scale this step by $\dfrac{12}{5}$: move $\dfrac{48}{5}$ right and $\dfrac{36}{5}$ down, or the same amounts in the opposite directions.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+draw((-11,0)--(11,0),Arrow(TeXHead)); draw((0,-8.5)--(0,8.5),Arrow(TeXHead));
+pair B1=(9.6,-7.2),B2=(-9.6,7.2);
+draw((-11,8.25)--(11,-8.25),blue);
+draw((0,0)--(9.6,0)--B1,red+dashed);
+dot((0,0)); dot(B1,red); dot(B2,red);
+label("$A$",(0,0),NE); label("$B_1$",B1,E); label("$B_2$",B2,W);
+label("$\dfrac{48}{5}$",(4.8,0),N,red+fontsize(8pt)); label("$\dfrac{36}{5}$",(9.6,-3.6),E,red+fontsize(8pt));
+label("$12$",(4.8,-3.6),SW,fontsize(8pt));
+label("$x$",(11,0),E);label("$y$",(0,8.5),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the two points are
+\[B=\boxed{\left(\dfrac{48}{5},-\dfrac{36}{5}\right)\text{ and }\left(-\dfrac{48}{5},\dfrac{36}{5}\right)}.\]
+Check: $\left(\dfrac{48}{5}\right)^2+\left(\dfrac{36}{5}\right)^2=\dfrac{2304+1296}{25}=144=12^2$, and the slope is $\dfrac{-36}{48}=-\dfrac{3}{4}$.
+
+In general, from a point $(x_0,y_0)$ along a line of slope $m$, the points at distance $d$ are
+\[\left(x_0\pm\dfrac{d}{\sqrt{1+m^2}},\ y_0\pm\dfrac{md}{\sqrt{1+m^2}}\right)\]
+(with the same sign in both coordinates).

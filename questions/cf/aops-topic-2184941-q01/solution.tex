@@ -1,0 +1,44 @@
+% Source: https://artofproblemsolving.com/community/c3h2184941_proofs_of_loc
+% Stable identity: aops-topic-2184941-q01
+\textbf{(a)} Put a coordinate on the line, with $A$ at $0$. Let $H$ be the foot of the perpendicular from $C$ to the line, at coordinate $h$; then $AH=|h|$ and $AH^2+CH^2=b^2$. Since $CX=CY=a$, the foot $H$ is the midpoint of the chord $XY$. If $XY=2t$, then $t^2=a^2-CH^2$ by the Pythagorean theorem, and the coordinates of $X$ and $Y$ are $h-t$ and $h+t$. Hence
+\[\overline{AX}\cdot\overline{AY}=(h-t)(h+t)=h^2-t^2=\left(b^2-CH^2\right)-\left(a^2-CH^2\right)=b^2-a^2.\]
+The product is positive when $A$ is outside $\omega$ ($b>a$), negative when $A$ is inside ($b<a$), and $0$ when $A$ is on $\omega$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0); real a=3;
+pair B=a*dir(150);
+pair A=(5.2,B.y);
+pair H=(0,B.y);
+pair B2=(-B.x,B.y);
+draw(circle(C,a),gray);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--H,dashed); draw(H+(0.25,0)--H+(0.25,-0.25)--H+(0,-0.25));
+dot(A);dot(B);dot(C);dot(H);dot(B2,blue);
+label("$A$",A,E); label("$B$",B,NW); label("$C$",C,S); label("$H$",H,N); label("$B'$",B2,N,blue);
+label("$a$",(B+C)/2,SW); label("$b$",(A+C)/2,SE); label("$\omega$",a*dir(250),SW,gray);
+label("$A$ outside $\omega$",(1,-3.3),S,fontsize(8pt));
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0); real a=3;
+pair B=a*dir(145);
+pair A=(1.6,1.45);
+pair u=unit(A-B); pair H=B+dot(C-B,u)*u;
+pair B2=2*H-B;
+draw(circle(C,a),gray);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--B2,blue); draw(C--H,dashed);
+dot(A);dot(B);dot(C);dot(H);dot(B2,blue);
+label("$A$",A,S); label("$B$",B,NW); label("$C$",C,S); label("$H$",H,N); label("$B'$",B2,NE,blue);
+label("$A$ inside $\omega$",(0,-3.3),S,fontsize(8pt));
+\end{asy}
+
+\textbf{(b)} Apply (a) to line $AB$, with the positive direction from $A$ to $B$, so that $B$ has coordinate $c$; let $H$ (coordinate $h$) be the foot of the perpendicular from $C$ to line $AB$. The vector from $B$ to $H$ is the projection of $\overrightarrow{BC}$ onto line $AB$; it has signed length $a\cos B$ in the direction from $B$ towards $A$. So $h=c-a\cos B$ (if $B$ is obtuse, $\cos B<0$ and $H$ lies beyond $B$). Since $H$ is the midpoint of $BB'$, the coordinate of $B'$ is $2h-c=c-2a\cos B$. By (a),
+\[\overline{AB}\cdot\overline{AB'}=c\left(c-2a\cos B\right)=b^2-a^2,\]
+that is, $b^2=a^2+c^2-2ac\cos B$. Both pictures (and the cases $A$ on $\omega$, or $\angle B=90^\circ$ with $B'=B$) are covered by the same signed computation. $\blacksquare$

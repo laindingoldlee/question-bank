@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2309318_a_geometry_problem
+% Stable identity: aops-topic-2309318-q01
+Let $ABCD$ be a trapezoid with $AB\parallel DC$ and legs $AD$ and $BC$. The bases are not equal (otherwise $ABCD$ would be a parallelogram, with two pairs of parallel sides); say $AB<DC$.
+
+\textbf{Lemma: $AD=BC$ if and only if $\angle ADC=\angle BCD$.} Draw through $B$ the line parallel to $AD$; it meets $DC$ at $X$. Then $ABXD$ is a parallelogram, so $BX=AD$ and $DX=AB<DC$; hence $X$ lies between $D$ and $C$. Since $BX\parallel AD$, the corresponding angles give $\angle BXC=\angle ADC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=dir(125), B=dir(55), D=dir(200), C=dir(340);
+pair X=B+D-A;
+draw(circle((0,0),1),gray);
+draw(A--B--C--D--cycle,linewidth(1));
+draw(B--X,dashed+blue);
+label("$A$",A,NW); label("$B$",B,NE); label("$C$",C,SE); label("$D$",D,SW); label("$X$",X,S,blue);
+draw(arc(D,0.18,0,degrees(A-D)),red); draw(arc(X,0.18,0,degrees(B-X)),red);
+draw(arc(C,0.18,degrees(B-C),180),heavygreen);
+\end{asy}
+
+In triangle $BXC$, $BX=BC$ holds if and only if the angles opposite these sides are equal, $\angle BCX=\angle BXC$. As $BX=AD$ and $\angle BXC=\angle ADC$, this says: $AD=BC$ if and only if $\angle BCD=\angle ADC$.
+
+\textbf{The main statement.} Because $AB\parallel DC$, the co-interior angles give $\angle DAB+\angle ADC=180^\circ$. A convex quadrilateral is cyclic if and only if a pair of opposite angles adds up to $180^\circ$. So
+\[ABCD\text{ is cyclic}\iff\angle DAB+\angle BCD=180^\circ\iff\angle BCD=180^\circ-\angle DAB=\angle ADC\iff AD=BC,\]
+the last step by the lemma. $\blacksquare$
+
+(The definition matters: a parallelogram that is not a rectangle has a pair of equal opposite sides but is not cyclic.)

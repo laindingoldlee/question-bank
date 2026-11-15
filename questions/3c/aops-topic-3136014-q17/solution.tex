@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3136014_2013_lmt_spring_guts_round_p13p24_lexington_mathematical_tournament
+% Stable identity: aops-topic-3136014-q17
+Cuts cannot cross at new interior points, since that would create new piece vertices. Any nontriangular piece can be split further along a diagonal, so a maximum partition is a triangulation. Every triangulation of an $n$-gon has $n-2$ triangles: its total angle sum is $(n-2)180^\circ$, and the triangles contribute 180 degrees each. Thus the maximum is $\boxed{2011}$, attained by drawing a fan from one vertex.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] V;for(int k=0;k<7;++k)V.push(3*dir(360.0*k/7));for(int k=0;k<7;++k)draw(V[k]--V[(k+1)%7]);for(int k=2;k<6;++k)draw(V[0]--V[k],blue);label("fan triangulation, illustrated for 7 vertices",(0,-3.7));
+\end{asy}

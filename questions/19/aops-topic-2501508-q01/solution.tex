@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2501508_amc_8_problem_25_2015
+% Stable identity: aops-topic-2501508-q01
+Put the $5$-inch square at $0\le x,y\le5$ and look at the bottom-left corner $O$. The tilted square cuts off a right triangle at each corner; let the one at $O$ have legs $a$ (along the bottom side) and $5-a$ (along the left side), with hypotenuse a side of the tilted square passing through the inner corner $P=(1,1)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real a=(5-sqrt(5))/2;
+pair O=(0,0), X1=(a,0), Y1=(0,5-a), P=(1,1);
+fill(O--X1--P--cycle,rgb(1,0.85,0.85)); fill(O--P--Y1--cycle,rgb(0.85,1,0.85));
+draw(box((0,0),(5,5)),gray);
+draw((a,0)--(5,a)--(5-a,5)--(0,5-a)--cycle,blue+linewidth(0.8));
+draw(box((0,0),(1,1)),gray+dashed);
+draw(O--P);
+draw(P--(1,0),red+dashed); draw(P--(0,1),deepgreen+dashed);
+dot(P); label("$P(1,1)$",P,NE,fontsize(8pt));
+label("$a$",(a/2,0),S,fontsize(8pt)); label("$5-a$",(0,(5-a)/2),W,fontsize(8pt));
+label("$1$",(1,0.45),W,red+fontsize(8pt)); label("$1$",(0.5,1),N,deepgreen+fontsize(8pt));
+label("$O$",O,SW,fontsize(8pt));
+\end{asy}
+
+\textbf{(b)} Join $O$ to $P$. This splits the corner triangle into a triangle with base $a$ on the bottom side of the big square and a triangle with base $5-a$ on its left side, both with apex $P$. The height of a triangle is the perpendicular distance from the apex to the line \emph{containing the base}. Here the bases lie on the sides of the big square, not on the tilted square, and $P$ is $1$ inch from the bottom side and $1$ inch from the left side (it is the corner of a $1$-inch square). So both heights are $1$, whatever the tilt.
+
+\textbf{(a)} Hence the corner triangle has area
+\[\dfrac12\cdot a\cdot1+\dfrac12\cdot(5-a)\cdot1=\dfrac52,\]
+independently of $a$. The same holds at each of the four corners (the four corner triangles of a square inscribed in a square are congruent). So the tilted square has area
+\[25-4\cdot\dfrac52=\boxed{15}\text{ square inches}.\]
+(Check: the corner triangle's area is also $\dfrac{a(5-a)}{2}$, so $a(5-a)=5$, $a=\dfrac{5-\sqrt5}{2}$, and the side squared is $a^2+(5-a)^2=25-2a(5-a)=15$.)
+
+This tilted square is the one in the figure of the original contest problem, which asks for the largest square that fits in the remaining space; the answer there is $15$.

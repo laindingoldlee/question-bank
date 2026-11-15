@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2495499_john_the_quadrilateral
+% Stable identity: aops-topic-2495499-q01
+\textbf{(a)} By the law of cosines in triangle $JOH$,
+\[JH^2=5^2+1^2-2\cdot5\cdot1\cos120^\circ=26+5=31,\]
+so $x=31$ and $31-49+13-0+5-1+2=\boxed{1}$.
+
+\textbf{(b)} Opposite angles of a cyclic quadrilateral are supplementary, so $\angle JNH=180^\circ-120^\circ=60^\circ$. With $NJ=y$, the law of cosines in triangle $JNH$ gives
+\[31=y^2+4-2\cdot2y\cos60^\circ=y^2-2y+4,\qquad y^2-2y-27=0,\]
+so $y=1+\sqrt{28}=\boxed{1+2\sqrt7}$ (the other root is negative).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=sqrt(31/3);
+pair O2=(0,0);
+real tJ=200; pair J=R*dir(tJ);
+real aJO=2*aSin(5/(2*R)), aOH=2*aSin(1/(2*R)), aHN=2*aSin(2/(2*R));
+pair Op=R*dir(tJ+aJO), H=R*dir(tJ+aJO+aOH), Nn=R*dir(tJ+aJO+aOH+aHN);
+draw(circle(O2,R),gray);
+draw(J--Op--H--Nn--cycle,linewidth(0.8)); draw(J--H,blue);
+dot(J);dot(Op);dot(H);dot(Nn);
+label("$J$",J,W);label("$O$",Op,S);label("$H$",H,E);label("$N$",Nn,N);
+label("$5$",(J+Op)/2,SW,fontsize(8pt)); label("$1$",(Op+H)/2,SE,fontsize(8pt)); label("$2$",(H+Nn)/2,E,fontsize(8pt));
+label("$120^\circ$",Op+0.5*dir((degrees(J-Op)+degrees(H-Op))/2),fontsize(7pt));
+label("$60^\circ$",Nn+0.9*dir((degrees(J-Nn)+degrees(H-Nn))/2),fontsize(7pt));
+label("$\sqrt{31}$",(J+H)/2,N,blue+fontsize(8pt));
+\end{asy}
+
+\textbf{(c)} $A-B=1-\left(1+2\sqrt7\right)=-2\sqrt7$, so $(A-B)^2=28$ and $\left(28-11\right)^3=17^3=\boxed{4913}$.

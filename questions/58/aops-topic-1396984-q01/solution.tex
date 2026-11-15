@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1396984_some_hard_problems_that_you_cannot_show_work_on
+% Stable identity: aops-topic-1396984-q01
+Each exterior angle is $180^\circ-160^\circ=20^\circ$. Walking once around any convex polygon one turns through the exterior angles, a full turn in total, so the exterior angles add up to $360^\circ$. In a regular polygon they are all equal, so the number of sides is
+\[
+\dfrac{360^\circ}{20^\circ}=\boxed{18}.
+\]
+(This is the quick mental method: number of sides $=\dfrac{360}{180-\text{interior angle}}$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+int n=18; pair[] P; for(int i=0;i<n;++i) P.push(dir(270-180/n+360*i/n));
+for(int i=0;i<n;++i) draw(P[i]--P[(i+1)%n],linewidth(0.8));
+pair A=P[0],B=P[1],C=P[2];
+draw(B--B+(0.5,0),blue+dashed);
+draw(arc(B,0.3,0,20),red);
+label("$20^\circ$",B+0.3*dir(12),NE,red+fontsize(8pt));
+draw(arc(B,0.13,20,180));
+label("$160^\circ$",B+0.13*dir(100),N,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

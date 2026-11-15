@@ -1,0 +1,6 @@
+Use the stated first two rotations, so rotation $n$ has magnitude $\dfrac{90^\circ}{2^{n-1}}$, and extension preserves direction. The angular intervals are nested because successive alternating rotations halve in size. In the radial band $n-1<r\le n$, the first sweep is step $n$, and all later angular sweeps lie inside it. Therefore the union area is $\sum_{n\ge1}[\dfrac{(n^2-(n-1)^2)}{2}]\,[\dfrac{\pi}{2^n}]=\dfrac{(\dfrac{\pi}{2})\sum_{n\ge1}(2n-1)}{2^n}=\dfrac{3\pi}{2}$. Thus $a+b=\boxed5$. If overlaps are counted repeatedly instead, the sum of sector areas is $\sum \dfrac{n^2\pi}{2^{n+1}}=3\pi$, which is a different quantity.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);real pow(real a,int b){return a^b;}
+for(int n=1;n<=5;++n){real st=-60*(1-pow(-.5,n-1));real en=-60*(1-pow(-.5,n));draw((0,0)--n*dir(st),gray);draw(arc((0,0),n,min(st,en),max(st,en)),blue);}dot((0,0));label("first five radial bands",(0,1));
+\end{asy}
+

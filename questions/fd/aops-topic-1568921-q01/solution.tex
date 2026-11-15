@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1568921_challenge_amgm
+% Stable identity: aops-topic-1568921-q01
+Suppose $a\ge b$ (otherwise swap them). Draw a square of side $a+b$ and place four $a\times b$ rectangles inside it in a pinwheel, each rectangle starting at a corner of the square and running along one side:
+
+\begin{asy}
+usepackage("amsmath");
+size(4.6cm);
+defaultpen(fontsize(10pt));
+real a=3,b=1.4,s=a+b;
+pen f=rgb(0.82,0.9,1);
+filldraw((0,0)--(a,0)--(a,b)--(0,b)--cycle,f,linewidth(0.8));
+filldraw((a,0)--(s,0)--(s,a)--(a,a)--cycle,f,linewidth(0.8));
+filldraw((b,a)--(s,a)--(s,s)--(b,s)--cycle,f,linewidth(0.8));
+filldraw((0,b)--(b,b)--(b,s)--(0,s)--cycle,f,linewidth(0.8));
+draw((0,0)--(s,0)--(s,s)--(0,s)--cycle,linewidth(1));
+label("$a$",(a/2,0),S);label("$b$",(a+b/2,0),S);
+label("$b$",(0,b/2),W);label("$a$",(0,b+a/2),W);
+label("$ab$",(a/2,b/2));label("$ab$",(a+b/2,a/2));label("$ab$",(b+a/2,a+b/2));label("$ab$",(b/2,b+a/2));
+label("$(a-b)^2$",((a+b)/2,(a+b)/2),fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The four rectangles do not overlap, and they leave a small square hole in the middle of side $a-b$. So the big square, of area $(a+b)^2$, contains four rectangles of total area $4ab$:
+\[
+(a+b)^2\ge 4ab .
+\]
+The hole is empty exactly when $a=b$, so equality holds only then. Taking square roots of both (positive) sides gives $a+b\ge2\sqrt{ab}$, which is the claim $\dfrac{a+b}{2}\ge\sqrt{ab}$. $\blacksquare$

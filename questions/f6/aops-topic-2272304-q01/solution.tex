@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2272304_speeds_and_distances_of_a_sailboat
+% Stable identity: aops-topic-2272304-q01
+Let the first (slower) boat have speed $v$ km per hour. Two hours after it left, it has travelled $2v$ km; the second boat has sailed for one hour at $v+5$ km per hour, so it has travelled $v+5$ km.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0), S1=(10,0), S2=10*dir(60);
+draw(P--S1,blue+linewidth(0.9)); draw(P--S2,red+linewidth(0.9)); draw(S1--S2,dashed);
+draw(arc(P,1.5,0,60)); label("$60^\circ$",P+2.4*dir(30),fontsize(9pt));
+dot(P); dot(S1,blue); dot(S2,red);
+label("port",P,SW); label("$2v$",(P+S1)/2,S,blue); label("$v+5$",(P+S2)/2,NW,red); label("$10$",(S1+S2)/2,NE);
+\end{asy}
+
+By the law of cosines in the triangle formed by the port and the two boats,
+\[10^2=(2v)^2+(v+5)^2-2(2v)(v+5)\cos60^\circ=4v^2+v^2+10v+25-2v^2-10v=3v^2+25.\]
+So $3v^2=75$, $v^2=25$, and $v=\boxed{5}$ km per hour (exactly). Then both boats are $10$ km from the port, and the triangle is equilateral.

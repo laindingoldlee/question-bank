@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1744311_problem_22__rt_area_with_altitude_division
+% Stable identity: aops-topic-1744311-q01
+Since $75^2+100^2=125^2$, the angle at $B$ is right. Place $B=(0,0)$, $C=(100,0)$ and $A=(0,75)$.
+
+In a right triangle, $CD=\dfrac{BC^2}{CA}=\dfrac{10000}{125}=80$, so $D$ lies $\dfrac{80}{125}=\dfrac{16}{25}$ of the way from $C$ to $A$:
+\[D=(100,0)+\dfrac{16}{25}(-100,75)=(36,48).\]
+Then $E=(36,0)$ is the foot of the perpendicular from $D$ to $BC$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(5,0),A=(0,3.75),D=(1.8,2.4),E=(1.8,0);
+draw(A--B--C--cycle);draw(B--D);draw(D--E,dashed);
+draw((0,0.2)--(0.2,0.2)--(0.2,0));draw((1.8,0.2)--(1.6,0.2)--(1.6,0));
+pair u=unit(A-C),w=unit(B-D);draw(D+0.2*u--D+0.2*u+0.2*w--D+0.2*w);
+label("$A$",A,NW);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NE);label("$E$",E,S);
+label("$75$",(0,1.9),W);label("$BC=100$",(3.4,0),S);label("$36$",(0.9,0),S);label("$48$",(1.8,1.2),E);
+\end{asy}
+
+So $[BDE]=\dfrac12\cdot36\cdot48=\boxed{864}$.

@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2468299_2021_mathcounts_chapter_invitational_problems__solutions
+% Stable identity: aops-topic-2468299-q18
+$n(n+5)=84$ gives $n^2+5n-84=(n+12)(n-7)=0$, so $n=7$ and the rectangles are $7\times10$, $7\times12$ and $7\times5$.
+
+Two of them can share a full side only along a side of length $7$, giving a $7\times15$, $7\times17$ or $7\times22$ block; the third rectangle (sides $7$ and $12$, $10$ or $5$) cannot match the long side $15$, $17$ or $22$. So the three lie side by side, forming a $7\times27$ rectangle with perimeter $2(7+27)=\boxed{68\text{ inches}}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real n=7;draw((0,0)--(27,0)--(27,7)--(0,7)--cycle,linewidth(0.8));draw((10,0)--(10,7),linewidth(0.8));draw((22,0)--(22,7),linewidth(0.8));
+label("$A$",(5,3.5));label("$B$",(16,3.5));label("$C$",(24.5,3.5));
+label("$n+3$",(5,0),S,fontsize(7pt));label("$n+5$",(16,0),S,fontsize(7pt));label("$n-2$",(24.5,0),S,fontsize(7pt));label("$n$",(0,3.5),W,fontsize(7pt));
+\end{asy}

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3072883_some_difficult_counting_problems
+% Stable identity: aops-topic-3072883-q04
+Let $e_i\in\{0,1\}$ be the parity of the number of uses of the edge joining coin $i$ to coin $i+1$, with indices modulo $8$. The final tail indicator at coin $i$ is $e_{i-1}+e_i$ modulo $2$. For each of the two alternating target patterns, choosing $e_0$ determines all other parities recursively; the two choices both close consistently around the circle. Altogether there are four edge-parity patterns, each with exactly four odd edges (for example $00110011$ and its complement for one target). To realize one such pattern in six moves, first assign one move to each odd edge, leaving two extra moves. Either one of the four odd edges is used three times, giving $4\cdot\dfrac{6!}{3!}=480$ sequences, or one of the four even edges is used twice, giving $4\cdot\dfrac{6!}{2!}=1440$. Thus each pattern gives $1920$ sequences, and the total is $\boxed{7680}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] P;for(int i=0;i<8;++i)P.push(2dir(90-45i));for(int i=0;i<8;++i){draw(P[i]--P[(i+1)%8]);filldraw(circle(P[i],.25),(i%2==0)?white:lightgray);label((i%2==0)?"H":"T",P[i]);}label("one alternating target",(0,-2.8));
+\end{asy}

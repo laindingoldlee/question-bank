@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2519832_isosceles_right_triangle
+% Stable identity: aops-topic-2519832-q01
+\textbf{($\Rightarrow$)} Suppose $BD$ bisects $\angle ABC$. Let $E$ be the foot of the perpendicular from $D$ to $BC$. The triangles $BAD$ and $BED$ have right angles at $A$ and $E$, equal angles $\angle ABD=\angle EBD$, and the common side $BD$, so they are congruent (AAS). Hence
+\[BE=BA\qquad\text{and}\qquad DE=DA.\]
+Since $BE=BA<BC$ (the hypotenuse is the longest side), $E$ lies between $B$ and $C$. In triangle $DEC$, $\angle DEC=90^\circ$ and $\angle ECD=\angle ACB=45^\circ$, so it is an isosceles right triangle and $EC=DE=AD$. Therefore
+\[BC=BE+EC=AB+AD.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real s=4;
+pair A=(0,0), C=(s,0), B=(0,s);
+pair D=(s*(sqrt(2)-1),0);
+pair Ep=B+dot(D-B,unit(C-B))*unit(C-B);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(B--D,blue+linewidth(0.9)); draw(D--Ep,dashed);
+real t=0.22; draw((t,0)--(t,t)--(0,t));
+draw(Ep+t*unit(B-Ep)--Ep+t*unit(B-Ep)+t*unit(D-Ep)--Ep+t*unit(D-Ep));
+draw(arc(B,0.75,-90,-67.5),red); draw(arc(B,0.85,-67.5,-45),red);
+void tick(pair P,pair Q,int n){ pair m=(P+Q)/2, u=unit(Q-P), v=rotate(90)*u; for(int i=0;i<n;++i){ pair c=m+(i-(n-1)/2)*0.12*u; draw(c-0.12*v--c+0.12*v,linewidth(0.7)); } }
+tick(A,D,1); tick(D,Ep,1); tick(Ep,C,1); tick(A,B,2); tick(B,Ep,2);
+label("$A$",A,SW); label("$B$",B,N); label("$C$",C,SE); label("$D$",D,S); label("$E$",Ep,NE);
+label("$45^\circ$",C+(-0.85,0.12),NW,fontsize(8pt));
+\end{asy}
+
+\textbf{($\Leftarrow$)} Let $D'$ be the point where the bisector of $\angle ABC$ meets side $AC$. By the first part, $BC=AB+AD'$. If also $BC=AB+AD$, then $AD=AD'$. Both $D$ and $D'$ lie on the segment $AC$, at the same distance from $A$, so $D=D'$, and $BD$ is the bisector. $\blacksquare$
+
+(With $AB=AC=1$, both conditions say $AD=\sqrt2-1$.)

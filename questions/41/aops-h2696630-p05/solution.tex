@@ -1,0 +1,11 @@
+The first player places a horizontal domino in the two central cells: row $3$, columns $3,4$. Thereafter, respond to every move by its image under a half-turn about the board center.
+
+After each first-player turn the occupied cells are half-turn symmetric. Thus the image of a newly placed bar is unoccupied unless it overlaps that same new bar. A vertical bar and its rotated image lie in different columns, because the board has an even number of columns. A horizontal bar can overlap its image only in the middle row and only if it reaches one of the central two cells; those cells are already occupied. Hence every response is legal and disjoint.
+
+The opponent can never fill the board, since the corresponding rotated bar remains available. The game cannot stop with vacant cells because a single-cell piece is always legal. Therefore the first player necessarily makes the final move.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int x=0;x<=6;++x)draw((x,0)--(x,5));for(int y=0;y<=5;++y)draw((0,y)--(6,y));filldraw(box((2,2),(4,3)),lightblue);filldraw(box((0,0),(3,1)),lightred);filldraw(box((3,4),(6,5)),lightred);label("Opening domino",(3,2.5));label("Matching replies",(3,-.5));
+\end{asy}

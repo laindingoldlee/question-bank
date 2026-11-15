@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h1652107_geometry
+% Stable identity: aops-topic-1652107-q01
+Let $\angle B=\theta$, so $\angle A=2\theta$. Mark the point $E$ on $BC$ with $CE=CA=11$ (possible because $BC>AC$, as $\angle A>\angle B$).
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+real a=13,b=11,c=48/11;
+real B0=acos((a^2+c^2-b^2)/(2*a*c));
+pair B=(0,0),C=(a,0),A=c*dir(degrees(B0));
+pair D=B+(A-B)*(c-2)/c,E=(2,0);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(C--D,linewidth(0.9));draw(D--E,blue+dashed);
+dot(D);dot(E);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NW);label("$E$",E,S);
+label("$2$",(A+D)/2,W);label("$2$",(B+E)/2,S);label("$2$",(D+E)/2+(0.25,0.05),fontsize(9pt));
+label("$11$",(A+C)/2,NE);label("$11$",(E+C)/2,S);
+draw(arc(B,0.75,0,degrees(B0)),red);label("$\theta$",B+1.15*dir(degrees(B0)/2),red);
+draw(arc(A,0.55,degrees(B-A),degrees(C-A)),red);label("$2\theta$",A+0.95*dir((degrees(B-A)+degrees(C-A))/2),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Congruent triangles.} Triangles $ACD$ and $ECD$ have $CA=CE$, the common side $CD$, and $\angle ACD=\angle ECD$ (since $CD$ bisects $\angle C$). By SAS they are congruent, so $DE=DA=2$ and $\angle CED=\angle CAD=2\theta$.
+
+\textbf{An isosceles triangle.} The angle $\angle CED$ is an exterior angle of triangle $DEB$, so
+\[
+\angle EDB=\angle CED-\angle EBD=2\theta-\theta=\theta=\angle EBD .
+\]
+Hence triangle $DEB$ is isosceles with $EB=ED=2$.
+
+Therefore $BC=CE+EB=11+2=\boxed{13\text{ cm}}$.
+
+(Check with the angle bisector theorem: $\dfrac{BD}{DA}=\dfrac{BC}{CA}$ gives $BD=\dfrac{26}{11}$ and $AB=\dfrac{48}{11}$; then $BC^2=CA\,(CA+AB)$, the known relation for $\angle A=2\angle B$, holds: $169=11\cdot\dfrac{169}{11}$.)

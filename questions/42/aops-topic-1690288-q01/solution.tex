@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1690288_old_problem_kinda_generic_tic_tac_toe
+% Stable identity: aops-topic-1690288-q01
+There are $2^9=512$ equally likely boards. We count the boards with \emph{no} line of three equal entries. By swapping $0$ and $1$ we may assume the centre is $1$ and double at the end.
+
+The four lines through the centre consist of the centre and a pair of opposite outer cells, so each of the four opposite pairs (two corner pairs, two edge pairs) contains at least one $0$. Thus the outer ring holds at most four $1$s, at most one in each pair. Each of the four sides of the ring (top row, bottom row, left column, right column) must contain both a $0$ and a $1$.
+
+\textbf{Two or fewer $1$s on the ring.} Each side needs a $1$. A corner lies on two sides and an edge cell on one, so two $1$s can meet all four sides only if they are opposite corners; but opposite corners form a pair, which may hold only one $1$. Impossible.
+
+\textbf{Four $1$s on the ring}, one in each pair. Then opposite cells are complementary. Let the top-left, top-middle, top-right and middle-left cells be $a,c,b,d$; they determine the board, giving $16$ boards. The bottom row and right column are the complements of the top row and left column, so it suffices that the top row $(a,c,b)$ and the left column $(a,d,1-b)$ are not constant. The top row is constant for $a=b=c$ ($4$ boards, $d$ free), the left column for $a=d=1-b$ ($4$ boards, $c$ free), and both cannot happen (they would need $b=1-b$). This leaves $16-8=8$ boards.
+
+\textbf{Three $1$s on the ring}: one pair is $(0,0)$ and the other three pairs hold one $1$ each.
+\begin{itemize}
+\item If the $(0,0)$ pair is an edge pair, say top-middle and bottom-middle, then the top and bottom rows need a $1$ in a corner. If the top-left corner is $1$, its opposite (bottom-right) is $0$, so bottom-left is $1$ and top-right is $0$; the left column then reads $1,\ast,1$, forcing the middle-left cell to be $0$ and middle-right to be $1$. This board works, and the case with top-right $1$ is its mirror image. So $2$ boards for each of the $2$ edge pairs: $4$ boards.
+\item If the $(0,0)$ pair is a corner pair, say top-left and bottom-right, then exactly one of top-right and bottom-left is $1$. If top-right is $1$, the left column $0,\ast,0$ and the bottom row $0,\ast,0$ force middle-left $=1$ and bottom-middle $=1$, so middle-right $=0$ and top-middle $=0$; this board works. The other choice is its mirror image. So again $2$ boards for each of the $2$ corner pairs: $4$ boards.
+\end{itemize}
+
+So there are $8+8=16$ boards with centre $1$ and no line, and $32$ in all. The probability of at least one line of three equal entries is
+\[
+1-\dfrac{32}{512}=\boxed{\dfrac{15}{16}}.
+\]

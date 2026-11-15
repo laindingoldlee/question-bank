@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1241972_the_first_seven_terms_of_a_sequence_are
+% Stable identity: aops-topic-1241972-q01
+Work modulo $4$ and modulo $3$ separately.
+
+\textbf{Modulo $4$.} Since $5\equiv1$, $a_{n+1}\equiv a_n-a_{n-1}\pmod4$. Starting from $a_1\equiv3$, $a_2\equiv3$ we get
+\[
+3,\,3,\,0,\,1,\,1,\,0,\,3,\,3,\,0,\dots
+\]
+which repeats with period $6$ (two consecutive terms determine the rest). So $4\mid a_n$ exactly when $3\mid n$.
+
+\textbf{Modulo $3$.} Since $-5\equiv1$, $a_{n+1}\equiv a_n+a_{n-1}\pmod3$. Starting from $a_1\equiv0$, $a_2\equiv2$:
+\[
+0,\,2,\,2,\,1,\,0,\,1,\,1,\,2,\,0,\,2,\dots
+\]
+with period $8$. So $3\mid a_n$ exactly when $n\equiv1\pmod4$.
+
+\textbf{Together.} $12\mid a_n$ exactly when $n\equiv0\pmod3$ and $n\equiv1\pmod4$, that is,
+\[
+\boxed{n\equiv9\pmod{12}},\qquad n=9,21,33,\dots
+\]
+Indeed the sequence continues $a_8=451-5\cdot256=-829$ and $a_9=-829-5\cdot451=-3084=-12\cdot257$.

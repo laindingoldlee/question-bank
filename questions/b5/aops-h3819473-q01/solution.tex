@@ -1,0 +1,13 @@
+The simple roots are $-3,-2,3$, and $f(0)=-18$. The sign is negative on $(-\infty,-3)$ and $(-2,3)$, and positive on $(-3,-2)$ and $(3,\infty)$. Its leading term is $x^3$, so it tends to $-\infty$ on the left and $+\infty$ on the right.
+
+For exact turning heights, $f=x^3+2x^2-9x-18$ and $f'=3x^2+4x-9$. The critical abscissas are $\dfrac{-2\pm\sqrt{31}}{3}$. The derivative changes from positive to negative at the smaller one, and back to positive at the larger. Substitution gives the local maximum and minimum:
+\[
+\boxed{\left(\dfrac{-2-\sqrt{31}}{3},\dfrac{-308+62\sqrt{31}}{27}\right)},\qquad
+\boxed{\left(\dfrac{-2+\sqrt{31}}{3},\dfrac{-308-62\sqrt{31}}{27}\right)}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;size(300,180,IgnoreAspect);real f(real x){return (x-3)*(x+2)*(x+3);}draw(graph(f,-4,3.5),blue);draw((-4,0)--(3.7,0),Arrow);draw((0,-30)--(0,18),Arrow);for(real x:new real[]{-3,-2,3}){dot((x,0));label("$"+string(x)+"$",(x,0),(0,1));}dot((0,-18));label("$-18$",(0,-18),(-1,0));
+\end{asy}

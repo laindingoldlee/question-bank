@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1295244_polygon_angles
+% Stable identity: aops-topic-1295244-q01
+The nine-sided figure below has only two sizes of interior angles: the six angles at the ends of the three arms are all equal, and the three angles where the arms meet are all equal. The larger angles are three times the size of the smaller angles. Find the degree measure of one of the larger angles.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair[] V; pair p=(0,0); real hd=90; real[] L={2.2,1.2,2.2}; real[] T={-72,96,96};
+// walk: at each vertex turn, then walk the next edge; pattern reflex, small, small
+real ang=hd; V.push(p);
+for(int k=0;k<9;++k){ ang+=T[k%3]; p=p+L[k%3]*dir(ang); V.push(p);}
+path g=V[0]; for(int k=1;k<9;++k) g=g--V[k]; g=g--cycle;
+draw(g,linewidth(0.9));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

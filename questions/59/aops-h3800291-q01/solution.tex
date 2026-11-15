@@ -1,0 +1,15 @@
+Scale $AB=1$ and set $A=(0,0),B=(1,0),C=(\dfrac{1}{2},\dfrac{\sqrt3}{2}),D=(2,0)$. The unit vector from $C$ toward $D$ is $(\dfrac{\sqrt3}{2},-\dfrac{1}{2})$, so the two intersections are
+\[E_+=\left(2+\dfrac{\sqrt3}{2},-\dfrac{1}{2}\right),\quad E_-=\left(2-\dfrac{\sqrt3}{2},\dfrac{1}{2}\right).\]
+The vector $BE_+$ makes an angle $15^\circ$ below the positive horizontal axis because its slope is $-\dfrac{1}{2+\sqrt3}=-(2-\sqrt3)=-\tan15^\circ$. Thus $\angle ABE_+=165^\circ$. Similarly $BE_-$ makes angle $75^\circ$ above that axis, since its slope is $\dfrac{1}{2-\sqrt3}=2+\sqrt3=\tan75^\circ$, giving $\angle ABE_-=105^\circ$. The answers are $\boxed{105^\circ,165^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(1,0),C=(.5,sqrt(3)/2),D=(2,0),E=(2+sqrt(3)/2,-.5);draw(A--B--C--cycle);draw(B--D);draw(circle(D,1),gray);draw(C--E,dashed);draw(B--E,blue);label("$A$",A,(-1,0));label("$B$",B,(0,-1));label("$C$",C,(0,1));label("$D$",D,(0,1));label("$E_+$",E,(1,0));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(1,0),C=(.5,sqrt(3)/2),D=(2,0),E=(2-sqrt(3)/2,.5);draw(A--B--C--cycle);draw(B--D);draw(circle(D,1),gray);draw(C--D,dashed);draw(B--E,blue);label("$A$",A,(-1,0));label("$B$",B,(0,-1));label("$C$",C,(0,1));label("$D$",D,(0,-1));label("$E_-$",E,(1,0));
+\end{asy}

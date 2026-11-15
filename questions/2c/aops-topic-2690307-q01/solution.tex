@@ -1,0 +1,46 @@
+% Source: https://artofproblemsolving.com/community/c3h2690307_geometry
+% Stable identity: aops-topic-2690307-q01
+We show that $\angle BXA+\angle DXC=\boxed{180^\circ}$.
+
+\emph{Notation.} Let $\alpha=\angle XAB=\angle XCD$, $\beta=\angle XBC=\angle XDA$, and let $\varphi_1=\angle AXB$, $\varphi_2=\angle BXC$, $\varphi_3=\angle CXD$, $\varphi_4=\angle DXA$. As $X$ is inside, $\varphi_1+\varphi_2+\varphi_3+\varphi_4=360^\circ$. Write $\varphi_1+\varphi_3=2\sigma$ with $0^\circ<\sigma<180^\circ$, so $\varphi_2+\varphi_4=360^\circ-2\sigma$; we must show $\sigma=90^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(5,3.2),D=(1.6906,3.6),X=(2.6182,1.8863);
+draw(A--B--C--D--cycle,linewidth(0.8));draw(X--A);draw(X--B);draw(X--C);draw(X--D);dot(X);
+draw(arc(A,0.6,0,35.77));draw(arc(C,0.6,173.11,208.88));
+draw(arc(B,0.5,72.65,126.23));draw(arc(B,0.58,72.65,126.23));draw(arc(D,0.5,244.84,298.42));draw(arc(D,0.58,244.84,298.42));
+draw(arc(X,0.32,-144.23,-53.77),blue);draw(arc(X,0.32,28.88,118.42),blue);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$X$",X,dir(-12));
+label("$\alpha$",A+0.8*dir(18),fontsize(8pt));label("$\alpha$",C+0.82*dir(191),fontsize(8pt));
+label("$\beta$",B+0.82*dir(99),fontsize(8pt));label("$\beta$",D+0.82*dir(271),fontsize(8pt));
+label("$\varphi_1$",X+0.55*dir(-99),fontsize(8pt));label("$\varphi_3$",X+0.55*dir(73),fontsize(8pt));
+\end{asy}
+
+The third angles of the triangles $XAB$, $XBC$, $XCD$, $XDA$ are $180^\circ-\alpha-\varphi_1$, $180^\circ-\beta-\varphi_2$, $180^\circ-\alpha-\varphi_3$, $180^\circ-\beta-\varphi_4$, so
+\[0^\circ<\alpha+\varphi_1,\ \alpha+\varphi_3,\ \beta+\varphi_2,\ \beta+\varphi_4<180^\circ.\qquad(1)\]
+
+\emph{Two equations.} By the law of sines in the four triangles,
+\[\dfrac{XB}{XA}=\dfrac{\sin\alpha}{\sin(\alpha+\varphi_1)},\quad\dfrac{XC}{XB}=\dfrac{\sin\beta}{\sin(\beta+\varphi_2)},\quad\dfrac{XD}{XC}=\dfrac{\sin\alpha}{\sin(\alpha+\varphi_3)},\quad\dfrac{XA}{XD}=\dfrac{\sin\beta}{\sin(\beta+\varphi_4)},\]
+\[AB=\dfrac{XB\sin\varphi_1}{\sin\alpha},\quad BC=\dfrac{XC\sin\varphi_2}{\sin\beta},\quad CD=\dfrac{XD\sin\varphi_3}{\sin\alpha},\quad DA=\dfrac{XA\sin\varphi_4}{\sin\beta}.\]
+Multiplying the four ratios gives
+\[\sin(\alpha+\varphi_1)\sin(\alpha+\varphi_3)\sin(\beta+\varphi_2)\sin(\beta+\varphi_4)=\sin^2\alpha\sin^2\beta.\qquad(2)\]
+The condition $AB\cdot CD=BC\cdot DA$ reads
+\[\dfrac{XB\cdot XD\,\sin\varphi_1\sin\varphi_3}{\sin^2\alpha}=\dfrac{XA\cdot XC\,\sin\varphi_2\sin\varphi_4}{\sin^2\beta},\]
+and the first and third ratios give
+\[\dfrac{XB\cdot XD}{XA\cdot XC}=\dfrac{\sin^2\alpha}{\sin(\alpha+\varphi_1)\sin(\alpha+\varphi_3)},\]
+so
+\[\sin^2\beta\sin\varphi_1\sin\varphi_3=\sin(\alpha+\varphi_1)\sin(\alpha+\varphi_3)\sin\varphi_2\sin\varphi_4.\qquad(3)\]
+
+\emph{Reduction.} Let $P=2\sin\varphi_1\sin\varphi_3$, $Q=2\sin\varphi_2\sin\varphi_4$, $U=2\sin(\alpha+\varphi_1)\sin(\alpha+\varphi_3)$, $V=2\sin(\beta+\varphi_2)\sin(\beta+\varphi_4)$; all are positive by (1). Then (2) and (3) say $UV=4\sin^2\alpha\sin^2\beta$ and $2P\sin^2\beta=UQ$. With $t=\dfrac PQ>0$ this gives
+\[U=2t\sin^2\beta,\qquad V=\dfrac{2\sin^2\alpha}{t}.\]
+By $2\sin x\sin y=\cos(x-y)-\cos(x+y)$, and using $\cos(\varphi_2+\varphi_4)=\cos2\sigma$,
+\[U-P=\cos2\sigma-\cos(2\alpha+2\sigma)=2\sin\alpha\sin(\alpha+2\sigma),\qquad V-Q=\cos2\sigma-\cos(2\beta-2\sigma)=2\sin\beta\sin(\beta-2\sigma).\]
+Since $P=tQ$, the first gives $Q=2\sin^2\beta-\dfrac{2\sin\alpha\sin(\alpha+2\sigma)}{t}$; substituting into the second,
+\[\dfrac{\sin\alpha}{t}\left(\sin\alpha+\sin(\alpha+2\sigma)\right)=\sin\beta\left(\sin\beta+\sin(\beta-2\sigma)\right).\]
+With $\sin x+\sin y=2\sin\dfrac{x+y}{2}\cos\dfrac{x-y}{2}$ this becomes
+\[2\cos\sigma\left(\dfrac{\sin\alpha\sin(\alpha+\sigma)}{t}-\sin\beta\sin(\beta-\sigma)\right)=0.\qquad(4)\]
+
+\emph{Conclusion.} By (1), $\alpha+\sigma$ is the average of $\alpha+\varphi_1$ and $\alpha+\varphi_3$, so $0^\circ<\alpha+\sigma<180^\circ$ and $\sin(\alpha+\sigma)>0$. Likewise $\beta+180^\circ-\sigma$ is the average of $\beta+\varphi_2$ and $\beta+\varphi_4$, so $-180^\circ<\beta-\sigma<0^\circ$ and $\sin(\beta-\sigma)<0$. As $\sin\alpha,\sin\beta,t>0$, the bracket in (4) is positive. Hence $\cos\sigma=0$, $\sigma=90^\circ$, and $\angle BXA+\angle DXC=\varphi_1+\varphi_3=180^\circ$. $\blacksquare$

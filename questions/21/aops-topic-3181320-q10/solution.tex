@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3181320_2022_ramc_ms_tiebreaker_round__rochester_area_math_competition
+% Stable identity: aops-topic-3181320-q10
+By the cosine rule, $BC^2=12^2+20^2-2\cdot12\cdot20\cos120^\circ=784$, so $BC=28$. Put $B=(0,0)$ and $C=(28,0)$, with $A$ above them. The area is $60\sqrt3$, semiperimeter $30$, and inradius $2\sqrt3$. Tangent lengths give $I=(10,2\sqrt3)$. The circumradius is $\dfrac{28}{2\sin120^\circ}=\dfrac{28}{\sqrt3}$; since $A$ is obtuse, its centre is below $BC$, at $(14,-\dfrac{14}{\sqrt3})$. If the circle in the upper cap has centre $X=(14,r)$ and radius $r$, internal tangency gives $r+\dfrac{14}{\sqrt3}=\dfrac{28}{\sqrt3}-r$, so $r=\dfrac{7}{\sqrt3}$. Finally $IX^2=4^2+(\dfrac{7}{\sqrt3}-2\sqrt3)^2=\boxed{\dfrac{49}{3}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair B=(0,0),C=(28,0),A=(66/7,30*sqrt(3)/7),Ii=(10,2*sqrt(3)),X=(14,7/sqrt(3)),O=(14,-14/sqrt(3));draw(circle(O,28/sqrt(3)));draw(A--B--C--cycle);draw(circle(X,7/sqrt(3)),blue);draw(Ii--X);dot(Ii);dot(X);label("$A$",A,N);label("$B$",B,W);label("$C$",C,E);label("$I$",Ii,W);label("$X$",X,E);label("$O$",O,S);
+\end{asy}

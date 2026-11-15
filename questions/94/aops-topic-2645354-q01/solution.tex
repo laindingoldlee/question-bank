@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2645354_find_the_minimum_value
+% Stable identity: aops-topic-2645354-q01
+The square has side $48$. Reflection in diagonal $BD$ swaps $A$ and $C$ and fixes every point of $BD$, so $PC=PA$. Hence
+\[PE+PC=PE+PA\ge AE=\sqrt{AB^2+BE^2}=\sqrt{48^2+20^2}=\sqrt{2704}=52,\]
+with equality when $P$ is the intersection of $AE$ with $BD$. The minimum is $\boxed{52}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,48),B=(0,0),C=(48,0),D=(48,48),Ep=(20,0),P=(240/17,240/17);
+draw(A--B--C--D--cycle,linewidth(0.8));draw(B--D);draw(A--Ep,dashed);draw(P--C,dotted);draw(P--Ep);
+dot(P);dot(Ep);
+label("$A$",A,NW);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NE);label("$E$",Ep,S);label("$P$",P,W);
+label("$20$",(B+Ep)/2,S);label("$28$",(Ep+C)/2,S);
+\end{asy}

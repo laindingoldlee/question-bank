@@ -1,0 +1,6 @@
+Let the corner-circle radius be $r$ and the middle-circle radius be $R$. Each corner centre lies $2r$ from its vertex along the angle bisector. The centroid lies $\dfrac{1}{\sqrt3}$ from each vertex, so tangency gives $R=\dfrac{1}{\sqrt3}-3r$. Therefore $r^2+R^2=10(r-\dfrac{\sqrt3}{10})^2+\dfrac{1}{30}$, minimised at $r=\dfrac{\sqrt3}{10}$ and $R=\dfrac{\sqrt3}{30}$. These radii are feasible: the distance between corner centres is $1-2\sqrt3r=\dfrac{2}{5}>2r$, and the middle disk lies within the triangle. Thus the minimum area sum is $\boxed{\dfrac{\pi}{30}}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+pair A=(0,sqrt(3)/2),B=(-.5,0),C=(.5,0),G=(0,sqrt(3)/6);real r=sqrt(3)/10,R=sqrt(3)/30;draw(A--B--C--cycle);for(pair V:new pair[]{A,B,C})draw(circle(V+2*r*unit(G-V),r),blue);draw(circle(G,R),red);label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));
+\end{asy}
+

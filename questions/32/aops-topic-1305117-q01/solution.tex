@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1305117_intersecting_points
+% Stable identity: aops-topic-1305117-q01
+We need $x^2=2^x$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph; real f(real x){return x^2;} real g(real x){return 2^x;}
+draw(graph(f,-2.2,4.5),blue); draw(graph(g,-2.2,4.5),red); draw((-2.5,0)--(5,0),gray); draw((0,-0.5)--(0,21),gray);
+dot((2,4)); dot((4,16)); dot((-0.7667,0.5879)); label("$(2,4)$",(2,4),SE); label("$(4,16)$",(4,16),W);
+label("$y=x^2$",(-2.1,4.4),W,blue); label("$y=2^x$",(4.5,22.6),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{For $x>0$}: take logarithms, $2\ln x=x\ln2$. The function $h(x)=2\ln x-x\ln2$ has $h'(x)=\dfrac{2}{x}-\ln2$, so it increases on $\left(0,\dfrac{2}{\ln2}\right)$ and decreases after; it has at most two zeros. Both $x=2$ and $x=4$ are zeros ($4=2^2$, $16=2^4$), so these are the only positive solutions.
+
+\textbf{For $x\le0$}: $f(x)=x^2-2^x$ is decreasing (as $x^2$ decreases and $2^x$ increases), with $f(-1)=\dfrac{1}{2}>0$ and $f(0)=-1<0$, so there is exactly one solution, between $-1$ and $0$; numerically $x\approx-0.7667$.
+
+So there are exactly three intersection points: $\boxed{(2,4),\ (4,16)\text{ and }(x_0,x_0^2)\text{ with }x_0\approx-0.7667}$ (the last has no elementary closed form).

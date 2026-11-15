@@ -1,0 +1,42 @@
+% Source: https://artofproblemsolving.com/community/c3h2581581_construction_given_two_points_ukraine_1998_grade_8_p5
+% Stable identity: aops-topic-2581581-q01
+\emph{Analysis.} Suppose $C$ works.
+\begin{itemize}
+\item $BM\perp AC$ and $M$ lies on $AC$, so $\angle AMB=90^\circ$. Hence $M$ lies on the circle $\omega$ with diameter $AB$ (Thales), and also on $l$.
+\item $N$ is the midpoint of $BC$ and lies on $l$. So $C$ is the image of $N$ under the enlargement with centre $B$ and ratio $2$. Therefore $C$ lies on the image $l'$ of $l$ under this enlargement. This is the line parallel to $l$ through the reflection $B^*$ of $B$ in $l$.
+\end{itemize}
+
+\emph{Construction.}
+\begin{enumerate}
+\item Draw the circle $\omega$ with diameter $AB$, and let $M$ be a common point of $\omega$ and $l$.
+\item Reflect $B$ in $l$ to get $B^*$, and draw the line $l'$ through $B^*$ parallel to $l$.
+\item Let $C$ be the intersection of line $AM$ with $l'$.
+\end{enumerate}
+Line $AM$ is not parallel to $l$ (it meets $l$ only at $M$, since $A\notin l$), so it is not parallel to $l'$, and $C$ exists.
+
+\emph{Proof.} The line $l'$ lies on the other side of $l$ from $B$, hence from $A$. So segment $AC$ crosses $l$, and it does so at $M$. Since $M$ is on $\omega$ and $M\ne A,B$, we have $\angle AMB=90^\circ$, i.e. $BM\perp AC$, so $BM$ is an altitude. The enlargement with centre $B$ and ratio $\dfrac12$ maps $C\in l'$ to the midpoint of $BC$ and maps $l'$ to $l$. So the midpoint of $BC$ lies on $l$; it is $N$, and $AN$ is a median. The triangle is not degenerate: if $C$ were on line $AB$, then $M$ would be on line $AB$ and on $\omega$, so $M=A$ or $M=B$, which are not on $l$.
+
+\emph{Existence.} The construction gives one solution for each common point of $\omega$ and $l$, and the analysis shows that every solution arises this way. So there are \boxed{\text{two, one or no solutions}}, according as the distance from the midpoint of $AB$ to $l$ is less than, equal to, or greater than $\dfrac{AB}2$. In the sketch, $M'$ is the second common point and gives a second solution.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,1.5),B=(4,1);
+pair Om=(A+B)/2;real R=abs(A-B)/2;
+real dx=sqrt(R^2-Om.y^2);
+pair M=(Om.x-dx,0),M2=(Om.x+dx,0);
+pair C=A+(M-A)*(2.5/1.5);
+pair Nm=(B+C)/2,Bs=(4,-1);
+draw((-1.2,0)--(6.6,0));label("$l$",(6.6,0),E);
+draw((-1.2,-1)--(6.6,-1),dashed);label("$l'$",(6.6,-1),E);
+draw(circle(Om,R),dotted);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(B--M);draw(A--Nm);
+draw(B--Bs,dashed);
+pair u=unit(C-A),v=unit(B-M);
+draw((M+0.18*u)--(M+0.18*u+0.18*v)--(M+0.18*v));
+dot(A);dot(B);dot(C);dot(M);dot(Nm);dot(M2);dot(Bs);
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SW);label("$M$",M,SW);label("$N$",Nm,S);
+label("$M'$",M2,NW);label("$B^*$",Bs,SE);
+\end{asy}

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1372904_help_please_interesting_logic_problem
+% Stable identity: aops-topic-1372904-q01
+A row of $7$ squares holds three shaded discs in the three leftmost squares and three unshaded discs in the three rightmost squares; the middle square is empty. The goal is to switch the positions of the shaded and unshaded discs. Only two kinds of move are allowed, in either direction (left or right):
+\begin{enumerate}
+\item slide a disc into an adjacent empty square;
+\item jump a disc over exactly one disc (of either kind) into an empty square; the jumped disc is not removed.
+\end{enumerate}
+What is the minimum number of moves needed?
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<7;++i) draw(shift(i,0)*unitsquare,linewidth(0.8));
+for(int i=0;i<3;++i) filldraw(circle((i+0.5,0.5),0.32),gray(0.45),black);
+for(int i=4;i<7;++i) filldraw(circle((i+0.5,0.5),0.32),white,black);
+label("start",(-0.2,0.5),W);
+for(int i=0;i<7;++i) draw(shift(i,-1.6)*unitsquare,linewidth(0.8));
+for(int i=4;i<7;++i) filldraw(circle((i+0.5,-1.1),0.32),gray(0.45),black);
+for(int i=0;i<3;++i) filldraw(circle((i+0.5,-1.1),0.32),white,black);
+label("goal",(-0.2,-1.1),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

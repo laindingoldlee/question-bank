@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3534318_very_simple_algebra_1_problem
+% Stable identity: aops-topic-3534318-q01
+The first line has equation $y=-\dfrac{e}{3}x$, and the second $y=\dfrac{e\pi}{2(e-\pi)}x-e$. Their intersection is $P=\left(\dfrac{6(e-\pi)}{2e+\pi},-\dfrac{2e(e-\pi)}{2e+\pi}\right)$. The third line has $y=\pi-e-\dfrac{\pi}{t} x$; $t=0$ would make it vertical and cannot contain $P$. Substitution gives $\dfrac{\pi(e-\pi)}{2e+\pi}=-\dfrac{\pi}{t}\dfrac{6(e-\pi)}{2e+\pi}$. Cancelling the nonzero factors yields $\boxed{t=-6}$. In the sketch, $C$ denotes the second line's horizontal intercept.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real ee=exp(1),t=-6;pair O=(0,0),A=(3,-ee),B=(0,-ee),C=(2*(ee-pi)/pi,0),D=(0,pi-ee),F=(t,-ee),P=(6*(ee-pi)/(2*ee+pi),-2*ee*(ee-pi)/(2*ee+pi));draw(P--A);draw(B--P);draw(F--D);draw((-6.5,0)--(3.5,0),gray);dot(P);label("$P$",P,NW);label("$(3,-e)$",A,SE);label("$(0,-e)$",B,SE);label("$(0,\pi-e)$",D,NE);label("$(t,-e)$",F,SW);label("$O$",O,SE);label("$C$",C,SW);
+\end{asy}

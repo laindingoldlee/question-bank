@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1972964_serbian_money
+% Stable identity: aops-topic-1972964-q01
+Call a position \emph{balanced} if every value other than $1$ occurs an even number of times (ones do not matter). We show that the first player wins exactly when the starting position is \emph{not} balanced.
+
+The game ends: each move increases the number of notes, which can never exceed the total amount of money. The final position (only $1$s) is balanced.
+
+\textbf{From a balanced position, every move leads to an unbalanced one.} A move removes one note of some value $v>1$ and adds only notes of smaller values, so the number of notes of value $v$ changes by exactly one and becomes odd.
+
+\textbf{From an unbalanced position, there is a move to a balanced one.} Let $v$ be the largest value that occurs an odd number of times, and let $T$ be the set of values $w$ with $1<w<v$ that occur an odd number of times. Replace one note of value $v$ by one note of each value in $T$, plus $1$s to make up the rest. This is possible because the sum of all values between $1$ and $v$ (exclusive) is at most $v$:
+\[
+2\le5,\quad 2+5\le10,\quad 7+10\le20,\quad 17+20\le50,\quad 37+50\le100,\quad 87+100\le200,
+\]
+\[
+187+200\le500,\quad 387+500\le1000,\quad 887+1000\le2000,\quad 1887+2000\le5000 .
+\]
+(For $v=2$, $T$ is empty and the $2$ becomes $1+1$.) After this move, value $v$ and all values in $T$ occur an even number of times, values above $v$ were already even, and the other values below $v$ are unchanged and even. So the new position is balanced.
+
+\textbf{Conclusion.} If the starting position is unbalanced, the first player always moves to a balanced position; the second player must then move to an unbalanced one, and so on. Since the game is finite and the final position is balanced, the first player makes the last move and wins. If the starting position is balanced, the second player wins with the same strategy. So: $\boxed{\text{the first player wins if and only if some value other than }1\text{ occurs an odd number of times}}$.

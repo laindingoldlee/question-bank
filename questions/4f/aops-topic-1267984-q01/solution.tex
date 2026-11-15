@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1267984_nonagon_counting_problem
+% Stable identity: aops-topic-1267984-q01
+There are $\dbinom93=84$ triangles in all. Count the isosceles ones (including equilateral).
+
+Choose the apex: $9$ ways. The other two vertices must be symmetric about the line through the apex and the centre; the remaining $8$ vertices form $4$ symmetric pairs. That gives $9\cdot4=36$ (apex, triangle) pairs. An equilateral triangle is counted three times (once for each vertex as apex), and every other isosceles triangle exactly once. The nonagon has $3$ equilateral triangles (vertices $3$ apart), so the number of isosceles triangles is $36-2\cdot3=30$.
+
+Hence the number of scalene triangles is $84-30=\boxed{54}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair[] V; for(int k=0;k<9;++k) V[k]=dir(90+40*k);
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--V[7]--V[8]--cycle);
+draw(V[0]--V[3]--V[6]--cycle,red); draw(V[0]--V[2]--V[7]--cycle,blue+dashed);
+draw((0,1.15)--(0,-1.15),gray+dotted); for(int k=0;k<9;++k) dot(V[k]);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(The red triangle is one of the $3$ equilateral triangles; the blue one is isosceles with apex at the top vertex, its other two vertices symmetric about the dotted axis.)
+
+(The nonagon has only $3$ equilateral triangles, not $9$; the poster's count of $66$ before correcting was off for this reason.)

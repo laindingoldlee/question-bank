@@ -1,0 +1,9 @@
+Put $A=(0,0),B=(4,0),D=(0,3),C=(4,3)$. Since $BD$ has slope $-\dfrac{3}{4}$, the line is $y=\dfrac{4}{3}x+3$. Its intersections are $P=(-\dfrac{9}{4},0)$ and $Q=(4,\dfrac{25}{3})$. Therefore $PQ=\sqrt{(\dfrac{25}{4})^2+(\dfrac{25}{3})^2}=\boxed{\dfrac{125}{12}}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(0,0),(4,0),(4,3),(0,3)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--p[3]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));dot(p[3]);label("$D$",p[3],unit(p[3]-labelCentre));pair P=(-2.25,0),Q=(4,25/3);draw(P--Q);draw(P--p[1]);draw(p[1]--Q);draw(p[1]--p[3],dashed);label("$P$",P,(-1,-1));label("$Q$",Q,(0,1));
+\end{asy}
+

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3387852_basic_geometry
+% Stable identity: aops-topic-3387852-q01
+If their centers coincide, distinctness means different radii, so no point is on both. Otherwise subtract their equations $(x-a)^2+(y-b)^2=r^2$ and $(x-c)^2+(y-d)^2=s^2$. The quadratic terms cancel, giving a nontrivial line equation because $(a,b)\ne(c,d)$. Every common point lies on this line. A line meets a circle in at most two points: parameterizing the line and substituting into the circle equation gives a quadratic with positive leading coefficient. Hence there are at most two common points. Identical circles must be excluded from the claim.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair O=(0,0),P=(1.2,0);draw(circle(O,1));draw(circle(P,1));draw((.6,-1.2)--(.6,1.2),dashed);label("$O$",O,W);label("$P$",P,E);label("common chord line",(.6,1.3));pair Q=(4,0);draw(circle(Q,1));draw(circle(Q,.6));dot(Q);label("same center",Q+(0,-1.3));
+\end{asy}

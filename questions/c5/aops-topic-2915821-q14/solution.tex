@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2915821_2022_mbmt_team_round__montgomery_blair_math_tournament
+% Stable identity: aops-topic-2915821-q14
+The minimum is $\boxed{12}$, meaning the largest union has size 18. One construction uses $\{1,7,11,13,16,17,19,23,25,27,29\}$, whose members are pairwise coprime, and $\{2,8,10,14,18,22,26\}$, whose pairwise gcds are 2. To certify the upper bound, fix the common gcd $ d $. All selected numbers are multiples of $ d $, and allowed pairs are exactly those with gcd $ d $. Every valid subset is contained in a maximal clique of this graph. The following exhaustive maximal-clique enumeration for every $ 1\le d\le30 $, followed by every pair of resulting subsets, establishes that no union exceeds 18.
+\begin{verbatim}
+import math
+families=set()
+for d in range(1,31):
+ V=set(range(d,31,d))
+ N={x:{y for y in V if x!=y and math.gcd(x,y)==d} for x in V}
+ def visit(R,P,X):
+  if not P and not X:
+   families.add(sum(1<<(x-1) for x in R));return
+  u=max(P|X,key=lambda v:len(P&N[v]))
+  for v in list(P-N[u]):
+   visit(R|{v},P&N[v],X&N[v]);P.remove(v);X.add(v)
+ visit(set(),V,set())
+assert max((a|b).bit_count() for a in families for b in families)==18
+\end{verbatim}
+Singleton selections are also included and cannot improve the result.

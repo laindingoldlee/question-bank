@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2041077_mod_1000_of_sum
+% Stable identity: aops-topic-2041077-q01
+Let $S$ be the sum. Since $1000=8\cdot125$, we find $S$ modulo $8$ and modulo $125$ separately.
+
+\textbf{Modulo $8$.} For odd $k$, $k^2\equiv1$, so $k^{2012}\equiv1$; for even $k$, $k^{2012}\equiv0$. There are $500$ odd terms, so $S\equiv500\equiv4\pmod8$.
+
+\textbf{Modulo $125$.} If $5\nmid k$, Euler's theorem gives $k^{100}\equiv1$, so $k^{2012}\equiv k^{12}$. If $5\mid k$, both $k^{2012}$ and $k^{12}$ are $\equiv0$. So $k^{2012}\equiv k^{12}$ for every $k$. The numbers $1,\dots,1000$ run through every residue modulo $125$ exactly $8$ times, so $S\equiv8T$ where $T=\sum_{r=0}^{124}r^{12}$.
+
+To find $T$, write $r=s+25t$ with $0\le s\le24$ and $0\le t\le4$. By the binomial theorem, $(s+25t)^{12}\equiv s^{12}+12\cdot25t\,s^{11}\pmod{125}$, and summing over $t$ (with $0+1+2+3+4=10$),
+\[T\equiv5\sum_{s=0}^{24}s^{12}+3000\sum_{s=0}^{24} s^{11}\equiv5\sum_{s=0}^{24}s^{12}\pmod{125},\]
+since $3000=24\cdot125$. So we need $U=\sum_{s=0}^{24}s^{12}$ modulo $25$. In the same way, with $s=u+5v$, $0\le u,v\le4$, $(u+5v)^{12}\equiv u^{12}+60v\,u^{11}\pmod{25}$, and summing over $v$ gives
+\[U\equiv5\sum_{u=0}^{4}u^{12}+600\sum_{u=0}^4 u^{11}\equiv5(0+1+1+1+1)=20\pmod{25},\]
+using Fermat ($u^{4}\equiv1\pmod5$ for $u\ne0$). Hence $T\equiv5\cdot20=100\pmod{125}$, and
+\[S\equiv8\cdot100=800\equiv50\pmod{125}.\]
+
+\textbf{Combine.} The numbers $\equiv50\pmod{125}$ below $1000$ are $50,175,300,425,\dots$; the first that is $\equiv4\pmod8$ is $300$. So the remainder is $\boxed{300}$.

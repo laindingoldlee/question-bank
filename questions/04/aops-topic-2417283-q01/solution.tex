@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2417283_geo_bash_problem_i_made
+% Stable identity: aops-topic-2417283-q01
+Use coordinates $B=(0,0)$, $C=(16,0)$, $A=(0,12)$; the line $AC$ is $3x+4y=48$. The foot of the perpendicular from $B$ to it is
+\[N=\dfrac{48}{25}(3,4)=\left(\dfrac{144}{25},\dfrac{192}{25}\right),\qquad\text{and}\qquad L=(8,0).\]
+Since $\angle BNC=90^\circ$, $N$ lies on the circle with diameter $BC$, so $LN=LB=LC=8$. Thus triangle $BNL$ is isosceles with apex $L$, and the foot $T$ of the perpendicular from $L$ is the midpoint of $BN$: $T=\left(\dfrac{72}{25},\dfrac{96}{25}\right)$. Then
+\[M=\dfrac{T+L}{2}=\left(\dfrac{136}{25},\dfrac{48}{25}\right),\quad E=\dfrac{N+L}{2}=\left(\dfrac{172}{25},\dfrac{96}{25}\right),\quad F=\dfrac{L+E}{2}=\left(\dfrac{186}{25},\dfrac{48}{25}\right).\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(16,0),A=(0,12);
+pair Nn=(144/25,192/25), L=(8,0), T=(72/25,96/25), M=(T+L)/2, E2=(Nn+L)/2, F=(L+E2)/2;
+fill(A--B--L--Nn--cycle,rgb(0.9,0.95,1));
+fill(M--F--E2--cycle,rgb(1,0.75,0.6));
+draw(A--B--C--cycle,linewidth(0.9)); draw(B--Nn); draw(Nn--L); draw(L--T,dashed);
+draw(M--F--E2--cycle,red);
+dot(A);dot(B);dot(C);dot(Nn);dot(L);dot(T);dot(M);dot(E2);dot(F);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$N$",Nn,NE); label("$L$",L,S);
+label("$T$",T,NW); label("$M$",M,W); label("$E$",E2,NE); label("$F$",F,E);
+label("$8$",L+0.78*(Nn-L),E,fontsize(8pt)); label("$8$",(B+L)/2,S,fontsize(8pt));
+\end{asy}
+
+\textbf{Triangle $MFE$.} $M$ and $F$ have the same $y$-coordinate, so $MF=\dfrac{186-136}{25}=2$ is horizontal, and the height of $E$ above it is $\dfrac{96-48}{25}=\dfrac{48}{25}$. So $[MFE]=\dfrac12\cdot2\cdot\dfrac{48}{25}=\dfrac{48}{25}$, and
+\[ME=\sqrt{\left(\dfrac{36}{25}\right)^2+\left(\dfrac{48}{25}\right)^2}=\dfrac{12}{25}\sqrt{9+16}=\dfrac{12}{5}.\]
+
+\textbf{Quadrilateral $ABLN$.} It is triangle $ABC$ minus triangle $NLC$. With $BN=\dfrac{12\cdot16}{20}=\dfrac{48}{5}$ and $NC=\dfrac{16^2}{20}=\dfrac{64}{5}$, $[NBC]=\dfrac12\cdot\dfrac{48}{5}\cdot\dfrac{64}{5}=\dfrac{1536}{25}$, and $L$ is the midpoint of $BC$, so $[NLC]=\dfrac{768}{25}$. Hence $[ABLN]=96-\dfrac{768}{25}=\dfrac{1632}{25}$.
+
+\textbf{The answer.}
+\[\dfrac{[MFE]\cdot ME}{[ABLN]}=\dfrac{\dfrac{48}{25}\cdot\dfrac{12}{5}}{\dfrac{1632}{25}}=\dfrac{576}{5\cdot1632}=\boxed{\dfrac{6}{85}}.\]
+(The quantity is a length, so the answer is in the units of the given lengths.)

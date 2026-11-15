@@ -1,0 +1,43 @@
+% Source: https://artofproblemsolving.com/community/c3h1926515_trapezoid_geometry_problem
+% Stable identity: aops-topic-1926515-q01
+Let the trapezoid be $ABCD$ with $AB\parallel DC$, $AC=17$, $BD=15$, and let $Q$ and $P$ be the midpoints of $AB$ and $DC$, so $PQ=4$.
+
+\textbf{Translate a diagonal.} Translate $BD$ by the vector $\overrightarrow{DC}$: $D$ goes to $C$ and $B$ goes to $E=B+\overrightarrow{DC}$, a point on line $AB$ beyond $B$ with $BE=DC$. Then $CE=BD=15$ and $CE\parallel BD$, and triangle $ACE$ has sides $AC=17$, $CE=15$ and $AE=AB+DC$. Its height from $C$ is the height $h$ of the trapezoid.
+
+\begin{asy}
+usepackage("amsmath");
+size(10cm);
+defaultpen(fontsize(10pt));
+real h=60/sqrt(241),s=2*sqrt(241),xc=sqrt(289-h^2),bb=12;
+pair A=(0,0),C=(xc,h),D=(xc-bb,h),B=(s-bb,0),Ep=(s,0);
+pair Q=(A+B)/2,P=(D+C)/2,Nn=(A+Ep)/2,Ft=(D.x,0);
+draw(A--B--C--D--cycle,linewidth(1));
+draw(A--C);draw(B--D);
+draw(B--Ep,dashed);draw(C--Ep,blue+dashed);
+draw(P--Q,red+linewidth(0.9));draw(C--Nn,red+dashed);
+draw(D--Ft,dotted);draw(Ft+(0,0.6)--Ft+(0.6,0.6)--Ft+(0.6,0));
+dot(P);dot(Q);dot(Nn);
+label("$A$",A,SW);label("$B$",B,S);label("$C$",C,N);label("$D$",D,N);label("$E$",Ep,SE);
+label("$P$",P,N);label("$Q$",Q,S);label("$N$",Nn,S);label("$h$",(D.x,h/2),W);
+label("$15$",C+0.55*(Ep-C),NE,blue);label("$4$",Q+0.25*(P-Q),E,red);label("$17$",A+0.45*(C-A),S);label("$15$",B+0.3*(D-B),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The midpoint segment is a median.} Let $N$ be the midpoint of $AE$. With position vectors, $E=B+C-D$, so
+\[
+N-C=\dfrac{A+B+C-D}{2}-C=\dfrac{A+B}{2}-\dfrac{C+D}{2}=Q-P .
+\]
+Hence $CN=PQ=4$: the median of triangle $ACE$ from $C$ has length $4$. By Apollonius's theorem,
+\[
+CA^2+CE^2=2CN^2+2\left(\dfrac{AE}{2}\right)^2\quad\Longrightarrow\quad289+225=32+\dfrac{AE^2}{2}\quad\Longrightarrow\quad AE^2=964 .
+\]
+
+\textbf{Area and height.} For a triangle with sides $a,b,c$ and area $K$, Heron's formula can be written $16K^2=2(a^2b^2+b^2c^2+c^2a^2)-(a^4+b^4+c^4)$. With $a^2=289$, $b^2=225$, $c^2=964$:
+\[
+16K^2=2(65025+216900+278596)-(83521+50625+929296)=1121042-1063442=57600,
+\]
+so $K=60$. Then $AE=\sqrt{964}=2\sqrt{241}$ and
+\[
+h=\dfrac{2K}{AE}=\dfrac{120}{2\sqrt{241}}=\dfrac{60}{\sqrt{241}}=\dfrac{60\sqrt{241}}{241}.
+\]
+Since $241$ is prime, $x=60$, $y=241$, and $x+y=\boxed{301}$.

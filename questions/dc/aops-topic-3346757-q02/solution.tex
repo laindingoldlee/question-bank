@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3346757_state_bashing_problems_or_are_they
+% Stable identity: aops-topic-3346757-q02
+Each move changes square color. The starting square h 1 and target a 1 have opposite colors, so $A=0$ after $60$ moves. Target a 8 has the starting color. A path of $14$ moves reaches a 8; adding $23$ two-move backtracks makes a legal $60$-move path, so $B>0$. Therefore $\boxed{\dfrac{A}{B}=0}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=0;i<8;++i)for(int j=0;j<8;++j)filldraw((i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle,(i+j)%2==0?lightgray:white,gray);dot("h1",(7.5,.5),E);dot("a1",(.5,.5),W);dot("a8",(.5,7.5),W);
+\end{asy}

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1736178_mathcounts
+% Stable identity: aops-topic-1736178-q03
+The exterior angle of a regular $k$-gon is $\dfrac{360^\circ}{k}$, so
+\[
+\dfrac{360}{n}-\dfrac{360}{m}=45\iff\dfrac{8}{n}-\dfrac{8}{m}=1\iff 8m-8n=mn\iff(8-n)(m+8)=64 .
+\]
+Since $m+8>8$, the factor $8-n$ is a positive divisor of $64$ less than $8$, i.e.\ $1$, $2$ or $4$, and $n\ge3$ allows all three: $n=7,m=56$; $n=6,m=24$; $n=4,m=8$. The greatest value is $m=\boxed{56}$. (Check: $\dfrac{360}{7}-\dfrac{360}{56}=\dfrac{2880-360}{56}=45$.) The exterior angle is the turn between one side and the extension of the previous side; for the example in the statement:
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair[] Q={(0,0),(2,0),(2,2),(0,2)};
+draw(Q[0]--Q[1]--Q[2]--Q[3]--cycle,linewidth(0.9));draw(Q[1]--(3.1,0),dashed);
+draw(arc(Q[1],0.45,0,90));label("$90^\circ$",Q[1]+0.8*dir(45),fontsize(8pt));
+pair c=(5.6,1); real R=1.08; pair[] G; for(int i=0;i<8;++i) G.push(c+R*dir(-112.5+45*i));
+draw(G[0]--G[1]--G[2]--G[3]--G[4]--G[5]--G[6]--G[7]--cycle,linewidth(0.9));
+pair e=G[1]+0.95*unit(G[1]-G[0]); draw(G[1]--e,dashed);
+draw(arc(G[1],0.45,degrees(G[1]-G[0]),degrees(G[2]-G[1])));label("$45^\circ$",G[1]+0.85*dir((degrees(G[1]-G[0])+degrees(G[2]-G[1]))/2)+(0.08,0),fontsize(7pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

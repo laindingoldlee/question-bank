@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2114535_silly_proof_for_zero_is_infinity
+% Stable identity: aops-topic-2114535-q01
+\textbf{(a)} The polygons $P_4,P_{50},P_{360},P_{9000},\dots$ do get closer and closer to the circle (in the sense that every point of $P_n$ is very close to the circle when $n$ is large). But it does not follow that a quantity attached to the polygons, here the number of sides $n$, approaches the same quantity for the circle. The number of sides of $P_n$ grows without bound, while the circle, which is not a polygon at all, has no sides; ``the limit of the numbers of sides equals the number of sides of the limit'' is simply false for this quantity. Moreover, ``there is no visible difference'' is not equality: $P_{9000}$ still has corners and is strictly inside the circle, with a smaller area (see (b)). Finally, $\infty$ is not a number, so ``$0=\infty$'' is not even a meaningful equation. (A similar fallacy is the ``staircase paradox'': staircases with smaller and smaller steps approach the diagonal of a unit square, but each staircase has length $2$, while the diagonal has length $\sqrt2$.)
+
+\textbf{(b)} Join the centre $O$ to the $n$ vertices. This cuts the polygon into $n$ congruent isosceles triangles with two sides $1$ and apex angle $\dfrac{360^\circ}{n}$ (one is shaded below for $n=12$; the dashed square is $n=4$).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+fill((0,0)--dir(0)--dir(30)--cycle,paleblue);
+draw(unitcircle,linewidth(0.9));
+pair[] Q; for(int k=0;k<4;++k) Q[k]=dir(90*k);
+draw(Q[0]--Q[1]--Q[2]--Q[3]--cycle,red+dashed);
+pair[] T; for(int k=0;k<12;++k) T[k]=dir(30*k);
+path tw=T[0]; for(int k=1;k<12;++k) tw=tw--T[k]; tw=tw--cycle;
+draw(tw,blue+linewidth(0.8));
+draw((0,0)--dir(0)); draw((0,0)--dir(30));
+draw(arc((0,0),0.3,0,30),Arrows(3));
+label("$30^\circ$",0.45*dir(15),fontsize(8pt));
+dot((0,0)); label("$O$",(0,0),W);
+label("$1$",0.5*dir(0),S,fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Each triangle has area $\dfrac{1}{2}\cdot1\cdot1\cdot\sin\dfrac{360^\circ}{n}$, so the polygon has area $\dfrac {n}{2}\sin\dfrac{360^\circ}{n}$. Hence
+\[n=4:\ 2\sin90^\circ=2,\qquad n=6:\ 3\sin60^\circ=\dfrac{3\sqrt3}{2}\approx2.598,\qquad n=12:\ 6\sin30^\circ=3 .\]
+The circle has area $\pi\approx3.1416$. The polygon areas increase towards $\pi$ but are always smaller, because each polygon lies inside the circle and misses the circular segments outside its sides. For $n=9000$ the difference is only about $2.6\times10^{-7}$: invisible, but not zero.

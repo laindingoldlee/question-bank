@@ -1,0 +1,17 @@
+Before meeting, both ants always occupy vertices of the same parity around the hexagon. Ignoring their labels, the six possible nonmeeting pairs are
+\[
+AC,\ AE,\ CE,\ BD,\ BF,\ DF.
+\]
+Let $a$ be the desired eventual probability from $AC$, let $b$ be that from either $AE$ or $CE$, and let $c$ be that from any of $BD,BF,DF$. The equalities follow either by reflection or from identical transition probabilities.
+
+From $AC$, one of the four equally likely move pairs meets at $B$, and the other three lead to the odd-vertex states. From $AE$ or $CE$, the immediate meeting is at a different vertex, while the other three moves again lead to those states. From any odd-vertex state, one move meets away from $B$, and the other three lead once each to $AC,AE,CE$. Thus
+\[
+4a=1+3c,\qquad4b=3c,\qquad4c=a+2b.
+\]
+Substitution yields $16c=1+9c$, so $c=\dfrac{1}{7}$ and $a=\dfrac{5}{14}$. Hence $\boxed{m+n=19}$. A meeting occurs almost surely because the conditional chance to meet on each next step is always $\dfrac{1}{4}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] V;string[] nm={"A","B","C","D","E","F"};for(int i=0;i<6;++i)V.push(2dir(150-60i));for(int i=0;i<6;++i){draw(V[i]--V[(i+1)%6]);dot(V[i]);label("$"+nm[i]+"$",V[i],V[i]);}dot(V[0],red+5);dot(V[2],red+5);dot(V[1],blue+5);label("Red: starting positions; blue: target",(0,-2.6));
+\end{asy}

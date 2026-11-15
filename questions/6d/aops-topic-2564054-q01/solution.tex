@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2564054_angle_geometry
+% Stable identity: aops-topic-2564054-q01
+Let $B'$ be the reflection of $B$ in $\ell$. Then $B'$ is on the same side of $\ell$ as $C$, and its distance to $\ell$ equals that of $B$, which is less than that of $C$.
+
+\textbf{(a)} Because $B'$ and $C$ are at different distances from $\ell$, the line $B'C$ is not parallel to $\ell$; let it meet $\ell$ at $K$. The segment $B'C$ lies entirely on one side of $\ell$, so $K$ is not between $B'$ and $C$; hence $B'$ and $C$ lie on the same ray from $K$.
+
+If $K=A$, then the rays $AB'$ and $AC$ coincide; since reflection in $\ell$ maps ray $AB$ to ray $AB'$, the line $\ell$ would make equal angles with $AB$ and $AC$, i.e. bisect $\angle BAC$, which is excluded. So $K\ne A$.
+
+Reflection in $\ell$ fixes $K$ and $A$ and maps $B$ to $B'$, so $\angle AKB=\angle AKB'$. As the rays $KB'$ and $KC$ coincide, $\angle AKB'=\angle AKC$. Hence $\angle AKB=\angle AKC$. $\blacksquare$
+
+\textbf{(b)} Let $K\ne A$ be any point of $\ell$ with $\angle AKB=\angle AKC$. On the side of $\ell$ containing $C$ there is only one ray from $K$ making a given angle with ray $KA$, and the ray $KB'$ makes the angle $\angle AKB$ with it. So ray $KC$ is ray $KB'$, and $K$ lies on line $B'C$. If $\ell$ bisects $\angle BAC$, reflection in $\ell$ maps ray $AB$ onto ray $AC$, so $B'$ lies on ray $AC$ and line $B'C$ meets $\ell$ only at $A$. This contradicts $K\ne A$; so no such $K$ exists. (For example, $\ell$ the $x$-axis, $A=(0,0)$, $B=(1,-1)$, $C=(2,2)$.) $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(2.5,-1),C=(1.0,2.4),Bp=(2.5,1);
+pair K=(2.5+1.5/1.4,0);
+draw((-0.8,0)--(4.6,0),linewidth(0.8));label("$\ell$",(4.6,0),E);
+draw(K--B);draw(K--C);draw(B--Bp,dotted);
+real t=degrees(atan(1.4/1.5));
+draw(arc(K,0.5,180-t,180));draw(arc(K,0.6,180,180+t));
+dot(A);dot(B);dot(C);dot(Bp);dot(K);
+label("$A$",A,S);label("$B$",B,S);label("$C$",C,N);label("$B'$",Bp,NE);label("$K$",K,SE);
+\end{asy}
+
+The sketch shows the reflection $B'$ of $B$ and the point $K$ where line $B'C$ meets $\ell$; the two marked angles at $K$ are equal.

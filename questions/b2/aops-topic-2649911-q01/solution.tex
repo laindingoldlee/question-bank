@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2649911_pi_post
+% Stable identity: aops-topic-2649911-q01
+Let the larger circle have radius $R$. Each smaller circle has diameter $R$, i.e. radius $\dfrac R2$, so the two together have area $2\pi\left(\dfrac R2\right)^2=\dfrac{\pi R^2}{2}=1$. Hence the larger circle has area $\pi R^2=2$. The smaller circles lie inside it and overlap only at the centre, so the shaded area is $2-1=\boxed{\textbf{(D) }1}$.
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+fill(circle((0,0),2),lightgray);
+filldraw(circle((-1,0),1),white,linewidth(0.8));filldraw(circle((1,0),1),white,linewidth(0.8));
+draw(circle((0,0),2),linewidth(0.9));
+draw((-2,0)--(2,0),dashed);dot((0,0));dot((-1,0));dot((1,0));
+label("$O$",(0,0),S);
+draw((0,0)--2*dir(70),dashed);label("$R$",1.55*dir(70),E);
+label("$\dfrac R2$",(1.5,0),S);label("$\dfrac R2$",(-1.5,0),S);
+\end{asy}

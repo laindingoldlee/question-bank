@@ -1,0 +1,9 @@
+Write $AD=DC=a$ and $BD=b$. The angle-bisector theorem gives $\dfrac{A E}{E B} = \dfrac{a}{b}$ and $\dfrac{C F}{F B} = \dfrac{a}{b}$. Therefore $\dfrac{B E}{B A} = \dfrac{B F}{B C} = \dfrac{b}{a+b}$, so $EF\parallel AC$ and $E F = \dfrac{2 a b}{a+b}$. The homothety centred at $B$ sends $D$ to $P$ with scale $\dfrac{b}{a+b}$, giving $D P = b - \dfrac{b^2}{a+b} = \dfrac{a b}{a+b}$. Hence $\boxed{\dfrac{E F}{D P} = 2}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(-3,0),(1,4),(3,0)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));pair D=(0,0);real b=sqrt(17);pair E=(b*p[0]+3*p[1])/(3+b),F=(b*p[2]+3*p[1])/(3+b),P=3*p[1]/(3+b);draw(p[1]--D);draw(D--E--F--D);label("$D$",D,(0,-1));label("$E$",E,(-1,0));label("$F$",F,(1,0));label("$P$",P,(1,1));
+\end{asy}
+

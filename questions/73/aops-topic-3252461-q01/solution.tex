@@ -1,0 +1,10 @@
+% Source: https://artofproblemsolving.com/community/c3h3252461_can_you_spot_the_human_problems
+% Stable identity: aops-topic-3252461-q01
+Unroll the cylindrical surface. A helix of height $h$ and radius $r$ becomes the hypotenuse of a right triangle with legs $h$ and $15(2\pi r)$. Thus
+\[1200^2=h^2+(30\pi r)^2.\]
+For every $0<h<1200$, the radius $r=\dfrac{\sqrt{1200^2-h^2}}{30\pi}$ is positive. The smallest positive integer height is therefore $\boxed{1\text{ cm}}$. Fifteen full turns have sixteen visits to the chosen vertical generator when both endpoints are counted.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+path p;for(int k=0;k<=600;++k){real t=30*pi*k/600;p=p--(cos(t),0.08*t+0.22*sin(t));}draw(p,blue);draw((1,0)--(1,0.08*30*pi),dashed);for(int k=0;k<=15;++k)dot((1,0.08*2*pi*k));label("15 turns",(0,-0.5));label("$h$",(1.4,0.04*30*pi));label("Schematic; not to physical scale",(0,8.3));
+\end{asy}

@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2360434_trapezoid_problems
+% Stable identity: aops-topic-2360434-q01
+\textbf{(a)} The cut enters and leaves the trapezoid at two boundary points, each either a vertex or an interior point of a side. Count the corners of the two pieces together: every vertex of the trapezoid is a corner of one piece, and each end of the cut is a corner of both pieces. An end at a vertex therefore adds $1$ extra corner, and an end inside a side adds $2$. So the total is $4+1+1=6$ only when both ends are vertices; otherwise it is at least $7$. Two triangles have $6$ corners, so the cut joins two vertices. It is not a side, so it is a diagonal.
+
+\textbf{(b)} In an isosceles trapezoid $\angle A=\angle B$ and $\angle C=\angle D$, and $\angle A+\angle D=180^\circ$ (co-interior angles between the parallel sides). So either $\angle A=\angle B\ge90^\circ$ or $\angle C=\angle D\ge90^\circ$. The cut along diagonal $AC$ leaves the angles at $B$ and $D$ whole, as angles of the triangles $ABC$ and $ACD$; the cut along $BD$ leaves the angles at $A$ and $C$ whole. In each case one of these whole angles is at least $90^\circ$ (it is $\angle B$ or $\angle D$ for $AC$, and $\angle A$ or $\angle C$ for $BD$), so one triangle is not acute.
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+pair A=(2,3), B=(7,3), C=(6,0), D=(0,0);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(A--C,red+linewidth(0.9));
+label("$A(2,3)$",A,N); label("$B(7,3)$",B,N); label("$C(6,0)$",C,S); label("$D(0,0)$",D,S);
+pair s=(10,0);
+pair A2=(1.2,3)+s, B2=(4.8,3)+s, C2=(6,0)+s, D2=(0,0)+s;
+draw(A2--B2--C2--D2--cycle,linewidth(0.9)); draw(A2--C2,dashed); draw(B2--D2,dashed);
+label("$A$",A2,N); label("$B$",B2,N); label("$C$",C2,S); label("$D$",D2,S);
+draw(arc(A2,0.5,-111.8,0),blue); draw(arc(B2,0.5,180,291.8),blue);
+label("obtuse",(A2+B2)/2+(0,0.9),blue+fontsize(8pt));
+\end{asy}
+
+\textbf{(c)} Here $AB\parallel CD$ (both horizontal), $AB=5\ne CD=6$, and the legs $AD$, $BC$ have slopes $\dfrac32$ and $3$, so $ABCD$ is a trapezoid. Cut along $AC$, with $AC^2=4^2+3^2=25$.
+\begin{itemize}
+\item Triangle $ABC$: $AB^2=25$, $BC^2=1+9=10$, $AC^2=25$; the largest square, $25$, is less than the sum of the other two ($25+10$), so the triangle is acute.
+\item Triangle $ACD$: $CD^2=36$, $AC^2=25$, $AD^2=4+9=13$; the largest square satisfies $36<25+13=38$, so this triangle is acute too.
+\end{itemize}
+So the cut along $AC$ splits this trapezoid into two acute triangles. $\blacksquare$

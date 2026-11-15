@@ -1,0 +1,52 @@
+% Source: https://artofproblemsolving.com/community/c3h2267359_cool_geometry_question
+% Stable identity: aops-topic-2267359-q01
+\textbf{Answer:} triangle $ABC$ is isosceles, with $AB=AC$.
+
+Let $h$ be the distance from $A$ to the line $BC$. Since $BP=QC$, also $BQ=BC-QC=BC-BP=PC$. Write $[XYZ]$ for the area of triangle $XYZ$.
+
+\textbf{The angles.} We show that $\angle BAQ=\angle CAP$.
+\begin{itemize}
+\item If $P$ lies between $B$ and $Q$ (Case 1), the rays from $A$ come in the order $AB,AP,AQ,AC$, so $\angle BAQ=\angle BAP+\angle PAQ=\angle CAQ+\angle PAQ=\angle CAP$.
+\item If $Q$ lies between $B$ and $P$ (Case 2), the order is $AB,AQ,AP,AC$, so $\angle BAQ=\angle BAP-\angle QAP=\angle CAQ-\angle QAP=\angle CAP$.
+\item If $P=Q$, then $\angle BAQ=\angle BAP=\angle CAQ=\angle CAP$ directly.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,3.2), B=(-2.6,0), C=(2.6,0), P=(-1.2,0), Q=(1.2,0), H=(0,0);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(A--P,blue); draw(A--Q,blue);
+draw(A--H,dashed);
+draw(arc(A,0.75,degrees(B-A),degrees(P-A)),red); draw(arc(A,0.75,degrees(Q-A),degrees(C-A)),red);
+void tick(pair X, pair Y){pair m=(X+Y)/2; draw(m+(0,-0.12)--m+(0,0.12));}
+tick(B,P); tick(Q,C);
+dot(P); dot(Q);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$P$",P,S); label("$Q$",Q,S); label("$H$",H,S);
+label("Case 1",(0,-0.75));
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,3.2), B=(-2.6,0), C=(2.6,0), P=(1.2,0), Q=(-1.2,0), H=(0,0);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(A--P,blue); draw(A--Q,blue);
+draw(A--H,dashed);
+draw(arc(A,0.75,degrees(B-A),degrees(P-A)),red); draw(arc(A,0.95,degrees(Q-A),degrees(C-A)),red);
+void tick(pair X, pair Y){pair m=(X+Y)/2; draw(m+(0,-0.12)--m+(0,0.12));}
+draw((-2.6,-0.6)--(1.2,-0.6),Arrows(4)); draw((-1.2,-0.8)--(2.6,-0.8),Arrows(4));
+dot(P); dot(Q);
+label("$A$",A,N); label("$B$",B,W); label("$C$",C,E); label("$P$",P,S); label("$Q$",Q,S); label("$H$",H,S);
+label("Case 2: $BP=QC$",(0,-1.2));
+\end{asy}
+
+\textbf{Two area equations.} Triangles $ABP$ and $ACQ$ have equal bases $BP=QC$ on line $BC$ and the same height $h$, so they have equal areas. Using the formula $\dfrac12xy\sin\theta$ for each,
+\[\dfrac12AB\cdot AP\sin\angle BAP=\dfrac12AC\cdot AQ\sin\angle CAQ\quad\Longrightarrow\quad AB\cdot AP=AC\cdot AQ,\]
+since the two angles are equal. In the same way triangles $ABQ$ and $ACP$ have equal bases $BQ=PC$ and the same height, and $\angle BAQ=\angle CAP$, so
+\[AB\cdot AQ=AC\cdot AP.\]
+\textbf{Conclusion.} Multiplying the two equations gives $AB^2\cdot AP\cdot AQ=AC^2\cdot AP\cdot AQ$, so $AB^2=AC^2$ and $\boxed{AB=AC}$: the triangle is isosceles with apex $A$. $\blacksquare$
+
+(Conversely, in any triangle with $AB=AC$, points $P$ and $Q$ symmetric about the midpoint of $BC$ satisfy both conditions, so nothing more can be said: the triangle need not be equilateral.)

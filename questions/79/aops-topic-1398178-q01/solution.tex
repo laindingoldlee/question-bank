@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1398178_math_algebra_question
+% Stable identity: aops-topic-1398178-q01
+Let there be $N$ coins. Then the total is $17N$ cents, and after removing a penny $17N-1=18(N-1)$, so $N=17$ and the total is $289$ cents.
+
+Let there be $q$ quarters, $d$ dimes, $n$ nickels and $p\ge1$ pennies: $q+d+n+p=17$ and $25q+10d+5n+p=289$. Subtracting,
+\[
+24q+9d+4n=272 .
+\]
+Reducing mod $4$ gives $d\equiv0\pmod4$. Also $n=\dfrac{272-24q-9d}{4}$, and $q+d+n\le16$ (at least one penny) becomes $68-5q-\dfrac{5d}{4}\le16$, that is $4q+d\ge42$ (as $4q+d$ is an integer at least $41.6$). Then $24q+9d=6(4q+d)+3d\ge252+3d$, and this is at most $272$, so $d\le6$, hence $d\in\{0,4\}$.
+\begin{itemize}
+\item $d=4$: $4q\ge38$ gives $q\ge10$, but then $24q+36\ge276>272$. Impossible.
+\item $d=0$: $4q\ge42$ gives $q\ge11$, and $24q\le272$ gives $q\le11$. So $q=11$, $n=\dfrac{272-264}{4}=2$, $p=17-13=4$.
+\end{itemize}
+The purse holds $11$ quarters, $2$ nickels and $4$ pennies ($275+10+4=289$), so there are $\boxed{2}$ nickels.

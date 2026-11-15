@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2666580_nice_similar_triangles_problem
+% Stable identity: aops-topic-2666580-q01
+A circle tangent to both rays from $A$ has its centre on the bisector of angle $A$, which is the altitude $AM$ to $BC$ ($M$ the midpoint of $BC$). The two circles are the incircle (radius $r$, centre $I$) and the excircle opposite $A$ (radius $r_a$, centre $I_a$), both touching $BC$ at $M$.
+
+For a circle of radius $\rho$ tangent to both rays, the distance from $A$ to its centre is $\dfrac{\rho}{\sin30^\circ}=2\rho$.
+\begin{itemize}
+\item Incircle: $AM=AI+IM=2r+r=3r$.
+\item Excircle: $AM=AI_a-I_aM=2r_a-r_a=r_a$.
+\end{itemize}
+So $r_a=3r$, and the ratio is $\boxed{3}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,sqrt(3)),B=(-1,0),C=(1,0);
+real r=sqrt(3)/3,ra=sqrt(3);pair I=(0,r),Ia=(0,-ra);
+draw(A--A+2.6*(B-A),gray);draw(A--A+2.6*(C-A),gray);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(circle(I,r),blue);draw(circle(Ia,ra),red);
+dot(I);dot(Ia);dot((0,0));draw(A--Ia,dashed);
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,E);label("$M$",(0,0),SW,fontsize(7pt));
+label("$I$",I,W,fontsize(8pt));label("$I_a$",Ia,W,fontsize(8pt));
+label("$r$",(0,r/2),E,blue+fontsize(8pt));label("$r_a$",(0,-ra/2),E,red+fontsize(8pt));
+\end{asy}

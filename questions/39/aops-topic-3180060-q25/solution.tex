@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3180060_2022_lmt_fall_speed_round__lexington_mathematical_tournament
+% Stable identity: aops-topic-3180060-q25
+Let the common angle be $\alpha$, so $\angle ABC=2\alpha$. The equal angles $\angle CBD=\angle CAD$ imply that $A,B,C,D$ are concyclic. Therefore $\angle ADC=180^\circ-2\alpha$, and triangle $ACD$ has equal base angles $\alpha$. The law of cosines in $ABC$ gives $\cos2\alpha=\dfrac{9^2+6^2-10^2}{2\cdot9\cdot6}=\dfrac{17}{108}$, so $\sin2\alpha=\dfrac{5\sqrt{455}}{108}$ and $\tan\alpha=\sqrt{\dfrac{1-\cos2\alpha}{1+\cos2\alpha}}=\dfrac{\sqrt{455}}{25}$. Thus $[ABC]=27\sin2\alpha=\dfrac{5\sqrt{455}}{4}$. The isosceles triangle $ACD$ has base 10 and height $5\tan\alpha$, giving area $25\tan\alpha=\sqrt{455}$. Total area is $\dfrac{9\sqrt{455}}{4}$, and since $455=5\cdot7\cdot13$ is squarefree, the requested value is $90000+45500+4=\boxed{135504}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair B=(0,0),A=(9,0),C=(17/18,5*sqrt(455)/18),D=(7.5,.3*sqrt(455));draw(A--B--C--D--cycle);draw(A--C^^B--D,dashed);label("$A$",A,SE);label("$B$",B,SW);label("$C$",C,NW);label("$D$",D,NE);
+\end{asy}

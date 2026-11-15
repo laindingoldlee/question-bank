@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1642374_log_problem
+% Stable identity: aops-topic-1642374-q01
+Let $s=\sin x$; for $0<x<\dfrac{\pi}{2}$ we have $0<s<1$ and $\cos x>0$, so the logarithm makes sense. The equation says
+\[
+\cos x=s^{\dfrac{1}{2}},\qquad\text{so}\qquad \cos^2x=s .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real s=(sqrt(5)-1)/2;real c=sqrt(s);
+pair O=(0,0),P=(4*c,0),Q=(4*c,4*s);
+draw(O--P--Q--cycle,linewidth(0.9));
+draw(P+(-0.22,0)--P+(-0.22,0.22)--P+(0,0.22));
+draw(arc(O,0.8,0,degrees(Q)),red);label("$x$",1.1*dir(degrees(Q)/2),red);
+label("$1$",(O+Q)/2,NW);label("$\cos x$",(O+P)/2,S);label("$\sin x$",(P+Q)/2,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $\sin^2x+\cos^2x=1$ (Pythagoras in the right triangle with hypotenuse $1$),
+\[
+s^2+s=1\quad\Longrightarrow\quad s^2+s-1=0\quad\Longrightarrow\quad s=\dfrac{-1\pm\sqrt5}{2}.
+\]
+Only the positive root lies in $(0,1)$, so
+\[
+\sin x=\boxed{\dfrac{\sqrt5-1}{2}}\approx0.618 .
+\]
+Check: then $\cos x=\sqrt{s}\approx0.786$ and $s^2+\cos^2x=s^2+s=1$.

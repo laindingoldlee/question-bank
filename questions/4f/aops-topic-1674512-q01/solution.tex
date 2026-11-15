@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1674512_a_triangle_with_2_or_even_3_right_angles
+% Stable identity: aops-topic-1674512-q01
+Suppose triangle $ABC$ had right angles at $B$ and $C$.
+
+\textbf{Using the angle sum.} The angles of a triangle add up to $180^\circ$, so $\angle A=180^\circ-90^\circ-90^\circ=0^\circ$, which is impossible for a triangle.
+
+\textbf{Without the angle sum.} Line $\ell=AB$ and line $m=AC$ would both be perpendicular to line $BC$. Two lines perpendicular to the same line make equal corresponding angles with it, so they are parallel; they are different lines because they meet $BC$ at the different points $B$ and $C$. Parallel lines never meet, but $\ell$ and $m$ would both pass through $A$, a contradiction.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),C=(4,0);
+draw(B--C,linewidth(0.9));
+draw(B--(0,3.2),linewidth(0.9));draw(C--(4,3.2),linewidth(0.9));
+draw((0.3,0)--(0.3,0.3)--(0,0.3));draw((3.7,0)--(3.7,0.3)--(4,0.3));
+draw((-0.15,2.0)--(0,2.2)--(0.15,2.0)^^(3.85,2.0)--(4,2.2)--(4.15,2.0));
+label("$B$",B,SW);label("$C$",C,SE);
+label("$\ell$",(0,3.2),N);label("$m$",(4,3.2),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence a plane triangle has at most one right angle (and, by the same argument, at most one angle of $90^\circ$ or more). $\blacksquare$
+
+(The ``trick'' in the original question is that this fails on a sphere: the north pole and two points on the equator a quarter of the way around from each other form a spherical triangle with three right angles. Its sides are arcs of great circles, not straight segments.)

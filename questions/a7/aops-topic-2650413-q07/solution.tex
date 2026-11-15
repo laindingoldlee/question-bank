@@ -1,0 +1,33 @@
+% Source: https://artofproblemsolving.com/community/c3h2650413_sigma_mathematics_competition_smc_problems
+% Stable identity: aops-topic-2650413-q07
+Let the arcs $VW,WX,XY,YZ,ZV$ (each not containing the other points) measure $\alpha,\beta,\gamma,\delta,\varepsilon$.
+\begin{itemize}
+\item $VY\parallel WX$: parallel chords cut off equal arcs, so $\alpha=\gamma$.
+\item $VW\parallel ZY$: likewise $\beta+\gamma=\varepsilon$.
+\item $\angle WXY=\dfrac{\delta+\varepsilon+\alpha}{2}$ and $\angle ZVW=\dfrac{\beta+\gamma+\delta}{2}$, so their difference is $\dfrac{\alpha+\varepsilon-\beta-\gamma}{2}=\dfrac\alpha2=30^\circ$. Hence $\alpha=60^\circ$, and $\angle VYW=\dfrac\alpha2=30^\circ$.
+\end{itemize}
+\emph{The altitude condition.} Let $D$ be the foot of the altitude from $W$, and put $D=(0,0)$, $V=(-p,0)$, $Y=(q,0)$, $W=(0,w)$. The altitude from $Y$ is the line $p(x-q)+wy=0$, which meets $WD$ at $H=\left(0,\dfrac{pq}{w}\right)$. $H$ is the midpoint of $WD$ when $\dfrac{pq}{w}=\dfrac w2$, i.e. $w^2=2pq$, i.e.
+\[\tan\angle WVY\cdot\tan\angle VYW=\dfrac wp\cdot\dfrac wq=2.\]
+So $\tan\angle WVY=\dfrac{2}{\tan30^\circ}=2\sqrt3$, giving $\cos\angle WVY=\dfrac1{\sqrt{13}}$ and $\sin\angle WVY=\dfrac{2\sqrt3}{\sqrt{13}}$. Write $\theta=\angle WVY$.
+
+\emph{Lengths.} By the extended law of sines, $VW=2R\sin30^\circ$, so $R=26$. The legs are $VW=XY=26$ (equal arcs). Base $WX$ subtends arc $\beta=2\theta-\gamma=2\theta-60^\circ$, and base $VY$ subtends $\alpha+\beta+\gamma=2\theta+60^\circ$. So
+\[WX=52\sin\left(\theta-30^\circ\right)=52\cdot\dfrac{3-\dfrac12}{\sqrt{13}}=10\sqrt{13},\qquad VY=52\sin\left(\theta+30^\circ\right)=52\cdot\dfrac{3+\dfrac12}{\sqrt{13}}=14\sqrt{13}.\]
+The height is $\sqrt{26^2-\left(2\sqrt{13}\right)^2}=\sqrt{624}=4\sqrt{39}$, so the area is
+\[\dfrac{10\sqrt{13}+14\sqrt{13}}{2}\cdot4\sqrt{39}=48\sqrt{507}=624\sqrt3,\]
+and $a+b=\boxed{627}$. (The remaining arc is $\delta=300^\circ-4\theta\approx4.4^\circ>0$, so the configuration exists, and the triangle $VWY$ is acute, so $H$ lies on the altitude.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real R=26;real V=degrees(atan(2*sqrt(3)));real a=60,bb=2V-60,c=60,e=bb+c,d=360-a-bb-c-e;real rho=90-(a+(a+bb))/2;
+pair P(real t){return R*dir(t+rho);}
+pair Vp=P(0),Wp=P(a),Xp=P(a+bb),Yp=P(a+bb+c),Zp=P(a+bb+c+d);
+draw(circle((0,0),R),gray);fill(Vp--Wp--Xp--Yp--cycle,lightgray);draw(Vp--Wp--Xp--Yp--cycle,linewidth(0.8));draw(Yp--Zp--Vp);draw(Wp--Yp,dashed);
+pair Dw=Vp+dot(Wp-Vp,unit(Yp-Vp))*unit(Yp-Vp);pair Dy=Vp+dot(Yp-Vp,unit(Wp-Vp))*unit(Wp-Vp);pair H=extension(Wp,Dw,Yp,Dy);
+draw(Wp--Dw,dashed);draw(Yp--Dy,dashed);dot(H);
+draw(Dw+1.5*unit(Wp-Dw)--Dw+1.5*unit(Wp-Dw)+1.5*unit(Vp-Dw)--Dw+1.5*unit(Vp-Dw));
+draw(Dy+1.5*unit(Yp-Dy)--Dy+1.5*unit(Yp-Dy)+1.5*unit(Wp-Dy)--Dy+1.5*unit(Wp-Dy));
+label("$V$",Vp,dir(-13));label("$W$",Wp,NE);label("$X$",Xp,NW);label("$Y$",Yp,dir(175));label("$Z$",Zp,dir(225));label("$H$",H,NW);label("$D$",Dw,S);
+label("$26$",(Vp+Wp)/2,E);label("$30^\circ$",Yp+(7,1.2),fontsize(8pt));
+\end{asy}

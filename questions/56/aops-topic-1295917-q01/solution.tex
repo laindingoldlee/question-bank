@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1295917_geo_problem
+% Stable identity: aops-topic-1295917-q01
+Tangent segments from a point to a circle are equal. From $C$: $CB$ is tangent to the semicircle at $B$ (as $CB\perp AB$), so the tangent length from $C$ is $2$. From $E$: $EA$ is tangent at $A$, so if $AE=x$, the tangent length from $E$ is $x$. Hence $CE=2+x$ and $DE=2-x$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(2,0),C=(2,2),D=(0,2),E=(0,0.5),O=(1,0);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(arc(O,1,0,180),blue); draw(C--E,red);
+pair T=(0.2,0.6)+(0,0);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW); label("$E$",E,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In right triangle $CDE$: $(2+x)^2=2^2+(2-x)^2$, so $8x=4$, $x=\dfrac{1}{2}$, and $CE=\boxed{\dfrac{5}{2}}$.

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2068666_couple_of_problems_i_need_help_with
+% Stable identity: aops-topic-2068666-q02
+Every piece stays convex, because a straight cut through a convex polygon produces two convex polygons.
+
+\emph{Key fact.} A straight cut across a convex polygon with $n$ sides, not through a corner, enters through the interior of one side and leaves through the interior of another. Each of these two sides is split into two parts, one on each piece, and the cut itself becomes a side of both pieces. So if the pieces have $p$ and $q$ sides, then $p+q=n+4$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(4,0), C=(4,4), D=(0,4), X=(0,2.6), Y=(1.5,4);
+fill(X--Y--D--cycle,paleblue); fill(A--B--C--Y--X--cycle,palegreen);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(X--Y,red+linewidth(1));
+dot(X);dot(Y);
+label("$3$",(0.5,3.53),fontsize(8pt));
+label("$5$ sides",(2.3,1.5),fontsize(8pt));
+label("$4+4=3+5$",(2,-0.5),fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence every cut increases the \emph{total} number of sides of all pieces by exactly $4$. We start with one square ($4$ sides), so after $10$ cuts the total is $4+10\cdot4=44$. The known pieces have $7\cdot3+2\cdot4+5=34$ sides, so the remaining piece has $44-34=\boxed{10}$ sides.

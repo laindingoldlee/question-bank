@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2619800_a_fun_problem
+% Stable identity: aops-topic-2619800-q01
+Let $a_k$ be the number of points scored in building a $2^k$ tile when only $2$s appear. Then $a_1=0$ and $a_k=2a_{k-1}+2^k$ (build two $2^{k-1}$ tiles, then merge them). This gives $a_k=(k-1)2^k$:
+\[a_2=4,\ a_3=16,\ a_4=48,\ a_5=128,\ a_6=320,\ a_8=1792,\ a_{11}=20480,\ a_{13}=98304.\]
+Every tile on the board was built by merges from tiles that appeared, and every tile that ever appeared ends up in exactly one tile on the board. If one of these appearing tiles is a $4$ rather than two $2$s, the $4$ points for merging those two $2$s are never scored. Hence
+\[\text{score}=\sum_{\text{tiles}}a(\text{tile})-4N_4,\]
+where $N_4$ is the number of $4$s that appeared. For this board,
+\[\sum a=0+16+4+0+48+128+48+16+1792+20480+1792+128+98304+0+320+4=123080.\]
+So $N_4=\dfrac{123080-121132}{4}=\boxed{487}$.

@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1387716_circumradius
+% Stable identity: aops-topic-1387716-q01
+\textbf{Answer:} $\sec15^\circ=\sqrt6-\sqrt2\approx1.035$.
+
+\textbf{Construction.} Put one vertex at the corner $A=(0,0)$ and the others at $P=(1,\tan15^\circ)$ and $Q=(\tan15^\circ,1)$, on the two far sides. By symmetry in the diagonal, $AP=AQ=\sec15^\circ$ and $\angle PAQ=90^\circ-2\cdot15^\circ=60^\circ$, so triangle $APQ$ is equilateral with side $\sec15^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real t=Tan(15);
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1), P=(1,t), Q=(t,1);
+draw(A--B--C--D--cycle,linewidth(0.9));
+filldraw(A--P--Q--cycle,palecyan,blue+linewidth(0.9));
+draw(arc(A,0.45,0,15)); draw(arc(A,0.45,75,90));
+label("$15^\circ$",A+0.58*dir(7.5),fontsize(8pt)); label("$15^\circ$",A+0.58*dir(82.5),fontsize(8pt));
+label("$A$",A,SW); label("$P$",P,E); label("$Q$",Q,N);
+label("$1$",(0.5,0),S); label("$1$",(0,0.35),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Bound.} Suppose an equilateral triangle of side $s$ lies in the square. Its three sides point in directions $\alpha$, $\alpha+60^\circ$, $\alpha+120^\circ$ (angles measured modulo $180^\circ$ from the horizontal side of the square). Let $d_h$ be the smallest angle between a side of the triangle and the horizontal, and $d_v$ the smallest angle between a side and the vertical; both are at most $30^\circ$. Since the directions repeat every $60^\circ$ while the horizontal and vertical directions differ by $90^\circ\equiv30^\circ\pmod{60^\circ}$, we get $d_h+d_v=30^\circ$ (if $\beta\in[0^\circ,60^\circ)$ is $\alpha$ reduced modulo $60^\circ$, then $d_h=\min(\beta,60^\circ-\beta)$ and $d_v=|\beta-30^\circ|$). Hence one of them, say $d$, is at most $15^\circ$.
+
+That side of the triangle has projection $s\cos d\ge s\cos15^\circ$ onto the corresponding side direction of the square, and the projection of a segment inside the square onto a side direction is at most $1$. So $s\cos15^\circ\le1$, i.e. $s\le\sec15^\circ$.
+
+Finally $\cos15^\circ=\dfrac{\sqrt6+\sqrt2}{4}$, so
+\[
+\sec15^\circ=\dfrac{4}{\sqrt6+\sqrt2}=\boxed{\sqrt6-\sqrt2}.
+\]

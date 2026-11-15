@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1206016_reflections
+% Stable identity: aops-topic-1206016-q01
+Reflection in the line $y=x$ sends the point $(a,b)$ to $(b,a)$. A point $(a,b)$ lies on the first graph exactly when $b=-2(a-3)^2-4$. This is precisely the condition for the point $(b,a)$ to lie on the second graph (substitute $x=b$, $y=a$ into $x=-2(y-3)^2-4$). So reflection maps the first graph onto the second, point by point, and vice versa.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+import graph; draw(graph(new real(real x){return -2(x-3)^2-4;},1.2,4.8),blue);
+path q=graph(new real(real x){return -2(x-3)^2-4;},1.2,4.8); draw(reflect((0,0),(1,1))*q,red);
+draw((-11,-11)--(5,5),dashed); draw((-11,0)--(6,0),gray,Arrow); draw((0,-11)--(0,6),gray,Arrow);
+dot((3,-4)); dot((-4,3)); label("$(3,-4)$",(3,-4),E); label("$(-4,3)$",(-4,3),N); label("$y=x$",(5,5),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For instance the vertex $(3,-4)$ of the first parabola goes to the vertex $(-4,3)$ of the second.

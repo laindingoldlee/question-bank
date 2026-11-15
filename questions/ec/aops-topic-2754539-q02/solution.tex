@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2754539_3_problems
+% Stable identity: aops-topic-2754539-q02
+Let $E=53$ be Emma's sum and $O$ the sum of the remaining digits; we want $T=E+O$.
+
+\emph{Mod $11$.} Emma's digits occupy alternate positions, so $E-O$ is, up to sign, the alternating digit sum of $30!$, whichever parity the number of digits has. Since $11\mid30!$, we get $E\equiv O\pmod{11}$, so $O\equiv53\equiv9\pmod{11}$.
+
+\emph{Mod $9$.} Since $9\mid30!$, $T=53+O\equiv0\pmod9$, so $O\equiv-53\equiv1\pmod9$.
+
+Together, $O\equiv64\pmod{99}$, so $O\in\{64,163,\dots\}$.
+
+\emph{Size.} Pairing factors, $30!=\prod_{k=1}^{15}k(31-k)$ and each $k(31-k)\le\dfrac{31^2}{4}<250$. So $30!<250^{15}=\dfrac{10^{45}}{4^{15}}<10^{36}$, i.e. $30!$ has at most $36$ digits. At most $18$ of them are not Emma's, so $O\le9\cdot18=162$.
+
+Hence $O=64$ and $T=53+64=\boxed{117}$. (Indeed $30!=265252859812191058636308480000000$, whose digit sum is $117$.)

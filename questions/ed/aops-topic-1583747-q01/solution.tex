@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1583747_help
+% Stable identity: aops-topic-1583747-q01
+Half of the $60$ students play basketball, so the Basketball team has $30$ players. The ratio $4:3:2$ then gives Mathletics $40$ and Soccer $20$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair cB=(0,0),cS=(2,0),cM=(1,1.6);real r=1.55;
+draw(circle(cB,r),linewidth(0.9));draw(circle(cS,r),linewidth(0.9));draw(circle(cM,r),linewidth(0.9));
+label("Basketball $30$",cB+(-0.5,-1.95));label("Soccer $20$",cS+(0.5,-1.95));label("Mathletics $40$",cM+(0,1.85));
+label("$8$",(1,0.55));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Let $x$ be the number of students on exactly two teams. Count team memberships: the team sizes add to $40+30+20=90$, and in this sum a student on one team is counted once, a student on exactly two teams twice, and a student on all three teams three times. With $y$ students on exactly one team,
+\[
+y+x+8=60,\qquad y+2x+3\cdot8=90 .
+\]
+Subtracting, $x+16=30$, so $x=\boxed{14}$.
+
+\emph{The error in the attempt $40+30+20-8-x=60$:} each student on exactly two teams is counted twice in $90$, so $x$ is the right correction for them, but each of the $8$ students on all three teams is counted three times and must be subtracted twice, not once. The correct equation is $90-x-2\cdot8=60$, giving $x=14$ again.

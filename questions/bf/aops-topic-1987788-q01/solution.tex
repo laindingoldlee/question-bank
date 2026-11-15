@@ -1,0 +1,6 @@
+% Source: https://artofproblemsolving.com/community/c3h1987788_largest_number_of_cents
+% Stable identity: aops-topic-1987788-q01
+\textbf{Smallest amounts in each remainder class.} Sort amounts by their remainder modulo $11$. Since $13\equiv2\pmod{11}$, the amounts $13b$ for $b=0,1,\dots,10$ have the remainders $0,2,4,\dots,20$ modulo $11$, which are all different, so they cover all $11$ remainders. An amount $11a+13b$ with $b\ge11$ can be rewritten with $b-11$ coins of $13$ and $a+13$ coins of $11$, so every amount that can be made can be made with $b\le10$. Hence, in the remainder class of $13b$ ($0\le b\le10$), the amounts that can be made are exactly $13b,13b+11,13b+22,\dots$.
+
+\textbf{The answer.} The largest of these starting values is $13\cdot10=130$, and in its class the amount just below it, $130-11=119$, cannot be made. Every amount $n\ge120$ can be made: if $n$ is in the class of $130$, then $n\equiv119\pmod{11}$ and $n\ge120$ force $n\ge130$; otherwise its class starts at $13b\le117<n$. So the largest amount that cannot be made is
+\[\boxed{119}=11\cdot13-11-13 .\]

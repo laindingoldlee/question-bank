@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1717425_junior_regional_olympiad__fbh_2014_grade_8_problem_4
+% Stable identity: aops-topic-1717425-q01
+\textbf{Case $p=q$.} Then $p^2=7p$, so $p=q=7$.
+
+\textbf{Case $p\ne q$.} Reducing modulo $p$: $q^2\equiv-10q$, so $p\mid q(q+10)$, and since $p\nmid q$, $p\mid q+10$. Write $q+10=kp$ with $k\ge1$. Also the left side is positive (it is a nonzero square, as $2p=q$ is impossible for odd $q$, and $q=2$, $p=1$ is not allowed), so $17p>10q$, i.e.\ $q<1.7p$. Then $kp-10<1.7p$, so $(k-1.7)p<10$.
+\begin{itemize}
+\item $k=1$: $q=p-10$. Modulo $q$ the equation gives $q\mid p(4p-17)$, so $q\mid4p-17=4q+23$, hence $q=23$ and $p=33$, not prime.
+\item $k=2$: $q=2p-10$, and the equation becomes $100=17p-20p+100$, so $p=0$: impossible.
+\item $k=3$: $1.3p<10$ gives $p\le7$, and $q=3p-10$: $p=5$ gives $q=5=p$ (excluded here), $p=7$ gives $q=11$; check: $(14-11)^2=9=119-110$. \checkmark ($p=2,3$ give $q\le0$.)
+\item $k=4$: $2.3p<10$ gives $p\in\{2,3\}$, $q=4p-10\in\{-2,2\}$; $(p,q)=(3,2)$: $16\ne31$.
+\item $k=5$: $3.3p<10$ gives $p\in\{2,3\}$, $q=5p-10\in\{0,5\}$; $(p,q)=(3,5)$: $(6-5)^2=1=51-50$. \checkmark
+\item $k\ge6$: $4.3p<10$ gives $p=2$, and $q=2k-10$ is even, so $q=2=p$, excluded.
+\end{itemize}
+The solutions are $\boxed{(p,q)=(3,5),\ (7,7),\ (7,11)}$.

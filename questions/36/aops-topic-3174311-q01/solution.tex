@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3174311_double_date
+% Stable identity: aops-topic-3174311-q01
+Scale $15$ minutes to one time unit, so arrival times lie in $[0,3]$. Given arrivals $a,c$ of $A,C$, the allowed lengths for $B,D$ are $f(a),f(c)$, where $f(t)=t+1$ for $0\le t\le1$, $f(t)=2$ for $1\le t\le2$, and $f(t)=4-t$ for $2\le t\le3$. The probability is $\dfrac{1}{81}\iint_{|a-c|\le1} f(a)f(c)\,da\,dc$. Since $\int_0^3 f(t)\,dt=5$, the unrestricted integral is $25$. One excluded half, $c>a+1$, has integral $\int_0^1(a+1)(\dfrac{7}{2}-2a)\,da+\int_1^2 2(4-3a+\dfrac{a^2}{2})\,da=\dfrac{43}{12}+\dfrac{4}{3}=\dfrac{59}{12}$. The other half is equal by symmetry. Therefore the answer is $\dfrac{25-2(\dfrac{59}{12})}{81}=\boxed{\dfrac{91}{486}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw((0,0)--(3,0)--(3,3)--(0,3)--cycle);filldraw((0,0)--(1,0)--(3,2)--(3,3)--(2,3)--(0,1)--cycle,lightgray);label("$a$",(3.2,0),E);label("$c$",(0,3.2),N);label("$|a-c|\le1$",(1.5,1.5));
+\end{asy}

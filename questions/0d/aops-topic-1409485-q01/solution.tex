@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1409485_geometric_probablity
+% Stable identity: aops-topic-1409485-q01
+Place the square with $A=(0,0)$, $B=(1,0)$, $C=(1,1)$, $D=(0,1)$ and let $X=(x,y)$. Each triangle has a side of the square (length $1$) as base, and its height is the distance from $X$ to that side:
+\[
+[ABX]=\dfrac {y}{2},\qquad [BCX]=\dfrac{1-x}{2},\qquad [ADX]=\dfrac {x}{2} .
+\]
+So the condition is $y>1-x>x$, that is, $x<\dfrac{1}{2}$ and $x+y>1$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1);
+fill((0,1)--(0.5,0.5)--(0.5,1)--cycle,rgb(0.8,0.88,1));
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw((0.5,0)--(0.5,1),gray+dashed); draw((0,1)--(1,0),gray+dashed);
+pair X=(0.3,0.82); draw(A--X--B,red+dotted); dot(X,red); label("$X$",X,E,red);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$x=\dfrac{1}{2}$",(0.5,0),S,gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+This is the shaded triangle with vertices $(0,1)$, $\left(\dfrac{1}{2},\dfrac{1}{2}\right)$ and $\left(\dfrac{1}{2},1\right)$; its legs are $\dfrac{1}{2}$ and $\dfrac{1}{2}$, so its area is $\dfrac{1}{8}$. Since the square has area $1$, the probability is $\boxed{\dfrac{1}{8}}$.

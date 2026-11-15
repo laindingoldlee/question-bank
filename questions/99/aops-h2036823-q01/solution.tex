@@ -1,0 +1,24 @@
+Choose coordinates $A=(0,0),B=(b,1),C=(c,1)$ with $b<c$. Put $D=(tb,t),E=(tc,t)$, where $0<t<1$, and $F=(f,t),G=(g,t)$. The circumcircle of $ABC$ has equation
+\[
+x^2+y^2-(b+c)x+(bc-1)y=0.
+\]
+Restricting to $y=t$ shows $f+g=b+c$.
+
+Write the equations of the two other circles as $x^2+y^2+u_ix+v_iy+w_i=0$. Their intersections with $y=t$ give $u_1=-(f+tc)$, $u_2=-(tb+g)$. Using their additional points $B,C$ then gives
+\[
+w_1=\dfrac{t}{1-t}(b^2-bct-bf+cf-t+1),
+\]
+\[
+w_2=\dfrac{t}{1-t}(c^2-bct-cg+bg-t+1).
+\]
+Thus
+\[
+w_1-w_2=\dfrac{t(b-c)}{1-t}(b+c-f-g)=0.
+\]
+The constants $w_1,w_2$ are the powers of the origin $A$ in these circles. Equal power means that $A$ lies on their radical axis, which is line $PQ$. Hence $A,P,Q$ are collinear.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,4),B=(-3,0),C=(5,0),D=(-1.5,2),E=(2.5,2),F=(1-5sqrt(2)/2,2),G=(1+5sqrt(2)/2,2),U=(7/4-5sqrt(2)/4,-9/2+55sqrt(2)/16),V=(-1/4+5sqrt(2)/4,-11/2+65sqrt(2)/16),P=(-.499379225,-2.603829572),Q=(-.047999316,3.365253321);draw(circle((1,.125),5sqrt(41)/8),gray);draw(circle(U,length(U-F)),lightblue);draw(circle(V,length(V-G)),lightred);draw(A--B--C--cycle);draw(F--G);draw(P--A,blue);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NW);label("$E$",E,NE);label("$F$",F,W);label("$G$",G,(1,0));label("$P$",P,S);label("$Q$",Q,NE);
+\end{asy}

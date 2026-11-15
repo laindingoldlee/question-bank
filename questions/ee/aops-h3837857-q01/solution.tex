@@ -1,0 +1,16 @@
+Take the center as the complex origin. Let $p,a_j$ be the complex coordinates, all of modulus $1$. The vertices form a rotated set of roots of unity, so $\sum a_j=0$ and $\sum\overline{a_j}=0$. Now
+\[
+|p-a_j|^2=(p-a_j)(\overline p-\overline{a_j})
+=2-p\overline{a_j}-\overline p\,a_j.
+\]
+Summing gives
+\[
+\boxed{\sum_{j=1}^nPA_j^2=2n}.
+\]
+This does not depend on $p$, including when $P$ coincides with a vertex.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair P=dir(50);pair[] V;for(int i=0;i<5;++i)V.push(dir(90+72i));draw(unitcircle,gray);for(int i=0;i<5;++i){draw(V[i]--V[(i+1)%5]);draw(P--V[i],blue);label("$A_"+string(i+1)+"$",V[i],V[i]);}label("$P$",P,P);
+\end{asy}

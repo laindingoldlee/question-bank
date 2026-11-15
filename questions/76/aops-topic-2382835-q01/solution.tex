@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2382835_imposter_chances
+% Stable identity: aops-topic-2382835-q01
+In each round you are an impostor with probability $q=\dfrac{3}{10}$ (by symmetry each of the $10$ players is equally likely to be among the $3$ chosen; or directly, $\dfrac{\dbinom92}{\dbinom{10}{3}}=\dfrac{36}{120}=\dfrac3{10}$), independently of other rounds. Let $N$ be the number of the first round in which you are an impostor.
+
+\textbf{Distribution.} $N\ge n$ means that you were not an impostor in rounds $1,\dots,n-1$, so $P(N\ge n)=\left(\dfrac{7}{10}\right)^{n-1}$, which tends to $0$; so $N$ is finite with probability $1$.
+
+\textbf{Expectation.} For a random variable with values $1,2,3,\dots$,
+\[E[N]=\sum_{n\ge1}n\,P(N=n)=\sum_{n\ge1}\sum_{m=1}^{n}P(N=n)=\sum_{m\ge1}P(N\ge m),\]
+where the order of summation may be changed because all terms are nonnegative. Hence
+\[E[N]=\sum_{m\ge1}\left(\dfrac{7}{10}\right)^{m-1}=\dfrac{1}{1-\dfrac{7}{10}}=\boxed{\dfrac{10}{3}}.\]
+(Another way: conditioning on the first round, $E[N]=1+\dfrac{7}{10}E[N]$, which again gives $\dfrac{10}{3}$, once one knows that $E[N]$ is finite, as the series shows.)

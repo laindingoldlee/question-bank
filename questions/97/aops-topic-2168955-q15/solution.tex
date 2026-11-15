@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2168955_2020_mock_amc_11_13_15_discussion
+% Stable identity: aops-topic-2168955-q15
+Place $A=(0,0)$, $B=(1,0)$, $C=\left(\dfrac{1}{2},\dfrac{\sqrt3}{2}\right)$. The square $ABDE$ lies below $AB$, so $D=(1,-1)$ (the vertex next to $B$) and $E=(0,-1)$. The square $ACFG$ lies on the other side of $AC$ from $B$; turning $\overrightarrow{AC}$ through $90^\circ$ counterclockwise gives $G=\left(-\dfrac{\sqrt3}{2},\dfrac{1}{2}\right)$ (the vertex next to $A$).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(1,0), C=(1/2,sqrt(3)/2);
+pair D=(1,-1), Ee=(0,-1);
+pair G=rotate(90)*(C-A)+A, Fq=G+(C-A);
+fill(D--C--G--cycle,lightgray);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--B--D--Ee--cycle); draw(A--C--Fq--G--cycle);
+draw(D--C--G--cycle,blue);
+label("$A$",A+0.13*dir(105)); label("$B$",B,E); label("$C$",C,NE); label("$D$",D,SE); label("$E$",Ee,SW); label("$F$",Fq,N); label("$G$",G,W);
+\end{asy}
+
+By the shoelace formula, with $D=(1,-1)$, $C=\left(\dfrac{1}{2},\dfrac{\sqrt3}{2}\right)$, $G=\left(-\dfrac{\sqrt3}{2},\dfrac{1}{2}\right)$:
+\[[DCG]=\dfrac{1}{2}\left|1\left(\dfrac{\sqrt3}{2}-\dfrac{1}{2}\right)+\dfrac{1}{2}\left(\dfrac{1}{2}+1\right)-\dfrac{\sqrt3}{2}\left(-1-\dfrac{\sqrt3}{2}\right)\right|=\dfrac{1}{2}\left(\sqrt3+1\right).\]
+The answer is $\boxed{\textbf{(D) } \dfrac{\sqrt3+1}{2}}$.

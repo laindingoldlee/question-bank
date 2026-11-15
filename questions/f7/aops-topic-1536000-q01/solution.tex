@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1536000_interesting_problem
+% Stable identity: aops-topic-1536000-q01
+Let the square have side $x$ cm. The cut is parallel to the shorter sides, so the plank's width is $x$ and its length is $x+120$:
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(150,0)--(150,30)--(0,30)--cycle,linewidth(1));
+draw((30,0)--(30,30),dashed+linewidth(0.9));
+label("square",(15,15));label("rectangle",(90,15));
+label("$x$",(15,0),S);label("$120$",(90,0),S);label("$x$",(0,15),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Hence
+\[
+x(x+120)=4500\quad\Longrightarrow\quad x^2+120x-4500=0\quad\Longrightarrow\quad(x-30)(x+150)=0 ,
+\]
+and since $x>0$, the square has side $\boxed{30\text{ cm}}$. (Check: $30\cdot150=4500$, and the rectangle is $120$ by $30$.)

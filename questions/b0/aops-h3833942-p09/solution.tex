@@ -1,0 +1,7 @@
+Reflect $C$ across $AB$ to $C_1$ and $B$ across $AC$ to $B_1$. Then $CD+DE+EB=C_1D+DE+EB_1\ge C_1B_1$. In coordinates with $AB$ horizontal and $AC$ at $10^\circ$, the straight segment $C_1B_1$ crosses $AB$ and $AC$ in that order, so equality is attained. The angle between $AC_1$ and $AB_1$ is $30^\circ$. Therefore $m^2=(12-4\sqrt3)^2+(8\sqrt3)^2-2(12-4\sqrt3)(8\sqrt3)\cos30^\circ=\boxed{96}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(8*sqrt(3),0),C=(12-4*sqrt(3))*dir(10),U=(C.x,-C.y),V=8*sqrt(3)*dir(20),w=V-U;real td=-U.y/w.y,te=-((U.x*sin(10*pi/180)-U.y*cos(10*pi/180))/(w.x*sin(10*pi/180)-w.y*cos(10*pi/180)));pair D=U+td*w,E=U+te*w;draw(A--B--C--cycle);draw(C--D--E--B,linewidth(1.1));draw(U--V,dashed);draw(A--V,dashed);label("$A$",A,(-1,-1));label("$B$",B,(1,-1));label("$C$",C,(-1,1));label("$C_1$",U,(0,-1));label("$B_1$",V,(0,1));label("$D$",D,(0,-1));label("$E$",E,(0,1));
+\end{asy}

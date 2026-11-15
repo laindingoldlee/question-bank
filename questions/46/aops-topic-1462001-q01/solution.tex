@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1462001_how_to_do_this_problem
+% Stable identity: aops-topic-1462001-q01
+For a point $X$, let $d(X)$ be its distance to the nearest point of the edge (the nearest side of the rectangle).
+
+\textbf{A stick of length $\ell$ can touch $X$ exactly when $\ell\ge d(X)$.} The stick is a segment from a point $Y$ on the edge to $X$, so it needs $\ell=XY\ge d(X)$. Conversely, if $\ell\ge d(X)$: as $Y$ moves around the edge, the distance $XY$ varies continuously from $d(X)$ up to the distance to the farthest corner, which is at least half the diagonal and so more than $\dfrac{a}{2}$; hence some edge point $Y$ has $XY=\ell$ whenever $d(X)\le\ell\le\dfrac{a}{2}$. The segment $XY$ stays inside the pool because the rectangle is convex.
+
+\textbf{The largest value of $d(X)$ is $\dfrac{a}{2}$.} If $X$ is at distances $x$ and $a-x$ from the two sides of length $b$, then $d(X)\le\min(x,a-x)\le\dfrac{a}{2}$. At the centre $O$, the distances to the sides are $\dfrac{a}{2}$ and $\dfrac{b}{2}\ge\dfrac{a}{2}$, so $d(O)=\dfrac{a}{2}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair ft(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+real w=6,h=4;
+pair O=(w/2,h/2);
+draw(box((0,0),(w,h)),linewidth(0.9));
+draw(O--(O.x,0),gray+dashed);draw(O--(0,O.y),gray+dashed);draw(O--(w,O.y),gray+dashed);
+draw(O--(O.x,h),red+linewidth(1.2));
+dot(O);label("$O$",O,2*dir(-45));
+label("$\dfrac{a}{2}$",(O.x,0.75*h),E,red);
+label("$b$",(w/4,0),S);label("$a$",(0,h/4),W);
+pair X=(1.1,2.9); dot(X,blue); draw(X--(0,X.y),blue);
+label("$X$",X,E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So a stick of length $\dfrac{a}{2}$ reaches every point, and no shorter stick reaches the centre. The answer is $\boxed{\dfrac{a}{2}}$, half the shorter side; that is, $\dfrac{1}{2}\min(a,b)$.

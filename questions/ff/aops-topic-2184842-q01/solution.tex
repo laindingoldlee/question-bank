@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2184842_innumberable_circles
+% Stable identity: aops-topic-2184842-q01
+For any point $O\ne P$, the circle with centre $O$ and radius $OP>0$ passes through $P$. Different centres give different circles, and there are infinitely many points $O\ne P$, so infinitely many circles pass through $P$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0);
+pair[] O={(1.2,0.5),(-0.6,0.9),(0.3,-1.6),(-1.5,-0.4)};
+pen[] pc={blue,red,heavygreen,orange};
+for(int i=0;i<4;++i){ draw(circle(O[i],abs(O[i]-P)),pc[i]); dot(O[i],pc[i]); draw(O[i]--P,pc[i]+dotted); label("$O_{"+string(i+1)+"}$",O[i],dir(O[i]-P),pc[i]+fontsize(9pt)); }
+dot(P,linewidth(4)); label("$P$",P,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Conversely, if a circle with centre $O$ and radius $\rho>0$ passes through $P$, then $OP=\rho>0$, so $O\ne P$. Hence the set of centres is $\boxed{\text{the whole plane except the point }P}$, and each such centre gives exactly one circle through $P$ (its radius must be $OP$). $\blacksquare$

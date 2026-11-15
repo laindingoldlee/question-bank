@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1696714_help_on_problem
+% Stable identity: aops-topic-1696714-q01
+Let $\alpha=\angle CAB$.
+
+\textbf{Angles.} In triangle $MBC$, $\angle BMC=180^\circ-40^\circ-30^\circ=110^\circ$, so $\angle AMC=70^\circ$, and in triangle $AMC$, $\angle ACM=180^\circ-70^\circ-\alpha=110^\circ-\alpha$ (so $\alpha<110^\circ$).
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real c=5; pair A=(0,0),B=(c,0),C=(c/2,(c/2)*Tan(40));
+real a=abs(B-C); pair M=(a,0);
+draw(A--B--C--cycle,linewidth(0.9));draw(C--M,linewidth(0.7));
+draw(arc(B,0.7,140,180),linewidth(0.5));label("$40^\circ$",B+1.15*dir(160));
+draw(arc(C,0.75,degrees(M-C),degrees(B-C)),linewidth(0.5));label("$30^\circ$",C+1.25*dir((degrees(M-C)+degrees(B-C))/2));
+draw(arc(A,0.7,0,40),red+linewidth(0.5));label("$\alpha$",A+1.05*dir(20),red);
+pair t1=(A+M)/2, t2=(B+C)/2;
+draw(t1+0.15*dir(90+0)--t1-0.15*dir(90+0),linewidth(0.6));
+pair nb=unit(rotate(90)*(C-B)); draw(t2+0.15*nb--t2-0.15*nb,linewidth(0.6));
+dot(M);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$M$",M,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Law of sines.} In triangle $AMC$, $AM=\dfrac{AC\sin(110^\circ-\alpha)}{\sin70^\circ}$. In triangle $ABC$, $BC=\dfrac{AC\sin\alpha}{\sin40^\circ}$. The condition $AM=BC$ becomes
+\[
+\dfrac{\sin(110^\circ-\alpha)}{\sin\alpha}=\dfrac{\sin70^\circ}{\sin40^\circ}.
+\]
+
+\textbf{Solve.} $\alpha=40^\circ$ satisfies this, since then $\sin(110^\circ-\alpha)=\sin70^\circ$. It is the only solution: $\dfrac{\sin(110^\circ-\alpha)}{\sin\alpha}=\sin110^\circ\cot\alpha-\cos110^\circ$ is strictly decreasing for $0<\alpha<110^\circ$, because $\cot\alpha$ is. Hence $\angle CAB=\boxed{40^\circ}$.
+
+(Check: with $\angle A=\angle B=40^\circ$ we get $CA=CB=AM$, so triangle $AMC$ is isosceles with $\angle AMC=\angle ACM=70^\circ$, consistent with the above. The figure is drawn to scale.)

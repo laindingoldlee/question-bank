@@ -1,0 +1,7 @@
+Number rows and columns $0$ through $6$. Shade $(r,c)$ exactly when $c-r\equiv0,1,$ or $2\pmod7$. For any fixed row, these are three distinct column residues. For any fixed column, solving for $r$ likewise gives three distinct row residues. The construction therefore has exactly three shaded cells in every row and column, and $21$ shaded cells in total.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int r=0;r<7;++r)for(int c=0;c<7;++c){if((c-r+7)%7<3)fill(box((c,-r),(c+1,1-r)),lightblue);draw(box((c,-r),(c+1,1-r)),gray);}
+\end{asy}

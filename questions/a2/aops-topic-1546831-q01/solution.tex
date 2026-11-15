@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1546831_mathcounts_do_i_need_to_remember_this
+% Stable identity: aops-topic-1546831-q01
+Take a right triangle $ACB$ with the right angle at $C$, $\angle ABC=30^\circ$ and $AC=1$; then $AB=2$ and $BC=\sqrt3$. Extend $CB$ beyond $B$ to a point $D$ with $BD=BA=2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8.5cm);
+defaultpen(fontsize(10pt));
+real r3=sqrt(3);
+pair C=(0,0),A=(0,1),B=(-r3,0),D=(-r3-2,0);
+draw(D--C--A--cycle,linewidth(1));draw(A--B,linewidth(1));
+real s=0.12; draw((-s,0)--(-s,s)--(0,s));
+draw(arc(B,0.42,0,30),blue);label("$30^\circ$",B+0.62*dir(15),E,blue);
+draw(arc(D,1.1,0,15),red);label("$15^\circ$",D+1.2*dir(7.5),E,red);
+draw((B+D)/2+(0,-0.06)--(B+D)/2+(0,0.06));
+pair mAB=(A+B)/2; draw(shift(mAB)*rotate(-60)*((-0.06,0)--(0.06,0)));
+label("$D$",D,SW);label("$B$",B,S);label("$C$",C,SE);label("$A$",A,N);
+label("$2$",(B+D)/2+(0,-0.07),S);label("$\sqrt{3}$",(B+C)/2,S);label("$1$",(A+C)/2,E);label("$2$",mAB+0.07*dir(-60),dir(-60));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangle $ABD$ is isosceles with $BA=BD$, so $\angle BDA=\angle BAD$. The exterior angle of this triangle at $B$ is $\angle ABC=30^\circ$, which equals the sum of the two equal angles, so $\angle BDA=15^\circ$.
+
+In the right triangle $ACD$, $\angle ADC=15^\circ$, the opposite leg is $AC=1$ and the adjacent leg is $DC=2+\sqrt3$. Therefore
+\[
+\tan15^\circ=\dfrac{1}{2+\sqrt3}=\dfrac{2-\sqrt3}{(2+\sqrt3)(2-\sqrt3)}=\dfrac{2-\sqrt3}{4-3}=2-\sqrt3 . \qquad\blacksquare
+\]
+(The same value comes from $\tan(45^\circ-30^\circ)=\dfrac{1-\dfrac{1}{\sqrt3}}{1+\dfrac{1}{\sqrt3}}=\dfrac{\sqrt3-1}{\sqrt3+1}=2-\sqrt3$.)

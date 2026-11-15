@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1677458_51_there_are_n_lines_in_a_plane_find_the_maximum_number_of_i_regions_open
+% Stable identity: aops-topic-1677458-q01
+Add the lines one at a time. When the $k$-th line $\ell$ is added, the earlier $k-1$ lines meet it in at most $k-1$ distinct points, which cut $\ell$ into $m+1$ pieces, where $m\le k-1$ is the number of distinct intersection points on $\ell$: two rays and $m-1$ segments (if $m=0$, $\ell$ itself is the only piece). Each piece runs through one old region and cuts it into two, so the number of regions grows by exactly $m+1$.
+
+\textbf{(i)} The number of regions grows by at most $k$ at step $k$, so with $n$ lines there are at most
+\[
+1+(1+2+\cdots+n)=\boxed{\dfrac{n^2+n+2}{2}}
+\]
+regions. Equality holds when no two lines are parallel and no three pass through one point, because then each new line meets the old ones in exactly $k-1$ distinct points.
+
+\textbf{(ii)} Regions of the plane cut out by lines are convex. A ray piece of $\ell$ creates no new bounded region: it cuts an unbounded region into two parts, each containing points of the plane next to the ray arbitrarily far out, so both parts are unbounded. A segment piece raises the number of bounded regions by at most one (it splits one region into two). So the number of bounded regions grows by at most $\max(m-1,0)\le k-2$ at step $k\ge2$ (and by $0$ at step $1$), and with $n$ lines there are at most
+\[
+0+1+2+\cdots+(n-2)=\boxed{\dfrac{(n-1)(n-2)}{2}}
+\]
+bounded regions. For lines in general position (no two parallel, no three concurrent) this is attained: there are $\dfrac{n^2+n+2}{2}$ regions in all, and exactly $2n$ of them are unbounded (a circle enclosing all intersection points meets the lines in $2n$ points, and the $2n$ arcs between them lie in $2n$ different unbounded regions, one for each unbounded region), so the number of bounded ones is $\dfrac{n^2+n+2}{2}-2n=\dfrac{(n-1)(n-2)}{2}$.

@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2353474_problems
+% Stable identity: aops-topic-2353474-q05
+A cube with side $s$ has $6$ square faces, so its surface area is $6s^2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+void cube(pair o, real s, pen p){
+  pair dx=(s,0), dy=(0,s), dz=s*(0.45,0.3);
+  draw(o--o+dx--o+dx+dy--o+dy--cycle,p);
+  draw(o+dy--o+dy+dz--o+dx+dy+dz--o+dx+dy,p);
+  draw(o+dx--o+dx+dz--o+dx+dy+dz,p);
+  draw(o--o+dz,p+dashed); draw(o+dz--o+dz+dx,p+dashed); draw(o+dz--o+dz+dy,p+dashed);
+}
+cube((0,0),3,black); label("$3$",(1.5,0),S); label("cube",(1.5,-1.4));
+cube((5.5,0),7,black); label("$7$",(9,0),S); label("box",(9,-1.4));
+\end{asy}
+
+The cube needs $6\cdot3^2=54$ square inches and the box needs $6\cdot7^2=294$ square inches, so she needs $54+294=\boxed{348}$ square inches.

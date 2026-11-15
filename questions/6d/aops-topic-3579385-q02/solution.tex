@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3579385_1434th_post
+% Stable identity: aops-topic-3579385-q02
+Write $\theta=\angle ABC$. Then $\angle BCD=\theta+30^\circ$ and $\angle CBD=90^\circ-\theta$, so $0<\theta<90^\circ$. The sine rule in $ABC$ gives $BC=\dfrac{6\sin30^\circ}{\sin(150^\circ-\theta)}=\dfrac{3}{\sin(\theta+30^\circ)}$. In $BCD$, it gives $BC=\dfrac{\sin60^\circ}{\sin(90^\circ-\theta)}=\dfrac{\sqrt3}{2\cos\theta}$. Equating these expressions and expanding the sine yields $\dfrac{\sqrt3}{2}\sin\theta+\dfrac{1}{2}\cos\theta=2\sqrt3\cos\theta$, hence $\tan\theta=4-\dfrac{1}{\sqrt3}$. Therefore\[BC^2=\dfrac{3}{4}(1+\tan^2\theta)=\boxed{13-2\sqrt3}.\]
+\begin{asy}
+import geometry;
+size(260);
+real t=atan(4-1/sqrt(3)),s=sqrt(13-2*sqrt(3));pair B=(0,0),C=(s,0),A=6*(cos(t),sin(t)),D=C+(cos(5*pi/6-t),sin(5*pi/6-t));draw(A--B--C--D--cycle);draw(A--C^^B--D,dashed);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,NE);label("$6$",(A+B)/2,W);label("$1$",(C+D)/2,E);
+\end{asy}

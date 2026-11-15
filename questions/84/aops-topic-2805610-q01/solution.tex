@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2805610_cool_isosceles_geo
+% Stable identity: aops-topic-2805610-q01
+Use coordinates with $H=(0,0)$, $B=(p,0)$, $C=(0,q)$ ($p,q>0$), so that line $AB$ is the $x$-axis and $\angle BHC=90^\circ$. Put $k=p^2+q^2$.
+
+$A=(a,0)$ with $AC=AB$: $a^2+q^2=(p-a)^2$ gives $a=\dfrac{p^2-q^2}{2p}$ and $AC=\dfrac k{2p}$. Then $D=C+\dfrac{q}{AC}(A-C)$ is
+\[D=\left(\dfrac{q(p^2-q^2)}k,\ \dfrac{q(p-q)^2}k\right),\qquad H'=\left(\dfrac{pq^2}k,\ \dfrac{p^2q}k\right),\]
+the latter being the foot from the origin to $\dfrac xp+\dfrac yq=1$.
+
+$HT$ is the line $y=x$, and $CM$ (with $M=\left(\dfrac p2,0\right)$) is $\dfrac{2x}p+\dfrac yq=1$; they meet at $X=(t,t)$ with $t=\dfrac{pq}{p+2q}$.
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real p=2,q=3,k=p^2+q^2;pair H=(0,0),B=(p,0),C=(0,q),A=((p^2-q^2)/(2*p),0);
+pair D=(q*(p^2-q^2)/k,q*(p-q)^2/k),Hp=(p*q^2/k,p^2*q/k),M=(p/2,0),X=(p*q/(p+2*q),p*q/(p+2*q));
+draw(A--B--C--cycle);draw(C--H);draw(H--Hp,dotted);draw(D--Hp);draw(C--M);draw(H--(2*X-H),dashed);dot(X);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$H$",H,S);label("$D$",D,W);label("$H'$",Hp,NE);label("$M$",M,S);label("$X$",X,E);
+\end{asy}
+
+It remains to show that $D$, $H'$, $X$ are collinear. Using $k=p^2+q^2$:
+\[k(H'-D)=\big(pq^2-q(p^2-q^2),\ p^2q-q(p-q)^2\big)=\big(q(q^2+pq-p^2),\ q^2(2p-q)\big),\]
+\[\dfrac{k(p+2q)}q(X-D)=\big(pk-(p^2-q^2)(p+2q),\ pk-(p-q)^2(p+2q)\big)=\big(2q(q^2+pq-p^2),\ 2q^2(2p-q)\big),\]
+after expanding ($pk=p^3+pq^2$, $(p^2-q^2)(p+2q)=p^3+2p^2q-pq^2-2q^3$, $(p-q)^2(p+2q)=p^3-3pq^2+2q^3$). The second vector is twice the first, so $X$ lies on line $DH'$. Hence the three lines pass through $X$. $\blacksquare$

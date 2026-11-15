@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2501938_two_magical_problems
+% Stable identity: aops-topic-2501938-q02
+The palindromes with digits $0$ and $9$ only (no leading zero) are $9$, $99$, $909$ and $999$, so $S=\{9,99,909,999\}$. Since $99=9\cdot11$ while $909=11\cdot82+7$ and $999=11\cdot90+9$,
+\[A=\{909\},\quad B=\{9,99,999\},\quad C=\{909,999\},\quad D=\{99\}.\]
+
+\emph{Every subset of $S$ can be obtained.} Intersections can be formed, since $X\cap Y=X\setminus(X\setminus Y)$. Each element is singled out:
+\[\{909\}=A,\quad\{99\}=D,\quad\{999\}=C\setminus A,\quad\{9\}=B\setminus(C\cup D).\]
+Taking unions of these singletons gives every nonempty subset of $S$.
+
+\emph{Nothing else can be obtained.} Every element of $A$, $B$, $C$, $D$ lies in $S$, and $\cup$ and $\setminus$ applied to subsets of $S$ give subsets of $S$.
+
+So the obtainable nonempty sets are exactly the $2^4-1=\boxed{15}$ nonempty subsets of $S$.

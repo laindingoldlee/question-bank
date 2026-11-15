@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1753098_workout_8_244
+% Stable identity: aops-topic-1753098-q244
+Give the unit cubes of an $n\times n\times n$ cube the coordinates $(x,y,z)$ with $x,y,z\in\{1,\dots,n\}$. A line through $n$ centres must run straight across the cube, so it contains the points $P+tv$, $t=0,\dots,n-1$, with $v$ a nonzero vector with entries in $\{-1,0,1\}$, and in each coordinate where $v$ is $\pm1$ the line goes from $1$ to $n$ (or $n$ to $1$), while the other coordinates are constant.
+
+Now surround the cube by one more layer, forming an $(n+2)^3$ cube with coordinates $0,\dots,n+1$. Extend each line one step at both ends: it then ends in two cells of the outer layer. Conversely, a cell $(x,y,z)$ of the outer layer determines exactly one such line: in each coordinate, the value $0$ forces the step $+1$, the value $n+1$ forces $-1$, and a value in $1,\dots,n$ forces $0$; moving from the cell in that direction passes through exactly $n$ interior centres and then leaves at another outer cell. So the lines correspond to pairs of outer-layer cells, and
+\[
+\#\text{lines}=\dfrac{(n+2)^3-n^3}{2}.
+\]
+For $n=4$ this is $\dfrac{216-64}{2}=76$, as stated. For $n=10$ it is $\dfrac{1728-1000}{2}=\boxed{364}$.

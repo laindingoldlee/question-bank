@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2957613_the_ftw_game_of_3_orz_people
+% Stable identity: aops-topic-2957613-q01
+Let $X,Y,Z$ be the scores of $P_1,P_2,P_3$. Then
+\[P(X=0,1,2)=\dfrac19,\dfrac49,\dfrac49,\quad P(Y=0,1,2)=\dfrac1{16},\dfrac6{16},\dfrac9{16},\quad P(Z=0,1,2)=\dfrac1{25},\dfrac8{25},\dfrac{16}{25}.\]
+We find $P_3$'s expected points given $Z$, using denominators of $144=9\cdot16$.
+
+\emph{$Z=2$.} Neither opponent scores $2$ with weight $5\cdot7=35$ (points $3$); exactly one ties with weight $4\cdot7+5\cdot9=73$ (points $2$); both tie with weight $36$ (points $\dfrac{3+1-4}3=0$). Expected points $\dfrac{105+146}{144}=\dfrac{251}{144}$.
+
+\emph{$Z=1$.} Each opponent is below, equal or above with weights $(1,4,4)$ for $P_1$ and $(1,6,9)$ for $P_2$. Both below: weight $1$, points $3$. One below and one equal: weight $6+4=10$, points $2$. One below and one above: weight $9+4=13$, points $1$. Both equal: weight $24$, points $0$. One equal and one above: weight $36+24=60$, points $\dfrac{1-4}2=-\dfrac32$. Both above: weight $36$, points $-4$. Expected points $\dfrac{3+20+13-90-144}{144}=-\dfrac{11}8$.
+
+\emph{$Z=0$.} Both opponents above: weight $8\cdot15=120$, points $-4$. Exactly one also scores $0$: weight $15+8=23$, points $-\dfrac32$. Both score $0$: weight $1$, points $0$. Expected points $\dfrac{-480-34.5}{144}=-\dfrac{343}{96}$.
+
+Therefore
+\[E=\dfrac{16}{25}\cdot\dfrac{251}{144}-\dfrac8{25}\cdot\dfrac{11}8-\dfrac1{25}\cdot\dfrac{343}{96}=\dfrac{8032-3168-1029}{7200}=\dfrac{767}{1440},\]
+and the expected rating is $\boxed{2100+\dfrac{767}{1440}}\approx2100.53$.

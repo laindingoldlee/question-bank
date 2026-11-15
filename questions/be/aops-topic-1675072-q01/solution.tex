@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1675072_cp_problem
+% Stable identity: aops-topic-1675072-q01
+The condition $x+y>xy$ is equivalent to $xy-x-y+1<1$, that is,
+\[
+(x-1)(y-1)<1 .
+\]
+For $x,y\in(0,2]$ we have $x-1,\ y-1\in(-1,1]$, so $|x-1|\le1$, $|y-1|\le1$ and $(x-1)(y-1)\le|x-1|\,|y-1|\le1$. Equality $(x-1)(y-1)=1$ would need $|x-1|=|y-1|=1$ with equal signs; since $x-1=-1$ is impossible ($x>0$), the only such point is $x=y=2$, where $x+y=4=xy$.
+
+So the condition fails only at the single point $(2,2)$ of the square $(0,2]\times(0,2]$, a set of area $0$. The probability is $\boxed{1}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+fill((0,0)--(2,0)--(2,2)--(0,2)--cycle,paleblue);
+draw((0,0)--(2,0)--(2,2)--(0,2)--cycle,linewidth(0.9));
+import graph;
+real h(real x){return x/(x-1);}
+draw(graph(h,1.6,2.45),red+dashed);draw(graph(h,-0.5,0.4),red+dashed);
+draw((-0.7,0)--(2.8,0),gray,Arrow(TeXHead));draw((0,-0.7)--(0,2.8),gray,Arrow(TeXHead));
+draw((1,-0.7)--(1,2.8),gray+dotted);draw((-0.7,1)--(2.8,1),gray+dotted);
+dot((2,2),red);
+label("$x$",(2.8,0),E);label("$y$",(0,2.8),N);
+label("$2$",(2,0),S);label("$2$",(0,2),W);label("$O$",(0,0),SW);
+label("$(2,2)$",(2,2),NE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the figure the curve $x+y=xy$, i.e.\ $y=\dfrac{x}{x-1}$ (dashed), touches the square $(0,2]^2$ only at the corner $(2,2)$, so the whole square except that corner satisfies $x+y>xy$.

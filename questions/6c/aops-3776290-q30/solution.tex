@@ -1,0 +1,9 @@
+Choose $B=(0,0),E=(4,0)$ and write $A=(u,v),C=(tu,-tv)$ with $t>0$, since $BE$ bisects the angle at $B$. We may take $v>0$. The median endpoint is $D = (\dfrac{t u}{2} , - \dfrac{t v}{2})$. Perpendicularity to $BE$ forces $\dfrac{t u}{2} = u$; nondegeneracy gives $u\ne0$, so $t=2$. Thus $AD=2v=4$, giving $v=2$. The intercept of $AC$ on the horizontal axis is $(\dfrac{4 u}{3} , 0)$, so $u=3$. The side lengths are $\sqrt{13},2\sqrt{13},3\sqrt5$, of which $\boxed{\sqrt{13}}$ is shortest.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(3,2),(0,0),(6,-4)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));pair D=(3,-2),E=(4,0);draw(p[0]--D);draw(p[1]--E);label("$D$",D,(0,-1));label("$E$",E,(1,0));
+\end{asy}
+

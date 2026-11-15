@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1360464_a_special_equilateral_345_triangle
+% Stable identity: aops-topic-1360464-q01
+Rotate the triangle by $60^\circ$ about $A$ so that $B$ goes to $C$, and let $Q$ be the image of $P$. Rotations preserve distances, so $AQ=AP=3$ and $QC=PB=4$; also $\angle PAQ=60^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real s=sqrt(25+12*sqrt(3));
+pair A=(0,0), B=(s,0), C=(s/2,s*sqrt(3)/2);
+real px=(s*s+9-16)/(2*s); pair P=(px,sqrt(9-px*px));
+pair Q=rotate(60,A)*P;
+draw(A--B--C--cycle,linewidth(0.9));
+draw(P--A,linewidth(0.8)); draw(P--B,linewidth(0.8)); draw(P--C,linewidth(0.8));
+draw(A--Q,blue+dashed); draw(Q--P,blue+dashed); draw(Q--C,blue+dashed);
+dot(A);dot(B);dot(C);dot(P);dot(Q);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$P$",P,SE); label("$Q$",Q,W);
+label("$3$",(A+P)/2,NW); label("$4$",(B+P)/2,N); label("$5$",(C+P)/2,E);
+label("$3$",(A+Q)/2,W,blue); label("$3$",(Q+P)/2,SW,blue); label("$4$",(Q+C)/2,NW,blue);
+pair e1=unit(P-Q), e2=unit(C-Q); draw(Q+0.35*e1--Q+0.35*(e1+e2)--Q+0.35*e2,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $AP=AQ$ and $\angle PAQ=60^\circ$, triangle $APQ$ is equilateral, so $PQ=3$ and $\angle AQP=60^\circ$. Triangle $PQC$ has sides $3$, $4$, $5$, so by the converse of the Pythagorean theorem $\angle PQC=90^\circ$. Hence $\angle AQC$ is $60^\circ+90^\circ=150^\circ$ or $90^\circ-60^\circ=30^\circ$. The value $30^\circ$ is impossible: the law of cosines in triangle $AQC$ would give $AC^2=9+16-24\cos30^\circ=25-12\sqrt3<25$, so $AC<5=PC$, whereas a point inside an equilateral triangle is closer to each vertex than the side length. So $\angle AQC=150^\circ$, as in the figure.
+
+Finally, the rotation maps triangle $APB$ onto triangle $AQC$, so
+\[
+\angle APB=\angle AQC=\boxed{150^\circ}.
+\]
+(As a by-product, the side is $\sqrt{9+16+24\cos30^\circ}=\sqrt{25+12\sqrt3}\approx6.77$.)

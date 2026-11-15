@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1595189_value_of_x
+% Stable identity: aops-topic-1595189-q01
+Factor $2015=5\cdot13\cdot31$. The number $31^n+x\cdot96^n$ is divisible by $2015$ exactly when it is divisible by each of $5$, $13$ and $31$.
+
+\textbf{Modulo $31$.} $31^n\equiv0$ and $96=93+3\equiv3$, so we need $x\cdot3^n\equiv0\pmod{31}$. As $31$ is prime and does not divide $3^n$, this means $31\mid x$.
+
+\textbf{Modulo $5$.} $31\equiv1$ and $96\equiv1$, so we need $1+x\equiv0\pmod5$.
+
+\textbf{Modulo $13$.} $31=26+5\equiv5$ and $96=91+5\equiv5$, so we need $5^n(1+x)\equiv0\pmod{13}$; since $13\nmid5^n$, this means $1+x\equiv0\pmod{13}$.
+
+These conditions do not depend on $n$, so they are necessary (already for $n=1$) and sufficient for every $n$. Thus we need
+\[
+x\equiv0\pmod{31},\qquad x\equiv-1\pmod{65}.
+\]
+Write $x=31k$. Then $31k\equiv-1\pmod{65}$. Since $31\cdot21=651=10\cdot65+1$, the inverse of $31$ modulo $65$ is $21$, so $k\equiv-21\equiv44\pmod{65}$. The least positive solution is $k=44$:
+\[
+x=31\cdot44=\boxed{1364}.
+\]
+Check: $1364=31\cdot44$ and $1365=65\cdot21$, so for every $n$ the number $31^n+1364\cdot96^n$ is divisible by $31$, by $5$ and by $13$, hence by $2015$.

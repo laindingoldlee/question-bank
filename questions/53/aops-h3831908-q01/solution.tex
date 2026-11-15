@@ -1,0 +1,13 @@
+At each stage, the midpoint base is parallel to the old base, has one quarter of its area, and lies halfway between the old base and apex. The new apex lies in the old base plane, so the new height is half the old height. Thus the new volume is $\dfrac{1}{4}\cdot\dfrac{1}{2}=\dfrac{1}{8}$ of the previous volume.
+
+Consequently $V_n=56\left(\dfrac{1}{8}\right)^n$, and
+\[
+\boxed{\sum_{n=1}^{\infty}V_n
+=\dfrac{56\cdot\dfrac{1}{8}}{1-\dfrac{1}{8}}=8}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(5,0),C=(6.5,1.5),D=(1.5,1.5),S=(3,5),O=(A+C)/2,a=(S+A)/2,b=(S+B)/2,c=(S+C)/2,d=(S+D)/2;draw(A--B--C--D--cycle,gray);draw(S--A,gray);draw(S--B,gray);draw(S--C,gray);draw(S--D,gray);draw(a--b--c--d--cycle,blue);draw(O--a,red);draw(O--b,red);draw(O--c,red);draw(O--d,red);label("$S$",S,N);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,E);label("$D$",D,W);label("$S_1$",O,S);label("$A_1$",a,W);label("$B_1$",b,SE);label("$C_1$",c,NE);label("$D_1$",d,NW);
+\end{asy}

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2265832_5_geometry_problems
+% Stable identity: aops-topic-2265832-q05
+\textbf{Two right angles.} In triangle $MAT$, $15^2+20^2=225+400=625=25^2$, so by the converse of the Pythagorean theorem $\angle MAT=90^\circ$. In triangle $ATH$, $8^2+15^2=64+225=289=17^2$, so $\angle ATH=90^\circ$.
+
+\textbf{Shape.} Both $MA$ and $TH$ are perpendicular to $AT$, so $MA\parallel TH$. The points $M$ and $H$ are on the same side of line $AT$: otherwise the side $HM$ would cross the side $AT$ and $MATH$ would not be a (simple) quadrilateral. So $MATH$ is a right trapezoid with parallel sides $MA=20$ and $TH=8$ and height $AT=15$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), M=(0,20), T=(15,0), H=(15,8);
+fill(M--A--T--H--cycle,paleblue);
+draw(M--A--T--H--cycle,linewidth(0.9));
+draw(M--T,dashed); draw(A--H,dashed);
+draw((0,1.2)--(1.2,1.2)--(1.2,0)); draw((13.8,0)--(13.8,1.2)--(15,1.2));
+label("$M$",M,NW); label("$A$",A,SW); label("$T$",T,SE); label("$H$",H,NE);
+label("$20$",(A+M)/2,W); label("$15$",(A+T)/2,S); label("$8$",(T+H)/2,E);
+label("$25$",(M+T)/2+(0.6,0.4),NE); label("$17$",A+0.62*(H-A),NW);
+\end{asy}
+
+\textbf{Area.}
+\[[MATH]=\dfrac{(20+8)}{2}\cdot15=\boxed{210}.\]
+(Check: $[MAT]=\dfrac{1}{2}\cdot20\cdot15=150$, and with $A=(0,0)$, $M=(0,20)$, $T=(15,0)$, $H=(15,8)$, triangle $MTH$ has area $60$; $150+60=210$.)

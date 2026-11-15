@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1280590_geometery
+% Stable identity: aops-topic-1280590-q01
+The sun's rays make the same angle with the ground, so the right triangles formed by each object and its shadow are similar.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+draw((-1,0)--(23,0)); draw((0,0)--(0,8),blue); draw((0,8)--(3,0),blue+dashed); draw((10,0)--(10,40/4),red); draw((10,10)--(25,0),red+dashed);
+label("$8$",(0,4),W,blue); label("$3$",(1.5,0),S,blue); label("$h$",(10,5),W,red); label("$15$",(17.5,0),S,red);
+label("sign",(0,8),N,blue); label("pole",(10,10),N,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Thus $\dfrac {h}{15}=\dfrac{8}{3}$, and $h=\boxed{40\text{ feet}}$.

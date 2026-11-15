@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1975067_combinatorial_proof
+% Stable identity: aops-topic-1975067-q01
+Count the permutations of $\{1,2,\dots,n+1\}$ other than the identity. There are $(n+1)!-1$ of them; this is the right side.
+
+Now count them a second way. For a non-identity permutation $\pi$, let $j$ be the largest number with $\pi(j)\ne j$; then $2\le j\le n+1$, and $\pi$ fixes every number larger than $j$. Write $j=k+1$ with $1\le k\le n$, and count the permutations with this value of $k$:
+\begin{itemize}
+\item $\pi(k+2),\dots,\pi(n+1)$ are fixed, so $\pi$ permutes $\{1,\dots,k+1\}$;
+\item $\pi(k+1)$ is one of $1,\dots,k$: $k$ choices;
+\item the remaining $k$ numbers of $\{1,\dots,k+1\}$ are sent bijectively to the remaining $k$ values: $k!$ choices.
+\end{itemize}
+So exactly $k\cdot k!$ permutations have largest moved point $k+1$. Every non-identity permutation has exactly one such $k\in\{1,\dots,n\}$, so the total is $\sum_{k=1}^{n}k\cdot k!$, the left side. The two counts are equal. $\blacksquare$

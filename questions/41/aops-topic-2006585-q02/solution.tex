@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2006585_kootrapalis_introductory_proof_problems_kipp
+% Stable identity: aops-topic-2006585-q02
+Let the right angle be at $C$, the legs be $BC=a$, $CA=b$, the hypotenuse be $AB=c$, and let the incircle (centre $I$, radius $r$) touch $BC$, $CA$ at $T_1$, $T_2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0), A=(0,3), B=(4,0), I=(1,1);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(circle(I,1),blue);
+pair T1=(1,0), T2=(0,1);
+pair u=unit(B-A); pair T3=A+dot(I-A,u)*u;
+draw(C--T1--I--T2--cycle,red);
+draw(I--T3,red+dashed);
+draw((0.18,0)--(0.18,0.18)--(0,0.18));
+dot(I); dot(T1); dot(T2); dot(T3);
+label("$C$",C,SW); label("$A$",A,N); label("$B$",B,E); label("$I$",I,NE);
+label("$r$",(0.5,0),S,red); label("$r$",(0,0.5),W,red);
+label("$a$",(2.6,0),S); label("$b$",(0,2.1),W); label("$c$",(A+B)/2+(0.1,0.1),NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The radii $IT_1$ and $IT_2$ are perpendicular to the legs, and the angle at $C$ is a right angle, so $CT_1IT_2$ is a rectangle with two adjacent sides equal to $r$; hence it is a square and $CT_1=CT_2=r$.
+
+On the other hand, the two tangent segments from a vertex to the incircle are equal. If the tangent lengths from $A$, $B$, $C$ are $x$, $y$, $z$, then $c=x+y$, $a=y+z$, $b=z+x$, so $2s=2(x+y+z)$ and $z=s-c$. Thus
+\[
+r=CT_1=s-c<s,
+\]
+since $c>0$. Hence $s>r$.
+
+(Alternatively, for any triangle, area $=rs$; since the area of this triangle is $\dfrac{ab}{2}$ and $s>a$, $s>b$, we get $r=\dfrac{ab}{2s}<\dfrac{s^2}{2s}<s$.)

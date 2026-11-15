@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1670542_dice_problem
+% Stable identity: aops-topic-1670542-q01
+All $6^{12}$ sequences of rolls are equally likely. Let $A_j$ be the set of sequences in which the number $j$ never appears. We want the number of sequences in none of the $A_j$.
+
+A sequence avoiding $k$ given numbers uses only the other $6-k$ numbers, so $|A_{j_1}\cap\dots\cap A_{j_k}|=(6-k)^{12}$. By inclusion-exclusion, the number of sequences in which every number appears is
+\[
+\sum_{k=0}^{6}(-1)^k\dbinom6k(6-k)^{12}=6^{12}-6\cdot5^{12}+15\cdot4^{12}-20\cdot3^{12}+15\cdot2^{12}-6\cdot1^{12}+0 .
+\]
+Numerically this is
+\[
+2176782336-1464843750+251658240-10628820+61440-6=953029440 .
+\]
+Hence the probability is
+\[
+\dfrac{953029440}{2176782336}=\boxed{\dfrac{1654565}{3779136}}\approx0.438 .
+\]

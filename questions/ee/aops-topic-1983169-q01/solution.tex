@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1983169_winning_strategy
+% Stable identity: aops-topic-1983169-q01
+Call a number $k$ \emph{winning} if the player who receives $k$ can force a win, and \emph{losing} otherwise. Note that $1$ can be chosen only from $k=2$ (it needs $\dfrac {k}{2}\le1$), and from $2$ the only move is $1$. We prove by strong induction that the losing numbers are exactly $3$ and the even numbers $k\ge6$.
+\begin{itemize}
+\item $k=2$ is winning (choose $1$). $k=3$: the only move is $2$, which is winning for the opponent, so $3$ is losing. $k=4$: the moves are $3$ (since $2$ is not coprime to $4$), which is losing, so $4$ is winning. $k=5$: move to $3$; winning.
+\item Odd $k\ge7$: move to $k-1$, which is even, at least $6$, coprime to $k$ and at least $\dfrac {k}{2}$. It is losing, so $k$ is winning.
+\item Even $k\ge6$: every allowed $m$ is coprime to $k$, hence odd, and $m\ge\dfrac {k}{2}\ge3$. The value $m=3$ would need $k\le6$, so $k=6$, but $\gcd(3,6)\ne1$. So every move is to an odd number $m\ge5$, which is winning for the opponent; thus $k$ is losing. (Moves exist, e.g. $k-1$.)
+\end{itemize}
+\textbf{(a)} $7$ is winning for the player who receives it, so $\boxed{A}$ wins (for instance by choosing $6$).
+
+\textbf{(b)} $2016$ is even and at least $6$, so it is losing for its receiver, and $\boxed{B}$ wins.

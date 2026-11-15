@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1377655_2016_mathcounts_state_sprint
+% Stable identity: aops-topic-1377655-q01
+The diagonal has length $XZ=6$, with $XM=2$ and $MZ=4$. In triangle $XWZ$ the angle at $W$ is a right angle (a corner of the rectangle), and $WM$ is the altitude to the hypotenuse $XZ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+real p=2*sqrt(6), q=2*sqrt(3);
+pair X=(0,0), Y=(p,0), Z=(p,q), W=(0,q);
+pair M=X+(Z-X)/3, N=X+2*(Z-X)/3;
+draw(W--X--Y--Z--cycle,linewidth(0.9)); draw(X--Z,linewidth(0.9));
+draw(W--M,blue); draw(N--Y,blue);
+draw(ra(M,Z-M,W-M,0.25)); draw(ra(N,X-N,Y-N,0.25));
+dot(M); dot(N);
+label("$W$",W,NW); label("$X$",X,SW); label("$Y$",Y,SE); label("$Z$",Z,NE);
+label("$M$",M,SE); label("$N$",N,NW);
+label("$2$",(X+M)/2,SE); label("$2$",(M+N)/2,SE); label("$2$",(N+Z)/2,SE);
+label("$2\sqrt{2}$",(W+M)/2,SW,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The two smaller triangles $XMW$ and $WMZ$ are similar (each shares an acute angle with the right triangle $XWZ$), so
+\[
+\dfrac{WM}{XM}=\dfrac{MZ}{WM}\quad\Longrightarrow\quad WM^2=XM\cdot MZ=2\cdot4=8,\qquad WM=2\sqrt2 .
+\]
+The area of triangle $XWZ$ is $\dfrac{1}{2}\cdot XZ\cdot WM=\dfrac{1}{2}\cdot6\cdot2\sqrt2=6\sqrt2$, and the diagonal cuts the rectangle into two congruent triangles, so
+\[
+[WXYZ]=2\cdot6\sqrt2=\boxed{12\sqrt2}.
+\]
+(The sides are $WX=\sqrt{XM\cdot XZ}=2\sqrt3$ and $WZ=\sqrt{MZ\cdot XZ}=2\sqrt6$, and indeed $2\sqrt3\cdot2\sqrt6=12\sqrt2$.)

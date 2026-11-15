@@ -1,0 +1,43 @@
+% Source: https://artofproblemsolving.com/community/c3h2192847_please_help_me_on_this_geometry_problem
+% Stable identity: aops-topic-2192847-q01
+\textbf{(a)} In SAS the angle must be the angle \emph{between} the two sides. In triangle $GHJ$ the angle $\angle GHJ$ lies between the sides $HG$ and $HJ$, but the student pairs it with $HJ$ and $GJ$; the side $GJ$ is opposite the angle. Likewise in triangle $IJH$ the angle $\angle IJH$ lies between $JI$ and $JH$, not between $JH$ and $IH$. So the data are two sides and a non-included angle (SSA), which is not a congruence criterion.
+
+\textbf{(b)} No. Take $G=(1,2)$, $H=(3,2)$, $I=(4,0)$, $J=(0,0)$ (left figure). Then $GH\parallel IJ$ (both horizontal) and $GJ=\sqrt{1^2+2^2}=\sqrt5=HI$, so all the given conditions hold. But $GH=2$ and $IJ=4$, and
+\[HJ=\sqrt{13},\qquad\text{triangle }GHJ\text{ has sides }2,\ \sqrt5,\ \sqrt{13},\qquad\text{triangle }IJH\text{ has sides }4,\ \sqrt5,\ \sqrt{13},\]
+so the triangles are not congruent (one has a side $2$, the other does not). The parallel sides are marked with arrows, the equal sides with ticks and the equal alternate angles in red.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair G=(1,2), H=(3,2), I=(4,0), J=(0,0);
+fill(G--H--J--cycle,paleblue); fill(I--J--H--cycle,paleyellow);
+draw(G--H--I--J--cycle,linewidth(0.9)); draw(H--J,linewidth(0.8));
+draw(G--H,MidArrow(5)); draw(J--I,MidArrow(5));
+draw(shift((G+J)/2)*((-0.12,0.06)--(0.12,-0.06))); draw(shift((H+I)/2)*((-0.12,-0.06)--(0.12,0.06)));
+draw(arc(H,0.45,180,degrees(J-H)),red); draw(arc(J,0.45,0,degrees(H-J)),red);
+label("$G$",G,NW); label("$H$",H,NE); label("$I$",I,SE); label("$J$",J,SW);
+label("$2$",(G+H)/2,N,fontsize(9pt)); label("$4$",(I+J)/2,S,fontsize(9pt));
+label("isosceles trapezoid",(2,-0.7),fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair G=(1,2), H=(4,2), I=(3,0), J=(0,0);
+fill(G--H--J--cycle,paleblue); fill(I--J--H--cycle,paleyellow);
+draw(G--H--I--J--cycle,linewidth(0.9)); draw(H--J,linewidth(0.8));
+draw(G--H,MidArrow(5)); draw(J--I,MidArrow(5));
+draw(shift((G+J)/2)*((-0.12,0.06)--(0.12,-0.06))); draw(shift((H+I)/2)*((-0.12,0.06)--(0.12,-0.06)));
+draw(arc(H,0.45,180,degrees(J-H)),red); draw(arc(J,0.45,0,degrees(H-J)),red);
+label("$G$",G,NW); label("$H$",H,NE); label("$I$",I,SE); label("$J$",J,SW);
+label("$3$",(G+H)/2,N,fontsize(9pt)); label("$3$",(I+J)/2,S,fontsize(9pt));
+label("parallelogram",(2,-0.7),fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In this isosceles trapezoid also $\angle G\ne\angle I$ (they are about $116.6^\circ$ and $63.4^\circ$), so the student's other idea, AAS with $\angle G=\angle I$, fails as well.
+
+\emph{When are they congruent?} A quadrilateral with $GH\parallel IJ$ and $GJ=HI$ is either an isosceles trapezoid, as above, or a parallelogram (right figure). In a parallelogram $GH=IJ$, and then the triangles are congruent by SSS ($GH=IJ$, $HJ=JH$, $GJ=IH$), or by SAS with the included angles $\angle GHJ=\angle IJH$. So the triangles are congruent exactly when $GHIJ$ is a parallelogram, and the given information does not guarantee that.

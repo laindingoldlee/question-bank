@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2603777_geometry2
+% Stable identity: aops-topic-2603777-q02
+$2001=3\cdot23\cdot29$, so each side is $3$, $23$ or $29$ (sides may repeat). A multiset of three sides forms a triangle exactly when the two shorter sides add up to more than the longest.
+\begin{itemize}
+\item Equilateral: $(3,3,3)$, $(23,23,23)$, $(29,29,29)$, all valid: $3$ triangles.
+\item Two equal sides $(p,p,q)$, $p\ne q$: valid when $2p>q$. This holds for $(23,23,3)$, $(23,23,29)$, $(29,29,3)$, $(29,29,23)$, but fails for $(3,3,23)$ and $(3,3,29)$: $4$ triangles.
+\item All different: $(3,23,29)$ fails, since $3+23=26<29$.
+\end{itemize}
+The total is $3+4=\boxed{7}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real s=23,t=29;pair A=(0,0),B=(t,0),C=(t/2,sqrt(s^2-(t/2)^2));
+draw(A--B--C--cycle,linewidth(0.8));
+label("$29$",(A+B)/2,S);label("$23$",(A+C)/2,NW);label("$23$",(B+C)/2,NE);
+\end{asy}
+
+The sketch shows one of them, $(23,23,29)$.

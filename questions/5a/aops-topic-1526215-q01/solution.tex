@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1526215_more_problems
+% Stable identity: aops-topic-1526215-q01
+Each interior angle of a regular hexagon is $120^\circ$, so the exterior angles at $D$ and $A$ are $60^\circ$. Hence triangle $FDA$ has two $60^\circ$ angles and is equilateral, and $DF=DA=6$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+pair D=6*dir(240),A=6*dir(300),Nn=6*dir(0),I=6*dir(60),Ee=6*dir(120),L=6*dir(180);
+pair F=D+(D-L);
+draw(D--A--Nn--I--Ee--L--cycle,linewidth(1));
+draw(D--F--A,dashed);
+draw(F--Ee,blue+linewidth(0.9));
+dot(F);
+label("$D$",D,W);label("$A$",A,E);label("$N$",Nn,E);label("$I$",I,NE);label("$E$",Ee,NW);label("$L$",L,W);label("$F$",F,S);
+label("$6$",(D+A)/2+(1.2,0),N);label("$6$",(L+Ee)/2,W);label("$6$",(D+F)/2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The points $L$, $D$, $F$ are collinear, so $LF=LD+DF=12$. In triangle $FLE$ we know $LE=6$ and $\angle FLE=\angle DLE=120^\circ$ (an interior angle of the hexagon). By the law of cosines,
+\[
+FE^2=12^2+6^2-2\cdot12\cdot6\cos120^\circ=144+36+72=252 ,
+\]
+so $FE=\sqrt{252}=\boxed{6\sqrt7}$ units.

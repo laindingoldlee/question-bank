@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h3164334_2016_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3164334-q10
+A palindrome is uniquely determined by its first nine bits, so there are only $2^9=512$ candidates. The following exhaustive certificate tests each candidate and each of its seventeen possible splits. Each accepted string is counted once, regardless of how many splits work. It gives $\boxed{36}$.\begin{verbatim}
+from itertools import product
+count=0
+for h in product("01",repeat=9):
+    s="".join(h)+"".join(h[::-1])
+    if any(s[:k]==s[:k][::-1] and
+           s[k:]==s[k:][::-1] for k in range(1,18)):
+        count+=1
+assert count==36
+\end{verbatim}

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2587441_trigonometry_without_a_calculator
+% Stable identity: aops-topic-2587441-q01
+In the right triangle formed by the person, the foot of the tower and the cat, the side opposite the $12^\circ$ angle is $44$ and the hypotenuse is the required distance $d$. So
+\[d=\dfrac{44}{\sin12^\circ}.\]
+
+\textbf{Exact value of $\sin12^\circ$.} Let $\theta=18^\circ$. Since $2\theta=90^\circ-3\theta$, we have $\sin2\theta=\cos3\theta$, i.e. $2\sin\theta\cos\theta=4\cos^3\theta-3\cos\theta$. Dividing by $\cos\theta\ne0$:
+\[2\sin\theta=4\cos^2\theta-3=1-4\sin^2\theta,\qquad\text{so}\qquad4s^2+2s-1=0\ \text{with}\ s=\sin18^\circ>0.\]
+Hence $\sin18^\circ=\dfrac{\sqrt5-1}{4}$ and $\cos18^\circ=\sqrt{1-\dfrac{6-2\sqrt5}{16}}=\dfrac{\sqrt{10+2\sqrt5}}{4}$. Therefore
+\[\sin12^\circ=\sin\left(30^\circ-18^\circ\right)=\dfrac12\cdot\dfrac{\sqrt{10+2\sqrt5}}{4}-\dfrac{\sqrt3}{2}\cdot\dfrac{\sqrt5-1}{4}=\dfrac{\sqrt{10+2\sqrt5}-\sqrt{15}+\sqrt3}{8},\]
+and
+\[d=\boxed{\dfrac{352}{\sqrt{10+2\sqrt5}-\sqrt{15}+\sqrt3}\approx211.6\text{ feet}}.\]
+Numerically $\sin12^\circ\approx\dfrac{3.8042-3.8730+1.7321}{8}\approx0.20791$, and $\dfrac{44}{0.20791}\approx211.6$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0),T=(10,0),Ct=(10,2.1255);
+draw(P--T--Ct--cycle,linewidth(0.8));
+draw(T+(-0.35,0)--T+(-0.35,0.35)--T+(0,0.35));
+draw(arc(P,2.2,0,12));label("$12^\circ$",P+(2.3,0.22),E,fontsize(9pt));
+label("person",P,SW);label("cat",Ct,N);label("$44$ ft",(T+Ct)/2,E);label("$d$",(P+Ct)/2,NW);
+\end{asy}

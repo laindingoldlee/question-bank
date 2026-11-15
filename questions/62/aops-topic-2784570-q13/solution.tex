@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2784570_2020_abmc_team_rounds_58__actonboxborough_math_competition
+% Stable identity: aops-topic-2784570-q13
+Place $A=(0,0)$, $B=(\sqrt3,0)$, and $D=(-\dfrac{3\sqrt3}{2},\dfrac{3}{2})$. The perpendicular to $AB$ at $B$ is $x=\sqrt3$. The perpendicular to $AD$ at $D$ is $y-\dfrac{3}{2}=\sqrt3(x+\dfrac{3\sqrt3}{2})$, so $C=(\sqrt3,9)$. Thus $BC=9$ and $DC=5\sqrt3$. The two right triangles along $AC$ give area $\dfrac{1}{2}(AB\cdot BC+AD\cdot DC)=12\sqrt3$. Hence $\boxed{p+q=15}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] pts={(0,0),(sqrt(3),0),(sqrt(3),9),(-3*sqrt(3)/2,1.5)};string[] names={"$A$","$B$","$C$","$D$"};path boundary=pts[0];for(int j=1;j<pts.length;++j)boundary=boundary--pts[j];draw(boundary--cycle);for(int j=0;j<pts.length;++j)label(names[j],pts[j],dir(90+360*j/pts.length));
+\end{asy}

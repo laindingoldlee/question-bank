@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2240595_is_there_any_shape_that_has_rotational_symmetry_and_not_reflection_symmetry
+% Stable identity: aops-topic-2240595-q01
+Let $AB=CD=a$ and $BC=DA=b$; since $ABCD$ is not a rhombus, $a\ne b$. Since it is not a rectangle, its angles are not right angles, so the angles at $A$ and $C$ (which are equal) differ from those at $B$ and $D$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),Cc=(5.5,2),D=(1.5,2),O=(A+Cc)/2;
+draw(A--B--Cc--D--cycle,linewidth(0.8)); draw(A--Cc,gray+dashed); draw(B--D,gray+dashed);
+dot(O); label("$O$",O,2*dir(-75));
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",Cc,NE); label("$D$",D,NW);
+draw(arc(O,0.55,40,220),blue,Arrow(5)); label("$180^\circ$",O+(-0.2,0.55),N,blue+fontsize(8pt));
+label("$a$",(A+B)/2,S); label("$a$",(Cc+D)/2,N); label("$b$",(B+Cc)/2,E); label("$b$",(D+A)/2,W);
+\end{asy}
+
+\textbf{(a)} The diagonals of a parallelogram bisect each other, so $O$ is the midpoint of $AC$ and of $BD$. The half-turn about $O$ therefore swaps $A$ and $C$ and swaps $B$ and $D$, so it maps each side onto the opposite side and the parallelogram onto itself.
+
+\textbf{(b)} Suppose a reflection $\sigma$ in a line $\ell$ maps the parallelogram onto itself. A reflection preserves distances and angles and maps corners to corners, so it permutes $A,B,C,D$, maps sides to sides and keeps the angle at each vertex. Hence $\sigma$ maps $\{A,C\}$ onto itself and $\{B,D\}$ onto itself.
+\begin{itemize}
+\item If $\sigma$ fixes $A$ and $C$, then $\ell$ is the line $AC$ (a reflection fixes only the points of its axis). The point $B$ is not on $AC$, so $\sigma(B)=D$, and then $AB=\sigma(A)\sigma(B)=AD$, i.e. $a=b$: a contradiction.
+\item If $\sigma$ swaps $A$ and $C$ but fixes $B$ and $D$, then $\ell$ is the line $BD$ and $AB=\sigma(A)\sigma(B)=CB$, i.e. $a=b$: a contradiction.
+\item If $\sigma$ swaps $A$ and $C$ and swaps $B$ and $D$, then $\ell$ is the perpendicular bisector of $AC$ and also of $BD$. So $AC$ and $BD$ are both perpendicular to $\ell$, hence parallel; but they meet at $O$, so they lie on one line, and the four vertices would be collinear: a contradiction.
+\end{itemize}
+So no line of symmetry exists. $\blacksquare$

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2651302_basic_number_theory
+% Stable identity: aops-topic-2651302-q01
+Since $\gcd\left(x,x^2-x+1\right)=\gcd(x,1)=1$, $x\mid\left(x^2-x+1\right)\left(y^2-y+1\right)$ forces $x\mid y^2-y+1$. Similarly $y\mid x^2-x+1$. If $g=\gcd(x,y)$, then $g\mid y$ and $g\mid y^2-y+1$, so $g=1$. Since $x\mid x^2-x+y^2-y+1$, $y\mid x^2-x+y^2-y+1$, and $x,y$ are coprime,
+\[x^2+y^2-x-y+1=kxy\quad\text{for some positive integer }k.\tag{$*$}\]
+
+\emph{Descent.} Fix $k$ and take a solution of $(*)$ in positive integers with $x+y$ minimal and $x\ge y$. View $(*)$ as the quadratic $t^2-(ky+1)t+\left(y^2-y+1\right)=0$ in $t$, with root $x$. By Vieta's formulas the other root is $x'=ky+1-x=\dfrac{y^2-y+1}{x}$, a positive integer. Then $(x',y)$ also solves $(*)$, so minimality gives $x'\ge x$, hence $x^2\le xx'=y^2-y+1$. If $y\ge2$ this gives $x^2<y^2$, contradicting $x\ge y$. So $y=1$, and then $(*)$ reads $x^2-x+1=kx$, so $x\mid1$ and $x=1$, $k=1$.
+
+Thus $k=1$ for every solution. But with $k=1$, $(*)$ is $x^2-(y+1)x+\left(y^2-y+1\right)=0$, whose discriminant is $(y+1)^2-4\left(y^2-y+1\right)=-3(y-1)^2$. A real solution requires $y=1$, and then $x=1$. So $x=y=1$, and indeed $1\mid1$. $\blacksquare$

@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h2006411_proof_that_common_chord_is_perpindicular
+% Stable identity: aops-topic-2006411-q01
+Since $A$ and $B$ both lie on the first circle, $O_1A=O_1B$; so $O_1$ is equidistant from $A$ and $B$ and lies on the perpendicular bisector of segment $AB$. In the same way $O_2A=O_2B$, so $O_2$ also lies on the perpendicular bisector of $AB$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair O1=(0,0),O2=(3.2,0);real r1=2.2,r2=1.9;
+real xa=(r1^2-r2^2+3.2^2)/(2*3.2);real ya=sqrt(r1^2-xa^2);
+pair A=(xa,ya),B=(xa,-ya),M=(xa,0);
+draw(circle(O1,r1));draw(circle(O2,r2));
+draw(A--B,linewidth(1));draw(O1--O2,linewidth(1));
+draw(O1--A,dashed);draw(O1--B,dashed);draw(O2--A,dashed);draw(O2--B,dashed);
+draw(M+(0.18,0)--M+(0.18,0.18)--M+(0,0.18));
+dot(O1);dot(O2);dot(A);dot(B);dot(M);
+label("$O_1$",O1,W);label("$O_2$",O2,E);label("$A$",A,N);label("$B$",B,S);label("$M$",M+(0.3,-0.28));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The perpendicular bisector of $AB$ is a single line, and it contains the two distinct points $O_1$ and $O_2$. Hence the line $O_1O_2$ \emph{is} the perpendicular bisector of $AB$: it meets $AB$ at its midpoint $M$ at a right angle. Therefore $AB\perp O_1O_2$ and $O_1O_2$ bisects $AB$. $\blacksquare$
+
+(Equivalently, triangles $O_1AO_2$ and $O_1BO_2$ are congruent by SSS, so $O_1O_2$ bisects angle $AO_1B$ of the isosceles triangle $AO_1B$, and the angle bisector from the apex of an isosceles triangle is perpendicular to the base and bisects it.)

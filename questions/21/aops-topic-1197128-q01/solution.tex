@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1197128_geo_prob
+% Stable identity: aops-topic-1197128-q01
+The angles $81^\circ+99^\circ=180^\circ$ and $79^\circ+101^\circ=180^\circ$ are co-interior along the two legs, so the bottom and top sides are parallel and the figure is indeed a trapezoid.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(9,0); pair D=A+3*dir(81)/sin(radians(81)); pair C=B+3*dir(180-79)/sin(radians(79));
+draw(A--B--C--D--cycle,linewidth(0.9)); label("$81^\circ$",A,NE*2.5); label("$79^\circ$",B,NW*2.5); label("$99^\circ$",D,SE*2.5); label("$101^\circ$",C,SW*2.5);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+But in an isosceles trapezoid the two base angles at each base are equal. Here the angles at the bottom base are $81^\circ$ and $79^\circ$ (and at the top $99^\circ$ and $101^\circ$), which are different. So the answer is \textbf{no}: it is a trapezoid, but not an isosceles one.

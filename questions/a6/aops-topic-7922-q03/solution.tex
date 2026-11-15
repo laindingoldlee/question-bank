@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h7922_some_fun_questions
+% Stable identity: aops-topic-7922-q03
+Let the shorter ladder have length $L$ and let $h$ be the height of the common point on the wall. From the right triangle formed by the shorter ladder, the wall and the floor,
+\[h=L\sin\dfrac\pi3=\dfrac{\sqrt3}{2}L.\]
+For the longer ladder, of length $2L$, making angle $\theta$ with the floor, $h=2L\sin\theta$. So
+\[\sin\theta=\dfrac{\sqrt3}{4},\qquad\theta=\boxed{\arcsin\dfrac{\sqrt3}{4}}\approx0.4478\text{ rad}\approx25.7^\circ,\]
+taking the acute angle (a leaning ladder makes an acute angle with the floor).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair Tp=(0,sqrt(3)), P1=(1,0), P2=(sqrt(13),0);
+draw((-0.3,0)--(4.0,0),linewidth(0.9)); draw((0,0)--(0,2.2),linewidth(0.9));
+draw(Tp--P1,blue+linewidth(0.9)); draw(Tp--P2,red+linewidth(0.9));
+dot(Tp);
+draw((0.15,0)--(0.15,0.15)--(0,0.15));
+draw(arc(P1,0.3,120,180),blue); label("$60^\circ$",P1+0.45*dir(150),blue+fontsize(7pt));
+draw(arc(P2,0.6,180-aSin(sqrt(3)/4),180),red); label("$\theta$",P2+0.8*dir(167),red+fontsize(8pt));
+label("$L$",(Tp+P1)/2,E,blue); label("$2L$",(Tp+P2)/2,NE,red);
+label("$h$",(0,Tp.y/2),W);
+\end{asy}

@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2000139_evan_chens_cool_2020_problem
+% Stable identity: aops-topic-2000139-q01
+Call such a choice \emph{good}. The empty set is a subset of every set and $\{1,2,3,4,5\}$ contains every set, so neither can be chosen; all chosen sets have sizes $1,2,3$ or $4$. Sets of equal size are never subsets of each other.
+
+\textbf{Complement symmetry.} Replacing every chosen set by its complement turns a good choice into a good choice ($A\subseteq B$ iff $B^c\subseteq A^c$) and changes sizes $s\mapsto5-s$. So a size pattern and its mirror image ($1\leftrightarrow4$, $2\leftrightarrow3$) have the same count.
+
+\textbf{Singletons.} If $\{x\}$ is chosen, no other chosen set contains $x$; the other sets lie inside the remaining $4$ elements. With a singleton $\{x\}$, a $4$-set must be the complement of $\{x\}$, and then no third set is possible (it would avoid $x$ and so lie inside that $4$-set). So no good choice has both a $1$-set and a $4$-set.
+
+We count by the multiset of sizes.
+\begin{itemize}
+\item $\{1,1,1,1\}$: $\binom54=5$.
+\item $\{1,1,1,2\}$: three singletons ($\binom53=10$ ways); the $2$-set must be the remaining pair: $10$.
+\item $\{1,1,2,2\}$: two singletons ($\binom52=10$); two of the $3$ pairs in the other $3$ elements ($\binom32=3$): $30$. (With two singletons, a $3$-set would be the whole remaining triple and would contain any further set, so patterns $\{1,1,2,3\}$, $\{1,1,3,3\}$ and $\{1,1,1,3\}$ do not occur.)
+\item $\{1,2,2,2\}$: a singleton ($5$) and three of the $6$ pairs in the other $4$ elements ($\binom63=20$): $100$.
+\item $\{1,2,2,3\}$: a singleton $x$ ($5$); inside the other $4$ elements choose the $3$-set $T$ ($4$ ways), which misses one element $m$; the two pairs must not lie in $T$, so both contain $m$: $\binom32=3$. Total $5\cdot4\cdot3=60$.
+\item $\{1,2,3,3\}$: a singleton ($5$); inside the other $4$ elements the two $3$-sets miss two different elements $m_1,m_2$, and the pair must contain both, so it is $\{m_1,m_2\}$: $\binom42=6$ choices. Total $30$.
+\item $\{1,3,3,3\}$: a singleton ($5$) and three of the $4$ triples in the other $4$ elements: $5\cdot4=20$.
+\item $\{2,2,2,2\}$: $\binom{10}4=210$.
+\item $\{2,2,2,3\}$: the $3$-set ($10$ ways) contains $3$ of the $10$ pairs; choose $3$ of the other $7$: $10\cdot35=350$.
+\item $\{2,2,3,3\}$: two $3$-sets meet in $1$ or $2$ elements (since $3+3>5$). If they share $2$ elements ($10\cdot\binom32=30$ such pairs of triples), they contain $3+3-1=5$ pairs, leaving $5$: $\binom52=10$ each, $300$. If they share $1$ element ($\binom{10}2-30=15$ pairs of triples), they contain $6$ pairs, leaving $4$: $\binom42=6$ each, $90$. Total $390$.
+\item $\{2,2,2,4\}$: the $4$-set misses one element $m$ ($5$ ways); the pairs must contain $m$: $\binom43=4$. Total $20$.
+\end{itemize}
+By complement symmetry, the patterns $\{4,4,4,4\},\{3,4,4,4\},\{3,3,4,4\},\{3,3,3,4\},\{2,3,3,4\},\{2,2,3,4\},\{2,3,3,3\},\{3,3,3,3\}$ have counts $5,10,30,100,60,30,350,210$, the same as their mirror images above, and $\{2,2,2,4\}$ mirrors $\{1,3,3,3\}$. Every possible pattern has now been listed. The total is
+\[
+2(5+10+30+100+60+30+20+210+350)+390=1630+390=\boxed{2020}.
+\]

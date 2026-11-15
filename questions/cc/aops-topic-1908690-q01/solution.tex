@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1908690_algebra
+% Stable identity: aops-topic-1908690-q01
+The expression is defined only for $x\ge0$. Put $t=\sqrt x\ge0$; then $x=t^2$ and $t$ runs over all nonnegative reals as $x$ does. For $t\ge0$,
+\[
+\sin t\ge0\iff 2k\pi\le t\le(2k+1)\pi\ \text{ for some integer }k\ge0 .
+\]
+Squaring (both ends are nonnegative, and squaring is increasing on $[0,\infty)$) gives
+\[
+\boxed{\,4k^2\pi^2\le x\le(2k+1)^2\pi^2\quad\text{for some integer }k\ge0\,}
+\]
+that is, $x\in[0,\pi^2]\cup[4\pi^2,9\pi^2]\cup[16\pi^2,25\pi^2]\cup\cdots$. The graph shows these intervals in red: the intervals where the sine is negative, $\left((2k+1)^2\pi^2,(2k+2)^2\pi^2\right)$, get longer as $x$ grows.
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real t){return 1.4*sin(sqrt(20*t));}
+pen hl=red+linewidth(3);
+draw((0,0)--(0.4935,0),hl);draw((1.974,0)--(4.441,0),hl);draw((7.896,0)--(8.7,0),hl);
+draw((0,0)--(9.2,0),Arrow(TeXHead));draw((0,-1.8)--(0,1.9),Arrow(TeXHead));
+draw(graph(f,0,8.7,400),blue+linewidth(0.9));
+draw((0,1.4)--(8.7,1.4),dotted);draw((0,-1.4)--(8.7,-1.4),dotted);
+label("$1$",(0,1.4),W);label("$-1$",(0,-1.4),W);
+label("$x$",(9.2,0),E);label("$y$",(0,1.9),N);
+real[] xs={0.4935,1.974,4.441,7.896};
+string[] ls={"$\pi^2$","$4\pi^2$","$9\pi^2$","$16\pi^2$"};
+for(int i=0;i<4;++i){draw((xs[i],-0.1)--(xs[i],0.1));draw((xs[i],0)--(xs[i],-1.6),gray(0.5)+dotted);label(ls[i],(xs[i],-1.6),S,fontsize(9pt));}
+label("$y=\sin\sqrt x$",(3.2,1.45),N,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

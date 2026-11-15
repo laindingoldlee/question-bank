@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h2867696_bijections_love
+% Stable identity: aops-topic-2867696-q01
+\textbf{Bijection.} Replace $R$ by ``('' and $U$ by ``)''. After any prefix of the path, the position is $(\#R,\#U)$, and staying on or below $y=x$ means $\#U\le\#R$ in every prefix. That is exactly the matching condition for the parentheses. The map is reversible, so the two sets have the same size.
+
+\textbf{Counting the paths.} All paths from $(0,0)$ to $(n,n)$ number $\binom{2n}n$. A bad path goes above $y=x$, so it touches the line $y=x+1$. Reflect the part of a bad path up to its first touch of $y=x+1$ in that line. This swaps $R$ and $U$ in that initial part, so the start $(0,0)$ moves to $(-1,1)$. We get a path from $(-1,1)$ to $(n,n)$. Conversely, every path from $(-1,1)$ to $(n,n)$ must cross $y=x+1$, and reflecting back up to its first touch gives a bad path. So bad paths are in bijection with paths from $(-1,1)$ to $(n,n)$, which use $n+1$ right steps and $n-1$ up steps: there are $\binom{2n}{n-1}$ of them. Hence
+\[\binom{2n}n-\binom{2n}{n-1}=\binom{2n}n\left(1-\dfrac n{n+1}\right)=\boxed{\dfrac1{n+1}\binom{2n}n},\]
+the $n$th Catalan number. $\blacksquare$

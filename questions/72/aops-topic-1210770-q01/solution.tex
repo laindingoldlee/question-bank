@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1210770_vertex_of_a_parabola
+% Stable identity: aops-topic-1210770-q01
+Complete the square:
+\[ax^2+bx+c=a\left(x^2+\dfrac {b}{a}x\right)+c=a\left(x+\dfrac{b}{2a}\right)^2+c-\dfrac{b^2}{4a}.\]
+The square $\left(x+\dfrac {b}{2a}\right)^2$ is $0$ at $x=-\dfrac {b}{2a}$ and positive elsewhere. So if $a>0$ the function takes its least value there, and if $a<0$ its greatest value there; either way this is the vertex, at $x=\boxed{-\dfrac{b}{2a}}$ (with $y=c-\dfrac{b^2}{4a}$). The parabola is also symmetric about this line, since the expression depends only on $\left(x+\dfrac {b}{2a}\right)^2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+guide g; for(real x=-0.5;x<=4.501;x+=0.1) g=g--(x,(x-2)^2+1); draw((-1,0)--(5,0),gray); draw((0,-0.5)--(0,6),gray); draw(g,blue+linewidth(0.9)); draw((2,-0.3)--(2,6),dashed); dot((2,1)); label("vertex",(2,1),SE); label("$x=-\dfrac{b}{2a}$",(2,6),N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

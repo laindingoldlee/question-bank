@@ -1,0 +1,40 @@
+% Source: https://artofproblemsolving.com/community/c3h1650307_tricky_amc_problem
+% Stable identity: aops-topic-1650307-q01
+Let $O$ be the centre. The inner side of each mat has length $x$, and its two ends are the inner corners. Adjacent mats share inner corners, so the six inner sides form a closed hexagon with all sides $x$; by the symmetry of the arrangement it is a regular hexagon, and its circumradius is $x$. So each inner corner $C$ satisfies $OC=x$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real x=(3*sqrt(7)-sqrt(3))/2;
+pair O=(0,0);
+draw(circle(O,4),linewidth(0.9));
+for(int k=0;k<6;++k){
+ pair V1=x*dir(60k),V2=x*dir(60k+60);
+ pair n=dir(60k+30);
+ path m=V1--V2--V2+n--V1+n--cycle;
+ filldraw(m,palegray,linewidth(0.8));
+}
+pair C=x*dir(0),C2=x*dir(60),n=dir(30);pair B=C+n,B2=C2+n;
+dot(O);dot(C);dot(B);
+draw(O--C,blue+dashed);draw(O--B,red+dashed);
+label("$O$",O,SW);label("$C$",C+0.15*dir(212),dir(212));label("$B$",B,E);
+label("$x$",(C+O)/2,S,blue);label("$4$",(O+B)/2,NW,red);
+label("$1$",(C+B)/2,SE);label("$x$",(C+C2)/2-0.25*n);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Take an inner corner $C$ and the outer corner $B$ of the same mat next to it, so $CB=1$ and $OB=4$. The side $CB$ is perpendicular to the inner side, and the inner side makes an angle of $60^\circ$ with $CO$ (an interior angle of the regular hexagon is $120^\circ$, bisected by $CO$). The mat lies outside the hexagon, so
+\[
+\angle OCB=60^\circ+90^\circ=150^\circ .
+\]
+By the law of cosines in triangle $OCB$,
+\[
+4^2=x^2+1^2-2\cdot x\cdot1\cdot\cos150^\circ=x^2+1+\sqrt3\,x,
+\]
+so $x^2+\sqrt3\,x-15=0$ and, taking the positive root,
+\[
+x=\dfrac{-\sqrt3+\sqrt{3+60}}{2}=\boxed{\dfrac{3\sqrt7-\sqrt3}{2}}\approx3.10 .
+\]
+
+\textbf{Why not $3$?} The guess assumes that the path from $O$ to the edge of the table along the mat is straight, with the radius made of the length $x$ and the width $1$. But $O$, $C$ and $B$ are not collinear: the radius $OB$ makes an angle of $150^\circ$ at $C$ with the hexagon radius $OC$. By the triangle inequality $OB<OC+CB$, so $4<x+1$ and $x>3$.

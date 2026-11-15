@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h1929832_math_problems
+% Stable identity: aops-topic-1929832-q49
+Use vectors. Since $M=\dfrac{A+B}{2}$ and $N=\dfrac{C+D}{2}$,
+\[
+\vec{MN}=\dfrac{(C-A)+(D-B)}{2}=\dfrac{\vec{AC}+\vec{BD}}{2}.
+\]
+The diagonals are perpendicular, so $\vec{AC}\cdot\vec{BD}=0$ and
+\[
+MN^2=\dfrac{AC^2+BD^2}{4}=\dfrac{144+324}{4}=117 .
+\]
+Triangle $MPN$ has a right angle at $P$, so by the Pythagorean theorem
+\[
+MP=\sqrt{MN^2-NP^2}=\sqrt{117-36}=\sqrt{81}=\boxed{9}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+void ra(pair V, pair P1, pair P2, real s){pair u=unit(P1-V), v=unit(P2-V); draw(V+s*u--V+s*(u+v)--V+s*v);}
+pair A=(-5.5,0), B=(0,-2.4), C=(6.5,0), D=(0,15.6), O=(0,0);
+pair M=(A+B)/2, Npt=(C+D)/2;
+pair e=unit(D-C); pair P=C+dot(M-C,e)*e;
+draw(A--C,gray+dashed); draw(B--D,gray+dashed);
+draw(A--B--C--D--cycle,linewidth(1));
+draw(M--P,blue+linewidth(1)); draw(M--Npt,red+dashed);
+ra(O,C,D,0.6); ra(P,Npt,M,0.6);
+dot(M);dot(Npt);dot(P);
+label("$A$",A,W); label("$B$",B,S); label("$C$",C,E); label("$D$",D,N);
+label("$M$",M,SW); label("$N$",Npt,NE); label("$P$",P,E);
+label("$9$",M+0.86*(P-M),S,blue);
+label("$6$",(Npt+P)/2,E);
+label("$3\sqrt{13}$",M+0.5*(Npt-M),SE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Such a quadrilateral exists: for example $A=(-5.5,0)$, $B=(0,-2.4)$, $C=(6.5,0)$, $D=(0,15.6)$, as in the figure.)

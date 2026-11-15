@@ -1,0 +1,61 @@
+% Source: https://artofproblemsolving.com/community/c3h2595160_acute_triangle_probability
+% Stable identity: aops-topic-2595160-q01
+The points of line $AB$ have probability $0$, so we may assume that $C=(x,y)$ is not on this line. Write $[X]$ for the area of a region $X$; so $[D_R]=\pi R^2$.
+
+\textbf{(a)} The angle at $A$ is acute exactly when $(C-A)\cdot(B-A)=x>0$, and the angle at $B$ is acute exactly when $(C-B)\cdot(A-B)=1-x>0$. So an acute triangle needs $0<x<1$. (The angle at $C$ is acute exactly when $C$ is outside the circle with diameter $AB$, but this is not even needed.) The points of $D_R$ with $0<x<1$ lie in the rectangle $0<x<1$, $-R\le y\le R$, of area $2R$. Hence
+\[0\le p(R)\le\dfrac{2R}{\pi R^2}=\dfrac{2}{\pi R},\]
+which tends to $0$. So $\displaystyle\lim_{R\to\infty}p(R)=\boxed{0}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=3;pair A=(0,0),B=(1,0),M=(0.5,0);real h=sqrt(R^2-0.25);
+real t1=degrees(atan2(h,-0.5)),t2=degrees(atan2(h,0.5));
+fill((0,-h)--(0,h)--arc(M,R,t1,t2)--(1,h)--(1,-h)--arc(M,R,-t2,-t1)--cycle,lightgray);
+fill(circle(M,0.5),white);draw(circle(M,0.5),dashed);
+draw(circle(M,R),linewidth(0.8));draw((-3.3,0)--(4.3,0));
+draw((0,-h)--(0,h),dotted);draw((1,-h)--(1,h),dotted);
+draw(M--M+R*dir(35));label("$R$",M+0.6*R*dir(35),NW);
+dot(A);dot(B);dot(M);
+label("$A$",A,SW,fontsize(8pt));label("$B$",B,SE,fontsize(8pt));
+label("$D_R$",M+R*dir(225),SW);
+\end{asy}
+
+
+\textbf{(b)} The angle at $A$ is at least $120^\circ$ exactly when the ray $AC$ makes an angle of at least $120^\circ$ with ray $AB$, the positive $x$-direction, that is, when $C$ lies in the wedge $W_A$ with apex $A$ and opening angle $120^\circ$, symmetric about the negative $x$-axis. Similarly, the angle at $B$ is at least $120^\circ$ exactly when $C$ lies in the wedge $W_B$ with apex $B$ and opening angle $120^\circ$, symmetric about the positive $x$-axis. Let $V$ be the set of points $C$ with $\angle ACB\ge120^\circ$. A triangle has at most one angle of at least $120^\circ$, so these three sets do not overlap, and
+\[q(R)=1-\dfrac{[W_A\cap D_R]+[W_B\cap D_R]+[V\cap D_R]}{\pi R^2}.\]
+
+\emph{The wedges.} Since $AM=\dfrac12$, the disc of radius $R-\dfrac12$ about $A$ lies inside $D_R$, and $D_R$ lies inside the disc of radius $R+\dfrac12$ about $A$. A wedge with apex $A$ and angle $120^\circ$ contains exactly one third of each of these discs, so
+\[\dfrac{\pi}{3}\left(R-\dfrac12\right)^2\le[W_A\cap D_R]\le\dfrac{\pi}{3}\left(R+\dfrac12\right)^2.\]
+After dividing by $\pi R^2$, both bounds tend to $\dfrac13$ as $R\to\infty$. The same holds for $W_B$.
+
+\emph{The set $V$.} If $\angle ACB\ge120^\circ$, it is the largest angle of the triangle, so $AB=1$ is the longest side and $CA<1$. So $V$ lies in the disc of radius $1$ about $A$, and $[V\cap D_R]\le\pi$, which divided by $\pi R^2$ tends to $0$.
+
+Therefore
+\[\lim_{R\to\infty}q(R)=1-\dfrac13-\dfrac13-0=\boxed{\dfrac13}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=3;pair A=(0,0),B=(1,0),M=(0.5,0);path c=circle(M,R);
+pair P1=intersectionpoint(A--A+10*dir(120),c),P2=intersectionpoint(A--A+10*dir(240),c);
+pair Q1=intersectionpoint(B--B+10*dir(-60),c),Q2=intersectionpoint(B--B+10*dir(60),c);
+real a1=degrees(atan2(P1.y-M.y,P1.x-M.x)),a2=degrees(atan2(P2.y-M.y,P2.x-M.x))+360;
+real b1=degrees(atan2(Q1.y-M.y,Q1.x-M.x)),b2=degrees(atan2(Q2.y-M.y,Q2.x-M.x));
+fill(A--P1--arc(M,R,a1,a2)--cycle,lightgray);fill(B--Q1--arc(M,R,b1,b2)--cycle,lightgray);
+real r=1/sqrt(3);pair K1=(0.5,-sqrt(1/12)),K2=(0.5,sqrt(1/12));
+real g=degrees(atan2(sqrt(1/12),0.5));
+fill(arc(K1,r,90-(90-g),90+(90-g))--cycle,gray(0.55));fill(arc(K2,r,-90-(90-g),-90+(90-g))--cycle,gray(0.55));
+draw(c,linewidth(0.8));draw((-3.3,0)--(4.3,0));
+draw(A--P1);draw(A--P2);draw(B--Q1);draw(B--Q2);
+draw(arc(A,0.45,120,240));label("$120^\circ$",A+1.0*dir(158),fontsize(8pt));
+dot(A);dot(B);
+label("$A$",A+0.42*dir(70),fontsize(9pt));label("$B$",B+0.42*dir(110),fontsize(9pt));
+label("$W_A$",(-1.9,0.9));label("$W_B$",(2.9,0.9));
+draw((0.5,0.15)--(0.75,1.2),gray);label("$V$",(0.75,1.2),N);
+\end{asy}
+
+
+(Remark: ``three points selected on the coordinate plane'' has no answer until a probability distribution is specified, because there is no uniform distribution on the whole plane, and different models give different answers. For example, three points chosen independently and uniformly in a fixed disc form an acute triangle with probability about $0.28$.)

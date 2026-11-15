@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2844908_help_w_life
+% Stable identity: aops-topic-2844908-q01
+Consider $A,C,D$. If one of them lay on the shorter arc between the other two, one of the three distances would be the sum of the other two; but $40\ne25+35$, $25\ne40+35$ and $35\ne40+25$. So the three shorter arcs $AC$, $CD$, $DA$ go once around the circle, and the circumference is $40+25+35=100$ miles.
+
+Then $AB=50$ is half the circumference, so $B$ is diametrically opposite $A$. Going around from $A$: $C$ at $40$, $B$ at $50$, $D$ at $65$ (or the mirror image).
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+real R=1.6;draw(circle((0,0),R));
+pair P(real s){return R*dir(90-3.6*s);}
+dot(P(0));label("$A$",P(0),N);dot(P(40));label("$C$",P(40),E);dot(P(50));label("$B$",P(50),SE);dot(P(65));label("$D$",P(65),S);
+label("$40$",1.25*dir(90-72),SW);label("$25$",1.25*dir(90-3.6*52.5),NW);label("$35$",1.25*dir(90-3.6*82.5),E);label("$10$",1.9*dir(90-3.6*45),E);
+\end{asy}
+
+So $BC=\boxed{10}$ miles.

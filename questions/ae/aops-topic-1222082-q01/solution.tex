@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1222082_a_problem
+% Stable identity: aops-topic-1222082-q01
+Let the square have side $1$, with $A=(0,0)$, $B=(1,0)$, $C=(1,1)$, $D=(0,1)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1); real e=2-sqrt(3);
+pair E=(0,e),F=(1-e,1);
+draw(A--B--C--D--cycle,linewidth(1)); draw(B--E--F--cycle,blue);
+fill(D--E--F--cycle,lightred); fill(A--B--E--cycle,lightgreen); draw(B--E--F--cycle,blue); draw(A--B--C--D--cycle,linewidth(1));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$E$",E,W);label("$F$",F,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $BE=BF$, the right triangles $ABE$ and $CBF$ are congruent ($AB=CB$), so $AE=CF=e$ and $DE=DF=1-e$. The condition $BE=EF$ gives
+\[1+e^2=2(1-e)^2\quad\Longrightarrow\quad e^2-4e+1=0\quad\Longrightarrow\quad e=2-\sqrt3.\]
+Then
+\[\dfrac{[DEF]}{[ABE]}=\dfrac{\dfrac{1}{2}(1-e)^2}{\dfrac{1}{2}\cdot1\cdot e}=\dfrac{\left(\sqrt3-1\right)^2}{2-\sqrt3}=\dfrac{4-2\sqrt3}{2-\sqrt3}=\boxed{2}.\]

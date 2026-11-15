@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1679173_number_theory
+% Stable identity: aops-topic-1679173-q01
+\textbf{$n=13$ works.} Fix a prime $p$ and let $x,y,z$ be the exponents of $p$ in $a,b,c$. The conditions give $x\le3y$, $y\le3z$, $z\le3x$. Let $m=\min(x,y,z)$. Then $x+y+z\le13m$: if $m=z$, then $y\le3z$ and $x\le3y\le9z$; if $m=x$, then $z\le3x$ and $y\le3z\le9x$; if $m=y$, then $x\le3y$ and $z\le3x\le9y$. In each case the sum is at most $m+3m+9m=13m$.
+
+Expand $(a+b+c)^{13}$ by the multinomial theorem: it is a sum of terms (integer multiples of) $a^ib^jc^k$ with $i+j+k=13$. The exponent of $p$ in $a^ib^jc^k$ is $ix+jy+kz\ge13m\ge x+y+z$, the exponent of $p$ in $abc$. This holds for every prime, so $abc\mid a^ib^jc^k$ for every term, and $abc\mid(a+b+c)^{13}$.
+
+\textbf{$n=12$ fails.} Take a prime $p$ and $a=p^9$, $b=p^3$, $c=p$. Then $a\mid b^3=p^9$, $b\mid c^3=p^3$ and $c\mid a^3$. Here $abc=p^{13}$, while $a+b+c=p(p^8+p^2+1)$ with $p\nmid p^8+p^2+1$, so $(a+b+c)^{12}$ is divisible by $p^{12}$ but not by $p^{13}$. A smaller $n$ fails for the same triple.
+
+So the smallest $n$ is $\boxed{13}$.

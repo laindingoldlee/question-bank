@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1589707_mass_point_geometry_question
+% Stable identity: aops-topic-1589707-q01
+\textbf{The centroid.} $P$ is the intersection of two medians, so it is the centroid of the triangle, which divides each median in the ratio $2:1$ from the vertex. (In the language of mass points: put mass $1$ at each of $A$, $B$, $C$. Then $D$, the midpoint of $BC$, carries mass $2$, and the balance point of $A$ and $D$ divides $AD$ with $AP:PD=2:1$; likewise $E$ carries mass $2$ and $CP:PE=2:1$. The mass at $B$ is \emph{not} split between $BA$ and $BC$: a mass-point system puts one mass at each point, and each cevian is balanced using the full masses at its two ends. Splitting a mass is only needed when a line through the triangle does not pass through a vertex, and no such line is used here.) Hence
+\[
+AP=2PD=4,\qquad CP=2PE=3,\qquad AD=6,\qquad CE=4.5 .
+\]
+
+\textbf{A right angle.} In triangle $PED$ the sides are $1.5$, $2$, $2.5$, and $1.5^2+2^2=6.25=2.5^2$, so by the converse of the Pythagorean theorem $\angle DPE=90^\circ$. Thus the diagonals $AD$ and $CE$ of the quadrilateral $AEDC$ are perpendicular:
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair P=(0,0),D=(2,0),A=(-4,0),Ep=(0,1.5),C=(0,-3),B=(4,3);
+fill(A--Ep--D--C--cycle,palegray);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,blue);draw(C--Ep,blue);draw(Ep--D,red+linewidth(0.9));
+real r=0.28;draw((r,0)--(r,r)--(0,r));
+dot(P);dot(D);dot(Ep);
+label("$A$",A,W);label("$B$",B,NE);label("$C$",C,S);label("$D$",D,SE);label("$E$",Ep,NW);label("$P$",P,SW);
+label("$2$",(1,0),S,blue);label("$1.5$",(0,0.75),W,blue);label("$2.5$",(1,0.75),NE,red);
+label("$4$",(-2,0),S,blue);label("$3$",(0,-1.5),W,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{The area.} A quadrilateral whose diagonals are perpendicular has area half the product of the diagonals (it splits along $AD$ into triangles $AED$ and $ACD$ with heights $PE$ and $PC$ on the common base $AD$). So
+\[
+[AEDC]=\dfrac{1}{2}\cdot AD\cdot CE=\dfrac{1}{2}\cdot6\cdot4.5=\boxed{\textbf{(B)}\ 13.5}.
+\]

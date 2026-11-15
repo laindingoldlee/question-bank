@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h1349131_geometry_2
+% Stable identity: aops-topic-1349131-q01
+\textbf{Step 1: $AD\perp BC$.} Let $P$ be the common point of the three segments, and draw the line through $A$ parallel to $BC$. Let lines $DE$ and $DF$ meet it at $X$ and $Y$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+real bd=2*sqrt(13), dc=sqrt(145);
+pair A=(0,12),B=(-bd,0),C=(dc,0),D=(0,0),P=(0,4.5);
+pair Ee=extension(B,P,A,C), F=extension(C,P,A,B);
+pair X=extension(D,Ee,A,A+(1,0)), Y=extension(D,F,A,A+(1,0));
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,linewidth(0.9)); draw(B--Ee,linewidth(0.9)); draw(C--F,linewidth(0.9));
+draw(D--Ee,blue); draw(D--F,blue);
+draw(Y--X,gray+dashed); draw(Ee--X,gray+dashed); draw(F--Y,gray+dashed);
+draw(ra(D,C-D,A-D,0.9));
+dot(P); dot(X); dot(Y); dot(Ee); dot(F);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S);
+label("$E$",Ee,dir(5)); label("$F$",F,W); label("$P$",P,dir(-55)); label("$X$",X,N); label("$Y$",Y,N);
+label("$14$",B+0.3*(A-B),W); label("$17$",(A+C)/2+(0.5,0.6),NE); label("$12$",(0,7.5),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $AX\parallel DC$, triangles $AXE$ and $CDE$ are similar, so $AX=DC\cdot\dfrac{AE}{EC}$. Since $AY\parallel DB$, triangles $AYF$ and $BDF$ are similar, so $AY=BD\cdot\dfrac{AF}{FB}$. By Ceva's theorem, $\dfrac{BD}{DC}\cdot\dfrac{CE}{EA}\cdot\dfrac{AF}{FB}=1$, which rearranges to $BD\cdot\dfrac{AF}{FB}=DC\cdot\dfrac{AE}{EC}$. Hence $AX=AY$: $A$ is the midpoint of $XY$ (the points $X$ and $Y$ lie on opposite sides of $A$, on the sides of $C$ and of $B$).
+
+In triangle $DXY$, the segment $DA$ bisects the angle at $D$ (because $\angle ADX=\angle ADE=\angle ADF=\angle ADY$) and goes to the midpoint $A$ of $XY$. By the angle bisector theorem, $\dfrac{DX}{DY}=\dfrac{AX}{AY}=1$, so triangle $DXY$ is isosceles with $DX=DY$, and its median $DA$ is perpendicular to the base $XY$. As $XY\parallel BC$, we get $AD\perp BC$.
+
+\textbf{Step 2: the area.} So $AD=12$ is the altitude, and by the Pythagorean theorem
+\[
+BD=\sqrt{14^2-12^2}=\sqrt{52}=2\sqrt{13},\qquad DC=\sqrt{17^2-12^2}=\sqrt{145}.
+\]
+($D$ lies on side $BC$, so $BC=BD+DC$.) The area is
+\[
+\dfrac{1}{2}\cdot12\left(2\sqrt{13}+\sqrt{145}\right)=12\sqrt{13}+6\sqrt{145}=\sqrt{1872}+\sqrt{5220},
+\]
+and $a+b=1872+5220=\boxed{7092}$.

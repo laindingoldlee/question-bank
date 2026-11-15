@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1551466_help
+% Stable identity: aops-topic-1551466-q01
+Let each leg be $x$:
+
+\begin{asy}
+usepackage("amsmath");
+size(3.8cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair C=(0,0),A=(4,0),B=(0,4);
+draw(A--B--C--cycle,linewidth(0.9));draw(ra(C,A-C,B-C,0.35));
+draw((2,-0.15)--(2,0.15));draw((-0.15,2)--(0.15,2));
+label("$C$",C,SW);label("$A$",A,SE);label("$B$",B,N);
+label("$4\sqrt{2}$",(A+B)/2,NE);label("$x$",(2,-0.5));label("$x$",(-0.5,2));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the Pythagorean theorem $x^2+x^2=(4\sqrt2)^2=32$, so $x^2=16$ and $x=4$. The area is
+\[
+\dfrac{x^2}{2}=\boxed{8}\text{ square units}.
+\]

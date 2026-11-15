@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1784580_geometry
+% Stable identity: aops-topic-1784580-q01
+A point on the $y$-axis is $(0,y)$. Equal squared distances give
+\[
+(0-7)^2+(y-6)^2=(0+3)^2+(y-4)^2\ \Longrightarrow\ 49+y^2-12y+36=9+y^2-8y+16 ,
+\]
+so $85-12y=25-8y$, $4y=60$ and $y=15$. The point is $\boxed{(0,15)}$. Check: both distances are $\sqrt{49+81}=\sqrt{9+121}=\sqrt{130}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair P=(7,6),Q=(-3,4),M=(0,15);
+draw((-4.5,0)--(8.5,0),Arrow(6));draw((0,-0.8)--(0,17),Arrow(6));
+label("$x$",(8.5,0),E);label("$y$",(0,17),N);
+draw(M--P,dashed+blue);draw(M--Q,dashed+blue);
+dot(P);dot(Q);dot(M,red);
+label("$(7,6)$",P,E);label("$(-3,4)$",Q,W);label("$M(0,15)$",M,E,red);
+label("$\sqrt{130}$",(M+P)/2,NE,blue);label("$\sqrt{130}$",(M+Q)/2,W,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2615987_problem_8_of_finals__vi_ifym_sozopol_2015_67_theme
+% Stable identity: aops-topic-2615987-q01
+Let $k$ be the common number of digits. Then $\overline{mn}=10^km+n$, so
+\[2mn=10^km+n\qquad\Longleftrightarrow\qquad n(2m-1)=10^km.\]
+Since $\gcd(m,2m-1)=1$, we get $2m-1\mid10^k$. As $2m-1$ is odd, $2m-1=5^j$ with $0\le j\le k$, and $n=\dfrac{10^km}{5^j}$.
+\begin{itemize}
+\item $j=0$ gives $m=1$ and $n=10^k$, which has $k+1$ digits. This is impossible.
+\item For $j\ge1$, $m=\dfrac{5^j+1}{2}$ must have $k$ digits, so $\dfrac{5^k+1}{2}\ge m\ge10^{k-1}$, i.e. $5^k+1\ge2^k5^{k-1}$. For $k\ge3$, $2^k5^{k-1}\ge8\cdot5^{k-1}>5^k+1$. So $k\le2$.
+\end{itemize}
+\emph{$k=1$:} $j=1$ gives $m=3$ and $n=\dfrac{30}{5}=6$. Check: $2\cdot3\cdot6=36$.
+
+\emph{$k=2$:} $j=1$ gives $m=3$, which is not a two-digit number. $j=2$ gives $m=13$ and $n=\dfrac{1300}{25}=52$. Check: $2\cdot13\cdot52=1352$.
+
+The pairs are $\boxed{(m,n)=(3,6)\text{ and }(13,52)}$.

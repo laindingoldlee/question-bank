@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1711916_fun_mathcounts_problems
+% Stable identity: aops-topic-1711916-q05
+A longer chord is closer to the centre, so the chord of length $16$ is nearest the centre. Let it be at distance $d$ from the centre $O$; then the chord of length $k$ is at distance $d+2$ and the chord of length $12$ at distance $d+4$. With radius $r$, the half-chords give
+\[
+r^2=8^2+d^2=6^2+(d+4)^2 .
+\]
+So $64+d^2=36+d^2+8d+16$, hence $8d=12$, $d=\dfrac{3}{2}$ and $r^2=64+\dfrac{9}{4}=\dfrac{265}{4}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real R=sqrt(66.25);
+pair O=(0,0);
+draw(circle(O,R),linewidth(0.9));
+real[] y={-1.5,-3.5,-5.5};
+pen cp=blue+linewidth(1);
+for(int i=0;i<3;++i){real hx=sqrt(R^2-y[i]^2);draw((-hx,y[i])--(hx,y[i]),cp);}
+draw(O--(0,-5.5),dashed);
+draw(O--(8,-1.5),dashed+gray);draw(O--(-6,-5.5),dashed+gray);
+dot(O);label("$O$",O,N);
+label("$16$",(8,-1.5),E,blue);label("$k$",(sqrt(R^2-12.25),-3.5),E,blue);label("$12$",(6,-5.5),E,blue);
+label("$d$",(0,-0.75),E);label("$2$",(0,-2.5),W);label("$2$",(0,-4.5),W);
+label("$r$",(4,-0.75),N,gray);label("$r$",(-3,-2.75),NW,gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For the middle chord, at distance $d+2=\dfrac{7}{2}$,
+\[
+\left(\dfrac {k}{2}\right)^2=r^2-\left(\dfrac{7}{2}\right)^2=\dfrac{265-49}{4}=54,\qquad \dfrac {k}{2}=3\sqrt6,
+\]
+so $k=\boxed{6\sqrt6}\approx14.7$.

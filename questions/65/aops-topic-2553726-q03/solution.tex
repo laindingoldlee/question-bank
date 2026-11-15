@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2553726_187__11_problems
+% Stable identity: aops-topic-2553726-q03
+Let the right angle be at $C$. The legs are $\dfrac{36}{7}\cdot3$ and $\dfrac{36}{7}\cdot4$, so the hypotenuse is $\dfrac{36}{7}\cdot5=\dfrac{180}{7}$.
+
+The midpoint $M$ of the hypotenuse $AB$ is the centre of the circle through $A$, $B$ and $C$ (the angle at $C$ is a right angle, so $AB$ is a diameter of that circle). Hence the median $CM$ equals $MA=\dfrac12AB=\dfrac{90}{7}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),A=(0,108/7),B=(144/7,0),M=(A+B)/2;
+draw(A--B--C--cycle,linewidth(0.8));draw(C--M);
+draw(circle(M,90/7),dashed+gray);
+draw((0.8,0)--(0.8,0.8)--(0,0.8));
+dot(M);label("$M$",M,NE);label("$A$",A,NW);label("$B$",B,SE);label("$C$",C,SW);
+label("$\dfrac{108}{7}$",(0,54/7),E,fontsize(8pt));label("$\dfrac{144}{7}$",(72/7,0),S,fontsize(8pt));
+\end{asy}
+
+As $\gcd(90,7)=1$, $2m+n=180+7=\boxed{187}$.

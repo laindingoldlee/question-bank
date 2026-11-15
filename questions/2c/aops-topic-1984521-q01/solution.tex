@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1984521_concave_cyclic_quadrilaterals
+% Stable identity: aops-topic-1984521-q01
+Let $ABCD$ be a concave quadrilateral, with its reflex angle at $D$. A simple quadrilateral is concave exactly when one of its vertices lies inside the triangle formed by the other three (this is the vertex with the reflex angle), so $D$ lies inside triangle $ABC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);draw(circle(O,1));
+pair A=dir(200),B=dir(-40),C=dir(80);
+pair D=(0.05,0.0);
+fill(A--B--C--cycle,gray(0.9));
+draw(A--B--C--cycle,gray(0.5)+dashed);
+draw(A--B--C--D--cycle,linewidth(1));
+dot(A);dot(B);dot(C);dot(D);
+label("$A$",A,W);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Suppose $A$, $B$, $C$ lie on a circle with centre $O$ and radius $r$. Any point $X$ inside triangle $ABC$ can be written as $X=\alpha A+\beta B+\gamma C$ with $\alpha,\beta,\gamma>0$ and $\alpha+\beta+\gamma=1$. By the triangle inequality for vectors,
+\[
+|X-O|=|\alpha(A-O)+\beta(B-O)+\gamma(C-O)|\le(\alpha+\beta+\gamma)r=r,
+\]
+and equality would need $A-O$, $B-O$, $C-O$ to point in the same direction, i.e. $A=B=C$, which is false. So $|X-O|<r$: every point inside triangle $ABC$ lies strictly inside the circle.
+
+Hence $D$ is strictly inside the circle through $A,B,C$ and is not on it. Since three non-collinear points lie on exactly one circle, no circle passes through all four vertices. $\blacksquare$

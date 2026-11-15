@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1244476_wusharkyboys_mock_mc_nats_sprint_28
+% Stable identity: aops-topic-1244476-q28
+Give the centres coordinates in $\{0,1,2,3\}^2$. A parallelogram with a horizontal pair of sides has vertices $(x,y)$, $(x+h,y)$, $(x+u,y+v)$, $(x+u+h,y+v)$ with $h\ge1$, $v\ge1$, and $u\ne0$ (if $u=0$ the other pair is vertical too). Each such parallelogram has exactly one such description.
+\begin{itemize}
+\item The rows: $y$ and $y+v$ must lie in $\{0,\dots,3\}$, giving $4-v$ choices; over $v=1,2,3$ that is $3+2+1=6$.
+\item The columns: $x$, $x+h$, $x+u$, $x+u+h$ must lie in $\{0,\dots,3\}$, which allows $4-h-|u|$ values of $x$ (for either sign of $u$), so we need $h+|u|\le3$: $(h,|u|)=(1,1)$ gives $2$, $(1,2)$ and $(2,1)$ give $1$ each, and each $|u|$ has two signs, for $2(2+1+1)=8$.
+\end{itemize}
+So there are $6\cdot8=48$ parallelograms with exactly one horizontal pair of sides, and by symmetry $48$ with exactly one vertical pair, $96$ in all. There are $\dbinom{16}{4}=1820$ equally likely choices, so the probability is
+\[\dfrac{96}{1820}=\boxed{\dfrac{24}{455}}.\]
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<4;++i) for(int j=0;j<4;++j) draw(shift(i,j)*unitsquare,gray);
+fill(shift(0,0)*unitsquare,lightblue); fill(shift(1,0)*unitsquare,lightblue); fill(shift(1,2)*unitsquare,lightblue); fill(shift(2,2)*unitsquare,lightblue);
+draw((0.5,0.5)--(1.5,0.5)--(2.5,2.5)--(1.5,2.5)--cycle,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

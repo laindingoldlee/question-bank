@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1874896_isosceles_triangle
+% Stable identity: aops-topic-1874896-q01
+Since $AB=AC$, the base angles are equal: $\angle B=\angle C=\dfrac{180^\circ-140^\circ}{2}=20^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(-sin(radians(70)),-cos(radians(70))),C=(sin(radians(70)),-cos(radians(70)));
+pair D=extension(A,A+dir(220),B,C);
+void tk(pair P,pair Q,int n,pen p=currentpen){pair m=(P+Q)/2,u=unit(Q-P),v=rotate(90)*u;
+ for(int i=0;i<n;++i){pair c=m+(i-(n-1)/2)*0.018*u;draw(c-0.035*v--c+0.035*v,p);}}
+draw(A--B--C--cycle,linewidth(1));draw(A--D,blue+linewidth(1));
+dot(A);dot(B);dot(C);dot(D);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);
+tk(A,B,1);tk(A,C,1);tk(A,D,2,blue);tk(B,D,2,blue);
+draw(arc(B,0.22,0,20));label("$20^\circ$",B+0.33*dir(10),E,fontsize(8pt));
+draw(arc(C,0.22,160,180));label("$20^\circ$",C+0.33*dir(170),W,fontsize(8pt));
+draw(arc(A,0.18,200,220),blue);label("$20^\circ$",A+0.37*dir(210),blue+fontsize(7pt));
+draw(arc(A,0.1,220,340),red);label("$120^\circ$",A+0.23*dir(290),red+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Since $AD=BD$, triangle $ABD$ is isosceles with $\angle BAD=\angle ABD=20^\circ$. Therefore
+\[
+\angle DAC=\angle BAC-\angle BAD=140^\circ-20^\circ=\boxed{120^\circ}.
+\]
+(Check in triangle $ADC$: $120^\circ+20^\circ+\angle ADC=180^\circ$ gives $\angle ADC=40^\circ$, which is the exterior angle $20^\circ+20^\circ$ of triangle $ABD$.)

@@ -1,0 +1,7 @@
+Put the rectangle in the plane with $A=(0,0)$, $B=(a,0)$, $C=(a,b)$, $D=(0,b)$, and let the apex have perpendicular projection $(x,y)$ and height $h>0$. Since $ab=6$, the first and third face areas give $a^2(y^2+h^2)=400$ and $a^2((b-y)^2+h^2)=484$. Subtracting yields $ay=-4$. The fourth and second faces similarly give $b^2(x^2+h^2)=784$ and $b^2((a-x)^2+h^2)=676$, yielding $bx=12$. Therefore $a^2h^2=400-16=384$ and $b^2h^2=784-144=640$. Dividing gives $\dfrac{a^2}{b^2}=\dfrac{3}{5}$, so $\boxed{\dfrac{AB}{BC}=\dfrac{\sqrt{15}}{5}}$. The computed projection lies outside the rectangle, which is permitted for an oblique pyramid.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(2.1558246717785052,0),D=(2.226526146970993,2.783157683713741),C=B+D,Q=(2.827298578909682,-1.8554384558091606),P=Q+(0,4.544877465869997);draw(A--B--C--D--cycle);draw(P--A);draw(P--B);draw(P--C);draw(P--D);draw(P--Q,dashed);label("A",A,SW);label("B",B,SE);label("C",C,NE);label("D",D,NW);label("P",P,N);label("Q",Q,S);label("$a$",(A+B)/2,S);label("$b$",(B+C)/2,SE);
+\end{asy}

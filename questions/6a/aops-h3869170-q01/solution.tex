@@ -1,0 +1,15 @@
+For $x=2\cos\theta$, induction using the double-angle identity gives $P_n(x)=2\cos(2^n\theta)$. Therefore the $1024$ distinct roots are
+\[
+r_j=2\cos\left(\dfrac{(2j+1)\pi}{2048}\right),\qquad 0\le j<1024.
+\]
+The polynomial has degree $1024$, so this is its full root set. Using $4\cos^2t=2+2\cos2t$,
+\[
+b=2048+2\sum_{j=0}^{1023}\cos\left(\dfrac{(2j+1)\pi}{1024}\right)=2048.
+\]
+The final cosine sum is the real part of a geometric sum of equally spaced roots of unity and is zero. Hence $\boxed{a+b=1024+2048=3072}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+draw(circle((0,0),1),gray);draw((-1.25,0)--(1.4,0),Arrow);draw((0,-1.2)--(0,1.4),Arrow);pair P=dir(35);draw((0,0)--P,blue);draw(P--(P.x,0),dashed);dot(P);label("$\theta$",(.25,.07));label("$\cos\theta$",(P.x/2,0),(0,-1));label("$\sin\theta$",(P.x,P.y/2),(1,0));label("$1$",P/2,NW);
+\end{asy}

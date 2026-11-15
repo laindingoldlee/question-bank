@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1844247_analytic_geometry
+% Stable identity: aops-topic-1844247-q01
+Since $PB=4PA$ and $PA+PB=AB$, we have $PA=\dfrac{1}{5}AB$: $P$ is one fifth of the way from $A$ to $B$. Going from $A$ to $B$, $x$ changes by $-6-2=-8$ and $y$ changes by $-3-7=-10$. Along the segment both coordinates change in proportion to the distance travelled (similar right triangles with horizontal and vertical legs), so
+\[
+P=\left(2+\dfrac{1}{5}(-8),\ 7+\dfrac{1}{5}(-10)\right)=\boxed{\left(\dfrac{2}{5},\ 5\right)}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(2,7),B=(-6,-3),P=(2/5,5);
+draw((-7,0)--(3.6,0),gray(0.6),Arrow(5));draw((0,-4)--(0,8.2),gray(0.6),Arrow(5));
+draw(B--A,linewidth(0.9));
+draw(B--(2,-3)--A,dashed+gray(0.4));
+draw(P--(2,5),dotted);
+dot(A);dot(B);dot(P,red);
+label("$A(2,7)$",A,E);label("$B(-6,-3)$",B,W);label("$P$",P,SE,red);
+label("$8$",(-2,-3),S);label("$10$",(2,2),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Check with the distance formula: $PA=\sqrt{\left(\dfrac{8}{5}\right)^2+2^2}=\dfrac{2\sqrt{41}}{5}$ and $PB=\sqrt{\left(\dfrac{32}{5}\right)^2+8^2}=\dfrac{8\sqrt{41}}{5}=4\cdot PA$.

@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1392886_sum_of_digits
+% Stable identity: aops-topic-1392886-q01
+\textbf{A formula for $s(2x)$.} Write $x$ with digits $d_k\dots d_1d_0$ and double it column by column from the right. The carry into any column is $0$ or $1$. If $d_i\le4$ then $2d_i+1\le9$, so this column produces no carry; if $d_i\ge5$ then $2d_i\ge10$, so it produces a carry of $1$. Thus the number of carries equals the number $c$ of digits of $x$ that are at least $5$. Without carries the digit sum of $2x$ would be $\sum 2d_i=2s(x)$; each carry replaces $10$ in one column by $1$ in the next, lowering the digit sum by $9$. Hence
+\[
+s(2x)=2s(x)-9c .
+\]
+
+\textbf{Every element of $S$ is of the stated form.} If $s(x)=2016$ then $s(2x)=4032-9c$. Since $4032=9\cdot448$, this is a multiple of $9$ and at most $4032$. Each digit counted by $c$ is at least $5$, so $5c\le s(x)=2016$, i.e. $c\le403$, and therefore
+\[
+s(2x)\ge4032-9\cdot403=4032-3627=405 .
+\]
+
+\textbf{Every such multiple occurs.} The multiples of $9$ in $[405,4032]$ are exactly the numbers $4032-9c$ with $0\le c\le403$. For such $c$ let $x$ consist of $c$ digits $5$ followed by digits from $\{1,2,3,4\}$ with total $2016-5c\ge1$ (for instance, as many $4$'s as possible and then one smaller digit if needed). Then $s(x)=2016$, exactly $c$ digits are at least $5$, and $s(2x)=4032-9c$.
+
+Therefore $S=\{\,y : 405\le y\le4032,\ 9\mid y\,\}$.

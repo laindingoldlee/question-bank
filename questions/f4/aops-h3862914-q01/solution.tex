@@ -1,0 +1,17 @@
+Let the large triangle have side $n=49$. There are three possible pairs of grid directions for the sides of a parallelogram; rotation makes their counts and perimeter distributions identical. Fix one pair, described by two unit directions at $60^\circ$.
+
+Let the parallelogram side lengths be positive integers $p,q$, and let its near corner have nonnegative grid coordinates $i,j$. It fits exactly when $i+j+p+q\le n$. Introduce the nonnegative slack $s=n-i-j-p-q$. Then
+\[
+(p-1)+(q-1)+i+j+s=n-2.
+\]
+This is a bijection with five-part nonnegative compositions of $n-2$. By symmetry, the average of each part is $\dfrac{(n-2)}{5}$. Thus the average of $p+q$ is $2+\dfrac{2(n-2)}{5}$, and the average perimeter is
+\[
+2\left(2+\dfrac{2(n-2)}{5}\right)=\dfrac{4n+12}{5}.
+\]
+The other two orientations have the same average, so at $n=49$ the result is $\dfrac{208}{5}$. Therefore $\boxed{m+n=213}$ for the reduced numerator and denominator requested.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair f(real i,real j){return (i+j/2,sqrt(3)*j/2);}int n=7;for(int k=0;k<=n;++k){draw(f(k,0)--f(k,n-k),gray);draw(f(0,k)--f(n-k,k),gray);draw(f(k,0)--f(0,k),gray);}pair A=f(1,1),B=f(4,1),C=f(4,2),D=f(1,2);filldraw(A--B--C--D--cycle,lightblue,blue);label("$p$",(A+B)/2,(0,-1));label("$q$",(B+C)/2,SE);label("one orientation in a smaller grid",(3.5,-.6));
+\end{asy}

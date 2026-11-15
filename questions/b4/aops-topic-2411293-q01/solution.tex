@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2411293_geometric_combo
+% Stable identity: aops-topic-2411293-q01
+\textbf{Upper bound.} Two lines meet in at most $1$ point, a line and a circle in at most $2$ points, and two circles in at most $2$ points. With $4$ lines and $3$ circles there are $\dbinom42=6$ pairs of lines, $4\cdot3=12$ line-circle pairs and $\dbinom32=3$ pairs of circles, so there are at most
+\[6\cdot1+12\cdot2+3\cdot2=36\]
+intersection points.
+
+\textbf{The bound is reached.} Take three circles of radius $1$ with centres close together, so that every two of them cross, and four lines through the middle of the figure in general position: no two parallel, no three through one point, each crossing every circle twice, and no line through a point where two other curves meet. Then all $36$ intersection points are different, as in the figure (the $36$ points are marked):
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair[] Cc={(0,0),(0.9,0),(0.45,0.75)};
+for(pair c : Cc) draw(circle(c,1),blue);
+pair[] P={(0.502,0.122),(0.119,0.513),(0.607,0.392),(0.277,0.156)}; real[] an={176.8,132.8,93.9,49.3};
+path[] Lp; for(int k=0;k<4;++k){ pair d=dir(an[k]); Lp.push((P[k]-3d)--(P[k]+3d)); draw(Lp[k],red); }
+pair[] X;
+for(int i=0;i<4;++i) for(int j=i+1;j<4;++j) X.push(intersectionpoint(Lp[i],Lp[j]));
+for(int i=0;i<4;++i) for(pair c : Cc) for(pair x : intersectionpoints(Lp[i],circle(c,1))) X.push(x);
+for(int i=0;i<3;++i) for(int j=i+1;j<3;++j) for(pair x : intersectionpoints(circle(Cc[i],1),circle(Cc[j],1))) X.push(x);
+for(pair x : X) dot(x,black+2.5pt);
+clip(box((-1.3,-1.25),(2.2,2.0)));
+\end{asy}
+
+So the greatest possible number is $\boxed{36}$.

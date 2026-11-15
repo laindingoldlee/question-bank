@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1656688_2018_mte_ms_target_full
+% Stable identity: aops-topic-1656688-q08
+In minute $c$ the price is $c$ cents and the revenue is $c\left\lfloor\dfrac{100}{c}\right\rfloor$ cents; for $c>100$ nothing is sold. So the total is
+\[
+\sum_{c=1}^{100}c\left\lfloor\dfrac{100}{c}\right\rfloor .
+\]
+\textbf{Double counting.} $\left\lfloor\dfrac{100}{c}\right\rfloor$ is the number of multiples of $c$ in $\{1,\dots,100\}$, so the sum counts, for each $n\le100$, every divisor $c$ of $n$ with weight $c$:
+\[
+\sum_{c=1}^{100}c\left\lfloor\dfrac{100}{c}\right\rfloor=\sum_{n=1}^{100}\sigma(n),
+\]
+where $\sigma(n)$ is the sum of the divisors of $n$. To evaluate it, group the values of $c$ with the same quotient $\left\lfloor\dfrac{100}{c}\right\rfloor$: quotient $1$ for $c=51,\dots,100$ contributes $3775$; quotient $2$ for $c=34,\dots,50$ contributes $2\cdot714=1428$; quotient $3$ for $c=26,\dots,33$: $3\cdot236=708$; quotient $4$ for $c=21,\dots,25$: $4\cdot115=460$; quotient $5$ for $c=17,\dots,20$: $5\cdot74=370$; quotient $6$ for $c=15,16$: $186$; quotient $7$ for $c=13,14$: $189$; then $c=12,11,10,9,8,7,6,5,4,3,2,1$ give $96,99,100,99,96,98,96,100,100,99,100,100$. The total is
+\[
+3775+1428+708+460+370+186+189+1183=\boxed{8299}\text{ cents}.
+\]

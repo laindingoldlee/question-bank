@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2319369_100th_post_problems
+% Stable identity: aops-topic-2319369-q12
+Let the top be $x$ by $36-x$ inches (half the perimeter is $36$). The volume is $8x(36-x)$, and
+\[x(36-x)=324-(x-18)^2\le324,\]
+with equality only for $x=18$. So the largest volume, $8\cdot324=2592$ cubic inches, is obtained for a box of $\boxed{18\times18\times8}$ inches.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair o=(0,0), u=(4,0), v=(1.6,1.2), w=(0,2.2);
+draw(o--u--u+w--w--cycle); draw(w--w+v--u+v+w--u+w); draw(u--u+v--u+v+w);
+draw(o--v,dashed); draw(v--v+w,dashed); draw(v--u+v,dashed);
+label("$x$",(2,0),S); label("$36-x$",u+v/2,SE); label("$8$",(0,1.1),W);
+\end{asy}

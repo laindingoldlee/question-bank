@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1764207_geometry
+% Stable identity: aops-topic-1764207-q01
+Put $D=(0,0)$, $C=(1,0)$, $B=(1,1)$, $A=(0,1)$. Since $AF=BF$, the point $F$ is on the perpendicular bisector $x=\dfrac{1}{2}$ of $AB$; as $EF\perp DC$, also $E=\left(\dfrac{1}{2},0\right)$. Let $F=\left(\dfrac{1}{2},y\right)$, so $EF=y$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair D=(0,0),C=(1,0),B=(1,1),A=(0,1),Ep=(0.5,0),F=(0.5,0.625);
+fill(A--D--Ep--F--cycle,paleblue);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(Ep--F,linewidth(0.8));draw(A--F--B,linewidth(0.8));
+draw(Ep+(0.05,0)--Ep+(0.05,0.05)--Ep+(0,0.05));
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);
+label("$E$",Ep,S);label("$F$",F,dir(-20));
+label("$y$",(Ep+F)/2,W);label("$y$",(A+F)/2,SW);
+label("$\dfrac{1}{2}$",(0.25,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Then $AF=EF$ gives
+\[
+\left(\dfrac{1}{2}\right)^2+(1-y)^2=y^2\ \Longrightarrow\ \dfrac{1}{4}+1-2y=0\ \Longrightarrow\ y=\dfrac{5}{8} .
+\]
+$ADEF$ is a right trapezoid with parallel sides $AD=1$ and $EF=\dfrac{5}{8}$ and width $DE=\dfrac{1}{2}$, so its area is
+\[
+\dfrac{1}{2}\left(1+\dfrac{5}{8}\right)\cdot\dfrac{1}{2}=\boxed{\dfrac{13}{32}}.
+\]

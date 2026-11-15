@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h1876623_question_about_equilteral_and_isosceles_triangles
+% Stable identity: aops-topic-1876623-q01
+(a) An equilateral triangle has three equal sides, so it has at least two equal sides: under the modern definition it \textbf{is} isosceles. It does not have \emph{exactly} two equal sides, so under Euclid's definition it is \textbf{not} isosceles.
+
+(b) Let the sides be $a\le b\le c$ with $a+b+c=15$ and $a+b>c$. Then $3c\ge15$ and $2c<15$, so $c\in\{5,6,7\}$.
+\begin{itemize}
+\item $c=7$: $a+b=8$, giving $(1,7,7),(2,6,7),(3,5,7),(4,4,7)$.
+\item $c=6$: $a+b=9$ with $b\le6$, giving $(3,6,6),(4,5,6)$.
+\item $c=5$: $(5,5,5)$.
+\end{itemize}
+Of these $7$ triangles, the ones with at least two equal sides are $(1,7,7),(4,4,7),(3,6,6),(5,5,5)$, drawn below.
+
+\begin{asy}
+usepackage("amsmath");
+size(10cm);
+defaultpen(fontsize(10pt));
+void tri(pair P,real base,real leg,string sb,string sl){
+ real h=sqrt(leg^2-(base/2)^2);pair L=P,R=P+(base,0),T=P+(base/2,h);
+ draw(L--R--T--cycle,linewidth(1));
+ pair nl=unit(rotate(-90)*(L-T)),nr=unit(rotate(90)*(R-T));
+ label(sb,(L+R)/2,S);label(sl,(L+T)/2+0.55*nl);label(sl,(R+T)/2+0.55*nr);}
+tri((0,0),1,7,"$1$","$7$");
+tri((3.2,0),7,4,"$7$","$4$");
+tri((12.4,0),3,6,"$3$","$6$");
+tri((17.6,0),5,5,"$5$","$5$");
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $\boxed{4}$ are isosceles under the modern definition, and $\boxed{3}$ under Euclid's definition (all except the equilateral $(5,5,5)$).

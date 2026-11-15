@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2168948_2020_mock_amc_11_problem_4_5_discussion
+% Stable identity: aops-topic-2168948-q04
+The line $x+2y=12$ meets the $x$-axis at $(12,0)$, and $y=mx$ meets the $x$-axis at the origin. For a bounded region we need $m\ne0$ and $m\ne-\dfrac{1}{2}$ (otherwise two of the lines are parallel or equal). Then $y=mx$ meets $x+2y=12$ where $x(1+2m)=12$, at
+\[\left(\dfrac{12}{1+2m},\ \dfrac{12m}{1+2m}\right),\]
+and the region is a triangle with base $12$ on the $x$-axis and height $\left|\dfrac{12m}{1+2m}\right|$. Its area is $12$ when
+\[\dfrac{1}{2}\cdot12\cdot\left|\dfrac{12m}{1+2m}\right|=12\iff|6m|=|1+2m|\iff36m^2=(1+2m)^2\iff32m^2-4m-1=0,\]
+that is, $(8m+1)(4m-1)=0$. So $m=\dfrac{1}{4}$ (the triangle with third vertex $(8,2)$) or $m=-\dfrac{1}{8}$ (third vertex $(16,-2)$).
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+import graph;
+xaxis(-1,18,Arrow(TeXHead)); yaxis(-3.2,6.8,Arrow(TeXHead));
+fill((0,0)--(12,0)--(8,2)--cycle,paleblue);
+fill((0,0)--(12,0)--(16,-2)--cycle,pink);
+draw((-1,6.5)--(18,-3),linewidth(0.9));
+draw((0,0)--(16,4),blue); draw((0,0)--(18,-2.25),red);
+dot((12,0)); dot((8,2),blue); dot((16,-2),red);
+label("$x+2y=12$",(2,5),NE);
+label("$y=\dfrac{1}{4}x$",(16,4),N,blue);
+label("$y=-\dfrac{1}{8}x$",(18,-2.25),E,red);
+label("$(12,0)$",(12,0),NE); label("$(8,2)$",(8,2),N,blue); label("$(16,-2)$",(16,-2),SW,red);
+label("$O$",(0,0),SW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The smallest value is $m=\boxed{-\dfrac{1}{8}}$, answer $\textbf{(B)}$.

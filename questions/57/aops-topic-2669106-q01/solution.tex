@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2669106_a_proving_problem_part_9
+% Stable identity: aops-topic-2669106-q01
+\emph{One-to-one.} If $t(X)=t(Y)$, then $X+\vec v=Y+\vec v$, and subtracting $\vec v$ gives $X=Y$.
+
+\emph{Onto.} Given any point $Y$, the point $X=Y-\vec v$ satisfies $t(X)=Y$.
+
+So $t$ is a bijection of the plane, and its inverse is the translation by $-\vec v$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair v=(2,0.8);pair X=(0,0),Y=(0.6,1.4);
+draw(X--X+v,blue,Arrow(6));draw(Y--Y+v,blue,Arrow(6));
+dot(X);dot(Y);dot(X+v);dot(Y+v);
+label("$X$",X,W);label("$Y$",Y,W);label("$t(X)$",X+v,E);label("$t(Y)$",Y+v,E);label("$\vec v$",X+v/2,S,blue);
+\end{asy}

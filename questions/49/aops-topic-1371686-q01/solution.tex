@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1371686_straight_lines
+% Stable identity: aops-topic-1371686-q01
+(P) Parallel non-vertical lines have the same steepness, so their slopes are \emph{equal}. (Q) Two non-vertical lines are perpendicular exactly when the \emph{product} of their slopes is $-1$. This rules out (B) and (D).
+
+(R) The line passes through $(d,0)$ and has slope $m$. For any other point $(x,y)$ on it, the slope from $(d,0)$ is $\dfrac{y-0}{x-d}=m$, so $y=m(x-d)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real m=0.8, d=2;
+draw((-1.5,0)--(5,0),Arrow(5)); draw((0,-2.2)--(0,3.4),Arrow(5));
+label("$x$",(5,0),E); label("$y$",(0,3.4),N);
+draw((-0.5,m*(-0.5-d))--(4.8,m*(4.8-d)),blue+linewidth(0.9));
+pair X=(d,0), Pp=(4,m*(4-d));
+dot(X); label("$(d,0)$",X,NW);
+draw(X--(4,0)--Pp,red+dashed); dot(Pp);
+label("$x-d$",(3,0),S,red); label("$y$",(4,Pp.y/2),E,red);
+label("$(x,y)$",Pp,NW);
+label("slope $m$",(4.8,m*(4.8-d)),E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Choice (C) gives $y=mx+c$, which is the slope-intercept form with an unspecified $y$-intercept $c$; it does not use the given $x$-intercept $d$ at all (it would be correct only with $c=-md$). So the answer is $\boxed{\textbf{(A)}}$.

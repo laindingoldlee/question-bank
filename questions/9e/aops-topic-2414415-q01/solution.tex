@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2414415_a_conjecture_which_should_probably_be_easy_to_prove
+% Stable identity: aops-topic-2414415-q01
+Writing $n$ with additions and subtractions of copies of $x$ and $y$ means exactly writing $n=ax+by$ with integers $a$ and $b$: here $a$ is the number of copies of $x$ that are added minus the number that are subtracted, and similarly for $b$. (For instance $15=3\cdot12-3\cdot7$, and $0=x-x$.)
+
+\textbf{(a)} Take $x=3$ and $y=9$; here $x$ is odd. Every number $3a+9b$ is a multiple of $3$, so for example $n=1$ cannot be written. The conjecture is false.
+
+\textbf{(b)} Let $d=\gcd(x,y)$.
+
+\emph{If $d>1$:} every number $ax+by$ is a multiple of $d$, so $n=1$ cannot be written.
+
+\emph{If $d=1$:} consider the $x$ numbers $y,2y,3y,\dots,xy$. No two of them leave the same remainder on division by $x$: if $iy$ and $jy$ did, with $1\le j<i\le x$, then $x$ would divide $(i-j)y$; since $\gcd(x,y)=1$, $x$ would divide $i-j$, which is impossible because $0<i-j<x$. So these $x$ numbers leave all $x$ remainders $0,1,\dots,x-1$, and in particular some $ky$ leaves remainder $1$:
+\[ky=mx+1\quad\text{for some integer }m,\qquad\text{so}\qquad 1=ky-mx.\]
+Multiplying by $n$ gives $n=(nk)y-(nm)x$ for every integer $n$.
+
+Hence every integer can be written exactly when $\gcd(x,y)=1$. $\blacksquare$
+
+(The condition ``at least one of $x$, $y$ is odd'' only rules out a common factor $2$; the correct condition is that $x$ and $y$ have no common factor at all.)

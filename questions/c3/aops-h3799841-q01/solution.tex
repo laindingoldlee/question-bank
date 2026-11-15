@@ -1,0 +1,9 @@
+Call the common centre $O$ and write the angles of $ABC$ as $\alpha,\beta,\gamma$. Since $O$ is an incenter of $BCD$, it lies inside $ABC$; as a circumcenter inside $ABC$, it implies $ABC$ is acute. The isosceles triangle $BOC$ gives $\angle CBO=\angle BCO=90^\circ-\alpha$. The incenter bisects the angles at $B,C$ of $BCD$, so these two angles also equal $\dfrac{\beta}{2}$ and $\dfrac{\gamma}{4}$, respectively. Hence $\gamma=2\beta$ and $\alpha=90^\circ-\dfrac{\beta}{2}$. Substitution into $\alpha+\beta+\gamma=180^\circ$ yields $\beta=36^\circ$. Thus
+\[\boxed{\angle A=72^\circ,\quad\angle B=36^\circ,\quad\angle C=72^\circ}.\]
+The illustrated $72$-$36$-$72$ triangle realizes the configuration, since its circumcenter lies on both internal bisectors of $BCD$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair B=(0,0),A=(1,0),C=dir(36),D=((sqrt(5)-1)/2,0),O=(.5,(1-cos(36pi/180))/(2sin(36pi/180)));draw(circle(O,abs(O-B)),gray);draw(A--B--C--cycle);draw(C--D);draw(O--B,dashed);draw(O--C,dashed);draw(circle(O,O.y),blue);label("$A$",A,(1,0));label("$B$",B,(-1,0));label("$C$",C,(0,1));label("$D$",D,(0,-1));label("$O$",O,(-1,1));
+\end{asy}

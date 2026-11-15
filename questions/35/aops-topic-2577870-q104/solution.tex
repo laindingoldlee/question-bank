@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2577870_lamboreghinis_problem_thread_math_and_programming
+% Stable identity: aops-topic-2577870-q104
+A quarter-turn changes radius by $e^{\dfrac{b\pi}{2}}=\phi$, so $\boxed{b=\dfrac{2\ln\phi}{\pi}}$. Sample $\theta_j=\dfrac{4\pi j}{1000}$ and convert polar coordinates to Cartesian coordinates.\begin{verbatim}
+from math import sqrt,log,pi,cos,sin,exp
+phi=(1+sqrt(5))/2
+b=2*log(phi)/pi
+points=[]
+for j in range(1001):
+    t=4*pi*j/1000
+    r=exp(b*t)
+    points.append((r*cos(t),r*sin(t)))
+\end{verbatim}
+Joining successive samples draws a polygonal approximation; the analytic curve, unlike the source's joined quarter-circles, is exactly logarithmic.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+import graph;real phi=(1+sqrt(5))/2;pair f(real t){return exp(2*log(phi)*t/pi)*dir(t*180/pi);}draw(graph(f,0,4*pi,1000),blue);dot((0,0));label("$O$",(0,0),S);label("$r(0)=1$",(1,0),N);
+\end{asy}

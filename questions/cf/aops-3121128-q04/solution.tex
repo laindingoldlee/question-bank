@@ -1,0 +1,6 @@
+(a) Multiplying numerator and denominator by the same nonzero number preserves a quotient: $\dfrac{2\cdot2}{3\cdot2}=\dfrac{2}{3}$. (b) A regular dodecagon has twelve interior angles of $150^\circ$, so the maximum is $\boxed{12}$. (c) Every acute interior angle has an exterior turning angle greater than $90^\circ$. Four such turns would exceed the total $360^\circ$, so at most three are possible. To attain three, take a polygon circumscribed about a circle whose successive tangent-normal gaps repeat $100^\circ,\dfrac{20}{3}{}^\circ,\dfrac{20}{3}{}^\circ,\dfrac{20}{3}{}^\circ$ three times. The gaps total $360^\circ$ and are each below $180^\circ$, so the adjacent tangents form a convex dodecagon. Its interior angles are three $80^\circ$ angles and nine $\dfrac{520}{3}{}^\circ$ angles. Thus $\boxed3$ acute angles are attainable.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+path p;for(int k=0;k<12;++k)p=p--dir(30*k);draw(p--cycle);label("12 obtuse angles",(0,-1.5));real[] n={0,100,320/3,340/3,120,220,680/3,700/3,240,340,1040/3,1060/3};path q;for(int k=0;k<12;++k){real a=n[k],b=k==11?360:n[k+1];q=q--((4,0)+dir((a+b)/2)/cos((b-a)/2));}draw(q--cycle);label("3 acute angles",(4,-1.8));
+\end{asy}
+

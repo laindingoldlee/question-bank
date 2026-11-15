@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2856844_an_interesting_math_problem
+% Stable identity: aops-topic-2856844-q01
+Track the gaps (numbers of edges) between consecutive frogs around the cycle; they always sum to $12$ and are even (each gap changes by $-2,0,2$ per minute and starts at $4$). Up to symmetry the non-terminal states are $(4,4,4)$, $(2,4,6)$ and $(2,2,8)$, and the process stops when some gap becomes $0$.
+
+Enumerating the $8$ equally likely joint moves from a representative of each state:
+\begin{itemize}
+\item from $(4,4,4)$: $2$ moves keep $(4,4,4)$ and $6$ give $(2,4,6)$;
+\item from $(2,4,6)$: $2$ moves stop, $1$ gives $(4,4,4)$, $4$ keep $(2,4,6)$ and $1$ gives $(2,2,8)$;
+\item from $(2,2,8)$: $4$ moves stop, $2$ give $(2,4,6)$ and $2$ keep $(2,2,8)$.
+\end{itemize}
+With $E_1,E_2,E_3$ the expected remaining times from these states,
+\[E_1=1+\dfrac14E_1+\dfrac34E_2,\qquad E_2=1+\dfrac18E_1+\dfrac12E_2+\dfrac18E_3,\qquad E_3=1+\dfrac14E_2+\dfrac14E_3.\]
+The first gives $E_1=\dfrac43+E_2$ and the third $E_3=\dfrac{4+E_2}{3}$. Substituting into the second,
+\[\dfrac12E_2=1+\dfrac16+\dfrac{E_2}8+\dfrac16+\dfrac{E_2}{24}\implies\dfrac13E_2=\dfrac43\implies E_2=4.\]
+So $E_1=\dfrac{16}3$, and $m+n=\boxed{19}$.

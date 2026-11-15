@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h2588769_polygons_problem_that_i_made_up
+% Stable identity: aops-topic-2588769-q01
+Order the angles as $a,a+d,\dots,a+(n-1)d$ with integers $a\ge1$ and $d\ge0$. Their sum is $180(n-2)$, so
+\[na+\dfrac{n(n-1)d}{2}=180(n-2)\iff n\bigl(2a+(n-1)d\bigr)=360n-720.\]
+Hence $n\mid720$. The mean angle is $180-\dfrac{360}{n}$, and convexity requires the largest angle to be less than $180^\circ$:
+\[180-\dfrac{360}{n}+\dfrac{(n-1)d}{2}<180\iff n(n-1)d<720.\]
+
+\textbf{Case $d=0$.} All angles equal $180-\dfrac{360}{n}$, which is an integer exactly when $n\mid360$, and then a regular $n$-gon works. The divisors of $360=2^3\cdot3^2\cdot5$ number $24$; excluding $1$ and $2$ leaves $22$ values of $n$.
+
+\textbf{Case $d\ge1$.} Then $n(n-1)<720$, so $n\le27$, and $n\mid720$. The divisors of $720$ between $3$ and $27$ are $3,4,5,6,8,9,10,12,15,16,18,20,24$, and all except $16$ already divide $360$. For $n=16$, we need $2a+15d=360-45=315$ and $240d<720$, so $d$ is odd and $d<3$. Thus $d=1$ and $a=150$: the angles are $150^\circ,151^\circ,\dots,165^\circ$, whose sum is $16\cdot150+120=2520=180\cdot14$.
+
+\textbf{Such a convex $16$-gon exists.} More generally, any angles $\theta_1,\dots,\theta_n$ strictly between $0^\circ$ and $180^\circ$ with sum $180(n-2)$ are the angles of a convex $n$-gon. The exterior angles $e_k=180^\circ-\theta_k$ are positive, less than $180^\circ$, and sum to $360^\circ$. Let $u_1,\dots,u_n$ be unit vectors, each obtained from the previous one by turning left through $e_k$; we need positive lengths $l_k$ with $\sum l_ku_k=0$. Let $S=\sum u_k$. If $S\ne0$, the direction of $-S$ lies in one of the sectors between consecutive vectors $u_j,u_{j+1}$ (taken cyclically), which have angles less than $180^\circ$, so $-S=\alpha u_j+\beta u_{j+1}$ with $\alpha,\beta\ge0$. Take all $l_k=1$, and add $\alpha$ to $l_j$ and $\beta$ to $l_{j+1}$. The resulting closed path turns left at every vertex, through $360^\circ$ in total, so it is a convex polygon with angles $\theta_k$.
+
+So the possible $n$ are the $22$ divisors of $360$ that are at least $3$, together with $n=16$: $\boxed{23}$ values.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair[] P={(0.000000,0.000000),(0.939413,0.000000),(1.852427,0.527129),(2.445627,1.514380),(2.508953,2.722712),(2.012880,3.836910),(1.106177,4.597725),(0.030360,4.885989),(-0.983453,4.725417),(-1.779148,4.228211),(-2.286363,3.530090),(-2.495877,2.748173),(-2.427714,1.969070),(-2.110314,1.256178),(-1.574452,0.661043),(-0.856034,0.229374)};
+guide g;for(int i=0;i<16;++i)g=g--P[i];g=g--cycle;
+filldraw(g,lightgray,linewidth(0.8));
+for(int i=0;i<16;++i)dot(P[i]);
+label("$150^\circ$",P[1],SE,fontsize(8pt));label("$151^\circ$",P[2],E,fontsize(8pt));label("$152^\circ$",P[3],E,fontsize(8pt));
+label("$165^\circ$",P[0],SW,fontsize(8pt));label("$164^\circ$",P[15],SW,fontsize(8pt));
+\end{asy}
+
+A convex $16$-gon with angles $150^\circ,151^\circ,\dots,165^\circ$ in counterclockwise order (side lengths found as in the proof; the labelled angles start at the bottom).

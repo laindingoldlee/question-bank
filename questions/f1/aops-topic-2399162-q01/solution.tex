@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2399162_easy_as_1_2_3
+% Stable identity: aops-topic-2399162-q01
+\textbf{Even and odd places.} The numbers formed by the first $2,4,6,8$ digits are even, so $d_2,d_4,d_6,d_8$ are even; hence they are $2,4,6,8$ in some order and the odd digits occupy the odd places. The first five digits form a multiple of $5$, so $d_5\in\{0,5\}$, i.e. $d_5=5$.
+
+\textbf{Divisibility by 4 and 8.} $4\mid\overline{d_3d_4}=10d_3+d_4$ with $d_3$ odd, and $10d_3\equiv2\pmod4$, so $d_4\equiv2\pmod4$: $d_4\in\{2,6\}$. Next, $8\mid\overline{d_6d_7d_8}$, and $100d_6$ is a multiple of $8$ because $d_6$ is even, so $8\mid10d_7+d_8$. For odd $d_7$, $10d_7\equiv2\pmod8$ when $d_7\in\{1,5,9\}$ and $10d_7\equiv6\pmod8$ when $d_7\in\{3,7\}$. So $d_8=6$ if $d_7\in\{1,5,9\}$ and $d_8=2$ if $d_7\in\{3,7\}$. In particular $\{d_4,d_8\}=\{2,6\}$ and $\{d_2,d_6\}=\{4,8\}$.
+
+\textbf{Divisibility by 3 and 6.} The first three digits and the first six digits form multiples of $3$, so $d_1+d_2+d_3\equiv0$ and $d_4+d_5+d_6\equiv0\pmod3$. With $d_5=5$: $(d_4,d_6)=(2,8)$ or $(6,4)$ (the sums $2+5+4=11$ and $6+5+8=19$ fail).
+\begin{itemize}
+\item Case $d_4=2$, $d_6=8$: then $d_8=6$, $d_2=4$, and $d_7\in\{1,9\}$ (as $5$ is used). We need $d_1+d_3\equiv2\pmod3$ with $d_1,d_3\in\{1,3,7,9\}$; the only such pair is $\{1,7\}$. Then $d_7=9$, and the first seven digits are $1472589$ or $7412589$, which leave remainders $6$ and $2$ when divided by $7$. No solution.
+\item Case $d_4=6$, $d_6=4$: then $d_8=2$, $d_2=8$, $d_7\in\{3,7\}$, and $d_1+d_3\equiv1\pmod3$, so $\{d_1,d_3\}$ is $\{1,3\}$, $\{1,9\}$, $\{3,7\}$ or $\{7,9\}$. The pair $\{3,7\}$ leaves no digit for $d_7$. The possible first seven digits and their remainders mod $7$ are
+\[1836547:6,\ \ 3816547:0,\ \ 1896543:5,\ \ 1896547:2,\ \ 9816543:2,\ \ 9816547:6,\ \ 7896543:4,\ \ 9876543:5.\]
+\end{itemize}
+Only $3816547$ is divisible by $7$. Then $d_8=2$ and $d_9=9$, and the first nine digits always form a multiple of $9$ (digit sum $45$). The unique arrangement is
+\[\boxed{381654729}.\]

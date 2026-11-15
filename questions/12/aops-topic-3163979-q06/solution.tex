@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3163979_2015_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3163979-q06
+The visibility kernel of a simple polygon is the intersection of the inward half-planes of its directed edges: violating an edge half-plane blocks points immediately beyond that edge, and satisfying all such half-planes makes every radial segment stay inside. Put $A=(0,0),B=(1,0),C=(1,1),D=(0,1)$, with $E=(\dfrac{1}{2},-\dfrac{\sqrt3}{2})$ and the other apexes obtained by quarter-turns. Intersecting the eight inward half-planes gives the convex octagon with vertices $A,(\dfrac{1}{2},-\dfrac{1}{2\sqrt3}),B,(1+\dfrac{1}{2\sqrt3},\dfrac{1}{2}),C,(\dfrac{1}{2},1+\dfrac{1}{2\sqrt3}),D,(-\dfrac{1}{2\sqrt3},\dfrac{1}{2})$. For example its lower two edges lie on $y=-\dfrac{x}{\sqrt3}$ and $y=\dfrac{x-1}{\sqrt3}$, the extended edges adjacent to the left and right external triangles; symmetry gives the rest, and substitution checks all eight original inequalities. It consists of the unit square and four triangles of base 1 and height $\dfrac{1}{2\sqrt3}$. Its area is $1+4\cdot\dfrac{1}{2}\cdot\dfrac{1}{2\sqrt3}=\boxed{1+\dfrac{\sqrt3}{3}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1),Ee=(.5,-sqrt(3)/2),F=(1+sqrt(3)/2,.5),G=(.5,1+sqrt(3)/2),H=(-sqrt(3)/2,.5);draw(A--Ee--B--F--C--G--D--H--cycle);filldraw(A--(.5,-1/(2*sqrt(3)))--B--(1+1/(2*sqrt(3)),.5)--C--(.5,1+1/(2*sqrt(3)))--D--(-1/(2*sqrt(3)),.5)--cycle,paleblue,blue);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$E$",Ee,S);label("$F$",F,E);label("$G$",G,N);label("$H$",H,W);
+\end{asy}

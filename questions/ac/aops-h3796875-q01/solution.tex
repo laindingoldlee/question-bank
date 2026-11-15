@@ -1,0 +1,8 @@
+Number rows and columns from $1$ to $8$. In successive rows, use columns $(1,5,8,6,3,7,2,4)$. The columns are distinct. The differences column minus row are $0,3,5,2,-2,1,-5,-4$, all distinct, and the sums are $2,7,11,10,8,13,9,12$, all distinct. These checks rule out every possible shared diagonal, so the placement works.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"Q", "", "", "", "", "", "", ""}, {"", "", "", "", "Q", "", "", ""}, {"", "", "", "", "", "", "", "Q"}, {"", "", "", "", "", "Q", "", ""}, {"", "", "Q", "", "", "", "", ""}, {"", "", "", "", "", "", "Q", ""}, {"", "Q", "", "", "", "", "", ""}, {"", "", "", "Q", "", "", "", ""}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("Rows 1 to 8 from top to bottom",(4.0,-8.2));
+\end{asy}

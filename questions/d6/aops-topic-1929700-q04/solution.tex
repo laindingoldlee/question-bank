@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1929700_math_problems
+% Stable identity: aops-topic-1929700-q04
+Let $O$ be the centre of $ABCD$. The apex $E$ of the equilateral triangle on $AB$ lies on the perpendicular bisector of $AB$, outside the square, at distance $\dfrac{\sqrt3}{2}$ from $AB$; and $O$ is at distance $\dfrac{1}{2}$ from $AB$ on the other side. So
+\[
+OE=\dfrac{1}{2}+\dfrac{\sqrt3}{2}=\dfrac{1+\sqrt3}{2}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(8.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(1,0), C=(1,1), D=(0,1), O=(0.5,0.5);
+pair Ept=(0.5,-sqrt(3)/2), F=(1+sqrt(3)/2,0.5), G=(0.5,1+sqrt(3)/2), H=(-sqrt(3)/2,0.5);
+fill(Ept--F--G--H--cycle,palegray);
+draw(Ept--F--G--H--cycle,blue+linewidth(1));
+draw(A--Ept--B); draw(B--F--C); draw(C--G--D); draw(D--H--A);
+draw(A--B--C--D--cycle,linewidth(1));
+draw(O--Ept,dashed);
+dot(O);
+label("$A$",A,W); label("$B$",B,E); label("$C$",C,E); label("$D$",D,W);
+label("$E$",Ept,S); label("$F$",F,E); label("$G$",G,N); label("$H$",H,W);
+label("$O$",O,N);
+label("$\dfrac{1}{2}$",(0.5,0.25),E);
+label("$\dfrac{\sqrt3}{2}$",(0.5,-0.28),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The rotation by $90^\circ$ about $O$ maps $A\to B\to C\to D\to A$, hence maps the triangles onto each other and $E\to F\to G\to H\to E$. So $EFGH$ is a square with centre $O$, whose diagonals have length $2\cdot OE$. The area of a square with diagonal $d$ is $\dfrac{d^2}{2}$, so
+\[
+[EFGH]=\dfrac{(2\,OE)^2}{2}=2\left(\dfrac{1+\sqrt3}{2}\right)^2=\dfrac{4+2\sqrt3}{2}=\boxed{2+\sqrt3}.
+\]

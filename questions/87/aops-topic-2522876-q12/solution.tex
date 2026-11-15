@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h2522876_week_of_410_problems_
+% Stable identity: aops-topic-2522876-q12
+Split the process into $12$ stages: stage $j$ lasts from the day after the $(j-1)$-th cupcake is eaten up to and including the day the $j$-th is eaten. Each stage lasts a number $T$ of days, where every day independently ends the stage with probability $p=\dfrac18$.
+
+\textbf{Expected length of a stage.} On the first day the stage ends with probability $p$; otherwise it starts afresh. So $E(T)=1+(1-p)E(T)$, i.e. $E(T)=\dfrac1p=8$ (and $E(T)$ is finite since $P(T>t)=(1-p)^t$ decays geometrically).
+
+By linearity of expectation, the expected total is $12\cdot8=\boxed{96}$ days.

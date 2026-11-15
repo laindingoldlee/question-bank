@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1991749_geometry_problem
+% Stable identity: aops-topic-1991749-q01
+Ratios of lengths along a line are unchanged by an affine map, so we may take the parallelogram to be a rectangle with convenient coordinates:
+\[
+A=(0,0),\quad B=(8,0),\quad D=(0,4),\quad C=(8,4),\qquad E=(0,1),\quad F=(7,0).
+\]
+Points of $CE$ are $C+s(E-C)=(8-8s,\ 4-3s)$, and points of $DF$ are $D+u(F-D)=(7u,\ 4-4u)$. Equating, $4-3s=4-4u$ gives $s=\dfrac{4u}{3}$, and then $8-\dfrac{32u}{3}=7u$ gives $u=\dfrac{24}{53}$, $s=\dfrac{32}{53}$. So $P=\left(\dfrac{168}{53},\dfrac{116}{53}\right)$ and $CP=s\cdot CE$, $PE=(1-s)\cdot CE$:
+\[
+CP:PE=\dfrac{32}{53}:\dfrac{21}{53}=\boxed{32:21}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(8,0), D=(2,4), C=B+D;
+pair Ee=A+(D-A)/4, F=(7,0);
+pair P=C+32/53*(Ee-C);
+draw(A--B--C--D--cycle,linewidth(1));
+draw(C--Ee,blue+linewidth(0.9)); draw(D--F,red+linewidth(0.9));
+dot(A);dot(B);dot(C);dot(D);dot(Ee);dot(F);dot(P);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$E$",Ee,W);label("$F$",F,S);label("$P$",P,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Check without coordinates: extend $DF$ to meet line $BC$ at $G$. Triangles $FBG$ and $FAD$ are similar with ratio $FB:FA=1:7$, so $BG=\dfrac{AD}{7}$ and $CG=\dfrac{8}{7}AD$. Triangles $PED$ and $PCG$ are similar, so $CP:PE=CG:ED=\dfrac{8}{7}AD:\dfrac{3}{4}AD=32:21$.)

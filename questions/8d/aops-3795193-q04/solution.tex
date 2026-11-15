@@ -1,0 +1,9 @@
+Let $O=(\dfrac{n+1}{2},0)$. For any point $P$, the squared-distance identity gives $\dfrac{1}{n}\sum_{i=1}^n|P-A_i|^2=|P-O|^2+\dfrac{n^2-1}{12}$. If $|P-O|^2\le\dfrac{11n^2+1}{12}$, the right side is at most $n^2$. Cauchy--Schwarz gives $\sum|P-A_i|\le n\sqrt{\dfrac{1}{n}\sum|P-A_i|^2}\le n^2$, and the reciprocal inequality gives $\sum\dfrac{1}{|P-A_i|}\ge\dfrac{n^2}{\sum|P-A_i|}\ge1$. Points equal to an $A_i$ qualify by convention. Thus $M_n$ contains the disk centred at $O$ of radius $\sqrt{\dfrac{11n^2+1}{12}}$, proving $\boxed{S_n\ge\dfrac{\pi}{12}(11n^2+1)}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair O=(3,0);draw(circle(O,sqrt(23)));for(int i=1;i<=5;++i){dot((i,0));label("$A_{"+string(i)+"}$",(i,0),(0,-1));}label("$O$",O,(0,1));
+\end{asy}
+

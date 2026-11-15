@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1712340_100th_post_problem
+% Stable identity: aops-topic-1712340-q01
+The product is $P=77837760000=2^9\cdot3^5\cdot5^4\cdot7\cdot11\cdot13$ (divide out $10^4$ to get $7783776=2^5\cdot3^5\cdot7\cdot11\cdot13$).
+\begin{itemize}
+\item $17,19\nmid P$, so $17$ and $19$ are not used. The only multiples of $11$ and $13$ up to $20$ are $11$ and $13$, so both are used.
+\item The multiples of $5$ are $5,10,15,20$, each contributing exactly one factor $5$; to reach $5^4$ all four are used.
+\item The multiples of $7$ are $7$ and $14$; exactly one of them is used.
+\end{itemize}
+Now $5\cdot10\cdot15\cdot20=2^3\cdot3\cdot5^4$, so the remaining three numbers, chosen from $\{1,2,3,4,6,8,9,12,16,18\}$, must have product $2^6\cdot3^4$ (if $7$ is used) or $2^5\cdot3^4$ (if $14$ is used). Each of these numbers contains at most $3^2$, so the exponent $4$ of $3$ arises either as $2+2+0$ or as $2+1+1$.
+\begin{itemize}
+\item $2+1+1$: one of $9,18$ and two of $3,6,12$. The power of $2$ in such a product is at most $2^{1+1+2}=2^4$, too small.
+\item $2+2+0$: the numbers $9$ and $18$ (product $2\cdot3^4$) and a power of $2$, which must be $2^5=32$ (too big) or $2^4=16$ (with $14$).
+\end{itemize}
+Hence the numbers are
+\[
+5,9,10,11,13,14,15,16,18,20 ,
+\]
+and their sum is $\boxed{131}$.

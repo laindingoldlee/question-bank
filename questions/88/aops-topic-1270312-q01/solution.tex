@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1270312_its_that_time_again_3d_geometry
+% Stable identity: aops-topic-1270312-q01
+The solid (a cuboctahedron) is obtained from a cube by cutting off its eight corners through the midpoints of the edges at each corner: its vertices are the $12$ edge midpoints of a cube. An edge of the solid joins midpoints of two adjacent cube edges, so its length is $\dfrac{\sqrt2}{2}$ times the cube's edge. Hence the cube has edge $2\div\dfrac{\sqrt2}{2}=2\sqrt2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair p(real x,real y,real z){return (x+0.45*z,y+0.32*z);}
+for(int i=0;i<2;++i) for(int j=0;j<2;++j){ draw(p(0,i,j)--p(1,i,j),gray+dotted); draw(p(i,0,j)--p(i,1,j),gray+dotted); draw(p(i,j,0)--p(i,j,1),gray+dotted);}
+void face(pair a,pair b,pair c,pair d){ draw((a+b)/2--(b+c)/2--(c+d)/2--(d+a)/2--cycle,blue);}
+face(p(0,0,0),p(1,0,0),p(1,1,0),p(0,1,0)); face(p(0,0,1),p(1,0,1),p(1,1,1),p(0,1,1));
+face(p(0,0,0),p(1,0,0),p(1,0,1),p(0,0,1)); face(p(0,1,0),p(1,1,0),p(1,1,1),p(0,1,1));
+face(p(0,0,0),p(0,1,0),p(0,1,1),p(0,0,1)); face(p(1,0,0),p(1,1,0),p(1,1,1),p(1,0,1));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Each removed corner is a tetrahedron with three mutually perpendicular edges of length $\sqrt2$, of volume $\dfrac{1}{6}(\sqrt2)^3=\dfrac{\sqrt2}{3}$. So the volume is
+\[
+(2\sqrt2)^3-8\cdot\dfrac{\sqrt2}{3}=16\sqrt2-\dfrac{8\sqrt2}{3}=\boxed{\dfrac{40\sqrt2}{3}\text{ cm}^3}.
+\]

@@ -1,0 +1,34 @@
+% Source: https://artofproblemsolving.com/community/c3h1694271_mathcounts_handbook_20172018_warmup_7_problem_96_hint_please
+% Stable identity: aops-topic-1694271-q01
+Let $V$ be a vertex of the hexagon and $M_1$, $M_2$ the midpoints of the two sides meeting at $V$; these are the centres of two adjacent semicircles. Two circles of radius $r$ are tangent when the distance between their centres is $2r$, and the point of tangency $T$ is the midpoint of $M_1M_2$, which lies inside the hexagon, on the inner halves of both circles, so the semicircles really touch there.
+
+In triangle $M_1VM_2$, $VM_1=VM_2=\dfrac {s}{2}$ and $\angle M_1VM_2=120^\circ$ (an interior angle of the regular hexagon). So
+\[
+M_1M_2=2\cdot\dfrac {s}{2}\sin60^\circ=\dfrac{\sqrt3}{2}s .
+\]
+Setting $M_1M_2=2r$ gives $r=\dfrac{\sqrt3}{4}s$, so
+\[
+\dfrac {r}{s}=\boxed{\dfrac{\sqrt3}{4}}.
+\]
+(The diameter $2r=\dfrac{\sqrt3}{2}s$ is less than $s$, so each semicircle fits on its side.)
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real s=4; real r=sqrt(3)/4*s;
+pair[] V; for(int k=0;k<6;++k) V[k]=s*dir(60*k);
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle,linewidth(0.9));
+for(int k=0;k<6;++k){
+ pair M=(V[k]+V[(k+1)%6])/2; real a=degrees(V[(k+1)%6]-V[k]);
+ draw(arc(M,r,a,a+180),blue+linewidth(0.8));
+}
+pair M0=(V[0]+V[1])/2,M1=(V[1]+V[2])/2;
+draw(M0--M1,red+dashed);
+dot(M0);dot(M1);dot((M0+M1)/2,red);
+draw(V[1]--M0,linewidth(0.9));
+label("$M_1$",M0,dir(30));label("$M_2$",M1,N);label("$T$",(M0+M1)/2,2.6*dir(-75),red);
+label("$s$",(V[4]+V[5])/2,S);
+dot(V[1]);label("$V$",V[1],N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

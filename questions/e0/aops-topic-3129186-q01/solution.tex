@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h3129186_2023_midmichigan_mathematical_olympiad__grades_56
+% Stable identity: aops-topic-3129186-q01
+Since $6\cdot INK\le999$, its hundreds digit $I$ must be 1. Thus $INK=100+10N+K$ with $0\le N\le6$. Testing these finite possibilities with distinct digits gives $\boxed{105\cdot6=630}$, so $I=1,N=0,K=5,P=6,E=3$. The following exhaustive digit check proves uniqueness.
+\begin{verbatim}
+from itertools import permutations
+v=[]
+for i,n,k,p,e in permutations(range(10),5):
+ if i and p and 6*(100*i+10*n+k)==100*p+10*e+n:
+  v.append((i,n,k,p,e))
+assert v==[(1,0,5,6,3)]
+\end{verbatim}

@@ -1,0 +1,9 @@
+Colour the unit cells whose row and column numbers are both even. Every $2\times2$ tile covers exactly one coloured cell. Every horizontal or vertical $1\times4$ tile covers either zero or two coloured cells. Thus the parity of the total number of coloured cells equals the parity of the number of square tiles. Replacing one square tile by one bar reverses that parity while leaving the board unchanged, a contradiction.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+for(int i=0;i<8;++i)for(int j=0;j<4;++j){path p=(i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle;if(i%2==0&&j%2==0)fill(p,lightgray);draw(p);}label("even row, even column shaded",(4,-.4),(0,-1));
+\end{asy}
+

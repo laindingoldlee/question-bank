@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1573693_area_of_a_triangle
+% Stable identity: aops-topic-1573693-q03
+The side from $\left(-\dfrac{\pi}{3},\dfrac{2\pi}{3}\right)$ to $\left(\dfrac{\pi}{3},\dfrac{2\pi}{3}\right)$ is horizontal with length $\dfrac{2\pi}{3}$. The vertex $\left(0,\dfrac{\pi}{2}\right)$ lies below it at vertical distance $\dfrac{2\pi}{3}-\dfrac{\pi}{2}=\dfrac{\pi}{6}$ (dashed).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real p=pi;
+pair A=(0,p/2),B=(p/3,2p/3),C=(-p/3,2p/3);
+draw((-2.6,0)--(2.6,0),gray,Arrow(TeXHead));draw((0,-0.4)--(0,2.9),gray,Arrow(TeXHead));
+label("$x$",(2.6,0),E,gray);label("$y$",(0,2.9),N,gray);
+fill(A--B--C--cycle,paleyellow);draw(A--B--C--cycle,linewidth(0.9));
+dot(A);dot(B);dot(C);
+label("$\left(0,\dfrac{\pi}{2}\right)$",A,S);label("$\left(\dfrac{\pi}{3},\dfrac{2\pi}{3}\right)$",B,E);label("$\left(-\dfrac{\pi}{3},\dfrac{2\pi}{3}\right)$",C,W);
+draw(A--(0,2p/3),dashed);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the area is
+\[
+\dfrac{1}{2}\cdot\dfrac{2\pi}{3}\cdot\dfrac{\pi}{6}=\boxed{\dfrac{\pi^2}{18}}.
+\]

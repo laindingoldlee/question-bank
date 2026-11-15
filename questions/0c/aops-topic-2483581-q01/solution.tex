@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2483581_number_theory_problem
+% Stable identity: aops-topic-2483581-q01
+Since $2700=4\cdot27\cdot25$ with pairwise coprime factors, find $x=2^{2021}$ modulo each factor.
+\begin{itemize}
+\item Modulo $4$: $x\equiv0$.
+\item Modulo $27$: $\varphi(27)=18$ and $2021=18\cdot112+5$, so by Euler's theorem $x\equiv2^5=32\equiv5$.
+\item Modulo $25$: $\varphi(25)=20$ and $2021=20\cdot101+1$, so $x\equiv2$.
+\end{itemize}
+From $x\equiv0\pmod4$ and $x\equiv2\pmod{25}$ we get $x\equiv52\pmod{100}$. Write $x=52+100k$. Since $52\equiv25$ and $100\equiv19\pmod{27}$, we need
+\[25+19k\equiv5\pmod{27}\iff19k\equiv7\pmod{27}.\]
+As $19\cdot10=190=7\cdot27+1$, the inverse of $19$ is $10$, so $k\equiv70\equiv16\pmod{27}$. Then $x\equiv52+1600=1652\pmod{2700}$, and the remainder is $\boxed{1652}$.

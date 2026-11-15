@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3248719_2024_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3248719-q10
+Put $M=(0,0),B=(-2,0),C=(2,0),A=(x,y)$ with $y\ne0$ and $x^2+y^2=9$. The circumcentre lies at $O=(0,k)$. Equality of $OA^2$ and $OB^2$ gives $2ky=5$. The altitude from $A$ is vertical, so $H=(x,h)$. The altitude from $B$ is perpendicular to $AC$, giving $(x+2)(x-2)+hy=0$. Thus $h=\dfrac{4-x^2}{y}=y-\dfrac{5}{y}$, and $H=(x,y-\dfrac{5}{y})$. Consequently $A\cdot H=9-5=4$. The given angle gives $4=|A||H|\cos60^\circ=\dfrac{3}{2}|H|$, so $|H|=\dfrac{8}{3}$. But $|H|^2=-1+\dfrac{25}{y^2}$, yielding $y^2=\dfrac{225}{73}$. Hence $k^2=\dfrac{25}{4y^2}=\dfrac{73}{36}$ and $R^2=4+k^2=\dfrac{217}{36}$. Therefore $\boxed{R=\dfrac{\sqrt{217}}{6}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair M=(0,0),B=(-2,0),C=(2,0),A=(12sqrt(3)/sqrt(73),15/sqrt(73)),O=(0,sqrt(73)/6),H=(A.x,A.y-5/A.y);draw(circle(O,sqrt(217)/6),gray);draw(A--B--C--cycle);draw(A--H^^M--A^^M--H,dashed);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$M$",M,SW);label("$O$",O,W);label("$H$",H,S);
+\end{asy}

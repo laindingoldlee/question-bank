@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1555099_solve_using_pie
+% Stable identity: aops-topic-1555099-q01
+The digits that are multiples of $3$ are $0,3,6,9$ (four digits; three of them, $3,6,9$, can lead). There are $9000$ four-digit integers. For $i=1,2,3$ let $A_i$ be the set of four-digit integers whose $i$-th and $(i+1)$-th digits are both multiples of $3$. Count position by position (first digit: $9$ choices in general, $3$ if it must be a multiple of $3$; other digits: $10$ in general, $4$ if they must be multiples of $3$):
+\[
+|A_1|=3\cdot4\cdot10\cdot10=1200,\quad |A_2|=9\cdot4\cdot4\cdot10=1440,\quad |A_3|=9\cdot10\cdot4\cdot4=1440,
+\]
+\[
+|A_1\cap A_2|=3\cdot4\cdot4\cdot10=480,\quad |A_2\cap A_3|=9\cdot4\cdot4\cdot4=576,\quad |A_1\cap A_3|=3\cdot4\cdot4\cdot4=192,
+\]
+\[
+|A_1\cap A_2\cap A_3|=3\cdot4\cdot4\cdot4=192 .
+\]
+(In $A_1\cap A_3$ all four digits are multiples of $3$, so it equals $A_1\cap A_2\cap A_3$.) By inclusion--exclusion,
+\[
+|A_1\cup A_2\cup A_3|=(1200+1440+1440)-(480+576+192)+192=3024 .
+\]
+The answer is $9000-3024=\boxed{5976}$.
+
+(Check by recursion: let $a_k$, $b_k$ count the valid $k$-digit strings ending in a non-multiple, resp.\ a multiple, of $3$. Then $a_1=6$, $b_1=3$, $a_{k+1}=6(a_k+b_k)$, $b_{k+1}=4a_k$, giving $(a_4,b_4)=(4104,1872)$ and $4104+1872=5976$.)

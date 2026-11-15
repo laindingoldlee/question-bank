@@ -1,0 +1,25 @@
+Take $A$ as the origin and unit vectors $u,v$ along $AB,AC$. Then $B=4u,C=6v$, and the cosine rule gives $u\cdot v=\dfrac{9}{16}$. Write $D=du,E=ev$, using signed distances. The condition is $|d-4|=|e-6|>0$, so $d-4=\pm(e-6)$.
+
+A circle through the origin has equation $|X|^2=w\cdot X$. For the first circle, $w\cdot u=4$, $w\cdot v=6$; for the second, $w'\cdot u=d$, $w'\cdot v=e$. Their radical axis $AP$ is perpendicular to $w'-w$. It is consequently parallel to $u-v$ when $d-4=e-6$, and to $u+v$ when $d-4=-(e-6)$.
+
+For a unit direction $n$ along this axis, substitution $X=tn$ into the first circle gives the nonzero intersection parameter $t=w\cdot n$. Hence the two squared lengths are
+\[
+\dfrac{(4-6)^2}{|u-v|^2}
+=\dfrac{4}{2-\dfrac{9}{8}}=\dfrac{32}{7},
+\quad
+\dfrac{(4+6)^2}{|u+v|^2}
+=\dfrac{100}{2+\dfrac{9}{8}}=32.
+\]
+Both occur, for example with $(d,e)=(5,7)$ and $(5,5)$, respectively; their triangles are nondegenerate. The sum is $\dfrac{256}{7}$, so $\boxed{p+q=263}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),u=(1,0),v=(9./16,5*sqrt(7)/16),B=4*u,C=6*v,D=5*u,E=7*v;pair O=(2,(6-4*v.x)/(2*v.y)),J=(2.5,(7-5*v.x)/(2*v.y)),P=(-16./7)*(u-v);draw(circle(O,abs(O)),gray);draw(circle(J,abs(J)),blue);draw(A--B--C--cycle);draw(A--D--E--cycle,dashed);draw(A--P,red);label("$A$",A,(-1,-1));label("$B$",B,(0,-1));label("$C$",C,(-1,1));label("$D$",D,(1,0));label("$E$",E,(0,1));label("$P$",P,(-1,0));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),u=(1,0),v=(9./16,5*sqrt(7)/16),B=4*u,C=6*v,D=5*u,E=5*v;pair O=(2,(6-4*v.x)/(2*v.y)),J=(2.5,(5-5*v.x)/(2*v.y)),P=3.2*(u+v);draw(circle(O,abs(O)),gray);draw(circle(J,abs(J)),blue);draw(A--B--C--cycle);draw(A--D--E--cycle,dashed);draw(A--P,red);label("$A$",A,(-1,-1));label("$B$",B,(0,-1));label("$C$",C,(0,1));label("$D$",D,(1,-1));label("$E$",E,(-1,0));label("$P$",P,(1,1));
+\end{asy}

@@ -1,0 +1,7 @@
+The farthest point of the larger square from its center is at distance $\dfrac{17}{\sqrt2}<15$. Consequently its intersection with the smaller square is exactly its intersection with the $90^\circ$ wedge formed by the two sides through the common center; the smaller square's two far sides impose no further restriction. Rotating this wedge through multiples of $90^\circ$ partitions the larger square into four pieces of equal area, since the larger square has that rotational symmetry. Thus the overlap area is $\boxed{\dfrac{17^2}{4}=\dfrac{289}{4}}$, independent of orientation.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair u=dir(20),v=dir(110);path big=box((-8.5,-8.5),(8.5,8.5)),small=(0,0)--15u--15u+15v--15v--cycle;fill(big,lightgray);picture shade;fill(shade,small,lightblue);clip(shade,big);add(shade);draw(big);draw(small,blue);dot((0,0));label('$O$',(0,0),S);
+\end{asy}

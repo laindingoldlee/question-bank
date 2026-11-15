@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2787008_1998_manhattan_mathematical_olympiad_grades_56_problems_14
+% Stable identity: aops-topic-2787008-q01
+Adding the three side sums counts every nonvertex once and each vertex twice. Thus $3S=45+v$, where $v$ is the sum at the three vertices. Since $6\le v\le24$, $17\le S\le23$. Both bounds are attained. For 17, put 1,2,3 at vertices $A,B,C$; the two inner entries along $AB,BC,CA$ are respectively $(5,9),(4,8),(6,7)$. For 23, use vertices 7,8,9 and pairs $(2,6),(1,5),(3,4)$. Therefore $\boxed{17\text{ and }23}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int h=0;h<2;++h){pair A=(8*h,0),B=A+(6,0),C=A+(3,5);pair[] P={A,B,C,(2*A+B)/3,(A+2*B)/3,(2*B+C)/3,(B+2*C)/3,(2*C+A)/3,(C+2*A)/3};int[] vals=h==0 ? new int[]{1,2,3,5,9,4,8,6,7}:new int[]{7,8,9,2,6,1,5,3,4};draw(A--B--C--cycle);for(int k=0;k<9;++k){fill(circle(P[k],.25),white);draw(circle(P[k],.25));label(string(vals[k]),P[k]);}label(h==0 ? "$S=17$":"$S=23$",A+(3,-.7));}
+\end{asy}

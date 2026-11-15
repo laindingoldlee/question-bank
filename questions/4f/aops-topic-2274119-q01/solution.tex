@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2274119_a_geometry_problem
+% Stable identity: aops-topic-2274119-q01
+Use vectors with origin $A$: let $\vec b=\overrightarrow{AB}$ and $\vec c=\overrightarrow{AC}$, which are not parallel. Write the signed ratios
+\[x=\dfrac{AM}{AB},\qquad y=\dfrac{AN}{AC},\]
+so that $\overrightarrow{AM}=x\vec b$ and $\overrightarrow{AN}=y\vec c$. Since the line does not pass through $A$, $x\ne0$ and $y\ne0$. The centroid is $\overrightarrow{AG}=\dfrac{\vec b+\vec c}{3}$ (it lies two thirds of the way from $A$ to the midpoint $D$ of $BC$).
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(1,4),B=(0,0),C=(6,0),G=(7/3,4/3),D=(3,0),M=(3/7,12/7),Nn=(5,4/5);
+draw(A--B--C--cycle,linewidth(0.8));
+draw(A--D,dashed);
+draw((M-0.25*(Nn-M))--(Nn+0.2*(Nn-M)),blue);
+dot(A);dot(B);dot(C);dot(G,red);dot(D);dot(M,blue);dot(Nn,blue);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$G$",G,SW,red); label("$D$",D,S);
+label("$M$",M,NW,blue); label("$N$",Nn,NE,blue);
+\end{asy}
+
+\textbf{Step 1: $\dfrac{AB}{AM}+\dfrac{AC}{AN}=3$.} Since $G$ lies on line $MN$, there is a number $t$ with $\overrightarrow{AG}=(1-t)\overrightarrow{AM}+t\overrightarrow{AN}$, that is,
+\[\dfrac{1}{3}\vec b+\dfrac{1}{3}\vec c=(1-t)x\,\vec b+ty\,\vec c.\]
+As $\vec b$ and $\vec c$ are not parallel, the coefficients agree: $(1-t)x=\dfrac{1}{3}$ and $ty=\dfrac{1}{3}$. Hence
+\[\dfrac{1}{3x}+\dfrac{1}{3y}=(1-t)+t=1,\qquad\text{i.e.}\qquad\dfrac{AB}{AM}+\dfrac{AC}{AN}=3.\]
+
+\textbf{Step 2: the identity.} Multiplying by $AM\cdot AN$ gives $AB\cdot AN+AC\cdot AM=3\,AM\cdot AN$. With the signed lengths $MB=AB-AM$ and $NC=AC-AN$,
+\[AN\cdot MB+AM\cdot NC=AN\cdot AB-AN\cdot AM+AM\cdot AC-AM\cdot AN=3\,AM\cdot AN-2\,AM\cdot AN=AM\cdot AN.\]
+This holds with signs, whether $M$ and $N$ lie on the sides or on their extensions. $\blacksquare$
+
+(For example, the line through $G$ parallel to $BC$ has $AM=\dfrac{2}{3}AB$, $AN=\dfrac{2}{3}AC$, and indeed $\dfrac{3}{2}+\dfrac{3}{2}=3$.)

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3129147_2022_midmichigan_mathematical_olympiad__grades_56
+% Stable identity: aops-topic-3129147-q02
+Partition the rows into groups of sizes $2,2,2,1$ and do the same for columns. The resulting 16 rectangular blocks each have both dimensions at most 2; any two squares in such a block touch, so each contains at most one black square. This gives an upper bound of 16. Colour precisely the squares whose row and column numbers are both odd. These 16 squares do not touch, so the maximum is $\boxed{16}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=0;i<7;++i)for(int j=0;j<7;++j){path p=(i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle;filldraw(p,(i%2==0&&j%2==0)?black:white,gray);}
+\end{asy}

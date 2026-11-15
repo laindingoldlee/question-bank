@@ -1,0 +1,7 @@
+The bottom die contributes opposite hidden values a and 7-a, whose product is six, ten, or twelve. Let the top die's hidden value be b. The product of all twelve values is $(6!)^2=720^2$, so hidden product H divides the visible product exactly when $H^2\mid720^2$, equivalently $H\mid720$. Every multiple of six or twelve by b=1,...,6 divides 720. For ten times b, only b=5 fails, since fifty has two factors of five. Therefore the hidden values are two, five, five, and their sum is $\boxed{12}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p={(0,0),(2,0),(2.7,.7),(.7,.7)};for(int k=0;k<2;++k){pair sh=(0,2k);draw(p[0]+sh--p[1]+sh--p[2]+sh--p[3]+sh--cycle);draw(p[0]+sh+(0,2)--p[1]+sh+(0,2)--p[2]+sh+(0,2)--p[3]+sh+(0,2)--cycle);for(int i=0;i<4;++i)draw(p[i]+sh--p[i]+sh+(0,2));}label("Hidden interface: 5 and 5",(3,2),(1,0));label("Hidden bottom: 2",(1,-.5));
+\end{asy}

@@ -1,0 +1,9 @@
+Scale the circumradius to 1 and use $A = (1,0) , C = (- \dfrac{1}{2} , \dfrac{\sqrt{3}}{2}) , E = (- \dfrac{1}{2} , - \dfrac{\sqrt{3}}{2}) , F = (\dfrac{1}{2} , - \dfrac{\sqrt{3}}{2})$. The right angle $CPE$ puts $P$ on $(x + \dfrac{1}{2})^2 + y^2 = \dfrac{3}{4}$. The $120^\circ$ locus for chord $AC$ lies on one of the two radius-one circles through $A,C$, with centres $(0,0)$ and $(\dfrac{1}{2} , \dfrac{\sqrt{3}}{2})$. The first meets the diameter-circle only at $C,E$, both excluded. The second meets it at $C$ and $P = (\dfrac{5}{14} , - \dfrac{\sqrt{3}}{14})$; this point lies inside the hexagon and has the required obtuse angle. Now $FE=(-1,0)$ and $F P = (- \dfrac{1}{7} , \dfrac{3 \sqrt{3}}{7})$, so $\cos^2 \angle E F P = \dfrac{\dfrac{1}{49}}{\dfrac{28}{49}} = \dfrac{1}{28}$. Thus $\boxed{m+n=29}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={(1,0),(0.5,sqrt(3)/2),(-0.5,sqrt(3)/2),(-1,0),(-0.5,-sqrt(3)/2),(0.5,-sqrt(3)/2)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--p[3]--p[4]--p[5]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));dot(p[3]);label("$D$",p[3],unit(p[3]-labelCentre));dot(p[4]);label("$E$",p[4],unit(p[4]-labelCentre));dot(p[5]);label("$F$",p[5],unit(p[5]-labelCentre));pair P=(5/14,-sqrt(3)/14);draw(p[0]--P--p[2]);draw(p[4]--P--p[5]);label("$P$",P,(1,1));
+\end{asy}
+

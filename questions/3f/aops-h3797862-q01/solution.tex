@@ -1,0 +1,7 @@
+A diagonal joins vertices separated by $j$ sides along the shorter boundary route, where $2\le j\le1013$. Its length is $2R\sin\dfrac{j\pi}{2026}$. Sine is strictly increasing on this interval, so there are exactly $1012$ possible lengths. Choosing one of each avoids equality; choosing $1013$ diagonals forces an equal pair by the pigeonhole principle. Thus the answer is $\boxed{1013}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+path p=dir(0);for(int i=1;i<2026;++i)p=p--dir(360.0*i/2026);draw(p--cycle);pair A=dir(0),B=dir(360.0*200/2026),C=dir(180);draw(A--B,blue);draw(A--C,red);draw((0,0)--B,dashed);label("$A_0$",A,(1,0));label("$A_{200}$",B,(1,1));label("$A_{1013}$",C,(-1,0));label("$O$",(0,0),(0,-1));
+\end{asy}

@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2088986_geometry_problem
+% Stable identity: aops-topic-2088986-q01
+Let $O_1$ and $O_2$ be the centres. The line $O_1O_2$ is the perpendicular bisector of $AB$, so it meets $AB$ at its midpoint, at distance $6$ from $A$. By the Pythagorean theorem the centres are at distances
+\[\sqrt{10^2-6^2}=8\qquad\text{and}\qquad\sqrt{7.5^2-6^2}=\sqrt{20.25}=4.5\]
+from $AB$, on opposite sides, so $O_1O_2=8+4.5=12.5$.
+
+Now take any line $\ell$ through $A$ meeting the circles again at $E$ and $F$, and let $M$ and $N$ be the feet of the perpendiculars from $O_1$ and $O_2$ to $\ell$. The perpendicular from a centre to a chord bisects it, so $M$ is the midpoint of $AE$ and $N$ is the midpoint of $AF$. Measuring positions along $\ell$, $E=2M-A$ and $F=2N-A$, so
+\[EF=2MN .\]
+But $MN$ is the projection of the segment $O_1O_2$ onto $\ell$, so $MN\le O_1O_2$, with equality exactly when $\ell\parallel O_1O_2$. Hence $EF\le2\cdot12.5=25$, and the line through $A$ parallel to $O_1O_2$ gives $EF=25$ (with $A$ between $E$ and $F$):
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+pair O1=(-8,0), O2=(4.5,0), A=(0,6), B=(0,-6);
+pair Ee=(-16,6), F=(9,6), M=(-8,6), Nn=(4.5,6);
+draw(circle(O1,10)); draw(circle(O2,7.5));
+draw(A--B,gray); draw(O1--O2,gray);
+draw(Ee--F,red+linewidth(1.2));
+draw(O1--M,dashed); draw(O2--Nn,dashed);
+dot(O1); dot(O2); dot(A); dot(B); dot(Ee,red); dot(F,red); dot(M); dot(Nn);
+label("$O_1$",O1,S); label("$O_2$",O2,S); label("$A$",A,N); label("$B$",B,S);
+label("$E$",Ee,W,red); label("$F$",F,E,red); label("$M$",M,N); label("$N$",Nn,N);
+label("$8$",(-4,0),S,fontsize(8pt)); label("$4.5$",(3.1,0),N,fontsize(8pt)); label("$6$",(0,3),E,fontsize(8pt));
+draw(O1--(O1+(-6,-8)),gray+dotted); label("$10$",O1+(-3,-4),W,fontsize(8pt));
+label("$7.5$",(O2+(O2+(4.5,-6)))/2,E,fontsize(8pt)); draw(O2--(O2+(4.5,-6)),gray+dotted);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The greatest possible length is $\boxed{25}$.
+
+(If the centres were on the same side of $AB$, the same argument would give $O_1O_2=8-4.5=3.5$ and a maximum of $7$.)

@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2396594_prime_number
+% Stable identity: aops-topic-2396594-q01
+We prove the contrapositive: if $n$ is not prime, then $R_n$ is not prime.
+
+If $n=1$, then $R_1=1$ is not prime. Otherwise $n=ab$ with integers $a,b\ge2$. Since $R_m=\dfrac{10^m-1}{9}$,
+\[R_n=\dfrac{10^{ab}-1}{9}=\dfrac{10^a-1}{9}\cdot\dfrac{10^{ab}-1}{10^a-1}=R_a\left(1+10^a+10^{2a}+\cdots+10^{(b-1)a}\right),\]
+using the geometric series $1+y+\cdots+y^{b-1}=\dfrac{y^b-1}{y-1}$ with $y=10^a$. In digits: $R_n$ consists of $b$ blocks of $a$ ones, which is $R_a$ times the number $100\cdots0100\cdots01$.
+
+Both factors are greater than $1$: $R_a\ge11$ because $a\ge2$, and the second factor is at least $1+10^a$. So $R_n$ is composite. Hence if $R_n$ is prime, $n$ must be prime. $\blacksquare$
+
+(The converse is false: $R_3=111=3\cdot37$.)

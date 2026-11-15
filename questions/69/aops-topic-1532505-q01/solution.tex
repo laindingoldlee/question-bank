@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1532505_problem_on_geometry
+% Stable identity: aops-topic-1532505-q01
+Extend $AD$ beyond $D$ to the point $G$ with $DG=PD$:
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.2,4.0),B=(0,0),C=(6,0),D=(3,0);
+pair F=(0.7317919,2.4393064),P=(2.2103950,1.7546778);
+pair G=2*D-P;
+draw(A--B--C--cycle,linewidth(1));
+draw(A--D,linewidth(0.9));draw(C--F,linewidth(0.9));
+draw(D--G,dashed);draw(B--G,blue+dashed);draw(C--G,dashed+gray(0.5));draw(B--P,dashed+gray(0.5));
+// equal ticks
+void tick(pair p,pair q,int k){ pair m=(p+q)/2, u=unit(q-p), v=rotate(90)*u; for(int i=0;i<k;++i){ pair c=m+(i-(k-1)/2)*0.13*u; draw(c-0.13*v--c+0.13*v);} }
+tick(A,F,1);tick(F,P,1);tick(B,D,2);tick(D,C,2);
+dot(A);dot(B);dot(C);dot(D);dot(F);dot(P);dot(G,blue);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,SW);
+label("$F$",F,W);label("$P$",P,dir(40));label("$G$",G,S,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{A parallelogram.} The diagonals $PG$ and $BC$ of the quadrilateral $PBGC$ bisect each other at $D$ ($D$ is the midpoint of $BC$ and of $PG$), so $PBGC$ is a parallelogram. Hence $BG=PC$ and $BG\parallel PC$, i.e.\ $BG\parallel FC$.
+
+\textbf{An isosceles triangle.} Since $AF=PF$, triangle $AFP$ is isosceles, so $\angle FAP=\angle FPA$. The lines $FP$ and $BG$ are parallel, and $A$, $P$, $G$ are collinear with $P$ between $A$ and $G$, so the corresponding angles are equal: $\angle BGA=\angle FPA$. Also $\angle BAG=\angle FAP$ (the same angle, as $F$ is on $AB$ and $P$, $G$ on ray $AD$). Therefore
+\[
+\angle BAG=\angle FAP=\angle FPA=\angle BGA ,
+\]
+so triangle $ABG$ is isosceles with $AB=BG$. Combining, $PC=BG=AB$. $\blacksquare$

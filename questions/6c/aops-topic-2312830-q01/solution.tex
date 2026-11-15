@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2312830_minimum_possible_degree
+% Stable identity: aops-topic-2312830-q01
+Put $a_5=\sqrt5$, $a_4=\sqrt{4-a_5}$, $a_3=\sqrt{3-a_4}$, $a_2=\sqrt{2-a_3}$ and $a_1=\sqrt{1-a_2}=\alpha$. These are real: $4-\sqrt5>0$; $a_4<2$, so $3-a_4>1$ and $a_3>1$; then $2-a_3>0$ and $a_2<1$, so $1-a_2>0$.
+
+\textbf{A polynomial of degree $32$.} From the definitions, $a_2=1-\alpha^2$, $a_3=2-a_2^2$, $a_4=3-a_3^2$, $a_5=4-a_4^2$ and $a_5^2=5$. Hence $g(\alpha)=0$ for
+\[g(x)=\left(4-\left(3-\left(2-\left(1-x^2\right)^2\right)^2\right)^2\right)^2-5,\]
+a polynomial with integer coefficients and leading coefficient $1$, of degree $2\cdot2\cdot2\cdot2\cdot2=32$.
+
+\textbf{No smaller degree.} We use a standard fact. Let $F$ be a field of real numbers and $c\in F$ a number that is not the square of an element of $F$, and let $d=\sqrt c$. Then $d\notin F$, so every element of $F(d)=\{u+vd:u,v\in F\}$ has exactly one such representation, $F(d)$ is again a field, and the conjugation $\sigma(u+vd)=u-vd$ respects sums and products. So the \emph{norm} $N(z)=z\,\sigma(z)=u^2-cv^2$ lies in $F$ and satisfies $N(zw)=N(z)N(w)$. In particular, \emph{if $z$ is a square in $F(d)$, then $N(z)$ is a square in $F$.}
+
+Let $F_5=\mathbb Q(a_5)$, $F_4=F_5(a_4)$, $F_3=F_4(a_3)$, $F_2=F_3(a_2)$, $F_1=F_2(a_1)$. We check that each radicand is not a square in the field before it:
+\begin{itemize}
+\item $5$ is not the square of a rational number.
+\item $4-a_5$ in $F_5$: $N(4-\sqrt5)=16-5=11$, not a rational square.
+\item $3-a_4$ in $F_4$: $N(3-a_4)=9-a_4^2=5+\sqrt5$. This is not a square in $F_5$, because $N(5+\sqrt5)=25-5=20$ is not a rational square.
+\item $2-a_3$ in $F_3$: $N(2-a_3)=4-a_3^2=1+a_4$. If $1+a_4$ were a square in $F_4$, then $N(1+a_4)=1-a_4^2=\sqrt5-3$ would be a square in $F_5$; but $\sqrt5-3<0$, and $F_5$ consists of real numbers.
+\item $1-a_2$ in $F_2$: $N(1-a_2)=1-a_2^2=a_3-1$. If $a_3-1$ were a square in $F_3$, then $N(a_3-1)=(a_3-1)(-a_3-1)=1-a_3^2=a_4-2$ would be a square in $F_4$; but $a_4-2<0$.
+\end{itemize}
+So at each of the five steps the dimension doubles: the $32$ products $a_1^{\varepsilon_1}a_2^{\varepsilon_2}a_3^{\varepsilon_3}a_4^{\varepsilon_4}a_5^{\varepsilon_5}$ with each $\varepsilon_i\in\{0,1\}$ are linearly independent over $\mathbb Q$ and span $F_1$, so $F_1$ has dimension $32$ over $\mathbb Q$.
+
+Now suppose $f(\alpha)=0$ for a nonzero rational polynomial $f$ of degree $m<32$. Dividing by the leading coefficient, $\alpha^m$ is a rational combination of $1,\alpha,\dots,\alpha^{m-1}$, and multiplying by $\alpha$ repeatedly, so is every power $\alpha^j$. Each $a_i$ is a polynomial in $\alpha$ (for example $a_2=1-\alpha^2$), so every element of $F_1$ is a rational combination of $1,\alpha,\dots,\alpha^{m-1}$, and $F_1$ would have dimension at most $m<32$, a contradiction. Hence the smallest degree is $\boxed{32}$.
+
+\textbf{(b)} If $f$ has degree $32$ and leading coefficient $1$, then $f-g$ has degree less than $32$ and vanishes at $\alpha$, so $f-g=0$ by (a), i.e. $f=g$. The sum of the coefficients of $g$ is
+\[g(1)=\left(4-\left(3-(2-0)^2\right)^2\right)^2-5=(4-1)^2-5=\boxed{4}.\]

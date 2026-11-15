@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3119891_help_me_please
+% Stable identity: aops-topic-3119891-q01
+Choose the ordered pair of distinct middle O cells; any two are adjacent. Each has five neighbouring N cells. For fixed O cells, this gives $25$ choices of starting and ending N cells, except a common neighbour cannot be chosen twice. Horizontally or vertically adjacent O cells have two common N neighbours; diagonally opposite O cells have none. There are eight ordered side-adjacent O pairs and four ordered diagonal pairs. Hence the answer is $8(25-2)+4(25)=\boxed{284}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=0;i<4;++i)for(int j=0;j<4;++j){draw((i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle,gray);label((i>0&&i<3&&j>0&&j<3)?"O":"N",(i+0.5,j+0.5));}
+\end{asy}

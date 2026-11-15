@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2856046_geometry
+% Stable identity: aops-topic-2856046-q01
+Through each vertex of $\triangle ABC$ draw the line parallel to the opposite side. These three lines form a triangle $A'B'C'$ (with $A'$ opposite $A$, and so on).
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.2,3),B=(0,0),C=(4,0);
+pair A2=B+C-A,B2=A+C-B,C2=A+B-C;
+draw(A2--B2--C2--cycle,dashed);draw(A--B--C--cycle,linewidth(1));
+pair foot(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+pair D=foot(A,B,C),E=foot(B,A,C),F=foot(C,A,B);pair H=extension(A,D,B,E);
+draw(A--D,dotted);draw(B--E,dotted);draw(C--F,dotted);dot(H);
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,E);label("$A'$",A2,S);label("$B'$",B2,NE);label("$C'$",C2,NW);label("$H$",H,E);
+\end{asy}
+
+Quadrilaterals $ABCB'$ and $ACBC'$ are parallelograms (opposite sides parallel), so $AB'=BC=C'A$. Hence $A$ is the midpoint of $B'C'$, and similarly $B$ and $C$ are midpoints of $C'A'$ and $A'B'$.
+
+The altitude from $A$ is perpendicular to $BC$, hence to $B'C'\parallel BC$, and passes through the midpoint $A$ of $B'C'$: it is the perpendicular bisector of $B'C'$. Likewise the other two altitudes are the perpendicular bisectors of the other sides of $A'B'C'$. The perpendicular bisectors of a triangle meet at its circumcentre (a point equidistant from two vertices lies on their bisector, so the intersection of two bisectors lies on the third). Hence the altitudes concur. $\blacksquare$

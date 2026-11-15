@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1787120_geometry
+% Stable identity: aops-topic-1787120-q01
+Triangle $AOP$ has a right angle at $O$, with $AO=2$ and $OP=\dfrac{3}{2}$, so
+\[
+AP=\sqrt{4+\dfrac{9}{4}}=\dfrac{5}{2} .
+\]
+Since $AB$ is a diameter, $\angle ACB=90^\circ$. Triangles $AOP$ and $ACB$ are right-angled (at $O$ and at $C$) and share the angle at $A$, so they are similar, and
+\[
+\dfrac{AC}{AB}=\dfrac{AO}{AP}\ \Longrightarrow\ AC=4\cdot\dfrac{2}{\dfrac{5}{2}}=\boxed{\dfrac{16}{5}}.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=(-2,0),B=(2,0),P=(0,1.5),C=(14/25,48/25);
+draw(circle(O,2),linewidth(0.8));
+draw(A--B,linewidth(0.8));
+draw(A--C,linewidth(0.9));
+draw(O--P,linewidth(0.8));
+draw(C--B,dashed);
+draw((0,0)--(0.22,0)--(0.22,0.22)--(0,0.22),linewidth(0.5));
+pair u=unit(A-C),v=unit(B-C);
+draw(C+0.22*u--C+0.22*(u+v)--C+0.22*v,linewidth(0.5)+gray);
+dot(O);dot(P);
+label("$A$",A,W);label("$B$",B,E);label("$C$",C,NE);label("$O$",O,S);label("$P$",P,NW);
+label("$\dfrac{3}{2}$",(0,0.75),E);
+label("$2$",(-1,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Check with coordinates: $O=(0,0)$, $A=(-2,0)$, $P=\left(0,\dfrac{3}{2}\right)$; line $AP$ meets the circle again at $C=\left(\dfrac{14}{25},\dfrac{48}{25}\right)$, and $AC=\sqrt{\left(\dfrac{64}{25}\right)^2+\left(\dfrac{48}{25}\right)^2}=\dfrac{80}{25}=\dfrac{16}{5}$.)

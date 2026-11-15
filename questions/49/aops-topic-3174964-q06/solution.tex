@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3174964_2017_dmc_individual_theme_round__deerfield_math_competition__bob_the_builder
+% Stable identity: aops-topic-3174964-q06
+Let $A=0$, $B=u$, $C=v$ as plane vectors, and let $J$ rotate vectors counterclockwise through $90^\circ$, choosing $ABC$ counterclockwise. External construction gives $E=-Ju$, $D=u-Ju$, $G=u-J(v-u)$, $F=v-J(v-u)$, $H=Jv$, and $I=v+Jv$. Therefore the squared lengths in question are $|u+v|^2$, $|2u-v|^2$, and $|2v-u|^2$. Their sum is $6(|u|^2+|v|^2-u\cdot v)=3(|u|^2+|v|^2+|u-v|^2)$. This is $3(6^2+9^2+13^2)=\boxed{858}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),Bp=(6,0),C=(-13/3,4*sqrt(35)/3);pair D=Bp+rotate(-90)*(Bp-A),Ep=A+rotate(-90)*(Bp-A),F=C+rotate(-90)*(C-Bp),G=Bp+rotate(-90)*(C-Bp),H=A+rotate(-90)*(A-C),I=C+rotate(-90)*(A-C);draw(A--Bp--C--cycle);draw(A--Bp--D--Ep--cycle);draw(Bp--C--F--G--cycle);draw(C--A--H--I--cycle);draw(H--Ep,blue);draw(D--G,blue);draw(F--I,blue);pair[]v={A,Bp,C,D,Ep,F,G,H,I};string[]names={"A","B","C","D","E","F","G","H","I"};for(int j=0;j<v.length;++j)label("$"+names[j]+"$",v[j],dir(30+40*j));
+\end{asy}

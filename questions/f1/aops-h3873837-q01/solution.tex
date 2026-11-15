@@ -1,0 +1,17 @@
+Orient the square with $A=(0,0)$, $B=(6,0)$, $C=(6,6)$, $D=(0,6)$. Put $PQ=p$, $QR=q$, $RS=r$. Since the points are strictly inside their respective sides, the unit direction of $PQ$ is $(u,v)$ with $u,v>0$ and $u^2+v^2=1$. The directions of $QR,RS$ are $(-v,u)$ and $(-u,-v)$.
+
+Comparing vertical displacement from $P$ to $R$ and horizontal displacement from $Q$ to $S$ gives
+\[
+pv+qu=6,\qquad qv+ru=6.
+\]
+Since $q=p+r$, put $t=\dfrac{p}{q}$, so $\dfrac{r}{q}=1-t$. Subtracting the equations after dividing by $q$ gives $t=\dfrac{v}{(u+v)}$. Consequently
+\[
+\dfrac{6}{q}=u+\dfrac{v^2}{u+v}=\dfrac{1+uv}{u+v}>1,
+\]
+because $1+uv-u-v=(1-u)(1-v)>0$. Therefore $\boxed{QR<6}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+real u=.8,v=.6,q=6*(u+v)/(1+u*v),p=q*v/(u+v),r=q-p;pair A=(0,0),B=(6,0),C=(6,6),D=(0,6),P=(6-p*u,0),Q=(6,p*v),R=Q+q*(-v,u),S=R-r*(u,v);draw(A--B--C--D--cycle);draw(P--Q--R--S,blue);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$P$",P,(0,-1));label("$Q$",Q,(1,0));label("$R$",R,(0,1));label("$S$",S,(-1,0));
+\end{asy}

@@ -1,0 +1,7 @@
+The four vectors $(x,\sqrt{1-x^2})$, $(y,\sqrt{4-y^2})$, $(z,\sqrt{9-z^2})$, $(t,\sqrt{16-t^2})$ have lengths $1,2,3,4$. Their sum is $(6,8)$, of length $10$, equal to the sum of their lengths. Equality in the triangle inequality forces all four vectors to point in the same direction, namely $(\dfrac{3}{5},\dfrac{4}{5})$. Thus $x=\dfrac{3}{5},y=\dfrac{6}{5},z=\dfrac{9}{5},t=\dfrac{12}{5}$. The required value is $6+24+54+96=\boxed{180}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair u=(.6,.8);real s=0;for(int k=1;k<=4;++k){draw(s*u--(s+k)*u,Arrow);label(string(k),(s+k/2.0)*u,NW);s+=k;}draw((0,0)--(6,0)--(6,8),dashed);label("6",(3,0),S);label("8",(6,4),E);label("$(6,8)$",(6,8),NE);
+\end{asy}

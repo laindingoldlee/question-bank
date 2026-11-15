@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2093015_counting_problem_on_rsm_olympiad
+% Stable identity: aops-topic-2093015-q01
+Reading the digits $1,2,\dots,9$ in order traces a path through all nine cells, each step going to a cell that shares a side with the previous one; so we count such paths, with a starting cell (the cell of $1$).
+
+Colour the grid like a chessboard, with the four corners and the centre dark ($5$ cells) and the four edge cells light ($4$ cells). Each step changes colour, so the colours along the path alternate; since there are $5$ dark and $4$ light cells, the path must start and end on dark cells. So $1$ is in a corner or in the centre.
+
+\emph{Start in the centre.} The next cell is one of the $4$ edge cells. The other $8$ cells form a ring in which each cell shares sides with exactly two ring cells, so from the edge cell the path must go round the ring, in one of $2$ directions. That gives $4\cdot2=8$ paths.
+
+\emph{Start in a corner,} say the top left, and first move right (moving down instead gives the mirror images). Numbering the cells $1$ to $9$ row by row, the possibilities are
+\[1,2,3,6,9,8,7,4,5;\qquad 1,2,3,6,9,8,5,4,7;\qquad 1,2,3,6,5,4,7,8,9;\qquad 1,2,5,4,7,8,9,6,3 .\]
+
+\begin{asy}
+usepackage("amsmath");
+size(9cm);
+defaultpen(fontsize(10pt));
+void g(pair o, int[] p){
+  for(int i=0;i<=3;++i){ draw(shift(o)*((i,0)--(i,3)),gray); draw(shift(o)*((0,i)--(3,i)),gray); }
+  path q;
+  for(int t=0;t<9;++t){ int c=p[t]-1; pair z=o+(c%3+0.5,2.5-(c#3)); q=(t==0)?z:q--z; label("$"+(string)(t+1)+"$",z+(0.22,0.22),fontsize(7pt)); }
+  draw(q,blue+linewidth(1)); dot(o+(0.5,2.5),red);
+}
+g((0,0),new int[]{1,2,3,6,9,8,7,4,5}); g((4,0),new int[]{1,2,3,6,9,8,5,4,7});
+g((8,0),new int[]{1,2,3,6,5,4,7,8,9}); g((12,0),new int[]{1,2,5,4,7,8,9,6,3});
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(After $1,2,3,6$: going to $9$ forces $8$, and then either $7,4,5$ or $5,4,7$; going to $5$ forces $4,7,8,9$, since $5,8$ would strand a cell. After $1,2,5$: only $4,7,8,9,6,3$ works, as $5,6$ strands cell $3$ and $5,8$ strands a corner.) So there are $4\cdot2=8$ paths from each corner, $32$ in all.
+
+The total is $8+32=\boxed{40}$.

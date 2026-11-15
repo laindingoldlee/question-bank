@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1984510_something_i_found_in_intro_to_geo
+% Stable identity: aops-topic-1984510-q01
+\textbf{Key fact.} Let a tank have edges $a,b,c$ meeting at a bottom corner $V$, and let $P,Q$ (on the bottom) and $R$ (on the top rim) be the three corners joined to $V$ by an edge. The plane $PQR$ cuts off the tetrahedron $VPQR$, whose three edges at $V$ are mutually perpendicular. Its volume is
+\[
+\dfrac{1}{3}\cdot\left(\dfrac{1}{2}ab\right)\cdot c=\dfrac{abc}{6},
+\]
+which is $\dfrac{1}{6}$ of the tank, that is, $10$ gallons.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair o=(1.3,0.9);
+pair V=(0,0),P=(4,0),Q=V+o,R=(0,3);
+pair Pt=P+(0,3),Qt=Q+(0,3),PQ=P+o,PQt=PQ+(0,3);
+fill(V--P--R--cycle,lightgray);
+fill(P--Q--R--cycle,gray(0.75));
+draw(Q--PQ,dashed);draw(Q--Qt,dashed);draw(V--Q,dashed);
+draw(V--P--PQ--PQt--Qt--R--cycle);draw(R--Pt--P);draw(Pt--PQt);
+draw(P--R,linewidth(0.9));draw(P--Q,dashed+linewidth(0.9));draw(Q--R,dashed+linewidth(0.9));
+dot(V);dot(P);dot(Q);dot(R);
+label("$V$",V,SW);label("$P$",P,S);label("$Q$",Q+(0.22,0.2));label("$R$",R,W);
+label("$a$",(V+P)/2,S);label("$c$",(V+R)/2,W);label("$b$",(P+PQ)/2,SE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Method.} Fill tank 1 completely with the hose ($60$ gallons). Tip it over its corner $V$, so that $V$ is the lowest point, and pour the water that spills out into the empty tank 2. Keep tipping until the water surface in tank 1 touches exactly the three corners $P$, $Q$ and $R$; you can see this without measuring anything.
+
+\textbf{Why it works.} Put $V$ at the origin with the edges along the axes, so that the tank is $0\le x\le a$, $0\le y\le b$, $0\le z\le c$ and the plane $PQR$ is $\dfrac {x}{a}+\dfrac {y}{b}+\dfrac {z}{c}=1$. In the final position this plane is horizontal and $V$ is below it, so the water occupies exactly the part of the box with $\dfrac {x}{a}+\dfrac {y}{b}+\dfrac {z}{c}\le1$, which is the tetrahedron $VPQR$. The open top is the face $z=c$, where $\dfrac {x}{a}+\dfrac {y}{b}+\dfrac {z}{c}\ge1$, so the whole rim is at or above the water level and the water surface just reaches the rim at $R$: this is a legitimate resting position. Hence exactly $10$ gallons remain in tank 1, and tank 2 has received
+\[
+60-10=\boxed{50\text{ gallons}}.
+\]

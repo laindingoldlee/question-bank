@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2934037_2015_emcc_guts_round_p13_p24__exeter_math_club_competition
+% Stable identity: aops-topic-2934037-q23
+Subtraction gives $(x-y)(x+y+1)=0$. On $x=y$, the solutions have coordinates $(t,t)$ with $t=\dfrac{1\pm\sqrt{149}}{2}$. On $x+y=-1$, the two $x$ coordinates are $\dfrac{-1\pm\sqrt{145}}{2}$, with $y=-1-x$. Each pair straddles the intersection of these two lines, so they are opposite vertex pairs and the two lines are the diagonals. Their intersection is $\boxed{(-\dfrac{1}{2},-\dfrac{1}{2})}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real a=(1+sqrt(149))/2,b=(1-sqrt(149))/2,c=(-1+sqrt(145))/2,d=(-1-sqrt(145))/2;pair A=(a,a),B=(c,-1-c),C=(b,b),D=(d,-1-d),P=(-.5,-.5);draw(A--B--C--D--cycle);draw(A--C^^B--D,dashed);label("$x=y$",A,N);label("$x+y=-1$",B,SE);dot(P);label("$P$",P,E);
+\end{asy}

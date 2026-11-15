@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1244089_four_vertices
+% Stable identity: aops-topic-1244089-q01
+$P$ and $R$ are opposite vertices; the centre is $M=(7,11)$ and $\overrightarrow{MP}=(2,-5)$. The other two vertices are $M\pm(5,2)$ (the vector rotated by $90^\circ$): $(12,13)$ and $(2,9)$. So $\{(a,b),(c,d)\}=\{(12,13),(2,9)\}$ and
+\[abcd=12\cdot13\cdot2\cdot9=\boxed{2808}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair P=(9,6),R=(5,16),Q=(12,13),S=(2,9),M=(7,11);
+draw(P--Q--R--S--cycle,linewidth(1)); draw(P--R,dashed); draw(Q--S,dashed); dot(M);
+label("$P(9,6)$",P,S,fontsize(8pt)); label("$R(5,16)$",R,N,fontsize(8pt)); label("$Q(12,13)$",Q,E,fontsize(8pt)); label("$S(2,9)$",S,W,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

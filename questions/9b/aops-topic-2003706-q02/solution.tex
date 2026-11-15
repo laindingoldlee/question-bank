@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h2003706_questions
+% Stable identity: aops-topic-2003706-q02
+Both quadrilaterals are trapezoids with the parallel vertical sides on the lines $x=0$ and $x=4$, at distance $4$ apart.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=(0,3),B=(4,4),D=(4,0),C=(4,8.5);
+fill(O--A--B--D--cycle,palegray);
+draw(O--A--C--D--cycle,linewidth(1));draw(A--B,dashed);
+draw((-0.8,0)--(5.5,0),gray,Arrow(TeXHead));draw((0,-0.8)--(0,9.5),gray,Arrow(TeXHead));
+dot(O);dot(A);dot(B);dot(C);dot(D);
+label("$O(0,0)$",O,SW);label("$A(0,3)$",A,W);label("$B(4,4)$",B,E);label("$D(4,0)$",D,SE);label("$C(4,y)$",C,E);
+label("(not to scale)",(2.8,9.6),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For $ABDO$ the parallel sides are $OA=3$ and $DB=4$, so
+\[
+[ABDO]=\dfrac{3+4}{2}\cdot4=14 .
+\]
+For $ACDO$ the parallel sides are $OA=3$ and $DC=y$, so $[ACDO]=\dfrac{3+y}{2}\cdot4=2(3+y)$. The condition gives
+\[
+2(3+y)=5\cdot14=70\quad\Longrightarrow\quad y=\boxed{32}.
+\]

@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2834689_hard_geometry_problems
+% Stable identity: aops-topic-2834689-q02
+Triangles $ADH$ and $CDB$ are similar: both have a right angle at $D$, and $\angle DAH=90^\circ-\angle B=\angle DCB$.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(7,0),C=(2.2,5);pair D=(C.x,0);
+pair foot(pair P,pair U,pair V){return U+dot(P-U,V-U)/dot(V-U,V-U)*(V-U);}
+pair E=foot(B,A,C);pair H=extension(C,D,B,E);
+draw(A--B--C--cycle);draw(C--D,dashed);draw(B--E,dashed);draw(A--foot(A,B,C),dashed);dot(H);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$D$",D,S);label("$H$",H,E);
+\end{asy}
+
+So $\dfrac{AD}{DH}=\dfrac{CD}{DB}$, i.e. $AD\cdot DB=DH\cdot DC=15\cdot(15+18)=\boxed{495}$.

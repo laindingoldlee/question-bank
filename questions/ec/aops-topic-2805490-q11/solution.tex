@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h2805490_2008_geometry_bee___preliminary_round
+% Stable identity: aops-topic-2805490-q11
+If their radius is $r$, their centres form an equilateral triangle of side $2r$ and circumradius $\dfrac{2r}{\sqrt3}$. Any ball containing these three centres has radius at least this circumradius: the average squared distance from any point to the centres equals its squared distance from their centroid plus $\dfrac{4r^2}{3}$. Since each centre is at most $20-r$ from the large centre, $\dfrac{2r}{\sqrt3}\le20-r$. Equality is attained when the large centre is the small-centre triangle's centre. The maximum volume fraction is $3(\dfrac{r}{20})^3=3(\dfrac{\sqrt3}{2+\sqrt3})^3\approx0.2999$, or $\boxed{30\%}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real r=1/(1+2/sqrt(3));draw(circle((0,0),1));for(int k=0;k<3;++k){pair p=(1-r)*dir(90+120*k);draw(circle(p,r),blue);dot(p);}label("plane of centres",(0,-1.4));
+\end{asy}

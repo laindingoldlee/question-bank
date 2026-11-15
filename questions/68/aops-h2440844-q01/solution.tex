@@ -1,0 +1,11 @@
+A nonvertical line has equation $y=mx+b$. Its intersections with the full hyperbola $x^2-y^2=1$ satisfy
+\[
+(1-m^2)x^2-2mbx-(b^2+1)=0.
+\]
+One root is the positive $x$-coordinate of $P$. The product of roots is $-\dfrac{(b^2+1)}{(1-m^2)}$, so the other root is positive exactly when $|m|>1$. Thus, apart from the tangent direction and the asymptotic directions, the line meets the right branch twice exactly for direction angles $\dfrac{\pi}{4}<\theta<3\dfrac{\pi}{4}$. The exceptional directions have probability zero. This interval has length $\dfrac{\pi}{2}$ out of total $\pi$, proving the probability is $\boxed{\dfrac{1}{2}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+import graph;pair f(real t){return (cosh(t),sinh(t));}draw(graph(f,-1.6,1.6),blue);draw((sqrt(2),-2.5)--(sqrt(2),2.5),heavygreen);draw((.6,1)--(2.8,1),red);dot((sqrt(2),1));label("$P$",(sqrt(2),1),NE);label("steep direction",(sqrt(2),-2.5),S);
+\end{asy}

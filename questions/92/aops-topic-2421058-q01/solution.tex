@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2421058_interesting_proof
+% Stable identity: aops-topic-2421058-q01
+Each unit cube is chosen with probability $\dfrac{1}{n^3}$, and then each of its faces comes out on top with probability $\dfrac16$. So each of the $6n^3$ pairs (unit cube, face of that cube) occurs with the same probability $\dfrac{1}{6n^3}$, and we only have to count the pairs whose face is red.
+
+A face of a unit cube is red exactly when it lies on the surface of the big cube; faces inside the big cube were never painted. Each of the $6$ faces of the big cube is divided into $n^2$ unit squares, and each of these unit squares is a face of exactly one unit cube. So there are exactly $6n^2$ red unit faces.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair v=(1.2,0.8); real n=3;
+pen f1=rgb(1,0.55,0.55), f2=rgb(1,0.7,0.7), f3=rgb(0.95,0.45,0.45);
+fill(box((0,0),(n,n)),f1);
+fill((0,n)--(n,n)--(n,n)+v--(0,n)+v--cycle,f2);
+fill((n,0)--(n,0)+v--(n,n)+v--(n,n)--cycle,f3);
+for(int i=1;i<3;++i){
+ draw((i,0)--(i,n)); draw((0,i)--(n,i));
+ draw((i,n)--(i,n)+v); draw((0,n)+i/n*v--(n,n)+i/n*v);
+ draw((n,i)--(n,i)+v); draw((n,0)+i/n*v--(n,n)+i/n*v);}
+draw(box((0,0),(n,n)),linewidth(0.9)); draw((0,n)--(0,n)+v--(n,n)+v--(n,0)+v--(n,0),linewidth(0.9)); draw((n,n)--(n,n)+v,linewidth(0.9));
+label("$n=3$",(n/2,0),S);
+label("$6n^2=54$ red unit faces",(n/2+0.6,-0.9));
+\end{asy}
+
+Therefore
+\[P(\text{top face red})=\dfrac{6n^2}{6n^3}=\dfrac1n.\qquad\blacksquare\]
+For example, for $n=3$ there are $54$ red faces among the $6\cdot27=162$ faces of the small cubes, and $\dfrac{54}{162}=\dfrac13$. (Grouping by the number of painted faces gives the same result: $\dfrac{1}{27}\left(8\cdot\dfrac36+12\cdot\dfrac26+6\cdot\dfrac16\right)=\dfrac13$.)

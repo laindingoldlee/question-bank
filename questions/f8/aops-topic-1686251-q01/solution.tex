@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1686251_geometry_problem
+% Stable identity: aops-topic-1686251-q01
+Since $\angle A+\angle B=90^\circ$, $\angle C=90^\circ$, and $CD$ is the altitude to the hypotenuse. Triangles $ADC$ and $CDB$ are similar (each has a right angle at $D$, and $\angle ACD=90^\circ-\angle A=\angle B$), so $\dfrac{AD}{CD}=\dfrac{CD}{BD}$, i.e.
+\[
+CD^2=AD\cdot BD=xy .
+\]
+The area condition reads
+\[
+\dfrac{\sqrt3}{4}x^2=\dfrac{1}{2}\,x\cdot CD\quad\Longrightarrow\quad CD=\dfrac{\sqrt3}{2}x .
+\]
+Hence $xy=CD^2=\dfrac{3}{4}x^2$, so $y=\dfrac{3}{4}x=\dfrac{x}{2}\cdot\dfrac{3}{2}$, and $z=\boxed{\dfrac{3}{2}}$. (The equilateral triangle on $BD$ is not needed.)
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real x=4,y=3,h=2*sqrt(3);
+pair D=(0,0),A=(-x,0),B=(y,0),C=(0,h);
+pair EA=A+x*dir(-60),EB=D+y*dir(-60);
+draw(A--B--C--cycle,linewidth(0.9));draw(C--D,linewidth(0.8));
+draw(A--EA--D,gray);draw(D--EB--B,gray);
+real q=0.3;draw(D+(q,0)--D+(q,q)--D+(0,q),red);draw(C+q*unit(A-C)--C+q*(unit(A-C)+unit(B-C))--C+q*unit(B-C),red);
+label("$A$",A,W);label("$B$",B,E);label("$C$",C,N);label("$D$",D+(-0.4,0.3));
+label("$x$",(A+D)/2,N);label("$y$",(D+B)/2,N);
+label("$\dfrac{\sqrt3}{2}x$",(C+D)/2,dir(160));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

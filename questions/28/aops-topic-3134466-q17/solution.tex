@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3134466_2012_lmt_spring_guts_round_p13p24_lexington_mathematical_tournament
+% Stable identity: aops-topic-3134466-q17
+The original area is $16-4(\dfrac{1}{2})=14$. Any inscribed regular octagon lies in the width 4 strip $-2\le x\le2$. If its circumradius is $R$, its width in any direction is at least $2R\cos22.5^\circ$: one pair of opposite vertices lies within 22.5 degrees of that direction. Thus $R\le\dfrac{2}{\cos22.5^\circ}$. Its area is $8(\dfrac{R^2\sin45^\circ}{2})=2\sqrt2R^2$, at most $32(\sqrt2-1)$. This bound is attained by vertices $(\pm2,\pm b),(\pm b,\pm2)$ with $b=2(\sqrt2-1)$. These vertices satisfy $|x|,|y|\le2$ and $|x|+|y|=2\sqrt2<3$, hence lie in the original octagon. The removal area is therefore $\boxed{46-32\sqrt2}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] P={(2,1),(1,2),(-1,2),(-2,1),(-2,-1),(-1,-2),(1,-2),(2,-1)};real b=2*(sqrt(2)-1);pair[] Q={(2,b),(b,2),(-b,2),(-2,b),(-2,-b),(-b,-2),(b,-2),(2,-b)};path p=P[0],q=Q[0];for(int k=1;k<8;++k){p=p--P[k];q=q--Q[k];}fill(p--cycle,lightgray);fill(q--cycle,white);draw(p--cycle);draw(q--cycle,blue);label("$2$",(2,0),E);
+\end{asy}

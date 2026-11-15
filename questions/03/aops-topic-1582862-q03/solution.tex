@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1582862_17_geometry_questions
+% Stable identity: aops-topic-1582862-q03
+\textbf{Distances.} The sound reaches Dmitri $5$ seconds after the flash and Tara $5+2=7$ seconds after it. So the strike is
+\[
+5\cdot1100=5500\text{ feet from Dmitri}\qquad\text{and}\qquad7\cdot1100=7700\text{ feet from Tara}.
+\]
+So it lies on the circle of radius $5500$ ft about Dmitri $D$ and on the circle of radius $7700$ ft about Tara $T$, where $DT=5280$ ft.
+
+\textbf{The two circles meet in two points.} Since $7700-5500<5280<7700+5500$, the circles cross at two points, symmetric about the line $DT$. In coordinates with $D=(0,0)$ and $T=(5280,0)$ (in feet), subtracting the equations $x^2+y^2=5500^2$ and $(x-5280)^2+y^2=7700^2$ gives
+\[
+10560x-5280^2=5500^2-7700^2,\qquad x=\dfrac{5280^2-29{,}040{,}000}{10560}=-110 ,
+\]
+and then $y=\pm\sqrt{5500^2-110^2}\approx\pm5498.9$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+real k=1/1000;
+pair Dm=(0,0),Tt=(5.28,0);
+pair L1=(-0.11,sqrt(5.5^2-0.11^2)),L2=(-0.11,-sqrt(5.5^2-0.11^2));
+draw(circle(Dm,5.5),blue);draw(circle(Tt,7.7),red);
+draw(Dm--Tt,linewidth(0.9));
+draw(Dm--L1,blue+dashed);draw(Tt--L1,red+dashed);
+dot(Dm);dot(Tt);dot(L1);dot(L2);
+label("$D$",Dm,SW);label("$T$",Tt,dir(-110));label("$L_1$",L1,NW);label("$L_2$",L2,SW);
+label("$5280$",(Dm+Tt)/2,S);
+label("$5500$",(Dm+L1)/2,E,blue);label("$7700$",Tt+0.35*(L1-Tt),NE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Figure in thousands of feet.) So there are exactly \textbf{two possible locations} $L_1$, $L_2$: each is $5500$ ft from Dmitri and $7700$ ft from Tara; measured along the line from Tara to Dmitri they are $110$ ft beyond Dmitri, and they lie about $5499$ ft (just over a mile) to either side of that line.

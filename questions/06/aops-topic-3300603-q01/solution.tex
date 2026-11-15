@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h3300603_in_how_many_ways_can_the_figure_be_completed
+% Stable identity: aops-topic-3300603-q01
+Subtract adjacent three-term sums to see that positions three apart have equal residues modulo $3$. Each residue occurs three times among the digits, so the first three residues must be a permutation of $0,1,2$; they cannot all be equal. The fixed digits force the repeating residue pattern $1,2,0$. The residue-$1$ positions have $2!$ remaining assignments, the residue-$2$ positions have $3!$, and the residue-$0$ positions have $2!$. Thus the answer is $\boxed{2!\,3!\,2!=24}$.
+\begin{asy}
+usepackage("amsmath"); size(220);
+for(int k=0;k<9;++k){draw((k,0)--(k+1,0)--(k+1,1)--(k,1)--cycle);label(k==0?"$7$":(k==2?"$9$":""),(k+0.5,0.5));label(string(k%3==0?1:(k%3==1?2:0)),(k+0.5,-0.4));}label("Residues modulo 3",(4.5,-1));
+\end{asy}

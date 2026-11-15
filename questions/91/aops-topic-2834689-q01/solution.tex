@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2834689_hard_geometry_problems
+% Stable identity: aops-topic-2834689-q01
+All angles are $120^\circ$, so the side directions turn by $60^\circ$ each time. Let $u_k$ be the unit vector at angle $60k^\circ$. Going around, $10u_0+16u_1+19u_2+DE\,u_3+EF\,u_4+15u_5=0$. Since $u_3=-u_0$, $u_4=-u_1$, $u_5=-u_2$, comparing components (with $u_2=u_1-u_0$) gives $10+16=DE+EF$ and $16+19=EF+15$. So $EF=20$ and $DE=6$.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real[] s={10,16,19,6,20,15};pair P=(0,0);pair[] V;
+for(int i=0;i<6;++i){V.push(P);P=P+s[i]*dir(60*i);}
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--cycle);draw(V[0]--V[3],dashed);draw(V[1]--V[4],dashed);draw(V[2]--V[5],dashed);
+string[] L={"A","B","C","D","E","F"};pair c=(V[0]+V[3])/2;for(int i=0;i<6;++i) label("$"+L[i]+"$",V[i],unit(V[i]-c));
+for(int i=0;i<6;++i) label("$"+string(s[i])+"$",(V[i]+V[(i+1)%6])/2,-dir(60*i+90));
+\end{asy}
+
+Using $u_0\cdot u_1=u_1\cdot u_2=\dfrac12$ and $u_0\cdot u_2=-\dfrac12$, and similarly for the other triples:
+\[AD^2=|10u_0+16u_1+19u_2|^2=100+256+361+(160-190+304)=991,\]
+\[BE^2=|16u_1+19u_2+6u_3|^2=256+361+36+(304-96+114)=975,\]
+\[CF^2=|19u_2+6u_3+20u_4|^2=361+36+400+(114-380+120)=651.\]
+The sum is $991+975+651=\boxed{2617}$.

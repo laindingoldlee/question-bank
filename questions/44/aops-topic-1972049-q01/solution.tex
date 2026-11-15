@@ -1,0 +1,28 @@
+% Source: https://artofproblemsolving.com/community/c3h1972049_geo_rectangle_and_345_problem
+% Stable identity: aops-topic-1972049-q01
+Use coordinates $D=(0,0)$, $C=(6,0)$, $B=(6,4)$, $A=(0,4)$, $E=(3,0)$. The line $AE$ is $4x+3y=12$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,4),B=(6,4),C=(6,0),D=(0,0),E=(3,0),Dp=(96/25,72/25);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--E,linewidth(0.9));
+draw(A--Dp--E,blue+linewidth(0.9));
+draw(D--Dp,dashed);draw(Dp--C,red+linewidth(1));
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);label("$E$",E,S);label("$D'$",Dp,N);
+label("$4$",(A+D)/2,W);label("$3$",(D+E)/2,S);label("$3$",(E+C)/2,S);label("$5$",(A+E)/2,SW);
+dot(Dp);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The reflection of $D=(0,0)$ in this line is
+\[
+D'=D-2\cdot\dfrac{4\cdot0+3\cdot0-12}{4^2+3^2}\,(4,3)=\dfrac{24}{25}(4,3)=\left(\dfrac{96}{25},\dfrac{72}{25}\right).
+\]
+(Check: $AD'=AD=4$ and $ED'=ED=3$.) Then
+\[
+D'C=\sqrt{\left(6-\dfrac{96}{25}\right)^2+\left(\dfrac{72}{25}\right)^2}=\dfrac{\sqrt{54^2+72^2}}{25}=\dfrac{90}{25}=\boxed{\dfrac{18}{5}}.
+\]
+(Alternatively: $ED'=EC=3$ and $\angle D'EC=180^\circ-2\angle DEA$, so $D'C=2\cdot3\sin\dfrac{\angle D'EC}{2}=6\cos\angle DEA=6\cdot\dfrac{3}{5}=\dfrac{18}{5}$.)

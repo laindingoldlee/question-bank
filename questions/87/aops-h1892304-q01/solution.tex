@@ -1,0 +1,13 @@
+A chosen pentagon misses the centre exactly when its five vertices lie in an open semicircle. Since $17$ is odd, no chosen pair is antipodal. Every such five-set has a unique first point followed clockwise by its other four points within the next eight positions. Thus the number missing the centre is $17\binom84$. The desired probability is $1-\dfrac{17\binom84}{\binom{17}{5}}=\boxed{\dfrac{21}{26}}$. Uniqueness follows because the complementary circular gap then exceeds a semicircle and there can be only one such gap.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p;for(int i=0;i<17;++i){p.push(dir(360*i/17.0));dot(p[i]);}draw(unitcircle);dot((0,0));label("O",(0,0),S);draw(p[0]--p[3]--p[7]--p[10]--p[14]--cycle,blue);label("Contains the centre",(0,-1.5));
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair[] p;for(int i=0;i<17;++i){p.push(dir(360*i/17.0));dot(p[i]);}draw(unitcircle);dot((0,0));label("O",(0,0),S);draw(p[0]--p[1]--p[3]--p[5]--p[7]--cycle,blue);label("Contained in a semicircle",(0,-1.5));
+\end{asy}

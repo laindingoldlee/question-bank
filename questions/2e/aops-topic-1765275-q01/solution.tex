@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1765275_tkmt_problem
+% Stable identity: aops-topic-1765275-q01
+Let the bisector of $\angle ASP$ meet line $AO$ at $M$. Because $AO\parallel SP$, the alternate angles give $\angle AMS=\angle MSP=\angle ASM$, so triangle $ASM$ is isosceles with $AM=AS$. By the symmetry of the isosceles trapezoid, the bisector from $P$ meets $AO$ at the mirror image of $M$, and the two bisectors meet on $AO$ only if $M$ is on the axis of symmetry, i.e.\ $M$ is the midpoint of $AO$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair Sx=(0,0),P=(36,0),A=(5,12),O=(31,12),M=(18,12);
+draw(Sx--P--O--A--cycle,linewidth(0.9));
+draw(Sx--M,blue+dashed);draw(P--M,blue+dashed);
+draw(A--(5,0),dotted);
+draw(arc(Sx,3.2,0,degrees(M-Sx)),red);draw(arc(Sx,3.8,degrees(M-Sx),degrees(A-Sx)),red);
+draw(arc(P,3.2,degrees(M-P),180),red);draw(arc(P,3.8,degrees(O-P),degrees(M-P)),red);
+dot(M);
+label("$A$",A,NW);label("$O$",O,NE);label("$P$",P,SE);label("$S$",Sx,SW);label("$M$",M,N);
+label("$13$",(A+M)/2,N);label("$13$",(M+O)/2,N);label("$12$",(5,6),E);
+label("$36$",(18,0),S);label("$13$",(Sx+A)/2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the legs are $AS=OP=AM=13$. The bases differ by $10$, so each leg projects $5$ onto $SP$, and the height is $\sqrt{13^2-5^2}=12$. The area is
+\[
+\dfrac{26+36}{2}\cdot12=\boxed{372}.
+\]

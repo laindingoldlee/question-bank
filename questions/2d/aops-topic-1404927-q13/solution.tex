@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1404927_yet_again_lithuanian_math_kangaroo_questions__student_2009
+% Stable identity: aops-topic-1404927-q13
+In the $3\times3\times3$ cube there are $27$ lines of sight: $9$ rows of $3$ small cubes in each of the three directions. Each line must contain at least one black cube. A single small cube lies on exactly $3$ of these lines (one in each direction). So with $m$ black cubes at most $3m$ lines are blocked, and we need $3m\ge27$, that is $m\ge9$.
+
+Nine black cubes suffice: in layer $k$ (counted from the bottom, $k=0,1,2$) make the cube in position $(i,j)$ black when $i+j+k$ is divisible by $3$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+for(int k=0;k<3;++k){
+  pair o=(4.2*k,0);
+  for(int i=0;i<3;++i) for(int j=0;j<3;++j){
+    path sq=shift(o+(i,j))*unitsquare;
+    if((i+j+k)%3==0) filldraw(sq,black,black); else draw(sq);
+  }
+  label("layer "+string(k+1),o+(1.5,0),S);
+}
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Each layer then has exactly one black cube in every row and every column (blocking the horizontal lines), and each vertical line $(i,j)$ meets exactly one layer with $k\equiv-(i+j)\pmod3$. So the least number is $\boxed{\text{(B) } 9}$.

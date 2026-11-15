@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h2160442_an_original_configuration
+% Stable identity: aops-topic-2160442-q01
+\begin{center}
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=2*dir(210), C=3.6*dir(-30);
+pair Mbc=(B+C)/2;
+pair X=extension(A,A+dir(-90),Mbc,Mbc+rotate(90)*(C-B));
+pair u=unit(B-A), v=unit(C-A);
+pair M=A+dot(X-A,u)*u, Nn=A+dot(X-A,v)*v;
+path rm(pair P, pair p, pair q){ real s=0.16; return (P+s*p)--(P+s*p+s*q)--(P+s*q); }
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--M,dashed);
+draw(A--X,gray(0.5)+dashed);
+draw(Mbc--X,gray(0.5)+dashed);
+draw(X--M,red); draw(X--Nn,red);
+draw(X--B,blue); draw(X--C,blue);
+draw(rm(M,-u,unit(X-M))); draw(rm(Nn,-v,unit(X-Nn)));
+dot(A); dot(B); dot(C); dot(X); dot(M,red); dot(Nn,red);
+label("$A$",A,N); label("$B$",B,NW); label("$C$",C,NE); label("$X$",X,S);
+label("$M$",M,W,red); label("$N$",Nn,NE,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\end{center}
+\textbf{$N$ lies on ray $AC$, and $AM=AN$.} Since $X$ is on the bisector of $\angle BAC$, the angles $\angle XAB$ and $\angle XAC$ both equal $\dfrac{1}{2}\angle BAC<90^\circ$. In the right triangles $AMX$ and $ANX$ the angle at $A$ is therefore acute, so the feet $M$ and $N$ lie on the rays $AB$ and $AC$ (not on their extensions beyond $A$). These two right triangles have the common hypotenuse $AX$ and equal angles at $A$, so they are congruent:
+\[AM=AN\qquad\text{and}\qquad XM=XN .\]
+
+\textbf{$BM=CN$.} Since $X$ is on the perpendicular bisector of $BC$, $XB=XC$. The right triangles $XMB$ and $XNC$ (right angles at $M$ and $N$) have equal hypotenuses $XB=XC$ and equal legs $XM=XN$, so by the hypotenuse-leg criterion they are congruent, and $BM=CN$.
+
+\textbf{Conclusion.} Since $M$ is beyond $B$, $AM=AB+BM$ with $BM>0$. On ray $AC$ the point $N$ is either beyond $C$ or equal to $C$, giving $AN=AC+CN$, or strictly between $A$ and $C$, giving $AN=AC-CN$. In the first case
+\[AB+BM=AM=AN=AC+CN=AC+BM,\]
+so $AB=AC$, which is excluded. (Indeed, if $AB=AC$ the bisector of $\angle A$ would coincide with the perpendicular bisector of $BC$, and there would be no single point $X$.) Hence $N$ lies strictly between $A$ and $C$. $\blacksquare$
+
+\emph{Remark.} From $AB+BM=AC-CN$ and $BM=CN$ we even get $BM=CN=\dfrac{AC-AB}{2}$, so $M$ beyond $B$ happens exactly when $AB<AC$. The proof does not use the hypothesis $\angle BAC>90^\circ$: in fact $X$ is the midpoint of the arc $BC$ of the circumcircle not containing $A$, which lies outside the triangle for every triangle with $AB\ne AC$.

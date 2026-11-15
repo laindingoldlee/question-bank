@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1423932_easter_math_competition_series
+% Stable identity: aops-topic-1423932-q03
+For $1\le k\le10000$ write $m=k-1$, so $0\le m\le9999$. Then
+\[
+9999k=10000k-k=10000m+(9999-m).
+\]
+So the decimal representation of $9999k$ is the digits of $m$ followed by the four-digit block $9999-m$ (with leading zeros if needed). If the four digits of $m$, padded with leading zeros, are $d_1d_2d_3d_4$, then the block $9999-m$ has digits $9-d_1,9-d_2,9-d_3,9-d_4$, with no borrowing.
+\begin{itemize}
+\item The block has no $9$ exactly when no $d_i$ is $0$; in particular $m$ has four digits, all from $1$ to $9$.
+\item The leading part $m$ itself must have no digit $9$.
+\end{itemize}
+So $m$ must be a four-digit number with all digits from $1$ to $8$. The smallest is $m=1111$, giving $k=1112$ and
+\[
+9999\cdot1112=11118888 ,
+\]
+which has no $9$. Every smaller $k$ has $m<1111$ and fails. The answer is $\boxed{1112}$.

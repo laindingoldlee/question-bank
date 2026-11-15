@@ -1,0 +1,17 @@
+Use complex coordinates with $O=0$ and $\Gamma$ the unit circle, writing lower-case letters for points. Thus $\bar a=\dfrac{1}{a}$ and $\bar b=\dfrac{1}{b}$. A chord with endpoints $a,d$ has equation $z+ad\bar z=a+d$ (substitution of both endpoints verifies it). Substituting $c$ gives
+\[d=\dfrac{a-c}{a\bar c-1},\qquad e=\dfrac{b-c}{b\bar c-1}.\]
+The denominators are nonzero because $c\ne a,b$. Subtracting and simplifying gives
+\[\dfrac{a-e}{d-b}=-\dfrac{a\bar c-1}{b\bar c-1}=-\overline{\left(\dfrac{b}{a}\,\dfrac{c-a}{c-b}\right)}.\]
+Because $0,a,b,c$ are concyclic, the cross-ratio $\dfrac{b}{a}\dfrac{c-a}{c-b}$ is real: its argument is the difference of the inscribed angles subtending the same chord $AB$, hence zero modulo $180^\circ$. The displayed quotient is therefore real, proving that the nonzero direction vectors of $AE$ and $DB$ are parallel. This calculation applies whether $C$ lies inside or outside $\Gamma$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0),A=(1,0),B=(0,1),U=(.5,.5),C=U+sqrt(.5)*dir(20);pair second(pair X,pair Y){pair v=Y-X;return X-2dot(X,v)/dot(v,v)*v;}pair D=second(A,C),E=second(B,C);draw(circle(O,1));draw(circle(U,sqrt(.5)),gray);draw(A--C--B,dashed);draw(C--D,dashed);draw(C--E,dashed);draw(A--E,blue);draw(D--B,blue);pair[] p={O,A,B,C,D,E};string[] n={"O","A","B","C","D","E"};for(int i=0;i<6;++i){dot(p[i]);label("$"+n[i]+"$",p[i],i==0?(-1,-1):p[i]-U);}
+\end{asy}
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair O=(0,0),A=(1,0),B=(0,1),U=(.5,.5),C=U+sqrt(.5)*dir(210);pair second(pair X,pair Y){pair v=Y-X;return X-2dot(X,v)/dot(v,v)*v;}pair D=second(A,C),E=second(B,C);draw(circle(O,1));draw(circle(U,sqrt(.5)),gray);draw(A--D,dashed);draw(B--E,dashed);draw(A--E,blue);draw(D--B,blue);pair[] p={O,A,B,C,D,E};string[] n={"O","A","B","C","D","E"};for(int i=0;i<6;++i){dot(p[i]);label("$"+n[i]+"$",p[i],i==0?(-1,-1):p[i]-U);}
+\end{asy}

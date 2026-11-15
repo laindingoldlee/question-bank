@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1734443_geometry_questions_from_a_local_math_competition
+% Stable identity: aops-topic-1734443-q05
+For a common tangent segment $T_1T_2$, the radii $OT_1$ and $AT_2$ are both perpendicular to it:
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=(26,0); real r=5,R=13;
+pair n1=(-8/26,sqrt(612)/26), n2=(18/26,-sqrt(352)/26);
+pair T1=O+r*n1,T2=A+R*n1,U1=O+r*n2,U2=A-R*n2;
+draw(circle(O,r),linewidth(0.8));draw(circle(A,R),linewidth(0.8));
+draw(O--A,dashed);
+draw(T1--T2,blue+linewidth(0.9));draw(U1--U2,red+linewidth(0.9));
+draw(O--T1,gray(0.5));draw(A--T2,gray(0.5));draw(O--U1,gray(0.5));draw(A--U2,gray(0.5));
+dot(O);dot(A);
+label("$O$",O,W);label("$A$",A,E);label("$26$",(19,0),S);
+label("$6\sqrt{17}$",(T1+T2)/2,dir(100),blue);label("$4\sqrt{22}$",(8.6,-3.0),red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+For an external tangent the radii point to the same side, and sliding $T_1T_2$ along the radii gives a right triangle with hypotenuse $OA=26$, one leg $13-5=8$ and the other leg equal to the tangent length:
+\[
+\sqrt{26^2-8^2}=\sqrt{612}=6\sqrt{17}.
+\]
+For an internal tangent the radii point to opposite sides, and the leg is $13+5=18$:
+\[
+\sqrt{26^2-18^2}=\sqrt{352}=4\sqrt{22}.
+\]
+The sum is $\boxed{6\sqrt{17}+4\sqrt{22}}$.

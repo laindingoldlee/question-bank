@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1559568_please_help
+% Stable identity: aops-topic-1559568-q01
+If two of the numbers are equal, say $a$ and $a$, then $a-a=0$ and we are done. So assume the $11$ numbers are distinct.
+
+\textbf{Subset sums.} There are $2^{11}-1=2047$ nonempty subsets of the $11$ numbers. The sum of any subset is at least $1$ and at most the sum of all eleven, which is at most $190+189+\cdots+180=\dfrac{11\cdot(190+180)}{2}=2035$. Since $2047>2035$, by the pigeonhole principle two different nonempty subsets $P\ne Q$ have the same sum.
+
+\textbf{Remove the common part.} Let $P'=P\setminus Q$ and $Q'=Q\setminus P$. Removing the common elements from both sides keeps the sums equal: $\sum P'=\sum Q'$. They are disjoint, and they are not both empty (since $P\ne Q$); if one were empty its sum would be $0$, while the other has positive sum, so both are nonempty.
+
+Now put $+$ in front of the numbers of $P'$ and $-$ in front of the numbers of $Q'$: the result is $\sum P'-\sum Q'=0$. $\blacksquare$

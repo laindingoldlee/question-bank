@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h3166099_2019_lmt_spring_guts_round_p25p36__lexington_mathematical_tournament
+% Stable identity: aops-topic-3166099-q36
+For squared contribution at most $20$, each coordinate contributes the generating polynomial $1+2t+2t^4+2t^9+2t^{16}$; each positive square has two signs. Thus the desired counts are the coefficients of $t^{19},t^{20}$ in its tenth power. Truncated coefficient convolution gives $r_{10}(19)=1563840$ and $r_{10}(20)=2050344$, so the sum is $\boxed{3614184}$. The following integer computation includes every coordinate and sign choice.\begin{verbatim}
+dp=[1]+[0]*20
+for coordinate in range(10):
+    dp=[sum(dp[n-k]*(1 if k==0 else 2)
+            for k in [0,1,4,9,16] if n>=k)
+        for n in range(21)]
+assert (dp[19],dp[20])==(1563840,2050344)
+assert dp[19]+dp[20]==3614184
+\end{verbatim}

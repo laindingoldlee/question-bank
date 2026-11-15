@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2388597_2014_amc12a_problem_18_confusion
+% Stable identity: aops-topic-2388597-q01
+Recall that $\log_cy$ is defined only for $y>0$, that it is increasing in $y$ when $c>1$, and decreasing when $0<c<1$. Work from the outside in. The outer logarithm $\log_{\dfrac12}$ needs a positive argument:
+\[\log_4\left(\log_{\dfrac14}\left(\log_{16}\left(\log_{\dfrac{1}{16}}x\right)\right)\right)>0\iff\log_{\dfrac14}\left(\log_{16}\left(\log_{\dfrac{1}{16}}x\right)\right)>1 .\]
+Since the base $\dfrac14$ is less than $1$, $\log_{\dfrac14}y>1$ holds exactly when $0<y<\dfrac14$. So
+\[0<\log_{16}\left(\log_{\dfrac{1}{16}}x\right)<\dfrac14\iff1<\log_{\dfrac{1}{16}}x<16^{\dfrac14}=2 .\]
+Again the base $\dfrac{1}{16}$ is less than $1$, so this means
+\[\left(\dfrac{1}{16}\right)^2<x<\dfrac{1}{16},\qquad\text{i.e.}\qquad\dfrac{1}{256}<x<\dfrac{1}{16}.\]
+For these $x$ every logarithm in the formula has a positive argument, so this interval is exactly the domain. Its length is $\dfrac{1}{16}-\dfrac{1}{256}=\dfrac{15}{256}$, so $m+n=15+256=271$: the answer is $\boxed{\text{(C) }271}$.
+
+\textbf{The student's errors.} Twice the student kept the direction of an inequality while applying a logarithm with base less than $1$: $\log_{\dfrac14}y>1$ means $0<y<\dfrac14$, not $y>\dfrac14$; and $\log_{\dfrac{1}{16}}x>2$ would mean $x<\dfrac{1}{256}$, not $x>\dfrac{1}{256}$. The student also dropped the conditions that each argument must be positive, which supply the other end of the interval.

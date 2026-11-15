@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2601080_trivial_fact
+% Stable identity: aops-topic-2601080-q01
+Let the circle have centre $O$ and radius $r$, and let $AB$ be any chord. By the triangle inequality (or trivially, if $O$ lies on line $AB$),
+\[AB\le AO+OB=r+r=2r,\]
+with equality exactly when $O$ lies on the segment $AB$, that is, when $AB$ is a diameter. So every chord has length at most $2r$, and the chords of length $2r$ are exactly the diameters. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),A=dir(200),B=dir(-35),P=dir(100),Q=dir(-80);
+draw(unitcircle,linewidth(0.8));draw(A--B,linewidth(0.8));draw(A--O--B,dashed);draw(P--Q,dotted);
+dot(O);dot(A);dot(B);
+label("$O$",O,NE);label("$A$",A,W);label("$B$",B,SE);label("$r$",(A+O)/2,N,fontsize(8pt));label("$r$",(B+O)/2,NE,fontsize(8pt));
+\end{asy}
+
+The dotted segment is a diameter, of length $2r$.

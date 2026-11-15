@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1282306_interesting_function
+% Stable identity: aops-topic-1282306-q01
+For a positive integer $y$ with $d$ digits, $\lfloor\log_{10}y\rfloor=d-1$, so $\dfrac{y}{10^{d}}$ is the decimal $0.\,y$ (the digits of $y$ after the point). Hence for a nonnegative integer $x$, $F(x,y)$ is "$x$, point, the digits of $y$":
+\[
+F(1,4)=\boxed{1.4},\quad F(19,34)=\boxed{19.34},\quad F(177777,34343434343)=\boxed{177777.34343434343},
+\]
+and $F(a,7)=\boxed{a+0.7}$ for every integer $a$ (for $a\ge0$ this is the decimal $a.7$).
+
+Since $\lfloor\log_{10}(10^ny)\rfloor=n+\lfloor\log_{10}y\rfloor$,
+\[
+\dfrac{10^ny}{10^{n+\lfloor\log_{10}y\rfloor+1}}=\dfrac{y}{10^{\lfloor\log_{10}y\rfloor+1}},
+\]
+so $F(x,10^ny)=F(x,y)$: appending zeros to $y$ only appends trailing zeros after the decimal point. $\blacksquare$

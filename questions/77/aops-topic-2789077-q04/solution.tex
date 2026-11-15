@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2789077_2010_manhattan_mathematical_olympiad_grades_78_problems_14
+% Stable identity: aops-topic-2789077-q04
+Write $c(i,j)$ for the colour of row $i$, column $j$.
+
+Step 1. In two adjacent rows, column $j+2$ shows the same two colours as column $j$ (both are the complement of column $j+1$'s colours), either in the same order or swapped.
+
+Step 2. If some row is not $2$-periodic, i.e. $c(i,j)\ne c(i,j+2)$, then columns $j$ and $j+2$ are swapped in rows $i,i+1$: $c(i+1,j+2)=c(i,j)$ and $c(i,j+2)=c(i+1,j)$; so $c(i+1,j)\ne c(i+1,j+2)$ too, and likewise for row $i-1$. By induction every row is swapped at $j$, which gives $c(k+2,j)=c(k+1,j+2)=c(k,j)$: column $j$ is $2$-periodic. Its neighbours then alternate between the two complementary colours, so they are $2$-periodic too, and so on: every column is $2$-periodic.
+
+So either every row or every column is $2$-periodic; say every row (the other case is symmetric). Then $c(1,8)=c(1,2)$ and $c(8,8)=c(8,2)$. Consecutive rows use complementary pairs of colours in columns $1,2$, so rows $1$ and $8$ (an odd distance apart) use complementary pairs. Hence $\{c(1,1),c(1,8)\}$ and $\{c(8,1),c(8,8)\}$ are complementary pairs of two colours each, and all four corners differ. $\blacksquare$
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<4;++i) for(int j=0;j<4;++j){ int c=2*(i%2)+(j%2); pen p=(c==0)?white:(c==1)?gray(0.75):(c==2)?gray(0.5):gray(0.25); fill(shift(j,i)*unitsquare,p); draw(shift(j,i)*unitsquare);}label("every $2\times2$ block has all four colours",(2,-0.3),S);
+\end{asy}

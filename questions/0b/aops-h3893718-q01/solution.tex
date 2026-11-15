@@ -1,0 +1,9 @@
+Take $A=(0,0),B=(1,0),C=(1,1),D=(0,1)$. The circle center is $O=(\dfrac{1}{2},t)$, with $r^2=\dfrac{1}{4}+t^2$. The power of $C$ is the squared tangent length:
+\[4=OC^2-r^2=\dfrac{1}{4}+(1-t)^2-\left(\dfrac{1}{4}+t^2\right)=1-2t.\]
+Thus $t=-\dfrac{3}{2}$, $r^2=\dfrac{5}{2}$, and $d^2=4r^2=\boxed{10}$. The circle's highest point has height $-\dfrac{3}{2}+\sqrt{\dfrac{5}{2}}<1$, consistent with the condition on $CD$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1),O=(.5,-1.5),v=C-O;real r=sqrt(2.5);pair K=O+(r*r*v+r*sqrt(abs(v)^2-r*r)*(-v.y,v.x))/abs(v)^2;draw(circle(O,r));draw(A--B--C--D--cycle);draw(C--K,blue);draw(O--K,dashed);dot(O);label("$A$",A,(-1,0));label("$B$",B,(1,0));label("$C$",C,(1,1));label("$D$",D,(-1,1));label("$O$",O,(0,-1));label("$K$",K,(-1,0));label("$2$",midpoint(C--K),(0,1));
+\end{asy}

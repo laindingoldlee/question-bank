@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2352029_celebrating_my_hundred_posts
+% Stable identity: aops-topic-2352029-q03
+By the triangle inequality the third side $c$ satisfies $6<c<24$, so $7\le c\le23$. By Heron's formula with $s=\dfrac{24+c}{2}$,
+\[16K^2=(24+c)(c+6)(c-6)(24-c)=\left(576-c^2\right)\left(c^2-36\right).\]
+As a function of $u=c^2$, the product $(576-u)(u-36)$ is a downward parabola with vertex at $u=\dfrac{576+36}{2}=306$; it increases for $u<306$ and decreases for $u>306$.
+\begin{itemize}
+\item \textbf{Largest area.} The nearest squares to $306$ are $17^2=289$ and $18^2=324$: $(576-289)(289-36)=287\cdot253=72611$ and $(576-324)(324-36)=252\cdot288=72576$. So the maximum is at $c=17$, with $K=\dfrac{\sqrt{72611}}{4}$.
+\item \textbf{Smallest area.} The minimum over $7\le c\le23$ is at an end: $c=7$ gives $527\cdot13=6851$ and $c=23$ gives $47\cdot493=23171$. So the minimum is at $c=7$, with $K=\dfrac{\sqrt{6851}}{4}$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(9,0);
+real x1=(81+225-17^2)/18; pair C1=(x1,sqrt(225-x1^2));
+pair A2=(12,0), B2=(21,0);
+real x2=(81+225-7^2)/18; pair C2=A2+(x2,sqrt(225-x2^2));
+draw(A--B--C1--cycle,blue+linewidth(0.9)); draw(A2--B2--C2--cycle,red+linewidth(0.9));
+label("$9$",(A+B)/2,S); label("$15$",(A+C1)/2,W,blue); label("$17$",(B+C1)/2,E,blue);
+label("$9$",(A2+B2)/2,S); label("$15$",(A2+C2)/2,NW,red); label("$7$",(B2+C2)/2,SE,red);
+label("$c=17$: largest area",(4.5,-2),S,blue+fontsize(8pt)); label("$c=7$: smallest area",(19,-2),S,red+fontsize(8pt));
+\end{asy}
+
+The difference is
+\[\boxed{\dfrac{\sqrt{72611}-\sqrt{6851}}{4}}\approx67.37-20.69=46.67.\]
+($72611=7\cdot11\cdot23\cdot41$ and $6851=13\cdot17\cdot31$ are squarefree, so the roots do not simplify.)

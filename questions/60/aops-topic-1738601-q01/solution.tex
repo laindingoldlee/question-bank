@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1738601_mathcounts_sets_problem
+% Stable identity: aops-topic-1738601-q01
+Write each number as $10a+b$ with tens digit $a\in\{0,1,2\}$ and units digit $b\in\{1,2,3\}$; the nine numbers are all nine pairs $(a,b)$. For three different numbers let $T$ be the sum of the tens digits and $U$ the sum of the units digits. The sum is $10T+U$ with $3\le U\le9$, so different pairs $(T,U)$ give different sums, and we count the achievable pairs.
+
+\begin{itemize}
+\item $T=0$: all three numbers are $1,2,3$, so $U=6$: $1$ sum. Similarly $T=6$ ($21,22,23$): $1$ sum.
+\item $T=1$: two numbers with $a=0$ (different units digits, $b_1+b_2\in\{3,4,5\}$) and one with $a=1$ ($b_3\in\{1,2,3\}$), so $U$ takes every value from $4$ to $8$: $5$ sums. By symmetry $T=5$ also gives $5$ sums.
+\item $T=2$: tens digits $0,0,2$ or $0,1,1$; in both cases $U$ is a sum of two different units digits and one more, again every value $4,\dots,8$, and $U=3$ or $9$ would need three equal units digits, i.e.\ tens digits $0,1,2$. So $5$ sums; likewise $T=4$.
+\item $T=3$: tens digits $0,1,2$ allow any three units digits, so $U=3,\dots,9$: $7$ sums (tens digits $1,1,1$ give only $U=6$ again).
+\end{itemize}
+In total $1+5+5+7+5+5+1=\boxed{29}$ different sums.

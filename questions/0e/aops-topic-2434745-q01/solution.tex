@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2434745_question_on_cyclic_quadrilateral
+% Stable identity: aops-topic-2434745-q01
+Let $R$ be the radius of the circle; it is the circumradius of each of the triangles $ABD$, $ABC$, $ACD$.
+
+\textbf{A distance formula.} In a triangle $PQS$ with circumradius $R$, the distance from $P$ to the line $QS$ is $PQ\sin\angle Q$, and by the law of sines $PS=2R\sin\angle Q$. Hence
+\[\text{dist}(P,QS)=\dfrac{PQ\cdot PS}{2R}.\]
+Applying this to triangles $ABD$, $ABC$ and $ACD$ (all with circumradius $R$):
+\[x=\dfrac{AB\cdot AD}{2R},\qquad y=\dfrac{AB\cdot AC}{2R},\qquad z=\dfrac{AC\cdot AD}{2R}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);
+pair A=dir(105),B=dir(195),C=dir(250),D=dir(350);
+pair ft(pair X,pair U,pair V){pair d=V-U; return U+dot(X-U,d)/dot(d,d)*d;}
+pair X1=ft(A,B,D),Y1=ft(A,B,C),Z1=ft(A,C,D);
+draw(circle(O,1),gray);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(B--D,linewidth(0.9));
+draw(A--C,gray+dashed);
+draw(B--Y1,dotted); draw(D--Z1,dotted);
+draw(A--X1,red); draw(A--Y1,blue); draw(A--Z1,darkgreen);
+dot(X1,red); dot(Y1,blue); dot(Z1,darkgreen);
+label("$A$",A,N);label("$B$",B,W);label("$C$",C,S);label("$D$",D,E);
+label("$x$",(A+X1)/2,E,red); label("$y$",(A+Y1)/2,W,blue); label("$z$",(A+Z1)/2,NE,darkgreen);
+\end{asy}
+
+\textbf{Reduction to Ptolemy.} Substituting,
+\[\dfrac{BD}{x}=\dfrac{2R\cdot BD}{AB\cdot AD},\qquad\dfrac{BC}{y}=\dfrac{2R\cdot BC}{AB\cdot AC},\qquad\dfrac{CD}{z}=\dfrac{2R\cdot CD}{AC\cdot AD}.\]
+Multiplying the required identity by $\dfrac{AB\cdot AC\cdot AD}{2R}>0$, it becomes
+\[AC\cdot BD=AD\cdot BC+AB\cdot CD,\]
+which is Ptolemy's theorem for the cyclic quadrilateral $ABCD$. Since every step is reversible, the identity holds. $\blacksquare$

@@ -1,0 +1,7 @@
+Consider the first term and let $t=CP$, $c=CE$, $b=AC$, $a=AE$. Power of $P$ and the median-type squared-distance identity give $\dfrac{AD}{DP}=1+\dfrac{AP^2}{t(c-t)}=\dfrac{b^2}{ct}+\dfrac{a^2}{c(c-t)}\ge\dfrac{(a+b)^2}{c^2}$ by Cauchy-Schwarz. Equality requires $CP:PE=b:a$, the angle-bisector condition. Hence $D$ is the midpoint of arc $CE$ not containing $A$. Applying the same argument independently to the other two terms makes $F,B$ the analogous arc midpoints. Put $C=(0,0),A=(0,8),E=(6,0)$, with circumcenter $(3,4)$ and radius five. Then $D=(3,-1),F=(7,7),B=(-2,4)$. The shoelace formula gives the hexagon area $\boxed{60}$. Each term has its unique minimizer on its prescribed arc, so they simultaneously minimize the sum. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(0,8),B=(-2,4),C=(0,0),D=(3,-1),E=(6,0),F=(7,7),O=(3,4);draw(circle(O,5));draw(A--B--C--D--E--F--cycle);draw(A--C--E--cycle,dashed);draw(A--D);draw(C--F);draw(E--B);pair[] P={A,B,C,D,E,F};string[] L={"A","B","C","D","E","F"};for(int i=0;i<6;++i)label("$"+L[i]+"$",P[i],unit(P[i]-O));
+\end{asy}

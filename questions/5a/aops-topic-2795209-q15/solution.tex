@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2795209_2021_tx_mmc__texas_mathworks_math_contest
+% Stable identity: aops-topic-2795209-q15
+The top and bottom are each joined to all four middle vertices; each middle vertex is joined to top, bottom and two middle vertices.
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair T=(0,2.2),Bt=(0,-2.2),P=(-1.8,0.1),Q=(-0.4,-0.5),R=(1.8,-0.1),U=(0.5,0.5);
+draw(T--P);draw(T--Q);draw(T--R);draw(T--U,dashed);draw(Bt--P);draw(Bt--Q);draw(Bt--R);draw(Bt--U,dashed);
+draw(P--Q--R);draw(R--U--P,dashed);
+dot(T);dot(Bt);label("top",T,N);label("bottom",Bt,S);
+\end{asy}
+
+Let $t_n,m_n,b_n$ be the numbers of $n$-edge walks from the top ending at the top, at a particular middle vertex (summed over all four: $M_n$), and at the bottom. From the adjacencies,
+\[t_{n+1}=M_n,\quad b_{n+1}=M_n,\quad M_{n+1}=4t_n+4b_n+2M_n.\]
+Starting from $(t_0,M_0,b_0)=(1,0,0)$:
+\[\begin{array}{c|cccccccc}n&0&1&2&3&4&5&6&7\\\hline t_n&1&0&4&8&48&160&704&2688\\ M_n&0&4&8&48&160&704&2688&\\ b_n&0&0&4&8&48&160&704&2688\end{array}\]
+Hence there are $\boxed{2688}$ such walks.

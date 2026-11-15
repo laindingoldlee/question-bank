@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h579676_middle_school_geometry_marathon
+% Stable identity: aops-topic-579676-q01
+The longest distance between two points of a cube is a space diagonal, joining opposite vertices $P$ and $Q$. If the edge is $s$, the diagonal $PR$ of the bottom face is $s\sqrt2$, and the space diagonal is the hypotenuse of the right triangle $PRQ$ with legs $PR=s\sqrt2$ and the vertical edge $RQ=s$:
+\[
+PQ=\sqrt{2s^2+s^2}=s\sqrt3 .
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+real a=2; pair v=(0.9,0.65);
+pair A=(0,0),B=(a,0),C=(a,a),D=(0,a);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(B--B+v--C+v--C,linewidth(0.9)); draw(D--D+v--C+v,linewidth(0.9));
+draw(A--A+v,dashed); draw(A+v--B+v,dashed); draw(A+v--D+v,dashed);
+draw(A--C+v,red+linewidth(0.9));
+draw(A--B+v,blue+dashed);
+dot(A);dot(C+v);dot(B+v);
+label("$P$",A,SW); label("$Q$",C+v,NE); label("$R$",B+v,E);
+label("$s$",(a/2,0),S); label("$s$",(B+v+C+v)/2,E);
+label("$2\sqrt3$",A+0.55*(C+v-A),NW,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So $s\sqrt3=2\sqrt3$ gives $s=2$, and the volume is $2^3=\boxed{8}$.

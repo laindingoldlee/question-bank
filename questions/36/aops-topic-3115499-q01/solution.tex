@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3115499_expected_value
+% Stable identity: aops-topic-3115499-q01
+(a) The sixteen squares contribute $64$ sides before shared sides are removed. Each shared side removes two boundary units, so $P=64-2E$. (b) A $1\times16$ strip has $P=34,L=2$, whereas a $4\times4$ square has $P=16,L=0$. A distribution concentrated on either shape meets all the geometric conditions but gives different expectations. In general $\mathbb E[P]=64-2\mathbb E[E]$, and $\mathbb E[L]$ likewise depends on the sampling law.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int i=0;i<16;++i)draw((i,0)--(i+1,0)--(i+1,1)--(i,1)--cycle);for(int i=0;i<4;++i)for(int j=0;j<4;++j)draw((i,j+3)--(i+1,j+3)--(i+1,j+4)--(i,j+4)--cycle);label("$P=34, L=2$",(8,-0.8));label("$P=16, L=0$",(6,5));
+\end{asy}

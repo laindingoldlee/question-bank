@@ -1,0 +1,9 @@
+Let the four rows have $a+1,b+1,c+1,d+1$ tiles, so $a+b+c+d=16$. These are their numbers of interior vertical cuts. For neighbouring rows with $a,b$ cuts, their strict merged left-to-right order can be chosen in $\binom{a+b}{a}$ ways. These choices across the three row boundaries are independently realisable: merge rows successively, inserting new cut positions in the required gaps; no earlier relative order is disturbed. Conversely these three merged orders specify exactly all adjacencies, and equality of neighbouring cuts is forbidden. Hence $N=\sum_{a+b+c+d=16}\binom{a+b}{a}\binom{b+c}{b}\binom{c+d}{c}=64570081$, giving $\boxed{81}$. This sum can be evaluated with three loops $a=0,\ldots,16$, $b=0,\ldots,16-a$, $c=0,\ldots,16-a-b$, setting $d=16-a-b-c$ and adding the displayed integer product.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+draw((0,0)--(10,0)--(10,4)--(0,4)--cycle);for(int y=1;y<4;++y)draw((0,y)--(10,y));for(int y=0;y<4;++y)for(int j=1;j<4;++j)draw((2j+.3y,y)--(2j+.3y,y+1));label("ordered cuts in each row",(5,-.3),(0,-1));
+\end{asy}
+

@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3235952_how_many_quadrilaterals_among_9_points
+% Stable identity: aops-topic-3235952-q01
+There are $\binom94=126$ subsets. The only collinear triples are the three rows, three columns, and two main diagonals: eight triples. For each triple choose the fourth point in six ways, giving 48 forbidden subsets. No four-point subset contains two different collinear triples, since two distinct triples in four points share at least two points and hence lie on the same line, while no grid line contains four points. Thus $126-48=\boxed{78}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int x=0;x<3;++x)for(int y=0;y<3;++y)dot((x,y));draw((0,0)--(2,2),dashed);label("$(0,0)$",(0,0),SW);label("$(2,2)$",(2,2),NE);
+\end{asy}

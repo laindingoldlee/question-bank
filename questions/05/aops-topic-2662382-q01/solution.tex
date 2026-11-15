@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2662382_troll_combo_without_a_funny_answer
+% Stable identity: aops-topic-2662382-q01
+First find the allowed parity patterns (O for odd, E for even), with three of each. Split a pattern into maximal blocks of equal letters. A person inside a block of length $3$ or more has both neighbours of the same parity, and an end person in a block of length $2$ or more has only a same-parity neighbour. So the end blocks have length $1$ and the inner blocks have length $1$ or $2$. Starting with O, the possibilities are
+\[\text{OEOEOE},\qquad\text{OEOEEO},\qquad\text{OEEOEO},\qquad\text{OEEOOE},\]
+with $6$, $5$, $5$, $4$ blocks; by symmetry there are $4$ more patterns starting with E. Each pattern allows $3!\cdot3!=36$ seatings, for $8\cdot36=288$ in total.
+
+For a fixed pattern, person $1$ is equally likely to be in each of the $3$ odd seats and person $2$ in each of the $3$ even seats, independently. They are adjacent exactly when their seats form one of the adjacent odd--even pairs, and a pattern with $k$ blocks has $k-1$ such pairs. So the probability is
+\[\dfrac{2\left[(6-1)+(5-1)+(5-1)+(4-1)\right]}{8\cdot9}=\dfrac{32}{72}=\dfrac49.\]
+Hence $(m+6)(n+8)=10\cdot17=\boxed{170}$.

@@ -1,0 +1,8 @@
+A column has product divisible by $10$ exactly when it contains one $2$ and one $5$. Each column therefore has two choices for its top entry, and its bottom entry is forced. These choices automatically use six of each digit. Thus there are $\boxed{2^6=64}$ fillings.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"2", "5", "2", "2", "5", "5"}, {"5", "2", "5", "5", "2", "2"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("Every column product is 10",(3.0,-2.2));
+\end{asy}

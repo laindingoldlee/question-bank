@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1407827_geometry_question
+% Stable identity: aops-topic-1407827-q01
+$QA=QB$ means $QA^2=QB^2$. By the distance formula,
+\[
+(3+1)^2+(q-5)^2=(3-6)^2+(q-4)^2,
+\]
+so $16+q^2-10q+25=9+q^2-8q+16$, that is $41-10q=25-8q$, and $q=\boxed{8}$.
+
+Geometrically, $Q$ is where the perpendicular bisector of $AB$ (through the midpoint $M\left(\dfrac{5}{2},\dfrac{9}{2}\right)$, perpendicular to $AB$, which has slope $-\dfrac{1}{7}$) meets the line $x=3$. Check: $QA^2=16+9=25=9+16=QB^2$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+pair A=(-1,5),B=(6,4),Q=(3,8),M=(A+B)/2;
+xaxis("$x$",-2,7.5,Arrow(TeXHead)); yaxis("$y$",-0.5,9.5,Arrow(TeXHead));
+draw((3,0)--(3,9.2),gray+dashed); label("$x=3$",(3,0.6),E,gray);
+draw(M-0.55*(1,7)--Q,blue+dashed);
+draw(A--B,linewidth(0.8));
+draw(Q--A,red); draw(Q--B,red);
+dot(A); dot(B); dot(Q,red); dot(M,blue);
+label("$A(-1,5)$",A,W); label("$B(6,4)$",B,E); label("$Q(3,q)$",Q,NE,red); label("$M$",M,NW,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

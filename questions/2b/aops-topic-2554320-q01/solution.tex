@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2554320_hard_question_took_me_a_week_to_solve
+% Stable identity: aops-topic-2554320-q01
+The centres $O_1$, $O_2$ are at distance $1$. By symmetry the two spheres meet in a circle lying in the plane perpendicular to $O_1O_2$ through its midpoint, at distance $\dfrac12$ from each centre. The common region is made of two spherical caps, one from each sphere, each of height $h=1-\dfrac12=\dfrac12$ (the cross-section through the centres is shown).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair O1=(0,0),O2=(1,0);
+path c1=circle(O1,1),c2=circle(O2,1);
+pair P=(0.5,sqrt(3)/2),Q=(0.5,-sqrt(3)/2);
+fill(arc(O2,1,120,240)--arc(O1,1,-60,60)--cycle,mediumgray+opacity(0.5));
+draw(c1);draw(c2);
+draw(P--Q,dashed);
+dot(O1);dot(O2);label("$O_1$",O1,W);label("$O_2$",O2,E);
+draw(O1--O2);
+label("$\dfrac12$",(0.25,0),S,fontsize(8pt));label("$\dfrac12$",(0.75,0),S,fontsize(8pt));
+label("$1$",(O1+P)/2,SE,fontsize(8pt));draw(O1--P,dotted);
+\end{asy}
+
+\textbf{(a)} A cap of height $h$ of a sphere of radius $r$ has volume $\dfrac{\pi h^2(3r-h)}{3}$. With $r=1$, $h=\dfrac12$:
+\[\dfrac{\pi\cdot\dfrac14\cdot\dfrac52}{3}=\dfrac{5\pi}{24}.\]
+(Equivalently, slicing perpendicular to $O_1O_2$, the cap is $\displaystyle\int_{\dfrac12}^{1}\pi\left(1-t^2\right)dt=\pi\left(\dfrac12-\dfrac{7}{24}\right)=\dfrac{5\pi}{24}$.) The common volume is $2\cdot\dfrac{5\pi}{24}=\boxed{\dfrac{5\pi}{12}}$.
+
+\textbf{(b)} The curved surface of a cap of height $h$ on a sphere of radius $r$ has area $2\pi rh$ (Archimedes). Each cap contributes $2\pi\cdot1\cdot\dfrac12=\pi$, so the surface area is $\boxed{2\pi}$.

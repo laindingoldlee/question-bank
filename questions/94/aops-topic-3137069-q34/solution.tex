@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h3137069_2013_lmt_spring_guts_round_p25p36_lexington_mathematical_tournament
+% Stable identity: aops-topic-3137069-q34
+The exponent interval for $ n $ digits has length $\log_2(10)$, strictly between 3 and 4. Thus each $ f(n)$ is 3 or 4, including $ f(1)=4 $. The total number of powers below $ 10^{2013}$ is $ T=\lfloor2013\log_2(10)\rfloor+1=6688 $. If $ a $ intervals contain 3 powers, then $ 3a+4(2013-a)=6688 $, giving $\boxed{a=1364}$. The integer count can also be verified without logarithmic rounding:
+\begin{verbatim}
+x=1;T=0;bound=10**2013
+while x<bound:
+ T+=1;x*=2
+assert T==6688
+\end{verbatim}

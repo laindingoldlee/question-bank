@@ -1,0 +1,8 @@
+For any 3 by 3 magic square with center $e$, summing the middle row, middle column, and two diagonals counts all nine cells once and the center three extra times. Thus $4S=3S+3e$ and $S=3e=150$. Opposite cells sum to $2e=100$. Let the upper-left cell be $a$. Then middle-left is 44, bottom-left is $106-a$, and upper-right is $a-6$. The top row gives $a+38+(a-6)=150$, so $a=\boxed{59}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"59", "38", "53"}, {"44", "50", "56"}, {"47", "62", "41"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}label("common sum 150",(1.5,-3.2));
+\end{asy}

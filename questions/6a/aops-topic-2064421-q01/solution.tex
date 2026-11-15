@@ -1,0 +1,47 @@
+% Source: https://artofproblemsolving.com/community/c3h2064421_congruent_triangles_inscribed_quadrilateral
+% Stable identity: aops-topic-2064421-q01
+Let $I$ be the incentre and $r$ the inradius of $ABC$, and write $\angle A,\angle B,\angle C$ for its angles.
+
+\begin{asy}
+usepackage("amsmath");
+size(8cm);
+defaultpen(fontsize(10pt));
+pair A=(1.7,3.9), B=(0,0), C=(4.4,0);
+pair ft(pair P,pair U,pair V){return U+(V-U)*dot(P-U,V-U)/dot(V-U,V-U);}
+pair inc(pair X,pair Y,pair Z){real x=abs(Y-Z),y=abs(Z-X),z=abs(X-Y);return (x*X+y*Y+z*Z)/(x+y+z);}
+pair cc(pair X,pair Y,pair Z){pair m1=(X+Y)/2, m2=(X+Z)/2; return extension(m1,m1+rotate(90)*(Y-X),m2,m2+rotate(90)*(Z-X));}
+pair D=ft(A,B,C), Ept=ft(B,C,A), F=ft(C,A,B);
+pair K=inc(B,F,D), L=inc(C,D,Ept), I=inc(A,B,C);
+pair P=cc(A,B,K), Q=cc(A,C,L);
+
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,gray(0.4)); draw(B--Ept,gray(0.4)); draw(C--F,gray(0.4));
+draw(B--I,dashed); draw(C--I,dashed);
+draw(A--(I+0.9*(I-A)),deepgreen+dashed);
+draw(K--L,red+linewidth(1)); draw(P--Q,blue+linewidth(1));
+dot(A);dot(B);dot(C);dot(D);dot(Ept);dot(F);dot(K);dot(L);dot(I);dot(P);dot(Q);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$D$",D,S); label("$E$",Ept,NE); label("$F$",F,NW);
+label("$K$",K,dir(250)); label("$L$",L,dir(290)); label("$I$",I,NE); label("$P$",P,W); label("$Q$",Q,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Step 1: $K$ and $L$ on the bisectors.} Since $\angle B$ is acute, $BD=AB\cos B$ and $BF=BC\cos B$, so triangle $BDF$ is similar to triangle $BAC$ (common angle at $B$, sides in ratio $\cos B$), with $D\leftrightarrow A$ and $F\leftrightarrow C$. This similarity is a dilation at $B$ with ratio $\cos B$ followed by the reflection in the bisector $BI$; it maps $I$ to the incentre $K$ of $BDF$. As $I$ lies on the bisector, $K$ lies on segment $BI$ with $BK=BI\cos B$. Similarly $L$ lies on segment $CI$ with $CL=CI\cos C$.
+
+\textbf{Step 2: equal powers.} Since $BI=\dfrac{r}{\sin\dfrac {B}{2}}$,
+\[
+IK\cdot IB=(BI-BK)\,BI=BI^2(1-\cos B)=\dfrac{r^2}{\sin^2\dfrac {B}{2}}\cdot2\sin^2\dfrac {B}{2}=2r^2,
+\]
+and likewise $IL\cdot IC=2r^2$. Since $I$ lies on line $BK$ outside segment $BK$, $IK\cdot IB$ is the power of $I$ with respect to circle $(ABK)$; similarly $IL\cdot IC$ is its power with respect to $(ACL)$. So $I$ has equal power $2r^2$ with respect to both circles. Also $A$ lies on both circles (power $0$). The circles are different: if they coincided, the circle would pass through $A,B,C$ and so be the circumcircle of $ABC$, but $K$ lies strictly inside the triangle. Hence their radical axis is the line $AI$, and the line of centres is perpendicular to it:
+\[
+PQ\perp AI .
+\]
+
+\textbf{Step 3: $KL\perp AI$.} From $IK\cdot IB=IL\cdot IC$ (with $K$ on segment $IB$ and $L$ on segment $IC$), the converse of the power of a point shows that $B,K,L,C$ are concyclic. Hence $\angle IKL=\angle ICB=\dfrac{\angle C}{2}$ (exterior angle of the cyclic quadrilateral $BKLC$).
+
+Let the ray from $I$ opposite to $A$ be $IA'$. Since $\angle AIB=90^\circ+\dfrac{\angle C}{2}$, we get $\angle BIA'=90^\circ-\dfrac{\angle C}{2}$, and similarly $\angle CIA'=90^\circ-\dfrac{\angle B}{2}$; these add to $\angle BIC$, so ray $IA'$ runs inside angle $KIL$ and meets segment $KL$ at a point $T$. In triangle $KIT$,
+\[
+\angle KTI=180^\circ-\angle IKT-\angle KIT=180^\circ-\dfrac{\angle C}{2}-\left(90^\circ-\dfrac{\angle C}{2}\right)=90^\circ .
+\]
+So $KL\perp AI$.
+
+\textbf{Conclusion.} Both $PQ$ and $KL$ are perpendicular to $AI$, hence $\boxed{PQ\parallel KL}$.

@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2512150_1000_upvotes_received_celebration
+% Stable identity: aops-topic-2512150-q13
+The edge lengths are positive integers whose product is $2^{100}$, so each is a power of $2$: $2^a$, $2^b$, $2^c$ with $a+b+c=100$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair o=(0,0); real a=4.2,bb=2.2,c=2.8; pair dz=(1.3,0.9);
+draw(o--(a,0)--(a,c)--(0,c)--cycle,linewidth(0.8));
+draw((a,0)--(a,0)+dz--(a,c)+dz--(0,c)+dz--(0,c),linewidth(0.8));
+draw((a,c)--(a,c)+dz,linewidth(0.8));
+draw(o--dz,dashed); draw(dz--(a,0)+dz,dashed); draw(dz--(0,c)+dz,dashed);
+label("$2^{a}$",(a/2,0),S); label("$2^{c}$",(0,c/2),W); label("$2^{b}$",(a,0)+dz/2,SE);
+\end{asy}
+
+The condition $2^a\ge512=2^9$ means $a\ge9$, and similarly $b,c\ge9$. Put $a'=a-9$, $b'=b-9$, $c'=c-9$; then $a',b',c'$ are nonnegative integers with
+\[a'+b'+c'=100-27=73.\]
+By stars and bars, the number of ordered solutions is $\dbinom{73+2}{2}=\dbinom{75}{2}=\boxed{2775}$.

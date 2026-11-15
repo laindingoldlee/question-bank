@@ -1,0 +1,11 @@
+First bound the search. If $2^k\le n<2^{k+1}$ with $k\ge6$, then $\lfloor\log_2n\rfloor=k$ and $\lfloor\log_3n\rfloor\le k-1$, since $3^k>2^{k+1}$. But $\lfloor\dfrac{n}{5}\rfloor\ge\lfloor\dfrac{2^k}{5}\rfloor\ge2k$, the last inequality holding at $k=6$ and remaining true on doubling. Thus $n\ge64$ is impossible.
+
+For $1\le n\le63$, split at powers of $2$ and $3$:
+\[
+\begin{array}{c|rrrrrrrrr}
+n&1&2&3&4\!-\!7&8&9\!-\!15&16\!-\!26&27\!-\!31&32\!-\!63\\ \hline
+\lfloor\log_2n\rfloor+\lfloor\log_3n\rfloor
+&0&1&2&3&4&5&6&7&8
+\end{array}
+\]
+Comparing each entry to $\lfloor\dfrac{n}{5}\rfloor$ leaves $n=1$ and $n=40,41,42,43,44$. There are $\boxed6$ solutions.

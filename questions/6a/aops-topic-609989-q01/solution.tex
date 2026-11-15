@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h609989_mathcounts_2009_state_sprint_round_question_30
+% Stable identity: aops-topic-609989-q01
+Triangle $ARS$ is isosceles ($AR=AS$ are radii) with apex angle $74^\circ$, so its base angles are
+\[
+\angle ASR=\angle ARS=\dfrac{180^\circ-74^\circ}{2}=53^\circ .
+\]
+Since $S$ lies between $T$ and $R$, the angle $\angle AST$ is supplementary to $\angle ASR$: $\angle AST=127^\circ$. In triangle $ATS$ the angle at $T$ is $28^\circ$ (because $S$ is on ray $TR$ and $A$ on ray $TB$), so
+\[
+\angle TAS=180^\circ-28^\circ-127^\circ=25^\circ .
+\]
+As $B$ lies on ray $AT$, the central angle $\angle BAS=25^\circ$, so arc $BS$ is $25^\circ$:
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(-1,0),Bp=(1,0);
+pair Sx=dir(155),R=dir(81);
+pair T=(-1.70114,0);
+draw(unitcircle,linewidth(0.9));
+draw(T--Bp,linewidth(0.9));draw(T--R,linewidth(0.9));
+draw(A--R,blue);draw(A--Sx,blue);
+draw(arc(A,0.25,81,155),blue);label("$74^\circ$",A+0.26*dir(118),dir(118),blue);
+draw(arc(T,0.42,0,28),red);label("$28^\circ$",T+0.44*dir(14),dir(14),red);
+dot(A);dot(B);dot(Sx);dot(R);dot(T);dot(Bp);
+label("$A$",A,S);label("$B$",B,dir(-135));label("$T$",T,W);label("$S$",Sx,dir(125));label("$R$",R,N);
+draw(arc(A,1,155,180),heavygreen+linewidth(1.8));label("$25^\circ$",0.74*dir(167.5),heavygreen);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The minor arc $BR$ consists of arc $BS$ and arc $SR$ (the arc of the central angle $RAS$), so it measures
+\[
+25^\circ+74^\circ=\boxed{99^\circ}.
+\]
+(Check with the secant angle theorem: if $B'$ is the other end of the diameter, arc $RB'=180^\circ-99^\circ=81^\circ$, and $\angle T=\dfrac{81^\circ-25^\circ}{2}=28^\circ$.)

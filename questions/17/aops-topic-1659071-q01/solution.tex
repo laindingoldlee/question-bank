@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1659071_nt_problem_that_i_just_came_up_with
+% Stable identity: aops-topic-1659071-q01
+Call a digit P (prime: $2,3,5,7$), C (composite: $4,6,8,9$) or Z (neither: $0,1$); there are $4$, $4$ and $2$ digits of each kind.
+
+\textbf{Count all digit strings of length $5$ first}, allowing a leading $0$. For a string with $p$ P's, $c$ C's and $z$ Z's, there are $\dfrac{5!}{p!\,c!\,z!}4^p4^c2^z$ strings. By symmetry between P and C, the number with $p>c$ equals the number with $p<c$, so
+\[
+N_{5}=\dfrac{10^5-E_5}{2},
+\]
+where $E_5$ is the number of strings with $p=c$:
+\[
+E_5=\sum_{p=0}^{2}\dfrac{5!}{p!\,p!\,(5-2p)!}\,16^p\,2^{5-2p}=32+20\cdot16\cdot8+30\cdot256\cdot2=32+2560+15360=17952 .
+\]
+So $N_5=\dfrac{100000-17952}{2}=41024$.
+
+\textbf{Remove the strings with leading digit $0$.} These are a leading $0$ followed by any length-$4$ string with $p>c$. In the same way, $E_4=\displaystyle\sum_{p=0}^{2}\dfrac{4!}{p!\,p!\,(4-2p)!}16^p2^{4-2p}=16+12\cdot16\cdot4+6\cdot256=16+768+1536=2320$, and
+\[
+N_4=\dfrac{10^4-2320}{2}=3840 .
+\]
+The answer is $41024-3840=\boxed{37184}$. (Checked by testing all $90000$ five-digit numbers.)

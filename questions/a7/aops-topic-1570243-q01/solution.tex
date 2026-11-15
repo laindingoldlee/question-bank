@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1570243_combinatorics_question
+% Stable identity: aops-topic-1570243-q01
+There are $\dbinom n2$ lines. Since no two are parallel, every pair of lines meets in exactly one point. Two lines meet at one of the given points exactly when they share an endpoint; through each given point pass $n-1$ lines, which form $\dbinom{n-1}2$ pairs. All other pairs of lines meet at distinct new points (no three lines are concurrent away from the given points).
+
+Alternatively count the new points directly: two lines meet at a new point exactly when their four endpoints are distinct. Any $4$ of the given points determine $3$ ways to split them into two pairs, i.e.\ $3$ pairs of lines with no common endpoint. Hence the number of new intersection points is
+\[
+3\dbinom n4=\boxed{\dfrac{n(n-1)(n-2)(n-3)}{8}}.
+\]
+This agrees with the first count: $\dbinom{\binom n2}{2}-n\dbinom{n-1}{2}=3\dbinom n4$. For example, $4$ points give $6$ lines and $3$ new intersection points.

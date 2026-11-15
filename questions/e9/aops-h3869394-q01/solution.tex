@@ -1,0 +1,31 @@
+The cosine rule gives $\angle A=60^\circ$. The original triangle has semiperimeter $10$, area $10\sqrt3$, and inradius $\sqrt3$. Its incircle tangency length from $A$ is $3$.
+
+Write $AM=x$, $AN=y$. The other tangency lengths are $x-3,y-3$, so $MN=x+y-6$. The cosine rule in $AMN$ gives
+\[
+x^2+y^2-xy=(x+y-6)^2,\qquad (x-4)(y-4)=4.
+\]
+Because $x,y>3$, both $x-4,y-4$ must be positive.
+
+Use unit vectors $u,v$ along $AB,AC$, with $u\cdot v=\dfrac{1}{2}$. Since $BD=2$, $DC=5$,
+\[
+D=\dfrac{25u+16v}{7},\qquad AD=\dfrac{\sqrt{1281}}{7}.
+\]
+A circle through the origin has equation $|X|^2=w\cdot X$ for a fixed vector $w$. For the circle through $A,M,N$, $w\cdot u=x$ and $w\cdot v=y$. Intersecting with the ray $AD$ therefore gives
+\[
+AP=\dfrac{25x+16y}{\sqrt{1281}}.
+\]
+Put $x=4+t$, $y=4+\dfrac{4}{t}$, where $t>0$. Then
+\[
+25x+16y=164+25t+\dfrac{64}{t}\ge244
+\]
+by AM-GM, with equality at $t=\dfrac{8}{5}$. The corresponding triangle has positive tangency lengths and encloses the fixed incircle, so equality is attainable. Thus
+\[
+\min AP^2=\dfrac{244^2}{1281}=\dfrac{976}{21},
+\qquad \boxed{r+s=997}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(5,0),C=(4,4sqrt(3)),D=(33.0/7,8sqrt(3)/7),M=(28.0/5,0),N=(13.0/4,13sqrt(3)/4),I=(3,sqrt(3)),O=(14.0/5,37.0/(10sqrt(3))),P=4D/3;draw(circle(O,length(O)),gray);draw(circle(I,sqrt(3)),blue);draw(A--B--C--cycle,dashed);draw(A--M--N--cycle);draw(A--P,red);label("$A$",A,SW);label("$B$",B,(0,-1));label("$C$",C,(0,1));label("$D$",D,SE);label("$M$",M,(0,-1));label("$N$",N,NW);label("$P$",P,(1,0));
+\end{asy}

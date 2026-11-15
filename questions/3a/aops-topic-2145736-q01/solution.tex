@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h2145736_alternate_proof_that_sum_of_exterior_angles_equals_360_degrees
+% Stable identity: aops-topic-2145736-q01
+\textbf{(a)} Let the interior angles at $A$, $B$, $C$ be $\alpha$, $\beta$, $\gamma$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(5,0), C=(1.6,3.2);
+pair B2=B+1.7*unit(B-A), C2=C+1.7*unit(C-B), A2=A+1.7*unit(A-C);
+draw(B--B2,dashed); draw(C--C2,dashed); draw(A--A2,dashed);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(arc(B,0.55,degrees(B2-B),degrees(C-B)),blue);
+draw(arc(C,0.55,degrees(C2-C),degrees(A-C)),blue);
+draw(arc(A,0.55,degrees(A2-A),360),blue);
+draw(arc(B,0.35,degrees(C-B),180),red);
+draw(arc(C,0.35,degrees(A-C),degrees(B-C)),red);
+draw(arc(A,0.35,0,degrees(C-A)),red);
+label("$y$",B+0.85*dir((degrees(B2-B)+degrees(C-B))/2),blue);
+label("$z$",C+0.85*dir((degrees(C2-C)+degrees(A-C))/2),blue);
+label("$x$",A+0.85*dir((degrees(A2-A)+360)/2),blue);
+label("$\beta$",B+0.62*dir((degrees(C-B)+180)/2),red+fontsize(8pt));
+label("$\gamma$",C+0.62*dir((degrees(A-C)+degrees(B-C))/2),red+fontsize(8pt));
+label("$\alpha$",A+0.62*dir(degrees(C-A)/2),red+fontsize(8pt));
+label("$A$",A,NW); label("$B$",B,S); label("$C$",C,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+At each vertex the exterior angle and the interior angle together form a straight angle (one side of the triangle and the extension of the other side lie on one line), so
+\[x+\alpha=180^\circ,\qquad y+\beta=180^\circ,\qquad z+\gamma=180^\circ .\]
+Adding the three equations,
+\[(x+y+z)+(\alpha+\beta+\gamma)=3\cdot180^\circ=540^\circ .\]
+Since $\alpha+\beta+\gamma=180^\circ$, we get $x+y+z=540^\circ-180^\circ=\boxed{360^\circ}$.
+
+\textbf{(b)} The same argument works. At each of the $n$ vertices the exterior and interior angles add up to $180^\circ$, so all $2n$ angles add up to $180^\circ n$. A convex $n$-gon is cut by the diagonals from one vertex into $n-2$ triangles whose angles together make up the interior angles of the polygon, so the interior angles add up to $180^\circ(n-2)$. Hence the exterior angles add up to
+\[180^\circ n-180^\circ(n-2)=360^\circ .\qquad\blacksquare\]

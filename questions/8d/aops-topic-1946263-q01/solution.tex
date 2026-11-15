@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h1946263_largest_number_possible
+% Stable identity: aops-topic-1946263-q01
+We choose the digits from left to right, each time taking the largest digit that can still be completed to a valid arrangement.
+\begin{itemize}
+\item First digit $8$.
+\item Second: not $7$ (next to $8$); $6$ works so far: $86$.
+\item Third: not $7$ or $5$ (next to $6$); try $4$: $864$.
+\item Fourth: remaining $\{1,2,3,5,7\}$; $7$ is not next to $4$: $8647$.
+\item Fifth: remaining $\{1,2,3,5\}$. Try $5$: then $1,2,3$ fill the last three places. Wherever $2$ goes, the place next to it on the side of the other two (place $7$ if $2$ is in place $6$ or $8$, and both neighbours if $2$ is in place $7$) holds $1$ or $3$. So $5$ fails. Take $3$: $86473$.
+\item Sixth: remaining $\{1,2,5\}$. $5$ would leave $1,2$ adjacent, and $2$ is next to $3$, so take $1$: $864731$.
+\item Then $2$ cannot follow $1$, so $5$ then $2$: $86473152$.
+\end{itemize}
+Check: the neighbouring pairs $86,64,47,73,31,15,52$ all differ by more than $1$. At each step every larger digit was impossible, so the largest such number is $\boxed{86473152}$.

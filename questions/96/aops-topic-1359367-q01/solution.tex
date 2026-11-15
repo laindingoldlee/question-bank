@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h1359367_question_about_geometry_problem
+% Stable identity: aops-topic-1359367-q01
+Use coordinates $B=(0,0)$, $A=(0,14)$, $C=(14,0)$, so $E=(0,6)$ and $D=(6,0)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair B=(0,0),A=(0,14),C=(14,0),E=(0,6),D=(6,0),F=(4.2,4.2);
+fill(A--F--C--cycle,paleblue);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--D,blue); draw(C--E,blue);
+draw(ra(B,A-B,C-B,0.9));
+dot(E);dot(D);dot(F);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$E$",E,W); label("$D$",D,S); label("$F$",F,NE);
+label("$6$",(B+E)/2,W); label("$8$",(E+A)/2,W); label("$6$",(B+D)/2,S); label("$8$",(D+C)/2,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Line $AD$ is $\dfrac{x}{6}+\dfrac{y}{14}=1$ and line $CE$ is $\dfrac{x}{14}+\dfrac{y}{6}=1$. By symmetry they meet on the line $y=x$, at $x\left(\dfrac{1}{6}+\dfrac{1}{14}\right)=1$, so $x=\dfrac{21}{5}$ and $F=\left(\dfrac{21}{5},\dfrac{21}{5}\right)$.
+
+Triangles $ABF$ and $CBF$ each have base $14$ and height $\dfrac{21}{5}$ (the distance from $F$ to $AB$, respectively $BC$), so each has area $\dfrac{1}{2}\cdot14\cdot\dfrac{21}{5}=\dfrac{147}{5}$. Hence
+\[
+[AFC]=[ABC]-[ABF]-[CBF]=98-\dfrac{294}{5}=\boxed{\dfrac{196}{5}} .
+\]
+The student's $56$ is wrong. The median from $B$ to the midpoint $H$ of $AC$ has length $7\sqrt2$, and $F$ lies on it at distance $\dfrac{21}{5}\sqrt2=\dfrac{3}{5}\cdot7\sqrt2$ from $B$, not $\dfrac{4}{7}\cdot7\sqrt2$: the fact that $E$ cuts $BA$ in the ratio $3:4$ says nothing directly about where $CE$ crosses the median. With $FH=\dfrac{2}{5}\cdot7\sqrt2$ we get again $[AFC]=\dfrac{1}{2}\cdot AC\cdot FH=\dfrac{1}{2}\cdot14\sqrt2\cdot\dfrac{14\sqrt2}{5}=\dfrac{196}{5}$.

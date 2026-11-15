@@ -1,0 +1,8 @@
+Use the array shown below. Every entry is a distinct positive integer, and $2025$ occurs. Each row product has a factor divisible by $5$, so the sum of row products is $0$ modulo $5$. In each of columns two, three and four every entry is $1$ modulo $5$, so each of those column products is $1$ modulo $5$. The first column product is $0$ modulo $5$. Thus the sum of column products is $3$ modulo $5$, as required.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"2025", "1", "6", "11"}, {"5", "16", "21", "26"}, {"10", "31", "36", "41"}, {"15", "46", "51", "56"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}
+\end{asy}

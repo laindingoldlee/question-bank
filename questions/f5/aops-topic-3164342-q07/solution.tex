@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h3164342_2019_emcc_individual_accuracy_test__exeter_math_club_competition
+% Stable identity: aops-topic-3164342-q07
+Every candidate is encoded by 11 letters D (double) and M (subtract 1). A sequence ending at 120 never reaches a nonpositive value, since neither operation can restore positivity. On positive values the two operations give different results, so encodings are unique. Exhaustively checking the $2^{11}$ encodings gives exactly four: DDDDDDMMMMD, DDDDDMDMDMM, DDMMDDDMDDD, DMDDDDDMMDD. The following certificate performs each operation and checks the final value, proving $\boxed4$.
+\begin{verbatim}
+from itertools import product
+valid=[]
+for p in product('DM',repeat=11):
+ x=1
+ for op in p:x=2*x if op=='D' else x-1
+ if x==120:valid.append(''.join(p))
+assert valid==['DDDDDDMMMMD','DDDDDMDMDMM','DDMMDDDMDDD','DMDDDDDMMDD']
+\end{verbatim}

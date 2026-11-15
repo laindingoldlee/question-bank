@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h1324114_an_other_construction_problem
+% Stable identity: aops-topic-1324114-q01
+\textbf{Construction.} Draw the diagonal $BD$; let it meet $AP$ at $M$ and $AQ$ at $N$. Draw lines $QM$ and $PN$ and let them meet at $H$. Then line $AH$ is perpendicular to $PQ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+path ra(pair P,pair u,pair v,real s=0.2){return P+s*unit(u)--P+s*unit(u)+s*unit(v)--P+s*unit(v);}
+pair A=(0,0),B=(4,0),C=(4,4),D=(0,4);
+real tp=atan(0.55)*180/pi; pair P=(4,4*0.55); pair Q=(4*Tan(45-tp),4);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(B--D,gray);
+draw(A--P,blue); draw(A--Q,blue); draw(P--Q,linewidth(0.9));
+pair M=extension(A,P,B,D), Nn=extension(A,Q,B,D); pair H=extension(P,Nn,Q,M);
+draw(Q--M,red+dashed); draw(P--Nn,red+dashed); draw(A--extension(A,H,P,Q),red);
+dot(M);dot(Nn);dot(H);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$P$",P,E);label("$Q$",Q,N);
+label("$M$",M,SE);label("$N$",Nn,NW);label("$H$",H,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Proof.} $\angle MAQ=\angle PAQ=45^\circ$, and $\angle MDQ=\angle BDC=45^\circ$. So $A$ and $D$ see segment $MQ$ under equal angles from the same side, and $A,M,Q,D$ are concyclic. Then $\angle AMQ=180^\circ-\angle ADQ=90^\circ$, i.e. $QM\perp AP$. In the same way ($\angle NAP=45^\circ=\angle NBP$, so $A,N,P,B$ are concyclic) we get $PN\perp AQ$.
+
+Thus $QM$ and $PN$ are two altitudes of triangle $APQ$, and $H$ is its orthocentre. The third altitude passes through $H$, so $AH\perp PQ$. Only a straightedge was used. $\blacksquare$

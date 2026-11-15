@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3131564_2023_emcc_team_round__exeter_math_club_competition
+% Stable identity: aops-topic-3131564-q13
+The top and bottom each contribute 9. The outside boundary has 12 unit segments, each with mean tower height 5, contributing 60. There are 12 interior neighboring pairs; each contributes the absolute height difference. For two distinct uniform heights 1 through 9, the mean difference is $\dfrac{\sum_{d=1}^8 2d(9-d)}{9\cdot8}=\dfrac{10}{3}$. Thus internal exposed walls contribute 40. Total $\boxed{118}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair proj(real x,real y,real z){return (x+.5*y,z+.3*y);}for(int y=2;y>=0;--y)for(int x=0;x<3;++x){real h=1+x+3*y;pair A=proj(x,y,0),B=proj(x+1,y,0),C=proj(x+1,y,h),D=proj(x,y,h);filldraw(A--B--C--D--cycle,lightgray);draw(D--proj(x,y+1,h)--proj(x+1,y+1,h)--C); }label("unit bases; heights 1 to 9",(2,-.6));
+\end{asy}

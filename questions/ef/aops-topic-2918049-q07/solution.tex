@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2918049_argentina_nmo_round_2_intercollegiate_geo__level_1_1995__2005
+% Stable identity: aops-topic-2918049-q07
+The base angles are $18^\circ$. $KLCM$ is a parallelogram ($KL\parallel MC$, $KM\parallel LC$), so $\angle LKM=\angle C=18^\circ$, and the isosceles triangle $KLM$ has $\angle KLM=81^\circ$. Also $\angle BLK=\angle BCA=18^\circ$ (corresponding angles).
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0),A=dir(162),C=dir(18);real t=0.3445;pair K=t*A,L=t*C;pair M=extension(K,K+C,A,C);pair P=extension(L,M,A,B);
+draw(A--B--C--cycle);draw(K--L--M--cycle);draw(B--P,dashed);draw(L--P,dashed);label("$A$",A,W);label("$B$",B,S);label("$C$",C,E);label("$K$",K,S);label("$L$",L,S);label("$M$",M,N);label("$P$",P,S);
+\end{asy}
+
+Hence $\angle BLM=18^\circ+81^\circ=99^\circ$ and $\angle BLP=81^\circ$. In triangle $BLP$, $\angle PBL=180^\circ-144^\circ=36^\circ$, so $\angle BPL=180^\circ-36^\circ-81^\circ=\boxed{63^\circ}$.

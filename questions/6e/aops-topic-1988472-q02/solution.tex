@@ -1,0 +1,41 @@
+% Source: https://artofproblemsolving.com/community/c3h1988472_area_of_triangles
+% Stable identity: aops-topic-1988472-q02
+Consider the triangle at $A$. Let $A_1$ be the vertex of the square on $AB$ adjacent to $A$, and $A_2$ the vertex of the square on $AC$ adjacent to $A$, so $AA_1=AB$, $AA_2=AC$, $AA_1\perp AB$ and $AA_2\perp AC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(1.2,2.8);
+pair r(pair v){return rotate(-90)*v;}
+draw(A--B--(B+r(B-A))--(A+r(B-A))--cycle,gray);
+draw(B--C--(C+r(C-B))--(B+r(C-B))--cycle,gray);
+draw(C--A--(A+r(A-C))--(C+r(A-C))--cycle,gray);
+pair a1=A+r(B-A),a2=A+r(A-C),b1=B+r(B-A),b2=B+r(C-B),c1=C+r(C-B),c2=C+r(A-C);
+filldraw(A--a1--a2--cycle,mediumgray+opacity(0.5));
+filldraw(B--b1--b2--cycle,mediumgray+opacity(0.5));
+filldraw(C--c1--c2--cycle,mediumgray+opacity(0.5));
+fill(A--B--C--cycle,lightgray);draw(A--B--C--cycle,linewidth(0.9));
+label("$A$",A,NE);label("$B$",B,1.6*dir(158));label("$C$",C,1.6*dir(283));
+label("$A_1$",a1,S);label("$A_2$",a2,W);
+\end{asy}
+
+Rotate triangle $AA_1A_2$ about $A$ through $90^\circ$ so that $A_1$ goes to $B$. The same rotation turns $AA_2$, which is perpendicular to $AC$, into a segment along line $AC$ of length $AC$ on the other side of $A$; so $A_2$ goes to the point $C'$ with $A$ the midpoint of $CC'$. Thus the rotated triangle is $ABC'$, which lies along side $AB$.
+
+Triangles $ABC'$ and $ABC$ have equal bases $AC'=AC$ on the same line, and the same height from $B$ to that line, so $[ABC']=[ABC]=10$. The same argument applies at $B$ and at $C$, so each of the three triangles has area $10\text{ cm}^2$ (rotation does not change area).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(1.2,2.8);
+pair pa=2*A-C,pb=2*B-A,pc=2*C-B;
+filldraw(A--B--pa--cycle,mediumgray+opacity(0.5));
+filldraw(B--C--pb--cycle,mediumgray+opacity(0.5));
+filldraw(C--A--pc--cycle,mediumgray+opacity(0.5));
+fill(A--B--C--cycle,lightgray);draw(A--B--C--cycle,linewidth(0.9));
+draw(C--pa,dashed);
+label("$A$",A,NW);label("$B$",B,S);label("$C$",C,NE);label("$C'$",pa,S);
+\end{asy}
+
+The figure therefore has area $4\cdot10=\boxed{40\text{ cm}^2}$.

@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1944591_slope_and_yintercept_problem_for_you_guys
+% Stable identity: aops-topic-1944591-q01
+Solve for $y$: $y=2x+4$. This is slope--intercept form $y=mx+b$, so the slope is $m=2$ and the $y$-intercept is $b=4$, i.e. the line crosses the $y$-axis at $(0,4)$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-3.5,0)--(2,0),Arrows(TeXHead));draw((0,-1)--(0,7),Arrows(TeXHead));
+draw((-2.5,-1)--(1.5,7),blue+linewidth(1));
+draw((0,4)--(1,4)--(1,6),dashed);
+dot((0,4));dot((-2,0));
+label("$x$",(2,0),E);label("$y$",(0,7),N);
+label("$(0,4)$",(0,4),W);label("$(-2,0)$",(-2,0),NW);
+label("$1$",(0.5,4),S);label("$2$",(1,5),E);
+label("$y=2x+4$",(1.4,6.6),E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Answer: slope $\boxed{2}$, $y$-intercept $\boxed{4}$. (Going $1$ to the right raises the line by $2$.)

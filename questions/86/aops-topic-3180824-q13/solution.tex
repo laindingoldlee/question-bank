@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3180824_2021_emcc_individual_speed_test__exeter_math_club_competition
+% Stable identity: aops-topic-3180824-q13
+Four lines contain 20 cells counted with multiplicity. Each pair of distinct lines intersects in at most one cell. If a cell lies on $m$ selected lines, its overcount $m-1$ is at most $\binom m2$. Thus total overcount is at most $\binom42=6$, giving at least 14 distinct cells. Select both main diagonals, the top row, and the second column. Their six pairwise intersections are distinct, so the union has exactly 14 cells. The answer is $\boxed{14}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int r=0;r<5;++r)for(int c=0;c<5;++c)filldraw((c,4-r)--(c+1,4-r)--(c+1,5-r)--(c,5-r)--cycle,(r==0||c==1||r==c||r+c==4)?lightgray:white);label("14 marked cells",(2.5,-.5));
+\end{asy}

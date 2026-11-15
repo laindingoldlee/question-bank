@@ -1,0 +1,48 @@
+% Source: https://artofproblemsolving.com/community/c3h2369522_geometry_problem_5_hard
+% Stable identity: aops-topic-2369522-q01
+Take $r=1$, centre $O$, the two points $A,B$ on the unit circle and $C$ on the circle of radius $\sqrt2$. Let $\theta\in[0,\pi]$ be the angle $AOB$; it is uniformly distributed on $[0,\pi]$. Events of probability $0$ (such as $A=B$ or a right angle) are ignored.
+
+\textbf{The angle at $C$ is never obtuse.} Since $|A+B|=2\cos\dfrac\theta2$ and $A\cdot B=\cos\theta=2\cos^2\dfrac\theta2-1$,
+\[(A-C)\cdot(B-C)=A\cdot B-C\cdot(A+B)+|C|^2\ge2c^2-1-\sqrt2\cdot2c+2=\left(\sqrt2\,c-1\right)^2\ge0,\qquad c=\cos\dfrac\theta2.\]
+(Equivalently, the circle with diameter $AB$, dotted in the figure, never reaches outside the circle of radius $\sqrt2$.)
+
+\textbf{The angle at $A$.} It is obtuse exactly when $(C-A)\cdot(B-A)<0$, i.e. when $C$ lies beyond the line $\ell_A$ through $A$ perpendicular to $AB$, on the side away from $B$. With $u$ the unit vector from $A$ towards $B$, we have $A\cdot u=-\sin\dfrac\theta2$, so $\ell_A$ is at distance $d=\sin\dfrac\theta2$ from $O$, and $O$ is on the same side as $B$. The line cuts off from the circle of radius $\sqrt2$ an arc (thick in the figure) of central angle $2\arccos\dfrac{d}{\sqrt2}$, so, for fixed $A,B$,
+\[P(\angle A\text{ obtuse})=\dfrac1\pi\arccos\left(\dfrac{\sin\dfrac\theta2}{\sqrt2}\right).\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real t=110;
+pair O=(0,0), A=dir(0), B=dir(t), C=sqrt(2)*dir(250);
+pair u=unit(B-A), v=rotate(90)*u;
+draw(circle(O,1),linewidth(0.8)); draw(circle(O,sqrt(2)),linewidth(0.8));
+// far arcs (where the angle at A or at B is obtuse)
+real s1=-dot(A,v)+sqrt(dot(A,v)^2+1), s2=-dot(A,v)-sqrt(dot(A,v)^2+1);
+pair P1=A+s1*v, P2=A+s2*v;
+real a1=degrees(P1), a2=degrees(P2);
+path arcA=arc(O,sqrt(2),a1,a2,CCW); if(dot(relpoint(arcA,0.5)-A,u)>0) arcA=arc(O,sqrt(2),a1,a2,CW);
+draw(arcA,red+linewidth(2));
+draw(P1--P2,red+dashed);
+real r1=-dot(B,v)+sqrt(dot(B,v)^2+1), r2=-dot(B,v)-sqrt(dot(B,v)^2+1);
+pair Q1=B+r1*v, Q2=B+r2*v;
+real b1=degrees(Q1), b2=degrees(Q2);
+path arcB=arc(O,sqrt(2),b1,b2,CCW); if(dot(relpoint(arcB,0.5)-B,-u)>0) arcB=arc(O,sqrt(2),b1,b2,CW);
+draw(arcB,deepgreen+linewidth(2));
+draw(Q1--Q2,deepgreen+dashed);
+draw(circle((A+B)/2,abs(B-A)/2),gray+dotted);
+draw(A--B--C--cycle,blue);
+dot(O); dot(A); dot(B); dot(C);
+label("$O$",O,S); label("$A$",A,E); label("$B$",B,N); label("$C$",C,S);
+pair LA=(P1.y<P2.y)?P1:P2; pair LB=(Q1.y<Q2.y)?Q1:Q2;
+label("$\ell_A$",A+0.5*(LA-A)+0.12*dir(degrees(LA-A)+90),dir(degrees(LA-A)+90),red); label("$\ell_B$",B+0.6*(LB-B),dir(degrees(LB-B)-90),deepgreen);
+\end{asy}
+
+By symmetry the angle at $B$ is obtuse with the same conditional probability, and the two events are disjoint (a triangle has at most one obtuse angle). Averaging over $\theta$, with $t=\dfrac\theta2$ uniform on $\left[0,\dfrac\pi2\right]$:
+\begin{align*}
+P(\text{obtuse})&=\dfrac{2}{\pi}\cdot\dfrac{2}{\pi}\int_0^{\dfrac\pi2}\arccos\left(\dfrac{\sin t}{\sqrt2}\right)dt\\
+&=\boxed{\dfrac{4}{\pi^2}\int_0^{\dfrac\pi2}\arccos\left(\dfrac{\sin t}{\sqrt2}\right)dt\approx0.694}.
+\end{align*}
+Expanding $\arcsin$ in a power series and integrating term by term, the integral equals $\dfrac{\pi^2}{4}-\chi$, where
+\[\chi=\sum_{n\ge0}\dfrac{1}{2^{n}\sqrt2\,(2n+1)^2},\]
+so the probability is $1-\dfrac{4}{\pi^2}\chi\approx0.69356$. (The sum $\chi$ is a value of Legendre's chi function, $\chi_2\left(\dfrac{1}{\sqrt2}\right)$; no simpler closed form for it is known.)

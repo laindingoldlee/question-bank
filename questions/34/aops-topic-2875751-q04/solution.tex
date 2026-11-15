@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h2875751_leo2020s_problem_game_thread
+% Stable identity: aops-topic-2875751-q04
+The water level must drop to $10-4=6$ feet, i.e. by $3$ feet.
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair d=(1.6,1.0);real L=6,H=2.5,w1=2.25,w2=1.5;
+fill((0,0)--(L,0)--(L,w1)--(0,w1)--cycle,opacity(0.25)+lightblue);
+fill((0,w1)--(L,w1)--(L,w1)+d--(0,w1)+d--cycle,opacity(0.25)+lightblue);
+draw((0,0)--(L,0)--(L,H)--(0,H)--cycle);draw((L,0)--(L,0)+d--(L,H)+d--(L,H));draw((0,H)--(0,H)+d--(L,H)+d);
+draw((0,0)+d--(L,0)+d,dashed);draw((0,0)--(0,0)+d,dashed);draw((0,0)+d--(0,H)+d,dashed);
+draw((0,w1)--(L,w1),blue);draw((0,w2)--(L,w2),blue+dashed);
+label("$60$",(L/2,0),S);label("$40$",(L,0)+d/2,SE);label("$10$",(L,H/2)+d,E);
+label("now $9$",(0,w1),W,blue);label("target $6$",(0,w2),W,blue);
+\end{asy}
+
+ That removes $60\cdot40\cdot3=7200$ cubic feet. The pumps remove $5\cdot30=150$ cubic feet per minute, so it takes $\dfrac{7200}{150}=\boxed{48}$ minutes.

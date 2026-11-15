@@ -1,0 +1,29 @@
+% Source: https://artofproblemsolving.com/community/c3h2500987_stemhcounts_states_targetall_problems
+% Stable identity: aops-topic-2500987-q02
+Let the square have side $s$, let $AE=BF=CG=DH=t$, and let $X$ have distances $p$ from $AD$ and $q$ from $AB$ (so $0<p,q<s$). Split each quadrilateral by the segment from $X$ to the square's corner:
+\begin{align*}
+[XEAH]&=[XEA]+[XAH]=\dfrac12tq+\dfrac12(s-t)p,\\
+[XGCF]&=[XGC]+[XCF]=\dfrac12t(s-q)+\dfrac12(s-t)(s-p),
+\end{align*}
+using bases $AE=t$, $AH=s-t$, $CG=t$, $CF=s-t$ and the distances from $X$ to the corresponding sides. Adding,
+\[[XEAH]+[XGCF]=\dfrac12\big(tq+t(s-q)\big)+\dfrac12\big((s-t)p+(s-t)(s-p)\big)=\dfrac12ts+\dfrac12(s-t)s=\dfrac{s^2}{2}.\]
+In the same way $[XFBE]+[XHDG]=\dfrac{s^2}{2}$. So opposite quadrilaterals have equal total area:
+\[[XHDG]=[XEAH]+[XGCF]-[XFBE]=81+125-49=\boxed{157}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real L=sqrt(412), t=5.5; pair X=(9.92,2.77);
+pair A=(0,0),B=(L,0),C=(L,L),D=(0,L);
+pair Ep=(t,0),Fq=(L,t),G=(L-t,L),H=(0,L-t);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(X--Ep); draw(X--Fq); draw(X--G); draw(X--H);
+draw(X--A,dashed+gray); draw(X--B,dashed+gray); draw(X--C,dashed+gray); draw(X--D,dashed+gray);
+dot(X);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,NW);
+label("$E$",Ep,S); label("$F$",Fq,E); label("$G$",G,N); label("$H$",H,W); label("$X$",X,S);
+label("$81$",(3.5,5.5)); label("$49$",(15.5,2.5)); label("$125$",(17.3,10.5)); label("$?$",(5,17));
+\end{asy}
+
+(Such a configuration exists: the square has area $2\cdot206=412$; for example $t=5.5$ and $X$ at distances about $9.92$ from $AD$ and $2.77$ from $AB$ give the three areas.)

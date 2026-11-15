@@ -1,0 +1,38 @@
+% Source: https://artofproblemsolving.com/community/c3h2015875_derive_stewarts_menelaus_and_ceva
+% Stable identity: aops-topic-2015875-q02
+Let $h_A$, $h_B$, $h_C$ be the (positive) distances from $A$, $B$, $C$ to $\ell$; they are nonzero because $\ell$ passes through no vertex.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(2,4), B=(0,0), C=(6,0);
+pair F=A+0.7*(B-A), Ep=A+0.4*(C-A);
+pair u=unit(Ep-F);
+pair D=F+(-F.y/u.y)*u;
+pair fA=F+dot(A-F,u)*u, fB=F+dot(B-F,u)*u, fC=F+dot(C-F,u)*u;
+draw(A--B--C--cycle,linewidth(0.9));
+draw(B--D,dashed);
+draw((D-0.5*u)--(fC+0.5*u),blue+linewidth(0.9));
+draw(A--fA,red+dashed); draw(B--fB,red+dashed); draw(C--fC,red+dashed);
+dot(A); dot(B); dot(C); dot(D); dot(F); dot(Ep);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,S); label("$D$",D,S);
+label("$F$",F,NW); label("$E$",Ep,N);
+label("$h_A$",(A+fA)/2,E,red); label("$h_B$",(B+fB)/2,W,red); label("$h_C$",(C+fC)/2,NE,red);
+label("$\ell$",fC+0.5*u,E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Consider the points $B$, $C$ and $D$, which lie on one line through $D\in\ell$. Drop perpendiculars $BB'$ and $CC'$ to $\ell$. These perpendiculars are parallel, so triangles $DBB'$ and $DCC'$ are similar (they share the angle at $D$, or vertical angles at $D$, and have right angles at $B'$ and $C'$). Hence
+\[
+\dfrac{BD}{DC}=\dfrac{BB'}{CC'}=\dfrac{h_B}{h_C}.
+\]
+In the same way, using the points $C,A,E$ on line $CA$ and the points $A,B,F$ on line $AB$,
+\[
+\dfrac{CE}{EA}=\dfrac{h_C}{h_A},\qquad \dfrac{AF}{FB}=\dfrac{h_A}{h_B}.
+\]
+Multiplying,
+\[
+\dfrac{BD}{DC}\cdot\dfrac{CE}{EA}\cdot\dfrac{AF}{FB}=\dfrac{h_B}{h_C}\cdot\dfrac{h_C}{h_A}\cdot\dfrac{h_A}{h_B}=1 ,
+\]
+which proves the theorem.

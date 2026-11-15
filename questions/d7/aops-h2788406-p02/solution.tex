@@ -1,0 +1,12 @@
+Use vectors from the center, writing $p$ for the chosen point and $v_1,\ldots,v_6$ for the vertices. Opposite vertices cancel, so $\sum v_i=0$, and all seven vectors have length $1$. Therefore
+\[
+\sum_{i=1}^6|p-v_i|^2
+=6|p|^2+\sum_{i=1}^6|v_i|^2-2p\cdot\sum_{i=1}^6v_i
+=\boxed{12}.
+\]
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair P=dir(20);draw(unitcircle);for(int j=0;j<6;++j){pair V=dir(60j);draw(V--dir(60(j+1)));draw(P--V,blue);dot(V);}dot(P,red);label("$P$",P,NE);
+\end{asy}

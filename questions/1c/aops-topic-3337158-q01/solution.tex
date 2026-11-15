@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3337158_help_on_a_geometry_problem
+% Stable identity: aops-topic-3337158-q01
+For a regular $n$-gon, the direction of a chord joining vertices with angular indices $i,j$ is $\dfrac{(i+j)180^\circ}{n}+90^\circ$ modulo $180^\circ$. Consequently angles between chord lines are integer multiples of $\dfrac{180^\circ}{n}$. The condition $50=\dfrac{180m}{n}$ forces $n$ to be a multiple of $18$. For $n=18$, the diagonals from $A_1$ to $A_3$ and $A_8$ subtend the five-edge arc $A_3A_8$, giving inscribed angle $\dfrac{5\cdot180^\circ}{18}=50^\circ$. Therefore $\boxed{18}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] P;for(int i=0;i<18;++i)P.push(2dir(360.0*i/18));for(int i=0;i<18;++i)draw(P[i]--P[(i+1)%18]);draw(P[0]--P[2]^^P[0]--P[7],blue);label("$A_1$",P[0],E);label("$A_3$",P[2],NE);label("$A_8$",P[7],NW);label("$50^\circ$",P[0]+(-.45,.5));
+\end{asy}

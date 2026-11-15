@@ -1,0 +1,17 @@
+% Source: https://artofproblemsolving.com/community/c3h2723867_peptagon_reptagon
+% Stable identity: aops-topic-2723867-q01
+Let $a=AB$ (a side), $b=AC$ (a short diagonal) and $c=AD$ (a long diagonal). The heptagon is cyclic, so $ACDE$ is a cyclic quadrilateral. Its sides are $AC=b$, $CD=a$, $DE=a$, $EA=c$ (by symmetry $AE=AD$), and its diagonals are $AD=c$ and $CE=b$. Ptolemy's theorem gives
+\[AC\cdot DE+CD\cdot EA=AD\cdot CE,\quad\text{i.e.}\quad ba+ac=cb.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair[] V;for(int i=0;i<7;++i)V[i]=dir(90+360*i/7);
+draw(unitcircle,gray);for(int i=0;i<7;++i)draw(V[i]--V[(i+1)%7],linewidth(0.8));
+draw(V[0]--V[2]);draw(V[0]--V[3]);draw(V[0]--V[4],dashed);draw(V[2]--V[4],dashed);
+string[] L={"A","B","C","D","E","F","G"};
+for(int i=0;i<7;++i)label("$"+L[i]+"$",V[i],dir(90+360*i/7));
+\end{asy}
+
+Dividing by $abc$: $\dfrac1c+\dfrac1b=\dfrac1a$, which is the claim. $\blacksquare$

@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2400065_counting_problem
+% Stable identity: aops-topic-2400065-q01
+Call a colouring of $n$ sections good if no three adjacent sections have the same colour, and let $a_n$ be the number of good colourings. Split them by the last two sections: let $s_n$ count those whose last two sections have the same colour and $d_n$ those whose last two differ.
+\begin{itemize}
+\item A good colouring ending in two different colours comes from any good colouring of $n-1$ sections followed by one of the $2$ other colours: $d_n=2a_{n-1}$.
+\item One ending in two equal colours comes from a good colouring of $n-1$ sections whose last two differ, followed by a repeat of the last colour: $s_n=d_{n-1}=2a_{n-2}$.
+\end{itemize}
+So $a_n=s_n+d_n=2a_{n-1}+2a_{n-2}$ for $n\ge3$, with $a_1=3$ and $a_2=9$. Then
+\[a_3=24,\quad a_4=66,\quad a_5=180,\quad a_6=492,\quad a_7=2(492+180)=\boxed{1344}.\]

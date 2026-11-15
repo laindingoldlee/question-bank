@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h2650310_going_around_the_earth
+% Stable identity: aops-topic-2650310-q01
+Measure distance as a fraction of the circumference and fuel by the distance it allows, so a full tank is $\dfrac12$; with speed $1$, a plane in the air burns fuel at rate $1$. For a point of the circle let $d$ be its distance to the island along the circle ($0\le d\le\dfrac12$). The answer is $\boxed{3}$.
+
+\emph{Three planes suffice.} Call the planes $A$ (Dr. Evil's), $B$, $C$, and let $A$ fly east.
+\begin{itemize}
+\item At time $0$ all three leave eastward with full tanks. At the point $\dfrac18$ each has $\dfrac38$; $C$ gives $\dfrac18$ to each of $A$ and $B$ (both now full) and flies home on its remaining $\dfrac18$, landing at time $\dfrac14$.
+\item At the point $\dfrac14$, $A$ and $B$ each have $\dfrac38$; $B$ gives $\dfrac18$ to $A$ (now full) and flies home on its remaining $\dfrac14$, landing at time $\dfrac12$. $A$ flies on alone and reaches the point $\dfrac34$ at time $\dfrac34$ with an empty tank.
+\item $C$, refuelled, leaves westward at time $\dfrac12$ and meets $A$ at the point $\dfrac34$ at time $\dfrac34$ with $\dfrac14$ left; it gives $\dfrac18$ to $A$, and both fly east to the point $\dfrac78$, arriving empty at time $\dfrac78$.
+\item $B$, refuelled, leaves westward at time $\dfrac34$ and meets them there with $\dfrac38$ left; it gives each of them $\dfrac18$, and all three fly the last $\dfrac18$ home.
+\end{itemize}
+No tank ever holds more than $\dfrac12$ or runs dry in the air, and $A$ has flown all the way round.
+
+\emph{One plane is not enough}, since it would have to fly the whole circle, a distance $1$, on one tank.
+
+\emph{Two planes are not enough.} Suppose planes $A$ (Dr. Evil's) and $B$ manage it, and say $A$ goes round eastward. Let $Q_1$ and $Q_3$ be the points a quarter and three quarters of the way round eastward, and let $M$ be the open arc between them through the antipode of the island, i.e. the points with $d>\dfrac14$ (bold in the sketch).
+
+\emph{Lemma: the two planes are never both in $M$ at the same moment.} Suppose they are, at time $u$. Let $v$ be the last time before $u$ and $w$ the first time after $u$ at which some plane is at the island (all planes start and finish there). Throughout the interval between $v$ and $w$ both planes are in the air, so together they burn fuel at rate $2$ and gain none. At time $v$ the two tanks hold at most $\dfrac12+\dfrac12=1$. The plane that is at the island at time $v$ must then fly a distance greater than $\dfrac14$ to be in $M$ at time $u$, so $u-v>\dfrac14$; similarly $w-u>\dfrac14$. So the planes burn $2(w-v)>1$ units of fuel between $v$ and $w$, more than they have. This contradiction proves the lemma.
+
+Now follow $A$ along its trip, describing its position by the net distance $x$ it has travelled eastward (so $x$ changes continuously from $0$ to $1$, and positions $x$ and $x+1$ are the same point). Let $t_b$ be the first time with $x=\dfrac34$ (at $Q_3$), and $t_a$ the last time before $t_b$ with $x=\dfrac14$ (at $Q_1$). Between $t_a$ and $t_b$ we have $\dfrac14<x<\dfrac34$, so $A$ is inside $M$, and it flies at least $\dfrac34-\dfrac14=\dfrac12$, so $t_b-t_a\ge\dfrac12$. By the lemma, $B$ is outside $M$ during this time, so it cannot meet $A$, and $A$ receives no fuel. As $A$ holds at most $\dfrac12$ at time $t_a$, it must have exactly $\dfrac12$, fly straight across ($t_b-t_a=\dfrac12$), and reach $Q_3$ with an empty tank. It cannot fly on, so $B$ must be at $Q_3$ at time $t_b$ to give it fuel.
+\begin{itemize}
+\item If $B$ is at the island at some time in $\left[t_a,t_b\right]$, let $r$ be the last such time. From $r$ to $t_b$ it flies from the island to $Q_3$ (so $t_b-r\ge\dfrac14$) without meeting $A$, so it reaches $Q_3$ with at most $\dfrac12-\dfrac14=\dfrac14$.
+\item Otherwise $B$ is in the air for the whole half unit of time without receiving fuel, so it reaches $Q_3$ with at most $\dfrac12-\dfrac12=0$.
+\end{itemize}
+So at time $t_b$ both planes are at $Q_3$ with at most $\dfrac14$ of fuel between them. Neither can reach the island within the next $\dfrac14$ unit of time, and during that time they burn $2\cdot\dfrac14=\dfrac12>\dfrac14$. This contradiction shows that two planes cannot do it.
+
+Hence the minimum is $3$. $\blacksquare$
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair I=dir(-90),Q1=dir(0),X=dir(90),Q3=dir(180);
+draw(unitcircle,gray);draw(arc((0,0),1,0,180),linewidth(1.6));
+draw(arc((0,0),1.18,-62,-18),Arrow(5));
+dot(I);dot(Q1);dot(X);dot(Q3);
+label("island",I,S);label("$Q_1$",Q1,E);label("$Q_3$",Q3,W);label("antipode",X,N);label("$M$",dir(135),NW);
+label("east",dir(-40)*1.18,SE,fontsize(8pt));
+\end{asy}

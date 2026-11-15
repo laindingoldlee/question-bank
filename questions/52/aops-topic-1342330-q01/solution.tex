@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1342330_fun_problem
+% Stable identity: aops-topic-1342330-q01
+\textbf{Units and tens.} $Y+2N$ ends in $Y$, so $2N\equiv0\pmod{10}$ and $N=0$ or $N=5$. Then the tens column reads $T+2E+(\text{carry})$ ending in $T$.
+\begin{itemize}
+\item If $N=0$ there is no carry, so $2E\equiv0\pmod{10}$, giving $E=5$ (as $E\ne N=0$), with carry $1$.
+\item If $N=5$ the carry is $1$, and $2E+1\equiv0\pmod{10}$ is impossible.
+\end{itemize}
+So $N=0$, $E=5$, and the carry into the hundreds column is $1$.
+
+\textbf{Hundreds.} $R+2T+1=X+10c$ with a carry $c\in\{0,1,2\}$ (the sum is at most $8+2\cdot9+1<30$).
+
+\textbf{Thousands and ten-thousands.} $O+c=I+10c'$ and $F+c'=S$. Since $S\ne F$, the carry $c'$ is $1$, so $O+c\ge10$. This leaves $O=9,c=1$ (then $I=0=N$, impossible), $O=8,c=2$ (then $I=0$, impossible) or $O=9,c=2$, $I=1$. Hence $O=9$, $I=1$, $S=F+1$ and $R+2T+1\ge20$, with $X=R+2T-19$.
+
+\textbf{Remaining digits.} The unused digits are $2,3,4,6,7,8$ for $F,S,R,T,X,Y$ with $S=F+1$. From $R+2T\ge19$ with $R,T\le8$ we need $T\ge6$.
+\begin{itemize}
+\item $T=6$: $X=R-7$ with $R\ge7$; $R=7,8$ give $X=0,1$ (taken).
+\item $T=8$: $X=R-3$; $R=3,4$ give $X=0,1$ (taken), so $R=6$, $X=3$ or $R=7$, $X=4$. For $R=6$, $X=3$, the digits left are $2,4,7$, and $S=F+1$ is impossible. For $R=7$, $X=4$, the digits left are $2,3,6$: $F=2$, $S=3$, $Y=6$.
+\item $T=7$: $X=R-5$ with $R\ge6$; $R=6$ gives $X=1$ (taken), so $R=8$, $X=3$; the digits left are $2,4,6$, and $S=F+1$ is impossible.
+\end{itemize}
+The unique solution is
+\[
+\boxed{29786+850+850=31486}.
+\]

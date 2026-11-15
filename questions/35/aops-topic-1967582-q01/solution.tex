@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1967582_please_give_a_hint_only_for_this_mc_problem
+% Stable identity: aops-topic-1967582-q01
+The original area is $80$, so the remaining rectangle must have area $8$. Cutting a strip of width $n$ off each dimension leaves a rectangle $(10-n)$ by $(8-n)$, where $0<n<8$:
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+fill(box((0,0),(10,6)),palegray);fill(box((4,6),(10,8)),palegray);
+draw(box((0,0),(10,8)),linewidth(1));
+draw((0,6)--(10,6));draw((4,6)--(4,8));
+label("remaining",(2,7.25));label("$2\times 4$",(2,6.6));
+label("$10$",(5,0),S);label("$8$",(0,4),W);
+draw((10.6,0)--(10.6,6),Arrows(TeXHead));label("$n$",(10.6,3),E);
+draw((4,8.9)--(10,8.9),Arrows(TeXHead));label("$n$",(7,8.9),N);
+label("strip",(5,3));label("strip",(7,7));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\[
+(10-n)(8-n)=8\quad\Longleftrightarrow\quad n^2-18n+72=0\quad\Longleftrightarrow\quad (n-6)(n-12)=0 .
+\]
+The root $n=12$ is impossible, since a strip cannot be wider than the $8$ m side. So $n=\boxed{6}$ meters, leaving a $4$ by $2$ rectangle of area $8$.
+
+(The poster's idea of listing integer rectangles of area $8$ also finds it once one notices that the two remaining sides must differ by $10-8=2$: the sides are $4$ and $2$.)

@@ -1,0 +1,18 @@
+Choose $A=(0,0),B=(b,0),D=(0,d),C=(c,e)$ with $b,c,d,e>0$. Convexity places $C$ in the first quadrant. The midpoint is $M=\left(\dfrac{b+c}{2},\dfrac{e}{2}\right)$. Angle $BAM$ is acute; therefore the equal angle $ADC$ is acute and $e<d$. Taking tangents gives
+\[
+\dfrac{c}{d-e}=\dfrac{e}{b+c},\qquad c(b+c)+e^2=de.
+\]
+Since ray $AM$ has smaller slope than ray $AC$, their angle difference is acute. Its tangent is
+\[
+\tan\angle CAM
+=\dfrac{\dfrac{e}{c}-\dfrac{e}{b+c}}{1+\dfrac{e^2}{c(b+c)}}
+=\dfrac{eb}{c(b+c)+e^2}
+=\dfrac{b}{d}.
+\]
+But $\tan\angle ADB=\dfrac{b}{d}$ as well. Both are acute, proving the desired equality.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair A=(0,0),B=(2,0),C=(1,2),D=(0,3.5),M=(1.5,1);draw(A--B--C--D--cycle);draw(A--C,dashed);draw(A--M,blue);draw(D--B,red);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,N);label("$M$",M,E);
+\end{asy}

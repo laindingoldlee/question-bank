@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1988472_area_of_triangles
+% Stable identity: aops-topic-1988472-q03
+Put $B$ at the origin with the line as the $x$-axis and the squares above it. Then $A=(-5,0)$, $C=(0,5)$, $D=(-5,5)$, $I=(12,0)$, $E=(17,0)$, $F=(29,0)$, $G=(29,12)$ and $H=(17,12)$.
+
+Now $\overrightarrow{CI}=(12,-5)$ and $\overrightarrow{IH}=(5,12)$ are perpendicular and both have length $13$ (right triangles $CBI$ and $IEH$ are $5$-$12$-$13$ triangles), so $CIHJ$ is indeed a square, and
+\[J=C+\overrightarrow{IH}=(5,17).\]
+Then $\overrightarrow{JD}=(-10,-12)$ and $\overrightarrow{JG}=(24,-5)$. The square on $DJ$ lies on the side away from $CIHJ$ (up and to the left), so $\overrightarrow{JM}=(-12,10)$, which is $\overrightarrow{JD}$ turned through $90^\circ$; similarly $\overrightarrow{JN}=(5,24)$. Hence
+\[[MNJ]=\dfrac12\left|(-12)(24)-(10)(5)\right|=\dfrac12\cdot338=\boxed{169\text{ cm}^2}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(-5,0),B=(0,0),C=(0,5),D=(-5,5),I=(12,0),Ep=(17,0),F=(29,0),G=(29,12),H=(17,12),J=(5,17);
+pair L=(-17,15),M=(-7,27),Np=(10,41),O=(34,36);
+filldraw(M--J--Np--cycle,mediumgray+opacity(0.5));
+draw(A--B--C--D--cycle);draw(Ep--F--G--H--cycle);draw(C--I--H--J--cycle);
+draw(L--D--J--M--cycle);draw(J--G--O--Np--cycle);
+draw(D--G,dashed);
+draw((-8,0)--(32,0));
+label("$A$",A,S);label("$B$",B,S);label("$C$",C,SE,Fill(white));label("$D$",D,W);label("$I$",I,S);label("$E$",Ep,S);label("$F$",F,S);
+label("$G$",G,E);label("$H$",H,SE,Fill(white));label("$J$",J,E);label("$L$",L,W);label("$M$",M,NW);label("$N$",Np,N);label("$O$",O,E);
+label("$5$",(-2.5,0),S,fontsize(8pt));label("$12$",(6,0),S,fontsize(8pt));label("$5$",(14.5,0),S,fontsize(8pt));label("$12$",(23,0),S,fontsize(8pt));
+\end{asy}
+
+Remark: $[MNJ]=[DJG]$ (the dashed segment is $DG$). Indeed, rotating triangle $MJN$ about $J$ through $90^\circ$ takes $M$ to $D$ and $N$ to the reflection $G'$ of $G$ in $J$; triangles $DJG'$ and $DJG$ have equal bases $JG'=JG$ on one line and the same height from $D$.

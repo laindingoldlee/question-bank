@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1762944_a_geometry_question
+% Stable identity: aops-topic-1762944-q01
+A radius to a point of tangency is perpendicular to the tangent, so $OA\perp AB$ and $OC\perp CB$. Triangles $OAB$ and $OCB$ are congruent (hypotenuse $OB$ common, $OA=OC$), so $OB$ bisects $\angle ABC$ and $\angle ABO=60^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real r=8*sqrt(3);
+pair O=(0,0),B=(-16,0),A=r*dir(150),C=r*dir(210);
+draw(circle(O,r),linewidth(0.9));
+draw(A--B--C,linewidth(0.9));
+draw(O--A,dashed);draw(O--C,dashed);draw(O--B,dashed);
+pair u=unit(B-A),w=unit(O-A);draw(A+1.4*u--A+1.4*u+1.4*w--A+1.4*w);
+pair u2=unit(B-C),w2=unit(O-C);draw(C+1.4*u2--C+1.4*u2+1.4*w2--C+1.4*w2);
+draw(arc(B,1.4,-60,60));label("$\angle ABC=120^\circ$",(-16,-15));
+dot(O);
+label("$O$",O,E);label("$A$",A,dir(150));label("$C$",C,dir(210));label("$B$",B,W);
+label("$8$",(A+B)/2,NW);label("$r$",(O+A)/2,NE);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In the right triangle $OAB$, $r=OA=AB\tan60^\circ=8\sqrt3$. The area of the circle is $\pi r^2=\boxed{192\pi}$.

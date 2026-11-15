@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1927300_flying_monkey_in_a_cube
+% Stable identity: aops-topic-1927300-q01
+Put the corner at the origin with the barn occupying $-20\le x,y,z\le0$. The monkey can reach exactly the points within distance $12$ of the corner that are outside the barn.
+
+Every point within distance $12$ of the corner with all three coordinates $\le0$ lies inside the barn (since $12<20$), and these points form one eighth of the ball. Every other point of the ball has a positive coordinate, so it is outside the barn, and the straight leash to it stays outside the barn too (that coordinate is positive along the whole segment except at the corner). The leash cannot reach the ground, which is $20$ below the corner.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair d=(9,6);
+pair P=(20,20);
+draw((0,0)--(20,0)--(20,20)--(0,20)--cycle,linewidth(1));
+draw((0,20)--(0,20)+d--(20,20)+d--(20,20));
+draw((20,0)--(20,0)+d--(20,20)+d);
+draw(circle(P,12),gray+dashed);
+pair Q=P+12*dir(62);
+draw(P--Q,red+linewidth(1));
+dot(P); dot(Q,red);
+label("$12$",P+0.75*(Q-P),E,red);
+label("$20$",(10,0),S); label("$20$",(0,10),W);
+label("barn",(8,6));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So the monkey can fly in $\dfrac{7}{8}$ of a ball of radius $12$:
+\[
+\dfrac{7}{8}\cdot\dfrac{4}{3}\pi\cdot12^3=\dfrac{7}{8}\cdot2304\pi=\boxed{2016\pi},
+\]
+answer \textbf{(c)}.

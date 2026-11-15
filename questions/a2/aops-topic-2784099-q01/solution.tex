@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2784099_question_about_geo
+% Stable identity: aops-topic-2784099-q01
+Let the triangle be $ABC$ with $AB=AC=L$, and let $AD$ be the altitude to $BC$. In an isosceles triangle the altitude from the apex is also the median and the angle bisector, so triangle $ABD$ has a right angle at $D$, $\angle BAD=\dfrac\theta2$ and $\angle ABD=\alpha$.
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,3),B=(-2,0),C=(2,0),D=(0,0);
+draw(A--B--C--cycle);draw(A--D,dashed);draw((0,0)--(0.18,0)--(0.18,0.18)--(0,0.18));
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,S);
+label("$L$",(A+B)/2,NW);label("$L$",(A+C)/2,NE);label("$h$",(0,1.5),E);
+label("$\dfrac{\theta}{2}$",A+(-0.25,-0.75),fontsize(8pt));label("$\alpha$",B+(0.55,0.17));
+\end{asy}
+
+(a) $h=AD=L\cos\dfrac\theta2$.
+
+(b) $h=AD=L\sin\alpha$. (The two agree, since $\alpha=90^\circ-\dfrac\theta2$.)
+
+(c) If the vertex angle is $40^\circ$, then $h=10\cos20^\circ\approx\boxed{9.40}$. If a base angle is $40^\circ$, then $h=10\sin40^\circ\approx\boxed{6.43}$. So it matters which angle is known.

@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1955356_equation_in_integer_part
+% Stable identity: aops-topic-1955356-q01
+Let $n=\lfloor 2x\rfloor=\lfloor x^2\rfloor$. Since $x^2\ge0$, $n\ge0$, so $2x\ge n\ge 0$ and $x\ge0$. The conditions are
+\[
+\dfrac {n}{2}\le x<\dfrac{n+1}{2}\qquad\text{and}\qquad \sqrt n\le x<\sqrt{n+1}.
+\]
+For these intervals to overlap we need $\sqrt{n+1}>\dfrac {n}{2}$, i.e. $n^2<4n+4$, i.e. $(n-2)^2<8$, so $n\le4$. Now check each case.
+\begin{itemize}
+\item $n=0$: $[0,\dfrac{1}{2})\cap[0,1)=[0,\dfrac{1}{2})$.
+\item $n=1$: $[\dfrac{1}{2},1)\cap[1,\sqrt2)=\varnothing$.
+\item $n=2$: $[1,\dfrac{3}{2})\cap[\sqrt2,\sqrt3)=[\sqrt2,\dfrac{3}{2})$, since $\sqrt2<1.5<\sqrt3$.
+\item $n=3$: $[\dfrac{3}{2},2)\cap[\sqrt3,2)=[\sqrt3,2)$.
+\item $n=4$: $[2,\dfrac{5}{2})\cap[2,\sqrt5)=[2,\sqrt5)$, since $\sqrt5<2.5$.
+\end{itemize}
+Joining the last two intervals, the solution set is
+\[
+\boxed{x\in\left[0,\dfrac{1}{2}\right)\cup\left[\sqrt2,\dfrac{3}{2}\right)\cup\left[\sqrt3,\sqrt5\right)} .
+\]
+(For example, $x=1.6$ fails: $\lfloor3.2\rfloor=3$ but $\lfloor2.56\rfloor=2$.)

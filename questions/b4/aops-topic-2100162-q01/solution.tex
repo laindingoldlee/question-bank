@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h2100162_prove_that
+% Stable identity: aops-topic-2100162-q01
+Triangle $MNP$ is what remains of triangle $ABC$ when the three corner triangles $ANP$, $BPM$ and $CMN$ (yellow) are removed.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+pair A=(1.3,3.6), B=(0,0), C=(5.2,0);
+real a=length(C-B), bb=length(A-C), c=length(B-A);
+pair M=(bb*B+c*C)/(bb+c), Nn=(a*A+c*C)/(a+c), P=(a*A+bb*B)/(a+bb);
+fill(A--P--Nn--cycle,paleyellow); fill(B--M--P--cycle,paleyellow); fill(C--Nn--M--cycle,paleyellow);
+fill(M--Nn--P--cycle,paleblue);
+draw(A--B--C--cycle,linewidth(0.9));
+draw(A--M,gray+dashed); draw(B--Nn,gray+dashed); draw(C--P,gray+dashed);
+draw(M--Nn--P--cycle,blue+linewidth(1));
+dot(A); dot(B); dot(C); dot(M); dot(Nn); dot(P);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE);
+label("$M$",M,S); label("$N$",Nn,NE); label("$P$",P,W);
+label("$a$",(B+C)/2+(0.6,0),S); label("$b$",(A+C)/2,NE); label("$c$",(A+B)/2+(-0.15,0.35),W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the angle bisector theorem,
+\[\dfrac{BM}{MC}=\dfrac{c}{b},\qquad \dfrac{CN}{NA}=\dfrac{a}{c},\qquad \dfrac{AP}{PB}=\dfrac{b}{a},\]
+so
+\[BM=\dfrac{ac}{b+c},\quad MC=\dfrac{ab}{b+c},\quad CN=\dfrac{ab}{c+a},\quad NA=\dfrac{bc}{c+a},\quad AP=\dfrac{bc}{a+b},\quad PB=\dfrac{ac}{a+b}.\]
+Triangles $ANP$ and $ABC$ share the angle at $A$, and the area of a triangle is half the product of two sides and the sine of the included angle, so
+\[\dfrac{[ANP]}{[ABC]}=\dfrac{AN\cdot AP}{AC\cdot AB}=\dfrac{1}{bc}\cdot\dfrac{bc}{c+a}\cdot\dfrac{bc}{a+b}=\dfrac{bc}{(a+b)(c+a)} .\]
+In the same way
+\[\dfrac{[BPM]}{[ABC]}=\dfrac{BP\cdot BM}{BA\cdot BC}=\dfrac{ca}{(a+b)(b+c)},\qquad \dfrac{[CMN]}{[ABC]}=\dfrac{CM\cdot CN}{CB\cdot CA}=\dfrac{ab}{(b+c)(c+a)} .\]
+Adding, the three corner triangles take up the fraction
+\[\dfrac{bc(b+c)+ca(c+a)+ab(a+b)}{(a+b)(b+c)(c+a)}\]
+of triangle $ABC$. Expanding,
+\[(a+b)(b+c)(c+a)=a^2b+a^2c+b^2a+b^2c+c^2a+c^2b+2abc=bc(b+c)+ca(c+a)+ab(a+b)+2abc .\]
+Therefore
+\[\dfrac{[MNP]}{[ABC]}=1-\dfrac{bc(b+c)+ca(c+a)+ab(a+b)}{(a+b)(b+c)(c+a)}=\dfrac{2abc}{(a+b)(b+c)(c+a)} .\qquad\blacksquare\]

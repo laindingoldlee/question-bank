@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h1319116_graphing_3variable_equations_in_3d_plane
+% Stable identity: aops-topic-1319116-q01
+The equation puts no condition on $y$ or $z$, so the graph is the set of all points $(3,y,z)$: the \textbf{plane} through $(3,0,0)$ perpendicular to the $x$-axis (parallel to the $yz$-plane).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+draw((0,0)--(3,0),Arrow); draw((0,0)--(0,3),Arrow); draw((0,0)--(-1.6,-1.2),Arrow);
+label("$y$",(3,0),E); label("$z$",(0,3),N); label("$x$",(-1.6,-1.2),SW);
+pair p=(-0.96,-0.72); path pl=shift(p)*((-0.3,-0.4)--(2.6,-0.4)--(2.6,2.4)--(-0.3,2.4)--cycle);
+fill(pl,blue+opacity(0.15)); draw(pl,blue); dot(p,red); label("$(3,0,0)$",p,W,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+It meets the $x$-axis at $(3,0,0)$. It does not meet the $y$-axis or the $z$-axis: points on those axes have $x=0\ne3$. That is why substituting $x=0$ gives the false statement $0=3$: there is no $y$- or $z$-intercept, not a contradiction in the graph. (Also $(0,0,0)$ is not on the graph.)

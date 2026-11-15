@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1767337_four_bugs_on_a_square
+% Stable identity: aops-topic-1767337-q01
+Label the bugs $A,B,C,D$ counterclockwise, so $A$ chases $B$, $B$ chases $C$, and so on.
+
+\textbf{The bugs always form a square.} The situation is unchanged by a quarter turn about the centre $O$ that takes each bug to the next, so at every moment the four bugs are the vertices of a square centred at $O$ (shrinking and rotating).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(4,4),D=(0,4),O=(2,2);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--O,dashed);draw(B--O,dashed);draw(C--O,dashed);draw(D--O,dashed);
+draw(A--(A+(1.6,0)),red+linewidth(1.1),Arrow(TeXHead));
+draw(B--(B+(0,1.6)),red+linewidth(1.1),Arrow(TeXHead));
+draw(C--(C+(-1.6,0)),red+linewidth(1.1),Arrow(TeXHead));
+draw(D--(D+(0,-1.6)),red+linewidth(1.1),Arrow(TeXHead));
+draw(arc(A,0.9,0,45));label("$45^\circ$",A+1.35*dir(22.5),fontsize(8pt));
+dot(A);dot(B);dot(C);dot(D);dot(O);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$O$",O,E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Rate at which a side shrinks.} Bug $A$ moves straight towards $B$ at speed $1$. Bug $B$ moves towards $C$, which is perpendicular to $AB$ because the bugs form a square; so $B$'s motion does not change the distance $AB$ to first order. Hence the side length $AB$ decreases at the constant rate of $1$ unit per minute, from $1$ to $0$: the bugs meet after $\boxed{1\text{ minute}}$ (at the centre, after each has crawled $1$ unit along a spiral).
+
+\textbf{The radial argument.} Each bug moves along a side of the current square, which makes a $45^\circ$ angle with the half-diagonal to the centre (shown for $A$). So the component of its velocity towards $O$ is $1\cdot\cos45^\circ=\dfrac{1}{\sqrt2}$ at every moment, and its distance to $O$ starts at half the diagonal, $\dfrac{\sqrt2}{2}=\dfrac{1}{\sqrt2}$. The distance to the centre therefore decreases at the constant rate $\dfrac{1}{\sqrt2}$, reaching $0$ after $\dfrac{1}{\sqrt2}\div\dfrac{1}{\sqrt2}=1$ minute. The line from a vertex to the centre in the posted solution represents this radial distance, not the actual spiral path; the sideways component of the velocity only rotates the square.

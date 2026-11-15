@@ -1,0 +1,37 @@
+% Source: https://artofproblemsolving.com/community/c3h1453135_a_special_number
+% Stable identity: aops-topic-1453135-q01
+Let the divisor be $d=\overline{abc}$ with distinct digits and $a\ne0$, and suppose the quotient is $q=\overline{cba}$ with remainder $r$, $0\le r<d$:
+\[
+100000=d\,q+r,\qquad\text{so}\qquad 100000-d<d\,q\le100000 .
+\]
+Since $d<1000$, the quotient is more than $100$, so $q$ has three digits and $c\ne0$.
+
+\textbf{Bounding $a$ and $c$.} From $100a\le d<100(a+1)$ and $100c\le q<100(c+1)$:
+\[
+10^4ac\le dq\le10^5\quad\Rightarrow\quad ac\le10,
+\]
+\[
+10^4(a+1)(c+1)>dq>10^5-1000\quad\Rightarrow\quad(a+1)(c+1)\ge10 .
+\]
+The product $P=dq=(100a+10b+c)(100c+10b+a)$ is symmetric in $a$ and $c$, so list the unordered pairs $\{a,c\}$ of distinct nonzero digits with $ac\le10$ and $(a+1)(c+1)\ge10$: $\{1,4\},\{1,5\},\{1,6\},\{1,7\},\{1,8\},\{1,9\},\{2,3\},\{2,4\},\{2,5\}$.
+
+\textbf{Finding $b$.} For each pair, $P$ increases with $b$, so we need the largest $b$ with $P\le100000$, and then the remainder $100000-P$ must be less than $d\le999$:
+\[
+\begin{array}{c|c|c|c}
+\{a,c\} & b & P & 100000-P\\ \hline
+\{1,4\} & 9 & 194\cdot491=95254 & 4746\\
+\{1,5\} & 7 & 175\cdot571=99925 & 75\\
+\{1,6\} & 4 & 146\cdot641=93586 & 6414\\
+\{1,7\} & 2 & 127\cdot721=91567 & 8433\\
+\{1,8\} & 1 & 118\cdot811=95698 & 4302\\
+\{1,9\} & 0 & 109\cdot901=98209 & 1791\\
+\{2,3\} & 6 & 263\cdot362=95206 & 4794\\
+\{2,4\} & 2 & 224\cdot422=94528 & 5472\\
+\{2,5\} & - & 205\cdot502=102910>100000 & -
+\end{array}
+\]
+(The next value of $b$ always gives $P>100000$; for $\{1,4\}$, $b=9$ is already the largest digit.) Only $\{1,5\}$ with $b=7$ works, and the digits $1,7,5$ are distinct. Both orders work, since the remainder $75$ is less than both $175$ and $571$:
+\[
+100000=175\cdot571+75=571\cdot175+75 .
+\]
+The divisor is $\boxed{175\text{ or }571}$ (in both cases the remainder is $75$).

@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h2485929_try_these
+% Stable identity: aops-topic-2485929-q02
+Complete the square: $y=x^2-6x+9-2=(x-3)^2-2$. So the graph is the parabola $y=x^2$ shifted $3$ to the right and $2$ down:
+\begin{itemize}
+\item the vertex is $\boxed{(3,-2)}$, the lowest point, since $(x-3)^2\ge0$;
+\item the axis of symmetry is the line $\boxed{x=3}$;
+\item the $x$-intercepts satisfy $(x-3)^2=2$, so $x=\boxed{3\pm\sqrt2}$ (about $1.59$ and $4.41$);
+\item the $y$-intercept is $y=\boxed{7}$, at $(0,7)$.
+\end{itemize}
+The parabola opens upward.
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+import graph;
+real f(real x){return x^2-6x+7;}
+real k=0.5;
+pair T(real x,real y){return (x,k*y);}
+draw(T(-1,0)--T(7,0),Arrow(4)); draw(T(0,-3)--T(0,11),Arrow(4));
+label("$x$",T(7,0),E); label("$y$",T(0,11),N);
+path g=graph(new pair(real x){return T(x,f(x));},-0.4,6.4);
+draw(g,blue+linewidth(0.9));
+draw(T(3,-2)--T(3,10.5),dashed);
+dot(T(3,-2)); label("$(3,-2)$",T(3,-2),S,fontsize(8pt));
+dot(T(0,7)); label("$(0,7)$",T(0,7),W,fontsize(8pt));
+dot(T(3-sqrt(2),0)); dot(T(3+sqrt(2),0));
+label("$3-\sqrt2$",T(3-sqrt(2),0),SW,fontsize(7pt)); label("$3+\sqrt2$",T(3+sqrt(2),0),SE,fontsize(7pt));
+label("$x=3$",T(3,10.5),N,fontsize(8pt));
+\end{asy}
+
+(The vertical axis is compressed by a factor of $2$.)

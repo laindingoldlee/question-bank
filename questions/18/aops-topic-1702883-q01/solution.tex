@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h1702883_finding_prime_numbers_efficiently
+% Stable identity: aops-topic-1702883-q01
+\textbf{Why $\sqrt n$ is enough.} If $n=ab$ with $1<a\le b$, then $a^2\le ab=n$, so $a\le\sqrt n$. Hence a composite number $n$ has a divisor $a$ with $1<a\le\sqrt n$, and then a prime factor of $a$ is also at most $\sqrt n$. So if no prime $p\le\sqrt n$ divides $n$, then $n$ is prime.
+
+\textbf{Testing $39001$.} Since $197^2=38809<39001<39204=198^2$, it is enough to test the primes up to $197$. Quick checks rule out the small ones: $39001$ is odd, its digit sum $13$ is not a multiple of $3$, it does not end in $0$ or $5$, and $39001=7\cdot5571+4$, $39001=11\cdot3545+6$ (alternating digit sum $1-0+0-9+3=-5$), $39001=13\cdot3000+1$, and so on. Continuing up the list of primes we reach
+\[
+39001=43\cdot907 .
+\]
+So $39001$ is $\boxed{\text{not prime}}$: $39001=43\times907$ (and $907$ is prime, since no prime up to $\sqrt{907}<31$ divides it).

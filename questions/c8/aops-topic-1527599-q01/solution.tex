@@ -1,0 +1,45 @@
+% Source: https://artofproblemsolving.com/community/c3h1527599_discussion_about_pascals_theorem
+% Stable identity: aops-topic-1527599-q01
+Let the lines $AB$, $CD$, $EF$ form triangle $XYZ$ with
+\[
+X=EF\cap AB,\qquad Y=AB\cap CD,\qquad Z=CD\cap EF .
+\]
+So $A$, $B$, $P$ lie on line $XY$; $C$, $D$, $R$ lie on line $YZ$; and $E$, $F$, $Q$ lie on line $ZX$:
+
+\begin{asy}
+usepackage("amsmath");
+size(7.5cm);
+defaultpen(fontsize(10pt));
+pair A=dir(275),B=dir(240),C=dir(115),D=dir(320),E=dir(355),F=dir(200);
+pair P=extension(A,B,D,E),Q=extension(B,C,E,F),R=extension(C,D,F,A);
+pair X=extension(E,F,A,B),Y=extension(A,B,C,D),Z=extension(C,D,E,F);
+draw(unitcircle,gray(0.5));
+draw(A--B--C--D--E--F--cycle,linewidth(0.9));
+draw(X--Y--Z--cycle,blue+dashed);
+draw(D--P,dotted);draw(A--R,dotted);
+draw(Q-0.15*(R-Q)--R+0.04*(R-Q),red+linewidth(0.9));
+dot(A);dot(B);dot(C);dot(D);dot(E);dot(F);
+dot(P,red);dot(Q,red);dot(R,red);dot(X,blue);dot(Y,blue);dot(Z,blue);
+label("$A$",A,S);label("$B$",B,SW);label("$C$",C,NW);label("$D$",D,dir(5));label("$E$",E,E);label("$F$",F,NW);
+label("$P$",P,NE,red);label("$Q$",Q,2*dir(112),red);label("$R$",R,dir(-110),red);
+label("$X$",X,W,blue);label("$Y$",Y,E,blue);label("$Z$",Z,2*dir(62),blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Use directed segments along each line. Menelaus' theorem for triangle $XYZ$ says that points $U$, $V$, $W$ on the lines $XY$, $YZ$, $ZX$ are collinear if and only if $\dfrac{XU}{UY}\cdot\dfrac{YV}{VZ}\cdot\dfrac{ZW}{WX}=-1$.
+
+Apply it to the three lines $DE$, $BC$, $FA$, each of which meets all three sides:
+\begin{align*}
+\text{line }PDE:&\quad \dfrac{XP}{PY}\cdot\dfrac{YD}{DZ}\cdot\dfrac{ZE}{EX}=-1,\\
+\text{line }BCQ:&\quad \dfrac{XB}{BY}\cdot\dfrac{YC}{CZ}\cdot\dfrac{ZQ}{QX}=-1,\\
+\text{line }ARF:&\quad \dfrac{XA}{AY}\cdot\dfrac{YR}{RZ}\cdot\dfrac{ZF}{FX}=-1.
+\end{align*}
+Multiply the three equations and regroup the nine factors:
+\[
+\left(\dfrac{XP}{PY}\cdot\dfrac{YR}{RZ}\cdot\dfrac{ZQ}{QX}\right)\cdot\dfrac{XA\cdot XB}{EX\cdot FX}\cdot\dfrac{YC\cdot YD}{AY\cdot BY}\cdot\dfrac{ZE\cdot ZF}{CZ\cdot DZ}=-1 .
+\]
+By the power of a point (with directed lengths), for the point $X$ and the secants $XAB$ and $XEF$ we have $XA\cdot XB=XE\cdot XF=EX\cdot FX$; for $Y$, $YC\cdot YD=YA\cdot YB=AY\cdot BY$; for $Z$, $ZE\cdot ZF=ZC\cdot ZD=CZ\cdot DZ$. So the last three fractions all equal $1$, and
+\[
+\dfrac{XP}{PY}\cdot\dfrac{YR}{RZ}\cdot\dfrac{ZQ}{QX}=-1 .
+\]
+Since $P$, $R$, $Q$ lie on the lines $XY$, $YZ$, $ZX$, the converse of Menelaus' theorem shows that $P$, $Q$, $R$ are collinear (the red line in the figure). $\blacksquare$

@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h3175179_oops_confuzzled
+% Stable identity: aops-topic-3175179-q01
+The semiperimeter is $s=105$. Brahmagupta's formula, valid for a cyclic quadrilateral, gives $K=\sqrt{60\cdot63\cdot45\cdot42}=1890\sqrt2$. For any tangential quadrilateral, decomposing into four triangles from the incenter gives $K=rs$. Hence $r=\dfrac{1890\sqrt2}{105}=\boxed{18\sqrt2}$, and $K=\boxed{1890\sqrt2}$. The square-root-of-product formula also uses cyclicity: Pitot's relation makes $s-a=c$, $s-b=d$, and so on. Tangency alone does not imply cyclicity; for example a rhombus with side $1$ and angle $60^\circ$ is tangential but has area $\dfrac{\sqrt3}{2}$ rather than $1$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),Bp=(1,0),C=(1.5,sqrt(3)/2),D=(.5,sqrt(3)/2),O=(.75,sqrt(3)/4);draw(A--Bp--C--D--cycle);draw(circle(O,sqrt(3)/4));label("unit-side rhombus counterexample",(.75,-.3));
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),Bp=(45,0),C=(59,28sqrt(2)),D=(63.0/17,756sqrt(2)/17),I=(27,18sqrt(2)),O=(22.5,171sqrt(2)/8);draw(circle(O,abs(O-A)),gray);draw(A--Bp--C--D--cycle);draw(circle(I,18sqrt(2)),blue);label("$A$",A,SW);label("$B$",Bp,SE);label("$C$",C,NE);label("$D$",D,NW);label("$45$",(A+Bp)/2,S);label("$42$",(Bp+C)/2,E);label("$60$",(C+D)/2,N);label("$63$",(D+A)/2,W);label("$I$",I,S);
+\end{asy}

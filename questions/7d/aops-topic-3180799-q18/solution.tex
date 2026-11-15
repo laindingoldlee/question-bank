@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3180799_2017_emcc_individual_speed_test__exeter_math_club_competition
+% Stable identity: aops-topic-3180799-q18
+Fix its starting vertex. The first edge must connect to a neighbour on the convex hull: a diagonal would separate unvisited vertices onto both sides, and after leaving the starting endpoint the path could not visit both sides without crossing that first edge. Remove the start and apply the same reasoning to the remaining convex polygon. At each stage with at least three vertices there are exactly two choices for the next vertex, the two hull neighbours of the current one; at the final two vertices the choice is forced. Conversely these choices produce a noncrossing path, since each removed edge is a boundary edge of the remaining hull. There are $2^6=64$ orders per fixed start, among $7!$ equally likely orders. The probability is $\boxed{\dfrac{4}{315}}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair[] p;for(int i=0;i<8;++i){p.push(2*dir(45*i));label(string(i+1),p[i],dir(45*i));}draw(p[0]--p[1]--p[2]--p[3]--p[4]--p[5]--p[6]--p[7]--cycle,gray);draw(p[0]--p[1]--p[7]--p[2]--p[6]--p[3]--p[5]--p[4],blue);
+\end{asy}

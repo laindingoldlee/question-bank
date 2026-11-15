@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3283137_which_of_the_following_statements_is_true
+% Stable identity: aops-topic-3283137-q01
+Divide the square into four squares of side $12.5$ and centre a disk at each smaller square's centre. Every point of one small square is at distance at most half its diagonal, $\dfrac{12.5\sqrt2}{2}=\dfrac{25\sqrt2}{4}<10$, from that centre. Thus each small square is covered, proving the whole square is covered by four disks.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+draw((0,0)--(25,0)--(25,25)--(0,25)--cycle,linewidth(1.2));draw((12.5,0)--(12.5,25)^^(0,12.5)--(25,12.5),dashed);for(int i=0;i<2;++i)for(int j=0;j<2;++j){pair O=(6.25+12.5*i,6.25+12.5*j);draw(circle(O,10),blue);dot(O);}label("$25$",(12.5,0),S);
+\end{asy}

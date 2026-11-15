@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2222749_let_abc_are_positive_real_numbers_and_a2__b2_c2__2abbcca_
+% Stable identity: aops-topic-2222749-q01
+\textbf{Rewrite the condition.} $a^2+b^2+c^2-2ab-2bc-2ca=0$ can be written as $(c-a-b)^2=4ab$, so $c-a-b=\pm2\sqrt{ab}$ and $c=\left(\sqrt a\pm\sqrt b\right)^2$. Thus one of $\sqrt a,\sqrt b,\sqrt c$ is the sum of the other two. The condition and $P$ are symmetric, so we may assume $\sqrt c=\sqrt a+\sqrt b$. Put $\sqrt a=x$, $\sqrt b=y$ ($x,y>0$), so $c=(x+y)^2$.
+
+\textbf{Express $P$.} Let $p=a+b+c$, $q=ab+bc+ca$, $r=abc$. The condition says $p^2=a^2+b^2+c^2+2q=4q$, so $q=\dfrac{p^2}{4}$. Also $\dfrac{1}{ab}+\dfrac{1}{bc}+\dfrac{1}{ca}=\dfrac{a+b+c}{abc}=\dfrac {p}{r}$. Hence
+\[P=\dfrac{p^2}{4}+\dfrac{6p}{r}.\]
+
+\textbf{Bound $r$.} With $s=x+y$ and $t=xy$ (so $0<t\le\dfrac{s^2}{4}$):
+\[p=x^2+y^2+(x+y)^2=2\left(s^2-t\right),\qquad r=x^2y^2(x+y)^2=t^2s^2.\]
+We claim $r\le\dfrac{p^3}{54}$, i.e. $t^2s^2\le\dfrac{4\left(s^2-t\right)^3}{27}$. With $u=\dfrac{t}{s^2}\in\left(0,\dfrac{1}{4}\right]$ this is $u^2\le\dfrac{4}{27}(1-u)^3$. The left side increases and the right side decreases in $u$, and at $u=\dfrac{1}{4}$ both equal $\dfrac{1}{16}$. So the inequality holds, with equality only when $u=\dfrac{1}{4}$, i.e. $x=y$.
+
+\textbf{Finish with AM-GM.}
+\[P\ge\dfrac{p^2}{4}+\dfrac{6p\cdot54}{p^3}=\dfrac{p^2}{4}+\dfrac{324}{p^2}\ge2\sqrt{\dfrac{p^2}{4}\cdot\dfrac{324}{p^2}}=2\cdot9=18.\]
+Equality needs $x=y$ and $\dfrac{p^2}{4}=\dfrac{324}{p^2}$, i.e. $p=6$. With $x=y$ we have $a=b=x^2$, $c=4x^2$, $p=6x^2=6$, so $(a,b,c)=(1,1,4)$. Check: $1+1+16=18=2(1+4+4)$ and $P=9+6\left(1+\dfrac{1}{4}+\dfrac{1}{4}\right)=9+9=18$.
+
+The minimum is $\boxed{18}$, attained at $(a,b,c)=(1,1,4)$ and its permutations.

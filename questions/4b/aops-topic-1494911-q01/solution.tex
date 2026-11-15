@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1494911_geometry
+% Stable identity: aops-topic-1494911-q01
+Use coordinates $A=(0,0)$, $B=(1,0)$, $C=(1,1)$, $D=(0,1)$, so $P=\left(\dfrac{1}{2},0\right)$, $Q=\left(1,\dfrac{1}{2}\right)$, $S=\left(0,\dfrac{1}{2}\right)$. Only three of the segments matter:
+\[
+PD:\ 2x+y=1,\qquad AQ:\ y=\dfrac{x}{2},\qquad SB:\ y=\dfrac{1}{2}-\dfrac{x}{2}.
+\]
+Intersecting them,
+\[
+X=\left(\dfrac{2}{5},\dfrac{1}{5}\right),\qquad Y=\left(\dfrac{1}{3},\dfrac{1}{3}\right),\qquad Z=\left(\dfrac{1}{2},\dfrac{1}{4}\right).
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(1,0),C=(1,1),D=(0,1);
+pair P=(A+B)/2,Q=(B+C)/2,R=(C+D)/2,Sp=(D+A)/2;
+draw(P--C^^Q--D^^R--A^^R--B^^Sp--C,gray(0.7));
+draw(P--D,blue); draw(A--Q,red); draw(Sp--B,deepgreen);
+pair X=extension(P,D,A,Q),Y=extension(Sp,B,P,D),Z=extension(Sp,B,A,Q);
+fill(X--Y--Z--cycle,orange);
+draw(A--B--C--D--cycle,linewidth(0.9));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$P$",P,S);label("$Q$",Q,E);label("$R$",R,N);label("$S$",Sp,W);
+label("$X$",X,2.2*dir(245),fontsize(8pt));label("$Y$",Y,dir(215),fontsize(8pt));label("$Z$",Z,dir(90),fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+By the shoelace formula, with $Y-X=\left(-\dfrac{1}{15},\dfrac{2}{15}\right)$ and $Z-X=\left(\dfrac{1}{10},\dfrac{1}{20}\right)$,
+\[
+[XYZ]=\dfrac{1}{2}\left|\left(-\dfrac{1}{15}\right)\cdot\dfrac{1}{20}-\dfrac{2}{15}\cdot\dfrac{1}{10}\right|=\dfrac{1}{2}\cdot\dfrac{5}{300}=\boxed{\dfrac{1}{120}}.
+\]

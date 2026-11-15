@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h3264176_simple_geo
+% Stable identity: aops-topic-3264176-q01
+Put $A=(-a,0),B=(a,0)$ with $a>0$. For a fixed angle $\alpha$, define $h=a\cot\alpha$ and $R=\dfrac{a}{\sin\alpha}$. The locus is the arc strictly above $AB$ of the circle centred at $(0,h)$ with radius $R$, together with its reflection below $AB$, omitting $A,B$. For $\alpha<90^\circ$ these are major arcs; for $\alpha>90^\circ$ they are minor arcs; for $\alpha=90^\circ$ they form the circle with diameter $AB$, minus its endpoints.
+Indeed, any admissible $P$ has circumradius $\dfrac{AB}{2\sin\alpha}=R$ by the extended sine rule. Its circumcentre lies on the perpendicular bisector, at the indicated signed height on the side determined by the angle. Conversely, the inscribed-angle theorem gives angle $\alpha$ at every point of each specified arc. The opposite arc of either circle gives the supplementary angle and is therefore not included, except at $90^\circ$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real alpha=60; real h=cos(alpha*pi/180)/sin(alpha*pi/180),r=1/sin(alpha*pi/180); path upper=arc((0,h),r,alpha-90,270-alpha); draw(upper,blue+linewidth(1.2));draw(reflect((0,0),(1,0))*upper,blue+linewidth(1.2));draw((-1,0)--(1,0),dashed);draw(circle((-1,0),0.035));draw(circle((1,0),0.035));label("$A$",(-1,0),SW);label("$B$",(1,0),SE);label("$\alpha="+string(alpha)+"^\circ$",(0,h+r+0.3));
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real alpha=90; real h=cos(alpha*pi/180)/sin(alpha*pi/180),r=1/sin(alpha*pi/180); path upper=arc((0,h),r,alpha-90,270-alpha); draw(upper,blue+linewidth(1.2));draw(reflect((0,0),(1,0))*upper,blue+linewidth(1.2));draw((-1,0)--(1,0),dashed);draw(circle((-1,0),0.035));draw(circle((1,0),0.035));label("$A$",(-1,0),SW);label("$B$",(1,0),SE);label("$\alpha="+string(alpha)+"^\circ$",(0,h+r+0.3));
+\end{asy}
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real alpha=120; real h=cos(alpha*pi/180)/sin(alpha*pi/180),r=1/sin(alpha*pi/180); path upper=arc((0,h),r,alpha-90,270-alpha); draw(upper,blue+linewidth(1.2));draw(reflect((0,0),(1,0))*upper,blue+linewidth(1.2));draw((-1,0)--(1,0),dashed);draw(circle((-1,0),0.035));draw(circle((1,0),0.035));label("$A$",(-1,0),SW);label("$B$",(1,0),SE);label("$\alpha="+string(alpha)+"^\circ$",(0,h+r+0.3));
+\end{asy}

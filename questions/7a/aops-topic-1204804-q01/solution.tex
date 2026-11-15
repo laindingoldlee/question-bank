@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h1204804_math_help
+% Stable identity: aops-topic-1204804-q01
+If the vertices have $x$-coordinates $a,b,c$, the midpoints have $\dfrac{a+b}{2},\dfrac{b+c}{2},\dfrac{c+a}{2}$, whose sum is $a+b+c=\sqrt{13}$. So $S^2=\boxed{13}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(5,1),C=(1.5,3.5); draw(A--B--C--cycle,linewidth(0.9)); dot((A+B)/2,red); dot((B+C)/2,red); dot((C+A)/2,red);
+label("$x=a$",A,SW); label("$x=b$",B,SE); label("$x=c$",C,N); label("$\dfrac{a+b}{2}$",(A+B)/2,S,red); label("$\dfrac{b+c}{2}$",(B+C)/2,NE,red); label("$\dfrac{c+a}{2}$",(C+A)/2,W,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2108705_straw_pipeline
+% Stable identity: aops-topic-2108705-q01
+\textbf{Number of lines.} Cross-sectional areas scale with the square of the diameter. The pipe's diameter is $\dfrac{40}{0.5}=80$ times a straw's, so its cross-section is $80^2=6400$ times as large.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),2),linewidth(1)); draw((-2,0)--(2,0),Arrows(5));
+label("$40$ cm",(0,0),N);
+draw(circle((4.6,0),0.25),red+linewidth(1)); draw((4.35,0)--(4.85,0),red,Arrows(3));
+label("$0.5$ cm",(4.6,0.25),N,red+fontsize(8pt));
+label("pipe",(0,-2),S); label("straw (enlarged)",(4.6,-0.3),S,red+fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+So at least $6400$ lines of straws are needed.
+
+\textbf{Straws per line.} Each line must cover $40$ m $=4000$ cm. Since $\dfrac{4000}{15}=266\dfrac{2}{3}$, $266$ straws reach only $3990$ cm, and each line needs $267$ straws.
+
+Hence the least number of straws is
+\[6400\cdot267=\boxed{1708800}.\]

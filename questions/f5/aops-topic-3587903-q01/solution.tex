@@ -1,0 +1,7 @@
+% Source: https://artofproblemsolving.com/community/c3h3587903_angles_in_regular_polygons
+% Stable identity: aops-topic-3587903-q01
+The polygon angles at $A$ are $120^\circ$ and $108^\circ$, so the smaller angle $FAI$ outside their interiors is $360^\circ-120^\circ-108^\circ=132^\circ$. Since $AF=AI$, triangle $AFI$ has base angles $24^\circ$. Ray $FA$ lies inside angle $IFE$, so $\angle IFE=\angle IFA+\angle AFE=24^\circ+120^\circ=\boxed{144^\circ}$.
+\begin{asy}
+size(7cm);
+pair A=(0,0),B=(1,0),C=B+dir(60),D=C+dir(120),E=D+dir(180),F=E+dir(240),G=B+dir(-72),H=G+dir(-144),I=H+dir(-216);draw(A--B--C--D--E--F--cycle);draw(A--B--G--H--I--cycle,blue);draw(F--I,dashed);pair[] P={A,B,C,D,E,F,G,H,I};string[] N={"A","B","C","D","E","F","G","H","I"};for(int j=0;j<9;++j)label("$"+N[j]+"$",P[j],j==0?W:j==1?E:j==2?E:j==3?NE:j==4?NW:j==5?W:j==6?E:j==7?S:W);
+\end{asy}

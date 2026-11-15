@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1549325_rates_problem
+% Stable identity: aops-topic-1549325-q01
+Measure positions from one end of the pool, so that swimmer $A$ (speed $3$) starts at $0$ and swimmer $B$ (speed $2$) at $90$.
+
+\textbf{Unfolding.} For a real number $x$ let $\operatorname{fold}(x)$ be the position in the pool of a swimmer who has swum a total ``signed'' distance $x$ from end $0$: $\operatorname{fold}(x)=r$ if $x\equiv r\pmod{180}$ with $0\le r\le90$, and $\operatorname{fold}(x)=180-r$ if $90\le r<180$. Then $\operatorname{fold}(a)=\operatorname{fold}(b)$ exactly when $a\equiv b$ or $a\equiv-b\pmod{180}$.
+
+At time $t$ seconds, $A$ is at $\operatorname{fold}(3t)$, and $B$ is at $\operatorname{fold}(90+2t)$ (at first $B$ is at $180-(90+2t)=90-2t$, moving towards $0$, as it should).
+
+\textbf{Meetings.} They are at the same point exactly when
+\[
+3t\equiv90+2t\pmod{180}\quad\text{or}\quad3t\equiv-(90+2t)\pmod{180},
+\]
+that is, $t\equiv90\pmod{180}$ or $5t\equiv-90\equiv90\pmod{180}$. The second condition means $t\equiv18\pmod{36}$, and it includes the first, since $90=18+2\cdot36$ and $180$ is a multiple of $36$. So the meetings happen at
+\[
+t=18,\ 54,\ 90,\ 126,\ \ldots
+\]
+seconds. For $0<t\le720$ ($12$ minutes) these are $t=18+36j$ with $0\le j\le19$: $\boxed{20}$ times.
+
+(For example, at $t=18$ both are $54$ feet from $A$'s end; at $t=90,270,450,630$ they reach the same end of the pool together, which is counted as passing.)

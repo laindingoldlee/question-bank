@@ -1,0 +1,58 @@
+(a) The first two perpendicular bisectors meet at a point equidistant from all three vertices, which therefore lies on the third. (b) Two internal angle bisectors meet at a point equidistant from the three side lines, hence on the third internal bisector. (c) In vector coordinates the point $G=\dfrac{A+B+C}{3}$ lies two-thirds of the way along each median. (d) Draw through each vertex the parallel to the opposite side, forming an outer triangle. Each original vertex is the midpoint of an outer side, so the original altitudes are the perpendicular bisectors of the outer triangle; apply (a). These arguments identify respectively the circumcenter, incenter, centroid, and orthocenter. 
+
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(1,3),B=(0,0),C=(4,0);draw(A--B--C--cycle);label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));pair O=(2,(dot(A,A)-4*A.x)/(2*A.y));pair[] X={A,B,C};for(int i=0;i<3;++i){pair M=(X[i]+X[(i+1)%3])/2,V=unit(rotate(90)*(X[(i+1)%3]-X[i]));real s=abs(O-M)+0.5;draw(M-s*V--M+s*V,dashed);}dot(O);label("$O$",O,(1,-1));
+\end{asy}
+
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(1,0.8),B=(0,0),C=(4,0);draw(A--B--C--cycle);label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));pair O=(2,(dot(A,A)-4*A.x)/(2*A.y));pair[] X={A,B,C};for(int i=0;i<3;++i){pair M=(X[i]+X[(i+1)%3])/2,V=unit(rotate(90)*(X[(i+1)%3]-X[i]));real s=abs(O-M)+0.5;draw(M-s*V--M+s*V,dashed);}dot(O);label("$O$",O,(1,-1));
+\end{asy}
+
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(0,3),B=(0,0),C=(4,0);draw(A--B--C--cycle);label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));pair O=(2,(dot(A,A)-4*A.x)/(2*A.y));pair[] X={A,B,C};for(int i=0;i<3;++i){pair M=(X[i]+X[(i+1)%3])/2,V=unit(rotate(90)*(X[(i+1)%3]-X[i]));real s=abs(O-M)+0.5;draw(M-s*V--M+s*V,dashed);}dot(O);label("$O$",O,(1,-1));
+\end{asy}
+
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(1,3),B=(0,0),C=(4,0);draw(A--B--C--cycle);label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));pair I=(abs(B-C)*A+abs(C-A)*B+abs(A-B)*C)/(abs(B-C)+abs(C-A)+abs(A-B));draw(A--I--B);draw(I--C);dot(I);label("$I$",I,(1,0));
+\end{asy}
+
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(1,3),B=(0,0),C=(4,0);draw(A--B--C--cycle);label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));pair G=(A+B+C)/3;draw(A--(B+C)/2);draw(B--(A+C)/2);draw(C--(A+B)/2);dot(G);label("$G$",G,(1,0));
+\end{asy}
+
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(1,3),B=(0,0),C=(4,0);draw(A--B--C--cycle);label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));pair H=(A.x,A.x*(4-A.x)/A.y);draw(B+C-A--A+C-B--A+B-C--cycle,dashed);pair[] X={A,B,C};for(int i=0;i<3;++i){pair U=X[(i+1)%3],V=X[(i+2)%3],F=U+dot(X[i]-U,V-U)/dot(V-U,V-U)*(V-U);draw(X[i]--F);draw(X[i]--H,dashed);}dot(H);label("$H$",H,(1,0));
+\end{asy}
+
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(1,0.8),B=(0,0),C=(4,0);draw(A--B--C--cycle);label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));pair H=(A.x,A.x*(4-A.x)/A.y);draw(B+C-A--A+C-B--A+B-C--cycle,dashed);pair[] X={A,B,C};for(int i=0;i<3;++i){pair U=X[(i+1)%3],V=X[(i+2)%3],F=U+dot(X[i]-U,V-U)/dot(V-U,V-U)*(V-U);draw(X[i]--F);draw(X[i]--H,dashed);}dot(H);label("$H$",H,(1,0));
+\end{asy}
+
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+pair A=(0,3),B=(0,0),C=(4,0);draw(A--B--C--cycle);label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));pair H=(A.x,A.x*(4-A.x)/A.y);draw(B+C-A--A+C-B--A+B-C--cycle,dashed);pair[] X={A,B,C};for(int i=0;i<3;++i){pair U=X[(i+1)%3],V=X[(i+2)%3],F=U+dot(X[i]-U,V-U)/dot(V-U,V-U)*(V-U);draw(X[i]--F);draw(X[i]--H,dashed);}dot(H);label("$H=B$",H,(1,1));
+\end{asy}
+

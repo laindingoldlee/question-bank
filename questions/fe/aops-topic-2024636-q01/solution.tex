@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2024636_interesting_gcd_problem
+% Stable identity: aops-topic-2024636-q01
+Let the three numbers be $x,y,z$. Two of them cannot be equal: if $x=y$, then $\gcd(x,z)=\gcd(y,z)$, contradicting distinctness. We use one fact repeatedly: \emph{if $g<h$ are distinct odd numbers greater than $1$, then $\operatorname{lcm}(g,h)\ge9$.} Indeed, if $g\mid h$ then $h$ is an odd multiple of $g$ larger than $g$, so $h\ge3g\ge9$; otherwise $\operatorname{lcm}(g,h)$ is an odd multiple of $h$ larger than $h$, so it is at least $3h\ge15$.
+
+\textbf{Case 1: all three numbers even.} Then all three gcds are even and distinct, so the largest, say $r=\gcd(x,y)$, is at least $6$. Since $x\ne y$ are both multiples of $r$, $x+y\ge r+2r\ge18$. Also $z$ is divisible by the two other gcds, which are distinct even numbers, so $z\ge4$. Hence $n\ge22$.
+
+\textbf{Case 2: exactly two even, say $x,y$ even and $z$ odd.} Then $g=\gcd(x,z)$ and $h=\gcd(y,z)$ are distinct odd numbers greater than $1$, so $\{g,h\}$ has sum at least $3+5=8$. Now $x$ is divisible by $2g$ and $y$ by $2h$, so $x+y\ge2(g+h)\ge16$, and $z\ge\operatorname{lcm}(g,h)\ge9$. Hence $n\ge25$.
+
+\textbf{Case 3: at most one even.} Every pair contains an odd number, so all three gcds are odd, distinct and greater than $1$. Each number is divisible by two of them, so each number is at least $9$, and $n\ge27$.
+
+So $n\ge22$ in every case. The value $22$ is attained by $4+6+12$: $\gcd(4,6)=2$, $\gcd(4,12)=4$, $\gcd(6,12)=6$. The smallest possible value is $\boxed{22}$.

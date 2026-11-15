@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2490042_another_question_from_the_the_threeyear_mathcounts_marathon
+% Stable identity: aops-topic-2490042-q01
+A line containing six grid points of the cube must contain a whole ``row'' $P,P+\mathbf d,\dots,P+5\mathbf d$ whose step $\mathbf d$ has every coordinate in $\{-1,0,1\}$, not all $0$: along a coordinate that changes, the six points need six different values among $1,\dots,6$, so that coordinate changes by $\pm1$ per step, and the coordinates that change all change at the same rate. In each coordinate with step $\pm1$ the values run through all of $1,\dots,6$; in each coordinate with step $0$ the value is a constant from $1$ to $6$.
+
+\textbf{Moser's trick.} Enlarge the grid to the $8\times8\times8$ grid $\{0,1,\dots,7\}^3$. The added points form a shell of $8^3-6^3=512-216=296$ points (those with some coordinate equal to $0$ or $7$). Extending a line of six points one step in each direction gives two shell points: each changing coordinate becomes $0$ at one end and $7$ at the other, while the constant coordinates stay in $1,\dots,6$.
+
+Conversely, every shell point $S$ is the end of exactly one such extended line: the coordinates of $S$ equal to $0$ must increase and those equal to $7$ must decrease along the line, and the others must stay fixed, so $S$ determines the step $\mathbf d$; then $S+\mathbf d,\dots,S+6\mathbf d$ are six points of the original grid and $S+7\mathbf d$ is again a shell point.
+
+So the shell points are paired off by the lines, and the number of lines is $\dfrac{296}{2}=\boxed{148}$.

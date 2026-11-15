@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2627335_new_solution_for_intro_to_geometry_problem
+% Stable identity: aops-topic-2627335-q01
+\textbf{(a)} Let $P$ be the intersection of $CM$ and $DN$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,1),B=(1,1),C=(1,0),D=(0,0);pair M=(0.5,1),Nn=(1,0.5);
+pair P=extension(C,M,D,Nn);
+draw(A--B--C--D--cycle,linewidth(0.8));draw(C--M);draw(D--Nn);
+dot(M);dot(Nn);dot(P);
+label("$A$",A,NW);label("$B$",B,NE);label("$C$",C,SE);label("$D$",D,SW);
+label("$M$",M,N);label("$N$",Nn,E);label("$P$",P,dir(160));
+pair u=unit(M-P),v=unit(Nn-P);draw(P+0.07*u--P+0.07*u+0.07*v--P+0.07*v);
+\end{asy}
+
+Triangles $CBM$ and $DCN$ have $CB=DC$ (sides of the square), $BM=CN$ (half-sides) and right angles at $B$ and $C$, so they are congruent (SAS). Hence $\angle BCM=\angle CDN$. In right triangle $DCN$, $\angle CDN+\angle CND=90^\circ$. Therefore in triangle $PCN$,
+\[\angle PCN+\angle PNC=\angle BCM+\angle CND=\angle CDN+\angle CND=90^\circ,\]
+so $\angle CPN=90^\circ$ and $CM\perp DN$. $\blacksquare$
+
+\textbf{(b)} $MN\ne CN$: $MN$ is half the diagonal, $\dfrac{s\sqrt2}{2}$, while $CN=\dfrac s2$ for side $s$. Moreover triangle $MCN$ has an obtuse angle of $135^\circ$ at $N$, so it cannot be congruent to the right triangle $DCN$. The intended congruence is $\triangle DCN\cong\triangle CBM$ (legs $DC=CB$ and $CN=BM$). With it, $\angle DNC=\angle CMB$, and the student's remaining angle count in quadrilateral $PNBM$ ($\angle PMB+\angle PNB=\angle CMB+180^\circ-\angle DNC=180^\circ$, so $\angle MPN=360^\circ-90^\circ-180^\circ=90^\circ$) is correct.

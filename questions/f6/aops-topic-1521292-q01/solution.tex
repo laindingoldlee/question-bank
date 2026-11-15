@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1521292_imso_2014_sa_22
+% Stable identity: aops-topic-1521292-q01
+Put the cube as $[0,3]^3$, the ant going from $O=(0,0,0)$ to $O'=(3,3,3)$. The points are $9$ unit steps apart in total, so a route of $9$ steps increases each coordinate exactly $3$ times and never decreases one. A step lies on the surface when some coordinate other than the one changing is $0$ or $3$.
+
+\textbf{Every route uses one near face and then one far face.} Call $x=0$, $y=0$, $z=0$ the near faces and $x=3$, $y=3$, $z=3$ the far faces. Coordinates never decrease, so the set of coordinates equal to $0$ only shrinks and the set equal to $3$ only grows. Until some coordinate reaches $3$, the ant is on a near face, and a coordinate that is $0$ at the last such point was $0$ all along; say it is $z$. The first coordinate to reach $3$, say $x$, stays $3$. So the route lies on the face $z=0$ until $x=3$, then on the face $x=3$. Unfolding these two adjacent faces into a $6\times3$ grid, such a route is a monotone lattice path from corner to corner:
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=6;++i) draw((i,0)--(i,3),gray(0.6));
+for(int j=0;j<=3;++j) draw((0,j)--(6,j),gray(0.6));
+draw((0,0)--(6,0)--(6,3)--(0,3)--cycle,linewidth(1));
+draw((3,0)--(3,3),linewidth(1));
+draw((0,0)--(1,0)--(1,1)--(2,1)--(2,2)--(4,2)--(4,3)--(6,3),red+linewidth(1.6));
+dot((0,0));dot((6,3));
+label("$O$",(0,0),SW);label("$O'$",(6,3),NE);
+label("face $z=0$",(1.5,-0.1),S);label("face $x=3$",(4.5,-0.1),S);
+label("$x$",(1.5,3.05),N,fontsize(8pt));label("$z$",(4.5,3.05),N,fontsize(8pt));label("$y$",(-0.05,1.5),W,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+There are $\dbinom93=84$ such paths for each of the $6$ ordered pairs (near face, adjacent far face), $504$ in all.
+
+\textbf{Overcounting.} A route counted for two pairs $(N,F)$ and $(N',F')$ lies in $(N\cup F)\cap(N'\cup F')$.
+\begin{itemize}
+\item If $N=N'$ and $F\ne F'$, this set is the face $N$ plus the edge where $F$ and $F'$ meet; the route crosses $N$ to its far corner and then runs up that edge. There are $\dbinom63=20$ such routes for each near face.
+\item If $F=F'$ and $N\ne N'$, the route runs along the edge where $N$ and $N'$ meet and then crosses $F$: again $20$ for each far face.
+\item If $N\ne N'$ and $F\ne F'$, the set is a union of edges, and the route runs along edges only.
+\end{itemize}
+The $6$ edge-only routes (one for each order of the three directions) are each counted $3$ times. For instance, the route along $x$, then $y$, then $z$ is counted for the pairs $(z=0,x=3)$, $(z=0,y=3)$ and $(y=0,x=3)$. Every other route counted more than once is of one of the first two kinds and is counted exactly twice. There are $3\cdot(20-2)=54$ of each kind, since each family of $20$ contains $2$ edge-only routes.
+
+Therefore the number of routes is
+\[
+504-(54+54)\cdot1-6\cdot2=\boxed{384}.
+\]

@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h2223077_a_problem_i_made_that_i_dont_know_how_to_solve
+% Stable identity: aops-topic-2223077-q01
+\textbf{Answer.} Exactly those $c$ in which every prime $\equiv3\pmod4$ appears to an even power and at least one prime $\equiv1\pmod4$ appears. For example $c=5,10,13,17,20,25,26,\ldots$ work, while $c=1,2,4,8,9,18,\ldots$ do not.
+
+\textbf{Lemma 1.} If an odd prime $q$ divides $s^2+t^2$ but not $t$, then $q\equiv1\pmod4$.
+
+\emph{Proof.} Let $u$ satisfy $ut\equiv1\pmod q$ and put $x=su$. Then $x^2\equiv-1\pmod q$, and $q\nmid x$. By Fermat's little theorem $1\equiv x^{q-1}=\left(x^2\right)^{\dfrac{q-1}{2}}\equiv(-1)^{\dfrac{q-1}{2}}\pmod q$. As $q>2$, this forces $\dfrac{q-1}{2}$ to be even, i.e. $q\equiv1\pmod4$.
+
+\textbf{Lemma 2.} $c^2$ is a sum of two positive squares if and only if $c$ has a prime factor $p\equiv1\pmod4$.
+
+\emph{Proof.} ($\Leftarrow$) The two-square theorem gives $p=u^2+v^2$; both are positive (as $p$ is not a square) and $u\ne v$ (as $p$ is odd). Then $p^2=\left(u^2-v^2\right)^2+(2uv)^2$ with both terms positive, and multiplying by $\left(\dfrac {c}{p}\right)^2$ gives $c^2$ as a sum of two positive squares.
+
+($\Rightarrow$) Let $c^2=s^2+t^2$ with $s,t>0$ and $g=\gcd(s,t)$. Then $g\mid c$, and $c'^2=s'^2+t'^2$ with $c'=\dfrac {c}{g}$, $s'=\dfrac {s}{g}$, $t'=\dfrac {t}{g}$ coprime and positive, so $c'^2\ge2$ and $c'>1$. If $c'$ were even, $s'^2+t'^2\equiv0\pmod4$ would force $s',t'$ both even, a contradiction; so every prime factor $q$ of $c'$ is odd. Such a $q$ does not divide $t'$ (else it divides $s'$ too), so Lemma 1 gives $q\equiv1\pmod4$. This $q$ divides $c$.
+
+\textbf{Conclusion.} Suppose $c$ works. Then $c$ is a sum of two squares, so primes $\equiv3\pmod4$ appear to even powers, and by Lemma 2 some prime $\equiv1\pmod4$ divides $c$.
+
+Conversely, suppose $c$ has these two properties. By Lemma 2, $c^2$ is a sum of two positive squares. By the two-square theorem $c=a^2+b^2$ with integers $a\ge b\ge0$. If $b>0$ we are done. If $b=0$, then $c=a^2$, and $a$ has a prime factor $\equiv1\pmod4$ (the one dividing $c$), so by Lemma 2 (applied to $a$) $c=a^2$ is a sum of two positive squares. Hence $c$ works.
+
+\textbf{Remark.} The guess ``$c=a^2+1$ with $a\ge2$'' gives only some of the answers: $c=a^2+1$ always works for $a\ge2$, but so do, for example, $13=2^2+3^2$ and $25=3^2+4^2$, which are not of that form. And $c=2=1^2+1^2$ fails because $4$ is not a sum of two positive squares.

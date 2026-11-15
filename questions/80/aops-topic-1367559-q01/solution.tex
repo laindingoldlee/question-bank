@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h1367559_cube_rotational_symetries
+% Stable identity: aops-topic-1367559-q01
+\textbf{Count.} A rotation of the cube is determined by where it sends the bottom face and how it turns that face. The bottom face can go to any of the $6$ faces, and then it can be placed on that face in $4$ ways (its four edges can be matched with the target face's edges by a rotation in $4$ ways; reflections are not allowed). Each of these $6\cdot4$ choices is achieved by exactly one rotation, because a rotation fixing one face and one of its edges in place is the identity. So there are $\boxed{24}$ rotational symmetries.
+
+\textbf{Description.} The axes are shown in the figure (one of each kind).
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair d=(0.5,0.35);
+pair P0=(0,0),P1=(1,0),P2=(1,1),P3=(0,1);
+draw(P0--P1--P2--P3--cycle); draw(P1--P1+d--P2+d--P2); draw(P3--P3+d--P2+d);
+draw(P0--P0+d,gray+dashed); draw(P0+d--P1+d,gray+dashed); draw(P0+d--P3+d,gray+dashed);
+pair Fb=(0.5,0)+d/2, Ft=(0.5,1)+d/2;
+draw(Fb-(0,0.45)--Fb,red); draw(Fb--Ft,red+dashed); draw(Ft--Ft+(0,0.45),red); dot(Fb,red); dot(Ft,red);
+pair u=unit(P2+d-P0);
+draw(P0-0.4u--P0,blue); draw(P0--P2+d,blue+dashed); draw(P2+d--P2+d+0.4u,blue);
+pair Ma=(0.5,1), Mb=(0.5,0)+d; pair w=unit(Mb-Ma);
+draw(Ma-0.4w--Ma,heavygreen); draw(Ma--Mb,heavygreen+dashed); draw(Mb--Mb+0.4w,heavygreen); dot(Ma,heavygreen); dot(Mb,heavygreen);
+label("face",Ft+(0,0.45),N,red); label("vertex",P2+d+0.4u,NE,blue); label("edge",Ma-0.4w,NW,heavygreen);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\begin{itemize}
+\item the identity: $1$;
+\item about the $3$ axes through the centres of opposite faces, by $90^\circ$, $180^\circ$, $270^\circ$: $3\cdot3=9$;
+\item about the $4$ axes through opposite vertices (the long diagonals), by $120^\circ$ and $240^\circ$: $4\cdot2=8$;
+\item about the $6$ axes through the midpoints of opposite edges, by $180^\circ$: $6$.
+\end{itemize}
+Total: $1+9+8+6=24$, agreeing with the count. (With reflections included there are $48$ symmetries.)

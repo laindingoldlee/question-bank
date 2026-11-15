@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3058232_ez_stewarts
+% Stable identity: aops-topic-3058232-q01
+Put $ c=2023,a=2312,b=300 $. The angle-bisector theorem gives $ AD=\dfrac{bc}{a+c}$ and $ DC=\dfrac{ba}{a+c}$. Stewart's theorem on cevian $ BD=d $ gives $ a^2AD+c^2DC=b(d^2+AD\cdot DC)$. Substitution and cancellation yield $ d^2=ac\left(1-\dfrac{b^2}{(a+c)^2}\right)$. Hence \[\boxed{BD=\dfrac{\sqrt{2023\cdot2312\,(4335^2-300^2)}}{4335}}.\]The side lengths satisfy the strict triangle inequalities, so this positive value is valid.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+pair A=(0,0),C=(300,0);real bx=(2023^2+300^2-2312^2)/600;pair B=(bx,sqrt(2023^2-bx^2)),D=(300*2023/4335,0);draw(A--B--C--cycle);draw(B--D,blue);label("$A$",A,SW);label("$C$",C,SE);label("$B$",B,N);label("$D$",D,S);
+\end{asy}

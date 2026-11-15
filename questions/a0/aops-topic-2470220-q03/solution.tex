@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2470220_fun_pie_problems_
+% Stable identity: aops-topic-2470220-q03
+First count the perfect powers $n$ with $2\le n\le100000$.
+
+If $n=a^b$ with $a\ge2$, $b\ge2$, let $p$ be a prime factor of $b$ and write $b=pc$; then $n=\left(a^{c}\right)^p$ is a $p$-th power. So $n$ is a perfect power exactly when it is a $p$-th power of an integer at least $2$ for some prime $p$. Since $2^{17}>100000$, only $p\in\{2,3,5,7,11,13\}$ matter.
+
+Let $A_p$ be the set of numbers $a^p\le100000$ with $a\ge2$. Then
+\[|A_2|=315,\ |A_3|=45,\ |A_5|=9,\ |A_7|=4,\ |A_{11}|=1,\ |A_{13}|=1,\]
+because $316^2=99856\le100000<317^2$, $46^3=97336<100000<47^3$, $10^5=100000$, $5^7=78125<6^7$, $2^{11}=2048<3^{11}$ and $2^{13}=8192<3^{13}$.
+
+If $n$ is both a $p$-th and a $q$-th power for distinct primes $p,q$, then every exponent in its prime factorisation is divisible by $p$ and by $q$, so $n$ is a $pq$-th power; conversely a $pq$-th power is in $A_p\cap A_q$. Hence
+\[|A_2\cap A_3|=5\ (\text{sixth powers }2^6,\dots,6^6;\ 7^6=117649),\quad |A_2\cap A_5|=2\ (2^{10},3^{10}),\]
+\[|A_2\cap A_7|=1\ (2^{14}),\quad |A_3\cap A_5|=1\ (2^{15}),\]
+and every other intersection is empty, since $2^{21}>100000$. In particular all triple intersections are empty. By inclusion--exclusion,
+\[|A_2\cup A_3\cup\cdots\cup A_{13}|=(315+45+9+4+1+1)-(5+2+1+1)=375-9=366.\]
+Adding the number $1$, the answer is $\boxed{367}$.

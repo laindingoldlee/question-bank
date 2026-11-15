@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2789990_2021_manhattan_mathematical_olympiad_grades_56_problems_14
+% Stable identity: aops-topic-2789990-q02
+(a) $\boxed{\text{No}}$: the $9$ rows in one direction partition the cube, so the number of red cubes would be a sum of $9$ odd numbers, which is odd, but $14$ is even.
+
+(b) $\boxed{\text{Yes}}$. Writing cubes as $(x,y,z)$ with coordinates $0,1,2$, colour these $13$ blue:
+\[000,001,002,010,020,101,110,111,112,121,201,210,222.\]
+One checks that each of the $27$ rows contains $1$ or $3$ of them (for example the rows through $(1,1,\cdot)$ contain $110,111,112$). Layer by layer ($x=0,1,2$, with $y$ across and $z$ up), the blue cubes are:
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+int[][][] B={{{0,0},{0,1},{0,2},{1,0},{2,0}},{{0,1},{1,0},{1,1},{1,2},{2,1}},{{0,1},{1,0},{2,2}}};
+for(int L=0;L<3;++L){for(int[] c:B[L]) fill(shift(4L+c[0],c[1])*unitsquare,lightblue);for(int i=0;i<3;++i) for(int j=0;j<3;++j) draw(shift(4L+i,j)*unitsquare);label("$x="+string(L)+"$",(4L+1.5,0),S);}
+\end{asy}

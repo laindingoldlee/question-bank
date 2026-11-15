@@ -1,0 +1,7 @@
+Take X as the vector origin and let u be a unit vector along the line. The other intersections are at signed scalar positions $2O\cdot u$ and $2P\cdot u$, obtained by expanding the circle equations. Thus $AB=2|(O-P)\cdot u|\le2|O-P|$, with equality when the line is parallel to OP. Since the radii to X are perpendicular, $OP=\sqrt{18^2+14^2}=2\sqrt{130}$. The maximum is therefore $\boxed{4\sqrt{130}}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair X=(0,0),O=(18,0),P=(0,14),v=P-O,A=2dot(O,v)/dot(v,v)*v,B=2dot(P,v)/dot(v,v)*v,W=(882.0/65,1134.0/65);draw(circle(O,18),gray);draw(circle(P,14),gray);draw(O--P,dashed);draw(O--X--P,red);draw(A--B,blue);pair[] p={X,O,P,A,B,W};string[] a={"X","O","P","A","B","W"};pair[] al={(-1,-1),(1,0),(0,1),(1,-1),(-1,1),(1,1)};for(int i=0;i<6;++i)label("$"+a[i]+"$",p[i],al[i]);
+\end{asy}

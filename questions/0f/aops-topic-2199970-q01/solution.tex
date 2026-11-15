@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2199970_confusing_problem
+% Stable identity: aops-topic-2199970-q01
+Read the line from front to back. The condition says that the heights decrease at exactly one place (exactly one person is shorter than the person directly in front), so the line consists of two increasing runs.
+
+\textbf{Lines with at most one decrease.} Such a line is determined by the set $A$ of people in the first run: the first run is $A$ in increasing order of height and the second run is everyone else in increasing order. Conversely, every subset $A$ of the five people gives such a line. So there are $2^5=32$ pairs (subset, line), but a line may come from several subsets.
+
+\textbf{Counting lines.} If the line has exactly one decrease, the set $A$ must be the people before the decrease, so the line comes from exactly one subset. The line in increasing order (no decrease at all) comes from each of the $6$ subsets consisting of the $j$ shortest people, $j=0,1,\dots,5$. Every other subset gives a line with exactly one decrease. Hence the number of lines with exactly one decrease is
+\[2^5-6=\boxed{26}.\]
+(In general, $2^n-n-1$ for $n$ people.)

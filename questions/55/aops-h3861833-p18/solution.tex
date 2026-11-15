@@ -1,0 +1,7 @@
+At least five queries are necessary: any first 2 by 2 query has a possible negative answer leaving twelve cells, and distinguishing twelve possibilities requires at least four more yes/no queries. Five suffice. Query the top-left, top-right, and bottom-left disjoint 2 by 2 quadrants until one contains the candy; if all three fail, it is in the bottom-right. Once the quadrant is known, shift that quadrant one column toward the grid center and query: the overlap identifies which of its two columns contains the candy. Shift the original quadrant one row toward the center and query to identify its row. Thus the worst case is $\boxed{5}$. 
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(220);
+defaultpen(fontsize(9pt));
+for(int i=0;i<=4;++i){draw((i,0)--(i,4),i==2?linewidth(1.2):gray);draw((0,i)--(4,i),i==2?linewidth(1.2):gray);}label("1",(1,3));label("2",(3,3));label("3",(1,1));label("4",(3,1));
+\end{asy}

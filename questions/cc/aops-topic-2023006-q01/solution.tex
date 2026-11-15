@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h2023006_blocks_on_a_table
+% Stable identity: aops-topic-2023006-q01
+Let the table have height $t$. In Figure 1 the top of the table block is at height $t+\ell$ and the top of the floor block at height $w$, so
+\[
+r=t+\ell-w=32.
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(6.5cm);
+defaultpen(fontsize(10pt));
+real h=3.0, L=1.6, w=0.6;
+draw((-0.4,0)--(4.6,0),linewidth(0.6));
+fill((0,h-0.15)--(3,h-0.15)--(3,h)--(0,h)--cycle,gray(0.75));
+draw((0,h-0.15)--(3,h-0.15)--(3,h)--(0,h)--cycle);
+draw((0.2,0)--(0.2,h-0.15),linewidth(1.2)); draw((2.8,0)--(2.8,h-0.15),linewidth(1.2));
+filldraw((1.2,h)--(1.2+w,h)--(1.2+w,h+L)--(1.2,h+L)--cycle,palegray);
+filldraw((3.3,0)--(3.3+L,0)--(3.3+L,w)--(3.3,w)--cycle,palegray);
+draw((-0.25,0)--(-0.25,h),blue,Arrows(5)); label("$t$",(-0.25,h/2),W,blue);
+draw((1.0,h)--(1.0,h+L),red,Arrows(5)); label("$\ell$",(1.0,h+L/2),W,red);
+draw((5.05,0)--(5.05,w),red,Arrows(5)); label("$w$",(5.05,w/2),E,red);
+draw((1.2+w,h+L)--(4.5,h+L),dashed); draw((4.4,w)--(4.4,h+L),Arrows(5)); label("$r=t+\ell-w$",(4.4,(w+h+L)/2),E);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+In Figure 2 the top of the table block is at height $t+w$ and the top of the floor block at height $\ell$, so
+\[
+s=t+w-\ell=28.
+\]
+Adding the two equations eliminates both block dimensions: $2t=60$. The table is $\boxed{30}$ inches high (and $\ell-w=2$ inches).

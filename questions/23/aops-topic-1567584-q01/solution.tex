@@ -1,0 +1,35 @@
+% Source: https://artofproblemsolving.com/community/c3h1567584_coordinate_geometry_problem
+% Stable identity: aops-topic-1567584-q01
+Complete the squares:
+\[
+f(x)=\sqrt{(x-1)^2+1^2}+\sqrt{(x-2)^2+2^2}.
+\]
+So $f(x)=XA+XB$, the sum of the distances from the point $X(x,0)$ on the $x$-axis to $A(1,1)$ and $B(2,2)$.
+
+\textbf{Minimum.} Reflect $A$ in the $x$-axis to $A'(1,-1)$. For every $X$ on the axis, $XA=XA'$, so by the triangle inequality
+\[
+f(x)=XA'+XB\ge A'B=\sqrt{(2-1)^2+(2+1)^2}=\sqrt{10},
+\]
+with equality exactly when $X$ lies on segment $A'B$. The line $A'B$ has slope $3$ and meets the axis at $P\left(\dfrac{4}{3},0\right)$. Check: $f\left(\dfrac{4}{3}\right)=\sqrt{\dfrac{1}{9}+1}+\sqrt{\dfrac{4}{9}+4}=\dfrac{\sqrt{10}}{3}+\dfrac{2\sqrt{10}}{3}=\sqrt{10}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+import graph;
+draw((-0.6,0)--(3.6,0),gray,Arrow(TeXHead));draw((0,-1.6)--(0,2.8),gray,Arrow(TeXHead));
+label("$x$",(3.6,0),E,gray);label("$y$",(0,2.8),N,gray);
+pair A=(1,1),B=(2,2),Ap=(1,-1),P=(4/3,0),Q=(3,0);
+draw(A--P--B,blue+linewidth(0.9));draw(Ap--P,blue+dashed);
+draw(A--Q--B,gray+linewidth(0.6));
+draw(A--Ap,dotted);
+dot(A);dot(B);dot(Ap);dot(P);dot(Q,gray);
+label("$A(1,1)$",A,W);label("$B(2,2)$",B,N);label("$A'(1,-1)$",Ap,S);
+label("$P\left(\dfrac{4}{3},0\right)$",P+(0.15,-0.12),SE);
+label("$X(x,0)$",Q,(0,-1.8),gray);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{No maximum.} $f(x)\ge\sqrt{(x-1)^2}=|x-1|$, which is unbounded, so $f$ takes arbitrarily large values and has no greatest value.
+
+Hence the smallest value is $\boxed{\sqrt{10}}$ (at $x=\dfrac{4}{3}$), and $f$ has \textbf{no greatest value}.

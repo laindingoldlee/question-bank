@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3186635_2021_abmc_speed_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3186635-q25
+Write the parabola as $y=a(x-h)^2+k$, with $a\ne0$. Its focus is $(h,k+\dfrac{1}{4a})$, while the secant line is $x+4y-20=0$. The two given points imply $h=2+\dfrac{1}{8a}$ and $k=\dfrac{9}{2}-4a-\dfrac{1}{64a}$. The focus is below the line at the specified distance exactly when $h+4k+\dfrac{1}{a}-20=-16$. Substitution gives $256a^2-256a-17=0$. Both real nonzero roots define valid parabolas and satisfy the signed distance condition. Their sum is $1$ and product is $-\dfrac{17}{256}$, so the sum of their reciprocal values is $-\dfrac{256}{17}$. Therefore the two vertex heights sum to $9-4+\dfrac{4}{17}=\dfrac{89}{17}$, giving $p+q=\boxed{106}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+import graph; real a=(16+sqrt(273))/32,b=(16-sqrt(273))/32,h=2+1/(8*a),k=4.5-4*a-1/(64*a),j=2+1/(8*b),m=4.5-4*b-1/(64*b);real f(real x){return a*(x-h)^2+k;}real g(real x){return b*(x-j)^2+m;}draw(graph(f,-.3,4.3),blue);draw(graph(g,-2,6),red);draw((-2,5.5)--(6,3.5));dot((h,k));dot((j,m));dot((h,k+1/(4*a)));dot((j,m+1/(4*b)));label("$V_1$",(h,k),S);label("$V_2$",(j,m),N);label("$F_1$",(h,k+1/(4*a)),E);label("$F_2$",(j,m+1/(4*b)),E);label("$(0,5)$",(0,5),NW);label("$(4,4)$",(4,4),NE);
+\end{asy}

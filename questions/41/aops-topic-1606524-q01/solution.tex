@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h1606524_mathcount
+% Stable identity: aops-topic-1606524-q01
+\textbf{The value must satisfy an equation.} If the limit is $x$, then $x\ge0$ and the expression repeats itself inside: $x=\dfrac{40}{3+x}$. So $x^2+3x-40=0$, i.e.\ $(x+8)(x-5)=0$, and since $x\ge0$, $x=5$.
+
+\textbf{The limit exists.} Every $x_k$ is positive, so $x_{k+1}=\dfrac{40}{3+x_k}<\dfrac{40}{3}$ for all $k$, and hence $x_{k+2}=\dfrac{40}{3+x_{k+1}}>\dfrac{40}{3+\dfrac{40}{3}}=\dfrac{120}{49}>2$. So for $k\ge2$ we have $3+x_k>5$ and
+\[
+|x_{k+1}-5|=\left|\dfrac{40}{3+x_k}-\dfrac{40}{8}\right|=\dfrac{5\,|x_k-5|}{3+x_k}\le\dfrac{5}{3+\dfrac{120}{49}}\,|x_k-5|=\dfrac{245}{267}\,|x_k-5| .
+\]
+The distance to $5$ shrinks at least by the fixed factor $\dfrac{245}{267}<1$ at every step, so $x_k\to5$.
+
+The value is $\boxed{5}$.

@@ -1,0 +1,7 @@
+Place the grid center at the origin. Square centers have integer coordinates $(x,y)$ with $-7\le x,y\le7$, and rotate to $(y,-x)$. The squared displacement is $2(x^2+y^2)$. Thus we need $x^2+y^2<\dfrac{9}{2}$, allowing squared norms $0,1,2,4$. These contribute $1,4,4,4$ points, respectively, for a total of $13$. The probability is $\dfrac{13}{225}$, so $\boxed{m+n=238}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+for(int j=-3;j<=3;++j){draw((j,-3)--(j,3),lightgray);draw((-3,j)--(3,j),lightgray);}draw(circle((0,0),3/sqrt(2)),blue);for(int x=-3;x<=3;++x)for(int y=-3;y<=3;++y)if(x*x+y*y<4.5)dot((x,y),red+4bp);draw((2,0)--(0,-2),heavygreen,Arrow);label("central square centers",(0,-3.5));
+\end{asy}

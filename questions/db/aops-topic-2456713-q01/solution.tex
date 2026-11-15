@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h2456713_a_cool_fact_that_i_found_out_about
+% Stable identity: aops-topic-2456713-q01
+\textbf{(a)} The conjecture is false. Take $x=2$, $n=2$, $y=5$:
+\[2+3+4=9,\qquad2^5+3^5+4^5=32+243+1024=1299=9\cdot144+3,\]
+and $9\nmid1299$. (It does hold for $y=1$, trivially, and in many small cases such as $x=2$, $n=2$, $y=3$: $8+27+64=99=9\cdot11$, which is why it looks plausible.)
+
+\textbf{(b)} Let $P=1^y+2^y+\cdots+m^y$. For odd $y$ and integers $u,v$,
+\[u^y+v^y=(u+v)\left(u^{y-1}-u^{y-2}v+\cdots+v^{y-1}\right),\]
+so $u+v$ divides $u^y+v^y$.
+\begin{itemize}
+\item Pairing $j$ with $m+1-j$:
+\[2P=\sum_{j=1}^{m}\left(j^y+(m+1-j)^y\right),\]
+and each term is divisible by $m+1$, so $(m+1)\mid2P$.
+\item Pairing $j$ with $m-j$ (and including the term $0^y=0$):
+\[2P=\sum_{j=0}^{m}\left(j^y+(m-j)^y\right),\]
+and each term is divisible by $m$, so $m\mid2P$.
+\end{itemize}
+Since $\gcd(m,m+1)=1$, we get $m(m+1)\mid2P$, i.e. $\dfrac{m(m+1)}{2}\mid P$. As $1+2+\cdots+m=\dfrac{m(m+1)}{2}$, this is the claim. $\blacksquare$
+
+(For a general start $x$ the sum $x+(x+1)+\cdots+(x+n)$ is $\dfrac{(n+1)(2x+n)}{2}$, and the same ideas still show that $n+1$ and $2x+n$ each divide twice the power sum: pair $x+j$ with $x+n-j$ for $2x+n$, and use that the $n+1$ consecutive numbers run through all residues modulo $n+1$ for $n+1$. But $n+1$ and $2x+n$ need not be coprime, and then the argument breaks down; in the counterexample they are $3$ and $6$.)

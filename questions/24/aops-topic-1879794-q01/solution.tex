@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h1879794_dumb_counting_problems_reeee
+% Stable identity: aops-topic-1879794-q01
+First count all strings of $6$ decimal digits (leading zeros allowed) in which no digit appears more than twice, sorted by the pattern of repeated digits.
+\begin{itemize}
+\item All six digits different: $10\cdot9\cdot8\cdot7\cdot6\cdot5=151200$.
+\item One digit twice, four others once: choose the doubled digit ($10$), the four single digits ($\dbinom94=126$), and arrange ($\dfrac{6!}{2!}=360$): $453600$.
+\item Two digits twice, two once: $\dbinom{10}{2}\dbinom82\cdot\dfrac{6!}{2!\,2!}=45\cdot28\cdot180=226800$.
+\item Three digits twice: $\dbinom{10}{3}\cdot\dfrac{6!}{2!\,2!\,2!}=120\cdot90=10800$.
+\end{itemize}
+The total is $151200+453600+226800+10800=842400$.
+
+The condition is unchanged by permuting the ten digit symbols, so each of the ten digits is equally likely to be the first digit: exactly $\dfrac{1}{10}$ of these strings begin with $0$. The six-digit integers are the strings not beginning with $0$, so the answer is
+\[
+\dfrac{9}{10}\cdot 842400=\boxed{758160}.
+\]

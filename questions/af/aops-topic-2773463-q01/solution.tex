@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2773463_5_points_2_distances
+% Stable identity: aops-topic-2773463-q01
+\textbf{Yes.} Take the vertices of a regular pentagon. Each of the $5$ sides has the same length $s$, and each of the $5$ diagonals has the same length $d=\dfrac{1+\sqrt5}2\,s$, so only two distances occur.
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair[] V;for(int k=0;k<5;++k) V.push(dir(90+72*k));
+draw(V[0]--V[1]--V[2]--V[3]--V[4]--cycle,linewidth(1));
+draw(V[0]--V[2]--V[4]--V[1]--V[3]--cycle,dashed);
+for(int k=0;k<5;++k) dot(V[k]);
+label("$s$",(V[0]+V[1])/2,NW);label("$d$",(V[0]+V[2])/2,E);
+\end{asy}
+
+(The poster expected this to be impossible; the regular pentagon is a counterexample. Six points with only two distances are impossible in the plane, a known but harder result.)

@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2043572_math_kangaroo_problem
+% Stable identity: aops-topic-2043572-q01
+Write the numbers as \(x_i=(-1)^{e_i}\) with \(e_i\in\{0,1\}\). A question about a triple \(T\) reveals \(\sum_{i\in T}e_i \pmod 2\), and the desired product is determined by \(\sum_{i=1}^{50}e_i\pmod 2\).
+
+\emph{18 questions suffice.} Split envelopes \(1,\dots,48\) into \(16\) disjoint triples and ask about each; the product of the answers is \(x_1x_2\cdots x_{48}\). Then ask about \(\{49,1,2\}\) and \(\{50,1,2\}\); the product of these two answers is \(x_{49}x_{50}(x_1x_2)^2=x_{49}x_{50}\). Multiplying everything gives the product of all \(50\) numbers after \(16+2=18\) questions.
+
+\emph{Fewer do not suffice.} Suppose a strategy (possibly adaptive) always succeeds. Run it when all numbers are \(1\); let \(T_1,\dots,T_k\) be the triples asked. If some envelope \(i\) were in none of them, flipping \(x_i\) would leave every answer unchanged but flip the total product, so John could not be sure. More precisely, the strategy must be such that the all-ones vector \((1,\dots,1)\) is a sum modulo \(2\) of the indicator vectors of \(T_1,\dots,T_k\); otherwise, by linear algebra over \(\mathbb{F}_2\), there is a set \(Y\) of envelopes meeting every \(T_j\) in an even number of elements but with \(|Y|\) odd, and flipping the numbers in \(Y\) leaves all answers (hence all later questions) unchanged while flipping the total product.
+
+So some subcollection of the \(T_j\) has every envelope covered an odd number of times. Its sum of sizes is \(3m\) (for \(m\) triples used) and is at least \(50\), so \(m\ge17\); and \(3m\equiv 50\pmod 2\) (each envelope is covered an odd number of times, so the total count has the parity of \(50\)), so \(m\) is even. Hence \(m\ge18\), and \(k\ge m\ge18\).
+
+The least number of questions is \(\boxed{18}\).

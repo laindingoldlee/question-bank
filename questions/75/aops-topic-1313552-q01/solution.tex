@@ -1,0 +1,23 @@
+% Source: https://artofproblemsolving.com/community/c3h1313552_geometry_question
+% Stable identity: aops-topic-1313552-q01
+Let $\angle A=x$.
+\begin{itemize}
+\item $AE=ED$: triangle $AED$ is isosceles, so $\angle EDA=\angle EAD=x$, and the exterior angle $\angle DEC=2x$.
+\item $ED=DC$: $\angle DCE=\angle DEC=2x$, i.e. $\angle ACD=2x$.
+\item In triangle $ADC$, the exterior angle at $D$ is $\angle BDC=\angle A+\angle ACD=3x$.
+\item $DC=CB$: $\angle CBD=\angle CDB=3x$, so $\angle B=3x$, and $\angle C=\angle B=3x$.
+\end{itemize}
+The angles of $ABC$ give $x+3x+3x=180^\circ$, so $\angle A=\boxed{\dfrac{180^\circ}{7}}\approx25.7^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+real x=180/7; pair A=(0,0); real L=1/(2*Sin(x/2));
+pair B=L*dir(-x/2), C=L*dir(x/2), E=dir(x/2), D=2*Cos(x)*dir(-x/2);
+draw(A--B--C--cycle,linewidth(0.9)); draw(E--D--C,blue);
+label("$A$",A,W); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,S); label("$E$",E,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(Then $\angle DCB=3x-2x=x$, consistent with $AB=AC$; a coordinate construction confirms that such points $D$, $E$ exist.)

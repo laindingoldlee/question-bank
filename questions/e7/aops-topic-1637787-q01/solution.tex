@@ -1,0 +1,32 @@
+% Source: https://artofproblemsolving.com/community/c3h1637787_sometimes_always_or_never
+% Stable identity: aops-topic-1637787-q01
+The statement is \boxed{\text{sometimes true}}: some quadrilaterals with equal diagonals are rectangles, and some are not.
+
+\textbf{It can be true.} A rectangle has equal diagonals (the right triangles $ABC$ and $BAD$ in rectangle $ABCD$ are congruent by SAS, so $AC=BD$). So for every rectangle the hypothesis holds and the conclusion holds too.
+
+\textbf{It can be false.} Take the isosceles trapezoid $A(0,0)$, $B(6,0)$, $C(4.5,3)$, $D(1.5,3)$, with $AB\parallel DC$ and legs $AD=BC$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(4.5,3),D=(1.5,3);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,blue);draw(B--D,blue);
+path tk=(0,-0.14)--(0,0.14);
+for(real f: new real[]{0.28,0.31}){
+ draw(shift(A+f*(C-A))*rotate(degrees(C-A))*tk,blue);
+ draw(shift(B+f*(D-B))*rotate(degrees(D-B))*tk,blue);}
+draw(((A+D)/2+0.13*unit(D-A)+0.14*unit(rotate(90)*(D-A)))--((A+D)/2+0.13*unit(D-A)-0.14*unit(rotate(90)*(D-A))));
+draw(((B+C)/2+0.13*unit(C-B)+0.14*unit(rotate(90)*(C-B)))--((B+C)/2+0.13*unit(C-B)-0.14*unit(rotate(90)*(C-B))));
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Its diagonals are equal:
+\[
+AC=\sqrt{4.5^2+3^2}=\sqrt{29.25}=BD ,
+\]
+but it is not a rectangle, since $AB=6\ne3=DC$ (opposite sides of a rectangle are equal). So equal diagonals do not force a rectangle.
+
+(In fact a quadrilateral is a rectangle exactly when its diagonals are equal \emph{and} bisect each other; in the trapezoid above the diagonals are equal but do not bisect each other.)

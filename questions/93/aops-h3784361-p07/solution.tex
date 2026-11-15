@@ -1,0 +1,12 @@
+Use six states recording the last letter and, for $A$ or $C$, whether its required neighbor is still pending. Denote them $A_0,A_1,T,C_0,C_1,G$, where subscript $1$ means pending. Starting from $(0,1,0,0,0,0)$, appending a letter gives
+\[
+\begin{aligned}
+A'_0&=T,& A'_1&=C_0+G,&T'&=A_0+A_1+C_0+G,\\
+C'_0&=G,& C'_1&=A_0+T,&G'&=A_0+T+C_0+C_1.
+\end{aligned}
+\]
+These transitions forbid equal neighbors and force a pending letter's next neighbor. The totals of the four nonpending states for lengths $1$ through $9$ are
+\[
+0,1,2,5,12,29,70,169,408.
+\]
+At length nine the state vector is $(60,85,144,60,84,144)$, so the required count is $\boxed{408}$.

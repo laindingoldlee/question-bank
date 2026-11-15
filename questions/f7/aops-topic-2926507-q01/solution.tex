@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2926507_pigeonhole
+% Stable identity: aops-topic-2926507-q01
+\emph{$11$ is possible:} take the bottom row and the left column (below). Any parallelogram needs two parallel equal segments on different lines, and one checks that none exist here.
+\begin{asy}
+usepackage("amsmath");
+size(2.5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<6;++i)for(int j=0;j<6;++j)dot((i,j),gray);for(int i=0;i<6;++i){dot((i,0),linewidth(4));}for(int j=1;j<6;++j){dot((0,j),linewidth(4));}
+\end{asy}
+
+\emph{$12$ is impossible.} With $N$ points in $6$ rows, row $i$ having $k_i$ points, the distances from the leftmost point of each row to its other points give $\sum(k_i-1)=N-6$ positive differences, each in $\{1,\dots,5\}$, and distinct within a row. If $N\ge12$, there are at least $6>5$ of them, so two rows share a difference $d$. The two horizontal segments of length $d$ in different rows form a parallelogram. The answer is $\boxed{11}$.

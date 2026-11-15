@@ -1,0 +1,6 @@
+Include the limiting vertex $(0,0)$ to close the polygon. Consecutive shoelace terms are $2^{-n}3^{-(n+1)}-3^{-n}2^{-(n+1)}=-\dfrac{6^{-n}}{6}$. The closing segment to $(1,1)$ contributes zero. Thus the area is $(\dfrac{1}{12})\sum_{n\ge0}6^{-n}=(\dfrac{1}{12})(\dfrac{6}{5})=\boxed{\dfrac{1}{10}}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);real pow(real a,int b){return a^b;}
+pair[] V;for(int n=0;n<8;++n)V.push((pow(.5,n),pow(1.0/3,n)));path p=V[0];for(int n=1;n<V.length;++n)p=p--V[n];draw(p--(0,0)--cycle,blue);draw((0,0)--(1.1,0)^^(0,0)--(0,1.1),gray);label("$(1,1)$",(1,1),(1,1));label("$(0,0)$",(0,0),(-1,-1));
+\end{asy}
+

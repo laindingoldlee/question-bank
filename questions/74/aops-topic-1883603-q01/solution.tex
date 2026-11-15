@@ -1,0 +1,39 @@
+% Source: https://artofproblemsolving.com/community/c3h1883603_unit_circles_and_triangles_and_drawing_lines
+% Stable identity: aops-topic-1883603-q01
+Let $O_1,O_2,O_3$ be the centres. They form an equilateral triangle of side $2$ with centroid $G$, and $GO_i=\dfrac{2}{\sqrt3}$; the distance from $G$ to each side of $O_1O_2O_3$ (its inradius) is $\dfrac{1}{\sqrt3}$.
+
+\textbf{A triangle that works.} Take the equilateral triangle whose sides are parallel to the sides of $O_1O_2O_3$ and lie at distance $1$ outside them. Each side is tangent to two of the circles, it contains all three circles, its centre is $G$, and its inradius is $\rho=1+\dfrac{1}{\sqrt3}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real r0=2/sqrt(3);real rho=1+1/sqrt(3);
+pair G=(0,0);
+pair O1=r0*dir(90),O2=r0*dir(210),O3=r0*dir(330);
+pair V1=2*rho*dir(90),V2=2*rho*dir(210),V3=2*rho*dir(330);
+draw(V1--V2--V3--cycle,linewidth(1));
+draw(circle(O1,1));draw(circle(O2,1));draw(circle(O3,1));
+draw(O1--O2--O3--cycle,dashed+gray);
+dot(O1);dot(O2);dot(O3);
+label("$O_1$",O1,N,fontsize(9pt));label("$O_2$",O2,dir(150),fontsize(9pt));label("$O_3$",O3,dir(30),fontsize(9pt));
+label("$2$",(0.5,-0.577),S,gray+fontsize(9pt));
+draw(O2--O2+(0,-1),blue);label("$1$",O2+(0,-0.5),W,blue+fontsize(9pt));
+label("$2+2\sqrt3$",(0,-rho),S,fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{No smaller triangle works.} Let $T$ be any equilateral triangle containing the three discs, with inradius $\rho'$. For every point inside an equilateral triangle the sum of its distances to the three sides equals the altitude, $3\rho'$. Take one side line $\ell$ of $T$ with inward unit normal $n$. The three vectors $O_i-G$ have length $\dfrac{2}{\sqrt3}$ and point in directions $120^\circ$ apart, so one of them makes an angle of at least $120^\circ$ with $n$ (every direction, in particular $-n$, is within $60^\circ$ of one of the three); for that $i$,
+\[
+n\cdot(O_i-G)\le\dfrac{2}{\sqrt3}\cos120^\circ=-\dfrac{1}{\sqrt3}.
+\]
+The disc around $O_i$ lies inside $T$, so $O_i$ is at distance at least $1$ from $\ell$. Hence
+\[
+\operatorname{dist}(G,\ell)=\operatorname{dist}(O_i,\ell)-n\cdot(O_i-G)\ge1+\dfrac{1}{\sqrt3}.
+\]
+This holds for all three sides, and $G$ lies inside $T$, so $3\rho'\ge3\left(1+\dfrac{1}{\sqrt3}\right)$ and $\rho'\ge\rho$.
+
+\textbf{Area.} An equilateral triangle with inradius $\rho$ has side $2\sqrt3\rho$ and area $3\sqrt3\rho^2$. With $\rho=1+\dfrac{1}{\sqrt3}$ the side is $2\sqrt3+2$ and the area is
+\[
+3\sqrt3\left(1+\dfrac{2}{\sqrt3}+\dfrac{1}{3}\right)=3\sqrt3+6+\sqrt3=\boxed{6+4\sqrt3}.
+\]

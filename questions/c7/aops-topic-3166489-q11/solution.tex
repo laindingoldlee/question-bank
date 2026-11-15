@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3166489_2021_lmt_fall_guts_round_p1p12_lexington_mathematical_tournament
+% Stable identity: aops-topic-3166489-q11
+Scale the circumradius to one and put $A=(1,0)$, with successive vertices at angles $\dfrac{2\pi j}{7}$. Let $s=\sin\dfrac{\pi}{7}$. Then $D=(-\cos\dfrac{\pi}{7},s)$ and $E=(-\cos\dfrac{\pi}{7},-s)$, so the perpendicular line is $y=-s$. Also $BC=2s$. The distance equation gives $P=(1\pm\sqrt3s,-s)$. The plus choice lies to the right of the whole polygon. The minus choice lies inside: the horizontal chord of the heptagon at this height runs from $E$ to the point on $AG$ of abscissa $1-s\tan\dfrac{\pi}{7}$, and $-\cos\dfrac{\pi}{7}<1-\sqrt3s<1-s\tan\dfrac{\pi}{7}$. These inequalities follow from $\cot\dfrac{\pi}{14}>\sqrt3$ and $\tan\dfrac{\pi}{7}<\sqrt3$. Thus the outside point uses the plus sign. From $P$, the vector to $E$ points left, while the vector to $A$ is $(-\sqrt3s,s)$, making an angle $\boxed{30^\circ}$ above that direction.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+real s=sin(pi/7);pair[]v;for(int j=0;j<7;++j)v.push(dir(360*j/7));path h=v[0];for(int j=1;j<7;++j)h=h--v[j];draw(h--cycle);pair P=(1+sqrt(3)*s,-s);draw(v[4]--P--v[0],blue);string[] names={"$A$","$B$","$C$","$D$","$E$","$F$","$G$"};for(int j=0;j<7;++j)label(names[j],v[j],v[j]);label("$P$",P,E);
+\end{asy}

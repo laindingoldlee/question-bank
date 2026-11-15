@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1940880_trapezoid_area_problem
+% Stable identity: aops-topic-1940880-q01
+Let the parallel sides be $a<b$, the legs $c$, the height $h$, and put $m=\dfrac{a+b}{2}$ and $e=\dfrac{b-a}{2}$. Dropping perpendiculars from the top vertices, the leg is the hypotenuse of a right triangle with legs $h$ and $e$, and a diagonal is the hypotenuse of a right triangle with legs $h$ and $m$:
+\[
+h^2+e^2=c^2,\qquad h^2+m^2=17^2=289 .
+\]
+The perimeter gives $a+b+2c=50$, so $m=25-c$.
+
+Since $h$ and $m$ are positive integers with $h^2+m^2=289$, $\{h,m\}=\{8,15\}$.
+\begin{itemize}
+\item $m=8$: then $c=17$, $h=15$, $e^2=289-225=64$, $e=8=m$, so $a=m-e=0$, which is impossible.
+\item $m=15$: then $c=10$, $h=8$, $e^2=100-64=36$, $e=6$, so $a=9$ and $b=21$.
+\end{itemize}
+So the trapezoid has bases $9$ and $21$, legs $10$ and height $8$ (check: $9+21+20=50$ and $8^2+15^2=17^2$).
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(21,0),C=(15,8),D=(6,8);
+draw(A--B--C--D--cycle,linewidth(1));
+draw(A--C,dashed);draw(D--(6,0),dotted);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);
+label("$9$",(D+C)/2,N);label("$21$",(A+B)/2,S);
+label("$10$",(A+D)/2,W);label("$10$",(B+C)/2,E);
+label("$17$",(11,5.87),NW);label("$8$",(6,6.2),E);label("$6$",(3,0),S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Its area is $m h=15\cdot8=\boxed{120}$.

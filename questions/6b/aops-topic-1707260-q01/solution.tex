@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1707260_partition_function
+% Stable identity: aops-topic-1707260-q01
+\textbf{(a)} Write $N=a+b$ with $1\le a\le b$. Then $a$ can be any integer with $1\le a\le\dfrac {N}{2}$, and $b=N-a$ is determined, so $F(N,2)=\left\lfloor\dfrac {N}{2}\right\rfloor$.
+
+\textbf{(b)} Split the partitions of $N$ into $r$ parts by their smallest part. If the smallest part is $1$, deleting it gives a partition of $N-1$ into $r-1$ parts, and this is reversible: $F(N-1,r-1)$ partitions. If every part is at least $2$, subtracting $1$ from each part gives a partition of $N-r$ into $r$ parts, again reversibly: $F(N-r,r)$ partitions (zero if $N-r<r$).
+
+\textbf{(c)} By (a) and (b), for $N\ge4$,
+\[
+F(N,3)=F(N-1,2)+F(N-3,3)=\left\lfloor\dfrac{N-1}{2}\right\rfloor+F(N-3,3),
+\]
+and $F(1,3)=F(2,3)=0$, $F(3,3)=1$. Let $g(N)$ be the integer nearest to $\dfrac{N^2}{12}$. The value of $N^2\bmod12$ depends only on $N\bmod6$, and
+\[
+g(N)=\dfrac{N^2-c(N)}{12},\qquad c(N)=\begin{cases}0,&N\equiv0\\ 1,&N\equiv\pm1\\ 4,&N\equiv\pm2\\ -3,&N\equiv3\end{cases}\pmod 6,
+\]
+because $N^2-c(N)$ is then divisible by $12$ and $\left|\dfrac{c(N)}{12}\right|<\dfrac{1}{2}$. Then
+\[
+g(N)-g(N-3)=\dfrac{6N-9-c(N)+c(N-3)}{12}.
+\]
+Going through $N\bmod6=0,1,2,3,4,5$ (so $N-3\bmod6=3,4,5,0,1,2$), the value of $c(N-3)-c(N)$ is $-3,3,-3,3,-3,3$, which gives $g(N)-g(N-3)=\dfrac{N-2}{2}$ for even $N$ and $\dfrac{N-1}{2}$ for odd $N$, that is, $\left\lfloor\dfrac{N-1}{2}\right\rfloor$ in every case. Also $g(1)=g(2)=0$ and $g(3)=1$. So $g$ and $F(\cdot,3)$ satisfy the same recurrence with the same starting values, and by induction (in steps of $3$) $F(N,3)=g(N)$ for all $N\ge1$. $\blacksquare$
+
+For example $F(12,3)=12$ and $F(20,3)=\text{nearest integer to }\dfrac{400}{12}=33$.

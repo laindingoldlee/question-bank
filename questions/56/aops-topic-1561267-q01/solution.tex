@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1561267_quick_method_anyone
+% Stable identity: aops-topic-1561267-q01
+If $n=p_1^{e_1}\cdots p_k^{e_k}$, the number of divisors is $(e_1+1)\cdots(e_k+1)$. Since $12=12=6\cdot2=4\cdot3=3\cdot2\cdot2$, $n$ has one of the forms $p^{11}$, $p^5q$, $p^3q^2$, $p^2qr$ (distinct primes $p,q,r$).
+\begin{itemize}
+\item $p^{11}\ge2^{11}=2048$: none.
+\item $p^5q$: $p=2$ gives $32q<400$, so $q\in\{3,5,7,11\}$: $96,160,224,352$. For $p=3$, $243q\ge486$. That is $4$ numbers.
+\item $p^3q^2$: $8\cdot9=72$, $8\cdot25=200$, $8\cdot49=392$, $27\cdot4=108$; all others exceed $400$ ($27\cdot25$, $125\cdot4$, ...). That is $4$ numbers.
+\item $p^2qr$ with $q<r$:
+\begin{itemize}
+\item $p=2$: $qr<100$ with odd primes $q<r$: $3\cdot r$ for $r=5,\dots,31$ ($9$ values), $5\cdot r$ for $r=7,11,13,17,19$ ($5$), $7\cdot11$, $7\cdot13$ ($2$); $16$ numbers.
+\item $p=3$: $qr<\dfrac{400}{9}$, so $qr\le44$ with $q,r\ne3$: $2\cdot5,2\cdot7,2\cdot11,2\cdot13,2\cdot17,2\cdot19,5\cdot7$; $7$ numbers.
+\item $p=5$: $qr<16$: $2\cdot3$, $2\cdot7$; $2$ numbers.
+\item $p=7$: $qr<\dfrac{400}{49}$: $2\cdot3$; $1$ number.
+\item $p\ge11$: $121\cdot6>400$; none.
+\end{itemize}
+That is $26$ numbers.
+\end{itemize}
+The total is $4+4+26=\boxed{34}$.

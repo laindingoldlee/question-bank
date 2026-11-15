@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h1455701_inscribed_circle_in_quadrilaterals
+% Stable identity: aops-topic-1455701-q01
+\textbf{(a)} Let $I$ be the centre of the inscribed circle and let the quadrilateral be $ABCD$ with sides $a=AB$, $b=BC$, $c=CD$, $d=DA$. The radius to each point of tangency is perpendicular to that side, so $I$ is at distance $r$ from all four sides. Joining $I$ to the vertices cuts the quadrilateral into four triangles $IAB$, $IBC$, $ICD$, $IDA$ with bases $a,b,c,d$ and common height $r$:
+\[
+[ABCD]=\dfrac{1}{2}ra+\dfrac{1}{2}rb+\dfrac{1}{2}rc+\dfrac{1}{2}rd=r\cdot\dfrac{a+b+c+d}{2}=rs. \qquad\blacksquare
+\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real r=1.2; real[] th={75,165,250,325};
+pair T(int i){return r*dir(th[i%4]);}
+pair V(int i){real a=th[i%4], c=th[(i+1)%4]; if(c<a) c+=360; return r/Cos((c-a)/2)*dir((a+c)/2);}
+pair A=V(3),B=V(0),C=V(1),D=V(2);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(circle((0,0),r),blue);
+for(int i=0;i<4;++i){draw((0,0)--T(i),red+dashed); draw((0,0)--V(i),gray+dotted);}
+dot((0,0),blue);
+label("$I$",(0,0),1.3*dir(47),blue); label("$r$",0.55*T(1),N,red);
+label("$A$",A,E); label("$B$",B,N); label("$C$",C,W); label("$D$",D,S);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(b)} No: the formula needs an inscribed circle, and many quadrilaterals have none. A circle tangent to two parallel lines has diameter equal to the distance between them. In a $1\times2$ rectangle a circle tangent to all four sides would need diameter $1$ (between the long sides) and diameter $2$ (between the short sides), which is impossible. (In general a convex quadrilateral has an inscribed circle exactly when $AB+CD=BC+DA$.) The same argument as in (a) shows that $A=rs$ holds for every polygon with an inscribed circle, for example every triangle.

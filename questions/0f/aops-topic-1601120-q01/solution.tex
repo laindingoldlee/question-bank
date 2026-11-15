@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h1601120_math_problem_i_made
+% Stable identity: aops-topic-1601120-q01
+Write $x=10a+b$ and $y=10b+a$ with digits $a,b\ge1$ (both numbers have two digits). Then
+\[
+k=x^2-y^2=(x-y)(x+y)=9(a-b)\cdot11(a+b)=99(a-b)(a+b),
+\]
+and $k>0$ means $a>b$. Write $u=a-b$ and $v=a+b$; they have the same parity, $u<v$, and $b\ge1$, $a\le9$ give $v\le18-u$.
+
+Note $uv\le80$: the largest products allowed by the bounds are $8\cdot10$, $7\cdot11$ and $6\cdot12$.
+
+\textbf{Divisor count.} Write $k=3^2\cdot11\cdot m$ with $m=uv$. Since $k$ has exactly three prime factors, $m=3^i\,11^j\,p^l$ for one further prime $p\notin\{3,11\}$ and some $l\ge1$, and the number of divisors is
+\[
+(i+3)(j+2)(l+1)=24 .
+\]
+The factor $i+3\ge3$ must divide $24$, so $i+3\in\{3,4,6,8,12\}$, leaving $(j+2)(l+1)\in\{8,6,4,3,2\}$ with both factors at least $2$:
+\begin{itemize}
+\item $i=0$: $(j,l)=(0,3)$, $m=p^3$; or $(j,l)=(2,1)$, $m=121p>80$. Only $m=8$ is small enough, and $8=2\cdot4$ gives $(u,v)=(2,4)$, i.e.\ $a=3$, $b=1$, $k=792$.
+\item $i=1$: $(j,l)=(0,2)$, $m=3p^2\in\{12,75,\dots\}$; or $(j,l)=(1,1)$, $m=33p\ge66$. Here $12=2\cdot6$ gives $(u,v)=(2,6)$, i.e.\ $a=4$, $b=2$, $k=1188$. The product $75$ would need $(u,v)=(5,15)$ or $(3,25)$, which break $v\le18-u$; and $66=2\cdot33$ cannot be split into two factors of the same parity at most $17$.
+\item $i=3$: $(j,l)=(0,1)$, $m=27p\ge54$; $54=2\cdot27$ again has no split into two factors of the same parity within the bounds.
+\item $i=5$ or $i=9$: $(j+2)(l+1)\in\{3,2\}$ is impossible.
+\end{itemize}
+The possible values are $792$ (from $x=31$, $y=13$) and $1188$ (from $x=42$, $y=24$). Indeed $1188=2^2\cdot3^3\cdot11$ has $3\cdot4\cdot2=24$ divisors. The greatest is $\boxed{1188}$.

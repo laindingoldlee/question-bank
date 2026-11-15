@@ -1,0 +1,65 @@
+% Source: https://artofproblemsolving.com/community/c3h1919571_math_problems
+% Stable identity: aops-topic-1919571-q01
+A relation is a function when each $x$ in the domain is paired with exactly one $y$. (The sketches below are not to scale vertically.)
+
+(a) The graph is the segment of the line $y=3x-4$ from $(-3,-13)$ to $(4,8)$, endpoints included. Each $x$ gives one $y$, so it is a function. Since $y=3x-4$ increases with $x$, the range is $\boxed{-13\le y\le8}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm,4.5cm,IgnoreAspect);
+defaultpen(fontsize(10pt));
+draw((-4.5,0)--(5.5,0),Arrow(6)); draw((0,-14.5)--(0,10),Arrow(6));
+label("$x$",(5.5,0),E); label("$y$",(0,10),N);
+draw((-3,-13)--(4,8),blue+linewidth(1.2));
+dot((-3,-13),blue); dot((4,8),blue);
+label("$(-3,-13)$",(-3,-13),W); label("$(4,8)$",(4,8),E);
+label("$y=3x-4$",(2.9,2.5),E,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(b) The graph is the horizontal ray $y=3$ starting at $(0,3)$ (included) and going to the right. It is a function (a constant one), with range $\boxed{\{3\}}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm,3cm,IgnoreAspect);
+defaultpen(fontsize(10pt));
+draw((-1,0)--(6.5,0),Arrow(6)); draw((0,-1)--(0,4.5),Arrow(6));
+label("$x$",(6.5,0),E); label("$y$",(0,4.5),N);
+draw((0,3)--(6,3),blue+linewidth(1.2),Arrow(8));
+dot((0,3),blue); label("$(0,3)$",(0,3),NW); label("$y=3$",(3.5,3),N,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(c) The graph is the region to the right of the line $x=5$ (boundary included) and strictly above the line $y=x$ (dashed boundary, not included). It is not a function: for example $x=5$ is paired with both $y=6$ and $y=7$. Every point has $y>x\ge5$, so $y>5$; conversely every $y>5$ occurs, with $x=5$. The range is $\boxed{y>5}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm,4.5cm,IgnoreAspect);
+defaultpen(fontsize(10pt));
+draw((-1,0)--(11,0),Arrow(6)); draw((0,-1)--(0,13),Arrow(6));
+label("$x$",(11,0),E); label("$y$",(0,13),N);
+fill((5,5)--(10.5,10.5)--(10.5,12.5)--(5,12.5)--cycle,paleblue);
+draw((0,0)--(5,5),gray+dashed); draw((5,5)--(10.5,10.5),blue+dashed+linewidth(1));
+draw((5,5)--(5,12.5),blue+linewidth(1));
+dot((5,5),blue+6bp); dot((5,5),white+3.6bp);
+draw((5,0.3)--(5,-0.3)); label("$5$",(5,-0.3),S);
+label("$y=x$",(9,9),SE,blue); label("$x=5$",(5,8.5),W,blue);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+(d) The graph is the part of the vertical strip $0\le x\le2$ strictly below the line $y=x+4$ (dashed top edge, not included), extending downward without end. It is not a function: $x=0$ is paired with $y=0$ and $y=1$, for example. Every point has $y<x+4\le6$, and every $y<6$ occurs (with $x=2$), so the range is $\boxed{y<6}$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm,4.5cm,IgnoreAspect);
+defaultpen(fontsize(10pt));
+draw((-1,0)--(4,0),Arrow(6)); draw((0,-3.5)--(0,7.5),Arrow(6));
+label("$x$",(4,0),E); label("$y$",(0,7.5),N);
+fill((0,-3)--(2,-3)--(2,6)--(0,4)--cycle,paleblue);
+draw((0,4)--(2,6),blue+dashed+linewidth(1));
+draw((0,-3)--(0,4),blue+linewidth(1)); draw((2,-3)--(2,6),blue+linewidth(1));
+draw((1,-1.8)--(1,-3.3),blue,Arrow(6));
+draw((-1,3)--(0,4),gray+dashed); draw((2,6)--(3.2,7.2),gray+dashed);
+label("$y=x+4$",(3.2,7.2),E,blue); label("$2$",(2,0),SE); label("$(2,6)$",(2,6),E); label("$(0,4)$",(0,4),NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}

@@ -1,0 +1,15 @@
+% Source: https://artofproblemsolving.com/community/c3h2613368_my_problems_from_the_dmc_10admc_11
+% Stable identity: aops-topic-2613368-q01
+The vertices of a regular hexagon lie on a circle about the centre $O$, at angles $60^\circ$ apart. A rotation about $O$ maps the hexagon to itself exactly when it sends vertices to vertices, i.e. when the angle is a multiple of $60^\circ$. The multiples of $60$ from $1$ to $2020$ are $60,120,\dots,1980=33\cdot60$, so there are $\boxed{\textbf{(E) }33}$ values.
+
+\begin{asy}
+usepackage("amsmath");
+size(3.2cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0); path hx=dir(0)--dir(60)--dir(120)--dir(180)--dir(240)--dir(300)--cycle;
+draw(hx,linewidth(0.8));
+for(int i=0;i<6;++i) draw(O--dir(60*i),gray(0.6));
+dot(O); label("$O$",O,SW,fontsize(9pt));
+draw(arc(O,0.55,0,-60),Arrow(TeXHead)); label("$60^\circ$",0.55*dir(-30),E,fontsize(8pt));
+dot(dir(0)); dot(dir(-60)); label("$P$",dir(0),E); label("$P'$",dir(-60),SE);
+\end{asy}

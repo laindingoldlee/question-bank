@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2900244_2022_jmpsc_d1r1_problem_15
+% Stable identity: aops-topic-2900244-q01
+The long part $OB$ sweeps a $270^\circ$ sector of radius $16$, of area $\dfrac34\cdot256\pi=192\pi$. The short part $OA$ points the opposite way and sweeps a $270^\circ$ sector of radius $4$ starting $180^\circ$ further round.
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+draw(arc((0,0),4,0,270),gray);fill((0,0)--arc((0,0),4,0,270)--cycle,lightgray);fill((0,0)--arc((0,0),1,270,360)--cycle,gray);draw((0,0)--(4,0));draw((0,0)--(-1,0));dot((0,0));label("$O$",(0,0),NE);label("$16$",(2,0),S);label("$4$",(-0.5,0),S);
+\end{asy}
+
+If $OB$ sweeps angles $0^\circ$ to $270^\circ$, then $OA$ sweeps $180^\circ$ to $450^\circ$. Only the part from $270^\circ$ to $360^\circ$ lies outside the large sector: a quarter disc of area $4\pi$. The total is $196\pi$, so $A=\boxed{196}$.

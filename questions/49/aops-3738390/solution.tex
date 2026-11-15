@@ -1,0 +1,6 @@
+In one diagonal direction, lengths are $1,2,\ldots,7,8,7,\ldots,2,1$. A diagonal containing $j$ squares contributes $\binom j3$ triples. Thus one direction contributes $2\sum_{j=3}^7\binom j3+\binom83=2\binom84+56=196$. Here the sum identity follows by counting four-element subsets according to their largest element. The other diagonal direction contributes equally, and no triple of distinct points lies on both a slope-1 and a slope-minus-1 line. The answer is $\boxed{392}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+for(int i=0;i<=8;++i){draw((i,0)--(i,8),gray);draw((0,i)--(8,i),gray);}draw((.5,.5)--(7.5,7.5),dashed);for(int i:new int[]{1,3,6})dot((i+.5,i+.5));label("one diagonal direction",(4,-.5),(0,-1));
+\end{asy}
+

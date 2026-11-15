@@ -1,0 +1,41 @@
+% Source: https://artofproblemsolving.com/community/c3h1411254_formula_for_cones
+% Stable identity: aops-topic-1411254-q01
+Let $V$ be the apex. Every vertex of the $n$-gon is on the base circle, so every lateral edge of the pyramid is a generator of the cone and has length $\ell$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real a=4,bb=1.6,h=6; pair V=(0,h);
+real y0=bb^2/h, x0=a*sqrt(1-bb^2/h^2);
+real th=aSin(bb/h);
+draw(scale(a,bb)*arc((0,0),1,180-th,360+th),linewidth(0.9));
+draw(scale(a,bb)*arc((0,0),1,th,180-th),dashed);
+draw((-x0,y0)--V--(x0,y0),linewidth(0.9));
+pair[] P; for(int k=0;k<6;++k){real t=-90+60*k; P.push((a*Cos(t),bb*Sin(t)));}
+// P[0] front, P[1],P[5] front sides, P[2],P[4] back sides (silhouette), P[3] back
+for(int k=0;k<6;++k){pair A=P[k],B=P[(k+1)%6]; draw(A--B,(k==2||k==3)?blue+dashed:blue);}
+for(int k=0;k<6;++k){draw(P[k]--V,(k==3)?blue+dashed:blue);}
+pair M=(P[0]+P[1])/2;
+draw(V--M,red+linewidth(0.8));
+draw((0,0)--(-a,0),gray+dashed); label("$r$",(-a/2,0),N,gray);
+dot(V); label("$V$",V,N);
+label("$\ell$",(V+(x0,y0))/2,NE);
+label("$h_n$",V+0.5*(M-V),E,red);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(a)} A side of a regular $n$-gon inscribed in a circle of radius $r$ subtends the angle $\dfrac{2\pi}{n}$ at the centre, so its length is $s=2r\sin\dfrac{\pi}{n}$. Each lateral face is an isosceles triangle with sides $\ell,\ell,s$; its height from $V$ (the slant height of the face) is
+\[
+h_n=\sqrt{\ell^2-\left(\dfrac {s}{2}\right)^2}=\sqrt{\ell^2-r^2\sin^2\dfrac{\pi}{n}} .
+\]
+So the lateral area is
+\[
+A_n=n\cdot\dfrac{1}{2}\,s\,h_n=nr\sin\dfrac{\pi}{n}\sqrt{\ell^2-r^2\sin^2\dfrac{\pi}{n}} .
+\]
+
+\textbf{(b)} As $n\to\infty$, $\dfrac{\pi}{n}\to0$, so $n\sin\dfrac{\pi}{n}=\pi\cdot\dfrac{\sin\left(\dfrac{\pi}{n}\right)}{\dfrac{\pi}{n}}\to\pi$ and $\sin\dfrac{\pi}{n}\to0$. Hence
+\[
+A_n\to\pi r\sqrt{\ell^2-0}=\boxed{\pi r\ell}.
+\]
+The formula $A_n=\dfrac{1}{2}\,(ns)\,h_n$ uses the slant height $h_n$ of the \emph{faces}, which is smaller than the cone's slant height $\ell$ (the lateral edges, not the face heights, have length $\ell$). Replacing the perimeter $ns$ by $2\pi r$ and $h_n$ by $\ell$ is justified only because both converge: $ns\to2\pi r$ and $h_n\to\ell$. So the pyramid formula does lead to the cone formula, but the argument needs this limit step; a cleaner direct proof unrolls the lateral surface into a sector of radius $\ell$ and arc $2\pi r$, whose area is $\dfrac{1}{2}\cdot2\pi r\cdot\ell=\pi r\ell$.

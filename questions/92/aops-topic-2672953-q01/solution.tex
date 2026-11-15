@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2672953_mathcounts_school_handbook
+% Stable identity: aops-topic-2672953-q01
+$OX=OZ=1$ and $XZ=\sqrt2$, so $OX^2+OZ^2=XZ^2$ and $\angle XOZ=90^\circ$. The inscribed angle $\angle XYZ$ subtends the minor arc $XZ$ of $90^\circ$, so $\angle XYZ=\boxed{45^\circ}$. (If $Y$ were on the minor arc, the angle would be $135^\circ$.)
+
+\begin{asy}
+usepackage("amsmath");
+size(2.5cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0),X=dir(200),Z=dir(290),Y=dir(65);
+draw(unitcircle,linewidth(0.7));draw(X--Y--Z--cycle,linewidth(0.8));draw(O--X,dashed);draw(O--Z,dashed);dot(O);
+draw(O+0.15*dir(200)--O+0.15*dir(200)+0.15*dir(290)--O+0.15*dir(290));
+label("$X$",X,W);label("$Y$",Y,NE);label("$Z$",Z,S);label("$O$",O,NE);label("$1$",(O+X)/2,N,fontsize(7pt));label("$1$",(O+Z)/2,E,fontsize(7pt));
+\end{asy}

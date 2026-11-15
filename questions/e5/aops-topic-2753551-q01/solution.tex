@@ -1,0 +1,22 @@
+% Source: https://artofproblemsolving.com/community/c3h2753551_help_please
+% Stable identity: aops-topic-2753551-q01
+Let the rectangle be $A(0,0)$, $B(4,0)$, $C(4,3)$, $D(0,3)$, with the circle through $A$ and $C$. Its centre can be any point of the perpendicular bisector $\ell$ of $AC$, the line through $O\left(2,\dfrac32\right)$ perpendicular to $AC$:
+\[\ell:\ 4x+3y=\dfrac{25}2.\]
+The distance from the centre to $A$ or $C$ is the radius, which is at least $\dfrac{AC}2=\dfrac52$. The distance to $B$ is at least the distance from $B$ to $\ell$:
+\[\dfrac{\left|16-\dfrac{25}2\right|}{5}=\dfrac{7}{10},\]
+attained when the centre is the foot $X$ of the perpendicular from $B$ to $\ell$. By symmetry the same holds for $D$.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0),C=(4,3),D=(0,3),O=(2,1.5);
+pair u=(-3,4)/5; pair Fb=O+dot(B-O,u)*u;
+draw(A--B--C--D--cycle,linewidth(0.8));draw(A--C,gray);
+draw((O-2.7*u)--(O+2.1*u),dashed);
+draw(B--Fb);dot(Fb);dot(O);
+draw(circle(Fb,abs(A-Fb)),gray+dotted);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,NE);label("$D$",D,NW);label("$O$",O,N,fontsize(8pt));label("$X$",Fb,W);label("$\ell$",O+2.1*u,N,fontsize(8pt));
+\end{asy}
+
+So the least possible distance is $\boxed{\dfrac{7}{10}}$ inch.

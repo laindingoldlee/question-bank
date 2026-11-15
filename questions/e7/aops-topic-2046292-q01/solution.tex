@@ -1,0 +1,31 @@
+% Source: https://artofproblemsolving.com/community/c3h2046292_a_fun_problem
+% Stable identity: aops-topic-2046292-q01
+\emph{A value that works.} Since
+\[
+(2^{40}+2^{19})^2=2^{80}+2\cdot2^{40}\cdot2^{19}+2^{38}=2^{80}+2^{60}+2^{38},
+\]
+\(n=38\) works.
+
+\emph{Nothing smaller works.} Suppose \(n<60\) and \(2^{60}+2^{80}+2^n\) is a square. Write it as \(2^n M\) with
+\[
+M=1+2^{a}+2^{a+20},\qquad a=60-n\ge1,
+\]
+which is odd. Then \(n\) must be even and \(M\) must be an odd square, say \(M=x^2\) with \(x\) odd, \(x>1\). Then
+\[
+(x-1)(x+1)=2^a(1+2^{20}).
+\]
+Both factors are even, so the left side is divisible by \(8\) and \(a\ge3\). Put \(x-1=2u\), \(x+1=2(u+1)\); then
+\[
+u(u+1)=2^{a-2}\,(2^{20}+1).
+\]
+Of the consecutive integers \(u,u+1\), exactly one is odd, and since they are coprime, the factor \(2^{a-2}\) lies entirely in the even one. Thus the two numbers are \(2^{a-2}d\) and \(e\) with \(de=2^{20}+1=17\cdot61681\) (both prime), so \((d,e)\) is one of
+\[
+(1,1048577),\ (17,61681),\ (61681,17),\ (1048577,1).
+\]
+They differ by \(1\):
+\begin{itemize}
+\item \(d=1\): \(2^{a-2}=1048577\pm1\); only \(1048576=2^{20}\) is a power of \(2\), giving \(a=22\), \(n=38\).
+\item \(d=17\): \(17\cdot2^{a-2}=61681\pm1\); neither \(61680\) nor \(61682\) is divisible by \(17\).
+\item \(d=61681\) or \(d=1048577\): then \(2^{a-2}d\ge d>e+1\), impossible.
+\end{itemize}
+So among \(n<60\) the only solution is \(n=38\). Hence the least \(n\) is \(\boxed{38}\). (Other solutions, such as \(n=71\) and \(n=98\), are larger.)

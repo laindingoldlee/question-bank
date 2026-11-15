@@ -1,0 +1,9 @@
+Scale so $B=(0,0),D=(1,0),C=(2,0)$, with $A$ above the line. The conditions give $A$ on $y = \dfrac{x}{\sqrt{3}}$ and on $y=x-1$. Thus $A = (\dfrac{3+\sqrt3}{2} , \dfrac{1+\sqrt3}{2})$. The slope of $CA$ is $2+\sqrt3=\tan75^\circ$, so the interior angle at $C$ is $105^\circ$. Consequently $\angle BAC=180^\circ-30^\circ-105^\circ=\boxed{45^\circ}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair[] p={((3+sqrt(3))/2,(1+sqrt(3))/2),(0,0),(2,0)}; pair labelCentre=(0,0);for(pair labelVertex:p)labelCentre+=labelVertex;labelCentre/=p.length; draw(p[0]--p[1]--p[2]--cycle); dot(p[0]);label("$A$",p[0],unit(p[0]-labelCentre));dot(p[1]);label("$B$",p[1],unit(p[1]-labelCentre));dot(p[2]);label("$C$",p[2],unit(p[2]-labelCentre));pair D=(1,0);draw(p[0]--D);label("$D$",D,(0,-1));
+\end{asy}
+

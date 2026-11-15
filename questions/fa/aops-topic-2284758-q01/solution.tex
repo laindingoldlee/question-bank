@@ -1,0 +1,53 @@
+% Source: https://artofproblemsolving.com/community/c3h2284758_bisector_of_diagonals_of_quad_sum_of_angles_180
+% Stable identity: aops-topic-2284758-q01
+Since $Q$ lies on both perpendicular bisectors, $QA=QC=r$ and $QB=QD=s$, with $r,s>0$ (if $Q=A$ then $A=C$). Put $Q$ at the origin and write $\vec a,\vec b,\vec c,\vec d$ for the position vectors of $A,B,C,D$.
+
+\textbf{A criterion.} For angles $\varphi,\psi$ between $0^\circ$ and $180^\circ$, $\varphi+\psi=180^\circ$ if and only if $\cos\varphi=-\cos\psi=\cos(180^\circ-\psi)$, because cosine is one-to-one on $[0^\circ,180^\circ]$. As $\cos\angle AQB=\dfrac{\vec a\cdot\vec b}{rs}$ and $\cos\angle CQD=\dfrac{\vec c\cdot\vec d}{rs}$,
+\[\angle AQB+\angle CQD=180^\circ\iff\vec a\cdot\vec b+\vec c\cdot\vec d=0. \tag{1}\]
+
+\textbf{(a)} Expanding gives the identity
+\[2(\vec a\cdot\vec b+\vec c\cdot\vec d)=(\vec a+\vec c)\cdot(\vec b+\vec d)+(\vec a-\vec c)\cdot(\vec b-\vec d). \tag{2}\]
+Because $|\vec a|=|\vec c|$, we have $(\vec a+\vec c)\cdot(\vec a-\vec c)=|\vec a|^2-|\vec c|^2=0$; similarly $(\vec b+\vec d)\cdot(\vec b-\vec d)=0$. Now suppose $AC\perp BD$, that is, $(\vec a-\vec c)\cdot(\vec b-\vec d)=0$. In the plane, the vectors $\vec a+\vec c$ and $\vec b-\vec d$ are both perpendicular to the nonzero vector $\vec a-\vec c$, so $\vec a+\vec c=\lambda(\vec b-\vec d)$ for some real $\lambda$. Then
+\[(\vec a+\vec c)\cdot(\vec b+\vec d)=\lambda(\vec b-\vec d)\cdot(\vec b+\vec d)=0,\]
+so both terms on the right of (2) vanish, and by (1), $\angle AQB+\angle CQD=180^\circ$.
+
+\textbf{(b)} Now let $Q$ be inside $ABCD$. The segments $QA,QB,QC,QD$ cut the quadrilateral into the triangles $QAB,QBC,QCD,QDA$, so the rays $QA,QB,QC,QD$ occur in this order around $Q$ (say counterclockwise), and the angles $x=\angle AQB$, $y=\angle BQC$, $z=\angle CQD$, $w=\angle DQA$ between consecutive rays satisfy $x+y+z+w=360^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+real r=3, s=2.4; pair Q=(0,0);
+pair A=r*dir(200), B=s*dir(245), C=r*dir(330), D=s*dir(105);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,gray); draw(B--D,gray);
+draw(Q--A,blue); draw(Q--B,blue); draw(Q--C,blue); draw(Q--D,blue);
+draw(1.15*r*dir(265)--1.15*r*dir(85),red+dashed);
+draw(1.15*r*dir(355)--1.15*r*dir(175),orange+dashed);
+dot(Q); label("$Q$",Q,dir(60));
+label("$A$",A,W); label("$B$",B,SW); label("$C$",C,E); label("$D$",D,N);
+label("$x$",0.75*dir(222.5),fontsize(9pt)); label("$y$",0.75*dir(287.5),fontsize(9pt));
+label("$z$",0.75*dir(37.5),fontsize(9pt)); label("$w$",0.75*dir(152.5),fontsize(9pt));
+label("$\ell_1$",1.15*r*dir(85),E,red); label("$\ell_2$",1.15*r*dir(355),N,orange);
+\end{asy}
+
+Triangle $QAC$ is isosceles, and its axis of symmetry is the perpendicular bisector $\ell_1$ of $AC$. The reflection in $\ell_1$ swaps the rays $QA$ and $QC$, so $\ell_1$ is the line through $Q$ in the direction obtained by turning ray $QA$ counterclockwise by $\dfrac{x+y}{2}$. In the same way the perpendicular bisector $\ell_2$ of $BD$ is obtained by turning ray $QB$ by $\dfrac{y+z}{2}$, that is, ray $QA$ by $x+\dfrac{y+z}{2}$. So the angle from $\ell_1$ to $\ell_2$ is
+\[x+\dfrac{y+z}{2}-\dfrac{x+y}{2}=\dfrac{x+z}{2},\qquad 0^\circ<\dfrac{x+z}{2}<180^\circ.\]
+Since $AC\perp\ell_1$ and $BD\perp\ell_2$, the diagonals are perpendicular exactly when $\ell_1\perp\ell_2$, that is, when $\dfrac{x+z}{2}=90^\circ$, i.e. $x+z=180^\circ$. In particular, $\angle AQB+\angle CQD=180^\circ$ implies $AC\perp BD$. (This argument proves both directions when $Q$ is inside.)
+
+\textbf{(c)} All four points are at distance $5$ from the origin, so the origin lies on both perpendicular bisectors; these are different lines (they are perpendicular to $AC$ and $BD$, which are not parallel), so $Q=(0,0)$. The points lie on the circle of radius $5$ in the order $D$ (at $90^\circ$), $A$ ($180^\circ$), $B$ (about $216.9^\circ$), $C$ (about $233.1^\circ$), so $ABCD$ is a convex quadrilateral inscribed in this circle.
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair Q=(0,0), A=(-5,0), B=(-4,-3), C=(-3,-4), D=(0,5);
+draw(circle(Q,5),gray+dashed);
+draw(A--B--C--D--cycle,linewidth(0.9));
+draw(A--C,gray); draw(B--D,gray);
+draw(Q--A,blue); draw(Q--B,blue); draw(Q--C,red); draw(Q--D,red);
+dot(Q); label("$Q$",Q,E);
+label("$A$",A,W); label("$B$",B,SW); label("$C$",C,S); label("$D$",D,N);
+\end{asy}
+
+Now $\vec a\cdot\vec b=20$ and $\vec c\cdot\vec d=-20$, so $\vec a\cdot\vec b+\vec c\cdot\vec d=0$ and, by (1), $\angle AQB+\angle CQD=180^\circ$ (indeed $\cos\angle AQB=\dfrac{4}{5}$ and $\cos\angle CQD=-\dfrac{4}{5}$). But $\overrightarrow{AC}=(2,-4)$ and $\overrightarrow{BD}=(4,8)$ have dot product $8-32=-24\ne0$, so $AC$ is not perpendicular to $BD$. Here $Q$ is outside $ABCD$: $Q$ and $B$ lie on opposite sides of the line $CD$, $y=3x+5$ (at $Q$, $y<3x+5$; at $B$, $y>3x+5$). The turn from $QA$ to $QB$ and the turn from $QC$ to $QD$ go in opposite directions, which is what breaks the argument of (b).

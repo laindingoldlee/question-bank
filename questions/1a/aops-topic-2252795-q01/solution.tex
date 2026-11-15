@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2252795_how_can_an_infinite_series_have_a_sum
+% Stable identity: aops-topic-2252795-q01
+\textbf{(a)} Multiply $S_n$ by $r$ and subtract:
+\[S_n-rS_n=(a+ar+\cdots+ar^{n-1})-(ar+ar^2+\cdots+ar^n)=a-ar^n,\]
+so $S_n=\dfrac{a(1-r^n)}{1-r}$ for $r\ne1$.
+
+\textbf{(b)} By (a),
+\[\dfrac{a}{1-r}-S_n=\dfrac{a}{1-r}-\dfrac{a-ar^n}{1-r}=\boxed{\dfrac{ar^n}{1-r}}.\]
+When $|r|<1$, the powers $|r|^n$ become smaller than any positive number as $n$ grows (each step multiplies by the fixed factor $|r|<1$), so the difference $\left|\dfrac{a}{1-r}-S_n\right|=\dfrac{|a|\,|r|^n}{|1-r|}$ becomes as small as we like. An infinite series has a sum when its partial sums approach a single number; here that number is $\dfrac{a}{1-r}$. No one adds infinitely many numbers one by one: the ``sum'' is the limit of the finite sums.
+
+\textbf{(c)} Here $a=r=\dfrac{1}{2}$, so the sum is $\dfrac{\dfrac{1}{2}}{1-\dfrac{1}{2}}=\boxed{1}$, and $1-S_n=\dfrac{1}{2^n}$ by (b). We need $\dfrac{1}{2^n}\le0.001$, i.e.\ $2^n\ge1000$; since $2^9=512$ and $2^{10}=1024$, the least such $n$ is $\boxed{10}$.
+
+\textbf{(d)} For $r=1$ the partial sums $1,2,3,\dots$ grow without bound. For $r=-1$ they are $1,0,1,0,\dots$, which keep jumping between two values and approach no single number. In neither case do the partial sums approach a number, so there is no sum. (The formula $\dfrac{a}{1-r}$ needs $|r|<1$.)

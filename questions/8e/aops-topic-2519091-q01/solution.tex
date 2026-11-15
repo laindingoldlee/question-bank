@@ -1,0 +1,24 @@
+% Source: https://artofproblemsolving.com/community/c3h2519091_isosceles_triangle_proof_help_needed
+% Stable identity: aops-topic-2519091-q01
+\textbf{The proof is correct.} In detail:
+\begin{itemize}
+\item The bisector of $\angle BAC$ is a ray inside the angle, so it meets the opposite side $BC$ at a point $Z$ between $B$ and $C$.
+\item Triangles $ABZ$ and $ACZ$, with the correspondence $A\leftrightarrow A$, $B\leftrightarrow C$, $Z\leftrightarrow Z$, have $AB=AC$ (given), $\angle BAZ=\angle CAZ$ (the bisector), and the common side $AZ=AZ$. The equal angles lie between the pairs of equal sides, so SAS applies and $\triangle ABZ\cong\triangle ACZ$.
+\item Corresponding angles are equal: $\angle ABZ=\angle ACZ$. Since $Z$ lies on segment $BC$, $\angle ABZ=\angle ABC$ and $\angle ACZ=\angle ACB$.
+\end{itemize}
+
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,3), B=(-1.6,0), C=(1.6,0), Z=(0,0);
+draw(A--B--C--cycle,linewidth(0.8)); draw(A--Z,blue);
+draw(arc(A,0.55,degrees(B-A),270),red); draw(arc(A,0.55,270,degrees(C-A)),red);
+void tick(pair P,pair Q){ pair m=(P+Q)/2, v=rotate(90)*unit(Q-P); draw(m-0.1*v--m+0.1*v,linewidth(0.7)); }
+tick(A,B); tick(A,C);
+label("$A$",A,N); label("$B$",B,SW); label("$C$",C,SE); label("$Z$",Z,S);
+\end{asy}
+
+Hence $\angle ABC=\angle ACB$. $\blacksquare$
+
+The argument differs from other textbook proofs (for example, applying SAS to triangle $ABC$ and its mirror image $ACB$, or using the midpoint of $BC$ with SSS), but it is equally valid; the only extra fact it uses is that the angle bisector from $A$ meets the segment $BC$.

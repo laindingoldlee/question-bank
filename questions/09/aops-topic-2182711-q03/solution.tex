@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2182711_hard_problems_plz_help
+% Stable identity: aops-topic-2182711-q03
+Since $3^2+4^2=5^2$, the angle at $A$ is a right angle. The point $G$, where two angle bisectors meet, is the incentre, and the inradius of a right triangle is $r=\dfrac{3+4-5}{2}=1$; so $G$ is at distance $1$ from both legs $AB$ and $AC$.
+
+By the angle bisector theorem,
+\[\dfrac{AE}{EC}=\dfrac{AB}{BC}=\dfrac{3}{5}\ \Longrightarrow\ AE=\dfrac{3}{8}\cdot4=\dfrac{3}{2},\qquad\dfrac{AF}{FB}=\dfrac{AC}{BC}=\dfrac{4}{5}\ \Longrightarrow\ AF=\dfrac{4}{9}\cdot3=\dfrac{4}{3} .\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0), B=(3,0), C=(0,4), Ep=(0,1.5), Fp=(4/3,0), G=(1,1);
+fill(A--Fp--G--Ep--cycle,paleblue);
+draw(A--B--C--cycle,linewidth(1));
+draw(B--Ep,blue); draw(C--Fp,blue);
+draw(circle(G,1),gray+dashed);
+draw(G--(1,0),red+dotted); draw(G--(0,1),red+dotted);
+draw((0.2,0)--(0.2,0.2)--(0,0.2));
+dot(A); dot(B); dot(C); dot(Ep); dot(Fp); dot(G);
+label("$A$",A,SW); label("$B$",B,SE); label("$C$",C,N); label("$E$",Ep,W); label("$F$",Fp,S); label("$G$",G,NE);
+label("$\dfrac{3}{2}$",(0,0.75),W,fontsize(8pt)); label("$\dfrac{4}{3}$",(2/3,0),S,fontsize(8pt));
+label("$5$",(B+C)/2,NE,fontsize(9pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Split the quadrilateral along $AG$. Triangle $AFG$ has base $AF=\dfrac{4}{3}$ on $AB$ and height $1$; triangle $AEG$ has base $AE=\dfrac{3}{2}$ on $AC$ and height $1$. Hence
+\[[AEGF]=\dfrac{1}{2}\cdot\dfrac{4}{3}\cdot1+\dfrac{1}{2}\cdot\dfrac{3}{2}\cdot1=\dfrac{2}{3}+\dfrac{3}{4}=\boxed{\dfrac{17}{12}}.\]

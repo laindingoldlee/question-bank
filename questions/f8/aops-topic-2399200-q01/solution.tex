@@ -1,0 +1,9 @@
+% Source: https://artofproblemsolving.com/community/c3h2399200_pascals_triangle_application
+% Stable identity: aops-topic-2399200-q01
+\textbf{Row 25 works:} $\dbinom{25}{2}=\dfrac{25\cdot24}{2}=300=3\cdot100$.
+
+\textbf{No earlier row works.} We show that for $n\le24$ no entry is divisible by $25$. For $m\le24$ the multiples of $5$ up to $m$ are $5,10,15,20$, each with only one factor $5$, so the exponent of $5$ in $m!$ is $\left\lfloor\dfrac m5\right\rfloor$. Hence the exponent of $5$ in $\dbinom nk=\dfrac{n!}{k!\,(n-k)!}$ is
+\[\left\lfloor\dfrac n5\right\rfloor-\left\lfloor\dfrac k5\right\rfloor-\left\lfloor\dfrac{n-k}{5}\right\rfloor\le1,\]
+because $\lfloor x+y\rfloor\le\lfloor x\rfloor+\lfloor y\rfloor+1$ for all real $x,y$. So $25\nmid\dbinom nk$, and hence $100\nmid\dbinom nk$, for all $n\le24$.
+
+The first such row is row $\boxed{25}$.

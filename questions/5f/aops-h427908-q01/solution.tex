@@ -1,0 +1,13 @@
+Let the center be $c$. Add the sums on the middle row, middle column, and both main diagonals. Each noncentral entry is counted once, and the center is counted four times. The result is
+\[
+1+2+\cdots+9+3c=45+3c.
+\]
+It is divisible by $9$, so $3\mid c$.
+For part (b), the array below has row sums $9,18,18$, column sums $18,18,9$, and diagonal sums $9,18$, all divisible by $9$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+string[][] a={{"1", "5", "3"}, {"8", "6", "4"}, {"9", "7", "2"}};
+for(int r=0;r<a.length;++r)for(int c=0;c<a[r].length;++c){draw(box((c,-r),(c+1,1-r)));label(a[r][c],(c+.5,.5-r));}
+\end{asy}

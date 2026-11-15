@@ -1,0 +1,20 @@
+% Source: https://artofproblemsolving.com/community/c3h1308821_geometry
+% Stable identity: aops-topic-1308821-q01
+Since $\angle C=180^\circ-20^\circ-80^\circ=80^\circ=\angle B$, the triangle is isosceles with $AB=AC$. Set $AB=AC=1$. Then $BC=2\sin10^\circ$ (drop the altitude from $A$), so $AD=2\sin10^\circ$.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0); real L=4; pair B=L*dir(-10), C=L*dir(10);
+real bc=abs(B-C); pair D=bc*dir(10);
+draw(A--B--C--cycle,linewidth(0.9)); draw(B--D,blue);
+label("$A$",A,W); label("$B$",B,SE); label("$C$",C,NE); label("$D$",D,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangle $ABD$ is determined (SAS) by $AB=1$, $\angle A=20^\circ$, $AD=2\sin10^\circ$. Consider a triangle with angles $20^\circ$ at $A$, $10^\circ$ at $B$ and $150^\circ$ at $D$, and $AB=1$. By the law of sines its side $AD$ is
+\[
+AD=\dfrac{AB\sin10^\circ}{\sin150^\circ}=\dfrac{\sin10^\circ}{\dfrac{1}{2}}=2\sin10^\circ .
+\]
+So it has the same two sides and included angle as triangle $ABD$; by SAS they are congruent, and $\angle ABD=10^\circ$. Hence $\angle DBC=80^\circ-10^\circ=70^\circ$. $\blacksquare$

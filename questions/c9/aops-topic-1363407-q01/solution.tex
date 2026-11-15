@@ -1,0 +1,19 @@
+% Source: https://artofproblemsolving.com/community/c3h1363407_geometry_finding_area_of_a_ngon
+% Stable identity: aops-topic-1363407-q01
+Joining the centre to the $12$ vertices splits the dodecagon into $12$ congruent isosceles triangles with two sides $14$ and apex angle $\dfrac{360^\circ}{12}=30^\circ$. Each has area $\dfrac{1}{2}\cdot14\cdot14\cdot\sin30^\circ=49$, so the dodecagon has area $12\cdot49=588\text{ cm}^2$ (in general $3R^2$).
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+pair[] V; for(int k=0;k<12;++k) V.push(14*dir(15+30*k));
+path dd=V[0]--V[1]--V[2]--V[3]--V[4]--V[5]--V[6]--V[7]--V[8]--V[9]--V[10]--V[11]--cycle;
+fill(dd,rgb(0.85,0.75,0.95)); fill(circle((0,0),9),rgb(0.75,0.92,0.75));
+draw(dd,linewidth(0.9)); draw(circle((0,0),9),deepgreen);
+draw((0,0)--V[0],dashed); draw((0,0)--9*dir(195),dashed);
+dot((0,0));
+label("$14$",V[0]*0.5,NW); label("$9$",9*dir(195)*0.5,N);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The green circle has area $81\pi\approx254.5\text{ cm}^2$, and the purple region has area $588-81\pi\approx333.5\text{ cm}^2$. Since $588-81\pi>81\pi$ (equivalently $162\pi<588$, as $162\pi<162\cdot3.15=510.3$), the $\boxed{\text{purple region}}$ has more area.

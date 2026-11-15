@@ -1,0 +1,16 @@
+% Source: https://artofproblemsolving.com/community/c3h2412695_john0512s_proof_series_2
+% Stable identity: aops-topic-2412695-q01
+\textbf{Lemma.} In a single round, the player who flips first wins with probability $\dfrac13$.
+
+\emph{Proof.} The first player wins exactly when the first heads appears on an even-numbered flip: on flip $2$ (tails, heads), on flip $4$ (three tails, then heads), and so on. Hence
+\[P(\text{first player wins})=\dfrac14+\dfrac1{16}+\dfrac1{64}+\cdots=\dfrac{\dfrac14}{1-\dfrac14}=\dfrac13.\]
+(A heads certainly appears eventually, so the round ends with probability $1$.)
+
+\textbf{Recurrence.} Let $p_n$ be the probability that Amy wins round $n$, which is the probability that she wins the $n$-round game. By the lemma, $p_1=\dfrac13$. If Amy wins round $n$, then Mary flips first in round $n+1$ and Amy wins it with probability $\dfrac23$; if Amy loses round $n$, she flips first and wins round $n+1$ with probability $\dfrac13$. So
+\[p_{n+1}=\dfrac23p_n+\dfrac13(1-p_n)=\dfrac13p_n+\dfrac13.\]
+
+\textbf{Induction.} The formula holds for $n=1$: $\dfrac12-\dfrac16=\dfrac13$. If $p_n=\dfrac12-\dfrac{1}{2\cdot3^n}$, then
+\[p_{n+1}=\dfrac13\left(\dfrac12-\dfrac1{2\cdot3^n}\right)+\dfrac13=\dfrac12-\dfrac1{2\cdot3^{n+1}}.\]
+Hence $p_n=\dfrac12-\dfrac{1}{2\cdot3^n}$ for every $n\ge1$. $\blacksquare$
+
+(So Amy's disadvantage from flipping first in round $1$ shrinks by a factor of $3$ each round, and $p_n\to\dfrac12$.)

@@ -1,0 +1,13 @@
+% Source: https://artofproblemsolving.com/community/c3h2968357_pretty_hard_but_nice_proofing
+% Stable identity: aops-topic-2968357-q01
+Let $a=\cos^2\theta$ and $b=\sin^2\theta$, so $a,b\in[0,1]$ and $a+b=1$.
+
+\emph{Upper bound.} $a^n\le a$ and $b^n\le b$ since $0\le a,b\le1$, so $a^n+b^n\le a+b=1$.
+
+\emph{Lower bound.} The function $t\mapsto t^n$ is convex on $[0,\infty)$, so $\dfrac{a^n+b^n}2\ge\left(\dfrac{a+b}2\right)^n=\dfrac1{2^n}$ (power mean inequality), i.e. $a^n+b^n\ge\dfrac1{2^{n-1}}$. Equality holds at $\theta=45^\circ$ (lower) and $\theta=0^\circ$ (upper). $\blacksquare$
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+draw(circle((0,0),1));draw((-1.3,0)--(1.3,0));draw((0,-1.3)--(0,1.3));pair P=dir(35);draw((0,0)--P);draw(P--(P.x,0),dashed);dot(P);label("$(\cos\theta,\sin\theta)$",P,NE);label("$\theta$",(0.25,0.08),fontsize(8pt));
+\end{asy}

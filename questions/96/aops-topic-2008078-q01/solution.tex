@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h2008078_neatish_proof_of_sinab
+% Stable identity: aops-topic-2008078-q01
+\textbf{First computation.} The ray $OA$ makes angle $\alpha$ above the positive $x$-axis and $OB$ makes angle $\beta$ below it, so $\angle AOB=\alpha+\beta$, which lies strictly between $0^\circ$ and $180^\circ$. With $OA=OB=1$,
+\[[AOB]=\dfrac{1}{2}\cdot1\cdot1\cdot\sin(\alpha+\beta)=\dfrac{\sin(\alpha+\beta)}{2}.\]
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real al=50, be=35;
+pair O=(0,0), A=dir(al), B=dir(-be);
+pair X=extension(A,B,(0,0),(1,0));
+draw(unitcircle,gray);
+draw((-1.2,0)--(1.25,0),gray,Arrow(4));
+fill(O--A--X--cycle,paleblue); fill(O--X--B--cycle,palegreen);
+draw(O--A--B--cycle,linewidth(0.8));
+draw(A--(A.x,0),dashed); draw(B--(B.x,0),dashed);
+draw(arc(O,0.25,0,al)); draw(arc(O,0.32,-be,0));
+label("$\alpha$",0.25*dir(al/2),dir(al/2)*1.3);
+label("$\beta$",0.32*dir(-be/2),dir(-be/2)*1.3);
+dot(O);dot(A);dot(B);dot(X);
+label("$O$",O,W); label("$A$",A,N); label("$B$",B,S); label("$X$",X,NE);
+label("$\sin\alpha$",(A.x,A.y/2),E,fontsize(8pt));
+label("$\sin\beta$",(B.x,B.y/2),E,fontsize(8pt));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{Locating $X$.} Since $A$ is above the $x$-axis ($\sin\alpha>0$) and $B$ is below it ($-\sin\beta<0$), segment $AB$ crosses the $x$-axis at exactly one point $X$. Write $X=A+t(B-A)$; its $y$-coordinate is $\sin\alpha-t(\sin\alpha+\sin\beta)=0$, so $t=\dfrac{\sin\alpha}{\sin\alpha+\sin\beta}\in(0,1)$. Its $x$-coordinate is
+\[\cos\alpha+t(\cos\beta-\cos\alpha)=\dfrac{\cos\alpha(\sin\alpha+\sin\beta)+\sin\alpha(\cos\beta-\cos\alpha)}{\sin\alpha+\sin\beta}=\dfrac{\sin\alpha\cos\beta+\cos\alpha\sin\beta}{\sin\alpha+\sin\beta}.\]
+Since $\cos\alpha,\cos\beta>0$ and $\sin\alpha,\sin\beta>0$, this is positive, so $OX$ equals this $x$-coordinate.
+
+\textbf{Second computation.} Because $X$ lies on segment $AB$, the segment $OX$ splits triangle $AOB$ into triangles $AOX$ and $BOX$ with common base $OX$ on the $x$-axis. Their heights are the distances from $A$ and $B$ to the $x$-axis, namely $\sin\alpha$ and $\sin\beta$. Hence
+\[[AOB]=[AOX]+[BOX]=\dfrac{1}{2}\,OX\,(\sin\alpha+\sin\beta)=\dfrac{1}{2}\left(\sin\alpha\cos\beta+\cos\alpha\sin\beta\right).\]
+
+\textbf{Conclusion.} Equating the two expressions for $[AOB]$ and multiplying by $2$,
+\[\sin(\alpha+\beta)=\sin\alpha\cos\beta+\cos\alpha\sin\beta\qquad\text{for }0^\circ<\alpha,\beta<90^\circ.\qquad\blacksquare\]

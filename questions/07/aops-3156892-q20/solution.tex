@@ -1,0 +1,6 @@
+The first six selected cells are a uniformly random six-element subset. A six-element set is line-free exactly when its three missing cells form one of the two full diagonals: this follows by requiring a missing cell in every row and column, then checking the six permutation patterns against both diagonals. Two patterns work. No seven-element set is line-free, since two missing cells cannot cover all three rows. A line-free six-set automatically has no earlier completed line. Hence the required probability is $\dfrac{2}{\binom96}=\boxed{\dfrac{1}{42}}$.
+\begin{asy}
+import graph;import geometry;usepackage("amsmath");size(7cm);
+for(int i=0;i<=3;++i){draw((i,0)--(i,3));draw((0,i)--(3,i));}for(int r=0;r<3;++r)for(int c=0;c<3;++c)if(r!=c)label("$X$",(c+.5,r+.5));label("six moves without a line",(1.5,-.6));
+\end{asy}
+

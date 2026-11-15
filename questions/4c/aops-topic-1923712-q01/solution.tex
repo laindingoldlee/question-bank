@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h1923712_noice_cryptarithm
+% Stable identity: aops-topic-1923712-q01
+Let $c_1,c_2,c_3,c_4\in\{0,1\}$ be the carries out of the units, tens, hundreds and thousands columns. Column by column:
+\[
+8+S=R+10c_1,\quad C+I+c_1=E+10c_2,\quad M+c_2=P+10c_3,\quad L+c_3=U+10c_4,\quad S+c_4=S .
+\]
+The last equation gives $c_4=0$, so $U=L+c_3$; since $U\ne L$, we get $c_3=1$ and $U=L+1$. Then $M+c_2\ge10$ forces $M=9$, $c_2=1$ and $P=0$. The nine letters are different digits other than $8$, so they use each of $0,1,2,3,4,5,6,7,9$ exactly once.
+
+\textbf{Maximizing.} $S\ne8,9$ (as $M=9$), so $S\le7$. Try $S=7$: then $R=5$ and $c_1=1$. The digits left for $L,U,C,I,E$ are $1,2,3,4,6$, with $U=L+1$ and $C+I+1=E+10$, i.e.\ $C+I=E+9$.
+\begin{itemize}
+\item $U=4$, $L=3$: $C,I,E$ are $1,2,6$ in some order, but $C+I=E+9$ would need $C+I\ge10$, and no two of these digits sum to $10$ or more. Impossible.
+\item $U=3$, $L=2$: $C,I,E$ are $1,4,6$, and $C+I=E+9$ forces $E=1$ and $\{C,I\}=\{4,6\}$ (since $1+6<13$ and $1+4<15$).
+\end{itemize}
+So the largest value is $SUPER=73015$ (for example $72948+67=73015$): $S=7$ is the largest possible first digit, $U=3$ is then the largest possible second digit, and $P=0$, $E=1$, $R=5$ are forced. Its digit sum is $7+3+0+1+5=16$, answer $\boxed{\textbf{(B)}\ 16}$.

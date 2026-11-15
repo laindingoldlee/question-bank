@@ -1,0 +1,25 @@
+Since $\Delta=rs$, we have $s>6$ and $r=\dfrac{2s}{s-6}$, so $\Delta=\dfrac{2s^2}{s-6}$ is rational.
+
+First the perimeter must be even. If $p=a+b+c$ were odd, Heron's formula would give
+\[
+(4\Delta)^2=p(p-2a)(p-2b)(p-2c)\equiv3\pmod4.
+\]
+Indeed each factor is odd, and the product modulo $4$ is $(-1)^{a+b+c}=-1$. A rational number whose square is an integer must be an integer, but an integer square cannot be $3$ modulo $4$. Thus $s$ is an integer.
+
+Set $x=s-a>y=s-b>z=s-c>0$. Heron's formula gives $\Delta^2=sxyz$, an integer; rationality then makes $\Delta$ an integer. Hence $s-6$ divides $2s^2$, and therefore divides $72$. Put $d=s-6$. Also
+\[
+xyz=\dfrac{4s^3}{d^2}\le\left(\dfrac{s}{3}\right)^3
+\]
+by AM-GM, so $d^2\ge108$. The possible divisors are consequently $d=12,18,24,36,72$. The corresponding products $xyz$ are
+\[
+162,\quad\dfrac{512}{3},\quad\dfrac{375}{2},\quad\dfrac{686}{3},\quad\dfrac{2197}{6}.
+\]
+Only the first is integral. Thus $s=18$ and $xyz=162$.
+
+Since $z<6$ and divides $162$, it is $1,2$, or $3$. At $z=1$, we would need $x+y=17,xy=162$, impossible because $xy\le\left(\dfrac{17}{2}\right)^2$. At $z=2$, $x+y=16,xy=81$ is similarly impossible. At $z=3$, $x+y=15,xy=54$ gives $(x,y)=(9,6)$. Hence the only sides are $(a,b,c)=(9,12,15)$. They have $r=3,s=18,\Delta=54=6r+2s$. The number of triangles is $\boxed1$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair C=(0,0),A=(12,0),B=(0,9),I=(3,3);draw(A--B--C--cycle);draw(circle(I,3),blue);draw(I--(3,0),dashed);label("$A$",A,SE);label("$B$",B,N);label("$C$",C,SW);label("$12$",A--C,S);label("$9$",B--C,W);label("$15$",A--B,NE);label("$r=3$",I--(3,0),E);
+\end{asy}

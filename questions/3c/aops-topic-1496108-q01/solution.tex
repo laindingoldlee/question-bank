@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h1496108_12_points_and_6_lines
+% Stable identity: aops-topic-1496108-q01
+Take a regular hexagram (two overlapping equilateral triangles, a ``Star of David''): the $6$ lines are the lines of the sides of the two triangles, and the $12$ points are the $6$ tips of the star and the $6$ vertices of the inner hexagon.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+int n=6; pair[] T; for(int k=0;k<n;++k) T.push(dir(90+360k/n));
+pair[] I; for(int k=0;k<n;++k) I.push(extension(T[k],T[(k+2)%n],T[(k+1)%n],T[(k+3)%n]));
+for(int k=0;k<n;++k){ pair u=T[k],v=T[(k+2)%n]; draw(u+0.1*(u-v)--v+0.1*(v-u),blue+linewidth(0.8)); }
+
+for(int k=0;k<n;++k){ dot(T[k],linewidth(4.5)); dot(I[k],linewidth(4.5)); }
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Each side line contains the $2$ vertices of its own triangle and crosses the other triangle in exactly $2$ points, which are vertices of the inner hexagon; it contains no other of the points. So each of the $6$ lines has exactly $4$ points.
+
+\textbf{Why it works (counting).} Every point lies on exactly $2$ of the lines, and $6$ lines with $4$ points each give $24$ incidences, so there are $\dfrac{24}{2}=12$ points. Six lines in general position would meet in $\dbinom62=15$ points, $5$ on each line. In the hexagram the $6$ lines form $3$ pairs of parallel lines (each side of one triangle is parallel to a side of the other), so $3$ of these $15$ intersections are missing, one from each line, leaving $12$ points with $4$ on each line.
+
+(Read literally, ``the points determine exactly $6$ lines'' is impossible: any two of the points determine a line, and $6$ lines with $4$ points each cover only $6\cdot\dbinom{4}{2}=36$ of the $\dbinom{12}{2}=66$ pairs of points. So, as in the classical tree-planting puzzles, we only require the stated lines; other lines through two of the points are not counted.)

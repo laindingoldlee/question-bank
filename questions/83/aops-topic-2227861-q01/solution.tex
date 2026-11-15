@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2227861_inscribing_a_circle_in_a_rhombus
+% Stable identity: aops-topic-2227861-q01
+The diagonals of a rhombus bisect each other at right angles, so each side is the hypotenuse of a right triangle with legs $7$ and $24$: the side is $25$. The inscribed circle is centred at the intersection $O$ of the diagonals, and its radius $r$ is the distance from $O$ to a side, i.e. the altitude to the hypotenuse of the $7$-$24$-$25$ triangle:
+
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+defaultpen(fontsize(10pt));
+pair A=(-24,0),B=(0,7),C=(24,0),D=(0,-7),O=(0,0);
+draw(A--B--C--D--cycle,linewidth(0.9)); draw(A--C,gray+dashed); draw(B--D,gray+dashed);
+real r=168/25; draw(circle(O,r),blue);
+pair T=(B-A)*dot(-A,B-A)/dot(B-A,B-A)+A;
+draw(O--T,red); dot(O); dot(T);
+real m=1.0; pair u=unit(B-T), v=unit(O-T); draw(T+m*u--T+m*u+m*v--T+m*v);
+label("$O$",O,SE); label("$r$",(O+T)/2,W,red);
+label("$24$",(A+O)/2,S); label("$7$",(O+B)/2,E); label("$25$",(A+B)/2,NW);
+\end{asy}
+
+\[r=\dfrac{7\cdot24}{25}=\dfrac{168}{25}.\]
+(Equivalently, the area $\dfrac{14\cdot48}{2}=336$ equals $\dfrac{1}{2}\cdot\text{perimeter}\cdot r=50r$.) Then
+\[\pi r^2+2\pi r=\pi\cdot\dfrac{28224}{625}+\pi\cdot\dfrac{336}{25}=\dfrac{28224\pi+8400\pi}{625}=\boxed{\dfrac{36624\pi}{625}}.\]

@@ -1,0 +1,26 @@
+% Source: https://artofproblemsolving.com/community/c3h1976603_geo_problem
+% Stable identity: aops-topic-1976603-q01
+Let $K$ be the foot of the perpendicular from $J$ to $GH$, and let $h=JK$. Segments $FG$, $JK$ and $IH$ are all perpendicular to $GH$, hence parallel.
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+pair G=(0,0),H=(6,0),F=(0,4),I=(6,8);
+pair J=extension(F,H,G,I);
+pair K=(J.x,0);
+draw(G--H--I--cycle,linewidth(1));draw(G--F--H,linewidth(1));
+draw(J--K,dashed);
+real s=0.35;
+draw((s,0)--(s,s)--(0,s));draw((6-s,0)--(6-s,s)--(6,s));draw(K+(s,0)--K+(s,s)--K+(0,s));
+dot(J);
+label("$G$",G,SW);label("$H$",H,SE);label("$F$",F,W);label("$I$",I,E);label("$J$",J,N);label("$K$",K,S);
+label("$4$",(0,2),W);label("$8$",(6,4),E);label("$h$",(J+K)/2,W);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+Triangles $HKJ$ and $HGF$ are similar, so $\dfrac{h}{4}=\dfrac{KH}{GH}$. Triangles $GKJ$ and $GHI$ are similar, so $\dfrac{h}{8}=\dfrac{GK}{GH}$. Adding, since $GK+KH=GH$,
+\[
+\dfrac {h}{4}+\dfrac {h}{8}=1\quad\Longrightarrow\quad\dfrac{3h}{8}=1\quad\Longrightarrow\quad h=\boxed{\dfrac{8}{3}}.
+\]
+The length $GH$ does not matter. (In general $h=\dfrac{ab}{a+b}$, half the harmonic mean of the two heights.)

@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2436834_logic_problem_that_i_could_not_solve
+% Stable identity: aops-topic-2436834-q01
+Number the dogs $1,2,\dots,101$ from the front, so dog $k$ sees dogs $1,\dots,k-1$ and speaks after dogs $101,100,\dots,k+1$.
+
+\textbf{(a) The parity strategy.} Dog $101$ counts the blue hats it sees on dogs $1$--$100$ and says ``blue'' if this number is odd and ``pink'' if it is even. Then, for $k=100,99,\dots,1$, dog $k$ says the colour that makes the number of blue hats among dogs $1$--$100$ have the parity announced by dog $101$, counting the blue hats it sees (dogs $1$ to $k-1$) and the blue colours announced by dogs $100$ down to $k+1$.
+
+We show by induction (from $k=100$ down to $k=1$) that dog $k$ is right. Suppose dogs $100,\dots,k+1$ were all right, so their announced colours are their true colours. Then dog $k$ knows the true colours of all of dogs $1$--$100$ except its own, and it knows the parity of the number of blue hats among them; so exactly one colour of its own hat is consistent with that parity, and that is the colour it says. Hence dogs $1$--$100$ all go free. (Dog $101$ is right only by luck.) So at least $\boxed{100}$ dogs are saved.
+
+\textbf{(b) No strategy saves all.} Dog $101$ speaks first, so its answer can depend only on the hats of dogs $1$--$100$. Fix those hats. Dog $101$ then says the same colour whether its own hat is blue or pink, so in one of these two cases it is wrong. Hence no strategy guarantees that all $101$ dogs go free. $\blacksquare$
+
+(The strategy in the post, where dog $101$ names the colour of dog $100$'s hat, dog $100$ repeats it, dog $99$ names the colour of dog $98$'s hat, and so on, guarantees only the $50$ dogs $100,98,\dots,2$; the other $51$ are each right with probability $\dfrac12$, about $75\%$ of the dogs on average.)

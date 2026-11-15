@@ -1,0 +1,9 @@
+Scale $AB=BC=CD=1$. Triangle $BCD$ has equal sides $BC,CD$ and base angles $15^\circ$, so $\angle BCD=150^\circ$. Because $C,D,E$ are in that order, $\angle BCE=150^\circ$. Put $\theta=\angle CBE$; then $\angle BEC=30^\circ-\theta$ and $0<\theta<30^\circ$. Since $A,B,E$ are collinear in that order, $AC^2=2+2\cos\theta$, hence $AC=2\cos\dfrac{\theta}{2}$. The sine law in $BCE$, together with $CE=AC$, gives
+\[\dfrac{\sin\theta}{\sin(30^\circ-\theta)}=2\cos\dfrac{\theta}{2},\quad \sin\dfrac{\theta}{2}=\sin(30^\circ-\theta).\]
+Both angles are acute, so $\theta=20^\circ$. Therefore $\angle AED=\angle BEC=\boxed{10^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair B=(0,0),C=(1,0),D=C+dir(30),E=extension(B,dir(20),C,C+dir(30)),A=-dir(20);draw(A--B--C--D--cycle);draw(B--E);draw(D--E);draw(A--C,dashed);draw(B--D,dashed);pair[] p={A,B,C,D,E};string[] s={"A","B","C","D","E"};for(int i=0;i<5;++i)label("$"+s[i]+"$",p[i],i<3?(0,-1):(0,1));
+\end{asy}

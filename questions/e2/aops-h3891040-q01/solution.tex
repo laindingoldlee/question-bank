@@ -1,0 +1,19 @@
+The triangle angles are $B=30^\circ,C=102^\circ,A=48^\circ$. Put $\alpha=\angle DAB$, so $\angle DAC=48^\circ-\alpha$. Applying the sine rule to $ABD,ACD,BCD$ gives
+\[\dfrac{AD}{BD}=\dfrac{\sin12^\circ}{\sin\alpha},\quad
+\dfrac{AD}{CD}=\dfrac{\sin63^\circ}{\sin(48^\circ-\alpha)},\quad
+\dfrac{BD}{CD}=\dfrac{\sin39^\circ}{\sin18^\circ}.\]
+Therefore
+\[\dfrac{\sin(48^\circ-\alpha)}{\sin\alpha}
+=\dfrac{\sin18^\circ\sin63^\circ}{\sin12^\circ\sin39^\circ}
+=\dfrac{\sin33^\circ}{\sin15^\circ}.\]
+To verify the last equality, product-to-sum reduces
+$\sin33^\circ\sin12^\circ\sin39^\circ=\sin15^\circ\sin18^\circ\sin63^\circ$
+to $\sin66^\circ-\sin6^\circ=\dfrac{1}{2}+\sin18^\circ$. Its left side equals $\cos36^\circ$, and the right side has the same value because $\cos36^\circ-\sin18^\circ=\dfrac{1}{2}$.
+
+For $0<\alpha<48^\circ$, the function $\dfrac{\sin(48^\circ-\alpha)}{\sin\alpha}=\sin48^\circ\cot\alpha-\cos48^\circ$ is strictly decreasing. Since $\alpha=15^\circ$ satisfies the equality, it is the unique solution. Thus $\angle DAB=\boxed{15^\circ}$.
+\begin{asy}
+texpreamble("\usepackage{amsmath,amssymb}");
+size(240);
+defaultpen(fontsize(9pt));
+pair B=(0,0),C=(1,0),A=(1.139886388,.658113713),D=(.713652394,.231879719);draw(A--B--C--cycle);draw(B--D--C,blue);draw(A--D,blue);label("$A$",A,(0,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));label("$D$",D,(0,1));label("$18^\circ$",(.28,.045));label("$12^\circ$",(.45,.23));label("$39^\circ$",(.86,.04));label("$63^\circ$",(1.03,.19));
+\end{asy}

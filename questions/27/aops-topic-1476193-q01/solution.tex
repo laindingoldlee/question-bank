@@ -1,0 +1,36 @@
+% Source: https://artofproblemsolving.com/community/c3h1476193_special_days
+% Stable identity: aops-topic-1476193-q01
+Write the year as the digits $y_1y_2y_3y_4$ (all years here have four digits). The string is the month ($1$ or $2$ digits), then the day ($1$ or $2$ digits), then $y_1y_2y_3y_4$. Comparing the string with its reverse gives four types:
+\begin{itemize}
+\item \textbf{Type 6} (month and day one digit each, string $M\,D\,y_1y_2y_3y_4$): $M=y_4$, $D=y_3$, $y_2=y_1$.
+\item \textbf{Type 7a} (one-digit month, two-digit day $d_1d_2$): $M=y_4$, $d_1=y_3$, $d_2=y_2$, and $y_1$ is free.
+\item \textbf{Type 7b} (two-digit month $m_1m_2$, one-digit day): $m_1=y_4$, $m_2=y_3$, $D=y_2$, $y_1$ free.
+\item \textbf{Type 8} (two-digit month and day): $m_1=y_4$, $m_2=y_3$, $d_1=y_2$, $d_2=y_1$.
+\end{itemize}
+Two-digit months are $10,11,12$ (so $y_4=1$, $y_3\in\{0,1,2\}$ in types 7b and 8), and two-digit days are $10$ to $31$.
+
+\textbf{A whole millennium with $y_1\ge2$.} Fix $y_1$ and count over $y_2,y_3,y_4$.
+\begin{itemize}
+\item Type 6: $y_2=y_1$, and $D=y_3$, $M=y_4$ are any of $1,\dots,9$: $81$ dates.
+\item Type 7a: $M=y_4\in\{1,\dots,9\}$, day $10y_3+y_2$. Days $10$--$19$: $9\cdot10=90$. Days $20$--$29$: $90$, except February $29$, which would be in a year $y_1922$; such a year is not a leap year (it is $\equiv2\pmod4$), so $89$. Day $30$: the $8$ months other than February among $1$--$9$; day $31$: months $1,3,5,7,8$, that is $5$. Total $90+89+8+5=192$.
+\item Type 7b: $y_4=1$, $y_3\in\{0,1,2\}$, day $y_2\in\{1,\dots,9\}$: $27$.
+\item Type 8: $y_4=1$, $y_3\in\{0,1,2\}$, day $10y_2+y_1$ with $y_2\ge1$: $y_2=1,2$ always work and $y_2=3$ gives day $30+y_1\ge32$. So $6$.
+\end{itemize}
+Every millennium $2000$s, $3000$s, $\dots$, $9000$s has $81+192+27+6=306$ palindromic dates.
+
+\textbf{The years $2000$--$2017$ up to July 10, 2017.} Here $y_1=2$, $y_2=0$, $y_3\in\{0,1\}$. Type 6 needs $y_2=y_1$; type 7b needs day $y_2=0$; type 8 needs $d_1=y_2=0$: all impossible. Type 7a needs $y_3=1$, giving the dates $y_4$/10/201$y_4$, and $7$ of them (1/10/2011, \dots, 7/10/2017) are not after July 10, 2017. So $306-7=299$ palindromic dates of the $2000$s come after it.
+
+\textbf{Counting on.} After the $2000$s ($299$) and the $3000$s to $7000$s ($5\cdot306=1530$) we have $1829$ dates, so we need the $188$th palindromic date of the $8000$s. Count by century $8y_2xx$ (now $y_1=8$):
+\begin{itemize}
+\item type 6 occurs only for $y_2=8$, with $81$ dates;
+\item type 7a: days $10+y_2$ and $20+y_2$ in each of $9$ months give $18$, plus $8$ (day $30$) for $y_2=0$ and $5$ (day $31$) for $y_2=1$;
+\item type 7b: $3$ if $y_2\ge1$;
+\item type 8: $3$ if $y_2\in\{1,2\}$.
+\end{itemize}
+So the centuries $8000$s, $8100$s, $8200$s have $26$, $29$, $24$ dates, and $8300$s to $8700$s have $21$ each. That makes $26+29+24+5\cdot21=184$ dates up to the end of $8799$, and we need the $4$th date of the $8800$s.
+
+In the years $88y_3y_4$: type 6 gives $y_4$/$y_3$/88$y_3y_4$ with $y_3,y_4\ge1$; type 7a gives $y_4$/18/881$y_4$ and $y_4$/28/882$y_4$; type 7b gives 10/8/8801, 11/8/8811, 12/8/8821; type 8 is impossible ($d_1=8$). In order: 10/8/8801, then nothing until $8811$, whose dates are 1/1/8811, 1/18/8811, 11/8/8811, \dots. The $4$th is
+\[
+\boxed{\text{November }8,\ 8811},
+\]
+written 11/8/8811 (the string $1188811$).

@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2236486_number_theory
+% Stable identity: aops-topic-2236486-q01
+We prove by induction on $j\ge1$ that $3^{2^j}-1$ is a sum of two squares of positive integers; this gives a solution with $k=2^j$ for every $j$.
+
+\textbf{Base case.} $3^2-1=8=2^2+2^2$.
+
+\textbf{Inductive step.} Suppose $3^{2^j}-1=m^2+n^2$ with $m,n\ge1$, and let $p=3^{2^{j-1}}\ge3$, so that $3^{2^j}+1=p^2+1$. Then
+\[3^{2^{j+1}}-1=\left(3^{2^j}-1\right)\left(3^{2^j}+1\right)=(m^2+n^2)(p^2+1^2).\]
+By the identity $(m^2+n^2)(p^2+1)=(mp+n)^2+(m-np)^2=(np+m)^2+(n-mp)^2$ (expand both sides), this is a sum of two squares. The first form uses positive integers $mp+n$ and $|m-np|$ unless $m=np$. If $m=np$, then $n-mp=n-np^2\ne0$ because $p\ge3$, so the second form uses the positive integers $np+m$ and $|n-mp|$. Either way $3^{2^{j+1}}-1$ is a sum of two positive squares. $\blacksquare$
+
+For example $9=2^2+2^2+1$, $81=8^2+4^2+1$ and $6561=76^2+28^2+1$.

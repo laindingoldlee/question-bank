@@ -1,0 +1,30 @@
+% Source: https://artofproblemsolving.com/community/c3h1599538_please_help
+% Stable identity: aops-topic-1599538-q01
+Three of the points form a triangle exactly when they are not collinear.
+
+\begin{asy}
+usepackage("amsmath");
+size(6cm);
+defaultpen(fontsize(10pt));
+pair A=(1.2,4),B=(0,0),C=(6,0);
+pair P=(A+B+C)/3+(0.35,-0.2);
+pair Y=extension(A,P,B,C),Z=extension(B,P,A,C),X=extension(C,P,A,B);
+draw(A--B--C--cycle,linewidth(1));
+draw(A--Y,blue);draw(B--Z,blue);draw(C--X,blue);
+dot(A);dot(B);dot(C);dot(X);dot(Y);dot(Z);dot(P);
+label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);
+label("$X$",X,W);label("$Y$",Y,S);label("$Z$",Z,NE);label("$P$",P,dir(70));
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+The collinear triples among the seven points are:
+\begin{itemize}
+\item on the sides: $\{A,X,B\}$, $\{B,Y,C\}$, $\{C,Z,A\}$;
+\item on the cevians: $\{A,P,Y\}$, $\{B,P,Z\}$, $\{C,P,X\}$.
+\end{itemize}
+There are no others. Each line through two of the points contains at most three of them, and the lines listed are the only ones containing three: for instance $X$, $Y$, $Z$ are not collinear because they lie on the three different sides of the triangle in its interior; and a line through $P$ and a vertex meets the opposite side in just one point.
+
+So the number of triangles is
+\[
+\binom73-6=35-6=\boxed{29}.
+\]

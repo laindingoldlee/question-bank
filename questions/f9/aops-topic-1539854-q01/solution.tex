@@ -1,0 +1,18 @@
+% Source: https://artofproblemsolving.com/community/c3h1539854_hard_nt_and_combinatorics
+% Stable identity: aops-topic-1539854-q01
+Let $\omega=\cos72^\circ+i\sin72^\circ$, a primitive fifth root of unity, and
+\[
+F(x)=(1+x)(1+x^2)\cdots(1+x^{20})=\sum_{S}x^{\sigma(S)},
+\]
+where the sum is over all subsets $S$ and $\sigma(S)$ is the sum of the elements of $S$.
+
+\textbf{Roots of unity filter.} For an integer $m$, $1+\omega^m+\omega^{2m}+\omega^{3m}+\omega^{4m}$ equals $5$ if $5\mid m$ and $0$ otherwise (a geometric series with ratio $\omega^m\ne1$ sums to $\dfrac{\omega^{5m}-1}{\omega^m-1}=0$). Hence the required number is
+\[
+N=\dfrac{1}{5}\left(F(1)+F(\omega)+F(\omega^2)+F(\omega^3)+F(\omega^4)\right).
+\]
+
+\textbf{Evaluating.} $F(1)=2^{20}$. For $j=1,2,3,4$, $\omega^j$ is also a primitive fifth root of unity, and as $k$ runs through $1,\dots,20$, the powers $\omega^{jk}$ run through each of $1,\omega,\omega^2,\omega^3,\omega^4$ exactly $4$ times. Since $x^5-1=\prod_{r=0}^{4}(x-\omega^r)$, putting $x=-1$ gives $-2=-\prod_{r=0}^{4}(1+\omega^r)$, so $\prod_{r=0}^{4}(1+\omega^r)=2$. Therefore $F(\omega^j)=2^4=16$ for $j=1,2,3,4$, and
+\[
+N=\dfrac{2^{20}+4\cdot16}{5}=\dfrac{1048576+64}{5}=\boxed{209728}.
+\]
+(Without the empty set the count is $209727$.)

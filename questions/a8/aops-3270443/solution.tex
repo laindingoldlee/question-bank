@@ -1,0 +1,9 @@
+Use $B=(0,0),C=(6,0),A=(0,3),D=(6,12)$. Line $AD$ meets $BC$ extended at $T=(-2,0)$. The angle condition is equivalent, by supplementary inscribed angles, to $B,D,T,X$ being cyclic on the arc lying inside the trapezoid. Their circle has equation $x^2+y^2+2x-16y=0$, centre $O=(-1,8)$ and radius $\sqrt{65}$. The point $C$ is outside it, at distance $OC=\sqrt{113}$. Thus $CX\ge OC-\sqrt{65}$ by the triangle inequality. The closest point $X = O + \sqrt{\dfrac{65}{113}} (C-O)$ lies strictly inside the trapezoid and on the required arc, so the bound is attained. The minimum is $\boxed{\sqrt{113}-\sqrt{65}}$.
+\begin{asy}
+import graph;
+usepackage("amsmath");
+import geometry;
+size(7cm);
+pair A=(0,3),B=(0,0),C=(6,0),D=(6,12),T=(-2,0),O=(-1,8),X=O+sqrt(65/113)*(C-O);draw(A--B--C--D--cycle);draw(circle(O,sqrt(65)));draw(T--D,dashed);draw(C--X--O,dotted);label("$A$",A,(-1,0));label("$B$",B,(0,-1));label("$C$",C,(1,-1));label("$D$",D,(0,1));label("$T$",T,(-1,-1));label("$O$",O,(-1,0));label("$X$",X,(1,0));
+\end{asy}
+

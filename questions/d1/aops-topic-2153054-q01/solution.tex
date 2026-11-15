@@ -1,0 +1,27 @@
+% Source: https://artofproblemsolving.com/community/c3h2153054_rotating_circles
+% Stable identity: aops-topic-2153054-q01
+Let $\theta$ be the angle through which the line of centres $OC$ has turned, where $O$ is the centre of the fixed circle and $C$ that of the rolling circle; $C$ stays at distance $R+r=(n+1)r$ from $O$.
+
+Rolling without slipping means that the arc of the fixed circle passed over equals the arc of the rolling circle passed over: both are $R\theta=nr\theta$. So, \emph{measured from the line of centres}, a point of the rolling circle turns through the angle $\dfrac{nr\theta}{r}=n\theta$. But the line of centres itself has turned through $\theta$ in the same direction, so relative to fixed directions the rolling circle has turned through
+\[n\theta+\theta=(n+1)\theta .\]
+The picture shows the case $n=3$: the red arrow marks the point that touched the fixed circle at the start. At $\theta=60^\circ$ the arrow has turned $240^\circ$, and at $\theta=120^\circ$ it has turned $480^\circ$, more than a full turn, and touches the fixed circle again.
+
+\begin{asy}
+usepackage("amsmath");
+size(5.5cm);
+defaultpen(fontsize(10pt));
+real n=3; real r=1; real R=n*r;
+draw(circle((0,0),R),linewidth(1)); draw(circle((0,0),R+r),dashed+gray(0.6));
+pair[] Cc={(0,R+r),(R+r)*dir(30),(R+r)*dir(-30)};
+real[] md={-90,30,150};
+string[] lb={"$\theta=0$","$\theta=60^\circ$","$\theta=120^\circ$"};
+pair[] lp={N,NE,SE};
+for(int k=0;k<3;++k){ draw(circle(Cc[k],r),blue+linewidth(0.9)); draw(Cc[k]--Cc[k]+r*dir(md[k]),red+linewidth(1.1),Arrow(5)); dot(Cc[k],blue); label(lb[k],Cc[k]+r*dir(degrees(Cc[k])),lp[k]); }
+dot((0,0)); label("$O$",(0,0),S);
+draw((0,0)--Cc[1],gray(0.6)); label("$4r$",Cc[1]/2,NW);
+label("\mbox{}",(min(currentpicture,user=true)+max(currentpicture,user=true))/2,black); // keeps the text after the figure black when LaTeX typesets the labels inline
+\end{asy}
+
+\textbf{(a)} After one trip around, $\theta=2\pi$, so the circle has turned through $2\pi(n+1)$: it makes $\boxed{n+1}$ complete rotations. Equivalently, the centre travels the distance $2\pi(n+1)r$, and the rotation angle of a circle rolling without slipping equals the distance travelled by its centre divided by its radius.
+
+\textbf{(b)} Dividing the circumferences counts how many times the rolling circle's circumference is ``laid down'' along the fixed circle, which is the number of turns \emph{relative to the line of centres}. It ignores the extra full turn caused by going once around the fixed circle (the line of centres itself turns once). For a circle rolling along a straight line there is no such extra turn, which is why the circumference ratio works there but not here.

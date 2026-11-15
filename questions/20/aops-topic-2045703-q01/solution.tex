@@ -1,0 +1,21 @@
+% Source: https://artofproblemsolving.com/community/c3h2045703_nanacci_sequences_question_
+% Stable identity: aops-topic-2045703-q01
+Write the sequence as \(a_1,a_2,\dots\) with \(a_1=\cdots=a_{n-1}=0\), \(a_n=1\), and \(a_k=a_{k-1}+\cdots+a_{k-n}\) for \(k>n\). All terms from \(a_n\) on are positive, so the nonzero terms are \(b_j=a_{n-1+j}\) for \(j\ge1\), with \(b_1=1\).
+
+\emph{Claim.} \(b_j=2^{j-2}\) for \(2\le j\le n+1\).
+
+For \(2\le j\le n+1\), the index \(k=n-1+j\) satisfies \(k-n=j-1\le n\), so the \(n\) terms before \(a_k\) are \(a_{j-1},\dots,a_{k-1}\); they include all the nonzero terms \(b_1,\dots,b_{j-1}\) and otherwise only zeros. Hence
+\[
+b_j=b_1+b_2+\cdots+b_{j-1}.
+\]
+For \(j=2\) this gives \(b_2=1=2^0\). If \(b_i=2^{i-2}\) for \(2\le i\le j-1\), then
+\[
+b_j=1+(1+2+\cdots+2^{j-3})=1+(2^{j-2}-1)=2^{j-2},
+\]
+which proves the claim by induction.
+
+Now \(b_{n+2}=a_{2n+1}\) is the sum of the \(n\) terms \(a_{n+1},\dots,a_{2n}\), which are exactly \(b_2,\dots,b_{n+1}\) (the term \(b_1=a_n\) has dropped out of the window). Therefore
+\[
+b_{n+2}=1+2+4+\cdots+2^{n-1}=2^n-1 .
+\]
+For example, \(n=2\) gives \(3\) and \(n=3\) gives \(7\), matching \(1,1,2,3\) and \(1,1,2,4,7\). \(\blacksquare\)

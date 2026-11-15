@@ -1,0 +1,25 @@
+% Source: https://artofproblemsolving.com/community/c3h2501938_two_magical_problems
+% Stable identity: aops-topic-2501938-q01
+We use induction on $n$.
+
+\emph{Base case $n=1$.} A $2\times2$ board with one square removed is itself an L-tromino.
+
+\emph{Inductive step.} Suppose every $2^n\times2^n$ board with one square removed can be tiled, and take a $2^{n+1}\times2^{n+1}$ board with one square removed. Cut it into four $2^n\times2^n$ quadrants. The removed square lies in one of them. Place one L-tromino on the three centre squares that belong to the other three quadrants (one square in each), as in the sketch for $n=2$ (the removed square is black and the central tromino is shaded).
+
+\begin{asy}
+usepackage("amsmath");
+size(4.5cm);
+defaultpen(fontsize(10pt));
+for(int i=0;i<=8;++i){draw((i,0)--(i,8),gray(0.6));draw((0,i)--(8,i),gray(0.6));}
+fill((1,6)--(2,6)--(2,7)--(1,7)--cycle,black);
+fill((4,4)--(5,4)--(5,3)--(3,3)--(3,4)--(4,4)--cycle,mediumgray);
+fill((4,4)--(5,4)--(5,5)--(4,5)--cycle,mediumgray);
+fill((3,3)--(5,3)--(5,4)--(3,4)--cycle,mediumgray);
+draw((4,3)--(5,3)--(5,5)--(4,5)--(4,4)--(3,4)--(3,3)--(4,3),linewidth(1));
+draw((0,0)--(8,0)--(8,8)--(0,8)--cycle,linewidth(1.2));
+draw((4,0)--(4,8),linewidth(1.2));draw((0,4)--(8,4),linewidth(1.2));
+\end{asy}
+
+Now each of the four quadrants is a $2^n\times2^n$ board with exactly one square removed or already covered. By the induction hypothesis each can be tiled, and together with the central tromino this tiles the whole board.
+
+By induction the statement holds for all $n\ge1$. $\blacksquare$ (A count confirms that this is possible: $4^n-1$ is divisible by $3$.)

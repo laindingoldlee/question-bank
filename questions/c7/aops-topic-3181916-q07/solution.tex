@@ -1,0 +1,8 @@
+% Source: https://artofproblemsolving.com/community/c3h3181916_2021_abmc_online_november_contest__actonboxborough_math_competition
+% Stable identity: aops-topic-3181916-q07
+The triangle height is 5, so its side is $\dfrac{10}{\sqrt3}$ and its perimeter is $10\sqrt3$. If the square side is $s$, its upper corner satisfies $s^2+(\dfrac{s}{2})^2=25$, giving $s=2\sqrt5$ and perimeter $8\sqrt5$. The smaller circle has radius $\dfrac{5}{2}$, so its circumference is $5\pi$. The sum is $10\sqrt3+8\sqrt5+5\pi$, and $\boxed{a+b+c+d+e+f=32}$.
+\begin{asy}
+usepackage("amsmath");
+size(7cm);
+for(int k=0;k<3;++k){pair off=(12*k,0);draw(arc(off,5,0,180));draw(off+(-5,0)--off+(5,0));if(k==0){real x=5/sqrt(3);draw(off+(-x,0)--off+(x,0)--off+(0,5)--cycle,blue);}if(k==1){real s=2*sqrt(5);draw(off+(-s/2,0)--off+(s/2,0)--off+(s/2,s)--off+(-s/2,s)--cycle,blue);}if(k==2)draw(circle(off+(0,2.5),2.5),blue);label("$R=5$",off+(0,-1));}
+\end{asy}
