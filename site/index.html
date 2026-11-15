@@ -245,7 +245,8 @@ dialog textarea { min-height: 80px; resize: vertical; }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script>
 window.MathJax = {
-  tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$", "$$"], ["\\[", "\\]"]], processEscapes: true, processEnvironments: true,
+  loader: { load: ["[tex]/textmacros"] },
+  tex: { packages: { "[+]": ["textmacros"] }, inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$", "$$"], ["\\[", "\\]"]], processEscapes: true, processEnvironments: true,
          macros: { degree: "^\\circ", textdegree: "^\\circ" } },
   svg: { fontCache: "global" },
   options: { enableMenu: false },
@@ -612,10 +613,13 @@ function texToHtml(src, assets, meta, file, skipDiagrams) {
   });
   s = s.replace(/\\begin\{verbatim\}([\s\S]*?)\\end\{verbatim\}/g, (_, b) => put(`<pre class="src">${esc(b.replace(/^\n|\n$/g, ""))}</pre>`));
   s = s.replace(/\\verb([^a-zA-Z\s])([\s\S]*?)\1/g, (_, d, b) => put(`<code>${esc(b)}</code>`));
-  s = s.replace(/\\\$/g, () => put("$"));
-  // math (kept verbatim for MathJax)
-  const mathRe = /\$\$[\s\S]+?\$\$|\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\)|\$(?:\\.|[^$\\])+?\$|\\begin\{(equation|align|gather|multline|eqnarray|alignat)(\*?)\}[\s\S]*?\\end\{\1\2\}/g;
+  // math (kept verbatim for MathJax). An escaped \$ is a literal dollar sign, never a delimiter;
+  // MathJax (processEscapes) shows it as "$" in text, and TeX handles it inside math.
+  const mathRe = /(?<!\\)\$\$[\s\S]+?\$\$|\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\)|(?<!\\)\$(?:\\.|[^$\\])+?\$|\\begin\{(equation|align|gather|multline|eqnarray|alignat)(\*?)\}[\s\S]*?\\end\{\1\2\}/g;
   s = s.replace(mathRe, m => put(esc(m)));
+  // \boxed{...} written in text mode: LaTeX typesets it as math, so do the same
+  s = boxedToMath(s, put);
+  s = s.replace(/\\\$/g, () => put("\\$"));
   s = esc(s);
   // simple text macros
   const arg = "\\{([^{}]*(?:\\{[^{}]*\\}[^{}]*)*)\\}";
@@ -626,8 +630,7 @@ function texToHtml(src, assets, meta, file, skipDiagrams) {
          .replace(new RegExp("\\\\texttt" + arg, "g"), "<code>$1</code>")
          .replace(new RegExp("\\\\(?:textrm|text|mbox)" + arg, "g"), "$1")
          .replace(new RegExp("\\\\(?:sub)*section\\*?" + arg, "g"), "<b>$1</b>")
-         .replace(new RegExp("\\\\url" + arg, "g"), "<code>$1</code>")
-         .replace(new RegExp("\\\\boxed" + arg, "g"), '<span class="boxed">$1</span>');
+         .replace(new RegExp("\\\\url" + arg, "g"), "<code>$1</code>");
   }
   s = s.replace(/\{\\bf\s+([^{}]*)\}/g, "<b>$1</b>").replace(/\{\\(?:it|em)\s+([^{}]*)\}/g, "<i>$1</i>");
   // tabular
@@ -640,7 +643,7 @@ function texToHtml(src, assets, meta, file, skipDiagrams) {
     s = s.replace(listRe, (_, kind, opt, body) => {
       const items = body.split(/\\item/).slice(1).map(it => {
         const m = it.match(/^\s*\[([^\]]*)\]/);
-        return m ? `<li data-label="${m[1]}">${it.slice(m[0].length).trim()}</li>` : `<li>${it.trim()}</li>`;
+        return m ? `<li data-label="${m[1]}">${textCleanup(it.slice(m[0].length).trim())}</li>` : `<li>${textCleanup(it.trim())}</li>`;
       });
       const tag = kind === "enumerate" ? "ol" : "ul";
       const typ = opt && /\(a\)|a\)|\(i\)/.test(opt) ? ` type="${/i/.test(opt) && !/a/.test(opt) ? "i" : "a"}"` : "";
@@ -649,12 +652,33 @@ function texToHtml(src, assets, meta, file, skipDiagrams) {
   }
   s = s.replace(/\\begin\{quote\}([\s\S]*?)\\end\{quote\}/g, "<blockquote>$1</blockquote>");
   s = s.replace(/\\begin\{(center|flushleft|flushright)\}([\s\S]*?)\\end\{\1\}/g, (_, k, b) => `<div class="${k === "center" ? "center" : ""}">${b}</div>`);
-  s = s.replace(/\\(?:noindent|medskip|bigskip|smallskip|centering|par(?![a-z])|newline|hfill|vfill|qquad|quad)\b/g, m => /par|newline/.test(m) ? "\n\n" : " ")
-       .replace(/\\\\(\[[^\]]*\])?/g, "<br>").replace(/~/g, "&nbsp;").replace(/---/g, "—").replace(/--/g, "–")
-       .replace(/``/g, "“").replace(/''/g, "”").replace(/\\(?:ldots|dots)\b/g, "…").replace(/\\textquotesingle\b\s?/g, "'").replace(/\\textquotedbl\b\s?/g, '"').replace(/\\(?:textendash)\b\s?/g, "–").replace(/\\(?:textemdash)\b\s?/g, "—").replace(/\\([&%#_{}])/g, "$1").replace(/\\ /g, " ");
+  s = textCleanup(s);
   s = s.split(/\n\s*\n/).map(p => p.trim()).filter(Boolean).map(p => `<p>${p}</p>`).join("");
   for (let k = 0; k < 3; k++) s = s.replace(/\u0000(\d+)\u0000/g, (_, i) => keep[+i]);
   return s.replace(/<p>(<(?:ol|ul|figure|table|div|details|pre|blockquote)[\s\S]*?)<\/p>/g, "$1");
+}
+function textCleanup(s) { // text-mode macros, applied to paragraphs and to list items
+  return s.replace(/\\underline\{\\hspace\{[^}]*\}\}|\\rule\{[^}]*\}\{[^}]*\}/g, "______")
+    .replace(/\\hspace\*?\{[^}]*\}/g, "&emsp;")
+    .replace(/\\(?:noindent|medskip|bigskip|smallskip|centering|par(?![a-z])|newline|hfill|vfill|qquad|quad)(?![a-zA-Z])/g, m => /par|newline/.test(m) ? "\n\n" : " ")
+    .replace(/\\\\(\[[^\]]*\])?/g, "<br>").replace(/~/g, "&nbsp;").replace(/---/g, "—").replace(/--/g, "–")
+    .replace(/``/g, "“").replace(/''/g, "”").replace(/\\(?:ldots|dots)(?![a-zA-Z])(\{\})?/g, "…")
+    .replace(/\\checkmark(?![a-zA-Z])/g, "✓").replace(/\\texttimes(?![a-zA-Z])/g, "×").replace(/\\textasciicircum(?![a-zA-Z])/g, "^")
+    .replace(/\\LaTeX(?![a-zA-Z])\\?/g, "LaTeX").replace(/\\TeX(?![a-zA-Z])\\?/g, "TeX")
+    .replace(/\\H\{o\}/g, "ő").replace(/\\H\{u\}/g, "ű").replace(/\\"\{?([aouAOU])\}?/g, (_, c) => ({a:"ä",o:"ö",u:"ü",A:"Ä",O:"Ö",U:"Ü"})[c])
+    .replace(/\\'\{?e\}?/g, "é").replace(/\\c\{s\}/g, "ş").replace(/\\\.I/g, "İ")
+    .replace(/\\textquotesingle(?![a-zA-Z])\s?/g, "'").replace(/\\textquotedbl(?![a-zA-Z])\s?/g, '"').replace(/\\textendash(?![a-zA-Z])\s?/g, "–").replace(/\\textemdash(?![a-zA-Z])\s?/g, "—")
+    .replace(/\\([&%#_{}])/g, "$1").replace(/\\ /g, " ");
+}
+function boxedToMath(s, put) {
+  let out = "", i = 0;
+  for (;;) {
+    const j = s.indexOf("\\boxed{", i); if (j < 0) return out + s.slice(i);
+    let k = j + 7, depth = 0;
+    for (; k < s.length; k++) { const c = s[k]; if (c === "\\") { k++; continue; } if (c === "{") depth++; else if (c === "}") { depth--; if (depth === 0) break; } }
+    if (k >= s.length) return out + s.slice(i);
+    out += s.slice(i, j) + put(esc("$" + s.slice(j, k + 1) + "$")); i = k + 1;
+  }
 }
 const typesetQueue = [];
 function typeset(el) {

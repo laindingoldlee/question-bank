@@ -46,4 +46,4 @@ The full spec is `Question_Bank_Import_Prompt_Complete_Detailed.md` in the owner
 
 - All 32,212 questions imported on 2026-11-15 from the old site's full export (`aops_question_bank_backup_all_middle.zip`, import format) with `tools/import_backup.py`. That export had no folders and no editorial notes, so `state/` starts empty.
 - Site data is about 38 MB; first results show in about 3 s and filters respond in under 0.5 s.
-- A rendering audit of 2,000 random questions found about 0.5% with LaTeX source problems (text-mode `\boxed`, unbalanced `$`, e.g. dollar amounts written as `$34.90`). These also break pdflatex and should be fixed in the source.
+- LaTeX clean-up done 2026-11-15 (see docs/latex_cleanup_2026-11-15.md): all bodies compile with pdflatex and display correctly on the site. Re-run tools/checks/ after bulk edits.
