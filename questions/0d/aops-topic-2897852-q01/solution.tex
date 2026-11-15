@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2897852_can_somebody_pls_help_me_with_this
+% Stable identity: aops-topic-2897852-q01
+Joining $O$ to the vertices splits $ABC$ into three triangles with bases $a,b,c$ and heights $2$.
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(7,0),C=(2.2,4.6);real a=abs(B-C),bb=abs(C-A),cc=abs(A-B);pair O=(a*A+bb*B+cc*C)/(a+bb+cc);draw(A--B--C--cycle);draw(O--A,dashed);draw(O--B,dashed);draw(O--C,dashed);
+pair F1=(O.x,0);pair F2=A+dot(O-A,C-A)/dot(C-A,C-A)*(C-A);pair F3=B+dot(O-B,C-B)/dot(C-B,C-B)*(C-B);draw(O--F1);draw(O--F2);draw(O--F3);dot(O);label("$O$",O,E);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$2$",(O+F1)/2,E);
+\end{asy}
+
+The area is $\dfrac12\cdot2\,(a+b+c)=\boxed{20}$ cm$^2$.

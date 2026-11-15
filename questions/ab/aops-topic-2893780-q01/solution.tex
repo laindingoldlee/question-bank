@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2893780_elementary_geometry
+% Stable identity: aops-topic-2893780-q01
+Join the incentre $I$ to the vertices. This splits the triangle into triangles $IBC$, $ICA$, $IAB$ with bases $a,b,c$ and common height $r$ (the incircle touches each side perpendicularly).
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(1.5,4);real a=abs(B-C),bb=abs(C-A),cc=abs(A-B);pair I=(a*A+bb*B+cc*C)/(a+bb+cc);real r=I.y;draw(A--B--C--cycle);draw(circle(I,r));draw(A--I--B);draw(C--I);draw(I--(I.x,0));dot(I);label("$r$",(I.x,r/2),E);label("$I$",I,N);label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);
+\end{asy}
+
+So the area is $\dfrac12r(a+b+c)=rs$. $\blacksquare$

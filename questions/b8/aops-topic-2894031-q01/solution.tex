@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2894031_2020_aime_1_problem_1
+% Stable identity: aops-topic-2894031-q01
+Let $\angle A=\theta$. From $AE=ED$, $\angle EDA=\theta$, so the exterior angle $\angle DEB=2\theta$. From $ED=DB$, $\angle DBE=2\theta$. Then $\angle BDC=\angle A+\angle ABD=3\theta$. From $DB=BC$, $\angle BCD=3\theta$, and $\angle ABC=\angle ACB=3\theta$.
+\begin{asy}
+usepackage("amsmath");
+size(2.5cm);
+defaultpen(fontsize(10pt));
+real th=180/7;pair B=(-1,0),C=(1,0),A=(0,tan(radians(3*th)));pair D=intersectionpoints(circle(B,2),A--C)[0];if(abs(D-C)<1e-6)D=intersectionpoints(circle(B,2),A--C)[1];
+pair E=intersectionpoints(circle(D,2),A--B)[0];draw(A--B--C--cycle);draw(B--D);draw(D--E);label("$A$",A,N);label("$B$",B,SW);label("$C$",C,SE);label("$D$",D,2*E);label("$E$",E,W);
+\end{asy}
+
+So $7\theta=180^\circ$ and $\angle ABC=\dfrac{540}7$, giving $m+n=\boxed{547}$.

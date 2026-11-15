@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2895390_emc_wrangle_favorites_4
+% Stable identity: aops-topic-2895390-q01
+Let $AB=BC=1$ and $AC=x$. By the angle bisector theorem, $\dfrac{BD}{DC}=\dfrac{AB}{AC}=\dfrac1x$, so $BD=\dfrac1{1+x}$. Setting $BD=x$ gives $x^2+x-1=0$ and $x=\dfrac{\sqrt5-1}2$. Then $\sin\dfrac B2=\dfrac x2=\dfrac{\sqrt5-1}4=\sin18^\circ$, so $\angle B=\boxed{36^\circ}$.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair B=(0,0);pair A=dir(-72),C=dir(-108);A=4*A;C=4*C;pair D=B+(C-B)*abs(A-C)/abs(C-B);
+draw(A--B--C--cycle);draw(A--D);label("$B$",B,N);label("$A$",A,SE);label("$C$",C,SW);label("$D$",D,W);label("$36^\circ$",B,9*dir(-90));
+\end{asy}
+
+Check: in the $36^\circ$--$72^\circ$--$72^\circ$ triangle, $\angle DAC=36^\circ$ and $\angle ADC=72^\circ$, so $AC=AD$. Also $\angle DAB=36^\circ=\angle B$, so $AD=BD$. Hence $AC=BD$.

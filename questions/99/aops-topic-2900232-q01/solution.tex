@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2900232_2022_jmpsc_d1r1_problem_6
+% Stable identity: aops-topic-2900232-q01
+The original surface area is $2\cdot4+4\cdot16=72$. Each cut creates two new $2\times2$ faces, adding $8$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+real a=2,c=2;pair d=(1.2,0.8);path f=(0,0)--(8,0)--(8,2)--(0,2)--cycle;draw(f);draw((8,0)--(8,0)+d--(8,2)+d--(0,2)+d--(0,2));draw((8,2)--(8,2)+d);for(int i=1;i<8;++i)draw((i,0)--(i,2)--(i,2)+d,dashed);label("$8$",(4,0),S);label("$2$",(0,1),W);
+\end{asy}
+
+We need $8k=72$, so $k=\boxed{9}$ cuts.

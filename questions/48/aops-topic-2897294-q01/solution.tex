@@ -1,0 +1,14 @@
+% Source: https://artofproblemsolving.com/community/c3h2897294_emc_wrangle_favorites_11
+% Stable identity: aops-topic-2897294-q01
+Let $I$ be the incentre and $D,E,F$ the points where the incircle touches $BC,CA,AB$. Cut along $ID$, $IE$ and $IF$.
+\begin{asy}
+usepackage("amsmath");
+size(3.5cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(6,0),C=(1.5,4);real a=abs(B-C),bb=abs(C-A),cc=abs(A-B);pair I=(a*A+bb*B+cc*C)/(a+bb+cc);
+pair F=(I.x,0);pair E=A+dot(I-A,C-A)/dot(C-A,C-A)*(C-A);pair D=B+dot(I-B,C-B)/dot(C-B,C-B)*(C-B);
+draw(A--B--C--cycle);draw(I--D);draw(I--E);draw(I--F);draw(A--I--B,dashed);draw(C--I,dashed);dot(I);
+label("$A$",A,SW);label("$B$",B,SE);label("$C$",C,N);label("$I$",I,NE);label("$D$",D,NE);label("$E$",E,NW);label("$F$",F,S);
+\end{asy}
+
+Each piece, e.g. $AFIE$, is a kite: $AF=AE$ (equal tangents) and $IF=IE$ (radii). So it is symmetric about $AI$, and turning it over gives the same shape. Flip each kite in place, fur side up; each still fits its own corner of the hole, so together they fill it. This works for every triangle, including obtuse ones.

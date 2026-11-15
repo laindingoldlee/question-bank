@@ -1,0 +1,11 @@
+% Source: https://artofproblemsolving.com/community/c3h2893780_elementary_geometry
+% Stable identity: aops-topic-2893780-q03
+Take side $a$ as base. The altitude from the opposite vertex has length $b\sin\theta$: it is a leg opposite $\theta$ in a right triangle with hypotenuse $b$. (If $\theta$ is obtuse, the foot lies on the extension, and $\sin(180^\circ-\theta)=\sin\theta$.)
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair C=(0,0),B=(5,0),A=3*dir(55);pair H=(A.x,0);draw(A--B--C--cycle);draw(A--H,dashed);draw(H+(0.25,0)--H+(0.25,0.25)--H+(0,0.25));label("$C$",C,SW);label("$B$",B,SE);label("$A$",A,N);label("$a$",(2.5,0),S);label("$b$",A/2,NW);label("$\theta$",C,4*dir(27));label("$b\sin\theta$",(A+H)/2,E);
+\end{asy}
+
+So the area is $\dfrac12\cdot a\cdot b\sin\theta$. $\blacksquare$

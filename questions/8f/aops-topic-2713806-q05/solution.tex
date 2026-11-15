@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2713806_j0hn0rz_omighty
+% Stable identity: aops-topic-2713806-q05
+$OR=OZ$ and $\angle ROZ=60^\circ$, so triangle $ROZ$ is equilateral and the radius is $512$. Let $OJ=p$ and $OH=q$. Then $JR=p-512$ and $ZH=|512-q|$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair O=(0,0);pair H=300*dir(60),J=(700,0);pair N=J+H;pair R=(512,0),Z=512*dir(60);draw(O--J--N--H--cycle);draw(arc(O,512,-5,70),gray);draw(H--Z);draw(R--Z,dashed);
+label("$O$",O,SW);label("$J$",J,SE);label("$H$",H,NW);label("$N$",N,NE);label("$R$",R,S);label("$Z$",Z,NW);label("$60^\circ$",O,8*dir(30));
+\end{asy}
+
+If $q>512$, then $p-512=q-512$ gives $p=q$, which contradicts $p>q$. So $q<512$ and $p-512=512-q$, i.e. $p+q=1024$. The perimeter is $\boxed{2048}$.

@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2885516_overlapping_rectangles
+% Stable identity: aops-topic-2885516-q01
+The right angles at $B,D,E,F$ all subtend $AC$, so all four points lie on the circle with diameter $AC=\sqrt5$. The reflection across $AC$ swaps the rectangles, sending $B\mapsto E$ and $D\mapsto F$. So $BD$ and $EF$ are both diameters, and $BEDF$ is a rectangle whose diagonals have length $\sqrt5$.
+\begin{asy}
+usepackage("amsmath");
+size(4cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(2,0),C=(2,1),D=(0,1),E=(1.2,1.6),F=(0.8,-0.6);draw(A--B--C--D--cycle);draw(A--E--C--F--cycle);draw(A--C,dashed);fill(B--E--D--F--cycle,opacity(0.2)+gray);draw(B--E--D--F--cycle,linewidth(1));
+label("$A$",A,W);label("$B$",B,SE);label("$C$",C,E);label("$D$",D,W);label("$E$",E,N);label("$F$",F,S);
+\end{asy}
+
+If $\theta$ is the angle between $BD$ and $AC$, then $EF$ makes angle $2\theta$ with $BD$. The diagonals of $ABCD$ satisfy $\cos\theta=\dfrac{2^2-1^2}{5}=\dfrac35$ and $\sin\theta=\dfrac45$, so $\sin2\theta=\dfrac{24}{25}$. The area is $\dfrac12\cdot5\cdot\dfrac{24}{25}=\boxed{\dfrac{12}5}$.

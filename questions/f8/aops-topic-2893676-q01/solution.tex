@@ -1,0 +1,12 @@
+% Source: https://artofproblemsolving.com/community/c3h2893676_elementary_geometry
+% Stable identity: aops-topic-2893676-q01
+A circle through $A$ and $B$ has its centre equidistant from them, i.e. on the perpendicular bisector of $AB$; likewise on the perpendicular bisector of $BC$. These two lines are not parallel, since $AB$ and $BC$ are not parallel (the points are noncollinear). So they meet in exactly one point $O$.
+\begin{asy}
+usepackage("amsmath");
+size(3cm);
+defaultpen(fontsize(10pt));
+pair A=(0,0),B=(4,0.5),C=(1.2,3);pair u=(-(B-A).y,(B-A).x),v=(-(C-B).y,(C-B).x);pair M1=(A+B)/2,M2=(B+C)/2;pair O=extension(M1,M1+u,M2,M2+v);draw(circle(O,abs(O-A)),gray);
+draw(A--B--C);draw(M1-0.3*u--O,dashed);draw(M2-0.3*v--O,dashed);dot(A);dot(B);dot(C);dot(O);label("$A$",A,SW);label("$B$",B,E);label("$C$",C,N);label("$O$",O,W);
+\end{asy}
+
+Then $OA=OB=OC$, so the circle with centre $O$ and radius $OA$ passes through all three points. Any such circle must have centre $O$ and radius $OA$, so it is unique. $\blacksquare$
