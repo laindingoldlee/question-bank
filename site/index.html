@@ -6,10 +6,11 @@
 <title>Question Bank</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
 <style>
-/* Layout: filter rail on the left, results column in the middle, question
-   panel slides over from the right. Graph-paper neutrals, one ink-blue accent. */
+/* Layout: filter rail on the left, a centred column of roomy question cards.
+   Each card holds everything: question, diagrams, solution, LaTeX source, actions.
+   Graph-paper neutrals, one ink-blue accent; question text set in a serif sized to match the maths. */
 :root {
   --paper: #f5f6f3;
   --sheet: #ffffff;
@@ -25,6 +26,7 @@
   --font-display: "Source Serif 4", Georgia, serif;
   --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  --font-text: "STIX Two Text", "Times New Roman", serif;   /* question text, sized to match the maths */
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
@@ -63,7 +65,7 @@ button { cursor: pointer; }
 .seg button { border: 0; background: none; padding: 4px 10px; font-size: 12px; }
 .seg button[aria-pressed="true"] { background: var(--accent); color: var(--sheet); }
 .chips { display: flex; flex-wrap: wrap; gap: 4px; }
-.chip { border: 1px solid var(--rule); background: var(--paper); border-radius: 999px; padding: 2px 9px; font-size: 12px; display: inline-flex; gap: 6px; align-items: baseline; }
+.chip { border: 1px solid var(--rule); background: var(--paper); border-radius: 999px; padding: 2px 9px; font-size: 12px; display: inline-flex; gap: 6px; align-items: baseline; text-align: left; }
 .chip .n { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 11px; }
 .chip.inc { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
 .chip.exc { background: var(--exclude-soft); border-color: var(--exclude); color: var(--exclude); text-decoration: line-through; }
@@ -81,7 +83,8 @@ button { cursor: pointer; }
 .foot { margin-top: auto; font-size: 11px; color: var(--muted); }
 
 /* main */
-main { overflow-y: auto; padding: 16px 20px 40px; display: flex; flex-direction: column; gap: 12px; }
+main { overflow-y: auto; padding: 22px clamp(16px, 4vw, 48px) 60px; display: flex; flex-direction: column; gap: 12px; }
+main > * { width: 100%; max-width: 920px; margin-left: auto; margin-right: auto; }
 .bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
 .bar .count { font: 600 16px var(--font-display); font-variant-numeric: tabular-nums; }
 .bar .count small { font: 400 12px var(--font-body); color: var(--muted); margin-left: 6px; }
@@ -95,16 +98,36 @@ select.btn { padding: 5px 8px; }
 .selbar[hidden] { display: none; }
 .selbar .what { font-weight: 600; color: var(--accent); margin-right: auto; }
 .activefilters { display: flex; flex-wrap: wrap; gap: 6px; font-size: 12px; }
-.list { display: flex; flex-direction: column; gap: 10px; }
-.card { background: var(--sheet); border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
+.list { display: flex; flex-direction: column; gap: 22px; }
+.card { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 24px 30px 18px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 1px 2px rgba(20,30,50,.04); }
 .card.sel { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
-.card input[type=checkbox] { margin-top: 3px; }
-.card .head { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 12px; color: var(--muted); }
-.card .id { font-family: var(--font-mono); font-size: 12px; color: var(--ink); border: 0; background: none; padding: 0; text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 3px; }
-.card .id:hover { text-decoration-color: var(--accent); color: var(--accent); }
-.card .body { grid-column: 2; overflow-x: auto; cursor: pointer; }
-.card .tags { grid-column: 2; display: flex; flex-wrap: wrap; gap: 4px; }
-.tag { font-size: 11px; color: var(--muted); border: 1px solid var(--rule); border-radius: 4px; padding: 0 6px; }
+.chead { display: flex; align-items: flex-start; gap: 14px; }
+.chead input[type=checkbox] { width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--accent); flex: none; }
+.ctitle { display: flex; flex-direction: column; gap: 2px; margin-right: auto; min-width: 0; }
+.cname { font-weight: 600; font-size: 16px; }
+.cid { font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); overflow-wrap: anywhere; }
+.dpill { flex: none; font-size: 12.5px; font-weight: 600; border-radius: 6px; padding: 3px 10px; background: var(--accent-soft); color: var(--accent); font-variant-numeric: tabular-nums; }
+.badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: -6px; font-size: 12px; color: var(--muted); }
+.card .body, .card .soltex { font: 19px/1.7 var(--font-text); overflow-x: auto; }
+.card .body:empty { display: none; }
+.expanders { display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--rule); padding-top: 14px; }
+.expanders summary { cursor: pointer; width: fit-content; list-style-position: outside; }
+.expanders summary::marker { color: currentColor; }
+details.sol > summary { color: var(--accent); font-weight: 600; font-size: 15px; }
+details.srcx > summary { color: var(--muted); font-weight: 500; font-size: 13.5px; }
+details.sol[open] > summary .when-closed, details.sol:not([open]) > summary .when-open { display: none; }
+.soltex { margin: 14px 0 6px; padding: 18px 22px; background: var(--paper); border-radius: 8px; }
+.solmeta { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--rule); font: 13px/1.5 var(--font-body); color: var(--muted); display: grid; grid-template-columns: max-content 1fr; gap: 3px 14px; }
+.cnote { font-size: 13.5px; background: var(--paper); border-left: 3px solid var(--flag); padding: 8px 12px; border-radius: 4px; }
+.cfoot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; border-top: 1px solid var(--rule); padding-top: 14px; }
+.cfoot .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-size: 12px; color: var(--muted); background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 2px 9px; }
+.acts { display: flex; flex-wrap: wrap; gap: 6px; margin-left: auto; }
+.acts button { border: 1px solid var(--rule); background: var(--sheet); border-radius: 6px; padding: 4px 10px; font-size: 12.5px; color: var(--muted); }
+.acts button:hover { color: var(--ink); border-color: var(--accent); }
+.acts button.danger:hover { color: var(--exclude); border-color: var(--exclude); }
+.src { font-family: var(--font-mono); font-size: 12px; white-space: pre-wrap; background: var(--paper); padding: 10px 12px; border-radius: 6px; max-height: 320px; overflow: auto; margin: 8px 0 0; }
+.srclabel { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 10px; }
 .diff { font-variant-numeric: tabular-nums; font-weight: 600; font-size: 11px; border-radius: 4px; padding: 1px 6px; color: #fff; }
 .d1,.d2 { background: #4f8a6b; } .d3,.d4 { background: #3f6fb0; } .d5 { background: #7a58a8; } .d6,.d7,.d8 { background: #b04848; }
 .d0 { background: var(--muted); }
@@ -112,12 +135,16 @@ select.btn { padding: 5px 8px; }
 .badge.flag { color: var(--flag); } .badge.folder { color: var(--accent); } .badge.new { color: var(--ok); }
 .pager { display: flex; gap: 8px; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; }
 .empty { text-align: center; padding: 40px 10px; color: var(--muted); }
-.tex p { margin: 0 0 .6em; } .tex p:last-child { margin-bottom: 0; }
+.tex p { margin: 0 0 .75em; } .tex p:last-child { margin-bottom: 0; }
 .tex ol, .tex ul { margin: .3em 0 .6em; padding-left: 1.6em; }
 .tex li[data-label] { list-style: none; } .tex li[data-label]::before { content: attr(data-label) " "; margin-left: -1.6em; display: inline-block; width: 1.6em; }
-.tex figure { margin: .6em 0; text-align: center; }
-.tex figure img { max-width: 100%; background: #fff; border-radius: 4px; padding: 4px; }
+.tex figure { margin: 1em 0; text-align: center; }
+.tex figure img { max-width: 100%; min-width: min(260px, 100%); background: #fff; border-radius: 4px; padding: 4px; }
 .tex .center { text-align: center; }
+.tex ol.choices { list-style: none; padding: 0 0 0 1.2em; margin: .9em 0 .4em; display: flex; flex-direction: column; gap: .55em; }
+.tex ol.choices li { display: flex; gap: .9em; align-items: baseline; }
+.tex ol.choices .lab { font-weight: 600; min-width: 2.2em; flex: none; }
+.tex ol.choices .ct p { margin: 0; }
 .tex .boxed { border: 1px solid currentColor; padding: 0 4px; }
 .tex blockquote { margin: .4em 0 .6em 1em; padding-left: .8em; border-left: 3px solid var(--rule); }
 .tex table { border-collapse: collapse; margin: .4em auto; } .tex td { border: 1px solid var(--rule); padding: 2px 8px; }
@@ -125,18 +152,7 @@ select.btn { padding: 5px 8px; }
 .tex mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; }
 .loading { color: var(--muted); font-style: italic; }
 
-/* panel + dialogs */
-.scrim { position: fixed; inset: 0; background: rgba(10,14,20,.35); z-index: 10; display: none; }
-.scrim.open { display: block; }
-.panel { position: fixed; top: 0; right: 0; bottom: 0; width: min(760px, 100%); background: var(--sheet); z-index: 11; border-left: 1px solid var(--rule); display: none; flex-direction: column; }
-.panel.open { display: flex; }
-.panel header { padding: 14px 18px; border-bottom: 1px solid var(--rule); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-.panel header .pid { font-family: var(--font-mono); font-size: 13px; margin-right: auto; }
-.panel .content { overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 18px; }
-.panel h3 { font: 600 15px var(--font-display); margin: 0 0 6px; display: flex; justify-content: space-between; align-items: center; }
-.panel .meta { font-size: 12px; color: var(--muted); display: grid; grid-template-columns: max-content 1fr; gap: 2px 12px; }
-.panel .note { font-size: 13px; background: var(--paper); border-left: 3px solid var(--flag); padding: 8px 10px; border-radius: 4px; }
-.panel .src { font-family: var(--font-mono); font-size: 12px; white-space: pre-wrap; background: var(--paper); padding: 10px; border-radius: 6px; max-height: 300px; overflow: auto; }
+/* dialogs */
 dialog { border: 1px solid var(--rule); border-radius: 10px; background: var(--sheet); color: var(--ink); padding: 18px; width: min(460px, 92vw); }
 dialog::backdrop { background: rgba(10,14,20,.4); }
 dialog h3 { margin: 0 0 10px; font: 600 16px var(--font-display); }
@@ -146,7 +162,6 @@ dialog input[type=text], dialog textarea, dialog select { width: 100%; padding: 
 dialog textarea { min-height: 80px; resize: vertical; }
 .toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 8px 14px; border-radius: 8px; z-index: 20; font-size: 13px; max-width: 90vw; }
 .progress { font-size: 12px; color: var(--muted); }
-@media (prefers-reduced-motion: no-preference) { .panel.open { animation: slide .16s ease-out; } @keyframes slide { from { transform: translateX(30px); opacity: .6; } } }
 </style>
 </head>
 <body>
@@ -227,19 +242,6 @@ dialog textarea { min-height: 80px; resize: vertical; }
   </main>
 </div>
 
-<div class="scrim" id="scrim"></div>
-<section class="panel" id="panel" aria-label="Question" aria-modal="true" role="dialog">
-  <header>
-    <span class="pid" id="pid"></span>
-    <button class="btn" type="button" id="p-copy">Copy LaTeX</button>
-    <button class="btn" type="button" id="p-flag">Flag</button>
-    <button class="btn" type="button" id="p-move">Move</button>
-    <button class="btn danger" type="button" id="p-trash">Delete</button>
-    <button class="btn" type="button" id="p-close" aria-label="Close">Close</button>
-  </header>
-  <div class="content" id="pcontent"></div>
-</section>
-
 <dialog id="dlg"><form method="dialog" id="dlgform"></form></dialog>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -248,7 +250,7 @@ window.MathJax = {
   loader: { load: ["[tex]/textmacros"] },
   tex: { packages: { "[+]": ["textmacros"] }, inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$", "$$"], ["\\[", "\\]"]], processEscapes: true, processEnvironments: true,
          macros: { degree: "^\\circ", textdegree: "^\\circ" } },
-  svg: { fontCache: "global" },
+  svg: { fontCache: "global", scale: 1, matchFontHeight: true },
   options: { enableMenu: false },
   startup: { typeset: false }
 };
@@ -533,14 +535,55 @@ function renderFoot() {
 }
 
 /* ---------- rendering: list ---------- */
-function headHtml(q) {
-  const f = placeOf(q), fl = flagOf(q), src = q.comp >= 0 ? [D.comps[q.comp], q.year, q.div, q.qn != null ? "#" + q.qn : null].filter(x => x != null && x !== "").join(" ") : "";
-  return `<span class="diff d${q.diff ?? 0}" title="Difficulty">${q.diff ?? "?"}</span>` +
-    (src ? `<span>${esc(src)}</span>` : "") +
-    (f && S.folders[f] ? `<span class="badge folder">${esc(S.folders[f].name)}</span>` : "") +
-    (fl ? `<span class="badge flag" title="${esc(fl.note || "")}">Flagged</span>` : "") +
-    (q.imported ? `<span class="badge new">Imported</span>` : "") +
-    (q.ndiag ? `<span>${q.ndiag} diagram${q.ndiag > 1 ? "s" : ""}</span>` : "");
+function cardTitle(q) {
+  if (q.comp >= 0) return [D.comps[q.comp], q.year, q.div, q.qn != null && q.qn !== "" ? "Question " + q.qn : null].filter(x => x != null && x !== "").join(" · ");
+  const m = q.id.match(/^aops-(?:topic-|h)?(\d+)/); return m ? `AoPS forum problem` : "Problem";
+}
+function cardHtml(q) {
+  const f = placeOf(q), fl = flagOf(q), t = trashOf(q);
+  const badges = (f && S.folders[f] ? `<span class="badge folder">${esc(S.folders[f].name)}</span>` : "") +
+    (fl ? `<span class="badge flag">Flagged for Claude</span>` : "") + (q.imported ? `<span class="badge new">Imported</span>` : "");
+  return `<article class="card ${sel.has(q.id) ? "sel" : ""}" data-id="${esc(q.id)}">
+    <header class="chead">
+      <input type="checkbox" aria-label="Select ${esc(q.id)}" ${sel.has(q.id) ? "checked" : ""}>
+      <div class="ctitle"><span class="cname">${esc(cardTitle(q))}</span><span class="cid">${esc(q.id)}</span></div>
+      <span class="dpill" title="Difficulty">${q.diff != null ? "Level " + q.diff : "Unrated"}</span>
+    </header>
+    ${badges ? `<div class="badges">${badges}</div>` : ""}
+    ${fl ? `<div class="cnote"><b>Flag note:</b> ${esc(fl.note || "(no note)")}</div>` : ""}
+    <div class="body tex"><span class="loading">Loading…</span></div>
+    <div class="expanders">
+      <details class="sol"><summary><span class="when-closed">Show solution</span><span class="when-open">Hide solution</span></summary><div class="soltex tex"><span class="loading">Loading…</span></div></details>
+      <details class="srcx"><summary>LaTeX source</summary><div class="srcbox"></div></details>
+    </div>
+    <footer class="cfoot">
+      <div class="tags">${q.tags.map(i => `<span class="tag">${esc(D.tags[i])}</span>`).join("")}</div>
+      <div class="acts">
+        <button type="button" data-a="copy">Copy LaTeX</button>
+        <button type="button" data-a="flag">${fl ? "Edit flag" : "Flag"}</button>
+        ${t ? `<button type="button" data-a="restore">Restore</button>` : `<button type="button" data-a="move">Move</button><button type="button" class="danger" data-a="trash">Delete</button>`}
+      </div>
+    </footer>
+  </article>`;
+}
+async function fillSolution(card) {
+  const q = D.byId.get(card.dataset.id); if (!q) return;
+  const box = card.querySelector(".soltex"); if (box.dataset.done) return; box.dataset.done = "1";
+  const tx = await ensureText(q); const assets = await assetsOf(q);
+  if (!tx) { box.textContent = "Couldn't load this solution."; return; }
+  const m = tx.m || {}, src = m.source || {};
+  const url = (tx.q.match(/^%\s*Source:\s*(\S+)/m) || [])[1];
+  const srcLine = [src.competition, src.year, src.division, src.paper, src.round, src.question_number != null ? "Problem " + src.question_number : null].filter(x => x != null && x !== "").join(" · ");
+  box.innerHTML = texToHtml(tx.s, assets, m, "solution.tex") + `<div class="solmeta">
+    <span>Difficulty</span><span>${esc(m.difficulty ?? "—")}${m.difficulty_rationale ? " · " + esc(m.difficulty_rationale) : ""}</span>
+    <span>Source</span><span>${esc(srcLine || (url ? "AoPS forum" : "—"))}${url ? ` · <a href="${esc(url)}" target="_blank" rel="noopener">original post</a>` : ""}</span>
+    ${m.note ? `<span>Editor's note</span><span>${esc(m.note)}</span>` : ""}</div>`;
+  typeset(box);
+}
+async function fillSource(card) {
+  const q = D.byId.get(card.dataset.id); const box = card.querySelector(".srcbox"); if (!q || box.dataset.done) return; box.dataset.done = "1";
+  const tx = await ensureText(q); if (!tx) return;
+  box.innerHTML = `<div class="srclabel">question.tex</div><div class="src">${esc(tx.q)}</div><div class="srclabel">solution.tex</div><div class="src">${esc(tx.s)}</div>`;
 }
 let renderToken = 0;
 async function renderList() {
@@ -551,12 +594,7 @@ async function renderList() {
   const viewLabel = { all: "", unfiled: " in Unfiled", flagged: " flagged", trash: " in Trash", imported: " imported" }[state.view] ?? (S.folders[state.view] ? " in " + S.folders[state.view].name : "");
   $("#count").innerHTML = `${results.length.toLocaleString()} question${results.length === 1 ? "" : "s"}${esc(viewLabel)}<small>${results.length > PAGE ? `showing ${(state.page * PAGE + 1).toLocaleString()}–${(state.page * PAGE + slice.length).toLocaleString()}` : ""}</small>`;
   if (!slice.length) { $("#list").innerHTML = `<div class="empty">No questions match these filters.</div>`; $("#pager").innerHTML = ""; return; }
-  $("#list").innerHTML = slice.map(q => `<article class="card ${sel.has(q.id) ? "sel" : ""}" data-id="${esc(q.id)}">
-      <input type="checkbox" aria-label="Select ${esc(q.id)}" ${sel.has(q.id) ? "checked" : ""}>
-      <div class="head"><button type="button" class="id">${esc(q.id)}</button>${headHtml(q)}</div>
-      <div class="body tex" data-open="1"><span class="loading">Loading…</span></div>
-      <div class="tags">${q.tags.map(i => `<span class="tag">${esc(D.tags[i])}</span>`).join("")}</div>
-    </article>`).join("");
+  $("#list").innerHTML = slice.map(cardHtml).join("");
   $("#pager").innerHTML = pages > 1 ? `<button class="btn" type="button" data-page="${state.page - 1}" ${state.page ? "" : "disabled"}>Previous</button>
       <span>Page ${(state.page + 1).toLocaleString()} of ${pages.toLocaleString()}</span>
       <button class="btn" type="button" data-page="${state.page + 1}" ${state.page < pages - 1 ? "" : "disabled"}>Next</button>` : "";
@@ -613,6 +651,7 @@ function texToHtml(src, assets, meta, file, skipDiagrams) {
   });
   s = s.replace(/\\begin\{verbatim\}([\s\S]*?)\\end\{verbatim\}/g, (_, b) => put(`<pre class="src">${esc(b.replace(/^\n|\n$/g, ""))}</pre>`));
   s = s.replace(/\\verb([^a-zA-Z\s])([\s\S]*?)\1/g, (_, d, b) => put(`<code>${esc(b)}</code>`));
+  if (file === "question.tex") s = choicesToList(s, put, assets, meta);
   // math (kept verbatim for MathJax). An escaped \$ is a literal dollar sign, never a delimiter;
   // MathJax (processEscapes) shows it as "$" in text, and TeX handles it inside math.
   const mathRe = /(?<!\\)\$\$[\s\S]+?\$\$|\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\)|(?<!\\)\$(?:\\.|[^$\\])+?\$|\\begin\{(equation|align|gather|multline|eqnarray|alignat)(\*?)\}[\s\S]*?\\end\{\1\2\}/g;
@@ -657,6 +696,63 @@ function texToHtml(src, assets, meta, file, skipDiagrams) {
   for (let k = 0; k < 3; k++) s = s.replace(/\u0000(\d+)\u0000/g, (_, i) => keep[+i]);
   return s.replace(/<p>(<(?:ol|ul|figure|table|div|details|pre|blockquote)[\s\S]*?)<\/p>/g, "$1");
 }
+/* Answer choices "(A) ... (B) ... (C) ..." written on one line become a vertical list.
+   Works whether the choices sit in text, in one $...$ or \[...\] block, or each in its own $...$.
+   If anything about the line looks unusual the original text is left as it was. */
+function choicesToList(s, put, assets, meta) {
+  const parts = s.split(/(\n\s*\n)/);
+  for (let p = parts.length - 1; p >= 0; p--) {
+    const par = parts[p];
+    if (!/\(A\)/.test(par) || !/\(B\)/.test(par) || /\\item\b|\\begin\{|\\end\{/.test(par)) continue;
+    const r = parseChoices(par.replace(/\\text\{\s*\(([A-H])\)\s*([^{}]+)\}/g, "\\text{($1)}\\text{$2}"), assets, meta);
+    if (!r) continue;
+    parts[p] = (r.prefix.trim() ? r.prefix + "\n\n" : "") + put(r.html);
+    return parts.join("");
+  }
+  return s;
+}
+function parseChoices(par, assets, meta) {
+  const n = par.length, inMath = new Array(n).fill(false), delim = new Array(n).fill(false);
+  let m = false;
+  for (let i = 0; i < n; i++) {
+    const c = par[i];
+    if (c === "\\" && par[i + 1] === "$") { inMath[i] = inMath[i + 1] = m; i++; continue; }
+    if (c === "\\" && "[]()".includes(par[i + 1])) { delim[i] = delim[i + 1] = true; m = "[(".includes(par[i + 1]); i++; continue; }
+    if (c === "$") { delim[i] = true; if (par[i + 1] === "$") { delim[i + 1] = true; i++; } m = !m; continue; }
+    inMath[i] = m;
+  }
+  if (m) return null;
+  const MK = /\\(?:textbf|mathrm|mathbf|text)\s*\{\s*\(([A-H])\)\s*\}|\(([A-H])\)/g;
+  const marks = []; let mm;
+  while ((mm = MK.exec(par))) marks.push({ L: mm[1] || mm[2], s: mm.index, e: mm.index + mm[0].length });
+  const a = marks.findIndex(x => x.L === "A"); if (a < 0) return null;
+  const run = [marks[a]];
+  for (let k = a + 1; k < marks.length; k++) if (marks[k].L.charCodeAt(0) === run[run.length - 1].L.charCodeAt(0) + 1) run.push(marks[k]);
+  if (run.length < 3) return null;
+  const rebuild = (from, to) => {
+    let out = "", st = false;
+    for (let i = from; i < to; i++) {
+      if (delim[i]) continue;
+      if (inMath[i] !== st) { out += "$"; st = inMath[i]; }
+      out += par[i];
+    }
+    return st ? out + "$" : out;
+  };
+  const SEP = String.raw`(?:\s|\\qquad|\\quad|\\hfill|\\[,;: ]|\\\\|~|,|;|\.)`;
+  const tidy = x => {
+    for (let k = 0; k < 6; k++) {
+      x = x.replace(new RegExp(String.raw`\$` + SEP + "+", "g"), "$").replace(new RegExp(SEP + String.raw`+\$`, "g"), "$")
+           .replace(/\$\s*\$/g, "").replace(new RegExp("^" + SEP + "+|" + SEP + "+$", "g"), "")
+           .replace(/^(?:and|or)\s+|\s+(?:and|or)$/g, "");
+    }
+    return x;
+  };
+  const items = run.map((r, k) => ({ L: r.L, c: tidy(rebuild(r.e, k + 1 < run.length ? run[k + 1].s : n)) }));
+  if (items.some(x => !x.c || (x.c.replace(/\\\$/g, "").match(/\$/g) || []).length % 2)) return null;
+  // trailing text after the last choice on a new line stays outside the list
+  const html = `<ol class="choices">${items.map(x => `<li><span class="lab">(${x.L})</span><span class="ct">${texToHtml(x.c, assets, meta, "choice")}</span></li>`).join("")}</ol>`;
+  return { prefix: tidy(rebuild(0, run[0].s)), html };
+}
 function textCleanup(s) { // text-mode macros, applied to paragraphs and to list items
   return s.replace(/\\underline\{\\hspace\{[^}]*\}\}|\\rule\{[^}]*\}\{[^}]*\}/g, "______")
     .replace(/\\hspace\*?\{[^}]*\}/g, "&emsp;")
@@ -694,42 +790,14 @@ function typeset(el) {
   } else setTimeout(waitMJ, 200);
 })();
 
-/* ---------- question panel ---------- */
-let openId = null;
-async function openQuestion(id) {
-  const q = D.byId.get(id); if (!q) { toast(`No question with ID ${id}`); return; }
-  openId = id;
-  $("#scrim").classList.add("open"); $("#panel").classList.add("open");
-  $("#pid").textContent = id;
-  const t = trashOf(q);
-  $("#p-trash").textContent = t ? "Restore" : "Delete";
-  $("#p-trash").classList.toggle("danger", !t);
-  $("#p-flag").textContent = flagOf(q) ? "Edit flag" : "Flag for Claude";
-  $("#pcontent").innerHTML = `<div class="loading">Loading…</div>`;
-  const tx = await ensureText(q); const assets = await assetsOf(q);
-  if (openId !== id) return;
-  if (!tx) { $("#pcontent").innerHTML = `<div class="empty">Couldn't load this question's text.</div>`; return; }
-  const m = tx.m || {}, src = m.source || {}, fl = flagOf(q), f = placeOf(q);
-  const srcLine = [src.competition, src.year, src.division, src.paper, src.round, src.question_number != null ? "Problem " + src.question_number : null].filter(x => x != null && x !== "").join(" · ");
-  const url = (tx.q.match(/^%\s*Source:\s*(\S+)/m) || [])[1];
-  $("#pcontent").innerHTML = `
-    <div class="head" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--muted)">${headHtml(q)}</div>
-    ${fl ? `<div class="note"><b>Flagged for Claude</b>${fl.at ? ` · ${esc(String(fl.at).slice(0, 10))}` : ""}<br>${esc(fl.note || "(no note)")}</div>` : ""}
-    <section><h3>Question</h3><div class="tex">${texToHtml(tx.q, assets, m, "question.tex")}</div></section>
-    <section><h3>Solution <button class="btn" type="button" id="togglesol">Hide</button></h3><div class="tex" id="soltex">${texToHtml(tx.s, assets, m, "solution.tex")}</div></section>
-    <section class="meta">
-      <span>Tags</span><span>${(m.tags || []).map(esc).join(", ") || "—"}</span>
-      <span>Difficulty</span><span>${esc(m.difficulty ?? "—")}${m.difficulty_rationale ? " · " + esc(m.difficulty_rationale) : ""}</span>
-      <span>Source</span><span>${esc(srcLine || (url ? "AoPS forum" : "—"))}${url ? ` · <a href="${esc(url)}" target="_blank" rel="noopener">original post</a>` : ""}</span>
-      <span>Folder</span><span>${f && S.folders[f] ? esc(S.folders[f].name) : "Unfiled"}</span>
-      ${m.note ? `<span>Editor's note</span><span>${esc(m.note)}</span>` : ""}
-    </section>
-    <details><summary>LaTeX source</summary><p class="hint">question.tex</p><div class="src">${esc(tx.q)}</div><p class="hint">solution.tex</p><div class="src">${esc(tx.s)}</div></details>`;
-  typeset($("#pcontent"));
-  $("#p-close").focus();
+function refreshCard(id) {
+  const old = $(`.card[data-id="${CSS.escape(id)}"]`); const q = D.byId.get(id); if (!old || !q) return;
+  const solOpen = old.querySelector("details.sol").open;
+  const tmp = document.createElement("div"); tmp.innerHTML = cardHtml(q); const card = tmp.firstElementChild;
+  card.querySelector(".body").replaceWith(old.querySelector(".body"));
+  old.replaceWith(card);
+  if (solOpen) { card.querySelector("details.sol").open = true; fillSolution(card); }
 }
-function closePanel() { openId = null; $("#scrim").classList.remove("open"); $("#panel").classList.remove("open"); }
-
 /* ---------- dialogs & toasts ---------- */
 function toast(msg, ms = 3500) { const t = document.createElement("div"); t.className = "toast"; t.setAttribute("role", "status"); t.textContent = msg; document.body.append(t); setTimeout(() => t.remove(), ms); }
 function dialog(html, onOk) {
@@ -755,7 +823,7 @@ async function moveIds(ids) {
     if (fid === "__new") { const name = $("#mv-new", f).value.trim(); if (!name) { toast("Type a folder name."); return false; } fid = newFolderId(); await guard(store.setFolder(fid, { name, parent: null, created: new Date().toISOString() })); }
     const ch = {}; ids.forEach(id => ch[id] = fid || null);
     await guard(store.writeShards("place", ch), `Moved ${ids.length.toLocaleString()} question${ids.length > 1 ? "s" : ""}.`);
-    refresh(true); if (openId) openQuestion(openId);
+    refresh(true);
   });
   $("#mv-f").onchange = e => $("#mv-newwrap").hidden = e.target.value !== "__new";
 }
@@ -777,7 +845,7 @@ function flagIds(ids) {
     ${cur ? `<label><input type="checkbox" id="fl-clear"> Remove the flag</label>` : ""}`, async f => {
     const clear = $("#fl-clear", f) && $("#fl-clear", f).checked; const note = $("#fl-note", f).value.trim();
     for (const id of ids) await guard(clear ? store.clearFlag(id) : store.setFlag(id, { note, at: new Date().toISOString() }));
-    toast(clear ? "Flag removed." : `Flagged ${ids.length.toLocaleString()}.`); refresh(true); if (openId) openQuestion(openId);
+    toast(clear ? "Flag removed." : `Flagged ${ids.length.toLocaleString()}.`); refresh(true);
   });
 }
 async function guard(p, okMsg) {
@@ -876,7 +944,6 @@ $("#q").addEventListener("input", e => {
   clearTimeout(qTimer);
   qTimer = setTimeout(() => {
     const v = e.target.value.trim();
-    if (D.byId.has(v)) { openQuestion(v); }
     state.query = v; refresh();
   }, 200);
 });
@@ -924,8 +991,18 @@ function folderDialog(fid) {
 $("#list").addEventListener("click", e => {
   const card = e.target.closest(".card"); if (!card) return; const id = card.dataset.id;
   if (e.target.matches("input[type=checkbox]")) { e.target.checked ? sel.add(id) : sel.delete(id); card.classList.toggle("sel", e.target.checked); renderSel(); return; }
-  if (e.target.closest(".id") || e.target.closest("[data-open]")) { if (!e.target.closest("a,summary")) openQuestion(id); }
+  const a = e.target.closest("[data-a]"); if (!a) return;
+  const q = D.byId.get(id);
+  ({ copy: async () => { const t = await ensureText(q); if (!t) return;
+       try { await navigator.clipboard.writeText(`% ${q.id}\n${t.q}\n\n% Solution\n${t.s}`); toast("LaTeX copied."); }
+       catch (err) { toast("Copying was blocked. Open “LaTeX source” and copy from there."); } },
+     flag: () => flagIds([id]), move: () => moveIds([id]), trash: () => trashIds([id]), restore: () => trashIds([id], true) })[a.dataset.a]();
 });
+$("#list").addEventListener("toggle", e => {
+  const d = e.target; if (!(d instanceof HTMLDetailsElement) || !d.open) return;
+  const card = d.closest(".card"); if (!card) return;
+  if (d.classList.contains("sol")) fillSolution(card); else if (d.classList.contains("srcx")) fillSource(card);
+}, true);
 $("#pager").addEventListener("click", e => { const b = e.target.closest("[data-page]"); if (!b) return; state.page = +b.dataset.page; renderList(); $("#main").scrollTop = 0; });
 $("#selall").onclick = () => { results.forEach(q => sel.add(q.id)); renderSel(); renderList(); };
 $("#selbar").addEventListener("click", e => {
@@ -935,15 +1012,6 @@ $("#selbar").addEventListener("click", e => {
 });
 $("#importbtn").onclick = () => $("#importfile").click();
 $("#importfile").onchange = e => { const f = e.target.files[0]; e.target.value = ""; if (f) importZip(f); };
-$("#scrim").onclick = closePanel; $("#p-close").onclick = closePanel;
-document.addEventListener("keydown", e => { if (e.key === "Escape" && openId && !$("#dlg").open) closePanel(); });
-$("#p-move").onclick = () => moveIds([openId]);
-$("#p-flag").onclick = () => flagIds([openId]);
-$("#p-trash").onclick = async () => { const q = D.byId.get(openId); const r = !!trashOf(q); await trashIds([openId], r); openQuestion(openId); };
-$("#p-copy").onclick = async () => { const q = D.byId.get(openId); const t = textOf(q); if (!t) return;
-  try { await navigator.clipboard.writeText(`% ${q.id}\n${t.q}\n\n% Solution\n${t.s}`); toast("LaTeX copied."); } catch (e) { toast("Copying was blocked. Open “LaTeX source” and copy from there."); } };
-$("#pcontent").addEventListener("click", e => { if (e.target.id === "togglesol") { const s = $("#soltex"); s.hidden = !s.hidden; e.target.textContent = s.hidden ? "Show" : "Hide"; } });
-
 /* ---------- start ---------- */
 (async function main() {
   try { await loadIndex(); }
